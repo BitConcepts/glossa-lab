@@ -1,0 +1,693 @@
+{
+  "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001": {
+    "band": "low",
+    "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+    "components": {
+      "boundary": 0.5,
+      "contradiction_penalty": 0,
+      "evidence": 0.16249999999999998,
+      "falsifiability": 0.0,
+      "independence": 0.5
+    },
+    "declared_state": {
+      "conflicts_with": [],
+      "severity": "medium",
+      "status": "draft",
+      "uncertainty": "insufficient_evidence"
+    },
+    "direct_score": 0.139375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources",
+      "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+      "Boundary entry 'testability=directly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
+      "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+    ],
+    "propagated_score": 0.139375,
+    "propagation": {
+      "cycle_component": [],
+      "status": "propagated"
+    }
+  },
+  "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002": {
+    "band": "low",
+    "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
+    "components": {
+      "boundary": 0.5,
+      "contradiction_penalty": 0,
+      "evidence": 0.16249999999999998,
+      "falsifiability": 0.0,
+      "independence": 0.5
+    },
+    "declared_state": {
+      "conflicts_with": [],
+      "severity": "medium",
+      "status": "draft",
+      "uncertainty": "insufficient_evidence"
+    },
+    "direct_score": 0.139375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources",
+      "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+      "Boundary entry 'testability=directly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
+      "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+    ],
+    "propagated_score": 0.139375,
+    "propagation": {
+      "cycle_component": [],
+      "status": "propagated"
+    }
+  },
+  "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003": {
+    "band": "low",
+    "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
+    "components": {
+      "boundary": 0.5,
+      "contradiction_penalty": 0,
+      "evidence": 0.16249999999999998,
+      "falsifiability": 0.0,
+      "independence": 0.5
+    },
+    "declared_state": {
+      "conflicts_with": [],
+      "severity": "medium",
+      "status": "draft",
+      "uncertainty": "insufficient_evidence"
+    },
+    "direct_score": 0.139375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources",
+      "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+      "Boundary entry 'testability=directly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
+      "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+    ],
+    "propagated_score": 0.139375,
+    "propagation": {
+      "cycle_component": [],
+      "status": "propagated"
+    }
+  },
+  "ancient_writing_and_modern_technologies_51831ac9_statisti_0004": {
+    "band": "low",
+    "claim_id": "ancient_writing_and_modern_technologies_51831ac9_statisti_0004",
+    "components": {
+      "boundary": 0.5,
+      "contradiction_penalty": 0,
+      "evidence": 0.16249999999999998,
+      "falsifiability": 0.0,
+      "independence": 0.5
+    },
+    "declared_state": {
+      "conflicts_with": [],
+      "severity": "medium",
+      "status": "draft",
+      "uncertainty": "insufficient_evidence"
+    },
+    "direct_score": 0.139375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources",
+      "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+      "Boundary entry 'testability=directly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
+      "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+    ],
+    "propagated_score": 0.139375,
+    "propagation": {
+      "cycle_component": [],
+      "status": "propagated"
+    }
+  },
+  "farmer_sproat_witzel_2004_manual_001": {
+    "band": "unknown",
+    "claim_id": "farmer_sproat_witzel_2004_manual_001",
+    "components": {
+      "boundary": 0.5,
+      "contradiction_penalty": 0.75,
+      "evidence": 0.16249999999999998,
+      "falsifiability": 1.0,
+      "independence": 0.5
+    },
+    "declared_state": {
+      "conflicts_with": [],
+      "severity": "medium",
+      "status": "contradicted",
+      "uncertainty": "insufficient_evidence"
+    },
+    "direct_score": 0.0,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources",
+      "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+      "Boundary entry 'testability=directly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
+      "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)",
+      "Contradiction penalty 0.750"
+    ],
+    "propagated_score": 0.0,
+    "propagation": {
+      "cycle_component": [],
+      "status": "propagated"
+    }
+  },
+  "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001": {
+    "band": "unknown",
+    "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001",
+    "components": {
+      "boundary": 0.5,
+      "contradiction_penalty": 0.75,
+      "evidence": 0.16249999999999998,
+      "falsifiability": 0.0,
+      "independence": 0.5
+    },
+    "declared_state": {
+      "conflicts_with": [],
+      "severity": "medium",
+      "status": "contradicted",
+      "uncertainty": "insufficient_evidence"
+    },
+    "direct_score": 0.0,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources",
+      "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+      "Boundary entry 'testability=directly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
+      "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)",
+      "Contradiction penalty 0.750"
+    ],
+    "propagated_score": 0.0,
+    "propagation": {
+      "cycle_component": [],
+      "status": "propagated"
+    }
+  },
+  "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002": {
+    "band": "unknown",
+    "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002",
+    "components": {
+      "boundary": 0.5,
+      "contradiction_penalty": 0.75,
+      "evidence": 0.16249999999999998,
+      "falsifiability": 0.0,
+      "independence": 0.5
+    },
+    "declared_state": {
+      "conflicts_with": [],
+      "severity": "medium",
+      "status": "contradicted",
+      "uncertainty": "insufficient_evidence"
+    },
+    "direct_score": 0.0,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources",
+      "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+      "Boundary entry 'testability=directly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
+      "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)",
+      "Contradiction penalty 0.750"
+    ],
+    "propagated_score": 0.0,
+    "propagation": {
+      "cycle_component": [],
+      "status": "propagated"
+    }
+  },
+  "indus_valley_script_deciphered_from_myth_65ff0a26_manual_001": {
+    "band": "low",
+    "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_001",
+    "components": {
+      "boundary": 0.5,
+      "contradiction_penalty": 0,
+      "evidence": 0.16249999999999998,
+      "falsifiability": 0.5,
+      "independence": 0.5
+    },
+    "declared_state": {
+      "conflicts_with": [],
+      "severity": "medium",
+      "status": "draft",
+      "uncertainty": "insufficient_evidence"
+    },
+    "direct_score": 0.214375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources",
+      "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+      "Falsification test 'If sign distributions are not correlated with trade/economic contexts at excavation sites.' earns partial credit (FR-8.7): failed criteria: no checkable condition (no numeric bound, comparator, or observation/action term)",
+      "Boundary entry 'testability=indirectly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
+      "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+    ],
+    "propagated_score": 0.214375,
+    "propagation": {
+      "cycle_component": [],
+      "status": "propagated"
+    }
+  },
+  "indus_valley_script_deciphered_from_myth_65ff0a26_manual_002": {
+    "band": "medium",
+    "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_002",
+    "components": {
+      "boundary": 0.5,
+      "contradiction_penalty": 0,
+      "evidence": 0.706875,
+      "falsifiability": 1.0,
+      "independence": 1.0
+    },
+    "declared_state": {
+      "conflicts_with": [],
+      "severity": "medium",
+      "status": "draft",
+      "uncertainty": "insufficient_evidence"
+    },
+    "direct_score": 0.6887812500000001,
+    "notes": [
+      "No observed supporting evidence",
+      "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+      "Boundary entry 'testability=directly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
+      "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 2 unknown of 2 item(s); unknown freshness counts as stale (FR-8.6)"
+    ],
+    "propagated_score": 0.6887812500000001,
+    "propagation": {
+      "cycle_component": [],
+      "status": "propagated"
+    }
+  },
+  "indus_valley_script_deciphered_from_myth_65ff0a26_manual_003": {
+    "band": "low",
+    "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_003",
+    "components": {
+      "boundary": 0.5,
+      "contradiction_penalty": 0,
+      "evidence": 0.16249999999999998,
+      "falsifiability": 0.5,
+      "independence": 0.5
+    },
+    "declared_state": {
+      "conflicts_with": [],
+      "severity": "medium",
+      "status": "draft",
+      "uncertainty": "insufficient_evidence"
+    },
+    "direct_score": 0.214375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources",
+      "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+      "Falsification test 'If arrow sign does not cluster at gateway/border sites.' earns partial credit (FR-8.7): failed criteria: no checkable condition (no numeric bound, comparator, or observation/action term)",
+      "Boundary entry 'testability=directly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
+      "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+    ],
+    "propagated_score": 0.214375,
+    "propagation": {
+      "cycle_component": [],
+      "status": "propagated"
+    }
+  },
+  "indus_valley_script_deciphered_from_myth_65ff0a26_manual_004": {
+    "band": "low",
+    "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_004",
+    "components": {
+      "boundary": 0.5,
+      "contradiction_penalty": 0,
+      "evidence": 0.16249999999999998,
+      "falsifiability": 0.5,
+      "independence": 0.5
+    },
+    "declared_state": {
+      "conflicts_with": [],
+      "severity": "medium",
+      "status": "draft",
+      "uncertainty": "insufficient_evidence"
+    },
+    "direct_score": 0.214375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources",
+      "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+      "Falsification test 'Horned deity sign does not cluster at fire-altar sites.' earns partial credit (FR-8.7): failed criteria: no checkable condition (no numeric bound, comparator, or observation/action term)",
+      "Boundary entry 'testability=indirectly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
+      "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+    ],
+    "propagated_score": 0.214375,
+    "propagation": {
+      "cycle_component": [],
+      "status": "propagated"
+    }
+  },
+  "parpola_2010_dravidian_solution_manual_001": {
+    "band": "high",
+    "claim_id": "parpola_2010_dravidian_solution_manual_001",
+    "components": {
+      "boundary": 0.5,
+      "contradiction_penalty": 0,
+      "evidence": 1.0,
+      "falsifiability": 0.5,
+      "independence": 1.0
+    },
+    "declared_state": {
+      "conflicts_with": [],
+      "severity": "medium",
+      "status": "unsupported",
+      "uncertainty": "insufficient_evidence"
+    },
+    "direct_score": 0.775,
+    "notes": [
+      "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+      "Falsification test 'If Dravidian phonotactics do not fit Indus sign bigrams better than Sanskrit.' earns partial credit (FR-8.7): failed criteria: no checkable condition (no numeric bound, comparator, or observation/action term)",
+      "Boundary entry 'testability=directly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
+      "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 2 unknown of 2 item(s); unknown freshness counts as stale (FR-8.6)"
+    ],
+    "propagated_score": 0.775,
+    "propagation": {
+      "cycle_component": [],
+      "status": "propagated"
+    }
+  },
+  "parpola_2010_dravidian_solution_manual_002": {
+    "band": "medium",
+    "claim_id": "parpola_2010_dravidian_solution_manual_002",
+    "components": {
+      "boundary": 0.5,
+      "contradiction_penalty": 0,
+      "evidence": 0.706875,
+      "falsifiability": 1.0,
+      "independence": 1.0
+    },
+    "declared_state": {
+      "conflicts_with": [],
+      "severity": "medium",
+      "status": "partially_supported",
+      "uncertainty": "insufficient_evidence"
+    },
+    "direct_score": 0.6887812500000001,
+    "notes": [
+      "No observed supporting evidence",
+      "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+      "Boundary entry 'testability=directly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
+      "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 2 unknown of 2 item(s); unknown freshness counts as stale (FR-8.6)"
+    ],
+    "propagated_score": 0.6887812500000001,
+    "propagation": {
+      "cycle_component": [],
+      "status": "propagated"
+    }
+  },
+  "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001": {
+    "band": "low",
+    "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001",
+    "components": {
+      "boundary": 0.5,
+      "contradiction_penalty": 0,
+      "evidence": 0.16249999999999998,
+      "falsifiability": 0.0,
+      "independence": 0.5
+    },
+    "declared_state": {
+      "conflicts_with": [],
+      "severity": "medium",
+      "status": "draft",
+      "uncertainty": "insufficient_evidence"
+    },
+    "direct_score": 0.139375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources",
+      "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+      "Boundary entry 'testability=directly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
+      "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+    ],
+    "propagated_score": 0.139375,
+    "propagation": {
+      "cycle_component": [],
+      "status": "propagated"
+    }
+  },
+  "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002": {
+    "band": "low",
+    "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
+    "components": {
+      "boundary": 0.5,
+      "contradiction_penalty": 0,
+      "evidence": 0.16249999999999998,
+      "falsifiability": 0.0,
+      "independence": 0.5
+    },
+    "declared_state": {
+      "conflicts_with": [],
+      "severity": "medium",
+      "status": "draft",
+      "uncertainty": "insufficient_evidence"
+    },
+    "direct_score": 0.139375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources",
+      "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+      "Boundary entry 'testability=directly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
+      "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+    ],
+    "propagated_score": 0.139375,
+    "propagation": {
+      "cycle_component": [],
+      "status": "propagated"
+    }
+  },
+  "without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001": {
+    "band": "unknown",
+    "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001",
+    "components": {
+      "boundary": 0.5,
+      "contradiction_penalty": 0.75,
+      "evidence": 0.16249999999999998,
+      "falsifiability": 0.0,
+      "independence": 0.5
+    },
+    "declared_state": {
+      "conflicts_with": [],
+      "severity": "medium",
+      "status": "contradicted",
+      "uncertainty": "insufficient_evidence"
+    },
+    "direct_score": 0.0,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources",
+      "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+      "Boundary entry 'testability=directly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
+      "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)",
+      "Contradiction penalty 0.750"
+    ],
+    "propagated_score": 0.0,
+    "propagation": {
+      "cycle_component": [],
+      "status": "propagated"
+    }
+  },
+  "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001": {
+    "band": "medium",
+    "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001",
+    "components": {
+      "boundary": 0.5,
+      "contradiction_penalty": 0,
+      "evidence": 0.706875,
+      "falsifiability": 0.5,
+      "independence": 1.0
+    },
+    "declared_state": {
+      "conflicts_with": [],
+      "severity": "medium",
+      "status": "partially_supported",
+      "uncertainty": "insufficient_evidence"
+    },
+    "direct_score": 0.6137812500000001,
+    "notes": [
+      "No observed supporting evidence",
+      "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+      "Falsification test 'If faunal signs are NOT enriched in initial position and celestial signs are NOT enriched in terminal position.' earns partial credit (FR-8.7): failed criteria: no checkable condition (no numeric bound, comparator, or observation/action term)",
+      "Boundary entry 'testability=directly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
+      "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 2 unknown of 2 item(s); unknown freshness counts as stale (FR-8.6)"
+    ],
+    "propagated_score": 0.6137812500000001,
+    "propagation": {
+      "cycle_component": [],
+      "status": "propagated"
+    }
+  },
+  "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_002": {
+    "band": "low",
+    "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_002",
+    "components": {
+      "boundary": 0.5,
+      "contradiction_penalty": 0,
+      "evidence": 0.16249999999999998,
+      "falsifiability": 0.5,
+      "independence": 0.5
+    },
+    "declared_state": {
+      "conflicts_with": [],
+      "severity": "medium",
+      "status": "draft",
+      "uncertainty": "insufficient_evidence"
+    },
+    "direct_score": 0.214375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources",
+      "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+      "Falsification test 'If sign distributions correlate with palatial/royal contexts rather than civic/infrastructure contexts.' earns partial credit (FR-8.7): failed criteria: no checkable condition (no numeric bound, comparator, or observation/action term)",
+      "Boundary entry 'testability=indirectly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
+      "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+    ],
+    "propagated_score": 0.214375,
+    "propagation": {
+      "cycle_component": [],
+      "status": "propagated"
+    }
+  },
+  "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003": {
+    "band": "medium",
+    "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003",
+    "components": {
+      "boundary": 0.5,
+      "contradiction_penalty": 0,
+      "evidence": 0.706875,
+      "falsifiability": 1.0,
+      "independence": 1.0
+    },
+    "declared_state": {
+      "conflicts_with": [],
+      "severity": "medium",
+      "status": "partially_supported",
+      "uncertainty": "insufficient_evidence"
+    },
+    "direct_score": 0.6887812500000001,
+    "notes": [
+      "No observed supporting evidence",
+      "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+      "Boundary entry 'testability=directly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
+      "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 2 unknown of 2 item(s); unknown freshness counts as stale (FR-8.6)"
+    ],
+    "propagated_score": 0.6887812500000001,
+    "propagation": {
+      "cycle_component": [],
+      "status": "propagated"
+    }
+  },
+  "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004": {
+    "band": "low",
+    "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004",
+    "components": {
+      "boundary": 0.5,
+      "contradiction_penalty": 0,
+      "evidence": 0.16249999999999998,
+      "falsifiability": 1.0,
+      "independence": 0.5
+    },
+    "declared_state": {
+      "conflicts_with": [],
+      "severity": "medium",
+      "status": "draft",
+      "uncertainty": "insufficient_evidence"
+    },
+    "direct_score": 0.28937499999999994,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources",
+      "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+      "Boundary entry 'testability=directly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
+      "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+    ],
+    "propagated_score": 0.28937499999999994,
+    "propagation": {
+      "cycle_component": [],
+      "status": "propagated"
+    }
+  },
+  "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_005": {
+    "band": "low",
+    "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_005",
+    "components": {
+      "boundary": 0.5,
+      "contradiction_penalty": 0,
+      "evidence": 0.16249999999999998,
+      "falsifiability": 1.0,
+      "independence": 0.5
+    },
+    "declared_state": {
+      "conflicts_with": [],
+      "severity": "medium",
+      "status": "draft",
+      "uncertainty": "insufficient_evidence"
+    },
+    "direct_score": 0.28937499999999994,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources",
+      "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+      "Boundary entry 'testability=indirectly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
+      "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+    ],
+    "propagated_score": 0.28937499999999994,
+    "propagation": {
+      "cycle_component": [],
+      "status": "propagated"
+    }
+  },
+  "yadav_2009_arxiv_manual_001": {
+    "band": "high",
+    "claim_id": "yadav_2009_arxiv_manual_001",
+    "components": {
+      "boundary": 0.5,
+      "contradiction_penalty": 0,
+      "evidence": 1.0,
+      "falsifiability": 0.5,
+      "independence": 1.0
+    },
+    "declared_state": {
+      "conflicts_with": [],
+      "severity": "medium",
+      "status": "supported",
+      "uncertainty": "insufficient_evidence"
+    },
+    "direct_score": 0.775,
+    "notes": [
+      "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+      "Falsification test 'If frequency distribution deviates from Zipf-Mandelbrot law.' earns partial credit (FR-8.7): failed criteria: no checkable condition (no numeric bound, comparator, or observation/action term)",
+      "Boundary entry 'testability=directly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
+      "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 2 unknown of 2 item(s); unknown freshness counts as stale (FR-8.6)"
+    ],
+    "propagated_score": 0.775,
+    "propagation": {
+      "cycle_component": [],
+      "status": "propagated"
+    }
+  },
+  "yadav_2009_arxiv_manual_002": {
+    "band": "medium",
+    "claim_id": "yadav_2009_arxiv_manual_002",
+    "components": {
+      "boundary": 0.5,
+      "contradiction_penalty": 0,
+      "evidence": 1.0,
+      "falsifiability": 0.0,
+      "independence": 1.0
+    },
+    "declared_state": {
+      "conflicts_with": [],
+      "severity": "medium",
+      "status": "supported",
+      "uncertainty": "insufficient_evidence"
+    },
+    "direct_score": 0.7000000000000001,
+    "notes": [
+      "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+      "Boundary entry 'testability=directly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
+      "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 2 unknown of 2 item(s); unknown freshness counts as stale (FR-8.6)"
+    ],
+    "propagated_score": 0.7000000000000001,
+    "propagation": {
+      "cycle_component": [],
+      "status": "propagated"
+    }
+  }
+}

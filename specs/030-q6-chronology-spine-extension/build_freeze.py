@@ -5,9 +5,31 @@ Run from the repo root with the Glossa venv:
 
 Writes freeze.json next to freeze.md. A freeze is never
 regenerated over a run (Spec 026 section 4.7).
+
+Amendment (owner-ordered, 2026-10-21, on the Spec 038
+precedent; adjudication.md freeze-test amendment
+section): the record this builder now writes is the
+SUCCESSOR record. adjudication.md (the spec's ruling
+record, to which owner decisions are appended by date;
+the Ask 2 ruling of 2026-10-21 is the append that
+required the amendment) is no longer a whole-file
+source: its freeze-time bytes are pinned in
+prefix_pins (SHA-256 and byte length, below) and the
+replay asserts they remain an exact prefix of the
+live file. The other seven sources remain whole-file.
+The digest is computed once over that payload with
+the framework026 canonicalisation. Faithfulness: run
+over the original (pre-append, pre-amendment) bytes,
+the pre-amendment builder reproduced the freeze-act
+digest
+3a61c63a26ffada3c21bf8b718610e6debe7f9c9ff58bf8ff736cbb7c3db00e9
+exactly (2026-10-21); that digest stands in every
+citing record and is superseded only as this
+record's own digest.
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import sys
 from pathlib import Path
@@ -15,7 +37,11 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "backend"))
 
-from glossa_lab.framework026 import build_freeze
+from glossa_lab.framework026 import (
+    _canonical,
+    _sha256_bytes,
+    build_freeze,
+)
 
 DEFINITION = {
     "experiment_id": "spec030-q6-chronology-spine-extension",
@@ -99,15 +125,52 @@ SOURCES = [
     "specs/030-q6-chronology-spine-extension/freeze.md",
     "specs/030-q6-chronology-spine-extension/spec.md",
     "specs/030-q6-chronology-spine-extension/claims.json",
-    "specs/030-q6-chronology-spine-extension/adjudication.md",
     "specs/030-q6-chronology-spine-extension/aee/recovery-specify.md",
     "specs/030-q6-chronology-spine-extension/aee/freeze-aee-note.md",
     "specs/030-q6-chronology-spine-extension/build_freeze.py",
     "backend/tests/test_spec030_freeze.py",
 ]
 
+# Prefix pin for adjudication.md (owner-ordered
+# freeze-test amendment, 2026-10-21): the freeze-time
+# bytes of the adjudication record, pinned by SHA-256
+# and byte length. Rulings are recorded in that file by
+# dated append; the frozen bytes must remain an exact
+# prefix of the live file, and dated appends after them
+# are permitted. The replay fence asserts the prefix
+# (backend/tests/test_spec030_freeze.py).
+PREFIX_PINS = {
+    "specs/030-q6-chronology-spine-extension/adjudication.md": {
+        "sha256": "f962f910d81cb63f44abb4db0e1be2ee0fb9fca45f5242f23656113ddd609738",
+        "bytes": 5867,
+    },
+}
+
 if __name__ == "__main__":
+    # Builder-side guard: the live adjudication record
+    # must still carry the frozen bytes as its prefix;
+    # the builder refuses to emit a record whose pin
+    # the tree already violates.
+    pin = PREFIX_PINS[
+        "specs/030-q6-chronology-spine-extension/adjudication.md"
+    ]
+    adj = REPO / "specs/030-q6-chronology-spine-extension/adjudication.md"
+    live = adj.read_bytes()
+    assert len(live) >= pin["bytes"]
+    assert (
+        hashlib.sha256(live[: pin["bytes"]]).hexdigest()
+        == pin["sha256"]
+    )
     record = build_freeze(DEFINITION, REPO, SOURCES)
+    payload = {
+        "schema_version": record["schema_version"],
+        "definition": record["definition"],
+        "sources": record["sources"],
+        "prefix_pins": PREFIX_PINS,
+        "environment": record["environment"],
+    }
+    record = dict(payload)
+    record["digest"] = _sha256_bytes(_canonical(payload))
     out = REPO / "specs/030-q6-chronology-spine-extension/freeze.json"
     out.write_text(json.dumps(record, indent=1) + "\n",
                    encoding="utf-8")

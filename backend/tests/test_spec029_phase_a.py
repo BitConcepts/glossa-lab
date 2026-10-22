@@ -58,9 +58,49 @@ _PRE_CHANGE_SCORES = (
 _POST_MERGE_SCORES = (
     Path(__file__).resolve().parent / "fixtures" / "spec029_post_merge_aee_scores.json"
 )
+# Phase-104 carry-over correction supersession (2026-10-13): the
+# Phase-104 verdict carry-over was written into the three fragment
+# records it prescribed (see
+# ``specs/029-tao-claim-lifecycle/phase104-carryover-correction-record.md``),
+# so those three records now carry their contradicting evidence and
+# the AEE engine scores them with its contradiction penalty —
+# exactly as it already scored the canonical
+# farmer_sproat_witzel_2004_manual_001. The regression target is
+# therefore this successor fixture; the post-merge fixture above is
+# preserved untouched, and the correction test file
+# (``test_spec029_phase104_correction.py``) asserts that exactly
+# the three corrected claims' scores moved, each by this cause,
+# and every other score is byte-identical to the post-merge value.
+# aee 1.5.0 adoption supersession (2026-10-20): the adopted
+# engine's methodology-2.0 semantics (FR-8.7 substance-over-
+# presence credit, FR-8.13 unrounded scores and the widened
+# score-dict shape) move every score the post-correction fixture
+# pins, so the regression target is the successor fixture
+# regenerated under aee 1.5.0; the post-correction fixture above
+# is preserved untouched.
+_POST_CORRECTION_SCORES = (
+    Path(__file__).resolve().parent
+    / "fixtures" / "spec029_post_phase104_correction_aee150_scores.json"
+)
 
 HUMAN = "Tristen Pierson"
 TS = "2026-10-12T12:00:00+00:00"
+
+# Lane-2 adoption (2026-10-13, owner act): the 8 extracted claims
+# that stood at ``checked`` and advanced to ``explained`` with
+# authored explanations (PR #190 + ingestion). The other 12 of the
+# adopted 20 are study-headline / prediction records in the Phase D
+# sidecar, asserted in the Phase D tests.
+_LANE2_EXPLAINED_EXTRACTED = {
+    "farmer_sproat_witzel_2004_manual_001",
+    "indus_valley_script_deciphered_from_myth_65ff0a26_manual_002",
+    "parpola_2010_dravidian_solution_manual_001",
+    "parpola_2010_dravidian_solution_manual_002",
+    "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001",
+    "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003",
+    "yadav_2009_arxiv_manual_001",
+    "yadav_2009_arxiv_manual_002",
+}
 
 
 def _record(stage=None, **extra):
@@ -178,10 +218,31 @@ def test_score_propagation_byte_identical_to_pre_change():
     fixture is preserved untouched; Phase I's test file asserts
     every surviving claim's score is byte-identical to its
     pre-change value and reports the mean movement with its cause.
+
+    Phase-104 carry-over correction supersession (2026-10-13): the
+    regression target moved again, to
+    ``fixtures/spec029_post_phase104_correction_aee_scores.json`` —
+    the three records the Phase-104 evaluation prescribed a verdict
+    carry-over for now carry that verdict's contradicting evidence,
+    and the engine applies its contradiction penalty to them (the
+    movement and its cause are asserted in
+    ``test_spec029_phase104_correction.py``). Both earlier fixtures
+    are preserved untouched.
+
+    aee 1.5.0 adoption supersession (2026-10-20): the target moved
+    once more, to
+    ``fixtures/spec029_post_phase104_correction_aee150_scores.json``,
+    regenerated under the adopted engine. Every per-claim delta
+    against the preserved post-correction fixture is one of the
+    documented methodology-2.0 changes: FR-8.7 boundary and
+    falsifiability substance credit, FR-8.13 unrounded components
+    and the added ``declared_state`` / ``propagation`` keys, and
+    the FR-8.6/8.7 note texts. The earlier fixtures are preserved
+    untouched.
     """
     if not _REAL_CLAIMS_DIR.exists():
         pytest.skip("extracted_claims dir not present")
-    expected = json.loads(_POST_MERGE_SCORES.read_text(encoding="utf-8"))
+    expected = json.loads(_POST_CORRECTION_SCORES.read_text(encoding="utf-8"))
     summary = assessment_summary(_REAL_CLAIMS_DIR)
     assert summary["total_claims"] == len(expected)
     for entry in summary["claims"]:
@@ -368,6 +429,25 @@ def test_flag_on_current_claim_set_matches_audit_shapes():
     claims here, so the supported class on this surface is 6 and
     the flagged set is 7. The store still holds all 31 records
     (merge, never delete) — the Phase I tests assert that side.
+
+    Lane-2 adoption supersession (2026-10-13, owner act): the owner
+    adopted authored explanations for every canonical claim (PR
+    #190 + ingestion). All seven flagged records on this surface
+    stood at ``checked`` and advanced to ``explained``; the flag by
+    construction cannot fire at or above ``explained``, so the
+    flagged set here is now empty — the risk state the flag names
+    was closed by the human act, not by editing the flag. The
+    supported class is unchanged (lane separation: a lane-2 stage
+    move never touches a lane-1 status).
+
+    Spec 033 / Phase-397 supersession (2026-10-13): the frozen
+    Spec 033 outcome (NOT SUPPORTED) reclassified the
+    Dravidian-solution claim's lane-1 status from
+    ``partially_supported`` to ``unsupported`` through the dated
+    entry Spec 033 section 6 prescribes, so the supported class on
+    this surface is now 5. The claim's stage is untouched
+    (``explained``; lane separation again), and the flagged set
+    stays empty.
     """
     if not _REAL_CLAIMS_DIR.exists():
         pytest.skip("extracted_claims dir not present")
@@ -378,12 +458,9 @@ def test_flag_on_current_claim_set_matches_audit_shapes():
         if e["glossa_claim_status"] in
         ("supported", "strongly_supported", "partially_supported")
     }
-    assert len(supported_class) == 6
-    assert supported_class <= flagged
-    assert flagged == supported_class | {
-        "indus_valley_script_deciphered_from_myth_65ff0a26_manual_002",
-    }
-    assert len(flagged) == 7
+    assert len(supported_class) == 5
+    assert flagged == set()
+    assert supported_class.isdisjoint(flagged)
 
 
 # ── A4: endpoint serialization ───────────────────────────────────────────
@@ -401,9 +478,18 @@ def test_claims_endpoint_serializes_stage_object_and_flag(client):
         # reclassification ledger: stamped, with ledger provenance.
         assert stage["stage"] in STAGES
         assert stage["stamped"] is True
-        assert stage["stage_source"].startswith(
-            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:")
-        assert stage["stage_as_of"] == "2026-10-12"
+        if c["claim_id"] in _LANE2_EXPLAINED_EXTRACTED:
+            # Lane-2 adoption (2026-10-13): advanced to explained
+            # through the transition service; its provenance names
+            # the service, and the Phase D entry remains history[0].
+            assert stage["stage"] == "explained"
+            assert stage["stage_source"] == "transition-service:stage_history[1]"
+            assert stage["stage_as_of"] == "2026-10-13T10:12:00+00:00"
+            assert stage["stage_history_count"] == 2
+        else:
+            assert stage["stage_source"].startswith(
+                "specs/029-tao-claim-lifecycle/reclassification-ledger.json:")
+            assert stage["stage_as_of"] == "2026-10-12"
         assert "stage_source" in stage and "stage_history_count" in stage
         assert isinstance(c["verified_unexplained"], bool)
         # Lane separation: no lane-1 score is folded into the stage object.
@@ -414,9 +500,18 @@ def test_claims_endpoint_flag_filter(client):
     r = client.get("/api/v1/indus-evidence/claims?verified_unexplained=true")
     assert r.status_code == 200, r.text
     d = r.json()
-    # Status-based flag (no scores requested): exactly the audit's
-    # 8 supported-class records.
-    assert d["total"] == 8
+    # Status-based flag (no scores requested): at the audit this
+    # was exactly the 8 supported-class records. Lane-2 adoption
+    # supersession (2026-10-13): the 6 canonical records among them
+    # advanced to ``explained`` with authored explanations, so their
+    # flags cleared; the 2 Yadav 2010 records are preserved evidence
+    # instances of the adopted canonicals — not claims of their own,
+    # never advanced — and still stand flagged below ``explained``.
+    assert d["total"] == 2
+    assert {c["claim_id"] for c in d["claims"]} == {
+        "yadav_2010_ngrams_manual_001",
+        "yadav_2010_ngrams_manual_002",
+    }
     assert all(c["verified_unexplained"] for c in d["claims"])
 
 
@@ -447,7 +542,10 @@ def test_aee_scores_endpoint_serializes_stage_and_lane1_distinctly(client):
     # canonical set — 6 supported-class + 1 high-band (see A5 test;
     # the two Yadav 2010 supported-class records are now evidence
     # instances of the 2009 canonicals, not claims on this surface).
-    assert len(flagged) == 7
+    # Lane-2 adoption supersession (2026-10-13): all 7 advanced to
+    # ``explained`` with authored explanations — none remains
+    # flagged on this surface.
+    assert len(flagged) == 0
 
 
 def test_anchor_surface_serializes_stage_object(client):

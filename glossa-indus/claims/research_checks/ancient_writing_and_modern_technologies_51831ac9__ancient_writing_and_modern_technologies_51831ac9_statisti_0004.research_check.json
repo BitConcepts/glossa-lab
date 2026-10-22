@@ -1,0 +1,429 @@
+{
+ "stage": "research_check",
+ "record_version": 1,
+ "claim_id": "ancient_writing_and_modern_technologies_51831ac9_statisti_0004",
+ "document_id": "ancient_writing_and_modern_technologies_51831ac9",
+ "claim_statement": "Statistical finding: positional analysis",
+ "checked_at": "2026-10-22T14:48:02.807012+00:00",
+ "advisory": true,
+ "verdict": null,
+ "protocol": "docs/paper-search-mcp.md#audit-protocol",
+ "phrasings": [
+  {
+   "text": "Statistical finding: positional analysis",
+   "origin": "claim"
+  },
+  {
+   "text": "statistical study of preferred positions of graphemes within Harappan inscriptions",
+   "origin": "caller"
+  }
+ ],
+ "sources_requested": [
+  "arxiv",
+  "crossref",
+  "openalex",
+  "semantic",
+  "core",
+  "europepmc"
+ ],
+ "queries": [
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_papers",
+   "query": "Statistical finding: positional analysis"
+  },
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_arxiv",
+   "query": "Statistical finding: positional analysis"
+  },
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_crossref",
+   "query": "Statistical finding: positional analysis"
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_papers",
+   "query": "statistical study of preferred positions of graphemes within Harappan inscriptions"
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_arxiv",
+   "query": "statistical study of preferred positions of graphemes within Harappan inscriptions"
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_crossref",
+   "query": "statistical study of preferred positions of graphemes within Harappan inscriptions"
+  }
+ ],
+ "source_errors": [],
+ "neighbors": [
+  {
+   "title": "Toward the Use of Statistical Analysis in Positional Tolerancing",
+   "authors": "F. Bennis; Ph. Castagliola; L. Pino",
+   "year": "2002-01-01T00:00:00",
+   "doi": "10.1007/978-94-015-9966-5_27",
+   "paper_id": "10.1007/978-94-015-9966-5_27",
+   "source": "crossref",
+   "url": "https://doi.org/10.1007/978-94-015-9966-5_27",
+   "abstract": null,
+   "relevance": 0.75
+  },
+  {
+   "title": "A statistical analysis of positional errors of a multiaxis machine tool",
+   "authors": "Y.C. Shin; Y. Wei",
+   "year": "1992-07-01T00:00:00",
+   "doi": "10.1016/0141-6359(92)90002-e",
+   "paper_id": "10.1016/0141-6359(92)90002-e",
+   "source": "crossref",
+   "url": "https://doi.org/10.1016/0141-6359(92)90002-e",
+   "abstract": null,
+   "relevance": 0.75
+  },
+  {
+   "title": "The Statistical Analysis of fMRI Data",
+   "authors": "Martin A. Lindquist",
+   "year": "2009-06-19T13:09:51",
+   "doi": "10.1214/09-STS282",
+   "paper_id": "0906.3662v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/0906.3662v1",
+   "abstract": "In recent years there has been explosive growth in the number of neuroimaging studies performed using functional Magnetic Resonance Imaging (fMRI). The field that has grown around the acquisition and analysis of fMRI data is intrinsically interdisciplinary in nature and involves contributions from researchers in neuroscience, psychology, physics and statistics, among others. A standard fMRI study gives rise to massive amounts of noisy data with a complicated spatio-temporal correlation structure. Statistics plays a crucial role in understanding the nature of the data and obtaining relevant res",
+   "relevance": 0.5
+  },
+  {
+   "title": "Statistical Inference for the Population Landscape via Moment Adjusted Stochastic Gradients",
+   "authors": "Tengyuan Liang; Weijie Su",
+   "year": "2017-12-20T15:16:53",
+   "doi": "10.1111/rssb.12313",
+   "paper_id": "1712.07519v2",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1712.07519v2",
+   "abstract": "Modern statistical inference tasks often require iterative optimization methods to compute the solution. Convergence analysis from an optimization viewpoint only informs us how well the solution is approximated numerically but overlooks the sampling nature of the data. In contrast, recognizing the randomness in the data, statisticians are keen to provide uncertainty quantification, or confidence, for the solution obtained using iterative optimization methods. This paper makes progress along this direction by introducing the moment-adjusted stochastic gradient descents, a new stochastic optimiz",
+   "relevance": 0.5
+  },
+  {
+   "title": "Methods for finding genes a major rate-limiting step in positional cloning",
+   "authors": "Julia E. Parrish; David L. Nelson",
+   "year": "1993-04-01T00:00:00",
+   "doi": "10.1016/1050-3862(93)90043-i",
+   "paper_id": "10.1016/1050-3862(93)90043-i",
+   "source": "crossref",
+   "url": "https://doi.org/10.1016/1050-3862(93)90043-i",
+   "abstract": null,
+   "relevance": 0.5
+  },
+  {
+   "title": "The Logic &amp; Language of Statistical Analysis",
+   "authors": "Ray W. Cooksey",
+   "year": "2020-01-01T00:00:00",
+   "doi": "10.1007/978-981-15-2537-7_1",
+   "paper_id": "10.1007/978-981-15-2537-7_1",
+   "source": "crossref",
+   "url": "https://doi.org/10.1007/978-981-15-2537-7_1",
+   "abstract": null,
+   "relevance": 0.5
+  },
+  {
+   "title": "A STATISTICAL ANALYSIS OF SITING ERROR IN RADIO DIRECTION-FINDING",
+   "authors": "Laurence A. Lyons",
+   "year": "1967-08-30T00:00:00",
+   "doi": "10.21236/ad0661341",
+   "paper_id": "10.21236/ad0661341",
+   "source": "crossref",
+   "url": "https://doi.org/10.21236/ad0661341",
+   "abstract": null,
+   "relevance": 0.5
+  },
+  {
+   "title": "Twenty five years after KLS: A celebration of non-equilibrium statistical mechanics",
+   "authors": "R. K. P. Zia",
+   "year": "2009-11-28T19:34:51",
+   "doi": "10.1007/s10955-009-9884-0",
+   "paper_id": "0911.5421v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/0911.5421v1",
+   "abstract": "When Lenz proposed a simple model for phase transitions in magnetism, he couldn't have imagined that the \"Ising model\" was to become a jewel in field of equilibrium statistical mechanics. Its role spans the spectrum, from a good pedagogical example to a universality class in critical phenomena. A quarter century ago, Katz, Lebowitz and Spohn found a similar treasure. By introducing a seemingly trivial modification to the Ising lattice gas, they took it into the vast realms of non-equilibrium statistical mechanics. An abundant variety of unexpected behavior emerged and caught many of us by surp",
+   "relevance": 0.25
+  },
+  {
+   "title": "Positivity-Preserving Analysis of Numerical Schemes for Ideal Magnetohydrodynamics",
+   "authors": "Kailiang Wu",
+   "year": "2018-02-07T01:24:32",
+   "doi": "10.1137/18M1168017",
+   "paper_id": "1802.02278v2",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1802.02278v2",
+   "abstract": "Numerical schemes provably preserving the positivity of density and pressure are highly desirable for MHD, but the rigorous positivity-preserving (PP) analysis remains challenging. The difficulties mainly arise from the intrinsic complexity of the MHD equations as well as the indeterminate relation between the PP property and the divergence-free condition on magnetic field. We present the first rigorous PP analysis of conservative schemes with Lax-Friedrichs (LF) flux for ideal MHD. The significant innovation is the discovery of theoretical connection between PP property and a discrete diverge",
+   "relevance": 0.25
+  },
+  {
+   "title": "Robust and Differentially Private Principal Component Analysis",
+   "authors": "Minwoo Kim; Sungkyu Jung",
+   "year": "2025-07-21T04:27:09",
+   "doi": "10.1002/sam.70053",
+   "paper_id": "2507.15232v2",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2507.15232v2",
+   "abstract": "Recent advances have sparked significant interest in the development of privacy-preserving Principal Component Analysis (PCA). However, many existing approaches rely on restrictive assumptions, such as assuming sub-Gaussian data or being vulnerable to data contamination. Additionally, some methods are computationally expensive or depend on unknown model parameters that must be estimated, limiting their accessibility for data analysts seeking privacy-preserving PCA. In this paper, we propose a differentially private PCA method applicable to heavy-tailed and potentially contaminated data. Our ap",
+   "relevance": 0.25
+  },
+  {
+   "title": "Recurrence of benign paroxysmal positional vertigo: risk factors and outcomes",
+   "authors": "Kars A; Atalay F; Anbar S; Topal K; Altıparmak S",
+   "year": "",
+   "doi": "",
+   "paper_id": "PMC13552986",
+   "source": "europepmc",
+   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13552986/?tool=EBI",
+   "abstract": null,
+   "relevance": 0.25
+  },
+  {
+   "title": "Limited positional differences in lower-limb muscle contractile properties among female football players.",
+   "authors": "Sučka J; Pajonková F; Čech P; Lenková R",
+   "year": "2026-01-01T00:00:00",
+   "doi": "10.3389/fspor.2026.1915995",
+   "paper_id": "PMID:42630297",
+   "source": "europepmc",
+   "url": "https://europepmc.org/articles/PMC13493519",
+   "abstract": "<h4>Background</h4>Contractile properties of the lower-limb muscles are closely associated with high-intensity activities performed during a football match. Several studies have indicated that playing position significantly influences players' physical and performance demands, as well as the intensity of high-speed locomotor activities during match play. Nevertheless, it remains unclear to what extent muscle contractile properties differ according to specific playing positions in women's football. Therefore, the aim of this study was to describe the contractile properties of female football pl",
+   "relevance": 0.25
+  },
+  {
+   "title": "Prospective Exploratory Evaluation of Audiovestibular Function in Patients Receiving Oral Isotretinoin Using Audiometry and Videonystagmography.",
+   "authors": "Yüksel F; Yavuz C; Kahraman ME",
+   "year": "2026-01-01T00:00:00",
+   "doi": "10.4274/tao.2026.2026-4-9",
+   "paper_id": "PMID:42769804",
+   "source": "europepmc",
+   "url": "https://europepmc.org/articles/PMC13639332",
+   "abstract": "<h4>Objective</h4>To prospectively evaluate possible audiovestibular changes associated with short-term oral isotretinoin therapy using pure-tone audiometry and selected videonystagmography (VNG)-based vestibular assessments.<h4>Methods</h4>Participants older than 18 years receiving oral isotretinoin therapy constituted the study group. All participants underwent detailed otorhinolaryngological examination, along with pure-tone audiometry and tympanometric analysis, prior to treatment initiation and after three months of therapy. Vestibular assessment included VNG-based spontaneous nystagmus a",
+   "relevance": 0.25
+  },
+  {
+   "title": "The Relationship Between Serum Vitamin D Levels and the First-Attempt Success of the Epley Maneuver in Posterior Canal Benign Paroxysmal Positional Vertigo (PC-BPPV)",
+   "authors": "Bilgen A; Yalçindağ A; Akkoca Ö; Çikrikçi IŞIK G; Muz S; Islamoğlu Y; Yilmaz F; Gedikaslan Taşdemir Ş",
+   "year": "2026-01-01T00:00:00",
+   "doi": "",
+   "paper_id": "PMC13666152",
+   "source": "europepmc",
+   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13666152/?tool=EBI",
+   "abstract": null,
+   "relevance": 0.25
+  },
+  {
+   "title": "Beat-to-Beat Nystagmus Differentiation Between Benign Paroxysmal Positional Vertigo (BPPV) and Vestibular Migraine (VM): A Cross-Sectional Videonystagmographic Study From Northern India",
+   "authors": "Sachan P; Dorasala S; Bansal U; Gupta A; Sengar M; Verma V; Sachan B",
+   "year": "",
+   "doi": "",
+   "paper_id": "PMC13657663",
+   "source": "europepmc",
+   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13657663/?tool=EBI",
+   "abstract": null,
+   "relevance": 0.25
+  },
+  {
+   "title": "The Galactic Chemical Evolution of phosphorus observed with IGRINS",
+   "authors": "G. Nandakumar; N. Ryde; M. Montelius; B. Thorsbro; H. Jönsson; G. Mace; Lund Observatory; Department of Astronomy; Theoretical Physics; Lund University; Box 43; SE-221 00 Lund; Sweden; Kapteyn Astronomical Institute; University of Groningen; Landleven 12; NL-9747 AD Groningen; the Netherlands; Department of Astronomy; School of Science; The University of Tokyo; 7-3-1 Hongo; Bunkyo-ku; Tokyo 113-0033; Japan; Materials Science; Applied Mathematics; Malmö University; SE-205 06 Malmö; Sweden; Department of Astronomy; McDonald Observatory; The University of Texas; Austin; TX 78712; USA",
+   "year": "2022-10-10T18:16:50",
+   "doi": "10.1051/0004-6361/202244724",
+   "paper_id": "2210.04940v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2210.04940v1",
+   "abstract": "Phosphorus (P) is considered to be one of the key elements for life, making it an important element to look for in the abundance analysis of spectra of stellar systems. Yet, there exists only a handful of spectroscopic studies to estimate the P abundances and investigate its trend across a range of metallicities. We have observed full HK band spectra at a spectral resolving power of R=45,000 with IGRINS instrument. Abundances are determined using SME in combination with 1D MARCS stellar atmosphere models. The investigated sample of stars have reliable stellar parameters estimated using optical",
+   "relevance": 0.25
+  },
+  {
+   "title": "Journal of the Statistical Society.",
+   "authors": "Statistical Society (Great Britain)",
+   "year": "",
+   "doi": "",
+   "paper_id": 167406399,
+   "source": "core",
+   "url": "",
+   "abstract": "Mode of access: Internet.Vols. 36-50, 1873-87. 1 v. (Bound with earlier indexes",
+   "relevance": 0.25
+  },
+  {
+   "title": "1976 Statistical Abstract of Utah",
+   "authors": "Bureau of Economic and Business Research",
+   "year": "",
+   "doi": "",
+   "paper_id": 76044966,
+   "source": "core",
+   "url": "",
+   "abstract": "BookThe Bureau of Economic and Business Research presents the seventh edition of the Statistical Abstract of Utah, 1976, the Bicentennial Edition.  The basic goal of this document is to bring together under one cover the data most  often requested in a readily available format. During an average year, government  agencies, business firms, households and other organizations contact the Bureau for help  in locating and interpreting data on a wide range of subjects and problems relating to the  Utah economy. Beginning in 1947 with the first edition, the Bureau staff has tried to  incorporate in s",
+   "relevance": 0.25
+  },
+  {
+   "title": "Statistical Abstract of Utah 1973",
+   "authors": "Bureau of Economic and Business Research",
+   "year": "",
+   "doi": "",
+   "paper_id": 133392509,
+   "source": "core",
+   "url": "",
+   "abstract": "The Bureau of Economic and Business Research presents the sixth edition of the Statistical Abstract of Utah, 1973. The basic goal of this document is to bring together under one cover the data most often requested in a readily available format. During an average year, government agencies, business firms, households and other organizations contact the Bureau for help  in locating and interpreting data on a wide range of subjects and problems relating to the Utah economy. Beginning in 1947 with the first edition, the Bureau staff has tried to incorporate in succeeding editions of the Statistical",
+   "relevance": 0.25
+  },
+  {
+   "title": "1969 Statistical Abstract of Utah",
+   "authors": "Bureau of Economic and Business Research",
+   "year": "1969-01-01T01:00:00+01:00",
+   "doi": "",
+   "paper_id": 76044110,
+   "source": "core",
+   "url": "",
+   "abstract": "BookThis publication of the Statistical Abstract of Utah, 1969, is the fifth edition and commemorates the Utah Golden Spike Centennial. The first abstract  was published in 1947 at the time of Utah\\u27s Centennial, and others were issued  in 1954, 1960 and 1964.  The purpose of the Abstract is to supplement two regular publications of  the Bureau of Economic and Business Research, in the Center for Economic and  Community Development at the University of Utah. These publications are the  Utah Economic and Business Review and the Utah Construction Report.  The objective in publishing this Abstr",
+   "relevance": 0.25
+  },
+  {
+   "title": "Multi-Point Detection of the Powerful Gamma Ray Burst GRB221009A Propagation through the Heliosphere on October 9, 2022",
+   "authors": "Andrii Voshchepynets; Oleksiy Agapitov; Lynn Wilson; Vassilis Angelopoulos; Samer T. Alnussirat; Michael Balikhin; Myroslava Hlebena; Ihor Korol; Davin Larson; David Mitchell; Christopher Owen; Ali Rahmati; Department of System Analysis; Optimization Theory; Uzhhorod National University; Uzhhorod; Ukraine; Space Sciences Laboratory; :; University of California Berkeley Berkeley; CA 94720; Astronomy; Space Physics Department; National Taras Shevchenko University of Kyiv; Kyiv; Ukraine; Goddard Space Flight Center; National Aeronautics; Space Administration; Greenbelt; MD; Department of Earth; Planetary; Space Sciences; University of California Los Angeles; Los Angeles; CA}; University of Sheffield; Sheffield; UK; Department of Algebra; Differential Equation; Uzhhorod National University; Uzhhorod; Ukraine; Department of Mathematical Analysis; The John Paul II Catholic University of Lublin; Lublin; Poland}",
+   "year": "2023-09-11T22:40:01",
+   "doi": "",
+   "paper_id": "2309.05856v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2309.05856v1",
+   "abstract": "We present the results of processing the effects of the powerful Gamma Ray Burst GRB221009A captured by the charged particle detectors (electrostatic analyzers and solid-state detectors) onboard spacecraft at different points in the heliosphere on October 9, 2022. To follow the GRB221009A propagation through the heliosphere we used the electron and proton flux measurements from solar missions Solar Orbiter and STEREO-A; Earth magnetosphere and the solar wind missions THEMIS and Wind; meteorological satellites POES15, POES19, MetOp3; and MAVEN - a NASA mission orbiting Mars. GRB221009A had a st",
+   "relevance": 0.0
+  },
+  {
+   "title": "A One-Dimensional Energy Balance Model Parameterization for the Formation of CO2 Ice on the Surfaces of Eccentric Extrasolar Planets",
+   "authors": "Vidya Venkatesan; Aomawa L. Shields; Russell Deitrick; Eric T. Wolf; Andrew Rushby; Department of Physics; Astronomy; University of California; Irvine; California; USA; School of Earth; Ocean Sciences; University of Victoria; Victoria; Canada; Laboratory for Atmospheric; Space Physics; University of Colorado Boulder; Boulder; Colorado; USA; Sellers Exoplanet Environment Collaboration; NASA Goddard Space Flight Center; Greenbelt; Maryland; USA; Blue Marble Space Institute of Science; Seattle; Washington; USA; Department of Earth; Planetary Sciences; Birkbeck University of London; London; United Kingdom",
+   "year": "2025-01-20T18:48:29",
+   "doi": "10.1089/ast.2023.0103",
+   "paper_id": "2501.11667v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2501.11667v1",
+   "abstract": "Eccentric planets may spend a significant portion of their orbits at large distances from their host stars, where low temperatures can cause atmospheric CO2 to condense out onto the surface, similar to the polar ice caps on Mars. The radiative effects on the climates of these planets throughout their orbits would depend on the wavelength-dependent albedo of surface CO2 ice that may accumulate at or near apoastron and vary according to the spectral energy distribution of the host star. To explore these possible effects, we incorporated a CO2 ice-albedo parameterization into a one-dimensional en",
+   "relevance": 0.0
+  },
+  {
+   "title": "Trends and Characteristics of High-Frequency Type II Bursts Detected by CALLISTO Spectrometers",
+   "authors": "A. C. Umuhire; J. Uwamahoro; K. Sasikumar Raja; A. Kumar; C. Monstein; University of Rwanda; College of Science; Technology; Kigali; Rwanda; University of Rwanda; College of Education; Rwanda; Indian Institute of Astrophysics; II Block; Koramangala; Bengaluru - 560 034; India; Department of Physics; University of Helsinki; P. O. Box 64; FI-00014 Helsinki; Finland; Istituto Ricerche Solari; Universit della Svizzera italiana; CH-6605 Locarno-Monti; Switzerland",
+   "year": "2021-06-17T08:23:50",
+   "doi": "10.1016/j.asr.2021.06.029",
+   "paper_id": "2106.09310v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2106.09310v1",
+   "abstract": "Solar radio type II bursts serve as early indicators of incoming geo-effective space weather events such as coronal mass ejections (CMEs). In order to investigate the origin of high-frequency type II bursts (HF type II bursts), we have identified 51 of them (among 180 type II bursts from SWPC reports) that are observed by ground-based Compound Astronomical Low-cost Low-frequency Instrument for Spectroscopy and Transportable Observatory (CALLISTO) spectrometers and whose upper-frequency cutoff (of either fundamental or harmonic emission) lies in between 150 MHz-450 MHz during 2010-2019. We foun",
+   "relevance": 0.0
+  },
+  {
+   "title": "Multi-nucleon transfer in the interaction of 977 MeV and 1143 MeV $^{204}$Hg with $^{208}$Pb",
+   "authors": "V. V. Desai; A. Pica; W. Loveland; J. S. Barrett; Department of Chemistry; Oregon State University; Corvallis; Oregon 97331 USA; E. A. McCutchan; National Nuclear Data Center; Brookhaven National Laboratory; Upton; New York 11973; USA; S. Zhu; M. P. Carpenter; J. P. Greene; T. Lauritsen; Physics Division; Argonne National Laboratory; Argonne; Illinois 60439 USA; R. V. F. Janssens; Department of Physics; Astronomy; University of North Carolina at Chapel Hill; Chapel Hill; North Carolina 27599 USA; Triangle Universities Nuclear Laboratory; Duke University; Durham; North Carolina 27708 USA; B. M. S. Amro; Dept. of Physics; University of Massachusetts Lowell; Lowell MA 01854 USA; W. B. Walters; Dept. of Chemistry; University of Maryland; College Park; MD",
+   "year": "2020-07-13T21:46:52",
+   "doi": "10.1103/PhysRevC.101.034612",
+   "paper_id": "2007.07837v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2007.07837v1",
+   "abstract": "A previous study of symmetric collisions of massive nuclei has shown that current models of multi-nucleon transfer (MNT) reactions do not adequately describe the transfer product yields. To gain further insight into this problem, we have measured the yields of MNT products in the interaction of 977 (E/A = 4.79 MeV) and 1143 MeV (E/A = 5.60 MeV) $^{204}$Hg with $^{208}$Pb. We find that the yield of multi-nucleon transfer products are similar in these two reactions and are substantially lower than those observed in the reaction of 1257 MeV (E/A = 6.16 MeV) $^{204}$Hg + $^{198}$Pt. We compare our",
+   "relevance": 0.0
+  },
+  {
+   "title": "Catalogues of Harappan graphemes",
+   "authors": "E. V. Korovina",
+   "year": "2022-01-01T00:00:00",
+   "doi": "10.30842/ielcp230690152639",
+   "paper_id": "10.30842/ielcp230690152639",
+   "source": "crossref",
+   "url": "https://doi.org/10.30842/ielcp230690152639",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "2. Runic graphemes and their variations",
+   "authors": "",
+   "year": "1975-12-31T00:00:00",
+   "doi": "10.1515/9783111411583.6",
+   "paper_id": "10.1515/9783111411583.6",
+   "source": "crossref",
+   "url": "https://doi.org/10.1515/9783111411583.6",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "Coital Positions: Positions Most Preferred",
+   "authors": "Manfred F. DeMartino",
+   "year": "1974-01-01T00:00:00",
+   "doi": "10.1007/978-3-662-39430-4_10",
+   "paper_id": "10.1007/978-3-662-39430-4_10",
+   "source": "crossref",
+   "url": "https://doi.org/10.1007/978-3-662-39430-4_10",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "Recognizing ‘Harappan’: A Critical Review of the Position of Hunter-Gatherers Within Harappan Society",
+   "authors": "Sudeshna Guha",
+   "year": "1994-01-01T00:00:00",
+   "doi": "10.1080/02666030.1994.9628479",
+   "paper_id": "10.1080/02666030.1994.9628479",
+   "source": "crossref",
+   "url": "https://doi.org/10.1080/02666030.1994.9628479",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "Figure 4—figure supplement 1. Acoustical predictions of CD and CP distributions for various prior spatial distributions.",
+   "authors": "",
+   "year": "1970-01-01T00:00:00",
+   "doi": "10.7554/elife.06072.013",
+   "paper_id": "10.7554/elife.06072.013",
+   "source": "crossref",
+   "url": "https://doi.org/10.7554/elife.06072.013",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "Hidden agendas : testing models of the social and political organisation of the Indus Valley tradition",
+   "authors": "Manuel, Mark James",
+   "year": "2008-01-01T00:00:00+00:00",
+   "doi": "",
+   "paper_id": 270042,
+   "source": "core",
+   "url": "https://core.ac.uk/download/109075.pdf",
+   "abstract": "EThOS - Electronic Theses Online ServiceGBUnited Kingdo",
+   "relevance": 0.0
+  }
+ ],
+ "neighbors_read_full_text": [
+  {
+   "title": "The Statistical Analysis of fMRI Data",
+   "paper_id": "0906.3662v1",
+   "words": 19509
+  },
+  {
+   "title": "Statistical Inference for the Population Landscape via Moment Adjusted Stochastic Gradients",
+   "paper_id": "1712.07519v2",
+   "words": 13923
+  },
+  {
+   "title": "Twenty five years after KLS: A celebration of non-equilibrium statistical mechanics",
+   "paper_id": "0911.5421v1",
+   "words": 5116
+  }
+ ],
+ "gaps": [
+  {
+   "gap": "neighbors surfaced but not read in full text (abstracts never establish novelty)",
+   "neighbors": [
+    "Toward the Use of Statistical Analysis in Positional Tolerancing",
+    "A statistical analysis of positional errors of a multiaxis machine tool",
+    "Methods for finding genes a major rate-limiting step in positional cloning",
+    "The Logic &amp; Language of Statistical Analysis",
+    "A STATISTICAL ANALYSIS OF SITING ERROR IN RADIO DIRECTION-FINDING",
+    "Positivity-Preserving Analysis of Numerical Schemes for Ideal Magnetohydrodynamics",
+    "Robust and Differentially Private Principal Component Analysis",
+    "Recurrence of benign paroxysmal positional vertigo: risk factors and outcomes",
+    "Limited positional differences in lower-limb muscle contractile properties among female football players.",
+    "Prospective Exploratory Evaluation of Audiovestibular Function in Patients Receiving Oral Isotretinoin Using Audiometry and Videonystagmography."
+   ]
+  }
+ ],
+ "citation_checks": []
+}

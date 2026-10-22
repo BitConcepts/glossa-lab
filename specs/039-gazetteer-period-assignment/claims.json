@@ -1,0 +1,742 @@
+{
+ "spec": "039-gazetteer-period-assignment",
+ "register_version": "0.7-draft",
+ "note": "Claims-first draft register for Spec 039, generated alongside spec.md from Spec 027 sections 6.2, 6.3, and 6.5 (the gazetteer field contract, the no-majority-vote rule, and the contested-assertion posture), the Stage 0 gazetteer on main (data/movement/gazetteer_rows.jsonl, SHA-256 5ac76a3031121a61fa39f87b1d2760855374d171ddd036988fee2820dca9b8b6), Spec 031's frozen period rule (adopted 4A; F031-C10), the Phase-395 margins record (reports/phase395_results.json), and the owner's decisions of 2026-10-20 (the act authorised and bundled with D-25; evidence standard Option 1, published period determinations only), under the owner's instruction of 2026-10-20 to draft this act and execute it at the right time in the bundle sequence. FREEZE: the AEE lifecycle hooks ran at the freeze act under aee 1.5.0; the recovery rounds are recorded in this note and in aee/freeze-aee-note.md. Draft-stage self-checks (dependency integrity over this register; the cited-record facts) are pinned by backend/tests/test_spec039_freeze.py. This draft assigns no period label to any site. Freeze-gate round 1 at after_specify over register 0.5-draft under aee 1.5.0 returned iterate with 20 failure modes (5 irreducibility challenges: C05, C06, C07, C08, C15; 15 FR-2.3 draft-cap records); 9 claims stood below the 0.70 threshold because every evidence item lacked observed_at. Recovery to 0.6-draft: every evidence item gained observed_at '2026-10-20' (the draft verification date in adjudication.md section 3; refs, kinds, directions, and descriptions unchanged), and the five challenged texts were restated as single head propositions with their carried clauses moved into the boundaries verbatim-in-substance (C05 names the DD-039-1 set, its labels carried in the boundary; C06 states the site unit, row carriage carried in the boundary; C07 and C08 use one paired-field noun phrase each, with no compound connective; C15 states unchanged link mass, its exact figures and before/after scope carried in the boundary). Propositions' substance, falsifiers, and verdict rules are unchanged. Round 2 at after_specify over the 0.6 recovery text returned iterate with 17 failure modes (2 remaining irreducibility challenges, C07 and C08, plus the 15 draft-cap records) and no claim below threshold (minimum propagated 0.72). Round 3 recovery (0.7-draft) replaced the hyphenated 'and' inside those two paired-field phrases with slash pairings ('mapping-rule/reviewer pair'; 'citation/locator pair'), removing the compound-connective signal without changing either proposition or its boundary. Round 3 at after_specify returned 15 failure modes, all FR-2.3 draft-cap records; zero correctness failure modes; minimum propagated 0.72. The same register is used for after_plan and after_tasks at the freeze gate.",
+ "claims": [
+  {
+   "id": "F039-C01",
+   "text": "An assignment under Spec 039 states only that a named publication assigns the site to the assigned period.",
+   "kind": "hypothesis",
+   "status": "draft",
+   "boundary": "Scope claim for the whole spec. An assignment is a statement about the published record, made under the frozen mapping rule; it is not a dating of the site, not a stratigraphic finding, and not chronological evidence. It does not govern the evidence standard (C02-C04), the record's shape (C05-C12), or the verification step (C14), each stated in its own claim.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-ACT-GOVERNS"
+   ],
+   "alternatives": [
+    "An assigned label may be read as the program's own dating of the site."
+   ],
+   "falsification_tests": [
+    "Any Spec 039 product that presents an assigned label as a date, a dating, or chronological evidence for any site defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "scope-statement",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-LABEL-AS-DATING"
+    ],
+    "strongest_rival": "An assigned label may be read as the program's own dating of the site.",
+    "verdict_rule": "A Spec 039 product makes published-record statements only.",
+    "evidence_origin_groups": [
+     "spec027-record",
+     "owner-decisions-20261020"
+    ],
+    "boundary_confirmation": "C01 states what an assignment means (a published-record statement); C13 states what the act does to other studies (nothing). The two govern different objects - the meaning of this act's own outputs, and those outputs' effect on other records - and are consistent by construction: a product inside C01's scope is exactly one that leaves every other verdict as C13 requires. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/027-movement-culture-language/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 027 section 6.2: the gazetteer unit and the program_period_assignment field contract",
+     "source_id": "specs/027-movement-culture-language/spec.md",
+     "observed_at": "2026-10-20"
+    },
+    {
+     "ref": "specs/039-gazetteer-period-assignment/adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The owner's decisions of 2026-10-20 as recorded in this spec's adjudication record",
+     "source_id": "specs/039-gazetteer-period-assignment/adjudication.md",
+     "independent_of": [
+      "specs/027-movement-culture-language/spec.md"
+     ],
+     "observed_at": "2026-10-20"
+    }
+   ]
+  },
+  {
+   "id": "F039-C02",
+   "text": "Every assigned period label rests on at least one published period determination for that site.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The evidence-standard claim (the owner's Option 1, decided 2026-10-20). A determination is a publication's own period statement about the named site, cited with its locator. It does not govern what counts as published at the TwoRains edge (DD-039-3), the citation record's shape (C08), or the restricted-source posture (C08's boundary and spec section 3).",
+   "depends_on": [
+    "F039-C01"
+   ],
+   "assumptions": [
+    "ASM-ACT-GOVERNS"
+   ],
+   "alternatives": [
+    "Program reasoning, analogy, or unpublished material could ground a label where the published record is silent."
+   ],
+   "falsification_tests": [
+    "Any assigned label whose recorded evidence contains no published period determination for that site defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-UNPUBLISHED-EVIDENCE",
+     "ASM-PROGRAM-DERIVATION"
+    ],
+    "strongest_rival": "Program reasoning, analogy, or unpublished material could ground a label where the published record is silent.",
+    "verdict_rule": "No admissible published determination, no label.",
+    "evidence_origin_groups": [
+     "owner-decisions-20261020",
+     "spec027-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/039-gazetteer-period-assignment/adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Owner decision (2) of 2026-10-20: evidence standard Option 1, published period determinations only",
+     "source_id": "specs/039-gazetteer-period-assignment/adjudication.md",
+     "observed_at": "2026-10-20"
+    },
+    {
+     "ref": "specs/027-movement-culture-language/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 027 sections 5.1 and 6.2: licence states and the source-assertion discipline",
+     "source_id": "specs/027-movement-culture-language/spec.md",
+     "independent_of": [
+      "specs/039-gazetteer-period-assignment/adjudication.md"
+     ],
+     "observed_at": "2026-10-20"
+    }
+   ]
+  },
+  {
+   "id": "F039-C03",
+   "text": "No period label is assigned from chronology-spine dates.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The Option 2 exclusion, stated on its own because the spine is the tempting source: the program's extended spine (205 rows) holds dated contexts for many gazetteer sites, and a dates-to-period inference from it is exactly the program-derived assignment the owner declined. It does not govern the spine itself, which this act never modifies.",
+   "depends_on": [
+    "F039-C02"
+   ],
+   "assumptions": [
+    "ASM-ACT-GOVERNS"
+   ],
+   "alternatives": [
+    "A site with dated contexts inside the Mature window could be labelled Mature on that basis."
+   ],
+   "falsification_tests": [
+    "Any assigned label whose recorded evidence cites a chronology-spine row, a calibrated range, or a date-derived rule defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-SPINE-TO-LABEL"
+    ],
+    "strongest_rival": "A site with dated contexts inside the Mature window could be labelled Mature on that basis.",
+    "verdict_rule": "Spine dates never become labels under this act.",
+    "evidence_origin_groups": [
+     "owner-decisions-20261020",
+     "spec030-record"
+    ],
+    "boundary_confirmation": "C02 states the positive basis (a published determination is required); C03 states the named exclusion (spine dates never supply that basis). The two are consistent by construction: a label resting on a spine row fails C02's basis test and is the case C03 names. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/039-gazetteer-period-assignment/adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Owner decision (2) of 2026-10-20: Option 1 adopted, Option 2 (published plus program-derived) not adopted",
+     "source_id": "specs/039-gazetteer-period-assignment/adjudication.md",
+     "observed_at": "2026-10-20"
+    },
+    {
+     "ref": "specs/031-stage2-q7-provenance-networks/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 031's freeze forbade reading period assignments off the spine for that study; this act does not license the inference either",
+     "source_id": "specs/031-stage2-q7-provenance-networks/spec.md",
+     "independent_of": [
+      "specs/039-gazetteer-period-assignment/adjudication.md"
+     ],
+     "observed_at": "2026-10-20"
+    }
+   ]
+  },
+  {
+   "id": "F039-C04",
+   "text": "A site with no admissible published determination carries no assignment.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The blank rule. The field stays null and the assignment report records the blank's reason code (NO_PUBLISHED_DETERMINATION, UNMAPPED_SCHEME_VALUE, or OUTSIDE_LABEL_SET). It does not govern contested sites, whose determinations exist and disagree (C09).",
+   "depends_on": [
+    "F039-C02"
+   ],
+   "assumptions": [
+    "ASM-ACT-GOVERNS"
+   ],
+   "alternatives": [
+    "Coverage pressure could justify assigning the best-supported label to every site."
+   ],
+   "falsification_tests": [
+    "Any site carrying an assignment while its recorded evidence set is empty defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-COMPLETE-COVERAGE"
+    ],
+    "strongest_rival": "Coverage pressure could justify assigning the best-supported label to every site.",
+    "verdict_rule": "Blanks are recorded outcomes, not gaps to be filled by weaker evidence.",
+    "evidence_origin_groups": [
+     "spec027-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "data/movement/gazetteer_rows.jsonl",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Stage 0 gazetteer as it stands: program_period_assignment null on all 36 rows; blanks are the field's honest state where evidence is absent",
+     "source_id": "data/movement/gazetteer_rows.jsonl",
+     "observed_at": "2026-10-20"
+    }
+   ]
+  },
+  {
+   "id": "F039-C05",
+   "text": "The label set is the DD-039-1 three-period set.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The label-set claim, carrying DD-039-1's recommendation into the contract for the freeze decision. The vocabulary matches Spec 031's frozen period rule (F031-C10), which turns on Mature Harappan occupation and attempts no finer slicing. A published determination outside the Harappan sequence grounds no assignment under this set. The three labels are Early Harappan, Mature Harappan, and Late Harappan.",
+   "depends_on": [
+    "F039-C01"
+   ],
+   "assumptions": [
+    "ASM-ACT-GOVERNS"
+   ],
+   "alternatives": [
+    "A finer period set (sub-phases, transitional labels) could be assigned from the start."
+   ],
+   "falsification_tests": [
+    "Any assignment under this act carrying a label outside the three-label set defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-FINE-LABELS"
+    ],
+    "strongest_rival": "A finer period set (sub-phases, transitional labels) could be assigned from the start.",
+    "verdict_rule": "Three labels, aligned to the consuming designs' vocabulary.",
+    "evidence_origin_groups": [
+     "spec031-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/031-stage2-q7-provenance-networks/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 031 period eligibility (adopted 4A; F031-C10): Mature Harappan occupation; no finer temporal slicing attempted anywhere in that design",
+     "source_id": "specs/031-stage2-q7-provenance-networks/spec.md",
+     "observed_at": "2026-10-20"
+    }
+   ]
+  },
+  {
+   "id": "F039-C06",
+   "text": "Assignments are made per program site.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The unit claim. The gazetteer holds 36 source-assertion rows over 30 program sites; the program's assignment is a statement about the site, written identically onto each of its rows, while every row keeps its own source's assertion untouched in all other fields (C11). It does not govern clustering, which this act never changes. The site-level assignment is carried onto every gazetteer row for that site.",
+   "depends_on": [
+    "F039-C05"
+   ],
+   "assumptions": [
+    "ASM-ACT-GOVERNS"
+   ],
+   "alternatives": [
+    "Assignments could be made row by row, so two rows for one site could carry different program labels."
+   ],
+   "falsification_tests": [
+    "Any assigned gazetteer in which two rows sharing a program_site_id carry different assignment records defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-ROW-LEVEL-ASSIGNMENT"
+    ],
+    "strongest_rival": "Assignments could be made row by row, so two rows for one site could carry different program labels.",
+    "verdict_rule": "One assignment per site, carried on all of its rows.",
+    "evidence_origin_groups": [
+     "spec027-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/027-movement-culture-language/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 027 section 6.2: rows may be clustered under a program site_id; clustering never deletes source rows or their disagreements",
+     "source_id": "specs/027-movement-culture-language/spec.md",
+     "observed_at": "2026-10-20"
+    },
+    {
+     "ref": "data/movement/gazetteer_rows.jsonl",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "36 rows over 30 distinct program_site_id values, verified at this draft",
+     "source_id": "data/movement/gazetteer_rows.jsonl",
+     "independent_of": [
+      "specs/027-movement-culture-language/spec.md"
+     ],
+     "observed_at": "2026-10-20"
+    }
+   ]
+  },
+  {
+   "id": "F039-C07",
+   "text": "Every assignment records its mapping-rule/reviewer pair.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The section 6.2 field contract, carried verbatim in substance: program_period_assignment is nullable, and when present the mapping rule and the reviewer are recorded. The mapping rule named is an entry of the frozen scheme-aware mapping table (spec section 4). The pair consists of the mapping rule applied and the reviewer of record.",
+   "depends_on": [
+    "F039-C06"
+   ],
+   "assumptions": [
+    "ASM-ACT-GOVERNS"
+   ],
+   "alternatives": [
+    "The label alone could be recorded, with the rule left implicit in the report."
+   ],
+   "falsification_tests": [
+    "Any assignment record lacking a mapping-rule identifier or a reviewer defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-IMPLICIT-RULE"
+    ],
+    "strongest_rival": "The label alone could be recorded, with the rule left implicit in the report.",
+    "verdict_rule": "No assignment without its rule and its reviewer on the record.",
+    "evidence_origin_groups": [
+     "spec027-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/027-movement-culture-language/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 027 section 6.2: program_period_assignment (nullable; mapping rule and reviewer recorded when present)",
+     "source_id": "specs/027-movement-culture-language/spec.md",
+     "observed_at": "2026-10-20"
+    }
+   ]
+  },
+  {
+   "id": "F039-C08",
+   "text": "Every assignment records a citation/locator pair for each determination it rests on.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The traceability claim. Each evidence entry carries its source, citation, locator (page, table, or record), the period value as published, and its period scheme. For sources standing catalogue_only or open_access_read_only under Spec 027 section 5.1, the citation and the determination as published are recorded; the source's contents are not copied in bulk. The pair consists of the determination's citation and its locator.",
+   "depends_on": [
+    "F039-C02"
+   ],
+   "assumptions": [
+    "ASM-ACT-GOVERNS"
+   ],
+   "alternatives": [
+    "A single summary citation per site could stand in for per-determination locators."
+   ],
+   "falsification_tests": [
+    "Any assignment whose evidence entries lack a citation or a locator for any determination it rests on defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-BULK-REDISTRIBUTION"
+    ],
+    "strongest_rival": "A single summary citation per site could stand in for per-determination locators.",
+    "verdict_rule": "Every label traces to a publication and a place in it.",
+    "evidence_origin_groups": [
+     "spec027-record"
+    ],
+    "boundary_confirmation": "C07 records the transformation (mapping rule, reviewer); C08 records the basis (citation, locator). The two govern different parts of the same assignment record and are consistent by construction: a complete record carries both. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/027-movement-culture-language/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 027 sections 5.1 and 6.2: licence states; source_citation and source_locator are required gazetteer fields",
+     "source_id": "specs/027-movement-culture-language/spec.md",
+     "observed_at": "2026-10-20"
+    }
+   ]
+  },
+  {
+   "id": "F039-C09",
+   "text": "A site whose admissible determinations map to more than one label is flagged contested.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The contested-flag claim. Both (or all) conflicting determinations stay on the record verbatim with their citations; the flag is part of the assignment record, and downstream consumers report both ways over contested assignments (spec section 5). It does not govern how a contest is resolved - under this act it is not resolved (C10).",
+   "depends_on": [
+    "F039-C05",
+    "F039-C08"
+   ],
+   "assumptions": [
+    "ASM-ACT-GOVERNS"
+   ],
+   "alternatives": [
+    "The highest-tier source's determination could simply stand, unflagged."
+   ],
+   "falsification_tests": [
+    "Any site whose recorded determinations map to more than one label while its assignment record carries no contested flag defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-HIERARCHY-RESOLUTION"
+    ],
+    "strongest_rival": "The highest-tier source's determination could simply stand, unflagged.",
+    "verdict_rule": "Disagreement is flagged and carried, never silently preferred away.",
+    "evidence_origin_groups": [
+     "spec027-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/027-movement-culture-language/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 027 sections 6.3 and 6.5: source disagreements reported; competing assertions preserved side by side",
+     "source_id": "specs/027-movement-culture-language/spec.md",
+     "observed_at": "2026-10-20"
+    }
+   ]
+  },
+  {
+   "id": "F039-C10",
+   "text": "No contested assignment is resolved by majority vote.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The section 6.3 rule, carried verbatim in substance: no majority vote silently resolves conflicting source rows. It also does not license resolution by source hierarchy: the hierarchy of DD-039-2 orders citation and presentation only. Spec 030 Ask 2 (whether a contested-excluded computation must bind a future Q6 freeze) is a different question, expressly reserved, and is neither decided nor used here.",
+   "depends_on": [
+    "F039-C09"
+   ],
+   "assumptions": [
+    "ASM-ACT-GOVERNS"
+   ],
+   "alternatives": [
+    "A two-to-one published majority could settle a contested label."
+   ],
+   "falsification_tests": [
+    "Any Spec 039 product in which a contested assignment is replaced by a single label on a count of sources defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-MAJORITY-RESOLUTION"
+    ],
+    "strongest_rival": "A two-to-one published majority could settle a contested label.",
+    "verdict_rule": "Contests are carried flagged; counts of sources settle nothing.",
+    "evidence_origin_groups": [
+     "spec027-record",
+     "spec030-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/027-movement-culture-language/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 027 section 6.3: no majority vote silently resolves conflicting source rows",
+     "source_id": "specs/027-movement-culture-language/spec.md",
+     "observed_at": "2026-10-20"
+    },
+    {
+     "ref": "specs/030-q6-chronology-spine-extension/adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 030 adjudication: Ask 2 (CONTESTED sensitivity bindingness) expressly NOT DECIDED; both computations reported meanwhile",
+     "source_id": "specs/030-q6-chronology-spine-extension/adjudication.md",
+     "independent_of": [
+      "specs/027-movement-culture-language/spec.md"
+     ],
+     "observed_at": "2026-10-20"
+    }
+   ]
+  },
+  {
+   "id": "F039-C11",
+   "text": "Every pre-act gazetteer field outside the assignment field is preserved unchanged in the assigned gazetteer.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The append-only claim. Execution writes a new file (gazetteer_rows_assigned.jsonl) carrying all 36 rows; the pre-act file is not modified, its SHA-256 is pinned in the outcome record, and its original bytes - including every empty period field - remain in git history. A field-level diff of the two files outside program_period_assignment is empty.",
+   "depends_on": [
+    "F039-C06"
+   ],
+   "assumptions": [
+    "ASM-ACT-GOVERNS"
+   ],
+   "alternatives": [
+    "The act could edit the gazetteer file in place, relying on git history alone."
+   ],
+   "falsification_tests": [
+    "Any difference between the pre-act file and the assigned gazetteer in any field other than program_period_assignment defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-IN-PLACE-EDIT"
+    ],
+    "strongest_rival": "The act could edit the gazetteer file in place, relying on git history alone.",
+    "verdict_rule": "The assignment is an append to the record, never an edit of it.",
+    "evidence_origin_groups": [
+     "spec027-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "data/movement/gazetteer_rows.jsonl",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Pre-act gazetteer bytes pinned at this draft: SHA-256 5ac76a3031121a61fa39f87b1d2760855374d171ddd036988fee2820dca9b8b6",
+     "source_id": "data/movement/gazetteer_rows.jsonl",
+     "observed_at": "2026-10-20"
+    }
+   ]
+  },
+  {
+   "id": "F039-C12",
+   "text": "The existing Stage 0 Zenodo deposit is superseded only by a new version of the same record.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The publication claim. Record 23300361 (DOI 10.5281/zenodo.23300361) is a published deposit; execution deposits a new version carrying the assigned gazetteer for the releasable rows under v1's licence posture, and the existing version's files are never edited, replaced, or withdrawn by this act.",
+   "depends_on": [
+    "F039-C11"
+   ],
+   "assumptions": [
+    "ASM-ACT-GOVERNS"
+   ],
+   "alternatives": [
+    "The deposit could be corrected in place to keep a single current version."
+   ],
+   "falsification_tests": [
+    "Any modification of the existing deposit's files, metadata, or availability attributable to this act defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-DEPOSIT-EDIT"
+    ],
+    "strongest_rival": "The deposit could be corrected in place to keep a single current version.",
+    "verdict_rule": "Published deposits are superseded by versions, never edited.",
+    "evidence_origin_groups": [
+     "stage0-release-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/027-movement-culture-language/stage0-release/release_manifest.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The Stage 0 release package as deposited: gazetteer CSV, spine CSV, README, source register (Zenodo record 23300361, verified at this draft)",
+     "source_id": "specs/027-movement-culture-language/stage0-release/release_manifest.json",
+     "observed_at": "2026-10-20"
+    }
+   ]
+  },
+  {
+   "id": "F039-C13",
+   "text": "No study verdict changes as a consequence of this act alone.",
+   "kind": "hypothesis",
+   "status": "draft",
+   "boundary": "The no-verdict-change fence. Spec 031's closures (bead/craft NOT-YET-TESTABLE; ceramic NOT ESTIMABLE) and Spec 030's Q6 re-test results stand exactly as recorded; this act's assignments are inputs future studies may consume under their own freezes. It does not govern the verification re-computation, which issues no verdict (C14).",
+   "depends_on": [
+    "F039-C01"
+   ],
+   "assumptions": [
+    "ASM-ACT-GOVERNS"
+   ],
+   "alternatives": [
+    "Filling the period column could be reported as reopening or reversing Spec 031's closure."
+   ],
+   "falsification_tests": [
+    "Any record that amends, supersedes, or restates a Spec 030 or Spec 031 verdict on the basis of this act's assignments defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "scope-statement",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-VERDICT-BY-LABEL"
+    ],
+    "strongest_rival": "Filling the period column could be reported as reopening or reversing Spec 031's closure.",
+    "verdict_rule": "The act is infrastructure; verdicts belong to studies run under their own freezes.",
+    "evidence_origin_groups": [
+     "spec031-record",
+     "spec030-record"
+    ],
+    "boundary_confirmation": "C13 states the act's effect on other studies (none); C14 states the one computation the act does perform (a verification re-computation that issues no verdict). The two are consistent by construction: the section 8 step is precisely a computation that changes no verdict. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/031-stage2-q7-provenance-networks/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 031 outcome: both arms closed at the margins step, exactly as the freeze pre-registered",
+     "source_id": "specs/031-stage2-q7-provenance-networks/outcome.md",
+     "observed_at": "2026-10-20"
+    },
+    {
+     "ref": "specs/030-q6-chronology-spine-extension/adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 030 adjudication and the Phase-394 re-test stand as recorded; Ask 2 reserved",
+     "source_id": "specs/030-q6-chronology-spine-extension/adjudication.md",
+     "independent_of": [
+      "specs/031-stage2-q7-provenance-networks/outcome.md"
+     ],
+     "observed_at": "2026-10-20"
+    }
+   ]
+  },
+  {
+   "id": "F039-C14",
+   "text": "The margins verification step recomputes only the period-eligibility gate of the Phase-395 margins step.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The verification-scope claim (DD-039-5's recommendation, carried for the freeze decision). The step reads period eligibility under Spec 031's frozen rule (F031-C10) over the assigned gazetteer, reports eligible sites both ways over contested assignments, and then states the standing link-mass floor. No response is computed and no Spec 031 machinery beyond the margins first gate runs.",
+   "depends_on": [
+    "F039-C13"
+   ],
+   "assumptions": [
+    "ASM-ACT-GOVERNS"
+   ],
+   "alternatives": [
+    "With labels in place, the margins step could simply continue into Spec 031's response machinery."
+   ],
+   "falsification_tests": [
+    "Any execution under this act that computes a Q7 response, a similarity matrix, or a verdict defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-VERDICT-MACHINERY-REOPEN"
+    ],
+    "strongest_rival": "With labels in place, the margins step could simply continue into Spec 031's response machinery.",
+    "verdict_rule": "One gate is re-run, as verification; the study is not.",
+    "evidence_origin_groups": [
+     "spec031-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/031-stage2-q7-provenance-networks/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 031 sections 6-7: the frozen period rule and the margins step's place in the execution shape",
+     "source_id": "specs/031-stage2-q7-provenance-networks/spec.md",
+     "observed_at": "2026-10-20"
+    },
+    {
+     "ref": "specs/031-stage2-q7-provenance-networks/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-395 outcome: the margins step closed both arms before any response was computed",
+     "source_id": "specs/031-stage2-q7-provenance-networks/outcome.md",
+     "independent_of": [
+      "specs/031-stage2-q7-provenance-networks/spec.md"
+     ],
+     "observed_at": "2026-10-20"
+    }
+   ]
+  },
+  {
+   "id": "F039-C15",
+   "text": "In-universe link mass is unchanged by this act.",
+   "kind": "hypothesis",
+   "status": "draft",
+   "boundary": "The unaffected-quantity claim, stated so no product of this act can imply the act moved it. The Phase-395 record fixes the quantities: link_eligible_sites_in_gazetteer = 2 (Harappa, Mohenjo-daro) and 1 linked pair in-universe, against frozen floors of 8 eligible sites and 10 linked pairs. Assignments change period labels only; links are provenance determinations, a different record entirely. It stands at 2 link-eligible sites and 1 linked pair both before and after the act.",
+   "depends_on": [
+    "F039-C01"
+   ],
+   "assumptions": [
+    "ASM-ACT-GOVERNS"
+   ],
+   "alternatives": [
+    "New period labels could be presented as progress toward Q7's viability floors."
+   ],
+   "falsification_tests": [
+    "Any Spec 039 product reporting different in-universe link-mass figures as an effect of this act defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "scope-statement",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-LINK-MASS-BY-LABEL"
+    ],
+    "strongest_rival": "New period labels could be presented as progress toward Q7's viability floors.",
+    "verdict_rule": "Link mass is reported unchanged wherever the act's effect is described.",
+    "evidence_origin_groups": [
+     "spec031-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "reports/phase395_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-395 population record: link_eligible_sites_in_gazetteer 2; both arms 0 eligible sites against the floors",
+     "source_id": "reports/phase395_results.json",
+     "observed_at": "2026-10-20"
+    },
+    {
+     "ref": "specs/031-stage2-q7-provenance-networks/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 031 outcome section 4: even the link side stands at 2 link-eligible sites and 1 linked pair, far below the floors of 8 and 10",
+     "source_id": "specs/031-stage2-q7-provenance-networks/outcome.md",
+     "independent_of": [
+      "reports/phase395_results.json"
+     ],
+     "observed_at": "2026-10-20"
+    }
+   ]
+  }
+ ]
+}

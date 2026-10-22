@@ -449,6 +449,14 @@ def process_document(doc_id: str) -> dict:
     # merge state (proposition fingerprint, merged_into pointer,
     # and a canonical record's evidence_instances) by claim
     # identity — a regeneration must not un-merge a proposition.
+    # Lane-2 adoption (2026-10-13): the same carry-over preserves
+    # the authored lane-2 fields — the not-understood statement and
+    # the explanation record the owner adopted (PR #190) and the
+    # ingestion wrote (PR #197). A regeneration must never strip
+    # an authored explanation: CI on PR #197 caught a regenerated
+    # store carrying stage 'explained' with no explanation record
+    # behind it, which is exactly the incoherence the lifecycle
+    # machinery exists to prevent.
     out = EXTRACTED_CLAIMS / f"{doc_id}.json"
     if out.exists():
         prior = json.loads(out.read_text("utf-8"))
@@ -458,13 +466,35 @@ def process_document(doc_id: str) -> dict:
                 for k in ("stage", "stage_source", "stage_as_of",
                           "stage_history", "verified_unexplained",
                           "proposition_fingerprint", "merged_into",
-                          "evidence_instances")
+                          "evidence_instances",
+                          "not_understood", "explanation_record")
                 if k in c
             }
             for c in prior.get("claims", [])
         }
         for claim in all_claims:
             claim.update(prior_stage.get(claim.get("claim_id"), {}))
+        # Phase-104 carry-over correction (2026-10-13): a record
+        # carrying a ``status_correction`` holds a dated, recorded
+        # evaluation outcome that supersedes the extraction
+        # default for its claim_status. Carry the outcome fields
+        # of any such record over by claim identity as well — a
+        # regeneration must not silently un-correct a record (the
+        # same never-drop principle as the stage and merge-state
+        # carry-overs above). Records without a status_correction
+        # keep the extraction-assigned status, exactly as before.
+        prior_corrections = {
+            c.get("claim_id"): {
+                k: c[k]
+                for k in ("claim_status", "contradicting_evidence",
+                          "status_correction")
+                if k in c
+            }
+            for c in prior.get("claims", [])
+            if isinstance(c.get("status_correction"), dict)
+        }
+        for claim in all_claims:
+            claim.update(prior_corrections.get(claim.get("claim_id"), {}))
 
     # Spec 029 Phase I (tasks I4): the intake fingerprint gate runs
     # after the merge-state carry-over (so a regeneration's known

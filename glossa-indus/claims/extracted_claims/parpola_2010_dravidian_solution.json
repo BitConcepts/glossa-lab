@@ -1,7 +1,7 @@
 {
   "document_id": "parpola_2010_dravidian_solution",
   "title": "A Dravidian solution to the Indus script problem",
-  "extraction_date": "2026-10-13T06:22:51.720399",
+  "extraction_date": "2026-10-21T15:29:25.443192",
   "total_claims": 2,
   "auto_extracted": 2,
   "manually_curated": 2,
@@ -11,15 +11,15 @@
       "source_document_id": "parpola_2010_dravidian_solution",
       "claim_type": "language_claim",
       "normalized_claim": "Indus script encodes Proto-Dravidian language using the rebus principle.",
-      "claim_status": "partially_supported",
+      "claim_status": "unsupported",
       "testability": "directly_testable",
       "falsification_condition": "If Dravidian phonotactics do not fit Indus sign bigrams better than Sanskrit.",
       "glossa_lab_evidence": "Phase-41: 1.0566x SA advantage; Phase-43: +0.484 log-units on V3 corpus [VERIFIED]",
       "confidence_in_source": 0.85,
-      "extracted_at": "2026-10-13T06:22:51.718205",
-      "stage": "checked",
-      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:parpola_2010_dravidian_solution_manual_001",
-      "stage_as_of": "2026-10-12",
+      "extracted_at": "2026-10-21T15:29:25.416026",
+      "stage": "explained",
+      "stage_source": "transition-service:stage_history[1]",
+      "stage_as_of": "2026-10-13T10:12:00+00:00",
       "stage_history": [
         {
           "from_stage": null,
@@ -30,10 +30,52 @@
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:parpola_2010_dravidian_solution_manual_001"
           ],
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry parpola_2010_dravidian_solution_manual_001; no pre-existing field altered."
+        },
+        {
+          "from_stage": "checked",
+          "to_stage": "explained",
+          "actor": "Tristen Pierson",
+          "timestamp": "2026-10-13T10:12:00+00:00",
+          "evidence_refs": [
+            "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#parpola_2010_dravidian_solution_manual_001"
+          ],
+          "reason": "Lane-2 adoption (owner act, 2026-10-13): the explanation record authored by Tristen Pierson — adopted from the AI-drafted texts of PR #190, drafting disclosed in the record — is ingested; the stage advances checked -> explained through the transition service (OD-2)."
         }
       ],
-      "verified_unexplained": true,
-      "proposition_fingerprint": "89a4fd8fb4b9314464f0e9bc68e67db41e4f9c4af85e50e7d3dd17a80c2c4707"
+      "verified_unexplained": false,
+      "proposition_fingerprint": "89a4fd8fb4b9314464f0e9bc68e67db41e4f9c4af85e50e7d3dd17a80c2c4707",
+      "not_understood": "Almost everything that would settle this claim is missing. There is no SA-free rerun of the language comparison. There is no test against other candidate language families or against a no-language baseline tuned the same way. The corpora used are all from the Mahadevan lineage, so there is no independent-corpus replication. And even a clean win for Dravidian over Sanskrit would not by itself establish the rebus method or any single sign reading: it would show a statistical fit, not a decipherment. What would change the picture: the same comparison rerun under a registered, SA-free method, on the strict sign set, with the rival families and margins fixed in advance.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#parpola_2010_dravidian_solution_manual_001",
+        "content_hash": "d52a524fa4e162a9dd1a3478068db4bc195edb94c2e22a21c6b7d6db48888d95",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "The support on the record comes from two comparisons the program ran in its Phase-41 and Phase-43 work. Both asked the same question: if you anchor a small set of signs to Dravidian word values, do the resulting sign sequences look more probable than the same exercise done with Sanskrit values? In the first run (Phase-41, on the Mahadevan corpus of 1,669 inscriptions, five anchor signs per language), the Dravidian anchors won by a ratio of 1.0566 to 1 - a real but small margin. In the second (Phase-43, on a 1,500-sequence sample of the V3 corpus), Dravidian won by 0.484 log units per sign - again a win, again modest. That is why the status is partially supported rather than supported: the comparisons favour Dravidian over Sanskrit, but only two candidate families were compared, and the margins are small. The weakness that matters most must be stated in the open: both comparisons were computed with the program's semantic-anchoring machinery, and the program later falsified that method on held-out data (Phase-107: its predictions scored 0.000, 0 of 115). No rerun of this specific Dravidian-versus-Sanskrit comparison with a method that survived testing exists in the record. The partial support on this claim is therefore inherited from a method the program no longer trusts, and the claim's checked status has never been re-earned without it."
+      },
+      "status_correction": {
+        "kind": "spec033-phase397-outcome",
+        "date": "2026-10-13",
+        "previous_claim_status": "partially_supported",
+        "new_claim_status": "unsupported",
+        "basis": "reports/phase397_results.json; specs/033-sa-free-language-comparison/outcome.md; frozen contract specs/033-sa-free-language-comparison/freeze.json (digest 412b4805063bbffb3915a834354cb428cc9b10958f614a1680b859005a43b66d), registered OSF https://osf.io/ephf7/",
+        "rule": "SPEC033-S6-DD-03-3",
+        "note": "The frozen Spec 033 outcome (Phase-397) returned NOT SUPPORTED for the bounded claim: on the strict sign set the no-language baseline (-2.6233) beat the Dravidian assignment (-2.8465), margin -0.2232 against the frozen +0.10 bar, and the Dravidian score lies inside the 999 random assignments' range. Per Spec 033 section 6, the partial support inherited from the Phase-41/43 semantic-anchoring numbers (falsified method, Phase-107) is replaced. Applied 2026-10-13. The previous status is preserved in this field; the full outcome entry is in this record's dated_outcome_entries and in the spec's outcome.md. This field follows the Phase-104 correction shape so a claims regeneration carries the correction over instead of silently restoring the extraction status."
+      },
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "spec025-material-audit-note",
+        "proposal": "P6",
+        "note": "Priority and critique note (spec-025 material audit, 2026-10-22): the fish = mīn rebus is Heras's idea from the 1930s. Fish readings were published by Gurov (who read fish as kay) and the Finnish team in 1965-70, Mahadevan 1970, and Fairservis 1985/1992; Parpola 2010 is a synthesis of that line, not its origin. Mahadevan 2011 concluded the fish = star reading 'had run out of steam and needed reappraisal'. Rival fish values are on record: Gurov kay; Jyothibabu kaḻ; Mukhopadhyay maṇi (the last at abstract level). No decipherment is adjudicated by this note.",
+        "evidence": [
+          "specs/025-paper-search-research-check/audit-2026-10-22/raw/findings_W3.md",
+          "specs/025-paper-search-research-check/audit-2026-10-22/correction_proposals.md"
+        ],
+        "evidence_level": "FULL TEXT",
+        "effect": "No claim status, stage, anchor, or score is changed by this note."
+      }
     },
     {
       "claim_id": "parpola_2010_dravidian_solution_manual_002",
@@ -58,10 +100,10 @@
       "falsification_condition": "If fish signs do not show terminal-sign followers consistent with case suffixes.",
       "glossa_lab_evidence": "Phase-43 T2.4: M77/72 terminal_frac=25.9% [SUPPORTED]",
       "confidence_in_source": 0.75,
-      "extracted_at": "2026-10-13T06:22:51.718205",
-      "stage": "checked",
-      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:parpola_2010_dravidian_solution_manual_002",
-      "stage_as_of": "2026-10-12",
+      "extracted_at": "2026-10-21T15:29:25.416026",
+      "stage": "explained",
+      "stage_source": "transition-service:stage_history[1]",
+      "stage_as_of": "2026-10-13T10:12:00+00:00",
       "stage_history": [
         {
           "from_stage": null,
@@ -72,10 +114,43 @@
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:parpola_2010_dravidian_solution_manual_002"
           ],
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry parpola_2010_dravidian_solution_manual_002; no pre-existing field altered."
+        },
+        {
+          "from_stage": "checked",
+          "to_stage": "explained",
+          "actor": "Tristen Pierson",
+          "timestamp": "2026-10-13T10:12:00+00:00",
+          "evidence_refs": [
+            "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#parpola_2010_dravidian_solution_manual_002"
+          ],
+          "reason": "Lane-2 adoption (owner act, 2026-10-13): the explanation record authored by Tristen Pierson — adopted from the AI-drafted texts of PR #190, drafting disclosed in the record — is ingested; the stage advances checked -> explained through the transition service (OD-2)."
         }
       ],
-      "verified_unexplained": true,
-      "proposition_fingerprint": "5822973463a0d055cf5f4b0cd9338021ffc415cc981284443bf2934c94c8c728"
+      "verified_unexplained": false,
+      "proposition_fingerprint": "5822973463a0d055cf5f4b0cd9338021ffc415cc981284443bf2934c94c8c728",
+      "not_understood": "The positional test cannot show that sign 72 was pronounced 'meen' - it shows only that what follows it looks like endings. Many signs could pass such a test for unrelated reasons. The claim does not establish the star/fish wordplay, the reading of any inscription, or what the fish signs meant in the signs the test failed. What would change the picture: the same test run sign by sign across the whole fish family on the strict corpus, with the family's membership fixed in advance, and an account of why sign 267 behaves differently if the family's reading is uniform.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#parpola_2010_dravidian_solution_manual_002",
+        "content_hash": "28ef7e9bb8c8a33eff38195781e836cfed2b6ffabd9a391f15f4ee7870d1c2d8",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "The program's check (Phase-43, test T2.4) asked whether the signs that follow the fish sign behave the way case endings (suffixes) should if the fish sign were a word being read aloud. For Mahadevan sign 72, the answer was yes: in 181 occurrences, the sign that follows it is a text-ending sign 25.9 percent of the time, matching the pattern the test required, and the test marked it supported. But the same test tried six fish candidates, and the family's most frequent member, sign 267 (356 occurrences), failed clearly: its followers end the text only 3.8 percent of the time. The claim as written - the fish sign, as a family, is the primary rebus sign - is therefore only partly supported: one member behaves as the reading predicts, the commonest member does not. A further caution: which drawn sign counts as 'the fish sign' is itself not fully settled across the field's compilations - the program's own cross-compilation study (Phase-125) found the two great sign lists disagree far more than they agree, so a reading tied to one list's numbering carries that uncertainty with it."
+      },
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "spec025-material-audit-note",
+        "proposal": "P6",
+        "note": "Priority and critique note (spec-025 material audit, 2026-10-22): the fish = mīn rebus is Heras's idea from the 1930s. Fish readings were published by Gurov (who read fish as kay) and the Finnish team in 1965-70, Mahadevan 1970, and Fairservis 1985/1992; Parpola 2010 is a synthesis of that line, not its origin. Mahadevan 2011 concluded the fish = star reading 'had run out of steam and needed reappraisal'. Rival fish values are on record: Gurov kay; Jyothibabu kaḻ; Mukhopadhyay maṇi (the last at abstract level). No decipherment is adjudicated by this note.",
+        "evidence": [
+          "specs/025-paper-search-research-check/audit-2026-10-22/raw/findings_W3.md",
+          "specs/025-paper-search-research-check/audit-2026-10-22/correction_proposals.md"
+        ],
+        "evidence_level": "FULL TEXT",
+        "effect": "No claim status, stage, anchor, or score is changed by this note."
+      }
     }
   ],
   "_citation": {

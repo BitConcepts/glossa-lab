@@ -1,0 +1,172 @@
+{
+ "spec": "065",
+ "phase": "Phase-427",
+ "freeze_digest": "f50a6e9c45d96fe15e737ee83a46b83c2c7e150e4a29421ccb5ec2be7a428c09",
+ "osf_registration": "34s9u",
+ "date": "2026-10-22",
+ "fence": "This act searched two documents for a heading. It checked nothing either passage states.",
+ "step0_gates": [
+  {
+   "gate": "0.1",
+   "name": "input integrity",
+   "verdict": "PASS",
+   "pins": {
+    "S-1": {
+     "cleaned_text_sha256": "1275b795903260221f5226bada352de27471c010e2ad8ace556c548c20da1fc4",
+     "cleaned_text_match": true,
+     "registry_sha256": "92e19e6def7eccb42ba0e9f53f5ef3bf9dbb0b9717aa3d675cecb971f5ab0e5c",
+     "registry_match": true,
+     "claims_file_live_sha256": "b7aa6d27c66be74f09b91c3b5c319896bc4ee557be41594d04960924d986e564",
+     "claims_file_freeze_constant": "e98190894202a2a1c0e314229dcb585c62a0f5c12c059bcabd63b055c42959e8",
+     "claims_entry_facts_match": true,
+     "claims_store_note": "per freeze.md section 2 (the Spec 038 form), the extracted-claims store is asserted by its entries' facts, never by live-file hash; the live hash is recorded here for the record"
+    },
+    "S-5": {
+     "cleaned_text_sha256": "dd58497528db89fe75111d2431b9611aebd4a5a9715a4ecceb012d9d1538029e",
+     "cleaned_text_match": true,
+     "registry_sha256": "38122256305b8451e49e4ef4d56df7399363bdc3c57052b10f9165ab593261a7",
+     "registry_match": true,
+     "claims_file_live_sha256": "a5e33bc1df73be9116649c6ee5474d94f1e16c0cc056fa340f3b4a8299bc547a",
+     "claims_file_freeze_constant": "c1a433d539a0ed899fe7ab11af2be0c608cb85d9f0fc99b2ccfefdb6e866262a",
+     "claims_entry_facts_match": true,
+     "claims_store_note": "per freeze.md section 2 (the Spec 038 form), the extracted-claims store is asserted by its entries' facts, never by live-file hash; the live hash is recorded here for the record"
+    }
+   },
+   "record_inputs": {
+    "spec057_freeze_record": {
+     "file": "specs/057-five-sources-heading/freeze.json",
+     "sha256": "3cc68c372790d6bd62d9ab1bb43b15ec2f43502dd614150d660d33b4c452d8af",
+     "match": true
+    },
+    "spec057_outcome": {
+     "file": "specs/057-five-sources-heading/outcome.md",
+     "sha256": "d3ae1325bdba52295bd44990db024957c1d3aceeb462ddbf60af73b512834a58",
+     "match": true
+    },
+    "spec057_spec": {
+     "file": "specs/057-five-sources-heading/spec.md",
+     "sha256": "0798d51aac680c981fe38bf45761358231957391b67cd24228b5cba675ec9e8d",
+     "match": true
+    },
+    "spec057_adjudication": {
+     "file": "specs/057-five-sources-heading/adjudication.md",
+     "sha256": "041880706d9ebae2c1a30a5dae8cd2066d915317fb551d46af469dd2fd4ec017",
+     "match": true
+    },
+    "anchors": {
+     "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+     "sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+     "match": true
+    }
+   },
+   "spec057_freeze_digest_recomputed": "237b923a2c19b216e0476f70d17a956db0ca68d1ba8af6902109099a82c820d9"
+  },
+  {
+   "gate": "0.2",
+   "name": "acquired-file assertion (S-5)",
+   "verdict": "PASS",
+   "acquired_file": {
+    "path": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/hunt-without-kings-zenodo-2025/Without Kings or Conquests-Indus Deciphered_Full.pdf",
+    "present": true,
+    "size_bytes": 657863,
+    "sha256": "77f10f3279454bede1ba60a04f3c099500667ca62574b07aaabb9fc69bf94665",
+    "md5": "36616e20a2c62be106ebf9c3d4093fd6",
+    "expected_size_bytes": 657863,
+    "expected_sha256": "77f10f3279454bede1ba60a04f3c099500667ca62574b07aaabb9fc69bf94665",
+    "expected_md5": "36616e20a2c62be106ebf9c3d4093fd6"
+   },
+   "note": "the search is never run on substitute bytes, and the held cleaned text is never substituted for the acquired document"
+  },
+  {
+   "gate": "0.3",
+   "name": "S-1 intake determination",
+   "verdict": "PASS",
+   "determination": {
+    "intake_record": "specs/065-s1-s5-heading-successor/intake-S1.json",
+    "intake_record_exists": false,
+    "arm": "blocked arm",
+    "evidence": {
+     "provenance_s1_sections_state": "no file acquired, no provenance entry taken (acquisition-attempt section, 2026-10-21; follow-up section, 2026-10-22: ILL portion-copy request placed and pending, still no file acquired)",
+     "provenance_states_no_entry_taken": true,
+     "provenance_states_ill_pending": true,
+     "blocker_record": "downloads/fuls-studies-on-indus-script-2020/BLOCKED.md (Academia.edu sign-in wall; owner account act)",
+     "s1_download_folder_files": [
+      "BLOCKED.md"
+     ],
+     "delivered_s1_file_in_downloads_tree": false,
+     "note": "no S-1 document has been handed over and pinned by an append-only intake record before the run; the Oakland ILL portion-copy request placed 2026-10-22 is pending and nothing delivered under it has been intake-pinned"
+    }
+   }
+  },
+  {
+   "gate": "0.4",
+   "name": "order",
+   "verdict": "PASS",
+   "note": "gate verdicts are recorded in this results record and in the outcome record before the first per-source row; no text layer was searched and no passage was read for content before gates 0.1–0.3 passed"
+  }
+ ],
+ "accounting": [
+  {
+   "source": "S-1",
+   "citation": "Fuls, Andreas. 'Ancient Writing and Modern Technologies - Structural Analysis of Numerical Indus Inscriptions.' In Studies on Indus Script (Mohenjodaro 2020), pp. 57-90. Karachi: National Fund for Mohenjodaro, 2020.",
+   "claim_id": "ancient_writing_and_modern_technologies_51831ac9_statisti_0004",
+   "document_id": "ancient_writing_and_modern_technologies_51831ac9",
+   "quote_fragment": "positional analysis",
+   "document_searched": null,
+   "blocker_ref": "local research store: downloads/fuls-studies-on-indus-script-2020/BLOCKED.md; PROVENANCE.md S-1 sections after entry 23 (no provenance entry taken)",
+   "locator": null,
+   "occurrence_list": null,
+   "outcome": "STILL UNLOCATED — ACQUISITION BLOCKED",
+   "evidence_ref": "the blocker record itself (gate 0.3 determination): no intake-S1.json before the run, no delivered S-1 file in the downloads tree, the ILL portion-copy request of 2026-10-22 pending with nothing intake-pinned",
+   "unblocking_act": "The owner account act named in the blocker record: a copy of the chapter handed over by the owner (his own download, or a copy delivered through the fallback interlibrary-loan route) and pinned by the append-only intake record intake-S1.json before a later run. This successor contacts no one, creates no account, and sends no request (spec section 9.6)."
+  },
+  {
+   "source": "S-5",
+   "citation": "Hunt, Treasure A. Without Kings or Conquests: The Indus Script Deciphered and a Civilization Reconstructed. Preprint, FelineMind Behavior Labs; draft posted September 2025. Zenodo, published 6 September 2025, version v1. DOI: 10.5281/zenodo.17066226.",
+   "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_statisti_0002",
+   "document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+   "quote_fragment": "Positional analysis",
+   "document_searched": "77f10f3279454bede1ba60a04f3c099500667ca62574b07aaabb9fc69bf94665",
+   "extraction": {
+    "tool": "pdftotext -layout (poppler), the acquired file's own text layer extracted in full from the pinned bytes",
+    "artifact": "specs/065-s1-s5-heading-successor/extraction-S5.txt",
+    "sha256": "74e42f8e3e4af6488c14540dd8c5b32e2cd5eed0cfdc03eaf82a7043dfcc155d",
+    "bytes": 84672,
+    "lines": 2273
+   },
+   "occurrence_list": [
+    {
+     "extraction_line": 340,
+     "page": 9,
+     "line_text": "citadels, administrative quarters, fortiﬁed gates, and waterworks. Positional analysis",
+     "judgement": "NOT the heading (spec section 5.1): a mention inside a running sentence — it begins mid-line, after '...fortified gates, and waterworks.', is capitalised only as a sentence start, and its sentence runs on to the next line ('shows a clear tripartite administrative grammar:'). It does not stand alone as a line or running head, carries no chapter/appendix numbering as a title, and is not a table-of-contents entry (the extraction carries no other occurrence of the string).",
+     "containing_section": "5.5 Governance and Civic Authority (extraction line 336); the occurrence stands in that section's 'Findings.' running paragraph",
+     "heading_form": false
+    }
+   ],
+   "locator": {
+    "occurrence_extraction_lines": [
+     340
+    ],
+    "occurrence_pages": [
+     9
+    ],
+    "note": "locators are the extraction's line numbers and the PDF page numbers of the layout extraction"
+   },
+   "outcome": "HEADING ABSENT FROM DOCUMENT",
+   "evidence_ref": "the searched file's SHA-256 77f10f3279454bede1ba60a04f3c099500667ca62574b07aaabb9fc69bf94665 (the acquired file, gate 0.2) and the extraction artifact at SHA-256 74e42f8e3e4af6488c14540dd8c5b32e2cd5eed0cfdc03eaf82a7043dfcc155d",
+   "difference_from_held_text": "None in posture: Spec 057 outcome section 4.2 recorded one occurrence in the held cleaned text (line 267, sentence-initial inside a running paragraph of section 5.5, not in heading form); the acquired document's text layer carries the same single occurrence, in the same sentence of the same section, likewise not in heading form. The successor's finding rests on the acquired file, not the held text (DD-065-3)."
+  }
+ ],
+ "headline_class": "B — S-5 RESOLVED, S-1 STILL BLOCKED",
+ "headline": "One of Spec 057's two unlocated rows is resolved on the document itself. S-5: HEADING ABSENT FROM DOCUMENT (no sub-result; no claim recovered — the row's evidence is the searched file's hash and its single judged occurrence), on the acquired file at SHA-256 77f10f3279454bede1ba60a04f3c099500667ca62574b07aaabb9fc69bf94665. S-1 remains STILL UNLOCATED — ACQUISITION BLOCKED: no document was handed over before the run, no search was run for S-1, and nothing about the chapter is found or implied. The unblocking act remains the owner account act named on S-1's row.",
+ "disposition": "superseded-not-retired (class B): the heading record stands exactly as Spec 057 left it — superseded by Spec 057's two recovered claims, not retired. The appended, dated note records S-5's resolution (HEADING ABSENT FROM DOCUMENT, on the acquired file at SHA-256 77f10f3279454bede1ba60a04f3c099500667ca62574b07aaabb9fc69bf94665) and S-1's blocked posture (STILL UNLOCATED — ACQUISITION BLOCKED), and states that retirement is not available while S-1 remains unlocated (spec section 7.2).",
+ "outcome": "B — S-5 RESOLVED, S-1 STILL BLOCKED",
+ "hypothesis_F065_C14": "Defeated over the one document actually searched (S-5: no heading-form occurrence in its text layer); unjudged as to S-1, which was never searched — S-5's row alone neither defeats nor confirms it for S-1 (spec section 1.3).",
+ "anchors": {
+  "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+  "before_sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+  "after_sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+  "byte_identical": true
+ }
+}

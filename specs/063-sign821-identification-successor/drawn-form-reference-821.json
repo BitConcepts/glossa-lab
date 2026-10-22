@@ -1,0 +1,106 @@
+{
+ "base_sign_registry_anchor": {
+  "description": "Wheel with 6 spokes with even angles",
+  "mahadevan_ids": "M391",
+  "registry_file": "data/crosswalks/canonical_sign_registry.csv",
+  "registry_sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",
+  "route": "route 1 (composition)",
+  "row": "P378",
+  "wells_ids": "W820"
+ },
+ "citation_pinned_reference": {
+  "context_locator": "Figure 6.13, 'Examples of the various contexts of sign 821', printed p. 93",
+  "entry_locator": "Figure 2.6, 'An Indus Sign List', printed pp. 19\u201322",
+  "held_text_captions": [
+   {
+    "figure": "Figure 2.6",
+    "held_text_lines": [
+     868,
+     872,
+     876,
+     880
+    ]
+   },
+   {
+    "figure": "Figure 6.13",
+    "held_text_lines": [
+     2860
+    ],
+    "list_of_figures_line": 176
+   }
+  ],
+  "held_text_sha256": "62acf855ac3ecf39fc7a7e6597dba9a3cb6e35948528f69e9424eb81308d261e",
+  "route": "route 3 (citation)",
+  "standing_note": "the held text carries the captions only and the drawings stand in the published artefact",
+  "work": "Wells, Bryan K. 2015. The Archaeology and Epigraphy of Indus Writing. Archaeopress. ISBN 978-1-78491-046-4"
+ },
+ "descriptor": "Sign 821 is the doubled form of sign 820: two identical oval outlines side by side, touching at the vertical midline, each oval divided by three straight diameters (one vertical, two diagonal) into six sectors \u2014 two six-spoke wheels in oval outlines, side by side.",
+ "descriptor_derivation": "route 1 composition (formation passage + P378 description); confirmed by route 2 (plate confirmation)",
+ "descriptor_discriminators": [
+  "not 818 (a single circle, four sectors)",
+  "not 822 (one such oval flanked by paired vertical strokes)",
+  "not 823 (a single oval with denser internal crossing)",
+  "not 791 (two plain ovals, no spokes)",
+  "not 820 itself (a single oval)"
+ ],
+ "formation_reference": {
+  "held_text_sha256": "62acf855ac3ecf39fc7a7e6597dba9a3cb6e35948528f69e9424eb81308d261e",
+  "passage_locator": "Wells 2015, Appendix II, 'Doubled Signs', printed pp. 128\u2013129; held text lines 3691\u20133704 (heading line 3691)",
+  "passage_verbatim": "Signs can appear sometimes doubled. For example, sign 090 is doubled to form sign 091 and sign 820 doubles to form sign 821. Double signs are not coded in the inscriptions as a pair of the single sign (i.e. 090-090), but are treated as a new sign.",
+  "passage_verbatim_lines": "3692\u20133694",
+  "route": "route 1 (composition; Spec-057 heading-record form)",
+  "second_passage_verbatim": "The second example is sign 820, a typically in the initial position. The doubled sign 821 is still often initial, but also frequently in late medial or terminal position.",
+  "second_passage_verbatim_lines": "3703\u20133704",
+  "table_caption": "Table AII.4 Comparison of signs and their doubled graphem",
+  "table_caption_lines": "3705\u20133706; drawn columns not survived"
+ },
+ "license_position": "\u00a74 \u00b6\u00b61, 2, 4 of the amendment draft (Amendment Queue Item 5, 2026-10-21) \u2014 derived factual record; no image; no restricted material used. A stroke/feature description is a factual statement about what a published drawing shows; the PhD thesis is an open national-library digitisation deposit; the Wells 2015 formation text is quoted from the program's own committed, hash-pinned held text.",
+ "plate_confirmation": {
+  "artefact": "Wells 2006, PhD thesis, Figure 3.2, 'The Indus signs by sign number'",
+  "deposit": "Internet Archive epigraphicapproachestoinduswritingbryankennethwellsphd.thesis_230_Z (DLI/JaiGyan deposit, open access)",
+  "file_sha256": "4b39330c7f4ccf2770093318bfdaf4efaffa7fdf4a8cb5763a650351fffa4b4e",
+  "inspection": "glyph inspection in the Phase-123 manner; descriptor derived independently of route 1 and found in agreement",
+  "local_file": "downloads/wells-phd-thesis-2006/Wells2006_PhD_EpigraphicApproachesToIndusWriting.pdf",
+  "pdf_page": 104,
+  "position": "row of signs 804\u2013830; 821 is the fourth entry of the row 817, 818, 820, 821, 822\u2026",
+  "route": "route 2 (thesis-plate descriptor)",
+  "thesis_page": 92
+ },
+ "provenance_chain": [
+  "published list entry (Wells 2015 Fig. 2.6)",
+  "held-text captions + formation passage (committed, hash-pinned)",
+  "registry base-sign anchor (committed, hash-pinned)",
+  "open-deposit thesis plate (local file, hash-pinned)",
+  "this descriptor (text, derived twice under the successor protocol's step D)"
+ ],
+ "purpose": "the unblocking act named in Spec 056's outcome (Phase-418, IDENTIFICATION FAILED at R-3); fragment the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001",
+ "schema": "glossa.drawn-form-reference/1",
+ "target": {
+  "list": "Wells (2011), as given in Wells 2015, Chapter 2 / Figure 2.6",
+  "list_naming_evidence": [
+   {
+    "held_text_line": 414,
+    "text": "Chapter 2 gives the Indus sign list used in this analysis\u2026 (Wells 2011)"
+   },
+   {
+    "held_text_line": 665,
+    "text": "The sign list used here (Wells 2011)"
+   }
+  ],
+  "sign_number": 821
+ },
+ "traps_named": [
+  {
+   "detail": "Yajnadevam glyph identifier, empty wells_ids, frequency 10 \u2014 a number collision, not Wells's 821",
+   "trap": "Yunmapped_0821"
+  },
+  {
+   "detail": "numbers are not identities; no route in this record identifies by number alone",
+   "trap": "any number-only match"
+  },
+  {
+   "detail": "the Figure 6.12 sign 861 ('person in front of a structure', held text lines 2848\u20132853), which the passage associates with 'city' as a different sign \u2014 a reading-confusion trap for the K-1 claim, recorded here so the identification record cannot be cited as supporting it",
+   "trap": "sign 861"
+  }
+ ]
+}

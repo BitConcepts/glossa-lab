@@ -55,150 +55,150 @@
     "[WARN] TB corpus: 121-inscription epub corpus contaminated with English/OCR. SUPERSEDED by 944-bigram dravidian_tamil_lm.json (Phase-44, clean, z=12.1 Dravidian). TB issues do not affect Phase-44+ results.",
     "[WARN] torch not installed: GPU checks skipped"
   ],
-  "generated_at": "2026-10-13T01:24:52+00:00",
-  "annotations_as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale.",
+  "generated_at": "2026-10-22T11:15:48+00:00",
+  "annotations_as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale.",
   "anchors_file": "backend/reports/INDUS_FINAL_ANCHORS.json",
   "anchors_file_sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
   "claims_store": "glossa-indus/claims/extracted_claims",
-  "claims_store_sha256": "8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa",
+  "claims_store_sha256": "291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c",
   "solid_claims": [
     {
       "claim": "Canonical anchor table (computed)",
       "detail": "287 anchors in the canonical table: 166 HIGH + 5 MEDIUM + 3 LOW + 113 CANDIDATE. Strict core (strict_set, per the Phase-108 register + Phase-109 rule as annotated in Phase H): 94 anchors (90 HIGH + 4 MEDIUM). Pending validation: 44 anchors (validation_status=pending_non_sa_validation). validation_status distribution: no_validation_record=3, pending_non_sa_validation=44, premise_superseded=113, sa_in_provenance_chain=33, strict_sa_independent=94. H+M token coverage of the Holdat corpus, as recorded in the anchors file: 92.2%. Extracted-claims store: 31 claims in 10 files.",
       "status": "VERIFIED \u2014 computed from the canonical stores at report generation; hash-stamped (see annotations_as_of)",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-31 T3 Zipf slope",
       "detail": "M77 slope 0.75 vs TB slope 0.93, delta 0.18 < 0.3 threshold",
       "status": "VERIFIED \u2014 does not require TB LM, just corpus-level statistics",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Holdat corpus validity",
       "detail": "1,670 seals, 7,002 tokens, 390 signs, all M-prefixed, position-sorted",
       "status": "VERIFIED \u2014 data integrity checks passed",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Animal classifiers",
       "detail": "M062=erutu (100% zebu bull), M045=y\u0101nai (100% elephant), M006=puli (tiger lift 6.2)",
       "status": "VERIFIED \u2014 from Holdat motif correlation data",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "M047=m\u012bn (fish sign)",
       "detail": "M047 = Parpola P47 = fish, per crosswalk and iconographic anchors",
       "status": "VERIFIED \u2014 crosswalk + Parpola 2010 iconographic anchor",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Positional grammar",
       "detail": "INITIAL/MEDIAL/TERMINAL structure confirmed across all phases",
       "status": "VERIFIED \u2014 consistent across Phase-10 to Phase-30",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-29d reverse-Janabiyah",
       "detail": "Enmenanak ranks as top candidate (score 7.0) vs 1,222 ePSD2 PNs",
       "status": "VERIFIED if Phase-29d result file contains live data (check above)",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "P30-A1 permutation null",
       "detail": "Enmenanak score 7.0 at 100th percentile of null (p<0.001)",
       "status": "VERIFIED \u2014 but simulation used simplified model",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Spectral anomaly",
       "detail": "M77 shows corpus-wide spectral gap=0.0 (not short-inscription noise)",
       "status": "VERIFIED \u2014 Phase-30a/c confirmed across all length strata",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Gulf seal site coverage",
       "detail": "ICIT database covers Failaka, Janabiyah, Saar, Susa, etc.",
       "status": "CONFIRMED from Fuls 2023 preview \u2014 access needed for data",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-45 Fuls 7/7 concordance",
       "detail": "100% agreement HIGH anchors vs Fuls NWSP",
       "status": "VERIFIED \u2014 independent method corroboration",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-46 Janabiyah ALL 7 anchors",
       "detail": "Gulf contact zone has all 7 HIGH anchor signs",
       "status": "VERIFIED \u2014 external corroboration",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-47 rebus LM lift 3.19x",
       "detail": "Etymology phonemes 3.19x more probable under Dravidian LM",
       "status": "VERIFIED \u2014 independent of SA",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-48 30 signs promoted to HIGH",
       "detail": "30/30 MEDIUM signs validated; HIGH coverage 54% [Historical figure \u2014 as of Phase-48, when this result was recorded; the current canonical figures are computed at report time in the 'Canonical anchor table (computed)' annotation.]",
       "status": "VERIFIED \u2014 3-test battery",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-53 16 formulas decoded",
       "detail": "tiru-il-ay-an-kol and 15 others >=80% decoded",
       "status": "VERIFIED \u2014 pilot readings with morphological annotation",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-56 expanded Parpola crosswalk",
       "detail": "14 new MEDIUM anchors added; 75-entry EXTENDED_PARPOLA_MAP; total anchors 163 [Historical figure \u2014 as of Phase-56, when this result was recorded; the current canonical figures are computed at report time in the 'Canonical anchor table (computed)' annotation.]",
       "status": "VERIFIED \u2014 Parpola 1994/2010 sources cross-referenced with DEDR",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-58 phonotactic VALID",
       "detail": "0 violations in HIGH/MEDIUM set; 16 distinct initials; max phoneme share 24.7% (<30%)",
       "status": "VERIFIED \u2014 Krishnamurti 2003 Dravidian phonotactic rules",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-59 22 formulas decoded",
       "detail": "22 formulas >=80% decoded incl. tiru-il-ay-an-kol-vil, \u0113\u1e37-tu, p\u0101r-kol",
       "status": "VERIFIED \u2014 pilot readings with morphological annotation and per-slot confidence",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-61 94% vowel harmony",
       "detail": "94% of inscriptions (500-seal sample) pass Dravidian vowel harmony constraint",
       "status": "VERIFIED \u2014 consistent with Dravidian hypothesis",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-69 grammar 100% site-invariant",
       "detail": "100% of 65 HIGH/MEDIUM signs show consistent I/M/T grammar across all 9 Holdat sites. Chi-squared p>0.05 for all signs. Pan-Indus writing system confirmed. [Historical figure \u2014 as of Phase-69, when this result was recorded; the current canonical figures are computed at report time in the 'Canonical anchor table (computed)' annotation.]",
       "status": "VERIFIED \u2014 strong evidence for unified writing system",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-71 M<->P crosswalk 84.5% token coverage",
       "detail": "115/390 M-signs mapped; 84.5% of all corpus tokens have P-number. RISK-001 substantially resolved. [Historical figure \u2014 as of Phase-71, when this result was recorded; the current canonical figures are computed at report time in the 'Canonical anchor table (computed)' annotation.]",
       "status": "VERIFIED \u2014 Parpola 1994 App.B + Mahadevan 1977 sources",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-72 Parpola parser: 13 Dravidian readings",
       "detail": "Parpola-specific notation parser found 13 Dravidian readings in publications (Levit 2010 = richest: 6 hits; Laursen 2010: 3 hits).",
       "status": "VERIFIED \u2014 7 notation patterns, English false-positive guard",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-68 formula type annotation",
       "detail": "20 decoded formulas classified: 9 PLACE_FORMULA, 3 TITLE_FORMULA, 8 UNCERTAIN. 48 DEDR citations assigned to morpheme slots.",
       "status": "VERIFIED \u2014 morphological role database + DEDR citations",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     }
   ],
   "caveated_claims": [
@@ -206,103 +206,103 @@
       "claim": "TB correlation 0.907",
       "detail": "Computed against approximate TB freq; clean corpus needed for verification",
       "status": "NEEDS CAVEAT",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "signs assigned",
       "detail": "171 signs (166 HIGH + 5 MEDIUM) carry phonetic/grammatical evidence in the current canonical anchor table; 3 LOW entries are distributional proposals only and 113 CANDIDATE entries are unvalidated. M267 is MEDIUM (validation_status strict_sa_independent) in the current table \u2014 resolved, not UNCERTAIN. All figures computed at report generation from the hash-stamped anchors file (see annotations_as_of).",
       "status": "CLARIFY: HIGH+MEDIUM are supported; LOW are distributional proposals only",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-32 T4",
       "detail": "SA M77\u2192TB LM: INCONCLUSIVE \u2014 TB LM too noisy (2 or few bigrams)",
       "status": "DO NOT CLAIM",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "V8-V24 decipherment campaign",
       "detail": "Distributional hypothesis proposals only; not verified phonetic readings",
       "status": "MUST CLARIFY",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "P30-E1 falsification",
       "detail": "AMBIGUOUS after TB freq update \u2014 framework doesn't separate Dravidian from Sanskrit at phoneme distribution level",
       "status": "NEEDS CAVEAT",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "M\u2194P crosswalk",
       "detail": "45/390 M\u2194P entries mapped at Phase-51 (expanded from 38). 345 M-signs without P-equivalent at that time. RISK-001 partially resolved. [Historical figure \u2014 as of Phase-51, when this result was recorded; the current canonical figures are computed at report time in the 'Canonical anchor table (computed)' annotation.]",
       "status": "RISK-001 partial: 45 entries mapped at Phase-51, 345 remained then",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-44 Dravidian 3.13x",
       "detail": "z=12.1, 944-LM, confirmed multi-strand",
       "status": "NEEDS CAVEAT \u2014 a language-model language-fit statistic, not an SA decipherment result; its SA framing is superseded by Phase-107",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-52 syllabic SA z=16",
       "detail": "59 anchors pinned; z=16.01; SA agrees 55%",
       "status": "SUPERSEDED (Phase-107/108) \u2014 SA recovers 0.000 held-out anchor signs; historical result only, not evidence for sign values",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "M267 reading",
       "detail": "4 STRONG candidates (col/in/um/e) but SA cannot discriminate",
       "status": "NEEDS CAVEAT \u2014 multi-syllabic, use grammar analysis only",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-54 falsification",
       "detail": "43% support \u2014 some tests under-powered",
       "status": "NEEDS CAVEAT",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-55 ensemble",
       "detail": "Token granularity mismatch prevents reliable consensus",
       "status": "DO NOT CLAIM \u2014 needs normalization fix",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-57 z=19.07 (formerly 'best SA result')",
       "detail": "53 pinned anchors; z=19.07 > Phase-52 z=16.01; 5-seed consensus",
       "status": "SUPERSEDED (Phase-107) \u2014 SA z-scores do not evidence sign values; historical result only",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-61 12% initial-consonant violation rate",
       "detail": "47/390 SA-assigned readings use voiced stops (g/b/d) as initials; invalid in Proto-Dravidian. SA-only readings not phonotactically filtered \u2014 HIGH/MEDIUM set has 0 violations.",
       "status": "NEEDS CAVEAT \u2014 SA proposals only; HIGH+MEDIUM readings are phonotactically clean",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-60 P-number mining: 0 new readings",
       "detail": "Pattern matching found no P-number readings in 10 contact-zone publications \u2014 likely OCR noise or paywall-protected texts. High-density passages scored but no pattern match.",
       "status": "NEEDS INVESTIGATION \u2014 does not invalidate other Phase-56-61 results",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-67 Sanskrit falsification 1.85x",
       "detail": "Dravidian lift 23.4% vs Sanskrit lift 12.6% \u2014 same-null comparison. Ratio 1.85x.",
       "status": "NEEDS CAVEAT \u2014 'DEFINITIVE' retired (Phase-109): the 1.85x stands only as a same-null descriptive statistic; the SA-based falsification framing is superseded by Phase-107",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-70 M267=in SA test",
       "detail": "Pinning M267 to 'in' degrades SA z from 14.18 to 12.54 (-1.64). SA cannot pin multi-syllabic M267 \u2014 confirms Phase-47 T3. Grammar analysis (Phase-64, score 7.0) remains primary evidence for iN.",
       "status": "NEEDS CAVEAT \u2014 SA evidence neutral; grammar evidence strong",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     },
     {
       "claim": "Phase-73 ensemble ENSEMBLE_HIGH=4",
       "detail": "10 seeds + 2-char agreement gives ENSEMBLE_HIGH=4 (M099=ko confirmed, 3 others unverified). Still modest \u2014 SA variance limits consensus even with 10 seeds.",
       "status": "SUPERSEDED (Phase-107) \u2014 an ensemble of SA runs cannot evidence sign values; historical result only",
-      "as_of": "As of 2026-10-13 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 8eb6d134deafb7b8581604c1229b8216ac37c5245cf7edcdced8464163ef59aa). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
+      "as_of": "As of 2026-10-22 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 291eb5e9d94b4806a22b6ddeb0dc9598829e8f1a2a635cffa14ea45ab240594c). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale."
     }
   ],
   "verdict": "READY WITH CAVEATS",

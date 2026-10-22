@@ -1,0 +1,113 @@
+{
+  "attestation": "No Harappa counting ran in this derivation: the withheld file was byte-hashed only, the crosswalk was byte-hashed only, and the only sequences tokenised were the 179 CISI Mohenjo-daro inscriptions of the training pool.",
+  "comparison_to_pred_2026_006": {
+    "only_in_pred006_combined_pool": [
+      "P001",
+      "P004",
+      "P013",
+      "P051",
+      "P098",
+      "P238",
+      "P265",
+      "P301",
+      "P310"
+    ],
+    "only_in_pred010_pool": [],
+    "pred006_trained_initial_set": [
+      "P000",
+      "P001",
+      "P004",
+      "P013",
+      "P051",
+      "P098",
+      "P217",
+      "P238",
+      "P265",
+      "P301",
+      "P310",
+      "P324"
+    ],
+    "pred006_trained_initial_set_size": 12,
+    "shared": [
+      "P000",
+      "P217",
+      "P324"
+    ]
+  },
+  "crosswalk_fixed_by_reference": {
+    "file": "data/crosswalks/yajnadevam_to_parpola_crosswalk.csv",
+    "file_sha256": "e44b8b550155e3d071e7fc5f94e8c98e9755de437c99e2f5027e3d647b2950a2"
+  },
+  "derivation_date": "2026-10-13",
+  "logic": {
+    "min_freq_global": 10,
+    "recorded_script_sha256": "37e7bb533778daf1c4cf1220f71331e38c156b09abce7436bccc53bafb97ad5d",
+    "rule": "INSUFFICIENT_DATA if freq < 10; TERMINAL if end_rate >= 0.55; INITIAL if start_rate >= 0.55; MEDIAL if internal_rate >= 0.70; BIMODAL if start_rate >= 0.30 and end_rate >= 0.30 and internal_rate < 0.30; otherwise MIXED",
+    "source": "scripts/global_class_stability.py (recorded run of 2026-04-22T18:16:22Z), carried verbatim in backend/scripts/phase396_pred006_step0.py and imported unchanged from that frozen build",
+    "verbatim_carry_basis": "Phase-396 check 3.1 recomputed the recorded classification with this code over the recorded training corpus and reproduced the recorded output exactly (105 classifiable signs, no differences). This derivation runs the same code object on the same input file, whose SHA-256 equals the Phase-396 step-0 pin."
+  },
+  "prediction": "PRED-2026-010",
+  "purpose": "Registration derivation only: derive and freeze the trained INITIAL set for PRED-2026-010 from a training pool that excludes the withheld corpus by construction. No scoring; no Harappa start rate computed for any sign.",
+  "result": {
+    "class_counts": {
+      "INITIAL": 3,
+      "MEDIAL": 19,
+      "MIXED": 3,
+      "TERMINAL": 3
+    },
+    "classes": {
+      "P000": "INITIAL",
+      "P011": "MIXED",
+      "P050": "MEDIAL",
+      "P058": "MEDIAL",
+      "P060": "MEDIAL",
+      "P062": "MEDIAL",
+      "P086": "MIXED",
+      "P120": "MEDIAL",
+      "P121": "MEDIAL",
+      "P122": "MEDIAL",
+      "P123": "MIXED",
+      "P145": "MEDIAL",
+      "P147": "MEDIAL",
+      "P154": "MEDIAL",
+      "P202": "MEDIAL",
+      "P205": "MEDIAL",
+      "P217": "INITIAL",
+      "P230": "MEDIAL",
+      "P256": "TERMINAL",
+      "P268": "MEDIAL",
+      "P316": "MEDIAL",
+      "P324": "INITIAL",
+      "P325": "MEDIAL",
+      "P332": "MEDIAL",
+      "P349": "MEDIAL",
+      "P364": "MEDIAL",
+      "P378": "TERMINAL",
+      "P385": "TERMINAL"
+    },
+    "classifiable_signs": 28,
+    "trained_initial_set": [
+      "P000",
+      "P217",
+      "P324"
+    ],
+    "trained_initial_set_size": 3
+  },
+  "training_pool": {
+    "corpus_rows_total": 2722,
+    "file": "data/normalized/corpus_master.csv",
+    "file_sha256": "b19cfe955313b7db73b462e697e305c1da21b3b8a6997679a466d959b757b42e",
+    "filter": "source_name == \"Corpus of Indus Seals and Inscriptions (mayig digitization)\"",
+    "pool_manifest_sha256": "ab3b4c8ae84090b6f0b60f467dde0067f5dbd2f20065f1625a60a79d7170540a",
+    "pool_rows": 179,
+    "pool_sites": {
+      "Mohenjo-daro": 179
+    },
+    "yajnadevam_rows_in_pool": 0
+  },
+  "withheld_data_fixed_by_reference": {
+    "file": "backend/glossa_lab/data/yajnadevam_inscriptions.csv",
+    "file_sha256": "c02e3d7bb74cf5abb11cc94f88d8d469e6acc5d6fad4b7153c02c43428f58d98",
+    "treatment": "byte-hashed only; not opened for content in this derivation; the Harappa subset is the scoring pool under the registered contract"
+  }
+}

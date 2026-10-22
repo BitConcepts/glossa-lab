@@ -1,0 +1,693 @@
+{
+ "claims": [
+  {
+   "alternatives": [
+    "A catalogue extension's rates may be read as rates for the whole volume or the whole corpus."
+   ],
+   "assumptions": [
+    "ASM-PORTION-ONLY"
+   ],
+   "boundary": "Scope claim for the whole act. The act's objects are the 2,101 distinct well-formed catalogue numbers of one received portion (M-1660-M-2134, H-1020-H-2590, plus addenda) and the merged catalogue layer built from them. What readings the objects carry, what any sign means, and what happened at any other site or in any other range are never judged under this spec. It does not govern the gate handling (C07-C08), the ladder (C03-C06), or the product limits (C13-C15), which are stated separately.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Phase-130 intake pack: the arrival plan and gate under which the portion was received and intaken",
+     "direction": "supports",
+     "kind": "observed",
+     "ref": "specs/021-phase130-intake-pack/spec.md",
+     "source_id": "specs/021-phase130-intake-pack/spec.md",
+     "source_quality": "artifact",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/066-phase130-catalogue-extension/spec.md"
+     ]
+    },
+    {
+     "description": "Spec 066 sections 1-2: the portion census (2,123 records, 2,101 distinct well-formed numbers) and its ranges as found at intake",
+     "direction": "supports",
+     "kind": "observed",
+     "ref": "specs/066-phase130-catalogue-extension/spec.md",
+     "source_id": "specs/066-phase130-catalogue-extension/spec.md",
+     "source_quality": "artifact",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/021-phase130-intake-pack/spec.md"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "Any Spec 066 outcome statement claiming a rate or a coverage beyond the portion's ranges defeats this claim."
+   ],
+   "id": "F066-C01",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "C01 states the act's scope (the portion's ranges, the candidate census, the construction); C09 states the census discipline in the same terms from the grading side. The two govern different objects - the act's statements, and the grading's coverage - and are consistent by construction. Neither negates the other.",
+    "evidence_origin_groups": [
+     "cisi31-intake-record",
+     "phase130-gate-record"
+    ],
+    "forbidden_assumptions": [
+     "ASM-PORTION-IS-VOLUME"
+    ],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "A catalogue extension's rates may be read as rates for the whole volume or the whole corpus.",
+    "verdict_rule": "A Spec 066 product makes statements about the portion's ranges only."
+   },
+   "status": "draft",
+   "text": "Outcome statements under Spec 066 are confined to the CISI 3.1 portion's ranges."
+  },
+  {
+   "alternatives": [
+    "Catalogue numbers are unique object identifiers, so a referenced number is already a catalogue object."
+   ],
+   "assumptions": [
+    "ASM-STRING-NOT-OBJECT"
+   ],
+   "boundary": "Identity discipline for the whole act. The Phase-421 census records which identifiers the lineage rows carry; identical number strings can arise from shared numbering conventions, addenda republication, or error, as well as from the same object. This claim governs the interpretation of the 1,341 referenced numbers only; what promotes a candidate is C03's ladder, and what a promoted candidate means is C15. The candidate is a candidate for catalogue entry; it is never an entry itself.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Committed Phase-421 census: 5,679 lineage rows with their carried identifiers and resolution classes, from which the 1,341 referenced portion numbers derive",
+     "direction": "supports",
+     "kind": "observed",
+     "ref": "reports/phase421_join_census.json",
+     "source_id": "reports/phase421_join_census.json",
+     "source_quality": "artifact",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "falsification_tests": [
+    "Any Spec 066 product that enters, counts, or cites a referenced number as a catalogue object without ladder grading defeats this claim."
+   ],
+   "id": "F066-C02",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "C02 disciplines the candidates (what a match is); C03 disciplines the promotion (how a candidate verifies). Neither states the other's content: C02 would stand even if the ladder were different, and the ladder presupposes C02 without restating it.",
+    "evidence_origin_groups": [
+     "phase421-census-record"
+    ],
+    "forbidden_assumptions": [
+     "ASM-MATCH-IS-OBJECT"
+    ],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "Catalogue numbers are unique object identifiers, so a referenced number is already a catalogue object.",
+    "verdict_rule": "Untreated string matches are reported as candidates in every Spec 066 product."
+   },
+   "status": "draft",
+   "text": "Under Spec 066, a portion number's appearance among the lineage layer's identifiers is a candidate for catalogue entry."
+  },
+  {
+   "alternatives": [
+    "Objects may be entered case by case on analyst judgement, or by the string match plus one agreeing field."
+   ],
+   "assumptions": [
+    "ASM-STRING-NOT-OBJECT"
+   ],
+   "boundary": "The promotion rule, and the only one. The ladder's rungs, order, precedence (the first CONFLICT in ladder order is the recorded reason), class set for type carriage, normalisation (token equality; no repair of garbled cells), and outcome classes (VERIFIED / CONFLICT / UNRESOLVED) are fixed in spec section 5.3 at draft and confirmed at freeze; execution applies it without discretion. This claim does not state what a verified object means (C15) or what happens at high conflict (C05, C06). The ladder requires site agreement where referencing rows exist, the confidence gate passed, no number-level ambiguity, and no corroboration contradiction, and it is applied to all 2,101 candidates.",
+   "depends_on": [
+    "F066-C02"
+   ],
+   "evidence": [
+    {
+     "description": "Spec 066 section 5.3: the ladder rungs, outcome classes, and reason codes as designed",
+     "direction": "supports",
+     "kind": "observed",
+     "ref": "specs/066-phase130-catalogue-extension/spec.md",
+     "source_id": "specs/066-phase130-catalogue-extension/spec.md",
+     "source_quality": "artifact",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "falsification_tests": [
+    "Any object recorded as VERIFIED that did not pass every applicable ladder rung, or any candidate graded under a different rule, defeats this claim."
+   ],
+   "id": "F066-C03",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "C03 fixes how an object verifies; C09 fixes the census the grading covers. A product could satisfy one and breach the other (verify correctly over a subset), so both are needed; neither restates the other.",
+    "evidence_origin_groups": [
+     "spec066-design"
+    ],
+    "forbidden_assumptions": [
+     "ASM-MATCH-IS-OBJECT"
+    ],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "Objects may be entered case by case on analyst judgement, or by the string match plus one agreeing field.",
+    "verdict_rule": "VERIFIED is a ladder outcome, produced by the fixed rule over the full census, or it is not used."
+   },
+   "status": "draft",
+   "text": "A candidate is a VERIFIED catalogue object only under the fixed ladder of spec section 5.3."
+  },
+  {
+   "alternatives": [
+    "Conflicts may be resolved by preferring the more reliable record, or by correcting obvious transcription errors in place."
+   ],
+   "assumptions": [
+    "ASM-AS-PRINTED"
+   ],
+   "boundary": "Failure handling for the grading. Repair would mean choosing which printed record is true - a judgement this act is not constituted to make and the gate does not license over the restricted source. Cause attribution (whose error, if anyone's) is the hand-check stratum's job (C10), not a repair path. Neither side's data is edited under this act, no candidate is force-matched, and a number whose portion records conflict with each other on join-relevant data is barred from VERIFIED. A recorded conflict is never repaired.",
+   "depends_on": [
+    "F066-C03"
+   ],
+   "evidence": [
+    {
+     "description": "Spec 066 sections 5.3 (rung 3) and 5.5: ambiguity bar and halt handling as designed",
+     "direction": "supports",
+     "kind": "observed",
+     "ref": "specs/066-phase130-catalogue-extension/spec.md",
+     "source_id": "specs/066-phase130-catalogue-extension/spec.md",
+     "source_quality": "artifact",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "falsification_tests": [
+    "Any edited source value, any suppressed conflict, or any VERIFIED object under a number-ambiguous catalogue number defeats this claim."
+   ],
+   "id": "F066-C04",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "C04 governs conflicts (recorded, unrepaired); C05 governs their aggregate consequence (the halt). A run could record every conflict faithfully and still breach C05 by committing the index over the threshold, so the claims are distinct.",
+    "evidence_origin_groups": [
+     "spec066-design"
+    ],
+    "forbidden_assumptions": [
+     "ASM-CONFLICT-IS-NOISE"
+    ],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "Conflicts may be resolved by preferring the more reliable record, or by correcting obvious transcription errors in place.",
+    "verdict_rule": "Conflicts appear in the record with reason codes, at their full counted rate, or this claim fails."
+   },
+   "status": "draft",
+   "text": "Under Spec 066, a conflict stands recorded with its reason code."
+  },
+  {
+   "alternatives": [
+    "The extension may be built from whatever verified objects exist, at any conflict rate, since each object passed the ladder individually."
+   ],
+   "assumptions": [
+    "ASM-STRING-NOT-OBJECT"
+   ],
+   "boundary": "The pre-registered aggregate consequence. The threshold is a share of the full candidate census (2,101, referenced and unreferenced together), fixed at draft for the freeze to confirm before any candidate is graded (DD-066-4). Halting is a designed outcome, not a failure of the act: the census completes and is reported in full in that branch. This claim does not govern the census's own reporting, which is complete in both branches (C09). On a halt no extension index is committed, no merged layer is pinned, and the outcome is recorded as INTAKE COMPLETE - CATALOGUE EXTENSION HALTED.",
+   "depends_on": [
+    "F066-C03",
+    "F066-C04"
+   ],
+   "evidence": [
+    {
+     "description": "Spec 066 section 5.5: the halt rule and its outcome wording as designed",
+     "direction": "supports",
+     "kind": "observed",
+     "ref": "specs/066-phase130-catalogue-extension/spec.md",
+     "source_id": "specs/066-phase130-catalogue-extension/spec.md",
+     "source_quality": "artifact",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "falsification_tests": [
+    "An extension index committed, or a merged layer pinned, in a run whose conflict share exceeded the frozen threshold defeats this claim."
+   ],
+   "id": "F066-C05",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "C05 is the share-based halt; C06 is the share-independent tripwire. A run could satisfy C05 (share under the cap) and still be required to halt under C06, so the two halts are stated separately.",
+    "evidence_origin_groups": [
+     "spec066-design"
+    ],
+    "forbidden_assumptions": [
+     "ASM-LADDER-ALONE-SUFFICES"
+    ],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "The extension may be built from whatever verified objects exist, at any conflict rate, since each object passed the ladder individually.",
+    "verdict_rule": "Above the threshold there is no index and no pin; below it the catalogue contains VERIFIED objects only."
+   },
+   "status": "draft",
+   "text": "Under Spec 066, a CONFLICT share above 20 percent halts the catalogue extension."
+  },
+  {
+   "alternatives": [
+    "A lone non-identity in a large census is noise the aggregate rates already absorb."
+   ],
+   "assumptions": [
+    "ASM-STRING-NOT-OBJECT"
+   ],
+   "boundary": "The tripwire, independent of the conflict share. A string match that joins different objects is the one failure this catalogue must never absorb silently: a single demonstrated case shows the candidate key itself can lie, which no aggregate rate can excuse. The attribution classes are the frozen four of spec section 5.4 (extraction error, programme-side record error, genuine compilation divergence, true non-identity), applied to the seeded stratum's hand-checks against the page renders and programme records. On a tripwire halt the census completes and reports in full; no index is committed and no layer is pinned, on the same terms as C05's halt.",
+   "depends_on": [
+    "F066-C05"
+   ],
+   "evidence": [
+    {
+     "description": "Spec 066 sections 5.4-5.5: the stratum attribution classes and the tripwire as designed",
+     "direction": "supports",
+     "kind": "observed",
+     "ref": "specs/066-phase130-catalogue-extension/spec.md",
+     "source_id": "specs/066-phase130-catalogue-extension/spec.md",
+     "source_quality": "artifact",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "falsification_tests": [
+    "An extension index committed, or a merged layer pinned, in a run whose stratum attributed any sampled candidate to true non-identity defeats this claim."
+   ],
+   "id": "F066-C06",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "C06 depends on C05 only for the halt's terms (what a halt withholds); its trigger is disjoint from C05's - a stratum finding, not a share - so neither restates the other.",
+    "evidence_origin_groups": [
+     "spec066-design"
+    ],
+    "forbidden_assumptions": [
+     "ASM-LADDER-ALONE-SUFFICES"
+    ],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "A lone non-identity in a large census is noise the aggregate rates already absorb.",
+    "verdict_rule": "One true non-identity in the stratum halts the build, whatever the conflict share reads."
+   },
+   "status": "draft",
+   "text": "Under Spec 066, a stratum attribution of any sampled candidate to true non-identity halts the catalogue extension."
+  },
+  {
+   "alternatives": [
+    "Extracted catalogue data is factual and therefore freely publishable at row level."
+   ],
+   "assumptions": [
+    "ASM-GATE-GOVERNS"
+   ],
+   "boundary": "The license fence (PROVENANCE entry 22, recorded before any processing at intake), as the owner read it in the Item 7 approval of 2026-10-21. It binds the grade table, the build record, the stratum record, the merged layer, and every intermediate table: storage is the restricted local store; the repo receives exactly the section 4 item-1 fact list (number, site section, published type class, grade class), aggregate statistics, and pins. The freeze itself complies: it cites only aggregates and hashes already on record. Row-level products beyond the item-1 fact list live only in the restricted local store, and nothing portion-derived beyond the line enters git.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Phase-130 intake pack: the gate terms under which the portion is held (restricted research material; derived statistics publishable; no redistribution)",
+     "direction": "supports",
+     "kind": "observed",
+     "ref": "specs/021-phase130-intake-pack/spec.md",
+     "source_id": "specs/021-phase130-intake-pack/spec.md",
+     "source_quality": "artifact",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "falsification_tests": [
+    "Any portion-derived row, table, or image beyond the section 4 line found in the repository, a deposit, or a shared copy defeats this claim."
+   ],
+   "id": "F066-C07",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "C07 states where products may live; C08 states the execution-time checks that the fence held before work began and before the outcome was committed. One is the rule, the other its verification points; neither restates the other.",
+    "evidence_origin_groups": [
+     "phase130-gate-record"
+    ],
+    "forbidden_assumptions": [
+     "ASM-FACTS-ARE-UNRESTRICTED"
+    ],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "Extracted catalogue data is factual and therefore freely publishable at row level.",
+    "verdict_rule": "Row-level products beyond the item-1 fact list exist in exactly one place - the restricted local store - and nowhere else."
+   },
+   "status": "draft",
+   "text": "Every product of this act obeys the lawful line of spec section 4."
+  },
+  {
+   "alternatives": [
+    "The intake's and Spec 059's verifications carry forward, so execution may proceed directly to grading."
+   ],
+   "assumptions": [
+    "ASM-GATE-GOVERNS"
+   ],
+   "boundary": "The execution's entry conditions. Pins: portion PDF SHA-256 514338b1f6c498bd318b114e39b0e77a79a6685918a0a4c2c5b116dfc2482b6a (8,206,446 bytes); extraction table SHA-256 7179858d9b2bc18b480ba092a08ea2ee021ce569fcaceb5b992d22c541d333c8 (2,123 records x 26 columns); vols. 1-2 catalogue CSVs e0d698f991fbd7cf26c491a2b25906b422903a0e2a26ea7b8c690420ca51dc1e / e751244e2d51bda3181d98e56af691c0d24099d76d035b54f0888504204bc7d9; horus84 layer c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef; Phase-421 census 952829317a7b8e48e809da4353cdf5f6b6f872180920bc349aaf747595b99bb8 and results 3948cd01f960842b963061d96ddeabd5ee0b5cdeb572d786976d476d84ff0c7f; intake schema b94d03add0318044b559b7b2976bbd2722abc19adcf67a0ea0cf093f8d7de49b; validator 02b24e3312a9a4ac4f7e3b14aeaee2cda0268f41cb5bd573494340c2e7d2df03. Any mismatch stops the execution as itself, reported as a stop and never as an outcome. Repo cleanliness is checked again before the outcome record is committed (spec section 5.6). The checks run in the fixed order of spec section 7: the gate record quoted, the pins by two routes where committed, the candidate-set re-derivation, and repo cleanliness.",
+   "depends_on": [
+    "F066-C07"
+   ],
+   "evidence": [
+    {
+     "description": "Spec 066 section 7: the step-0 order and stops as designed",
+     "direction": "supports",
+     "kind": "observed",
+     "ref": "specs/066-phase130-catalogue-extension/spec.md",
+     "source_id": "specs/066-phase130-catalogue-extension/spec.md",
+     "source_quality": "artifact",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "falsification_tests": [
+    "Any candidate graded in a run whose step 0 did not first record all its verifications passing defeats this claim."
+   ],
+   "id": "F066-C08",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "C08 depends on C07 because the cleanliness check verifies C07's fence at execution time; the dependency is a verification relation, not a restatement - C07 could hold as a rule while a given run breaches C08 by skipping the check.",
+    "evidence_origin_groups": [
+     "phase130-gate-record",
+     "cisi31-intake-record"
+    ],
+    "forbidden_assumptions": [
+     "ASM-INTAKE-CARRIES-FORWARD"
+    ],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "The intake's and Spec 059's verifications carry forward, so execution may proceed directly to grading.",
+    "verdict_rule": "No step-0 record, no grading - in that order, every run."
+   },
+   "status": "draft",
+   "text": "Execution step 0 precedes any grading under Spec 066, fail-closed."
+  },
+  {
+   "alternatives": [
+    "Grading the referenced set suffices, since the unreferenced numbers move no join count."
+   ],
+   "assumptions": [
+    "ASM-STRING-NOT-OBJECT"
+   ],
+   "boundary": "Coverage discipline. A sampled grading would leave the catalogue's coverage undefined for the unexamined remainder (DD-066-2). The census splits at generation into the referenced set (1,341: 1,293 zero-resolution, 48 already-joined) and the unreferenced set (760), and every reported quantity keeps the split: no aggregate merges the sets without also stating them separately. UNRESOLVED is always its own class in the census and is never rounded into VERIFIED or dropped from a denominator.",
+   "depends_on": [
+    "F066-C03"
+   ],
+   "evidence": [
+    {
+     "description": "Spec 066 sections 3 and 6: the candidate sets and the reported quantities as designed",
+     "direction": "supports",
+     "kind": "observed",
+     "ref": "specs/066-phase130-catalogue-extension/spec.md",
+     "source_id": "specs/066-phase130-catalogue-extension/spec.md",
+     "source_quality": "artifact",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "falsification_tests": [
+    "Any candidate left ungraded in a completed census, or any reported aggregate that merges the referenced and unreferenced sets without stating them separately, defeats this claim."
+   ],
+   "id": "F066-C09",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "C09 fixes the census and its split; C03 fixes the grading rule the census applies. A correctly ruled grading could still breach C09 by covering a subset, so both claims stand.",
+    "evidence_origin_groups": [
+     "spec066-design"
+    ],
+    "forbidden_assumptions": [
+     "ASM-REFERENCED-SUFFICES"
+    ],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "Grading the referenced set suffices, since the unreferenced numbers move no join count.",
+    "verdict_rule": "2,101 graded, in two separately reported sets, or the census is not complete."
+   },
+   "status": "draft",
+   "text": "Under Spec 066, the grading is a census of all 2,101 candidates."
+  },
+  {
+   "alternatives": [
+    "An unseeded convenience sample of conflicts suffices to characterise the census."
+   ],
+   "assumptions": [
+    "ASM-STRING-NOT-OBJECT"
+   ],
+   "boundary": "The attribution instrument. The stratum is 60 candidates (30 VERIFIED / 15 CONFLICT / 15 UNRESOLVED, the whole class where a class is smaller), drawn with seed 20261021, which this freeze records in spec section 5.4 and in the build script before sampling; the medium-coverage supplement of section 5.4 is part of the design. The stratum re-grades nothing and repairs nothing (C04) - a conflict attributed to extraction error remains a conflict in the census counts, with the attribution reported beside them; its one grade consequence is the frozen medium-coverage determination of C11 and the tripwire of C06.",
+   "depends_on": [
+    "F066-C02"
+   ],
+   "evidence": [
+    {
+     "description": "Spec 066 section 5.4: the stratum design, seed handling, and attribution classes as designed",
+     "direction": "supports",
+     "kind": "observed",
+     "ref": "specs/066-phase130-catalogue-extension/spec.md",
+     "source_id": "specs/066-phase130-catalogue-extension/spec.md",
+     "source_quality": "artifact",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "falsification_tests": [
+    "Any conflict rate reported without the stratum's cause attribution beside it, or any stratum drawn under a different seed or split, defeats this claim."
+   ],
+   "id": "F066-C10",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "C10 fixes the attribution instrument; C06 fixes the one verdict the instrument can force. The stratum (C10) is an instrument, the tripwire (C06) is a consequence - different objects, consistently joined.",
+    "evidence_origin_groups": [
+     "spec066-design"
+    ],
+    "forbidden_assumptions": [
+     "ASM-CONFLICT-IS-DIVERGENCE"
+    ],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "An unseeded convenience sample of conflicts suffices to characterise the census.",
+    "verdict_rule": "The stratum is drawn as frozen - seed, split, supplement - or its attributions are not the registered ones."
+   },
+   "status": "draft",
+   "text": "Under Spec 066, the hand-check stratum is the frozen seeded design of spec section 5.4."
+  },
+  {
+   "alternatives": [
+    "Extraction confidence is metadata for reporting; the extracted number may be entered as read."
+   ],
+   "assumptions": [
+    "ASM-AS-PRINTED"
+   ],
+   "boundary": "The confidence gate (spec section 5.3 rung 2), operationalised at DD-066-6. Low-confidence number cells are never repaired and never entered on the extraction's authority: execution hand-verifies every low-confidence well-formed candidate against its page render before grading completes, and a candidate not confirmed as printed is UNRESOLVED. Medium-confidence candidates carry provisional grades until the stratum covers their class: every sampled medium sound as extracted confirms the class; one sampled medium found mis-extracted demotes all medium-confidence VERIFIED candidates to UNRESOLVED. High-confidence candidates pass directly. The intake census this gate rests on: number-cell confidence high 1,933 / medium 183 / low 7 of 2,123 records, of which 5 low cells are the garbled tokens that are not candidates at all.",
+   "depends_on": [
+    "F066-C03"
+   ],
+   "evidence": [
+    {
+     "description": "Spec 037 outcome: the intake census of the same table, including per-cell confidence for the catalogue-number field (high 1,933 / medium 183 / low 7)",
+     "direction": "supports",
+     "kind": "observed",
+     "ref": "specs/037-cisi31-concordance-spine/outcome.md",
+     "source_id": "specs/037-cisi31-concordance-spine/outcome.md",
+     "source_quality": "artifact",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/066-phase130-catalogue-extension/adjudication.md"
+     ]
+    },
+    {
+     "description": "Spec 066 adjudication section 2: the drafting verification recomputed the number-cell confidence census from the pinned local table's own columns (high 1,933 / medium 183 / low 7; the 7 low cells resolved as 5 garbled tokens plus 2 well-formed HARP numbers)",
+     "direction": "supports",
+     "kind": "observed",
+     "ref": "specs/066-phase130-catalogue-extension/adjudication.md",
+     "source_id": "specs/066-phase130-catalogue-extension/adjudication.md",
+     "source_quality": "artifact",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/037-cisi31-concordance-spine/outcome.md"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "Any low-confidence candidate entered without a recorded hand-verification, or any medium-confidence candidate entered after a sampled medium was found mis-extracted, defeats this claim."
+   ],
+   "id": "F066-C11",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "C11 is one rung of C03's ladder, stated separately because it carries its own two-stage procedure (hand-verification, then stratum coverage) that no other rung has; C03 names it, C11 fixes its operation. F066-C11 and F066-C12 both cite the Spec 037 outcome as evidence; that corroboration is shared, not independent - one source, counted once per claim, and the two claims are not independent corroboration of each other on it (FR-6.2, recorded). Each claim's second evidence item is a distinct route, declared mutually independent of the shared one.",
+    "evidence_origin_groups": [
+     "cisi31-intake-record",
+     "spec037-record"
+    ],
+    "forbidden_assumptions": [
+     "ASM-EXTRACTION-IS-PRINT"
+    ],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "Extraction confidence is metadata for reporting; the extracted number may be entered as read.",
+    "verdict_rule": "Low enters only on a render check; medium enters only on stratum coverage; or the gate was not applied."
+   },
+   "status": "draft",
+   "text": "Under Spec 066, a catalogue-number cell graded low is UNGRADED until hand-verified against the page render."
+  },
+  {
+   "alternatives": [
+    "An object without a determinable type is not a catalogue object and should be held out."
+   ],
+   "assumptions": [
+    "ASM-AS-PRINTED"
+   ],
+   "boundary": "Type carriage (spec section 5.3 rung 4), not a gate. The class comes from the portion record's plate-section heading under Spec 037's fixed keyword rules over the closed set {seal, seal impression, tablet, graffiti, ivory stick, stone object, other}; a blank or addenda heading yields unfilled, which is a recorded fact about the published record. No comparison against any other compilation's type vocabulary is performed under this act: Spec 037 measured that comparison against corpus_master and its result stands for that question. An unfilled type is neither a conflict nor a pass and never bars entry by itself.",
+   "depends_on": [
+    "F066-C03"
+   ],
+   "evidence": [
+    {
+     "description": "Spec 037 outcome: the stratum's finding that the portion and the corpus class the same numbered objects under different type vocabularies (all 15 sampled TYPE conflicts attributed to genuine compilation divergence)",
+     "direction": "supports",
+     "kind": "observed",
+     "ref": "specs/037-cisi31-concordance-spine/outcome.md",
+     "source_id": "specs/037-cisi31-concordance-spine/outcome.md",
+     "source_quality": "artifact",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/066-phase130-catalogue-extension/adjudication.md"
+     ]
+    },
+    {
+     "description": "Spec 066 adjudication section 2: the Spec 037 record read first-hand at draft, including its stratum attribution of all 15 sampled TYPE conflicts to genuine compilation divergence, as the basis this act's type-carriage rung is designed against",
+     "direction": "supports",
+     "kind": "observed",
+     "ref": "specs/066-phase130-catalogue-extension/adjudication.md",
+     "source_id": "specs/066-phase130-catalogue-extension/adjudication.md",
+     "source_quality": "artifact",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/037-cisi31-concordance-spine/outcome.md"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "Any candidate barred, conflicted, or held unresolved under this act for its type class or for an unfilled type defeats this claim."
+   ],
+   "id": "F066-C12",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "C12 fences one ladder rung's character (carriage, not comparison); C03 governs the ladder as a whole. A run could grade the ladder correctly in every other rung while turning type into a gate, breaching C12 alone. F066-C11 and F066-C12 both cite the Spec 037 outcome as evidence; that corroboration is shared, not independent - one source, counted once per claim, and the two claims are not independent corroboration of each other on it (FR-6.2, recorded). Each claim's second evidence item is a distinct route, declared mutually independent of the shared one.",
+    "evidence_origin_groups": [
+     "spec037-record"
+    ],
+    "forbidden_assumptions": [
+     "ASM-TYPE-IS-GATE"
+    ],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "An object without a determinable type is not a catalogue object and should be held out.",
+    "verdict_rule": "Type rides along as published - filled or unfilled, both recorded - and decides nothing."
+   },
+   "status": "draft",
+   "text": "Under Spec 066, the object-type class of an entered object is carried as published."
+  },
+  {
+   "alternatives": [
+    "A republication with fuller data should replace the older object, and near-miss numbers should be normalised together."
+   ],
+   "assumptions": [
+    "ASM-AS-PRINTED"
+   ],
+   "boundary": "Construction discipline (spec section 5.2). The merge keys the vols. 1-2 layer and the portion's VERIFIED objects on the number; a number already in the layer (the 48 addenda republications and any unreferenced duplicates the build finds) does not create a second object: the collision is recorded in the local build record and the existing object stands. No silent overwrite, no duplicate, and no garbled token repaired into an invented number: the 5 garbled tokens are not catalogue numbers and enter nothing.",
+   "depends_on": [
+    "F066-C03"
+   ],
+   "evidence": [
+    {
+     "description": "Spec 066 section 5.2: the construction and collision rules as designed",
+     "direction": "supports",
+     "kind": "observed",
+     "ref": "specs/066-phase130-catalogue-extension/spec.md",
+     "source_id": "specs/066-phase130-catalogue-extension/spec.md",
+     "source_quality": "artifact",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "falsification_tests": [
+    "Any merged layer containing two objects under one number, any existing object silently overwritten, or any entered number not printed in the portion defeats this claim."
+   ],
+   "id": "F066-C13",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "C13 governs the built layer's shape; C07 governs where the layer may live. A layer could be built correctly (C13 intact) and then committed, breaching C07, so both are registered.",
+    "evidence_origin_groups": [
+     "spec066-design"
+    ],
+    "forbidden_assumptions": [
+     "ASM-NEWER-REPLACES"
+    ],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "A republication with fuller data should replace the older object, and near-miss numbers should be normalised together.",
+    "verdict_rule": "One object per number, collisions recorded, existing objects standing - or the layer is not the registered one."
+   },
+   "status": "draft",
+   "text": "Under Spec 066, the merged catalogue layer holds one object per distinct catalogue number."
+  },
+  {
+   "alternatives": [
+    "A locally built layer needs no schema validation; the build's own checks suffice."
+   ],
+   "assumptions": [
+    "ASM-GATE-GOVERNS"
+   ],
+   "boundary": "The validator discipline (spec section 5.6). The dataset form is built locally from the entered (VERIFIED) objects, one record per object with the number as provenance.object_id, and is validated by backend/glossa_lab/intake.py at its frozen pin (SHA-256 02b24e3312a9a4ac4f7e3b14aeaee2cda0268f41cb5bd573494340c2e7d2df03) against the Phase-130 schema (b94d03add0318044b559b7b2976bbd2722abc19adcf67a0ea0cf093f8d7de49b). Its license_basis is the entry-22 gate itself, quoted; a missing basis is a REJECT at the validator's license gate, and any REJECT verdict halts the pinning on the section 5.5 terms. The dataset form stays in the restricted local store; only the verdict and its counts are reported. Empty token lists are expected - the portion carries no transcriptions - and their warnings are reported as such.",
+   "depends_on": [
+    "F066-C07"
+   ],
+   "evidence": [
+    {
+     "description": "Phase-130 intake schema v1: the canonical contract the validator enforces, including the required license_basis field",
+     "direction": "supports",
+     "kind": "observed",
+     "ref": "data/intake/intake_dataset_schema_v1.json",
+     "source_id": "data/intake/intake_dataset_schema_v1.json",
+     "source_quality": "artifact",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "falsification_tests": [
+    "A merged layer pinned without a recorded validator verdict over its dataset form, or after a REJECT verdict, defeats this claim."
+   ],
+   "id": "F066-C14",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "C14 depends on C07 because the dataset form it validates is itself a row-level product the fence keeps local; the dependency is a containment relation, not a restatement.",
+    "evidence_origin_groups": [
+     "phase130-schema-record"
+    ],
+    "forbidden_assumptions": [
+     "ASM-BUILD-CHECKS-SUFFICE"
+    ],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "A locally built layer needs no schema validation; the build's own checks suffice.",
+    "verdict_rule": "No validator verdict, no pin; a REJECT is a halt, never overridden."
+   },
+   "status": "draft",
+   "text": "Under Spec 066, the extension dataset form is validated by the pinned Phase-130 validator before pinning."
+  },
+  {
+   "alternatives": [
+    "A verified catalogue on the same numbers the join failed against settles the join question the successor will ask."
+   ],
+   "assumptions": [
+    "ASM-NO-JOIN-RUN"
+   ],
+   "boundary": "The epistemic fence on the product, and the act's does-not-establish line. Grading verifies that a number may enter the catalogue as an object; a join is a separate act - resolving lineage rows against the merged layer - that this spec neither runs nor implies, and the section 5.7 projection is arithmetic over the committed census and this act's grades, labelled a projection wherever it appears. No F1 quantity is computed under this act on any set. STUDY-SPEC-024/F1 stands exactly as recorded (SUPPORTED on its original joined subset, Mantel-Haenszel odds ratio 2.384, 95% CI [1.847, 3.077], family q = 0.00015), and Spec 059's frozen record, outcome, and closure stand exactly as written, regardless of this act's outcome.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 059 outcome: Spec 059 closed at step 0, JOIN GATE NOT MET (2,899 of 5,679 joined against the 3,465 bar); no F1 quantity was computed and STUDY-SPEC-024/F1 stands exactly as recorded",
+     "direction": "supports",
+     "kind": "observed",
+     "ref": "specs/059-f1-object-join/outcome.md",
+     "source_id": "specs/059-f1-object-join/outcome.md",
+     "source_quality": "artifact",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "falsification_tests": [
+    "Any Spec 066 product, or any programme citation of one, presenting a VERIFIED object as a joined row, the projection as a join result, or any F1 quantity as computed under this act defeats this claim."
+   ],
+   "id": "F066-C15",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "C15 fences what a VERIFIED grade MEANS; C02 fences what a candidate IS. A product could respect C02 (grade every entry) and still mis-cite a grade as a join, breaching C15 alone.",
+    "evidence_origin_groups": [
+     "spec059-record"
+    ],
+    "forbidden_assumptions": [
+     "ASM-CATALOGUE-IS-JOIN"
+    ],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "A verified catalogue on the same numbers the join failed against settles the join question the successor will ask.",
+    "verdict_rule": "Objects are cited as catalogue entries only; the join and F1 stand where their own records left them."
+   },
+   "status": "draft",
+   "text": "A VERIFIED catalogue object under Spec 066 is not a verified join."
+  }
+ ],
+ "note": "Claims-first register for Spec 066, generated alongside spec.md from the amendment-queue Item 7 draft (owner-approved 2026-10-21), the Spec 037 and Spec 059 records on main, and the Phase-130 gate record (PROVENANCE entry 22), under the owner's approval of 2026-10-21. AEE lifecycle hooks run at the freeze act under aee 1.5.3; any recovery rounds are recorded in this note by append at the freeze. Nothing in this register grades a candidate, builds a layer, or states an expected outcome. FREEZE RECOVERY (2026-10-21): round 1 at after_specify over 0.5-draft returned iterate with 19 failure modes (15 FR-2.3 draft-cap records; 1 irreducibility challenge over F066-C01, recorded under coverage_gap; 1 counterexample challenge over F066-C05, recorded under assumption_unvalidated; 2 shared-evidence independence records over F066-C11/F066-C12, which both cite the Spec 037 outcome) and no claim below the 0.70 threshold (minimum propagated 0.72). Recovery to 0.6-draft: F066-C01's text restated as its single head proposition (the census/construction scope carried in its boundary, which already stated it); F066-C05's text restated without the absolute quantifier (the full-census denominator carried in its boundary, as drafted); F066-C11 and F066-C12 each gained a second evidence item - the drafting verification record in this spec's adjudication.md section 2, a distinct route from the Spec 037 outcome - with mutual independent_of declarations, and the shared-corroboration fact recorded in both claims' boundary confirmations (FR-6.2). Propositions, falsifiers, and verdict rules unchanged.",
+ "register_version": "0.6-draft",
+ "spec": "066-phase130-catalogue-extension"
+}

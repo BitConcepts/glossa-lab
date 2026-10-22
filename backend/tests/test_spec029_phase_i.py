@@ -51,6 +51,27 @@ ZIPF_2010 = "yadav_2010_ngrams_manual_001"
 BEGIN_2009 = "yadav_2009_arxiv_manual_002"
 BEGIN_2010 = "yadav_2010_ngrams_manual_002"
 
+# Lane-2 adoption (2026-10-13, owner act): the extracted claims
+# that advanced checked -> explained with authored explanations.
+_LANE2_EXPLAINED_EXTRACTED = {
+    "farmer_sproat_witzel_2004_manual_001",
+    "indus_valley_script_deciphered_from_myth_65ff0a26_manual_002",
+    "parpola_2010_dravidian_solution_manual_001",
+    "parpola_2010_dravidian_solution_manual_002",
+    "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001",
+    "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003",
+    "yadav_2009_arxiv_manual_001",
+    "yadav_2009_arxiv_manual_002",
+}
+_LANE2_FLAG_CLEARED_EXTRACTED = {
+    "parpola_2010_dravidian_solution_manual_001",
+    "parpola_2010_dravidian_solution_manual_002",
+    "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001",
+    "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003",
+    "yadav_2009_arxiv_manual_001",
+    "yadav_2009_arxiv_manual_002",
+}
+
 EXPECTED_GROUPS = {
     ZIPF_2009: {ZIPF_2010},
     BEGIN_2009: {BEGIN_2010},
@@ -168,18 +189,72 @@ def test_instances_preserved_verbatim_on_canonical():
             assert entry["source_document_id"] == records[cid]["source_document_id"]
 
 
+# Phase-104 carry-over correction supersession (2026-10-13): the
+# merge this file pins did not touch any Phase D stamp — that is
+# still asserted for every record below. Three records were later
+# superseded by a separate act (the Phase-104 verdict carry-over,
+# written through the transition service on the owner's order; see
+# ``specs/029-tao-claim-lifecycle/phase104-carryover-correction-record.md``):
+# their Phase D entry stands as stage_history[0] and the stamp
+# fields now carry the correction's tail. Exactly these three:
+_CARRYOVER_CORRECTED = {
+    "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001",
+    "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002",
+    "without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001",
+}
+
+
 def test_phase_d_stage_stamps_untouched_by_merge():
+    # The merge itself touched no stamp — every record's Phase D
+    # entry still stands as its stage_history[0]. Lane-2 adoption
+    # amendment (2026-10-13, owner act): a later, separate act
+    # advanced the 8 checked canonical claims to ``explained``
+    # through the transition service (append-only: history grows to
+    # 2, the migration entry untouched) and cleared the
+    # ``verified_unexplained`` stamp on the 6 of them that carried
+    # it, the authored explanation being the flag's missing content.
     records = _load_store()
     entries = {e["item_id"]: e for e in _LEDGER["entries"]
                if e["class"] == "extracted_claim"}
+    corrected = []
     for claim_id, record in records.items():
         entry = entries[claim_id]
+        assert record["stage_history"][0]["to_stage"] == entry["honest_stage"], claim_id
+        assert record["stage_history"][0]["actor"] == \
+            "spec029-phase-d-restaging-migration", claim_id
+        if claim_id in _LANE2_EXPLAINED_EXTRACTED:
+            assert record["stage"] == "explained", claim_id
+            assert record["stage_source"] == \
+                "transition-service:stage_history[1]", claim_id
+            assert record["stage_as_of"] == "2026-10-13T10:12:00+00:00", claim_id
+            assert len(record["stage_history"]) == 2, claim_id
+            if claim_id in _LANE2_FLAG_CLEARED_EXTRACTED:
+                assert record["verified_unexplained"] is False, claim_id
+            else:
+                assert record["verified_unexplained"] is (
+                    "verified_unexplained" in (entry.get("flags") or [])), claim_id
+            continue
+        if claim_id in _CARRYOVER_CORRECTED:
+            # Phase-104 carry-over correction (2026-10-13): the
+            # Phase D stamp stands as history[0] (asserted above);
+            # the correction appended the transition-service tail,
+            # and its flag state is the ledger's (the correction
+            # cleared nothing).
+            corrected.append(claim_id)
+            assert record["stage_history"][0]["timestamp"] == "2026-10-12"
+            assert len(record["stage_history"]) == 2
+            assert record["stage"] == "checked"
+            assert record["stage_source"] == "transition-service:stage_history[1]"
+            assert record["verified_unexplained"] is (
+                "verified_unexplained" in (entry.get("flags") or [])), claim_id
+            continue
         assert record["stage"] == entry["honest_stage"], claim_id
         assert record["stage_source"].endswith(f":{claim_id}"), claim_id
         assert record["stage_as_of"] == "2026-10-12"
         assert len(record["stage_history"]) == 1
         assert record["verified_unexplained"] is (
             "verified_unexplained" in (entry.get("flags") or []))
+    assert set(corrected) == _CARRYOVER_CORRECTED
 
 
 def test_falsifiers_preserved_and_never_invented():

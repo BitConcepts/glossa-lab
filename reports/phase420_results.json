@@ -1,0 +1,5425 @@
+{
+  "ai_disclosure": "Executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution sec.VI.",
+  "analysis": {
+    "first_divergence": [
+      {
+        "a_value": "UNK",
+        "b_value": "P202",
+        "key": "cisi:v1:H-139",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "UNK",
+        "b_value": "P310",
+        "key": "cisi:v1:H-212",
+        "position": 5,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "P184",
+        "b_value": "UNK",
+        "key": "cisi:v1:H-305",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "UNMAPPED:M615",
+        "b_value": "P268",
+        "key": "cisi:v1:H-66",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "UNK",
+        "b_value": "P098",
+        "key": "cisi:v1:K-63",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "P310",
+        "b_value": "UNK",
+        "key": "cisi:v1:L-165",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "P310",
+        "b_value": "UNK",
+        "key": "cisi:v1:L-227",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "P230",
+        "b_value": "UNK",
+        "key": "cisi:v1:L-33",
+        "position": 2,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": null,
+        "b_value": "UNK",
+        "key": "cisi:v1:L-66",
+        "position": 3,
+        "type": "INDEL"
+      },
+      {
+        "a_value": "P217",
+        "b_value": "UNK",
+        "key": "cisi:v1:L-98",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": null,
+        "b_value": "P184",
+        "key": "cisi:v1:M-110",
+        "position": 2,
+        "type": "INDEL"
+      },
+      {
+        "a_value": "P144",
+        "b_value": "P310",
+        "key": "cisi:v1:M-127",
+        "position": 4,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "UNK",
+        "b_value": "P009",
+        "key": "cisi:v1:M-144",
+        "position": 2,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "P283",
+        "b_value": "P120",
+        "key": "cisi:v1:M-162",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "UNK",
+        "b_value": "P285",
+        "key": "cisi:v1:M-195",
+        "position": 2,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "P121",
+        "b_value": null,
+        "key": "cisi:v1:M-21",
+        "position": 2,
+        "type": "INDEL"
+      },
+      {
+        "a_value": "P365",
+        "b_value": "UNMAPPED:M804",
+        "key": "cisi:v1:M-250",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "P268",
+        "b_value": "UNK",
+        "key": "cisi:v1:M-321",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "P324",
+        "b_value": "UNMAPPED:M700",
+        "key": "cisi:v1:M-41",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "UNK",
+        "b_value": "P315",
+        "key": "cisi:v1:M-480",
+        "position": 4,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "P310",
+        "b_value": "UNK",
+        "key": "cisi:v1:M-58",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "P124",
+        "b_value": "P123",
+        "key": "cisi:v1:M-75",
+        "position": 3,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "UNK",
+        "b_value": "P245",
+        "key": "cisi:v1:M-93",
+        "position": 3,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "UNMAPPED:M700",
+        "b_value": "P310",
+        "key": "cisi:v2:H-271",
+        "position": 3,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": null,
+        "b_value": "P145",
+        "key": "cisi:v2:H-451",
+        "position": 1,
+        "type": "INDEL"
+      },
+      {
+        "a_value": null,
+        "b_value": "UNK",
+        "key": "cisi:v2:H-523",
+        "position": 2,
+        "type": "INDEL"
+      },
+      {
+        "a_value": "P085",
+        "b_value": "P086",
+        "key": "cisi:v2:H-596",
+        "position": 2,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "UNK",
+        "b_value": "P256",
+        "key": "cisi:v2:H-669",
+        "position": 2,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "UNK",
+        "b_value": "P332",
+        "key": "cisi:v2:H-743",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "P147",
+        "b_value": "UNK",
+        "key": "cisi:v2:H-814",
+        "position": 3,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "P098",
+        "b_value": "P282",
+        "key": "cisi:v2:H-960",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": null,
+        "b_value": "P148",
+        "key": "cisi:v2:M-1247",
+        "position": 1,
+        "type": "INDEL"
+      },
+      {
+        "a_value": "UNK",
+        "b_value": null,
+        "key": "cisi:v2:M-1352",
+        "position": 1,
+        "type": "INDEL"
+      },
+      {
+        "a_value": "P058",
+        "b_value": "UNK",
+        "key": "cisi:v2:M-1448",
+        "position": 2,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "UNK",
+        "b_value": null,
+        "key": "cisi:v2:M-658",
+        "position": 1,
+        "type": "INDEL"
+      },
+      {
+        "a_value": "UNK",
+        "b_value": "UNMAPPED:M516",
+        "key": "cisi:v2:M-819",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "P154",
+        "b_value": "P163",
+        "key": "cisi:v2:M-926",
+        "position": 2,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "UNK",
+        "b_value": null,
+        "key": "cisi:v2:M-983",
+        "position": 2,
+        "type": "INDEL"
+      },
+      {
+        "a_value": null,
+        "b_value": "UNK",
+        "key": "cisi:v2:Pk-24",
+        "position": 1,
+        "type": "INDEL"
+      },
+      {
+        "a_value": "UNMAPPED:M500",
+        "b_value": "UNK",
+        "key": "cisi:v2:Skh-7",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      }
+    ],
+    "first_divergence_summary": {
+      "by_position": {
+        "1": 21,
+        "2": 11,
+        "3": 5,
+        "4": 2,
+        "5": 1
+      },
+      "by_type": {
+        "INDEL": 10,
+        "SUBSTITUTION": 30
+      },
+      "by_value": [
+        {
+          "count": 26,
+          "value": "UNK"
+        },
+        {
+          "count": 6,
+          "value": "P310"
+        },
+        {
+          "count": 2,
+          "value": "P098"
+        },
+        {
+          "count": 2,
+          "value": "P184"
+        },
+        {
+          "count": 2,
+          "value": "P268"
+        },
+        {
+          "count": 2,
+          "value": "UNMAPPED:M700"
+        },
+        {
+          "count": 1,
+          "value": "P009"
+        },
+        {
+          "count": 1,
+          "value": "P058"
+        },
+        {
+          "count": 1,
+          "value": "P085"
+        },
+        {
+          "count": 1,
+          "value": "P086"
+        },
+        {
+          "count": 1,
+          "value": "P120"
+        },
+        {
+          "count": 1,
+          "value": "P121"
+        },
+        {
+          "count": 1,
+          "value": "P123"
+        },
+        {
+          "count": 1,
+          "value": "P124"
+        },
+        {
+          "count": 1,
+          "value": "P144"
+        },
+        {
+          "count": 1,
+          "value": "P145"
+        },
+        {
+          "count": 1,
+          "value": "P147"
+        },
+        {
+          "count": 1,
+          "value": "P148"
+        },
+        {
+          "count": 1,
+          "value": "P154"
+        },
+        {
+          "count": 1,
+          "value": "P163"
+        },
+        {
+          "count": 1,
+          "value": "P202"
+        },
+        {
+          "count": 1,
+          "value": "P217"
+        },
+        {
+          "count": 1,
+          "value": "P230"
+        },
+        {
+          "count": 1,
+          "value": "P245"
+        },
+        {
+          "count": 1,
+          "value": "P256"
+        },
+        {
+          "count": 1,
+          "value": "P282"
+        },
+        {
+          "count": 1,
+          "value": "P283"
+        },
+        {
+          "count": 1,
+          "value": "P285"
+        },
+        {
+          "count": 1,
+          "value": "P315"
+        },
+        {
+          "count": 1,
+          "value": "P324"
+        },
+        {
+          "count": 1,
+          "value": "P332"
+        },
+        {
+          "count": 1,
+          "value": "P365"
+        },
+        {
+          "count": 1,
+          "value": "UNMAPPED:M500"
+        },
+        {
+          "count": 1,
+          "value": "UNMAPPED:M516"
+        },
+        {
+          "count": 1,
+          "value": "UNMAPPED:M615"
+        },
+        {
+          "count": 1,
+          "value": "UNMAPPED:M804"
+        }
+      ]
+    },
+    "per_object_events": {
+      "cisi:v1:H-139": [
+        {
+          "a_value": "UNK",
+          "b_value": "P202",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:H-212": [
+        {
+          "a_value": "UNK",
+          "b_value": "P310",
+          "position": 5,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": "P310",
+          "position": 6,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:H-305": [
+        {
+          "a_value": "P184",
+          "b_value": "UNK",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P269",
+          "b_value": "P144",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P144",
+          "b_value": "P390",
+          "position": 5,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": "P147",
+          "position": 6,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:H-66": [
+        {
+          "a_value": "UNMAPPED:M615",
+          "b_value": "P268",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNMAPPED:M615",
+          "b_value": "P268",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNMAPPED:M527",
+          "b_value": "P282",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:K-63": [
+        {
+          "a_value": "UNK",
+          "b_value": "P098",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P144",
+          "b_value": "UNK",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P316",
+          "b_value": "UNMAPPED:M705",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P131",
+          "b_value": "UNK",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:L-165": [
+        {
+          "a_value": "P310",
+          "b_value": "UNK",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P378",
+          "b_value": "UNK",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNMAPPED:M817",
+          "b_value": "P310",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:L-227": [
+        {
+          "a_value": "P310",
+          "b_value": "UNK",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:L-33": [
+        {
+          "a_value": "P230",
+          "b_value": "UNK",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": "P085",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:L-66": [
+        {
+          "a_value": null,
+          "b_value": "UNK",
+          "position": 3,
+          "type": "INDEL"
+        },
+        {
+          "a_value": null,
+          "b_value": "UNK",
+          "position": 4,
+          "type": "INDEL"
+        },
+        {
+          "a_value": "P240",
+          "b_value": "P184",
+          "position": 5,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P202",
+          "b_value": "UNK",
+          "position": 7,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P316",
+          "b_value": "UNMAPPED:M600",
+          "position": 8,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:L-98": [
+        {
+          "a_value": "P217",
+          "b_value": "UNK",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P324",
+          "b_value": "UNK",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-110": [
+        {
+          "a_value": null,
+          "b_value": "P184",
+          "position": 2,
+          "type": "INDEL"
+        },
+        {
+          "a_value": "P185",
+          "b_value": "UNK",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P121",
+          "b_value": "P119",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNMAPPED:M817",
+          "b_value": "P385",
+          "position": 5,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-127": [
+        {
+          "a_value": "P144",
+          "b_value": "P310",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-144": [
+        {
+          "a_value": "UNK",
+          "b_value": "P009",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNMAPPED:M817",
+          "b_value": "UNMAPPED:M806",
+          "position": 6,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-162": [
+        {
+          "a_value": "P283",
+          "b_value": "P120",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": "P378",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P224",
+          "b_value": "P240",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": "P245",
+          "position": 5,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-195": [
+        {
+          "a_value": "UNK",
+          "b_value": "P285",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P144",
+          "b_value": "P145",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-21": [
+        {
+          "a_value": "P121",
+          "b_value": null,
+          "position": 2,
+          "type": "INDEL"
+        },
+        {
+          "a_value": "P310",
+          "b_value": "UNMAPPED:M442",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P272",
+          "b_value": "P294",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P144",
+          "b_value": null,
+          "position": 6,
+          "type": "INDEL"
+        },
+        {
+          "a_value": "P119",
+          "b_value": "P145",
+          "position": 7,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-250": [
+        {
+          "a_value": "P365",
+          "b_value": "UNMAPPED:M804",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-321": [
+        {
+          "a_value": "P268",
+          "b_value": "UNK",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P268",
+          "b_value": "UNK",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": "P372",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-41": [
+        {
+          "a_value": "P324",
+          "b_value": "UNMAPPED:M700",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": "P245",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": "P245",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": "P244",
+          "position": 5,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-480": [
+        {
+          "a_value": "UNK",
+          "b_value": "P315",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-58": [
+        {
+          "a_value": "P310",
+          "b_value": "UNK",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNMAPPED:M503",
+          "b_value": "P209",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNMAPPED:M817",
+          "b_value": "UNMAPPED:M805",
+          "position": 5,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-75": [
+        {
+          "a_value": "P124",
+          "b_value": "P123",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNMAPPED:M817",
+          "b_value": "P382",
+          "position": 5,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-93": [
+        {
+          "a_value": "UNK",
+          "b_value": "P245",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P310",
+          "b_value": "P324",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:H-271": [
+        {
+          "a_value": "UNMAPPED:M700",
+          "b_value": "P310",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNMAPPED:M745",
+          "b_value": "P327",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:H-451": [
+        {
+          "a_value": null,
+          "b_value": "P145",
+          "position": 1,
+          "type": "INDEL"
+        },
+        {
+          "a_value": "P296",
+          "b_value": "P098",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P308",
+          "b_value": "UNK",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P145",
+          "b_value": "P204",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:H-523": [
+        {
+          "a_value": null,
+          "b_value": "UNK",
+          "position": 2,
+          "type": "INDEL"
+        },
+        {
+          "a_value": "P150",
+          "b_value": "UNK",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P184",
+          "b_value": "UNK",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:H-596": [
+        {
+          "a_value": "P085",
+          "b_value": "P086",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:H-669": [
+        {
+          "a_value": "UNK",
+          "b_value": "P256",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:H-743": [
+        {
+          "a_value": "UNK",
+          "b_value": "P332",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": "P332",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNMAPPED:M452",
+          "b_value": "P197",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P240",
+          "b_value": "UNK",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P310",
+          "b_value": "P324",
+          "position": 7,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:H-814": [
+        {
+          "a_value": "P147",
+          "b_value": "UNK",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P119",
+          "b_value": "P145",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:H-960": [
+        {
+          "a_value": "P098",
+          "b_value": "P282",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": "P315",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P315",
+          "b_value": "P310",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:M-1247": [
+        {
+          "a_value": null,
+          "b_value": "P148",
+          "position": 1,
+          "type": "INDEL"
+        }
+      ],
+      "cisi:v2:M-1352": [
+        {
+          "a_value": "UNK",
+          "b_value": null,
+          "position": 1,
+          "type": "INDEL"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": "P310",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:M-1448": [
+        {
+          "a_value": "P058",
+          "b_value": "UNK",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:M-658": [
+        {
+          "a_value": "UNK",
+          "b_value": null,
+          "position": 1,
+          "type": "INDEL"
+        },
+        {
+          "a_value": "P124",
+          "b_value": "P123",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P119",
+          "b_value": null,
+          "position": 5,
+          "type": "INDEL"
+        },
+        {
+          "a_value": "P123",
+          "b_value": "P125",
+          "position": 6,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:M-819": [
+        {
+          "a_value": "UNK",
+          "b_value": "UNMAPPED:M516",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P224",
+          "b_value": "P245",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P364",
+          "b_value": "UNMAPPED:M803",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P355",
+          "b_value": "UNMAPPED:M817",
+          "position": 6,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:M-926": [
+        {
+          "a_value": "P154",
+          "b_value": "P163",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P375",
+          "b_value": "UNK",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P366",
+          "b_value": "UNMAPPED:M808",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "P355",
+          "b_value": "UNMAPPED:M812",
+          "position": 5,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:M-983": [
+        {
+          "a_value": "UNK",
+          "b_value": null,
+          "position": 2,
+          "type": "INDEL"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": null,
+          "position": 3,
+          "type": "INDEL"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": null,
+          "position": 4,
+          "type": "INDEL"
+        }
+      ],
+      "cisi:v2:Pk-24": [
+        {
+          "a_value": null,
+          "b_value": "UNK",
+          "position": 1,
+          "type": "INDEL"
+        }
+      ],
+      "cisi:v2:Skh-7": [
+        {
+          "a_value": "UNMAPPED:M500",
+          "b_value": "UNK",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        }
+      ]
+    },
+    "primary": {
+      "event_total_E": 103,
+      "loci": {
+        "object_types": {
+          "fires": false,
+          "firing_type": null
+        },
+        "segmentation": {
+          "fires": false,
+          "indel_share": 0.145631
+        },
+        "signs": {
+          "fires": true,
+          "sign_state": "CONCENTRATED",
+          "top10_frequency": 238,
+          "top10_frequency_share": 0.624672,
+          "top10_involvement": 104,
+          "top10_share": 0.544503,
+          "top10_values": [
+            "UNK",
+            "P310",
+            "P144",
+            "UNMAPPED:M817",
+            "P145",
+            "P245",
+            "P119",
+            "P184",
+            "P268",
+            "P324"
+          ],
+          "total_involvement": 191,
+          "total_tokens": 381,
+          "unk_in_top10": true,
+          "unk_involvement_share": 0.277487
+        }
+      },
+      "t1_by_sign": [
+        {
+          "frequency": 149,
+          "frequency_share": 0.391076,
+          "involvement": 53,
+          "involvement_share": 0.277487,
+          "value": "UNK"
+        },
+        {
+          "frequency": 29,
+          "frequency_share": 0.076115,
+          "involvement": 13,
+          "involvement_share": 0.068063,
+          "value": "P310"
+        },
+        {
+          "frequency": 12,
+          "frequency_share": 0.031496,
+          "involvement": 6,
+          "involvement_share": 0.031414,
+          "value": "P144"
+        },
+        {
+          "frequency": 6,
+          "frequency_share": 0.015748,
+          "involvement": 6,
+          "involvement_share": 0.031414,
+          "value": "UNMAPPED:M817"
+        },
+        {
+          "frequency": 13,
+          "frequency_share": 0.034121,
+          "involvement": 5,
+          "involvement_share": 0.026178,
+          "value": "P145"
+        },
+        {
+          "frequency": 5,
+          "frequency_share": 0.013123,
+          "involvement": 5,
+          "involvement_share": 0.026178,
+          "value": "P245"
+        },
+        {
+          "frequency": 12,
+          "frequency_share": 0.031496,
+          "involvement": 4,
+          "involvement_share": 0.020942,
+          "value": "P119"
+        },
+        {
+          "frequency": 4,
+          "frequency_share": 0.010499,
+          "involvement": 4,
+          "involvement_share": 0.020942,
+          "value": "P184"
+        },
+        {
+          "frequency": 4,
+          "frequency_share": 0.010499,
+          "involvement": 4,
+          "involvement_share": 0.020942,
+          "value": "P268"
+        },
+        {
+          "frequency": 4,
+          "frequency_share": 0.010499,
+          "involvement": 4,
+          "involvement_share": 0.020942,
+          "value": "P324"
+        },
+        {
+          "frequency": 5,
+          "frequency_share": 0.013123,
+          "involvement": 3,
+          "involvement_share": 0.015707,
+          "value": "P098"
+        },
+        {
+          "frequency": 9,
+          "frequency_share": 0.023622,
+          "involvement": 3,
+          "involvement_share": 0.015707,
+          "value": "P123"
+        },
+        {
+          "frequency": 7,
+          "frequency_share": 0.018373,
+          "involvement": 3,
+          "involvement_share": 0.015707,
+          "value": "P240"
+        },
+        {
+          "frequency": 3,
+          "frequency_share": 0.007874,
+          "involvement": 3,
+          "involvement_share": 0.015707,
+          "value": "P315"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "P085"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "P121"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "P124"
+        },
+        {
+          "frequency": 6,
+          "frequency_share": 0.015748,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "P147"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "P202"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "P224"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "P282"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "P316"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "P332"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "P355"
+        },
+        {
+          "frequency": 4,
+          "frequency_share": 0.010499,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "P378"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "UNMAPPED:M615"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "UNMAPPED:M700"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P009"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P058"
+        },
+        {
+          "frequency": 3,
+          "frequency_share": 0.007874,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P086"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P120"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P125"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P131"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P148"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P150"
+        },
+        {
+          "frequency": 3,
+          "frequency_share": 0.007874,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P154"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P163"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P185"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P197"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P204"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P209"
+        },
+        {
+          "frequency": 5,
+          "frequency_share": 0.013123,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P217"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P230"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P244"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P256"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P269"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P272"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P283"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P285"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P294"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P296"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P308"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P327"
+        },
+        {
+          "frequency": 3,
+          "frequency_share": 0.007874,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P364"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P365"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P366"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P372"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P375"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P382"
+        },
+        {
+          "frequency": 5,
+          "frequency_share": 0.013123,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P385"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "P390"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "UNMAPPED:M442"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "UNMAPPED:M452"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "UNMAPPED:M500"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "UNMAPPED:M503"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "UNMAPPED:M516"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "UNMAPPED:M527"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "UNMAPPED:M600"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "UNMAPPED:M705"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "UNMAPPED:M745"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "UNMAPPED:M803"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "UNMAPPED:M804"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "UNMAPPED:M805"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "UNMAPPED:M806"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "UNMAPPED:M808"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "UNMAPPED:M812"
+        }
+      ],
+      "t2_by_object_type": [
+        {
+          "event_share": 0.776699,
+          "events": 80,
+          "mismatched_objects": 30,
+          "object_share": 0.68,
+          "object_type_recorded": "Seals",
+          "objects": 34
+        },
+        {
+          "event_share": 0.174757,
+          "events": 18,
+          "mismatched_objects": 7,
+          "object_share": 0.22,
+          "object_type_recorded": "Tablets",
+          "objects": 11
+        },
+        {
+          "event_share": 0.048544,
+          "events": 5,
+          "mismatched_objects": 3,
+          "object_share": 0.1,
+          "object_type_recorded": "Unrecorded",
+          "objects": 5
+        }
+      ],
+      "t3_by_divergence_type": {
+        "indel": 15,
+        "indel_share": 0.145631,
+        "substitution": 88,
+        "substitution_share": 0.854369
+      },
+      "total_involvement": 191
+    },
+    "secondary_unk_excluded": {
+      "event_total_E": 50,
+      "loci": {
+        "object_types": {
+          "fires": true,
+          "firing_type": "Seals"
+        },
+        "segmentation": {
+          "fires": false,
+          "indel_share": 0.12
+        },
+        "signs": {
+          "fires": false,
+          "sign_state": "BETWEEN",
+          "top10_frequency": 94,
+          "top10_frequency_share": 0.246719,
+          "top10_involvement": 39,
+          "top10_share": 0.414894,
+          "top10_values": [
+            "P310",
+            "UNMAPPED:M817",
+            "P144",
+            "P145",
+            "P119",
+            "P123",
+            "P324",
+            "P098",
+            "P121",
+            "P124"
+          ],
+          "total_involvement": 94,
+          "total_tokens": 381,
+          "unk_in_top10": false,
+          "unk_involvement_share": null
+        }
+      },
+      "t1_by_sign": [
+        {
+          "frequency": 29,
+          "frequency_share": 0.076115,
+          "involvement": 7,
+          "involvement_share": 0.074468,
+          "value": "P310"
+        },
+        {
+          "frequency": 6,
+          "frequency_share": 0.015748,
+          "involvement": 6,
+          "involvement_share": 0.06383,
+          "value": "UNMAPPED:M817"
+        },
+        {
+          "frequency": 12,
+          "frequency_share": 0.031496,
+          "involvement": 5,
+          "involvement_share": 0.053191,
+          "value": "P144"
+        },
+        {
+          "frequency": 13,
+          "frequency_share": 0.034121,
+          "involvement": 5,
+          "involvement_share": 0.053191,
+          "value": "P145"
+        },
+        {
+          "frequency": 12,
+          "frequency_share": 0.031496,
+          "involvement": 4,
+          "involvement_share": 0.042553,
+          "value": "P119"
+        },
+        {
+          "frequency": 9,
+          "frequency_share": 0.023622,
+          "involvement": 3,
+          "involvement_share": 0.031915,
+          "value": "P123"
+        },
+        {
+          "frequency": 4,
+          "frequency_share": 0.010499,
+          "involvement": 3,
+          "involvement_share": 0.031915,
+          "value": "P324"
+        },
+        {
+          "frequency": 5,
+          "frequency_share": 0.013123,
+          "involvement": 2,
+          "involvement_share": 0.021277,
+          "value": "P098"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.021277,
+          "value": "P121"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.021277,
+          "value": "P124"
+        },
+        {
+          "frequency": 4,
+          "frequency_share": 0.010499,
+          "involvement": 2,
+          "involvement_share": 0.021277,
+          "value": "P184"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.021277,
+          "value": "P224"
+        },
+        {
+          "frequency": 7,
+          "frequency_share": 0.018373,
+          "involvement": 2,
+          "involvement_share": 0.021277,
+          "value": "P240"
+        },
+        {
+          "frequency": 4,
+          "frequency_share": 0.010499,
+          "involvement": 2,
+          "involvement_share": 0.021277,
+          "value": "P268"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.021277,
+          "value": "P282"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.021277,
+          "value": "P316"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.021277,
+          "value": "P355"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.021277,
+          "value": "UNMAPPED:M615"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.021277,
+          "value": "UNMAPPED:M700"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "P085"
+        },
+        {
+          "frequency": 3,
+          "frequency_share": 0.007874,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "P086"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "P120"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "P125"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "P148"
+        },
+        {
+          "frequency": 3,
+          "frequency_share": 0.007874,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "P154"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "P163"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "P197"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "P204"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "P209"
+        },
+        {
+          "frequency": 5,
+          "frequency_share": 0.013123,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "P245"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "P269"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "P272"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "P283"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "P294"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "P296"
+        },
+        {
+          "frequency": 3,
+          "frequency_share": 0.007874,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "P315"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "P327"
+        },
+        {
+          "frequency": 3,
+          "frequency_share": 0.007874,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "P364"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "P365"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "P366"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "P382"
+        },
+        {
+          "frequency": 5,
+          "frequency_share": 0.013123,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "P385"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "P390"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "UNMAPPED:M442"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "UNMAPPED:M452"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "UNMAPPED:M503"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "UNMAPPED:M527"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "UNMAPPED:M600"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "UNMAPPED:M705"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "UNMAPPED:M745"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "UNMAPPED:M803"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "UNMAPPED:M804"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "UNMAPPED:M805"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "UNMAPPED:M806"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "UNMAPPED:M808"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "UNMAPPED:M812"
+        }
+      ],
+      "t2_by_object_type": [
+        {
+          "event_share": 0.84,
+          "events": 42,
+          "mismatched_objects": 30,
+          "object_share": 0.68,
+          "object_type_recorded": "Seals",
+          "objects": 34
+        },
+        {
+          "event_share": 0.14,
+          "events": 7,
+          "mismatched_objects": 7,
+          "object_share": 0.22,
+          "object_type_recorded": "Tablets",
+          "objects": 11
+        },
+        {
+          "event_share": 0.02,
+          "events": 1,
+          "mismatched_objects": 3,
+          "object_share": 0.1,
+          "object_type_recorded": "Unrecorded",
+          "objects": 5
+        }
+      ],
+      "t3_by_divergence_type": {
+        "indel": 6,
+        "indel_share": 0.12,
+        "substitution": 44,
+        "substitution_share": 0.88
+      },
+      "total_involvement": 94
+    },
+    "token_total_both_passes": 381
+  },
+  "anchors_after": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+  "anchors_before": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+  "anchors_byte_identical": true,
+  "base_commit": "3200b7b5b6841a7b9567a81368bf84004fd17255",
+  "census": [
+    {
+      "gold": false,
+      "key": "cisi:v1:M-21",
+      "len_pass_a": 8,
+      "len_pass_b": 6,
+      "object_type_recorded": "Seals",
+      "site": "Mohenjo-Daro"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v1:M-41",
+      "len_pass_a": 8,
+      "len_pass_b": 8,
+      "object_type_recorded": "Seals",
+      "site": "Mohenjo-Daro"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v1:M-58",
+      "len_pass_a": 5,
+      "len_pass_b": 5,
+      "object_type_recorded": "Seals",
+      "site": "Mohenjo-Daro"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v1:M-75",
+      "len_pass_a": 5,
+      "len_pass_b": 5,
+      "object_type_recorded": "Seals",
+      "site": "Mohenjo-Daro"
+    },
+    {
+      "gold": true,
+      "key": "cisi:v1:M-93",
+      "len_pass_a": 5,
+      "len_pass_b": 5,
+      "object_type_recorded": "Seals",
+      "site": "Mohenjo-Daro"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v1:M-110",
+      "len_pass_a": 4,
+      "len_pass_b": 5,
+      "object_type_recorded": "Seals",
+      "site": "Mohenjo-Daro"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v1:M-127",
+      "len_pass_a": 5,
+      "len_pass_b": 5,
+      "object_type_recorded": "Seals",
+      "site": "Mohenjo-Daro"
+    },
+    {
+      "gold": true,
+      "key": "cisi:v1:M-144",
+      "len_pass_a": 6,
+      "len_pass_b": 6,
+      "object_type_recorded": "Seals",
+      "site": "Mohenjo-Daro"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v1:M-162",
+      "len_pass_a": 6,
+      "len_pass_b": 6,
+      "object_type_recorded": "Seals",
+      "site": "Mohenjo-Daro"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v2:M-658",
+      "len_pass_a": 7,
+      "len_pass_b": 5,
+      "object_type_recorded": "Seals",
+      "site": "Mohenjo-Daro"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v1:M-195",
+      "len_pass_a": 5,
+      "len_pass_b": 5,
+      "object_type_recorded": "Seals",
+      "site": "Mohenjo-Daro"
+    },
+    {
+      "gold": true,
+      "key": "cisi:v1:M-250",
+      "len_pass_a": 3,
+      "len_pass_b": 3,
+      "object_type_recorded": "Seals",
+      "site": "Mohenjo-Daro"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v2:M-819",
+      "len_pass_a": 6,
+      "len_pass_b": 6,
+      "object_type_recorded": "Seals",
+      "site": "Mohenjo-Daro"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v1:M-321",
+      "len_pass_a": 3,
+      "len_pass_b": 3,
+      "object_type_recorded": "Seals",
+      "site": "Mohenjo-Daro"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v2:M-926",
+      "len_pass_a": 7,
+      "len_pass_b": 7,
+      "object_type_recorded": "Seals",
+      "site": "Mohenjo-Daro"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v2:M-983",
+      "len_pass_a": 4,
+      "len_pass_b": 1,
+      "object_type_recorded": "Seals",
+      "site": "Mohenjo-Daro"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v1:M-480",
+      "len_pass_a": 8,
+      "len_pass_b": 8,
+      "object_type_recorded": "Tablets",
+      "site": "Mohenjo-Daro"
+    },
+    {
+      "gold": true,
+      "key": "cisi:v2:M-1247",
+      "len_pass_a": 0,
+      "len_pass_b": 1,
+      "object_type_recorded": "Seals",
+      "site": "Mohenjo-Daro"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v2:M-1352",
+      "len_pass_a": 4,
+      "len_pass_b": 3,
+      "object_type_recorded": "Seals",
+      "site": "Mohenjo-Daro"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v2:M-1448",
+      "len_pass_a": 3,
+      "len_pass_b": 3,
+      "object_type_recorded": "Tablets",
+      "site": "Mohenjo-Daro"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v1:H-66",
+      "len_pass_a": 4,
+      "len_pass_b": 4,
+      "object_type_recorded": "Seals",
+      "site": "Harappa"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v1:H-139",
+      "len_pass_a": 3,
+      "len_pass_b": 3,
+      "object_type_recorded": "Seals",
+      "site": "Harappa"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v1:H-212",
+      "len_pass_a": 6,
+      "len_pass_b": 6,
+      "object_type_recorded": "Tablets",
+      "site": "Harappa"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v1:H-305",
+      "len_pass_a": 6,
+      "len_pass_b": 6,
+      "object_type_recorded": "Tablets",
+      "site": "Harappa"
+    },
+    {
+      "gold": true,
+      "key": "cisi:v2:H-271",
+      "len_pass_a": 4,
+      "len_pass_b": 4,
+      "object_type_recorded": "Seals",
+      "site": "Harappa"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v2:H-451",
+      "len_pass_a": 3,
+      "len_pass_b": 4,
+      "object_type_recorded": "Seals",
+      "site": "Harappa"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v2:H-523",
+      "len_pass_a": 4,
+      "len_pass_b": 5,
+      "object_type_recorded": "Seals",
+      "site": "Harappa"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v2:H-596",
+      "len_pass_a": 2,
+      "len_pass_b": 2,
+      "object_type_recorded": "Seals",
+      "site": "Harappa"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v2:H-669",
+      "len_pass_a": 3,
+      "len_pass_b": 3,
+      "object_type_recorded": "Seals",
+      "site": "Harappa"
+    },
+    {
+      "gold": true,
+      "key": "cisi:v2:H-743",
+      "len_pass_a": 7,
+      "len_pass_b": 7,
+      "object_type_recorded": "Tablets",
+      "site": "Harappa"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v2:H-814",
+      "len_pass_a": 5,
+      "len_pass_b": 5,
+      "object_type_recorded": "Tablets",
+      "site": "Harappa"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v2:H-960",
+      "len_pass_a": 5,
+      "len_pass_b": 5,
+      "object_type_recorded": "Tablets",
+      "site": "Harappa"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v2:Pk-24",
+      "len_pass_a": 0,
+      "len_pass_b": 1,
+      "object_type_recorded": "Seals",
+      "site": "Harappa"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v2:Skh-7",
+      "len_pass_a": 1,
+      "len_pass_b": 1,
+      "object_type_recorded": "",
+      "site": "Harappa"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v1:L-33",
+      "len_pass_a": 3,
+      "len_pass_b": 3,
+      "object_type_recorded": "Seals",
+      "site": "Lothal"
+    },
+    {
+      "gold": true,
+      "key": "cisi:v1:L-66",
+      "len_pass_a": 6,
+      "len_pass_b": 8,
+      "object_type_recorded": "Seals",
+      "site": "Lothal"
+    },
+    {
+      "gold": true,
+      "key": "cisi:v1:L-98",
+      "len_pass_a": 4,
+      "len_pass_b": 4,
+      "object_type_recorded": "Seals",
+      "site": "Lothal"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v1:L-165",
+      "len_pass_a": 4,
+      "len_pass_b": 4,
+      "object_type_recorded": "",
+      "site": "Lothal"
+    },
+    {
+      "gold": false,
+      "key": "cisi:v1:L-227",
+      "len_pass_a": 1,
+      "len_pass_b": 1,
+      "object_type_recorded": "",
+      "site": "Lothal"
+    },
+    {
+      "gold": true,
+      "key": "cisi:v1:K-63",
+      "len_pass_a": 4,
+      "len_pass_b": 4,
+      "object_type_recorded": "Seals",
+      "site": "Kalibangan"
+    }
+  ],
+  "claim_id": "STUDY-SPEC-023/PHASE-132+383",
+  "claim_status": "SETTLED — CONTRADICTED (unchanged)",
+  "design": "D-21 arm A",
+  "execution_date": "2026-10-21",
+  "fence_sentence": "This account is about why two recorded AI pilot passes disagreed. It is not evidence about human transcription, and it changes no verdict.",
+  "freeze_digest": "8bdd4764380bf9e6cb442b1cc75a3b57f4507284676bcb65603e481a49435713",
+  "headline_paragraph": "Re-analysed under Spec 058, the disagreement between the two recorded Phase-132 pilot passes is localised to signs: the 10 most-involved signs account for 54.5% of all mismatch involvement, led by UNK, P310, P144, UNMAPPED:M817, P145, P245, P119, P184, P268, P324. The pilot's failure stands exactly as recorded; this account names where its disagreement sits, in this pilot's passes, and says nothing about human coders. UNK — the passes' 'no identification' value — is itself among the most-involved values (27.7% of involvement); the localisation is in part a localisation to illegibility, stated as such.",
+  "m_space_sensitivity": {
+    "first_divergence": [
+      {
+        "a_value": "UNK",
+        "b_value": "M402",
+        "key": "cisi:v1:H-139",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "UNK",
+        "b_value": "M328",
+        "key": "cisi:v1:H-212",
+        "position": 5,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "M134",
+        "b_value": "UNK",
+        "key": "cisi:v1:H-305",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "M615",
+        "b_value": "M245",
+        "key": "cisi:v1:H-66",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "UNK",
+        "b_value": "M176",
+        "key": "cisi:v1:K-63",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "M328",
+        "b_value": "UNK",
+        "key": "cisi:v1:L-165",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "M328",
+        "b_value": "UNK",
+        "key": "cisi:v1:L-227",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "M216",
+        "b_value": "UNK",
+        "key": "cisi:v1:L-33",
+        "position": 2,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": null,
+        "b_value": "UNK",
+        "key": "cisi:v1:L-66",
+        "position": 3,
+        "type": "INDEL"
+      },
+      {
+        "a_value": "M211",
+        "b_value": "UNK",
+        "key": "cisi:v1:L-98",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": null,
+        "b_value": "M134",
+        "key": "cisi:v1:M-110",
+        "position": 2,
+        "type": "INDEL"
+      },
+      {
+        "a_value": "M086",
+        "b_value": "M328",
+        "key": "cisi:v1:M-127",
+        "position": 4,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "UNK",
+        "b_value": "M008",
+        "key": "cisi:v1:M-144",
+        "position": 2,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "M127",
+        "b_value": "M123",
+        "key": "cisi:v1:M-162",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "UNK",
+        "b_value": "M195",
+        "key": "cisi:v1:M-195",
+        "position": 2,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "M097",
+        "b_value": null,
+        "key": "cisi:v1:M-21",
+        "position": 2,
+        "type": "INDEL"
+      },
+      {
+        "a_value": "M388",
+        "b_value": "M804",
+        "key": "cisi:v1:M-250",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "M245",
+        "b_value": "UNK",
+        "key": "cisi:v1:M-321",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "M342",
+        "b_value": "M700",
+        "key": "cisi:v1:M-41",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "UNK",
+        "b_value": "M365",
+        "key": "cisi:v1:M-480",
+        "position": 4,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "M328",
+        "b_value": "UNK",
+        "key": "cisi:v1:M-58",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "M104",
+        "b_value": "M102",
+        "key": "cisi:v1:M-75",
+        "position": 3,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "UNK",
+        "b_value": "M141",
+        "key": "cisi:v1:M-93",
+        "position": 3,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "M700",
+        "b_value": "M328",
+        "key": "cisi:v2:H-271",
+        "position": 3,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": null,
+        "b_value": "M087",
+        "key": "cisi:v2:H-451",
+        "position": 1,
+        "type": "INDEL"
+      },
+      {
+        "a_value": null,
+        "b_value": "UNK",
+        "key": "cisi:v2:H-523",
+        "position": 2,
+        "type": "INDEL"
+      },
+      {
+        "a_value": "M161",
+        "b_value": "M162",
+        "key": "cisi:v2:H-596",
+        "position": 2,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "UNK",
+        "b_value": "M150",
+        "key": "cisi:v2:H-669",
+        "position": 2,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "UNK",
+        "b_value": "M347",
+        "key": "cisi:v2:H-743",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "M089",
+        "b_value": "UNK",
+        "key": "cisi:v2:H-814",
+        "position": 3,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "M176",
+        "b_value": "M170",
+        "key": "cisi:v2:H-960",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": null,
+        "b_value": "M148",
+        "key": "cisi:v2:M-1247",
+        "position": 1,
+        "type": "INDEL"
+      },
+      {
+        "a_value": "UNK",
+        "b_value": null,
+        "key": "cisi:v2:M-1352",
+        "position": 1,
+        "type": "INDEL"
+      },
+      {
+        "a_value": "M072",
+        "b_value": "UNK",
+        "key": "cisi:v2:M-1448",
+        "position": 2,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "UNK",
+        "b_value": null,
+        "key": "cisi:v2:M-658",
+        "position": 1,
+        "type": "INDEL"
+      },
+      {
+        "a_value": "UNK",
+        "b_value": "M516",
+        "key": "cisi:v2:M-819",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "M287",
+        "b_value": "M299",
+        "key": "cisi:v2:M-926",
+        "position": 2,
+        "type": "SUBSTITUTION"
+      },
+      {
+        "a_value": "UNK",
+        "b_value": null,
+        "key": "cisi:v2:M-983",
+        "position": 2,
+        "type": "INDEL"
+      },
+      {
+        "a_value": null,
+        "b_value": "UNK",
+        "key": "cisi:v2:Pk-24",
+        "position": 1,
+        "type": "INDEL"
+      },
+      {
+        "a_value": "M500",
+        "b_value": "UNK",
+        "key": "cisi:v2:Skh-7",
+        "position": 1,
+        "type": "SUBSTITUTION"
+      }
+    ],
+    "first_divergence_summary": {
+      "by_position": {
+        "1": 21,
+        "2": 11,
+        "3": 5,
+        "4": 2,
+        "5": 1
+      },
+      "by_type": {
+        "INDEL": 10,
+        "SUBSTITUTION": 30
+      },
+      "by_value": [
+        {
+          "count": 26,
+          "value": "UNK"
+        },
+        {
+          "count": 6,
+          "value": "M328"
+        },
+        {
+          "count": 2,
+          "value": "M134"
+        },
+        {
+          "count": 2,
+          "value": "M176"
+        },
+        {
+          "count": 2,
+          "value": "M245"
+        },
+        {
+          "count": 2,
+          "value": "M700"
+        },
+        {
+          "count": 1,
+          "value": "M008"
+        },
+        {
+          "count": 1,
+          "value": "M072"
+        },
+        {
+          "count": 1,
+          "value": "M086"
+        },
+        {
+          "count": 1,
+          "value": "M087"
+        },
+        {
+          "count": 1,
+          "value": "M089"
+        },
+        {
+          "count": 1,
+          "value": "M097"
+        },
+        {
+          "count": 1,
+          "value": "M102"
+        },
+        {
+          "count": 1,
+          "value": "M104"
+        },
+        {
+          "count": 1,
+          "value": "M123"
+        },
+        {
+          "count": 1,
+          "value": "M127"
+        },
+        {
+          "count": 1,
+          "value": "M141"
+        },
+        {
+          "count": 1,
+          "value": "M148"
+        },
+        {
+          "count": 1,
+          "value": "M150"
+        },
+        {
+          "count": 1,
+          "value": "M161"
+        },
+        {
+          "count": 1,
+          "value": "M162"
+        },
+        {
+          "count": 1,
+          "value": "M170"
+        },
+        {
+          "count": 1,
+          "value": "M195"
+        },
+        {
+          "count": 1,
+          "value": "M211"
+        },
+        {
+          "count": 1,
+          "value": "M216"
+        },
+        {
+          "count": 1,
+          "value": "M287"
+        },
+        {
+          "count": 1,
+          "value": "M299"
+        },
+        {
+          "count": 1,
+          "value": "M342"
+        },
+        {
+          "count": 1,
+          "value": "M347"
+        },
+        {
+          "count": 1,
+          "value": "M365"
+        },
+        {
+          "count": 1,
+          "value": "M388"
+        },
+        {
+          "count": 1,
+          "value": "M402"
+        },
+        {
+          "count": 1,
+          "value": "M500"
+        },
+        {
+          "count": 1,
+          "value": "M516"
+        },
+        {
+          "count": 1,
+          "value": "M615"
+        },
+        {
+          "count": 1,
+          "value": "M804"
+        }
+      ]
+    },
+    "per_object_events": {
+      "cisi:v1:H-139": [
+        {
+          "a_value": "UNK",
+          "b_value": "M402",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:H-212": [
+        {
+          "a_value": "UNK",
+          "b_value": "M328",
+          "position": 5,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": "M328",
+          "position": 6,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:H-305": [
+        {
+          "a_value": "M134",
+          "b_value": "UNK",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M269",
+          "b_value": "M086",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M086",
+          "b_value": "M277",
+          "position": 5,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": "M089",
+          "position": 6,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:H-66": [
+        {
+          "a_value": "M615",
+          "b_value": "M245",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M615",
+          "b_value": "M245",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M527",
+          "b_value": "M170",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:K-63": [
+        {
+          "a_value": "UNK",
+          "b_value": "M176",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M086",
+          "b_value": "UNK",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M336",
+          "b_value": "M705",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M312",
+          "b_value": "UNK",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:L-165": [
+        {
+          "a_value": "M328",
+          "b_value": "UNK",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M391",
+          "b_value": "UNK",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M817",
+          "b_value": "M328",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:L-227": [
+        {
+          "a_value": "M328",
+          "b_value": "UNK",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:L-33": [
+        {
+          "a_value": "M216",
+          "b_value": "UNK",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": "M161",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:L-66": [
+        {
+          "a_value": null,
+          "b_value": "UNK",
+          "position": 3,
+          "type": "INDEL"
+        },
+        {
+          "a_value": null,
+          "b_value": "UNK",
+          "position": 4,
+          "type": "INDEL"
+        },
+        {
+          "a_value": "M137",
+          "b_value": "M134",
+          "position": 5,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M402",
+          "b_value": "UNK",
+          "position": 7,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M336",
+          "b_value": "M600",
+          "position": 8,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:L-98": [
+        {
+          "a_value": "M211",
+          "b_value": "UNK",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M324",
+          "b_value": "UNK",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-110": [
+        {
+          "a_value": null,
+          "b_value": "M134",
+          "position": 2,
+          "type": "INDEL"
+        },
+        {
+          "a_value": "M129",
+          "b_value": "UNK",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M097",
+          "b_value": "M099",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M817",
+          "b_value": "M267",
+          "position": 5,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-127": [
+        {
+          "a_value": "M086",
+          "b_value": "M328",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-144": [
+        {
+          "a_value": "UNK",
+          "b_value": "M008",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M817",
+          "b_value": "M806",
+          "position": 6,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-162": [
+        {
+          "a_value": "M127",
+          "b_value": "M123",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": "M391",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M214",
+          "b_value": "M137",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": "M141",
+          "position": 5,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-195": [
+        {
+          "a_value": "UNK",
+          "b_value": "M195",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M086",
+          "b_value": "M087",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-21": [
+        {
+          "a_value": "M097",
+          "b_value": null,
+          "position": 2,
+          "type": "INDEL"
+        },
+        {
+          "a_value": "M328",
+          "b_value": "M442",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M201",
+          "b_value": "M203",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M086",
+          "b_value": null,
+          "position": 6,
+          "type": "INDEL"
+        },
+        {
+          "a_value": "M099",
+          "b_value": "M087",
+          "position": 7,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-250": [
+        {
+          "a_value": "M388",
+          "b_value": "M804",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-321": [
+        {
+          "a_value": "M245",
+          "b_value": "UNK",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M245",
+          "b_value": "UNK",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": "M379",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-41": [
+        {
+          "a_value": "M342",
+          "b_value": "M700",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": "M141",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": "M141",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": "M138",
+          "position": 5,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-480": [
+        {
+          "a_value": "UNK",
+          "b_value": "M365",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-58": [
+        {
+          "a_value": "M328",
+          "b_value": "UNK",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M503",
+          "b_value": "M210",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M817",
+          "b_value": "M805",
+          "position": 5,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-75": [
+        {
+          "a_value": "M104",
+          "b_value": "M102",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M817",
+          "b_value": "M382",
+          "position": 5,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v1:M-93": [
+        {
+          "a_value": "UNK",
+          "b_value": "M141",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M328",
+          "b_value": "M342",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:H-271": [
+        {
+          "a_value": "M700",
+          "b_value": "M328",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M745",
+          "b_value": "M345",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:H-451": [
+        {
+          "a_value": null,
+          "b_value": "M087",
+          "position": 1,
+          "type": "INDEL"
+        },
+        {
+          "a_value": "M186",
+          "b_value": "M176",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M192",
+          "b_value": "UNK",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M087",
+          "b_value": "M124",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:H-523": [
+        {
+          "a_value": null,
+          "b_value": "UNK",
+          "position": 2,
+          "type": "INDEL"
+        },
+        {
+          "a_value": "M095",
+          "b_value": "UNK",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M134",
+          "b_value": "UNK",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:H-596": [
+        {
+          "a_value": "M161",
+          "b_value": "M162",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:H-669": [
+        {
+          "a_value": "UNK",
+          "b_value": "M150",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:H-743": [
+        {
+          "a_value": "UNK",
+          "b_value": "M347",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": "M347",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M452",
+          "b_value": "M135",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M137",
+          "b_value": "UNK",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M328",
+          "b_value": "M342",
+          "position": 7,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:H-814": [
+        {
+          "a_value": "M089",
+          "b_value": "UNK",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M099",
+          "b_value": "M087",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:H-960": [
+        {
+          "a_value": "M176",
+          "b_value": "M170",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": "M365",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M365",
+          "b_value": "M328",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:M-1247": [
+        {
+          "a_value": null,
+          "b_value": "M148",
+          "position": 1,
+          "type": "INDEL"
+        }
+      ],
+      "cisi:v2:M-1352": [
+        {
+          "a_value": "UNK",
+          "b_value": null,
+          "position": 1,
+          "type": "INDEL"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": "M328",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:M-1448": [
+        {
+          "a_value": "M072",
+          "b_value": "UNK",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:M-658": [
+        {
+          "a_value": "UNK",
+          "b_value": null,
+          "position": 1,
+          "type": "INDEL"
+        },
+        {
+          "a_value": "M104",
+          "b_value": "M102",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M099",
+          "b_value": null,
+          "position": 5,
+          "type": "INDEL"
+        },
+        {
+          "a_value": "M102",
+          "b_value": "M107",
+          "position": 6,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:M-819": [
+        {
+          "a_value": "UNK",
+          "b_value": "M516",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M214",
+          "b_value": "M141",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M387",
+          "b_value": "M803",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M373",
+          "b_value": "M817",
+          "position": 6,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:M-926": [
+        {
+          "a_value": "M287",
+          "b_value": "M299",
+          "position": 2,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M384",
+          "b_value": "UNK",
+          "position": 3,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M375",
+          "b_value": "M808",
+          "position": 4,
+          "type": "SUBSTITUTION"
+        },
+        {
+          "a_value": "M373",
+          "b_value": "M812",
+          "position": 5,
+          "type": "SUBSTITUTION"
+        }
+      ],
+      "cisi:v2:M-983": [
+        {
+          "a_value": "UNK",
+          "b_value": null,
+          "position": 2,
+          "type": "INDEL"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": null,
+          "position": 3,
+          "type": "INDEL"
+        },
+        {
+          "a_value": "UNK",
+          "b_value": null,
+          "position": 4,
+          "type": "INDEL"
+        }
+      ],
+      "cisi:v2:Pk-24": [
+        {
+          "a_value": null,
+          "b_value": "UNK",
+          "position": 1,
+          "type": "INDEL"
+        }
+      ],
+      "cisi:v2:Skh-7": [
+        {
+          "a_value": "M500",
+          "b_value": "UNK",
+          "position": 1,
+          "type": "SUBSTITUTION"
+        }
+      ]
+    },
+    "primary": {
+      "event_total_E": 103,
+      "loci": {
+        "object_types": {
+          "fires": false,
+          "firing_type": null
+        },
+        "segmentation": {
+          "fires": false,
+          "indel_share": 0.145631
+        },
+        "signs": {
+          "fires": true,
+          "sign_state": "CONCENTRATED",
+          "top10_frequency": 243,
+          "top10_frequency_share": 0.637795,
+          "top10_involvement": 103,
+          "top10_share": 0.539267,
+          "top10_values": [
+            "UNK",
+            "M328",
+            "M086",
+            "M817",
+            "M087",
+            "M141",
+            "M099",
+            "M134",
+            "M245",
+            "M102"
+          ],
+          "total_involvement": 191,
+          "total_tokens": 381,
+          "unk_in_top10": true,
+          "unk_involvement_share": 0.277487
+        }
+      },
+      "t1_by_sign": [
+        {
+          "frequency": 149,
+          "frequency_share": 0.391076,
+          "involvement": 53,
+          "involvement_share": 0.277487,
+          "value": "UNK"
+        },
+        {
+          "frequency": 29,
+          "frequency_share": 0.076115,
+          "involvement": 13,
+          "involvement_share": 0.068063,
+          "value": "M328"
+        },
+        {
+          "frequency": 12,
+          "frequency_share": 0.031496,
+          "involvement": 6,
+          "involvement_share": 0.031414,
+          "value": "M086"
+        },
+        {
+          "frequency": 6,
+          "frequency_share": 0.015748,
+          "involvement": 6,
+          "involvement_share": 0.031414,
+          "value": "M817"
+        },
+        {
+          "frequency": 13,
+          "frequency_share": 0.034121,
+          "involvement": 5,
+          "involvement_share": 0.026178,
+          "value": "M087"
+        },
+        {
+          "frequency": 5,
+          "frequency_share": 0.013123,
+          "involvement": 5,
+          "involvement_share": 0.026178,
+          "value": "M141"
+        },
+        {
+          "frequency": 12,
+          "frequency_share": 0.031496,
+          "involvement": 4,
+          "involvement_share": 0.020942,
+          "value": "M099"
+        },
+        {
+          "frequency": 4,
+          "frequency_share": 0.010499,
+          "involvement": 4,
+          "involvement_share": 0.020942,
+          "value": "M134"
+        },
+        {
+          "frequency": 4,
+          "frequency_share": 0.010499,
+          "involvement": 4,
+          "involvement_share": 0.020942,
+          "value": "M245"
+        },
+        {
+          "frequency": 9,
+          "frequency_share": 0.023622,
+          "involvement": 3,
+          "involvement_share": 0.015707,
+          "value": "M102"
+        },
+        {
+          "frequency": 7,
+          "frequency_share": 0.018373,
+          "involvement": 3,
+          "involvement_share": 0.015707,
+          "value": "M137"
+        },
+        {
+          "frequency": 5,
+          "frequency_share": 0.013123,
+          "involvement": 3,
+          "involvement_share": 0.015707,
+          "value": "M176"
+        },
+        {
+          "frequency": 3,
+          "frequency_share": 0.007874,
+          "involvement": 3,
+          "involvement_share": 0.015707,
+          "value": "M342"
+        },
+        {
+          "frequency": 3,
+          "frequency_share": 0.007874,
+          "involvement": 3,
+          "involvement_share": 0.015707,
+          "value": "M365"
+        },
+        {
+          "frequency": 6,
+          "frequency_share": 0.015748,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "M089"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "M097"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "M104"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "M161"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "M170"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "M214"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "M336"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "M347"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "M373"
+        },
+        {
+          "frequency": 4,
+          "frequency_share": 0.010499,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "M391"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "M402"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "M615"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.010471,
+          "value": "M700"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M008"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M072"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M095"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M107"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M123"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M124"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M127"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M129"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M135"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M138"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M148"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M150"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M162"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M186"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M192"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M195"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M201"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M203"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M210"
+        },
+        {
+          "frequency": 5,
+          "frequency_share": 0.013123,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M211"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M216"
+        },
+        {
+          "frequency": 5,
+          "frequency_share": 0.013123,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M267"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M269"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M277"
+        },
+        {
+          "frequency": 3,
+          "frequency_share": 0.007874,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M287"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M299"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M312"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M324"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M345"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M375"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M379"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M382"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M384"
+        },
+        {
+          "frequency": 3,
+          "frequency_share": 0.007874,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M387"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M388"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M442"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M452"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M500"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M503"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M516"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M527"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M600"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M705"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M745"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M803"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M804"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M805"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M806"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M808"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.005236,
+          "value": "M812"
+        }
+      ],
+      "t2_by_object_type": [
+        {
+          "event_share": 0.776699,
+          "events": 80,
+          "mismatched_objects": 30,
+          "object_share": 0.68,
+          "object_type_recorded": "Seals",
+          "objects": 34
+        },
+        {
+          "event_share": 0.174757,
+          "events": 18,
+          "mismatched_objects": 7,
+          "object_share": 0.22,
+          "object_type_recorded": "Tablets",
+          "objects": 11
+        },
+        {
+          "event_share": 0.048544,
+          "events": 5,
+          "mismatched_objects": 3,
+          "object_share": 0.1,
+          "object_type_recorded": "Unrecorded",
+          "objects": 5
+        }
+      ],
+      "t3_by_divergence_type": {
+        "indel": 15,
+        "indel_share": 0.145631,
+        "substitution": 88,
+        "substitution_share": 0.854369
+      },
+      "total_involvement": 191
+    },
+    "secondary_unk_excluded": {
+      "event_total_E": 50,
+      "loci": {
+        "object_types": {
+          "fires": true,
+          "firing_type": "Seals"
+        },
+        "segmentation": {
+          "fires": false,
+          "indel_share": 0.12
+        },
+        "signs": {
+          "fires": false,
+          "sign_state": "BETWEEN",
+          "top10_frequency": 92,
+          "top10_frequency_share": 0.24147,
+          "top10_involvement": 39,
+          "top10_share": 0.414894,
+          "top10_values": [
+            "M328",
+            "M817",
+            "M086",
+            "M087",
+            "M099",
+            "M102",
+            "M342",
+            "M097",
+            "M104",
+            "M134"
+          ],
+          "total_involvement": 94,
+          "total_tokens": 381,
+          "unk_in_top10": false,
+          "unk_involvement_share": null
+        }
+      },
+      "t1_by_sign": [
+        {
+          "frequency": 29,
+          "frequency_share": 0.076115,
+          "involvement": 7,
+          "involvement_share": 0.074468,
+          "value": "M328"
+        },
+        {
+          "frequency": 6,
+          "frequency_share": 0.015748,
+          "involvement": 6,
+          "involvement_share": 0.06383,
+          "value": "M817"
+        },
+        {
+          "frequency": 12,
+          "frequency_share": 0.031496,
+          "involvement": 5,
+          "involvement_share": 0.053191,
+          "value": "M086"
+        },
+        {
+          "frequency": 13,
+          "frequency_share": 0.034121,
+          "involvement": 5,
+          "involvement_share": 0.053191,
+          "value": "M087"
+        },
+        {
+          "frequency": 12,
+          "frequency_share": 0.031496,
+          "involvement": 4,
+          "involvement_share": 0.042553,
+          "value": "M099"
+        },
+        {
+          "frequency": 9,
+          "frequency_share": 0.023622,
+          "involvement": 3,
+          "involvement_share": 0.031915,
+          "value": "M102"
+        },
+        {
+          "frequency": 3,
+          "frequency_share": 0.007874,
+          "involvement": 3,
+          "involvement_share": 0.031915,
+          "value": "M342"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.021277,
+          "value": "M097"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.021277,
+          "value": "M104"
+        },
+        {
+          "frequency": 4,
+          "frequency_share": 0.010499,
+          "involvement": 2,
+          "involvement_share": 0.021277,
+          "value": "M134"
+        },
+        {
+          "frequency": 7,
+          "frequency_share": 0.018373,
+          "involvement": 2,
+          "involvement_share": 0.021277,
+          "value": "M137"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.021277,
+          "value": "M170"
+        },
+        {
+          "frequency": 5,
+          "frequency_share": 0.013123,
+          "involvement": 2,
+          "involvement_share": 0.021277,
+          "value": "M176"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.021277,
+          "value": "M214"
+        },
+        {
+          "frequency": 4,
+          "frequency_share": 0.010499,
+          "involvement": 2,
+          "involvement_share": 0.021277,
+          "value": "M245"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.021277,
+          "value": "M336"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.021277,
+          "value": "M373"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.021277,
+          "value": "M615"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 2,
+          "involvement_share": 0.021277,
+          "value": "M700"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M107"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M123"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M124"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M127"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M135"
+        },
+        {
+          "frequency": 5,
+          "frequency_share": 0.013123,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M141"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M148"
+        },
+        {
+          "frequency": 2,
+          "frequency_share": 0.005249,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M161"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M162"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M186"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M201"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M203"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M210"
+        },
+        {
+          "frequency": 5,
+          "frequency_share": 0.013123,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M267"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M269"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M277"
+        },
+        {
+          "frequency": 3,
+          "frequency_share": 0.007874,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M287"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M299"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M345"
+        },
+        {
+          "frequency": 3,
+          "frequency_share": 0.007874,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M365"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M375"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M382"
+        },
+        {
+          "frequency": 3,
+          "frequency_share": 0.007874,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M387"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M388"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M442"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M452"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M503"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M527"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M600"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M705"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M745"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M803"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M804"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M805"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M806"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M808"
+        },
+        {
+          "frequency": 1,
+          "frequency_share": 0.002625,
+          "involvement": 1,
+          "involvement_share": 0.010638,
+          "value": "M812"
+        }
+      ],
+      "t2_by_object_type": [
+        {
+          "event_share": 0.84,
+          "events": 42,
+          "mismatched_objects": 30,
+          "object_share": 0.68,
+          "object_type_recorded": "Seals",
+          "objects": 34
+        },
+        {
+          "event_share": 0.14,
+          "events": 7,
+          "mismatched_objects": 7,
+          "object_share": 0.22,
+          "object_type_recorded": "Tablets",
+          "objects": 11
+        },
+        {
+          "event_share": 0.02,
+          "events": 1,
+          "mismatched_objects": 3,
+          "object_share": 0.1,
+          "object_type_recorded": "Unrecorded",
+          "objects": 5
+        }
+      ],
+      "t3_by_divergence_type": {
+        "indel": 6,
+        "indel_share": 0.12,
+        "substitution": 44,
+        "substitution_share": 0.88
+      },
+      "total_involvement": 94
+    },
+    "token_total_both_passes": 381
+  },
+  "osf_registration": "86dgh",
+  "outcome": "LOCALISED TO SIGNS",
+  "phase": "Phase-420",
+  "spec": "058-transcription-disagreement-mechanism",
+  "step0": [
+    {
+      "gate": "0.1",
+      "inputs": [
+        {
+          "file": "specs/023-keyed-transcription-layer/spec.md",
+          "match": true,
+          "observed": "c2e5d1668b270266d5a20e30b1ec87cd4c1d5d2ffe786a45331a9a5ade1275d2",
+          "pin": "c2e5d1668b270266d5a20e30b1ec87cd4c1d5d2ffe786a45331a9a5ade1275d2",
+          "present": true
+        },
+        {
+          "file": "reports/phase132_pilot_metrics.json",
+          "match": true,
+          "observed": "e864fca57ecd1dc403c8e52ab9df6414372478d5781457f0aaca5e9084914554",
+          "pin": "e864fca57ecd1dc403c8e52ab9df6414372478d5781457f0aaca5e9084914554",
+          "present": true
+        },
+        {
+          "file": "reports/phase132_pilot_report.md",
+          "match": true,
+          "observed": "e1df32da86f7d3fd276d0ad546b3c351b58fd88b73f4468461f61075f6460e00",
+          "pin": "e1df32da86f7d3fd276d0ad546b3c351b58fd88b73f4468461f61075f6460e00",
+          "present": true
+        },
+        {
+          "file": "data/keyed_transcription/phase132_pilot_frame.json",
+          "match": true,
+          "observed": "a967144be0531c9d8396615d1ca07161dca0bc7347ca8c2c0d6a3c21a037a2ea",
+          "pin": "a967144be0531c9d8396615d1ca07161dca0bc7347ca8c2c0d6a3c21a037a2ea",
+          "present": true
+        },
+        {
+          "file": "data/keyed_transcription/phase132_pilot_dataset_v1.json",
+          "match": true,
+          "observed": "adb596a1745470835e46c5148c1848d8408c45a030687d96427f00dbb6f74400",
+          "pin": "adb596a1745470835e46c5148c1848d8408c45a030687d96427f00dbb6f74400",
+          "present": true
+        },
+        {
+          "file": "data/keyed_transcription/phase132_pilot_dataset_v1_meta.json",
+          "match": true,
+          "observed": "b2c607fae5f2602bb7b9634ff103f01df1de3885a1f1bbeeb6da3fc489cdefd4",
+          "pin": "b2c607fae5f2602bb7b9634ff103f01df1de3885a1f1bbeeb6da3fc489cdefd4",
+          "present": true
+        },
+        {
+          "file": "reports/phase383_results.json",
+          "match": true,
+          "observed": "4e52942dc6be25fed4ab2004823a1d9353c9abfe6f5428e1050ee8d0d9a98334",
+          "pin": "4e52942dc6be25fed4ab2004823a1d9353c9abfe6f5428e1050ee8d0d9a98334",
+          "present": true
+        },
+        {
+          "file": "reports/phase383_report.md",
+          "match": true,
+          "observed": "9f35f722611f6acd57e1ee05c9de0c8e95267ccf7f93b27eacb31bdff9cd08ca",
+          "pin": "9f35f722611f6acd57e1ee05c9de0c8e95267ccf7f93b27eacb31bdff9cd08ca",
+          "present": true
+        },
+        {
+          "file": "backend/scripts/phase132_metrics.py",
+          "match": true,
+          "observed": "238dfafa3bac17dc0ad610ff4b7e6cf4fa577462d04cd31a3c612537cbe21984",
+          "pin": "238dfafa3bac17dc0ad610ff4b7e6cf4fa577462d04cd31a3c612537cbe21984",
+          "present": true
+        },
+        {
+          "file": "backend/scripts/phase383_pilot_rescoring.py",
+          "match": true,
+          "observed": "b64b60de35d59bd99177e8ac3f68a80ffd2b0d31f8c75ea87312f69f927729ec",
+          "pin": "b64b60de35d59bd99177e8ac3f68a80ffd2b0d31f8c75ea87312f69f927729ec",
+          "present": true
+        },
+        {
+          "file": "data/crosswalks/parpola_mahadevan_crosswalk_v1.json",
+          "match": true,
+          "observed": "4e7559dfc2ced83c79440029a1b2749fe9d21eca7f6db3bf3b66f0cfa647dcbb",
+          "pin": "4e7559dfc2ced83c79440029a1b2749fe9d21eca7f6db3bf3b66f0cfa647dcbb",
+          "present": true
+        },
+        {
+          "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+          "match": true,
+          "observed": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+          "pin": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+          "present": true
+        }
+      ],
+      "name": "Committed-record integrity",
+      "verdict": "PASS"
+    },
+    {
+      "expected_inventory": {
+        "adjudication_records": 50,
+        "effort_log_events": 320,
+        "frame_json": true,
+        "pass_a_records": 50,
+        "pass_b_records": 50,
+        "pass_gold_records": 10
+      },
+      "gate": "0.2",
+      "inventory": {
+        "adjudication_records": 50,
+        "effort_log_events": 320,
+        "frame_json": true,
+        "pass_a_records": 50,
+        "pass_b_records": 50,
+        "pass_gold_records": 10
+      },
+      "manifest": {
+        "adjudication/cisi:v1:H-139.json": "b81e46419c5bdbe2e5a6f178c1acc609ee46df3efbd6c64fb7588b88006e04ac",
+        "adjudication/cisi:v1:H-212.json": "84bcf3908789c0b35dd7993e1b6e675453698854787081e603a294821d922e0d",
+        "adjudication/cisi:v1:H-305.json": "c36ff9eb08aeed34cee3638a3617de61af3c28857af958cba5eefeecec08feff",
+        "adjudication/cisi:v1:H-66.json": "d58484305a2f97f3a5f5dd172cab130dcc8443c1c5c6f5717951bfe9e3a3935e",
+        "adjudication/cisi:v1:K-21.json": "a18dfd116035878c77ae545e6105bc4c411f6cd61914338e94df8033073459f3",
+        "adjudication/cisi:v1:K-42.json": "78dc319bb914b6b6b16b3a76b15d2bcfff1d90b44ad1c57600933b9180382e6e",
+        "adjudication/cisi:v1:K-63.json": "c5e0d2cfe6bf658a863b537fe695455f0cfee7eb549548bfb58b8255088fa7e1",
+        "adjudication/cisi:v1:K-88.json": "851b39f6de2ff38ca387dc516af6a543cb8c2803fdc0d6d21ddb0f90cf184b0b",
+        "adjudication/cisi:v1:L-132.json": "0ccfb7aba1f98ec91977ac5ab523d0b90e0715883b14d45e2f608fdeb513e55a",
+        "adjudication/cisi:v1:L-165.json": "48695a2c741386760cd1a02754cf1b22b6bc5d4a371b58af62914c5400a3adfe",
+        "adjudication/cisi:v1:L-227.json": "5c3c268b4b1cd24215604b8b98cada78da4cb97b17664828af79c7a7d979a27e",
+        "adjudication/cisi:v1:L-33.json": "1ef01922b9345d385d33a9dc82e68bb5b366b7b733755f376636b5955755fa74",
+        "adjudication/cisi:v1:L-66.json": "69b46391074e688459da21a703dc74dad70aa3cf525055550d1bf9d6682bccd6",
+        "adjudication/cisi:v1:L-98.json": "eac3c70ecd141c2a268c8ce3f45edd3033a6dc213716ec425e4ac7ca492cff6a",
+        "adjudication/cisi:v1:M-110.json": "9bcabc155cecf94abb6d63bd8224c281263794ec15f08409c189b0b5b5b12bdf",
+        "adjudication/cisi:v1:M-127.json": "7b062a268e4a27928190184bbab3ef62ed89aa54a73575da8f0046b2ad0f2a57",
+        "adjudication/cisi:v1:M-144.json": "3a1f4524c0e6ac87e3e1f821fa2bc23f4c2b8a4e150280790925733c046b2bdd",
+        "adjudication/cisi:v1:M-162.json": "9f2293dde5a1cb31439ab8f8d3d2d1db15018f6729d3100acd812f98eef25242",
+        "adjudication/cisi:v1:M-195.json": "09d6a20fd099f93244843bc56628e444a173eef7e961f68f3e428be0a7d71e38",
+        "adjudication/cisi:v1:M-21.json": "1211fb1a99b93d75d17434d4bcc88638192a88db31d4e54a781669cfc67eae76",
+        "adjudication/cisi:v1:M-250.json": "cf775f34de35fa7a3acbffa8b3669c6d73a0342ef1e7320ea9cdfde5566df3e9",
+        "adjudication/cisi:v1:M-3.json": "866a06f90de3f057859110d91b2b3526bc82ed0ad1852e2f08321b94085addc3",
+        "adjudication/cisi:v1:M-321.json": "13d86b94add472ce224d2bae0a7890b75403829454686477e944642b07804306",
+        "adjudication/cisi:v1:M-41.json": "68b367153d2912b4b21f6be7f919d4bb62ba4852bd21338180cbc44344c86cf6",
+        "adjudication/cisi:v1:M-480.json": "1d3c8e5cda252a110dc671f8eed21ddfea2595bf1890735b281a94f4a4e68d36",
+        "adjudication/cisi:v1:M-517.json": "48131d2513ef5cffaa64d36e0422b9fc3d1df350ceb38cbfbd9283543ca8acf7",
+        "adjudication/cisi:v1:M-566.json": "aaaf29ae64400c242a417f3c1c733bd8fdb286ef9bd31b2aad7f2fdfa5bf96be",
+        "adjudication/cisi:v1:M-58.json": "b2e443d75dd86b1916448eefed688b480dddf38795e24c8763ec9eb10f7f3215",
+        "adjudication/cisi:v1:M-75.json": "f98af4bf05f482f65a7fa9790fce4367de4a105ff7a649b16e8b3ac4fc4d5097",
+        "adjudication/cisi:v1:M-93.json": "08a473b80fb2d43067d7e87fde12ea3780c6965dece2777803001cddcf113a28",
+        "adjudication/cisi:v2:H-271.json": "b7082348d7fc77b839483b9357c36ac89252a2c6fb38aa2b3201b64e898bc6ae",
+        "adjudication/cisi:v2:H-451.json": "af0f6229f70ed5dd61fff7fffca7ba241a533b14a15aa3e1fc68712e0b78c99e",
+        "adjudication/cisi:v2:H-523.json": "2d673420711733f54170b73ede8d66378dbe5bc85f6673b2ee3913f90b46a122",
+        "adjudication/cisi:v2:H-596.json": "81a744377ee7e1f2fc36bcaf62f40c9133b282d44a3ce6ddc38d0c631426542b",
+        "adjudication/cisi:v2:H-669.json": "583cf4ec96fc1646989ef142090b1c8b91073c49f85f82f5a74574c7e5226fe0",
+        "adjudication/cisi:v2:H-743.json": "ca9bdcb03ab134f1e5de8e810f3938a872a506fb8b349944b185aa22068e838d",
+        "adjudication/cisi:v2:H-814.json": "5158b3f8a9fe3c0ffba339811baf732669a230fdc23e4a097306c0dc41126979",
+        "adjudication/cisi:v2:H-886.json": "183671d9146239dcc035e344832c2c390a86b103b5675fc9ac515fb123e4b4e0",
+        "adjudication/cisi:v2:H-960.json": "ce2478a4bf4cac19c7ed3ad4cbaec1617c40d656901e54c5f7dabe8da183911f",
+        "adjudication/cisi:v2:M-1044.json": "4e0112c189dbee2f357b7b96aeb80091b898cc82ff87120a00b266dced9a7b1d",
+        "adjudication/cisi:v2:M-1247.json": "19d33ac4900c7ae9b550bdeb1f9540474a98930bd0364148cc8aa18d4320e382",
+        "adjudication/cisi:v2:M-1352.json": "fe3dbbabfe5c8a3b640927af215f981f29e8541ce7ae7d39c6504b77d1e515c1",
+        "adjudication/cisi:v2:M-1448.json": "88c598e876c6fefcb1ca4bba23a15ebe4444f269de1c84a015d59be967fc24a8",
+        "adjudication/cisi:v2:M-1542.json": "31f5f04982e8071c28b5919e3de14d202f12f2fa6673489a800e3b3496501339",
+        "adjudication/cisi:v2:M-658.json": "be5d55085be4030b5931d89d4fde21b6f0aba9c7b30b77c23a19f2507e9af963",
+        "adjudication/cisi:v2:M-819.json": "8c0733e8fd3f46c1f5357fa0f6887ea8400ffa682f411b82102778342c25a4a7",
+        "adjudication/cisi:v2:M-926.json": "63df9fb8cb9e359edf3dd4ba6f127b90759d99f3bf8b8008142df68d99371823",
+        "adjudication/cisi:v2:M-983.json": "0a31a2c4e240552200c6e994410ec19c3fe2de4c5541d1db35d8b823fa50acad",
+        "adjudication/cisi:v2:Pk-24.json": "d90f6e9e1f0beede6dd753f124b325fb8154efd2958a37a790f88167238b38be",
+        "adjudication/cisi:v2:Skh-7.json": "96e4ac1ecb92107ded5b412f323973a5ad3c48e98139800100faa86c9220075f",
+        "effort_log.csv": "6822330a7c702ac2fd0731302a62b4b29d33489e7b9a89761097544bff25c6fb",
+        "frame.json": "a967144be0531c9d8396615d1ca07161dca0bc7347ca8c2c0d6a3c21a037a2ea",
+        "pass_a/cisi:v1:H-139.json": "3821364c92c27f9e98ad9dd2e9eca61f5958f2fc031aeb3a7da093ae11c4c89c",
+        "pass_a/cisi:v1:H-212.json": "2ec0bfb9130994bb5b904b03fc1659cbd0086453b47ad66748c734562ffc6e44",
+        "pass_a/cisi:v1:H-305.json": "3ed4c6932e41be26db0a64b3081749d89345b64e4dc80c7abd4025df42b329f4",
+        "pass_a/cisi:v1:H-66.json": "5a2f1e30158d6b3c841e12bed99587faeea7aa76397650809d410c329b143e43",
+        "pass_a/cisi:v1:K-21.json": "94c2697e10feea0293085b5a593591fef734e063a7580cec74e69a71c02f3f78",
+        "pass_a/cisi:v1:K-42.json": "810b8a88f2b81fa19dd25620ba39b213c08295d409c2e1fd8ec415b8d6fe38d0",
+        "pass_a/cisi:v1:K-63.json": "29e2f2f41e7ebfbaae4cc857cf0b3235cf3d984b73ddd5e421cc52fb1d48a15a",
+        "pass_a/cisi:v1:K-88.json": "53f277f89cf99676df1c3878088d8759f59075c1efbbc96b25babad48c70244a",
+        "pass_a/cisi:v1:L-132.json": "8502613633bb1f7f81bf3a925d538dca93b943151116c4159fa543d302561b09",
+        "pass_a/cisi:v1:L-165.json": "041db200cc7aae2e37f7913f032a5e470b2114f4e153c3e4b31176048960bb94",
+        "pass_a/cisi:v1:L-227.json": "574a55269ffb32113a8088f3ec7d88cc887e7c1dc607417b2d99d07d3db779fd",
+        "pass_a/cisi:v1:L-33.json": "e4c8f7e142016a6ef8821d14a97b6ee4c0e5359d01e7a690c49311acc3ad8491",
+        "pass_a/cisi:v1:L-66.json": "2bd1e2648671d729fe5265c678d44a1b0f6fd98d0ecb2dd7bb6bdf8446381503",
+        "pass_a/cisi:v1:L-98.json": "107530a1be9eb4658a537c0401bf1ac6621817d131e5592e156a1d3bfaeaba72",
+        "pass_a/cisi:v1:M-110.json": "3825b92e3b4982056b1bbfb07238183460b387a587b086fb9f81d359b942159d",
+        "pass_a/cisi:v1:M-127.json": "4eef5c16b3453b8fc2502fb977d85b3d52ac11728ab96f9b4023d6699c846642",
+        "pass_a/cisi:v1:M-144.json": "6c62b1279e40a6082580339eb80cc76bf1517a5dd0f4f3857a18738b197e0e48",
+        "pass_a/cisi:v1:M-162.json": "4e75f1edb4918ea588b9a940e8bc32e8be9b2d1363287c5dd0ebf2ab51f579e5",
+        "pass_a/cisi:v1:M-195.json": "39d0e89cf1a9f4110b2471fea91b34a55e23a53bf7bb6d41e64d2c122db276c3",
+        "pass_a/cisi:v1:M-21.json": "ed38d8a43461e63b911b2fdd3b1e3b1fe80c8d054677a6b7a72fe3a84659a6f6",
+        "pass_a/cisi:v1:M-250.json": "3e3ffb8da677c838cdbcd8561e9f7830bbb6a2d03b912a9e56d5881cc4fcf424",
+        "pass_a/cisi:v1:M-3.json": "84212c55f95ddfb13f1d07831588bf07fb7eb37e846c64bc18891803fff055e2",
+        "pass_a/cisi:v1:M-321.json": "3053cdc214bf0c006b86681154324980153e700c9c28deae64c6c95c3b72533e",
+        "pass_a/cisi:v1:M-41.json": "1c146e6c44e72d88db0412a22dd1604d1d3895113b14559128baf9377eaae746",
+        "pass_a/cisi:v1:M-480.json": "12d85726762f0befaa39ddee4ae5b7417c02693f9439e42fef139d0e51484159",
+        "pass_a/cisi:v1:M-517.json": "58f26b3b039ecb7118946500993daaef8e1a53e906fa858a3ad0c78d693a6155",
+        "pass_a/cisi:v1:M-566.json": "fd6cdbbda4a19bf299a2c9e35e20d6ce2dde64cef25a5bc583365ba9aa93fdfb",
+        "pass_a/cisi:v1:M-58.json": "9580201d027879c8d1d2796c6e73cd8cfa7cb18ddb1333821c7eeea6f2618e03",
+        "pass_a/cisi:v1:M-75.json": "425743feb3bd31a464b52a2f59c228039f4b61ab037f3476f24e04a09a6c6ec6",
+        "pass_a/cisi:v1:M-93.json": "ecf2b2e72311a80f2350b0cb590dcb56fc289bf02241bcce944f2524523683e4",
+        "pass_a/cisi:v2:H-271.json": "6048f569e785f5f2545d91bdf574b3291a19c4a7a40c0a70e3087e03bf8562ce",
+        "pass_a/cisi:v2:H-451.json": "b3806121c2601b6c14ce1b996f939713981705fb8e66a42c1c1f20d9f3567906",
+        "pass_a/cisi:v2:H-523.json": "abafb3d645dbc68a757468dfe8f5f8518e8c4cb1a839da8d8418baa1139e905f",
+        "pass_a/cisi:v2:H-596.json": "ff4b898d01cfed1e5e83d812fec268d6b05a09d7cf6f5f65d9e3eaa3f99a3e13",
+        "pass_a/cisi:v2:H-669.json": "f2eddc4bf91926d7e863ffe627076501ec44f7ca6b9a35a0fc87597d2bf76236",
+        "pass_a/cisi:v2:H-743.json": "fc4dc63079c238b58006c50cdf91d9aeb399878be75261c13f0542b9cec96ddb",
+        "pass_a/cisi:v2:H-814.json": "11a6e080505b8021fe36f8e0ba8ec89221ad14f22ae8587106f134fd6ff15dba",
+        "pass_a/cisi:v2:H-886.json": "02289fe41f03db323dba4ea0a25163b9dd3e962104513763f1419fba986040aa",
+        "pass_a/cisi:v2:H-960.json": "4378bd9a8323ce6daf4ac9079c2ff7b6bd1a924094c59f5ad59b5a1ba15cdc20",
+        "pass_a/cisi:v2:M-1044.json": "efdb4a488871eac8db4befd1ee5abf650f200641d4359c4b5c3f79b2f2e8e530",
+        "pass_a/cisi:v2:M-1247.json": "c7a0e5feb4cefaa509388e9f18628bcbb4bdb195b9252f5e659c7311fa4d09e4",
+        "pass_a/cisi:v2:M-1352.json": "0139fd7abb2c253fccc7e05fa997b4506658e35e373b8285329d7acf07d4261a",
+        "pass_a/cisi:v2:M-1448.json": "a92ef631d5d49b8f6a63b10de25f5973bb78ab53e6be0c4e94d5e57d1bd18a9d",
+        "pass_a/cisi:v2:M-1542.json": "faf96ab1f46a56f6b85368a39d0944e0b36a99f2bc95c1b4b14c8aa042d5348d",
+        "pass_a/cisi:v2:M-658.json": "15a64ff3a3961b61ed57065a3c54b86f6e1f9cb901fbfcf2353d110435bbbd77",
+        "pass_a/cisi:v2:M-819.json": "f22972d2f7d8b98697494fa095533b26100113783b673b976fcb928d3c5e8220",
+        "pass_a/cisi:v2:M-926.json": "6cf1f3374fba9844c7fe1cfde085501a392946dd4ac9955d76d2458ec1fd0886",
+        "pass_a/cisi:v2:M-983.json": "fb90239839e084ef56306cfd5a204236d9fda3bc8454b6d923ac126828321cc3",
+        "pass_a/cisi:v2:Pk-24.json": "d8b1075459812e149bbf887d3477018d15079dd814adab869a2c39dc3f037b70",
+        "pass_a/cisi:v2:Skh-7.json": "45ac0b811d4132739d13320ab1ed71e9aa9e5b16ed1ac9298df78de4982b9d13",
+        "pass_b/cisi:v1:H-139.json": "0e40be9258602f85597421e0ace21c3e25e4460bd3d302bed619858b36d253e8",
+        "pass_b/cisi:v1:H-212.json": "f6b317cd3898bce957f4579668a06520360115e70d98388299cfc41b8ead9298",
+        "pass_b/cisi:v1:H-305.json": "31b0c29e4a667589b2c650acc9fc0a4fa5df5c1ce92e8ddda817e565546d841d",
+        "pass_b/cisi:v1:H-66.json": "ebc9650ef826f4bbc2edb4b330c7b17d6833f49592db7dd11bdf733583725d62",
+        "pass_b/cisi:v1:K-21.json": "50e087de43f930540174e6463f7b955a7c18d9a06df40199494e6a9792fdc57e",
+        "pass_b/cisi:v1:K-42.json": "37da83771c06684d79007c5c882faec54070484797669848904088a38d9f7d3a",
+        "pass_b/cisi:v1:K-63.json": "38383a0ef77d4016e72e7f34d87e225ef7caf8858859c82a79898238dd3f665f",
+        "pass_b/cisi:v1:K-88.json": "8697ac73c7aeb93240fd1d770f9a4b356c50d53298a94597b9535237c95bbc83",
+        "pass_b/cisi:v1:L-132.json": "cdc69aa06dfc6e79878e4fedbfbeca28bd30cee925784a86155905918df703e2",
+        "pass_b/cisi:v1:L-165.json": "4a21d7c69631ec3d12873afa085e2d4ae9c721fc3fc8d91aea9d75d8d3c7e42c",
+        "pass_b/cisi:v1:L-227.json": "4a736f0212b5ec1d5c7bc5df8614807cc044b4228c6e706ec683576d9be8473d",
+        "pass_b/cisi:v1:L-33.json": "74a94202e8805e027c490fae9d672f76e340c6ad031f4f37f41b71775088f4b3",
+        "pass_b/cisi:v1:L-66.json": "f3eef0b16349339f7da6104699f45131c203731b15c8c348226371748812f167",
+        "pass_b/cisi:v1:L-98.json": "1d343fe033f3f0ba8175c30084c39c903d0e143cd9af36cdf4956817fa31c593",
+        "pass_b/cisi:v1:M-110.json": "abb6f0d7608eeabf50d183a0db799f94e65b81519be961825913aaa4a6844e9a",
+        "pass_b/cisi:v1:M-127.json": "c2d6a1483645f8baed15954f6a38d1012ff5ccff8fcfc67a0f335df9d4a28521",
+        "pass_b/cisi:v1:M-144.json": "a0eba4c007d4253bfcb0e3bff216d03a4bc3fb8c43468dbcf383abba4dea6e1f",
+        "pass_b/cisi:v1:M-162.json": "348671460501f1f55a8bea64d02cd4950109a8afc062d23dc3286aeb2d9adc4e",
+        "pass_b/cisi:v1:M-195.json": "b15190f24864f3919fb645317d8150cbdee07c400971538e0d956168fe2ec499",
+        "pass_b/cisi:v1:M-21.json": "36b5f1656704429c9d624ebf0e3647f5a8f225e689e0aa085b2c14eb092bc7a7",
+        "pass_b/cisi:v1:M-250.json": "ab40f8d880e1ebacd36c2a75ff859e2dfedb3beef54127a003197b6dbda45dbf",
+        "pass_b/cisi:v1:M-3.json": "418e8a9bf433baa930d2f69f764fc307696b0d346be544a4229da03996bb56a1",
+        "pass_b/cisi:v1:M-321.json": "8d2ed8dcf3579f86a26a3ffbb135863de71ae5b822876253d9fe906ae5d058ed",
+        "pass_b/cisi:v1:M-41.json": "eb1a6059d58d2915d3354aadccd3e96fef888e67d5c9af2ca9108912b3af9e3e",
+        "pass_b/cisi:v1:M-480.json": "2c134db876b37ecad3fa8296c7c7f0124b7d5eb555462f09e09246a9ba96d0f0",
+        "pass_b/cisi:v1:M-517.json": "600dc755728bc876cc3beb3837e1d235f4844b748f6411b1b31f31857ee36545",
+        "pass_b/cisi:v1:M-566.json": "2da2c930fad6bf2410b29799870231214778a3a57b2eb93977035ccc702b69ec",
+        "pass_b/cisi:v1:M-58.json": "022f77f98fbbc05bc71d165004c5bdcbd6c003a7854241bbce4fd8a4fe4b099d",
+        "pass_b/cisi:v1:M-75.json": "1f5239b79b6ac9d20e3ca63d68e955142badc37067334393fd394bf678f5fc1e",
+        "pass_b/cisi:v1:M-93.json": "ddbb3ff3f86b77eb4f045c03f382dd442f7d3acf0e58870171a982a725261f45",
+        "pass_b/cisi:v2:H-271.json": "51894cacb96078101499c98098a06f9512abf150d27567d5c40761d8c6bb1c49",
+        "pass_b/cisi:v2:H-451.json": "57363c64fd8631cf4e25e000f9a99a99da256b51a47608b043f7dbd469b15d5c",
+        "pass_b/cisi:v2:H-523.json": "44410c6f761b51d256b6cbce1f70a0e0312338dcc2be5ec406f03b9d1315eb2c",
+        "pass_b/cisi:v2:H-596.json": "e6c06c0113447803ba2504dce8b91dc5f1bcfc3d4fd65600208abbb78ca8e640",
+        "pass_b/cisi:v2:H-669.json": "f7658d7e1dfd579c164215d8ff9412710bdcd0a216dc7fd7957979b73bc993fa",
+        "pass_b/cisi:v2:H-743.json": "02fbde69a86277c15cb0940994eb81e7665ab544c0a884071c0948273dc5fbac",
+        "pass_b/cisi:v2:H-814.json": "74beab039de12ba980344ac26e42754bfc8d3f89f364b2711d792e99003cad4e",
+        "pass_b/cisi:v2:H-886.json": "f86d2b8ccb3c13ccb3d6fa81cf7eee03928fb4a1f7e87dbb4de9bf0ad63aad83",
+        "pass_b/cisi:v2:H-960.json": "f693ddd8f661c4f9e6914d2ce3592093dc20390f91d10c94caf24e70b69a799e",
+        "pass_b/cisi:v2:M-1044.json": "bf30419891c5c3988be32b47546f2caf3c6c0d32f6807984a0a7d25e9fdfafc3",
+        "pass_b/cisi:v2:M-1247.json": "3c1f297680dcae97ad871549a17ed263d6badc79157df69772502b75678fa48f",
+        "pass_b/cisi:v2:M-1352.json": "d5bbca166202d5b77b97bb5524536338a9e8d43ab007dd02a49f1a659bfd811c",
+        "pass_b/cisi:v2:M-1448.json": "389ce36b1b9bc02a39230041e3ee7498b6414553f3762e4455be9ab3bfa7ea3b",
+        "pass_b/cisi:v2:M-1542.json": "87c6f0848847f06aa2f519ecbd7944b0b69ee7a2f48adb24994848102af5c812",
+        "pass_b/cisi:v2:M-658.json": "c3b53ee776b8d3bffadd39c6d677f63011bcd64648abe5d228575d989322af15",
+        "pass_b/cisi:v2:M-819.json": "84ed9e6422530ab1352b66386d2adab2abacab4f8e9bc2fd95519f3b5df84997",
+        "pass_b/cisi:v2:M-926.json": "9e5d77a4836f6f4332465a5c683f967ec143e68ebc2f17cc7a5bbc5000b362b9",
+        "pass_b/cisi:v2:M-983.json": "d782b2b722c4b72fbe759d2bd789dd4a2a9243a69537d3d4bda87356776052c2",
+        "pass_b/cisi:v2:Pk-24.json": "fb767eb9cc70414fe6d81ee65f4662c40ec44e94c9075bf1cf350f8e742ddf8a",
+        "pass_b/cisi:v2:Skh-7.json": "0397475c8fe472ab4416b25327b928ab0e156cae7ddcf20c334dd51a08ad1453",
+        "pass_gold/cisi:v1:K-63.json": "13734deebac5a09a0c264804db756478fa12ee0a0ee9d6ae963ae0886489f27b",
+        "pass_gold/cisi:v1:K-88.json": "a71c0b73bff3a624ce44b3b217d930c16a0b7e52cc37eb76d5e45820efc00848",
+        "pass_gold/cisi:v1:L-66.json": "0b451c23d598c9892ca5c9bb72d008959ee93757d8d21252145a71d0b1f9e885",
+        "pass_gold/cisi:v1:L-98.json": "e805b6bc558c11f39c15eb9ac1f694228b8e1740e89d2dc5334a4b21ee244eac",
+        "pass_gold/cisi:v1:M-144.json": "3fe1d71c9092344f3506d8b352ae922dccca941049235441d15d39163a0a2807",
+        "pass_gold/cisi:v1:M-250.json": "ca6819015ac1324891c8fdd296c6aab1f5b960942c76952faad3e99090a1ed80",
+        "pass_gold/cisi:v1:M-93.json": "56e15536df0a990fb5d98da3befb1689b624937072c2a211527733a50f77e015",
+        "pass_gold/cisi:v2:H-271.json": "cf57d521fca9cbdabcc9f6eeb73f192df04bb15fdca53c3ba752a1670cae1dc7",
+        "pass_gold/cisi:v2:H-743.json": "7aa612a606ff9467a8d28ac366af2590f2559037fb296859ee80a5973ddab58b",
+        "pass_gold/cisi:v2:M-1247.json": "0b7e43640d6e01f78e259f1bcb0fff8feda27deebd7d92da83f253f00de534ee"
+      },
+      "manifest_files": 162,
+      "missing_files": [],
+      "name": "Pilot-pass record production",
+      "store": "/home/hatch/workspace/glossa-lab/corpora/downloads/cisi_image_layer/phase132_pilot",
+      "verdict": "PASS"
+    },
+    {
+      "frame_list_equal": true,
+      "gate": "0.3",
+      "name": "Frame identity",
+      "verdict": "PASS"
+    },
+    {
+      "gate": "0.4",
+      "name": "Reproduction of the committed metrics",
+      "reproduction": {
+        "error": null,
+        "exact_sequence_agreement_all_50_p": 0.2,
+        "full_record_equal": true,
+        "gold_error_estimator_p": 0.05,
+        "per_token_agreement_all_50": 0.479798,
+        "per_token_agreement_gold": 0.428571,
+        "total_tokens_adjudicated_final": 189,
+        "total_tokens_pass_a": 191,
+        "total_tokens_pass_b": 190,
+        "total_tokens_pass_gold": 40
+      },
+      "verdict": "PASS"
+    },
+    {
+      "expected": {
+        "count": 11,
+        "identity": 93,
+        "key": 10,
+        "legibility": 45,
+        "order": 1,
+        "orientation": 2
+      },
+      "gate": "0.5",
+      "name": "Adjudication-taxonomy cross-check",
+      "taxonomy": {
+        "count": 11,
+        "identity": 93,
+        "key": 10,
+        "legibility": 45,
+        "order": 1,
+        "orientation": 2
+      },
+      "taxonomy_total": 162,
+      "verdict": "PASS"
+    },
+    {
+      "census": [
+        {
+          "gold": false,
+          "key": "cisi:v1:M-21",
+          "len_pass_a": 8,
+          "len_pass_b": 6,
+          "object_type_recorded": "Seals",
+          "site": "Mohenjo-Daro"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v1:M-41",
+          "len_pass_a": 8,
+          "len_pass_b": 8,
+          "object_type_recorded": "Seals",
+          "site": "Mohenjo-Daro"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v1:M-58",
+          "len_pass_a": 5,
+          "len_pass_b": 5,
+          "object_type_recorded": "Seals",
+          "site": "Mohenjo-Daro"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v1:M-75",
+          "len_pass_a": 5,
+          "len_pass_b": 5,
+          "object_type_recorded": "Seals",
+          "site": "Mohenjo-Daro"
+        },
+        {
+          "gold": true,
+          "key": "cisi:v1:M-93",
+          "len_pass_a": 5,
+          "len_pass_b": 5,
+          "object_type_recorded": "Seals",
+          "site": "Mohenjo-Daro"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v1:M-110",
+          "len_pass_a": 4,
+          "len_pass_b": 5,
+          "object_type_recorded": "Seals",
+          "site": "Mohenjo-Daro"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v1:M-127",
+          "len_pass_a": 5,
+          "len_pass_b": 5,
+          "object_type_recorded": "Seals",
+          "site": "Mohenjo-Daro"
+        },
+        {
+          "gold": true,
+          "key": "cisi:v1:M-144",
+          "len_pass_a": 6,
+          "len_pass_b": 6,
+          "object_type_recorded": "Seals",
+          "site": "Mohenjo-Daro"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v1:M-162",
+          "len_pass_a": 6,
+          "len_pass_b": 6,
+          "object_type_recorded": "Seals",
+          "site": "Mohenjo-Daro"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v2:M-658",
+          "len_pass_a": 7,
+          "len_pass_b": 5,
+          "object_type_recorded": "Seals",
+          "site": "Mohenjo-Daro"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v1:M-195",
+          "len_pass_a": 5,
+          "len_pass_b": 5,
+          "object_type_recorded": "Seals",
+          "site": "Mohenjo-Daro"
+        },
+        {
+          "gold": true,
+          "key": "cisi:v1:M-250",
+          "len_pass_a": 3,
+          "len_pass_b": 3,
+          "object_type_recorded": "Seals",
+          "site": "Mohenjo-Daro"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v2:M-819",
+          "len_pass_a": 6,
+          "len_pass_b": 6,
+          "object_type_recorded": "Seals",
+          "site": "Mohenjo-Daro"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v1:M-321",
+          "len_pass_a": 3,
+          "len_pass_b": 3,
+          "object_type_recorded": "Seals",
+          "site": "Mohenjo-Daro"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v2:M-926",
+          "len_pass_a": 7,
+          "len_pass_b": 7,
+          "object_type_recorded": "Seals",
+          "site": "Mohenjo-Daro"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v2:M-983",
+          "len_pass_a": 4,
+          "len_pass_b": 1,
+          "object_type_recorded": "Seals",
+          "site": "Mohenjo-Daro"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v1:M-480",
+          "len_pass_a": 8,
+          "len_pass_b": 8,
+          "object_type_recorded": "Tablets",
+          "site": "Mohenjo-Daro"
+        },
+        {
+          "gold": true,
+          "key": "cisi:v2:M-1247",
+          "len_pass_a": 0,
+          "len_pass_b": 1,
+          "object_type_recorded": "Seals",
+          "site": "Mohenjo-Daro"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v2:M-1352",
+          "len_pass_a": 4,
+          "len_pass_b": 3,
+          "object_type_recorded": "Seals",
+          "site": "Mohenjo-Daro"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v2:M-1448",
+          "len_pass_a": 3,
+          "len_pass_b": 3,
+          "object_type_recorded": "Tablets",
+          "site": "Mohenjo-Daro"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v1:H-66",
+          "len_pass_a": 4,
+          "len_pass_b": 4,
+          "object_type_recorded": "Seals",
+          "site": "Harappa"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v1:H-139",
+          "len_pass_a": 3,
+          "len_pass_b": 3,
+          "object_type_recorded": "Seals",
+          "site": "Harappa"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v1:H-212",
+          "len_pass_a": 6,
+          "len_pass_b": 6,
+          "object_type_recorded": "Tablets",
+          "site": "Harappa"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v1:H-305",
+          "len_pass_a": 6,
+          "len_pass_b": 6,
+          "object_type_recorded": "Tablets",
+          "site": "Harappa"
+        },
+        {
+          "gold": true,
+          "key": "cisi:v2:H-271",
+          "len_pass_a": 4,
+          "len_pass_b": 4,
+          "object_type_recorded": "Seals",
+          "site": "Harappa"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v2:H-451",
+          "len_pass_a": 3,
+          "len_pass_b": 4,
+          "object_type_recorded": "Seals",
+          "site": "Harappa"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v2:H-523",
+          "len_pass_a": 4,
+          "len_pass_b": 5,
+          "object_type_recorded": "Seals",
+          "site": "Harappa"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v2:H-596",
+          "len_pass_a": 2,
+          "len_pass_b": 2,
+          "object_type_recorded": "Seals",
+          "site": "Harappa"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v2:H-669",
+          "len_pass_a": 3,
+          "len_pass_b": 3,
+          "object_type_recorded": "Seals",
+          "site": "Harappa"
+        },
+        {
+          "gold": true,
+          "key": "cisi:v2:H-743",
+          "len_pass_a": 7,
+          "len_pass_b": 7,
+          "object_type_recorded": "Tablets",
+          "site": "Harappa"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v2:H-814",
+          "len_pass_a": 5,
+          "len_pass_b": 5,
+          "object_type_recorded": "Tablets",
+          "site": "Harappa"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v2:H-960",
+          "len_pass_a": 5,
+          "len_pass_b": 5,
+          "object_type_recorded": "Tablets",
+          "site": "Harappa"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v2:Pk-24",
+          "len_pass_a": 0,
+          "len_pass_b": 1,
+          "object_type_recorded": "Seals",
+          "site": "Harappa"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v2:Skh-7",
+          "len_pass_a": 1,
+          "len_pass_b": 1,
+          "object_type_recorded": "",
+          "site": "Harappa"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v1:L-33",
+          "len_pass_a": 3,
+          "len_pass_b": 3,
+          "object_type_recorded": "Seals",
+          "site": "Lothal"
+        },
+        {
+          "gold": true,
+          "key": "cisi:v1:L-66",
+          "len_pass_a": 6,
+          "len_pass_b": 8,
+          "object_type_recorded": "Seals",
+          "site": "Lothal"
+        },
+        {
+          "gold": true,
+          "key": "cisi:v1:L-98",
+          "len_pass_a": 4,
+          "len_pass_b": 4,
+          "object_type_recorded": "Seals",
+          "site": "Lothal"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v1:L-165",
+          "len_pass_a": 4,
+          "len_pass_b": 4,
+          "object_type_recorded": "",
+          "site": "Lothal"
+        },
+        {
+          "gold": false,
+          "key": "cisi:v1:L-227",
+          "len_pass_a": 1,
+          "len_pass_b": 1,
+          "object_type_recorded": "",
+          "site": "Lothal"
+        },
+        {
+          "gold": true,
+          "key": "cisi:v1:K-63",
+          "len_pass_a": 4,
+          "len_pass_b": 4,
+          "object_type_recorded": "Seals",
+          "site": "Kalibangan"
+        }
+      ],
+      "gate": "0.6",
+      "mismatched_objects": 40,
+      "name": "Analysis census",
+      "verdict": "PASS"
+    }
+  ]
+}

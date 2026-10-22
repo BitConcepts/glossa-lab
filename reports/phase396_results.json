@@ -1,0 +1,113 @@
+{
+  "experiment_id": "spec032-pred-2026-006-harappa-breakdown",
+  "freeze_digest": "34cd6230471c746878ab80110c4a07c3f3daeecef6c05bf222521b39054490ab",
+  "outcome": {
+    "closure": "CANNOT BE RUN AS WRITTEN",
+    "failed_check": "3.2",
+    "scoring_run": false,
+    "type": "step0_closure"
+  },
+  "phase": 396,
+  "prediction": {
+    "criterion": {
+      "quantity": "share of the frozen trained INITIAL signs whose Harappa start rate is at least 0.40, computed on the withheld Harappa-site Yajnadevam sequences only",
+      "share_min": 0.7,
+      "start_rate_bar": 0.4
+    },
+    "id": "PRED-2026-006",
+    "registered": "2026-04-22"
+  },
+  "registration": {
+    "doi": "10.17605/OSF.IO/3HTN8",
+    "osf": "https://osf.io/3htn8/",
+    "state": "approved and public before execution (2026-10-13)"
+  },
+  "spec": "032-pred-2026-006-harappa-breakdown",
+  "step0_record": {
+    "inputs": {
+      "crosswalk_sha256": "e44b8b550155e3d071e7fc5f94e8c98e9755de437c99e2f5027e3d647b2950a2",
+      "recorded_stability_output_sha256": "0d57a5baf5c4076c405f119fbd64ed06554cf5068e80d6cb16504577e2cbcb55",
+      "training_corpus_sha256": "b19cfe955313b7db73b462e697e305c1da21b3b8a6997679a466d959b757b42e",
+      "withheld_file_sha256": "c02e3d7bb74cf5abb11cc94f88d8d469e6acc5d6fad4b7153c02c43428f58d98"
+    },
+    "step0": {
+      "check_3_1": {
+        "check": "3.1 trained INITIAL set reconstruction",
+        "failure_outcome": null,
+        "maps_identical": true,
+        "recomputed_classifiable_signs": 105,
+        "recorded_classifiable_signs": 105,
+        "recorded_generated": "2026-04-22T18:16:22Z",
+        "recorded_output": "outputs/analysis/global_class_stability.json",
+        "status": "pass",
+        "trained_initial_set": [
+          "P000",
+          "P001",
+          "P004",
+          "P013",
+          "P051",
+          "P098",
+          "P217",
+          "P238",
+          "P265",
+          "P301",
+          "P310",
+          "P324"
+        ],
+        "trained_initial_set_size": 12
+      },
+      "check_3_2": {
+        "check": "3.2 withholding verification",
+        "cisi_rows_sites": {
+          "Mohenjo-daro": 179
+        },
+        "fact_part_1_assignments_from_cisi_mohenjo_daro_only": false,
+        "fact_part_2_harappa_yajnadevam_played_no_part": false,
+        "failure_outcome": "CANNOT BE RUN AS WRITTEN",
+        "rows_by_source": {
+          "Corpus of Indus Seals and Inscriptions (mayig digitization)": 179,
+          "Yajnadevam indus-website corpus (GPL-3.0, GitHub)": 2543
+        },
+        "status": "fail",
+        "total_trained_sign_occurrences_inside_yajnadevam_harappa": 1013,
+        "trained_sign_occurrences_inside_yajnadevam_harappa": {
+          "P000": 0,
+          "P001": 16,
+          "P004": 64,
+          "P013": 33,
+          "P051": 4,
+          "P098": 254,
+          "P217": 91,
+          "P238": 5,
+          "P265": 2,
+          "P301": 16,
+          "P310": 60,
+          "P324": 468
+        },
+        "trained_signs_present_inside_yajnadevam_harappa": 11,
+        "training_corpus": "data/normalized/corpus_master.csv",
+        "training_corpus_rows": 2722,
+        "yajnadevam_harappa_rows_in_training_corpus": 970,
+        "yajnadevam_rows_in_training_corpus": 2543
+      },
+      "check_3_3": {
+        "status": "not_reached"
+      }
+    },
+    "trained_initial_set": [
+      "P000",
+      "P001",
+      "P004",
+      "P013",
+      "P051",
+      "P098",
+      "P217",
+      "P238",
+      "P265",
+      "P301",
+      "P310",
+      "P324"
+    ]
+  },
+  "step0_record_sha256": "26781336c8c34b006e62474448b17be4d895c1d7ea06d5c24418d49a38e7c4e7"
+}

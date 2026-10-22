@@ -1,0 +1,61 @@
+[10/22/26 14:59:05] WARNING  No DOAJ API key provided. Searches will  doaj.py:48
+                             use public access with rate limits (100            
+                             requests/hour). Get a free API key at:             
+                             https://doaj.org/apply-for-api-key/                
+                    WARNING  PAPER_SEARCH_MCP_UNPAYWALL_EMAIL/UN unpaywall.py:29
+                             PAYWALL_EMAIL not configured.                      
+                             Unpaywall fallback will be skipped.                
+                             You can request free access at                     
+                             https://unpaywall.org/products/api                 
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    WARNING  Primary download failed for           server.py:811
+                             crossref/10.1162/coli_c_00030:                     
+                             CrossRef does not provide direct PDF               
+                             downloads. CrossRef is a citation                  
+                             database that provides metadata about              
+                             academic papers. To access the full                
+                             text, please use the paper's DOI or                
+                             URL to visit the publisher's website.              
+[10/22/26 14:59:14] WARNING  OpenAIRE v2 XML search failed,      openaire.py:297
+                             attempting legacy parser fallback:                 
+                             409 Client Error: Conflict for url:                
+                             https://api.openaire.eu/search/rese                
+                             archProducts?keywords=10.1162%2Fcol                
+                             i_c_00030&page=1&size=3                            
+                    ERROR    OpenAIRE API request error: 400     openaire.py:319
+                             Client Error: Bad Request for url:                 
+                             https://api.openaire.eu/search/publ                
+                             ications?size=3&format=json&query=1                
+                             0.1162%2Fcoli_c_00030                              
+[10/22/26 14:59:17] WARNING  CORE request returned 500 (attempt 1/3). core.py:91
+                             Retrying in 1s                                     
+[10/22/26 14:59:19] WARNING  CORE request returned 500 (attempt 2/3). core.py:91
+                             Retrying in 2s                                     
+[10/22/26 14:59:22] WARNING  CORE request returned 429 (attempt 3/3). core.py:91
+                             Retrying in 4s                                     
+[10/22/26 14:59:27] INFO     Europe PMC search returned 0 papers europepmc.py:86
+                             for query: 10.1162/coli_c_00030                    
+[10/22/26 14:59:30] INFO     No PMC results found for query:           pmc.py:66
+                             10.1162/coli_c_00030                               
+[10/22/26 14:59:31] ERROR    Error getting direct URL for         sci_hub.py:158
+                             10.1162/coli_c_00030:                              
+                             HTTPSConnectionPool(host='sci-hub.se               
+                             ', port=443): Max retries exceeded                 
+                             with url: /10.1162/coli_c_00030                    
+                             (Caused by ProxyError('Unable to                   
+                             connect to proxy',                                 
+                             RemoteDisconnected('Remote end                     
+                             closed connection without                          
+                             response')))                                       
+                    ERROR    Could not find PDF URL for            sci_hub.py:50
+                             identifier: 10.1162/coli_c_00030                   
+                    INFO     Warning: InsecureRequestWarning:      server.py:723
+                             Unverified HTTPS request is being                  
+                             made to host 'hatch-egress-proxy'.                 
+                             Adding certificate verification is                 
+                             strongly advised. See:                             
+                             https://urllib3.readthedocs.io/en/lat              
+                             est/advanced-usage.html#tls-warnings               
+                    INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   

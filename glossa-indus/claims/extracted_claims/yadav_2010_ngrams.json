@@ -1,7 +1,7 @@
 {
   "document_id": "yadav_2010_ngrams",
   "title": "Statistical Analysis of the Indus Script Using n-Grams",
-  "extraction_date": "2026-10-13T06:22:51.967209",
+  "extraction_date": "2026-10-21T15:29:26.284408",
   "total_claims": 2,
   "auto_extracted": 2,
   "manually_curated": 2,
@@ -16,7 +16,7 @@
       "falsification_condition": "If frequency distribution deviates from Zipf-Mandelbrot law.",
       "glossa_lab_evidence": "Phase-43: V3 Zipf exponent ~1.35 (super-Zipfian) [VERIFIED]",
       "confidence_in_source": 0.95,
-      "extracted_at": "2026-10-13T06:22:51.960207",
+      "extracted_at": "2026-10-21T15:29:26.282755",
       "stage": "checked",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:yadav_2010_ngrams_manual_001",
       "stage_as_of": "2026-10-12",
@@ -34,7 +34,19 @@
       ],
       "verified_unexplained": true,
       "proposition_fingerprint": "fdd32acf462bf2d9da759fae422df691921d5ca597ca7d5c74d8e9d86a06a49f",
-      "merged_into": "yadav_2009_arxiv_manual_001"
+      "merged_into": "yadav_2009_arxiv_manual_001",
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "spec025-material-audit-note",
+        "proposal": "P7",
+        "note": "Scope note (spec-025 material audit, 2026-10-22): the Zipf-Mandelbrot fit (a = 15.39, b = 2.59, c = 44.47) was run on the pruned EBUDS subset of Mahadevan's M77 corpus, a scope the claim wording does not state. Yadav 2010 itself says a Zipf fit 'is not sufficient to declare a sequence as linguistic' (FULL TEXT). The dossier's 'Phase-43 V3 Zipf exponent ~1.35' is a different number from b = 2.59; the two are not interchangeable. The extraction itself is verbatim-accurate.",
+        "evidence": [
+          "specs/025-paper-search-research-check/audit-2026-10-22/raw/findings_W1.md",
+          "specs/025-paper-search-research-check/audit-2026-10-22/correction_proposals.md"
+        ],
+        "evidence_level": "FULL TEXT",
+        "effect": "No claim status, stage, anchor, or score is changed by this note."
+      }
     },
     {
       "claim_id": "yadav_2010_ngrams_manual_002",
@@ -45,7 +57,7 @@
       "testability": "directly_testable",
       "glossa_lab_evidence": "Phase-43: 20 TERMINAL_STRONG + 40 INITIAL_STRONG signs identified in V3 corpus [VERIFIED]",
       "confidence_in_source": 0.95,
-      "extracted_at": "2026-10-13T06:22:51.960207",
+      "extracted_at": "2026-10-21T15:29:26.282755",
       "stage": "checked",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:yadav_2010_ngrams_manual_002",
       "stage_as_of": "2026-10-12",
@@ -63,7 +75,19 @@
       ],
       "verified_unexplained": true,
       "proposition_fingerprint": "c5d0f0575c8378b1ab3b51ba889c77b6e729f5b24991e3be55a179baa4125129",
-      "merged_into": "yadav_2009_arxiv_manual_002"
+      "merged_into": "yadav_2009_arxiv_manual_002",
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "spec025-material-audit-note",
+        "proposal": "P7",
+        "note": "Priority note (spec-025 material audit, 2026-10-22): this result is not a Yadav first. Positional-statistical analysis of Indus signs was published by the Soviet programme (1965), the Finnish programme (1969), Kondratov 1976 (metadata level - the chapter is paywalled), and Mahadevan 1977. The extraction itself is verbatim-accurate (FULL TEXT).",
+        "evidence": [
+          "specs/025-paper-search-research-check/audit-2026-10-22/raw/findings_W1.md",
+          "specs/025-paper-search-research-check/audit-2026-10-22/correction_proposals.md"
+        ],
+        "evidence_level": "FULL TEXT (priority items: metadata level for Kondratov 1976)",
+        "effect": "No claim status, stage, anchor, or score is changed by this note."
+      }
     }
   ],
   "_citation": {

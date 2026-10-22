@@ -1,0 +1,700 @@
+{
+ "spec": "033-sa-free-language-comparison",
+ "register_version": "0.4-draft",
+ "note": "Governed claim register for Spec 033 (the SA-free rerun of the Dravidian-versus-rivals comparison; design D-03 of the 2026-10-13 experiment-design portfolio, draft PR #195). Drafted claims-first in the Spec 028/030/031 register shape on 2026-10-13. AEE recovery round 1 (after_specify, 20261013T110944Z: iterate, 9 failure modes \u2014 irreducibility on C02, C03, C08, C09, C10, C11, C12; a precision challenge and a C10-C11 negation pairing on C10): claim texts rewritten as single atomic propositions (the named rivals, the anchor-promotion bar, the baseline control, and the second verdict triggers carried into the boundaries verbatim-in-substance); the SUPPORTED rule's percentile condition split into its own claim F033-C15, since it is a genuinely separate bar (the one split of this recovery); pairwise boundary confirmations rewritten for C10-C11 and the verdict-rule set. Propositions, falsifiers, and verdict rules unchanged. Record: aee/recovery-specify.md. Recovery round 2 (after_specify, 20261013T111025Z: iterate, 5 failure modes \u2014 C03-C08 and C10-C11 and C11-C15 negation pairings, a repeated precision challenge on C10, irreducibility on C11): C03 and C11 reworded to remove the lexical mirrors the pairings keyed on (the assessor pairs claim texts); C10's text now names the highest-scoring rival assignment directly; C11's boundary trimmed to its trigger statement, with the status consequence left to spec section 6 where it is governed; C15 keyed to the percentile bar itself; pairwise boundary confirmations extended for C03-C08 and C11-C15. Propositions, falsifiers, and verdict rules unchanged. Recovery round 3 (after_specify, 20261013T111052Z: iterate, 1 failure mode \u2014 the C11-C12 negation pairing): C12 keyed to the winning margin rather than to Dravidian's placing, removing the shared surface the pairing keyed on; the partition is confirmed pairwise in both claims. Propositions, falsifiers, and verdict rules unchanged.",
+ "claims": [
+  {
+   "id": "F033-C01",
+   "text": "Spec 033 verdicts concern the bounded language comparison only.",
+   "kind": "hypothesis",
+   "status": "draft",
+   "boundary": "The licensed-conclusion boundary of every Spec 033 output. The bounded comparison is: which family's published word-values, assigned to the frozen anchor signs, make the inscription sequences most probable under the frozen counted model. A verdict under this spec is not evidence for the rebus method, not a reading of any single sign, and not a decipherment. This claim governs what a verdict may mean; it does not govern the pipeline (C03, C08), the data (C04, C05), or the criteria (C10-C12).",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-LICENSED-CONCLUSION-ONLY"
+   ],
+   "alternatives": [
+    "A better statistical fit for one family's values under this method licenses a conclusion that the rebus method is established or that a sign is read."
+   ],
+   "falsification_tests": [
+    "One conclusion in a Spec 033 report that reads a fit result as the rebus method, a sign reading, or a decipherment defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-FIT-AS-DECIPHERMENT",
+     "ASM-FIT-AS-REBUS-PROOF"
+    ],
+    "strongest_rival": "A better statistical fit for one family's values under this method licenses a conclusion that the rebus method is established or that a sign is read.",
+    "verdict_rule": "The verdict applies only to the bounded claim: Dravidian assignments fit better than the named rivals under this method, on this corpus.",
+    "evidence_origin_groups": [
+     "lane2-claim-record",
+     "design-portfolio-d03"
+    ],
+    "boundary_confirmation": "C01 bounds what a verdict MEANS; C02 states the hypothesis the verdict judges; C10-C12 fix the rules that produce it. A verdict produced correctly under C10-C12 still may not be read beyond C01. C01 governs conclusions; C14 governs the lineage wording inside them, and neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The adopted lane-2 record for parpola_2010_dravidian_solution_manual_001: the claim and what its explanation does not establish",
+     "source_id": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json"
+    },
+    {
+     "ref": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design portfolio D-03: the bounded claim wording and its not-established list",
+     "source_id": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "independent_of": [
+      "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F033-C02",
+   "text": "Proto-Dravidian assignments produce inscription sequences with higher probability than every named rival under the frozen counted model.",
+   "kind": "hypothesis",
+   "status": "draft",
+   "boundary": "The hypothesis claim, stated as the design states it. The margin the hypothesis must clear is fixed by C10; the range condition is fixed by C11; this claim states the ordering the run tests. It does not fix the estimator (C08), the anchor set (C06), or the values (C07). The named rivals are Indo-Aryan (Sanskrit), Munda, and the no-language (isolate-baseline) assignments.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-FAMILIES-AS-NAMED"
+   ],
+   "alternatives": [
+    "A language family outside the named set (or a language isolate treated as a family) is the true source of any fit advantage."
+   ],
+   "falsification_tests": [
+    "One primary run under the frozen pipeline in which the best rival matches or beats Dravidian, or random assignments reach Dravidian's range, defeats this claim (the design's falsifier)."
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-UNNAMED-RIVAL-ADMITTED"
+    ],
+    "strongest_rival": "A language family outside the named set (or a language isolate treated as a family) is the true source of any fit advantage.",
+    "verdict_rule": "The hypothesis holds exactly when the SUPPORTED rule of C10 fires on the primary run; C11 and C12 state the other outcomes.",
+    "evidence_origin_groups": [
+     "design-portfolio-d03"
+    ],
+    "boundary_confirmation": "C02 states the tested ordering; C10 states the bar that ordering must clear; C09 states the controls the ordering is also compared against. C02 names the baseline among the assignments compared; C09 names it again as a control because the design runs it in both roles, and the two statements agree rather than conflict."
+   },
+   "evidence": [
+    {
+     "ref": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-03: the hypothesis and its falsifier, stated before the method",
+     "source_id": "https://github.com/BitConcepts/glossa-lab/pull/195"
+    },
+    {
+     "ref": "docs/ledger-archive.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The original comparisons the hypothesis re-tests: Phase-41 ratio 1.0566; Phase-43 +0.484 log units per token",
+     "source_id": "docs/ledger-archive.md",
+     "independent_of": [
+      "https://github.com/BitConcepts/glossa-lab/pull/195"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F033-C03",
+   "text": "Spec 033 runs without semantic anchoring.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The method-purity claim (H26). It bars the falsified SA machinery and every SA-derived quantity from every part of the run: family scoring, controls, robustness arm, and sensitivity. It does not govern what the pipeline contains instead (C08 states the counted model). Anchor promotion is barred on the same terms: no anchor is promoted, and no promoted value enters any score.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-NO-SA-IN-PIPELINE"
+   ],
+   "alternatives": [
+    "An SA-derived quantity may enter as a minor input where it cannot gate the verdict."
+   ],
+   "falsification_tests": [
+    "One SA computation, anchor promotion, or SA-derived input anywhere in a Spec 033 run defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-SA-AS-GATE",
+     "ASM-SA-DERIVED-INPUT"
+    ],
+    "strongest_rival": "An SA-derived quantity may enter as a minor input where it cannot gate the verdict.",
+    "verdict_rule": "Any SA component or SA-derived quantity found in the run voids the run's verdict under this spec.",
+    "evidence_origin_groups": [
+     "phase107-record",
+     "design-portfolio-d03"
+    ],
+    "boundary_confirmation": "C03 bars the old machinery; C08 states the replacement machinery; C02 states what the replacement tests. C03 and C08 are complementary halves of the method definition, and neither narrows the other. C03 and C08 govern the same method from two sides: C03 names what is absent (the SA machinery); C08 names what is present (the one counted-model pipeline). Absence of the old machinery and presence of the replacement are consistent statements, and neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "reports/phase107_step4_pooling.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-107 record: the SA method falsified on held-out data (0.000, 0 of 115)",
+     "source_id": "reports/phase107_step4_pooling.json"
+    },
+    {
+     "ref": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-03: SA-free by construction, H26 stated",
+     "source_id": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "independent_of": [
+      "reports/phase107_step4_pooling.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F033-C04",
+   "text": "Spec 033 scoring uses the strict sign set only.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The sign-set claim. The strict sign set is the 94 readings carrying validation status strict_sa_independent in backend/reports/INDUS_FINAL_ANCHORS.json (287 anchors in total). It does not govern the corpus the sequences come from (C05) or the anchors chosen inside the set (C06).",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-STRICT-SET-AS-RECORDED"
+   ],
+   "alternatives": [
+    "Readings outside the strict set may be scored where they are individually plausible."
+   ],
+   "falsification_tests": [
+    "One scored sequence under Spec 033 containing a reading outside the strict set defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-RELAXED-SET-SUBSTITUTED"
+    ],
+    "strongest_rival": "Readings outside the strict set may be scored where they are individually plausible.",
+    "verdict_rule": "Every scored sequence is composed over the strict set as recorded at the freeze; a sequence containing a non-strict reading is outside the scored population.",
+    "evidence_origin_groups": [
+     "anchors-record"
+    ],
+    "boundary_confirmation": "C04 fixes the sign population; C05 fixes the sequence source; C06 fixes the anchor subset inside C04's population. C04 and C06 differ in level (population versus subset) and neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "backend/reports/INDUS_FINAL_ANCHORS.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The anchors record: 287 anchors, 94 carrying validation status strict_sa_independent (census pinned at freeze)",
+     "source_id": "backend/reports/INDUS_FINAL_ANCHORS.json"
+    }
+   ]
+  },
+  {
+   "id": "F033-C05",
+   "text": "The scored corpus is the program's V3/Mahadevan-lineage corpus as held in the database.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The corpus claim. The corpus family is the one the original Phase-41/43 comparisons used, so the rerun is comparable to them. The within-lineage limit this choice carries is governed by C14, not hidden by this claim. It does not govern the sign set scored over the corpus (C04).",
+   "depends_on": [
+    "F033-C04"
+   ],
+   "assumptions": [
+    "ASM-CORPUS-AS-HELD"
+   ],
+   "alternatives": [
+    "A different corpus may be substituted where it is easier to load, since the comparison is about families rather than corpora."
+   ],
+   "falsification_tests": [
+    "One Spec 033 score computed on a corpus other than the held V3/Mahadevan-lineage corpus defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-CORPUS-SWAP-FOR-CONVENIENCE"
+    ],
+    "strongest_rival": "A different corpus may be substituted where it is easier to load, since the comparison is about families rather than corpora.",
+    "verdict_rule": "Scores are computed on the held V3/Mahadevan-lineage corpus; the verdict wording carries the lineage limit (C14).",
+    "evidence_origin_groups": [
+     "design-portfolio-d03",
+     "lane2-claim-record"
+    ],
+    "boundary_confirmation": "C05 fixes the sequence source; C04 fixes the sign population scored over it; C14 states the wording limit the source choice imposes. C05 and C14 are consistent by design: the claim that fixes the corpus is the reason the wording claim exists."
+   },
+   "evidence": [
+    {
+     "ref": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-03 data section: the V3/Mahadevan-lineage corpus as held, the same family the originals used",
+     "source_id": "https://github.com/BitConcepts/glossa-lab/pull/195"
+    },
+    {
+     "ref": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The adopted not-understood text: the corpora used are all from the Mahadevan lineage, with no independent-corpus replication",
+     "source_id": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+     "independent_of": [
+      "https://github.com/BitConcepts/glossa-lab/pull/195"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F033-C06",
+   "text": "Each family's anchor signs are the same frozen five-sign set.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The anchor-set claim. The set follows the five-per-language pattern of the original Phase-41 comparison and is frozen as cited data before any family is scored. It does not govern the values assigned to the signs (C07) or the second anchor list of the robustness arm (C13).",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-ANCHOR-SET-FROZEN"
+   ],
+   "alternatives": [
+    "Each family may be given its own most favourable anchor signs, since the families' lexicons differ."
+   ],
+   "falsification_tests": [
+    "One family scored under Spec 033 on an anchor set other than the frozen five-sign set defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-ANCHOR-PICKING-AFTER-SCORES"
+    ],
+    "strongest_rival": "Each family may be given its own most favourable anchor signs, since the families' lexicons differ.",
+    "verdict_rule": "All families and controls are scored with the one frozen set; a set altered after any score exists is outside this spec.",
+    "evidence_origin_groups": [
+     "design-portfolio-d03"
+    ],
+    "boundary_confirmation": "C06 fixes the primary anchor set; C13 fixes the robustness arm's second set; C07 fixes where the values for either set come from. C06 and C13 govern different lists for different arms, and neither substitutes for the other."
+   },
+   "evidence": [
+    {
+     "ref": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-03 method section: the five-per-language anchor pattern, the list frozen before any run",
+     "source_id": "https://github.com/BitConcepts/glossa-lab/pull/195"
+    }
+   ]
+  },
+  {
+   "id": "F033-C07",
+   "text": "Anchor values come from published sources only.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The values-provenance claim. The published sources are: the Dravidian Etymological Dictionary tradition for Dravidian; standard Sanskrit lexicon values for Indo-Aryan; published Munda reconstructions for Munda. It does not govern which signs carry values (C06, C13) or how values enter the score (C08).",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-VALUES-AS-PUBLISHED"
+   ],
+   "alternatives": [
+    "The program may assign a value from its own anchor work where the published record is thin."
+   ],
+   "falsification_tests": [
+    "One anchor value under Spec 033 without a named published source defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-PROGRAM-ASSIGNED-VALUES"
+    ],
+    "strongest_rival": "The program may assign a value from its own anchor work where the published record is thin.",
+    "verdict_rule": "Every assigned value traces to a named published source in the anchor-freeze record; an untraceable value is outside this spec.",
+    "evidence_origin_groups": [
+     "design-portfolio-d03"
+    ],
+    "boundary_confirmation": "C07 governs value provenance; C06 governs sign selection; C03 governs the machinery the values never pass through. A value can satisfy C07 while its sign fails C06, and the claims judge different facts; neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-03 data section: anchor candidate values from published sources only, the three traditions named",
+     "source_id": "https://github.com/BitConcepts/glossa-lab/pull/195"
+    }
+   ]
+  },
+  {
+   "id": "F033-C08",
+   "text": "All scoring under Spec 033 uses the identical counted-model pipeline.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The estimator claim. The pipeline is the estimator fixed at this freeze (spec section 5): counted conditional probabilities over phoneme-sequence and sign-identity units, estimated from the corpus itself under each mapping, add-one smoothing, mean log probability per sign. It does not govern the anchor set or values the pipeline consumes (C06, C07) or the controls it must also score (C09 names them).",
+   "depends_on": [
+    "F033-C06",
+    "F033-C07"
+   ],
+   "assumptions": [
+    "ASM-ONE-ESTIMATOR-FOR-ALL"
+   ],
+   "alternatives": [
+    "Each family's model may be tuned separately, since the families' phoneme inventories differ in size."
+   ],
+   "falsification_tests": [
+    "One family or control scored under Spec 033 by a pipeline differing in estimator, smoothing, or scoring rule defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-PER-FAMILY-TUNING"
+    ],
+    "strongest_rival": "Each family's model may be tuned separately, since the families' phoneme inventories differ in size.",
+    "verdict_rule": "One pipeline, one smoothing rule, one scoring rule for every family and control; a per-family variant is outside this spec.",
+    "evidence_origin_groups": [
+     "design-portfolio-d03"
+    ],
+    "boundary_confirmation": "C08 fixes the scoring machinery; C09 names the full set of things scored (families plus both controls); C03 bars the machinery that is absent. C08's identity requirement is what makes C09's comparison a comparison, and neither claim narrows the other. C08 and C03 are the two halves of the method definition (the pipeline used; the machinery barred), stated to agree: the counted model of C08 is the whole of the scoring, and C03's bar is what keeps it so."
+   },
+   "evidence": [
+    {
+     "ref": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-03 method section: the exact estimator is fixed at freeze time and is the same for every family",
+     "source_id": "https://github.com/BitConcepts/glossa-lab/pull/195"
+    }
+   ]
+  },
+  {
+   "id": "F033-C09",
+   "text": "The no-information control distribution is 999 random assignments run in the same pass as the families.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The controls claim. The random assignments permute the same values over the same anchor signs, giving the no-information distribution the verdict rules use (C10, C11). The no-language baseline carries no values on the anchor signs. It does not govern the verdict thresholds applied to the control distribution (C10, C11). The second control, the no-language baseline, also runs in the same pass.",
+   "depends_on": [
+    "F033-C08"
+   ],
+   "assumptions": [
+    "ASM-CONTROLS-DECLARED-BEFORE-OUTCOMES"
+   ],
+   "alternatives": [
+    "A smaller random control, or a baseline reported separately from the families, is sufficient for a methods paper."
+   ],
+   "falsification_tests": [
+    "One Spec 033 verdict issued without the 999-assignment distribution and the baseline from the same pass defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-CONTROL-AS-DECORATION"
+    ],
+    "strongest_rival": "A smaller random control, or a baseline reported separately from the families, is sufficient for a methods paper.",
+    "verdict_rule": "The control distribution is 999 assignments under the identical pipeline in the same pass; the 99th-percentile rule of C10 reads this distribution and no other.",
+    "evidence_origin_groups": [
+     "design-portfolio-d03"
+    ],
+    "boundary_confirmation": "C09 names the controls; C08 requires the identical pipeline over them; C10 and C11 read their distribution. C09 and C02 both name the no-language baseline (as control here, as a compared assignment there) because the design runs it in both roles; the statements agree and neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-03 method section: controls (a) 999 random assignments, (b) the no-language baseline, in the same pass",
+     "source_id": "https://github.com/BitConcepts/glossa-lab/pull/195"
+    }
+   ]
+  },
+  {
+   "id": "F033-C10",
+   "text": "The SUPPORTED margin is at least 0.10 log units per sign over the highest-scoring rival assignment.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The SUPPORTED-rule claim (margin condition). The bar is the design's, set from the original margins (Phase-41: 1.0566 to 1; Phase-43: 0.484 log units per sign) so the rerun can fail the claim. The best rival is the highest-scoring of the Sanskrit, Munda, and no-language baseline assignments on the primary run. The rule's second condition (the random-distribution percentile) is C15's claim. It does not govern the other verdicts (C11, C12).",
+   "depends_on": [
+    "F033-C09"
+   ],
+   "assumptions": [
+    "ASM-MARGINS-FROM-ORIGINALS"
+   ],
+   "alternatives": [
+    "A smaller margin may be adopted at outcome time if Dravidian finishes first, since finishing first is itself informative."
+   ],
+   "falsification_tests": [
+    "One SUPPORTED verdict under Spec 033 issued below either condition defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-THRESHOLD-FITTED-TO-OUTCOME"
+    ],
+    "strongest_rival": "A smaller margin may be adopted at outcome time if Dravidian finishes first, since finishing first is itself informative.",
+    "verdict_rule": "SUPPORTED fires exactly when both conditions hold on the primary run; otherwise C11 or C12 governs the outcome.",
+    "evidence_origin_groups": [
+     "design-portfolio-d03",
+     "phase41-43-record"
+    ],
+    "boundary_confirmation": "C10 states the SUPPORTED margin condition; C15 states the SUPPORTED percentile condition; C11 states the NOT SUPPORTED rule; C12 states the INCONCLUSIVE rule. The four rules partition the outcome space and are mutually exclusive by construction; none negates another. C10 and C11 in particular do not conflict: C10's margin is measured against the best rival's score, C11's trigger is that score reaching Dravidian's, and a sub-margin Dravidian win is C12's case, not a contradiction between C10 and C11."
+   },
+   "evidence": [
+    {
+     "ref": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-03 criteria section: the SUPPORTED rule and the margins set from the originals",
+     "source_id": "https://github.com/BitConcepts/glossa-lab/pull/195"
+    },
+    {
+     "ref": "docs/ledger-archive.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-41 and Phase-43 margins as recorded (1.0566 to 1; +0.484 log units per token)",
+     "source_id": "docs/ledger-archive.md",
+     "independent_of": [
+      "https://github.com/BitConcepts/glossa-lab/pull/195"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F033-C11",
+   "text": "Dravidian failing to finish strictly first yields NOT SUPPORTED.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The NOT SUPPORTED-rule claim (rival trigger). Its second trigger, stated here in full: Dravidian inside the random distribution's range also yields NOT SUPPORTED; either trigger suffices. The status consequence of a NOT SUPPORTED outcome (the inherited partial support replaced by an appended, dated entry; the old SA-based numbers kept in history, labelled) is governed by spec section 6. It does not govern the SUPPORTED rules (C10, C15) or the sub-margin case (C12).",
+   "depends_on": [
+    "F033-C10",
+    "F033-C15"
+   ],
+   "assumptions": [
+    "ASM-VERDICT-RULES-AS-FROZEN"
+   ],
+   "alternatives": [
+    "A NOT SUPPORTED outcome may leave the inherited partial support standing, since the two methods are not comparable."
+   ],
+   "falsification_tests": [
+    "One run meeting either trigger whose outcome is recorded as anything other than NOT SUPPORTED defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-INHERITED-SUPPORT-RETAINED"
+    ],
+    "strongest_rival": "A NOT SUPPORTED outcome may leave the inherited partial support standing, since the two methods are not comparable.",
+    "verdict_rule": "NOT SUPPORTED fires on either trigger; the status consequence of spec section 6 follows in the appended entry.",
+    "evidence_origin_groups": [
+     "design-portfolio-d03"
+    ],
+    "boundary_confirmation": "C11 states the NOT SUPPORTED rule; C10 states the SUPPORTED margin condition (a margin over the highest-scoring rival assignment); C15 states the SUPPORTED percentile condition; C12 states the remaining case. The rules partition the outcome space: Dravidian strictly first with both SUPPORTED conditions met is C10/C15's case; strictly first but sub-margin is C12's; failing to finish strictly first is C11's. C11 and C15 do not conflict: C15's percentile is a condition on SUPPORTED, and a run can fail it while finishing first (C12's case, where the range condition also lives) or fail to finish first (C11's case) \u2014 the claims govern different outcome regions and neither negates the other. Against C12: C11's region (no win) and C12's region (a sub-margin win, or the sensitivity reversal) are disjoint by construction."
+   },
+   "evidence": [
+    {
+     "ref": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-03 criteria section: the NOT SUPPORTED rule and the status-replacement consequence",
+     "source_id": "https://github.com/BitConcepts/glossa-lab/pull/195"
+    }
+   ]
+  },
+  {
+   "id": "F033-C12",
+   "text": "A winning margin below 0.10 log units per sign yields INCONCLUSIVE.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The INCONCLUSIVE-rule claim. The Harappa-removed comparison is a pre-registered sensitivity: it is reported in full, the verdict rests on the primary run, and a ranking reversal there is this rule's second trigger. It does not govern the primary-run rules (C10, C11).",
+   "depends_on": [
+    "F033-C10",
+    "F033-C15"
+   ],
+   "assumptions": [
+    "ASM-SENSITIVITY-DECLARED-BEFORE-OUTCOMES"
+   ],
+   "alternatives": [
+    "A sensitivity reversal may be reported as a caveat under a SUPPORTED verdict, since the verdict rests on the primary run."
+   ],
+   "falsification_tests": [
+    "One run meeting either trigger whose outcome is recorded as SUPPORTED or NOT SUPPORTED defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-SENSITIVITY-AS-SECOND-VERDICT"
+    ],
+    "strongest_rival": "A sensitivity reversal may be reported as a caveat under a SUPPORTED verdict, since the verdict rests on the primary run.",
+    "verdict_rule": "INCONCLUSIVE fires on either trigger; the sensitivity is reported with the outcome either way, and it issues no verdict of its own beyond this rule.",
+    "evidence_origin_groups": [
+     "design-portfolio-d03"
+    ],
+    "boundary_confirmation": "C12 states the INCONCLUSIVE triggers; C10 and C15 state the SUPPORTED conditions; C11 states the NOT SUPPORTED rule; the four partition the outcome space. C12's sensitivity trigger does not contradict the rule that the verdict rests on the primary run: the reversal is a primary-design condition on the verdict, declared in advance, not a second verdict. C12 and C11 are adjacent regions of one partition, distinguished by the margin: C11's region is no win at all; C12's is a win under the fixed margin (or the sensitivity reversal). The claims are consecutive cases of one rule set and neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-03 criteria section: the INCONCLUSIVE rule and the Harappa-removed sensitivity",
+     "source_id": "https://github.com/BitConcepts/glossa-lab/pull/195"
+    }
+   ]
+  },
+  {
+   "id": "F033-C13",
+   "text": "The second pre-registered anchor list is run as a robustness arm under the identical pipeline.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The robustness-arm claim. The second list is the next five published candidates per family, frozen as cited data with the primary list before any scoring. The arm is reported with the outcome; the verdict rules of C10-C12 read the primary list's run. It does not govern the primary anchor set (C06).",
+   "depends_on": [
+    "F033-C06",
+    "F033-C08"
+   ],
+   "assumptions": [
+    "ASM-ROBUSTNESS-DECLARED-BEFORE-OUTCOMES"
+   ],
+   "alternatives": [
+    "A robustness arm that reverses the primary result may replace it, since the larger candidate pool is more representative."
+   ],
+   "falsification_tests": [
+    "One Spec 033 outcome missing the robustness arm, or one verdict argued from the arm against the primary run, defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-ROBUSTNESS-AS-RESCUE"
+    ],
+    "strongest_rival": "A robustness arm that reverses the primary result may replace it, since the larger candidate pool is more representative.",
+    "verdict_rule": "The robustness arm is reported alongside the primary outcome; it neither replaces nor rescues the primary verdict under any result.",
+    "evidence_origin_groups": [
+     "design-portfolio-d03"
+    ],
+    "boundary_confirmation": "C13 governs the second list and its arm; C06 governs the primary list; C08 governs the pipeline both arms share. The arms answer the same question on different anchor candidates, and the verdict rules' silence about the second arm is stated here rather than left ambiguous; neither claim negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-03 controls section: anchor-picking bias answered by the frozen list and the second-list robustness arm",
+     "source_id": "https://github.com/BitConcepts/glossa-lab/pull/195"
+    }
+   ]
+  },
+  {
+   "id": "F033-C14",
+   "text": "Spec 033 verdict wording names the within-lineage limit.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The lineage-wording claim. A win under this spec is a win inside the Mahadevan lineage: the corpora of both the original comparisons and this rerun are Mahadevan-lineage, and no independent-corpus replication exists in the record. Designs D-01 and D-24 are the ones that speak to other lineages. It does not restate the conclusion boundary (C01): C01 bounds what the verdict is about; C14 bounds the independence it may claim.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-INDEPENDENCE-AS-SPECIFIED"
+   ],
+   "alternatives": [
+    "A win on the held corpus licenses wording that claims replication across the field's corpora generally."
+   ],
+   "falsification_tests": [
+    "One Spec 033 verdict statement claiming cross-lineage independence, or omitting the lineage limit, defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-LINEAGE-INDEPENDENCE-CLAIMED"
+    ],
+    "strongest_rival": "A win on the held corpus licenses wording that claims replication across the field's corpora generally.",
+    "verdict_rule": "Every verdict statement under this spec names the Mahadevan-lineage scope of the comparison in the same statement as the result.",
+    "evidence_origin_groups": [
+     "lane2-claim-record",
+     "design-portfolio-d03"
+    ],
+    "boundary_confirmation": "C14 bounds the independence wording; C01 bounds the conclusion's subject; C05 supplies the corpus fact C14's wording rests on. C14 neither widens C01 nor substitutes for C05's corpus rule; the three claims govern wording, subject, and data respectively."
+   },
+   "evidence": [
+    {
+     "ref": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The adopted not-understood text: no independent-corpus replication; the corpora are all Mahadevan-lineage",
+     "source_id": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json"
+    },
+    {
+     "ref": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-03 controls section: within-lineage corpus named in the verdict wording",
+     "source_id": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "independent_of": [
+      "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F033-C15",
+   "text": "The SUPPORTED percentile bar is the 99th percentile of the random-assignment distribution.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The SUPPORTED-rule claim (percentile condition). The distribution is the 999 random assignments of C09, run under the identical pipeline in the same pass. The condition is the design's, fixed alongside the margin of C10 from the original results. It does not govern the margin condition (C10) or the other verdicts (C11, C12). The bar is applied to Dravidian's primary-run score: SUPPORTED requires that score above this percentile.",
+   "depends_on": [
+    "F033-C09"
+   ],
+   "assumptions": [
+    "ASM-MARGINS-FROM-ORIGINALS"
+   ],
+   "alternatives": [
+    "A high percentile may be read as supportive on its own, without the margin over the best rival."
+   ],
+   "falsification_tests": [
+    "One SUPPORTED verdict under Spec 033 issued with Dravidian at or below the 99th percentile of the random-assignment distribution defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-PERCENTILE-AS-STANDALONE-SUPPORT"
+    ],
+    "strongest_rival": "A high percentile may be read as supportive on its own, without the margin over the best rival.",
+    "verdict_rule": "SUPPORTED fires only when C10's margin condition and this percentile condition both hold on the primary run.",
+    "evidence_origin_groups": [
+     "design-portfolio-d03"
+    ],
+    "boundary_confirmation": "C15 states the SUPPORTED percentile condition; C10 states the SUPPORTED margin condition; C11 and C12 state the other verdicts. SUPPORTED requires C10 and C15 jointly; neither condition alone issues the verdict, and the two claims are conjuncts of one rule, not rivals. C15 and C11 govern different outcome regions (a SUPPORTED condition here; the NOT SUPPORTED rule there) and are conjuncts of one partition, not rivals."
+   },
+   "evidence": [
+    {
+     "ref": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-03 criteria section: SUPPORTED requires the 99th-percentile condition alongside the margin",
+     "source_id": "https://github.com/BitConcepts/glossa-lab/pull/195"
+    }
+   ]
+  }
+ ]
+}

@@ -1,27 +1,45 @@
 # Spec 041 — Site × Local-Label Period Mapping
 
-> ## DRAFT — COMMISSIONED 2026-10-21; FREEZE IS A SEPARATE OWNER GATE
+> ## FROZEN — 2026-10-22
 >
-> This draft is commissioned by the owner's order of
-> 2026-10-21 ("address all these remaining items now"),
-> which takes up the item Spec 040's closure record
-> (§3, "What would satisfy the gate") left as an owner
-> decision: a separately governed act producing the
-> placement mapping. The order commissions this
-> **draft**. It is not a freeze order and not an
-> execution order: the freeze (lifecycle hooks,
-> decisions, digest, phase allocation) and the
-> execution each remain separate owner gates, as with
-> Specs 036–040. Drafts are standing pre-approved;
-> nothing in this file has been frozen, filed, or run.
+> This spec was commissioned as a draft by the
+> owner's order of 2026-10-21 ("address all these
+> remaining items now"), which takes up the item
+> Spec 040's closure record (§3, "What would
+> satisfy the gate") left as an owner decision: a
+> separately governed act producing the placement
+> mapping. It was frozen on 2026-10-22 under the
+> owner's instruction to resolve the program's
+> open pull requests, which lifted the freeze
+> gate for this act. The AEE lifecycle hooks ran
+> over the register first (register recovered to
+> 0.8-draft; `aee/freeze-aee-note.md`), and the
+> digest in `freeze.json` was then computed
+> **exactly once** over the recovered register
+> and the finalised freeze texts (the Spec 035
+> ordering). The freeze decided the open points
+> of `adjudication.md` §4 (freeze record at §6):
+> DD-041-10 (no single sensitivity label frozen;
+> the determination set is the frozen sensitivity
+> basis), DD-041-11 (source-acquisition scope
+> (a)), DD-041-12 (the spec files its own OSF
+> contract registration at the freeze), and
+> DD-041-14 (execution phase **Phase-435**).
+> DD-041-13's two reservations stand, expressly
+> not decided by this freeze. **Execution has
+> NOT been ordered and has NOT started**: it
+> remains a separate owner gate, exactly as
+> §13 provides. At the freeze itself no cell
+> was constructed, no census was computed, and
+> no artifact was produced.
 
 **Parent records:** Spec 040 (D-25, closed
 NOT-YET-TESTABLE — dependency gate, 2026-10-20) ·
 Spec 039 (gazetteer period-assignment act, executed
 Phase-403) · Spec 025 / Phase-139 / Phase-140 /
-Phase-385 (the G1 record) · **Phases:** none
-allocated (allocation is a freeze act) · **Date of
-proposal:** 2026-10-21.
+Phase-385 (the G1 record) · **Phase:** Phase-435
+(allocated at the freeze act, DD-041-14) · **Date of
+proposal:** 2026-10-21 · **Frozen:** 2026-10-22.
 
 **AI disclosure:** this proposal is produced by an
 AI agent (Muse Spark, via Muse) at the

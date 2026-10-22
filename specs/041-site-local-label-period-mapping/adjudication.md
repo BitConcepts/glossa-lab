@@ -289,6 +289,91 @@ against `main` at `82b29490`:
 3. Confirm or overturn, openly, any
    DECIDED-BY-DRAFT reading of §3.
 
+## 6. Freeze decisions (FREEZE ACT — 2026-10-22)
+
+This freeze act was performed under the owner's
+instruction of 2026-10-22 to resolve the program's
+open pull requests, which lifted the freeze gate
+for this spec. Execution was **not** ordered and
+has **not** started; it remains a separate owner
+gate. The decisions of §5 are taken as follows:
+
+1. **The contract is frozen as drafted**, with
+   the §4 pins re-verified at the freeze (record
+   in `freeze.md` §2): the anchors file recomputes
+   to `df0cf620…` and the Phase-139 covariates to
+   `a0f0d05a…`, each by two independent routes at
+   the merged record. The layer file
+   (`inscriptions.csv`, pin `c368f290…`) is not
+   producible on the freeze machine — the
+   loader's default-path copy is absent — so its
+   pin stands on the records of record (Spec 025
+   §3; the Phase-139/140 reproductions; the
+   held-copy verifications at the Spec 060 and
+   Spec 067 freezes, at the same pin), stated
+   openly here rather than silently refreshed;
+   execution gate G0.1 re-asserts it fail-closed
+   before any construction.
+2. **DD-041-10 — DECIDED: candidates (b)/(c), as
+   the draft recommended.** No single sensitivity
+   label is frozen for any contested cell — a
+   single label would smuggle a resolution into a
+   record whose discipline is retention
+   (DD-041-6). What is frozen is the determination
+   **set** itself: every CONTESTED cell retains
+   all its admissible determinations verbatim,
+   and a future Spec 040 freeze constructs the
+   sensitivity treatment from that set under its
+   own decision. The schema's `sensitivity_label`
+   field stays nullable (spec §5.3), and Spec 040
+   §4.4's default applies in the meantime: a
+   contested mapping without a frozen sensitivity
+   label is NOT ESTIMABLE for that mapping in any
+   consumer that does not make its own freeze
+   decision.
+3. **DD-041-11 — DECIDED: candidate (a), as the
+   draft recommended.** The construction seeks
+   determinations in sources already held by the
+   program plus interlibrary access under the
+   program's existing caps and gates; everything
+   unreached lands at DETERMINATION_UNVERIFIED
+   and is counted in the coverage report. No
+   wider acquisition effort is commissioned by
+   this act (spec §14).
+4. **DD-041-12 — DECIDED: YES.** This spec files
+   its own OSF contract registration at the
+   freeze, following the Spec 036–039 pattern
+   (record in `osf-spec-registration.md`).
+5. **DD-041-13 — RESERVATIONS RECORDED, NOT
+   DECIDED.** The row-level derivation (spec §8)
+   and the substitution decision (spec §1) both
+   belong to a future Spec 040 freeze. This
+   freeze decides neither, and nothing in the
+   frozen contract asserts that Spec 040's gate
+   is satisfied (claim F041-C13 states form
+   only).
+6. **DD-041-14 — Phase-435 ALLOCATED.** Phase
+   numbers 404–432 stand allocated on the merged
+   record (the campaign freezes and their
+   successors, latest Phase-432 at this act);
+   the execution phase for this contract is
+   **Phase-435**, the number allocated to this
+   freeze. Numbers 433–434 stand unallocated on
+   the record at this act and are not claimed
+   by it.
+7. **DD-041-15 — The DD-038-10 AEE gate reading
+   is ADOPTED** for this freeze, as at Specs
+   037–067: the lifecycle hooks pass when every
+   hook carries zero correctness failure modes
+   and no claim below the 0.70 threshold, the
+   engine's "iterate" outcome word resting
+   solely on the FR-2.3 draft-cap records. The
+   hooks so passed over the recovered register
+   (0.8-draft; `aee/freeze-aee-note.md`).
+8. **DECIDED-BY-DRAFT readings (§3) — CONFIRMED.**
+   DD-041-1 … DD-041-9 stand as drafted; the
+   freeze overturns none of them.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse

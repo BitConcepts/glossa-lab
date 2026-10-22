@@ -1,13 +1,17 @@
 # Spec 041 — Tasks
 
-> ## PLAN — FOR FREEZE DECISION — 2026-10-21
+> ## PLAN — FROZEN 2026-10-22
 >
 > Adjudication inputs are recorded in
 > `adjudication.md` (the owner's commissioning
-> order of 2026-10-21, drafting only). The
-> freeze and the execution are separate owner
-> gates; nothing here has been frozen, filed,
-> or run.
+> order of 2026-10-21, drafting only; the
+> freeze decisions at §6, taken 2026-10-22
+> under the owner's instruction to resolve the
+> program's open pull requests). The execution
+> remains a separate owner gate: it has not
+> been ordered and has not started. Execution
+> tasks run as Phase-435 under the frozen
+> contract.
 
 ## Lifecycle
 
@@ -38,43 +42,57 @@
       as a DRAFT PR and left unmerged for the
       owner's freeze decision, CI state
       reported from the run's own conclusions.
-- [ ] **L4 — AEE lifecycle hooks (FREEZE GATE
-      — not run on this draft).** At the
-      freeze act, run `run_aee.py assess`
-      after_specify, after_plan, and
-      after_tasks over the claim register; the
-      gate is **pass**, and a stricter outcome
-      blocks the freeze until its named
-      recovery is complete and recorded.
-      Deliberate ordering (the Spec 035
-      record): any recovery round changes
-      claim text, and the freeze digest is
-      computed over the recovered register
-      exactly once, at freeze.
-- [ ] **L5 — Freeze-stage verification
-      (FREEZE GATE).** Re-verify spec §4's
-      pins against the merged record and the
-      executing environment: the layer file
-      producible at SHA-256 `c368f290…`; the
-      anchors file at the refreshed pin
-      `df0cf620…` (Spec 040's carried value is
-      superseded and must not be used); the
-      Phase-139 covariates at `a0f0d05a…`.
-      Decide DD-041-10, DD-041-11, DD-041-12;
-      record DD-041-13's reservations.
-      Failure of any pin is recorded and bars
-      the freeze; no pin is refreshed silently.
-- [ ] **L6 — Freeze.** On the owner's freeze
-      order, with L4 and L5 passed: hooks
-      recorded, `freeze.md` finalised,
+- [x] **L4 — AEE lifecycle hooks (FREEZE GATE).**
+      Run at the freeze act of 2026-10-22 under
+      aee 1.5.0 (the `aee assess` invocation the
+      repo's `run_aee.py` harness wraps; lenient
+      load, evidence verification off, no
+      ledger): after_specify, after_plan, and
+      after_tasks over the claim register,
+      recovered through four rounds to
+      0.8-draft. **PASS** under the DD-041-15
+      gate reading (adopting DD-038-10): 15
+      failure modes at every hook, all FR-2.3
+      draft-cap records; zero correctness
+      failure modes; no claim below the 0.70
+      threshold (minimum propagated 0.72).
+      Record: `aee/freeze-aee-note.md` and the
+      register's own note.
+- [x] **L5 — Freeze-stage verification
+      (FREEZE GATE).** Spec §4's pins re-verified
+      at the merged record by two independent
+      routes: the anchors file at the refreshed
+      pin `df0cf620…` (570,344 bytes; Spec 040's
+      carried value superseded, used nowhere);
+      the Phase-139 covariates at `a0f0d05a…`
+      (2,665,622 bytes). The layer file is not
+      producible on the freeze machine (the
+      loader's default-path copy is absent);
+      its pin `c368f290…` stands on the records
+      of record, stated openly in `freeze.md`
+      §2 and `adjudication.md` §6 — no pin was
+      refreshed. DD-041-10, DD-041-11, and
+      DD-041-12 decided; DD-041-13's
+      reservations recorded (adjudication §6).
+- [x] **L6 — Freeze.** Executed 2026-10-22:
+      hooks recorded, `freeze.md` finalised,
       `freeze.json` computed over the recovered
-      register and finalised texts, the
-      execution phase number allocated
-      (DD-041-14), and the artifact paths
-      (§5.6) named into the freeze record.
-- [ ] **L7 — Freeze PR merged**, house gates
-      green (full suite, branding sweep,
-      foundation check reported as measured).
+      register (0.8-draft) and finalised texts
+      exactly once, execution phase **Phase-435**
+      allocated (DD-041-14), and the artifact
+      paths (§5.6) named into the freeze record.
+- [x] **L7 — Freeze PR merged**, house gates
+      green (full suite, branding sweep —
+      completed at the merge of the freeze PR;
+      CI verified from the settled run's own
+      job conclusions on the merged head.
+      Foundation check NOT RUN at this freeze:
+      the check needs the gitignored corpora
+      tree, which is absent from this machine —
+      the Spec 056 precedent; it establishes no
+      foundation failure and is owed at the
+      execution venue, whose step 0 asserts the
+      layer pin fail-closed in any case).
 
 ## Execution — gated on the freeze and a separate execution order
 

@@ -151,12 +151,12 @@
   "specs/063-sign821-identification-successor/drawn-form-reference-821.json": "695dd35d55bd2f68d8c9db0ea79dde249b53c55d11ed2f622752a18511e65999",
   "specs/063-sign821-identification-successor/aee/freeze-aee-note.md": "28b7fc1093d5db22105b98897a8f64d1837b3f5f8fb4dbb593fc205aef6b7b60",
   "specs/063-sign821-identification-successor/build_freeze.py": "4dbc40e40940990fc91e8397d224e990779249c9606e42cb677e07c99eacf5ec",
-  "backend/tests/test_spec063_freeze.py": "cc0710c154db66125519b51e852ed6ed24737fa78cde618d66f349f05fe725f1"
+  "backend/tests/test_spec063_freeze.py": "7e29cd488abe20cb0d364cf8ca8705b1a38803f19c98baf6d72eaebda176ed0f"
  },
  "environment": {
   "python": "3.12.3",
   "platform": "Linux",
   "aee": "1.5.3"
  },
- "digest": "2960fad50e22c5dc5e6388c277d7ff26dfc71b9928beddb7ea4bfe334a0c46f6"
+ "digest": "dc24a10ec177d5f1eb3b73d29ab6f646b4c77b02ae30da2ca86002cc57a49ed9"
 }

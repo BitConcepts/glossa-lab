@@ -337,6 +337,19 @@
         "results": "reports/phase427_results.json",
         "results_sha256": "b485f75ee655c7e15acd7f95b3125859504481c680aa67fc882657cefa0cee63",
         "note": "Appended by the Spec 065 execution under spec section 7.2 (class B: superseded-not-retired). No pre-existing field of this record was altered \u2014 Spec 057's disposition entry above stands unedited \u2014 and removing this appended entry (restoring the comma after the Spec 057 disposition) reproduces the pre-act file byte-identically (verified at the act). The record's status (untested) and stage (created) are unchanged."
+      },
+      "disposition_spec065_recovery": {
+        "spec": "065",
+        "phase": "Phase-427 (S-1 recovery act)",
+        "date": "2026-10-22",
+        "actor": "spec065-phase427-s1-recovery-act",
+        "kind": "disposition note (spec section 7.2, class A on the completed two-row accounting)",
+        "form": "retired",
+        "wording": "Retired. Both of Spec 057's unlocated rows are now resolved on the documents themselves, so the retirement question is decided on the full record. S-5 resolved at the Spec 065 execution (Phase-427, 2026-10-22): HEADING ABSENT FROM DOCUMENT on the acquired file (SHA-256 77f10f3279454bede1ba60a04f3c099500667ca62574b07aaabb9fc69bf94665; one occurrence, not in heading form). S-1 resolved by the recovery act of 2026-10-22, on the search arm of spec section 4.2, the document having been handed over by the owner and intake-pinned (intake-S1.json in the spec's directory; PROVENANCE.md entry 24): HEADING ABSENT FROM DOCUMENT on the pinned file (SHA-256 51831ac997f54782fc6483e04c06d6b60f08af81101b39bfe00daa5556b88b04) \u2014 its text layer carries exactly two occurrences of 'positional analysis', neither in heading form under section 5.1: extraction line 121, PDF page 4 (printed p. 60), a mention inside a running sentence of SEGMENTATION METHODS; and extraction line 925, PDF page 31 (printed p. 87), a bibliography entry in LITERATURE for Fuls 2013's 'Positional Analysis of Indus Signs'. Neither row of this successor recovered a claim, so under Spec 065 section 7.2 the record stands retired \u2014 as an extraction artefact, in the form Spec 057 section 7.2's retirement limb states for a complete accounting \u2014 with the two rows' document-level evidence (the searched files' hashes and their judged occurrence lists, in specs/065-s1-s5-heading-successor/outcome.md sections 3, 4.2 and 9) as this note's evidence. All five sources of this record now stand accounted on their documents or held texts: S-2's passage located and empty, S-3's and S-4's claims recovered (Spec 057), S-1 and S-5 searched on their documents and the heading absent from both (Spec 065 and its recovery act). Headline on the completed accounting: class A \u2014 BOTH SOURCES RESOLVED. This act searched one document for a heading. It checked nothing the passage states.",
+        "record": "specs/065-s1-s5-heading-successor/outcome.md (section 9, S-1 recovery act)",
+        "results": "specs/065-s1-s5-heading-successor/extraction-S1.txt",
+        "results_sha256": "e5bc973dec0abf668b18da5ebc62bb3772d39baa43dfc24fc25908db1a43b461",
+        "note": "Appended by the Spec 065 S-1 recovery act under spec section 7.2 (class A: both sources resolved; neither row of this successor recovered a claim, so the form is retired, not retired-as-superseded). No pre-existing field of this record was altered \u2014 the Spec 057 disposition and the Spec 065 disposition_spec065 entries above stand unedited \u2014 and removing this appended entry (restoring the comma after disposition_spec065) reproduces the pre-act file byte-identically (verified at the act). The record's status (untested) and stage (created) are unchanged."
       }
     }
   ],

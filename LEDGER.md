@@ -9286,3 +9286,95 @@ reports/phase427_s1_s5_report.md.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-22 — Spec 065 S-1 RECOVERY ACT (Phase-427): S-1 RESOLVED — HEADING ABSENT FROM DOCUMENT; combined accounting Class A; heading record RETIRED
+
+The separately commissioned recovery act
+named by the frozen contract (spec §4.2: an
+intake record appended after the run arms a
+later act) and by the execution record's S-1
+row. The document was handed over by the
+owner on 2026-10-22 — his own download from
+the author's Academia.edu posting, delivered
+by upload — and pinned at hand-over
+(PROVENANCE.md entry 24, local research
+store) and by the intake record appended to
+the spec's directory (intake-S1.json):
+Ancient_Writing_and_Modern_Technologies.pdf,
+3,565,316 bytes, SHA-256 51831ac9… — one
+value across the intake pin, the registry's
+recorded checksum for S-1's source document,
+and the spec §2.1 pin. The pinned file was
+asserted by SHA-256 before any search, its
+§2 record inputs re-asserted on the live
+files, and its own text layer extracted in
+full from the pinned bytes (pdftotext
+-layout; 1,097 lines, 54,058 bytes; artifact
+extraction-S1.txt, e5bc973d…; deterministic,
+reproduced byte-identically on a second
+run). Every occurrence of "positional
+analysis" (case-insensitive) in that text
+layer — exactly two, none pre-filtered, a
+whitespace-flexible search confirming none
+is split: extraction line 121, PDF page 4
+(printed p. 60), a mention inside a running
+sentence of SEGMENTATION METHODS ("…
+paradigmatic cluster analysis, structural
+analysis, or positional analysis of
+signs"); and extraction line 925, PDF page
+31 (printed p. 87), a bibliography entry in
+LITERATURE for Fuls 2013's "Positional
+Analysis of Indus Signs". Neither is in
+heading form under the carried §5.1 rule
+(running-sentence mentions and bibliography
+entries never anchor a passage). S-1
+therefore resolves HEADING ABSENT FROM
+DOCUMENT, a document-level finding on the
+searched file's hash, converting the Spec
+057 sub-state HEADING NOT PRESENT IN HELD
+TEXT; in substance it matches the held
+text's posture (the same two occurrences in
+the same two postures), now on the document
+itself. No passage was delimited, no claim
+recovered, none checked. On the completed
+two-row accounting (S-5 HEADING ABSENT FROM
+DOCUMENT at the execution; S-1 HEADING
+ABSENT FROM DOCUMENT by this act), the
+frozen §7 derivation gives headline class
+A — BOTH SOURCES RESOLVED, in the §7.1
+pre-written wording (outcome.md §9.3); the
+execution's class B headline stands
+unedited as that run's record. Disposition
+(§7.2): both sources resolved and neither
+row of the successor recovered a claim, so
+the canonical heading record
+ancient_writing_and_modern_technologies_51831ac9_statisti_0004
+stands RETIRED — as an extraction artefact,
+in the form Spec 057 §7.2's retirement limb
+states for a complete accounting — by
+appended dated disposition_spec065_recovery
+note only; Spec 057's disposition and Spec
+065's disposition_spec065 entries stand
+unedited, no pre-existing field was
+altered, and removing the append reproduces
+the pre-act file byte-identically (pre-act
+c994b18d…, post-act 861b1468…, verified at
+the act); the record's status (untested)
+and stage (created) are unchanged.
+Hypothesis F065-C14 is now defeated over
+both documents actually searched; it no
+longer stands unjudged as to S-1. Anchors
+asserted byte-identical before and after
+(df0cf620…). Foundation check at the act:
+40 passed, 0 failed, 8 warnings (the store's
+combined hash stood at 07fb35c9… on the
+act's base and moves by this act's append;
+the committed report is regenerated with
+this record). Records:
+specs/065-s1-s5-heading-successor/outcome.md
+§9, specs/065-s1-s5-heading-successor/intake-S1.json,
+specs/065-s1-s5-heading-successor/extraction-S1.txt.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

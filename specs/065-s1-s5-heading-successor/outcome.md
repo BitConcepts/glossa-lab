@@ -548,3 +548,395 @@ constitution §VI.*
   disposition: superseded-not-retired. This
   act searched two documents for a heading.
   It checked nothing either passage states.
+
+## 9. Recovery act — S-1 resolved on the document (appended 2026-10-22)
+
+> ## RECOVERY ACT — APPENDED 2026-10-22
+>
+> The S-1 recovery act for Spec 065
+> (Phase-427), run under the frozen
+> contract's own arming rule (spec §4.2: an
+> intake record appended after the run
+> "arms a later act, not this one") and the
+> unblocking act named on S-1's row in the
+> execution record above (§4.1), on the
+> owner's separate commission of 2026-10-22.
+> The execution record above (§§1–8.1) is
+> not edited by this act; this section is
+> appended beside it. S-1's row in §3 stands
+> as the record of the 2026-10-22 run — at
+> that run no document had been handed over,
+> and the row resolved under the blocked
+> arm. What follows resolves the same row on
+> the document itself, and derives the
+> combined two-row disposition the frozen
+> §7 states for the completed accounting.
+
+### 9.1 The recovery determination (this act's step 0)
+
+- **Intake determination — the §4.2 search
+  arm now holds.** The document named on
+  S-1's row was handed over by the owner on
+  2026-10-22 — his own download from the
+  author's Academia.edu posting, delivered
+  by upload, the first route named in §4.2 —
+  and pinned at hand-over by the append-only
+  intake record in the local research store
+  (`PROVENANCE.md` entry 24). The intake
+  record in this spec's directory,
+  `intake-S1.json`, is appended with this
+  act, carrying the §4.2 fields: filename
+  `Ancient_Writing_and_Modern_Technologies.pdf`;
+  3,565,316 bytes; SHA-256
+  `51831ac997f54782fc6483e04c06d6b60f08af81101b39bfe00daa5556b88b04`;
+  hand-over date 2026-10-22; the route; and
+  its licence as known (the registry posture
+  "unclear" stands for S-1, §9.5; held as a
+  single-chapter copy for private
+  non-commercial research, no
+  redistribution).
+- **Document asserted before any search.**
+  The pinned file at its local store path
+  re-hashes to SHA-256 `51831ac9…` at
+  3,565,316 bytes. The intake pin, the
+  literature registry's recorded
+  `checksum_sha256` for S-1's source
+  document, and the §2.1 pin are one value:
+  the delivered bytes are the registry
+  document's own bytes. The search at §9.2
+  ran on those asserted bytes only; no
+  substitute bytes were searched, and the
+  held cleaned text was not substituted for
+  the document.
+- **Record inputs re-asserted.** The §2
+  repository pins verify on the live files
+  at this act's base (`main` at
+  `a1fe4648…`): the two held cleaned texts
+  (S-1 `1275b795…`, S-5 `dd584975…`), the
+  two literature registry files (S-1
+  `92e19e6d…`, S-5 `38122256…`), Spec 057's
+  freeze record `3cc68c37…`, its outcome
+  record `d3ae1325…`, its spec `0798d51a…`,
+  its adjudication `04188070…`, and the
+  anchors file `df0cf620…`. Spec 057's
+  directory is untouched by this act, as by
+  every act under this spec.
+
+### 9.2 S-1 — HEADING ABSENT FROM DOCUMENT
+
+The search §4.1 steps 2–4 state, run on the
+intake-pinned document under §5's rule. The
+document's own text layer was extracted in
+full from the pinned bytes with
+`pdftotext -layout` (the tool and settings
+of the S-5 extraction of §4.2 above) and
+kept as the run artifact `extraction-S1.txt`
+in this directory (SHA-256
+`e5bc973dec0abf668b18da5ebc62bb3772d39baa43dfc24fc25908db1a43b461`;
+1,097 lines, 54,058 bytes; the extraction is
+deterministic — a second run reproduced it
+byte-identically). The pinned file is the
+chapter itself: PDF pages 1–34 are the
+printed pp. 57–90, and PDF pages 35–38 are
+the volume's front matter and contents —
+all of it inside the searched text layer.
+**Every** occurrence of "positional
+analysis" (case-insensitive) in that text
+layer — exactly two, listed here in full,
+none pre-filtered; a whitespace-flexible
+search over the whole layer confirms no
+instance is split across lines or spacing:
+
+- **Extraction line 121, PDF page 4
+  (printed p. 60):** "…comparing the
+  segmentation trees with the results
+  derived from paradigmatic cluster
+  analysis, structural analysis, or
+  **positional analysis** of signs. The aim
+  is to determine meaningful units (e.g.
+  syntactic elements)." Its containing
+  section is SEGMENTATION METHODS
+  (extraction line 116). **Judgement under
+  §5.1: NOT the heading.** A mention inside
+  a running sentence — one item in a list
+  of analysis kinds against which the
+  segmentation results must be compared. It
+  does not stand alone as a line or running
+  head, carries no chapter/appendix
+  numbering as a title, and is not a
+  table-of-contents entry.
+- **Extraction line 925, PDF page 31
+  (printed p. 87):** "Fuls, Andreas:
+  **Positional Analysis** of Indus Signs.
+  Voprosi Epigrafiki, Vol. 7 (1) 2013,
+  pp. 253-275." Its containing section is
+  the chapter's reference list, LITERATURE
+  (extraction line 899, PDF page 30).
+  **Judgement under §5.1: NOT the heading.**
+  A bibliography and reference entry — and
+  the title of another document's analysis
+  (Fuls 2013's paper) — expressly excluded
+  by §5.1 on both grounds.
+
+No heading-form occurrence exists in the
+document, so no passage is delimited and no
+verbatim passage artifact arises. Two
+completeness notes on the judgement: the
+chapter's standalone headings in the text
+layer (22, from GENERAL FEATURES OF INDUS
+WRITING to APPENDIX A) include POSITIONAL
+NOTATIONS (extraction line 304, PDF
+page 10) — a different string, not the
+searched heading; and the volume contents
+(PDF pages 37–38) lists this chapter under
+its own title at pp. 57–90 and carries no
+occurrence of the string.
+
+The row therefore resolves **HEADING ABSENT
+FROM DOCUMENT**: a document-level finding
+that converts the row's Spec 057 sub-state
+from HEADING NOT PRESENT IN HELD TEXT, with
+the searched file's hash as its evidence.
+**Difference from the held text's posture:**
+none in substance — Spec 057 outcome §4.1
+recorded two occurrences in the held
+cleaned text (line 102, running text;
+line 663, the bibliography entry for Fuls
+2013), neither in heading form; the
+document's own text layer carries the same
+two occurrences, in the same two postures,
+likewise not in heading form. This act's
+finding rests on the document itself (the
+intake-pinned file), not the held text.
+The finding is document-scoped (§9.7): it
+states nothing about any other copy or
+edition, and nothing about what the
+chapter's passages state.
+
+### 9.3 The combined accounting and headline (spec §7)
+
+The two rows' outcomes on the completed
+record:
+
+| # | Source | Outcome on the completed record | Evidence |
+|---|---|---|---|
+| S-1 | Fuls, Andreas. "Ancient Writing and Modern Technologies – Structural Analysis of Numerical Indus Inscriptions." In *Studies on Indus Script* (Mohenjodaro 2020), pp. 57–90. Karachi: National Fund for Mohenjodaro, 2020. | HEADING ABSENT FROM DOCUMENT (this act, §9.2) — for the combined accounting it succeeds the §3 row's STILL UNLOCATED — ACQUISITION BLOCKED, which stands unedited as the 2026-10-22 run's record | intake-pinned file SHA-256 `51831ac9…`; extraction artifact `extraction-S1.txt`, SHA-256 `e5bc973d…`; two occurrences, both judged not heading form |
+| S-5 | Hunt, Treasure A. *Without Kings or Conquests: The Indus Script Deciphered and a Civilization Reconstructed.* Preprint, FelineMind Behavior Labs; draft posted September 2025. Zenodo, published 6 September 2025, version v1. DOI: 10.5281/zenodo.17066226. | HEADING ABSENT FROM DOCUMENT (the run, §4.2 above) | acquired file SHA-256 `77f10f32…`; extraction artifact `extraction-S5.txt`, SHA-256 `74e42f8e…`; one occurrence, judged not heading form |
+
+Both rows are HEADING ABSENT FROM DOCUMENT
+(neither is HEADING FOUND), and S-1 stands
+on the search arm: exactly the §7 condition
+for **class A — BOTH SOURCES RESOLVED**.
+The class B headline at the head of this
+record stands as the headline of the
+2026-10-22 run; on the completed accounting
+the headline is class A, in the §7.1
+pre-written form with the brackets filled
+from the table:
+
+"Both of Spec 057's unlocated rows are
+resolved on the documents themselves.
+S-1: HEADING ABSENT FROM DOCUMENT (no
+sub-result; no claim recovered — the row's
+evidence is the searched file's hash and its
+two judged occurrences), on the
+intake-pinned file at SHA-256
+51831ac997f54782fc6483e04c06d6b60f08af81101b39bfe00daa5556b88b04.
+S-5: HEADING ABSENT FROM DOCUMENT (no
+sub-result; no claim recovered — the row's
+evidence is the searched file's hash and its
+single judged occurrence), on the acquired
+file at SHA-256
+77f10f3279454bede1ba60a04f3c099500667ca62574b07aaabb9fc69bf94665.
+Each resolution rests on the pinned document
+named on its row, searched under Spec 057
+§5's heading rule. No finding is attributed
+to either source beyond what its own row
+records."
+
+**Fence sentence for this act.** This
+recovery act searched one document for a
+heading. It checked nothing the document
+states. (The combined record's fence stands
+as recorded at the head of this record.)
+
+### 9.4 Disposition of the heading record (spec §7.2)
+
+Both sources have now resolved, so the
+retirement question is decided on the full
+record. Neither row of this successor
+recovered a claim (§4.2 above and §9.2: no
+heading was found on either row, so neither
+the recovered nor the recorded-empty
+sub-result arose on either), and the §7.2
+class-A limb for that case applies: the
+record stands **retired** with the two
+rows' document-level evidence as the note's
+evidence, in the form Spec 057 §7.2's
+retirement limb states for a complete
+accounting — retired as an extraction
+artefact. The disposition was made by
+appended, dated note only: a
+`disposition_spec065_recovery` entry
+appended to the canonical record
+`ancient_writing_and_modern_technologies_51831ac9_statisti_0004`
+in its extracted-claims file, in the form
+"retired", its evidence the two rows'
+document-level resolutions and the complete
+five-source accounting (S-2's passage
+located and empty; S-3's and S-4's claims
+recovered under Spec 057; S-5 and S-1
+searched on their documents, the heading
+absent from both). Spec 057's `disposition`
+entry and the execution's
+`disposition_spec065` entry above it stand
+unedited, and no pre-existing field of the
+record was altered: removing the appended
+entry (and restoring the comma after
+`disposition_spec065`) reproduces the
+pre-act file byte-identically (pre-act
+SHA-256
+`c994b18db92ef33bfb56b1472356f55202f49b44455988a803923330bbdb395b`,
+post-act
+`861b1468ffedd3c23cc2ecef0477212dae6aad3906b90a1989dd8a581bce7615`,
+verified at the act). The record's status
+(*untested*) and stage (*created*) are
+unchanged.
+
+### 9.5 Claim consequences of this act (governed register)
+
+- **F065-C06** — now discharged as to S-1
+  as well: the one source that had no
+  document in hand at the run has had its
+  own text layer searched under §5's rule,
+  on the intake-pinned bytes.
+- **F065-C09** — HELD on the completed
+  record: each source carries exactly one
+  outcome on its document (S-1's
+  blocked-arm outcome in §3 stands as the
+  run's record; §9.2's outcome is the row's
+  resolution on the document).
+- **F065-C10 / F065-C11** — NOT TRIGGERED
+  on S-1: no heading was found, so neither
+  sub-result arose, no claim was recovered,
+  no claim-intake record was created, and
+  the claim set is unchanged by recovery.
+  (The `intake-S1.json` appended with this
+  act is the §4.2 document-intake record,
+  not a claim intake.)
+- **F065-C13** — SATISFIED: the heading
+  record retires only when both sources
+  resolve; both have, and the retirement
+  is recorded at §9.4.
+- **F065-C14** — the hypothesis (at least
+  one of the two documents carries the
+  heading in heading form) is now DEFEATED
+  over both documents actually searched:
+  over S-5 at the run (§6 above) and over
+  S-1 by this act. It no longer stands
+  unjudged as to S-1.
+- **F065-C15** — HELD: no positional
+  conclusion is drawn, no credit transfers,
+  no frozen record was edited (Spec 057's
+  directory and this spec's freeze-covered
+  files are untouched), the S-1 fence was
+  observed (this act contacted no one,
+  created no account, used no credentials,
+  and sent no request; its only S-1 inputs
+  are the document the owner handed over
+  and the intake record that pins it,
+  §9.6 of the spec), and the absence
+  finding is scoped to the searched
+  document at its pinned hash.
+
+### 9.6 What this act does and does not establish
+
+It completes Spec 065's accounting: both of
+Spec 057's unlocated rows are resolved on
+the documents themselves, and the heading
+record is retired on the complete
+accounting, in the only form the frozen
+contract allows when neither row recovered
+a claim. **This does not establish**
+anything about what the Fuls chapter's
+passages state, any positional finding, or
+the truth of any claim in either source —
+no passage was checked. It does not
+establish that no other copy or edition of
+the chapter carries the heading. It does
+not disturb Spec 057's two recovered
+claims, which stand in the claim set
+exactly as that spec left them, unchecked.
+And it does not rewrite the execution
+record above: the run of 2026-10-22 closed
+class B because S-1 had not arrived; this
+act is the separately commissioned recovery
+the contract and that record both name, and
+its S-1 result changes the combined
+disposition, not the run's history.
+
+### 9.7 Records of this act
+
+- Intake record:
+  `specs/065-s1-s5-heading-successor/intake-S1.json`
+  (appended with this act; §9.1).
+- Extraction artifact:
+  `specs/065-s1-s5-heading-successor/extraction-S1.txt`
+  (SHA-256 `e5bc973d…`) — the pinned
+  document's full text layer as extracted
+  from the pinned bytes; internal program
+  record.
+- Passage artifacts: none — no heading was
+  found on S-1.
+- Disposition append:
+  `disposition_spec065_recovery` entry on
+  the canonical record in
+  `glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json`
+  (§9.4).
+- Anchors: `backend/reports/INDUS_FINAL_ANCHORS.json`
+  recomputed before and after this act:
+  SHA-256 `df0cf620…` at both points —
+  byte-identical, asserted. This act moves
+  no anchor.
+- Foundation check (H21), run in this act's
+  worktree with the two Holdat CSVs supplied
+  from the main checkout's gitignored
+  downloads (never committed): **40 checks
+  passed, 0 failed, 8 warnings** — the
+  standing figure, as measured at this act's
+  base and again with this act's changes in
+  place. The committed report
+  `reports/foundation_check_report.json` is
+  regenerated with this record; its changes
+  are the generation date and the
+  extracted-claims store's combined hash.
+  That hash stands at `07fb35c9…` on this
+  act's base (recomputed two routes at
+  `a1fe4648…`: the foundation script's own
+  snapshot and a git-blob recomputation,
+  identical) and moves by this act's
+  disposition append alone. (The
+  `487158b7…` figure in the previously
+  committed report was the Spec 065
+  record-time value; the live store had
+  already moved past it through the
+  intervening appends on main, including
+  Spec 046's restored entry in this same
+  claims file — recorded here so the
+  regenerated report's diff is not mistaken
+  for drift introduced by this act.)
+- Root LEDGER entry: "Spec 065 — S-1
+  recovery act" entry added with this
+  record (H1).
+- `spec.md`, `claims.json`,
+  `adjudication.md`, `freeze.md`,
+  `freeze.json`, `tasks.md`, and the run's
+  results and report files
+  (`reports/phase427_results.json`,
+  `reports/phase427_s1_s5_report.md`) of
+  this spec were **not** edited; Spec 057's
+  directory is untouched.
+- CI and the landing record: appended
+  below after this act's record PR merges,
+  in the §8.1 pattern — this section is
+  completed by append, not edited.

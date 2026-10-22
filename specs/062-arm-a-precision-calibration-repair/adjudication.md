@@ -411,3 +411,210 @@ precision question's answer.
 *AI disclosure: drafted by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen
 Pierson, per constitution §VI.*
+
+## 8. Freeze decisions — 2026-10-21
+
+> ## FREEZE — 2026-10-21
+>
+> Recorded at the freeze act under the
+> owner's approval of 2026-10-21 (amendment
+> package Item 3: take Spec 062 through
+> freeze and OSF filing). The AEE lifecycle
+> hooks ran over the register first
+> (recovered to 0.6-draft;
+> `aee/freeze-aee-note.md`); the digest in
+> `freeze.json` was computed exactly once
+> over the recovered register and the
+> finalised freeze texts (the Spec 035
+> ordering). This section is append-only
+> beside §§1–7, which stand unedited.
+
+### 8.1 The composite pin — set verified complete at this freeze
+
+- Every §2 component was re-derived at this
+  freeze by two independent routes — the
+  contents-API raw route and the git-blob
+  route — both at `main`
+  `b7a8c8a42d4e1137c04ef4c0123fb4ba4dbc3736`,
+  with the merged working tree agreeing as a
+  third read: results
+  `0a1657a8af84615afbee95164cd1c10ea6fc5bc53d1b5a0a006b1862fa5ff607`
+  (19,753 bytes), corpus layer
+  `c02e3d7bb74cf5abb11cc94f88d8d469e6acc5d6fad4b7153c02c43428f58d98`
+  (1,204,144 bytes), pipeline
+  `6c2ff91c41bbb283a513127c6ab7157c1805b640ba0d846f9c7d3349ab8a7b0e`
+  (15,127 bytes), margins audit
+  `15ae0281bb003f3b02742819349d3905004a282b28e9a2c00f433ac41c04bb6d`
+  (5,355 bytes), Spec 028 freeze record
+  `376cd8e7ebc21ef7c31d43270607f475bb7e685cdcbe88205d7092e17fc526cc`
+  (4,212 bytes), calibration record
+  `4198747b42121fea817db2e5ad82da10cca6118fef39bb14dc13cdf56ac204ff`
+  (2,404 bytes), and anchors
+  `df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569`
+  (570,344 bytes). The routes agree
+  byte-for-byte on every file and every hash
+  equals its §2 pin. The pin set is Spec
+  061's, unchanged (DD-062-2): the repair
+  touches no input, no machinery file, and
+  no recorded summary.
+
+### 8.2 The open items (OP-062-1…OP-062-5) — decided
+
+- **DD-062-7 — Calibration seed (OP-062-1):
+  20261021, as drafted.** The draft carries
+  the frozen seed value 20261021 on the
+  dedicated calibration Generator (spec
+  §4.7-R step 3-R.1), and the drafting
+  demonstration ran with it. The freeze
+  adopts the drafted value exactly and fixes
+  no fresh seed: no new constant enters, the
+  trial streams keep DD-061-12's discipline
+  untouched, and the calibration Generator
+  remains a separate object from both
+  per-scenario trial Generators, created
+  before them and used for nothing else. The
+  simulation seed of the carried frame is
+  likewise 20261021 as carried.
+- **DD-062-8 — Execution phase number
+  (OP-062-2): Phase-424 is allocated to
+  Spec 062's execution.** Verified at this
+  freeze: Phase-423 was Spec 061's
+  (DD-061-16); the frozen freeze records
+  allocate Phase-419…Phase-423 to Specs
+  057…061 in freeze order; a repository code
+  search for "Phase-424" returns no record,
+  the root LEDGER allocates no Phase-424,
+  and no phase424 report, script, or graph
+  module exists in the tree. Phase-424 is
+  the first genuinely free number after
+  423, and DD-062-2's predecessor rule
+  (no phase number at draft; allocation is
+  a freeze act) is discharged in this
+  number.
+- **DD-062-9 — Construction choice
+  (OP-062-4): R-1 is adopted, exactly as
+  drafted.** Per-inscription Dirichlet
+  drawing around the imposed composition
+  p_s(b), fixed-uniform coupling through the
+  gamma quantile function, κ_i =
+  n_legible(i) − 1 (spec §4.7-R). Ground:
+  the §3 measurements — R-1 is the only
+  construction demonstrated to meet the
+  frozen 1e-6 bisection tolerance without
+  amending it (planted data: θ₁ bisects to
+  |A_R(b*) − θ₁| = 9.29e-07 in 12
+  iterations; θ₂ to 8.32e-07 in 10), it is
+  centre-exact, and it restores exactly the
+  within-site variation whose absence broke
+  Spec 061 (DEF-062-1). **R-2 (verbatim
+  redraw-per-b) is NOT adopted**: it stays
+  on the record in §3 as a non-adopted
+  alternative, and the tolerance amendment
+  it requires is not taken — its coupled
+  calibration function is a step function
+  with measured jumps of 2.2e-05 to 7.6e-04
+  near the root, three orders of magnitude
+  above the carried tolerance. **R-3 and
+  R-4 stand rejected on measurement**
+  (§3: neither brackets θ), as drafted. No
+  construction may be substituted at run
+  time: gate 0.5-R verifies the frozen R-1
+  construction, per scenario, before any
+  trial.
+- **DD-062-10 — OSF registration (OP-062-3):
+  yes.** This spec files its own OSF
+  contract registration at the freeze,
+  under campaign decision E-1, as Spec 061
+  filed its own (DD-061-14). The filing
+  record is `osf-spec-registration.md`,
+  completed by append after the filing
+  exists. Arm A2 needs none and none is
+  filed for it — its test is already
+  registered (osf.io/7m35w).
+- **DD-062-11 — The freeze and execution
+  acts (OP-062-5): the freeze is taken; the
+  execution is not authorised.** The freeze
+  act and the OSF filing act are taken
+  under the owner's approval of 2026-10-21
+  (amendment package Item 3). Execution
+  (Phase-424) is a separate later act: it
+  begins only after this freeze has merged,
+  the OSF registration's approval act has
+  completed, and a separate execution order
+  is given. The draft's recommendation —
+  that freeze, filing, and execution remain
+  separate acts — is followed exactly.
+- **DD-062-12 — The DD-038-10 AEE gate
+  reading is adopted** (zero correctness
+  failure modes and no claim below 0.70 =
+  substantive pass; FR-2.3 draft-cap
+  residuals at the draft/created lifecycle
+  stage are structural, recorded openly in
+  `aee/freeze-aee-note.md`, never edited
+  away).
+
+### 8.3 Draft decisions confirmed or standing
+
+DD-062-1 (successor, not amendment),
+DD-062-2 (carried substance verbatim except
+§4.7 step 3 and gate 0.5-R), DD-062-3 (gate
+0.3 preserved by construction, fencing
+argument stated), DD-062-4 (R-1 the draft's
+calibration — now the freeze's, DD-062-9),
+DD-062-5 (calibration at the positive
+control's level), and DD-062-6 (arm A2
+discipline carried, E-3) all stand as
+drafted; none is overturned. DEF-062-1 is
+noted as the defect this spec exists to
+repair, demonstrated repaired at draft
+level on planted data only (§3; claim
+F062-C15).
+
+### 8.4 Register recovery at the freeze gate
+
+The register was recovered from 0.5-draft to
+0.6-draft at the freeze gate. Unlike Spec
+061's register, the draft already carried
+engine evidence values and mutual
+independent_of declarations, so no
+loadability round was needed: round 1 over
+0.5-draft returned 22 failure modes — 15
+FR-2.3 draft-cap records and 7
+irreducibility challenges (recorded under
+the engine's coverage_gap category) on
+F062-C05, C07, C09, C11, C12, C13, and C15 —
+with minimum propagated score 0.72. The 7
+challenged heads were restated as single
+propositions with their carried clauses
+moved into boundaries verbatim-in-substance,
+and the freeze rulings of this section were
+carried into the boundaries of F062-C03,
+C06, C07, and C12. Over the recovered
+0.6-draft register every hook (after_specify,
+after_plan, after_tasks) carries 15 failure
+modes — 15 FR-2.3 draft-cap records, zero
+correctness failure modes, minimum
+propagated score 0.72, no claim below the
+0.70 threshold. The full hook record is in
+`aee/freeze-aee-note.md`. No claim's
+falsifier, scenario value, or outcome
+wording changed in recovery.
+
+**This does not establish:** the freeze
+establishes only that the repaired
+construction is frozen as designed. The
+planted-data demonstration proved
+calibratability — continuity, bracketing,
+and a b* at the frozen 1e-6 tolerance on
+planted data — and nothing about the real
+corpus. Gate 0.5-R on the recorded
+population is an execution-time check that
+has not run, and the precision question's
+answer does not exist until an authorised
+execution computes it.
+
+---
+
+*AI disclosure: executed by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen
+Pierson, per constitution §VI.*

@@ -1,17 +1,45 @@
 # Spec 062 — Spec 028 Arm A: the Precision Computation, Calibration Repair (Successor to Spec 061)
 
-> ## DRAFT — 2026-10-21 — NOT FROZEN, NOT EXECUTED
+> ## FROZEN — 2026-10-21
 >
-> Drafted under the owner's amendment-queue
-> commission of 2026-10-21 (item 3: Spec 061
-> calibration repair). Investigation and
-> drafting are standing-authorised, including
+> Frozen under the owner's approval of
+> 2026-10-21 (amendment package Item 3: take
+> Spec 062 through freeze and OSF filing).
+> Drafted the same day under the owner's
+> amendment-queue commission (item 3: Spec
+> 061 calibration repair), including
 > drafting-stage computation on synthetic /
-> planted data (it scores nothing). **The
-> freeze of this spec, any OSF filing for it,
-> and its execution are separate acts, each
-> marked OWNER-APPROVAL in `tasks.md`; none
-> is authorised by this draft.**
+> planted data (it scores nothing). The
+> freeze decisions DD-062-7 to DD-062-12 are
+> recorded in `adjudication.md` §8;
+> DD-062-1 to DD-062-6 stand as drafted.
+> **The repair ruling (DD-062-9):**
+> construction R-1 — per-inscription
+> Dirichlet drawing around the imposed
+> composition, fixed-uniform coupling,
+> κ_i = n_legible(i) − 1 — is adopted
+> exactly as drafted; the verbatim redraw
+> R-2 is not adopted and its tolerance
+> amendment is not taken (R-2 stays on the
+> record in `adjudication.md` §3 as a
+> non-adopted alternative; R-3 and R-4 stand
+> rejected on measurement). The calibration
+> seed is fixed at the drafted value
+> 20261021 (DD-062-7). This spec files its
+> own OSF contract registration at the
+> freeze under campaign decision E-1
+> (DD-062-10). Execution runs as
+> **Phase-424**, allocated at this freeze
+> (DD-062-8) — Phase-423 was Spec 061's, and
+> no repo record allocated Phase-424 before
+> this act. Nothing in this contract has
+> been computed on the recorded population:
+> no trial has run, no world has been built
+> under this contract, and gate 0.5-R has
+> not run — it is an execution-time check.
+> Execution awaits this freeze merging, the
+> OSF registration's approval act, and a
+> separate execution order.
 >
 > **What this spec is.** Spec 061 (Phase-423)
 > executed on 2026-10-21 and closed **CANNOT
@@ -667,9 +695,11 @@ Deliverables at execution: as in Spec 061 §6
 rules, the experiment-graph node registered
 and verified before the run, the outcome
 append in this directory, and the LEDGER
-entry). The execution phase number is **not**
-allocated by this draft (OP-062-2 in
-`adjudication.md`; allocation is a freeze act).
+entry). The execution phase number is **Phase-424**,
+allocated at the freeze (DD-062-8; OP-062-2
+decided there, verified against the root
+LEDGER, the frozen specs' freeze records,
+and the repository tree).
 Foundation check (H21) after the execution
 phase: 0 failures, or the outcome record says
 why not. Anchors asserted byte-identical
@@ -759,15 +789,16 @@ restated in the repaired form, and one is new:
   boost 3.0 on planted data, against both the
   verbatim redraw construction and Spec 028's
   recorded value (`adjudication.md` §3). The
-  freeze may instead adopt the verbatim
-  redraw construction recorded there —
-  openly, in the freeze record, together with
-  the tolerance change that construction
-  requires (its calibration function is a
-  step function, and the frozen 1e-6
-  tolerance is not attainable on it in
-  general; the measured step sizes are in
-  `adjudication.md` §3). What may not happen
+  freeze considered the verbatim
+  redraw construction recorded there and did
+  not adopt it (DD-062-9; OP-062-4 decided):
+  R-1 as drafted is the frozen construction,
+  and the tolerance change R-2 requires (its
+  calibration function is a step function,
+  and the frozen 1e-6 tolerance is not
+  attainable on it in general; the measured
+  step sizes are in `adjudication.md` §3) is
+  not taken. What may not happen
   is a silent substitution at run time: gate
   0.5-R verifies the construction this spec
   freezes, whichever one the freeze adopts.
@@ -779,8 +810,10 @@ restated in the repaired form, and one is new:
   carries the frozen seed value (20261021) on
   a separate Generator (§4.7-R step 3-R.1) so
   that no new constant enters silently; the
-  freeze may fix a different calibration seed
-  openly (OP-062-1). Either way the seed, the
+  freeze fixes that drafted value as the
+  calibration seed and substitutes no fresh
+  seed (DD-062-7; OP-062-1 decided). Either
+  way the seed, the
   W = 199 world count, and the draw order are
   freeze-record values, and gate 0.5-R's
   recorded scan makes a badly drawn world set
@@ -809,15 +842,23 @@ Execution ends in exactly one of:
 
 ## 10. Execution shape (gated; NOT run by this draft; every step OWNER-APPROVAL)
 
-1. **Freeze** of this spec (a separate act;
-   decides OP-062-1…OP-062-4 in
-   `adjudication.md` §5, allocates the
-   execution phase number, runs the AEE
-   freeze gate). **OWNER-APPROVAL.**
+1. **Freeze** of this spec — TAKEN
+   2026-10-21 under the owner's approval
+   (amendment package Item 3): OP-062-1…
+   OP-062-4 decided in `adjudication.md` §8
+   (DD-062-7…DD-062-10), the execution phase
+   number Phase-424 allocated (DD-062-8),
+   and the AEE freeze gate passed
+   (`aee/freeze-aee-note.md`).
 2. **OSF contract registration** for this
    spec at its freeze, under campaign decision
-   E-1 as Spec 061 filed its own.
-   **OWNER-APPROVAL.**
+   E-1 as Spec 061 filed its own (DD-062-10).
+   The filing record is
+   `osf-spec-registration.md`, completed by
+   append after the filing exists. Steps
+   3–6 below remain gated on the
+   registration's approval act and a
+   separate execution order (DD-062-11).
 3. **Graph-first build** (H15/H23) — script,
    graph node, registration, verification.
    **OWNER-APPROVAL** (as part of the

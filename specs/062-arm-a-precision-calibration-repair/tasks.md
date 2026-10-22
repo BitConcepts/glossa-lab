@@ -1,6 +1,6 @@
 # Spec 062 — Tasks
 
-> ## PLAN — DRAFT 2026-10-21 (successor to Spec 061; NOT frozen)
+> ## PLAN — FROZEN 2026-10-21 (successor to Spec 061)
 >
 > Adjudication inputs are recorded in
 > `adjudication.md` (the owner's
@@ -10,7 +10,11 @@
 > record). **The freeze, the OSF filing, and
 > the execution of Spec 062 are separate
 > later acts, each OWNER-APPROVAL; none is
-> authorised by this draft. Arm A2 has no
+> authorised by this draft. The freeze and
+> the OSF filing were taken on 2026-10-21
+> under the owner's approval (amendment
+> package Item 3; L4/L5/E1 below); execution
+> remains a separate later act. Arm A2 has no
 > task in this plan** (E-3, spec header):
 > it is contingent, trigger-armed, and
 > unarmed on any record; Spec 061's T*
@@ -76,34 +80,57 @@
       the freeze decision; CI state, when
       reported, is reported from the run's
       own conclusions.
-- [ ] **L4 — AEE lifecycle hooks (FREEZE
-      GATE — not run on this draft).** At the
-      freeze act, run `run_aee.py assess`
+- [x] **L4 — AEE lifecycle hooks (FREEZE
+      GATE).** DONE 2026-10-21 at the freeze
+      act: `aee assess` (lenient load) run
       after_specify, after_plan, and
-      after_tasks over the claim register; the
-      gate is **pass**, and a stricter outcome
-      blocks the freeze until its named
-      recovery is complete and recorded.
-      **OWNER-APPROVAL** (the freeze act).
-- [ ] **L5 — Freeze-decision items.** The
-      freeze decides OP-062-1 (calibration
-      seed), OP-062-2 (execution phase
-      number), OP-062-3 (OSF registration),
-      and OP-062-4 (whether the freeze adopts
-      construction R-1 as drafted or the
-      verbatim redraw R-2 with its tolerance
-      change), and confirms or openly
-      overturns DD-062-1…DD-062-6.
-      **OWNER-APPROVAL.**
+      after_tasks over the claim register,
+      recovered to 0.6-draft first (round 1
+      over 0.5-draft: 22 failure modes — 15
+      FR-2.3 draft-cap records and 7
+      irreducibility challenges; the
+      challenged heads restated singly, the
+      freeze rulings carried into
+      boundaries). Final round at every hook:
+      15 draft-cap records only, zero
+      correctness failure modes, minimum
+      propagated score 0.72, no claim below
+      the 0.70 threshold — **pass** on the
+      DD-062-12 reading (the DD-038-10
+      reading). Record in
+      `aee/freeze-aee-note.md`.
+- [x] **L5 — Freeze-decision items.** DONE
+      2026-10-21 (`adjudication.md` §8):
+      OP-062-1 decided DD-062-7 (calibration
+      seed 20261021, as drafted); OP-062-2
+      decided DD-062-8 (Phase-424 allocated,
+      verified unallocated); OP-062-4
+      decided DD-062-9 (construction R-1
+      adopted as drafted; R-2 not adopted,
+      its tolerance amendment not taken;
+      R-3/R-4 rejections stand); OP-062-3
+      decided DD-062-10 (OSF registration
+      filed at the freeze, E-1); OP-062-5
+      decided DD-062-11 (freeze and filing
+      taken; execution not authorised).
+      DD-062-1…DD-062-6 stand as drafted,
+      none overturned.
 
 ## Execution (NOT authorised by this draft; every step OWNER-APPROVAL)
 
-- [ ] **E1 — Freeze + OSF.** Freeze this
-      contract (digest computed over the
-      recovered register exactly once, at
-      freeze) and file this spec's own OSF
-      contract registration under campaign
-      decision E-1. **OWNER-APPROVAL.**
+- [x] **E1 — Freeze + OSF.** DONE
+      2026-10-21: this contract is frozen
+      (digest computed over the recovered
+      register 0.6-draft exactly once, at
+      freeze; `freeze.md` / `freeze.json`),
+      and this spec's own OSF contract
+      registration is filed under campaign
+      decision E-1 (DD-062-10; filing record
+      `osf-spec-registration.md`). The
+      registration stands pending approval;
+      execution (E2–E5) awaits its approval
+      act and a separate execution order
+      (DD-062-11).
 - [ ] **E2 — Graph-first build** (H15/H23) —
       script, graph node, registration,
       verification. **OWNER-APPROVAL** (as

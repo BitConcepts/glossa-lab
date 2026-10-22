@@ -128,12 +128,12 @@
       execution (E2–E5) awaits its approval
       act and a separate execution order
       (DD-063-13).
-- [ ] **E2 — Graph-first build** (H15/H23):
+- [x] **E2 — Graph-first build** (H15/H23):
       script, graph node, registration,
       registration verification, for
       Phase-425. **OWNER-APPROVAL** (as part
       of the execution order).
-- [ ] **E3 — Step 0** (spec §3): input
+- [x] **E3 — Step 0** (spec §3): input
       integrity; thesis file asserted to its
       frozen digest on the local file before
       any plate is read; reference
@@ -143,7 +143,7 @@
       run as CLOSED AT STEP 0 in its named
       class. **OWNER-APPROVAL** (the
       execution order).
-- [ ] **E4 — Identification protocol**
+- [x] **E4 — Identification protocol**
       (spec §5): step D (two independent
       descriptor derivations, reconciliation,
       comparison with the preserved
@@ -152,7 +152,7 @@
       by exactly one frozen route, traps
       asserted). **OWNER-APPROVAL** (the
       execution order).
-- [ ] **E5 — Outcome** (spec §§6–8): the
+- [x] **E5 — Outcome** (spec §§6–8): the
       outcome record under the pre-written
       wording; on RECOVERED the appended
       restatement (created, untested,

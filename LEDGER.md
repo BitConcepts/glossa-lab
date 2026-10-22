@@ -9525,3 +9525,29 @@ Adversarial pass required before submission.
 AI disclosure: executed by an AI agent (Muse,
 via Muse) at the direction of Tristen Pierson,
 per constitution sec.VI.
+
+## 2026-10-22 — Spec 025 material audit: merge record (addendum)
+
+PR #331 (branch spec/025-paper-search-
+research-check) merged to main as 814a5dc2.
+Commits: 5d436362 (audit records, stage
+sidecars for all 31 claims, preprint v5,
+ledger entries) and 0abf27f3 (AUDIT_REPORT.md,
+W5 findings reconstruction by repair worker
+W7, and a ruff F401 fix in
+backend/glossa_lab/research_check.py — an
+unused typing.Callable import that the
+shell-wrappers CI job caught on all three
+OSes; ruff check backend/ passes). CI on the
+final head: all seven checks green (backend
+pytest, frontend Playwright, evidence-graph
+smoke, Indus public validation, shell
+wrappers ×3). No anchors, phase data, claim
+statuses, or scores were touched, so the H21
+foundation check was not triggered. This
+addendum and the report's merge line land
+via a small follow-up PR.
+
+AI disclosure: executed by an AI agent (Muse,
+via Muse) at the direction of Tristen Pierson,
+per constitution sec.VI.

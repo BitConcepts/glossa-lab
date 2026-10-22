@@ -1,0 +1,824 @@
+{
+ "claims": [
+  {
+   "id": "F068-C01",
+   "kind": "hypothesis",
+   "text": "An outcome under Spec 068 states only whether the Zipf-Mandelbrot fit of the Indus distribution of record for this spec - the Shakti restricted corpus, documented-lineage rows, under the population limb the freeze chooses - is separable, on the spec's stated measures, from the fits of the named non-linguistic control systems, under the one estimator frozen by Spec 053.",
+   "status": "draft",
+   "boundary": "The scope is the fit population of claim F068-C02 over the restricted corpus pinned at step 0, the named control set of spec section 4 gate 0.6, and the estimator and comparison rule of spec section 5. It excludes any statement about whether the script encodes language, about what any sign means, about any non-linguistic system not named in the set, about the V3 / Mahadevan population, and about any Phase-43 quantity (F068-C13). The result is a new baseline on this corpus, not a reproduction or correction of an earlier measurement. Ruled at the freeze (DD-068-7, the owner's ruling of 2026-10-22): the population limb is limb B - the strict-sign-set restriction is dropped, openly, and the fit population is the full ICIT sign inventory of the restricted corpus (F068-C02 as ruled).",
+   "depends_on": [
+    "F068-C02"
+   ],
+   "assumptions": [
+    "ASM-S053-ADOPTED",
+    "ASM-PF1-CITATION"
+   ],
+   "alternatives": [
+    "the recorded Phase-43 fit could be read as already answering the worth question (it cannot: it fitted one system and compared it to no control, and it is not an input to this spec)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified in scope if any Spec 068 output states a conclusion about a system, corpus, measure, or question outside the named-set comparison under spec section 5, or presents any quantity as a Phase-43 quantity reproduced, confirmed, or corrected"
+   ],
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec053-record",
+     "readiness-assessment"
+    ],
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-LANGUAGE"
+    ],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the alternative reading in which separability from the named controls licenses a claim about language, or in which a Shakti fit licenses a claim about Phase-43",
+    "verdict_rule": "scope is judged by inspection of every Spec 068 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding"
+   },
+   "evidence": [
+    {
+     "description": "Spec 053 frozen text, read first-hand at this draft from main at 2a0eb854982f52453bcd76fd4a5bcbb088eb21e8: section 1.1 states the question (what a curve fit is worth, measured against named non-linguistic systems and a linguistic positive control), section 1.2 its falsifier, and section 7 its limits; its execution closed at gate 0.3 as STRICT CORPUS NOT PINNABLE with no fit computed.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/053-yadav-zipf-controls/spec.md",
+     "source_id": "specs/053-yadav-zipf-controls/spec.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "research_notes/shakti-readiness-proposals-2026-10-22.md"
+     ]
+    },
+    {
+     "description": "Readiness assessment section 1.5, read first-hand at this draft: Spec 053 is the one transferable member of the successor chain, because its question does not logically require the Indus distribution to be the Phase-43 one - it requires an Indus distribution, identified and pinned before fitting.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_id": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/053-yadav-zipf-controls/spec.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F068-C02",
+   "kind": "requirement",
+   "text": "The primary fit population is the analyzable documented-lineage rows of the Shakti corpus under the population limb recorded at this spec's freeze (OPEN-068-1).",
+   "status": "draft",
+   "boundary": "This claim was the draft's one open freeze item, drafted in both limbs in full in spec section 2.2. RULED AT THE FREEZE (DD-068-7, the owner's ruling of 2026-10-22): LIMB B - the strict-sign-set restriction is DROPPED, openly; the primary fit population is the analyzable documented-lineage rows counting every token, stated as the full ICIT sign inventory of the restricted corpus. Limb A was considered and not taken: no mapping act is performed, no mapping basis source is named, and no output may describe this population as a strict population. The anchors file (SHA-256 df0cf620..., 287 anchors, 94 strict_sa_independent) is cited for the record of what was dropped. A freeze record stating no limb would have made any later execution INVALID at gate 0.5; this record states the limb, and execution may not revisit the choice. ICIT sign numbers and Mahadevan sign numbers are different numbering spaces; a number carried across without the mapping act is not the same sign. Carried from the draft head at the freeze recovery (verbatim in substance): limb A - the strict-sign-set restriction retained, counting only tokens whose ICIT sign is in the strict set keyed to ICIT space by the mapping act stated and pinned at step 0 (spec section 4 gate 0.5); or limb B - the strict restriction dropped, counting every token, the population stated as the full ICIT sign inventory of the restricted corpus. Ruled limb B at DD-068-7.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-STRICT-SET-RECORD",
+    "ASM-S053-ADOPTED"
+   ],
+   "alternatives": [
+    "carrying Spec 053's strict population across to the Shakti corpus by sign number without a mapping act (refused: the numbering spaces differ, so number-identity is not sign-identity)",
+    "deciding the limb at execution, after the census is known (refused: the population must be fixed before any fit quantity exists, and the amendment reserves the choice to the freeze)"
+   ],
+   "falsification_tests": [
+    "inspection of the freeze record: it either states exactly one limb, in spec section 2.2's terms, with its reasons, or this spec has not frozen; a step-0 record whose fit population follows neither stated limb, or a limb-A record lacking the pinned mapping table of gate 0.5, falsifies compliance"
+   ],
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "readiness-assessment",
+     "spec053-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "a population quietly assembled at run time - mapped where mapping helps, unmapped where it does not - so the fit population is chosen by its result",
+    "verdict_rule": "the freeze record is the judge: one limb, stated in the draft's terms, before any counting; the step-0 record must exhibit the population that limb defines"
+   },
+   "evidence": [
+    {
+     "description": "Readiness assessment section 1.5, read first-hand at this draft: the strict sign set (94 anchors, validation status strict_sa_independent) is a set of sign identities from the program's existing numbering space; keying it into ICIT space is a substantive act the successor's step 0 must state and pin, or the successor must drop the strict restriction openly and say its population is the full ICIT sign inventory. Amendment S-053's closing bracket carries the same choice, unresolved, to the successor's freeze.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_id": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/053-yadav-zipf-controls/spec.md"
+     ]
+    },
+    {
+     "description": "Spec 053 section 4.1 and gate 0.5 as frozen: the primary population was the strict sign set's distribution (tokens whose sign is in the strict set; signs outside it contribute neither types nor tokens) - the population limb A preserves in ICIT space and limb B openly replaces.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/053-yadav-zipf-controls/spec.md",
+     "source_id": "specs/053-yadav-zipf-controls/spec.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "research_notes/shakti-readiness-proposals-2026-10-22.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F068-C03",
+   "kind": "requirement",
+   "text": "yadav_2009_arxiv_manual_001 stands strongly supported on its recorded test.",
+   "status": "draft",
+   "boundary": "These are the claim file's own fields as carried in Spec 053's frozen record (its freeze pin SHA-256 90476623...). Re-asserted at this freeze (DD-068-8): the file's bytes no longer recompute to that pin - the file recomputes to ec31778a75cbc56f27f385ed7da800edb874a8f600cbe102f46087a8159d6239, its bytes having changed after Spec 053's freeze by re-extraction timestamps (2026-10-21) and the Spec 025 audit appends (commit 51cf8b3c, 2026-10-22); manual_001's recorded status, evidence string, falsifier text, and stage were verified field-by-field unchanged against the pinned version, and the freeze re-pins the claim file at the current hash for gate 0.1. The discrepancy is recorded here, not adjusted silently. No outcome under this spec changes the claim's recorded status, its recorded exponent, or its own falsifier text, and no step-0 closure adds any label: on a closure the claim stands exactly as recorded. Spec 053's record, including its step-0 closure, is likewise never edited by this spec. Carried from the draft head at the freeze recovery (verbatim in substance): Spec 068 appends its outcome to that claim's record only as a dated bounded finding - a strength label in spec section 7's pre-written wording.",
+   "depends_on": [
+    "F068-C01"
+   ],
+   "assumptions": [
+    "ASM-CLAIM-RECORD",
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "restating the claim's status in place in light of a Shakti result (refused: frozen records are not edited in this program; outcomes append as dated entries)"
+   ],
+   "falsification_tests": [
+    "recompute SHA-256 of glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json (904766238d4aec8fecf0a01dc7c8935689f378e31062485edc699874a36847a3) and read manual_001's status, stage, evidence string, and falsification condition; any mismatch falsifies this statement and voids the draft's basis; inspection at close that only the dated append was added"
+   ],
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "claim-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "the record could have been misread or superseded (the Spec 040 stale-pin precedent shows draft-cited pins can be wrong); the falsification test names the exact fields to re-read",
+    "verdict_rule": "the statement stands or falls on the pinned claim file hashing to its recorded value with the stated fields present, and on file inspection at execution close"
+   },
+   "evidence": [
+    {
+     "description": "Claim record as read and pinned at Spec 053's freeze, and carried at this draft: manual_001 normalized claim 'Indus script sign frequencies follow a Zipf-Mandelbrot distribution', status strongly_supported, stage explained, evidence string 'Phase-43: V3 Zipf exponent ~1.35 (super-Zipfian)', falsification condition 'If frequency distribution deviates from Zipf-Mandelbrot law', and the not-understood text naming the non-linguistic-systems comparison as a strengthening act.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json",
+     "source_id": "glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json",
+     "source_quality": "artifact"
+    }
+   ]
+  },
+  {
+   "id": "F068-C04",
+   "kind": "hypothesis",
+   "text": "Every named non-linguistic control fits the Zipf-Mandelbrot curve strictly worse than the Indus primary fit under the spec section 5 estimator.",
+   "status": "draft",
+   "boundary": "This is the hypothesis whose failure is the falsifier of F068-C10: at least one named non-linguistic control fitting as well as or better than the Indus primary fit. It is a statement about the named set, the primary population of F068-C02, and the frozen measures only - not about non-linguistic systems in general, not about language, and not about any other corpus or population, including the sensitivity population (whose ordering is reported under F068-C11 and does not adjudicate this hypothesis). Carried from the draft head at the freeze recovery (verbatim in substance): the linguistic positive control fits strictly better than every non-linguistic control (the spec section 5.4 positive-control condition, adjudicated under F068-C10).",
+   "depends_on": [
+    "F068-C01",
+    "F068-C02"
+   ],
+   "assumptions": [
+    "ASM-053-ESTIMATOR-FROZEN",
+    "ASM-CONTROL-SOURCES"
+   ],
+   "alternatives": [
+    "the falsifier fires (routed by F068-C10 to NOT SEPARABLE)",
+    "the positive control fails its condition (routed by F068-C10 to COMPARISON UNINFORMATIVE)"
+   ],
+   "falsification_tests": [
+    "run spec section 5: if any non-linguistic control's primary fit error is less than or equal to the Indus primary fit error, or the positive control's error is not strictly below every non-linguistic control's, this hypothesis is not supported, under the routing of F068-C10"
+   ],
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec053-record",
+     "readiness-assessment"
+    ],
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-LANGUAGE"
+    ],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the strongest rival is the falsifier itself: a system that is not writing produces this curve as well as the script does, on a corpus whose grades and lineage are stated openly",
+    "verdict_rule": "SEPARABLE for the hypothesis iff every non-linguistic error is strictly greater than the Indus primary error and the positive-control condition of spec section 5.4 passes"
+   },
+   "evidence": [
+    {
+     "description": "Spec 053 sections 1.2-1.3 as frozen: the falsifier (at least one named non-linguistic control fits as well or better under the identical fitting rules) and the hypothesis (every non-linguistic control strictly worse, and the comparison informative in the sense of its section 4.4) - carried unchanged into this successor by Amendment S-053, with only the Indus population substituted.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/053-yadav-zipf-controls/spec.md",
+     "source_id": "specs/053-yadav-zipf-controls/spec.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "research_notes/shakti-readiness-proposals-2026-10-22.md"
+     ]
+    },
+    {
+     "description": "Readiness assessment section 1.5: the successor's question is Spec 053's question; it requires an Indus distribution identified and pinned before fitting, which the Shakti restricted corpus supplies under the intake gates.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_id": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/053-yadav-zipf-controls/spec.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F068-C05",
+   "kind": "requirement",
+   "text": "At step 0, gate 0.3, both Shakti files recompute to the SHA-256 pins of the intake record (P-F1 gate S1).",
+   "status": "draft",
+   "boundary": "The pins are those of Proposal P-F1 (readiness assessment section 1.6) as recorded in the intake record (docs/decisions/2026-10-22-shakti-corpus-intake-record.md), which stands on the merged record (main, merged by PR #339 at merge commit bfc811df) carrying the P-F1 gates S1-S4 in their adopted form and both pins exactly as gate 0.3 states them - asserted at this freeze (OPEN-068-2, DD-068-8). The corpus and the row-grades file are restricted-local material, held under the corpus's GPL-3.0 terms; neither is committed to the repository under this spec. Carried from the draft head at the freeze recovery (verbatim in substance): the corpus file's SHA-256 recomputes to 345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68 and the row-grades file's SHA-256 recomputes to 02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739, asserted against the intake record; either recompute failing closes the execution as SHAKTI INTAKE NOT REPRODUCED before any fit.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-PF1-CITATION",
+    "ASM-SHAKTI-INTAKE"
+   ],
+   "alternatives": [
+    "citing the corpus by name, version, or deposit description without recomputing its digest (refused: P-F1 S1 is a recompute gate, and a renamed or re-exported file with the same description is a different corpus)"
+   ],
+   "falsification_tests": [
+    "gate 0.3 is the operational test: the step-0 record exhibits both recomputed digests beside the pins; a run proceeding on a file whose digest differs from either pin, in either digit, falsifies compliance and its closure word is SHAKTI INTAKE NOT REPRODUCED"
+   ],
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "readiness-assessment",
+     "provenance-audit"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "a near-identical corpus file - a later snapshot of the same deposit - presenting a changed population as the pinned one",
+    "verdict_rule": "identity is judged by the recomputed SHA-256 digests alone, exhibited in the step-0 record against the intake record"
+   },
+   "evidence": [
+    {
+     "description": "Proposal P-F1, readiness assessment section 1.6, read first-hand at this draft: 'S1 - Identity: the file's SHA-256 recomputes to the pinned value, and the row-grades file's SHA-256 recomputes to its pinned value as recorded in this intake record'; the corpus pin is stated there in full as 345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_id": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "research_notes/shakti-provenance-audit-2026-10-22.md",
+      "docs/decisions/2026-10-22-shakti-corpus-intake-record.md"
+     ]
+    },
+    {
+     "description": "Provenance audit, read first-hand at this draft: the Shakti corpus sanitized_corpus.json, 5,704 rows, SHA-256 345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68, verified against the deposit README pin before any counting; the row-level grades for all 5,704 rows are the audit's output file.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/shakti-provenance-audit-2026-10-22.md",
+     "source_id": "research_notes/shakti-provenance-audit-2026-10-22.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "research_notes/shakti-readiness-proposals-2026-10-22.md",
+      "docs/decisions/2026-10-22-shakti-corpus-intake-record.md"
+     ]
+    },
+    {
+     "description": "The intake record path cited as the standing record the freeze will assert against; the row-grades pin 02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739 is the value recorded for that record and carried in the drafting commission of this spec. The file's presence on the merged record is a freeze condition, verified at the freeze, not asserted at this draft.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+     "source_id": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "research_notes/shakti-readiness-proposals-2026-10-22.md",
+      "research_notes/shakti-provenance-audit-2026-10-22.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F068-C06",
+   "kind": "requirement",
+   "text": "At step 0, gate 0.4, the corpus census reproduces the audit's census against the intake record (P-F1 gate S2).",
+   "status": "draft",
+   "boundary": "The derived figures the step-0 census governs over are: primary set 3,212 rows, 3,045 analyzable; sensitivity set 5,299 rows, 5,131 analyzable (3,045 + 2,086 - the one all-000 corroborated row, H-986, is in the 2,087 but not in the analyzable subset and is excluded from sign analysis regardless). They are arithmetic from the audit's published counts, not measurements. A census mismatch at gate 0.4 closes as SHAKTI INTAKE NOT REPRODUCED, not as a corrected census: a corpus whose counts differ from the audit's is not the corpus the audit graded. The floors are Spec 053's (DD-053-7, confirmed DD-053-14), carried by Amendment S-053 and measured on the restricted set - the fit population the freeze's limb (F068-C02) defines over the documented-lineage rows; no floor applies to a control or to the sensitivity set. Ruled at the freeze (DD-068-7): under limb B the fit population the floors are measured on is the full ICIT sign inventory of the documented-lineage rows. Carried from the draft head at the freeze recovery (verbatim in substance): 5,704 rows; 5,536 analyzable; grade counts 3,212 documented-lineage / 2,087 undocumented-corroborated / 405 undocumented-uncorroborated; 4,904 of 5,536 analyzable rows (88.6%) carrying a CISI identifier; the same gate measures and states this successor's own restricted-corpus census, which governs over every derived figure in the draft; gate 0.7 then applies Spec 053's floors (at least 50 distinct types and at least 2,000 tokens), measured on the restricted set's fit population, closing as TOO THIN below either floor.",
+   "depends_on": [
+    "F068-C02",
+    "F068-C05"
+   ],
+   "assumptions": [
+    "ASM-SHAKTI-INTAKE",
+    "ASM-DERIVED-COUNTS"
+   ],
+   "alternatives": [
+    "inheriting the audit's or the readiness memo's counts as the successor's census without measuring them (refused by the readiness assessment itself: the successor must measure its own census at step 0, not inherit the sentence as the measurement)"
+   ],
+   "falsification_tests": [
+    "gate 0.4 is the operational test: the step-0 record exhibits the reproduced census and the successor's own measured restricted census; a run whose exhibited counts differ from the audit's census and proceeds anyway, or whose floors are applied to any population other than the restricted set's fit population, falsifies compliance"
+   ],
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "provenance-audit",
+     "readiness-assessment"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "derived arithmetic quoted as a measurement, so a population difference between the audit's corpus and the executed corpus passes silently as the same corpus",
+    "verdict_rule": "the step-0 record is the judge: the audit census reproduced exactly, and the successor's own census exhibited as measured, with the derived figures recorded beside it as expectations"
+   },
+   "evidence": [
+    {
+     "description": "Proposal P-F1 S2, readiness assessment section 1.6, read first-hand at this draft, quoted in spec section 2.1: 5,704 rows; 5,536 analyzable; grade counts 3,212 / 2,087 / 405; 4,904 of 5,536 analyzable rows (88.6%) carrying a CISI identifier. The same memo's section 1.5 states the successor must measure its own census at step 0 and that the successor's step-0 census governs over the derived grade-subset arithmetic.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_id": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "research_notes/shakti-provenance-audit-2026-10-22.md",
+      "specs/053-yadav-zipf-controls/spec.md"
+     ]
+    },
+    {
+     "description": "Provenance audit census and grades, read first-hand at this draft: 5,704 rows graded in full (3,212 documented-lineage; 2,087 undocumented-corroborated; 405 undocumented-uncorroborated); on the analyzable subset the documented match is 3,045; 167 documented rows are entirely 000 and belong in no sign analysis.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/shakti-provenance-audit-2026-10-22.md",
+     "source_id": "research_notes/shakti-provenance-audit-2026-10-22.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "research_notes/shakti-readiness-proposals-2026-10-22.md",
+      "specs/053-yadav-zipf-controls/spec.md"
+     ]
+    },
+    {
+     "description": "Spec 053 gate 0.5 as frozen, with DD-053-7 confirmed at DD-053-14: the primary proceeds only if distinct types present are at least 50 and tokens at least 2,000; below either floor the execution closes as TOO THIN with the census as its finding.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/053-yadav-zipf-controls/spec.md",
+     "source_id": "specs/053-yadav-zipf-controls/spec.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "research_notes/shakti-readiness-proposals-2026-10-22.md",
+      "research_notes/shakti-provenance-audit-2026-10-22.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F068-C07",
+   "kind": "requirement",
+   "text": "Every system in the comparison is fitted with the one estimator frozen by Spec 053 (its section 4.2, as specified completely at that freeze under DD-053-11).",
+   "status": "draft",
+   "boundary": "Estimator identity in this spec is identity with Spec 053's freeze, and with nothing else. DD-053-11 honestly RETIRED the 'identical to Phase-43' reading - Phase-43's results file records no Zipf fit and no Phase-43 Zipf estimator is on main - and this successor inherits that ruling whole: it asserts no Phase-43 estimator identity and uses no Phase-43 quantity. The gate 0.2 self-test (planted alpha 1.20, q 2.0, V 200, N 50,000, seed 20261021, by the stated multinomial procedure; pass iff the fit recovers alpha within 0.10 and q within 1.0) is carried unchanged from Spec 053. No estimator may be substituted after any fitting. Carried from the draft head at the freeze recovery (verbatim in substance): the Zipf-Mandelbrot model f(r) = C / (r + q)^alpha with C fixed by normalisation, fitted by minimising the sum of squared log residuals over alpha 0.00-3.00 in steps of 0.01 and q 0.0-20.0 in steps of 0.1, then one refinement pass at one-tenth steps around the best grid cell; types ranked by count descending, ties by type identifier ascending; primary quantity NRMSE_log.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-053-ESTIMATOR-FROZEN"
+   ],
+   "alternatives": [
+    "recovering and reusing a Phase-43 estimator (ruled out at Spec 053's freeze under DD-053-11: no such estimator exists on the record)",
+    "re-deriving an estimator for the Shakti population at this draft or at execution (refused: a new estimator would make this a new comparison, not Spec 053's successor under Amendment S-053)"
+   ],
+   "falsification_tests": [
+    "gate 0.2 is the operational test: an implementation that cannot recover the planted parameters (alpha within 0.10, q within 1.0) stops the run as INVALID; any reported fit quantity produced by a different estimator - a different grid, objective, normalisation, or ranking rule, for any one system - falsifies the outcome record"
+   ],
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec053-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "silent estimator drift presenting as a corpus result: a fitting rule adjusted for the ICIT population, so the successor measures its own machinery instead of Spec 053's question",
+    "verdict_rule": "identity is judged by the gate 0.2 self-test plus the single implementation the execution record exhibits for all systems, checked against the grid, objective, and refinement stated here"
+   },
+   "evidence": [
+    {
+     "description": "Spec 053 adjudication section 8, DD-053-11, read first-hand at this draft: the freeze specifies the estimator completely as a freeze-stage design decision (model, normalisation, objective - sum of squared log residuals - grid alpha 0.00-3.00 step 0.01, q 0.0-20.0 step 0.1, one refinement pass at one-tenth steps, the gate 0.2 self-test with its planted parameters and seed 20261021) and retires the 'identical to Phase-43' reading, on the re-verified ground that the Phase-43 results file (SHA-256 78a6c219...) contains no Zipf fit at all.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/053-yadav-zipf-controls/adjudication.md",
+     "source_id": "specs/053-yadav-zipf-controls/adjudication.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/053-yadav-zipf-controls/spec.md"
+     ]
+    },
+    {
+     "description": "Spec 053 section 4.2 as frozen, read first-hand at this draft: the same estimator statement, the primary quantity NRMSE_log = sqrt(SSE / V), log-space R-squared and the fitted alpha reported and never decisive, and the ranking rule (count descending, ties by type identifier ascending).",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/053-yadav-zipf-controls/spec.md",
+     "source_id": "specs/053-yadav-zipf-controls/spec.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/053-yadav-zipf-controls/adjudication.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F068-C08",
+   "kind": "requirement",
+   "text": "The control set is exactly the systems named in Spec 053 gate 0.4 as frozen (DD-053-13).",
+   "status": "draft",
+   "boundary": "No system is added, substituted, trimmed, or completed from another source after gate 0.6, and no second positive control is added (DD-053-13). The exact tables, editions, and per-count locators are entered at gate 0.6, which is the fixed pin source for the control tables, exactly as Spec 053's freeze ruled for its gate 0.4; this draft invents no table it has not seen. A system that cannot be entered completely as published - the whole inventory its source reports - closes the run as CONTROL SET FREEZE FAILED, and in particular the Indus fit is not computed ahead of the controls. Each control's counting unit is Spec 053's (numerical signs only for N1; one charge occurrence on one shield for N2). Confirmed at the freeze (DD-068-11, OPEN-068-5): the four systems stand as named - Mesopotamian numerical signs, heraldic charges, the synthetic emblem inventory, Linear B - and no named system is replaced. Carried from the draft head at the freeze recovery (verbatim in substance): N1 Mesopotamian numerical signs (Nissen, Damerow & Englund, Archaic Bookkeeping (1993) and the published archaic sign counts it reports), N2 heraldic charges from a published roll of arms, N3 the synthetic emblem inventory (Yule-Simon process, innovation probability 0.10, seed 20261021, 99 replicates, token total size-matched to the Indus primary fit at step 0, replicate median as its fit quantity), and P1 Linear B syllabic sign frequencies as the linguistic positive control - entered whole as cited data and frozen at gate 0.6 before any fit.",
+   "depends_on": [
+    "F068-C07"
+   ],
+   "assumptions": [
+    "ASM-CONTROL-SOURCES"
+   ],
+   "alternatives": [
+    "a uniform-random synthetic inventory (refused at Spec 053, DD-053-6: near-flat by construction, it could not test the residue's point that a stated random process can produce this curve)",
+    "substituting a control whose counts are easier to enter completely (refused: the named set is the frozen design's set; a substitution is a freeze act stated openly, not an execution repair)"
+   ],
+   "falsification_tests": [
+    "the gate 0.6 record either exhibits the frozen tables with citations before any fit quantity, or closes the run; a fitted set differing from the named set, or any fit preceding the gate, falsifies compliance"
+   ],
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec053-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "control-shopping: a set trimmed or swapped after its counts are seen, until the comparison reads as the preferred outcome needs",
+    "verdict_rule": "the step-0 record is the judge: the named systems, entered whole with citations, frozen before the first fit, or the pre-written closure"
+   },
+   "evidence": [
+    {
+     "description": "Spec 053 gate 0.4 as frozen, read first-hand at this draft: N1, N2, N3, and P1 as this claim states them, with the Yule-Simon parameters pinned (DD-053-6) and the counting units stated per system.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/053-yadav-zipf-controls/spec.md",
+     "source_id": "specs/053-yadav-zipf-controls/spec.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/053-yadav-zipf-controls/adjudication.md"
+     ]
+    },
+    {
+     "description": "Spec 053 adjudication section 8, DD-053-13, read first-hand at this draft: the named systems and bibliographic pins stand as drafted, no second positive control is added, and gate 0.4 is the fixed pin source for the control tables; a system that cannot be entered whole closes the run CONTROL SET FREEZE FAILED.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/053-yadav-zipf-controls/adjudication.md",
+     "source_id": "specs/053-yadav-zipf-controls/adjudication.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/053-yadav-zipf-controls/spec.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F068-C09",
+   "kind": "requirement",
+   "text": "Execution stops before any fit is computed when a spec section 4 gate fails.",
+   "status": "draft",
+   "boundary": "These are spec section 4's gates 0.1-0.7, in order. Failure classes are INVALID (0.1, 0.2, and a freeze record stating no population limb), SHAKTI INTAKE NOT REPRODUCED (0.3, 0.4), STRICT MAPPING NOT PINNABLE (0.5, limb A only), CONTROL SET FREEZE FAILED (0.6), and TOO THIN (0.7). No failure is repaired at run time; a repaired input is a new freeze, not a resumed run, and no quantity produced before a gate failure is quotable. Carried from the draft head at the freeze recovery (verbatim in substance): execution stops if an input pin mismatches, if the estimator self-test fails, if the Shakti intake gates S1 or S2 fail, if the population act of gate 0.5 cannot be completed under the freeze's chosen limb, if the control set cannot be frozen as cited data, or if the census floors of gate 0.7 fail.",
+   "depends_on": [
+    "F068-C05",
+    "F068-C06",
+    "F068-C08"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "each gate's check is itself the test: the execution record must show every gate's verdict before the first fit quantity, in order, or the run is non-compliant on its face"
+   ],
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec053-record",
+     "readiness-assessment"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "gate-skipping under the pressure of a nearly-complete run, with the failure rationalised afterwards",
+    "verdict_rule": "the run's own record is the judge: gate verdicts precede quantities in it, in order, or the outcome is INVALID by construction"
+   },
+   "evidence": [
+    {
+     "description": "Spec 053 section 3 as frozen: step-0 gates run in order before any fit, fail-closed, with nothing repaired at run time - the discipline this successor carries, with its corpus gates replaced by the P-F1 intake gates under Amendment S-053.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/053-yadav-zipf-controls/spec.md",
+     "source_id": "specs/053-yadav-zipf-controls/spec.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "research_notes/shakti-readiness-proposals-2026-10-22.md"
+     ]
+    },
+    {
+     "description": "Proposal P-F1, readiness assessment section 1.6: 'Failure of S1 or S2 closes the citing spec at step 0 as SHAKTI INTAKE NOT REPRODUCED. S3/S4 failures are integrity findings, reported as such, not repaired silently.'",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_id": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/053-yadav-zipf-controls/spec.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F068-C10",
+   "kind": "requirement",
+   "text": "The headline outcome of an execution is exactly one word from the frozen outcome set of spec section 7, assigned on the primary fit by the comparison rule of spec section 5.",
+   "status": "draft",
+   "boundary": "The rule is Spec 053's (DD-053-2, confirmed with epsilon = 0 at DD-053-15; the positive-control condition is its section 4.4, ruled at DD-053-5 and confirmed at its freeze), restated in spec section 5.3-5.5 with only the population references changed. The headline is computed on the primary fit alone; the sensitivity fit of F068-C11 never changes the headline word, and where its ordering differs the headline is quoted with the grade-sensitivity statement beside it. The outcome record's headline paragraph uses spec section 7's pre-written wording for its class, with the P-F1 S3 lineage statement (F068-C12) in its headline block. Carried from the draft head at the freeze recovery (verbatim in substance): a non-linguistic control fits as well iff its NRMSE_log is less than or equal to the Indus primary NRMSE_log (no tolerance band; the synthetic control by its replicate median); the falsifier fires iff at least one of N1, N2, N3 fits as well; P1 passes iff its error is strictly less than every non-linguistic control's; SEPARABLE iff P1 passes and the falsifier does not fire, NOT SEPARABLE iff P1 passes and it fires, COMPARISON UNINFORMATIVE iff P1 does not pass; gaps are reported for every control and a control with gap greater than 0 and at most 0.02 is named a NEAR MISS in every product. The frozen outcome set of spec section 7 is SEPARABLE, NOT SEPARABLE, and COMPARISON UNINFORMATIVE (carried from the recovered head).",
+   "depends_on": [
+    "F068-C02",
+    "F068-C04",
+    "F068-C07",
+    "F068-C08",
+    "F068-C09"
+   ],
+   "assumptions": [
+    "ASM-053-ESTIMATOR-FROZEN"
+   ],
+   "alternatives": [
+    "a tolerance band inside the verdict rule (refused at Spec 053, DD-053-2: the design's words carry no band; the 0.02 band survives as the reporting-only NEAR MISS rule, so a near miss is named, not buried, and decides nothing)"
+   ],
+   "falsification_tests": [
+    "the outcome record's headline word must be derivable from the published primary NRMSE_log values by this claim's rule alone; a headline following the sensitivity fit, a band-adjusted rule, or a relabelled near miss falsifies the outcome record"
+   ],
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec053-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "headline-shopping: choosing the word that flatters the pattern after the errors are known, exploiting the sensitivity fit or a tolerance band to move a borderline result",
+    "verdict_rule": "the rule is registered here, before execution; the outcome record shows every system's error, every gap, the positive-control placement, and the headline word together"
+   },
+   "evidence": [
+    {
+     "description": "Spec 053 sections 4.3-4.5 as frozen, read first-hand at this draft: the comparison rule (fits as well iff error at or below the Indus error; the synthetic median rule; the NEAR MISS reporting band), the positive-control validity condition, and the three headline words.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/053-yadav-zipf-controls/spec.md",
+     "source_id": "specs/053-yadav-zipf-controls/spec.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/053-yadav-zipf-controls/adjudication.md"
+     ]
+    },
+    {
+     "description": "Spec 053 adjudication section 8: DD-053-15 confirms the comparison rule with epsilon = 0 and the 0.02 band reporting-only; DD-053-19 confirms COMPARISON UNINFORMATIVE as the positive-control-failure class.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/053-yadav-zipf-controls/adjudication.md",
+     "source_id": "specs/053-yadav-zipf-controls/adjudication.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/053-yadav-zipf-controls/spec.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F068-C11",
+   "kind": "requirement",
+   "text": "The sensitivity fit is reported alongside the primary fit in full (spec section 6.1).",
+   "status": "draft",
+   "boundary": "The sensitivity fit is Amendment S-053's and P-F1 S4's, stated in spec section 6.1. It does not change the headline word (F068-C10). The corroborated stratum is systematically different material (the audit: more incomplete, more damaged, shorter), so the combined fit is a fit over a different population, not merely a larger sample - that is why the primary is documented-only and a difference between the fits is a finding about the grades, never resolved by reporting only the fit that reads better. The subsampling tables of spec section 6.2 are reported for both populations so size movement and grade movement are not confused. Under the freeze's limb B (DD-068-7) the sensitivity population is the full ICIT sign inventory of the documented + corroborated set; no strict restriction applies to either fit. Carried from the draft head at the freeze recovery (verbatim in substance): the sensitivity fit is the same estimator fitted to the analyzable documented-lineage + undocumented-corroborated rows (5,299 rows; 5,131 analyzable, as derived, governed by the step-0 census) under the same population limb as the primary; if the two fits' verdict-relevant ordering against the controls differs, both orderings are reported, neither is suppressed, and the difference is reported as grade-sensitivity, in the headline block and wherever the result is cited (P-F1 gate S4); rows graded undocumented-uncorroborated (405) enter no fit, count, statistic, or argument under this spec.",
+   "depends_on": [
+    "F068-C02",
+    "F068-C06",
+    "F068-C10"
+   ],
+   "assumptions": [
+    "ASM-DERIVED-COUNTS",
+    "ASM-PF1-CITATION"
+   ],
+   "alternatives": [
+    "reporting only the combined fit because it is larger (refused: its population differs by construction, and P-F1 S4 requires both-ways reporting of any load-bearing result computed over both grade sets)",
+    "letting a differing sensitivity ordering silently replace the primary headline (refused: the headline is the primary's, with the grade-sensitivity statement carried beside it)"
+   ],
+   "falsification_tests": [
+    "the outcome record either reports both fits in full with both orderings, or it does not comply; a product quoting the headline without the grade-sensitivity statement where the orderings differ, or in which any undocumented-uncorroborated row entered a fit or count, falsifies compliance"
+   ],
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "readiness-assessment",
+     "provenance-audit"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "suppression by selection: publishing the grade set whose ordering supports the preferred reading, and mentioning the other, if at all, where a reader will not weigh it",
+    "verdict_rule": "both fits, both orderings, and the grade-sensitivity statement are judged together in the outcome record; the statement's presence wherever the result is cited is part of the check"
+   },
+   "evidence": [
+    {
+     "description": "Amendment S-053, readiness assessment section 1.5, quoted in spec section 2.1: the sensitivity fit over 5,299 rows (5,131 analyzable) is reported alongside the primary; if the two fits' verdict-relevant ordering against the controls differs, both are reported and neither is suppressed; rows graded undocumented-uncorroborated (405) enter no fit. Proposal P-F1 S4 (section 1.6): a result that changes between the two grade sets is reported as grade-sensitive wherever it is cited.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_id": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "research_notes/shakti-provenance-audit-2026-10-22.md"
+     ]
+    },
+    {
+     "description": "Provenance audit sections 2 and 4, read first-hand at this draft: the unmatched/corroborated stratum differs systematically from the documented stratum (45.1% incomplete against 6.7%; 45.2% containing a 000 placeholder against 7.3%; mean length 3.13 signs against 3.79), and undocumented-uncorroborated rows are graded not usable for load-bearing work.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/shakti-provenance-audit-2026-10-22.md",
+     "source_id": "research_notes/shakti-provenance-audit-2026-10-22.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "research_notes/shakti-readiness-proposals-2026-10-22.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F068-C12",
+   "kind": "requirement",
+   "text": "Every product of an execution under Spec 068 states the P-F1 S3 lineage statement verbatim in its headline block.",
+   "status": "draft",
+   "boundary": "The statement is Proposal P-F1's S3 text, verbatim, carried in spec section 10 item 1, first in the headline block, before the outcome wording. It is not paraphrased, shortened, or moved to a footnote. A product citing the corpus without it is an integrity finding (an INVALID-class defect of that product), reported as such, not repaired silently. Carried from the draft head at the freeze recovery (verbatim in substance): the statement reads: 'This corpus is an ICIT-lineage corpus. Agreement between it and the program's earlier ICIT-lineage layer is consistency within one tradition, not independent corroboration.' A product without the statement does not cite the corpus.",
+   "depends_on": [
+    "F068-C01"
+   ],
+   "assumptions": [
+    "ASM-PF1-CITATION"
+   ],
+   "alternatives": [
+    "carrying the lineage caveat in a methods section or appendix instead of the headline block (refused: P-F1 S3 states the headline block, because a result quoted from its headline is quoted without its methods)"
+   ],
+   "falsification_tests": [
+    "inspection of every Spec 068 product: a headline block lacking the statement in full, or carrying a paraphrase of it, falsifies compliance for that product"
+   ],
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "readiness-assessment",
+     "provenance-audit"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "the quiet drop: a Shakti result circulating as an independent confirmation of an ICIT-lineage result, because the sentence that prevents that reading was left off the product that travelled",
+    "verdict_rule": "the statement is judged character-for-character in each product's headline block, against the text quoted in this claim"
+   },
+   "evidence": [
+    {
+     "description": "Proposal P-F1 S3, readiness assessment section 1.6, read first-hand at this draft, quoted verbatim in this claim: every product of a citing spec states the lineage statement in its headline block; a product without the statement does not cite the corpus.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_id": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "research_notes/shakti-provenance-audit-2026-10-22.md"
+     ]
+    },
+    {
+     "description": "Provenance audit section 3 caveat, read first-hand at this draft - the statement's source in substance: Shakti and the program's lineage layer all descend from ICIT; their agreement is consistency within one tradition, not independent corroboration (the audit's census found the first 5,679 Shakti rows agree sequence-for-sequence with the lineage layer).",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/shakti-provenance-audit-2026-10-22.md",
+     "source_id": "research_notes/shakti-provenance-audit-2026-10-22.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "research_notes/shakti-readiness-proposals-2026-10-22.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F068-C13",
+   "kind": "requirement",
+   "text": "A fit measured under Spec 068 is a new baseline (owner's 2026-10-22 decision 2c).",
+   "status": "draft",
+   "boundary": "The Phase-43 quantities are named in this draft only inside this fence, so the fence can be checked; they enter no gate, no fit, no comparison, and no sensitivity. In particular, unlike Spec 053's sensitivity S3, no fit in this spec is reported beside the recorded exponent of about 1.35 as a comparability bridge: spec section 6.3's conditional full-inventory fit reports its exponent on its own. This fence does not diminish Spec 053 or Phase-43 as records; it states what this successor's numbers are about. Carried from the draft head at the freeze recovery (verbatim in substance): the V3 / Mahadevan-lineage corpus, the Phase-43 census, and the Phase-43 exponent are not inputs to Spec 068: a fit measured here is a new baseline, comparable to the controls inside this spec and to nothing in Phase-43 (owner's 2026-10-22 decision 2c).",
+   "depends_on": [
+    "F068-C01"
+   ],
+   "assumptions": [
+    "ASM-S053-ADOPTED"
+   ],
+   "alternatives": [
+    "reporting the Shakti exponent beside the Phase-43 exponent so a reader can see whether it 'still' holds (refused: in a different numbering, over a different population, the comparison would present a new baseline as a reproduction - exactly what Amendment S-053 and decision 2c exclude)"
+   ],
+   "falsification_tests": [
+    "inspection of every Spec 068 input list, gate, fit, and product: any Phase-43 quantity used as an input, a gate value, a reproduction target, or a comparison point falsifies compliance"
+   ],
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "readiness-assessment",
+     "spec053-record"
+    ],
+    "forbidden_assumptions": [
+     "ASM-PHASE43-AS-TARGET"
+    ],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "the successor's result quoted, by this program or by a reader it equips, as confirming or correcting the Phase-43 fit - a claim the different corpus and numbering cannot carry",
+    "verdict_rule": "inputs and products are judged against this fence by inspection; the Phase-43 record's absence from every operative list is the check"
+   },
+   "evidence": [
+    {
+     "description": "Amendment S-053, readiness assessment section 1.5, quoted in spec section 2.1: 'The V3 / Mahadevan-lineage corpus, the Phase-43 census (3,916 / 3,137 / 12,494), and the Phase-43 exponent are not inputs to this spec and no quantity in it is a reproduction of a Phase-43 quantity.' The same section, on the exponent: a Shakti exponent is a new measurement, comparable to the controls inside the new spec, not a reproduction or correction of Phase-43.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_id": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/053-yadav-zipf-controls/spec.md"
+     ]
+    },
+    {
+     "description": "Spec 053 adjudication and spec section 4.2 (DD-053-11): no Phase-43 Zipf fit exists on the record for any successor to reproduce - the recorded value of about 1.35 rests on the claim file's evidence string alone.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/053-yadav-zipf-controls/spec.md",
+     "source_id": "specs/053-yadav-zipf-controls/spec.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "research_notes/shakti-readiness-proposals-2026-10-22.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F068-C14",
+   "kind": "requirement",
+   "text": "No outcome under Spec 068 establishes that the script encodes language.",
+   "status": "draft",
+   "boundary": "Also excluded, and stated wherever an outcome is stated: any conclusion about a corpus independent of the ICIT lineage (this spec is not Spec 053's arm B, whose contingent status Spec 053 section 12 records), and any presentation of a Shakti quantity as a measurement of the V3 / Mahadevan population. A step-0 closure appends no strength label; the claim stands exactly as recorded. Carried from the draft head at the freeze recovery (verbatim in substance): Spec 068 appends and never edits: its outcome appends to the record of yadav_2009_arxiv_manual_001 as a dated bounded finding, and the claim's prior status and evidence lines, Spec 053's frozen record and closure, and the Phase-43 files are not modified, superseded in place, or re-adjudicated by this spec.",
+   "depends_on": [
+    "F068-C01",
+    "F068-C03",
+    "F068-C10"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "a language framing attached to a SEPARABLE outcome because separability 'suggests' writing (refused: Spec 053's closing limit refuses exactly this, in its own terms, and the successor carries the limit unchanged)"
+   ],
+   "falsification_tests": [
+    "inspection of every Spec 068 output: a language claim in any output falsifies compliance and is corrected by dated addendum, never by silent edit; inspection at execution close that prior records are unchanged except the authorised dated append"
+   ],
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec053-record"
+    ],
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-LANGUAGE"
+    ],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "the reading in which a separable curve fit on a graded ICIT corpus is itself evidence of language - the over-reading the claim's not-understood text and Spec 053 both refuse",
+    "verdict_rule": "outputs are judged against this boundary at execution close; violations are recorded defects, and the claim consequence is limited to the strength label of F068-C03"
+   },
+   "evidence": [
+    {
+     "description": "Spec 053 section 7 limits 1-2 as frozen, read first-hand at this draft: arm A cannot promote the fit into evidence that the script encodes language, and the outcome appends to the claim's record as a dated bounded finding without changing its recorded status.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/053-yadav-zipf-controls/spec.md",
+     "source_id": "specs/053-yadav-zipf-controls/spec.md",
+     "source_quality": "artifact"
+    }
+   ]
+  }
+ ],
+ "note": "Draft register for Spec 068 (the Spec 053 successor on the Shakti corpus, under Amendment S-053), opened 2026-10-22 under the owner's 2026-10-22 readiness decisions, decision 2 (drafting approved; decision 2c: the result is a new baseline, neither confirming nor correcting Phase-43), on the adjudication inputs recorded in adjudication.md: the Shakti readiness assessment (shakti-readiness-proposals-2026-10-22.md, sections 1.5-1.6), the owner's decision, and Spec 053's frozen record including DD-053-11. Conventions as in Specs 042-048 and the Spec 054 draft register: requirement claims carry no falsification test where a gate or inspection is the operative check; boundaries carry the conditions under which each claim holds; evidence items carry observed_at from this draft because the cited facts were verified first-hand at drafting. The AEE lifecycle hooks have NOT run on this register; they are the freeze gate (tasks L4), on the DD-038-10 posture for draft registers, and any recovery round they force changes claim text before any freeze digest is computed. The one open freeze item is OPEN-068-1 (claim F068-C02): the strict-sign-set limb, drafted in both limbs and adopted in neither; claims F068-C01, F068-C04, F068-C06, F068-C10, and F068-C11 carry it as a dependency through F068-C02. ASM- ids name the assumptions each claim stands on: ASM-S053-ADOPTED (Amendment S-053, as proposed in the readiness assessment section 1.5, is adopted for drafting by the owner's decision 2 and states this successor's corpus substitution), ASM-PF1-CITATION (the Shakti corpus is cited only under Proposal P-F1's gates S1-S4, readiness assessment section 1.6), ASM-SHAKTI-INTAKE (the intake record at docs/decisions/2026-10-22-shakti-corpus-intake-record.md stands on the merged record at the freeze carrying both SHA-256 pins, and the corpus and row-grades files it pins are the files the audit graded), ASM-DERIVED-COUNTS (grade-subset row and analyzable counts in this register are arithmetic derived from the provenance audit's published counts, governed over by the successor's own step-0 census), ASM-CLAIM-RECORD (the extracted-claims file is the claim's record of standing), ASM-053-ESTIMATOR-FROZEN (Spec 053's estimator, controls, comparison rule, and floors stand as frozen, DD-053-11 to DD-053-16), ASM-CONTROL-SOURCES (the named controls' published counts exist in a form gate 0.6 can enter whole as cited data), ASM-STRICT-SET-RECORD (the anchors file's 94 strict_sa_independent identities are the strict sign set of record, in the program's existing numbering space), ASM-GATES-BEFORE-OUTCOME (execution runs the step-0 gates in order before any fit quantity exists), ASM-APPEND-ONLY (outcomes append as dated entries; frozen records are never edited). FREEZE PREPARATION (2026-10-22): the owner's freeze rulings were carried into the register before the hooks ran - DD-068-7 (OPEN-068-1 ruled LIMB B: the strict-sign-set restriction dropped, openly; the population stated as the full ICIT sign inventory of the restricted corpus; limb A considered and not taken) into F068-C01, F068-C02, F068-C06, and F068-C11; DD-068-8 (OPEN-068-2: the intake record asserted standing on the merged record, PR #339 at bfc811df, carrying both SHA-256 pins exactly as spec section 2.1 states them; every other spec section 3 pin re-asserted - anchors df0cf620... and crosswalk 4ace1a61... recompute exactly; the claim file re-pinned at ec31778a... with the discrepancy and the field-by-field verification recorded in F068-C03) into F068-C03 and F068-C05; DD-068-11 (OPEN-068-5: the four control systems stand as named) into F068-C08. A loadability recovery from 0.5-draft to 0.6-draft normalised every evidence item to kind observed and source_quality artifact (the draft's free-form kind and source_quality labels are not engine values and the loader refuses them - the Spec 053 freeze recipe) and added mutual independent_of declarations on every multi-item claim's evidence. FREEZE RECOVERY (2026-10-22): round 1 of the hooks over 0.6-draft at after_specify returned 31 failure modes - 14 FR-2.3 draft-cap records, 13 irreducibility challenges (F068-C02, C03, C04, C05, C06, C07, C08, C09, C10, C11, C12, C13, C14), 1 precision challenge (F068-C07), and 3 negation-conflict challenges (F068-C04/F068-C12, F068-C05/F068-C06, F068-C07/F068-C12); no claim below the 0.70 threshold (minimum propagated 0.795). Recovery to 0.7-draft restated the 13 challenged claim heads as single head propositions with their carried clauses moved into the boundaries verbatim-in-substance (the Spec 053/059 recovery form); F068-C01 was not challenged and its head is unchanged. Second recovery (to 0.8-draft): round 2 over 0.7-draft left 4 irreducibility challenges (F068-C02, C05, C10, C13; the precision challenge and all 3 negation-conflict challenges cleared); those four heads were tightened to single propositions with their conjunctions' content carried in the boundaries. FREEZE GATE (2026-10-22): the final round over 0.8-draft - after_specify, after_plan, and after_tasks - carries 14 failure modes at every hook, every one an FR-2.3 draft-cap record, zero correctness failure modes, minimum propagated 0.795, no claim below the 0.70 threshold; the engine outcome word reads iterate solely from the draft-cap records (gate reading DD-068-10, adopting DD-038-10 as in DD-053-19). The full record is in aee/freeze-aee-note.md. The freeze digest (freeze.json) was computed over this recovered register (0.8-draft) exactly once, after this note was complete.",
+ "register_version": "0.8-draft",
+ "spec": "068-yadav-zipf-controls-successor"
+}

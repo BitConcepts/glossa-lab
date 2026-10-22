@@ -16,7 +16,12 @@ What the stage does, per claim:
   * surfaces nearest neighbors from the merged results and reads the
     full text of reachable open-access neighbors (arXiv route);
     neighbors whose full text cannot be reached are recorded as
-    open gaps — never as "no prior art".
+    open gaps — never as "no prior art";
+  * additionally queries CORE per phrasing through the keyed client
+    (``glossa_lab.core_search``, spec 026): CORE hits join the same
+    neighbor pool, and a CORE hit that carries full text is its own
+    read source. A CORE 429 stops CORE for the rest of the run and
+    is recorded, per the connector's stop rule.
 
 What it never does: score a claim, change a claim's status, or
 adjudicate a decipherment. The record's ``verdict`` field is always
@@ -28,7 +33,7 @@ itself is never modified — records are sidecars under
 CLI:
   python -m glossa_lab.research_check --claim-file <dossier.json>
       [--claim-id ID] [--alt-phrasing "..."] [--doi DOI ...]
-      [--out DIR] [--no-full-text] [--timeout SECONDS]
+      [--out DIR] [--no-full-text] [--no-core] [--timeout SECONDS]
 """
 from __future__ import annotations
 
@@ -40,7 +45,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable
 
-from glossa_lab import paper_search
+from glossa_lab import core_search, paper_search
 
 _REPO = Path(__file__).resolve().parent.parent.parent
 DEFAULT_OUT_DIR = _REPO / "glossa-indus" / "claims" / "research_checks"
@@ -166,12 +171,15 @@ def run_research_check(
     download_dir: Path | None = None,
     timeout: float = paper_search.DEFAULT_TIMEOUT,
     client: Any = paper_search,
+    use_core: bool = True,
+    core_client: Any = core_search,
 ) -> dict[str, Any]:
     """Execute the research-check for one claim; return the record.
 
     ``client`` is injectable for tests (anything with the
-    ``paper_search`` helper surface). The record is advisory only:
-    ``verdict`` is None by construction.
+    ``paper_search`` helper surface). ``core_client`` likewise
+    (anything with the ``core_search`` surface: ``search_papers``).
+    The record is advisory only: ``verdict`` is None by construction.
     """
     statement = claim.get("normalized_claim") or claim.get("claim") or ""
     phrasings = build_phrasings(statement, alt_phrasings)
@@ -186,7 +194,9 @@ def run_research_check(
         "verdict": None,
         "protocol": PROTOCOL_REF,
         "phrasings": phrasings,
-        "sources_requested": [s.strip() for s in sources.split(",") if s.strip()],
+        "sources_requested": [s.strip() for s in sources.split(",")
+                              if s.strip()] + (["core"] if use_core
+                                               else []),
         "queries": [],
         "source_errors": [],
         "neighbors": [],
@@ -196,6 +206,8 @@ def run_research_check(
     }
 
     neighbors: dict[str, dict[str, Any]] = {}
+    core_texts: dict[str, str] = {}  # _paper_key -> CORE full text
+    core_stopped = False
 
     def note_error(where: str, out: dict[str, Any]) -> None:
         if isinstance(out, dict) and "error" in out:
@@ -231,6 +243,42 @@ def run_research_check(
                      "error": str(out.get("result"))[:300]})
             for p in _result_papers(out):
                 neighbors.setdefault(_paper_key(p), _neighbor(p))
+        # CORE (spec 026): one keyed search per phrasing. Hits join
+        # the same pool; a hit carrying full text keeps it aside for
+        # the read step. A 429 stops CORE for the rest of the run
+        # (connector stop rule) and is recorded, never retried.
+        if use_core and not core_stopped:
+            record["queries"].append({"phrasing_origin": ph["origin"],
+                                      "tool": "core_search_works",
+                                      "query": ph["text"]})
+            core_papers: list[dict[str, Any]] = []
+            try:
+                core_papers = core_client.search_papers(
+                    ph["text"], limit=max_results, timeout=timeout) or []
+            except core_search.CoreRateLimitError as e:
+                record["source_errors"].append(
+                    {"where": "core_search_works", "error": str(e),
+                     "type": "RateLimit"})
+                core_stopped = True
+            except core_search.CoreError as e:
+                record["source_errors"].append(
+                    {"where": "core_search_works", "error": str(e),
+                     "type": "CoreError"})
+            for p in core_papers:
+                if not isinstance(p, dict):
+                    continue
+                key = _paper_key(p)
+                if key not in neighbors:
+                    neighbors[key] = _neighbor(p)
+                if p.get("full_text"):
+                    neighbors[key]["has_full_text"] = True
+                    core_texts[key] = p["full_text"]
+
+    if core_stopped:
+        record["gaps"].append(
+            {"gap": "CORE rate limit (HTTP 429): CORE stopped for "
+                    "this run; remaining phrasings were not searched "
+                    "on CORE"})
 
     ranked = list(neighbors.values())
     for nb in ranked:
@@ -244,6 +292,17 @@ def run_research_check(
     # a future audit reads them via download_with_fallback manually.
     # Reads go to the highest-relevance arXiv neighbors first.
     if read_neighbors:
+        # CORE-carried neighbors are their own read source: the text
+        # arrived with the hit, so the read is recorded (source +
+        # word count only) without spending an arXiv read slot.
+        for nb in record["neighbors"]:
+            text = core_texts.get(_paper_key(nb))
+            if not text or nb["relevance"] < MIN_READ_RELEVANCE:
+                continue
+            record["neighbors_read_full_text"].append({
+                "title": nb.get("title"), "paper_id": nb.get("paper_id"),
+                "source": "core", "words": len(text.split()),
+            })
         read_count = 0
         for nb in record["neighbors"]:
             if read_count >= neighbor_limit:
@@ -334,6 +393,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--sources", default=paper_search.DEFAULT_SOURCES)
     ap.add_argument("--max-results", type=int, default=10)
     ap.add_argument("--no-full-text", action="store_true")
+    ap.add_argument("--no-core", action="store_true",
+                    help="skip the CORE source (spec 026); default: on")
     ap.add_argument("--timeout", type=float,
                     default=paper_search.DEFAULT_TIMEOUT)
     ns = ap.parse_args(argv)
@@ -353,6 +414,7 @@ def main(argv: list[str] | None = None) -> int:
             alt_phrasings=ns.alt_phrasing, dois=ns.doi,
             sources=ns.sources, max_results=ns.max_results,
             read_neighbors=not ns.no_full_text,
+            use_core=not ns.no_core,
             download_dir=download_dir, timeout=ns.timeout)
         path = write_record(record, out_dir)
         print(json.dumps({

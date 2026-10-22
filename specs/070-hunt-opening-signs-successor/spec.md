@@ -1,5 +1,7 @@
 # Spec 070 — Hunt Opening Signs Successor: The Opening Signs Are the Animal Signs, on the Shakti Corpus (Re-scoped Successor to Spec 049, Design D-06)
 
+> ## FROZEN — 2026-10-22 — see `freeze.md` in this directory for the freeze record (digest, gate result, and ruling text)
+>
 > ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-22
 >
 > Drafted under the owner's readiness decisions

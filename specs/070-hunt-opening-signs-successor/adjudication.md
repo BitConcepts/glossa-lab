@@ -338,3 +338,104 @@ before the freeze can be taken at all.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+
+## 7. Freeze rulings (2026-10-22, owner freeze act; executed by the freeze worker)
+
+Ruled under the owner's freeze rulings for the Hunt
+chain: every open item per the draft's stated
+default; where the draft carries a predecessor's
+decided position it stands; a genuine unresolved
+choice takes the more conservative option, recorded
+and flagged. DD-070-1…DD-070-6 stand as drafted.
+The freeze was executed after Spec 069's executed
+record (Asset A) was merged to `main`, as §2's
+order requires.
+
+- **DD-070-7 — OPEN-070-1 ruled: the intake
+  record is landed.** It was merged to `main` by
+  PR #339 (head `bfc811df`) adopting P-F1; its pins
+  re-asserted first-hand at this freeze (corpus
+  SANITIZED SHA-256 `345241b1…`, row-grades CSV
+  `02394241…`; census 5,704 rows, grades
+  3,212/2,087/405). Gate 0.2's S1/S2 assertions run
+  against it at execution.
+- **DD-070-8 — OPEN-070-2 ruled: Asset A's digest
+  copied character for character.** From Spec 069's
+  executed record (`asset-a-freeze.json` in
+  `specs/069-hunt-asset-a/asset-a/`, merged by PR
+  #345 at `6a981188`), re-verified at this freeze
+  by recomputing the canonical CSV's digest on the
+  merged tree: **SHA-256
+  `952319355098698f01e6d8499b0384f84ac964e1bc4ecdc03c77ed920c7a5b5b`**,
+  187 rows, per-kind counts animal 20, sky_cycle 0,
+  object_goods 14, human 25, other 127, contested
+  0, unidentified 1. Freeze record §3 quotes it;
+  gate 0.1 asserts it.
+- **DD-070-9 — OPEN-070-3 ruled: the keying route.**
+  A Shakti sign's ICIT code n is its Wells number.
+  Among the rows of the pinned canonical sign
+  registry (`data/crosswalks/canonical_sign_registry.csv`,
+  SHA-256
+  `8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420`)
+  with `numbering_system` = `parpola_1982` whose
+  `wells_ids` contains the token `W` followed by n
+  zero-padded to three digits, the sign resolves to
+  the Asset A row whose `sign_key` is that registry
+  row's `sign_id`. Exactly one distinct `sign_id` is
+  a resolution; zero or more than one is a
+  resolution failure and the sign is unkeyable. At
+  this freeze the route's Wells map over the
+  registry's `parpola_1982` rows carries 498 Wells
+  ids and no Wells id resolves to more than one
+  sign (verified at the freeze). The resolved sign
+  must also carry an Asset A row; gate 0.5's
+  coverage scope check applies.
+- **DD-070-10 — OPEN-070-4 ruled: the counting
+  rule.** A sign's occurrence total is every
+  occurrence of the sign in sequences of length
+  ≥ 2 in the population, each occurrence counted
+  once under §2's own battery counting (initial,
+  medial and terminal positions over those
+  sequences) — computed on the primary population
+  for the primary test, and re-derived under the
+  same rule on the documented + corroborated
+  population for sensitivity S-C.
+- **DD-070-11 — OPEN-070-5 ruled: closure
+  (conservative).** If any sign enumerated in the
+  opening-strong set at gate 0.4 cannot be keyed,
+  the execution closes at gate 0.4 as **POPULATION
+  NOT KEYED**, with the sign named. This is the
+  more conservative of the draft's two branches —
+  a stated continuation would let a verdict rest on
+  a population with a hole in it — and it is
+  flagged as a conservative choice in the freeze
+  worker's report.
+- **DD-070-12 — OPEN-070-6 ruled: file this spec's
+  own OSF registration at its freeze**, as a new
+  registration for a new spec under the programme's
+  OSF project, per the owner's ruling (Spec 049
+  filed none; its absence is part of why this
+  successor exists as a new contract). The filing
+  is recorded in `osf-spec-registration.md` in this
+  directory.
+- **DD-070-13 — OPEN-070-7 ruled: Phase 433** is
+  allocated to this spec's execution, on the merged
+  record as it stands at this freeze (Spec 069
+  executed as Phase 432; the number is free).
+- **DD-070-14 — The AEE gate reading of DD-070-6
+  and DD-038-10 governs**: the freeze gate is zero
+  correctness failure modes and no claim below 0.70
+  propagated confidence at each of after_specify,
+  after_plan and after_tasks; the gate's measured
+  result is recorded in the freeze record, and a
+  register restatement made only to satisfy the
+  gate is a freeze recovery, recorded in
+  `aee/freeze-aee-note.md` — the frozen claims are
+  the register as it passes.
+
+---
+
+*Freeze rulings recorded 2026-10-22 by the freeze
+worker (an AI agent, Muse Spark via Muse) under the
+owner's freeze act, per constitution §VI.*

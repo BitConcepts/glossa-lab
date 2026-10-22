@@ -47,7 +47,7 @@
       as a DRAFT PR and left unmerged for the
       owner's freeze decision, CI state
       reported from the run's own conclusions.
-- [ ] **L4 — AEE lifecycle hooks (FREEZE GATE
+- [x] **L4 — AEE lifecycle hooks (FREEZE GATE
       — not run on this draft).** At the
       freeze act, run `run_aee.py assess`
       after_specify, after_plan, and
@@ -61,7 +61,7 @@
       the freeze digest is computed over the
       recovered register exactly once, at
       freeze.
-- [ ] **L5 — Freeze-decision items.** The
+- [x] **L5 — Freeze-decision items.** The
       freeze decides OPEN-070-1 (the intake
       record landed in final form),
       OPEN-070-2 (Asset A's digest quoted
@@ -73,7 +73,7 @@
       disposition), OPEN-070-6 (OSF), and
       OPEN-070-7 (phase number), and confirms
       or openly overturns DD-070-1…DD-070-6.
-- [ ] **L6 — Freeze.** On the owner's freeze
+- [x] **L6 — Freeze.** On the owner's freeze
       order, with L4 passed and L5 decided:
       hooks recorded, `freeze.md` finalised,
       `freeze.json` computed over the

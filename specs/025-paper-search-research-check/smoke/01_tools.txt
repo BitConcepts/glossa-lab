@@ -1,0 +1,57 @@
+search_papers — Unified top-level search across all configured academic platforms.
+search_arxiv — Search academic papers from arXiv.
+search_pubmed — Search academic papers from PubMed.
+search_biorxiv — Search academic papers from bioRxiv.
+search_medrxiv — Search academic papers from medRxiv.
+search_google_scholar — Search academic papers from Google Scholar.
+search_iacr — Search academic papers from IACR ePrint Archive.
+download_arxiv — Download PDF of an arXiv paper.
+download_pubmed — Attempt to download PDF of a PubMed paper.
+download_biorxiv — Download PDF of a bioRxiv paper.
+download_medrxiv — Download PDF of a medRxiv paper.
+download_iacr — Download PDF of an IACR ePrint paper.
+read_arxiv_paper — Read and extract text content from an arXiv paper PDF.
+read_pubmed_paper — Read and extract text content from a PubMed paper.
+read_biorxiv_paper — Read and extract text content from a bioRxiv paper PDF.
+read_medrxiv_paper — Read and extract text content from a medRxiv paper PDF.
+read_iacr_paper — Read and extract text content from an IACR ePrint paper PDF.
+search_semantic — Search academic papers from Semantic Scholar.
+download_semantic — Download PDF of a Semantic Scholar paper.    
+read_semantic_paper — Read and extract text content from a Semantic Scholar paper. 
+search_crossref — Search academic papers from CrossRef database.
+get_crossref_paper_by_doi — Get a specific paper from CrossRef by its DOI.
+download_crossref — Attempt to download PDF of a CrossRef paper.
+download_scihub — Download paper PDF via Sci-Hub (optional fallback connector).
+download_with_fallback — Try source-native download, OA repositories, Unpaywall, then optional Sci-Hub.
+read_crossref_paper — Attempt to read and extract text content from a CrossRef paper.
+search_openalex — Search academic papers from OpenAlex.
+search_pmc — Search academic papers from PubMed Central (PMC).
+search_core — Search academic papers from CORE.
+search_europepmc — Search academic papers from Europe PMC.
+search_dblp — Search academic papers from dblp computer science bibliography.
+search_openaire — Search academic papers from OpenAIRE European Open Access infrastructure.
+search_citeseerx — Search academic papers from CiteSeerX digital library.
+search_doaj — Search academic papers from DOAJ (Directory of Open Access Journals).
+search_base — Search academic papers from BASE (Bielefeld Academic Search Engine).
+search_zenodo — Search academic papers from Zenodo open repository.
+search_hal — Search academic papers from HAL open archive.
+search_ssrn — Search metadata records from SSRN.
+search_unpaywall — Lookup a DOI via Unpaywall and return OA metadata.
+read_dblp_paper — Attempt to read and extract text content from a dblp paper.
+download_dblp — Download PDF for a paper from dblp.
+read_openaire_paper — Attempt to read and extract text content from an OpenAIRE paper.
+download_openaire — Download PDF for a paper from OpenAIRE.
+read_citeseerx_paper — Read and extract text content from a CiteSeerX paper.
+download_citeseerx — Download PDF for a paper from CiteSeerX.
+read_doaj_paper — Read and extract text content from a DOAJ paper.
+download_doaj — Download PDF for a paper from DOAJ.
+read_base_paper — Read and extract text content from a BASE paper.
+download_base — Download PDF for a paper from BASE.
+read_zenodo_paper — Read and extract text content from a Zenodo paper.
+download_zenodo — Download PDF for a paper from Zenodo.
+read_hal_paper — Read and extract text content from a HAL paper.
+download_hal — Download PDF for a paper from HAL.
+read_ssrn_paper — Read paper content from SSRN.
+download_ssrn — Download PDF for a paper from SSRN.
+read_openalex_paper — Attempt to read and extract text content from an OpenAlex paper.
+download_openalex — Download PDF for a paper from OpenAlex.

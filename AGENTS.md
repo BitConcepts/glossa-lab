@@ -100,3 +100,19 @@ for querying and controlling the backend without manual API calls:
 The server connects to the running backend at `GLOSSA_BASE_URL`
 (default: `http://127.0.0.1:8001`). Tools return clean JSON error objects when
 the backend is unreachable — they never crash the MCP process.
+
+## Research check (paper-search MCP)
+
+A RESEARCH-CHECK stage (spec 025) audits claim dossiers against the
+scholarly literature **before** AEE scoring/adjudication, using the
+shared paper-search-mcp server (arXiv, Crossref, Semantic Scholar,
+OpenAlex, CORE, …):
+
+- **Client:** `backend/glossa_lab/paper_search.py` (stdio client;
+  spawns the server from `~/workspace/venvs/paper-search-mcp`).
+- **Stage:** `backend/glossa_lab/research_check.py` — writes advisory
+  sidecar records to `glossa-indus/claims/research_checks/`; never
+  modifies a claim, score, or status, and never adjudicates a
+  decipherment.
+- **Usage + binding audit protocol:** `docs/paper-search-mcp.md`.
+  Sci-Hub is hard-off in the client.

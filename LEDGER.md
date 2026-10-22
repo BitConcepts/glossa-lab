@@ -3209,3 +3209,74 @@ PENDING.
 **AI disclosure:** execution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution §VI.
+
+## [2026-10-22] Entry — Spec 025: Paper-Search MCP Client + RESEARCH-CHECK Stage
+
+Objective:
+  Implement the owner-ordered scholarly research-checking MCP
+  (openags/paper-search-mcp) in Glossa Lab — tooling only; the audit
+  of Glossa's own material is separate follow-on work assigned to
+  the Glossa Lab chat.
+
+What was done:
+
+  1. SPEC: specs/025-paper-search-research-check/ (spec.md, plan.md,
+     tasks.md) — proposal with H13 epistemic boundaries recorded
+     before execution (H2).
+
+  2. CLIENT: backend/glossa_lab/paper_search.py — stdio MCP client
+     running under the backend venv (existing mcp>=1,<2 dependency),
+     spawning the shared server from ~/workspace/venvs/paper-search-mcp
+     (the pinned install maintained from the RCPH workspace; not
+     duplicated). Sci-Hub is hard-off in code. Timeouts on every call
+     (H9/H11); NO_PROXY sanitized as in the house clients.
+
+  3. STAGE: backend/glossa_lab/research_check.py — RESEARCH-CHECK
+     stage for claim dossiers, designed to run BEFORE AEE scoring /
+     adjudication. Per claim: >=2 concept phrasings x >=2 sources,
+     DOI resolution for supplied citations, nearest-neighbor
+     surfacing with full-text reads of reachable OA neighbors.
+     Records are advisory sidecars in glossa-indus/claims/
+     research_checks/; verdict is always null; the claim file is
+     never modified. Placement decision (client module beside the
+     loop, not new glossa_mcp tools): glossa_mcp's 33 tools are
+     route-drift-guarded backend controls; paper search has no
+     backend route. Recorded in the spec.
+
+  4. DOCS: docs/paper-search-mcp.md (connector/usage doc; the audit
+     protocol carried over unchanged from the RCPH connector) and an
+     AGENTS.md pointer section (H8).
+
+  5. TESTS: backend/tests/test_paper_search.py — 10 offline tests
+     (client config, Sci-Hub refusal, phrasing plan, record shaping
+     against a stubbed client, advisory invariant). Run with the
+     governance lint and MCP suites: 39 passed.
+
+  6. SMOKE (live, raw outputs in the spec's smoke/): 57 tools via
+     the Glossa client; federated + arXiv concept queries on Indus
+     decipherment returned the real literature (Yadav et al. n-grams
+     paper at the top); DOI 10.1126/science.1170391 resolved to the
+     Rao et al. 2009 Science record; end-to-end stage run wrote the
+     first sidecar (25 neighbors, 3 full-text reads, verdict null).
+     MEASURED TRAP: the arXiv connector answers a no-match
+     conjunction with a default high-profile list (ATLAS /
+     gravitational-wave papers) instead of an empty result — the
+     first stage run spent its read slots on those. The stage now
+     ranks neighbors by claim-vocabulary overlap and gates reads on
+     it; the rerun's reads were all on-topic. Recorded in
+     docs/paper-search-mcp.md limits.
+     Process note (H9): the first stage invocation was killed by a
+     service restart mid-run (no record written; two downloaded
+     PDFs remained under research_checks/full_text/, gitignored per
+     the repo's PDF policy); retried detached and completed.
+
+  7. COMMIT: this spec's files only, on branch
+     spec/025-paper-search-research-check. The pre-existing
+     uncommitted working-tree modifications (claims extraction,
+     anchor staging, partial loop results) are not this session's
+     work and were not staged. origin/main has advanced beyond this
+     checkout (6215690d vs c4a3ef4c); push of this branch attempted
+     as a new branch only — main was not touched.
+
+**AI disclosure:** execution recorded by an AI agent (Muse, via
+Muse) at the direction of Tristen Pierson, per constitution SSVI.

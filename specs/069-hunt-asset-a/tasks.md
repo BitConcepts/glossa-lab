@@ -79,16 +79,16 @@
       number allocated (OPEN-069-6), and the
       OSF contract registration filed if L5
       confirms OPEN-069-5's proposal.
-- [ ] **L7 — Freeze PR merged**, house gates
+- [x] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).
 
 ## Execution — gated on the freeze and a separate execution order
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Source availability and D-18
+- [x] **E2 — Source availability and D-18
       state** (spec §3, gates A1–A2): the
       CISI volumes and Parpola's
       identifications in hand and named by
@@ -97,26 +97,26 @@
       resolved on the record (sequencing
       stop on failure — the build does not
       start).
-- [ ] **E3 — Blind entry** (spec §2, quoted
+- [x] **E3 — Blind entry** (spec §2, quoted
       §§2.3–2.5): rows entered from the
       sources only, blind to positional
       results; dispute coding completed; the
       entry log preserved.
-- [ ] **E4 — Coverage and citation gates**
+- [x] **E4 — Coverage and citation gates**
       (gates A3–A4): every sign of the full
       pinned-crosswalk universe carries a
       row; every non-`unidentified` row
       carries at least one §2.3 citation
       with a verbatim label (ASSET FAILED on
       failure).
-- [ ] **E5 — Blind-entry attestation and
+- [x] **E5 — Blind-entry attestation and
       freeze** (gates A5–A6): the build
       record attests the §2.4 order and
       blindness; `asset-a-freeze.json`
       recorded with the §2.7 contents and
       its digest recomputing from the
       canonical CSV — **before any join**.
-- [ ] **E6 — Publication and outcome:** the
+- [x] **E6 — Publication and outcome:** the
       classification and its digest published
       as this spec's first product (the
       asserted input of Specs 070 and 071);

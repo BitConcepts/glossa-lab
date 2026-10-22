@@ -9780,3 +9780,43 @@ What was done:
 
 AI disclosure: produced by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## 2026-10-22 — Spec 069 EXECUTED (Phase-432): ASSET BUILT AND FROZEN
+
+The Asset A build under Spec 045's frozen §§2–3 contract, quoted
+verbatim in Spec 069 (Spec 069 freeze digest 657b930c…; freeze PR #338
+merged at ba61d9cd; OSF registration r3xqb filed at the freeze,
+pending the owner's approval act at the time of the run). Gates A1–A6
+in order, all PASS, before any join: A1 the CISI volumes (vols. 1–2,
+1991) and Parpola's published identifications in hand and named by
+edition — the CISI sign list entered through the held mayig CISI
+digitization, restored from the public upstream at commit ad2f1e2
+after the programme's downloads copy was found missing during a
+concurrent workspace sweep (spot values agree across the loss);
+Parpola 2010 consulted in held form, its numbers not keyable to the
+crosswalk's sign keys, so agreement is single_source throughout and
+no row is contested — recorded openly in the build record. A2 the
+D-18 input re-asserted as Spec 046's terminal empty feed
+(concordance-297.json, SHA-256 772db4df…, signs empty, IDENTIFICATION
+FAILED closure); the build proceeded without the feed and did not
+reconstruct it. Blind double entry with reconciliation: 187 rows
+over the full pinned-crosswalk universe (crosswalk SHA-256
+4ace1a61…, 205 rows / 187 distinct sign keys) — animal 20, sky_cycle
+0, object_goods 14, human 25, other 127, contested 0, unidentified 1
+(M059: no governing identification in any held §2.3 source; sources
+searched recorded). Four borderline rows (P073, P074, P217, P320).
+Asset A SHA-256
+952319355098698f01e6d8499b0384f84ac964e1bc4ecdc03c77ed920c7a5b5b,
+published as the spec's first product in
+specs/069-hunt-asset-a/asset-a/ (canonical CSV, asset-a-freeze.json,
+entry log entry-decisions.json); it is the asserted step-0 input of
+Specs 070 and 071. The zero sky_cycle count is a fact about the held
+published identifications of this universe, recorded as it landed.
+Deterministic (second run byte-identical); anchors byte-identical
+before and after (df0cf620…). Foundation check on the execution
+tree: 40 passed / 0 failed / 8 warnings. Records:
+specs/069-hunt-asset-a/outcome.md, build-record.md,
+reports/phase432_results.json, reports/phase432_report.md.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.

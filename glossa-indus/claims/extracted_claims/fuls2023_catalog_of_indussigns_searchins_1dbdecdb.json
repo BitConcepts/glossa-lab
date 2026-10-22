@@ -33,7 +33,19 @@
       ],
       "verified_unexplained": false,
       "proposition_fingerprint": "a4874349e0cc0ba23b711f10c78f60372639c2dc6f352165b48d4a9e44272469",
-      "merged_into": "ancient_writing_and_modern_technologies_51831ac9_statisti_0004"
+      "merged_into": "ancient_writing_and_modern_technologies_51831ac9_statisti_0004",
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "spec025-material-audit-note",
+        "proposal": "P8",
+        "note": "Source identification (spec-025 material audit, 2026-10-22): the 'Positional Analysis' stub dossiers are all Andreas Fuls's work - 'Positional Analysis of Indus Signs', Voprosi Epigrafiki 7(1):253-275 (2013), reprinted as Wells & Fuls 2015 Appendix II (DOI 10.2307/j.ctvr43jmf.16), and Fuls 2023, Catalog of Indus Signs, ch. 3 (FULL TEXT, all three identifications).",
+        "evidence": [
+          "specs/025-paper-search-research-check/audit-2026-10-22/raw/findings_W4.md",
+          "specs/025-paper-search-research-check/audit-2026-10-22/correction_proposals.md"
+        ],
+        "evidence_level": "FULL TEXT",
+        "effect": "No claim status, stage, anchor, or score is changed by this note."
+      }
     }
   ],
   "_citation": {

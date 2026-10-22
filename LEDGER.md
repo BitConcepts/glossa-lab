@@ -9551,3 +9551,35 @@ via a small follow-up PR.
 AI disclosure: executed by an AI agent (Muse,
 via Muse) at the direction of Tristen Pierson,
 per constitution sec.VI.
+
+## 2026-10-22 — Spec 025 material audit: fix commission, batch A (proposals P1–P8 notes and metadata; P5)
+
+Owner order 2026-10-22: "fix all of these and make all the
+corrections and get back on track." Executed against
+correction_proposals.md in specs/025-paper-search-research-check/
+audit-2026-10-22/. Dossier framing/priority/scope notes were
+appended as dated audit_note_2026_10_22 entries on the affected
+claims (P1 Farmer framing — contested and unresolved; P6 Parpola
+priority — the fish rebus is Heras's, Parpola 2010 a synthesis;
+P7 Yadav corpus-scope and priority; P8 Hunt/positional prior-art
+and the Fuls source identification of the "Positional Analysis"
+stubs). Literature-registry source fields were corrected in
+place with the old values preserved in an appended
+metadata_correction record (P2 fuls2023 detected_year 2008 →
+2023; P3 the Roif document's detected_doi removed — it is a
+self-published manuscript with no identifier of its own; P4 the
+Fuls chapter's authorship, year, title, and the removed DOI,
+which belongs to Fuls 2015). P5: the DECIPHERMENT_DOSSIER_v1.md
+"Nair (2026) scorecard: 4/4 linguistic-consistent" line was
+corrected in both places it appears to Nair's own framing
+(4/4 against the heraldic baseline, 2/4 against the
+administrative baseline; intermediate conclusion). No claim
+status, stage, anchor, or score was changed anywhere, so H26
+is satisfied by construction — the audit records are the cited
+non-SA evidence — and the H21 foundation check was not
+triggered; its posture is asserted in the fix addendum. P9/P10
+and the preprint version follow in batch C; the tooling proof
+and gap-closure evidence are batch B.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.

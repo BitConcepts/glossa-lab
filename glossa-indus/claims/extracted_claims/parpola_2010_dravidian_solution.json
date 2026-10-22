@@ -63,6 +63,18 @@
         "basis": "reports/phase397_results.json; specs/033-sa-free-language-comparison/outcome.md; frozen contract specs/033-sa-free-language-comparison/freeze.json (digest 412b4805063bbffb3915a834354cb428cc9b10958f614a1680b859005a43b66d), registered OSF https://osf.io/ephf7/",
         "rule": "SPEC033-S6-DD-03-3",
         "note": "The frozen Spec 033 outcome (Phase-397) returned NOT SUPPORTED for the bounded claim: on the strict sign set the no-language baseline (-2.6233) beat the Dravidian assignment (-2.8465), margin -0.2232 against the frozen +0.10 bar, and the Dravidian score lies inside the 999 random assignments' range. Per Spec 033 section 6, the partial support inherited from the Phase-41/43 semantic-anchoring numbers (falsified method, Phase-107) is replaced. Applied 2026-10-13. The previous status is preserved in this field; the full outcome entry is in this record's dated_outcome_entries and in the spec's outcome.md. This field follows the Phase-104 correction shape so a claims regeneration carries the correction over instead of silently restoring the extraction status."
+      },
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "spec025-material-audit-note",
+        "proposal": "P6",
+        "note": "Priority and critique note (spec-025 material audit, 2026-10-22): the fish = mīn rebus is Heras's idea from the 1930s. Fish readings were published by Gurov (who read fish as kay) and the Finnish team in 1965-70, Mahadevan 1970, and Fairservis 1985/1992; Parpola 2010 is a synthesis of that line, not its origin. Mahadevan 2011 concluded the fish = star reading 'had run out of steam and needed reappraisal'. Rival fish values are on record: Gurov kay; Jyothibabu kaḻ; Mukhopadhyay maṇi (the last at abstract level). No decipherment is adjudicated by this note.",
+        "evidence": [
+          "specs/025-paper-search-research-check/audit-2026-10-22/raw/findings_W3.md",
+          "specs/025-paper-search-research-check/audit-2026-10-22/correction_proposals.md"
+        ],
+        "evidence_level": "FULL TEXT",
+        "effect": "No claim status, stage, anchor, or score is changed by this note."
       }
     },
     {
@@ -126,6 +138,18 @@
         "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
         "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
         "explanation_text": "The program's check (Phase-43, test T2.4) asked whether the signs that follow the fish sign behave the way case endings (suffixes) should if the fish sign were a word being read aloud. For Mahadevan sign 72, the answer was yes: in 181 occurrences, the sign that follows it is a text-ending sign 25.9 percent of the time, matching the pattern the test required, and the test marked it supported. But the same test tried six fish candidates, and the family's most frequent member, sign 267 (356 occurrences), failed clearly: its followers end the text only 3.8 percent of the time. The claim as written - the fish sign, as a family, is the primary rebus sign - is therefore only partly supported: one member behaves as the reading predicts, the commonest member does not. A further caution: which drawn sign counts as 'the fish sign' is itself not fully settled across the field's compilations - the program's own cross-compilation study (Phase-125) found the two great sign lists disagree far more than they agree, so a reading tied to one list's numbering carries that uncertainty with it."
+      },
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "spec025-material-audit-note",
+        "proposal": "P6",
+        "note": "Priority and critique note (spec-025 material audit, 2026-10-22): the fish = mīn rebus is Heras's idea from the 1930s. Fish readings were published by Gurov (who read fish as kay) and the Finnish team in 1965-70, Mahadevan 1970, and Fairservis 1985/1992; Parpola 2010 is a synthesis of that line, not its origin. Mahadevan 2011 concluded the fish = star reading 'had run out of steam and needed reappraisal'. Rival fish values are on record: Gurov kay; Jyothibabu kaḻ; Mukhopadhyay maṇi (the last at abstract level). No decipherment is adjudicated by this note.",
+        "evidence": [
+          "specs/025-paper-search-research-check/audit-2026-10-22/raw/findings_W3.md",
+          "specs/025-paper-search-research-check/audit-2026-10-22/correction_proposals.md"
+        ],
+        "evidence_level": "FULL TEXT",
+        "effect": "No claim status, stage, anchor, or score is changed by this note."
       }
     }
   ],

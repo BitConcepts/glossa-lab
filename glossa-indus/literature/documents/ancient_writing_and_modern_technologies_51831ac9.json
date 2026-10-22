@@ -13,10 +13,12 @@
   "ocr_status": "not_needed",
   "duplicate_status": "unique",
   "processing_status": "registered",
-  "detected_title": "Ancient Writing and Modern Technologies",
-  "detected_authors": [],
-  "detected_year": null,
-  "detected_doi": "10.13109/hisp.2015.128.1.42",
+  "detected_title": "Ancient Writing and Modern Technologies \u2013 Structural Analysis of Numerical Indus Inscriptions",
+  "detected_authors": [
+    "Andreas Fuls"
+  ],
+  "detected_year": 2020,
+  "detected_doi": null,
   "detected_abstract": "",
   "claim_extraction_status": "pending",
   "hypothesis_relevance": null,
@@ -24,5 +26,35 @@
     "system": "Glossa-Lab Indus Evidence Graph",
     "intake_version": "1.0",
     "note": "User-provided or acquired document. License status must be verified before publication use."
+  },
+  "metadata_correction": {
+    "date": "2026-10-22",
+    "kind": "spec025-material-audit-metadata-correction",
+    "proposal": "P4",
+    "changes": {
+      "detected_doi": {
+        "was": "10.13109/hisp.2015.128.1.42",
+        "now": null
+      },
+      "detected_year": {
+        "was": null,
+        "now": 2020
+      },
+      "detected_authors": {
+        "was": [],
+        "now": [
+          "Andreas Fuls"
+        ]
+      },
+      "detected_title": {
+        "was": "Ancient Writing and Modern Technologies",
+        "now": "Ancient Writing and Modern Technologies \u2013 Structural Analysis of Numerical Indus Inscriptions"
+      }
+    },
+    "basis": "The document is Andreas Fuls's chapter in Studies on Indus Script (Conference on Indus Script, Mohenjodaro 2020; National Fund for Mohenjodaro, Government of Sindh), pp. 57-88 plus the sign-list appendix (FULL TEXT - the held PDF's own front matter). The removed DOI belongs to Fuls 2015, Historical Linguistics 128(1):42-58 (Crossref-verified); the chapter itself has no DOI. Spec 065's recovery act already resolved this document's identity in the program's records. Evidence: audit W5.",
+    "evidence": [
+      "specs/025-paper-search-research-check/audit-2026-10-22/raw/findings_W5_part2.md",
+      "specs/025-paper-search-research-check/audit-2026-10-22/correction_proposals.md"
+    ]
   }
 }

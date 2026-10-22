@@ -413,9 +413,14 @@ publication record resolved), and Holdat (unverifiable).
 
 - **Landed:** preprint v5 citation corrections (7 items,
   `corrections_log.md` Batch 1), the audit records themselves
-  (Batch 2), and two ledger entries. The audit commit is on this
-  branch; PR/CI status is recorded in the ledger addendum filed
-  with the report's final version.
+  (Batch 2), and two ledger entries. The audit landed via PR #331
+  (commits 5d436362 + 0abf27f3), merged to main as 814a5dc2 with
+  all seven CI checks green on the final head (backend pytest,
+  frontend Playwright, evidence-graph smoke, Indus public
+  validation, shell wrappers on three OSes — the shell-wrappers
+  job first caught a lint error in the spec's own stage code,
+  fixed in 0abf27f3). The merge record is the ledger addendum of
+  2026-10-22 filed with this report's final version.
 - **Gate-pending proposals P1–P10** (`correction_proposals.md`):
   Farmer framing note; fuls2023 year; Roif source description;
   ancient_writing source fields; the DECIPHERMENT_DOSSIER "4/4"

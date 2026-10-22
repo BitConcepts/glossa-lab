@@ -940,3 +940,57 @@ disposition, not the run's history.
   below after this act's record PR merges,
   in the §8.1 pattern — this section is
   completed by append, not edited.
+
+### 9.8 Landing record (appended 2026-10-22, after merge)
+
+- Record PR: #329 (branch
+  spec-065-s1-recovery), merged as commit
+  `722ff21d9da7137996f432fe69f8119cc0f3b74b`.
+- CI of record: run 39769392160 on the PR
+  head
+  `2a393c1feaa342be8567ac7999173f88aa6f2c93`
+  — all seven jobs success by job conclusion
+  (Backend tests (pytest), Evidence Graph
+  script smoke tests, Indus public
+  validation checks, Frontend tests
+  (Playwright), Shell wrappers ubuntu-latest
+  / macos-latest / windows-latest). Main had
+  not advanced beyond the act's base during
+  the PR's life, so no merge-in was needed.
+- Act digests re-verified on main at the
+  merge commit by two routes (git blobs at
+  `722ff21d…` and the GitHub git-blob API):
+  extraction artifact `extraction-S1.txt`
+  `e5bc973d…`; the claims file `861b1468…`,
+  carrying the `disposition_spec065_recovery`
+  entry (form retired) above the unedited
+  `disposition_spec065` (superseded-not-
+  retired) and `disposition` (superseded)
+  entries, the canonical record's
+  claim_status/stage still untested/created;
+  `intake-S1.json`'s pin (`51831ac9…`,
+  3,565,316 bytes); and the committed
+  foundation report (40/0/8; store
+  `291eb5e9…`; anchors `df0cf620…`). The
+  root LEDGER entry for this act is present.
+- Foundation check (H21) at the merge
+  commit: re-run on the landing checkout at
+  `722ff21d9da7137996f432fe69f8119cc0f3b74b`
+  with the two Holdat CSVs supplied from the
+  main checkout's gitignored downloads
+  (never committed). Result: 40 checks
+  passed, 0 failed, 8 warnings — the
+  standing figure, as measured at the act
+  and again at the merge commit.
+- Terminal outcome of the completed Spec
+  065 accounting, restated: S-1 HEADING
+  ABSENT FROM DOCUMENT on the intake-pinned
+  document (SHA-256 `51831ac9…`; two
+  occurrences, neither in heading form);
+  S-5 HEADING ABSENT FROM DOCUMENT on the
+  acquired file (SHA-256 `77f10f32…`).
+  Headline class A — BOTH SOURCES RESOLVED.
+  Disposition: the heading record stands
+  retired. This recovery act searched one
+  document for a heading. It checked
+  nothing the document states.

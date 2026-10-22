@@ -109,17 +109,19 @@
 
 ## Execution — gated on the freeze and a separate execution order
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Step 0, part 1** (spec §4 gates
+      **Record:** Done 2026-10-22: `backend/scripts/phase430_yadav_zipf_controls.py`, `backend/glossa_lab/experiment_graph_phase430.py`, registered in `experiment_graph.py` and verified by import (node `IndusPhase430YadavZipfControls` present in ATOMIC_NODES) before the run.
+- [x] **E2 — Step 0, part 1** (spec §4 gates
       0.1–0.2): input integrity against the
       freeze pins, with the intake record
       asserted as standing; estimator self-test
       on the planted-parameter synthetic
       distribution (failure stops the run as
       INVALID before any corpus is touched).
-- [ ] **E3 — Step 0, part 2** (gates 0.3–0.5):
+      **Record:** Done 2026-10-22: gate 0.1 PASS (every §3 pin recomputed, the claim file at its DD-068-8 re-pinned hash; the intake record asserted standing); gate 0.2 PASS by Phase-413's own functions (planted α 1.20 / q 2.0 recovered as 1.256 / 2.72, within tolerances).
+- [x] **E3 — Step 0, part 2** (gates 0.3–0.5):
       Shakti intake gates asserted against the
       intake record — S1, both SHA-256 pins
       recompute; S2, the audit census
@@ -136,7 +138,8 @@
       limb B, the population stated as the
       full ICIT sign inventory of the
       restricted corpus.
-- [ ] **E4 — Step 0, part 3** (gates 0.6–0.7):
+      **Record:** Done 2026-10-22: gates 0.3 and 0.4 PASS (both pins recompute; the audit census reproduces exactly); the restricted census measured (primary 3,045 analyzable / 11,805 tokens / 557 signs; sensitivity 5,131 / 17,216 / 707); gate 0.5 PASS under limb B (the full ICIT sign inventory stated; no mapping act).
+- [x] **E4 — Step 0, part 3** (gates 0.6–0.7):
       control set entered whole as cited data
       and frozen — N1, N2, N3's process, P1 —
       before any fit exists (failure closes
@@ -144,7 +147,8 @@
       applied, measured on the restricted set
       (a TOO THIN closure ends the execution
       here, with the census as its finding).
-- [ ] **E5 — Primary fits** (spec §5): every
+      **Record:** Done 2026-10-22: gate 0.6 PASS (N1, N2, P1 entered whole as cited data from the committed tables in the spec's `data/` directory and frozen before any fit; N3 under its frozen process); gate 0.7 PASS (557 types, 11,805 tokens against floors 50 / 2,000).
+- [x] **E5 — Primary fits** (spec §5): every
       system under the one estimator frozen by
       Spec 053; the §5.3 comparison rule and
       the §5.4 positive-control condition
@@ -153,7 +157,8 @@
       reported, NEAR MISS controls named, N3's
       replicate distribution and as-well share
       stated.
-- [ ] **E6 — Sensitivities** (spec §6): the
+      **Record:** Done 2026-10-22: Indus primary α 2.004, NRMSE_log 0.1584; N1 0.5335; N2 0.1839; N3 median 0.2405 (as-well share 0.00); P1 0.9229. No control fits as well (the falsifier does not fire); no NEAR MISS (closest gap N2 +0.0255, above the band); the positive-control condition FAILS (P1 worst of the five), so the headline is COMPARISON UNINFORMATIVE.
+- [x] **E6 — Sensitivities** (spec §6): the
       grade sensitivity fit (documented +
       corroborated, under the same limb) in
       full beside the primary, both orderings
@@ -166,7 +171,8 @@
       Phase-43 juxtaposition. Rows graded
       undocumented-uncorroborated enter no
       fit, count, statistic, or argument.
-- [ ] **E7 — Outcome:** the §10 record —
+      **Record:** Done 2026-10-22: sensitivity fit in full beside the primary (α 1.96, NRMSE_log 0.1544) with the same verdict-relevant ordering — not grade-sensitive; subsampling tables for both populations in the machine record and the outcome; no §6.3 fit under limb B; the 405 uncorroborated rows entered nothing.
+- [x] **E7 — Outcome:** the §10 record —
       results JSON and report under the
       headline rules (the P-F1 S3 lineage
       statement verbatim first in the headline
@@ -184,7 +190,7 @@
       LEDGER entry; anchors asserted
       byte-identical before and after;
       foundation check reported as measured.
-
+      **Record:** Done 2026-10-22: `reports/phase430_results.json` + `reports/phase430_report.md` under the §10 headline rules; `outcome.md` in this directory; per the §7 COMPARISON UNINFORMATIVE wording the claim stands exactly as recorded with NO strength label added (the dated append for this outcome is the outcome record itself); LEDGER entry written; anchors byte-identical before and after; foundation check as measured: 40 passed / 0 failed / 8 warnings.
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark,

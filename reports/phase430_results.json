@@ -1,0 +1,1434 @@
+{
+  "act": "step 0 (spec section 4 gates, in frozen order), then the fits, the comparison, and the sensitivities of spec sections 5-6",
+  "anchors": {
+    "byte_identical": true,
+    "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+    "sha256_after": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+    "sha256_before": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569"
+  },
+  "base_commit": "9bdb21d0e32a096abd87525a2dc159b7685dfd79",
+  "census": {
+    "audit_census_expected": {
+      "analyzable": 5536,
+      "analyzable_with_cisi": 4904,
+      "distinct_signs": 713,
+      "grades": {
+        "documented-lineage": 3212,
+        "undocumented-corroborated": 2087,
+        "undocumented-uncorroborated": 405
+      },
+      "rows": 5704,
+      "sites": 77,
+      "tokens": 18065
+    },
+    "audit_census_recomputed": {
+      "analyzable": 5536,
+      "analyzable_with_cisi": 4904,
+      "distinct_signs": 713,
+      "grades": {
+        "documented-lineage": 3212,
+        "undocumented-corroborated": 2087,
+        "undocumented-uncorroborated": 405
+      },
+      "rows": 5704,
+      "sites": 77,
+      "tokens": 18065
+    },
+    "restricted_census": {
+      "primary": {
+        "analyzable_rows": 3045,
+        "distinct_signs": 557,
+        "inscriptions": 3045,
+        "rows": 3212,
+        "tokens": 11805
+      },
+      "sensitivity": {
+        "analyzable_rows": 5131,
+        "distinct_signs": 707,
+        "inscriptions": 5131,
+        "rows": 5299,
+        "tokens": 17216
+      }
+    }
+  },
+  "claim_id": "yadav_2009_arxiv_manual_001",
+  "closure": null,
+  "comparison": {
+    "errors": {
+      "Indus": 0.15838349467526106,
+      "N1": 0.5335464304420663,
+      "N2": 0.18389484681643023,
+      "N3": 0.2405081462510068,
+      "P1": 0.9229480637773567
+    },
+    "n3_as_well_share": 0.0,
+    "primary": {
+      "as_well": {
+        "N1": false,
+        "N2": false,
+        "N3": false
+      },
+      "falsifier_fires": false,
+      "gaps": {
+        "N1": 0.37516293576680526,
+        "N2": 0.025511352141169175,
+        "N3": 0.08212465157574575,
+        "P1": 0.7645645691020957
+      },
+      "near_miss": [],
+      "positive_control_passes": false
+    }
+  },
+  "control_set": {
+    "N1": {
+      "citation": "Token frequencies of numerical signs in the proto-cuneiform administrative corpus (Uruk IV and Uruk III periods), from the published sign/n-gram frequency dataset of the SFU NatLang pe-pc-datasets (L. Born; CDLI proto-cuneiform corpus, September 2019 snapshot; repository commit d1a51170, 2019-09-11): the ordered unigram layer, compounds split, variants merged, both periods combined; a published token k(Nxx) contributes k occurrences of sign Nxx; tenû forms (@T) entered as their own published types; the two indeterminate-multiplicity groups N(N01) and N(N57) (one group each) are excluded because counting them as 1 would fabricate a count. Bibliographic pin of record: Nissen, Damerow & Englund, Archaic Bookkeeping (1993) and the published archaic sign counts it reports (DD-053-13). Caveat of record: this published derivation's numerical layer is thin relative to the full archaic corpus — the table is the whole of what this source reports, entered as it stands, with no floor applied.",
+      "system": "Mesopotamian numerical signs",
+      "table_file": "data/n1_mesopotamian_numerical_signs.csv",
+      "table_sha256": "b1ad3f54e30f29072fa683961c25d8b81a2040bc8cfa066071b3372cdace50e7",
+      "tokens": 1981,
+      "types": 12
+    },
+    "N2": {
+      "blazons_file": "data/n2_dering_blazons.csv",
+      "blazons_sha256": "7e00bae5c24152e0831281bec7f0982339900c93c18663ef5ca25fb0b899444c",
+      "builder": "data/build_n2_charges.py",
+      "citation": "Frequencies of charges across the Dering Roll (c. 1270–1280, British Library; the oldest extant English roll of arms, 324 coats of knights owing feudal service to the Constable of Dover Castle), blazons as transcribed by Brian Timms (Heraldry site, archived) in the edited extract at bsswebsite.me.uk/History/Dering/dering-roll.html (snapshot SHA-256 4cb6b0527d2fa482a092a848c0b93e88e0ae6ad3900f20a07bd6e982ce054739); counting unit one charge occurrence on one shield, under the frozen counting rules stated in the builder; every shield's extraction read against its blazon at the table's freeze (324 of 324); 35 shields bear no charge (field only) and are named in the extraction record.",
+      "extraction_file": "data/n2_dering_extraction.csv",
+      "extraction_sha256": "ae284aac52975927f48eb9a4fdd10f1d34a26ced2108f073e50c79c655121007",
+      "system": "Heraldic charges (Dering Roll)",
+      "table_file": "data/n2_dering_charges.csv",
+      "table_sha256": "0cad73efa69f9eede1590b0e1d0e2324540b3cdc3aadcdb7b76337106f54c937",
+      "tokens": 825,
+      "types": 57
+    },
+    "N3": {
+      "generation": "Yule–Simon process, innovation probability rho = 0.10, seed 20261021, one generator producing 99 replicates in sequence, each run to exactly the Indus primary fit's token total N (gate 0.7's count); procedure stated in this script's docstring (DD-053-6, confirmed DD-053-16).",
+      "replicates": 99,
+      "system": "Synthetic emblem inventory (Yule–Simon)"
+    },
+    "P1": {
+      "citation": "Syllabic sign frequencies counted from the DAMOS (Database of Mycenaean at Oslo) transliterations as carried in the mwenge/linearb.xyz corpus file LinearBInscriptions.js (repository commit 84e0b00e; transcriptions and metadata © DAMOS, CIPEM transliteration conventions): 5,889 inscription records; each transliterated word is split on '-'; a token counts as a syllabogram iff it is one of the 72 attested transliterated syllabary values or an untransliterated *NN sign with NN < 100 (Bennett numbering; 17 such types attested). Excluded: ideograms (including *NN with NN >= 100 and *NNN-VAS compounds), numerals, and editorial tokens.",
+      "system": "Linear B syllabic signs",
+      "table_file": "data/p1_linearb_syllabograms.csv",
+      "table_sha256": "63221d66722acf9646b2f1712918bc228198afb051ffcf957bcbca442ba21535",
+      "tokens": 47292,
+      "types": 89
+    }
+  },
+  "estimator_cross_check": {
+    "all_agree": true,
+    "checks": [
+      {
+        "N": 11805,
+        "V": 557,
+        "agree": true,
+        "alpha_fast": 2.004,
+        "alpha_ref": 2.004,
+        "nrmse_fast": 0.15838349467526106,
+        "nrmse_ref": 0.15838349467526106,
+        "q_fast": 19.9,
+        "q_ref": 19.9
+      },
+      {
+        "N": 17216,
+        "V": 707,
+        "agree": true,
+        "alpha_fast": 1.96,
+        "alpha_ref": 1.96,
+        "nrmse_fast": 0.15438467620813956,
+        "nrmse_ref": 0.15438467620813956,
+        "q_fast": 20.0,
+        "q_ref": 20.0
+      },
+      {
+        "N": 1981,
+        "V": 12,
+        "agree": true,
+        "alpha_fast": 3.0,
+        "alpha_ref": 3.0,
+        "nrmse_fast": 0.5335464304420663,
+        "nrmse_ref": 0.5335464304420663,
+        "q_fast": 0.66,
+        "q_ref": 0.66
+      },
+      {
+        "N": 825,
+        "V": 57,
+        "agree": true,
+        "alpha_fast": 2.878,
+        "alpha_ref": 2.878,
+        "nrmse_fast": 0.18389484681643023,
+        "nrmse_ref": 0.18389484681643023,
+        "q_fast": 20.0,
+        "q_ref": 20.0
+      },
+      {
+        "N": 47292,
+        "V": 89,
+        "agree": true,
+        "alpha_fast": 3.0,
+        "alpha_ref": 3.0,
+        "nrmse_fast": 0.9229480637773567,
+        "nrmse_ref": 0.9229480637773567,
+        "q_fast": 17.45,
+        "q_ref": 17.45
+      }
+    ],
+    "implementation_of_record": "backend/scripts/phase413_yadav_zipf_controls.py fit_zipf_mandelbrot",
+    "systems_checked": 5
+  },
+  "estimator_self_test": {
+    "alpha_error": 0.05600000000000005,
+    "drawn_counts": {
+      "max": 5549,
+      "min": 24,
+      "sum": 50000,
+      "zero_types": 0
+    },
+    "fit": {
+      "N": 50000,
+      "NRMSE_log": 0.05308229284140585,
+      "R2_log": 0.9975163418875004,
+      "SSE": 0.5635459626601533,
+      "V": 200,
+      "alpha": 1.256,
+      "q": 2.72
+    },
+    "generating_parameters": {
+      "N": 50000,
+      "V": 200,
+      "alpha": 1.2,
+      "q": 2.0,
+      "seed": 20261021
+    },
+    "procedure": "p_r proportional to 1/(r+q)^alpha for r = 1..V, normalised; counts drawn as one multinomial sample of N tokens from p with numpy's default generator seeded 20261021; drawn counts ranked descending and fitted by the one estimator",
+    "q_error": 0.7200000000000002,
+    "recovered_within_tolerance": true,
+    "tolerances": {
+      "alpha": 0.1,
+      "q": 1.0
+    }
+  },
+  "execution_date": "2026-10-22",
+  "fence": "This result is a strength label for a recorded curve fit, measured as a new baseline on the Shakti corpus. It is not evidence that the script encodes language, it changes no verdict, and it neither confirms nor corrects any Phase-43 quantity.",
+  "fits": {
+    "N1": {
+      "N": 1981,
+      "NRMSE_log": 0.5335464304420663,
+      "R2_log": 0.9312489859622569,
+      "SSE": 3.416061521249648,
+      "V": 12,
+      "alpha": 3.0,
+      "q": 0.66
+    },
+    "N2": {
+      "N": 825,
+      "NRMSE_log": 0.18389484681643023,
+      "R2_log": 0.9703838628221342,
+      "SSE": 1.9275869370813854,
+      "V": 57,
+      "alpha": 2.878,
+      "q": 20.0
+    },
+    "N3_median": {
+      "N": 11805,
+      "NRMSE_log": 0.2405081462510068,
+      "V": 1181.0,
+      "alpha": 1.16,
+      "q": 0.0
+    },
+    "N3_replicates": [
+      {
+        "N": 11805,
+        "NRMSE_log": 0.20137266764308112,
+        "R2_log": 0.9643850502927402,
+        "SSE": 50.76979099466089,
+        "V": 1252,
+        "alpha": 1.138,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2633063776544219,
+        "R2_log": 0.9317414130537238,
+        "SSE": 77.78853883213918,
+        "V": 1122,
+        "alpha": 1.182,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.22763819221573556,
+        "R2_log": 0.9486146771733021,
+        "SSE": 65.18848636650219,
+        "V": 1258,
+        "alpha": 1.14,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2561366930115368,
+        "R2_log": 0.9345396846594118,
+        "SSE": 75.25008831639852,
+        "V": 1147,
+        "alpha": 1.172,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.26588708408421574,
+        "R2_log": 0.9276686274276335,
+        "SSE": 85.40069731123063,
+        "V": 1208,
+        "alpha": 1.159,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.21366267008481166,
+        "R2_log": 0.9590296101762545,
+        "SSE": 53.68644222721878,
+        "V": 1176,
+        "alpha": 1.16,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2120309045251098,
+        "R2_log": 0.9603225668052251,
+        "SSE": 51.475884622427984,
+        "V": 1145,
+        "alpha": 1.169,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.22381823793959157,
+        "R2_log": 0.9518592196298703,
+        "SSE": 61.96702469573254,
+        "V": 1237,
+        "alpha": 1.144,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.18839892003790856,
+        "R2_log": 0.9685702342277783,
+        "SSE": 42.94792521645482,
+        "V": 1210,
+        "alpha": 1.138,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2230224481666127,
+        "R2_log": 0.9527312630420134,
+        "SSE": 61.02976819790354,
+        "V": 1227,
+        "alpha": 1.148,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2849418757769716,
+        "R2_log": 0.9144161802972011,
+        "SSE": 93.1270778392801,
+        "V": 1147,
+        "alpha": 1.177,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.24369812745577732,
+        "R2_log": 0.9428664314476014,
+        "SSE": 70.67264501728822,
+        "V": 1190,
+        "alpha": 1.164,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.24328577548766311,
+        "R2_log": 0.9408551590507076,
+        "SSE": 71.49906601399742,
+        "V": 1208,
+        "alpha": 1.155,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2410450790251578,
+        "R2_log": 0.9425907689368209,
+        "SSE": 68.61932427437083,
+        "V": 1181,
+        "alpha": 1.159,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2430965414989998,
+        "R2_log": 0.9431981385053396,
+        "SSE": 68.13760554755751,
+        "V": 1153,
+        "alpha": 1.17,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.23757279438579224,
+        "R2_log": 0.9459347271054535,
+        "SSE": 65.75357001659911,
+        "V": 1165,
+        "alpha": 1.166,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.25590395509296593,
+        "R2_log": 0.9350083414533797,
+        "SSE": 76.48862238323613,
+        "V": 1168,
+        "alpha": 1.171,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.25496723244313535,
+        "R2_log": 0.935152918134945,
+        "SSE": 76.77479004087967,
+        "V": 1181,
+        "alpha": 1.164,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.29533440792250154,
+        "R2_log": 0.9061549670829632,
+        "SSE": 102.31188986594219,
+        "V": 1173,
+        "alpha": 1.176,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2455281700851108,
+        "R2_log": 0.9380461760577727,
+        "SSE": 73.3054440832972,
+        "V": 1216,
+        "alpha": 1.151,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.24962071158622082,
+        "R2_log": 0.9396222302492848,
+        "SSE": 71.40783260212167,
+        "V": 1146,
+        "alpha": 1.172,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2405081462510068,
+        "R2_log": 0.9424607495056496,
+        "SSE": 70.28066462191126,
+        "V": 1215,
+        "alpha": 1.152,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.22804791671468172,
+        "R2_log": 0.9505673290006094,
+        "SSE": 58.61059556228052,
+        "V": 1127,
+        "alpha": 1.163,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.22713210568342743,
+        "R2_log": 0.9497054620495411,
+        "SSE": 63.8671738690483,
+        "V": 1238,
+        "alpha": 1.147,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2867676403675291,
+        "R2_log": 0.9119895716836984,
+        "SSE": 96.4624521261797,
+        "V": 1173,
+        "alpha": 1.171,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.25899497940186444,
+        "R2_log": 0.9319904405291701,
+        "SSE": 79.82329523289292,
+        "V": 1190,
+        "alpha": 1.162,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2658019980879891,
+        "R2_log": 0.925103214355438,
+        "SSE": 87.96012422352136,
+        "V": 1245,
+        "alpha": 1.152,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.24704181347549434,
+        "R2_log": 0.9374995066490437,
+        "SSE": 73.72382638715521,
+        "V": 1208,
+        "alpha": 1.153,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.254802451183984,
+        "R2_log": 0.9351117387427987,
+        "SSE": 77.64944979872237,
+        "V": 1196,
+        "alpha": 1.163,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.25897696665386416,
+        "R2_log": 0.936474437871697,
+        "SSE": 74.71494315256163,
+        "V": 1114,
+        "alpha": 1.187,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.23006119559498203,
+        "R2_log": 0.9483774423354163,
+        "SSE": 66.58361737798947,
+        "V": 1258,
+        "alpha": 1.141,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.23657971168642503,
+        "R2_log": 0.946115419546837,
+        "SSE": 67.94753141770123,
+        "V": 1214,
+        "alpha": 1.156,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2212730643485489,
+        "R2_log": 0.9541718001428064,
+        "SSE": 57.18734619923817,
+        "V": 1168,
+        "alpha": 1.155,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.25459917594752046,
+        "R2_log": 0.9351367748692878,
+        "SSE": 75.25687959645468,
+        "V": 1161,
+        "alpha": 1.166,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.27031801603619054,
+        "R2_log": 0.9230255378795241,
+        "SSE": 89.07456051857172,
+        "V": 1219,
+        "alpha": 1.16,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2042331868990259,
+        "R2_log": 0.9618379091350794,
+        "SSE": 48.551830550405356,
+        "V": 1164,
+        "alpha": 1.155,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.23208750298032177,
+        "R2_log": 0.950431016759736,
+        "SSE": 61.5672481323095,
+        "V": 1143,
+        "alpha": 1.171,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.22294179276299614,
+        "R2_log": 0.9541683599045554,
+        "SSE": 56.214141588188326,
+        "V": 1131,
+        "alpha": 1.17,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2619758171533629,
+        "R2_log": 0.9300331060380013,
+        "SSE": 79.68097270565295,
+        "V": 1161,
+        "alpha": 1.17,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2697515079056378,
+        "R2_log": 0.9222816630337701,
+        "SSE": 87.75564647694262,
+        "V": 1206,
+        "alpha": 1.154,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.24598541547290415,
+        "R2_log": 0.9403354516122705,
+        "SSE": 71.52143070719593,
+        "V": 1182,
+        "alpha": 1.164,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.19986985764590462,
+        "R2_log": 0.9624220557196344,
+        "SSE": 50.49422143417825,
+        "V": 1264,
+        "alpha": 1.13,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.20925897966839277,
+        "R2_log": 0.9609841240476859,
+        "SSE": 51.189715748500625,
+        "V": 1169,
+        "alpha": 1.159,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.22660278354159116,
+        "R2_log": 0.9533513283502223,
+        "SSE": 58.53765652002883,
+        "V": 1140,
+        "alpha": 1.171,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.22605437928843225,
+        "R2_log": 0.9522993811900369,
+        "SSE": 58.97007208438206,
+        "V": 1154,
+        "alpha": 1.167,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2090304264219698,
+        "R2_log": 0.9610221879480816,
+        "SSE": 51.42750746326718,
+        "V": 1177,
+        "alpha": 1.157,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2739006100403434,
+        "R2_log": 0.9210231923290358,
+        "SSE": 88.75048676549868,
+        "V": 1183,
+        "alpha": 1.162,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.22307838802154073,
+        "R2_log": 0.9547482565592147,
+        "SSE": 55.58635136495691,
+        "V": 1117,
+        "alpha": 1.173,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.24706107586868004,
+        "R2_log": 0.9385407931716401,
+        "SSE": 73.2470102512676,
+        "V": 1200,
+        "alpha": 1.159,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2884136801428386,
+        "R2_log": 0.9108745812752284,
+        "SSE": 98.40483940705263,
+        "V": 1183,
+        "alpha": 1.164,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.24407203578114614,
+        "R2_log": 0.9427740623198412,
+        "SSE": 67.91112086140251,
+        "V": 1140,
+        "alpha": 1.171,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.25682827219593185,
+        "R2_log": 0.9359493533251789,
+        "SSE": 73.28240591445305,
+        "V": 1111,
+        "alpha": 1.184,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.27435962155531396,
+        "R2_log": 0.9199220656487052,
+        "SSE": 91.15584754930983,
+        "V": 1211,
+        "alpha": 1.16,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2302580562307232,
+        "R2_log": 0.9482916893452513,
+        "SSE": 63.569508178521914,
+        "V": 1199,
+        "alpha": 1.154,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.21924607166242138,
+        "R2_log": 0.9549855337134446,
+        "SSE": 58.211365166617774,
+        "V": 1211,
+        "alpha": 1.15,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2604088394200101,
+        "R2_log": 0.9309793258089871,
+        "SSE": 80.01906110473038,
+        "V": 1180,
+        "alpha": 1.161,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.23360053626418073,
+        "R2_log": 0.9483943212818691,
+        "SSE": 65.81046791475285,
+        "V": 1206,
+        "alpha": 1.156,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.22774126913365994,
+        "R2_log": 0.9509205315414925,
+        "SSE": 61.56504368626622,
+        "V": 1187,
+        "alpha": 1.16,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2610447104404157,
+        "R2_log": 0.9305502722554478,
+        "SSE": 79.93331181578372,
+        "V": 1173,
+        "alpha": 1.166,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.27558885831617713,
+        "R2_log": 0.9210997662097181,
+        "SSE": 89.62007821705646,
+        "V": 1180,
+        "alpha": 1.171,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.24198993361083154,
+        "R2_log": 0.9427925329083626,
+        "SSE": 70.03671705089369,
+        "V": 1196,
+        "alpha": 1.157,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.28976321036103064,
+        "R2_log": 0.9084720142097104,
+        "SSE": 100.25148538600467,
+        "V": 1194,
+        "alpha": 1.161,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.26949431947020636,
+        "R2_log": 0.9259497589800594,
+        "SSE": 86.06321804865091,
+        "V": 1185,
+        "alpha": 1.166,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.25585338880387903,
+        "R2_log": 0.9340389468867231,
+        "SSE": 76.91662396085395,
+        "V": 1175,
+        "alpha": 1.163,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.23321241201739348,
+        "R2_log": 0.9485164776514808,
+        "SSE": 62.60062151593503,
+        "V": 1151,
+        "alpha": 1.167,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.21948959132290136,
+        "R2_log": 0.9573752693632882,
+        "SSE": 56.46189777933847,
+        "V": 1172,
+        "alpha": 1.159,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.22926055367858833,
+        "R2_log": 0.9481742500574502,
+        "SSE": 61.07518651164097,
+        "V": 1162,
+        "alpha": 1.146,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.28764358136743856,
+        "R2_log": 0.9143728402691496,
+        "SSE": 94.07404959844465,
+        "V": 1137,
+        "alpha": 1.18,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.22687198361915248,
+        "R2_log": 0.9500942606873065,
+        "SSE": 61.09595468118003,
+        "V": 1187,
+        "alpha": 1.153,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2682973977796472,
+        "R2_log": 0.926982775437757,
+        "SSE": 83.28490215921707,
+        "V": 1157,
+        "alpha": 1.161,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.23173719541456236,
+        "R2_log": 0.9490892996153073,
+        "SSE": 65.08697881919176,
+        "V": 1212,
+        "alpha": 1.153,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.25521663982833803,
+        "R2_log": 0.9373310590343388,
+        "SSE": 74.31964343285034,
+        "V": 1141,
+        "alpha": 1.173,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.27192399606332734,
+        "R2_log": 0.922474823551077,
+        "SSE": 86.21714113446653,
+        "V": 1166,
+        "alpha": 1.169,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2561194615234494,
+        "R2_log": 0.9330918168201404,
+        "SSE": 78.716614285274,
+        "V": 1200,
+        "alpha": 1.157,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.22110660001163687,
+        "R2_log": 0.9556107556356993,
+        "SSE": 56.22134785401188,
+        "V": 1150,
+        "alpha": 1.165,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2476164658802997,
+        "R2_log": 0.9395180002996153,
+        "SSE": 72.7796161257839,
+        "V": 1187,
+        "alpha": 1.157,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.22758135369991275,
+        "R2_log": 0.9520628999750262,
+        "SSE": 59.45867688956374,
+        "V": 1148,
+        "alpha": 1.168,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2362273495425779,
+        "R2_log": 0.9461970394564728,
+        "SSE": 66.57340928159016,
+        "V": 1193,
+        "alpha": 1.16,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2615681893958243,
+        "R2_log": 0.9306180774125183,
+        "SSE": 82.30675499768321,
+        "V": 1203,
+        "alpha": 1.16,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.24474171967871547,
+        "R2_log": 0.9397402161043541,
+        "SSE": 71.0995305999871,
+        "V": 1187,
+        "alpha": 1.158,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.21280546700980177,
+        "R2_log": 0.9577953393543843,
+        "SSE": 53.8905384792192,
+        "V": 1190,
+        "alpha": 1.148,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2268324729680847,
+        "R2_log": 0.9524974558872368,
+        "SSE": 60.97177038948801,
+        "V": 1185,
+        "alpha": 1.161,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.20368601085460755,
+        "R2_log": 0.9625835206147177,
+        "SSE": 50.57386105077538,
+        "V": 1219,
+        "alpha": 1.141,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.22305407365317195,
+        "R2_log": 0.9567917779263786,
+        "SSE": 55.176209828561596,
+        "V": 1109,
+        "alpha": 1.18,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.24180563578189498,
+        "R2_log": 0.9452812572753567,
+        "SSE": 68.1759797682036,
+        "V": 1166,
+        "alpha": 1.168,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.22228219906058974,
+        "R2_log": 0.9545611776158641,
+        "SSE": 56.969010550151026,
+        "V": 1153,
+        "alpha": 1.162,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.22407863032642036,
+        "R2_log": 0.9513955830967735,
+        "SSE": 61.50875989698158,
+        "V": 1225,
+        "alpha": 1.148,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.23955683414478748,
+        "R2_log": 0.9445806605035042,
+        "SSE": 68.17632242114217,
+        "V": 1188,
+        "alpha": 1.16,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.30902170784297156,
+        "R2_log": 0.8952064583575886,
+        "SSE": 110.5825336332604,
+        "V": 1158,
+        "alpha": 1.175,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.23050229139293604,
+        "R2_log": 0.9502121135002347,
+        "SSE": 62.58867886545013,
+        "V": 1178,
+        "alpha": 1.162,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2341854614933007,
+        "R2_log": 0.9471170244846353,
+        "SSE": 67.6760526825405,
+        "V": 1234,
+        "alpha": 1.148,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.19945678263945002,
+        "R2_log": 0.96567446160684,
+        "SSE": 45.989157410858226,
+        "V": 1156,
+        "alpha": 1.159,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.22135813644547922,
+        "R2_log": 0.9532768312276076,
+        "SSE": 58.505312937314784,
+        "V": 1194,
+        "alpha": 1.151,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.23979418187216991,
+        "R2_log": 0.9425048154162735,
+        "SSE": 68.88649709237248,
+        "V": 1198,
+        "alpha": 1.151,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2563527367515734,
+        "R2_log": 0.9340851487801755,
+        "SSE": 77.02000245010518,
+        "V": 1172,
+        "alpha": 1.166,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.18978181675137448,
+        "R2_log": 0.9684779211068233,
+        "SSE": 41.023520147206156,
+        "V": 1139,
+        "alpha": 1.158,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2124045925058905,
+        "R2_log": 0.9604195745203868,
+        "SSE": 50.5295962277046,
+        "V": 1120,
+        "alpha": 1.174,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.2350478615520531,
+        "R2_log": 0.9453638822267546,
+        "SSE": 65.08155172538748,
+        "V": 1178,
+        "alpha": 1.154,
+        "q": 0.0
+      },
+      {
+        "N": 11805,
+        "NRMSE_log": 0.255340665337947,
+        "R2_log": 0.9364133442552647,
+        "SSE": 78.17342759489532,
+        "V": 1199,
+        "alpha": 1.16,
+        "q": 0.0
+      }
+    ],
+    "P1": {
+      "N": 47292,
+      "NRMSE_log": 0.9229480637773567,
+      "R2_log": 0.7657540677169713,
+      "SSE": 75.81314843030309,
+      "V": 89,
+      "alpha": 3.0,
+      "q": 17.45
+    },
+    "indus_primary": {
+      "N": 11805,
+      "NRMSE_log": 0.15838349467526106,
+      "R2_log": 0.9892023782316924,
+      "SSE": 13.972529581750482,
+      "V": 557,
+      "alpha": 2.004,
+      "q": 19.9
+    },
+    "indus_sensitivity": {
+      "N": 17216,
+      "NRMSE_log": 0.15438467620813956,
+      "R2_log": 0.99007398969771,
+      "SSE": 16.85108217125971,
+      "V": 707,
+      "alpha": 1.96,
+      "q": 20.0
+    }
+  },
+  "freeze_digest": "ab890859c0ec313b4e2cdf89a9dddd885fae505e888c5f8c9ef2ba68c5f3c62d",
+  "gates": [
+    {
+      "anchors_census": {
+        "anchors": 287,
+        "strict_sa_independent": 94
+      },
+      "freeze068_digest": {
+        "match": true,
+        "observed": "ab890859c0ec313b4e2cdf89a9dddd885fae505e888c5f8c9ef2ba68c5f3c62d",
+        "pin": "ab890859c0ec313b4e2cdf89a9dddd885fae505e888c5f8c9ef2ba68c5f3c62d"
+      },
+      "gate": "0.1",
+      "inputs": [
+        {
+          "file": "glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json",
+          "match": true,
+          "observed": "ec31778a75cbc56f27f385ed7da800edb874a8f600cbe102f46087a8159d6239",
+          "pin": "ec31778a75cbc56f27f385ed7da800edb874a8f600cbe102f46087a8159d6239",
+          "present": true
+        },
+        {
+          "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+          "match": true,
+          "observed": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+          "pin": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+          "present": true
+        },
+        {
+          "file": "data/crosswalks/sign_crosswalk_master.csv",
+          "match": true,
+          "observed": "4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf",
+          "pin": "4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf",
+          "present": true
+        },
+        {
+          "file": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+          "match": true,
+          "observed": "bd14e2b1f0607366ca1845797bcd17f8b577d23140a2e3111fe0cc2652cf9a9d",
+          "pin": "bd14e2b1f0607366ca1845797bcd17f8b577d23140a2e3111fe0cc2652cf9a9d",
+          "present": true
+        }
+      ],
+      "intake_record_stands": true,
+      "name": "Input integrity",
+      "spec053_freeze_digest": {
+        "match": true,
+        "observed": "fd2d5cb86b6aed51882a945719bb747ac34f149b08a21e6485b1407c6dc6b309",
+        "pin": "fd2d5cb86b6aed51882a945719bb747ac34f149b08a21e6485b1407c6dc6b309"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "alpha_error": 0.05600000000000005,
+      "fitted_alpha": 1.256,
+      "fitted_q": 2.72,
+      "gate": "0.2",
+      "generating_parameters": {
+        "N": 50000,
+        "V": 200,
+        "alpha": 1.2,
+        "q": 2.0,
+        "seed": 20261021
+      },
+      "name": "Estimator self-test",
+      "q_error": 0.7200000000000002,
+      "tolerances": {
+        "alpha": 0.1,
+        "q": 1.0
+      },
+      "verdict": "PASS"
+    },
+    {
+      "corpus": {
+        "file": "sanitized_corpus.json",
+        "match": true,
+        "observed": "345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68",
+        "pin": "345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68"
+      },
+      "gate": "0.3",
+      "name": "Shakti intake identity (P-F1 S1)",
+      "row_grades": {
+        "file": "shakti_row_grades_2026-10-22.csv",
+        "match": true,
+        "observed": "02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739",
+        "pin": "02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "audit_census_match": true,
+      "gate": "0.4",
+      "name": "Shakti intake census (P-F1 S2) + restricted census",
+      "restricted_census": {
+        "primary": {
+          "analyzable_rows": 3045,
+          "distinct_signs": 557,
+          "inscriptions": 3045,
+          "rows": 3212,
+          "tokens": 11805
+        },
+        "sensitivity": {
+          "analyzable_rows": 5131,
+          "distinct_signs": 707,
+          "inscriptions": 5131,
+          "rows": 5299,
+          "tokens": 17216
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "gate": "0.5",
+      "limb": "B",
+      "name": "Population act (OPEN-068-1, DD-068-7)",
+      "statement": "The fitted population is the full ICIT sign inventory of the restricted corpus: the primary fit population is the analyzable documented-lineage rows (3045 rows, 11805 tokens, 557 distinct signs) and the sensitivity fit population is the analyzable documented + corroborated rows (5131 rows, 17216 tokens, 707 distinct signs), each counting every token by its ICIT sign type as recorded. No mapping act is performed and neither population is a strict population.",
+      "verdict": "PASS"
+    },
+    {
+      "gate": "0.6",
+      "name": "Control set freeze (cited data)",
+      "systems": {
+        "N1": {
+          "tokens": 1981,
+          "types": 12
+        },
+        "N2": {
+          "tokens": 825,
+          "types": 57
+        },
+        "N3": {
+          "tokens": null,
+          "types": null
+        },
+        "P1": {
+          "tokens": 47292,
+          "types": 89
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "floors": {
+        "tokens": 2000,
+        "types": 50
+      },
+      "gate": "0.7",
+      "name": "Census floors",
+      "primary_tokens": 11805,
+      "primary_types": 557,
+      "verdict": "PASS"
+    }
+  ],
+  "grade_sensitive": false,
+  "headline_wording": "This corpus is an ICIT-lineage corpus. Agreement between it and the program's earlier ICIT-lineage layer is consistency within one tradition, not independent corroboration. The comparison cannot judge the script: the linguistic positive control, Linear B sign frequencies (fit error 0.9229), does not fit strictly better than every non-linguistic control (Mesopotamian numerical signs 0.5335; heraldic charges 0.1839; the synthetic emblem process, median 0.2405), so the measures used here do not separate the one certain writing system in the set from systems that are not writing. The Indus quantities on the Shakti restricted corpus (0.1584, exponent 2.004) are reported for the record as a new baseline and support no separability conclusion either way. The claim stands exactly as recorded, with no strength label added.",
+  "lineage_statement": "This corpus is an ICIT-lineage corpus. Agreement between it and the program's earlier ICIT-lineage layer is consistency within one tradition, not independent corroboration.",
+  "osf_registration": "3pbwe (filed 2026-10-22; pending approval at execution — recorded as it stands, freeze.md section 7)",
+  "outcome": "COMPARISON UNINFORMATIVE",
+  "phase": "Phase-430",
+  "populations": {
+    "primary": {
+      "analyzable_rows": 3045,
+      "distinct_signs": 557,
+      "grade_set": [
+        "documented-lineage"
+      ],
+      "inscriptions": 3045,
+      "rows": 3212,
+      "tokens": 11805
+    },
+    "sensitivity": {
+      "analyzable_rows": 5131,
+      "distinct_signs": 707,
+      "grade_set": [
+        "documented-lineage",
+        "undocumented-corroborated"
+      ],
+      "inscriptions": 5131,
+      "rows": 5299,
+      "tokens": 17216
+    }
+  },
+  "sensitivity": {
+    "comparison": {
+      "as_well": {
+        "N1": false,
+        "N2": false,
+        "N3": false
+      },
+      "falsifier_fires": false,
+      "gaps": {
+        "N1": 0.37916175423392673,
+        "N2": 0.02951017060829067,
+        "N3": 0.08612347004286725,
+        "P1": 0.7685633875692172
+      },
+      "near_miss": [],
+      "positive_control_passes": false
+    },
+    "fit": {
+      "N": 17216,
+      "NRMSE_log": 0.15438467620813956,
+      "R2_log": 0.99007398969771,
+      "SSE": 16.85108217125971,
+      "V": 707,
+      "alpha": 1.96,
+      "q": 20.0
+    },
+    "grade_sensitive": false
+  },
+  "spec": "068-yadav-zipf-controls-successor",
+  "subsampling": {
+    "primary": {
+      "half": {
+        "alpha_interval90": [
+          1.7728,
+          1.8735
+        ],
+        "alpha_median": 1.823,
+        "inscriptions_per_replicate": 1522,
+        "nrmse_interval90": [
+          0.15891300167229488,
+          0.1874355537133028
+        ],
+        "nrmse_median": 0.17385057779472976,
+        "replicates": 99
+      },
+      "quarter": {
+        "alpha_interval90": [
+          1.5391000000000001,
+          1.7328999999999999
+        ],
+        "alpha_median": 1.632,
+        "inscriptions_per_replicate": 761,
+        "nrmse_interval90": [
+          0.17629431699647452,
+          0.21309076109986455
+        ],
+        "nrmse_median": 0.18837858708647487,
+        "replicates": 99
+      }
+    },
+    "sensitivity": {
+      "half": {
+        "alpha_interval90": [
+          1.7599,
+          1.842
+        ],
+        "alpha_median": 1.793,
+        "inscriptions_per_replicate": 2565,
+        "nrmse_interval90": [
+          0.15923776389436797,
+          0.17931534981736486
+        ],
+        "nrmse_median": 0.1686629515088497,
+        "replicates": 99
+      },
+      "quarter": {
+        "alpha_interval90": [
+          1.5589,
+          1.6925
+        ],
+        "alpha_median": 1.619,
+        "inscriptions_per_replicate": 1282,
+        "nrmse_interval90": [
+          0.1703305490346452,
+          0.20671819516292084
+        ],
+        "nrmse_median": 0.18666678739764156,
+        "replicates": 99
+      }
+    }
+  }
+}

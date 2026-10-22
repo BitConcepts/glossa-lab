@@ -1,0 +1,82 @@
+{
+ "schema": "glossa.drawn-form-reference/1",
+ "target": {
+  "list": "Wells (2011), as given in Wells 2015, Chapter 2 / Figure 2.6",
+  "sign_number": 297,
+  "list_naming_evidence": [
+   {
+    "held_text_line": 414,
+    "text": "Chapter 2 gives the Indus sign list used in this analysis. Sign lists of this type (of an ... (Wells 2011)"
+   },
+   {
+    "held_text_line": 665,
+    "text": "The sign list used here (Wells 2011) was constructed using a uniform method."
+   }
+  ]
+ },
+ "purpose": "The unblocking act named in Spec 046's outcome (Phase-405, IDENTIFICATION FAILED at step 1.2): an inspectable drawn-form reference for Wells's sign 297 preserved as a committed, hashed record.",
+ "fragment": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
+ "passage_of_record": {
+  "work": "Wells, Bryan K. 2015. The Archaeology and Epigraphy of Indus Writing. Archaeopress. ISBN 978-1-78491-046-4",
+  "printed_page": 97,
+  "held_text_lines": "2938-2941",
+  "held_text_sha256": "62acf855ac3ecf39fc7a7e6597dba9a3cb6e35948528f69e9424eb81308d261e",
+  "quote": "Sign 532 and sign 297 are positioned in such a way as to resemble the position of the graphic element and several of their features are repeated in the image field. It is proposed here that sign 532 is a logograph for the anthropomorphic figure and that sign 297 represents the horned tiger, or perhaps just 'tiger' generically.",
+  "artefact_context": "M-1919 / Figure 6.19 (caption only in the held text, line 2961)"
+ },
+ "citation_pinned_reference": {
+  "work": "Wells, Bryan K. 2015. The Archaeology and Epigraphy of Indus Writing. Archaeopress. ISBN 978-1-78491-046-4",
+  "entry_locator": "Figure 2.6, 'An Indus Sign List', printed pp. 19-22",
+  "held_text_captions": [
+   868,
+   872,
+   876,
+   880
+  ],
+  "held_text_sha256": "62acf855ac3ecf39fc7a7e6597dba9a3cb6e35948528f69e9424eb81308d261e",
+  "standing_note": "The held text carries the Figure 2.6 captions only; the drawings stand in the published artefact. This record pins the citation for any checker with lawful access to the book."
+ },
+ "descriptor": {
+  "text": "Sign 297 is a bundle of four long parallel strokes bent once: the upper portions slant steeply down to the left; below the bend the strokes run near-vertical and splay slightly apart at the base. It stands in the plates' bent-ray run (signs 289-308), whose members differ in stroke count, bend position, and basal splay.",
+  "derivation": "Glyph inspection of the thesis plate (plate_reference below), in the Phase-123 manner. In Spec 064 the descriptor is derived twice independently under the frozen protocol's step D and checked against this record; this record is checked, not inherited.",
+  "recorded_limitation": "The descriptor fixes the family and the sign's place in the run; unique discrimination against the nearest neighbours (296, 299, 302-306) is fine-grained and is a separately checked step of the successor protocol (step C), with IDENTIFICATION FAILED pre-registered if the two independent derivations disagree."
+ },
+ "plate_reference": {
+  "artefact": "Wells 2006, PhD thesis, Epigraphic Approaches to Indus Writing (Harvard), Figure 3.2, 'The Indus signs by sign number'",
+  "thesis_page": 90,
+  "pdf_page": 102,
+  "position": "bottom row, signs 295-308; 297 is the third entry",
+  "local_file": "downloads/wells-phd-thesis-2006/Wells2006_PhD_EpigraphicApproachesToIndusWriting.pdf (program's local research store; not committed)",
+  "file_sha256": "4b39330c7f4ccf2770093318bfdaf4efaffa7fdf4a8cb5763a650351fffa4b4e",
+  "file_bytes": 19313853,
+  "deposit": "Internet Archive epigraphicapproachestoinduswritingbryankennethwellsphd.thesis_230_Z (Digital Library of India / JaiGyan national digitisation deposit, open access; CITATIONS.md section A.8; PROVENANCE.md entry 6)"
+ },
+ "family_anchor_2015": {
+  "status": "Consistency evidence only, expressly NOT an identification: the cell does not by itself identify the sign (Spec 046 section 4.3, frozen trap 1). It corroborates that the 2015 list's 289-306 numbers belong to the bent-ray family the plate shows, and nothing more.",
+  "registry_file": "data/crosswalks/canonical_sign_registry.csv",
+  "registry_sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",
+  "row": "P205",
+  "wells_ids": "W289|W290|W291|W292|W293|W294|W295|W296|W297|W299|W300|W301|W302|W303|W304|W305|W306",
+  "description": "Prismed light rays, with opposite slanting on top vs bottom, more rays on bottom",
+  "mahadevan_ids": "M180"
+ },
+ "traps_named": [
+  "P205's wells_ids cell used as an identification (Spec 046 frozen trap 1)",
+  "P297 'Ladder motif. Two nearby vertical lines with a number of horizontal lines going across the middle...' (Spec 046 frozen trap 2 - a different sign, wells_ids empty)",
+  "M297 in the Phase-123 witness (a Mahadevan sign whose Wells grapheme is 924 - the number 297 in a third list)",
+  "P205's Mahadevan crosswalk M180 used as W297's identity (the family anchor's crosswalk is not the sign's crosswalk)",
+  "any number-only match, including a plate number read without the protocol's step C continuity check"
+ ],
+ "continuity_status": {
+  "status": "QUALIFIED",
+  "basis": "Anchored at family level only. No record the program holds anchors the number 297 individually from the 2015 side: there is no formation text for 297 (the held text's only '297' is the passage itself), no registry row, and no witness row. The family anchor (above) and the thesis plates' bent-ray run agree at family level; individual discrimination is the successor protocol's step C, which is mandatory, with IDENTIFICATION FAILED (continuity/discrimination not sustained) pre-registered if either independent derivation cannot affirm that the descriptor picks out plate 297 and no neighbour in the 289-308 run.",
+  "what_would_remove_the_qualification": "A descriptor derived from the published Wells 2015 artefact itself (an owner-approved acquisition), or a published drawn-form cross-match for this sign entering the program's holds."
+ },
+ "provenance_chain": [
+  "published list entry (Wells 2015, Figure 2.6, printed pp. 19-22)",
+  "held-text captions (committed, hash-pinned: 62acf855ac3ecf39fc7a7e6597dba9a3cb6e35948528f69e9424eb81308d261e)",
+  "open-deposit thesis plate (local file, hash-pinned: 4b39330c7f4ccf2770093318bfdaf4efaffa7fdf4a8cb5763a650351fffa4b4e)",
+  "this descriptor (text, derived twice under Spec 064's protocol step D) plus family-level registry corroboration (committed, hash-pinned: 8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420)"
+ ],
+ "license_position": "Amendment draft (Item 5) section 4 paragraphs 1-2: a stroke/feature descriptor is a derived factual record of what a published drawing shows - not the drawing, not a reproduction of a scan, and not a passage of the author's text. The PhD thesis is an open national-library digitisation deposit recorded as open access at intake; Phase-123 already committed 157 derived records from these plates under its stated governance. No image is committed anywhere in this record. No restricted material was used: no CISI material and no CISI 3.1 ILL material contributed to this record."
+}

@@ -13,11 +13,9 @@
   "ocr_status": "not_needed",
   "duplicate_status": "unique",
   "processing_status": "registered",
-  "detected_title": "Catalog of Indus Signs",
-  "detected_authors": [
-    "Andreas Fuls"
-  ],
-  "detected_year": 2023,
+  "detected_title": "Fuls2023 Catalog of IndusSigns SearchInside",
+  "detected_authors": [],
+  "detected_year": 2008,
   "detected_doi": null,
   "detected_abstract": "",
   "claim_extraction_status": "pending",
@@ -26,31 +24,5 @@
     "system": "Glossa-Lab Indus Evidence Graph",
     "intake_version": "1.0",
     "note": "User-provided or acquired document. License status must be verified before publication use."
-  },
-  "metadata_correction": {
-    "date": "2026-10-22",
-    "kind": "spec025-material-audit-metadata-correction",
-    "proposal": "P2",
-    "changes": {
-      "detected_year": {
-        "was": 2008,
-        "now": 2023
-      },
-      "detected_title": {
-        "was": "Fuls2023 Catalog of IndusSigns SearchInside",
-        "now": "Catalog of Indus Signs"
-      },
-      "detected_authors": {
-        "was": [],
-        "now": [
-          "Andreas Fuls"
-        ]
-      }
-    },
-    "basis": "The document is Andreas Fuls, Catalog of Indus Signs (2023, self-published, ISBN 979-8-398-42230-6); 2008 is the ICIT build year, not the book's year. Evidence: audit W4, FULL TEXT.",
-    "evidence": [
-      "specs/025-paper-search-research-check/audit-2026-10-22/raw/findings_W4.md",
-      "specs/025-paper-search-research-check/audit-2026-10-22/correction_proposals.md"
-    ]
   }
 }

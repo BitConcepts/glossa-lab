@@ -9647,3 +9647,30 @@ touched) and the committed foundation report stands at
 
 AI disclosure: executed by an AI agent (Muse, via Muse)
 at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-22 — Spec 025 material audit: fix repair (literature records restored to frozen pins; P2/P4/P8 corrections moved to dossier notes)
+
+Repair landed with batch C (PR #336). Batch A's in-place
+edits to three literature-registry records (the Fuls 2023
+catalogue, the Fuls chapter, the Positional Analysis paper)
+changed bytes that are freeze-pinned whole-file by the Spec
+055 and Spec 057 freeze tests (SHA-256 92e19e6d…,
+bb23e5e9…, 9b95174b…). PR #334's first backend failure was
+this collision; it was misclassified at the time as a
+cold-cache transient, and that classification is corrected
+here and in audit-2026-10-22/fix_repair_2026-10-22.md (the
+passing runs are consistent with the suite's in-job store
+regeneration restoring the pinned bytes; the job runs with
+--maxfail=1, so only the first failing test was ever shown).
+The three records are restored byte-for-byte (hashes verified
+equal to their pins), and the P2, P4, and P8 source
+corrections are preserved as dated audit_correction_2026_
+10_22 notes on the corresponding claims dossiers — the
+proposals' own alternative limb for frozen fields. P3's
+registry edit stands (that record is not whole-file pinned).
+No frozen test was re-pinned; if the owner prefers the
+registry records themselves corrected, the ruling needed is
+to amend the Spec 055/057 pins to the corrected bytes.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.

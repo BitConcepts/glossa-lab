@@ -126,12 +126,16 @@ gap, never rounded into a correction.
   changes, PR #332.) CI's claims-store hash tests, which do run per
   batch, are green on batches A and B (see below).
 - CI: each batch merged only on a genuine full run verified from its
-  own job conclusions. (Batch A's backend job failed once on a
-  claims-combined-hash assertion and passed identically on re-run;
-  the failing assertion's expected value matched the committed
-  foundation report byte-for-byte, identifying the failure as the
-  documented cold-start/cache transient the audit's own PR #331 hit —
-  recorded in batch A's PR history, not hidden.)
+  own job conclusions. One real defect in batch A surfaced here and
+  is repaired in this batch: batch A's in-place edits to three
+  literature-registry records collided with frozen whole-file pins
+  in the Spec 055/057 freeze tests (the backend job's first failure
+  on PR #334 was this collision, initially misclassified as a
+  transient — the misclassification and the full mechanism are
+  corrected on the record in `fix_repair_2026-10-22.md`). The three
+  records are restored byte-for-byte to their pins in this batch,
+  and the P2/P4/P8 source corrections are preserved as dated notes
+  on the claims dossiers, per the proposals' own alternative limb.
 
 ## What remains open after this commission (stated, not rounded up)
 

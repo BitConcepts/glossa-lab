@@ -491,3 +491,60 @@ at both points — byte-identical, asserted.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## 8.1 Landing record (appended 2026-10-22, after merge)
+
+- Record PR: #320 (branch spec-065-execution),
+  merged as commit
+  d1726cb267651e48cc61ff8e51bef3b433ece0a6.
+- CI of record: run 39742670484 on the PR head
+  20b9da35 — all seven jobs success by job
+  conclusion (Backend tests (pytest), Evidence
+  Graph script smoke tests, Indus public
+  validation checks, Frontend tests
+  (Playwright), Shell wrappers ubuntu-latest /
+  macos-latest / windows-latest). Main had not
+  advanced beyond the run's base during the
+  PR's life, so no merge-in was needed.
+- Run digests re-verified on main at the merge
+  commit by two routes (git blobs at
+  d1726cb2… and the GitHub git-blob API;
+  the results record also by the contents raw
+  read): reports/phase427_results.json
+  b485f75ee655c7e15acd7f95b3125859504481c680aa67fc882657cefa0cee63;
+  reports/phase427_s1_s5_report.md
+  bbe655312d78c2ec971d86fceb25200d8240f367c005ad187fa81174c6b50377;
+  extraction artifact 74e42f8e… (S-5). The §5
+  disposition_spec065 entry is present on main
+  (form superseded-not-retired; Spec 057's
+  disposition entry intact above it; the
+  record's claim_status/stage still
+  untested/created), and the root LEDGER entry
+  is present.
+- Foundation check (H21) at the merge commit:
+  re-run on the landing checkout at
+  d1726cb267651e48cc61ff8e51bef3b433ece0a6
+  with the two Holdat CSVs supplied from the
+  main checkout's gitignored downloads (never
+  committed). Result: 40 checks passed, 0
+  failed, 8 warnings — the standing figure,
+  as measured at execution and again at the
+  merge commit.
+- Terminal outcome, restated in the frozen
+  §7.1 class B wording: One of Spec 057's two
+  unlocated rows is resolved on the document
+  itself. S-5: HEADING ABSENT FROM DOCUMENT
+  (no sub-result; no claim recovered — the
+  row's evidence is the searched file's hash
+  and its single judged occurrence), on the
+  acquired file at SHA-256
+  77f10f3279454bede1ba60a04f3c099500667ca62574b07aaabb9fc69bf94665.
+  S-1 remains STILL UNLOCATED — ACQUISITION
+  BLOCKED: no document was handed over before
+  the run, no search was run for S-1, and
+  nothing about the chapter is found or
+  implied. The unblocking act remains the
+  owner account act named on S-1's row. —
+  disposition: superseded-not-retired. This
+  act searched two documents for a heading.
+  It checked nothing either passage states.

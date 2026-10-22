@@ -3006,6 +3006,16 @@ try:
     logger.info("Registered %d Phase-423 (spec 061) nodes", len(list(_p423_defs())))
 except Exception as _p423_exc:  # noqa: BLE001
     logger.warning("Phase-423 (spec 061) nodes not registered: %s", _p423_exc)
+# ── Phase-424 node (spec 062: Arm A precision computation, calibration repair) ──
+try:
+    from glossa_lab.experiment_graph_phase424 import (
+        _phase424_node_defs as _p424_defs,  # noqa: PLC0415
+    )
+    for _d in _p424_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-424 (spec 062) nodes", len(list(_p424_defs())))
+except Exception as _p424_exc:  # noqa: BLE001
+    logger.warning("Phase-424 (spec 062) nodes not registered: %s", _p424_exc)
 # ── Phase-418 node (spec 056: sign-821 recovery) ──
 try:
     from glossa_lab.experiment_graph_phase418 import (

@@ -131,17 +131,43 @@
       execution (E2–E5) awaits its approval
       act and a separate execution order
       (DD-062-11).
-- [ ] **E2 — Graph-first build** (H15/H23) —
+- [x] **E2 — Graph-first build** (H15/H23) —
       script, graph node, registration,
       verification. **OWNER-APPROVAL** (as
-      part of the execution order).
-- [ ] **E3 — Step 0** (spec §3) — composite
+      part of the execution order). DONE
+      2026-10-22 under the execution order
+      (OSF 4m27t approved + public, verified
+      by the parent): script
+      `backend/scripts/phase424_arm_a_precision_calibration_repair.py`
+      (SHA-256 26d6da01…), graph module
+      `backend/glossa_lab/experiment_graph_phase424.py`
+      (node `IndusPhase424ArmAPrecisionRepair`),
+      registration in
+      `backend/glossa_lab/experiment_graph.py`
+      verified by import before the run.
+- [x] **E3 — Step 0** (spec §3) — composite
       pin, population reproduction,
       recorded-distribution reproduction
       (gate 0.3, exact), search-frame
       assertion, gate 0.5-R calibration
       verification. **OWNER-APPROVAL** (the
-      execution order).
+      execution order). DONE 2026-10-22, run
+      twice with identical results: gates
+      0.1, 0.2, 0.3 (exact: median
+      0.00878393455594817, interval
+      [0.004626892186724407,
+      0.01297407559730989], share
+      0.6231155778894473), and 0.4 PASS;
+      gate 0.5-R PASS — A_R strictly
+      increasing on the scan grid (A_R(1) =
+      0.00022759124836990718, A_R(3) =
+      0.028821884413380183); Scenario 1
+      b* = 1.8665771484375 (A_R =
+      0.008783112877008503, err 8.22e-07);
+      Scenario 2 b* = 2.2470703125 (A_R =
+      0.015000016834981533, err 1.68e-08).
+      Full record in the execution worktree's
+      step-0 record (outcome.md at E5).
 - [ ] **E4 — Computation** (spec §4) — both
       scenarios, ascending grid m = 1…25,
       full grid table recorded.

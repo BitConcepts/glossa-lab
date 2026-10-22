@@ -566,3 +566,106 @@ at both points — byte-identical, asserted.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+---
+
+## Completion note — appended 2026-10-22 (landing)
+
+Execution PR #321 merged to main on 2026-10-22 at
+`a36060a437e81db73f5a8eb454eee023129168db` (merged
+2026-10-22T08:12:48Z). The merged head is d6975966 (the
+execution commits plus a merge of main, which had
+advanced under the run as Specs 065 and 067 landed in
+parallel).
+
+**CI (H20 posture).** The PR head that merged was
+verified 7/7 green on its own genuine CI run
+**39745034493** before merging, read from the run's
+own job conclusions: Backend tests (pytest)
+**success** (the job log reads 1,638 passed,
+20 skipped, 0 failed); Frontend tests (Playwright)
+**success**; Indus public validation checks
+**success**; Evidence Graph script smoke tests
+**success**; Shell wrappers (ubuntu-latest,
+macos-latest, windows-latest) **success**. The
+run's history is part of the record: the first run
+on the original head (39742814857) failed the
+Backend job on this spec's own claim-append test
+(1 failed, 1,558 passed) because the backend suite
+regenerates the extracted-claims store mid-suite,
+wiping appends before later tests read them. The
+test was rewritten in the Spec 038 / Spec 056 form —
+the fragment's regeneration-preserved facts
+asserted on the live file, the append's form
+asserted against the results record's
+`claim_append` block — and the phase script's
+claim-record gate was put in the same Spec 038 form
+(pristine byte-pin, or exactly the pin plus the
+recorded `spec064_check` segment). Main was then
+merged in: the LEDGER.md append conflict was
+resolved keeping both sides' entries whole, and the
+experiment-graph registrations auto-merged (the
+Phase-426 registration verified present by import on
+the merged tree), before the green run above.
+
+**Foundation check (H21), measured 2026-10-22:**
+**40 checks passed, 0 failed, 8 warnings — READY
+WITH CAVEATS**, the standing figure, unchanged by
+this spec. The run was `backend/scripts/foundation_check.py`
+on the complete checkout, with the two Holdat CSVs
+copied from the main checkout's local store
+(corpus SHA-256 `62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e`,
+verified against the figure stored with Spec 046's
+completion note; the CSVs are gitignored and are not
+committed). The foundation inputs are identical
+between the PR head and the record merge commit —
+the merges that landed in between touched none of
+them. Environment record, stated rather than
+smoothed over: a VM write restriction (the standing
+failure mode in AGENTS.md) engaged during this
+landing — git writes were refused with
+"Operation not permitted", a fresh-clone attempt
+failed on the same restriction, and the script's
+own write of the report file in the worktree was
+truncated by it. The landing was therefore made
+through the GitHub API, and the regenerated
+`reports/foundation_check_report.json` committed
+with this note is the same run's output, captured
+from the run itself; its figures agree with the
+run's printed result (40 / 0 / 8).
+
+**Post-merge identity check.** After the merge, the
+delivery was read back from main (a36060a4) through
+the GitHub contents API and recomputes to SHA-256
+`9e765576349d4d294a4fc04f0d6750be3718dfc60fa267ea16c04c6130db7488`
+— byte-identical to the executed artifact. Spec
+046's closure delivery, read back the same way,
+still recomputes to
+`772db4df152ec4f1071bed088250677e55f69743532c9e89f339a8cf9134aaaf`.
+The anchors file on main,
+`backend/reports/INDUS_FINAL_ANCHORS.json`, read
+back the same way, recomputes to
+`df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569`
+— the value asserted before and after the run
+(execution record §7).
+
+**OSF.** Registration **s6hr9** is approved and
+public (approved and API-verified by the parent on
+2026-10-22: public true, pending false,
+withdrawn false, reviews_state accepted). The
+approval record is appended to
+`osf-spec-registration.md` with this landing, using
+exactly those verified facts; no DOI was provided
+and none is asserted.
+
+tasks.md item E5 is checked with this note; E2–E5
+are all complete. The outcome stands as executed —
+**IDENTIFICATION FAILED
+(continuity/discrimination not sustained)** — and
+the qualification stands with it, here as on every
+product of the run: Qualification (carried from the
+preserved reference, Spec 064 §1): the
+identification of Wells's 297 rests on a drawn-form
+reference whose continuity status is QUALIFIED —
+anchored at family level only; its step C
+discrimination check is part of this run's record.

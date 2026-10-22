@@ -54,7 +54,7 @@ Each row in canonical_sign_registry.csv contains:
 |--------|-------|
 | Total distinct sign IDs | 803 |
 | Signs with global_freq ≥ 10 | 105 |
-| Hapax signs (freq = 1) | 276 |
+| Hapax signs (signs that appear only once, freq = 1) | 276 |
 | Hapax rate | 35.7% |
 | Most frequent sign | P324 (1,366 tokens) — Classic jar symbol |
 | Second most frequent | P098/P217 cluster (583 tokens) — Vertical lines |
@@ -68,10 +68,10 @@ Based on positional analysis (start_rate, internal_rate, end_rate) across 2,722 
 
 | Class | Signs Classified | Description |
 |-------|-----------------|-------------|
-| INITIAL | 12 signs | start_rate ≥ 0.55; candidate determinatives/titles |
+| INITIAL | 12 signs | start_rate ≥ 0.55; candidate determinatives (category markers)/titles |
 | MEDIAL | 46 signs | internal_rate ≥ 0.70; candidate roots/stems |
 | TERMINAL | 14 signs | end_rate ≥ 0.55; candidate suffixes/case markers |
-| MIXED | 33 signs | flexible position; candidate phonetic syllabics |
+| MIXED | 33 signs | flexible position; candidate phonetic syllabics (signs standing for syllables) |
 | INSUFFICIENT_DATA | 77 signs | freq < 10; cannot classify reliably |
 
 ---

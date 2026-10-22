@@ -9820,3 +9820,26 @@ reports/phase432_results.json, reports/phase432_report.md.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+## 2026-10-12 — Plain-language pass, phase 1 (owner directive)
+
+At the owner's direction (2026-10-12: all papers, analyses, and
+documents in plain language — easy for a general reader, still
+scientifically accurate), a language-only pass was applied to the
+program's living prose documents on branch
+`plain-language-phase1`: docs/research/ DECIPHERMENT_DOSSIER_v1,
+DECIPHERMENT_LIMITS, STRUCTURAL_MODEL, BASELINE_COMPARISON,
+CORPUS_DEFINITION, SIGNAL_STATUS, SIGN_INVENTORY,
+REPRODUCIBILITY_PROTOCOL, NORMALIZATION_RULES (explanatory prose
+only — no rule statement changed), CORPUS_EXPANSION_LEADS, and
+the unpublished v5 addendum draft
+(glossa-corpus/indus/pierson_2026_indus_decipherment_addendum_v5.md).
+Method: jargon replaced where a plain word carries the same
+meaning; irreplaceable technical terms defined in plain words at
+first use. No number, verdict, claim, or conclusion was changed.
+Frozen material was not touched: the v3/v4 preprints and their
+DOIs, the numbered program notes, ledgers and registers, claim
+records, and run reports. Full inventory and classification:
+~/workspace/your_files/2026-10-12-plain-language-inventory.md.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.

@@ -9081,6 +9081,57 @@ program's claim form — never whether K-1's
 suggested meaning is right, and nothing about
 sign 821 itself beyond the identification.
 
+## 2026-10-22 — Spec 067 EXECUTED (Phase-429): REPLICATED
+
+Spec 059's question re-run against the Spec 066 merged catalogue layer v2, under
+the frozen Spec 067 contract (freeze digest
+73463ab949f65ecf620a9f4544b9a84fe18f72056a86c48ce9d5d0164f3d41db; freeze PR #318
+merged at dcfa3af6; OSF registration qsthg approved and API-verified public
+before the run). Step 0, in the frozen order: gate 0.1 PASS — every pin
+recomputed, the merged layer v2 asserted on the local file first (SHA-256
+cd0c2ba8823678be9f7573616528ae0b6be2fe579dc7e34c93add421c80886ad, 2,655,958
+bytes, 9,741 rows, 5,529 distinct objects); gate 0.2 PASS — the original
+concordance join reproduced exactly against the vols. 1–2 layer (5,679 / 2,895
+/ 2 / 2,782), contributing no row; gate 0.3 PASS — the object-ID join through
+the Phase-130 schema (5,018 records, validation pass) joined 4,676 of 5,679
+rows (82.34%) against layer v2 (661 no identifier, 342 resolving to zero, 0
+ambiguous; 3,763 distinct objects); gate 0.4 PASS — the mandatory type-fill
+census before any F1 quantity: newly joined objects 1,777 rows / 1,284 distinct
+objects, type filled 1,152 objects, unfilled 132; whole joined set type filled
+3,511 of 3,763 distinct objects (317 rows unfilled), restricted to
+{Seals, Tablets} 4,077 rows, census-form eligible strata Harappa, Kalibangan,
+Mohenjo-daro; gate 0.5 PASS — 4,676 joined rows against the bar carried from
+Spec 059 at DD-067-7 (≥ 3,465 rows, 61.0%), a margin of 1,211 rows, judged on
+this execution's own census (Spec 066's projection is not cited as a result).
+The frozen Phase-136 flow on the enlarged set, unchanged: 4,676 joined → 4,359
+typed → 4,077 seals/tablets → 3,315 terminal-mapped → 3,181 in the eligible
+strata (Harappa, Mohenjo-daro, Kalibangan — the original three); estimable
+(pooled expected counts ≥ 5 in 4 of 4 cells). CMH chi-square 67.3998;
+permutation raw p = 0.0001 (B = 9,999, seed 20261009); family-adjusted
+q = 0.0001 (single-test family, DD-067-8); Mantel–Haenszel common odds ratio
+2.452, 95% CI [1.965, 3.058] — entirely above 1.5, so the §5 verdict is
+REPLICATED. Leave-one-site-out (descriptive): drop Harappa 2.214
+[1.611, 3.042], drop Mohenjo-daro 2.723 [2.026, 3.659], drop Kalibangan 2.465
+[1.974, 3.079] — every subset estimable, no site load-bearing. Both covariate
+comparisons are in the machine record (the added rows are chiefly Harappa's,
+shorter, and more fragmentary than the original joined set). The claim's
+"on the joined subset" scope is re-stated by the outcome's appended record
+only, as §5 provides for a REPLICATED outcome: the difference is now recorded
+on the enlarged object-ID-joined subset, 4,676 of 5,679 rows (82.34%). Spec
+024's frozen verdict and Spec 059's gate closure stand exactly as recorded,
+unedited. Anchors asserted byte-identical before and after (df0cf620…).
+Foundation check as measured on the execution tree: 40 passed / 0 failed /
+8 warnings. The per-row join census against layer v2 stays restricted-local
+(phase429_join_census.json, 5,679 rows, beside the merged layer in the
+restricted local store), named by filename and count only; no row-level
+merged-layer data entered git. Records: specs/067-f1-enlarged-join/outcome.md,
+reports/phase429_results.json (SHA-256 f08d469b…), reports/phase429_report.md
+(SHA-256 8cc2c154…); the script is deterministic (all outputs byte-identical
+on a second run).
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
 ## 2026-10-22 — Spec 065 EXECUTED (Phase-427): Class B — S-5 RESOLVED, S-1 STILL BLOCKED
 
 Spec 065 was executed as Phase-427 under the

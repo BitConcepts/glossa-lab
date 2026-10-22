@@ -92,10 +92,19 @@
 
 ## Execution — gated on the freeze, the registration's approval, and a separate order
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Step 0, part 1** (spec §3 gates
+      **Done 2026-10-22:** script
+      `backend/scripts/phase429_f1_enlarged_join.py`,
+      graph module
+      `backend/glossa_lab/experiment_graph_phase429.py`
+      (node `IndusPhase429F1EnlargedJoin`),
+      registration in
+      `backend/glossa_lab/experiment_graph.py`
+      verified by import (node present in
+      `ATOMIC_NODES`) before the run.
+- [x] **E2 — Step 0, part 1** (spec §3 gates
       0.1–0.2): input integrity against the
       freeze pins (layer v2 asserted on the
       local file first); original concordance
@@ -103,8 +112,9 @@
       2 / 2,782) against the vols. 1–2 layer.
       Any failure stops the run as INVALID
       (class named) before any new join is
-      built.
-- [ ] **E3 — Step 0, part 2** (gates 0.3–0.5):
+      built. **Done 2026-10-22: both gates
+      PASS; no INVALID class fired.**
+- [x] **E3 — Step 0, part 2** (gates 0.3–0.5):
       the object-ID join built through the
       Phase-130 schema against layer v2
       (object identifiers only; string identity
@@ -117,8 +127,11 @@
       DD-067-7 bar. A gate failure ends the
       execution here: the censuses and the
       §3.6 closure wording are its complete
-      record, unscored.
-- [ ] **E4 — Primary** (spec §4, gate-passed
+      record, unscored. **Done 2026-10-22:
+      gate 0.3 PASS (4,676 joined, 82.34%);
+      gate 0.4 type-fill census taken; gate
+      0.5 PASS against the ≥ 3,465 bar.**
+- [x] **E4 — Primary** (spec §4, gate-passed
       only): the frozen Phase-136 flow on the
       enlarged set — eligibility and
       estimability applied mechanically (a
@@ -128,7 +141,13 @@
       (descriptive), and both covariate
       comparisons (joined vs unjoined;
       original joined set vs added rows).
-- [ ] **E5 — Outcome:** the §5 record in the
+      **Done 2026-10-22: estimable; CMH
+      67.3998, raw p = 0.0001, q = 0.0001, MH
+      odds ratio 2.452 [1.965, 3.058]; LOSO
+      reported, no site load-bearing; both
+      covariate comparisons in the machine
+      record.**
+- [x] **E5 — Outcome:** the §5 record in the
       pre-written wording for the outcome
       class that fired — results JSON and
       report in Spec 059's form (lineage label,
@@ -145,7 +164,17 @@
       foundation check reported as measured;
       row-level products of the merged layer
       restricted-local, named by filename and
-      counts only.
+      counts only. **Done 2026-10-22: outcome
+      REPLICATED; `outcome.md` in this
+      directory is the dated replication
+      append and carries the §5 re-statement;
+      LEDGER entry added; anchors asserted
+      byte-identical (`df0cf620…` at both
+      readings); foundation check as measured
+      40 passed / 0 failed / 8 warnings; the
+      per-row census `phase429_join_census.json`
+      (5,679 rows) restricted-local, named by
+      filename and count only.**
 
 ---
 

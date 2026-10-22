@@ -1,0 +1,363 @@
+{
+ "stage": "research_check",
+ "record_version": 1,
+ "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003",
+ "document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+ "claim_statement": "Faunal signs function as identity/guild/commodity prefixes (initial position).",
+ "checked_at": "2026-10-22T14:34:58.025562+00:00",
+ "advisory": true,
+ "verdict": null,
+ "protocol": "docs/paper-search-mcp.md#audit-protocol",
+ "phrasings": [
+  {
+   "text": "Faunal signs function as identity/guild/commodity prefixes (initial position).",
+   "origin": "claim"
+  },
+  {
+   "text": "animal and faunal signs in the Indus script occur preferentially in initial inscription position: positional frequency distribution of unicorn bull fish signs at the beginning of Indus texts",
+   "origin": "caller"
+  }
+ ],
+ "sources_requested": [
+  "arxiv",
+  "crossref",
+  "openalex",
+  "semantic",
+  "core",
+  "europepmc"
+ ],
+ "queries": [
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_papers",
+   "query": "Faunal signs function as identity/guild/commodity prefixes (initial position)."
+  },
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_arxiv",
+   "query": "Faunal signs function as identity/guild/commodity prefixes (initial position)."
+  },
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_crossref",
+   "query": "Faunal signs function as identity/guild/commodity prefixes (initial position)."
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_papers",
+   "query": "animal and faunal signs in the Indus script occur preferentially in initial inscription position: positional frequency distribution of unicorn bull fish signs at the beginning of Indus texts"
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_arxiv",
+   "query": "animal and faunal signs in the Indus script occur preferentially in initial inscription position: positional frequency distribution of unicorn bull fish signs at the beginning of Indus texts"
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_crossref",
+   "query": "animal and faunal signs in the Indus script occur preferentially in initial inscription position: positional frequency distribution of unicorn bull fish signs at the beginning of Indus texts"
+  }
+ ],
+ "source_errors": [],
+ "neighbors": [
+  {
+   "title": "The fundamental role of position in affix identity",
+   "authors": "Julia R. Carden; Juan P. Barreyro; Juan Segui; Virginia Jaichenco",
+   "year": "2019-12-31T00:00:00",
+   "doi": "10.1075/ml.19009.car",
+   "paper_id": "10.1075/ml.19009.car",
+   "source": "crossref",
+   "url": "https://doi.org/10.1075/ml.19009.car",
+   "abstract": "<jats:title>Abstract</jats:title>\n                <jats:p>Previous research suggests that while free morpheme identification during visual word recognition is\n                    position-independent, suffixes are activated only when they occur after the stem. Surprisingly, prefix position coding has not yet\n                    been assessed. This point is important given that some experimental studies demonstrated clear processing differences between\n                    prefixes and suffixes. In this study we examined whether Spanish suffixes and prefixes are recognized independently of their",
+   "relevance": 0.333
+  },
+  {
+   "title": "The Upper Initial Mass Function from Ultraviolet Spectral Lines",
+   "authors": "Claus Leitherer",
+   "year": "2010-09-01T19:01:59",
+   "doi": "",
+   "paper_id": "1009.0245v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1009.0245v1",
+   "abstract": "The space-ultraviolet wavelength region contains strong spectral lines from massive, hot stars. These features form in winds and are sensitive to luminosity and mass, and ultimately provide constraints on the initial mass function. New radiation-hydrodynamical models of stellar winds are used to construct a theoretical spectral library of massive stars for inclusion in population synthesis. The models are compared to observations of nearby star clusters, of starburst regions in local galaxies, and of distant star-forming galaxies. The data are consistent with a near-universal Salpeter-type ini",
+   "relevance": 0.222
+  },
+  {
+   "title": "Language, Culture and Identity - Signs of Life",
+   "authors": "Sinha, Vera da Silva.; Tian, Zhen.; Moreno-Núñez, Ana.",
+   "year": "",
+   "doi": "",
+   "paper_id": 154236976,
+   "source": "core",
+   "url": "",
+   "abstract": "This book explores the inextricable connection that language has with cultural identity and cultural practices, with a particular emphasis on how they contribute to shaping personal identity.Intro -- Language, Culture, and Identity - Signs of Life -- Editorial page -- Title page -- Copyright page -- Table of contents -- Foreword -- Reference -- Introduction: Language, culture and identity: Signs of life -- Background to this volume -- Language, culture and identity: Signs of Life -- Acknowledgements -- 1. Philosophy and philosophical practice: Eurocentrism as an epistemology of ignorance -- In",
+   "relevance": 0.222
+  },
+  {
+   "title": "Taking Complete Finite Prefixes To High Level, Symbolically",
+   "authors": "Nick Würdemann; Thomas Chatain; Stefan Haar; Lukas Panneke",
+   "year": "2023-11-19T22:30:02",
+   "doi": "10.46298/fi.12578",
+   "paper_id": "2311.11443v4",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2311.11443v4",
+   "abstract": "Unfoldings are a well known partial-order semantics of P/T Petri nets that can be applied to various model checking or verification problems. For high-level Petri nets, the so-called symbolic unfolding generalizes this notion. A complete finite prefix of a P/T Petri net's unfolding contains all information to verify, e.g., reachability of markings. We unite these two concepts and define complete finite prefixes of the symbolic unfolding of high-level Petri nets. For a class of safe high-level Petri nets, we generalize the well-known algorithm by Esparza et al. for constructing small such prefi",
+   "relevance": 0.111
+  },
+  {
+   "title": "Position: Explanation Stability Is a Property of the Model Method Pair, Not the Model",
+   "authors": "Kabilan Elangovan; Daniel Ting",
+   "year": "2026-07-18T06:09:07",
+   "doi": "",
+   "paper_id": "2607.16652v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2607.16652v1",
+   "abstract": "This position paper argues that claims about explanation stability are scientifically invalid without cross method validation. Just as statistical significance requires the test statistic to be specified, stability should either be evaluated across multiple attribution paradigms or explicitly scoped to the computational objective of a single method. In controlled chest X ray experiments, DenseNet201, ResNet50V2, and InceptionV3 achieved AUC values above 99%, yet their stability rankings reversed across attribution methods. LayerCAM ranked InceptionV3 as the most stable model, with an IoU of 0.",
+   "relevance": 0.111
+  },
+  {
+   "title": "Image Classification using CNN for Traffic Signs in Pakistan",
+   "authors": "Abdul Azeem Sikander; Hamza Ali",
+   "year": "2021-02-19T19:16:22",
+   "doi": "",
+   "paper_id": "2102.10130v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2102.10130v1",
+   "abstract": "The autonomous automotive industry is one of the largest and most conventional projects worldwide, with many technology companies effectively designing and orienting their products towards automobile safety and accuracy. These products are performing very well over the roads in developed countries. But can fail in the first minute in an underdeveloped country because there is much difference between a developed country environment and an underdeveloped country environment. The following study proposed to train these Artificial intelligence models in environment space in an underdeveloped count",
+   "relevance": 0.111
+  },
+  {
+   "title": "Concerning Guild Socialism",
+   "authors": "Paresh Chattopadhyay",
+   "year": "2018-07-18T00:00:00",
+   "doi": "10.1163/9789004377516_009",
+   "paper_id": "10.1163/9789004377516_009",
+   "source": "crossref",
+   "url": "https://doi.org/10.1163/9789004377516_009",
+   "abstract": null,
+   "relevance": 0.111
+  },
+  {
+   "title": "Road vertical signs. Variable message traffic signs",
+   "authors": "",
+   "year": "1970-01-01T00:00:00",
+   "doi": "10.3403/03263887u",
+   "paper_id": "10.3403/03263887u",
+   "source": "crossref",
+   "url": "https://doi.org/10.3403/03263887u",
+   "abstract": null,
+   "relevance": 0.111
+  },
+  {
+   "title": "Road vertical signs. Variable message traffic signs",
+   "authors": "",
+   "year": "1970-01-01T00:00:00",
+   "doi": "10.3403/03263887",
+   "paper_id": "10.3403/03263887",
+   "source": "crossref",
+   "url": "https://doi.org/10.3403/03263887",
+   "abstract": null,
+   "relevance": 0.111
+  },
+  {
+   "title": "The Guild Communities",
+   "authors": "",
+   "year": "1970-01-01T00:00:00",
+   "doi": "10.1057/9781137438591.0008",
+   "paper_id": "10.1057/9781137438591.0008",
+   "source": "crossref",
+   "url": "https://doi.org/10.1057/9781137438591.0008",
+   "abstract": null,
+   "relevance": 0.111
+  },
+  {
+   "title": "Commitments of traders in commodity futures (with market concentration ratios) /",
+   "authors": "United States.\n    Commodity Futures Trading Commission.; United States.\n    Commodity Exchange Authority.",
+   "year": "",
+   "doi": "",
+   "paper_id": 167965108,
+   "source": "core",
+   "url": "",
+   "abstract": "Includes data for cotton, frozen concentrated orange juice, potatoes, wool, and imported frozen fresh boneless beef.Description based on: July 1974; title from cover.American statistics indexIncludes data for cotton, frozen concentrated orange juice, potatoes, wool, and imported frozen fresh boneless beef.Mode of access: Internet.Vols. for  issued by: Commodity Exchange Authority;  by Commodity Futures Trading Commission",
+   "relevance": 0.111
+  },
+  {
+   "title": "Commodity price volatility and Tax revenues: Evidence from developing countries",
+   "authors": "Hélène Ehrhart; Samuel Guerineau",
+   "year": "",
+   "doi": "",
+   "paper_id": 2625457,
+   "source": "core",
+   "url": "https://core.ac.uk/download/6503189.pdf",
+   "abstract": "The recent boom and bust in commodity prices has renewed the policymakers' interest in three complementary issues: i) characteristics and determinants of commodity price instability, ii) its macroeconomic effects and, iii) the optimal policy responses to this instability. This work falls within the scope of studies dedicated to the macroeconomic effects of commodity price instability, but focuses on the impact on public finance, while existing works were concentrated on growth. This paper also differs from the few previous studies on two aspects. First, we test the impact of commodity price vo",
+   "relevance": 0.111
+  },
+  {
+   "title": "The Interaction of Working and Speculative Commodity Stocks",
+   "authors": "Revoredo-Giha, Cesar; Carter, Colin A.",
+   "year": "",
+   "doi": "",
+   "paper_id": 2571014,
+   "source": "core",
+   "url": "https://core.ac.uk/download/6413794.pdf",
+   "abstract": "This paper models the interaction of working (also called pipeline) and speculative commodity stocks. We model working inventories (i.e., raw material inventories carried by processors) based on Rameys (1989) model of inventories as factors of production, which allows us to represent storage under inter-temporal price backwardation, observed in commodity markets. We incorporate both speculative and working stocks in a simple model to analyze the interaction and to simulate the relationship between inter-temporal commodity price spreads and stocks. Our model replicates common price patters foun",
+   "relevance": 0.111
+  },
+  {
+   "title": "Network analysis of a corpus of undeciphered Indus civilization inscriptions indicates syntactic organization",
+   "authors": "Sitabhra Sinha; Md Izhar Ashraf; Raj Kumar Pan; Bryan Kenneth Wells",
+   "year": "2010-05-27T07:24:29",
+   "doi": "10.1016/j.csl.2010.05.007",
+   "paper_id": "1005.4997v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1005.4997v1",
+   "abstract": "Archaeological excavations in the sites of the Indus Valley civilization (2500-1900 BCE) in Pakistan and northwestern India have unearthed a large number of artifacts with inscriptions made up of hundreds of distinct signs. To date there is no generally accepted decipherment of these sign sequences and there have been suggestions that the signs could be non-linguistic. Here we apply complex network analysis techniques to a database of available Indus inscriptions, with the aim of detecting patterns indicative of syntactic organization. Our results show the presence of patterns, e.g., recursive",
+   "relevance": 0.111
+  },
+  {
+   "title": "Deciphering the Indus Script: Decoding Missing and Unclear Indus signs and Identifying Anomalous Indus texts from West Asia using Markov Chain Language Models",
+   "authors": "Varun Venkatesh; Ali Farghaly",
+   "year": "2023-03-11T00:00:00",
+   "doi": "10.1109/isec57711.2023.10402308",
+   "paper_id": "10.1109/isec57711.2023.10402308",
+   "source": "crossref",
+   "url": "https://doi.org/10.1109/isec57711.2023.10402308",
+   "abstract": null,
+   "relevance": 0.111
+  },
+  {
+   "title": "Deciphering the Indus Script by Applying the Concept of Egyptian Hieroglyphics to the Depiction of Indus Signs",
+   "authors": "Milind Raskar",
+   "year": "2025-02-25T00:00:00",
+   "doi": "10.31235/osf.io/fwkxe_v1",
+   "paper_id": "10.31235/osf.io/fwkxe_v1",
+   "source": "crossref",
+   "url": "https://doi.org/10.31235/osf.io/fwkxe_v1",
+   "abstract": "<p>Due to its intricate clusters of symbols, the absence of clear connections to known ancient or modern scripts from the Indian subcontinent, and broad assumptions about the likely languages of the Indus civilization, scholars have long struggled to decipher the Indus script. This study seeks to identify Indus characters by analysing common graphemes of synonymous words across known Indian languages, using traces in the existing languages as a \"Rosetta Stone.\" It interprets the pictographic symbols on Indus seals by applying principles from the Egyptian hieroglyphic writing system.The finding",
+   "relevance": 0.111
+  },
+  {
+   "title": "Integral means inequalities, convolution, and univalent functions",
+   "authors": "Daniel Girela; Cristóbal González",
+   "year": "2019-02-05T08:55:07",
+   "doi": "10.1155/2019/7817353",
+   "paper_id": "1902.01595v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1902.01595v1",
+   "abstract": "We use the Baernstein star-function to investigate several questions about the integral means of the convolution of two analytic functions in the unit disc. The theory of univalent functions plays a basic role in our work.",
+   "relevance": 0.0
+  },
+  {
+   "title": "Statistical analysis of the Indus script using $n$-grams",
+   "authors": "Nisha Yadav; Hrishikesh Joglekar; Rajesh P. N. Rao; M. N. Vahia; Iravatham Mahadevan; R. Adhikari",
+   "year": "2009-01-20T12:55:55",
+   "doi": "10.1371/journal.pone.0009506",
+   "paper_id": "0901.3017v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/0901.3017v1",
+   "abstract": "The Indus script is one of the major undeciphered scripts of the ancient world. The small size of the corpus, the absence of bilingual texts, and the lack of definite knowledge of the underlying language has frustrated efforts at decipherment since the discovery of the remains of the Indus civilisation. Recently, some researchers have questioned the premise that the Indus script encodes spoken language. Building on previous statistical approaches, we apply the tools of statistical language processing, specifically $n$-gram Markov chains, to analyse the Indus script for syntax. Our main results",
+   "relevance": 0.0
+  },
+  {
+   "title": "The Indus Script and Economics. A Role for Indus Seals and Tablets in Rationing and Administration of Labor",
+   "authors": "Rajesh P. N. Rao",
+   "year": "2018-11-28T23:34:06",
+   "doi": "",
+   "paper_id": "1812.00049v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1812.00049v1",
+   "abstract": "The Indus script remains one of the last major undeciphered scripts of the ancient world. We focus here on Indus inscriptions on a group of miniature tablets discovered by Meadow and Kenoyer in Harappa in 1997. By drawing parallels with proto-Elamite and proto-Cuneiform inscriptions, we explore how these miniature tablets may have been used to record rations allocated to porters or laborers. We then show that similar inscriptions are found on stamp seals, leading to the potentially provocative conclusion that rather than simply indicating ownership of property, Indus seals may have been used f",
+   "relevance": 0.0
+  },
+  {
+   "title": "How Non-Linguistic Is the Indus Sign System? A Synthetic-Baseline Scorecard",
+   "authors": "Ashish Nair",
+   "year": "2026-04-20T05:29:56",
+   "doi": "",
+   "paper_id": "2604.17828v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2604.17828v1",
+   "abstract": "Whether the Indus Valley sign system (c. 2600-1900 BCE) encodes spoken language has been debated for decades. This paper introduces a multi-metric discrimination framework that tests the observed Indus corpus against two kinds of computer-generated non-linguistic baseline -- one mimicking a heraldic emblem system, the other an administrative coding system -- each calibrated with Zipfian frequency distributions, positional constraints, and bigram dependencies derived from six attested non-linguistic corpora. The scorecard evaluates four properties central to the Farmer-Sproat-Witzel (2004) crit",
+   "relevance": 0.0
+  },
+  {
+   "title": "Indus script corpora, archaeo-metallurgy and Meluhha (Mleccha)",
+   "authors": "Srinivasan Kalyanaraman",
+   "year": "2012-04-17T14:14:26",
+   "doi": "",
+   "paper_id": "1204.3800v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1204.3800v1",
+   "abstract": "Jules Bloch's work on formation of the Marathi language has to be expanded further to provide for a study of evolution and formation of Indian languages in the Indian language union (sprachbund). The paper analyses the stages in the evolution of early writing systems which began with the evolution of counting in the ancient Near East. A stage anterior to the stage of syllabic representation of sounds of a language, is identified. Unique geometric shapes required for tokens to categorize objects became too large to handle to abstract hundreds of categories of goods and metallurgical processes d",
+   "relevance": 0.0
+  },
+  {
+   "title": "Can the semasiographic/logographic Indus script answer the Dravidian question? Insights from Indus script’s gemstone related fish-signs, and Indus gemstone-word “maṇi”",
+   "authors": "Bahata Ansumali Mukhopadhyay",
+   "year": "2023-04-08T00:00:00",
+   "doi": "10.31235/osf.io/ftdzc",
+   "paper_id": "10.31235/osf.io/ftdzc",
+   "source": "crossref",
+   "url": "https://doi.org/10.31235/osf.io/ftdzc",
+   "abstract": "<p>From archaeogenetic, linguistic, archaeological, and ethnographic evidences, several scholars have linked the people of ancient Indus valley civilization (IVC) with the ancestors of Dravidian speakers. This article argues that the semasiographically/logographically written Indus script (ISC) used certain fish-like logograms, whose iconicity emerged from certain Indus symbolisms, which are linkable with certain linguistic symbolisms found across today’s Dravidian languages. As discussed in the author’s previous articles, ISC was a mercantile script, and different segments of the formulaic IS",
+   "relevance": 0.0
+  },
+  {
+   "title": "Can the Semasiographic/logographic Indus Script Answer the Dravidian Question? Insights from Indus Script's Gemstone Related Fish-Signs, and Indus Gemstone-Word 'maṇi'",
+   "authors": "Bahata A. Mukhopadhyay",
+   "year": "2023-01-01T00:00:00",
+   "doi": "10.2139/ssrn.4412558",
+   "paper_id": "10.2139/ssrn.4412558",
+   "source": "crossref",
+   "url": "https://doi.org/10.2139/ssrn.4412558",
+   "abstract": "<jats:p>From archaeogenetic, linguistic, archaeological, and ethnographic evidences, several scholars have linked the people of ancient Indus valley civilization (IVC) with the ancestors of Dravidian speakers. This article argues that the semasiographically/logographically written Indus script (ISC) used certain fish-like logograms, whose iconicity emerged from certain Indus symbolisms, which are linkable with certain linguistic symbolisms found across today’s Dravidian languages. As discussed in the author’s previous articles, ISC was a mercantile script, and different segments of the formula",
+   "relevance": 0.0
+  },
+  {
+   "title": "Appendix II:",
+   "authors": "Andreas Fuls",
+   "year": "2015-02-06T00:00:00",
+   "doi": "10.2307/j.ctvr43jmf.16",
+   "paper_id": "10.2307/j.ctvr43jmf.16",
+   "source": "crossref",
+   "url": "https://doi.org/10.2307/j.ctvr43jmf.16",
+   "abstract": null,
+   "relevance": 0.0
+  }
+ ],
+ "neighbors_read_full_text": [
+  {
+   "title": "The Upper Initial Mass Function from Ultraviolet Spectral Lines",
+   "paper_id": "1009.0245v1",
+   "words": 4022
+  },
+  {
+   "title": "Taking Complete Finite Prefixes To High Level, Symbolically",
+   "paper_id": "2311.11443v4",
+   "words": 24881
+  },
+  {
+   "title": "Position: Explanation Stability Is a Property of the Model Method Pair, Not the Model",
+   "paper_id": "2607.16652v1",
+   "words": 8416
+  }
+ ],
+ "gaps": [
+  {
+   "gap": "neighbors surfaced but not read in full text (abstracts never establish novelty)",
+   "neighbors": [
+    "The fundamental role of position in affix identity",
+    "Language, Culture and Identity - Signs of Life",
+    "Image Classification using CNN for Traffic Signs in Pakistan",
+    "Concerning Guild Socialism",
+    "Road vertical signs. Variable message traffic signs",
+    "Road vertical signs. Variable message traffic signs",
+    "The Guild Communities",
+    "Commitments of traders in commodity futures (with market concentration ratios) /",
+    "Commodity price volatility and Tax revenues: Evidence from developing countries",
+    "The Interaction of Working and Speculative Commodity Stocks"
+   ]
+  }
+ ],
+ "citation_checks": []
+}

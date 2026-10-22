@@ -1,0 +1,250 @@
+[
+ {
+  "file": "ancient_writing_and_modern_technologies_51831ac9.json",
+  "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+  "status": "untested",
+  "stage": "created",
+  "type": "sign_value_claim",
+  "claim": "Sign value: 900 / number six"
+ },
+ {
+  "file": "ancient_writing_and_modern_technologies_51831ac9.json",
+  "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
+  "status": "untested",
+  "stage": "created",
+  "type": "sign_value_claim",
+  "claim": "Sign value: 700 / a volumetric system with a unit \nof 40"
+ },
+ {
+  "file": "ancient_writing_and_modern_technologies_51831ac9.json",
+  "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
+  "status": "untested",
+  "stage": "created",
+  "type": "sign_value_claim",
+  "claim": "Sign value: 700 / a unit of 4"
+ },
+ {
+  "file": "ancient_writing_and_modern_technologies_51831ac9.json",
+  "claim_id": "ancient_writing_and_modern_technologies_51831ac9_statisti_0004",
+  "status": "untested",
+  "stage": "created",
+  "type": "statistical_claim",
+  "claim": "Statistical finding: positional analysis"
+ },
+ {
+  "file": "farmer_sproat_witzel_2004.json",
+  "claim_id": "farmer_sproat_witzel_2004_manual_001",
+  "status": "contradicted",
+  "stage": "explained",
+  "type": "non_linguistic_claim",
+  "claim": "The Indus script is not a writing system encoding language but consists of non-linguistic symbols."
+ },
+ {
+  "file": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb.json",
+  "claim_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb_statisti_0001",
+  "status": "untested",
+  "stage": "created",
+  "type": "statistical_claim",
+  "claim": "Statistical finding: Positional Analysis"
+ },
+ {
+  "file": "indus_valley_script_deciphered_from_myth_65ff0a26.json",
+  "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001",
+  "status": "contradicted",
+  "stage": "checked",
+  "type": "critique_claim",
+  "claim": "Critique: myth of a \nliterate Harappan"
+ },
+ {
+  "file": "indus_valley_script_deciphered_from_myth_65ff0a26.json",
+  "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002",
+  "status": "contradicted",
+  "stage": "checked",
+  "type": "critique_claim",
+  "claim": "Critique: collapse of the Indus script thesis"
+ },
+ {
+  "file": "indus_valley_script_deciphered_from_myth_65ff0a26.json",
+  "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_001",
+  "status": "untested",
+  "stage": "created",
+  "type": "sign_function_claim",
+  "claim": "The Indus script encodes an economic ledger of trade guilds, tribute, and guild authority using Akkadian-influenced mnemonics."
+ },
+ {
+  "file": "indus_valley_script_deciphered_from_myth_65ff0a26.json",
+  "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_002",
+  "status": "partially_falsified",
+  "stage": "explained",
+  "type": "sign_value_claim",
+  "claim": "The fish sign encodes a coastal guild controller or maritime trader identity (Lothal-linked)."
+ },
+ {
+  "file": "indus_valley_script_deciphered_from_myth_65ff0a26.json",
+  "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_003",
+  "status": "untested",
+  "stage": "created",
+  "type": "sign_function_claim",
+  "claim": "The arrow sign (t\u012br) encodes border enforcement or guild authority."
+ },
+ {
+  "file": "indus_valley_script_deciphered_from_myth_65ff0a26.json",
+  "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_004",
+  "status": "untested",
+  "stage": "created",
+  "type": "archaeological_context_claim",
+  "claim": "The horned deity sign encodes fire-altar intermediary roles (Kalibangan fire-altars)."
+ },
+ {
+  "file": "parpola_2010_dravidian_solution.json",
+  "claim_id": "parpola_2010_dravidian_solution_manual_001",
+  "status": "unsupported",
+  "stage": "explained",
+  "type": "language_claim",
+  "claim": "Indus script encodes Proto-Dravidian language using the rebus principle."
+ },
+ {
+  "file": "parpola_2010_dravidian_solution.json",
+  "claim_id": "parpola_2010_dravidian_solution_manual_002",
+  "status": "partially_supported",
+  "stage": "explained",
+  "type": "sign_value_claim",
+  "claim": "The fish sign (meen in Dravidian) is the primary rebus sign in the Indus script."
+ },
+ {
+  "file": "positional_analysis_of_indus_signs_a2bedc93.json",
+  "claim_id": "positional_analysis_of_indus_signs_a2bedc93_statisti_0001",
+  "status": "untested",
+  "stage": "created",
+  "type": "statistical_claim",
+  "claim": "Statistical finding: Positional Analysis"
+ },
+ {
+  "file": "the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+  "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001",
+  "status": "untested",
+  "stage": "created",
+  "type": "sign_value_claim",
+  "claim": "Sign value: 821 / it is used in a variety of contexts (Figure 6"
+ },
+ {
+  "file": "the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+  "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
+  "status": "untested",
+  "stage": "created",
+  "type": "sign_value_claim",
+  "claim": "Sign value: 297 / the horned tiger, or perhaps just \u2018tiger\u2019 generically"
+ },
+ {
+  "file": "the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+  "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003",
+  "status": "untested",
+  "stage": "created",
+  "type": "statistical_claim",
+  "claim": "Statistical finding: Positional Analysis"
+ },
+ {
+  "file": "without_kings_or_conquests_the_indus_scr_ce9d98cc.json",
+  "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001",
+  "status": "contradicted",
+  "stage": "checked",
+  "type": "language_claim",
+  "claim": "Language hypothesis: non-linguistic symbol"
+ },
+ {
+  "file": "without_kings_or_conquests_the_indus_scr_ce9d98cc.json",
+  "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_statisti_0002",
+  "status": "untested",
+  "stage": "created",
+  "type": "statistical_claim",
+  "claim": "Statistical finding: Positional analysis"
+ },
+ {
+  "file": "without_kings_or_conquests_the_indus_scr_ce9d98cc.json",
+  "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0003",
+  "status": "untested",
+  "stage": "created",
+  "type": "critique_claim",
+  "claim": "Critique: Myth of a Literate Harappan"
+ },
+ {
+  "file": "without_kings_or_conquests_the_indus_scr_ce9d98cc.json",
+  "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0004",
+  "status": "untested",
+  "stage": "created",
+  "type": "critique_claim",
+  "claim": "Critique: Collapse of the \nIndus-Script Thesis"
+ },
+ {
+  "file": "without_kings_or_conquests_the_indus_scr_ce9d98cc.json",
+  "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001",
+  "status": "partially_supported",
+  "stage": "explained",
+  "type": "inscription_structure_claim",
+  "claim": "Indus inscriptions follow a tripartite grammar: prefix (identity/office/commodity) + medial (action/transaction/domain) + suffix (cycle/jurisdiction/logistics)."
+ },
+ {
+  "file": "without_kings_or_conquests_the_indus_scr_ce9d98cc.json",
+  "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_002",
+  "status": "untested",
+  "stage": "created",
+  "type": "interpretation_claim",
+  "claim": "The Indus script functioned as a civic-ritual continuity system, not a phonetic script or royal propaganda \u2014 encoding ecological cycles, distributed governance, and civic identity."
+ },
+ {
+  "file": "without_kings_or_conquests_the_indus_scr_ce9d98cc.json",
+  "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003",
+  "status": "partially_supported",
+  "stage": "explained",
+  "type": "sign_function_claim",
+  "claim": "Faunal signs function as identity/guild/commodity prefixes (initial position)."
+ },
+ {
+  "file": "without_kings_or_conquests_the_indus_scr_ce9d98cc.json",
+  "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004",
+  "status": "untested",
+  "stage": "created",
+  "type": "sign_function_claim",
+  "claim": "Celestial signs function as suffix/cycle markers (terminal position)."
+ },
+ {
+  "file": "without_kings_or_conquests_the_indus_scr_ce9d98cc.json",
+  "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_005",
+  "status": "untested",
+  "stage": "created",
+  "type": "methodological_claim",
+  "claim": "A 24-cluster Translation Atlas provides canonical sign forms, frequencies, and co-occurrence sets."
+ },
+ {
+  "file": "yadav_2009_arxiv.json",
+  "claim_id": "yadav_2009_arxiv_manual_001",
+  "status": "strongly_supported",
+  "stage": "explained",
+  "type": "statistical_claim",
+  "claim": "Indus script sign frequencies follow a Zipf-Mandelbrot distribution."
+ },
+ {
+  "file": "yadav_2009_arxiv.json",
+  "claim_id": "yadav_2009_arxiv_manual_002",
+  "status": "strongly_supported",
+  "stage": "explained",
+  "type": "sign_position_claim",
+  "claim": "There are specific text-beginning and text-ending signs in the Indus corpus."
+ },
+ {
+  "file": "yadav_2010_ngrams.json",
+  "claim_id": "yadav_2010_ngrams_manual_001",
+  "status": "strongly_supported",
+  "stage": "checked",
+  "type": "statistical_claim",
+  "claim": "Indus script sign frequencies follow a Zipf-Mandelbrot distribution."
+ },
+ {
+  "file": "yadav_2010_ngrams.json",
+  "claim_id": "yadav_2010_ngrams_manual_002",
+  "status": "strongly_supported",
+  "stage": "checked",
+  "type": "sign_position_claim",
+  "claim": "There are specific text-beginning and text-ending signs in the Indus corpus."
+ }
+]

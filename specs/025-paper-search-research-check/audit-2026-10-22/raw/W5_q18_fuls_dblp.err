@@ -1,0 +1,21 @@
+[10/22/26 15:04:12] WARNING  No DOAJ API key provided. Searches will  doaj.py:48
+                             use public access with rate limits (100            
+                             requests/hour). Get a free API key at:             
+                             https://doaj.org/apply-for-api-key/                
+                    WARNING  PAPER_SEARCH_MCP_UNPAYWALL_EMAIL/UN unpaywall.py:29
+                             PAYWALL_EMAIL not configured.                      
+                             Unpaywall fallback will be skipped.                
+                             You can request free access at                     
+                             https://unpaywall.org/products/api                 
+[10/22/26 15:04:13] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[10/22/26 15:04:44] ERROR    dblp API request error:                 dblp.py:116
+                             HTTPSConnectionPool(host='dblp.org',               
+                             port=443): Read timed out. (read                   
+                             timeout=30)                                        
+[10/22/26 15:05:15] ERROR    dblp HTML fallback failed:              dblp.py:206
+                             HTTPSConnectionPool(host='dblp.org',               
+                             port=443): Read timed out. (read                   
+                             timeout=30)                                        
+                    INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   

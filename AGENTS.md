@@ -46,11 +46,14 @@ was retired 2026-10-05 and is no longer active tooling.
 
 **Author:** Tristen Kyle Pierson / BitConcepts LLC
 
-**Current version:** v4 (June 2026)
+**Current version:** v5 (October 2026 — citation corrections from the
+2026-10-22 material audit, spec 025; source `.tex` only)
 
 **Source:** `glossa-corpus/indus/pierson_2026_indus_decipherment.tex`
 
 **PDF:** `glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v4.pdf`
+(the v4 PDF is the current compiled artifact; the v5 PDF is pending
+regeneration with xelatex — see `docs/research/PREPRINT_VERSIONING.md`)
 
 **DOI:** https://doi.org/10.5281/ZENODO.20414696 (Zenodo)
 
@@ -100,3 +103,19 @@ for querying and controlling the backend without manual API calls:
 The server connects to the running backend at `GLOSSA_BASE_URL`
 (default: `http://127.0.0.1:8001`). Tools return clean JSON error objects when
 the backend is unreachable — they never crash the MCP process.
+
+## Research check (paper-search MCP)
+
+A RESEARCH-CHECK stage (spec 025) audits claim dossiers against the
+scholarly literature **before** AEE scoring/adjudication, using the
+shared paper-search-mcp server (arXiv, Crossref, Semantic Scholar,
+OpenAlex, CORE, …):
+
+- **Client:** `backend/glossa_lab/paper_search.py` (stdio client;
+  spawns the server from `~/workspace/venvs/paper-search-mcp`).
+- **Stage:** `backend/glossa_lab/research_check.py` — writes advisory
+  sidecar records to `glossa-indus/claims/research_checks/`; never
+  modifies a claim, score, or status, and never adjudicates a
+  decipherment.
+- **Usage + binding audit protocol:** `docs/paper-search-mcp.md`.
+  Sci-Hub is hard-off in the client.

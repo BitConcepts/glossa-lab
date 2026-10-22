@@ -3210,6 +3210,76 @@ PENDING.
 (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution §VI.
 
+## [2026-10-22] Entry — Spec 025: Paper-Search MCP Client + RESEARCH-CHECK Stage
+
+Objective:
+  Implement the owner-ordered scholarly research-checking MCP
+  (openags/paper-search-mcp) in Glossa Lab — tooling only; the audit
+  of Glossa's own material is separate follow-on work assigned to
+  the Glossa Lab chat.
+
+What was done:
+
+  1. SPEC: specs/025-paper-search-research-check/ (spec.md, plan.md,
+     tasks.md) — proposal with H13 epistemic boundaries recorded
+     before execution (H2).
+
+  2. CLIENT: backend/glossa_lab/paper_search.py — stdio MCP client
+     running under the backend venv (existing mcp>=1,<2 dependency),
+     spawning the shared server from ~/workspace/venvs/paper-search-mcp
+     (the pinned install maintained from the RCPH workspace; not
+     duplicated). Sci-Hub is hard-off in code. Timeouts on every call
+     (H9/H11); NO_PROXY sanitized as in the house clients.
+
+  3. STAGE: backend/glossa_lab/research_check.py — RESEARCH-CHECK
+     stage for claim dossiers, designed to run BEFORE AEE scoring /
+     adjudication. Per claim: >=2 concept phrasings x >=2 sources,
+     DOI resolution for supplied citations, nearest-neighbor
+     surfacing with full-text reads of reachable OA neighbors.
+     Records are advisory sidecars in glossa-indus/claims/
+     research_checks/; verdict is always null; the claim file is
+     never modified. Placement decision (client module beside the
+     loop, not new glossa_mcp tools): glossa_mcp's 33 tools are
+     route-drift-guarded backend controls; paper search has no
+     backend route. Recorded in the spec.
+
+  4. DOCS: docs/paper-search-mcp.md (connector/usage doc; the audit
+     protocol carried over unchanged from the RCPH connector) and an
+     AGENTS.md pointer section (H8).
+
+  5. TESTS: backend/tests/test_paper_search.py — 10 offline tests
+     (client config, Sci-Hub refusal, phrasing plan, record shaping
+     against a stubbed client, advisory invariant). Run with the
+     governance lint and MCP suites: 39 passed.
+
+  6. SMOKE (live, raw outputs in the spec's smoke/): 57 tools via
+     the Glossa client; federated + arXiv concept queries on Indus
+     decipherment returned the real literature (Yadav et al. n-grams
+     paper at the top); DOI 10.1126/science.1170391 resolved to the
+     Rao et al. 2009 Science record; end-to-end stage run wrote the
+     first sidecar (25 neighbors, 3 full-text reads, verdict null).
+     MEASURED TRAP: the arXiv connector answers a no-match
+     conjunction with a default high-profile list (ATLAS /
+     gravitational-wave papers) instead of an empty result — the
+     first stage run spent its read slots on those. The stage now
+     ranks neighbors by claim-vocabulary overlap and gates reads on
+     it; the rerun's reads were all on-topic. Recorded in
+     docs/paper-search-mcp.md limits.
+     Process note (H9): the first stage invocation was killed by a
+     service restart mid-run (no record written; two downloaded
+     PDFs remained under research_checks/full_text/, gitignored per
+     the repo's PDF policy); retried detached and completed.
+
+  7. COMMIT: this spec's files only, on branch
+     spec/025-paper-search-research-check. The pre-existing
+     uncommitted working-tree modifications (claims extraction,
+     anchor staging, partial loop results) are not this session's
+     work and were not staged. origin/main has advanced beyond this
+     checkout (6215690d vs c4a3ef4c); push of this branch attempted
+     as a new branch only — main was not touched.
+
+**AI disclosure:** execution recorded by an AI agent (Muse, via
+Muse) at the direction of Tristen Pierson, per constitution SSVI.
 ## 2026-10-09 — Phase-135 (Spec 024): Evidence Integration, Stage 1 Re-Pilot — clarified codebook, fresh sample; exact agreement 0.78, Cohen's κ 0.7129; MIDDLE BAND for the second time; no Stage 2(b) design
 
 Owner approval (Tristen Pierson, 2026-10-09): "Run
@@ -9378,3 +9448,80 @@ specs/065-s1-s5-heading-successor/extraction-S1.txt.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-22 — Spec 025 MATERIAL AUDIT EXECUTED: paper-search check of all 31 extracted claims + preprint citations
+
+Per the owner's 2026-10-22 order, executed on
+branch spec/025-paper-search-research-check
+(main merged in at a5a65f86) under the protocol
+in docs/paper-search-mcp.md. RESEARCH-CHECK
+stage sidecars now exist for all 31 claims in
+glossa-indus/claims/extracted_claims/ (advisory,
+verdict null by construction); all raw outputs,
+worker findings, and the audit report are filed
+in specs/025-paper-search-research-check/
+audit-2026-10-22/. Headline outcomes: both
+strongly_supported Yadav extractions verified
+verbatim against the source papers' full texts
+(the Zipf fit is on the EBUDS subset of M77;
+beginner/ender priority runs to Kondratov 1976
+and Mahadevan 1977); the Farmer-cluster
+"contradicted" framing did not survive the
+challenge pass as a settled refutation (Sproat
+2014 and Rao et al. 2010 read in full text —
+the literature position is contested and
+unresolved); a three-part positional grammar is
+published prior art (Wells 2015 ch. 3; Sinha et
+al. 2010; Yadav 2009; Fuls's positional classes);
+the fish = mīn rebus priority is Heras's, with
+Parpola 2010 a synthesis; the Roif document is
+a self-published manuscript with no venue or
+identifier of its own. No claim status, anchor,
+or score was changed by the audit; ten
+correction proposals are filed gate-pending in
+the audit directory. Open gaps include Kak
+1988, Mahadevan 1977 full text, Kondratov 1976,
+Korvink 2011, the Rao Science/PNAS full texts
+via this connector, and the session-long
+OpenAlex/Semantic Scholar 429 outages.
+
+AI disclosure: executed by an AI agent (Muse,
+via Muse) at the direction of Tristen Pierson,
+per constitution sec.VI.
+
+## 2026-10-22 — Preprint v5: citation corrections from the Spec 025 material audit
+
+glossa-corpus/indus/pierson_2026_indus_
+decipherment.tex bumped v4 → v5 (citation
+corrections only; docs/research/
+PREPRINT_VERSIONING.md and AGENTS.md updated).
+§8 entries corrected: Wells & Fuls 2015 (was
+"Wells 2011"); Parpola, Parpola & Brunswig 1977,
+JESHO 20(2), Simo Parpola first author (was
+1975, 18(2)); Crawford 2001 as the monograph
+(was an Archaeology International article);
+Parpola 2010 as the CICT conference lecture,
+Coimbatore (the World Archaeology 42(2)
+attribution was not verified in any reachable
+index — seven Crossref searches across two
+workers). Rao et al. Science 2009 entry added;
+the §1.2 entropy result now cites it instead of
+the PNAS Markov paper; the §2.1 Zipf exponent
+~1.7 no longer carries a Rao 2009 attribution
+(no text read reports it; Yadav 2010's full-text
+fit gives b = 2.59 on EBUDS/M77). Nair 2026
+characterizations in §1.3/§3.10/Acknowledgments
+corrected to his full text (independent scorecard
+study; hedged intermediate result — not a
+replication of this paper's tests); his three
+quoted statistics verified exact. Evidence and
+bounds per item: audit-2026-10-22/
+corrections_log.md. The v5 PDF was NOT
+regenerated (no xelatex in the audit
+environment); the v4 PDF remains the compiled
+artifact of record. Nothing submitted.
+Adversarial pass required before submission.
+
+AI disclosure: executed by an AI agent (Muse,
+via Muse) at the direction of Tristen Pierson,
+per constitution sec.VI.

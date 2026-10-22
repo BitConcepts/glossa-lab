@@ -1,0 +1,60 @@
+[10/22/26 14:54:29] WARNING  No DOAJ API key provided. Searches will  doaj.py:48
+                             use public access with rate limits (100            
+                             requests/hour). Get a free API key at:             
+                             https://doaj.org/apply-for-api-key/                
+                    WARNING  PAPER_SEARCH_MCP_UNPAYWALL_EMAIL/UN unpaywall.py:29
+                             PAYWALL_EMAIL not configured.                      
+                             Unpaywall fallback will be skipped.                
+                             You can request free access at                     
+                             https://unpaywall.org/products/api                 
+[10/22/26 14:54:30] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    WARNING  Primary download failed for           server.py:811
+                             crossref/10.1371/journal.pone.0009506              
+                             : CrossRef does not provide direct                 
+                             PDF downloads. CrossRef is a citation              
+                             database that provides metadata about              
+                             academic papers. To access the full                
+                             text, please use the paper's DOI or                
+                             URL to visit the publisher's website.              
+[10/22/26 14:54:47] WARNING  OpenAIRE v2 XML search failed,      openaire.py:297
+                             attempting legacy parser fallback:                 
+                             409 Client Error: Conflict for url:                
+                             https://api.openaire.eu/search/rese                
+                             archProducts?keywords=10.1371%2Fjou                
+                             rnal.pone.0009506&page=1&size=3                    
+[10/22/26 14:54:51] ERROR    OpenAIRE API request error: 400     openaire.py:319
+                             Client Error: Bad Request for url:                 
+                             https://api.openaire.eu/search/publ                
+                             ications?size=3&format=json&query=1                
+                             0.1371%2Fjournal.pone.0009506                      
+[10/22/26 14:54:54] WARNING  CORE request returned 429 (attempt 1/3). core.py:91
+                             Retrying in 1s                                     
+[10/22/26 14:54:58] WARNING  CORE request returned 429 (attempt 2/3). core.py:91
+                             Retrying in 2s                                     
+[10/22/26 14:55:03] WARNING  CORE request returned 500 (attempt 3/3). core.py:91
+                             Retrying in 4s                                     
+[10/22/26 14:55:11] INFO     Europe PMC search returned 3 papers europepmc.py:86
+                             for query:                                         
+                             10.1371/journal.pone.0009506                       
+[10/22/26 14:55:14] INFO     HTTP Request: GET                   _client.py:1740
+                             https://europepmc.org/articles/PMC1                
+                             2617910?pdf=render "HTTP/1.1 302                   
+                             Found"                                             
+[10/22/26 14:55:44] WARNING  Direct URL download failed for        server.py:198
+                             https://europepmc.org/articles/PMC126              
+                             17910?pdf=render:                                  
+[10/22/26 14:55:46] INFO     HTTP Request: GET                   _client.py:1740
+                             https://europepmc.org/articles/PMC8                
+                             635354?pdf=render "HTTP/1.1 302                    
+                             Found"                                             
+[10/22/26 14:56:16] WARNING  Direct URL download failed for        server.py:198
+                             https://europepmc.org/articles/PMC863              
+                             5354?pdf=render:                                   
+[10/22/26 14:56:18] INFO     HTTP Request: GET                   _client.py:1740
+                             https://journals.plos.org/plosone/a                
+                             rticle/file?id=10.1371/journal.pone                
+                             .0221328&type=printable "HTTP/1.1                  
+                             200 OK"                                            
+[10/22/26 14:56:19] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   

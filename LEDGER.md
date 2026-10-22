@@ -9041,6 +9041,114 @@ reproduces the pre-act file byte-identically; status and stage
 unchanged). Spec 046's frozen record, outcome, and closure delivery
 stand unedited. Anchors asserted byte-identical before and after
 (df0cf620…).
+
+## 2026-10-22 — Spec 063 (Phase-425) executed — RECOVERED (route 2)
+
+Spec 063 (the sign-821 identification successor
+to Spec 056) was executed as Phase-425 under
+the frozen contract (freeze digest dc24a10e…;
+OSF registration kfet5 approved and public,
+API-verified 2026-10-22), under the owner's
+separate execution order (DD-063-13).
+Graph-first build: backend/scripts/
+phase425_sign821_identification.py, graph node
+IndusPhase425Sign821Identification registered
+and verified by import before the run. Step 0
+passed in full: every §2 pin recomputed (held
+text 62acf855…, registry 8a0b2a82…, witness
+ecbc37a4…, Spec 056's freeze/outcome/extraction
+records, Phase-104 evaluation 2d0b83e8…,
+lane-2 drafts 3f645c9a…, anchors df0cf620…,
+preserved reference 695dd35d…); the claim
+record asserted in the Spec 038 form (constant
+bd0f7abd… in freeze.json plus the fragment's
+facts on the live file — entry present,
+UNTESTED, created, its spec056_closure append
+present); the local Wells 2006 thesis PDF
+asserted to its frozen digest on the local
+file BEFORE any plate was read (4b39330c…,
+19,313,853 bytes); and the plate page (thesis
+p. 92 / PDF p. 104, Figure 3.2) produced from
+that pinned file (its embedded plate image
+Im106.tiff, SHA-256 961ed7de…). Step D: two
+independent derivations from the plate —
+sequential plate read and neighbour-contrast
+read, each without sight of the other or of
+the drafted descriptor wording — agree feature
+by feature: two identical vertical oval
+outlines side by side, touching at the
+vertical midline, each divided by three
+straight diameters (one vertical, two
+diagonal) into six sectors; their neighbour
+discriminations agree on all five named
+neighbours (818 a single 4-sector circle; 820
+the single oval; 822 a single spoked oval
+flanked by paired vertical strokes; 823 a
+single denser-crossed oval; 791 two plain
+ovals). No disagreement arose. The reconciled
+descriptor agrees with the preserved record's
+descriptor on every feature — the reference
+is SUSTAINED, checked not inherited. Step C:
+continuity passes on the anchors' agreement —
+the Appendix II formation passage ("sign 820
+doubles to form sign 821", held-text lines
+3691–3704, verified verbatim), the P378
+registry anchor (W820 / M391, "Wheel with 6
+spokes with even angles"), and the plate
+agreement at 820/821 all agree on the doubled
+six-spoke-wheel form; the plate number alone
+anchored nothing. Step M: route 1 (registry,
+by drawn form) was attempted and FAILED — no
+registry row carries the doubled form (its
+only two "6 spokes" descriptions are P378, a
+single wheel, and P379, a single flanked
+wheel), with no fallback to P378, the base
+sign; route 2 (the list's own entry, through
+the preserved reference) SATISFIED the match;
+route 3 (composition) was not used — exactly
+one route identifies the sign. Traps asserted
+by name: Yunmapped_0821 (a Yajnadevam glyph
+identifier, empty wells_ids, frequency 10 —
+asserted as a trap, never used), sign 861
+(Figure 6.12 reading-confusion trap), P378 as
+the target, and number-only matching in any
+form (none used). Candidate K-1 — sign 821,
+in the Dholavira signboard contexts, has a
+meaning of "city", either as a determinative
+or as a word (Wells 2015, printed p. 92) —
+therefore passes R-1 through R-5 (R-1, R-2,
+R-4, R-5 of record in Spec 056's executed
+record on the pinned passage; R-3 run afresh
+under §5) and the outcome is RECOVERED. The
+claim enters the lifecycle at the created
+stage, untested, as the appended
+spec063_restatement entry on the fragment's
+own record (proposition, verbatim quote and
+locator, named sign list and identification,
+R-4 condition, R-5 numbers and conditions, and
+the designed-never-run test note; removal of
+the append reproduces the pre-act file
+byte-identically; the fragment's original
+entry and its spec056_closure append stand
+above it, unedited). No test was run. Spec
+056's record is unedited; its IDENTIFICATION
+FAILED stands as the record of the first run.
+Records: specs/063-sign821-identification-successor/
+outcome.md, specs/063-sign821-identification-successor/
+identification-record.md,
+reports/phase425_results.json (SHA-256
+c7b246e9…), reports/phase425_identification_report.md
+(SHA-256 67f753bf…). Anchors asserted
+byte-identical before and after (df0cf620…).
+Foundation check as measured: 40 passed / 0
+failed / 8 warnings. This act is
+identification on a preserved reference: it
+establishes, at most, whether the drawn sign
+candidate K-1 names is identified in the
+program's claim form — never whether K-1's
+suggested meaning is right, and nothing about
+sign 821 itself beyond the identification.
+
 ## 2026-10-22 — Spec 067 EXECUTED (Phase-429): REPLICATED
 
 Spec 059's question re-run against the Spec 066 merged catalogue layer v2, under

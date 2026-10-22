@@ -9551,3 +9551,30 @@ via a small follow-up PR.
 AI disclosure: executed by an AI agent (Muse,
 via Muse) at the direction of Tristen Pierson,
 per constitution sec.VI.
+
+## 2026-10-22 — Spec 025 material audit: fix commission, batch B (tooling proof, gap-closure evidence, public-surface check)
+
+Batch B files the fix commission's evidence records in
+specs/025-paper-search-research-check/audit-2026-10-22/:
+fix_execution_addendum_2026-10-22.md (per-proposal execution
+record for batches A and B), raw/fix_ws2_unpaywall_proof.md
+(the Unpaywall email configured per the connector doc's
+environment mechanism; the audit session's failed Yadav DOI
+re-run — proven end-to-end via the Europe PMC route with the
+artifact identity-checked; the crossref download route's
+wrong-artifact defect recorded as standing),
+raw/fix_ws3_evidence_notes.md and raw/fix_ws3_handoff.md
+(Rao Science and Rao PNAS full texts read — the PNAS paper
+contains no Zipf content, upgrading audit correction #6 to
+full-text confirmation; Wells 1998 thesis resolved at record
+level; Kak 1988 examined, Zipf attribution unsupported at the
+reached evidence level; the five in-text Mahadevan works
+verified at published-bibliography level; Steinkeller narrowed
+but still open), raw/fix_ws3_rao_pnas_crossref.json,
+raw/fix_ws2_yadav2010_first_page.txt, and
+public_surface_check_2026-10-22.md (neither research page
+states any corrected item; one clarifying prior-art draft
+filed for the owner's approval — nothing published).
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.

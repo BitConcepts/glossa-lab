@@ -98,3 +98,23 @@
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+---
+
+## Approval record — appended 2026-10-22 (landing)
+
+OSF registration **s6hr9** for this spec was
+**approved and is public**. Verified by the parent
+via the OSF API on 2026-10-22: `public` true,
+`pending` false, `withdrawn` false,
+`reviews_state` accepted. This record uses exactly
+those verified facts: no DOI was provided with the
+verification, and none is asserted here. The
+approval satisfied the execution gate recorded in
+spec.md §1 and DD-064-17 before Phase-426 ran; the
+execution it gated landed as PR #321 (merged
+2026-10-22 at
+a36060a437e81db73f5a8eb454eee023129168db; outcome
+IDENTIFICATION FAILED
+(continuity/discrimination not sustained) — see
+outcome.md and its completion note).

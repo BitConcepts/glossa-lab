@@ -1,0 +1,379 @@
+{
+ "audit": "spec027-stage1-margins-only",
+ "outcome_fields_present": false,
+ "input_hashes": {
+  "icit_converted_v2_keyed.json": "bbfdbcd5d5e3e3121251de91462af51dc702a4114a4d10ffd7061e1f5593a5c8",
+  "horus_inscriptions.csv": "c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef",
+  "parpola_mahadevan_crosswalk_v1.csv": "3d0b9ef12e6ce4eb8426d449656272365ee157b8c326a130d2261f8e39452823"
+ },
+ "join": {
+  "keyed_records": 5679,
+  "joined": 5678,
+  "site_agree": 5678
+ },
+ "population_flow": {
+  "layer_records": 5679,
+  "after_dedup_kept": 4531,
+  "provenanced": 4505,
+  "excluded_graffiti_pottg": 473,
+  "excluded_type_POT": 562,
+  "excluded_type_OTHER": 338,
+  "seal_tab": 3605,
+  "eligible_primary": 3144,
+  "excluded_legible_lt2": 461,
+  "excluded_status_dropped_zero_mapped": 270,
+  "excluded_status_dropped_intra_dup": 795,
+  "excluded_status_dropped_holdat_dup": 83,
+  "excluded_site_unknown": 26,
+  "unjoined_in_horus": 1
+ },
+ "eligible_sites": 52,
+ "per_site": {
+  "Allahdino": {
+   "inscriptions": 7,
+   "legible_tokens": 29,
+   "share_of_eligible": 0.0022
+  },
+  "Altyn Depe": {
+   "inscriptions": 1,
+   "legible_tokens": 2,
+   "share_of_eligible": 0.0003
+  },
+  "Bala-kot": {
+   "inscriptions": 4,
+   "legible_tokens": 20,
+   "share_of_eligible": 0.0013
+  },
+  "Banawali": {
+   "inscriptions": 16,
+   "legible_tokens": 48,
+   "share_of_eligible": 0.0051
+  },
+  "Baror": {
+   "inscriptions": 1,
+   "legible_tokens": 3,
+   "share_of_eligible": 0.0003
+  },
+  "Bhirrana": {
+   "inscriptions": 3,
+   "legible_tokens": 9,
+   "share_of_eligible": 0.001
+  },
+  "Chanhu-daro": {
+   "inscriptions": 54,
+   "legible_tokens": 268,
+   "share_of_eligible": 0.0172
+  },
+  "Desalpur": {
+   "inscriptions": 2,
+   "legible_tokens": 11,
+   "share_of_eligible": 0.0006
+  },
+  "Dholavira": {
+   "inscriptions": 111,
+   "legible_tokens": 421,
+   "share_of_eligible": 0.0353
+  },
+  "Failaka": {
+   "inscriptions": 2,
+   "legible_tokens": 7,
+   "share_of_eligible": 0.0006
+  },
+  "Farmana": {
+   "inscriptions": 4,
+   "legible_tokens": 8,
+   "share_of_eligible": 0.0013
+  },
+  "Ganweriwala": {
+   "inscriptions": 1,
+   "legible_tokens": 3,
+   "share_of_eligible": 0.0003
+  },
+  "Gharo Bhiro": {
+   "inscriptions": 1,
+   "legible_tokens": 3,
+   "share_of_eligible": 0.0003
+  },
+  "Girsu": {
+   "inscriptions": 1,
+   "legible_tokens": 4,
+   "share_of_eligible": 0.0003
+  },
+  "Gola Dhoro (Bagasra)": {
+   "inscriptions": 5,
+   "legible_tokens": 28,
+   "share_of_eligible": 0.0016
+  },
+  "Gonur Depe": {
+   "inscriptions": 1,
+   "legible_tokens": 8,
+   "share_of_eligible": 0.0003
+  },
+  "Hajar": {
+   "inscriptions": 1,
+   "legible_tokens": 2,
+   "share_of_eligible": 0.0003
+  },
+  "Harappa": {
+   "inscriptions": 1437,
+   "legible_tokens": 4439,
+   "share_of_eligible": 0.4571
+  },
+  "Janabiyah": {
+   "inscriptions": 1,
+   "legible_tokens": 7,
+   "share_of_eligible": 0.0003
+  },
+  "Jhukar": {
+   "inscriptions": 1,
+   "legible_tokens": 5,
+   "share_of_eligible": 0.0003
+  },
+  "Kalibangan": {
+   "inscriptions": 52,
+   "legible_tokens": 213,
+   "share_of_eligible": 0.0165
+  },
+  "Kanmer": {
+   "inscriptions": 1,
+   "legible_tokens": 2,
+   "share_of_eligible": 0.0003
+  },
+  "Karanpura": {
+   "inscriptions": 1,
+   "legible_tokens": 2,
+   "share_of_eligible": 0.0003
+  },
+  "Karzakan": {
+   "inscriptions": 3,
+   "legible_tokens": 10,
+   "share_of_eligible": 0.001
+  },
+  "Khirsara": {
+   "inscriptions": 4,
+   "legible_tokens": 27,
+   "share_of_eligible": 0.0013
+  },
+  "Kish": {
+   "inscriptions": 2,
+   "legible_tokens": 10,
+   "share_of_eligible": 0.0006
+  },
+  "Lakhanjo-daro": {
+   "inscriptions": 4,
+   "legible_tokens": 15,
+   "share_of_eligible": 0.0013
+  },
+  "Lohumjo-daro": {
+   "inscriptions": 1,
+   "legible_tokens": 10,
+   "share_of_eligible": 0.0003
+  },
+  "Lothal": {
+   "inscriptions": 74,
+   "legible_tokens": 306,
+   "share_of_eligible": 0.0235
+  },
+  "Luristan": {
+   "inscriptions": 1,
+   "legible_tokens": 4,
+   "share_of_eligible": 0.0003
+  },
+  "Miri Qalat": {
+   "inscriptions": 2,
+   "legible_tokens": 4,
+   "share_of_eligible": 0.0006
+  },
+  "Mohenjo-daro": {
+   "inscriptions": 1302,
+   "legible_tokens": 5996,
+   "share_of_eligible": 0.4141
+  },
+  "Nausharo": {
+   "inscriptions": 12,
+   "legible_tokens": 67,
+   "share_of_eligible": 0.0038
+  },
+  "Nindowari-damb": {
+   "inscriptions": 2,
+   "legible_tokens": 12,
+   "share_of_eligible": 0.0006
+  },
+  "Nuhato": {
+   "inscriptions": 1,
+   "legible_tokens": 3,
+   "share_of_eligible": 0.0003
+  },
+  "Ornach area": {
+   "inscriptions": 1,
+   "legible_tokens": 2,
+   "share_of_eligible": 0.0003
+  },
+  "Pabumath": {
+   "inscriptions": 1,
+   "legible_tokens": 5,
+   "share_of_eligible": 0.0003
+  },
+  "Pirak": {
+   "inscriptions": 1,
+   "legible_tokens": 5,
+   "share_of_eligible": 0.0003
+  },
+  "Qala'at al-Bahrain": {
+   "inscriptions": 1,
+   "legible_tokens": 5,
+   "share_of_eligible": 0.0003
+  },
+  "Rahman-deri": {
+   "inscriptions": 1,
+   "legible_tokens": 2,
+   "share_of_eligible": 0.0003
+  },
+  "Rajanpur": {
+   "inscriptions": 1,
+   "legible_tokens": 2,
+   "share_of_eligible": 0.0003
+  },
+  "Rakhigarhi": {
+   "inscriptions": 6,
+   "legible_tokens": 28,
+   "share_of_eligible": 0.0019
+  },
+  "Rupar": {
+   "inscriptions": 1,
+   "legible_tokens": 3,
+   "share_of_eligible": 0.0003
+  },
+  "Saar": {
+   "inscriptions": 1,
+   "legible_tokens": 6,
+   "share_of_eligible": 0.0003
+  },
+  "Salut": {
+   "inscriptions": 1,
+   "legible_tokens": 5,
+   "share_of_eligible": 0.0003
+  },
+  "Shikarpur": {
+   "inscriptions": 1,
+   "legible_tokens": 5,
+   "share_of_eligible": 0.0003
+  },
+  "Shortughai": {
+   "inscriptions": 1,
+   "legible_tokens": 2,
+   "share_of_eligible": 0.0003
+  },
+  "Surkotada": {
+   "inscriptions": 2,
+   "legible_tokens": 11,
+   "share_of_eligible": 0.0006
+  },
+  "Susa": {
+   "inscriptions": 2,
+   "legible_tokens": 13,
+   "share_of_eligible": 0.0006
+  },
+  "Tello": {
+   "inscriptions": 1,
+   "legible_tokens": 4,
+   "share_of_eligible": 0.0003
+  },
+  "Ur": {
+   "inscriptions": 5,
+   "legible_tokens": 18,
+   "share_of_eligible": 0.0016
+  },
+  "Wattoowala": {
+   "inscriptions": 1,
+   "legible_tokens": 2,
+   "share_of_eligible": 0.0003
+  }
+ },
+ "dominant_sites": [
+  {
+   "site": "Harappa",
+   "inscriptions": 1437,
+   "legible_tokens": 4439,
+   "share_of_eligible": 0.4571
+  },
+  {
+   "site": "Mohenjo-daro",
+   "inscriptions": 1302,
+   "legible_tokens": 5996,
+   "share_of_eligible": 0.4141
+  },
+  {
+   "site": "Dholavira",
+   "inscriptions": 111,
+   "legible_tokens": 421,
+   "share_of_eligible": 0.0353
+  },
+  {
+   "site": "Lothal",
+   "inscriptions": 74,
+   "legible_tokens": 306,
+   "share_of_eligible": 0.0235
+  },
+  {
+   "site": "Chanhu-daro",
+   "inscriptions": 54,
+   "legible_tokens": 268,
+   "share_of_eligible": 0.0172
+  }
+ ],
+ "stratum_exchangeability": {
+  "SEAL": {
+   "sites_with_any": 48,
+   "sites_ge5": 12,
+   "sites_ge10": 8,
+   "inscriptions": 1876
+  },
+  "TAB": {
+   "sites_with_any": 12,
+   "sites_ge5": 3,
+   "sites_ge10": 3,
+   "inscriptions": 1268
+  }
+ },
+ "permutability_projections": {
+  "min_site_10_min_cell_5": {
+   "sites_passing": 4,
+   "inscriptions_in_passing_cells": 2862
+  },
+  "min_site_20_min_cell_5": {
+   "sites_passing": 3,
+   "inscriptions_in_passing_cells": 2850
+  },
+  "min_site_20_min_cell_10": {
+   "sites_passing": 3,
+   "inscriptions_in_passing_cells": 2850
+  },
+  "min_site_30_min_cell_10": {
+   "sites_passing": 3,
+   "inscriptions_in_passing_cells": 2850
+  },
+  "min_site_50_min_cell_10": {
+   "sites_passing": 3,
+   "inscriptions_in_passing_cells": 2850
+  }
+ },
+ "token_kinds_eligible": {
+  "direct": 9576,
+  "chain": 1649,
+  "unmapped": 899,
+  "placeholder": 649
+ },
+ "total_tokens_eligible": 12773,
+ "distinct_m_signs_mapped": 271,
+ "signs_ge10_tokens": 123,
+ "unmapped_share_of_tokens": 0.0704,
+ "placeholder_share_of_tokens": 0.0508,
+ "crosswalk_sensitivity_token_coverage": {
+  "mapped_tokens": 11225,
+  "covered_by_any_high_confidence_m_to_p": 11218,
+  "share_any": 0.9994,
+  "covered_by_unambiguous_high_confidence_m_to_p": 1972,
+  "share_unambiguous": 0.1757
+ }
+}

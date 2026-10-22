@@ -1,0 +1,2327 @@
+{
+  "phase": "Phase-140",
+  "spec": "025",
+  "test": "G1",
+  "title": "G1 \u2014 site repertoire differentiation under preservation control, ICIT-lineage layer (horus84); chronology NOT controlled in the primary test",
+  "lineage_label": "ICIT-lineage layer (horus84)",
+  "headline_rider": "Chronology is NOT controlled in the primary test: period/phase (chronology) remain uncontrolled confounders; the S-chron sensitivity bound is reported alongside, never as the controlled verdict.",
+  "freeze": "specs/025-stage2-controlled-followup/phase140-freeze.md (under phase139-freeze.md)",
+  "input": {
+    "path": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/horus84-computational-linguistics/data/inscriptions.csv",
+    "sha256": "c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef"
+  },
+  "covariates_input": {
+    "path": "data/evidence_integration/phase139_harmonized_covariates.json",
+    "sha256": "a0f0d05a578826208e3fee5c8e1e296c44db3450d9ef27a9a837a57123b04413",
+    "rows": 5410,
+    "join": "layer id column (unique); asserted complete over the 5,410-row population; composition_stratum agreement asserted per row"
+  },
+  "anchors_sha256": "eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed",
+  "parameters": {
+    "B": 9999,
+    "seed": 20261009,
+    "p_formula": "(1 + #{chi2_perm >= chi2_obs}) / (1 + B)",
+    "min_sign_count": 10,
+    "site_inclusion": ">=30 inscriptions AND >=100 parsed tokens (Phase-137 rule)",
+    "placeholders_excluded_from_profiles": [
+      "000",
+      "999"
+    ]
+  },
+  "population": {
+    "eligible_sites": [
+      "Chanhu-daro",
+      "Dholavira",
+      "Harappa",
+      "Kalibangan",
+      "Lothal",
+      "Mohenjo-daro",
+      "Nausharo"
+    ],
+    "inscriptions": 5410,
+    "profile_tokens": 17257,
+    "parsed_tokens": 19051,
+    "matches_committed_phase137_f3": true
+  },
+  "table_dimensions": [
+    7,
+    187
+  ],
+  "regression_composition_only": {
+    "configuration": "strata = composition only (the Phase-137 F3 configuration)",
+    "observed_chi_square": 4966.362228365138,
+    "permutation": {
+      "B": 9999,
+      "seed": 20261009,
+      "p_formula": "(1 + #{chi2_perm >= chi2_obs}) / (1 + B)",
+      "count_perm_ge_observed": 0,
+      "permutation_median": 2667.8699970446564,
+      "permutation_p95_nearest_rank": 2844.608305861064,
+      "p_value_raw": 0.0001
+    },
+    "permutable_inscriptions": 5410,
+    "matches_committed_phase137_f3_exactly": true,
+    "committed_phase137_f3": {
+      "observed_chi_square": 4966.362228365138,
+      "permutation": {
+        "B": 9999,
+        "seed": 20261009,
+        "p_formula": "(1 + #{chi2_perm >= chi2_obs}) / (1 + B)",
+        "count_perm_ge_observed": 0,
+        "permutation_median": 2667.8699970446564,
+        "permutation_p95_nearest_rank": 2844.608305861064,
+        "p_value_raw": 0.0001
+      }
+    }
+  },
+  "g1_primary": {
+    "observed_chi_square": 4966.362228365138,
+    "cramers_v_descriptive": 0.2190084751289231,
+    "per_site_tv_distance_descriptive": {
+      "Chanhu-daro": 0.3493488929798831,
+      "Dholavira": 0.24038587758486082,
+      "Harappa": 0.1645097175887218,
+      "Kalibangan": 0.30064257845384196,
+      "Lothal": 0.29187049337998733,
+      "Mohenjo-daro": 0.1266108267671559,
+      "Nausharo": 0.4259181646544507
+    },
+    "sparsity_disclosure": {
+      "cells_total": 1309,
+      "cells_expected_lt5": 887,
+      "share_cells_expected_lt5": 0.6776165011459129,
+      "min_expected_count": 0.07475227443935795,
+      "per_site_tokens": [
+        325,
+        637,
+        7168,
+        508,
+        681,
+        7809,
+        129
+      ]
+    },
+    "strata": {
+      "n_strata": 53,
+      "table": [
+        {
+          "stratum": "OTHER|1|UNRECORDED",
+          "n_inscriptions": 2,
+          "n_sites": 2,
+          "sites": [
+            "Dholavira",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 2
+        },
+        {
+          "stratum": "OTHER|1|complete",
+          "n_inscriptions": 45,
+          "n_sites": 5,
+          "sites": [
+            "Chanhu-daro",
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 45
+        },
+        {
+          "stratum": "OTHER|1|damaged",
+          "n_inscriptions": 8,
+          "n_sites": 4,
+          "sites": [
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 8
+        },
+        {
+          "stratum": "OTHER|1|fragment",
+          "n_inscriptions": 31,
+          "n_sites": 5,
+          "sites": [
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 31
+        },
+        {
+          "stratum": "OTHER|2-3|UNRECORDED",
+          "n_inscriptions": 1,
+          "n_sites": 1,
+          "sites": [
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 0
+        },
+        {
+          "stratum": "OTHER|2-3|complete",
+          "n_inscriptions": 50,
+          "n_sites": 6,
+          "sites": [
+            "Chanhu-daro",
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 50
+        },
+        {
+          "stratum": "OTHER|2-3|damaged",
+          "n_inscriptions": 8,
+          "n_sites": 2,
+          "sites": [
+            "Dholavira",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 8
+        },
+        {
+          "stratum": "OTHER|2-3|fragment",
+          "n_inscriptions": 110,
+          "n_sites": 6,
+          "sites": [
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro",
+            "Nausharo"
+          ],
+          "permutable_inscriptions": 110
+        },
+        {
+          "stratum": "OTHER|4-5|complete",
+          "n_inscriptions": 36,
+          "n_sites": 6,
+          "sites": [
+            "Chanhu-daro",
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 36
+        },
+        {
+          "stratum": "OTHER|4-5|damaged",
+          "n_inscriptions": 17,
+          "n_sites": 4,
+          "sites": [
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 17
+        },
+        {
+          "stratum": "OTHER|4-5|fragment",
+          "n_inscriptions": 63,
+          "n_sites": 6,
+          "sites": [
+            "Chanhu-daro",
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 63
+        },
+        {
+          "stratum": "OTHER|6+|complete",
+          "n_inscriptions": 23,
+          "n_sites": 5,
+          "sites": [
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 23
+        },
+        {
+          "stratum": "OTHER|6+|damaged",
+          "n_inscriptions": 6,
+          "n_sites": 4,
+          "sites": [
+            "Dholavira",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 6
+        },
+        {
+          "stratum": "OTHER|6+|fragment",
+          "n_inscriptions": 24,
+          "n_sites": 5,
+          "sites": [
+            "Chanhu-daro",
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Lothal"
+          ],
+          "permutable_inscriptions": 24
+        },
+        {
+          "stratum": "POT|1|complete",
+          "n_inscriptions": 24,
+          "n_sites": 5,
+          "sites": [
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro",
+            "Nausharo"
+          ],
+          "permutable_inscriptions": 24
+        },
+        {
+          "stratum": "POT|1|damaged",
+          "n_inscriptions": 8,
+          "n_sites": 2,
+          "sites": [
+            "Harappa",
+            "Kalibangan"
+          ],
+          "permutable_inscriptions": 8
+        },
+        {
+          "stratum": "POT|1|fragment",
+          "n_inscriptions": 203,
+          "n_sites": 7,
+          "sites": [
+            "Chanhu-daro",
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro",
+            "Nausharo"
+          ],
+          "permutable_inscriptions": 203
+        },
+        {
+          "stratum": "POT|2-3|complete",
+          "n_inscriptions": 41,
+          "n_sites": 5,
+          "sites": [
+            "Chanhu-daro",
+            "Harappa",
+            "Kalibangan",
+            "Mohenjo-daro",
+            "Nausharo"
+          ],
+          "permutable_inscriptions": 41
+        },
+        {
+          "stratum": "POT|2-3|damaged",
+          "n_inscriptions": 9,
+          "n_sites": 2,
+          "sites": [
+            "Harappa",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 9
+        },
+        {
+          "stratum": "POT|2-3|fragment",
+          "n_inscriptions": 205,
+          "n_sites": 7,
+          "sites": [
+            "Chanhu-daro",
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro",
+            "Nausharo"
+          ],
+          "permutable_inscriptions": 205
+        },
+        {
+          "stratum": "POT|4-5|complete",
+          "n_inscriptions": 12,
+          "n_sites": 2,
+          "sites": [
+            "Mohenjo-daro",
+            "Nausharo"
+          ],
+          "permutable_inscriptions": 12
+        },
+        {
+          "stratum": "POT|4-5|damaged",
+          "n_inscriptions": 1,
+          "n_sites": 1,
+          "sites": [
+            "Harappa"
+          ],
+          "permutable_inscriptions": 0
+        },
+        {
+          "stratum": "POT|4-5|fragment",
+          "n_inscriptions": 42,
+          "n_sites": 5,
+          "sites": [
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro",
+            "Nausharo"
+          ],
+          "permutable_inscriptions": 42
+        },
+        {
+          "stratum": "POT|6+|UNRECORDED",
+          "n_inscriptions": 1,
+          "n_sites": 1,
+          "sites": [
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 0
+        },
+        {
+          "stratum": "POT|6+|complete",
+          "n_inscriptions": 4,
+          "n_sites": 3,
+          "sites": [
+            "Harappa",
+            "Mohenjo-daro",
+            "Nausharo"
+          ],
+          "permutable_inscriptions": 4
+        },
+        {
+          "stratum": "POT|6+|damaged",
+          "n_inscriptions": 1,
+          "n_sites": 1,
+          "sites": [
+            "Harappa"
+          ],
+          "permutable_inscriptions": 0
+        },
+        {
+          "stratum": "POT|6+|fragment",
+          "n_inscriptions": 6,
+          "n_sites": 3,
+          "sites": [
+            "Harappa",
+            "Mohenjo-daro",
+            "Nausharo"
+          ],
+          "permutable_inscriptions": 6
+        },
+        {
+          "stratum": "SEAL|1|complete",
+          "n_inscriptions": 36,
+          "n_sites": 6,
+          "sites": [
+            "Chanhu-daro",
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 36
+        },
+        {
+          "stratum": "SEAL|1|damaged",
+          "n_inscriptions": 12,
+          "n_sites": 4,
+          "sites": [
+            "Chanhu-daro",
+            "Harappa",
+            "Kalibangan",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 12
+        },
+        {
+          "stratum": "SEAL|1|fragment",
+          "n_inscriptions": 60,
+          "n_sites": 5,
+          "sites": [
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 60
+        },
+        {
+          "stratum": "SEAL|2-3|UNRECORDED",
+          "n_inscriptions": 1,
+          "n_sites": 1,
+          "sites": [
+            "Harappa"
+          ],
+          "permutable_inscriptions": 0
+        },
+        {
+          "stratum": "SEAL|2-3|complete",
+          "n_inscriptions": 398,
+          "n_sites": 7,
+          "sites": [
+            "Chanhu-daro",
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro",
+            "Nausharo"
+          ],
+          "permutable_inscriptions": 398
+        },
+        {
+          "stratum": "SEAL|2-3|damaged",
+          "n_inscriptions": 84,
+          "n_sites": 5,
+          "sites": [
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 84
+        },
+        {
+          "stratum": "SEAL|2-3|fragment",
+          "n_inscriptions": 218,
+          "n_sites": 5,
+          "sites": [
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 218
+        },
+        {
+          "stratum": "SEAL|4-5|UNRECORDED",
+          "n_inscriptions": 1,
+          "n_sites": 1,
+          "sites": [
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 0
+        },
+        {
+          "stratum": "SEAL|4-5|complete",
+          "n_inscriptions": 427,
+          "n_sites": 7,
+          "sites": [
+            "Chanhu-daro",
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro",
+            "Nausharo"
+          ],
+          "permutable_inscriptions": 427
+        },
+        {
+          "stratum": "SEAL|4-5|damaged",
+          "n_inscriptions": 118,
+          "n_sites": 6,
+          "sites": [
+            "Chanhu-daro",
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 118
+        },
+        {
+          "stratum": "SEAL|4-5|fragment",
+          "n_inscriptions": 189,
+          "n_sites": 6,
+          "sites": [
+            "Chanhu-daro",
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 189
+        },
+        {
+          "stratum": "SEAL|6+|complete",
+          "n_inscriptions": 407,
+          "n_sites": 7,
+          "sites": [
+            "Chanhu-daro",
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro",
+            "Nausharo"
+          ],
+          "permutable_inscriptions": 407
+        },
+        {
+          "stratum": "SEAL|6+|damaged",
+          "n_inscriptions": 103,
+          "n_sites": 7,
+          "sites": [
+            "Chanhu-daro",
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro",
+            "Nausharo"
+          ],
+          "permutable_inscriptions": 103
+        },
+        {
+          "stratum": "SEAL|6+|fragment",
+          "n_inscriptions": 100,
+          "n_sites": 7,
+          "sites": [
+            "Chanhu-daro",
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro",
+            "Nausharo"
+          ],
+          "permutable_inscriptions": 100
+        },
+        {
+          "stratum": "TAB|1|complete",
+          "n_inscriptions": 58,
+          "n_sites": 4,
+          "sites": [
+            "Dholavira",
+            "Harappa",
+            "Lothal",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 58
+        },
+        {
+          "stratum": "TAB|1|damaged",
+          "n_inscriptions": 12,
+          "n_sites": 3,
+          "sites": [
+            "Harappa",
+            "Kalibangan",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 12
+        },
+        {
+          "stratum": "TAB|1|fragment",
+          "n_inscriptions": 150,
+          "n_sites": 4,
+          "sites": [
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 150
+        },
+        {
+          "stratum": "TAB|2-3|complete",
+          "n_inscriptions": 868,
+          "n_sites": 6,
+          "sites": [
+            "Chanhu-daro",
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 868
+        },
+        {
+          "stratum": "TAB|2-3|damaged",
+          "n_inscriptions": 136,
+          "n_sites": 3,
+          "sites": [
+            "Dholavira",
+            "Harappa",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 136
+        },
+        {
+          "stratum": "TAB|2-3|fragment",
+          "n_inscriptions": 318,
+          "n_sites": 5,
+          "sites": [
+            "Chanhu-daro",
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 318
+        },
+        {
+          "stratum": "TAB|4-5|complete",
+          "n_inscriptions": 467,
+          "n_sites": 5,
+          "sites": [
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 467
+        },
+        {
+          "stratum": "TAB|4-5|damaged",
+          "n_inscriptions": 58,
+          "n_sites": 4,
+          "sites": [
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 58
+        },
+        {
+          "stratum": "TAB|4-5|fragment",
+          "n_inscriptions": 38,
+          "n_sites": 3,
+          "sites": [
+            "Dholavira",
+            "Harappa",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 38
+        },
+        {
+          "stratum": "TAB|6+|complete",
+          "n_inscriptions": 150,
+          "n_sites": 4,
+          "sites": [
+            "Chanhu-daro",
+            "Dholavira",
+            "Harappa",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 150
+        },
+        {
+          "stratum": "TAB|6+|damaged",
+          "n_inscriptions": 16,
+          "n_sites": 2,
+          "sites": [
+            "Harappa",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 16
+        },
+        {
+          "stratum": "TAB|6+|fragment",
+          "n_inscriptions": 4,
+          "n_sites": 2,
+          "sites": [
+            "Harappa",
+            "Mohenjo-daro"
+          ],
+          "permutable_inscriptions": 4
+        }
+      ]
+    },
+    "nominal_inscriptions": 5410,
+    "permutable_inscriptions": 5404,
+    "permutation": {
+      "B": 9999,
+      "seed": 20261009,
+      "p_formula": "(1 + #{chi2_perm >= chi2_obs}) / (1 + B)",
+      "count_perm_ge_observed": 0,
+      "permutation_median": 2684.7434405035738,
+      "permutation_p95_nearest_rank": 2859.3034312838636,
+      "p_value_raw": 0.0001
+    },
+    "p_value_raw": 0.0001,
+    "role": "PRIMARY \u2014 the controlled test (G1)",
+    "strata_definition": "composition (Phase-137 type class x length class) x preservation (complete / fragment / damaged / UNRECORDED as a level)",
+    "primary_control_set": [
+      "preservation"
+    ],
+    "benjamini_hochberg": {
+      "family": "G1 alone (adjudication Q4(b))",
+      "m": 1,
+      "q": 0.05,
+      "adjusted_value": 0.0001,
+      "statement": "BH over G1 alone at q = 0.05; with m = 1 the adjusted value equals the raw permutation p. This is NOT a family correction across the LOSO members."
+    },
+    "verdict": "SUPPORTED under control",
+    "verdict_statement": "G1 is SUPPORTED under control: site-repertoire association in the ICIT-lineage layer (horus84) under permutation within composition x preservation strata (preservation recorded coverage 99.9%). Chronology is NOT controlled in the primary test: period/phase (chronology) remain uncontrolled confounders; the S-chron sensitivity bound is reported alongside, never as the controlled verdict."
+  },
+  "sensitivity_panel_exploratory": {
+    "S_chron": {
+      "observed_chi_square": 4966.362228365138,
+      "cramers_v_descriptive": 0.2190084751289231,
+      "per_site_tv_distance_descriptive": {
+        "Chanhu-daro": 0.3493488929798831,
+        "Dholavira": 0.24038587758486082,
+        "Harappa": 0.1645097175887218,
+        "Kalibangan": 0.30064257845384196,
+        "Lothal": 0.29187049337998733,
+        "Mohenjo-daro": 0.1266108267671559,
+        "Nausharo": 0.4259181646544507
+      },
+      "sparsity_disclosure": {
+        "cells_total": 1309,
+        "cells_expected_lt5": 887,
+        "share_cells_expected_lt5": 0.6776165011459129,
+        "min_expected_count": 0.07475227443935795,
+        "per_site_tokens": [
+          325,
+          637,
+          7168,
+          508,
+          681,
+          7809,
+          129
+        ]
+      },
+      "strata": {
+        "n_strata": 59,
+        "table": [
+          {
+            "stratum": "OTHER|1|UNRECORDED",
+            "n_inscriptions": 48,
+            "n_sites": 5,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 48
+          },
+          {
+            "stratum": "OTHER|1|late",
+            "n_inscriptions": 1,
+            "n_sites": 1,
+            "sites": [
+              "Dholavira"
+            ],
+            "permutable_inscriptions": 0
+          },
+          {
+            "stratum": "OTHER|1|middle",
+            "n_inscriptions": 37,
+            "n_sites": 5,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 37
+          },
+          {
+            "stratum": "OTHER|2-3|UNRECORDED",
+            "n_inscriptions": 106,
+            "n_sites": 6,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 106
+          },
+          {
+            "stratum": "OTHER|2-3|early",
+            "n_inscriptions": 4,
+            "n_sites": 2,
+            "sites": [
+              "Harappa",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 4
+          },
+          {
+            "stratum": "OTHER|2-3|late",
+            "n_inscriptions": 6,
+            "n_sites": 3,
+            "sites": [
+              "Dholavira",
+              "Mohenjo-daro",
+              "Nausharo"
+            ],
+            "permutable_inscriptions": 6
+          },
+          {
+            "stratum": "OTHER|2-3|middle",
+            "n_inscriptions": 53,
+            "n_sites": 5,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 53
+          },
+          {
+            "stratum": "OTHER|4-5|UNRECORDED",
+            "n_inscriptions": 81,
+            "n_sites": 6,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 81
+          },
+          {
+            "stratum": "OTHER|4-5|early",
+            "n_inscriptions": 5,
+            "n_sites": 2,
+            "sites": [
+              "Dholavira",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 5
+          },
+          {
+            "stratum": "OTHER|4-5|late",
+            "n_inscriptions": 2,
+            "n_sites": 2,
+            "sites": [
+              "Dholavira",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 2
+          },
+          {
+            "stratum": "OTHER|4-5|middle",
+            "n_inscriptions": 28,
+            "n_sites": 5,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 28
+          },
+          {
+            "stratum": "OTHER|6+|UNRECORDED",
+            "n_inscriptions": 28,
+            "n_sites": 6,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 28
+          },
+          {
+            "stratum": "OTHER|6+|early",
+            "n_inscriptions": 3,
+            "n_sites": 1,
+            "sites": [
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 0
+          },
+          {
+            "stratum": "OTHER|6+|late",
+            "n_inscriptions": 1,
+            "n_sites": 1,
+            "sites": [
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 0
+          },
+          {
+            "stratum": "OTHER|6+|middle",
+            "n_inscriptions": 21,
+            "n_sites": 5,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 21
+          },
+          {
+            "stratum": "POT|1|UNRECORDED",
+            "n_inscriptions": 91,
+            "n_sites": 6,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 91
+          },
+          {
+            "stratum": "POT|1|early",
+            "n_inscriptions": 19,
+            "n_sites": 1,
+            "sites": [
+              "Harappa"
+            ],
+            "permutable_inscriptions": 0
+          },
+          {
+            "stratum": "POT|1|late",
+            "n_inscriptions": 7,
+            "n_sites": 2,
+            "sites": [
+              "Harappa",
+              "Nausharo"
+            ],
+            "permutable_inscriptions": 7
+          },
+          {
+            "stratum": "POT|1|middle",
+            "n_inscriptions": 118,
+            "n_sites": 3,
+            "sites": [
+              "Harappa",
+              "Kalibangan",
+              "Lothal"
+            ],
+            "permutable_inscriptions": 118
+          },
+          {
+            "stratum": "POT|2-3|UNRECORDED",
+            "n_inscriptions": 141,
+            "n_sites": 6,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 141
+          },
+          {
+            "stratum": "POT|2-3|early",
+            "n_inscriptions": 12,
+            "n_sites": 2,
+            "sites": [
+              "Harappa",
+              "Kalibangan"
+            ],
+            "permutable_inscriptions": 12
+          },
+          {
+            "stratum": "POT|2-3|late",
+            "n_inscriptions": 11,
+            "n_sites": 1,
+            "sites": [
+              "Nausharo"
+            ],
+            "permutable_inscriptions": 0
+          },
+          {
+            "stratum": "POT|2-3|middle",
+            "n_inscriptions": 91,
+            "n_sites": 5,
+            "sites": [
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro",
+              "Nausharo"
+            ],
+            "permutable_inscriptions": 91
+          },
+          {
+            "stratum": "POT|4-5|UNRECORDED",
+            "n_inscriptions": 32,
+            "n_sites": 4,
+            "sites": [
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 32
+          },
+          {
+            "stratum": "POT|4-5|early",
+            "n_inscriptions": 1,
+            "n_sites": 1,
+            "sites": [
+              "Harappa"
+            ],
+            "permutable_inscriptions": 0
+          },
+          {
+            "stratum": "POT|4-5|late",
+            "n_inscriptions": 3,
+            "n_sites": 1,
+            "sites": [
+              "Nausharo"
+            ],
+            "permutable_inscriptions": 0
+          },
+          {
+            "stratum": "POT|4-5|middle",
+            "n_inscriptions": 19,
+            "n_sites": 2,
+            "sites": [
+              "Harappa",
+              "Kalibangan"
+            ],
+            "permutable_inscriptions": 19
+          },
+          {
+            "stratum": "POT|6+|UNRECORDED",
+            "n_inscriptions": 6,
+            "n_sites": 2,
+            "sites": [
+              "Harappa",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 6
+          },
+          {
+            "stratum": "POT|6+|late",
+            "n_inscriptions": 2,
+            "n_sites": 1,
+            "sites": [
+              "Nausharo"
+            ],
+            "permutable_inscriptions": 0
+          },
+          {
+            "stratum": "POT|6+|middle",
+            "n_inscriptions": 4,
+            "n_sites": 1,
+            "sites": [
+              "Harappa"
+            ],
+            "permutable_inscriptions": 0
+          },
+          {
+            "stratum": "SEAL|1|UNRECORDED",
+            "n_inscriptions": 73,
+            "n_sites": 6,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 73
+          },
+          {
+            "stratum": "SEAL|1|early",
+            "n_inscriptions": 1,
+            "n_sites": 1,
+            "sites": [
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 0
+          },
+          {
+            "stratum": "SEAL|1|late",
+            "n_inscriptions": 15,
+            "n_sites": 2,
+            "sites": [
+              "Dholavira",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 15
+          },
+          {
+            "stratum": "SEAL|1|middle",
+            "n_inscriptions": 19,
+            "n_sites": 5,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 19
+          },
+          {
+            "stratum": "SEAL|2-3|UNRECORDED",
+            "n_inscriptions": 405,
+            "n_sites": 6,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 405
+          },
+          {
+            "stratum": "SEAL|2-3|early",
+            "n_inscriptions": 13,
+            "n_sites": 2,
+            "sites": [
+              "Dholavira",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 13
+          },
+          {
+            "stratum": "SEAL|2-3|late",
+            "n_inscriptions": 99,
+            "n_sites": 4,
+            "sites": [
+              "Dholavira",
+              "Lothal",
+              "Mohenjo-daro",
+              "Nausharo"
+            ],
+            "permutable_inscriptions": 99
+          },
+          {
+            "stratum": "SEAL|2-3|middle",
+            "n_inscriptions": 184,
+            "n_sites": 5,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 184
+          },
+          {
+            "stratum": "SEAL|4-5|UNRECORDED",
+            "n_inscriptions": 418,
+            "n_sites": 6,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 418
+          },
+          {
+            "stratum": "SEAL|4-5|early",
+            "n_inscriptions": 15,
+            "n_sites": 2,
+            "sites": [
+              "Dholavira",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 15
+          },
+          {
+            "stratum": "SEAL|4-5|late",
+            "n_inscriptions": 116,
+            "n_sites": 4,
+            "sites": [
+              "Dholavira",
+              "Lothal",
+              "Mohenjo-daro",
+              "Nausharo"
+            ],
+            "permutable_inscriptions": 116
+          },
+          {
+            "stratum": "SEAL|4-5|middle",
+            "n_inscriptions": 186,
+            "n_sites": 5,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 186
+          },
+          {
+            "stratum": "SEAL|6+|UNRECORDED",
+            "n_inscriptions": 335,
+            "n_sites": 7,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro",
+              "Nausharo"
+            ],
+            "permutable_inscriptions": 335
+          },
+          {
+            "stratum": "SEAL|6+|early",
+            "n_inscriptions": 10,
+            "n_sites": 2,
+            "sites": [
+              "Dholavira",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 10
+          },
+          {
+            "stratum": "SEAL|6+|late",
+            "n_inscriptions": 96,
+            "n_sites": 3,
+            "sites": [
+              "Dholavira",
+              "Mohenjo-daro",
+              "Nausharo"
+            ],
+            "permutable_inscriptions": 96
+          },
+          {
+            "stratum": "SEAL|6+|middle",
+            "n_inscriptions": 169,
+            "n_sites": 5,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 169
+          },
+          {
+            "stratum": "TAB|1|UNRECORDED",
+            "n_inscriptions": 107,
+            "n_sites": 3,
+            "sites": [
+              "Harappa",
+              "Kalibangan",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 107
+          },
+          {
+            "stratum": "TAB|1|late",
+            "n_inscriptions": 5,
+            "n_sites": 2,
+            "sites": [
+              "Dholavira",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 5
+          },
+          {
+            "stratum": "TAB|1|middle",
+            "n_inscriptions": 108,
+            "n_sites": 4,
+            "sites": [
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 108
+          },
+          {
+            "stratum": "TAB|2-3|UNRECORDED",
+            "n_inscriptions": 768,
+            "n_sites": 4,
+            "sites": [
+              "Chanhu-daro",
+              "Harappa",
+              "Kalibangan",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 768
+          },
+          {
+            "stratum": "TAB|2-3|early",
+            "n_inscriptions": 2,
+            "n_sites": 1,
+            "sites": [
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 0
+          },
+          {
+            "stratum": "TAB|2-3|late",
+            "n_inscriptions": 24,
+            "n_sites": 2,
+            "sites": [
+              "Dholavira",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 24
+          },
+          {
+            "stratum": "TAB|2-3|middle",
+            "n_inscriptions": 528,
+            "n_sites": 4,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 528
+          },
+          {
+            "stratum": "TAB|4-5|UNRECORDED",
+            "n_inscriptions": 377,
+            "n_sites": 4,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 377
+          },
+          {
+            "stratum": "TAB|4-5|late",
+            "n_inscriptions": 15,
+            "n_sites": 1,
+            "sites": [
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 0
+          },
+          {
+            "stratum": "TAB|4-5|middle",
+            "n_inscriptions": 171,
+            "n_sites": 5,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 171
+          },
+          {
+            "stratum": "TAB|6+|UNRECORDED",
+            "n_inscriptions": 127,
+            "n_sites": 4,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 127
+          },
+          {
+            "stratum": "TAB|6+|late",
+            "n_inscriptions": 5,
+            "n_sites": 1,
+            "sites": [
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 0
+          },
+          {
+            "stratum": "TAB|6+|middle",
+            "n_inscriptions": 38,
+            "n_sites": 2,
+            "sites": [
+              "Harappa",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 38
+          }
+        ]
+      },
+      "nominal_inscriptions": 5410,
+      "permutable_inscriptions": 5342,
+      "permutation": {
+        "B": 9999,
+        "seed": 20261009,
+        "p_formula": "(1 + #{chi2_perm >= chi2_obs}) / (1 + B)",
+        "count_perm_ge_observed": 0,
+        "permutation_median": 2809.5319251859482,
+        "permutation_p95_nearest_rank": 2977.825039212842,
+        "p_value_raw": 0.0001
+      },
+      "p_value_raw": 0.0001,
+      "role": "EXPLORATORY sensitivity \u2014 a bound only, never the controlled verdict",
+      "strata_definition": "composition x chron_band (UNRECORDED as a level)",
+      "recorded_coverage": 0.4190388170055453,
+      "coverage_statement": "chron_band recorded for 2,267 of 5,410 inscriptions (41.9%); the remaining 3,143 sit in UNRECORDED strata."
+    },
+    "S_depth": {
+      "observed_chi_square": 4966.362228365138,
+      "cramers_v_descriptive": 0.2190084751289231,
+      "per_site_tv_distance_descriptive": {
+        "Chanhu-daro": 0.3493488929798831,
+        "Dholavira": 0.24038587758486082,
+        "Harappa": 0.1645097175887218,
+        "Kalibangan": 0.30064257845384196,
+        "Lothal": 0.29187049337998733,
+        "Mohenjo-daro": 0.1266108267671559,
+        "Nausharo": 0.4259181646544507
+      },
+      "sparsity_disclosure": {
+        "cells_total": 1309,
+        "cells_expected_lt5": 887,
+        "share_cells_expected_lt5": 0.6776165011459129,
+        "min_expected_count": 0.07475227443935795,
+        "per_site_tokens": [
+          325,
+          637,
+          7168,
+          508,
+          681,
+          7809,
+          129
+        ]
+      },
+      "strata": {
+        "n_strata": 63,
+        "table": [
+          {
+            "stratum": "OTHER|1|UNRECORDED",
+            "n_inscriptions": 68,
+            "n_sites": 5,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 68
+          },
+          {
+            "stratum": "OTHER|1|deep",
+            "n_inscriptions": 6,
+            "n_sites": 3,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 6
+          },
+          {
+            "stratum": "OTHER|1|middle",
+            "n_inscriptions": 9,
+            "n_sites": 4,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 9
+          },
+          {
+            "stratum": "OTHER|1|shallow",
+            "n_inscriptions": 3,
+            "n_sites": 2,
+            "sites": [
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 3
+          },
+          {
+            "stratum": "OTHER|2-3|UNRECORDED",
+            "n_inscriptions": 114,
+            "n_sites": 6,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro",
+              "Nausharo"
+            ],
+            "permutable_inscriptions": 114
+          },
+          {
+            "stratum": "OTHER|2-3|deep",
+            "n_inscriptions": 16,
+            "n_sites": 6,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 16
+          },
+          {
+            "stratum": "OTHER|2-3|middle",
+            "n_inscriptions": 20,
+            "n_sites": 6,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 20
+          },
+          {
+            "stratum": "OTHER|2-3|shallow",
+            "n_inscriptions": 19,
+            "n_sites": 4,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 19
+          },
+          {
+            "stratum": "OTHER|4-5|UNRECORDED",
+            "n_inscriptions": 72,
+            "n_sites": 6,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 72
+          },
+          {
+            "stratum": "OTHER|4-5|deep",
+            "n_inscriptions": 10,
+            "n_sites": 3,
+            "sites": [
+              "Harappa",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 10
+          },
+          {
+            "stratum": "OTHER|4-5|middle",
+            "n_inscriptions": 22,
+            "n_sites": 5,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 22
+          },
+          {
+            "stratum": "OTHER|4-5|shallow",
+            "n_inscriptions": 12,
+            "n_sites": 4,
+            "sites": [
+              "Chanhu-daro",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 12
+          },
+          {
+            "stratum": "OTHER|6+|UNRECORDED",
+            "n_inscriptions": 26,
+            "n_sites": 5,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 26
+          },
+          {
+            "stratum": "OTHER|6+|deep",
+            "n_inscriptions": 4,
+            "n_sites": 3,
+            "sites": [
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 4
+          },
+          {
+            "stratum": "OTHER|6+|middle",
+            "n_inscriptions": 14,
+            "n_sites": 4,
+            "sites": [
+              "Chanhu-daro",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 14
+          },
+          {
+            "stratum": "OTHER|6+|shallow",
+            "n_inscriptions": 9,
+            "n_sites": 3,
+            "sites": [
+              "Dholavira",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 9
+          },
+          {
+            "stratum": "POT|1|UNRECORDED",
+            "n_inscriptions": 223,
+            "n_sites": 6,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro",
+              "Nausharo"
+            ],
+            "permutable_inscriptions": 223
+          },
+          {
+            "stratum": "POT|1|deep",
+            "n_inscriptions": 8,
+            "n_sites": 3,
+            "sites": [
+              "Harappa",
+              "Kalibangan",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 8
+          },
+          {
+            "stratum": "POT|1|middle",
+            "n_inscriptions": 1,
+            "n_sites": 1,
+            "sites": [
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 0
+          },
+          {
+            "stratum": "POT|1|shallow",
+            "n_inscriptions": 3,
+            "n_sites": 3,
+            "sites": [
+              "Chanhu-daro",
+              "Harappa",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 3
+          },
+          {
+            "stratum": "POT|2-3|UNRECORDED",
+            "n_inscriptions": 230,
+            "n_sites": 6,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro",
+              "Nausharo"
+            ],
+            "permutable_inscriptions": 230
+          },
+          {
+            "stratum": "POT|2-3|deep",
+            "n_inscriptions": 15,
+            "n_sites": 3,
+            "sites": [
+              "Harappa",
+              "Kalibangan",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 15
+          },
+          {
+            "stratum": "POT|2-3|middle",
+            "n_inscriptions": 4,
+            "n_sites": 2,
+            "sites": [
+              "Kalibangan",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 4
+          },
+          {
+            "stratum": "POT|2-3|shallow",
+            "n_inscriptions": 6,
+            "n_sites": 2,
+            "sites": [
+              "Chanhu-daro",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 6
+          },
+          {
+            "stratum": "POT|4-5|UNRECORDED",
+            "n_inscriptions": 49,
+            "n_sites": 5,
+            "sites": [
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro",
+              "Nausharo"
+            ],
+            "permutable_inscriptions": 49
+          },
+          {
+            "stratum": "POT|4-5|deep",
+            "n_inscriptions": 1,
+            "n_sites": 1,
+            "sites": [
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 0
+          },
+          {
+            "stratum": "POT|4-5|middle",
+            "n_inscriptions": 3,
+            "n_sites": 2,
+            "sites": [
+              "Kalibangan",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 3
+          },
+          {
+            "stratum": "POT|4-5|shallow",
+            "n_inscriptions": 2,
+            "n_sites": 2,
+            "sites": [
+              "Harappa",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 2
+          },
+          {
+            "stratum": "POT|6+|UNRECORDED",
+            "n_inscriptions": 10,
+            "n_sites": 3,
+            "sites": [
+              "Harappa",
+              "Mohenjo-daro",
+              "Nausharo"
+            ],
+            "permutable_inscriptions": 10
+          },
+          {
+            "stratum": "POT|6+|middle",
+            "n_inscriptions": 1,
+            "n_sites": 1,
+            "sites": [
+              "Harappa"
+            ],
+            "permutable_inscriptions": 0
+          },
+          {
+            "stratum": "POT|6+|shallow",
+            "n_inscriptions": 1,
+            "n_sites": 1,
+            "sites": [
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 0
+          },
+          {
+            "stratum": "SEAL|1|UNRECORDED",
+            "n_inscriptions": 36,
+            "n_sites": 5,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 36
+          },
+          {
+            "stratum": "SEAL|1|deep",
+            "n_inscriptions": 31,
+            "n_sites": 4,
+            "sites": [
+              "Chanhu-daro",
+              "Harappa",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 31
+          },
+          {
+            "stratum": "SEAL|1|middle",
+            "n_inscriptions": 24,
+            "n_sites": 3,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 24
+          },
+          {
+            "stratum": "SEAL|1|shallow",
+            "n_inscriptions": 17,
+            "n_sites": 5,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 17
+          },
+          {
+            "stratum": "SEAL|2-3|UNRECORDED",
+            "n_inscriptions": 182,
+            "n_sites": 6,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro",
+              "Nausharo"
+            ],
+            "permutable_inscriptions": 182
+          },
+          {
+            "stratum": "SEAL|2-3|deep",
+            "n_inscriptions": 172,
+            "n_sites": 5,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 172
+          },
+          {
+            "stratum": "SEAL|2-3|middle",
+            "n_inscriptions": 174,
+            "n_sites": 6,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 174
+          },
+          {
+            "stratum": "SEAL|2-3|shallow",
+            "n_inscriptions": 173,
+            "n_sites": 6,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 173
+          },
+          {
+            "stratum": "SEAL|4-5|UNRECORDED",
+            "n_inscriptions": 183,
+            "n_sites": 7,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro",
+              "Nausharo"
+            ],
+            "permutable_inscriptions": 183
+          },
+          {
+            "stratum": "SEAL|4-5|deep",
+            "n_inscriptions": 196,
+            "n_sites": 5,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 196
+          },
+          {
+            "stratum": "SEAL|4-5|middle",
+            "n_inscriptions": 184,
+            "n_sites": 5,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 184
+          },
+          {
+            "stratum": "SEAL|4-5|shallow",
+            "n_inscriptions": 172,
+            "n_sites": 6,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 172
+          },
+          {
+            "stratum": "SEAL|6+|UNRECORDED",
+            "n_inscriptions": 114,
+            "n_sites": 7,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro",
+              "Nausharo"
+            ],
+            "permutable_inscriptions": 114
+          },
+          {
+            "stratum": "SEAL|6+|deep",
+            "n_inscriptions": 185,
+            "n_sites": 6,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 185
+          },
+          {
+            "stratum": "SEAL|6+|middle",
+            "n_inscriptions": 162,
+            "n_sites": 5,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 162
+          },
+          {
+            "stratum": "SEAL|6+|shallow",
+            "n_inscriptions": 149,
+            "n_sites": 6,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 149
+          },
+          {
+            "stratum": "TAB|1|UNRECORDED",
+            "n_inscriptions": 150,
+            "n_sites": 3,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 150
+          },
+          {
+            "stratum": "TAB|1|deep",
+            "n_inscriptions": 24,
+            "n_sites": 5,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 24
+          },
+          {
+            "stratum": "TAB|1|middle",
+            "n_inscriptions": 26,
+            "n_sites": 3,
+            "sites": [
+              "Harappa",
+              "Kalibangan",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 26
+          },
+          {
+            "stratum": "TAB|1|shallow",
+            "n_inscriptions": 20,
+            "n_sites": 2,
+            "sites": [
+              "Harappa",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 20
+          },
+          {
+            "stratum": "TAB|2-3|UNRECORDED",
+            "n_inscriptions": 762,
+            "n_sites": 4,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 762
+          },
+          {
+            "stratum": "TAB|2-3|deep",
+            "n_inscriptions": 133,
+            "n_sites": 5,
+            "sites": [
+              "Chanhu-daro",
+              "Dholavira",
+              "Harappa",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 133
+          },
+          {
+            "stratum": "TAB|2-3|middle",
+            "n_inscriptions": 172,
+            "n_sites": 4,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 172
+          },
+          {
+            "stratum": "TAB|2-3|shallow",
+            "n_inscriptions": 255,
+            "n_sites": 4,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 255
+          },
+          {
+            "stratum": "TAB|4-5|UNRECORDED",
+            "n_inscriptions": 332,
+            "n_sites": 3,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 332
+          },
+          {
+            "stratum": "TAB|4-5|deep",
+            "n_inscriptions": 88,
+            "n_sites": 5,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Lothal",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 88
+          },
+          {
+            "stratum": "TAB|4-5|middle",
+            "n_inscriptions": 78,
+            "n_sites": 2,
+            "sites": [
+              "Harappa",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 78
+          },
+          {
+            "stratum": "TAB|4-5|shallow",
+            "n_inscriptions": 65,
+            "n_sites": 4,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Kalibangan",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 65
+          },
+          {
+            "stratum": "TAB|6+|UNRECORDED",
+            "n_inscriptions": 94,
+            "n_sites": 3,
+            "sites": [
+              "Dholavira",
+              "Harappa",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 94
+          },
+          {
+            "stratum": "TAB|6+|deep",
+            "n_inscriptions": 30,
+            "n_sites": 2,
+            "sites": [
+              "Harappa",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 30
+          },
+          {
+            "stratum": "TAB|6+|middle",
+            "n_inscriptions": 28,
+            "n_sites": 2,
+            "sites": [
+              "Harappa",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 28
+          },
+          {
+            "stratum": "TAB|6+|shallow",
+            "n_inscriptions": 18,
+            "n_sites": 3,
+            "sites": [
+              "Chanhu-daro",
+              "Harappa",
+              "Mohenjo-daro"
+            ],
+            "permutable_inscriptions": 18
+          }
+        ]
+      },
+      "nominal_inscriptions": 5410,
+      "permutable_inscriptions": 5406,
+      "permutation": {
+        "B": 9999,
+        "seed": 20261009,
+        "p_formula": "(1 + #{chi2_perm >= chi2_obs}) / (1 + B)",
+        "count_perm_ge_observed": 0,
+        "permutation_median": 2682.7772946802716,
+        "permutation_p95_nearest_rank": 2851.005327325622,
+        "p_value_raw": 0.0001
+      },
+      "p_value_raw": 0.0001,
+      "role": "EXPLORATORY sensitivity \u2014 a bound only, never the controlled verdict",
+      "strata_definition": "composition x depth_band (within-site relative tertiles; UNRECORDED as a level)",
+      "recorded_coverage": 0.511090573012939,
+      "coverage_statement": "depth_band recorded for 2,765 of 5,410 inscriptions (51.1%); the remaining 2,645 sit in UNRECORDED strata."
+    }
+  },
+  "fields_used": {
+    "layer": [
+      "id (join key only)",
+      "site",
+      "type",
+      "text (sign substrate)"
+    ],
+    "covariates": [
+      "preservation_class (Class O, collapsed per Phase-139)",
+      "chron_band (Class C, constructed)",
+      "depth_band (Class C, constructed)"
+    ]
+  },
+  "class_i_fields_entering_nothing": [
+    "class",
+    "sanskrit",
+    "translation",
+    "notes"
+  ],
+  "section8_language": "Associations describe co-occurrence in the recorded data of this labeled lineage layer only, not meaning. No result under this spec can mint, promote, demote, or validate any sign reading, change any anchor's status, or move PRED-2026 in either direction. Harmonized covariates are constructed context (Class C); their citations and coverage travel with every number computed from them.",
+  "ai_disclosure": "Produced by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution section VI."
+}

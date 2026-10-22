@@ -1,0 +1,40 @@
+{
+  "manifest": "specs/027-movement-culture-language/stage0-release/release_manifest.json",
+  "staging_dir": "specs/027-movement-culture-language/stage0-release",
+  "repo_root": ".",
+  "verdict": "PASS",
+  "results": [
+    {
+      "deposit_name": "indus_gazetteer_stage0_ccby.csv",
+      "source": null,
+      "external_source": "Derived by the Phase-391 build (backend/scripts/phase391_stage0_spine.py) from the verified_open rows of data/movement/gazetteer_rows.jsonl; derivation frozen in specs/027-movement-culture-language/stage0-freeze.md. CC BY 4.0 (XRONOS).",
+      "staged_sha256": "554609aada049af2af7f11684d9c44a5e54600aa6ca75b19a6f9c65b6c3e70ec",
+      "source_sha256": null,
+      "status": "EXTERNAL"
+    },
+    {
+      "deposit_name": "indus_chronology_spine_stage0_ccby.csv",
+      "source": null,
+      "external_source": "Derived by the Phase-391 build from the verified_open rows of data/movement/chronology_rows.jsonl (XRONOS CC BY 4.0; Mutin et al. 2025 SI, CC BY 4.0, scenario CONTESTED).",
+      "staged_sha256": "b580d19034403cbcb8d5ec19af4d98b0244414770e323c3322f31d9d24516347",
+      "source_sha256": null,
+      "status": "EXTERNAL"
+    },
+    {
+      "deposit_name": "STAGE0_RELEASE_README.md",
+      "source": null,
+      "external_source": "Authored for this package in the Spec 027 Stage 0 program (Phase-391); reviewed in the Stage 0 PR.",
+      "staged_sha256": "d6b4ad7db765adacdcdb3575c8404876665a392af8b0e4b456feadfd3c692ca0",
+      "source_sha256": null,
+      "status": "EXTERNAL"
+    },
+    {
+      "deposit_name": "source_register.json",
+      "source": "data/movement/source_register.json",
+      "external_source": null,
+      "staged_sha256": "6e1a543fa785a11520ce022a34c7ccfbee53f4ff85649cfda91537310d765b13",
+      "source_sha256": "6e1a543fa785a11520ce022a34c7ccfbee53f4ff85649cfda91537310d765b13",
+      "status": "MATCH"
+    }
+  ]
+}

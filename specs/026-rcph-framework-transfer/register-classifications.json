@@ -1,0 +1,582 @@
+{
+ "SPEC-001": {
+  "classification": "UNAFFECTED",
+  "rationale": "As-built platform baseline; no verdict-bearing study claim.",
+  "rerun_spec": null
+ },
+ "SPEC-002": {
+  "classification": "UNAFFECTED",
+  "rationale": "Platform/methods implementation; no Indus verdict produced.",
+  "rerun_spec": null
+ },
+ "SPEC-003": {
+  "classification": "UNAFFECTED",
+  "rationale": "Platform update + traceability; no Indus verdict produced.",
+  "rerun_spec": null
+ },
+ "SPEC-004": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "Executable package of the Phase-52 SA run; SA-basis outputs' evidentiary status was superseded program-wide by Phase-107 + H26. No rerun on the SA basis can cure that.",
+  "rerun_spec": null
+ },
+ "SPEC-005": {
+  "classification": "UNAFFECTED",
+  "rationale": "Design executed as Phase-107: held-out validation with discriminating blind controls (Sanskrit/scrambled statistically identical to target). Framework satisfied on its record; see PHASE-107.",
+  "rerun_spec": null
+ },
+ "SPEC-006": {
+  "classification": "UNAFFECTED",
+  "rationale": "Anchor provenance audit (Phase-108): deterministic record work, no statistical verdict.",
+  "rerun_spec": null
+ },
+ "SPEC-007": {
+  "classification": "UNAFFECTED",
+  "rationale": "Phase-109 remediation executed under the H26 non-SA evidence gate; adjudication record, not a statistical test.",
+  "rerun_spec": null
+ },
+ "SPEC-008": {
+  "classification": "UNAFFECTED",
+  "rationale": "Phase-110 dossier adjudication on non-SA evidence; no statistical verdict.",
+  "rerun_spec": null
+ },
+ "SPEC-009": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "Executed as Phase-111: INVALID RUN \u2014 control validity failed. Tie-break 1: no rerun of the same design cures an invalid instrument basis; taxonomy reading INVALID stands via assessment.",
+  "rerun_spec": null
+ },
+ "SPEC-010": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "Executed as Phase-112: INVALID RUN \u2014 control validity failed. Same basis as SPEC-009.",
+  "rerun_spec": null
+ },
+ "SPEC-011": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "Executed as Phase-113 (non-SA44 battery): rejected at calibration; no valid confirmation test completed, so the framework reading is INCONCLUSIVE, not a contradiction of the 44 anchors' claims.",
+  "rerun_spec": null
+ },
+ "SPEC-012": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "Executed as Phases 113/114 (blind affiliation, adversarial): INVALID RUN \u2014 the grammar-free generator control was non-discriminating (won 100% of draws in the recorded round). Instrument-basis defect; reinterpret only.",
+  "rerun_spec": null
+ },
+ "SPEC-013": {
+  "classification": "UNAFFECTED",
+  "rationale": "Feasibility study completed; descriptive crosswalk groundwork, no verdict.",
+  "rerun_spec": null
+ },
+ "SPEC-014": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "Executed as Phase-115: BATTERY REJECTED at calibration. Framework reading INCONCLUSIVE for the tested claims.",
+  "rerun_spec": null
+ },
+ "SPEC-015": {
+  "classification": "REPRODUCE-ONLY",
+  "rationale": "Executed as Phase-116: verdicts (H-MAPPING, H-DEFINITION refuted) rest on recorded effect estimates from recorded datasets; deterministic recomputation suffices. Replay in Phase-386 spot set.",
+  "rerun_spec": null
+ },
+ "SPEC-016": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "Executed as Phase-117: BATTERY REJECTED at calibration. Framework reading INCONCLUSIVE.",
+  "rerun_spec": null
+ },
+ "SPEC-017": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "Executed as Phase-118: BATTERY REJECTED at calibration; the spec's own S10 named the coarse-fabric limit. Framework reading INCONCLUSIVE.",
+  "rerun_spec": null
+ },
+ "SPEC-018": {
+  "classification": "REPRODUCE-ONLY",
+  "rationale": "PRED-2026 readiness harness (Phase-119). Criteria tie-break 3 caps PRED items at reproduce/reinterpret; the harness is deterministic and its refusal behavior is the result.",
+  "rerun_spec": null
+ },
+ "SPEC-019": {
+  "classification": "REPRODUCE-ONLY",
+  "rationale": "Executed as Phase-125 (+127 diagnostic): the falsifier pattern was pre-declared in the spec (S6.3) and Phase-127 already computed the bootstrap interval for the effect. Replay (Phase-386) + taxonomy adjudication in the assessment; no C1-C4 correction remains unapplied.",
+  "rerun_spec": null
+ },
+ "SPEC-020": {
+  "classification": "UNAFFECTED",
+  "rationale": "Adjudication paper: the Soviet dataset does not qualify as a PRED test \u2014 a classification decision on recorded criteria, not a statistical verdict.",
+  "rerun_spec": null
+ },
+ "SPEC-021": {
+  "classification": "REPRODUCE-ONLY",
+  "rationale": "Executed as Phase-127: deterministic diagnostic (null replicates + bootstrap) over recorded Phase-125 outputs; replay in Phase-386.",
+  "rerun_spec": null
+ },
+ "SPEC-021-INTAKE": {
+  "classification": "UNAFFECTED",
+  "rationale": "Phase-130 intake pack: tooling with validator + tests on record; no verdict.",
+  "rerun_spec": null
+ },
+ "SPEC-022": {
+  "classification": "REPRODUCE-ONLY",
+  "rationale": "Executed as Phase-131: attribution percentages are deterministic functions of recorded datasets; replay in Phase-386 spot set.",
+  "rerun_spec": null
+ },
+ "SPEC-023": {
+  "classification": "RERUN-REQUIRED",
+  "rationale": "Executed as Phase-132 (keyed-transcription pilot). C4: complete on-disk coding records exist; rescoring under the taxonomy + interval completion is specified in the Phase-383 rerun contract.",
+  "rerun_spec": "Phase-383 (C4 rescoring, shared contract)"
+ },
+ "SPEC-024": {
+  "classification": "RERUN-REQUIRED",
+  "rationale": "Stage 1 pilots (Phases 134/135) meet C4; Stage 2 arms F2/F3 (Phase-137) meet C1 (chi-square p-values with point V only; intervals computable from the recorded layer).",
+  "rerun_spec": "Phase-383 (C4, pilots) + Phase-384 (C1, F2/F3)"
+ },
+ "SPEC-025": {
+  "classification": "RERUN-REQUIRED",
+  "rationale": "Phase-140 (G1) meets C1: SUPPORTED rested on the permutation p-value with a point Cramer's V; a stratified interval for V is computable from the recorded layer under the frozen strata.",
+  "rerun_spec": "Phase-385 (C1, G1 + exploratory sensitivity intervals)"
+ },
+ "PHASE-105": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "Name-sign tests: small-n, labels inconclusive/challenged on their own record; no rerun cures the power basis.",
+  "rerun_spec": null
+ },
+ "PHASE-106": {
+  "classification": "UNAFFECTED",
+  "rationale": "Release-integrity / audit workstream phase; deterministic checks on record, no statistical verdict.",
+  "rerun_spec": null
+ },
+ "PHASE-107": {
+  "classification": "UNAFFECTED",
+  "rationale": "Framework exemplar: strengthened SA run with held-out recovery 0.000 and discriminating negative controls (Sanskrit, scrambled) statistically identical to the target condition. Falsification stands as recorded.",
+  "rerun_spec": null
+ },
+ "PHASE-108": {
+  "classification": "UNAFFECTED",
+  "rationale": "Anchor provenance audit; deterministic record work.",
+  "rerun_spec": null
+ },
+ "PHASE-109": {
+  "classification": "UNAFFECTED",
+  "rationale": "Remediation under the H26 non-SA evidence gate (KEEP 1 / RESTORE 112 / DEMOTE 3); adjudication, not a test.",
+  "rerun_spec": null
+ },
+ "PHASE-110": {
+  "classification": "UNAFFECTED",
+  "rationale": "M222 dossier adjudication; premise superseded on non-SA evidence.",
+  "rerun_spec": null
+ },
+ "PHASE-111": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "INVALID RUN \u2014 CONTROL VALIDITY FAILED (own record). Tie-break 1.",
+  "rerun_spec": null
+ },
+ "PHASE-112": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "INVALID RUN \u2014 CONTROL VALIDITY FAILED (own record). Tie-break 1.",
+  "rerun_spec": null
+ },
+ "PHASE-113": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "Two studies share this number: the Spec 011 non-SA44 battery (rejected at calibration -> INCONCLUSIVE) and the Spec 012 blind-affiliation run (INVALID). Neither is rerunnable on its original basis.",
+  "rerun_spec": null
+ },
+ "PHASE-114": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "Blind affiliation round: the grammar-free generator won 100% of draws \u2014 a non-discriminating instrument by the run's own record; INVALID. No standalone report in scoped locations (record defect noted in the assessment).",
+  "rerun_spec": null
+ },
+ "PHASE-115": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "BATTERY REJECTED at calibration (frozen gates). No valid confirmation test completed; framework reading INCONCLUSIVE.",
+  "rerun_spec": null
+ },
+ "PHASE-116": {
+  "classification": "REPRODUCE-ONLY",
+  "rationale": "Refutations rest on recorded effect estimates (median W1, rho, identical-text pairs) from recorded datasets; deterministic recomputation suffices; spot replay in Phase-386.",
+  "rerun_spec": null
+ },
+ "PHASE-117": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "BATTERY REJECTED at calibration. Framework reading INCONCLUSIVE.",
+  "rerun_spec": null
+ },
+ "PHASE-118": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "BATTERY REJECTED at calibration (14/67 positives vs the frozen >=0.5 gate). Framework reading INCONCLUSIVE; the spec's coarse-fabric limit stands as the recorded explanation, not as a claim contradiction.",
+  "rerun_spec": null
+ },
+ "PHASE-119": {
+  "classification": "REPRODUCE-ONLY",
+  "rationale": "PRED readiness harness; tie-break 3 caps at reproduce. Deterministic refusal behavior is the result.",
+  "rerun_spec": null
+ },
+ "PHASE-120": {
+  "classification": "UNAFFECTED",
+  "rationale": "Descriptive triage of the 44 pending anchors against Bhaskar (2024), with a recorded null simulation for one sign; no verdict.",
+  "rerun_spec": null
+ },
+ "PHASE-121": {
+  "classification": "UNAFFECTED",
+  "rationale": "Dataset extraction memo; 36/36 hand-verified at build; data observation.",
+  "rerun_spec": null
+ },
+ "PHASE-122": {
+  "classification": "REPRODUCE-ONLY",
+  "rationale": "Crosswalk v1 + mayig intake: pair counts are verdict-bearing downstream; deterministic rebuild from recorded sources; committed tests exist (family pattern).",
+  "rerun_spec": null
+ },
+ "PHASE-123": {
+  "classification": "UNAFFECTED",
+  "rationale": "Wells segmentation witness memo; descriptive counts (SAME/SPLIT/MERGE) on record, no verdict.",
+  "rerun_spec": null
+ },
+ "PHASE-124": {
+  "classification": "UNAFFECTED",
+  "rationale": "CISI image-layer catalogue: enabling asset with recorded sample accuracy (98.9%); counts are descriptive and provenance-sound on their record.",
+  "rerun_spec": null
+ },
+ "PHASE-125": {
+  "classification": "REPRODUCE-ONLY",
+  "rationale": "FAIL \u2014 DISAGREEMENT under a pre-declared falsifier (Spec 019 S6.3); Phase-127 already supplied the effect interval. Replay in Phase-386; taxonomy adjudication (CONTRADICTED for the bounded agreement claim) in the assessment.",
+  "rerun_spec": null
+ },
+ "PHASE-126": {
+  "classification": "UNAFFECTED",
+  "rationale": "Descriptive Wells-split analysis of the CANDIDATE cohort; no verdict.",
+  "rerun_spec": null
+ },
+ "PHASE-127": {
+  "classification": "REPRODUCE-ONLY",
+  "rationale": "Deterministic diagnostic over Phase-125 outputs (999-replicate null + bootstrap); replay in Phase-386.",
+  "rerun_spec": null
+ },
+ "PHASE-128": {
+  "classification": "UNAFFECTED",
+  "rationale": "Evidence dossiers for the 44 pending anchors; descriptive synthesis, no verdict.",
+  "rerun_spec": null
+ },
+ "PHASE-129": {
+  "classification": "UNAFFECTED",
+  "rationale": "Cropper v2 benchmark on a frozen sample; descriptive engineering result.",
+  "rerun_spec": null
+ },
+ "PHASE-130": {
+  "classification": "UNAFFECTED",
+  "rationale": "Intake pack tooling; schema/validator on record with tests.",
+  "rerun_spec": null
+ },
+ "PHASE-131": {
+  "classification": "REPRODUCE-ONLY",
+  "rationale": "Attribution percentages are deterministic functions of recorded datasets (6.1% attributed / 93.9% residual); spot replay in Phase-386.",
+  "rerun_spec": null
+ },
+ "PHASE-132": {
+  "classification": "RERUN-REQUIRED",
+  "rationale": "Stage P pilot: verdict-bearing agreement scores (exact-sequence 0.20) computed from complete on-disk coding records. C4 rescoring under the taxonomy + bootstrap intervals + coder origin-group audit (all passes share one model origin \u2014 independence note the original report disclosed but did not propagate into the verdict).",
+  "rerun_spec": "Phase-383 (C4)"
+ },
+ "PHASE-133": {
+  "classification": "REPRODUCE-ONLY",
+  "rationale": "Stage 0 coverage audit: counts are deterministic from recorded layers and were verdict-bearing for the Stage 1 design; deterministic recomputation suffices.",
+  "rerun_spec": null
+ },
+ "PHASE-134": {
+  "classification": "RERUN-REQUIRED",
+  "rationale": "Motif pilot 1: agreement 0.84 / kappa 0.7885 point estimates from complete on-disk records; the middle-band call turned on one object. C4 rescoring + bootstrap intervals under the taxonomy.",
+  "rerun_spec": "Phase-383 (C4)"
+ },
+ "PHASE-135": {
+  "classification": "RERUN-REQUIRED",
+  "rationale": "Motif re-pilot: agreement 0.78 / kappa 0.7129 point estimates from complete on-disk records. C4 rescoring + bootstrap intervals under the taxonomy.",
+  "rerun_spec": "Phase-383 (C4)"
+ },
+ "PHASE-136": {
+  "classification": "UNAFFECTED",
+  "rationale": "F1: effect estimate with interval reported at origin (MH OR 2.384, 95% CI 1.847-3.077; CMH), and the LOSO robustness check the framework would ask for was completed in Phase-141. Framework satisfied.",
+  "rerun_spec": null
+ },
+ "PHASE-137": {
+  "classification": "RERUN-REQUIRED",
+  "rationale": "F2 + F3: chi-square permutation verdicts with point Cramer's V only (0.1154 / 0.2190); no interval, no practical margin adjudicated. C1: bootstrap intervals for V are computable from the recorded layer under the original permutation design.",
+  "rerun_spec": "Phase-384 (C1)"
+ },
+ "PHASE-138": {
+  "classification": "UNAFFECTED",
+  "rationale": "Graffiti arm executed as DESCRIPTIVE ONLY by frozen design; no verdict claimed or possible.",
+  "rerun_spec": null
+ },
+ "PHASE-139": {
+  "classification": "UNAFFECTED",
+  "rationale": "Covariate audit: margins-only by frozen design, eligibility gate applied verbatim, NOT ESTIMABLE outcome pre-designed. Framework exemplar.",
+  "rerun_spec": null
+ },
+ "PHASE-140": {
+  "classification": "RERUN-REQUIRED",
+  "rationale": "G1 SUPPORTED under control rested on the permutation p-value (0/9,999) with point V 0.2190; no interval for the controlled effect. C1: stratified bootstrap interval for V computable from the recorded layer under the frozen composition x preservation strata. Chronology rider is unaffected and carries into the rerun report verbatim.",
+  "rerun_spec": "Phase-385 (C1)"
+ },
+ "PHASE-141": {
+  "classification": "UNAFFECTED",
+  "rationale": "LOSO sensitivity: per-subset ORs with 95% CIs against a pre-set robustness criterion; no verdicts minted by design. Framework satisfied.",
+  "rerun_spec": null
+ },
+ "PHASE-52": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-53": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-54": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-55": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-56": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-57": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-58": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-59": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-60": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-61": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-62": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-63": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-64": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-65": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-66": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-67": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-68": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-69": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-70": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-71": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-72": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-73": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-74": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-75": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-76": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-77": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-78": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-79": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-80": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-81": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-82": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-83": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-84": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-85": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-86": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-87": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-88": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-89": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-90": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-91": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-92": {
+  "classification": "NOT-RERUNNABLE",
+  "rationale": "No artifact in any scoped location (record exists only outside the audited locations, in outputs/); the original experiment definition is not recoverable from the record. Preserve + label; evidentiary ceiling stated in the assessment.",
+  "rerun_spec": null
+ },
+ "PHASE-93": {
+  "classification": "NOT-RERUNNABLE",
+  "rationale": "No artifact in any scoped location (record exists only outside the audited locations, in outputs/); the original experiment definition is not recoverable from the record. Preserve + label; evidentiary ceiling stated in the assessment.",
+  "rerun_spec": null
+ },
+ "PHASE-94": {
+  "classification": "NOT-RERUNNABLE",
+  "rationale": "No artifact in any scoped location (record exists only outside the audited locations, in outputs/); the original experiment definition is not recoverable from the record. Preserve + label; evidentiary ceiling stated in the assessment.",
+  "rerun_spec": null
+ },
+ "PHASE-95": {
+  "classification": "NOT-RERUNNABLE",
+  "rationale": "No artifact in any scoped location (record exists only outside the audited locations, in outputs/); the original experiment definition is not recoverable from the record. Preserve + label; evidentiary ceiling stated in the assessment.",
+  "rerun_spec": null
+ },
+ "PHASE-96": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-97": {
+  "classification": "NOT-RERUNNABLE",
+  "rationale": "No artifact in any scoped location (record exists only outside the audited locations, in outputs/); the original experiment definition is not recoverable from the record. Preserve + label; evidentiary ceiling stated in the assessment.",
+  "rerun_spec": null
+ },
+ "PHASE-98": {
+  "classification": "NOT-RERUNNABLE",
+  "rationale": "No artifact in any scoped location (record exists only outside the audited locations, in outputs/); the original experiment definition is not recoverable from the record. Preserve + label; evidentiary ceiling stated in the assessment.",
+  "rerun_spec": null
+ },
+ "PHASE-99": {
+  "classification": "NOT-RERUNNABLE",
+  "rationale": "No artifact in any scoped location (record exists only outside the audited locations, in outputs/); the original experiment definition is not recoverable from the record. Preserve + label; evidentiary ceiling stated in the assessment.",
+  "rerun_spec": null
+ },
+ "PHASE-100": {
+  "classification": "NOT-RERUNNABLE",
+  "rationale": "No artifact in any scoped location (record exists only outside the audited locations, in outputs/); the original experiment definition is not recoverable from the record. Preserve + label; evidentiary ceiling stated in the assessment.",
+  "rerun_spec": null
+ },
+ "PHASE-101": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-102": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-103": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ },
+ "PHASE-104": {
+  "classification": "REINTERPRET-ONLY",
+  "rationale": "SA-era / pre-framework phase known only from grouped ledger summaries; no frozen design, controls record, or dedicated report is recoverable, and any SA-basis content is governed by the Phase-107 falsification + H26. No rerun can cure the basis; the cohort assessment carries the status change.",
+  "rerun_spec": null
+ }
+}

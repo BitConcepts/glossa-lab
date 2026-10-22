@@ -109,6 +109,74 @@
   Stage 2(b) decision is framed for the owner,
   not taken.
 
+## Stage 1 continuation — Combined path (owner approval 2026-10-09)
+
+- **T9b.** Codebook clarification of the ILLEGIBLE /
+  SCRIPT_ONLY / GEOMETRIC boundary from the 16 adjudicated
+  Phase-134 disagreements + Phase-135 re-pilot freeze
+  (fresh sample, identical gates). Owner approval
+  2026-10-09: "Run the combined path — clarify the
+  boundary, re-pilot fresh, freeze Stage 2(b) only if
+  the gates pass, publish the combined record." —
+  freeze record `stage1-freeze-2.md` in this directory.
+  — **DONE 2026-10-09**: Rules B1–B5 frozen in
+  `stage1-freeze-2.md` §2 (freeze commit `dee4e5c2`,
+  before the frame was drawn); taxonomy, precedence
+  rule, and all gate thresholds unchanged.
+- **T9c.** Phase-135 re-pilot execution (blinded double
+  coding + gold + adjudication under the clarified
+  codebook; all quantities from on-disk records) and
+  pilot report with the gate verdict as found. —
+  **DONE 2026-10-09 (Phase-135)**: fresh 100-object
+  frame (0 overlap with Phase-134, verified), two
+  blinded passes + gold + adjudication of all 22
+  disagreements, no deviations;
+  `reports/phase135_pilot_report.md` — exact agreement
+  **0.78**, Cohen's κ **0.7129**.
+- **T9d.** Branch deliverable per `stage1-freeze-2.md`
+  §5: Stage 2(b) design freeze (proceed gate only) /
+  motif-arm closure statement (stop rule) / framed
+  owner decision (middle band again). — **DONE
+  2026-10-09**: proceed gate NOT MET (both arms),
+  stop rule NOT FIRED → **MIDDLE BAND for the second
+  time**; no Stage 2(b) design drafted; the owner's
+  decision is framed in the Phase-135 report §8.
+- **T9e.** Combined motif-arm publication: Zenodo
+  v4.7.0 (Phase-134 dataset + Phase-135 dataset +
+  program note; codes and logs only, no images)
+  through the mandatory release gate; OSF registry
+  updated in step. Authorized by the same owner
+  approval (T9b). — **DONE 2026-10-09**: published
+  as Zenodo v4.7.0 (DOI 10.5281/zenodo.23270096,
+  record 23270096) through the mandatory release
+  gate (PASS 18/18 at e698cff2, recorded in
+  `RELEASE_VALIDATION.json` `release_v4_7_0`;
+  final gate run at the gate-record merge 52580e43
+  PASS 18/18); post-deposit checksums confirmed
+  18/18; OSF registry updated the same day.
+
+## Stage 1 — Motif arm closure (owner decision 2026-10-09)
+
+- **T9f.** Motif-arm closure record. Owner decision
+  2026-10-09: paths (b) AND (c) together — the arm
+  rests now on its published two-pilot record, and
+  path (b) is preserved as the sole reopening
+  condition. — **CLOSED 2026-10-09**: the motif arm
+  is closed as run on the AI-coder basis
+  (Phase-134: 0.84 / κ 0.7885, MIDDLE BAND;
+  Phase-135: 0.78 / κ 0.7129, MIDDLE BAND;
+  Zenodo v4.7.0, DOI 10.5281/zenodo.23270096);
+  no Stage 2(b) design exists or is authorized.
+  Reopening ONLY under a new owner decision AND
+  human expert coders (path (b)), clarified
+  codebook (`stage1-freeze-2.md`), fresh sample,
+  identical frozen gates; a third AI-basis pilot is
+  expressly not a reopening path. Record:
+  `motif-arm-closure.md` in this directory.
+  T7–T9e stand as executed above; nothing in this
+  closure alters them, and Stage 2 arms (a), (c),
+  (d) are unaffected.
+
 ## Stage 2 — Association tests (each its own freeze; spec §5)
 
 - **T10.** Family declaration + first test freeze
@@ -130,3 +198,43 @@
   already in hand (spec §2.7).
 - Any image handling outside the gitignored local
   store.
+
+## Stage 2 — execution record (2026-10-09)
+
+- **T10.** Family declaration + test freezes — **DONE 2026-10-09**: the declared family F = {F1 (a) terminal × object type, F2 (c) Holdat site repertoire, F3 (c) ICIT-lineage site repertoire} with Benjamini–Hochberg q = 0.05 across executed members is declared in `stage2a-freeze.md` §1. Arm (a) frozen in `stage2a-freeze.md` (Phase-136) on the owner instruction "Do all next things" (2026-10-09). Arm (b) CLOSED (T9f) — not in the family, not touched.
+- **T10b.** Arm (c) design freeze — **DONE 2026-10-09**: `stage2c-freeze.md` (Phase-137; family members F2 + F3; layers tested separately, never pooled; §5.1 default minimum-cell rule replaced by the stated permutation-matched rule with mandatory sparsity disclosure).
+- **T10c.** Arm (d) descriptive-protocol freeze — **DONE 2026-10-09**: `stage2d-freeze.md` (Phase-138; descriptive only; not a family member; boundary 4 and the ≥1,000-year dating-gap caveat frozen into every output).
+
+
+## Stage 2 — execution (2026-10-09)
+
+- **T11.** Per-test execution and reports —
+  **DONE 2026-10-09**: Phase-136 (arm (a), F1;
+  PR #121, merge `e7d17f6a`) — CMH 47.0047, raw
+  p = 0.0001, MH common OR 2.384 (1.847–3.077);
+  Phase-137 (arm (c), F2 + F3; PR #122, merge
+  `75943a7f`) — F2 Holdat χ² 745.95, raw
+  p = 0.7354; F3 ICIT-lineage χ² 4,966.36, raw
+  p = 0.0001; Phase-138 (arm (d), descriptive
+  only; PR #120, merge `4069bcb1`; corrective
+  PR #123, merge `1c2a5fd2`) — 417 rows / 395
+  objects, `motif_chapter` filled 0/417.
+  Combined report
+  `reports/phase136_137_138_stage2_report.md`
+  applies the declared family's Benjamini–Hochberg
+  correction once: **F1 q = 0.00015 SUPPORTED;
+  F2 q = 0.7354 NOT SUPPORTED; F3 q = 0.00015
+  SUPPORTED.** Arm (b) untouched (CLOSED, T9f).
+- **T12.** Stage 2 publication — Zenodo v4.8.0
+  (program note + the three phase results JSONs,
+  CC BY 4.0) through the mandatory release gate;
+  OSF registry updated in step. (Completion
+  appended below on publication.) — **DONE
+  2026-10-09**: published as Zenodo v4.8.0 (DOI
+  10.5281/zenodo.23273722, record 23273722) through
+  the mandatory release gate (PASS 22/22 at
+  b5c6c8e2, recorded in `RELEASE_VALIDATION.json`
+  `release_v4_8_0`; final gate run at the
+  gate-record merge fe734ef0 PASS 22/22);
+  post-deposit checksums confirmed 22/22; OSF
+  registry updated the same day.

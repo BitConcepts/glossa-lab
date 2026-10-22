@@ -65,6 +65,43 @@ HOLDAT_EXPECTED = {"inscriptions": 1670, "tokens": 7002, "signs": 390}
 def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
+def _canonical_anchors_sha256(path: Path) -> str:
+    """SHA-256 of the anchors file's pre-existing content.
+
+    Spec 029 Phase D (OD-1, 2026-10-12) added additive stage
+    keys (``stage``, ``stage_source``, ``stage_as_of``,
+    ``stage_history``, ``verified_unexplained``) to every
+    anchor record. Removing exactly those keys and
+    re-serializing canonically reproduces the pre-migration
+    file, whose hash is the pinned anchors SHA-256 — so
+    this digest keeps the original "anchors unchanged"
+    meaning after the OD-1 migration, and after Spec 029
+    Phase H (D-A) added its additive annotation the same
+    way. The pinned constant
+    and every recorded hash value are unchanged.
+    """
+    doc = json.loads(path.read_text(encoding="utf-8"))
+    for rec in doc.get("anchors", {}).values():
+        for key in ("stage", "stage_source", "stage_as_of",
+                    "stage_history", "verified_unexplained"):
+            rec.pop(key, None)
+        # Spec 029 Phase H (D-A, 2026-10-12): also remove the
+        # additive annotation — ``strict_set`` on every record,
+        # ``validation_status`` on the records that carried none
+        # (exactly the Phase H values named below; pre-existing
+        # values are untouched), and the metadata block — so the
+        # digest still reproduces the pre-migration content.
+        rec.pop("strict_set", None)
+        if rec.get("validation_status") in (
+                "strict_sa_independent", "sa_in_provenance_chain",
+                "no_validation_record"):
+            rec.pop("validation_status", None)
+    doc.get("metadata", {}).pop("spec029_phase_h_annotation", None)
+    return hashlib.sha256(
+        json.dumps(doc, indent=2, ensure_ascii=False).encode("utf-8")
+    ).hexdigest()
+
+
 
 def _find_holdat_csv() -> Path:
     rel = Path("corpora") / "downloads" / "external_repos" \
@@ -81,7 +118,7 @@ def _fmt(x, nd=6):
 
 
 def run_all(write: bool = True) -> dict:
-    anchors_hash_before = _sha256(ANCHORS_PATH)
+    anchors_hash_before = _canonical_anchors_sha256(ANCHORS_PATH)
     assert anchors_hash_before == ANCHORS_SHA256, anchors_hash_before
 
     # ── mayig (within-compilation context; P-space) ──
@@ -164,7 +201,7 @@ def run_all(write: bool = True) -> dict:
         "anchors_sha256_before": anchors_hash_before,
     }
 
-    anchors_hash_after = _sha256(ANCHORS_PATH)
+    anchors_hash_after = _canonical_anchors_sha256(ANCHORS_PATH)
     assert anchors_hash_after == anchors_hash_before
     results["anchors_sha256_after"] = anchors_hash_after
     results["anchors_unchanged"] = anchors_hash_after == anchors_hash_before

@@ -1,0 +1,764 @@
+{
+ "spec": "062-arm-a-precision-calibration-repair",
+ "register_version": "0.6-draft",
+ "note": "Recovered register for Spec 062 (successor to Spec 061, design D-27 arm A1 only) at the freeze act of 2026-10-21, under the owner's approval of the same date (amendment package Item 3). The draft register (0.5-draft) already carried engine evidence values (kind observed, source_quality artifact) and mutual independent_of declarations, so no loadability recovery was needed: round 1 of the AEE lifecycle hooks loaded it as drafted and returned 22 failure modes - 15 FR-2.3 draft-cap records and 7 irreducibility challenges recorded under the engine's coverage_gap category (F062-C05, C07, C09, C11, C12, C13, C15) - with minimum propagated score 0.72 and no claim below the 0.70 threshold. FREEZE RECOVERY (2026-10-21): at 0.6-draft the 7 irreducibility-challenged claim texts were restated as single head propositions with their carried clauses moved into boundaries verbatim-in-substance, and the freeze rulings DD-062-7 (calibration seed 20261021 as drafted), DD-062-8 (Phase-424 allocated), and DD-062-9 (construction R-1 adopted as drafted; the pin set verified complete two-route at main b7a8c8a42d4e1137c04ef4c0123fb4ba4dbc3736) were carried into the boundaries of F062-C03, F062-C06, F062-C07, and F062-C12. The register parallels Spec 061's F061-C01...C15: the substantive deltas are F062-C05 (the predecessor record is never patched), F062-C07 (gate 0.3 preserved by the repair, with its fencing argument), F062-C12 (the repaired calibration R-1 and gate 0.5-R), F062-C13 (T* on Spec 061's record stays undefined), and F062-C15 (the drafting demonstration establishes nothing about the real corpus). ASM- ids name the assumptions each claim stands on, carried from Spec 061's register: ASM-PHASE393-RECORD, ASM-PHASE393-MACHINERY, ASM-MARGIN-FAMILY, ASM-SCENARIO-VALUES, ASM-SIMULATION-NOT-DATA, ASM-GATES-BEFORE-OUTCOME, ASM-APPEND-ONLY.",
+ "claims": [
+  {
+   "id": "F062-C01",
+   "kind": "hypothesis",
+   "text": "An outcome under Spec 062 states only the intake target at which Spec 028 Arm A's interval would resolve at the 0.01 margin, computed from Phase-393's recorded resampling distribution under the two stated scenarios.",
+   "status": "draft",
+   "boundary": "The scope is a precision computation on recorded data: Phase-393's Arm A distribution and the recorded site samples behind it. It excludes any statement about the ancient world, about whether site-linked repertoire structure exists, about movement of people, or about any sign meaning.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-PHASE393-RECORD",
+    "ASM-SIMULATION-NOT-DATA"
+   ],
+   "alternatives": [
+    "the computation could be read as evidence about site-linked structure (it cannot: design D-27 states it measures the program's own resolution)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified in scope if any Spec 062 output states a conclusion outside the intake-target statement as bounded here"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-SIMULATION-AS-DATA"
+    ],
+    "strongest_rival": "the reading in which a returned target is evidence about the ancient world",
+    "verdict_rule": "supported iff every outcome statement under this spec is an intake-target statement within this boundary",
+    "evidence_origin_groups": [
+     "phase393-record",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-27 arm A1 (PR #195 packet): resampling the recorded site samples with replacement at multiples of current sizes; smallest total added count and per-site distribution at which the interval excludes 0.01 in at least 80% of trials under theta=0.00878 and theta=0.015; A1 establishes nothing about the ancient world.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/061-arm-a-precision/outcome.md"
+     ]
+    },
+    {
+     "ref": "reports/phase393_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-393 results of record (SHA-256 0a1657a8...): Arm A median adjusted R2 0.00878393455594817, interval [0.004626892186724407, 0.01297407559730989], rejection share 0.6231155778894473, 1,593 records, 294 inscriptions per draw, seed 20261012, R=199, B=499.",
+     "source_id": "reports/phase393_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/028-harappa-robustness/calibration.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F062-C02",
+   "kind": "requirement",
+   "text": "STUDY-SPEC-028/ARM-A stands INCONCLUSIVE on its recorded numbers: median adjusted R2 0.00878393455594817, percentile interval [0.004626892186724407, 0.01297407559730989], rejection share 0.6231155778894473.",
+   "status": "draft",
+   "boundary": "The recorded numbers are Phase-393's, re-verified at Spec 061's gates 0.1-0.3 (exact reproduction at gate 0.3) and carried here unchanged. Nothing in this spec edits, supersedes, or re-adjudicates them.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-PHASE393-RECORD"
+   ],
+   "alternatives": [
+    "a successor computation could be read as moving the verdict (it cannot: the verdict is Phase-393's and stands beside any precision record)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified if any product of this spec states Arm A's verdict as anything other than INCONCLUSIVE on the recorded numbers"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-SIMULATION-AS-DATA"
+    ],
+    "strongest_rival": "the reading in which computing a target revises the verdict it is computed from",
+    "verdict_rule": "held iff all products state the verdict and numbers exactly as recorded",
+    "evidence_origin_groups": [
+     "phase393-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "reports/phase393_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-393 results of record (SHA-256 0a1657a8...): Arm A median adjusted R2 0.00878393455594817, interval [0.004626892186724407, 0.01297407559730989], rejection share 0.6231155778894473, 1,593 records, 294 inscriptions per draw, seed 20261012, R=199, B=499.",
+     "source_id": "reports/phase393_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/028-harappa-robustness/calibration.json"
+     ]
+    },
+    {
+     "ref": "specs/061-arm-a-precision/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 061 execution of record (Phase-423, 2026-10-21): gates 0.1-0.4 PASS, gate 0.3 reproduced the recorded Arm A summary digit-for-digit (median 0.00878393455594817, interval [0.004626892186724407, 0.01297407559730989], share 0.6231155778894473); gate 0.5 FAILED - A(1) = -0.0025188916876574316, A(1.5) = A(2) = A(3) = 1.0 exactly; closed CANNOT BE RUN AS WRITTEN; T* undefined on that record; the record itself names the generated-worlds repair direction.",
+     "source_id": "specs/061-arm-a-precision/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F062-C03",
+   "kind": "hypothesis",
+   "text": "Within the search frame carried from Spec 061, the computation returns a smallest added-inscription target that resolves Arm A at the 0.01 margin under at least one of the two stated scenarios.",
+   "status": "draft",
+   "boundary": "Existence is claimed only inside the carried frozen frame (integer grid m = 1..25, ceiling m = 25, 199 trials per point, 199 draws and 499 permutations per trial, seed 20261021, and the section 4.7-R repaired calibration). A target outside the frame is not a target under this spec, and failure inside the frame is the falsifier's outcome (F062-C04), not a claim that resolution is impossible in principle. Freeze ruling carried into this boundary: the frame is frozen for Spec 062 exactly as carried from Spec 061 (DD-062-9 confirms the search frame and construction R-1; DD-062-7 confirms both seed values 20261021 as drafted), and execution runs as Phase-424 (DD-062-8).",
+   "depends_on": [
+    "F062-C01",
+    "F062-C02"
+   ],
+   "assumptions": [
+    "ASM-PHASE393-RECORD",
+    "ASM-SCENARIO-VALUES"
+   ],
+   "alternatives": [
+    "no grid point inside the frame qualifies under either scenario (the falsifier, F062-C04)",
+    "targets under both scenarios (recorded separately under F062-C11; the hypothesis needs only one)"
+   ],
+   "falsification_tests": [
+    "run the section 4 computation over the frozen frame: if neither scenario's smallest qualifying grid point exists inside the ceiling, this hypothesis is not supported and the headline is NO TARGET UNDER EITHER SCENARIO"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-SIMULATION-AS-DATA"
+    ],
+    "strongest_rival": "the strongest rival is the falsifier itself: at these site counts the interval may be too wide to resolve at any in-frame scale",
+    "verdict_rule": "supported iff at least one scenario returns a target under F062-C10/F062-C11 inside the frozen frame; any other adjudicated pattern does not support it",
+    "evidence_origin_groups": [
+     "phase393-record",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-27 arm A1 (PR #195 packet): resampling the recorded site samples with replacement at multiples of current sizes; smallest total added count and per-site distribution at which the interval excludes 0.01 in at least 80% of trials under theta=0.00878 and theta=0.015; A1 establishes nothing about the ancient world.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/061-arm-a-precision/outcome.md"
+     ]
+    },
+    {
+     "ref": "reports/phase393_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-393 results of record (SHA-256 0a1657a8...): Arm A median adjusted R2 0.00878393455594817, interval [0.004626892186724407, 0.01297407559730989], rejection share 0.6231155778894473, 1,593 records, 294 inscriptions per draw, seed 20261012, R=199, B=499.",
+     "source_id": "reports/phase393_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/028-harappa-robustness/calibration.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F062-C04",
+   "kind": "requirement",
+   "text": "If the computation returns no target under either stated scenario inside the frozen search frame, the outcome is recorded as NO TARGET UNDER EITHER SCENARIO with the same prominence as any target returned.",
+   "status": "draft",
+   "boundary": "No-target is frame-scoped (spec section 7.4 carried): a statement about m <= 25 under the frozen frame, never about all possible data. A closure at a gate (INVALID or CANNOT BE RUN AS WRITTEN) is a distinct pre-written class and is never recorded as this outcome - the distinguishing branch Spec 061's own outcome record held (F061-C04).",
+   "depends_on": [
+    "F062-C03"
+   ],
+   "assumptions": [
+    "ASM-SCENARIO-VALUES"
+   ],
+   "alternatives": [
+    "a gate closure could be reported as no-target (it may not: the classes are distinct, as Spec 061's Phase-423 record held)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified if a no-target run is recorded under any other headline, or a gate closure is recorded as NO TARGET UNDER EITHER SCENARIO"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-SIMULATION-AS-DATA"
+    ],
+    "strongest_rival": "the softening in which a closure and the falsifier's outcome are interchanged",
+    "verdict_rule": "held iff the headline classes are used exactly as spec section 5 pre-writes them",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-27 arm A1 (PR #195 packet): resampling the recorded site samples with replacement at multiples of current sizes; smallest total added count and per-site distribution at which the interval excludes 0.01 in at least 80% of trials under theta=0.00878 and theta=0.015; A1 establishes nothing about the ancient world.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/061-arm-a-precision/outcome.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F062-C05",
+   "kind": "requirement",
+   "text": "Spec 062 is a precision computation beside the frozen Arm A test.",
+   "status": "draft",
+   "boundary": "Arm A is not re-run, re-adjudicated, or edited. Spec 061's spec, adjudication, claims, freeze record, and outcome stand exactly as executed; this spec is a successor contract in a new directory, and any change it makes exists only inside its own record. Spec 061's closed record is never patched by this spec (the clause carried in the draft head, moved here verbatim-in-substance at the freeze recovery).",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "the repair could be filed as an amendment inside Spec 061's directory (refused: the executed-spec form records execution in outcome.md and never edits digest-covered frozen files; a successor spec is the program's form for a changed contract)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified if any file under specs/061-arm-a-precision/ is modified by an act under this spec"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-SIMULATION-AS-DATA"
+    ],
+    "strongest_rival": "the reading in which a calibration repair edits the record that exposed the defect",
+    "verdict_rule": "held iff Spec 061's directory is byte-identical before and after every act under this spec",
+    "evidence_origin_groups": [
+     "spec061-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/061-arm-a-precision/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 061 execution of record (Phase-423, 2026-10-21): gates 0.1-0.4 PASS, gate 0.3 reproduced the recorded Arm A summary digit-for-digit (median 0.00878393455594817, interval [0.004626892186724407, 0.01297407559730989], share 0.6231155778894473); gate 0.5 FAILED - A(1) = -0.0025188916876574316, A(1.5) = A(2) = A(3) = 1.0 exactly; closed CANNOT BE RUN AS WRITTEN; T* undefined on that record; the record itself names the generated-worlds repair direction.",
+     "source_id": "specs/061-arm-a-precision/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F062-C06",
+   "kind": "requirement",
+   "text": "Execution stops before any precision quantity is computed if any component of the composite resampling-distribution pin mismatches.",
+   "status": "draft",
+   "boundary": "The pin set is Spec 061's, unchanged (spec section 2): results file, corpus layer, pipeline, margins audit, Spec 028 freeze record, Spec 028 calibration record, and the anchors assertion. A mismatch stops the run as INVALID (gate 0.1). Freeze ruling carried into this boundary: DD-062-9 confirms the composite pin set is verified complete at the freeze - every component re-derived two-route at main b7a8c8a42d4e1137c04ef4c0123fb4ba4dbc3736, both routes agreeing byte-for-byte (freeze.md section 2).",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-PHASE393-RECORD",
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [
+    "execution could proceed on a partially matching pin set (it may not: the distribution is the composite, DD-061-1)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified if any precision quantity is computed in a run whose gate 0.1 did not pass on every component"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-SIMULATION-AS-DATA"
+    ],
+    "strongest_rival": "proceeding on the summary file alone, the defect DEF-061-1 recorded",
+    "verdict_rule": "held iff gate 0.1 precedes every precision quantity in the execution shape",
+    "evidence_origin_groups": [
+     "phase393-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "reports/phase393_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-393 results of record (SHA-256 0a1657a8...): Arm A median adjusted R2 0.00878393455594817, interval [0.004626892186724407, 0.01297407559730989], rejection share 0.6231155778894473, 1,593 records, 294 inscriptions per draw, seed 20261012, R=199, B=499.",
+     "source_id": "reports/phase393_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/028-harappa-robustness/calibration.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F062-C07",
+   "kind": "requirement",
+   "text": "Gate 0.3 reproduces the recorded distribution summary exactly.",
+   "status": "draft",
+   "boundary": "Gate 0.3 is a function of the section 2 pins, the frozen pipeline393 machinery, seed 20261012, and R = 199 / B = 499; section 4.7-R changes none of them, consumes none of its inputs, and shares no RNG stream with it (the calibration Generator is a separate object, created after step 0 in the execution shape and exhausted by the calibration step). The gate's standard is exact equality of median 0.00878393455594817, interval [0.004626892186724407, 0.01297407559730989], and share 0.6231155778894473 - the standard Spec 061's execution met digit-for-digit. The repaired calibration leaves gate 0.3's path untouched (the clause carried in the draft head, moved here verbatim-in-substance at the freeze recovery). Freeze ruling carried into this boundary: DD-062-9 confirms gate 0.3's preservation argument as a checkable list - the repair touches none of gate 0.3's inputs and shares no RNG stream with it.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-PHASE393-RECORD",
+    "ASM-PHASE393-MACHINERY",
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [
+    "the calibration repair could be read as weakening the reproduction standard (it may not: the standard, seed, and machinery are carried verbatim)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified if gate 0.3 under this spec uses any standard weaker than exact equality, or if the calibration step alters any gate 0.3 input"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-SIMULATION-AS-DATA"
+    ],
+    "strongest_rival": "a repair that quietly re-opens the reproduction the predecessor already passed",
+    "verdict_rule": "held iff gate 0.3 runs verbatim before any calibration quantity, with its exact standard",
+    "evidence_origin_groups": [
+     "phase393-record",
+     "spec061-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/061-arm-a-precision/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 061 execution of record (Phase-423, 2026-10-21): gates 0.1-0.4 PASS, gate 0.3 reproduced the recorded Arm A summary digit-for-digit (median 0.00878393455594817, interval [0.004626892186724407, 0.01297407559730989], share 0.6231155778894473); gate 0.5 FAILED - A(1) = -0.0025188916876574316, A(1.5) = A(2) = A(3) = 1.0 exactly; closed CANNOT BE RUN AS WRITTEN; T* undefined on that record; the record itself names the generated-worlds repair direction.",
+     "source_id": "specs/061-arm-a-precision/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
+    },
+    {
+     "ref": "reports/phase393_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-393 results of record (SHA-256 0a1657a8...): Arm A median adjusted R2 0.00878393455594817, interval [0.004626892186724407, 0.01297407559730989], rejection share 0.6231155778894473, 1,593 records, 294 inscriptions per draw, seed 20261012, R=199, B=499.",
+     "source_id": "reports/phase393_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/028-harappa-robustness/calibration.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F062-C08",
+   "kind": "requirement",
+   "text": "The Arm A population reproduces exactly before any precision quantity is computed.",
+   "status": "draft",
+   "boundary": "1,593 records at the five named sites with the recorded totals (Mohenjo-daro 1,302; Dholavira 111; Lothal 74; Chanhu-daro 54; Kalibangan 52), the margins audit's cell table, 6 included cells, 294 inscriptions per draw (gate 0.2), exactly as in Spec 061.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-PHASE393-RECORD",
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [
+    "a near-matching population could be accepted (it may not: the reproduction is exact or the run is INVALID)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified if any precision quantity is computed in a run whose gate 0.2 did not pass exactly"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-SIMULATION-AS-DATA"
+    ],
+    "strongest_rival": "approximate reproduction treated as reproduction",
+    "verdict_rule": "held iff gate 0.2 passes exactly before any precision quantity",
+    "evidence_origin_groups": [
+     "phase393-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "reports/phase393_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-393 results of record (SHA-256 0a1657a8...): Arm A median adjusted R2 0.00878393455594817, interval [0.004626892186724407, 0.01297407559730989], rejection share 0.6231155778894473, 1,593 records, 294 inscriptions per draw, seed 20261012, R=199, B=499.",
+     "source_id": "reports/phase393_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/028-harappa-robustness/calibration.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F062-C09",
+   "kind": "requirement",
+   "text": "The computation runs exactly two scenarios.",
+   "status": "draft",
+   "boundary": "Scenario 1 at the recorded point estimate theta_1 = 0.00878393455594817 and Scenario 2 at theta_2 = 0.015 exactly (DD-061-4 carried); no third scenario and no other theta value. Added inscriptions are simulated resamples of recorded inscriptions, never described as held data or new evidence. Every output labels the computation a simulation over recorded data (the clause carried in the draft head, moved here verbatim-in-substance at the freeze recovery).",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-SCENARIO-VALUES",
+    "ASM-SIMULATION-NOT-DATA"
+   ],
+   "alternatives": [
+    "a third scenario could be added as a sensitivity (refused: a reader who wants another theta wants a different spec, Spec 061 section 4.2)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified if any run computes a scenario other than the two stated, or any output omits the simulation label"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-SIMULATION-AS-DATA"
+    ],
+    "strongest_rival": "scenario drift at run time",
+    "verdict_rule": "held iff exactly the two stated scenarios are computed and every output carries the simulation label",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-27 arm A1 (PR #195 packet): resampling the recorded site samples with replacement at multiples of current sizes; smallest total added count and per-site distribution at which the interval excludes 0.01 in at least 80% of trials under theta=0.00878 and theta=0.015; A1 establishes nothing about the ancient world.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/061-arm-a-precision/outcome.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F062-C10",
+   "kind": "requirement",
+   "text": "Trial resolution is strict exclusion of the 0.01 margin in the scenario's direction.",
+   "status": "draft",
+   "boundary": "Scenario 1 resolves iff the trial interval's upper bound is < 0.01; Scenario 2 iff its lower bound is > 0.01 (DD-061-2 carried). A bound equal to 0.01 touches the margin and does not resolve. A grid point qualifies iff at least 80% of its 199 trials resolve.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-MARGIN-FAMILY",
+    "ASM-SCENARIO-VALUES"
+   ],
+   "alternatives": [
+    "the frozen family's 'at or below' wording could be imported (refused at Spec 061's draft: the design's word is 'exclude', DD-061-2)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified if any trial with a touching or non-excluding bound is recorded as resolving"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-SIMULATION-AS-DATA"
+    ],
+    "strongest_rival": "a touching bound counted as exclusion",
+    "verdict_rule": "held iff resolution is judged by strict exclusion in every recorded trial",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-27 arm A1 (PR #195 packet): resampling the recorded site samples with replacement at multiples of current sizes; smallest total added count and per-site distribution at which the interval excludes 0.01 in at least 80% of trials under theta=0.00878 and theta=0.015; A1 establishes nothing about the ancient world.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/061-arm-a-precision/outcome.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F062-C11",
+   "kind": "requirement",
+   "text": "Each scenario's target is the smallest total added-inscription count at a qualifying grid point.",
+   "status": "draft",
+   "boundary": "Grid points are examined in ascending order of total added inscriptions; per-site added counts at integer multiple m are exactly (m - 1) x (1,302, 111, 74, 54, 52) (DD-061-3 and DD-061-9 carried). The full grid table is published so non-monotonic behaviour is visible; the target is the smallest qualifying total whether or not shares are monotone. Each target is reported with its multiple and its exact per-site integer distribution (the clause carried in the draft head, moved here verbatim-in-substance at the freeze recovery).",
+   "depends_on": [
+    "F062-C10"
+   ],
+   "assumptions": [
+    "ASM-PHASE393-RECORD"
+   ],
+   "alternatives": [
+    "an equal per-site allocation (refused at Spec 061's draft, DD-061-3: the design's words are 'multiples of their current sizes')"
+   ],
+   "falsification_tests": [
+    "the claim is falsified if any reported target is not the smallest qualifying total, or its per-site integers do not sum exactly to it"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-SIMULATION-AS-DATA"
+    ],
+    "strongest_rival": "a larger or reallocated target presented as the design's target",
+    "verdict_rule": "held iff targets are computed and reported exactly under this rule",
+    "evidence_origin_groups": [
+     "phase393-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "reports/phase393_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-393 results of record (SHA-256 0a1657a8...): Arm A median adjusted R2 0.00878393455594817, interval [0.004626892186724407, 0.01297407559730989], rejection share 0.6231155778894473, 1,593 records, 294 inscriptions per draw, seed 20261012, R=199, B=499.",
+     "source_id": "reports/phase393_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/028-harappa-robustness/calibration.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F062-C12",
+   "kind": "requirement",
+   "text": "The computation searches only the frame the freeze fixes.",
+   "status": "draft",
+   "boundary": "The frame is Spec 061's (grid m = 1..25, ceiling m = 25, 199 trials, 199 draws, 499 permutations, seed 20261021 with its stream discipline) with the calibration of section 4.7-R (construction R-1: per-inscription Dirichlet drawing around the imposed composition p_s(b), kappa_i = n_legible(i) - 1, fixed uniforms and rarefaction selections from a dedicated calibration Generator seeded 20261021, A_R the median of 199 draw statistics, bisection on [1, 3] to |A_R(b) - theta| <= 1e-6). Gate 0.5-R verifies the bracket A_R(1) < theta < A_R(3), strict increase on the recorded scan grid, and the bisection tolerance, per scenario, before any trial; any failure closes the run as CANNOT BE RUN AS WRITTEN and no other construction may be supplied at run time. The repaired calibration is verified at gate 0.5-R before any trial (the clause carried in the draft head, moved here verbatim-in-substance at the freeze recovery). Freeze rulings carried into this boundary: DD-062-9 adopts construction R-1 exactly as drafted (per-inscription Dirichlet drawing, kappa_i = n_legible(i) - 1, fixed-uniform coupling) and does not adopt R-2, whose tolerance amendment is not taken; DD-062-7 fixes the calibration seed at 20261021 as drafted, on the dedicated calibration Generator.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME",
+    "ASM-SCENARIO-VALUES"
+   ],
+   "alternatives": [
+    "the verbatim redraw construction R-2 could be substituted at run time (refused: it is a freeze-level alternative, OP-062-4, adoptable only openly at the freeze together with its tolerance change; its measured step sizes are in adjudication section 3)",
+    "the frozen in-expectation calibration could be retained (it cannot impose either theta: Spec 061's outcome record)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified if any quantity is computed outside the frozen frame, if gate 0.5-R does not precede every trial, or if any construction other than the frozen one is used at run time"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-SIMULATION-AS-DATA"
+    ],
+    "strongest_rival": "run-time substitution of an unverified construction - exactly the failure mode gate 0.5 exists to close",
+    "verdict_rule": "held iff the frozen frame and construction are the only ones searched, with gate 0.5-R verified first",
+    "evidence_origin_groups": [
+     "spec061-record",
+     "spec028-record",
+     "draft-demonstration"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/061-arm-a-precision/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 061 execution of record (Phase-423, 2026-10-21): gates 0.1-0.4 PASS, gate 0.3 reproduced the recorded Arm A summary digit-for-digit (median 0.00878393455594817, interval [0.004626892186724407, 0.01297407559730989], share 0.6231155778894473); gate 0.5 FAILED - A(1) = -0.0025188916876574316, A(1.5) = A(2) = A(3) = 1.0 exactly; closed CANNOT BE RUN AS WRITTEN; T* undefined on that record; the record itself names the generated-worlds repair direction.",
+     "source_id": "specs/061-arm-a-precision/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
+    },
+    {
+     "ref": "specs/028-harappa-robustness/calibration.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 028 calibration of record (SHA-256 4198747b...): Arm A positive control at frozen boost 3.0 over per-draw regenerated worlds - median adjusted R2 0.023963353007570576, interval [0.01564561395032637, 0.03362727672588614], rejection share 1.0; negative control median 0.0004562417889948378. The generated-worlds quantity the repaired calibration is levelled to.",
+     "source_id": "specs/028-harappa-robustness/calibration.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/061-arm-a-precision/outcome.md"
+     ]
+    },
+    {
+     "ref": "specs/062-arm-a-precision-calibration-repair/adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Draft-level demonstration (adjudication section 3): construction R-1 implemented on synthetic/planted data mirroring the recorded Arm A margins (5 sites, recorded totals and cells, 80 planted columns, W=199 draws); A_R brackets both frozen theta values, is strictly increasing on the scan grid, and bisects to |A_R(b*) - theta| <= 1e-6 for both scenarios; the verbatim redraw candidate's step sizes and the tilt candidate's failure to bracket are measured in the same section. The demonstration scores nothing on the real corpus.",
+     "source_id": "specs/062-arm-a-precision-calibration-repair/adjudication.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/061-arm-a-precision/outcome.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F062-C13",
+   "kind": "requirement",
+   "text": "Arm A2 is not part of Spec 062.",
+   "status": "draft",
+   "boundary": "Arm A2 is not designed, authorised, armed, or executed by this spec (campaign decision E-3). If this spec returns targets, its own operative target is defined by the DD-061-5 rule carried in spec section 4.5; whether that target arms A2 is the owner's decision at the mini planning gate a fired trigger queues, never an act of this spec. No later act may quote a target from Spec 061's record: none exists there. Spec 061's operative target T* stays undefined on Spec 061's record (the clause carried in the draft head, moved here verbatim-in-substance at the freeze recovery).",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "a successor target could be read back into Spec 061's record as its T* (it may not: that record is closed and its T* is undefined on it)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified if any act under this spec designs, arms, or executes Arm A2, or states a target as Spec 061's"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-SIMULATION-AS-DATA"
+    ],
+    "strongest_rival": "contingent-arm scope creep inside a repair spec",
+    "verdict_rule": "held iff Arm A2 has no task, gate, or execution step under this spec and Spec 061's record is quoted only as closed",
+    "evidence_origin_groups": [
+     "spec061-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/061-arm-a-precision/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 061 execution of record (Phase-423, 2026-10-21): gates 0.1-0.4 PASS, gate 0.3 reproduced the recorded Arm A summary digit-for-digit (median 0.00878393455594817, interval [0.004626892186724407, 0.01297407559730989], share 0.6231155778894473); gate 0.5 FAILED - A(1) = -0.0025188916876574316, A(1.5) = A(2) = A(3) = 1.0 exactly; closed CANNOT BE RUN AS WRITTEN; T* undefined on that record; the record itself names the generated-worlds repair direction.",
+     "source_id": "specs/061-arm-a-precision/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F062-C14",
+   "kind": "requirement",
+   "text": "No outcome under Spec 062 establishes Arm A's rerun verdict in advance.",
+   "status": "draft",
+   "boundary": "A returned target is a planning number under a stated scenario (spec section 7.3 carried): if real new data of the same kind arrives in that amount and the true effect is the scenario's theta, the interval resolves in at least 80% of trials like these. The rerun's actual verdict belongs to the rerun alone.",
+   "depends_on": [
+    "F062-C01"
+   ],
+   "assumptions": [
+    "ASM-SIMULATION-NOT-DATA"
+   ],
+   "alternatives": [
+    "a target could be quoted as a prediction of the rerun's verdict (it may not)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified if any output states or implies the rerun's verdict before the rerun runs"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-SIMULATION-AS-DATA"
+    ],
+    "strongest_rival": "the planning number read as a verdict forecast",
+    "verdict_rule": "held iff every output carries the section 7.3 fence in substance",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-27 arm A1 (PR #195 packet): resampling the recorded site samples with replacement at multiples of current sizes; smallest total added count and per-site distribution at which the interval excludes 0.01 in at least 80% of trials under theta=0.00878 and theta=0.015; A1 establishes nothing about the ancient world.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/061-arm-a-precision/outcome.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F062-C15",
+   "kind": "requirement",
+   "text": "The drafting-stage demonstration filed with this spec establishes nothing about the real corpus.",
+   "status": "draft",
+   "boundary": "The demonstration (adjudication section 3) ran on synthetic/planted data mirroring the recorded margins; it establishes that construction R-1 can calibrate - continuity, bracketing, and a b* at the frozen tolerance on planted data. Whether A_R brackets theta on the recorded population is gate 0.5-R's execution-time check, and the precision question's answer exists only after an authorised execution. This claim carries the draft's 'this does not establish' line into the register. The demonstration likewise establishes nothing about the precision question's answer (the clause carried in the draft head, moved here verbatim-in-substance at the freeze recovery).",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-SIMULATION-NOT-DATA"
+   ],
+   "alternatives": [
+    "draft-level planted-data numbers could be quoted as calibration results for the real corpus (they may not: different population, different pooled composition, planted parameters stated in adjudication section 3)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified if any product quotes a demonstration number as a quantity of the real corpus or of an execution"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-SIMULATION-AS-DATA"
+    ],
+    "strongest_rival": "a drafting demonstration inflated into a result",
+    "verdict_rule": "held iff demonstration numbers are always cited as planted-data, draft-level values",
+    "evidence_origin_groups": [
+     "draft-demonstration"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/062-arm-a-precision-calibration-repair/adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Draft-level demonstration (adjudication section 3): construction R-1 implemented on synthetic/planted data mirroring the recorded Arm A margins (5 sites, recorded totals and cells, 80 planted columns, W=199 draws); A_R brackets both frozen theta values, is strictly increasing on the scan grid, and bisects to |A_R(b*) - theta| <= 1e-6 for both scenarios; the verbatim redraw candidate's step sizes and the tilt candidate's failure to bracket are measured in the same section. The demonstration scores nothing on the real corpus.",
+     "source_id": "specs/062-arm-a-precision-calibration-repair/adjudication.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/061-arm-a-precision/outcome.md"
+     ]
+    }
+   ]
+  }
+ ]
+}

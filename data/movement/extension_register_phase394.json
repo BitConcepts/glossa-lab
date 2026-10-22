@@ -1,0 +1,871 @@
+{
+ "phase": 394,
+ "spec": "030-q6-chronology-spine-extension",
+ "input_hashes": {
+  "data/movement/chronology_rows.jsonl": "0644437701800eb9ef5ae149d11c99447b01e0a37cfda571b4a5523c758aff79",
+  "data/movement/gazetteer_rows.jsonl": "5ac76a3031121a61fa39f87b1d2760855374d171ddd036988fee2820dca9b8b6",
+  "backend/scripts/phase394_spine_extension.py": "6fe5cbe93766d59f6ba3e54fd0fd63ad373743319af62d392b4a3d81be7b5322",
+  "corpora/downloads/spec030_phase394/r5_xronos_data.csv": "8570bfd9b256ced2f9e840183ea52325b9a7079b79a2957c7db797f09c118655",
+  "corpora/downloads/spec030_phase394/r1_tracing.json": "7044bbfe57dcfb37f377258f4f1658e87f5b64a776117bd2053a7c5bd02edab6",
+  "corpora/downloads/spec030_phase394/r2_candidates.json": "9068393cd00ccb3ba116f240e0b46b3c433ef2ca6000dce297b28a7040e0f588",
+  "corpora/downloads/spec030_phase394/r4_tworains.json": "13458d9b02bd83c98d6288daccfa08c1b09a220b4b3b20ede2346e381cfe0ec2",
+  "corpora/downloads/spec030_phase394/r3_extraction.json": "3770db1ae0edd73bc35ca6f2e33dbe2364a27f61955a0d8d1abc1bd41a038ebe"
+ },
+ "routes": {
+  "R5": {
+   "export_rows_total": 314030,
+   "in_box_with_coords": 144,
+   "new_records": 0,
+   "field_corrections": 0,
+   "coordless_admitted": 0,
+   "coordless_unestablished": 23859,
+   "out_of_box_excluded": 288412,
+   "no_coords_no_site": 1615,
+   "age_diffs_observed_not_applied": [],
+   "build_stats": {
+    "new_rows": 0,
+    "citations_attached": 0,
+    "corrections": 0,
+    "excluded": 0
+   },
+   "interim_assessment": {
+    "as_frozen": {
+     "status": "NOT-YET-TESTABLE",
+     "criteria": {
+      "c1_regions_with_2plus_sites": {
+       "value": 1,
+       "pass": false
+      },
+      "c2_window_sites_direct_or_associated": {
+       "value": 5,
+       "pass": false
+      },
+      "c3_window_short_lived_share": {
+       "value": 0.0,
+       "pass": false
+      },
+      "c4_window_median_std_bp": {
+       "value": 70,
+       "pass": true
+      }
+     },
+     "window_rows_direct_or_associated": 31
+    },
+    "excluding_contested": {
+     "status": "NOT-YET-TESTABLE",
+     "criteria": {
+      "c1_regions_with_2plus_sites": {
+       "value": 1,
+       "pass": false
+      },
+      "c2_window_sites_direct_or_associated": {
+       "value": 5,
+       "pass": false
+      },
+      "c3_window_short_lived_share": {
+       "value": 0.0,
+       "pass": false
+      },
+      "c4_window_median_std_bp": {
+       "value": 70,
+       "pass": true
+      }
+     },
+     "window_rows_direct_or_associated": 31
+    }
+   },
+   "ran": true
+  },
+  "R1": {
+   "corrections_applied": 10,
+   "new_rows": 0,
+   "citations_attached": 10,
+   "audit": {
+    "tracing_order": "short-lived and unknown-material in-window rows first (Ask 3): Tigrana (short-lived) -> Qasim Bagh OZT-624 (unknown) -> Shahr-i Sokhta unknown-material pair -> IN long-lived in-window (K-4246) -> SKT granularity",
+    "grade_corrections": 0,
+    "material_corrections": 10,
+    "note": "R1 produced no grade corrections: no origin record reached in this pass names a sample feature for any traced row. Layers (Betts Table 4), site types, and depths do not grade under the frozen rule."
+   },
+   "targets": [
+    {
+     "target": "Qasim Bagh series (10 rows)",
+     "disposition": "TRACED to origin publication (Betts et al. 2019, Table 4). Material strings completed (the aggregator strings embed the layer code, e.g. 'Charcoal/QB8'); OZT-624's classification changes unknown -> long_lived (in-window, 4030±60). NO grade earned anywhere in the series: the origin table names layers, not sample features. The aggregator chain's 'Llagostera 1979' attribution for OZT-624 is an empty bibliographic stub; the origin publication is Betts et al. 2019."
+    },
+    {
+     "target": "Tigrana OxA-30023 (wheat, 4058±32, the pool's only in-window short-lived unassessed row)",
+     "disposition": "NOT TRACED to a context-naming origin record. The measurement circulates via the GuedesBocinsky2018 compilation with no publication reference; the Tigrana excavations (Central University of Haryana, Parmar, 2016-2024) have no published radiocarbon table with sample contexts reachable under the frozen postures (news and secondary coverage only). Grade stays unassessed; the row stays out of the window d/a pool."
+    },
+    {
+     "target": "Shahr-i Sokhta P-2076A (4080±60) and P-2081-A (4310±60), materials unknown",
+     "disposition": "Origin publication IDENTIFIED (Fishman, Forbes & Lawn 1977, University of Pennsylvania Radiocarbon Dates XIX, Radiocarbon 19(2): 204-207, Shahr-i Sokhta series) but its text was NOT reachable under the frozen postures in this pass: the journal's Arizona archive is bot-gated, the Cambridge copy is access-gated, no lawful open mirror was found, and NERD (which cites the same list) carries no material for either sample. No correction; materials stay unknown, grades stay unassessed."
+    },
+    {
+     "target": "Shahr-i Sokhta remaining unassessed rows (P-2069..P-2081 series, TUNC series)",
+     "disposition": "Same origin lists (UPenn XIX/XX; TUNC = Tehran lists); their spine records carry only feature_type: settlement. No feature-naming record reached. Grades unchanged."
+    },
+    {
+     "target": "Hiregudda K-4246 (charcoal, 5130±100, in-window, IN)",
+     "disposition": "NOT TRACED to a context-naming record in this pass. A 1960s-70s Copenhagen conventional date from the Sanganakallu excavations; the modern Sanganakallu literature (Boivin/Fuller/Korisettar/Roberts) publishes the newer AMS series already in the spine, not this measurement's context. Grade stays unassessed."
+    },
+    {
+     "target": "Sheri Khan Tarakai base-cluster rows (site-granularity question)",
+     "disposition": "RESOLVED BY DEDUPE (rule 2), not by tracing: the base-cluster rows are duplicate sightings of measurements whose richest copies assert SKT 3 / SKT 4 / Ter Kala Dheri / Islam Chowki; site-assertion conflicts are recorded on the merged rows. No distinct 'base site' population exists in the pool."
+    }
+   ],
+   "build_stats": {
+    "new_rows": 0,
+    "citations_attached": 10,
+    "corrections": 10,
+    "excluded": 0
+   },
+   "interim_assessment": {
+    "as_frozen": {
+     "status": "NOT-YET-TESTABLE",
+     "criteria": {
+      "c1_regions_with_2plus_sites": {
+       "value": 1,
+       "pass": false
+      },
+      "c2_window_sites_direct_or_associated": {
+       "value": 5,
+       "pass": false
+      },
+      "c3_window_short_lived_share": {
+       "value": 0.0,
+       "pass": false
+      },
+      "c4_window_median_std_bp": {
+       "value": 70,
+       "pass": true
+      }
+     },
+     "window_rows_direct_or_associated": 31
+    },
+    "excluding_contested": {
+     "status": "NOT-YET-TESTABLE",
+     "criteria": {
+      "c1_regions_with_2plus_sites": {
+       "value": 1,
+       "pass": false
+      },
+      "c2_window_sites_direct_or_associated": {
+       "value": 5,
+       "pass": false
+      },
+      "c3_window_short_lived_share": {
+       "value": 0.0,
+       "pass": false
+      },
+      "c4_window_median_std_bp": {
+       "value": 70,
+       "pass": true
+      }
+     },
+     "window_rows_direct_or_associated": 31
+    }
+   },
+   "ran": true
+  },
+  "R2": {
+   "corrections_applied": 0,
+   "new_rows": 49,
+   "citations_attached": 124,
+   "audit": {
+    "route": "R2",
+    "enumerated_source": "c14bazAAR db_info_table (ropensci/c14bazAAR, retrieved 2026-10-12) + repository database list: 29 databases",
+    "ingested_verified_open": [
+     {
+      "database": "p3k14c",
+      "version": "2025.07 (people3k/p3k14c tag 2025.07)",
+      "licence": "CC0-1.0",
+      "sha256": "5c92b7ae96959bc2924409cf66a8919aac955a4abac5545fad26f3fb209eca0c",
+      "in_box_records": 63,
+      "yield": "63 trace citations on existing measurements; 0 corrections; 0 new rows (every in-box record corroborates a pooled measurement's age)"
+     },
+     {
+      "database": "nerd",
+      "version": "6.0 (apalmisano82/NERD)",
+      "licence": "CC BY 4.0 (Zenodo 10.5281/zenodo.7107507)",
+      "sha256": "542ebb707b794c3da36450ea7741606063130394e57782ef3f5ea8f0667ff20c",
+      "in_box_records": 32,
+      "yield": "32 trace citations (all Shahr-i Sokhta); 0 corrections (SiteContext non-empty exactly where the spine already grades associated; empty for all 13 unassessed rows); 0 new rows"
+     },
+     {
+      "database": "rado.nb (RADON-B)",
+      "version": "daily export retrieved 2026-10-12 (radondaily.txt)",
+      "licence": "CC BY 3.0 (licence statement on the database site, radonb.ufg.uni-kiel.de)",
+      "sha256": "6c3b18788a1f76278503ed0b6680a6191888ae510d283dbe5fecde118b9d048c",
+      "in_box_records": 78,
+      "yield": "29 trace citations + 49 NEW rows, all unassessed (FEATURE strings are Rosenstock layer/type designations, not named sample features); new sites carried: mehrgarh (further rows), mundigak, balakot, amri, rana ghundai, damp sadaat, kili ghul mohammad, aq kupruk i, aq kupruk ii"
+     }
+    ],
+    "audited_not_ingested": [
+     {
+      "database": "calpal",
+      "version": "2020-08-20",
+      "disposition": "catalogue_only: no open licence could be verified for the CalPal database (repository carries no licence statement); its 18 in-box records all duplicate pooled measurements — nothing lost but its LOCUS fields, which stay unused"
+     },
+     {
+      "database": "14sea",
+      "version": "2017-01-29",
+      "disposition": "audited by content: Southeast Europe (Turkey/Greece/Bulgaria/Romania/Serbia...); 0 records for the study region; licence moot"
+     },
+     {
+      "database": "agrichange",
+      "version": "Zenodo record 4541470",
+      "licence": "CC BY 4.0",
+      "disposition": "verified_open but 0 in-box records (European/Anatolian Neolithic scope)"
+     },
+     {
+      "database": "aida",
+      "licence": "CC BY 4.0",
+      "disposition": "audited by content: Italian radiocarbon dates; 0 in-scope records"
+     },
+     {
+      "database": "tegiszhol",
+      "licence": "CC BY 4.0 (Zenodo record 21756393)",
+      "disposition": "verified_open; exactly 1 record falls inside the box filter and it is REJECTED: Balalyk-1 (Le-2866m, 2850±40 BP) is a Minusinsk Basin (southern Siberia) burial whose latitude is mistyped in the source (37.37615 for ~53.7); also out-of-window by age"
+     },
+     {
+      "database": "xronos",
+      "disposition": "the R5 route's object; not double-counted here"
+     },
+     {
+      "database": "20 further regional databases (14cpalaeolithic, adrac, austarch, bda, caribbean, eubar, euroevol, irdd, jomon, katsianis, kiteeastafrica, medafricarbon, mesorad, neonet, neonetatl, pacea, palmisano, rapanui, rxpand, sard)",
+      "disposition": "audited by stated scope: each is a continent/region-specific database whose coverage lies outside the study box (Europe, Africa, Australia, the Caribbean, Mesoamerica, South America, Japan, Ireland, the Aegean, Rapa Nui, the Palaeolithic of Europe/Africa, the Levant/Mesopotamia west of 60.5E); none was downloaded; no greater-Indus records are within their stated scopes"
+     }
+    ],
+    "origin_groups_note": "c14bazAAR is an aggregator of aggregators and is never an origin group; every ingested record's origin database is recorded per row (rule: aggregator != origin).",
+    "grading_census": "All 49 admitted RADON-B rows carry the identical FEATURE formula 'Type according to Rosenstock: [site-type word]; name of the layer: X' (FEATURETYPE census: enclosure 35, tell 12, settlement 2). No admitted row names a sample feature. A site-type word is the same evidence class as the baseline's non-grading 'feature_type: settlement' strings, and a layer name is the same class R1 held non-grading at Qasim Bagh; the rows therefore stay unassessed, uniformly, including the 15 in-window rows (Aq Kupruk II 1, Amri 2, Balakot 4, Damp Sadaat 2, Mehrgarh 1, Rana Ghundai 1, Mundigak 4). The full strings are preserved verbatim in each row's context_description.",
+    "coordinate_assertion_note": "RADON-B asserts latitude 29.3 / longitude 67.5 for all 24 of its Mehrgarh records (source: Rosenstock2009). Published site references place Mehrgarh at the Bolan Pass (approx. 29.8 N, 64.6 E); the asserted pair is carried AS PUBLISHED per the frozen trace-or-don't-build rule (the build mints no coordinates of its own), the conflict is recorded here and in the Phase-394 outcome record, and the pair is inside the frozen box either way, so no filter outcome depends on it. Every other admitted site's asserted coordinates check against its published location (Balakot, Mundigak, Amri, Quetta-valley and Loralai sites, Aq Kupruk)."
+   },
+   "build_stats": {
+    "new_rows": 49,
+    "citations_attached": 124,
+    "corrections": 0,
+    "excluded": 0
+   },
+   "interim_assessment": {
+    "as_frozen": {
+     "status": "NOT-YET-TESTABLE",
+     "criteria": {
+      "c1_regions_with_2plus_sites": {
+       "value": 1,
+       "pass": false
+      },
+      "c2_window_sites_direct_or_associated": {
+       "value": 5,
+       "pass": false
+      },
+      "c3_window_short_lived_share": {
+       "value": 0.0,
+       "pass": false
+      },
+      "c4_window_median_std_bp": {
+       "value": 70,
+       "pass": true
+      }
+     },
+     "window_rows_direct_or_associated": 31
+    },
+    "excluding_contested": {
+     "status": "NOT-YET-TESTABLE",
+     "criteria": {
+      "c1_regions_with_2plus_sites": {
+       "value": 1,
+       "pass": false
+      },
+      "c2_window_sites_direct_or_associated": {
+       "value": 5,
+       "pass": false
+      },
+      "c3_window_short_lived_share": {
+       "value": 0.0,
+       "pass": false
+      },
+      "c4_window_median_std_bp": {
+       "value": 70,
+       "pass": true
+      }
+     },
+     "window_rows_direct_or_associated": 31
+    }
+   },
+   "ran": true
+  },
+  "R4": {
+   "corrections_applied": 0,
+   "new_rows": 0,
+   "citations_attached": 0,
+   "audit": {
+    "route_question": "do openly published TwoRains/Land, Water & Settlement supplements carry determinations with contexts and materials, under terms permitting extraction?",
+    "answer": "YES for the one data-bearing supplement located (Petrie et al. 2016 OSM): 28 determinations with contexts, materials and flags, CC BY-NC-ND (open_access_read_only; extraction of factual determinations with citation is the sanctioned use). The route's yield is nevertheless NOT ADMITTED in this build for the coordinate reason recorded in targets — a site-establishment gap, not a data or licence gap.",
+    "extracted_not_admitted": [
+     {
+      "site": "Masudpur VII (Bhim Wada Jodha)",
+      "lab_code": "OxA-24734",
+      "bp": 4158,
+      "std": 30,
+      "dated_material": "Vicia/Lathyrus",
+      "context": "trench YB1, context 527 (Fill)",
+      "flags": ""
+     },
+     {
+      "site": "Masudpur VII (Bhim Wada Jodha)",
+      "lab_code": "OxA-28837",
+      "bp": 4178,
+      "std": 33,
+      "dated_material": "Echinochloa sp.",
+      "context": "trench YB1, context 525 (Fill)",
+      "flags": ""
+     },
+     {
+      "site": "Masudpur VII (Bhim Wada Jodha)",
+      "lab_code": "OxA-26557",
+      "bp": 1961,
+      "std": 27,
+      "dated_material": "mixed",
+      "context": "trench YB1, context 522 (Ash fill)",
+      "flags": "authors' flag: Historic intrusive (from an intrusive pit)"
+     },
+     {
+      "site": "Masudpur VII (Bhim Wada Jodha)",
+      "lab_code": "OxA-28660",
+      "bp": 1612,
+      "std": 27,
+      "dated_material": "Vigna radiata",
+      "context": "trench YB1, context 514 (Collapse)",
+      "flags": "authors' flag: Historic intrusive (from an intrusive pit)"
+     },
+     {
+      "site": "Masudpur VII (Bhim Wada Jodha)",
+      "lab_code": "OxA-28835",
+      "bp": 3620,
+      "std": 45,
+      "dated_material": "Vigna mungo",
+      "context": "trench YB1, context 513 (Fill)",
+      "flags": ""
+     },
+     {
+      "site": "Masudpur VII (Bhim Wada Jodha)",
+      "lab_code": "OxA-28661",
+      "bp": 3475,
+      "std": 30,
+      "dated_material": "Oryza sp.",
+      "context": "trench YB1, context 517 (Fill)",
+      "flags": ""
+     },
+     {
+      "site": "Masudpur VII (Bhim Wada Jodha)",
+      "lab_code": "OxA-28836",
+      "bp": 3536,
+      "std": 35,
+      "dated_material": "Echinochloa sp.",
+      "context": "trench YB1, context 515 (Fill)",
+      "flags": ""
+     },
+     {
+      "site": "Masudpur VII (Bhim Wada Jodha)",
+      "lab_code": "OxA-24892",
+      "bp": 4142,
+      "std": 34,
+      "dated_material": "mixed",
+      "context": "trench YA2, context 426 (Fill)",
+      "flags": ""
+     },
+     {
+      "site": "Masudpur VII (Bhim Wada Jodha)",
+      "lab_code": "OxA-28659",
+      "bp": 4003,
+      "std": 31,
+      "dated_material": "Macrotyloma sp.",
+      "context": "trench YA2, context 429 (Pit fill)",
+      "flags": ""
+     },
+     {
+      "site": "Masudpur VII (Bhim Wada Jodha)",
+      "lab_code": "OxA-24893",
+      "bp": 4011,
+      "std": 32,
+      "dated_material": "Vicia/Lathyrus",
+      "context": "trench YA2, context 428 (Pit fill)",
+      "flags": ""
+     },
+     {
+      "site": "Masudpur VII (Bhim Wada Jodha)",
+      "lab_code": "OxA-24891",
+      "bp": 3963,
+      "std": 36,
+      "dated_material": "Triticum sp.",
+      "context": "trench YA2, context 423 (Pit fill)",
+      "flags": ""
+     },
+     {
+      "site": "Masudpur VII (Bhim Wada Jodha)",
+      "lab_code": "OxA-24719",
+      "bp": 3932,
+      "std": 32,
+      "dated_material": "Triticum sp.",
+      "context": "trench YA2, context 415 (Ash fill)",
+      "flags": ""
+     },
+     {
+      "site": "Masudpur VII (Bhim Wada Jodha)",
+      "lab_code": "OxA-24718",
+      "bp": 3942,
+      "std": 31,
+      "dated_material": "Vicia/Lathyrus",
+      "context": "trench YA2, context 410 (Fill)",
+      "flags": ""
+     },
+     {
+      "site": "Masudpur VII (Bhim Wada Jodha)",
+      "lab_code": "OxA-24733",
+      "bp": 4080,
+      "std": 37,
+      "dated_material": "Vicia/Lathyrus",
+      "context": "trench YA2, context 410 (Fill)",
+      "flags": "authors' flag: problematic* (determination inconsistent with its context's other dates)"
+     },
+     {
+      "site": "Masudpur VII (Bhim Wada Jodha)",
+      "lab_code": "OxA-24717",
+      "bp": 2761,
+      "std": 29,
+      "dated_material": "mixed",
+      "context": "trench YA2, context 405 (Surface)",
+      "flags": "authors' flag: PGW intrusive"
+     },
+     {
+      "site": "Masudpur I (Sampolia Khera)",
+      "lab_code": "OxA-24729",
+      "bp": 3711,
+      "std": 29,
+      "dated_material": "mixed",
+      "context": "trench XA1, context 130",
+      "flags": "authors' flag: intrusive?"
+     },
+     {
+      "site": "Masudpur I (Sampolia Khera)",
+      "lab_code": "OxA-24728",
+      "bp": 3761,
+      "std": 29,
+      "dated_material": "Triticum sp.",
+      "context": "trench XA1, context 128",
+      "flags": ""
+     },
+     {
+      "site": "Masudpur I (Sampolia Khera)",
+      "lab_code": "OxA-24727",
+      "bp": 3810,
+      "std": 29,
+      "dated_material": "mixed",
+      "context": "trench XA1, context 121",
+      "flags": ""
+     },
+     {
+      "site": "Masudpur I (Sampolia Khera)",
+      "lab_code": "OxA-24726",
+      "bp": 3789,
+      "std": 30,
+      "dated_material": "Vicia/Lathyrus",
+      "context": "trench XA1, context 113",
+      "flags": ""
+     },
+     {
+      "site": "Masudpur I (Sampolia Khera)",
+      "lab_code": "OxA-24725",
+      "bp": 3813,
+      "std": 30,
+      "dated_material": "Fabaceae indet.",
+      "context": "trench XA1, context 110",
+      "flags": ""
+     },
+     {
+      "site": "Masudpur I (Sampolia Khera)",
+      "lab_code": "OxA-X-2423-34",
+      "bp": 3998,
+      "std": 37,
+      "dated_material": "Triticum sp.",
+      "context": "trench XA1, context 114",
+      "flags": "authors' flag: inaccurate* (the authors' own analysis marks this determination inaccurate; Bates 2016 thesis likewise classes the OxA-X determinations as unreliable)"
+     },
+     {
+      "site": "Masudpur I (Sampolia Khera)",
+      "lab_code": "OxA-28663",
+      "bp": 3813,
+      "std": 32,
+      "dated_material": "Oryza sp.",
+      "context": "trench XM2, context 321",
+      "flags": ""
+     },
+     {
+      "site": "Masudpur I (Sampolia Khera)",
+      "lab_code": "OxA-24732",
+      "bp": 3786,
+      "std": 30,
+      "dated_material": "Triticum sp.",
+      "context": "trench XM2, context 321",
+      "flags": ""
+     },
+     {
+      "site": "Masudpur I (Sampolia Khera)",
+      "lab_code": "OxA-24716",
+      "bp": 3756,
+      "std": 34,
+      "dated_material": "Triticum sp.",
+      "context": "trench XM2, context 323",
+      "flags": ""
+     },
+     {
+      "site": "Masudpur I (Sampolia Khera)",
+      "lab_code": "OxA-28662",
+      "bp": 3745,
+      "std": 30,
+      "dated_material": "Echinochloa sp.",
+      "context": "trench XM2, context 319",
+      "flags": ""
+     },
+     {
+      "site": "Masudpur I (Sampolia Khera)",
+      "lab_code": "OxA-24730",
+      "bp": 3702,
+      "std": 28,
+      "dated_material": "mixed",
+      "context": "trench XM2, context 310",
+      "flags": ""
+     },
+     {
+      "site": "Masudpur I (Sampolia Khera)",
+      "lab_code": "OxA-X-2423-35",
+      "bp": 3850,
+      "std": 38,
+      "dated_material": "Fabaceae indet.",
+      "context": "trench XM2, context 308",
+      "flags": "authors' flag: inaccurate* (as above)"
+     },
+     {
+      "site": "Masudpur I (Sampolia Khera)",
+      "lab_code": "OxA-24731",
+      "bp": 3594,
+      "std": 28,
+      "dated_material": "Vicia/Lathyrus",
+      "context": "trench XM2, context 314",
+      "flags": ""
+     }
+    ]
+   },
+   "targets": [
+    {
+     "target": "Petrie, Bates, Higham & Singh 2016 (Antiquity 90(354)) + Online Supplementary Material",
+     "disposition": "LOCATED AND DATA-BEARING. The paper is CC BY-NC-ND open access (author manuscript + supplement in the Cambridge Apollo repository); posture open_access_read_only. The supplement's Tables S4-S7 publish 28 AMS determinations for Masudpur VII and Masudpur I with trench + numbered context per sample, dated material (taxon) per sample, and the authors' own quality flags (intrusive / problematic / inaccurate) — every determination extracted in full (see audit.extracted_not_admitted). The supplement's Table S2 types the Masudpur VII contexts (Fill, Pit fill, Ash fill, Surface, Collapse): under the frozen grading rule the samples' contexts are named, typed excavation contexts, so the determinations WOULD grade associated."
+    },
+    {
+     "target": "Admission of the Masudpur determinations",
+     "disposition": "NOT ADMITTED IN THIS BUILD — coordinates. Masudpur I and VII are new sites (not in the frozen gazetteer, not in the spine). The publications reached (paper, supplement, Bates 2016 thesis) state no site coordinates, and no published coordinate source for Bhim Wada Jodha / Sampolia Khera was found in the geographic authorities checked (Pleiades, Wikidata, OpenStreetMap). Rule 7 admits coordinate-less rows only for gazetteer-established sites; inventing or estimating coordinates is not available to this build. The full extraction is preserved in this record so a future build (or a Spec 027 gazetteer act) can admit the rows without re-extraction."
+    },
+    {
+     "target": "Bates 2016 PhD thesis (Apollo, CC BY)",
+     "disposition": "AUDITED: carries the same Masudpur determinations in thesis tables (its Tables 7.1/7.2 match OSM S7/S6) and classes the two OxA-X determinations as unreliable — corroborating the flags carried here. No additional determinations and no site coordinates."
+    },
+    {
+     "target": "Burj, Bahola, Dabli-vas Chugta, Girawad and other TwoRains/LWS excavation supplements",
+     "disposition": "NO DATA-BEARING SUPPLEMENT LOCATED under the frozen postures in this pass: the TwoRains excavation outputs for these sites circulate in project volumes and journal reports (Puratattva / Man and Environment / project monographs) that are not openly deposited; no Apollo dataset with determinations for them was found. Recorded as not located, not as non-existent."
+    },
+    {
+     "target": "Land, Water & Settlement survey datasets (Apollo/ADS)",
+     "disposition": "NO DETERMINATION DATASET LOCATED: the project's deposited outputs reached in this pass are papers and theses; no openly reachable LWS dataset carrying radiocarbon determinations with contexts was found."
+    }
+   ],
+   "build_stats": {
+    "new_rows": 0,
+    "citations_attached": 0,
+    "corrections": 0,
+    "excluded": 0
+   },
+   "interim_assessment": {
+    "as_frozen": {
+     "status": "NOT-YET-TESTABLE",
+     "criteria": {
+      "c1_regions_with_2plus_sites": {
+       "value": 1,
+       "pass": false
+      },
+      "c2_window_sites_direct_or_associated": {
+       "value": 5,
+       "pass": false
+      },
+      "c3_window_short_lived_share": {
+       "value": 0.0,
+       "pass": false
+      },
+      "c4_window_median_std_bp": {
+       "value": 70,
+       "pass": true
+      }
+     },
+     "window_rows_direct_or_associated": 31
+    },
+    "excluding_contested": {
+     "status": "NOT-YET-TESTABLE",
+     "criteria": {
+      "c1_regions_with_2plus_sites": {
+       "value": 1,
+       "pass": false
+      },
+      "c2_window_sites_direct_or_associated": {
+       "value": 5,
+       "pass": false
+      },
+      "c3_window_short_lived_share": {
+       "value": 0.0,
+       "pass": false
+      },
+      "c4_window_median_std_bp": {
+       "value": 70,
+       "pass": true
+      }
+     },
+     "window_rows_direct_or_associated": 31
+    }
+   },
+   "ran": true
+  },
+  "R3": {
+   "corrections_applied": 0,
+   "new_rows": 21,
+   "citations_attached": 0,
+   "audit": {
+    "posture": "open_access_read_only throughout; extracted determinations are internal-spine-only and are NEVER released (frozen Ask 4/R3 posture)",
+    "extraction_yield": "1 site (Harappa), 21 rows; all other named targets attempted with dispositions recorded"
+   },
+   "targets": [
+    {
+     "site": "Harappa (PK)",
+     "disposition": "EXTRACTED: 21 determinations (Dales & Kenoyer 1993, Table 40.1). 10 grade associated on the report's own feature evidence (the ** 'charcoal inside hearths or kilns' notation + four narrative-tied samples); 11 unassessed (mound/period provenience only). 6 in-window associated rows, all charcoal."
+    },
+    {
+     "site": "Mohenjo-Daro (PK)",
+     "disposition": "ATTEMPTED, NO ELIGIBLE TABLE REACHED: the site's few published determinations circulate in compilations (Possehl; Agrawal-era lists) without a per-sample material+context table reachable under the frozen postures in this pass. No rows extracted."
+    },
+    {
+     "site": "Dholavira (IN)",
+     "disposition": "ATTEMPTED, NOT REACHED: determinations are published in the ASI excavation volumes (Bisht), which are not openly digitised under the frozen postures. No rows extracted."
+    },
+    {
+     "site": "Kalibangan (IN)",
+     "disposition": "ATTEMPTED: a published compilation table (Kenoyer 1991, Table III) lists Kalibangan TF-series ages without materials or contexts — ineligible for grading; the origin TF date lists (Radiocarbon, Arizona archive) are bot-gated to this environment. No rows extracted."
+    },
+    {
+     "site": "Lothal (IN)",
+     "disposition": "ATTEMPTED, NOT REACHED: determinations published with the ASI Lothal volumes (Rao) and TF lists; not openly reachable in this pass. No rows extracted."
+    },
+    {
+     "site": "Rakhigarhi (IN)",
+     "disposition": "ATTEMPTED, INELIGIBLE AS PUBLISHED: the IUAC series (Sharma et al., Current Science 2017) publishes seven charcoal ages (six in-window) by trench DEPTH only, without lab codes or named contexts — fails the eligibility rule on both counts. The cemetery AMS series (PLOS ONE 2018) reports calibrated ranges for two samples, not determinations with contexts. No rows extracted."
+    },
+    {
+     "site": "Banawali / Kunal (IN)",
+     "disposition": "ATTEMPTED, NOT REACHED: further determinations are published in ASI/IAR reporting and site monographs not openly reachable in this pass; the spine's existing Banawali/Kunal rows keep their Stage 0 state. No rows extracted."
+    },
+    {
+     "site": "Bhirrana (IN)",
+     "disposition": "ATTEMPTED: the published compilation (Sarkar et al. 2016, Sci Rep, SI) lists charcoal determinations by trench and cultural level — level provenience only, no per-sample features — and most determinations fall outside the window. Not extracted in this pass (unassessed-only yield at level resolution; the eligibility record is preserved here)."
+    },
+    {
+     "site": "Mundigak / Balakot / Amri / Rana Ghundai / Damp Sadaat (RADON-B new rows' origins)",
+     "disposition": "ATTEMPTED: origin descriptions sit in the TF, UCLA and University of Pennsylvania date lists (Radiocarbon journal; Arizona archive bot-gated in this environment) and the Casal/Dales monographs (not openly digitised). The RADON-B rows therefore stay unassessed in this build; their origin-tracing remains open work, recorded per site in the extension register."
+    },
+    {
+     "site": "Shortugai (AF)",
+     "disposition": "ATTEMPTED, NOT REACHED: the Gif determinations are published in Francfort 1989 (Fouilles de Shortughai, MDAFA) — not openly digitised. No rows extracted."
+    },
+    {
+     "site": "Second IR site search",
+     "disposition": "SEARCHED: no second Iranian site with published, eligible window determinations was found in the sources reached. Tepe Sadegh (Shahr-i Sokhta's satellite) has no published date list; Bampur lies west of the frozen box edge (60.45E < 60.5E) and is out of scope by the frozen filter regardless. IR keeps one window d/a site."
+    },
+    {
+     "site": "TM second site",
+     "disposition": "SEARCHED: no published eligible window determinations for a second TM site were reached (the Mutin SI is already fully ingested; the Jeitun-era lists are not openly reachable). TM keeps zero window d/a sites (its spine rows are all out-of-window charcoal)."
+    }
+   ],
+   "build_stats": {
+    "new_rows": 21,
+    "citations_attached": 0,
+    "corrections": 0,
+    "excluded": 0
+   },
+   "interim_assessment": {
+    "as_frozen": {
+     "status": "NOT-YET-TESTABLE",
+     "criteria": {
+      "c1_regions_with_2plus_sites": {
+       "value": 1,
+       "pass": false
+      },
+      "c2_window_sites_direct_or_associated": {
+       "value": 6,
+       "pass": false
+      },
+      "c3_window_short_lived_share": {
+       "value": 0.0,
+       "pass": false
+      },
+      "c4_window_median_std_bp": {
+       "value": 70,
+       "pass": true
+      }
+     },
+     "window_rows_direct_or_associated": 37
+    },
+    "excluding_contested": {
+     "status": "NOT-YET-TESTABLE",
+     "criteria": {
+      "c1_regions_with_2plus_sites": {
+       "value": 1,
+       "pass": false
+      },
+      "c2_window_sites_direct_or_associated": {
+       "value": 6,
+       "pass": false
+      },
+      "c3_window_short_lived_share": {
+       "value": 0.0,
+       "pass": false
+      },
+      "c4_window_median_std_bp": {
+       "value": 70,
+       "pass": true
+      }
+     },
+     "window_rows_direct_or_associated": 37
+    }
+   },
+   "ran": true
+  }
+ },
+ "stopped_early_at_route": null,
+ "dedupe": {
+  "measurements_merged": 42,
+  "rows_removed": [
+   "CHR-XRO-290078",
+   "CHR-XRO-49010",
+   "CHR-XRO-113600",
+   "CHR-XRO-289718",
+   "CHR-XRO-49016",
+   "CHR-XRO-298466",
+   "CHR-XRO-49019",
+   "CHR-XRO-113646",
+   "CHR-XRO-298464",
+   "CHR-XRO-49017",
+   "CHR-XRO-118865",
+   "CHR-XRO-290096",
+   "CHR-XRO-49013",
+   "CHR-XRO-118864",
+   "CHR-XRO-290056",
+   "CHR-XRO-49006",
+   "CHR-XRO-290071",
+   "CHR-XRO-49009",
+   "CHR-XRO-109634",
+   "CHR-XRO-290060",
+   "CHR-XRO-49007",
+   "CHR-XRO-113601",
+   "CHR-XRO-290084",
+   "CHR-XRO-49011",
+   "CHR-XRO-113647",
+   "CHR-XRO-298465",
+   "CHR-XRO-49018",
+   "CHR-XRO-118463",
+   "CHR-XRO-49004",
+   "CHR-XRO-118862",
+   "CHR-XRO-300417",
+   "CHR-XRO-49014",
+   "CHR-XRO-289724",
+   "CHR-XRO-49005",
+   "CHR-XRO-289727",
+   "CHR-XRO-49003",
+   "CHR-XRO-290061",
+   "CHR-XRO-49008",
+   "CHR-XRO-290088",
+   "CHR-XRO-49012",
+   "CHR-XRO-300516",
+   "CHR-XRO-49015"
+  ],
+  "age_conflicts_not_merged": [],
+  "site_assertion_conflicts": [
+   {
+    "lab_code": "OxA-1002",
+    "kept_site": "sheri khan tarakai 4",
+    "other_site_assertion": "sheri khan tarakai",
+    "merged_row_id": "CHR-XRO-113600"
+   },
+   {
+    "lab_code": "OxA-1103",
+    "kept_site": "sheri khan tarakai 3",
+    "other_site_assertion": "sheri khan tarakai",
+    "merged_row_id": "CHR-XRO-118865"
+   },
+   {
+    "lab_code": "OxA-1096",
+    "kept_site": "sheri khan tarakai 3",
+    "other_site_assertion": "sheri khan tarakai",
+    "merged_row_id": "CHR-XRO-118864"
+   },
+   {
+    "lab_code": "OxA-1097",
+    "kept_site": "sheri khan tarakai 3",
+    "other_site_assertion": "sheri khan tarakai",
+    "merged_row_id": "CHR-XRO-109634"
+   },
+   {
+    "lab_code": "OxA-1101",
+    "kept_site": "sheri khan tarakai 3",
+    "other_site_assertion": "sheri khan tarakai",
+    "merged_row_id": "CHR-XRO-113601"
+   },
+   {
+    "lab_code": "OxA-968",
+    "kept_site": "sheri khan tarakai 3",
+    "other_site_assertion": "sheri khan tarakai",
+    "merged_row_id": "CHR-XRO-118862"
+   }
+  ]
+ },
+ "extended_spine": {
+  "rows": 205,
+  "rows_added": 70,
+  "by_route": {
+   "R2": 49,
+   "R3": 21
+  },
+  "added_licence_distribution": {
+   "CC BY 3.0": 49,
+   "open_access_read_only": 21
+  },
+  "added_by_region": {
+   "PK": 58,
+   "AF": 12
+  },
+  "by_context_grade": {
+   "direct": 33,
+   "associated": 47,
+   "unassessed": 125
+  },
+  "by_material_class": {
+   "short_lived": 57,
+   "long_lived": 100,
+   "unknown": 48
+  },
+  "contested_rows": 33
+ },
+ "new_gazetteer_sites": [
+  "aq kupruk i",
+  "aq kupruk ii",
+  "balakot",
+  "damp sadaat",
+  "kili ghul mohammad",
+  "mehrgarh",
+  "mundigak",
+  "rana ghundai"
+ ]
+}

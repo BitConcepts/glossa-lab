@@ -1,0 +1,2239 @@
+{
+  "schema_version": "1.0",
+  "evaluator": {
+    "id": "aee",
+    "version": "1.0.0",
+    "name": "Applied Epistemic Engineering",
+    "url": "https://github.com/electrohire/spec-kit-aee"
+  },
+  "phase": "after_specify",
+  "outcome": "gather_evidence",
+  "summary": "Assessed 16 claim(s); found 10 failure mode(s); 0 claim(s) below the 0.70 confidence threshold.",
+  "findings": [
+    {
+      "id": "AEE-F026-C01A-IRREDUCIBILITY-CHALLENGE",
+      "severity": "medium",
+      "kind": "coverage_gap",
+      "subject": "F026-C01A",
+      "description": "Claim may contain multiple independently falsifiable propositions",
+      "evidence_refs": [
+        {
+          "ref": "specs/026-rcph-framework-transfer/spec.md#8",
+          "kind": "observed",
+          "description": "Taxonomy in spec S8"
+        },
+        {
+          "ref": "specs/026-rcph-framework-transfer/transfer-map.md",
+          "kind": "observed",
+          "description": "Transfer principle 6"
+        }
+      ],
+      "provenance_refs": [],
+      "uncertainty": "insufficient_evidence",
+      "recommended_action": "revise",
+      "rationale": "Irreducibility challenge"
+    },
+    {
+      "id": "AEE-F026-C01B-NEGATION-CONFLICT-CHALLE",
+      "severity": "medium",
+      "kind": "contradiction",
+      "subject": "F026-C01B",
+      "description": "F026-C01B may contradict F026-C08A",
+      "evidence_refs": [
+        {
+          "ref": "specs/026-rcph-framework-transfer/spec.md#8",
+          "kind": "observed",
+          "description": "Mapping table"
+        },
+        {
+          "ref": "specs/026-rcph-framework-transfer/working/inventory.json",
+          "kind": "observed",
+          "description": "Label population to be mapped"
+        }
+      ],
+      "provenance_refs": [
+        "F026-C01A"
+      ],
+      "uncertainty": "insufficient_evidence",
+      "recommended_action": "clarify",
+      "rationale": "Negation conflict challenge"
+    },
+    {
+      "id": "AEE-F026-C04B-NEGATION-CONFLICT-CHALLE",
+      "severity": "medium",
+      "kind": "contradiction",
+      "subject": "F026-C04B",
+      "description": "F026-C04B may contradict F026-C04C",
+      "evidence_refs": [
+        {
+          "ref": "specs/026-rcph-framework-transfer/working/inventory.json",
+          "kind": "observed",
+          "description": "Inventory rows"
+        },
+        {
+          "ref": "specs/026-rcph-framework-transfer/working/inventory-gaps.md",
+          "kind": "observed",
+          "description": "Out-of-scope artifacts named"
+        }
+      ],
+      "provenance_refs": [],
+      "uncertainty": "insufficient_evidence",
+      "recommended_action": "clarify",
+      "rationale": "Negation conflict challenge"
+    },
+    {
+      "id": "AEE-F026-C05-IRREDUCIBILITY-CHALLENGE",
+      "severity": "medium",
+      "kind": "coverage_gap",
+      "subject": "F026-C05",
+      "description": "Claim may contain multiple independently falsifiable propositions",
+      "evidence_refs": [
+        {
+          "ref": "specs/026-rcph-framework-transfer/classification-criteria.md",
+          "kind": "observed",
+          "description": "Criteria frozen at S1"
+        },
+        {
+          "ref": "specs/026-rcph-framework-transfer/impact-register.md",
+          "kind": "observed",
+          "description": "Register rows with per-row rationale"
+        }
+      ],
+      "provenance_refs": [
+        "F026-C04A",
+        "F026-C04B"
+      ],
+      "uncertainty": "insufficient_evidence",
+      "recommended_action": "revise",
+      "rationale": "Irreducibility challenge"
+    },
+    {
+      "id": "AEE-F026-C06A-IRREDUCIBILITY-CHALLENGE",
+      "severity": "medium",
+      "kind": "coverage_gap",
+      "subject": "F026-C06A",
+      "description": "Claim may contain multiple independently falsifiable propositions",
+      "evidence_refs": [
+        {
+          "ref": "specs/026-rcph-framework-transfer/aee/",
+          "kind": "observed",
+          "description": "Per-stage artifacts"
+        },
+        {
+          "ref": ".specify/extensions/aee/ledger/epistemic-ledger.jsonl",
+          "kind": "observed",
+          "description": "Hash-chained AEE ledger"
+        }
+      ],
+      "provenance_refs": [],
+      "uncertainty": "insufficient_evidence",
+      "recommended_action": "revise",
+      "rationale": "Irreducibility challenge"
+    },
+    {
+      "id": "AEE-F026-C06B-IRREDUCIBILITY-CHALLENGE",
+      "severity": "medium",
+      "kind": "coverage_gap",
+      "subject": "F026-C06B",
+      "description": "Claim may contain multiple independently falsifiable propositions",
+      "evidence_refs": [
+        {
+          "ref": "specs/026-rcph-framework-transfer/aee/",
+          "kind": "observed",
+          "description": "Recovery rounds visible as successive artifacts"
+        },
+        {
+          "ref": "specs/026-rcph-framework-transfer/tasks.md",
+          "kind": "observed",
+          "description": "Stage closure notes"
+        }
+      ],
+      "provenance_refs": [
+        "F026-C06A"
+      ],
+      "uncertainty": "insufficient_evidence",
+      "recommended_action": "revise",
+      "rationale": "Irreducibility challenge"
+    },
+    {
+      "id": "AEE-F026-C07-IRREDUCIBILITY-CHALLENGE",
+      "severity": "medium",
+      "kind": "coverage_gap",
+      "subject": "F026-C07",
+      "description": "Claim may contain multiple independently falsifiable propositions",
+      "evidence_refs": [
+        {
+          "ref": "specs/026-rcph-framework-transfer/transfer-map.md",
+          "kind": "observed",
+          "description": "12-principle map"
+        },
+        {
+          "ref": "~/workspace/rcph-formalization/docs/GENERAL_RESEARCH_FRAMEWORK.md",
+          "kind": "observed",
+          "description": "Source framework v1.1"
+        }
+      ],
+      "provenance_refs": [],
+      "uncertainty": "insufficient_evidence",
+      "recommended_action": "revise",
+      "rationale": "Irreducibility challenge"
+    },
+    {
+      "id": "AEE-F026-C08A-AUTHORITY-CHALLENGE",
+      "severity": "high",
+      "kind": "missing_evidence",
+      "subject": "F026-C08A",
+      "description": "Compliance claim lacks observed primary-authority or test evidence",
+      "evidence_refs": [
+        {
+          "ref": "docs/governance/rules.md#H26",
+          "kind": "observed",
+          "description": "Controlling text: promotion gates require non-SA evidence"
+        },
+        {
+          "ref": "specs/026-rcph-framework-transfer/spec.md#2",
+          "kind": "observed",
+          "description": "Scope exclusion recorded in spec S2"
+        }
+      ],
+      "provenance_refs": [],
+      "uncertainty": "insufficient_evidence",
+      "recommended_action": "gather_evidence",
+      "rationale": "Authority challenge"
+    },
+    {
+      "id": "AEE-F026-C08B-AUTHORITY-CHALLENGE",
+      "severity": "high",
+      "kind": "missing_evidence",
+      "subject": "F026-C08B",
+      "description": "Compliance claim lacks observed primary-authority or test evidence",
+      "evidence_refs": [
+        {
+          "ref": "specs/026-rcph-framework-transfer/spec.md#2",
+          "kind": "observed",
+          "description": "Scope exclusion in spec S2"
+        },
+        {
+          "ref": "specs/026-rcph-framework-transfer/classification-criteria.md",
+          "kind": "observed",
+          "description": "Criteria tie-break 3 caps PRED items below rerun"
+        }
+      ],
+      "provenance_refs": [],
+      "uncertainty": "insufficient_evidence",
+      "recommended_action": "gather_evidence",
+      "rationale": "Authority challenge"
+    },
+    {
+      "id": "AEE-F026-C08C-AUTHORITY-CHALLENGE",
+      "severity": "high",
+      "kind": "missing_evidence",
+      "subject": "F026-C08C",
+      "description": "Compliance claim lacks observed primary-authority or test evidence",
+      "evidence_refs": [
+        {
+          "ref": "docs/governance/rules.md#H26",
+          "kind": "observed",
+          "description": "Controlling rule H26"
+        },
+        {
+          "ref": "specs/026-rcph-framework-transfer/classification-criteria.md",
+          "kind": "observed",
+          "description": "Criteria tie-break 2"
+        }
+      ],
+      "provenance_refs": [],
+      "uncertainty": "insufficient_evidence",
+      "recommended_action": "gather_evidence",
+      "rationale": "Authority challenge"
+    }
+  ],
+  "next_action": {
+    "kind": "gather_evidence",
+    "target_phase": null,
+    "message": "Pause and collect independently inspectable evidence."
+  },
+  "metadata": {
+    "timestamp": "2026-10-11T02:53:26.344330Z",
+    "artifacts_evaluated": [
+      "specs/026-rcph-framework-transfer/claims.json"
+    ],
+    "model": null,
+    "deterministic": true,
+    "aee_methodology_version": "1.0"
+  },
+  "state": {
+    "aee": {
+      "project": "glossa-lab-spec026",
+      "claims": [
+        {
+          "id": "F026-C01A",
+          "text": "The verdict taxonomy of Spec 026 has exactly four values: INVALID, INCONCLUSIVE, CONTRADICTED, SUPPORTED.",
+          "kind": "requirement",
+          "status": "draft",
+          "boundary": [
+            "S",
+            "p",
+            "e",
+            "c",
+            " ",
+            "0",
+            "2",
+            "6",
+            " ",
+            "r",
+            "e",
+            "c",
+            "o",
+            "r",
+            "d",
+            "s",
+            " ",
+            "o",
+            "n",
+            "l",
+            "y",
+            "."
+          ],
+          "depends_on": [],
+          "conflicts_with": [],
+          "evidence": [
+            {
+              "ref": "specs/026-rcph-framework-transfer/spec.md#8",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Taxonomy in spec S8",
+              "source_id": "specs/026-rcph-framework-transfer/spec.md#8",
+              "independent_of": [],
+              "observed_at": null,
+              "content_hash": null
+            },
+            {
+              "ref": "specs/026-rcph-framework-transfer/transfer-map.md",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Transfer principle 6",
+              "source_id": "specs/026-rcph-framework-transfer/transfer-map.md",
+              "independent_of": [
+                "specs/026-rcph-framework-transfer/spec.md#8"
+              ],
+              "observed_at": null,
+              "content_hash": null
+            }
+          ],
+          "assumptions": [],
+          "alternatives": [],
+          "falsification_tests": [
+            "A fifth verdict value appearing in any Spec 026 artifact defeats this claim."
+          ],
+          "uncertainty": "insufficient_evidence",
+          "severity": "medium",
+          "source_ref": "",
+          "domain": "",
+          "confidence": 0.9945,
+          "confidence_band": "high",
+          "failures": [
+            {
+              "id": "AEE-F026-C01A-IRREDUCIBILITY-CHALLENGE",
+              "claim_id": "F026-C01A",
+              "challenge": "Irreducibility challenge",
+              "breakpoint": "Claim may contain multiple independently falsifiable propositions",
+              "severity": "medium",
+              "category": "coverage_gap",
+              "recovery_hint": "Split the claim into atomic propositions and link them explicitly.",
+              "resolved": false
+            }
+          ],
+          "metadata": {
+            "framework_kind": "definition",
+            "forbidden_assumptions": [
+              "ASM-REWRITE-HISTORY"
+            ]
+          }
+        },
+        {
+          "id": "F026-C01B",
+          "text": "Every historical verdict label present in the extraction inventory has exactly one framework reading under the Spec 026 mapping.",
+          "kind": "requirement",
+          "status": "draft",
+          "boundary": [
+            "L",
+            "a",
+            "b",
+            "e",
+            "l",
+            "s",
+            " ",
+            "p",
+            "r",
+            "e",
+            "s",
+            "e",
+            "n",
+            "t",
+            " ",
+            "i",
+            "n",
+            " ",
+            "w",
+            "o",
+            "r",
+            "k",
+            "i",
+            "n",
+            "g",
+            "/",
+            "i",
+            "n",
+            "v",
+            "e",
+            "n",
+            "t",
+            "o",
+            "r",
+            "y",
+            ".",
+            "j",
+            "s",
+            "o",
+            "n",
+            " ",
+            "o",
+            "n",
+            "l",
+            "y",
+            "."
+          ],
+          "depends_on": [
+            "F026-C01A"
+          ],
+          "conflicts_with": [],
+          "evidence": [
+            {
+              "ref": "specs/026-rcph-framework-transfer/spec.md#8",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Mapping table",
+              "source_id": "specs/026-rcph-framework-transfer/spec.md#8",
+              "independent_of": [],
+              "observed_at": null,
+              "content_hash": null
+            },
+            {
+              "ref": "specs/026-rcph-framework-transfer/working/inventory.json",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Label population to be mapped",
+              "source_id": "specs/026-rcph-framework-transfer/working/inventory.json",
+              "independent_of": [
+                "specs/026-rcph-framework-transfer/spec.md#8"
+              ],
+              "observed_at": null,
+              "content_hash": null
+            }
+          ],
+          "assumptions": [
+            "ASM-RECORD-AUTHORITATIVE"
+          ],
+          "alternatives": [],
+          "falsification_tests": [
+            "One inventory label lacking a mapping row defeats this claim."
+          ],
+          "uncertainty": "insufficient_evidence",
+          "severity": "medium",
+          "source_ref": "",
+          "domain": "",
+          "confidence": 0.9945,
+          "confidence_band": "high",
+          "failures": [
+            {
+              "id": "AEE-F026-C01B-NEGATION-CONFLICT-CHALLE",
+              "claim_id": "F026-C01B",
+              "challenge": "Negation conflict challenge",
+              "breakpoint": "F026-C01B may contradict F026-C08A",
+              "severity": "medium",
+              "category": "contradiction",
+              "recovery_hint": "Confirm whether the claims share a boundary and preserve both pending review.",
+              "resolved": false
+            }
+          ],
+          "metadata": {
+            "framework_kind": "definition",
+            "forbidden_assumptions": [
+              "ASM-REWRITE-HISTORY"
+            ]
+          }
+        },
+        {
+          "id": "F026-C02A",
+          "text": "framework026.check_dependency_integrity reports every dependency cycle present in a claim register.",
+          "kind": "inference",
+          "status": "draft",
+          "boundary": [
+            "D",
+            "e",
+            "c",
+            "l",
+            "a",
+            "r",
+            "e",
+            "d",
+            " ",
+            "d",
+            "e",
+            "p",
+            "e",
+            "n",
+            "d",
+            "s",
+            "_",
+            "o",
+            "n",
+            " ",
+            "e",
+            "d",
+            "g",
+            "e",
+            "s",
+            " ",
+            "o",
+            "n",
+            "l",
+            "y",
+            "."
+          ],
+          "depends_on": [],
+          "conflicts_with": [],
+          "evidence": [
+            {
+              "ref": "backend/tests/test_framework026.py",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Planted-cycle test",
+              "source_id": "backend/tests/test_framework026.py",
+              "independent_of": [],
+              "observed_at": null,
+              "content_hash": null
+            },
+            {
+              "ref": "backend/glossa_lab/aee_core.py",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "ClaimGraph.cycles in the same engine",
+              "source_id": "backend/glossa_lab/aee_core.py",
+              "independent_of": [
+                "backend/tests/test_framework026.py"
+              ],
+              "observed_at": null,
+              "content_hash": null
+            }
+          ],
+          "assumptions": [],
+          "alternatives": [],
+          "falsification_tests": [
+            "One planted cycle the checker does not report defeats this claim."
+          ],
+          "uncertainty": "insufficient_evidence",
+          "severity": "medium",
+          "source_ref": "",
+          "domain": "",
+          "confidence": 0.9945,
+          "confidence_band": "high",
+          "failures": [],
+          "metadata": {
+            "framework_kind": "computational-result",
+            "forbidden_assumptions": []
+          }
+        },
+        {
+          "id": "F026-C02B",
+          "text": "framework026.check_dependency_integrity reports every case where a claim inherits an assumption it forbids through its depends_on ancestry.",
+          "kind": "inference",
+          "status": "draft",
+          "boundary": [
+            "D",
+            "e",
+            "c",
+            "l",
+            "a",
+            "r",
+            "e",
+            "d",
+            " ",
+            "a",
+            "s",
+            "s",
+            "u",
+            "m",
+            "p",
+            "t",
+            "i",
+            "o",
+            "n",
+            "s",
+            " ",
+            "a",
+            "n",
+            "d",
+            " ",
+            "f",
+            "o",
+            "r",
+            "b",
+            "i",
+            "d",
+            "d",
+            "e",
+            "n",
+            "_",
+            "a",
+            "s",
+            "s",
+            "u",
+            "m",
+            "p",
+            "t",
+            "i",
+            "o",
+            "n",
+            "s",
+            " ",
+            "o",
+            "n",
+            "l",
+            "y",
+            ";",
+            " ",
+            "u",
+            "n",
+            "d",
+            "e",
+            "c",
+            "l",
+            "a",
+            "r",
+            "e",
+            "d",
+            " ",
+            "p",
+            "r",
+            "e",
+            "m",
+            "i",
+            "s",
+            "e",
+            "s",
+            " ",
+            "r",
+            "e",
+            "m",
+            "a",
+            "i",
+            "n",
+            " ",
+            "a",
+            " ",
+            "r",
+            "e",
+            "v",
+            "i",
+            "e",
+            "w",
+            " ",
+            "o",
+            "b",
+            "l",
+            "i",
+            "g",
+            "a",
+            "t",
+            "i",
+            "o",
+            "n",
+            "."
+          ],
+          "depends_on": [],
+          "conflicts_with": [],
+          "evidence": [
+            {
+              "ref": "backend/tests/test_framework026.py",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Planted forbidden-inheritance test",
+              "source_id": "backend/tests/test_framework026.py",
+              "independent_of": [],
+              "observed_at": null,
+              "content_hash": null
+            },
+            {
+              "ref": "specs/026-rcph-framework-transfer/transfer-map.md",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Transfer principle 2 requires this check",
+              "source_id": "specs/026-rcph-framework-transfer/transfer-map.md",
+              "independent_of": [
+                "backend/tests/test_framework026.py"
+              ],
+              "observed_at": null,
+              "content_hash": null
+            }
+          ],
+          "assumptions": [],
+          "alternatives": [],
+          "falsification_tests": [
+            "One planted forbidden inheritance the checker does not report defeats this claim."
+          ],
+          "uncertainty": "insufficient_evidence",
+          "severity": "medium",
+          "source_ref": "",
+          "domain": "",
+          "confidence": 0.9945,
+          "confidence_band": "high",
+          "failures": [],
+          "metadata": {
+            "framework_kind": "computational-result",
+            "forbidden_assumptions": []
+          }
+        },
+        {
+          "id": "F026-C03A",
+          "text": "framework026.verify_freeze rejects a freeze record whose experiment definition differs from the frozen definition.",
+          "kind": "inference",
+          "status": "draft",
+          "boundary": [
+            "D",
+            "i",
+            "g",
+            "e",
+            "s",
+            "t",
+            " ",
+            "i",
+            "n",
+            "t",
+            "e",
+            "g",
+            "r",
+            "i",
+            "t",
+            "y",
+            " ",
+            "o",
+            "n",
+            "l",
+            "y",
+            "."
+          ],
+          "depends_on": [],
+          "conflicts_with": [],
+          "evidence": [
+            {
+              "ref": "backend/tests/test_framework026.py",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Definition-tamper test",
+              "source_id": "backend/tests/test_framework026.py",
+              "independent_of": [],
+              "observed_at": null,
+              "content_hash": null
+            },
+            {
+              "ref": "backend/glossa_lab/framework026.py",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Canonical digest implementation",
+              "source_id": "backend/glossa_lab/framework026.py",
+              "independent_of": [
+                "backend/tests/test_framework026.py"
+              ],
+              "observed_at": null,
+              "content_hash": null
+            }
+          ],
+          "assumptions": [],
+          "alternatives": [],
+          "falsification_tests": [
+            "One altered definition accepted by verify_freeze defeats this claim."
+          ],
+          "uncertainty": "insufficient_evidence",
+          "severity": "medium",
+          "source_ref": "",
+          "domain": "",
+          "confidence": 0.9945,
+          "confidence_band": "high",
+          "failures": [],
+          "metadata": {
+            "framework_kind": "computational-result",
+            "forbidden_assumptions": []
+          }
+        },
+        {
+          "id": "F026-C03B",
+          "text": "framework026.verify_freeze rejects a freeze record when a frozen source file's bytes have changed.",
+          "kind": "inference",
+          "status": "draft",
+          "boundary": [
+            "D",
+            "i",
+            "g",
+            "e",
+            "s",
+            "t",
+            " ",
+            "i",
+            "n",
+            "t",
+            "e",
+            "g",
+            "r",
+            "i",
+            "t",
+            "y",
+            " ",
+            "o",
+            "n",
+            "l",
+            "y",
+            ";",
+            " ",
+            "a",
+            "u",
+            "t",
+            "h",
+            "o",
+            "r",
+            "s",
+            "h",
+            "i",
+            "p",
+            " ",
+            "a",
+            "n",
+            "d",
+            " ",
+            "t",
+            "i",
+            "m",
+            "i",
+            "n",
+            "g",
+            " ",
+            "a",
+            "r",
+            "e",
+            " ",
+            "g",
+            "o",
+            "v",
+            "e",
+            "r",
+            "n",
+            "a",
+            "n",
+            "c",
+            "e",
+            " ",
+            "q",
+            "u",
+            "e",
+            "s",
+            "t",
+            "i",
+            "o",
+            "n",
+            "s",
+            " ",
+            "o",
+            "u",
+            "t",
+            "s",
+            "i",
+            "d",
+            "e",
+            " ",
+            "t",
+            "h",
+            "e",
+            " ",
+            "h",
+            "a",
+            "s",
+            "h",
+            "."
+          ],
+          "depends_on": [],
+          "conflicts_with": [],
+          "evidence": [
+            {
+              "ref": "backend/tests/test_framework026.py",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Source-tamper test",
+              "source_id": "backend/tests/test_framework026.py",
+              "independent_of": [],
+              "observed_at": null,
+              "content_hash": null
+            },
+            {
+              "ref": "backend/glossa_lab/framework026.py",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Per-source sha256 in freeze record",
+              "source_id": "backend/glossa_lab/framework026.py",
+              "independent_of": [
+                "backend/tests/test_framework026.py"
+              ],
+              "observed_at": null,
+              "content_hash": null
+            }
+          ],
+          "assumptions": [],
+          "alternatives": [],
+          "falsification_tests": [
+            "One altered source file accepted by verify_freeze defeats this claim."
+          ],
+          "uncertainty": "insufficient_evidence",
+          "severity": "medium",
+          "source_ref": "",
+          "domain": "",
+          "confidence": 0.9945,
+          "confidence_band": "high",
+          "failures": [],
+          "metadata": {
+            "framework_kind": "computational-result",
+            "forbidden_assumptions": []
+          }
+        },
+        {
+          "id": "F026-C04A",
+          "text": "The extraction inventory contains one row for every spec directory 001-025 present in specs/.",
+          "kind": "observation",
+          "status": "draft",
+          "boundary": [
+            "s",
+            "p",
+            "e",
+            "c",
+            "s",
+            "/",
+            " ",
+            "o",
+            "f",
+            " ",
+            "t",
+            "h",
+            "e",
+            " ",
+            "w",
+            "o",
+            "r",
+            "k",
+            "t",
+            "r",
+            "e",
+            "e",
+            " ",
+            "a",
+            "t",
+            " ",
+            "i",
+            "n",
+            "v",
+            "e",
+            "n",
+            "t",
+            "o",
+            "r",
+            "y",
+            " ",
+            "t",
+            "i",
+            "m",
+            "e",
+            "."
+          ],
+          "depends_on": [],
+          "conflicts_with": [],
+          "evidence": [
+            {
+              "ref": "specs/026-rcph-framework-transfer/working/inventory.json",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Inventory rows",
+              "source_id": "specs/026-rcph-framework-transfer/working/inventory.json",
+              "independent_of": [],
+              "observed_at": null,
+              "content_hash": null
+            },
+            {
+              "ref": "specs/026-rcph-framework-transfer/working/inventory-gaps.md",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Gap record",
+              "source_id": "specs/026-rcph-framework-transfer/working/inventory-gaps.md",
+              "independent_of": [
+                "specs/026-rcph-framework-transfer/working/inventory.json"
+              ],
+              "observed_at": null,
+              "content_hash": null
+            }
+          ],
+          "assumptions": [
+            "ASM-RECORD-AUTHORITATIVE"
+          ],
+          "alternatives": [],
+          "falsification_tests": [
+            "One spec directory without an inventory row defeats this claim."
+          ],
+          "uncertainty": "insufficient_evidence",
+          "severity": "medium",
+          "source_ref": "",
+          "domain": "",
+          "confidence": 0.9945,
+          "confidence_band": "high",
+          "failures": [],
+          "metadata": {
+            "framework_kind": "data-observation",
+            "forbidden_assumptions": []
+          }
+        },
+        {
+          "id": "F026-C04B",
+          "text": "The extraction inventory contains one row for every numbered phase 52-141 that has an artifact in the scoped locations.",
+          "kind": "observation",
+          "status": "draft",
+          "boundary": [
+            "S",
+            "c",
+            "o",
+            "p",
+            "e",
+            "d",
+            " ",
+            "l",
+            "o",
+            "c",
+            "a",
+            "t",
+            "i",
+            "o",
+            "n",
+            "s",
+            " ",
+            "p",
+            "e",
+            "r",
+            " ",
+            "s",
+            "p",
+            "e",
+            "c",
+            " ",
+            "S",
+            "6",
+            "."
+          ],
+          "depends_on": [],
+          "conflicts_with": [],
+          "evidence": [
+            {
+              "ref": "specs/026-rcph-framework-transfer/working/inventory.json",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Inventory rows",
+              "source_id": "specs/026-rcph-framework-transfer/working/inventory.json",
+              "independent_of": [],
+              "observed_at": null,
+              "content_hash": null
+            },
+            {
+              "ref": "specs/026-rcph-framework-transfer/working/inventory-gaps.md",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Out-of-scope artifacts named",
+              "source_id": "specs/026-rcph-framework-transfer/working/inventory-gaps.md",
+              "independent_of": [
+                "specs/026-rcph-framework-transfer/working/inventory.json"
+              ],
+              "observed_at": null,
+              "content_hash": null
+            }
+          ],
+          "assumptions": [
+            "ASM-RECORD-AUTHORITATIVE"
+          ],
+          "alternatives": [],
+          "falsification_tests": [
+            "One in-scope phase artifact without an inventory row defeats this claim."
+          ],
+          "uncertainty": "insufficient_evidence",
+          "severity": "medium",
+          "source_ref": "",
+          "domain": "",
+          "confidence": 0.9945,
+          "confidence_band": "high",
+          "failures": [
+            {
+              "id": "AEE-F026-C04B-NEGATION-CONFLICT-CHALLE",
+              "claim_id": "F026-C04B",
+              "challenge": "Negation conflict challenge",
+              "breakpoint": "F026-C04B may contradict F026-C04C",
+              "severity": "medium",
+              "category": "contradiction",
+              "recovery_hint": "Confirm whether the claims share a boundary and preserve both pending review.",
+              "resolved": false
+            }
+          ],
+          "metadata": {
+            "framework_kind": "data-observation",
+            "forbidden_assumptions": []
+          }
+        },
+        {
+          "id": "F026-C04C",
+          "text": "Every inventory field that could not be determined from the record is recorded as unknown.",
+          "kind": "observation",
+          "status": "draft",
+          "boundary": [
+            "w",
+            "o",
+            "r",
+            "k",
+            "i",
+            "n",
+            "g",
+            "/",
+            "i",
+            "n",
+            "v",
+            "e",
+            "n",
+            "t",
+            "o",
+            "r",
+            "y",
+            ".",
+            "j",
+            "s",
+            "o",
+            "n",
+            " ",
+            "o",
+            "n",
+            "l",
+            "y",
+            "."
+          ],
+          "depends_on": [],
+          "conflicts_with": [],
+          "evidence": [
+            {
+              "ref": "specs/026-rcph-framework-transfer/working/inventory.json",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Unknown fields present as the string unknown",
+              "source_id": "specs/026-rcph-framework-transfer/working/inventory.json",
+              "independent_of": [],
+              "observed_at": null,
+              "content_hash": null
+            },
+            {
+              "ref": "specs/026-rcph-framework-transfer/working/inventory-gaps.md",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Gaps declared rather than filled",
+              "source_id": "specs/026-rcph-framework-transfer/working/inventory-gaps.md",
+              "independent_of": [
+                "specs/026-rcph-framework-transfer/working/inventory.json"
+              ],
+              "observed_at": null,
+              "content_hash": null
+            }
+          ],
+          "assumptions": [],
+          "alternatives": [],
+          "falsification_tests": [
+            "One guessed value in place of an undeterminable field defeats this claim."
+          ],
+          "uncertainty": "insufficient_evidence",
+          "severity": "medium",
+          "source_ref": "",
+          "domain": "",
+          "confidence": 0.9945,
+          "confidence_band": "high",
+          "failures": [],
+          "metadata": {
+            "framework_kind": "data-observation",
+            "forbidden_assumptions": []
+          }
+        },
+        {
+          "id": "F026-C05",
+          "text": "Under the criteria frozen at stage S1, the register's RERUN-REQUIRED set contains every item meeting a C1-C4 correction test.",
+          "kind": "inference",
+          "status": "draft",
+          "boundary": [
+            "C",
+            "o",
+            "n",
+            "d",
+            "i",
+            "t",
+            "i",
+            "o",
+            "n",
+            "a",
+            "l",
+            " ",
+            "o",
+            "n",
+            " ",
+            "c",
+            "r",
+            "i",
+            "t",
+            "e",
+            "r",
+            "i",
+            "a",
+            " ",
+            "s",
+            "o",
+            "u",
+            "n",
+            "d",
+            "n",
+            "e",
+            "s",
+            "s",
+            ";",
+            " ",
+            "d",
+            "e",
+            "f",
+            "e",
+            "c",
+            "t",
+            "s",
+            " ",
+            "r",
+            "e",
+            "o",
+            "p",
+            "e",
+            "n",
+            " ",
+            "o",
+            "n",
+            "l",
+            "y",
+            " ",
+            "v",
+            "i",
+            "a",
+            " ",
+            "d",
+            "a",
+            "t",
+            "e",
+            "d",
+            " ",
+            "a",
+            "m",
+            "e",
+            "n",
+            "d",
+            "m",
+            "e",
+            "n",
+            "t",
+            "."
+          ],
+          "depends_on": [
+            "F026-C04A",
+            "F026-C04B"
+          ],
+          "conflicts_with": [],
+          "evidence": [
+            {
+              "ref": "specs/026-rcph-framework-transfer/classification-criteria.md",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Criteria frozen at S1",
+              "source_id": "specs/026-rcph-framework-transfer/classification-criteria.md",
+              "independent_of": [],
+              "observed_at": null,
+              "content_hash": null
+            },
+            {
+              "ref": "specs/026-rcph-framework-transfer/impact-register.md",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Register rows with per-row rationale",
+              "source_id": "specs/026-rcph-framework-transfer/impact-register.md",
+              "independent_of": [
+                "specs/026-rcph-framework-transfer/classification-criteria.md"
+              ],
+              "observed_at": null,
+              "content_hash": null
+            }
+          ],
+          "assumptions": [
+            "ASM-CRITERIA-SOUND"
+          ],
+          "alternatives": [],
+          "falsification_tests": [
+            "One item meeting a C1-C4 test but classified otherwise defeats this claim."
+          ],
+          "uncertainty": "insufficient_evidence",
+          "severity": "medium",
+          "source_ref": "",
+          "domain": "",
+          "confidence": 0.9945,
+          "confidence_band": "high",
+          "failures": [
+            {
+              "id": "AEE-F026-C05-IRREDUCIBILITY-CHALLENGE",
+              "claim_id": "F026-C05",
+              "challenge": "Irreducibility challenge",
+              "breakpoint": "Claim may contain multiple independently falsifiable propositions",
+              "severity": "medium",
+              "category": "coverage_gap",
+              "recovery_hint": "Split the claim into atomic propositions and link them explicitly.",
+              "resolved": false
+            }
+          ],
+          "metadata": {
+            "framework_kind": "conditional-model-result",
+            "forbidden_assumptions": [
+              "ASM-WELCOME-RESULTS"
+            ]
+          }
+        },
+        {
+          "id": "F026-C06A",
+          "text": "An AEE assessment artifact is saved in this spec for each of the specify, plan, tasks, and implement stages.",
+          "kind": "observation",
+          "status": "draft",
+          "boundary": [
+            "a",
+            "e",
+            "e",
+            " ",
+            "p",
+            "a",
+            "c",
+            "k",
+            "a",
+            "g",
+            "e",
+            " ",
+            "1",
+            ".",
+            "0",
+            ".",
+            "4",
+            " ",
+            "i",
+            "n",
+            " ",
+            "t",
+            "h",
+            "e",
+            " ",
+            "G",
+            "l",
+            "o",
+            "s",
+            "s",
+            "a",
+            " ",
+            "v",
+            "e",
+            "n",
+            "v",
+            "."
+          ],
+          "depends_on": [],
+          "conflicts_with": [],
+          "evidence": [
+            {
+              "ref": "specs/026-rcph-framework-transfer/aee/",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Per-stage artifacts",
+              "source_id": "specs/026-rcph-framework-transfer/aee/",
+              "independent_of": [],
+              "observed_at": null,
+              "content_hash": null
+            },
+            {
+              "ref": ".specify/extensions/aee/ledger/epistemic-ledger.jsonl",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Hash-chained AEE ledger",
+              "source_id": ".specify/extensions/aee/ledger/epistemic-ledger.jsonl",
+              "independent_of": [
+                "specs/026-rcph-framework-transfer/aee/"
+              ],
+              "observed_at": null,
+              "content_hash": null
+            }
+          ],
+          "assumptions": [],
+          "alternatives": [],
+          "falsification_tests": [
+            "One stage lacking a saved artifact defeats this claim."
+          ],
+          "uncertainty": "insufficient_evidence",
+          "severity": "medium",
+          "source_ref": "",
+          "domain": "",
+          "confidence": 0.9945,
+          "confidence_band": "high",
+          "failures": [
+            {
+              "id": "AEE-F026-C06A-IRREDUCIBILITY-CHALLENGE",
+              "claim_id": "F026-C06A",
+              "challenge": "Irreducibility challenge",
+              "breakpoint": "Claim may contain multiple independently falsifiable propositions",
+              "severity": "medium",
+              "category": "coverage_gap",
+              "recovery_hint": "Split the claim into atomic propositions and link them explicitly.",
+              "resolved": false
+            }
+          ],
+          "metadata": {
+            "framework_kind": "data-observation",
+            "forbidden_assumptions": []
+          }
+        },
+        {
+          "id": "F026-C06B",
+          "text": "No Spec 026 stage closed while its AEE outcome was stricter than warn without recorded recovery work.",
+          "kind": "observation",
+          "status": "draft",
+          "boundary": [
+            "G",
+            "a",
+            "t",
+            "e",
+            " ",
+            "s",
+            "c",
+            "a",
+            "l",
+            "e",
+            " ",
+            "p",
+            "a",
+            "s",
+            "s",
+            "|",
+            "w",
+            "a",
+            "r",
+            "n",
+            "|",
+            "i",
+            "t",
+            "e",
+            "r",
+            "a",
+            "t",
+            "e",
+            "|",
+            "c",
+            "l",
+            "a",
+            "r",
+            "i",
+            "f",
+            "y",
+            "|",
+            "g",
+            "a",
+            "t",
+            "h",
+            "e",
+            "r",
+            "_",
+            "e",
+            "v",
+            "i",
+            "d",
+            "e",
+            "n",
+            "c",
+            "e",
+            "|",
+            "b",
+            "l",
+            "o",
+            "c",
+            "k",
+            "."
+          ],
+          "depends_on": [
+            "F026-C06A"
+          ],
+          "conflicts_with": [],
+          "evidence": [
+            {
+              "ref": "specs/026-rcph-framework-transfer/aee/",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Recovery rounds visible as successive artifacts",
+              "source_id": "specs/026-rcph-framework-transfer/aee/",
+              "independent_of": [],
+              "observed_at": null,
+              "content_hash": null
+            },
+            {
+              "ref": "specs/026-rcph-framework-transfer/tasks.md",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Stage closure notes",
+              "source_id": "specs/026-rcph-framework-transfer/tasks.md",
+              "independent_of": [
+                "specs/026-rcph-framework-transfer/aee/"
+              ],
+              "observed_at": null,
+              "content_hash": null
+            }
+          ],
+          "assumptions": [],
+          "alternatives": [],
+          "falsification_tests": [
+            "One stage closed over a stricter-than-warn outcome with no recovery record defeats this claim."
+          ],
+          "uncertainty": "insufficient_evidence",
+          "severity": "medium",
+          "source_ref": "",
+          "domain": "",
+          "confidence": 0.9945,
+          "confidence_band": "high",
+          "failures": [
+            {
+              "id": "AEE-F026-C06B-IRREDUCIBILITY-CHALLENGE",
+              "claim_id": "F026-C06B",
+              "challenge": "Irreducibility challenge",
+              "breakpoint": "Claim may contain multiple independently falsifiable propositions",
+              "severity": "medium",
+              "category": "coverage_gap",
+              "recovery_hint": "Split the claim into atomic propositions and link them explicitly.",
+              "resolved": false
+            }
+          ],
+          "metadata": {
+            "framework_kind": "data-observation",
+            "forbidden_assumptions": []
+          }
+        },
+        {
+          "id": "F026-C07",
+          "text": "RCPH claim, freeze, and control discipline transfers to Indus research as methodology.",
+          "kind": "hypothesis",
+          "status": "draft",
+          "boundary": [
+            "M",
+            "e",
+            "t",
+            "h",
+            "o",
+            "d",
+            "o",
+            "l",
+            "o",
+            "g",
+            "i",
+            "c",
+            "a",
+            "l",
+            " ",
+            "a",
+            "n",
+            "a",
+            "l",
+            "o",
+            "g",
+            "y",
+            " ",
+            "o",
+            "n",
+            "l",
+            "y",
+            ";",
+            " ",
+            "n",
+            "o",
+            " ",
+            "R",
+            "C",
+            "P",
+            "H",
+            " ",
+            "s",
+            "u",
+            "b",
+            "s",
+            "t",
+            "a",
+            "n",
+            "t",
+            "i",
+            "v",
+            "e",
+            " ",
+            "r",
+            "e",
+            "s",
+            "u",
+            "l",
+            "t",
+            " ",
+            "t",
+            "r",
+            "a",
+            "n",
+            "s",
+            "f",
+            "e",
+            "r",
+            "s",
+            "."
+          ],
+          "depends_on": [],
+          "conflicts_with": [],
+          "evidence": [
+            {
+              "ref": "specs/026-rcph-framework-transfer/transfer-map.md",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "12-principle map",
+              "source_id": "specs/026-rcph-framework-transfer/transfer-map.md",
+              "independent_of": [],
+              "observed_at": null,
+              "content_hash": null
+            },
+            {
+              "ref": "~/workspace/rcph-formalization/docs/GENERAL_RESEARCH_FRAMEWORK.md",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Source framework v1.1",
+              "source_id": "~/workspace/rcph-formalization/docs/GENERAL_RESEARCH_FRAMEWORK.md",
+              "independent_of": [
+                "specs/026-rcph-framework-transfer/transfer-map.md"
+              ],
+              "observed_at": null,
+              "content_hash": null
+            }
+          ],
+          "assumptions": [
+            "ASM-ANALOGY-METHOD-ONLY"
+          ],
+          "alternatives": [
+            "Glossa piecemeal practice already equivalent"
+          ],
+          "falsification_tests": [
+            "One transfer principle that cannot be operationalized in Glossa machinery defeats the bridge for that principle."
+          ],
+          "uncertainty": "insufficient_evidence",
+          "severity": "medium",
+          "source_ref": "",
+          "domain": "",
+          "confidence": 0.9945,
+          "confidence_band": "high",
+          "failures": [
+            {
+              "id": "AEE-F026-C07-IRREDUCIBILITY-CHALLENGE",
+              "claim_id": "F026-C07",
+              "challenge": "Irreducibility challenge",
+              "breakpoint": "Claim may contain multiple independently falsifiable propositions",
+              "severity": "medium",
+              "category": "coverage_gap",
+              "recovery_hint": "Split the claim into atomic propositions and link them explicitly.",
+              "resolved": false
+            }
+          ],
+          "metadata": {
+            "framework_kind": "conjecture-bridge",
+            "forbidden_assumptions": [
+              "ASM-KERNEL-PROOF",
+              "ASM-RCPH-SUBSTANCE"
+            ]
+          }
+        },
+        {
+          "id": "F026-C08A",
+          "text": "Spec 026 changes no anchor in backend/reports/INDUS_FINAL_ANCHORS.json.",
+          "kind": "compliance",
+          "status": "draft",
+          "boundary": [
+            "W",
+            "h",
+            "o",
+            "l",
+            "e",
+            " ",
+            "p",
+            "r",
+            "o",
+            "g",
+            "r",
+            "a",
+            "m",
+            "."
+          ],
+          "depends_on": [],
+          "conflicts_with": [],
+          "evidence": [
+            {
+              "ref": "docs/governance/rules.md#H26",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Controlling text: promotion gates require non-SA evidence",
+              "source_id": "docs/governance/rules.md#H26",
+              "independent_of": [],
+              "observed_at": null,
+              "content_hash": null
+            },
+            {
+              "ref": "specs/026-rcph-framework-transfer/spec.md#2",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Scope exclusion recorded in spec S2",
+              "source_id": "specs/026-rcph-framework-transfer/spec.md#2",
+              "independent_of": [
+                "docs/governance/rules.md#H26"
+              ],
+              "observed_at": null,
+              "content_hash": null
+            }
+          ],
+          "assumptions": [],
+          "alternatives": [],
+          "falsification_tests": [
+            "Any anchor hash change attributable to Spec 026 defeats this claim."
+          ],
+          "uncertainty": "insufficient_evidence",
+          "severity": "medium",
+          "source_ref": "",
+          "domain": "",
+          "confidence": 0.9945,
+          "confidence_band": "high",
+          "failures": [
+            {
+              "id": "AEE-F026-C08A-AUTHORITY-CHALLENGE",
+              "claim_id": "F026-C08A",
+              "challenge": "Authority challenge",
+              "breakpoint": "Compliance claim lacks observed primary-authority or test evidence",
+              "severity": "high",
+              "category": "missing_evidence",
+              "recovery_hint": "Cite the controlling text and attach assessment evidence.",
+              "resolved": false
+            }
+          ],
+          "metadata": {
+            "framework_kind": "definition",
+            "forbidden_assumptions": [
+              "ASM-SA-VALID"
+            ]
+          }
+        },
+        {
+          "id": "F026-C08B",
+          "text": "Spec 026 performs no PRED-2026 scoring.",
+          "kind": "compliance",
+          "status": "draft",
+          "boundary": [
+            "W",
+            "h",
+            "o",
+            "l",
+            "e",
+            " ",
+            "p",
+            "r",
+            "o",
+            "g",
+            "r",
+            "a",
+            "m",
+            "."
+          ],
+          "depends_on": [],
+          "conflicts_with": [],
+          "evidence": [
+            {
+              "ref": "specs/026-rcph-framework-transfer/spec.md#2",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Scope exclusion in spec S2",
+              "source_id": "specs/026-rcph-framework-transfer/spec.md#2",
+              "independent_of": [],
+              "observed_at": null,
+              "content_hash": null
+            },
+            {
+              "ref": "specs/026-rcph-framework-transfer/classification-criteria.md",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Criteria tie-break 3 caps PRED items below rerun",
+              "source_id": "specs/026-rcph-framework-transfer/classification-criteria.md",
+              "independent_of": [
+                "specs/026-rcph-framework-transfer/spec.md#2"
+              ],
+              "observed_at": null,
+              "content_hash": null
+            }
+          ],
+          "assumptions": [],
+          "alternatives": [],
+          "falsification_tests": [
+            "Any PRED scoring artifact produced by Spec 026 defeats this claim."
+          ],
+          "uncertainty": "insufficient_evidence",
+          "severity": "medium",
+          "source_ref": "",
+          "domain": "",
+          "confidence": 0.9945,
+          "confidence_band": "high",
+          "failures": [
+            {
+              "id": "AEE-F026-C08B-AUTHORITY-CHALLENGE",
+              "claim_id": "F026-C08B",
+              "challenge": "Authority challenge",
+              "breakpoint": "Compliance claim lacks observed primary-authority or test evidence",
+              "severity": "high",
+              "category": "missing_evidence",
+              "recovery_hint": "Cite the controlling text and attach assessment evidence.",
+              "resolved": false
+            }
+          ],
+          "metadata": {
+            "framework_kind": "definition",
+            "forbidden_assumptions": []
+          }
+        },
+        {
+          "id": "F026-C08C",
+          "text": "Spec 026 produces no SA-sufficient promotion evidence.",
+          "kind": "compliance",
+          "status": "draft",
+          "boundary": [
+            "W",
+            "h",
+            "o",
+            "l",
+            "e",
+            " ",
+            "p",
+            "r",
+            "o",
+            "g",
+            "r",
+            "a",
+            "m",
+            "."
+          ],
+          "depends_on": [],
+          "conflicts_with": [],
+          "evidence": [
+            {
+              "ref": "docs/governance/rules.md#H26",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Controlling rule H26",
+              "source_id": "docs/governance/rules.md#H26",
+              "independent_of": [],
+              "observed_at": null,
+              "content_hash": null
+            },
+            {
+              "ref": "specs/026-rcph-framework-transfer/classification-criteria.md",
+              "kind": "observed",
+              "direction": "supports",
+              "source_quality": "artifact",
+              "description": "Criteria tie-break 2",
+              "source_id": "specs/026-rcph-framework-transfer/classification-criteria.md",
+              "independent_of": [
+                "docs/governance/rules.md#H26"
+              ],
+              "observed_at": null,
+              "content_hash": null
+            }
+          ],
+          "assumptions": [],
+          "alternatives": [],
+          "falsification_tests": [
+            "Any SA-based promotion attributable to Spec 026 defeats this claim."
+          ],
+          "uncertainty": "insufficient_evidence",
+          "severity": "medium",
+          "source_ref": "",
+          "domain": "",
+          "confidence": 0.9945,
+          "confidence_band": "high",
+          "failures": [
+            {
+              "id": "AEE-F026-C08C-AUTHORITY-CHALLENGE",
+              "claim_id": "F026-C08C",
+              "challenge": "Authority challenge",
+              "breakpoint": "Compliance claim lacks observed primary-authority or test evidence",
+              "severity": "high",
+              "category": "missing_evidence",
+              "recovery_hint": "Cite the controlling text and attach assessment evidence.",
+              "resolved": false
+            }
+          ],
+          "metadata": {
+            "framework_kind": "definition",
+            "forbidden_assumptions": [
+              "ASM-SA-VALID"
+            ]
+          }
+        }
+      ],
+      "scores": {
+        "F026-C01A": {
+          "claim_id": "F026-C01A",
+          "direct_score": 0.9945,
+          "propagated_score": 0.9945,
+          "band": "high",
+          "components": {
+            "evidence": 0.99,
+            "independence": 1.0,
+            "falsifiability": 1.0,
+            "boundary": 1.0,
+            "contradiction_penalty": 0
+          },
+          "notes": []
+        },
+        "F026-C01B": {
+          "claim_id": "F026-C01B",
+          "direct_score": 0.9945,
+          "propagated_score": 0.9945,
+          "band": "high",
+          "components": {
+            "evidence": 0.99,
+            "independence": 1.0,
+            "falsifiability": 1.0,
+            "boundary": 1.0,
+            "contradiction_penalty": 0
+          },
+          "notes": []
+        },
+        "F026-C02A": {
+          "claim_id": "F026-C02A",
+          "direct_score": 0.9945,
+          "propagated_score": 0.9945,
+          "band": "high",
+          "components": {
+            "evidence": 0.99,
+            "independence": 1.0,
+            "falsifiability": 1.0,
+            "boundary": 1.0,
+            "contradiction_penalty": 0
+          },
+          "notes": []
+        },
+        "F026-C02B": {
+          "claim_id": "F026-C02B",
+          "direct_score": 0.9945,
+          "propagated_score": 0.9945,
+          "band": "high",
+          "components": {
+            "evidence": 0.99,
+            "independence": 1.0,
+            "falsifiability": 1.0,
+            "boundary": 1.0,
+            "contradiction_penalty": 0
+          },
+          "notes": []
+        },
+        "F026-C03A": {
+          "claim_id": "F026-C03A",
+          "direct_score": 0.9945,
+          "propagated_score": 0.9945,
+          "band": "high",
+          "components": {
+            "evidence": 0.99,
+            "independence": 1.0,
+            "falsifiability": 1.0,
+            "boundary": 1.0,
+            "contradiction_penalty": 0
+          },
+          "notes": []
+        },
+        "F026-C03B": {
+          "claim_id": "F026-C03B",
+          "direct_score": 0.9945,
+          "propagated_score": 0.9945,
+          "band": "high",
+          "components": {
+            "evidence": 0.99,
+            "independence": 1.0,
+            "falsifiability": 1.0,
+            "boundary": 1.0,
+            "contradiction_penalty": 0
+          },
+          "notes": []
+        },
+        "F026-C04A": {
+          "claim_id": "F026-C04A",
+          "direct_score": 0.9945,
+          "propagated_score": 0.9945,
+          "band": "high",
+          "components": {
+            "evidence": 0.99,
+            "independence": 1.0,
+            "falsifiability": 1.0,
+            "boundary": 1.0,
+            "contradiction_penalty": 0
+          },
+          "notes": []
+        },
+        "F026-C04B": {
+          "claim_id": "F026-C04B",
+          "direct_score": 0.9945,
+          "propagated_score": 0.9945,
+          "band": "high",
+          "components": {
+            "evidence": 0.99,
+            "independence": 1.0,
+            "falsifiability": 1.0,
+            "boundary": 1.0,
+            "contradiction_penalty": 0
+          },
+          "notes": []
+        },
+        "F026-C04C": {
+          "claim_id": "F026-C04C",
+          "direct_score": 0.9945,
+          "propagated_score": 0.9945,
+          "band": "high",
+          "components": {
+            "evidence": 0.99,
+            "independence": 1.0,
+            "falsifiability": 1.0,
+            "boundary": 1.0,
+            "contradiction_penalty": 0
+          },
+          "notes": []
+        },
+        "F026-C05": {
+          "claim_id": "F026-C05",
+          "direct_score": 0.9945,
+          "propagated_score": 0.9945,
+          "band": "high",
+          "components": {
+            "evidence": 0.99,
+            "independence": 1.0,
+            "falsifiability": 1.0,
+            "boundary": 1.0,
+            "contradiction_penalty": 0
+          },
+          "notes": []
+        },
+        "F026-C06A": {
+          "claim_id": "F026-C06A",
+          "direct_score": 0.9945,
+          "propagated_score": 0.9945,
+          "band": "high",
+          "components": {
+            "evidence": 0.99,
+            "independence": 1.0,
+            "falsifiability": 1.0,
+            "boundary": 1.0,
+            "contradiction_penalty": 0
+          },
+          "notes": []
+        },
+        "F026-C06B": {
+          "claim_id": "F026-C06B",
+          "direct_score": 0.9945,
+          "propagated_score": 0.9945,
+          "band": "high",
+          "components": {
+            "evidence": 0.99,
+            "independence": 1.0,
+            "falsifiability": 1.0,
+            "boundary": 1.0,
+            "contradiction_penalty": 0
+          },
+          "notes": []
+        },
+        "F026-C07": {
+          "claim_id": "F026-C07",
+          "direct_score": 0.9945,
+          "propagated_score": 0.9945,
+          "band": "high",
+          "components": {
+            "evidence": 0.99,
+            "independence": 1.0,
+            "falsifiability": 1.0,
+            "boundary": 1.0,
+            "contradiction_penalty": 0
+          },
+          "notes": []
+        },
+        "F026-C08A": {
+          "claim_id": "F026-C08A",
+          "direct_score": 0.9945,
+          "propagated_score": 0.9945,
+          "band": "high",
+          "components": {
+            "evidence": 0.99,
+            "independence": 1.0,
+            "falsifiability": 1.0,
+            "boundary": 1.0,
+            "contradiction_penalty": 0
+          },
+          "notes": []
+        },
+        "F026-C08B": {
+          "claim_id": "F026-C08B",
+          "direct_score": 0.9945,
+          "propagated_score": 0.9945,
+          "band": "high",
+          "components": {
+            "evidence": 0.99,
+            "independence": 1.0,
+            "falsifiability": 1.0,
+            "boundary": 1.0,
+            "contradiction_penalty": 0
+          },
+          "notes": []
+        },
+        "F026-C08C": {
+          "claim_id": "F026-C08C",
+          "direct_score": 0.9945,
+          "propagated_score": 0.9945,
+          "band": "high",
+          "components": {
+            "evidence": 0.99,
+            "independence": 1.0,
+            "falsifiability": 1.0,
+            "boundary": 1.0,
+            "contradiction_penalty": 0
+          },
+          "notes": []
+        }
+      },
+      "recoveries": [
+        {
+          "failure_id": "AEE-F026-C08A-AUTHORITY-CHALLENGE",
+          "claim_id": "F026-C08A",
+          "strategy": "gather_evidence",
+          "action": "Cite the controlling text and attach assessment evidence.",
+          "priority": 2,
+          "verification": "At least one inspectable non-self-attested evidence item is attached."
+        },
+        {
+          "failure_id": "AEE-F026-C08B-AUTHORITY-CHALLENGE",
+          "claim_id": "F026-C08B",
+          "strategy": "gather_evidence",
+          "action": "Cite the controlling text and attach assessment evidence.",
+          "priority": 2,
+          "verification": "At least one inspectable non-self-attested evidence item is attached."
+        },
+        {
+          "failure_id": "AEE-F026-C08C-AUTHORITY-CHALLENGE",
+          "claim_id": "F026-C08C",
+          "strategy": "gather_evidence",
+          "action": "Cite the controlling text and attach assessment evidence.",
+          "priority": 2,
+          "verification": "At least one inspectable non-self-attested evidence item is attached."
+        },
+        {
+          "failure_id": "AEE-F026-C01A-IRREDUCIBILITY-CHALLENGE",
+          "claim_id": "F026-C01A",
+          "strategy": "decompose",
+          "action": "Split the claim into atomic propositions and link them explicitly.",
+          "priority": 3,
+          "verification": "Every resulting claim contains one independently falsifiable proposition."
+        },
+        {
+          "failure_id": "AEE-F026-C01B-NEGATION-CONFLICT-CHALLE",
+          "claim_id": "F026-C01B",
+          "strategy": "resolve_contradiction",
+          "action": "Confirm whether the claims share a boundary and preserve both pending review.",
+          "priority": 3,
+          "verification": "Both positions remain recorded; discriminating evidence resolves or scopes them."
+        },
+        {
+          "failure_id": "AEE-F026-C04B-NEGATION-CONFLICT-CHALLE",
+          "claim_id": "F026-C04B",
+          "strategy": "resolve_contradiction",
+          "action": "Confirm whether the claims share a boundary and preserve both pending review.",
+          "priority": 3,
+          "verification": "Both positions remain recorded; discriminating evidence resolves or scopes them."
+        },
+        {
+          "failure_id": "AEE-F026-C05-IRREDUCIBILITY-CHALLENGE",
+          "claim_id": "F026-C05",
+          "strategy": "decompose",
+          "action": "Split the claim into atomic propositions and link them explicitly.",
+          "priority": 3,
+          "verification": "Every resulting claim contains one independently falsifiable proposition."
+        },
+        {
+          "failure_id": "AEE-F026-C06A-IRREDUCIBILITY-CHALLENGE",
+          "claim_id": "F026-C06A",
+          "strategy": "decompose",
+          "action": "Split the claim into atomic propositions and link them explicitly.",
+          "priority": 3,
+          "verification": "Every resulting claim contains one independently falsifiable proposition."
+        },
+        {
+          "failure_id": "AEE-F026-C06B-IRREDUCIBILITY-CHALLENGE",
+          "claim_id": "F026-C06B",
+          "strategy": "decompose",
+          "action": "Split the claim into atomic propositions and link them explicitly.",
+          "priority": 3,
+          "verification": "Every resulting claim contains one independently falsifiable proposition."
+        },
+        {
+          "failure_id": "AEE-F026-C07-IRREDUCIBILITY-CHALLENGE",
+          "claim_id": "F026-C07",
+          "strategy": "decompose",
+          "action": "Split the claim into atomic propositions and link them explicitly.",
+          "priority": 3,
+          "verification": "Every resulting claim contains one independently falsifiable proposition."
+        }
+      ]
+    }
+  }
+}

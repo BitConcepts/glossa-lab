@@ -2979,3 +2979,427 @@ statistic computed; no anchor or PRED change —
 anchors sha256 eccea6d5… unchanged. AI-assisted
 record (Muse Spark, Muse), owner-directed.
 Full entry: repo LEDGER.md, same date.
+
+## 2026-10-09 — Phase-135 (Spec 024): Evidence Integration, Stage 1 Re-Pilot — agreement 0.78, κ 0.7129, MIDDLE BAND again (cross-reference)
+
+Owner-approved combined path executed: codebook
+clarification of the legibility boundary (Rules
+B1–B5 from the 16 adjudicated Phase-134
+disagreements; freeze record `stage1-freeze-2.md`,
+gates and taxonomy unchanged) + fresh-sample
+re-pilot. Frame: 100 entirely fresh objects
+(3,245 eligible minus the 100 Phase-134 objects =
+3,145; overlap 0, verified). Two blinded passes +
+gold + adjudication of 22 disagreements, all roles
+AI-executed with disclosure, all quantities from
+the on-disk records, no deviations. Exact
+agreement **0.78**, Cohen's κ **0.7129**; frozen
+§4.5 gates: proceed NOT MET (both arms), stop NOT
+FIRED → **MIDDLE BAND for the second time**; no
+Stage 2(b) design drafted; owner's decision
+framed in `reports/phase135_pilot_report.md`.
+ILLEGIBLE usage halved under the clarification but
+its per-category agreement fell (0.667 → 0.368) —
+the clarification did not raise reproducibility
+on this fresh sample. No association statistic
+computed; no anchor or PRED change — anchors
+sha256 eccea6d5… unchanged. AI-assisted record
+(Muse Spark, Muse), owner-directed.
+Full entry: repo LEDGER.md, same date.
+
+## 2026-10-09 — Zenodo v4.7.0 published (Spec 024 Stages 1–1b: motif pilots) (cross-reference)
+
+DOI 10.5281/zenodo.23270096 (record 23270096) —
+deposits the Spec 024 Stages 1–1b program note and
+both motif pilot datasets (Phase-134:
+`phase134_pilot_dataset.json`; Phase-135:
+`phase135_pilot_dataset.json`; each with provenance
+meta) CC BY 4.0 under the owner's combined-path
+approval — codes, notes, and disagreement logs only,
+no images. Release gate PASS 18/18 at e698cff2,
+recorded via PR #114; final gate run at the
+gate-record merge 52580e43 PASS 18/18. Post-deposit
+checksums confirmed 18/18. OSF registry updated in
+step (parent, Outputs, Corpora; Literature
+unchanged). Phase-134: agreement 0.84, κ 0.7885,
+MIDDLE BAND; Phase-135 (clarified codebook, fresh
+sample): 0.78, κ 0.7129, MIDDLE BAND for the second
+time; no Stage 2(b) design drafted. No anchor or
+PRED change — anchors sha256 eccea6d5… unchanged.
+AI-assisted record (Muse Spark, Muse),
+owner-directed. Full entry: repo LEDGER.md, same
+date.
+
+## 2026-10-09 — Spec 024 motif arm CLOSED AS RUN (owner decision: paths (b) + (c) together)
+
+Owner decision 2026-10-09: the motif arm rests now
+on its published two-pilot record (path (c)) —
+Phase-134 (agreement 0.84, κ 0.7885, MIDDLE BAND)
+and Phase-135 (agreement 0.78, κ 0.7129, MIDDLE BAND
+again), Zenodo v4.7.0, DOI 10.5281/zenodo.23270096 —
+and path (b) is preserved as the arm's sole
+reopening condition: a new owner decision AND a
+materially different measurement basis (human
+expert coders), clarified codebook
+(`stage1-freeze-2.md`), fresh sample, identical
+frozen gates (proceed ≥0.85 AND κ ≥0.75; stop <0.70
+OR κ <0.50); a third AI-basis pilot is expressly not
+a reopening path. No Stage 2(b) design exists or is
+authorized. Stage 2 arms (a), (c), (d) unaffected,
+in their Stage-0 forms. No anchor or PRED change —
+anchors sha256 eccea6d5… unchanged. AI-assisted
+record (Muse Spark, Muse), owner-directed.
+Closure record:
+`specs/024-evidence-integration/motif-arm-closure.md`.
+Full entry: repo LEDGER.md, same date.
+
+
+## 2026-10-09 — Phase-136 (Spec 024): Stage 2(a) terminal-class × object type, ICIT-lineage joined subset (F1) — raw p = 0.0001 (cross-reference)
+
+CMH 47.0047; MH common OR 2.384 (1.847–3.077);
+eligible strata Mohenjo-daro / Harappa /
+Kalibangan, N = 2,062 of 5,679 layer rows (49.0%
+unjoinable or ambiguous). Verdict assigned in the
+combined Stage 2 report (F1 q = 0.00015,
+SUPPORTED). ICIT-lineage label throughout; not a
+PRED evaluation; anchors sha256 eccea6d5…
+unchanged. Full entry: repo LEDGER.md, same date.
+
+## 2026-10-09 — Phase-137 (Spec 024): Stage 2(c) site repertoire — F2 (Holdat) raw p = 0.7354; F3 (ICIT-lineage) raw p = 0.0001 (cross-reference)
+
+F2: χ² 745.95 below its composition-controlled
+null median 770.32. F3: χ² 4,966.36 vs null median
+2,667.87, Cramér's V 0.2190. Verdicts assigned in
+the combined Stage 2 report (F2 NOT SUPPORTED;
+F3 SUPPORTED). Full entry: repo LEDGER.md, same
+date (Phase-137 entry appended by the executing
+phase).
+
+## 2026-10-09 — Phase-138 (Spec 024): Stage 2(d) graffiti descriptive — 417 rows / 395 objects; motif_chapter 0/417; no test (cross-reference)
+
+Descriptive only; Tamil Nadu corpus not in hand;
+≥1,000-year dating-gap caveat on every comparative
+statement; no overlap statistic, no continuity
+claim. PR #120 merged on a mismatched CI readout;
+two test pins corrected in PR #123 with CI
+verified green from the run's own record — see the
+correction of record in the full entry: repo
+LEDGER.md, same date.
+
+## 2026-10-09 — Spec 024 Stage 2 COMBINED (Phases 136–138): BH q = 0.05 across the declared family — F1 SUPPORTED, F2 NOT SUPPORTED, F3 SUPPORTED (cross-reference)
+
+Combined report:
+`reports/phase136_137_138_stage2_report.md`. Arm
+(b) untouched (CLOSED). §8: facts about use in
+named layers only; no anchor or PRED movement.
+Publication as Zenodo v4.8.0 follows (task T12).
+Full entry: repo LEDGER.md, same date.
+
+## 2026-10-09 — Zenodo v4.8.0 published (Spec 024 Stage 2: Phases 136–138) (cross-reference)
+
+DOI 10.5281/zenodo.23273722 (record 23273722) —
+deposits the Spec 024 Stage 2 program note
+(`pierson_2026_indus_program_note_136_137_138_stage2.md`)
+and the three phase results files
+(`phase136_results.json`, `phase137_results.json`,
+`phase138_results.json`) CC BY 4.0. Release gate
+PASS 22/22 at b5c6c8e2, recorded via PR #126; final
+gate run at the gate-record merge fe734ef0 PASS
+22/22. Post-deposit checksums confirmed 22/22. OSF
+registry updated in step (parent, Outputs, Corpora;
+Literature unchanged). Family verdicts (BH q = 0.05,
+applied once): F1 terminal-class × object type
+(ICIT-lineage) q = 0.00015 SUPPORTED; F2 site
+repertoire (Holdat) q = 0.7354 NOT SUPPORTED; F3
+site repertoire (ICIT-lineage) q = 0.00015
+SUPPORTED; arm (d) descriptive only (417 rows /
+395 objects, depiction-chapter field 0/417). No
+anchor or PRED change — anchors sha256 eccea6d5…
+unchanged. AI-assisted record (Muse Spark, Muse
+Code), owner-directed. Full entry: repo LEDGER.md,
+same date.
+
+
+## 2026-10-10 — Phase-139 (Spec 025): covariate audit + harmonization — G1 ESTIMABLE, primary control = preservation (cross-reference)
+
+Margins only (no association statistic computed).
+Gate verbatim: chron_band 41.9% recorded ->
+SENSITIVITY; depth_band 51.1% -> SENSITIVITY;
+preservation 99.9% -> PRIMARY CONTROL (sole passer).
+Primary strata for G1 = composition x preservation;
+chronology remains an uncontrolled confounder,
+named in every G1 headline. Freeze record:
+specs/025-stage2-controlled-followup/
+phase139-freeze.md (seed 20261009; BH over G1 alone).
+Full entry: repo LEDGER.md, same date.
+
+
+## 2026-10-10 — Phase-140 (Spec 025): G1 controlled F3 re-test — SUPPORTED under control; chronology NOT controlled (cross-reference)
+
+ICIT-lineage layer (horus84), preservation recorded
+coverage 99.9%: permutation within composition x
+preservation strata (B = 9,999, seed 20261009),
+permutable 5,404 / 5,410; observed chi2 4,966.36 vs
+controlled null median 2,684.74; 0/9,999 >= observed;
+raw p 0.0001; BH over G1 alone (m = 1) -> SUPPORTED
+under control. Chronology is NOT controlled in the
+primary test (period/phase uncontrolled). EXPLORATORY
+bounds: S-chron p 0.0001 (41.9% recorded), S-depth
+p 0.0001 (51.1%). Pre-run regression reproduced
+Phase-137 F3 exactly. Anchors sha256 eccea6d5...
+unchanged; no PRED movement. Full entry: repo
+LEDGER.md, same date.
+
+
+## 2026-10-10 — Phase-141 (Spec 025): F1 LOSO sensitivity — F1 STABLE, no load-bearing site (cross-reference)
+
+Phase-136 machinery unchanged + stratum-drop only;
+no-drop reproduction exact. L-MD: MH OR 2.706
+(1.858-3.940), raw p 0.0001. L-HA: MH OR 2.162
+(1.541-3.033), raw p 0.0002. L-KA: MH OR 2.400
+(1.857-3.103), raw p 0.0001. All estimable; sec.5
+criterion met in every subset -> F1 STABLE, no single
+site load-bearing. No q-values (Q4(b)); no verdicts
+minted. Anchors sha256 eccea6d5... unchanged; no PRED
+movement. Full entry: repo LEDGER.md, same date.
+
+
+## 2026-10-10 — Spec 025 combined report + foundation check (cross-reference)
+
+Combined report reports/phase139_140_141_spec025_
+report.md: G1 SUPPORTED under preservation control
+(ICIT-lineage layer, 99.9% coverage; chronology NOT
+controlled; exploratory S-chron/S-depth bounds raw
+p 0.0001); F1 LOSO STABLE. Foundation check on merged
+main: 40 passed / 0 failed / 8 warnings; anchors
+eccea6d5... unchanged. Publication: Zenodo v4.9.0
+(Q6). Full entry: repo LEDGER.md, same date.
+
+
+## 2026-10-10 — Zenodo v4.9.0 published (Spec 025 outcome record) (cross-reference)
+
+DOI 10.5281/zenodo.23288406 (record 23288406); concept
+DOI 10.5281/zenodo.20379070. Deposit: Spec 025
+program note + phase139/140/141 results JSONs over
+the carried v4.8.0 set (26 files, CC BY 4.0); release
+gate PASS 26/26 at 232f0d2f and again at the
+gate-record merge a4514de1; post-deposit checksums
+26/26 match. G1 SUPPORTED under preservation control
+(ICIT-lineage layer, 99.9% coverage; chronology NOT
+controlled); F1 LOSO STABLE. OSF ybd65 + vwa7s +
+dfrhz updated in step; Literature unchanged. Spec 025
+complete (T15 DONE). Anchors eccea6d5... unchanged;
+no PRED movement. Full entry: repo LEDGER.md, same
+date.
+
+## 2026-10-10/11 — Spec 026 (RCPH framework transfer) COMPLETE
+
+The RCPH study framework was transferred into Glossa through
+a full spec-kit + AEE lifecycle (Spec 026; PRs #138–#146).
+All 116 in-scope prior items (Specs 001–025, Phases 52–141)
+were classified in a frozen impact register; all 8
+RERUN-REQUIRED items were rerun under pre-declared freezes
+(Phases 383–386). Headline outcomes: coding pilots rescored
+(132 CONTRADICTED; 134/135 INCONCLUSIVE with intervals; one
+coder origin group — agreement is intra-origin consistency);
+Phase-137 F2 bounded claim CONTRADICTED at the declared
+margin, F3 SUPPORTED margin-adjudicated; Phase-140 G1
+SUPPORTED under control stands at the declared margin
+(chronology NOT controlled); Phases 116/125/127/131 replayed
+exactly (REPRODUCED). 75 items carry a changed evidentiary
+status in specs/026-rcph-framework-transfer/
+historical-assessments.md (originals untouched). Anchors
+unchanged; no PRED scoring; no publication.
+
+## 2026-10-11 — Spec 027 DRAFT opened (movement, culture, and language) (cross-reference)
+
+Draft PR #147 proposes a Spec 026-governed movement, culture,
+and language study: Stage 0 gazetteer/chronology
+infrastructure, the Stage 1 Q2 repertoire gate with negative
+closure, conditional Q7/Q6 designs, and Q1/Q3/Q4/Q5/Q8/Q9
+registered as blocked with exact unblocking conditions. The
+draft is open, unmerged, and unfrozen; nothing was executed,
+published, or scored, and no anchor changed. Full entry:
+repo LEDGER.md, same date.
+
+## 2026-10-11 — Spec 027 FROZEN (owner adjudication) (cross-reference)
+
+Spec 027 was frozen on the owner's decision ("Approve
+Spec 027 with the recommended answers and freeze it",
+2026-10-11 08:26 EDT). Answers: 0A stage order/scope; M77
+governing for Stage 1; corpus rules as drafted; gazetteer
+CC BY 4.0 via the release gate (lawful rows only); Stage 1
+executes on the adjudicated design after its own merged
+freeze. Stage 0 = Phase-391, Stage 1 = Phase-392. AEE freeze
+run pass. Nothing executed, published, or scored by the
+freeze itself; no anchor changed. Full entry: repo
+LEDGER.md, same date; binding record:
+specs/027-movement-culture-language/adjudication.md.
+
+## 2026-10-11 — Spec 027 Stage 0 executed (Phase-391) (cross-reference)
+
+Gazetteer (36 source-asserted rows, 30 site clusters) +
+chronology spine (177 traced rows; Mutin 2025 series
+CONTESTED) built under the Stage 0 freeze (digest
+4a9f6953…). Q6 timing-support: NOT-YET-TESTABLE under the
+frozen criteria (3 of 4 failed on spine margins). Ask 4
+release package prepared and gate-verified PASS 4/4 in-repo;
+no deposit made. Anchors unchanged; no PRED scoring. Full
+entry: repo LEDGER.md, same date.
+
+## 2026-10-11 — Spec 027 Stage 1 freeze (Phase-392) (cross-reference)
+
+Stage 1 (Q2 repertoire gate) frozen: margins audit (eligible
+3,144; analysis 6 sites / 3,030) → design frozen before any
+outcome (PERMANOVA R^2 on M77 composition, rarefaction to
+cell 15, margin 0.01, discriminating controls, LOSO; digest
+9c937fbc…). Parpola sensitivity NOT ESTIMABLE on margins
+(17.57% unambiguous crosswalk coverage); not run. Execution
+follows on this freeze's merge under Ask 5. Full entry: repo
+LEDGER.md, same date.
+
+## 2026-10-11 — Spec 027 Stage 1 freeze Amendment 1 (cross-reference)
+
+Pre-merge, pre-outcome amendment (synthetic-data machinery
+evidence only): adjusted R^2 estimand scale; rarefaction
+cell 15 -> 49; deterministic positive-control sign sets.
+Amended freeze digest 30861f04...; controls calibrated PASS
+at the amended design. Full entry: repo LEDGER.md, same
+date; amendment text in stage1-freeze.md.
+## 2026-10-11 — Zenodo v4.10.0 published (Spec 026 framework + rerun record) (cross-reference)
+
+DOI 10.5281/zenodo.23298334 (record 23298334); concept
+DOI 10.5281/zenodo.20379070. Deposit: Spec 026
+program note + the Spec 026 record (transfer map,
+impact register, rerun contracts/freezes, Phase-383–
+386 reports/results, historical assessments) over
+the carried v4.9.0 set (59 files, CC BY 4.0); release
+gate PASS 59/59 at 2aa52c81 and again at the
+gate-record merge e42db25a; post-deposit checksums
+59/59 match. Phase-132 CONTRADICTED; 134/135
+INCONCLUSIVE; F2 bounded claim CONTRADICTED at the
+declared margin; F3 SUPPORTED stands; G1 SUPPORTED
+under control stands at the margin (chronology NOT
+controlled); Phases 116/125/127/131 REPRODUCED;
+Phase-384 v1 interval INVALID (self-caught); 75 of
+116 register items carry changed evidentiary status.
+OSF ybd65 + vwa7s + dfrhz updated in step; Literature
+unchanged. Anchors eccea6d5... unchanged; no PRED
+movement. Full entry: repo LEDGER.md, same date.
+
+## 2026-10-11 — Spec 027 Stage 1 freeze merged; OSF registration filed (cross-reference)
+
+Stage 1 freeze merged (PR #154, 4684408f; CI run
+38144799989 success). Frozen Phase-392 contract registered
+on OSF before execution: https://osf.io/pnqrx/ (OSF
+Preregistration; 2026-10-11T14:02:01Z; public, no embargo;
+pending admin approval). Record:
+specs/027-movement-culture-language/stage1/
+osf-registration.md. Full entry: repo LEDGER.md, same date.
+
+## 2026-10-11 — Spec 027 Stage 1 executed (Phase-392): INCONCLUSIVE (cross-reference)
+
+Q2 gate under the merged freeze + OSF registration
+(osf.io/pnqrx): median adjusted R^2 0.01677, interval
+[0.01032, 0.02397] above the 0.01 margin, rejection share
+1.000, controls PASS — but the leave-one-site-out median
+with Harappa dropped is 0.00928 (below margin), so the
+frozen SUPPORTED rule's jackknife clause fails and the
+verdict is INCONCLUSIVE. Negative closure does not fire;
+no downstream repertoire work authorised; Stage 2 not
+executed. Full record: specs/027-movement-culture-
+language/stage1-outcome.md; repo LEDGER.md, same date.
+
+## 2026-10-11 — Spec 027 closeout (cross-reference)
+
+Program complete (Stages 0-1). Verification on merged
+main a0c8566a: suite 1,162 passed / 14 skipped / 0 failed;
+foundation 40/0/8; anchors byte-identical; PRED untouched.
+Stage 2 not executed (Q6 NOT-YET-TESTABLE; Q7 owner-gated).
+Full entry: repo LEDGER.md, same date.
+
+## 2026-10-11 — Zenodo deposit: Spec 027 Stage 0 gazetteer + chronology spine (cross-reference)
+
+Standalone dataset DOI 10.5281/zenodo.23300361
+(record 23300361), CC BY 4.0, deposited on the owner's
+2026-10-11 order under the Spec 027 Ask 4 posture. The
+Phase-391 package exactly as gate-verified (4 files):
+21 verified_open gazetteer rows (XRONOS; the 15
+open_access_read_only CISI-derived rows of the 36-row
+gazetteer excluded) + all 177 chronology-spine rows
+(XRONOS 144 + Mutin et al. 2025 SI Table S2 33,
+scenario CONTESTED throughout, preserved as
+published) + source_register.json (verbatim) +
+package README. Release gate re-run at 9a202fe9 —
+PASS 4/4 (1 MATCH + 3 EXTERNAL); post-deposit MD5
+checksums 4/4 match; DOI resolves. This entry
+supersedes the Stage 0 note above that recorded "no
+deposit made" — that was true when written; the
+deposit has now been made. Anchors eccea6d5...
+unchanged; no PRED movement. Full entry: repo
+LEDGER.md, same date.
+## 2026-10-11 — Spec 028 frozen (Phase-393, Harappa robustness)
+
+Follow-up to Spec 027 Stage 1's INCONCLUSIVE verdict, under
+the owner's delegated-design order (verbatim in
+specs/028-harappa-robustness/adjudication.md). Arm A
+(primary): Phase-392 population minus Harappa, identical
+machinery. Arm B (secondary): site-equal-weight estimand
+(quota 52/site/draw). Arm C: exploratory Harappa
+decomposition, no verdict. Calibration forced Amendment 1
+(per-draw regenerated controls; type x exact-length
+permutation strata; negative-control bound restated with
+binomial tolerance) on synthetic evidence only; final
+calibration PASS on all four controls. Freeze digest
+619ab0c3...; OSF registration and execution follow in
+sequence. Full entry: repo LEDGER.md, same date.
+
+## 2026-10-11 — Spec 028 OSF registration filed (Phase-393)
+
+Frozen contract registered before execution:
+https://osf.io/7m35w/ (2026-10-11T16:13:11Z; public, no
+embargo; approval pending at filing, handled in the
+parent loop per the owner's standing order). Freeze PR
+#158 merged c1fc0029, CI verified 7/7. Full record:
+specs/028-harappa-robustness/osf-registration.md; repo
+LEDGER.md, same date.
+
+## 2026-10-11 — Spec 028 executed (Phase-393): INCONCLUSIVE / INCONCLUSIVE
+
+Arm A (non-Harappa primary): median adj R^2 0.00878,
+below the 0.01 margin, interval straddling it — the
+non-Harappa sites do not clear the margin alone. Arm B
+(site-equal): 0.02237, above Phase-392's 0.01677, but
+drop-Harappa LOSO 0.00661 fails the jackknife clause.
+Controls PASS both arms (identical to calibration).
+Joint descriptive reading: the effect is
+Harappa-dependent, not a count artifact; Arm C locates
+it in Harappa's tablets (within-TAB BC 0.4953; M328
+~21.5% of the distance). Phase-392's record untouched;
+its reading is updated only in the new historical
+assessment. Full record:
+specs/028-harappa-robustness/outcome.md; repo LEDGER.md,
+same date.
+
+## 2026-10-11 — Spec 028 closeout (program complete)
+
+Verification on merged main 909b239a: suite 1,170 passed
+/ 14 skipped / 0 failed; foundation 40/0/8; anchors
+byte-identical; PRED untouched. Verdicts: Arm A
+INCONCLUSIVE, Arm B INCONCLUSIVE; Phase-392's record
+never modified. Any Harappa/tablet follow-up test needs
+a new spec. Full entry: repo LEDGER.md, same date.
+
+## 2026-10-13 — Spec 029 closeout (program complete)
+
+Verification on merged main `db1c3832`: suite 1,407
+passed / 6 skipped / 0 failed; foundation 40/0/8;
+anchors additive-only canonical comparison exact
+(pre-Spec-029 SHA-256 restored on stripping); PRED
+register untouched; final reconciliation 220 created
+/ 116 checked / 0 / 0 / 0 with 105
+`verified_unexplained` flags. Tasks ticked once as
+the recorded freeze amendment (freeze.md section 2);
+freeze never regenerated. No live claim stands above
+`checked`. Full entry: repo LEDGER.md, same date;
+record: `specs/029-tao-claim-lifecycle/closeout-record.md`.

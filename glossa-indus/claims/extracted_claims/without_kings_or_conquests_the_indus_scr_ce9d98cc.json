@@ -1,7 +1,7 @@
 {
   "document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
   "title": "",
-  "extraction_date": "2026-10-06T10:42:42.291556",
+  "extraction_date": "2026-10-21T15:29:26.260888",
   "total_claims": 9,
   "auto_extracted": 9,
   "manually_curated": 5,
@@ -12,10 +12,64 @@
       "claim_type": "language_claim",
       "normalized_claim": "Language hypothesis: non-linguistic symbol",
       "quote_fragment": "non-linguistic symbol",
-      "claim_status": "untested",
+      "claim_status": "contradicted",
       "testability": "directly_testable",
       "confidence_in_source": 0.7,
-      "extracted_at": "2026-10-06T10:42:42.267757"
+      "extracted_at": "2026-10-21T15:29:26.158672",
+      "stage": "checked",
+      "stage_source": "transition-service:stage_history[1]",
+      "stage_as_of": "2026-10-13T10:18:18.548312+00:00",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "created",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001; no pre-existing field altered."
+        },
+        {
+          "from_stage": "created",
+          "to_stage": "checked",
+          "actor": "spec029-phase104-carryover-migration",
+          "timestamp": "2026-10-13T10:18:18.548312+00:00",
+          "evidence_refs": [
+            "glossa-indus/reports/phase104_claims_evaluation.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001",
+            "glossa-indus/claims/extracted_claims/farmer_sproat_witzel_2004.json:farmer_sproat_witzel_2004_manual_001"
+          ],
+          "reason": "Phase-104 carry-over correction (2026-10-13): the Phase-104 evaluation of untested claims found this record restates the Farmer, Sproat and Witzel thesis already judged contradicted on farmer_sproat_witzel_2004_manual_001, and recorded that the verdict carries over (rule RULE-DUP) — but the carry-over was never written into this record, which still showed untested at the created stage. This entry writes it: the claim status now reads contradicted, with the evaluation's evidence, and the stage moves to checked. The earlier stage entry in this history is unchanged."
+        }
+      ],
+      "verified_unexplained": false,
+      "proposition_fingerprint": "16fa1b2e8d294dcbd855ffe6ab4bbabc4fb24b2b3f3d4cb1ecd3b9bdb7d285f6",
+      "not_understood": "As with the two critique fragments: the evaluation's carry-over argument and the live record disagree, and the record has never been reconciled. There is also a question this label raises that the fuller claim does not: a category tag was extracted as if it were a claim, which suggests other extraction labels may be sitting in the claim set in the same way. What would change the picture: an appended disposition for this record, and a sweep of the extraction labels for other tags mistaken for propositions.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001",
+        "content_hash": "6048bb43d7fe44c08f3007cfa9151f54fbc1ec373d4fc9f7cf5265becd7ea40b",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "The record itself is a fragment - a section heading lifted by automatic extraction - but the position it points at is a real, identifiable claim: the Farmer, Sproat and Witzel thesis that the signs do not encode language. The program's Phase-104 evaluation read this fragment as restating that thesis and concluded that the thesis's recorded verdict (contradicted, on the companion record farmer_sproat_witzel_2004_manual_001) should carry over to it. That carry-over was never written into this record: the live record still stands untested, at the created stage. Both facts belong in the open - an evaluation argued the claim is already answered, and the record was never updated to say so. Under this program's rules the gap is closed by an appended, dated correction, never by quietly editing the status."
+      },
+      "contradicting_evidence": [
+        "Rao et al. 2009: conditional entropy falls in linguistic range",
+        "Phase-43: 20 TERMINAL_STRONG signs consistent with morphological suffixes",
+        "Phase-43: [M77/267][M77/99] = fixed title formula at inscription start",
+        "Cross-reference: farmer_sproat_witzel_2004_manual_001 (farmer_sproat_witzel_2004)"
+      ],
+      "status_correction": {
+        "kind": "phase104-carryover-correction",
+        "date": "2026-10-13",
+        "previous_claim_status": "untested",
+        "new_claim_status": "contradicted",
+        "basis": "glossa-indus/reports/phase104_claims_evaluation.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001",
+        "rule": "RULE-DUP",
+        "note": "The Phase-104 evaluation judged this record a restatement of farmer_sproat_witzel_2004_manual_001 (contradicted) and recorded that the verdict carries over; the carry-over was never written into the live record. Applied 2026-10-13 on the owner's order. The previous status is preserved in this field, and the record's earlier history is unchanged."
+      }
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_statisti_0002",
@@ -26,7 +80,25 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-10-06T10:42:42.272975"
+      "extracted_at": "2026-10-21T15:29:26.172823",
+      "stage": "created",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_statisti_0002",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "created",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_statisti_0002"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry without_kings_or_conquests_the_indus_scr_ce9d98cc_statisti_0002; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false,
+      "proposition_fingerprint": "a4874349e0cc0ba23b711f10c78f60372639c2dc6f352165b48d4a9e44272469",
+      "merged_into": "ancient_writing_and_modern_technologies_51831ac9_statisti_0004"
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0003",
@@ -37,7 +109,25 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-10-06T10:42:42.276747"
+      "extracted_at": "2026-10-21T15:29:26.183089",
+      "stage": "created",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0003",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "created",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0003"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0003; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false,
+      "proposition_fingerprint": "defa7480501b2b457f4c0316d28d0801e91496b385ba99f5d62b90ae7bc74630",
+      "merged_into": "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001"
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0004",
@@ -48,7 +138,25 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-10-06T10:42:42.277198"
+      "extracted_at": "2026-10-21T15:29:26.184648",
+      "stage": "created",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0004",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "created",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0004"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0004; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false,
+      "proposition_fingerprint": "d7e4efd6b7748029e58d6480d5d227e7556e648007cc0e6cd43d2f5ad96b33e6",
+      "merged_into": "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002"
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001",
@@ -61,7 +169,45 @@
       "glossa_lab_evidence": "Phase-43 Batch 5: formula_rate=35.5% vs null 0.6% (59x lift). 20 TERMINAL_STRONG + 40 INITIAL_STRONG signs. [STRUCTURALLY SUPPORTED]",
       "author": "Hunt, Treasure A.",
       "confidence_in_source": 0.75,
-      "extracted_at": "2026-10-06T10:42:42.291534"
+      "extracted_at": "2026-10-21T15:29:26.248495",
+      "stage": "explained",
+      "stage_source": "transition-service:stage_history[1]",
+      "stage_as_of": "2026-10-13T10:12:00+00:00",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "checked",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001; no pre-existing field altered."
+        },
+        {
+          "from_stage": "checked",
+          "to_stage": "explained",
+          "actor": "Tristen Pierson",
+          "timestamp": "2026-10-13T10:12:00+00:00",
+          "evidence_refs": [
+            "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001"
+          ],
+          "reason": "Lane-2 adoption (owner act, 2026-10-13): the explanation record authored by Tristen Pierson — adopted from the AI-drafted texts of PR #190, drafting disclosed in the record — is ingested; the stage advances checked -> explained through the transition service (OD-2)."
+        }
+      ],
+      "verified_unexplained": false,
+      "proposition_fingerprint": "ecaee6db10b117062f4c5e18ab30e501b2e2c102b6c06e91bfc14ce5179dfd56",
+      "not_understood": "The meanings of the three parts - identity, action, cycle - have never been tested; only their positions have. The program cannot yet say which signs are animal signs or sky signs from its own data (that needs a visual classification crosswalk it does not have), so the companion claims about animal openings and sky-sign endings are untested or only structurally supported. A three-part pattern is also weaker evidence than it may look: many record-keeping systems, linguistic or not, develop fixed field orders. What would change the picture: a visual classification of the sign classes, so the semantic version of the claim can be tested instead of the positional shadow of it.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001",
+        "content_hash": "2a45d6ab3477a8bc266a56944722c1f5472b5ce5377f581308e7a206bced4769",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "The program tested the shape of this claim, and the shape held up. In the test recorded on the claim (the positional test in the program's analysis files), 805 of 2,267 inscriptions of three or more signs followed the opening-middle-ending structure - 35.5 percent, against 0.6 percent expected by chance, a lift of about 59 times. The test also found the position-strong signs the pattern needs: 40 signs that strongly prefer the opening, 20 that strongly prefer the ending, and 61 for the middle. That is why the status is partially supported. The limit of the support is written in the test's own verdict, and it should be quoted rather than softened: the pattern is 'consistent with both Hunt model and Dravidian suffix model. Cannot distinguish between them without visual sign classification.' In other words, the check shows a three-part positional pattern exists. It does not show that the parts carry the meanings Hunt assigns them, and the same pattern is equally consistent with a rival account in which the closing signs are simply word endings in a language."
+      }
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_002",
@@ -72,7 +218,35 @@
       "testability": "indirectly_testable",
       "falsification_condition": "If sign distributions correlate with palatial/royal contexts rather than civic/infrastructure contexts.",
       "confidence_in_source": 0.65,
-      "extracted_at": "2026-10-06T10:42:42.291534"
+      "extracted_at": "2026-10-21T15:29:26.248495",
+      "stage": "created",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_002",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "created",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_002"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_002; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false,
+      "proposition_fingerprint": "fe79a1fc47e3da31670e0ba3c76079f2a86db689980445f64af4c9734652581b",
+      "not_understood": "The social meaning of the inscriptions - civic, royal, commercial, ritual - is exactly what positional statistics cannot see, and this claim is a claim about social meaning. It would remain untested even if every positional claim in this set were confirmed tomorrow, because its evidence would have to come from find contexts classified by function. What would change the picture: a find-context classification from the excavation literature, entered as cited data, and the comparison run as the falsifier states it.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_002",
+        "content_hash": "188e0df406b2e396d18bef30aac49acbd3a7b3e945c55f7a82a703fe3c51bb52",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "No check has ever run on this claim. What exists on the record is the source document's own assertion, plus an automatic score computed over the record's text. The program's own evaluation note is explicit that such scores are consistency signals only and no verdict rests on them. The claim therefore stands at the first stage, created: it has been written down, and nothing more has happened to it. The claim is marked on its own record as only indirectly testable, and its test is comparative: sign distributions should track civic and infrastructure contexts more than palatial or royal ones. Phase-104 found the comparison cannot be run: the repository holds site names but no classification of contexts as palatial, royal, civic or infrastructural. The interpretation also leans on the three-part pattern claim (a separate record, partially supported for position only); the pattern's existence does not test this social reading of it."
+      }
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003",
@@ -92,7 +266,45 @@
       "falsification_condition": "Faunal signs not enriched in initial position above random baseline.",
       "glossa_lab_evidence": "Phase-43: 40 INITIAL_STRONG signs identified; faunal-initial enrichment not yet sign-classified [STRUCTURAL SUPPORT ONLY]",
       "confidence_in_source": 0.7,
-      "extracted_at": "2026-10-06T10:42:42.291534"
+      "extracted_at": "2026-10-21T15:29:26.248495",
+      "stage": "explained",
+      "stage_source": "transition-service:stage_history[1]",
+      "stage_as_of": "2026-10-13T10:12:00+00:00",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "checked",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003; no pre-existing field altered."
+        },
+        {
+          "from_stage": "checked",
+          "to_stage": "explained",
+          "actor": "Tristen Pierson",
+          "timestamp": "2026-10-13T10:12:00+00:00",
+          "evidence_refs": [
+            "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003"
+          ],
+          "reason": "Lane-2 adoption (owner act, 2026-10-13): the explanation record authored by Tristen Pierson — adopted from the AI-drafted texts of PR #190, drafting disclosed in the record — is ingested; the stage advances checked -> explained through the transition service (OD-2)."
+        }
+      ],
+      "verified_unexplained": false,
+      "proposition_fingerprint": "8e6551ad3b3fa1044a5990b49c78255601561b57ede8c2a8a578f8798e20da83",
+      "not_understood": "Whether the opening-strong signs are animals, and whether they marked identity, guild or goods if they are, is entirely open. The claim's own test - animal signs enriched in opening position above a random baseline - cannot be run until the program has a visual classification of which signs are animals. What would change the picture: that classification, built once and frozen, then the enrichment test run exactly as the claim's falsifier states it.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003",
+        "content_hash": "71c4fd22294d8190238a07728e651e3f3f7843da331c71720f8676b2005bd9e3",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "The record's own evidence sentence gives the honest position, and the draft keeps it intact: '40 INITIAL_STRONG signs identified; faunal-initial enrichment not yet sign-classified [STRUCTURAL SUPPORT ONLY]'. Unpacked: the program's positional work (Phase-43) did find 40 signs that strongly prefer the opening position of inscriptions. That is the support. But nobody has yet checked whether those 40 opening signs are in fact the animal signs - the program's own test file notes it 'cannot directly classify faunal/celestial without visual catalog crosswalk'. So the claim joins two halves: a positional half that is supported, and an animal half that has never been tested at all. The status partially supported is the average of those two halves, and it should never be quoted without the second half's absence attached."
+      }
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004",
@@ -109,7 +321,35 @@
       "testability": "directly_testable",
       "falsification_condition": "Celestial signs not enriched in terminal position above random baseline.",
       "confidence_in_source": 0.7,
-      "extracted_at": "2026-10-06T10:42:42.291534"
+      "extracted_at": "2026-10-21T15:29:26.248495",
+      "stage": "created",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "created",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false,
+      "proposition_fingerprint": "ca1f1d34448bfe867fbc94b552f2f37f4672b7b0c46aa01f606b02a822cdca61",
+      "not_understood": "Which signs are 'celestial' is itself a visual judgement that must be made sign by sign from the sign images, and the program has not built that classification. Until it exists, the claim is not false and not supported - it is unmeasurable. What would change the picture: a frozen visual classification of the sign list marking the celestial signs, then the terminal-enrichment test run exactly as the falsifier states it.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004",
+        "content_hash": "846e4ca64a2a4a0337a603f29b401cda2f456fa2ea05f7ab1ec4ddd1d282b4ff",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "No check has ever run on this claim. What exists on the record is the source document's own assertion, plus an automatic score computed over the record's text. The program's own evaluation note is explicit that such scores are consistency signals only and no verdict rests on them. The claim therefore stands at the first stage, created: it has been written down, and nothing more has happened to it. Phase-104 gave the precise reason, and it is a data gap, not a failed test: the claim's falsifier requires a defined class of celestial signs, and no such classification exists in the repository's data. The in-repo sign-role classes are ending-marker, classifier-prefix, person-or-owner and possible-person - none of them says which signs are sky signs. Terminal enrichment for the class therefore cannot even be computed. This is the one part of Hunt's three-part scheme where not even the positional shadow of the claim has been measured."
+      }
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_005",
@@ -120,7 +360,35 @@
       "testability": "indirectly_testable",
       "falsification_condition": "If the 24 clusters do not correspond to statistically distinct positional/co-occurrence profiles.",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-10-06T10:42:42.291534"
+      "extracted_at": "2026-10-21T15:29:26.248495",
+      "stage": "created",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_005",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "created",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_005"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_005; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false,
+      "proposition_fingerprint": "6b92e1a96faec17efcd1cd989ed54c54af53da180ffe66f4773fb1c3fcb9d6d7",
+      "not_understood": "The claim is entirely in the not-understood column: the object it describes is absent from the record. What would change the picture: acquisition of the atlas definitions from the source publication, entered as cited data with provenance, then the distinct-profile test - if two clusters turn out to behave identically, the atlas's grouping claim fails on its own terms.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_005",
+        "content_hash": "be0f974ec013d68de7705853405555ac4389b39e1862865a21248bb2a22c17db",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "No check has ever run on this claim. What exists on the record is the source document's own assertion, plus an automatic score computed over the record's text. The program's own evaluation note is explicit that such scores are consistency signals only and no verdict rests on them. The claim therefore stands at the first stage, created: it has been written down, and nothing more has happened to it. Phase-104's finding is the shortest in this set: the claim's test cannot be run because the 24 cluster definitions are not in the repository. The program has clusterings of its own, but they are different clusterings, built differently, and testing them would test a different claim. Until the atlas's own membership lists are in hand as cited data, there is nothing here to check."
+      }
     }
   ],
   "_citation": {

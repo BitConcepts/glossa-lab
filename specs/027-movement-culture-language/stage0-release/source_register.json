@@ -1,0 +1,74 @@
+[
+ {
+  "source_id": "XRONOS",
+  "kind": "radiocarbon_repository",
+  "citation": "XRONOS — An open repository and curation platform for radiocarbon data (xronos.ch), full export retrieved 2026-10-11 from https://xronos.ch/data.csv; CC BY 4.0.",
+  "licence_state": "verified_open",
+  "licence_evidence": "CC BY 4.0 stated on the XRONOS data page, inspected 2026-10-11.",
+  "use_in_stage0": "gazetteer site rows + chronology rows",
+  "origin_group": "XRONOS"
+ },
+ {
+  "source_id": "CISI Vol. 1 catalogue (Phase-124 layer)",
+  "kind": "published_corpus_catalogue",
+  "citation": "Joshi, Jagat Pati & Asko Parpola (eds.). 1987. Corpus of Indus Seals and Inscriptions Vol. 1: Collections in India. Helsinki: Suomalainen Tiedeakatemia.",
+  "licence_state": "open_access_read_only",
+  "licence_evidence": "In-copyright published volume; program holds the IA scan as a local research copy. Factual site assertions only; excluded from the CC BY release package.",
+  "use_in_stage0": "gazetteer findspot rows",
+  "origin_group": "CISI published volumes (Phase-124 layer)"
+ },
+ {
+  "source_id": "CISI Vol. 2 catalogue (Phase-124 layer)",
+  "kind": "published_corpus_catalogue",
+  "citation": "Shah, Sayid Ghulam Mustafa & Asko Parpola (eds.). 1991. Corpus of Indus Seals and Inscriptions Vol. 2: Collections in Pakistan. Helsinki: Suomalainen Tiedeakatemia.",
+  "licence_state": "open_access_read_only",
+  "licence_evidence": "In-copyright published volume; program holds the IA scan as a local research copy. Factual site assertions only; excluded from the CC BY release package.",
+  "use_in_stage0": "gazetteer findspot rows",
+  "origin_group": "CISI published volumes (Phase-124 layer)"
+ },
+ {
+  "source_id": "Mutin et al. 2025 SI",
+  "kind": "journal_supplement",
+  "citation": "Mutin, B. et al. (2025). New radiocarbon dates of human tooth enamel reveal a late appearance of farming life in the Indus Valley. Scientific Reports. DOI 10.1038/s41598-025-92621-5; Supplementary Information, Table S2 (incl. Zazzo 2014 lines as republished there). Scenario status: CONTESTED.",
+  "licence_state": "verified_open",
+  "licence_evidence": "Scientific Reports is CC BY 4.0; supplement as served by the publisher 2026-10-11.",
+  "use_in_stage0": "chronology rows (Mehrgarh enamel series); scenario status CONTESTED",
+  "origin_group": "Mutin et al. 2025 supplementary data"
+ },
+ {
+  "source_id": "Possehl published site lists",
+  "kind": "published_gazetteer",
+  "citation": "Possehl, Gregory L. Indus Age site lists (Early ~477 / Mature ~1,022 / Late ~1,281 sites, as cited in secondary literature; movement research report D7).",
+  "licence_state": "catalogue_only",
+  "licence_evidence": "Book data; no open georeferenced download verified.",
+  "use_in_stage0": "catalogued only; no rows built",
+  "origin_group": null
+ },
+ {
+  "source_id": "Law (2011) compilations",
+  "kind": "dissertation_compilation",
+  "citation": "Law, Randall W. (2011). Inter-regional interaction and urbanism in the ancient Indus Valley. PhD dissertation, University of Wisconsin-Madison.",
+  "licence_state": "catalogue_only",
+  "licence_evidence": "Bulk-open status not verified.",
+  "use_in_stage0": "catalogued only; no rows built",
+  "origin_group": null
+ },
+ {
+  "source_id": "TwoRains published survey data",
+  "kind": "project_survey_data",
+  "citation": "TwoRains project (Cambridge-BHU); Zenodo 3909832 inspected 2026-10-11.",
+  "licence_state": "catalogue_only",
+  "licence_evidence": "The cited Zenodo deposit is the Angourakis et al. 2020 crop-model R project (modelling inputs, no site gazetteer); Haryana survey site data remains in paper supplements not audited for reuse in this stage.",
+  "use_in_stage0": "catalogued only; no rows built",
+  "origin_group": null
+ },
+ {
+  "source_id": "c14bazAAR",
+  "kind": "aggregator_route",
+  "citation": "c14bazAAR (Kreutzer et al.), R package aggregating radiocarbon databases.",
+  "licence_state": "catalogue_only",
+  "licence_evidence": "Aggregator, not a primary source (spec section 3.4); no source database in it was verified in this stage to add greater-Indus records beyond the XRONOS export.",
+  "use_in_stage0": "catalogued only; no rows built",
+  "origin_group": null
+ }
+]

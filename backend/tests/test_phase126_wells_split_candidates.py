@@ -167,7 +167,30 @@ def test_committed_results_agree_with_fresh_build():
 
 
 def test_anchors_hash_unchanged():
-    digest = hashlib.sha256(_ANCHORS.read_bytes()).hexdigest()
+    # Spec 029 Phase D (OD-1, 2026-10-12): the live anchors file
+    # carries additive stage stamps; its pre-existing content is
+    # unchanged — canonicalizing by removing exactly the Phase D
+    # additive keys reproduces the pinned pre-migration hash.
+    doc = json.loads(_ANCHORS.read_text("utf-8"))
+    for rec in doc["anchors"].values():
+        for k in ("stage", "stage_source", "stage_as_of",
+                  "stage_history", "verified_unexplained"):
+            rec.pop(k, None)
+        # Spec 029 Phase H (D-A, 2026-10-12): also remove the
+        # additive annotation — ``strict_set`` on every record,
+        # ``validation_status`` on the records that carried none
+        # (exactly the Phase H values named below; pre-existing
+        # values are untouched), and the metadata block — so the
+        # digest still reproduces the pre-migration content.
+        rec.pop("strict_set", None)
+        if rec.get("validation_status") in (
+                "strict_sa_independent", "sa_in_provenance_chain",
+                "no_validation_record"):
+            rec.pop("validation_status", None)
+    doc.get("metadata", {}).pop("spec029_phase_h_annotation", None)
+    digest = hashlib.sha256(
+        json.dumps(doc, indent=2, ensure_ascii=False).encode("utf-8")
+    ).hexdigest()
     assert digest == _ANCHORS_SHA256
 
 

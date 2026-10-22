@@ -1,0 +1,93 @@
+{
+ "phase": 391,
+ "spec": "027-movement-culture-language",
+ "stage": 0,
+ "kind": "descriptive_infrastructure_build",
+ "verdict": null,
+ "input_hashes": {
+  "xronos_data.csv": "8570bfd9b256ced2f9e840183ea52325b9a7079b79a2957c7db797f09c118655",
+  "cisi_vol1_catalogue.csv": "e0d698f991fbd7cf26c491a2b25906b422903a0e2a26ea7b8c690420ca51dc1e",
+  "cisi_vol2_catalogue.csv": "e751244e2d51bda3181d98e56af691c0d24099d76d035b54f0888504204bc7d9",
+  "mutin_moesm1.pdf": "b5eae7291aa6a1ebb643b381bbf848651f8bccde0f68ccb282e79ed977857600"
+ },
+ "xronos_export_total_rows": 314030,
+ "xronos_filtered_rows": 144,
+ "gazetteer": {
+  "rows": 36,
+  "by_source": {
+   "CISI Vol. 1 catalogue (Phase-124 layer)": 11,
+   "CISI Vol. 2 catalogue (Phase-124 layer)": 4,
+   "XRONOS": 21
+  },
+  "by_licence_state": {
+   "open_access_read_only": 15,
+   "verified_open": 21
+  },
+  "by_coordinate_state": {
+   "unknown": 15,
+   "exact_published": 21
+  },
+  "program_site_clusters": 30,
+  "multi_source_clusters": 5,
+  "cisi_rows": 15,
+  "cisi_non_site_rows_excluded": 526,
+  "xronos_site_rows": 21
+ },
+ "chronology": {
+  "rows": 177,
+  "by_source": {
+   "XRONOS": 144,
+   "Mutin et al. 2025 SI Table S2": 33
+  },
+  "by_context_grade": {
+   "unassessed": 108,
+   "associated": 36,
+   "direct": 33
+  },
+  "by_material_class": {
+   "long_lived": 105,
+   "unknown": 15,
+   "short_lived": 57
+  },
+  "contested_rows": 33
+ },
+ "q6_timing_support": {
+  "status": "NOT-YET-TESTABLE",
+  "criteria": {
+   "c1_regions_with_2plus_sites": {
+    "value": 1,
+    "threshold": 3,
+    "pass": false
+   },
+   "c2_window_sites_direct_or_associated": {
+    "value": 5,
+    "threshold": 10,
+    "pass": false
+   },
+   "c3_window_short_lived_share": {
+    "value": 0.0,
+    "threshold": 0.5,
+    "pass": false
+   },
+   "c4_window_median_std_bp": {
+    "value": 70,
+    "threshold": 80,
+    "pass": true
+   }
+  },
+  "window_rows_direct_or_associated": 31,
+  "note": "Assessment from spine margins/metadata only (stage0-freeze.md section 4); no trait-timing outcome inspected. A SUPPORTED-FOR-FREEZE-DESIGN status binds only that a Q6 freeze may be designed; it is not a Q6 result."
+ },
+ "products": {
+  "gazetteer_rows": "data/movement/gazetteer_rows.jsonl",
+  "chronology_rows": "data/movement/chronology_rows.jsonl",
+  "source_register": "data/movement/source_register.json"
+ },
+ "release_package": {
+  "dir": "specs/027-movement-culture-language/stage0-release",
+  "gazetteer_csv_rows": 21,
+  "chronology_csv_rows": 177,
+  "licence_rule": "verified_open rows only; CISI-derived open_access_read_only rows excluded",
+  "deposit_made": false
+ }
+}

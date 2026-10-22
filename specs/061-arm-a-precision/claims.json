@@ -1,0 +1,752 @@
+{
+ "spec": "061-arm-a-precision",
+ "register_version": "0.7-draft",
+ "note": "Draft register for Spec 061 (design D-27, arm A1 only, PR #195 packet), opened 2026-10-21 under the runnable-experiments campaign plan approved by the owner AS WRITTEN on 2026-10-21 (Part 2 member 18; decision E-3 governs the excluded arm A2). Conventions as in Specs 032-042: requirement claims carry no falsification test where a gate or inspection is the operative check; boundaries carry the conditions under which each claim holds; evidence items carry observed_at from this draft because the cited facts were verified first-hand at drafting. The AEE lifecycle hooks have NOT run on this register; they are the freeze gate (tasks L4), and any recovery round they force changes claim text before any freeze digest is computed. ASM- ids name the assumptions each claim stands on: ASM-PHASE393-RECORD (Phase-393's recorded results are the record of the frozen test), ASM-PHASE393-MACHINERY (pipeline393.py as pinned is the machinery of record), ASM-MARGIN-FAMILY (the Spec 027/028 family's single 0.01 adjusted-R2 margin), ASM-SCENARIO-VALUES (the design's two stated thetas, 0.00878 and 0.015, and no others), ASM-SIMULATION-NOT-DATA (simulated resamples are a planning instrument, never held data or evidence), ASM-GATES-BEFORE-OUTCOME (pins, reproduction, and the frozen search frame precede any precision quantity), ASM-APPEND-ONLY (outcomes append; frozen records are never edited). FREEZE RECOVERY (2026-10-21): normalised to engine evidence values at 0.6-draft (kind observed, source_quality artifact; refs, descriptions, observed_at unchanged - the draft's free-form labels are not engine values); freeze rulings DD-061-8 to DD-061-15 were carried into the boundaries of F061-C03, C06, C07, C10, C11, C12, and C14 before the hooks ran. At 0.7-draft the 12 irreducibility-challenged claim texts (F061-C04 to C15) were restated as single head propositions with carried clauses moved into boundaries verbatim-in-substance, and every multi-item claim's evidence gained mutual independent_of declarations. A final restatement round over 0.7-draft shortened the four remaining irreducibility-challenged heads (F061-C07, C10, C14, C15) to single propositions, their removed clauses carried into boundaries verbatim-in-substance. F061-C07's head was shortened once more in the same round, its gate-ordering clause carried into its boundary.",
+ "claims": [
+  {
+   "id": "F061-C01",
+   "kind": "hypothesis",
+   "text": "An outcome under Spec 061 states only the intake target at which Spec 028 Arm A's interval would resolve at the 0.01 margin, computed from Phase-393's recorded resampling distribution under the two stated scenarios.",
+   "status": "draft",
+   "boundary": "The scope is a precision computation on recorded data: Phase-393's Arm A distribution and the recorded site samples behind it. It excludes any statement about the ancient world, about whether site-linked repertoire structure exists, about movement of people, about sign meanings, and about the frozen Arm A verdict, which stands INCONCLUSIVE as recorded.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-PHASE393-RECORD"
+   ],
+   "alternatives": [
+    "a returned target could be read as evidence the effect is real (it cannot: the computation assumes a scenario theta and measures resolution, it does not estimate theta)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified in scope if any Spec 061 output states a conclusion about the ancient world, a population, or a question outside the resolution of the recorded Arm A test"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-EVIDENCE"
+    ],
+    "strongest_rival": "the alternative reading in which an intake target licenses a claim about the effect itself",
+    "verdict_rule": "scope is judged by inspection of every Spec 061 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding",
+    "evidence_origin_groups": [
+     "phase393-record",
+     "spec028-design"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/028-harappa-robustness/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 028's frozen design: Arm A's bounded claim, population (1,593 records, 5 sites), machinery and constants (margin 0.01, seed 20261012, R=199, B=499), and the family verdict rules.",
+     "source_id": "specs/028-harappa-robustness/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "reports/phase393_results.json"
+     ]
+    },
+    {
+     "ref": "reports/phase393_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-393 results of record (SHA-256 0a1657a8..., recomputed at this draft): Arm A median adjusted R2 0.00878393455594817, interval [0.004626892186724407, 0.01297407559730989], rejection share 0.6231155778894473, 1,593 records, 294 inscriptions per draw, seed 20261012, R=199, B=499. The file records summaries only, not per-draw values (DEF-061-1).",
+     "source_id": "reports/phase393_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/028-harappa-robustness/spec.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F061-C02",
+   "kind": "requirement",
+   "text": "STUDY-SPEC-028/ARM-A stands INCONCLUSIVE on its recorded numbers: median adjusted R2 0.00878393455594817, percentile interval [0.004626892186724407, 0.01297407559730989], rejection share 0.6231155778894473, on 1,593 records at 5 sites with every leave-one-site-out median below the 0.01 margin.",
+   "status": "draft",
+   "boundary": "These are the Phase-393 Arm A primary results of record. The interval straddles the 0.01 margin, which is the whole ground for a precision computation: neither SUPPORTED nor CONTRADICTED fired under the frozen family rules, controls passing.",
+   "depends_on": [
+    "F061-C01"
+   ],
+   "assumptions": [
+    "ASM-PHASE393-RECORD"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "recompute SHA-256 of reports/phase393_results.json (0a1657a8...) and read the arm_a primary values; any mismatch falsifies this statement and voids the draft's basis"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the record could have been misread or superseded (the Spec 040 stale-pin precedent shows draft-cited pins can be wrong)",
+    "verdict_rule": "the statement stands or falls on the pinned results file hashing to its recorded value with the stated quantities in it",
+    "evidence_origin_groups": [
+     "phase393-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "reports/phase393_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-393 results of record (SHA-256 0a1657a8..., recomputed at this draft): Arm A median adjusted R2 0.00878393455594817, interval [0.004626892186724407, 0.01297407559730989], rejection share 0.6231155778894473, 1,593 records, 294 inscriptions per draw, seed 20261012, R=199, B=499. The file records summaries only, not per-draw values (DEF-061-1).",
+     "source_id": "reports/phase393_results.json",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F061-C03",
+   "kind": "hypothesis",
+   "text": "Within the search frame frozen for Spec 061, the computation returns a smallest added-inscription target that resolves Arm A at the 0.01 margin under at least one of the two stated scenarios.",
+   "status": "draft",
+   "boundary": "Existence is claimed only inside the frozen search frame (grid and ceiling, gate 0.4): a target outside the frame is not a target under this spec, and failure inside the frame is the falsifier's outcome (F061-C04), not a claim that resolution is impossible in principle. The search frame's values are OPEN at draft (OP-061-1...OP-061-5) and are fixed only at the freeze. Freeze rulings: DD-061-9 to DD-061-13 fix the frame this claim is scoped to - integer grid m = 1..25, ceiling m = 25, 199 trials per point, 199 draws and 499 permutations per trial, seed 20261021, and the DD-061-13 effect-imposition construction (the frozen positive-control manner with the boost calibrated per scenario); DD-061-15 requires the m = 1 grid point computed and published like every other point.",
+   "depends_on": [
+    "F061-C01",
+    "F061-C02"
+   ],
+   "assumptions": [
+    "ASM-PHASE393-RECORD",
+    "ASM-SCENARIO-VALUES"
+   ],
+   "alternatives": [
+    "no grid point inside the frame qualifies under either scenario (the falsifier, F061-C04)",
+    "targets under both scenarios (recorded separately under F061-C11; the hypothesis needs only one)"
+   ],
+   "falsification_tests": [
+    "run the section 4 computation over the frozen frame: if neither scenario's smallest qualifying grid point exists inside the ceiling, this hypothesis is not supported and the headline is NO TARGET UNDER EITHER SCENARIO"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-SIMULATION-AS-DATA"
+    ],
+    "strongest_rival": "the strongest rival is the falsifier itself: at these site counts the interval may be too wide to resolve at any in-frame scale",
+    "verdict_rule": "supported iff at least one scenario returns a target under F061-C10/F061-C11 inside the frozen frame; any other adjudicated pattern does not support it",
+    "evidence_origin_groups": [
+     "phase393-record",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-27 arm A1 (PR #195 packet, read in full at this draft): resampling the recorded site samples with replacement at multiples of current sizes; smallest total added count and per-site distribution at which the interval excludes 0.01 in at least 80% of trials under theta=0.00878 and theta=0.015; A1 establishes nothing about the ancient world.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "reports/phase393_results.json"
+     ]
+    },
+    {
+     "ref": "reports/phase393_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-393 results of record (SHA-256 0a1657a8..., recomputed at this draft): Arm A median adjusted R2 0.00878393455594817, interval [0.004626892186724407, 0.01297407559730989], rejection share 0.6231155778894473, 1,593 records, 294 inscriptions per draw, seed 20261012, R=199, B=499. The file records summaries only, not per-draw values (DEF-061-1).",
+     "source_id": "reports/phase393_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F061-C04",
+   "kind": "requirement",
+   "text": "If the computation returns no target under either stated scenario inside the frozen search frame, the outcome is recorded as NO TARGET UNDER EITHER SCENARIO.",
+   "status": "draft",
+   "boundary": "No-target is scoped to the frozen frame in every wording. It does not state that Arm A could never be resolved by other data, other allocations, or a wider frame, and it does not arm the contingent Arm A2 rerun, whose trigger is defined on a returned target (F061-C14). Carried from the draft text: it is the falsifier's outcome, recorded with the full grid table published, and Arm A stands INCONCLUSIVE with no computed intake target.",
+   "depends_on": [
+    "F061-C03"
+   ],
+   "assumptions": [
+    "ASM-PHASE393-RECORD"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "if either scenario returns a target, this claim's condition does not arise and the headline follows F061-C11"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a no-target outcome could be misread as a verdict against Arm A's claim; the requirement exists so it is recorded as a resolution finding, not a verdict",
+    "verdict_rule": "the outcome record must carry the NO TARGET wording of spec section 5.1 and the full grid table whenever the condition holds",
+    "evidence_origin_groups": [
+     "phase393-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-27 arm A1 (PR #195 packet, read in full at this draft): resampling the recorded site samples with replacement at multiples of current sizes; smallest total added count and per-site distribution at which the interval excludes 0.01 in at least 80% of trials under theta=0.00878 and theta=0.015; A1 establishes nothing about the ancient world.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F061-C05",
+   "kind": "requirement",
+   "text": "Spec 061 is a precision computation beside the frozen Arm A test.",
+   "status": "draft",
+   "boundary": "The computation changes no element of the Arm A test. Any outcome appends to the claim's record as a dated precision entry beside the frozen one. The decisive rerun on new data (design arm A2) is a separate, contingent act and is not part of this spec (F061-C14). Carried from the draft text: Spec 028's frozen records, its Arm A INCONCLUSIVE verdict, and its OSF-registered contract (osf.io/7m35w) are not re-adjudicated, edited, or superseded by this spec.",
+   "depends_on": [
+    "F061-C01"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY",
+    "ASM-PHASE393-RECORD"
+   ],
+   "alternatives": [
+    "re-opening Spec 028 and amending its frozen verdict (refused: frozen records are not edited in this program)"
+   ],
+   "falsification_tests": [
+    "inspection: any Spec 061 product that modifies a Spec 028 file, restates the Arm A verdict, or presents a target as a verdict falsifies compliance with this requirement"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the pressure to fold a returned target back into the Arm A claim's wording as if it were evidence",
+    "verdict_rule": "compliance is judged by file inspection at execution close: Spec 028's pinned hashes unchanged, the pooled verdict quoted only as recorded",
+    "evidence_origin_groups": [
+     "phase393-record",
+     "spec028-freeze"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/028-harappa-robustness/freeze.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 028's freeze record (SHA-256 376cd8e7...): the frozen contract and OSF registration (osf.io/7m35w) of the Arm A test this computation measures the resolution of.",
+     "source_id": "specs/028-harappa-robustness/freeze.json",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F061-C06",
+   "kind": "requirement",
+   "text": "Execution stops before any precision quantity is computed if any component of the composite resampling-distribution pin mismatches its freeze-record value.",
+   "status": "draft",
+   "boundary": "The pin is composite by DD-061-1 because no per-draw distribution file exists in the repository (DEF-061-1): the recorded summary alone does not identify the distribution, and the machinery and inputs alone do not identify which summary is of record. No mismatch is repaired at run time; a repaired input is a new freeze, not a resumed run. Freeze ruling DD-061-8 confirms the composite pin as the remedy for DEF-061-1 and records the pin set verified complete at the freeze: every component re-derived in the foreground by two independent routes (contents-API raw and git-blob) at main a3509525fab64e22a4c053d7bbed14c7083a14d3, every hash equal to its spec section 2 pin. Carried from the draft text: the components are the Phase-393 results file, the corpus layer, the Phase-393 pipeline, the margins audit, and the Spec 028 freeze record.",
+   "depends_on": [
+    "F061-C05"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME",
+    "ASM-PHASE393-RECORD"
+   ],
+   "alternatives": [
+    "pinning the results file alone (refused at draft: its summaries do not contain the distribution the design names; recorded as a dual-derivation disagreement resolved in adjudication.md)"
+   ],
+   "falsification_tests": [
+    "gate 0.1 is the operational test: the execution record must show every section 2 hash asserted before the first precision quantity, or the run is non-compliant on its face"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a quietly drifted input (a regenerated results file, a patched pipeline) presenting as a changed target",
+    "verdict_rule": "the gate is a hard stop classed INVALID; the run's own record is the judge",
+    "evidence_origin_groups": [
+     "phase393-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "reports/phase393_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-393 results of record (SHA-256 0a1657a8..., recomputed at this draft): Arm A median adjusted R2 0.00878393455594817, interval [0.004626892186724407, 0.01297407559730989], rejection share 0.6231155778894473, 1,593 records, 294 inscriptions per draw, seed 20261012, R=199, B=499. The file records summaries only, not per-draw values (DEF-061-1).",
+     "source_id": "reports/phase393_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/028-harappa-robustness/pipeline393.py"
+     ]
+    },
+    {
+     "ref": "specs/028-harappa-robustness/pipeline393.py",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The Phase-393 pipeline, pinned at this draft (SHA-256 6c2ff91c...): computes per-draw adjusted R2 values (adj_draws) in memory and summarises them; the per-draw values were not written to any results file (DEF-061-1).",
+     "source_id": "specs/028-harappa-robustness/pipeline393.py",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "reports/phase393_results.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F061-C07",
+   "kind": "requirement",
+   "text": "Gate 0.3 reproduces the recorded distribution summary exactly.",
+   "status": "draft",
+   "boundary": "Exact reproduction is the substitute this draft fixes for the absent per-draw file (DEF-061-1). It establishes that the distribution being scaled is the recorded one; it does not establish that Phase-393's machinery was the right machinery, which is a frozen question outside this spec. Freeze ruling DD-061-15 confirms this gate as the first of three mechanical calibration forms for the imposed worlds, the other two being gate 0.5's calibration verification and the published m = 1 grid point. Carried from the draft text: the summary reproduced is median adjusted R2 0.00878393455594817, interval [0.004626892186724407, 0.01297407559730989], rejection share 0.6231155778894473; any mismatch stops the run as INVALID. Carried from the draft text: the recorded machinery runs R=199 draws and B=499 permutations. Carried from the draft text: the reproduction is required before any precision quantity is computed. Carried from the draft text: the reproduction is the frozen Arm A primary re-run under the recorded machinery and seed 20261012.",
+   "depends_on": [
+    "F061-C06"
+   ],
+   "assumptions": [
+    "ASM-PHASE393-MACHINERY",
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "gate 0.3 either reproduces the three recorded quantities exactly or stops the run; the reproduction values are published in the execution record either way"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "silent machinery or environment drift presenting as a different distribution and therefore a different target",
+    "verdict_rule": "identity is judged by the gate-0.3 exact-reproduction standard, not by code inspection alone",
+    "evidence_origin_groups": [
+     "phase393-record",
+     "spec028-design"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/028-harappa-robustness/pipeline393.py",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The Phase-393 pipeline, pinned at this draft (SHA-256 6c2ff91c...): computes per-draw adjusted R2 values (adj_draws) in memory and summarises them; the per-draw values were not written to any results file (DEF-061-1).",
+     "source_id": "specs/028-harappa-robustness/pipeline393.py",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "reports/phase393_results.json"
+     ]
+    },
+    {
+     "ref": "reports/phase393_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-393 results of record (SHA-256 0a1657a8..., recomputed at this draft): Arm A median adjusted R2 0.00878393455594817, interval [0.004626892186724407, 0.01297407559730989], rejection share 0.6231155778894473, 1,593 records, 294 inscriptions per draw, seed 20261012, R=199, B=499. The file records summaries only, not per-draw values (DEF-061-1).",
+     "source_id": "reports/phase393_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/028-harappa-robustness/pipeline393.py"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F061-C08",
+   "kind": "requirement",
+   "text": "The Arm A population reproduces exactly before any precision quantity is computed.",
+   "status": "draft",
+   "boundary": "Site totals are the margins audit's recorded values for the analysis population minus Harappa. Resampling at scale draws from this population's recorded site samples only; no other site, record, or layer enters the computation. Carried from the draft text: 1,593 records at Mohenjo-daro (1,302), Dholavira (111), Lothal (74), Chanhu-daro (54), and Kalibangan (52), with 6 included cells and 294 inscriptions per draw under the frozen rarefaction.",
+   "depends_on": [
+    "F061-C06"
+   ],
+   "assumptions": [
+    "ASM-PHASE393-RECORD"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "gate 0.2 either asserts the population exactly or stops the run as INVALID; the census is published with the outcome either way"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a population drift (a dedup or eligibility change in the layer) silently changing the base the target scales from",
+    "verdict_rule": "the census assertion is a hard gate preceding every trial in the run order",
+    "evidence_origin_groups": [
+     "phase393-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/028-harappa-robustness/margins-audit.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 028 margins audit (SHA-256 15ae0281...): Arm A site totals (Mohenjo-daro 1302, Dholavira 111, Lothal 74, Chanhu-daro 54, Kalibangan 52), cells, 6 included cells, 294 inscriptions per draw.",
+     "source_id": "specs/028-harappa-robustness/margins-audit.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "reports/phase393_results.json"
+     ]
+    },
+    {
+     "ref": "reports/phase393_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-393 results of record (SHA-256 0a1657a8..., recomputed at this draft): Arm A median adjusted R2 0.00878393455594817, interval [0.004626892186724407, 0.01297407559730989], rejection share 0.6231155778894473, 1,593 records, 294 inscriptions per draw, seed 20261012, R=199, B=499. The file records summaries only, not per-draw values (DEF-061-1).",
+     "source_id": "reports/phase393_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/028-harappa-robustness/margins-audit.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F061-C09",
+   "kind": "requirement",
+   "text": "The computation runs exactly two scenarios.",
+   "status": "draft",
+   "boundary": "The scenario values and margin are design D-27's, carried verbatim; using the recorded full-precision estimate for Scenario 1 is DD-061-4. No third scenario and no other theta may be computed under this spec; a different theta is a different spec. Carried from the draft text: Scenario 1, true effect at the current point estimate (design value 0.00878; computed at the recorded 0.00878393455594817), resolving downward, and Scenario 2, true effect at 0.015 exactly, resolving upward; the margin is 0.01 in both.",
+   "depends_on": [
+    "F061-C02"
+   ],
+   "assumptions": [
+    "ASM-SCENARIO-VALUES",
+    "ASM-MARGIN-FAMILY"
+   ],
+   "alternatives": [
+    "computing Scenario 1 at the rounded 0.00878 (refused at draft, DD-061-4: the record's full-precision value is the point estimate of record; the difference is below any grid resolution but the record governs)"
+   ],
+   "falsification_tests": [
+    "the results JSON must state both thetas and the margin; any trial computed at another theta falsifies the outcome record"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "scenario-shopping after seeing which theta returns a convenient target",
+    "verdict_rule": "the scenario set is frozen in this register before any trial exists; scenario values are read from the run's own record at close",
+    "evidence_origin_groups": [
+     "design-packet",
+     "phase393-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-27 arm A1 (PR #195 packet, read in full at this draft): resampling the recorded site samples with replacement at multiples of current sizes; smallest total added count and per-site distribution at which the interval excludes 0.01 in at least 80% of trials under theta=0.00878 and theta=0.015; A1 establishes nothing about the ancient world.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "reports/phase393_results.json"
+     ]
+    },
+    {
+     "ref": "reports/phase393_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-393 results of record (SHA-256 0a1657a8..., recomputed at this draft): Arm A median adjusted R2 0.00878393455594817, interval [0.004626892186724407, 0.01297407559730989], rejection share 0.6231155778894473, 1,593 records, 294 inscriptions per draw, seed 20261012, R=199, B=499. The file records summaries only, not per-draw values (DEF-061-1).",
+     "source_id": "reports/phase393_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F061-C10",
+   "kind": "requirement",
+   "text": "Trial resolution is strict exclusion of the 0.01 margin in the scenario's direction.",
+   "status": "draft",
+   "boundary": "Strict exclusion is DD-061-2: an interval bound equal to 0.01 touches the margin and does not resolve, which differs deliberately from the frozen family's 'entirely at or below' CONTRADICTED wording because the design's word is 'exclude'. The 80% share and the interval construction (percentile interval over a trial's draws, as in Phase-393) are design- and record-fixed. Freeze ruling: DD-061-2 is CONFIRMED as drafted - resolution is strict exclusion in the scenario's direction; a bound equal to 0.01 touches the margin and does not resolve. Carried from the draft text: upper bound below 0.01 under Scenario 1, lower bound above 0.01 under Scenario 2; a grid point qualifies if and only if at least 80% of its trials resolve. Carried from the draft text: a trial resolves if and only if its adjusted-R2 percentile interval excludes 0.01 strictly in its scenario's direction.",
+   "depends_on": [
+    "F061-C09"
+   ],
+   "assumptions": [
+    "ASM-MARGIN-FAMILY"
+   ],
+   "alternatives": [
+    "counting a touching interval as resolved under the family's at-or-below wording (refused at draft, DD-061-2; the freeze may overturn openly)"
+   ],
+   "falsification_tests": [
+    "the verdict of every trial is mechanical from its recorded interval; any resolution recorded for an interval that does not strictly exclude 0.01 in its scenario's direction falsifies the outcome record"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "boundary-softening after the fact - counting a touch as an exclusion because the target was close",
+    "verdict_rule": "resolution and qualification are recomputed from the published trial intervals and grid table by any reader",
+    "evidence_origin_groups": [
+     "design-packet",
+     "spec028-design"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-27 arm A1 (PR #195 packet, read in full at this draft): resampling the recorded site samples with replacement at multiples of current sizes; smallest total added count and per-site distribution at which the interval excludes 0.01 in at least 80% of trials under theta=0.00878 and theta=0.015; A1 establishes nothing about the ancient world.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F061-C11",
+   "kind": "requirement",
+   "text": "Each scenario's target is the smallest total added-inscription count at a qualifying grid point.",
+   "status": "draft",
+   "boundary": "Proportional allocation is DD-061-3, this draft's reading of the design's 'multiples of their current sizes'. The full grid table is published with every outcome, so a non-monotone qualification pattern is visible rather than assumed away; the target is the smallest qualifying total whether or not shares are monotone. Integer rounding of per-site shares is freeze-fixed (OP-061-1). Freeze rulings: DD-061-3 is CONFIRMED (the per-site distribution is proportional to the recorded site totals), and under DD-061-9's integer grid it is exact - at multiple m the per-site added counts are (m - 1) x (1,302, 111, 74, 54, 52), summing exactly to (m - 1) x 1,593, with no rounding rule needed or supplied; DD-061-5 is CONFIRMED (the operative target is the larger returned target). Carried from the draft text: the target is reported with its multiple and its per-site distribution allocated in proportion to the recorded Arm A site totals and summing exactly to the total; the headline is exactly one of TARGET UNDER BOTH SCENARIOS, TARGET UNDER SCENARIO 1 ONLY, TARGET UNDER SCENARIO 2 ONLY, or NO TARGET UNDER EITHER SCENARIO.",
+   "depends_on": [
+    "F061-C10"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [
+    "allocating additions equally per site or smallest-sites-first (both refused at draft: neither is the design's stated scaling; a smallest-sites-first intake policy is a different design, named in spec section 8)"
+   ],
+   "falsification_tests": [
+    "the headline word must be derivable from the two per-scenario target records by this claim's definitions alone, and each per-site distribution must sum to its stated total"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "headline-shopping: reporting only the scenario whose target looks cheapest",
+    "verdict_rule": "the mapping from per-scenario results to the headline word is fixed here, before execution; the outcome record shows targets, distributions, and the word together",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-27 arm A1 (PR #195 packet, read in full at this draft): resampling the recorded site samples with replacement at multiples of current sizes; smallest total added count and per-site distribution at which the interval excludes 0.01 in at least 80% of trials under theta=0.00878 and theta=0.015; A1 establishes nothing about the ancient world.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/028-harappa-robustness/margins-audit.json"
+     ]
+    },
+    {
+     "ref": "specs/028-harappa-robustness/margins-audit.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 028 margins audit (SHA-256 15ae0281...): Arm A site totals (Mohenjo-daro 1302, Dholavira 111, Lothal 74, Chanhu-daro 54, Kalibangan 52), cells, 6 included cells, 294 inscriptions per draw.",
+     "source_id": "specs/028-harappa-robustness/margins-audit.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F061-C12",
+   "kind": "requirement",
+   "text": "The computation searches only the frame the freeze fixes.",
+   "status": "draft",
+   "boundary": "These values are OPEN at draft (OP-061-1...OP-061-5) precisely because each changes the returned target. Supplying any of them at run time is an outcome-changing assumption, which the campaign doctrine classifies as a tripwire, not discretion. This claim does not itself fix any of the frame's values. Freeze rulings: the frame is fixed in full at the freeze (spec section 4.7) - DD-061-9 (integer grid m = 1..25, step 1; at integer multiples the proportional per-site distribution is exact, so no rounding rule is supplied), DD-061-10 (ceiling m = 25, derived from the frozen 49-member cell threshold and the margins audit's excluded TAB cells of 15, 3, 2, and 2 records), DD-061-11 (199 trials per grid point; draws 199 and permutations 499 inherited from the frozen design; each share's binomial standard deviation reported beside it), DD-061-12 (simulation seed 20261021, fresh, with the stream discipline of spec section 4.7), and DD-061-13 (effect imposition by candidate (b), the frozen positive-control manner - pooled composition perturbed toward the margins audit's pinned per-site sign sets by a boost factor calibrated per scenario until the frozen estimator on the constructed population in expectation returns the scenario theta; bracket [1, 3], tolerance 1e-6, verified at gate 0.5; candidates (a) and (c) not adopted, for the reasons in adjudication section 9). Gate 0.5, added at the freeze, stops the run as CANNOT BE RUN AS WRITTEN if the construction cannot impose a scenario's theta. Carried from the draft text: the frame is the multiplier grid, ceiling, trial count per grid point, draws and permutations per trial, simulation seed, and effect-imposition construction; if any element is absent from the freeze record the run stops as CANNOT BE RUN AS WRITTEN before any trial.",
+   "depends_on": [
+    "F061-C06"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "gate 0.4 checks the freeze record for every named element in order; a run whose record shows a frame value first appearing at execution falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "an implementer choosing a convenient grid or seed after inspecting early trial results",
+    "verdict_rule": "the freeze record is the judge: every frame element present there, or the closure wording of spec section 5.1 is used",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-27 arm A1 (PR #195 packet, read in full at this draft): resampling the recorded site samples with replacement at multiples of current sizes; smallest total added count and per-site distribution at which the interval excludes 0.01 in at least 80% of trials under theta=0.00878 and theta=0.015; A1 establishes nothing about the ancient world.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F061-C13",
+   "kind": "requirement",
+   "text": "Every Spec 061 output labels the computation a simulation over recorded data.",
+   "status": "draft",
+   "boundary": "The label travels with the number: any quotation of a target without the simulation label and the scenario condition is a defect of the quoting product. Real intake, when it happens, enters through Phase-130 under its own records and is a different thing from this computation's resamples. Carried from the draft text: each output states that its added inscriptions are resamples of recorded inscriptions, and no output presents simulated additions as data the program holds or as evidence. The domain of this claim is bounded: it governs outputs produced under Spec 061 and quotations of them, and nothing else.",
+   "depends_on": [
+    "F061-C01"
+   ],
+   "assumptions": [
+    "ASM-SIMULATION-NOT-DATA"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "inspection of every Spec 061 output: a product presenting simulated additions as held data, or a target with no scenario condition, falsifies compliance and is corrected by dated addendum, never by silent edit"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a planning number hardening, through repeated quotation, into a claim about data in hand",
+    "verdict_rule": "outputs are judged against this boundary at execution close; violations are recorded defects",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-27 arm A1 (PR #195 packet, read in full at this draft): resampling the recorded site samples with replacement at multiples of current sizes; smallest total added count and per-site distribution at which the interval excludes 0.01 in at least 80% of trials under theta=0.00878 and theta=0.015; A1 establishes nothing about the ancient world.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F061-C14",
+   "kind": "requirement",
+   "text": "Arm A2 is not part of Spec 061.",
+   "status": "draft",
+   "boundary": "The operative target is DD-061-5: if both scenarios return targets, the larger of the two; if only one returns, that one, recorded with its scenario condition; if neither returns, there is no operative target and the trigger cannot fire on this record. The trigger counts only new data verified through Phase-130 intake - never this spec's simulated resamples - with lineage stated and material outside the ICIT lineage preferred, as design D-27 states for arm A2. This claim designs nothing about A2's execution. Freeze ruling: DD-061-5 is CONFIRMED - the operative target T* is the larger of the two returned targets, a single returned target is operative with its scenario condition, and no returned target leaves T* undefined so the trigger cannot fire on this record; the trigger definition and its E-3 consequence stand exactly as adjudication section 6 records them. Carried from the draft text: it is trigger-armed on Phase-130 intake of genuinely new non-Harappa inscription data reaching the operative target this computation returns, and a fired trigger queues a mini planning gate under campaign decision E-3 rather than executing anything. Carried from the draft text: Arm A2, the decisive rerun of the frozen Arm A test, is also not part of this campaign pass.",
+   "depends_on": [
+    "F061-C11"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "pre-authorising A2 to execute when the target is reached (refused: campaign decision E-3, approved as written, queues a mini planning gate instead)"
+   ],
+   "falsification_tests": [
+    "any Spec 061 product that schedules, designs, or executes the rerun, or that counts simulated additions toward the trigger, falsifies compliance with this requirement"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a computed target being treated as standing authorisation to rerun Arm A the day intake crosses it",
+    "verdict_rule": "compliance is judged against campaign decision E-3 and the trigger definition recorded in adjudication.md section 6",
+    "evidence_origin_groups": [
+     "design-packet",
+     "phase393-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-27 arm A1 (PR #195 packet, read in full at this draft): resampling the recorded site samples with replacement at multiples of current sizes; smallest total added count and per-site distribution at which the interval excludes 0.01 in at least 80% of trials under theta=0.00878 and theta=0.015; A1 establishes nothing about the ancient world.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/028-harappa-robustness/freeze.json"
+     ]
+    },
+    {
+     "ref": "specs/028-harappa-robustness/freeze.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 028's freeze record (SHA-256 376cd8e7...): the frozen contract and OSF registration (osf.io/7m35w) of the Arm A test this computation measures the resolution of.",
+     "source_id": "specs/028-harappa-robustness/freeze.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F061-C15",
+   "kind": "requirement",
+   "text": "No outcome under Spec 061 establishes Arm A's rerun verdict in advance.",
+   "status": "draft",
+   "boundary": "Also excluded, and stated wherever a target is stated: any conclusion that a population moved (Spec 027's fence, inherited through Spec 028) and any conclusion about what any sign means. A target is conditional twice over - on its scenario's assumed theta and on real future data resembling resampled recorded data in kind - and both conditions travel with it. Carried from the draft text: nor does any outcome establish that any effect exists or does not exist, or any mechanism for any effect. Carried from the draft text: no outcome establishes that Arm A will be supported when rerun, and none establishes that it will be contradicted.",
+   "depends_on": [
+    "F061-C01",
+    "F061-C03",
+    "F061-C04",
+    "F061-C11"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "a target quoted as a forecast of the rerun's verdict (refused: the computation assumes the scenario theta it is asked about; the rerun measures the real one)"
+   ],
+   "falsification_tests": [
+    "inspection of every Spec 061 output: a verdict forecast, existence claim, mechanism claim, movement claim, or meaning claim in any output falsifies compliance and is corrected by dated addendum, never by silent edit"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-MOVEMENT"
+    ],
+    "strongest_rival": "the reading in which computing the needed sample size settles something about the effect itself",
+    "verdict_rule": "outputs are judged against this boundary at execution close; violations are recorded defects, and the claim consequence is limited to the resolution statement of F061-C01",
+    "evidence_origin_groups": [
+     "spec027-fence",
+     "phase393-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/027-movement-culture-language/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 027's fence: association-level results license no movement-of-people conclusion; the fence binds this computation's wording as it bound Spec 028's.",
+     "source_id": "specs/027-movement-culture-language/spec.md",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  }
+ ]
+}

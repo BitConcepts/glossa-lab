@@ -1,0 +1,768 @@
+{
+  "spec": "072-fish-family-profiles-redesign",
+  "register_version": "0.5-draft",
+  "note": "Draft register for Spec 072 (the Spec 048 question re-designed in ICIT numbering on the Shakti corpus), opened 2026-10-22 under the owner's readiness decisions of 2026-10-22 (research_notes/shakti-readiness-proposals-2026-10-22.md, decision 4). Conventions as in Specs 042-054: requirement claims carry no falsification test where a gate or inspection is the operative check; boundaries carry the conditions under which each claim holds; evidence items carry observed_at from this draft because the cited facts were verified first-hand at drafting. The AEE lifecycle hooks have NOT run on this register; they are the freeze gate (tasks L4, per DD-038-10), and any recovery round they force changes claim text before any freeze digest is computed. ASM- ids name the assumptions each claim stands on: ASM-ASSET-F (Asset F as frozen at Spec 044's step 0 under its section 4 contract is the family for this test), ASM-CLOSED-RECORD (Spec 048's frozen contract, gate 0.3, and closure stand exactly as recorded and are not amended by this spec), ASM-SHAKTI-INTAKE (the Shakti corpus is citable only through the adopted intake record, P-F1 gates S1-S4, with the corpus and row-grades pins of spec section 2), ASM-T24-ANALOGUE (the T2.4-analogue measure of spec section 5.2, with its carried Phase-43 battery method labelled carried from the Item 2 record, is the measure of record), ASM-VERDICT-LINE (the verdict line L is derived at the freeze from the freeze-stage reference distribution by the rule of spec section 5.3, from non-members only, before any member is scored), ASM-CONCORDANCE (a member's Wells/ICIT identity exists for this test only as stated and pinned at gate 0.3 on the freeze-confirmed basis), ASM-GRADE-DISCIPLINE (P-F1 S4: documented-lineage primary, documented + corroborated sensitivity, undocumented-uncorroborated excluded, both populations reported), ASM-GATES-BEFORE-OUTCOME (pins, concordance, census, and verdict-line assertion precede any outcome quantity), ASM-ROIF-GATE (the Roif publication gate of claim F072-C14 holds this spec's results internal until both of its conditions are met for a specific act), ASM-APPEND-ONLY (outcomes append; frozen records are never edited). No numeric verdict line appears in this register: the line is a freeze product under F072-C09, and the register states the rule, the exclusions, and the freeze-failure case instead. The intake record cited by F072-C07 and F072-C13 is in parallel creation and is not on main at this draft; that state is recorded in the evidence item itself and in spec section 2, and the freeze re-asserts every pin against the merged record (OPEN-072-9).",
+  "claims": [
+    {
+      "id": "F072-C01",
+      "kind": "hypothesis",
+      "text": "An outcome under Spec 072 states only how the members of Asset F behave positionally under the T2.4-analogue ending-follower measure, in ICIT numbering on the Shakti corpus.",
+      "status": "draft",
+      "boundary": "The scope is Asset F's members as identified in ICIT codes at gate 0.3, the documented-lineage primary population, and the mandatory documented + corroborated sensitivity. It excludes any statement about what any fish sign meant or was pronounced, about the coastal distribution tested by Spec 044 (design D-02), about any other corpus, and about any Phase-43 or Spec 048 quantity, which stand exactly as recorded. Carried from the draft text: the behaviour is stated sign by sign and per population; the family verdict is the primary population's, under the rule of spec section 6.",
+      "depends_on": [],
+      "assumptions": [
+        "ASM-ASSET-F"
+      ],
+      "alternatives": [
+        "the claim record's shorthand lists (Mahadevan 72, 64, 70; the Phase-43 six candidates) could be read as the family (refused: Asset F governs, F072-C05)"
+      ],
+      "falsification_tests": [
+        "the claim is falsified in scope if any Spec 072 output states a conclusion about a population, corpus, family definition, or question outside the Asset F members' T2.4-analogue behaviour on the Shakti populations"
+      ],
+      "metadata": {
+        "framework_kind": "conditional-model-result",
+        "layer": "I",
+        "forbidden_assumptions": [
+          "ASM-RESULT-AS-READING"
+        ],
+        "strongest_rival": "the alternative reading in which a positional family verdict on a new corpus licenses a claim about the 'meen' reading itself, or re-opens the closed Spec 048 record",
+        "verdict_rule": "scope is judged by inspection of every Spec 072 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding",
+        "evidence_origin_groups": [
+          "readiness-assessment",
+          "asset-f-contract"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+          "kind": "design-source",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "Readiness assessment of 2026-10-22 (Workstream F), sections 1.5, 1.6 and 3 Family 5, read in full at this draft: the re-design this spec registers, its grade restrictions, and its fences.",
+          "source_id": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "specs/048-parpola-fish-family-profiles/spec.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 048's frozen text, read in full at this draft: the question, hypothesis, and limits this new design restates for a different corpus, without amending that spec.",
+          "source_id": "specs/048-parpola-fish-family-profiles/spec.md",
+          "observed_at": "2026-10-22",
+          "independent_of": [
+            "research_notes/shakti-readiness-proposals-2026-10-22.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F072-C02",
+      "kind": "requirement",
+      "text": "Spec 048 stands closed as STRICT CORPUS NOT PINNABLE at its gate 0.3, its gate 0.3 is unamended and unrepealed, and Spec 072 is a new design answering its question, not a transfer, reopening, or patch of it.",
+      "status": "draft",
+      "boundary": "These are the records' stated facts, read first-hand at this draft. Spec 048 executed 2026-10-21 as Phase-408 and closed at gate 0.3 because the V3 / Mahadevan-lineage layer's data file is absent and the T2.4 reference points could not be re-derived from a pinned layer; the readiness assessment of 2026-10-22 records Spec 048 as DOES NOT TRANSFER and proposes no amendment wording for its gate. Carried from the draft text: the claim parpola_2010_dravidian_solution_manual_002 stands IN QUESTION, partially supported, on the split Phase-43 record (sign 72: 181 occurrences, ending-follower fraction 25.9%, supported; sign 267: 356 occurrences, 3.8%, not supported; six candidates 267, 72, 65, 59, 60, 70).",
+      "depends_on": [
+        "F072-C01"
+      ],
+      "assumptions": [
+        "ASM-CLOSED-RECORD"
+      ],
+      "alternatives": [
+        "reading the readiness assessment's re-design commission as an amendment of Spec 048's gate 0.3 (refused by the assessment's own text: a new design, not an amendment of that gate)"
+      ],
+      "falsification_tests": [
+        "read Spec 048's outcome record and its frozen gate 0.3, and the readiness assessment section 1.5 under Spec 048; any record showing Spec 048 reopened, its gate amended, or this spec merged into its record falsifies this statement"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "the re-design could be mislabelled a transfer of Spec 048, borrowing the frozen spec's authority for a corpus and calibration it never had",
+        "verdict_rule": "the statement stands or falls on the three cited records stating what this claim says they state",
+        "evidence_origin_groups": [
+          "spec048-record",
+          "readiness-assessment"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "specs/048-parpola-fish-family-profiles/spec.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 048's frozen text at this draft: gate 0.3 (strict corpus identification, pin, and measure reproduction) stated verbatim, and the freeze banner recording the contract as frozen 2026-10-21.",
+          "source_id": "specs/048-parpola-fish-family-profiles/spec.md",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "specs/048-parpola-fish-family-profiles/outcome.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 048 / Phase-408 outcome record, read at this draft: EXECUTED 2026-10-21, STRICT CORPUS NOT PINNABLE at gate 0.3; gates 0.1 and 0.2 passed; no ending-follower rate computed; the claim stands exactly as recorded.",
+          "source_id": "specs/048-parpola-fish-family-profiles/outcome.md",
+          "observed_at": "2026-10-22",
+          "independent_of": [
+            "specs/048-parpola-fish-family-profiles/spec.md"
+          ]
+        },
+        {
+          "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+          "kind": "design-source",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "Readiness assessment section 1.5, Spec 048: DOES NOT TRANSFER; no amendment wording proposed for gate 0.3; the re-design's needs (Wells/ICIT identification on a stated basis, T2.4-analogue reference points measured on Shakti, a verdict line derived on the record) and decision 4 stated.",
+          "source_id": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+          "observed_at": "2026-10-22",
+          "independent_of": [
+            "specs/048-parpola-fish-family-profiles/spec.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F072-C03",
+      "kind": "hypothesis",
+      "text": "Tested members of Asset F carrying more than half of the family's tested occurrences pass the freeze-fixed member criterion.",
+      "status": "draft",
+      "boundary": "The hypothesis is the family-uniformity statement, token-weighted so the family's most frequent tested members decide it. Tested members are those identified at gate 0.3 and clearing the carried supported floor (total at least 20) in the primary population. Carried from the draft text: the member criterion is an ending-follower fraction at or above the verdict line L fixed at the freeze under the derivation rule of spec section 5.3; the statement is for the primary (documented-lineage) population; the borderline of exactly half is INCONCLUSIVE under section 6, not a pass for either side.",
+      "depends_on": [
+        "F072-C01",
+        "F072-C02"
+      ],
+      "assumptions": [
+        "ASM-ASSET-F",
+        "ASM-T24-ANALOGUE",
+        "ASM-VERDICT-LINE"
+      ],
+      "alternatives": [
+        "the falsifier (F072-C04): the token-weighted majority does not pass, behaving as the family's recorded failure did rather than as its recorded pass did"
+      ],
+      "falsification_tests": [
+        "run spec section 5 on the pinned primary population after gates 0.1-0.5 pass; the hypothesis is falsified if the passing members' token-weighted share is at most 50 percent, and is neither supported nor falsified at exactly 50 percent (INCONCLUSIVE) or when the section 6 coverage condition fires"
+      ],
+      "metadata": {
+        "framework_kind": "conditional-model-result",
+        "layer": "I",
+        "forbidden_assumptions": [
+          "ASM-RESULT-AS-READING"
+        ],
+        "strongest_rival": "the family is not uniform: its most frequent members' behaviour is the exception pattern the Phase-43 record already shows for its most frequent member",
+        "verdict_rule": "the hypothesis is judged solely by the section 6 family rule over the tested members' primary-population fractions against the freeze-fixed line L; the sensitivity population flags grade-sensitivity and never substitutes its own share",
+        "evidence_origin_groups": [
+          "readiness-assessment",
+          "asset-f-contract"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+          "kind": "design-source",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "Readiness assessment section 3, Family 5, read at this draft: the designable form of the Spec 048 question in ICIT numbering, with a verdict line derived on the record.",
+          "source_id": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "specs/044-fish-sign-coastal-residue/asset-f-fish-family.json",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Asset F's canonical file at this draft: the 7 members whose behaviour this hypothesis is about, digest ca5fb1b5a52d9ad0c8301174996562cdc024bf4063e6193bef77328b1acc58c3.",
+          "source_id": "specs/044-fish-sign-coastal-residue/asset-f-fish-family.json",
+          "observed_at": "2026-10-22",
+          "independent_of": [
+            "research_notes/shakti-readiness-proposals-2026-10-22.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F072-C04",
+      "kind": "requirement",
+      "text": "The lower branch of the section 6 partition is a passing share below 50 percent among tested members.",
+      "status": "draft",
+      "boundary": "The partition is exhaustive and stated before any counting: above 50 percent FAMILY SUPPORTED; below 50 percent FAMILY NOT SUPPORTED; exactly 50 percent, or the section 6 coverage condition (untested members carrying more of the identified family's occurrences than the tested members), INCONCLUSIVE. Carried from the draft text: Spec 048's 70 percent / 30 percent family lines are not carried into this design, because they were calibrated on the Phase-43 record this design excludes as an input; the majority line is the plain meaning of the falsifier's token-weighted majority, a draft-fixed reading (DD-072-2) the freeze confirms or overturns openly (OPEN-072-5).",
+      "depends_on": [
+        "F072-C03"
+      ],
+      "assumptions": [
+        "ASM-VERDICT-LINE"
+      ],
+      "alternatives": [
+        "inheriting Spec 048's 70 percent / 30 percent lines (refused: calibrated between the Phase-43 reference points, expressly excluded as inputs by spec section 5.3)"
+      ],
+      "falsification_tests": [
+        "recompute the family share from the per-member table of any execution; a headline word that does not match the partition applied to that share and the coverage condition falsifies compliance"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "a partition with an unexamined middle would let an execution choose its word after seeing its share",
+        "verdict_rule": "compliance is judged by applying the stated partition to the execution's own published per-member counts; the partition itself may be changed only at the freeze, openly, before any counting",
+        "evidence_origin_groups": [
+          "readiness-assessment"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+          "kind": "design-source",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "Readiness assessment sections 1.5 and 3 Family 5 at this draft: a verdict line derived on the record, not inherited from 25.9 percent / 3.8 percent - the ground for refusing the inherited family lines as well as the inherited member bar.",
+          "source_id": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+          "observed_at": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "id": "F072-C05",
+      "kind": "requirement",
+      "text": "Family membership under Spec 072 is exactly Asset F as frozen at Spec 044's step 0: M047, M048, M050, M052, M060, M145, and M147.",
+      "status": "draft",
+      "boundary": "The members are quoted exactly as recorded in the canonical file (spec section 4): sign_key with Mahadevan and Parpola numbers equal in every case (47, 48, 50, 52, 60, 145, 147), depiction notes from 'fish (plain)' for M047 to 'fish (sign-list variant)' for M147, inclusion bases parpola-list-fish (M047) and parpola-list-fish-variant (the other six), every member contested false, per-sign locators in Parpola 1994, fig. 5.1, pp. 70-78. Carried from the draft text: membership is fixed by the asset, not by the claim record's trio, not by the Phase-43 six (of which only 60 appears in Asset F, as M060), and not by this spec; the gate 0.3 cross-check against those lists adds and removes no member.",
+      "depends_on": [
+        "F072-C01"
+      ],
+      "assumptions": [
+        "ASM-ASSET-F"
+      ],
+      "alternatives": [
+        "the packet direction 'fish membership as frozen in D-04' (superseded by the campaign, decision E-6, as Spec 048's adjudication records: D-02 builds Asset F, D-04 and this spec consume it)"
+      ],
+      "falsification_tests": [
+        "recompute the canonical file's digest under Spec 044 section 4.2's exclusion rule and compare the member list sign by sign with spec section 4; any difference falsifies this statement and closes an execution at gate 0.2"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "family-definition discretion exercised after results are seen, re-drawing the family around its passing members",
+        "verdict_rule": "membership is judged against the canonical file as pinned, member by member; no other list has standing under this spec",
+        "evidence_origin_groups": [
+          "asset-f-contract"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "specs/044-fish-sign-coastal-residue/asset-f-fish-family.json",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Asset F's canonical file, read in full at this draft: asset F, built by Spec 044 step 0, frozen_at 2026-10-21, member_count 7, digest ca5fb1b5a52d9ad0c8301174996562cdc024bf4063e6193bef77328b1acc58c3, the seven members with their numbers, depiction notes, bases, locators, and allograph notes as quoted in spec section 4.",
+          "source_id": "specs/044-fish-sign-coastal-residue/asset-f-fish-family.json",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "specs/044-fish-sign-coastal-residue/freeze.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 044's freeze record at this draft: Asset F is built at Spec 044's step 0 solely from Parpola's published list, every member carrying its per-sign locator; the canonical file's digest (digest field excluded) is the asset's identity; Spec 048 is named the consumer, and this spec stands in that consumer place for the re-designed question.",
+          "source_id": "specs/044-fish-sign-coastal-residue/freeze.md",
+          "observed_at": "2026-10-22",
+          "independent_of": [
+            "specs/044-fish-sign-coastal-residue/asset-f-fish-family.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F072-C06",
+      "kind": "requirement",
+      "text": "Asset F's byte-digest is asserted at gate 0.2 against the digest recorded in Spec 044's step-0 record and in spec section 2.",
+      "status": "draft",
+      "boundary": "The recomputation follows Spec 044 section 4.2's exclusion rule (the file's digest field is excluded from the hashed bytes). Carried from the draft text: absence of the canonical file closes ASSET F NOT AVAILABLE; a mismatch closes ASSET F DIGEST MISMATCH; in either case the asset is never rebuilt, re-derived, or substituted under this spec, and no count is computed.",
+      "depends_on": [
+        "F072-C05"
+      ],
+      "assumptions": [
+        "ASM-ASSET-F"
+      ],
+      "alternatives": [],
+      "falsification_tests": [
+        "gate 0.2 is the operational test: exhibit the canonical file in the execution tree, recompute under the exclusion rule, and compare with the pinned digest ca5fb1b5a52d9ad0c8301174996562cdc024bf4063e6193bef77328b1acc58c3; a run that counts without that assertion, or past its failure, falsifies compliance"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "a substituted or silently repaired family list presenting as the frozen asset",
+        "verdict_rule": "compliance is judged by the step-0 record exhibiting the recomputed digest beside the pinned one, before any census or count",
+        "evidence_origin_groups": [
+          "asset-f-contract"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "specs/044-fish-sign-coastal-residue/outcome.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 044's step-0 outcome record at this draft: gate 0.2 PASS, Asset F built and frozen, 7 members, digest verified by two independent routes, the census and the consumer statement (Asset F stands frozen for its consumer by that digest).",
+          "source_id": "specs/044-fish-sign-coastal-residue/outcome.md",
+          "observed_at": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "id": "F072-C07",
+      "kind": "requirement",
+      "text": "The primary population is the Shakti corpus restricted to documented-lineage rows, asserted at gate 0.1 against the intake record under P-F1 S1 and S2.",
+      "status": "draft",
+      "boundary": "The corpus is the ShaktiOSindia deposit file sanitized_corpus.json, SHA-256 345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68, held restricted-local under GPL-3.0 and cited only through the intake record and the row-grades file, SHA-256 02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739. Carried from the draft text: S1 asserts both hashes; S2 asserts the census (5,704 rows; 5,536 analyzable; grades 3,212 / 2,087 / 405; 4,904 of 5,536 analyzable rows carrying a CISI identifier); the primary population is 3,212 documented-lineage rows, 3,045 analyzable; rows graded undocumented-uncorroborated enter no count, and all-000 rows enter no sign analysis. Failure of S1 or S2 closes SHAKTI INTAKE NOT REPRODUCED.",
+      "depends_on": [
+        "F072-C01"
+      ],
+      "assumptions": [
+        "ASM-SHAKTI-INTAKE"
+      ],
+      "alternatives": [
+        "citing the corpus directly from the deposit, or from the program's earlier ICIT-lineage layer, without the intake assertion (refused: P-F1 makes the intake record the only citation form)"
+      ],
+      "falsification_tests": [
+        "gate 0.1 is the operational test: recompute both SHA-256 values and the census from the exhibited files and compare with the intake record; any mismatch closes the run as SHAKTI INTAKE NOT REPRODUCED, and a run that counts past it falsifies compliance"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "an ungraded or differently graded copy of the corpus presenting as the adopted corpus, changing every count downstream",
+        "verdict_rule": "compliance is judged by the step-0 record exhibiting both recomputed hashes and the census beside the intake record's values, before any other gate runs",
+        "evidence_origin_groups": [
+          "shakti-intake",
+          "provenance-audit"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "The Shakti intake record (proposal P-F1 as adopted), named in spec section 2 as the pin source of record: gates S1-S4, the corpus pin 345241b1..., and the row-grades pin, as stated in the readiness assessment section 1.6. State at this draft, recorded openly: the record is in parallel creation and is not on main at drafting; the freeze re-asserts every pin against the merged record (OPEN-072-9).",
+          "source_id": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "research_notes/shakti-provenance-audit-2026-10-22.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Provenance audit of 2026-10-22, read at this draft: the corpus file's SHA-256 verified before any counting; the documented figure reproduced exactly (3,212 of 5,704 = 56.31 percent; 3,045 of the analyzable subset); grades assigned to all 5,704 rows (3,212 documented-lineage / 2,087 undocumented-corroborated / 405 undocumented-uncorroborated).",
+          "source_id": "research_notes/shakti-provenance-audit-2026-10-22.md",
+          "observed_at": "2026-10-22",
+          "independent_of": [
+            "docs/decisions/2026-10-22-shakti-corpus-intake-record.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F072-C08",
+      "kind": "requirement",
+      "text": "Each tested member's measure is the T2.4-analogue ending-follower fraction of spec section 5.2, computed in ICIT numbering on the population in question.",
+      "status": "draft",
+      "boundary": "The analogue is defined operationally in spec section 5.2: of the member's occurrences that are followed by another true sign in the same inscription (any-position bigrams whose first sign is the member), the share whose second sign is TERMINAL_STRONG or TERMINAL_MODERATE, the classes computed on the same population under the carried Phase-43 battery cascade (position rule; classification floor total at least 5; cascade 0.60 / 0.55 / 0.65 / 0.40 / 0.40, first match wins). Carried from the draft text: the denominator reading (non-final occurrences form the bigrams) is this design's stated reading of Item 2's one-sentence definition, recorded as adjudication defect 1 and put to the freeze (OPEN-072-3); the battery has no chance-baseline step and none is added; sequences are counted as stored, with no direction normalisation, and the 000 placeholder is never a sign, a follower, or a class member.",
+      "depends_on": [
+        "F072-C07"
+      ],
+      "assumptions": [
+        "ASM-T24-ANALOGUE"
+      ],
+      "alternatives": [
+        "borrowing the Phase-43 fractions themselves as the measure's values on this corpus (refused: those fractions are Mahadevan-space quantities, history under F072-C02, never measurements here)"
+      ],
+      "falsification_tests": [
+        "recompute any member's fraction from the execution's published per-population counts (total, bigrams counted, ending followers counted) under section 5.2's definition; a published fraction that does not recompute from its own counts falsifies the run's compliance"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "measure drift between the two populations, or between the reference distribution and the members, presenting as a family difference",
+        "verdict_rule": "identity of the measure is judged by recomputation from published counts under the frozen definition, in both populations and in the reference record alike",
+        "evidence_origin_groups": [
+          "item2-battery-record"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "research_notes/amendment-queue-2026-10-21/item-2-phase43-battery.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Item 2 record, section 2, read in full at this draft: the Phase-43 battery recovered verbatim from its producing script - position rule, classification floor 5, the six-step cascade with thresholds 0.60 / 0.55 / 0.65 / 0.40 / 0.40, the T2.4 floors, terminal_frac's one-sentence definition, and the explicit finding that the battery contains no chance-baseline step.",
+          "source_id": "research_notes/amendment-queue-2026-10-21/item-2-phase43-battery.md",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+          "kind": "design-source",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "Readiness assessment sections 1.4-1.5 at this draft: T2.4's reference points do not transfer to Shakti at all as a reproduction gate, while its method can be carried over as a method, labelled as carried.",
+          "source_id": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+          "observed_at": "2026-10-22",
+          "independent_of": [
+            "research_notes/amendment-queue-2026-10-21/item-2-phase43-battery.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F072-C09",
+      "kind": "requirement",
+      "text": "The verdict line L is fixed at the freeze by applying the derivation rule of spec section 5.3 to the freeze-stage reference distribution, before any fish member is scored.",
+      "status": "draft",
+      "boundary": "The reference distribution is the ending-follower fraction of every non-fish sign in the primary population clearing the carried supported floor (total at least 20), measured at the freeze from non-members only and pinned in the freeze record. L is its 95th percentile by the nearest-rank method, recorded to three decimal places, rounding up at the fourth. Carried from the draft text: the Phase-43 reference points (25.9 percent, 3.8 percent) and Spec 048's 20 percent bar are expressly excluded as inputs in any form; this draft states no numeric line; if the reference population holds fewer than 30 signs or its 95th percentile is 0 or 1, the freeze does not happen (VERDICT LINE NOT DERIVABLE) and no fallback line may be substituted; an execution with no freeze-fixed L closes at gate 0.5 as INVALID.",
+      "depends_on": [
+        "F072-C08"
+      ],
+      "assumptions": [
+        "ASM-VERDICT-LINE"
+      ],
+      "alternatives": [
+        "fixing the line from the carried descriptive label (terminal_frac above 0.15), from Spec 048's 20 percent, or from any value chosen after a member's fraction was seen (all refused: the line is derived from non-members, at the freeze, by the stated rule, or there is no line)"
+      ],
+      "falsification_tests": [
+        "inspect the freeze record: it must exhibit the reference-distribution record, its pin and population, the percentile computation, and the resulting L, all dated before any execution; the absence of any element, or a line equal to a value the rule does not produce from that distribution, falsifies compliance"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [
+          "ASM-INHERITED-LINE"
+        ],
+        "strongest_rival": "a verdict line fitted, borrowed, or inherited so the family's verdict is decided by the choice of line rather than by the family's behaviour",
+        "verdict_rule": "compliance is judged on the freeze record alone: rule, reference population, and numeric line all present and internally recomputable, fixed before any member was scored",
+        "evidence_origin_groups": [
+          "readiness-assessment"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+          "kind": "design-source",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "Readiness assessment sections 1.5 and 3 Family 5 at this draft: a verdict line derived on the record, not inherited from 25.9 percent / 3.8 percent - the requirement this claim registers.",
+          "source_id": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+          "observed_at": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "id": "F072-C10",
+      "kind": "requirement",
+      "text": "Every Asset F member's Wells/ICIT identity is stated and pinned in the step-0 record at gate 0.3, on the concordance basis the freeze confirmed.",
+      "status": "draft",
+      "boundary": "The identity is the ICIT sign code as it appears in the pinned Shakti corpus file. The step-0 record names the basis file or files, pins each by SHA-256, and records per member the basis entry the identity was read from. Carried from the draft text: a member that cannot be identified on that basis is named UNIDENTIFIED IN ICIT with the basis gap stated; it is never silently dropped and never substituted, it is not counted as TOO THIN, and its disposition is the one ruled at the freeze (OPEN-072-2; draft-proposed ruling DD-072-5: excluded from both populations' weighting, reported in the headline block with its share of the identified family's occurrences); if no member can be identified, the run closes as CONCORDANCE FAILED. The held basis candidates are named in spec section 2; the yajnadevam_to_parpola crosswalk basis is partial by its own record (184 confirmed mappings of 592 glyphs), so unidentified members are a designed-for case, not an anomaly.",
+      "depends_on": [
+        "F072-C05"
+      ],
+      "assumptions": [
+        "ASM-CONCORDANCE"
+      ],
+      "alternatives": [
+        "keying the family into ICIT space by sign-shape resemblance, by number equality between numberings, or by any unstated route (all refused: ICIT sign 267 is not Mahadevan sign 267, and number equality across numberings is not an identity)"
+      ],
+      "falsification_tests": [
+        "gate 0.3 is the operational test: the step-0 record must exhibit, per member, either a pinned basis entry supporting its ICIT code or the UNIDENTIFIED IN ICIT naming with the gap stated; a member counted under an identity the record does not exhibit falsifies compliance"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "a concordance completed by convenience, silently shrinking or reshaping the family until the test can run",
+        "verdict_rule": "compliance is judged by the step-0 record's per-member exhibit against the pinned basis files; the freeze-ruled disposition governs every unidentified member",
+        "evidence_origin_groups": [
+          "asset-f-contract",
+          "crosswalk-record"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "data/crosswalks/canonical_sign_registry.csv",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Canonical sign registry on main, read at this draft: carries a wells_ids column per registry sign - one of the held concordance basis candidates named in spec section 2.",
+          "source_id": "data/crosswalks/canonical_sign_registry.csv",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "data/crosswalks/yajnadevam_to_parpola_crosswalk.csv",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "ICIT/Yajnadevam-to-Parpola crosswalk on main, read at this draft (192 data rows): a held basis candidate whose coverage is partial, as the provenance audit records (184 confirmed glyph mappings of 592).",
+          "source_id": "data/crosswalks/yajnadevam_to_parpola_crosswalk.csv",
+          "observed_at": "2026-10-22",
+          "independent_of": [
+            "data/crosswalks/canonical_sign_registry.csv"
+          ]
+        },
+        {
+          "ref": "research_notes/shakti-provenance-audit-2026-10-22.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Provenance audit section 3 at this draft: the crosswalk route's coverage and limits stated from the program's own holdings, including that the mayig-based route corroborates nothing for the unmatched stratum - the ground for treating concordance as a substantive, fail-closed act.",
+          "source_id": "research_notes/shakti-provenance-audit-2026-10-22.md",
+          "observed_at": "2026-10-22",
+          "independent_of": [
+            "data/crosswalks/canonical_sign_registry.csv"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F072-C11",
+      "kind": "requirement",
+      "text": "Execution stops before any member's ending-follower fraction is computed on a step-0 gate failure, and the headline outcome is exactly one of the outcome words frozen in spec section 6.",
+      "status": "draft",
+      "boundary": "The gates run in frozen order (0.1 intake, 0.2 asset, 0.3 concordance, 0.4 classes and census, 0.5 verdict-line assertion) and each failure has its pre-written closure wording in section 6. Carried from the draft text: no count produced before a gate failure is quotable; gate 0.4's census computes occurrence counts only; the verdict line is asserted at gate 0.5, never derived at execution; the sensitivity run is part of the test, not a gate, and cannot rescue a gate failure.",
+      "depends_on": [
+        "F072-C06",
+        "F072-C07",
+        "F072-C09",
+        "F072-C10"
+      ],
+      "assumptions": [
+        "ASM-GATES-BEFORE-OUTCOME"
+      ],
+      "alternatives": [],
+      "falsification_tests": [
+        "inspect the run record's ordering: gate exhibits must precede the first fraction in time and in the record; any fraction preceding its gate, or a headline word outside section 6's set, falsifies compliance"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "a sympathetic execution computing 'just the counts' past a failed gate and presenting them as informal results",
+        "verdict_rule": "compliance is judged by the step-0 record's completeness and order and by the headline's membership in the frozen outcome set",
+        "evidence_origin_groups": [
+          "readiness-assessment"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+          "kind": "design-source",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "Readiness assessment section 1.6 (P-F1) at this draft: failure of S1 or S2 closes the citing spec at step 0 as SHAKTI INTAKE NOT REPRODUCED - the closure discipline this claim extends across the gates.",
+          "source_id": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+          "observed_at": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "id": "F072-C12",
+      "kind": "requirement",
+      "text": "A member whose supported or pass status changes between the primary and sensitivity populations is reported as a grade-flip finding, and a family verdict that changes between populations is reported GRADE-SENSITIVE with both verdicts stated.",
+      "status": "draft",
+      "boundary": "Status means the carried supported / not-supported label and the PASS / does-not-pass word against the same freeze-fixed L (the line is never re-derived per population). Carried from the draft text: flips are reported in the outcome record's first section and in the headline block, naming the member, both populations' fractions and totals, and the direction of the flip; the headline outcome remains the primary population's verdict under the GRADE-SENSITIVE flag (DD-072-6, put to the freeze as OPEN-072-6); no flip is averaged away, suppressed, or treated as a nuisance, because the family's short and damaged texts sit disproportionately in the corroborated stratum.",
+      "depends_on": [
+        "F072-C08"
+      ],
+      "assumptions": [
+        "ASM-GRADE-DISCIPLINE"
+      ],
+      "alternatives": [
+        "reporting only the primary population and mentioning the sensitivity in a footnote (refused: P-F1 S4 requires both reported, and a result that changes between the two is reported as grade-sensitive wherever it is cited)"
+      ],
+      "falsification_tests": [
+        "compare the execution's two per-member tables: every status difference not named as a grade-flip finding in the first section, and any family-word difference not flagged GRADE-SENSITIVE in the headline, falsifies compliance"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "grade sensitivity hidden by reporting a single population's verdict as the family's behaviour",
+        "verdict_rule": "compliance is judged by a line-by-line comparison of the two published population tables against the outcome record's first section and headline block",
+        "evidence_origin_groups": [
+          "provenance-audit",
+          "readiness-assessment"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "research_notes/shakti-provenance-audit-2026-10-22.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Provenance audit section 2 at this draft: the corroborated stratum is systematically different material (45.1 percent incomplete against 6.7 percent; 45.2 percent carrying a 000 placeholder against 7.3 percent; mean length 3.13 signs against 3.79) - the ground for treating a status change between populations as information about the family.",
+          "source_id": "research_notes/shakti-provenance-audit-2026-10-22.md",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+          "kind": "design-source",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "Readiness assessment section 3, Family 5, at this draft: documented-only primary, corroborated sensitivity mandatory, 'a grade-flip is a finding, not a nuisance' - stated there in those words.",
+          "source_id": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+          "observed_at": "2026-10-22",
+          "independent_of": [
+            "research_notes/shakti-provenance-audit-2026-10-22.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F072-C13",
+      "kind": "requirement",
+      "text": "Every product of Spec 072 carries the P-F1 S3 lineage statement in its headline block, and grade discipline (P-F1 S4) holds throughout.",
+      "status": "draft",
+      "boundary": "The S3 statement, verbatim: 'This corpus is an ICIT-lineage corpus. Agreement between it and the program's earlier ICIT-lineage layer is consistency within one tradition, not independent corroboration.' A product without the statement does not cite the corpus. Carried from the draft text: S4 excludes undocumented-uncorroborated rows from every count, keeps the 'undocumented' label on the corroborated stratum in every product, and requires load-bearing results to be computed and reported on both populations; S3 / S4 failures are integrity findings, reported as such, not repaired silently (P-F1's own terms).",
+      "depends_on": [
+        "F072-C07"
+      ],
+      "assumptions": [
+        "ASM-SHAKTI-INTAKE"
+      ],
+      "alternatives": [],
+      "falsification_tests": [
+        "inspect every product's headline block for the S3 statement verbatim, and every count's population label against the grade definitions; a missing statement, a promoted corroborated row, or an unlabelled population falsifies compliance"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [
+          "ASM-INDEPENDENT-CORPUS"
+        ],
+        "strongest_rival": "a within-tradition consistency result circulating as independent corroboration of the program's earlier layer",
+        "verdict_rule": "compliance is judged by inspection of the products as served: headline blocks, population labels, and grade labels, product by product",
+        "evidence_origin_groups": [
+          "readiness-assessment"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+          "kind": "design-source",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "Readiness assessment section 1.6, proposal P-F1, quoted at this draft: S3's lineage statement verbatim and S4's grade discipline, with their failure terms (S1/S2 failure closes at step 0; S3/S4 failures are integrity findings).",
+          "source_id": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+          "observed_at": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "id": "F072-C14",
+      "kind": "requirement",
+      "text": "No publication of Spec 072's fish-family results in any form occurs without both citation of Roif 2025a and Roif 2025b and the owner's clearance of the specific publication act.",
+      "status": "draft",
+      "boundary": "The citations are Roif 2025a (Academia.edu doc 129921039) and Roif 2025b (Academia.edu doc 143222807), the published statements of the fish-sign model this study's question stands on. The hold covers summaries, article drafts, status lines, paper and website text, and public register wording, and it binds regardless of outcome - supported, not supported, inconclusive, or closed at step 0. Carried from the draft text: this gate is Spec 048's claim F048-C14 hold carried in substance, unaffected by the corpus change (readiness section 1.5); records under this spec are internal until both conditions are met for the specific act, and campaign reporting names this member only as 'executed - held under the Roif gate', without result content.",
+      "depends_on": [
+        "F072-C01"
+      ],
+      "assumptions": [
+        "ASM-ROIF-GATE"
+      ],
+      "alternatives": [
+        "surfacing a held result through a routine status summary or article process (the leak route the campaign's Roif gate names and closes by rule)"
+      ],
+      "falsification_tests": [
+        "the public-surface audit at acceptance finds nothing from this spec published without both Roif citations present and a recorded owner clearance naming the specific act; any publication lacking either condition falsifies compliance"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "held results leaking onto a public surface by routine rather than by decision, or appearing without the credit the model's author is owed",
+        "verdict_rule": "compliance is judged at acceptance by the public-surface audit and by inspection of campaign reporting and of any publication act's citation and clearance record",
+        "evidence_origin_groups": [
+          "spec048-record"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "specs/048-parpola-fish-family-profiles/claims.json",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 048's claim register at this draft, claim F048-C14 read in full: every record under Spec 048 stays internal under the Roif gate; nothing derived from its results is published or surfaced in any form until the owner clears a specific publication act; campaign reporting names it only as 'executed - held under the Roif gate'. This claim carries that hold in substance to the re-designed study.",
+          "source_id": "specs/048-parpola-fish-family-profiles/claims.json",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+          "kind": "design-source",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "Readiness assessment section 1.5, under Spec 048, at this draft: the re-design commission carries the note 'Roif gate carried - F048-C14's hold is unaffected by corpus choice'.",
+          "source_id": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+          "observed_at": "2026-10-22",
+          "independent_of": [
+            "specs/048-parpola-fish-family-profiles/claims.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F072-C15",
+      "kind": "requirement",
+      "text": "No outcome under Spec 072 establishes that any fish sign was pronounced 'meen'.",
+      "status": "draft",
+      "boundary": "The scope is every record and product under this spec. Carried from the draft text: positional behaviour is a necessary shadow of the reading, not the reading; no outcome explains why any member behaves differently from another; every result is a result on the Shakti corpus in ICIT numbering and is never stated as a reproduction, confirmation, or correction of a Phase-43 or Spec 048 quantity, nor as an independent-corpus check. Spec 048's record is not edited under this spec; the claim's record gains only the dated append spec section 9 prescribes, as an internal record under the Roif gate.",
+      "depends_on": [
+        "F072-C01"
+      ],
+      "assumptions": [
+        "ASM-APPEND-ONLY"
+      ],
+      "alternatives": [
+        "a FAMILY SUPPORTED outcome presented as evidence that the reading is correct beyond the positional shadow it predicts (refused by the claim's own not-understood text, as Spec 048 records it)"
+      ],
+      "falsification_tests": [
+        "inspect every Spec 072 output for a pronunciation, meaning, mechanism, reproduction, or independence statement; any one found falsifies compliance and is recorded as a defect of the output"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [
+          "ASM-RESULT-AS-READING"
+        ],
+        "strongest_rival": "the strongest available positional result quietly standing in for the decipherment claim it only shadows",
+        "verdict_rule": "compliance is judged by inspection of every output against this boundary, at acceptance and at any later citation of the result",
+        "evidence_origin_groups": [
+          "spec048-record"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "specs/048-parpola-fish-family-profiles/spec.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 048's frozen text, section 7 limits 2-4 at this draft: no pronunciation conclusion, no mechanism, compilation-relativity - the limits this claim restates for the re-designed study, with the corpus-relativity limit in its ICIT-lineage form (F072-C13).",
+          "source_id": "specs/048-parpola-fish-family-profiles/spec.md",
+          "observed_at": "2026-10-22"
+        }
+      ]
+    }
+  ]
+}

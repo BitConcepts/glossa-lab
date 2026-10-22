@@ -8926,3 +8926,49 @@ correct, or that Specs 049 / 052 / 054 pass their other gates.
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-21 — Spec 066 EXECUTED (Phase-428): INTAKE COMPLETE — CATALOGUE EXTENSION PINNED
+
+The Phase-130 catalogue-extension intake (amendment package Item 7, owner-approved
+2026-10-21) ran under the frozen contract: freeze digest
+0b81d8421c8fe66b486b2c729bb7e978faa6327c74b8f1bff7984128a31aa355, freeze PR #314
+merged at c6140cf199b158b25ee4cef6e3bcd9837eb000db on genuine CI green (run
+39715444485, 7 of 7). The CISI 3.1 portion and its extraction are restricted
+research material under PROVENANCE entry 22 of the restricted local store (the
+gate is quoted verbatim in the spec's outcome.md §1); no scan, render, extraction
+row, or extracted field beyond number + site section + published type class +
+grade class entered git at any point, and repo cleanliness was checked before
+any join work and again before the outcome commit. Step 0 asserted every pin
+(portion PDF, extraction table, vols 1–2 catalogue CSVs, horus84
+inscriptions.csv, the committed Phase-421 census/results, the Phase-130 schema,
+the validator) and re-derived the candidate sets exactly: 2,101 distinct
+well-formed portion numbers (1,341 referenced — 1,293 zero-resolution + 48
+already-joined — and 760 unreferenced). Graded by the frozen ladder (corroboration
+rung UNGRADED for every candidate, DD-066-7, because the in-hand layers carry no
+FC/excavation/museum values): VERIFIED 2,089, CONFLICT 12 (NUMBER-AMBIGUOUS 11,
+SITE 1), UNRESOLVED 0; referenced 1,331/10/0, unreferenced 758/2/0. The 2
+low-confidence candidates were hand-verified against page renders and confirmed
+as printed; the 183 medium-confidence candidates stand VERIFIED under the
+stratum determination. The seeded stratum (seed 20261021; 30 VERIFIED, the whole
+12-candidate CONFLICT class, the empty UNRESOLVED class) was hand-read on page
+renders: 30 of 30 sampled VERIFIED sound; all 12 sampled CONFLICTs attributed
+to extraction error (scan text-layer number misreads, photo-column spill into
+data fields, OCR variants, empty key fields in duplicate plate listings); true
+non-identity 0. HALT VERDICT: conflict share 12/2,101 = 0.57% against the 20%
+cap, tripwire count 0 — NO HALT. The merged catalogue layer v2 was built and
+held in the restricted local store only (SHA-256
+cd0c2ba8823678be9f7573616528ae0b6be2fe579dc7e34c93add421c80886ad; 2,655,958
+bytes; 9,741 rows; 5,529 distinct objects; 2,036 new objects; 53 collisions
+where the existing object stands). The Phase-130 validator over the extension
+dataset form (2,089 records, license_basis = the entry-22 gate) returned
+pass-with-warnings, 0 errors. Committed: the extension index
+data/intake/cisi31_extension_index.csv (2,101 rows, the four lawful columns),
+reports/phase428_results.json, and specs/066-phase130-catalogue-extension/
+outcome.md. The projected join — 2,899 + 1,777 = 4,676 rows (82.34%) against
+the Spec 059 bar of 3,465 — is a projection only; no join has run. A VERIFIED
+catalogue object is not a verified join; no F1 quantity exists from this act;
+STUDY-SPEC-024/F1 stands as recorded SUPPORTED on its original joined subset
+(MH OR 2.384 [1.847, 3.077], q=0.00015), and Spec 059's record stands unpatched.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

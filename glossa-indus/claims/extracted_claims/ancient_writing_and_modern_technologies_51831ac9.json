@@ -324,6 +324,19 @@
         "results": "reports/phase419_results.json",
         "results_sha256": "d30fa456071a57a38b39d1b6e2e1ea2fff7aa4660d2aa2af433fa94e64fcd4f9",
         "note": "Appended by the Spec 057 execution under spec section 7.2 (r >= 1: superseded). No pre-existing field of this record was altered; removing this appended entry reproduces the pre-act file byte-identically. The record's status and stage are unchanged."
+      },
+      "disposition_spec065": {
+        "spec": "065",
+        "phase": "Phase-427",
+        "date": "2026-10-22",
+        "actor": "spec065-phase427-execution",
+        "kind": "disposition note (spec section 7.2, class B)",
+        "form": "superseded-not-retired",
+        "wording": "Superseded-not-retired, exactly as Spec 057 left this record. Spec 065 (Phase-427, 2026-10-22) resolved one of the two unlocated rows on the document itself: S-5 HEADING ABSENT FROM DOCUMENT \u2014 the acquired Hunt file (SHA-256 77f10f3279454bede1ba60a04f3c099500667ca62574b07aaabb9fc69bf94665) carries exactly one occurrence of 'positional analysis' in its text layer (extraction line 340, PDF page 9), sentence-initial inside a running paragraph of section 5.5, not in heading form. S-1 remains STILL UNLOCATED \u2014 ACQUISITION BLOCKED: no document was handed over and intake-pinned before the run, no search was run for S-1, and nothing about the chapter is found or implied. Retirement is not available while S-1 remains unlocated (Spec 065 spec section 7.2). Headline class B \u2014 S-5 RESOLVED, S-1 STILL BLOCKED. This act searched two documents for a heading. It checked nothing either passage states.",
+        "record": "specs/065-s1-s5-heading-successor/outcome.md",
+        "results": "reports/phase427_results.json",
+        "results_sha256": "b485f75ee655c7e15acd7f95b3125859504481c680aa67fc882657cefa0cee63",
+        "note": "Appended by the Spec 065 execution under spec section 7.2 (class B: superseded-not-retired). No pre-existing field of this record was altered \u2014 Spec 057's disposition entry above stands unedited \u2014 and removing this appended entry (restoring the comma after the Spec 057 disposition) reproduces the pre-act file byte-identically (verified at the act). The record's status (untested) and stage (created) are unchanged."
       }
     }
   ],

@@ -9081,6 +9081,89 @@ program's claim form — never whether K-1's
 suggested meaning is right, and nothing about
 sign 821 itself beyond the identification.
 
+## 2026-10-22 — Spec 065 EXECUTED (Phase-427): Class B — S-5 RESOLVED, S-1 STILL BLOCKED
+
+Spec 065 was executed as Phase-427 under the
+frozen contract (freeze digest f50a6e9c…;
+OSF registration 34s9u approved and public,
+API-verified by the parent before the
+execution order; owner's 2026-10-21 approval
+of the amendment package as written, Item 6).
+Step 0 passed in full, in frozen order: gate
+0.1 input integrity — every §2 live pin
+recomputes to its freeze value (the two held
+cleaned texts, the two registry files, Spec
+057's freeze record, outcome, spec, and
+adjudication, and the anchors file), with the
+extracted-claims store asserted by entry
+facts under the Spec 038 form (fingerprint
+a4874349…, the merged_into posture as Spec
+057 left it, the rows' quote fragments —
+S-1's lowercase "positional analysis", S-5's
+sentence-case "Positional analysis"); gate
+0.2 the acquired S-5 file asserted on the
+local file (657,863 bytes, SHA-256
+77f10f32…, MD5 36616e20… matching the Zenodo
+record); gate 0.3 the S-1 intake
+determination — the blocked arm, on evidence
+re-read first-hand at step 0 (no intake-S1.json
+in the spec directory; PROVENANCE.md carries
+no S-1 provenance entry, entry 23 being
+Hunt/S-5 and both S-1 sections stating no
+file acquired and no provenance entry taken;
+the S-1 downloads folder holds only
+BLOCKED.md; the Oakland ILL portion-copy
+request placed 2026-10-22 is pending, with
+nothing delivered and nothing intake-pinned);
+gate 0.4 order. The accounting, one outcome
+per source: S-5 HEADING ABSENT FROM DOCUMENT
+— the acquired file's own text layer,
+extracted in full from the pinned bytes
+(pdftotext -layout; 2,273 lines, 84,672 bytes;
+artifact extraction-S5.txt, 74e42f8e…),
+carries exactly one occurrence of "positional
+analysis" (extraction line 340, PDF page 9),
+sentence-initial inside a running paragraph
+of §5.5 "Governance and Civic Authority"
+("…waterworks. Positional analysis / shows a
+clear tripartite administrative grammar:") —
+a mention inside a running sentence, not in
+heading form under the carried §5.1 rule; the
+Spec 057 sub-state HEADING NOT PRESENT IN
+HELD TEXT is converted to a document-level
+finding on the acquired file's hash, and no
+passage or claim arises. S-1 STILL UNLOCATED
+— ACQUISITION BLOCKED (owner account act) —
+no search was run for S-1 and nothing about
+the chapter is found or implied; its evidence
+is the blocker record, and the unblocking act
+remains a handed-over, intake-pinned copy
+before a later run. Headline class B in the
+frozen §7.1 wording. Disposition (§7.2): the
+heading record stands superseded-not-retired
+exactly as Spec 057 left it, by appended
+dated disposition_spec065 note only — no
+pre-existing field altered, Spec 057's
+disposition entry unedited, removal of the
+append reproducing the pre-act file
+byte-identically (verified at the act), status
+and stage unchanged; retirement is not
+available while S-1 remains unlocated.
+Hypothesis F065-C14 is defeated over the one
+document actually searched (S-5) and stands
+unjudged as to S-1. No claim was recovered,
+no claim was checked, and no positional
+finding is established by this act. This act
+searched two documents for a heading. It
+checked nothing either passage states.
+Anchors asserted byte-identical before and
+after (df0cf620…). Foundation check at the
+execution: 40 passed, 0 failed, 8 warnings.
+Records: specs/065-s1-s5-heading-successor/
+outcome.md, specs/065-s1-s5-heading-successor/
+extraction-S5.txt, reports/phase427_results.json,
+reports/phase427_s1_s5_report.md.
+
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.

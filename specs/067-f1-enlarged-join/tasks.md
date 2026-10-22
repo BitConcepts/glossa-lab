@@ -70,13 +70,25 @@
       (phase allocation Phase-429), and
       DD-067-14 (the gate reading) decided at
       the freeze (`adjudication.md` §8).
-- [ ] **L5 — Freeze PR merged**, house gates
+- [x] **L5 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).
-- [ ] **L6 — OSF filing record completed**:
+      **Done 2026-10-21:** freeze PR #318 merged
+      at `dcfa3af6` (CI run 39721764351, 7 of 7
+      jobs success from the run's own
+      conclusions); foundation check read-back
+      on the merged tree 40 passed / 0 failed /
+      8 warnings.
+- [x] **L6 — OSF filing record completed**:
       `osf-spec-registration.md` filed at the
       freeze under DD-067-10; its follow-up
       record PR merged on genuine green.
+      **Filed 2026-10-21:** registration
+      https://osf.io/qsthg/ (draft
+      `6ad9918010f1e20a2545f3de`, filed at
+      2026-10-22T04:32:02Z), pending approval;
+      the approval act is the parent's and no
+      execution begins while it stands pending.
 
 ## Execution — gated on the freeze, the registration's approval, and a separate order
 

@@ -368,5 +368,15 @@
   "_citation": {
     "system": "Glossa-Lab Indus Evidence Graph Batch 4",
     "source_doc": "ancient_writing_and_modern_technologies_51831ac9"
+  },
+  "audit_correction_2026_10_22": {
+    "date": "2026-10-22",
+    "kind": "spec025-material-audit-source-correction",
+    "proposal": "P4",
+    "note": "Source correction: this document is Andreas Fuls, 'Ancient Writing and Modern Technologies - Structural Analysis of Numerical Indus Inscriptions', in Studies on Indus Script (Conference on Indus Script, Mohenjodaro 2020; National Fund for Mohenjodaro, Government of Sindh), pp. 57-88 plus the sign-list appendix (FULL TEXT - the held PDF's own front matter). The literature registry record for this document carries detected_doi 10.13109/hisp.2015.128.1.42, which belongs to Fuls 2015, Historical Linguistics 128(1):42-58 (Crossref-verified); the chapter itself has no DOI, and its detected_year and authorship are as stated here. The registry record's bytes are freeze-pinned whole-file by the Spec 055 and Spec 057 freeze tests, so this correction is recorded here rather than edited into the registry record (see the audit fix repair record, fix_repair_2026-10-22.md); the registry fields are superseded by this note. Spec 065's recovery act already resolved this document's identity in the program's records.",
+    "evidence": [
+      "specs/025-paper-search-research-check/audit-2026-10-22/raw/findings_W5_part2.md",
+      "specs/025-paper-search-research-check/audit-2026-10-22/correction_proposals.md"
+    ]
   }
 }

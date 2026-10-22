@@ -9610,3 +9610,67 @@ filed for the owner's approval — nothing published).
 
 AI disclosure: executed by an AI agent (Muse, via Muse)
 at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-22 — Spec 025 material audit: fix commission, batch C (P9, P10 flag, preprint v6 + adversarial pass)
+
+Batch C completes the fix commission. P9: the preprint's §8
+gains the five Mahadevan works the text already relied on
+(1981, 1982, 1986, 1989, 2011), from records verified at
+published-bibliography level on the batch-B evidence (the
+2011 identification is inferred and is stated as such
+wherever the entry is described); the §3.23/§3.24 paper
+counts, which no verifiable source supports, are qualified
+in the text as this program's own text-mining corpus counts.
+P10: the §8 Steinkeller 1982 entry is unchanged and stands
+flagged as unverified — new evidence positively indicates
+the titled article is JAOS 108(2):197–202 (1988), the 1988
+record was not substituted per the proposal's own rule, and
+the JAOS 102(2) contents check remains the one named open
+item. The preprint is bumped to v6 (source + regenerated
+PDF: TinyTeX XeLaTeX, two clean passes, 18 pages, corrected
+entries spot-checked in the rendered output; the v4 PDF is
+superseded). The adversarial pass required before submission
+was run on the v6 source by an independent engine and
+adjudicated finding-by-finding
+(audit-2026-10-22/adversarial_pass_2026-10-22.md): one
+finding sustained in narrow form (the §2.1 Zipf exponent
+~1.7 is the paper's own unreleased-corpus statistic without
+a checkable derivation — flagged for the owner's submission
+decision, not silently rewritten), three not sustained.
+Nothing has been submitted or deposited; the package stops
+at submission-ready (audit-2026-10-22/
+submission_package_summary_2026-10-22.md). No claim status,
+anchor, or score changed in any batch; H21 was not
+triggered (no anchor, language-model, or phase-result files
+touched) and the committed foundation report stands at
+59 OK / 0 failed / 6 warnings.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-22 — Spec 025 material audit: fix repair (literature records restored to frozen pins; P2/P4/P8 corrections moved to dossier notes)
+
+Repair landed with batch C (PR #336). Batch A's in-place
+edits to three literature-registry records (the Fuls 2023
+catalogue, the Fuls chapter, the Positional Analysis paper)
+changed bytes that are freeze-pinned whole-file by the Spec
+055 and Spec 057 freeze tests (SHA-256 92e19e6d…,
+bb23e5e9…, 9b95174b…). PR #334's first backend failure was
+this collision; it was misclassified at the time as a
+cold-cache transient, and that classification is corrected
+here and in audit-2026-10-22/fix_repair_2026-10-22.md (the
+passing runs are consistent with the suite's in-job store
+regeneration restoring the pinned bytes; the job runs with
+--maxfail=1, so only the first failing test was ever shown).
+The three records are restored byte-for-byte (hashes verified
+equal to their pins), and the P2, P4, and P8 source
+corrections are preserved as dated audit_correction_2026_
+10_22 notes on the corresponding claims dossiers — the
+proposals' own alternative limb for frozen fields. P3's
+registry edit stands (that record is not whole-file pinned).
+No frozen test was re-pinned; if the owner prefers the
+registry records themselves corrected, the ruling needed is
+to amend the Spec 055/057 pins to the corrected bytes.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.

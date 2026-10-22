@@ -10,7 +10,7 @@
 | **DOI (Zenodo)** | https://doi.org/10.5281/ZENODO.20414696 |
 | **SSRN submission** | ID 6827038 (status: check SSRN portal) |
 | **Source file** | `glossa-corpus/indus/pierson_2026_indus_decipherment.tex` |
-| **PDF (current)** | `glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v4.pdf` (v4 compiled artifact; the source `.tex` is at v5 since 2026-10-22 — v5 PDF regeneration pending) |
+| **PDF (current)** | `glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v6.pdf` (v6 compiled artifact, regenerated 2026-10-22 — two clean XeLaTeX passes, 18 pages; supersedes the v4 PDF, which was the compiled artifact of record until v6) |
 | **Research anchor** | `research/indus/indus-anchor-model/` |
 
 ## Filename convention
@@ -31,6 +31,7 @@ The version number is also declared inside the document (title block and footer)
 | **v4** | June 2026 | **Current.** Removed all uncited correspondence material. §3.5 renamed "Fish Sign Isolation Test" (was "Polysemy Test"). §3.32 removed entirely. Zero third-party unconsented content. Abstract and all references to fish-sign analysis updated to use neutral structural language. |
 | **v5** | — | **DRAFT ADDENDUM — NOT PUBLISHED.** Addendum drafted in-repo 2026-10-06 (Phase-109, spec 007) recording the post–Phase-107/108 headline re-base (strict SA-independent set: 94 H+M, 73.68% coverage). Draft: `glossa-corpus/indus/pierson_2026_indus_decipherment_addendum_v5.md`. (This addendum draft predates the v5 `.tex` bump below; renumbering it is an owner decision.) |
 | **v5 (.tex)** | 2026-10-22 | **Current source.** Citation corrections from the spec-025 material audit (`specs/025-paper-search-research-check/audit-2026-10-22/`): §8 entries corrected for Wells & Fuls (2015, not Wells 2011), Parpola/Parpola/Brunswig (1977, JESHO 20(2), Simo Parpola first author), Crawford 2001 (monograph, not a journal article), and Parpola 2010 (CICT conference lecture, Coimbatore — the *World Archaeology* 42(2) attribution was not verified in any reachable index); Rao *Science* 2009 entry added and the §1.2 entropy result attributed to it; the §2.1 Zipf exponent no longer attributed to Rao 2009; Nair 2026 characterizations in §1.3/§3.10/Acknowledgments corrected to match Nair's full text (independent scorecard study, hedged intermediate result — not a replication of this paper's tests). **The v5 PDF has NOT been regenerated** (no xelatex in the audit environment); the v4 PDF remains the compiled artifact of record. Nothing has been submitted. **Adversarial pass required before submission.** |
+| **v6 (.tex + PDF)** | 2026-10-22 | **Current.** Bibliography completion from the spec-025 audit fix commission: §8 gains the five Mahadevan works the text already relied on (1981 Place Signs; 1982 Terminal Ideograms; 1986 Towards a Grammar; 1989 What Do We Know; 2011 The Indus Fish Swam in the Great Bath), from records verified at published-bibliography level (the 2011 identification is inferred — see the audit fix addendum); the §3.23 paper counts are qualified in place as this program's own text-mining corpus counts (internal outputs, not externally sourced). The §8 Steinkeller 1982 entry is UNCHANGED and stands flagged as unverified (fix addendum, P10: positive evidence the titled article is JAOS 108(2):197–202 (1988); the 1988 record was not substituted, per the proposal's own rule). **The v6 PDF HAS been regenerated** (TinyTeX XeLaTeX provisioned under the workspace; two passes, zero errors, 18 pages; corrected entries spot-checked in the rendered output) and replaces the v4 PDF as the compiled artifact. Adversarial pass run on the v6 source and adjudicated (`specs/025-paper-search-research-check/audit-2026-10-22/adversarial_pass_2026-10-22.md`): one finding sustained in narrow form (the §2.1 Zipf exponent ~1.7 is the paper's own unreleased-corpus statistic, printed without a checkable derivation — an owner decision for submission time). Nothing has been submitted. |
 
 ## How to bump the version
 
@@ -55,11 +56,18 @@ The version number is also declared inside the document (title block and footer)
 - Any attribution concern → email `tpierson@bitconcepts.tech` immediately.
 - See `ATTRIBUTION.md` for full data-source licensing.
 
-## Current version: v5 (.tex source, 2026-10-22)
+## Current version: v6 (.tex source + PDF, 2026-10-22)
 
-v5 carries citation corrections only (spec-025 material audit; see the
-version table). The v4 text was confirmed clean as of 2026-06-09: zero
-references to Avishai Roif or any unconsented correspondence material,
-verified by full PDF read-through. The v5 PDF has not been regenerated
-yet; the v4 PDF remains the compiled artifact of record. **Adversarial
-pass required before submission of any new version.**
+v6 completes the bibliography the text already relied on (five
+Mahadevan §8 entries, audit proposal P9) and qualifies the §3.23/§3.24
+paper counts in place as the program's own text-mining outputs. The
+§8 Steinkeller 1982 entry is unchanged and flagged as unverified in
+the audit fix record (P10 — the 1988 same-title record was not
+substituted). The v6 PDF has been regenerated (two clean XeLaTeX
+passes, 18 pages) and is the compiled artifact of record; the v4 PDF
+is superseded. An adversarial pass on the v6 source was run and
+adjudicated (audit directory, `adversarial_pass_2026-10-22.md`): one
+finding sustained in narrow form (the §2.1 Zipf exponent ~1.7 is the
+paper's own unreleased-corpus statistic without a checkable
+derivation — flagged for the owner's submission decision).
+**Nothing has been submitted or deposited.**

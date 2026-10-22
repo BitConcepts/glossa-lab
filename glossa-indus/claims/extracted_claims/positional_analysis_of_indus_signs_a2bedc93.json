@@ -51,5 +51,15 @@
   "_citation": {
     "system": "Glossa-Lab Indus Evidence Graph Batch 4",
     "source_doc": "positional_analysis_of_indus_signs_a2bedc93"
+  },
+  "audit_correction_2026_10_22": {
+    "date": "2026-10-22",
+    "kind": "spec025-material-audit-source-correction",
+    "proposal": "P8",
+    "note": "Source identification: this document is Andreas Fuls, 'Positional Analysis of Indus Signs', Voprosi Epigrafiki 7(1):253-275 (2013), reprinted as Wells & Fuls 2015 Appendix II (DOI 10.2307/j.ctvr43jmf.16). The literature registry record for this document carries no author; its bytes are freeze-pinned whole-file by the Spec 057 freeze test, so the identification is recorded here rather than edited into the registry record (see fix_repair_2026-10-22.md in the audit directory). Evidence: audit W4, FULL TEXT.",
+    "evidence": [
+      "specs/025-paper-search-research-check/audit-2026-10-22/raw/findings_W4.md",
+      "specs/025-paper-search-research-check/audit-2026-10-22/correction_proposals.md"
+    ]
   }
 }

@@ -1,0 +1,473 @@
+{
+ "stage": "research_check",
+ "record_version": 1,
+ "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+ "document_id": "ancient_writing_and_modern_technologies_51831ac9",
+ "claim_statement": "Sign value: 900 / number six",
+ "checked_at": "2026-10-22T14:41:10.232213+00:00",
+ "advisory": true,
+ "verdict": null,
+ "protocol": "docs/paper-search-mcp.md#audit-protocol",
+ "phrasings": [
+  {
+   "text": "Sign value: 900 / number six",
+   "origin": "claim"
+  },
+  {
+   "text": "Wells sign list grapheme 900 proposed as the numeral six in Harappan writing",
+   "origin": "caller"
+  }
+ ],
+ "sources_requested": [
+  "arxiv",
+  "crossref",
+  "openalex",
+  "semantic",
+  "core",
+  "europepmc"
+ ],
+ "queries": [
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_papers",
+   "query": "Sign value: 900 / number six"
+  },
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_arxiv",
+   "query": "Sign value: 900 / number six"
+  },
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_crossref",
+   "query": "Sign value: 900 / number six"
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_papers",
+   "query": "Wells sign list grapheme 900 proposed as the numeral six in Harappan writing"
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_arxiv",
+   "query": "Wells sign list grapheme 900 proposed as the numeral six in Harappan writing"
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_crossref",
+   "query": "Wells sign list grapheme 900 proposed as the numeral six in Harappan writing"
+  }
+ ],
+ "source_errors": [],
+ "neighbors": [
+  {
+   "title": "Added Value of Frequency of Imaging Markers for Prediction of Outcome After Intracerebral Hemorrhage: A Secondary Analysis of Existing Data",
+   "authors": "Liang-Hong Kuang; Shinuan Fei; Hang Zhou; Le Huang; Cai-Lian Guo; Jun Cheng; Wenmin Guo; Yu Ye; Ru-Jia Wang; Hui Xiong; Ji Zhang; Dongfang Tang; Li-Wei Zou; Xiaoming Qiu; Yongqiang Yu; Lei Song",
+   "year": "2024-03-20T00:00:00",
+   "doi": "10.1007/s12028-024-01963-x",
+   "paper_id": "cffa2860857f0a61ea17ccce7ad29013a1861b48",
+   "source": "semantic",
+   "url": "https://www.semanticscholar.org/paper/cffa2860857f0a61ea17ccce7ad29013a1861b48",
+   "abstract": "Frequency of imaging markers (FIM) has been identified as an independent predictor of hematoma expansion in patients with intracerebral hemorrhage (ICH), but its impact on clinical outcome of ICH is yet to be determined. The aim of the present study was to investigate this association. This study was a secondary analysis of our prior research. The data for this study were derived from six retrospective cohorts of ICH from January 2018 to August 2022. All consecutive study participants were examined within 6 h of stroke onset on neuroimaging. FIM was defined as the ratio of the number of imagin",
+   "relevance": 0.75
+  },
+  {
+   "title": "Optimizing packaging process efficiency and quality control at a black carbon manufacturer through lean six sigma and design of experiment",
+   "authors": "A. Bahauddin; D. L. Trenggonowati; Atia Sonda; V. A. Yusuf; Ade Irman Saeful Mutaqin; A. Umyati",
+   "year": "2023-05-15T00:00:00",
+   "doi": "10.36055/jiss.v9i1.19052",
+   "paper_id": "bcafd7d220fe06e2e69cd04bef81452e1c2bd518",
+   "source": "semantic",
+   "url": "https://www.semanticscholar.org/paper/bcafd7d220fe06e2e69cd04bef81452e1c2bd518",
+   "abstract": "CI is a multinational company that involves manufacturing carbon black. The carbon black is packed in a 1250 kg jumbo bag and a 25 kg paper sack. Based on reject weight data for December 2019, 4.4% of paper sacks were rejected, with some caused by suboptimal packer machine settings. The study will use the design of experiment to determine critical quality factors for carbon black grade Sterling-V, identify waste in the packaging process, determine the sigma value in the packaging process, identify factors causing product defects, evaluate the risk priority number, and provide suggestions for o",
+   "relevance": 0.75
+  },
+  {
+   "title": "Equidistributions of Sign Patterns of the Liouville Function and Normal Numbers",
+   "authors": "N. A. Carella",
+   "year": "2022-11-05T22:17:18",
+   "doi": "",
+   "paper_id": "2211.09736v2",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2211.09736v2",
+   "abstract": "The equidistribution of the double sign patterns of the Liouville function $λ$ is proved unconditionally. As application, it is shown that the computable real number $$\\sum_{n \\geq 1} \\frac{1+λ(n)}{2^{n}}$$ is a simply normal number in base 4.",
+   "relevance": 0.5
+  },
+  {
+   "title": "Squares in arithmetic progression over quadratic extensions of number fields",
+   "authors": "Enrique González-Jiménez",
+   "year": "2026-02-03T08:36:14",
+   "doi": "10.1142/S1793042126500612",
+   "paper_id": "2602.03251v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2602.03251v1",
+   "abstract": "We study arithmetic progressions of squares over quadratic extensions of number fields. Using a method inspired by an approach of Mordell, we characterize such progressions as quadratic points on a genus $5$ curve. Specifically, we determine the set of $K$-quadratic points on this curve under certain conditions on the base field $K$. Our main results rely on the algebraic properties of specific elliptic curves after performing a base change to suitable number fields. As a consequence, we establish that, under appropriate assumptions, any non-elementary arithmetic progression of five or six squ",
+   "relevance": 0.5
+  },
+  {
+   "title": "Evaluation of the hematology analyzer test performance using six sigma metrics: A cross sectional study",
+   "authors": "P. R. Dy; K. Damian; E. Villanueva",
+   "year": "2024-05-01T00:00:00",
+   "doi": "10.1016/j.cca.2024.118693",
+   "paper_id": "29ee6182954e88282f7edaf9de5f4fc0267b3adc",
+   "source": "semantic",
+   "url": "https://www.semanticscholar.org/paper/29ee6182954e88282f7edaf9de5f4fc0267b3adc",
+   "abstract": "\n \n \n The six sigma metric is used to assess the performance of a measurement procedure in comparison to the medical requirement. In clinical laboratories, it can be used to assess the quality of instruments or processes. This study aims to evaluate the performance of hematology analyzers using the six sigma scale.\n \n \n \n This is a descriptive cross-sectional study wherein quality control data from hematology analyzers were obtained. The mean, standard deviation, coefficient of variation, bias and sigma value of the RBC, WBC, hemoglobin, hematocrit, and platelet parameters were determined and ",
+   "relevance": 0.5
+  },
+  {
+   "title": "On the number of even values of an eta-quotient",
+   "authors": "Fabrizio Zanello",
+   "year": "2022-10-17T21:41:30",
+   "doi": "",
+   "paper_id": "2210.09451v2",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2210.09451v2",
+   "abstract": "The goal of this note is to provide a general lower bound on the number of even values of the Fourier coefficients of an arbitrary eta-quotient $F$, over any arithmetic progression. Namely, if $g_{a,b}(x)$ denotes the number of even coefficients of $F$ in degrees $n\\equiv b$ (mod $a$) such that $n\\le x$, then we show that $g_{a,b}(x) / \\sqrt{x}$ is unbounded for $x$ large.\n  Note that our result is very close to the best bound currently known even in the special case of the partition function $p(n)$ (namely, $\\sqrt{x}\\log \\log x$, proven by Bellaïche and Nicolas in 2016). Our argument substant",
+   "relevance": 0.25
+  },
+  {
+   "title": "The In-Car Sign Language Corpus (ICSL): A Multi-Modal Resource for Constrained-Space Sign Language Recognition",
+   "authors": "Raviteja Boddu; Guilherme Vieira Leite; Joed Lopes da Silva; Ângelo Benetti; Isabela Barbieri; Natália de Melo Afonso; Thyago Santos; Helio Pedrini; Felipe Venâncio Barbosa; José Mario De Martino; Munir Georges; Alessandro Zimmer",
+   "year": "2026-07-13T10:03:46",
+   "doi": "",
+   "paper_id": "2607.11341v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2607.11341v1",
+   "abstract": "This paper addresses the challenges of using sign language within shared mobility services, such as taxis, carpools, or ride-sharing platforms. The use of sign language recognition (SLR) in real-world, confined environments, specifically vehicle interiors remains largely unexplored. To motivate research in this area, we present the In-Car Sign Language (ICSL) dataset for Brazilian Sign Language (Libras), with the long-term goal of improving public transport accessibility for the Deaf and Hard-of-Hearing community. The dataset consists of: (1) high-precision laboratory motion capture (MoCap) da",
+   "relevance": 0.25
+  },
+  {
+   "title": "On the Frobenius fields of abelian varieties over number fields",
+   "authors": "Ashay A. Burungale; Haruzo Hida; Shilin Lai",
+   "year": "2024-02-06T21:16:19",
+   "doi": "10.2140/ant.2026.20.577",
+   "paper_id": "2402.07935v3",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2402.07935v3",
+   "abstract": "Let $A$ be a non-CM simple abelian variety over a number field $K$. For a place $v$ of $K$ such that $A$ has good reduction at $v$, let $F(A,v)$ denote the Frobenius field generated by the corresponding Frobenius eigenvalues. Assuming $A$ has connected monodromy groups, we show that the set of places $v$ such that $F(A,v)$ is isomorphic to a fixed number field has upper Dirichlet density zero. Assuming the GRH, we give a power saving upper bound for the number of such places.",
+   "relevance": 0.25
+  },
+  {
+   "title": "The Role of Number Notation: Sign-Value Notation Number Processing is Easier than Place-Value",
+   "authors": "Attila Krajcsi; Eszter Szabó",
+   "year": "2012-01-01T00:00:00",
+   "doi": "10.3389/fpsyg.2012.00463",
+   "paper_id": "10.3389/fpsyg.2012.00463",
+   "source": "crossref",
+   "url": "https://doi.org/10.3389/fpsyg.2012.00463",
+   "abstract": null,
+   "relevance": 0.25
+  },
+  {
+   "title": "Learning number notations – Comparison of a sign-value and place-value system",
+   "authors": "Hanna Weiers; Camilla Gilmore; Matthew Inglis",
+   "year": "2025-03-14T00:00:00",
+   "doi": "10.5964/jnc.13401",
+   "paper_id": "10.5964/jnc.13401",
+   "source": "crossref",
+   "url": "https://doi.org/10.5964/jnc.13401",
+   "abstract": "<jats:p>Although numbers are universal, there are great differences between languages and cultures in terms of how they are represented. Numerical notation can influence number processing. Two well-known types of notational systems are sign-value, such as the Roman numeral system, and place-value systems, such as the Indo-Arabic numeral system. What is involved in learning each system? Here we report a study that investigated adults’ abilities to implicitly learn an artificially created sign-value or place-value system. We asked if they could perform symbolic comparison and ordering tasks usin",
+   "relevance": 0.25
+  },
+  {
+   "title": "value",
+   "authors": "",
+   "year": "1970-01-01T00:00:00",
+   "doi": "10.1007/978-3-540-72816-0_22755",
+   "paper_id": "10.1007/978-3-540-72816-0_22755",
+   "source": "crossref",
+   "url": "https://doi.org/10.1007/978-3-540-72816-0_22755",
+   "abstract": null,
+   "relevance": 0.25
+  },
+  {
+   "title": "value",
+   "authors": "",
+   "year": "1970-01-01T00:00:00",
+   "doi": "10.1007/978-3-540-72816-0_22753",
+   "paper_id": "10.1007/978-3-540-72816-0_22753",
+   "source": "crossref",
+   "url": "https://doi.org/10.1007/978-3-540-72816-0_22753",
+   "abstract": null,
+   "relevance": 0.25
+  },
+  {
+   "title": "value",
+   "authors": "",
+   "year": "1970-01-01T00:00:00",
+   "doi": "10.1007/978-3-540-72816-0_22754",
+   "paper_id": "10.1007/978-3-540-72816-0_22754",
+   "source": "crossref",
+   "url": "https://doi.org/10.1007/978-3-540-72816-0_22754",
+   "abstract": null,
+   "relevance": 0.25
+  },
+  {
+   "title": "Yield performance and stability analysis of three cultivars of Gayo Arabica coffee across six different environments",
+   "authors": "E. Wardiana; E. Randriani; Dani; N. K. Izzah; M. Ibrahim; Kurnia Dewi Sasmita; Saefudin; D. Pranowo; M. Herman; H. Supriadi; Asif Aunillah; E. Purwanto; D. Listyati",
+   "year": "2024-01-01T00:00:00",
+   "doi": "10.1515/opag-2022-0249",
+   "paper_id": "a9b163f53d3c6e50322ddf0c9251ea1a9a46cf4d",
+   "source": "semantic",
+   "url": "https://www.semanticscholar.org/paper/a9b163f53d3c6e50322ddf0c9251ea1a9a46cf4d",
+   "abstract": "Abstract The three cultivars of Gayo Arabica coffee (GAC) are distributed widely in the Gayo Highlands, Aceh Province, Indonesia, between 900 and 1,700 m above sea level (masl). The difference in altitude affects the yield and quality of coffee, and Arabica coffee has biennial bearing characteristics, so there are always annual yield fluctuations. This study aimed to determine the yield performance and stability level of the three GAC cultivars, Gayo 1, Gayo 2, and Gayo 3 (G3), across six different environments. The study used a randomized complete block design with three replications. The six",
+   "relevance": 0.25
+  },
+  {
+   "title": "Diagnostic SARS-CoV-2 Cycle Threshold Value Predicts Disease Severity, Survival, and Six-Month Sequelae in COVID-19 Symptomatic Patients",
+   "authors": "M. Trunfio; Francesco Venuti; Francesca Alladio; B. Longo; E. Burdino; F. Cerutti; V. Ghisetti; R. Bertucci; Carlo Picco; S. Bonora; G. Di Perri; A. Calcagno",
+   "year": "2021-02-01T00:00:00",
+   "doi": "10.3390/v13020281",
+   "paper_id": "8f75d231fe259c741328c56d1642dff2539a2037",
+   "source": "semantic",
+   "url": "https://www.semanticscholar.org/paper/8f75d231fe259c741328c56d1642dff2539a2037",
+   "abstract": "To date, there is no severe acute respiratory syndrome coronavirus 2-(SARS-CoV-2)-specific prognostic biomarker available. We assessed whether SARS-CoV-2 cycle threshold (Ct) value at diagnosis could predict novel CoronaVirus Disease 2019 (COVID-19) severity, clinical manifestations, and six-month sequelae. Hospitalized and outpatient cases were randomly sampled from the diagnoses of March 2020 and data collected at 6 months by interview and from the regional database for COVID-19 emergency. Patients were stratified according to their RNA-dependent-RNA-polymerase Ct in the nasopharyngeal swab ",
+   "relevance": 0.25
+  },
+  {
+   "title": "The Indus Sign List",
+   "authors": "",
+   "year": "2015-02-06T00:00:00",
+   "doi": "10.2307/j.ctvr43jmf.10",
+   "paper_id": "10.2307/j.ctvr43jmf.10",
+   "source": "crossref",
+   "url": "https://doi.org/10.2307/j.ctvr43jmf.10",
+   "abstract": null,
+   "relevance": 0.25
+  },
+  {
+   "title": "Numeral Incorporation in Japanese Sign Language",
+   "authors": "Mish Ktejik",
+   "year": "2013-12-01T00:00:00",
+   "doi": "10.1353/sls.2013.0003",
+   "paper_id": "10.1353/sls.2013.0003",
+   "source": "crossref",
+   "url": "https://doi.org/10.1353/sls.2013.0003",
+   "abstract": "<jats:p xml:lang=\"en\">This article explores the morphological process of numeral incorporation in Japanese Sign Language. Numeral incorporation is defined and the available research on numeral incorporation in signed language is discussed. The numeral signs in Japanese Sign Language are then introduced and followed by an explanation of the numeral morphemes which are bound to root morphemes. Fourteen different paradigms are presented and, from these paradigms, two rules for numeral incorporate in Japanese Sign Language are proposed.</jats:p>",
+   "relevance": 0.25
+  },
+  {
+   "title": "Historical relationships between numeral signs in Japanese Sign Language, South Korean Sign Language and Taiwan Sign Language",
+   "authors": "Keiko Sagara",
+   "year": "2022-11-21T00:00:00",
+   "doi": "10.1515/9781501510243-002",
+   "paper_id": "10.1515/9781501510243-002",
+   "source": "crossref",
+   "url": "https://doi.org/10.1515/9781501510243-002",
+   "abstract": null,
+   "relevance": 0.25
+  },
+  {
+   "title": "Numeral variation in Yucatec Maya Sign Languages",
+   "authors": "Collí Collí, Geli; Safar, Josefina,; Collí Hau, Merli; Le Guen, Olivier",
+   "year": "2018-01-01T00:00:00+00:00",
+   "doi": "10.1353/sls.2018.0014",
+   "paper_id": 289965474,
+   "source": "core",
+   "url": "https://doi.org/10.1353/sls.2018.0014",
+   "abstract": "In this article, we examine various strategies used to express cardinal numbers in Yucatec Maya Sign Languages (YMSLs) from three historically unrelated communities in Yucatan, Mexico: Chican, Nohkop, and Cepeda Peraza. Our findings describe some numeral strategies, which remained unattested in previous accounts, and demonstrate that YMSL numerals exhibit patterns of systematic inter- and intracommunity variation as a result of linguistic and sociolinguistic factors. These patterns are still in process of becoming solidified and a high level of individual variation persists. The analysis of nu",
+   "relevance": 0.25
+  },
+  {
+   "title": "Relation Between Harappan And Brahmi Scripts",
+   "authors": "Ganguly,Subhajit; Subhajit Ganguly (97729)",
+   "year": "2013-03-25T00:00:00+00:00",
+   "doi": "10.6084/m9.figshare.658858",
+   "paper_id": 49466951,
+   "source": "core",
+   "url": "https://doi.org/10.6084/m9.figshare.658858",
+   "abstract": "Around 45 odd signs out of the total number of Harappan signs found make up almost 100 percent of the inscriptions, in some form or other, as said earlier. Out of these 45 signs, around 40 are readily distinguishable. These form an almost exclusive and unique set. The primary signs are seen to have many variants, as in Brahmi. Many of these provide us with quite a vivid picture of their evolution, depending upon the factors of time, place and usefulness. Even minor adjustments in such signs, depending upon these factors, are noteworthy. Many of the signs in this list are the same as or are ver",
+   "relevance": 0.25
+  },
+  {
+   "title": "A probabilistic model of Ancient Egyptian writing",
+   "authors": "Rahman, Fahrurrozi; Nederhof, Mark Jan",
+   "year": "",
+   "doi": "",
+   "paper_id": 388398973,
+   "source": "core",
+   "url": "https://core.ac.uk/download/30319664.pdf",
+   "abstract": "This article investigates a probabilistic model to describe how signs form words in Ancient Egyptian writing. This applies to both hieroglyphic and hieratic texts. The model uses an intermediate layer of sign functions. Experiments are concerned with finding the most likely sequence of sign functions that relates a given sequence of signs and a given sequence of phonemes",
+   "relevance": 0.25
+  },
+  {
+   "title": "From Agricultural Waste to Sustainable Adsorbent: Characterization of Hazelnut Shell Biochar and Its Performance in Waste Frying Oil Purification.",
+   "authors": "Özuysal A; Öncü Glaue Ş; Akcan T",
+   "year": "2026-01-01T00:00:00",
+   "doi": "10.3390/foods15162788",
+   "paper_id": "PMID:42650482",
+   "source": "europepmc",
+   "url": "https://europepmc.org/articles/PMC13512647",
+   "abstract": "Agricultural hazelnut shell waste was converted into biochar by slow pyrolysis at 500, 700, and 900 °C and evaluated as a sustainable adsorbent for waste frying oil purification. The biochars were characterized by proximate, thermal, spectroscopic, morphological, and elemental analyses, including Brunauer-Emmett-Teller (BET) surface-area measurement, and benchmarked against activated carbon and Magnesol. Pyrolysis markedly developed the pore structure, increasing the BET surface area from 1.68 m<sup>2</sup>/g in the raw shell to 666.05 m<sup>2</sup>/g at 900 °C, and an exploratory principal co",
+   "relevance": 0.0
+  },
+  {
+   "title": "Environmental DNA screening of Phocoenobacter atlanticus subsp. atlanticus in Atlantic salmon aquaculture.",
+   "authors": "Strand DA; Wiik-Nielsen J; Mohammad S; Nilsen H; Langhelle B; Holmeset M; Patel S; Log Persson H; Colquhoun D",
+   "year": "2026-01-01T00:00:00",
+   "doi": "10.1371/journal.pone.0347930",
+   "paper_id": "PMID:42044177",
+   "source": "europepmc",
+   "url": "https://europepmc.org/articles/PMC13120051",
+   "abstract": "There has been a drastic increase of pasteurellosis cases in Atlantic salmon aquaculture in Norway since 2018, caused by the bacterium Phocoenobacter atlanticus subsp. atlanticus, resulting in reduced animal welfare and increased mortalities. Early detection and identification of pathogens are crucial in intensive aquaculture to enable implementation of effective management and mitigation strategies. The increased application of environmental DNA (eDNA) monitoring in aquatic environments demonstrates the potential use for early detection of pathogens in aquaculture. In this study we investigat",
+   "relevance": 0.0
+  },
+  {
+   "title": "High-performance thin-layer chromatographic method for simultaneous determination of some Angiotensin II Receptor Antagonists with amlodipine in spiked human plasma with UV detection.",
+   "authors": "Khorshed AA; Abdelnaeem FM; Nagy DM; Oraby M; Derayea SM",
+   "year": "2026-01-01T00:00:00",
+   "doi": "10.1186/s13065-026-01765-6",
+   "paper_id": "PMID:41872933",
+   "source": "europepmc",
+   "url": "https://europepmc.org/articles/PMC13064381",
+   "abstract": "A simple, sensitive, precise, and cost-effective high-performance thin-layer chromatographic method has been developed and validated for the simultaneous determination of Amlodipine and some Angiotensin II Receptor Antagonist drugs, including Olmesartan, Telmisartan, Candesartan, Losartan, and Irbesartan, in spiked human plasma. The HPTLC analysis utilized a mobile phase consisting of toluene: ethyl acetate: methanol: acetone: acetic acid (6:1.5:1:0.5:1, v/v/v/v/v) on an aluminum-backed layer of silica gel 60 F254. Amlodipine demonstrated a linear relationship within the range of 60-600 ng/ban",
+   "relevance": 0.0
+  },
+  {
+   "title": "Optical Access to Dark Excitons Via Spin-Phonon Fano Interference.",
+   "authors": "Schindler JJ; Barthelmi K; Glazov MM; Sgroi C; Scholz S; Ludwig A; Wieck AD; Debus J",
+   "year": "2026-01-01T00:00:00",
+   "doi": "10.1002/advs.78207",
+   "paper_id": "PMID:42875814",
+   "source": "europepmc",
+   "url": "https://europepmc.org/articles/PMC13669229",
+   "abstract": "Spin-dark excitons in semiconductor nanostructures are inherently optically silent: angular-momentum selection rules forbid their radiative recombination, granting long lifetimes attractive for quantum information storage and excitonic condensation, but placing their energy structure and bright-dark coupling beyond standard optical spectroscopy. Established access routes rely on symmetry-lowering perturbations, dedicated single-emitter device fabrication, or near-field methods, each of which perturbs the states under study or excludes ensembles. Here, we show that a Fano-type quantum interfere",
+   "relevance": 0.0
+  },
+  {
+   "title": "Gradience as a cognitive principle for evaluating numerical notations.",
+   "authors": "Chrisomalis S",
+   "year": "2026-01-01T00:00:00",
+   "doi": "10.1073/pnas.2522563123",
+   "paper_id": "PMID:41686446",
+   "source": "europepmc",
+   "url": "https://europepmc.org/articles/PMC12912985",
+   "abstract": "More than 100 historically, archaeologically and ethnographically attested numerical notations have been used over the past 5,000 y; however, because most of those systems are no longer used, experimental investigation is challenging. Prior research often assumes, rather than demonstrates, the inferiority of notations like Roman numerals. Gradience is a principle whereby the length of numeral phrases correlates with the magnitude of the numbers being represented. In general, but inconsistently, larger numbers require more signs, just as larger sets of abstract dot patterns occupy more space. T",
+   "relevance": 0.0
+  },
+  {
+   "title": "How well do we need to measure the Higgs boson mass and self-coupling?",
+   "authors": "Rick S. Gupta; Heidi Rzehak; James D. Wells",
+   "year": "2013-05-28T07:45:32",
+   "doi": "10.1103/PhysRevD.88.055024",
+   "paper_id": "1305.6397v2",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1305.6397v2",
+   "abstract": "Much of the discussion regarding future measurements of the Higgs boson mass and self-coupling is focussed on how well various collider options can do. In this article we ask a physics-based question of how well do we need colliders to measure these quantities to have an impact on discovery of new physics or an impact in how we understand the role of the Higgs boson in nature. We address the question within the framework of the Standard Model and various beyond the Standard Model scenarios, including supersymmetry and theories of composite Higgs bosons. We conclude that the LHC's stated abilit",
+   "relevance": 0.0
+  },
+  {
+   "title": "LLMs as Writing Assistants: Exploring Perspectives on Sense of Ownership and Reasoning",
+   "authors": "Azmine Toushik Wasi; Mst Rafia Islam; Raima Islam",
+   "year": "2024-03-20T21:06:42",
+   "doi": "10.1145/3690712.3690723",
+   "paper_id": "2404.00027v5",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2404.00027v5",
+   "abstract": "Sense of ownership in writing confines our investment of thoughts, time, and contribution, leading to attachment to the output. However, using writing assistants introduces a mental dilemma, as some content isn't directly our creation. For instance, we tend to credit Large Language Models (LLMs) more in creative tasks, even though all tasks are equal for them. Additionally, while we may not claim complete ownership of LLM-generated content, we freely claim authorship. We conduct a short survey to examine these issues and understand underlying cognitive processes in order to gain a better knowl",
+   "relevance": 0.0
+  },
+  {
+   "title": "Information-Theoretic Characterization of Vowel Harmony: A Cross-Linguistic Study on Word Lists",
+   "authors": "Julius Steuer; Badr Abdullah; Johann-Mattis List; Dietrich Klakow",
+   "year": "2023-08-09T11:32:16",
+   "doi": "",
+   "paper_id": "2308.04885v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2308.04885v1",
+   "abstract": "We present a cross-linguistic study that aims to quantify vowel harmony using data-driven computational modeling. Concretely, we define an information-theoretic measure of harmonicity based on the predictability of vowels in a natural language lexicon, which we estimate using phoneme-level language models (PLMs). Prior quantitative studies have relied heavily on inflected word-forms in the analysis of vowel harmony. We instead train our models using cross-linguistically comparable lemma forms with little or no inflection, which enables us to cover more under-studied languages. Training data fo",
+   "relevance": 0.0
+  },
+  {
+   "title": "List homomorphism problems for signed trees",
+   "authors": "Jan Bok; Richard Brewster; Tomás Feder; Pavol Hell; Nikola Jedličková",
+   "year": "2020-05-12T04:57:23",
+   "doi": "10.1016/j.disc.2022.113257",
+   "paper_id": "2005.05547v5",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2005.05547v5",
+   "abstract": "We consider homomorphisms of signed graphs from a computational perspective. In particular, we study the list homomorphism problem seeking a homomorphism of an input signed graph $(G,σ)$, equipped with lists $L(v) \\subseteq V(H), v \\in V(G)$, of allowed images, to a fixed target signed graph $(H,π)$. The complexity of the similar homomorphism problem without lists (corresponding to all lists being $L(v)=V(H)$) has been previously classified by Brewster and Siggers, but the list version remains open and appears difficult. We illustrate this difficulty by classifying the complexity of the proble",
+   "relevance": 0.0
+  },
+  {
+   "title": "Toward a Decipherment of the Harappan Writing",
+   "authors": "Walter A. Fairservis",
+   "year": "1992-01-01T00:00:00",
+   "doi": "10.1163/9789004676756_004",
+   "paper_id": "10.1163/9789004676756_004",
+   "source": "crossref",
+   "url": "https://doi.org/10.1163/9789004676756_004",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "The Harappan Texts",
+   "authors": "Walter A. Fairservis",
+   "year": "1992-01-01T00:00:00",
+   "doi": "10.1163/9789004676756_006",
+   "paper_id": "10.1163/9789004676756_006",
+   "source": "crossref",
+   "url": "https://doi.org/10.1163/9789004676756_006",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "Implementing the syntax of japanese numeral classifiers",
+   "authors": "Siegel, Melanie; Bender, Emily M.",
+   "year": "2011-12-14T00:00:00+00:00",
+   "doi": "",
+   "paper_id": 6102505,
+   "source": "core",
+   "url": "https://core.ac.uk/download/14523498.pdf",
+   "abstract": "While the sortal constraints associated with Japanese numeral classifiers are wellstudied, less attention has been paid to the details of their syntax. We describe an analysis implemented within a broadcoverage HPSG that handles an intricate set of numeral classifier construction types and compositionally relates each to an appropriate semantic representation, using Minimal Recursion Semantics",
+   "relevance": 0.0
+  },
+  {
+   "title": "Collaborative reflection and trauma : narrative writing as a healing intervention",
+   "authors": "Denejkina, Anna (R19494); Joseph, Sue",
+   "year": "2021-01-01T00:00:00+00:00",
+   "doi": "",
+   "paper_id": 121754992,
+   "source": "core",
+   "url": "",
+   "abstract": "Narrative writing as a healing intervention involves the repeated recounting of a traumatic event. Research shows the benefits of narrative writing as an intervention for posttraumatic stress and the development of posttraumatic growth. Studies report significant upturn in mood and increase of post-traumatic growth in participants, and less negative emotions related to the recall of the traumatic event. Through the process of collaborative reflection, this paper analyses if the positive effect of narrative writing as intervention for posttraumatic stress is experienced without a structured app",
+   "relevance": 0.0
+  }
+ ],
+ "neighbors_read_full_text": [
+  {
+   "title": "Equidistributions of Sign Patterns of the Liouville Function and Normal Numbers",
+   "paper_id": "2211.09736v2",
+   "words": 5120
+  },
+  {
+   "title": "Squares in arithmetic progression over quadratic extensions of number fields",
+   "paper_id": "2602.03251v1",
+   "words": 6560
+  },
+  {
+   "title": "On the number of even values of an eta-quotient",
+   "paper_id": "2210.09451v2",
+   "words": 3057
+  }
+ ],
+ "gaps": [
+  {
+   "gap": "neighbors surfaced but not read in full text (abstracts never establish novelty)",
+   "neighbors": [
+    "Added Value of Frequency of Imaging Markers for Prediction of Outcome After Intracerebral Hemorrhage: A Secondary Analysis of Existing Data",
+    "Optimizing packaging process efficiency and quality control at a black carbon manufacturer through lean six sigma and design of experiment",
+    "Evaluation of the hematology analyzer test performance using six sigma metrics: A cross sectional study",
+    "The In-Car Sign Language Corpus (ICSL): A Multi-Modal Resource for Constrained-Space Sign Language Recognition",
+    "On the Frobenius fields of abelian varieties over number fields",
+    "The Role of Number Notation: Sign-Value Notation Number Processing is Easier than Place-Value",
+    "Learning number notations – Comparison of a sign-value and place-value system",
+    "value",
+    "value",
+    "value"
+   ]
+  }
+ ],
+ "citation_checks": []
+}

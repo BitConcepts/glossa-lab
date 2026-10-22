@@ -1,0 +1,79 @@
+[10/22/26 15:08:09] WARNING  No DOAJ API key provided. Searches will  doaj.py:48
+                             use public access with rate limits (100            
+                             requests/hour). Get a free API key at:             
+                             https://doaj.org/apply-for-api-key/                
+                    WARNING  PAPER_SEARCH_MCP_UNPAYWALL_EMAIL/UN unpaywall.py:29
+                             PAYWALL_EMAIL not configured.                      
+                             Unpaywall fallback will be skipped.                
+                             You can request free access at                     
+                             https://unpaywall.org/products/api                 
+[10/22/26 15:08:10] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[10/22/26 15:09:12] ERROR    Failed to download PMC PDF for           pmc.py:332
+                             PMC2721819:                                        
+                             HTTPSConnectionPool(host='pmc.ncbi.nlm.n           
+                             ih.gov', port=443): Read timed out.                
+                             (read timeout=60)                                  
+                    WARNING  Primary download failed for           server.py:811
+                             pmc/PMC2721819: Failed to download                 
+                             PMC PDF for PMC2721819:                            
+                             HTTPSConnectionPool(host='pmc.ncbi.nl              
+                             m.nih.gov', port=443): Read timed                  
+                             out. (read timeout=60)                             
+[10/22/26 15:09:19] WARNING  OpenAIRE v2 XML search failed,      openaire.py:297
+                             attempting legacy parser fallback:                 
+                             409 Client Error: Conflict for url:                
+                             https://api.openaire.eu/search/rese                
+                             archProducts?keywords=10.1073%2Fpna                
+                             s.0906237106&page=1&size=3                         
+[10/22/26 15:09:20] ERROR    OpenAIRE API request error: 400     openaire.py:319
+                             Client Error: Bad Request for url:                 
+                             https://api.openaire.eu/search/publ                
+                             ications?size=3&format=json&query=1                
+                             0.1073%2Fpnas.0906237106                           
+[10/22/26 15:09:22] WARNING  CORE request returned 500 (attempt 1/3). core.py:91
+                             Retrying in 1s                                     
+[10/22/26 15:09:24] WARNING  CORE request returned 500 (attempt 2/3). core.py:91
+                             Retrying in 2s                                     
+[10/22/26 15:09:27] WARNING  CORE request returned 500 (attempt 3/3). core.py:91
+                             Retrying in 4s                                     
+[10/22/26 15:09:33] INFO     Europe PMC search returned 1 papers europepmc.py:86
+                             for query: 10.1073/pnas.0906237106                 
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             http://www.pnas.org/cgi/reprint/106                
+                             /33/13685.pdf "HTTP/1.1 301 Moved                  
+                             Permanently"                                       
+[10/22/26 15:09:34] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.pnas.org/cgi/reprint/10                
+                             6/33/13685.pdf "HTTP/1.1 403                       
+                             Forbidden"                                         
+                    WARNING  Direct URL download failed for        server.py:198
+                             http://www.pnas.org/cgi/reprint/106/3              
+                             3/13685.pdf: peer closed connection                
+                             without sending complete message body              
+                             (incomplete chunked read)                          
+[10/22/26 15:10:05] ERROR    PMC search request error:                 pmc.py:95
+                             HTTPSConnectionPool(host='eutils.ncbi.nlm          
+                             .nih.gov', port=443): Read timed out.              
+                             (read timeout=30)                                  
+[10/22/26 15:10:06] ERROR    Error getting direct URL for         sci_hub.py:158
+                             10.1073/pnas.0906237106:                           
+                             HTTPSConnectionPool(host='sci-hub.se               
+                             ', port=443): Max retries exceeded                 
+                             with url: /10.1073/pnas.0906237106                 
+                             (Caused by ProxyError('Unable to                   
+                             connect to proxy',                                 
+                             RemoteDisconnected('Remote end                     
+                             closed connection without                          
+                             response')))                                       
+                    ERROR    Could not find PDF URL for            sci_hub.py:50
+                             identifier: 10.1073/pnas.0906237106                
+                    INFO     Warning: InsecureRequestWarning:      server.py:723
+                             Unverified HTTPS request is being                  
+                             made to host 'hatch-egress-proxy'.                 
+                             Adding certificate verification is                 
+                             strongly advised. See:                             
+                             https://urllib3.readthedocs.io/en/lat              
+                             est/advanced-usage.html#tls-warnings               
+                    INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   

@@ -46,11 +46,14 @@ was retired 2026-10-05 and is no longer active tooling.
 
 **Author:** Tristen Kyle Pierson / BitConcepts LLC
 
-**Current version:** v4 (June 2026)
+**Current version:** v5 (October 2026 — citation corrections from the
+2026-10-22 material audit, spec 025; source `.tex` only)
 
 **Source:** `glossa-corpus/indus/pierson_2026_indus_decipherment.tex`
 
 **PDF:** `glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v4.pdf`
+(the v4 PDF is the current compiled artifact; the v5 PDF is pending
+regeneration with xelatex — see `docs/research/PREPRINT_VERSIONING.md`)
 
 **DOI:** https://doi.org/10.5281/ZENODO.20414696 (Zenodo)
 

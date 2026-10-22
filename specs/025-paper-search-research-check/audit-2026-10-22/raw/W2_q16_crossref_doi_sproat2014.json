@@ -1,0 +1,17 @@
+{
+ "paper_id": "10.1353/lan.2014.0031",
+ "title": "A Statistical Comparison of Written Language and Nonlinguistic Symbol\n                        Systems",
+ "authors": "Richard Sproat",
+ "abstract": "<jats:p>Are statistical methods useful in distinguishing written language from\n                        nonlinguistic symbol systems? Some recent articles (Rao et al. 2009a, Lee et\n                        al. 2010a) have claimed so. Both of these previous articles use measures\n                        based at least in part on bigram conditional entropy, and subsequent work by\n                        one of the authors (Rao) has used other entropic measures. In both cases the\n                        authors have argued that the methods proposed either are useful for\n                        discriminating between linguistic and nonlinguistic systems (Lee et al.), or\n                        at least count as evidence of a more ‘inductive’ kind for the status of a\n                        system (Rao et al.).</jats:p>\n                  <jats:p>Using a larger set of nonlinguistic and comparison linguistic corpora\n                        than were used in these and other studies, I show that none of the\n                        previously proposed methods are useful as published. However, one of the\n                        measures proposed by Lee and colleagues (2010a) (with a different cut-off\n                        value) and a novel measure based on repetition turn out to be good measures\n                        for classifying symbol systems into the two categories. For the two ancient\n                        symbol systems of interest to Rao and colleagues (2009a) and Lee and\n                        colleagues (2010a)—Indus Valley inscriptions and Pictish symbols,\n                        respectively—both of these measures classify them as nonlinguistic,\n                        contradicting the findings of those previous works.</jats:p>",
+ "doi": "10.1353/lan.2014.0031",
+ "published_date": "2014-06-01T00:00:00",
+ "pdf_url": "",
+ "url": "https://doi.org/10.1353/lan.2014.0031",
+ "source": "crossref",
+ "updated_date": "",
+ "categories": "journal-article",
+ "keywords": "",
+ "citations": 19,
+ "references": "",
+ "extra": "{'publisher': 'Cambridge University Press (CUP)', 'container_title': 'Language', 'volume': '90', 'issue': '2', 'page': '457-481', 'issn': ['0097-8507', '1535-0665'], 'isbn': [], 'crossref_type': 'journal-article', 'member': '56', 'prefix': '10.1017'}"
+}

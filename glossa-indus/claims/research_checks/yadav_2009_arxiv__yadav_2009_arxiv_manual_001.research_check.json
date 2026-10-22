@@ -4,7 +4,7 @@
  "claim_id": "yadav_2009_arxiv_manual_001",
  "document_id": "yadav_2009_arxiv",
  "claim_statement": "Indus script sign frequencies follow a Zipf-Mandelbrot distribution.",
- "checked_at": "2026-10-22T14:00:21.154240+00:00",
+ "checked_at": "2026-10-22T14:33:20.597750+00:00",
  "advisory": true,
  "verdict": null,
  "protocol": "docs/paper-search-mcp.md#audit-protocol",
@@ -14,7 +14,7 @@
    "origin": "claim"
   },
   {
-   "text": "Indus script sign frequency distribution Zipf law statistics",
+   "text": "rank frequency power law fit for sign counts in the Mahadevan Indus corpus undeciphered script",
    "origin": "caller"
   }
  ],
@@ -45,17 +45,17 @@
   {
    "phrasing_origin": "caller",
    "tool": "search_papers",
-   "query": "Indus script sign frequency distribution Zipf law statistics"
+   "query": "rank frequency power law fit for sign counts in the Mahadevan Indus corpus undeciphered script"
   },
   {
    "phrasing_origin": "caller",
    "tool": "search_arxiv",
-   "query": "Indus script sign frequency distribution Zipf law statistics"
+   "query": "rank frequency power law fit for sign counts in the Mahadevan Indus corpus undeciphered script"
   },
   {
    "phrasing_origin": "caller",
    "tool": "search_crossref",
-   "query": "Indus script sign frequency distribution Zipf law statistics"
+   "query": "rank frequency power law fit for sign counts in the Mahadevan Indus corpus undeciphered script"
   }
  ],
  "source_errors": [],
@@ -83,14 +83,14 @@
    "relevance": 0.429
   },
   {
-   "title": "The origins of Zipf's meaning-frequency law",
-   "authors": "Ramon Ferrer-i-Cancho; Michael S. Vitevitch",
-   "year": "2017-12-30T17:59:41",
-   "doi": "10.1002/asi.24057",
-   "paper_id": "1801.00168v1",
-   "source": "arxiv",
-   "url": "http://arxiv.org/abs/1801.00168v1",
-   "abstract": "In his pioneering research, G. K. Zipf observed that more frequent words tend to have more meanings, and showed that the number of meanings of a word grows as the square root of its frequency. He derived this relationship from two assumptions: that words follow Zipf's law for word frequencies (a power law dependency between frequency and rank) and Zipf's law of meaning distribution (a power law dependency between number of meanings and rank). Here we show that a single assumption on the joint probability of a word and a meaning suffices to infer Zipf's meaning-frequency law or relaxed versions",
+   "title": "A method of identifying allographs in undeciphered scripts and its application to the Indus Valley Script",
+   "authors": "Shruti Daggumati; Peter Z. Revesz",
+   "year": "2021-02-17T00:00:00",
+   "doi": "10.1057/s41599-021-00713-0",
+   "paper_id": "10.1057/s41599-021-00713-0",
+   "source": "crossref",
+   "url": "https://doi.org/10.1057/s41599-021-00713-0",
+   "abstract": "<jats:title>Abstract</jats:title><jats:p>This work describes a general method of testing for redundancies in the sign lists of ancient scripts by data mining the positions of the signs within the inscriptions. The redundant signs are allographs of the same grapheme. The method is applied to the undeciphered Indus Valley Script, which stands out from other ancient scripts by having a large proposed sign list that contains dozens of asymmetric signs that have mirrored pairs. By a statistical analysis of mirrored asymmetric signs, this paper shows that the Indus Valley Script was multi-directiona",
    "relevance": 0.429
   },
   {
@@ -127,17 +127,6 @@
    "relevance": 0.286
   },
   {
-   "title": "Evaluation of Mandelbrot-Zipf rank distribution parameters",
-   "authors": "А.И. Ходырев; A.I. Khodyrev; V.Y. Dubnitsky; В.Ю. Дубницький; О.І. Ходирєв",
-   "year": "2010-01-01T00:00:00+00:00",
-   "doi": "",
-   "paper_id": 69469909,
-   "source": "core",
-   "url": "",
-   "abstract": "Получены оценки параметра распределения Ципфа-Мандельброта методом моментов и методом максимума правдоподобия.Одержані оцінки параметра розподілу Ціпфа-Манедельброта методом моментів та методом максимуму правдоподібності.Evaluations of Zipf-Mandelbrot distribution parameter were obtained by method of moments and method of maximum likelihood",
-   "relevance": 0.286
-  },
-  {
    "title": "Network analysis of a corpus of undeciphered Indus civilization inscriptions indicates syntactic organization",
    "authors": "Sitabhra Sinha; Md Izhar Ashraf; Raj Kumar Pan; Bryan Kenneth Wells",
    "year": "2010-05-27T07:24:29",
@@ -146,6 +135,17 @@
    "source": "arxiv",
    "url": "http://arxiv.org/abs/1005.4997v1",
    "abstract": "Archaeological excavations in the sites of the Indus Valley civilization (2500-1900 BCE) in Pakistan and northwestern India have unearthed a large number of artifacts with inscriptions made up of hundreds of distinct signs. To date there is no generally accepted decipherment of these sign sequences and there have been suggestions that the signs could be non-linguistic. Here we apply complex network analysis techniques to a database of available Indus inscriptions, with the aim of detecting patterns indicative of syntactic organization. Our results show the presence of patterns, e.g., recursive",
+   "relevance": 0.286
+  },
+  {
+   "title": "Deep Learning the Indus Script",
+   "authors": "Satish Palaniappan; Ronojoy Adhikari",
+   "year": "2017-02-02T01:56:22",
+   "doi": "",
+   "paper_id": "1702.00523v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1702.00523v1",
+   "abstract": "Standardized corpora of undeciphered scripts, a necessary starting point for computational epigraphy, requires laborious human effort for their preparation from raw archaeological records. Automating this process through machine learning algorithms can be of significant aid to epigraphical research. Here, we take the first steps in this direction and present a deep learning pipeline that takes as input images of the undeciphered Indus script, as found in archaeological artifacts, and returns as output a string of graphemes, suitable for inclusion in a standard corpus. The image is first decomp",
    "relevance": 0.286
   },
   {
@@ -160,69 +160,58 @@
    "relevance": 0.286
   },
   {
-   "title": "Indus script corpora, archaeo-metallurgy and Meluhha (Mleccha)",
-   "authors": "Srinivasan Kalyanaraman",
-   "year": "2012-04-17T14:14:26",
+   "title": "Crossing the Indus Threshold \n&lt;div&gt;\n A Falsifiable, Corpus-Wide Functional Decipherment of the Indus Script\n&lt;/div&gt;",
+   "authors": "Kevin Shaw",
+   "year": "2026-01-01T00:00:00",
+   "doi": "10.2139/ssrn.6080446",
+   "paper_id": "10.2139/ssrn.6080446",
+   "source": "crossref",
+   "url": "https://doi.org/10.2139/ssrn.6080446",
+   "abstract": "<jats:p>This monograph presents the first complete phonetic envelope mapping of the Indus Script corpus using a constraint-driven computational framework. Through the application of LISSE (Linguistic Inspection of Sound Structure Environments) and LUCAS (Linguistic Understanding Construction Assembly System), we assign non-interpretive phonetic shadows to all 417 Mahadevan signs plus documented variants and outliers, totaling 500 distinct graphic units. The resulting phonetic scaffolding passes corpus-wide consistency checks across approximately 4,000 inscriptions, demonstrating coherent admin",
+   "relevance": 0.286
+  },
+  {
+   "title": "Agricultural Signs in the Indus Script",
+   "authors": "Iravatham Mahadevan",
+   "year": "2012-12-30T00:00:00",
+   "doi": "10.25003/ras.02.02.0001",
+   "paper_id": "10.25003/ras.02.02.0001",
+   "source": "crossref",
+   "url": "https://doi.org/10.25003/ras.02.02.0001",
+   "abstract": null,
+   "relevance": 0.286
+  },
+  {
+   "title": "Network analysis reveals structure indicative of syntax in the corpus of undeciphered Indus civilization inscriptions",
+   "authors": "Sitabhra Sinha; Raj Kumar Pan; Nisha Yadav; Mayank Vahia; Iravatham Mahadevan",
+   "year": "2009-01-01T00:00:00",
+   "doi": "10.3115/1708124.1708128",
+   "paper_id": "10.3115/1708124.1708128",
+   "source": "crossref",
+   "url": "https://doi.org/10.3115/1708124.1708128",
+   "abstract": null,
+   "relevance": 0.143
+  },
+  {
+   "title": "The ATIS sign language corpus",
+   "authors": "Morrissey, Sara; Dreuw, Philippe; Stein, Daniel; Way, Andy; van Zijl, Lynette; Bungeroth, Jan; Ney, Hermann",
+   "year": "2008-01-01T00:00:00+00:00",
    "doi": "",
-   "paper_id": "1204.3800v1",
-   "source": "arxiv",
-   "url": "http://arxiv.org/abs/1204.3800v1",
-   "abstract": "Jules Bloch's work on formation of the Marathi language has to be expanded further to provide for a study of evolution and formation of Indian languages in the Indian language union (sprachbund). The paper analyses the stages in the evolution of early writing systems which began with the evolution of counting in the ancient Near East. A stage anterior to the stage of syllabic representation of sounds of a language, is identified. Unique geometric shapes required for tokens to categorize objects became too large to handle to abstract hundreds of categories of goods and metallurgical processes d",
-   "relevance": 0.286
-  },
-  {
-   "title": "The Buddhist Indus Script",
-   "authors": "",
-   "year": "2020-03-26T00:00:00",
-   "doi": "10.2307/j.ctvzgb7m5.8",
-   "paper_id": "10.2307/j.ctvzgb7m5.8",
-   "source": "crossref",
-   "url": "https://doi.org/10.2307/j.ctvzgb7m5.8",
-   "abstract": null,
-   "relevance": 0.286
-  },
-  {
-   "title": "The Indus Valley Script",
-   "authors": "",
-   "year": "2015-02-06T00:00:00",
-   "doi": "10.2307/j.ctvr43jmf.9",
-   "paper_id": "10.2307/j.ctvr43jmf.9",
-   "source": "crossref",
-   "url": "https://doi.org/10.2307/j.ctvr43jmf.9",
-   "abstract": null,
-   "relevance": 0.286
-  },
-  {
-   "title": "Deciphering Indus script and Pashupati Seal of Indus Valley Civilization",
-   "authors": "Shahbaig Kahoor Khan",
-   "year": "2024-01-01T00:00:00",
-   "doi": "10.2139/ssrn.4900721",
-   "paper_id": "10.2139/ssrn.4900721",
-   "source": "crossref",
-   "url": "https://doi.org/10.2139/ssrn.4900721",
-   "abstract": "<jats:p>Indus Valley Civilization is one of the left out archaeological treasures, that is being ignored in the recent times. This paper is a guide to the scholars and the archaeologist, which will help them to solve the mysteries of the ancient Indus Civilization and its Script. The paper includes thorough research observations on the interpretation of the scripts. Among the script and the famous Pashupati seal has also been thoroughly interpreted and explained. This could be a guide to interpret Indus customs and culture more nearer to the truth of past. The political controversies altering ",
-   "relevance": 0.286
-  },
-  {
-   "title": "A FREQUENCY ANALYSIS OF THE INDUS SCRIPT",
-   "authors": "Subhash C. Kak",
-   "year": "1988-07-01T00:00:00",
-   "doi": "10.1080/0161-118891862873",
-   "paper_id": "10.1080/0161-118891862873",
-   "source": "crossref",
-   "url": "https://doi.org/10.1080/0161-118891862873",
-   "abstract": null,
-   "relevance": 0.286
-  },
-  {
-   "title": "Hybrid Zipf-Mandelbrot law",
-   "authors": "Pečarić D.; Jakšetić J.; Pečarić J.",
-   "year": "",
-   "doi": "10.7153/jmi-2019-13-20",
-   "paper_id": 132839476,
+   "paper_id": 333001735,
    "source": "core",
-   "url": "https://doi.org/10.7153/jmi-2019-13-20",
-   "abstract": "There is a unified approach, maximization of Shannon entropy, that naturally follows the path of generalization from Zipf's to hybrid Zipf's law. Extending this idea we make transition from Zipf-Mandelbrot to hybrid Zipf-Mandelbrot law. It is interesting that examination of its densities provides some new insights of Lerch's transcendent. © ELEMENT, Zagreb",
+   "url": "https://core.ac.uk/download/11309408.pdf",
+   "abstract": "Systems that automatically process sign language rely on appropriate data. We therefore present the ATIS sign language corpus that is based on the domain of air travel information. It is available for five languages, English, German, Irish sign language, German sign language and South African sign language. The corpus can be used for different tasks like automatic statistical translation and automatic sign language recognition and it allows the specific modelling of spatial references in signing space",
+   "relevance": 0.143
+  },
+  {
+   "title": "An Arabic Sign Language Corpus for Instructional Language in School",
+   "authors": "Wald, Mike; Almohimeed, Abdulaziz; Damper, Robert",
+   "year": "2010-05-23T01:00:00+01:00",
+   "doi": "",
+   "paper_id": 454645,
+   "source": "core",
+   "url": "",
+   "abstract": "Machine translation (MT) technology has made significant progress over the last decade and now offers the potential for Arabic sign language (ArSL) signers to access text published in Arabic. The dominant model of MT is now corpus based. In this model, the accuracy of translation correlates directly with size and coverage of the corpus. The corpus is a collection of translation examples constructed from existing documents such as books and newspapers; however, no written system for sign language (SL) comparable to that used for natural language has yet been developed. Hence, no SL documents ex",
    "relevance": 0.143
   },
   {
@@ -303,6 +292,28 @@
    "relevance": 0.0
   },
   {
+   "title": "A Corpus-based Study of Temporal Signals",
+   "authors": "Leon Derczynski; Robert Gaizauskas",
+   "year": "2012-03-22T18:08:47",
+   "doi": "",
+   "paper_id": "1203.5066v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1203.5066v1",
+   "abstract": "Automatic temporal ordering of events described in discourse has been of great interest in recent years. Event orderings are conveyed in text via va rious linguistic mechanisms including the use of expressions such as \"before\", \"after\" or \"during\" that explicitly assert a temporal relation -- temporal signals. In this paper, we investigate the role of temporal signals in temporal relation extraction and provide a quantitative analysis of these expres sions in the TimeBank annotated corpus.",
+   "relevance": 0.0
+  },
+  {
+   "title": "Corpus of Attestations of the Undeciphered Signs",
+   "authors": "",
+   "year": "2020-09-24T00:00:00",
+   "doi": "10.1017/9781108859745.007",
+   "paper_id": "10.1017/9781108859745.007",
+   "source": "crossref",
+   "url": "https://doi.org/10.1017/9781108859745.007",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
    "title": "Relation Between Harappan And Brahmi Scripts",
    "authors": "Ganguly,Subhajit; Subhajit Ganguly (97729)",
    "year": "2013-03-25T00:00:00+00:00",
@@ -312,40 +323,18 @@
    "url": "https://doi.org/10.6084/m9.figshare.658858",
    "abstract": "Around 45 odd signs out of the total number of Harappan signs found make up almost 100 percent of the inscriptions, in some form or other, as said earlier. Out of these 45 signs, around 40 are readily distinguishable. These form an almost exclusive and unique set. The primary signs are seen to have many variants, as in Brahmi. Many of these provide us with quite a vivid picture of their evolution, depending upon the factors of time, place and usefulness. Even minor adjustments in such signs, depending upon these factors, are noteworthy. Many of the signs in this list are the same as or are ver",
    "relevance": 0.0
-  },
-  {
-   "title": "What can we see from Investment Simulation based on Generalized (m,2)-Zipf law?",
-   "authors": "Hokky Situngkir; Yohanes Surya",
-   "year": "",
-   "doi": "",
-   "paper_id": 4234167,
-   "source": "core",
-   "url": "https://core.ac.uk/download/9315646.pdf",
-   "abstract": "The paper revisits the investment simulation based on strategies exhibited by Generalized (m,2)-Zipf law to present an interesting characterization of the wildness in financial time series. The investigations of dominant strategies on each specific time series shows that longer words dominant in larger time scale exhibit shorter dominant ones in smaller time scale and vice versa. Moreover, denoting the term wildness based on persistence over short term trend and memory represented by particular length of words, we can see how wild historical fluctuations over time series data coped with the Zi",
-   "relevance": 0.0
-  },
-  {
-   "title": "On Zipf–Mandelbrot entropy",
-   "authors": "Pečarić Đ.; Adil Khan M.; Pečarić J.",
-   "year": "",
-   "doi": "10.1016/j.cam.2018.07.002",
-   "paper_id": 132886606,
-   "source": "core",
-   "url": "https://doi.org/10.1016/j.cam.2018.07.002",
-   "abstract": "Zipf–Mandelbrot entropy has many applications in many applied sciences, for example, in information theory, ecology and economics, etc. The main purpose of this paper is to associate results for convex functions with Zipf–Mandelbrot entropy. First of all, we present some inequalities for convex functions and their applications for Csiszar divergence. Then we use two classes of convex functions and apply inequalities for convex functions and establish several results for Zipf–Mandelbrot entropy. Related results for Zipf–Mandelbrot entropies corresponding to different parameters have been proved",
-   "relevance": 0.0
   }
  ],
  "neighbors_read_full_text": [
   {
-   "title": "The origins of Zipf's meaning-frequency law",
-   "paper_id": "1801.00168v1",
-   "words": 8268
-  },
-  {
    "title": "Network analysis of a corpus of undeciphered Indus civilization inscriptions indicates syntactic organization",
    "paper_id": "1005.4997v1",
    "words": 9800
+  },
+  {
+   "title": "Deep Learning the Indus Script",
+   "paper_id": "1702.00523v1",
+   "words": 7474
   },
   {
    "title": "The Indus Script and Economics. A Role for Indus Seals and Tablets in Rationing and Administration of Labor",
@@ -359,24 +348,24 @@
    "neighbors": [
     "Statistical analysis of the Indus script using n-grams.",
     "A Structural-Semiotic Analysis of the Comb Sign M176 in the Indus Script as a Referent Category Classifier - A Hypothesis",
+    "A method of identifying allographs in undeciphered scripts and its application to the Indus Valley Script",
     "Table 6: Deviance of the species-rank abundance distribution (RAD) models revealing the best fits of the Mandelbrot or Zipf-Mandelbrot model for all sampled soil microbial communities.",
     "Random Sampling of the Zipf-Mandelbrot Distribution as a Representation of Vocabulary Growth by Martin Tunnicliffe and Gordon Hunter",
     "A Generalization of the Zipf-Mandelbrot Law in Linguistics",
-    "Evaluation of Mandelbrot-Zipf rank distribution parameters",
-    "Indus script corpora, archaeo-metallurgy and Meluhha (Mleccha)",
-    "The Buddhist Indus Script",
-    "The Indus Valley Script",
-    "Deciphering Indus script and Pashupati Seal of Indus Valley Civilization"
+    "Crossing the Indus Threshold \n&lt;div&gt;\n A Falsifiable, Corpus-Wide Functional Decipherment of the Indus Script\n&lt;/div&gt;",
+    "Agricultural Signs in the Indus Script",
+    "Network analysis reveals structure indicative of syntax in the corpus of undeciphered Indus civilization inscriptions",
+    "The ATIS sign language corpus"
    ]
   }
  ],
  "citation_checks": [
   {
-   "doi": "10.1126/science.1170391",
+   "doi": "10.1371/journal.pone.0009506",
    "resolved": {
-    "title": "Entropic Evidence for Linguistic Structure in the Indus Script",
-    "authors": "Rajesh P. N. Rao; Nisha Yadav; Mayank N. Vahia; Hrishikesh Joglekar; R. Adhikari; Iravatham Mahadevan",
-    "year": "2009-05-29T00:00:00",
+    "title": "Statistical Analysis of the Indus Script Using n-Grams",
+    "authors": "Nisha Yadav; Hrishikesh Joglekar; Rajesh P. N. Rao; Mayank N. Vahia; Ronojoy Adhikari; Iravatham Mahadevan",
+    "year": "2010-03-19T00:00:00",
     "venue": null
    }
   }

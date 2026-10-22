@@ -9448,3 +9448,80 @@ specs/065-s1-s5-heading-successor/extraction-S1.txt.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-22 — Spec 025 MATERIAL AUDIT EXECUTED: paper-search check of all 31 extracted claims + preprint citations
+
+Per the owner's 2026-10-22 order, executed on
+branch spec/025-paper-search-research-check
+(main merged in at a5a65f86) under the protocol
+in docs/paper-search-mcp.md. RESEARCH-CHECK
+stage sidecars now exist for all 31 claims in
+glossa-indus/claims/extracted_claims/ (advisory,
+verdict null by construction); all raw outputs,
+worker findings, and the audit report are filed
+in specs/025-paper-search-research-check/
+audit-2026-10-22/. Headline outcomes: both
+strongly_supported Yadav extractions verified
+verbatim against the source papers' full texts
+(the Zipf fit is on the EBUDS subset of M77;
+beginner/ender priority runs to Kondratov 1976
+and Mahadevan 1977); the Farmer-cluster
+"contradicted" framing did not survive the
+challenge pass as a settled refutation (Sproat
+2014 and Rao et al. 2010 read in full text —
+the literature position is contested and
+unresolved); a three-part positional grammar is
+published prior art (Wells 2015 ch. 3; Sinha et
+al. 2010; Yadav 2009; Fuls's positional classes);
+the fish = mīn rebus priority is Heras's, with
+Parpola 2010 a synthesis; the Roif document is
+a self-published manuscript with no venue or
+identifier of its own. No claim status, anchor,
+or score was changed by the audit; ten
+correction proposals are filed gate-pending in
+the audit directory. Open gaps include Kak
+1988, Mahadevan 1977 full text, Kondratov 1976,
+Korvink 2011, the Rao Science/PNAS full texts
+via this connector, and the session-long
+OpenAlex/Semantic Scholar 429 outages.
+
+AI disclosure: executed by an AI agent (Muse,
+via Muse) at the direction of Tristen Pierson,
+per constitution sec.VI.
+
+## 2026-10-22 — Preprint v5: citation corrections from the Spec 025 material audit
+
+glossa-corpus/indus/pierson_2026_indus_
+decipherment.tex bumped v4 → v5 (citation
+corrections only; docs/research/
+PREPRINT_VERSIONING.md and AGENTS.md updated).
+§8 entries corrected: Wells & Fuls 2015 (was
+"Wells 2011"); Parpola, Parpola & Brunswig 1977,
+JESHO 20(2), Simo Parpola first author (was
+1975, 18(2)); Crawford 2001 as the monograph
+(was an Archaeology International article);
+Parpola 2010 as the CICT conference lecture,
+Coimbatore (the World Archaeology 42(2)
+attribution was not verified in any reachable
+index — seven Crossref searches across two
+workers). Rao et al. Science 2009 entry added;
+the §1.2 entropy result now cites it instead of
+the PNAS Markov paper; the §2.1 Zipf exponent
+~1.7 no longer carries a Rao 2009 attribution
+(no text read reports it; Yadav 2010's full-text
+fit gives b = 2.59 on EBUDS/M77). Nair 2026
+characterizations in §1.3/§3.10/Acknowledgments
+corrected to his full text (independent scorecard
+study; hedged intermediate result — not a
+replication of this paper's tests); his three
+quoted statistics verified exact. Evidence and
+bounds per item: audit-2026-10-22/
+corrections_log.md. The v5 PDF was NOT
+regenerated (no xelatex in the audit
+environment); the v4 PDF remains the compiled
+artifact of record. Nothing submitted.
+Adversarial pass required before submission.
+
+AI disclosure: executed by an AI agent (Muse,
+via Muse) at the direction of Tristen Pierson,
+per constitution sec.VI.

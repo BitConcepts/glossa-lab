@@ -8,7 +8,7 @@ Read this file at the start of every session before making any changes.
 
 At the end of every session, make sure all changes are committed and pushed:
 
-`ash
+`^Hash
 git add -A && git commit -m "chore: session close" && git push
 `
 
@@ -46,14 +46,16 @@ was retired 2026-10-05 and is no longer active tooling.
 
 **Author:** Tristen Kyle Pierson / BitConcepts LLC
 
-**Current version:** v5 (October 2026 — citation corrections from the
-2026-10-22 material audit, spec 025; source `.tex` only)
+**Current version:** v6 (October 2026 — v5's audit citation
+corrections plus bibliography completion (five Mahadevan §8 entries)
+and the in-text paper-count qualification, from the spec-025 audit
+fix commission; source `.tex` and regenerated PDF)
 
 **Source:** `glossa-corpus/indus/pierson_2026_indus_decipherment.tex`
 
-**PDF:** `glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v4.pdf`
-(the v4 PDF is the current compiled artifact; the v5 PDF is pending
-regeneration with xelatex — see `docs/research/PREPRINT_VERSIONING.md`)
+**PDF:** `glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v6.pdf`
+(the v6 PDF is the current compiled artifact, regenerated 2026-10-22
+with xelatex — see `docs/research/PREPRINT_VERSIONING.md`)
 
 **DOI:** https://doi.org/10.5281/ZENODO.20414696 (Zenodo)
 

@@ -9610,3 +9610,40 @@ filed for the owner's approval — nothing published).
 
 AI disclosure: executed by an AI agent (Muse, via Muse)
 at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-22 — Spec 025 material audit: fix commission, batch C (P9, P10 flag, preprint v6 + adversarial pass)
+
+Batch C completes the fix commission. P9: the preprint's §8
+gains the five Mahadevan works the text already relied on
+(1981, 1982, 1986, 1989, 2011), from records verified at
+published-bibliography level on the batch-B evidence (the
+2011 identification is inferred and is stated as such
+wherever the entry is described); the §3.23/§3.24 paper
+counts, which no verifiable source supports, are qualified
+in the text as this program's own text-mining corpus counts.
+P10: the §8 Steinkeller 1982 entry is unchanged and stands
+flagged as unverified — new evidence positively indicates
+the titled article is JAOS 108(2):197–202 (1988), the 1988
+record was not substituted per the proposal's own rule, and
+the JAOS 102(2) contents check remains the one named open
+item. The preprint is bumped to v6 (source + regenerated
+PDF: TinyTeX XeLaTeX, two clean passes, 18 pages, corrected
+entries spot-checked in the rendered output; the v4 PDF is
+superseded). The adversarial pass required before submission
+was run on the v6 source by an independent engine and
+adjudicated finding-by-finding
+(audit-2026-10-22/adversarial_pass_2026-10-22.md): one
+finding sustained in narrow form (the §2.1 Zipf exponent
+~1.7 is the paper's own unreleased-corpus statistic without
+a checkable derivation — flagged for the owner's submission
+decision, not silently rewritten), three not sustained.
+Nothing has been submitted or deposited; the package stops
+at submission-ready (audit-2026-10-22/
+submission_package_summary_2026-10-22.md). No claim status,
+anchor, or score changed in any batch; H21 was not
+triggered (no anchor, language-model, or phase-result files
+touched) and the committed foundation report stands at
+59 OK / 0 failed / 6 warnings.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.

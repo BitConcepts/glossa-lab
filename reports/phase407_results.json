@@ -1,0 +1,252 @@
+{
+ "experiment": "spec042-phase407-arm-b-object-type-split",
+ "phase": 407,
+ "spec": "042-arm-b-object-type-split",
+ "freeze_digest": "6be2988d7f4c290591d36f391ac84a772f18a9121e35ddd0e251956b5260f753",
+ "claim_under_test": "STUDY-SPEC-028/ARM-B",
+ "outcome": "THIN",
+ "stop_gate": "0.4",
+ "stop_reason": "stratum TOO THIN: TAB (execution closes at gate 0.4; neither stratum computed; gate 0.5 not reached)",
+ "step0": {
+  "gate_0_1": {
+   "check": "every spec section 2 input hashes to its freeze-record value",
+   "pins": {
+    "backend/glossa_lab/data/yajnadevam_inscriptions.csv": {
+     "expected_sha256": "c02e3d7bb74cf5abb11cc94f88d8d469e6acc5d6fad4b7153c02c43428f58d98",
+     "observed_sha256": "c02e3d7bb74cf5abb11cc94f88d8d469e6acc5d6fad4b7153c02c43428f58d98",
+     "match": true
+    },
+    "reports/phase393_results.json": {
+     "expected_sha256": "0a1657a8af84615afbee95164cd1c10ea6fc5bc53d1b5a0a006b1862fa5ff607",
+     "observed_sha256": "0a1657a8af84615afbee95164cd1c10ea6fc5bc53d1b5a0a006b1862fa5ff607",
+     "match": true
+    },
+    "specs/028-harappa-robustness/pipeline393.py": {
+     "expected_sha256": "6c2ff91c41bbb283a513127c6ab7157c1805b640ba0d846f9c7d3349ab8a7b0e",
+     "observed_sha256": "6c2ff91c41bbb283a513127c6ab7157c1805b640ba0d846f9c7d3349ab8a7b0e",
+     "match": true
+    },
+    "specs/028-harappa-robustness/margins-audit.json": {
+     "expected_sha256": "15ae0281bb003f3b02742819349d3905004a282b28e9a2c00f433ac41c04bb6d",
+     "observed_sha256": "15ae0281bb003f3b02742819349d3905004a282b28e9a2c00f433ac41c04bb6d",
+     "match": true
+    },
+    "specs/028-harappa-robustness/freeze.json": {
+     "expected_sha256": "376cd8e7ebc21ef7c31d43270607f475bb7e685cdcbe88205d7092e17fc526cc",
+     "observed_sha256": "376cd8e7ebc21ef7c31d43270607f475bb7e685cdcbe88205d7092e17fc526cc",
+     "match": true
+    },
+    "backend/reports/INDUS_FINAL_ANCHORS.json": {
+     "expected_sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+     "observed_sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+     "match": true
+    }
+   },
+   "pass": true
+  },
+  "gate_0_2_store_inputs": {
+   "icit_converted_v2_keyed.json": {
+    "expected_sha256": "bbfdbcd5d5e3e3121251de91462af51dc702a4114a4d10ffd7061e1f5593a5c8",
+    "observed_sha256": "bbfdbcd5d5e3e3121251de91462af51dc702a4114a4d10ffd7061e1f5593a5c8",
+    "match": true
+   },
+   "horus_inscriptions.csv": {
+    "expected_sha256": "c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef",
+    "observed_sha256": "c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef",
+    "match": true
+   }
+  },
+  "gate_0_2": {
+   "check": "the frozen population flow re-run reproduces the recorded counts, flow, and Arm B analysis set exactly",
+   "flow_counts_observed": [
+    5679,
+    4531,
+    4505,
+    3605,
+    3144,
+    3030
+   ],
+   "flow_counts_recorded": [
+    5679,
+    4531,
+    4505,
+    3605,
+    3144,
+    3030
+   ],
+   "flow_matches_recorded_results": true,
+   "flow_matches_margins_audit": true,
+   "analysis_records": 3030,
+   "analysis_sites": [
+    "Chanhu-daro",
+    "Dholavira",
+    "Harappa",
+    "Kalibangan",
+    "Lothal",
+    "Mohenjo-daro"
+   ],
+   "cells_match_margins_audit": true,
+   "sign_columns": 125,
+   "sign_columns_recorded": 125,
+   "pass": true
+  },
+  "gate_0_3": {
+   "check": "partition census by recorded object type; the two strata sum to 3,030; a record typed neither SEAL nor TAB stops the run",
+   "census": {
+    "sites": [
+     "Chanhu-daro",
+     "Dholavira",
+     "Harappa",
+     "Kalibangan",
+     "Lothal",
+     "Mohenjo-daro"
+    ],
+    "SEAL": {
+     "Chanhu-daro": 52,
+     "Dholavira": 96,
+     "Harappa": 361,
+     "Kalibangan": 49,
+     "Lothal": 72,
+     "Mohenjo-daro": 1138
+    },
+    "TAB": {
+     "Chanhu-daro": 2,
+     "Dholavira": 15,
+     "Harappa": 1076,
+     "Kalibangan": 3,
+     "Lothal": 2,
+     "Mohenjo-daro": 164
+    },
+    "totals": {
+     "SEAL": 1768,
+     "TAB": 1262,
+     "all": 3030
+    }
+   },
+   "other_types_present": [],
+   "strata_sum": 3030,
+   "pass": true
+  },
+  "gate_0_4": {
+   "check": "at least 6 sites each carrying at least 20 inscriptions of the type, per stratum; either stratum below its floor closes the execution THIN (DD-042-2)",
+   "floors": {
+    "SEAL": {
+     "sites_at_or_above_floor": 6,
+     "sites_required": 6,
+     "min_per_site": 20,
+     "min_site_count": 49,
+     "per_site_counts": {
+      "Chanhu-daro": 52,
+      "Dholavira": 96,
+      "Harappa": 361,
+      "Kalibangan": 49,
+      "Lothal": 72,
+      "Mohenjo-daro": 1138
+     },
+     "pass": true,
+     "too_thin": false
+    },
+    "TAB": {
+     "sites_at_or_above_floor": 2,
+     "sites_required": 6,
+     "min_per_site": 20,
+     "min_site_count": 2,
+     "per_site_counts": {
+      "Chanhu-daro": 2,
+      "Dholavira": 15,
+      "Harappa": 1076,
+      "Kalibangan": 3,
+      "Lothal": 2,
+      "Mohenjo-daro": 164
+     },
+     "pass": false,
+     "too_thin": true
+    }
+   },
+   "pass": false
+  },
+  "gate_0_5": {
+   "reached": false
+  }
+ },
+ "strata": null,
+ "headline": "THIN",
+ "anchors": {
+  "before": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+  "after": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+  "byte_identical": true
+ },
+ "descriptions": {
+  "SEAL": {
+   "records": 1768,
+   "description_join_coverage": 1768,
+   "period": {
+    "-": 1005,
+    "1": 1,
+    "2": 37,
+    "3": 33,
+    "4": 23,
+    "4/5": 8,
+    "5": 21,
+    "5/6": 1,
+    "5?": 1,
+    "6": 11,
+    "Early": 29,
+    "Intermediate": 302,
+    "Late": 248,
+    "Late ": 1,
+    "Layer 10": 2,
+    "Layer 11": 2,
+    "Layer 12": 1,
+    "Layer 13": 1,
+    "Layer 15": 1,
+    "Layer 19": 1,
+    "Layer 2": 8,
+    "Layer 25": 1,
+    "Layer 3": 4,
+    "Layer 3-8": 1,
+    "Layer 4": 10,
+    "Layer 4-6": 1,
+    "Layer 5": 2,
+    "Layer 6": 3,
+    "Layer 6A": 1,
+    "Layer 7": 3,
+    "Layer 8": 1,
+    "Layer 8C": 1,
+    "Layer 9": 2,
+    "Layer13": 1
+   },
+   "preservation": {
+    "-": 2,
+    "chipped": 97,
+    "complete": 1101,
+    "fragment": 388,
+    "partly damaged": 82,
+    "slightly chipped": 98
+   }
+  },
+  "TAB": {
+   "records": 1262,
+   "description_join_coverage": 1262,
+   "period": {
+    "-": 698,
+    "2": 1,
+    "2/3": 2,
+    "3": 495,
+    "4": 1,
+    "5": 2,
+    "6": 8,
+    "Early": 2,
+    "Intermediate": 32,
+    "Late": 21
+   },
+   "preservation": {
+    "chipped": 59,
+    "complete": 955,
+    "fragment": 191,
+    "partly damaged": 12,
+    "slightly chipped": 45
+   }
+  }
+ }
+}

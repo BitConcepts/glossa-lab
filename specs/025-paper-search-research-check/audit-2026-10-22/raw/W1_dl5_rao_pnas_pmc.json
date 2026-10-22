@@ -1,0 +1,1 @@
+"Download failed after OA fallback chain and Sci-Hub fallback. Details: primary: Failed to download PMC PDF for PMC2721819: HTTPSConnectionPool(host='pmc.ncbi.nlm.nih.gov', port=443): Read timed out. (read timeout=60) | unpaywall: no OA URL found (or PAPER_SEARCH_MCP_UNPAYWALL_EMAIL/UNPAYWALL_EMAIL missing)"

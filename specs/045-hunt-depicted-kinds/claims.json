@@ -1,0 +1,776 @@
+{
+ "spec": "045-hunt-depicted-kinds",
+ "register_version": "0.8-draft",
+ "note": "Claims-first register for Spec 045 (design D-05, PR #195 packet; builder of Asset A), opened 2026-10-21 under the runnable-experiments campaign approved by the owner as written on 2026-10-21. ASM- ids name the assumptions each claim stands on: ASM-POSITIONAL-RECORD (the pinned hunt_tripartite_test record is the record of the positional test and its strong-sign classes), ASM-HELD-SOURCES (the CISI volumes Vol. 1-2 and Parpola's published identifications are held as the design states), ASM-BLIND-ENTRY (Asset A entry can be performed and attested blind to positional results), ASM-CROSSWALK-KEYS (the pinned sign_crosswalk_master defines the sign identity space Asset A and D-18 share), ASM-D18-FORM (D-18's concordance output can be rendered in the form spec section 2.6 accepts, as Spec 046 froze it), ASM-GATES-BEFORE-OUTCOME (integrity, asset, and freeze-order gates precede any outcome quantity), ASM-APPEND-ONLY (outcomes append; frozen records are never edited), ASM-PUBLISHED-ID-LAYER (a depicted-kind label is a published identification, not ground truth about the sign). FREEZE (2026-10-21): before the hooks, the mandated pre-digest repairs and freeze decisions were applied as draft-stage edits recorded in adjudication.md section 7 (DD-045-11 fit margin 0.05 and fit form, in F045-C03; DD-045-12 AUC comparison rule and DD-045-19 closing-measure disambiguation, in F045-C04; DD-045-18 full-crosswalk coverage, in F045-C06 and F045-C12; DD-045-17 D-18 consumption repair, in F045-C10; DD-045-13 pooling threshold 5, in F045-C14). The AEE lifecycle hooks then ran at the freeze gate under aee 1.5.0 (DD-045-9 reading). Pre-round: the 0.5-draft register could not load in the engine (draft evidence kinds and source qualities are not engine values). A test load with the kind/quality remap alone returned 54 failure modes (17 shared-evidence independence records, 17 draft-cap records, 15 irreducibility challenges, 5 negation-conflict challenges) and no claim below the 0.70 threshold (minimum propagated 0.72). Recovery to 0.6-draft (kind and quality remap; independent_of declarations within multi-item claims) left 39 failure modes at after_specify. Recovery to 0.7-draft (single head propositions with carried clauses moved into boundaries, boundary_confirmation records for the five negation pairs, and C17's evidence split into the campaign-plan and triage records with independent_of declarations) left 24 failure modes at each hook (17 draft-cap, 6 irreducibility, 1 negation-conflict). Recovery to 0.8-draft (connective-free restatement of the six remaining heads, the C01/C05 boundary_confirmation records, and C05's head restated under its own subject) left exactly 17 FR-2.3 draft-cap records at each of after_specify, after_plan, and after_tasks, with zero correctness failure modes and no claim below the 0.70 threshold (minimum propagated 0.72); the engine outcome word reads iterate solely from the draft-cap records. Full record in aee/freeze-aee-note.md.",
+ "claims": [
+  {
+   "id": "F045-C01",
+   "kind": "hypothesis",
+   "text": "An outcome under Spec 045 states only whether depicted kind discriminates Hunt's meaning account from the grammar account of the recorded three-part pattern.",
+   "status": "draft",
+   "boundary": "The scope is the discrimination question for claim without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001. It excludes any statement that a specific gloss is correct, that any sign has a specific meaning, about any other claim, corpus, or pattern, and about the frozen positional result, which stands as recorded. The discrimination is judged on the pinned positional framework and corpus.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-POSITIONAL-RECORD"
+   ],
+   "alternatives": [
+    "the positional result could be read as already supporting Hunt's meanings (it cannot: its own verdict states it is consistent with both accounts)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified in scope if any Spec 045 output states a conclusion about a gloss, a meaning, a different claim, or a population outside this discrimination test"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-PATTERN-AS-MEANING"
+    ],
+    "strongest_rival": "the reading in which a discrimination for depicted kind licenses Hunt's specific readings",
+    "verdict_rule": "scope is judged by inspection of every Spec 045 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding",
+    "evidence_origin_groups": [
+     "positional-record",
+     "design-packet"
+    ],
+    "boundary_confirmation": "C01 states the scope of what an outcome under this spec may state (whether depicted kind discriminates between the two accounts); C05 states the wording rule for an outcome whose quantities meet the falsifier's condition (never recorded as support for Hunt's account). They govern different objects - outcome scope, and outcome wording on a stated condition - and are consistent by construction: C05's rule operates inside C01's scope. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/analysis/positional/hunt_tripartite_test.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The positional record of the claim (SHA-256 0e546962..., recomputed at this draft from main at 83b6a563...): formula rate 0.355 against null 0.006, and the verdict that the pattern is consistent with both Hunt's model and the Dravidian suffix model and cannot distinguish them without visual sign classification.",
+     "source_id": "glossa-indus/analysis/positional/hunt_tripartite_test.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md"
+     ]
+    },
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-05 (PR #195 packet, section D-05, read in full at this draft): the discrimination question, hypothesis, falsifier, method, and the limit that no gloss is established.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/analysis/positional/hunt_tripartite_test.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F045-C02",
+   "kind": "requirement",
+   "text": "The pinned positional record gives a formula rate of 0.355 against a null of 0.006.",
+   "status": "draft",
+   "boundary": "These are the quantities of the pinned hunt_tripartite_test record. The pattern's existence is this spec's premise, not its finding; nothing in this claim asserts anything about the parts' meanings. The record's full quantities are: 805 of 2,267 inscriptions of length at least 3 follow the opening-middle-ending structure; the strong-sign classes of record are 40 initial-strong, 61 medial-strong, and 20 terminal-strong signs; the claim stands IN QUESTION as partially supported for position only.",
+   "depends_on": [
+    "F045-C01"
+   ],
+   "assumptions": [
+    "ASM-POSITIONAL-RECORD"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "recompute SHA-256 of glossa-indus/analysis/positional/hunt_tripartite_test.json (0e546962...) and read the formula_test and structural_test values; any mismatch falsifies this statement and voids the draft's basis"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the record could have been misread or superseded (the Spec 040 stale-pin precedent shows draft-cited pins can be wrong)",
+    "verdict_rule": "the statement stands or falls on the pinned record hashing to its recorded value with the stated quantities in it",
+    "evidence_origin_groups": [
+     "positional-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/analysis/positional/hunt_tripartite_test.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Formula test (805 / 2,267; rate 0.355; null 0.006) and structural test (40 initial-strong, 61 medial-strong, 20 terminal-strong signs) read first-hand from the pinned file at this draft; SHA-256 recomputed equal to 0e546962....",
+     "source_id": "glossa-indus/analysis/positional/hunt_tripartite_test.json",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F045-C03",
+   "kind": "hypothesis",
+   "text": "Adding depicted kind from the frozen Asset A to a position-only model of part-membership improves out-of-sample fit by at least the fit margin fixed at this spec's freeze, on the odd/even inscription-ID split.",
+   "status": "draft",
+   "boundary": "The hypothesis is about predictive power on the pinned framework and corpus, under Asset A as frozen. The margin's value is fixed at this spec's freeze (0.05 out-of-sample accuracy points, PH minus P; DD-045-11, derived from the recorded Phase-43 effect sizes as one tenth of the positional record's 0.506 initial-rate advantage over chance), before any join; the hypothesis is untestable in any form that sets the margin after seeing a fit.",
+   "depends_on": [
+    "F045-C01",
+    "F045-C02"
+   ],
+   "assumptions": [
+    "ASM-POSITIONAL-RECORD",
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [
+    "depicted kind adds less than the margin (the falsifier's first arm, recorded under F045-C05)",
+    "depicted kind adds at least the margin only through contested or borderline signs (checked by the section 5.3 sensitivity)"
+   ],
+   "falsification_tests": [
+    "run the section 5.1 primaries: if model PH's out-of-sample fit does not exceed model P's by the frozen margin, this hypothesis is not supported"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-PATTERN-AS-MEANING"
+    ],
+    "strongest_rival": "position behaviour alone already encodes everything depicted kind could add, because the strong-sign classes were themselves derived positionally",
+    "verdict_rule": "supported for this hypothesis iff the PH-minus-P out-of-sample fit difference meets or exceeds the frozen margin of 0.05 accuracy points recorded in the freeze record before the first join",
+    "evidence_origin_groups": [
+     "design-packet",
+     "positional-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-05's method: model P (position only) against model PH (plus depicted kind), out-of-sample on the odd/even inscription-ID split, compared by a fixed margin set at freeze from the recorded Phase-43 effect sizes before the classification is joined.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "outputs/phase43_all.json"
+     ]
+    },
+    {
+     "ref": "outputs/phase43_all.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-43 battery record (SHA-256 78a6c219..., recomputed at this draft): the recorded effect sizes from which the freeze derives the fit margin.",
+     "source_id": "outputs/phase43_all.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F045-C04",
+   "kind": "hypothesis",
+   "text": "Depicted-kind membership predicts recorded closing-part membership better than suffix-like behaviour does, under the comparison rule fixed at this spec's freeze.",
+   "status": "draft",
+   "boundary": "The comparison is over every sign in the test population with a recorded positional profile, scored by the two measures spec section 5.2 defines, with agreement measured as AUC against recorded terminal-strong membership (DD-045-12); the per-sign scores for the 20 terminal-strong signs of record are published beside the pooled AUCs. Spec 045's suffix-like measure is the closing distinct-predecessor rate, defined operationally in this spec; it is a different measure from Spec 054's (design D-08's) Phase-43 terminal-strong set membership, neither spec adopts the other's form, and this claim does not import any output of Spec 054's design, which has not frozen or executed at this freeze (DD-045-19).",
+   "depends_on": [
+    "F045-C01",
+    "F045-C02"
+   ],
+   "assumptions": [
+    "ASM-POSITIONAL-RECORD"
+   ],
+   "alternatives": [
+    "suffix-like behaviour predicts closing membership at least as well (the falsifier's second arm, recorded under F045-C05)"
+   ],
+   "falsification_tests": [
+    "run the section 5.2 comparison: if suffix-like behaviour's agreement with closing membership is at least depicted kind's under the frozen comparison rule, this hypothesis is not supported"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-PATTERN-AS-MEANING"
+    ],
+    "strongest_rival": "the closing class is a word-ending class, so a purely behavioural score must beat any picture-based score",
+    "verdict_rule": "supported for this hypothesis iff depicted kind's AUC against recorded terminal-strong membership strictly exceeds the closing distinct-predecessor rate's AUC under the frozen comparison rule (DD-045-12)",
+    "evidence_origin_groups": [
+     "design-packet",
+     "positional-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-05's head-on closing test: for each closing-strong sign, a suffix-like score (the rate at which it follows many different signs as a final element) against depicted-kind membership in the cycle/sky class, the two agreements with closing membership compared directly.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F045-C05",
+   "kind": "requirement",
+   "text": "Spec section 5.5's pre-written unfavourable wordings bind any outcome whose quantities meet this claim's condition.",
+   "status": "draft",
+   "boundary": "This is the falsifier of F045-C03 and F045-C04, registered as a requirement so the unfavourable wordings cannot be softened after the quantities are known. Which of the two wordings applies follows spec section 5.4 mechanically. The condition is: depicted kind adds less than the frozen margin over position alone, or suffix-like behaviour predicts closing membership at least as well as depicted kind. On that condition the outcome is recorded under the pre-written DISCRIMINATED FOR THE GRAMMAR ACCOUNT or NOT DISCRIMINATED wording of spec section 5.5, as spec section 5.4 assigns mechanically. On that condition the outcome is never recorded as support for Hunt's account.",
+   "depends_on": [
+    "F045-C03",
+    "F045-C04"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "if an outcome record whose quantities meet this claim's condition claims support for Hunt's account, that record falsifies compliance with this requirement"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "post-hoc wording-shopping once an unfavourable comparison is known",
+    "verdict_rule": "the outcome record's headline word must be derivable from the recorded quantities by spec section 5.4 alone",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "C05 states the wording rule for an outcome whose quantities meet the falsifier's condition (never recorded as support for Hunt's account); C01 states the scope of what an outcome under this spec may state. They govern different objects - outcome wording on a stated condition, and outcome scope - and are consistent by construction: this rule operates inside C01's scope. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-05's falsifier and criteria: the hypothesis fails if depicted kind adds no predictive power over position class alone, or if the closing part is predicted as well or better by word-ending behaviour than by depicted kind.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F045-C06",
+   "kind": "requirement",
+   "text": "Asset A contains exactly one row per sign in the full pinned-crosswalk sign universe.",
+   "status": "draft",
+   "boundary": "Coverage is the full pinned-crosswalk sign universe (187 distinct registry_sign_id values at the freeze census; DD-045-18), not only this spec's test population, and consumer Spec 050's corpus-wide coverage assertion rests on this scope. The field set is the contract D-06's and D-13's specs are drafted against. A consumer needing a further field opens its own planning gate; the asset is not extended inside this campaign. Each row is keyed by the pinned crosswalk identity, carries the classification fields of spec section 2.2 and no others, and is generated and round-trip validated as a parsed CSV record.",
+   "depends_on": [
+    "F045-C01"
+   ],
+   "assumptions": [
+    "ASM-CROSSWALK-KEYS"
+   ],
+   "alternatives": [
+    "free-form or per-consumer asset shapes (refused: the digest-pinning of F045-C11 requires one canonical form)"
+   ],
+   "falsification_tests": [
+    "the asset's freeze record either shows a parsed row for every sign in the full pinned-crosswalk sign universe with exactly the section 2.2 fields, or gate A3/A4 stops the build as ASSET FAILED"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "schema drift between the builder's asset and the dependents' expectations, discovered only at a dependent's join",
+    "verdict_rule": "compliance is judged at gate A3/A4 by parsing the canonical CSV against the section 2.2 field list",
+    "evidence_origin_groups": [
+     "campaign-plan",
+     "design-packet"
+    ],
+    "boundary_confirmation": "C06 states the asset's form (one row per sign in the full crosswalk universe, the section 2.2 fields, CSV round-trip validation); C08 states the entry discipline the rows are produced under (blind entry, freeze before join), and C11 states the asset's build-once freeze and digest. The three govern different objects - form, entry discipline, and freeze - and are consistent by construction: C08's discipline and C11's freeze are how a C06-shaped asset comes to exist. Neither C08 nor C11 negates C06."
+   },
+   "evidence": [
+    {
+     "ref": "data/crosswalks/sign_crosswalk_master.csv",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The crosswalk of record (SHA-256 4ace1a61..., recomputed at this draft), defining the sign_key space and the CISI/Parpola numbering each Asset A row carries.",
+     "source_id": "data/crosswalks/sign_crosswalk_master.csv",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F045-C07",
+   "kind": "requirement",
+   "text": "Every depicted-kind label in Asset A comes from a held published source under the hierarchy of spec section 2.3.",
+   "status": "draft",
+   "boundary": "Program-internal classifications, earlier phase outputs, and a worker's own visual judgement are not sources and may not appear as citations. A row without a qualifying citation is a gate A4 failure, not a row with a weaker source. The hierarchy is: the CISI volumes governing, Parpola's published identifications where CISI is silent, other lists only through a D-18 row. The source's verbatim label and a page-or-entry citation are recorded per sign.",
+   "depends_on": [
+    "F045-C06"
+   ],
+   "assumptions": [
+    "ASM-HELD-SOURCES",
+    "ASM-PUBLISHED-ID-LAYER"
+   ],
+   "alternatives": [
+    "coding depicted kinds fresh from sign images (refused: the design's circularity control is that the identifications are the field's published ones, made for other purposes)"
+   ],
+   "falsification_tests": [
+    "gate A4 inspection: any row whose citation is not a section 2.3 source, or that lacks a verbatim label, stops the build as ASSET FAILED"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-WORKER-JUDGEMENT-AS-SOURCE"
+    ],
+    "strongest_rival": "a label quietly sourced from the program's own earlier classification, importing the positional results the blindness rule exists to exclude",
+    "verdict_rule": "source compliance is judged per row at gate A4 against the section 2.3 hierarchy as named in the build record at gate A1",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "C07 states the provenance of every label (held published sources under the section 2.3 hierarchy); C17 states a reporting obligation that travels with the asset (Spec 037's census caution restated wherever the asset is stated). They govern different objects - label provenance, and caution reporting - and are consistent by construction: C17's caution is a reason the C07 hierarchy exists. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-05's data paragraph and the packet README's shared-asset description: labels entered from the CISI volumes (Vol. 1 and Vol. 2 held digitally and complete) and Parpola's published identifications, each label carrying its source; not new coding by this program.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F045-C08",
+   "kind": "requirement",
+   "text": "Asset A is entered blind to positional results.",
+   "status": "draft",
+   "boundary": "Blindness covers the part-membership classes, any inscription's part assignment, and any model output. A breach discovered at any point is an asset failure under gate A5 and fires the campaign's cluster rule for D-06 and D-13; the asset is not repaired inside the campaign. The asset is frozen before any join to the corpus or to any positional output, in the build order of spec section 2.4, with the entry log and attestation preserved in the build record.",
+   "depends_on": [
+    "F045-C07"
+   ],
+   "assumptions": [
+    "ASM-BLIND-ENTRY"
+   ],
+   "alternatives": [
+    "entering labels with the positional classes visible and disclosing it afterwards (refused: disclosure after entry does not restore the circularity control)"
+   ],
+   "falsification_tests": [
+    "gate A5 either attests the section 2.4 order with its log, or stops the build as ASSET FAILED; a join timestamp preceding the freeze timestamp in any record falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "unconscious steering of borderline labels toward the known positional classes",
+    "verdict_rule": "the build record is the judge: it shows sources, entry, dispute coding, D-18 resolution, and freeze, in that order, before any join record exists",
+    "evidence_origin_groups": [
+     "design-packet",
+     "campaign-plan"
+    ],
+    "boundary_confirmation": "C08 states the entry discipline and build order (blind entry; the D-18 input incorporated in that order; freeze before any join); C06 states the asset's form, and C10 states the one input channel that order admits (Spec 046's concordance file under section 2.6). They govern different objects - order, form, and input channel - and are consistent by construction: section 2.4's order is exactly the order in which a C06-shaped asset can accept a C10 input. Neither C06 nor C10 negates C08."
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-05's circularity control, verbatim in substance: labels from published identifications made for other purposes, entered by a worker who does not see the positional results; labels frozen before the join.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F045-C09",
+   "kind": "requirement",
+   "text": "A sign whose governing published sources disagree on depicted kind is recorded contested with both verbatim labels.",
+   "status": "draft",
+   "boundary": "No dispute is resolved by the enterer, by frequency, or by fit to any test. Borderline signs (the published identification hedged in its own source) stay in the primary and are removed in the sensitivity's second arm. A dispute first noticed after the freeze is recorded as an asset defect, never resolved into the frozen asset. A contested sign is excluded from the primary test and is included under its CISI-governed label only in the pre-registered sensitivity of spec section 5.3.",
+   "depends_on": [
+    "F045-C07",
+    "F045-C08"
+   ],
+   "assumptions": [
+    "ASM-PUBLISHED-ID-LAYER"
+   ],
+   "alternatives": [
+    "breaking every disagreement by source rank so no sign is ever contested (refused: rank would manufacture agreement the sources do not have, at exactly the signs where the identification layer is weakest)"
+   ],
+   "falsification_tests": [
+    "inspection at gate A4/A6: a contested-source sign carrying an uncontested kind in the primary population falsifies compliance; the sensitivity's population must equal the primary's plus the contested set, minus the borderline set"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "dispute resolution drifting toward whichever label the emerging result prefers",
+    "verdict_rule": "dispute coding is complete before the freeze (gate order of section 2.4); the frozen asset's dispute_status column is the whole of the rule's operation",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The packet's dispute practice for this asset family: D-06's design names contested signs and reruns without them as a stated sensitivity, and D-13's requires a named sensitivity with borderline signs removed; D-05's draft generalises that practice into the asset's dispute rule (DD-045-2).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F045-C10",
+   "kind": "requirement",
+   "text": "Asset A accepts input from D-18 only as Spec 046's digest-pinned concordance file in the frozen form of spec section 2.6.",
+   "status": "draft",
+   "boundary": "D-18 never writes into Asset A, and Asset A never draws on D-18's test population or results beyond the concordance records themselves. PARTIAL CONCURRENCE counts as exactly the one independent corroboration it carries and is never presented as consensus. A D-18 sign record whose crosswalk_registry_id is null, or does not resolve in the pinned crosswalk, is not rejected: it is recorded in the build record under its Wells-list-entry reference, is never re-keyed by hand, and attaches to an Asset A row only through a stated linkage to a row blind entry independently entered for the same drawn sign; if no such row exists it stands recorded as an unattached D-18 input (DD-045-17). Spec 046's outcome vocabulary is the total set CONSENSUS / PARTIAL CONCURRENCE / SINGLE-SOURCE / CONTESTED, with a closure file produced on every terminal outcome; this spec consumes that vocabulary as frozen and does not change it. The consumption is: CONSENSUS, PARTIAL CONCURRENCE, and SINGLE-SOURCE outcomes as corroboration; CONTESTED as a forced dispute; IDENTIFICATION FAILED or a CLOSED AT STEP 0 closure file as no input. Asset A freezes only when that file is pinned or D-18's closure file is on record.",
+   "depends_on": [
+    "F045-C06",
+    "F045-C09"
+   ],
+   "assumptions": [
+    "ASM-D18-FORM",
+    "ASM-CROSSWALK-KEYS"
+   ],
+   "alternatives": [
+    "Asset A re-deriving concordance itself from the four lists (refused: that duplicates D-18's registered test inside its consumer and breaks the no-circularity direction the D-18 design states)"
+   ],
+   "falsification_tests": [
+    "gate A2 either shows the pinned D-18 concordance file digest or D-18's closure reference in asset-a-freeze.json, or the build does not start; any Asset A row citing Mahadevan or Wells except through a D-18 record falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "an informal D-18 hand-off (a list in a note, an unpinned file) entering the asset without a digest",
+    "verdict_rule": "the freeze record is the judge: it names either the D-18 concordance file's SHA-256 or the closure record, and every d18_input value in the asset traces to a record of that pinned file, with any null-key record carried under its Wells-list-entry reference as section 2.6 states",
+    "evidence_origin_groups": [
+     "design-packet",
+     "campaign-plan"
+    ],
+    "boundary_confirmation": "C10 states the D-18 input channel and its consumption rules; C08 states the build order that channel sits inside, and C11 states the asset's build-once freeze that the channel feeds. They govern different objects - input, order, and freeze - and are consistent by construction: C10's timing rule (the file pinned or the closure file on record) is a precondition of the freeze C11 states. Neither C08 nor C11 negates C10."
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-18 (section D-18, read in full at this draft) and Spec 046's frozen delivery form (its section 6, read in full at this freeze): the concordance over CISI, Parpola, Mahadevan, and Wells with AGREE / DISAGREE / SILENT per list and the total outcome set CONSENSUS / PARTIAL CONCURRENCE / SINGLE-SOURCE / CONTESTED, delivered as concordance-297.json on every terminal outcome including closure files; it feeds the shared classification without drawing on it, so there is no circularity.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F045-C11",
+   "kind": "requirement",
+   "text": "Asset A is built exactly once, frozen with a SHA-256 digest over its canonical CSV.",
+   "status": "draft",
+   "boundary": "This is campaign requirement R-2 scoped to Asset A. A digest mismatch closes the dependent as not-run under the campaign's cluster rule; no dependent re-derives the classification. After the freeze the asset changes only by dated, append-only defect notices. The freeze records of the specs for D-06 and D-13 quote that digest verbatim and compare it before any join.",
+   "depends_on": [
+    "F045-C08",
+    "F045-C10"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY",
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [
+    "each dependent building its own version of the classification (refused by campaign decision E-6: the asset lives inside its builder's spec and dependents pin the digest)"
+   ],
+   "falsification_tests": [
+    "gate A6 recomputes the digest from the canonical CSV; campaign acceptance compares the builder's freeze digest against each dependent's execution record"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "two near-identical classifications in use at once, making the three Hunt results incomparable",
+    "verdict_rule": "digest equality across the builder's freeze record and each dependent's record is the whole test",
+    "evidence_origin_groups": [
+     "campaign-plan"
+    ],
+    "boundary_confirmation": "C11 states the asset's build-once freeze and the digest its dependents quote; C06 states the form of the asset that freeze covers, and C10 states an input that freeze records. They govern different objects - freeze, form, and input - and are consistent by construction. Neither C06 nor C10 negates C11."
+   },
+   "evidence": [
+    {
+     "ref": "campaign-plan-2026-10-21",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The approved campaign plan, Part 3 and decision E-6 and requirement R-2: Asset A is built by D-05 from held published sources only, entered blind, frozen before any join, consumed by D-06 and D-13, fed by D-18, and every consuming record shows the same digest. (Plan held at ~/workspace/your_files/2026-10-21-runnable-experiments-campaign-plan.md; cited here as the commissioning record, not a repository file.)",
+     "source_id": "campaign-plan-2026-10-21",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F045-C12",
+   "kind": "requirement",
+   "text": "Execution stops before any model quantity is computed if any gate of spec sections 3/6 fails.",
+   "status": "draft",
+   "boundary": "These are spec sections 3 and 6. Their failure classes are ASSET FAILED (build gates) and INVALID (step-0 gates). No failure is repaired at run time; a repaired input is a new freeze, not a resumed run. The gates include: an input hash mismatch; the positional record's quantities not reproduced from the pinned corpus; Asset A coverage incomplete over the full pinned-crosswalk sign universe; a build gate of spec section 3 failed; the freeze record unable to prove the fit margin and comparison rule were recorded before the first join.",
+   "depends_on": [
+    "F045-C11"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "each gate's check is itself the test: the execution record must show every gate's verdict before the first model quantity, or the run is non-compliant on its face"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "gate-skipping under time pressure, with the failure rationalised afterwards",
+    "verdict_rule": "the run's own record is the judge: gate verdicts precede quantities in it, in order, or the outcome is INVALID by construction",
+    "evidence_origin_groups": [
+     "positional-record",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "outputs/phase43_all.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-43 battery record (SHA-256 78a6c219...): the framework whose recorded quantities gate 0.2 requires the execution to reproduce before any model runs.",
+     "source_id": "outputs/phase43_all.json",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F045-C13",
+   "kind": "requirement",
+   "text": "The headline outcome of an execution is exactly one word from the set DISCRIMINATED FOR HUNT / DISCRIMINATED FOR THE GRAMMAR ACCOUNT / NOT DISCRIMINATED.",
+   "status": "draft",
+   "boundary": "DISCRIMINATED FOR HUNT requires both comparisons in Hunt's favour; DISCRIMINATED FOR THE GRAMMAR ACCOUNT requires both in the grammar account's favour, per section 5.4; every other adjudicated pattern is NOT DISCRIMINATED. The outcome set is design D-05's three criteria words plus this draft's stop classes (DD-045-3). The word is assigned by the criteria of spec section 5.4 from the two recorded comparisons; ASSET FAILED, INVALID, and NOT ADJUDICATED are stop classes and not verdicts.",
+   "depends_on": [
+    "F045-C03",
+    "F045-C04",
+    "F045-C05",
+    "F045-C12"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "the outcome record's headline word must be derivable from the two recorded comparisons (or the gate/control record) by this claim's definitions alone"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "headline-shopping: choosing the word that flatters Hunt's account when the two comparisons split",
+    "verdict_rule": "the mapping from comparison outcomes to headline words is fixed here, before execution; the outcome record shows both comparisons and the word together",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-05's criteria fixed in advance: DISCRIMINATED FOR HUNT, DISCRIMINATED FOR THE GRAMMAR ACCOUNT, NOT DISCRIMINATED, with their exact conditions.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F045-C14",
+   "kind": "requirement",
+   "text": "Rare depicted kinds are pooled as other only under the pooling rule frozen at this spec's freeze.",
+   "status": "draft",
+   "boundary": "The design requires a pooling rule fixed in advance and names no threshold; the threshold is frozen at this spec's freeze at 5 signs in the primary population (DD-045-13). Pooling never applies to contested or unidentified rows, which follow F045-C09 and gate A3 respectively. The frozen rule is: a kind with fewer than 5 signs in the primary population is pooled as other (DD-045-13). Per-kind counts before pooling are published with every result.",
+   "depends_on": [
+    "F045-C06"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [
+    "pooling decided after seeing per-kind fits (refused: that is margin-shopping by another name)"
+   ],
+   "falsification_tests": [
+    "the freeze record either states the pooling rule before the first join, or gate 0.4 stops the run as INVALID; published per-kind counts must reconcile with the asset's freeze counts"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a rare kind that carries the discrimination being pooled out of sight",
+    "verdict_rule": "the pooling rule's presence in the freeze record, recorded before the join, is the compliance test; its value is the freeze's decision",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-05's controls: frequency is named, and rare depicted kinds are pooled as other by a rule fixed in advance.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F045-C15",
+   "kind": "requirement",
+   "text": "The section 5.3 sensitivity is reported beside the primary with the same prominence.",
+   "status": "draft",
+   "boundary": "The sensitivity answers one question only: whether the primary's outcome depends on the dispute rule's exclusions. A sensitivity that disagrees with the primary is reported as that dependence, in the outcome record's headline paragraph, not resolved in favour of either. The sensitivity is: contested signs included under CISI-governed labels, borderline signs removed. It does not replace the primary's verdict word. The sensitivity is run at execution before it is reported.",
+   "depends_on": [
+    "F045-C09",
+    "F045-C13"
+   ],
+   "assumptions": [
+    "ASM-PUBLISHED-ID-LAYER"
+   ],
+   "alternatives": [
+    "reporting the sensitivity only when it agrees (refused: agreement-only reporting is the failure mode the pre-registration exists to prevent)"
+   ],
+   "falsification_tests": [
+    "an outcome record lacking the sensitivity's two comparisons, or promoting the sensitivity over the primary, falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a primary result that exists only because contested signs were excluded, quoted without that fact",
+    "verdict_rule": "the sensitivity is a section 9 reporting obligation: its absence from any outcome product is a defect of that product, recorded as such",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The packet's stated-sensitivity practice for this asset (D-06: contested signs named, test rerun without them; the unicorn sensitivity; D-13: borderline signs removed in a named sensitivity), generalised by this draft to the builder spec (DD-045-2).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F045-C16",
+   "kind": "requirement",
+   "text": "No outcome under Spec 045 establishes that any specific Hunt gloss is correct.",
+   "status": "draft",
+   "boundary": "Also excluded, and stated wherever an outcome is stated: any conclusion about what any individual sign means, and any conclusion that the depicted kinds are the signs' ancient categories rather than the published lists' identifications. A discrimination for depicted kind shows the parts sort by kind; the meanings of the kinds remain readings. Nor does any outcome establish that any of Hunt's part meanings is correct.",
+   "depends_on": [
+    "F045-C01",
+    "F045-C03",
+    "F045-C04"
+   ],
+   "assumptions": [
+    "ASM-PUBLISHED-ID-LAYER",
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "a meaning narrative attached to a discrimination because the kinds 'suggest' one (refused: suggestion is not measurement, and the design states this limit in its own words)"
+   ],
+   "falsification_tests": [
+    "inspection of every Spec 045 output: a gloss or meaning claim in any output falsifies compliance and is corrected by dated addendum, never by silent edit"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-PATTERN-AS-MEANING"
+    ],
+    "strongest_rival": "the reading in which sorting by kind is decipherment by another name",
+    "verdict_rule": "outputs are judged against this boundary at execution close; violations are recorded defects, and the claim consequence is limited to the discrimination statement of F045-C01",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-05's own limit, verbatim in substance: even a clean win for depicted kind shows the parts sort by kind; the meanings of the kinds remain readings, not measurements, and Hunt's specific glosses are not established.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F045-C17",
+   "kind": "requirement",
+   "text": "Every statement under this spec \u2014 Asset A statements, verdict statements \u2014 restates Spec 037's census caution.",
+   "status": "draft",
+   "boundary": "The census measured object-type labels, not depicted kinds; this claim does not inflate it into a finding about Asset A. It requires the caution to travel with the asset because compilations' labels are demonstrably not interchangeable, which is the risk the asset's construction controls. The caution is: object-type labels diverged between compilations in 49 percent of matched cases. Asset A's construction (held published sources only, blind entry, dispute by rule, freeze before join) is the design's answer to that caution, not a refutation of it.",
+   "depends_on": [
+    "F045-C07",
+    "F045-C08"
+   ],
+   "assumptions": [
+    "ASM-PUBLISHED-ID-LAYER"
+   ],
+   "alternatives": [
+    "treating the census as irrelevant because it measured a different label kind (refused at draft: the triage and the campaign plan both carry it as this asset's standing caution; the freeze may narrow the wording openly)"
+   ],
+   "falsification_tests": [
+    "an Asset A freeze record or outcome product lacking the caution sentence falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a frozen asset quoted as settled fact, its compilation-relative basis forgotten",
+    "verdict_rule": "the caution's presence is checked by inspection of the freeze record and every outcome product at execution close",
+    "evidence_origin_groups": [
+     "campaign-plan",
+     "triage-record"
+    ],
+    "boundary_confirmation": "C17 states a reporting obligation that travels with the asset (Spec 037's census caution restated wherever the asset is stated); C07 states the provenance of every label (held published sources under the section 2.3 hierarchy). They govern different objects - caution reporting, and label provenance - and are consistent by construction: C07's hierarchy is part of the construction C17's caution sentence names. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "campaign-plan-2026-10-21",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The approved campaign plan, Part 3 (Asset A): Spec 037's census found object-type labels diverging between compilations in 49% of matched cases; the asset's published-source, blind-entry, freeze-before-join construction is the design's answer, and each consuming specification restates the caution. (Plan held at ~/workspace/your_files/2026-10-21-runnable-experiments-campaign-plan.md; cited here as a commissioning record, not a repository file.)",
+     "source_id": "campaign-plan-2026-10-21",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "research_notes/design-portfolio-triage-2026-10-21.md"
+     ]
+    },
+    {
+     "ref": "research_notes/design-portfolio-triage-2026-10-21.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The portfolio triage of 2026-10-21 records the same Spec 037 census caution for D-05 verbatim: object-type labels diverging between compilations in 49% of matched cases is a caution the design's published-source rule answers, not a block. (Triage held at ~/workspace/research_notes/design-portfolio-triage-2026-10-21.md; cited here as a commissioning record, not a repository file.)",
+     "source_id": "research_notes/design-portfolio-triage-2026-10-21.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "campaign-plan-2026-10-21"
+     ]
+    }
+   ]
+  }
+ ]
+}

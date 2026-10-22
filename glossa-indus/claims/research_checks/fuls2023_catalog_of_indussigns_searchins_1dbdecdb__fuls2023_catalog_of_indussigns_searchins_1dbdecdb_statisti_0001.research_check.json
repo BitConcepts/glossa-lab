@@ -1,0 +1,297 @@
+{
+ "stage": "research_check",
+ "record_version": 1,
+ "claim_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb_statisti_0001",
+ "document_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb",
+ "claim_statement": "Statistical finding: Positional Analysis",
+ "checked_at": "2026-10-22T14:26:13.333187+00:00",
+ "advisory": true,
+ "verdict": null,
+ "protocol": "docs/paper-search-mcp.md#audit-protocol",
+ "phrasings": [
+  {
+   "text": "Statistical finding: Positional Analysis",
+   "origin": "claim"
+  },
+  {
+   "text": "Statistical finding Positional Analysis",
+   "origin": "mechanical"
+  }
+ ],
+ "sources_requested": [
+  "arxiv",
+  "crossref",
+  "openalex",
+  "semantic",
+  "core",
+  "europepmc"
+ ],
+ "queries": [
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_papers",
+   "query": "Statistical finding: Positional Analysis"
+  },
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_arxiv",
+   "query": "Statistical finding: Positional Analysis"
+  },
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_crossref",
+   "query": "Statistical finding: Positional Analysis"
+  },
+  {
+   "phrasing_origin": "mechanical",
+   "tool": "search_papers",
+   "query": "Statistical finding Positional Analysis"
+  },
+  {
+   "phrasing_origin": "mechanical",
+   "tool": "search_arxiv",
+   "query": "Statistical finding Positional Analysis"
+  },
+  {
+   "phrasing_origin": "mechanical",
+   "tool": "search_crossref",
+   "query": "Statistical finding Positional Analysis"
+  }
+ ],
+ "source_errors": [],
+ "neighbors": [
+  {
+   "title": "Toward the Use of Statistical Analysis in Positional Tolerancing",
+   "authors": "F. Bennis; Ph. Castagliola; L. Pino",
+   "year": "2002-01-01T00:00:00",
+   "doi": "10.1007/978-94-015-9966-5_27",
+   "paper_id": "10.1007/978-94-015-9966-5_27",
+   "source": "crossref",
+   "url": "https://doi.org/10.1007/978-94-015-9966-5_27",
+   "abstract": null,
+   "relevance": 0.75
+  },
+  {
+   "title": "A statistical analysis of positional errors of a multiaxis machine tool",
+   "authors": "Y.C. Shin; Y. Wei",
+   "year": "1992-07-01T00:00:00",
+   "doi": "10.1016/0141-6359(92)90002-e",
+   "paper_id": "10.1016/0141-6359(92)90002-e",
+   "source": "crossref",
+   "url": "https://doi.org/10.1016/0141-6359(92)90002-e",
+   "abstract": null,
+   "relevance": 0.75
+  },
+  {
+   "title": "The Statistical Analysis of fMRI Data",
+   "authors": "Martin A. Lindquist",
+   "year": "2009-06-19T13:09:51",
+   "doi": "10.1214/09-STS282",
+   "paper_id": "0906.3662v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/0906.3662v1",
+   "abstract": "In recent years there has been explosive growth in the number of neuroimaging studies performed using functional Magnetic Resonance Imaging (fMRI). The field that has grown around the acquisition and analysis of fMRI data is intrinsically interdisciplinary in nature and involves contributions from researchers in neuroscience, psychology, physics and statistics, among others. A standard fMRI study gives rise to massive amounts of noisy data with a complicated spatio-temporal correlation structure. Statistics plays a crucial role in understanding the nature of the data and obtaining relevant res",
+   "relevance": 0.5
+  },
+  {
+   "title": "Statistical Inference for the Population Landscape via Moment Adjusted Stochastic Gradients",
+   "authors": "Tengyuan Liang; Weijie Su",
+   "year": "2017-12-20T15:16:53",
+   "doi": "10.1111/rssb.12313",
+   "paper_id": "1712.07519v2",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1712.07519v2",
+   "abstract": "Modern statistical inference tasks often require iterative optimization methods to compute the solution. Convergence analysis from an optimization viewpoint only informs us how well the solution is approximated numerically but overlooks the sampling nature of the data. In contrast, recognizing the randomness in the data, statisticians are keen to provide uncertainty quantification, or confidence, for the solution obtained using iterative optimization methods. This paper makes progress along this direction by introducing the moment-adjusted stochastic gradient descents, a new stochastic optimiz",
+   "relevance": 0.5
+  },
+  {
+   "title": "Methods for finding genes a major rate-limiting step in positional cloning",
+   "authors": "Julia E. Parrish; David L. Nelson",
+   "year": "1993-04-01T00:00:00",
+   "doi": "10.1016/1050-3862(93)90043-i",
+   "paper_id": "10.1016/1050-3862(93)90043-i",
+   "source": "crossref",
+   "url": "https://doi.org/10.1016/1050-3862(93)90043-i",
+   "abstract": null,
+   "relevance": 0.5
+  },
+  {
+   "title": "The Logic &amp; Language of Statistical Analysis",
+   "authors": "Ray W. Cooksey",
+   "year": "2020-01-01T00:00:00",
+   "doi": "10.1007/978-981-15-2537-7_1",
+   "paper_id": "10.1007/978-981-15-2537-7_1",
+   "source": "crossref",
+   "url": "https://doi.org/10.1007/978-981-15-2537-7_1",
+   "abstract": null,
+   "relevance": 0.5
+  },
+  {
+   "title": "A STATISTICAL ANALYSIS OF SITING ERROR IN RADIO DIRECTION-FINDING",
+   "authors": "Laurence A. Lyons",
+   "year": "1967-08-30T00:00:00",
+   "doi": "10.21236/ad0661341",
+   "paper_id": "10.21236/ad0661341",
+   "source": "crossref",
+   "url": "https://doi.org/10.21236/ad0661341",
+   "abstract": null,
+   "relevance": 0.5
+  },
+  {
+   "title": "LISA: Virginia Tech's Laboratory for Interdisciplinary Statistical Analysis Annual Report 2014-15",
+   "authors": "Vance, Eric A.; Pruitt, Tonya",
+   "year": "2016-08-05T01:00:00+01:00",
+   "doi": "",
+   "paper_id": 163144646,
+   "source": "core",
+   "url": "",
+   "abstract": "The 2014-15 academic year was very successful for LISA, Virginia Tech’s Laboratory for Interdisciplinary Statistical Analysis. LISA statistical collaborators helped 1349 researchers around Virginia Tech for the three main services of Collaboration Meetings, Walk-in Consulting, and educational Short Courses (Figure 1)\r\nHighlights of 2014-15:\r\n  - Vigorous emphasis on collaborations and co-authorships resulted in 20 peer-reviewed publications; 26 conference posters and presentations; and an additional 28 manuscript submissions.\r\n  - Five new statistical collaboration laboratories were created in",
+   "relevance": 0.5
+  },
+  {
+   "title": "Virginia Tech's Laboratory for Interdisciplinary Statistical Analysis Annual Report 2015-16",
+   "authors": "Vance, Eric A.; Pruitt, Tonya",
+   "year": "2016-08-08T01:00:00+01:00",
+   "doi": "",
+   "paper_id": 163585578,
+   "source": "core",
+   "url": "",
+   "abstract": "This annual report summarizes the activities of LISA, Virginia Tech’s Laboratory for Interdisciplinary Statistical Analysis, during the fall and spring semesters of the 2015-16 academic year. It does not include activities or numbers during Summer 2016. LISA statistical collaborators helped 1217 researchers around Virginia Tech (the most ever for LISA for the fall and spring semesters of an academic year) for the three main services of Collaboration Meetings, Walk-in Consulting, and educational Short Courses (Figure 1).  Highlights of 2015-16:   - In October 2015, LISA hosted a campus-wide sym",
+   "relevance": 0.5
+  },
+  {
+   "title": "Induced abortions in Ohio (Online); Annual induced abortions in Ohio; Abortions",
+   "authors": "Center for Vital and Health Statistics (Ohio). Statistical Analysis Unit.",
+   "year": "",
+   "doi": "",
+   "paper_id": 145482703,
+   "source": "core",
+   "url": "",
+   "abstract": "Annual; Electronic coverage as of May 8, 2008: 2001-; Chiefly statistical tables and graphs.; Description based on: 2001; title from Home page (last updated 4/24/2006, viewed on May 8, 2008).; Latest issue consulted: 2006.; Vol. for 2001 prepared by the Statistical Analysis Unit, Center for Public Health Data and Statistics ; 2002-     prepared by the Statistical Analysis Unit, Center for Vital and Health Statistics.; Harvested from the web on 5/8/0",
+   "relevance": 0.5
+  },
+  {
+   "title": "Twenty five years after KLS: A celebration of non-equilibrium statistical mechanics",
+   "authors": "R. K. P. Zia",
+   "year": "2009-11-28T19:34:51",
+   "doi": "10.1007/s10955-009-9884-0",
+   "paper_id": "0911.5421v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/0911.5421v1",
+   "abstract": "When Lenz proposed a simple model for phase transitions in magnetism, he couldn't have imagined that the \"Ising model\" was to become a jewel in field of equilibrium statistical mechanics. Its role spans the spectrum, from a good pedagogical example to a universality class in critical phenomena. A quarter century ago, Katz, Lebowitz and Spohn found a similar treasure. By introducing a seemingly trivial modification to the Ising lattice gas, they took it into the vast realms of non-equilibrium statistical mechanics. An abundant variety of unexpected behavior emerged and caught many of us by surp",
+   "relevance": 0.25
+  },
+  {
+   "title": "Positivity-Preserving Analysis of Numerical Schemes for Ideal Magnetohydrodynamics",
+   "authors": "Kailiang Wu",
+   "year": "2018-02-07T01:24:32",
+   "doi": "10.1137/18M1168017",
+   "paper_id": "1802.02278v2",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1802.02278v2",
+   "abstract": "Numerical schemes provably preserving the positivity of density and pressure are highly desirable for MHD, but the rigorous positivity-preserving (PP) analysis remains challenging. The difficulties mainly arise from the intrinsic complexity of the MHD equations as well as the indeterminate relation between the PP property and the divergence-free condition on magnetic field. We present the first rigorous PP analysis of conservative schemes with Lax-Friedrichs (LF) flux for ideal MHD. The significant innovation is the discovery of theoretical connection between PP property and a discrete diverge",
+   "relevance": 0.25
+  },
+  {
+   "title": "Robust and Differentially Private Principal Component Analysis",
+   "authors": "Minwoo Kim; Sungkyu Jung",
+   "year": "2025-07-21T04:27:09",
+   "doi": "10.1002/sam.70053",
+   "paper_id": "2507.15232v2",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2507.15232v2",
+   "abstract": "Recent advances have sparked significant interest in the development of privacy-preserving Principal Component Analysis (PCA). However, many existing approaches rely on restrictive assumptions, such as assuming sub-Gaussian data or being vulnerable to data contamination. Additionally, some methods are computationally expensive or depend on unknown model parameters that must be estimated, limiting their accessibility for data analysts seeking privacy-preserving PCA. In this paper, we propose a differentially private PCA method applicable to heavy-tailed and potentially contaminated data. Our ap",
+   "relevance": 0.25
+  },
+  {
+   "title": "Recurrence of benign paroxysmal positional vertigo: risk factors and outcomes",
+   "authors": "Kars A; Atalay F; Anbar S; Topal K; Altıparmak S",
+   "year": "",
+   "doi": "",
+   "paper_id": "PMC13552986",
+   "source": "europepmc",
+   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13552986/?tool=EBI",
+   "abstract": null,
+   "relevance": 0.25
+  },
+  {
+   "title": "Limited positional differences in lower-limb muscle contractile properties among female football players.",
+   "authors": "Sučka J; Pajonková F; Čech P; Lenková R",
+   "year": "2026-01-01T00:00:00",
+   "doi": "10.3389/fspor.2026.1915995",
+   "paper_id": "PMID:42630297",
+   "source": "europepmc",
+   "url": "https://europepmc.org/articles/PMC13493519",
+   "abstract": "<h4>Background</h4>Contractile properties of the lower-limb muscles are closely associated with high-intensity activities performed during a football match. Several studies have indicated that playing position significantly influences players' physical and performance demands, as well as the intensity of high-speed locomotor activities during match play. Nevertheless, it remains unclear to what extent muscle contractile properties differ according to specific playing positions in women's football. Therefore, the aim of this study was to describe the contractile properties of female football pl",
+   "relevance": 0.25
+  },
+  {
+   "title": "Prospective Exploratory Evaluation of Audiovestibular Function in Patients Receiving Oral Isotretinoin Using Audiometry and Videonystagmography.",
+   "authors": "Yüksel F; Yavuz C; Kahraman ME",
+   "year": "2026-01-01T00:00:00",
+   "doi": "10.4274/tao.2026.2026-4-9",
+   "paper_id": "PMID:42769804",
+   "source": "europepmc",
+   "url": "https://europepmc.org/articles/PMC13639332",
+   "abstract": "<h4>Objective</h4>To prospectively evaluate possible audiovestibular changes associated with short-term oral isotretinoin therapy using pure-tone audiometry and selected videonystagmography (VNG)-based vestibular assessments.<h4>Methods</h4>Participants older than 18 years receiving oral isotretinoin therapy constituted the study group. All participants underwent detailed otorhinolaryngological examination, along with pure-tone audiometry and tympanometric analysis, prior to treatment initiation and after three months of therapy. Vestibular assessment included VNG-based spontaneous nystagmus a",
+   "relevance": 0.25
+  },
+  {
+   "title": "The Relationship Between Serum Vitamin D Levels and the First-Attempt Success of the Epley Maneuver in Posterior Canal Benign Paroxysmal Positional Vertigo (PC-BPPV)",
+   "authors": "Bilgen A; Yalçindağ A; Akkoca Ö; Çikrikçi IŞIK G; Muz S; Islamoğlu Y; Yilmaz F; Gedikaslan Taşdemir Ş",
+   "year": "2026-01-01T00:00:00",
+   "doi": "",
+   "paper_id": "PMC13666152",
+   "source": "europepmc",
+   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13666152/?tool=EBI",
+   "abstract": null,
+   "relevance": 0.25
+  },
+  {
+   "title": "Beat-to-Beat Nystagmus Differentiation Between Benign Paroxysmal Positional Vertigo (BPPV) and Vestibular Migraine (VM): A Cross-Sectional Videonystagmographic Study From Northern India",
+   "authors": "Sachan P; Dorasala S; Bansal U; Gupta A; Sengar M; Verma V; Sachan B",
+   "year": "",
+   "doi": "",
+   "paper_id": "PMC13657663",
+   "source": "europepmc",
+   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13657663/?tool=EBI",
+   "abstract": null,
+   "relevance": 0.25
+  }
+ ],
+ "neighbors_read_full_text": [
+  {
+   "title": "The Statistical Analysis of fMRI Data",
+   "paper_id": "0906.3662v1",
+   "words": 19509
+  },
+  {
+   "title": "Statistical Inference for the Population Landscape via Moment Adjusted Stochastic Gradients",
+   "paper_id": "1712.07519v2",
+   "words": 13923
+  },
+  {
+   "title": "Twenty five years after KLS: A celebration of non-equilibrium statistical mechanics",
+   "paper_id": "0911.5421v1",
+   "words": 5116
+  }
+ ],
+ "gaps": [
+  {
+   "gap": "neighbors surfaced but not read in full text (abstracts never establish novelty)",
+   "neighbors": [
+    "Toward the Use of Statistical Analysis in Positional Tolerancing",
+    "A statistical analysis of positional errors of a multiaxis machine tool",
+    "Methods for finding genes a major rate-limiting step in positional cloning",
+    "The Logic &amp; Language of Statistical Analysis",
+    "A STATISTICAL ANALYSIS OF SITING ERROR IN RADIO DIRECTION-FINDING",
+    "LISA: Virginia Tech's Laboratory for Interdisciplinary Statistical Analysis Annual Report 2014-15",
+    "Virginia Tech's Laboratory for Interdisciplinary Statistical Analysis Annual Report 2015-16",
+    "Induced abortions in Ohio (Online); Annual induced abortions in Ohio; Abortions",
+    "Positivity-Preserving Analysis of Numerical Schemes for Ideal Magnetohydrodynamics",
+    "Robust and Differentially Private Principal Component Analysis"
+   ]
+  }
+ ],
+ "citation_checks": []
+}

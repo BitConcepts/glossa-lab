@@ -1,0 +1,633 @@
+{
+ "claims": [
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-CONTRACT-FROZEN"
+   ],
+   "boundary": "The scope is the build alone: the classification, its freeze record, its build record, and its gate record. It excludes any test of any Hunt claim, any corpus quantity, any positional quantity, and any statement about what any sign means. Carried from the draft head, verbatim in substance: An outcome under Spec 069 states only whether Asset A was built and frozen under Spec 045's sections 2-3 contract, with its digest published as the first product, or which build gate failed and with what observed values. Recovery restatement at 0.8-draft: the previous head ('An outcome under Spec 069 states only whether Asset A was built and frozen, or which build gate failed.') was restated to a single proposition; its remaining substance stands in this boundary and in the carried draft head above.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 045 spec.md on main, frozen 2026-10-21 under freeze digest 5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a; sections 2-3 read in full first-hand at this draft from origin/main at 2a0eb854982f52453bcd76fd4a5bcbb088eb21e8.",
+     "direction": "supports",
+     "independent_of": [
+      "data/crosswalks/sign_crosswalk_master.csv",
+      "specs/045-hunt-depicted-kinds/outcome.md"
+     ],
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/045-hunt-depicted-kinds/spec.md",
+     "source_id": "specs/045-hunt-depicted-kinds/spec.md",
+     "source_quality": "artifact"
+    },
+    {
+     "description": "Spec 045 outcome record: execution of 2026-10-21 closed INVALID at gate 0.2 before the step-1 Asset A build; no Asset A digest exists.",
+     "direction": "supports",
+     "independent_of": [
+      "data/crosswalks/sign_crosswalk_master.csv",
+      "specs/045-hunt-depicted-kinds/spec.md"
+     ],
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/045-hunt-depicted-kinds/outcome.md",
+     "source_id": "specs/045-hunt-depicted-kinds/outcome.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "the claim is falsified in scope if any Spec 069 output states a verdict on a Hunt claim, a corpus or positional quantity, or a meaning for any sign"
+   ],
+   "id": "F069-C01",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec045-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which completing the build quietly adjudicates one of the Hunt claims it serves",
+    "verdict_rule": "scope is judged by inspection of every Spec 069 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding"
+   },
+   "status": "draft",
+   "text": "An outcome under Spec 069 states the build's result under the A1-A6 gates."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-CONTRACT-FROZEN"
+   ],
+   "boundary": "The quotation is checked character for character against Spec 045's frozen text on main at the freeze. The section 2.1 reading notes of Spec 069 (asset location in this spec's directory; the D-18 state on record; the dependents named) are outside the quotation and change no quoted word. Carried from the draft head, verbatim in substance: The contract of this build is Spec 045 sections 2 and 3 quoted in full and verbatim in Spec 069 section 2, under Spec 045's freeze digest 5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a; where any other part of the Spec 069 draft and the quoted text differ, the quoted text governs and the difference is a defect in the draft. Recovery restatement at 0.8-draft: the previous head ('The contract of this build is Spec 045 sections 2 and 3, quoted verbatim in Spec 069 section 2.') was restated to a single proposition; its remaining substance stands in this boundary and in the carried draft head above. Recovery restatement at 0.9-draft: the previous head ('Spec 045 sections 2 and 3 are this build's contract.') was restated to a single proposition; the sections it names (Spec 045 sections 2 and 3) stand in this boundary and in the carried draft head above.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 045 spec.md on main, frozen 2026-10-21 under freeze digest 5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a; sections 2-3 read in full first-hand at this draft from origin/main at 2a0eb854982f52453bcd76fd4a5bcbb088eb21e8.",
+     "direction": "supports",
+     "independent_of": [
+      "data/crosswalks/sign_crosswalk_master.csv",
+      "specs/045-hunt-depicted-kinds/outcome.md"
+     ],
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/045-hunt-depicted-kinds/spec.md",
+     "source_id": "specs/045-hunt-depicted-kinds/spec.md",
+     "source_quality": "artifact"
+    },
+    {
+     "description": "Spec 045 outcome record: execution of 2026-10-21 closed INVALID at gate 0.2 before the step-1 Asset A build; no Asset A digest exists.",
+     "direction": "supports",
+     "independent_of": [
+      "data/crosswalks/sign_crosswalk_master.csv",
+      "specs/045-hunt-depicted-kinds/spec.md"
+     ],
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/045-hunt-depicted-kinds/outcome.md",
+     "source_id": "specs/045-hunt-depicted-kinds/outcome.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "recompute the quotation's equality with Spec 045 sections 2-3 as frozen on main; any difference not recorded as a defect of the draft falsifies compliance"
+   ],
+   "id": "F069-C02",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec045-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "a paraphrase or summary of the contract, which could drift from the frozen words without any single change looking material",
+    "verdict_rule": "compliance is the character-for-character check at the freeze; a failed check blocks the freeze"
+   },
+   "status": "draft",
+   "text": "Spec 045's quoted sections are this build's contract."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-CONTRACT-FROZEN"
+   ],
+   "boundary": "The field set is the quoted contract's. A consumer needing more opens its own planning gate; it does not extend the asset inside this programme. Carried from the draft head, verbatim in substance: Asset A carries exactly the fields of Spec 045 section 2.2 and no others - sign_key, cisi_no, parpola_no, depicted_kind, depicted_label_verbatim, governing_source, source_citations, agreement, dispute_status, d18_input, entered_blind - in one canonical CSV generated by a CSV writer and round-trip validated to the section 2.2 field count on every row. Freeze ruling DD-069-6 (OPEN-069-1): the canonical file and asset-a-freeze.json live in this spec's directory, specs/069-hunt-asset-a/asset-a/. Freeze ruling DD-069-8 (OPEN-069-3): the build records the verbatim labels only; Spec 045 section 5.2(b) jurisdiction coding is not performed at entry and is no part of the frozen asset, the quoted section 2.2 field set being closed.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 045 spec.md on main, frozen 2026-10-21 under freeze digest 5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a; sections 2-3 read in full first-hand at this draft from origin/main at 2a0eb854982f52453bcd76fd4a5bcbb088eb21e8.",
+     "direction": "supports",
+     "independent_of": [
+      "data/crosswalks/sign_crosswalk_master.csv",
+      "specs/045-hunt-depicted-kinds/outcome.md"
+     ],
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/045-hunt-depicted-kinds/spec.md",
+     "source_id": "specs/045-hunt-depicted-kinds/spec.md",
+     "source_quality": "artifact"
+    },
+    {
+     "description": "Spec 045 outcome record: execution of 2026-10-21 closed INVALID at gate 0.2 before the step-1 Asset A build; no Asset A digest exists.",
+     "direction": "supports",
+     "independent_of": [
+      "data/crosswalks/sign_crosswalk_master.csv",
+      "specs/045-hunt-depicted-kinds/spec.md"
+     ],
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/045-hunt-depicted-kinds/outcome.md",
+     "source_id": "specs/045-hunt-depicted-kinds/outcome.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "parse the canonical CSV at the freeze point and at publication: any row not parsing to exactly the section 2.2 field count, or any field outside the section 2.2 set, stops the build as ASSET FAILED under gate A6/A4 as applicable"
+   ],
+   "id": "F069-C03",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec045-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "a hand-edited or extended CSV that still looks like the asset while carrying rows or fields the contract never froze",
+    "verdict_rule": "the freeze-point parse and field-set inspection is the operative check"
+   },
+   "status": "draft",
+   "text": "Asset A carries exactly the fields of Spec 045 section 2.2 in one canonical CSV."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-CONTRACT-FROZEN",
+    "ASM-SOURCES-HELD"
+   ],
+   "boundary": "Sources are those named in the build record at gate A1 by edition. Mahadevan's and Wells's lists enter only through a D-18 row, cited there, per the quoted section 2.3. Carried from the draft head, verbatim in substance: Every label in Asset A comes only from held published sources under Spec 045 section 2.3's hierarchy - the CISI volumes governing, Parpola's published identifications governing where CISI is silent, and a D-18 concordance input never governing on its own; program-internal classifications, earlier phase outputs, and any worker's own visual judgement are not sources and appear in no row's source_citations.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 045 spec.md on main, frozen 2026-10-21 under freeze digest 5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a; sections 2-3 read in full first-hand at this draft from origin/main at 2a0eb854982f52453bcd76fd4a5bcbb088eb21e8.",
+     "direction": "supports",
+     "independent_of": [
+      "data/crosswalks/sign_crosswalk_master.csv",
+      "specs/045-hunt-depicted-kinds/outcome.md"
+     ],
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/045-hunt-depicted-kinds/spec.md",
+     "source_id": "specs/045-hunt-depicted-kinds/spec.md",
+     "source_quality": "artifact"
+    },
+    {
+     "description": "Spec 045 outcome record: execution of 2026-10-21 closed INVALID at gate 0.2 before the step-1 Asset A build; no Asset A digest exists.",
+     "direction": "supports",
+     "independent_of": [
+      "data/crosswalks/sign_crosswalk_master.csv",
+      "specs/045-hunt-depicted-kinds/spec.md"
+     ],
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/045-hunt-depicted-kinds/outcome.md",
+     "source_id": "specs/045-hunt-depicted-kinds/outcome.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "inspect every row's source_citations against the gate A1 source list: a row citing any source outside the hierarchy, or any program-internal classification, stops the build as ASSET FAILED"
+   ],
+   "id": "F069-C04",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec045-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the enterer's own visual judgement, which is the classification discretion the blind published-source construction exists to exclude",
+    "verdict_rule": "the citation inspection over every row is the operative check; it is not sampled"
+   },
+   "status": "draft",
+   "text": "Every label in Asset A comes only from held published sources under Spec 045 section 2.3's hierarchy."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-CONTRACT-FROZEN"
+   ],
+   "boundary": "Blindness is per build, attested for every row by the entered_blind field of the quoted section 2.2. This spec computes no join itself; the order rule binds the asset against every later use. Carried from the draft head, verbatim in substance: Entry is blind to positional results and runs in Spec 045 section 2.4's order - sources consulted, rows entered, dispute coding completed, D-18 input incorporated or its absence recorded, freeze digest computed, only then any join - and the build record attests that order and that blindness, with the entry log preserved. Freeze ruling DD-069-9 (OPEN-069-4): Spec 045's freeze decision DD-045-16 stands - no second-enterer spot check is added to this build; the quoted gates do not require one. Recovery restatement at 0.8-draft: the previous head ('Entry for Asset A is blind to positional results and runs in Spec 045 section 2.4's order.') was restated to a single proposition; its remaining substance stands in this boundary and in the carried draft head above.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 045 spec.md on main, frozen 2026-10-21 under freeze digest 5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a; sections 2-3 read in full first-hand at this draft from origin/main at 2a0eb854982f52453bcd76fd4a5bcbb088eb21e8.",
+     "direction": "supports",
+     "independent_of": [
+      "data/crosswalks/sign_crosswalk_master.csv",
+      "specs/045-hunt-depicted-kinds/outcome.md"
+     ],
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/045-hunt-depicted-kinds/spec.md",
+     "source_id": "specs/045-hunt-depicted-kinds/spec.md",
+     "source_quality": "artifact"
+    },
+    {
+     "description": "Spec 045 outcome record: execution of 2026-10-21 closed INVALID at gate 0.2 before the step-1 Asset A build; no Asset A digest exists.",
+     "direction": "supports",
+     "independent_of": [
+      "data/crosswalks/sign_crosswalk_master.csv",
+      "specs/045-hunt-depicted-kinds/spec.md"
+     ],
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/045-hunt-depicted-kinds/outcome.md",
+     "source_id": "specs/045-hunt-depicted-kinds/outcome.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "a breach of blind entry or a missing attestation, discovered at any point, stops the build as ASSET FAILED under gate A5; the asset is not repaired inside this programme"
+   ],
+   "id": "F069-C05",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec045-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "entry done with positional results in view, which would make the classification circular for every test that consumes it",
+    "verdict_rule": "gate A5's attestation and entry-log inspection is the operative check"
+   },
+   "status": "draft",
+   "text": "Entry for Asset A is blind to positional results."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-CONTRACT-FROZEN"
+   ],
+   "boundary": "Borderline signs (the published identification hedged in its own source) are coded as the quoted section 2.5 states and stay in the asset under their governing label. Carried from the draft head, verbatim in substance: A sign whose governing sources disagree on depicted kind is coded depicted_kind = contested and dispute_status = contested, with both verbatim labels and citations recorded, before the freeze and before any join; no tie is broken by the enterer, by frequency, or by which label would suit any test, and a dispute first noticed after the freeze is recorded as an asset defect, not resolved into the frozen asset.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 045 spec.md on main, frozen 2026-10-21 under freeze digest 5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a; sections 2-3 read in full first-hand at this draft from origin/main at 2a0eb854982f52453bcd76fd4a5bcbb088eb21e8.",
+     "direction": "supports",
+     "independent_of": [
+      "data/crosswalks/sign_crosswalk_master.csv",
+      "specs/045-hunt-depicted-kinds/outcome.md"
+     ],
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/045-hunt-depicted-kinds/spec.md",
+     "source_id": "specs/045-hunt-depicted-kinds/spec.md",
+     "source_quality": "artifact"
+    },
+    {
+     "description": "Spec 045 outcome record: execution of 2026-10-21 closed INVALID at gate 0.2 before the step-1 Asset A build; no Asset A digest exists.",
+     "direction": "supports",
+     "independent_of": [
+      "data/crosswalks/sign_crosswalk_master.csv",
+      "specs/045-hunt-depicted-kinds/spec.md"
+     ],
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/045-hunt-depicted-kinds/outcome.md",
+     "source_id": "specs/045-hunt-depicted-kinds/outcome.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "inspect the dispute coding against the rows' source_citations: any disagreeing pair of governing labels coded as a kind, or any post-freeze dispute resolved by editing a row, falsifies compliance"
+   ],
+   "id": "F069-C06",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec045-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "quiet tie-breaking, which would hide exactly the disagreements a dependent's contested-row rule needs to see",
+    "verdict_rule": "the pre-freeze coding inspection is the operative check"
+   },
+   "status": "draft",
+   "text": "A sign whose governing sources disagree on depicted kind is coded contested."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-CONTRACT-FROZEN",
+    "ASM-D18-STATE"
+   ],
+   "boundary": "Gate A2 re-asserts the D-18 state at execution against the record as it then stands; if the state has changed, the quoted section 2.6 rules govern what may be consumed, including the unresolved-key disposition for records whose crosswalk_registry_id is null. Carried from the draft head, verbatim in substance: The D-18 input is consumed only in Spec 045 section 2.6's frozen form; on the record at this draft that input is Spec 046's terminal empty feed - concordance-297.json, SHA-256 772db4df152ec4f1071bed088250677e55f69743532c9e89f339a8cf9134aaaf, signs empty under an IDENTIFICATION FAILED closure - so the build proceeds without the feed, records its absence, and never reconstructs the feed from the asset's own labels. Freeze ruling DD-069-7 (OPEN-069-2): the D-18 state is confirmed as the terminal empty feed on record; gate A2 re-asserts that state at execution.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 045 outcome record section 3: Spec 046's concordance-297.json re-verified at the 2026-10-21 run, SHA-256 772db4df..., schema glossa.concordance/1, signs empty with the IDENTIFICATION FAILED closure block.",
+     "direction": "supports",
+     "independent_of": [
+      "data/crosswalks/sign_crosswalk_master.csv",
+      "specs/045-hunt-depicted-kinds/spec.md"
+     ],
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/045-hunt-depicted-kinds/outcome.md",
+     "source_id": "specs/045-hunt-depicted-kinds/outcome.md",
+     "source_quality": "artifact"
+    },
+    {
+     "description": "Spec 045 spec.md on main, frozen 2026-10-21 under freeze digest 5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a; sections 2-3 read in full first-hand at this draft from origin/main at 2a0eb854982f52453bcd76fd4a5bcbb088eb21e8.",
+     "direction": "supports",
+     "independent_of": [
+      "data/crosswalks/sign_crosswalk_master.csv",
+      "specs/045-hunt-depicted-kinds/outcome.md"
+     ],
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/045-hunt-depicted-kinds/spec.md",
+     "source_id": "specs/045-hunt-depicted-kinds/spec.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "recompute the concordance file's SHA-256 and inspect its closure block at gate A2: a state differing from the record, consumed without the quoted rules, falsifies compliance"
+   ],
+   "id": "F069-C07",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec045-record",
+     "spec046-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "reconstructing a D-18 feed from the asset's own labels, which would manufacture corroboration the concordance never supplied",
+    "verdict_rule": "gate A2's re-assertion against the record is the operative check"
+   },
+   "status": "draft",
+   "text": "The D-18 input is consumed only in Spec 045 section 2.6's frozen form."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-CONTRACT-FROZEN",
+    "ASM-CROSSWALK-PIN"
+   ],
+   "boundary": "The census is re-asserted at this spec's freeze. Coverage is the quoted gate A3 scope (Spec 045's DD-045-18 restatement), wider than any one dependent's population, because the asset is consumed across the programme. Carried from the draft head, verbatim in substance: Every sign in the full pinned-crosswalk sign universe - every distinct registry_sign_id in data/crosswalks/sign_crosswalk_master.csv as pinned, 187 distinct sign keys in 205 rows at Spec 045's freeze census - carries a row in Asset A: a kind, contested, or unidentified with its searched sources recorded; a sign with no row stops the build as ASSET FAILED under gate A3, and an absent row is never treated as other by default.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Sign crosswalk of record, SHA-256 4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf as pinned by Spec 045 section 4: 205 rows, 187 distinct registry_sign_id values.",
+     "direction": "supports",
+     "independent_of": [
+      "specs/045-hunt-depicted-kinds/outcome.md",
+      "specs/045-hunt-depicted-kinds/spec.md"
+     ],
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "data/crosswalks/sign_crosswalk_master.csv",
+     "source_id": "data/crosswalks/sign_crosswalk_master.csv",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "enumerate the pinned crosswalk's distinct registry_sign_id values and the asset's sign_key values at the freeze point: any universe sign without a row stops the build as ASSET FAILED"
+   ],
+   "id": "F069-C08",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "crosswalk-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "coverage of only the signs some dependent happens to need, which would leave the asset's coverage scope to be discovered consumer by consumer",
+    "verdict_rule": "gate A3's enumeration is the operative check"
+   },
+   "status": "draft",
+   "text": "Every sign in the full pinned-crosswalk sign universe carries a row in Asset A."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-CONTRACT-FROZEN"
+   ],
+   "boundary": "No gate is skipped because its result looks predictable, and no dependent quantity is computed past a failed gate; this spec computes no dependent quantity in any case. Carried from the draft head, verbatim in substance: Execution runs the build gates A1 to A6 exactly as quoted in Spec 069 section 2, in order, before any join; a failure stops the build in the class the quoted gate names - ASSET FAILED for A1, A3, A4, A5, A6, and the recorded sequencing stop for A2 - and nothing is repaired at run time. Freeze ruling DD-069-11 (OPEN-069-6): the execution phase is Phase 432, allocated at this freeze by the owner's act of 2026-10-22. Recovery restatement at 0.8-draft: the previous head ('Execution runs the build gates A1 to A6 in order, before any join.') was restated to a single proposition; its remaining substance stands in this boundary and in the carried draft head above.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 045 spec.md on main, frozen 2026-10-21 under freeze digest 5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a; sections 2-3 read in full first-hand at this draft from origin/main at 2a0eb854982f52453bcd76fd4a5bcbb088eb21e8.",
+     "direction": "supports",
+     "independent_of": [
+      "data/crosswalks/sign_crosswalk_master.csv",
+      "specs/045-hunt-depicted-kinds/outcome.md"
+     ],
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/045-hunt-depicted-kinds/spec.md",
+     "source_id": "specs/045-hunt-depicted-kinds/spec.md",
+     "source_quality": "artifact"
+    },
+    {
+     "description": "Spec 045 outcome record: execution of 2026-10-21 closed INVALID at gate 0.2 before the step-1 Asset A build; no Asset A digest exists.",
+     "direction": "supports",
+     "independent_of": [
+      "data/crosswalks/sign_crosswalk_master.csv",
+      "specs/045-hunt-depicted-kinds/spec.md"
+     ],
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/045-hunt-depicted-kinds/outcome.md",
+     "source_id": "specs/045-hunt-depicted-kinds/outcome.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "the gate record is falsified as a compliance record if any gate is shown to have run out of order, after a join, or with a failure repaired at run time"
+   ],
+   "id": "F069-C09",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec045-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "repairing a failed gate at run time, which would convert a designed closure into an improvised asset",
+    "verdict_rule": "the ordered gate record, published with the outcome either way, is the operative check"
+   },
+   "status": "draft",
+   "text": "Execution runs the build gates A1 to A6 in order."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-CONTRACT-FROZEN"
+   ],
+   "boundary": "After the freeze point the asset changes only by dated, append-only defect notices, never by editing a row; a defect that reaches a produced verdict marks that verdict and does not rewrite it. Carried from the draft head, verbatim in substance: At the freeze point, asset-a-freeze.json records the SHA-256 of the canonical CSV, the row count and per-kind counts, the pins of every input, the build-order attestation, and the freeze date; the classification and its digest are published as this spec's first product; and Specs 070 and 071 pin that digest, not the idea of the classification - a mismatch at a dependent's step 0 closes that dependent, and nobody re-derives the same classification. Freeze ruling DD-069-10 (OPEN-069-5): this spec files its own OSF contract registration at its freeze, in the programme's standing form. Freeze ruling DD-069-11 (OPEN-069-6): the execution phase is Phase 432.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 045 spec.md on main, frozen 2026-10-21 under freeze digest 5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a; sections 2-3 read in full first-hand at this draft from origin/main at 2a0eb854982f52453bcd76fd4a5bcbb088eb21e8.",
+     "direction": "supports",
+     "independent_of": [
+      "data/crosswalks/sign_crosswalk_master.csv",
+      "specs/045-hunt-depicted-kinds/outcome.md"
+     ],
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/045-hunt-depicted-kinds/spec.md",
+     "source_id": "specs/045-hunt-depicted-kinds/spec.md",
+     "source_quality": "artifact"
+    },
+    {
+     "description": "Spec 045 outcome record: execution of 2026-10-21 closed INVALID at gate 0.2 before the step-1 Asset A build; no Asset A digest exists.",
+     "direction": "supports",
+     "independent_of": [
+      "data/crosswalks/sign_crosswalk_master.csv",
+      "specs/045-hunt-depicted-kinds/spec.md"
+     ],
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/045-hunt-depicted-kinds/outcome.md",
+     "source_id": "specs/045-hunt-depicted-kinds/outcome.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "recompute the canonical CSV's SHA-256 against asset-a-freeze.json at publication: a mismatch stops the build as ASSET FAILED under gate A6 before any join"
+   ],
+   "id": "F069-C10",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec045-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "dependents pinning a description of the classification rather than its bytes, which would let two different classifications travel under one name",
+    "verdict_rule": "gate A6's recomputation is the operative check"
+   },
+   "status": "draft",
+   "text": "asset-a-freeze.json records the canonical CSV's SHA-256 at the freeze point."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-CONTRACT-FROZEN"
+   ],
+   "boundary": "The inputs are exactly those of Spec 069 section 4: the frozen contract, the pinned crosswalk, the held published sources, the D-18 state on record, and the anchors file asserted byte-identical. Carried from the draft head, verbatim in substance: This build is corpus-independent: no corpus of any kind is an input - not the programme's corpus layers, not the Phase-43 records, and not the Shakti corpus - no positional quantity is computed, and no corpus gate exists in this spec.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 045 spec.md on main, frozen 2026-10-21 under freeze digest 5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a; sections 2-3 read in full first-hand at this draft from origin/main at 2a0eb854982f52453bcd76fd4a5bcbb088eb21e8.",
+     "direction": "supports",
+     "independent_of": [
+      "data/crosswalks/sign_crosswalk_master.csv",
+      "specs/045-hunt-depicted-kinds/outcome.md"
+     ],
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/045-hunt-depicted-kinds/spec.md",
+     "source_id": "specs/045-hunt-depicted-kinds/spec.md",
+     "source_quality": "artifact"
+    },
+    {
+     "description": "Spec 045 outcome record: execution of 2026-10-21 closed INVALID at gate 0.2 before the step-1 Asset A build; no Asset A digest exists.",
+     "direction": "supports",
+     "independent_of": [
+      "data/crosswalks/sign_crosswalk_master.csv",
+      "specs/045-hunt-depicted-kinds/spec.md"
+     ],
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/045-hunt-depicted-kinds/outcome.md",
+     "source_id": "specs/045-hunt-depicted-kinds/outcome.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "inspect the execution's input record: any corpus file read as an input, or any positional quantity in an execution product, falsifies compliance and is a defect of the run, recorded as such"
+   ],
+   "id": "F069-C11",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec045-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "importing a corpus gate from Spec 045's own test or from the Shakti programme, which would re-couple the build to the very reproduction failures that left the asset unbuilt",
+    "verdict_rule": "the input-record inspection is the operative check"
+   },
+   "status": "draft",
+   "text": "This build is corpus-independent."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-CONTRACT-FROZEN"
+   ],
+   "boundary": "Negative, asset-failed, and not-started outcomes publish with the same prominence as a built asset. Carried from the draft head, verbatim in substance: No output under Spec 069 establishes a gloss or a meaning for any sign; depiction is the published identification layer, not ground truth; and Spec 037's census caution - object-type labels diverging between compilations in 49 percent of matched cases - is restated wherever Asset A or a product of this spec is stated. Recovery restatement at 0.8-draft: the previous head ('No output under Spec 069 establishes a gloss or a meaning for any sign.') was restated to a single proposition; its remaining substance stands in this boundary and in the carried draft head above.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 045 section 8, limits 1-3, and section 7: the no-gloss limit, depiction as the published identification layer, and the 49 percent census caution travelling with the asset.",
+     "direction": "supports",
+     "independent_of": [
+      "data/crosswalks/sign_crosswalk_master.csv",
+      "specs/045-hunt-depicted-kinds/outcome.md"
+     ],
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/045-hunt-depicted-kinds/spec.md",
+     "source_id": "specs/045-hunt-depicted-kinds/spec.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "an output presenting a depicted kind as a reading or meaning, or stating the asset without the 49 percent caution, falsifies compliance on inspection"
+   ],
+   "id": "F069-C12",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec045-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "presenting the published identification layer as ground truth about what signs depict in fact",
+    "verdict_rule": "output inspection against Spec 069 section 6 is the operative check"
+   },
+   "status": "draft",
+   "text": "Spec 069 establishes no gloss for any sign."
+  }
+ ],
+ "note": "Draft register for Spec 069 (the Asset A build under Spec 045's frozen sections 2-3 contract; Hunt programme re-scoped by the owner's readiness decisions of 2026-10-22, decision 3, which commissions this spec first in the dependency order Spec 069, Spec 070, Spec 071). Conventions as in Specs 042-054: requirement claims carry no falsification test where a gate or inspection is the operative check; boundaries carry the conditions under which each claim holds; evidence items carry observed_at from this draft because the cited facts were verified first-hand at drafting. The AEE lifecycle hooks have NOT run on this register; they are the freeze gate (tasks L4), applied in the substantive form of DD-038-10, and any recovery round they force changes claim text before any freeze digest is computed. ASM- ids name the assumptions each claim stands on: ASM-CONTRACT-FROZEN (Spec 045's sections 2-3 stand frozen on main under freeze digest 5d8254dd... and are quoted verbatim), ASM-SOURCES-HELD (the CISI volumes and Parpola's published identifications are held as Spec 045 section 2.3 states), ASM-D18-STATE (Spec 046's terminal delivery is on record as the empty feed pinned in F069-C07), ASM-CROSSWALK-PIN (the pinned crosswalk defines the sign universe and sign keys).",
+ "register_version": "0.9-draft",
+ "spec": "069-hunt-asset-a"
+}

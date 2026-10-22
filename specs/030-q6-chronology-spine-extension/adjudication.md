@@ -137,3 +137,133 @@ constitution §VI. The decision text above is the
 owner's, given in the program chat on 2026-10-12; the
 decision substance is the design's stated proposals
 as presented to and ratified by him.
+## Ask 2 — owner ruling, 2026-10-21 → **DECIDED: BINDING**
+
+> Owner decision (Tristen Pierson, 2026-10-21, given
+> in the program chat via the options widget):
+> **"Ask 2 is decided BINDING: a future Q6 freeze's
+> timing-support assessment must meet every frozen
+> criterion with CONTESTED-scenario rows excluded as
+> well as with all rows included, and a support claim
+> that holds only with contested rows included does
+> not authorise a Q6 freeze."**
+
+This entry records the ruling the Ask 2 entry above
+expressly reserved to a future owner decision. The
+2026-10-12 entries stand untouched: Asks 1, 3, 4,
+and 5 were decided there; Ask 2 was not, and is
+decided only here.
+
+Basis of record: the decision memo of 2026-10-21
+(`spec030-ask2-decision-memo-2026-10-21.md`, held
+in the owner's research notes), which recommended
+BINDING and verified against the Phase-394 record
+that the ruling changes no standing outcome: the
+re-test reported both computations and they
+returned identical values (C1 1 FAIL, C2 6 FAIL,
+C3 0.0 FAIL, C4 70 BP PASS under both), so Q6
+remains NOT-YET-TESTABLE either way.
+
+Consequence: the operative position recorded in
+the Ask 2 entry above — both computations
+reported, the as-frozen (all-rows) computation as
+the assessment's verdict basis — is superseded
+for future Q6 freezes: from this ruling, a future
+Q6 freeze's timing-support assessment must meet
+every frozen criterion under both computations,
+and a support claim that holds only with
+contested rows included does not authorise a Q6
+freeze. The both-ways reporting duty (integrity
+rule 5; F030-C04) is unchanged, and this ruling
+alters no frozen criterion, threshold, or
+Phase-394 record.
+
+AI disclosure: recorded by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution §VI. The ruling text above is the
+owner's, adopted verbatim from the decision memo's
+ruling sentence as presented to and selected by
+him on 2026-10-21.
+
+## Freeze-test amendment — owner-ordered, 2026-10-21
+
+The Ask 2 ruling entry above is a dated append to
+this file, and this file is a digest-covered source
+of the Spec 030 freeze: `freeze.json` pins its
+whole-file SHA-256
+(`f962f910d81cb63f44abb4db0e1be2ee0fb9fca45f5242f23656113ddd609738`;
+5,867 bytes) among the freeze's sources, under the
+freeze-act digest
+`3a61c63a26ffada3c21bf8b718610e6debe7f9c9ff58bf8ff736cbb7c3db00e9`.
+The freeze replay fence —
+`backend/tests/test_spec030_freeze.py::test_freeze_record_replays`
+(framework026 `verify_freeze` over every covered
+source) — therefore failed on the ruling record
+(PR #241, run 39573949471) by construction: the
+backend suite's single failure, `frozen source
+changed: specs/030-q6-chronology-spine-extension/adjudication.md`,
+in an otherwise 1,366 passed / 20 skipped suite
+with the run's other six jobs green. No frozen
+byte was altered — the ruling is an append, and
+the frozen bytes remain an exact prefix of this
+file — but a whole-file fence cannot distinguish
+an append from an edit. The conflict is between
+the fence's form and this file's function: this
+adjudication is the spec's ruling record, where
+owner decisions are recorded by dated append, and
+the frozen contract mandates no appends to it —
+unlike Spec 038's register fence, no contract
+term is in conflict; the fence's form alone
+cannot carry the file's role.
+
+**Ruling.** The owner ordered the amendment on
+2026-10-21, verbatim: **"Amend the freeze test
+(Spec 038 precedent)"**. The amendment is exactly
+this, and nothing broader:
+
+1. In `test_freeze_record_replays`, the replay of
+   `adjudication.md` is narrowed to
+   **prefix-integrity**: the bytes pinned at
+   freeze time (5,867 bytes, SHA-256
+   `f962f910d81cb63f44abb4db0e1be2ee0fb9fca45f5242f23656113ddd609738`)
+   must remain an exact prefix of the live file;
+   dated appends after them are permitted. The
+   pin is carried in `freeze.json` (`prefix_pins`,
+   hash and byte length) and asserted as a
+   constant in the test. Every other covered
+   source keeps its live whole-file hash
+   assertion under the same `verify_freeze`
+   replay; no other assertion changes, and no
+   production code changes.
+2. `freeze.json` is recomputed ONCE over the
+   amended state with the repo's own builder
+   (`build_freeze.py`, framework026
+   `build_freeze`), in the freeze environment
+   (python 3.12.3, aee 1.0.4), faithfulness-proven
+   first: the pre-amendment builder over the
+   original (pre-append, pre-amendment) bytes
+   reproduces the freeze-act digest `3a61c63a…`
+   exactly. The successor digest is the `digest`
+   recorded in the amended `freeze.json` and is
+   carried in the LEDGER entry of 2026-10-21
+   recording this amendment.
+
+**What does not change.** The freeze-act digest
+`3a61c63a26ffada3c21bf8b718610e6debe7f9c9ff58bf8ff736cbb7c3db00e9`
+stands as the digest of the freeze act in every
+record that cites it — the OSF contract
+registration (bge3k), `osf-registration.md`,
+`outcome.md` — and is edited nowhere. The frozen
+definition is untouched, including its
+freeze-time statement that Ask 2's bindingness
+was not decided at the freeze; the Ask 2 ruling
+stands as recorded above, and Q6 remains
+NOT-YET-TESTABLE. The guarantee the narrowed
+assertion states is the one this file's role
+requires: the frozen bytes are immutable — any
+edit to them fails the fence — and appends after
+them are dated and visible, never silent.
+
+AI disclosure: executed by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen
+Pierson, per constitution §VI.

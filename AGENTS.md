@@ -8,7 +8,7 @@ Read this file at the start of every session before making any changes.
 
 At the end of every session, make sure all changes are committed and pushed:
 
-`ash
+`^Hash
 git add -A && git commit -m "chore: session close" && git push
 `
 
@@ -46,11 +46,18 @@ was retired 2026-10-05 and is no longer active tooling.
 
 **Author:** Tristen Kyle Pierson / BitConcepts LLC
 
-**Current version:** v4 (June 2026)
+**Current version:** v7 (October 2026 — v6 plus the Roif credit:
+both Roif 2025a/b citations in §8, fish-sign model credit in
+§3.5/§3.19 and §7 Acknowledgments, from the owner-directed Roif
+addenda to the spec-025 audit fix commission; §3.32 restoration
+draft filed but HELD pending Roif's reply; source `.tex` and
+regenerated PDF)
 
 **Source:** `glossa-corpus/indus/pierson_2026_indus_decipherment.tex`
 
-**PDF:** `glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v4.pdf`
+**PDF:** `glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v7.pdf`
+(the v7 PDF is the current compiled artifact, regenerated 2026-10-22
+with xelatex — see `docs/research/PREPRINT_VERSIONING.md`)
 
 **DOI:** https://doi.org/10.5281/ZENODO.20414696 (Zenodo)
 
@@ -100,3 +107,19 @@ for querying and controlling the backend without manual API calls:
 The server connects to the running backend at `GLOSSA_BASE_URL`
 (default: `http://127.0.0.1:8001`). Tools return clean JSON error objects when
 the backend is unreachable — they never crash the MCP process.
+
+## Research check (paper-search MCP)
+
+A RESEARCH-CHECK stage (spec 025) audits claim dossiers against the
+scholarly literature **before** AEE scoring/adjudication, using the
+shared paper-search-mcp server (arXiv, Crossref, Semantic Scholar,
+OpenAlex, CORE, …):
+
+- **Client:** `backend/glossa_lab/paper_search.py` (stdio client;
+  spawns the server from `~/workspace/venvs/paper-search-mcp`).
+- **Stage:** `backend/glossa_lab/research_check.py` — writes advisory
+  sidecar records to `glossa-indus/claims/research_checks/`; never
+  modifies a claim, score, or status, and never adjudicates a
+  decipherment.
+- **Usage + binding audit protocol:** `docs/paper-search-mcp.md`.
+  Sci-Hub is hard-off in the client.

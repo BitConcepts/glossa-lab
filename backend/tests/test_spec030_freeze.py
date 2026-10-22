@@ -1,7 +1,10 @@
 """Spec 030 freeze fences (Q6 chronology-spine extension).
 
 Pins: (1) the machine freeze record replays exactly
-(framework026 verify_freeze over every frozen source);
+(framework026 verify_freeze over every whole-file
+frozen source; adjudication.md replays by
+prefix-integrity under the owner-ordered amendment
+of 2026-10-21 - see test_freeze_record_replays);
 (2) the frozen definition carries the adjudicated
 design constants, including Ask 2's express
 non-coverage; (3) the governed claim register is the
@@ -11,6 +14,7 @@ the Phase-391 record's.
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import sys
 from pathlib import Path
@@ -30,6 +34,35 @@ def test_freeze_record_replays():
     record = json.loads(FREEZE_JSON.read_text(encoding="utf-8"))
     assert record["digest"]
     assert verify_freeze(record, REPO) == []
+    # adjudication.md replays by prefix-integrity, not
+    # by whole-file hash (owner-ordered freeze-test
+    # amendment, 2026-10-21, on the Spec 038 precedent;
+    # adjudication.md freeze-test amendment section and
+    # freeze.md addendum). The file is this spec's
+    # ruling record: owner decisions are recorded in it
+    # by dated append (the Ask 2 ruling of 2026-10-21 is
+    # the append that required this amendment). Its
+    # freeze-time bytes - 5,867 bytes, SHA-256
+    # f962f910... - are therefore removed from the
+    # whole-file sources and pinned in the record's
+    # prefix_pins; they must remain an exact prefix of
+    # the live file, and dated appends after them are
+    # permitted. Every other covered source keeps its
+    # live whole-file hash assertion in the replay
+    # above; no other assertion is amended.
+    pin = record["prefix_pins"][
+        "specs/030-q6-chronology-spine-extension/adjudication.md"
+    ]
+    assert pin["sha256"] == (
+        "f962f910d81cb63f44abb4db0e1be2ee0fb9fca45f5242f23656113ddd609738"
+    )
+    assert pin["bytes"] == 5867
+    live = (SPEC / "adjudication.md").read_bytes()
+    assert len(live) >= pin["bytes"]
+    assert (
+        hashlib.sha256(live[: pin["bytes"]]).hexdigest()
+        == pin["sha256"]
+    )
 
 
 def test_freeze_definition_constants():

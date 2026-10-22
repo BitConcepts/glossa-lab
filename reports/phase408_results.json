@@ -1,0 +1,335 @@
+{
+  "act": "step 0 (spec section 3 gates, in frozen order)",
+  "anchors": {
+    "byte_identical": true,
+    "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+    "sha256_after": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+    "sha256_before": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569"
+  },
+  "asset_f_digest_assertion": {
+    "assertion": "PASS",
+    "asset_path": "specs/044-fish-sign-coastal-residue/asset-f-fish-family.json",
+    "asset_present": true,
+    "digest_field_in_file": "ca5fb1b5a52d9ad0c8301174996562cdc024bf4063e6193bef77328b1acc58c3",
+    "digest_recomputed_excluding_digest_field": "ca5fb1b5a52d9ad0c8301174996562cdc024bf4063e6193bef77328b1acc58c3",
+    "digest_recorded_in_pin_source": "ca5fb1b5a52d9ad0c8301174996562cdc024bf4063e6193bef77328b1acc58c3",
+    "member_count": 7,
+    "pin_source": "specs/044-fish-sign-coastal-residue/outcome.md",
+    "pin_source_present": true,
+    "whole_file_sha256": "193a97542853b0a5dcc272914c833b849b231d81e9e4e361b5e4ddc9c789542f"
+  },
+  "base_commit": "3e75d7b0707a210598e90df5d92d92253cf9435b",
+  "census_computed": false,
+  "claim_id": "parpola_2010_dravidian_solution_manual_002",
+  "control_set_frozen": false,
+  "ending_follower_rates_computed": [],
+  "execution_date": "2026-10-21",
+  "freeze_digest": "56beec70957ac64e5f17e3bb889e66c9becfe7a7a55b49bc59e5a232c642a846",
+  "gates": [
+    {
+      "digest": "ca5fb1b5a52d9ad0c8301174996562cdc024bf4063e6193bef77328b1acc58c3",
+      "gate": "0.1",
+      "member_count": 7,
+      "name": "Asset F digest assertion",
+      "verdict": "PASS"
+    },
+    {
+      "gate": "0.2",
+      "mapped": 7,
+      "name": "Membership join and cross-check",
+      "unmapped": 0,
+      "verdict": "PASS"
+    },
+    {
+      "gate": "0.3",
+      "name": "Strict corpus identification, pin, and measure reproduction",
+      "recorded_phase43_corpus": {
+        "source": "indusscript.in Firestore 'indusarrays' (2026-05-14)",
+        "total_records": 3916,
+        "total_sequences": 3137,
+        "total_sign_instances": 12494,
+        "unique_dockeys": 2665
+      },
+      "sequences_loadable_from_v3_loader": 0,
+      "v3_data_file_present": false,
+      "verdict": "FAIL"
+    },
+    {
+      "gate": "0.4",
+      "name": "Holdat layer and crosswalk pin",
+      "verdict": "NOT REACHED"
+    },
+    {
+      "gate": "0.5",
+      "name": "Census (margins only)",
+      "verdict": "NOT REACHED"
+    },
+    {
+      "gate": "0.6",
+      "name": "Control set freeze",
+      "verdict": "NOT REACHED"
+    }
+  ],
+  "integrity": {
+    "anchors_census": {
+      "anchors": 287,
+      "m072_validation_status": "pending_non_sa_validation",
+      "strict_sa_independent": 94
+    },
+    "claim_file_spec038_form": {
+      "facts": {
+        "claim_status": "partially_supported",
+        "entries_with_claim_id": 1,
+        "facts_match_the_freeze_record": true,
+        "not_understood_names_the_family_test": true,
+        "not_understood_names_the_strict_corpus": true,
+        "sign_ids_mahadevan": [
+          "72",
+          "64",
+          "70"
+        ],
+        "stage": "explained"
+      },
+      "file": "glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json",
+      "freeze_time_sha256_definition_constant": "3202aeca1ddaf7e588ebf19b2eaf8c93d06a34ecebba20d06c1b22810dfb000c",
+      "handling": "Spec 038 form (as the freeze test uses): the whole-file hash is a definition constant, not a live assertion, because the extracted-claims store is regenerated wholesale; the live file at the execution base differs from the freeze-time bytes in extraction timestamps (Spec 058's execution regenerated the store on 2026-10-21) — for manual_002, in the extracted_at field only",
+      "live_sha256_at_execution_base": "7750680e612d6cc28427dcf244c0c52e416a5939fa750f2606f460ace41e9a00"
+    },
+    "inputs": [
+      {
+        "file": "outputs/phase43_all.json",
+        "match": true,
+        "observed": "78a6c21908b9362854c54dd3d820d717be22feab3af11135663fa14aaf554fe4",
+        "pin": "78a6c21908b9362854c54dd3d820d717be22feab3af11135663fa14aaf554fe4",
+        "present": true
+      },
+      {
+        "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+        "match": true,
+        "observed": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+        "pin": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+        "present": true
+      },
+      {
+        "file": "backend/glossa_lab/data/mahadevan_parpola_crosswalk.json",
+        "match": true,
+        "observed": "9ebd7723472d888dc8a127ff840a108d4fbd546f7f8ed28ccc6e06444a2dc69b",
+        "pin": "9ebd7723472d888dc8a127ff840a108d4fbd546f7f8ed28ccc6e06444a2dc69b",
+        "present": true
+      },
+      {
+        "file": "specs/033-sa-free-language-comparison/spec.md",
+        "match": true,
+        "observed": "eaea0e2e4f288e199acfa56cc401b80b5939175578ccb5f52c87adddf2f15ca9",
+        "pin": "eaea0e2e4f288e199acfa56cc401b80b5939175578ccb5f52c87adddf2f15ca9",
+        "present": true
+      }
+    ],
+    "verdict": "PASS"
+  },
+  "membership_join": {
+    "cross_check": {
+      "claim_record_trio_mahadevan": [
+        72,
+        64,
+        70
+      ],
+      "note": "the trio and the six are Mahadevan numbers as named in the claim record and the Phase-43 record; Asset F's members are fixed solely by Parpola's published list via Spec 044's step 0. Every divergence is named here; the cross-check adds and removes no member",
+      "phase43_six_candidates": [
+        267,
+        72,
+        65,
+        59,
+        60,
+        70
+      ],
+      "phase43_six_in_asset_f": [
+        60
+      ],
+      "phase43_six_not_in_asset_f": [
+        267,
+        72,
+        65,
+        59,
+        70
+      ],
+      "trio_in_asset_f": [],
+      "trio_not_in_asset_f": [
+        72,
+        64,
+        70
+      ]
+    },
+    "members": [
+      {
+        "crosswalk_key": "M047",
+        "crosswalk_parpola_id": "47",
+        "depiction_note": "fish (plain)",
+        "disposition": "MAPPED",
+        "mahadevan_number": 47,
+        "parpola_locator_agrees": true,
+        "parpola_number": 47,
+        "sign_key": "M047",
+        "unmapped_reason": ""
+      },
+      {
+        "crosswalk_key": "M048",
+        "crosswalk_parpola_id": "48",
+        "depiction_note": "fish-with-roof",
+        "disposition": "MAPPED",
+        "mahadevan_number": 48,
+        "parpola_locator_agrees": true,
+        "parpola_number": 48,
+        "sign_key": "M048",
+        "unmapped_reason": ""
+      },
+      {
+        "crosswalk_key": "M050",
+        "crosswalk_parpola_id": "50",
+        "depiction_note": "fish-with-fins",
+        "disposition": "MAPPED",
+        "mahadevan_number": 50,
+        "parpola_locator_agrees": true,
+        "parpola_number": 50,
+        "sign_key": "M050",
+        "unmapped_reason": ""
+      },
+      {
+        "crosswalk_key": "M052",
+        "crosswalk_parpola_id": "52",
+        "depiction_note": "fish-with-trefoil",
+        "disposition": "MAPPED",
+        "mahadevan_number": 52,
+        "parpola_locator_agrees": true,
+        "parpola_number": 52,
+        "sign_key": "M052",
+        "unmapped_reason": ""
+      },
+      {
+        "crosswalk_key": "M060",
+        "crosswalk_parpola_id": "60",
+        "depiction_note": "fish (variant; 'badly drawn')",
+        "disposition": "MAPPED",
+        "mahadevan_number": 60,
+        "parpola_locator_agrees": true,
+        "parpola_number": 60,
+        "sign_key": "M060",
+        "unmapped_reason": ""
+      },
+      {
+        "crosswalk_key": "M145",
+        "crosswalk_parpola_id": "145",
+        "depiction_note": "fish with two horizontal lines",
+        "disposition": "MAPPED",
+        "mahadevan_number": 145,
+        "parpola_locator_agrees": true,
+        "parpola_number": 145,
+        "sign_key": "M145",
+        "unmapped_reason": ""
+      },
+      {
+        "crosswalk_key": "M147",
+        "crosswalk_parpola_id": "147",
+        "depiction_note": "fish (sign-list variant)",
+        "disposition": "MAPPED",
+        "mahadevan_number": 147,
+        "parpola_locator_agrees": true,
+        "parpola_number": 147,
+        "sign_key": "M147",
+        "unmapped_reason": ""
+      }
+    ]
+  },
+  "osf_registration": "eqpab (approved and public)",
+  "outcome": "STRICT CORPUS NOT PINNABLE",
+  "outcome_wording_frozen_spec_6": "Spec 048 closed at step 0, gate 0.3: the strict corpus layer of record could not be uniquely identified and pinned, or the pinned layer does not reproduce the Phase-43 T2.4 reference points (the V3 / Mahadevan-lineage layer's data file — the Firestore 'indusarrays' dump the V3 loader reads — is absent from the tree, so the loader loads zero sequences and the layer cannot be exported whole or pinned; no database copy exists in the execution tree; and no other layer in the tree is the corpus the Phase-43 record names (its source at 3,916 records, against 5,679 records for the site-attributed layer, 15,508 mixed-source objects for the V1 export, and 3,085 ICIT-encoded sequences), so the T2.4 reference points (sign 72 — 181 occurrences, ending-follower fraction 25.9%; sign 267 — 356 occurrences, 3.8%) cannot be re-derived from a pinned layer). No ending-follower rate was computed. This closure is a statement about runnability, not about the claim; the claim stands exactly as recorded.",
+  "phase": "Phase-408",
+  "roif_hold": "This record is internal under the campaign's Roif gate (R-7); it is not a publication.",
+  "spec": "048-parpola-fish-family-profiles",
+  "spec044_freeze_digest_contract_anchor": "6851f943d196fa389e48b67cb5161b90daa1180d8a3e1cf3f020fcf25691d9c8",
+  "strict_corpus_identification_attempt": {
+    "C1_v3_loader_data_file": {
+      "loader": "backend/glossa_lab/data/indus_corpus_v3.py",
+      "loader_error": null,
+      "note": "the loader was imported from its file and run in this tree: it returns an empty record list when its data file does not exist, so no sequence can be loaded, exported whole, or pinned from it here",
+      "path": "glossa-corpus/indus/sources/rmrl/raw/indusscript-probe/firestore_indusarrays_full.jsonl",
+      "present": false,
+      "records_loaded_by_the_loader": 0,
+      "sequences_loadable": 0
+    },
+    "C2_database_copy": {
+      "note": "no database file exists in the execution tree (backend/data/ is not tracked); the layer is not held in any database this run can identify it from",
+      "path": "backend/data/glossa.db",
+      "present_in_execution_tree": false
+    },
+    "C4_other_layers_in_tree": [
+      {
+        "identity": "the programme's site-attributed layer (the Phase-393 layer; the layer of record for Specs 027/028/042/045)",
+        "is_the_phase43_corpus": false,
+        "layer": "backend/glossa_lab/data/yajnadevam_inscriptions.csv",
+        "records": 5679,
+        "sha256": "c02e3d7bb74cf5abb11cc94f88d8d469e6acc5d6fad4b7153c02c43428f58d98",
+        "why_not": "the Phase-43 record names its corpus as the Firestore 'indusarrays' source at 3,916 records; this layer carries 5,679 records and is a different layer of record"
+      },
+      {
+        "identity": "the V1 primary research export (glossa-indus/CORPUS_VERSIONS.md: V1, loaded by indus_corpus_v2.py)",
+        "is_the_phase43_corpus": false,
+        "layer": "glossa-corpus/indus/exports/indus_research.jsonl",
+        "records": 15508,
+        "sha256": "08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e",
+        "source_systems": {
+          "ClevelandArtOpenAccess": 4,
+          "MetOpenAccess": 4904,
+          "PennMuseum": 7515,
+          "indusscript-m77": 2906,
+          "mayig-cisi": 179
+        },
+        "why_not": "a five-source mixture in mixed sign schemes, labelled V1 in the corpus versioning record; the Phase-43 framework ran on the V3 Firestore reconstruction, not on this export"
+      },
+      {
+        "identity": "the ICIT-format export",
+        "is_the_phase43_corpus": false,
+        "layer": "glossa-corpus/indus/exports/indus_icit_format.json",
+        "sha256": "e4ddfd064e9f97871cd4c498f39f238c7cecb2f6a646733b0a65f22f81bd7e2d",
+        "total_sequences": 3085,
+        "why_not": "ICIT-encoded sequences (3,085) — a different lineage and encoding from the Mahadevan-lineage V3 corpus the Phase-43 record names"
+      },
+      {
+        "identity": "the Holdat corpus layer",
+        "is_the_phase43_corpus": false,
+        "layer": "corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv",
+        "present_in_tree": false,
+        "why_not": "absent from this tree (the downloads are not tracked), and in any case the Holdat compilation — the distinct second compilation whose arm gate 0.4 governs, not the Mahadevan-lineage V3 layer of this arm"
+      }
+    ],
+    "layer_uniquely_identified_and_exportable": false,
+    "recorded_phase43_corpus": {
+      "source": "indusscript.in Firestore 'indusarrays' (2026-05-14)",
+      "total_records": 3916,
+      "total_sequences": 3137,
+      "total_sign_instances": 12494,
+      "unique_dockeys": 2665
+    },
+    "t24_reference_points_of_record": {
+      "candidates": [
+        267,
+        72,
+        65,
+        59,
+        60,
+        70
+      ],
+      "sign_267": {
+        "occurrences": 356,
+        "supported": false,
+        "terminal_frac": 0.038
+      },
+      "sign_72": {
+        "occurrences": 181,
+        "supported": true,
+        "terminal_frac": 0.259
+      }
+    },
+    "t24_reproduction": "NOT RUN — there is no pinned layer to re-derive the reference points from; the gate's first leg (identification, export, pin) already fails, and the frozen wording closes the run on either leg"
+  }
+}

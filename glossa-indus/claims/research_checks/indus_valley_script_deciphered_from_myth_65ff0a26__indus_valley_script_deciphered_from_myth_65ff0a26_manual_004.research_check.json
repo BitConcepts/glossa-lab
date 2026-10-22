@@ -1,0 +1,374 @@
+{
+ "stage": "research_check",
+ "record_version": 1,
+ "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_004",
+ "document_id": "indus_valley_script_deciphered_from_myth_65ff0a26",
+ "claim_statement": "The horned deity sign encodes fire-altar intermediary roles (Kalibangan fire-altars).",
+ "checked_at": "2026-10-22T14:38:04.125588+00:00",
+ "advisory": true,
+ "verdict": null,
+ "protocol": "docs/paper-search-mcp.md#audit-protocol",
+ "phrasings": [
+  {
+   "text": "The horned deity sign encodes fire-altar intermediary roles (Kalibangan fire-altars).",
+   "origin": "claim"
+  },
+  {
+   "text": "horned anthropomorphic Harappan sign linked to ritual fire altar officiants at Kalibangan",
+   "origin": "caller"
+  }
+ ],
+ "sources_requested": [
+  "arxiv",
+  "crossref",
+  "openalex",
+  "semantic",
+  "core",
+  "europepmc"
+ ],
+ "queries": [
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_papers",
+   "query": "The horned deity sign encodes fire-altar intermediary roles (Kalibangan fire-altars)."
+  },
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_arxiv",
+   "query": "The horned deity sign encodes fire-altar intermediary roles (Kalibangan fire-altars)."
+  },
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_crossref",
+   "query": "The horned deity sign encodes fire-altar intermediary roles (Kalibangan fire-altars)."
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_papers",
+   "query": "horned anthropomorphic Harappan sign linked to ritual fire altar officiants at Kalibangan"
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_arxiv",
+   "query": "horned anthropomorphic Harappan sign linked to ritual fire altar officiants at Kalibangan"
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_crossref",
+   "query": "horned anthropomorphic Harappan sign linked to ritual fire altar officiants at Kalibangan"
+  }
+ ],
+ "source_errors": [],
+ "neighbors": [
+  {
+   "title": "Fully Explorable Horned Particles Hiding Charge",
+   "authors": "Eduardo Guendelman; Mahary Vasihoun",
+   "year": "2012-01-02T20:03:26",
+   "doi": "10.1088/0264-9381/29/9/095004",
+   "paper_id": "1201.0526v3",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1201.0526v3",
+   "abstract": "The charge-hiding effect by a horned particle, which was studied for the case where gravity/gauge-field system is self-consistently interacting with a charged lightlike brane (LLB) as a matter source, is now studied for the case of a time like brane. From the demand that no surfaces of infinite coordinate time redshift (horizons) appear in the problem we are lead now to a completly explorable horned particle space for traveller that goes through the horned particle (as was the case for the LLB) but now also in addition to this, the horned region is fully visible to a static external observer. ",
+   "relevance": 0.111
+  },
+  {
+   "title": "SIMT/GPU Data Race Verification using ISCC and Intermediary Code Representations: A Case Study",
+   "authors": "Andrew Osterhout; Ganesh Gopalakrishnan",
+   "year": "2025-03-11T22:50:49",
+   "doi": "",
+   "paper_id": "2503.08946v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2503.08946v1",
+   "abstract": "It is often difficult to write code that you can ensure will be executed in the right order when programing for parallel compute tasks. Due to the way that today's parallel compute hardware, primarily Graphical Processing Units (GPUs), allows you to write code. It is easy to write code that may result in one thread reading or modifying data before it should, thus resulting in a data race. It would be useful to have a tool that could verify that the code will execute as expected. However, most static analysis done at the language level has to be completely retooled to work on a different langua",
+   "relevance": 0.111
+  },
+  {
+   "title": "The In-Car Sign Language Corpus (ICSL): A Multi-Modal Resource for Constrained-Space Sign Language Recognition",
+   "authors": "Raviteja Boddu; Guilherme Vieira Leite; Joed Lopes da Silva; Ângelo Benetti; Isabela Barbieri; Natália de Melo Afonso; Thyago Santos; Helio Pedrini; Felipe Venâncio Barbosa; José Mario De Martino; Munir Georges; Alessandro Zimmer",
+   "year": "2026-07-13T10:03:46",
+   "doi": "",
+   "paper_id": "2607.11341v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2607.11341v1",
+   "abstract": "This paper addresses the challenges of using sign language within shared mobility services, such as taxis, carpools, or ride-sharing platforms. The use of sign language recognition (SLR) in real-world, confined environments, specifically vehicle interiors remains largely unexplored. To motivate research in this area, we present the In-Car Sign Language (ICSL) dataset for Brazilian Sign Language (Libras), with the long-term goal of improving public transport accessibility for the Deaf and Hard-of-Hearing community. The dataset consists of: (1) high-precision laboratory motion capture (MoCap) da",
+   "relevance": 0.111
+  },
+  {
+   "title": "Scaling up Multimodal Pre-training for Sign Language Understanding",
+   "authors": "Wengang Zhou; Weichao Zhao; Hezhen Hu; Zecheng Li; Houqiang Li",
+   "year": "2024-08-16T06:04:25",
+   "doi": "",
+   "paper_id": "2408.08544v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2408.08544v1",
+   "abstract": "Sign language serves as the primary meaning of communication for the deaf-mute community. Different from spoken language, it commonly conveys information by the collaboration of manual features, i.e., hand gestures and body movements, and non-manual features, i.e., facial expressions and mouth cues. To facilitate communication between the deaf-mute and hearing people, a series of sign language understanding (SLU) tasks have been studied in recent years, including isolated/continuous sign language recognition (ISLR/CSLR), gloss-free sign language translation (GF-SLT) and sign language retrieval",
+   "relevance": 0.111
+  },
+  {
+   "title": "Contrastive Pretraining with Dual Visual Encoders for Gloss-Free Sign Language Translation",
+   "authors": "Ozge Mercanoglu Sincan; Richard Bowden",
+   "year": "2025-07-14T14:09:36",
+   "doi": "",
+   "paper_id": "2507.10306v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2507.10306v1",
+   "abstract": "Sign Language Translation (SLT) aims to convert sign language videos into spoken or written text. While early systems relied on gloss annotations as an intermediate supervision, such annotations are costly to obtain and often fail to capture the full complexity of continuous signing. In this work, we propose a two-phase, dual visual encoder framework for gloss-free SLT, leveraging contrastive visual-language pretraining. During pretraining, our approach employs two complementary visual backbones whose outputs are jointly aligned with each other and with sentence-level text embeddings via a con",
+   "relevance": 0.111
+  },
+  {
+   "title": "Harappan Burials of Kalibangan",
+   "authors": "Satarupa Bal",
+   "year": "2019-11-08T00:00:00",
+   "doi": "10.1007/978-3-319-51726-1_3479-1",
+   "paper_id": "10.1007/978-3-319-51726-1_3479-1",
+   "source": "crossref",
+   "url": "https://doi.org/10.1007/978-3-319-51726-1_3479-1",
+   "abstract": null,
+   "relevance": 0.111
+  },
+  {
+   "title": "Harappan Burials of Kalibangan",
+   "authors": "Satarupa Bal",
+   "year": "2020-01-01T00:00:00",
+   "doi": "10.1007/978-3-030-30018-0_3479",
+   "paper_id": "10.1007/978-3-030-30018-0_3479",
+   "source": "crossref",
+   "url": "https://doi.org/10.1007/978-3-030-30018-0_3479",
+   "abstract": null,
+   "relevance": 0.111
+  },
+  {
+   "title": "‘Buried’ Palaeo-Ghaggar channel belt inferred through resistivity soundings around Kalibangan Harappan site, north western Rajasthan, India",
+   "authors": "Rajiv Sinha",
+   "year": "2012-11-01T00:00:00",
+   "doi": "10.1016/j.quaint.2012.08.1493",
+   "paper_id": "10.1016/j.quaint.2012.08.1493",
+   "source": "crossref",
+   "url": "https://doi.org/10.1016/j.quaint.2012.08.1493",
+   "abstract": null,
+   "relevance": 0.111
+  },
+  {
+   "title": "Geochemistry of Harappan potteries from Kalibangan and sediments in the Ghaggar River: Clues for a dying river",
+   "authors": "Anirban Chatterjee; Jyotiranjan S. Ray",
+   "year": "2018-07-01T00:00:00",
+   "doi": "10.1016/j.gsf.2017.07.006",
+   "paper_id": "10.1016/j.gsf.2017.07.006",
+   "source": "crossref",
+   "url": "https://doi.org/10.1016/j.gsf.2017.07.006",
+   "abstract": null,
+   "relevance": 0.111
+  },
+  {
+   "title": "A Two or Four Horned Altar? 9th Century BCE, Tell es Safi/Gath, Israel",
+   "authors": "David Eitam",
+   "year": "2022-01-11T00:00:00",
+   "doi": "10.20935/al4486",
+   "paper_id": "10.20935/al4486",
+   "source": "crossref",
+   "url": "https://doi.org/10.20935/al4486",
+   "abstract": null,
+   "relevance": 0.111
+  },
+  {
+   "title": "Illinois Fire Service Institute Sign About COVID-19 Policies",
+   "authors": "Illinois Fire Service Institute",
+   "year": "",
+   "doi": "",
+   "paper_id": 274896113,
+   "source": "core",
+   "url": "",
+   "abstract": "This image, taken in 2021, shows a sign upon entering the Illinois Fire Service Institute building stating the COVID-19 policies for all person on IFSI premises.Institute of Museum and Library Services Grant ARPML-250797-OMLS-2",
+   "relevance": 0.111
+  },
+  {
+   "title": "Illinois Fire Service Institute Library COVID-19 Face Coverings Sign",
+   "authors": "Illinois Fire Service Institute",
+   "year": "",
+   "doi": "",
+   "paper_id": 296815834,
+   "source": "core",
+   "url": "",
+   "abstract": "This image, taken in 2021, shows a sign in the Illinois Fire Service Institute Library stating that face coverings are required while in the library.Institute of Museum and Library Services Grant ARPML-250797-OMLS-2",
+   "relevance": 0.111
+  },
+  {
+   "title": "Fire Prevention Week sign",
+   "authors": "",
+   "year": "1924-01-01T00:00:00+00:00",
+   "doi": "",
+   "paper_id": 399263340,
+   "source": "core",
+   "url": "",
+   "abstract": "Sign posted October 4-10, noting property loss from fire, as part of Fire Prevention Week",
+   "relevance": 0.111
+  },
+  {
+   "title": "Altar Shrines and Fire Altars?",
+   "authors": "Ernie HAERINCK; Bruno OVERLAET",
+   "year": "2008-01-31T00:00:00",
+   "doi": "10.2143/ia.43.0.2024049",
+   "paper_id": "10.2143/ia.43.0.2024049",
+   "source": "crossref",
+   "url": "https://doi.org/10.2143/ia.43.0.2024049",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "FIRE ALTARS",
+   "authors": "",
+   "year": "1970-01-01T00:00:00",
+   "doi": "10.1163/2330-4804_eiro_com_9826",
+   "paper_id": "10.1163/2330-4804_eiro_com_9826",
+   "source": "crossref",
+   "url": "https://doi.org/10.1163/2330-4804_eiro_com_9826",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "The Nature of the Fire",
+   "authors": "Julian Morgenstern",
+   "year": "1963-01-01T00:00:00",
+   "doi": "10.1163/9789004666801_003",
+   "paper_id": "10.1163/9789004666801_003",
+   "source": "crossref",
+   "url": "https://doi.org/10.1163/9789004666801_003",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "The Legislation for the Fire",
+   "authors": "Julian Morgenstern",
+   "year": "1963-01-01T00:00:00",
+   "doi": "10.1163/9789004666801_002",
+   "paper_id": "10.1163/9789004666801_002",
+   "source": "crossref",
+   "url": "https://doi.org/10.1163/9789004666801_002",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "Fire upon the altar",
+   "authors": "Morgenstern",
+   "year": "1963-01-01T00:00:00",
+   "doi": "10.1163/9789004666801",
+   "paper_id": "10.1163/9789004666801",
+   "source": "crossref",
+   "url": "https://doi.org/10.1163/9789004666801",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "Data Assimilation of Satellite Fire Detection in Coupled Atmosphere-Fire Simulation by WRF-SFIRE",
+   "authors": "Jan Mandel; Adam K. Kochanski; Martin Vejmelka; Jonathan D. Beezley",
+   "year": "2014-10-25T18:45:26",
+   "doi": "10.14195/978-989-26-0884-6_80",
+   "paper_id": "1410.6948v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1410.6948v1",
+   "abstract": "Currently available satellite active fire detection products from the VIIRS and MODIS instruments on polar-orbiting satellites produce detection squares in arbitrary locations. There is no global fire/no fire map, no detection under cloud cover, false negatives are common, and the detection squares are much coarser than the resolution of a fire behavior model. Consequently, current active fire satellite detection products should be used to improve fire modeling in a statistical sense only, rather than as a direct input. We describe a new data assimilation method for active fire detection, base",
+   "relevance": 0.0
+  },
+  {
+   "title": "RITUAL: Random Image Transformations as a Universal Anti-hallucination Lever in Large Vision Language Models",
+   "authors": "Sangmin Woo; Jaehyuk Jang; Donguk Kim; Yubin Choi; Changick Kim",
+   "year": "2024-05-28T04:41:02",
+   "doi": "",
+   "paper_id": "2405.17821v2",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2405.17821v2",
+   "abstract": "Recent advancements in Large Vision Language Models (LVLMs) have revolutionized how machines understand and generate textual responses based on visual inputs, yet they often produce \"hallucinatory\" outputs that misinterpret visual information, posing challenges in reliability and trustworthiness. We propose RITUAL, a simple decoding method that reduces hallucinations by leveraging randomly transformed images as complementary inputs during decoding, adjusting the output probability distribution without additional training or external models. Our key insight is that random transformations expose",
+   "relevance": 0.0
+  },
+  {
+   "title": "Air pollution forecasting by coupled atmosphere-fire model WRF and SFIRE with WRF-Chem",
+   "authors": "Adam K. Kochanski; Jonathan D. Beezley; Jan Mandel; Craig B. Clements",
+   "year": "2013-04-29T16:31:02",
+   "doi": "",
+   "paper_id": "1304.7703v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1304.7703v1",
+   "abstract": "Atmospheric pollution regulations have emerged as a dominant obstacle to prescribed burns. Thus, forecasting the pollution caused by wildland fires has acquired high importance. WRF and SFIRE model wildland fire spread in a two-way interaction with the atmosphere. The surface heat flux from the fire causes strong updrafts, which in turn change the winds and affect the fire spread. Fire emissions, estimated from the burning organic matter, are inserted in every time step into WRF-Chem tracers at the lowest atmospheric layer. The buoyancy caused by the fire then naturally simulates plume dynamic",
+   "relevance": 0.0
+  },
+  {
+   "title": "A review of wildland fire spread modelling, 1990-present 3: Mathematical analogues and simulation models",
+   "authors": "A. L. Sullivan",
+   "year": "2007-06-28T01:15:11",
+   "doi": "10.1071/WF06144",
+   "paper_id": "0706.4130v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/0706.4130v1",
+   "abstract": "In recent years, advances in computational power and spatial data analysis (GIS, remote sensing, etc) have led to an increase in attempts to model the spread and behvaiour of wildland fires across the landscape. This series of review papers endeavours to critically and comprehensively review all types of surface fire spread models developed since 1990. This paper reviews models of a simulation or mathematical analogue nature. Most simulation models are implementations of existing empirical or quasi-empirical models and their primary function is to convert these generally one dimensional models",
+   "relevance": 0.0
+  },
+  {
+   "title": "Data Likelihood of Active Fires Satellite Detection and Applications to Ignition Estimation and Data Assimilation",
+   "authors": "James Haley; Angel Farguell Caus; Adam K. Kochanski; Sher Schranz; Jan Mandel",
+   "year": "2018-07-09T04:41:24",
+   "doi": "10.14195/978-989-26-16-506_105",
+   "paper_id": "1808.03318v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1808.03318v1",
+   "abstract": "Data likelihood of fire detection is the probability of the observed detection outcome given the state of the fire spread model. We derive fire detection likelihood of satellite data as a function of the fire arrival time on the model grid. The data likelihood is constructed by a combination of the burn model, the logistic regression of the active fires detections, and the Gaussian distribution of the geolocation error. The use of the data likelihood is then demonstrated by an estimation of the ignition point of a wildland fire by the maximization of the likelihood of MODIS and VIIRS data over",
+   "relevance": 0.0
+  },
+  {
+   "title": "Statewide fire service disaster response plan",
+   "authors": "Connecticut Fire Chiefs Association.",
+   "year": "",
+   "doi": "",
+   "paper_id": 402550464,
+   "source": "core",
+   "url": "",
+   "abstract": "Version 2.1.; Title from PDF cover (publisher's Web site, viewed June 2, 2011).; \"December 2010.\"; Previously issued: Statewide fire-rescue disaster response plan / Connecticut Fire Service. [Windsor Locks, Conn. : Connecticut Commission on Fire Prevention and Control, 2008]",
+   "relevance": 0.0
+  },
+  {
+   "title": "Connecticut State Fire Safety Code (2018); Other title: Connecticut state fire safety code",
+   "authors": "Connecticut. Office of the State Fire Marshal,",
+   "year": "",
+   "doi": "",
+   "paper_id": 402598818,
+   "source": "core",
+   "url": "",
+   "abstract": "Effective October 1, 2018.; Title from cover.; Based on the 2015 editions of the  ICC Fire Code and NFPA 101, Life Safety Code.; \"The Connecticut State Fire Safety Code shall be administered as provided in chapter 541 of the Connecticut General Statutes\"--Page 1.; Previously issued: 2016 Connecticut fire safety code / Department of Administrative Services, Division of Construction Services, Office of the State Fire Marshal. Hartford, CT : Connecticut Department of Administrative Services, [2016].; Kept up-to-date between editions by amendments",
+   "relevance": 0.0
+  }
+ ],
+ "neighbors_read_full_text": [
+  {
+   "title": "Fully Explorable Horned Particles Hiding Charge",
+   "paper_id": "1201.0526v3",
+   "words": 7898
+  },
+  {
+   "title": "SIMT/GPU Data Race Verification using ISCC and Intermediary Code Representations: A Case Study",
+   "paper_id": "2503.08946v1",
+   "words": 8633
+  },
+  {
+   "title": "The In-Car Sign Language Corpus (ICSL): A Multi-Modal Resource for Constrained-Space Sign Language Recognition",
+   "paper_id": "2607.11341v1",
+   "words": 5883
+  }
+ ],
+ "gaps": [
+  {
+   "gap": "neighbors surfaced but not read in full text (abstracts never establish novelty)",
+   "neighbors": [
+    "Scaling up Multimodal Pre-training for Sign Language Understanding",
+    "Contrastive Pretraining with Dual Visual Encoders for Gloss-Free Sign Language Translation",
+    "Harappan Burials of Kalibangan",
+    "Harappan Burials of Kalibangan",
+    "‘Buried’ Palaeo-Ghaggar channel belt inferred through resistivity soundings around Kalibangan Harappan site, north western Rajasthan, India",
+    "Geochemistry of Harappan potteries from Kalibangan and sediments in the Ghaggar River: Clues for a dying river",
+    "A Two or Four Horned Altar? 9th Century BCE, Tell es Safi/Gath, Israel",
+    "Illinois Fire Service Institute Sign About COVID-19 Policies",
+    "Illinois Fire Service Institute Library COVID-19 Face Coverings Sign",
+    "Fire Prevention Week sign"
+   ]
+  }
+ ],
+ "citation_checks": []
+}

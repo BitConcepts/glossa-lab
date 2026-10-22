@@ -1,0 +1,319 @@
+# Spec 055 — Freeze Record ("Sign 900 Means Six": Identify the Sign, Then Test It as a Numeral; Design D-15)
+
+> ## FROZEN — 2026-10-21
+>
+> This contract was frozen on 2026-10-21 under
+> the runnable-experiments campaign plan
+> approved by the owner as written on 2026-10-21
+> (the campaign's Wave 2 freeze wave;
+> `adjudication.md` §§1, 7). The AEE lifecycle
+> hooks ran over the register first (register
+> recovered to 0.7-draft;
+> `aee/freeze-aee-note.md`), and the digest in
+> `freeze.json` was then computed **exactly
+> once** over the recovered register and the
+> finalised freeze texts (the Spec 035 ordering).
+> The freeze also files this spec's own OSF
+> contract registration (DD-055-9;
+> `osf-spec-registration.md`, completed by append
+> after filing). Execution runs as **Phase-414**
+> under this frozen contract, and only after the
+> freeze has merged, the registration's approval
+> act has completed — the parent's approval click
+> on OSF's admin notification — and a separate
+> execution order is given. At the freeze itself
+> the recovery has not been performed, no sign
+> has been identified, and nothing has been
+> counted.
+
+## 1. Basis
+
+The contract implements design D-15 (campaign
+member 11): the two-stage fragment test for
+`ancient_writing_and_modern_technologies_51831ac9_sign_val_0001`
+— "Sign value: 900 / number six" — an UNTESTED
+fragment stopped at Phase-104 under RULE-NUM.
+Stage 1 identifies the sign: the source
+document's sign list is named from the
+document's own text and the drawn sign its
+number 900 labels is matched by drawn form,
+with the recovery preserved as this spec's
+record (`source-table-recovery.json`, spec §6).
+Stage 2, only if stage 1 succeeds, tests the
+identified sign's behaviour as a numeral on the
+pinned strict corpus under three frozen
+measures. IDENTIFICATION FAILED is a
+pre-registered outcome, not a gap dressed up.
+
+The freeze decided the open points
+(`adjudication.md` §7): **DD-055-9** (the spec
+files its own OSF contract registration at the
+freeze, under campaign E-1), **DD-055-10**
+(OPEN-1: the recovery-record form confirmed —
+`source-table-recovery.json`, schema
+`glossa.source-table-recovery/1`, produced on
+every terminal outcome), **DD-055-11** (OPEN-2:
+the control-set rule and the directional
+median clause confirmed as drafted),
+**DD-055-12** (OPEN-3: the occurrence floor
+confirmed at 5), **DD-055-13** (OPEN-4: the
+strict-corpus pinning posture confirmed — the
+layer is identified, exported, and pinned at
+execution gate 0.4, and **no pin is stated at
+this freeze**, because the layer is a database
+posture with no pinnable file on `main`; a
+freeze-time pin would name a different object
+than the one execution counts), **DD-055-14**
+(OPEN-5: hedged numeral-set members do not
+enter the set; they are recorded as hedged and
+listed separately), **DD-055-15** (OPEN-6:
+positional entropy confirmed — Shannon entropy
+in bits over positions as stored),
+**DD-055-16** (OPEN-7: a worked dry-run of the
+measures and mapping on a non-target sign is
+required before the target is touched),
+**DD-055-17** (the execution phase is
+Phase-414), and **DD-055-18** (the DD-038-10
+AEE gate reading adopted). DD-055-1 to
+DD-055-8 are **confirmed** as drafted.
+
+## 2. Pin verification (two routes, at the freeze)
+
+Every §2 pin was re-derived **in the
+foreground** by two independent routes — the
+contents-API raw route and the git-blob route —
+both at the merged record (`main` at
+`3af269f660a9368e898cdece41132200d31b87cc`).
+The two routes agree byte-for-byte on every
+file, and every recomputed hash equals its pin:
+
+| Input | SHA-256 (both routes) | Bytes |
+|---|---|---|
+| `glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json` | `e98190894202a2a1c0e314229dcb585c62a0f5c12c059bcabd63b055c42959e8` | 22,894 |
+| `glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt` | `1275b795903260221f5226bada352de27471c010e2ad8ace556c548c20da1fc4` | 48,904 |
+| `glossa-indus/literature/documents/ancient_writing_and_modern_technologies_51831ac9.json` | `92e19e6def7eccb42ba0e9f53f5ef3bf9dbb0b9717aa3d675cecb971f5ab0e5c` | 1,261 |
+| `glossa-indus/reports/phase104_claims_evaluation.json` | `2d0b83e8055a04b96635007054cfadde472f605dc7e5b249a61c8f9ea89b858d` | 17,475 |
+| `data/crosswalks/canonical_sign_registry.csv` | `8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420` | 111,583 |
+| `specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json` | `3f645c9a4132ba5a0bc5fca4ca22810b8b6169a2f1f9f85f35990c7b72df33fb` | 127,338 |
+| `backend/reports/INDUS_FINAL_ANCHORS.json` | `df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569` | 570,344 |
+
+The strict corpus carries no pin in this table,
+deliberately (DD-055-13): it is pinned at
+execution gate 0.4. The claim file's hash is
+carried as a freeze definition constant in the
+Spec 038 form: the extracted-claims store is
+regenerated by the backend suite, so the freeze
+tests assert the constant plus the fragment's
+facts on the live file, never a live-file hash
+on that store. The same form is applied to any
+other suite-regenerated file the tests touch.
+
+The facts the design rests on were re-read from
+the pinned bytes in the same pass: the claim
+entry reads "Sign value: 900 / number six",
+status *untested*, stage *created*, with its
+not-understood text (which sign, in which
+published sign list, is unknown); the Phase-104
+entry reads *stays_untested* under RULE-NUM,
+its evidence "Crosswalk numeric IDs present in
+registry: 86"; the registry carries **803
+rows**, and a `W900` value sits inside the
+`wells_ids` cell of the **P154** row ("Right
+parenthesis (perhaps with a backward curve at
+the bottom)", corpus frequency 93) — the trap
+of spec §4.2 and claim F055-C07, carried at
+this freeze; the literature record carries the
+original file at 3,565,316 bytes, intake
+checksum `51831ac9…`, license status "unclear";
+and the held text carries the naming statements
+(the extended Wells 2011/2015 list, 702 distinct
+signs), the "Sign 900" section, the "Numerical
+value of Sign 900" section with its Table 1,
+and the summary statement. `backend/tests/test_spec055_freeze.py`
+pins all of these facts so later drift fails
+loudly.
+
+## 3. Machine record
+
+`freeze.json` in this directory is the canonical
+JSON record (framework026 `build_freeze`, computed
+by `build_freeze.py` in this directory). Covered
+sources (nothing else decides the question):
+
+- `specs/055-sign900-numeral/freeze.md` (this
+  document)
+- `specs/055-sign900-numeral/spec.md`
+- `specs/055-sign900-numeral/claims.json`
+- `specs/055-sign900-numeral/adjudication.md`
+- `specs/055-sign900-numeral/aee/freeze-aee-note.md`
+- `specs/055-sign900-numeral/build_freeze.py`
+- `backend/tests/test_spec055_freeze.py`
+
+`tasks.md` is lifecycle bookkeeping and is not
+digest-covered (the house rule since Spec 026:
+plans change as work proceeds).
+`osf-spec-registration.md` is the filing record
+for DD-055-9: it is completed by append after
+the filing exists, and the filing carries this
+freeze's digest — so it cannot itself be a
+digest-covered source.
+
+## 4. What the freeze fixes
+
+- **The scope fence** (spec §1 / F055-C01, C15):
+  one fragment, one identified sign, one pinned
+  corpus layer, the numeral question only. No
+  outcome states a value, a meaning beyond the
+  numeral question, or any finding about sign
+  700.
+- **Stage 1 and the recovery** (spec §§4, 6 /
+  F055-C06 to C09): the list named from the
+  document's own text with verbatim quoted
+  naming statements and locators; the drawn
+  sign matched **by drawn form only** — never
+  by number, never by registry string, with
+  the `W900`-on-P154 trap named in advance
+  (F055-C07); the preserved record
+  `source-table-recovery.json` (schema
+  `glossa.source-table-recovery/1`, DD-055-10)
+  produced on every terminal outcome.
+- **The chain rule (E-7)** (spec §§4.3, 8, 9 /
+  F055-C09): the recovery's sign-700 material
+  is locators only. The recovery output does
+  **not** admit D-16 to this campaign, even if
+  the recovery fully succeeds; no campaign
+  member consumes the recovery record.
+- **The step-0 gates** (spec §3 / F055-C05):
+  input integrity, source producible,
+  recovery-before-verdict ordering, and —
+  before step 2 — the corpus gate: the layer
+  identified, exported, and pinned at gate 0.4
+  (DD-055-13), the occurrence census, and the
+  floor of 5 (DD-055-12), each closing the run
+  in its named class before any measure exists.
+- **The reference sets** (spec §5.1 /
+  F055-C11, C12): the known-numeral set fixed
+  from published identifications before counting,
+  the target excluded, target-to-target
+  adjacency not counting, hedged members
+  excluded and listed separately (DD-055-14);
+  the control set by the confirmed nearest-10
+  rule (DD-055-11). A dry-run on a non-target
+  sign proves the machinery first (DD-055-16).
+- **The test** (spec §§5.2–5.3 / F055-C13):
+  the three measures (short-text share,
+  numeral adjacency share, positional entropy
+  as Shannon entropy in bits over positions as
+  stored, DD-055-15), the numeral-side /
+  control-side constructions with the
+  directional median clause (DD-055-11), and
+  the total mapping — NUMERAL-LIKE /
+  NOT NUMERAL-LIKE / MIXED — assigned by the
+  mapping alone.
+- **The verdict wordings** (spec §5.4 /
+  F055-C14): the full outcome set pre-written —
+  the three behaviour words, IDENTIFICATION
+  FAILED in both sub-classes, IDENTIFIED — TOO
+  FEW OCCURRENCES TO TEST, and CLOSED AT STEP 0
+  in its three classes.
+
+## 5. What the freeze does not do
+
+- **It does not perform the recovery.** No
+  naming statement has been entered into a
+  recovery record, no drawn-form match has
+  been attempted, no registry row has been
+  adopted, and `source-table-recovery.json`
+  does not exist. The draft's expected reading
+  (the extended Wells list) has no standing at
+  execution (DD-055-2).
+- **It does not adjudicate sign 700.** The
+  sign-700 statements are located by locator
+  only in the recovery form this freeze
+  confirms; the freeze makes no finding about
+  them, designs no sign-700 test, and admits
+  no part of D-16 to this campaign (E-7). The
+  recovery output, whatever execution finds,
+  does **not** admit D-16 to this campaign;
+  D-16 waits for its own planning gate.
+- **No outcome of this spec establishes the
+  value "six".** Even NUMERAL-LIKE establishes
+  only that the identified sign behaves as a
+  numeral behaves; the exact value is beyond
+  distributional evidence (spec §§1.2, 9;
+  F055-C15). The source document's own argument
+  for six is preserved by the recovery as
+  source material and is evidence at no stage.
+- **It pins no corpus and counts nothing.**
+  The strict-corpus layer is not exported or
+  pinned at the freeze (DD-055-13); no
+  occurrence, share, adjacency, or entropy
+  quantity has been computed.
+- **It changes no verdict.** The fragment
+  stands UNTESTED on its Phase-104 record,
+  which stands unedited; this spec's outcome
+  will append to that record as a dated entry
+  at execution. The anchors file is asserted
+  byte-identical before and after any
+  execution; this spec moves no anchor.
+- **Execution has not begun and is not
+  authorised by the freeze alone.** Execution
+  (Phase-414) awaits the freeze merge, the
+  OSF registration's approval act, and a
+  separate execution order, in campaign Wave 3
+  group 2.
+
+## 6. Able-to-fail proof (the freeze tests)
+
+The freeze tests in
+`backend/tests/test_spec055_freeze.py` were
+proven able to fail at the freeze act, before
+the digest was relied on: with the assembled
+freeze in place, the register file in the
+working tree was mutated in exactly one place
+(its `register_version` string, `0.7-draft` →
+`0.7-MUTATED`) and the suite was run — the
+freeze-replay test and the register-integrity
+test went red, as they must, because a covered
+source no longer matched its frozen hash and
+the register no longer carried its frozen
+version. The file was then restored
+byte-identically (its SHA-256 re-verified
+against the value recorded in `freeze.json`'s
+sources) and the full freeze suite was run
+again green. The mutation touched no committed
+byte; the frozen record replays exactly over
+the restored tree.
+
+## 7. OSF registration and the execution gate
+
+Under DD-055-9 (campaign E-1), this freeze
+files the spec's own OSF contract registration
+carrying the frozen contract — freeze digest,
+execution Phase-414, the two-stage falsifier
+with IDENTIFICATION FAILED pre-registered, the
+recovery-record form, the drawn-form-only
+matching rule with the registry trap, the
+step-0 gates with the gate-0.4 corpus pinning
+and the floor of 5, the pre-registered measures
+and total verdict mapping, the freeze rulings,
+and the two limits stated as limits on results
+rather than on the contract: the E-7 chain rule
+(the recovery does not admit D-16) and the
+not-six limit (no outcome establishes the value
+six). The filing record is
+`osf-spec-registration.md`, completed by append
+after filing. The registration stands **pending
+approval** after filing; its approval act is
+the parent's approval click on OSF's
+admin-notification email, and no mail is
+handled by this freeze. Execution (Phase-414)
+does not begin while the registration stands
+pending: it awaits that approval act and a
+separate execution order.
+
+---
+
+*AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution §VI.*

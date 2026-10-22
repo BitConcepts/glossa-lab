@@ -1,0 +1,98 @@
+{
+ "figure_refs": [
+  {
+   "caption_verbatim": "Figure 11: Examples of the numerical Sign 900.",
+   "figure": "Figure 11",
+   "locator": "p. 68, 'Figure 11' (SPECIAL NUMERICAL SIGNS)"
+  },
+  {
+   "caption_verbatim": "Figure 12: Special numerical Signs 904, 908, and 914.",
+   "figure": "Figure 12",
+   "locator": "p. 69, 'Figure 12'"
+  },
+  {
+   "caption_verbatim": "Figure 29: Signs used in the analysis of the Indus number system and the Indus weight system.",
+   "figure": "Figure 29",
+   "locator": "p. 85, 'Figure 29' (SUMMARY)"
+  }
+ ],
+ "producer_claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+ "producer_spec": "055",
+ "recovered_material": [
+  {
+   "locator": "p. 68, 'Sign 900' (SPECIAL NUMERICAL SIGNS)",
+   "section_heading": "Sign 900",
+   "text_verbatim": "Sign 900\nSign 900 may well be regarded as a special numerical sign (Figure 11). Its frequent \nuse in combination with stroke signs, Sign 415, as well as the repetition of Sign 900 \nas Signs 904 and 908 indicates its use as a number. Sign 900 is only prefixed by one \nto five short strokes. The absence of numbers greater than five may indicate that Sign \n900 represents number six. Signs 904, 914 and 908 are repetitions of Sign 900 and \nmost likely represent multiples of the numerical value, i.e. 2x6=12, 4x6=24, and \n5x6=30, respectively (Figure 12). Evidences for the numerical value six of Sign 900 \nwill be shown in Figures 16, 18 and 21."
+  },
+  {
+   "locator": "pp. 72\u201374, 'Numerical value of Sign 900' (NUMERICAL VALUES OF SIGNS)",
+   "section_heading": "Numerical value of Sign 900",
+   "table_1": {
+    "body_note": "the table's numeric grid did not survive the held copy's text extraction: the held cleaned text carries the caption and the surrounding prose (both recovered above), and no table body rows. Nothing was reconstructed.",
+    "caption_verbatim": "T able 1: Possible solutions for baseL of long strokes, baseS of short strokes, and Sign \n900 value v. If baseL is an even number it is either 10 or 12 because of Formula 1. \nOnly Solution B will meet the requirement in Figure 18 of an equation between three ",
+    "locator": "p. 72, 'Table 1' (NUMERICAL VALUES OF SIGNS)"
+   },
+   "text_verbatim": "Numerical value of Sign 900\nThe numerical value of Sign 900 can be derived from inscriptions on 3 two-sided \ntablets. Each of them lists the count of units of Sign 700 (Side 1) and the count of \nSign 840 (Side 2). The first two tablets give the same number on both sides, 20 and 30 \n(in a decimal system), respectively, expressed by long or short stacked strokes (Figure \n16). They do not offer the chance to detect the numerical system and its base.\nFigure 16: Numerical relationships between Sign 700 and Sign 840. The bases of long \nand stacked strokes are identical. Sign 700 represents a unit of 4.04 litre.\nFigure 15: Inscription on pot with 15 to 20 bangles (M-1383). \nThe value of baseL is either 10 or 12.\n\n72\n2 From Formula 2 we can derive the equation baseS = (v+baseL)/2. Since baseS must \nbe a whole number, baseS is an even number. Furthermore, v and baseL must be both \neither even or uneven numbers, so that their sum is divisible by two.\nHowever, the third tablet (ID 3786) gives a more complex numerical expression. On \nSide 1 the count of Sign 700 units is expressed by two numerical signs, Sign 032 \n(three long strokes) and Sign 900. The numerical signs on Side 2 before and after \nSign 840 are two long strokes and two short strokes. Because of the other tablets with \nidentical number on both sides we can expect the same equivalency on this tablet. \nTherefore, the equation 3 x baseL + v = 2 x baseL + 2 x baseS must be fulfilled, with \nv being the numerical value of Sign 900 greater than zero. This gives us the equation\nv = 2 x baseS - 1 x baseL  (2)\nPossible solutions for baseL of long strokes, baseS of short strokes, and value v of Sign \n900 are listed in T able 1. If short and long strokes use the same base, then the value of \nSign 900 equals the base. As indicated by the count of bangles (Figure 15) baseL is 10 \nor 12, excluding an uneven base for practical reasons.\nT able 1: Possible solutions for baseL of long strokes, baseS of short strokes, and Sign \n900 value v. If baseL is an even number it is either 10 or 12 because of Formula 1. \nOnly Solution B will meet the requirement in Figure 18 of an equation between three \nnumerical expressions.\nThe maximum number of short strokes equals seven (Sign 7). W e can, therefore, expect \nthat the base of short strokes is 8 or greater. For long strokes the maximum number \nis nine (Sign 39). This is in agreement with a decimal system (Base 10). T aking these \nconsiderations into account, the calculations result into possible solutions of 4, 6, 8, \n10, or 12 for the value of Sign 900, but never an uneven number such as 5, if the bases \nof both stroke systems are divisible by two2.  \n73\nW ells (2011:128) argues that the value of Sign 900 should be five, since Sign 900 plus \nSign 2 replace seven stacked strokes (Sign 17) in front of Sign 585 on H-472. The \nargument is that sign pair 585-017 is a strong cluster with a pair frequency of 29 in 17 \ndistinct texts, for example on M-547, M-1534, and M-1138 (Figure 17).\nHowever, Sign 585 has a frequency of 59 and is not always prefixed by Sign 17. One \nexample can be found on seal M-98 with sign pair 017-900 in front of Sign 585. On \nM-798 and M-2106 no numerical sign is used in front of Sign 585. And on M-722 \nand M-1112 no Sign 17 is written but other signs with numerical connotations. \nTherefore, the usage of sign pair 900-002 in front of Sign 585 is not necessarily a \nreplacement of Sign 17.\nBecause of the rare frequency of six short and long strokes (Signs 6 and 36) Sign 900 \nwould be a good replacement for values of six. This and the base of short and long \nstrokes are supported by another text as shown in Figure 18.\nAnother argument in favour of value six is the special fish sign 221 which is twice \nenclosed by Sign 900 (Figure 20). W ells has associated Sign 221 with a weight of \n1/3 of the basic fish sign (Sign 220). If Sign 900 has a value of six but represents the \nfraction 1/6 then enclosing the basic fish sign, the sum of both enclosing signs would \nbe 2 x 1/6 = 1/3 of the weight of the basic fish sign, or about 2.27 grams (Figure 20).\nFinally, a value of six for Sign 900 requires a decimal system for long strokes (T able \n1) which is in agreement with two long strokes representing the number 2x10=20\n(Figures 20, 21, 22, 23).\nFigure 17: Combinations of Sign 585 with and without numeri-\ncal signs."
+  },
+  {
+   "locator": "p. 74, 'List of items on a four-sided seal' (NUMERICAL VALUES OF SIGNS) \u2014 the Figure 18 continuation of the Sign 900 value derivation",
+   "section_heading": "List of items on a four-sided seal",
+   "text_verbatim": "List of items on a four-sided seal\nSome inscriptions consist of several parts of texts with numerical signs and non-\nnumerical signs in between. They can be interpreted as a list of items. From Sumerian \ninscriptions list of items are well known to list also the sum of all items.\nSeal M-331 is a cuboid without boss inscribed on four sides: obverse (Side 1), reverse \n(Side 2), and two lateral faces (Sides 3 and 4). The texts contain several numerical \nsigns, which can be analysed for the numerical system and its base (Figure 18). \nThe second line of Side 1 contains five stacked and four short strokes (Sign 14), \nseparated by Sign 492 with unknown meaning. If Sign 14 is in second position of \nbase 8, then it represents the number 4x8=32. Thus, Line 2 contains the numerical \nvalue 5+32=37. \nSide 2 bears two numerical signs. Reading from right to left Sign 900 is in the second \nand Sign 1 in the first position. Therefore, they represent number 6x10+1=61 (if \nSign 900 is number 6).\nOn Side 3 there are three short strokes with the possible value of 3x8=24 that again \nmake use of an octal system for short strokes as on Side 1. They might be related to \nSide 4 listing the counted items. Comparing all numbers of the tablet leads to the \nequation 6x10+1=3x8+5+4x8=61. Therefore, Side 2 represents the sum of all items \nlisted on the tablet.\nThe numerical expressions on the seal indicate that an octal system is used for short \nstrokes, while Sign 900 represents the value 6 and belongs to the decimal system of \nlong strokes. The mixture of different base systems is known from Sumerian writing \nand explains the different frequencies of stroke signs used as numbers (Figure 7).\nFigure 18: Positional notation on a four-sided seal with bases 8 and 10 of counted items \n(Side 1 Line 2, Side 3) and the sum of all items (Side 2)."
+  },
+  {
+   "locator": "p. 85, 'SUMMARY'",
+   "section_heading": "SUMMARY",
+   "text_verbatim": "About 3976 texts with numerical signs and 1237 texts with \u2018fish\u2019-signs have been \nfound so far. The numerical base of long and short strokes as well as the numerical \nvalue of some special signs can be detected through \u2018equations\u2019 found on tablets and \nseals. The numerical value of Sign 900 is six as verified in Figures 16, 18, and 21. \nThere are several pieces of internal evidence that a decimal and an octal system were \nin parallel use in Indus writing differentiated only by the length of the strokes. Long \nstrokes are use in a decimal system while short strokes are used in an octal system. \nThe numerical system of stacked strokes is less secure (Figure 16, ID 1805) but most \nlikely also a decimal system. Short or stacked strokes are used in combination with \nlong strokes to represent numbers smaller than ten (Figure 29)."
+  }
+ ],
+ "recovery_outcome": "IDENTIFIED",
+ "schema": "glossa.source-table-recovery/1",
+ "sign_700_material": {
+  "locators": [
+   "p. 70, 'SIGN 700 WITH NUMBERS'",
+   "pp. 72\u201374, 'Numerical value of Sign 900' (NUMERICAL VALUES OF SIGNS) \u2014 Sign 700 units are the counted objects of the three two-sided tablets"
+  ],
+  "present": true
+ },
+ "sign_list_naming": {
+  "list_named": "the extended Wells (2011, 2015) sign list of 702 distinct signs (Wells 2015; the ICIT database's sign list, Appendix A)",
+  "naming_statements": [
+   {
+    "locator": "p. 57, opening section (introduction)",
+    "quote": "The signs are coded according to an extended sign list with 702 distinct signs (W ells 2015)."
+   },
+   {
+    "locator": "p. 59, 'SIGN LIST'",
+    "quote": "The sign list by W ells (2011, 2015) has been extended to currently 702 distinct signs"
+   },
+   {
+    "locator": "p. 85, 'SUMMARY'",
+    "quote": "They involve a sign list of about 702 distinct signs"
+   },
+   {
+    "locator": "p. 88, 'APPENDIX A'",
+    "quote": "APPENDIX A: SIGN LIST WITH 702 SIGNS OF THE ICIT DA T ABASE."
+   }
+  ]
+ },
+ "source_document": {
+  "author": "Andreas Fuls (Technische Universit\u00e4t Berlin)",
+  "document_id": "ancient_writing_and_modern_technologies_51831ac9",
+  "held_text_ref": "glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt",
+  "held_text_sha256": "1275b795903260221f5226bada352de27471c010e2ad8ace556c548c20da1fc4",
+  "literature_record_ref": "glossa-indus/literature/documents/ancient_writing_and_modern_technologies_51831ac9.json",
+  "original_file": {
+   "intake_checksum": "51831ac997f54782fc6483e04c06d6b60f08af81101b39bfe00daa5556b88b04",
+   "name": "Ancient_Writing_and_Modern_Technologies.pdf",
+   "size": 3565316
+  },
+  "title": "Ancient Writing and Modern Technologies"
+ },
+ "target_sign": {
+  "crosswalk_registry_id": "P154",
+  "drawn_sign_match_basis": "crosswalk-registry",
+  "match_citation": "Drawn-form match: the named list's sign 900 is the single-arc grapheme \u2014 the Phase-123 Wells segmentation witness (data/crosswalks/wells_segmentation_witness_v1.json, row M287; treatment SAME; verification: verified) records, from glyph inspection of Wells's PhD 2006 Figure 3.2 plates (thesis p. 92; numbering as cross-matched in the held canonical registry, the Wells 2015 form of the Wells/ICIT list): 'W900 is the single-arc grapheme; thickness difference is font weight only', and its companion row records that the plates' arc signs (900\u2013921) are all narrow parenthesis/C forms. In the crosswalk registry exactly one row's drawn description is a plain right parenthesis with no added element \u2014 P154, 'Right parenthesis (perhaps with a backward curve at the bottom)' (every neighbouring parenthesis row carries an addition \u2014 a line, stroke, tooth, leaf, outline, or a second parenthesis \u2014 or faces left). The two records agree on the pairing by drawn form: the witness row is the M287 row, and P154's Mahadevan crosswalk is M287. The identified sign's identifier in the pinned strict corpus is therefore Mahadevan 287. The registry's W900 cell on this row is consistent with the match but is not its basis (F055-C07). The source PDF's own figures (Figures 11, 12, 29) could not be produced from the held record \u2014 the original PDF is not held in the repository (the literature record's stored path is a workstation path) \u2014 so the drawn-form check rests on the witness's verified glyph inspection, stated openly here.",
+  "named_list_locator": "extended Wells (2011, 2015) list, sign 900 (Wells PhD 2006, Fig. 3.2, thesis p. 92, per the Phase-123 Wells segmentation witness)",
+  "source_sign_no": "900"
+ }
+}

@@ -448,3 +448,58 @@ committed).
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+---
+
+## Landing record — 2026-10-22 (appended at merge; append-only)
+
+- Execution PR: **#322** (branch
+  `spec-067-execution`), merged to `main`
+  as merge commit
+  **`341ba7e34ad756a190a8a4736b9ff18224445377`**.
+- CI: GitHub Actions run **39743925720** on the
+  PR head `9381fd70` — **7 of 7 jobs success**,
+  verified from the run's own job conclusions
+  (Backend tests (pytest); Frontend tests
+  (Playwright); Indus public validation checks;
+  Evidence Graph script smoke tests; Shell
+  wrappers ubuntu / macos / windows). The PR's
+  original head `979377cc` also passed 7 of 7
+  (run 39742980060); one main advance during
+  the window (Spec 065's execution, PR #320)
+  was merged into the branch with the LEDGER
+  conflict resolved by keeping both entries
+  whole (verified entry-by-entry), and the
+  merged head was re-verified green before
+  merging — the run cited here is the genuine
+  run on the head that merged.
+- Run digests re-verified on `main` at the
+  merge commit by two routes (the worktree
+  file and the git-blob route):
+  `reports/phase429_results.json`
+  `f08d469b95a3c72048d217965720cf2fbbab828f43ec6f6572889f80fdaf06af`,
+  `reports/phase429_report.md`
+  `8cc2c154e315da0631a185f7471d3cf5dbb4aa330e1747a0f95d2f78cb821477`
+  — identical to the values in §1 of this
+  record.
+- Foundation check (H21) at the merge commit,
+  on the merged tree with the two Holdat CSVs
+  copied from the existing local downloads
+  (corpus CSV SHA-256
+  `62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e`
+  verified first): **40 checks passed, 0
+  failed, 8 warnings** — the standing figure.
+- Terminal outcome stands as recorded above:
+  **REPLICATED** (4,676 of 5,679 joined,
+  82.34%, against the ≥ 3,465 / 61.0% bar of
+  DD-067-7; CMH 67.3998; q = 0.0001; MH odds
+  ratio 2.452 [1.965, 3.058]). The §5
+  re-statement in the headline block stands:
+  `STUDY-SPEC-024/F1`'s difference is recorded
+  on the enlarged object-ID-joined subset by
+  this appended record only, and the frozen
+  Spec 024 and Spec 059 records stand exactly
+  as recorded.
+
+*AI disclosure: appended by an AI agent (Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.*

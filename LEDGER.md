@@ -8973,6 +8973,74 @@ STUDY-SPEC-024/F1 stands as recorded SUPPORTED on its original joined subset
 AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
 
+## 2026-10-22 — Spec 064 EXECUTED (Phase-426): IDENTIFICATION FAILED — continuity/discrimination not sustained
+
+Spec 064 ("Sign 297 Is the Horned Tiger": an Identification Concordance,
+Successor to Spec 046) was executed as Phase-426 under its frozen contract
+(freeze digest cfeb7baf71fad26e81ca80a08395c87a07d158974480923fd38eb2fed854c405),
+under the separate execution order the freeze awaited (DD-064-17). The
+execution gate was satisfied before the run: OSF registration s6hr9 is
+approved + public (approved and API-verified 2026-10-22).
+
+Outcome, in the frozen wording: **IDENTIFICATION FAILED
+(continuity/discrimination not sustained)** — "The fragment 'sign 297 is
+the horned tiger' cannot be carried to a concordance: the descriptor's
+discrimination of 297 from its neighbours in the 289–308 run was not
+sustained by both independent derivations. The record stays a stated gap.
+No statement about the sign is made, and nothing is fed to Asset A.
+Qualification (carried from the preserved reference, Spec 064 §1): the
+identification of Wells's 297 rests on a drawn-form reference whose
+continuity status is QUALIFIED — anchored at family level only; its
+step C discrimination check is part of this run's record."
+
+Step 0 passed in full: every spec section 2 pin recomputed and matched
+(claim record 997fa336…, held Wells 2015 text 62acf855…, Phase-104
+evaluation 2d0b83e8…, crosswalk registry 8a0b2a82…, Phase-123 witness
+ecbc37a4…, lane-2 drafts 3f645c9a…, Spec 046 closure delivery 772db4df…
+standing unedited, and the preserved drawn-form reference 33ee22ec…);
+the source book produced from the held copy with the printed-p. 97
+passage located verbatim; all four lists of record accounted for as HELD
+or CITABLE (Wells HELD, CISI HELD, Parpola CITABLE, Mahadevan CITABLE);
+and gate 0.4 passed — the local thesis file's digest asserted against
+its pin (4b39330c…, 19,313,853 bytes) before any plate was read, and the
+plate page (Wells 2006 thesis, Figure 3.2, thesis p. 90 / PDF p. 102)
+produced from it. No image is committed anywhere in the run.
+
+Step 1 named the source's sign list from the book's own apparatus —
+Wells's own list (Wells 2011), in Wells 2015 Chapter 2 / Figure 2.6.
+Step D derived the drawn-form descriptor twice, independently, from the
+thesis plate (three strokes clear above a single sharp bend, four stroke
+ends at the base, uppers slanting steeply down-left, lowers running down
+to the right with a basal splay) and sustained the preserved reference:
+agreement on its feature set, with two noted readings (the preserved
+"four" is the count at the base; its "near-vertical" lowers slant about
+30 degrees from vertical) judged not material. Step C — mandatory in
+this successor — was then not sustained: neither derivation affirms that
+the descriptor picks out plate 297 and no neighbour in the 289–308 run
+(signs 299, 302 and 303 satisfy every stated feature of the descriptor;
+the family anchor, registry row P205, is corroboration only and expressly
+not an identification). The run closed under the pre-registered closure
+before step M and before any scoring; step 2 was not reached, no list was
+scored, and the hypothesis is unjudged on concurrence grounds. The
+preserved reference's continuity status remains QUALIFIED, carried on
+every product of the run.
+
+Delivery in the frozen closure form:
+specs/064-sign297-concordance-successor/concordance-297.json (schema
+glossa.concordance/1; producer_spec 064; signs empty; closure block),
+SHA-256 9e765576349d4d294a4fc04f0d6750be3718dfc60fa267ea16c04c6130db7488
+(derived twice, identical; the run is deterministic and reproducible
+byte-identically). Records: reports/phase426_results.json,
+reports/phase426_concordance_report.md,
+specs/064-sign297-concordance-successor/outcome.md; graph node
+IndusPhase426Sign297ConcordanceSuccessor registered and verified by
+import before the run; the claim's record received its dated
+successor-check append (spec064_check, Phase-426, 2026-10-22) beside
+Spec 046's unedited first_check entry, verified at the act (removal
+reproduces the pre-act file byte-identically; status and stage
+unchanged). Spec 046's frozen record, outcome, and closure delivery
+stand unedited. Anchors asserted byte-identical before and after
+(df0cf620…).
 
 ## 2026-10-22 — Spec 063 (Phase-425) executed — RECOVERED (route 2)
 

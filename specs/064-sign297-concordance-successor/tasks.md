@@ -113,11 +113,11 @@
       execution (E2–E5) awaits its approval
       act and a separate execution order
       (DD-064-17).
-- [ ] **E2 — Graph-first build** (H15/H23) —
+- [x] **E2 — Graph-first build** (H15/H23) —
       script, graph node, registration,
       verification. **OWNER-APPROVAL** (as
       part of the execution order).
-- [ ] **E3 — Step 0** (spec §3) — input
+- [x] **E3 — Step 0** (spec §3) — input
       integrity including the reference
       record at its pinned digest, source
       producible, four lists accounted for,
@@ -125,7 +125,7 @@
       asserted, plate page produced).
       **OWNER-APPROVAL** (the execution
       order).
-- [ ] **E4 — Step 1 + Step 2** (spec §§4–5)
+- [x] **E4 — Step 1 + Step 2** (spec §§4–5)
       — list named; step D derivations and
       reconciliation; step C continuity /
       discrimination (mandatory); step M

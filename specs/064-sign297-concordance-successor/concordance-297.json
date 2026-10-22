@@ -1,0 +1,10 @@
+{
+ "closure": {
+  "class": "IDENTIFICATION FAILED (continuity/discrimination not sustained)",
+  "wording": "The fragment 'sign 297 is the horned tiger' cannot be carried to a concordance: the descriptor's discrimination of 297 from its neighbours in the 289\u2013308 run was not sustained by both independent derivations. The record stays a stated gap. No statement about the sign is made, and nothing is fed to Asset A. Qualification (carried from the preserved reference, Spec 064 \u00a71): the identification of Wells's 297 rests on a drawn-form reference whose continuity status is QUALIFIED \u2014 anchored at family level only; its step C discrimination check is part of this run's record."
+ },
+ "producer_claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
+ "producer_spec": "064",
+ "schema": "glossa.concordance/1",
+ "signs": []
+}

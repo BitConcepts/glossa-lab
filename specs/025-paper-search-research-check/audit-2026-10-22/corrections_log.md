@@ -3,9 +3,9 @@
 Corrections landed by this audit, each with its evidence and evidence
 level. Raw outputs are in `raw/` in this directory. Worker findings:
 `raw/findings_W1.md` … `raw/findings_W6.md` (plus
-`raw/findings_W5_part2.md`, the coordinator reconstruction of W5's
-truncated remainder, and `raw/findings_W4.md` §6/addendum for stage
-records). Items that need a program gate the audit cannot run are NOT
+`raw/findings_W5_part2.md`, repair worker W7's reconstruction of
+W5's truncated remainder from W5's filed outputs, and
+`raw/findings_W4.md` §6/addendum for stage records). Items that need a program gate the audit cannot run are NOT
 here — they are in `correction_proposals.md`, marked gate-pending.
 
 ## Batch 1 — Preprint v5 (`glossa-corpus/indus/pierson_2026_indus_decipherment.tex`)

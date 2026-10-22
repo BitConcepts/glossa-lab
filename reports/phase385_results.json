@@ -1,0 +1,71 @@
+{
+ "phase": "Phase-385",
+ "spec": "026",
+ "reruns": "Phase-140 (G1) \u2014 C1 margin completion",
+ "version": "v2 (governing interval: basic bootstrap; v1 percentile-only interval superseded \u2014 see report)",
+ "contract": "specs/026-rcph-framework-transfer/reruns/phase385-contract-v2.md",
+ "chronology_rider": "chronology is NOT controlled in the primary test \u2014 period/phase remain uncontrolled confounders",
+ "parameters": {
+  "B_bootstrap": 4999,
+  "seed": 20261012,
+  "margin_v": 0.1,
+  "governing_interval": "basic bootstrap"
+ },
+ "verification": {
+  "population_inscriptions": 5410,
+  "sites": 7,
+  "observed_chi2_recomputed": 4966.36222836514,
+  "observed_chi2_recorded": 4966.362228365138,
+  "cramers_v_point": 0.21900847512892316
+ },
+ "g1_primary": {
+  "strata": "composition x preservation (UNRECORDED retained as a level)",
+  "bootstrap_v_intervals": {
+   "percentile_ci95": [
+    0.2277735066631179,
+    0.2542419386211469
+   ],
+   "basic_ci95": [
+    0.1837750116366994,
+    0.2102434435947284
+   ],
+   "bootstrap_median": 0.2402880124462401
+  },
+  "margin_adjudication": "basic CI lower bound > 0.10: SUPPORTED under control stands at the declared margin",
+  "recorded_permutation": {
+   "count_perm_ge_observed": 0,
+   "B": 9999,
+   "p_value_raw": 0.0001,
+   "note": "Phase-140 recorded result, reported alongside; not recomputed by this rerun."
+  }
+ },
+ "sensitivities_exploratory": {
+  "S_chron_composition_x_chron_band": {
+   "bootstrap_v_intervals": {
+    "percentile_ci95": [
+     0.228174701742773,
+     0.25321690984530587
+    ],
+    "basic_ci95": [
+     0.18480004041254045,
+     0.20984224851507333
+    ],
+    "bootstrap_median": 0.24011523776391475
+   }
+  },
+  "S_depth_composition_x_depth_band": {
+   "bootstrap_v_intervals": {
+    "percentile_ci95": [
+     0.22844948012527813,
+     0.253906297945668
+    ],
+    "basic_ci95": [
+     0.18411065231217832,
+     0.20956747013256818
+    ],
+    "bootstrap_median": 0.24030981700231507
+   }
+  }
+ },
+ "ai_disclosure": "Executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution sec.VI."
+}

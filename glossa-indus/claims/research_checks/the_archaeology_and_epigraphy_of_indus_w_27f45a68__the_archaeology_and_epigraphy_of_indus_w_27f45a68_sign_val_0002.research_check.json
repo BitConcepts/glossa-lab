@@ -1,0 +1,70 @@
+{
+ "stage": "research_check",
+ "record_version": 1,
+ "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
+ "document_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68",
+ "claim_statement": "Sign value: 297 / the horned tiger, or perhaps just ‘tiger’ generically",
+ "checked_at": "2026-10-22T15:03:00.702191+00:00",
+ "advisory": true,
+ "verdict": null,
+ "protocol": "docs/paper-search-mcp.md#audit-protocol",
+ "phrasings": [
+  {
+   "text": "Sign value: 297 / the horned tiger, or perhaps just ‘tiger’ generically",
+   "origin": "claim"
+  },
+  {
+   "text": "Bryan Wells Indus sign 297 identified as the horned tiger from iconographic correspondence on seal M-1919: tiger signs in the Indus sign lists of Wells Fuls Mahadevan and Parpola",
+   "origin": "caller"
+  }
+ ],
+ "sources_requested": [
+  "arxiv",
+  "crossref",
+  "openalex",
+  "semantic",
+  "core",
+  "europepmc"
+ ],
+ "queries": [
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_papers",
+   "query": "Sign value: 297 / the horned tiger, or perhaps just ‘tiger’ generically"
+  },
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_arxiv",
+   "query": "Sign value: 297 / the horned tiger, or perhaps just ‘tiger’ generically"
+  },
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_crossref",
+   "query": "Sign value: 297 / the horned tiger, or perhaps just ‘tiger’ generically"
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_papers",
+   "query": "Bryan Wells Indus sign 297 identified as the horned tiger from iconographic correspondence on seal M-1919: tiger signs in the Indus sign lists of Wells Fuls Mahadevan and Parpola"
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_arxiv",
+   "query": "Bryan Wells Indus sign 297 identified as the horned tiger from iconographic correspondence on seal M-1919: tiger signs in the Indus sign lists of Wells Fuls Mahadevan and Parpola"
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_crossref",
+   "query": "Bryan Wells Indus sign 297 identified as the horned tiger from iconographic correspondence on seal M-1919: tiger signs in the Indus sign lists of Wells Fuls Mahadevan and Parpola"
+  }
+ ],
+ "source_errors": [],
+ "neighbors": [],
+ "neighbors_read_full_text": [],
+ "gaps": [
+  {
+   "gap": "no neighbors surfaced and no citations supplied — this is a search outcome, not evidence of no prior art"
+  }
+ ],
+ "citation_checks": []
+}

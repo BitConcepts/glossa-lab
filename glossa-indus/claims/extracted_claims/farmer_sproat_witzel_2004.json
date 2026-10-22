@@ -1,7 +1,7 @@
 {
   "document_id": "farmer_sproat_witzel_2004",
   "title": "The Collapse of the Indus-Script Thesis: The Myth of a Literate Harappan Civilization",
-  "extraction_date": "2026-10-06T10:42:42.097016",
+  "extraction_date": "2026-10-21T15:29:25.006499",
   "total_claims": 1,
   "auto_extracted": 1,
   "manually_curated": 1,
@@ -20,7 +20,58 @@
         "Phase-43: [M77/267][M77/99] = fixed title formula at inscription start"
       ],
       "confidence_in_source": 0.9,
-      "extracted_at": "2026-10-06T10:42:42.097002"
+      "extracted_at": "2026-10-21T15:29:24.987654",
+      "stage": "explained",
+      "stage_source": "transition-service:stage_history[1]",
+      "stage_as_of": "2026-10-13T10:12:00+00:00",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "checked",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:farmer_sproat_witzel_2004_manual_001"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry farmer_sproat_witzel_2004_manual_001; no pre-existing field altered."
+        },
+        {
+          "from_stage": "checked",
+          "to_stage": "explained",
+          "actor": "Tristen Pierson",
+          "timestamp": "2026-10-13T10:12:00+00:00",
+          "evidence_refs": [
+            "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#farmer_sproat_witzel_2004_manual_001"
+          ],
+          "reason": "Lane-2 adoption (owner act, 2026-10-13): the explanation record authored by Tristen Pierson — adopted from the AI-drafted texts of PR #190, drafting disclosed in the record — is ingested; the stage advances checked -> explained through the transition service (OD-2)."
+        }
+      ],
+      "verified_unexplained": false,
+      "proposition_fingerprint": "52e6a4be0593f83faf0942788546c5d678ada4362a1c701714482a42ce4fdd4c",
+      "not_understood": "Being contradicted here is narrower than it sounds. The checks argue against the strong claim that the signs encode no language at all. They do not show what language the signs encode, or what any sign says. Entropy in the linguistic range is the kind of evidence a writing system should produce, but some non-linguistic systems can produce it too, and specialists still debate the entropy result itself. The program does not know which parts of the sign system, if any, are phonetic (sound-based), and it has no check of this claim on a corpus independent of the Mahadevan/ICIT lineage. What would change the picture: a positional and entropy check on a genuinely independent corpus, and a named specialist's account that engages the suffix and title-formula findings directly.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#farmer_sproat_witzel_2004_manual_001",
+        "content_hash": "6976288c99cc0c62c1018c8304d5fbb234528898abf340c35365acdd30071c71",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "The program checked this claim against three pieces of evidence, and all three point the other way. First, published work by other researchers (Rao and colleagues, 2009) measured how predictable each sign is from the signs before it - a measure called conditional entropy. The Indus values fell inside the range seen for real language writing, and outside the range seen for non-linguistic symbol sets. Second, the program's own positional battery (Phase-43) found 20 signs that behave like word endings - they sit at the end of texts the way suffixes do. Third, the same battery found a fixed two-sign formula that opens inscriptions, the way a title or heading does. Non-linguistic emblem sets are not expected to show grammar-like habits of either kind. The claim also carries its own test on the record - it would be in trouble if the entropy data fell in the linguistic range and positional patterns rose above a random baseline - and that is the result the checks returned. On the strength of this, the program records the claim as contradicted. One caution belongs in the open: two of the three contradicting items come from the program's own test battery, run on corpora from one lineage (the Mahadevan/ICIT line). The published entropy result is the only one of the three that was produced entirely outside this program."
+      },
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "spec025-material-audit-note",
+        "proposal": "P1",
+        "note": "Framing note (spec-025 material audit, 2026-10-22): the published exchange does not support treating the linguistic question as settled. Sproat 2014 (Language 90(2):457-481, DOI 10.1353/lan.2014.0031, FULL TEXT) shows the published entropy measures do not discriminate real non-linguistic systems, and the measures that do classify place Indus largely via text length; Rao et al. 2010 (DOI 10.1162/coli_c_00030, FULL TEXT) claims inductive evidence only; the exchange closed in non-concession (Rao 2015 / Sproat 2015). The literature position is contested and unresolved. Supporting items: Parpola 2008 (FULL TEXT) and Vidale 2007 (quoted in FULL TEXT) reject Farmer's proof claim; Mukhopadhyay 2023 (DOI 10.1057/s41599-023-02320-7) partially vindicates the functional core at abstract level; Nair 2026 (FULL TEXT) is mixed and expressly does not resolve the question. Any status change is for the program's adjudication gate, not this note.",
+        "evidence": [
+          "specs/025-paper-search-research-check/audit-2026-10-22/raw/findings_W2.md",
+          "specs/025-paper-search-research-check/audit-2026-10-22/correction_proposals.md",
+          "specs/025-paper-search-research-check/audit-2026-10-22/raw/W2_browser_sources.json"
+        ],
+        "evidence_level": "FULL TEXT",
+        "effect": "No claim status, stage, anchor, or score is changed by this note."
+      }
     }
   ],
   "_citation": {

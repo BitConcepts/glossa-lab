@@ -1,0 +1,159 @@
+{
+ "schema_version": "1.0",
+ "definition": {
+  "spec": "specs/066-phase130-catalogue-extension/spec.md",
+  "freeze_doc": "specs/066-phase130-catalogue-extension/freeze.md",
+  "experiment_id": "spec066-phase130-catalogue-extension",
+  "register": {
+   "path": "specs/066-phase130-catalogue-extension/claims.json",
+   "register_version": "0.6-draft",
+   "claims": 15,
+   "aee_hook_pass": "PASSED at the freeze act of 2026-10-21 under aee 1.5.3: after_specify cleared in two adjudicated rounds (19 failure modes over 0.5-draft: 15 FR-2.3 draft-cap records, 1 irreducibility challenge over F066-C01, 1 counterexample challenge over F066-C05, 2 shared-evidence independence records over F066-C11/C12; 15 FR-2.3 draft-cap records only over 0.6-draft), after_plan and after_tasks clean at first pass over 0.6-draft; at every hook zero correctness failure modes and no claim below the 0.70 threshold (minimum propagated 0.72); the engine outcome word reads iterate solely from the draft-cap records (gate reading DD-066-10; record in specs/066-phase130-catalogue-extension/aee/freeze-aee-note.md)"
+  },
+  "basis": {
+   "adjudication": "specs/066-phase130-catalogue-extension/adjudication.md",
+   "decisions": "The owner's approval of 2026-10-21 (amendment package Item 7: the intake act itself, section 4's lawful line included) authorised this freeze and the intake's execution in the same run. The act implemented is Item 7 section 5 exactly: the CISI 3.1 portion's numbers graded under the frozen ladder and, on pass, merged into the pinned catalogue layer, over material held under the Phase-130 gate (restricted store PROVENANCE entry 22). Freeze decisions DD-066-4 to DD-066-10 are recorded in adjudication.md section 4: halt threshold 20 percent of all graded candidates confirmed, denominator the full 2,101 census; stratum 60 with seed 20261021 fixed at freeze; no OSF registration for the intake itself; phase allocation Phase-428; the DD-038-10 gate reading adopted as DD-066-10."
+  },
+  "design": {
+   "phase": "Phase-428",
+   "question_owner": "Spec 059's frozen outcome wording: the unblocking act it names is a more complete published object catalogue entering through Phase-130 intake; no PRED-2026 entry is scored, advanced, or retired by this act, and no F1 quantity is computed",
+   "act": "Phase-130 catalogue extension: grade every distinct well-formed CISI 3.1 portion number under the fixed ladder (spec section 5.3); build the merged catalogue layer v2 (vols. 1-2 plus VERIFIED 3.1 objects) as a LOCAL file in the restricted store; commit only the section 4 products (the extension index, aggregates, pins)",
+   "candidates": {
+    "total": 2101,
+    "referenced": 1341,
+    "referenced_zero_resolution": 1293,
+    "referenced_already_joined": 48,
+    "unreferenced": 760,
+    "zero_resolution_rows_over_referenced": 1790,
+    "form": "census of all candidates, not a sample (DD-066-2); the referenced and unreferenced sets are graded identically and reported separately"
+   },
+   "ladder": [
+    "site agreement (mandatory where referencing rows exist; the fixed Spec 037 section-to-site mapping)",
+    "extraction-confidence gate (low UNGRADED until hand-verified against the page render; medium provisional until the stratum covers its class; high passes directly)",
+    "number-level ambiguity bar (the portion's own records under one number differ on join-relevant data: section, heading type class, FC, excavation, museum, registration)",
+    "type carriage (not a gate: the published plate-heading class under the closed Spec 037 class set; blank or addenda heading is unfilled, a recorded fact)",
+    "corroboration where available (FC, excavation, museum values in the vols. 1-2 or mayig layers under the fixed normalisation: contradiction is a conflict; absence is UNGRADED; UNGRADED for every candidate on the held records, DD-066-7)"
+   ],
+   "outcome_classes": [
+    "VERIFIED",
+    "CONFLICT",
+    "UNRESOLVED"
+   ],
+   "conflict_reason_codes": [
+    "SITE",
+    "NUMBER-AMBIGUOUS",
+    "CORROB-FC",
+    "CORROB-EXC",
+    "CORROB-MUS"
+   ],
+   "halt_rule": {
+    "conflict_share_cap": 0.2,
+    "base": "all 2101 graded candidates",
+    "tripwire": "any stratum attribution to true non-identity halts regardless of the conflict share",
+    "on_halt": "the census completes and reports in full; no extension index is committed; no merged layer is pinned; the outcome is INTAKE COMPLETE - CATALOGUE EXTENSION HALTED"
+   },
+   "hand_check_stratum": "seeded random sample stratified across the three outcome classes, attributing each sampled conflict to extraction error, programme-side record error, genuine compilation divergence, or true non-identity; size fixed at the freeze at 60 (DD-066-5: 30 VERIFIED / 15 CONFLICT / 15 UNRESOLVED, the whole class where a class is smaller; seed 20261021 fixed at the freeze and recorded in the build script before sampling; the medium-coverage supplement of spec section 5.4 is part of the design)",
+   "reported_aggregates": "outcome counts and shares overall, by candidate set, and by portion section; conflict breakdown by reason code; per-rung graded bases; the confidence-gate accounting; type-class fill of the entered objects; the stratum's cause attribution; the halt verdict with its arithmetic; on pass, the merged layer's counts and the section 5.7 projection, labelled a projection - aggregate statistics only, never rows beyond the section 4 item-1 fact list",
+   "fences": {
+    "string_match": "a referenced number is a candidate, never a catalogue object",
+    "verified_object": "a VERIFIED catalogue object is not a verified join; no join is run under this act",
+    "no_f1": "no F1 quantity is computed under this act; STUDY-SPEC-024/F1 stands exactly as recorded and Spec 059's record is never patched",
+    "no_osf": "no OSF registration is filed for the intake itself (DD-066-8); the registration attaches to the successor F1 study spec"
+   },
+   "execution_gate": "Satisfied at the freeze of 2026-10-21: the owner's approval (amendment package Item 7) ordered this contract frozen and executed in the same run; execution runs as Phase-428 under the frozen contract after the freeze merges, fail-closed at step 0"
+  },
+  "inputs": {
+   "portion_pdf": {
+    "storage": "restricted local store, research notes (never in git): downloads/oakland-ill-cisi31-portion/376929.pdf",
+    "bytes": 8206446,
+    "sha256": "514338b1f6c498bd318b114e39b0e77a79a6685918a0a4c2c5b116dfc2482b6a"
+   },
+   "local_table": {
+    "storage": "restricted local store, beside the scan: cisi31-basic-data.csv",
+    "sha256": "7179858d9b2bc18b480ba092a08ea2ee021ce569fcaceb5b992d22c541d333c8",
+    "records": 2123,
+    "columns": 26,
+    "distinct_wellformed_numbers": 2101,
+    "garbled_tokens_not_candidates": 5,
+    "sections": {
+     "mohenjo_daro": 519,
+     "harappa_old": 510,
+     "harappa_harp": 1094
+    },
+    "number_cell_confidence": {
+     "high": 1933,
+     "medium": 183,
+     "low": 7
+    }
+   },
+   "catalogue_layer_base": {
+    "storage": "local store (gitignored), beside the cisi_image_layer build: catalogue/cisi_volN_catalogue.csv",
+    "vol1": {
+     "rows": 3320,
+     "bytes": 804665,
+     "sha256": "e0d698f991fbd7cf26c491a2b25906b422903a0e2a26ea7b8c690420ca51dc1e"
+    },
+    "vol2": {
+     "rows": 4385,
+     "bytes": 1431631,
+     "sha256": "e751244e2d51bda3181d98e56af691c0d24099d76d035b54f0888504204bc7d9"
+    },
+    "merged_rows": 7705,
+    "merged_distinct_objects": 3493
+   },
+   "lineage_layer": {
+    "storage": "local store, sweep downloads: horus84-computational-linguistics/data/inscriptions.csv",
+    "bytes": 1190884,
+    "sha256": "c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef"
+   },
+   "phase421_census": {
+    "file": "reports/phase421_join_census.json",
+    "sha256": "952829317a7b8e48e809da4353cdf5f6b6f872180920bc349aaf747595b99bb8"
+   },
+   "phase421_results": {
+    "file": "reports/phase421_results.json",
+    "sha256": "3948cd01f960842b963061d96ddeabd5ee0b5cdeb572d786976d476d84ff0c7f"
+   },
+   "intake_schema": {
+    "file": "data/intake/intake_dataset_schema_v1.json",
+    "bytes": 6197,
+    "sha256": "b94d03add0318044b559b7b2976bbd2722abc19adcf67a0ea0cf093f8d7de49b"
+   },
+   "intake_validator": {
+    "file": "backend/glossa_lab/intake.py",
+    "bytes": 18867,
+    "sha256": "02b24e3312a9a4ac4f7e3b14aeaee2cda0268f41cb5bd573494340c2e7d2df03"
+   },
+   "gate": {
+    "phase": "Phase-130",
+    "record": "restricted store PROVENANCE entry 22, recorded 2026-10-20 before any processing; in-repo pack specs/021-phase130-intake-pack/",
+    "classification": "restricted research material: local use, extraction, and publishable derived statistics permitted; the section 4 item-1 fact list is a publishable derived fact list under the owner's approved reading; redistribution of scans or row data prohibited; everything beyond the section 4 line stays restricted-local"
+   },
+   "local_products": {
+    "merged_layer": "cisi_catalogue_layer_v2.csv in the local store beside the vols. 1-2 catalogue CSVs (VERIFIED 3.1 objects merged in); named in the outcome record by filename, row count, and pin only",
+    "grade_table": "phase428-grade-table.csv in the portion folder of the restricted store; named in the outcome by filename and row count only"
+   }
+  },
+  "environment": {
+   "python": "3.12.3",
+   "runner": "backend (venv glossa-lab)",
+   "aee": "1.5.3 (adopted environment; package pinned >=1.5.0,<1.6)",
+   "specify": "1.0.10"
+  }
+ },
+ "sources": {
+  "specs/066-phase130-catalogue-extension/freeze.md": "53945d758f01fc0546c2d45ed40bc43dc89cda0843439ad50e3ac51ef4ed5fad",
+  "specs/066-phase130-catalogue-extension/spec.md": "4908127c7ab5d6ee8753a1bc5a7aaa36d9263f202e6fa66b79a7a0ccbec043a2",
+  "specs/066-phase130-catalogue-extension/claims.json": "653459069f6537dfc9a642760a195cebab61794a6101f134ff9234fbe9e60d22",
+  "specs/066-phase130-catalogue-extension/adjudication.md": "6305cb8dedb32f1ea03d74de68626a68854a593cd6e0d3f4fd661e1450c08179",
+  "specs/066-phase130-catalogue-extension/aee/freeze-aee-note.md": "cf941d6a2afa6e63c8d276a50579bfc0b2b6452418c0da07f9577803e1efaeca",
+  "specs/066-phase130-catalogue-extension/build_freeze.py": "227c00e40117a3214014481cd735849cf94a1f602808dc4ba4ca2f16b5c7c2c0",
+  "backend/tests/test_spec066_freeze.py": "db3c610ed3baad9c274d13ec68aff2299e0e428458bec9ffe447d374974c25cc"
+ },
+ "environment": {
+  "python": "3.12.3",
+  "platform": "Linux",
+  "aee": "1.5.3"
+ },
+ "digest": "0b81d8421c8fe66b486b2c729bb7e978faa6327c74b8f1bff7984128a31aa355"
+}

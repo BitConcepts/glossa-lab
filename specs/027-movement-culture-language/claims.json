@@ -1,0 +1,1882 @@
+{
+  "claims": [
+    {
+      "id": "F027-C01",
+      "text": "The Spec 027 verdict taxonomy is a fixed four-value set.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": "All verdicts issued under Spec 027.",
+      "depends_on": [],
+      "assumptions": [],
+      "alternatives": [
+        "NOT-YET-TESTABLE treated as a fifth verdict."
+      ],
+      "falsification_tests": [
+        "A fifth verdict value in a Spec 027 governed artifact defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "definition",
+        "layer": "M",
+        "forbidden_assumptions": [
+          "ASM-FIFTH-VERDICT"
+        ],
+        "strongest_rival": "NOT-YET-TESTABLE treated as a fifth verdict.",
+        "verdict_rule": "Only the four named values may be assigned as verdicts.",
+        "evidence_origin_groups": [
+          "spec027-governance"
+        ],
+        "not_yet_testable_is_registration_status": true,
+        "boundary_confirmation": "Boundary is the verdict vocabulary only; C04 governs permitted evidence pathways, not verdict values."
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#3.3",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #3.3 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#3.3"
+        },
+        {
+          "ref": "specs/026-rcph-framework-transfer/spec.md#8",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 026 verdict taxonomy and historical mapping",
+          "source_id": "specs/026-rcph-framework-transfer/spec.md#8",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#3.3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C02",
+      "text": "The Spec 027 claim register must pass the Spec 026 integrity check.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": "Declared depends_on edges and exact-match forbidden assumptions in claims.json.",
+      "depends_on": [
+        "F027-C01"
+      ],
+      "assumptions": [
+        "ASM-REGISTER-INTEGRITY-CHECKED"
+      ],
+      "alternatives": [
+        "A renamed-equivalent assumption evades the mechanical exact-match check."
+      ],
+      "falsification_tests": [
+        "One cycle, missing dependency, or forbidden inheritance reported by framework026 defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "computational-result",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "A renamed-equivalent assumption evades the mechanical exact-match check.",
+        "verdict_rule": "IF framework026 reports any of the three defects THEN the register is not freeze-ready.",
+        "evidence_origin_groups": [
+          "spec026-machinery"
+        ],
+        "not_yet_testable_is_registration_status": true
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#3.2",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #3.2 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#3.2"
+        },
+        {
+          "ref": "backend/glossa_lab/framework026.py",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 026 claim-register integrity machinery",
+          "source_id": "backend/glossa_lab/framework026.py",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#3.2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C03",
+      "text": "Poseidon plus AADR count as one evidence origin group for shared samples.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": "Archaeogenetic evidence accounting under Spec 027.",
+      "depends_on": [],
+      "assumptions": [],
+      "alternatives": [
+        "The archives contain materially different samples in a particular comparison, which must be shown sample by sample rather than assumed."
+      ],
+      "falsification_tests": [
+        "A shared sample counted under both archives defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "definition",
+        "layer": "M",
+        "forbidden_assumptions": [
+          "ASM-DOUBLE-COUNT-MIRROR"
+        ],
+        "strongest_rival": "The archives contain materially different samples in a particular comparison, which must be shown sample by sample rather than assumed.",
+        "verdict_rule": "Shared samples receive one origin-group count; non-shared samples require sample-level proof.",
+        "evidence_origin_groups": [
+          "poseidon-aadr-single-origin"
+        ],
+        "not_yet_testable_is_registration_status": true
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#3.4",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #3.4 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#3.4"
+        },
+        {
+          "ref": "movement-research-report-20261011#7-D1-D2",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "secondary",
+          "description": "Movement report dataset inventory flags the Poseidon/AADR double-count trap",
+          "source_id": "movement-research-report-20261011#7-D1-D2",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#3.4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C04",
+      "text": "No Spec 027 evidence may enter the decipherment pathway.",
+      "kind": "compliance",
+      "status": "draft",
+      "boundary": "All Spec 027 stages and downstream uses.",
+      "depends_on": [],
+      "assumptions": [],
+      "alternatives": [
+        "A contextual variable is used only descriptively and never in a reading model, which is permitted only outside the reading pathway."
+      ],
+      "falsification_tests": [
+        "One governed Spec 027 variable entering a reading or PRED pathway defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "definition",
+        "layer": "Interp.",
+        "forbidden_assumptions": [
+          "ASM-PRED-CONTACT",
+          "ASM-CONTEXT-AS-READING-EVIDENCE"
+        ],
+        "strongest_rival": "A contextual variable is used only descriptively and never in a reading model, which is permitted only outside the reading pathway.",
+        "verdict_rule": "Any such entry is a hard-limit violation and stops the affected work.",
+        "evidence_origin_groups": [
+          "governance"
+        ],
+        "not_yet_testable_is_registration_status": true
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#10",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #10 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#10"
+        },
+        {
+          "ref": "docs/governance/rules.md#H26",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Governance H26 and the program non-SA evidence boundary",
+          "source_id": "docs/governance/rules.md#H26",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#10"
+          ]
+        },
+        {
+          "ref": "owner-directive-2026-10-10",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "human",
+          "description": "Owner directive requiring the movement study under the Spec 026 framework and its epistemic limits",
+          "source_id": "owner-directive-2026-10-10",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#10"
+          ]
+        },
+        {
+          "ref": "movement-research-report-20261011#9",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "secondary",
+          "description": "Movement report section 9 must-not-claim rules",
+          "source_id": "movement-research-report-20261011#9",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#10"
+          ]
+        },
+        {
+          "ref": "owner-directive-2026-10-10#primary-authority",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "primary",
+          "description": "Owner directive of 2026-10-10 requiring the movement study under the Spec 026 epistemic framework",
+          "source_id": "owner-directive-2026-10-10#primary-authority",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#10"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C05",
+      "text": "Spec 027 draft status is non-authorizing.",
+      "kind": "decision",
+      "status": "draft",
+      "boundary": "This draft PR only.",
+      "depends_on": [],
+      "assumptions": [
+        "ASM-OWNER-ADJUDICATION-REQUIRED"
+      ],
+      "alternatives": [
+        "The owner separately authorizes a named action outside this draft, which must be recorded as its own decision rather than inferred from the draft."
+      ],
+      "falsification_tests": [
+        "A freeze, execution, acquisition, copying action, or publication performed on the authority of this draft alone defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "definition",
+        "layer": "M",
+        "forbidden_assumptions": [
+          "ASM-DRAFT-AS-AUTHORIZATION"
+        ],
+        "strongest_rival": "The owner separately authorizes a named action outside this draft, which must be recorded as its own decision rather than inferred from the draft.",
+        "verdict_rule": "Draft status remains non-authorizing until an owner adjudication is recorded.",
+        "evidence_origin_groups": [
+          "governance"
+        ],
+        "not_yet_testable_is_registration_status": true
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#13",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #13 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#13"
+        },
+        {
+          "ref": "docs/governance/rules.md#H2",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Governance H2: proposal required before execution",
+          "source_id": "docs/governance/rules.md#H2",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#13"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C06",
+      "text": "Stage 0 is descriptive infrastructure only.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": "Stage 0 gazetteer and chronology outputs.",
+      "depends_on": [],
+      "assumptions": [],
+      "alternatives": [
+        "A Stage 0 coverage pattern itself is treated as a finding, which the spec forbids."
+      ],
+      "falsification_tests": [
+        "A Stage 0 report assigning a substantive historical or repertoire verdict defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "definition",
+        "layer": "M",
+        "forbidden_assumptions": [
+          "ASM-INFRASTRUCTURE-AS-FINDING"
+        ],
+        "strongest_rival": "A Stage 0 coverage pattern itself is treated as a finding, which the spec forbids.",
+        "verdict_rule": "Stage 0 closes on coverage, conflicts, and fitness-for-question only.",
+        "evidence_origin_groups": [
+          "spec027-design"
+        ],
+        "not_yet_testable_is_registration_status": true
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#6.1",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #6.1 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#6.1"
+        },
+        {
+          "ref": "specs/024-evidence-integration/spec.md",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 024 Stage 0 descriptive-inventory precedent",
+          "source_id": "specs/024-evidence-integration/spec.md",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#6.1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C07",
+      "text": "Every Stage 0 gazetteer row is fully source stamped.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": "Every row in the proposed gazetteer.",
+      "depends_on": [
+        "F027-C06"
+      ],
+      "assumptions": [
+        "ASM-SOURCE-TRACEABILITY"
+      ],
+      "alternatives": [
+        "A row-level source is unavailable, in which case the row is catalogued or excluded rather than retained without provenance."
+      ],
+      "falsification_tests": [
+        "One unstamped retained gazetteer row defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "data-observation",
+        "layer": "O",
+        "forbidden_assumptions": [
+          "ASM-UNLICENSED-COPYING"
+        ],
+        "strongest_rival": "A row-level source is unavailable, in which case the row is catalogued or excluded rather than retained without provenance.",
+        "verdict_rule": "IF a row lacks a required provenance or licence field THEN it is excluded from the reusable gazetteer.",
+        "evidence_origin_groups": [
+          "published-gazetteer-sources"
+        ],
+        "not_yet_testable_is_registration_status": true,
+        "boundary_confirmation": "Boundary is source/provenance stamping; C08 governs coordinate state and C12 governs inscription sign identity."
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#6.2",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #6.2 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#6.2"
+        },
+        {
+          "ref": ".specify/memory/constitution.md",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Constitution section I citation and provenance discipline",
+          "source_id": ".specify/memory/constitution.md",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#6.2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C08",
+      "text": "Every Stage 0 gazetteer row records its coordinate state.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": "Coordinates in the proposed gazetteer.",
+      "depends_on": [
+        "F027-C07"
+      ],
+      "assumptions": [],
+      "alternatives": [
+        "A source expressly publishes exact reusable coordinates, which may be recorded under the exact_published state."
+      ],
+      "falsification_tests": [
+        "One retained row without a coordinate state defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "definition",
+        "layer": "O",
+        "forbidden_assumptions": [
+          "ASM-COORDINATE-STATE-OMITTED"
+        ],
+        "strongest_rival": "A source expressly publishes exact reusable coordinates, which may be recorded under the exact_published state.",
+        "verdict_rule": "Coordinate state is mandatory; restriction is inherited by every derivative output.",
+        "evidence_origin_groups": [
+          "published-gazetteer-sources"
+        ],
+        "not_yet_testable_is_registration_status": true,
+        "boundary_confirmation": "Boundary is coordinate state; C09 governs dated-sample traceability."
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#5.2",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #5.2 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#5.2"
+        },
+        {
+          "ref": "movement-research-report-20261011#7-D7",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "secondary",
+          "description": "Movement report warns that published site coordinates may be restricted or imprecise",
+          "source_id": "movement-research-report-20261011#7-D7",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#5.2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C08B",
+      "text": "A restricted coordinate is never published more precisely than its source allows.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": "Coordinates in the proposed gazetteer.",
+      "depends_on": [
+        "F027-C08"
+      ],
+      "assumptions": [],
+      "alternatives": [
+        "A source expressly publishes exact reusable coordinates, which may be recorded under the exact_published state."
+      ],
+      "falsification_tests": [
+        "One row lacking a coordinate state, or one restricted coordinate republished more precisely, defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "definition",
+        "layer": "O",
+        "forbidden_assumptions": [
+          "ASM-RESTRICTION-DEFEATED-BY-INFERENCE"
+        ],
+        "strongest_rival": "A source expressly publishes exact reusable coordinates, which may be recorded under the exact_published state.",
+        "verdict_rule": "Coordinate state is mandatory; restriction is inherited by every derivative output.",
+        "evidence_origin_groups": [
+          "published-gazetteer-sources"
+        ],
+        "not_yet_testable_is_registration_status": true
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#5.2",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #5.2 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#5.2"
+        },
+        {
+          "ref": "movement-research-report-20261011#7-D7",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "secondary",
+          "description": "Movement report warns that published site coordinates may be restricted or imprecise",
+          "source_id": "movement-research-report-20261011#7-D7",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#5.2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C09",
+      "text": "Every Stage 0 chronology row is sample/context traceable.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": "Every row in the proposed chronology spine.",
+      "depends_on": [
+        "F027-C06"
+      ],
+      "assumptions": [
+        "ASM-SOURCE-TRACEABILITY"
+      ],
+      "alternatives": [
+        "An aggregate published period assertion is retained in the gazetteer but not promoted to a chronology row."
+      ],
+      "falsification_tests": [
+        "One untraceable chronology row defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "data-observation",
+        "layer": "O",
+        "forbidden_assumptions": [
+          "ASM-AGGREGATE-DATE-AS-SAMPLE"
+        ],
+        "strongest_rival": "An aggregate published period assertion is retained in the gazetteer but not promoted to a chronology row.",
+        "verdict_rule": "Untraceable dates are catalogued as period assertions and cannot support timing analyses.",
+        "evidence_origin_groups": [
+          "xronos-underlying-databases"
+        ],
+        "not_yet_testable_is_registration_status": true,
+        "boundary_confirmation": "Boundary is chronology rows; C12 governs inscription corpus records."
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#6.4",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #6.4 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#6.4"
+        },
+        {
+          "ref": "movement-research-report-20261011#7-D4-D5",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "secondary",
+          "description": "Movement report dataset inventory for XRONOS and c14bazAAR",
+          "source_id": "movement-research-report-20261011#7-D4-D5",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#6.4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C10",
+      "text": "The Mutin et al. 2025 Mehrgarh chronology revision remains CONTESTED.",
+      "kind": "observation",
+      "status": "draft",
+      "boundary": "Chronology assertions concerning Mehrgarh Period I.",
+      "depends_on": [
+        "F027-C09"
+      ],
+      "assumptions": [
+        "ASM-REPORT-UNCERTAINTY-PRESERVED"
+      ],
+      "alternatives": [
+        "Independent sealed-context replication could change the status through a new dated assessment, not through silent adoption."
+      ],
+      "falsification_tests": [
+        "A Spec 027 artifact replacing the older chronology with Mutin et al. without a contested-status record defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "data-observation",
+        "layer": "I",
+        "forbidden_assumptions": [
+          "ASM-MUTIN-ADOPTED"
+        ],
+        "strongest_rival": "Independent sealed-context replication could change the status through a new dated assessment, not through silent adoption.",
+        "verdict_rule": "Status remains CONTESTED until independent replication or refutation is assessed in a new record.",
+        "evidence_origin_groups": [
+          "movement-report-secondary",
+          "mehrgarh-chronology-sources"
+        ],
+        "not_yet_testable_is_registration_status": true
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#6.5",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #6.5 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#6.5"
+        },
+        {
+          "ref": "movement-research-report-20261011#0.3-IND-BEF-003",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "secondary",
+          "description": "Movement report claim register marks both Mehrgarh chronologies contested",
+          "source_id": "movement-research-report-20261011#0.3-IND-BEF-003",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#6.5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C12",
+      "text": "The three named sign-numbering systems are not interchangeable.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": "All Stage 1 corpus records and crosswalk sensitivities.",
+      "depends_on": [],
+      "assumptions": [],
+      "alternatives": [
+        "A sign-by-sign crosswalk sensitivity is allowed, but it does not make the primary numbering systems interchangeable."
+      ],
+      "falsification_tests": [
+        "One silent cross-list substitution defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "definition",
+        "layer": "O",
+        "forbidden_assumptions": [
+          "ASM-SIGNLIST-INTERCHANGEABLE"
+        ],
+        "strongest_rival": "A sign-by-sign crosswalk sensitivity is allowed, but it does not make the primary numbering systems interchangeable.",
+        "verdict_rule": "Mixed or unversioned sign identity makes the affected run INVALID.",
+        "evidence_origin_groups": [
+          "inscription-corpus-sources"
+        ],
+        "not_yet_testable_is_registration_status": true
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#7.4",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #7.4 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#7.4"
+        },
+        {
+          "ref": "movement-research-report-20261011#7-D6",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "secondary",
+          "description": "Movement report corpus inventory states that sign-list versions are not interchangeable",
+          "source_id": "movement-research-report-20261011#7-D6",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#7.4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C12B",
+      "text": "Every Stage 1 record carries its sign-list version.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": "All Stage 1 corpus records and crosswalk sensitivities.",
+      "depends_on": [
+        "F027-C12"
+      ],
+      "assumptions": [],
+      "alternatives": [
+        "A sign-by-sign crosswalk sensitivity is allowed, but it does not make the primary numbering systems interchangeable."
+      ],
+      "falsification_tests": [
+        "One Stage 1 primary record lacking sign_list_version, or one silent cross-list substitution, defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "definition",
+        "layer": "O",
+        "forbidden_assumptions": [
+          "ASM-SIGNLIST-VERSION-OMITTED"
+        ],
+        "strongest_rival": "A sign-by-sign crosswalk sensitivity is allowed, but it does not make the primary numbering systems interchangeable.",
+        "verdict_rule": "Mixed or unversioned sign identity makes the affected run INVALID.",
+        "evidence_origin_groups": [
+          "inscription-corpus-sources"
+        ],
+        "not_yet_testable_is_registration_status": true
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#7.4",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #7.4 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#7.4"
+        },
+        {
+          "ref": "movement-research-report-20261011#7-D6",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "secondary",
+          "description": "Movement report corpus inventory states that sign-list versions are not interchangeable",
+          "source_id": "movement-research-report-20261011#7-D6",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#7.4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C11",
+      "text": "Stage 1 Q2 tests the bounded recorded-repertoire site effect.",
+      "kind": "hypothesis",
+      "status": "draft",
+      "boundary": "The Stage 1 population and governing sign list selected at adjudication.",
+      "depends_on": [
+        "F027-C12B"
+      ],
+      "assumptions": [
+        "ASM-SITE-AS-ANALYTIC-UNIT"
+      ],
+      "alternatives": [
+        "Object-type composition or preservation accounts for the recorded pattern, which Q2 is designed to test rather than assume away."
+      ],
+      "falsification_tests": [
+        "A Stage 1 report interpreting its result as a spoken dialect, ethnic pattern, or language identification defeats the bounded claim."
+      ],
+      "metadata": {
+        "framework_kind": "conditional-model-result",
+        "layer": "I",
+        "forbidden_assumptions": [
+          "ASM-REPERTOIRE-AS-DIALECT",
+          "ASM-REPERTOIRE-AS-ETHNICITY"
+        ],
+        "strongest_rival": "Object-type composition or preservation accounts for the recorded pattern, which Q2 is designed to test rather than assume away.",
+        "verdict_rule": "Verdict is assigned only to the bounded recorded-repertoire proposition under section 7.6.",
+        "evidence_origin_groups": [
+          "inscription-corpus-origin-to-be-frozen"
+        ],
+        "not_yet_testable_is_registration_status": true,
+        "boundary_confirmation": "Boundary is the Q2 estimand; C12 governs sign identity, C13 governs closure after a valid result, and C14 governs control validity."
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#7.1",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #7.1 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#7.1"
+        },
+        {
+          "ref": "movement-research-report-20261011#8-Q2",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "secondary",
+          "description": "Movement report Q2 formulation",
+          "source_id": "movement-research-report-20261011#8-Q2",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#7.1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C13",
+      "text": "A valid Stage 1 Q2 non-rejection closes downstream repertoire-geography work.",
+      "kind": "decision",
+      "status": "draft",
+      "boundary": "Downstream work dependent on a regional repertoire effect.",
+      "depends_on": [
+        "F027-C11"
+      ],
+      "assumptions": [],
+      "alternatives": [
+        "A defect makes the run INVALID or INCONCLUSIVE rather than a valid non-rejection; the closure applies only to the valid bounded test."
+      ],
+      "falsification_tests": [
+        "Downstream repertoire-geography work proceeding after a valid Q2 non-rejection defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "definition",
+        "layer": "M",
+        "forbidden_assumptions": [
+          "ASM-NEGATIVE-RESULT-AS-PRELIMINARY"
+        ],
+        "strongest_rival": "A defect makes the run INVALID or INCONCLUSIVE rather than a valid non-rejection; the closure applies only to the valid bounded test.",
+        "verdict_rule": "Valid non-rejection yields CONTRADICTED for the bounded claim and triggers negative closure.",
+        "evidence_origin_groups": [
+          "spec027-governance"
+        ],
+        "not_yet_testable_is_registration_status": true,
+        "boundary_confirmation": "Boundary is post-result closure; C25 governs reporting completeness for all analyses."
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#7.2",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #7.2 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#7.2"
+        },
+        {
+          "ref": "specs/026-rcph-framework-transfer/spec.md#4",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 026 computation/countermodel symmetry and negative-closure discipline",
+          "source_id": "specs/026-rcph-framework-transfer/spec.md#4",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#7.2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C14",
+      "text": "A non-discriminating Stage 1 control makes the run INVALID.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": "Stage 1 execution and controls.",
+      "depends_on": [
+        "F027-C11"
+      ],
+      "assumptions": [
+        "ASM-CONTROLS-DECLARED-BEFORE-OUTCOMES"
+      ],
+      "alternatives": [
+        "A control failure is recorded as a caveat, which Spec 026 expressly disallows for a confirmation result."
+      ],
+      "falsification_tests": [
+        "A Stage 1 verdict other than INVALID after a declared control fails defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "definition",
+        "layer": "M",
+        "forbidden_assumptions": [
+          "ASM-NONDISCRIMINATING-CONTROL-AS-CAVEAT"
+        ],
+        "strongest_rival": "A control failure is recorded as a caveat, which Spec 026 expressly disallows for a confirmation result.",
+        "verdict_rule": "Control failure maps to INVALID, not to a caveated SUPPORTED or CONTRADICTED verdict.",
+        "evidence_origin_groups": [
+          "spec026-framework"
+        ],
+        "not_yet_testable_is_registration_status": true,
+        "boundary_confirmation": "Boundary is Stage 1 control validity; C16 governs a separate Stage 2 timing-support condition."
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#7.5",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #7.5 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#7.5"
+        },
+        {
+          "ref": "specs/026-rcph-framework-transfer/spec.md#4",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 026 discriminating-controls principle",
+          "source_id": "specs/026-rcph-framework-transfer/spec.md#4",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#7.5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C15",
+      "text": "Q7 verdicts concern craft evidence only.",
+      "kind": "hypothesis",
+      "status": "draft",
+      "boundary": "Q7 site-pair material and technique matrices.",
+      "depends_on": [
+        "F027-C06"
+      ],
+      "assumptions": [
+        "ASM-PROVENANCE-METHOD-RECORDED"
+      ],
+      "alternatives": [
+        "Geography or river distance explains the technique pattern without source-sharing, which is Q7 null."
+      ],
+      "falsification_tests": [
+        "One people or language conclusion in a Q7 report defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "conditional-model-result",
+        "layer": "I",
+        "forbidden_assumptions": [
+          "ASM-OBJECT-AS-PEOPLE",
+          "ASM-TECHNIQUE-AS-LANGUAGE"
+        ],
+        "strongest_rival": "Geography or river distance explains the technique pattern without source-sharing, which is Q7 null.",
+        "verdict_rule": "Verdict applies only to whether source-sharing predicts technique similarity net of frozen geographic controls.",
+        "evidence_origin_groups": [
+          "provenance-sources-to-be-audited"
+        ],
+        "not_yet_testable_is_registration_status": true
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#8.1",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #8.1 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#8.1"
+        },
+        {
+          "ref": "movement-research-report-20261011#8-Q7",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "secondary",
+          "description": "Movement report Q7 formulation and no-people-claim rule",
+          "source_id": "movement-research-report-20261011#8-Q7",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#8.1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C16",
+      "text": "Q6 requires the Stage 0 timing-support condition before it can freeze.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": "Q6 timing estimand and Stage 0 chronology support assessment.",
+      "depends_on": [
+        "F027-C09"
+      ],
+      "assumptions": [
+        "ASM-MARGINS-BEFORE-OUTCOMES"
+      ],
+      "alternatives": [
+        "Broad period labels are available, but they do not satisfy the timing-support condition."
+      ],
+      "falsification_tests": [
+        "A Q6 freeze proceeding without the section 8.2 support evidence defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "conditional-model-result",
+        "layer": "M",
+        "forbidden_assumptions": [
+          "ASM-PERIOD-LABEL-AS-TIMING"
+        ],
+        "strongest_rival": "Broad period labels are available, but they do not satisfy the timing-support condition.",
+        "verdict_rule": "If support conditions fail, Q6 remains NOT-YET-TESTABLE as a registration status.",
+        "evidence_origin_groups": [
+          "xronos-underlying-databases"
+        ],
+        "not_yet_testable_is_registration_status": true
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#8.2",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #8.2 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#8.2"
+        },
+        {
+          "ref": "movement-research-report-20261011#8-Q6",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "secondary",
+          "description": "Movement report Q6 timing formulation",
+          "source_id": "movement-research-report-20261011#8-Q6",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#8.2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C17",
+      "text": "Relevant individual-level mobility coverage for Q1 is limited to at most three sites in the registered design input.",
+      "kind": "observation",
+      "status": "draft",
+      "boundary": "Q1 mobility arm only; the separate exchange arm is not relabelled as mobility evidence.",
+      "depends_on": [
+        "F027-C11"
+      ],
+      "assumptions": [
+        "ASM-REPORT-COVERAGE-PRESERVED"
+      ],
+      "alternatives": [
+        "A newly traced lawful mobility dataset covering the frozen minimum independent inscription-bearing sites could unblock Q1 through a new freeze."
+      ],
+      "falsification_tests": [
+        "Executing the Q1 mobility arm on the currently registered coverage, or upgrading its site association to individual carriage, defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "data-observation",
+        "layer": "I",
+        "forbidden_assumptions": [
+          "ASM-COVERAGE-EXPANDED-WITHOUT-DATA"
+        ],
+        "strongest_rival": "A newly traced lawful mobility dataset covering the frozen minimum independent inscription-bearing sites could unblock Q1 through a new freeze.",
+        "verdict_rule": "Registration status remains NOT-YET-TESTABLE until the section 9 data condition is evidenced.",
+        "evidence_origin_groups": [
+          "isotope-adna-published-sources"
+        ],
+        "not_yet_testable_is_registration_status": true,
+        "boundary_confirmation": "Boundary is registered coverage; C17B governs interpretation of any site-level join. The propositions are distinct and both are preserved."
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#9",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #9 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#9"
+        },
+        {
+          "ref": "movement-research-report-20261011#8-Q1",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "secondary",
+          "description": "Movement report Q1 variables, coverage limit, and ecological-fallacy block",
+          "source_id": "movement-research-report-20261011#8-Q1",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#9"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C17B",
+      "text": "Q1 site-level joins are ecological only.",
+      "kind": "observation",
+      "status": "draft",
+      "boundary": "Q1 mobility arm only; the separate exchange arm is not relabelled as mobility evidence.",
+      "depends_on": [
+        "F027-C17",
+        "F027-C11"
+      ],
+      "assumptions": [
+        "ASM-REPORT-COVERAGE-PRESERVED"
+      ],
+      "alternatives": [
+        "A newly traced lawful mobility dataset covering the frozen minimum independent inscription-bearing sites could unblock Q1 through a new freeze."
+      ],
+      "falsification_tests": [
+        "One individual-carriage interpretation of a Q1 site join defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "data-observation",
+        "layer": "I",
+        "forbidden_assumptions": [
+          "ASM-ECOLOGICAL-JOIN-AS-INDIVIDUAL-EVIDENCE"
+        ],
+        "strongest_rival": "A newly traced lawful mobility dataset covering the frozen minimum independent inscription-bearing sites could unblock Q1 through a new freeze.",
+        "verdict_rule": "Registration status remains NOT-YET-TESTABLE until the section 9 data condition is evidenced.",
+        "evidence_origin_groups": [
+          "isotope-adna-published-sources"
+        ],
+        "not_yet_testable_is_registration_status": true,
+        "boundary_confirmation": "Boundary is interpretation of a site-level join; C17 governs the registered coverage fact. The propositions are distinct and both are preserved."
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#9",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #9 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#9"
+        },
+        {
+          "ref": "movement-research-report-20261011#8-Q1",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "secondary",
+          "description": "Movement report Q1 variables, coverage limit, and ecological-fallacy block",
+          "source_id": "movement-research-report-20261011#8-Q1",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#9"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C18",
+      "text": "Q3 lacks its required paired primary-data instrument.",
+      "kind": "observation",
+      "status": "draft",
+      "boundary": "Q3 Cemetery H and early PGW transition question.",
+      "depends_on": [],
+      "assumptions": [
+        "ASM-PRIMARY-DATA-ABSENT"
+      ],
+      "alternatives": [
+        "Material or burial change alone could be proposed, but it is a different and weaker claim that cannot inherit Q3."
+      ],
+      "falsification_tests": [
+        "Executing Q3 without the paired primary data and baselines named in section 9 defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "data-observation",
+        "layer": "I",
+        "forbidden_assumptions": [
+          "ASM-BURIAL-RITE-AS-PEOPLE"
+        ],
+        "strongest_rival": "Material or burial change alone could be proposed, but it is a different and weaker claim that cannot inherit Q3.",
+        "verdict_rule": "Registration status remains NOT-YET-TESTABLE until new primary paired data meet a future frozen rule.",
+        "evidence_origin_groups": [
+          "future-primary-isotope-adna"
+        ],
+        "not_yet_testable_is_registration_status": true
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#9",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #9 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#9"
+        },
+        {
+          "ref": "movement-research-report-20261011#8-Q3",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "secondary",
+          "description": "Movement report Q3 required evidence and preservation block",
+          "source_id": "movement-research-report-20261011#8-Q3",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#9"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C19",
+      "text": "Any Q4 fallback has a weaker verdict ceiling than the full linked design.",
+      "kind": "decision",
+      "status": "draft",
+      "boundary": "Q4 Late Harappan eastward-shift question.",
+      "depends_on": [
+        "F027-C09"
+      ],
+      "assumptions": [
+        "ASM-FALLBACK-CEILING-DECLARED"
+      ],
+      "alternatives": [
+        "The full linked archaeobotanical, direct-date, settlement, and human-isotope dataset could support the original design if assembled."
+      ],
+      "falsification_tests": [
+        "A fallback result claiming population movement by itself defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "conditional-model-result",
+        "layer": "M",
+        "forbidden_assumptions": [
+          "ASM-FALLBACK-AS-FULL-DESIGN"
+        ],
+        "strongest_rival": "The full linked archaeobotanical, direct-date, settlement, and human-isotope dataset could support the original design if assembled.",
+        "verdict_rule": "Fallback verdicts are limited to the bounded settlement or subsistence pattern named in its own freeze.",
+        "evidence_origin_groups": [
+          "archaeobotany-settlement-sources"
+        ],
+        "not_yet_testable_is_registration_status": true
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#9",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #9 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#9"
+        },
+        {
+          "ref": "movement-research-report-20261011#8-Q4",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "secondary",
+          "description": "Movement report Q4 variables, fallback, and weaker ceiling",
+          "source_id": "movement-research-report-20261011#8-Q4",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#9"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C20",
+      "text": "Q5 requires replicated primary Mehrgarh chronology before it can be tested by this program.",
+      "kind": "observation",
+      "status": "draft",
+      "boundary": "Q5 Mehrgarh demic-versus-diffusion question.",
+      "depends_on": [
+        "F027-C10"
+      ],
+      "assumptions": [
+        "ASM-PRIMARY-DATA-ABSENT"
+      ],
+      "alternatives": [
+        "A west-to-east first-appearance gradient alone could be proposed, but without the primary replication it does not satisfy Q5 as registered."
+      ],
+      "falsification_tests": [
+        "Executing Q5 from the unreplicated revision or secondary summaries defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "data-observation",
+        "layer": "I",
+        "forbidden_assumptions": [
+          "ASM-MUTIN-ADOPTED"
+        ],
+        "strongest_rival": "A west-to-east first-appearance gradient alone could be proposed, but without the primary replication it does not satisfy Q5 as registered.",
+        "verdict_rule": "Registration status remains NOT-YET-TESTABLE until independent sealed-context replication or refutation is available.",
+        "evidence_origin_groups": [
+          "mehrgarh-primary-chronology"
+        ],
+        "not_yet_testable_is_registration_status": true
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#9",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #9 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#9"
+        },
+        {
+          "ref": "movement-research-report-20261011#8-Q5",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "secondary",
+          "description": "Movement report Q5 replication requirement",
+          "source_id": "movement-research-report-20261011#8-Q5",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#9"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C21",
+      "text": "Q8 requires two qualified human etymologists under blind independent coding.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": "Q8 substrate-stratigraphy design.",
+      "depends_on": [],
+      "assumptions": [
+        "ASM-HUMAN-PANEL-ABSENT"
+      ],
+      "alternatives": [
+        "Two outputs from one AI model family could be compared operationally, but they do not satisfy the human independent-judgement instrument."
+      ],
+      "falsification_tests": [
+        "One Q8 execution without the named human panel defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "definition",
+        "layer": "M",
+        "forbidden_assumptions": [
+          "ASM-AI-CODER-SUBSTITUTE",
+          "ASM-CORRELATED-CODERS-AS-INDEPENDENT"
+        ],
+        "strongest_rival": "Two outputs from one AI model family could be compared operationally, but they do not satisfy the human independent-judgement instrument.",
+        "verdict_rule": "Registration status remains NOT-YET-TESTABLE until the named human panel and frozen agreement rule exist.",
+        "evidence_origin_groups": [
+          "linguistic-expert-panel"
+        ],
+        "not_yet_testable_is_registration_status": true,
+        "boundary_confirmation": "Boundary is the required human instrument; C21B governs the separate prohibition on AI substitution."
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#9",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #9 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#9"
+        },
+        {
+          "ref": "specs/026-rcph-framework-transfer/spec.md#4",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 026 origin-group rule: correlated generated assertions do not become independent evidence",
+          "source_id": "specs/026-rcph-framework-transfer/spec.md#4",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#9"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C21B",
+      "text": "AI coding lacks standing as a Q8 panel substitute.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": "Q8 substrate-stratigraphy design.",
+      "depends_on": [
+        "F027-C21"
+      ],
+      "assumptions": [
+        "ASM-HUMAN-PANEL-ABSENT"
+      ],
+      "alternatives": [
+        "Two outputs from one AI model family could be compared operationally, but they do not satisfy the human independent-judgement instrument."
+      ],
+      "falsification_tests": [
+        "Executing Q8 with AI coders, one coder, or non-blind coding defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "definition",
+        "layer": "M",
+        "forbidden_assumptions": [
+          "ASM-AI-CODER-SUBSTITUTE",
+          "ASM-CORRELATED-CODERS-AS-INDEPENDENT"
+        ],
+        "strongest_rival": "Two outputs from one AI model family could be compared operationally, but they do not satisfy the human independent-judgement instrument.",
+        "verdict_rule": "Registration status remains NOT-YET-TESTABLE until the named human panel and frozen agreement rule exist.",
+        "evidence_origin_groups": [
+          "linguistic-expert-panel"
+        ],
+        "not_yet_testable_is_registration_status": true,
+        "boundary_confirmation": "Boundary is the prohibition on AI substitution; C21 governs the required human instrument."
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#9",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #9 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#9"
+        },
+        {
+          "ref": "specs/026-rcph-framework-transfer/spec.md#4",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 026 origin-group rule: correlated generated assertions do not become independent evidence",
+          "source_id": "specs/026-rcph-framework-transfer/spec.md#4",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#9"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C22",
+      "text": "Q9 may remain NOT-YET-TESTABLE for lack of a discriminating observation.",
+      "kind": "hypothesis",
+      "status": "draft",
+      "boundary": "Q9 Brahui relic-versus-later-arrival question.",
+      "depends_on": [],
+      "assumptions": [
+        "ASM-NO-PREMODERN-BRAHUI-TEXTS-IN-INPUT"
+      ],
+      "alternatives": [
+        "A future pre-registered linguistic observation with materially different expectations under the two models could unblock Q9."
+      ],
+      "falsification_tests": [
+        "Substituting genetics, modern geography, or an unreviewed proxy for the missing discriminator defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "conjecture-bridge",
+        "layer": "Interp.",
+        "forbidden_assumptions": [
+          "ASM-GENETICS-AS-LANGUAGE-DATE",
+          "ASM-MODERN-GEOGRAPHY-PREMISE"
+        ],
+        "strongest_rival": "A future pre-registered linguistic observation with materially different expectations under the two models could unblock Q9.",
+        "verdict_rule": "Registration status remains NOT-YET-TESTABLE unless a future freeze evidences a discriminating observation.",
+        "evidence_origin_groups": [
+          "linguistic-sources"
+        ],
+        "not_yet_testable_is_registration_status": true
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#9",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #9 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#9"
+        },
+        {
+          "ref": "movement-research-report-20261011#8-Q9",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "secondary",
+          "description": "Movement report Q9 discriminator and advance not-yet-testable warning",
+          "source_id": "movement-research-report-20261011#8-Q9",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#9"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C23",
+      "text": "No Spec 027 analysis may use a package deal.",
+      "kind": "compliance",
+      "status": "draft",
+      "boundary": "All Spec 027 claims and analyses.",
+      "depends_on": [],
+      "assumptions": [],
+      "alternatives": [
+        "Separate claims may be reported side by side, but their conjunction cannot be treated as one inherited package."
+      ],
+      "falsification_tests": [
+        "One analysis treating crops, animals, metals, rites, genes, and words as a single migrating package, or using later language geography as a premise, defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "definition",
+        "layer": "Interp.",
+        "forbidden_assumptions": [
+          "ASM-PACKAGE-DEAL"
+        ],
+        "strongest_rival": "Separate claims may be reported side by side, but their conjunction cannot be treated as one inherited package.",
+        "verdict_rule": "Any such analysis is outside the spec and cannot receive a framework verdict.",
+        "evidence_origin_groups": [
+          "governance"
+        ],
+        "not_yet_testable_is_registration_status": true
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#10",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #10 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#10"
+        },
+        {
+          "ref": "movement-research-report-20261011#9",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "secondary",
+          "description": "Movement report must-not-claim rules on package deals and teleology",
+          "source_id": "movement-research-report-20261011#9",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#10"
+          ]
+        },
+        {
+          "ref": "owner-directive-2026-10-10",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "human",
+          "description": "Owner directive requiring the movement study under the Spec 026 framework and its epistemic limits",
+          "source_id": "owner-directive-2026-10-10",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#10"
+          ]
+        },
+        {
+          "ref": "owner-directive-2026-10-10#primary-authority",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "primary",
+          "description": "Owner directive of 2026-10-10 requiring the movement study under the Spec 026 epistemic framework",
+          "source_id": "owner-directive-2026-10-10#primary-authority",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#10"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C23B",
+      "text": "No Spec 027 analysis may use a teleology join.",
+      "kind": "compliance",
+      "status": "draft",
+      "boundary": "All Spec 027 claims and analyses.",
+      "depends_on": [],
+      "assumptions": [],
+      "alternatives": [
+        "Separate claims may be reported side by side, but their conjunction cannot be treated as one inherited package."
+      ],
+      "falsification_tests": [
+        "One analysis treating crops, animals, metals, rites, genes, and words as a single migrating package, or using later language geography as a premise, defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "definition",
+        "layer": "Interp.",
+        "forbidden_assumptions": [
+          "ASM-MODERN-GEOGRAPHY-PREMISE",
+          "ASM-LANGUAGE-SHIFT-EXCLUDED"
+        ],
+        "strongest_rival": "Separate claims may be reported side by side, but their conjunction cannot be treated as one inherited package.",
+        "verdict_rule": "Any such analysis is outside the spec and cannot receive a framework verdict.",
+        "evidence_origin_groups": [
+          "governance"
+        ],
+        "not_yet_testable_is_registration_status": true
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#10",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #10 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#10"
+        },
+        {
+          "ref": "movement-research-report-20261011#9",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "secondary",
+          "description": "Movement report must-not-claim rules on package deals and teleology",
+          "source_id": "movement-research-report-20261011#9",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#10"
+          ]
+        },
+        {
+          "ref": "owner-directive-2026-10-10",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "human",
+          "description": "Owner directive requiring the movement study under the Spec 026 framework and its epistemic limits",
+          "source_id": "owner-directive-2026-10-10",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#10"
+          ]
+        },
+        {
+          "ref": "owner-directive-2026-10-10#primary-authority",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "primary",
+          "description": "Owner directive of 2026-10-10 requiring the movement study under the Spec 026 epistemic framework",
+          "source_id": "owner-directive-2026-10-10#primary-authority",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#10"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C24A",
+      "text": "No Spec 027 analysis may identify a language from genes.",
+      "kind": "compliance",
+      "status": "draft",
+      "boundary": "All Spec 027 claims and analyses.",
+      "depends_on": [
+        "F027-C04"
+      ],
+      "assumptions": [],
+      "alternatives": [
+        "A bounded exchange, ancestry, or later-text claim is permitted when it does not cross the named identification boundary."
+      ],
+      "falsification_tests": [
+        "One occurrence of any named prohibited identification defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "definition",
+        "layer": "Interp.",
+        "forbidden_assumptions": [
+          "ASM-GENE-LANGUAGE"
+        ],
+        "strongest_rival": "A bounded exchange, ancestry, or later-text claim is permitted when it does not cross the named identification boundary.",
+        "verdict_rule": "Any such occurrence is a hard-limit violation and stops the affected analysis.",
+        "evidence_origin_groups": [
+          "governance"
+        ],
+        "not_yet_testable_is_registration_status": true
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#10",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #10 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#10"
+        },
+        {
+          "ref": "movement-research-report-20261011#9",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "secondary",
+          "description": "Movement report must-not-claim rules",
+          "source_id": "movement-research-report-20261011#9",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#10"
+          ]
+        },
+        {
+          "ref": "owner-directive-2026-10-10",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "human",
+          "description": "Owner directive requiring the movement study under the Spec 026 framework and its epistemic limits",
+          "source_id": "owner-directive-2026-10-10",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#10"
+          ]
+        },
+        {
+          "ref": "owner-directive-2026-10-10#primary-authority",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "primary",
+          "description": "Owner directive of 2026-10-10 requiring the movement study under the Spec 026 epistemic framework",
+          "source_id": "owner-directive-2026-10-10#primary-authority",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#10"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C24B",
+      "text": "No Spec 027 analysis may project an ethnic label backward.",
+      "kind": "compliance",
+      "status": "draft",
+      "boundary": "All Spec 027 claims and analyses.",
+      "depends_on": [
+        "F027-C04"
+      ],
+      "assumptions": [],
+      "alternatives": [
+        "A bounded exchange, ancestry, or later-text claim is permitted when it does not cross the named identification boundary."
+      ],
+      "falsification_tests": [
+        "One occurrence of any named prohibited identification defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "definition",
+        "layer": "Interp.",
+        "forbidden_assumptions": [
+          "ASM-ETHNIC-PROJECTION"
+        ],
+        "strongest_rival": "A bounded exchange, ancestry, or later-text claim is permitted when it does not cross the named identification boundary.",
+        "verdict_rule": "Any such occurrence is a hard-limit violation and stops the affected analysis.",
+        "evidence_origin_groups": [
+          "governance"
+        ],
+        "not_yet_testable_is_registration_status": true
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#10",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #10 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#10"
+        },
+        {
+          "ref": "movement-research-report-20261011#9",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "secondary",
+          "description": "Movement report must-not-claim rules",
+          "source_id": "movement-research-report-20261011#9",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#10"
+          ]
+        },
+        {
+          "ref": "owner-directive-2026-10-10",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "human",
+          "description": "Owner directive requiring the movement study under the Spec 026 framework and its epistemic limits",
+          "source_id": "owner-directive-2026-10-10",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#10"
+          ]
+        },
+        {
+          "ref": "owner-directive-2026-10-10#primary-authority",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "primary",
+          "description": "Owner directive of 2026-10-10 requiring the movement study under the Spec 026 epistemic framework",
+          "source_id": "owner-directive-2026-10-10#primary-authority",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#10"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C24C",
+      "text": "No Spec 027 analysis may infer mass migration from an object.",
+      "kind": "compliance",
+      "status": "draft",
+      "boundary": "All Spec 027 claims and analyses.",
+      "depends_on": [
+        "F027-C04"
+      ],
+      "assumptions": [],
+      "alternatives": [
+        "A bounded exchange, ancestry, or later-text claim is permitted when it does not cross the named identification boundary."
+      ],
+      "falsification_tests": [
+        "One occurrence of any named prohibited identification defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "definition",
+        "layer": "Interp.",
+        "forbidden_assumptions": [
+          "ASM-OBJECT-MASS-MIGRATION"
+        ],
+        "strongest_rival": "A bounded exchange, ancestry, or later-text claim is permitted when it does not cross the named identification boundary.",
+        "verdict_rule": "Any such occurrence is a hard-limit violation and stops the affected analysis.",
+        "evidence_origin_groups": [
+          "governance"
+        ],
+        "not_yet_testable_is_registration_status": true
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#10",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #10 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#10"
+        },
+        {
+          "ref": "movement-research-report-20261011#9",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "secondary",
+          "description": "Movement report must-not-claim rules",
+          "source_id": "movement-research-report-20261011#9",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#10"
+          ]
+        },
+        {
+          "ref": "owner-directive-2026-10-10",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "human",
+          "description": "Owner directive requiring the movement study under the Spec 026 framework and its epistemic limits",
+          "source_id": "owner-directive-2026-10-10",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#10"
+          ]
+        },
+        {
+          "ref": "owner-directive-2026-10-10#primary-authority",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "primary",
+          "description": "Owner directive of 2026-10-10 requiring the movement study under the Spec 026 epistemic framework",
+          "source_id": "owner-directive-2026-10-10#primary-authority",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#10"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C24D",
+      "text": "No Spec 027 analysis may treat a later text as a Harappan transcript.",
+      "kind": "compliance",
+      "status": "draft",
+      "boundary": "All Spec 027 claims and analyses.",
+      "depends_on": [
+        "F027-C04"
+      ],
+      "assumptions": [],
+      "alternatives": [
+        "A bounded exchange, ancestry, or later-text claim is permitted when it does not cross the named identification boundary."
+      ],
+      "falsification_tests": [
+        "One occurrence of any named prohibited identification defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "definition",
+        "layer": "Interp.",
+        "forbidden_assumptions": [
+          "ASM-LATER-TEXT-TRANSCRIPT"
+        ],
+        "strongest_rival": "A bounded exchange, ancestry, or later-text claim is permitted when it does not cross the named identification boundary.",
+        "verdict_rule": "Any such occurrence is a hard-limit violation and stops the affected analysis.",
+        "evidence_origin_groups": [
+          "governance"
+        ],
+        "not_yet_testable_is_registration_status": true
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#10",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #10 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#10"
+        },
+        {
+          "ref": "movement-research-report-20261011#9",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "secondary",
+          "description": "Movement report must-not-claim rules",
+          "source_id": "movement-research-report-20261011#9",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#10"
+          ]
+        },
+        {
+          "ref": "owner-directive-2026-10-10",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "human",
+          "description": "Owner directive requiring the movement study under the Spec 026 framework and its epistemic limits",
+          "source_id": "owner-directive-2026-10-10",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#10"
+          ]
+        },
+        {
+          "ref": "owner-directive-2026-10-10#primary-authority",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "primary",
+          "description": "Owner directive of 2026-10-10 requiring the movement study under the Spec 026 epistemic framework",
+          "source_id": "owner-directive-2026-10-10#primary-authority",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#10"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F027-C25",
+      "text": "Every model variant tried under Spec 027 must be reported.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": "All exploratory and confirmatory analyses under Spec 027.",
+      "depends_on": [],
+      "assumptions": [
+        "ASM-ALL-VARIANTS-REPORTED"
+      ],
+      "alternatives": [
+        "A pre-registered single model has no hidden variant set, but any variant actually tried enters the report."
+      ],
+      "falsification_tests": [
+        "One tried but unreported model variant defeats this claim."
+      ],
+      "metadata": {
+        "framework_kind": "definition",
+        "layer": "M",
+        "forbidden_assumptions": [
+          "ASM-SILENT-MODEL-SHOPPING"
+        ],
+        "strongest_rival": "A pre-registered single model has no hidden variant set, but any variant actually tried enters the report.",
+        "verdict_rule": "Silent model-shopping makes the affected analysis ineligible for a framework verdict.",
+        "evidence_origin_groups": [
+          "spec026-framework"
+        ],
+        "not_yet_testable_is_registration_status": true
+      },
+      "evidence": [
+        {
+          "ref": "specs/027-movement-culture-language/spec.md#10",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 027 #10 governing text",
+          "source_id": "specs/027-movement-culture-language/spec.md#10"
+        },
+        {
+          "ref": "specs/026-rcph-framework-transfer/spec.md#4",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Spec 026 exploratory and confirmation separation discipline",
+          "source_id": "specs/026-rcph-framework-transfer/spec.md#4",
+          "independent_of": [
+            "specs/027-movement-culture-language/spec.md#10"
+          ]
+        }
+      ]
+    }
+  ]
+}

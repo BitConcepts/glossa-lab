@@ -1,0 +1,80 @@
+74 CHAPTER 3. POSITIONAL ANALYSIS OF INDUS SIGNS
+SP: absolute sign position
+L: text length
+NL: normalised text length (here N L = 10 signs)
+MINP: minimum of relative (normalised) text position
+MAXP: maximum of relative (normalised) text position
+The result MINP is rounded down and MAXP is rounded up to integer values
+in the range [1,NL]. They represent the minimum and maximum values of the
+relative sign position, which is the normalised sign position of text length N L.
+After normalisation the sign position of a short text might be counted more
+than once (like Sign 002 falling into relative sign positions 9 and 10, see Figure
+3.1). To avoid an overweighing of sign positions coming from short texts each
+sign position is weighted linearly in relation to the text length. This means that
+signs of short texts get a lower weight than signs of longer texts. The weighing
+is calculated as follows:
+W = L/N L (3.3)
+L: text length
+NL: normalised text length
+W: weight
+The formula implies that each sign in a text of NL signs gets a weight of 1,
+whereas longer texts have a higher precision of each sign position and get a higher
+weight. By contrast, shorter texts get a smaller weight, since their sign position
+is less precise. Only complete texts with a text length of at least two signs are
+used for the calculation; texts with only one sign do not convey any positional
+information and are, therefore, left aside.
+3.2.2 Histogram
+The histogram shows the frequency of sign positions for a constant number of
+intervals. Each interval represents a normalised sign position from 1 to NL. In
+the calculations given below the normalised text length N L is assigned to 10.
+To calculate the histogram for each sign, the weight is added to the relative sign
+position(s) between MINP and MAXP. For example, Sign 002 in a text with five
+signs (text length L = 5) has a weight of 0.5 and is counted twice, for relative
+sign positions 9 and 10, respectively. By contrast, Sign 003 in a text of length
+L = 12 has a weight of 1.2 which is added to position 1 (Figure 3.1).
+3.3. CLASSIFICATION OF INDUS SIGNS 75
+Examples depicted in Tables 3.2 and 3.3 will illustrate the method step-by-
+step. To calculate the histograms of Signs 351 and 720, respectively, all complete,
+single-line texts in which the sign occurs are used.
+Table 3.2: Process of calculating the normalised weighted sign position histogram
+of Sign 351 occurring altogether in two texts. The histogram has a normalised
+text length of N L = 10. Once all calculations are over, all weights W are added
+to the normalised positions (NP) depending on M IN P and M AXP of each text.
+T ext and calculation of NP Histogram
+Text lenth L = 7, sign position SP = 4
+Relative sign position from
+M IN P = IN T( (4−1)×10
+7 + 1) = 5
+to M AXP = CEIL ( 4×10
+7 ) = 6
+with weight W = 7
+10 = 0.7
+Text lenth L = 3, sign position SP = 1.
+Relative sign position from
+M IN P = IN T( (1−1)×10
+3 + 1) = 1
+to M AXP = CEIL ( 1×10
+3 ) = 4.
+with weight W = 3
+10 = 0.3
+Adding weight W for each normalised position:
+NP 1: 0 .3 NP 6: 0 .7
+NP 2: 0 .3 NP 7: 0 .0
+NP 3: 0 .3 NP 8: 0 .0
+NP 4: 0 .3 NP 9: 0 .0
+NP 5: 0 .7 NP 10: 0 .0
+Some signs are very frequent and therefore have high values in the histogram.
+For illustration purposes, the bar of the maximum value in the histogram is set for
+all histograms to the same height. This makes it easier to compare the histograms
+of rare and frequent signs.
+3.3 Classification of Indus signs
+Indus signs can be classified by their positional behaviour in complete texts. If a
+sign mostly occurs at the beginning of the text (at the right end of a sign sequence
+that should be read from right to left) it is labelled as an initial sign (INS), and
+if it preferably appears at the end of the text (at the left end of a sign sequence),
+it is a terminal sign (also called a terminal marker, TMK). Some examples will
+illustrate typical sign sequences with initial and terminal signs (Figure 3.2).
+96 CHAPTER 3. POSITIONAL ANALYSIS OF INDUS SIGNS
+Figure 3.26: Positional histogram of signs in the text +740-540-002-820+ (Seal
+M-1088, see Figure 3.25). This is a typical example of a short patterned text
+with initial cluster 002-820 and terminal Sign 740.

@@ -1,0 +1,112 @@
+{
+ "phase": "Phase-386",
+ "spec": "026",
+ "reruns": "Phases 116/125/127/131 \u2014 deterministic replay audit",
+ "contract": "specs/026-rcph-framework-transfer/reruns/phase386-contract.md",
+ "replayed_root": "/tmp/glossa-replay386",
+ "items": [
+  {
+   "item": "PHASE-116",
+   "outcome": "REPRODUCED",
+   "checks": [
+    {
+     "quantity": "arms/definition/median_w1",
+     "committed": 0.451927,
+     "replayed": 0.451927,
+     "within_tolerance": true
+    },
+    {
+     "quantity": "arms/definition/spearman_mean_r",
+     "committed": -0.0826,
+     "replayed": -0.0826,
+     "within_tolerance": true
+    }
+   ]
+  },
+  {
+   "item": "PHASE-125",
+   "outcome": "REPRODUCED",
+   "checks": [
+    {
+     "quantity": "arms/primary/stats/median_tv",
+     "committed": 0.636931,
+     "replayed": 0.636931,
+     "within_tolerance": true
+    },
+    {
+     "quantity": "arms/primary/stats/n_judgeable",
+     "committed": 16,
+     "replayed": 16,
+     "within_tolerance": true
+    },
+    {
+     "quantity": "arms/primary/stats/null/n_null_median_le_observed",
+     "committed": 823,
+     "replayed": 823,
+     "within_tolerance": true
+    }
+   ]
+  },
+  {
+   "item": "PHASE-127",
+   "outcome": "REPRODUCED",
+   "checks": [
+    {
+     "quantity": "phase125_verdict_of_record/median_tv",
+     "committed": 0.636931,
+     "replayed": 0.636931,
+     "within_tolerance": true
+    },
+    {
+     "quantity": "arms/b_matched_size/median_tv_distribution/ci95_lo",
+     "committed": 0.046665,
+     "replayed": 0.046665,
+     "within_tolerance": true
+    },
+    {
+     "quantity": "arms/b_matched_size/median_tv_distribution/ci95_hi",
+     "committed": 0.131316,
+     "replayed": 0.131316,
+     "within_tolerance": true
+    },
+    {
+     "quantity": "arms/b_matched_size/median_tv_distribution/share_replicates_ge_observed",
+     "committed": 0.0,
+     "replayed": 0.0,
+     "within_tolerance": true
+    },
+    {
+     "quantity": "arms/c_bootstrap/median_tv/ci95_lo",
+     "committed": 0.548638,
+     "replayed": 0.548638,
+     "within_tolerance": true
+    },
+    {
+     "quantity": "arms/c_bootstrap/median_tv/ci95_hi",
+     "committed": 0.722042,
+     "replayed": 0.722042,
+     "within_tolerance": true
+    }
+   ]
+  },
+  {
+   "item": "PHASE-131",
+   "outcome": "REPRODUCED",
+   "checks": [
+    {
+     "quantity": "arms/d_synthesis/sum_credited_shares",
+     "committed": 0.061321,
+     "replayed": 0.061321,
+     "within_tolerance": true
+    },
+    {
+     "quantity": "arms/d_synthesis/residual_unexplained_share",
+     "committed": 0.938679,
+     "replayed": 0.938679,
+     "within_tolerance": true
+    }
+   ]
+  }
+ ],
+ "ai_disclosure": "Executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution sec.VI."
+}

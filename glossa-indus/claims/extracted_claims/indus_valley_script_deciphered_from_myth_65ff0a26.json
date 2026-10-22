@@ -1,7 +1,7 @@
 {
   "document_id": "indus_valley_script_deciphered_from_myth_65ff0a26",
   "title": "",
-  "extraction_date": "2026-10-06T10:42:42.131685",
+  "extraction_date": "2026-10-21T15:29:25.385051",
   "total_claims": 6,
   "auto_extracted": 6,
   "manually_curated": 4,
@@ -12,10 +12,106 @@
       "claim_type": "critique_claim",
       "normalized_claim": "Critique: myth of a \nliterate Harappan",
       "quote_fragment": "myth of a \nliterate Harappan",
-      "claim_status": "untested",
+      "claim_status": "contradicted",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-10-06T10:42:42.125415"
+      "extracted_at": "2026-10-21T15:29:25.318121",
+      "stage": "checked",
+      "stage_source": "transition-service:stage_history[1]",
+      "stage_as_of": "2026-10-13T10:18:18.548312+00:00",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "created",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001; no pre-existing field altered."
+        },
+        {
+          "from_stage": "created",
+          "to_stage": "checked",
+          "actor": "spec029-phase104-carryover-migration",
+          "timestamp": "2026-10-13T10:18:18.548312+00:00",
+          "evidence_refs": [
+            "glossa-indus/reports/phase104_claims_evaluation.json:indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001",
+            "glossa-indus/claims/extracted_claims/farmer_sproat_witzel_2004.json:farmer_sproat_witzel_2004_manual_001"
+          ],
+          "reason": "Phase-104 carry-over correction (2026-10-13): the Phase-104 evaluation of untested claims found this record restates the Farmer, Sproat and Witzel thesis already judged contradicted on farmer_sproat_witzel_2004_manual_001, and recorded that the verdict carries over (rule RULE-DUP) — but the carry-over was never written into this record, which still showed untested at the created stage. This entry writes it: the claim status now reads contradicted, with the evaluation's evidence, and the stage moves to checked. The earlier stage entry in this history is unchanged."
+        }
+      ],
+      "verified_unexplained": false,
+      "proposition_fingerprint": "defa7480501b2b457f4c0316d28d0801e91496b385ba99f5d62b90ae7bc74630",
+      "evidence_instances": [
+        {
+          "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0003",
+          "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+          "source_file": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+          "record": {
+            "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0003",
+            "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+            "claim_type": "critique_claim",
+            "normalized_claim": "Critique: Myth of a Literate Harappan",
+            "quote_fragment": "Myth of a Literate Harappan",
+            "claim_status": "untested",
+            "testability": "directly_testable",
+            "confidence_in_source": 0.8,
+            "extracted_at": "2026-10-11T13:32:36.428425",
+            "stage": "created",
+            "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0003",
+            "stage_as_of": "2026-10-12",
+            "stage_history": [
+              {
+                "from_stage": null,
+                "to_stage": "created",
+                "actor": "spec029-phase-d-restaging-migration",
+                "timestamp": "2026-10-12",
+                "evidence_refs": [
+                  "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0003"
+                ],
+                "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0003; no pre-existing field altered."
+              }
+            ],
+            "verified_unexplained": false,
+            "proposition_fingerprint": "defa7480501b2b457f4c0316d28d0801e91496b385ba99f5d62b90ae7bc74630",
+            "merged_into": "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001"
+          }
+        }
+      ],
+      "not_understood": "Two things remain not understood. First, the bookkeeping: whether this fragment should inherit the contradicted verdict, stand as its own untested record, or be retired as an extraction artefact is an undecided question in the record - Phase-104 argued one way and the live record shows no decision applied. Second, the substance is the same open ground as the parent claim: the checks argue against the strong non-linguistic thesis without establishing what the signs do encode. What would change the picture: a dated, appended disposition of this record (carry-over applied or refused, with the reason), so the record stops saying two things at once.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001",
+        "content_hash": "6048bb43d7fe44c08f3007cfa9151f54fbc1ec373d4fc9f7cf5265becd7ea40b",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "The record itself is a fragment - a section heading lifted by automatic extraction - but the position it points at is a real, identifiable claim: the Farmer, Sproat and Witzel thesis that the signs do not encode language. The program's Phase-104 evaluation read this fragment as restating that thesis and concluded that the thesis's recorded verdict (contradicted, on the companion record farmer_sproat_witzel_2004_manual_001) should carry over to it. That carry-over was never written into this record: the live record still stands untested, at the created stage. Both facts belong in the open - an evaluation argued the claim is already answered, and the record was never updated to say so. Under this program's rules the gap is closed by an appended, dated correction, never by quietly editing the status."
+      },
+      "contradicting_evidence": [
+        "Rao et al. 2009: conditional entropy falls in linguistic range",
+        "Phase-43: 20 TERMINAL_STRONG signs consistent with morphological suffixes",
+        "Phase-43: [M77/267][M77/99] = fixed title formula at inscription start",
+        "Cross-reference: farmer_sproat_witzel_2004_manual_001 (farmer_sproat_witzel_2004)"
+      ],
+      "status_correction": {
+        "kind": "phase104-carryover-correction",
+        "date": "2026-10-13",
+        "previous_claim_status": "untested",
+        "new_claim_status": "contradicted",
+        "basis": "glossa-indus/reports/phase104_claims_evaluation.json:indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001",
+        "rule": "RULE-DUP",
+        "note": "The Phase-104 evaluation judged this record a restatement of farmer_sproat_witzel_2004_manual_001 (contradicted) and recorded that the verdict carries over; the carry-over was never written into the live record. Applied 2026-10-13 on the owner's order. The previous status is preserved in this field, and the record's earlier history is unchanged."
+      },
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "roif-credit-note",
+        "proposal": "P3-extended (Roif credit addendum to the spec-025 audit fix commission)",
+        "note": "Credit note (2026-10-22): this claim is Avishai Roif's claim, from his published work - Roif 2025a, 'Deciphering the Indus Valley Script: A Phonetic-Mnemonic Akkadian Shorthand Approach' (Academia.edu, 12 June 2025, https://www.academia.edu/129921039) and Roif 2025b, 'Indus Valley Script deciphered - From Mythology to History using the Akkadian shorthand approach' (Academia.edu, 2 August 2025, https://www.academia.edu/143222807). He is the claims' author, not merely a cited source. The program's tests of his claims are the program's own work and its statistics are not his."
+      }
     },
     {
       "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002",
@@ -23,10 +119,106 @@
       "claim_type": "critique_claim",
       "normalized_claim": "Critique: collapse of the Indus script thesis",
       "quote_fragment": "collapse of the Indus script thesis",
-      "claim_status": "untested",
+      "claim_status": "contradicted",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-10-06T10:42:42.125969"
+      "extracted_at": "2026-10-21T15:29:25.325646",
+      "stage": "checked",
+      "stage_source": "transition-service:stage_history[1]",
+      "stage_as_of": "2026-10-13T10:18:18.548312+00:00",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "created",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002; no pre-existing field altered."
+        },
+        {
+          "from_stage": "created",
+          "to_stage": "checked",
+          "actor": "spec029-phase104-carryover-migration",
+          "timestamp": "2026-10-13T10:18:18.548312+00:00",
+          "evidence_refs": [
+            "glossa-indus/reports/phase104_claims_evaluation.json:indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002",
+            "glossa-indus/claims/extracted_claims/farmer_sproat_witzel_2004.json:farmer_sproat_witzel_2004_manual_001"
+          ],
+          "reason": "Phase-104 carry-over correction (2026-10-13): the Phase-104 evaluation of untested claims found this record restates the Farmer, Sproat and Witzel thesis already judged contradicted on farmer_sproat_witzel_2004_manual_001, and recorded that the verdict carries over (rule RULE-DUP) — but the carry-over was never written into this record, which still showed untested at the created stage. This entry writes it: the claim status now reads contradicted, with the evaluation's evidence, and the stage moves to checked. The earlier stage entry in this history is unchanged."
+        }
+      ],
+      "verified_unexplained": false,
+      "proposition_fingerprint": "d7e4efd6b7748029e58d6480d5d227e7556e648007cc0e6cd43d2f5ad96b33e6",
+      "evidence_instances": [
+        {
+          "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0004",
+          "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+          "source_file": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+          "record": {
+            "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0004",
+            "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+            "claim_type": "critique_claim",
+            "normalized_claim": "Critique: Collapse of the \nIndus-Script Thesis",
+            "quote_fragment": "Collapse of the \nIndus-Script Thesis",
+            "claim_status": "untested",
+            "testability": "directly_testable",
+            "confidence_in_source": 0.8,
+            "extracted_at": "2026-10-11T13:32:36.428892",
+            "stage": "created",
+            "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0004",
+            "stage_as_of": "2026-10-12",
+            "stage_history": [
+              {
+                "from_stage": null,
+                "to_stage": "created",
+                "actor": "spec029-phase-d-restaging-migration",
+                "timestamp": "2026-10-12",
+                "evidence_refs": [
+                  "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0004"
+                ],
+                "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0004; no pre-existing field altered."
+              }
+            ],
+            "verified_unexplained": false,
+            "proposition_fingerprint": "d7e4efd6b7748029e58d6480d5d227e7556e648007cc0e6cd43d2f5ad96b33e6",
+            "merged_into": "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002"
+          }
+        }
+      ],
+      "not_understood": "Same open bookkeeping as its sibling: Phase-104's carry-over argument was never applied to the live record, so this fragment simultaneously is (by the evaluation) a restatement of a contradicted claim and is (by the live record) untested. The substantive not-understood is also the parent claim's: refuting 'not writing at all' does not say what the signs are. What would change the picture: the same appended, dated disposition as for the sibling fragment - the two should be decided together, since they rest on the same argument.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002",
+        "content_hash": "6048bb43d7fe44c08f3007cfa9151f54fbc1ec373d4fc9f7cf5265becd7ea40b",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "The record itself is a fragment - a section heading lifted by automatic extraction - but the position it points at is a real, identifiable claim: the Farmer, Sproat and Witzel thesis that the signs do not encode language. The program's Phase-104 evaluation read this fragment as restating that thesis and concluded that the thesis's recorded verdict (contradicted, on the companion record farmer_sproat_witzel_2004_manual_001) should carry over to it. That carry-over was never written into this record: the live record still stands untested, at the created stage. Both facts belong in the open - an evaluation argued the claim is already answered, and the record was never updated to say so. Under this program's rules the gap is closed by an appended, dated correction, never by quietly editing the status."
+      },
+      "contradicting_evidence": [
+        "Rao et al. 2009: conditional entropy falls in linguistic range",
+        "Phase-43: 20 TERMINAL_STRONG signs consistent with morphological suffixes",
+        "Phase-43: [M77/267][M77/99] = fixed title formula at inscription start",
+        "Cross-reference: farmer_sproat_witzel_2004_manual_001 (farmer_sproat_witzel_2004)"
+      ],
+      "status_correction": {
+        "kind": "phase104-carryover-correction",
+        "date": "2026-10-13",
+        "previous_claim_status": "untested",
+        "new_claim_status": "contradicted",
+        "basis": "glossa-indus/reports/phase104_claims_evaluation.json:indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002",
+        "rule": "RULE-DUP",
+        "note": "The Phase-104 evaluation judged this record a restatement of farmer_sproat_witzel_2004_manual_001 (contradicted) and recorded that the verdict carries over; the carry-over was never written into the live record. Applied 2026-10-13 on the owner's order. The previous status is preserved in this field, and the record's earlier history is unchanged."
+      },
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "roif-credit-note",
+        "proposal": "P3-extended (Roif credit addendum to the spec-025 audit fix commission)",
+        "note": "Credit note (2026-10-22): this claim is Avishai Roif's claim, from his published work - Roif 2025a, 'Deciphering the Indus Valley Script: A Phonetic-Mnemonic Akkadian Shorthand Approach' (Academia.edu, 12 June 2025, https://www.academia.edu/129921039) and Roif 2025b, 'Indus Valley Script deciphered - From Mythology to History using the Akkadian shorthand approach' (Academia.edu, 2 August 2025, https://www.academia.edu/143222807). He is the claims' author, not merely a cited source. The program's tests of his claims are the program's own work and its statistics are not his."
+      }
     },
     {
       "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_001",
@@ -38,7 +230,55 @@
       "falsification_condition": "If sign distributions are not correlated with trade/economic contexts at excavation sites.",
       "author": "Roif, Avishai",
       "confidence_in_source": 0.5,
-      "extracted_at": "2026-10-06T10:42:42.131666"
+      "extracted_at": "2026-10-21T15:29:25.366987",
+      "stage": "created",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_manual_001",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "created",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_manual_001"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry indus_valley_script_deciphered_from_myth_65ff0a26_manual_001; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false,
+      "proposition_fingerprint": "82036d29db44e4065e0fe0802843472b1e0abb139556584271b6bb29adcf9cc2",
+      "not_understood": "Everything about this claim is not understood, in the plain sense that nothing about it has been tested. The specific missing piece is named data: a classification of excavation sites by function that scholars would accept. Without it, the distribution test the claim itself proposes cannot run. The Akkadian-influence part additionally needs contact evidence this program does not hold. A favourable distribution, if it were ever shown, would still not establish the ledger reading of any single inscription.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#indus_valley_script_deciphered_from_myth_65ff0a26_manual_001",
+        "content_hash": "5805c3bb85adc6c7c3c6b32b26a2c432798b0a3f61b816ed70bc946b27dca968",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "No check has ever run on this claim. What exists on the record is the source document's own assertion, plus an automatic score computed over the record's text. The program's own evaluation note is explicit that such scores are consistency signals only and no verdict rests on them. The claim therefore stands at the first stage, created: it has been written down, and nothing more has happened to it. This claim does carry a well-formed test: it predicts the signs should cluster at sites tied to administration, trade and guild authority, and it fails if they cluster mostly at domestic or purely ritual sites instead. The program's Phase-104 evaluation found the test cannot be run with the data in the repository: the corpus carries site names but no classification of sites by type (gateway, border, administrative, domestic), and no such dataset exists in the repo. The thesis is also a bundle of several claims at once - ledger function, guild authority, Akkadian influence - and no one part of it has been separated out and tested on its own."
+      },
+      "spec047_step2": {
+        "spec": "047",
+        "phase": "Phase-406",
+        "date": "2026-10-21",
+        "actor": "spec047-phase406-step2-execution",
+        "kind": "step-2 outcome (classification gate)",
+        "outcome": "INCONCLUSIVE (classification gate, spec section 6.3)",
+        "wording": "The distribution test did not run: 2 of the gazetteer's 30 sites survived the two-source agreement rule as testable (floor 12), and one side of the comparison is empty in the test population (the pooled ADMIN-TRADE-GATEWAY side carries both testable sites; the domestic/ritual contrast side carries none). The finding of this execution is the classification itself (Asset B, digest a1a9e48422ab7ab2ef1d340c5ca0eb81a315253b196fdc199d77d2e5739c9f85): AGREED 3 (of which 1, shahr i sokhta, agreed at mixed/unknown and excluded by section 4.2), DISAGREED 1, SINGLE-SOURCE 10, NO-SOURCE 16, with the disagreed and unclassifiable sites named in full. No distribution quantity was computed. The claim stands UNTESTED for its distribution component, now with the reason measured rather than asserted.",
+        "record": "specs/047-roif-ledger-distribution/outcome.md",
+        "results": "reports/phase406_step2_results.json",
+        "results_sha256": "7d0a303fab455c9f0045793dcece275d2e67c7495b98be496a6cc7a073908483",
+        "asset_b_sha256": "a1a9e48422ab7ab2ef1d340c5ca0eb81a315253b196fdc199d77d2e5739c9f85",
+        "note": "Step-2 entry appended by the Spec 047 execution (Phase-406 step 2, 2026-10-21), under the frozen Spec 047 contract (freeze digest 8501feabb7beee621e99ae48529e5a74c0788fb0619ac49c615912e13914cdc7; OSF registration b2a8w approved and public). Step 0 was re-run and passed in full (input integrity against the freeze pins; spine reproduction, 36 rows over 30 clusters; the join census accounting for all 5,679 primary-layer records exactly once, identical to the step-1 census), and Asset B was re-asserted at its step-1 digest (30 rows; AGREED 3, DISAGREED 1, SINGLE-SOURCE 10, NO-SOURCE 16; testable 2 — harappa, administrative, and lothal, port/trade). The section 6.3 classification gate fired on both of its clauses: 2 testable sites is below the frozen floor of 12, and the domestic/ritual contrast side is empty in the test population (both testable sites are in the pooled ADMIN-TRADE-GATEWAY class). The distribution test did not run, no distribution quantity was computed, and the outcome is INCONCLUSIVE with the classification itself as the finding. This entry appends a dated, component-scoped outcome beside the claim's Phase-104 record; it does not alter the claim's original record, and the claim's status and stage are unchanged — the claim stands UNTESTED for its distribution component, now with the reason measured rather than asserted. The guild-authority and Akkadian-influence components were not tested. Held under the Roif gate (spec section 10)."
+      },
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "roif-credit-note",
+        "proposal": "P3-extended (Roif credit addendum to the spec-025 audit fix commission)",
+        "note": "Credit note (2026-10-22): this claim is Avishai Roif's claim, from his published work - Roif 2025a, 'Deciphering the Indus Valley Script: A Phonetic-Mnemonic Akkadian Shorthand Approach' (Academia.edu, 12 June 2025, https://www.academia.edu/129921039) and Roif 2025b, 'Indus Valley Script deciphered - From Mythology to History using the Akkadian shorthand approach' (Academia.edu, 2 August 2025, https://www.academia.edu/143222807). He is the claims' author, not merely a cited source. The program's tests of his claims are the program's own work and its statistics are not his."
+      }
     },
     {
       "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_002",
@@ -54,7 +294,51 @@
       "falsification_condition": "Fish sign should cluster at coastal/maritime sites (Lothal, Dholavira). Phase-4x CISI data shows fish NOT coastal-enriched.",
       "glossa_lab_evidence": "Phase-4x CISI analysis: fish sign not statistically enriched at coastal sites [PARTIALLY FALSIFIED]",
       "confidence_in_source": 0.45,
-      "extracted_at": "2026-10-06T10:42:42.131666"
+      "extracted_at": "2026-10-21T15:29:25.366987",
+      "stage": "explained",
+      "stage_source": "transition-service:stage_history[1]",
+      "stage_as_of": "2026-10-13T10:12:00+00:00",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "checked",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_manual_002"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry indus_valley_script_deciphered_from_myth_65ff0a26_manual_002; no pre-existing field altered."
+        },
+        {
+          "from_stage": "checked",
+          "to_stage": "explained",
+          "actor": "Tristen Pierson",
+          "timestamp": "2026-10-13T10:12:00+00:00",
+          "evidence_refs": [
+            "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#indus_valley_script_deciphered_from_myth_65ff0a26_manual_002"
+          ],
+          "reason": "Lane-2 adoption (owner act, 2026-10-13): the explanation record authored by Tristen Pierson — adopted from the AI-drafted texts of PR #190, drafting disclosed in the record — is ingested; the stage advances checked -> explained through the transition service (OD-2)."
+        }
+      ],
+      "verified_unexplained": false,
+      "proposition_fingerprint": "fa62cc55561919110528089c9565a1ef6d5d602fa6cedf29026fa726c3ccd6d8",
+      "not_understood": "What the fish signs actually marked remains unknown - this test rules out one story about them, it does not supply another. The fish family covers several distinct signs, and the test treated them together and used the site types as published in the CISI data; a finer test, sign by sign and with better site classifications, has not been run. The claim also does not stand or fall with the fish sign's other proposed readings, which are separate claims with their own records.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#indus_valley_script_deciphered_from_myth_65ff0a26_manual_002",
+        "content_hash": "fc22d2b3b88f9173755603c304f632c4f07bf70e663e0871828351fd035c67ae",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "This claim is one of the few in the set that carries a test sharp enough to hurt it, and the program ran that test. If the fish sign marked coastal traders, fish signs should turn up more often at coastal and maritime sites (Lothal, Dholavira) than elsewhere. The program counted fish signs across sites in its CISI-based data (the Phase-4x analysis recorded on the claim). Fish signs were not statistically enriched at coastal sites. On that result the program records the claim as partially falsified: the specific coastal prediction failed, while the wider claim about what the fish sign meant was not directly tested. One defect in the record should be stated plainly: the claim's automatic score band reads high, which points the opposite way from its falsified-leaning status. The status rests on the actual site test; the band is a consistency score computed from the record's text, and the audit flagged the conflict rather than resolving it."
+      },
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "roif-credit-note",
+        "proposal": "P3-extended (Roif credit addendum to the spec-025 audit fix commission)",
+        "note": "Credit note (2026-10-22): this claim is Avishai Roif's claim, from his published work - Roif 2025a, 'Deciphering the Indus Valley Script: A Phonetic-Mnemonic Akkadian Shorthand Approach' (Academia.edu, 12 June 2025, https://www.academia.edu/129921039) and Roif 2025b, 'Indus Valley Script deciphered - From Mythology to History using the Akkadian shorthand approach' (Academia.edu, 2 August 2025, https://www.academia.edu/143222807). He is the claims' author, not merely a cited source. The program's tests of his claims are the program's own work and its statistics are not his."
+      }
     },
     {
       "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_003",
@@ -69,7 +353,55 @@
       "testability": "directly_testable",
       "falsification_condition": "If arrow sign does not cluster at gateway/border sites.",
       "confidence_in_source": 0.5,
-      "extracted_at": "2026-10-06T10:42:42.131666"
+      "extracted_at": "2026-10-21T15:29:25.366987",
+      "stage": "created",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_manual_003",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "created",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_manual_003"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry indus_valley_script_deciphered_from_myth_65ff0a26_manual_003; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false,
+      "proposition_fingerprint": "b34cd94418e2af3109141e06dda887c7c2b4d4b97f10a749ecdfed517a1d0a05",
+      "not_understood": "What the arrow sign marked - if it marked one thing - is unknown. The border story needs a site classification that does not exist in the repository; the counts that exist lean toward the great cities, which the claim would have to explain rather than cite. A positional role and a border-enforcement meaning could both be true, or neither; the record distinguishes neither. What would change the picture: a published, agreed classification of sites by function, then the clustering test run exactly as the claim's falsifier states it.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#indus_valley_script_deciphered_from_myth_65ff0a26_manual_003",
+        "content_hash": "c476b3e532d5ee142f3aa90cfd43822d2ef08d338ed03e3bba06d2307a662b38",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "No check has ever run on this claim. What exists on the record is the source document's own assertion, plus an automatic score computed over the record's text. The program's own evaluation note is explicit that such scores are consistency signals only and no verdict rests on them. The claim therefore stands at the first stage, created: it has been written down, and nothing more has happened to it. The claim proposes its own test: the arrow sign should cluster at gateway and border sites rather than being spread evenly. Phase-104 found the test cannot be run as stated, because the repository has no classification of sites as gateway or border. One piece of data does exist and should be stated, because it does not sit comfortably with the claim: the sign in question (Mahadevan 391) is counted in the corpus at Mohenjo-daro 75 times, Harappa 52, Dholavira 16, Lothal 14, Kalibangan 10 and a few more elsewhere - that is, mostly at the largest cities, not at small border points. That distribution is descriptive only: without an agreed site-type classification it cannot be turned into a verdict either way. The program's role data also treats this sign as a possible case-ending marker, a purely positional role that says nothing about borders."
+      },
+      "spec051_execution": {
+        "spec": "051",
+        "phase": "Phase-409",
+        "date": "2026-10-21",
+        "actor": "spec051-phase409-execution",
+        "kind": "execution outcome (step-0 gate closure)",
+        "outcome": "INCONCLUSIVE — THE CLASSIFICATION IS THE FINDING",
+        "wording": "The arrow-sign test did not run: 0 testable gateway/border sites carry the arrow sign (floor 3); one side of the comparison is empty in the test population. The finding of this execution is the classification and the census themselves (Asset B, digest a1a9e48422ab7ab2ef1d340c5ca0eb81a315253b196fdc199d77d2e5739c9f85): status counts AGREED 3, DISAGREED 1, NO-SOURCE 16, SINGLE-SOURCE 10; testable sites 2 (harappa — administrative, 52 M391 occurrences in 492 joined inscriptions; lothal — port/trade, 14 M391 occurrences in 124 joined inscriptions); per-site M391 counts over the layer of record: Mohenjo-daro 75, Harappa 52, Dholavira 16, Lothal 14, Surkotada 11, Kalibangan 10, Chanhu-daro 10, Banawali 3, Rakhigarhi 2 (total 193), with the excluded and non-spine sites named in full — including, on the record, Dholavira, Chanhu-daro, and Rakhigarhi, which carry 28 of the sign's 193 recorded occurrences outside the gazetteer spine. No share was computed. The claim stands UNTESTED, now with the reason measured rather than asserted.",
+        "record": "specs/051-roif-arrow-sign/outcome.md",
+        "results": "reports/phase409_results.json",
+        "results_sha256": "3f4bf2a5eda7959a9ae85b48a5c5d0d31ad276b849f41854a71b08011fca1361",
+        "asset_b_sha256": "a1a9e48422ab7ab2ef1d340c5ca0eb81a315253b196fdc199d77d2e5739c9f85",
+        "note": "Dated append by the Spec 051 execution (Phase-409, 2026-10-21), under the frozen Spec 051 contract (freeze digest 818cfa4ecd32d286dbe0fcc8d73f4a79f42610f181e5f19594d057a32dab64b1; OSF registration xnrph, approved + public). Step 0 gates 0.1-0.5 passed: every section 2 pin asserted, Asset B's digest verified against Spec 047's step-1 outcome record (DD-051-14), the Holdat counting layer of record pinned (SHA-256 62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e) and its M391 census reproduced exactly (193 over nine sites), and the join census accounting for all 7,002 records exactly once. Gate 0.6 then closed the execution: the frozen classification carries 2 testable sites (harappa, administrative; lothal, port/trade), 0 testable gateway/border sites carrying M391 against the floor of 3, and an empty contrast side {domestic, ritual}. No share, ratio, permutation, or regression quantity was computed. This entry appends an execution outcome; it does not alter the claim's original record, which stands above as history, and the claim's status (untested) and stage (created) are unchanged. Held under the Roif gate: internal record, not a publication."
+      },
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "roif-credit-note",
+        "proposal": "P3-extended (Roif credit addendum to the spec-025 audit fix commission)",
+        "note": "Credit note (2026-10-22): this claim is Avishai Roif's claim, from his published work - Roif 2025a, 'Deciphering the Indus Valley Script: A Phonetic-Mnemonic Akkadian Shorthand Approach' (Academia.edu, 12 June 2025, https://www.academia.edu/129921039) and Roif 2025b, 'Indus Valley Script deciphered - From Mythology to History using the Akkadian shorthand approach' (Academia.edu, 2 August 2025, https://www.academia.edu/143222807). He is the claims' author, not merely a cited source. The program's tests of his claims are the program's own work and its statistics are not his."
+      }
     },
     {
       "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_004",
@@ -84,7 +416,41 @@
       "required_data": "Site metadata with fire-altar classification (Kalibangan)",
       "falsification_condition": "Horned deity sign does not cluster at fire-altar sites.",
       "confidence_in_source": 0.5,
-      "extracted_at": "2026-10-06T10:42:42.131666"
+      "extracted_at": "2026-10-21T15:29:25.366987",
+      "stage": "created",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_manual_004",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "created",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_manual_004"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry indus_valley_script_deciphered_from_myth_65ff0a26_manual_004; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false,
+      "proposition_fingerprint": "53d46badda31349eec487cb814e82dc2313c58bbb31a2898440e847a9336fa6d",
+      "not_understood": "The claim rests on one site's association, and even the first step - counting the sign's contexts classified by structure type - has never been done because the classifications are not in the data. Fire-altar attribution of structures is itself an archaeological judgement that varies between reports, so the missing dataset is not a clerical gap but a scholarly one. What would change the picture: excavation-context data for Kalibangan with structure types attached, from the published reports, entered as cited data rather than assumed labels.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#indus_valley_script_deciphered_from_myth_65ff0a26_manual_004",
+        "content_hash": "9d57073e6079a7c745a0651cb10e7db70e4b9f003280c7f5402082146fed3aaa",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "No check has ever run on this claim. What exists on the record is the source document's own assertion, plus an automatic score computed over the record's text. The program's own evaluation note is explicit that such scores are consistency signals only and no verdict rests on them. The claim therefore stands at the first stage, created: it has been written down, and nothing more has happened to it. The claim names what it needs in its own record: site metadata with a fire-altar classification. Phase-104 confirmed no such dataset exists in the repository - the corpus carries site names only. The proposed test (the sign concentrated at fire-altar structures rather than domestic contexts) therefore cannot be run, and no other check on this claim exists in the record."
+      },
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "roif-credit-note",
+        "proposal": "P3-extended (Roif credit addendum to the spec-025 audit fix commission)",
+        "note": "Credit note (2026-10-22): this claim is Avishai Roif's claim, from his published work - Roif 2025a, 'Deciphering the Indus Valley Script: A Phonetic-Mnemonic Akkadian Shorthand Approach' (Academia.edu, 12 June 2025, https://www.academia.edu/129921039) and Roif 2025b, 'Indus Valley Script deciphered - From Mythology to History using the Akkadian shorthand approach' (Academia.edu, 2 August 2025, https://www.academia.edu/143222807). He is the claims' author, not merely a cited source. The program's tests of his claims are the program's own work and its statistics are not his."
+      }
     }
   ],
   "_citation": {

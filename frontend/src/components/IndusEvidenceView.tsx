@@ -25,6 +25,7 @@ import {
   type SweepConfig,
 } from "../api";
 import { useToast } from "../hooks/useToast";
+import { ContestDisplay, NotUnderstood, StageLegend, stageColor } from "./StageLegend";
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
@@ -40,14 +41,10 @@ function fmtDate(s: string): string {
   return s.slice(0, 10);
 }
 
-const STATUS_COLORS: Record<string, string> = {
-  strongly_supported:  "#16a34a",
-  partially_supported: "#4ade80",
-  partially_falsified: "#f97316",
-  contradicted:        "#dc2626",
-  untested:            "#64748b",
-  unregistered:        "#64748b",
-};
+// Spec 029 Phase E2 (FR-029-10): lane-1 badges carry checking
+// vocabulary only (extraction statuses, scores, bands) and use one
+// neutral style — no stage colours and no acceptance language. Stage
+// colours belong to the lane-2 region alone.
 
 // ── Main component ────────────────────────────────────────────────────────
 
@@ -342,6 +339,9 @@ function ClaimsTab({ cardBg, border, fg, muted, inputBg, inputBdr }: {
         claim_status: statusFilter || undefined,
         sign: signFilter || undefined,
         limit: 200,
+        // Lane-1 score objects travel with the claims so each claim's
+        // score renders inside its own lane-1 region (Phase E2).
+        aee: true,
       });
       setClaims(r.claims);
       setTotal(r.total);
@@ -390,6 +390,10 @@ function ClaimsTab({ cardBg, border, fg, muted, inputBg, inputBdr }: {
           placeholder="Filter by sign…" style={{ ...inpStyle, width: 120 }} />
       </div>
 
+      {/* Spec 029 Phase E2 (E2.1; OD-4): the stage legend sits above
+          the claim list on this surface. */}
+      <StageLegend fg={fg} muted={muted} border={border} />
+
       {claims.length === 0 && !loading && (
         <div style={{ color: muted, fontSize: 12, fontStyle: "italic" }}>
           No claims match the current filters.
@@ -399,59 +403,157 @@ function ClaimsTab({ cardBg, border, fg, muted, inputBg, inputBdr }: {
       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
         {claims.map(c => {
           const isExp = expanded.has(c.claim_id);
-          const statusColor = STATUS_COLORS[c.claim_status] ?? "#64748b";
+          const stageObj = c.stage ?? null;
+          const score = c.lane1_score ?? c.aee_score ?? null;
+          const regionBox: React.CSSProperties = {
+            border: `1px solid ${border}`, borderRadius: 7,
+            padding: "9px 12px", marginTop: 8,
+          };
+          const regionTitle: React.CSSProperties = {
+            fontSize: 10, fontWeight: 700, letterSpacing: 0.4,
+            textTransform: "uppercase", marginBottom: 6,
+          };
           return (
             <div key={c.claim_id} style={{ background: cardBg, border: `1px solid ${border}`,
               borderRadius: 8, overflow: "hidden" }}>
               <div style={{ padding: "10px 14px", cursor: "pointer", display: "flex", gap: 10, alignItems: "flex-start" }}
                 onClick={() => toggleExpand(c.claim_id)}>
-                {/* Status bar */}
-                <div style={{ width: 3, alignSelf: "stretch", borderRadius: 2, background: statusColor, flexShrink: 0 }} />
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ fontSize: 12, color: fg, lineHeight: 1.4 }}>{c.normalized_claim}</div>
-                  <div style={{ display: "flex", gap: 6, marginTop: 4, flexWrap: "wrap" }}>
+                  <div style={{ display: "flex", gap: 6, marginTop: 4, flexWrap: "wrap", alignItems: "center" }}>
                     <span style={{ fontSize: 9, padding: "1px 6px", borderRadius: 6,
                       background: "#7c3aed18", color: "#7c3aed", fontWeight: 600 }}>{c.claim_type}</span>
-                    <span style={{ fontSize: 9, padding: "1px 6px", borderRadius: 6,
-                      background: statusColor + "22", color: statusColor, fontWeight: 600 }}>{c.claim_status}</span>
                     {c.signs_involved && c.signs_involved.length > 0 && c.signs_involved.map(s => (
                       <span key={s} style={{ fontSize: 9, padding: "1px 6px", borderRadius: 6,
                         background: "#b4530922", color: "#b45309", fontWeight: 600 }}>{s}</span>
                     ))}
                   </div>
+                  {/* Lane-2 stage, as a labelled plain line (never a
+                      badge): the stage name is verbatim (OD-4). */}
+                  <div style={{ fontSize: 10, marginTop: 4 }}>
+                    <span style={{ color: muted }}>Stage (lane 2): </span>
+                    {stageObj?.stage ? (
+                      <span style={{ color: stageColor(stageObj.stage), fontWeight: 700 }}>{stageObj.stage}</span>
+                    ) : (
+                      <span style={{ color: muted }}>not stamped — no stage recorded</span>
+                    )}
+                    {c.verified_unexplained && (
+                      <span style={{ color: "#d97706", fontWeight: 600 }}> · ⚠ verified_unexplained</span>
+                    )}
+                  </div>
                 </div>
                 <span style={{ fontSize: 9, color: muted, flexShrink: 0, marginTop: 2 }}>{isExp ? "▲" : "▼"}</span>
               </div>
               {isExp && (
-                <div style={{ padding: "8px 14px 12px 27px", borderTop: `1px solid ${border}` }}>
-                  {c.source_document_id && (
-                    <div style={{ fontSize: 10, color: muted, marginBottom: 4 }}>
-                      Source: <span style={{ color: fg }}>{c.source_document_id}</span>
+                <div style={{ padding: "4px 14px 12px", borderTop: `1px solid ${border}`, fontSize: 11 }}>
+                  {/* ── Lane 2 region — human-paced settlement ── */}
+                  <div data-testid="lane2-region" style={regionBox}>
+                    <div style={{ ...regionTitle, color: stageColor(stageObj?.stage) }}>
+                      Lane 2 — human-paced settlement
                     </div>
-                  )}
-                  {c.falsification_condition && (
-                    <div style={{ fontSize: 10, marginBottom: 4 }}>
-                      <span style={{ color: muted }}>Falsification: </span>
-                      <span style={{ color: fg }}>{c.falsification_condition}</span>
+                    <div>
+                      <span style={{ color: muted }}>Stage: </span>
+                      {stageObj?.stage ? (
+                        <span style={{ color: stageColor(stageObj.stage), fontWeight: 700, fontSize: 13 }}>
+                          {stageObj.stage}
+                        </span>
+                      ) : (
+                        <span style={{ color: fg }}>not stamped — no stage has been recorded for this claim</span>
+                      )}
+                      {stageObj?.stage_as_of && (
+                        <span style={{ color: muted }}> · as of {stageObj.stage_as_of}</span>
+                      )}
                     </div>
-                  )}
-                  {c.glossa_lab_evidence && (
-                    <div style={{ fontSize: 10, marginBottom: 4 }}>
-                      <span style={{ color: muted }}>Glossa-Lab: </span>
-                      <span style={{ color: "#22c55e" }}>{c.glossa_lab_evidence}</span>
+                    {stageObj?.stage_source && (
+                      <div style={{ color: muted, marginTop: 2, wordBreak: "break-all" }}>
+                        Stage source: {stageObj.stage_source}
+                      </div>
+                    )}
+                    {stageObj?.latest_transition && (
+                      <div style={{ color: muted, marginTop: 2 }}>
+                        Latest transition: {String(stageObj.latest_transition.from_stage ?? "—")}
+                        {" → "}{String(stageObj.latest_transition.to_stage ?? "—")}
+                        {" by "}{String(stageObj.latest_transition.actor ?? "—")}
+                        {" at "}{String(stageObj.latest_transition.timestamp ?? "—")}
+                        {` (${stageObj.stage_history_count ?? 0} transition(s) on record)`}
+                      </div>
+                    )}
+                    {c.verified_unexplained && (
+                      <div style={{ color: "#d97706", marginTop: 4, fontWeight: 600 }}>
+                        ⚠ verified_unexplained — flagged risk state: this claim carries a
+                        supported-class checking outcome or a high score band while its stage
+                        is below explained.
+                      </div>
+                    )}
+                    <ContestDisplay bundle={c.bundle} fg={fg} muted={muted} />
+                  </div>
+
+                  {/* ── Lane 1 region — machine-speed verification ── */}
+                  <div data-testid="lane1-region" style={regionBox}>
+                    <div style={{ ...regionTitle, color: muted }}>
+                      Lane 1 — machine-speed verification (checking only)
                     </div>
-                  )}
-                  {c.proposed_value && (
-                    <div style={{ fontSize: 10 }}>
-                      <span style={{ color: muted }}>Proposed value: </span>
-                      <span style={{ color: fg }}>{c.proposed_value}</span>
+                    <div style={{ marginBottom: 4 }}>
+                      <span style={{ color: muted }}>Extraction status (checking outcome): </span>
+                      <span style={{ fontSize: 10, padding: "1px 6px", borderRadius: 6,
+                        background: "#64748b22", color: muted, fontWeight: 600,
+                        border: "1px solid #64748b55" }}>{c.claim_status}</span>
                     </div>
-                  )}
-                  {c.confidence_in_source !== undefined && (
-                    <div style={{ fontSize: 10, color: muted, marginTop: 2 }}>
-                      Source confidence: {Math.round(c.confidence_in_source * 100)}%
+                    {score ? (
+                      <div style={{ marginBottom: 4 }}>
+                        <span style={{ color: muted }}>AEE score: </span>
+                        <span style={{ color: fg, fontWeight: 700 }}>
+                          {score.propagated_score !== undefined ? score.propagated_score.toFixed(3) : "—"}
+                        </span>
+                        {score.band && (
+                          <span style={{ color: fg }}> · band: {score.band}</span>
+                        )}
+                        <div style={{ color: muted, marginTop: 2 }}>
+                          Method: AEE library scoring of this claim&apos;s evidence
+                          {score.components
+                            ? ` (components — evidence ${score.components.evidence ?? "—"}, independence ${score.components.independence ?? "—"}, falsifiability ${score.components.falsifiability ?? "—"}, boundary ${score.components.boundary ?? "—"})`
+                            : ""}
+                          . A score is a checking result only — it is not a stage and does not settle the claim.
+                        </div>
+                      </div>
+                    ) : (
+                      <div style={{ color: muted, marginBottom: 4 }}>
+                        AEE score: not available for this claim.
+                      </div>
+                    )}
+                    <div style={{ marginBottom: 4 }}>
+                      <span style={{ color: muted }}>Falsification condition: </span>
+                      <span style={{ color: fg }}>
+                        {c.falsification_condition || "not stated in the record"}
+                      </span>
                     </div>
-                  )}
+                    {c.source_document_id && (
+                      <div style={{ color: muted, marginBottom: 4 }}>
+                        Source: <span style={{ color: fg }}>{c.source_document_id}</span>
+                      </div>
+                    )}
+                    {c.glossa_lab_evidence && (
+                      <div style={{ marginBottom: 4 }}>
+                        <span style={{ color: muted }}>Glossa-Lab evidence note: </span>
+                        <span style={{ color: fg }}>{c.glossa_lab_evidence}</span>
+                      </div>
+                    )}
+                    {c.proposed_value && (
+                      <div>
+                        <span style={{ color: muted }}>Proposed value: </span>
+                        <span style={{ color: fg }}>{c.proposed_value}</span>
+                      </div>
+                    )}
+                    {c.confidence_in_source !== undefined && (
+                      <div style={{ color: muted, marginTop: 2 }}>
+                        Source confidence (as stated in the source): {Math.round(c.confidence_in_source * 100)}%
+                      </div>
+                    )}
+                    {/* FR-029-09: the not-understood statement renders
+                        with every verdict — or its absence renders as
+                        a visible gap. */}
+                    <NotUnderstood value={c.not_understood} fg={fg} muted={muted} />
+                  </div>
                 </div>
               )}
             </div>

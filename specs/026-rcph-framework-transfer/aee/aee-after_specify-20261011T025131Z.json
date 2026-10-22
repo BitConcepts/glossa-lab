@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "methodology_version": "1.0",
+  "project": "glossa-lab-spec026",
+  "phase": "after_specify",
+  "outcome": "pass",
+  "summary": "Assessed 0 claim(s); found 0 failure mode(s); 0 claim(s) below the 0.70 confidence threshold.",
+  "created_at": "2026-10-11T02:51:32.535162Z",
+  "claims": [],
+  "scores": {},
+  "recoveries": [],
+  "metadata": {
+    "threshold": 0.7,
+    "input": "/home/hatch/workspace/glossa-lab-spec026/specs/026-rcph-framework-transfer/spec.md"
+  }
+}

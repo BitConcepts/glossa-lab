@@ -1,0 +1,476 @@
+{
+  "phase": "Phase-136",
+  "spec": "024",
+  "stage": "Stage 2(a)",
+  "family_member": "F1",
+  "title": "Terminal-class x object type, within-site stratified permutation test \u2014 ICIT-lineage (horus84) joined subset",
+  "lineage_label": "ICIT-lineage (horus84)",
+  "lineage_sentence": "results describe this lineage layer's joined subset, not the Indus corpus in general.",
+  "freeze": "specs/024-evidence-integration/stage2a-freeze.md",
+  "inputs": {
+    "cisi_vol1_catalogue": {
+      "path": "/home/hatch/workspace/glossa-lab/corpora/downloads/cisi_image_layer/catalogue/cisi_vol1_catalogue.csv",
+      "exists": true,
+      "sha256": "e0d698f991fbd7cf26c491a2b25906b422903a0e2a26ea7b8c690420ca51dc1e",
+      "bytes": 804665
+    },
+    "cisi_vol2_catalogue": {
+      "path": "/home/hatch/workspace/glossa-lab/corpora/downloads/cisi_image_layer/catalogue/cisi_vol2_catalogue.csv",
+      "exists": true,
+      "sha256": "e751244e2d51bda3181d98e56af691c0d24099d76d035b54f0888504204bc7d9",
+      "bytes": 1431631
+    },
+    "horus84_inscriptions": {
+      "path": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/horus84-computational-linguistics/data/inscriptions.csv",
+      "exists": true,
+      "sha256": "c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef",
+      "bytes": 1190884
+    },
+    "canonical_sign_registry": {
+      "path": "/home/hatch/workspace/glossa-lab-phase136/data/crosswalks/canonical_sign_registry.csv",
+      "exists": true,
+      "sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",
+      "bytes": 111583
+    }
+  },
+  "parameters": {
+    "B": 9999,
+    "seed": 20261009,
+    "p_formula": "(1 + #{perm >= obs}) / (1 + B)",
+    "statistic": "Cochran-Mantel-Haenszel chi-square, no continuity correction",
+    "terminal14": [
+      "P020",
+      "P076",
+      "P095",
+      "P099",
+      "P108",
+      "P125",
+      "P210",
+      "P226",
+      "P256",
+      "P346",
+      "P359",
+      "P378",
+      "P384",
+      "P385"
+    ]
+  },
+  "flow": {
+    "layer_rows": 5679,
+    "matched_single_volume": 2895,
+    "ambiguous": 2,
+    "unmatched": 2782,
+    "unjoinable_or_ambiguous": 2784,
+    "unjoinable_or_ambiguous_share": 0.4902271526677232,
+    "typed_filled": 2752,
+    "typed_by_type": {
+      "Graffiti": 69,
+      "Objects": 7,
+      "Seals": 1588,
+      "Tablets": 1088
+    },
+    "untyped": 143,
+    "restricted_seals_tablets": 2676,
+    "excluded_graffiti": 69,
+    "excluded_objects": 7,
+    "terminal_mapped": 2195,
+    "terminal_unk": 481,
+    "terminal_no_codes": 0,
+    "terminal14_margin_among_mapped": 475,
+    "analysis_population_all_strata": 2195,
+    "analysis_population_eligible_strata": 2062
+  },
+  "catalogue_site_concordance_joined": {
+    "concordant": 1377,
+    "discordant": 1518,
+    "note": "Descriptive only (freeze section 4); horus84 site vs the joined catalogue object's site. Not a variable."
+  },
+  "strata": [
+    {
+      "site": "Mohenjo-daro",
+      "n": 1151,
+      "n_seals": 859,
+      "n_tablets": 292,
+      "eligible": true,
+      "table": {
+        "a": 258,
+        "b": 601,
+        "c": 48,
+        "d": 244
+      },
+      "odds_ratio": 2.182196339434276,
+      "odds_ratio_note": null,
+      "terminal14_share_seals": 0.30034924330616997,
+      "terminal14_share_tablets": 0.1643835616438356,
+      "terminal14_share": 0.26585577758470896
+    },
+    {
+      "site": "Harappa",
+      "n": 860,
+      "n_seals": 281,
+      "n_tablets": 579,
+      "eligible": true,
+      "table": {
+        "a": 69,
+        "b": 212,
+        "c": 61,
+        "d": 518
+      },
+      "odds_ratio": 2.7638416331580578,
+      "odds_ratio_note": null,
+      "terminal14_share_seals": 0.24555160142348753,
+      "terminal14_share_tablets": 0.10535405872193437,
+      "terminal14_share": 0.1511627906976744
+    },
+    {
+      "site": "Lothal",
+      "n": 69,
+      "n_seals": 69,
+      "n_tablets": 0,
+      "eligible": false,
+      "table": {
+        "a": 21,
+        "b": 48,
+        "c": 0,
+        "d": 0
+      },
+      "odds_ratio": null,
+      "odds_ratio_note": "undefined: zero cell in the stratum 2x2 table (descriptive stratum only)",
+      "terminal14_share_seals": 0.30434782608695654,
+      "terminal14_share_tablets": null,
+      "terminal14_share": 0.30434782608695654
+    },
+    {
+      "site": "Kalibangan",
+      "n": 51,
+      "n_seals": 40,
+      "n_tablets": 11,
+      "eligible": true,
+      "table": {
+        "a": 5,
+        "b": 35,
+        "c": 1,
+        "d": 10
+      },
+      "odds_ratio": 1.4285714285714286,
+      "odds_ratio_note": null,
+      "terminal14_share_seals": 0.125,
+      "terminal14_share_tablets": 0.09090909090909091,
+      "terminal14_share": 0.11764705882352941
+    },
+    {
+      "site": "Chanhu-daro",
+      "n": 24,
+      "n_seals": 21,
+      "n_tablets": 3,
+      "eligible": false,
+      "table": {
+        "a": 3,
+        "b": 18,
+        "c": 0,
+        "d": 3
+      },
+      "odds_ratio": null,
+      "odds_ratio_note": "undefined: zero cell in the stratum 2x2 table (descriptive stratum only)",
+      "terminal14_share_seals": 0.14285714285714285,
+      "terminal14_share_tablets": 0.0,
+      "terminal14_share": 0.125
+    },
+    {
+      "site": "Banawali",
+      "n": 17,
+      "n_seals": 13,
+      "n_tablets": 4,
+      "eligible": false,
+      "table": {
+        "a": 5,
+        "b": 8,
+        "c": 0,
+        "d": 4
+      },
+      "odds_ratio": null,
+      "odds_ratio_note": "undefined: zero cell in the stratum 2x2 table (descriptive stratum only)",
+      "terminal14_share_seals": 0.38461538461538464,
+      "terminal14_share_tablets": 0.0,
+      "terminal14_share": 0.29411764705882354
+    },
+    {
+      "site": "Allahdino",
+      "n": 8,
+      "n_seals": 8,
+      "n_tablets": 0,
+      "eligible": false,
+      "table": {
+        "a": 0,
+        "b": 8,
+        "c": 0,
+        "d": 0
+      },
+      "odds_ratio": null,
+      "odds_ratio_note": "undefined: zero cell in the stratum 2x2 table (descriptive stratum only)",
+      "terminal14_share_seals": 0.0,
+      "terminal14_share_tablets": null,
+      "terminal14_share": 0.0
+    },
+    {
+      "site": "Desalpur",
+      "n": 2,
+      "n_seals": 2,
+      "n_tablets": 0,
+      "eligible": false,
+      "table": {
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0
+      },
+      "odds_ratio": null,
+      "odds_ratio_note": "undefined: zero cell in the stratum 2x2 table (descriptive stratum only)",
+      "terminal14_share_seals": 0.5,
+      "terminal14_share_tablets": null,
+      "terminal14_share": 0.5
+    },
+    {
+      "site": "Dholavira",
+      "n": 2,
+      "n_seals": 2,
+      "n_tablets": 0,
+      "eligible": false,
+      "table": {
+        "a": 2,
+        "b": 0,
+        "c": 0,
+        "d": 0
+      },
+      "odds_ratio": null,
+      "odds_ratio_note": "undefined: zero cell in the stratum 2x2 table (descriptive stratum only)",
+      "terminal14_share_seals": 1.0,
+      "terminal14_share_tablets": null,
+      "terminal14_share": 1.0
+    },
+    {
+      "site": "Khirsara",
+      "n": 2,
+      "n_seals": 2,
+      "n_tablets": 0,
+      "eligible": false,
+      "table": {
+        "a": 0,
+        "b": 2,
+        "c": 0,
+        "d": 0
+      },
+      "odds_ratio": null,
+      "odds_ratio_note": "undefined: zero cell in the stratum 2x2 table (descriptive stratum only)",
+      "terminal14_share_seals": 0.0,
+      "terminal14_share_tablets": null,
+      "terminal14_share": 0.0
+    },
+    {
+      "site": "Rakhigarhi",
+      "n": 2,
+      "n_seals": 2,
+      "n_tablets": 0,
+      "eligible": false,
+      "table": {
+        "a": 0,
+        "b": 2,
+        "c": 0,
+        "d": 0
+      },
+      "odds_ratio": null,
+      "odds_ratio_note": "undefined: zero cell in the stratum 2x2 table (descriptive stratum only)",
+      "terminal14_share_seals": 0.0,
+      "terminal14_share_tablets": null,
+      "terminal14_share": 0.0
+    },
+    {
+      "site": "Daimabad",
+      "n": 1,
+      "n_seals": 1,
+      "n_tablets": 0,
+      "eligible": false,
+      "table": {
+        "a": 0,
+        "b": 1,
+        "c": 0,
+        "d": 0
+      },
+      "odds_ratio": null,
+      "odds_ratio_note": "undefined: zero cell in the stratum 2x2 table (descriptive stratum only)",
+      "terminal14_share_seals": 0.0,
+      "terminal14_share_tablets": null,
+      "terminal14_share": 0.0
+    },
+    {
+      "site": "Hulas",
+      "n": 1,
+      "n_seals": 1,
+      "n_tablets": 0,
+      "eligible": false,
+      "table": {
+        "a": 0,
+        "b": 1,
+        "c": 0,
+        "d": 0
+      },
+      "odds_ratio": null,
+      "odds_ratio_note": "undefined: zero cell in the stratum 2x2 table (descriptive stratum only)",
+      "terminal14_share_seals": 0.0,
+      "terminal14_share_tablets": null,
+      "terminal14_share": 0.0
+    },
+    {
+      "site": "Jhukar",
+      "n": 1,
+      "n_seals": 1,
+      "n_tablets": 0,
+      "eligible": false,
+      "table": {
+        "a": 1,
+        "b": 0,
+        "c": 0,
+        "d": 0
+      },
+      "odds_ratio": null,
+      "odds_ratio_note": "undefined: zero cell in the stratum 2x2 table (descriptive stratum only)",
+      "terminal14_share_seals": 1.0,
+      "terminal14_share_tablets": null,
+      "terminal14_share": 1.0
+    },
+    {
+      "site": "Lohumjo-daro",
+      "n": 1,
+      "n_seals": 1,
+      "n_tablets": 0,
+      "eligible": false,
+      "table": {
+        "a": 0,
+        "b": 1,
+        "c": 0,
+        "d": 0
+      },
+      "odds_ratio": null,
+      "odds_ratio_note": "undefined: zero cell in the stratum 2x2 table (descriptive stratum only)",
+      "terminal14_share_seals": 0.0,
+      "terminal14_share_tablets": null,
+      "terminal14_share": 0.0
+    },
+    {
+      "site": "Pirak",
+      "n": 1,
+      "n_seals": 1,
+      "n_tablets": 0,
+      "eligible": false,
+      "table": {
+        "a": 0,
+        "b": 1,
+        "c": 0,
+        "d": 0
+      },
+      "odds_ratio": null,
+      "odds_ratio_note": "undefined: zero cell in the stratum 2x2 table (descriptive stratum only)",
+      "terminal14_share_seals": 0.0,
+      "terminal14_share_tablets": null,
+      "terminal14_share": 0.0
+    },
+    {
+      "site": "Rodji",
+      "n": 1,
+      "n_seals": 1,
+      "n_tablets": 0,
+      "eligible": false,
+      "table": {
+        "a": 0,
+        "b": 1,
+        "c": 0,
+        "d": 0
+      },
+      "odds_ratio": null,
+      "odds_ratio_note": "undefined: zero cell in the stratum 2x2 table (descriptive stratum only)",
+      "terminal14_share_seals": 0.0,
+      "terminal14_share_tablets": null,
+      "terminal14_share": 0.0
+    },
+    {
+      "site": "Rupar",
+      "n": 1,
+      "n_seals": 1,
+      "n_tablets": 0,
+      "eligible": false,
+      "table": {
+        "a": 0,
+        "b": 1,
+        "c": 0,
+        "d": 0
+      },
+      "odds_ratio": null,
+      "odds_ratio_note": "undefined: zero cell in the stratum 2x2 table (descriptive stratum only)",
+      "terminal14_share_seals": 0.0,
+      "terminal14_share_tablets": null,
+      "terminal14_share": 0.0
+    }
+  ],
+  "eligible_strata": [
+    "Mohenjo-daro",
+    "Harappa",
+    "Kalibangan"
+  ],
+  "pooled_table_eligible": {
+    "a": 332,
+    "b": 848,
+    "c": 110,
+    "d": 772
+  },
+  "pooled_expected_counts": [
+    252.93889427740058,
+    927.0611057225995,
+    189.06110572259942,
+    692.9388942774005
+  ],
+  "estimability": {
+    "n_eligible_strata": 3,
+    "fraction_expected_ge_5": 1.0,
+    "rule": "freeze section 5: >=2 eligible strata AND pooled expected counts >=5 in >=80% of cells",
+    "estimable": true,
+    "verdict": "ESTIMABLE"
+  },
+  "effect_sizes": {
+    "mh_common_odds_ratio": 2.3839554105695653,
+    "mh_log_or": 0.8687610454080397,
+    "mh_var_log_or_rbg": 0.016941073871250822,
+    "mh_ci95": [
+      1.847164202454972,
+      3.076739681307485
+    ],
+    "crude_odds_ratio_uncontrolled": {
+      "odds_ratio": 2.7476843910806177,
+      "ci95_wald": [
+        2.168667783359785,
+        3.4812937098607453
+      ],
+      "label": "uncontrolled (unstratified)"
+    },
+    "per_stratum_odds_ratios": {
+      "Mohenjo-daro": 2.182196339434276,
+      "Harappa": 2.7638416331580578,
+      "Kalibangan": 1.4285714285714286
+    },
+    "pooled_terminal14_shares": {
+      "seals": 0.28135593220338984,
+      "tablets": 0.12471655328798185
+    }
+  },
+  "test": {
+    "statistic_observed": 47.004657020769315,
+    "B": 9999,
+    "seed": 20261009,
+    "n_perm_ge_observed": 0,
+    "raw_p": 0.0001,
+    "perm_stat_median": 0.4548516194971444,
+    "perm_stat_p95": 3.990637613400901,
+    "verdict_word": "DEFERRED \u2014 assigned only after the family Benjamini-Hochberg correction (q = 0.05) in the combined Stage 2 report (freeze sections 1-2)."
+  },
+  "section8_language": "Associations describe use, not meaning. No result under this spec can mint, promote, demote, or validate any sign reading, change any anchor's status, or move PRED-2026 in either direction.",
+  "ai_disclosure": "Produced by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution section VI."
+}

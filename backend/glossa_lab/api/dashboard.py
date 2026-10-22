@@ -1078,15 +1078,28 @@ async def dashboard_decipherment() -> dict[str, Any]:
 
     # ── 1. Final anchor set (always present post-cleanup) ─────────────────
     final_path = backend_reports / "INDUS_FINAL_ANCHORS.json"
-    anchors_summary: dict[str, Any] = {"total": 0, "by_confidence": {}}
+    anchors_summary: dict[str, Any] = {
+        "total": 0, "by_confidence": {}, "by_stage": {}, "n_unstamped_stage": 0,
+    }
     archived_at: str = "2026-05-17"
     if final_path.exists():
         try:
             fa_data = json.loads(final_path.read_text(encoding="utf-8"))
             by_conf: dict[str, int] = {"HIGH": 0, "MEDIUM": 0, "LOW": 0, "UNCERTAIN": 0}
+            # Spec 029 (FR-029-01): lane-2 stage counts, kept distinct
+            # from the lane-1 confidence counts above. Anchors without
+            # a stamped stage (all of them until the Phase D migration)
+            # are counted as unstamped — a stage is never invented.
+            by_stage: dict[str, int] = {}
+            n_unstamped_stage = 0
             for _s, info in (fa_data.get("anchors") or {}).items():
                 c = (info.get("confidence") or "LOW").upper()
                 by_conf[c] = by_conf.get(c, 0) + 1
+                _stage = info.get("stage")
+                if _stage:
+                    by_stage[str(_stage)] = by_stage.get(str(_stage), 0) + 1
+                else:
+                    n_unstamped_stage += 1
 
             n_hm = by_conf.get("HIGH", 0) + by_conf.get("MEDIUM", 0)
 
@@ -1134,6 +1147,11 @@ async def dashboard_decipherment() -> dict[str, Any]:
                 "total":        n_hm,
                 "total_all":    sum(by_conf.values()),  # all entries incl. LOW
                 "by_confidence": by_conf,
+                # Lane-2 lifecycle stage distribution (Spec 029),
+                # serialized as its own object, distinct from the
+                # lane-1 confidence summary above.
+                "by_stage": by_stage,
+                "n_unstamped_stage": n_unstamped_stage,
                 "n_high":       by_conf.get("HIGH", 0),
                 "n_medium":     by_conf.get("MEDIUM", 0),
                 "n_low":        by_conf.get("LOW", 0),
@@ -1170,7 +1188,9 @@ async def dashboard_decipherment() -> dict[str, Any]:
                 "signs_assigned": c.get("assigned", {}).get("total", 0),
                 "signs_total": c.get("total_signs", 390),
                 "token_coverage": c.get("token_cov", {}).get("total", 0),
-                "fully_decoded_pct": c.get("fully_decoded_pct", 0),
+                # Spec 029 Phase E1 (E1.2): per-round "fully decoded"
+                # percentage withdrawn from the payload with the
+                # summary field of the same name.
                 "tamil_brahmi_corr": r.get("tamil_brahmi", {}).get("correlation", 0),
                 "remaining": r.get("remaining", []),
             })
@@ -1202,18 +1222,11 @@ async def dashboard_decipherment() -> dict[str, Any]:
                 if pn > current_phase:
                     current_phase = pn
 
-    # SA aggregate from latest SA run
-    sa_aggregate: float = 0.0
-    for sa_file in ["phase257_sa_137high.json", "phase213_sa_rerun_408anchors.json"]:
-        sa_path = outputs_dir / sa_file if outputs_dir.is_dir() else None
-        if sa_path and sa_path.exists():
-            try:
-                sa_data = json.loads(sa_path.read_text(encoding="utf-8"))
-                sa_aggregate = float(sa_data.get("aggregate_confidence", 0) or 0)
-                if sa_aggregate > 0:
-                    break
-            except Exception:  # noqa: BLE001
-                pass
+    # Spec 029 Phase E1 (E1.2; FR-029-08; audit §5-P5.2): the SA
+    # aggregate is WITHDRAWN from this payload. The SA method was
+    # falsified (Phase-107); its aggregate confidence must not be
+    # served in a summary position. The underlying run files in
+    # outputs/ are untouched — only the serving is removed.
 
     # Evidence items count from arXiv JSON
     n_evidence = 0
@@ -1224,23 +1237,12 @@ async def dashboard_decipherment() -> dict[str, Any]:
         except Exception:  # noqa: BLE001
             n_evidence = 41  # known count
 
-    # Fully decoded seals percentage
-    fully_decoded_pct: float = 0.0
-    n_fully_decoded: int = 0
-    for fd_file in ["phase218_site_semantic_updated.json", "phase114_full_seal_translations.json"]:
-        fd_path = outputs_dir / fd_file if outputs_dir.is_dir() else backend_reports / fd_file
-        if fd_path.exists():
-            try:
-                fd_data = json.loads(fd_path.read_text(encoding="utf-8"))
-                fully_decoded_pct = float(fd_data.get("pct_fully_decoded_overall", 0) or 0)
-                n_fully_decoded = int(fd_data.get("total_fully_decoded", 0) or 0)
-                if fully_decoded_pct > 0:
-                    break
-            except Exception:  # noqa: BLE001
-                pass
-    if fully_decoded_pct <= 0:
-        fully_decoded_pct = 0.691  # Phase-218 known value
-        n_fully_decoded = 1165
+    # Spec 029 Phase E1 (E1.2; FR-029-08; audit §5-P5.2): the
+    # "fully decoded" percentage and count are WITHDRAWN from this
+    # payload (including the former hardcoded Phase-218 fallback
+    # values). A "fully decoded %" in summary position presents a
+    # volume tally as decipherment. The underlying data files are
+    # untouched — only the serving is removed.
 
     # ── 4. Phase 299-302 metrics (Munda SA + archaeology) ─────────────
     munda_sa: dict[str, Any] = {}
@@ -1268,10 +1270,7 @@ async def dashboard_decipherment() -> dict[str, Any]:
         "current_state": progression[-1] if progression else None,
         # Active research metadata
         "current_phase": current_phase,
-        "sa_aggregate": round(sa_aggregate, 4),
         "n_evidence_items": n_evidence,
-        "fully_decoded_pct": round(fully_decoded_pct, 4),
-        "n_fully_decoded": n_fully_decoded,
         "total_seals": 1670,
         # Phase 300 Munda SA discrimination
         "munda_sa": munda_sa if munda_sa else None,

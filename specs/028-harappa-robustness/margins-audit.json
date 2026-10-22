@@ -1,0 +1,301 @@
+{
+ "audit": "spec028-margins-only",
+ "outcome_fields_present": false,
+ "input_hashes": {
+  "icit_converted_v2_keyed.json": "bbfdbcd5d5e3e3121251de91462af51dc702a4114a4d10ffd7061e1f5593a5c8",
+  "horus_inscriptions.csv": "c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef"
+ },
+ "population_flow": {
+  "layer_records": 5679,
+  "after_dedup_kept": 4531,
+  "provenanced": 4505,
+  "excluded_graffiti_pottg": 473,
+  "excluded_type_POT": 562,
+  "excluded_type_OTHER": 338,
+  "seal_tab": 3605,
+  "eligible_primary": 3144,
+  "excluded_legible_lt2": 461,
+  "excluded_status_dropped_zero_mapped": 270,
+  "excluded_status_dropped_intra_dup": 795,
+  "excluded_status_dropped_holdat_dup": 83,
+  "excluded_site_unknown": 26,
+  "unjoined_in_horus": 1
+ },
+ "eligible_records": 3144,
+ "sign_columns": 125,
+ "signs_ge10_tokens": 123,
+ "analysis_population": {
+  "records": 3030,
+  "sites": [
+   "Harappa",
+   "Mohenjo-daro",
+   "Dholavira",
+   "Lothal",
+   "Chanhu-daro",
+   "Kalibangan"
+  ],
+  "cells": {
+   "Chanhu-daro|SEAL": 52,
+   "Chanhu-daro|TAB": 2,
+   "Dholavira|SEAL": 96,
+   "Dholavira|TAB": 15,
+   "Harappa|SEAL": 361,
+   "Harappa|TAB": 1076,
+   "Kalibangan|SEAL": 49,
+   "Kalibangan|TAB": 3,
+   "Lothal|SEAL": 72,
+   "Lothal|TAB": 2,
+   "Mohenjo-daro|SEAL": 1138,
+   "Mohenjo-daro|TAB": 164
+  }
+ },
+ "arm_a_harappa_excluded": {
+  "sites": [
+   "Mohenjo-daro",
+   "Dholavira",
+   "Lothal",
+   "Chanhu-daro",
+   "Kalibangan"
+  ],
+  "records": 1593,
+  "site_totals": {
+   "Mohenjo-daro": 1302,
+   "Dholavira": 111,
+   "Lothal": 74,
+   "Chanhu-daro": 54,
+   "Kalibangan": 52
+  },
+  "cells": {
+   "Chanhu-daro|SEAL": 52,
+   "Chanhu-daro|TAB": 2,
+   "Dholavira|SEAL": 96,
+   "Dholavira|TAB": 15,
+   "Kalibangan|SEAL": 49,
+   "Kalibangan|TAB": 3,
+   "Lothal|SEAL": 72,
+   "Lothal|TAB": 2,
+   "Mohenjo-daro|SEAL": 1138,
+   "Mohenjo-daro|TAB": 164
+  },
+  "cells_included_ge49": {
+   "Chanhu-daro|SEAL": 52,
+   "Dholavira|SEAL": 96,
+   "Kalibangan|SEAL": 49,
+   "Lothal|SEAL": 72,
+   "Mohenjo-daro|SEAL": 1138,
+   "Mohenjo-daro|TAB": 164
+  },
+  "cells_excluded_lt49": {
+   "Chanhu-daro|TAB": 2,
+   "Dholavira|TAB": 15,
+   "Kalibangan|TAB": 3,
+   "Lothal|TAB": 2
+  },
+  "n_cells_included": 6,
+  "inscriptions_per_draw": 294,
+  "loso_support": {
+   "Mohenjo-daro": {
+    "cells_ge_cell": 4,
+    "records": 291
+   },
+   "Dholavira": {
+    "cells_ge_cell": 5,
+    "records": 1482
+   },
+   "Lothal": {
+    "cells_ge_cell": 5,
+    "records": 1519
+   },
+   "Chanhu-daro": {
+    "cells_ge_cell": 5,
+    "records": 1539
+   },
+   "Kalibangan": {
+    "cells_ge_cell": 5,
+    "records": 1541
+   }
+  },
+  "s_complete_records": 1303,
+  "s_complete_cells_ge49": 4,
+  "positive_control_sign_sets": {
+   "Mohenjo-daro": [
+    "M059",
+    "M086",
+    "M087",
+    "M121",
+    "M122",
+    "M123",
+    "M211",
+    "M267",
+    "M336",
+    "M342"
+   ],
+   "Dholavira": [
+    "M001",
+    "M065",
+    "M067",
+    "M072",
+    "M089",
+    "M249",
+    "M293",
+    "M343",
+    "M387",
+    "M391"
+   ],
+   "Lothal": [
+    "M008",
+    "M017",
+    "M048",
+    "M051",
+    "M053",
+    "M127",
+    "M171",
+    "M176",
+    "M216",
+    "M402"
+   ],
+   "Chanhu-daro": [
+    "M012",
+    "M015",
+    "M028",
+    "M070",
+    "M091",
+    "M124",
+    "M244",
+    "M254",
+    "M287",
+    "M403"
+   ],
+   "Kalibangan": [
+    "M025",
+    "M125",
+    "M126",
+    "M130",
+    "M149",
+    "M150",
+    "M155",
+    "M197",
+    "M294",
+    "M344"
+   ]
+  },
+  "pooled_top60_source": "pooled mapped-token frequency over the Arm A eligible population (eligible records at the five non-Harappa analysis sites)"
+ },
+ "arm_b_site_equal": {
+  "sites": [
+   "Harappa",
+   "Mohenjo-daro",
+   "Dholavira",
+   "Lothal",
+   "Chanhu-daro",
+   "Kalibangan"
+  ],
+  "records": 3030,
+  "site_totals": {
+   "Harappa": 1437,
+   "Mohenjo-daro": 1302,
+   "Dholavira": 111,
+   "Lothal": 74,
+   "Chanhu-daro": 54,
+   "Kalibangan": 52
+  },
+  "quota_per_site": 52,
+  "quota_is_min_site_total": true,
+  "inscriptions_per_draw": 312,
+  "loso_quota_feasible": {
+   "Harappa": true,
+   "Mohenjo-daro": true,
+   "Dholavira": true,
+   "Lothal": true,
+   "Chanhu-daro": true,
+   "Kalibangan": true
+  },
+  "positive_control_sign_sets": {
+   "Harappa": [
+    "M059",
+    "M086",
+    "M087",
+    "M089",
+    "M122",
+    "M123",
+    "M176",
+    "M267",
+    "M328",
+    "M342"
+   ],
+   "Mohenjo-daro": [
+    "M065",
+    "M067",
+    "M072",
+    "M121",
+    "M211",
+    "M249",
+    "M336",
+    "M343",
+    "M387",
+    "M391"
+   ],
+   "Dholavira": [
+    "M001",
+    "M008",
+    "M015",
+    "M048",
+    "M053",
+    "M095",
+    "M171",
+    "M216",
+    "M293",
+    "M402"
+   ],
+   "Lothal": [
+    "M012",
+    "M017",
+    "M051",
+    "M070",
+    "M124",
+    "M127",
+    "M149",
+    "M244",
+    "M287",
+    "M403"
+   ],
+   "Chanhu-daro": [
+    "M025",
+    "M028",
+    "M091",
+    "M130",
+    "M150",
+    "M197",
+    "M254",
+    "M294",
+    "M307",
+    "M341"
+   ],
+   "Kalibangan": [
+    "M125",
+    "M126",
+    "M155",
+    "M173",
+    "M180",
+    "M204",
+    "M233",
+    "M327",
+    "M344",
+    "M345"
+   ]
+  },
+  "pooled_top60_source": "pooled mapped-token frequency over the full eligible population (the Phase-392 ranking)"
+ },
+ "arm_c_harappa_counts": {
+  "records": 1437,
+  "cells": {
+   "Harappa|SEAL": 361,
+   "Harappa|TAB": 1076
+  },
+  "legible_tokens_by_type": {
+   "TAB": 2857,
+   "SEAL": 1582
+  },
+  "share_of_analysis_records": 0.4743
+ }
+}

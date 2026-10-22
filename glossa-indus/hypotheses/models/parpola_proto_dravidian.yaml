@@ -136,3 +136,17 @@ competing_claims:
     resolution: >
       Pali MIA (Indo-Aryan proxy) scores below Dravidian AND below Sanskrit.
       Sanskrit loses to Dravidian on both M77 and V3 corpora.
+
+# Spec 029 Phase D (OD-1, 2026-10-12): additive stage stamp —
+# appended by migrate_phase_d_restaging.py; no pre-existing line altered.
+stage: "created"
+stage_source: "specs/029-tao-claim-lifecycle/reclassification-ledger.json:HYP-parpola_proto_dravidian"
+stage_as_of: "2026-10-12"
+verified_unexplained: false
+stage_history:
+  - from_stage: null
+    to_stage: "created"
+    actor: "spec029-phase-d-restaging-migration"
+    timestamp: "2026-10-12"
+    evidence_refs: ["specs/029-tao-claim-lifecycle/reclassification-ledger.json:HYP-parpola_proto_dravidian"]
+    reason: "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry HYP-parpola_proto_dravidian; no pre-existing field altered."

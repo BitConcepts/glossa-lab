@@ -1,0 +1,1066 @@
+{
+ "phase": "Phase-139",
+ "spec": "025",
+ "test": "Covariate audit + harmonization (FROZEN 2026-10-10, spec.md sec.11 adjudication). Margins only: no association statistic, no repertoire comparison, no G1 computation.",
+ "input": {
+  "path": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/horus84-computational-linguistics/data/inscriptions.csv",
+  "sha256": "c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef",
+  "rows": 5679,
+  "layer_label": "ICIT-lineage layer (horus84)"
+ },
+ "anchors_sha256": "eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed",
+ "population": {
+  "definition": "Phase-137 F3: eligible sites (>= 30 inscriptions AND >= 100 parsed tokens), rows with >= 1 parsed token.",
+  "eligible_sites": [
+   "Chanhu-daro",
+   "Dholavira",
+   "Harappa",
+   "Kalibangan",
+   "Lothal",
+   "Mohenjo-daro",
+   "Nausharo"
+  ],
+  "per_site_inscriptions": {
+   "Chanhu-daro": 74,
+   "Dholavira": 238,
+   "Harappa": 2717,
+   "Kalibangan": 212,
+   "Lothal": 208,
+   "Mohenjo-daro": 1923,
+   "Nausharo": 38
+  },
+  "inscriptions": 5410,
+  "parsed_tokens": 19051
+ },
+ "spec_sec3_reproduction": {
+  "full_layer": {
+   "n": 5679,
+   "period_informative": 2318,
+   "phase_informative": 2652,
+   "period_and_phase": 1799,
+   "chron_union": 3171,
+   "all_three": 921,
+   "depth_parseable": 2808,
+   "preservation_informative": 5670,
+   "period_pct": 40.8,
+   "phase_pct": 46.7,
+   "depth_pct": 49.4,
+   "preservation_pct": 99.8
+  },
+  "f3_population": {
+   "n": 5410,
+   "period_informative": 2266,
+   "phase_informative": 2638,
+   "period_and_phase": 1788,
+   "chron_union": 3116,
+   "all_three": 916,
+   "depth_parseable": 2770,
+   "preservation_informative": 5404,
+   "period_pct": 41.9,
+   "phase_pct": 48.8,
+   "period_and_phase_pct": 33.0,
+   "chron_union_pct": 57.6,
+   "all_three_pct": 16.9,
+   "depth_pct": 51.2,
+   "preservation_pct": 99.9
+  },
+  "count_fields_match_spec_sec3": true,
+  "deltas": [
+   "chron_union_pct: draft prints 57.7%; the exact union count is 3,116 = 57.6%. The draft figure is the sum of rounded percentages (41.9 + 48.8 - 33.0 = 57.7). Counts agree exactly; no substantive delta.",
+   "depth_pct: draft prints 48.1% (full) / 49.9% (F3 population). This audit's documented parse (VALUE/RANGE/DECIMAL_DOTDOT/SURFACE/UNITLESS) gives 49.5% / 51.2%; a digit+unit-only rule gives 48.2% / 50.0%. The draft's exact rule was not recoverable; the bracket is [draft, this audit] and the depth gate classification (SENSITIVITY) is identical under every definition in the bracket.",
+   "all_three_pct: draft prints 16.8%; this audit computes 16.9% — a knock-on of the depth definition above."
+  ],
+  "matches_spec_sec3": true
+ },
+ "raw_field_margins": {
+  "period": {
+   "levels": {
+    "1": 4,
+    "2": 190,
+    "2/3": 7,
+    "3": 1026,
+    "3/4": 1,
+    "4": 41,
+    "4/5": 16,
+    "5": 44,
+    "5/6": 1,
+    "5?": 1,
+    "6": 36,
+    "A": 3,
+    "Early": 48,
+    "II": 1,
+    "Intermediate": 425,
+    "Late": 330,
+    "Layer 10": 2,
+    "Layer 11": 2,
+    "Layer 12": 1,
+    "Layer 13": 3,
+    "Layer 15": 2,
+    "Layer 19": 1,
+    "Layer 2": 29,
+    "Layer 25": 1,
+    "Layer 3": 17,
+    "Layer 3-8": 1,
+    "Layer 4": 13,
+    "Layer 4-6": 1,
+    "Layer 5": 3,
+    "Layer 6": 5,
+    "Layer 6A": 1,
+    "Layer 7": 3,
+    "Layer 8": 2,
+    "Layer 8C": 1,
+    "Layer 9": 3,
+    "Layer13": 1,
+    "UNRECORDED": 3144
+   },
+   "recorded_total": 2266,
+   "per_site": {
+    "Chanhu-daro": {
+     "n": 74,
+     "levels": {
+      "1": 0,
+      "2": 0,
+      "2/3": 0,
+      "3": 0,
+      "3/4": 0,
+      "4": 0,
+      "4/5": 0,
+      "5": 0,
+      "5/6": 0,
+      "5?": 0,
+      "6": 0,
+      "A": 0,
+      "Early": 0,
+      "II": 0,
+      "Intermediate": 0,
+      "Late": 0,
+      "Layer 10": 0,
+      "Layer 11": 0,
+      "Layer 12": 0,
+      "Layer 13": 0,
+      "Layer 15": 0,
+      "Layer 19": 0,
+      "Layer 2": 0,
+      "Layer 25": 0,
+      "Layer 3": 0,
+      "Layer 3-8": 0,
+      "Layer 4": 0,
+      "Layer 4-6": 0,
+      "Layer 5": 0,
+      "Layer 6": 0,
+      "Layer 6A": 0,
+      "Layer 7": 0,
+      "Layer 8": 0,
+      "Layer 8C": 0,
+      "Layer 9": 0,
+      "Layer13": 0,
+      "UNRECORDED": 74
+     },
+     "recorded": 0
+    },
+    "Dholavira": {
+     "n": 238,
+     "levels": {
+      "1": 1,
+      "2": 2,
+      "2/3": 0,
+      "3": 1,
+      "3/4": 0,
+      "4": 40,
+      "4/5": 13,
+      "5": 44,
+      "5/6": 1,
+      "5?": 1,
+      "6": 36,
+      "A": 0,
+      "Early": 0,
+      "II": 0,
+      "Intermediate": 0,
+      "Late": 0,
+      "Layer 10": 0,
+      "Layer 11": 0,
+      "Layer 12": 0,
+      "Layer 13": 0,
+      "Layer 15": 0,
+      "Layer 19": 0,
+      "Layer 2": 0,
+      "Layer 25": 0,
+      "Layer 3": 0,
+      "Layer 3-8": 0,
+      "Layer 4": 0,
+      "Layer 4-6": 0,
+      "Layer 5": 0,
+      "Layer 6": 0,
+      "Layer 6A": 0,
+      "Layer 7": 0,
+      "Layer 8": 0,
+      "Layer 8C": 0,
+      "Layer 9": 0,
+      "Layer13": 0,
+      "UNRECORDED": 99
+     },
+     "recorded": 139
+    },
+    "Harappa": {
+     "n": 2717,
+     "levels": {
+      "1": 2,
+      "2": 30,
+      "2/3": 7,
+      "3": 989,
+      "3/4": 1,
+      "4": 0,
+      "4/5": 3,
+      "5": 0,
+      "5/6": 0,
+      "5?": 0,
+      "6": 0,
+      "A": 0,
+      "Early": 0,
+      "II": 0,
+      "Intermediate": 0,
+      "Late": 0,
+      "Layer 10": 0,
+      "Layer 11": 0,
+      "Layer 12": 0,
+      "Layer 13": 0,
+      "Layer 15": 0,
+      "Layer 19": 0,
+      "Layer 2": 0,
+      "Layer 25": 0,
+      "Layer 3": 0,
+      "Layer 3-8": 0,
+      "Layer 4": 0,
+      "Layer 4-6": 0,
+      "Layer 5": 0,
+      "Layer 6": 0,
+      "Layer 6A": 0,
+      "Layer 7": 0,
+      "Layer 8": 0,
+      "Layer 8C": 0,
+      "Layer 9": 0,
+      "Layer13": 0,
+      "UNRECORDED": 1685
+     },
+     "recorded": 1032
+    },
+    "Kalibangan": {
+     "n": 212,
+     "levels": {
+      "1": 1,
+      "2": 157,
+      "2/3": 0,
+      "3": 0,
+      "3/4": 0,
+      "4": 0,
+      "4/5": 0,
+      "5": 0,
+      "5/6": 0,
+      "5?": 0,
+      "6": 0,
+      "A": 0,
+      "Early": 0,
+      "II": 0,
+      "Intermediate": 0,
+      "Late": 0,
+      "Layer 10": 0,
+      "Layer 11": 0,
+      "Layer 12": 0,
+      "Layer 13": 0,
+      "Layer 15": 0,
+      "Layer 19": 0,
+      "Layer 2": 0,
+      "Layer 25": 0,
+      "Layer 3": 0,
+      "Layer 3-8": 0,
+      "Layer 4": 0,
+      "Layer 4-6": 0,
+      "Layer 5": 0,
+      "Layer 6": 0,
+      "Layer 6A": 0,
+      "Layer 7": 0,
+      "Layer 8": 0,
+      "Layer 8C": 0,
+      "Layer 9": 0,
+      "Layer13": 0,
+      "UNRECORDED": 54
+     },
+     "recorded": 158
+    },
+    "Lothal": {
+     "n": 208,
+     "levels": {
+      "1": 0,
+      "2": 0,
+      "2/3": 0,
+      "3": 0,
+      "3/4": 0,
+      "4": 0,
+      "4/5": 0,
+      "5": 0,
+      "5/6": 0,
+      "5?": 0,
+      "6": 0,
+      "A": 3,
+      "Early": 0,
+      "II": 1,
+      "Intermediate": 0,
+      "Late": 0,
+      "Layer 10": 2,
+      "Layer 11": 2,
+      "Layer 12": 1,
+      "Layer 13": 3,
+      "Layer 15": 2,
+      "Layer 19": 1,
+      "Layer 2": 29,
+      "Layer 25": 1,
+      "Layer 3": 17,
+      "Layer 3-8": 1,
+      "Layer 4": 13,
+      "Layer 4-6": 1,
+      "Layer 5": 3,
+      "Layer 6": 5,
+      "Layer 6A": 1,
+      "Layer 7": 3,
+      "Layer 8": 2,
+      "Layer 8C": 1,
+      "Layer 9": 3,
+      "Layer13": 1,
+      "UNRECORDED": 112
+     },
+     "recorded": 96
+    },
+    "Mohenjo-daro": {
+     "n": 1923,
+     "levels": {
+      "1": 0,
+      "2": 0,
+      "2/3": 0,
+      "3": 0,
+      "3/4": 0,
+      "4": 0,
+      "4/5": 0,
+      "5": 0,
+      "5/6": 0,
+      "5?": 0,
+      "6": 0,
+      "A": 0,
+      "Early": 48,
+      "II": 0,
+      "Intermediate": 425,
+      "Late": 330,
+      "Layer 10": 0,
+      "Layer 11": 0,
+      "Layer 12": 0,
+      "Layer 13": 0,
+      "Layer 15": 0,
+      "Layer 19": 0,
+      "Layer 2": 0,
+      "Layer 25": 0,
+      "Layer 3": 0,
+      "Layer 3-8": 0,
+      "Layer 4": 0,
+      "Layer 4-6": 0,
+      "Layer 5": 0,
+      "Layer 6": 0,
+      "Layer 6A": 0,
+      "Layer 7": 0,
+      "Layer 8": 0,
+      "Layer 8C": 0,
+      "Layer 9": 0,
+      "Layer13": 0,
+      "UNRECORDED": 1120
+     },
+     "recorded": 803
+    },
+    "Nausharo": {
+     "n": 38,
+     "levels": {
+      "1": 0,
+      "2": 1,
+      "2/3": 0,
+      "3": 36,
+      "3/4": 0,
+      "4": 1,
+      "4/5": 0,
+      "5": 0,
+      "5/6": 0,
+      "5?": 0,
+      "6": 0,
+      "A": 0,
+      "Early": 0,
+      "II": 0,
+      "Intermediate": 0,
+      "Late": 0,
+      "Layer 10": 0,
+      "Layer 11": 0,
+      "Layer 12": 0,
+      "Layer 13": 0,
+      "Layer 15": 0,
+      "Layer 19": 0,
+      "Layer 2": 0,
+      "Layer 25": 0,
+      "Layer 3": 0,
+      "Layer 3-8": 0,
+      "Layer 4": 0,
+      "Layer 4-6": 0,
+      "Layer 5": 0,
+      "Layer 6": 0,
+      "Layer 6A": 0,
+      "Layer 7": 0,
+      "Layer 8": 0,
+      "Layer 8C": 0,
+      "Layer 9": 0,
+      "Layer13": 0,
+      "UNRECORDED": 0
+     },
+     "recorded": 38
+    }
+   }
+  },
+  "phase": {
+   "levels": {
+    "A": 1,
+    "A-C": 3,
+    "B": 188,
+    "B/C": 402,
+    "B?": 6,
+    "C": 170,
+    "Early": 11,
+    "F": 1,
+    "I": 270,
+    "IA": 4,
+    "IB": 10,
+    "II": 210,
+    "II-III": 13,
+    "II/III": 1,
+    "III": 376,
+    "III?": 1,
+    "IV": 16,
+    "Late": 103,
+    "Middle": 11,
+    "Ravi": 1,
+    "Stratum I": 67,
+    "Stratum II": 135,
+    "Stratum III": 142,
+    "Stratum IV": 170,
+    "Stratum V": 155,
+    "Stratum VI": 159,
+    "Stratum VII": 9,
+    "V": 3,
+    "UNRECORDED": 2772
+   },
+   "recorded_total": 2638,
+   "per_site": {
+    "Chanhu-daro": {
+     "n": 74,
+     "levels": {
+      "A": 0,
+      "A-C": 0,
+      "B": 0,
+      "B/C": 0,
+      "B?": 0,
+      "C": 0,
+      "Early": 0,
+      "F": 0,
+      "I": 0,
+      "IA": 0,
+      "IB": 0,
+      "II": 0,
+      "II-III": 0,
+      "II/III": 0,
+      "III": 0,
+      "III?": 0,
+      "IV": 0,
+      "Late": 0,
+      "Middle": 0,
+      "Ravi": 0,
+      "Stratum I": 0,
+      "Stratum II": 0,
+      "Stratum III": 0,
+      "Stratum IV": 0,
+      "Stratum V": 0,
+      "Stratum VI": 0,
+      "Stratum VII": 0,
+      "V": 0,
+      "UNRECORDED": 74
+     },
+     "recorded": 0
+    },
+    "Dholavira": {
+     "n": 238,
+     "levels": {
+      "A": 0,
+      "A-C": 0,
+      "B": 0,
+      "B/C": 0,
+      "B?": 0,
+      "C": 0,
+      "Early": 0,
+      "F": 1,
+      "I": 0,
+      "IA": 0,
+      "IB": 0,
+      "II": 0,
+      "II-III": 0,
+      "II/III": 0,
+      "III": 0,
+      "III?": 0,
+      "IV": 0,
+      "Late": 0,
+      "Middle": 0,
+      "Ravi": 0,
+      "Stratum I": 0,
+      "Stratum II": 0,
+      "Stratum III": 0,
+      "Stratum IV": 0,
+      "Stratum V": 0,
+      "Stratum VI": 0,
+      "Stratum VII": 0,
+      "V": 0,
+      "UNRECORDED": 237
+     },
+     "recorded": 1
+    },
+    "Harappa": {
+     "n": 2717,
+     "levels": {
+      "A": 1,
+      "A-C": 3,
+      "B": 186,
+      "B/C": 402,
+      "B?": 6,
+      "C": 169,
+      "Early": 0,
+      "F": 0,
+      "I": 0,
+      "IA": 0,
+      "IB": 0,
+      "II": 0,
+      "II-III": 0,
+      "II/III": 0,
+      "III": 0,
+      "III?": 0,
+      "IV": 0,
+      "Late": 0,
+      "Middle": 0,
+      "Ravi": 1,
+      "Stratum I": 67,
+      "Stratum II": 135,
+      "Stratum III": 142,
+      "Stratum IV": 170,
+      "Stratum V": 155,
+      "Stratum VI": 159,
+      "Stratum VII": 9,
+      "V": 0,
+      "UNRECORDED": 1112
+     },
+     "recorded": 1605
+    },
+    "Kalibangan": {
+     "n": 212,
+     "levels": {
+      "A": 0,
+      "A-C": 0,
+      "B": 0,
+      "B/C": 0,
+      "B?": 0,
+      "C": 0,
+      "Early": 11,
+      "F": 0,
+      "I": 0,
+      "IA": 0,
+      "IB": 0,
+      "II": 0,
+      "II-III": 0,
+      "II/III": 0,
+      "III": 0,
+      "III?": 0,
+      "IV": 0,
+      "Late": 103,
+      "Middle": 11,
+      "Ravi": 0,
+      "Stratum I": 0,
+      "Stratum II": 0,
+      "Stratum III": 0,
+      "Stratum IV": 0,
+      "Stratum V": 0,
+      "Stratum VI": 0,
+      "Stratum VII": 0,
+      "V": 0,
+      "UNRECORDED": 87
+     },
+     "recorded": 125
+    },
+    "Lothal": {
+     "n": 208,
+     "levels": {
+      "A": 0,
+      "A-C": 0,
+      "B": 0,
+      "B/C": 0,
+      "B?": 0,
+      "C": 0,
+      "Early": 0,
+      "F": 0,
+      "I": 3,
+      "IA": 0,
+      "IB": 0,
+      "II": 9,
+      "II-III": 13,
+      "II/III": 0,
+      "III": 61,
+      "III?": 0,
+      "IV": 16,
+      "Late": 0,
+      "Middle": 0,
+      "Ravi": 0,
+      "Stratum I": 0,
+      "Stratum II": 0,
+      "Stratum III": 0,
+      "Stratum IV": 0,
+      "Stratum V": 0,
+      "Stratum VI": 0,
+      "Stratum VII": 0,
+      "V": 3,
+      "UNRECORDED": 103
+     },
+     "recorded": 105
+    },
+    "Mohenjo-daro": {
+     "n": 1923,
+     "levels": {
+      "A": 0,
+      "A-C": 0,
+      "B": 0,
+      "B/C": 0,
+      "B?": 0,
+      "C": 0,
+      "Early": 0,
+      "F": 0,
+      "I": 267,
+      "IA": 4,
+      "IB": 10,
+      "II": 201,
+      "II-III": 0,
+      "II/III": 1,
+      "III": 315,
+      "III?": 1,
+      "IV": 0,
+      "Late": 0,
+      "Middle": 0,
+      "Ravi": 0,
+      "Stratum I": 0,
+      "Stratum II": 0,
+      "Stratum III": 0,
+      "Stratum IV": 0,
+      "Stratum V": 0,
+      "Stratum VI": 0,
+      "Stratum VII": 0,
+      "V": 0,
+      "UNRECORDED": 1124
+     },
+     "recorded": 799
+    },
+    "Nausharo": {
+     "n": 38,
+     "levels": {
+      "A": 0,
+      "A-C": 0,
+      "B": 2,
+      "B/C": 0,
+      "B?": 0,
+      "C": 1,
+      "Early": 0,
+      "F": 0,
+      "I": 0,
+      "IA": 0,
+      "IB": 0,
+      "II": 0,
+      "II-III": 0,
+      "II/III": 0,
+      "III": 0,
+      "III?": 0,
+      "IV": 0,
+      "Late": 0,
+      "Middle": 0,
+      "Ravi": 0,
+      "Stratum I": 0,
+      "Stratum II": 0,
+      "Stratum III": 0,
+      "Stratum IV": 0,
+      "Stratum V": 0,
+      "Stratum VI": 0,
+      "Stratum VII": 0,
+      "V": 0,
+      "UNRECORDED": 35
+     },
+     "recorded": 3
+    }
+   }
+  }
+ },
+ "chron_band": {
+  "class": "C (constructed context, sec.8.5)",
+  "margins": {
+   "levels": {
+    "early": 85,
+    "middle": 1774,
+    "late": 408,
+    "UNRECORDED": 3143
+   },
+   "recorded_total": 2267,
+   "per_site": {
+    "Chanhu-daro": {
+     "n": 74,
+     "levels": {
+      "early": 0,
+      "middle": 0,
+      "late": 0,
+      "UNRECORDED": 74
+     },
+     "recorded": 0
+    },
+    "Dholavira": {
+     "n": 238,
+     "levels": {
+      "early": 4,
+      "middle": 97,
+      "late": 36,
+      "UNRECORDED": 101
+     },
+     "recorded": 137
+    },
+    "Harappa": {
+     "n": 2717,
+     "levels": {
+      "early": 32,
+      "middle": 989,
+      "late": 3,
+      "UNRECORDED": 1693
+     },
+     "recorded": 1024
+    },
+    "Kalibangan": {
+     "n": 212,
+     "levels": {
+      "early": 1,
+      "middle": 157,
+      "late": 0,
+      "UNRECORDED": 54
+     },
+     "recorded": 158
+    },
+    "Lothal": {
+     "n": 208,
+     "levels": {
+      "early": 0,
+      "middle": 105,
+      "late": 3,
+      "UNRECORDED": 100
+     },
+     "recorded": 108
+    },
+    "Mohenjo-daro": {
+     "n": 1923,
+     "levels": {
+      "early": 48,
+      "middle": 425,
+      "late": 330,
+      "UNRECORDED": 1120
+     },
+     "recorded": 803
+    },
+    "Nausharo": {
+     "n": 38,
+     "levels": {
+      "early": 0,
+      "middle": 1,
+      "late": 36,
+      "UNRECORDED": 1
+     },
+     "recorded": 37
+    }
+   }
+  },
+  "period_phase_band_conflicts": 0,
+  "mapping_cells": 33
+ },
+ "depth_band": {
+  "margins": {
+   "levels": {
+    "shallow": 924,
+    "middle": 922,
+    "deep": 919,
+    "UNRECORDED": 2645
+   },
+   "recorded_total": 2765,
+   "per_site": {
+    "Chanhu-daro": {
+     "n": 74,
+     "levels": {
+      "shallow": 24,
+      "middle": 23,
+      "deep": 23,
+      "UNRECORDED": 4
+     },
+     "recorded": 70
+    },
+    "Dholavira": {
+     "n": 238,
+     "levels": {
+      "shallow": 33,
+      "middle": 32,
+      "deep": 31,
+      "UNRECORDED": 142
+     },
+     "recorded": 96
+    },
+    "Harappa": {
+     "n": 2717,
+     "levels": {
+      "shallow": 352,
+      "middle": 352,
+      "deep": 351,
+      "UNRECORDED": 1662
+     },
+     "recorded": 1055
+    },
+    "Kalibangan": {
+     "n": 212,
+     "levels": {
+      "shallow": 19,
+      "middle": 19,
+      "deep": 19,
+      "UNRECORDED": 155
+     },
+     "recorded": 57
+    },
+    "Lothal": {
+     "n": 208,
+     "levels": {
+      "shallow": 34,
+      "middle": 34,
+      "deep": 33,
+      "UNRECORDED": 107
+     },
+     "recorded": 101
+    },
+    "Mohenjo-daro": {
+     "n": 1923,
+     "levels": {
+      "shallow": 462,
+      "middle": 462,
+      "deep": 462,
+      "UNRECORDED": 537
+     },
+     "recorded": 1386
+    },
+    "Nausharo": {
+     "n": 38,
+     "levels": {
+      "shallow": 0,
+      "middle": 0,
+      "deep": 0,
+      "UNRECORDED": 38
+     },
+     "recorded": 0
+    }
+   }
+  },
+  "parse_categories": {
+   "COLON_FT_IN": 1,
+   "DECIMAL_DOTDOT": 9,
+   "MISSING": 2639,
+   "RANGE": 10,
+   "SURFACE": 50,
+   "UNITLESS": 16,
+   "UNPARSED": 1,
+   "VALUE": 2684
+  },
+  "parse_examples": {
+   "MISSING": "- -",
+   "VALUE": "+10.8 ft",
+   "UNITLESS": "0 -",
+   "DECIMAL_DOTDOT": "-7..75 ft",
+   "SURFACE": "surface -",
+   "COLON_FT_IN": "-4:0 ft",
+   "RANGE": "97-110 cm",
+   "UNPARSED": "- ft"
+  },
+  "banding": {
+   "group_sizes": {
+    "Chanhu-daro|ft": 70,
+    "Dholavira|cm": 85,
+    "Dholavira|unspecified": 11,
+    "Harappa|ft": 998,
+    "Harappa|m": 57,
+    "Harappa|unspecified": 2,
+    "Kalibangan|m": 57,
+    "Kalibangan|unspecified": 3,
+    "Lothal|ft": 101,
+    "Mohenjo-daro|ft": 1386
+   },
+   "groups_banded": 8,
+   "rows_in_small_groups_unbanded": 5,
+   "boundary_tie_rows": 145,
+   "min_group_size_for_banding": 9
+  }
+ },
+ "preservation": {
+  "margins": {
+   "levels": {
+    "complete": 3046,
+    "fragment": 1761,
+    "damaged": 597,
+    "UNRECORDED": 6
+   },
+   "recorded_total": 5404,
+   "per_site": {
+    "Chanhu-daro": {
+     "n": 74,
+     "levels": {
+      "complete": 53,
+      "fragment": 13,
+      "damaged": 8,
+      "UNRECORDED": 0
+     },
+     "recorded": 74
+    },
+    "Dholavira": {
+     "n": 238,
+     "levels": {
+      "complete": 87,
+      "fragment": 124,
+      "damaged": 26,
+      "UNRECORDED": 1
+     },
+     "recorded": 237
+    },
+    "Harappa": {
+     "n": 2717,
+     "levels": {
+      "complete": 1529,
+      "fragment": 949,
+      "damaged": 238,
+      "UNRECORDED": 1
+     },
+     "recorded": 2716
+    },
+    "Kalibangan": {
+     "n": 212,
+     "levels": {
+      "complete": 84,
+      "fragment": 114,
+      "damaged": 14,
+      "UNRECORDED": 0
+     },
+     "recorded": 212
+    },
+    "Lothal": {
+     "n": 208,
+     "levels": {
+      "complete": 75,
+      "fragment": 110,
+      "damaged": 23,
+      "UNRECORDED": 0
+     },
+     "recorded": 208
+    },
+    "Mohenjo-daro": {
+     "n": 1923,
+     "levels": {
+      "complete": 1200,
+      "fragment": 432,
+      "damaged": 287,
+      "UNRECORDED": 4
+     },
+     "recorded": 1919
+    },
+    "Nausharo": {
+     "n": 38,
+     "levels": {
+      "complete": 18,
+      "fragment": 19,
+      "damaged": 1,
+      "UNRECORDED": 0
+     },
+     "recorded": 38
+    }
+   }
+  },
+  "collapse_rule": "complete -> complete; fragment -> fragment; chipped / slightly chipped / partly damaged -> damaged; '-' or blank -> UNRECORDED. Original spellings retained per row in the dataset."
+ },
+ "gate": {
+  "thresholds": {
+   "min_recorded_coverage": 0.7,
+   "min_sites_with_recorded": 3,
+   "min_recorded_per_site": 30,
+   "min_permutable": 1000
+  },
+  "per_covariate": {
+   "chron_band": {
+    "recorded": 2267,
+    "population": 5410,
+    "recorded_coverage": 0.4190388170055453,
+    "sites_with_ge30_recorded": 6,
+    "permutable_inscriptions": 5342,
+    "arms": {
+     "i_recorded_coverage_ge_0.70": false,
+     "ii_sites_with_ge30_recorded_ge_3": true,
+     "iii_permutable_ge_1000": true
+    },
+    "passes": false,
+    "permutable_recorded_only": 2199
+   },
+   "depth_band": {
+    "recorded": 2765,
+    "population": 5410,
+    "recorded_coverage": 0.511090573012939,
+    "sites_with_ge30_recorded": 6,
+    "permutable_inscriptions": 5406,
+    "arms": {
+     "i_recorded_coverage_ge_0.70": false,
+     "ii_sites_with_ge30_recorded_ge_3": true,
+     "iii_permutable_ge_1000": true
+    },
+    "passes": false,
+    "permutable_recorded_only": 2761
+   },
+   "preservation": {
+    "recorded": 5404,
+    "population": 5410,
+    "recorded_coverage": 0.9988909426987062,
+    "sites_with_ge30_recorded": 7,
+    "permutable_inscriptions": 5404,
+    "arms": {
+     "i_recorded_coverage_ge_0.70": true,
+     "ii_sites_with_ge30_recorded_ge_3": true,
+     "iii_permutable_ge_1000": true
+    },
+    "passes": true,
+    "permutable_recorded_only": 5402
+   }
+  },
+  "classifications": {
+   "chron_band": "SENSITIVITY",
+   "depth_band": "SENSITIVITY",
+   "preservation": "PRIMARY CONTROL"
+  }
+ },
+ "verdict": {
+  "word": "ESTIMABLE",
+  "statement": "G1 is ESTIMABLE under the sec.4.2 routing rule: exactly one covariate (preservation) passes the frozen eligibility gate, so the primary strata are composition (Phase-137 type class x length class) x preservation, with UNRECORDED retained as a stratum level. Gate-failing approved covariates route to the sensitivity panel (EXPLORATORY, reported as bounds, never as the controlled verdict). Chronology is NOT controlled in the primary test and must be named as an uncontrolled confounder in every G1 headline.",
+  "primary_control_set": [
+   "preservation"
+  ],
+  "primary_strata": "composition (Phase-137 type class x length class) x preservation",
+  "sensitivity_panel": [
+   "chron_band",
+   "depth_band"
+  ]
+ },
+ "fence": "No chi-square, odds ratio, permutation, or any other association quantity was computed in this phase; sign tokens were used only to reproduce the Phase-137 population and composition strata.",
+ "publication_note": "Per adjudication Q6 and the executing instruction, publication rides with the Spec 025 outcome record (G1 executed, or the NOT ESTIMABLE closeout); Phase-139 alone triggers no release.",
+ "ai_disclosure": "Produced by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution section VI."
+}

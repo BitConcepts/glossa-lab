@@ -7,6 +7,11 @@ Endpoints
 GET  /library                   List registered literature documents
 GET  /claims                    List extracted claims (with filters)
 GET  /claims/aee-scores         AEE-library scoring of all extracted claims
+GET  /claims/{id}/trail         Per-claim inspectable trail (Spec 029 Phase C)
+POST /priority-register         Priority-register intake (Spec 029 Phase C, OD-6)
+GET  /priority-register         Public priority register (sealed-safe)
+POST /priority-register/{id}/extend   Extend reveal date (once only)
+POST /priority-register/{id}/unseal   Unseal by claimant publication
 GET  /hypotheses                List hypothesis model summaries
 
 POST /upload                    Upload a PDF → run intake
@@ -164,13 +169,34 @@ async def list_claims(
     limit: int = 200,
     offset: int = 0,
     aee: bool = False,
+    verified_unexplained: bool | None = None,
 ) -> dict[str, Any]:
     """List all extracted claims across all registered documents.
 
     With ``?aee=true`` each returned claim gains an additive ``aee_score``
     field scored by the Applied Epistemic Engineering library
     (``glossa_lab.aee_core``); the default response shape is unchanged.
+
+    Spec 029 (FR-029-01/03): every returned claim also carries its
+    lane-2 lifecycle ``stage`` serialized as a distinct object (stage
+    value, provenance, and history summary — ``stage: None`` until a
+    record is stamped; a stage is never invented here) and the computed
+    ``verified_unexplained`` risk flag, which the
+    ``?verified_unexplained=true/false`` parameter can filter on.
+    The lane-1 score, when requested, stays a separate object
+    (``aee_score`` / ``lane1_score``) — never folded into ``stage``.
+
+    Spec 029 Phase E2 (FR-029-05/09): each claim additionally carries
+    ``not_understood`` (the record's own statement, or ``None`` when
+    no human has authored one — the absence is serialized, never
+    filled with generated text) with ``not_understood_recorded``, and
+    ``bundle``: the Phase B bundle serialization for bundle parents
+    (the contest travels with the parent), ``None`` for records that
+    are not bundle parents.
     """
+    from glossa_lab.claim_bundle import is_bundle, serialize_bundle  # noqa: PLC0415
+    from glossa_lab.claim_stage import compute_verified_unexplained, serialize_stage  # noqa: PLC0415
+
     _CLAIMS_DIR.mkdir(parents=True, exist_ok=True)
     all_claims: list[dict[str, Any]] = []
     for f in sorted(_CLAIMS_DIR.glob("*.json")):
@@ -191,19 +217,64 @@ async def list_claims(
                 signs_involved = " ".join(claim.get("signs_involved") or [])
                 if sign.lower() not in signs_involved.lower():
                     continue
-            all_claims.append({
+            entry = {
                 **claim,
                 "_source_file": f.stem,
-            })
+            }
+            entry["stage"] = serialize_stage(claim)
+            entry["verified_unexplained"] = compute_verified_unexplained(claim)
+            # Phase E2: the not-understood statement travels with the
+            # verdict display. Absence is serialized as None — it is a
+            # stated gap in the record, never filled in here.
+            _nu = claim.get("not_understood")
+            entry["not_understood"] = _nu if isinstance(_nu, str) and _nu.strip() else None
+            entry["not_understood_recorded"] = entry["not_understood"] is not None
+            # Phase E2: a bundle parent's contest state renders on the
+            # parent wherever the parent renders (FR-029-05).
+            entry["bundle"] = None
+            entry["bundle_serialization_error"] = None
+            if is_bundle(claim):
+                try:
+                    entry["bundle"] = serialize_bundle(claim)
+                except Exception as exc:  # noqa: BLE001 — a malformed bundle must not 500 the listing; the failure is serialized, not hidden
+                    entry["bundle_serialization_error"] = str(exc)
+            if verified_unexplained is not None and entry["verified_unexplained"] != verified_unexplained:
+                continue
+            all_claims.append(entry)
 
     total = len(all_claims)
     page = all_claims[offset: offset + limit]
     if aee and page:
         from glossa_lab.aee_core import score_claim_dicts  # noqa: PLC0415
 
-        scores = score_claim_dicts(page)
+        # Score the raw records, not the serialized entries: on an
+        # entry, ``stage`` is the serialized stage object, while the
+        # AEE adapter reads the record's flat stage fields.
+        raw_page = []
         for claim in page:
-            claim["aee_score"] = scores.get(str(claim.get("claim_id") or ""))
+            raw = dict(claim)
+            stage_obj = claim.get("stage") or {}
+            raw["stage"] = stage_obj.get("stage")
+            raw["stage_source"] = stage_obj.get("stage_source")
+            raw["stage_as_of"] = stage_obj.get("stage_as_of")
+            raw["stage_history"] = stage_obj.get("stage_history") or []
+            raw_page.append(raw)
+        scores = score_claim_dicts(raw_page)
+        for claim in page:
+            score = scores.get(str(claim.get("claim_id") or ""))
+            claim["aee_score"] = score
+            claim["lane1_score"] = score
+            # Recompute with the lane-1 score in hand: a high score
+            # band can fire the flag where the status alone did not.
+            # (claim["stage"] is the serialized stage object here, so
+            # the flag computation reads the raw stage value from it.)
+            claim["verified_unexplained"] = compute_verified_unexplained(
+                {
+                    "stage": claim["stage"].get("stage"),
+                    "claim_status": claim.get("claim_status"),
+                },
+                score=score,
+            )
     return {
         "claims": page,
         "total": total,
@@ -219,10 +290,252 @@ async def claims_aee_scores() -> dict[str, Any]:
     Scores are computed by the Applied Epistemic Engineering library via
     ``glossa_lab.aee_core.assessment_summary`` — see that module for the
     Glossa→AEE mapping. Existing endpoints are unaffected.
+
+    Spec 029 (FR-029-01/03): each per-claim entry serializes the lane-2
+    ``stage`` object and the lane-1 score (``aee_score`` /
+    ``lane1_score``) as distinct objects, plus the computed
+    ``verified_unexplained`` risk flag.
     """
     from glossa_lab.aee_core import assessment_summary  # noqa: PLC0415
 
     return assessment_summary(_CLAIMS_DIR)
+
+
+# ── Priority register (Spec 029 Phase C, FR-029-11 / OD-6) ───────────────────
+#
+# Runtime state only: the store and its seal key live under the
+# gitignored ``.glossa-state/`` directory (plan §5/§V — register
+# records live in the backend store; a claimant's contact is kept
+# private there and never serialized).
+
+_PRIORITY_STORE = _REPO_ROOT / ".glossa-state" / "priority_register.json"
+_PRIORITY_KEY = _REPO_ROOT / ".glossa-state" / "priority_register.key"
+_ANCHORS_FILE = _REPO_ROOT / "backend" / "reports" / "INDUS_FINAL_ANCHORS.json"
+
+
+def _load_priority_register():
+    from glossa_lab.priority_register import load_register  # noqa: PLC0415
+
+    return load_register(_PRIORITY_STORE, _PRIORITY_KEY)
+
+
+def _save_priority_register(register) -> None:
+    from glossa_lab.priority_register import save_register  # noqa: PLC0415
+
+    save_register(register, _PRIORITY_STORE)
+
+
+def _priority_error_status(exc: Exception) -> int:
+    return 404 if str(exc).startswith("no priority-register entry") else 400
+
+
+class PriorityIntakeBody(BaseModel):
+    claimant: str = ""
+    claimant_contact: str = ""
+    reading: str = ""
+    evidence: list[str] = []
+    claim_id: str | None = None
+    reveal_date: str | None = None
+    supersedes: str | None = None
+
+
+@router.post("/priority-register")
+async def priority_register_intake(body: PriorityIntakeBody) -> dict[str, Any]:
+    """File a reading in the priority register (OD-6: public at intake).
+
+    Issuance is on record completeness alone — no score, stage, or
+    verdict is required, implied, or stored. The response carries
+    the entry id and the public record (claimant + server
+    timestamp + SHA-256 of the reading); the content stays sealed.
+    """
+    from glossa_lab.priority_register import (  # noqa: PLC0415
+        PriorityRegisterError,
+        public_record,
+        serialize_entry,
+    )
+
+    register = _load_priority_register()
+    try:
+        entry = register.register(
+            claimant=body.claimant,
+            claimant_contact=body.claimant_contact,
+            reading=body.reading,
+            evidence=body.evidence,
+            claim_id=body.claim_id,
+            reveal_date=body.reveal_date,
+            supersedes=body.supersedes,
+        )
+    except PriorityRegisterError as exc:
+        raise HTTPException(status_code=_priority_error_status(exc), detail=str(exc)) from exc
+    _save_priority_register(register)
+    return {
+        "entry_id": entry["entry_id"],
+        "public_record": public_record(entry),
+        "entry": serialize_entry(entry),
+    }
+
+
+@router.get("/priority-register")
+async def priority_register_list() -> dict[str, Any]:
+    """The public register: public records + sealed-safe entry views.
+
+    Reading the register applies the reveal-date unseal trigger:
+    any entry whose reveal date has been reached is unsealed (and
+    the event recorded) before the listing is serialized. Sealed
+    entries expose no content and no contact detail.
+    """
+    from glossa_lab.priority_register import (  # noqa: PLC0415
+        public_record,
+        serialize_entry,
+    )
+
+    register = _load_priority_register()
+    if register.unseal_due():
+        _save_priority_register(register)
+    entries = [serialize_entry(e) for e in register.entries]
+    return {
+        "entries": entries,
+        "public_records": [public_record(e) for e in register.entries],
+        "total": len(entries),
+    }
+
+
+@router.get("/priority-register/{entry_id}")
+async def priority_register_get(entry_id: str) -> dict[str, Any]:
+    """One register entry, sealed-safe (content only once unsealed)."""
+    from glossa_lab.priority_register import (  # noqa: PLC0415
+        PriorityRegisterError,
+        serialize_entry,
+    )
+
+    register = _load_priority_register()
+    if register.unseal_due():
+        _save_priority_register(register)
+    try:
+        entry = register.get(entry_id)
+    except PriorityRegisterError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    return {"entry": serialize_entry(entry)}
+
+
+class PriorityExtendBody(BaseModel):
+    new_reveal_date: str
+
+
+@router.post("/priority-register/{entry_id}/extend")
+async def priority_register_extend(entry_id: str, body: PriorityExtendBody) -> dict[str, Any]:
+    """Extend an entry's reveal date — once only, as a dated record.
+
+    A refused extension is recorded in the entry's history before
+    the error is returned (the refusal is part of the register),
+    so the store is saved on both paths.
+    """
+    from glossa_lab.priority_register import (  # noqa: PLC0415
+        PriorityRegisterError,
+        serialize_entry,
+    )
+
+    register = _load_priority_register()
+    register.unseal_due()
+    try:
+        entry = register.extend_reveal_date(entry_id, body.new_reveal_date)
+    except PriorityRegisterError as exc:
+        _save_priority_register(register)
+        raise HTTPException(status_code=_priority_error_status(exc), detail=str(exc)) from exc
+    _save_priority_register(register)
+    return {"entry": serialize_entry(entry)}
+
+
+class PriorityUnsealBody(BaseModel):
+    reading: str = ""
+    evidence: list[str] = []
+
+
+@router.post("/priority-register/{entry_id}/unseal")
+async def priority_register_unseal(entry_id: str, body: PriorityUnsealBody) -> dict[str, Any]:
+    """Unseal by claimant publication: present the content.
+
+    The presented content unseals the entry only when its
+    canonical SHA-256 matches the hash published at intake;
+    a mismatched presentation is refused and recorded.
+    """
+    from glossa_lab.priority_register import (  # noqa: PLC0415
+        PriorityRegisterError,
+        serialize_entry,
+    )
+
+    register = _load_priority_register()
+    try:
+        entry = register.unseal_by_publication(
+            entry_id, reading=body.reading, evidence=body.evidence,
+        )
+    except PriorityRegisterError as exc:
+        _save_priority_register(register)
+        raise HTTPException(status_code=_priority_error_status(exc), detail=str(exc)) from exc
+    _save_priority_register(register)
+    return {"entry": serialize_entry(entry)}
+
+
+# ── Per-claim trail view (Spec 029 Phase C, FR-029-12) ────────────────────────
+
+@router.get("/claims/{claim_id}/trail")
+async def claim_trail(claim_id: str) -> dict[str, Any]:
+    """The per-claim inspectable trail for one claim or anchor.
+
+    Assembles (``glossa_lab.claim_trail``): stage + stage history
+    with source pointers, evidence refs with origin groups, the
+    falsifier state at decision time, actor and timestamp for
+    verdicts and stage transitions alike, bundle decomposition
+    and gate records when the claim is a bundle, the anchor
+    annotation when present, evidence instances, and any
+    priority-register entries filed against the claim (sealed
+    content cannot leak through this view).
+    """
+    from glossa_lab.claim_trail import build_claim_trail  # noqa: PLC0415
+
+    record: dict[str, Any] | None = None
+    record_kind = "claim"
+    strict_rule: dict[str, Any] | None = None
+    _CLAIMS_DIR.mkdir(parents=True, exist_ok=True)
+    for f in sorted(_CLAIMS_DIR.glob("*.json")):
+        try:
+            data = json.loads(f.read_text("utf-8"))
+        except Exception:
+            continue
+        for claim in data.get("claims", []):
+            if claim.get("claim_id") == claim_id:
+                record = claim
+                break
+        if record is not None:
+            break
+    if record is None and _ANCHORS_FILE.exists():
+        try:
+            anchors_data = json.loads(_ANCHORS_FILE.read_text("utf-8"))
+            anchor = (anchors_data.get("anchors") or {}).get(claim_id)
+        except Exception:
+            anchor = None
+        if isinstance(anchor, dict):
+            record = {**anchor, "claim_id": claim_id}
+            record_kind = "anchor"
+            annotation = (anchors_data.get("metadata") or {}).get(
+                "spec029_phase_h_annotation") or {}
+            strict_rule = annotation.get("strict_set_rule")
+    if record is None:
+        raise HTTPException(status_code=404, detail=f"no claim or anchor {claim_id!r}")
+
+    priority_entries: list[dict[str, Any]] = []
+    if _PRIORITY_STORE.exists():
+        register = _load_priority_register()
+        if register.unseal_due():
+            _save_priority_register(register)
+        priority_entries = register.entries_for_claim(claim_id)
+    return build_claim_trail(
+        record,
+        record_kind=record_kind,
+        claim_id=claim_id,
+        priority_entries=priority_entries,
+        strict_set_rule=strict_rule,
+    )
 
 
 # ── Hypotheses ────────────────────────────────────────────────────────────────

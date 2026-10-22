@@ -1,0 +1,211 @@
+{
+ "schema_version": "1.0",
+ "definition": {
+  "spec": "specs/053-yadav-zipf-controls/spec.md",
+  "freeze_doc": "specs/053-yadav-zipf-controls/freeze.md",
+  "experiment_id": "spec053-yadav-zipf-controls",
+  "register": {
+   "path": "specs/053-yadav-zipf-controls/claims.json",
+   "register_version": "0.7-draft",
+   "claims": 15,
+   "aee_hook_pass": "PASSED at the freeze act of 2026-10-21 under aee 1.5.0: after_specify cleared in adjudicated rounds (loadability recovery from 0.5-draft to 0.6-draft; 47 failure modes over 0.6-draft: 13 irreducibility, 19 independence-unmodelled, 15 FR-2.3 draft-cap records; recovery to 0.7-draft; one negation-conflict challenge (F053-C01/F053-C04) adjudicated as no contradiction and cleared by restating C04's head; then 15 draft-cap records only), after_plan and after_tasks clean at first pass; at every hook zero correctness failure modes and no claim below the 0.70 threshold (minimum propagated 0.72); the engine outcome word reads iterate solely from the draft-cap records (gate reading DD-053-19; record in specs/053-yadav-zipf-controls/aee/freeze-aee-note.md)"
+  },
+  "basis": {
+   "adjudication": "specs/053-yadav-zipf-controls/adjudication.md",
+   "decisions": "DECIDED by the owner on 2026-10-21 (not proposals): the runnable-experiments campaign plan approved AS WRITTEN (decision E-1, OSF at freeze; decision E-3, arm B trigger-armed and not a member) commissions the campaign of which design D-07 arm A is member 6; Spec 053 is D-07 arm A's specification. Freeze decisions DD-053-11 to DD-053-19 are recorded in adjudication.md section 8: the estimator ruling (DD-053-11, option (a) - the section 4.2 estimator specified completely at the freeze, the identical-to-Phase-43 reading retired); the strict corpus and population confirmed (DD-053-12); the control sources confirmed with gate 0.4 as the control tables' fixed pin source (DD-053-13); the census floors confirmed (DD-053-14); the comparison rule epsilon = 0 confirmed (DD-053-15); the Yule-Simon synthetic process confirmed (DD-053-16); the spec's own OSF contract registration filed at the freeze under E-1 (DD-053-17); Phase-413 allocated (DD-053-18); and the DD-038-10 AEE gate reading adopted as DD-053-19. DD-053-1, DD-053-2, DD-053-4, DD-053-5, DD-053-6, DD-053-9 and DD-053-10 stand as drafted."
+  },
+  "design": {
+   "phase": "Phase-413",
+   "act": "fit one identical Zipf-Mandelbrot estimator to the Indus strict corpus, the named non-linguistic control systems, and the Linear B positive control, under gates and rules frozen before any fit, and append the outcome to the claim's record as a dated strength label",
+   "claim_under_test": {
+    "id": "yadav_2009_arxiv_manual_001",
+    "normalised_claim": "Indus script sign frequencies follow a Zipf-Mandelbrot distribution",
+    "status": "strongly_supported",
+    "stage": "explained",
+    "recorded_exponent": "about 1.35",
+    "evidence_string": "Phase-43: V3 Zipf exponent ~1.35 (super-Zipfian)",
+    "falsification_condition": "If frequency distribution deviates from Zipf-Mandelbrot law",
+    "posture": "the claim stands on its recorded test; this spec appends a dated bounded finding (a strength label) and never re-adjudicates, edits, or supersedes the recorded status, exponent, or falsifier text"
+   },
+   "estimator_ruling": {
+    "dd": "DD-053-11 (decided at freeze, option (a))",
+    "ruling": "the freeze specifies the estimator of spec section 4.2 completely as a freeze-stage design decision; the identical-to-Phase-43 reading is RETIRED",
+    "phase43_evidence": {
+     "file": "outputs/phase43_all.json",
+     "sha256": "78a6c21908b9362854c54dd3d820d717be22feab3af11135663fa14aaf554fe4",
+     "bytes": 15047,
+     "contains_zipf_fit": false,
+     "finding": "the file carries the Phase-43 corpus census and its positional and SA tables and records no Zipf fit: no exponent, no Mandelbrot parameters, no fitting procedure; the word Zipf does not occur in it; no Phase-43 Zipf estimator script is on main"
+    },
+    "recorded_value_posture": "Yadav's recorded value of about 1.35 rests on the claim file's evidence string alone; this spec tests that recorded value under the named section 4.2 estimator, as context - it is not a reproduction target, and sensitivity S3 reports its fitted exponent beside the recorded value without adjudicating it",
+    "why_not_freeze_failure": "the spec's falsifier never depended on a Phase-43 fit: it fires iff at least one named non-linguistic control fits as well as or better than the Indus strict corpus under this spec's one estimator (spec sections 1.2 and 4.3), a comparison internal to this spec; the central comparison is fully defined without the retired identity",
+    "no_substitution_after_fitting": true
+   },
+   "estimator": {
+    "model": "f_hat(r) = C / (r + q)^alpha",
+    "normalisation": "C fixed by normalisation: sum of fitted counts = N; C is not a free parameter",
+    "objective": "minimise SSE = sum over ranks of (log f(r) - log f_hat(r))^2",
+    "grid": {
+     "alpha": {
+      "min": 0.0,
+      "max": 3.0,
+      "step": 0.01
+     },
+     "q": {
+      "min": 0.0,
+      "max": 20.0,
+      "step": 0.1
+     }
+    },
+    "refinement": "one refinement pass at one-tenth steps in alpha and q around the best grid cell",
+    "ranking": "types ranked by count descending; ties broken by type identifier ascending",
+    "primary_quantity": "NRMSE_log = sqrt(SSE / V)",
+    "secondary_reported_never_decisive": [
+     "R-squared in log space",
+     "fitted alpha",
+     "fitted q",
+     "SSE",
+     "V",
+     "N"
+    ],
+    "self_test": {
+     "gate": "0.2",
+     "generating_parameters": {
+      "alpha": 1.2,
+      "q": 2.0,
+      "V": 200,
+      "N": 50000
+     },
+     "seed": 20261021,
+     "procedure": "counts drawn by the multinomial procedure stated in the execution script",
+     "pass": "fitted alpha within 0.10 of 1.20 and fitted q within 1.0 of 2.0",
+     "failure_closure": "INVALID"
+    }
+   },
+   "comparison_rule": {
+    "dd": "DD-053-15 (epsilon = 0 confirmed at freeze)",
+    "fits_as_well": "a non-linguistic control fits as well iff its NRMSE_log is less than or equal to the Indus strict corpus's NRMSE_log",
+    "epsilon": 0,
+    "synthetic_rule": "N3's quantity is the median NRMSE_log across its 99 replicates; the replicates' full distribution and the share fitting as well are also reported",
+    "near_miss": "a control with gap in (0, 0.02] is named a NEAR MISS in every reporting product; the band is reporting-only and changes no verdict",
+    "falsifier": "the falsifier fires iff at least one of N1, N2, N3 fits as well under the rule above"
+   },
+   "controls": {
+    "dd": "DD-053-13 (named systems and sources confirmed at freeze; gate 0.4 is the fixed pin source for the control tables)",
+    "pin_source": "the step-0 record of gate 0.4: each system's canonical count table entered whole as cited data, with its source citation and per-count locators, frozen before any fit of any system",
+    "failure_closure": "CONTROL SET FREEZE FAILED",
+    "N1": {
+     "system": "Mesopotamian numerical signs",
+     "source": "Nissen, Damerow & Englund, Archaic Bookkeeping (1993) and the published archaic sign counts it reports",
+     "unit": "token frequencies of numerical signs only, from published counts of archaic Mesopotamian administrative tablets"
+    },
+    "N2": {
+     "system": "heraldic charges",
+     "source": "a published roll of arms, entered with its citation at gate 0.4",
+     "unit": "one charge occurrence on one shield, as the roll records it"
+    },
+    "N3": {
+     "system": "synthetic emblem inventory",
+     "process": "Yule-Simon",
+     "innovation_probability": 0.1,
+     "seed": 20261021,
+     "replicates": 99,
+     "size_matching": "run to exactly the Indus strict corpus's token total N (gate 0.5's count)",
+     "quantity": "median NRMSE_log across replicates",
+     "dd": "DD-053-16"
+    },
+    "P1": {
+     "system": "Linear B syllabic sign frequencies",
+     "role": "linguistic positive control",
+     "source": "published Linear B corpus counts, entered with its citation at gate 0.4"
+    },
+    "second_positive_control_added": false
+   },
+   "population": {
+    "dd": "DD-053-12 (confirmed at freeze)",
+    "primary": "the strict distribution: tokens in the step-0 pinned V3/Mahadevan-lineage corpus whose sign is in the strict sign set (the 94 strict_sa_independent anchors), counted by sign type; signs outside the strict set contribute neither types nor tokens",
+    "corpus_pin": "no file pin is stated at the freeze, deliberately (the Spec 048 precedent): the layer is identified, exported in full, and pinned by SHA-256 digest at gate 0.3; failure closes the run as STRICT CORPUS NOT PINNABLE",
+    "floors": {
+     "distinct_strict_types_min": 50,
+     "strict_tokens_min": 2000,
+     "dd": "DD-053-14"
+    },
+    "floor_failure_closure": "TOO THIN"
+   },
+   "positive_control_condition": {
+    "rule": "the comparison is informative iff E_P1 is strictly less than every non-linguistic control's error (E_P1 < E_N1, E_P1 < E_N2, E_P1 < E_N3)",
+    "failure_headline": "COMPARISON UNINFORMATIVE",
+    "dd": "DD-053-5 (confirmed at freeze)"
+   },
+   "outcomes": [
+    "SEPARABLE",
+    "NOT SEPARABLE",
+    "COMPARISON UNINFORMATIVE",
+    "TOO THIN",
+    "STRICT CORPUS NOT PINNABLE",
+    "CONTROL SET FREEZE FAILED",
+    "INVALID"
+   ],
+   "sensitivities": {
+    "S1": "subsampling at inscription level (DD-053-9): random halves and quarters of the pinned corpus's inscriptions, 99 replicates per level, seed 20261021, sampling without replacement; median and central 90% interval of fitted alpha and NRMSE_log per level",
+    "S2": "split/merge variants constructed from the pinned crosswalk alone (merged: allograph/variant-linked strict types collapsed, counts summed; split: composite strict types expanded where the pinned corpus's encoding carries the components; unexpanded types named and the variant labelled partial)",
+    "S3": "the same estimator fitted to the pinned corpus's full sign inventory, reported with its fitted alpha beside the recorded exponent of about 1.35; the comparability bridge to Yadav's original population",
+    "verdict_changing": false
+   },
+   "fences": "no outcome is evidence that the script encodes language, and none is evidence that it does not; the outcome is a strength label for a recorded curve fit and changes no verdict; three named systems are not all non-language; the strict fit's exponent is never quoted as Yadav's exponent reproduced or contradicted; arm B is not a member of this spec (campaign E-3)",
+   "execution_gate": "Satisfied at the freeze of 2026-10-21 for the freeze act itself: execution runs as Phase-413 under the frozen contract only after the freeze has merged, the OSF registration's approval act has completed, and a separate execution order is given; no fit was computed at the freeze"
+  },
+  "inputs": {
+   "claim_file": {
+    "file": "glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json",
+    "sha256": "904766238d4aec8fecf0a01dc7c8935689f378e31062485edc699874a36847a3",
+    "bytes": 13230,
+    "note": "freeze-time hash carried as a definition constant in the Spec 038 form: the extracted-claims store is regenerated by the backend suite, so no freeze test asserts a live-file hash on it; the manual_001 facts are asserted on the live file instead"
+   },
+   "anchors": {
+    "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+    "sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+    "bytes": 570344,
+    "anchors": 287,
+    "strict_sa_independent": 94
+   },
+   "crosswalk": {
+    "file": "data/crosswalks/sign_crosswalk_master.csv",
+    "sha256": "4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf",
+    "bytes": 18568
+   },
+   "mahadevan_parpola_crosswalk": {
+    "file": "backend/glossa_lab/data/mahadevan_parpola_crosswalk.json",
+    "sha256": "9ebd7723472d888dc8a127ff840a108d4fbd546f7f8ed28ccc6e06444a2dc69b",
+    "bytes": 6394
+   },
+   "phase43_results": {
+    "file": "outputs/phase43_all.json",
+    "sha256": "78a6c21908b9362854c54dd3d820d717be22feab3af11135663fa14aaf554fe4",
+    "bytes": 15047,
+    "contains_zipf_fit": false
+   }
+  },
+  "environment": {
+   "python": "3.12.3",
+   "runner": "backend (venv glossa-lab)",
+   "aee": "1.5.0 (adopted environment, PR #231; package pinned >=1.5.0,<1.6)",
+   "specify": "1.0.10"
+  }
+ },
+ "sources": {
+  "specs/053-yadav-zipf-controls/freeze.md": "d42157a3e4d6c58533ccb0b9e6ac6bbed09b52c05a61db654007aa83b3fbd8c0",
+  "specs/053-yadav-zipf-controls/spec.md": "a41859af4afbddee610afa0c46b94235f61c6079d157b6ca29feba978bb82845",
+  "specs/053-yadav-zipf-controls/claims.json": "82f11c2b9308ad4b2fb0a0e00fb5dabb94c16561c77d4bc3f02ed002b5c84ade",
+  "specs/053-yadav-zipf-controls/adjudication.md": "cf2965a2c8f899437c8c2b6eb5cf24ef85cd528a53f30e001ebb64d6f7148d28",
+  "specs/053-yadav-zipf-controls/aee/freeze-aee-note.md": "420d0fd558f045a59d9263b505d22b3fac4d587fbe2c86ac6044f83bc98788f8",
+  "specs/053-yadav-zipf-controls/build_freeze.py": "f48c04a585d20bef50cacc94e90ce1baec16394e4cd4b8e9c132958f7d9f3fff",
+  "backend/tests/test_spec053_freeze.py": "39f31690443fea0102af7cf4d35414324f842c83ad9b2ac740799afcef38c824"
+ },
+ "environment": {
+  "python": "3.12.3",
+  "platform": "Linux",
+  "aee": "1.5.0"
+ },
+ "digest": "fd2d5cb86b6aed51882a945719bb747ac34f149b08a21e6485b1407c6dc6b309"
+}

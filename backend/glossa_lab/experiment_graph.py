@@ -2725,6 +2725,420 @@ try:
     logger.info("Registered %d Phase-134 pilot (spec 024) nodes", len(list(_p134_defs())))
 except Exception as _p134_exc:  # noqa: BLE001
     logger.warning("Phase-134 pilot (spec 024) nodes not registered: %s", _p134_exc)
+# ── Phase-138 nodes (spec 024: evidence integration, Stage 2(d) graffiti descriptive) ──
+try:
+    from glossa_lab.experiment_graph_phase138 import (
+        _phase138_node_defs as _p138_defs,  # noqa: PLC0415
+    )
+    for _d in _p138_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-138 descriptive (spec 024) nodes", len(list(_p138_defs())))
+except Exception as _p138_exc:  # noqa: BLE001
+    logger.warning("Phase-138 descriptive (spec 024) nodes not registered: %s", _p138_exc)
+# ── Phase-135 nodes (spec 024: evidence integration, Stage 1 re-pilot) ──
+try:
+    from glossa_lab.experiment_graph_phase135 import (
+        _phase135_node_defs as _p135_defs,  # noqa: PLC0415
+    )
+    for _d in _p135_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-135 re-pilot (spec 024) nodes", len(list(_p135_defs())))
+except Exception as _p135_exc:  # noqa: BLE001
+    logger.warning("Phase-135 re-pilot (spec 024) nodes not registered: %s", _p135_exc)
+# ── Phase-136 nodes (spec 024: evidence integration, Stage 2(a), F1) ──
+try:
+    from glossa_lab.experiment_graph_phase136 import (
+        _phase136_node_defs as _p136_defs,  # noqa: PLC0415
+    )
+    for _d in _p136_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-136 terminal-type (spec 024) nodes", len(list(_p136_defs())))
+except Exception as _p136_exc:  # noqa: BLE001
+    logger.warning("Phase-136 terminal-type (spec 024) nodes not registered: %s", _p136_exc)
+# ── Phase-137 nodes (spec 024: evidence integration, Stage 2(c) site repertoire) ──
+try:
+    from glossa_lab.experiment_graph_phase137 import (
+        _phase137_node_defs as _p137_defs,  # noqa: PLC0415
+    )
+    for _d in _p137_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-137 site repertoire (spec 024) nodes", len(list(_p137_defs())))
+except Exception as _p137_exc:  # noqa: BLE001
+    logger.warning("Phase-137 site repertoire (spec 024) nodes not registered: %s", _p137_exc)
+# ── Phase-139 nodes (spec 025: Stage 2 controlled follow-up, covariate audit) ──
+try:
+    from glossa_lab.experiment_graph_phase139 import (
+        _phase139_node_defs as _p139_defs,  # noqa: PLC0415
+    )
+    for _d in _p139_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-139 covariate audit (spec 025) nodes", len(list(_p139_defs())))
+except Exception as _p139_exc:  # noqa: BLE001
+    logger.warning("Phase-139 covariate audit (spec 025) nodes not registered: %s", _p139_exc)
+# ── Phase-140 nodes (spec 025: Stage 2 controlled follow-up, G1) ──
+try:
+    from glossa_lab.experiment_graph_phase140 import (
+        _phase140_node_defs as _p140_defs,  # noqa: PLC0415
+    )
+    for _d in _p140_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-140 G1 controlled (spec 025) nodes", len(list(_p140_defs())))
+except Exception as _p140_exc:  # noqa: BLE001
+    logger.warning("Phase-140 G1 controlled (spec 025) nodes not registered: %s", _p140_exc)
+# ── Phase-141 nodes (spec 025: Stage 2 controlled follow-up, F1 LOSO) ──
+try:
+    from glossa_lab.experiment_graph_phase141 import (
+        _phase141_node_defs as _p141_defs,  # noqa: PLC0415
+    )
+    for _d in _p141_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-141 LOSO (spec 025) nodes", len(list(_p141_defs())))
+except Exception as _p141_exc:  # noqa: BLE001
+    logger.warning("Phase-141 LOSO (spec 025) nodes not registered: %s", _p141_exc)
+# ── Phase-383-386 nodes (spec 026: RCPH framework transfer reruns) ──
+try:
+    from glossa_lab.experiment_graph_phase383_386 import (
+        _phase383_386_node_defs as _p383386_defs,  # noqa: PLC0415
+    )
+    for _d in _p383386_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-383-386 (spec 026) nodes", len(list(_p383386_defs())))
+except Exception as _p383386_exc:  # noqa: BLE001
+    logger.warning("Phase-383-386 (spec 026) nodes not registered: %s", _p383386_exc)
+# ── Phase-391-392 nodes (spec 027: movement, culture, language) ──
+try:
+    from glossa_lab.experiment_graph_phase391_392 import (
+        _phase391_392_node_defs as _p391392_defs,  # noqa: PLC0415
+    )
+    for _d in _p391392_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-391-392 (spec 027) nodes", len(list(_p391392_defs())))
+except Exception as _p391392_exc:  # noqa: BLE001
+    logger.warning("Phase-391-392 (spec 027) nodes not registered: %s", _p391392_exc)
+# ── Phase-393 node (spec 028: Harappa robustness) ──
+try:
+    from glossa_lab.experiment_graph_phase393 import (
+        _phase393_node_defs as _p393_defs,  # noqa: PLC0415
+    )
+    for _d in _p393_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-393 (spec 028) nodes", len(list(_p393_defs())))
+except Exception as _p393_exc:  # noqa: BLE001
+    logger.warning("Phase-393 (spec 028) nodes not registered: %s", _p393_exc)
+# ── Phase-394 node (spec 030: Q6 chronology-spine extension) ──
+try:
+    from glossa_lab.experiment_graph_phase394 import (
+        _phase394_node_defs as _p394_defs,  # noqa: PLC0415
+    )
+    for _d in _p394_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-394 (spec 030) nodes", len(list(_p394_defs())))
+except Exception as _p394_exc:  # noqa: BLE001
+    logger.warning("Phase-394 (spec 030) nodes not registered: %s", _p394_exc)
+# ── Phase-395 node (spec 031: Q7 provenanced-material networks) ──
+try:
+    from glossa_lab.experiment_graph_phase395 import (
+        _phase395_node_defs as _p395_defs,  # noqa: PLC0415
+    )
+    for _d in _p395_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-395 (spec 031) nodes", len(list(_p395_defs())))
+except Exception as _p395_exc:  # noqa: BLE001
+    logger.warning("Phase-395 (spec 031) nodes not registered: %s", _p395_exc)
+# ── Phase-396 node (spec 032: PRED-2026-006 Harappa breakdown) ──
+try:
+    from glossa_lab.experiment_graph_phase396 import (
+        _phase396_node_defs as _p396_defs,  # noqa: PLC0415
+    )
+    for _d in _p396_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-396 (spec 032) nodes", len(list(_p396_defs())))
+except Exception as _p396_exc:  # noqa: BLE001
+    logger.warning("Phase-396 (spec 032) nodes not registered: %s", _p396_exc)
+# ── Phase-397 node (spec 033: SA-free language comparison) ──
+try:
+    from glossa_lab.experiment_graph_phase397 import (
+        _phase397_node_defs as _p397_defs,  # noqa: PLC0415
+    )
+    for _d in _p397_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-397 (spec 033) nodes", len(list(_p397_defs())))
+except Exception as _p397_exc:  # noqa: BLE001
+    logger.warning("Phase-397 (spec 033) nodes not registered: %s", _p397_exc)
+# ── Phase-398 node (spec 034: matched-object attribution) ──
+try:
+    from glossa_lab.experiment_graph_phase398 import (
+        _phase398_node_defs as _p398_defs,  # noqa: PLC0415
+    )
+    for _d in _p398_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-398 (spec 034) nodes", len(list(_p398_defs())))
+except Exception as _p398_exc:  # noqa: BLE001
+    logger.warning("Phase-398 (spec 034) nodes not registered: %s", _p398_exc)
+# ── Phase-399 node (spec 035: PRED-2026-010 scoring) ──
+try:
+    from glossa_lab.experiment_graph_phase399 import (
+        _phase399_node_defs as _p399_defs,  # noqa: PLC0415
+    )
+    for _d in _p399_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-399 (spec 035) nodes", len(list(_p399_defs())))
+except Exception as _p399_exc:  # noqa: BLE001
+    logger.warning("Phase-399 (spec 035) nodes not registered: %s", _p399_exc)
+# ── Phase-400 node (spec 036: PRED-2026-011 scoring) ──
+try:
+    from glossa_lab.experiment_graph_phase400 import (
+        _phase400_node_defs as _p400_defs,  # noqa: PLC0415
+    )
+    for _d in _p400_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-400 (spec 036) nodes", len(list(_p400_defs())))
+except Exception as _p400_exc:  # noqa: BLE001
+    logger.warning("Phase-400 (spec 036) nodes not registered: %s", _p400_exc)
+# ── Phase-401 node (spec 038: PRED-2026-007 full-population census) ──
+try:
+    from glossa_lab.experiment_graph_phase401 import (
+        _phase401_node_defs as _p401_defs,  # noqa: PLC0415
+    )
+    for _d in _p401_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-401 (spec 038) nodes", len(list(_p401_defs())))
+except Exception as _p401_exc:  # noqa: BLE001
+    logger.warning("Phase-401 (spec 038) nodes not registered: %s", _p401_exc)
+# ── Phase-402 nodes (Spec 037 CISI 3.1 concordance census) ──
+try:
+    from glossa_lab.experiment_graph_phase402 import (
+        _phase402_node_defs as _p402_defs,  # noqa: PLC0415
+    )
+    for _d in _p402_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-402 (spec 037) nodes", len(list(_p402_defs())))
+except Exception as _p402_exc:  # noqa: BLE001
+    logger.warning("Phase-402 (spec 037) nodes not registered: %s", _p402_exc)
+# ── Phase-403 node (spec 039: gazetteer period assignment) ──
+try:
+    from glossa_lab.experiment_graph_phase403 import (
+        _phase403_node_defs as _p403_defs,  # noqa: PLC0415
+    )
+    for _d in _p403_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-403 (spec 039) nodes", len(list(_p403_defs())))
+except Exception as _p403_exc:  # noqa: BLE001
+    logger.warning("Phase-403 (spec 039) nodes not registered: %s", _p403_exc)
+
+# ── Phase-404 node (spec 044: fish-sign coastal residue, step 0) ──
+try:
+    from glossa_lab.experiment_graph_phase404 import (
+        _phase404_node_defs as _p404_defs,  # noqa: PLC0415
+    )
+    for _d in _p404_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-404 (spec 044) nodes", len(list(_p404_defs())))
+except Exception as _p404_exc:  # noqa: BLE001
+    logger.warning("Phase-404 (spec 044) nodes not registered: %s", _p404_exc)
+# ── Phase-405 node (spec 046: horned-tiger concordance) ──
+try:
+    from glossa_lab.experiment_graph_phase405 import (
+        _phase405_node_defs as _p405_defs,  # noqa: PLC0415
+    )
+    for _d in _p405_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-405 (spec 046) nodes", len(list(_p405_defs())))
+except Exception as _p405_exc:  # noqa: BLE001
+    logger.warning("Phase-405 (spec 046) nodes not registered: %s", _p405_exc)
+# ── Phase-426 node (spec 064: sign-297 concordance, successor) ──
+try:
+    from glossa_lab.experiment_graph_phase426 import (
+        _phase426_node_defs as _p426_defs,  # noqa: PLC0415
+    )
+    for _d in _p426_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-426 (spec 064) nodes", len(list(_p426_defs())))
+except Exception as _p426_exc:  # noqa: BLE001
+    logger.warning("Phase-426 (spec 064) nodes not registered: %s", _p426_exc)
+# ── Phase-406 node (spec 047: Roif ledger step 1 — Asset B) ──
+try:
+    from glossa_lab.experiment_graph_phase406 import (
+        _phase406_node_defs as _p406_defs,  # noqa: PLC0415
+    )
+    for _d in _p406_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-406 (spec 047) nodes", len(list(_p406_defs())))
+except Exception as _p406_exc:  # noqa: BLE001
+    logger.warning("Phase-406 (spec 047) nodes not registered: %s", _p406_exc)
+# ── Phase-407 node (spec 042: Arm B object-type split) ──
+try:
+    from glossa_lab.experiment_graph_phase407 import (
+        _phase407_node_defs as _p407_defs,  # noqa: PLC0415
+    )
+    for _d in _p407_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-407 (spec 042) nodes", len(list(_p407_defs())))
+except Exception as _p407_exc:  # noqa: BLE001
+    logger.warning("Phase-407 (spec 042) nodes not registered: %s", _p407_exc)
+# ── Phase-409 node (spec 051: Roif arrow sign) ──
+try:
+    from glossa_lab.experiment_graph_phase409 import (
+        _phase409_node_defs as _p409_defs,  # noqa: PLC0415
+    )
+    for _d in _p409_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-409 (spec 051) nodes", len(list(_p409_defs())))
+except Exception as _p409_exc:  # noqa: BLE001
+    logger.warning("Phase-409 (spec 051) nodes not registered: %s", _p409_exc)
+# ── Phase-411 node (spec 045: Hunt depicted kinds, step 0) ──
+try:
+    from glossa_lab.experiment_graph_phase411 import (
+        _phase411_node_defs as _p411_defs,  # noqa: PLC0415
+    )
+    for _d in _p411_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-411 (spec 045) nodes", len(list(_p411_defs())))
+except Exception as _p411_exc:  # noqa: BLE001
+    logger.warning("Phase-411 (spec 045) nodes not registered: %s", _p411_exc)
+# ── Phase-423 node (spec 061: Arm A precision computation) ──
+try:
+    from glossa_lab.experiment_graph_phase423 import (
+        _phase423_node_defs as _p423_defs,  # noqa: PLC0415
+    )
+    for _d in _p423_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-423 (spec 061) nodes", len(list(_p423_defs())))
+except Exception as _p423_exc:  # noqa: BLE001
+    logger.warning("Phase-423 (spec 061) nodes not registered: %s", _p423_exc)
+# ── Phase-418 node (spec 056: sign-821 recovery) ──
+try:
+    from glossa_lab.experiment_graph_phase418 import (
+        _phase418_node_defs as _p418_defs,  # noqa: PLC0415
+    )
+    for _d in _p418_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-418 (spec 056) nodes", len(list(_p418_defs())))
+except Exception as _p418_exc:  # noqa: BLE001
+    logger.warning("Phase-418 (spec 056) nodes not registered: %s", _p418_exc)
+# ── Phase-425 node (spec 063: sign-821 identification successor) ──
+try:
+    from glossa_lab.experiment_graph_phase425 import (
+        _phase425_node_defs as _p425_defs,  # noqa: PLC0415
+    )
+    for _d in _p425_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-425 (spec 063) nodes", len(list(_p425_defs())))
+except Exception as _p425_exc:  # noqa: BLE001
+    logger.warning("Phase-425 (spec 063) nodes not registered: %s", _p425_exc)
+# ── Phase-419 node (spec 057: five-sources heading) ──
+try:
+    from glossa_lab.experiment_graph_phase419 import (
+        _phase419_node_defs as _p419_defs,  # noqa: PLC0415
+    )
+    for _d in _p419_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-419 (spec 057) nodes", len(list(_p419_defs())))
+except Exception as _p419_exc:  # noqa: BLE001
+    logger.warning("Phase-419 (spec 057) nodes not registered: %s", _p419_exc)
+# ── Phase-427 node (spec 065: S-1/S-5 heading successor) ──
+try:
+    from glossa_lab.experiment_graph_phase427 import (
+        _phase427_node_defs as _p427_defs,  # noqa: PLC0415
+    )
+    for _d in _p427_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-427 (spec 065) nodes", len(list(_p427_defs())))
+except Exception as _p427_exc:  # noqa: BLE001
+    logger.warning("Phase-427 (spec 065) nodes not registered: %s", _p427_exc)
+# ── Phase-413 node (spec 053: Yadav Zipf controls, step 0) ──
+try:
+    from glossa_lab.experiment_graph_phase413 import (
+        _phase413_node_defs as _p413_defs,  # noqa: PLC0415
+    )
+    for _d in _p413_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-413 (spec 053) nodes", len(list(_p413_defs())))
+except Exception as _p413_exc:  # noqa: BLE001
+    logger.warning("Phase-413 (spec 053) nodes not registered: %s", _p413_exc)
+# ── Phase-408 node (spec 048: Parpola fish-family profiles, step 0) ──
+try:
+    from glossa_lab.experiment_graph_phase408 import (
+        _phase408_node_defs as _p408_defs,  # noqa: PLC0415
+    )
+    for _d in _p408_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-408 (spec 048) nodes", len(list(_p408_defs())))
+except Exception as _p408_exc:  # noqa: BLE001
+    logger.warning("Phase-408 (spec 048) nodes not registered: %s", _p408_exc)
+
+
+
+# ── Phase-421 node (spec 059: F1 object-ID join, step 0 + gate-passed test) ──
+try:
+    from glossa_lab.experiment_graph_phase421 import (
+        _phase421_node_defs as _p421_defs,  # noqa: PLC0415
+    )
+    for _d in _p421_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-421 (spec 059) nodes", len(list(_p421_defs())))
+except Exception as _p421_exc:  # noqa: BLE001
+    logger.warning("Phase-421 (spec 059) nodes not registered: %s", _p421_exc)
+# ── Phase-428 node (spec 066: Phase-130 catalogue extension) ──
+try:
+    from glossa_lab.experiment_graph_phase428 import (
+        _phase428_node_defs as _p428_defs,  # noqa: PLC0415
+    )
+    for _d in _p428_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-428 (spec 066) nodes", len(list(_p428_defs())))
+except Exception as _p428_exc:  # noqa: BLE001
+    logger.warning("Phase-428 (spec 066) nodes not registered: %s", _p428_exc)
+# ── Phase-429 node (spec 067: F1 enlarged join, step 0 + gate-passed test) ──
+try:
+    from glossa_lab.experiment_graph_phase429 import (
+        _phase429_node_defs as _p429_defs,  # noqa: PLC0415
+    )
+    for _d in _p429_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-429 (spec 067) nodes", len(list(_p429_defs())))
+except Exception as _p429_exc:  # noqa: BLE001
+    logger.warning("Phase-429 (spec 067) nodes not registered: %s", _p429_exc)
+# ── Phase-410 node (spec 043: PRED-2026-012 registry frame, step 0) ──
+try:
+    from glossa_lab.experiment_graph_phase410 import (
+        _phase410_node_defs as _p410_defs,  # noqa: PLC0415
+    )
+    for _d in _p410_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-410 (spec 043) nodes", len(list(_p410_defs())))
+except Exception as _p410_exc:  # noqa: BLE001
+    logger.warning("Phase-410 (spec 043) nodes not registered: %s", _p410_exc)
+# ── Phase-420 node (spec 058: transcription-disagreement mechanism, D-21 arm A) ──
+try:
+    from glossa_lab.experiment_graph_phase420 import (
+        _phase420_node_defs as _p420_defs,  # noqa: PLC0415
+    )
+    for _d in _p420_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-420 (spec 058) nodes", len(list(_p420_defs())))
+except Exception as _p420_exc:  # noqa: BLE001
+    logger.warning("Phase-420 (spec 058) nodes not registered: %s", _p420_exc)
+# ── Phase-414 node (spec 055: sign 900 numeral test) ──
+try:
+    from glossa_lab.experiment_graph_phase414 import (
+        _phase414_node_defs as _p414_defs,  # noqa: PLC0415
+    )
+    for _d in _p414_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-414 (spec 055) nodes", len(list(_p414_defs())))
+except Exception as _p414_exc:  # noqa: BLE001
+    logger.warning("Phase-414 (spec 055) nodes not registered: %s", _p414_exc)
+# ── Phase-422 node (spec 060: F2 margin curve + shared population) ──
+try:
+    from glossa_lab.experiment_graph_phase422 import (
+        _phase422_node_defs as _p422_defs,  # noqa: PLC0415
+    )
+    for _d in _p422_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-422 (spec 060) nodes", len(list(_p422_defs())))
+except Exception as _p422_exc:  # noqa: BLE001
+    logger.warning("Phase-422 (spec 060) nodes not registered: %s", _p422_exc)
 # ── Phase-120 nodes (Bhaskar 2024 descriptive triage) ──
 try:
     from glossa_lab.experiment_graph_phase120 import (

@@ -1,0 +1,670 @@
+{
+ "claims": [
+  {
+   "id": "F026-C01A",
+   "text": "The Spec 026 verdict taxonomy is a fixed set of four values.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "Spec 026 records only.",
+   "depends_on": [],
+   "assumptions": [],
+   "alternatives": [],
+   "falsification_tests": [
+    "A fifth verdict value appearing in any Spec 026 artifact defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "definition",
+    "forbidden_assumptions": [
+     "ASM-REWRITE-HISTORY"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/026-rcph-framework-transfer/spec.md#8",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Taxonomy in spec S8",
+     "source_id": "specs/026-rcph-framework-transfer/spec.md#8"
+    },
+    {
+     "ref": "specs/026-rcph-framework-transfer/transfer-map.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Transfer principle 6",
+     "source_id": "specs/026-rcph-framework-transfer/transfer-map.md",
+     "independent_of": [
+      "specs/026-rcph-framework-transfer/spec.md#8"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F026-C01B",
+   "text": "Every historical verdict label present in the extraction inventory has exactly one framework reading under the Spec 026 mapping.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "Labels present in working/inventory.json only.",
+   "depends_on": [
+    "F026-C01A"
+   ],
+   "assumptions": [
+    "ASM-RECORD-AUTHORITATIVE"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "One inventory label lacking a mapping row defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "definition",
+    "forbidden_assumptions": [
+     "ASM-REWRITE-HISTORY"
+    ],
+    "boundary_confirmation": "Boundaries reviewed 2026-10-10: this claim's boundary is distinct from every other register claim; both members of any flagged pair are preserved unchanged pending review (see aee/recovery-specify.md)."
+   },
+   "evidence": [
+    {
+     "ref": "specs/026-rcph-framework-transfer/spec.md#8",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Mapping table",
+     "source_id": "specs/026-rcph-framework-transfer/spec.md#8"
+    },
+    {
+     "ref": "specs/026-rcph-framework-transfer/working/inventory.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Label population to be mapped",
+     "source_id": "specs/026-rcph-framework-transfer/working/inventory.json",
+     "independent_of": [
+      "specs/026-rcph-framework-transfer/spec.md#8"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F026-C02A",
+   "text": "framework026.check_dependency_integrity reports every dependency cycle present in a claim register.",
+   "kind": "inference",
+   "status": "draft",
+   "boundary": "Declared depends_on edges only.",
+   "depends_on": [],
+   "assumptions": [],
+   "alternatives": [],
+   "falsification_tests": [
+    "One planted cycle the checker does not report defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "computational-result",
+    "forbidden_assumptions": []
+   },
+   "evidence": [
+    {
+     "ref": "backend/tests/test_framework026.py",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Planted-cycle test",
+     "source_id": "backend/tests/test_framework026.py"
+    },
+    {
+     "ref": "backend/glossa_lab/aee_core.py",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "ClaimGraph.cycles in the same engine",
+     "source_id": "backend/glossa_lab/aee_core.py",
+     "independent_of": [
+      "backend/tests/test_framework026.py"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F026-C02B",
+   "text": "framework026.check_dependency_integrity reports every case where a claim inherits an assumption it forbids through its depends_on ancestry.",
+   "kind": "inference",
+   "status": "draft",
+   "boundary": "Declared assumptions and forbidden_assumptions only; undeclared premises remain a review obligation.",
+   "depends_on": [],
+   "assumptions": [],
+   "alternatives": [],
+   "falsification_tests": [
+    "One planted forbidden inheritance the checker does not report defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "computational-result",
+    "forbidden_assumptions": []
+   },
+   "evidence": [
+    {
+     "ref": "backend/tests/test_framework026.py",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Planted forbidden-inheritance test",
+     "source_id": "backend/tests/test_framework026.py"
+    },
+    {
+     "ref": "specs/026-rcph-framework-transfer/transfer-map.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Transfer principle 2 requires this check",
+     "source_id": "specs/026-rcph-framework-transfer/transfer-map.md",
+     "independent_of": [
+      "backend/tests/test_framework026.py"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F026-C03A",
+   "text": "framework026.verify_freeze rejects a freeze record whose experiment definition differs from the frozen definition.",
+   "kind": "inference",
+   "status": "draft",
+   "boundary": "Digest integrity only.",
+   "depends_on": [],
+   "assumptions": [],
+   "alternatives": [],
+   "falsification_tests": [
+    "One altered definition accepted by verify_freeze defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "computational-result",
+    "forbidden_assumptions": []
+   },
+   "evidence": [
+    {
+     "ref": "backend/tests/test_framework026.py",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Definition-tamper test",
+     "source_id": "backend/tests/test_framework026.py"
+    },
+    {
+     "ref": "backend/glossa_lab/framework026.py",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Canonical digest implementation",
+     "source_id": "backend/glossa_lab/framework026.py",
+     "independent_of": [
+      "backend/tests/test_framework026.py"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F026-C03B",
+   "text": "framework026.verify_freeze rejects a freeze record when a frozen source file's bytes have changed.",
+   "kind": "inference",
+   "status": "draft",
+   "boundary": "Digest integrity only; authorship and timing are governance questions outside the hash.",
+   "depends_on": [],
+   "assumptions": [],
+   "alternatives": [],
+   "falsification_tests": [
+    "One altered source file accepted by verify_freeze defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "computational-result",
+    "forbidden_assumptions": []
+   },
+   "evidence": [
+    {
+     "ref": "backend/tests/test_framework026.py",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Source-tamper test",
+     "source_id": "backend/tests/test_framework026.py"
+    },
+    {
+     "ref": "backend/glossa_lab/framework026.py",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Per-source sha256 in freeze record",
+     "source_id": "backend/glossa_lab/framework026.py",
+     "independent_of": [
+      "backend/tests/test_framework026.py"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F026-C04A",
+   "text": "The extraction inventory contains one row for every spec directory 001-025 present in specs/.",
+   "kind": "observation",
+   "status": "draft",
+   "boundary": "specs/ of the worktree at inventory time.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-RECORD-AUTHORITATIVE"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "One spec directory without an inventory row defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "data-observation",
+    "forbidden_assumptions": []
+   },
+   "evidence": [
+    {
+     "ref": "specs/026-rcph-framework-transfer/working/inventory.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Inventory rows",
+     "source_id": "specs/026-rcph-framework-transfer/working/inventory.json"
+    },
+    {
+     "ref": "specs/026-rcph-framework-transfer/working/inventory-gaps.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Gap record",
+     "source_id": "specs/026-rcph-framework-transfer/working/inventory-gaps.md",
+     "independent_of": [
+      "specs/026-rcph-framework-transfer/working/inventory.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F026-C04B",
+   "text": "The extraction inventory contains one row for every numbered phase 52-141 that has an artifact in the scoped locations.",
+   "kind": "observation",
+   "status": "draft",
+   "boundary": "Scoped locations per spec S6.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-RECORD-AUTHORITATIVE"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "One in-scope phase artifact without an inventory row defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "data-observation",
+    "forbidden_assumptions": [],
+    "boundary_confirmation": "Boundaries reviewed 2026-10-10: this claim's boundary is distinct from every other register claim; both members of any flagged pair are preserved unchanged pending review (see aee/recovery-specify.md)."
+   },
+   "evidence": [
+    {
+     "ref": "specs/026-rcph-framework-transfer/working/inventory.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Inventory rows",
+     "source_id": "specs/026-rcph-framework-transfer/working/inventory.json"
+    },
+    {
+     "ref": "specs/026-rcph-framework-transfer/working/inventory-gaps.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Out-of-scope artifacts named",
+     "source_id": "specs/026-rcph-framework-transfer/working/inventory-gaps.md",
+     "independent_of": [
+      "specs/026-rcph-framework-transfer/working/inventory.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F026-C04C",
+   "text": "Every inventory field that could not be determined from the record is recorded as unknown.",
+   "kind": "observation",
+   "status": "draft",
+   "boundary": "working/inventory.json only.",
+   "depends_on": [],
+   "assumptions": [],
+   "alternatives": [],
+   "falsification_tests": [
+    "One guessed value in place of an undeterminable field defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "data-observation",
+    "forbidden_assumptions": []
+   },
+   "evidence": [
+    {
+     "ref": "specs/026-rcph-framework-transfer/working/inventory.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Unknown fields present as the string unknown",
+     "source_id": "specs/026-rcph-framework-transfer/working/inventory.json"
+    },
+    {
+     "ref": "specs/026-rcph-framework-transfer/working/inventory-gaps.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Gaps declared rather than filled",
+     "source_id": "specs/026-rcph-framework-transfer/working/inventory-gaps.md",
+     "independent_of": [
+      "specs/026-rcph-framework-transfer/working/inventory.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F026-C05",
+   "text": "The register places every item meeting a C1-C4 correction test in the RERUN-REQUIRED set.",
+   "kind": "inference",
+   "status": "draft",
+   "boundary": "Conditional on criteria soundness; defects reopen only via dated amendment.",
+   "depends_on": [
+    "F026-C04A",
+    "F026-C04B"
+   ],
+   "assumptions": [
+    "ASM-CRITERIA-SOUND"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "One item meeting a C1-C4 test but classified otherwise defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "forbidden_assumptions": [
+     "ASM-WELCOME-RESULTS"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/026-rcph-framework-transfer/classification-criteria.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Criteria frozen at S1",
+     "source_id": "specs/026-rcph-framework-transfer/classification-criteria.md"
+    },
+    {
+     "ref": "specs/026-rcph-framework-transfer/impact-register.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Register rows with per-row rationale",
+     "source_id": "specs/026-rcph-framework-transfer/impact-register.md",
+     "independent_of": [
+      "specs/026-rcph-framework-transfer/classification-criteria.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F026-C06A",
+   "text": "Each lifecycle stage of Spec 026 has a saved AEE assessment artifact.",
+   "kind": "observation",
+   "status": "draft",
+   "boundary": "aee package 1.0.4 in the Glossa venv.",
+   "depends_on": [],
+   "assumptions": [],
+   "alternatives": [],
+   "falsification_tests": [
+    "One stage lacking a saved artifact defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "data-observation",
+    "forbidden_assumptions": []
+   },
+   "evidence": [
+    {
+     "ref": "specs/026-rcph-framework-transfer/aee/",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Per-stage artifacts",
+     "source_id": "specs/026-rcph-framework-transfer/aee/"
+    },
+    {
+     "ref": ".specify/extensions/aee/ledger/epistemic-ledger.jsonl",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Hash-chained AEE ledger",
+     "source_id": ".specify/extensions/aee/ledger/epistemic-ledger.jsonl",
+     "independent_of": [
+      "specs/026-rcph-framework-transfer/aee/"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F026-C06B",
+   "text": "Recovery work is recorded before closure for every AEE outcome stricter than warn.",
+   "kind": "observation",
+   "status": "draft",
+   "boundary": "Gate scale pass|warn|iterate|clarify|gather_evidence|block.",
+   "depends_on": [
+    "F026-C06A"
+   ],
+   "assumptions": [],
+   "alternatives": [],
+   "falsification_tests": [
+    "One stage closed over a stricter-than-warn outcome with no recovery record defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "data-observation",
+    "forbidden_assumptions": []
+   },
+   "evidence": [
+    {
+     "ref": "specs/026-rcph-framework-transfer/aee/",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Recovery rounds visible as successive artifacts",
+     "source_id": "specs/026-rcph-framework-transfer/aee/"
+    },
+    {
+     "ref": "specs/026-rcph-framework-transfer/tasks.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Stage closure notes",
+     "source_id": "specs/026-rcph-framework-transfer/tasks.md",
+     "independent_of": [
+      "specs/026-rcph-framework-transfer/aee/"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F026-C07",
+   "text": "RCPH research discipline transfers to Indus research as methodology.",
+   "kind": "hypothesis",
+   "status": "draft",
+   "boundary": "Methodological analogy only; no RCPH substantive result transfers.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-ANALOGY-METHOD-ONLY"
+   ],
+   "alternatives": [
+    "Glossa piecemeal practice already equivalent"
+   ],
+   "falsification_tests": [
+    "One transfer principle that cannot be operationalized in Glossa machinery defeats the bridge for that principle."
+   ],
+   "metadata": {
+    "framework_kind": "conjecture-bridge",
+    "forbidden_assumptions": [
+     "ASM-KERNEL-PROOF",
+     "ASM-RCPH-SUBSTANCE"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/026-rcph-framework-transfer/transfer-map.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "12-principle map",
+     "source_id": "specs/026-rcph-framework-transfer/transfer-map.md"
+    },
+    {
+     "ref": "~/workspace/rcph-formalization/docs/GENERAL_RESEARCH_FRAMEWORK.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Source framework v1.1",
+     "source_id": "~/workspace/rcph-formalization/docs/GENERAL_RESEARCH_FRAMEWORK.md",
+     "independent_of": [
+      "specs/026-rcph-framework-transfer/transfer-map.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F026-C08A",
+   "text": "Spec 026 changes no anchor in backend/reports/INDUS_FINAL_ANCHORS.json.",
+   "kind": "compliance",
+   "status": "draft",
+   "boundary": "Whole program.",
+   "depends_on": [],
+   "assumptions": [],
+   "alternatives": [],
+   "falsification_tests": [
+    "Any anchor hash change attributable to Spec 026 defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "definition",
+    "forbidden_assumptions": [
+     "ASM-SA-VALID"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "docs/governance/rules.md#H26",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Controlling text: promotion gates require non-SA evidence",
+     "source_id": "docs/governance/rules.md#H26"
+    },
+    {
+     "ref": "specs/026-rcph-framework-transfer/spec.md#2",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Scope exclusion recorded in spec S2",
+     "source_id": "specs/026-rcph-framework-transfer/spec.md#2",
+     "independent_of": [
+      "docs/governance/rules.md#H26"
+     ]
+    },
+    {
+     "ref": "owner-directive-2026-10-10",
+     "kind": "asserted",
+     "direction": "supports",
+     "source_quality": "primary",
+     "description": "Owner directive of 2026-10-10 authorizing the transfer program with spec-kit + AEE governance; quoted verbatim in spec.md header.",
+     "source_id": "owner-directive-2026-10-10"
+    }
+   ]
+  },
+  {
+   "id": "F026-C08B",
+   "text": "Spec 026 performs no PRED-2026 scoring.",
+   "kind": "compliance",
+   "status": "draft",
+   "boundary": "Whole program.",
+   "depends_on": [],
+   "assumptions": [],
+   "alternatives": [],
+   "falsification_tests": [
+    "Any PRED scoring artifact produced by Spec 026 defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "definition",
+    "forbidden_assumptions": []
+   },
+   "evidence": [
+    {
+     "ref": "specs/026-rcph-framework-transfer/spec.md#2",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Scope exclusion in spec S2",
+     "source_id": "specs/026-rcph-framework-transfer/spec.md#2"
+    },
+    {
+     "ref": "specs/026-rcph-framework-transfer/classification-criteria.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Criteria tie-break 3 caps PRED items below rerun",
+     "source_id": "specs/026-rcph-framework-transfer/classification-criteria.md",
+     "independent_of": [
+      "specs/026-rcph-framework-transfer/spec.md#2"
+     ]
+    },
+    {
+     "ref": "owner-directive-2026-10-10",
+     "kind": "asserted",
+     "direction": "supports",
+     "source_quality": "primary",
+     "description": "Owner directive of 2026-10-10 authorizing the transfer program with spec-kit + AEE governance; quoted verbatim in spec.md header.",
+     "source_id": "owner-directive-2026-10-10"
+    }
+   ]
+  },
+  {
+   "id": "F026-C08C",
+   "text": "Spec 026 produces no SA-sufficient promotion evidence.",
+   "kind": "compliance",
+   "status": "draft",
+   "boundary": "Whole program.",
+   "depends_on": [],
+   "assumptions": [],
+   "alternatives": [],
+   "falsification_tests": [
+    "Any SA-based promotion attributable to Spec 026 defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "definition",
+    "forbidden_assumptions": [
+     "ASM-SA-VALID"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "docs/governance/rules.md#H26",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Controlling rule H26",
+     "source_id": "docs/governance/rules.md#H26"
+    },
+    {
+     "ref": "specs/026-rcph-framework-transfer/classification-criteria.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Criteria tie-break 2",
+     "source_id": "specs/026-rcph-framework-transfer/classification-criteria.md",
+     "independent_of": [
+      "docs/governance/rules.md#H26"
+     ]
+    },
+    {
+     "ref": "owner-directive-2026-10-10",
+     "kind": "asserted",
+     "direction": "supports",
+     "source_quality": "primary",
+     "description": "Owner directive of 2026-10-10 authorizing the transfer program with spec-kit + AEE governance; quoted verbatim in spec.md header.",
+     "source_id": "owner-directive-2026-10-10"
+    }
+   ]
+  }
+ ]
+}

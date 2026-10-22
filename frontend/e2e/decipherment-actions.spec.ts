@@ -46,10 +46,10 @@ const MOCK_DECIPHER = {
   progression: [],
   munda_sa: { dravidian_consistency: 0.35, munda_consistency: 0.40 },
   current_phase: 382,
-  sa_aggregate: 0.56,
+  // Spec 029 Phase E1 (E1.2): sa_aggregate / fully_decoded_pct /
+  // n_fully_decoded withdrawn from the dashboard payload; the mock
+  // mirrors the served shape.
   n_evidence_items: 41,
-  fully_decoded_pct: 0.70,
-  n_fully_decoded: 1165,
   total_seals: 1670,
 };
 

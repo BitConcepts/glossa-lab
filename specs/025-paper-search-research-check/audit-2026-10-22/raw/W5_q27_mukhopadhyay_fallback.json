@@ -1,0 +1,1 @@
+"Download failed after OA fallback chain and Sci-Hub fallback. Details: primary: SSRN PDF download failed for 4052072: HTTPSConnectionPool(host='papers.ssrn.com', port=443): Read timed out. (read timeout=60) | unpaywall: no OA URL found (or PAPER_SEARCH_MCP_UNPAYWALL_EMAIL/UNPAYWALL_EMAIL missing)"

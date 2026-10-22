@@ -44,7 +44,7 @@ The structural grammar matches Dravidian morphological patterns more closely tha
 2. **Yajnadevam corpus**: 2,543 inscriptions from 52 sites → multi-site expansion
 3. **CGSA Phases 1–6**: 40 structural clusters, entropy reduced 21.6% (entropy = how unpredictable the sign sequences are; the clusters made them markedly more predictable)
 4. **holdatllc cross-validation**: Independent confirmation of INITIAL signs P086 and P001
-5. **Nair (2026) scorecard**: 4/4 linguistic-consistent metrics
+5. **Nair (2026) scorecard**: Indus discriminates from the heraldic baseline on 4/4 metrics and matches the administrative baseline on 2/4; Nair's own conclusion is an intermediate position that does not settle the linguistic question (corrected 2026-10-22, spec-025 audit P5 - the earlier '4/4 linguistic-consistent' wording was not supported by Nair's full text)
 6. **SA phonotactic analysis**: Dravidian > Pali > Sanskrit on Indus corpus (multiple runs)
 7. **Phase 9 gate**: Cross-site stability gate passed (85.3% ≥ 70%)
 
@@ -55,7 +55,7 @@ The structural grammar matches Dravidian morphological patterns more closely tha
 | Experiment | Result | Date | Commit |
 |-----------|--------|------|--------|
 | CGSA Phases 1–6 | 40 clusters, 85.3% cross-site stability | 2026-04-22 | 790ddd1 |
-| Nair (2026) scorecard | 4/4 linguistic-consistent | 2026-04-22 | 98fd599 |
+| Nair (2026) scorecard | 4/4 vs heraldic baseline; 2/4 vs administrative baseline (corrected 2026-10-22, spec-025 audit P5) | 2026-04-22 | 98fd599 |
 | holdatllc cross-validation | P086↔M077, P001↔M001 confirmed INITIAL | 2026-04-22 | 7d3e302 |
 | SA Dravidian vs Pali | Dravidian higher consistency (multiple runs) | 2026-04-22 | 9a848fc |
 | Phase 9 function validation | Pending full results | 2026-04-23 | TBD |

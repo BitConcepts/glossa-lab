@@ -1,0 +1,806 @@
+{
+ "spec": "050-hunt-sky-signs-endings",
+ "register_version": "0.8-draft",
+ "note": "Claims-first register for Spec 050 (design D-13, PR #195 packet; consumer of Asset A), opened 2026-10-21 under the runnable-experiments campaign approved by the owner as written on 2026-10-21. ASM- ids name the assumptions each claim stands on: ASM-ASSET-A-CONTRACT (Asset A, when built and frozen under Spec 045, conforms to the contract of Spec 045 section 2 that this spec consumes), ASM-PINNED-CORPUS (the pinned corpus layer of spec section 6 is the corpus of record for every count), ASM-POSITIONAL-FRAMEWORK (the pinned positional record and Phase-43 framework define final position as spec section 4.1 states), ASM-CROSSWALK-KEYS (the pinned sign_crosswalk_master defines the sign identity space Asset A and this spec share), ASM-PUBLISHED-ID-LAYER (a depicted-kind label is a published identification, not ground truth about the sign), ASM-GATES-BEFORE-OUTCOME (asset, integrity, census, and freeze-order gates precede any outcome quantity), ASM-APPEND-ONLY (outcomes append; frozen records are never edited). FREEZE (2026-10-21): before the hooks, the freeze decisions were applied as recorded in adjudication.md section 7 \u2014 in the register, the pin-timing ruling DD-050-11 restated F050-C06 (the freeze record quotes Spec 045's freeze digest 5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a as contract anchor and fixes specs/045-hunt-depicted-kinds/asset-a/asset-a-freeze.json as the pin source; gate 0.1 asserts the digest at execution step 0). The AEE lifecycle hooks then ran at the freeze gate under aee 1.5.0 (DD-050-9 reading). Pre-round: the 0.5-draft register could not load in the engine (draft evidence kinds and source qualities are not engine values). A test load with the kind/quality remap alone returned 54 failure modes (25 shared-evidence independence records, 14 irreducibility challenges, 15 draft-cap records) and no claim below the 0.70 threshold (minimum propagated 0.72). Recovery to 0.6-draft (kind and quality remap; independent_of declarations within multi-item claims) left 29 failure modes (14 irreducibility, 15 draft-cap). Recovery to 0.7-draft (every challenged claim text restated as a single head proposition, carried clauses moved into boundaries verbatim-in-substance) left 17 failure modes (2 irreducibility \u2014 F050-C04, F050-C07 \u2014 and 15 draft-cap). Recovery to 0.8-draft (connective-free restatement of the C04 and C07 heads) surfaced one negation-conflict pair (C01/C04); boundary_confirmation records for that pair, C04's head restated under its own subject, and a further restatement of C04's head after a C04/C06 pair surfaced, left exactly 15 FR-2.3 draft-cap records at each of after_specify, after_plan, and after_tasks, with zero correctness failure modes and no claim below the 0.70 threshold (minimum propagated 0.72); the engine outcome word reads iterate solely from the draft-cap records. Full record in aee/freeze-aee-note.md.",
+ "claims": [
+  {
+   "id": "F050-C01",
+   "kind": "hypothesis",
+   "text": "An outcome under Spec 050 states only whether the signs Asset A classes as sky_cycle are enriched in text-final position in the pinned corpus, under the pinned positional framework.",
+   "status": "draft",
+   "boundary": "The scope is claim without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004's terminal-enrichment question, on the pinned corpus layer and framework of spec section 6. It excludes any statement about calendars, cycles, scheduling, or any sign's meaning; about Hunt's closing part in any form broader than Asset A's sky_cycle kind; about any other claim, corpus, or compilation; and about the tripartite pattern itself, which is other designs' subject.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-PINNED-CORPUS",
+    "ASM-ASSET-A-CONTRACT"
+   ],
+   "alternatives": [
+    "the positional pattern's existence could be read as already supporting the endings claim (it cannot: this claim was never measured \u2014 Phase-104, RULE-CLASS)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified in scope if any Spec 050 output states a conclusion about meaning, calendar content, a broader closing class, or a population outside the sky_cycle enrichment test on the pinned corpus"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-POSITION-AS-MEANING"
+    ],
+    "strongest_rival": "the reading in which an ending enrichment licenses a calendar or cycle-content claim",
+    "verdict_rule": "scope is judged by inspection of every Spec 050 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding",
+    "evidence_origin_groups": [
+     "design-packet",
+     "asset-a-contract"
+    ],
+    "boundary_confirmation": "C01 states the scope of what an outcome under this spec may state (whether the sky_cycle class is enriched at text endings, on the pinned corpus under the pinned framework); C04 states the wording rule for an outcome whose recorded ratio meets the falsifier's condition (recorded as NOT SUPPORTED, in the pre-written wording). They govern different objects - outcome scope, and outcome wording on a stated condition - and are consistent by construction: C04's rule operates inside C01's scope. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-13 (PR #195 packet, section D-13, read in full at this draft): the question, hypothesis, falsifier (celestial class not enriched at endings), data (celestial class from the shared classification; corpus and positional framework as in D-06/D-08), method (pooled class test against a frequency-matched comparison, per-sign results alongside), criteria (SUPPORTED at ratio >= 1.5 at the 5% level with the half-of-occurrences condition; NOT SUPPORTED at ratio <= 1.0; INCONCLUSIVE between or below 30 class occurrences), controls (published-source citation per sign, borderline-removed sensitivity, list frozen before counting), and the limit (position is not meaning).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/045-hunt-depicted-kinds/spec.md"
+     ]
+    },
+    {
+     "ref": "specs/045-hunt-depicted-kinds/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 045's draft (branch spec-045-hunt-depicted-kinds-draft, PR #244, read in full at this draft): Asset A's contract in its section 2 \u2014 one row per sign keyed by the pinned crosswalk identity; depicted_kind in {animal, sky_cycle, object_goods, human, other, contested, unidentified}; verbatim published label, citations, agreement, and dispute_status per row; CISI Vols 1-2 govern, Parpola where silent; blind entry; contested excluded from the primary and included in a sensitivity under the CISI-governed label; frozen pre-join with SHA-256 recorded in asset-a-freeze.json. Its adjudication leaves the jurisdiction coding question and the narrower sky_cycle-only alternative OPEN-for-freeze.",
+     "source_id": "specs/045-hunt-depicted-kinds/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F050-C02",
+   "kind": "requirement",
+   "text": "The claim without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004 stands UNTESTED on the record.",
+   "status": "draft",
+   "boundary": "Phase-104 (RULE-CLASS) found its falsifier requires a defined class of celestial signs and no such classification existed in the repository's data, and no positional measurement of the claim has been made. This is the claim's status as recorded before this spec. Asset A, when Spec 045 builds and freezes it, supplies the missing class definition; it does not by itself measure anything about this claim.",
+   "depends_on": [
+    "F050-C01"
+   ],
+   "assumptions": [
+    "ASM-ASSET-A-CONTRACT"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "inspection of the claim's record and of Phase-104's RULE-CLASS note: a positional measurement of this claim already on record, or a celestial classification already in the repository's data at the packet date, falsifies this statement and voids the draft's basis"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the record could have been superseded by a measurement this draft did not find (the triage of 2026-10-21, which re-checked every design against today's record, confirms D-13 UNTESTED and RIPE on exactly this ground)",
+    "verdict_rule": "the statement stands or falls on the claim record and the 2026-10-21 triage agreeing that no measurement exists",
+    "evidence_origin_groups": [
+     "claim-record",
+     "triage-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-13 (PR #195 packet, section D-13, read in full at this draft): the question, hypothesis, falsifier (celestial class not enriched at endings), data (celestial class from the shared classification; corpus and positional framework as in D-06/D-08), method (pooled class test against a frequency-matched comparison, per-sign results alongside), criteria (SUPPORTED at ratio >= 1.5 at the 5% level with the half-of-occurrences condition; NOT SUPPORTED at ratio <= 1.0; INCONCLUSIVE between or below 30 class occurrences), controls (published-source citation per sign, borderline-removed sensitivity, list frozen before counting), and the limit (position is not meaning).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F050-C03",
+   "kind": "hypothesis",
+   "text": "The pooled final-position rate of Asset A's sky_cycle signs in the pinned corpus exceeds the pooled final-position rate of the frequency-matched comparison class of spec section 4.2 by an enrichment ratio of at least 1.5.",
+   "status": "draft",
+   "boundary": "The SUPPORTED form of this hypothesis additionally requires Fisher's exact test at the 5% level, with at least half the class's occurrences coming from signs individually above the corpus-wide final-position rate (spec section 4.3). The hypothesis is about the frozen sky_cycle class, pooled as occurrences, on the pinned corpus under the pinned framework. It asserts nothing per sign (per-sign results are reported under F050-C13 and can disagree with the pooled direction), nothing about any contested or borderline subset except through the sensitivities of F050-C08, and nothing about meaning.",
+   "depends_on": [
+    "F050-C01",
+    "F050-C02"
+   ],
+   "assumptions": [
+    "ASM-ASSET-A-CONTRACT",
+    "ASM-PINNED-CORPUS",
+    "ASM-POSITIONAL-FRAMEWORK"
+   ],
+   "alternatives": [
+    "the ratio lands at or below 1.0 (the falsifier, F050-C04)",
+    "the ratio lands between 1.0 and 1.5, or at or above 1.5 without the test or the half-of-occurrences condition (INCONCLUSIVE under F050-C11)"
+   ],
+   "falsification_tests": [
+    "run the section 4.3 primary: if the enrichment ratio is below 1.5, or the exact test fails at the 5% level, or the half-of-occurrences condition fails, this hypothesis is not supported"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-POSITION-AS-MEANING"
+    ],
+    "strongest_rival": "the frequency confounder itself: a class of uncommon signs can show a high or low final rate for reasons of frequency alone, which is why the denominator is frequency-matched rather than corpus-wide",
+    "verdict_rule": "supported for this hypothesis iff all three section 4.3 SUPPORTED conditions hold together on the primary population",
+    "evidence_origin_groups": [
+     "design-packet",
+     "asset-a-contract"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-13 (PR #195 packet, section D-13, read in full at this draft): the question, hypothesis, falsifier (celestial class not enriched at endings), data (celestial class from the shared classification; corpus and positional framework as in D-06/D-08), method (pooled class test against a frequency-matched comparison, per-sign results alongside), criteria (SUPPORTED at ratio >= 1.5 at the 5% level with the half-of-occurrences condition; NOT SUPPORTED at ratio <= 1.0; INCONCLUSIVE between or below 30 class occurrences), controls (published-source citation per sign, borderline-removed sensitivity, list frozen before counting), and the limit (position is not meaning).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "backend/glossa_lab/data/yajnadevam_inscriptions.csv"
+     ]
+    },
+    {
+     "ref": "backend/glossa_lab/data/yajnadevam_inscriptions.csv",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Corpus layer of record, SHA-256 c02e3d7b... recomputed first-hand at this draft from main at 83b6a563...: the corpus the positional framework runs on, pinned identically by Specs 042 and 045.",
+     "source_id": "backend/glossa_lab/data/yajnadevam_inscriptions.csv",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F050-C04",
+   "kind": "requirement",
+   "text": "Meeting the falsifier condition of spec section 4.3 fixes the outcome wording as NOT SUPPORTED under the pre-written wording of spec section 5.2.",
+   "status": "draft",
+   "boundary": "The falsifier condition is the enrichment ratio of spec section 4.3 at or below 1.0. On that condition the outcome is never recorded as support for the claim, and never as an inconclusive softening of the claim. This is the falsifier of F050-C03, registered as a requirement so its wording cannot be softened after the ratio is known. It is scoped to the primary population and the matched denominator of section 4.2; a sensitivity arm's ratio does not trigger or rescue it.",
+   "depends_on": [
+    "F050-C03"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "if an outcome record whose primary ratio is at or below 1.0 claims any word other than NOT SUPPORTED, that record falsifies compliance with this requirement"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "post-hoc wording-shopping once an unfavourable ratio is known",
+    "verdict_rule": "the outcome record's headline word must be derivable from the recorded primary ratio by spec section 4.3 alone",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "C04 states the wording rule for an outcome whose recorded ratio meets the falsifier's condition (recorded as NOT SUPPORTED, in the pre-written wording of spec section 5.2); C01 states the scope of what an outcome under this spec may state (whether the sky_cycle class is enriched at text endings). They govern different objects - outcome wording on a stated condition, and outcome scope - and are consistent by construction: this rule operates inside C01's scope. Neither negates the other. C04 likewise does not negate C06: C06 fixes the pin source for Asset A's SHA-256 (Spec 045's asset-a-freeze.json) with its step-0 assertion rule; this claim fixes a verdict wording on a stated ratio condition. Pin provenance and verdict wording are different objects, and neither claim's rule conditions the other."
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-13 (PR #195 packet, section D-13, read in full at this draft): the question, hypothesis, falsifier (celestial class not enriched at endings), data (celestial class from the shared classification; corpus and positional framework as in D-06/D-08), method (pooled class test against a frequency-matched comparison, per-sign results alongside), criteria (SUPPORTED at ratio >= 1.5 at the 5% level with the half-of-occurrences condition; NOT SUPPORTED at ratio <= 1.0; INCONCLUSIVE between or below 30 class occurrences), controls (published-source citation per sign, borderline-removed sensitivity, list frozen before counting), and the limit (position is not meaning).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F050-C05",
+   "kind": "requirement",
+   "text": "The celestial class under Spec 050 is exactly the set of signs whose Asset A row carries depicted_kind = sky_cycle.",
+   "status": "draft",
+   "boundary": "The asset carries one row per sign keyed by the pinned crosswalk identity, with each member's verbatim published label, citations, agreement, and dispute_status as recorded in the frozen asset; this spec builds, extends, and re-derives no classification. The class is Asset A's sky_cycle kind as Spec 045 section 2.2 defines it \u2014 signs the governing published identifications (CISI Vols 1-2, Parpola where CISI is silent) describe as sun, star, moon, or celestial bodies. A sign's own visual appearance to any worker, and any program-internal classification, are not membership grounds.",
+   "depends_on": [
+    "F050-C01"
+   ],
+   "assumptions": [
+    "ASM-ASSET-A-CONTRACT",
+    "ASM-CROSSWALK-KEYS"
+   ],
+   "alternatives": [
+    "a celestial list coded fresh inside this spec from sign images or from Hunt's text (refused: that is the classification discretion the design's controls exist to remove, and it would break campaign requirement R-2's identical-asset rule)"
+   ],
+   "falsification_tests": [
+    "gate 0.3 / 0.4 inspection: the class census must list exactly the frozen asset's sky_cycle rows, each traceable to its asset row by sign_key; any member not so traceable, or any sky_cycle row omitted, falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "schema or membership drift between the builder's asset and this consumer's class, discovered only at the join",
+    "verdict_rule": "compliance is judged at gates 0.3 and 0.4 by set equality between the census class and the frozen asset's sky_cycle rows",
+    "evidence_origin_groups": [
+     "asset-a-contract",
+     "campaign-plan"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/045-hunt-depicted-kinds/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 045's draft (branch spec-045-hunt-depicted-kinds-draft, PR #244, read in full at this draft): Asset A's contract in its section 2 \u2014 one row per sign keyed by the pinned crosswalk identity; depicted_kind in {animal, sky_cycle, object_goods, human, other, contested, unidentified}; verbatim published label, citations, agreement, and dispute_status per row; CISI Vols 1-2 govern, Parpola where silent; blind entry; contested excluded from the primary and included in a sensitivity under the CISI-governed label; frozen pre-join with SHA-256 recorded in asset-a-freeze.json. Its adjudication leaves the jurisdiction coding question and the narrower sky_cycle-only alternative OPEN-for-freeze.",
+     "source_id": "specs/045-hunt-depicted-kinds/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "data/crosswalks/sign_crosswalk_master.csv",
+      "campaign-plan-2026-10-21"
+     ]
+    },
+    {
+     "ref": "data/crosswalks/sign_crosswalk_master.csv",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Sign crosswalk of record, SHA-256 4ace1a61... recomputed first-hand at this draft: defines the sign_key identity space Asset A's rows are keyed by.",
+     "source_id": "data/crosswalks/sign_crosswalk_master.csv",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/045-hunt-depicted-kinds/spec.md",
+      "campaign-plan-2026-10-21"
+     ]
+    },
+    {
+     "ref": "campaign-plan-2026-10-21",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The approved campaign plan, Parts 1-4 and decision E-6 and requirement R-2: Asset A is built once inside D-05's spec and consumed by D-06 and D-13, every consuming freeze quoting the frozen digest verbatim. (Plan held at ~/workspace/your_files/2026-10-21-runnable-experiments-campaign-plan.md; cited as the commissioning record, not a repository file.)",
+     "source_id": "campaign-plan-2026-10-21",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/045-hunt-depicted-kinds/spec.md",
+      "data/crosswalks/sign_crosswalk_master.csv"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F050-C06",
+   "kind": "requirement",
+   "text": "Spec 050's freeze record fixes Spec 045's asset-a-freeze.json as the pin source for Asset A's SHA-256.",
+   "status": "draft",
+   "boundary": "Execution gate 0.1 reads the digest from that source and asserts equality with the recomputed digest of the canonical CSV before any join or counting; a mismatch closes the execution at step 0 with the pre-written ASSET PIN MISMATCH wording, and an unfrozen or absent asset closes it with the ASSET NOT FROZEN wording. No Asset A digest exists at this freeze and none is asserted here: Asset A is built at Spec 045's execution step 1, after this freeze (coordinator pin-timing ruling, DD-050-11). The contract anchor quoted at this freeze is Spec 045's freeze digest 5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a; the pin source fixed at this freeze is specs/045-hunt-depicted-kinds/asset-a/asset-a-freeze.json. This is campaign requirement R-2 scoped to this consumer. Neither closure is a verdict on the claim, and neither is repaired inside the campaign \u2014 a different asset is a new freeze, not a resumed run.",
+   "depends_on": [
+    "F050-C05"
+   ],
+   "assumptions": [
+    "ASM-ASSET-A-CONTRACT",
+    "ASM-GATES-BEFORE-OUTCOME",
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "gate 0.1 is the operational test: the execution record must show the digest read from the fixed pin source, the recomputed digest, and their comparison before the first join record; a run that counts on an unasserted or mismatched asset falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "two near-identical classifications in use at once, making the Hunt results (D-05, D-06, D-13) incomparable",
+    "verdict_rule": "digest equality between Spec 045's freeze record, this spec's freeze record, and the execution's recomputation is the whole test",
+    "evidence_origin_groups": [
+     "asset-a-contract",
+     "campaign-plan"
+    ],
+    "boundary_confirmation": "C06 states the pin-provenance rule for Asset A (the freeze record fixes Spec 045's asset-a-freeze.json as the pin source, with gate 0.1 asserting the digest at step 0); C04 states a verdict-wording rule (a section 4.3 ratio of 1.0 downward is recorded as NOT SUPPORTED). They govern different objects - asset provenance, and outcome wording on a stated condition - and neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/045-hunt-depicted-kinds/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 045's draft (branch spec-045-hunt-depicted-kinds-draft, PR #244, read in full at this draft): Asset A's contract in its section 2 \u2014 one row per sign keyed by the pinned crosswalk identity; depicted_kind in {animal, sky_cycle, object_goods, human, other, contested, unidentified}; verbatim published label, citations, agreement, and dispute_status per row; CISI Vols 1-2 govern, Parpola where silent; blind entry; contested excluded from the primary and included in a sensitivity under the CISI-governed label; frozen pre-join with SHA-256 recorded in asset-a-freeze.json. Its adjudication leaves the jurisdiction coding question and the narrower sky_cycle-only alternative OPEN-for-freeze.",
+     "source_id": "specs/045-hunt-depicted-kinds/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "campaign-plan-2026-10-21"
+     ]
+    },
+    {
+     "ref": "campaign-plan-2026-10-21",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The approved campaign plan, Parts 1-4 and decision E-6 and requirement R-2: Asset A is built once inside D-05's spec and consumed by D-06 and D-13, every consuming freeze quoting the frozen digest verbatim. (Plan held at ~/workspace/your_files/2026-10-21-runnable-experiments-campaign-plan.md; cited as the commissioning record, not a repository file.)",
+     "source_id": "campaign-plan-2026-10-21",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/045-hunt-depicted-kinds/spec.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F050-C07",
+   "kind": "requirement",
+   "text": "Celestial-class membership under Spec 050 comes solely through depicted_kind = sky_cycle in the frozen Asset A.",
+   "status": "draft",
+   "boundary": "In particular, no jurisdiction-coded sign is a member; no sign whose verbatim label a reader judges celestial while its Asset A kind is object_goods, human, or other is a member; no sign classified by a worker's visual judgement is a member. This boundary records the live drafting question Spec 045's adjudication left OPEN-for-freeze (the jurisdiction coding question and the narrower sky_cycle-only alternative). Design D-13's celestial notion \u2014 sun, star, moon, celestial bodies \u2014 is Asset A's sky_cycle kind; if Hunt's closing part is broader than the sky, the broader form is not tested by this spec and no verdict here speaks to it, in either direction.",
+   "depends_on": [
+    "F050-C05"
+   ],
+   "assumptions": [
+    "ASM-ASSET-A-CONTRACT"
+   ],
+   "alternatives": [
+    "widening the class to Hunt's full closing notion, cycles plus jurisdiction (refused at draft: jurisdiction has no Asset A kind, and coding it inside this spec would re-derive a classification this spec is forbidden to build)"
+   ],
+   "falsification_tests": [
+    "inspection of the gate-0.4 census against the frozen asset: any class member whose depicted_kind is not sky_cycle falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "quiet widening of the class toward whichever membership would suit the emerging result \u2014 the design's named central confounder",
+    "verdict_rule": "the census is the judge: membership is exactly the sky_cycle set, and spec section 2.2 states the boundary in every output that states the class",
+    "evidence_origin_groups": [
+     "asset-a-contract",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/045-hunt-depicted-kinds/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 045's draft (branch spec-045-hunt-depicted-kinds-draft, PR #244, read in full at this draft): Asset A's contract in its section 2 \u2014 one row per sign keyed by the pinned crosswalk identity; depicted_kind in {animal, sky_cycle, object_goods, human, other, contested, unidentified}; verbatim published label, citations, agreement, and dispute_status per row; CISI Vols 1-2 govern, Parpola where silent; blind entry; contested excluded from the primary and included in a sensitivity under the CISI-governed label; frozen pre-join with SHA-256 recorded in asset-a-freeze.json. Its adjudication leaves the jurisdiction coding question and the narrower sky_cycle-only alternative OPEN-for-freeze.",
+     "source_id": "specs/045-hunt-depicted-kinds/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md"
+     ]
+    },
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-13 (PR #195 packet, section D-13, read in full at this draft): the question, hypothesis, falsifier (celestial class not enriched at endings), data (celestial class from the shared classification; corpus and positional framework as in D-06/D-08), method (pooled class test against a frequency-matched comparison, per-sign results alongside), criteria (SUPPORTED at ratio >= 1.5 at the 5% level with the half-of-occurrences condition; NOT SUPPORTED at ratio <= 1.0; INCONCLUSIVE between or below 30 class occurrences), controls (published-source citation per sign, borderline-removed sensitivity, list frozen before counting), and the limit (position is not meaning).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/045-hunt-depicted-kinds/spec.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F050-C08",
+   "kind": "requirement",
+   "text": "Contested signs are excluded from the primary celestial class.",
+   "status": "draft",
+   "boundary": "Contested signs are likewise excluded from the comparison class. Borderline sky_cycle signs are included in the primary under their frozen kind. Both pre-registered sensitivities of spec section 4.5 are run and reported beside the primary \u2014 S1 with borderline signs removed, S2 with contested signs whose CISI-governed label is a sky_cycle identification included under that label \u2014 and neither sensitivity replaces the primary's verdict word. Contested means depicted_kind = contested or dispute_status = contested in the frozen asset; borderline means dispute_status = borderline. S2's inclusion rule is Spec 045 sections 2.5 and 5.3's rule, applied to this class; a contested sign whose CISI-governed label is not sky_cycle never enters S2's class.",
+   "depends_on": [
+    "F050-C05",
+    "F050-C07"
+   ],
+   "assumptions": [
+    "ASM-ASSET-A-CONTRACT",
+    "ASM-PUBLISHED-ID-LAYER"
+   ],
+   "alternatives": [
+    "resolving contested signs into the primary by source rank (refused for the same reason Spec 045 refused it: rank would manufacture agreement at exactly the signs where the identification layer is weakest)"
+   ],
+   "falsification_tests": [
+    "the outcome record must show both sensitivities' full quantities and populations; the S1 population must equal the primary class minus its borderline members, and the S2 class must equal the primary class plus exactly the contested signs meeting the stated rule \u2014 any other population falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a primary result that exists only because of the dispute rule's exclusions, quoted without that fact",
+    "verdict_rule": "the sensitivity populations and quantities are section 9 reporting obligations; their absence or a promoted sensitivity is a defect of the outcome product, recorded as such",
+    "evidence_origin_groups": [
+     "asset-a-contract",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/045-hunt-depicted-kinds/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 045's draft (branch spec-045-hunt-depicted-kinds-draft, PR #244, read in full at this draft): Asset A's contract in its section 2 \u2014 one row per sign keyed by the pinned crosswalk identity; depicted_kind in {animal, sky_cycle, object_goods, human, other, contested, unidentified}; verbatim published label, citations, agreement, and dispute_status per row; CISI Vols 1-2 govern, Parpola where silent; blind entry; contested excluded from the primary and included in a sensitivity under the CISI-governed label; frozen pre-join with SHA-256 recorded in asset-a-freeze.json. Its adjudication leaves the jurisdiction coding question and the narrower sky_cycle-only alternative OPEN-for-freeze.",
+     "source_id": "specs/045-hunt-depicted-kinds/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md"
+     ]
+    },
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-13 (PR #195 packet, section D-13, read in full at this draft): the question, hypothesis, falsifier (celestial class not enriched at endings), data (celestial class from the shared classification; corpus and positional framework as in D-06/D-08), method (pooled class test against a frequency-matched comparison, per-sign results alongside), criteria (SUPPORTED at ratio >= 1.5 at the 5% level with the half-of-occurrences condition; NOT SUPPORTED at ratio <= 1.0; INCONCLUSIVE between or below 30 class occurrences), controls (published-source citation per sign, borderline-removed sensitivity, list frozen before counting), and the limit (position is not meaning).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/045-hunt-depicted-kinds/spec.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F050-C09",
+   "kind": "requirement",
+   "text": "Text-final position under Spec 050 is the last sign of an inscription's recorded sequence in the pinned corpus.",
+   "status": "draft",
+   "boundary": "Final position is as counted by the pinned positional framework. A sign's final-position rate is its final-position occurrences over its total occurrences, and a class's rate pools occurrences rather than averaging per-sign rates; this spec introduces no new length floor, segmentation rule, sign ordering, or re-typing. Final position is not the tripartite closing part, not the terminal-strong sign class, and not a suffix-like behaviour score; those are D-05's and D-08's objects. Any length or segmentation convention the pinned framework itself applies is part of that framework, is restated in the gate-0.5 reproduction record, and applies identically to both classes.",
+   "depends_on": [
+    "F050-C01"
+   ],
+   "assumptions": [
+    "ASM-POSITIONAL-FRAMEWORK",
+    "ASM-PINNED-CORPUS"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "gate 0.5 is the operational test: a framework application that cannot reproduce the pinned record's 805 / 2,267 formula count and 40 / 61 / 20 strong-sign classes is not the pinned framework, and the run stops INVALID before any ending quantity"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "definition drift \u2014 an ending measure quietly redefined (a length floor added, a segmentation changed) between the design and the run, manufacturing or erasing an enrichment",
+    "verdict_rule": "identity of the ending definition is judged by the gate-0.5 exact-reproduction standard, not by code inspection alone",
+    "evidence_origin_groups": [
+     "positional-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/analysis/positional/hunt_tripartite_test.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Positional record, SHA-256 0e546962... recomputed first-hand at this draft: 805 of 2,267 inscriptions follow the opening-middle-ending structure; 40 initial-strong, 61 medial-strong, 20 terminal-strong signs of record.",
+     "source_id": "glossa-indus/analysis/positional/hunt_tripartite_test.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "backend/glossa_lab/data/yajnadevam_inscriptions.csv"
+     ]
+    },
+    {
+     "ref": "backend/glossa_lab/data/yajnadevam_inscriptions.csv",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Corpus layer of record, SHA-256 c02e3d7b... recomputed first-hand at this draft from main at 83b6a563...: the corpus the positional framework runs on, pinned identically by Specs 042 and 045.",
+     "source_id": "backend/glossa_lab/data/yajnadevam_inscriptions.csv",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/analysis/positional/hunt_tripartite_test.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F050-C10",
+   "kind": "requirement",
+   "text": "The primary denominator is the frequency-matched comparison class of spec section 4.2.",
+   "status": "draft",
+   "boundary": "The comparison class is the non-celestial, non-contested signs whose total occurrence counts lie between the smallest and the largest total counts among the primary celestial members, inclusive. The corpus-wide final-position rate is published beside it as descriptive context and as the rate for the per-sign condition, never substituted as the primary denominator. The band rule is this draft's operational reading of the design's 'same frequency band' / 'signs of comparable frequency' (DD-050-2): it is derived from the class's own recorded counts at the census, before any final-position quantity exists, and no numeric band is invented at draft. Unidentified signs inside the band are comparison members, counted and flagged.",
+   "depends_on": [
+    "F050-C09"
+   ],
+   "assumptions": [
+    "ASM-PINNED-CORPUS",
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [
+    "the corpus-wide rate as the primary denominator (the falsifier's looser first phrasing; refused as primary because frequency confounding is the named confounder it would re-admit \u2014 it is retained exactly where the design uses it, in the per-sign condition)"
+   ],
+   "falsification_tests": [
+    "the gate-0.4 census must publish the band's endpoints, the comparison members, and their total occurrences before any final count; a primary ratio computed against any other denominator falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "denominator-shopping between the matched and corpus-wide rates once both are known",
+    "verdict_rule": "the census is the judge: band, membership, and totals are recorded before positional quantities, and section 4.3's ratio names its denominator",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-13 (PR #195 packet, section D-13, read in full at this draft): the question, hypothesis, falsifier (celestial class not enriched at endings), data (celestial class from the shared classification; corpus and positional framework as in D-06/D-08), method (pooled class test against a frequency-matched comparison, per-sign results alongside), criteria (SUPPORTED at ratio >= 1.5 at the 5% level with the half-of-occurrences condition; NOT SUPPORTED at ratio <= 1.0; INCONCLUSIVE between or below 30 class occurrences), controls (published-source citation per sign, borderline-removed sensitivity, list frozen before counting), and the limit (position is not meaning).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F050-C11",
+   "kind": "requirement",
+   "text": "The headline verdict is assigned mechanically by spec section 4.3.",
+   "status": "draft",
+   "boundary": "SUPPORTED holds iff the enrichment ratio is at least 1.5, Fisher's exact test passes at the 5% level, and the half-of-occurrences condition holds; NOT SUPPORTED holds iff the ratio is at or below 1.0; INCONCLUSIVE holds in every other adjudicated case; TOO THIN \u2014 the recorded form of INCONCLUSIVE \u2014 holds if the celestial or the comparison class totals fewer than 30 occurrences at gate 0.4, in which case no final-position rate is computed. These are design D-13's criteria, carried verbatim in their values (1.5, 1.0, the 5% level, the half-of-occurrences condition, the 30-occurrence floor). The exact test is Fisher's exact test, two-sided, on the pooled 2x2 table (DD-050-4). No threshold is adjusted for the class's size or for any observed quantity.",
+   "depends_on": [
+    "F050-C03",
+    "F050-C04",
+    "F050-C10"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "the verdict assignment is mechanical from the recorded quantities and census; any verdict not following this rule from its run's numbers falsifies the outcome record"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "post-hoc rule-shopping once the class's numbers are known",
+    "verdict_rule": "the rule is fixed in this register before any ending quantity exists; verdicts are recomputed from the published quantities by any reader",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-13 (PR #195 packet, section D-13, read in full at this draft): the question, hypothesis, falsifier (celestial class not enriched at endings), data (celestial class from the shared classification; corpus and positional framework as in D-06/D-08), method (pooled class test against a frequency-matched comparison, per-sign results alongside), criteria (SUPPORTED at ratio >= 1.5 at the 5% level with the half-of-occurrences condition; NOT SUPPORTED at ratio <= 1.0; INCONCLUSIVE between or below 30 class occurrences), controls (published-source citation per sign, borderline-removed sensitivity, list frozen before counting), and the limit (position is not meaning).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F050-C12",
+   "kind": "requirement",
+   "text": "Execution stops before any final-position quantity is computed on any step-0 gate failure named in spec section 3.",
+   "status": "draft",
+   "boundary": "The gates are: Asset A unfrozen or its digest mismatching (gate 0.1), an input hash mismatching (0.2), a corpus sign lacking an Asset A row or a sky_cycle key failing to resolve in the crosswalk (0.3), the positional record's quantities not reproduced (0.5), or the freeze-order proof absent (0.6). Gate 0.4's census is totals-only and its failure class is TOO THIN, not INVALID. These are spec section 3's gates. Their failure classes are CLOSED AT STEP 0 (0.1), INVALID (0.2, 0.3, 0.5, 0.6), and TOO THIN (0.4). No failure is repaired at run time; a repaired input or a different asset is a new freeze, not a resumed run.",
+   "depends_on": [
+    "F050-C06",
+    "F050-C09"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "each gate's check is itself the test: the execution record must show every gate's verdict, in order, before the first final-position quantity, or the run is non-compliant on its face"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "gate-skipping under time pressure, with the failure rationalised afterwards",
+    "verdict_rule": "the run's own record is the judge: gate verdicts precede quantities in it, in order, or the outcome is a step-0 closure or INVALID by construction",
+    "evidence_origin_groups": [
+     "asset-a-contract",
+     "positional-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/045-hunt-depicted-kinds/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 045's draft (branch spec-045-hunt-depicted-kinds-draft, PR #244, read in full at this draft): Asset A's contract in its section 2 \u2014 one row per sign keyed by the pinned crosswalk identity; depicted_kind in {animal, sky_cycle, object_goods, human, other, contested, unidentified}; verbatim published label, citations, agreement, and dispute_status per row; CISI Vols 1-2 govern, Parpola where silent; blind entry; contested excluded from the primary and included in a sensitivity under the CISI-governed label; frozen pre-join with SHA-256 recorded in asset-a-freeze.json. Its adjudication leaves the jurisdiction coding question and the narrower sky_cycle-only alternative OPEN-for-freeze.",
+     "source_id": "specs/045-hunt-depicted-kinds/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/analysis/positional/hunt_tripartite_test.json"
+     ]
+    },
+    {
+     "ref": "glossa-indus/analysis/positional/hunt_tripartite_test.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Positional record, SHA-256 0e546962... recomputed first-hand at this draft: 805 of 2,267 inscriptions follow the opening-middle-ending structure; 40 initial-strong, 61 medial-strong, 20 terminal-strong signs of record.",
+     "source_id": "glossa-indus/analysis/positional/hunt_tripartite_test.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/045-hunt-depicted-kinds/spec.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F050-C13",
+   "kind": "requirement",
+   "text": "Every celestial member sign is reported in full.",
+   "status": "draft",
+   "boundary": "The full report carries the Asset A verbatim label and citations, total occurrences, final-position occurrences, individual final-position rate, and whether that rate is above the corpus-wide rate. The half-of-occurrences condition is computed from that table, and if the pooled counts do not reconcile exactly with the per-sign table the execution is recorded NOT ADJUDICATED with the unreconciled counts published. Per-sign reporting is part of the design's method, not an appendix: the pooled test exists alongside it so one frequent sign cannot carry the class silently. NOT ADJUDICATED is a machinery finding and asserts nothing about the claim (DD-050-5).",
+   "depends_on": [
+    "F050-C03",
+    "F050-C11"
+   ],
+   "assumptions": [
+    "ASM-PINNED-CORPUS"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "an outcome record lacking any member sign's row, or attaching a verdict word to unreconciled counts, falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a pooled enrichment carried by one frequent sign, quoted as a class property",
+    "verdict_rule": "the per-sign table and the reconciliation are section 9 reporting obligations and precede verdict assignment in the run order",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-13 (PR #195 packet, section D-13, read in full at this draft): the question, hypothesis, falsifier (celestial class not enriched at endings), data (celestial class from the shared classification; corpus and positional framework as in D-06/D-08), method (pooled class test against a frequency-matched comparison, per-sign results alongside), criteria (SUPPORTED at ratio >= 1.5 at the 5% level with the half-of-occurrences condition; NOT SUPPORTED at ratio <= 1.0; INCONCLUSIVE between or below 30 class occurrences), controls (published-source citation per sign, borderline-removed sensitivity, list frozen before counting), and the limit (position is not meaning).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F050-C14",
+   "kind": "requirement",
+   "text": "The headline outcome of an execution is exactly one of the outcome classes named in spec section 5.1.",
+   "status": "draft",
+   "boundary": "The classes are SUPPORTED, NOT SUPPORTED, INCONCLUSIVE, TOO THIN, CLOSED AT STEP 0 \u2014 ASSET NOT FROZEN, CLOSED AT STEP 0 \u2014 ASSET PIN MISMATCH, INVALID, and NOT ADJUDICATED. The headline paragraph uses the corresponding pre-written wording of spec section 5.2 with the bracketed quantities filled from the run. SUPPORTED, NOT SUPPORTED, and INCONCLUSIVE are verdicts; TOO THIN is the gate-0.4 form of INCONCLUSIVE; the step-0 closures, INVALID, and NOT ADJUDICATED are closure classes, not verdicts, and their wordings say the claim stands as recorded. The outcome set is design D-13's three criteria words plus the closure classes the campaign's step-0 and cluster rules require, each pre-written at draft.",
+   "depends_on": [
+    "F050-C11",
+    "F050-C12",
+    "F050-C13"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "the outcome record's headline word must be derivable from the gate record, the census, or the recorded quantities by this claim's definitions alone, and its paragraph must match the corresponding section 5.2 form"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "headline-shopping: choosing the outcome word that flatters the claim after the quantities are known",
+    "verdict_rule": "the mapping from records to outcome words is fixed here, before execution; the outcome record shows the quantities and the word together",
+    "evidence_origin_groups": [
+     "design-packet",
+     "campaign-plan"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-13 (PR #195 packet, section D-13, read in full at this draft): the question, hypothesis, falsifier (celestial class not enriched at endings), data (celestial class from the shared classification; corpus and positional framework as in D-06/D-08), method (pooled class test against a frequency-matched comparison, per-sign results alongside), criteria (SUPPORTED at ratio >= 1.5 at the 5% level with the half-of-occurrences condition; NOT SUPPORTED at ratio <= 1.0; INCONCLUSIVE between or below 30 class occurrences), controls (published-source citation per sign, borderline-removed sensitivity, list frozen before counting), and the limit (position is not meaning).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "campaign-plan-2026-10-21"
+     ]
+    },
+    {
+     "ref": "campaign-plan-2026-10-21",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The approved campaign plan, Parts 1-4 and decision E-6 and requirement R-2: Asset A is built once inside D-05's spec and consumed by D-06 and D-13, every consuming freeze quoting the frozen digest verbatim. (Plan held at ~/workspace/your_files/2026-10-21-runnable-experiments-campaign-plan.md; cited as the commissioning record, not a repository file.)",
+     "source_id": "campaign-plan-2026-10-21",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F050-C15",
+   "kind": "requirement",
+   "text": "No outcome under Spec 050 establishes calendar content for sky signs.",
+   "status": "draft",
+   "boundary": "No outcome establishes that sky signs marked calendars, cycles, scheduling, or any other content. Every statement of Asset A or of a verdict under this spec restates Spec 037's census caution: object-type labels diverged between compilations in 49 percent of matched cases, and Asset A's construction (held published sources only, blind entry, dispute by rule, freeze before join) is the design's answer to that caution, not a refutation of it. Also excluded, and stated wherever an outcome is stated: any conclusion about what any individual sign means; any conclusion that the depicted kinds are the signs' ancient categories rather than the published lists' identifications; and any statement about a corpus or compilation other than the pinned layer. Position is not meaning, and depiction here is the published-identification layer.",
+   "depends_on": [
+    "F050-C01",
+    "F050-C03",
+    "F050-C05"
+   ],
+   "assumptions": [
+    "ASM-PUBLISHED-ID-LAYER",
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "a calendar narrative attached to an enrichment because the class 'suggests' one (refused: suggestion is not measurement, and the design states this limit in its own words)"
+   ],
+   "falsification_tests": [
+    "inspection of every Spec 050 output: a meaning, calendar, or cycle-content claim in any output falsifies compliance and is corrected by dated addendum, never by silent edit; an Asset A statement or outcome product lacking the caution sentence falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-POSITION-AS-MEANING"
+    ],
+    "strongest_rival": "the reading in which clustering at endings is a calendar decipherment by another name, and the frozen asset quoted as settled fact with its compilation-relative basis forgotten",
+    "verdict_rule": "outputs are judged against this boundary at execution close; violations are recorded defects, and the claim consequence is limited to the enrichment statement of F050-C01",
+    "evidence_origin_groups": [
+     "design-packet",
+     "campaign-plan"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-13 (PR #195 packet, section D-13, read in full at this draft): the question, hypothesis, falsifier (celestial class not enriched at endings), data (celestial class from the shared classification; corpus and positional framework as in D-06/D-08), method (pooled class test against a frequency-matched comparison, per-sign results alongside), criteria (SUPPORTED at ratio >= 1.5 at the 5% level with the half-of-occurrences condition; NOT SUPPORTED at ratio <= 1.0; INCONCLUSIVE between or below 30 class occurrences), controls (published-source citation per sign, borderline-removed sensitivity, list frozen before counting), and the limit (position is not meaning).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "campaign-plan-2026-10-21"
+     ]
+    },
+    {
+     "ref": "campaign-plan-2026-10-21",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The approved campaign plan, Parts 1-4 and decision E-6 and requirement R-2: Asset A is built once inside D-05's spec and consumed by D-06 and D-13, every consuming freeze quoting the frozen digest verbatim. (Plan held at ~/workspace/your_files/2026-10-21-runnable-experiments-campaign-plan.md; cited as the commissioning record, not a repository file.)",
+     "source_id": "campaign-plan-2026-10-21",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,450 @@
+#!/usr/bin/env python3
+"""Build the Spec 065 freeze record (freeze.json).
+
+Written at the freeze act of 2026-10-21: the digest
+is computed over the recovered register exactly
+once, at the freeze (the Spec 035 ordering). Run
+with the Glossa backend venv python from the
+repository root:
+
+    python specs/065-s1-s5-heading-successor/build_freeze.py
+
+Writes
+specs/065-s1-s5-heading-successor/freeze.json
+(framework026 build_freeze payload: definition +
+source hashes + environment, digest = SHA-256 of
+the canonical JSON serialisation) and prints the
+digest.
+"""
+from __future__ import annotations
+
+import json
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(REPO / "backend"))
+
+from glossa_lab.framework026 import build_freeze  # noqa: E402
+
+SPEC_DIR = "specs/065-s1-s5-heading-successor"
+
+DEFINITION = {
+    "spec": "specs/065-s1-s5-heading-successor/spec.md",
+    "freeze_doc": "specs/065-s1-s5-heading-successor/freeze.md",
+    "experiment_id": "spec065-s1-s5-heading-successor",
+    "register": {
+        "path": "specs/065-s1-s5-heading-successor/claims.json",
+        "register_version": "0.6-draft",
+        "claims": 15,
+        "aee_hook_pass": (
+            "PASSED at the freeze act of 2026-10-21 under aee 1.5.3: "
+            "after_specify, after_plan, and after_tasks each cleared "
+            "over the recovered register (the draft register already "
+            "carried engine evidence values and mutual independent_of "
+            "declarations, so no loadability recovery was needed; "
+            "round 1 over 0.5-draft returned 18 failure modes: 15 "
+            "FR-2.3 draft-cap records and 3 irreducibility challenges "
+            "recorded under the coverage_gap category (F065-C01, C03, "
+            "C09); recovery to 0.6-draft restated the 3 challenged "
+            "heads as single propositions with carried clauses in the "
+            "boundaries; 15 draft-cap records only over the final "
+            "0.6-draft register), at every hook zero correctness "
+            "failure modes and no claim below the 0.70 threshold "
+            "(minimum propagated 0.8695); the engine outcome word "
+            "reads iterate solely from the draft-cap records (gate "
+            "reading DD-065-14; record in "
+            "specs/065-s1-s5-heading-successor/aee/freeze-aee-note.md)"
+        ),
+    },
+    "basis": {
+        "adjudication": "specs/065-s1-s5-heading-successor/adjudication.md",
+        "decisions": (
+            "DECIDED by the owner on 2026-10-21 (not proposals): the "
+            "amendment package Item 6 approval (build Spec 065, the "
+            "successor recovery act for Spec 057's S-1 and S-5 rows, "
+            "through freeze and OSF filing), on the amendment-queue "
+            "commission of the same date (Item 6: Spec 057 S-1 / S-5 "
+            "heading sources; its section 3 gives the successor's "
+            "form). Draft decisions DD-065-1 to DD-065-9 are recorded "
+            "in adjudication.md sections 4 and stand as drafted. "
+            "Freeze decisions DD-065-10 to DD-065-15 are recorded in "
+            "adjudication.md section 7: the freeze basis (DD-065-10); "
+            "the S-1 frozen contract stands as drafted (DD-065-11); "
+            "the section 7 partition and disposition forms stand "
+            "(DD-065-12); Phase-427 allocated, verified genuinely "
+            "free (DD-065-13); the DD-038-10 AEE gate reading adopted "
+            "(DD-065-14); and the spec's own OSF contract registration "
+            "filed at the freeze under E-1, the freeze and filing "
+            "acts taken, execution not authorised (DD-065-15)."
+        ),
+    },
+    "design": {
+        "phase": "Phase-427",
+        "predecessor": {
+            "spec": "specs/057-five-sources-heading",
+            "phase": "Phase-419",
+            "outcome": (
+                "headline class C - PARTIAL RECOVERY WITH UNLOCATED "
+                "SOURCES (r = 2, e = 1, u = 2), executed 2026-10-21: "
+                "S-3 and S-4 CLAIM RECOVERED, S-2 PASSAGE EMPTY, and "
+                "S-1 and S-5 SOURCE UNLOCATED with sub-state HEADING "
+                "NOT PRESENT IN HELD TEXT, because section 4 step 4 "
+                "(search the source document's own text layer) could "
+                "not run - no copy of either source document exists "
+                "in the repository"
+            ),
+            "freeze_digest": (
+                "237b923a2c19b216e0476f70d17a956db0ca68d1ba8af6902109099a82c820d9"
+            ),
+            "posture": (
+                "Spec 057's frozen record, outcome, and the canonical "
+                "heading record stand unedited (DD-065-1); the "
+                "heading record stands superseded-not-retired until "
+                "both sources resolve under this successor"
+            ),
+        },
+        "act": (
+            "a successor recovery act for the two unlocated rows: "
+            "search the acquired documents' own text layers under "
+            "Spec 057 section 5's heading rule for the merged heading "
+            "'Statistical finding: positional analysis' - S-5 on its "
+            "acquired, pinned file; S-1 under the frozen two-arm "
+            "contract - and account for each row with exactly one "
+            "outcome from the frozen set of spec section 6"
+        ),
+        "claim_under_test": {
+            "id": (
+                "ancient_writing_and_modern_technologies_"
+                "51831ac9_statisti_0004"
+            ),
+            "fragment": "Statistical finding: positional analysis",
+            "record": (
+                "Phase-104 evaluation: verdict stays_untested, rule "
+                "RULE-NOCOND - auto-extraction fragment with no "
+                "falsification condition and no stated proposition"
+            ),
+            "fingerprint": (
+                "a4874349e0cc0ba23b711f10c78f60372639c2dc6f352165b48d4a9e44272469"
+            ),
+        },
+        "falsifier": (
+            "the design's success condition is accounting, not "
+            "recovery: the execution is falsified if either row ends "
+            "without exactly one recorded outcome derived from the "
+            "search the contract states or from the frozen blocked "
+            "posture (spec section 4.2), if a search runs on any "
+            "bytes other than the pinned bytes, or if a heading is "
+            "judged by any rule other than spec section 5's - "
+            "whatever the headline says (spec section 1.3)"
+        ),
+        "hypothesis": (
+            "F065-C14: at least one of the two documents carries the "
+            "heading in heading form; judged only over documents "
+            "actually searched - unjudged as to S-1 if S-1 is never "
+            "searched"
+        ),
+        "rows": [
+            {
+                "source": "S-1",
+                "citation": (
+                    "Fuls, Andreas. 'Ancient Writing and Modern "
+                    "Technologies - Structural Analysis of Numerical "
+                    "Indus Inscriptions.' In Studies on Indus Script "
+                    "(Mohenjodaro 2020), pp. 57-90. Karachi: National "
+                    "Fund for Mohenjodaro, 2020."
+                ),
+                "claim_id": (
+                    "ancient_writing_and_modern_technologies_"
+                    "51831ac9_statisti_0004"
+                ),
+                "document_id": (
+                    "ancient_writing_and_modern_technologies_51831ac9"
+                ),
+                "quote_fragment": "positional analysis",
+                "cleaned_text_sha256": (
+                    "1275b795903260221f5226bada352de27471c010e2ad8ace556c548c20da1fc4"
+                ),
+                "claims_file_freeze_constant": (
+                    "e98190894202a2a1c0e314229dcb585c62a0f5c12c059bcabd63b055c42959e8"
+                ),
+                "registry_file_sha256": (
+                    "92e19e6def7eccb42ba0e9f53f5ef3bf9dbb0b9717aa3d675cecb971f5ab0e5c"
+                ),
+                "document_filename": (
+                    "Ancient_Writing_and_Modern_Technologies.pdf"
+                ),
+                "document_size_bytes": 3565316,
+                "document_checksum_sha256": (
+                    "51831ac997f54782fc6483e04c06d6b60f08af81101b39bfe00daa5556b88b04"
+                ),
+                "spec057_posture": (
+                    "SOURCE UNLOCATED - HEADING NOT PRESENT IN HELD "
+                    "TEXT (outcome section 4.1): two occurrences "
+                    "(line 102 running text; line 663 bibliography "
+                    "entry for the Fuls 2013 paper), neither in "
+                    "heading form; step 4 could not run"
+                ),
+                "acquisition": (
+                    "NOT ACQUIRED - frozen posture: the Academia.edu "
+                    "download is blocked by its sign-in wall (owner "
+                    "account act); blocker record BLOCKED.md and the "
+                    "PROVENANCE.md blocked section after entry 23"
+                ),
+            },
+            {
+                "source": "S-5",
+                "citation": (
+                    "Hunt, Treasure A. Without Kings or Conquests: "
+                    "The Indus Script Deciphered and a Civilization "
+                    "Reconstructed. Preprint, FelineMind Behavior "
+                    "Labs; draft posted September 2025. Zenodo, "
+                    "published 6 September 2025, version v1. DOI: "
+                    "10.5281/zenodo.17066226."
+                ),
+                "claim_id": (
+                    "without_kings_or_conquests_the_indus_scr_"
+                    "ce9d98cc_statisti_0002"
+                ),
+                "document_id": (
+                    "without_kings_or_conquests_the_indus_scr_ce9d98cc"
+                ),
+                "quote_fragment": "Positional analysis",
+                "cleaned_text_sha256": (
+                    "dd58497528db89fe75111d2431b9611aebd4a5a9715a4ecceb012d9d1538029e"
+                ),
+                "claims_file_freeze_constant": (
+                    "c1a433d539a0ed899fe7ab11af2be0c608cb85d9f0fc99b2ccfefdb6e866262a"
+                ),
+                "registry_file_sha256": (
+                    "38122256305b8451e49e4ef4d56df7399363bdc3c57052b10f9165ab593261a7"
+                ),
+                "document_filename": (
+                    "Without_Kings_or_Conquests_The_Indus_Scr.pdf"
+                ),
+                "document_size_bytes": 321649,
+                "document_checksum_sha256": (
+                    "ce9d98cc32646b0d0023dd24a2f5c059f639019da8717b2ab3b7fb0f41012399"
+                ),
+                "spec057_posture": (
+                    "SOURCE UNLOCATED - HEADING NOT PRESENT IN HELD "
+                    "TEXT (outcome section 4.2): a single occurrence "
+                    "(line 267, sentence-initial in running text of "
+                    "section 5.5), not in heading form; step 4 could "
+                    "not run"
+                ),
+                "acquisition": (
+                    "ACQUIRED, pinned (spec section 2.2): the Zenodo "
+                    "v1 file, asserted on the local file at step 0 "
+                    "(gate 0.2) before searching"
+                ),
+            },
+        ],
+        "acquired_s5": {
+            "filename": (
+                "Without Kings or Conquests-Indus Deciphered_Full.pdf"
+            ),
+            "size_bytes": 657863,
+            "sha256": (
+                "77f10f3279454bede1ba60a04f3c099500667ca62574b07aaabb9fc69bf94665"
+            ),
+            "md5": "36616e20a2c62be106ebf9c3d4093fd6",
+            "local_path": (
+                "local research store only: "
+                "downloads/hunt-without-kings-zenodo-2025/"
+                "Without Kings or Conquests-Indus Deciphered_Full.pdf"
+            ),
+            "posture": (
+                "not committed; open Zenodo deposit (record "
+                "17066226, DOI 10.5281/zenodo.17066226, version v1); "
+                "asserted on the local file at step 0 (gate 0.2) "
+                "before any search"
+            ),
+            "licence": (
+                "CC-BY-4.0 as stated on the Zenodo record at "
+                "acquisition (PROVENANCE.md entry 23); supersedes "
+                "the registry's license_status 'unclear' for this "
+                "acquired copy"
+            ),
+            "edition_relationship": (
+                "ESTABLISHED by the Item 6 provenance work "
+                "(edition-comparison.md): the Zenodo v1 file is the "
+                "same September 2025 draft the original extraction "
+                "ran on, content-equal modulo export/cleaning; the "
+                "successor nevertheless pins and searches the "
+                "acquired file, not the held cleaned text"
+            ),
+        },
+        "s1_contract": {
+            "search_arm": (
+                "an S-1 document handed over and pinned by the "
+                "append-only intake record intake-S1.json in this "
+                "spec's directory before the run is searched exactly "
+                "as S-5 is (spec section 4.2)"
+            ),
+            "blocked_arm": (
+                "with no such intake record before the run, the S-1 "
+                "row resolves as STILL UNLOCATED - ACQUISITION "
+                "BLOCKED (owner account act), citing the blocker "
+                "record; no search is run and no finding about the "
+                "chapter is stated or implied"
+            ),
+            "fence": (
+                "the successor never contacts Fuls, never creates an "
+                "account, never uses credentials, and never sends "
+                "any request (spec section 9.6)"
+            ),
+        },
+        "outcome_set": {
+            "HEADING FOUND": (
+                "the document's text layer carries the heading in "
+                "heading form; the passage is recovered or recorded "
+                "empty under Spec 057 section 6's standards, carried"
+            ),
+            "HEADING ABSENT FROM DOCUMENT": (
+                "document-level finding; converts the sub-state from "
+                "HEADING NOT PRESENT IN HELD TEXT, with the searched "
+                "file's hash as evidence; document-scoped only"
+            ),
+            "STILL UNLOCATED - ACQUISITION BLOCKED": (
+                "S-1 only; the frozen blocked arm of spec section 4.2"
+            ),
+        },
+        "headline_classes": {
+            "A": "BOTH SOURCES RESOLVED",
+            "B": "S-5 RESOLVED, S-1 STILL BLOCKED",
+        },
+        "retirement_rule": (
+            "the heading record retires only when both sources "
+            "resolve (Spec 057's rule, carried verbatim); while S-1 "
+            "is blocked it stands superseded-not-retired exactly as "
+            "057 left it"
+        ),
+        "prior_assessments": (
+            "the Item 6 draft's assessments (S-1/S-5 headings likely "
+            "absent) are recorded as prior assessments with no "
+            "standing (the Spec 055 rule; DD-065-7); expected "
+            "outcomes are not pre-judged in this spec"
+        ),
+        "execution_gate": (
+            "NOT satisfied at the freeze: execution (Phase-427) "
+            "begins only after this freeze has merged, the OSF "
+            "registration's approval act has completed, and a "
+            "separate execution order is given; at the freeze no "
+            "text layer has been searched as a finding and no "
+            "outcome row exists"
+        ),
+        "freeze_does_not": (
+            "This freeze does not establish what the acquired S-5 "
+            "document's text layer holds under the section 5 rule - "
+            "that search has not run; S-1 remains unlocated and its "
+            "blocker is an owner account act, not a finding about "
+            "the chapter (adjudication.md section 7)"
+        ),
+        "inputs": {
+            "s1_cleaned_text": {
+                "path": (
+                    "glossa-indus/processed/cleaned_text/"
+                    "ancient_writing_and_modern_technologies_51831ac9.txt"
+                ),
+                "sha256": (
+                    "1275b795903260221f5226bada352de27471c010e2ad8ace556c548c20da1fc4"
+                ),
+                "bytes": 48904,
+            },
+            "s1_registry": {
+                "path": (
+                    "glossa-indus/literature/documents/"
+                    "ancient_writing_and_modern_technologies_51831ac9.json"
+                ),
+                "sha256": (
+                    "92e19e6def7eccb42ba0e9f53f5ef3bf9dbb0b9717aa3d675cecb971f5ab0e5c"
+                ),
+                "bytes": 1261,
+            },
+            "s5_cleaned_text": {
+                "path": (
+                    "glossa-indus/processed/cleaned_text/"
+                    "without_kings_or_conquests_the_indus_scr_ce9d98cc.txt"
+                ),
+                "sha256": (
+                    "dd58497528db89fe75111d2431b9611aebd4a5a9715a4ecceb012d9d1538029e"
+                ),
+                "bytes": 80249,
+            },
+            "s5_registry": {
+                "path": (
+                    "glossa-indus/literature/documents/"
+                    "without_kings_or_conquests_the_indus_scr_ce9d98cc.json"
+                ),
+                "sha256": (
+                    "38122256305b8451e49e4ef4d56df7399363bdc3c57052b10f9165ab593261a7"
+                ),
+                "bytes": 1313,
+            },
+            "spec057_freeze_record": {
+                "path": "specs/057-five-sources-heading/freeze.json",
+                "sha256": (
+                    "3cc68c372790d6bd62d9ab1bb43b15ec2f43502dd614150d660d33b4c452d8af"
+                ),
+                "bytes": 23935,
+                "digest": (
+                    "237b923a2c19b216e0476f70d17a956db0ca68d1ba8af6902109099a82c820d9"
+                ),
+            },
+            "spec057_outcome": {
+                "path": "specs/057-five-sources-heading/outcome.md",
+                "sha256": (
+                    "d3ae1325bdba52295bd44990db024957c1d3aceeb462ddbf60af73b512834a58"
+                ),
+                "bytes": 31923,
+            },
+            "anchors": {
+                "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
+                "sha256": (
+                    "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569"
+                ),
+                "bytes": 570344,
+            },
+            "pin_verification": (
+                "at the freeze of 2026-10-21 every repository pin "
+                "above was re-derived by two independent routes "
+                "(contents-API raw and git-blob) at main "
+                "7e483e74508ab0f6183a58b951e1be13e0625267, with the "
+                "working tree agreeing as a third read; the routes "
+                "agree byte-for-byte on every file and every hash "
+                "equals its pin (freeze.md section 2)"
+            ),
+        },
+    },
+    "environment": {
+        "python": "3.12.3",
+        "runner": "backend (venv glossa-lab)",
+        "aee": "1.5.3 (venv glossa-aee153; package pinned >=1.5.0,<1.6)",
+        "specify": "1.0.10",
+    },
+}
+
+SOURCES = [
+    f"{SPEC_DIR}/freeze.md",
+    f"{SPEC_DIR}/spec.md",
+    f"{SPEC_DIR}/claims.json",
+    f"{SPEC_DIR}/adjudication.md",
+    f"{SPEC_DIR}/aee/freeze-aee-note.md",
+    f"{SPEC_DIR}/build_freeze.py",
+    "backend/tests/test_spec065_freeze.py",
+]
+
+
+def main() -> int:
+    record = build_freeze(DEFINITION, REPO, SOURCES)
+    out = REPO / SPEC_DIR / "freeze.json"
+    out.write_text(
+        json.dumps(record, indent=1) + "\n", encoding="utf-8"
+    )
+    print(record["digest"])
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

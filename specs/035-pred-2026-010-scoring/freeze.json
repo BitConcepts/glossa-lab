@@ -1,0 +1,123 @@
+{
+ "definition": {
+  "basis": {
+   "adjudication": "specs/035-pred-2026-010-scoring/adjudication.md",
+   "decisions": "The owner's freeze-and-execute order of 2026-10-20 (go with your recommendation) freezes this contract and orders Phase-399 execution; the draft was commissioned by the owner's draft order of the same day. DD-035-2 stands as drafted; DD-035-4 is decided: the frozen spec files its own OSF contract registration (the Spec 032-034 pattern). The contract implemented is the PRED-2026-010 registration (docs/PREDICTION_REGISTER.md, registered 2026-10-13) with its derivation record (reports/pred010_derivation_record.json)."
+  },
+  "design": {
+   "criterion": {
+    "pass_structure": "with 3 trained signs the share can only be 0, 1/3, 2/3, or 1; the 70% bar passes only at 3 of 3",
+    "share_min": 0.7,
+    "start_rate_min": 0.4,
+    "trained_signs": 3
+   },
+   "crosswalk_reading": "the frozen Phase-396 build's fix_crosswalk reading: a trained sign's counterparts are the glyphs whose crosswalk row names it as best_parpola_match; top3_parpola alternatives never create a counterpart and set the conflict flag instead (DD-035-5)",
+   "disclosure": "the Yajnadevam Harappa pool was previously inspected in aggregate during the Spec 032 closure audit (970 Harappa inscriptions in the old combined training corpus, carrying 1,013 occurrences of 11 of PRED-2026-006's 12 trained signs); no Harappa start rate has ever been computed for any sign; the cleanliness claimed is verified training-pool exclusion, not analyst blindness",
+   "draft_stage_coverage_observation": "under that reading on the pinned crosswalk: P217 -> glyph Y0520 (confidence 1.0, confirmed); P324 -> glyph Y0740 (confidence 0.9867, confirmed); P000 has no best-match counterpart (top-3 alternative only, on the rows for Y0527, Y0740, Y0820, Y0892) - step 0 check 0.4 is therefore expected to close the study as CANNOT BE RUN AS WRITTEN, unscored; the formal determination remains a step-0 act",
+   "execution_gate": "satisfied at the freeze act of 2026-10-20: the owner's freeze order for this contract and the execution order were given in the same act (go with your recommendation); the freeze PR merged on green house gates; step 0 re-verifies the OSF registration before any run",
+   "method": "positional classification only (SA-free): for each trained sign, through the frozen crosswalk, its start rate at Harappa is the share of its Harappa occurrences in the withheld sequences in which it stands in initial position (the first sign of a sequence); a mappable trained sign with zero Harappa occurrences counts as not meeting the bar (DD-035-2); the per-sign table is published descriptively and carries no criterion",
+   "osf_registration": {
+    "doi": "10.17605/OSF.IO/WJEBQ",
+    "id": "wjebq",
+    "state_at_draft_verification": "accepted + public (API read-back 2026-10-20); re-verified at execution step 0"
+   },
+   "phase": "Phase-399",
+   "question_owner": "docs/PREDICTION_REGISTER.md PRED-2026-010 (H3 successor: cross-site class preservation, clean withholding)",
+   "registered_prediction": "Signs assigned to the INITIAL class in training on CISI Mohenjo-daro inscriptions ONLY will appear preferentially in initial position in Harappa-specific Yajnadevam data as well.",
+   "step0": {
+    "failure_closure": "CANNOT BE RUN AS WRITTEN, unscored, reported as a closure and never as a verdict; the withheld file's content is opened only after all checks pass",
+    "order": [
+     "registration re-verification (OSF wjebq accepted + public)",
+     "input integrity (the registered SHA-256 pins)",
+     "training-pool re-verification (registered filter; 179 rows, all Mohenjo-daro, zero Yajnadevam; manifest hash; the verbatim classification reproducing {P000, P217, P324} exactly)",
+     "crosswalk coverage (the unmappable cap, under the fixed best-match reading)"
+    ]
+   },
+   "trained_initial_set": [
+    "P000",
+    "P217",
+    "P324"
+   ],
+   "unmappable": {
+    "cap": 0.2,
+    "one_sign_share": "1/3 (33%)",
+    "over_cap_closure": "CANNOT BE RUN AS WRITTEN before the withheld file is opened"
+   }
+  },
+  "environment": {
+   "aee": "1.0.4 (Glossa venv, PATH-pinned; package pinned >=1.0.4,<1.5 by PR #181)",
+   "python": "3.12.3",
+   "runner": "backend (venv glossa-lab)",
+   "specify": "1.0.10"
+  },
+  "experiment_id": "spec035-pred-2026-010-scoring",
+  "freeze_doc": "specs/035-pred-2026-010-scoring/freeze.md",
+  "inputs": {
+   "classification": {
+    "class_counts": {
+     "INITIAL": 3,
+     "MEDIAL": 19,
+     "MIXED": 3,
+     "TERMINAL": 3
+    },
+    "classifiable_signs": 28,
+    "derivation_record": "reports/pred010_derivation_record.json",
+    "derivation_script": "backend/scripts/pred010_register_derivation.py",
+    "logic_carry": "backend/scripts/phase396_pred006_step0.py (the recorded global_class_stability logic, carried verbatim)"
+   },
+   "crosswalk": {
+    "file": "data/crosswalks/yajnadevam_to_parpola_crosswalk.csv",
+    "sha256": "e44b8b550155e3d071e7fc5f94e8c98e9755de437c99e2f5027e3d647b2950a2"
+   },
+   "predecessor": {
+    "closure": "PRED-2026-006 closed at step 0 as CANNOT BE RUN AS WRITTEN, unscored",
+    "freeze_digest": "34cd6230471c746878ab80110c4a07c3f3daeecef6c05bf222521b39054490ab",
+    "spec": "specs/032-pred-2026-006-harappa-breakdown"
+   },
+   "training_pool": {
+    "file": "data/normalized/corpus_master.csv",
+    "filter": "source_name == \"Corpus of Indus Seals and Inscriptions (mayig digitization)\"",
+    "filtered_pool_manifest_sha256": "ab3b4c8ae84090b6f0b60f467dde0067f5dbd2f20065f1625a60a79d7170540a",
+    "pool_rows": 179,
+    "pool_sites": {
+     "Mohenjo-daro": 179
+    },
+    "sha256": "b19cfe955313b7db73b462e697e305c1da21b3b8a6997679a466d959b757b42e",
+    "yajnadevam_rows_in_pool": 0
+   },
+   "withheld": {
+    "census_as_recorded_at_spec032_freeze": {
+     "harappa": 2717,
+     "inscriptions": 5679,
+     "sites": 77
+    },
+    "file": "backend/glossa_lab/data/yajnadevam_inscriptions.csv",
+    "sha256": "c02e3d7bb74cf5abb11cc94f88d8d469e6acc5d6fad4b7153c02c43428f58d98"
+   }
+  },
+  "register": {
+   "aee_hook_pass": "PASS at the freeze act (2026-10-20): after_specify pass over register 0.8-draft after four rounds (30, then 9, then 8 failure modes, then 0; recovery-specify.md), after_plan pass and after_tasks pass on the recovered register; 0 claims below the 0.70 threshold at every pass (see specs/035-pred-2026-010-scoring/aee/freeze-aee-note.md)",
+   "claims": 15,
+   "path": "specs/035-pred-2026-010-scoring/claims.json",
+   "register_version": "0.8-draft"
+  },
+  "spec": "specs/035-pred-2026-010-scoring/spec.md"
+ },
+ "digest": "d72a50e1943c1af55846dfb2db93e73b50e08a287c06925a331c0304096128c4",
+ "environment": {
+  "aee": "1.0.4",
+  "platform": "Linux-7.0.0-39-generic-x86_64-with-glibc2.39",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]"
+ },
+ "schema_version": "1.0",
+ "sources": {
+  "backend/tests/test_spec035_freeze.py": "ba58a4bdef7573d888b6bff3aed7c12bacba0358692c930d8838f16b7cfba52a",
+  "specs/035-pred-2026-010-scoring/adjudication.md": "6bacee95f11dd777a9566dbe005ffb3766f1f658d19cbb20f69d3c0baba13baa",
+  "specs/035-pred-2026-010-scoring/aee/freeze-aee-note.md": "cddc1b8f24230563b825a62154b3a3758aff56491f98c9e97fa75edab57186c4",
+  "specs/035-pred-2026-010-scoring/build_freeze.py": "9e36b22a2f00f3536750d6727421b23f3f06877024caa1bde25c42a6913150e0",
+  "specs/035-pred-2026-010-scoring/claims.json": "225e41b86b88a08296e96e74a5bf88ee1e09141e2fae6b49bba9bd08ceca2c45",
+  "specs/035-pred-2026-010-scoring/freeze.md": "67ed61786d9afae772411fe076f455468289fe5409a3c8627221c15b07e33d14",
+  "specs/035-pred-2026-010-scoring/osf-registration.md": "4b4dd6cae4abea3f73056a9b56db804914f223967470a36dea8b88b1182778a3",
+  "specs/035-pred-2026-010-scoring/spec.md": "356892c705c176575c23d29e4533e427f457bf21080ad318d93ecebaef2641f6"
+ }
+}

@@ -1,0 +1,113 @@
+{
+ "experiment_id": "spec038-pred-2026-007-full-population",
+ "freeze_digest": "b54571d845a2be3429bc532fee4bb58c20723f77e2d40ffcd43b56e0caab6eef",
+ "freeze_merge": "c363edefe4e2feb08e73a2a7e12934694b6dbb7d",
+ "outcome": {
+  "closure": "CANNOT BE RUN AS WRITTEN",
+  "failed_check": "0.2",
+  "prediction_state": "UNSCORED - PARTIALLY CONFIRMED stands as the pre-execution record",
+  "scoring_run": false,
+  "type": "step0_closure",
+  "verdict": null
+ },
+ "phase": 401,
+ "prediction": {
+  "criterion": {
+   "quantity": "share of ITM-coded signs (the full enumerated population, assigned) that are TERMINAL or cluster in TERMINAL clusters",
+   "share_min": 0.7
+  },
+  "id": "PRED-2026-007",
+  "registered": "2026-04-22"
+ },
+ "registration": {
+  "prediction_registration": {
+   "note": "the prediction predates the programme's OSF preregistration practice and has no OSF preregistration of its own",
+   "osf": null,
+   "record": "docs/PREDICTION_REGISTER.md s.3, PRED-2026-007 (registered 2026-04-22)"
+  },
+  "spec_contract_registration": {
+   "osf": "https://osf.io/bkqeh/",
+   "state": "filed 2026-10-20 under DD-038-6; pending approval at execution (not a step-0 condition; spec s.3 names the register entry)"
+  }
+ },
+ "scoring_record": null,
+ "scoring_record_sha256": null,
+ "spec": "038-pred-2026-007-full-population",
+ "step0_record": {
+  "check_0_1": {
+   "conflict_rule_in_force": "primary governs membership; cross-check values published sign-by-sign; disagreement moves no membership (spec s.2)",
+   "criterion_line_present": true,
+   "crosscheck_field": "icit_function",
+   "crosscheck_form_ok": true,
+   "entry_located": true,
+   "primary_field": "data.a[].icit_function",
+   "primary_form_ok": true,
+   "primary_records": 611,
+   "problems": [],
+   "register_pin_match": true,
+   "register_sha256": "4f8aeb54fd5853d73766ed9cf0222ef93cccfa8d9a8c399a4631221fbbb4c1c2",
+   "registered_date_present": true,
+   "source_hashes": {
+    "characterization": {
+     "pin_match": true,
+     "sha256": "54ebf660873fd853a64ce91c7e30d8c4cedc5bc3a0a1555db1f6281a52e3c476"
+    },
+    "crosscheck": {
+     "pin_match": true,
+     "sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420"
+    },
+    "primary": {
+     "pin_match": true,
+     "sha256": "8c2bd6059a671068b645204db37e29ff13ca53009117b9447ed6c7bd1ead02b3"
+    },
+    "sign_clusters": {
+     "pin_match": true,
+     "sha256": "623a787dd9cc93c4d3d36377890c4753e3427f57cf7ad70adcd6e8256ba1394a"
+    }
+   },
+   "standing_outcome": "PARTIALLY CONFIRMED",
+   "status": "PASS"
+  },
+  "check_0_2": {
+   "closure_reason": "held record(s) P385, P378 read differently in the primary than the recorded partial test states",
+   "enumeration": {
+    "itm_signs": [],
+    "population_size": 0,
+    "records_read": 611,
+    "rule": "icit_function value in the primary source (data.a[].icit_function) equals exactly ITM (DD-038-5)",
+    "source": "reports/indus_cgsa_cluster_analysis.json",
+    "source_sha256": "8c2bd6059a671068b645204db37e29ff13ca53009117b9447ed6c7bd1ead02b3"
+   },
+   "enumeration_sha256": "b849b0d45d37edea7f2c18af7733143b4e631f2e1aad27c6acaf42112a0436c7",
+   "held_records": {
+    "P098": {
+     "condition": "must not read ITM in the primary",
+     "met": true,
+     "primary_code": null,
+     "record_present": false
+    },
+    "P378": {
+     "condition": "must read ITM in the primary",
+     "met": false,
+     "primary_code": null,
+     "record_present": false
+    },
+    "P385": {
+     "condition": "must read ITM in the primary",
+     "met": false,
+     "primary_code": "",
+     "record_present": true
+    }
+   },
+   "internal_conflicts_within_primary": {},
+   "record_count_reconciliation": {
+    "reconciled": true,
+    "records_read": 611,
+    "stated_count": 611
+   },
+   "status": "FAIL"
+  },
+  "phase5_output_opened": false
+ },
+ "step0_record_sha256": "4c026edc92cdcb0c1ba6821f5ebc8242b498bb9fc4cd158607d9b1ded24a784a"
+}

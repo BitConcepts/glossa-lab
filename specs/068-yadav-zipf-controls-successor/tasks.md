@@ -1,15 +1,18 @@
 # Spec 068 — Tasks
 
-> ## PLAN — FOR FREEZE DECISION — 2026-10-22
+> ## PLAN — FROZEN 2026-10-22
 >
 > Adjudication inputs are recorded in
 > `adjudication.md` (the Shakti readiness
 > assessment §§1.5–1.6; the owner's 2026-10-22
 > readiness decisions, decision 2, with
 > decision 2c; and Spec 053's frozen record
-> including DD-053-11). The freeze, the
-> execution, and the OSF registration of
-> Spec 068 are separate later owner acts.
+> including DD-053-11). The freeze act of
+> 2026-10-22 (the owner's freeze rulings;
+> `freeze.md`; DD-068-7 to DD-068-13) froze the
+> contract, filed the OSF registration, and
+> allocated Phase-430; execution runs under
+> the owner's execution order of 2026-10-22.
 
 ## Lifecycle
 
@@ -53,60 +56,53 @@
       and left **open and unmerged** for the
       owner's freeze decision, CI state reported
       from the run's own conclusions.
-- [ ] **L4 — AEE lifecycle hooks (FREEZE GATE
-      — not run on this draft).** At the
-      freeze act, run `run_aee.py assess`
-      after_specify, after_plan, and
-      after_tasks over the claim register; the
-      gate is **pass**, on the DD-038-10
-      posture for draft registers adopted for
-      Spec 053 in DD-053-19. Deliberate
-      ordering: any recovery round changes
-      claim text, and the freeze digest is
+- [x] **L4 — AEE lifecycle hooks (FREEZE GATE).**
+      Run at the freeze act, 2026-10-22, under
+      aee 1.5.3: after_specify, after_plan, and
+      after_tasks over the register, on the
+      DD-038-10 posture adopted as DD-068-10.
+      The freeze's rulings were carried into the
+      register first; two recovery rounds the
+      hooks forced (0.5-draft → 0.6-draft
+      loadability; → 0.7-draft head
+      restatements; → 0.8-draft final
+      tightening) were completed before the
+      digest. Final round: 14 FR-2.3 draft-cap
+      records only at every hook, zero
+      correctness failure modes, minimum
+      propagated 0.795 — **pass**
+      (`aee/freeze-aee-note.md`).
+- [x] **L5 — Freeze-decision items.** Decided
+      at the freeze act, 2026-10-22
+      (`adjudication.md` §7): OPEN-068-1 ruled
+      **LIMB B** (DD-068-7 — the strict-sign-set
+      restriction dropped, openly; the
+      population stated as the full ICIT sign
+      inventory of the restricted corpus; limb A
+      considered and not taken), OPEN-068-2
+      (DD-068-8 — the intake record asserted on
+      the merged record with both pins exact;
+      every other spec §3 pin re-asserted; the
+      claim file re-pinned at its current hash
+      on an open discrepancy record),
+      OPEN-068-3 (DD-068-9 — DD-068-1…DD-068-6
+      confirmed as drafted), OPEN-068-4
+      (DD-068-10 — the DD-038-10 gate reading),
+      OPEN-068-5 (DD-068-11 — the four control
+      systems stand as named), OPEN-068-6
+      (DD-068-12 — the new OSF contract
+      registration filed at the freeze), and
+      OPEN-068-7 (DD-068-13 — Phase-430).
+- [x] **L6 — Freeze.** Done 2026-10-22:
+      `freeze.md` finalised; `freeze.json`
       computed over the recovered register
-      exactly once, at freeze. Freeze mechanics
-      are re-checked against the adopted aee
-      engine at the freeze rather than assumed
-      from pre-adoption habit.
-- [ ] **L5 — Freeze-decision items.** The
-      freeze decides OPEN-068-1 (the
-      strict-sign-set limb: A retained and
-      keyed to ICIT space by the step-0 mapping
-      act, with the mapping's basis source
-      named in the freeze record; or B dropped,
-      the population stated as the full ICIT
-      sign inventory of the restricted corpus —
-      the choice recorded in spec §2.2's terms,
-      no proceeding with the choice unstated),
-      OPEN-068-2 (the intake record standing on
-      the merged record, with both SHA-256 pins
-      exactly as spec §2.1 states them, and
-      every other spec §3 pin re-asserted),
-      OPEN-068-3 (the contract as drafted, with
-      DD-068-1…DD-068-6 confirmed or openly
-      overturned), OPEN-068-4 (the AEE hooks on
-      the DD-038-10 / DD-053-19 reading),
-      OPEN-068-5 (the control-table posture of
-      DD-053-13, or a named system openly
-      replaced before any counting),
-      OPEN-068-6 (the new OSF contract
-      registration for Spec 068), and
-      OPEN-068-7 (the execution phase number).
-- [ ] **L6 — Freeze.** On the owner's freeze
-      order, with L4 passed and L5 decided:
-      hooks recorded, `freeze.md` finalised,
-      `freeze.json` recomputed over the
-      recovered register and finalised texts,
-      every spec §3 pin re-asserted against
-      the merged record, the intake record
-      asserted as OPEN-068-2 requires, the
-      population limb recorded in the freeze
-      record, the execution phase number
-      allocated (OPEN-068-7), and the OSF
-      contract registration filed as a new
-      registration for this spec if L5 confirms
-      OPEN-068-6 (its approval act remains a
-      separate owner act).
+      (0.8-draft) and the finalised texts
+      exactly once; the OSF contract
+      registration filed as a new registration
+      for this spec (DD-068-12; filing record in
+      `osf-spec-registration.md`, completed by
+      append after filing; its approval act
+      remains a separate owner act).
 - [ ] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).

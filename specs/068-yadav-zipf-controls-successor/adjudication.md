@@ -540,6 +540,132 @@ reported, never repaired silently:
    unexplained anywhere else. The successor's
    own step-0 census governs over all of it.
 
+## 7. Freeze decisions — 2026-10-22 (DD-068-7 to DD-068-13)
+
+Recorded at the freeze act of 2026-10-22, under
+the owner's freeze rulings given that day. These
+decisions decide §4's items OPEN-068-1 to
+OPEN-068-7 in order. The freeze record is
+`freeze.md` / `freeze.json` in this directory.
+
+- **DD-068-7 — OPEN-068-1 ruled: LIMB B.** The
+  strict-sign-set restriction is **dropped,
+  openly**. The fitted population is the full
+  ICIT sign inventory of the restricted corpus:
+  the analyzable documented-lineage rows for
+  the primary fit (and the analyzable
+  documented + corroborated rows for the §6.1
+  sensitivity), counting every token by ICIT
+  sign type. Limb A — the strict set retained
+  and keyed to ICIT space by a mapping act —
+  was considered and **not taken**; no mapping
+  act is performed, no mapping basis source is
+  named, and no output may describe the
+  population as a strict population. The
+  anchors file is cited for the record of what
+  was dropped (287 anchors, 94
+  `strict_sa_independent`). Under limb B, §6.3
+  has no separate full-inventory fit: the
+  primary already is that fit. Gate 0.5's act
+  is the limb-B statement; STRICT MAPPING NOT
+  PINNABLE cannot fire. Carried into the
+  register before the hooks ran (F068-C01,
+  C02, C06, C11) and into spec §2.2.
+- **DD-068-8 — OPEN-068-2: pins re-asserted
+  against the merged intake record.** The
+  intake record
+  (`docs/decisions/2026-10-22-shakti-corpus-intake-record.md`)
+  stands on the merged record (`main`, merged
+  by PR #339 at merge commit `bfc811df`),
+  carrying the P-F1 gates S1–S4 in their
+  adopted form and both SHA-256 pins **exactly
+  as spec §2.1 states them** (corpus
+  `345241b1…da68`, row-grades `02394241…d739`) —
+  verified on the merged tree at the freeze.
+  The restricted-local files themselves were
+  recomputed at the freeze and match both pins
+  (the step-0 record re-asserts them at
+  execution). Every other spec §3 pin was
+  re-asserted by two routes (worktree file and
+  git blob) at the freeze tree: the anchors
+  file recomputes exactly (`df0cf620…`), the
+  sign crosswalk recomputes exactly
+  (`4ace1a61…`), and Spec 053's frozen record
+  stands (its freeze digest `fd2d5cb8…`
+  re-read from its `freeze.json`). **One
+  discrepancy, recorded openly:** the claim
+  record's bytes no longer recompute to Spec
+  053's freeze pin `90476623…` — they recompute
+  to `ec31778a75cbc56f27f385ed7da800edb874a8f600cbe102f46087a8159d6239`
+  (15,104 bytes), having changed after Spec
+  053's freeze by re-extraction timestamps
+  (2026-10-21) and the Spec 025 audit appends
+  (commit `51cf8b3c`, 2026-10-22). manual_001's
+  recorded status, evidence string, falsifier
+  text, and stage were verified field-by-field
+  unchanged against the pinned version
+  (commit `1ada0a77`'s file). The freeze
+  **re-pins the claim file at `ec31778a…`** for
+  gate 0.1; the §3 row and F068-C03 carry the
+  correction. Nothing was adjusted silently.
+- **DD-068-9 — OPEN-068-3: the contract as
+  drafted is confirmed.** Drafting decisions
+  DD-068-1 to DD-068-6 are **confirmed as
+  drafted**; none is overturned. The frozen
+  contract is the draft's contract as finalised
+  by DD-068-7's limb ruling and DD-068-8's pin
+  record.
+- **DD-068-10 — OPEN-068-4: the AEE gate
+  reading.** The lifecycle hooks ran as the
+  freeze gate on the DD-038-10 posture for
+  draft registers adopted for Spec 053 in
+  DD-053-19: the gate is **pass** where every
+  hook carries zero correctness failure modes
+  and no claim below the 0.70 threshold; the
+  engine's "iterate" word from the FR-2.3
+  draft-cap records alone does not fail the
+  gate. The recovery rounds the hooks forced
+  (0.5-draft → 0.6-draft loadability, →
+  0.7-draft head restatements, → 0.8-draft
+  final tightening) were completed and
+  recorded **before** the freeze digest was
+  computed, exactly once, over the recovered
+  register (0.8-draft). Record:
+  `aee/freeze-aee-note.md`.
+- **DD-068-11 — OPEN-068-5: the control
+  systems stand as named.** Mesopotamian
+  numerical signs (N1), heraldic charges (N2),
+  the synthetic emblem inventory (N3), and
+  Linear B (P1) stand as named in spec §4 gate
+  0.6, under the DD-053-13 posture carried in
+  F068-C08; no system is replaced and no second
+  positive control is added. Carried into
+  F068-C08 before the hooks ran.
+- **DD-068-12 — OPEN-068-6: OSF registration
+  filed at the freeze.** A **new** OSF contract
+  registration for Spec 068 is filed at the
+  freeze under the program's existing OSF
+  project (node `nrb9u`, Predictions &
+  Registrations), carrying the frozen contract
+  and this freeze's digest; it is not an
+  amendment of Spec 053's registration. The
+  filing record is `osf-spec-registration.md`,
+  completed by append after filing. The
+  registration's approval act remains the
+  owner's separate act (the approval click on
+  OSF's admin-notification email); no mail is
+  archived while the registration stands
+  pending.
+- **DD-068-13 — OPEN-068-7: Phase-430.** The
+  execution phase number allocated at the
+  freeze is **Phase-430**, taken from the
+  merged record as it stands at the freeze
+  (Phase-429 was Spec 067's executed phase; no
+  Phase-430 exists on the merged record).
+  Execution runs under the owner's execution
+  order of 2026-10-22, given with the freeze
+  rulings.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark,

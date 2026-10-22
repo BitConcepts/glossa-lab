@@ -1,8 +1,13 @@
 # Spec 068 — Yadav's Zipf Fit: What Is a Curve Fit Worth? — Successor on the Shakti Corpus (Amendment S-053)
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-22
+> ## FROZEN — 2026-10-22
 >
-> Drafted under the owner's 2026-10-22 readiness
+> Frozen at the freeze act of 2026-10-22 under the
+> owner's freeze rulings of 2026-10-22 (the freeze
+> record is `freeze.md` / `freeze.json` in this
+> directory; the freeze decisions are DD-068-7 to
+> DD-068-13 in `adjudication.md` §7). The draft was
+> drafted under the owner's 2026-10-22 readiness
 > decisions, decision 2: drafting a successor to
 > Spec 053 on the Shakti corpus is approved, under
 > Amendment S-053 as proposed in §1.5 of the Shakti
@@ -14,19 +19,26 @@
 > the strict-sign-set choice ruled at this spec's
 > freeze, and with decision 2c accepted on the
 > record: the result is a new baseline, and it
-> neither confirms nor corrects Phase-43. Drafts
-> are pre-approved standing in this program; **the
-> freeze, the execution, and the OSF registration
-> of Spec 068 are separate later owner acts.** No
-> AEE lifecycle hooks have run on this draft; they
-> are a freeze gate, on the posture for draft
-> registers recorded in DD-038-10. Nothing in this
-> draft has been run, frozen, registered, fitted,
-> or computed.
->
-> The execution phase number is **UNASSIGNED** at
-> this draft. It is allocated at the freeze act,
-> from the merged record as it then stands.
+> neither confirms nor corrects Phase-43. **The
+> freeze rules OPEN-068-1 as LIMB B (DD-068-7):
+> the strict-sign-set restriction is dropped,
+> openly, and the fitted population is the full
+> ICIT sign inventory of the restricted corpus.**
+> The AEE lifecycle hooks ran at the freeze gate
+> over the recovered register (0.8-draft) and
+> passed on the DD-038-10 reading (DD-068-10;
+> `aee/freeze-aee-note.md`); the freeze digest was
+> computed over the recovered register exactly
+> once. The spec's own OSF contract registration
+> is filed at the freeze (DD-068-12;
+> `osf-spec-registration.md`, completed by append
+> after filing). Execution runs as **Phase-430**
+> (DD-068-13) under the owner's execution order of
+> 2026-10-22, given with the freeze rulings. At
+> the freeze itself nothing has been fitted or
+> computed: no census has been taken by this spec,
+> no control count has been entered, and no fit
+> of any system exists.
 
 **Design source:** Spec 053
 (`specs/053-yadav-zipf-controls/`, frozen
@@ -306,6 +318,21 @@ An execution ordered under a freeze record
 that does not state the choice is not an
 execution under this spec.
 
+**Freeze ruling (2026-10-22, DD-068-7).** The
+freeze chooses **limb B**: the strict-sign-set
+restriction is **dropped, openly**. The fitted
+population is the full ICIT sign inventory of
+the restricted corpus, stated in those terms
+in the freeze record (`freeze.md` §1). Limb A
+is recorded in the freeze record as considered
+and not taken; no mapping act is performed,
+no mapping basis source is named, and no
+output of this spec may describe the
+population as a strict population. Under this
+limb §6.3's conditional full-inventory fit
+does not exist as a separate fit: the primary
+already is that fit.
+
 ## 3. Inputs (pinned where a pin exists; every pin re-asserted at the freeze)
 
 Every repository pin in this section is carried
@@ -320,10 +347,10 @@ stands.
 | Spec 053 frozen record (`specs/053-yadav-zipf-controls/spec.md` and `adjudication.md` on `main`) | Read first-hand at this draft from `main` at head `2a0eb854982f52453bcd76fd4a5bcbb088eb21e8`. The estimator of its §4.2, the self-test of its gate 0.2, the controls of its gate 0.4, the comparison rule of its §4.3, the positive-control condition of its §4.4, and the floors confirmed by its DD-053-14 are carried into this spec as frozen substance (§§5–6). Its freeze decisions DD-053-11 to DD-053-19 stand; DD-053-11 is this successor's estimator authority (adjudication §1). Spec 053's own closure (STRICT CORPUS NOT PINNABLE at its gate 0.3) stands and is not re-opened by this spec. |
 | Shakti corpus (`sanitized_corpus.json`, the ShaktiOSindia deposit file) | SHA-256 `345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68` (Proposal P-F1, §1.6 of the readiness assessment; the provenance audit verified the file against the deposit README's pin before any counting). Held restricted-local under its GPL-3.0 terms; cited only through the intake record and the row-grades file. The corpus file itself is not a repository file of this program and no copy is committed under this spec. |
 | Row-grades file (the provenance audit's row-level grades for all 5,704 rows) | SHA-256 `02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739` (as recorded in the intake record, §3 of this table). Restricted-local, beside the corpus download, not in any git repository — the audit's own posture, carried here. |
-| Shakti intake record (`docs/decisions/2026-10-22-shakti-corpus-intake-record.md`) | **Cited by this path as the standing record the freeze will assert against.** At this draft the file is being created in parallel and is not yet on `main` at head `2a0eb854…` (verified at this draft); the freeze may not proceed until the intake record stands on the merged record carrying the two SHA-256 pins of §2.1 and the P-F1 gates S1–S4 in their adopted form. Step 0 asserts S1 and S2 against that record (§4, gates 0.3–0.4). |
+| Shakti intake record (`docs/decisions/2026-10-22-shakti-corpus-intake-record.md`) | **Cited by this path as the standing record.** Asserted at the freeze (OPEN-068-2, DD-068-8): the record stands on the merged record (`main`, merged by PR #339 at merge commit `bfc811df`), carrying the two SHA-256 pins of §2.1 exactly and the P-F1 gates S1–S4 in their adopted form. Step 0 asserts S1 and S2 against that record (§4, gates 0.3–0.4). |
 | Provenance audit (`shakti-provenance-audit-2026-10-22.md`, 2026-10-22) | The grading of record: 3,212 documented-lineage / 2,087 undocumented-corroborated / 405 undocumented-uncorroborated; the census asserted at §4 gate 0.4 of this spec; the §3 caveat that is the source of P-F1 S3's lineage statement. Read first-hand at this draft from `~/workspace/research_notes/`. |
 | Readiness assessment (`shakti-readiness-proposals-2026-10-22.md`) | The amendment and gates of record: §1.5 (Amendment S-053, quoted at §2.1) and §1.6 (Proposal P-F1, gates S1–S4). Read first-hand at this draft. The owner's decision 2 adopting S-053 for drafting is recorded in the banner of this spec and in `adjudication.md`. |
-| Claim record (`glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json`) | SHA-256 `904766238d4aec8fecf0a01dc7c8935689f378e31062485edc699874a36847a3` (Spec 053's freeze pin, re-asserted at this spec's freeze). manual_001: strongly supported, stage explained; evidence string and not-understood text as Spec 053 §1 states. This successor appends to its record only as §10 provides; it edits nothing in it. |
+| Claim record (`glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json`) | Spec 053's freeze pin was SHA-256 `904766238d4aec8fecf0a01dc7c8935689f378e31062485edc699874a36847a3`. Re-asserted at this freeze (DD-068-8): the file's bytes no longer recompute to that pin — they recompute to `ec31778a75cbc56f27f385ed7da800edb874a8f600cbe102f46087a8159d6239` (15,104 bytes), the bytes having changed after Spec 053's freeze by re-extraction timestamps (2026-10-21) and the Spec 025 audit appends (commit `51cf8b3c`, 2026-10-22). manual_001's recorded status (strongly supported), evidence string, falsifier text, and stage (explained) were verified field-by-field unchanged against the pinned version, and **the freeze re-pins the claim file at `ec31778a…` for gate 0.1**. The discrepancy is recorded here and in F068-C03, not adjusted silently. This successor appends to its record only as §10 provides; it edits nothing in it. |
 | Anchors file (`backend/reports/INDUS_FINAL_ANCHORS.json`) — the strict sign set's census source | SHA-256 `df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569` (Spec 053's freeze pin). Census as frozen there: 287 anchors, **94** carrying validation status `strict_sa_independent` — the strict sign set whose ICIT keying is OPEN-068-1 limb A's object. Operative only if the freeze chooses limb A; under limb B it is cited here for the record of what was dropped, and no mapping is performed. This spec moves no anchor; the file is asserted byte-identical before and after any execution. |
 | Sign crosswalk (`data/crosswalks/sign_crosswalk_master.csv`) | SHA-256 `4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf` (Spec 053's freeze pin). Cited for numbering questions. It is **not** carried as this successor's split/merge variant source: Spec 053's sensitivity S2 built its variants from this crosswalk's structure over the Mahadevan-space population, and no ICIT-space variant source is named in Amendment S-053 — none is invented at this draft (adjudication §6, defect 4). |
 | Control counts — the named systems of §4 gate 0.6 | Exactly Spec 053's frozen set (DD-053-13): the named systems and bibliographic pins stand as in Spec 053 gate 0.4, and gate 0.6 of this spec is the fixed pin source for the control tables — the exact tables and per-count locators are entered there as cited data, before any fit, and a system that cannot be entered whole closes the run CONTROL SET FREEZE FAILED. No second positive control is added. No count is typed into a script (H16). |

@@ -381,6 +381,51 @@ STEP_C = {
 }
 
 
+CLAIM_APPEND_KEY = "spec064_check"
+CLAIM_APPEND_ENTRY = {
+    "spec": "064",
+    "phase": "Phase-426",
+    "date": "2026-10-22",
+    "actor": "spec064-phase426-execution",
+    "kind": "successor-check (identification)",
+    "outcome": (
+        "IDENTIFICATION FAILED "
+        "(continuity/discrimination not sustained)"),
+    "wording": IDENTIFICATION_FAILED_WORDING,
+    "record": "specs/064-sign297-concordance-successor/outcome.md",
+    "delivery": (
+        "specs/064-sign297-concordance-successor/concordance-297.json"),
+    "delivery_sha256": (
+        "9e765576349d4d294a4fc04f0d6750be3718dfc60fa267ea16c04c6130db7488"),
+    "note": (
+        "Successor check of this claim under the frozen Spec 064 contract "
+        "(OSF s6hr9, approved + public), successor to Spec 046's first check, "
+        "which stands unedited in this record under 'first_check'. Step 0 passed "
+        "in full, including gate 0.4: the preserved drawn-form reference at its "
+        "pinned digest (33ee22ec…) and the thesis file's digest asserted "
+        "on the local file before any plate was read. Step 1 named the source's "
+        "sign list from the book's own apparatus (Wells's own list, Wells 2011, "
+        "in Wells 2015 Chapter 2 / Figure 2.6); step D derived the drawn-form "
+        "descriptor twice, independently, from the thesis plate (Figure 3.2, "
+        "thesis p. 90 / PDF p. 102) and sustained the preserved reference; "
+        "step C — mandatory in Spec 064 — was not sustained: neither "
+        "independent derivation affirms that the descriptor picks out plate 297 "
+        "and no neighbour in the 289–308 run (signs 299, 302 and 303 satisfy "
+        "every stated feature of the descriptor), so the run closed as "
+        "IDENTIFICATION FAILED (continuity/discrimination not sustained) before "
+        "step M and before any scoring. The preserved reference's continuity "
+        "status is QUALIFIED — anchored at family level only — and is "
+        "carried on every product of the run. This is a check of identification, "
+        "recorded under F064-C15: it is not a verdict on the identification, and "
+        "the claim's status and stage are unchanged. Appended by the Spec 064 "
+        "execution; no pre-existing field of any claim in this file was altered, "
+        "and the Spec 046 first_check entry is unedited."),
+}
+CLAIM_APPEND_SEGMENT_BYTES = 2669
+CLAIM_APPEND_SEGMENT_SHA256 = (
+    "fc973395394d87fd43c9ff31f0929c093424b79b298f27459c66660d170e9fcf")
+
+
 def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -433,13 +478,55 @@ def main() -> int:
     }
 
     # ── Step 0.1 — input integrity (fail-closed) ──────────────
+    # The claim record is asserted in the Spec 038 form: at
+    # execution the file hashes to its frozen pin; after the
+    # run's own append (an executor act, below) the live file
+    # is the pin plus exactly the recorded spec064_check
+    # segment, and the gate accepts precisely those two
+    # states, asserting the fragment's facts on the live file
+    # in both. Any other state is an INPUT PIN MISMATCH.
     pin_results = {}
     for name, (rel, want) in PINS.items():
         got = _sha256(_REPO / rel)
-        pin_results[name] = {
+        entry = {
             "file": rel, "expected_sha256": want,
             "observed_sha256": got, "match": got == want}
-        if got != want:
+        if name == "claim_record":
+            entry["verification"] = "byte-pin (pristine)"
+            if got != want:
+                live = (_REPO / rel).read_text(encoding="utf-8")
+                doc = json.loads(live)
+                frag = next(
+                    c for c in doc["claims"]
+                    if c["claim_id"] == CLAIM_ID)
+                seg_body = json.dumps(
+                    CLAIM_APPEND_ENTRY, ensure_ascii=False, indent=2)
+                seg = (",\n      \"spec064_check\": " + "\n".join(
+                    ("      " + ln if ln else ln)
+                    for ln in seg_body.split("\n")))
+                facts_ok = (
+                    frag.get("normalized_claim") == (
+                        "Sign value: 297 / the horned tiger, or "
+                        "perhaps just ‘tiger’ generically")
+                    and frag.get("claim_status") == "untested"
+                    and frag.get("stage") == "created"
+                    and frag.get("first_check", {}).get("spec") == "046"
+                    and frag.get("spec064_check") == CLAIM_APPEND_ENTRY
+                    and live.count(seg) == 1
+                    and hashlib.sha256(
+                        live.replace(seg, "").encode("utf-8")
+                    ).hexdigest() == want)
+                entry["match"] = bool(facts_ok)
+                entry["verification"] = (
+                    "Spec 038 form: frozen pin plus exactly the "
+                    "recorded spec064_check append (segment "
+                    "SHA-256 " + CLAIM_APPEND_SEGMENT_SHA256 + "); "
+                    "removing the segment reproduces the pin, and "
+                    "the fragment's facts are asserted on the "
+                    "live file")
+                entry["fragment_facts_asserted"] = bool(facts_ok)
+        pin_results[name] = entry
+        if not entry["match"]:
             results["step0"] = {"gate_0_1": pin_results}
             results["outcome"] = "CLOSED AT STEP 0"
             results["closure_class"] = "INPUT PIN MISMATCH"
@@ -720,6 +807,22 @@ def main() -> int:
             "IDENTIFICATION FAILED "
             "(continuity/discrimination not sustained)",
             IDENTIFICATION_FAILED_WORDING))
+        assert _sha256(_OUT_A) == (
+            CLAIM_APPEND_ENTRY["delivery_sha256"])
+        results["claim_append"] = {
+            "key": CLAIM_APPEND_KEY,
+            "entry": CLAIM_APPEND_ENTRY,
+            "segment_bytes": CLAIM_APPEND_SEGMENT_BYTES,
+            "segment_sha256": CLAIM_APPEND_SEGMENT_SHA256,
+            "verification": (
+                "The append is an executor act, not a side "
+                "effect of this script. Verified at the act "
+                "(2026-10-22): removing the appended segment "
+                "reproduces the pre-act claim file "
+                "byte-identically, and the claim's status "
+                "and stage are unchanged (outcome.md, "
+                "F064-C15)."),
+        }
         _write_json(_OUT_B, results)
         _OUT_C.write_text(_render_report(results), encoding="utf-8")
         print("OUTCOME: IDENTIFICATION FAILED "

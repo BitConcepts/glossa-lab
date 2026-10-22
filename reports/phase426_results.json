@@ -1,4 +1,23 @@
 {
+ "claim_append": {
+  "entry": {
+   "actor": "spec064-phase426-execution",
+   "date": "2026-10-22",
+   "delivery": "specs/064-sign297-concordance-successor/concordance-297.json",
+   "delivery_sha256": "9e765576349d4d294a4fc04f0d6750be3718dfc60fa267ea16c04c6130db7488",
+   "kind": "successor-check (identification)",
+   "note": "Successor check of this claim under the frozen Spec 064 contract (OSF s6hr9, approved + public), successor to Spec 046's first check, which stands unedited in this record under 'first_check'. Step 0 passed in full, including gate 0.4: the preserved drawn-form reference at its pinned digest (33ee22ec\u2026) and the thesis file's digest asserted on the local file before any plate was read. Step 1 named the source's sign list from the book's own apparatus (Wells's own list, Wells 2011, in Wells 2015 Chapter 2 / Figure 2.6); step D derived the drawn-form descriptor twice, independently, from the thesis plate (Figure 3.2, thesis p. 90 / PDF p. 102) and sustained the preserved reference; step C \u2014 mandatory in Spec 064 \u2014 was not sustained: neither independent derivation affirms that the descriptor picks out plate 297 and no neighbour in the 289\u2013308 run (signs 299, 302 and 303 satisfy every stated feature of the descriptor), so the run closed as IDENTIFICATION FAILED (continuity/discrimination not sustained) before step M and before any scoring. The preserved reference's continuity status is QUALIFIED \u2014 anchored at family level only \u2014 and is carried on every product of the run. This is a check of identification, recorded under F064-C15: it is not a verdict on the identification, and the claim's status and stage are unchanged. Appended by the Spec 064 execution; no pre-existing field of any claim in this file was altered, and the Spec 046 first_check entry is unedited.",
+   "outcome": "IDENTIFICATION FAILED (continuity/discrimination not sustained)",
+   "phase": "Phase-426",
+   "record": "specs/064-sign297-concordance-successor/outcome.md",
+   "spec": "064",
+   "wording": "The fragment 'sign 297 is the horned tiger' cannot be carried to a concordance: the descriptor's discrimination of 297 from its neighbours in the 289\u2013308 run was not sustained by both independent derivations. The record stays a stated gap. No statement about the sign is made, and nothing is fed to Asset A. Qualification (carried from the preserved reference, Spec 064 \u00a71): the identification of Wells's 297 rests on a drawn-form reference whose continuity status is QUALIFIED \u2014 anchored at family level only; its step C discrimination check is part of this run's record."
+  },
+  "key": "spec064_check",
+  "segment_bytes": 2669,
+  "segment_sha256": "fc973395394d87fd43c9ff31f0929c093424b79b298f27459c66660d170e9fcf",
+  "verification": "The append is an executor act, not a side effect of this script. Verified at the act (2026-10-22): removing the appended segment reproduces the pre-act claim file byte-identically, and the claim's status and stage are unchanged (outcome.md, F064-C15)."
+ },
  "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
  "closure_class": "IDENTIFICATION FAILED (continuity/discrimination not sustained)",
  "continuity_status": "QUALIFIED",
@@ -19,7 +38,8 @@
     "expected_sha256": "997fa33699ccce3feecfe0d09f6e6a1dbd165c05cd9f255939ad96e84bc99031",
     "file": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
     "match": true,
-    "observed_sha256": "997fa33699ccce3feecfe0d09f6e6a1dbd165c05cd9f255939ad96e84bc99031"
+    "observed_sha256": "997fa33699ccce3feecfe0d09f6e6a1dbd165c05cd9f255939ad96e84bc99031",
+    "verification": "byte-pin (pristine)"
    },
    "crosswalk_registry": {
     "expected_sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",

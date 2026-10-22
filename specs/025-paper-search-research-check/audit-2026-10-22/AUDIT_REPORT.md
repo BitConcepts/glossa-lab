@@ -486,3 +486,26 @@ text fetch of publisher/author PDFs (the MCP download chain had
 failed), indexed with URLs and read ranges in
 `raw/W2_browser_sources.json` — re-performable, but the fetched
 texts are not themselves filed.
+
+## Erratum (2026-10-22)
+
+The Roif section of this report is headed "(4 claims)": those are
+the four manual claims (manual_001–004), which carry the substance
+and are the claims its paragraphs cover — but the Roif dossier in
+fact holds six claims, because the audit's stage also ran
+critique_0001 and critique_0002 (sidecars filed in
+`glossa-indus/claims/research_checks/`, verdicts null), and
+neither the surviving worker text nor the reconstruction gives
+either of them a per-claim paragraph. The critique_0001 sidecar's
+evidence also holds exactly one neighbour item that appears
+nowhere in this report: Mukhopadhyay, "Semantic scope of Indus
+inscriptions comprising taxation, trade and craft licensing…"
+(2023; DOIs 10.31235/osf.io/7dtqz and 10.2139/ssrn.4316270), at
+abstract level — the same guild/taxation neighbour family the
+report already covers, so no finding changes. Two status notes
+complete the record: the reconstruction the Roif section rests on
+was independently verified — W8 checked W7's reconstruction line
+by line against the filed evidence and found it sound — and this
+report's open gaps stand verbatim, in particular the arrow claim
+(manual_003) and the "900 = six units of 150" formulation, neither
+of which is reconstructable from the filed outputs.

@@ -1594,3 +1594,63 @@ authorized. Standing gates: **the owner's read of this build**,
 and the **deposit/submission acts, which are executed
 separately by the owner** per channel. **Nothing has been
 submitted, deposited, or published by this closure record.**
+
+## Post-closure correction — 2026-10-23 (the printed DOI)
+
+**Owner's ruling (2026-10-23, 15:41 EDT):** "Fix the DOI line,
+rebuild, then deposit v8." This entry is append-only: the closure
+section and the rounds ledger above are unchanged.
+
+**The defect.** The v8 title block printed DOI
+`10.5281/zenodo.20414696`. That number is the *version* DOI of
+Zenodo record 20414696 (v3.0.0, 2026-05-27) — the v3 deposit — not
+the identifier of this preprint's record chain. Verified first-hand
+against Zenodo's API on 2026-10-23: record 20414696 (v3.0.0) and
+record 23520218 (v5.2.0, 2026-10-20, the latest published version)
+both carry `conceptdoi` **10.5281/zenodo.20379070** — one chain.
+v8 deposits as a new version of record 23520218 under that concept
+DOI.
+
+**The correction (paper text).** Exactly one line of the paper
+changed: the title-block DOI now reads `10.5281/zenodo.20379070`
+(href and display text). No other sentence of the paper was
+touched.
+
+**Mechanics, per the §6 pin procedure.** Revision commit
+`822f655d1a14129dbcba09b608f324a7f424de8a` on branch
+`preprint-v8-doi-correction` carries the DOI line only (at that
+commit §6 still named 649e0e75, the commit this revision started
+from). Pin commit `d21087c05abf693ea3b95b3c2f204ea67892d465`
+advanced §6's named branch/commit to
+`preprint-v8-doi-correction` / `822f655d`, changing that one string
+and no other paper text. Records commits followed: this entry, the
+rebuilt PDF, and the identifier sweep below.
+
+**Rebuild + verification.** TinyTeX XeLaTeX under
+`~/workspace/tex-tools/`, two passes, both exit 0, zero errors.
+**32 pages** (unchanged). New PDF **SHA-256
+6d5b1e7fc7627cfc5f861f8f285c6a765fee7eda31f710eed3c8cd38633b2ead**.
+Word count **19,193** (unchanged). Extracted-text diff against the
+round-8 PDF (5335cdab…): exactly two regions differ — the
+title-block DOI line, and the §6 pin sentence (branch/commit string
+only; the paragraph's wording is otherwise identical, reflowed
+only). The title page renders "DOI: 10.5281/zenodo.20379070".
+
+**Identifier sweep (the same staleness, present-tense statements
+only).** Corrected: `AGENTS.md` (the DOI line; the v8 final-state
+clause's PDF hash and pin), `CITATION.cff` (the reference's `doi`
+and `url`), `README.md` (the DOI badge), `docs/research/PREPRINT_VERSIONING.md`
+(the canonical-identifiers DOI, and a sentence appended to the v8
+history row), `backend/scripts/phase377_session_report_email.py`
+(the report footer's preprint link). Left untouched as historical,
+version-scoped statements: the README's v4 citation lines,
+`docs/USER_GUIDE.md` (v4; dated 2026-06-10), the expert-review
+packet (v4), the v5 addendum draft, `specs/001-glossa-lab-baseline/spec.md`,
+and all audit/red-team records.
+
+**Effect on the sections above.** "Final state" stands as the
+round-8 closure record. For the deposit build, its §6-pin and
+PDF-hash lines are superseded by this entry: §6 now pins
+`822f655d`, and the deposit PDF is the 6d5b1e7f… build above.
+**Nothing has been deposited by this entry**; the deposit act is
+the owner's, executed separately.

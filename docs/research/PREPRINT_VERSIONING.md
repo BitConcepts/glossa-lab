@@ -10,7 +10,7 @@
 | **DOI (Zenodo)** | https://doi.org/10.5281/ZENODO.20414696 |
 | **SSRN submission** | ID 6827038 (status: check SSRN portal) |
 | **Source file** | `glossa-corpus/indus/pierson_2026_indus_decipherment.tex` |
-| **PDF (current)** | `glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v7.pdf` (v7 compiled artifact, regenerated 2026-10-22 — two clean XeLaTeX passes, 18 pages; supersedes the v6 PDF) |
+| **PDF (current)** | `glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v8.pdf` (v8 compiled artifact, regenerated 2026-10-23 — two clean XeLaTeX passes, 19 pages; supersedes the v7 PDF) |
 | **Research anchor** | `research/indus/indus-anchor-model/` |
 
 ## Filename convention
@@ -33,6 +33,7 @@ The version number is also declared inside the document (title block and footer)
 | **v5 (.tex)** | 2026-10-22 | **Current source.** Citation corrections from the spec-025 material audit (`specs/025-paper-search-research-check/audit-2026-10-22/`): §8 entries corrected for Wells & Fuls (2015, not Wells 2011), Parpola/Parpola/Brunswig (1977, JESHO 20(2), Simo Parpola first author), Crawford 2001 (monograph, not a journal article), and Parpola 2010 (CICT conference lecture, Coimbatore — the *World Archaeology* 42(2) attribution was not verified in any reachable index); Rao *Science* 2009 entry added and the §1.2 entropy result attributed to it; the §2.1 Zipf exponent no longer attributed to Rao 2009; Nair 2026 characterizations in §1.3/§3.10/Acknowledgments corrected to match Nair's full text (independent scorecard study, hedged intermediate result — not a replication of this paper's tests). **The v5 PDF has NOT been regenerated** (no xelatex in the audit environment); the v4 PDF remains the compiled artifact of record. Nothing has been submitted. **Adversarial pass required before submission.** |
 | **v6 (.tex + PDF)** | 2026-10-22 | **Current.** Bibliography completion from the spec-025 audit fix commission: §8 gains the five Mahadevan works the text already relied on (1981 Place Signs; 1982 Terminal Ideograms; 1986 Towards a Grammar; 1989 What Do We Know; 2011 The Indus Fish Swam in the Great Bath), from records verified at published-bibliography level (the 2011 identification is inferred — see the audit fix addendum); the §3.23 paper counts are qualified in place as this program's own text-mining corpus counts (internal outputs, not externally sourced). The §8 Steinkeller 1982 entry is UNCHANGED and stands flagged as unverified (fix addendum, P10: positive evidence the titled article is JAOS 108(2):197–202 (1988); the 1988 record was not substituted, per the proposal's own rule). **The v6 PDF HAS been regenerated** (TinyTeX XeLaTeX provisioned under the workspace; two passes, zero errors, 18 pages; corrected entries spot-checked in the rendered output) and replaces the v4 PDF as the compiled artifact. Adversarial pass run on the v6 source and adjudicated (`specs/025-paper-search-research-check/audit-2026-10-22/adversarial_pass_2026-10-22.md`): one finding sustained in narrow form (the §2.1 Zipf exponent ~1.7 is the paper's own unreleased-corpus statistic, printed without a checkable derivation — an owner decision for submission time). Nothing has been submitted. |
 | **v7 (.tex + PDF)** | 2026-10-22 | **Current.** Roif credit (owner-directed addenda to the spec-025 audit fix commission; record: `specs/025-paper-search-research-check/audit-2026-10-22/roif_credit_addendum_2026-10-22.md`). §8 gains both Roif citations (2025a, Academia.edu 12 June 2025, academia.edu/129921039; 2025b, 2 August 2025, academia.edu/143222807 — Academia mints no DOIs; the stable URLs are the identifiers). §3.5 and §3.19 now credit the fish-sign model to Avishai Roif in his own terms (fish read /mi/ (mīn) as value/divine marker and guild/title marker, 2025a; the "coastal controller" maritime-guild reading, 2025b) and state the division of labour: his model and predictions, this program's measurements. §7 Acknowledgments gains a Roif entry in the same terms. §3.32 (betweenness) is NOT restored: a marked restoration draft is filed with the package, HELD PENDING ROIF'S REPLY (owner is asking his Semiotica status and whether he wants the section restored as co-author). The v7 PDF HAS been regenerated (two clean XeLaTeX passes, zero errors, 18 pages; Roif entries, credit paragraphs, and acknowledgment spot-checked in the rendered output). Nothing has been submitted. |
+| **v8 (.tex + PDF)** | 2026-10-23 | **Current.** F2 Zipf qualification + Spec 068 integration (record: `specs/025-paper-search-research-check/audit-2026-10-22/v8_version_note_2026-10-23.md`). §2.1's Zipf sentence is qualified in place: the ~1.7 exponent is the program's own statistic on the Holdat corpus with no published checkable derivation, and is no longer presented as evidence that the script is a language; Yadav et al. (2010) is cited for the published Zipf--Mandelbrot fit and its own stated limit, and the Yadav entry is added to §8 (after Wells & Fuls). New §2.1.1 reports the Spec 068 (Phase-430; OSF 3pbwe) registered test of what a frequency-curve fit can show: on the Shakti corpus (ICIT line; 3,045 documented-lineage rows; 11,805 tokens; 557 signs) the frozen Zipf--Mandelbrot rule gave α = 2.004, fit error 0.1584 (documented + corroborated rows: α = 1.96, error 0.1544), while Linear B — the one certain writing system among the four controls — fitted worst (0.9229); registered outcome COMPARISON UNINFORMATIVE. §3.10 applies the same qualification to Nair's Zipf slope. NOT changed: everything else from v7, including all Roif credit; §3.32 remains absent/held. The Spec 072 (Phase-431) fish-family result is NOT integrated — its insert is filed HELD at `glossa-corpus/indus/pierson_2026_indus_decipherment_spec072_insert_HELD.md`. **The v8 PDF HAS been regenerated** (TinyTeX XeLaTeX, two clean passes, zero errors, 19 pages — v7 was 18; SHA-256 0f70dece76d3cdd31fa2ccb5c9fdbc9c2953587a9895700b8cf4632cd81f6670; all v8 changes verified in the rendered output). An independent red-team pass on v8 is IN PROGRESS under the standing rule. Nothing has been submitted. |
 
 ## How to bump the version
 
@@ -57,7 +58,23 @@ The version number is also declared inside the document (title block and footer)
 - Any attribution concern → email `tpierson@bitconcepts.tech` immediately.
 - See `ATTRIBUTION.md` for full data-source licensing.
 
-## Current version: v7 (.tex source + PDF, 2026-10-22)
+## Current version: v8 (.tex source + PDF, 2026-10-23)
+
+v8 resolves the spec-025 audit's F2 finding on the §2.1 Zipf
+sentence by qualifying it in place (the ~1.7 exponent is now
+presented as this program's own uncheckable corpus statistic, no
+longer as evidence the script is a language), adds §2.1.1
+reporting the Spec 068 (Phase-430) registered frequency-curve
+test with its registered outcome (COMPARISON UNINFORMATIVE),
+applies the same qualification to Nair's Zipf slope in §3.10, and
+adds the Yadav et al. (2010) entry to §8. The Spec 072
+fish-family result is NOT integrated; its insert is filed as a
+HELD document. Record:
+`specs/025-paper-search-research-check/audit-2026-10-22/v8_version_note_2026-10-23.md`.
+The v8 PDF has been regenerated (two clean XeLaTeX passes,
+19 pages) and is the compiled artifact of record; the v7 PDF is
+superseded. An independent red-team pass on v8 is in progress
+under the standing rule. **Nothing has been submitted or deposited.**
 
 v7 adds the Roif credit: both Roif 2025a/b citations in §8,
 fish-sign model credit in §3.5 and §3.19 in Roif's own terms with

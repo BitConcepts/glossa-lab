@@ -1225,3 +1225,217 @@ until the loop closes.
 
 **Nothing submitted, deposited, or published.** The PR
 (#353) is not merged.
+
+## Red-team round 7 revision (2026-10-23)
+
+Round 7 of the independent red-team pass on v8 (attack: independent
+engine, GPT-5.5 via OpenAI API, direct, four passes over the full
+PDF-extracted text, 93 raw findings aggregated to 40 items, plus 48
+positives, including a 16-item line-by-line audit of §6 in Pass 3)
+was adjudicated against the program's primary records by an
+adjudicator who did not draft the paper. Dispositions: **3 sustained
+/ 1 sustained in part / 34 moot / 2 not sustained of 40; positives
+48/48 confirmed**. The raw attack and the adjudication are filed
+beside this note (`v8_redteam_round7_raw_2026-10-23.md`,
+`v8_redteam_round7_adjudication_2026-10-23.md`). Round 7 produced
+two new settlements (S19, S20) and re-engaged two precedents with
+reasons (S21, S22). No earlier settlement was reopened by this
+revision; in particular §6's R6R-01 procedural paragraph was not
+touched except its pin string itself.
+
+**Revision applied.** All adjudicated replacement blocks
+R7R-01…R7R-04 were applied verbatim to the .tex (formatting
+conversion only: markdown code spans to `\texttt{}` with escaped
+underscores where the block prints a file path), each target
+passage verified by exact match before substitution, locations
+identified by quoted text: R7R-01 (§3.7, §3.12 and §3.28 — the
+cluster population stated as the population the Phase-148 record
+groups: the 97 types are the 97 distinct INITIAL signs that begin
+inscriptions in this corpus and carry a HIGH or MEDIUM reading; a
+seal is grouped by its first sign alone, so the clusters partition
+all 1,670 seals, not only the 1,165 seals that consist entirely of
+HIGH-or-MEDIUM signs (§3.6); §3.28's matching set named the same
+way; no number in §3.7, §3.12 or §3.28 changes, S19), R7R-02 (§3.28
+— the Phase-167 record path made breakable at its slashes,
+`backend/\allowbreak reports/\allowbreak
+phase167\_meluhhan\_names\_expanded.json`, the device §6 already
+uses), R7R-03 (§2.1 — "represents the primary published formal-seal
+assemblage" replaced by the corpus's printed scope, formal stamp
+seals from the nine sites, with the share of the full published
+formal-seal assemblage stated as not measured and no claim about
+that share made, R7-07 sustained in part), and R7R-04 (§3.13 — the
+Phase-150 permutation's random seed printed: the Phase-150 script
+fixes it at 42; the Phase-150 record itself does not state the
+seed, R7-29). MOOT items (R7-04…R7-06, R7-08…R7-28, R7-30…R7-34,
+R7-36…R7-40) and the NOT SUSTAINED items (R7-03, R7-35) have no
+replacement; their §A rows are the complete disposition.
+
+**Settlements as they stand.** **S19** (R7-01, SUSTAINED): the
+Phase-148 record (`n_clusters` = 97, `n_seals_classified` = 1,670;
+domain seal counts 845 + 446 + 145 + 135 + 99 = 1,670; the 97
+per-cluster counts summed independently to 1,670) groups seals by
+first sign alone; the printed counts were always correct for the
+whole corpus and the population label was wrong in §3.7 and §3.12,
+with a lesser instance in §3.28 — cured by R7R-01. **S20** (R7-03,
+NOT SUSTAINED): the §6 line-by-line audit's 16 clauses were each
+verified true against the git graph of the completed round-6 pin
+cycle (revision `b28cf2f5`, pin `81a37e06`, records `045a24f2`, raw
+`c1273175`) — the R6R-01 procedural form's first full test, passed.
+**S21** (R7-22, MOOT): the §5 Tier-2 sentence, checked against the
+tier definition R5R-05 printed and the body's adverse results
+(Phase-107 agreement 0.000, Phase-134 F3 INCONCLUSIVE/AMBIGUOUS,
+the V12 ACTIVE_CONCERN warning, Phase-150 INCONCLUSIVE), does not
+exceed what its own definition permits; R3-07, R3-10, R5-07 and
+R6-10 upheld. **S22** (R7-23, MOOT): the §5 "favours" sentence,
+seventh airing; R2-06, R3-09, R4-S5, R5-S7 and R6-S17 upheld —
+nothing material changed in the round-6-revised text.
+
+**Pin procedure.** Two commits, as rounds 1–6: (1) revision commit
+`649e0e75` ("preprint v8: red-team round 7 revision (R7R-01..R7R-04
+applied)"), whose §6 commit string names `36e8c7ad`, the commit the
+revision started from (the round-7 adjudication commit); (2)
+pin-only commit `9133db8f`, changing only the §6 commit string
+(`36e8c7ad` → `649e0e75`) plus the rebuilt PDF. §6 in the shipped
+PDF names the round-7 revision commit `649e0e75`.
+
+**§6 clause check (after the pin).** The shipped §6 paragraph was
+re-verified clause by clause against the git graph, as the round-6
+revision did. (1) *"All sign readings … are available in the
+Glossa-Lab repository (…, branch preprint-v8-f2-spec068, commit
+649e0e75)."* — TRUE: the named files exist in the tree at
+`649e0e75` (`git ls-tree` verified: `research/indus/anchor_table.csv`,
+`glossa-corpus/indus/ANCHOR_STATUS_AUDIT.csv`, the four supplemental
+CSVs in `research/indus/supplemental/`, `backend/scripts/`,
+`backend/reports/`). (2) *"The DOI named on the title page
+identifies this preprint and its version record on Zenodo."* —
+TRUE as printed (identification only; the next sentence expressly
+denies that the DOI identifies this draft's text). (3) *"The text
+of this draft is identified by the branch and commit named here,
+together with the one-string difference explained below, not by
+the DOI."* — TRUE: it claims a procedure, not a hash of the draft
+in hand. (4) *"The supplemental files named in this paper … are in
+the same repository at the same commit; no separate archive copy
+of them exists yet."* — TRUE (item 1; the absence of an archive
+copy is stated in the sentence itself). (5) *"The commit named
+here is the revision commit: the commit at which this paper's text
+was frozen for the current round."* — TRUE: `649e0e75` is the
+commit that applied the round-7 replacements and froze the round-7
+text; the one later change to paper text is the pin's single
+string, which the following sentences describe. (6) *"A commit
+cannot contain its own hash, so the copy of this section at the
+named commit names, in its first sentence, the commit that the
+revision started from."* — TRUE, verified: at `649e0e75` §6's first
+sentence names `36e8c7ad`, and `36e8c7ad` is that commit's parent
+(the round-7 adjudication commit the revision started from). (7)
+*"The draft in hand differs from the text at the named commit in
+that one commit string, and in no other sentence."* — TRUE,
+verified: the .tex diff `649e0e75` → `9133db8f` is exactly one
+line, and in that line only the commit string; the rendered-text
+diff of the two commits' PDFs is likewise exactly one line, that
+same string. (8) *"The commit that follows the named commit on
+this branch and changes that string — the pin commit — changes no
+other paper text."* — TRUE: the pin commit `9133db8f` is the
+immediate child of `649e0e75` on this branch; its only .tex change
+is that one string, plus the rebuilt PDF in which that string is
+the sole text change. (9) *"The records commits that follow it
+(the rebuilt PDF, the version note, and the records of later
+rounds) change no paper text at all."* — TRUE for this round's
+records commit, verified after it was made: it touches only this
+version note, `LEDGER.md` and `AGENTS.md` — no .tex and no PDF —
+so the shipped paper text at the records commit is identical to
+the pinned text. As a statement about later rounds the clause is
+procedural — it holds for as long as the established procedure is
+followed; the shipped §6 contains no historical commit hash in its
+explanation sentences (the only 8-hex string in §6 is `649e0e75`,
+in the first sentence). The remaining §6 sentences (the
+anchor-table sentence, the neither-table-printed sentence, the
+selected-rows sentence, the reader-direction sentence, and the two
+Holdat-corpus sentences) are unchanged by this revision and stand
+as verified at S20. **All clauses verified true; no clause was
+edited.**
+
+**Word count.** The round-6 printed figure was **19,011**. After
+the final build the adjudicated command `pdftotext <pdf> - | wc
+-w` was run on the new PDF (**19,193**), the .tex word-count line
+was set to the measured value, the PDF was rebuilt, and the
+command was re-run — the printed figure equals the shipped PDF's
+count (19,193; the number token is one word either way, so the
+count is stable across the pin rebuild, whose only text change is
+the §6 commit string, verified again after the pin: 19,193).
+
+**Rebuild.** TinyTeX XeLaTeX (same toolchain and font environment
+fix as the earlier v8 builds — OSFONTDIR covering the system Noto
+directory and the TinyTeX Latin Modern Math directory, plus a
+fontconfig file including the system fonts and the TinyTeX
+texmf-dist font directories), two passes on the final .tex state
+and two on the pin state, all exit 0, **zero errors** in the final
+log. PDF:
+`glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v8.pdf`
+— still named v8 (a pre-publication revision of the v8 draft).
+**32 pages** (was 32). **SHA-256:
+5335cdaba21c88c7ae6b56a75e5ec0f1a4db109ad480e57c652568709920b035**
+
+**Render verification (pdftotext of the shipped PDF, plus a
+rendered-page inspection).** Present: §3.7's cured definition
+("the 97 distinct INITIAL signs that begin inscriptions in this
+corpus and carry a HIGH or MEDIUM reading"; "the 97 types together
+cover all 1,670 seals — not only the 1,165 seals that consist
+entirely of HIGH-or-MEDIUM signs (§3.6)"); §3.12's cured lead
+("the seal counts below sum to 1,670; they are not counts over the
+1,165 seals that consist entirely of HIGH-or-MEDIUM signs (§3.6),
+and no further size threshold is applied to the grouping"); §3.28's
+cured population wording ("in the seal set decoded with the
+161-anchor reading set (all 1,670 seals, as stated at the head of
+this section)"); §2.1's cured scope ("It consists of formal stamp
+seals from those sites; what share of the full published
+formal-seal assemblage its 1,670 seals represent is not measured in
+this paper, and no claim about that share is made"); §3.13's seed
+("the Phase-150 script, backend/scripts/phase150_polysemy_permutation.py,
+fixes the random seed at 42 — the Phase-150 record itself does not
+state the seed"); §6 naming the revision commit `649e0e75`, with no
+other 8-hex string anywhere in §6; printed word count 19,193;
+"End of Preprint v8". Absent: "found among the H+M-covered seals";
+"in the H+M-covered seal set"; "represents the primary published
+formal-seal assemblage"; "betweenness"; §3.32. **§3.28
+rendered-page check (the R7R-02 cure's own verification):** page 23
+was rendered and inspected as a page image — the Phase-167 path now
+breaks at its slash and prints in full inside the text block,
+"(backend/reports/phase167_meluhhan_names_expanded.json)," with
+its closing parenthesis on the page; nothing runs off the right
+margin. No adjustment beyond the adjudicated `\allowbreak` points
+was needed. **Protected text:** the .tex diff against `36e8c7ad`
+touches only §2.1, §3.7, §3.12, §3.13, §3.28, §6's pin string and
+the word-count line — all §8 entries (Roif 2025a/b, both Rao
+entries, Jha & Rajaram 2000 as added at round 6, all others), the
+§3.5/§3.19 Roif credit paragraphs and the §7 Roif acknowledgment
+are byte-intact.
+
+**Still-open items.** (1) **Owner decisions (adjudication §D)** —
+the loop does **not** close at round 7 (see the adjudication's
+loop-closure statement): the previously adjudicated owner decisions
+whose interim cures are in place are not reopened — corpus release
+(R3-01), a calibration study for the confidence labels (R3-07),
+the SA/V07 re-base (R3-05, R3-51), the V12 protocol freeze (R3-45),
+archiving the exact v8 source under the Zenodo DOI (R3-02),
+whether M176 stays HIGH (R3R-15), the paper's title (R3-14),
+retention of the CISI 87.08% figure with its disclosure (R3R-19),
+a seal-level retest of the M267 motif distribution (R4R-20), and
+the per-criterion re-audit of the 75 HIGH signs behind R4-10/S4.
+The R6R-06 owner confirmation also stands: if the owner identifies
+a distinct 1975 Parpola source behind the Phase-167 name list,
+R6R-06's fallback wording applies and a sourced §8 entry would
+still be needed. (2) **Record gaps (adjudication §E)** the cures
+disclose but cannot fill, standing as filed in round 7's §E.1–§E.14
+(items 1–14 of round 6's §E stand except where round 7's
+settlements narrow them — the Phase-150 seed is removed from the
+§E.9 family by R7-29/R7R-04; §E.11 is extended: no record reports,
+for the Phase-148 clusters, how many of each cluster's seals are
+among the 1,165 fully H+M-covered seals — S19 settles the clusters'
+total population, not that breakdown; and §E.4 now also names a §8
+source for the Holdat corpus's share of the published formal-seal
+assemblage, the quantity R7R-03 states is not measured). (3)
+Red-team **round 8** on this revised draft is pending; v8 is not
+cleared for publication until the loop closes.
+
+**Nothing submitted, deposited, or published.** The PR
+(#353) is not merged.

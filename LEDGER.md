@@ -10316,3 +10316,61 @@ Nothing submitted, deposited, or published; PR #353 not merged.
 
 AI disclosure: executed by an AI agent (Muse, via Muse)
 at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-23 — Preprint v8 red-team round 7: adjudicated and revised (R7R-01..R7R-04)
+
+Round 7 of the independent red-team pass on preprint v8 (attack:
+independent engine, GPT-5.5 via OpenAI API, direct, four passes,
+93 raw findings aggregated to 40 items + 48 positives, plus a
+16-item §6 line-by-line audit; adjudication against primary
+records: 3 sustained / 1 sustained in part / 34 moot / 2 not
+sustained of 40; positives 48/48 confirmed; settlements
+S19–S22). All adjudicated replacement blocks R7R-01..R7R-04 were
+applied verbatim to
+glossa-corpus/indus/pierson_2026_indus_decipherment.tex
+(formatting conversion only; each target verified by exact
+match; MOOT and NOT SUSTAINED items have no replacement) —
+revision commit 649e0e75; §6 commit string pinned to that commit
+by pin-only commit 9133db8f. Cures: R7R-01 (§3.7, §3.12 and §3.28
+cluster population stated as the population the Phase-148 record
+groups — the 97 INITIAL-sign clusters partition all 1,670 seals
+by first sign alone, not the 1,165 fully H+M-covered seals of
+§3.6, per S19; no number changes); R7R-02 (§3.28 Phase-167 record
+path made breakable at its slashes; verified on the rendered
+page 23 — the full path and its closing parenthesis print inside
+the text block, nothing clipped); R7R-03 (§2.1 "primary published
+formal-seal assemblage" superlative replaced by the corpus's
+printed scope, the share of the full published assemblage stated
+as not measured); R7R-04 (§3.13 prints the Phase-150 permutation
+seed, 42, fixed in its script). Settlements: S19 (population
+label sustained, class (a)); S20 (§6 line-by-line audit NOT
+SUSTAINED — all 16 clauses verified true against the completed
+round-6 pin cycle; the R6R-01 procedural form's first full test,
+passed; this round §6 was not touched except its pin string, and
+the post-pin clause-by-clause check against the round-7 graph —
+revision 649e0e75, its §6 copy naming its parent 36e8c7ad, pin
+9133db8f one line / one string in both .tex and rendered text,
+records commits changing no paper text — passes in full); S21
+(Tier-2 sentence MOOT against its own definition and the body's
+adverse results); S22 (§5 "favours" MOOT, seventh airing, prior
+rulings upheld). Protected Roif/Rao/Jha & Rajaram text
+byte-intact (§8, §3.5/§3.19 Roif credit, §7 acknowledgment
+identical — the .tex diff touches only §2.1, §3.7, §3.12, §3.13,
+§3.28, §6's pin string and the word-count line); §3.32 still
+absent; no betweenness; Spec 072 insert still HELD. PDF rebuilt
+with TinyTeX XeLaTeX, two passes, exit 0, zero errors, 32 pages,
+SHA-256
+5335cdaba21c88c7ae6b56a75e5ec0f1a4db109ad480e57c652568709920b035,
+render-verified (pdftotext + rendered-page inspection of p. 23);
+printed word count 19,193 measured on the shipped PDF by the
+adjudicated command (round-6 figure 19,011). Loop NOT closed at
+round 7 per adjudication §D. Still open: the §D owner decisions
+(incl. the R6R-06 confirmation if a distinct 1975 Parpola source
+is identified), the §E record gaps (incl. the per-cluster fully
+H+M-covered breakdown no record reports, extended at §E.11);
+red-team round 8 pending. Record:
+specs/025-paper-search-research-check/audit-2026-10-22/v8_version_note_2026-10-23.md.
+Nothing submitted, deposited, or published; PR #353 not merged.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.

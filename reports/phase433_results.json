@@ -1,0 +1,299 @@
+{
+ "phase": 433,
+ "spec": "070",
+ "spec_freeze_digest": "763108f89311ab2791827b347a155a8b4f9abad940ab59f921af129f79c73e3e",
+ "asset_a_sha256": "952319355098698f01e6d8499b0384f84ac964e1bc4ecdc03c77ed920c7a5b5b",
+ "execution_order": [
+  "freeze (Spec 070, digest quoted)",
+  "gate 0.1 asset assertion",
+  "gate 0.2 intake assertion (P-F1 S1/S2)",
+  "gate 0.3 input integrity",
+  "gate 0.4 population enumerated + published (hash) BEFORE any join",
+  "gate 0.5 comparison census + coverage",
+  "gate 0.6 freeze-order proof (this record's order)",
+  "join + test (section 4)"
+ ],
+ "g5_attestation": "The Phase-43 battery applied here is threshold-only: it contains no chance-baseline step - no permutation, shuffle, or expected-rate baseline - and none is restored or claimed. The inventory-share comparison of section 4 is this design's own test construction, not a Phase-43 element.",
+ "lineage_statement_PF1_S3": "Lineage (P-F1 S3): the positional classes were measured on the Shakti corpus deposit (Zenodo) as graded by the programme's intake record - documented-lineage rows are CISI-verifiable; corroborated rows are supported by an independent sign list; uncorroborated rows enter no count. The Phase-43 counts (805/2,267; the 40/61/20 classes) are never a basis for any quantity here.",
+ "population_rows": {
+  "primary_documented": 3212,
+  "sensitivity_sc_documented_plus_corroborated": 5299
+ },
+ "gate_0_4_population_publication_sha256": "30092b6fd64f221ee0808addeedd11e1e800cf3d79716ba26b3fb971f396a93b",
+ "population": {
+  "population": "primary (documented-lineage rows only)",
+  "O_enumeration_wells_space": [
+   {
+    "wells_code": "064",
+    "I": 3,
+    "M": 1,
+    "T": 1,
+    "total": 5
+   },
+   {
+    "wells_code": "090",
+    "I": 87,
+    "M": 15,
+    "T": 8,
+    "total": 110
+   },
+   {
+    "wells_code": "136",
+    "I": 6,
+    "M": 0,
+    "T": 0,
+    "total": 6
+   },
+   {
+    "wells_code": "151",
+    "I": 61,
+    "M": 7,
+    "T": 1,
+    "total": 69
+   },
+   {
+    "wells_code": "154",
+    "I": 23,
+    "M": 8,
+    "T": 0,
+    "total": 31
+   },
+   {
+    "wells_code": "155",
+    "I": 3,
+    "M": 2,
+    "T": 0,
+    "total": 5
+   },
+   {
+    "wells_code": "156",
+    "I": 73,
+    "M": 17,
+    "T": 0,
+    "total": 90
+   },
+   {
+    "wells_code": "161",
+    "I": 10,
+    "M": 0,
+    "T": 0,
+    "total": 10
+   },
+   {
+    "wells_code": "167",
+    "I": 14,
+    "M": 0,
+    "T": 0,
+    "total": 14
+   },
+   {
+    "wells_code": "226",
+    "I": 14,
+    "M": 3,
+    "T": 4,
+    "total": 21
+   },
+   {
+    "wells_code": "241",
+    "I": 8,
+    "M": 2,
+    "T": 0,
+    "total": 10
+   },
+   {
+    "wells_code": "298",
+    "I": 4,
+    "M": 3,
+    "T": 0,
+    "total": 7
+   },
+   {
+    "wells_code": "317",
+    "I": 4,
+    "M": 0,
+    "T": 3,
+    "total": 7
+   },
+   {
+    "wells_code": "400",
+    "I": 325,
+    "M": 29,
+    "T": 1,
+    "total": 355
+   },
+   {
+    "wells_code": "401",
+    "I": 4,
+    "M": 1,
+    "T": 0,
+    "total": 5
+   },
+   {
+    "wells_code": "422",
+    "I": 6,
+    "M": 2,
+    "T": 0,
+    "total": 8
+   },
+   {
+    "wells_code": "423",
+    "I": 5,
+    "M": 1,
+    "T": 0,
+    "total": 6
+   },
+   {
+    "wells_code": "426",
+    "I": 4,
+    "M": 0,
+    "T": 1,
+    "total": 5
+   },
+   {
+    "wells_code": "520",
+    "I": 213,
+    "M": 32,
+    "T": 1,
+    "total": 246
+   },
+   {
+    "wells_code": "526",
+    "I": 13,
+    "M": 0,
+    "T": 0,
+    "total": 13
+   },
+   {
+    "wells_code": "527",
+    "I": 42,
+    "M": 4,
+    "T": 2,
+    "total": 48
+   },
+   {
+    "wells_code": "565",
+    "I": 7,
+    "M": 1,
+    "T": 1,
+    "total": 9
+   },
+   {
+    "wells_code": "592",
+    "I": 4,
+    "M": 1,
+    "T": 2,
+    "total": 7
+   },
+   {
+    "wells_code": "617",
+    "I": 36,
+    "M": 8,
+    "T": 12,
+    "total": 56
+   },
+   {
+    "wells_code": "621",
+    "I": 11,
+    "M": 1,
+    "T": 2,
+    "total": 14
+   },
+   {
+    "wells_code": "679",
+    "I": 10,
+    "M": 0,
+    "T": 4,
+    "total": 14
+   },
+   {
+    "wells_code": "700",
+    "I": 362,
+    "M": 14,
+    "T": 8,
+    "total": 384
+   },
+   {
+    "wells_code": "740",
+    "I": 919,
+    "M": 377,
+    "T": 3,
+    "total": 1299
+   },
+   {
+    "wells_code": "804",
+    "I": 4,
+    "M": 2,
+    "T": 1,
+    "total": 7
+   },
+   {
+    "wells_code": "824",
+    "I": 11,
+    "M": 0,
+    "T": 5,
+    "total": 16
+   },
+   {
+    "wells_code": "868",
+    "I": 10,
+    "M": 0,
+    "T": 0,
+    "total": 10
+   }
+  ],
+  "battery_class_counts_primary": {
+   "MEDIAL_STRONG": 81,
+   "INITIAL_STRONG": 31,
+   "TERMINAL_MODERATE": 37,
+   "INITIAL_MODERATE": 6,
+   "MIXED": 23,
+   "TERMINAL_STRONG": 42
+  }
+ },
+ "outcome": "POPULATION NOT KEYED",
+ "gates": [
+  {
+   "gate": "0.1",
+   "result": "PASS",
+   "detail": "Asset A frozen (Spec 069 digest 657b930c...); canonical CSV recomputes to 95231935...; per-kind counts match the freeze record"
+  },
+  {
+   "gate": "0.2",
+   "result": "PASS",
+   "detail": "S1 hashes recompute; S2 census reproduces (5,704 rows; 5,536 analyzable; 3,212/2,087/405; 4,904 CISI-carrying)"
+  },
+  {
+   "gate": "0.3",
+   "result": "PASS",
+   "detail": "registry, crosswalk and anchors hash to their freeze values"
+  },
+  {
+   "gate": "0.4",
+   "result": "CLOSE",
+   "detail": "5 unkeyable O sign(s); DD-070-11 closure"
+  }
+ ],
+ "unkeyable_O_signs": [
+  {
+   "wells_code": "136",
+   "reason": "no parpola_1982 registry row carries Wells id W136"
+  },
+  {
+   "wells_code": "298",
+   "reason": "no parpola_1982 registry row carries Wells id W298"
+  },
+  {
+   "wells_code": "401",
+   "reason": "no parpola_1982 registry row carries Wells id W401"
+  },
+  {
+   "wells_code": "617",
+   "reason": "no parpola_1982 registry row carries Wells id W617"
+  },
+  {
+   "wells_code": "824",
+   "reason": "no parpola_1982 registry row carries Wells id W824"
+  }
+ ],
+ "O_size": 31
+}

@@ -83,16 +83,16 @@
       number allocated (OPEN-070-7), and the
       OSF contract registration filed if L5
       confirms OPEN-070-6's proposal.
-- [ ] **L7 — Freeze PR merged**, house gates
+- [x] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).
 
 ## Execution — gated on the freeze and a separate execution order
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Step 0, assertions** (spec §5
+- [x] **E2 — Step 0, assertions** (spec §5
       gates 0.1–0.3): Asset A dependency
       state and digest assertion (NOT-RUN /
       ASSET NOT FROZEN / ASSET PIN MISMATCH
@@ -100,7 +100,7 @@
       against the intake record (SHAKTI
       INTAKE NOT REPRODUCED on failure);
       input integrity (INVALID on failure).
-- [ ] **E3 — Step 0, population** (gates
+- [x] **E3 — Step 0, population** (gates
       0.4–0.6): the §2 battery run over the
       documented-lineage primary; O
       enumerated in full in Wells space and
@@ -113,13 +113,13 @@
       directs); U census, unicorn naming,
       coverage, and freeze-order proof
       (INVALID on failure).
-- [ ] **E4 — Primaries** (spec §4): the
+- [ ] **E4 — Primaries** [NOT REACHED — the execution closed at gate 0.4 (POPULATION NOT KEYED) before any test quantity, as DD-070-11 directs] (spec §4): the
       primary arm, the reversed arm, and the
       three sensitivities (contested
       included; unicorn removed; corroborated
       population under P-F1 S4), with the
       headline decided by §4.3's precedence.
-- [ ] **E5 — Outcome:** the §6 record —
+- [x] **E5 — Outcome:** [the §4.6 POPULATION NOT KEYED closure record] the §6 record —
       results JSON and report under the
       headline rules (the honesty fence and
       the P-F1 S3 lineage statement in the

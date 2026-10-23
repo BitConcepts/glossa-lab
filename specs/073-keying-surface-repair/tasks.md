@@ -84,18 +84,18 @@
       (OPEN-073-8), and the OSF contract
       registration filed under OPEN-073-7's
       ruling if the freeze confirms it.
-- [ ] **L7 — Freeze PR merged**, house gates
+- [x] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).
 
 ## Execution — gated on the freeze and a separate execution order
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       step-0 exhibits script, Registry v2
       builder, entry tooling, and coverage
       script registered as a graph, then run
       in the order below.
-- [ ] **E2 — Step 0** (spec §3 gates
+- [x] **E2 — Step 0** (spec §3 gates
       0.1–0.4): frozen-input integrity
       (INPUT PIN MISMATCH / SHAKTI INTAKE NOT
       REPRODUCED on failure); baseline
@@ -106,7 +106,7 @@
       failure); blind-entry setup attested.
       Nothing is entered before these
       exhibits.
-- [ ] **E3 — Registry v2 build** (spec §4):
+- [x] **E3 — Registry v2 build** (spec §4):
       v1 rows carried verbatim; Wells-map
       completions and `icit_wells` rows added
       only on cited published statements;
@@ -117,7 +117,7 @@
       for the attested frame; CSV
       writer-generated and round-trip
       validated; digest computed.
-- [ ] **E4 — Frame enumeration and blind
+- [x] **E4 — Frame enumeration and blind
       entry** (spec §5): the attested frame
       enumerated from the pinned corpus
       (documented + corroborated rows, per
@@ -129,14 +129,14 @@
       disputes coded contested with both
       labels; silence coded `unidentified`
       with sources searched.
-- [ ] **E5 — Build gates** (spec §5.4):
+- [x] **E5 — Build gates** (spec §5.4):
       B1 universe completeness, B2 citation
       completeness, B3 carried-row fidelity,
       B4 blind-entry attestation, B5 digest
       recomputation (ASSET FAILED with the
       gate named, or ENTRY DISCIPLINE FAILED,
       on failure).
-- [ ] **E6 — Coverage measurement** (spec
+- [x] **E6 — Coverage measurement** (spec
       §6): the v2-route joins over the
       recorded populations; M1–M5 computed
       and exhibited with remainders listed
@@ -145,7 +145,7 @@
       celestial census stated plainly beside
       Spec 071's recorded floor of 30, as a
       comparison of numbers only.
-- [ ] **E7 — Outcome:** the §10 record —
+- [x] **E7 — Outcome:** the §10 record —
       results JSON and outcome report under
       the headline rules (the P-F1 S3 lineage
       statement in the headline block, both

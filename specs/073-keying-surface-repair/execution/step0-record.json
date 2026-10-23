@@ -1,0 +1,203 @@
+{
+ "spec": "073",
+ "phase": 436,
+ "step": 0,
+ "gates": {
+  "0.1": {
+   "checks": {
+    "registry_v1": {
+     "sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",
+     "pin": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",
+     "match": true
+    },
+    "crosswalk": {
+     "sha256": "4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf",
+     "pin": "4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf",
+     "match": true
+    },
+    "asset_a_v1": {
+     "sha256": "952319355098698f01e6d8499b0384f84ac964e1bc4ecdc03c77ed920c7a5b5b",
+     "pin": "952319355098698f01e6d8499b0384f84ac964e1bc4ecdc03c77ed920c7a5b5b",
+     "match": true
+    },
+    "phase433_results": {
+     "sha256": "667560a5c185051ea7acc9afacf2f9c4bbf3f863e9d17851c634fa56eb3ad214",
+     "pin": "667560a5c185051ea7acc9afacf2f9c4bbf3f863e9d17851c634fa56eb3ad214",
+     "match": true
+    },
+    "phase434_results": {
+     "sha256": "7158f79ce416e5e01fee041e6e97df827d3a048f9c1c178a8200bd79f68bbda7",
+     "pin": "7158f79ce416e5e01fee041e6e97df827d3a048f9c1c178a8200bd79f68bbda7",
+     "match": true
+    },
+    "shakti_corpus": {
+     "sha256": "345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68",
+     "pin": "345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68",
+     "match": true
+    },
+    "shakti_row_grades": {
+     "sha256": "02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739",
+     "pin": "02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739",
+     "match": true
+    },
+    "spec045_digest": {
+     "recorded_digest": "5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a",
+     "present_in_freeze_json": true
+    },
+    "spec070_digest": {
+     "recorded_digest": "763108f89311ab2791827b347a155a8b4f9abad940ab59f921af129f79c73e3e",
+     "present_in_freeze_json": true
+    },
+    "spec071_digest": {
+     "recorded_digest": "c06a7a86804d8da2c9896638446f5712be9eccb8716a7b02303a5944f4bc0478",
+     "present_in_freeze_json": true
+    }
+   },
+   "shakti_intake_census": {
+    "rows_total": 5704,
+    "rows_analyzable": 5536,
+    "grade_counts_all_rows": {
+     "documented-lineage": 3212,
+     "undocumented-uncorroborated": 405,
+     "undocumented-corroborated": 2087
+    },
+    "grade_counts_analyzable_rows": {
+     "documented-lineage": 3045,
+     "undocumented-uncorroborated": 405,
+     "undocumented-corroborated": 2086
+    },
+    "distinct_signs_corpus_wide": 713,
+    "distinct_signs_documented_stratum": 557
+   },
+   "intake_reproduced": true
+  },
+  "0.2": {
+   "baseline_A_opening_strong_31": {
+    "enumeration": [
+     "064",
+     "090",
+     "136",
+     "151",
+     "154",
+     "155",
+     "156",
+     "161",
+     "167",
+     "226",
+     "241",
+     "298",
+     "317",
+     "400",
+     "401",
+     "422",
+     "423",
+     "426",
+     "520",
+     "526",
+     "527",
+     "565",
+     "592",
+     "617",
+     "621",
+     "679",
+     "700",
+     "740",
+     "804",
+     "824",
+     "868"
+    ],
+    "resolved_via_v1_route": 26,
+    "unresolved": [
+     "136",
+     "298",
+     "401",
+     "617",
+     "824"
+    ],
+    "five_sign_token_counts": {
+     "136": 6,
+     "298": 7,
+     "401": 5,
+     "617": 56,
+     "824": 16
+    },
+    "of_the_resolved_carry_asset_a_v1_rows": 16,
+    "reproduced": true
+   },
+   "baseline_B_documented_557": {
+    "keyed_end_to_end": 285,
+    "no_registry_resolution": 134,
+    "resolved_no_asset_row": 138,
+    "reproduced": true
+   },
+   "baseline_C_wells_map": {
+    "distinct_wells_ids_on_parpola_rows": 498,
+    "reproduced": true
+   },
+   "baseline_D_asset_a_v1": {
+    "rows": 187,
+    "per_kind": {
+     "unidentified": 1,
+     "other": 127,
+     "human": 25,
+     "animal": 20,
+     "object_goods": 14
+    },
+    "reproduced": true
+   }
+  },
+  "0.3": {
+   "exhibits": {
+    "cisi_vol1_ia_scan": {
+     "path": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/cisi-1-ia-scan/CorpusVol1.pdf",
+     "sha256": "8278d815450cb23cf04ffb1ffb43f62a6206bfc75f9a61f505b92eb41c627908",
+     "pin": "8278d815450cb23cf04ffb1ffb43f62a6206bfc75f9a61f505b92eb41c627908",
+     "match": true
+    },
+    "cisi_vol2_ia_scan": {
+     "path": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/cisi-2-ia-scan/CorpusVol2.pdf",
+     "sha256": "727132579a485ee626e48a64c663148a85fbc0811fb523818fd615231f8a327d",
+     "pin": "727132579a485ee626e48a64c663148a85fbc0811fb523818fd615231f8a327d",
+     "match": true
+    },
+    "cisi_31_ia_scan": {
+     "path": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/cisi-31-ia-scan/CISI_3-1_Parpola_IA_DLI_scan.pdf",
+     "sha256": "772e929782119ff9293088e060562c18f14234e7a24efdf3deb68669fea67afa",
+     "pin": "772e929782119ff9293088e060562c18f14234e7a24efdf3deb68669fea67afa",
+     "match": true
+    },
+    "parpola_2010_lecture_pdf": {
+     "path": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/parpola-2010-helsinki/Parpola2010_DravidianSolution_lecture.pdf",
+     "sha256": "c58137e54cdde3f2acdcfaf05293dfc5f5ba33def3e0b12585c451f76bd4ba84",
+     "pin": "c58137e54cdde3f2acdcfaf05293dfc5f5ba33def3e0b12585c451f76bd4ba84",
+     "match": true
+    },
+    "fuls_corpus_ocr_locator": {
+     "path": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/fuls-print-corpus-desktop-2026/Corpus of Indus Inscriptions.txt",
+     "sha256": "d8aab17680af50012a8d78487c9e047dfc1f9d93d7cbcd4ed3c5c5a84acb5cc5",
+     "pin": "d8aab17680af50012a8d78487c9e047dfc1f9d93d7cbcd4ed3c5c5a84acb5cc5",
+     "match": true
+    },
+    "fuls_catalog_ocr_locator": {
+     "path": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/fuls-print-corpus-desktop-2026/A Catalog of Indus Signs.txt",
+     "sha256": "3e9c6758b112364f33c057c7c8464324511fa6008662aaeae26e10f1962df27c",
+     "pin": "3e9c6758b112364f33c057c7c8464324511fa6008662aaeae26e10f1962df27c",
+     "match": true
+    }
+   },
+   "struck_at_freeze": [
+    "Wells 1998 (PRISM full text refused; record-level only)",
+    "Mahadevan 1977 (sign-list tables not in hand)"
+   ],
+   "fuls_print_volumes": "Held on the owner's desktop (PROVENANCE entry 27); consulted for this build through page renders whose hashes are recorded in execution/catalog-consult.json. The OCR texts above are locators only.",
+   "cisi_sign_list_digitization": "mayig CISI digitization held at commit ad2f1e218a34b8c33c57de0d6cb8d99272765bbb; 396 feature files read for the build"
+  },
+  "0.4": {
+   "attestation": "Entry for Asset A v2's new rows runs from an inventory carrying candidate sign_ids and verbatim source labels only: no positional counts, no frequency data, no keyability outcomes, no Hunt part-membership information. The two passes are the enterer's coding and a deterministic rule pass over the same verbatim labels; the rule pass is validated by requiring it to reproduce Spec 069's recorded pass-2 codings on all 187 carried labels before any new row is coded.",
+   "inventory_produced_by": "backend/scripts/phase436_asset_a_v2.py (stage: inventory)",
+   "status": "attested"
+  }
+ },
+ "failures": [],
+ "verdict": "PASS"
+}

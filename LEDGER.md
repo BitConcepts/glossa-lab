@@ -9902,3 +9902,42 @@ specific act.
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-22 — Spec 070 EXECUTED (Phase-433): CLOSED AT STEP 0 — POPULATION NOT KEYED
+
+The opening-signs successor on Shakti, under its frozen contract
+(Spec 070 freeze digest 763108f8…; freeze PR #340 merged at 1213029d;
+OSF registration nghs5 filed at the freeze, pending the owner's
+approval act at the time of the run). Step-0 gates in order: 0.1
+Asset A asserted PASS (Spec 069's executed record; canonical CSV
+recomputes to 95231935…; per-kind counts match); 0.2 the Shakti
+intake reproduced under P-F1 S1/S2 PASS (hashes recompute; census
+5,704 rows, 5,536 analyzable, grades 3,212/2,087/405, 4,904
+CISI-carrying, all recounted from the files); 0.3 input integrity
+PASS. At 0.4 the section 2 battery over the 3,212 documented-lineage
+rows classified 220 signs (TERMINAL_STRONG 42, MEDIAL_STRONG 81,
+TERMINAL_MODERATE 37, INITIAL_STRONG 31, INITIAL_MODERATE 6, MIXED
+23) and the opening-strong set — 31 signs — was enumerated in full
+in Wells space and published (hash recorded before any join; no
+join quantity exists in the record). Keying under the freeze-fixed
+route (DD-070-9) resolved 26 of the 31; five could not be keyed —
+ICIT 136, 298, 401, 617, 824: no parpola_1982 registry row carries
+their Wells ids (verified independently: no registry row in any
+numbering system carries W136/W298/W401/W617/W824; the numberings
+are genuinely different lists — Parpola 136 carries Wells W048|W049).
+Under the disposition the freeze fixed in advance (DD-070-11, the
+conservative branch), the execution closed as POPULATION NOT KEYED:
+no join performed, no test quantity computed, claim
+without_kings…_manual_003 stands as recorded (IN QUESTION), no dated
+append made (the appends belong to the verdict classes). The answer
+to Spec 049's question in re-scoped form is therefore not settled
+by this execution, in either direction; a successor must first
+repair the keying surface by a new freeze decision. Deterministic
+(second run byte-identical); anchors byte-identical before and
+after; foundation check on the execution tree 40 passed / 0 failed
+/ 8 warnings. Records: specs/070-hunt-opening-signs-successor/
+outcome.md, reports/phase433_results.json,
+reports/phase433_report.md.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.

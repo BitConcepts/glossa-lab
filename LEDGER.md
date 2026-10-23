@@ -10029,3 +10029,43 @@ reports/phase434_results.json, reports/phase434_report.md.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-23 — Preprint v8: F2 Zipf qualification + Spec 068 integration; Spec 072 insert held
+
+Preprint v8 (branch preprint-v8-f2-spec068; version note:
+specs/025-paper-search-research-check/audit-2026-10-22/v8_version_note_2026-10-23.md)
+resolves the spec-025 audit's F2 finding (the §2.1 Zipf exponent ~1.7
+printed without a checkable derivation; adversarial pass 2026-10-22,
+SUSTAINED in narrow form) by the qualify-in-place branch of its
+recommendation — the add-the-derivation branch was not honestly
+available, because the only derivation on record (−1.7046,
+Sproat-benchmark script) belongs to a different corpus (7,138 texts /
+24,502 tokens / 649 types) than §2.1's Holdat corpus. §2.1 now presents
+the exponent as the program's own uncheckable corpus statistic, no
+longer as evidence the script is a language, citing Yadav et al.
+(2010) and its own stated limit; the Yadav entry is added to §8 after
+Wells & Fuls (no other §8 entry touched; both Rao entries and both
+Roif entries byte-identical). New §2.1.1 reports the Spec 068
+(Phase-430; OSF 3pbwe) registered frequency-curve test on the Shakti
+corpus (α = 2.004, error 0.1584 documented-lineage; α = 1.96, error
+0.1544 documented + corroborated; Linear B, the one certain writing
+system among the controls, fitted worst at 0.9229) with its
+registered outcome wording: COMPARISON UNINFORMATIVE. §3.10 applies
+the same qualification to Nair's Zipf slope. Everything else is
+carried from v7 intact, including all Roif credit (§§3.5/3.19/§7/§8);
+§3.32 remains absent and its restoration draft held. The Spec 072
+(Phase-431) fish-family result is NOT integrated: its insert is filed
+HELD at glossa-corpus/indus/pierson_2026_indus_decipherment_spec072_insert_HELD.md
+(publication requires Roif 2025a/b citation AND owner clearance of
+the specific act; claim F072-C14). PDF regenerated (TinyTeX XeLaTeX,
+two clean passes, zero errors, 19 pages; SHA-256
+0f70dece76d3cdd31fa2ccb5c9fdbc9c2953587a9895700b8cf4632cd81f6670),
+all v8 changes verified in the rendered output (E1 wording, §2.1.1
+figures and UNINFORMATIVE, Yadav entry, Roif entries, "End of
+Preprint v8"; no betweenness, no §3.32). An independent red-team
+pass on v8 is IN PROGRESS under the standing rule (no paper
+publishes without TeX + a red-team pass); its record will be filed
+in the audit directory when complete. Nothing submitted.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.

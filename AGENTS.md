@@ -46,17 +46,19 @@ was retired 2026-10-05 and is no longer active tooling.
 
 **Author:** Tristen Kyle Pierson / BitConcepts LLC
 
-**Current version:** v7 (October 2026 — v6 plus the Roif credit:
-both Roif 2025a/b citations in §8, fish-sign model credit in
-§3.5/§3.19 and §7 Acknowledgments, from the owner-directed Roif
-addenda to the spec-025 audit fix commission; §3.32 restoration
-draft filed but HELD pending Roif's reply; source `.tex` and
-regenerated PDF)
+**Current version:** v8 (October 2026 — v7 plus the F2 Zipf
+qualification in §2.1 (qualify-in-place), the new §2.1.1 reporting
+the Spec 068 registered frequency-curve test (COMPARISON
+UNINFORMATIVE), the matching §3.10 qualification of Nair's Zipf
+slope, and the Yadav et al. (2010) entry in §8; the Spec 072
+fish-family insert is filed HELD, not integrated; §3.32 restoration
+draft still HELD pending Roif's reply; source `.tex` and
+regenerated PDF; red-team pass on v8 in progress)
 
 **Source:** `glossa-corpus/indus/pierson_2026_indus_decipherment.tex`
 
-**PDF:** `glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v7.pdf`
-(the v7 PDF is the current compiled artifact, regenerated 2026-10-22
+**PDF:** `glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v8.pdf`
+(the v8 PDF is the current compiled artifact, regenerated 2026-10-23
 with xelatex — see `docs/research/PREPRINT_VERSIONING.md`)
 
 **DOI:** https://doi.org/10.5281/ZENODO.20414696 (Zenodo)

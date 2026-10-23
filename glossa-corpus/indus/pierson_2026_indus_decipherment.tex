@@ -78,7 +78,7 @@ Glossa-Lab / BitConcepts LLC\\
 Correspondence: tpierson@bitconcepts.tech\\
 Date: May 2026 (revised October 2026)\\
 DOI: \href{https://doi.org/10.5281/ZENODO.20414696}{10.5281/ZENODO.20414696}\\
-Version: Preprint v7 --- Not peer-reviewed
+Version: Preprint v8 --- Not peer-reviewed
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -220,15 +220,17 @@ Chanhu-daro (n=78), Surkotada (n=61), Banawali (n=60), Rakhigarhi
 excavated IVC sites and represents the primary published formal-seal
 assemblage.
 
-\textbf{Sign catalogue}: 390 distinct M-number signs attested in the corpus; the anchor table assigns readings to all 397 signs in the Mahadevan catalogue (the additional 7 have zero corpus tokens and are included for catalogue completeness). Frequency
-distribution follows Zipf's law (exponent \textasciitilde{} 1.7), consistent with a
-natural language writing system.
+\textbf{Sign catalogue}: 390 distinct M-number signs attested in the corpus; the anchor table assigns readings to all 397 signs in the Mahadevan catalogue (the additional 7 have zero corpus tokens and are included for catalogue completeness). Sign frequencies fall off steeply, from a few very common signs to many rare ones. An earlier version of this paper reported a Zipf exponent of about 1.7 for this distribution and described it as consistent with a natural language writing system. That exponent is this program's own statistic on this corpus; no derivation of it has been published that a reader can check, and we no longer present it as evidence that the script is a language. Yadav et al. (2010), who published a Zipf--Mandelbrot fit for Indus sign frequencies (on a pruned subset of Mahadevan's corpus), state the limit themselves: the presence of such a distribution ``is not sufficient to declare a sequence as linguistic''. A later test of what a fit of this kind can show is reported in §2.1.1 below.
 
 \textbf{Crosswalk}: 45-entry Mahadevan\,--\,Parpola crosswalk
 (mahadevan\_parpola\_crosswalk.json) for iconographic anchor validation.
 
 \textbf{Supplementary sources}: Crawford (2001) Saar seals; Hojlund \&
 Abu-Laban (2012) Failaka Tell F6; Parpola (1994, 2010) iconographic readings.
+
+\subsubsection{2.1.1 What a Frequency-Curve Fit Can and Cannot Show (Spec 068)}\label{what-a-frequency-curve-fit-can-and-cannot-show-spec-068}
+
+We tested what a frequency-curve fit can show, under rules fixed and registered before the test was run (Spec 068, executed as Phase-430; OSF registration 3pbwe). One fitting rule --- the Zipf--Mandelbrot rule frozen by Spec 053 --- was applied to Indus sign counts and to four comparison systems. The Indus counts came from a different corpus from the one described above: the Shakti corpus, a restricted corpus in the ICIT line (3,045 analysable rows of documented lineage; 11,805 tokens; 557 distinct signs). On those counts the fit gave exponent $\alpha$ = 2.004 and fit error 0.1584 (error is the root-mean-square difference in log space; smaller is a closer fit). On a wider set of rows from the same corpus (documented plus corroborated) it gave $\alpha$ = 1.96 and error 0.1544. The comparison systems were Mesopotamian numerical signs (error 0.5335), heraldic charges from the Dering Roll (0.1839), a synthetic emblem process (median 0.2405), and Linear B (0.9229). Linear B is the one system in the set that is certainly writing, and it fitted the curve worst of the five. Under the rule fixed before the run, that result makes the comparison UNINFORMATIVE: these measures do not separate the one certain writing system from systems that are not writing, so a close Indus fit on them is evidence neither for nor against the script being language. The Shakti numbers are a measurement of the Shakti corpus only. They are not a measurement of the Holdat corpus used in this paper, and they do not confirm or correct any earlier exponent, including the Phase-43 exponent of about 1.35 recorded in this program's files.
 
 \subsubsection{2.2 Evidence Hierarchy}\label{evidence-hierarchy}
 
@@ -627,10 +629,7 @@ our Phase-134 F1 positional test (\textit{z}\,=\,10.3; 0/2000 permutations excee
 deliberately hedged: the Indus corpus occupies an intermediate
 position between his synthetic non-linguistic baselines, matches the
 administrative baseline on only two of four metrics, and, in his
-words, the study does not settle the linguistic question. His results
-are consistent with non-random sequential structure in the Indus sign
-system; they do not test the positional grammar, the anchor readings,
-or the Dravidian hypothesis advanced here.
+words, the study does not settle the linguistic question. One of Nair's four measures, his Zipf slope, is a frequency-curve fit of the kind tested in §2.1.1: on the frozen comparison reported there, that kind of fit did not separate writing from non-writing, so we do not use his slope --- any more than our own earlier figure --- as evidence about linguistic status. His results are consistent with non-random sequential structure in the Indus sign system; they do not test the positional grammar, the anchor readings, or the Dravidian hypothesis advanced here.
 
 \subsubsection{3.11 Phonological Exclusivity Test
 (Phase-146)}\label{phonological-exclusivity-test-phase-146}
@@ -1214,6 +1213,11 @@ scripting, data management, and literature search.
   Wells, B. \& Fuls, A. (2015). \emph{The Archaeology and Epigraphy of
   Indus Writing}. Archaeopress.
 \item
+  Yadav, N., Joglekar, H., Rao, R.P.N., Vahia, M.N., Adhikari, R. \&
+  Mahadevan, I. (2010). Statistical Analysis of the Indus Script Using
+  n-Grams. \emph{PLoS ONE}, 5(3), e9506. DOI:
+  10.1371/journal.pone.0009506.
+\item
   Witzel, M. (1999). Substrate Languages in Old Indo-Aryan.
   \emph{Electronic Journal of Vedic Studies}, 5(1), 1--67.
 \item
@@ -1313,7 +1317,7 @@ supported - Fish sign isolation: 0/140 isolated (0/113 corpus + 0/27 Gulf; Phase
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\emph{End of Preprint v7}\\
+\emph{End of Preprint v8}\\
 \emph{Glossa-Lab, May 2026}\\
 \emph{Word count: \textasciitilde3,800}
 

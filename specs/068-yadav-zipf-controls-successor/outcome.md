@@ -318,6 +318,31 @@ them in either direction.
 
 - Execution PR: *(recorded at the landing —
   appended below at merge).*
+- **Landed 2026-10-22.** Execution PR **#349**
+  merged at commit
+  `f23d20d5251b9349942acf2676bd98d56490e82b`
+  on genuine CI green: run **39877692470** on
+  the exact head `64efe4c9`, all seven jobs
+  SUCCESS read from the settled run's own job
+  conclusions (Backend, Frontend, Evidence
+  Graph smoke, Indus public validation, and
+  Shell wrappers on ubuntu/macos/windows).
+  The run's first CI attempt (run 39876626689,
+  head `960a3869`) failed only the three
+  Shell-wrapper jobs on one ruff error in the
+  Phase-430 script (extraneous `f` prefix,
+  F541); the fix changed no output — the
+  script's two output files were re-verified
+  byte-identical after it. Output digests
+  re-verified on merged main: results
+  SHA-256 `ca83af8f…`, report SHA-256
+  `e7597718…`. Foundation check as measured
+  on the landing tree is appended with the
+  landing record in `tasks.md` (L7). The
+  execution branch was deleted at merge.
+  The OSF registration `3pbwe` stands pending
+  the owner's approval act, as filed; nothing
+  in this landing changes that state.
 
 ---
 

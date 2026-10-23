@@ -103,9 +103,26 @@
       `osf-spec-registration.md`, completed by
       append after filing; its approval act
       remains a separate owner act).
-- [ ] **L7 — Freeze PR merged**, house gates
+- [x] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).
+      **Record:** Done 2026-10-22: freeze PR
+      #342 merged at
+      `9bdb21d0e32a096abd87525a2dc159b7685dfd79`
+      on genuine CI green (run 39869769204 on
+      head `e149b182`, 7/7 jobs SUCCESS from
+      the settled run's own conclusions);
+      foundation check on the merged tree as
+      measured: 40 passed / 0 failed / 8
+      warnings. Execution landed the same day:
+      PR #349 merged at `f23d20d5` (CI run
+      39877692470, head `64efe4c9`, 7/7
+      SUCCESS); output digests re-verified on
+      merged main (results `ca83af8f…`, report
+      `e7597718…`); foundation check on the
+      landing tree as measured: 40 passed /
+      0 failed / 8 warnings. Both branches
+      deleted at their merges.
 
 ## Execution — gated on the freeze and a separate execution order
 

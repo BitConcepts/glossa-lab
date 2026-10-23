@@ -9781,6 +9781,57 @@ What was done:
 AI disclosure: produced by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
 
+## 2026-10-22 — Spec 068 EXECUTED (Phase-430): COMPARISON UNINFORMATIVE
+
+Spec 053's frozen control-systems comparison executed on the Shakti corpus as
+its successor under Amendment S-053, under the frozen Spec 068 contract
+(freeze digest ab890859c0ec313b4e2cdf89a9dddd885fae505e888c5f8c9ef2ba68c5f3c62d;
+freeze PR #342 merged at 9bdb21d0; OSF registration 3pbwe filed 2026-10-22 and
+standing pending approval at the run, recorded as it stands per freeze.md §7
+and the owner's execution order of 2026-10-22). Step 0, in the frozen order,
+all PASS: gate 0.1 — every §3 pin recomputed (the claim file at its DD-068-8
+re-pinned hash ec31778a…, the intake record standing); gate 0.2 — the
+estimator self-test by Phase-413's own functions (planted α 1.20 / q 2.0
+recovered as 1.256 / 2.72); gates 0.3–0.4 — the Shakti pins recompute and the
+audit census reproduces exactly (5,704 rows; 5,536 analyzable; grades 3,212 /
+2,087 / 405; 18,065 tokens; 713 signs; 77 sites), with this successor's own
+census governing (primary 3,045 analyzable / 11,805 tokens / 557 signs;
+sensitivity 5,131 / 17,216 / 707); gate 0.5 — the population act under limb B
+(DD-068-7: the full ICIT sign inventory of the restricted corpus; no mapping
+act); gate 0.6 — the four controls entered whole as cited data before any fit
+(N1 Mesopotamian numerical signs, 12 types / 1,981 tokens, from the published
+SFU NatLang proto-cuneiform derivation; N2 heraldic charges, 57 types / 825
+tokens, from the Dering Roll's 324 blazons under the frozen counting rules;
+P1 Linear B, 89 types / 47,292 tokens, from the DAMOS transliterations; N3 the
+Yule–Simon process, ρ = 0.10, seed 20261021, 99 replicates); gate 0.7 — floors
+met (557 ≥ 50 types; 11,805 ≥ 2,000 tokens). Fits under Spec 053's one frozen
+estimator (every system cross-checked exactly against Phase-413's
+implementation of record): Indus primary α 2.004, q 19.9, NRMSE_log 0.1584;
+N1 0.5335; N2 0.1839; N3 median 0.2405 (as-well share 0.00); P1 Linear B 0.9229.
+No non-linguistic control fits as well as the Indus primary — the falsifier
+does not fire, and no control is a NEAR MISS (the closest, heraldic charges at
+gap +0.0255, sits above the frozen 0.02 band). But the positive-control
+condition fails: Linear B, the set's one certain writing system, fits worse
+than every non-linguistic control — worst of all five systems — so under the
+frozen §5.5 mapping the headline is COMPARISON UNINFORMATIVE whatever the
+falsifier does. The sensitivity fit (α 1.96, NRMSE_log 0.1544) carries the
+same verdict-relevant ordering — not grade-sensitive — and the subsampling
+tables are in the machine record. Per the §7 wording for this outcome, the
+claim yadav_2009_arxiv_manual_001 stands exactly as recorded with no strength
+label added; the Indus quantities are a new baseline on the Shakti corpus,
+neither confirming nor correcting any Phase-43 quantity. Anchors asserted
+byte-identical before and after (df0cf620…). Foundation check as measured on
+the execution tree: 40 passed / 0 failed / 8 warnings. The restricted corpus
+and row-grades files were read from the restricted local store only; no
+corpus data entered git. Records: specs/068-yadav-zipf-controls-successor/
+outcome.md, reports/phase430_results.json (SHA-256 ca83af8f…),
+reports/phase430_report.md (SHA-256 e7597718…); the script is deterministic
+(the control tables were re-issued with LF line endings before the
+record was finalised, so the committed bytes are the cited bytes;
+the final record then reproduced byte-identically on a second run).
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
 ## 2026-10-22 — Spec 069 EXECUTED (Phase-432): ASSET BUILT AND FROZEN
 
 The Asset A build under Spec 045's frozen §§2–3 contract, quoted

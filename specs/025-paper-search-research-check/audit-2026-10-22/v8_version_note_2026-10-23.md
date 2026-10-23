@@ -711,3 +711,251 @@ not cleared for publication until the loop closes.
 
 **Nothing submitted, deposited, or published.** The PR
 (#353) is not merged.
+
+## Red-team round 5 revision (2026-10-23)
+
+Round 5 of the independent red-team pass on v8 (attack: independent
+engine, GPT-5.5 via OpenAI API, direct, four passes over the full
+PDF-extracted text, 94 raw findings aggregated to 38 items, plus 87
+positives) was adjudicated against the program's primary records by
+an adjudicator who did not draft the paper. Dispositions:
+**5 sustained / 6 sustained in part / 25 moot / 2 not sustained of
+38; positives 87/87 confirmed**. The raw attack and the
+adjudication are filed beside this note
+(`v8_redteam_round5_raw_2026-10-23.md`,
+`v8_redteam_round5_adjudication_2026-10-23.md`). Round 5 produced
+three genuinely new settlements (S8, S9, and the §6 cross-check in
+S10), narrowed one precedent on new verification (S10 against
+R3-02/R4-14's substance, which stands), and held the two
+fifth-airing items to their precedents (S6, S7). No earlier
+settlement was reopened by this revision.
+
+**Revision applied.** All adjudicated replacement blocks
+R5R-01…R5R-11 were applied verbatim to the .tex (formatting
+conversion only: markdown emphasis and dashes to LaTeX, χ² / × / ≳ /
+≈ in math mode, percentages escaped, `CLAIM_AUDIT.md` set as a
+typewriter file name with its underscore escaped), each target passage verified
+by exact match before substitution, locations identified by quoted
+text: R5R-01 (§6 pin explanation, S10), R5R-02 (§2.3 z-score
+cross-reference), R5R-03 (§3.8, four sub-replacements, S9),
+R5R-04 (§1.3 and §6 anchor-table DEDR coverage, S8), R5R-05 (§5
+tier definitions, inserted immediately before the Tier-2 sentence),
+R5R-06 (§5 lead, class (a)+(b): the text was applied; the
+corpus-release decision it names is the owner's and was **not**
+taken), R5R-07 (§4.5 Gulf scope), R5R-08 (§3.28 and §1.3 ICIT
+necessity claim), R5R-09 (§2.3 semantic labels), R5R-10 (§2.2
+ghost criteria), R5R-11 (abstract subject). MOOT items (R5-01,
+R5-02, R5-09–R5-12, R5-14–R5-19, R5-22, R5-26–R5-37) and the NOT
+SUSTAINED items (R5-20, R5-38) have no replacement; their §A rows
+are the complete disposition. R5R-09's instruction was followed in
+its alternative form: §2.2's MEDIUM parenthetical
+"(INITIAL=title prefix, TERMINAL=case suffix)" was left unchanged
+and stands as a gloss read with the §2.3 cure, rather than
+disturbing the criterion text.
+**Settlements as applied. S6 (HIGH checkability, R5-01, MOOT)** —
+round 4's S4 upheld; the R4R-10 limit sentence in §2.2 stands; no
+text change. **S7 (§5 "favours", R5-02, MOOT)** — R2-06, R3-09 and
+R4-S5 upheld, nothing material changed; no text change.
+**S8 (R5-06, sustained, R5R-04)** — the anchor table's DEDR
+coverage is now stated at its counted strength at both locations:
+§1.3 prints that a DEDR citation is recorded in
+`research/indus/anchor_table.csv` for **15 of the 161** signs (the
+other 146 rows carry no DEDR entry in the table) and that no claim
+is made that every reading carries a DEDR citation; §6 prints "a
+DEDR citation on the 15 rows that have one". The second counted
+figure in S8 — **16 of 161** in
+`glossa-corpus/indus/ANCHOR_STATUS_AUDIT.csv` (145 blank; the two
+files' DEDR columns agree on only 4 signs) — is the adjudication's
+record of the audit file; no R5R block prints it in the paper, and
+it is recorded here and in the adjudication, not in the PDF.
+**S9 (R5-05, SIP, R5R-03)** — §3.8 now prints: **63 pairs enriched**
+at a single-cell contribution **above 1.0** (the Phase-143 record's
+own sense, observed above expected); **exactly 14 pairs at or above
+the Bonferroni threshold χ² ≈ 14.7 on that statistic** (the
+fourteenth value is 15.0); the threshold named as the critical
+value, at 0.05/394 ≈ 0.000127, of the one-degree-of-freedom
+chi-square distribution of a full 2×2 test, with the direction of
+validity stated per S9 (the contribution is one positive term of
+the full statistic, so a pass on the contribution necessarily
+passes on the full 2×2 χ² — the comparison is conservative and
+the 14 passes are valid; the full 2×2 value per pair is recorded
+nowhere, the class (c) part of the block); the Phase-149 "robust"
+definition corrected to what C2 actually computed (about 43 by
+subtracting the roughly 20 false positives expected among 394
+tests at an uncorrected 5% level, 63 − 19.7 — not a threshold
+count); and the **394 denominator's filters, from the Phase-143
+script**, printed in full (attested pairs only; multi-sign
+inscriptions; first sign HIGH or MEDIUM; sign heads at least 5
+such inscriptions; icon type on at least 5 seals in that set;
+expected count at least 1), with the family stated as selected
+from the data. **S10 (R5-03, SIP (minor), R5R-01)** — the §6 pin
+explanation sentence was replaced with the adjudication's
+corrected sentence; see the pin procedure and the post-pin truth
+check below. Further cures: §5's Tier 2 / Tier 3 labels are now
+defined where first used, from `CLAIM_AUDIT.md` (Tier 2:
+probable linguistic interpretation — supported, not proven;
+Tier 3: speculative or provisional, requiring explicit caveats);
+§5's lead "reproducible" now carries the abstract's settled split
+(scripts, phase reports and anchor table can be re-run and
+checked from the repository; corpus-level counts cannot be
+re-run until the Holdat corpus is released); §2.2's HIGH
+independence sentence no longer names "the DEDR and Parpola
+criteria", which are not criteria in the HIGH list, and states
+them as inputs to the iconographic criterion; §2.3's three
+semantic-label sentences are restated as positional classification
+plus the model's interpretation, pointing to §3.2; §2.3's z-score
+sentence now points to the printed inputs in §2.3 itself (observed
+R² = 0.9916, null mean 0.4385, standard deviation 0.05347), not
+to §5; §4.5 point 2's Gulf scope is aligned with §3.19 (no mention
+of an isolated fish sign in either text; no fish-sign mentions at
+all in the Laursen text, with §3.19 giving the source-specific
+statement); §3.28's and §1.3's "ICIT corpus required" necessity
+claim is replaced with what the Phase-167 record shows (a larger
+corpus with contextual metadata would be needed; ICIT is the
+named candidate; neither its unique necessity nor its sufficiency
+is shown); and the abstract's subjectless clause is repaired
+("§3.2). We also propose 161 candidate readings…"). Protected
+text (§8 Roif 2025a/b and the Rao entries, each byte-checked;
+§3.5/§3.19 Roif credit; §7 Roif
+acknowledgment) is byte-intact in the source diff against
+`ff9b9146`, verified per passage by hash before and after the
+revision (no diff line touches a Roif or Rao passage). §3.32
+stays out; "betweenness" remains at 0 hits; the Spec 072 insert
+stays HELD and unintegrated; no earlier settlement was reopened.
+
+**§6 commit pin.** Two-commit procedure, as rounds 1–4. The
+revision was committed with §6 naming `ff9b9146` (the pre-revision
+HEAD, which carries the round-5 adjudication) and R5R-01's
+replacement text included with that value (revision commit
+`88a6bf46`); a second, pin-only commit (`e585c767`) changed only
+the §6 commit string to `88a6bf46`. §6 therefore names the
+round-5 revision commit, not the pin commit and not `ff9b9146`,
+and the shipped PDF prints `88a6bf46`.
+**Post-pin truth check of the §6 explanation sentence (checked
+once more after the pin commit, as required; flagged, not
+silently fixed).** The R5R-01 sentence, applied verbatim, reads
+in part: "the first sentence of this section there names
+a92c53aa, the commit the round-4 revision started from, where
+this draft names ba5b4bf9." That sentence was true of the
+round-4 state the adjudication examined. It is **not true of
+the final round-5 state**: at the named commit `88a6bf46`, the
+first sentence of §6 names `ff9b9146` (the round-5 adjudication
+commit, the commit this revision started from), not `a92c53aa`;
+and the draft in hand names `88a6bf46`, not `ba5b4bf9`. The rest
+of the corrected sentence **is** true of the final state,
+verified against the git record: exactly one sentence differs
+between the named commit and the shipped draft, and only in
+that commit string (`git diff 88a6bf46 e585c767` on the .tex is
+one line, one string); the pin commit changes only that string;
+and the records commit that follows changes no paper text. The
+two stale commit names inside the explanation sentence are a
+residual inaccuracy carried by applying R5R-01 verbatim across
+a new pin cycle; it is flagged here — and for round 6 — rather
+than corrected silently, because no adjudicated replacement
+authorises different wording. (The preceding §6 sentence,
+"Commits after it on this branch add only records … and do not
+change the paper's text", stands as in rounds 1–4 and is to be
+read with the R5R-01 sentence, exactly as the adjudication's
+note to R5R-01 directs: the pin commit's one-string change is
+the difference that sentence exists to state.)
+
+**Word count.** The round-4 printed figure was **17,997**. After
+the final build the adjudicated command `pdftotext <pdf> - | wc -w`
+was run on the new PDF (**18,591**), the .tex word-count line was
+set to the measured value, the PDF was rebuilt, and the command
+was re-run — the printed figure equals the shipped PDF's count
+(18,591; the number token is one word either way, so the count is
+stable across the pin rebuild, whose only text change is the §6
+commit string, verified again after the pin: 18,591).
+
+**Rebuild.** TinyTeX XeLaTeX (same toolchain and font environment
+fix as the earlier v8 builds — OSFONTDIR covering the system Noto
+directory and the TinyTeX Latin Modern Math directory, plus a
+fontconfig file including the system fonts and the TinyTeX
+texmf-dist font directories), two passes on the final .tex state
+and two on the pin state, all exit 0, **zero errors** in the final
+log. PDF:
+`glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v8.pdf`
+— still named v8 (a pre-publication revision of the v8 draft).
+**32 pages** (was 31). **SHA-256:
+969c45d8da58a110371fabdf48875641a466eb20daacec0a78b65efb3b2c7a1f**
+
+**Render verification (pdftotext of the shipped PDF).** Present:
+"15 of the 161 signs" with the 146-row statement in §1.3 and "a
+DEDR citation on the 15 rows that have one" in §6; §3.8's "63
+pairs (16%) are enriched in the Phase-143 record's own sense"
+with "single-cell contribution (below) is above 1.0", "14 pairs
+stand at or above the Bonferroni threshold on that same
+statistic" with the fourteenth value 15.0, the corrected
+"robust" wording ("is that recheck's word for the roughly 43
+pairs it judged genuinely significant by the subtraction just
+described"; "it does not mean that 43 pairs stand at the
+Bonferroni threshold — 14 pairs do, on the printed statistic"),
+and the denominator filters (multi-sign inscriptions; first sign
+HIGH or MEDIUM; sign heads at least 5; icon type on at least 5
+seals in that set; expected count at least 1) with the Phase-143
+JSON/script distinction; the §5 Tier 2 / Tier 3 definitions; the
+§5 lead split (scripts, reports and anchor table re-runnable;
+corpus-level counts not until the Holdat corpus is released);
+§2.3's "Positional analysis classifies signs by position only"
+with the semantic labels stated as the model's interpretation;
+§2.3's "printed inputs in this section (observed R² = 0.9916,
+null mean 0.4385, standard deviation 0.05347)"; §4.5's "no
+fish-sign mentions at all in the Laursen text (§3.19 gives the
+source-specific statement)"; the §3.28/§1.3 ICIT candidate
+wording; the abstract's "We also propose 161 candidate
+readings"; §6 commit `88a6bf46`; the R5R-01 explanation sentence
+as applied (see the truth check above); printed word count
+18,591; "End of Preprint v8". Absent: the "161 … with DEDR
+citations" claim in §1.3 ("candidate readings with DEDR
+citations"; "DEDR-linked phonetic hypotheses") and its §6 echo
+("each sign's reading, DEDR citation, and basis"); "63 pairs
+(16%) pass the corrected threshold"; "all except the DEDR and
+Parpola criteria"; "INITIAL-dominant signs are classified as
+title prefixes"; "printed inputs (§5)"; "The search found no
+fish-sign mentions at all, so the Gulf material" (§4.5's old
+both-texts form); "ICIT corpus required for personal names"; "is
+required to identify name-bearing seal sequences"; "We propose
+a reproducible computational grammar"; "(§3.2), and propose 161"
+(the abstract's subjectless clause); "betweenness"; §3.32. The
+§2.2 MEDIUM parenthetical "(INITIAL=title prefix, TERMINAL=case
+suffix)" stands, as a gloss read with the §2.3 cure (R5R-09's
+instruction, alternative form — see above). The "16 of 161"
+audit-file figure does not appear in the PDF: it is S8's count
+for `ANCHOR_STATUS_AUDIT.csv`, recorded in the adjudication and
+above, and no R5R block prints it (see S8 as applied).
+
+**Still-open items.** (1) **Owner decisions (adjudication §D)** —
+the loop does **not** close at round 5 (see the adjudication's
+loop-closure statement): the previously adjudicated owner
+decisions whose interim cures are in place are not reopened —
+corpus release (R3-01; also the class (b) half of R5R-06), a
+calibration study for the confidence labels (R3-07), the
+SA/V07 re-base (R3-05, R3-51), the V12 protocol freeze (R3-45),
+archiving the exact v8 source under the Zenodo DOI (R3-02),
+whether M176 stays HIGH (R3R-15), the paper's title (R3-14),
+retention of the CISI 87.08% figure with its disclosure
+(R3R-19), a seal-level retest of the M267 motif distribution
+(R4R-20), and the per-criterion re-audit of the 75 HIGH signs
+behind R4-10/S4 (carried at S6). (2) **The R5R-01 residual**
+flagged in the post-pin truth check above: the explanation
+sentence's two commit names (a92c53aa / ba5b4bf9) describe the
+round-4 pin cycle, not the final round-5 state (ff9b9146 /
+88a6bf46) — for the round-6 attack/adjudication to settle.
+(3) **Record gaps (adjudication §E)** the cures disclose but
+cannot fill, including the three new this round: the full
+Phase-143 pair list and per-pair full 2×2 statistics (§E.1);
+why the two central files' DEDR columns disagree — 15 vs 16 of
+161, overlap 4 (§E.2); the Mitchell half of the Phase-156 search
+(59 hits on unrecorded terms, §E.3); and the standing gaps: the
+DEDR search space, the SA specification, criterion-level scoring
+for HIGH, the unrecorded §8 identifications (R5-19), the CISI
+87.08% numerator/denominator, the Phase-151 bootstrap type /
+Phase-134 seed and F1 matrix, unrounded M067/M039 expected
+counts, per-sign seal counts, and the fish supplement / M001
+mismatch. (4) Red-team **round 6** on this revised draft is
+pending; v8 is not cleared for publication until the loop
+closes.
+
+**Nothing submitted, deposited, or published.** The PR
+(#353) is not merged.

@@ -10205,3 +10205,62 @@ Nothing submitted, deposited, or published; PR #353 not merged.
 
 AI disclosure: executed by an AI agent (Muse, via Muse)
 at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-23 — Preprint v8 red-team round 5: adjudicated and revised (R5R-01..R5R-11)
+
+Round 5 of the independent red-team pass on preprint v8 (attack:
+independent engine, GPT-5.5 via OpenAI API, direct, full text ×4
+passes, 94 raw findings aggregated to 38 items + 87 positives;
+adjudication against primary records: 5 sustained / 6 sustained
+in part / 25 moot / 2 not sustained of 38; positives 87/87
+confirmed; settlements S6–S10). All adjudicated replacement
+blocks R5R-01..R5R-11 were applied verbatim to
+glossa-corpus/indus/pierson_2026_indus_decipherment.tex (formatting
+conversion only; each target verified by exact match; MOOT and
+NOT SUSTAINED items have no replacement; R5R-06's class (b)
+corpus-release decision is the owner's and was not taken) —
+revision commit 88a6bf46; §6 commit string pinned to that commit
+by pin-only commit e585c767. Load-bearing cures: R5R-04 (§1.3 +
+§6: the anchor table records a DEDR citation for 15 of its 161
+rows in anchor_table.csv — 16 of 161 in ANCHOR_STATUS_AUDIT.csv,
+per S8 — and the "with DEDR citations" claim is removed at both
+locations); R5R-03 (§3.8, per S9: 63 pairs enriched at
+single-cell contribution >1.0; exactly 14 at or above the
+Bonferroni threshold χ²≈14.7 on that statistic, a conservative
+comparison whose passes are valid for the full 2×2 statistic;
+the Phase-149 "robust" definition corrected to C2's subtraction
+estimate (~43 = 63 − 19.7); the 394 denominator's filters from
+the Phase-143 script printed); R5R-01 (§6 pin explanation
+corrected per S10); §5 Tier 2/Tier 3 defined (R5R-05); §5 lead
+"reproducible" split (R5R-06); §4.5 Gulf scope aligned with
+§3.19 (R5R-07); §3.28/§1.3 ICIT necessity claim replaced
+(R5R-08); §2.3 semantic labels restated as interpretation
+(R5R-09; §2.2's MEDIUM parenthetical left standing as a gloss
+read with that cure); §2.2 ghost DEDR/Parpola criteria removed
+(R5R-10); §2.3 z-score cross-reference corrected (R5R-02);
+abstract subject restored (R5R-11). POST-PIN TRUTH CHECK
+(flagged, not silently fixed): R5R-01's sentence as applied
+names a92c53aa / ba5b4bf9 — true of the round-4 state the
+adjudication examined, not of the final round-5 state (at the
+named commit 88a6bf46 the §6 first sentence names ff9b9146, and
+the shipped draft names 88a6bf46); the remainder of the
+sentence is verified true (one differing sentence, only in the
+commit string). Protected Roif/Rao text byte-intact (hash-verified
+per passage against ff9b9146); §3.32 still absent; no
+betweenness; Spec 072 insert still HELD. PDF rebuilt with
+TinyTeX XeLaTeX, two passes, exit 0, zero errors, 32 pages,
+SHA-256 969c45d8da58a110371fabdf48875641a466eb20daacec0a78b65efb3b2c7a1f,
+render-verified (pdftotext); printed word count 18,591 measured
+on the shipped PDF by the adjudicated command (round-4 figure
+17,997). The "16 of 161" audit-file figure appears in the
+adjudication and the version note, not in the PDF — no R5R
+block prints it. Loop NOT closed at round 5 per adjudication
+§D. Still open: the §D owner decisions, the §E record gaps
+(incl. the new Phase-143 pair-list, DEDR-column-discrepancy and
+Mitchell-search gaps), and the R5R-01 residual above; red-team
+round 6 pending. Record:
+specs/025-paper-search-research-check/audit-2026-10-22/v8_version_note_2026-10-23.md.
+Nothing submitted, deposited, or published; PR #353 not merged.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.

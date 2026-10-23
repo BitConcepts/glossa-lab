@@ -1004,7 +1004,7 @@ def main() -> int:
     lines = [
         "# Phase-430 — Spec 068 report",
         "",
-        f"Claim: `yadav_2009_arxiv_manual_001` — standing strongly",
+        "Claim: `yadav_2009_arxiv_manual_001` — standing strongly",
         "supported, stage explained, exactly as recorded.",
         f"Execution date: {EXECUTION_DATE}. Freeze digest:",
         f"`{FREEZE_DIGEST}`. OSF registration 3pbwe (filed",

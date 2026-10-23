@@ -1,0 +1,368 @@
+Appendix II
+Positional Analysis of Indus Signs
+Andreas Fuls
+This research was first published in Voprosi Epigrafiki V ol. VII (1):253-275, 2013. In this 
+appendix the original has been modified to standardize the terminology and formatting.
+Introduction
+The position of signs in the Indus inscriptions is an important factor in analysing sign 
+function. Some signs are typically found in initial position, while other are mostly 
+terminal, but many signs were only be classified as medial, which is not a precise 
+description. A new method is needed to classify each sign’s positional behaviour, 
+beyond the initial, medial and terminal classification. That is, a more detailed analysis 
+and classification of Indus sign behaviour is necessary. This method would preferably 
+account for sign behaviour in all texts as well as for specific text classes. 
+The method developed here can also be used to show that graphically similar signs often 
+differ in their preferred positional behaviour. That is, they are not allographs but distinct 
+graphemes. The positional histograms of signs derived from different text classes 
+indicate, that Indus signs can have more than one preferred text position depending 
+on the content and the structure of the texts. This is important to emphasise, because 
+previous statistical tests of Indus signs very often have put all texts together without 
+considering of different context or text structures.
+Since the beginning of the study of Indus signs they have been tabulated and distinguished 
+by graphic form alone. This results in sign lists of 386 to 419 signs.
+ Mahadevan 1977 and Parpola 1994, respectively). The question remains: Which signs 
+are distinct signs and which signs are allographs? The identification of allographs is 
+a time consuming task of searching for sign replacement patterns and requires a large 
+text corpus. This can be done by the structure analysis (developed by Forrer (1932)) and 
+was applied by Wells (2006, p. 67-93) to create a detailed sign list with 676 signs. This 
+looks like a step backwards if one is looking for a condensed (Simplified) sign list. But 
+as long as allographs cannot be clearly distinguished from distinct signs this is the most 
+secure way of creating a sing list, especially for scripts with many low frequency signs. 
+See Chapter 2 and Wells (2011) for more details on sign list construction.
+The following research is based on an updated sign list from Wells (2006) with 695 
+signs (last update autumn 2010). Inscriptions are stored in the ICIT database (Interactive 
+The Archaeology and Epigraphy of Indus Writing
+120
+Corpus of Indus Texts) with a total of 3898 inscribed artefacts (one to three sided) and 
+4791 texts. Of these, 3723 texts of them are complete using a total of 13556 signs. They 
+are used as the text corpus for the following analysis of sign positions.
+Many artefacts have identical texts coming from the same site and often they come from 
+the same mould. Other duplicate texts have the same provenience. These artefacts are 
+often incised or cooper miniature tablets. Because they are often found on tablets, the 
+effect of duplicate texts is called the TAB effect (Wells 2006, p. 168). In the following 
+analysis identical texts from the same artefact type coming from the same site are 
+reduced to a frequency of 1 text, for the purposes of analysis. Otherwise they would 
+lead to a high frequency of some signs, which do not represent the usage of signs in the 
+Indus script. Additionally, multiple line texts are not included, since it is uncertain how 
+to read the second or third line. The lines could be read right/left, boustrophedon or each 
+line could represent an independent phrase (Parpola 1994, p. 64-67). This leaves 2474 
+complete and different texts, reducing the total number of relevant signs to 9700 signs. 
+The mean text length for this sample is 4.01 signs. Table 1 summarizes the text lengths 
+of the study data. They are stored in an online database of Indus texts (Fuls 2010).
+To get a better idea about the Indus writing system and the fraction of logograms versus 
+syllables, I have made a comparison of sign frequency histograms between different writing 
+systems (logographic, syllabic, logosyllabic and alphabet with and without vowels). The 
+result is that the Indus writing system is most similar to Proto-Sumerian cuneiform, 
+an early stage with many logograms and about 37% to 54% syllabic. A regression line 
+between their sign frequencies shows a strong relationship of R² = 0.9986 (Wells 2006, 
+p. 96). Therefore, we can expect about the same fraction of syllables in the Indus script.
+text length total no. of
+texts
+no. of texts from
+Mohenjo-daro
+no. of texts from
+Harappa
+1 232 80 112
+2 477 163 244
+3 477 195 225
+4 412 188 177
+5 360 212 110
+6 233 148 57
+7 150 107 32
+8 59 41 9
+9 40 24 10
+10 19 11 5
+11 7 6 1
+12 4 3 1
+13 3 2 1
+Table AII.1. Frequency of text lengths in the reduced text corpus of complete inscriptions 
+without duplicates from the same site or artefact type
+Appendices
+121
+Methods of Sign Analysis
+Previous works has distinguished between initial, medial, and terminal sign position. It 
+is well known that some signs like sign 740 are mostly located in the terminal position of 
+texts, while others are very often in the initial position in Indus texts. The preferred sign 
+position gives us some clues about the possible sign function(s) assuming a language 
+with a fixed syntax. We can expect that logograms describing objects, names, or actions 
+have a limited text position, while syllables can appear more diverse text positions. 
+Some signs are polyvalent (Chapters 3 and 6). The distribution of a sign position can be 
+used to evaluate possible sign functions.
+Wells (2006, p. 138) classifies some signs according to their preferred text position as 
+Initial signs (INS), Terminal Marker (TMK) and Post-Terminal Marker (PTM). He also 
+discovered, that sign 60 appears only in position 1 to 4 (except 5 two-lined texts), which 
+is often replaced by sign 1 or sign 2 (Wells 2006, p. 141). They are called Initial Cluster 
+Terminal Marker (ICTM). Yadav et al. (2008, p. 9-13) analyse combinations of two to 
+four signs in the Indus script and their frequency in solo, left, middle, and right position. 
+Conclusions derived from high frequencies in solo, left-end or right-end position are 
+well defined, but sign combinations in middle position can not be interpreted.
+One simple approach is to label signs as being initial, medial or terminal. This results 
+in a loss of all details concerning medial signs. In order to improve our understanding 
+of the behaviour of medial signs is new method is developed, which gives us a more 
+detailed impression on medial sign positions. The question is, how to classify signs that 
+are commonly medial and how to distinguish different sign positions in the middle part 
+of texts? Because of the different text lengths medial/middle is not a precise term. This 
+is a reason to develop a normalized weighted sign position explained here.
+Normalised Weighted Sign Position
+To compare sign positions in text of different lengths, it is necessary to normalize 
+the text length. Normalization is a process of reducing long texts and stretching short 
+texts to a standard length. In this case, a standard text length of 10 signs is used. The 
+normalization is linear as shown in Figure 1.
+The relative sign position can be calculated as follows. The original sign position SP of 
+a text with L signs is scaled to a normalised text length NL (e.g. NL=10).
+MINP = int((SP - 1) × NL/L + 1)       [1]
+MAXP = int(SP × NL/L)        [2]
+Where, SP:  absolute sign position; L:  text length; NL:  normalised text length (here NL 
+= 10 signs); MINP:  minimum of relative text position; MAXP:  maximum of relative 
+text position.
+The Archaeology and Epigraphy of Indus Writing
+122
+The results MINP and MAXP are rounded down to integer values in the range [1,NL]. 
+They represent the minimum and maximum value of the relative sign position(s).
+After normalisation a sign position of a short text might be counted more than once 
+(like sign 002 falling into relative sign position 9 and 10, Figure 1). To avoid an 
+overweighting of signs from short texts each sign position is weighted linearly to text 
+length. This means, that signs of short texts get a lower weight than signs of longer texts.
+The weighting is calculated as follows:
+W = L/NL          [3]
+Where, L:  text length; NL:  normalised text length; W:  weight.
+This means, that each sign in a text of NL signs gets a weight of 1, while longer texts 
+have a higher precision of each sign position and get a higher weight. In contrast, shorter 
+texts get a smaller weight, since their sign position is less precise.
+Figure AII.1. Normalization of sign positions for different text lengths. Sign 001 falls 
+between 50-60% (relative position 6), sign 002 falls between 80-100% (relative position 9 
+or 10), and sign 003 falls between 0-8.3% (relative position 1). Thereby, the range of each 
+relative sign position (MINP und MAXP) depends on the text length and is normalised to 
+a text length of 10 signs.
+Appendices
+123
+Histogram
+The histogram shows the frequency of sign positions for a constant number of intervals. 
+Each interval represents a normalised sign position counting from 1 to NL. In the 
+following discussion NL is set to 10. To calculate the histogram for each sign the weight 
+is added to the relative sign position(s) between MINP and MAXP. For example, sign 
+002 from a text of length 5 has a weight of 0.5 and is counted twice, for relative sign 
+position 9 and 10, respectively. In contrast, sign 003 from a text of length 12 has a 
+weight of 1.2, which is added to position 1 (Figure 1).
+Some signs frequently produce high values in the histogram. For visual reasons the 
+height of the histogram is scaled to the same size or each sign, so that the histogram 
+of rare and frequent signs can be easily compared. Only complete texts can be used to 
+analyse sign positions, therefore, incomplete texts are omitted. Additionally, there are 
+many duplicates of identical texts (TAB effect). Reducing them to one text results in a 
+list of 2474 complete and different texts. This is the data used in the following analysis. 
+Classification of Indus Signs
+Many Indus signs are already recognised as initial or terminal signs (Mahadevan 1977; 
+Parpola 1994; Wells 2006). It can be shown that histograms of normalised weighted sign 
+positions are useful to distinguish between common terminal and initial signs. Initial 
+and terminal signs can easily be compared to graphically similar signs, to determine if 
+their preferred positions are identical.
+Initial signs
+Initial signs are known from structural analysis (Wells 2006, p. 138; Chapter 3). Most, but 
+not all, of their histograms conform to this pattern (Table 2, left column). Signs 690, 790, 
+824, 850, and 921 are graphically similar to the Initial signs 692, 817, 820, 861, and 921, 
+respectively. But the positional frequency shows, that they locate in different positions, not 
+exclusively initial. This confirms, that they are distinct signs despite their graphic similarity 
+(Table 2, right column). Other signs mostly initial are signs 190, 853, 880 (Figure 2).
+                    
+(a) Sign 190                                                                 (b) Sign 853
+(c) Sign 880 Figure AII.2. Initial signs 190, 853, and 880.
+The Archaeology and Epigraphy of Indus Writing
+124
+Initial Sign Similar sign but not exclusively initial
+Table AII.2. Positional histograms of Initial sign and graphically similar signs.
+Terminal Markers
+Terminal markers are discussed by Wells (2006, p. 198-200; Chapter 3). They appear 
+often at the end of texts. About half of them show a high frequency at the left side 
+(terminal position), but many Terminal marker have a very different distribution of 
+positional frequency (Table 3). Sign 156 and 158 appear anywhere at the second half 
+of text positions. Sign 741 is similar to sign 740 with a maximum at position 5 but not 
+terminal as sign 740 is.
+Appendices
+125
+Terminal Markers Similar signs not exclusively terminal
+Table AII.3. Positional histograms of Terminal marker and graphically similar signs.
+Post-Terminal Signs
+Post-Terminal signs are discussed by Wells (2006, p. 198-200; Chapter 3). They appear 
+mostly at the end of texts as an affix after Terminal Markers. Post-Terminal signs are 
+The Archaeology and Epigraphy of Indus Writing
+126
+sign 090, 400, 621, and 679 (Figure 3). Other Terminal or Post-Terminal signs are sign 
+161, 422, and 423, but their frequency is very low.
+A high frequency focused on one position might be a good indicator of a grammatical 
+function with a restricted grammatical position (e.g. case marker).
+ 
+ 
+Figure AII.3. Positional histograms of Post-Terminal signs.
+Uniform sign distributions
+A uniform frequency for all positions is a good indicator of a syllable sign, since syllables 
+are used everywhere in texts without syntactic restriction. Signs with an almost constant 
+distribution are signs 382, 790, 832, and 892 (Figure 4).
+ 
+ 
+Figure AII.4. Signs with an almost constant positional distribution.
+Uniform but not initial sign distribution
+Sign 368 and 595 are more or less uniform but almost never initial (Figure 5). The reason 
+for the relatively low frequency in the initial position is unknown. It might indicate a 
+Appendices
+127
+syllabic value of a grammatical feature, which doesn’t occur in initial position because 
+the grammatical marker is always suffixed. Sign 368 is already recognized by Knorozov 
+(1968) as a possible grammatical marker.
+ 
+Figure AII.5. Signs with a constant but with low frequency in the initial position.
+Medial sign classification
+In the following sections three new classes of signs in predominantly medial position 
+are defined. They are called Early-Medial, Mid-Medial, and Late-Medial signs.
+Signs which have a maximum at positions 3 to 4 are called Early-Medial signs (Figure 
+6). Sign 002 and 060 are known as a marker after initial signs or initial sign clusters. As 
+expected their preferred position is in the Early-Medial part of the text. Wells (2006) 
+calls them, together with sign 001, Initial Cluster Terminal Markers (ICTM), since they 
+mark the end of inital clusters.
+ 
+Figure AII.6. Signs with an Early-Medial positional distribution.
+Signs that have a maximum at positions 5 to 6 are called Mid-Medial signs. The 
+histogram of signs 741 and 742 show a maximum at position 5 (Figure 7). Their 
+positional behaviour differ from the typical Terminal sign 740, although they are 
+graphically similar except for the additional stroke(s). This shows, that markings can 
+effect the preferred sign position.
+ 
+Figure AII.7. Signs 741 and 742 have a Mid-Medial distribution.
+The Archaeology and Epigraphy of Indus Writing
+128
+Signs that have a maximum at positions 7 to 8 are called Late-Medial signs (e.g. sign 
+555 and 752; Figure 8). Another Late-Medial sign is sign 590, but only in long patterned 
+texts (see see Figure 9c).
+ 
+Figure AII.8. Signs with a Late-Medial sign distribution.
+Doubled Signs
+Signs can appear sometimes doubled. For example, sign 090 is doubled to form sign 091 
+and sign 820 doubles to form sign 821. Double signs are not coded in the inscriptions 
+as a pair of the single sign (i.e. 090-090), but are treated as a new sign. This is because 
+it is known from other writing systems that doubling affects the meaning of the sign. In 
+alphabetic writing doubling a vowel often indicates a long vowel and thereby changing 
+the meaning of the word, for example in English “red” versus “reed”, and “god” versus 
+“good”. Not only vowels are doubled. In ancient Maya writing doubling the syllable ku 
+results into the syllable pi, and doubling the logogram IK results into the syllable ch’o 
+(Kettunen and Helmke 2009).
+The analysis of the sign position allows a check of the effects of doubling in Indus writing. 
+Sign 090 is a typical terminal sign, but sign 091 is used in any position with a maximum at 
+initial position (Table 4). The second example is sign 820, a typically in the initial position. The 
+doubled sign 821 is still often initial, but also frequently in late medial or terminal position.
+Sign Doubled Graphem
+Table AII.4 Comparison of signs and their doubled graphem
+Appendices
+129
+The last example is sign 615, which is mostly in late medial position, but can occur 
+anywhere except in terminal position. The doubled sign 617 is mostly in terminal 
+position, especially in single and multiple segment texts.
+These examples show that doubling can have an effect on the sign’s positional behaviour. 
+Most likely this effect is due to a change in the grammatical function as a result of a 
+different phonetic or semantic value. Therefore, a doubled sign should not be treated as 
+twice the same basic sign but as a distinct sign (Wells 1999).
+Mirroring of signs
+The comparison of sign 920 to sign 921 has already shown, that mirroring of signs can 
+change the positional histogram (Table 2). Other examples are sign 407 versus 408, or 
+435 versus 436 (Table 5). In contrast, sign 526 and its mirrored sign (527) have a similar 
+positional distribution. Other mirrored signs are too rare to be analysed with confidence.
+Sign Mirrored Graphem
+Table AII.5. Comparison of signs and their mirrors.
+Sign Functions
+Another important fact to consider is the class of texts. Text classes as defined by Wells 
+(2006, p. 134; Chapter 3) distinguish between different text length (short or long) and 
+typical sign pattern combinations (Fuls 2010, Table 2). In the following example signs 
+590 and 550 are analyzed for different text classes.
+The sign 590 histogram of positional frequency for all complete texts shows a maximum 
+at position 6 (Figure 9a). For Short Patterned texts (Figure 9b) the maximum is at about 
+the same position (6-7). If the frequency is counted for Long Pattered texts (LP), a 
+The Archaeology and Epigraphy of Indus Writing
+130
+steep maximum at position 8 is evident (Figure 9c). For Multiple Segment texts (MS), 
+sign 590 shows a typical behaviour of an initial sign (Figure 9d), and in Long Complex 
+texts (LC), the positional distribution is irregular (Figure 9e). Therefore, sign 590 has 
+different syntactic functions for different text classes, and the histogram of all text types 
+shows the sum of the frequency curves for all text classes. This means that complex 
+positional frequency curves are most likely a mixture of different positional frequency 
+curves and must be analysed for different text classes separately.
+Sign 550 also appears often in first position in about 46% of all complete texts (n = 82), 
+but in all other texts the sign can occupy any sign position (Figure 10a). Its first (absolute) 
+maximum is at position 1, but its second (local) maximum is at position 7 to 8. The 
+second maximum at is highlighted in the histogram for Short and Partial Patterned texts 
+(Figure 10b and c). This means that sign 550 has most likely two different functions or 
+values depending on its context. Wells (2006, p. 152) suggest, that sign 550 is a syllabic 
+sign, because the frequent sign pair 527-550 (n = 28) functions like one sign.
+In two complete texts from Lothal (L-106 and L-229) it is used as alone, suggesting 
+it is a logogram. At the present we do not have enough data regarding Indus syntax to 
+determine the exact function(s), but that it has more than one function or value is certain.
+  
+(a) all complete texts                                             (b) short patterned texts
+      
+(c) long patterned texts                                          (d) multiple segment texts
+(e) long complex texts
+Figure AII.9. Histograms of sign 590 for different text classes.
+Appendices
+131
+    
+(a) all complete texts                                         (b) short patterned texts
+   
+(c) partial patterned texts                                (d) long patterned texts
+Figure AII.10. Histogram of sign 550 with two maxima at position 1 and 8 in various text 
+classes.
+Summary
+The normalized weighted sign position method summarizes texts of different length to 
+calculate a histogram of positional sign behaviour. This method distinguishes different 
+text lengths, in that short texts have a smaller weight then do longer texts. Positional 
+preferences of signs can now be easily determined and it allows the identification of 
+allographs by comparing positional histograms of similar sign graphs.
+The positional analysis results in different classifications of Indus signs. Signs can be 
+classified as Initial, Early-Medial, Mid-Medial, Late-Medial, Terminal. The histograms 
+of Post-Terminal signs shows no difference when compared to Terminal signs, and can 
+only be distinguished by detailed structural analysis.
+The positional analysis shows, that doubling, mirroring, hatching, or marking of Indus 
+signs can change their positional classification. Most likely this indicates a different 
+function or semantic value of the modified signs. Signs with a similar positional 
+distribution can now be grouped together. In each positional group signs share the 
+same preferred text position and thereby the same syntactic position. Further analysis 
+is needed to establish positional groups of signs with more confidence, since positional 
+analysis highlights syntagmatic but not paradigmatic relationships of signs. 
+Positional analysis will help to distinguish between logograms and syllabic signs. 
+Logograms and grammatical markers should be found in restricted syntactic positions 
+(depending on the syntax of the Indus language), while syllables should have an almost 
+constant positional distribution. Signs 382, 790, 832, and 892 are good candidates 
+The Archaeology and Epigraphy of Indus Writing
+132
+of syllabic signs. Many signs have a different preferred position depending on their 
+text class. This indicates, that they can have more than one grammatical function or 
+semantic value. Therefore, future analysis of the Indus script must differentiate between 
+classes of texts and deal with the possibility of polyvalent signs. Each text class has 
+specific features, for example, typical sign pattern of initial and terminal signs or text 
+length (Wells 2011) and must be analysed separately. This is important, since previous 
+statistical tests often analysed all Indus texts together (Yadav et al. 2008; Rao et al. 
+2009; Sinha et al. 2010).
+The position of signs, and sign clusters, in specific texts classes are more predictable 
+than when all text classes are combined for analysis (Figure 11). In patterned texts the 
+positional histogram of each sign corresponds to its syntactic position. This allows the 
+comparison of sign patterns in the more formulaic texts against those in Complex texts).
+Multiple line texts are excluded in the calculation of positional histograms. The signs 
+in multiple line texts can now be analysed to determine the reading direction and to 
+investigate questions about the relationship of multiple lines of text to each other. Do 
+they form a series of independent phrases or one long text?
+The results of normalized sign distributions given in this Appendix have shown that 
+there are significant differences in sign uses between the various text classes defined 
+in Chapter 3. The reasons for this are not certain, but the most likely explanation is a 
+shift in subject matter. Additionally, it has been show that some signs have restricted 
+distributions (initial, medial or terminal) and other signs are in more general use. This 
+may be indicating that some signs are logographs (restricted distributions) and others are 
+syllabic signs (general distributions). This fact supports the conclusion in Chapter 3 that 
+the Indus script is a logo-syllabic writing system. This system of sign position analysis 
+is far more useful and informative than the initial, medial and terminal classification 
+system in common use. 
+In Chapter 3 and 6 evidence of the syntax of Indus signs was presented. The identification 
+of signs with restricted distributions supports the conclusion that there are three distinct 
+sign cluster comprising full Indus texts. 
+Appendices
+133
+Figure AII.11. Positional histogram of signs in the text +740-
+540-002-820+ (seal M-1088). It is a typical example of a short 
+patterned text with Initial cluster 002-820 and Terminal sign 
+740.
+134

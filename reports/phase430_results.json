@@ -84,20 +84,20 @@
       "citation": "Token frequencies of numerical signs in the proto-cuneiform administrative corpus (Uruk IV and Uruk III periods), from the published sign/n-gram frequency dataset of the SFU NatLang pe-pc-datasets (L. Born; CDLI proto-cuneiform corpus, September 2019 snapshot; repository commit d1a51170, 2019-09-11): the ordered unigram layer, compounds split, variants merged, both periods combined; a published token k(Nxx) contributes k occurrences of sign Nxx; tenû forms (@T) entered as their own published types; the two indeterminate-multiplicity groups N(N01) and N(N57) (one group each) are excluded because counting them as 1 would fabricate a count. Bibliographic pin of record: Nissen, Damerow & Englund, Archaic Bookkeeping (1993) and the published archaic sign counts it reports (DD-053-13). Caveat of record: this published derivation's numerical layer is thin relative to the full archaic corpus — the table is the whole of what this source reports, entered as it stands, with no floor applied.",
       "system": "Mesopotamian numerical signs",
       "table_file": "data/n1_mesopotamian_numerical_signs.csv",
-      "table_sha256": "b1ad3f54e30f29072fa683961c25d8b81a2040bc8cfa066071b3372cdace50e7",
+      "table_sha256": "0f938c191db274985a9332a6f2fd64e6e7a59431d36d122cc83ddd70cc9f0b62",
       "tokens": 1981,
       "types": 12
     },
     "N2": {
       "blazons_file": "data/n2_dering_blazons.csv",
-      "blazons_sha256": "7e00bae5c24152e0831281bec7f0982339900c93c18663ef5ca25fb0b899444c",
+      "blazons_sha256": "c40dc7aa01a6a2274d3b38843382df62aa74802d7324c062e7caae44c89fa520",
       "builder": "data/build_n2_charges.py",
       "citation": "Frequencies of charges across the Dering Roll (c. 1270–1280, British Library; the oldest extant English roll of arms, 324 coats of knights owing feudal service to the Constable of Dover Castle), blazons as transcribed by Brian Timms (Heraldry site, archived) in the edited extract at bsswebsite.me.uk/History/Dering/dering-roll.html (snapshot SHA-256 4cb6b0527d2fa482a092a848c0b93e88e0ae6ad3900f20a07bd6e982ce054739); counting unit one charge occurrence on one shield, under the frozen counting rules stated in the builder; every shield's extraction read against its blazon at the table's freeze (324 of 324); 35 shields bear no charge (field only) and are named in the extraction record.",
       "extraction_file": "data/n2_dering_extraction.csv",
-      "extraction_sha256": "ae284aac52975927f48eb9a4fdd10f1d34a26ced2108f073e50c79c655121007",
+      "extraction_sha256": "c9244160e15d3d7ce71d901f0854cd2c3fb2f8c2ebca0253583640136e0721f1",
       "system": "Heraldic charges (Dering Roll)",
       "table_file": "data/n2_dering_charges.csv",
-      "table_sha256": "0cad73efa69f9eede1590b0e1d0e2324540b3cdc3aadcdb7b76337106f54c937",
+      "table_sha256": "0c618df48e88b54bacd2dcff74f75033852da03396321d4f1b4394f7d4caf269",
       "tokens": 825,
       "types": 57
     },
@@ -110,7 +110,7 @@
       "citation": "Syllabic sign frequencies counted from the DAMOS (Database of Mycenaean at Oslo) transliterations as carried in the mwenge/linearb.xyz corpus file LinearBInscriptions.js (repository commit 84e0b00e; transcriptions and metadata © DAMOS, CIPEM transliteration conventions): 5,889 inscription records; each transliterated word is split on '-'; a token counts as a syllabogram iff it is one of the 72 attested transliterated syllabary values or an untransliterated *NN sign with NN < 100 (Bennett numbering; 17 such types attested). Excluded: ideograms (including *NN with NN >= 100 and *NNN-VAS compounds), numerals, and editorial tokens.",
       "system": "Linear B syllabic signs",
       "table_file": "data/p1_linearb_syllabograms.csv",
-      "table_sha256": "63221d66722acf9646b2f1712918bc228198afb051ffcf957bcbca442ba21535",
+      "table_sha256": "895a1ebf60c87d7feaf17933c94e65b4b6d5f6b39dbb73c32208e8ea98a0255b",
       "tokens": 47292,
       "types": 89
     }

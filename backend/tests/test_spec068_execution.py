@@ -33,15 +33,15 @@ DATA = SPEC_DIR / "data"
 
 TABLE_HASHES = {
     "n1_mesopotamian_numerical_signs.csv":
-        "b1ad3f54e30f29072fa683961c25d8b81a2040bc8cfa066071b3372cdace50e7",
+        "0f938c191db274985a9332a6f2fd64e6e7a59431d36d122cc83ddd70cc9f0b62",
     "n2_dering_charges.csv":
-        "0cad73efa69f9eede1590b0e1d0e2324540b3cdc3aadcdb7b76337106f54c937",
+        "0c618df48e88b54bacd2dcff74f75033852da03396321d4f1b4394f7d4caf269",
     "n2_dering_blazons.csv":
-        "7e00bae5c24152e0831281bec7f0982339900c93c18663ef5ca25fb0b899444c",
+        "c40dc7aa01a6a2274d3b38843382df62aa74802d7324c062e7caae44c89fa520",
     "n2_dering_extraction.csv":
-        "ae284aac52975927f48eb9a4fdd10f1d34a26ced2108f073e50c79c655121007",
+        "c9244160e15d3d7ce71d901f0854cd2c3fb2f8c2ebca0253583640136e0721f1",
     "p1_linearb_syllabograms.csv":
-        "63221d66722acf9646b2f1712918bc228198afb051ffcf957bcbca442ba21535",
+        "895a1ebf60c87d7feaf17933c94e65b4b6d5f6b39dbb73c32208e8ea98a0255b",
 }
 
 

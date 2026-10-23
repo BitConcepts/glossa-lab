@@ -9824,9 +9824,11 @@ byte-identical before and after (df0cf620…). Foundation check as measured on
 the execution tree: 40 passed / 0 failed / 8 warnings. The restricted corpus
 and row-grades files were read from the restricted local store only; no
 corpus data entered git. Records: specs/068-yadav-zipf-controls-successor/
-outcome.md, reports/phase430_results.json (SHA-256 58936473…),
+outcome.md, reports/phase430_results.json (SHA-256 ca83af8f…),
 reports/phase430_report.md (SHA-256 e7597718…); the script is deterministic
-(all outputs byte-identical on a second run).
+(the control tables were re-issued with LF line endings before the
+record was finalised, so the committed bytes are the cited bytes;
+the final record then reproduced byte-identically on a second run).
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.

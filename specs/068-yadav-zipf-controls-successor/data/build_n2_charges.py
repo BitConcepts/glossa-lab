@@ -221,7 +221,7 @@ def main():
     ):
         p = here / name
         with open(p, 'w', newline='', encoding='utf-8') as fh:
-            w = csv.writer(fh)
+            w = csv.writer(fh, lineterminator='\n')
             w.writerow(header)
             w.writerows(data)
         with open(p, newline='', encoding='utf-8') as fh:

@@ -142,11 +142,16 @@ for every system fit: the run's vectorised
 evaluation of the identical grid objective
 agreed with it exactly on all five systems
 (α, q, and NRMSE_log identical in the machine
-record). The script is deterministic: a second
-run reproduced both output files
-byte-identically (results SHA-256
-`58936473…`, report SHA-256 `e7597718…`;
-re-verified at the landing).
+record). The script is deterministic: the
+record was regenerated once when the control
+tables were re-issued with LF line endings,
+so the committed table bytes are the bytes
+the record cites (quantities and outcome
+unchanged), and the final record then
+reproduced byte-identically on a second full
+run (results SHA-256 `ca83af8f…`, report
+SHA-256 `e7597718…`; re-verified at the
+landing).
 
 ## 2. Step 0, gate by gate
 
@@ -195,15 +200,15 @@ re-verified at the landing).
   from the committed tables in
   `specs/068-yadav-zipf-controls-successor/data/`,
   before any fit: N1 table SHA-256
-  `b1ad3f54…` (12 types, 1,981 tokens); N2
-  charges table `0cad73ef…` (57 types, 825
+  `0f938c19…` (12 types, 1,981 tokens); N2
+  charges table `0c618df4…` (57 types, 825
   tokens) with its blazon transcription
-  `7e00bae5…` and per-shield extraction
-  record `ae284aac…` (every shield's
+  `c40dc7aa…` and per-shield extraction
+  record `c9244160…` (every shield's
   extraction read against its blazon at the
   table's freeze, 324 of 324; 35 shields bear
   no charge, field only, and are named in the
-  extraction record); P1 table `63221d66…`
+  extraction record); P1 table `895a1ebf…`
   (89 types, 47,292 tokens); N3 generated
   under its frozen parameters at fit time.
   Two builder's notes are recorded openly:

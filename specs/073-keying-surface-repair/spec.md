@@ -1,11 +1,12 @@
 # Spec 073 — Repairing the Keying Surface: Registry Wells Coverage and a Second Depicted-Kind Classification, from Published Sources Only
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-22
+> ## FROZEN — 2026-10-23
 >
-> Drafted under the program's standing
-> drafting authorization, as the successor
-> design both Hunt outcome records name.
-> Spec 070's outcome record (Phase 433)
+> Frozen at the freeze act of 2026-10-23 under
+> the owner's order of 2026-10-23 (freeze with
+> the drafted defaults and execute), as the
+> successor design both Hunt outcome records
+> name. Spec 070's outcome record (Phase 433)
 > states: "A successor that wants this
 > question answered must first repair the
 > keying surface — a registry that carries
@@ -18,16 +19,24 @@
 > the evidence of the frozen asset — a
 > celestial class that exists." This spec is
 > that repair study, and nothing else.
-> **The freeze, the registration, and the
-> execution of Spec 073 are separate later
-> owner acts.** No AEE lifecycle hooks have
-> run on this draft; they are a freeze gate
-> (per DD-038-10). Nothing in this draft has
-> been run, frozen, registered, entered, or
-> computed: no registry row has been added,
-> no sign has been classified, and no
-> coverage figure beyond the merged
-> records' own baselines has been produced.
+> The freeze record is `freeze.md` /
+> `freeze.json` in this directory; the
+> AEE lifecycle hooks ran at the freeze gate
+> and passed over the recovered register
+> (0.9-draft; `aee/freeze-aee-note.md`); the
+> freeze-stage exhibits (every §2 pin
+> re-asserted, OPEN-073-9; the ruled source
+> list exhibited with two sources struck for
+> non-exhibition, OPEN-073-1) are recorded in
+> `freeze.md` §§3–4. Execution runs as
+> **Phase-436** under this frozen contract,
+> under the execution order given in the same
+> owner tasking that commissioned this
+> freeze. At the freeze itself no registry
+> row has been added, no sign has been
+> classified, and no coverage figure beyond
+> the merged records' own baselines has been
+> produced.
 >
 > This spec **re-runs nothing**. Spec 070
 > stands closed as POPULATION NOT KEYED at

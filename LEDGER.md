@@ -10374,3 +10374,38 @@ Nothing submitted, deposited, or published; PR #353 not merged.
 
 AI disclosure: executed by an AI agent (Muse, via Muse)
 at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-23 — Preprint v8 red-team loop CLOSED at round 8; closure records filed
+
+Round 8 of the independent red-team pass on preprint v8 (attack:
+independent engine, GPT-5.5 via OpenAI API, direct, four passes,
+80 findings plus 44 positives, including a §6 line-by-line audit;
+adjudication against primary records, commit c8cea1d6):
+SUSTAINED 0 / SUSTAINED IN PART 0 / MOOT 38 / NOT SUSTAINED 2 of
+40 aggregated items (R8-01..R8-40); positives 44/44 confirmed;
+settlements S23 (§6 audit — all 16 clauses verified true against
+the completed round-7 pin cycle) and S24 (title word
+"Falsifiable"; owner decision R3-14 stands). §B of the round-8
+adjudication is empty — no R8R replacement texts, no revision
+act; the round-7-revised paper text stands unchanged. The loop
+CLOSES at round 8 per the adjudication's §D closure statement:
+the loop's test was the paper's text against its records, and a
+full independent pass finds no statement the records contradict
+and no claim worded beyond its printed disclosures. Closure is
+not a claim the decipherment is correct; the §E record gaps
+stand exactly as filed, and the owner decisions stand with
+their interim cures in place. Final state: 32 pages, PDF
+SHA-256
+5335cdaba21c88c7ae6b56a75e5ec0f1a4db109ad480e57c652568709920b035,
+word count 19,193 (pdftotext | wc -w, verified on the shipped
+PDF), §6 pins revision commit 649e0e75. This entry, the
+version note's "Red-team loop closure (2026-10-23)" section
+(full round-by-round ledger, rounds 1–8), and the AGENTS.md
+preprint "Current version" update are records only — no paper
+text changed. Protected text byte-intact; §3.32 still absent;
+Spec 072 insert still HELD. Standing gates: the owner's read of
+this build; deposit executed separately by the owner. Nothing
+submitted, deposited, or published.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.

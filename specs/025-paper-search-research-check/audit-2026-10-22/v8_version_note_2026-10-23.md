@@ -1439,3 +1439,158 @@ cleared for publication until the loop closes.
 
 **Nothing submitted, deposited, or published.** The PR
 (#353) is not merged.
+
+## Red-team loop closure (2026-10-23)
+
+Round 8 of the independent red-team pass on preprint v8 (attack:
+independent engine, GPT-5.5 via OpenAI API, direct, four passes,
+80 findings plus 44 positives, including a §6 line-by-line audit
+in Pass 3; raw output `v8_redteam_round8_raw_2026-10-23.md`,
+commit `65cd1373`) was adjudicated against the program's primary
+records by an adjudicator who did not draft the paper
+(`v8_redteam_round8_adjudication_2026-10-23.md`, commit
+`c8cea1d6`). Dispositions over the 40 aggregated items
+R8-01…R8-40: **SUSTAINED 0 / SUSTAINED IN PART 0 / MOOT 38 /
+NOT SUSTAINED 2**; **positives 44/44 confirmed**; settlements
+S23 (§6 line-by-line audit — all 16 clauses verified true against
+the completed round-7 pin cycle; the attacker's "internally
+inconsistent" charge NOT SUSTAINED, reducing to the pin mechanism
+§6 itself prints) and S24 (the title word "Falsifiable" settled
+on its merits; owner decision R3-14 stands). **§B of the round-8
+adjudication is empty**: there are no R8R replacement texts of
+any class, and therefore no revision act for round 8. The paper
+text is unchanged by round 8 — the round-7-revised text stands
+as the final text.
+
+**Closure statement (substance; verbatim text in the round-8
+adjudication's §D).** The loop **closes at round 8**. The loop's
+test was the paper's text against its records: after eight
+rounds, a full independent pass finds no statement in the paper
+that its own records contradict and no claim worded beyond the
+strength its printed disclosures set. The survivors are exactly
+the two classes the closure rule names — items adjudicated MOOT
+with reasons on the record, and previously adjudicated owner
+decisions whose interim cures are in place and which nothing in
+round 8 reopens. Closure is **not** a claim that the decipherment
+is correct: the adjudication states expressly that it does not
+establish that the records themselves are right about the corpus,
+that the readings are correct, or that the paper is ready to
+submit. The §E record gaps stand exactly as filed (round 8 adds
+no new item and removes none), and the owner decisions stand
+with their interim cures in place: corpus release (R3-01), a
+calibration study for the confidence labels (R3-07), the SA/V07
+re-base (R3-05, R3-51), the V12 protocol freeze (R3-45),
+archiving the exact v8 source under the Zenodo DOI (R3-02),
+whether M176 stays HIGH (R3R-15), the paper's title (R3-14),
+retention of the CISI 87.08% figure with its disclosure
+(R3R-19), a seal-level retest of the M267 motif distribution
+(R4R-20), and the per-criterion re-audit of the 75 HIGH signs
+behind R4-10/S4. Any future change to the paper — a records act
+discharging an §E item, an owner decision under §D's list, or
+new evidence — reopens the loop for the changed passages.
+
+### Round-by-round ledger (rounds 1–8)
+
+All rounds: attack by an independent engine (GPT-5.5 via OpenAI
+API) over the full PDF-extracted text; every finding adjudicated
+against the program's primary records by an adjudicator who did
+not draft the paper; revisions applied the adjudicated
+replacement blocks verbatim (formatting conversion only).
+Word counts are by the adjudicated command
+`pdftotext <pdf> - | wc -w` on the shipped PDF of that round.
+
+- **Initial v8 build (pre-red-team).** E1–E4 as recorded above
+  (F2 qualify-in-place; new §2.1.1 / Spec 068; §3.10
+  qualification; §8 Yadav entry). **19 pages. PDF SHA-256:
+  0f70dece76d3cdd31fa2ccb5c9fdbc9c2953587a9895700b8cf4632cd81f6670.**
+- **Round 1.** 241 raw findings aggregated to 125 items.
+  Dispositions: **44 sustained / 76 sustained in part /
+  3 not sustained / 2 moot of 125.** Revision: R-01…R-45
+  applied. **23 pages. PDF SHA-256:
+  1ef5eb721f4b9cdd7fc4f1afbe790793cd2c0ba74d48898c0331a0ae0309d2b0.**
+  (Word count measured on this build at round 2: 10,837.)
+- **Round 2.** 207 raw findings aggregated to 58 items plus
+  positives P1–P5. Dispositions: **28 sustained / 29 sustained
+  in part / 0 not sustained / 1 moot of 58; positives P1–P5
+  confirmed.** Revision: R2R-01…R2R-58 applied (57 blocks with
+  replacement text; R2R-06 moot, no replacement). **27 pages.
+  PDF SHA-256:
+  8d0d676eee187de71ad268c6ff374b9d6d6e8a788582552f366e9dc59365ddd0.**
+  Word count 14,370.
+- **Round 3.** 116 findings plus 36 positives, aggregated to
+  53 items plus probes R3X-1…R3X-4. Dispositions: **12
+  sustained / 32 sustained in part / 9 moot of 53; probes
+  R3X-1, R3X-2, R3X-3 sustained, R3X-4 not sustained;
+  positives 36/36 confirmed.** Revision: R3R-01…R3R-X3
+  applied. **30 pages. PDF SHA-256:
+  ddf71f1db2f6655c651420a7c103e0492c9325e5a0fa36d8019173206dd1934d.**
+  Word count 17,016.
+- **Round 4.** 85 findings plus 68 positives, aggregated to
+  38 items. Dispositions: **8 sustained / 9 sustained in part /
+  20 moot / 1 not sustained of 38; positives 68/68 confirmed;
+  loop NOT closed at round 4 per the adjudication's §D.**
+  Revision: R4R-01…R4R-21 applied. **31 pages. PDF SHA-256:
+  ea924ec13f3e8a33fa7045bca386a5baed68bd94357800ceb339e6eedf38e942.**
+  Word count 17,997.
+- **Round 5.** 94 findings plus 87 positives, aggregated to
+  38 items. Dispositions: **5 sustained / 6 sustained in part /
+  25 moot / 2 not sustained of 38; positives 87/87 confirmed;
+  loop NOT closed at round 5 per the adjudication's §D.**
+  Revision: R5R-01…R5R-11 applied. **32 pages. PDF SHA-256:
+  969c45d8da58a110371fabdf48875641a466eb20daacec0a78b65efb3b2c7a1f.**
+  Word count 18,591.
+- **Round 6.** 84 findings plus 74 positives, aggregated to
+  39 items (plus a 14-sentence §6 line-by-line audit).
+  Dispositions: **5 sustained / 4 sustained in part / 28 moot /
+  2 not sustained of 39; positives 74/74 confirmed;
+  settlements S11–S18; loop NOT closed at round 6 per the
+  adjudication's §D.** Revision: R6R-01…R6R-10 applied.
+  **32 pages. PDF SHA-256:
+  48dfb48ed0d860af64c8d74786b79638dc8cd6185c491c2df2f76efe57a3a69b.**
+  Word count 19,011.
+- **Round 7.** 93 findings plus 48 positives, aggregated to
+  40 items (plus a 16-item §6 line-by-line audit).
+  Dispositions: **3 sustained / 1 sustained in part / 34 moot /
+  2 not sustained of 40; positives 48/48 confirmed;
+  settlements S19–S22; loop NOT closed at round 7 per the
+  adjudication's §D.** Revision: R7R-01…R7R-04 applied —
+  revision commit `649e0e75`; §6 commit string pinned to that
+  commit by pin-only commit `9133db8f`. **32 pages. PDF
+  SHA-256:
+  5335cdaba21c88c7ae6b56a75e5ec0f1a4db109ad480e57c652568709920b035.**
+  Word count 19,193.
+- **Round 8.** 80 findings plus 44 positives, aggregated to
+  40 items (plus a §6 line-by-line audit in Pass 3).
+  Dispositions: **0 sustained / 0 sustained in part / 38 moot /
+  2 not sustained of 40; positives 44/44 confirmed;
+  settlements S23–S24; §B empty — no revision.** **Loop
+  closes at round 8** (adjudication §D). PDF unchanged:
+  **32 pages, SHA-256
+  5335cdaba21c88c7ae6b56a75e5ec0f1a4db109ad480e57c652568709920b035,**
+  word count 19,193.
+
+### Final state
+
+- **Paper:** 32 pages. PDF:
+  `glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v8.pdf`,
+  **SHA-256
+  5335cdaba21c88c7ae6b56a75e5ec0f1a4db109ad480e57c652568709920b035**
+  (recomputed from the file on disk at round 8 and again at this
+  closure record; it matches). Word count **19,193**
+  (`pdftotext <pdf> - | wc -w`, verified on the shipped PDF).
+- **§6 pin:** §6 names revision commit **`649e0e75`** (the
+  round-7 revision commit). The shipped `.tex` differs from the
+  text at that commit in that one commit string and in no other
+  sentence, per the pin procedure verified at S20 and again at
+  S23.
+- **Protected text:** all §8 entries, the §3.5/§3.19 Roif
+  credit, and the §7 acknowledgment stand byte-intact. §3.32
+  stays out; the Spec 072 insert stays HELD and unintegrated.
+
+### Standing gates
+
+The red-team loop is closed; publication is not thereby
+authorized. Standing gates: **the owner's read of this build**,
+and the **deposit/submission acts, which are executed
+separately by the owner** per channel. **Nothing has been
+submitted, deposited, or published by this closure record.**

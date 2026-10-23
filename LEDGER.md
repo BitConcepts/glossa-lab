@@ -10133,3 +10133,37 @@ Nothing submitted, deposited, or published; PR #353 not merged.
 
 AI disclosure: executed by an AI agent (Muse, via Muse)
 at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-23 — Preprint v8 red-team round 3: adjudicated and revised (R3R-01..R3R-X3)
+
+Round 3 of the independent red-team pass on preprint v8 (attack:
+independent engine, GPT-5.5 via OpenAI API, full text ×4 passes,
+116 raw findings aggregated to 53 items + 4 adjudicator-only
+probes + 36 positives; adjudication against primary records:
+12 sustained / 32 sustained in part / 9 moot of 53; probes
+R3X-1/R3X-2/R3X-3 sustained, R3X-4 not sustained; positives 36/36
+confirmed). All adjudicated replacement blocks R3R-01..R3R-X3
+(47 blocks) were applied verbatim to
+glossa-corpus/indus/pierson_2026_indus_decipherment.tex (MOOT and
+not-sustained items have no replacement; R3R-23/42/46 disclosures
+stand) — revision commit 196ea0a2; §6 commit string pinned to
+that commit by pin-only commit 20463bd9. §3.4 prints the
+Phase-132 V03 motif table (147/78/43…) beside χ² = 12.98; §3.8
+prints the true top five (M060/M045/M016/M067/M039); §3.19 free
+of the combined 0/140; §3.27 free of "Formal cross-validation"
+and of the SUPPORTED verdict label; §4.4 SA item aligned to
+§2.4; §3.3 prints the M342/M176/M261 HIGH basis. Protected
+Roif/Rao text byte-intact; §3.32 still absent; no betweenness;
+Spec 072 insert still HELD. PDF rebuilt with TinyTeX XeLaTeX,
+two passes, exit 0, zero errors, 30 pages, SHA-256
+ddf71f1db2f6655c651420a7c103e0492c9325e5a0fa36d8019173206dd1934d,
+render-verified (pdftotext); printed word count 17,016 measured
+on the shipped PDF by the adjudicated command (round-2 figure
+14,370). Still open: the §D owner decisions (Holdat release,
+calibration, SA/V07 re-base, rival comparisons, Zenodo archive)
+and the §E record gaps; red-team round 4 pending. Record:
+specs/025-paper-search-research-check/audit-2026-10-22/v8_version_note_2026-10-23.md.
+Nothing submitted, deposited, or published; PR #353 not merged.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.

@@ -375,3 +375,153 @@ cleared for publication until the loop closes.
 
 **Nothing submitted, deposited, or published.** The PR
 (#353) is not merged.
+
+## Red-team round 3 revision (2026-10-23)
+
+Round 3 of the independent red-team pass on v8 (attack: independent
+engine, GPT-5.5 via OpenAI API, full PDF text ×4 passes, 116 raw
+findings aggregated to 53 items, plus 4 adjudicator-only probes and
+36 positives) was adjudicated against the program's primary records
+by an adjudicator who did not draft the paper. Dispositions:
+**12 sustained / 32 sustained in part / 9 moot of 53; probes
+R3X-1, R3X-2, R3X-3 sustained, R3X-4 not sustained; positives
+36/36 confirmed**. The raw attack and the adjudication are filed
+beside this note (`v8_redteam_round3_raw_2026-10-23.md`,
+`v8_redteam_round3_adjudication_2026-10-23.md`). No round-3 finding
+overturned a round-1 or round-2 settlement of fact; the surviving
+defects were echoes the round-2 revision did not reach, and two
+tables printed from a secondary note instead of the test record.
+
+**Revision applied.** All adjudicated replacement blocks
+R3R-01…R3R-X3 (47 blocks) were applied verbatim to the .tex, with
+formatting conversion only (markdown emphasis and dashes to LaTeX,
+the R3R-X2 table as LaTeX longtable rows, percentages escaped).
+Nine blocks carry no replacement text and were applied as their
+dispositions direct: R3R-23, R3R-42 and R3R-46 are record gaps whose
+existing in-paper disclosures stand as the complete cure, and the
+MOOT items (R3-04, R3-08, R3-09, R3-10, R3-27, R3-43, R3-48,
+R3-52, R3-53) and probe R3X-4 have no replacement. Class (b)
+blocks were applied with their interim cure text exactly; the
+owner decisions themselves were not taken. Class (c) blocks print
+the honest disclosure and invent nothing (in particular R3R-49:
+no §8 entry was added, removed or altered — Crawford (2001) stands
+as printed, flagged incomplete-on-record; only the in-text
+"Wells (2015)" citation form was aligned to "Wells & Fuls (2015)").
+R3R-22's artefact direction was followed exactly: §3.8 now
+describes the supplemental file `iconographic_formula_pairs.csv`
+honestly as the 15 strongest enriched pairs, not the full table.
+Load-bearing outcomes: §3.4 prints the Phase-132 V03 motif table
+(unicorn 147, zebu bull 78, elephant 43, rhinoceros 26, buffalo 20,
+script only 34, geometric 19, tiger 17, gharial 16 — 400 tokens)
+beside the χ² = 12.98 statistic it was computed from, and withdraws
+the basis-note counts (127/72/37/25); §3.8 prints the true top five
+(M060, M045, M016, M067, M039; χ² 158.5, 155.3, 148.8, 118.9,
+116.5 — record values 118.88 and 116.456 for the last two); §3.19
+no longer prints the combined 0/140 figure anywhere; §3.27's
+"Formal cross-validation" heading-strength wording and its
+PROVISIONAL_SUPPORTED_WITHIN_MODEL verdict are replaced by the
+within-model plausibility check and the unchanged-status outcome
+(the record's label survives only inside R3R-29's own sentence
+saying it is not used in this paper); §4.4 no longer asserts a
+named SA training corpus and no longer calls the MEDIUM threshold
+"deliberately strict" or high-frequency signs "well-constrained";
+the recorded HIGH basis for M342, M176 and M261 (the audit's
+iconographic + distributional evidence pair) is printed in §3.3,
+with M176's 94% terminal figure stated not to meet the >95%
+criterion on its own; the sibilant count is corrected to 6 in
+§3.16 and the M305 mismatch is disclosed in §3.15; all seven
+Tamil-Brahmi terminal signs are printed in §3.18. Protected text
+(§8 Roif 2025a/b and both Rao entries; §3.5/§3.19 Roif credit;
+§7 Roif acknowledgment) is byte-intact in the source diff against
+`5050947d`, verified per entry and per paragraph before and after
+the revision. §3.32 stays out; "betweenness" remains at 0 hits;
+the Spec 072 insert stays HELD and unintegrated.
+
+**§6 commit pin.** Two-commit procedure, as rounds 1–2. The
+revision was committed with §6 naming `5050947d` (the pre-revision
+HEAD, which carries the round-3 adjudication) and R3R-02's
+replacement text included with that value, keeping the round-2
+pin-explanation sentence (revision commit `196ea0a2`); a second,
+pin-only commit (`20463bd9`) changed only the §6 commit string to
+`196ea0a2`. §6 therefore names the revision commit, not the pin
+commit and not `5050947d`, and the shipped PDF prints `196ea0a2`.
+
+**Word count.** The round-2 printed figure was **14,370**. After
+the final build the adjudicated command `pdftotext <pdf> - | wc -w`
+was run on the new PDF (**17,016**), the .tex word-count line was
+set to the measured value, the PDF was rebuilt, and the command
+was re-run — the printed figure equals the shipped PDF's count
+(17,016; the number token is one word either way, so the count is
+stable across the pin rebuild, whose only text change is the §6
+commit string). The increase is the round-3 replacement texts
+themselves: the added disclosure paragraphs, the printed V03 and
+top-five tables' accompanying text, the §2.3 operational
+appendices, and the completed §7 AI-tooling disclosure.
+
+**Rebuild.** TinyTeX XeLaTeX (same toolchain and font environment
+fix as the earlier v8 builds — OSFONTDIR covering the system Noto
+directory and the TinyTeX Latin Modern Math directory, plus a
+fontconfig file including the system fonts and the TinyTeX
+texmf-dist font directories), two passes on the final .tex state
+and two on the pin state, all exit 0, **zero errors** in the final
+log. PDF:
+`glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v8.pdf`
+— still named v8 (a pre-publication revision of the v8 draft).
+**30 pages** (was 27). **SHA-256:
+ddf71f1db2f6655c651420a7c103e0492c9325e5a0fa36d8019173206dd1934d**
+
+**Render verification (pdftotext of the shipped PDF).** Present:
+the V03 motif counts 147/78/43 in §3.4 beside χ² = 12.98 and the
+400-token total; the true §3.8 top five M060/M045/M016/M067/M039
+with 118.9 and 116.5 and the "five largest associations" caption;
+the §3.3 HIGH-basis note (ICONOGRAPHIC+DISTRIBUTIONAL) with
+M176's 94% caveat; §2.4's SA bound and consistency-definition
+gap; the §3.14 matrix pointer, the Harappa–Rakhigarhi 0.481 next
+pair, and the seed-42 statement; all seven Tamil-Brahmi signs in
+§3.18; §6 commit `196ea0a2`; the §6 DOI/commit/supplements
+sentences; printed word count 17,016; "End of Preprint v8";
+end-matter date "May 2026; revised October 2026". Absent:
+"0/140" anywhere; "Formal cross-validation"; "deliberately
+strict"; "distinctively divergent"; "well-constrained"; "the one
+point of agreement"; "semantic registers" in the §3.12 claim;
+"betweenness"; §3.32. (§4.4's SA item now reads "described in
+this program's records as trained on modern Tamil material, but
+no record names the specific corpus" — the cured form, not a
+named-corpus assertion. PROVISIONAL_SUPPORTED_WITHIN_MODEL
+appears exactly once, inside R3R-29's prescribed sentence in
+§3.27 stating that the label is not used in this paper.)
+
+**Still-open items.** (1) **Owner decisions (adjudication §D)** —
+none taken by this revision; the interim cure texts stand in
+their place: (i) release the Holdat corpus or an inscription-level
+derived table; (ii) commission a calibration of the HIGH/MEDIUM
+labels; (iii) re-base the headline without SA and with the V07
+drivers addressed, or formally decline; (iv) run the
+rival-template and rival-family comparisons §4.4 names;
+(v) archive the exact v8 source and supplements under the Zenodo
+DOI. Block-level owner decisions also standing: printing the
+161-row anchor table and 397-row inventory; whether M176 remains
+HIGH on the audit's distributional type; whether to keep printing
+the CISI 87.08% figure; freezing one V12 protocol and re-running
+it on the 161-set; the title's "Anchors" framing. (2) **Record
+gaps (adjudication §E)** the cures disclose but cannot fill: the
+DEDR search space; the SA specification (training corpus,
+syllable inventory, consistency context definition); a true
+SA-free headline; criterion-level scoring for HIGH; the CISI
+87.08% numerator/denominator and CISI/mayig identification; the
+Tamil-Brahmi and F3 inventory sources; the bibliographic details
+listed in §E item 7 (Jha & Rajaram 2000, Parpola 1975, the
+Arthaśāstra edition, CISI, mayig, DAMOS, the Dering Roll source,
+the Mesopotamian numerical-sign table, the mined Mahadevan
+document list, Crawford (2001) publisher/place, Failaka catalogue
+numbers, a Shu-ilishu authority); the M261 DEDR number (4988);
+the 161-set site-by-site coverage table; the Phase-151 bootstrap
+interval type and the Phase-134 permutation seed; the F1 data
+matrix in the JSON record; the Phase-163 proximity rule and the
+Phase-167 per-segment match rule; Phase-170 tie/overlap handling;
+the V12 rule changes; the Phase-153 sibilant list; the 394-pair
+inclusion rule. (3) Red-team **round 4** on this revised draft is
+pending; v8 is not cleared for publication until the loop closes.
+
+**Nothing submitted, deposited, or published.** The PR
+(#353) is not merged.

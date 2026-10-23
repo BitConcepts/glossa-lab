@@ -959,3 +959,269 @@ closes.
 
 **Nothing submitted, deposited, or published.** The PR
 (#353) is not merged.
+
+## Red-team round 6 revision (2026-10-23)
+
+Round 6 of the independent red-team pass on v8 (attack: independent
+engine, GPT-5.5 via OpenAI API, direct, four passes over the full
+PDF-extracted text, 84 raw findings aggregated to 39 items, plus 74
+positives, and a 14-sentence line-by-line audit of §6 in Pass 3) was
+adjudicated against the program's primary records by an adjudicator
+who did not draft the paper. Dispositions: **5 sustained / 4
+sustained in part / 28 moot / 2 not sustained of 39; positives 74/74
+confirmed**. The raw attack and the adjudication are filed beside
+this note (`v8_redteam_round6_raw_2026-10-23.md`,
+`v8_redteam_round6_adjudication_2026-10-23.md`). Round 6 produced
+six genuinely new settlements (S11–S16) and re-engaged two
+precedents with reasons (S17, S18). No earlier settlement was
+reopened by this revision.
+
+**Revision applied.** All adjudicated replacement blocks
+R6R-01…R6R-10 were applied verbatim to the .tex (formatting
+conversion only: markdown emphasis and dashes to LaTeX, markdown
+code spans to `\texttt{}` with escaped underscores, `&` to `\&` in
+the R6R-06 citation, the en dash in the 1972–2018 span as `--`),
+each target passage verified by exact match before substitution,
+locations identified by quoted text: R6R-01 (§6 pin, purely
+procedural form, S11), R6R-02 (DEDR distinctions at three
+locations — §1.3, §2.4, §3.27 — S12), R6R-03 (§6 anchor-table
+scope, S13), R6R-04 (§6 selected-rows sentence, S14), R6R-05 (§8
+addition only — Jha & Rajaram (2000), S15), R6R-06 (§3.28 in-text
+citation aligned to the §8 entry already present, S15, class
+(a)+(b)), R6R-07 (Appendix C Phase-44 lift, S16), R6R-08 (§3.23
+"four decades" label, heading and both text occurrences),
+R6R-09 (Phase-134 cross-reference; the sentence stands in §3.13
+Polysemy Permutation Null in the current numbering — the
+adjudication names it §3.9's polysemy section, at line 604), and
+R6R-10 (§3.7 PMI denominator). MOOT items (R6-06, R6-08, R6-09,
+R6-10, R6-12, R6-13, R6-17, R6-18…R6-38) and the NOT SUSTAINED
+items (R6-15, R6-39) have no replacement; their §A rows are the
+complete disposition. For R6R-06, the adjudicated text was
+applied; the owner-confirmation fallback named in the block was
+**not** invoked (it is not the revision worker's to invoke, and
+the tasking directed applying the text). For R6R-10, the inserted
+sentences were placed at the adjudicated point immediately after
+"the Phase-142 record", and the record's file-name parenthetical
+that stood at that point in the .tex is retained between the
+inserted sentences and the original "which is also where the
+distinct-bigram counts above … are recorded" clause, so no
+original text was dropped. Class (b) owner decisions named in
+the blocks were not taken; only the interim text was applied.
+
+**Settlements as applied. S11 (R6-01, sustained, R6R-01)** — §6's
+pin paragraph is replaced in full with the purely procedural
+form naming no historical commit (see the pin procedure and the
+clause-by-clause truth check below). **S12 (R6-02, SIP,
+R6R-02)** — the paper's three DEDR counts are now distinguished
+at the three locations that print them, as counts of three
+different recorded things: entries in the anchor table's DEDR
+column (15 of 161, §1.3, with the three-way distinction printed
+there in full); the combined SA+DEDR evidence-type label in the
+status audit (43 MEDIUM signs, §2.4 — the label records the
+promotion route; in the audit file's own DEDR column only 15 of
+the 43 carry an entry and 28 do not); and the DEDR entry numbers
+printed for individual signs (§§3.3, 3.27 — taken from basis
+statements and phase records, not all recorded in either file's
+DEDR column; §3.27's four upgrades now state their Phase-166
+`dedr_id` record and that neither file's DEDR column carries an
+entry for them, their audit evidence type being DEDR_PROXIMITY).
+No DEDR number changes. **S13 (R6-03, SIP, R6R-03)** — §6 now
+describes the anchor table as the file it is: 397 rows (one for
+every Mahadevan catalogue sign), of which 161 are the HIGH/MEDIUM
+rows and 236 carry LOW readings, with the DEDR clause preserved
+in its corrected scope (a citation recorded in the table's DEDR
+column on 15 rows, all among the 161). §§2.1 and 3.1 were correct
+and are unchanged. **S14 (R6-04, sustained, R6R-04)** — §6 no
+longer claims the tables are "deliberately not summarised by
+selected rows anywhere in this paper": selected rows are printed
+in §3.3 and Appendix A as illustrations only, the complete tables
+are printed nowhere in the paper and are in the repository.
+**S15 (R6-05, SIP, R6R-05 + R6R-06)** — §8 gains exactly one
+entry, Jha & Rajaram (2000), *The Deciphered Indus Script*, New
+Delhi: Aditya Prakashan, in alphabetical position (after Hojlund
+& Abu-Laban, before Lubotsky), at the Spec 025 audit's own
+metadata level — no author initials (none in any record located),
+no subtitle, no pagination; and §3.28's in-text source list now
+cites "(Parpola, Parpola & Brunswig 1977; …)", aligning it to the
+1977 Meluḥḥa Village entry already in §8. No existing §8 entry
+was removed or altered. **S16 (R6-07, sustained, R6R-07)** —
+Appendix C's Phase-44 item no longer reads "Dravidian Tier 1 lift
+ratio: 3.13x above null": it states the stored ratio 3.1334,
+printed as 3.13, as what it is — a ratio of two lifts (Dravidian
+0.4965 over its null, Sanskrit 0.1584 over its null, from the
+Phase-44 T3 record `outputs/phase44_t3_v3_sa_300k.json`) — with
+the §2.4 / Phase-107 held-out limit beside it and the statement
+that it is not evidence Dravidian fits better and does not
+qualify §4.4. Further cures: §3.23 prints the span 1972–2018
+instead of the "four-decade" label at the heading and both text
+occurrences (the second as "1972–2018 (46 years)"); the
+Phase-134 cross-reference now points to §2.3 only; §3.7's PMI
+worked example now prints the denominator — 5,332 bigram tokens
+(7,002 sign tokens minus one per each of the 1,670 inscriptions),
+P(M342·M176) = 122/5,332, P(M342) = 584/7,002, P(M176) =
+356/7,002 — and 2.43 recomputes from those fractions (2.432, the
+Phase-142 record's stored value). Protected text (§8 Roif 2025a/b
+and both Rao entries and the Rao et al. (2010) entry, each
+byte-checked; §3.5/§3.19 Roif credit; §7 Roif acknowledgment) is
+byte-intact in the source diff against `dff001c7`, verified per
+passage before and after the revision: the §8 section is
+identical to the pre-revision §8 apart from the single Jha &
+Rajaram addition, and no diff line touches a Roif or Rao passage.
+§3.32 stays out; "betweenness" remains at 0 hits; the Spec 072
+insert stays HELD and unintegrated; no earlier settlement was
+reopened.
+
+**§6 commit pin.** Two-commit procedure, as rounds 1–5. The
+revision was committed with §6 naming `dff001c7` (the
+pre-revision HEAD, which carries the round-6 adjudication) and
+R6R-01's replacement text included (revision commit `b28cf2f5`);
+a second, pin-only commit (`81a37e06`) changed only the §6
+commit string to `b28cf2f5`. §6 therefore names the round-6
+revision commit, not the pin commit and not `dff001c7`, and the
+shipped PDF prints `b28cf2f5`.
+
+**Post-pin truth check of the shipped §6 paragraph (the critical
+check required for R6R-01; carried out clause by clause after
+the pin commit against the git record — every clause verified
+true; no clause required editing, and none was edited).**
+(1) *"The text of this draft is identified by the branch and
+commit named here, together with the one-string difference
+explained below, not by the DOI."* — TRUE: §6's first sentence
+names branch `preprint-v8-f2-spec068` and commit `b28cf2f5`;
+the one-string difference is the pin string itself, explained
+in the sentences that follow; the DOI sentence stands
+separately and identifies only the preprint and its Zenodo
+version record. (2) *"The commit named here is the revision
+commit: the commit at which this paper's text was frozen for
+the current round."* — TRUE: `b28cf2f5` is the round-6 revision
+commit ("preprint v8: red-team round 6 revision (R6R-01..R6R-10
+applied)"); all round-6 paper text was frozen at that commit.
+(3) *"A commit cannot contain its own hash, so the copy of this
+section at the named commit names, in its first sentence, the
+commit that the revision started from."* — TRUE: at
+`b28cf2f5`, §6's first sentence names `dff001c7` (verified by
+reading the .tex at that commit), and `dff001c7` is
+`b28cf2f5`'s parent — the round-6 adjudication commit, the
+commit the revision started from. (4) *"The draft in hand
+differs from the text at the named commit in that one commit
+string, and in no other sentence."* — TRUE: `git diff b28cf2f5
+81a37e06` on the .tex is exactly one line, and in that line only
+the commit string `dff001c7` → `b28cf2f5`, inside §6's first
+sentence; the rendered-text diff of the two commits' PDFs is
+likewise exactly one line, that same string. (5) *"The commit
+that follows the named commit on this branch and changes that
+string — the pin commit — changes no other paper text."* —
+TRUE: the pin commit `81a37e06` is the immediate child of
+`b28cf2f5` on this branch; its only .tex change is that one
+string, plus the rebuilt PDF in which that string is the sole
+text change. (6) *"The records commits that follow it (the
+rebuilt PDF, the version note, and the records of later rounds)
+change no paper text at all."* — TRUE for this round's records
+commit, verified after it was made: it touches only this
+version note, `LEDGER.md` and `AGENTS.md` — no .tex and no PDF —
+so the shipped paper text at the records commit is identical to
+the pinned text. As a statement about later rounds the clause is
+procedural — it holds for as long as the established procedure
+is followed, which is exactly the durability the adjudication
+prescribed; it names no historical commit, and the shipped §6
+contains no historical commit hash in its explanation sentences
+(the only 8-hex string in §6 is `b28cf2f5`, in the first
+sentence).
+
+**Word count.** The round-5 printed figure was **18,591**. After
+the final build the adjudicated command `pdftotext <pdf> - | wc
+-w` was run on the new PDF (**19,011**), the .tex word-count
+line was set to the measured value, the PDF was rebuilt, and the
+command was re-run — the printed figure equals the shipped
+PDF's count (19,011; the number token is one word either way, so
+the count is stable across the pin rebuild, whose only text
+change is the §6 commit string, verified again after the pin:
+19,011).
+
+**Rebuild.** TinyTeX XeLaTeX (same toolchain and font environment
+fix as the earlier v8 builds — OSFONTDIR covering the system Noto
+directory and the TinyTeX Latin Modern Math directory, plus a
+fontconfig file including the system fonts and the TinyTeX
+texmf-dist font directories), two passes on the final .tex state
+and two on the pin state, all exit 0, **zero errors** in the
+final log. PDF:
+`glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v8.pdf`
+— still named v8 (a pre-publication revision of the v8 draft).
+**32 pages** (was 32). **SHA-256:
+48dfb48ed0d860af64c8d74786b79638dc8cd6185c491c2df2f76efe57a3a69b**
+
+**Render verification (pdftotext of the shipped PDF).** Present:
+§6 in the durable procedural form naming `b28cf2f5` ("The commit
+named here is the revision commit"; "A commit cannot contain
+its own hash"), with **no** historical commit hash anywhere in
+§6 (no `a92c53aa`, `ba5b4bf9`, `ff9b9146`, `88a6bf46` or
+`dff001c7`); the DEDR distinctions at all three R6R-02 locations
+(§1.3 "Three DEDR counts in this paper count three different
+recorded things"; §2.4 "also carries the combined SA+DEDR
+evidence type" with "it is not a count of entries in that file's
+DEDR column, where 15 of the 43 signs carry an entry and 28 do
+not"; §3.27 the Phase-166 `dedr_id` statement with "(Neither
+file's DEDR column carries an entry for these four signs; in the
+status audit their evidence type is recorded as
+DEDR_PROXIMITY.)"); §6's anchor-table scope "397 rows — one for
+every sign in the Mahadevan catalogue — of which 161 are the
+HIGH/MEDIUM rows … and the other 236 carry LOW readings" with
+the DEDR-column clause (15 rows, all among the 161); the
+corrected selected-rows sentence ("Selected rows from the anchor
+evidence are printed in this paper — in §3.3 and in Appendix A —
+as illustrations only; the complete tables are printed nowhere
+in this paper and are in the repository", split across a page
+break in the extraction but present in full); §8's Jha & Rajaram
+(2000) entry with *The Deciphered Indus Script* and Aditya
+Prakashan, and the Roif 2025a/b and Rao entries standing as
+before; §3.28's "(Parpola, Parpola & Brunswig 1977; Steinkeller
+1982; Potts 1994; Reade 2001; Kjaerum 1983)"; Appendix C's lift
+sentence as cured (0.4965 / 0.1584 / 3.1334 / "It is a ratio of
+two lifts, not a lift above a null" / the §2.4 Phase-107 limit);
+§3.7's "5,332 bigram tokens" with "122/5,332" and "the printed
+PMI of 2.43 recomputes from those three fractions"; §3.23's
+heading "Mahadevan Grammar Consistency, 1972–2018" and the
+"1972–2018 (46 years)" wording; the corrected Phase-134
+cross-reference "(§2.3), not on this one"; printed word count
+19,011; "End of Preprint v8". Absent: "deliberately not
+summarised by selected rows"; "Dravidian Tier 1 lift ratio";
+"3.13x above null"; "four decades" / "Four-Decade" (the §3.23
+internal LaTeX label retains its old slug, as in prior heading
+renames — it is not printed text); "Parpola 1975"; the old §6
+anchor-table description; "betweenness"; §3.32.
+
+**Still-open items.** (1) **Owner decisions (adjudication §D)** —
+the loop does **not** close at round 6 (see the adjudication's
+loop-closure statement): the previously adjudicated owner
+decisions whose interim cures are in place are not reopened —
+corpus release (R3-01), a calibration study for the confidence
+labels (R3-07), the SA/V07 re-base (R3-05, R3-51), the V12
+protocol freeze (R3-45), archiving the exact v8 source under
+the Zenodo DOI (R3-02), whether M176 stays HIGH (R3R-15), the
+paper's title (R3-14), retention of the CISI 87.08% figure with
+its disclosure (R3R-19), a seal-level retest of the M267 motif
+distribution (R4R-20), and the per-criterion re-audit of the 75
+HIGH signs behind R4-10/S4. The R6R-06 owner confirmation also
+stands: if the owner identifies a distinct 1975 Parpola source
+behind the Phase-167 name list, R6R-06's fallback wording
+applies and a sourced §8 entry would still be needed. (2)
+**Record gaps (adjudication §E)** the cures disclose but cannot
+fill, including the items new or extended this round: the full
+Phase-143 pair list and per-pair full statistics (§E.1); why
+the two central files' DEDR columns disagree (15 vs 16 of 161,
+overlap 4) and where the 11 §3.3-printed DEDR numbers recorded
+in neither column are each recorded (§E.2); the Phase-167
+Parpola source's identity at title level (§E.3); the remaining
+bibliographic details not in any record (the Arthaśāstra edition
+among them; Jha & Rajaram's initials, subtitle and pagination
+remain unrecorded) (§E.4); and the standing gaps: the DEDR
+search space, the SA specification, criterion-level scoring for
+HIGH, the CISI 87.08% numerator/denominator, the Phase-151
+bootstrap type / Phase-134 seed and F1 matrix, unrounded
+M067/M039 expected counts, per-sign seal counts, and the fish
+supplement / M001 mismatch. (3) Red-team **round 7** on this
+revised draft is pending; v8 is not cleared for publication
+until the loop closes.
+
+**Nothing submitted, deposited, or published.** The PR
+(#353) is not merged.

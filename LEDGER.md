@@ -10264,3 +10264,55 @@ Nothing submitted, deposited, or published; PR #353 not merged.
 
 AI disclosure: executed by an AI agent (Muse, via Muse)
 at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-23 — Preprint v8 red-team round 6: adjudicated and revised (R6R-01..R6R-10)
+
+Round 6 of the independent red-team pass on preprint v8 (attack:
+independent engine, GPT-5.5 via OpenAI API, direct, four passes,
+84 raw findings aggregated to 39 items + 74 positives, plus a
+14-sentence §6 line-by-line audit; adjudication against primary
+records: 5 sustained / 4 sustained in part / 28 moot / 2 not
+sustained of 39; positives 74/74 confirmed; settlements
+S11–S18). All adjudicated replacement blocks R6R-01..R6R-10 were
+applied verbatim to
+glossa-corpus/indus/pierson_2026_indus_decipherment.tex
+(formatting conversion only; each target verified by exact
+match; MOOT and NOT SUSTAINED items have no replacement;
+R6R-06's owner-confirmation fallback not invoked — the
+adjudicated text was applied) — revision commit b28cf2f5; §6
+commit string pinned to that commit by pin-only commit
+81a37e06. Load-bearing cures: R6R-01 (§6 pin replaced with the
+purely procedural form naming no historical commit, per S11 —
+post-pin clause-by-clause truth check passes in full: named
+commit b28cf2f5 is the revision commit, its parent is dff001c7
+which its §6 copy names, the revision→pin diff is one line and
+one string only in both the .tex and the rendered text, and the
+records commits change no paper text); R6R-02 (the three DEDR
+counts distinguished at §1.3, §2.4 and §3.27, per S12 — no
+number changes); R6R-03 (§6 anchor table described as its 397
+rows, per S13); R6R-04 (§6 selected-rows sentence corrected,
+per S14); R6R-05 + R6R-06 (§8 gains Jha & Rajaram (2000) only;
+§3.28 aligned to Parpola, Parpola & Brunswig 1977, per S15);
+R6R-07 (Appendix C Phase-44 ratio stated as 3.1334, a ratio of
+two lifts 0.4965 / 0.1584, with the §2.4 limit, per S16);
+R6R-08 (§3.23 span 1972–2018, 46 years); R6R-09 (Phase-134
+cross-reference to §2.3 only); R6R-10 (§3.7 PMI denominator
+5,332 printed; 2.43 recomputes, 2.432). Protected Roif/Rao text
+byte-intact (§8 identical apart from the Jha addition); §3.32
+still absent; no betweenness; Spec 072 insert still HELD. PDF
+rebuilt with TinyTeX XeLaTeX, two passes, exit 0, zero errors,
+32 pages, SHA-256
+48dfb48ed0d860af64c8d74786b79638dc8cd6185c491c2df2f76efe57a3a69b,
+render-verified (pdftotext); printed word count 19,011 measured
+on the shipped PDF by the adjudicated command (round-5 figure
+18,591). Loop NOT closed at round 6 per adjudication §D. Still
+open: the §D owner decisions (incl. the R6R-06 confirmation if
+a distinct 1975 Parpola source is identified), the §E record
+gaps (incl. the DEDR-column discrepancy / per-sign DEDR
+provenance and the title-level Phase-167 Parpola identity);
+red-team round 7 pending. Record:
+specs/025-paper-search-research-check/audit-2026-10-22/v8_version_note_2026-10-23.md.
+Nothing submitted, deposited, or published; PR #353 not merged.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.

@@ -1,0 +1,879 @@
+{
+  "spec": "073-keying-surface-repair",
+  "register_version": "0.5-draft",
+  "note": "Draft register for Spec 073 (the keying-surface repair named by the merged outcome records of Specs 070 and 071), opened 2026-10-22 under the program's standing drafting authorization. Conventions as in Specs 042-072: requirement claims carry no falsification test where a gate or inspection is the operative check; boundaries carry the conditions under which each claim holds; evidence items carry observed_at from this draft because the cited facts were verified first-hand at drafting (the registry, crosswalk and Asset A hashes recomputed; the registry's 498-id Wells map and the five codes' absence re-verified against the pinned file). The AEE lifecycle hooks have NOT run on this register; they are the freeze gate (tasks L4, per DD-038-10), and any recovery round they force changes claim text before any freeze digest is computed. ASM- ids name the assumptions each claim stands on: ASM-KEYING-FAILURE-RECORD (the merged Spec 070/071 outcome and machine records state the keying failure completely and correctly), ASM-PINNED-INPUTS (registry v1, the crosswalk and Asset A v1 as pinned in spec section 2 are the surfaces the repair starts from), ASM-PUBLISHED-SOURCES (the freeze-ruled published lists are the only permissible evidence for an identity or a depiction, and are held as spec section 2 states), ASM-BLIND-ENTRY (Spec 045 section 2.4's blind-entry discipline transfers to new-row entry unchanged), ASM-GRADE-DISCIPLINE (P-F1 S4: the attested frame is the documented + corroborated rows; uncorroborated rows attest nothing and enter no measurement), ASM-NON-MUTATION (v1 files remain byte-identical; every extension is a new version with its own digest), ASM-APPEND-ONLY (frozen records are never edited and closures are never appended to by a successor), ASM-LINEAGE (agreement within the ICIT tradition is consistency, not independent corroboration, per P-F1 S3). No coverage figure appears in this register as a target: F073-C15 states the working hypothesis with its falsifier, and F073-C12 binds the reporting to measurements whatever their values. Wells 1998's in-hand state is deliberately not asserted anywhere in this register (F073-C14 records why).",
+  "claims": [
+    {
+      "id": "F073-C01",
+      "kind": "hypothesis",
+      "text": "An outcome under Spec 073 states only the measured coverage of a repaired keying surface - Registry v2's Wells coverage, Asset A v2's census, and the keyable shares of the two recorded Hunt populations - and nothing about whether opening signs are animal signs or sky signs gather at text endings.",
+      "status": "draft",
+      "boundary": "The scope is the join surface between the freeze-ruled published sign lists, the pinned registry and crosswalk, Asset A v1, and the Shakti corpus as cited through the intake record. It excludes any positional quantity, any comparison class, any verdict word of Spec 070 or Spec 071, and any statement about what a sign meant or sounded like. Carried from the draft text: the coverage figures are measurements of a surface (spec sections 1 and 6), reported whatever their values.",
+      "depends_on": [],
+      "assumptions": [
+        "ASM-KEYING-FAILURE-RECORD",
+        "ASM-APPEND-ONLY"
+      ],
+      "alternatives": [
+        "framing the repair as a preliminary result of the Hunt tests themselves (refused: both outcome records state their tests never ran, and a coverage figure quoted as momentum toward a verdict would misstate two closures)"
+      ],
+      "falsification_tests": [
+        "inspection is the operative check: any execution product of this spec that reports a positional quantity, a comparison class, or a verdict word of Spec 070/071 falsifies compliance and is a defect on this spec's record, not a result"
+      ],
+      "evidence": [
+        {
+          "ref": "specs/070-hunt-opening-signs-successor/outcome.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 070's merged outcome record (Phase 433), read first-hand at this draft: closure POPULATION NOT KEYED at gate 0.4; the 31-sign opening-strong set; the five unkeyable codes 136 (6 occ.), 298 (7), 401 (5), 617 (56), 824 (16); the finding verified there that no registry row in any numbering system carries W136, W298, W401, W617 or W824; and the sentence naming this repair as the successor's first task.",
+          "source_id": "specs/070-hunt-opening-signs-successor/outcome.md",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "specs/071-hunt-sky-signs-successor/outcome.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 071's merged outcome record (Phase 434), read first-hand at this draft: closure INVALID at gate 0.3; the 557-sign primary-population census (285 keyed; 134 with no resolution in the registry's parpola_1982 Wells map; 138 resolving to registry signs outside Asset A's 187-row universe); Asset A's celestial class empty (0 sky_cycle rows) against the spec's TOO THIN floor of 30; and the two repairs the record names for a successor.",
+          "source_id": "specs/071-hunt-sky-signs-successor/outcome.md",
+          "observed_at": "2026-10-22"
+        }
+      ],
+      "metadata": {
+        "framework_kind": "hypothesis",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "that a coverage repair is implicitly a partial re-run of the tests it unblocks, so its figures would be read as evidence about the Hunt claims",
+        "verdict_rule": "compliance is judged by the outcome record's contents: step-0 exhibits, both product digests and censuses, measurements M1-M5 with the lineage statement, and no positional quantity anywhere",
+        "evidence_origin_groups": [
+          "spec070-outcome",
+          "spec071-outcome"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      }
+    },
+    {
+      "id": "F073-C02",
+      "kind": "requirement",
+      "text": "Spec 070 stands closed as POPULATION NOT KEYED at its gate 0.4 and Spec 071 stands closed as INVALID at its gate 0.3; Spec 073 amends, reopens, re-runs, and appends to neither record, and neither claim's standing changes by anything this spec produces.",
+      "status": "draft",
+      "boundary": "These are the merged records' stated facts, read first-hand at this draft. Claim without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003 stands IN QUESTION and manual_004 stands UNTESTED, exactly as the two closures left them. Carried from the draft text: a future re-asking of either question is a separate owner act under a new freeze consuming the v2 products by their digests; this spec neither files nor implies it.",
+      "depends_on": [
+        "F073-C01"
+      ],
+      "assumptions": [
+        "ASM-APPEND-ONLY",
+        "ASM-KEYING-FAILURE-RECORD"
+      ],
+      "alternatives": [
+        "superseding the two closures with a successor that restates their tests on the repaired surface (refused: the commission is the repair study only; folding the tests in would pre-judge the re-freeze decision the owner has not taken)"
+      ],
+      "falsification_tests": [
+        "gate: the execution record contains no append to specs/045, specs/069, specs/070 or specs/071 and no append to either claim's record; the presence of any such append falsifies compliance"
+      ],
+      "evidence": [
+        {
+          "ref": "specs/070-hunt-opening-signs-successor/outcome.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 070's merged outcome record (Phase 433), read first-hand at this draft: closure POPULATION NOT KEYED at gate 0.4; the 31-sign opening-strong set; the five unkeyable codes 136 (6 occ.), 298 (7), 401 (5), 617 (56), 824 (16); the finding verified there that no registry row in any numbering system carries W136, W298, W401, W617 or W824; and the sentence naming this repair as the successor's first task.",
+          "source_id": "specs/070-hunt-opening-signs-successor/outcome.md",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "specs/071-hunt-sky-signs-successor/outcome.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 071's merged outcome record (Phase 434), read first-hand at this draft: closure INVALID at gate 0.3; the 557-sign primary-population census (285 keyed; 134 with no resolution in the registry's parpola_1982 Wells map; 138 resolving to registry signs outside Asset A's 187-row universe); Asset A's celestial class empty (0 sky_cycle rows) against the spec's TOO THIN floor of 30; and the two repairs the record names for a successor.",
+          "source_id": "specs/071-hunt-sky-signs-successor/outcome.md",
+          "observed_at": "2026-10-22"
+        }
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "that repairing the named cause of two closures quietly reopens them",
+        "verdict_rule": "compliance is judged by the merged execution tree: the only records this spec's execution writes are its own directory's products, the two v2 product locations named in spec section 4-5, and its LEDGER entry",
+        "evidence_origin_groups": [
+          "spec070-outcome",
+          "spec071-outcome"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      }
+    },
+    {
+      "id": "F073-C03",
+      "kind": "requirement",
+      "text": "Registry v1, the sign crosswalk of record, and Asset A v1 are consumed by hash only and are byte-identical at the execution's close to their state at its step 0; every extension lives in a new file with its own digest.",
+      "status": "draft",
+      "boundary": "The three pins are spec section 2's: registry 8a0b2a82..., crosswalk 4ace1a61..., Asset A canonical CSV 95231935..., each recomputed first-hand at this draft. Carried from the draft text: Registry v2 carries v1's rows verbatim inside a new file (section 4.1) - v1's own bytes are never written - and a closing mismatch is the outcome class FROZEN INPUT MUTATED, voiding both products.",
+      "depends_on": [
+        "F073-C02"
+      ],
+      "assumptions": [
+        "ASM-PINNED-INPUTS",
+        "ASM-NON-MUTATION"
+      ],
+      "alternatives": [
+        "extending the registry or the crosswalk in place and advancing their pins by name (refused: two frozen specs and one frozen asset pin those files; an in-place edit would silently change what their records cite, which is the failure mode the freeze-pin discipline exists to prevent)"
+      ],
+      "falsification_tests": [
+        "gate 0.1 recomputes the three hashes before any work and the closing record recomputes them after; any difference at either point closes or voids the run as named in spec section 7"
+      ],
+      "evidence": [
+        {
+          "ref": "data/crosswalks/canonical_sign_registry.csv",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "The pinned canonical sign registry, recomputed first-hand at this draft: SHA-256 8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420; 803 rows (396 parpola_1982, 407 yajnadevam_glyphid with no wells_ids); the parpola_1982 Wells map carries 498 distinct Wells ids (tokenised on |); W136, W298, W401, W617, W824 appear in no row's wells_ids.",
+          "source_id": "data/crosswalks/canonical_sign_registry.csv",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "specs/069-hunt-asset-a/asset-a/asset-a-freeze.json",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 069's executed Asset A freeze record, read first-hand at this draft: canonical CSV SHA-256 952319355098698f01e6d8499b0384f84ac964e1bc4ecdc03c77ed920c7a5b5b (recomputed at this draft); 187 rows; per-kind census animal 20, sky_cycle 0, object_goods 14, human 25, other 127, contested 0, unidentified 1; contract Spec 045 sections 2-3 under freeze digest 5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a; crosswalk pin 4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf (205 rows, 187 distinct sign keys).",
+          "source_id": "specs/069-hunt-asset-a/asset-a/asset-a-freeze.json",
+          "observed_at": "2026-10-22"
+        }
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "that the repair's additions are small enough to edit in place without consequence",
+        "verdict_rule": "compliance is judged by the two hash exhibits (step 0 and closing) in the execution record, plus the change schedule's accounting for every v2 difference",
+        "evidence_origin_groups": [
+          "registry",
+          "asset-a"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      }
+    },
+    {
+      "id": "F073-C04",
+      "kind": "requirement",
+      "text": "Before any repair act, the execution reproduces the recorded baselines exactly from the pinned inputs and the merged Phase 433/434 machine records: the 31-sign opening-strong set with its 26/5 split and the five codes' occurrence counts; the 557-sign census with its 285/134/138 split; the 498-id Wells map; and Asset A v1's census with sky_cycle 0.",
+      "status": "draft",
+      "boundary": "The baselines are stated in spec sections 1 and 3 (gate 0.2) with their values: codes 136 (6), 298 (7), 401 (5), 617 (56), 824 (16); population splits 285 keyed, 134 no registry resolution, 138 outside Asset A's universe. Carried from the draft text: a figure that does not reproduce closes the run as BASELINE NOT REPRODUCED with the differing figure named - the repair starts from the recorded failure or it does not start.",
+      "depends_on": [
+        "F073-C03"
+      ],
+      "assumptions": [
+        "ASM-KEYING-FAILURE-RECORD",
+        "ASM-PINNED-INPUTS"
+      ],
+      "alternatives": [
+        "taking the outcome records' prose figures as the baseline without recomputation (refused: a prose figure misread at drafting would propagate invisibly into every coverage claim the study makes)"
+      ],
+      "falsification_tests": [
+        "gate 0.2 is the operational test: the step-0 record exhibits each reproduced figure beside the machine records' values, sign by sign for Baselines A and B; any mismatch closes the run as BASELINE NOT REPRODUCED"
+      ],
+      "evidence": [
+        {
+          "ref": "specs/070-hunt-opening-signs-successor/outcome.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 070's merged outcome record (Phase 433), read first-hand at this draft: closure POPULATION NOT KEYED at gate 0.4; the 31-sign opening-strong set; the five unkeyable codes 136 (6 occ.), 298 (7), 401 (5), 617 (56), 824 (16); the finding verified there that no registry row in any numbering system carries W136, W298, W401, W617 or W824; and the sentence naming this repair as the successor's first task.",
+          "source_id": "specs/070-hunt-opening-signs-successor/outcome.md",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "specs/071-hunt-sky-signs-successor/outcome.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 071's merged outcome record (Phase 434), read first-hand at this draft: closure INVALID at gate 0.3; the 557-sign primary-population census (285 keyed; 134 with no resolution in the registry's parpola_1982 Wells map; 138 resolving to registry signs outside Asset A's 187-row universe); Asset A's celestial class empty (0 sky_cycle rows) against the spec's TOO THIN floor of 30; and the two repairs the record names for a successor.",
+          "source_id": "specs/071-hunt-sky-signs-successor/outcome.md",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "data/crosswalks/canonical_sign_registry.csv",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "The pinned canonical sign registry, recomputed first-hand at this draft: SHA-256 8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420; 803 rows (396 parpola_1982, 407 yajnadevam_glyphid with no wells_ids); the parpola_1982 Wells map carries 498 distinct Wells ids (tokenised on |); W136, W298, W401, W617, W824 appear in no row's wells_ids.",
+          "source_id": "data/crosswalks/canonical_sign_registry.csv",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "specs/069-hunt-asset-a/asset-a/asset-a-freeze.json",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 069's executed Asset A freeze record, read first-hand at this draft: canonical CSV SHA-256 952319355098698f01e6d8499b0384f84ac964e1bc4ecdc03c77ed920c7a5b5b (recomputed at this draft); 187 rows; per-kind census animal 20, sky_cycle 0, object_goods 14, human 25, other 127, contested 0, unidentified 1; contract Spec 045 sections 2-3 under freeze digest 5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a; crosswalk pin 4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf (205 rows, 187 distinct sign keys).",
+          "source_id": "specs/069-hunt-asset-a/asset-a/asset-a-freeze.json",
+          "observed_at": "2026-10-22"
+        }
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "that the merged prose records and the pinned files disagree, so a repair built on the prose would repair the wrong surface",
+        "verdict_rule": "compliance is judged by the gate 0.2 exhibit in the execution record",
+        "evidence_origin_groups": [
+          "spec070-outcome",
+          "spec071-outcome",
+          "registry",
+          "asset-a"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      }
+    },
+    {
+      "id": "F073-C05",
+      "kind": "requirement",
+      "text": "Every identity added to Registry v2 and every depiction entered in Asset A v2 rests on a named published source from the freeze-ruled list, with the source's own wording quoted; no identity or depiction is entered from program-internal material, an earlier phase output, the registry's derived columns, an ICIT-derived product, or an enterer's visual judgement.",
+      "status": "draft",
+      "boundary": "The excluded-as-evidence list is spec section 2's: Yajnadevam and its derivatives (locators only), the ICIT database documentation (locator only), the April-2026 OCR texts of the Fuls volumes (locators only; entry is from the volumes themselves), and the registry's corpus_freq / start_rate / end_rate / internal_rate columns. Carried from the draft text: an addition without a citable published statement is not made, and the change schedule exposes every addition's citation to inspection.",
+      "depends_on": [
+        "F073-C04"
+      ],
+      "assumptions": [
+        "ASM-PUBLISHED-SOURCES",
+        "ASM-LINEAGE"
+      ],
+      "alternatives": [
+        "admitting the Yajnadevam glyph list as identity evidence because it is the largest ICIT-numbered list available (refused: it is an extraction of ICIT itself, so identities taken from it would certify the corpus's own numbering tradition against itself - the circularity P-F1 S3 fences off)"
+      ],
+      "falsification_tests": [
+        "inspection is the operative check: every change-schedule entry and every new Asset A row names its source and quotes its wording; a single entry resting on an excluded source falsifies compliance and is recorded as an entry defect"
+      ],
+      "evidence": [
+        {
+          "ref": "data/crosswalks/canonical_sign_registry.csv",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "The pinned canonical sign registry, recomputed first-hand at this draft: SHA-256 8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420; 803 rows (396 parpola_1982, 407 yajnadevam_glyphid with no wells_ids); the parpola_1982 Wells map carries 498 distinct Wells ids (tokenised on |); W136, W298, W401, W617, W824 appear in no row's wells_ids.",
+          "source_id": "data/crosswalks/canonical_sign_registry.csv",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "glossa-corpus PROVENANCE entry 27 (program record)",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "PROVENANCE entry 27 as recorded in the parent programme record and restated at this draft: the owner holds both Fuls print volumes in full - Vol. I Corpus of Indus Inscriptions (583 pp., PDF SHA-256 185fd0575d881568583a7002d705b2ded1313a525fafe093108f72e0fe897727) and Vol. II A Catalog of Indus Signs (571 pp., PDF SHA-256 31729a4f7b33bd1ec08633bb677f963b5de8f50d96afdfc25cff5ddc96f9a32a) - hashed on the owner's desktop, with April-2026 OCR texts in the intake tree as locators; the acquisition memo's purchase step is closed as unnecessary. Bibliographic pins re-verified at the freeze (OPEN-073-9).",
+          "source_id": "provenance-entry-27",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "The adopted Shakti intake record (P-F1, gates S1-S4), read at this draft: corpus SHA-256 345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68; row-grades SHA-256 02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739; census 5,704 rows / 5,536 analyzable; grades 3,212 documented / 2,087 corroborated / 405 uncorroborated; 713 distinct signs; 77 sites.",
+          "source_id": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+          "observed_at": "2026-10-22"
+        }
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "that a locator artefact (an OCR text, a database dump, a documentation PDF) is close enough to the published list it indexes to govern a row",
+        "verdict_rule": "compliance is judged by the change schedule and the entry log: every addition traceable to a ruled published source with quoted wording, and no excluded source appearing as evidence",
+        "evidence_origin_groups": [
+          "registry",
+          "provenance",
+          "shakti-intake"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      }
+    },
+    {
+      "id": "F073-C06",
+      "kind": "requirement",
+      "text": "Registry v2 carries all 803 of v1's rows verbatim and appends only the two addition forms of spec section 4.2 - Wells-map completions on existing rows and new icit_wells rows for codes with no v1 row - each recorded cell-by-cell in a change schedule with its citation; conflicting published identities for one drawn sign are recorded as CONTESTED IDENTITY, never silently resolved.",
+      "status": "draft",
+      "boundary": "The v1 census is verified at this draft: 803 rows (396 parpola_1982, 407 yajnadevam_glyphid). Carried from the draft text: appended rows carry empty derived fields - v2 invents no frequencies or rates - and a contested identity is not a resolution for any consumer counting distinct sign_ids.",
+      "depends_on": [
+        "F073-C05"
+      ],
+      "assumptions": [
+        "ASM-PINNED-INPUTS",
+        "ASM-NON-MUTATION",
+        "ASM-PUBLISHED-SOURCES"
+      ],
+      "alternatives": [
+        "merging conflicting identities by majority of sources or by the identity that completes more of the population (refused: either rule would let the repair's convenience outrank the published record, and the conflict is itself a fact a future freeze needs to see)"
+      ],
+      "falsification_tests": [
+        "gate B-analogue for R1 in the build record: a machine diff of v2 against pinned v1 exhibits exactly the change schedule's entries and nothing else; any unlisted difference falsifies compliance"
+      ],
+      "evidence": [
+        {
+          "ref": "data/crosswalks/canonical_sign_registry.csv",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "The pinned canonical sign registry, recomputed first-hand at this draft: SHA-256 8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420; 803 rows (396 parpola_1982, 407 yajnadevam_glyphid with no wells_ids); the parpola_1982 Wells map carries 498 distinct Wells ids (tokenised on |); W136, W298, W401, W617, W824 appear in no row's wells_ids.",
+          "source_id": "data/crosswalks/canonical_sign_registry.csv",
+          "observed_at": "2026-10-22"
+        }
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "that a hand-maintained v2 would drift from v1 in ways a prose summary would not catch",
+        "verdict_rule": "compliance is judged by the machine diff exhibit and the change schedule's completeness against it",
+        "evidence_origin_groups": [
+          "registry"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      }
+    },
+    {
+      "id": "F073-C07",
+      "kind": "requirement",
+      "text": "Every ICIT code attested in the Shakti corpus's documented and corroborated rows receives a named disposition in this spec's products - a Registry v2 identity, a CONTESTED IDENTITY entry, or a NO PUBLISHED IDENTITY schedule entry naming the sources searched - and no attested code is silently absent from all three.",
+      "status": "draft",
+      "boundary": "The attested frame and the schedule's form are spec sections 4.3 and 5.2: 713 distinct signs corpus-wide per the intake record, enumerated from the pinned corpus at the build; uncorroborated rows attest nothing (P-F1 S4). Carried from the draft text: the schedule is published with the build record and restated in the headline measurement M5 - the residual shortfall is a headline fact, not an appendix.",
+      "depends_on": [
+        "F073-C06"
+      ],
+      "assumptions": [
+        "ASM-GRADE-DISCIPLINE",
+        "ASM-PUBLISHED-SOURCES"
+      ],
+      "alternatives": [
+        "reporting coverage as a percentage with the unresolvable remainder unlisted (refused: Spec 071's gate 0.3 exists because an unlisted absence silently defines a denominator; the same discipline binds the repair's own reporting)"
+      ],
+      "falsification_tests": [
+        "build gate: the frame census, the v2 resolution census, and the schedule are exhibited together and must sum to the frame; any attested code in none of the three falsifies compliance"
+      ],
+      "evidence": [
+        {
+          "ref": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "The adopted Shakti intake record (P-F1, gates S1-S4), read at this draft: corpus SHA-256 345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68; row-grades SHA-256 02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739; census 5,704 rows / 5,536 analyzable; grades 3,212 documented / 2,087 corroborated / 405 uncorroborated; 713 distinct signs; 77 sites.",
+          "source_id": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "specs/071-hunt-sky-signs-successor/outcome.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 071's merged outcome record (Phase 434), read first-hand at this draft: closure INVALID at gate 0.3; the 557-sign primary-population census (285 keyed; 134 with no resolution in the registry's parpola_1982 Wells map; 138 resolving to registry signs outside Asset A's 187-row universe); Asset A's celestial class empty (0 sky_cycle rows) against the spec's TOO THIN floor of 30; and the two repairs the record names for a successor.",
+          "source_id": "specs/071-hunt-sky-signs-successor/outcome.md",
+          "observed_at": "2026-10-22"
+        }
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "that a small number of unresolvable codes could be dropped from the report without changing any conclusion a reader would draw",
+        "verdict_rule": "compliance is judged by the three-way accounting exhibit in the build record",
+        "evidence_origin_groups": [
+          "shakti-intake",
+          "spec071-outcome"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      }
+    },
+    {
+      "id": "F073-C08",
+      "kind": "requirement",
+      "text": "Asset A v2 is a new asset with its own digest: Asset A v1's 187 rows are carried verbatim and marked carried, new rows are entered only for signs in the section 5.2 universe, and Asset A v1's file, freeze record, and digest are never written by this spec.",
+      "status": "draft",
+      "boundary": "Carried-row fidelity is build gate B3: a carried row differing from its v1 row in any field closes the build as ASSET FAILED (B3) - v2 does not launder edits to v1, and a defect found in a carried row is recorded against v1 in the build record, never corrected inside v2. Carried from the draft text: the row_origin field (carried_v1 / new_entry) keeps the carry visible in every product, subject to the freeze's OPEN-073-4 ruling.",
+      "depends_on": [
+        "F073-C03",
+        "F073-C06"
+      ],
+      "assumptions": [
+        "ASM-NON-MUTATION",
+        "ASM-PINNED-INPUTS"
+      ],
+      "alternatives": [
+        "re-entering all 187 signs afresh so v2 is uniform (refused: re-entry would replace a frozen, digested record with new judgements and destroy the audit trail that distinguishes the original asset from the repair)"
+      ],
+      "falsification_tests": [
+        "gate B3 is the operational test: a field-by-field comparison of the carried rows against the pinned v1 CSV, exhibited in the build record; any difference closes the build as ASSET FAILED (B3)"
+      ],
+      "evidence": [
+        {
+          "ref": "specs/069-hunt-asset-a/asset-a/asset-a-freeze.json",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 069's executed Asset A freeze record, read first-hand at this draft: canonical CSV SHA-256 952319355098698f01e6d8499b0384f84ac964e1bc4ecdc03c77ed920c7a5b5b (recomputed at this draft); 187 rows; per-kind census animal 20, sky_cycle 0, object_goods 14, human 25, other 127, contested 0, unidentified 1; contract Spec 045 sections 2-3 under freeze digest 5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a; crosswalk pin 4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf (205 rows, 187 distinct sign keys).",
+          "source_id": "specs/069-hunt-asset-a/asset-a/asset-a-freeze.json",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "specs/045-hunt-depicted-kinds/spec.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 045's frozen text, sections 2-3 read first-hand at this draft: the Asset A contract (field set 2.2, source hierarchy 2.3, blind-entry rule 2.4, dispute rule 2.5, D-18 input form 2.6, build gates A1-A6 in section 3) and the coverage-scope restatement DD-045-18 (the full pinned-crosswalk universe, 187 distinct sign keys).",
+          "source_id": "specs/045-hunt-depicted-kinds/spec.md",
+          "observed_at": "2026-10-22"
+        }
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "that uniform re-entry would be cleaner than a visibly two-origin asset",
+        "verdict_rule": "compliance is judged by the B3 exhibit and by v1's closing hash under F073-C03",
+        "evidence_origin_groups": [
+          "asset-a",
+          "spec045-contract"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      }
+    },
+    {
+      "id": "F073-C09",
+      "kind": "requirement",
+      "text": "New-row entry is blind: no enterer is given any positional class, any population membership, any occurrence count, or any output of Specs 070/071 beyond the baselines gate 0.2 published, and the build order - sources, Registry v2, frame, entry, dispute coding, digests, only then coverage joins - is itself a gate.",
+      "status": "draft",
+      "boundary": "The rule is Spec 045 section 2.4's, carried in spec section 5.3, with the setup attested at gate 0.4 before the first row. Carried from the draft text: the inventory given to the enterer carries no occurrence counts, so a frequent sign (617, at 56 occurrences the most frequent unkeyable code) is exactly as easy to leave unidentified as a rare one; a breach discovered at any point closes the run as ENTRY DISCIPLINE FAILED.",
+      "depends_on": [
+        "F073-C08"
+      ],
+      "assumptions": [
+        "ASM-BLIND-ENTRY"
+      ],
+      "alternatives": [
+        "letting the enterer see the five named codes' identities as a priority list so the repair 'fixes what matters first' (refused: priority entry keyed to a test's population is the contamination the blind-entry rule exists to prevent; the five codes are measured at M2 like every other sign, after the digests)"
+      ],
+      "falsification_tests": [
+        "gate 0.4's attestation plus the build record's session log are the operative checks; any session in which positional material was exhibited to an enterer falsifies compliance and closes the run as ENTRY DISCIPLINE FAILED"
+      ],
+      "evidence": [
+        {
+          "ref": "specs/045-hunt-depicted-kinds/spec.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 045's frozen text, sections 2-3 read first-hand at this draft: the Asset A contract (field set 2.2, source hierarchy 2.3, blind-entry rule 2.4, dispute rule 2.5, D-18 input form 2.6, build gates A1-A6 in section 3) and the coverage-scope restatement DD-045-18 (the full pinned-crosswalk universe, 187 distinct sign keys).",
+          "source_id": "specs/045-hunt-depicted-kinds/spec.md",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "specs/070-hunt-opening-signs-successor/outcome.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 070's merged outcome record (Phase 433), read first-hand at this draft: closure POPULATION NOT KEYED at gate 0.4; the 31-sign opening-strong set; the five unkeyable codes 136 (6 occ.), 298 (7), 401 (5), 617 (56), 824 (16); the finding verified there that no registry row in any numbering system carries W136, W298, W401, W617 or W824; and the sentence naming this repair as the successor's first task.",
+          "source_id": "specs/070-hunt-opening-signs-successor/outcome.md",
+          "observed_at": "2026-10-22"
+        }
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "that because the outcome records are merged and public inside the program, formal blindness is theatre (answered on the record: the rule binds what the build gives the enterer and the order it enforces, which is checkable, not what a person could in principle go and read)",
+        "verdict_rule": "compliance is judged by the gate 0.4 attestation and the build-order exhibits in the execution record",
+        "evidence_origin_groups": [
+          "spec045-contract",
+          "spec070-outcome"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      }
+    },
+    {
+      "id": "F073-C10",
+      "kind": "requirement",
+      "text": "Where ruled published sources disagree on a new row's depicted kind, the row is coded contested with both verbatim labels and citations recorded; no tie is broken by the enterer, by frequency, or by which label would suit any test, and disputes are coded before the asset's digest is computed.",
+      "status": "draft",
+      "boundary": "The rule is Spec 045 section 2.5's, carried in spec section 5.3; borderline is recorded where the published identification is hedged in its own source. Carried from the draft text: a dispute first noticed after the digest is recorded as an asset defect, not resolved into the frozen v2.",
+      "depends_on": [
+        "F073-C09"
+      ],
+      "assumptions": [
+        "ASM-BLIND-ENTRY",
+        "ASM-PUBLISHED-SOURCES"
+      ],
+      "alternatives": [
+        "governing-source rank breaking all ties automatically (refused: Spec 045 section 2.5 already decided that where the two governing sources disagree, neither governs by rank; the repair inherits that decision for its extended hierarchy)"
+      ],
+      "falsification_tests": [
+        "inspection is the operative check: every contested row in the entry log carries two verbatim labels with citations and a dispute_status of contested; a contested-source row coded to a single kind falsifies compliance"
+      ],
+      "evidence": [
+        {
+          "ref": "specs/045-hunt-depicted-kinds/spec.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 045's frozen text, sections 2-3 read first-hand at this draft: the Asset A contract (field set 2.2, source hierarchy 2.3, blind-entry rule 2.4, dispute rule 2.5, D-18 input form 2.6, build gates A1-A6 in section 3) and the coverage-scope restatement DD-045-18 (the full pinned-crosswalk universe, 187 distinct sign keys).",
+          "source_id": "specs/045-hunt-depicted-kinds/spec.md",
+          "observed_at": "2026-10-22"
+        }
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "that a hierarchy with Fuls's Catalog ranked would resolve most disputes cleanly enough that recording them is excess caution",
+        "verdict_rule": "compliance is judged by the entry log's contested rows and the v2 census's contested count matching them",
+        "evidence_origin_groups": [
+          "spec045-contract"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      }
+    },
+    {
+      "id": "F073-C11",
+      "kind": "requirement",
+      "text": "A resolved sign that no ruled published source depicts receives depicted_kind = unidentified with the sources searched recorded; unidentified is never pooled into any kind and is never read, by this spec or in its reporting, as not animal or not celestial.",
+      "status": "draft",
+      "boundary": "The field form is Spec 045 section 2.2's (an unidentified row records the sources searched in place of a citation), carried in spec section 5.3. Carried from the draft text: Asset A v1 itself carries exactly one unidentified row (M059, per its entry log) - the value is part of the asset's honest vocabulary, and v2's census reports its unidentified count beside the kinds, never inside them.",
+      "depends_on": [
+        "F073-C09"
+      ],
+      "assumptions": [
+        "ASM-PUBLISHED-SOURCES"
+      ],
+      "alternatives": [
+        "assigning a residual kind (other) to signs no source depicts, to keep the universe fully classified (refused: other is a depicted kind in the design's vocabulary - a source's statement that a sign depicts a non-animal, non-human, non-sky, non-goods object - not a bin for silence)"
+      ],
+      "falsification_tests": [
+        "inspection is the operative check: every unidentified row names its sources searched; any unidentified row carrying a kind inference, or any coverage statement pooling unidentified into a kind, falsifies compliance"
+      ],
+      "evidence": [
+        {
+          "ref": "specs/045-hunt-depicted-kinds/spec.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 045's frozen text, sections 2-3 read first-hand at this draft: the Asset A contract (field set 2.2, source hierarchy 2.3, blind-entry rule 2.4, dispute rule 2.5, D-18 input form 2.6, build gates A1-A6 in section 3) and the coverage-scope restatement DD-045-18 (the full pinned-crosswalk universe, 187 distinct sign keys).",
+          "source_id": "specs/045-hunt-depicted-kinds/spec.md",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "specs/069-hunt-asset-a/asset-a/asset-a-freeze.json",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 069's executed Asset A freeze record, read first-hand at this draft: canonical CSV SHA-256 952319355098698f01e6d8499b0384f84ac964e1bc4ecdc03c77ed920c7a5b5b (recomputed at this draft); 187 rows; per-kind census animal 20, sky_cycle 0, object_goods 14, human 25, other 127, contested 0, unidentified 1; contract Spec 045 sections 2-3 under freeze digest 5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a; crosswalk pin 4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf (205 rows, 187 distinct sign keys).",
+          "source_id": "specs/069-hunt-asset-a/asset-a/asset-a-freeze.json",
+          "observed_at": "2026-10-22"
+        }
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "that an unidentified-heavy v2 would be less useful than one that guesses, so guessing is the pragmatic course",
+        "verdict_rule": "compliance is judged by the entry log and by M3/M4's reporting form (unkeyed and unidentified remainders listed, never pooled)",
+        "evidence_origin_groups": [
+          "spec045-contract",
+          "asset-a"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      }
+    },
+    {
+      "id": "F073-C12",
+      "kind": "requirement",
+      "text": "Coverage is reported as measurements against the reproduced baselines - M1 registry Wells coverage against 498; M2 the five named codes' dispositions by name; M3 keyable shares against 26 of 31 and 285 of 557 with remainders listed sign by sign; M4 Asset A v2's census by kind and origin; M5 the residual shortfall in the headline block - whatever the measured values are.",
+      "status": "draft",
+      "boundary": "The measurement set and its join route (DD-070-9's route restated against the v2 files) are spec section 6's; the joins run only after both product digests exist. Carried from the draft text: no coverage figure appears anywhere in this spec's design as a target, a floor, or a success condition - the outcome classes of section 7 turn on the gates and on whether the shortfall is named, not on the size of any share.",
+      "depends_on": [
+        "F073-C04",
+        "F073-C07",
+        "F073-C08"
+      ],
+      "assumptions": [
+        "ASM-KEYING-FAILURE-RECORD",
+        "ASM-GRADE-DISCIPLINE"
+      ],
+      "alternatives": [
+        "setting a coverage floor the repair must clear to count as repaired (refused: a floor would convert a measurement study into a target hunt and invite exactly the label-fitting the blind-entry rule forbids; the honest classes are REPAIRED and REPAIRED WITH NAMED SHORTFALL)"
+      ],
+      "falsification_tests": [
+        "inspection is the operative check: the outcome record's headline block exhibits M1-M5 with remainders listed; any coverage figure in the record that cannot be recomputed from the two digested products and the pinned corpus falsifies the record"
+      ],
+      "evidence": [
+        {
+          "ref": "specs/070-hunt-opening-signs-successor/outcome.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 070's merged outcome record (Phase 433), read first-hand at this draft: closure POPULATION NOT KEYED at gate 0.4; the 31-sign opening-strong set; the five unkeyable codes 136 (6 occ.), 298 (7), 401 (5), 617 (56), 824 (16); the finding verified there that no registry row in any numbering system carries W136, W298, W401, W617 or W824; and the sentence naming this repair as the successor's first task.",
+          "source_id": "specs/070-hunt-opening-signs-successor/outcome.md",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "specs/071-hunt-sky-signs-successor/outcome.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 071's merged outcome record (Phase 434), read first-hand at this draft: closure INVALID at gate 0.3; the 557-sign primary-population census (285 keyed; 134 with no resolution in the registry's parpola_1982 Wells map; 138 resolving to registry signs outside Asset A's 187-row universe); Asset A's celestial class empty (0 sky_cycle rows) against the spec's TOO THIN floor of 30; and the two repairs the record names for a successor.",
+          "source_id": "specs/071-hunt-sky-signs-successor/outcome.md",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "The adopted Shakti intake record (P-F1, gates S1-S4), read at this draft: corpus SHA-256 345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68; row-grades SHA-256 02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739; census 5,704 rows / 5,536 analyzable; grades 3,212 documented / 2,087 corroborated / 405 uncorroborated; 713 distinct signs; 77 sites.",
+          "source_id": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+          "observed_at": "2026-10-22"
+        }
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "that without a floor the study could declare success on a trivial improvement (answered on the record: the classes are distinguished by the named shortfall, and a one-sign improvement with 271 named shortfalls reads exactly as what it is)",
+        "verdict_rule": "compliance is judged by the headline block's completeness against section 6's measurement list",
+        "evidence_origin_groups": [
+          "spec070-outcome",
+          "spec071-outcome",
+          "shakti-intake"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      }
+    },
+    {
+      "id": "F073-C13",
+      "kind": "requirement",
+      "text": "The celestial class in Asset A v2 is a measurement, never a target: a sky_cycle row exists only where a ruled published source's own words depict a sky or cycle object for that sign, and if the sources support no such rows the recorded output is that the class is empty or thin and the sky-signs question remains untestable in this form.",
+      "status": "draft",
+      "boundary": "Baseline D is Asset A v1's census: sky_cycle 0 of 187, against Spec 071's recorded TOO THIN floor of 30 members - stated in spec section 8 as a limit fixed in advance. Carried from the draft text: M4 sets v2's celestial census beside that floor as a bare comparison of numbers, not a scoring of Spec 071, whose gate never ran on v2; no row is created, split, or re-labelled to fill the class.",
+      "depends_on": [
+        "F073-C11",
+        "F073-C12"
+      ],
+      "assumptions": [
+        "ASM-PUBLISHED-SOURCES",
+        "ASM-BLIND-ENTRY"
+      ],
+      "alternatives": [
+        "treating generic round or star-like glyph shapes as celestial on the enterer's reading of the drawing (refused: that is visual judgement, excluded as evidence by F073-C05; the class fills from published words or it does not fill)"
+      ],
+      "falsification_tests": [
+        "inspection is the operative check: every sky_cycle row in v2 quotes its governing source's depiction wording; a sky_cycle row whose quoted wording does not depict a sky/cycle object falsifies compliance and is an entry defect"
+      ],
+      "evidence": [
+        {
+          "ref": "specs/069-hunt-asset-a/asset-a/asset-a-freeze.json",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 069's executed Asset A freeze record, read first-hand at this draft: canonical CSV SHA-256 952319355098698f01e6d8499b0384f84ac964e1bc4ecdc03c77ed920c7a5b5b (recomputed at this draft); 187 rows; per-kind census animal 20, sky_cycle 0, object_goods 14, human 25, other 127, contested 0, unidentified 1; contract Spec 045 sections 2-3 under freeze digest 5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a; crosswalk pin 4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf (205 rows, 187 distinct sign keys).",
+          "source_id": "specs/069-hunt-asset-a/asset-a/asset-a-freeze.json",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "specs/071-hunt-sky-signs-successor/outcome.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 071's merged outcome record (Phase 434), read first-hand at this draft: closure INVALID at gate 0.3; the 557-sign primary-population census (285 keyed; 134 with no resolution in the registry's parpola_1982 Wells map; 138 resolving to registry signs outside Asset A's 187-row universe); Asset A's celestial class empty (0 sky_cycle rows) against the spec's TOO THIN floor of 30; and the two repairs the record names for a successor.",
+          "source_id": "specs/071-hunt-sky-signs-successor/outcome.md",
+          "observed_at": "2026-10-22"
+        }
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "that the field's published lists must somewhere call some signs celestial, so an empty v2 class would prove the entry was done badly rather than the record being thin",
+        "verdict_rule": "compliance is judged by the quoted wordings of v2's sky_cycle rows and by M4's plain statement of the census",
+        "evidence_origin_groups": [
+          "asset-a",
+          "spec071-outcome"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      }
+    },
+    {
+      "id": "F073-C14",
+      "kind": "requirement",
+      "text": "Every source the freeze rules as governing or corroborating is exhibited in hand and pinned before entry begins; a named source not in hand closes the run as SOURCE NOT IN HAND with the source named, and no source is substituted, added, dropped, or silently narrowed at run time.",
+      "status": "draft",
+      "boundary": "The candidates and their draft-time states are spec section 2's table - including the honestly unstated one: Wells 1998's full text is resolved at record level, and its in-hand state is not asserted at this draft, so the freeze rules its standing in light of what gate 0.3 can exhibit. Carried from the draft text: discovery mid-build that a source's text is incomplete for the signs it was ruled to govern is the same closure, recorded when found.",
+      "depends_on": [
+        "F073-C05"
+      ],
+      "assumptions": [
+        "ASM-PUBLISHED-SOURCES"
+      ],
+      "alternatives": [
+        "proceeding with the sources that happen to be in hand and noting the gap in the outcome (refused: a source set narrowed at run time changes the hierarchy's meaning per sign, invisibly; the freeze rules the set, the gate exhibits it, or the run closes)"
+      ],
+      "falsification_tests": [
+        "gate 0.3 is the operational test: the step-0 record exhibits each ruled source with its pin; any ruled source unexhibited closes the run as SOURCE NOT IN HAND, named"
+      ],
+      "evidence": [
+        {
+          "ref": "glossa-corpus PROVENANCE entry 27 (program record)",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "PROVENANCE entry 27 as recorded in the parent programme record and restated at this draft: the owner holds both Fuls print volumes in full - Vol. I Corpus of Indus Inscriptions (583 pp., PDF SHA-256 185fd0575d881568583a7002d705b2ded1313a525fafe093108f72e0fe897727) and Vol. II A Catalog of Indus Signs (571 pp., PDF SHA-256 31729a4f7b33bd1ec08633bb677f963b5de8f50d96afdfc25cff5ddc96f9a32a) - hashed on the owner's desktop, with April-2026 OCR texts in the intake tree as locators; the acquisition memo's purchase step is closed as unnecessary. Bibliographic pins re-verified at the freeze (OPEN-073-9).",
+          "source_id": "provenance-entry-27",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "specs/045-hunt-depicted-kinds/spec.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 045's frozen text, sections 2-3 read first-hand at this draft: the Asset A contract (field set 2.2, source hierarchy 2.3, blind-entry rule 2.4, dispute rule 2.5, D-18 input form 2.6, build gates A1-A6 in section 3) and the coverage-scope restatement DD-045-18 (the full pinned-crosswalk universe, 187 distinct sign keys).",
+          "source_id": "specs/045-hunt-depicted-kinds/spec.md",
+          "observed_at": "2026-10-22"
+        }
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "that the Fuls volumes' presence on the owner's desktop, rather than in the repository tree, makes them not in hand (answered on the record: in hand means exhibited and inspectable by the enterer under its provenance terms, as CISI 3.1 already is for other specs)",
+        "verdict_rule": "compliance is judged by the gate 0.3 exhibit",
+        "evidence_origin_groups": [
+          "provenance",
+          "spec045-contract"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      }
+    },
+    {
+      "id": "F073-C15",
+      "kind": "hypothesis",
+      "text": "The published lists, taken together under the freeze-ruled hierarchy, identify materially more of the corpus's attested signs than the pinned registry and Asset A now carry, so the repaired surface's keyable shares exceed the recorded baselines (26 of 31; 285 of 557) and its Wells map exceeds 498 ids.",
+      "status": "draft",
+      "boundary": "This is the design's working hypothesis (spec section 1.2), not a promised result: it is falsifiable in whole or in part, per sign and per share, and each failure mode is a recorded output of the study - a named code still NO PUBLISHED IDENTITY, a share at or below baseline, a celestial class still empty. Carried from the draft text: the hypothesis's plausibility rests on the ICIT-native published catalogue (Fuls 2023) postdating the lists the registry was built from; that is a reason to run the study, not a premise of it.",
+      "depends_on": [
+        "F073-C12"
+      ],
+      "assumptions": [
+        "ASM-PUBLISHED-SOURCES",
+        "ASM-KEYING-FAILURE-RECORD"
+      ],
+      "alternatives": [
+        "the rival that the registry's gaps are not staleness but the published record's real limits - the ICIT tradition numbers signs its published lists nowhere depict - in which case the correct output is REPAIRED WITH NAMED SHORTFALL and the Hunt questions stay unkeyable from published sources in this form"
+      ],
+      "falsification_tests": [
+        "the measurements M1-M5 are the falsification test: the hypothesis fails in any limb whose measured value does not exceed its baseline, and the outcome record states each limb's result separately"
+      ],
+      "evidence": [
+        {
+          "ref": "specs/070-hunt-opening-signs-successor/outcome.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 070's merged outcome record (Phase 433), read first-hand at this draft: closure POPULATION NOT KEYED at gate 0.4; the 31-sign opening-strong set; the five unkeyable codes 136 (6 occ.), 298 (7), 401 (5), 617 (56), 824 (16); the finding verified there that no registry row in any numbering system carries W136, W298, W401, W617 or W824; and the sentence naming this repair as the successor's first task.",
+          "source_id": "specs/070-hunt-opening-signs-successor/outcome.md",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "specs/071-hunt-sky-signs-successor/outcome.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 071's merged outcome record (Phase 434), read first-hand at this draft: closure INVALID at gate 0.3; the 557-sign primary-population census (285 keyed; 134 with no resolution in the registry's parpola_1982 Wells map; 138 resolving to registry signs outside Asset A's 187-row universe); Asset A's celestial class empty (0 sky_cycle rows) against the spec's TOO THIN floor of 30; and the two repairs the record names for a successor.",
+          "source_id": "specs/071-hunt-sky-signs-successor/outcome.md",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "data/crosswalks/canonical_sign_registry.csv",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "The pinned canonical sign registry, recomputed first-hand at this draft: SHA-256 8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420; 803 rows (396 parpola_1982, 407 yajnadevam_glyphid with no wells_ids); the parpola_1982 Wells map carries 498 distinct Wells ids (tokenised on |); W136, W298, W401, W617, W824 appear in no row's wells_ids.",
+          "source_id": "data/crosswalks/canonical_sign_registry.csv",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "glossa-corpus PROVENANCE entry 27 (program record)",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "PROVENANCE entry 27 as recorded in the parent programme record and restated at this draft: the owner holds both Fuls print volumes in full - Vol. I Corpus of Indus Inscriptions (583 pp., PDF SHA-256 185fd0575d881568583a7002d705b2ded1313a525fafe093108f72e0fe897727) and Vol. II A Catalog of Indus Signs (571 pp., PDF SHA-256 31729a4f7b33bd1ec08633bb677f963b5de8f50d96afdfc25cff5ddc96f9a32a) - hashed on the owner's desktop, with April-2026 OCR texts in the intake tree as locators; the acquisition memo's purchase step is closed as unnecessary. Bibliographic pins re-verified at the freeze (OPEN-073-9).",
+          "source_id": "provenance-entry-27",
+          "observed_at": "2026-10-22"
+        }
+      ],
+      "metadata": {
+        "framework_kind": "hypothesis",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "the rival stated in alternatives: that the gaps are the published record's limits, not the registry's staleness",
+        "verdict_rule": "judged limb by limb from M1-M5 against Baselines A-D as reproduced at gate 0.2; no aggregate score is computed",
+        "evidence_origin_groups": [
+          "spec070-outcome",
+          "spec071-outcome",
+          "registry",
+          "provenance"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      }
+    },
+    {
+      "id": "F073-C16",
+      "kind": "requirement",
+      "text": "Agreement between Registry v2's ICIT identities and the Shakti corpus's numbering is reported, wherever the coverage figures appear, as consistency within the ICIT tradition - the corpus is ICIT-lineage and the repair's ICIT sources are that tradition's published lists - and never as independent corroboration of either.",
+      "status": "draft",
+      "boundary": "The fence is P-F1 S3's lineage statement applied to this study's own products, stated in spec sections 6 and 8. Carried from the draft text: the statement travels with M1-M5 into the headline block; a coverage figure quoted without it, in any product of this spec, is a reporting defect.",
+      "depends_on": [
+        "F073-C12"
+      ],
+      "assumptions": [
+        "ASM-LINEAGE",
+        "ASM-GRADE-DISCIPLINE"
+      ],
+      "alternatives": [
+        "presenting a completed keying surface as cross-tradition validation of the corpus's transcriptions (refused: the surface and the corpus share the ICIT ancestry the provenance audit documented; the repair tests coverage of a join, not correctness of a transcription)"
+      ],
+      "falsification_tests": [
+        "inspection is the operative check: the headline block and every coverage table in the execution record carry the lineage statement; its absence from any of them falsifies compliance"
+      ],
+      "evidence": [
+        {
+          "ref": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "The adopted Shakti intake record (P-F1, gates S1-S4), read at this draft: corpus SHA-256 345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68; row-grades SHA-256 02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739; census 5,704 rows / 5,536 analyzable; grades 3,212 documented / 2,087 corroborated / 405 uncorroborated; 713 distinct signs; 77 sites.",
+          "source_id": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+          "observed_at": "2026-10-22"
+        },
+        {
+          "ref": "specs/071-hunt-sky-signs-successor/outcome.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 071's merged outcome record (Phase 434), read first-hand at this draft: closure INVALID at gate 0.3; the 557-sign primary-population census (285 keyed; 134 with no resolution in the registry's parpola_1982 Wells map; 138 resolving to registry signs outside Asset A's 187-row universe); Asset A's celestial class empty (0 sky_cycle rows) against the spec's TOO THIN floor of 30; and the two repairs the record names for a successor.",
+          "source_id": "specs/071-hunt-sky-signs-successor/outcome.md",
+          "observed_at": "2026-10-22"
+        }
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "that because Fuls's catalogue is a published scholarly source, its agreement with the corpus is independent evidence in the ordinary way",
+        "verdict_rule": "compliance is judged by the execution record's headline block and tables",
+        "evidence_origin_groups": [
+          "shakti-intake",
+          "spec071-outcome"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      }
+    }
+  ]
+}

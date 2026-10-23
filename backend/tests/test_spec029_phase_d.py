@@ -439,12 +439,21 @@ def test_pred_register_document_untouched():
     # provenance reconciliation note (insertions
     # only, no existing entry altered), as Spec
     # 038's register-handling claim (F038-C10)
-    # prescribes for the authorised change. Any
-    # further drift from this hash is unauthorised.
+    # prescribes for the authorised change. It was
+    # advanced an eighth time, by name, for the
+    # owner-ordered registration append of
+    # 2026-10-21 under campaign ruling E-4: the
+    # PRED-2026-012 entry added to register
+    # section 3 and its dated note in section 6
+    # (the registry-frame successor to
+    # PRED-2026-007, governed by Spec 043;
+    # insertions only, no existing entry altered).
+    # Any further drift from this hash is
+    # unauthorised.
     digest = hashlib.sha256(
         (_REPO_ROOT / "docs" / "PREDICTION_REGISTER.md").read_bytes()
     ).hexdigest()
-    assert digest == "f281bd674d7651e9c13351bad7cb321bd55000cd3f087a38276a4451fbbf7ef3"
+    assert digest == "254ccf039cf04cf2882e04c8658381cc05573163651ed5d478697058aa424984"
 
 
 # ── Script contract: shapes, states, idempotency ─────────────────────────

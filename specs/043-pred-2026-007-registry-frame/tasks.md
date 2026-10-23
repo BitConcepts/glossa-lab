@@ -1,12 +1,31 @@
 # Spec 043 — Tasks
 
-> ## PLAN — FOR FREEZE DECISION — 2026-10-21
+> ## PLAN — FROZEN 2026-10-21
 >
 > Adjudication inputs are recorded in
 > `adjudication.md` (the owner's successor order of
-> 2026-10-21, drafting only). The freeze and the
-> execution are separate owner gates; nothing here
-> has been frozen, filed, or run.
+> 2026-10-21, drafting only; §6 the campaign
+> ruling E-4; §7 the freeze decisions). The
+> freeze was taken under the campaign plan
+> approved AS WRITTEN on 2026-10-21 (Wave 2,
+> delegated), which is also this member's Wave 3
+> execution authorization (`adjudication.md`
+> §7.6); the execution tasks run as Phase-410
+> under the frozen contract, awaiting the OSF
+> registration's verified approval.
+>
+> **Freeze repair (2026-10-21, pre-merge):** the
+> freeze PR's first CI run failed on exactly one
+> test — Spec 029's Phase D register pin
+> (`test_pred_register_document_untouched`),
+> stale since the Wave-1 PRED-2026-012 append.
+> The pin was advanced an eighth time, by name,
+> for that append (insertions-only verified
+> against main), in the test's own recorded
+> form. The repaired file is not a Spec 043
+> digest-covered source, so the freeze digest
+> and the OSF registration (vmcra) are
+> unaffected.
 
 ## Lifecycle
 
@@ -34,8 +53,7 @@
       DRAFT PR and left unmerged for the owner's
       freeze decision, CI state reported from the
       run's own conclusions.
-- [ ] **L4 — AEE lifecycle hooks (FREEZE GATE — not
-      run on this draft).** At the freeze act, run
+- [x] **L4 — AEE lifecycle hooks (FREEZE GATE).** At the freeze act, run
       `run_aee.py assess` after_specify, after_plan,
       and after_tasks over the claim register under
       the programme's adopted aee pin (1.5.x), with
@@ -45,7 +63,7 @@
       recorded. Any recovery round changes claim
       text, and the freeze digest is computed over
       the recovered register exactly once, at freeze.
-- [ ] **L5 — Freeze-stage verification (FREEZE
+- [x] **L5 — Freeze-stage verification (FREEZE
       GATE).** Re-verify spec §4's pins against the
       merged record and the executing environment:
       the registry at `8a0b2a82…`, the builder at
@@ -54,11 +72,14 @@
       `623a787d…`, the characterisation at
       `54ebf660…`, and the register at its then-current
       hash. Decide DD-043-10, DD-043-11, DD-043-12;
-      confirm or decline DD-043-6's reading; record
-      DD-043-13's allocation. Failure of any pin is
+      DD-043-6's reading stands superseded by
+      campaign ruling E-4 (`adjudication.md` §6);
+      record DD-043-13's allocation (Phase-410).
+      All decided at the freeze (`adjudication.md`
+      §7); every pin re-asserted by two routes. Failure of any pin is
       recorded and bars the freeze; no pin is
       refreshed silently.
-- [ ] **L6 — Freeze.** On the owner's freeze order,
+- [x] **L6 — Freeze.** On the owner's freeze order,
       with L4 and L5 passed: hooks recorded,
       `freeze.md` finalised, `freeze.json` computed
       over the recovered register and finalised

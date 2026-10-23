@@ -1,59 +1,45 @@
 # Spec 043 — PRED-2026-012 at full population, corrected frame: the canonical sign registry as primary source, a documentary provenance gate on the function codes (successor to Spec 038)
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-21
+> ## FROZEN — 2026-10-21
 >
-> This is a **draft** design contract, written
-> under the owner's order of 2026-10-21 ("Do the
-> successor"), recorded in `adjudication.md`.
-> It is the successor to **Spec 038**, whose
-> frozen design closed at its step 0.2 on
-> 2026-10-20 as **CANNOT BE RUN AS WRITTEN**
-> (unscored): the population frame it froze
-> named the CGSA analysis file's `icit_function`
-> field as the source of the ITM codes, and
-> that field carries no coded values (§0.3).
-> This draft corrects the frame — the canonical
-> sign registry as primary source, its coded
-> values verified at draft and its population
-> listed in §2 — and adds the gate Spec 038's
-> record made unavoidable: a documentary
-> **provenance gate** (§4, check 0.3) on what
-> the ITM assignments rest on, faced head-on
-> in §3. It scores the successor prediction
-> **PRED-2026-012**, registered 2026-10-21
-> under the owner's campaign ruling E-4,
-> which carries PRED-2026-007's frozen
-> criterion verbatim, with corrected
-> machinery. It does not rewrite that
-> criterion, its bar, or its population
-> definition, and PRED-2026-007's own record
-> stands untouched.
->
-> Number: Spec 041 is the site × local-label
-> period-mapping act and Spec 042 is the Arm B
-> object-type split, both drafted 2026-10-21,
-> so this draft takes **Spec 043** — the next
-> free number. The execution phase number is
-> allocated at the freeze act (DD-043-13).
->
-> Nothing in this draft is frozen and nothing
-> is executed. The freeze is a separate owner
-> decision — at which the AEE lifecycle hooks
-> run as a gate under the programme's current
-> aee pin — and execution is a further separate
-> owner decision. **What this draft computed,
-> stated openly:** a mechanical census of the
-> pinned registry's `icit_function` column and
-> a re-derivation check of that column against
-> the pinned builder rule (§2, `adjudication.md`
-> §2). Those are design inputs this frame
-> requires — the population is listed in the
-> draft, as the corrected design prescribes.
-> **No Phase 5 assignment has been looked up
-> for any sign the register's own Tested note
-> does not already name** (P056, P324, and P310
-> were not looked up), and no share has been
-> computed.
+> Frozen under the runnable-experiments campaign
+> plan approved by the owner AS WRITTEN on
+> 2026-10-21 (Wave 2 freeze wave, delegated;
+> `adjudication.md` §7). That campaign approval
+> is also this member's Wave 3 execution
+> authorization: the register's PRED-2026-012
+> scoring gate ("registration alone is not a
+> scoring order; scoring requires Spec 043's
+> freeze and a separate owner execution order")
+> is answered by the campaign approval itself,
+> which orders this member's execution in
+> Wave 3 (campaign plan Part 4); execution
+> additionally awaits the verified approval of
+> this spec's OSF contract registration
+> (DD-043-11, filed at this freeze under
+> campaign E-1). The AEE lifecycle hooks ran
+> over the register first (register recovered
+> to 0.7-draft; `aee/freeze-aee-note.md`), and
+> the digest in `freeze.json` was then computed
+> **exactly once** over the recovered register
+> and the finalised freeze texts (the Spec 035
+> ordering). The freeze resolved the draft's
+> open points (`adjudication.md` §7):
+> **DD-043-10** (the provenance gate's
+> borderline standard adopted as drafted — a
+> basis counts only if stated in words with a
+> locator), **DD-043-11** (this spec files its
+> own OSF contract registration, campaign E-1),
+> **DD-043-12** (the LOG class is
+> enumerated-only; no LOG quantity is scored),
+> **DD-043-13** (execution phase allocated as
+> **Phase-410**), and **DD-043-14** (the
+> DD-038-10 AEE gate reading adopted). The
+> freeze runs nothing: the step-0 provenance
+> adjudication (check 0.3) is an execution act,
+> not a freeze act, and no Phase 5 assignment
+> has been looked up under this contract beyond
+> the three signs the register itself names.
 
 ## 0. Basis
 
@@ -1212,7 +1198,7 @@ this clustering at the registered rate, and
 refutes nothing beyond the registered
 criterion as registered.
 
-## 11. Execution shape (phase allocated at freeze — NOT run by this spec)
+## 11. Execution shape (Phase-410, allocated at the freeze — NOT run by this spec)
 
 1. **Graph-first build** (H15/H23): experiment
    script, graph module, registration in the
@@ -1492,8 +1478,10 @@ The governed register is `claims.json`
   provenance record; this spec's execution
   appends its outcome entry and gate finding
   only (§8).
-- **DD-043-10 — OPEN for the freeze: the
-  provenance gate's borderline standard.**
+- **DD-043-10 — DECIDED AT FREEZE
+  (2026-10-21): the provenance gate's
+  borderline standard — the draft
+  recommendation is ADOPTED.**
   The gate's mechanics are fixed (DD-043-4);
   what is open is the adjudication standard
   for documents whose basis statements are
@@ -1509,19 +1497,27 @@ The governed register is `claims.json`
   not count; borderline calls are recorded in
   the step-0 record with the quoted text, so
   the determination is checkable. Silence is
-  already fixed as failure (§3.3).
-- **DD-043-11 — OPEN for the freeze: a
-  spec-level OSF registration.** Specs 032–039
-  each filed their own OSF contract
-  registration at freeze; PRED-2026-007 itself
-  predates that practice. Proposal to the
-  freeze decision: file this frozen spec's own
-  OSF contract registration, following the
-  house pattern. This draft files nothing.
-- **DD-043-12 — OPEN for the freeze: the LOG
-  class's role.** Enumerated-only (this
-  draft's design: the LOG census and trace
-  are recorded; no LOG quantity is scored), or
+  already fixed as failure (§3.3). Decided in
+  `adjudication.md` §7: the recommendation is
+  adopted as written, and the executor of the
+  step-0 record adjudicates borderline
+  documents under it, quoting the text relied
+  on.
+- **DD-043-11 — DECIDED AT FREEZE
+  (2026-10-21): a spec-level OSF registration
+  — YES.** Specs 032–039 each filed their own
+  OSF contract registration at freeze;
+  PRED-2026-007 itself predates that practice.
+  This frozen spec files its own OSF contract
+  registration at the freeze, under campaign
+  decision E-1 (`adjudication.md` §7; record in
+  `osf-spec-registration.md`).
+- **DD-043-12 — DECIDED AT FREEZE
+  (2026-10-21): the LOG class's role —
+  ENUMERATED-ONLY.** The draft framed the
+  choice as enumerated-only (this draft's
+  design: the LOG census and trace are
+  recorded; no LOG quantity is scored) versus
   scored as a control class alongside the ITM
   verdict (its TERMINAL share computed and
   published as a descriptive contrast, under
@@ -1529,23 +1525,31 @@ The governed register is `claims.json`
   criterion and moving no verdict — with the
   provenance gate's LOG trace then gating the
   control under DD-043-10's standard). The
-  freeze decides; the draft enumerates either
-  way.
-- **DD-043-13 — OPEN for the freeze: the
-  execution phase number**, allocated at the
-  freeze act against the phases then reserved
-  (Phase-401 was Spec 038's; Specs 041/042
-  likewise allocate at their freezes). Nothing
-  in the design turns on the number.
-- **DD-043-14 — The freeze gate.** This draft
-  runs **no** AEE lifecycle hooks; at the
-  freeze act the hooks (after_specify /
-  after_plan / after_tasks) run as the gate
-  under the programme's adopted aee pin
-  (1.5.x), the gate reading of DD-038-10
-  applying to this draft-stage register, and
-  any freeze digest is computed over the
-  recovered register exactly once, at freeze.
+  freeze rules as the draft frames it and
+  adopts the draft's design: enumerated-only.
+  A two-sign descriptive share would carry no
+  criterion and would invite reading as a
+  second result; the LOG census and the gate's
+  LOG trace are recorded either way, and the
+  trace gates nothing (`adjudication.md` §7).
+- **DD-043-13 — DECIDED AT FREEZE
+  (2026-10-21): the execution phase number is
+  Phase-410**, allocated at the freeze act
+  against the phases then reserved (Phase-401
+  was Spec 038's; Specs 041/042 likewise
+  allocate at their freezes). Nothing in the
+  design turns on the number.
+- **DD-043-14 — The freeze gate (run at the
+  freeze, 2026-10-21).** This draft ran **no**
+  AEE lifecycle hooks; at the freeze act the
+  hooks (after_specify / after_plan /
+  after_tasks) ran as the gate under the
+  programme's adopted aee pin (1.5.0), the
+  gate reading of DD-038-10 applying to this
+  draft-stage register, and the freeze digest
+  was computed over the recovered register
+  exactly once, at freeze (`adjudication.md`
+  §7; `aee/freeze-aee-note.md`).
 
 ---
 

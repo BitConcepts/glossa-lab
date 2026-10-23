@@ -129,7 +129,7 @@ After reproduction, verify:
 
 | Step | Issue | Mitigation |
 |------|-------|------------|
-| SA phonotactic experiments | LLM inference is stochastic | Pin model version; report mean_consistency ± std |
+| SA phonotactic experiments | LLM inference is stochastic — it involves randomness, so results vary between runs | Pin model version; report mean_consistency ± std |
 | holdatllc ingestion | Requires external GitHub repo | Local copy retained in data_raw/ |
 | Yajnadevam SQL | GPL-3.0 source; subject to upstream changes | SQL dump archived locally |
 | P385 phoneme test | Requires Ollama running locally | Document model: `mistral-nemo:12b` |

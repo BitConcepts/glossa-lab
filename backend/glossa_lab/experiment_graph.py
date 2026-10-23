@@ -3099,6 +3099,26 @@ try:
     logger.info("Registered %d Phase-429 (spec 067) nodes", len(list(_p429_defs())))
 except Exception as _p429_exc:  # noqa: BLE001
     logger.warning("Phase-429 (spec 067) nodes not registered: %s", _p429_exc)
+# ── Phase-432 node (spec 069: Asset A build, gates A1-A6) ──
+try:
+    from glossa_lab.experiment_graph_phase432 import (
+        _phase432_node_defs as _p432_defs,  # noqa: PLC0415
+    )
+    for _d in _p432_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-432 (spec 069) nodes", len(list(_p432_defs())))
+except Exception as _p432_exc:  # noqa: BLE001
+    logger.warning("Phase-432 (spec 069) nodes not registered: %s", _p432_exc)
+# ── Phase-431 node (spec 072: fish-family profiles, ICIT numbering, Shakti corpus) ──
+try:
+    from glossa_lab.experiment_graph_phase431 import (
+        _phase431_node_defs as _p431_defs,  # noqa: PLC0415
+    )
+    for _d in _p431_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-431 (spec 072) nodes", len(list(_p431_defs())))
+except Exception as _p431_exc:  # noqa: BLE001
+    logger.warning("Phase-431 (spec 072) nodes not registered: %s", _p431_exc)
 # ── Phase-410 node (spec 043: PRED-2026-012 registry frame, step 0) ──
 try:
     from glossa_lab.experiment_graph_phase410 import (

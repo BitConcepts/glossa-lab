@@ -10167,3 +10167,41 @@ Nothing submitted, deposited, or published; PR #353 not merged.
 
 AI disclosure: executed by an AI agent (Muse, via Muse)
 at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-23 — Preprint v8 red-team round 4: adjudicated and revised (R4R-01..R4R-21)
+
+Round 4 of the independent red-team pass on preprint v8 (attack:
+independent engine, GPT-5.5 via OpenAI API, full text ×4 passes,
+85 raw findings aggregated to 38 items + 68 positives; adjudication
+against primary records: 8 sustained / 9 sustained in part / 20 moot /
+1 not sustained of 38; positives 68/68 confirmed; settlements
+S1–S5). All adjudicated text-bearing replacement blocks
+R4R-01..R4R-21 were applied verbatim to
+glossa-corpus/indus/pierson_2026_indus_decipherment.tex (MOOT items
+and R4-17 not sustained have no replacement; R4R-16 is a class (c)
+record gap with no text; class (b) owner decisions not taken,
+interim text only) — revision commit ba5b4bf9; §6 commit string
+pinned to that commit by pin-only commit 0bf385b4. R4R-01
+re-describes the fish-sign isolation result at all eight locations
+at UNTESTABLE / no-single-sign-inscriptions strength (the corpus
+contains no single-sign inscriptions at all, Phase-134 F9);
+§3.16 sibilant count corrected (6 for the 157-set, 10 current);
+§3.11 markers corrected to 35/161 (21.7%), 0/161 stands; §1.3 S12
+wording aligned with §3.30; §2.2 gains the HIGH-rule limit
+sentence. Protected Roif/Rao text byte-intact; §3.32 still absent;
+no betweenness; Spec 072 insert still HELD. PDF rebuilt with
+TinyTeX XeLaTeX, two passes, exit 0, zero errors, 31 pages,
+SHA-256 ea924ec13f3e8a33fa7045bca386a5baed68bd94357800ceb339e6eedf38e942,
+render-verified (pdftotext); printed word count 17,997 measured
+on the shipped PDF by the adjudicated command (round-3 figure
+17,016). Prescribed survivals flagged in the version note: 39/161
+and 24.2% once each inside R4R-05's corrective sentence; three
+block-standing "compound-only pattern" remainders. Loop NOT
+closed at round 4 per adjudication §D. Still open: the §D owner
+decisions and the §E record gaps (incl. R4-16's seven unrecorded
+§8 identifications); red-team round 5 pending. Record:
+specs/025-paper-search-research-check/audit-2026-10-22/v8_version_note_2026-10-23.md.
+Nothing submitted, deposited, or published; PR #353 not merged.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.

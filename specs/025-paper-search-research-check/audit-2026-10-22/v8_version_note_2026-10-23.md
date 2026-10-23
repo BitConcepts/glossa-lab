@@ -525,3 +525,189 @@ pending; v8 is not cleared for publication until the loop closes.
 
 **Nothing submitted, deposited, or published.** The PR
 (#353) is not merged.
+
+## Red-team round 4 revision (2026-10-23)
+
+Round 4 of the independent red-team pass on v8 (attack: independent
+engine, GPT-5.5 via OpenAI API, full PDF text ×4 passes, 85 raw
+findings aggregated to 38 items, plus 68 positives) was adjudicated
+against the program's primary records by an adjudicator who did not
+draft the paper. Dispositions: **8 sustained / 9 sustained in part /
+20 moot / 1 not sustained of 38; positives 68/68 confirmed**. The
+raw attack and the adjudication are filed beside this note
+(`v8_redteam_round4_raw_2026-10-23.md`,
+`v8_redteam_round4_adjudication_2026-10-23.md`). Round 4 produced
+one genuinely new settlement of fact (S1, the fish-isolation
+tautology), one new contradiction between two printed passages
+(S3), and two new arithmetic settlements (S2: R4-04, R4-05);
+everything else that re-litigated rounds 1–3 was held to its
+precedent (in particular S5: the §5 "favours" sentence stays MOOT
+under R2-06/R3-09).
+
+**Revision applied.** All adjudicated text-bearing replacement
+blocks were applied verbatim to the .tex (formatting conversion
+only), each target passage verified by exact match before
+substitution, locations identified by quoted text: R4R-01, R4R-03,
+R4R-04, R4R-05, R4R-06, R4R-07, R4R-08, R4R-09, R4R-11, R4R-12,
+R4R-13, R4R-15, R4R-18, R4R-21 (class (a)); R4R-10 and R4R-20
+(class (a)+(c) — the interim text applied; the underlying record
+gaps stand in adjudication §E). R4R-16 is class (c), a record gap
+with no text: the seven §8 identifications (Jha & Rajaram 2000;
+Parpola 1975; the five mined Mahadevan titles) remain unrecorded
+and no entry was invented or added. MOOT items (R4-02, R4-14,
+R4-19, R4-22–R4-38) and the NOT SUSTAINED item (R4-17) have no
+replacement. Class (b) owner decisions named in the blocks were
+not taken; only the interim text was applied.
+Load-bearing outcomes, as the S1–S5 settlements were applied:
+**S1 (R4R-01)** — the fish-sign isolation result is re-described
+at all eight locations (abstract, §1.3, §3.5 definition paragraph,
+§3.5 bounds paragraph, §3.19, §4.5, §5, Appendix C): the corpus
+contains no single-sign inscriptions at all (Phase-134 test F9)
+and the Phase-127 record's own conclusion was UNTESTABLE, so the
+count is stated as a fact about the corpus, not a fish-specific
+pattern; the binomial bounds (2.6% / 39% / 63%) are withdrawn as
+isolation-rate estimates and kept only as arithmetic for a corpus
+in which single-sign inscriptions occur; §3.5 also corrects the
+supplemental-file description (27 compound occurrences for M047
+and M001, not an occurrence-by-occurrence listing of all 113
+seals; the M001 mismatch is stated as on record and unresolved).
+**S2 (R4R-04, R4R-05)** — §3.16's sibilant count is tied to its
+set: 6 for the 157-sign set, **10 for the current 161-sign set**;
+§3.11's marker figures are corrected to **35/161 (21.7%)**
+Dravidian-side and **0/161** Sanskrit-side under the test's own
+definition (the 39/161 (24.2%) counting is withdrawn).
+**S3 (R4R-03)** — §1.3 no longer says the blocker plausibility
+check "is not counted" in §3.30: it is counted as item S12 in
+the 32-item tally, listed for completeness, and is not evidence
+that the blocker readings are correct. **S4 (R4R-10)** — §2.2
+gains the HIGH-rule limit sentence for all 75 HIGH signs (same
+recorded evidence-type pair for all 75; §3.3 prints selected rows
+for 12; no criterion-by-criterion pass/fail exists for any HIGH
+sign), and §3.3's lead sentence no longer presents M261's
+published source as itself a §2.2 criterion. **S5** — MOOT, no
+text change (see above). Further cures: §3.30's E07 cross-reference
+corrected to §3.20 and its label aligned to Wells & Fuls (2015)
+(R4R-06, with §3.20's heading and pronouns, R4R-12); §3.18's
+incoherent "sole sign in a 2-sign formula" phrase withdrawn
+(R4R-07); §4.2's "candidate Munda substrate readings" renamed to
+the DEDR-backed wording — after this block, no location calls
+M374 or M351 a Munda substrate reading without the DEDR basis in
+the same sentence (R4R-08); §3.8's "roughly 20" sentence given
+its uncorrected-level qualifier (R4R-09); §4.5's first sentences
+gain the word "open" (R4R-11); §3.29's heading renamed
+"Decode-Blocker Plausibility Check" (R4R-13); §2.3 prints the F7
+split rule (by site: 1,176 fitted / 494 held out; 70.4% / 29.6%;
+no seed) (R4R-15); the abstract's three-slot sentence is tied to
+sign level with the Phase-133 whole-inscription rates (5.1% full,
+38.4% partial) (R4R-18); §3.4 discloses the M267 test's
+token-level unit of analysis (R4R-20); Appendix B no longer
+converts token counts into seal counts (R4R-21). Protected text
+(§8 Roif 2025a/b and both Rao entries; §3.5/§3.19 Roif credit
+paragraphs — kept strictly separate from R4R-01's §3.5/§3.19
+fish-test passages; §7 Roif acknowledgment) is byte-intact in the
+source diff against `a92c53aa`, verified per entry and per
+paragraph before and after the revision (no diff line touches a
+Roif or Rao passage). §3.32 stays out; "betweenness" remains at
+0 hits; the Spec 072 insert stays HELD and unintegrated; no
+earlier settlement was reopened.
+
+**§6 commit pin.** Two-commit procedure, as rounds 1–3. The
+revision was committed with §6 naming `a92c53aa` (the pre-revision
+HEAD, which carries the round-4 adjudication) and the
+pin-explanation sentence kept (revision commit `ba5b4bf9`); a
+second, pin-only commit (`0bf385b4`) changed only the §6 commit
+string to `ba5b4bf9`. §6 therefore names the round-4 revision
+commit, not the pin commit and not `a92c53aa`, and the shipped
+PDF prints `ba5b4bf9`.
+
+**Word count.** The round-3 printed figure was **17,016**. After
+the final build the adjudicated command `pdftotext <pdf> - | wc -w`
+was run on the new PDF (**17,997**), the .tex word-count line was
+set to the measured value, the PDF was rebuilt, and the command
+was re-run — the printed figure equals the shipped PDF's count
+(17,997; the number token is one word either way, so the count is
+stable across the pin rebuild, whose only text change is the §6
+commit string).
+
+**Rebuild.** TinyTeX XeLaTeX (same toolchain and font environment
+fix as the earlier v8 builds — OSFONTDIR covering the system Noto
+directory and the TinyTeX Latin Modern Math directory, plus a
+fontconfig file including the system fonts and the TinyTeX
+texmf-dist font directories), two passes on the final .tex state
+and two on the pin state, all exit 0, **zero errors** in the final
+log (two overfull hboxes, one pre-existing at the §3.8 file-name
+paragraph and one 1.8pt at §3.27; no text runs off the page). PDF:
+`glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v8.pdf`
+— still named v8 (a pre-publication revision of the v8 draft).
+**31 pages** (was 30). **SHA-256:
+ea924ec13f3e8a33fa7045bca386a5baed68bd94357800ceb339e6eedf38e942**
+
+**Render verification (pdftotext of the shipped PDF).** The fish
+result is stated at UNTESTABLE / no-single-sign-inscriptions
+strength in every R4R-01 location: the abstract ("That count is
+not fish-specific evidence: the corpus contains no single-sign
+inscriptions of any kind (Phase-134, test F9)"), §1.3, §3.5
+("gives its own conclusion as 'UNTESTABLE'"), §3.19 ("no
+counterexample to the Holdat count"), §4.5 ("No verdict on a
+fish-specific compound-only rule is claimed"), §5, and Appendix C
+("the corpus contains no single-sign inscriptions, so the count
+is not a fish-specific result"). Absent as claims: "systematic
+fish-sign isolation test"; "A fish-sign isolation test:" (§1.3);
+"compound-only verdict rests"; "fish-sign compound-only pattern"
+(§5); the pooled-rate bound phrasing ("pooled isolated rate is
+bounded"); "occurrence-by-occurrence listing is in". Present:
+35/161 and 21.7% in §3.11, with "35/161 (21.7%) readings with
+Dravidian-side markers"; §3.16's count of 10 for the current
+161-sign set; §1.3's S12 wording matching §3.30 ("counted in
+§3.30's 32-item tally as item S12, listed for completeness");
+the §2.2 HIGH limit sentence ("no record gives a
+criterion-by-criterion pass/fail for any HIGH sign"); the §2.3 F7
+split rule ("The F7 split was by site"); the §3.29 heading
+"Decode-Blocker Plausibility Check"; the §3.20 heading "Wells &
+Fuls (2015) Sign List"; "candidate Munda substrate" at 0 hits;
+§6 commit `ba5b4bf9`; printed word count 17,997; "End of Preprint
+v8". Absent: "betweenness"; §3.32. **Prescribed-string survivals,
+flagged explicitly:** (1) "39/161" and "24.2%" each appear exactly
+once, inside R4R-05's own corrective sentence in §3.11 ("The
+39/161 (24.2%) figure printed in earlier drafts counted the four
+c-initial readings as Dravidian-side markers; that counting
+changed the test's definition and is withdrawn") — not as claims.
+(2) "compound-only pattern" survives in three places the
+adjudication's blocks leave standing: the §1.3 Gulf-search item
+and §4.5 point 2's first sentence, both in the weakened
+"no counterexample … no confirmation" form, and §3.5's sentence
+"The compound-only pattern holds at coastal and inland sites
+alike", which sits in the paragraph remainder R4R-01 expressly
+leaves unchanged (its following sentences fence it as a corpus
+fact, and the same paragraph now carries the UNTESTABLE
+re-description). No other survival of the old fish phrasing was
+found.
+
+**Still-open items.** (1) **Owner decisions (adjudication §D)** —
+the loop does **not** close at round 4 (see the adjudication's
+loop-closure statement): the previously adjudicated owner
+decisions whose interim cures are in place are not reopened —
+corpus release (R3-01), a calibration study for the confidence
+labels (R3-07), the SA/V07 re-base (R3-05, R3-51), the V12
+protocol freeze (R3-45), and archiving the exact v8 source under
+the Zenodo DOI (R3-02) — and block-level decisions named in
+round 4 stand open: whether M176 stays HIGH (R3R-15, standing);
+a seal-level retest of the M267 motif distribution (R4R-20); the
+per-criterion re-audit of the 75 HIGH signs behind R4-10/S4.
+(2) **Record gaps (adjudication §E)** the cures disclose but
+cannot fill: the fish supplement/M001 mismatch and whether F9's
+absence is a corpus inclusion rule (§E.1, new this round); the
+DEDR search space; the SA specification; criterion-level scoring
+for HIGH; the seven unrecorded §8 identifications at R4-16
+(Jha & Rajaram 2000, Parpola 1975, the five mined Mahadevan
+titles); the CISI 87.08% numerator/denominator; the Phase-151
+bootstrap interval type and the Phase-134 permutation seed;
+unrounded M067/M039 expected counts; per-sign seal counts (the
+18 Appendix-B signs; the distinct seals behind M267's 400
+tokens); the formula analysis behind §3.18's withdrawn phrase;
+and the standing round-3 §E gaps carried without change.
+(3) Red-team **round 5** on this revised draft is pending; v8 is
+not cleared for publication until the loop closes.
+
+**Nothing submitted, deposited, or published.** The PR
+(#353) is not merged.

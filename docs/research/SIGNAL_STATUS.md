@@ -30,12 +30,12 @@
 | Evidence | Details |
 |---------|---------|
 | Cross-site stability 85.3% | Full stability rate over 52 sites; Phase 9 gate passed (threshold: 70%) |
-| 40 reproducible structural clusters | Agglomerative clustering is deterministic; reproduced on re-run |
+| 40 reproducible structural clusters | Agglomerative clustering produces the same 40 clusters on every re-run (it is deterministic) |
 | 21.6% entropy reduction | Class-label space reduces sequence entropy by 2.31 bits vs random clustering baseline |
 | holdatllc cross-validation | Two independent INITIAL signs (P086↔M077, P001↔M001) confirmed by completely independent dataset |
 | Nair (2026) scorecard | 4/4 metrics in linguistic-consistent range |
 | Formulaic template coverage | 86.0% of inscriptions contain a recurrent template |
-| SA convergence: Dravidian > Pali, Sanskrit (control) | mean_consistency higher for Dravidian LM in multiple runs |
+| SA convergence: Dravidian > Pali, Sanskrit (control) | mean_consistency higher for the Dravidian language model (LM) in multiple runs |
 | Phase 9 gate explicitly passed | Review gate from CGSA Phase 6 cleared 2026-04-22 |
 
 ---
@@ -66,7 +66,7 @@
 All MODERATE→HIGH blockers, plus:
 - External domain expert (Dr. Fuls or equivalent) must confirm a finding as non-trivial
 - Cross-subset stability must be demonstrated with formal held-out test
-- Deterministic reproducibility must be documented with matched SHA256 hashes
+- Deterministic reproducibility must be documented with matched SHA256 hashes (file fingerprints)
 
 ---
 
@@ -77,7 +77,7 @@ All MODERATE→HIGH blockers, plus:
 | Run held-out prediction on withheld corpus subset | LOW→MODERATE already done; MODERATE→HIGH if prediction confirmed |
 | Acquire ICIT data and re-run | Potential HIGH if 85%+ stability maintained |
 | Dr. Fuls replies with non-trivial confirmation | Contributes to CRITICAL pathway |
-| Bilingual text or IVC-Brahmi evolutionary link found | Would unlock phonetic testing pathway |
+| Bilingual text or an IVC (Indus Valley Civilization)–Brahmi evolutionary link found | Would unlock phonetic testing pathway |
 
 ---
 

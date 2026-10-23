@@ -150,6 +150,18 @@
         ],
         "evidence_level": "FULL TEXT",
         "effect": "No claim status, stage, anchor, or score is changed by this note."
+      },
+      "spec072_outcome_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "spec072-phase431-execution-outcome",
+        "note": "Spec 072 (Phase-431) tested the fish-sign family claim as a family claim under its frozen contract (freeze digest 3925f365bdc452031bb7356f9b357c6d5068da4a835afcfd75b0e9ffa3a69e92; OSF contract registration tc8ey): the seven Asset F fish signs (Mahadevan/Parpola 47, 48, 50, 52, 60, 145, 147) expressed in Wells/ICIT numbering on the Shakti corpus, against a verdict line derived at the freeze from non-fish signs only (L = 0.765, the 95th percentile of the 86-sign reference distribution). Five members were identified in ICIT numbering (M048 = 243, M050 = 220, M060 = 235, M145 = 032, M147 = 033); M047 and M052 were named UNIDENTIFIED IN ICIT and excluded from weighting under the freeze-ruled disposition. Outcome: FAMILY NOT SUPPORTED - no tested member passes the line on the documented-lineage population (M050 fraction 0.4056, M060 0.3010, M145 0.2500, M147 0.0850; tested members' passing token-weighted share w = 0.0000), and the documented + corroborated sensitivity returns the same word. This is a verdict on the family's shared positional behaviour on this corpus under the frozen design; it establishes nothing about what any fish sign meant or was pronounced, and it does not re-open Spec 048's closure or the Phase-43 record. The record is internal under the Roif gate (no publication without citation of Roif 2025a + 2025b and the owner's clearance of the specific act).",
+        "evidence": [
+          "specs/072-fish-family-profiles-redesign/freeze.md",
+          "specs/072-fish-family-profiles-redesign/outcome.md",
+          "reports/phase431_results.json",
+          "reports/phase431_report.md"
+        ],
+        "effect": "No claim status, stage, anchor, or score is changed by this append. The family-level positional claim is recorded as not supported on the Shakti corpus under Spec 072's frozen design; the claim's own wording and fields stand as extracted."
       }
     }
   ],

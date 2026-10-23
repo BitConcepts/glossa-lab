@@ -9832,3 +9832,124 @@ the final record then reproduced byte-identically on a second run).
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+## 2026-10-22 — Spec 069 EXECUTED (Phase-432): ASSET BUILT AND FROZEN
+
+The Asset A build under Spec 045's frozen §§2–3 contract, quoted
+verbatim in Spec 069 (Spec 069 freeze digest 657b930c…; freeze PR #338
+merged at ba61d9cd; OSF registration r3xqb filed at the freeze,
+pending the owner's approval act at the time of the run). Gates A1–A6
+in order, all PASS, before any join: A1 the CISI volumes (vols. 1–2,
+1991) and Parpola's published identifications in hand and named by
+edition — the CISI sign list entered through the held mayig CISI
+digitization, restored from the public upstream at commit ad2f1e2
+after the programme's downloads copy was found missing during a
+concurrent workspace sweep (spot values agree across the loss);
+Parpola 2010 consulted in held form, its numbers not keyable to the
+crosswalk's sign keys, so agreement is single_source throughout and
+no row is contested — recorded openly in the build record. A2 the
+D-18 input re-asserted as Spec 046's terminal empty feed
+(concordance-297.json, SHA-256 772db4df…, signs empty, IDENTIFICATION
+FAILED closure); the build proceeded without the feed and did not
+reconstruct it. Blind double entry with reconciliation: 187 rows
+over the full pinned-crosswalk universe (crosswalk SHA-256
+4ace1a61…, 205 rows / 187 distinct sign keys) — animal 20, sky_cycle
+0, object_goods 14, human 25, other 127, contested 0, unidentified 1
+(M059: no governing identification in any held §2.3 source; sources
+searched recorded). Four borderline rows (P073, P074, P217, P320).
+Asset A SHA-256
+952319355098698f01e6d8499b0384f84ac964e1bc4ecdc03c77ed920c7a5b5b,
+published as the spec's first product in
+specs/069-hunt-asset-a/asset-a/ (canonical CSV, asset-a-freeze.json,
+entry log entry-decisions.json); it is the asserted step-0 input of
+Specs 070 and 071. The zero sky_cycle count is a fact about the held
+published identifications of this universe, recorded as it landed.
+Deterministic (second run byte-identical); anchors byte-identical
+before and after (df0cf620…). Foundation check on the execution
+tree: 40 passed / 0 failed / 8 warnings. Records:
+specs/069-hunt-asset-a/outcome.md, build-record.md,
+reports/phase432_results.json, reports/phase432_report.md.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.
+## 2026-10-12 — Plain-language pass, phase 1 (owner directive)
+
+At the owner's direction (2026-10-12: all papers, analyses, and
+documents in plain language — easy for a general reader, still
+scientifically accurate), a language-only pass was applied to the
+program's living prose documents on branch
+`plain-language-phase1`: docs/research/ DECIPHERMENT_DOSSIER_v1,
+DECIPHERMENT_LIMITS, STRUCTURAL_MODEL, BASELINE_COMPARISON,
+CORPUS_DEFINITION, SIGNAL_STATUS, SIGN_INVENTORY,
+REPRODUCIBILITY_PROTOCOL, NORMALIZATION_RULES (explanatory prose
+only — no rule statement changed), CORPUS_EXPANSION_LEADS, and
+the unpublished v5 addendum draft
+(glossa-corpus/indus/pierson_2026_indus_decipherment_addendum_v5.md).
+Method: jargon replaced where a plain word carries the same
+meaning; irreplaceable technical terms defined in plain words at
+first use. No number, verdict, claim, or conclusion was changed.
+Frozen material was not touched: the v3/v4 preprints and their
+DOIs, the numbered program notes, ledgers and registers, claim
+records, and run reports. Full inventory and classification:
+~/workspace/your_files/2026-10-12-plain-language-inventory.md.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.
+
+## 2026-10-22 — Spec 072 EXECUTED (Phase-431): FAMILY NOT SUPPORTED
+
+Spec 048's question re-designed ICIT-native and executed on the Shakti
+corpus, under the frozen Spec 072 contract (freeze digest
+3925f365bdc452031bb7356f9b357c6d5068da4a835afcfd75b0e9ffa3a69e92; freeze
+PR #341 merged at 862f56d8; OSF registration tc8ey filed at the freeze,
+pending the owner's approval act at the time of the run; execution
+commissioned in the same owner tasking as the freeze). Step 0, in the
+frozen order, PASS in full: gate 0.1 the Shakti intake assertion
+(corpus 345241b1…, row-grades 02394241…, census reproduced exactly —
+5,704 rows / 5,536 analyzable / 3,212 documented / 2,087 corroborated /
+405 uncorroborated / 4,904 CISI-keyed / 18,065 true tokens / 713 signs /
+77 sites); gate 0.2 the Asset F digest assertion (ca5fb1b5…, 7 members,
+Spec 044 §4.2 rule); gate 0.3 the freeze-pinned concordance exhibited
+(M048 = ICIT 243, M050 = 220, M060 = 235, M145 = 032, M147 = 033
+identified; M047 and M052 UNIDENTIFIED IN ICIT under the confirmed
+DD-072-5 disposition — named in every record, excluded from both
+populations' weighting, their ICIT occurrence share not measurable);
+gate 0.4 the census re-derived exactly (primary totals 243: 9 NOT
+SCANNED; 220: 286; 235: 188; 032: 334; 033: 315 — four testable, not
+TOO THIN); gate 0.5 the freeze-fixed verdict line exhibited (L = 0.765,
+95th percentile nearest-rank rank 82 of the 86-sign non-fish reference
+distribution on the primary population, record pin 55d266b3…; derived
+at the freeze from non-members only, before any member was scored; Spec
+048's 25.9% / 3.8% and its 20% line were never inputs). Primary run
+(documented-lineage rows): ending-follower fractions M050 0.4056
+(101/249), M060 0.3010 (31/103), M145 0.2500 (46/184), M147 0.0850
+(13/153) — no tested member passes L = 0.765; tested members carry
+1,123 occurrences, passing members 0, w = 0.0000; the coverage
+condition does not fire (the one untested identified member, M048 at 9
+occurrences, does not outweigh the tested side). Under the frozen
+majority partition (OPEN-072-5, confirmed as drafted — Spec 048's
+70%/30% lines not carried) the family word is FAMILY NOT SUPPORTED.
+The mandatory documented + corroborated sensitivity returns the same
+word (M050 0.2045, M060 0.1942, M145 0.2052, M147 0.1142; w = 0.0000),
+so the headline is not GRADE-SENSITIVE; the one member-level
+grade-flip finding is M048's carried label (primary not scanned →
+sensitivity not supported; the member is untested in both populations
+and the flip moves no verdict). The verdict is about shared positional
+behaviour on this corpus only: it establishes nothing about what any
+fish sign meant or was pronounced, and Spec 048's closure and the
+Phase-43 record stand exactly as recorded. Records:
+specs/072-fish-family-profiles-redesign/outcome.md,
+reports/phase431_results.json (SHA-256 f0679d90…),
+reports/phase431_report.md (SHA-256 d4fa6cb9…); the script is
+deterministic (both outputs byte-identical on a second run). The
+corpus and its row-level products stayed restricted-local; no
+restricted data entered git. A dated outcome append
+(spec072_outcome_2026_10_22) was added to claim
+parpola_2010_dravidian_solution_manual_002, append-only. Foundation
+check as measured on the execution tree: 40 passed / 0 failed /
+8 warnings (the standing eight; none new). All records are internal
+under the Roif gate: no publication of this result in any form without
+citation of Roif 2025a + 2025b and the owner's clearance of the
+specific act.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

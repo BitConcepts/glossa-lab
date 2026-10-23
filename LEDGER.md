@@ -10069,3 +10069,32 @@ in the audit directory when complete. Nothing submitted.
 
 AI disclosure: executed by an AI agent (Muse, via Muse)
 at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-23 — Preprint v8 red-team round 1: adjudicated and revised (R-01..R-45)
+
+The independent red-team pass on preprint v8 ran as round 1 (attack:
+independent engine, full text ×3 passes, 241 raw findings aggregated
+to 125 items; adjudication against primary records: 44 sustained /
+76 sustained in part / 3 not sustained / 2 moot). All adjudicated
+replacement blocks R-01..R-45 were applied verbatim to
+glossa-corpus/indus/pierson_2026_indus_decipherment.tex (revision
+commit 8a9e80cf; §6 data-availability commit string pinned to that
+commit by pin-only commit dba6d486). Corrected anchor arithmetic
+(6,369 of 7,002; HIGH 70.34%); INCONCLUSIVE verdicts restored in
+§§3.11/3.13; Phase-107 SA held-out failure disclosed in §2.4; 79.8%
+aggregate and 6,869/47 mining counts withdrawn as evidence; §2.1.1
+exponent non-comparability guard added. The Phase-109 re-based
+anchor numbers were NOT substituted (owner's decision, per
+adjudication §D item 2). Protected Roif/Rao text byte-intact; §3.32
+still absent; no betweenness. PDF rebuilt with TinyTeX XeLaTeX, two
+passes, exit 0, zero errors/warnings, 23 pages, SHA-256
+1ef5eb721f4b9cdd7fc4f1afbe790793cd2c0ba74d48898c0331a0ae0309d2b0,
+render-verified (pdftotext). Still open: Holdat corpus release; SA
+re-base (owner); DEDR 135 (M176) / 4988 (M261) verification (repo
+records conflict — audit tables blank, Phase-132 V08 asserts both);
+red-team round 2 pending. Record:
+specs/025-paper-search-research-check/audit-2026-10-22/v8_version_note_2026-10-23.md.
+Nothing submitted, deposited, or published; PR #353 not merged.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.

@@ -167,3 +167,81 @@ entry is added to `LEDGER.md`.
   no §3.32 heading**.
 
 **Nothing submitted, deposited, or published.**
+
+## Red-team round 1 revision (2026-10-23)
+
+The independent red-team pass on v8 (standing rule above) ran as
+round 1: an independent engine (GPT-5.5 via OpenAI API, full text ×3
+passes, 241 raw findings aggregated to 125 items) attacked the draft;
+every finding was then adjudicated against the program's primary
+records by an adjudicator who did not draft the paper. Dispositions:
+**44 sustained / 76 sustained in part / 3 not sustained / 2 moot of
+125**. The raw attack and the adjudication are filed beside this note
+(`v8_redteam_round1_raw_2026-10-23.md`,
+`v8_redteam_round1_adjudication_2026-10-23.md`).
+
+**Revision applied.** All adjudicated replacement blocks R-01…R-45
+were applied verbatim to the .tex (formatting conversion only:
+markdown emphasis to LaTeX, the R-09 exponent table as a LaTeX
+tabular, the §3.3 HIGH table's Basis column converted to a wrapped
+column so R-14's longer entries render on the page, line-break
+allowances inside §6's long file paths). Load-bearing outcomes: the
+§3.1 anchor arithmetic is corrected (6,369 of 7,002 tokens; HIGH
+70.34%); the Phase-150 and Phase-146 tests are reported at their
+recorded INCONCLUSIVE verdicts (§§3.13, 3.11); the Phase-107 SA
+held-out failure (agreement 0.000) is disclosed in §2.4; the 79.8%
+aggregate confidence score and the 6,869 / 47 text-mining counts are
+withdrawn as evidence (§§3.30, 3.22); §2.1.1 gains the explicit
+guard that the four exponents "must not be compared with each
+other"; the Phase-109 re-based anchor numbers (94 / 73.68%) were
+**not** substituted — adjudication §D item 2 reserves that choice to
+the owner, and R-11's disclosure is the applied cure. Protected text
+(§8 Roif 2025a/b and both Rao entries; §3.5/§3.19 Roif credit; §7
+Roif acknowledgment) is byte-intact in the source diff. §3.32 stays
+out; "betweenness" remains at 0 hits.
+
+**§6 commit pin.** §6's data-availability paragraph names the
+revision commit, per the adjudication's coordinator note. Procedure
+used: the revision was committed with §6 naming `b77cd420`
+(commit `8a9e80cf`); a second, pin-only commit (`dba6d486`) changed
+only the §6 commit string to `8a9e80cf`. §6 therefore names the
+revision commit, not the pin commit or any later records commit.
+
+**DEDR check (§E item 7) — still open.** The anchor records conflict
+and do not settle the numbers: `ANCHOR_STATUS_AUDIT.csv` and
+`research/indus/anchor_table.csv` both leave the DEDR column blank
+for M176 and M261, while `backend/scripts/phase132_comprehensive_validation.py`
+(V08 spot-check) lists 135 ("aN/an (masculine suffix)") and 4988
+("muruku (young/god Murugan)") in its table of canonical DEDR entries
+attributed to Burrow & Emeneau (1984). That is an internal program
+assertion, not a verification against DEDR itself. The numbers were
+left exactly as the replacement blocks carry them (135 in R-14; 4988
+in the §3.3 table) and the item is recorded as **still open**.
+
+**Still-open items.** (1) Holdat corpus release — every corpus
+number rests on an unreleased corpus; R-01/R-41 disclose this, only
+release (or a public-corpus rerun) cures it. (2) SA re-base — the
+owner's decision (see above). (3) DEDR 135 / 4988 verification
+(above). (4) Red-team **round 2** on the revised draft is pending;
+v8 is not cleared for publication until the loop closes.
+
+**Rebuild.** TinyTeX XeLaTeX (same toolchain and font environment
+fix as the original v8 build), two passes on the final .tex state,
+both exit 0, **zero errors and zero warnings** in the final log.
+PDF: `glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v8.pdf`
+— still named v8 (this is a pre-publication revision of the v8
+draft, not a new version). **23 pages** (was 19).
+**SHA-256: 1ef5eb721f4b9cdd7fc4f1afbe790793cd2c0ba74d48898c0331a0ae0309d2b0**
+
+**Render verification (pdftotext of the new PDF).** Present:
+"6,369 of 7,002"; "70.34"; INCONCLUSIVE in both §3.11 and §3.13;
+"must not be compared with each other"; SA held-out "0.000"; "End of
+Preprint v8"; §6 commit `8a9e80cf`; Roif 2025a/2025b entries in §8.
+Absent as claims: "6,363", "76.3%", "79.8%" and "highest-PMI" each
+survive only inside the corrective sentences the adjudication
+itself prescribed (R-34's withdrawal of the 79.8% score; R-19's "It
+is not the highest-PMI pair"); "6,869" appears once, only in R-30's
+withdrawn-as-evidence framing. No "betweenness"; no §3.32.
+
+**Nothing submitted, deposited, or published.** The PR
+(#353) is not merged.

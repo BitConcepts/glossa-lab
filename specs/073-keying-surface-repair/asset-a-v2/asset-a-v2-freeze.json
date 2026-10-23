@@ -1,0 +1,45 @@
+{
+ "asset": "Asset A v2 \u2014 depicted-kind classification (Spec 073)",
+ "contract": "Spec 045 sections 2-3, as executed for Asset A v1 by Spec 069, extended by Spec 073 section 5",
+ "contract_anchor_freeze_digest": "5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a",
+ "spec073_freeze_digest": "5419c4c413189acdec31c15494daf1be759c10c28f84d594935c9629e761dc98",
+ "canonical_file": "asset-a-v2/depicted-kind-classification.csv",
+ "sha256": "681e017da8b3f93aeade7e85361565fa8f3f4178b167dfa2448f5b4c239a8193",
+ "row_count": 552,
+ "rows_carried_from_v1": 187,
+ "rows_new_entry": 365,
+ "per_kind_counts": {
+  "unidentified": 211,
+  "other": 246,
+  "human": 43,
+  "animal": 30,
+  "object_goods": 22
+ },
+ "per_kind_counts_new_entry": {
+  "human": 18,
+  "animal": 10,
+  "other": 119,
+  "object_goods": 8,
+  "unidentified": 210
+ },
+ "input_pins": {
+  "asset_a_v1": {
+   "sha256": "952319355098698f01e6d8499b0384f84ac964e1bc4ecdc03c77ed920c7a5b5b",
+   "rows": 187
+  },
+  "registry_v2": {
+   "sha256": "42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71",
+   "rows": 1013
+  }
+ },
+ "entry_discipline": {
+  "rule_pass_continuity_check": {
+   "carried_labels_checked": 187,
+   "rule_pass_misses": []
+  },
+  "disagreements_adjudicated": 10,
+  "entry_log": "asset-a-v2/entry-decisions.json"
+ },
+ "build_order_attestation": "entry was performed from the held published sources and the sign inventory only, in the frozen order (Registry v2 frozen first; entry second; the coverage join computed only after both digests exist); no positional result, keyability outcome, or Hunt part-membership information was consulted at any point during entry",
+ "freeze_date": "2026-10-23"
+}

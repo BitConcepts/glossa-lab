@@ -10029,3 +10029,43 @@ reports/phase434_results.json, reports/phase434_report.md.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-23 — Spec 073 EXECUTED (Phase-436): REPAIRED WITH NAMED SHORTFALL
+
+The keying-surface repair is built and measured. Registry v2
+(data/crosswalks/canonical_sign_registry_v2.csv, SHA-256
+42ab09fb...) carries all 803 v1 rows byte-identical and adds 210
+icit_wells rows (sign ids W136-form), each cited to the published
+ICIT sign list in Fuls 2023, *A Catalog of Indus Signs*, Ch. 2.3
+(consulted from the held print PDF on the owner's desktop; the
+change schedule is at specs/073-keying-surface-repair/registry-v2/).
+No Wells-map completions were added: the Catalog's Parpola column
+states Parpola (1994)'s own numbering, not the registry's, so it
+grounds no completion (catalog-consult.json holds the evidence).
+Asset A v2 (SHA-256 681e017d...) carries all 187 v1 rows
+field-for-field and adds 365 rows entered blind under the Spec
+045/069 discipline — the deterministic second pass was first
+required to reproduce Spec 069's recorded pass-2 codings on all 187
+carried labels exactly (0 misses). Coverage over the recorded
+populations, counts only: Spec 070's 31-sign set now keys 31 of 31
+(baseline 26 by resolution), Spec 071's 557-sign documented set now
+keys 556 of 557 (baseline 285). The five named signs (ICIT 136, 298,
+401, 617, 824) are each resolved and keyed; none carries a verbal
+depiction in any ruled source, so each is coded unidentified —
+keyed for joining, honestly unclassified. Named shortfall: token
+999, a corpus placeholder occurring in the documented stratum but in
+no published sign list — NO PUBLISHED IDENTITY, named on the
+schedule, never dropped. The celestial class in Asset A v2 is 0
+rows (carried 0, new 0), stated beside Spec 071's frozen TOO THIN
+floor of 30. Closing re-assertion: Registry v1 (8a0b2a82...) and
+Asset A v1 (95231935...) re-hashed at the close and byte-identical.
+Neither predecessor study is re-run or amended; both Hunt claims
+stand untouched; whether either Hunt question is re-frozen against
+the repaired surface is a separate owner decision. Freeze digest
+5419c4c4...; OSF registration https://osf.io/9kh4a/ (approval
+pending at this entry's writing). Records:
+specs/073-keying-surface-repair/outcome.md,
+reports/phase436_results.json, reports/phase436_report.md.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.

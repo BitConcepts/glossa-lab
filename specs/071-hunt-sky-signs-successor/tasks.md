@@ -84,16 +84,16 @@
       number allocated (OPEN-071-6), and the
       OSF contract registration filed if L5
       confirms OPEN-071-5's proposal.
-- [ ] **L7 — Freeze PR merged**, house gates
+- [x] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).
 
 ## Execution — gated on the freeze and a separate execution order
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Step 0, assertions** (spec §5
+- [x] **E2 — Step 0, assertions** (spec §5
       gates 0.1–0.3): Asset A dependency
       state and digest assertion (NOT-RUN /
       ASSET NOT FROZEN / ASSET PIN MISMATCH
@@ -103,7 +103,7 @@
       input integrity and coverage (INVALID
       on failure) — all before any
       final-position quantity.
-- [ ] **E3 — Step 0, population and census**
+- [ ] **E3 — Step 0, population and census [NOT REACHED — the run stopped at gate 0.3 (INVALID, coverage) before gate 0.4, as the frozen gate order directs]**
       (gates 0.4–0.5): the §2 battery run over
       the documented-lineage primary (the same
       battery run family as Spec 070's, per
@@ -119,7 +119,7 @@
       as its finding); and the freeze-order
       proof, including this freeze's place
       after Spec 070's (INVALID on failure).
-- [ ] **E4 — Primary** (spec §4): the pooled
+- [ ] **E4 — Primary** [NOT REACHED — gate 0.3 closure] (spec §4): the pooled
       enrichment test, the per-sign table
       (over the celestial class and the
       enumerated terminal-strong population),
@@ -129,7 +129,7 @@
       population under P-F1 S4), and the
       machinery reconciliation (NOT
       ADJUDICATED on failure).
-- [ ] **E5 — Outcome:** the §9 record —
+- [x] **E5 — Outcome:** [the §4.6 INVALID closure record] the §9 record —
       results JSON and report under the
       headline rules (the honesty fence and
       the P-F1 S3 lineage statement in the

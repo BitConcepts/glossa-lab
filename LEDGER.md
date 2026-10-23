@@ -9941,3 +9941,40 @@ reports/phase433_report.md.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-22 — Spec 071 EXECUTED (Phase-434): STOPPED AT STEP 0, GATE 0.3 — INVALID
+
+The sky-signs successor on Shakti, under its frozen contract (Spec
+071 freeze digest c06a7a86…; freeze PR #343 merged at 161bbe0d; OSF
+registration b62p4 filed at the freeze, pending the owner's approval
+act at the time of the run). Step-0 gates in order: 0.1 Asset A
+asserted PASS against the freeze-fixed pin source (Spec 069's
+asset-a-freeze.json; canonical CSV recomputes to 95231935…; counts
+match); 0.2 the Shakti intake reproduced under P-F1 S1/S2 PASS
+(census recounted from the files); 0.3 input integrity PASS, but
+coverage FAIL, and the run stops as INVALID in the gate's own
+terms: of the 557 distinct signs occurring in the primary
+population (3,212 documented-lineage rows; totals only counted at
+the gate, no positional quantity taken), 285 carry exactly one
+Asset A row under the shared keying route (DD-071-10) and 272 carry
+none — 134 Wells ids with no resolution in the pinned registry's
+parpola_1982 Wells map, and 138 resolving to registry signs
+outside Asset A's 187-row crosswalk universe; every uncovered sign
+is listed in the machine record with its total and reason. The
+gate's rationale is the design's: an absent row is never treated
+as non-celestial by default, because that default would silently
+define the comparison class. Gates 0.4/0.5 were not reached; no
+final-position quantity was computed; no verdict is recorded; the
+claim without_kings…_manual_004 stands UNTESTED as recorded and no
+dated append is made (the appends belong to the verdict classes).
+Recorded adjacently, as a fact of the frozen asset rather than a
+second outcome: the celestial class is empty in Asset A (zero
+sky_cycle rows), so a coverage repair alone would have met gate
+0.4's TOO THIN floor (0 of 30 occurrences). Deterministic (second
+run byte-identical); anchors byte-identical before and after;
+foundation check on the execution tree 40 passed / 0 failed / 8
+warnings. Records: specs/071-hunt-sky-signs-successor/outcome.md,
+reports/phase434_results.json, reports/phase434_report.md.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.

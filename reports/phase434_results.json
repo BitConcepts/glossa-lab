@@ -1,0 +1,1409 @@
+{
+ "phase": 434,
+ "spec": "071",
+ "spec_freeze_digest": "c06a7a86804d8da2c9896638446f5712be9eccb8716a7b02303a5944f4bc0478",
+ "asset_a_sha256": "952319355098698f01e6d8499b0384f84ac964e1bc4ecdc03c77ed920c7a5b5b",
+ "execution_order": [
+  "Spec 069 froze Asset A (2026-10-22, executed record merged)",
+  "Spec 070 froze (freeze digest 763108f8...)",
+  "Spec 071 froze quoting Asset A's digest (this spec, c06a7a86...)",
+  "gate 0.1 asset assertion (pin source: Spec 069 asset-a-freeze.json)",
+  "gate 0.2 intake assertion (P-F1 S1/S2)",
+  "gate 0.3 input integrity + coverage",
+  "gate 0.4 frame enumerated + published (hash) BEFORE any test; class censuses; TOO THIN floor",
+  "gate 0.5 freeze-order proof (this record's order)",
+  "counting run (section 4)"
+ ],
+ "g5_attestation": "The Phase-43 battery applied here is threshold-only: it contains no chance-baseline step - no permutation, shuffle, or expected-rate baseline - and none is restored or claimed. The frequency-matched comparison of section 4 is this design's own test construction (carried from Spec 050), not a Phase-43 element.",
+ "lineage_statement_PF1_S3": "Lineage (P-F1 S3): the positional classes were measured on the Shakti corpus deposit (Zenodo) as graded by the programme's intake record - documented-lineage rows are CISI-verifiable; corroborated rows are supported by an independent sign list; uncorroborated rows enter no count. The Phase-43 counts (805/2,267; the 40/61/20 classes) are never a basis for any quantity here.",
+ "population_rows": {
+  "primary_documented": 3212
+ },
+ "gate_0_3_coverage": {
+  "signs_occurring_in_primary_population": 557,
+  "signs_carrying_an_asset_row": 285,
+  "signs_without_an_asset_row": 272,
+  "uncovered_signs": [
+   {
+    "wells_code": "012",
+    "total": 2,
+    "reason": "keys to P140, which carries no Asset A row"
+   },
+   {
+    "wells_code": "019",
+    "total": 3,
+    "reason": "keys to P129, which carries no Asset A row"
+   },
+   {
+    "wells_code": "025",
+    "total": 2,
+    "reason": "keys to P141, which carries no Asset A row"
+   },
+   {
+    "wells_code": "027",
+    "total": 5,
+    "reason": "keys to P141, which carries no Asset A row"
+   },
+   {
+    "wells_code": "028",
+    "total": 4,
+    "reason": "keys to P141, which carries no Asset A row"
+   },
+   {
+    "wells_code": "029",
+    "total": 2,
+    "reason": "keys to P141, which carries no Asset A row"
+   },
+   {
+    "wells_code": "034",
+    "total": 124,
+    "reason": "keys to P150, which carries no Asset A row"
+   },
+   {
+    "wells_code": "036",
+    "total": 5,
+    "reason": "no parpola_1982 registry row carries Wells id W036"
+   },
+   {
+    "wells_code": "041",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W041"
+   },
+   {
+    "wells_code": "042",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W042"
+   },
+   {
+    "wells_code": "045",
+    "total": 1,
+    "reason": "keys to P148, which carries no Asset A row"
+   },
+   {
+    "wells_code": "046",
+    "total": 1,
+    "reason": "keys to P148, which carries no Asset A row"
+   },
+   {
+    "wells_code": "050",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W050"
+   },
+   {
+    "wells_code": "051",
+    "total": 1,
+    "reason": "keys to P137, which carries no Asset A row"
+   },
+   {
+    "wells_code": "056",
+    "total": 10,
+    "reason": "no parpola_1982 registry row carries Wells id W056"
+   },
+   {
+    "wells_code": "057",
+    "total": 1,
+    "reason": "keys to P143, which carries no Asset A row"
+   },
+   {
+    "wells_code": "058",
+    "total": 1,
+    "reason": "keys to P199, which carries no Asset A row"
+   },
+   {
+    "wells_code": "059",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W059"
+   },
+   {
+    "wells_code": "064",
+    "total": 5,
+    "reason": "keys to P085, which carries no Asset A row"
+   },
+   {
+    "wells_code": "066",
+    "total": 6,
+    "reason": "keys to P185, which carries no Asset A row"
+   },
+   {
+    "wells_code": "067",
+    "total": 4,
+    "reason": "no parpola_1982 registry row carries Wells id W067"
+   },
+   {
+    "wells_code": "069",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W069"
+   },
+   {
+    "wells_code": "071",
+    "total": 2,
+    "reason": "keys to P116, which carries no Asset A row"
+   },
+   {
+    "wells_code": "073",
+    "total": 1,
+    "reason": "keys to P115, which carries no Asset A row"
+   },
+   {
+    "wells_code": "082",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W082"
+   },
+   {
+    "wells_code": "084",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W084"
+   },
+   {
+    "wells_code": "091",
+    "total": 16,
+    "reason": "keys to P016, which carries no Asset A row"
+   },
+   {
+    "wells_code": "092",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W092"
+   },
+   {
+    "wells_code": "096",
+    "total": 3,
+    "reason": "no parpola_1982 registry row carries Wells id W096"
+   },
+   {
+    "wells_code": "097",
+    "total": 17,
+    "reason": "keys to P015, which carries no Asset A row"
+   },
+   {
+    "wells_code": "106",
+    "total": 1,
+    "reason": "keys to P008, which carries no Asset A row"
+   },
+   {
+    "wells_code": "117",
+    "total": 1,
+    "reason": "keys to P039, which carries no Asset A row"
+   },
+   {
+    "wells_code": "118",
+    "total": 2,
+    "reason": "keys to P021, which carries no Asset A row"
+   },
+   {
+    "wells_code": "121",
+    "total": 1,
+    "reason": "keys to P024, which carries no Asset A row"
+   },
+   {
+    "wells_code": "127",
+    "total": 2,
+    "reason": "keys to P036, which carries no Asset A row"
+   },
+   {
+    "wells_code": "131",
+    "total": 1,
+    "reason": "keys to P027, which carries no Asset A row"
+   },
+   {
+    "wells_code": "132",
+    "total": 4,
+    "reason": "no parpola_1982 registry row carries Wells id W132"
+   },
+   {
+    "wells_code": "133",
+    "total": 1,
+    "reason": "keys to P028, which carries no Asset A row"
+   },
+   {
+    "wells_code": "136",
+    "total": 6,
+    "reason": "no parpola_1982 registry row carries Wells id W136"
+   },
+   {
+    "wells_code": "137",
+    "total": 11,
+    "reason": "keys to P019, which carries no Asset A row"
+   },
+   {
+    "wells_code": "138",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W138"
+   },
+   {
+    "wells_code": "141",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W141"
+   },
+   {
+    "wells_code": "143",
+    "total": 2,
+    "reason": "keys to P033, which carries no Asset A row"
+   },
+   {
+    "wells_code": "145",
+    "total": 1,
+    "reason": "keys to P030, which carries no Asset A row"
+   },
+   {
+    "wells_code": "146",
+    "total": 3,
+    "reason": "keys to P034, which carries no Asset A row"
+   },
+   {
+    "wells_code": "150",
+    "total": 3,
+    "reason": "no parpola_1982 registry row carries Wells id W150"
+   },
+   {
+    "wells_code": "152",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W152"
+   },
+   {
+    "wells_code": "157",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W157"
+   },
+   {
+    "wells_code": "166",
+    "total": 1,
+    "reason": "keys to P343, which carries no Asset A row"
+   },
+   {
+    "wells_code": "167",
+    "total": 14,
+    "reason": "keys to P344, which carries no Asset A row"
+   },
+   {
+    "wells_code": "168",
+    "total": 3,
+    "reason": "keys to P345, which carries no Asset A row"
+   },
+   {
+    "wells_code": "170",
+    "total": 1,
+    "reason": "keys to P348, which carries no Asset A row"
+   },
+   {
+    "wells_code": "172",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W172"
+   },
+   {
+    "wells_code": "173",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W173"
+   },
+   {
+    "wells_code": "180",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W180"
+   },
+   {
+    "wells_code": "191",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W191"
+   },
+   {
+    "wells_code": "195",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W195"
+   },
+   {
+    "wells_code": "201",
+    "total": 5,
+    "reason": "keys to P077, which carries no Asset A row"
+   },
+   {
+    "wells_code": "203",
+    "total": 1,
+    "reason": "keys to P080, which carries no Asset A row"
+   },
+   {
+    "wells_code": "219",
+    "total": 6,
+    "reason": "no parpola_1982 registry row carries Wells id W219"
+   },
+   {
+    "wells_code": "221",
+    "total": 4,
+    "reason": "no parpola_1982 registry row carries Wells id W221"
+   },
+   {
+    "wells_code": "224",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W224"
+   },
+   {
+    "wells_code": "229",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W229"
+   },
+   {
+    "wells_code": "230",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W230"
+   },
+   {
+    "wells_code": "232",
+    "total": 7,
+    "reason": "keys to P057, which carries no Asset A row"
+   },
+   {
+    "wells_code": "234",
+    "total": 6,
+    "reason": "keys to P059, which carries no Asset A row"
+   },
+   {
+    "wells_code": "241",
+    "total": 10,
+    "reason": "keys to P063, which carries no Asset A row"
+   },
+   {
+    "wells_code": "250",
+    "total": 7,
+    "reason": "no parpola_1982 registry row carries Wells id W250"
+   },
+   {
+    "wells_code": "252",
+    "total": 4,
+    "reason": "no parpola_1982 registry row carries Wells id W252"
+   },
+   {
+    "wells_code": "253",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W253"
+   },
+   {
+    "wells_code": "257",
+    "total": 3,
+    "reason": "no parpola_1982 registry row carries Wells id W257"
+   },
+   {
+    "wells_code": "262",
+    "total": 2,
+    "reason": "keys to P069, which carries no Asset A row"
+   },
+   {
+    "wells_code": "263",
+    "total": 5,
+    "reason": "no parpola_1982 registry row carries Wells id W263"
+   },
+   {
+    "wells_code": "264",
+    "total": 1,
+    "reason": "keys to P066, which carries no Asset A row"
+   },
+   {
+    "wells_code": "266",
+    "total": 1,
+    "reason": "keys to P066, which carries no Asset A row"
+   },
+   {
+    "wells_code": "268",
+    "total": 3,
+    "reason": "keys to P066, which carries no Asset A row"
+   },
+   {
+    "wells_code": "276",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W276"
+   },
+   {
+    "wells_code": "277",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W277"
+   },
+   {
+    "wells_code": "278",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W278"
+   },
+   {
+    "wells_code": "279",
+    "total": 3,
+    "reason": "no parpola_1982 registry row carries Wells id W279"
+   },
+   {
+    "wells_code": "280",
+    "total": 1,
+    "reason": "keys to P045, which carries no Asset A row"
+   },
+   {
+    "wells_code": "281",
+    "total": 1,
+    "reason": "keys to P046, which carries no Asset A row"
+   },
+   {
+    "wells_code": "298",
+    "total": 7,
+    "reason": "no parpola_1982 registry row carries Wells id W298"
+   },
+   {
+    "wells_code": "311",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W311"
+   },
+   {
+    "wells_code": "316",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W316"
+   },
+   {
+    "wells_code": "318",
+    "total": 12,
+    "reason": "keys to P295, which carries no Asset A row"
+   },
+   {
+    "wells_code": "319",
+    "total": 2,
+    "reason": "keys to P298, which carries no Asset A row"
+   },
+   {
+    "wells_code": "320",
+    "total": 14,
+    "reason": "no parpola_1982 registry row carries Wells id W320"
+   },
+   {
+    "wells_code": "321",
+    "total": 15,
+    "reason": "keys to P304, which carries no Asset A row"
+   },
+   {
+    "wells_code": "326",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W326"
+   },
+   {
+    "wells_code": "328",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W328"
+   },
+   {
+    "wells_code": "330",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W330"
+   },
+   {
+    "wells_code": "335",
+    "total": 31,
+    "reason": "keys to P308, which carries no Asset A row"
+   },
+   {
+    "wells_code": "351",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W351"
+   },
+   {
+    "wells_code": "363",
+    "total": 1,
+    "reason": "keys to P302, which carries no Asset A row"
+   },
+   {
+    "wells_code": "375",
+    "total": 1,
+    "reason": "keys to P104, which carries no Asset A row"
+   },
+   {
+    "wells_code": "376",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W376"
+   },
+   {
+    "wells_code": "380",
+    "total": 6,
+    "reason": "keys to P196, which carries no Asset A row"
+   },
+   {
+    "wells_code": "381",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W381"
+   },
+   {
+    "wells_code": "383",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W383"
+   },
+   {
+    "wells_code": "384",
+    "total": 21,
+    "reason": "keys to P112, which carries no Asset A row"
+   },
+   {
+    "wells_code": "385",
+    "total": 1,
+    "reason": "keys to P112, which carries no Asset A row"
+   },
+   {
+    "wells_code": "386",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W386"
+   },
+   {
+    "wells_code": "389",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W389"
+   },
+   {
+    "wells_code": "393",
+    "total": 1,
+    "reason": "keys to P087, which carries no Asset A row"
+   },
+   {
+    "wells_code": "401",
+    "total": 5,
+    "reason": "no parpola_1982 registry row carries Wells id W401"
+   },
+   {
+    "wells_code": "409",
+    "total": 4,
+    "reason": "no parpola_1982 registry row carries Wells id W409"
+   },
+   {
+    "wells_code": "410",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W410"
+   },
+   {
+    "wells_code": "411",
+    "total": 2,
+    "reason": "keys to P100, which carries no Asset A row"
+   },
+   {
+    "wells_code": "412",
+    "total": 1,
+    "reason": "keys to P102, which carries no Asset A row"
+   },
+   {
+    "wells_code": "417",
+    "total": 8,
+    "reason": "keys to P093, which carries no Asset A row"
+   },
+   {
+    "wells_code": "420",
+    "total": 3,
+    "reason": "keys to P305, which carries no Asset A row"
+   },
+   {
+    "wells_code": "421",
+    "total": 4,
+    "reason": "keys to P306, which carries no Asset A row"
+   },
+   {
+    "wells_code": "422",
+    "total": 8,
+    "reason": "keys to P306, which carries no Asset A row"
+   },
+   {
+    "wells_code": "423",
+    "total": 6,
+    "reason": "keys to P306, which carries no Asset A row"
+   },
+   {
+    "wells_code": "424",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W424"
+   },
+   {
+    "wells_code": "426",
+    "total": 5,
+    "reason": "keys to P306, which carries no Asset A row"
+   },
+   {
+    "wells_code": "427",
+    "total": 1,
+    "reason": "keys to P306, which carries no Asset A row"
+   },
+   {
+    "wells_code": "428",
+    "total": 1,
+    "reason": "keys to P306, which carries no Asset A row"
+   },
+   {
+    "wells_code": "429",
+    "total": 1,
+    "reason": "keys to P306, which carries no Asset A row"
+   },
+   {
+    "wells_code": "430",
+    "total": 1,
+    "reason": "keys to P306, which carries no Asset A row"
+   },
+   {
+    "wells_code": "441",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W441"
+   },
+   {
+    "wells_code": "442",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W442"
+   },
+   {
+    "wells_code": "443",
+    "total": 4,
+    "reason": "keys to P284, which carries no Asset A row"
+   },
+   {
+    "wells_code": "444",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W444"
+   },
+   {
+    "wells_code": "445",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W445"
+   },
+   {
+    "wells_code": "450",
+    "total": 1,
+    "reason": "keys to P191, which carries no Asset A row"
+   },
+   {
+    "wells_code": "452",
+    "total": 1,
+    "reason": "keys to P190, which carries no Asset A row"
+   },
+   {
+    "wells_code": "456",
+    "total": 4,
+    "reason": "keys to P222, which carries no Asset A row"
+   },
+   {
+    "wells_code": "479",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W479"
+   },
+   {
+    "wells_code": "480",
+    "total": 12,
+    "reason": "keys to P184, which carries no Asset A row"
+   },
+   {
+    "wells_code": "481",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W481"
+   },
+   {
+    "wells_code": "483",
+    "total": 2,
+    "reason": "keys to P198, which carries no Asset A row"
+   },
+   {
+    "wells_code": "491",
+    "total": 15,
+    "reason": "no parpola_1982 registry row carries Wells id W491"
+   },
+   {
+    "wells_code": "494",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W494"
+   },
+   {
+    "wells_code": "495",
+    "total": 14,
+    "reason": "no parpola_1982 registry row carries Wells id W495"
+   },
+   {
+    "wells_code": "501",
+    "total": 30,
+    "reason": "no parpola_1982 registry row carries Wells id W501"
+   },
+   {
+    "wells_code": "502",
+    "total": 4,
+    "reason": "keys to P209, which carries no Asset A row"
+   },
+   {
+    "wells_code": "505",
+    "total": 1,
+    "reason": "keys to P213, which carries no Asset A row"
+   },
+   {
+    "wells_code": "506",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W506"
+   },
+   {
+    "wells_code": "514",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W514"
+   },
+   {
+    "wells_code": "515",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W515"
+   },
+   {
+    "wells_code": "516",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W516"
+   },
+   {
+    "wells_code": "519",
+    "total": 10,
+    "reason": "no parpola_1982 registry row carries Wells id W519"
+   },
+   {
+    "wells_code": "525",
+    "total": 4,
+    "reason": "no parpola_1982 registry row carries Wells id W525"
+   },
+   {
+    "wells_code": "528",
+    "total": 2,
+    "reason": "keys to P259, which carries no Asset A row"
+   },
+   {
+    "wells_code": "530",
+    "total": 8,
+    "reason": "keys to P227, which carries no Asset A row"
+   },
+   {
+    "wells_code": "534",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W534"
+   },
+   {
+    "wells_code": "540",
+    "total": 7,
+    "reason": "keys to P224, which carries no Asset A row"
+   },
+   {
+    "wells_code": "541",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W541"
+   },
+   {
+    "wells_code": "542",
+    "total": 1,
+    "reason": "keys to P225, which carries no Asset A row"
+   },
+   {
+    "wells_code": "552",
+    "total": 3,
+    "reason": "no parpola_1982 registry row carries Wells id W552"
+   },
+   {
+    "wells_code": "554",
+    "total": 10,
+    "reason": "keys to P229, which carries no Asset A row"
+   },
+   {
+    "wells_code": "563",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W563"
+   },
+   {
+    "wells_code": "570",
+    "total": 1,
+    "reason": "keys to P292, which carries no Asset A row"
+   },
+   {
+    "wells_code": "571",
+    "total": 1,
+    "reason": "keys to P292, which carries no Asset A row"
+   },
+   {
+    "wells_code": "573",
+    "total": 1,
+    "reason": "keys to P286, which carries no Asset A row"
+   },
+   {
+    "wells_code": "576",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W576"
+   },
+   {
+    "wells_code": "577",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W577"
+   },
+   {
+    "wells_code": "585",
+    "total": 36,
+    "reason": "no parpola_1982 registry row carries Wells id W585"
+   },
+   {
+    "wells_code": "586",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W586"
+   },
+   {
+    "wells_code": "592",
+    "total": 7,
+    "reason": "keys to P277, which carries no Asset A row"
+   },
+   {
+    "wells_code": "596",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W596"
+   },
+   {
+    "wells_code": "597",
+    "total": 7,
+    "reason": "no parpola_1982 registry row carries Wells id W597"
+   },
+   {
+    "wells_code": "600",
+    "total": 2,
+    "reason": "keys to P262, which carries no Asset A row"
+   },
+   {
+    "wells_code": "603",
+    "total": 6,
+    "reason": "keys to P264, which carries no Asset A row"
+   },
+   {
+    "wells_code": "604",
+    "total": 1,
+    "reason": "keys to P200, which carries no Asset A row"
+   },
+   {
+    "wells_code": "605",
+    "total": 11,
+    "reason": "keys to P200, which carries no Asset A row"
+   },
+   {
+    "wells_code": "606",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W606"
+   },
+   {
+    "wells_code": "610",
+    "total": 2,
+    "reason": "keys to P274, which carries no Asset A row"
+   },
+   {
+    "wells_code": "617",
+    "total": 56,
+    "reason": "no parpola_1982 registry row carries Wells id W617"
+   },
+   {
+    "wells_code": "620",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W620"
+   },
+   {
+    "wells_code": "625",
+    "total": 4,
+    "reason": "keys to P262, which carries no Asset A row"
+   },
+   {
+    "wells_code": "626",
+    "total": 6,
+    "reason": "keys to P380, which carries no Asset A row"
+   },
+   {
+    "wells_code": "629",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W629"
+   },
+   {
+    "wells_code": "640",
+    "total": 1,
+    "reason": "keys to P271, which carries no Asset A row"
+   },
+   {
+    "wells_code": "645",
+    "total": 14,
+    "reason": "keys to P240, which carries no Asset A row"
+   },
+   {
+    "wells_code": "647",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W647"
+   },
+   {
+    "wells_code": "678",
+    "total": 2,
+    "reason": "keys to P244, which carries no Asset A row"
+   },
+   {
+    "wells_code": "679",
+    "total": 14,
+    "reason": "keys to P243, which carries no Asset A row"
+   },
+   {
+    "wells_code": "680",
+    "total": 2,
+    "reason": "keys to P242, which carries no Asset A row"
+   },
+   {
+    "wells_code": "681",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W681"
+   },
+   {
+    "wells_code": "686",
+    "total": 1,
+    "reason": "keys to P249, which carries no Asset A row"
+   },
+   {
+    "wells_code": "694",
+    "total": 1,
+    "reason": "keys to P257, which carries no Asset A row"
+   },
+   {
+    "wells_code": "697",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W697"
+   },
+   {
+    "wells_code": "698",
+    "total": 3,
+    "reason": "no parpola_1982 registry row carries Wells id W698"
+   },
+   {
+    "wells_code": "702",
+    "total": 4,
+    "reason": "no parpola_1982 registry row carries Wells id W702"
+   },
+   {
+    "wells_code": "703",
+    "total": 7,
+    "reason": "keys to P312, which carries no Asset A row"
+   },
+   {
+    "wells_code": "710",
+    "total": 2,
+    "reason": "keys to P323, which carries no Asset A row"
+   },
+   {
+    "wells_code": "711",
+    "total": 18,
+    "reason": "keys to P319, which carries no Asset A row"
+   },
+   {
+    "wells_code": "712",
+    "total": 4,
+    "reason": "keys to P318, which carries no Asset A row"
+   },
+   {
+    "wells_code": "720",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W720"
+   },
+   {
+    "wells_code": "721",
+    "total": 2,
+    "reason": "keys to P322, which carries no Asset A row"
+   },
+   {
+    "wells_code": "723",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W723"
+   },
+   {
+    "wells_code": "727",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W727"
+   },
+   {
+    "wells_code": "728",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W728"
+   },
+   {
+    "wells_code": "729",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W729"
+   },
+   {
+    "wells_code": "731",
+    "total": 1,
+    "reason": "keys to P314, which carries no Asset A row"
+   },
+   {
+    "wells_code": "736",
+    "total": 4,
+    "reason": "keys to P317, which carries no Asset A row"
+   },
+   {
+    "wells_code": "748",
+    "total": 1,
+    "reason": "keys to P328, which carries no Asset A row"
+   },
+   {
+    "wells_code": "749",
+    "total": 6,
+    "reason": "keys to P329, which carries no Asset A row"
+   },
+   {
+    "wells_code": "751",
+    "total": 1,
+    "reason": "keys to P330, which carries no Asset A row"
+   },
+   {
+    "wells_code": "753",
+    "total": 2,
+    "reason": "keys to P337, which carries no Asset A row"
+   },
+   {
+    "wells_code": "761",
+    "total": 1,
+    "reason": "keys to P333, which carries no Asset A row"
+   },
+   {
+    "wells_code": "764",
+    "total": 1,
+    "reason": "keys to P336, which carries no Asset A row"
+   },
+   {
+    "wells_code": "767",
+    "total": 2,
+    "reason": "keys to P106, which carries no Asset A row"
+   },
+   {
+    "wells_code": "768",
+    "total": 1,
+    "reason": "keys to P107, which carries no Asset A row"
+   },
+   {
+    "wells_code": "775",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W775"
+   },
+   {
+    "wells_code": "777",
+    "total": 6,
+    "reason": "keys to P118, which carries no Asset A row"
+   },
+   {
+    "wells_code": "778",
+    "total": 1,
+    "reason": "keys to P118, which carries no Asset A row"
+   },
+   {
+    "wells_code": "781",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W781"
+   },
+   {
+    "wells_code": "791",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W791"
+   },
+   {
+    "wells_code": "792",
+    "total": 9,
+    "reason": "no parpola_1982 registry row carries Wells id W792"
+   },
+   {
+    "wells_code": "793",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W793"
+   },
+   {
+    "wells_code": "794",
+    "total": 8,
+    "reason": "no parpola_1982 registry row carries Wells id W794"
+   },
+   {
+    "wells_code": "795",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W795"
+   },
+   {
+    "wells_code": "799",
+    "total": 3,
+    "reason": "no parpola_1982 registry row carries Wells id W799"
+   },
+   {
+    "wells_code": "804",
+    "total": 7,
+    "reason": "keys to P365, which carries no Asset A row"
+   },
+   {
+    "wells_code": "807",
+    "total": 1,
+    "reason": "keys to P365, which carries no Asset A row"
+   },
+   {
+    "wells_code": "811",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W811"
+   },
+   {
+    "wells_code": "818",
+    "total": 1,
+    "reason": "keys to P377, which carries no Asset A row"
+   },
+   {
+    "wells_code": "821",
+    "total": 11,
+    "reason": "no parpola_1982 registry row carries Wells id W821"
+   },
+   {
+    "wells_code": "822",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W822"
+   },
+   {
+    "wells_code": "824",
+    "total": 16,
+    "reason": "no parpola_1982 registry row carries Wells id W824"
+   },
+   {
+    "wells_code": "825",
+    "total": 2,
+    "reason": "keys to P376, which carries no Asset A row"
+   },
+   {
+    "wells_code": "826",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W826"
+   },
+   {
+    "wells_code": "828",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W828"
+   },
+   {
+    "wells_code": "829",
+    "total": 3,
+    "reason": "no parpola_1982 registry row carries Wells id W829"
+   },
+   {
+    "wells_code": "830",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W830"
+   },
+   {
+    "wells_code": "836",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W836"
+   },
+   {
+    "wells_code": "838",
+    "total": 13,
+    "reason": "no parpola_1982 registry row carries Wells id W838"
+   },
+   {
+    "wells_code": "842",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W842"
+   },
+   {
+    "wells_code": "843",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W843"
+   },
+   {
+    "wells_code": "844",
+    "total": 8,
+    "reason": "no parpola_1982 registry row carries Wells id W844"
+   },
+   {
+    "wells_code": "849",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W849"
+   },
+   {
+    "wells_code": "852",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W852"
+   },
+   {
+    "wells_code": "855",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W855"
+   },
+   {
+    "wells_code": "859",
+    "total": 1,
+    "reason": "keys to P362, which carries no Asset A row"
+   },
+   {
+    "wells_code": "862",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W862"
+   },
+   {
+    "wells_code": "863",
+    "total": 1,
+    "reason": "keys to P392, which carries no Asset A row"
+   },
+   {
+    "wells_code": "866",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W866"
+   },
+   {
+    "wells_code": "868",
+    "total": 10,
+    "reason": "keys to P388, which carries no Asset A row"
+   },
+   {
+    "wells_code": "870",
+    "total": 1,
+    "reason": "keys to P391, which carries no Asset A row"
+   },
+   {
+    "wells_code": "872",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W872"
+   },
+   {
+    "wells_code": "876",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W876"
+   },
+   {
+    "wells_code": "878",
+    "total": 1,
+    "reason": "keys to P383, which carries no Asset A row"
+   },
+   {
+    "wells_code": "891",
+    "total": 2,
+    "reason": "keys to P179, which carries no Asset A row"
+   },
+   {
+    "wells_code": "893",
+    "total": 3,
+    "reason": "no parpola_1982 registry row carries Wells id W893"
+   },
+   {
+    "wells_code": "894",
+    "total": 1,
+    "reason": "keys to P078, which carries no Asset A row"
+   },
+   {
+    "wells_code": "897",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W897"
+   },
+   {
+    "wells_code": "898",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W898"
+   },
+   {
+    "wells_code": "902",
+    "total": 1,
+    "reason": "keys to P164, which carries no Asset A row"
+   },
+   {
+    "wells_code": "903",
+    "total": 4,
+    "reason": "keys to P162, which carries no Asset A row"
+   },
+   {
+    "wells_code": "905",
+    "total": 10,
+    "reason": "keys to P173, which carries no Asset A row"
+   },
+   {
+    "wells_code": "909",
+    "total": 1,
+    "reason": "keys to P163, which carries no Asset A row"
+   },
+   {
+    "wells_code": "910",
+    "total": 4,
+    "reason": "no parpola_1982 registry row carries Wells id W910"
+   },
+   {
+    "wells_code": "912",
+    "total": 3,
+    "reason": "no parpola_1982 registry row carries Wells id W912"
+   },
+   {
+    "wells_code": "914",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W914"
+   },
+   {
+    "wells_code": "918",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W918"
+   },
+   {
+    "wells_code": "919",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W919"
+   },
+   {
+    "wells_code": "921",
+    "total": 11,
+    "reason": "keys to P165, which carries no Asset A row"
+   },
+   {
+    "wells_code": "922",
+    "total": 2,
+    "reason": "keys to P161, which carries no Asset A row"
+   },
+   {
+    "wells_code": "924",
+    "total": 6,
+    "reason": "keys to P176, which carries no Asset A row"
+   },
+   {
+    "wells_code": "930",
+    "total": 3,
+    "reason": "keys to P339, which carries no Asset A row"
+   },
+   {
+    "wells_code": "931",
+    "total": 1,
+    "reason": "keys to P338, which carries no Asset A row"
+   },
+   {
+    "wells_code": "933",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W933"
+   },
+   {
+    "wells_code": "942",
+    "total": 1,
+    "reason": "keys to P055, which carries no Asset A row"
+   },
+   {
+    "wells_code": "944",
+    "total": 1,
+    "reason": "keys to P052, which carries no Asset A row"
+   },
+   {
+    "wells_code": "950",
+    "total": 2,
+    "reason": "keys to P282, which carries no Asset A row"
+   },
+   {
+    "wells_code": "956",
+    "total": 1,
+    "reason": "keys to P090, which carries no Asset A row"
+   },
+   {
+    "wells_code": "958",
+    "total": 1,
+    "reason": "no parpola_1982 registry row carries Wells id W958"
+   },
+   {
+    "wells_code": "999",
+    "total": 2,
+    "reason": "no parpola_1982 registry row carries Wells id W999"
+   }
+  ],
+  "sky_cycle_rows_in_asset": 0,
+  "sky_cycle_keys_unresolved_in_crosswalk": []
+ },
+ "outcome": "INVALID",
+ "gates": [
+  {
+   "gate": "0.1",
+   "result": "PASS",
+   "detail": "Asset A frozen (pin source Spec 069's asset-a-freeze.json); canonical CSV recomputes to 95231935...; counts match"
+  },
+  {
+   "gate": "0.2",
+   "result": "PASS",
+   "detail": "S1 hashes recompute; S2 census reproduces (5,704 rows; 5,536 analyzable; 3,212/2,087/405; 4,904 CISI-carrying)"
+  },
+  {
+   "gate": "0.3",
+   "result": "FAIL",
+   "detail": "coverage: 272 of 557 signs occurring in the primary population carry no Asset A row under the keying route; an absent row is never treated as non-celestial by default"
+  }
+ ]
+}

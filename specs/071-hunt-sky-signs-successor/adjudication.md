@@ -346,3 +346,98 @@ before the freeze can be taken at all.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## 8. Freeze rulings (2026-10-22, owner freeze act; executed by the freeze worker)
+
+Ruled under the owner's freeze rulings for the Hunt
+chain: every open item per the draft's stated
+default; where the draft carries a predecessor's
+decided position it stands; a genuine unresolved
+choice takes the more conservative option, recorded
+and flagged. DD-071-1…DD-071-7 stand as drafted.
+This freeze was taken after Spec 070's freeze, per
+the commissioned order (DD-071-2), and after Spec
+069's executed record (Asset A) was merged to
+`main`.
+
+- **DD-071-8 — OPEN-071-1 ruled: the intake
+  record is landed.** It was merged to `main` by
+  PR #339 (head `bfc811df`) adopting P-F1; its pins
+  re-asserted first-hand at this freeze (corpus
+  SANITIZED SHA-256 `345241b1…`, row-grades CSV
+  `02394241…`; census 5,704 rows, grades
+  3,212/2,087/405). Gate 0.2's S1/S2 assertions run
+  against it at execution.
+- **DD-071-9 — OPEN-071-2 ruled: Asset A's digest
+  copied character for character, and the order
+  recorded.** From Spec 069's executed record
+  (`asset-a-freeze.json`, merged by PR #345 at
+  `6a981188`), re-verified at this freeze by
+  recomputing the canonical CSV's digest on the
+  merged tree: **SHA-256
+  `952319355098698f01e6d8499b0384f84ac964e1bc4ecdc03c77ed920c7a5b5b`**,
+  187 rows, per-kind counts animal 20, sky_cycle 0,
+  object_goods 14, human 25, other 127, contested
+  0, unidentified 1. This freeze follows Spec
+  070's freeze (its freeze PR #340, merged at
+  `1213029d`) in the commissioned order; gate 0.5's
+  freeze-order proof asserts the sequence at
+  execution. The pin source this spec fixes for
+  gate 0.1 is Spec 069's `asset-a-freeze.json` in
+  its merged executed record (the §6 drafting
+  defect about Spec 050's pin source is thereby
+  answered for this successor: the pin source is
+  the successor asset's own record, not Spec
+  045's).
+- **DD-071-10 — OPEN-071-3 ruled: the shared
+  keying route.** The same route Spec 070's freeze
+  fixed (its DD-070-9), stated here in this spec's
+  own record as §4 contemplated: a Shakti sign's
+  ICIT code n is its Wells number; among the rows
+  of the pinned canonical sign registry
+  (`data/crosswalks/canonical_sign_registry.csv`,
+  SHA-256
+  `8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420`)
+  with `numbering_system` = `parpola_1982` whose
+  `wells_ids` contains the token `W` followed by n
+  zero-padded to three digits, the sign resolves
+  to the Asset A row whose `sign_key` is that
+  registry row's `sign_id`. Exactly one distinct
+  `sign_id` is a resolution; zero or more than one
+  is a resolution failure and the sign is
+  unkeyable. At this freeze the route's Wells map
+  carries 498 Wells ids with no ambiguity
+  (verified at Spec 070's freeze and re-verified
+  here).
+- **DD-071-11 — OPEN-071-4 ruled: closure
+  (conservative).** An unkeyable sign enumerated
+  at gate 0.4 closes the execution as **POPULATION
+  NOT KEYED**, the sign named — the more
+  conservative of the draft's two branches,
+  flagged as a conservative choice in the freeze
+  worker's report.
+- **DD-071-12 — OPEN-071-5 ruled: file this
+  spec's own OSF registration at its freeze**, as
+  a new registration for a new spec under the
+  programme's OSF project, per the owner's ruling.
+  The filing is recorded in
+  `osf-spec-registration.md` in this directory.
+- **DD-071-13 — OPEN-071-6 ruled: Phase 434** is
+  allocated to this spec's execution, on the
+  merged record as it stands at this freeze (Spec
+  069 executed as Phase 432, Spec 070 as Phase
+  433; the number is free; Spec 050's Phase-416 is
+  its own and is not reused).
+- **DD-071-14 — The AEE gate reading of DD-071-7
+  and DD-038-10 governs**: zero correctness
+  failure modes and no claim below 0.70 propagated
+  confidence at each of after_specify, after_plan
+  and after_tasks; a register restatement made
+  only to satisfy the gate is a freeze recovery,
+  recorded in `aee/freeze-aee-note.md`.
+
+---
+
+*Freeze rulings recorded 2026-10-22 by the freeze
+worker (an AI agent, Muse Spark via Muse) under the
+owner's freeze act, per constitution §VI.*

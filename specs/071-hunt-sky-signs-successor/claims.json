@@ -1,1 +1,738 @@
-{"claims":[{"alternatives":[],"assumptions":["ASM-RESCOPE-STATED"],"boundary":"The scope is the re-scoped test of section 4. It excludes any statement about the Phase-43 framework, about calendars, cycles, or any content a sign might carry, about Hunt's closing part in any form broader than the sky, and about any other corpus or compilation.","depends_on":[],"evidence":[{"description":"Spec 050 spec.md on main, read in full at this draft: the question, the falsifier, the celestial class as Asset A's sky_cycle kind exactly with its section 2.2 boundary, the step-0 gates, the enrichment criteria (ratio at least 1.5, Fisher's exact test two-sided at 5 percent, the half-of-occurrences condition, TOO THIN below 30), the two sensitivities, and the closure as a not-run dependency closure because no Asset A digest exists.","direction":"supports","kind":"program-record","observed_at":"2026-10-22","ref":"specs/050-hunt-sky-signs-endings/spec.md","source_id":"specs/050-hunt-sky-signs-endings/spec.md","source_quality":"authoritative"},{"description":"Readiness assessment of 2026-10-22, section 1.5 downstream note and section 3 Family 4: Spec 050 becomes draftable again only inside the re-scoped Hunt programme, as a new successor - never by reopening 050 - with documented-lineage rows only for the primary population and contested Asset A rows excluded from the primary and reported.","direction":"supports","kind":"design-source","observed_at":"2026-10-22","ref":"research_notes/shakti-readiness-proposals-2026-10-22.md","source_id":"shakti-readiness-proposals-2026-10-22","source_quality":"program-record"},{"description":"Shakti corpus pins and census: sanitized_corpus.json SHA-256 345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68; 5,704 rows, 5,536 analyzable; grades 3,212 documented-lineage / 2,087 undocumented-corroborated / 405 undocumented-uncorroborated (provenance audit of 2026-10-22); row-grades file SHA-256 02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739.","direction":"supports","kind":"program-record","observed_at":"2026-10-22","ref":"docs/decisions/2026-10-22-shakti-corpus-intake-record.md","source_id":"2026-10-22-shakti-corpus-intake-record","source_quality":"authoritative"}],"falsification_tests":["the claim is falsified in scope if any Spec 071 output states a conclusion about content, a broader closing class, the Phase-43 framework, or a corpus outside section 4"],"id":"F071-C01","kind":"hypothesis","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["spec050-record","shakti-intake"],"forbidden_assumptions":[],"framework_kind":"conditional-model-result","layer":"I","strongest_rival":"the reading in which an ending enrichment, if found, licenses a claim about calendars or cycles","verdict_rule":"scope is judged by inspection of every Spec 071 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding"},"status":"draft","text":"An outcome under Spec 071 states only whether, measured on the graded ICIT corpus, the celestial class (Asset A sky_cycle signs) is enriched at text endings under the criteria of Spec 071 section 4.3 - a verdict about Hunt's sky-signs claim in its re-scoped, positional form, and about nothing else."},{"alternatives":[],"assumptions":["ASM-CLAIM-RECORD"],"boundary":"The claim's standing is as recorded in Spec 050 section 1, read at this draft. The re-scoped verdict appends to the record by dated append only.","depends_on":[],"evidence":[{"description":"Spec 050 spec.md on main, read in full at this draft: the question, the falsifier, the celestial class as Asset A's sky_cycle kind exactly with its section 2.2 boundary, the step-0 gates, the enrichment criteria (ratio at least 1.5, Fisher's exact test two-sided at 5 percent, the half-of-occurrences condition, TOO THIN below 30), the two sensitivities, and the closure as a not-run dependency closure because no Asset A digest exists.","direction":"supports","kind":"program-record","observed_at":"2026-10-22","ref":"specs/050-hunt-sky-signs-endings/spec.md","source_id":"specs/050-hunt-sky-signs-endings/spec.md","source_quality":"authoritative"},{"description":"Readiness assessment of 2026-10-22, section 1.5 downstream note and section 3 Family 4: Spec 050 becomes draftable again only inside the re-scoped Hunt programme, as a new successor - never by reopening 050 - with documented-lineage rows only for the primary population and contested Asset A rows excluded from the primary and reported.","direction":"supports","kind":"design-source","observed_at":"2026-10-22","ref":"research_notes/shakti-readiness-proposals-2026-10-22.md","source_id":"shakti-readiness-proposals-2026-10-22","source_quality":"program-record"}],"falsification_tests":["re-read the claim's standing at the freeze against Spec 050's record: a differing standing is a freeze finding, recorded, not silently absorbed"],"id":"F071-C02","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["spec050-record"],"forbidden_assumptions":[],"framework_kind":"conditional-model-result","layer":"I","strongest_rival":"the predecessor's posture, under which the claim could be mistaken for tested-and-failed rather than untested for want of its class","verdict_rule":"the freeze's re-read is the operative check"},"status":"draft","text":"The claim without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004 stands UNTESTED, its falsifier requiring a defined class of celestial signs that no held classification supplied; Spec 071 tests it in re-scoped form and edits neither the claim's record nor Spec 050's frozen text or closure record."},{"alternatives":[],"assumptions":["ASM-BATTERY-APPLIED-NEW","ASM-ASSET-A-FROZEN"],"boundary":"This is the SUPPORTED criterion of section 4.3, over the documented-lineage primary population. Position is not meaning: the hypothesis is about where sky signs stand, not about what they marked.","depends_on":[],"evidence":[{"description":"Spec 050 spec.md on main, read in full at this draft: the question, the falsifier, the celestial class as Asset A's sky_cycle kind exactly with its section 2.2 boundary, the step-0 gates, the enrichment criteria (ratio at least 1.5, Fisher's exact test two-sided at 5 percent, the half-of-occurrences condition, TOO THIN below 30), the two sensitivities, and the closure as a not-run dependency closure because no Asset A digest exists.","direction":"supports","kind":"program-record","observed_at":"2026-10-22","ref":"specs/050-hunt-sky-signs-endings/spec.md","source_id":"specs/050-hunt-sky-signs-endings/spec.md","source_quality":"authoritative"},{"description":"Readiness assessment of 2026-10-22, section 1.5 downstream note and section 3 Family 4: Spec 050 becomes draftable again only inside the re-scoped Hunt programme, as a new successor - never by reopening 050 - with documented-lineage rows only for the primary population and contested Asset A rows excluded from the primary and reported.","direction":"supports","kind":"design-source","observed_at":"2026-10-22","ref":"research_notes/shakti-readiness-proposals-2026-10-22.md","source_id":"shakti-readiness-proposals-2026-10-22","source_quality":"program-record"},{"description":"Phase-43 battery record (amendment queue item 2, section 2), read first-hand at this draft: position rule; floor total >= 5; cascade TERMINAL_STRONG t_rate >= 0.60, INITIAL_STRONG i_rate >= 0.55, MEDIAL_STRONG m_rate >= 0.65, TERMINAL_MODERATE 0.40, INITIAL_MODERATE 0.40, otherwise MIXED, first match wins; and the finding that the battery contains no chance-baseline step.","direction":"supports","kind":"program-record","observed_at":"2026-10-22","ref":"research_notes/amendment-queue-2026-10-21/item-2-phase43-battery.md","source_id":"item-2-phase43-battery","source_quality":"program-record"}],"falsification_tests":["run section 4: if the ratio is at or below 1.0 the hypothesis fails as NOT SUPPORTED; if the ratio is between 1.0 and 1.5, or at least 1.5 with the exact test failed or the half-of-occurrences condition unmet, the outcome is INCONCLUSIVE, not SUPPORTED"],"id":"F071-C03","kind":"hypothesis","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["spec050-record","phase43-battery-record"],"forbidden_assumptions":[],"framework_kind":"conditional-model-result","layer":"I","strongest_rival":"the falsifier itself: celestial-class signs stand at endings at no better than the rate of signs of comparable frequency","verdict_rule":"SUPPORTED for the hypothesis iff all three section 4.3 conditions hold"},"status":"draft","text":"Signs in the celestial class are enriched in text-final position on the graded ICIT corpus: the enrichment ratio R_sky / R_cmp is at least 1.5, Fisher's exact test passes at the 5 percent level, and at least half the class's total occurrences come from member signs individually above the corpus-wide final-position rate."},{"alternatives":[],"assumptions":["ASM-BATTERY-APPLIED-NEW"],"boundary":"The falsifier's comparison is the frequency-matched class of section 4.2 (this design's own construction), never a Phase-43 chance baseline: the battery has none (F071-C06).","depends_on":[],"evidence":[{"description":"Spec 050 spec.md on main, read in full at this draft: the question, the falsifier, the celestial class as Asset A's sky_cycle kind exactly with its section 2.2 boundary, the step-0 gates, the enrichment criteria (ratio at least 1.5, Fisher's exact test two-sided at 5 percent, the half-of-occurrences condition, TOO THIN below 30), the two sensitivities, and the closure as a not-run dependency closure because no Asset A digest exists.","direction":"supports","kind":"program-record","observed_at":"2026-10-22","ref":"specs/050-hunt-sky-signs-endings/spec.md","source_id":"specs/050-hunt-sky-signs-endings/spec.md","source_quality":"authoritative"},{"description":"Readiness assessment of 2026-10-22, section 1.5 downstream note and section 3 Family 4: Spec 050 becomes draftable again only inside the re-scoped Hunt programme, as a new successor - never by reopening 050 - with documented-lineage rows only for the primary population and contested Asset A rows excluded from the primary and reported.","direction":"supports","kind":"design-source","observed_at":"2026-10-22","ref":"research_notes/shakti-readiness-proposals-2026-10-22.md","source_id":"shakti-readiness-proposals-2026-10-22","source_quality":"program-record"}],"falsification_tests":["if the primary returns a ratio at or below 1.0 and the headline is not NOT SUPPORTED, compliance is falsified on inspection of the outcome record"],"id":"F071-C04","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["spec050-record"],"forbidden_assumptions":[],"framework_kind":"conditional-model-result","layer":"I","strongest_rival":"an inconclusive framing used to soften a ratio at or below 1.0, which the criteria reserve for the band above 1.0","verdict_rule":"headline inspection against section 4.3 is the operative check"},"status":"draft","text":"The falsifier is the claim's own, in the design's terms: celestial-class signs are not enriched at text endings - the enrichment ratio at or below 1.0 - and its word is NOT SUPPORTED, recorded with the full per-sign table published beside it."},{"alternatives":[],"assumptions":["ASM-ASSET-A-FROZEN"],"boundary":"This is Spec 050 section 2.2's boundary, carried as a stated boundary, not a silent choice: if Hunt's closing part is broader than the sky, that broader claim is not tested here.","depends_on":[],"evidence":[{"description":"Spec 050 spec.md on main, read in full at this draft: the question, the falsifier, the celestial class as Asset A's sky_cycle kind exactly with its section 2.2 boundary, the step-0 gates, the enrichment criteria (ratio at least 1.5, Fisher's exact test two-sided at 5 percent, the half-of-occurrences condition, TOO THIN below 30), the two sensitivities, and the closure as a not-run dependency closure because no Asset A digest exists.","direction":"supports","kind":"program-record","observed_at":"2026-10-22","ref":"specs/050-hunt-sky-signs-endings/spec.md","source_id":"specs/050-hunt-sky-signs-endings/spec.md","source_quality":"authoritative"},{"description":"Readiness assessment of 2026-10-22, section 1.5 downstream note and section 3 Family 4: Spec 050 becomes draftable again only inside the re-scoped Hunt programme, as a new successor - never by reopening 050 - with documented-lineage rows only for the primary population and contested Asset A rows excluded from the primary and reported.","direction":"supports","kind":"design-source","observed_at":"2026-10-22","ref":"research_notes/shakti-readiness-proposals-2026-10-22.md","source_id":"shakti-readiness-proposals-2026-10-22","source_quality":"program-record"}],"falsification_tests":["inspect the class census at gate 0.4 against the frozen asset: any member whose Asset A kind is not sky_cycle in the primary, or any contested sign folded into the primary, falsifies compliance"],"id":"F071-C05","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["spec050-record"],"forbidden_assumptions":[],"framework_kind":"conditional-model-result","layer":"I","strongest_rival":"widening the class toward Hunt's broader closing notion after the counts are seen, which would let the verdict choose its own population","verdict_rule":"the gate-0.4 census inspection is the operative check"},"status":"draft","text":"The celestial class is exactly the set of signs whose frozen Asset A row carries depicted_kind = sky_cycle, keyed in Wells space; the class is not widened to any jurisdiction-coded subset, to any sign whose verbatim label a reader might call celestial while its Asset A kind is object_goods, human, or other, or to any sign classified by a worker's own visual judgement; contested signs are excluded from the primary and reported, entering only in sensitivity S2 under their CISI-governed labels, and unidentified signs are never celestial."},{"alternatives":[],"assumptions":["ASM-BATTERY-APPLIED-NEW"],"boundary":"The rules are the battery record's, verbatim in substance, and identical to Spec 070 section 2's statement: the two successors' classes may be computed in one battery run family, without changing the commissioned freeze order.","depends_on":[],"evidence":[{"description":"Phase-43 battery record (amendment queue item 2, section 2), read first-hand at this draft: position rule; floor total >= 5; cascade TERMINAL_STRONG t_rate >= 0.60, INITIAL_STRONG i_rate >= 0.55, MEDIAL_STRONG m_rate >= 0.65, TERMINAL_MODERATE 0.40, INITIAL_MODERATE 0.40, otherwise MIXED, first match wins; and the finding that the battery contains no chance-baseline step.","direction":"supports","kind":"program-record","observed_at":"2026-10-22","ref":"research_notes/amendment-queue-2026-10-21/item-2-phase43-battery.md","source_id":"item-2-phase43-battery","source_quality":"program-record"}],"falsification_tests":["inspect the derivation record against section 2: any threshold, floor, order, or rule differing from the stated battery, or any product describing a baseline as restored from Phase-43, falsifies compliance"],"id":"F071-C06","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["phase43-battery-record"],"forbidden_assumptions":[],"framework_kind":"conditional-model-result","layer":"I","strongest_rival":"reproducing the predecessor's gate 0.5 posture - demanding the recorded framework's quantities from a corpus that cannot supply them - which is what closed the predecessor line unrun","verdict_rule":"the derivation record's rule-by-rule statement against section 2 is the operative check"},"status":"draft","text":"The ending classes are derived on the Shakti corpus under the recovered Phase-43 battery rules stated in section 2 - the position rule, the floor total >= 5, and the cascade TERMINAL_STRONG t_rate >= 0.60, INITIAL_STRONG i_rate >= 0.55, MEDIAL_STRONG m_rate >= 0.65 (then the moderate steps and MIXED, first match wins) - stated as a battery applied new to an ICIT corpus, carrying the G5 attestation that the Phase-43 battery is threshold-only and had no chance-baseline step; no product claims to restore a baseline, and no Phase-43 quantity is a reference point of the derivation."},{"alternatives":[],"assumptions":["ASM-BATTERY-APPLIED-NEW","ASM-ASSET-A-FROZEN"],"boundary":"The enumerated list, once published at gate 0.4, is the population frame of the per-sign reporting of section 4.4.","depends_on":[],"evidence":[{"description":"Spec 050 spec.md on main, read in full at this draft: the question, the falsifier, the celestial class as Asset A's sky_cycle kind exactly with its section 2.2 boundary, the step-0 gates, the enrichment criteria (ratio at least 1.5, Fisher's exact test two-sided at 5 percent, the half-of-occurrences condition, TOO THIN below 30), the two sensitivities, and the closure as a not-run dependency closure because no Asset A digest exists.","direction":"supports","kind":"program-record","observed_at":"2026-10-22","ref":"specs/050-hunt-sky-signs-endings/spec.md","source_id":"specs/050-hunt-sky-signs-endings/spec.md","source_quality":"authoritative"},{"description":"Readiness assessment of 2026-10-22, section 1.5 downstream note and section 3 Family 4: Spec 050 becomes draftable again only inside the re-scoped Hunt programme, as a new successor - never by reopening 050 - with documented-lineage rows only for the primary population and contested Asset A rows excluded from the primary and reported.","direction":"supports","kind":"design-source","observed_at":"2026-10-22","ref":"research_notes/shakti-readiness-proposals-2026-10-22.md","source_id":"shakti-readiness-proposals-2026-10-22","source_quality":"program-record"},{"description":"Phase-43 battery record (amendment queue item 2, section 2), read first-hand at this draft: position rule; floor total >= 5; cascade TERMINAL_STRONG t_rate >= 0.60, INITIAL_STRONG i_rate >= 0.55, MEDIAL_STRONG m_rate >= 0.65, TERMINAL_MODERATE 0.40, INITIAL_MODERATE 0.40, otherwise MIXED, first match wins; and the finding that the battery contains no chance-baseline step.","direction":"supports","kind":"program-record","observed_at":"2026-10-22","ref":"research_notes/amendment-queue-2026-10-21/item-2-phase43-battery.md","source_id":"item-2-phase43-battery","source_quality":"program-record"}],"falsification_tests":["if the executed population frame is not the gate-0.4 published enumeration, or if any product checks its size against 20 or any Phase-43 count, compliance is falsified on inspection"],"id":"F071-C07","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["spec050-record","phase43-battery-record"],"forbidden_assumptions":[],"framework_kind":"conditional-model-result","layer":"I","strongest_rival":"substituting the recorded terminal-strong count of the old framework as the new set's expected size, which would smuggle the replaced basis back in as a check","verdict_rule":"the gate-0.4 publication record is the operative check"},"status":"draft","text":"The ending population is Shakti's own terminal-strong set: derived under F071-C06 on the primary population, enumerated in full in Wells space, and published at gate 0.4 before any test; every enumerated sign is keyed to exactly one Asset A row in Wells space under the keying rule the freeze fixes; a sign that cannot be keyed is a named step-0 finding - listed with its Wells identity and the reason - disposed of exactly as the freeze stated in advance (including closing as POPULATION NOT KEYED where the freeze so directs), and never quietly replaced, dropped, or hand-keyed; no count for the set is fixed in advance."},{"alternatives":[],"assumptions":["ASM-ASSET-A-FROZEN"],"boundary":"This spec cannot freeze before Asset A exists as a frozen product of Spec 069, because its freeze record must quote the digest; and its freeze follows Spec 070's in the commissioned order (Spec 069, Spec 070, Spec 071). No digest value is asserted at draft.","depends_on":[],"evidence":[{"description":"Spec 050 spec.md on main, read in full at this draft: the question, the falsifier, the celestial class as Asset A's sky_cycle kind exactly with its section 2.2 boundary, the step-0 gates, the enrichment criteria (ratio at least 1.5, Fisher's exact test two-sided at 5 percent, the half-of-occurrences condition, TOO THIN below 30), the two sensitivities, and the closure as a not-run dependency closure because no Asset A digest exists.","direction":"supports","kind":"program-record","observed_at":"2026-10-22","ref":"specs/050-hunt-sky-signs-endings/spec.md","source_id":"specs/050-hunt-sky-signs-endings/spec.md","source_quality":"authoritative"},{"description":"Readiness assessment of 2026-10-22, section 1.5 downstream note and section 3 Family 4: Spec 050 becomes draftable again only inside the re-scoped Hunt programme, as a new successor - never by reopening 050 - with documented-lineage rows only for the primary population and contested Asset A rows excluded from the primary and reported.","direction":"supports","kind":"design-source","observed_at":"2026-10-22","ref":"research_notes/shakti-readiness-proposals-2026-10-22.md","source_id":"shakti-readiness-proposals-2026-10-22","source_quality":"program-record"},{"description":"Shakti corpus pins and census: sanitized_corpus.json SHA-256 345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68; 5,704 rows, 5,536 analyzable; grades 3,212 documented-lineage / 2,087 undocumented-corroborated / 405 undocumented-uncorroborated (provenance audit of 2026-10-22); row-grades file SHA-256 02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739.","direction":"supports","kind":"program-record","observed_at":"2026-10-22","ref":"docs/decisions/2026-10-22-shakti-corpus-intake-record.md","source_id":"2026-10-22-shakti-corpus-intake-record","source_quality":"authoritative"}],"falsification_tests":["the gate record is falsified as a compliance record if any final-position quantity is shown to have been computed before all assertions passed, or if a failed assertion was repaired at run time"],"id":"F071-C08","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["spec050-record","shakti-intake"],"forbidden_assumptions":[],"framework_kind":"conditional-model-result","layer":"I","strongest_rival":"proceeding on an asset expected to freeze, on a corpus file that merely resembles the pinned intake, or ahead of Spec 070's freeze on the strength of a shared battery run","verdict_rule":"the ordered gate record of section 5 is the operative check"},"status":"draft","text":"Step 0 asserts, in order: Asset A frozen under Spec 069 with its digest recomputing to the value recorded in Spec 069's asset-a-freeze.json, the pin source this spec fixes (a missing or unfrozen asset closes NOT-RUN or ASSET NOT FROZEN; a mismatch closes ASSET PIN MISMATCH); the Shakti intake under P-F1 S1 and S2 against the intake record (failure closes SHAKTI INTAKE NOT REPRODUCED); input integrity and coverage (failure closes INVALID); the gate-0.4 enumeration, keying, and class census (TOO THIN below 30 occurrences for either class); and the freeze-order proof, which records that this spec's freeze followed Spec 070's freeze in the commissioned order - in every case before any final-position quantity."},{"alternatives":[],"assumptions":["ASM-GRADE-DISCIPLINE"],"boundary":"Grade counts as graded in the provenance audit of 2026-10-22: 3,212 / 2,087 / 405 rows; the step-0 census governs over derived analyzable figures (3,045 documented analyzable; 5,131 documented + corroborated analyzable).","depends_on":[],"evidence":[{"description":"Shakti corpus pins and census: sanitized_corpus.json SHA-256 345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68; 5,704 rows, 5,536 analyzable; grades 3,212 documented-lineage / 2,087 undocumented-corroborated / 405 undocumented-uncorroborated (provenance audit of 2026-10-22); row-grades file SHA-256 02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739.","direction":"supports","kind":"program-record","observed_at":"2026-10-22","ref":"docs/decisions/2026-10-22-shakti-corpus-intake-record.md","source_id":"2026-10-22-shakti-corpus-intake-record","source_quality":"authoritative"}],"falsification_tests":["a primary quantity computed over any row outside the documented-lineage grade, a load-bearing use of an uncorroborated row, or a headline block missing the lineage statement falsifies compliance on inspection"],"id":"F071-C09","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["shakti-intake"],"forbidden_assumptions":[],"framework_kind":"conditional-model-result","layer":"I","strongest_rival":"pooling the grades silently, which would change the population the ending rates describe while presenting the result as one corpus's measurement","verdict_rule":"the step-0 census and headline-block inspection are the operative checks"},"status":"draft","text":"The primary population is documented-lineage rows only; rows graded undocumented-uncorroborated enter no count, statistic, or argument; the documented + corroborated population enters only in sensitivity S3 under P-F1 S4's both-ways reporting; and every product carries the P-F1 S3 lineage statement in its headline block."},{"alternatives":[],"assumptions":["ASM-ASSET-A-FROZEN"],"boundary":"The band is Spec 050's DD-050-2 rule, carried. Its endpoints are read from the frozen class census at gate 0.4, before any positional quantity.","depends_on":[],"evidence":[{"description":"Spec 050 spec.md on main, read in full at this draft: the question, the falsifier, the celestial class as Asset A's sky_cycle kind exactly with its section 2.2 boundary, the step-0 gates, the enrichment criteria (ratio at least 1.5, Fisher's exact test two-sided at 5 percent, the half-of-occurrences condition, TOO THIN below 30), the two sensitivities, and the closure as a not-run dependency closure because no Asset A digest exists.","direction":"supports","kind":"program-record","observed_at":"2026-10-22","ref":"specs/050-hunt-sky-signs-endings/spec.md","source_id":"specs/050-hunt-sky-signs-endings/spec.md","source_quality":"authoritative"},{"description":"Readiness assessment of 2026-10-22, section 1.5 downstream note and section 3 Family 4: Spec 050 becomes draftable again only inside the re-scoped Hunt programme, as a new successor - never by reopening 050 - with documented-lineage rows only for the primary population and contested Asset A rows excluded from the primary and reported.","direction":"supports","kind":"design-source","observed_at":"2026-10-22","ref":"research_notes/shakti-readiness-proposals-2026-10-22.md","source_id":"shakti-readiness-proposals-2026-10-22","source_quality":"program-record"}],"falsification_tests":["a primary ratio computed against the corpus-wide rate, or against a comparison band not read from the gate-0.4 census, falsifies compliance on inspection of the gate and results records"],"id":"F071-C10","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["spec050-record"],"forbidden_assumptions":[],"framework_kind":"conditional-model-result","layer":"I","strongest_rival":"denominator shopping between the matched class and the corpus-wide rate after the counts are known","verdict_rule":"the gate-0.4 census and results-record inspection is the operative check"},"status":"draft","text":"The comparison class is the frequency-matched class of section 4.2 - signs not celestial in the primary whose total occurrence count in the primary population lies between the smallest and the largest such count among the primary celestial members, inclusive, with unidentified signs in the band counted and flagged - and the corpus-wide final-position rate is published beside it as descriptive context and as the per-sign condition's rate; the frequency matching is not interchanged with the corpus-wide rate as the primary denominator."},{"alternatives":[],"assumptions":["ASM-BATTERY-APPLIED-NEW","ASM-ASSET-A-FROZEN"],"boundary":"Every celestial member sign is reported in full in the per-sign table whichever way the verdict lands, so no single sign's weight can carry the class silently.","depends_on":[],"evidence":[{"description":"Spec 050 spec.md on main, read in full at this draft: the question, the falsifier, the celestial class as Asset A's sky_cycle kind exactly with its section 2.2 boundary, the step-0 gates, the enrichment criteria (ratio at least 1.5, Fisher's exact test two-sided at 5 percent, the half-of-occurrences condition, TOO THIN below 30), the two sensitivities, and the closure as a not-run dependency closure because no Asset A digest exists.","direction":"supports","kind":"program-record","observed_at":"2026-10-22","ref":"specs/050-hunt-sky-signs-endings/spec.md","source_id":"specs/050-hunt-sky-signs-endings/spec.md","source_quality":"authoritative"},{"description":"Readiness assessment of 2026-10-22, section 1.5 downstream note and section 3 Family 4: Spec 050 becomes draftable again only inside the re-scoped Hunt programme, as a new successor - never by reopening 050 - with documented-lineage rows only for the primary population and contested Asset A rows excluded from the primary and reported.","direction":"supports","kind":"design-source","observed_at":"2026-10-22","ref":"research_notes/shakti-readiness-proposals-2026-10-22.md","source_id":"shakti-readiness-proposals-2026-10-22","source_quality":"program-record"}],"falsification_tests":["recompute the headline from the published counts under section 4.3 and reconcile the tables: a headline word not derivable from the counts, or an unreconciled table carrying a verdict word, falsifies compliance"],"id":"F071-C11","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["spec050-record"],"forbidden_assumptions":[],"framework_kind":"conditional-model-result","layer":"I","strongest_rival":"publishing a verdict over counts that do not reconcile, which would make the headline unverifiable from its own record","verdict_rule":"the recomputation and reconciliation are the operative checks"},"status":"draft","text":"The headline outcome is exactly one of SUPPORTED, NOT SUPPORTED, or INCONCLUSIVE per section 4.3 (TOO THIN recorded as INCONCLUSIVE's thin form at gate 0.4), or one of the closure classes of section 7; the outcome record's headline uses section 4.6's pre-written wording for its class, carrying the honesty fence and the lineage statement; and the pooled counts reconcile exactly with the per-sign table of section 4.4 and the comparison census with the corpus census, failing which the outcome is NOT ADJUDICATED with no verdict word recorded."},{"alternatives":[],"assumptions":["ASM-APPEND-ONLY"],"boundary":"Append-only applies to every record this spec touches, including its own outcome record once landed.","depends_on":[],"evidence":[{"description":"Spec 050 spec.md on main, read in full at this draft: the question, the falsifier, the celestial class as Asset A's sky_cycle kind exactly with its section 2.2 boundary, the step-0 gates, the enrichment criteria (ratio at least 1.5, Fisher's exact test two-sided at 5 percent, the half-of-occurrences condition, TOO THIN below 30), the two sensitivities, and the closure as a not-run dependency closure because no Asset A digest exists.","direction":"supports","kind":"program-record","observed_at":"2026-10-22","ref":"specs/050-hunt-sky-signs-endings/spec.md","source_id":"specs/050-hunt-sky-signs-endings/spec.md","source_quality":"authoritative"},{"description":"Readiness assessment of 2026-10-22, section 1.5 downstream note and section 3 Family 4: Spec 050 becomes draftable again only inside the re-scoped Hunt programme, as a new successor - never by reopening 050 - with documented-lineage rows only for the primary population and contested Asset A rows excluded from the primary and reported.","direction":"supports","kind":"design-source","observed_at":"2026-10-22","ref":"research_notes/shakti-readiness-proposals-2026-10-22.md","source_id":"shakti-readiness-proposals-2026-10-22","source_quality":"program-record"}],"falsification_tests":["a diff against any predecessor record attributable to this spec's execution falsifies compliance"],"id":"F071-C12","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["spec050-record"],"forbidden_assumptions":[],"framework_kind":"conditional-model-result","layer":"I","strongest_rival":"reopening Spec 050 to land the successor's result inside the frozen record, which the readiness assessment expressly forbids","verdict_rule":"the before/after assertion record is the operative check"},"status":"draft","text":"Spec 071 appends and never edits: its outcome appends to the claim's record and to this directory; Spec 050's frozen text and closure record, Spec 045's frozen record, and Spec 069's asset are read, never modified; anchors are asserted byte-identical before and after any execution."},{"alternatives":[],"assumptions":["ASM-RESCOPE-STATED"],"boundary":"The fence and the lineage statement are part of the headline block (section 9), not a preface that products may drop.","depends_on":[],"evidence":[{"description":"Spec 050 spec.md on main, read in full at this draft: the question, the falsifier, the celestial class as Asset A's sky_cycle kind exactly with its section 2.2 boundary, the step-0 gates, the enrichment criteria (ratio at least 1.5, Fisher's exact test two-sided at 5 percent, the half-of-occurrences condition, TOO THIN below 30), the two sensitivities, and the closure as a not-run dependency closure because no Asset A digest exists.","direction":"supports","kind":"program-record","observed_at":"2026-10-22","ref":"specs/050-hunt-sky-signs-endings/spec.md","source_id":"specs/050-hunt-sky-signs-endings/spec.md","source_quality":"authoritative"},{"description":"Readiness assessment of 2026-10-22, section 1.5 downstream note and section 3 Family 4: Spec 050 becomes draftable again only inside the re-scoped Hunt programme, as a new successor - never by reopening 050 - with documented-lineage rows only for the primary population and contested Asset A rows excluded from the primary and reported.","direction":"supports","kind":"design-source","observed_at":"2026-10-22","ref":"research_notes/shakti-readiness-proposals-2026-10-22.md","source_id":"shakti-readiness-proposals-2026-10-22","source_quality":"program-record"},{"description":"Shakti corpus pins and census: sanitized_corpus.json SHA-256 345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68; 5,704 rows, 5,536 analyzable; grades 3,212 documented-lineage / 2,087 undocumented-corroborated / 405 undocumented-uncorroborated (provenance audit of 2026-10-22); row-grades file SHA-256 02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739.","direction":"supports","kind":"program-record","observed_at":"2026-10-22","ref":"docs/decisions/2026-10-22-shakti-corpus-intake-record.md","source_id":"2026-10-22-shakti-corpus-intake-record","source_quality":"authoritative"}],"falsification_tests":["an output stating a content conclusion, presenting the re-scoped verdict as a verdict on the Phase-43 framework or on the broader closing claim, citing 805/2,267 or 40/61/20 as basis, or omitting the fence or the lineage statement falsifies compliance on inspection"],"id":"F071-C13","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["spec050-record","shakti-intake"],"forbidden_assumptions":[],"framework_kind":"conditional-model-result","layer":"I","strongest_rival":"the successor's result circulating without its fence, as the sky-signs test of the original design finally run on its original terms","verdict_rule":"output inspection against sections 8 and 9 is the operative check"},"status":"draft","text":"No outcome under Spec 071 establishes that sky signs marked calendars, cycles, or any content - position is not meaning - or supports or falsifies Hunt's closing part in any form broader than the sky; depiction is the published identification layer, not ground truth; Spec 037's 49 percent census caution is restated wherever the result is stated; the honesty fence - a positional framework measured on the graded ICIT corpus, with 805/2,267 and 40/61/20 never cited as basis - is carried in the headline block of every product; and negative, inconclusive, too-thin, closed, invalid, and not-adjudicated outcomes publish with the same prominence as a supported one."}],"note":"Draft register for Spec 071 (re-scoped successor to Spec 050, design D-13; Hunt programme re-scoped by the owner's readiness decisions of 2026-10-22, decision 3; dependency order Spec 069, Spec 070, Spec 071, with this spec's freeze following Spec 070's). Conventions as in Specs 042-054: requirement claims carry no falsification test where a gate or inspection is the operative check; boundaries carry the conditions under which each claim holds; evidence items carry observed_at from this draft because the cited facts were verified first-hand at drafting. The AEE lifecycle hooks have NOT run on this register; they are the freeze gate (tasks L4), applied in the substantive form of DD-038-10, and any recovery round they force changes claim text before any freeze digest is computed. ASM- ids name the assumptions each claim stands on: ASM-RESCOPE-STATED (the re-scope - Shakti population, Wells-space keying, Asset A from Spec 069, freeze after Spec 070 - is stated openly and replaces the predecessor's corpus posture), ASM-CLAIM-RECORD (the claim file, as Spec 050 records it, is the claim's record of standing), ASM-BATTERY-APPLIED-NEW (the recovered Phase-43 battery rules, applied new to an ICIT corpus, derive the ending classes; the battery is threshold-only per the G5 attestation), ASM-ASSET-A-FROZEN (Asset A exists as a frozen product of Spec 069 before this spec freezes), ASM-GRADE-DISCIPLINE (the provenance audit's grades govern population membership under P-F1 S4), ASM-APPEND-ONLY (outcomes append; frozen and closed records are never edited).","register_version":"0.5-draft","spec":"071-hunt-sky-signs-successor"}
+{
+ "claims": [
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-RESCOPE-STATED"
+   ],
+   "boundary": "The scope is the re-scoped test of section 4. It excludes any statement about the Phase-43 framework, about calendars, cycles, or any content a sign might carry, about Hunt's closing part in any form broader than the sky, and about any other corpus or compilation. The claim as drafted states the proposition in full: An outcome under Spec 071 states only whether, measured on the graded ICIT corpus, the celestial class (Asset A sky_cycle signs) is enriched at text endings under the criteria of Spec 071 section 4.3 - a verdict about Hunt's sky-signs claim in its re-scoped, positional form, and about nothing else.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 050 spec.md on main, read in full at this draft: the question, the falsifier, the celestial class as Asset A's sky_cycle kind exactly with its section 2.2 boundary, the step-0 gates, the enrichment criteria (ratio at least 1.5, Fisher's exact test two-sided at 5 percent, the half-of-occurrences condition, TOO THIN below 30), the two sensitivities, and the closure as a not-run dependency closure because no Asset A digest exists.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/050-hunt-sky-signs-endings/spec.md",
+     "source_id": "specs/050-hunt-sky-signs-endings/spec.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "2026-10-22-shakti-corpus-intake-record",
+      "shakti-readiness-proposals-2026-10-22"
+     ]
+    },
+    {
+     "description": "Readiness assessment of 2026-10-22, section 1.5 downstream note and section 3 Family 4: Spec 050 becomes draftable again only inside the re-scoped Hunt programme, as a new successor - never by reopening 050 - with documented-lineage rows only for the primary population and contested Asset A rows excluded from the primary and reported.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_id": "shakti-readiness-proposals-2026-10-22",
+     "source_quality": "artifact",
+     "independent_of": [
+      "2026-10-22-shakti-corpus-intake-record",
+      "specs/050-hunt-sky-signs-endings/spec.md"
+     ]
+    },
+    {
+     "description": "Shakti corpus pins and census: sanitized_corpus.json SHA-256 345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68; 5,704 rows, 5,536 analyzable; grades 3,212 documented-lineage / 2,087 undocumented-corroborated / 405 undocumented-uncorroborated (provenance audit of 2026-10-22); row-grades file SHA-256 02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+     "source_id": "2026-10-22-shakti-corpus-intake-record",
+     "source_quality": "artifact",
+     "independent_of": [
+      "shakti-readiness-proposals-2026-10-22",
+      "specs/050-hunt-sky-signs-endings/spec.md"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "the claim is falsified in scope if any Spec 071 output states a conclusion about content, a broader closing class, the Phase-43 framework, or a corpus outside section 4"
+   ],
+   "id": "F071-C01",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec050-record",
+     "shakti-intake"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which an ending enrichment, if found, licenses a claim about calendars or cycles",
+    "verdict_rule": "scope is judged by inspection of every Spec 071 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding"
+   },
+   "status": "draft",
+   "text": "An outcome under Spec 071 states only whether the celestial class is enriched at text endings."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-CLAIM-RECORD"
+   ],
+   "boundary": "The claim's standing is as recorded in Spec 050 section 1, read at this draft. The re-scoped verdict appends to the record by dated append only. The claim as drafted states the proposition in full: The claim without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004 stands UNTESTED, its falsifier requiring a defined class of celestial signs that no held classification supplied; Spec 071 tests it in re-scoped form and edits neither the claim's record nor Spec 050's frozen text or closure record.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 050 spec.md on main, read in full at this draft: the question, the falsifier, the celestial class as Asset A's sky_cycle kind exactly with its section 2.2 boundary, the step-0 gates, the enrichment criteria (ratio at least 1.5, Fisher's exact test two-sided at 5 percent, the half-of-occurrences condition, TOO THIN below 30), the two sensitivities, and the closure as a not-run dependency closure because no Asset A digest exists.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/050-hunt-sky-signs-endings/spec.md",
+     "source_id": "specs/050-hunt-sky-signs-endings/spec.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "shakti-readiness-proposals-2026-10-22"
+     ]
+    },
+    {
+     "description": "Readiness assessment of 2026-10-22, section 1.5 downstream note and section 3 Family 4: Spec 050 becomes draftable again only inside the re-scoped Hunt programme, as a new successor - never by reopening 050 - with documented-lineage rows only for the primary population and contested Asset A rows excluded from the primary and reported.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_id": "shakti-readiness-proposals-2026-10-22",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/050-hunt-sky-signs-endings/spec.md"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "re-read the claim's standing at the freeze against Spec 050's record: a differing standing is a freeze finding, recorded, not silently absorbed"
+   ],
+   "id": "F071-C02",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec050-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the predecessor's posture, under which the claim could be mistaken for tested-and-failed rather than untested for want of its class",
+    "verdict_rule": "the freeze's re-read is the operative check"
+   },
+   "status": "draft",
+   "text": "The claim without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004 stands UNTESTED."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-BATTERY-APPLIED-NEW",
+    "ASM-ASSET-A-FROZEN"
+   ],
+   "boundary": "This is the SUPPORTED criterion of section 4.3, over the documented-lineage primary population. Position is not meaning: the hypothesis is about where sky signs stand, not about what they marked. The claim as drafted states the proposition in full: Signs in the celestial class are enriched in text-final position on the graded ICIT corpus: the enrichment ratio R_sky / R_cmp is at least 1.5, Fisher's exact test passes at the 5 percent level, and at least half the class's total occurrences come from member signs individually above the corpus-wide final-position rate.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 050 spec.md on main, read in full at this draft: the question, the falsifier, the celestial class as Asset A's sky_cycle kind exactly with its section 2.2 boundary, the step-0 gates, the enrichment criteria (ratio at least 1.5, Fisher's exact test two-sided at 5 percent, the half-of-occurrences condition, TOO THIN below 30), the two sensitivities, and the closure as a not-run dependency closure because no Asset A digest exists.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/050-hunt-sky-signs-endings/spec.md",
+     "source_id": "specs/050-hunt-sky-signs-endings/spec.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "item-2-phase43-battery",
+      "shakti-readiness-proposals-2026-10-22"
+     ]
+    },
+    {
+     "description": "Readiness assessment of 2026-10-22, section 1.5 downstream note and section 3 Family 4: Spec 050 becomes draftable again only inside the re-scoped Hunt programme, as a new successor - never by reopening 050 - with documented-lineage rows only for the primary population and contested Asset A rows excluded from the primary and reported.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_id": "shakti-readiness-proposals-2026-10-22",
+     "source_quality": "artifact",
+     "independent_of": [
+      "item-2-phase43-battery",
+      "specs/050-hunt-sky-signs-endings/spec.md"
+     ]
+    },
+    {
+     "description": "Phase-43 battery record (amendment queue item 2, section 2), read first-hand at this draft: position rule; floor total >= 5; cascade TERMINAL_STRONG t_rate >= 0.60, INITIAL_STRONG i_rate >= 0.55, MEDIAL_STRONG m_rate >= 0.65, TERMINAL_MODERATE 0.40, INITIAL_MODERATE 0.40, otherwise MIXED, first match wins; and the finding that the battery contains no chance-baseline step.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/amendment-queue-2026-10-21/item-2-phase43-battery.md",
+     "source_id": "item-2-phase43-battery",
+     "source_quality": "artifact",
+     "independent_of": [
+      "shakti-readiness-proposals-2026-10-22",
+      "specs/050-hunt-sky-signs-endings/spec.md"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "run section 4: if the ratio is at or below 1.0 the hypothesis fails as NOT SUPPORTED; if the ratio is between 1.0 and 1.5, or at least 1.5 with the exact test failed or the half-of-occurrences condition unmet, the outcome is INCONCLUSIVE, not SUPPORTED"
+   ],
+   "id": "F071-C03",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec050-record",
+     "phase43-battery-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the falsifier itself: celestial-class signs stand at endings at no better than the rate of signs of comparable frequency",
+    "verdict_rule": "SUPPORTED for the hypothesis iff all three section 4.3 conditions hold"
+   },
+   "status": "draft",
+   "text": "Signs in the celestial class are enriched in text-final position on the graded ICIT corpus."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-BATTERY-APPLIED-NEW"
+   ],
+   "boundary": "The falsifier's comparison is the frequency-matched class of section 4.2 (this design's own construction), never a Phase-43 chance baseline: the battery has none (F071-C06). The claim as drafted states the proposition in full: The falsifier is the claim's own, in the design's terms: celestial-class signs are not enriched at text endings - the enrichment ratio at or below 1.0 - and its word is NOT SUPPORTED, recorded with the full per-sign table published beside it. The register head at 0.7 read: The falsifier of the tested claim is its own recorded falsification condition, in the design's terms.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 050 spec.md on main, read in full at this draft: the question, the falsifier, the celestial class as Asset A's sky_cycle kind exactly with its section 2.2 boundary, the step-0 gates, the enrichment criteria (ratio at least 1.5, Fisher's exact test two-sided at 5 percent, the half-of-occurrences condition, TOO THIN below 30), the two sensitivities, and the closure as a not-run dependency closure because no Asset A digest exists.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/050-hunt-sky-signs-endings/spec.md",
+     "source_id": "specs/050-hunt-sky-signs-endings/spec.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "shakti-readiness-proposals-2026-10-22"
+     ]
+    },
+    {
+     "description": "Readiness assessment of 2026-10-22, section 1.5 downstream note and section 3 Family 4: Spec 050 becomes draftable again only inside the re-scoped Hunt programme, as a new successor - never by reopening 050 - with documented-lineage rows only for the primary population and contested Asset A rows excluded from the primary and reported.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_id": "shakti-readiness-proposals-2026-10-22",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/050-hunt-sky-signs-endings/spec.md"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "if the primary returns a ratio at or below 1.0 and the headline is not NOT SUPPORTED, compliance is falsified on inspection of the outcome record"
+   ],
+   "id": "F071-C04",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec050-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "an inconclusive framing used to soften a ratio at or below 1.0, which the criteria reserve for the band above 1.0",
+    "verdict_rule": "headline inspection against section 4.3 is the operative check"
+   },
+   "status": "draft",
+   "text": "The falsifier of the tested claim is its own recorded falsification condition."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-ASSET-A-FROZEN"
+   ],
+   "boundary": "This is Spec 050 section 2.2's boundary, carried as a stated boundary, not a silent choice: if Hunt's closing part is broader than the sky, that broader claim is not tested here. The claim as drafted states the proposition in full: The celestial class is exactly the set of signs whose frozen Asset A row carries depicted_kind = sky_cycle, keyed in Wells space; the class is not widened to any jurisdiction-coded subset, to any sign whose verbatim label a reader might call celestial while its Asset A kind is object_goods, human, or other, or to any sign classified by a worker's own visual judgement; contested signs are excluded from the primary and reported, entering only in sensitivity S2 under their CISI-governed labels, and unidentified signs are never celestial.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 050 spec.md on main, read in full at this draft: the question, the falsifier, the celestial class as Asset A's sky_cycle kind exactly with its section 2.2 boundary, the step-0 gates, the enrichment criteria (ratio at least 1.5, Fisher's exact test two-sided at 5 percent, the half-of-occurrences condition, TOO THIN below 30), the two sensitivities, and the closure as a not-run dependency closure because no Asset A digest exists.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/050-hunt-sky-signs-endings/spec.md",
+     "source_id": "specs/050-hunt-sky-signs-endings/spec.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "shakti-readiness-proposals-2026-10-22"
+     ]
+    },
+    {
+     "description": "Readiness assessment of 2026-10-22, section 1.5 downstream note and section 3 Family 4: Spec 050 becomes draftable again only inside the re-scoped Hunt programme, as a new successor - never by reopening 050 - with documented-lineage rows only for the primary population and contested Asset A rows excluded from the primary and reported.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_id": "shakti-readiness-proposals-2026-10-22",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/050-hunt-sky-signs-endings/spec.md"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "inspect the class census at gate 0.4 against the frozen asset: any member whose Asset A kind is not sky_cycle in the primary, or any contested sign folded into the primary, falsifies compliance"
+   ],
+   "id": "F071-C05",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec050-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "widening the class toward Hunt's broader closing notion after the counts are seen, which would let the verdict choose its own population",
+    "verdict_rule": "the gate-0.4 census inspection is the operative check"
+   },
+   "status": "draft",
+   "text": "The celestial class is exactly the set of signs whose frozen Asset A row carries depicted_kind = sky_cycle."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-BATTERY-APPLIED-NEW"
+   ],
+   "boundary": "The rules are the battery record's, verbatim in substance, and identical to Spec 070 section 2's statement: the two successors' classes may be computed in one battery run family, without changing the commissioned freeze order. The claim as drafted states the proposition in full: The ending classes are derived on the Shakti corpus under the recovered Phase-43 battery rules stated in section 2 - the position rule, the floor total >= 5, and the cascade TERMINAL_STRONG t_rate >= 0.60, INITIAL_STRONG i_rate >= 0.55, MEDIAL_STRONG m_rate >= 0.65 (then the moderate steps and MIXED, first match wins) - stated as a battery applied new to an ICIT corpus, carrying the G5 attestation that the Phase-43 battery is threshold-only and had no chance-baseline step; no product claims to restore a baseline, and no Phase-43 quantity is a reference point of the derivation.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Phase-43 battery record (amendment queue item 2, section 2), read first-hand at this draft: position rule; floor total >= 5; cascade TERMINAL_STRONG t_rate >= 0.60, INITIAL_STRONG i_rate >= 0.55, MEDIAL_STRONG m_rate >= 0.65, TERMINAL_MODERATE 0.40, INITIAL_MODERATE 0.40, otherwise MIXED, first match wins; and the finding that the battery contains no chance-baseline step.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/amendment-queue-2026-10-21/item-2-phase43-battery.md",
+     "source_id": "item-2-phase43-battery",
+     "source_quality": "artifact",
+     "independent_of": []
+    }
+   ],
+   "falsification_tests": [
+    "inspect the derivation record against section 2: any threshold, floor, order, or rule differing from the stated battery, or any product describing a baseline as restored from Phase-43, falsifies compliance"
+   ],
+   "id": "F071-C06",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "phase43-battery-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "reproducing the predecessor's gate 0.5 posture - demanding the recorded framework's quantities from a corpus that cannot supply them - which is what closed the predecessor line unrun",
+    "verdict_rule": "the derivation record's rule-by-rule statement against section 2 is the operative check"
+   },
+   "status": "draft",
+   "text": "The ending classes are derived on the Shakti corpus under the recovered Phase-43 battery rules."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-BATTERY-APPLIED-NEW",
+    "ASM-ASSET-A-FROZEN"
+   ],
+   "boundary": "The enumerated list, once published at gate 0.4, is the population frame of the per-sign reporting of section 4.4. The claim as drafted states the proposition in full: The ending population is Shakti's own terminal-strong set: derived under F071-C06 on the primary population, enumerated in full in Wells space, and published at gate 0.4 before any test; every enumerated sign is keyed to exactly one Asset A row in Wells space under the keying rule the freeze fixes; a sign that cannot be keyed is a named step-0 finding - listed with its Wells identity and the reason - disposed of exactly as the freeze stated in advance (including closing as POPULATION NOT KEYED where the freeze so directs), and never quietly replaced, dropped, or hand-keyed; no count for the set is fixed in advance. Freeze ruling DD-071-10 (OPEN-071-3) fixes the same keying route Spec 070's freeze fixed, stated in this spec's own record: a Shakti sign's ICIT code n is its Wells number; among the rows of the pinned canonical sign registry (data/crosswalks/canonical_sign_registry.csv, SHA-256 8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420) with numbering_system parpola_1982 whose wells_ids contains the token W followed by n zero-padded to three digits, the sign resolves to the Asset A row whose sign_key is that registry row's sign_id; exactly one distinct sign_id is a resolution, and zero or more than one is a resolution failure and the sign is unkeyable. Freeze ruling DD-071-11 (OPEN-071-4) fixes the disposition in advance: closure as POPULATION NOT KEYED where an enumerated sign cannot be keyed, the more conservative branch of the draft's two, taken under the owner's freeze rulings.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 050 spec.md on main, read in full at this draft: the question, the falsifier, the celestial class as Asset A's sky_cycle kind exactly with its section 2.2 boundary, the step-0 gates, the enrichment criteria (ratio at least 1.5, Fisher's exact test two-sided at 5 percent, the half-of-occurrences condition, TOO THIN below 30), the two sensitivities, and the closure as a not-run dependency closure because no Asset A digest exists.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/050-hunt-sky-signs-endings/spec.md",
+     "source_id": "specs/050-hunt-sky-signs-endings/spec.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "item-2-phase43-battery",
+      "shakti-readiness-proposals-2026-10-22"
+     ]
+    },
+    {
+     "description": "Readiness assessment of 2026-10-22, section 1.5 downstream note and section 3 Family 4: Spec 050 becomes draftable again only inside the re-scoped Hunt programme, as a new successor - never by reopening 050 - with documented-lineage rows only for the primary population and contested Asset A rows excluded from the primary and reported.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_id": "shakti-readiness-proposals-2026-10-22",
+     "source_quality": "artifact",
+     "independent_of": [
+      "item-2-phase43-battery",
+      "specs/050-hunt-sky-signs-endings/spec.md"
+     ]
+    },
+    {
+     "description": "Phase-43 battery record (amendment queue item 2, section 2), read first-hand at this draft: position rule; floor total >= 5; cascade TERMINAL_STRONG t_rate >= 0.60, INITIAL_STRONG i_rate >= 0.55, MEDIAL_STRONG m_rate >= 0.65, TERMINAL_MODERATE 0.40, INITIAL_MODERATE 0.40, otherwise MIXED, first match wins; and the finding that the battery contains no chance-baseline step.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/amendment-queue-2026-10-21/item-2-phase43-battery.md",
+     "source_id": "item-2-phase43-battery",
+     "source_quality": "artifact",
+     "independent_of": [
+      "shakti-readiness-proposals-2026-10-22",
+      "specs/050-hunt-sky-signs-endings/spec.md"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "if the executed population frame is not the gate-0.4 published enumeration, or if any product checks its size against 20 or any Phase-43 count, compliance is falsified on inspection"
+   ],
+   "id": "F071-C07",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec050-record",
+     "phase43-battery-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "substituting the recorded terminal-strong count of the old framework as the new set's expected size, which would smuggle the replaced basis back in as a check",
+    "verdict_rule": "the gate-0.4 publication record is the operative check"
+   },
+   "status": "draft",
+   "text": "The ending population of Spec 071 is Shakti's own terminal-strong set."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-ASSET-A-FROZEN"
+   ],
+   "boundary": "This spec cannot freeze before Asset A exists as a frozen product of Spec 069, because its freeze record must quote the digest; and its freeze follows Spec 070's in the commissioned order (Spec 069, Spec 070, Spec 071). No digest value is asserted at draft. The claim as drafted states the proposition in full: Step 0 asserts, in order: Asset A frozen under Spec 069 with its digest recomputing to the value recorded in Spec 069's asset-a-freeze.json, the pin source this spec fixes (a missing or unfrozen asset closes NOT-RUN or ASSET NOT FROZEN; a mismatch closes ASSET PIN MISMATCH); the Shakti intake under P-F1 S1 and S2 against the intake record (failure closes SHAKTI INTAKE NOT REPRODUCED); input integrity and coverage (failure closes INVALID); the gate-0.4 enumeration, keying, and class census (TOO THIN below 30 occurrences for either class); and the freeze-order proof, which records that this spec's freeze followed Spec 070's freeze in the commissioned order - in every case before any final-position quantity. Freeze ruling DD-071-9 (OPEN-071-2) copies Asset A's digest from Spec 069's executed record character for character: SHA-256 952319355098698f01e6d8499b0384f84ac964e1bc4ecdc03c77ed920c7a5b5b, 187 rows, per-kind counts animal 20, sky_cycle 0, object_goods 14, human 25, other 127, contested 0, unidentified 1; and records that this freeze follows Spec 070's freeze (merged 2026-10-22) in the commissioned order. The register head at 0.7 read: Step 0 asserts Asset A's freeze state and the Shakti intake before any final-position quantity.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 050 spec.md on main, read in full at this draft: the question, the falsifier, the celestial class as Asset A's sky_cycle kind exactly with its section 2.2 boundary, the step-0 gates, the enrichment criteria (ratio at least 1.5, Fisher's exact test two-sided at 5 percent, the half-of-occurrences condition, TOO THIN below 30), the two sensitivities, and the closure as a not-run dependency closure because no Asset A digest exists.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/050-hunt-sky-signs-endings/spec.md",
+     "source_id": "specs/050-hunt-sky-signs-endings/spec.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "2026-10-22-shakti-corpus-intake-record",
+      "shakti-readiness-proposals-2026-10-22"
+     ]
+    },
+    {
+     "description": "Readiness assessment of 2026-10-22, section 1.5 downstream note and section 3 Family 4: Spec 050 becomes draftable again only inside the re-scoped Hunt programme, as a new successor - never by reopening 050 - with documented-lineage rows only for the primary population and contested Asset A rows excluded from the primary and reported.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_id": "shakti-readiness-proposals-2026-10-22",
+     "source_quality": "artifact",
+     "independent_of": [
+      "2026-10-22-shakti-corpus-intake-record",
+      "specs/050-hunt-sky-signs-endings/spec.md"
+     ]
+    },
+    {
+     "description": "Shakti corpus pins and census: sanitized_corpus.json SHA-256 345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68; 5,704 rows, 5,536 analyzable; grades 3,212 documented-lineage / 2,087 undocumented-corroborated / 405 undocumented-uncorroborated (provenance audit of 2026-10-22); row-grades file SHA-256 02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+     "source_id": "2026-10-22-shakti-corpus-intake-record",
+     "source_quality": "artifact",
+     "independent_of": [
+      "shakti-readiness-proposals-2026-10-22",
+      "specs/050-hunt-sky-signs-endings/spec.md"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "the gate record is falsified as a compliance record if any final-position quantity is shown to have been computed before all assertions passed, or if a failed assertion was repaired at run time"
+   ],
+   "id": "F071-C08",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec050-record",
+     "shakti-intake"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "proceeding on an asset expected to freeze, on a corpus file that merely resembles the pinned intake, or ahead of Spec 070's freeze on the strength of a shared battery run",
+    "verdict_rule": "the ordered gate record of section 5 is the operative check"
+   },
+   "status": "draft",
+   "text": "Step 0 asserts the frozen state of both inputs before any final-position quantity."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-GRADE-DISCIPLINE"
+   ],
+   "boundary": "Grade counts as graded in the provenance audit of 2026-10-22: 3,212 / 2,087 / 405 rows; the step-0 census governs over derived analyzable figures (3,045 documented analyzable; 5,131 documented + corroborated analyzable). The claim as drafted states the proposition in full: The primary population is documented-lineage rows only; rows graded undocumented-uncorroborated enter no count, statistic, or argument; the documented + corroborated population enters only in sensitivity S3 under P-F1 S4's both-ways reporting; and every product carries the P-F1 S3 lineage statement in its headline block.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Shakti corpus pins and census: sanitized_corpus.json SHA-256 345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68; 5,704 rows, 5,536 analyzable; grades 3,212 documented-lineage / 2,087 undocumented-corroborated / 405 undocumented-uncorroborated (provenance audit of 2026-10-22); row-grades file SHA-256 02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+     "source_id": "2026-10-22-shakti-corpus-intake-record",
+     "source_quality": "artifact",
+     "independent_of": []
+    }
+   ],
+   "falsification_tests": [
+    "a primary quantity computed over any row outside the documented-lineage grade, a load-bearing use of an uncorroborated row, or a headline block missing the lineage statement falsifies compliance on inspection"
+   ],
+   "id": "F071-C09",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "shakti-intake"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "pooling the grades silently, which would change the population the ending rates describe while presenting the result as one corpus's measurement",
+    "verdict_rule": "the step-0 census and headline-block inspection are the operative checks"
+   },
+   "status": "draft",
+   "text": "The primary population of Spec 071 is the documented-lineage rows only."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-ASSET-A-FROZEN"
+   ],
+   "boundary": "The band is Spec 050's DD-050-2 rule, carried. Its endpoints are read from the frozen class census at gate 0.4, before any positional quantity. The claim as drafted states the proposition in full: The comparison class is the frequency-matched class of section 4.2 - signs not celestial in the primary whose total occurrence count in the primary population lies between the smallest and the largest such count among the primary celestial members, inclusive, with unidentified signs in the band counted and flagged - and the corpus-wide final-position rate is published beside it as descriptive context and as the per-sign condition's rate; the frequency matching is not interchanged with the corpus-wide rate as the primary denominator.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 050 spec.md on main, read in full at this draft: the question, the falsifier, the celestial class as Asset A's sky_cycle kind exactly with its section 2.2 boundary, the step-0 gates, the enrichment criteria (ratio at least 1.5, Fisher's exact test two-sided at 5 percent, the half-of-occurrences condition, TOO THIN below 30), the two sensitivities, and the closure as a not-run dependency closure because no Asset A digest exists.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/050-hunt-sky-signs-endings/spec.md",
+     "source_id": "specs/050-hunt-sky-signs-endings/spec.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "shakti-readiness-proposals-2026-10-22"
+     ]
+    },
+    {
+     "description": "Readiness assessment of 2026-10-22, section 1.5 downstream note and section 3 Family 4: Spec 050 becomes draftable again only inside the re-scoped Hunt programme, as a new successor - never by reopening 050 - with documented-lineage rows only for the primary population and contested Asset A rows excluded from the primary and reported.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_id": "shakti-readiness-proposals-2026-10-22",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/050-hunt-sky-signs-endings/spec.md"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "a primary ratio computed against the corpus-wide rate, or against a comparison band not read from the gate-0.4 census, falsifies compliance on inspection of the gate and results records"
+   ],
+   "id": "F071-C10",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec050-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "denominator shopping between the matched class and the corpus-wide rate after the counts are known",
+    "verdict_rule": "the gate-0.4 census and results-record inspection is the operative check"
+   },
+   "status": "draft",
+   "text": "The comparison class is the frequency-matched class of section 4.2."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-BATTERY-APPLIED-NEW",
+    "ASM-ASSET-A-FROZEN"
+   ],
+   "boundary": "Every celestial member sign is reported in full in the per-sign table whichever way the verdict lands, so no single sign's weight can carry the class silently. The claim as drafted states the proposition in full: The headline outcome is exactly one of SUPPORTED, NOT SUPPORTED, or INCONCLUSIVE per section 4.3 (TOO THIN recorded as INCONCLUSIVE's thin form at gate 0.4), or one of the closure classes of section 7; the outcome record's headline uses section 4.6's pre-written wording for its class, carrying the honesty fence and the lineage statement; and the pooled counts reconcile exactly with the per-sign table of section 4.4 and the comparison census with the corpus census, failing which the outcome is NOT ADJUDICATED with no verdict word recorded. The register head at 0.7 read: The headline outcome of Spec 071 is decided by section 4.3's criteria, or is a closure class of section 7.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 050 spec.md on main, read in full at this draft: the question, the falsifier, the celestial class as Asset A's sky_cycle kind exactly with its section 2.2 boundary, the step-0 gates, the enrichment criteria (ratio at least 1.5, Fisher's exact test two-sided at 5 percent, the half-of-occurrences condition, TOO THIN below 30), the two sensitivities, and the closure as a not-run dependency closure because no Asset A digest exists.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/050-hunt-sky-signs-endings/spec.md",
+     "source_id": "specs/050-hunt-sky-signs-endings/spec.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "shakti-readiness-proposals-2026-10-22"
+     ]
+    },
+    {
+     "description": "Readiness assessment of 2026-10-22, section 1.5 downstream note and section 3 Family 4: Spec 050 becomes draftable again only inside the re-scoped Hunt programme, as a new successor - never by reopening 050 - with documented-lineage rows only for the primary population and contested Asset A rows excluded from the primary and reported.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_id": "shakti-readiness-proposals-2026-10-22",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/050-hunt-sky-signs-endings/spec.md"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "recompute the headline from the published counts under section 4.3 and reconcile the tables: a headline word not derivable from the counts, or an unreconciled table carrying a verdict word, falsifies compliance"
+   ],
+   "id": "F071-C11",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec050-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "publishing a verdict over counts that do not reconcile, which would make the headline unverifiable from its own record",
+    "verdict_rule": "the recomputation and reconciliation are the operative checks"
+   },
+   "status": "draft",
+   "text": "The headline outcome of Spec 071 is decided by section 4.3's criteria."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "Append-only applies to every record this spec touches, including its own outcome record once landed. The claim as drafted states the proposition in full: Spec 071 appends and never edits: its outcome appends to the claim's record and to this directory; Spec 050's frozen text and closure record, Spec 045's frozen record, and Spec 069's asset are read, never modified; anchors are asserted byte-identical before and after any execution.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 050 spec.md on main, read in full at this draft: the question, the falsifier, the celestial class as Asset A's sky_cycle kind exactly with its section 2.2 boundary, the step-0 gates, the enrichment criteria (ratio at least 1.5, Fisher's exact test two-sided at 5 percent, the half-of-occurrences condition, TOO THIN below 30), the two sensitivities, and the closure as a not-run dependency closure because no Asset A digest exists.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/050-hunt-sky-signs-endings/spec.md",
+     "source_id": "specs/050-hunt-sky-signs-endings/spec.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "shakti-readiness-proposals-2026-10-22"
+     ]
+    },
+    {
+     "description": "Readiness assessment of 2026-10-22, section 1.5 downstream note and section 3 Family 4: Spec 050 becomes draftable again only inside the re-scoped Hunt programme, as a new successor - never by reopening 050 - with documented-lineage rows only for the primary population and contested Asset A rows excluded from the primary and reported.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_id": "shakti-readiness-proposals-2026-10-22",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/050-hunt-sky-signs-endings/spec.md"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "a diff against any predecessor record attributable to this spec's execution falsifies compliance"
+   ],
+   "id": "F071-C12",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec050-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "reopening Spec 050 to land the successor's result inside the frozen record, which the readiness assessment expressly forbids",
+    "verdict_rule": "the before/after assertion record is the operative check"
+   },
+   "status": "draft",
+   "text": "Spec 071's writes to records are appends only."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-RESCOPE-STATED"
+   ],
+   "boundary": "The fence and the lineage statement are part of the headline block (section 9), not a preface that products may drop. The claim as drafted states the proposition in full: No outcome under Spec 071 establishes that sky signs marked calendars, cycles, or any content - position is not meaning - or supports or falsifies Hunt's closing part in any form broader than the sky; depiction is the published identification layer, not ground truth; Spec 037's 49 percent census caution is restated wherever the result is stated; the honesty fence - a positional framework measured on the graded ICIT corpus, with 805/2,267 and 40/61/20 never cited as basis - is carried in the headline block of every product; and negative, inconclusive, too-thin, closed, invalid, and not-adjudicated outcomes publish with the same prominence as a supported one. The register head at 0.7 read: No outcome under Spec 071 establishes that sky signs marked calendars, cycles, or any content.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 050 spec.md on main, read in full at this draft: the question, the falsifier, the celestial class as Asset A's sky_cycle kind exactly with its section 2.2 boundary, the step-0 gates, the enrichment criteria (ratio at least 1.5, Fisher's exact test two-sided at 5 percent, the half-of-occurrences condition, TOO THIN below 30), the two sensitivities, and the closure as a not-run dependency closure because no Asset A digest exists.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "specs/050-hunt-sky-signs-endings/spec.md",
+     "source_id": "specs/050-hunt-sky-signs-endings/spec.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "2026-10-22-shakti-corpus-intake-record",
+      "shakti-readiness-proposals-2026-10-22"
+     ]
+    },
+    {
+     "description": "Readiness assessment of 2026-10-22, section 1.5 downstream note and section 3 Family 4: Spec 050 becomes draftable again only inside the re-scoped Hunt programme, as a new successor - never by reopening 050 - with documented-lineage rows only for the primary population and contested Asset A rows excluded from the primary and reported.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "research_notes/shakti-readiness-proposals-2026-10-22.md",
+     "source_id": "shakti-readiness-proposals-2026-10-22",
+     "source_quality": "artifact",
+     "independent_of": [
+      "2026-10-22-shakti-corpus-intake-record",
+      "specs/050-hunt-sky-signs-endings/spec.md"
+     ]
+    },
+    {
+     "description": "Shakti corpus pins and census: sanitized_corpus.json SHA-256 345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68; 5,704 rows, 5,536 analyzable; grades 3,212 documented-lineage / 2,087 undocumented-corroborated / 405 undocumented-uncorroborated (provenance audit of 2026-10-22); row-grades file SHA-256 02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-22",
+     "ref": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+     "source_id": "2026-10-22-shakti-corpus-intake-record",
+     "source_quality": "artifact",
+     "independent_of": [
+      "shakti-readiness-proposals-2026-10-22",
+      "specs/050-hunt-sky-signs-endings/spec.md"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "an output stating a content conclusion, presenting the re-scoped verdict as a verdict on the Phase-43 framework or on the broader closing claim, citing 805/2,267 or 40/61/20 as basis, or omitting the fence or the lineage statement falsifies compliance on inspection"
+   ],
+   "id": "F071-C13",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec050-record",
+     "shakti-intake"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the successor's result circulating without its fence, as the sky-signs test of the original design finally run on its original terms",
+    "verdict_rule": "output inspection against sections 8 and 9 is the operative check"
+   },
+   "status": "draft",
+   "text": "Depiction under Spec 071 is the published identification layer."
+  }
+ ],
+ "note": "Draft register for Spec 071 (re-scoped successor to Spec 050, design D-13; Hunt programme re-scoped by the owner's readiness decisions of 2026-10-22, decision 3; dependency order Spec 069, Spec 070, Spec 071, with this spec's freeze following Spec 070's). Conventions as in Specs 042-054: requirement claims carry no falsification test where a gate or inspection is the operative check; boundaries carry the conditions under which each claim holds; evidence items carry observed_at from this draft because the cited facts were verified first-hand at drafting. The AEE lifecycle hooks have NOT run on this register; they are the freeze gate (tasks L4), applied in the substantive form of DD-038-10, and any recovery round they force changes claim text before any freeze digest is computed. ASM- ids name the assumptions each claim stands on: ASM-RESCOPE-STATED (the re-scope - Shakti population, Wells-space keying, Asset A from Spec 069, freeze after Spec 070 - is stated openly and replaces the predecessor's corpus posture), ASM-CLAIM-RECORD (the claim file, as Spec 050 records it, is the claim's record of standing), ASM-BATTERY-APPLIED-NEW (the recovered Phase-43 battery rules, applied new to an ICIT corpus, derive the ending classes; the battery is threshold-only per the G5 attestation), ASM-ASSET-A-FROZEN (Asset A exists as a frozen product of Spec 069 before this spec freezes), ASM-GRADE-DISCIPLINE (the provenance audit's grades govern population membership under P-F1 S4), ASM-APPEND-ONLY (outcomes append; frozen and closed records are never edited).",
+ "register_version": "0.9-frozen-candidate",
+ "spec": "071-hunt-sky-signs-successor"
+}

@@ -1,5 +1,7 @@
 # Spec 071 — Hunt Sky-Signs Endings Successor: Sky Signs at the Ends of Texts, on the Shakti Corpus (Re-scoped Successor to Spec 050, Design D-13)
 
+> ## FROZEN — 2026-10-22 — see `freeze.md` in this directory for the freeze record (digest, gate result, and ruling text)
+>
 > ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-22
 >
 > Drafted under the owner's readiness decisions

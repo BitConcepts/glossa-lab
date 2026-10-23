@@ -245,3 +245,133 @@ withdrawn-as-evidence framing. No "betweenness"; no §3.32.
 
 **Nothing submitted, deposited, or published.** The PR
 (#353) is not merged.
+
+## Red-team round 2 revision (2026-10-23)
+
+Round 2 of the independent red-team pass on v8 (attack: independent
+engine, GPT-5.5 via OpenAI API, full PDF text ×4 passes, 207 raw
+findings aggregated to 58 items plus positives P1–P5) was adjudicated
+against the program's primary records by an adjudicator who did not
+draft the paper. Dispositions: **28 sustained / 29 sustained in part /
+0 not sustained / 1 moot (R2-06) of 58; positives P1–P5 all
+confirmed**. The raw attack and the adjudication are filed beside
+this note (`v8_redteam_round2_raw_2026-10-23.md`,
+`v8_redteam_round2_adjudication_2026-10-23.md`). The round-2 pattern
+was echoes: most round-1 cures had landed in their home section but
+not in the abstract, the §1.3 summary list, or §§3.30/4.5/5. Two
+round-1 replacement texts themselves contained errors the attacker
+correctly caught (the permutation parenthetical, R2-10; the §3.27
+sibilant clause, R2-12); both are corrected by this revision. No
+round-2 finding overturned a round-1 settlement of fact.
+
+**Revision applied.** All adjudicated replacement blocks
+R2R-01…R2R-58 were applied verbatim to the .tex (57 blocks with
+replacement text; R2R-06 is MOOT and has no replacement), with
+formatting conversion only (markdown emphasis and dashes to LaTeX,
+the R2R-22 KL formulas in math mode, the R2R-25 §3.5 table expanded
+to all nine site rows as a LaTeX longtable). The adjudicator's notes
+were honoured: §1.3 items were identified by their quoted text, not
+item number; R2R-13's heading renames were extended to §§3.18 and
+3.27 in the same pass ("Cross-Validation" now appears in no heading
+and no §1.3 label); R2R-22 prints the KL definitions recovered from
+the Phase-151/144/145 scripts; R2R-35 only *adds* §8 entries (Sproat
+2014; Rao et al. 2010, *Computational Linguistics*) — no existing
+entry was altered except the Nair access date required by R2R-54.
+Load-bearing outcomes: the permutation parenthetical is corrected at
+all three locations (0.0005, add-one estimate); the Phase-134
+z-score inputs are printed unrounded (0.9916, 0.4385, 0.05347,
+z = 10.344) with the F7 held-out sentence added; all four sibilants
+are worded PROVISIONAL_MEDIUM everywhere (§§1.3, 2.2, 3.25, 3.27);
+the SA-affected count is printed (43 SA+DEDR MEDIUM signs, 398
+tokens; removal bound 118 signs / 5,971 tokens / 85.28%); "pre-registered"
+for Phase-107 is replaced by the Spec 005 wording (protocol fixed in
+advance in this repository; no external registration filed); the Gulf
+echoes are brought down to the §3.19 cure everywhere (abstract,
+§1.3, §3.30, §4.5, Appendix C); the Phase-133 figures are corrected
+(43.5% full+partial; 44.3% is sign-position accuracy); the 19 blocker
+signs are named in §3.29 with the 92.35% arithmetic; the §3.30 tally
+is split by kind with no top-label aggregate; the CISI 87% figure is
+marked uncountable. Protected text (§8 Roif 2025a/b and both Rao
+entries; §3.5/§3.19 Roif credit; §7 Roif acknowledgment) is
+byte-intact in the source diff against `de4f340f`, verified per entry
+and per paragraph. §3.32 stays out; "betweenness" remains at 0 hits;
+the Spec 072 insert stays HELD and unintegrated.
+
+**§6 commit pin.** Two-commit procedure, as round 1. The revision
+was committed with §6 naming `de4f340f` (the pre-revision HEAD) and
+R2R-01's reader-facing pin-explanation sentence included with that
+value (revision commit `2d26b929`); a second, pin-only commit
+(`d39f75f0`) changed only the §6 commit string to `2d26b929`. §6
+therefore names the revision commit, not the pin commit and not
+`de4f340f`, and the shipped PDF prints `2d26b929`.
+
+**Word count (R2R-52).** The adjudication settled **10,837** for the
+PRE-revision PDF by the command `pdftotext <pdf> - | wc -w` (verified
+again on the pre-revision build in this session: 10,837). That figure
+moved when the text changed, as expected: the round-2 replacement
+texts add substantial disclosure paragraphs, definitions, and the
+expanded §3.5 table. Procedure followed: after the final build the
+exact command was run on the new PDF (**14,370**), the .tex
+word-count line was set to the measured value, the PDF was rebuilt,
+and the command was re-run — the printed figure equals the shipped
+PDF's count (14,370; the number token is one word either way, so the
+count is stable across the pin rebuild, whose only text change is
+the §6 commit string).
+
+**Rebuild.** TinyTeX XeLaTeX (same toolchain and font environment
+fix as the original v8 build), two passes on the final .tex state
+and two on the pin state, all exit 0, **zero errors and zero LaTeX
+warnings** in the final log (one 1.8pt overfull hbox in §3.28, from
+the prescribed Phase-167 file path; no text runs off the page). PDF:
+`glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v8.pdf`
+— still named v8 (a pre-publication revision of the v8 draft).
+**27 pages** (was 23). **SHA-256:
+8d0d676eee187de71ad268c6ff374b9d6d6e8a788582552f366e9dc59365ddd0**
+
+**Render verification (pdftotext of the shipped PDF).** Present:
+"0.0005" at all three permutation-parenthetical locations; the
+unrounded Phase-134 inputs (0.9916, 0.4385, 0.05347, 10.344); the
+Spec 005 wording in §2.4 with "no external or public registration";
+all-four-PROVISIONAL_MEDIUM sibilant wording; 85.28% SA bound;
+43.5% Phase-133 wording; the 19-sign blocker list in §3.29;
+NO_SEAL_MATCH in §3.15; the nine site rows in the §3.5 table; the
+new §8 Sproat (2014) and Rao et al. (2010) entries; the Nair access
+date; renamed headings (§3.18 "Terminal Comparison", §3.22 "Reading
+Overlap Count", §3.27 "Sibilant DEDR Check"); §6 commit `2d26b929`;
+printed word count 14,370; "End of Preprint v8". Absent: "0.001 is
+the smallest"; "Cross-Validation" in any heading or §1.3 label;
+"44.3%" as a whole-inscription match (it now appears only as
+Phase-133's sign-position accuracy, per R2R-48); "multiple
+converging tests"; "0/140" as a combined result in the abstract,
+§1.3, and Appendix C; "betweenness"; §3.32. ("Tamil Murugan" survives
+only inside R2R-16's own withdrawal sentence in §3.3, as the
+replacement text itself reads.)
+
+**Still-open items.** (1) **Phase-132 V03 motif counts — reserved
+for round 3.** V03's nine-motif counts (unicorn 147, zebu 78,
+elephant 43, …) do not match §3.4's printed motif counts (unicorn
+127, zebu 72, elephant 37, rhinoceros 25, …). The adjudication
+deliberately scoped R2R-26 to degrees of freedom + expected-basis
+wording + the record pointer only; R2R-26 was applied exactly as
+written and the printed counts were left as they stand. The
+discrepancy is reserved for the round-3 attack/adjudication.
+(2) §3.19's body still carries its home-section sentence reporting
+"the combined figure of 0/140 used in the abstract" (with its
+different-units disclosure); the adjudication prescribed no
+replacement for that sentence, so it stands as written — after this
+revision the abstract no longer uses the combined figure, and the
+stale cross-reference is flagged here for round 3. (3) Owner
+decisions carried by the adjudication (§D): Holdat corpus release;
+SA re-base; DEDR 135 (M176) / 4988 (M261) verification against
+Burrow & Emeneau directly; whether to print the sign list. (4)
+Record gaps the cures disclose but cannot fill (adjudication §E):
+the DEDR search space, the SA training corpus, the CISI 87%
+numerator/denominator, the Phase-156 search terms, the unverified
+§8 identifications (Jha & Rajaram, Heras, CISI, mayig, ICIT, Shakti,
+DAMOS, the Tamil-Brahmi inventory source), Phase-170 tie handling,
+the Phase-150 exceedance count, and a true SA-free headline. (5)
+Red-team **round 3** on this revised draft is pending; v8 is not
+cleared for publication until the loop closes.
+
+**Nothing submitted, deposited, or published.** The PR
+(#353) is not merged.

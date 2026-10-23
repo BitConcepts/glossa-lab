@@ -10098,3 +10098,38 @@ Nothing submitted, deposited, or published; PR #353 not merged.
 
 AI disclosure: executed by an AI agent (Muse, via Muse)
 at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-23 — Preprint v8 red-team round 2: adjudicated and revised (R2R-01..R2R-58)
+
+Round 2 of the independent red-team pass on preprint v8 (attack:
+independent engine, full text ×4 passes, 207 raw findings aggregated
+to 58 items + positives; adjudication against primary records:
+28 sustained / 29 sustained in part / 0 not sustained / 1 moot;
+positives P1–P5 all confirmed). All adjudicated replacement blocks
+R2R-01..R2R-58 were applied verbatim to
+glossa-corpus/indus/pierson_2026_indus_decipherment.tex (57 blocks
+with replacement text; R2R-06 moot) — revision commit 2d26b929; §6
+data-availability commit string pinned to that commit by pin-only
+commit d39f75f0. Corrected permutation parenthetical at all three
+locations (0.0005); Phase-134 inputs unrounded (z = 10.344); all
+four sibilants PROVISIONAL_MEDIUM everywhere; SA-affected count and
+85.28% bound printed; Phase-107 "pre-registered" replaced by the
+Spec 005 wording; Gulf echoes cured; Phase-133 figures corrected
+(43.5%); 19 blockers named in §3.29; §8 gains Sproat (2014) and
+Rao et al. (2010) (additions only). Protected Roif/Rao text
+byte-intact; §3.32 still absent; no betweenness; Spec 072 insert
+still HELD. PDF rebuilt with TinyTeX XeLaTeX, two passes, exit 0,
+zero errors/warnings, 27 pages, SHA-256
+8d0d676eee187de71ad268c6ff374b9d6d6e8a788582552f366e9dc59365ddd0,
+render-verified (pdftotext); printed word count 14,370 measured on
+the shipped PDF by the adjudicated command (pre-revision figure
+10,837). Still open: Phase-132 V03 motif counts vs §3.4 printed
+counts (deliberately out of R2R-26's scope; reserved for round 3);
+§3.19 combined-figure cross-reference (no replacement prescribed;
+flagged for round 3); Holdat release, SA re-base, DEDR verification
+(owner decisions); red-team round 3 pending. Record:
+specs/025-paper-search-research-check/audit-2026-10-22/v8_version_note_2026-10-23.md.
+Nothing submitted, deposited, or published; PR #353 not merged.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.

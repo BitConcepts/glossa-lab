@@ -53,7 +53,7 @@ UNINFORMATIVE), the matching §3.10 qualification of Nair's Zipf
 slope, and the Yadav et al. (2010) entry in §8; the Spec 072
 fish-family insert is filed HELD, not integrated; §3.32 restoration
 draft still HELD pending Roif's reply; source `.tex` and
-regenerated PDF; red-team round 1 adjudicated (44 sustained / 76 in part / 3 not sustained / 2 moot of 125) and revised 2026-10-23 — R-01..R-45 applied, PDF rebuilt (23 pp.); round 2 pending)
+regenerated PDF; red-team round 1 adjudicated (44 sustained / 76 in part / 3 not sustained / 2 moot of 125) and revised 2026-10-23 — R-01..R-45 applied, PDF rebuilt (23 pp.); red-team round 2 adjudicated (28 sustained / 29 sustained in part / 1 moot of 58; positives P1–P5 confirmed) and revised 2026-10-23 — R2R-01..R2R-58 applied (R2R-06 moot, no replacement), PDF rebuilt (27 pp.); round 3 pending)
 
 **Source:** `glossa-corpus/indus/pierson_2026_indus_decipherment.tex`
 

@@ -43,7 +43,7 @@
       as a DRAFT PR and left unmerged for the
       freeze decision, CI state reported from
       the run's own conclusions.
-- [ ] **L4 — AEE lifecycle hooks (FREEZE GATE
+- [x] **L4 — AEE lifecycle hooks (FREEZE GATE
       — not run on this draft).** At the
       freeze act, run `run_aee.py assess`
       after_specify, after_plan, and
@@ -56,7 +56,7 @@
       claim text, and the freeze digest is
       computed over the recovered register
       exactly once, at freeze.
-- [ ] **L5 — Freeze-decision items.** The
+- [x] **L5 — Freeze-decision items.** The
       freeze decides the OPEN items of
       `adjudication.md` §5: the gate-0.5
       battery definition (every element
@@ -72,7 +72,7 @@
       filing executed under campaign E-1; and
       the battery-reproduction question
       (adjudication §5, item 6).
-- [ ] **L6 — Freeze.** On the owner's freeze
+- [x] **L6 — Freeze.** On the owner's freeze
       order, with L4 passed and L5 decided:
       hooks recorded, `freeze.md` finalised,
       `freeze.json` recomputed over the
@@ -82,11 +82,20 @@
       re-asserted against the merged record,
       and the execution phase number allocated
       (DD-052-6).
-- [ ] **L7 — Freeze PR merged**, house gates
+- [x] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).
 
 ## Execution — gated on the freeze and a separate execution order
+
+**Freeze note — 2026-10-23.** E1–E5 below were
+drafted for the unamended (Soviet) design and are
+retained as its record. The amended run's execution
+is not tasked here: it awaits a separate owner
+order, and its tasking will be written against the
+frozen amendment (NB-1, gates A–D) when that order
+comes. No item below is an instruction to execute
+the amended run.
 
 - [ ] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
@@ -170,7 +179,7 @@ it does not freeze this spec.
       outcome semantics re-pointed. Claims
       F052-C16…C19 appended to the register at
       0.5-draft.
-- [ ] **A3 — Owner mini-gate.** The owner
+- [x] **A3 — Owner mini-gate.** The owner
       approves, amends, or declines the
       amendment (amendment.md §7 lists the three
       decisions). On approval: L4 runs over the

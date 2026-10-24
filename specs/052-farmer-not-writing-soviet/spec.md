@@ -1,24 +1,47 @@
 # Spec 052 — Farmer's "Not Writing at All" Thesis: the Soviet-Compilation Consistency Check (Design D-01, Arm A Only)
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-21
+> ## FROZEN — 2026-10-23
 >
-> Drafted under the runnable-experiments
-> campaign plan approved by the owner as
-> written on 2026-10-21
-> (`~/workspace/your_files/2026-10-21-runnable-experiments-campaign-plan.md`,
-> Part 2, member 1; decisions E-1 to E-7 as
-> written). This spec is that campaign's
-> member 1: design D-01, **arm A only**.
-> **The freeze and the execution of Spec 052
-> are separate later acts.** No AEE lifecycle
-> hooks have run on this draft; they are a
-> freeze gate. Nothing in this draft has been
-> run, frozen, registered, or computed.
+> Frozen at the freeze act of 2026-10-23 under
+> the owner's mini-gate approval of the same
+> day (2026-10-23, 22:59 EDT, "Approve both
+> mini-gates as specified"; recorded in
+> `adjudication.md` §10). This spec is frozen
+> **as amended**: the amendment
+> (`amendment.md` — battery NB-1 on the Shakti
+> corpus layer, amended step-0 gates A–D,
+> re-pointed outcome semantics) governs
+> wherever it and the unamended draft disagree.
+> As drafted (design D-01, arm A only, the
+> Soviet-compilation consistency check), this
+> spec's freeze attempt of 2026-10-21 failed
+> at gate 0.5 (BATTERY NOT PINNABLE), and arm A
+> as designed was closed by the owner's
+> rulings of 2026-10-23 (`adjudication.md`
+> §§8–9); the unamended text below stands as
+> the record of that design and is not
+> rewritten.
 >
-> The execution phase number is **unassigned**
-> at this draft. Spec 052 allocates its phase
-> number at the freeze act, from the merged
-> record as it then stands (DD-052-6).
+> The AEE lifecycle hooks ran first, at the
+> freeze gate (tasks L4, per DD-038-10):
+> after_specify, after_plan and after_tasks
+> over the claim register, which was recovered
+> in three rounds at the freeze (0.5-draft →
+> 0.8-draft) before the freeze digest was
+> computed over it exactly once. Pins, the
+> freeze-stage exhibits, and the machine
+> record are in `freeze.md` / `freeze.json`.
+> The OSF registration for the frozen spec was
+> filed at the freeze
+> (`osf-spec-registration.md`). This freeze
+> executes nothing: execution requires a
+> separate owner order.
+>
+> The execution phase number is **Phase-437**,
+> allocated at this freeze act from the merged
+> record as it stands (DD-052-6; the highest
+> phase report on main at the freeze was
+> Phase-436, Spec 073).
 
 **Design source:** D-01 in the experiment-design
 packet at PR #195

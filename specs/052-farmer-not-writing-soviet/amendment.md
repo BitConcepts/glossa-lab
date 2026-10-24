@@ -13,6 +13,18 @@
 > stands as written, with its freeze failure of
 > 2026-10-21 as the operative record.
 
+> ## APPROVED — OWNER MINI-GATE — 2026-10-23
+>
+> Approved as specified by the owner on
+> 2026-10-23 at 22:59 EDT ("Approve both
+> mini-gates as specified"), recorded in
+> `adjudication.md` §10. The freeze followed
+> the same evening: Spec 052 is frozen as
+> amended (`freeze.md` / `freeze.json`), and
+> its OSF registration is filed
+> (`osf-spec-registration.md`). Execution
+> remains a separate owner order.
+
 ## 1. What this amendment does
 
 The 2026-10-21 freeze attempt failed for two reasons

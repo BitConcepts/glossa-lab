@@ -10484,3 +10484,45 @@ reports/phase435_results.json.
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+## 2026-10-24 — Spec 052 EXECUTED (Phase-437): battery NB-1 on the Shakti layer (CISI-compilation lineage) — INCONSISTENT
+
+The amended D-01 arm A the parent claim's contradicted verdict
+carried as its open caveat is now executed. Step 0 passed all four
+amended gates, in order, fail-closed: the corpus pin recomputed
+exactly (corpus 345241b1...; row grades 02394241...; restricted-local,
+read in place, never in git); the primary population reproduced the
+freeze-recorded counts exactly (3,045 rows / 11,805 tokens / 557
+signs; sensitivity 5,131 / 17,216 / 707); the battery run twice under
+seed 43052 produced identical outputs; thinness cleared (2,068
+sequences of length >= 3; 90 classifiable signs). Battery NB-1 as
+frozen: condition F (dedicated final sets) HOLDS — 7 TERMINAL_STRONG
+signs (034, 413, 501, 503, 692, 817, 820) against a permutation-null
+chance level of 0 (999 within-sequence permutations; null
+min/median/max 0/0/0) — and condition O (opening formula) HOLDS —
+the opening bigram (400, 740) recurs 179 times over B = 2,942
+(dominance 0.0608) against a chance level of 76 (null 64/68/84).
+Both conditions hold, so under the amendment's re-pointed semantics
+the outcome is INCONSISTENT: the Farmer pattern is absent in this
+compilation and the "artefact of the Soviet dataset" caveat widens.
+The sensitivity population, reported with the same prominence,
+returned the same word: INCONSISTENT (9 TERMINAL_STRONG against a
+chance level of 0; (400, 740) 235 times over B = 4,293 against a
+chance level of 95) — the outcome is not grade-sensitive. One
+census note, recorded openly in the step-0 record: the freeze
+census's 112 sensitivity-classifiable signs counted total
+occurrences; under NB-1 (length-1 sequences enter no count) sign
+540 has N = 13 and the count is 111 — no gate turns on it, and the
+primary count (90) agrees under both readings. The outcome was
+appended in the same words to the parent claim's record and to all
+three fragments' records (purely additive); the parent claim
+farmer_sproat_witzel_2004_manual_001 stands contradicted exactly as
+recorded — this outcome moves no verdict and is not a verdict on
+the Farmer–Sproat–Witzel thesis. Anchors df0cf620... asserted
+byte-identical before and after. Freeze digest 83658949...; OSF
+registration https://osf.io/7cu23/ (approved 2026-10-24). Records:
+specs/052-farmer-not-writing-soviet/outcome.md,
+specs/052-farmer-not-writing-soviet/step0-record.md,
+reports/phase437_results.json, reports/phase437_report.md.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.

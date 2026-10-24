@@ -11,7 +11,7 @@ the decision procedure (per-class reappearance at
 label-permutation null at seed 44054, DD-054-2's
 precedence in the amendment section 5.5 order),
 the step-0 gate set, the falsifier append with its
-exact text, Phase-437, and the unsatisfied
+exact text, Phase-438, and the unsatisfied
 execution gate; (3) the governed claim register is
 the frozen register (19 claims, integrity-clean,
 recovered to 0.8-draft at the freeze gate) and the
@@ -102,7 +102,7 @@ def test_freeze_definition_constants():
     assert "1.5.0" in definition["register"]["aee_hook_pass"]
     assert "DD-054-9" in definition["register"]["aee_hook_pass"]
     design = definition["design"]
-    assert design["phase"] == "Phase-437"
+    assert design["phase"] == "Phase-438"
     # Battery NB-1, exactly as amended.
     battery = design["battery"]
     assert battery["name"] == "NB-1"

@@ -105,12 +105,12 @@ DEFINITION = {
             "registration filed at the freeze); "
             "DD-054-9 adopts the DD-038-10 AEE gate "
             "reading; DD-054-10 allocates "
-            "Phase-437. Execution is not ordered by "
+            "Phase-438. Execution is not ordered by "
             "the freeze and has not started."
         ),
     },
     "design": {
-        "phase": "Phase-437",
+        "phase": "Phase-438",
         "statement": (
             "the amended statement of amendment.md "
             "section 2: there are specific "

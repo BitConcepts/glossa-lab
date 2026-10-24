@@ -13,10 +13,10 @@
   "basis": {
    "adjudication": "specs/054-yadav-opening-closing/adjudication.md",
    "amendment": "specs/054-yadav-opening-closing/amendment.md",
-   "decisions": "The draft was commissioned by the owner-approved runnable-experiments campaign plan of 2026-10-21 (member 7, design D-08). Its freeze attempt of 2026-10-21 failed (adjudication.md section 7: OPEN-054-1 battery not pinnable; the original sets not exhibitable). The owner's rulings of 2026-10-23 (section 8) adopted the section 7.5(2) amended design (battery NB-1) and decided the section 7.5(3) generator act; the owner approved the amendment mini-gate as specified on 2026-10-23 at 22:59 EDT. Freeze decisions are recorded in adjudication.md section 9: L5 decided as amended (OPEN-054-1 discharged; OPEN-054-2 discharged as a gate; OPEN-054-3, 4, 7 confirmed as amended; OPEN-054-5 answered; OPEN-054-6 reconciled; OPEN-054-8 yes, the OSF registration filed at the freeze); DD-054-9 adopts the DD-038-10 AEE gate reading; DD-054-10 allocates Phase-437. Execution is not ordered by the freeze and has not started."
+   "decisions": "The draft was commissioned by the owner-approved runnable-experiments campaign plan of 2026-10-21 (member 7, design D-08). Its freeze attempt of 2026-10-21 failed (adjudication.md section 7: OPEN-054-1 battery not pinnable; the original sets not exhibitable). The owner's rulings of 2026-10-23 (section 8) adopted the section 7.5(2) amended design (battery NB-1) and decided the section 7.5(3) generator act; the owner approved the amendment mini-gate as specified on 2026-10-23 at 22:59 EDT. Freeze decisions are recorded in adjudication.md section 9: L5 decided as amended (OPEN-054-1 discharged; OPEN-054-2 discharged as a gate; OPEN-054-3, 4, 7 confirmed as amended; OPEN-054-5 answered; OPEN-054-6 reconciled; OPEN-054-8 yes, the OSF registration filed at the freeze); DD-054-9 adopts the DD-038-10 AEE gate reading; DD-054-10 allocates Phase-438. Execution is not ordered by the freeze and has not started."
   },
   "design": {
-   "phase": "Phase-437",
+   "phase": "Phase-438",
    "statement": "the amended statement of amendment.md section 2: there are specific text-beginning and text-ending signs in the Indus corpus, in the exact sense battery NB-1 makes checkable; a verdict on it is not a verdict on Yadav et al. (2010)'s original Phase-43 statement",
    "battery": {
     "name": "NB-1",
@@ -103,19 +103,19 @@
   }
  },
  "sources": {
-  "specs/054-yadav-opening-closing/freeze.md": "7eeaa23b32740e487e015dacef1ef28191c9cffa7b58516c99ac83a1d716150b",
+  "specs/054-yadav-opening-closing/freeze.md": "09161ecc0dcf9d65332035755b6aec65bd8d7159bfa0a731cbac23a76df4e844",
   "specs/054-yadav-opening-closing/spec.md": "21021835b11fe8ba78072d4c273f2bdd23cdfd8b7b25386d0d1382382c5e2cca",
   "specs/054-yadav-opening-closing/amendment.md": "4edd3e20e680179160552394c80f280688e96018f390e0e7f04306a35281b0db",
   "specs/054-yadav-opening-closing/claims.json": "ea161e47ed355af909af707f84e2ff5f4367b88f8160dd30d6e8938d8c7d24f0",
-  "specs/054-yadav-opening-closing/adjudication.md": "bd79b52bf306db164754f4d567c3f7803e258978770b3f5813302b4e9a625efd",
+  "specs/054-yadav-opening-closing/adjudication.md": "dbf337e6ee5d2b866d924c927b35a94282702940fd5da694273f00f91eba75f0",
   "specs/054-yadav-opening-closing/aee/freeze-aee-note.md": "15f67a08fb12cbc014a263b7e799354a6a3e933cbe015a675176395bad480372",
-  "specs/054-yadav-opening-closing/build_freeze.py": "a70f36b56844a507cd9649e2b06a6c65998e01860f07faa89405ec4ff8aa435b",
-  "backend/tests/test_spec054_freeze.py": "a7b1c75a3e637cecacda4c49560e5abdd2e2fe52083f9e1c51b360a431f1100c"
+  "specs/054-yadav-opening-closing/build_freeze.py": "625e211ae9f7fe6066f4eb0b7e12eb5fce71394296054f732459c88fadd094ab",
+  "backend/tests/test_spec054_freeze.py": "ddeee717a1f1a3008c41895c9048f45d2014272b70b4b6611f29cd2beed73d39"
  },
  "environment": {
   "python": "3.12.3",
   "platform": "Linux",
   "aee": "1.5.0"
  },
- "digest": "6c7a0c361dcfa2a0a59841ceeb4a1ed0dc1ca466277412dca641b2898721623f"
+ "digest": "5d939332999580f52cedade5d268b266345e0b7acaf28099d2a0957c4200c1e2"
 }

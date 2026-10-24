@@ -1289,3 +1289,26 @@ digest-covered sources, the freeze digest is
 recomputed in this same act and stands in
 `freeze.json`; the §9.7 digest is superseded in
 the manner §9.7 recorded.
+
+### 9.9 Phase reassignment — 2026-10-24 (same act, before merge)
+
+§9.2/§9.3 allocated **Phase-437** (DD-054-10) on
+the record as it stood when this freeze act
+began: at that hour the Spec 052 freeze had not
+landed and no phase had been allocated to it
+(the allocation check is recorded at §9.3's
+basis). In parallel, the Spec 052 freeze act
+allocated Phase-437 to Spec 052, and its freeze
+merged to `main` first (PR #249, merge 2bff5857;
+its OSF record followed in PR #360). On the
+merged record the earlier allocation stands:
+**Phase-437 is Spec 052's.** This spec's
+execution phase is reassigned to **Phase-438**
+(DD-054-10 as corrected by this entry; no other
+holder of Phase-438 exists on the merged
+record). The freeze's substance — the append,
+its proof, the pins, the hooks, the decisions —
+is unchanged; `freeze.md`, `build_freeze.py`,
+the freeze tests, and `freeze.json` carry
+Phase-438 from this entry forward, and the
+freeze digest is recomputed in this same act.

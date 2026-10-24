@@ -8,7 +8,7 @@
 
 ## 1. Purpose
 
-This document defines the exact corpus used in all Glossa-Lab Indus decipherment experiments. It is a primary provenance document and must be updated whenever corpus composition changes.
+This document defines the exact corpus used in all Glossa-Lab Indus decipherment experiments. It is a primary provenance document — the record of where the data came from and exactly what it contains — and must be updated whenever corpus composition changes.
 
 ---
 
@@ -72,9 +72,9 @@ This document defines the exact corpus used in all Glossa-Lab Indus decipherment
 
 ## 4. Corpus Integrity Rules
 
-1. No sign collapsing — every sign ID is preserved as-is in all analysis files.
+1. No sign collapsing (merging two sign IDs into one) — every sign ID is preserved as-is in all analysis files.
 2. Damage markers (typically `?` or `~` in the source) are retained in the normalized form.
-3. Duplicate object reconciliation: inscriptions from the same physical object (both sides) are tracked separately.
+3. Duplicate object reconciliation (matching the records that describe the same physical object): inscriptions from the same physical object (both sides) are tracked separately.
 4. Any corpus addition requires a new MASTER_LEDGER.md entry with `entry_type: dataset_change`.
 5. The corpus_master.csv is the single source of truth for all analysis. All scripts read from it.
 

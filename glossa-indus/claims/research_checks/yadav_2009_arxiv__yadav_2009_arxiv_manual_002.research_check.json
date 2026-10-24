@@ -1,0 +1,351 @@
+{
+ "stage": "research_check",
+ "record_version": 1,
+ "claim_id": "yadav_2009_arxiv_manual_002",
+ "document_id": "yadav_2009_arxiv",
+ "claim_statement": "There are specific text-beginning and text-ending signs in the Indus corpus.",
+ "checked_at": "2026-10-22T14:36:26.809525+00:00",
+ "advisory": true,
+ "verdict": null,
+ "protocol": "docs/paper-search-mcp.md#audit-protocol",
+ "phrasings": [
+  {
+   "text": "There are specific text-beginning and text-ending signs in the Indus corpus.",
+   "origin": "claim"
+  },
+  {
+   "text": "signs occurring disproportionately at the start or end of short Indus inscriptions positional frequency analysis",
+   "origin": "caller"
+  }
+ ],
+ "sources_requested": [
+  "arxiv",
+  "crossref",
+  "openalex",
+  "semantic",
+  "core",
+  "europepmc"
+ ],
+ "queries": [
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_papers",
+   "query": "There are specific text-beginning and text-ending signs in the Indus corpus."
+  },
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_arxiv",
+   "query": "There are specific text-beginning and text-ending signs in the Indus corpus."
+  },
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_crossref",
+   "query": "There are specific text-beginning and text-ending signs in the Indus corpus."
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_papers",
+   "query": "signs occurring disproportionately at the start or end of short Indus inscriptions positional frequency analysis"
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_arxiv",
+   "query": "signs occurring disproportionately at the start or end of short Indus inscriptions positional frequency analysis"
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_crossref",
+   "query": "signs occurring disproportionately at the start or end of short Indus inscriptions positional frequency analysis"
+  }
+ ],
+ "source_errors": [],
+ "neighbors": [
+  {
+   "title": "Network analysis of a corpus of undeciphered Indus civilization inscriptions indicates syntactic organization",
+   "authors": "Sitabhra Sinha; Md Izhar Ashraf; Raj Kumar Pan; Bryan Kenneth Wells",
+   "year": "2010-05-27T07:24:29",
+   "doi": "10.1016/j.csl.2010.05.007",
+   "paper_id": "1005.4997v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1005.4997v1",
+   "abstract": "Archaeological excavations in the sites of the Indus Valley civilization (2500-1900 BCE) in Pakistan and northwestern India have unearthed a large number of artifacts with inscriptions made up of hundreds of distinct signs. To date there is no generally accepted decipherment of these sign sequences and there have been suggestions that the signs could be non-linguistic. Here we apply complex network analysis techniques to a database of available Indus inscriptions, with the aim of detecting patterns indicative of syntactic organization. Our results show the presence of patterns, e.g., recursive",
+   "relevance": 0.571
+  },
+  {
+   "title": "Indus Signs as Merchant Marks: Corpus Structure, Context, and Viability",
+   "authors": "Max Freedom Pollard",
+   "year": "2025-11-14T00:00:00",
+   "doi": "10.33774/coe-2025-n0cxj",
+   "paper_id": "10.33774/coe-2025-n0cxj",
+   "source": "crossref",
+   "url": "https://doi.org/10.33774/coe-2025-n0cxj",
+   "abstract": "<jats:p>The inscriptions of the Indus Valley Civilisation are extremely short (modal 4–5 signs) and occur on portable administrative media that co-occur with weights and seals. We evaluate the corpus as a merchant-mark system supporting trade administration rather than extended phonetic writing. Using aggregated catalogues and provenienced contexts, we assemble corpus statistics, layout regularities, and duplication rates, and we test a large-format case from Dholavira. In that case we propose a working identification of a complete animal-drawn cart assembled sign-by-sign; this exemplar, toget",
+   "relevance": 0.429
+  },
+  {
+   "title": "Statistical analysis of the Indus script using $n$-grams",
+   "authors": "Nisha Yadav; Hrishikesh Joglekar; Rajesh P. N. Rao; M. N. Vahia; Iravatham Mahadevan; R. Adhikari",
+   "year": "2009-01-20T12:55:55",
+   "doi": "10.1371/journal.pone.0009506",
+   "paper_id": "0901.3017v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/0901.3017v1",
+   "abstract": "The Indus script is one of the major undeciphered scripts of the ancient world. The small size of the corpus, the absence of bilingual texts, and the lack of definite knowledge of the underlying language has frustrated efforts at decipherment since the discovery of the remains of the Indus civilisation. Recently, some researchers have questioned the premise that the Indus script encodes spoken language. Building on previous statistical approaches, we apply the tools of statistical language processing, specifically $n$-gram Markov chains, to analyse the Indus script for syntax. Our main results",
+   "relevance": 0.286
+  },
+  {
+   "title": "How Non-Linguistic Is the Indus Sign System? A Synthetic-Baseline Scorecard",
+   "authors": "Ashish Nair",
+   "year": "2026-04-20T05:29:56",
+   "doi": "",
+   "paper_id": "2604.17828v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2604.17828v1",
+   "abstract": "Whether the Indus Valley sign system (c. 2600-1900 BCE) encodes spoken language has been debated for decades. This paper introduces a multi-metric discrimination framework that tests the observed Indus corpus against two kinds of computer-generated non-linguistic baseline -- one mimicking a heraldic emblem system, the other an administrative coding system -- each calibrated with Zipfian frequency distributions, positional constraints, and bigram dependencies derived from six attested non-linguistic corpora. The scorecard evaluates four properties central to the Farmer-Sproat-Witzel (2004) crit",
+   "relevance": 0.286
+  },
+  {
+   "title": "Gold   and ‘ratti’   signs inscribed on Mohenjo-Daro’s gold-assaying needles, fish-sign inscriptions signifying gemstones concentrated near lapidaries: Indus script’s taxed commodities",
+   "authors": "Bahata Ansumali Mukhopadhyay",
+   "year": "2022-06-27T00:00:00",
+   "doi": "10.31235/osf.io/rtdy4",
+   "paper_id": "10.31235/osf.io/rtdy4",
+   "source": "crossref",
+   "url": "https://doi.org/10.31235/osf.io/rtdy4",
+   "abstract": "<p>This article claims a breakthrough in decoding Indus script. It builds on the author’s earlier papers which established Indus script’s use in taxation, and trade/craft licensing, and discussed how different segments of the semasiographic Indus inscriptions encoded different information (tax-types, license-categories, commodity-names, tax-paying modes, tax-rates, tax-receiving entities, etc.). This paper claims that certain inscribed needle-shaped gold artefacts found in a jewelry hoard of Mohenjo-daro, and a similar gold-tipped copper stylus found from Kotada-Bhadli, were gold-assaying need",
+   "relevance": 0.286
+  },
+  {
+   "title": "Gold and ‘ratti’ signs inscribed on Mohenjo-Daro’s gold-assaying needles, fish-sign inscriptions signifying gemstones concentrated near lapidaries: Indus script’s taxed commodities",
+   "authors": "Bahata A. Mukhopadhyay",
+   "year": "2022-01-01T00:00:00",
+   "doi": "10.2139/ssrn.4110151",
+   "paper_id": "10.2139/ssrn.4110151",
+   "source": "crossref",
+   "url": "https://doi.org/10.2139/ssrn.4110151",
+   "abstract": "<jats:p>This article claims a breakthrough in decoding Indus script. It builds on the author’s earlier papers which established Indus script’s use in taxation, and trade/craft licensing, and discussed how different segments of the semasiographic Indus inscriptions encoded different information (tax-types, license-categories, commodity-names, tax-paying modes, tax-rates, tax-receiving entities, etc.). This paper claims that certain inscribed needle-shaped gold artifacts found in a jewelry hoard of Mohenjo-daro, and a similar gold-tipped copper stylus found from Kotada-Bhadli, were gold-assaying",
+   "relevance": 0.286
+  },
+  {
+   "title": "A Corpus-based Study of Temporal Signals",
+   "authors": "Leon Derczynski; Robert Gaizauskas",
+   "year": "2012-03-22T18:08:47",
+   "doi": "",
+   "paper_id": "1203.5066v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1203.5066v1",
+   "abstract": "Automatic temporal ordering of events described in discourse has been of great interest in recent years. Event orderings are conveyed in text via va rious linguistic mechanisms including the use of expressions such as \"before\", \"after\" or \"during\" that explicitly assert a temporal relation -- temporal signals. In this paper, we investigate the role of temporal signals in temporal relation extraction and provide a quantitative analysis of these expres sions in the TimeBank annotated corpus.",
+   "relevance": 0.143
+  },
+  {
+   "title": "Human-Machine Interaction Speech Corpus from the ROBIN project",
+   "authors": "Vasile Păiş; Radu Ion; Andrei-Marius Avram; Elena Irimia; Verginica Barbu Mititelu; Maria Mitrofan",
+   "year": "2021-11-22T13:10:41",
+   "doi": "10.1109/SpeD53181.2021.9587355",
+   "paper_id": "2111.11170v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2111.11170v1",
+   "abstract": "This paper introduces a new Romanian speech corpus from the ROBIN project, called ROBIN Technical Acquisition Speech Corpus (ROBINTASC). Its main purpose was to improve the behaviour of a conversational agent, allowing human-machine interaction in the context of purchasing technical equipment. The paper contains a detailed description of the acquisition process, corpus statistics as well as an evaluation of the corpus influence on a low-latency ASR system as well as a dialogue component.",
+   "relevance": 0.143
+  },
+  {
+   "title": "Survey on Text Mining with Identification of Text Corpus",
+   "authors": "",
+   "year": "2015-12-05T00:00:00",
+   "doi": "10.21275/v4i12.sub156",
+   "paper_id": "10.21275/v4i12.sub156",
+   "source": "crossref",
+   "url": "https://doi.org/10.21275/v4i12.sub156",
+   "abstract": null,
+   "relevance": 0.143
+  },
+  {
+   "title": "The \"handedness\" of language: Directional symmetry breaking of sign usage in words.",
+   "authors": "Ashraf MI; Sinha S",
+   "year": "2018-01-01T00:00:00",
+   "doi": "10.1371/journal.pone.0190735",
+   "paper_id": "PMID:29342176",
+   "source": "europepmc",
+   "url": "https://europepmc.org/articles/PMC5771592",
+   "abstract": "Language, which allows complex ideas to be communicated through symbolic sequences, is a characteristic feature of our species and manifested in a multitude of forms. Using large written corpora for many different languages and scripts, we show that the occurrence probability distributions of signs at the left and right ends of words have a distinct heterogeneous nature. Characterizing this asymmetry using quantitative inequality measures, viz. information entropy and the Gini index, we show that the beginning of a word is less restrictive in sign usage than the end. This property is not simpl",
+   "relevance": 0.143
+  },
+  {
+   "title": "A Markov model of the Indus script.",
+   "authors": "Rao RP; Yadav N; Vahia MN; Joglekar H; Adhikari R; Mahadevan I",
+   "year": "2009-01-01T00:00:00",
+   "doi": "10.1073/pnas.0906237106",
+   "paper_id": "PMID:19666571",
+   "source": "europepmc",
+   "url": "http://www.pnas.org/cgi/content/full/106/33/13685",
+   "abstract": "Although no historical information exists about the Indus civilization (flourished ca. 2600-1900 B.C.), archaeologists have uncovered about 3,800 short samples of a script that was used throughout the civilization. The script remains undeciphered, despite a large number of attempts and claimed decipherments over the past 80 years. Here, we propose the use of probabilistic models to analyze the structure of the Indus script. The goal is to reveal, through probabilistic analysis, syntactic patterns that could point the way to eventual decipherment. We illustrate the approach using a simple Marko",
+   "relevance": 0.143
+  },
+  {
+   "title": "The Indus Script and Economics. A Role for Indus Seals and Tablets in Rationing and Administration of Labor",
+   "authors": "Rajesh P. N. Rao",
+   "year": "2018-11-28T23:34:06",
+   "doi": "",
+   "paper_id": "1812.00049v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1812.00049v1",
+   "abstract": "The Indus script remains one of the last major undeciphered scripts of the ancient world. We focus here on Indus inscriptions on a group of miniature tablets discovered by Meadow and Kenoyer in Harappa in 1997. By drawing parallels with proto-Elamite and proto-Cuneiform inscriptions, we explore how these miniature tablets may have been used to record rations allocated to porters or laborers. We then show that similar inscriptions are found on stamp seals, leading to the potentially provocative conclusion that rather than simply indicating ownership of property, Indus seals may have been used f",
+   "relevance": 0.143
+  },
+  {
+   "title": "Can the semasiographic/logographic Indus script answer the Dravidian question? Insights from Indus script’s gemstone related fish-signs, and Indus gemstone-word “maṇi”",
+   "authors": "Bahata Ansumali Mukhopadhyay",
+   "year": "2023-04-08T00:00:00",
+   "doi": "10.31235/osf.io/ftdzc",
+   "paper_id": "10.31235/osf.io/ftdzc",
+   "source": "crossref",
+   "url": "https://doi.org/10.31235/osf.io/ftdzc",
+   "abstract": "<p>From archaeogenetic, linguistic, archaeological, and ethnographic evidences, several scholars have linked the people of ancient Indus valley civilization (IVC) with the ancestors of Dravidian speakers. This article argues that the semasiographically/logographically written Indus script (ISC) used certain fish-like logograms, whose iconicity emerged from certain Indus symbolisms, which are linkable with certain linguistic symbolisms found across today’s Dravidian languages. As discussed in the author’s previous articles, ISC was a mercantile script, and different segments of the formulaic IS",
+   "relevance": 0.143
+  },
+  {
+   "title": "Can the Semasiographic/logographic Indus Script Answer the Dravidian Question? Insights from Indus Script's Gemstone Related Fish-Signs, and Indus Gemstone-Word 'maṇi'",
+   "authors": "Bahata A. Mukhopadhyay",
+   "year": "2023-01-01T00:00:00",
+   "doi": "10.2139/ssrn.4412558",
+   "paper_id": "10.2139/ssrn.4412558",
+   "source": "crossref",
+   "url": "https://doi.org/10.2139/ssrn.4412558",
+   "abstract": "<jats:p>From archaeogenetic, linguistic, archaeological, and ethnographic evidences, several scholars have linked the people of ancient Indus valley civilization (IVC) with the ancestors of Dravidian speakers. This article argues that the semasiographically/logographically written Indus script (ISC) used certain fish-like logograms, whose iconicity emerged from certain Indus symbolisms, which are linkable with certain linguistic symbolisms found across today’s Dravidian languages. As discussed in the author’s previous articles, ISC was a mercantile script, and different segments of the formula",
+   "relevance": 0.143
+  },
+  {
+   "title": "Multiline Text, Text Tables and Fields",
+   "authors": "",
+   "year": "2012-09-13T00:00:00",
+   "doi": "10.4324/9780080940700-36",
+   "paper_id": "10.4324/9780080940700-36",
+   "source": "crossref",
+   "url": "https://doi.org/10.4324/9780080940700-36",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "Trust the text",
+   "authors": "",
+   "year": "2004-07-31T00:00:00",
+   "doi": "10.4324/9780203594070-5",
+   "paper_id": "10.4324/9780203594070-5",
+   "source": "crossref",
+   "url": "https://doi.org/10.4324/9780203594070-5",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "Pl. 15. Folio 14, ending of the main text",
+   "authors": "",
+   "year": "1970-01-01T00:00:00",
+   "doi": "10.55512/wmo594235-4185749",
+   "paper_id": "10.55512/wmo594235-4185749",
+   "source": "crossref",
+   "url": "https://doi.org/10.55512/wmo594235-4185749",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "Restoration of fragmentary Babylonian texts using recurrent neural networks.",
+   "authors": "Fetaya E; Lifshitz Y; Aaron E; Gordin S",
+   "year": "2020-01-01T00:00:00",
+   "doi": "10.1073/pnas.2003794117",
+   "paper_id": "PMID:32873650",
+   "source": "europepmc",
+   "url": "https://europepmc.org/articles/PMC7502733",
+   "abstract": "The main sources of information regarding ancient Mesopotamian history and culture are clay cuneiform tablets. Many of these tablets are damaged, leading to missing information. Currently, the missing text is manually reconstructed by experts. We investigate the possibility of assisting scholars, by modeling the language using recurrent neural networks and automatically completing the breaks in ancient Akkadian texts from Achaemenid period Babylonia.",
+   "relevance": 0.0
+  },
+  {
+   "title": "Abstracts from the 2025 Annual Meeting of the Society of General Internal Medicine.",
+   "authors": "",
+   "year": "2025-01-01T00:00:00",
+   "doi": "10.1007/s11606-025-09516-4",
+   "paper_id": "PMID:40676363",
+   "source": "europepmc",
+   "url": "https://europepmc.org/articles/PMC12572470",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "Full GSA 2025 Abstract Book PDF",
+   "authors": "",
+   "year": "2025-01-01T00:00:00",
+   "doi": "",
+   "paper_id": "PMC12755232",
+   "source": "europepmc",
+   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12755232/?tool=EBI",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "Multi-Point Detection of the Powerful Gamma Ray Burst GRB221009A Propagation through the Heliosphere on October 9, 2022",
+   "authors": "Andrii Voshchepynets; Oleksiy Agapitov; Lynn Wilson; Vassilis Angelopoulos; Samer T. Alnussirat; Michael Balikhin; Myroslava Hlebena; Ihor Korol; Davin Larson; David Mitchell; Christopher Owen; Ali Rahmati; Department of System Analysis; Optimization Theory; Uzhhorod National University; Uzhhorod; Ukraine; Space Sciences Laboratory; :; University of California Berkeley Berkeley; CA 94720; Astronomy; Space Physics Department; National Taras Shevchenko University of Kyiv; Kyiv; Ukraine; Goddard Space Flight Center; National Aeronautics; Space Administration; Greenbelt; MD; Department of Earth; Planetary; Space Sciences; University of California Los Angeles; Los Angeles; CA}; University of Sheffield; Sheffield; UK; Department of Algebra; Differential Equation; Uzhhorod National University; Uzhhorod; Ukraine; Department of Mathematical Analysis; The John Paul II Catholic University of Lublin; Lublin; Poland}",
+   "year": "2023-09-11T22:40:01",
+   "doi": "",
+   "paper_id": "2309.05856v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2309.05856v1",
+   "abstract": "We present the results of processing the effects of the powerful Gamma Ray Burst GRB221009A captured by the charged particle detectors (electrostatic analyzers and solid-state detectors) onboard spacecraft at different points in the heliosphere on October 9, 2022. To follow the GRB221009A propagation through the heliosphere we used the electron and proton flux measurements from solar missions Solar Orbiter and STEREO-A; Earth magnetosphere and the solar wind missions THEMIS and Wind; meteorological satellites POES15, POES19, MetOp3; and MAVEN - a NASA mission orbiting Mars. GRB221009A had a st",
+   "relevance": 0.0
+  },
+  {
+   "title": "Appendix II:",
+   "authors": "Andreas Fuls",
+   "year": "2015-02-06T00:00:00",
+   "doi": "10.2307/j.ctvr43jmf.16",
+   "paper_id": "10.2307/j.ctvr43jmf.16",
+   "source": "crossref",
+   "url": "https://doi.org/10.2307/j.ctvr43jmf.16",
+   "abstract": null,
+   "relevance": 0.0
+  }
+ ],
+ "neighbors_read_full_text": [
+  {
+   "title": "Network analysis of a corpus of undeciphered Indus civilization inscriptions indicates syntactic organization",
+   "paper_id": "1005.4997v1",
+   "words": 9800
+  },
+  {
+   "title": "Statistical analysis of the Indus script using $n$-grams",
+   "paper_id": "0901.3017v1",
+   "words": 9723
+  },
+  {
+   "title": "How Non-Linguistic Is the Indus Sign System? A Synthetic-Baseline Scorecard",
+   "paper_id": "2604.17828v1",
+   "words": 4604
+  }
+ ],
+ "gaps": [
+  {
+   "gap": "neighbors surfaced but not read in full text (abstracts never establish novelty)",
+   "neighbors": [
+    "Indus Signs as Merchant Marks: Corpus Structure, Context, and Viability",
+    "Gold   and ‘ratti’   signs inscribed on Mohenjo-Daro’s gold-assaying needles, fish-sign inscriptions signifying gemstones concentrated near lapidaries: Indus script’s taxed commodities",
+    "Gold and ‘ratti’ signs inscribed on Mohenjo-Daro’s gold-assaying needles, fish-sign inscriptions signifying gemstones concentrated near lapidaries: Indus script’s taxed commodities",
+    "A Corpus-based Study of Temporal Signals",
+    "Human-Machine Interaction Speech Corpus from the ROBIN project",
+    "Survey on Text Mining with Identification of Text Corpus",
+    "The \"handedness\" of language: Directional symmetry breaking of sign usage in words.",
+    "A Markov model of the Indus script.",
+    "The Indus Script and Economics. A Role for Indus Seals and Tablets in Rationing and Administration of Labor",
+    "Can the semasiographic/logographic Indus script answer the Dravidian question? Insights from Indus script’s gemstone related fish-signs, and Indus gemstone-word “maṇi”"
+   ]
+  }
+ ],
+ "citation_checks": [
+  {
+   "doi": "10.1371/journal.pone.0009506",
+   "resolved": {
+    "title": "Statistical Analysis of the Indus Script Using n-Grams",
+    "authors": "Nisha Yadav; Hrishikesh Joglekar; Rajesh P. N. Rao; Mayank N. Vahia; Ronojoy Adhikari; Iravatham Mahadevan",
+    "year": "2010-03-19T00:00:00",
+    "venue": null
+   }
+  }
+ ]
+}

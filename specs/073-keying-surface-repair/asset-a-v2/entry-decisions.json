@@ -1,0 +1,3135 @@
+{
+ "note": "Asset A v2 entry log (Spec 073, Phase 436): pass 1 = the enterer's sign-by-sign coding from the verbatim source labels; pass 2 = the deterministic rule pass over the same verbatim labels, validated before entry by requiring it to reproduce Spec 069's recorded pass-2 codings on all 187 carried labels exactly; final = the reconciled kind, with every disagreement adjudicated by re-reading the verbatim label. The 210 icit_wells signs carry no verbal depiction in any ruled source (see sources_searched) and are entered unidentified, never pooled into a kind.",
+ "signs": {
+  "P006": {
+   "pass1": "human",
+   "pass2": "other",
+   "final": "human",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "Pass 1 governs: the description subject is two people carrying burdens \u2014 a human group; the rule pass keys on the head word 'Two'."
+  },
+  "P008": {
+   "pass1": "human",
+   "pass2": "human",
+   "final": "human",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P015": {
+   "pass1": "human",
+   "pass2": "human",
+   "final": "human",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P016": {
+   "pass1": "human",
+   "pass2": "object_goods",
+   "final": "human",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "Pass 1 governs: the description subject is two persons standing side by side; the rule pass matched the substring 'stand'."
+  },
+  "P019": {
+   "pass1": "human",
+   "pass2": "human",
+   "final": "human",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P021": {
+   "pass1": "human",
+   "pass2": "human",
+   "final": "human",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P024": {
+   "pass1": "human",
+   "pass2": "human",
+   "final": "human",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P027": {
+   "pass1": "human",
+   "pass2": "human",
+   "final": "human",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P028": {
+   "pass1": "human",
+   "pass2": "human",
+   "final": "human",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P029": {
+   "pass1": "human",
+   "pass2": "human",
+   "final": "human",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P030": {
+   "pass1": "human",
+   "pass2": "human",
+   "final": "human",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P033": {
+   "pass1": "human",
+   "pass2": "human",
+   "final": "human",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P034": {
+   "pass1": "human",
+   "pass2": "human",
+   "final": "human",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P036": {
+   "pass1": "human",
+   "pass2": "human",
+   "final": "human",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P039": {
+   "pass1": "human",
+   "pass2": "human",
+   "final": "human",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P042": {
+   "pass1": "human",
+   "pass2": "human",
+   "final": "human",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P045": {
+   "pass1": "animal",
+   "pass2": "animal",
+   "final": "animal",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P046": {
+   "pass1": "animal",
+   "pass2": "animal",
+   "final": "animal",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P052": {
+   "pass1": "animal",
+   "pass2": "animal",
+   "final": "animal",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P055": {
+   "pass1": "animal",
+   "pass2": "animal",
+   "final": "animal",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P057": {
+   "pass1": "animal",
+   "pass2": "animal",
+   "final": "animal",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P059": {
+   "pass1": "animal",
+   "pass2": "animal",
+   "final": "animal",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P063": {
+   "pass1": "animal",
+   "pass2": "animal",
+   "final": "animal",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P066": {
+   "pass1": "animal",
+   "pass2": "animal",
+   "final": "animal",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P068": {
+   "pass1": "animal",
+   "pass2": "other",
+   "final": "animal",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "Pass 1 governs: the description subject is a duck; 'duck' is absent from the rule-pass keyword list fitted on Spec 069's labels, which contained no duck. The fitted list is not extended mid-build."
+  },
+  "P069": {
+   "pass1": "animal",
+   "pass2": "animal",
+   "final": "animal",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P077": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P078": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P080": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P085": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P087": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P088": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P090": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P093": {
+   "pass1": "object_goods",
+   "pass2": "object_goods",
+   "final": "object_goods",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P097": {
+   "pass1": "object_goods",
+   "pass2": "other",
+   "final": "object_goods",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "Pass 1 governs: the description subject is a pitchfork (spelled 'Pitckfork' in the source), missed by the rule pass on the misspelling \u2014 the same case as Spec 069's P095, whose label is this sign's near-duplicate and whose final coding was object_goods."
+  },
+  "P100": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P102": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P104": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P106": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P107": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P109": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P112": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P115": {
+   "pass1": "human",
+   "pass2": "other",
+   "final": "human",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "Pass 1 governs: the description gives a figure with two person arms and a head \u2014 a person figure; identical in form to Spec 069's P114, adjudicated human there on the same words."
+  },
+  "P116": {
+   "pass1": "human",
+   "pass2": "other",
+   "final": "human",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "Pass 1 governs: the description gives a figure with two person arms and a head \u2014 a person figure; identical in form to Spec 069's P114, adjudicated human there on the same words."
+  },
+  "P118": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P129": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P130": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P137": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P140": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P141": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P143": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P148": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P149": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P150": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P155": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P161": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P162": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P163": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P164": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P165": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P173": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P176": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P179": {
+   "pass1": "object_goods",
+   "pass2": "object_goods",
+   "final": "object_goods",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P183": {
+   "pass1": "object_goods",
+   "pass2": "object_goods",
+   "final": "object_goods",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P184": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P185": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P187": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P189": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P190": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P191": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P192": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P196": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P198": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P199": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P200": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P209": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P213": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P216": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P222": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P224": {
+   "pass1": "other",
+   "pass2": "object_goods",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "Pass 1 governs: 'bowtie' is a geometric form name, not a bow; the rule pass matched the substring 'bow'. Same adjudication as Spec 069's P226."
+  },
+  "P225": {
+   "pass1": "other",
+   "pass2": "object_goods",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "Pass 1 governs: 'bowtie' is a geometric form name, not a bow; the rule pass matched the substring 'bow'. Same adjudication as Spec 069's P226."
+  },
+  "P227": {
+   "pass1": "other",
+   "pass2": "object_goods",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "Pass 1 governs: 'bowtie' is a geometric form name, not a bow; the rule pass matched the substring 'bow'. Same adjudication as Spec 069's P226."
+  },
+  "P229": {
+   "pass1": "other",
+   "pass2": "object_goods",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "Pass 1 governs: 'bowtie' is a geometric form name, not a bow; the rule pass matched the substring 'bow'. Same adjudication as Spec 069's P226."
+  },
+  "P233": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P235": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P240": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P242": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P243": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P244": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P245": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P249": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P250": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P257": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P259": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P262": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P264": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P266": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P267": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P269": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P271": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P274": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P277": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P278": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P282": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P284": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P286": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P292": {
+   "pass1": "object_goods",
+   "pass2": "object_goods",
+   "final": "object_goods",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P295": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P298": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P302": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P304": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P305": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P306": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P308": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P312": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P314": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P317": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P318": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P319": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P321": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P322": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P323": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P328": {
+   "pass1": "object_goods",
+   "pass2": "object_goods",
+   "final": "object_goods",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P329": {
+   "pass1": "object_goods",
+   "pass2": "object_goods",
+   "final": "object_goods",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P330": {
+   "pass1": "object_goods",
+   "pass2": "object_goods",
+   "final": "object_goods",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P331": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P333": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P336": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P337": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P338": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P339": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P343": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P344": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P345": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P347": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P348": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P351": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P354": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P356": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P361": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P362": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P363": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P365": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P367": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P371": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P375": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P376": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P377": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P380": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P383": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P388": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P389": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P391": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P392": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "P396": {
+   "pass1": "other",
+   "pass2": "other",
+   "final": "other",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": ""
+  },
+  "W036": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W037": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W039": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W041": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W042": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W043": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W047": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W050": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W056": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W059": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W067": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W068": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W069": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W074": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W075": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W082": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W084": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W085": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W092": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W096": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W099": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W102": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W115": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W116": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W128": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W129": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W132": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W135": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W136": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W138": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W139": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W141": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W147": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W150": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W152": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W157": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W172": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W173": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W180": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W191": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W195": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W219": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W221": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W223": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W224": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W225": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W229": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W230": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W250": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W251": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W252": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W253": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W257": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W261": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W263": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W276": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W277": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W278": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W279": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W298": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W310": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W311": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W316": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W320": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W326": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W327": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W328": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W330": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W351": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W376": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W381": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W383": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W386": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W387": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W389": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W401": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W403": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W404": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W409": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W410": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W418": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W424": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W441": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W442": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W444": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W445": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W453": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W458": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W462": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W463": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W479": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W481": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W491": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W492": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W493": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W494": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W495": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W501": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W506": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W514": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W515": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W516": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W519": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W525": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W534": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W535": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W541": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W543": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W544": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W546": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W552": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W563": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W576": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W577": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W585": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W586": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W591": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W596": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W597": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W599": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W601": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W606": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W617": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W620": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W627": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W629": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W641": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W643": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W646": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W647": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W681": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W682": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W687": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W697": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W698": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W699": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W702": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W713": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W714": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W718": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W720": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W722": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W723": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W727": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W728": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W729": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W733": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W759": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W762": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W763": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W766": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W775": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W780": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W781": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W791": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W792": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W793": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W794": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W795": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W799": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W801": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W811": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W821": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W822": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W824": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W826": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W827": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W828": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W829": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W830": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W835": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W836": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W837": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W838": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W839": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W842": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W843": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W844": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W849": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W852": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W854": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W855": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W856": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W857": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W862": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W866": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W872": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W874": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W875": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W876": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W893": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W897": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W898": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W899": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W907": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W910": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W911": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W912": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W913": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W914": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W918": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W919": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W925": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W933": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W945": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W947": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W951": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W953": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W957": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  },
+  "W958": {
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "final": "unidentified",
+   "borderline": false,
+   "borderline_note": "",
+   "adjudication": "",
+   "sources_searched": "no verbal depiction in any ruled source searched: Fuls 2023 Catalog Ch. 2.3 sign list (glyph only), Catalog Ch. 2 and Ch. 3 prose (positional/form discussions only), Catalog section 5.1 (occurrence data), Fuls 2023 Corpus prose, CISI 3.1 (no sign list), CISI sign list as digitized (no entry under this number)"
+  }
+ }
+}

@@ -1,7 +1,7 @@
 {
   "document_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68",
   "title": "",
-  "extraction_date": "2026-10-13T12:11:33.379722",
+  "extraction_date": "2026-10-21T15:29:26.137602",
   "total_claims": 3,
   "auto_extracted": 3,
   "manually_curated": 0,
@@ -15,7 +15,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-10-13T12:11:32.760834",
+      "extracted_at": "2026-10-21T15:29:25.737006",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001",
       "stage_as_of": "2026-10-12",
@@ -43,6 +43,45 @@
         "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
         "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
         "explanation_text": "This record is a fragment, and the draft says so rather than dressing it up. The extraction pulled a single cell from a table in the source document: a sign number and a proposed value.  No check has ever run on it. The program's Phase-104 evaluation examined the record and stopped at the door: the sign number is cited without stating which sign list it belongs to, no matching entry was found in the repository's own crosswalk registry (which holds 86 numeric sign IDs), and the record carries no falsification condition - nothing that states what result would count against it. As written, the fragment is not a testable claim; it is a pointer at a table in a book. Even with the sign identified, 'used in a variety of contexts' states nothing that could fail: almost any common sign is used in a variety of contexts. The observation may be a useful catalogue note; as a claim record it asserts no testable proposition."
+      },
+      "spec056_closure": {
+        "spec": "056",
+        "phase": "Phase-418",
+        "date": "2026-10-21",
+        "actor": "spec056-phase418-execution",
+        "kind": "closure (identification)",
+        "outcome": "IDENTIFICATION FAILED",
+        "wording": "Re-extraction found a specific argument in the passage of record (‘It is suggested here that sign 821, in the Dholavira signboard contexts, has a meaning of ‘city’, either as a determinative or as a word.’, printed p. 92), but the claim cannot be recovered in the program's form: the drawn sign could not be identified by either route §5 R-3 allows. The fragment is neither recovered nor retired; it stays a stated gap, with this closure as the record of why, and the unblocking act is the preservation, as a committed and hashed record, of an inspectable drawn-form reference for Wells's sign 821 — the Figure 2.6 sign-list pages (printed pp. 19–22) or the Figure 6.13 examples as images tied to the list entry — from which the drawn sign can be matched by drawn form through the crosswalk registry or quoted as the source list's own entry.",
+        "record": "specs/056-sign821-recovery/outcome.md",
+        "extraction_record": "specs/056-sign821-recovery/extraction-record.md",
+        "extraction_record_sha256": "ad4a3f747d6ae4e0f13ae984c1169bd4a94570625e7dcc199146ff2ef73fb6ab",
+        "results": "reports/phase418_results.json",
+        "results_sha256": "35ed74b8d47d4b83973c5365fa29bb0e969413c485d838ccd4a6e166f2540575",
+        "note": "Closure entry appended by the Spec 056 execution (Phase-418, 2026-10-21), under the frozen Spec 056 contract (OSF 3eygs, approved + public, DOI 10.17605/OSF.IO/3EYGS). Step 0 passed in full; two independent extraction passes over the pinned passage (Wells 2015, 'The Dholavira signboard, revisited', lines 2783–2871, passage digest 51d6fb3a460d94abc98c2ff735b17c5131a68c203e4d16692a21725790c0c604) recovered a specific argument — sign 821, in the Dholavira signboard contexts, has a meaning of 'city', either as a determinative or as a word, with eyil the passage's preferred gloss — which passes recovery conditions R-1, R-2, R-4 and R-5. The sign list is named from the document itself (Wells's own list, Wells 2011, in Wells 2015 Chapter 2 / Figure 2.6), but the drawn sign could not be identified by either route §5 R-3 allows: the crosswalk registry carries no W821 entry in any form (its Yunmapped_0821 row is a Yajnadevam glyph identifier, not this sign), and the source list's own entry stands in Figure 2.6, whose drawn forms did not survive the held copy's text extraction. The gap is the identification, and the unblocking act is the preservation, as a committed and hashed record, of an inspectable drawn-form reference for Wells's sign 821. This entry appends a closure; it does not alter the fragment's original record, which stands above as history, and the claim's status and stage are unchanged."
+      },
+      "spec063_restatement": {
+        "actor": "spec063-phase425-execution",
+        "date": "2026-10-22",
+        "falsification_condition": "The claim counts as falsified if sign 821 in Dholavira signboard contexts is shown to carry a different established value, or if the signboard sequence's locative (place-name) element is shown to be carried by other signs, with sign 821 outside it — either result removes the basis the passage itself states for the ‘city’ suggestion. The passage rules one observation out as a falsifier in its own words: the non-attestation of eyil-ay or eyil-i (collocation with sign 740) is expressly ‘not a nullification of the reading’, so that absence cannot serve as the condition.",
+        "identification": "Route 2 under Spec 063 §5 (the list's own entry, through the preserved reference): the preserved drawn-form reference specs/063-sign821-identification-successor/drawn-form-reference-821.json (schema glossa.drawn-form-reference/1, SHA-256 695dd35d55bd2f68d8c9db0ea79dde249b53c55d11ed2f622752a18511e65999), sustained at step D by two independent derivations from the thesis plate (thesis p. 92 / PDF p. 104) and anchored at step C on the anchors' agreement. Route 1 was attempted and failed: no registry row carries the doubled drawn form, and there was no fallback to P378, which is the base sign 820. The Yunmapped_0821 row is a Yajnadevam glyph identifier, not this sign, and was asserted as a trap, never used.",
+        "identification_record": "specs/063-sign821-identification-successor/identification-record.md",
+        "identification_record_sha256": "4a0d62a6337daac2293d42e1e9cd77de40d027353223a189c7e2a984f6810c16",
+        "key": "spec063_restatement",
+        "kind": "restatement (recovered claim)",
+        "lifecycle": "The claim enters the lifecycle at the created stage, status untested. Recovery is not checking, not explanation, not acceptance; no test has been run under this spec, and this entry presents the claim as neither supported, checked, nor digested.",
+        "note": "Restatement appended by the Spec 063 execution (Phase-425, 2026-10-22), under the frozen Spec 063 contract (freeze digest dc24a10ec177d5f1eb3b73d29ab6f646b4c77b02ae30da2ca86002cc57a49ed9; OSF kfet5, approved + public). Step 0 passed in full, including the thesis file asserted to its frozen digest on the local file before any plate was read. Candidate K-1 stands as Spec 056's executed record adjudicated it — R-1, R-2, R-4 and R-5 of record on the pinned passage — and R-3, the one open condition, is satisfied under Spec 063 §5 on the new record. The fragment's original entry and its spec056_closure append stand above this entry, unedited, as the record of what was recovered from; this entry appends a restatement and does not alter them, and the claim's status and stage are as this entry states: untested, at the created stage.",
+        "numbers_and_conditions": "R-5, of record in Spec 056's execution: the Dholavira signboard contexts; the determinative-or-word alternative; the four candidate glosses with their DED numbers (DED 752 ūr; DED 808 eyil; DED 3568 nakar; DED 4112 pāri); the eyil preference with its stated reason (Dholavira is a walled city made of cut stone); and the passage's hedge (which of these, if any, is the correct gloss cannot be known; no firm reading for sign 821).",
+        "outcome": "RECOVERED",
+        "phase": "Phase-425",
+        "proposition": "Sign 821, in the Dholavira signboard contexts, has a meaning of ‘city’, either as a determinative or as a word; of the passage's candidate glosses (DED 752 ūr; DED 808 eyil; DED 3568 nakar; DED 4112 pāri), eyil is the best choice, because Dholavira is a walled city made of cut stone.",
+        "quote": "It is suggested here that sign 821, in the Dholavira signboard contexts, has a meaning of ‘city’, either as a determinative or as a word.",
+        "quote_locator": "Wells 2015, printed p. 92; held cleaned-text lines 2835–2836 (passage of record lines 2783–2871, passage digest 51d6fb3a460d94abc98c2ff735b17c5131a68c203e4d16692a21725790c0c604)",
+        "record": "specs/063-sign821-identification-successor/outcome.md",
+        "results": "reports/phase425_results.json",
+        "results_sha256": "c7b246e94258519e251acaf3a97179de02da1e453f01ef37945cca2a48737752",
+        "sign_list": "Wells's own sign list (Wells 2011), as given in Wells 2015, Chapter 2 / Figure 2.6 (printed pp. 19–22); named from the document itself at held-text lines 414 and 665",
+        "spec": "063",
+        "test_design_note": "Test design (designed under Spec 063 §4, following DD-056-6 / DD-056-17; a design only — no test is executed under this spec): what would be checked is whether the identified sign — Wells 821, the doubled six-spoke oval wheel identified under §5 — in Dholavira signboard contexts carries a different established value, or whether the signboard sequence's locative (place-name) element is carried by other signs with 821 outside it, either of which would falsify the claim under its R-4 condition. The named data are the Dholavira signboard sequence as the passage of record states it (Wells 2015, printed pp. 90–94) and the corpus occurrences of the identified drawn sign in signboard contexts, as a future act would pin them. The passage's own ruling is part of the design: the non-attestation of eyil-ay / eyil-i is not a nullification of the reading and cannot serve as the falsifying observation."
       }
     },
     {
@@ -54,7 +93,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-10-13T12:11:32.763828",
+      "extracted_at": "2026-10-21T15:29:25.737030",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
       "stage_as_of": "2026-10-12",
@@ -82,6 +121,32 @@
         "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
         "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
         "explanation_text": "This record is a fragment, and the draft says so rather than dressing it up. The extraction pulled a single cell from a table in the source document: a sign number and a proposed value.  No check has ever run on it. The program's Phase-104 evaluation examined the record and stopped at the door: the sign number is cited without stating which sign list it belongs to, no matching entry was found in the repository's own crosswalk registry (which holds 86 numeric sign IDs), and the record carries no falsification condition - nothing that states what result would count against it. As written, the fragment is not a testable claim; it is a pointer at a table in a book. Unlike the number-value fragments, this one is at least the kind of statement that could be checked - sign identifications can be compared against sign images - but not from this record: with the sign list unnamed, the drawn sign cannot be located."
+      },
+      "first_check": {
+        "spec": "046",
+        "phase": "Phase-405",
+        "date": "2026-10-21",
+        "actor": "spec046-phase405-execution",
+        "kind": "first-check (identification)",
+        "outcome": "IDENTIFICATION FAILED (sign unmatched)",
+        "wording": "The fragment 'sign 297 is the horned tiger' cannot be carried to a concordance: the drawn sign could not be matched from Wells's published list. The record stays a stated gap. No statement about the sign is made, and nothing is fed to Asset A.",
+        "record": "specs/046-horned-tiger-concordance/outcome.md",
+        "delivery": "specs/046-horned-tiger-concordance/concordance-297.json",
+        "delivery_sha256": "772db4df152ec4f1071bed088250677e55f69743532c9e89f339a8cf9134aaaf",
+        "note": "First check of this claim, under the frozen Spec 046 contract (OSF dnts8, approved + public). Step 0 passed in full; step 1 named the source's sign list from the book's own apparatus (Wells's own list, Wells 2011, in Wells 2015 Chapter 2 / Figure 2.6) and the drawn sign could not be matched by drawn form from the held record — no registry entry carries it (the only W297 value sits inside the multi-value wells_ids cell on the P205 row, a trap the frozen spec names), and the drawn forms of Figure 2.6 did not survive the held copy's text extraction. This is a check of identification, recorded under F046-C15: it is not a verdict on the identification, and the claim's status and stage are unchanged. Appended by the Spec 046 execution; no pre-existing field of any claim in this file was altered."
+      },
+      "spec064_check":       {
+        "spec": "064",
+        "phase": "Phase-426",
+        "date": "2026-10-22",
+        "actor": "spec064-phase426-execution",
+        "kind": "successor-check (identification)",
+        "outcome": "IDENTIFICATION FAILED (continuity/discrimination not sustained)",
+        "wording": "The fragment 'sign 297 is the horned tiger' cannot be carried to a concordance: the descriptor's discrimination of 297 from its neighbours in the 289–308 run was not sustained by both independent derivations. The record stays a stated gap. No statement about the sign is made, and nothing is fed to Asset A. Qualification (carried from the preserved reference, Spec 064 §1): the identification of Wells's 297 rests on a drawn-form reference whose continuity status is QUALIFIED — anchored at family level only; its step C discrimination check is part of this run's record.",
+        "record": "specs/064-sign297-concordance-successor/outcome.md",
+        "delivery": "specs/064-sign297-concordance-successor/concordance-297.json",
+        "delivery_sha256": "9e765576349d4d294a4fc04f0d6750be3718dfc60fa267ea16c04c6130db7488",
+        "note": "Successor check of this claim under the frozen Spec 064 contract (OSF s6hr9, approved + public), successor to Spec 046's first check, which stands unedited in this record under 'first_check'. Step 0 passed in full, including gate 0.4: the preserved drawn-form reference at its pinned digest (33ee22ec…) and the thesis file's digest asserted on the local file before any plate was read. Step 1 named the source's sign list from the book's own apparatus (Wells's own list, Wells 2011, in Wells 2015 Chapter 2 / Figure 2.6); step D derived the drawn-form descriptor twice, independently, from the thesis plate (Figure 3.2, thesis p. 90 / PDF p. 102) and sustained the preserved reference; step C — mandatory in Spec 064 — was not sustained: neither independent derivation affirms that the descriptor picks out plate 297 and no neighbour in the 289–308 run (signs 299, 302 and 303 satisfy every stated feature of the descriptor), so the run closed as IDENTIFICATION FAILED (continuity/discrimination not sustained) before step M and before any scoring. The preserved reference's continuity status is QUALIFIED — anchored at family level only — and is carried on every product of the run. This is a check of identification, recorded under F064-C15: it is not a verdict on the identification, and the claim's status and stage are unchanged. Appended by the Spec 064 execution; no pre-existing field of any claim in this file was altered, and the Spec 046 first_check entry is unedited."
       }
     },
     {
@@ -93,7 +158,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-10-13T12:11:33.058772",
+      "extracted_at": "2026-10-21T15:29:25.935519",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003",
       "stage_as_of": "2026-10-12",
@@ -111,7 +176,19 @@
       ],
       "verified_unexplained": false,
       "proposition_fingerprint": "a4874349e0cc0ba23b711f10c78f60372639c2dc6f352165b48d4a9e44272469",
-      "merged_into": "ancient_writing_and_modern_technologies_51831ac9_statisti_0004"
+      "merged_into": "ancient_writing_and_modern_technologies_51831ac9_statisti_0004",
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "spec025-material-audit-note",
+        "proposal": "P8",
+        "note": "Source identification (spec-025 material audit, 2026-10-22): the 'Positional Analysis' stub dossiers are all Andreas Fuls's work - 'Positional Analysis of Indus Signs', Voprosi Epigrafiki 7(1):253-275 (2013), reprinted as Wells & Fuls 2015 Appendix II (DOI 10.2307/j.ctvr43jmf.16), and Fuls 2023, Catalog of Indus Signs, ch. 3 (FULL TEXT, all three identifications).",
+        "evidence": [
+          "specs/025-paper-search-research-check/audit-2026-10-22/raw/findings_W4.md",
+          "specs/025-paper-search-research-check/audit-2026-10-22/correction_proposals.md"
+        ],
+        "evidence_level": "FULL TEXT",
+        "effect": "No claim status, stage, anchor, or score is changed by this note."
+      }
     }
   ],
   "_citation": {

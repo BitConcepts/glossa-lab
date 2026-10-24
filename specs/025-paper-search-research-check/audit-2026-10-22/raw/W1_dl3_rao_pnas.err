@@ -1,0 +1,39 @@
+[10/22/26 15:03:04] WARNING  No DOAJ API key provided. Searches will  doaj.py:48
+                             use public access with rate limits (100            
+                             requests/hour). Get a free API key at:             
+                             https://doaj.org/apply-for-api-key/                
+                    WARNING  PAPER_SEARCH_MCP_UNPAYWALL_EMAIL/UN unpaywall.py:29
+                             PAYWALL_EMAIL not configured.                      
+                             Unpaywall fallback will be skipped.                
+                             You can request free access at                     
+                             https://unpaywall.org/products/api                 
+[10/22/26 15:03:05] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[10/22/26 15:03:09] ERROR    Failed to download Europe PMC PDF  europepmc.py:306
+                             for PMID:19666571: Response ended                  
+                             prematurely                                        
+                    WARNING  Primary download failed for           server.py:811
+                             europepmc/PMID:19666571: Failed to                 
+                             download Europe PMC PDF for                        
+                             PMID:19666571: Response ended                      
+                             prematurely                                        
+[10/22/26 15:03:10] ERROR    Error getting direct URL for         sci_hub.py:158
+                             PMID:19666571:                                     
+                             HTTPSConnectionPool(host='sci-hub.se               
+                             ', port=443): Max retries exceeded                 
+                             with url: /PMID:19666571 (Caused by                
+                             ProxyError('Unable to connect to                   
+                             proxy', RemoteDisconnected('Remote                 
+                             end closed connection without                      
+                             response')))                                       
+                    ERROR    Could not find PDF URL for            sci_hub.py:50
+                             identifier: PMID:19666571                          
+                    INFO     Warning: InsecureRequestWarning:      server.py:723
+                             Unverified HTTPS request is being                  
+                             made to host 'hatch-egress-proxy'.                 
+                             Adding certificate verification is                 
+                             strongly advised. See:                             
+                             https://urllib3.readthedocs.io/en/lat              
+                             est/advanced-usage.html#tls-warnings               
+                    INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   

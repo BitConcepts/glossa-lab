@@ -1,0 +1,206 @@
+{
+  "act": "step 0 (spec section 3 gates, in frozen order)",
+  "anchors": {
+    "byte_identical": true,
+    "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+    "sha256_after": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+    "sha256_before": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569"
+  },
+  "base_commit": "3200b7b5b6841a7b9567a81368bf84004fd17255",
+  "claim_id": "yadav_2009_arxiv_manual_001",
+  "control_set_frozen": false,
+  "estimator_ruling": "DD-053-11 option (a): the section 4.2 estimator specified completely at the freeze; the 'identical to Phase-43' reading retired — no Phase-43 estimator was sought or substituted",
+  "estimator_self_test": {
+    "alpha_error": 0.05600000000000005,
+    "drawn_counts": {
+      "max": 5549,
+      "min": 24,
+      "sum": 50000,
+      "zero_types": 0
+    },
+    "fit": {
+      "N": 50000,
+      "NRMSE_log": 0.05308229284140585,
+      "R2_log": 0.9975163418875004,
+      "SSE": 0.5635459626601533,
+      "V": 200,
+      "alpha": 1.256,
+      "q": 2.72
+    },
+    "generating_parameters": {
+      "N": 50000,
+      "V": 200,
+      "alpha": 1.2,
+      "q": 2.0,
+      "seed": 20261021
+    },
+    "procedure": "p_r proportional to 1/(r+q)^alpha for r = 1..V, normalised; counts drawn as one multinomial sample of N tokens from p with numpy's default generator seeded 20261021; drawn counts ranked descending and fitted by the one estimator",
+    "q_error": 0.7200000000000002,
+    "recovered_within_tolerance": true,
+    "tolerances": {
+      "alpha": 0.1,
+      "q": 1.0
+    }
+  },
+  "execution_date": "2026-10-21",
+  "freeze_digest": "fd2d5cb86b6aed51882a945719bb747ac34f149b08a21e6485b1407c6dc6b309",
+  "gates": [
+    {
+      "anchors_census": {
+        "anchors": 287,
+        "strict_sa_independent": 94
+      },
+      "gate": "0.1",
+      "inputs": [
+        {
+          "file": "glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json",
+          "match": true,
+          "observed": "904766238d4aec8fecf0a01dc7c8935689f378e31062485edc699874a36847a3",
+          "pin": "904766238d4aec8fecf0a01dc7c8935689f378e31062485edc699874a36847a3",
+          "present": true
+        },
+        {
+          "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+          "match": true,
+          "observed": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+          "pin": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+          "present": true
+        },
+        {
+          "file": "data/crosswalks/sign_crosswalk_master.csv",
+          "match": true,
+          "observed": "4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf",
+          "pin": "4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf",
+          "present": true
+        },
+        {
+          "file": "backend/glossa_lab/data/mahadevan_parpola_crosswalk.json",
+          "match": true,
+          "observed": "9ebd7723472d888dc8a127ff840a108d4fbd546f7f8ed28ccc6e06444a2dc69b",
+          "pin": "9ebd7723472d888dc8a127ff840a108d4fbd546f7f8ed28ccc6e06444a2dc69b",
+          "present": true
+        },
+        {
+          "file": "outputs/phase43_all.json",
+          "match": true,
+          "observed": "78a6c21908b9362854c54dd3d820d717be22feab3af11135663fa14aaf554fe4",
+          "pin": "78a6c21908b9362854c54dd3d820d717be22feab3af11135663fa14aaf554fe4",
+          "present": true
+        }
+      ],
+      "name": "Input integrity",
+      "verdict": "PASS"
+    },
+    {
+      "alpha_error": 0.05600000000000005,
+      "fitted_alpha": 1.256,
+      "fitted_q": 2.72,
+      "gate": "0.2",
+      "generating_parameters": {
+        "N": 50000,
+        "V": 200,
+        "alpha": 1.2,
+        "q": 2.0,
+        "seed": 20261021
+      },
+      "name": "Estimator self-test",
+      "q_error": 0.7200000000000002,
+      "tolerances": {
+        "alpha": 0.1,
+        "q": 1.0
+      },
+      "verdict": "PASS"
+    },
+    {
+      "gate": "0.3",
+      "name": "Strict corpus identification and pin",
+      "recorded_phase43_corpus": {
+        "source": "indusscript.in Firestore 'indusarrays' (2026-05-14)",
+        "total_records": 3916,
+        "total_sequences": 3137,
+        "total_sign_instances": 12494,
+        "unique_dockeys": 2665
+      },
+      "sequences_loadable_from_v3_loader": 0,
+      "v3_data_file_present": false,
+      "verdict": "FAIL"
+    },
+    {
+      "gate": "0.4",
+      "name": "Control set freeze (cited data)",
+      "verdict": "NOT REACHED"
+    },
+    {
+      "gate": "0.5",
+      "name": "Census and floors",
+      "verdict": "NOT REACHED"
+    }
+  ],
+  "osf_registration": "s9yfe (approved and public)",
+  "outcome": "STRICT CORPUS NOT PINNABLE",
+  "outcome_wording_frozen_spec_6": "Spec 053 closed at step 0, gate 0.3: the V3 / Mahadevan-lineage corpus layer of record could not be uniquely identified and pinned as the Phase-43 framework's corpus (the V3 layer's data file — the Firestore 'indusarrays' dump the V3 loader reads — is absent from the tree, so the loader loads zero sequences and the layer cannot be exported or pinned; no database copy exists in the execution tree; and no other layer in the tree is the corpus the Phase-43 record names (its source at 3,916 records, against 5,679 records for the site-attributed layer, 15,508 mixed-source objects for the V1 export, and 3,085 ICIT-encoded sequences)). No fit was computed. This closure is a statement about runnability, not about the claim; the claim stands exactly as recorded.",
+  "phase": "Phase-413",
+  "sensitivities_computed": [],
+  "spec": "053-yadav-zipf-controls",
+  "strict_corpus_identification_attempt": {
+    "C1_v3_loader_data_file": {
+      "loader": "backend/glossa_lab/data/indus_corpus_v3.py",
+      "note": "the loader returns an empty record list when its data file does not exist, so no sequence can be loaded or exported from it in this tree",
+      "path": "glossa-corpus/indus/sources/rmrl/raw/indusscript-probe/firestore_indusarrays_full.jsonl",
+      "present": false,
+      "sequences_loadable": 0
+    },
+    "C2_database_copy": {
+      "note": "no database file exists in the execution tree (backend/data/ is not tracked); the layer is not held in any database this run can identify it from",
+      "path": "backend/data/glossa.db",
+      "present_in_execution_tree": false
+    },
+    "C4_other_layers_in_tree": [
+      {
+        "identity": "the programme's site-attributed layer (the Phase-393 layer; the layer of record for Specs 027/028/042/045)",
+        "is_the_phase43_corpus": false,
+        "layer": "backend/glossa_lab/data/yajnadevam_inscriptions.csv",
+        "records": 5679,
+        "sha256": "c02e3d7bb74cf5abb11cc94f88d8d469e6acc5d6fad4b7153c02c43428f58d98",
+        "why_not": "the Phase-43 record names its corpus as the Firestore 'indusarrays' source at 3,916 records; this layer carries 5,679 records and is a different layer of record"
+      },
+      {
+        "identity": "the V1 primary research export (glossa-indus/CORPUS_VERSIONS.md: V1, loaded by indus_corpus_v2.py)",
+        "is_the_phase43_corpus": false,
+        "layer": "glossa-corpus/indus/exports/indus_research.jsonl",
+        "records": 15508,
+        "source_systems": {
+          "ClevelandArtOpenAccess": 4,
+          "MetOpenAccess": 4904,
+          "PennMuseum": 7515,
+          "indusscript-m77": 2906,
+          "mayig-cisi": 179
+        },
+        "why_not": "a five-source mixture in mixed sign schemes, labelled V1 in the corpus versioning record; the Phase-43 framework ran on the V3 Firestore reconstruction, not on this export"
+      },
+      {
+        "identity": "the ICIT-format export",
+        "is_the_phase43_corpus": false,
+        "layer": "glossa-corpus/indus/exports/indus_icit_format.json",
+        "total_sequences": 3085,
+        "why_not": "ICIT-encoded sequences (3,085) — a different lineage and encoding from the Mahadevan-lineage V3 corpus the Phase-43 record names"
+      },
+      {
+        "identity": "the Holdat corpus layer",
+        "is_the_phase43_corpus": false,
+        "layer": "corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv",
+        "present_in_tree": false,
+        "why_not": "absent from this tree (the downloads are not tracked), and in any case the Holdat compilation — the distinct second compilation of the sibling specs, not the Mahadevan-lineage V3 layer"
+      }
+    ],
+    "layer_uniquely_identified_and_exportable": false,
+    "recorded_phase43_corpus": {
+      "source": "indusscript.in Firestore 'indusarrays' (2026-05-14)",
+      "total_records": 3916,
+      "total_sequences": 3137,
+      "total_sign_instances": 12494,
+      "unique_dockeys": 2665
+    }
+  },
+  "systems_fitted": []
+}

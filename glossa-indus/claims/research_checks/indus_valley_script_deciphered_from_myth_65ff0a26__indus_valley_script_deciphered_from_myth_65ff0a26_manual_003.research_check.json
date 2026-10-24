@@ -1,0 +1,319 @@
+{
+ "stage": "research_check",
+ "record_version": 1,
+ "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_003",
+ "document_id": "indus_valley_script_deciphered_from_myth_65ff0a26",
+ "claim_statement": "The arrow sign (tīr) encodes border enforcement or guild authority.",
+ "checked_at": "2026-10-22T14:35:20.001743+00:00",
+ "advisory": true,
+ "verdict": null,
+ "protocol": "docs/paper-search-mcp.md#audit-protocol",
+ "phrasings": [
+  {
+   "text": "The arrow sign (tīr) encodes border enforcement or guild authority.",
+   "origin": "claim"
+  },
+  {
+   "text": "arrow-shaped Harappan grapheme as marker of frontier guards or official authority at gateway settlements",
+   "origin": "caller"
+  }
+ ],
+ "sources_requested": [
+  "arxiv",
+  "crossref",
+  "openalex",
+  "semantic",
+  "core",
+  "europepmc"
+ ],
+ "queries": [
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_papers",
+   "query": "The arrow sign (tīr) encodes border enforcement or guild authority."
+  },
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_arxiv",
+   "query": "The arrow sign (tīr) encodes border enforcement or guild authority."
+  },
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_crossref",
+   "query": "The arrow sign (tīr) encodes border enforcement or guild authority."
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_papers",
+   "query": "arrow-shaped Harappan grapheme as marker of frontier guards or official authority at gateway settlements"
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_arxiv",
+   "query": "arrow-shaped Harappan grapheme as marker of frontier guards or official authority at gateway settlements"
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_crossref",
+   "query": "arrow-shaped Harappan grapheme as marker of frontier guards or official authority at gateway settlements"
+  }
+ ],
+ "source_errors": [],
+ "neighbors": [
+  {
+   "title": "Law Enforcement Authority In The Country Border Region",
+   "authors": "Adolof Bormasa; Nirahua Salmon E.M; Garciano Nirahua",
+   "year": "2020-04-18T00:00:00",
+   "doi": "10.29322/ijsrp.10.04.2020.p10069",
+   "paper_id": "10.29322/ijsrp.10.04.2020.p10069",
+   "source": "crossref",
+   "url": "https://doi.org/10.29322/ijsrp.10.04.2020.p10069",
+   "abstract": null,
+   "relevance": 0.429
+  },
+  {
+   "title": "The European Labour Authority: Missing Link in the Cross-Border Enforcement of EU Labour Law",
+   "authors": "Piet Van Nuffel",
+   "year": "2022-01-01T00:00:00",
+   "doi": "10.5040/9781509944446.ch-017",
+   "paper_id": "10.5040/9781509944446.ch-017",
+   "source": "crossref",
+   "url": "https://doi.org/10.5040/9781509944446.ch-017",
+   "abstract": null,
+   "relevance": 0.286
+  },
+  {
+   "title": "Arrow sign",
+   "authors": "",
+   "year": "2005-12-01T00:00:00",
+   "doi": "10.53347/rid-24172",
+   "paper_id": "10.53347/rid-24172",
+   "source": "crossref",
+   "url": "https://doi.org/10.53347/rid-24172",
+   "abstract": null,
+   "relevance": 0.286
+  },
+  {
+   "title": "Open Questions regarding the Arrow of Time",
+   "authors": "H. D. Zeh",
+   "year": "2009-08-26T12:25:53",
+   "doi": "",
+   "paper_id": "0908.3780v2",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/0908.3780v2",
+   "abstract": "Conceptual problems regarding the arrow of time in classical physics, quantum physics, cosmology, and quantum gravity are discussed. Particular attention is paid to the dynamical role of the quantum indeterminism, and to various concepts of timelessness.",
+   "relevance": 0.143
+  },
+  {
+   "title": "Environment Induced Time Arrow",
+   "authors": "Janos Polonyi",
+   "year": "2012-06-25T19:41:55",
+   "doi": "",
+   "paper_id": "1206.5781v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1206.5781v1",
+   "abstract": "The spread of the time arrows from the environment to an observed subsystem is followed within a harmonic model. A similarity is pointed out between irreversibility and a phase with spontaneously broken symmetry. The causal structure of interaction might be lost in the irreversible case, as well. The Closed Time Path formalism is developed for classical systems and shown to handle the time arrow problem in a clear and flexible manner. The quantum case is considered, as well, and the common origin of irreversibility and decoherence is pointed out.",
+   "relevance": 0.143
+  },
+  {
+   "title": "The Semantic Arrow of Time, Part I: From Eddington to Ethernet",
+   "authors": "Paul Borrill",
+   "year": "2026-03-02T04:40:53",
+   "doi": "",
+   "paper_id": "2603.01440v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2603.01440v1",
+   "abstract": "This is the first of five papers comprising The Semantic Arrow of Time. The argument begins with a claim: computing's arrow of time is semantic, not thermodynamic. The direction in which meaning is preserved or destroyed across transactions is not a consequence of the second law but of design choices embedded in protocol architectures since Shannon's 1948 channel model. These choices encode the Forward-In-Time-Only (FITO) assumption -- the commitment that causation is irreversible, acyclic, and globally monotonic.\n  We trace this assumption from Eddington's 1927 coinage of \"the arrow of time,\"",
+   "relevance": 0.143
+  },
+  {
+   "title": "Can the Arrow of Time be understood from Quantum Cosmology?",
+   "authors": "Claus Kiefer",
+   "year": "2009-10-30T10:31:42",
+   "doi": "10.1007/978-3-642-23259-6_10",
+   "paper_id": "0910.5836v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/0910.5836v1",
+   "abstract": "I address the question whether the origin of the observed arrow of time can be derived from quantum cosmology. After a general discussion of entropy in cosmology and some numerical estimates, I give a brief introduction into quantum geometrodynamics and argue that this may provide a sufficient framework for studying this question. I then show that a natural boundary condition of low initial entropy can be imposed on the universal wave function. The arrow of time is then correlated with the size of the Universe and emerges from an increasing amount of decoherence due to entanglement with unobse",
+   "relevance": 0.143
+  },
+  {
+   "title": "The In-Car Sign Language Corpus (ICSL): A Multi-Modal Resource for Constrained-Space Sign Language Recognition",
+   "authors": "Raviteja Boddu; Guilherme Vieira Leite; Joed Lopes da Silva; Ângelo Benetti; Isabela Barbieri; Natália de Melo Afonso; Thyago Santos; Helio Pedrini; Felipe Venâncio Barbosa; José Mario De Martino; Munir Georges; Alessandro Zimmer",
+   "year": "2026-07-13T10:03:46",
+   "doi": "",
+   "paper_id": "2607.11341v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2607.11341v1",
+   "abstract": "This paper addresses the challenges of using sign language within shared mobility services, such as taxis, carpools, or ride-sharing platforms. The use of sign language recognition (SLR) in real-world, confined environments, specifically vehicle interiors remains largely unexplored. To motivate research in this area, we present the In-Car Sign Language (ICSL) dataset for Brazilian Sign Language (Libras), with the long-term goal of improving public transport accessibility for the Deaf and Hard-of-Hearing community. The dataset consists of: (1) high-precision laboratory motion capture (MoCap) da",
+   "relevance": 0.143
+  },
+  {
+   "title": "International and European Monitoring Standards for Law Enforcement",
+   "authors": "Elspeth Guild",
+   "year": "2023-06-20T00:00:00",
+   "doi": "10.4324/9781003424710-3",
+   "paper_id": "10.4324/9781003424710-3",
+   "source": "crossref",
+   "url": "https://doi.org/10.4324/9781003424710-3",
+   "abstract": null,
+   "relevance": 0.143
+  },
+  {
+   "title": "The Border Abroad - Visas and Border Controls",
+   "authors": "Elspeth Guild",
+   "year": "2002-01-01T00:00:00",
+   "doi": "10.1163/9789004481510_007",
+   "paper_id": "10.1163/9789004481510_007",
+   "source": "crossref",
+   "url": "https://doi.org/10.1163/9789004481510_007",
+   "abstract": null,
+   "relevance": 0.143
+  },
+  {
+   "title": "Guards and Inmates: Authority and the Management of Inmate Misbehavior",
+   "authors": "",
+   "year": "2016-10-04T00:00:00",
+   "doi": "10.4324/9781315411859-21",
+   "paper_id": "10.4324/9781315411859-21",
+   "source": "crossref",
+   "url": "https://doi.org/10.4324/9781315411859-21",
+   "abstract": null,
+   "relevance": 0.143
+  },
+  {
+   "title": "Changing Data Sources in the Age of Machine Learning for Official Statistics",
+   "authors": "Cedric De Boom; Michael Reusens",
+   "year": "2023-06-07T11:08:12",
+   "doi": "",
+   "paper_id": "2306.04338v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2306.04338v1",
+   "abstract": "Data science has become increasingly essential for the production of official statistics, as it enables the automated collection, processing, and analysis of large amounts of data. With such data science practices in place, it enables more timely, more insightful and more flexible reporting. However, the quality and integrity of data-science-driven statistics rely on the accuracy and reliability of the data sources and the machine learning techniques that support them. In particular, changes in data sources are inevitable to occur and pose significant risks that are crucial to address in the c",
+   "relevance": 0.0
+  },
+  {
+   "title": "Packed Levitated Marker for Entity and Relation Extraction",
+   "authors": "Deming Ye; Yankai Lin; Peng Li; Maosong Sun",
+   "year": "2021-09-13T15:38:13",
+   "doi": "",
+   "paper_id": "2109.06067v5",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2109.06067v5",
+   "abstract": "Recent entity and relation extraction works focus on investigating how to obtain a better span representation from the pre-trained encoder. However, a major limitation of existing works is that they ignore the interrelation between spans (pairs). In this work, we propose a novel span representation approach, named Packed Levitated Markers (PL-Marker), to consider the interrelation between the spans (pairs) by strategically packing the markers in the encoder. In particular, we propose a neighborhood-oriented packing strategy, which considers the neighbor spans integrally to better model the ent",
+   "relevance": 0.0
+  },
+  {
+   "title": "Guarding curvilinear art galleries with edge or mobile guards via 2-dominance of triangulation graphs",
+   "authors": "Menelaos I. Karavelas",
+   "year": "2008-02-11T00:40:37",
+   "doi": "10.1016/j.comgeo.2010.07.002",
+   "paper_id": "0802.1361v2",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/0802.1361v2",
+   "abstract": "We consider the problem of monitoring an art gallery modeled as a polygon, the edges of which are arcs of curves, with edge or mobile guards. Our focus is on piecewise-convex polygons, i.e., polygons that are locally convex, except possibly at the vertices, and their edges are convex arcs. We transform the problem of monitoring a piecewise-convex polygon to the problem of 2-dominating a properly defined triangulation graph with edges or diagonals, where 2-dominance requires that every triangle in the triangulation graph has at least two of its vertices in its 2-dominating set. We show that $\\l",
+   "relevance": 0.0
+  },
+  {
+   "title": "Joint Satellite Gateway Placement and Routing for Integrated Satellite-Terrestrial Networks",
+   "authors": "Nariman Torkzaban; Anousheh Gholami; Chrysa Papagianni; John S. Baras",
+   "year": "2020-02-08T02:47:53",
+   "doi": "",
+   "paper_id": "2002.03071v2",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2002.03071v2",
+   "abstract": "With the increasing attention to the integrated satellite-terrestrial networks (ISTNs), the satellite gateway placement problem becomes of paramount importance. The resulting network performance may vary depending on the different design strategies. In this paper, a joint satellite gateway placement and routing strategy for the terrestrial network is proposed to minimize the overall cost of gateway deployment and traffic routing, while adhering to the average delay requirement for traffic demands. Although traffic routing and gateway placement can be solved independently, the dependence betwee",
+   "relevance": 0.0
+  },
+  {
+   "title": "Assessing the quality of home detection from mobile phone data for official statistics",
+   "authors": "Maarten Vanhoof; Fernando Reis; Thomas Ploetz; Zbigniew Smoreda",
+   "year": "2018-09-20T11:01:31",
+   "doi": "10.2478/jos-2018-0046",
+   "paper_id": "1809.07567v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1809.07567v1",
+   "abstract": "Mobile phone data are an interesting new data source for official statistics. However, multiple problems and uncertainties need to be solved before these data can inform, support or even become an integral part of statistical production processes. In this paper, we focus on arguably the most important problem hindering the application of mobile phone data in official statistics: detecting home locations. We argue that current efforts to detect home locations suffer from a blind deployment of criteria to define a place of residence and from limited validation possibilities. We support our argum",
+   "relevance": 0.0
+  },
+  {
+   "title": "Spatial Analyses of Harappan Urban Settlements",
+   "authors": "Hirofumi Teramura; Takao Uno",
+   "year": "2006-12-01T00:00:00",
+   "doi": "10.5334/aa.06108",
+   "paper_id": "10.5334/aa.06108",
+   "source": "crossref",
+   "url": "https://doi.org/10.5334/aa.06108",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "The New Frontier",
+   "authors": "",
+   "year": "2020-10-02T00:00:00",
+   "doi": "10.2307/j.ctv1595n8r.6",
+   "paper_id": "10.2307/j.ctv1595n8r.6",
+   "source": "crossref",
+   "url": "https://doi.org/10.2307/j.ctv1595n8r.6",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "Recent Research at Harappan Settlements along the Ancient Hakra River",
+   "authors": "Qasid H. Mallah; Tooba Shafaq Rajput",
+   "year": "2016-01-01T00:00:00",
+   "doi": "10.12816/0038108",
+   "paper_id": "10.12816/0038108",
+   "source": "crossref",
+   "url": "https://doi.org/10.12816/0038108",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "Retail Security Guards Under Siege: Exploring Work-Related Violence Against Shopping Centre Security Guards in Gauteng, South Africa",
+   "authors": "Fana Simelane",
+   "year": "2025-07-14T00:00:00",
+   "doi": "10.22492/issn.2186-2303.2025.5",
+   "paper_id": "10.22492/issn.2186-2303.2025.5",
+   "source": "crossref",
+   "url": "https://doi.org/10.22492/issn.2186-2303.2025.5",
+   "abstract": null,
+   "relevance": 0.0
+  }
+ ],
+ "neighbors_read_full_text": [
+  {
+   "title": "Open Questions regarding the Arrow of Time",
+   "paper_id": "0908.3780v2",
+   "words": 5897
+  },
+  {
+   "title": "Environment Induced Time Arrow",
+   "paper_id": "1206.5781v1",
+   "words": 16865
+  },
+  {
+   "title": "The Semantic Arrow of Time, Part I: From Eddington to Ethernet",
+   "paper_id": "2603.01440v1",
+   "words": 4830
+  }
+ ],
+ "gaps": [
+  {
+   "gap": "neighbors surfaced but not read in full text (abstracts never establish novelty)",
+   "neighbors": [
+    "Law Enforcement Authority In The Country Border Region",
+    "The European Labour Authority: Missing Link in the Cross-Border Enforcement of EU Labour Law",
+    "Arrow sign",
+    "Can the Arrow of Time be understood from Quantum Cosmology?",
+    "The In-Car Sign Language Corpus (ICSL): A Multi-Modal Resource for Constrained-Space Sign Language Recognition",
+    "International and European Monitoring Standards for Law Enforcement",
+    "The Border Abroad - Visas and Border Controls",
+    "Guards and Inmates: Authority and the Management of Inmate Misbehavior",
+    "Changing Data Sources in the Age of Machine Learning for Official Statistics",
+    "Packed Levitated Marker for Entity and Relation Extraction"
+   ]
+  }
+ ],
+ "citation_checks": []
+}

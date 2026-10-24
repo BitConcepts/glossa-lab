@@ -21,8 +21,8 @@ This document describes the structural model of the Indus sign system derived fr
 | Sign space | 803 distinct sign IDs |
 | Classified signs | 160 P-signs (positional data sufficient) |
 | Number of clusters | 40 structural clusters |
-| Clustering algorithm | Agglomerative hierarchical (ward linkage, n_clusters=40) |
-| Features used | start_rate, internal_rate, end_rate, freq_log, co-occurrence graph embedding |
+| Clustering algorithm | Agglomerative hierarchical clustering — clusters built bottom-up, merging the closest pair at each step (Ward linkage), stopped at 40 clusters |
+| Features used | start_rate (how often a sign opens an inscription), internal_rate (how often it appears in the middle), end_rate (how often it closes one), freq_log (log of the sign's frequency), co-occurrence graph embedding (a numeric summary of which signs each sign appears next to) |
 | Cross-site stability | 85.3% (full) / 95.1% (full+partial) |
 | Entropy reduction | 2.31 bits (21.6%) from raw to class-label space |
 
@@ -38,7 +38,7 @@ The Indus inscription structure is consistently modeled as a 3-slot schema:
 
 | Slot | Description | Evidence |
 |------|-------------|---------|
-| INITIAL_SLOT | Opening sign(s); candidate title, determinative, or personal name marker | 12 signs with start_rate ≥ 0.55; recurrent templates confirm INITIAL-MEDIAL ordering |
+| INITIAL_SLOT | Opening sign(s); candidate title, determinative (category marker), or personal name marker | 12 signs with start_rate ≥ 0.55; recurrent templates confirm INITIAL-MEDIAL ordering |
 | MEDIAL_SLOT | Internal sign(s); candidate root, stem, or commodity specification | 46 signs with internal_rate ≥ 0.70; highest token volume in corpus |
 | TERMINAL_SLOT | Closing sign(s); candidate case suffix, number, or formula marker | 14 signs with end_rate ≥ 0.55; strong convergence with holdatllc CASE_MARKER_SUFFIX class |
 
@@ -123,7 +123,7 @@ Based on convergence of CGSA, CAS Phase 9, holdatllc semantic roles, and SA phon
 | Sequence entropy (class-label space) | 8.3636 bits |
 | Entropy reduction | 2.3055 bits (21.6%) |
 
-Interpretation: the structural class-label representation captures genuine regularities in inscription structure. A random clustering would show near-zero entropy reduction.
+Interpretation: entropy measures how unpredictable the sequences are. Grouping signs into structural classes made the sequences 2.31 bits (21.6%) more predictable, so the class labels capture genuine regularities in inscription structure. A random clustering would show near-zero entropy reduction.
 
 ---
 
@@ -133,4 +133,4 @@ Interpretation: the structural class-label representation captures genuine regul
 - 77 signs remain INSUFFICIENT_DATA and cannot be positioned in the model.
 - No ICIT image validation has been performed for sign identity.
 - The Dravidian slot hypothesis requires held-out prediction confirmation for upgrade to HIGH SIGNAL.
-- RTL vs LTR reading direction not definitively resolved (see DECIPHERMENT_LIMITS.md).
+- Reading direction — right-to-left (RTL) vs left-to-right (LTR) — not definitively resolved (see DECIPHERMENT_LIMITS.md).

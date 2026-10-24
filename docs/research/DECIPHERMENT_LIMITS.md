@@ -32,7 +32,7 @@ This document records the hard limits of the Glossa-Lab Indus decipherment metho
 | Indus script encodes Dravidian language | No confirmed phonetic reading; Dravidian is the leading structural hypothesis only |
 | Any specific sign has a specific phoneme value | No bilingual text; no held-out prediction confirmed for phonetics |
 | Any inscription has a specific meaning | Translation requires phonetic assignment + vocabulary; neither is confirmed |
-| Reading direction is definitively RTL or LTR | SA experiments show RTL slightly favored; not definitively resolved |
+| Reading direction is definitively right-to-left (RTL) or left-to-right (LTR) | SA experiments show RTL slightly favored; not definitively resolved |
 | The corpus is complete | CISI/ICIT has ~6,800 inscriptions; we have analyzed 2,722 (40%) |
 | Sign identity across numbering systems | No image-backed crosswalk; P122↔M342 error demonstrates this risk |
 | The script is syllabic/alphabetic/logographic | Inventory size (803 signs) is between syllabary and logographic; not resolved |
@@ -43,7 +43,7 @@ This document records the hard limits of the Glossa-Lab Indus decipherment metho
 ## 4. Hard Methodological Limits
 
 ### 4.1 No Bilingual Text
-There is no confirmed bilingual text, bilingue, or digraphic inscription that provides a cryptanalytic key for the Indus script. Without this, phonetic assignments remain speculative.
+There is no confirmed bilingual text (the same text in two scripts — a bilingue), and no digraphic inscription (one text written in two scripts), that would provide a key for cracking the Indus script's code (a cryptanalytic key). Without this, phonetic assignments remain speculative.
 
 ### 4.2 No Visual Sign Validation
 The canonical sign registry is built from text-format sign IDs (P-numbers, Y-numbers, M-numbers). We have not confirmed sign identities by examining the original CISI plate images or ICIT images. The P122↔M342 crosswalk error shows this is a real risk.
@@ -52,7 +52,7 @@ The canonical sign registry is built from text-format sign IDs (P-numbers, Y-num
 The 2,722 inscriptions analyzed represent approximately 40% of the known corpus. Structural patterns in a larger corpus may differ from current findings.
 
 ### 4.4 SA Stochasticity
-Substitution analysis (SA) results are LLM-dependent. SA results are not deterministic and cannot be cited as definitive evidence without replication. SA is used for hypothesis generation, not hypothesis confirmation.
+Substitution analysis (SA) results depend on the language model used. They are not deterministic — the same run can give different results — and cannot be cited as definitive evidence without replication. SA is used for hypothesis generation, not hypothesis confirmation.
 
 ### 4.5 Site Bias
 The CISI component (179 inscriptions) is Mohenjo-daro-only. The Yajnadevam component (2,543) covers 52 sites but with uneven site representation. Site-specific structural patterns may not generalize.

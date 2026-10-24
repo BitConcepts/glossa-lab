@@ -141,6 +141,9 @@ known-first-party = ["glossa_lab", "tests"]
 "glossa_lab/experiments/_legacy/*.py" = ["F821", "F841", "F401", "F601"]
 # Research scripts — intermediate variables kept intentionally for readability
 "scripts/*.py" = ["F841", "F401", "F821", "F823", "F601"]
+# Phase-43 restored scripts — pre-existing May-2026 lint debt, preserved byte-for-byte (see docs/phase43-battery-provenance.md)
+"scripts/phase43_all.py" = ["E401", "F541"]
+"scripts/phase43_part2.py" = ["E401", "F541"]
 # CLI chat tool has long inline strings
 "glossa_chat.py" = ["E501"]
 # Research/decipherment scripts have long Tamil Unicode literals and reference strings

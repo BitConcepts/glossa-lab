@@ -1,0 +1,39 @@
+{
+ "experiment": "spec061-phase423-arm-a-precision",
+ "phase": 423,
+ "spec": "specs/061-arm-a-precision/spec.md",
+ "freeze_digest": "41b1785cf7176a17e1cc8a9982fedcc913a32bfd66735cf13111ab29ba2a39f1",
+ "osf_registration": "https://osf.io/fza8c/",
+ "simulation_label": "SIMULATION OVER RECORDED DATA: this computation resamples Phase-393's recorded site samples; its added inscriptions are resamples of recorded inscriptions, not new data and not data the program holds.",
+ "claim_under_test": "STUDY-SPEC-028/ARM-A",
+ "margin": 0.01,
+ "scenarios": {
+  "scenario_1": {
+   "theta": 0.00878393455594817,
+   "direction": "downward"
+  },
+  "scenario_2": {
+   "theta": 0.015,
+   "direction": "upward"
+  }
+ },
+ "search_frame": {
+  "grid": "integer multiples m = 1..25, step 1",
+  "ceiling_m": 25,
+  "trials_per_grid_point": 199,
+  "draws_per_trial": 199,
+  "permutations_per_draw": 499,
+  "simulation_seed": 20261021,
+  "effect_imposition": "candidate (b): pooled composition with each site's positive-control sign-set columns multiplied by the calibrated boost b and renormalised (DD-061-13)",
+  "qualification": "share resolving >= 0.80",
+  "resolution": "strict exclusion of the 0.01 margin in the scenario's direction (DD-061-2)"
+ },
+ "outcome": "CANNOT BE RUN AS WRITTEN",
+ "headline_paragraph": "The precision computation did not run: gate 0.5 failed (scenario 1: bisection did not reach |A(b) - theta| <= 1e-06 within 100 iterations), and those values may not be supplied at run time. No target quantity was computed.",
+ "fence_sentence": "This computation measures the resolution of a recorded test. It establishes nothing about the ancient world.",
+ "closure": {
+  "gate": "0.5",
+  "detail": "scenario 1: bisection did not reach |A(b) - theta| <= 1e-06 within 100 iterations"
+ },
+ "anchors_sha256_after": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569"
+}

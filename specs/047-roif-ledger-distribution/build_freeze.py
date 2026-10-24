@@ -1,0 +1,545 @@
+#!/usr/bin/env python3
+"""Build the Spec 047 freeze record (freeze.json).
+
+This builder was written at the freeze act of
+2026-10-21 (the draft carried no builder and no
+draft digest: the campaign's drafting wave opens
+claims-first drafts only, and the digest is
+computed over the recovered register exactly
+once, at the freeze - the Spec 035 ordering).
+Run with the Glossa backend venv python from the
+repository root:
+
+    python specs/047-roif-ledger-distribution/build_freeze.py
+
+Writes specs/047-roif-ledger-distribution/freeze.json
+(framework026 build_freeze payload: definition +
+source hashes + environment, digest = SHA-256 of
+the canonical JSON serialisation) and prints the
+digest.
+"""
+from __future__ import annotations
+
+import json
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(REPO / "backend"))
+
+from glossa_lab.framework026 import build_freeze  # noqa: E402
+
+SPEC_DIR = "specs/047-roif-ledger-distribution"
+
+DEFINITION = {
+    "spec": "specs/047-roif-ledger-distribution/spec.md",
+    "freeze_doc": "specs/047-roif-ledger-distribution/freeze.md",
+    "experiment_id": "spec047-roif-ledger-distribution",
+    "register": {
+        "path": "specs/047-roif-ledger-distribution/claims.json",
+        "register_version": "0.7-draft",
+        "claims": 19,
+        "aee_hook_pass": (
+            "PASSED at the freeze act of 2026-10-21 "
+            "under aee 1.5.0: after_specify cleared in "
+            "two adjudicated rounds over the recovered "
+            "register (a loadability recovery from "
+            "0.5-draft to 0.6-draft - the draft's "
+            "free-form evidence kind and "
+            "source_quality labels are not engine "
+            "values and the loader refuses them; 67 "
+            "failure modes over 0.6-draft: 18 "
+            "irreducibility, 27 independence-"
+            "unmodelled, 3 negation-conflict, 19 "
+            "FR-2.3 draft-cap records; 19 draft-cap "
+            "records only over 0.7-draft), after_plan "
+            "and after_tasks clean at first pass; at "
+            "every hook zero correctness failure "
+            "modes and no claim below the 0.70 "
+            "threshold (minimum propagated 0.72); "
+            "the engine outcome word reads iterate "
+            "solely from the draft-cap records (gate "
+            "reading DD-047-16; record in "
+            "specs/047-roif-ledger-distribution/aee/"
+            "freeze-aee-note.md)"
+        ),
+    },
+    "basis": {
+        "adjudication": "specs/047-roif-ledger-distribution/adjudication.md",
+        "decisions": (
+            "DECIDED by the owner on 2026-10-21 (not "
+            "proposals): the runnable-experiments "
+            "campaign plan approved AS WRITTEN "
+            "(decisions E-1, E-2, E-6; requirements "
+            "R-2, R-7) commissions the campaign of "
+            "which design D-09 is member 8; Spec 047 "
+            "is D-09's specification and Asset B's "
+            "builder. Draft decisions DD-047-1 to "
+            "DD-047-7 are recorded in adjudication.md "
+            "section 4 (DD-047-1 and DD-047-2 "
+            "confirmed at the freeze). Freeze "
+            "decisions DD-047-8 to DD-047-16 are "
+            "recorded in adjudication.md section 7: "
+            "the spec's own OSF contract registration "
+            "filed at the freeze under E-1 with the "
+            "Roif-gate reading confirmed (DD-047-8); "
+            "the second corpus layer unused "
+            "(DD-047-9); the permutation seed "
+            "20261021 (DD-047-10); D-10 proceeds under "
+            "its own gates against a frozen-but-thin "
+            "Asset B (DD-047-11); the spine-only "
+            "population confirmed (DD-047-12); the "
+            "all-UNMAPPED case proceeds on measure "
+            "(a) alone under the amended partition "
+            "(DD-047-13); the section 4.3 "
+            "verification pass suffices as the "
+            "classification audit (DD-047-14); "
+            "Phase-406 allocated (DD-047-15); and "
+            "the DD-038-10 AEE gate reading adopted "
+            "as DD-047-16."
+        ),
+    },
+    "design": {
+        "phase": "Phase-406",
+        "act": (
+            "build the site-function classification "
+            "(Asset B) as cited data on the Spec 027 "
+            "gazetteer spine inside step 1, freeze it "
+            "by digest, extract and freeze the "
+            "ledger-sign list from Roif's two "
+            "Academia.edu postings of record, then "
+            "run the distribution test of spec "
+            "section 6 under criteria frozen before "
+            "any site is classified or any "
+            "inscription is counted"
+        ),
+        "claim_under_test": {
+            "id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_001",
+            "record": (
+                "Phase-104 evaluation: verdict "
+                "stays_untested, rule RULE-SITE - the "
+                "falsification condition requires "
+                "site-typology data and no such dataset "
+                "exists in the repository"
+            ),
+            "component_tested": "the distribution component only",
+            "components_not_tested": [
+                "guild authority",
+                "Akkadian influence",
+            ],
+        },
+        "asset_b": {
+            "contract": "spec section 4",
+            "universe": (
+                "the 30 program_site_id clusters of "
+                "the pinned gazetteer (36 "
+                "source-assertion rows); one asset row "
+                "per cluster; corpus sites outside the "
+                "spine are outside the asset by rule"
+            ),
+            "file": "specs/047-roif-ledger-distribution/asset-b/site-functions.jsonl",
+            "row_fields": [
+                "program_site_id",
+                "site_name_as_published",
+                "status",
+                "primary_class",
+                "source_a",
+                "source_b",
+                "notes",
+            ],
+            "classes": [
+                "gateway/border",
+                "administrative",
+                "port/trade",
+                "domestic",
+                "ritual",
+                "mixed/unknown",
+            ],
+            "pooled_class": {
+                "name": "ADMIN-TRADE-GATEWAY",
+                "members": [
+                    "gateway/border",
+                    "administrative",
+                    "port/trade",
+                ],
+            },
+            "contrast_class": ["domestic", "ritual"],
+            "mixed_unknown": (
+                "belongs to neither grouping and never "
+                "enters the primary test"
+            ),
+            "agreement_rule": (
+                "two independent published sources (spec "
+                "section 4.3 defines independence), each "
+                "mapped on its own statement first with "
+                "citation and locator, mapping to the "
+                "identical class, make a row AGREED; a "
+                "row is testable iff AGREED with a class "
+                "other than mixed/unknown; a "
+                "citation-verification pass precedes "
+                "the asset freeze"
+            ),
+            "dispute_statuses": [
+                "DISAGREED",
+                "SINGLE-SOURCE",
+                "NO-SOURCE",
+                "AGREED at mixed/unknown",
+            ],
+            "no_tiebreak": (
+                "no third source is sought, no majority "
+                "rule applies, and no worker adjudicates "
+                "between sources; disagreement is a "
+                "recorded property of the literature"
+            ),
+            "circularity": (
+                "no class, mapping, or status is "
+                "derived from inscription content, sign "
+                "distributions, or per-site inscription "
+                "counts; the build does not consult the "
+                "primary layer's per-site counts; a "
+                "dated attestation naming the worker is "
+                "part of the build record"
+            ),
+            "freeze_point": (
+                "inside step 1, before any step-2 "
+                "counting and before any consumer reads "
+                "a class for a test; the SHA-256 digest "
+                "over the committed file bytes is "
+                "recorded with the row count, the "
+                "testable count, and the per-status "
+                "counts"
+            ),
+            "dependents": (
+                "the D-10 specification pins Asset B by "
+                "this digest in its own inputs and "
+                "re-asserts it at its step 0 (campaign "
+                "R-2); a mismatch stops the consumer "
+                "as INVALID"
+            ),
+            "unsound_rule": (
+                "any later change to a row's status or "
+                "class makes the frozen asset unsound: "
+                "the campaign cluster tripwire fires, "
+                "this spec and its dependents close as "
+                "not-run, and a corrected asset "
+                "requires a successor spec; post-freeze "
+                "changes are dated append-only errata "
+                "that change no status or class"
+            ),
+            "build_gates": {
+                "B1": "coverage: exactly 30 rows, one per spine cluster",
+                "B2": "citation completeness for every row's status",
+                "B3": "the citation-verification pass for every AGREED row",
+                "B4": "a truthful circularity attestation",
+            },
+            "thinness": (
+                "DD-047-1 (confirmed at the freeze): "
+                "the number of testable sites is not a "
+                "build gate; a honestly built thin "
+                "asset freezes, and its thinness is "
+                "adjudicated by the section 6.3 "
+                "classification gate"
+            ),
+        },
+        "ledger_sign_list": {
+            "file": "specs/047-roif-ledger-distribution/asset-b/ledger-signs.jsonl",
+            "source": (
+                "Roif's two Academia.edu postings of "
+                "record (spec section 2.1) and nothing "
+                "else - not the hypothesis-model file, "
+                "not Phase-147, not any summary "
+                "(DD-047-3)"
+            ),
+            "rule": (
+                "a depicted sign or sign class enters "
+                "only if Roif's text explicitly assigns "
+                "it an economic function; each entry "
+                "records the sign, the assigned "
+                "function, a locator in the posting, "
+                "and the mapped sign identifiers "
+                "through the pinned crosswalk"
+            ),
+            "unmapped": (
+                "entries that cannot be mapped are "
+                "recorded UNMAPPED and excluded from "
+                "counting by rule; the extraction "
+                "census is published with the outcome"
+            ),
+            "freeze": (
+                "in the same step-1 freeze act as "
+                "Asset B, under its own SHA-256 digest"
+            ),
+            "all_unmapped": (
+                "DD-047-13: if no entry maps, the "
+                "execution proceeds on measure (a) "
+                "alone under the amended partition in "
+                "the frozen test record; the vacated "
+                "ledger clause is stated openly in the "
+                "outcome record"
+            ),
+        },
+        "step0_gates": {
+            "input_integrity": (
+                "gate 0.1: every section 2 input "
+                "hashes to its freeze-record value; a "
+                "mismatch stops the run as INVALID"
+            ),
+            "spine_reproduction": (
+                "gate 0.2: the pinned gazetteer "
+                "reproduces exactly (36 rows, 30 "
+                "clusters, the frozen cluster list); "
+                "a mismatch stops the run as INVALID"
+            ),
+            "join_census": (
+                "gate 0.3: every primary-layer record "
+                "is accounted for in exactly one of "
+                "joined, non-spine site (listed with "
+                "counts), or no site value; a record "
+                "in no class or two stops the run as "
+                "INVALID"
+            ),
+        },
+        "test": {
+            "population": (
+                "testable sites carrying at least one "
+                "joined inscription in the primary "
+                "layer; testable sites with no joined "
+                "inscription are listed "
+                "NO-CORPUS-COVERAGE and enter neither "
+                "share"
+            ),
+            "join": (
+                "mechanical site-name normalisation "
+                "(lowercase, whitespace and punctuation "
+                "collapsed) against the gazetteer "
+                "cluster names; no fuzzy matching and "
+                "no hand assignment"
+            ),
+            "measures": {
+                "inscription_share_R": (
+                    "the pooled class's share of all "
+                    "inscriptions at test-population "
+                    "sites divided by the pooled class's "
+                    "share of test-population sites"
+                ),
+                "ledger_sign_share_R_ledger": (
+                    "the same ratio over occurrences of "
+                    "the section 5 ledger signs pooled, "
+                    "with per-sign counts reported "
+                    "alongside"
+                ),
+            },
+            "permutation": {
+                "shuffles": 9999,
+                "level": 0.05,
+                "seed": 20261021,
+                "seed_dd": "DD-047-10 (fixed at the freeze, before any count exists)",
+            },
+            "classification_gate": {
+                "min_testable_sites": 12,
+                "empty_side": (
+                    "DD-047-2 (confirmed at the "
+                    "freeze): an empty pooled or "
+                    "contrast side in the test "
+                    "population fires the same gate"
+                ),
+                "outcome": (
+                    "INCONCLUSIVE - the classification "
+                    "is the finding, reported with its "
+                    "full disagreement list; no "
+                    "distribution quantity is computed"
+                ),
+            },
+            "criteria": {
+                "supported": "R >= 1.5 and p < 0.05 and R_ledger > 1.0",
+                "not_supported": "R <= 1.0, or the permutation test does not reject (p >= 0.05)",
+                "inconclusive": "every remaining case: 1.0 < R < 1.5, or R >= 1.5 with p < 0.05 but R_ledger <= 1.0",
+            },
+            "all_unmapped_partition": (
+                "DD-047-13: if no ledger entry maps, "
+                "R_ledger is not computed: SUPPORTED "
+                "iff R >= 1.5 and p < 0.05; NOT "
+                "SUPPORTED iff R <= 1.0 or p >= 0.05; "
+                "INCONCLUSIVE otherwise; the vacated "
+                "ledger clause is stated openly in "
+                "the outcome record"
+            ),
+            "sensitivities": (
+                "each source alone, and the five "
+                "largest sites; reported beside the "
+                "primary, never verdict-changing"
+            ),
+            "second_corpus_layer": (
+                "DD-047-9: unused - the pinned "
+                "primary layer is the sole "
+                "verdict-bearing corpus"
+            ),
+            "d10_against_thin_asset": (
+                "DD-047-11: D-10 proceeds under its "
+                "own gates against a frozen-but-thin "
+                "Asset B; it closes not-run only if "
+                "the asset fails to build or is found "
+                "unsound"
+            ),
+            "classification_audit": (
+                "DD-047-14: the section 4.3 "
+                "verification pass suffices; no "
+                "separate audit is required, and its "
+                "record is published in the step-1 "
+                "outcome"
+            ),
+        },
+        "roif_gate": (
+            "campaign R-7: this spec's records are "
+            "internal; nothing derived from its "
+            "results is surfaced on any public "
+            "surface; campaign reporting names this "
+            "member only as 'executed - held under "
+            "the Roif gate', with no result content; "
+            "publication of results is the owner's "
+            "separate GATE act, with the section 2.1 "
+            "citations carried in the published "
+            "text; the OSF registration filed at "
+            "this freeze carries the frozen contract "
+            "(a design text) only and clears nothing "
+            "under the gate"
+        ),
+        "fences": (
+            "the Phase-104 record stands unedited "
+            "and this spec's outcome appends to the "
+            "claim's record as a dated entry; "
+            "Phase-147 is not evidence for or "
+            "against the distribution component; the "
+            "anchors file is asserted byte-identical "
+            "before and after any execution; Spec "
+            "039's period-assignment product is not "
+            "an input - a period label is not a site "
+            "function"
+        ),
+        "execution_gate": (
+            "Not satisfied at the freeze of "
+            "2026-10-21: execution runs as Phase-406 "
+            "only after this freeze has merged, the "
+            "OSF contract registration's approval act "
+            "has completed (the parent's approval "
+            "click on OSF's admin notification), and "
+            "a separate execution order is given; no "
+            "site was classified, no ledger-sign "
+            "list was extracted, and nothing was "
+            "counted at the freeze itself"
+        ),
+    },
+    "inputs": {
+        "gazetteer": {
+            "file": "data/movement/gazetteer_rows.jsonl",
+            "sha256": "5ac76a3031121a61fa39f87b1d2760855374d171ddd036988fee2820dca9b8b6",
+            "rows": 36,
+            "program_sites": 30,
+        },
+        "primary_corpus_layer": {
+            "file": "backend/glossa_lab/data/yajnadevam_inscriptions.csv",
+            "sha256": "c02e3d7bb74cf5abb11cc94f88d8d469e6acc5d6fad4b7153c02c43428f58d98",
+            "records": 5679,
+            "note": (
+                "the site-attributed layer of Specs "
+                "027/028, with site and sign-sequence "
+                "columns as held"
+            ),
+        },
+        "sign_crosswalk": {
+            "file": "data/crosswalks/yajnadevam_to_parpola_crosswalk.csv",
+            "sha256": "e44b8b550155e3d071e7fc5f94e8c98e9755de437c99e2f5027e3d647b2950a2",
+        },
+        "phase104_evaluation": {
+            "file": "glossa-indus/reports/phase104_claims_evaluation.json",
+            "sha256": "2d0b83e8055a04b96635007054cfadde472f605dc7e5b249a61c8f9ea89b858d",
+            "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_001",
+            "verdict": "stays_untested",
+            "rule": "RULE-SITE",
+        },
+        "citation_record": {
+            "file": "backend/scripts/seed_citations.py",
+            "sha256": "39d28112e21151ccba0f5a370801c78d87575c6ff61695bb8fafc5c14c08b8f9",
+            "key": "roif_indus_ledger",
+            "fields": (
+                "authors 'Roif, A.', venue "
+                "Academia.edu, year field empty, DOI "
+                "empty, URL field carrying only the "
+                "Academia.edu root - no document-level "
+                "identifier"
+            ),
+        },
+        "roif_source_of_record": {
+            "postings": [
+                "Roif, Avishai (2025). Deciphering the Indus Valley Script: A Phonetic-Mnemonic Akkadian Shorthand Approach. Academia.edu, published 12 June 2025. https://www.academia.edu/129921039/Deciphering_the_Indus_Valley_Script_A_Phonetic_Mnemonic_Akkadian_Shorthand_Approach",
+                "Roif, Avishai (2025). Indus Valley Script deciphered - From Mythology to History using the Akkadian shorthand approach. Academia.edu, published 2 August 2025. https://www.academia.edu/143222807/Indus_Valley_Script_deciphered_From_Mythology_to_History_using_the_Akkadian_shorthand_approach",
+            ],
+            "note": (
+                "the program's held manuscript PDF "
+                "does not survive (2026-10-08 purge); "
+                "the two postings are the section 5 "
+                "extraction source of record (DD-047-3)"
+            ),
+        },
+        "hypothesis_model_file": {
+            "file": "glossa-indus/hypotheses/models/roif_guild_ledger.yaml",
+            "sha256": "c5f08461cc1a37b91cb5a17981e2e4d7c02958312e1e7b6b9a49618a154c9586",
+            "posture": (
+                "background only; its source metadata "
+                "is unreliable (a malformed "
+                "document_id and a doi matching "
+                "neither posting); never an extraction "
+                "source (spec section 2.2)"
+            ),
+        },
+        "anchors": {
+            "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+            "sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+            "posture": "this spec moves no anchor; the file is asserted byte-identical before and after any execution",
+        },
+        "spec027_spec": {
+            "file": "specs/027-movement-culture-language/spec.md",
+            "sha256": "7fff5d5a90b0af5697afa17a631e6901702b521f7e61c3c2bb444f08e369f9b0",
+        },
+        "pin_verification": (
+            "at the freeze of 2026-10-21 every pin "
+            "above was re-derived by two independent "
+            "routes (contents-API raw and git-blob) "
+            "at main "
+            "83b6a563402b02809ab1143848e4dd2c0cfd9de3; "
+            "the two routes agree byte-for-byte on "
+            "every file and every hash equals its "
+            "pin (freeze.md section 2)"
+        ),
+    },
+    "environment": {
+        "python": "3.12.3",
+        "runner": "backend (venv glossa-lab)",
+        "aee": "1.5.0 (adopted environment; package pinned >=1.5.0,<1.6)",
+        "specify": "1.0.10",
+    },
+}
+
+SOURCES = [
+    f"{SPEC_DIR}/freeze.md",
+    f"{SPEC_DIR}/spec.md",
+    f"{SPEC_DIR}/claims.json",
+    f"{SPEC_DIR}/adjudication.md",
+    f"{SPEC_DIR}/aee/freeze-aee-note.md",
+    f"{SPEC_DIR}/build_freeze.py",
+    "backend/tests/test_spec047_freeze.py",
+]
+
+
+def main() -> int:
+    record = build_freeze(DEFINITION, REPO, SOURCES)
+    out = REPO / SPEC_DIR / "freeze.json"
+    out.write_text(
+        json.dumps(record, indent=1) + "\n", encoding="utf-8"
+    )
+    print(record["digest"])
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

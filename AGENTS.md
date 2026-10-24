@@ -8,7 +8,7 @@ Read this file at the start of every session before making any changes.
 
 At the end of every session, make sure all changes are committed and pushed:
 
-`ash
+`^Hash
 git add -A && git commit -m "chore: session close" && git push
 `
 
@@ -46,13 +46,22 @@ was retired 2026-10-05 and is no longer active tooling.
 
 **Author:** Tristen Kyle Pierson / BitConcepts LLC
 
-**Current version:** v4 (June 2026)
+**Current version:** v8 (October 2026 — v7 plus the F2 Zipf
+qualification in §2.1 (qualify-in-place), the new §2.1.1 reporting
+the Spec 068 registered frequency-curve test (COMPARISON
+UNINFORMATIVE), the matching §3.10 qualification of Nair's Zipf
+slope, and the Yadav et al. (2010) entry in §8; the Spec 072
+fish-family insert is filed HELD, not integrated; §3.32 restoration
+draft still HELD pending Roif's reply; source `.tex` and
+regenerated PDF; red-team round 1 adjudicated (44 sustained / 76 in part / 3 not sustained / 2 moot of 125) and revised 2026-10-23 — R-01..R-45 applied, PDF rebuilt (23 pp.); red-team round 2 adjudicated (28 sustained / 29 sustained in part / 1 moot of 58; positives P1–P5 confirmed) and revised 2026-10-23 — R2R-01..R2R-58 applied (R2R-06 moot, no replacement), PDF rebuilt (27 pp.); red-team round 3 adjudicated (12 sustained / 32 sustained in part / 9 moot of 53; probes R3X-1–R3X-3 sustained, R3X-4 not sustained; positives 36/36 confirmed) and revised 2026-10-23 — R3R-01..R3R-X3 applied, PDF rebuilt (30 pp.); red-team round 4 adjudicated (8 sustained / 9 sustained in part / 20 moot / 1 not sustained of 38; positives 68/68 confirmed; loop NOT closed at round 4 per the adjudication's §D) and revised 2026-10-23 — R4R-01..R4R-21 applied, PDF rebuilt (31 pp.); red-team round 5 adjudicated (5 sustained / 6 sustained in part / 25 moot / 2 not sustained of 38; positives 87/87 confirmed; loop NOT closed at round 5 per the adjudication's §D) and revised 2026-10-23 — R5R-01..R5R-11 applied, PDF rebuilt (32 pp.); red-team round 6 adjudicated (5 sustained / 4 sustained in part / 28 moot / 2 not sustained of 39; positives 74/74 confirmed; loop NOT closed at round 6 per the adjudication's §D) and revised 2026-10-23 — R6R-01..R6R-10 applied, PDF rebuilt (32 pp.); red-team round 7 adjudicated (3 sustained / 1 sustained in part / 34 moot / 2 not sustained of 40; positives 48/48 confirmed; loop NOT closed at round 7 per the adjudication's §D) and revised 2026-10-23 — R7R-01..R7R-04 applied, PDF rebuilt (32 pp.); red-team round 8 adjudicated 2026-10-23 (0 sustained / 0 sustained in part / 38 moot / 2 not sustained of 40; positives 44/44 confirmed; §B empty — no revision) and the **red-team loop CLOSED at round 8**. Final state: 32 pp., PDF SHA-256 6d5b1e7fc7627cfc5f861f8f285c6a765fee7eda31f710eed3c8cd38633b2ead, word count 19,193, §6 pins revision commit 822f655d (pin advanced from 649e0e75 on 2026-10-23 for the title-block DOI correction to the concept DOI — see the post-closure correction entry in the v8 version note). v8 is the current build, awaiting the owner's deposit act (owner's read + deposit executed separately by the owner; nothing submitted or deposited))
 
 **Source:** `glossa-corpus/indus/pierson_2026_indus_decipherment.tex`
 
-**PDF:** `glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v4.pdf`
+**PDF:** `glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v8.pdf`
+(the v8 PDF is the current compiled artifact, regenerated 2026-10-23
+with xelatex — see `docs/research/PREPRINT_VERSIONING.md`)
 
-**DOI:** https://doi.org/10.5281/ZENODO.20414696 (Zenodo)
+**DOI:** https://doi.org/10.5281/zenodo.20379070 (Zenodo concept DOI — resolves to the latest version)
 
 **SSRN:** Submission ID 6827038 (check status)
 
@@ -100,3 +109,19 @@ for querying and controlling the backend without manual API calls:
 The server connects to the running backend at `GLOSSA_BASE_URL`
 (default: `http://127.0.0.1:8001`). Tools return clean JSON error objects when
 the backend is unreachable — they never crash the MCP process.
+
+## Research check (paper-search MCP)
+
+A RESEARCH-CHECK stage (spec 025) audits claim dossiers against the
+scholarly literature **before** AEE scoring/adjudication, using the
+shared paper-search-mcp server (arXiv, Crossref, Semantic Scholar,
+OpenAlex, CORE, …):
+
+- **Client:** `backend/glossa_lab/paper_search.py` (stdio client;
+  spawns the server from `~/workspace/venvs/paper-search-mcp`).
+- **Stage:** `backend/glossa_lab/research_check.py` — writes advisory
+  sidecar records to `glossa-indus/claims/research_checks/`; never
+  modifies a claim, score, or status, and never adjudicates a
+  decipherment.
+- **Usage + binding audit protocol:** `docs/paper-search-mcp.md`.
+  Sci-Hub is hard-off in the client.

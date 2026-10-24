@@ -27,12 +27,12 @@ evidential basis of the preprint's headline numbers:
    test.** The project's simulated-annealing (SA) machinery —
    historically the source of many anchor readings and of the
    "SA agrees 55%"-style support claims — was subjected to a
-   pre-registered held-out test (spec 005). Under every lever
+   pre-registered held-out test — a test on data the method was not tuned on, with the rules fixed in advance (spec 005). Under every lever
    (constraint terms removed, corpus pooled +32%, a 10× scaled
    run), held-out anchor agreement was **0.000** (0/115 folds;
-   0/275 stability-supported signs at scale). Controls were
-   non-discriminating: a Sanskrit language model (z=60.87) and a
-   scrambled null (z=16.48) also recovered 0.000 held-out. The SA
+   0/275 stability-supported signs at scale). The control runs could not tell the methods apart
+   (they were non-discriminating): a Sanskrit language model (z=60.87) and a
+   scrambled control (the null; z=16.48) also recovered 0.000 held-out. The SA
    objective therefore carries no information about sign values,
    and no SA-derived or SA-confirmed reading can be cited as
    evidenced by SA. (Artifacts: `reports/phase107_*.json`,
@@ -40,9 +40,10 @@ evidential basis of the preprint's headline numbers:
 2. **Phase-108 — provenance audit of all 287 anchors.** Each
    anchor's chain of custody was classified from in-repo records.
    Headline findings: **210/287 anchors are strictly SA-free**;
-   **44 HIGH anchors are SA load-bearing** (24 SA_DERIVED + 20
-   SA_CONFIRMED_ONLY); and a **116-anchor cohort** traced to
-   research-loop heuristic tables (bulk gloss assignments)
+   **44 HIGH anchors are SA load-bearing** — their HIGH standing
+   depends on SA (24 SA_DERIVED + 20 SA_CONFIRMED_ONLY); and a
+   **116-anchor cohort** traced to research-loop heuristic tables
+   (bulk gloss assignments — sound values assigned in bulk from rule-of-thumb tables)
    promoted in June 2026 through an endpoint named
    `/staging/verify-sa` that performs no SA test. (Artifacts:
    `reports/phase108_provenance_summary.md`,
@@ -51,8 +52,10 @@ evidential basis of the preprint's headline numbers:
 3. **Phase-109 — follow-through (this package).** Under
    pre-registered rules (spec 007): the 116-anchor staging cohort
    was re-reviewed — **112 prior sourced readings restored**
-   (109 `kur`/LOW from Phase-111 allograph resolution; M042
-   `vaN`, M046 `kaL`, M108 `kaL` at HIGH from Phase-89 DEDR),
+   (109 `kur`/LOW from Phase-111 allograph resolution —
+   deciding which sign shapes are variants of one sign; M042
+   `vaN`, M046 `kaL`, M108 `kaL` at HIGH from Phase-89 DEDR work,
+   the Dravidian Etymological Dictionary),
    **1 kept** on independent Parpola crosswalk support (M222),
    **3 demoted** (H003; M231, M252 — whose overwritten priors
    were themselves SA-modal readings). The 44 SA-lineage HIGH

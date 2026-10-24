@@ -439,12 +439,47 @@ def test_pred_register_document_untouched():
     # provenance reconciliation note (insertions
     # only, no existing entry altered), as Spec
     # 038's register-handling claim (F038-C10)
-    # prescribes for the authorised change. Any
-    # further drift from this hash is unauthorised.
+    # prescribes for the authorised change. It was
+    # advanced an eighth time, by name, for the
+    # owner-ordered registration append of
+    # 2026-10-21 under campaign ruling E-4: the
+    # PRED-2026-012 entry added to register
+    # section 3 and its dated note in section 6
+    # (the registry-frame successor to
+    # PRED-2026-007, governed by Spec 043;
+    # insertions only, no existing entry altered).
+    # It was advanced a ninth time, by name, for
+    # the owner-ordered execution append of
+    # 2026-10-21 under Spec 043 / Phase-410: the
+    # dated section 6 outcome entry recording
+    # PRED-2026-012's step-0 closure at check
+    # 0.3 (PROVENANCE - CANNOT BE RUN AS WRITTEN,
+    # unscored; the section 3 entry left standing
+    # with its Outcome PENDING, and
+    # PRED-2026-007's standing PARTIALLY
+    # CONFIRMED untouched; insertions only, no
+    # existing entry altered), as Spec 043's
+    # register-handling claim (F043-C14)
+    # prescribes for the authorised change.
+    # It was advanced a tenth time, by name, for
+    # the owner-ordered appends of 2026-10-22: the
+    # dated section 6 adjudication note recording
+    # the ShaktiOSindia corpus as NON-QUALIFYING
+    # for PRED-2026-001, PRED-2026-002 and
+    # PRED-2026-003 under Spec 018's frozen
+    # evaluability matrix (no evaluation run; the
+    # three predictions remain PENDING), and the
+    # dated section 6 owner note recording
+    # PRED-2026-012's block as documentary, with
+    # no documents hunt commissioned (the
+    # prediction remains PENDING, unscored;
+    # insertions only, no existing entry altered).
+    # Any further drift from this hash is
+    # unauthorised.
     digest = hashlib.sha256(
         (_REPO_ROOT / "docs" / "PREDICTION_REGISTER.md").read_bytes()
     ).hexdigest()
-    assert digest == "f281bd674d7651e9c13351bad7cb321bd55000cd3f087a38276a4451fbbf7ef3"
+    assert digest == "881f5956e21b458952760bb31c283c7d7682a831818eda0827e11426ba353e29"
 
 
 # ── Script contract: shapes, states, idempotency ─────────────────────────

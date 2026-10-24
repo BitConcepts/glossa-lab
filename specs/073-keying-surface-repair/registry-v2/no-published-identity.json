@@ -1,0 +1,21 @@
+{
+ "spec": "073",
+ "phase": 436,
+ "entries": [
+  {
+   "icit_code": "999",
+   "attestation_strata": [
+    "documented"
+   ],
+   "disposition": "NO PUBLISHED IDENTITY",
+   "sources_searched": [
+    "CISI sign list as digitized (mayig CISI digitization, upstream commit ad2f1e218a34b8c33c57de0d6cb8d99272765bbb): no entry under this number",
+    "Fuls 2023, A Catalog of Indus Signs, Ch. 2.3 sign list (printed pp. 25-36, read page by page from renders of the held volume): no sign presented under this number",
+    "Fuls 2023, A Catalog of Indus Signs, sections 2.4 and 2.5 concordances: no row carries this number",
+    "Fuls 2023, Corpus of Indus Inscriptions: no sign list entry under this number",
+    "CISI 3.1: the volume's basic tables carry no sign transcriptions and no sign list"
+   ],
+   "note": "attested in the corpus frame but stated in no ruled published sign list in hand; the token is a corpus placeholder in the ICIT tradition (compare token 000, gated out of sign analysis at intake) and is named here rather than dropped"
+  }
+ ]
+}

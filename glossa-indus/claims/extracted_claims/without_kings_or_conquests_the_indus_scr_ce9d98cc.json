@@ -1,7 +1,7 @@
 {
   "document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
   "title": "",
-  "extraction_date": "2026-10-13T12:11:33.525130",
+  "extraction_date": "2026-10-21T15:29:26.260888",
   "total_claims": 9,
   "auto_extracted": 9,
   "manually_curated": 5,
@@ -15,7 +15,7 @@
       "claim_status": "contradicted",
       "testability": "directly_testable",
       "confidence_in_source": 0.7,
-      "extracted_at": "2026-10-13T12:11:33.441248",
+      "extracted_at": "2026-10-21T15:29:26.158672",
       "stage": "checked",
       "stage_source": "transition-service:stage_history[1]",
       "stage_as_of": "2026-10-13T10:18:18.548312+00:00",
@@ -80,7 +80,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-10-13T12:11:33.459041",
+      "extracted_at": "2026-10-21T15:29:26.172823",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_statisti_0002",
       "stage_as_of": "2026-10-12",
@@ -98,7 +98,19 @@
       ],
       "verified_unexplained": false,
       "proposition_fingerprint": "a4874349e0cc0ba23b711f10c78f60372639c2dc6f352165b48d4a9e44272469",
-      "merged_into": "ancient_writing_and_modern_technologies_51831ac9_statisti_0004"
+      "merged_into": "ancient_writing_and_modern_technologies_51831ac9_statisti_0004",
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "spec025-material-audit-note",
+        "proposal": "P8",
+        "note": "Source identification (spec-025 material audit, 2026-10-22): the 'Positional Analysis' stub dossiers are all Andreas Fuls's work - 'Positional Analysis of Indus Signs', Voprosi Epigrafiki 7(1):253-275 (2013), reprinted as Wells & Fuls 2015 Appendix II (DOI 10.2307/j.ctvr43jmf.16), and Fuls 2023, Catalog of Indus Signs, ch. 3 (FULL TEXT, all three identifications).",
+        "evidence": [
+          "specs/025-paper-search-research-check/audit-2026-10-22/raw/findings_W4.md",
+          "specs/025-paper-search-research-check/audit-2026-10-22/correction_proposals.md"
+        ],
+        "evidence_level": "FULL TEXT",
+        "effect": "No claim status, stage, anchor, or score is changed by this note."
+      }
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0003",
@@ -109,7 +121,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-10-13T12:11:33.467819",
+      "extracted_at": "2026-10-21T15:29:26.183089",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0003",
       "stage_as_of": "2026-10-12",
@@ -138,7 +150,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-10-13T12:11:33.468307",
+      "extracted_at": "2026-10-21T15:29:26.184648",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0004",
       "stage_as_of": "2026-10-12",
@@ -169,7 +181,7 @@
       "glossa_lab_evidence": "Phase-43 Batch 5: formula_rate=35.5% vs null 0.6% (59x lift). 20 TERMINAL_STRONG + 40 INITIAL_STRONG signs. [STRUCTURALLY SUPPORTED]",
       "author": "Hunt, Treasure A.",
       "confidence_in_source": 0.75,
-      "extracted_at": "2026-10-13T12:11:33.516326",
+      "extracted_at": "2026-10-21T15:29:26.248495",
       "stage": "explained",
       "stage_source": "transition-service:stage_history[1]",
       "stage_as_of": "2026-10-13T10:12:00+00:00",
@@ -207,6 +219,18 @@
         "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
         "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
         "explanation_text": "The program tested the shape of this claim, and the shape held up. In the test recorded on the claim (the positional test in the program's analysis files), 805 of 2,267 inscriptions of three or more signs followed the opening-middle-ending structure - 35.5 percent, against 0.6 percent expected by chance, a lift of about 59 times. The test also found the position-strong signs the pattern needs: 40 signs that strongly prefer the opening, 20 that strongly prefer the ending, and 61 for the middle. That is why the status is partially supported. The limit of the support is written in the test's own verdict, and it should be quoted rather than softened: the pattern is 'consistent with both Hunt model and Dravidian suffix model. Cannot distinguish between them without visual sign classification.' In other words, the check shows a three-part positional pattern exists. It does not show that the parts carry the meanings Hunt assigns them, and the same pattern is equally consistent with a rival account in which the closing signs are simply word endings in a language."
+      },
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "spec025-material-audit-note",
+        "proposal": "P8",
+        "note": "Prior-art note (spec-025 material audit, 2026-10-22): a three-part positional structure for Indus texts is published prior art - Wells 2015, ch. 3 (pp. 24-25): 'Patterned texts consist of three fields (Initial, Medial and Terminal)' (FULL TEXT); behind it Sinha et al. 2010 (arXiv:1005.4997, FULL TEXT), Yadav 2009, and Fuls's seven positional classes (explicitly syntactic, not semantic), with roots in Mahadevan 1977 and Kondratov 1976. What the Hunt document adds is semantic labels on that structure, not the structure itself.",
+        "evidence": [
+          "specs/025-paper-search-research-check/audit-2026-10-22/raw/findings_W4.md",
+          "specs/025-paper-search-research-check/audit-2026-10-22/correction_proposals.md"
+        ],
+        "evidence_level": "FULL TEXT",
+        "effect": "No claim status, stage, anchor, or score is changed by this note."
       }
     },
     {
@@ -218,7 +242,7 @@
       "testability": "indirectly_testable",
       "falsification_condition": "If sign distributions correlate with palatial/royal contexts rather than civic/infrastructure contexts.",
       "confidence_in_source": 0.65,
-      "extracted_at": "2026-10-13T12:11:33.516326",
+      "extracted_at": "2026-10-21T15:29:26.248495",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_002",
       "stage_as_of": "2026-10-12",
@@ -266,7 +290,7 @@
       "falsification_condition": "Faunal signs not enriched in initial position above random baseline.",
       "glossa_lab_evidence": "Phase-43: 40 INITIAL_STRONG signs identified; faunal-initial enrichment not yet sign-classified [STRUCTURAL SUPPORT ONLY]",
       "confidence_in_source": 0.7,
-      "extracted_at": "2026-10-13T12:11:33.516326",
+      "extracted_at": "2026-10-21T15:29:26.248495",
       "stage": "explained",
       "stage_source": "transition-service:stage_history[1]",
       "stage_as_of": "2026-10-13T10:12:00+00:00",
@@ -304,6 +328,18 @@
         "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
         "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
         "explanation_text": "The record's own evidence sentence gives the honest position, and the draft keeps it intact: '40 INITIAL_STRONG signs identified; faunal-initial enrichment not yet sign-classified [STRUCTURAL SUPPORT ONLY]'. Unpacked: the program's positional work (Phase-43) did find 40 signs that strongly prefer the opening position of inscriptions. That is the support. But nobody has yet checked whether those 40 opening signs are in fact the animal signs - the program's own test file notes it 'cannot directly classify faunal/celestial without visual catalog crosswalk'. So the claim joins two halves: a positional half that is supported, and an animal half that has never been tested at all. The status partially supported is the average of those two halves, and it should never be quoted without the second half's absence attached."
+      },
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "spec025-material-audit-note",
+        "proposal": "P8",
+        "note": "Prior-art note (spec-025 material audit, 2026-10-22): the initial-position structure this characterisation rests on is published prior art (Wells 2015 ch. 3; Sinha et al. 2010; Yadav 2009; Fuls's positional classes). The faunal-initial characterisation itself has no published support in the texts the audit read (FULL TEXT).",
+        "evidence": [
+          "specs/025-paper-search-research-check/audit-2026-10-22/raw/findings_W4.md",
+          "specs/025-paper-search-research-check/audit-2026-10-22/correction_proposals.md"
+        ],
+        "evidence_level": "FULL TEXT",
+        "effect": "No claim status, stage, anchor, or score is changed by this note."
       }
     },
     {
@@ -321,7 +357,7 @@
       "testability": "directly_testable",
       "falsification_condition": "Celestial signs not enriched in terminal position above random baseline.",
       "confidence_in_source": 0.7,
-      "extracted_at": "2026-10-13T12:11:33.516326",
+      "extracted_at": "2026-10-21T15:29:26.248495",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004",
       "stage_as_of": "2026-10-12",
@@ -349,6 +385,18 @@
         "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
         "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
         "explanation_text": "No check has ever run on this claim. What exists on the record is the source document's own assertion, plus an automatic score computed over the record's text. The program's own evaluation note is explicit that such scores are consistency signals only and no verdict rests on them. The claim therefore stands at the first stage, created: it has been written down, and nothing more has happened to it. Phase-104 gave the precise reason, and it is a data gap, not a failed test: the claim's falsifier requires a defined class of celestial signs, and no such classification exists in the repository's data. The in-repo sign-role classes are ending-marker, classifier-prefix, person-or-owner and possible-person - none of them says which signs are sky signs. Terminal enrichment for the class therefore cannot even be computed. This is the one part of Hunt's three-part scheme where not even the positional shadow of the claim has been measured."
+      },
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "spec025-material-audit-note",
+        "proposal": "P8",
+        "note": "Prior-art note (spec-025 material audit, 2026-10-22): the terminal-position structure this characterisation rests on is published prior art (Wells 2015 ch. 3; Sinha et al. 2010; Yadav 2009; Fuls's positional classes). The celestial-terminal characterisation itself has no published support in the texts the audit read (FULL TEXT).",
+        "evidence": [
+          "specs/025-paper-search-research-check/audit-2026-10-22/raw/findings_W4.md",
+          "specs/025-paper-search-research-check/audit-2026-10-22/correction_proposals.md"
+        ],
+        "evidence_level": "FULL TEXT",
+        "effect": "No claim status, stage, anchor, or score is changed by this note."
       }
     },
     {
@@ -360,7 +408,7 @@
       "testability": "indirectly_testable",
       "falsification_condition": "If the 24 clusters do not correspond to statistically distinct positional/co-occurrence profiles.",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-10-13T12:11:33.516326",
+      "extracted_at": "2026-10-21T15:29:26.248495",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_005",
       "stage_as_of": "2026-10-12",

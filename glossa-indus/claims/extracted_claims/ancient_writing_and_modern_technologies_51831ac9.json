@@ -1,7 +1,7 @@
 {
   "document_id": "ancient_writing_and_modern_technologies_51831ac9",
   "title": "",
-  "extraction_date": "2026-10-13T12:11:32.019423",
+  "extraction_date": "2026-10-21T15:29:24.790855",
   "total_claims": 4,
   "auto_extracted": 4,
   "manually_curated": 0,
@@ -15,20 +15,20 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-10-13T12:11:31.937804",
+      "extracted_at": "2026-10-21T15:29:24.384311",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
       "stage_as_of": "2026-10-12",
       "stage_history": [
         {
-          "from_stage": null,
-          "to_stage": "created",
-          "actor": "spec029-phase-d-restaging-migration",
-          "timestamp": "2026-10-12",
-          "evidence_refs": [
+        "from_stage": null,
+        "to_stage": "created",
+        "actor": "spec029-phase-d-restaging-migration",
+        "timestamp": "2026-10-12",
+        "evidence_refs": [
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0001"
           ],
-          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ancient_writing_and_modern_technologies_51831ac9_sign_val_0001; no pre-existing field altered."
+        "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ancient_writing_and_modern_technologies_51831ac9_sign_val_0001; no pre-existing field altered."
         }
       ],
       "verified_unexplained": false,
@@ -43,6 +43,19 @@
         "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
         "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
         "explanation_text": "This record is a fragment, and the draft says so rather than dressing it up. The extraction pulled a single cell from a table in the source document: a sign number and a proposed value.  No check has ever run on it. The program's Phase-104 evaluation examined the record and stopped at the door: the sign number is cited without stating which sign list it belongs to, no matching entry was found in the repository's own crosswalk registry (which holds 86 numeric sign IDs), and the record carries no falsification condition - nothing that states what result would count against it. As written, the fragment is not a testable claim; it is a pointer at a table in a book."
+      },
+      "first_check": {
+        "spec": "055",
+        "phase": "Phase-414",
+        "date": "2026-10-21",
+        "actor": "spec055-phase414-execution",
+        "kind": "first-check (identification + numeral-behaviour test)",
+        "identification": "IDENTIFIED \u2014 the source document's sign list is named from its own text as the extended Wells (2011, 2015) sign list of 702 distinct signs, and the drawn sign its number 900 labels is matched by drawn form to crosswalk registry row P154 (Mahadevan 287); the registry's W900 cell on that row was not used as the identification (F055-C07). Recovery record: specs/055-sign900-numeral/source-table-recovery.json (schema glossa.source-table-recovery/1).",
+        "outcome": "NOT NUMERAL-LIKE",
+        "wording": "The sign that Fuls's paper numbers 900, identified in Spec 055's recovery record as P154, does not behave as a numeral sign behaves in the pinned strict corpus: on 3 of the three frozen measures it sits inside the range of frequency-matched ordinary signs. The numeral reading the fragment carries is contradicted at the behaviour stage. The identification itself stands as recovered; what fails is the behaviour the reading predicts.",
+        "record": "specs/055-sign900-numeral/outcome.md",
+        "delivery": "specs/055-sign900-numeral/source-table-recovery.json",
+        "note": "No outcome of Spec 055 establishes the value six. Design D-16 does not join the campaign on this recovery (decision E-7); the sign-700 statements are located by locator only in the recovery record."
       }
     },
     {
@@ -54,20 +67,20 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-10-13T12:11:31.937854",
+      "extracted_at": "2026-10-21T15:29:24.384376",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
       "stage_as_of": "2026-10-12",
       "stage_history": [
         {
-          "from_stage": null,
-          "to_stage": "created",
-          "actor": "spec029-phase-d-restaging-migration",
-          "timestamp": "2026-10-12",
-          "evidence_refs": [
+        "from_stage": null,
+        "to_stage": "created",
+        "actor": "spec029-phase-d-restaging-migration",
+        "timestamp": "2026-10-12",
+        "evidence_refs": [
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0002"
           ],
-          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ancient_writing_and_modern_technologies_51831ac9_sign_val_0002; no pre-existing field altered."
+        "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ancient_writing_and_modern_technologies_51831ac9_sign_val_0002; no pre-existing field altered."
         }
       ],
       "verified_unexplained": false,
@@ -93,20 +106,20 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-10-13T12:11:31.937864",
+      "extracted_at": "2026-10-21T15:29:24.384383",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
       "stage_as_of": "2026-10-12",
       "stage_history": [
         {
-          "from_stage": null,
-          "to_stage": "created",
-          "actor": "spec029-phase-d-restaging-migration",
-          "timestamp": "2026-10-12",
-          "evidence_refs": [
+        "from_stage": null,
+        "to_stage": "created",
+        "actor": "spec029-phase-d-restaging-migration",
+        "timestamp": "2026-10-12",
+        "evidence_refs": [
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0003"
           ],
-          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ancient_writing_and_modern_technologies_51831ac9_sign_val_0003; no pre-existing field altered."
+        "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ancient_writing_and_modern_technologies_51831ac9_sign_val_0003; no pre-existing field altered."
         }
       ],
       "verified_unexplained": false,
@@ -132,30 +145,30 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-10-13T12:11:31.981035",
+      "extracted_at": "2026-10-21T15:29:24.545829",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_statisti_0004",
       "stage_as_of": "2026-10-12",
       "stage_history": [
         {
-          "from_stage": null,
-          "to_stage": "created",
-          "actor": "spec029-phase-d-restaging-migration",
-          "timestamp": "2026-10-12",
-          "evidence_refs": [
+        "from_stage": null,
+        "to_stage": "created",
+        "actor": "spec029-phase-d-restaging-migration",
+        "timestamp": "2026-10-12",
+        "evidence_refs": [
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_statisti_0004"
           ],
-          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ancient_writing_and_modern_technologies_51831ac9_statisti_0004; no pre-existing field altered."
+        "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ancient_writing_and_modern_technologies_51831ac9_statisti_0004; no pre-existing field altered."
         }
       ],
       "verified_unexplained": false,
       "proposition_fingerprint": "a4874349e0cc0ba23b711f10c78f60372639c2dc6f352165b48d4a9e44272469",
       "evidence_instances": [
         {
-          "claim_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb_statisti_0001",
-          "source_document_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb",
-          "source_file": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb",
-          "record": {
+        "claim_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb_statisti_0001",
+        "source_document_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb",
+        "source_file": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb",
+        "record": {
             "claim_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb_statisti_0001",
             "source_document_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb",
             "claim_type": "statistical_claim",
@@ -186,10 +199,10 @@
           }
         },
         {
-          "claim_id": "positional_analysis_of_indus_signs_a2bedc93_statisti_0001",
-          "source_document_id": "positional_analysis_of_indus_signs_a2bedc93",
-          "source_file": "positional_analysis_of_indus_signs_a2bedc93",
-          "record": {
+        "claim_id": "positional_analysis_of_indus_signs_a2bedc93_statisti_0001",
+        "source_document_id": "positional_analysis_of_indus_signs_a2bedc93",
+        "source_file": "positional_analysis_of_indus_signs_a2bedc93",
+        "record": {
             "claim_id": "positional_analysis_of_indus_signs_a2bedc93_statisti_0001",
             "source_document_id": "positional_analysis_of_indus_signs_a2bedc93",
             "claim_type": "statistical_claim",
@@ -220,10 +233,10 @@
           }
         },
         {
-          "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003",
-          "source_document_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68",
-          "source_file": "the_archaeology_and_epigraphy_of_indus_w_27f45a68",
-          "record": {
+        "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003",
+        "source_document_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68",
+        "source_file": "the_archaeology_and_epigraphy_of_indus_w_27f45a68",
+        "record": {
             "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003",
             "source_document_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68",
             "claim_type": "statistical_claim",
@@ -254,10 +267,10 @@
           }
         },
         {
-          "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_statisti_0002",
-          "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
-          "source_file": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
-          "record": {
+        "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_statisti_0002",
+        "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+        "source_file": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+        "record": {
             "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_statisti_0002",
             "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
             "claim_type": "statistical_claim",
@@ -298,11 +311,72 @@
         "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
         "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
         "explanation_text": "There is no claim here to explain. Phase-104's evaluation says it exactly: an automatic-extraction fragment with no falsification condition and no stated proposition - not evaluable as stated. The extraction kept the heading of a results section and lost the results. Five source documents had such a section; whatever each of them found is not in this record."
+      },
+      "disposition": {
+        "spec": "057",
+        "phase": "Phase-419",
+        "date": "2026-10-21",
+        "actor": "spec057-phase419-execution",
+        "kind": "disposition (spec section 7.2)",
+        "form": "superseded",
+        "wording": "Superseded by the recovered claims it pointed at: fuls2013_positional_analysis_057_recovered_0001 (from S-3, Fuls 2013, 'Positional Analysis of Indus Signs') and wells2015_appendix_ii_positional_analysis_057_recovered_0001 (from S-4, Wells 2015, Appendix II), each entering the claim set at the created stage, unchecked, through the intake records in specs/057-five-sources-heading/. Accounting (Phase-419, 2026-10-21): r=2 CLAIM RECOVERED (S-3, S-4), e=1 PASSAGE EMPTY (S-2), u=2 SOURCE UNLOCATED with sub-state HEADING NOT PRESENT IN HELD TEXT (S-1, S-5) — headline class C, PARTIAL RECOVERY WITH UNLOCATED SOURCES. The unblocking act for each unlocated source is named on its row in specs/057-five-sources-heading/outcome.md. This act recovered what five passages state. It checked none of it.",
+        "record": "specs/057-five-sources-heading/outcome.md",
+        "results": "reports/phase419_results.json",
+        "results_sha256": "d30fa456071a57a38b39d1b6e2e1ea2fff7aa4660d2aa2af433fa94e64fcd4f9",
+        "note": "Appended by the Spec 057 execution under spec section 7.2 (r >= 1: superseded). No pre-existing field of this record was altered; removing this appended entry reproduces the pre-act file byte-identically. The record's status and stage are unchanged."
+      },
+      "disposition_spec065": {
+        "spec": "065",
+        "phase": "Phase-427",
+        "date": "2026-10-22",
+        "actor": "spec065-phase427-execution",
+        "kind": "disposition note (spec section 7.2, class B)",
+        "form": "superseded-not-retired",
+        "wording": "Superseded-not-retired, exactly as Spec 057 left this record. Spec 065 (Phase-427, 2026-10-22) resolved one of the two unlocated rows on the document itself: S-5 HEADING ABSENT FROM DOCUMENT \u2014 the acquired Hunt file (SHA-256 77f10f3279454bede1ba60a04f3c099500667ca62574b07aaabb9fc69bf94665) carries exactly one occurrence of 'positional analysis' in its text layer (extraction line 340, PDF page 9), sentence-initial inside a running paragraph of section 5.5, not in heading form. S-1 remains STILL UNLOCATED \u2014 ACQUISITION BLOCKED: no document was handed over and intake-pinned before the run, no search was run for S-1, and nothing about the chapter is found or implied. Retirement is not available while S-1 remains unlocated (Spec 065 spec section 7.2). Headline class B \u2014 S-5 RESOLVED, S-1 STILL BLOCKED. This act searched two documents for a heading. It checked nothing either passage states.",
+        "record": "specs/065-s1-s5-heading-successor/outcome.md",
+        "results": "reports/phase427_results.json",
+        "results_sha256": "b485f75ee655c7e15acd7f95b3125859504481c680aa67fc882657cefa0cee63",
+        "note": "Appended by the Spec 065 execution under spec section 7.2 (class B: superseded-not-retired). No pre-existing field of this record was altered \u2014 Spec 057's disposition entry above stands unedited \u2014 and removing this appended entry (restoring the comma after the Spec 057 disposition) reproduces the pre-act file byte-identically (verified at the act). The record's status (untested) and stage (created) are unchanged."
+      },
+      "disposition_spec065_recovery": {
+        "spec": "065",
+        "phase": "Phase-427 (S-1 recovery act)",
+        "date": "2026-10-22",
+        "actor": "spec065-phase427-s1-recovery-act",
+        "kind": "disposition note (spec section 7.2, class A on the completed two-row accounting)",
+        "form": "retired",
+        "wording": "Retired. Both of Spec 057's unlocated rows are now resolved on the documents themselves, so the retirement question is decided on the full record. S-5 resolved at the Spec 065 execution (Phase-427, 2026-10-22): HEADING ABSENT FROM DOCUMENT on the acquired file (SHA-256 77f10f3279454bede1ba60a04f3c099500667ca62574b07aaabb9fc69bf94665; one occurrence, not in heading form). S-1 resolved by the recovery act of 2026-10-22, on the search arm of spec section 4.2, the document having been handed over by the owner and intake-pinned (intake-S1.json in the spec's directory; PROVENANCE.md entry 24): HEADING ABSENT FROM DOCUMENT on the pinned file (SHA-256 51831ac997f54782fc6483e04c06d6b60f08af81101b39bfe00daa5556b88b04) \u2014 its text layer carries exactly two occurrences of 'positional analysis', neither in heading form under section 5.1: extraction line 121, PDF page 4 (printed p. 60), a mention inside a running sentence of SEGMENTATION METHODS; and extraction line 925, PDF page 31 (printed p. 87), a bibliography entry in LITERATURE for Fuls 2013's 'Positional Analysis of Indus Signs'. Neither row of this successor recovered a claim, so under Spec 065 section 7.2 the record stands retired \u2014 as an extraction artefact, in the form Spec 057 section 7.2's retirement limb states for a complete accounting \u2014 with the two rows' document-level evidence (the searched files' hashes and their judged occurrence lists, in specs/065-s1-s5-heading-successor/outcome.md sections 3, 4.2 and 9) as this note's evidence. All five sources of this record now stand accounted on their documents or held texts: S-2's passage located and empty, S-3's and S-4's claims recovered (Spec 057), S-1 and S-5 searched on their documents and the heading absent from both (Spec 065 and its recovery act). Headline on the completed accounting: class A \u2014 BOTH SOURCES RESOLVED. This act searched one document for a heading. It checked nothing the passage states.",
+        "record": "specs/065-s1-s5-heading-successor/outcome.md (section 9, S-1 recovery act)",
+        "results": "specs/065-s1-s5-heading-successor/extraction-S1.txt",
+        "results_sha256": "e5bc973dec0abf668b18da5ebc62bb3772d39baa43dfc24fc25908db1a43b461",
+        "note": "Appended by the Spec 065 S-1 recovery act under spec section 7.2 (class A: both sources resolved; neither row of this successor recovered a claim, so the form is retired, not retired-as-superseded). No pre-existing field of this record was altered \u2014 the Spec 057 disposition and the Spec 065 disposition_spec065 entries above stand unedited \u2014 and removing this appended entry (restoring the comma after disposition_spec065) reproduces the pre-act file byte-identically (verified at the act). The record's status (untested) and stage (created) are unchanged."
+      },
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "spec025-material-audit-note",
+        "proposal": "P8",
+        "note": "Source identification (spec-025 material audit, 2026-10-22): the 'Positional Analysis' stub dossiers are all Andreas Fuls's work - 'Positional Analysis of Indus Signs', Voprosi Epigrafiki 7(1):253-275 (2013), reprinted as Wells & Fuls 2015 Appendix II (DOI 10.2307/j.ctvr43jmf.16), and Fuls 2023, Catalog of Indus Signs, ch. 3 (FULL TEXT, all three identifications).",
+        "evidence": [
+          "specs/025-paper-search-research-check/audit-2026-10-22/raw/findings_W4.md",
+          "specs/025-paper-search-research-check/audit-2026-10-22/correction_proposals.md"
+        ],
+        "evidence_level": "FULL TEXT",
+        "effect": "No claim status, stage, anchor, or score is changed by this note."
       }
     }
   ],
   "_citation": {
     "system": "Glossa-Lab Indus Evidence Graph Batch 4",
     "source_doc": "ancient_writing_and_modern_technologies_51831ac9"
+  },
+  "audit_correction_2026_10_22": {
+    "date": "2026-10-22",
+    "kind": "spec025-material-audit-source-correction",
+    "proposal": "P4",
+    "note": "Source correction: this document is Andreas Fuls, 'Ancient Writing and Modern Technologies - Structural Analysis of Numerical Indus Inscriptions', in Studies on Indus Script (Conference on Indus Script, Mohenjodaro 2020; National Fund for Mohenjodaro, Government of Sindh), pp. 57-88 plus the sign-list appendix (FULL TEXT - the held PDF's own front matter). The literature registry record for this document carries detected_doi 10.13109/hisp.2015.128.1.42, which belongs to Fuls 2015, Historical Linguistics 128(1):42-58 (Crossref-verified); the chapter itself has no DOI, and its detected_year and authorship are as stated here. The registry record's bytes are freeze-pinned whole-file by the Spec 055 and Spec 057 freeze tests, so this correction is recorded here rather than edited into the registry record (see the audit fix repair record, fix_repair_2026-10-22.md); the registry fields are superseded by this note. Spec 065's recovery act already resolved this document's identity in the program's records.",
+    "evidence": [
+      "specs/025-paper-search-research-check/audit-2026-10-22/raw/findings_W5_part2.md",
+      "specs/025-paper-search-research-check/audit-2026-10-22/correction_proposals.md"
+    ]
   }
 }

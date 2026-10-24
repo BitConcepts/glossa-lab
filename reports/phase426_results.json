@@ -1,0 +1,252 @@
+{
+ "claim_append": {
+  "entry": {
+   "actor": "spec064-phase426-execution",
+   "date": "2026-10-22",
+   "delivery": "specs/064-sign297-concordance-successor/concordance-297.json",
+   "delivery_sha256": "9e765576349d4d294a4fc04f0d6750be3718dfc60fa267ea16c04c6130db7488",
+   "kind": "successor-check (identification)",
+   "note": "Successor check of this claim under the frozen Spec 064 contract (OSF s6hr9, approved + public), successor to Spec 046's first check, which stands unedited in this record under 'first_check'. Step 0 passed in full, including gate 0.4: the preserved drawn-form reference at its pinned digest (33ee22ec\u2026) and the thesis file's digest asserted on the local file before any plate was read. Step 1 named the source's sign list from the book's own apparatus (Wells's own list, Wells 2011, in Wells 2015 Chapter 2 / Figure 2.6); step D derived the drawn-form descriptor twice, independently, from the thesis plate (Figure 3.2, thesis p. 90 / PDF p. 102) and sustained the preserved reference; step C \u2014 mandatory in Spec 064 \u2014 was not sustained: neither independent derivation affirms that the descriptor picks out plate 297 and no neighbour in the 289\u2013308 run (signs 299, 302 and 303 satisfy every stated feature of the descriptor), so the run closed as IDENTIFICATION FAILED (continuity/discrimination not sustained) before step M and before any scoring. The preserved reference's continuity status is QUALIFIED \u2014 anchored at family level only \u2014 and is carried on every product of the run. This is a check of identification, recorded under F064-C15: it is not a verdict on the identification, and the claim's status and stage are unchanged. Appended by the Spec 064 execution; no pre-existing field of any claim in this file was altered, and the Spec 046 first_check entry is unedited.",
+   "outcome": "IDENTIFICATION FAILED (continuity/discrimination not sustained)",
+   "phase": "Phase-426",
+   "record": "specs/064-sign297-concordance-successor/outcome.md",
+   "spec": "064",
+   "wording": "The fragment 'sign 297 is the horned tiger' cannot be carried to a concordance: the descriptor's discrimination of 297 from its neighbours in the 289\u2013308 run was not sustained by both independent derivations. The record stays a stated gap. No statement about the sign is made, and nothing is fed to Asset A. Qualification (carried from the preserved reference, Spec 064 \u00a71): the identification of Wells's 297 rests on a drawn-form reference whose continuity status is QUALIFIED \u2014 anchored at family level only; its step C discrimination check is part of this run's record."
+  },
+  "key": "spec064_check",
+  "segment_bytes": 2669,
+  "segment_sha256": "fc973395394d87fd43c9ff31f0929c093424b79b298f27459c66660d170e9fcf",
+  "verification": "The append is an executor act, not a side effect of this script. Verified at the act (2026-10-22): removing the appended segment reproduces the pre-act claim file byte-identically, and the claim's status and stage are unchanged (outcome.md, F064-C15)."
+ },
+ "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
+ "closure_class": "IDENTIFICATION FAILED (continuity/discrimination not sustained)",
+ "continuity_status": "QUALIFIED",
+ "execution_date": "2026-10-22",
+ "executor": "Muse Spark via Muse (AI agent)",
+ "fence": "This result settles what the published lists say the drawn sign depicts. It is not evidence of what the sign meant in use.",
+ "freeze_digest": "cfeb7baf71fad26e81ca80a08395c87a07d158974480923fd38eb2fed854c405",
+ "headline_wording": "The fragment 'sign 297 is the horned tiger' cannot be carried to a concordance: the descriptor's discrimination of 297 from its neighbours in the 289\u2013308 run was not sustained by both independent derivations. The record stays a stated gap. No statement about the sign is made, and nothing is fed to Asset A. Qualification (carried from the preserved reference, Spec 064 \u00a71): the identification of Wells's 297 rests on a drawn-form reference whose continuity status is QUALIFIED \u2014 anchored at family level only; its step C discrimination check is part of this run's record.",
+ "osf_registration": "s6hr9 (approved + public before the run)",
+ "outcome": "IDENTIFICATION FAILED",
+ "phase": "Phase-426",
+ "predecessor": "Spec 046 / Phase-405 closed IDENTIFICATION FAILED (sign unmatched); its closure delivery stands unedited (SHA-256 772db4df...) and is asserted at gate 0.1 of this run.",
+ "qualification": "Qualification (carried from the preserved reference, Spec 064 \u00a71): the identification of Wells's 297 rests on a drawn-form reference whose continuity status is QUALIFIED \u2014 anchored at family level only; its step C discrimination check is part of this run's record.",
+ "spec": "064",
+ "step0": {
+  "gate_0_1": {
+   "claim_record": {
+    "expected_sha256": "997fa33699ccce3feecfe0d09f6e6a1dbd165c05cd9f255939ad96e84bc99031",
+    "file": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+    "match": true,
+    "observed_sha256": "997fa33699ccce3feecfe0d09f6e6a1dbd165c05cd9f255939ad96e84bc99031",
+    "verification": "byte-pin (pristine)"
+   },
+   "crosswalk_registry": {
+    "expected_sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",
+    "file": "data/crosswalks/canonical_sign_registry.csv",
+    "match": true,
+    "observed_sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420"
+   },
+   "drawn_form_reference": {
+    "expected_sha256": "33ee22ec182fdc416a6c0db6abbc0bc61b06b448f50defafd18fc856afd6ede4",
+    "file": "specs/064-sign297-concordance-successor/drawn-form-reference-297.json",
+    "match": true,
+    "observed_sha256": "33ee22ec182fdc416a6c0db6abbc0bc61b06b448f50defafd18fc856afd6ede4"
+   },
+   "lane2_drafts": {
+    "expected_sha256": "3f645c9a4132ba5a0bc5fca4ca22810b8b6169a2f1f9f85f35990c7b72df33fb",
+    "file": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+    "match": true,
+    "observed_sha256": "3f645c9a4132ba5a0bc5fca4ca22810b8b6169a2f1f9f85f35990c7b72df33fb"
+   },
+   "phase104_evaluation": {
+    "expected_sha256": "2d0b83e8055a04b96635007054cfadde472f605dc7e5b249a61c8f9ea89b858d",
+    "file": "glossa-indus/reports/phase104_claims_evaluation.json",
+    "match": true,
+    "observed_sha256": "2d0b83e8055a04b96635007054cfadde472f605dc7e5b249a61c8f9ea89b858d"
+   },
+   "source_book_held_text": {
+    "expected_sha256": "62acf855ac3ecf39fc7a7e6597dba9a3cb6e35948528f69e9424eb81308d261e",
+    "file": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+    "match": true,
+    "observed_sha256": "62acf855ac3ecf39fc7a7e6597dba9a3cb6e35948528f69e9424eb81308d261e"
+   },
+   "spec046_closure_delivery": {
+    "expected_sha256": "772db4df152ec4f1071bed088250677e55f69743532c9e89f339a8cf9134aaaf",
+    "file": "specs/046-horned-tiger-concordance/concordance-297.json",
+    "match": true,
+    "observed_sha256": "772db4df152ec4f1071bed088250677e55f69743532c9e89f339a8cf9134aaaf"
+   },
+   "wells_witness": {
+    "expected_sha256": "ecbc37a461553cd1d06fb7f88a27d2daf85bf53c40b7558f597cbc6735b3c0da",
+    "file": "data/crosswalks/wells_segmentation_witness_v1.csv",
+    "match": true,
+    "observed_sha256": "ecbc37a461553cd1d06fb7f88a27d2daf85bf53c40b7558f597cbc6735b3c0da"
+   }
+  },
+  "gate_0_2": {
+   "located_verbatim": true,
+   "passage_lines_in_held_text": [
+    2941
+   ],
+   "passage_locator": "printed p. 97",
+   "passage_quote": "Sign 532 and sign 297 are positioned in such a way as to resemble the position of the graphic element and several of their features are repeated in the image field. It is proposed here that sign 532 is a logograph for the anthropomorphic figure and that sign 297 represents the horned tiger, or perhaps just \u2018tiger\u2019 generically.",
+   "source": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt"
+  },
+  "gate_0_3": {
+   "CISI": {
+    "availability": "HELD",
+    "basis": "Phase-124 catalogue layers; committed local-store manifest reports/phase124_cisi_local_store_manifest.json present",
+    "citation": "Joshi & Parpola (eds.), Corpus of Indus Seals and Inscriptions 1 (1987; MASI 86); Shah & Parpola (eds.), vol. 2 (1991) (CITATIONS.md \u00a7\u00a7A.2\u2013A.3)",
+    "locator_form": "volume plus catalogue/object entry plus page or plate",
+    "role": "INDEPENDENT"
+   },
+   "MAHADEVAN": {
+    "availability": "CITABLE",
+    "basis": "full citation of record; Mahadevan crosswalk data held in the pinned registry",
+    "citation": "Mahadevan, The Indus Script: Texts, Concordance and Tables, 1977 (MASI No. 77) (CITATIONS.md \u00a7A.1)",
+    "locator_form": "M-number plus concordance/tables page or entry",
+    "role": "INDEPENDENT"
+   },
+   "PARPOLA": {
+    "availability": "CITABLE",
+    "basis": "full citation of record; the program's crosswalk registry is keyed to Parpola 1982 numbering",
+    "citation": "Parpola, Deciphering the Indus Script, 1994 (CITATIONS.md \u00a7C.1)",
+    "locator_form": "P-number (sign list of 386 signs)",
+    "role": "INDEPENDENT"
+   },
+   "WELLS": {
+    "availability": "HELD",
+    "basis": "held cleaned text, pin-verified at gate 0.1",
+    "citation": "Wells, The Archaeology and Epigraphy of Indus Writing, 2015 (CITATIONS.md \u00a7A.7)",
+    "locator_form": "chapter/figure plus the book's own sign number",
+    "role": "SOURCE"
+   }
+  },
+  "gate_0_4": {
+   "continuity_status": "QUALIFIED",
+   "plate_page_produced": "Figure 3.2, thesis p. 90 / PDF p. 102, produced from the digest-asserted local file at execution (render read by the executor; bottom row signs 295-308 present, 297 the third entry); no image is committed",
+   "reference_at_pinned_digest": true,
+   "reference_file": "specs/064-sign297-concordance-successor/drawn-form-reference-297.json",
+   "reference_sha256": "33ee22ec182fdc416a6c0db6abbc0bc61b06b448f50defafd18fc856afd6ede4",
+   "thesis_digest_asserted_before_plate_read": true,
+   "thesis_expected_bytes": 19313853,
+   "thesis_expected_sha256": "4b39330c7f4ccf2770093318bfdaf4efaffa7fdf4a8cb5763a650351fffa4b4e",
+   "thesis_file": "local research store only (not committed): downloads/wells-phd-thesis-2006/Wells2006_PhD_EpigraphicApproachesToIndusWriting.pdf",
+   "thesis_observed_bytes": 19313853,
+   "thesis_observed_sha256": "4b39330c7f4ccf2770093318bfdaf4efaffa7fdf4a8cb5763a650351fffa4b4e",
+   "thesis_pages": 296
+  }
+ },
+ "step1": {
+  "apparatus_evidence": {
+   "chapter_2_gives_the_list": true,
+   "figure_2_6_caption": true,
+   "sign_list_used_here_wells_2011": true
+  },
+  "drawn_form_reference": {
+   "continuity_status": "QUALIFIED",
+   "file": "specs/064-sign297-concordance-successor/drawn-form-reference-297.json",
+   "sha256": "33ee22ec182fdc416a6c0db6abbc0bc61b06b448f50defafd18fc856afd6ede4"
+  },
+  "registry_witness_facts": {
+   "p297_description": "Ladder motif. Two nearby vertical lines with a number of horizontal lines going across the middle, going the length of the verticals.",
+   "registry_rows": 803,
+   "registry_tiger_descriptions": 0,
+   "w297_cells": [
+    {
+     "description": "Prismed light rays, with opposite slanting on top vs bottom, more rays on bottom",
+     "sign_id": "P205",
+     "singleton": false,
+     "wells_ids": "W289|W290|W291|W292|W293|W294|W295|W296|W297|W299|W300|W301|W302|W303|W304|W305|W306"
+    }
+   ],
+   "witness_grapheme_297_rows": [],
+   "witness_m297_wells_grapheme": "924",
+   "witness_rows": 157
+  },
+  "source_list_named": "Wells's own sign list (Wells 2011), as given in Wells 2015, Chapter 2, 'The Indus Sign List' (Figure 2.6)",
+  "step_c": {
+   "derivation_a_affirms": false,
+   "derivation_b_affirms": false,
+   "family_anchor_carried": "Registry row P205 ('Prismed light rays, with opposite slanting on top vs bottom, more rays on bottom'), whose wells_ids cell groups W289-W306 as one Parpola sign's Wells counterparts \u2014 carried at its frozen status: corroboration only, expressly NOT an identification. It corroborates that the 2015 list's 289-306 numbers belong to the bent-ray family the plate shows, and nothing more.",
+   "statement": "Step C is not sustained. Neither independent derivation affirms that the reconciled descriptor picks out the plate's 297 and no neighbour in the 289-308 run: signs 299, 302 and 303 satisfy every stated feature of the descriptor, and the remaining near neighbours differ only in degree on features the descriptor does not quantify. The family anchor is family-level only, exactly as the preserved reference records it. The run therefore closes under the pre-registered closure, before step M and before any scoring. The preserved reference's continuity status remains QUALIFIED.",
+   "sustained": false
+  },
+  "step_d": {
+   "comparison_with_preserved": {
+    "material_difference": false,
+    "noted_readings": [
+     "stroke number: the preserved descriptor's 'four' is the count at the base; three strokes are clear above the bend, where the innermost strokes merge in the scan",
+     "lower direction: the preserved descriptor's 'near-vertical' reads on the plate as slanting down to the right at about 30 degrees from vertical \u2014 more vertical than the upper portions, not strictly vertical"
+    ],
+    "reasoning": "Both derivations confirm the preserved descriptor's feature set \u2014 a parallel bent bundle, a single bend, a steep upper slant down-left, a basal splay, in the bent-ray run. The two noted readings loosen the descriptor's wording without changing any feature it asserts, and the preserved record itself carries discrimination, not description, as the open step (its recorded limitation). No material difference arises, so the run does not close as IDENTIFICATION FAILED (reference not sustained); it proceeds to step C, where the discrimination is tested.",
+    "verdict": "AGREEMENT \u2014 the preserved reference is sustained"
+   },
+   "derivations": [
+    {
+     "features_read_for_297": [
+      "a bundle of long parallel strokes",
+      "bent once, at a single bend whose point is at the left",
+      "the upper portions slant steeply down to the left",
+      "the lower portions run down from the bend and splay slightly apart at the base",
+      "stroke count read as four at the base, three clear above the bend"
+     ],
+     "method": "First plate read: full-page render of PDF p. 102 at 300 dpi, read in page context against the whole Figure 3.2 plate.",
+     "neighbour_set_discriminated_against": "the plates' bent-ray run, signs 289-308: the upper row (289-294) are compact chevron forms with no long lower run; in the bottom row, 295 carries a single broad upper stroke, 296 and 304 keep their upper portions near-vertical, and 307 and 308 carry a looped head; 299, 300, 301, 302, 303, 305 and 306 are the same bent bundle in differing widths and counts.",
+     "plate_locator": "Wells 2006, PhD thesis, Figure 3.2, 'The Indus signs by sign number', thesis p. 90 / PDF p. 102; bottom row, signs 295-308; 297 is the third entry.",
+     "sheet": "A",
+     "step_c_affirmation": false,
+     "step_c_statement": "I cannot affirm that the descriptor picks out plate 297 and no neighbour. Signs 299, 302 and 303 present the same feature set \u2014 a parallel bundle bent once, uppers slanting steeply down-left, lowers running down from the bend with a basal splay \u2014 and nothing in the features I read separates 297 from them. What fixes 297 on the plate is its printed position and number, which is the number-only reading the protocol names as a trap when it is used without this check."
+    },
+    {
+     "features_read_for_297": [
+      "three distinct strokes above the bend",
+      "four distinct stroke ends at the base",
+      "a single sharp bend, point at the left, at about 55-60% of the glyph height",
+      "upper portions slant about 50 degrees from vertical, down to the left",
+      "lower portions slant about 30 degrees from vertical, down to the right \u2014 more vertical than the uppers, not strictly near-vertical",
+      "moderate basal splay"
+     ],
+     "method": "Second plate read: independent re-render of PDF p. 102; per-sign cell crops at 600-700 dpi; stroke counts taken at the top edge and at the base of each glyph in the 289-308 run.",
+     "neighbour_counts_read": {
+      "289-294": "compact chevron forms; lower runs markedly shorter than 297's long lower run",
+      "295": "1 above / 4 at base; single broad upper stroke",
+      "296": "3 / 4; uppers near-vertical, bend shallow",
+      "299": "2-3 above / 4 at base; same steep slant, same sharp bend, same basal splay as 297",
+      "300": "2-3 / 4; bundle narrower, bend shallower \u2014 differences of degree, not of stated features",
+      "301": "2 / 4; small narrow bundle \u2014 differences of degree, not of stated features",
+      "302": "3 / 4-5; same steep slant, sharp bend and splay as 297",
+      "303": "3 / 4; same steep slant, sharp bend and splay as 297",
+      "304": "3 / 4; uppers near-vertical",
+      "305": "4 / 4; uppers more vertical, chevron-like",
+      "306": "3-4 / 5; uppers more vertical",
+      "307": "looped head; 2-3 strokes",
+      "308": "looped head; 2-3 strokes"
+     },
+     "plate_locator": "Wells 2006, PhD thesis, Figure 3.2, thesis p. 90 / PDF p. 102; bottom row, signs 295-308; 297 is the third entry.",
+     "sheet": "B",
+     "step_c_affirmation": false,
+     "step_c_statement": "I cannot affirm the discrimination. Counted feature by feature, signs 299, 302 and 303 match 297 on every feature the descriptor states (parallel bundle, single bend, steep upper slant, lower run with basal splay, four stroke ends at the base); 300, 301, 305 and 306 differ only in degree (width, bend sharpness, slant) on features the descriptor does not quantify. The descriptor fixes the family and 297's place in the run; it does not pick out 297 alone."
+    }
+   ],
+   "preserved_descriptor": "Sign 297 is a bundle of four long parallel strokes bent once: the upper portions slant steeply down to the left; below the bend the strokes run near-vertical and splay slightly apart at the base. It stands in the plates' bent-ray run (signs 289-308), whose members differ in stroke count, bend position, and basal splay.",
+   "reconciled_descriptor": "A bundle of long parallel strokes bent once at a single sharp bend \u2014 three strokes clear above the bend and four stroke ends at the base: the upper portions slant steeply down to the left; below the bend the strokes run down to the right, more vertical than the uppers, splaying at the base. A member of the thesis plates' bent-ray run (signs 289-308)."
+  },
+  "step_m": {
+   "note": "Step M was not reached: the run closed at step C under its pre-registered closure. No route was attempted and no match is recorded.",
+   "reached": false,
+   "routes_frozen": [
+    "Route 1 (registry, by drawn form)",
+    "Route 2 (the preserved reference cited as the source list's own entry)"
+   ]
+  },
+  "traps_asserted": [
+   "P205's wells_ids cell used as an identification (Spec 046 frozen trap 1)",
+   "P297 'Ladder motif. Two nearby vertical lines with a number of horizontal lines going across the middle...' (Spec 046 frozen trap 2 - a different sign, wells_ids empty)",
+   "M297 in the Phase-123 witness (a Mahadevan sign whose Wells grapheme is 924 - the number 297 in a third list)",
+   "P205's Mahadevan crosswalk M180 used as W297's identity (the family anchor's crosswalk is not the sign's crosswalk)",
+   "any number-only match, including a plate number read without the protocol's step C continuity check"
+  ]
+ }
+}

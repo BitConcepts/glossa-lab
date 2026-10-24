@@ -1,0 +1,374 @@
+{
+ "stage": "research_check",
+ "record_version": 1,
+ "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_001",
+ "document_id": "indus_valley_script_deciphered_from_myth_65ff0a26",
+ "claim_statement": "The Indus script encodes an economic ledger of trade guilds, tribute, and guild authority using Akkadian-influenced mnemonics.",
+ "checked_at": "2026-10-22T14:31:20.600588+00:00",
+ "advisory": true,
+ "verdict": null,
+ "protocol": "docs/paper-search-mcp.md#audit-protocol",
+ "phrasings": [
+  {
+   "text": "The Indus script encodes an economic ledger of trade guilds, tribute, and guild authority using Akkadian-influenced mnemonics.",
+   "origin": "claim"
+  },
+  {
+   "text": "Harappan inscriptions as administrative accounting records of merchant associations with Mesopotamian mnemonic influence",
+   "origin": "caller"
+  }
+ ],
+ "sources_requested": [
+  "arxiv",
+  "crossref",
+  "openalex",
+  "semantic",
+  "core",
+  "europepmc"
+ ],
+ "queries": [
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_papers",
+   "query": "The Indus script encodes an economic ledger of trade guilds, tribute, and guild authority using Akkadian-influenced mnemonics."
+  },
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_arxiv",
+   "query": "The Indus script encodes an economic ledger of trade guilds, tribute, and guild authority using Akkadian-influenced mnemonics."
+  },
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_crossref",
+   "query": "The Indus script encodes an economic ledger of trade guilds, tribute, and guild authority using Akkadian-influenced mnemonics."
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_papers",
+   "query": "Harappan inscriptions as administrative accounting records of merchant associations with Mesopotamian mnemonic influence"
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_arxiv",
+   "query": "Harappan inscriptions as administrative accounting records of merchant associations with Mesopotamian mnemonic influence"
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_crossref",
+   "query": "Harappan inscriptions as administrative accounting records of merchant associations with Mesopotamian mnemonic influence"
+  }
+ ],
+ "source_errors": [],
+ "neighbors": [
+  {
+   "title": "Statistical analysis of the Indus script using $n$-grams",
+   "authors": "Nisha Yadav; Hrishikesh Joglekar; Rajesh P. N. Rao; M. N. Vahia; Iravatham Mahadevan; R. Adhikari",
+   "year": "2009-01-20T12:55:55",
+   "doi": "10.1371/journal.pone.0009506",
+   "paper_id": "0901.3017v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/0901.3017v1",
+   "abstract": "The Indus script is one of the major undeciphered scripts of the ancient world. The small size of the corpus, the absence of bilingual texts, and the lack of definite knowledge of the underlying language has frustrated efforts at decipherment since the discovery of the remains of the Indus civilisation. Recently, some researchers have questioned the premise that the Indus script encodes spoken language. Building on previous statistical approaches, we apply the tools of statistical language processing, specifically $n$-gram Markov chains, to analyse the Indus script for syntax. Our main results",
+   "relevance": 0.308
+  },
+  {
+   "title": "Guild-Based Trading, Taxation, Tax Farming, Trade and Craft Licensing, Access Control: Economic Practices of Indus Civilization Encoded in Indus Script",
+   "authors": "Bahata A. Mukhopadhyay",
+   "year": "2022-01-01T00:00:00",
+   "doi": "10.2139/ssrn.4052072",
+   "paper_id": "10.2139/ssrn.4052072",
+   "source": "crossref",
+   "url": "https://doi.org/10.2139/ssrn.4052072",
+   "abstract": null,
+   "relevance": 0.308
+  },
+  {
+   "title": "The Indus Protocol: Deciphering the Harappan Script as a Geodetic Trade Code and Celestial Synchronization System",
+   "authors": "Aries Lamont Grant",
+   "year": "2026-01-01T00:00:00",
+   "doi": "10.2139/ssrn.6077411",
+   "paper_id": "10.2139/ssrn.6077411",
+   "source": "crossref",
+   "url": "https://doi.org/10.2139/ssrn.6077411",
+   "abstract": "<jats:p>For over a century, the Indus Valley Civilization (IVC) script has remained undeciphered, resisting all linguistic analysis. This paper proposes a radical paradigm shift: the Indus script is not a spoken language, but a Celestial Synchronization Protocol used to coordinate a vast maritime trade network. Applying the Unified Principle (UP), we identify the script's core symbols not as phonemes, but as axiomatic time-keeping and navigational constants. We demonstrate that the \"Jar\" symbol represents the 364-day Sacred Year, the \"Fish\" symbol represents the 28-day Lunar Cycle, and the geo",
+   "relevance": 0.231
+  },
+  {
+   "title": "The Indus Script and Economics. A Role for Indus Seals and Tablets in Rationing and Administration of Labor",
+   "authors": "Rajesh P. N. Rao",
+   "year": "2018-11-28T23:34:06",
+   "doi": "",
+   "paper_id": "1812.00049v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1812.00049v1",
+   "abstract": "The Indus script remains one of the last major undeciphered scripts of the ancient world. We focus here on Indus inscriptions on a group of miniature tablets discovered by Meadow and Kenoyer in Harappa in 1997. By drawing parallels with proto-Elamite and proto-Cuneiform inscriptions, we explore how these miniature tablets may have been used to record rations allocated to porters or laborers. We then show that similar inscriptions are found on stamp seals, leading to the potentially provocative conclusion that rather than simply indicating ownership of property, Indus seals may have been used f",
+   "relevance": 0.154
+  },
+  {
+   "title": "Crowd Guilds: Worker-led Reputation and Feedback on Crowdsourcing Platforms",
+   "authors": "Mark E. Whiting; Dilrukshi Gamage; Snehalkumar S. Gaikwad; Aaron Gilbee; Shirish Goyal; Alipta Ballav; Dinesh Majeti; Nalin Chhibber; Angela Richmond-Fuller; Freddie Vargus; Tejas Seshadri Sarma; Varshine Chandrakanthan; Teogenes Moura; Mohamed Hashim Salih; Gabriel Bayomi Tinoco Kalejaiye; Adam Ginzberg; Catherine A. Mullings; Yoni Dayan; Kristy Milland; Henrique Orefice; Jeff Regino; Sayna Parsi; Kunz Mainali; Vibhor Sehgal; Sekandar Matin; Akshansh Sinha; Rajan Vaish; Michael S. Bernstein",
+   "year": "2016-11-04T23:56:52",
+   "doi": "10.1145/2998181.2998234",
+   "paper_id": "1611.01572v3",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1611.01572v3",
+   "abstract": "Crowd workers are distributed and decentralized. While decentralization is designed to utilize independent judgment to promote high-quality results, it paradoxically undercuts behaviors and institutions that are critical to high-quality work. Reputation is one central example: crowdsourcing systems depend on reputation scores from decentralized workers and requesters, but these scores are notoriously inflated and uninformative. In this paper, we draw inspiration from historical worker guilds (e.g., in the silk trade) to design and implement crowd guilds: centralized groups of crowd workers who",
+   "relevance": 0.154
+  },
+  {
+   "title": "Using Guilds to Foster Internal Startups in Large Organizations: A case study",
+   "authors": "Tor Sporsem; Anastasiia Tkalich; Nils Brede Moe; Marius Mikalsen; Nina Rygh",
+   "year": "2021-08-17T13:37:22",
+   "doi": "",
+   "paper_id": "2108.07618v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2108.07618v1",
+   "abstract": "Software product innovation in large organizations is fundamentally chal-lenging because of restrained freedom and flexibility to conduct experi-ments. As a response, large agile companies form internal startups to initiate employ-driven innovation, inspired by Lean startup. This case study investi-gates how communities of practice support five internal startups in develop-ing new software products within a large organization. We observed six communities of practice meetings, two workshops and conducted ten semi-structured interviews over the course of a year. Our findings show that a communit",
+   "relevance": 0.154
+  },
+  {
+   "title": "4. Number of Guilds, Guild Halls and Guild Offices",
+   "authors": "",
+   "year": "1928-12-31T00:00:00",
+   "doi": "10.7312/burg93558-005",
+   "paper_id": "10.7312/burg93558-005",
+   "source": "crossref",
+   "url": "https://doi.org/10.7312/burg93558-005",
+   "abstract": null,
+   "relevance": 0.154
+  },
+  {
+   "title": "‘Guild-Brothers’: Guild Organisation and the Membership of the Archery and Crossbow Guilds of Bruges, 1437–81",
+   "authors": "",
+   "year": "2016-06-16T00:00:00",
+   "doi": "10.1017/9781782046530.004",
+   "paper_id": "10.1017/9781782046530.004",
+   "source": "crossref",
+   "url": "https://doi.org/10.1017/9781782046530.004",
+   "abstract": null,
+   "relevance": 0.154
+  },
+  {
+   "title": "John Stillé, Jr.: Accounting Records of a Successful 18th Century Philadelphia Merchant",
+   "authors": "Dale L. Flesher; Andrew D. Almand; Laurie A. Barfitt",
+   "year": "2019-01-01T00:00:00",
+   "doi": "10.2308/aahj-52366",
+   "paper_id": "10.2308/aahj-52366",
+   "source": "crossref",
+   "url": "https://doi.org/10.2308/aahj-52366",
+   "abstract": "<jats:title>ABSTRACT</jats:title>\n               <jats:p>The examination of John Stillé, Jr.'s accounting and business records from his early career in the late 18th century uncovers historical and economic events of the day and how these events impacted the business of a merchant. While each ledger and waste book tells a story of its own, each book also corroborates the story of the others. Stillé's accounting records are described and compared with bookkeeping practices of the time. Even the dual-currency preprinted books and the recordings therein are unusual. As such, this paper represents",
+   "relevance": 0.154
+  },
+  {
+   "title": "Mnemonics Training: Multi-Class Incremental Learning without Forgetting",
+   "authors": "Yaoyao Liu; Yuting Su; An-An Liu; Bernt Schiele; Qianru Sun",
+   "year": "2020-02-24T12:55:25",
+   "doi": "10.1109/CVPR42600.2020.01226",
+   "paper_id": "2002.10211v6",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2002.10211v6",
+   "abstract": "Multi-Class Incremental Learning (MCIL) aims to learn new concepts by incrementally updating a model trained on previous concepts. However, there is an inherent trade-off to effectively learning new concepts without catastrophic forgetting of previous ones. To alleviate this issue, it has been proposed to keep around a few examples of the previous concepts but the effectiveness of this approach heavily depends on the representativeness of these examples. This paper proposes a novel and automatic framework we call mnemonics, where we parameterize exemplars and make them optimizable in an end-to",
+   "relevance": 0.077
+  },
+  {
+   "title": "What was a merchant guild?",
+   "authors": "",
+   "year": "2011-03-17T00:00:00",
+   "doi": "10.1017/cbo9780511974410.002",
+   "paper_id": "10.1017/cbo9780511974410.002",
+   "source": "crossref",
+   "url": "https://doi.org/10.1017/cbo9780511974410.002",
+   "abstract": null,
+   "relevance": 0.077
+  },
+  {
+   "title": "Witch-Expelling Ritual in Etruscan Script and Practical Human Messages from Mesopotamian Inscriptions",
+   "authors": "Dr. Tariyel Azerturk",
+   "year": "2026-06-01T00:00:00",
+   "doi": "10.58806/irijsh.2026.v3i6n04",
+   "paper_id": "10.58806/irijsh.2026.v3i6n04",
+   "source": "crossref",
+   "url": "https://doi.org/10.58806/irijsh.2026.v3i6n04",
+   "abstract": "<jats:p>This article presents a comparative reinterpretation of selected Etruscan and Mesopotamian inscriptions through the Azerturk Remodeling Method, a structural linguistic approach based on Turkic lexical and grammatical analysis. The study examines three ancient objects: an Etruscan bronze mirror preserved in the British Museum depicting a healing and spirit-expelling ritual, a Mesopotamian cylinder seal interpreted as a commercial presentation of a three-armed standing lamp, and a carnelian seal portraying a wise Sheikh offering psychological and legal counsel. In conventional scholarshi",
+   "relevance": 0.077
+  },
+  {
+   "title": "Trader sailor spy",
+   "authors": "Samkin, Grant",
+   "year": "",
+   "doi": "",
+   "paper_id": 15106335,
+   "source": "core",
+   "url": "https://core.ac.uk/download/29195709.pdf",
+   "abstract": "Set at the Cape of Good Hope in the late eighteenth early nineteenth century, this study makes use of archival material from the Oriental and Indian Office Collection and the printed records of the Cape Colony to review the employment of John Pringle, an employee of the East India Company from his education through to his death. In addition to providing and intimate understanding of the diverse employee related activities of a single individual during this period, this study provides evidence of the profession of accountant in early trade directories. The paper also provides evidence that as a",
+   "relevance": 0.077
+  },
+  {
+   "title": "Theories of Accounting: Evolution & Developments, Income-Determination and Diversities in Use",
+   "authors": "Angus O. Unegbu",
+   "year": "2014-11-03T10:00:26",
+   "doi": "",
+   "paper_id": "1411.4633v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1411.4633v1",
+   "abstract": "Accounting frameworks follow stipulations of existing Accounting Theories. This exploratory research sets out to trace the evolution of accounting theories of Charge and Discharge Syndrome and the Corollary of Double Entry. Furthermore, it dives into the theories of Income Determination, garnishing it with areas of diversities in the use of Accounting Information while review of theories of recent growths and developments in Accounting are not left out. The method of research adopted is exploratory review of existing accounting literature. It is observed that the emergence of these theories ex",
+   "relevance": 0.0
+  },
+  {
+   "title": "Mnemon: Raw Records, Fast Judgments, Slow Thoughts",
+   "authors": "Guangren Wang",
+   "year": "2026-09-28T18:17:13",
+   "doi": "",
+   "paper_id": "2609.36059v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2609.36059v1",
+   "abstract": "Long-term memory lets an LLM assistant use a history it can no longer reread, and most memory systems build it by rewriting conversations into facts, graphs or typed memories at write time. We argue that the work of memory divides, as thinking does, into two systems. Most of it is fast System 1 work: many small, independent yes/no judgments about records, such as whether a record is needed or no longer current, which a decision model makes by the dozen in a third of a second. Only a little is slow System 2 work: writing a few search queries, naming what the reply needs and composing the answer",
+   "relevance": 0.0
+  },
+  {
+   "title": "The AI Adaptation Gap in Higher Education: Students, Faculty, and Administrative Staff",
+   "authors": "Yuriy S. Braun; Salavat M. Khafizov",
+   "year": "2026-08-25T18:59:12",
+   "doi": "",
+   "paper_id": "2608.25063v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2608.25063v1",
+   "abstract": "The purpose of this study was to analyze patterns of artificial intelligence (AI) use and attitudes toward AI among students, faculty, and administrative staff at a large university specializing in teacher education. The analytical sample comprised 1809 students, 250 faculty members, and 62 administrative staff members (N = 2121). Three role-adapted 75-item questionnaires covered the frequency and contexts of AI use, perceived usefulness, trust and control, academic integrity concerns, responsible-use norms, institutional policy clarity, and perceived improvement in output quality. Data analys",
+   "relevance": 0.0
+  },
+  {
+   "title": "Key features of administrative responsibility",
+   "authors": "Vladimir Zhavoronkov; Valeri Lipunov; Mattia Masolletti",
+   "year": "2021-07-16T10:53:32",
+   "doi": "",
+   "paper_id": "2107.07816v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2107.07816v1",
+   "abstract": "The article examines both the legal responsibility itself and its types, and in various aspects. The authors apply legal analysis, as well as the principles of consistency and integrity. The contradictions of administrative responsibility, as well as legal gaps in its interpretation, are highlighted.",
+   "relevance": 0.0
+  },
+  {
+   "title": "HealthAdminBench: Evaluating Computer-Use Agents on Healthcare Administration Tasks",
+   "authors": "Suhana Bedi; Ryan Welch; Ethan Steinberg; Michael Wornow; Taeil Matthew Kim; Haroun Ahmed; Peter Sterling; Bravim Purohit; Qurat Akram; Angelic Acosta; Esther Nubla; Pritika Sharma; Michael A. Pfeffer; Sanmi Koyejo; Nigam H. Shah",
+   "year": "2026-04-10T22:33:39",
+   "doi": "",
+   "paper_id": "2604.09937v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2604.09937v1",
+   "abstract": "Healthcare administration accounts for over $1 trillion in annual spending, making it a promising target for LLM-based computer-use agents (CUAs). While clinical applications of LLMs have received significant attention, no benchmark exists for evaluating CUAs on end-to-end administrative workflows. To address this gap, we introduce HealthAdminBench, a benchmark comprising four realistic GUI environments: an EHR, two payer portals, and a fax system, and 135 expert-defined tasks spanning three administrative task types: Prior Authorization, Appeals and Denials Management, and Durable Medical Equ",
+   "relevance": 0.0
+  },
+  {
+   "title": "Iconographic evidence of Mesopotamian influence on Harappan ideology and its survival in the royal rites of the Veda and Hinduism",
+   "authors": "Asko Parpola",
+   "year": "2020-12-16T00:00:00",
+   "doi": "10.2307/j.ctv1ddckv5.18",
+   "paper_id": "10.2307/j.ctv1ddckv5.18",
+   "source": "crossref",
+   "url": "https://doi.org/10.2307/j.ctv1ddckv5.18",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "Accounting records and business methods for live-stock shipping associations /",
+   "authors": "Frank Robotka",
+   "year": "1923-01-01T00:00:00",
+   "doi": "10.5962/bhl.title.108146",
+   "paper_id": "10.5962/bhl.title.108146",
+   "source": "crossref",
+   "url": "https://doi.org/10.5962/bhl.title.108146",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "Mathematical Treasures: Mesopotamian Accounting Tokens",
+   "authors": "Frank J. Swetz",
+   "year": "2012-08-15T00:00:00",
+   "doi": "10.4169/loci003901",
+   "paper_id": "10.4169/loci003901",
+   "source": "crossref",
+   "url": "https://doi.org/10.4169/loci003901",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "Accounting And Forms Of Accountability In Ancient Civilizations: Mesopotamia And Ancient Egypt",
+   "authors": "SALVADOR CARMONA",
+   "year": "",
+   "doi": "",
+   "paper_id": 3019864,
+   "source": "core",
+   "url": "https://core.ac.uk/download/7152160.pdf",
+   "abstract": "The aim of this paper is to identify the relevance and implications of ancient accounting practices to the contemporary theorizing of accounting. The paper provides a synthesis of the literature on ancient accounting particularly in relation to issues of human accountability, identifies its major achievements and outlines some of the key challenges facing researchers. We argue that far from being an idiosyncratic research field of marginal interest, research in ancient accounting is a rich and promising undertaking. The paper concludes by considering a number of implications of ancient account",
+   "relevance": 0.0
+  },
+  {
+   "title": "Administrative Records, 1977-1998",
+   "authors": "Gortmaker, Steven Lawrence, 1949-.",
+   "year": "",
+   "doi": "10.7910/dvn/16gnz2",
+   "paper_id": 169822215,
+   "source": "core",
+   "url": "https://doi.org/10.7910/dvn/16gnz2",
+   "abstract": "This dataset represents a group of paper records (a \"series\") within the Steven Lawrence Gortmaker papers, 1955-1998 (inclusive), 1977-1997 (bulk), which can be accessed on-site at the Center for the History of Medicine at the Francis A. Countway Library of Medicine. The series consists of administrative records generated and compiled by Steven Lawrence Gortmaker during his service at the Harvard T.H. Chan School of Public Health (formerly Harvard School of Public Health), specifically in the Department of Health and Social Behavior (previously the Department of Behavioral Sciences). Administr",
+   "relevance": 0.0
+  },
+  {
+   "title": "Administrative and Regulatory Records, 1970-1980",
+   "authors": "Harvard School of Public Health. Longitudinal Studies of Child Health and Development",
+   "year": "",
+   "doi": "10.7910/dvn/vgqnyw",
+   "paper_id": 166083838,
+   "source": "core",
+   "url": "https://doi.org/10.7910/dvn/vgqnyw",
+   "abstract": " This dataset represents a group of paper records (a \"series\") within the Harvard School of Public Health Longitudinal Studies of Child Health and Development records, 1918-2015 (inclusive), 1930-1989 (bulk), which can be accessed on-site at the Center for the History of Medicine at the Francis A. Countway Library of Medicine in Boston, Massachusetts. The series consists of research administrative and regulatory records generated during the forty-year follow-up study of the Harvard School of Public Health Longitudinal Studies of Child Health and Development. Records consist of: subject partici",
+   "relevance": 0.0
+  },
+  {
+   "title": "Administrative and Regulatory Records, 1943-1979",
+   "authors": "Harvard School of Public Health. Longitudinal Studies of Child Health and Development",
+   "year": "",
+   "doi": "10.7910/dvn/9nbnyv",
+   "paper_id": 169832254,
+   "source": "core",
+   "url": "https://doi.org/10.7910/dvn/9nbnyv",
+   "abstract": "This dataset represents a group of paper records (a \"series\") within the Harvard School of Public Health Longitudinal Studies of Child Health and Development records, 1918-2015 (inclusive), 1930-1989 (bulk), which can be accessed on-site at the Center for the History of Medicine at the Francis A. Countway Library of Medicine in Boston, Massachusetts. The series consists of subject participation records, personnel records, regulatory records, and other research administrative records, generated during the thirty-year follow-up study of the Harvard School of Public Health Longitudinal Studies of",
+   "relevance": 0.0
+  }
+ ],
+ "neighbors_read_full_text": [
+  {
+   "title": "Statistical analysis of the Indus script using $n$-grams",
+   "paper_id": "0901.3017v1",
+   "words": 9723
+  },
+  {
+   "title": "The Indus Script and Economics. A Role for Indus Seals and Tablets in Rationing and Administration of Labor",
+   "paper_id": "1812.00049v1",
+   "words": 3654
+  },
+  {
+   "title": "Crowd Guilds: Worker-led Reputation and Feedback on Crowdsourcing Platforms",
+   "paper_id": "1611.01572v3",
+   "words": 9594
+  }
+ ],
+ "gaps": [
+  {
+   "gap": "neighbors surfaced but not read in full text (abstracts never establish novelty)",
+   "neighbors": [
+    "Guild-Based Trading, Taxation, Tax Farming, Trade and Craft Licensing, Access Control: Economic Practices of Indus Civilization Encoded in Indus Script",
+    "The Indus Protocol: Deciphering the Harappan Script as a Geodetic Trade Code and Celestial Synchronization System",
+    "Using Guilds to Foster Internal Startups in Large Organizations: A case study",
+    "4. Number of Guilds, Guild Halls and Guild Offices",
+    "‘Guild-Brothers’: Guild Organisation and the Membership of the Archery and Crossbow Guilds of Bruges, 1437–81",
+    "John Stillé, Jr.: Accounting Records of a Successful 18th Century Philadelphia Merchant",
+    "Mnemonics Training: Multi-Class Incremental Learning without Forgetting",
+    "What was a merchant guild?",
+    "Witch-Expelling Ritual in Etruscan Script and Practical Human Messages from Mesopotamian Inscriptions",
+    "Trader sailor spy"
+   ]
+  }
+ ],
+ "citation_checks": []
+}

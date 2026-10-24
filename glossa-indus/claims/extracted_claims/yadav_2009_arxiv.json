@@ -1,7 +1,7 @@
 {
   "document_id": "yadav_2009_arxiv",
   "title": "Statistical analysis of the Indus script using n-grams (preprint)",
-  "extraction_date": "2026-10-13T12:11:33.533607",
+  "extraction_date": "2026-10-21T15:29:26.276432",
   "total_claims": 2,
   "auto_extracted": 2,
   "manually_curated": 2,
@@ -16,7 +16,7 @@
       "falsification_condition": "If frequency distribution deviates from Zipf-Mandelbrot law.",
       "glossa_lab_evidence": "Phase-43: V3 Zipf exponent ~1.35 (super-Zipfian) [VERIFIED]",
       "confidence_in_source": 0.95,
-      "extracted_at": "2026-10-13T12:11:33.528307",
+      "extracted_at": "2026-10-21T15:29:26.270793",
       "stage": "explained",
       "stage_source": "transition-service:stage_history[1]",
       "stage_as_of": "2026-10-13T10:12:00+00:00",
@@ -91,6 +91,18 @@
         "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
         "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
         "explanation_text": "The program reran this check on its V3 corpus in Phase-43 and the fit held: the recorded exponent is about 1.35, in the range the original work reported. The claim carries a proper falsifier - it fails if the frequency distribution departs from the Zipf-Mandelbrot law - and the distribution did not depart. That is the whole of the support, and it is genuine as far as it goes. Two record-keeping cautions belong with it. First, the same claim was extracted twice (from Yadav's 2009 paper and the 2010 follow-up), and for a time the program's claim set counted this one test result twice, on two records; the Phase I dedupe of 2026-10-12 merged them into this single claim, keeping the 2010 record as an evidence instance rather than a second claim. Second, the check was run by the program itself, on a corpus from the same Mahadevan lineage the original study used."
+      },
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "spec025-material-audit-note",
+        "proposal": "P7",
+        "note": "Scope note (spec-025 material audit, 2026-10-22): the Zipf-Mandelbrot fit (a = 15.39, b = 2.59, c = 44.47) was run on the pruned EBUDS subset of Mahadevan's M77 corpus, a scope the claim wording does not state. Yadav 2010 itself says a Zipf fit 'is not sufficient to declare a sequence as linguistic' (FULL TEXT). The dossier's 'Phase-43 V3 Zipf exponent ~1.35' is a different number from b = 2.59; the two are not interchangeable. The extraction itself is verbatim-accurate.",
+        "evidence": [
+          "specs/025-paper-search-research-check/audit-2026-10-22/raw/findings_W1.md",
+          "specs/025-paper-search-research-check/audit-2026-10-22/correction_proposals.md"
+        ],
+        "evidence_level": "FULL TEXT",
+        "effect": "No claim status, stage, anchor, or score is changed by this note."
       }
     },
     {
@@ -102,7 +114,7 @@
       "testability": "directly_testable",
       "glossa_lab_evidence": "Phase-43: 20 TERMINAL_STRONG + 40 INITIAL_STRONG signs identified in V3 corpus [VERIFIED]",
       "confidence_in_source": 0.95,
-      "extracted_at": "2026-10-13T12:11:33.528307",
+      "extracted_at": "2026-10-21T15:29:26.270793",
       "stage": "explained",
       "stage_source": "transition-service:stage_history[1]",
       "stage_as_of": "2026-10-13T10:12:00+00:00",
@@ -176,6 +188,18 @@
         "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
         "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
         "explanation_text": "The program's positional battery (Phase-43) found the pattern clearly on the V3 corpus: 40 signs that strongly prefer the opening position and 20 that strongly prefer the closing position. That is a real, reproducible feature of this corpus, and it is why the claim is recorded as strongly supported. The defect sits in the claim's own paperwork, and the audit flagged it: this record carries no falsification condition - nothing on the record states what result would have counted against the claim. A strong verdict without a stated way to be wrong is exactly the verified-but-unexplained risk this program now tracks: the counts are checked, but the claim as recorded could not have failed. Like its companion Zipf claim, this one was also double-recorded (2009 and 2010 extractions) until the Phase I dedupe merged the pair into this single claim."
+      },
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "spec025-material-audit-note",
+        "proposal": "P7",
+        "note": "Priority note (spec-025 material audit, 2026-10-22): this result is not a Yadav first. Positional-statistical analysis of Indus signs was published by the Soviet programme (1965), the Finnish programme (1969), Kondratov 1976 (metadata level - the chapter is paywalled), and Mahadevan 1977. The extraction itself is verbatim-accurate (FULL TEXT).",
+        "evidence": [
+          "specs/025-paper-search-research-check/audit-2026-10-22/raw/findings_W1.md",
+          "specs/025-paper-search-research-check/audit-2026-10-22/correction_proposals.md"
+        ],
+        "evidence_level": "FULL TEXT (priority items: metadata level for Kondratov 1976)",
+        "effect": "No claim status, stage, anchor, or score is changed by this note."
       }
     }
   ],

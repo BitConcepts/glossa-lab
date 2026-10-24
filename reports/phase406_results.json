@@ -1,0 +1,368 @@
+{
+  "anchors_byte_identical": true,
+  "asset_b": {
+    "agreed_class_counts": {
+      "administrative": 1,
+      "mixed/unknown": 1,
+      "port/trade": 1
+    },
+    "file": "specs/047-roif-ledger-distribution/asset-b/site-functions.jsonl",
+    "per_status_counts": {
+      "AGREED": 3,
+      "DISAGREED": 1,
+      "NO-SOURCE": 16,
+      "SINGLE-SOURCE": 10
+    },
+    "rows": 30,
+    "sha256": "a1a9e48422ab7ab2ef1d340c5ca0eb81a315253b196fdc199d77d2e5739c9f85",
+    "testable_count": 2,
+    "testable_sites": [
+      "harappa",
+      "lothal"
+    ]
+  },
+  "build_gates": {
+    "B1_coverage": "PASS (mechanical: exactly the 30 spine clusters, sorted)",
+    "B2_citation_completeness": "PASS (mechanical: per-status records complete, section 4.1 form exact)",
+    "B3_verification": "worker act recorded in the step-1 outcome record (specs/047-roif-ledger-distribution/outcome.md), including demotions made before the freeze",
+    "B4_circularity": "attestation in the step-1 outcome record (spec section 4.5)"
+  },
+  "component_fence": "This result concerns the distribution component of Roif's ledger thesis only; the guild-authority and Akkadian-influence components were not tested.",
+  "corpus_label": "Primary layer as pinned in spec section 2: backend/glossa_lab/data/yajnadevam_inscriptions.csv (5,679 records; the site-attributed layer of Specs 027/028), SHA-256 c02e3d7bb74cf5abb11cc94f88d8d469e6acc5d6fad4b7153c02c43428f58d98",
+  "freeze_digest": "8501feabb7beee621e99ae48529e5a74c0788fb0619ac49c615912e13914cdc7",
+  "ledger_sign_list": {
+    "extraction_census": {
+      "entries_entered": 8,
+      "entries_mapped": 3,
+      "entries_unmapped": 5
+    },
+    "file": "specs/047-roif-ledger-distribution/asset-b/ledger-signs.jsonl",
+    "sha256": "dfa48f50907a3374b45d6270f0ffbed8a2492c5d33c186da36950140b233292b"
+  },
+  "phase": 406,
+  "scope": "step 0 + step 1 only (Asset B build and freeze; ledger-sign list frozen in the same act). Step 2 (spec section 6) NOT run: no distribution quantity computed.",
+  "spec": "047-roif-ledger-distribution",
+  "step0": {
+    "census": {
+      "joined_by_cluster": {
+        "amri": 5,
+        "banawali": 26,
+        "chagylly": 0,
+        "desalpur": 3,
+        "harappa": 2717,
+        "hiregudda": 0,
+        "islam chowki": 0,
+        "jhukar": 1,
+        "joenniemi": 0,
+        "kalibangan": 212,
+        "kanispur": 0,
+        "khirsara": 4,
+        "kunal": 0,
+        "lothal": 208,
+        "mohenjo daro": 1923,
+        "mullali": 0,
+        "ojiyana": 0,
+        "piklihal": 0,
+        "qasim bagh": 0,
+        "rangpur": 0,
+        "rojdi": 0,
+        "sannarachamma": 0,
+        "shahr i sokhta": 0,
+        "sheri khan tarakai": 0,
+        "sheri khan tarakai 3": 0,
+        "sheri khan tarakai 4": 0,
+        "surkotada": 6,
+        "ter kala dheri": 0,
+        "tigrana": 1,
+        "yalangach": 0
+      },
+      "joined_total": 5106,
+      "no_site_value": 0,
+      "non_spine_sites": [
+        {
+          "records": 3,
+          "site_as_in_corpus": "Alamgirpur"
+        },
+        {
+          "records": 12,
+          "site_as_in_corpus": "Allahdino"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Altyn Depe"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Bakkar Buthi"
+        },
+        {
+          "records": 7,
+          "site_as_in_corpus": "Bala-kot"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Baror"
+        },
+        {
+          "records": 6,
+          "site_as_in_corpus": "Bhirrana"
+        },
+        {
+          "records": 3,
+          "site_as_in_corpus": "Chandigarh"
+        },
+        {
+          "records": 74,
+          "site_as_in_corpus": "Chanhu-daro"
+        },
+        {
+          "records": 2,
+          "site_as_in_corpus": "Daimabad"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Derawar Ther"
+        },
+        {
+          "records": 238,
+          "site_as_in_corpus": "Dholavira"
+        },
+        {
+          "records": 2,
+          "site_as_in_corpus": "Failaka"
+        },
+        {
+          "records": 8,
+          "site_as_in_corpus": "Farmana"
+        },
+        {
+          "records": 2,
+          "site_as_in_corpus": "Ganweriwala"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Gharo Bhiro"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Girsu"
+        },
+        {
+          "records": 6,
+          "site_as_in_corpus": "Gola Dhoro (Bagasra)"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Gonur Depe"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Guddal A"
+        },
+        {
+          "records": 2,
+          "site_as_in_corpus": "Gumla"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Hajar"
+        },
+        {
+          "records": 2,
+          "site_as_in_corpus": "Hissam-dheri"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Hulas"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Janabiyah"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Juna Khatiya"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Kalba"
+        },
+        {
+          "records": 10,
+          "site_as_in_corpus": "Kanmer"
+        },
+        {
+          "records": 8,
+          "site_as_in_corpus": "Karanpura"
+        },
+        {
+          "records": 3,
+          "site_as_in_corpus": "Karzakan"
+        },
+        {
+          "records": 2,
+          "site_as_in_corpus": "Kish"
+        },
+        {
+          "records": 11,
+          "site_as_in_corpus": "Kot-Diji"
+        },
+        {
+          "records": 15,
+          "site_as_in_corpus": "Lakhanjo-daro"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Lohumjo-daro"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Luristan"
+        },
+        {
+          "records": 2,
+          "site_as_in_corpus": "Miri Qalat"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Murda Sang"
+        },
+        {
+          "records": 3,
+          "site_as_in_corpus": "Naru-Waro-dharo"
+        },
+        {
+          "records": 38,
+          "site_as_in_corpus": "Nausharo"
+        },
+        {
+          "records": 2,
+          "site_as_in_corpus": "Nindowari-damb"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Nippur"
+        },
+        {
+          "records": 5,
+          "site_as_in_corpus": "Nuhato"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Ornach area"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Pabumath"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Pirak"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Qala'at al-Bahrain"
+        },
+        {
+          "records": 4,
+          "site_as_in_corpus": "Ra's al-Junayz"
+        },
+        {
+          "records": 2,
+          "site_as_in_corpus": "Rahman-deri"
+        },
+        {
+          "records": 2,
+          "site_as_in_corpus": "Rajanpur"
+        },
+        {
+          "records": 13,
+          "site_as_in_corpus": "Rakhigarhi"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Rappwala Ther"
+        },
+        {
+          "records": 4,
+          "site_as_in_corpus": "Rodji"
+        },
+        {
+          "records": 5,
+          "site_as_in_corpus": "Rupar"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Saar"
+        },
+        {
+          "records": 2,
+          "site_as_in_corpus": "Salut"
+        },
+        {
+          "records": 8,
+          "site_as_in_corpus": "Shikarpur"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Shortughai"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Sibri"
+        },
+        {
+          "records": 2,
+          "site_as_in_corpus": "Susa"
+        },
+        {
+          "records": 3,
+          "site_as_in_corpus": "Tarkhanewala-dera"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Tell Umma"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Tello"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Tepe Yahya"
+        },
+        {
+          "records": 28,
+          "site_as_in_corpus": "Unknown"
+        },
+        {
+          "records": 5,
+          "site_as_in_corpus": "Ur"
+        },
+        {
+          "records": 1,
+          "site_as_in_corpus": "Wattoowala"
+        }
+      ],
+      "non_spine_total": 573,
+      "total_records": 5679
+    },
+    "gate_0_1_input_integrity": "PASS",
+    "gate_0_1_input_sha256": {
+      "backend/glossa_lab/data/yajnadevam_inscriptions.csv": "c02e3d7bb74cf5abb11cc94f88d8d469e6acc5d6fad4b7153c02c43428f58d98",
+      "backend/reports/INDUS_FINAL_ANCHORS.json": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+      "backend/scripts/seed_citations.py": "39d28112e21151ccba0f5a370801c78d87575c6ff61695bb8fafc5c14c08b8f9",
+      "data/crosswalks/yajnadevam_to_parpola_crosswalk.csv": "e44b8b550155e3d071e7fc5f94e8c98e9755de437c99e2f5027e3d647b2950a2",
+      "data/movement/gazetteer_rows.jsonl": "5ac76a3031121a61fa39f87b1d2760855374d171ddd036988fee2820dca9b8b6",
+      "glossa-indus/hypotheses/models/roif_guild_ledger.yaml": "c5f08461cc1a37b91cb5a17981e2e4d7c02958312e1e7b6b9a49618a154c9586",
+      "glossa-indus/reports/phase104_claims_evaluation.json": "2d0b83e8055a04b96635007054cfadde472f605dc7e5b249a61c8f9ea89b858d",
+      "specs/027-movement-culture-language/spec.md": "7fff5d5a90b0af5697afa17a631e6901702b521f7e61c3c2bb444f08e369f9b0"
+    },
+    "gate_0_2_spine_reproduction": "PASS",
+    "gate_0_3_join_census": "PASS",
+    "spine_clusters": 30,
+    "spine_rows": 36
+  },
+  "step2": "NOT RUN (separate execution act; tasks E5-E7 open)",
+  "worker": "Muse Spark via Muse (AI agent)"
+}

@@ -1,7 +1,7 @@
 # glossa-lab
 
 [![CI](https://github.com/BitConcepts/glossa-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/BitConcepts/glossa-lab/actions/workflows/ci.yml)
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2FZENODO.20414696-blue)](https://doi.org/10.5281/ZENODO.20414696)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20379070-blue)](https://doi.org/10.5281/zenodo.20379070)
 [![paper](https://img.shields.io/badge/paper-Academia.edu-blue)](https://www.academia.edu)
 [![code](https://img.shields.io/badge/code-MIT-green)](LICENSE)
 [![version](https://img.shields.io/badge/version-1.0.0-orange)](CHANGELOG.md)

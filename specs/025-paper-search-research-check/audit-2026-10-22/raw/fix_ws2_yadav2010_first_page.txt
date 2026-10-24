@@ -1,0 +1,68 @@
+Statistical Analysis of the Indus Script Using n-Grams
+Nisha Yadav1*, Hrishikesh Joglekar2, Rajesh P. N. Rao3, Mayank N. Vahia1, Ronojoy Adhikari4*,
+Iravatham Mahadevan5
+1 Tata Institute of Fundamental Research, Colaba, Mumbai, India, 2 Mumbai, India, 3 Department of Computer Science and Engineering, University of Washington, Seattle,
+Washington, United States of America, 4 The Institute of Mathematical Sciences, Chennai, India, 5 Indus Research Centre, Roja Muthiah Research Library, Chennai, India
+
+
+
+     Abstract
+     The Indus script is one of the major undeciphered scripts of the ancient world. The small size of the corpus, the absence of
+     bilingual texts, and the lack of definite knowledge of the underlying language has frustrated efforts at decipherment since
+     the discovery of the remains of the Indus civilization. Building on previous statistical approaches, we apply the tools of
+     statistical language processing, specifically n-gram Markov chains, to analyze the syntax of the Indus script. We find that
+     unigrams follow a Zipf-Mandelbrot distribution. Text beginner and ender distributions are unequal, providing internal
+     evidence for syntax. We see clear evidence of strong bigram correlations and extract significant pairs and triplets using a
+     log-likelihood measure of association. Highly frequent pairs and triplets are not always highly significant. The model
+     performance is evaluated using information-theoretic measures and cross-validation. The model can restore doubtfully read
+     texts with an accuracy of about 75%. We find that a quadrigram Markov chain saturates information theoretic measures
+     against a held-out corpus. Our work forms the basis for the development of a stochastic grammar which may be used to
+     explore the syntax of the Indus script in greater detail.
+
+  Citation: Yadav N, Joglekar H, Rao RPN, Vahia MN, Adhikari R, et al. (2010) Statistical Analysis of the Indus Script Using n-Grams. PLoS ONE 5(3): e9506.
+  doi:10.1371/journal.pone.0009506
+  Editor: Fabio Rapallo, University of East Piedmont, Italy
+  Received August 22, 2009; Accepted December 15, 2009; Published March 19, 2010
+  Copyright: ß 2010 Yadav et al. This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits
+  unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
+  Funding: This work was supported in part by the Jamsetji Tata Trust (N.Y. and M.N.V.), by the National Science Foundation and the Packard Foundation (R.P.N.R.)
+  and the Project for Interdisciplinary Science and Modelling from the Department of Atomic Energy, Government of India (R.A.). The funders had no role in study
+  design, data collection and analysis, decision to publish, or preparation of the manuscript.
+  Competing Interests: The authors have declared that no competing interests exist.
+  * E-mail: rjoy@imsc.res.in (RA); y_nisha@tifr.res.in (NY)
+
+
+
+
+Introduction                                                                          from an Indo-Aryan language [6] and a Dravidian language [4] to
+                                                                                      a purely numerical system [7]. There is no consensus on any of the
+   The earliest urban civilization of the Indian subcontinent                         above interpretations.
+flourished in the valley of the river Indus and its surroundings                         A more objective approach, not requiring a priori assumptions,
+during the Bronze Age. At its peak, in the period between 2600                        is the method of statistical analysis. The method involves
+BCE and 1900 BCE [1], it covered approximately a million square                       identification of patterns through counting. While such an
+kilometers [2], making it the largest urban civilization of the                       approach cannot shed light on the semantics of the script, it
+ancient world. The remains of the civilization were first found in                    can reveal important features of its syntax. Research on the Indus
+Harappa and, following historical convention, is called the                           script using the statistical approach was initiated by Knorozov
+Harappan civilization.                                                                and his team in 1965, further developed by Parpola and
+   The Indus people used a script, which has mainly survived on                       collaborators in 1969 (for review of various attempts see [8–10]),
+seals (see Fig. 1 for an example), pottery, and other artifacts made                  continued by Siromoney [11] in the 1980s and followed up
+of durable materials such as stone, terracotta and copper. The                        more recently by us [12–15].
+script is yet to be deciphered. The script occurs usually in short                       In this article, we apply the technique of n-gram modeling
+texts, numbering not more than 14 signs in a single line of text.                     [16,17] for a thorough statistical analysis of sequences in the Indus
+Around 400 distinct signs have been identified [3,4], though Wells                    script. This technique finds widespread use in the analysis of
+identifies up to 676 distinct signs [5]. The total number of texts is                 sequences, be they letters or words in a natural language, the base
+about 3000. Obstacles to the decipherment of the sign system                          pairs in the genetic code, or the notes in a musical score. This
+include the paucity of long texts, the absence of bilingual text, and                 generality is possible because n-gram models are indifferent to the
+the lack of any definite knowledge of the underlying language(s)                      semantic content of the units or tokens (the words, the letters, the
+the script may have expressed.                                                        base pairs or the notes) making up the sequence but, nonetheless,
+   The Indus script remains controversial, with contested claims of                   reveal the syntax, if any, that the sequences follow. The n-gram
+decipherment. The main methodological difficulty in attempting                        approach, then, provides a framework in which the Indus script
+any interpretation of the script is that, due to the paucity of                       can be studied without making any a priori assumptions. Our
+information on the context of the writing, one is perforce required                   previous work explored some applications of bigrams (an n-gram
+to make an assumption regarding the content of the script. This                       model with n = 2) to analyze the Indus script [14,15]. This paper
+leads to a profusion of interpretations, which are often not even                     presents further results for the bigram model and extends the
+falsifiable. The range of opinion on what the script encodes varies                   analysis to higher order n-grams.
+
+
+        PLoS ONE | www.plosone.org                                                1                                 March 2010 | Volume 5 | Issue 3 | e9506
+

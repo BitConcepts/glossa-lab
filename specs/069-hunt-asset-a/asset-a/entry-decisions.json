@@ -1,0 +1,1688 @@
+{
+ "note": "Asset A entry log, machine form (Spec 069, Phase 432): pass 1 = the enterer's sign-by-sign coding from the verbatim CISI-digitization descriptions; pass 2 = an independent deterministic rule pass over the same verbatim labels; final = the reconciled kind, with every pass disagreement adjudicated in the adjudication field by re-reading the verbatim label. Borderline = the published identification is hedged in its own source (quoted section 2.5).",
+ "signs": {
+  "M059": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "unidentified",
+   "pass1": "unidentified",
+   "pass2": "unidentified",
+   "sign_key": "M059"
+  },
+  "P000": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P000"
+  },
+  "P001": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "human",
+   "sign_key": "P001"
+  },
+  "P002": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "human",
+   "sign_key": "P002"
+  },
+  "P003": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "human",
+   "sign_key": "P003"
+  },
+  "P004": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "human",
+   "sign_key": "P004"
+  },
+  "P007": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "human",
+   "sign_key": "P007"
+  },
+  "P009": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "human",
+   "sign_key": "P009"
+  },
+  "P010": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "human",
+   "sign_key": "P010"
+  },
+  "P011": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "human",
+   "sign_key": "P011"
+  },
+  "P012": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "human",
+   "sign_key": "P012"
+  },
+  "P013": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "human",
+   "sign_key": "P013"
+  },
+  "P014": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "human",
+   "sign_key": "P014"
+  },
+  "P020": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "human",
+   "sign_key": "P020"
+  },
+  "P022": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "human",
+   "sign_key": "P022"
+  },
+  "P023": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "human",
+   "sign_key": "P023"
+  },
+  "P026": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "human",
+   "sign_key": "P026"
+  },
+  "P031": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "human",
+   "sign_key": "P031"
+  },
+  "P032": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "human",
+   "sign_key": "P032"
+  },
+  "P035": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "human",
+   "sign_key": "P035"
+  },
+  "P037": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "human",
+   "sign_key": "P037"
+  },
+  "P038": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "human",
+   "sign_key": "P038"
+  },
+  "P040": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "human",
+   "sign_key": "P040"
+  },
+  "P041": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "human",
+   "sign_key": "P041"
+  },
+  "P043": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "animal",
+   "pass1": "animal",
+   "pass2": "animal",
+   "sign_key": "P043"
+  },
+  "P044": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "animal",
+   "pass1": "animal",
+   "pass2": "animal",
+   "sign_key": "P044"
+  },
+  "P047": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P047"
+  },
+  "P048": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "animal",
+   "pass1": "animal",
+   "pass2": "animal",
+   "sign_key": "P048"
+  },
+  "P050": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "animal",
+   "pass1": "animal",
+   "pass2": "animal",
+   "sign_key": "P050"
+  },
+  "P051": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "animal",
+   "pass1": "animal",
+   "pass2": "animal",
+   "sign_key": "P051"
+  },
+  "P053": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "animal",
+   "pass1": "animal",
+   "pass2": "animal",
+   "sign_key": "P053"
+  },
+  "P054": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "animal",
+   "pass1": "animal",
+   "pass2": "animal",
+   "sign_key": "P054"
+  },
+  "P056": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "animal",
+   "pass1": "animal",
+   "pass2": "animal",
+   "sign_key": "P056"
+  },
+  "P058": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "animal",
+   "pass1": "animal",
+   "pass2": "animal",
+   "sign_key": "P058"
+  },
+  "P060": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "animal",
+   "pass1": "animal",
+   "pass2": "animal",
+   "sign_key": "P060"
+  },
+  "P061": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "animal",
+   "pass1": "animal",
+   "pass2": "animal",
+   "sign_key": "P061"
+  },
+  "P062": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "animal",
+   "pass1": "animal",
+   "pass2": "animal",
+   "sign_key": "P062"
+  },
+  "P064": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "animal",
+   "pass1": "animal",
+   "pass2": "animal",
+   "sign_key": "P064"
+  },
+  "P065": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "animal",
+   "pass1": "animal",
+   "pass2": "animal",
+   "sign_key": "P065"
+  },
+  "P067": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "animal",
+   "pass1": "animal",
+   "pass2": "animal",
+   "sign_key": "P067"
+  },
+  "P070": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "animal",
+   "pass1": "animal",
+   "pass2": "animal",
+   "sign_key": "P070"
+  },
+  "P071": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "animal",
+   "pass1": "animal",
+   "pass2": "animal",
+   "sign_key": "P071"
+  },
+  "P073": {
+   "adjudication": "",
+   "borderline": true,
+   "borderline_note": "the governing label itself is hedged in its source (\"Unknown asymmetric animal? Perhaps a fish with asymmetric fins and legs?\") - identification hedged, kind coded under the governing label per section 2.5",
+   "final": "animal",
+   "pass1": "animal",
+   "pass2": "animal",
+   "sign_key": "P073"
+  },
+  "P074": {
+   "adjudication": "",
+   "borderline": true,
+   "borderline_note": "the governing label itself is hedged in its source (\"Unknown asymmetric animal? Perhaps a fish with asymmetric fins and legs?\") - identification hedged, kind coded under the governing label per section 2.5",
+   "final": "animal",
+   "pass1": "animal",
+   "pass2": "animal",
+   "sign_key": "P074"
+  },
+  "P075": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P075"
+  },
+  "P076": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "animal",
+   "pass1": "animal",
+   "pass2": "animal",
+   "sign_key": "P076"
+  },
+  "P079": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P079"
+  },
+  "P082": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P082"
+  },
+  "P083": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P083"
+  },
+  "P084": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P084"
+  },
+  "P086": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P086"
+  },
+  "P089": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P089"
+  },
+  "P091": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P091"
+  },
+  "P092": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "object_goods",
+   "pass1": "object_goods",
+   "pass2": "object_goods",
+   "sign_key": "P092"
+  },
+  "P094": {
+   "adjudication": "Pass 1 governs: the description subject is a pitchfork (spelled \"Pitckfork\" in the source), missed by the rule pass on the misspelling.",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "object_goods",
+   "pass1": "object_goods",
+   "pass2": "other",
+   "sign_key": "P094"
+  },
+  "P095": {
+   "adjudication": "Pass 1 governs: the description subject is a pitchfork (spelled \"Pitckfork\" in the source), missed by the rule pass on the misspelling.",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "object_goods",
+   "pass1": "object_goods",
+   "pass2": "other",
+   "sign_key": "P095"
+  },
+  "P096": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P096"
+  },
+  "P098": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P098"
+  },
+  "P099": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P099"
+  },
+  "P103": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P103"
+  },
+  "P108": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P108"
+  },
+  "P110": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P110"
+  },
+  "P111": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P111"
+  },
+  "P114": {
+   "adjudication": "Pass 1 governs: the description gives a figure with two person arms and a head - a person figure; the rule pass required the word \"person\" at the head.",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "other",
+   "sign_key": "P114"
+  },
+  "P117": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P117"
+  },
+  "P120": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P120"
+  },
+  "P121": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P121"
+  },
+  "P122": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P122"
+  },
+  "P123": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P123"
+  },
+  "P124": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P124"
+  },
+  "P125": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P125"
+  },
+  "P126": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P126"
+  },
+  "P127": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P127"
+  },
+  "P128": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P128"
+  },
+  "P136": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P136"
+  },
+  "P139": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P139"
+  },
+  "P142": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P142"
+  },
+  "P144": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P144"
+  },
+  "P145": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P145"
+  },
+  "P147": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P147"
+  },
+  "P151": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P151"
+  },
+  "P154": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P154"
+  },
+  "P156": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P156"
+  },
+  "P160": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P160"
+  },
+  "P166": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P166"
+  },
+  "P170": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P170"
+  },
+  "P172": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P172"
+  },
+  "P174": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P174"
+  },
+  "P175": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P175"
+  },
+  "P177": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P177"
+  },
+  "P178": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "object_goods",
+   "pass1": "object_goods",
+   "pass2": "object_goods",
+   "sign_key": "P178"
+  },
+  "P180": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P180"
+  },
+  "P181": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "object_goods",
+   "pass1": "object_goods",
+   "pass2": "object_goods",
+   "sign_key": "P181"
+  },
+  "P182": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "object_goods",
+   "pass1": "object_goods",
+   "pass2": "object_goods",
+   "sign_key": "P182"
+  },
+  "P186": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P186"
+  },
+  "P188": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P188"
+  },
+  "P193": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "human",
+   "sign_key": "P193"
+  },
+  "P194": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "human",
+   "pass1": "human",
+   "pass2": "human",
+   "sign_key": "P194"
+  },
+  "P195": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P195"
+  },
+  "P197": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P197"
+  },
+  "P201": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P201"
+  },
+  "P202": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P202"
+  },
+  "P204": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P204"
+  },
+  "P205": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P205"
+  },
+  "P206": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P206"
+  },
+  "P207": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P207"
+  },
+  "P208": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P208"
+  },
+  "P210": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P210"
+  },
+  "P211": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P211"
+  },
+  "P215": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P215"
+  },
+  "P217": {
+   "adjudication": "",
+   "borderline": true,
+   "borderline_note": "the governing label hedges between two identifications in its source (\"(arrow? spear?)\") - both candidates are object_goods, kind unaffected",
+   "final": "object_goods",
+   "pass1": "object_goods",
+   "pass2": "object_goods",
+   "sign_key": "P217"
+  },
+  "P221": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P221"
+  },
+  "P223": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P223"
+  },
+  "P226": {
+   "adjudication": "Pass 1 governs: \"bowtie\" is a geometric form name, not a bow; the rule pass matched the substring \"bow\".",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "object_goods",
+   "sign_key": "P226"
+  },
+  "P228": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P228"
+  },
+  "P230": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P230"
+  },
+  "P231": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P231"
+  },
+  "P232": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P232"
+  },
+  "P234": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P234"
+  },
+  "P237": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P237"
+  },
+  "P238": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P238"
+  },
+  "P246": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P246"
+  },
+  "P247": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P247"
+  },
+  "P251": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P251"
+  },
+  "P253": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P253"
+  },
+  "P254": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P254"
+  },
+  "P255": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P255"
+  },
+  "P256": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P256"
+  },
+  "P258": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P258"
+  },
+  "P260": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P260"
+  },
+  "P265": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P265"
+  },
+  "P268": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P268"
+  },
+  "P270": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P270"
+  },
+  "P272": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P272"
+  },
+  "P275": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P275"
+  },
+  "P276": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P276"
+  },
+  "P280": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P280"
+  },
+  "P281": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P281"
+  },
+  "P283": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P283"
+  },
+  "P285": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P285"
+  },
+  "P288": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P288"
+  },
+  "P289": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P289"
+  },
+  "P290": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "object_goods",
+   "pass1": "object_goods",
+   "pass2": "object_goods",
+   "sign_key": "P290"
+  },
+  "P293": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P293"
+  },
+  "P294": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P294"
+  },
+  "P296": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P296"
+  },
+  "P300": {
+   "adjudication": "Pass 1 governs: the subject is two narrow vertical lines; the rule pass matched the substring \"arrow\" inside \"narrow\".",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "object_goods",
+   "sign_key": "P300"
+  },
+  "P301": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P301"
+  },
+  "P303": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P303"
+  },
+  "P307": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P307"
+  },
+  "P309": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P309"
+  },
+  "P310": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P310"
+  },
+  "P311": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P311"
+  },
+  "P313": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P313"
+  },
+  "P316": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P316"
+  },
+  "P320": {
+   "adjudication": "",
+   "borderline": true,
+   "borderline_note": "the governing label is hedged in its source (\"A cat's paw perhaps\") - identification hedged; a paw print is not an animal depiction, kind other",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P320"
+  },
+  "P324": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "object_goods",
+   "pass1": "object_goods",
+   "pass2": "object_goods",
+   "sign_key": "P324"
+  },
+  "P325": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "object_goods",
+   "pass1": "object_goods",
+   "pass2": "object_goods",
+   "sign_key": "P325"
+  },
+  "P326": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "object_goods",
+   "pass1": "object_goods",
+   "pass2": "object_goods",
+   "sign_key": "P326"
+  },
+  "P327": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "object_goods",
+   "pass1": "object_goods",
+   "pass2": "object_goods",
+   "sign_key": "P327"
+  },
+  "P332": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P332"
+  },
+  "P335": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P335"
+  },
+  "P341": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P341"
+  },
+  "P342": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P342"
+  },
+  "P346": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P346"
+  },
+  "P349": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P349"
+  },
+  "P350": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P350"
+  },
+  "P352": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P352"
+  },
+  "P353": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P353"
+  },
+  "P355": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P355"
+  },
+  "P358": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P358"
+  },
+  "P359": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P359"
+  },
+  "P360": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P360"
+  },
+  "P364": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P364"
+  },
+  "P366": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P366"
+  },
+  "P368": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P368"
+  },
+  "P369": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P369"
+  },
+  "P372": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P372"
+  },
+  "P378": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "object_goods",
+   "pass1": "object_goods",
+   "pass2": "object_goods",
+   "sign_key": "P378"
+  },
+  "P379": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "object_goods",
+   "pass1": "object_goods",
+   "pass2": "object_goods",
+   "sign_key": "P379"
+  },
+  "P381": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P381"
+  },
+  "P382": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P382"
+  },
+  "P384": {
+   "adjudication": "Pass 2 governs on the subject rule applied consistently (compare P096, P082): the description subject is a diamond form; the wagon wheel is a component at its center, not the depicted subject.",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "object_goods",
+   "pass2": "other",
+   "sign_key": "P384"
+  },
+  "P385": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P385"
+  },
+  "P386": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P386"
+  },
+  "P390": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P390"
+  },
+  "P393": {
+   "adjudication": "",
+   "borderline": false,
+   "borderline_note": "",
+   "final": "other",
+   "pass1": "other",
+   "pass2": "other",
+   "sign_key": "P393"
+  }
+ }
+}

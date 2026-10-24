@@ -274,6 +274,20 @@ byte-identically and the tests returned to
 green. The digest in `freeze.json` was computed
 once, after the revert, over the final texts.
 
+Correction before merge, 2026-10-23: the freeze
+PR's first CI run (run 40059226540) failed on
+exactly one assertion — the live-file hash of
+the parent claim's record, which hashed
+differently inside the full suite than in a
+clean checkout (the file is a generated
+extraction artifact that the suite's own
+Spec 029 tests exercise in-tree). That assertion
+was corrected to the record's facts, with the
+freeze hash standing as a definition constant,
+and the proof above was run over the corrected
+texts; the digest in `freeze.json` is computed
+over those corrected final texts.
+
 ## 9. OSF registration and the execution gate
 
 The OSF registration for this frozen spec was

@@ -117,7 +117,7 @@
     },
     "spec": "specs/052-farmer-not-writing-soviet/spec.md"
   },
-  "digest": "019f16b0b0fbc06543695617df6ae8b338583fe57560bd8a829682d7ae424103",
+  "digest": "83658949f9988990ddf265735f099e96d4c6c59c93eed66d4a648d3e8307c019",
   "environment": {
     "aee": "1.5.3",
     "platform": "Linux",
@@ -125,13 +125,13 @@
   },
   "schema_version": "1.0",
   "sources": {
-    "backend/tests/test_spec052_freeze.py": "084b6611cad7438d54dda7612d1cf82a7b6d5a0ba6e53808287a1e9bacc988e9",
+    "backend/tests/test_spec052_freeze.py": "0019736fb36f5c06e701fd97b2cf32d8f7809335a157222c4df72eaf256de408",
     "specs/052-farmer-not-writing-soviet/adjudication.md": "581593fd85d25d31b883d6aba14484fed839441e591d60d4204e014d0782281b",
     "specs/052-farmer-not-writing-soviet/aee/freeze-aee-note.md": "8142778b0201aa11f45fe257f25131ff0cc826ecec0779b54744dc7ce254459c",
     "specs/052-farmer-not-writing-soviet/amendment.md": "d375ee4afa7a63dfd92c68581bddd8176119198c8ad79838c230c2db6a591c4f",
     "specs/052-farmer-not-writing-soviet/build_freeze.py": "17906656d9e5de78e836fbd01699ff986d4083fc4e725140359ab65458d84ca7",
     "specs/052-farmer-not-writing-soviet/claims.json": "9c7af5c723cd90e6aba5fa992576074c6483dda1c6c73eed0a20adc9317733cd",
-    "specs/052-farmer-not-writing-soviet/freeze.md": "6dc1dd712eacd47e7daf16a49d55ebd575c83d9df01f9d09405c3562cd31ed70",
+    "specs/052-farmer-not-writing-soviet/freeze.md": "077708d3424c67d1e2e9fe389996c6d3fe1494928789d41dd48685a3fcd1dbb4",
     "specs/052-farmer-not-writing-soviet/spec.md": "6195394d12a32c3eea312ae5e533549e97edb96314e55eb57e53f0b68db32165"
   }
 }

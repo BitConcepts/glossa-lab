@@ -34,11 +34,14 @@ its anchor facts — 201 signs, 3,137 sequences, 20
 TERMINAL_STRONG, the ten exhibited rates
 0.683–0.892 with smallest total 22, the (267, 99)
 candidate at 251 / 0.74; the parent claim's
-record at its freeze hash — moved from the
-draft's pin by the dated 2026-10-22 Spec 025
-audit note — with its status, stage and three
-contradicting-evidence entries; the fragments'
-records; Spec 068's freeze digest). The
+record with its status, stage and three
+contradicting-evidence entries — its freeze hash
+stands as a definition constant only (asserted
+in test_freeze_definition_constants): the file
+is a generated extraction artifact that the
+suite's own Spec 029 tests exercise in-tree, so
+no live-file hash is asserted on it; the
+fragments' records; Spec 068's freeze digest). The
 restricted-local corpus and row-grades files are
 asserted as definition constants only, in the
 Spec 038 form: they are never committed, so no
@@ -208,9 +211,11 @@ def test_register_integrity():
 
 def test_cited_records_carry_the_design_facts():
     # The cited records, live in the tree, at their pins.
+    # (The parent claim's file carries no live-hash assert:
+    # see the module docstring — its pin is asserted as a
+    # definition constant in test_freeze_definition_constants.)
     assert _sha(INTAKE) == INTAKE_SHA256
     assert _sha(PHASE43) == PHASE43_SHA256
-    assert _sha(FARMER) == FARMER_SHA256
     rec068 = json.loads(SPEC068_FREEZE.read_text(encoding="utf-8"))
     assert rec068["digest"] == SPEC068_DIGEST
     # The Phase-43 record's anchor facts.

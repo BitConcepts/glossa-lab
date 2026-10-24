@@ -1,0 +1,460 @@
+{
+ "phase": "Phase-422",
+ "spec": "060",
+ "design": "D-23",
+ "freeze_digest": "8c04b1a8bf742d80ea6da41021fe569686a854cdecd1cb22f4b12f1c385be1a3",
+ "osf_registration": "https://osf.io/8ywxc/",
+ "claim_under_test": "STUDY-SPEC-024/F2-HOLDAT",
+ "execution_date": "2026-10-21",
+ "parameters": {
+  "B_bootstrap": 9999,
+  "seed": 20261012,
+  "governing_interval": "basic bootstrap",
+  "margin_grid": [
+   0.05,
+   0.075,
+   0.1,
+   0.125,
+   0.15
+  ],
+  "estimator": "Phase-384 v2 estimator, unchanged, imported from backend/scripts/phase384_stage2_margins_v2.py"
+ },
+ "corpus_labels": {
+  "holdat": "Holdat compilation layer (held file indus_corpus 2.csv, holdatllc_indus export; SHA-256 62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e)",
+  "icit_lineage": "ICIT-lineage layer (horus84) (held file inscriptions.csv; SHA-256 c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef)"
+ },
+ "gates": {
+  "0.1": {
+   "gate": "0.1",
+   "name": "Input integrity",
+   "inputs": [
+    {
+     "input": "reports/phase137_results.json",
+     "pin": "18f86f45892526b947a4a7447201be9d69584ec96d33a1d18139309b9dc2a7a1",
+     "observed": "18f86f45892526b947a4a7447201be9d69584ec96d33a1d18139309b9dc2a7a1",
+     "present": true,
+     "match": true
+    },
+    {
+     "input": "backend/scripts/phase137_site_repertoire.py",
+     "pin": "e00dacf4df8f52871b482e36ca0a37f66503c5f1b107ee835ac99fa21dfc8c86",
+     "observed": "e00dacf4df8f52871b482e36ca0a37f66503c5f1b107ee835ac99fa21dfc8c86",
+     "present": true,
+     "match": true
+    },
+    {
+     "input": "reports/phase384_results.json",
+     "pin": "dda6092d9f4d368869a6e3a590948dfa97d02c5db50bf75868d6e055f0896aad",
+     "observed": "dda6092d9f4d368869a6e3a590948dfa97d02c5db50bf75868d6e055f0896aad",
+     "present": true,
+     "match": true
+    },
+    {
+     "input": "backend/scripts/phase384_stage2_margins_v2.py",
+     "pin": "3313394e6a716898cdfd440a46333ebd2b9136b77306413ed1514eab322a72a5",
+     "observed": "3313394e6a716898cdfd440a46333ebd2b9136b77306413ed1514eab322a72a5",
+     "present": true,
+     "match": true
+    },
+    {
+     "input": "specs/026-rcph-framework-transfer/reruns/phase384-contract-v2.md",
+     "pin": "f0a67bd766ae28a33edc33553613bf9c50cc933df1bfbe2b5e1192d6571bbc75",
+     "observed": "f0a67bd766ae28a33edc33553613bf9c50cc933df1bfbe2b5e1192d6571bbc75",
+     "present": true,
+     "match": true
+    },
+    {
+     "input": "specs/026-rcph-framework-transfer/reruns/phase384-freeze-v2.json",
+     "pin": "5749c6b89ac26be6333e0c20457bc320ca624c15f5ca65e689c107aa12b7b8e9",
+     "observed": "5749c6b89ac26be6333e0c20457bc320ca624c15f5ca65e689c107aa12b7b8e9",
+     "present": true,
+     "match": true
+    },
+    {
+     "input": "specs/034-matched-object-attribution/outcome.md",
+     "pin": "c0cc615ddb062306aa43cc8441fe5c6c322b563badd351ebce54fed1d7b43175",
+     "observed": "c0cc615ddb062306aa43cc8441fe5c6c322b563badd351ebce54fed1d7b43175",
+     "present": true,
+     "match": true
+    },
+    {
+     "input": "specs/024-evidence-integration/spec.md",
+     "pin": "a817f698fd5f2dd0a2d324d580d25cba41fc989762b20e0b77a4144a02d3ee25",
+     "observed": "a817f698fd5f2dd0a2d324d580d25cba41fc989762b20e0b77a4144a02d3ee25",
+     "present": true,
+     "match": true
+    },
+    {
+     "input": "backend/reports/INDUS_FINAL_ANCHORS.json",
+     "pin": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+     "observed": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+     "present": true,
+     "match": true
+    },
+    {
+     "input": "holdat_layer (held, Phase-137 loader default path): /home/hatch/workspace/glossa-lab/corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv",
+     "pin": "62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e",
+     "observed": "62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e",
+     "present": true,
+     "match": true
+    },
+    {
+     "input": "icit_layer (held, Phase-137 loader default path): /home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/horus84-computational-linguistics/data/inscriptions.csv",
+     "pin": "c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef",
+     "observed": "c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef",
+     "present": true,
+     "match": true
+    }
+   ],
+   "verdict": "PASS"
+  },
+  "0.2": {
+   "gate": "0.2",
+   "name": "Population reproduction, both layers",
+   "layers": [
+    {
+     "layer": "F2_holdat",
+     "label": "Holdat compilation layer",
+     "n_analysis_inscriptions": 1670,
+     "expected_n": 1670,
+     "table_dimensions": [
+      9,
+      98
+     ],
+     "expected_dimensions": [
+      9,
+      98
+     ],
+     "profile_table_exact": true,
+     "recomputed_chi2": 745.9530278664301,
+     "recorded_chi2": 745.9530278664314,
+     "chi2_within_1e-9_relative": true,
+     "recomputed_v": 0.11539837515155212,
+     "recorded_v": 0.11539837515155221,
+     "v_within_1e-9_absolute": true,
+     "verdict": "PASS"
+    },
+    {
+     "layer": "F3_icit_lineage",
+     "label": "ICIT-lineage layer (horus84)",
+     "n_analysis_inscriptions": 5410,
+     "expected_n": 5410,
+     "table_dimensions": [
+      7,
+      187
+     ],
+     "expected_dimensions": [
+      7,
+      187
+     ],
+     "profile_table_exact": true,
+     "recomputed_chi2": 4966.36222836514,
+     "recorded_chi2": 4966.362228365138,
+     "chi2_within_1e-9_relative": true,
+     "recomputed_v": 0.21900847512892316,
+     "recorded_v": 0.2190084751289231,
+     "v_within_1e-9_absolute": true,
+     "verdict": "PASS"
+    }
+   ],
+   "verdict": "PASS"
+  },
+  "0.3": {
+   "gate": "0.3",
+   "name": "Estimator regression",
+   "parameters": {
+    "B_bootstrap": 9999,
+    "seed": 20261012,
+    "governing_interval": "basic bootstrap",
+    "rng_stream": "one numpy default_rng(20261012) stream, F2 first then F3, as in the Phase-384 v2 script"
+   },
+   "layers": [
+    {
+     "layer": "F2_holdat",
+     "exact_match_fields": {
+      "basic_ci95": true,
+      "percentile_ci95": true,
+      "bootstrap_median": true
+     },
+     "recomputed": {
+      "bootstrap_median": 0.16180470665653984,
+      "percentile_ci95": [
+       0.15300258989494483,
+       0.17185754599689756
+      ],
+      "basic_ci95": [
+       0.058939204306206666,
+       0.0777941604081594
+      ]
+     },
+     "recorded": {
+      "basic_ci95": [
+       0.058939204306206666,
+       0.0777941604081594
+      ],
+      "percentile_ci95": [
+       0.15300258989494483,
+       0.17185754599689756
+      ],
+      "bootstrap_median": 0.16180470665653984
+     },
+     "verdict": "PASS"
+    },
+    {
+     "layer": "F3_icit_lineage",
+     "exact_match_fields": {
+      "basic_ci95": true,
+      "percentile_ci95": true,
+      "bootstrap_median": true
+     },
+     "recomputed": {
+      "bootstrap_median": 0.24066234010740262,
+      "percentile_ci95": [
+       0.22764831519619397,
+       0.2557204397264531
+      ],
+      "basic_ci95": [
+       0.18229651053139323,
+       0.21036863506165235
+      ]
+     },
+     "recorded": {
+      "basic_ci95": [
+       0.18229651053139323,
+       0.21036863506165235
+      ],
+      "percentile_ci95": [
+       0.22764831519619397,
+       0.2557204397264531
+      ],
+      "bootstrap_median": 0.24066234010740262
+     },
+     "verdict": "PASS"
+    }
+   ],
+   "verdict": "PASS"
+  },
+  "0.4": {
+   "gate": "0.4",
+   "name": "Shared-population census (arm 2's gate)",
+   "census": {
+    "shared_sites": [
+     "Chanhu-daro",
+     "Dholavira",
+     "Harappa",
+     "Kalibangan",
+     "Lothal",
+     "Mohenjo-daro"
+    ],
+    "n_shared_sites": 6,
+    "holdat_inscriptions": 1516,
+    "icit_inscriptions_seal": 2139,
+    "per_site": {
+     "Chanhu-daro": {
+      "holdat": 78,
+      "icit_seal": 59
+     },
+     "Dholavira": {
+      "holdat": 106,
+      "icit_seal": 136
+     },
+     "Harappa": {
+      "holdat": 492,
+      "icit_seal": 440
+     },
+     "Kalibangan": {
+      "holdat": 110,
+      "icit_seal": 58
+     },
+     "Lothal": {
+      "holdat": 124,
+      "icit_seal": 94
+     },
+     "Mohenjo-daro": {
+      "holdat": 606,
+      "icit_seal": 1352
+     }
+    },
+    "construction": "each layer's Phase-137 analysis population, restricted to the sites present in both layers' analysis populations; object type SEAL (DD-060-12): Holdat enters whole (no object-type field; type a constant), ICIT restricted to its recorded SEAL type class",
+    "floors": {
+     "min_sites": 5,
+     "min_inscriptions_per_layer": 500
+    },
+    "verdict": "PASS"
+   },
+   "verdict": "PASS"
+  }
+ },
+ "arm1_margin_curve": {
+  "label": "sensitivity",
+  "governing_basic_ci95": [
+   0.058939204306206666,
+   0.0777941604081594
+  ],
+  "percentile_ci95": [
+   0.15300258989494483,
+   0.17185754599689756
+  ],
+  "bootstrap_median": 0.16180470665653984,
+  "point_v": 0.11539837515155212,
+  "n_analysis_inscriptions": 1670,
+  "margin_grid": [
+   0.05,
+   0.075,
+   0.1,
+   0.125,
+   0.15
+  ],
+  "cells": [
+   {
+    "margin": 0.05,
+    "margin_label": "0.05",
+    "cell_word": "SUPPORTED AT 0.05"
+   },
+   {
+    "margin": 0.075,
+    "margin_label": "0.075",
+    "cell_word": "STRADDLES 0.075"
+   },
+   {
+    "margin": 0.1,
+    "margin_label": "0.10",
+    "cell_word": "CONTRADICTED AT 0.10"
+   },
+   {
+    "margin": 0.125,
+    "margin_label": "0.125",
+    "cell_word": "CONTRADICTED AT 0.125"
+   },
+   {
+    "margin": 0.15,
+    "margin_label": "0.15",
+    "cell_word": "CONTRADICTED AT 0.15"
+   }
+  ]
+ },
+ "arm2_shared_population": {
+  "outcome": "COMPOSITION DOES NOT",
+  "intervals_overlap": false,
+  "census": {
+   "shared_sites": [
+    "Chanhu-daro",
+    "Dholavira",
+    "Harappa",
+    "Kalibangan",
+    "Lothal",
+    "Mohenjo-daro"
+   ],
+   "n_shared_sites": 6,
+   "holdat_inscriptions": 1516,
+   "icit_inscriptions_seal": 2139,
+   "per_site": {
+    "Chanhu-daro": {
+     "holdat": 78,
+     "icit_seal": 59
+    },
+    "Dholavira": {
+     "holdat": 106,
+     "icit_seal": 136
+    },
+    "Harappa": {
+     "holdat": 492,
+     "icit_seal": 440
+    },
+    "Kalibangan": {
+     "holdat": 110,
+     "icit_seal": 58
+    },
+    "Lothal": {
+     "holdat": 124,
+     "icit_seal": 94
+    },
+    "Mohenjo-daro": {
+     "holdat": 606,
+     "icit_seal": 1352
+    }
+   },
+   "construction": "each layer's Phase-137 analysis population, restricted to the sites present in both layers' analysis populations; object type SEAL (DD-060-12): Holdat enters whole (no object-type field; type a constant), ICIT restricted to its recorded SEAL type class",
+   "floors": {
+    "min_sites": 5,
+    "min_inscriptions_per_layer": 500
+   },
+   "verdict": "PASS"
+  },
+  "per_layer": {
+   "holdat": {
+    "label": "Holdat compilation layer",
+    "n_census_inscriptions": 1516,
+    "n_estimator_inscriptions": 1516,
+    "table_dimensions": [
+     6,
+     94
+    ],
+    "table_sites": [
+     "Chanhu-daro",
+     "Dholavira",
+     "Harappa",
+     "Kalibangan",
+     "Lothal",
+     "Mohenjo-daro"
+    ],
+    "chi2": 422.9343117412524,
+    "point_v": 0.11537928745216733,
+    "governing_basic_ci95": [
+     0.055251710457321024,
+     0.07607996659365032
+    ],
+    "percentile_ci95": [
+     0.15467860831068433,
+     0.17550686444701363
+    ],
+    "bootstrap_median": 0.16435039413852193
+   },
+   "icit_lineage": {
+    "label": "ICIT-lineage layer (horus84)",
+    "n_census_inscriptions": 2139,
+    "n_estimator_inscriptions": 2139,
+    "table_dimensions": [
+     6,
+     118
+    ],
+    "table_sites": [
+     "Chanhu-daro",
+     "Dholavira",
+     "Harappa",
+     "Kalibangan",
+     "Lothal",
+     "Mohenjo-daro"
+    ],
+    "chi2": 803.9721678622018,
+    "point_v": 0.13488340055820888,
+    "governing_basic_ci95": [
+     0.08368810617885544,
+     0.10835095759573735
+    ],
+    "percentile_ci95": [
+     0.16141584352068042,
+     0.18607869493756232
+    ],
+    "bootstrap_median": 0.17281238758804135
+   }
+  },
+  "period_mix": {
+   "holdat": "PERIOD MIX NOT DESCRIBED FOR THIS LAYER - FIELD NOT CARRIED",
+   "icit_lineage": "PERIOD MIX NOT DESCRIBED FOR THIS LAYER - FIELD NOT CARRIED"
+  },
+  "rng_stream": "fresh numpy default_rng(20261012) stream for arm 2, Holdat first then ICIT, mirroring the Phase-384 v2 script's layer order",
+  "sign_treatment": "each layer computed inside its own sign numbering; signs never pooled, mapped, or harmonised (F060-C14); the only cross-layer operation is the comparison of the two governing intervals"
+ },
+ "terminal_outcome": "COMPOSITION DOES NOT",
+ "stopped_at_gate": null,
+ "period_mix": {
+  "holdat": "PERIOD MIX NOT DESCRIBED FOR THIS LAYER - FIELD NOT CARRIED",
+  "icit_lineage": "PERIOD MIX NOT DESCRIBED FOR THIS LAYER - FIELD NOT CARRIED"
+ },
+ "no_verdict_moves_sentence": "No verdict moves under this spec: F2 stands CONTRADICTED at the declared margin 0.10 and F3 stands SUPPORTED at the declared margin 0.10, exactly as recorded.",
+ "anchors_sha256_before": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+ "anchors_sha256_after": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+ "anchors_byte_identical": true,
+ "ai_disclosure": "Executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution sec.VI."
+}

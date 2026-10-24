@@ -8,7 +8,7 @@
 
 ## 1. Purpose
 
-This document records all normalization decisions applied to the Indus corpus. A normalization rule change must be logged in MASTER_LEDGER.md with entry_type `normalization_rule_change`. Rules listed here are PERMANENT for the current corpus version.
+This document records all normalization decisions applied to the Indus corpus. (Normalization = the fixed rules for cleaning and standardizing the data before analysis.) A normalization rule change must be logged in MASTER_LEDGER.md with entry_type `normalization_rule_change`. Rules listed here are PERMANENT for the current corpus version.
 
 ---
 
@@ -72,7 +72,7 @@ This document records all normalization decisions applied to the Indus corpus. A
 ## 7. Things We Explicitly Did NOT Do
 
 - Did not phonetically assign any sign IDs.
-- Did not merge allographs or variant signs without explicit crosswalk evidence.
+- Did not merge allographs (variant shapes of the same sign) or variant signs without explicit crosswalk evidence.
 - Did not remove hapax signs from the corpus.
 - Did not weight inscriptions by artifact type.
-- Did not apply any language-model smoothing to n-gram counts.
+- Did not apply any language-model smoothing to n-gram counts. (Smoothing = adjusting counts so that rare sign sequences do not score as impossible.)

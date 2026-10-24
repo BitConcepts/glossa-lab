@@ -15,7 +15,7 @@
 - **15,184 graffiti-bearing potsherds** analyzed from **140 archaeological sites** in Tamil Nadu
 - **>90% of graffiti marks** show parallels or similarities with Indus Valley Civilisation signs
 - Common symbols include: arrows (triangle/flower heads), fish signs, U-shaped signs, circles, ladder symbols, square boxes (plain/divided), X-shapes, swastikas, flower signs, A-like signs
-- Keeladi (Sivagangai, TN) dated to **580 BCE** (6th century BCE) by AMS carbon dating — 2,600 years old
+- Keeladi (Sivagangai, TN) dated to **580 BCE** (6th century BCE) by AMS carbon dating (accelerator mass spectrometry — a precise form of radiocarbon dating) — 2,600 years old
 - Tamil-Brahmi script at Keeladi now dated to **6th century BCE**, earlier than Ashokan Brahmi (3rd century BCE)
 - **10 excavation rounds at Keeladi, 20,000+ artefacts found** (as of 2025)
 
@@ -35,7 +35,7 @@
 - Contact Tamil Nadu State Dept of Archaeology for access to the graffiti dataset
 - Map the 5 published Keeladi-IVC parallel signs (from SDA publication 2019) to our P-numbers
 - Build a Keeladi graffiti → Parpola P-number crosswalk experiment
-- Consider adding Keeladi as a Phase 4 corpus (Iron Age proxy for IVC sign legacy)
+- Consider adding Keeladi as a Phase 4 corpus (an Iron Age stand-in — a proxy — for the IVC sign legacy)
 
 ---
 
@@ -73,7 +73,7 @@
 **Source**: Laursen (2010), Arabian Archaeology and Epigraphy; Harappa.com
 
 ### Key Facts
-- Gulf-type seals (c. 2100-1600 BCE) from Bahrain (ancient Dilmun) incorporate Indus script in "pidgin-like manner"
+- Gulf-type seals (c. 2100-1600 BCE) from Bahrain (ancient Dilmun) incorporate Indus script in a "pidgin-like manner" (a simplified contact language)
 - These seals were used by a contact zone between IVC traders and Persian Gulf merchants (Meluhha = Indus Valley in Sumerian cuneiform)
 - Hypothesis: a DIFFERENT language from the Harappans was used on these seals (Laursen's finding)
 - This means Gulf-type seals are NOT bilingual but show sign adaptation — not a decipherment key
@@ -81,7 +81,7 @@
 
 ### Significance
 - Gulf-type seals confirm Indus traders were active in the Persian Gulf 2100-1600 BCE
-- The "different language" hypothesis for Gulf seals is important: it means Indus signs may have been used logographically across different languages, consistent with our structural analysis
+- The "different language" hypothesis for Gulf seals is important: it means Indus signs may have been used logographically — as symbols standing for whole words or ideas rather than sounds — across different languages, consistent with our structural analysis
 - Does NOT provide a bilingual text (no parallel inscription in known language)
 
 ### Action Items

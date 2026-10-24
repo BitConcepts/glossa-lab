@@ -1,0 +1,1160 @@
+{
+ "spec": "041",
+ "phase": "Phase-435",
+ "record": "determinations as adjudicated at construction (E3), with dual-verification (E5) reclassifications applied and recorded in the affected cells' notes",
+ "standard": "spec sections 3.2/3.3 (venue and locator test; verification bar), 5.3, 7.1-7.2 as frozen 2026-10-22",
+ "cells": [
+  {
+   "site": "Harappa",
+   "field": "period",
+   "local_label": "1",
+   "status": "MAPPED",
+   "coarse_period": "EARLY",
+   "unassigned_reason": null,
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [
+    {
+     "citation": "Meyer, J. C. (2003). Understanding Harappan Hearth Function: An Approach from Harappa. Asian Perspectives 42(2): 287-310.",
+     "locator": "Table 3 (Harappan Chronology), p. 294",
+     "mapping_rule": "The article's chronology table assigns Period 1 as the Early Harappan phase (Ravi).",
+     "verification": "OWN_TEXT",
+     "coarse_assigned": "EARLY",
+     "evidence_quote": "Period 1 - Early Harappan phase (Ravi) - c. 3300-2800 B.C."
+    }
+   ],
+   "adjudication_note": "Journal table, read in the journal's own text. Corroborated by Kenoyer & Meadow 2010, Table 1, p. xlv, and its section 'The Early Harappan periods' (pp. xlvii-xlviii). Date variants across sources (3700 vs 3300 start) are recorded; dates do not assign the period."
+  },
+  {
+   "site": "Harappa",
+   "field": "period",
+   "local_label": "2",
+   "status": "MAPPED",
+   "coarse_period": "EARLY",
+   "unassigned_reason": null,
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [
+    {
+     "citation": "Kenoyer, J. M. & Meadow, R. H. (2010). Inscribed Objects from Harappa Excavations 1986-2007. In Parpola, A., Pande, B. M. & Koskikallio, P. (eds.), Corpus of Indus Seals and Inscriptions, Vol. 3, Part 1: Mohenjo-daro and Harappa (Annales Academiae Scientiarum Fennicae, Humaniora 359; Memoirs of the Archaeological Survey of India No. 96), Helsinki, pp. xliv-lviii.",
+     "locator": "Table 1, p. xlv; text pp. xlvii-xlviii",
+     "mapping_rule": "The HARP chronology table assigns Period 2 as the Kot Diji (Early Harappa) Phase, and the text treats Periods 1-2 under the heading 'The Early Harappan periods'.",
+     "verification": "OWN_TEXT",
+     "coarse_assigned": "EARLY",
+     "evidence_quote": "Period 2 - Kot Diji (Early Harappa) Phase - ca. 2800 BC - ca. 2600 BC."
+    }
+   ],
+   "adjudication_note": "Report-series text (ASI Memoir No. 96), read in the publication itself. Meyer 2003, Table 3, calls Period 2 'Harappan Transitional (Kot Diji)' - a phase name, not a coarse-period assignment, so it is not a conflicting determination. Kenoyer 1991, Table 4.2, p. 40, likewise assigns Period 2 'Early Harappan'."
+  },
+  {
+   "site": "Harappa",
+   "field": "period",
+   "local_label": "3",
+   "status": "MAPPED",
+   "coarse_period": "MATURE",
+   "unassigned_reason": null,
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [
+    {
+     "citation": "Robbins Schug, G., Gray, K. M., Mushrif-Tripathy, V. & Sankhyan, A. R. (2012). A peaceful realm? Trauma and social differentiation at Harappa. International Journal of Paleopathology 2(2-3): 136-147.",
+     "locator": "p. 138",
+     "mapping_rule": "The article assigns Harappa's Period III to the mature period: Cemetery R-37, the Period III cemetery, covered its area 'during the mature Harappan period', and its burials are 'the only burials from the mature period IIIB at Harappa'.",
+     "verification": "OWN_TEXT",
+     "coarse_assigned": "MATURE",
+     "evidence_quote": "Cemetery R-37 covered about 50 m x 50 m during the mature Harappan period. ... These burials are also the only burials from the mature period IIIB at Harappa (2450-2150 B.C.)."
+    }
+   ],
+   "adjudication_note": "Peer-reviewed journal, read in the published article; the passage's page (138) was pinned against the article's pagination (pp. 136-147) in the publisher's in-press PDF. The stratigraphic authorities' own tables (Kenoyer & Meadow 2010, Table 1; Kenoyer 2008, Table 1) assign Period 3 to the Integration Era in the era framework and do not use the word 'Mature'; Kenoyer 2008 is additionally an edited-volume chapter outside the section 3.2 venue classes. This journal determination is the verified carrier. Dual verification (section 7.4) confirmed the quotes verbatim at p. 138, with the recorded caveat that the article's 'mature' attaches at period level to the Period III urban horizon (the R-37 cemetery and IIIB) and that the article elsewhere uses 'the mature period' as its site-level name for that horizon (pp. 138, 144, 145); it does not name the subdivisions IIIA or IIIC - see the phase A and C cells, reclassified at verification."
+  },
+  {
+   "site": "Harappa",
+   "field": "period",
+   "local_label": "2/3",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "SPANS_COARSE_BOUNDARY",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "Components determined: Period 2 EARLY, Period 3 MATURE. The combined label is printed as a transitional grouping in the HARP literature (Kenoyer 1991, Table 4.3, p. 43: 'MOUND E, PERIOD 2/3'); no publication assigns it one coarse period. The span is the publications' statement and is not split (section 7.1). Section 5.4's own example."
+  },
+  {
+   "site": "Harappa",
+   "field": "period",
+   "local_label": "3/4",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "SPANS_COARSE_BOUNDARY",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "Period 3 is determined MATURE; Period 4 is, in the admissible published scheme (Kenoyer & Meadow 2010, Table 1, p. xlv; Meyer 2003, Table 3, p. 294), the 'Harappa/Late Harappa Transitional' unit - by its published construction transitional across the Mature/Late boundary. No publication assigns the combined label one coarse period."
+  },
+  {
+   "site": "Harappa",
+   "field": "period",
+   "local_label": "4/5",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "SPANS_COARSE_BOUNDARY",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "In the admissible published scheme (Kenoyer & Meadow 2010, Table 1, p. xlv; Meyer 2003, Table 3, p. 294), Period 4 is the Transitional unit across the Mature/Late boundary and Period 5 the Late Harappa Phase; no admissible verified publication assigns the combined label one coarse period. A joint Late assignment for Periods 4 and 5 is reported by the Phase-139 register (citing Kenoyer 2008) and by Meadow & Kenoyer 2001 (INDO-KOKO-KENKYU 22: 19-36) as read in a website reprint without the article's pagination; it could not be verified to the section 3.3 bar within this act's scope and is preserved here, with the admissible scheme, as this cell's determination set (DD-041-10)."
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "B",
+   "status": "MAPPED",
+   "coarse_period": "MATURE",
+   "unassigned_reason": null,
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [
+    {
+     "citation": "Robbins Schug, G., Gray, K. M., Mushrif-Tripathy, V. & Sankhyan, A. R. (2012). A peaceful realm? Trauma and social differentiation at Harappa. International Journal of Paleopathology 2(2-3): 136-147.",
+     "locator": "p. 138",
+     "mapping_rule": "The article names the label's referent directly: Period 3B (Harappa Phase B in the HARP scheme) is 'the mature period IIIB'.",
+     "verification": "OWN_TEXT",
+     "coarse_assigned": "MATURE",
+     "evidence_quote": "These burials are also the only burials from the mature period IIIB at Harappa (2450-2150 B.C.)."
+    }
+   ],
+   "adjudication_note": "Direct naming in a peer-reviewed journal, page pinned; confirmed verbatim at dual verification. The 2150 end-date differs from the 2200 of the HARP tables; dates do not assign the period."
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "A",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "DETERMINATION_UNVERIFIED",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "Draft determination (construction, E3) assigned this cell MATURE by scheme inheritance from Robbins Schug et al. 2012, p. 138. Dual verification (section 7.4) opened the locator and challenged it: every 'mature' in the article attaches to Cemetery R-37 / Period IIIB specifically, no sentence assigns Period III as a whole - or this subdivision - to the mature period, and the inheritance required equating the article's date span with the conventional mature span and importing the subdivisions from another publication. Under section 7.4 the cell is reclassified, not edited into agreement: no second admissible reading assigns it a coarse period, and the era-framework assignments reported by locator aids (the Phase-139 register citing Kenoyer 2008; Schuldenrein et al. 2007, Table 1, an edited volume) are not verified to the section 3.3 bar."
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "A-C",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "DETERMINATION_UNVERIFIED",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "Draft determination (construction, E3) assigned this cell MATURE by scheme inheritance from Robbins Schug et al. 2012, p. 138. Dual verification (section 7.4) opened the locator and challenged it: every 'mature' in the article attaches to Cemetery R-37 / Period IIIB specifically, no sentence assigns Period III as a whole - or this subdivision - to the mature period, and the inheritance required equating the article's date span with the conventional mature span and importing the subdivisions from another publication. Under section 7.4 the cell is reclassified, not edited into agreement: no second admissible reading assigns it a coarse period, and the era-framework assignments reported by locator aids (the Phase-139 register citing Kenoyer 2008; Schuldenrein et al. 2007, Table 1, an edited volume) are not verified to the section 3.3 bar."
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "B/C",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "DETERMINATION_UNVERIFIED",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "Draft determination (construction, E3) assigned this cell MATURE by scheme inheritance from Robbins Schug et al. 2012, p. 138. Dual verification (section 7.4) opened the locator and challenged it: every 'mature' in the article attaches to Cemetery R-37 / Period IIIB specifically, no sentence assigns Period III as a whole - or this subdivision - to the mature period, and the inheritance required equating the article's date span with the conventional mature span and importing the subdivisions from another publication. Under section 7.4 the cell is reclassified, not edited into agreement: no second admissible reading assigns it a coarse period, and the era-framework assignments reported by locator aids (the Phase-139 register citing Kenoyer 2008; Schuldenrein et al. 2007, Table 1, an edited volume) are not verified to the section 3.3 bar."
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "C",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "DETERMINATION_UNVERIFIED",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "Draft determination (construction, E3) assigned this cell MATURE by scheme inheritance from Robbins Schug et al. 2012, p. 138. Dual verification (section 7.4) opened the locator and challenged it: every 'mature' in the article attaches to Cemetery R-37 / Period IIIB specifically, no sentence assigns Period III as a whole - or this subdivision - to the mature period, and the inheritance required equating the article's date span with the conventional mature span and importing the subdivisions from another publication. Under section 7.4 the cell is reclassified, not edited into agreement: no second admissible reading assigns it a coarse period, and the era-framework assignments reported by locator aids (the Phase-139 register citing Kenoyer 2008; Schuldenrein et al. 2007, Table 1, an edited volume) are not verified to the section 3.3 bar."
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "B?",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "LABEL_UNCERTAIN_IN_LAYER",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "The layer itself records the label as queried (section 5.4's example class). Targeted searches found no publication that prints or resolves a queried 'B?' label; every published use is of unqueried Period 3B."
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "Ravi",
+   "status": "MAPPED",
+   "coarse_period": "EARLY",
+   "unassigned_reason": null,
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [
+    {
+     "citation": "Meyer, J. C. (2003). Understanding Harappan Hearth Function: An Approach from Harappa. Asian Perspectives 42(2): 287-310.",
+     "locator": "Table 3 (Harappan Chronology), p. 294",
+     "mapping_rule": "The article's chronology table assigns the Ravi phase as the Early Harappan phase (Period 1).",
+     "verification": "OWN_TEXT",
+     "coarse_assigned": "EARLY",
+     "evidence_quote": "Period 1 - Early Harappan phase (Ravi) - c. 3300-2800 B.C."
+    }
+   ],
+   "adjudication_note": "Corroborated by Kenoyer & Meadow 2010, pp. xlvii-xlviii, where the Ravi Phase is treated under 'The Early Harappan periods'. Kenoyer 1991 had not yet separated Ravi from Kot Diji for Period 1; both schemes place it in the Early era."
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "Stratum I",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "Vats 1940's only published correlation of the stratum numbers (restated in print in Kenoyer 1991, Table 4.1, p. 33, 'General stratigraphy adapted from Vats (1940:9-10)') is area-specific - the same numeral carries different attributions in different areas - and uses Marshall's Mohenjo-daro period terms with 1940 dates. No publication assigns an area-free stratum label to a coarse period; the layer records no area. Searched: Vats 1940; Wheeler 1947 (Ancient India 3); Kenoyer 1998; Possehl 2002; Kenoyer & Meadow 2010; Robbins Schug et al. 2012. Stratum I is Late I in Mounds F, AB, Areas J and G in Vats's table; in Cemetery H it is later than the mounds' Late Period, and Robbins Schug et al. 2012 date Cemetery H Stratum I to 1700-1300 BC - an area-bound statement that does not determine the area-free label."
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "Stratum II",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "Vats 1940's only published correlation of the stratum numbers (restated in print in Kenoyer 1991, Table 4.1, p. 33, 'General stratigraphy adapted from Vats (1940:9-10)') is area-specific - the same numeral carries different attributions in different areas - and uses Marshall's Mohenjo-daro period terms with 1940 dates. No publication assigns an area-free stratum label to a coarse period; the layer records no area. Searched: Vats 1940; Wheeler 1947 (Ancient India 3); Kenoyer 1998; Possehl 2002; Kenoyer & Meadow 2010; Robbins Schug et al. 2012. Stratum II is Late II in Mounds F, AB, Areas J and G in Vats's table; Cemetery H Stratum II is dated 1900-1700 BC by Robbins Schug et al. 2012 - area-bound only."
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "Stratum III",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "Vats 1940's only published correlation of the stratum numbers (restated in print in Kenoyer 1991, Table 4.1, p. 33, 'General stratigraphy adapted from Vats (1940:9-10)') is area-specific - the same numeral carries different attributions in different areas - and uses Marshall's Mohenjo-daro period terms with 1940 dates. No publication assigns an area-free stratum label to a coarse period; the layer records no area. Searched: Vats 1940; Wheeler 1947 (Ancient India 3); Kenoyer 1998; Possehl 2002; Kenoyer & Meadow 2010; Robbins Schug et al. 2012. The published example of the area problem: Stratum III is Late III in Mound F and Mound AB but Intermediate I in Area J and Area G (Kenoyer 1991, p. 32 and Table 4.1, p. 33)."
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "Stratum IV",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "Vats 1940's only published correlation of the stratum numbers (restated in print in Kenoyer 1991, Table 4.1, p. 33, 'General stratigraphy adapted from Vats (1940:9-10)') is area-specific - the same numeral carries different attributions in different areas - and uses Marshall's Mohenjo-daro period terms with 1940 dates. No publication assigns an area-free stratum label to a coarse period; the layer records no area. Searched: Vats 1940; Wheeler 1947 (Ancient India 3); Kenoyer 1998; Possehl 2002; Kenoyer & Meadow 2010; Robbins Schug et al. 2012. Stratum IV is Intermediate I in Mound F, Late-contemporary in Mound AB (Vats: 'Strata II to IV are contemporary with the Late Period in Mound F'), and Intermediate II in Area J."
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "Stratum V",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "Vats 1940's only published correlation of the stratum numbers (restated in print in Kenoyer 1991, Table 4.1, p. 33, 'General stratigraphy adapted from Vats (1940:9-10)') is area-specific - the same numeral carries different attributions in different areas - and uses Marshall's Mohenjo-daro period terms with 1940 dates. No publication assigns an area-free stratum label to a coarse period; the layer records no area. Searched: Vats 1940; Wheeler 1947 (Ancient India 3); Kenoyer 1998; Possehl 2002; Kenoyer & Meadow 2010; Robbins Schug et al. 2012. Stratum V is Intermediate II in Mound F and latter-Intermediate I in Mound AB. The one modern stratum-specific re-dating (Kenoyer & Meadow 2010, p. xlix: the Trench I, Mound F deep-level tablets to mid-Period 3B-3C) is trench-bound."
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "Stratum VI",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "Vats 1940's only published correlation of the stratum numbers (restated in print in Kenoyer 1991, Table 4.1, p. 33, 'General stratigraphy adapted from Vats (1940:9-10)') is area-specific - the same numeral carries different attributions in different areas - and uses Marshall's Mohenjo-daro period terms with 1940 dates. No publication assigns an area-free stratum label to a coarse period; the layer records no area. Searched: Vats 1940; Wheeler 1947 (Ancient India 3); Kenoyer 1998; Possehl 2002; Kenoyer & Meadow 2010; Robbins Schug et al. 2012. Stratum VI is Intermediate III in Mound F and Intermediate II in Mound AB."
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "Stratum VII",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "Vats 1940's only published correlation of the stratum numbers (restated in print in Kenoyer 1991, Table 4.1, p. 33, 'General stratigraphy adapted from Vats (1940:9-10)') is area-specific - the same numeral carries different attributions in different areas - and uses Marshall's Mohenjo-daro period terms with 1940 dates. No publication assigns an area-free stratum label to a coarse period; the layer records no area. Searched: Vats 1940; Wheeler 1947 (Ancient India 3); Kenoyer 1998; Possehl 2002; Kenoyer & Meadow 2010; Robbins Schug et al. 2012. Stratum VII appears only for Mound F (Intermediate IV) in the table read."
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "local_label": "1",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "DETERMINATION_UNVERIFIED",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "An era grouping of the early stages is reported by locator aids: Kenoyer 2008, Table 4 (an edited-volume chapter, outside the section 3.2 venue classes, its page within pp. 183-208 not established) groups Stages I-III in the Regionalization Era, restating Bisht's scheme, and the Phase-139 register reports Bisht-based mappings. Bisht 2015's own chronology table (p. 104) gives affinities and dates, not an era assignment for these stages, and dates do not assign a period. Not verified to the section 3.3 bar within this act's scope. Bisht's table assigns Stage I the affinity 'Dholavira Culture', c. 3000-2900 BCE (p. 104)."
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "local_label": "2",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "DETERMINATION_UNVERIFIED",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "An era grouping of the early stages is reported by locator aids: Kenoyer 2008, Table 4 (an edited-volume chapter, outside the section 3.2 venue classes, its page within pp. 183-208 not established) groups Stages I-III in the Regionalization Era, restating Bisht's scheme, and the Phase-139 register reports Bisht-based mappings. Bisht 2015's own chronology table (p. 104) gives affinities and dates, not an era assignment for these stages, and dates do not assign a period. Not verified to the section 3.3 bar within this act's scope. Bisht's table dates Stage II c. 2900-2800 BCE (p. 104)."
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "local_label": "3",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "DETERMINATION_UNVERIFIED",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "An era grouping of the early stages is reported by locator aids: Kenoyer 2008, Table 4 (an edited-volume chapter, outside the section 3.2 venue classes, its page within pp. 183-208 not established) groups Stages I-III in the Regionalization Era, restating Bisht's scheme, and the Phase-139 register reports Bisht-based mappings. Bisht 2015's own chronology table (p. 104) gives affinities and dates, not an era assignment for these stages, and dates do not assign a period. Not verified to the section 3.3 bar within this act's scope. Bisht 2015, section 5.3 (pp. 98-99), describes classical Harappan forms making their debut in Stage III without an era assignment; locator-aid schemes variously place Stage III as Mature or Transitional - none admissible or verified, and none reconciled here."
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "local_label": "4",
+   "status": "MAPPED",
+   "coarse_period": "MATURE",
+   "unassigned_reason": null,
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [
+    {
+     "citation": "Bisht, R. S. (2015). Excavations at Dholavira (1989-2005). Archaeological Survey of India, New Delhi.",
+     "locator": "Section 5.4, pp. 99-100",
+     "mapping_rule": "The excavator's own report assigns Stage IV to the mature Harappan culture.",
+     "verification": "OWN_TEXT",
+     "coarse_assigned": "MATURE",
+     "evidence_quote": "Stage IV belonged to that classical Harappan culture which has been so widely familiar to the people at large as it has been exhumed and published from a large number of excavated sites like Mohenjo-daro, Harappa, Lothal, Kalibangan etc. and known as mature Harappan."
+    }
+   ],
+   "adjudication_note": "Excavator's ASI excavation monograph, read in the publication's own text (full-text transcription cross-checked against an excerpt PDF of the same edition)."
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "local_label": "5",
+   "status": "MAPPED",
+   "coarse_period": "MATURE",
+   "unassigned_reason": null,
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [
+    {
+     "citation": "Bisht, R. S. (2015). Excavations at Dholavira (1989-2005). Archaeological Survey of India, New Delhi.",
+     "locator": "Sealings chapter, p. 308; chronology table, p. 104",
+     "mapping_rule": "The excavator's own text equates the mature Harappan phase with Stages IV and V jointly; his chronology table likewise assigns Stage V the affinity 'Harappan Culture', in contrast to Stage VI's 'Late Harappan Culture', and section 5.5 describes decline within Stage V without reassigning it.",
+     "verification": "OWN_TEXT",
+     "coarse_assigned": "MATURE",
+     "evidence_quote": "The analysis indicate an overwhelming 52 sealings from mature Harappan phase, i.e. Stages IV and V, while 5 are from Stage VI. (p. 308) Stage V / c. 2100-2000 BCE / Harappan Culture (chronology table, p. 104)."
+    }
+   ],
+   "adjudication_note": "Excavator's own monograph, own text. The p. 308 equation was located by the dual-verification pass (section 7.4), which confirmed the p. 104 affinity reading and noted the merged-cell geometry of the III-V affinity block cannot be proved from a transcription alone - the p. 308 sentence needs no block reading. Kenoyer 2008, Table 4, groups Stage V in the Integration Era (locator-aid corroboration)."
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "local_label": "6",
+   "status": "MAPPED",
+   "coarse_period": "LATE",
+   "unassigned_reason": null,
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [
+    {
+     "citation": "Bisht, R. S. (2015). Excavations at Dholavira (1989-2005). Archaeological Survey of India, New Delhi.",
+     "locator": "Section 5.6, p. 103; chronology table, p. 104",
+     "mapping_rule": "The excavator's own report assigns Stage VI to the late Harappans.",
+     "verification": "OWN_TEXT",
+     "coarse_assigned": "LATE",
+     "evidence_quote": "Having lived there for about a century or more the late Harappans of Stage VI abandoned the settlement. (p. 103); Stage VI affinity: Late Harappan Culture (p. 104)."
+    }
+   ],
+   "adjudication_note": "Excavator's ASI monograph, own text. Kenoyer 2008, Table 4, dates Stage VI c. 1900-1700 BCE in the Localization Era; Bisht's own dates (c. 1950-1800) differ - recorded, not reconciled; dates do not assign the period."
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "local_label": "4/5",
+   "status": "MAPPED",
+   "coarse_period": "MATURE",
+   "unassigned_reason": null,
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [
+    {
+     "citation": "Bisht, R. S. (2015). Excavations at Dholavira (1989-2005). Archaeological Survey of India, New Delhi.",
+     "locator": "Sections 5.4-5.5, pp. 99-103; chronology table, p. 104",
+     "mapping_rule": "Both components are assigned to the mature Harappan culture in the excavator's scheme (Stage IV, section 5.4; Stage V, chronology table affinity), so the combined label lies wholly within one coarse period.",
+     "verification": "OWN_TEXT",
+     "coarse_assigned": "MATURE",
+     "evidence_quote": "Stage IV ... known as mature Harappan (pp. 99-100); Stage V / Harappan Culture (table, p. 104)."
+    }
+   ],
+   "adjudication_note": "Component-wise application of the excavator's own determinations. Kenoyer 2008, Table 4, groups 'Stage IV-V' jointly in the Integration Era (locator-aid corroboration)."
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "local_label": "5/6",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "SPANS_COARSE_BOUNDARY",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "Stage V is determined MATURE and Stage VI determined LATE in Bisht 2015; the combined label straddles the boundary. Section 5.4's own example; the span is not split (section 7.1)."
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "local_label": "5?",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "LABEL_UNCERTAIN_IN_LAYER",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "The layer records the label as queried (section 5.4's own example). No publication resolves a queried '5?' as recorded."
+  },
+  {
+   "site": "Dholavira",
+   "field": "phase",
+   "local_label": "F",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NOT_IN_PUBLISHED_SCHEME",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "Bisht's published scheme for Dholavira has stages I-VII and no lettered phase; the label does not exist in it. Searches found no Dholavira 'phase F' in any publication (lettered fabrics A-F are a Kalibangan I pottery scheme, not Dholavira)."
+  },
+  {
+   "site": "Kalibangan",
+   "field": "period",
+   "local_label": "1",
+   "status": "MAPPED",
+   "coarse_period": "EARLY",
+   "unassigned_reason": null,
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [
+    {
+     "citation": "Lal, B. B., Joshi, J. P., Sharma, A. K., Bala, M. & Ramachandran, K. S. (2020). Excavations at Kalibangan: The Harappans (1960-69), Part II. Memoirs of the Archaeological Survey of India No. 110, Archaeological Survey of India, New Delhi.",
+     "locator": "Preface, p. v",
+     "mapping_rule": "The excavators' report assigns Period I to the Early Harappan settlement.",
+     "verification": "OWN_TEXT",
+     "coarse_assigned": "EARLY",
+     "evidence_quote": "In it we had given an account of the settlement in so far as it related to the Early Harappan times (Period I)."
+    }
+   ],
+   "adjudication_note": "ASI Memoir No. 110, read in the publication's own text (ASI-hosted PDF). The same preface describes Part I of the report (Memoir No. 98, 2003) as the Early Harappans volume."
+  },
+  {
+   "site": "Kalibangan",
+   "field": "period",
+   "local_label": "2",
+   "status": "MAPPED",
+   "coarse_period": "MATURE",
+   "unassigned_reason": null,
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [
+    {
+     "citation": "Lal, B. B., Joshi, J. P., Sharma, A. K., Bala, M. & Ramachandran, K. S. (2020). Excavations at Kalibangan: The Harappans (1960-69), Part II. Memoirs of the Archaeological Survey of India No. 110, Archaeological Survey of India, New Delhi.",
+     "locator": "Preface, p. v",
+     "mapping_rule": "The excavators' report assigns Period II to the Mature Harappan settlement.",
+     "verification": "OWN_TEXT",
+     "coarse_assigned": "MATURE",
+     "evidence_quote": "In the present volume ... we place before the reader an account of the Mature Harappan settlement (Period II)."
+    }
+   ],
+   "adjudication_note": "ASI Memoir No. 110, own text."
+  },
+  {
+   "site": "Kalibangan",
+   "field": "phase",
+   "local_label": "Early",
+   "status": "MAPPED",
+   "coarse_period": "MATURE",
+   "unassigned_reason": null,
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [
+    {
+     "citation": "Prasad, E. & Singh, R. N. (2021). The Chronology of the Ganeshwar Jodhpura Culture: A Reassessment Based on Graffiti and Cross-Cultural Comparisons. Ancient Asia 12: 10, pp. 1-21. DOI 10.5334/aa.238.",
+     "locator": "p. 9",
+     "mapping_rule": "The article states the site's published scheme: the Mature Harappan phase at Kalibangan (Period II) 'has been divided into three sub-phases viz. Early, Middle and Late' - so each of the three labels is a subdivision of the Mature phase.",
+     "verification": "OWN_TEXT",
+     "coarse_assigned": "MATURE",
+     "evidence_quote": "The comparative analysis shows that the graffiti marks from Kalibangan which are comparable are found from Period II which is the mature phase of the site. Mature Harappan phase at the site has been divided into three sub-phases viz. Early, Middle and Late."
+    }
+   ],
+   "adjudication_note": "Journal determination of the scheme the layer's field records: in the layer itself, 124 of the 125 population rows carrying these phase labels also carry period 2 (the exception is one phase-'Late' row with period 1, whose row-level treatment belongs to the section 8 derivations, not to this label). Recorded caveats: the excavators' object catalogues also use early/middle/late as level words inside Period I (Lal et al. 2020, e.g. pp. 730-744) - a context-qualified usage, not a scheme assignment of the bare labels - and Dikshit 2013's similar Period-I level usage was read only in an unverified transcription."
+  },
+  {
+   "site": "Kalibangan",
+   "field": "phase",
+   "local_label": "Middle",
+   "status": "MAPPED",
+   "coarse_period": "MATURE",
+   "unassigned_reason": null,
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [
+    {
+     "citation": "Prasad, E. & Singh, R. N. (2021). The Chronology of the Ganeshwar Jodhpura Culture: A Reassessment Based on Graffiti and Cross-Cultural Comparisons. Ancient Asia 12: 10, pp. 1-21. DOI 10.5334/aa.238.",
+     "locator": "p. 9",
+     "mapping_rule": "The article states the site's published scheme: the Mature Harappan phase at Kalibangan (Period II) 'has been divided into three sub-phases viz. Early, Middle and Late' - so each of the three labels is a subdivision of the Mature phase.",
+     "verification": "OWN_TEXT",
+     "coarse_assigned": "MATURE",
+     "evidence_quote": "The comparative analysis shows that the graffiti marks from Kalibangan which are comparable are found from Period II which is the mature phase of the site. Mature Harappan phase at the site has been divided into three sub-phases viz. Early, Middle and Late."
+    }
+   ],
+   "adjudication_note": "Journal determination of the scheme the layer's field records: in the layer itself, 124 of the 125 population rows carrying these phase labels also carry period 2 (the exception is one phase-'Late' row with period 1, whose row-level treatment belongs to the section 8 derivations, not to this label). Recorded caveats: the excavators' object catalogues also use early/middle/late as level words inside Period I (Lal et al. 2020, e.g. pp. 730-744) - a context-qualified usage, not a scheme assignment of the bare labels - and Dikshit 2013's similar Period-I level usage was read only in an unverified transcription."
+  },
+  {
+   "site": "Kalibangan",
+   "field": "phase",
+   "local_label": "Late",
+   "status": "MAPPED",
+   "coarse_period": "MATURE",
+   "unassigned_reason": null,
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [
+    {
+     "citation": "Prasad, E. & Singh, R. N. (2021). The Chronology of the Ganeshwar Jodhpura Culture: A Reassessment Based on Graffiti and Cross-Cultural Comparisons. Ancient Asia 12: 10, pp. 1-21. DOI 10.5334/aa.238.",
+     "locator": "p. 9",
+     "mapping_rule": "The article states the site's published scheme: the Mature Harappan phase at Kalibangan (Period II) 'has been divided into three sub-phases viz. Early, Middle and Late' - so each of the three labels is a subdivision of the Mature phase.",
+     "verification": "OWN_TEXT",
+     "coarse_assigned": "MATURE",
+     "evidence_quote": "The comparative analysis shows that the graffiti marks from Kalibangan which are comparable are found from Period II which is the mature phase of the site. Mature Harappan phase at the site has been divided into three sub-phases viz. Early, Middle and Late."
+    }
+   ],
+   "adjudication_note": "Journal determination of the scheme the layer's field records: in the layer itself, 124 of the 125 population rows carrying these phase labels also carry period 2 (the exception is one phase-'Late' row with period 1, whose row-level treatment belongs to the section 8 derivations, not to this label). Recorded caveats: the excavators' object catalogues also use early/middle/late as level words inside Period I (Lal et al. 2020, e.g. pp. 730-744) - a context-qualified usage, not a scheme assignment of the bare labels - and Dikshit 2013's similar Period-I level usage was read only in an unverified transcription."
+  },
+  {
+   "site": "Mohenjo-daro",
+   "field": "period",
+   "local_label": "Early",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "DETERMINATION_UNVERIFIED",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "A determination is reported by a locator aid (the Phase-139 register, citing Marshall 1931 / Mackay 1938) but could not be verified to the section 3.3 bar: Mackay 1938, read in full text (Introduction pp. xiii-xvi; Ch. I pp. 4-8), defines the periods stratigraphically and states no coarse-era assignment - the era scheme does not exist in the 1930s reports. Later restatements are edited-volume chapters outside the section 3.2 venue classes (Robbins Schug 2020, ch. 2, pp. 55-56 n. 2; Kenoyer 2008, Table 3) or assign absolute dates only (Green, Alam & Petrie 2026, Antiquity, Table 1), and dates do not assign a period. The restatements give a whole-site span (c. 2500-1900 BCE) or assign unexcavated 'lowest levels' - not Marshall's Early Period (stratum 7 and below) - to the Regionalization Era; Mackay's own span for the lowest attainable levels is c. 2800 BC."
+  },
+  {
+   "site": "Mohenjo-daro",
+   "field": "period",
+   "local_label": "Intermediate",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "DETERMINATION_UNVERIFIED",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "A determination is reported by a locator aid (the Phase-139 register, citing Marshall 1931 / Mackay 1938) but could not be verified to the section 3.3 bar: Mackay 1938, read in full text (Introduction pp. xiii-xvi; Ch. I pp. 4-8), defines the periods stratigraphically and states no coarse-era assignment - the era scheme does not exist in the 1930s reports. Later restatements are edited-volume chapters outside the section 3.2 venue classes (Robbins Schug 2020, ch. 2, pp. 55-56 n. 2; Kenoyer 2008, Table 3) or assign absolute dates only (Green, Alam & Petrie 2026, Antiquity, Table 1), and dates do not assign a period. Green et al. 2026 date the phases (Intermediate III 2500, II 2400, I 2300 BC; DK-G South only); Mackay 1938, p. xiv, himself argues Intermediate III 'should really be regarded as the last phase of the Early Period' - a boundary dispute inside the primary source, recorded here, not reconciled."
+  },
+  {
+   "site": "Mohenjo-daro",
+   "field": "period",
+   "local_label": "Late",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "DETERMINATION_UNVERIFIED",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "A determination is reported by a locator aid (the Phase-139 register, citing Marshall 1931 / Mackay 1938) but could not be verified to the section 3.3 bar: Mackay 1938, read in full text (Introduction pp. xiii-xvi; Ch. I pp. 4-8), defines the periods stratigraphically and states no coarse-era assignment - the era scheme does not exist in the 1930s reports. Later restatements are edited-volume chapters outside the section 3.2 venue classes (Robbins Schug 2020, ch. 2, pp. 55-56 n. 2; Kenoyer 2008, Table 3) or assign absolute dates only (Green, Alam & Petrie 2026, Antiquity, Table 1), and dates do not assign a period. In addition: Mackay 1938, p. xiv, removes Late III from Late ('It is the Late II Phase that marks the real beginning of the Late Period'); a reported reclassification of the Late Period as a 'late stage of Mature phase, i.e. c. 2000-1950 BCE' (Chaturvedi, Journal of Indus Studies, p. 29, citing Lal 2023) is in a venue whose peer-review status is unestablished, quotes its source (Lal 2023 - an edited-volume chapter in Dhavalikar (ed.), A Comprehensive Prehistory of India, vol. 1, 2023; not read) without pagination, and in context reclassifies one DK-area wall context, not the Late Period as a whole; Kenoyer 2008 places the mixed uppermost levels in the Localization Era (1900-1700 BCE); Robbins Schug 2020, n. 8, glosses a Late reference as 'roughly corresponding to the end of the second millennium BCE'. The reported determinations disagree and none is verified at the bar."
+  },
+  {
+   "site": "Mohenjo-daro",
+   "field": "phase",
+   "local_label": "I",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "In Mackay 1938 (Introduction, pp. xiv-xv) the numerals exist only as period-qualified sub-periods of the DK Area (G Section) - Late, Intermediate and Early Phases I-III at different depths (I: 0.86 ft above to 24 ft below datum, depending on the period). No publication assigns a bare numeral to a period or era; every published use read is period-qualified. Searched: Mackay 1938; Jansen 2013/2014, Table 2.7, p. 67 (restating Mackay 1938: XIV-XV; p. 68: the classification 'no longer has any stratigraphical significance whatsoever' apart from the elevations); Green et al. 2026, Table 1; Kenoyer 2008, Tables 1-3."
+  },
+  {
+   "site": "Mohenjo-daro",
+   "field": "phase",
+   "local_label": "II",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "In Mackay 1938 (Introduction, pp. xiv-xv) the numerals exist only as period-qualified sub-periods of the DK Area (G Section) - Late, Intermediate and Early Phases I-III at different depths (I: 0.86 ft above to 24 ft below datum, depending on the period). No publication assigns a bare numeral to a period or era; every published use read is period-qualified. Searched: Mackay 1938; Jansen 2013/2014, Table 2.7, p. 67 (restating Mackay 1938: XIV-XV; p. 68: the classification 'no longer has any stratigraphical significance whatsoever' apart from the elevations); Green et al. 2026, Table 1; Kenoyer 2008, Tables 1-3."
+  },
+  {
+   "site": "Mohenjo-daro",
+   "field": "phase",
+   "local_label": "III",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "In Mackay 1938 (Introduction, pp. xiv-xv) the numerals exist only as period-qualified sub-periods of the DK Area (G Section) - Late, Intermediate and Early Phases I-III at different depths (I: 0.86 ft above to 24 ft below datum, depending on the period). No publication assigns a bare numeral to a period or era; every published use read is period-qualified. Searched: Mackay 1938; Jansen 2013/2014, Table 2.7, p. 67 (restating Mackay 1938: XIV-XV; p. 68: the classification 'no longer has any stratigraphical significance whatsoever' apart from the elevations); Green et al. 2026, Table 1; Kenoyer 2008, Tables 1-3."
+  },
+  {
+   "site": "Mohenjo-daro",
+   "field": "phase",
+   "local_label": "IA",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "In Mackay 1938 (Introduction, pp. xiv-xv) the numerals exist only as period-qualified sub-periods of the DK Area (G Section) - Late, Intermediate and Early Phases I-III at different depths (I: 0.86 ft above to 24 ft below datum, depending on the period). No publication assigns a bare numeral to a period or era; every published use read is period-qualified. Searched: Mackay 1938; Jansen 2013/2014, Table 2.7, p. 67 (restating Mackay 1938: XIV-XV; p. 68: the classification 'no longer has any stratigraphical significance whatsoever' apart from the elevations); Green et al. 2026, Table 1; Kenoyer 2008, Tables 1-3. The a/b subdivision is printed only under Late Phase I (Mackay 1938, p. xiv: Phase I(a), I(b)); no bare 'IA' is assigned anywhere."
+  },
+  {
+   "site": "Mohenjo-daro",
+   "field": "phase",
+   "local_label": "IB",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "In Mackay 1938 (Introduction, pp. xiv-xv) the numerals exist only as period-qualified sub-periods of the DK Area (G Section) - Late, Intermediate and Early Phases I-III at different depths (I: 0.86 ft above to 24 ft below datum, depending on the period). No publication assigns a bare numeral to a period or era; every published use read is period-qualified. Searched: Mackay 1938; Jansen 2013/2014, Table 2.7, p. 67 (restating Mackay 1938: XIV-XV; p. 68: the classification 'no longer has any stratigraphical significance whatsoever' apart from the elevations); Green et al. 2026, Table 1; Kenoyer 2008, Tables 1-3. The a/b subdivision is printed only under Late Phase I (Mackay 1938, p. xiv); Mackay's plate captions use the qualified form ('Late Ib level'). A website statement dating a find to 'the late Period IB, or approximately 2,000 B.C.' (harappa.com) is a locator aid without a Mackay page and does not ground the cell."
+  },
+  {
+   "site": "Mohenjo-daro",
+   "field": "phase",
+   "local_label": "II/III",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "No publication assigns the combined label; in Mackay's published system II and III are successive separately-levelled phases within each period, and the bare components are themselves undetermined (see the phase I-III notes)."
+  },
+  {
+   "site": "Mohenjo-daro",
+   "field": "phase",
+   "local_label": "III?",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "LABEL_UNCERTAIN_IN_LAYER",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "The layer records the label as queried. No publication resolves a questioned III, and bare III is itself undetermined (see the phase III note); Mackay 1938, p. xiv, reassigns both qualified IIIs he discusses (Late III to Intermediate; Intermediate III to Early)."
+  },
+  {
+   "site": "Lothal",
+   "field": "phase",
+   "local_label": "I",
+   "status": "MAPPED",
+   "coarse_period": "MATURE",
+   "unassigned_reason": null,
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [
+    {
+     "citation": "Rao, S. R. (1963). Excavation at Rangpur and other explorations in Gujarat. Ancient India 18 & 19 (1962 & 1963): 5-207 (Lothal account pp. 177-181).",
+     "locator": "pp. 177-178",
+     "mapping_rule": "Rao's own published scheme assigns the first four structural phases to Period A, 'the true or mature Harappa culture', and the fifth to Period B.",
+     "verification": "OWN_TEXT",
+     "coarse_assigned": "MATURE",
+     "evidence_quote": "The first four Phases are assigned to Period A, which represents the true or mature Harappa culture and the fifth to Period B representing the late or degenerate Phase of that culture."
+    }
+   ],
+   "adjudication_note": "Excavator's own text in the ASI's journal (the Lothal excavation account), read in the publication itself (DLI scan). Corroborated as a paginated restatement of Rao 1979 by Lal 1997-98, Indologica Taurinensia XXIII-XXIV, pp. 51-52 (its n. 18 cites Rao 1979 Vol. I / 1985 Vol. II), and by Rao 1965, Expedition 7.3, pp. 30-37."
+  },
+  {
+   "site": "Lothal",
+   "field": "phase",
+   "local_label": "II",
+   "status": "MAPPED",
+   "coarse_period": "MATURE",
+   "unassigned_reason": null,
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [
+    {
+     "citation": "Rao, S. R. (1963). Excavation at Rangpur and other explorations in Gujarat. Ancient India 18 & 19 (1962 & 1963): 5-207 (Lothal account pp. 177-181).",
+     "locator": "pp. 177-178",
+     "mapping_rule": "Rao's own published scheme assigns the first four structural phases to Period A, 'the true or mature Harappa culture', and the fifth to Period B.",
+     "verification": "OWN_TEXT",
+     "coarse_assigned": "MATURE",
+     "evidence_quote": "The first four Phases are assigned to Period A, which represents the true or mature Harappa culture and the fifth to Period B representing the late or degenerate Phase of that culture."
+    }
+   ],
+   "adjudication_note": "Excavator's own text in the ASI's journal (the Lothal excavation account), read in the publication itself (DLI scan). Corroborated as a paginated restatement of Rao 1979 by Lal 1997-98, Indologica Taurinensia XXIII-XXIV, pp. 51-52 (its n. 18 cites Rao 1979 Vol. I / 1985 Vol. II), and by Rao 1965, Expedition 7.3, pp. 30-37."
+  },
+  {
+   "site": "Lothal",
+   "field": "phase",
+   "local_label": "III",
+   "status": "MAPPED",
+   "coarse_period": "MATURE",
+   "unassigned_reason": null,
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [
+    {
+     "citation": "Rao, S. R. (1963). Excavation at Rangpur and other explorations in Gujarat. Ancient India 18 & 19 (1962 & 1963): 5-207 (Lothal account pp. 177-181).",
+     "locator": "pp. 177-178",
+     "mapping_rule": "Rao's own published scheme assigns the first four structural phases to Period A, 'the true or mature Harappa culture', and the fifth to Period B.",
+     "verification": "OWN_TEXT",
+     "coarse_assigned": "MATURE",
+     "evidence_quote": "The first four Phases are assigned to Period A, which represents the true or mature Harappa culture and the fifth to Period B representing the late or degenerate Phase of that culture."
+    }
+   ],
+   "adjudication_note": "Excavator's own text in the ASI's journal (the Lothal excavation account), read in the publication itself (DLI scan). Corroborated as a paginated restatement of Rao 1979 by Lal 1997-98, Indologica Taurinensia XXIII-XXIV, pp. 51-52 (its n. 18 cites Rao 1979 Vol. I / 1985 Vol. II), and by Rao 1965, Expedition 7.3, pp. 30-37."
+  },
+  {
+   "site": "Lothal",
+   "field": "phase",
+   "local_label": "IV",
+   "status": "MAPPED",
+   "coarse_period": "MATURE",
+   "unassigned_reason": null,
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [
+    {
+     "citation": "Rao, S. R. (1963). Excavation at Rangpur and other explorations in Gujarat. Ancient India 18 & 19 (1962 & 1963): 5-207 (Lothal account pp. 177-181).",
+     "locator": "pp. 177-178",
+     "mapping_rule": "Rao's own published scheme assigns the first four structural phases to Period A, 'the true or mature Harappa culture', and the fifth to Period B.",
+     "verification": "OWN_TEXT",
+     "coarse_assigned": "MATURE",
+     "evidence_quote": "The first four Phases are assigned to Period A, which represents the true or mature Harappa culture and the fifth to Period B representing the late or degenerate Phase of that culture."
+    }
+   ],
+   "adjudication_note": "Excavator's own text in the ASI's journal (the Lothal excavation account), read in the publication itself (DLI scan). Corroborated as a paginated restatement of Rao 1979 by Lal 1997-98, Indologica Taurinensia XXIII-XXIV, pp. 51-52 (its n. 18 cites Rao 1979 Vol. I / 1985 Vol. II), and by Rao 1965, Expedition 7.3, pp. 30-37."
+  },
+  {
+   "site": "Lothal",
+   "field": "phase",
+   "local_label": "II-III",
+   "status": "MAPPED",
+   "coarse_period": "MATURE",
+   "unassigned_reason": null,
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [
+    {
+     "citation": "Rao, S. R. (1963). Excavation at Rangpur and other explorations in Gujarat. Ancient India 18 & 19 (1962 & 1963): 5-207 (Lothal account pp. 177-181).",
+     "locator": "pp. 177-178",
+     "mapping_rule": "Both components are among the first four phases Rao assigns to Period A, 'the true or mature Harappa culture'; Period B's sole phase is V.",
+     "verification": "OWN_TEXT",
+     "coarse_assigned": "MATURE",
+     "evidence_quote": "The first four Phases are assigned to Period A, which represents the true or mature Harappa culture and the fifth to Period B representing the late or degenerate Phase of that culture."
+    }
+   ],
+   "adjudication_note": "Excavator's own text in the ASI's journal (the Lothal excavation account), read in the publication itself (DLI scan). Corroborated as a paginated restatement of Rao 1979 by Lal 1997-98, Indologica Taurinensia XXIII-XXIV, pp. 51-52 (its n. 18 cites Rao 1979 Vol. I / 1985 Vol. II), and by Rao 1965, Expedition 7.3, pp. 30-37."
+  },
+  {
+   "site": "Lothal",
+   "field": "phase",
+   "local_label": "V",
+   "status": "MAPPED",
+   "coarse_period": "LATE",
+   "unassigned_reason": null,
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [
+    {
+     "citation": "Rao, S. R. (1963). Excavation at Rangpur and other explorations in Gujarat. Ancient India 18 & 19 (1962 & 1963): 5-207 (Lothal account pp. 177-181).",
+     "locator": "pp. 177-178",
+     "mapping_rule": "Rao's own scheme assigns the fifth structural phase to Period B, 'the late or degenerate Phase' of the Harappa culture.",
+     "verification": "OWN_TEXT",
+     "coarse_assigned": "LATE",
+     "evidence_quote": "The first four Phases are assigned to Period A, which represents the true or mature Harappa culture and the fifth to Period B representing the late or degenerate Phase of that culture."
+    }
+   ],
+   "adjudication_note": "Excavator's own text in the ASI's journal (the Lothal excavation account), read in the publication itself (DLI scan). Corroborated as a paginated restatement of Rao 1979 by Lal 1997-98, Indologica Taurinensia XXIII-XXIV, pp. 51-52 (its n. 18 cites Rao 1979 Vol. I / 1985 Vol. II), and by Rao 1965, Expedition 7.3, pp. 30-37. Rao 1963, p. 181, dates Lothal B 1900 to 1400 BC; restatements of Rao 1979 give c. 1800-1600 BC - the date disagreement is recorded, not reconciled; dates do not assign the period, and every version assigns B to the Late era."
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "A",
+   "status": "MAPPED",
+   "coarse_period": "MATURE",
+   "unassigned_reason": null,
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [
+    {
+     "citation": "Rao, S. R. (1963). Excavation at Rangpur and other explorations in Gujarat. Ancient India 18 & 19 (1962 & 1963): 5-207 (Lothal account pp. 177-181).",
+     "locator": "p. 181",
+     "mapping_rule": "Rao's own conclusion assigns Period A to the mature phase of Harappa culture.",
+     "verification": "OWN_TEXT",
+     "coarse_assigned": "MATURE",
+     "evidence_quote": "Lothal A represents the mature phase of Harappa culture, almost identical with the one noticed in the Intermediate and Early levels of Mohenjo-daro ... Lothal A is dated 2450 to 1900 b.c. and Lothal B 1900 to 1400 b.c."
+    }
+   ],
+   "adjudication_note": "Excavator's own text, p. 181. A paginated restatement of Rao 1979 (Frenez, 2013, pp. 77-84) dates Period A c. 2450-1900 BC '(Rao 1979: 28-33)'."
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "II",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NOT_IN_PUBLISHED_SCHEME",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "Every published statement of Rao's Lothal scheme read enumerates exactly two Lothal periods, A and B (Rao 1963; Rao 1965; Lal 1963, pp. 212-213; Lal 1997-98, pp. 51-52). 'II' exists in the scheme only as a phase (Phase II, Period A); it is a period label in Rao's schemes for other Gujarat sites (Rangpur, Prabhas) in the same 1963 report, never for Lothal."
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 2",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "No site-wide layer-to-phase or layer-to-period concordance for Lothal exists in any publication read (Rao 1963; Rao 1965; Lal 1963; Lal 1997-98; Frenez & Tosi 2005; Frenez 2024). Rao's layer numbers are locus-specific trench stratigraphy: the one published layer-phase pairing is given only with its full locus ('Area SRG 3, GX 10, layer 3, phase III', Frenez 2024, South Asian Studies 40(2), pp. 226-227) and does not determine the site-wide label; Rao 1979's own organisation treats cuttings and stratigraphy section by section. Rao 1979 Vol. 2's object catalogues could not be read within this act's scope, so further per-object pairings of that type could not be checked; the negative is 'none found in the publications read'. 'Layers 2-3' appear jointly only for the same SRG 3 GX 10 warehouse context (Frenez 2024, pp. 222-223)."
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 3",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "No site-wide layer-to-phase or layer-to-period concordance for Lothal exists in any publication read (Rao 1963; Rao 1965; Lal 1963; Lal 1997-98; Frenez & Tosi 2005; Frenez 2024). Rao's layer numbers are locus-specific trench stratigraphy: the one published layer-phase pairing is given only with its full locus ('Area SRG 3, GX 10, layer 3, phase III', Frenez 2024, South Asian Studies 40(2), pp. 226-227) and does not determine the site-wide label; Rao 1979's own organisation treats cuttings and stratigraphy section by section. Rao 1979 Vol. 2's object catalogues could not be read within this act's scope, so further per-object pairings of that type could not be checked; the negative is 'none found in the publications read'. For this label the locus-bound pairing above is the only published assignment of any kind; the cell's rows are site-wide records, not the SRG 3 GX 10 context."
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 4",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "No site-wide layer-to-phase or layer-to-period concordance for Lothal exists in any publication read (Rao 1963; Rao 1965; Lal 1963; Lal 1997-98; Frenez & Tosi 2005; Frenez 2024). Rao's layer numbers are locus-specific trench stratigraphy: the one published layer-phase pairing is given only with its full locus ('Area SRG 3, GX 10, layer 3, phase III', Frenez 2024, South Asian Studies 40(2), pp. 226-227) and does not determine the site-wide label; Rao 1979's own organisation treats cuttings and stratigraphy section by section. Rao 1979 Vol. 2's object catalogues could not be read within this act's scope, so further per-object pairings of that type could not be checked; the negative is 'none found in the publications read'."
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 5",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "No site-wide layer-to-phase or layer-to-period concordance for Lothal exists in any publication read (Rao 1963; Rao 1965; Lal 1963; Lal 1997-98; Frenez & Tosi 2005; Frenez 2024). Rao's layer numbers are locus-specific trench stratigraphy: the one published layer-phase pairing is given only with its full locus ('Area SRG 3, GX 10, layer 3, phase III', Frenez 2024, South Asian Studies 40(2), pp. 226-227) and does not determine the site-wide label; Rao 1979's own organisation treats cuttings and stratigraphy section by section. Rao 1979 Vol. 2's object catalogues could not be read within this act's scope, so further per-object pairings of that type could not be checked; the negative is 'none found in the publications read'."
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 6",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "No site-wide layer-to-phase or layer-to-period concordance for Lothal exists in any publication read (Rao 1963; Rao 1965; Lal 1963; Lal 1997-98; Frenez & Tosi 2005; Frenez 2024). Rao's layer numbers are locus-specific trench stratigraphy: the one published layer-phase pairing is given only with its full locus ('Area SRG 3, GX 10, layer 3, phase III', Frenez 2024, South Asian Studies 40(2), pp. 226-227) and does not determine the site-wide label; Rao 1979's own organisation treats cuttings and stratigraphy section by section. Rao 1979 Vol. 2's object catalogues could not be read within this act's scope, so further per-object pairings of that type could not be checked; the negative is 'none found in the publications read'."
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 6A",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "No site-wide layer-to-phase or layer-to-period concordance for Lothal exists in any publication read (Rao 1963; Rao 1965; Lal 1963; Lal 1997-98; Frenez & Tosi 2005; Frenez 2024). Rao's layer numbers are locus-specific trench stratigraphy: the one published layer-phase pairing is given only with its full locus ('Area SRG 3, GX 10, layer 3, phase III', Frenez 2024, South Asian Studies 40(2), pp. 226-227) and does not determine the site-wide label; Rao 1979's own organisation treats cuttings and stratigraphy section by section. Rao 1979 Vol. 2's object catalogues could not be read within this act's scope, so further per-object pairings of that type could not be checked; the negative is 'none found in the publications read'."
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 7",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "No site-wide layer-to-phase or layer-to-period concordance for Lothal exists in any publication read (Rao 1963; Rao 1965; Lal 1963; Lal 1997-98; Frenez & Tosi 2005; Frenez 2024). Rao's layer numbers are locus-specific trench stratigraphy: the one published layer-phase pairing is given only with its full locus ('Area SRG 3, GX 10, layer 3, phase III', Frenez 2024, South Asian Studies 40(2), pp. 226-227) and does not determine the site-wide label; Rao 1979's own organisation treats cuttings and stratigraphy section by section. Rao 1979 Vol. 2's object catalogues could not be read within this act's scope, so further per-object pairings of that type could not be checked; the negative is 'none found in the publications read'."
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 8",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "No site-wide layer-to-phase or layer-to-period concordance for Lothal exists in any publication read (Rao 1963; Rao 1965; Lal 1963; Lal 1997-98; Frenez & Tosi 2005; Frenez 2024). Rao's layer numbers are locus-specific trench stratigraphy: the one published layer-phase pairing is given only with its full locus ('Area SRG 3, GX 10, layer 3, phase III', Frenez 2024, South Asian Studies 40(2), pp. 226-227) and does not determine the site-wide label; Rao 1979's own organisation treats cuttings and stratigraphy section by section. Rao 1979 Vol. 2's object catalogues could not be read within this act's scope, so further per-object pairings of that type could not be checked; the negative is 'none found in the publications read'."
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 8C",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "No site-wide layer-to-phase or layer-to-period concordance for Lothal exists in any publication read (Rao 1963; Rao 1965; Lal 1963; Lal 1997-98; Frenez & Tosi 2005; Frenez 2024). Rao's layer numbers are locus-specific trench stratigraphy: the one published layer-phase pairing is given only with its full locus ('Area SRG 3, GX 10, layer 3, phase III', Frenez 2024, South Asian Studies 40(2), pp. 226-227) and does not determine the site-wide label; Rao 1979's own organisation treats cuttings and stratigraphy section by section. Rao 1979 Vol. 2's object catalogues could not be read within this act's scope, so further per-object pairings of that type could not be checked; the negative is 'none found in the publications read'."
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 9",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "No site-wide layer-to-phase or layer-to-period concordance for Lothal exists in any publication read (Rao 1963; Rao 1965; Lal 1963; Lal 1997-98; Frenez & Tosi 2005; Frenez 2024). Rao's layer numbers are locus-specific trench stratigraphy: the one published layer-phase pairing is given only with its full locus ('Area SRG 3, GX 10, layer 3, phase III', Frenez 2024, South Asian Studies 40(2), pp. 226-227) and does not determine the site-wide label; Rao 1979's own organisation treats cuttings and stratigraphy section by section. Rao 1979 Vol. 2's object catalogues could not be read within this act's scope, so further per-object pairings of that type could not be checked; the negative is 'none found in the publications read'."
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 10",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "No site-wide layer-to-phase or layer-to-period concordance for Lothal exists in any publication read (Rao 1963; Rao 1965; Lal 1963; Lal 1997-98; Frenez & Tosi 2005; Frenez 2024). Rao's layer numbers are locus-specific trench stratigraphy: the one published layer-phase pairing is given only with its full locus ('Area SRG 3, GX 10, layer 3, phase III', Frenez 2024, South Asian Studies 40(2), pp. 226-227) and does not determine the site-wide label; Rao 1979's own organisation treats cuttings and stratigraphy section by section. Rao 1979 Vol. 2's object catalogues could not be read within this act's scope, so further per-object pairings of that type could not be checked; the negative is 'none found in the publications read'."
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 11",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "No site-wide layer-to-phase or layer-to-period concordance for Lothal exists in any publication read (Rao 1963; Rao 1965; Lal 1963; Lal 1997-98; Frenez & Tosi 2005; Frenez 2024). Rao's layer numbers are locus-specific trench stratigraphy: the one published layer-phase pairing is given only with its full locus ('Area SRG 3, GX 10, layer 3, phase III', Frenez 2024, South Asian Studies 40(2), pp. 226-227) and does not determine the site-wide label; Rao 1979's own organisation treats cuttings and stratigraphy section by section. Rao 1979 Vol. 2's object catalogues could not be read within this act's scope, so further per-object pairings of that type could not be checked; the negative is 'none found in the publications read'."
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 12",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "No site-wide layer-to-phase or layer-to-period concordance for Lothal exists in any publication read (Rao 1963; Rao 1965; Lal 1963; Lal 1997-98; Frenez & Tosi 2005; Frenez 2024). Rao's layer numbers are locus-specific trench stratigraphy: the one published layer-phase pairing is given only with its full locus ('Area SRG 3, GX 10, layer 3, phase III', Frenez 2024, South Asian Studies 40(2), pp. 226-227) and does not determine the site-wide label; Rao 1979's own organisation treats cuttings and stratigraphy section by section. Rao 1979 Vol. 2's object catalogues could not be read within this act's scope, so further per-object pairings of that type could not be checked; the negative is 'none found in the publications read'."
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 13",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "No site-wide layer-to-phase or layer-to-period concordance for Lothal exists in any publication read (Rao 1963; Rao 1965; Lal 1963; Lal 1997-98; Frenez & Tosi 2005; Frenez 2024). Rao's layer numbers are locus-specific trench stratigraphy: the one published layer-phase pairing is given only with its full locus ('Area SRG 3, GX 10, layer 3, phase III', Frenez 2024, South Asian Studies 40(2), pp. 226-227) and does not determine the site-wide label; Rao 1979's own organisation treats cuttings and stratigraphy section by section. Rao 1979 Vol. 2's object catalogues could not be read within this act's scope, so further per-object pairings of that type could not be checked; the negative is 'none found in the publications read'."
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 15",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "No site-wide layer-to-phase or layer-to-period concordance for Lothal exists in any publication read (Rao 1963; Rao 1965; Lal 1963; Lal 1997-98; Frenez & Tosi 2005; Frenez 2024). Rao's layer numbers are locus-specific trench stratigraphy: the one published layer-phase pairing is given only with its full locus ('Area SRG 3, GX 10, layer 3, phase III', Frenez 2024, South Asian Studies 40(2), pp. 226-227) and does not determine the site-wide label; Rao 1979's own organisation treats cuttings and stratigraphy section by section. Rao 1979 Vol. 2's object catalogues could not be read within this act's scope, so further per-object pairings of that type could not be checked; the negative is 'none found in the publications read'."
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 19",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "No site-wide layer-to-phase or layer-to-period concordance for Lothal exists in any publication read (Rao 1963; Rao 1965; Lal 1963; Lal 1997-98; Frenez & Tosi 2005; Frenez 2024). Rao's layer numbers are locus-specific trench stratigraphy: the one published layer-phase pairing is given only with its full locus ('Area SRG 3, GX 10, layer 3, phase III', Frenez 2024, South Asian Studies 40(2), pp. 226-227) and does not determine the site-wide label; Rao 1979's own organisation treats cuttings and stratigraphy section by section. Rao 1979 Vol. 2's object catalogues could not be read within this act's scope, so further per-object pairings of that type could not be checked; the negative is 'none found in the publications read'."
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 25",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "No site-wide layer-to-phase or layer-to-period concordance for Lothal exists in any publication read (Rao 1963; Rao 1965; Lal 1963; Lal 1997-98; Frenez & Tosi 2005; Frenez 2024). Rao's layer numbers are locus-specific trench stratigraphy: the one published layer-phase pairing is given only with its full locus ('Area SRG 3, GX 10, layer 3, phase III', Frenez 2024, South Asian Studies 40(2), pp. 226-227) and does not determine the site-wide label; Rao 1979's own organisation treats cuttings and stratigraphy section by section. Rao 1979 Vol. 2's object catalogues could not be read within this act's scope, so further per-object pairings of that type could not be checked; the negative is 'none found in the publications read'."
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer13",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "No site-wide layer-to-phase or layer-to-period concordance for Lothal exists in any publication read (Rao 1963; Rao 1965; Lal 1963; Lal 1997-98; Frenez & Tosi 2005; Frenez 2024). Rao's layer numbers are locus-specific trench stratigraphy: the one published layer-phase pairing is given only with its full locus ('Area SRG 3, GX 10, layer 3, phase III', Frenez 2024, South Asian Studies 40(2), pp. 226-227) and does not determine the site-wide label; Rao 1979's own organisation treats cuttings and stratigraphy section by section. Rao 1979 Vol. 2's object catalogues could not be read within this act's scope, so further per-object pairings of that type could not be checked; the negative is 'none found in the publications read'."
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 3-8",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "No site-wide layer-to-phase or layer-to-period concordance for Lothal exists in any publication read (Rao 1963; Rao 1965; Lal 1963; Lal 1997-98; Frenez & Tosi 2005; Frenez 2024). Rao's layer numbers are locus-specific trench stratigraphy: the one published layer-phase pairing is given only with its full locus ('Area SRG 3, GX 10, layer 3, phase III', Frenez 2024, South Asian Studies 40(2), pp. 226-227) and does not determine the site-wide label; Rao 1979's own organisation treats cuttings and stratigraphy section by section. Rao 1979 Vol. 2's object catalogues could not be read within this act's scope, so further per-object pairings of that type could not be checked; the negative is 'none found in the publications read'."
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 4-6",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "No site-wide layer-to-phase or layer-to-period concordance for Lothal exists in any publication read (Rao 1963; Rao 1965; Lal 1963; Lal 1997-98; Frenez & Tosi 2005; Frenez 2024). Rao's layer numbers are locus-specific trench stratigraphy: the one published layer-phase pairing is given only with its full locus ('Area SRG 3, GX 10, layer 3, phase III', Frenez 2024, South Asian Studies 40(2), pp. 226-227) and does not determine the site-wide label; Rao 1979's own organisation treats cuttings and stratigraphy section by section. Rao 1979 Vol. 2's object catalogues could not be read within this act's scope, so further per-object pairings of that type could not be checked; the negative is 'none found in the publications read'."
+  },
+  {
+   "site": "Nausharo",
+   "field": "period",
+   "local_label": "2",
+   "status": "MAPPED",
+   "coarse_period": "MATURE",
+   "unassigned_reason": null,
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [
+    {
+     "citation": "Jarrige, J.-F., Didier, A. & Quivron, G. (2011). Shahr-i Sokhta and the Chronology of the Indo-Iranian Borderlands. Paleorient 37(2): 7-34.",
+     "locator": "pp. 9, 30",
+     "mapping_rule": "The excavator's own later scheme defines Nausharo's 'Harappan' sequence as Periods II, III and IV, and equates Periods II-III with Harappa 3A-B as 'the two first major phases of the Indus civilization' - the site's Mature-period occupation.",
+     "verification": "OWN_TEXT",
+     "coarse_assigned": "MATURE",
+     "evidence_quote": "This division is consistent with the 'Harappan' sequence defined at Nausharo, with Periods II, III and IV. (p. 9) ... the two first major phases of the Indus civilization at the time of Nausharo II-III, Harappa 3A-B or Amri IIIA-B (p. 30)."
+    }
+   ],
+   "adjudication_note": "Peer-reviewed journal (Paleorient), excavator as first author, read in the article's own text. Corroborated by Kenoyer 2020, Table 1, p. 219 ('=Nausharo, Period II' under the Integration Era block) - an edited-volume table, corroboration only."
+  },
+  {
+   "site": "Nausharo",
+   "field": "period",
+   "local_label": "3",
+   "status": "MAPPED",
+   "coarse_period": "MATURE",
+   "unassigned_reason": null,
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [
+    {
+     "citation": "Jarrige, J.-F., Didier, A. & Quivron, G. (2011). Shahr-i Sokhta and the Chronology of the Indo-Iranian Borderlands. Paleorient 37(2): 7-34.",
+     "locator": "pp. 9, 30",
+     "mapping_rule": "As for Period II: Period III is equated with Harappa 3A-B among 'the two first major phases of the Indus civilization' in the excavator's own scheme.",
+     "verification": "OWN_TEXT",
+     "coarse_assigned": "MATURE",
+     "evidence_quote": "the two first major phases of the Indus civilization at the time of Nausharo II-III, Harappa 3A-B or Amri IIIA-B (p. 30)."
+    }
+   ],
+   "adjudication_note": "The tasking frame (Period III = Late) is contradicted by the strongest sources read and is not followed: Jarrige's own text places III in the Indus (Mature) span, and C. Jarrige 1994 is titled 'The Mature Indus phase at Nausharo as seen from a block of Period III'. A website chronology giving Period III c. 1900-1800 BC is a locator aid, unverified, and its own quoted Jarrige sentence assigns II and III to the mature Harappan civilization."
+  },
+  {
+   "site": "Nausharo",
+   "field": "period",
+   "local_label": "4",
+   "status": "MAPPED",
+   "coarse_period": "MATURE",
+   "unassigned_reason": null,
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [
+    {
+     "citation": "Jarrige, J.-F., Didier, A. & Quivron, G. (2011). Shahr-i Sokhta and the Chronology of the Indo-Iranian Borderlands. Paleorient 37(2): 7-34.",
+     "locator": "pp. 9, 30",
+     "mapping_rule": "Period IV is a member of the excavator's own published Nausharo sequence ('the Harappan sequence defined at Nausharo, with Periods II, III and IV', p. 9), carries 'a well-attested Oxus component in the Indus material of Period IV' (p. 9), and is equated with Harappa 3C (p. 30) - inside the Indus (Mature) span.",
+     "verification": "OWN_TEXT",
+     "coarse_assigned": "MATURE",
+     "evidence_quote": "the Indus civilization has been divided into three main periods which date approximately to between 2500 and 1900/1800 BC (Amri IIIA, IIIB, IIIC). Harappa excavations have confirmed this sequence with Periods 3A, 3B and 3C. This division is consistent with the 'Harappan' sequence defined at Nausharo, with Periods II, III and IV. (p. 9) ... At Nausharo, the presence of a well-attested 'Oxus' component in the Indus material of Period IV (p. 9)."
+    }
+   ],
+   "adjudication_note": "DEPARTURE FROM THE FREEZE'S ILLUSTRATION, recorded plainly: section 5.4 gives Nausharo '4' as its example of NOT_IN_PUBLISHED_SCHEME, following the Phase-139 register's consultation (which reported the sequence ending at Period III). The excavator's own published scheme, read in its own text at the section 3.3 bar, contains Period IV and determines it; under the frozen standard the published evidence governs the cell, and the example stands as an illustration of the reason, not a pre-decided answer. Kenoyer 2020, Table 1, p. 219, corroborates ('Harappa: Period 3C, Final 2200-1900 BCE / =Nausharo, Period IV 2100-2000 BCE', Integration Era block)."
+  },
+  {
+   "site": "Nausharo",
+   "field": "phase",
+   "local_label": "B",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "Jarrige's published letter labels are compounds - IA-ID within Period I and IIA-IIB within Period II (Jarrige, Didier & Quivron 2011, p. 9 and its Table 1 print 'Nausharo IB', 'Nausharo IC', 'Period IB-D'). No publication uses a bare letter as a Nausharo phase label with a period assignment; targeted searches found none."
+  },
+  {
+   "site": "Nausharo",
+   "field": "phase",
+   "local_label": "C",
+   "status": "UNASSIGNED",
+   "coarse_period": "UNASSIGNED",
+   "unassigned_reason": "NO_PUBLISHED_DETERMINATION",
+   "contested": false,
+   "sensitivity_label": null,
+   "determinations": [],
+   "adjudication_note": "Jarrige's published letter labels are compounds - IA-ID within Period I and IIA-IIB within Period II (Jarrige, Didier & Quivron 2011, p. 9 and its Table 1 print 'Nausharo IB', 'Nausharo IC', 'Period IB-D'). No publication uses a bare letter as a Nausharo phase label with a period assignment; targeted searches found none."
+  }
+ ]
+}

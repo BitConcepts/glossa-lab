@@ -1,0 +1,448 @@
+#!/usr/bin/env python3
+"""Build the Spec 063 freeze record (freeze.json).
+
+This builder was written at the freeze act of
+2026-10-21 (the draft carried no builder and no
+draft digest: the digest is computed over the
+recovered register exactly once, at the freeze -
+the Spec 035 ordering). Run with the Glossa
+backend venv python from the repository root:
+
+    python specs/063-sign821-identification-successor/build_freeze.py
+
+Writes
+specs/063-sign821-identification-successor/freeze.json
+(framework026 build_freeze payload: definition +
+source hashes + environment, digest = SHA-256 of
+the canonical JSON serialisation) and prints the
+digest.
+"""
+from __future__ import annotations
+
+import json
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(REPO / "backend"))
+
+from glossa_lab.framework026 import build_freeze  # noqa: E402
+
+SPEC_DIR = "specs/063-sign821-identification-successor"
+
+DEFINITION = {
+    "spec": "specs/063-sign821-identification-successor/spec.md",
+    "freeze_doc": "specs/063-sign821-identification-successor/freeze.md",
+    "experiment_id": "spec063-sign821-identification-successor",
+    "register": {
+        "path": "specs/063-sign821-identification-successor/claims.json",
+        "register_version": "0.6-draft",
+        "claims": 15,
+        "aee_hook_pass": (
+            "PASSED at the freeze act of 2026-10-21 under aee 1.5.3: "
+            "after_specify, after_plan, and after_tasks each cleared "
+            "over the recovered register (the draft register already "
+            "carried engine evidence values and mutual independent_of "
+            "declarations, so no loadability recovery was needed; "
+            "round 1 over 0.5-draft returned 16 failure modes: 15 "
+            "FR-2.3 draft-cap records and 1 irreducibility challenge "
+            "recorded under the coverage_gap category (F063-C12); "
+            "the challenged head restated as a single proposition "
+            "with its condition moved into its boundary, and the "
+            "freeze rulings DD-063-10 to DD-063-14 carried into the "
+            "boundaries of F063-C03, C05, C06, C09, and C10, at "
+            "0.6-draft; 15 draft-cap records only over the final "
+            "0.6-draft register), at every hook zero correctness "
+            "failure modes and no claim below the 0.70 threshold "
+            "(minimum propagated 0.795); the engine outcome word "
+            "reads iterate solely from the draft-cap records (gate "
+            "reading DD-063-15; record in "
+            "specs/063-sign821-identification-successor/aee/freeze-aee-note.md)"
+        ),
+    },
+    "basis": {
+        "adjudication": "specs/063-sign821-identification-successor/adjudication.md",
+        "decisions": (
+            "DECIDED by the owner on 2026-10-21 (not proposals): the "
+            "amendment package Item 5 approval (build the successor "
+            "to Spec 056 through freeze and OSF filing), on the "
+            "authoritative draft at Amendment Queue Item 5 (drawn-form "
+            "references for Wells's signs 821 and 297), followed "
+            "exactly in its section 6.1 (the reference record), "
+            "section 7 (the identification protocol), and section 8 "
+            "(what the successor is). Draft decisions DD-063-1 to "
+            "DD-063-8 are recorded in adjudication.md section 4 and "
+            "stand as drafted. Freeze decisions DD-063-9 to "
+            "DD-063-15 are recorded in adjudication.md section 7: the "
+            "spec's own OSF contract registration filed at the "
+            "freeze under E-1 (DD-063-9); Phase-425 allocated, "
+            "verified unallocated (DD-063-10); route 3 (composition) "
+            "adopted with its justification (DD-063-11); the step-0 "
+            "class names confirmed, including the thesis file "
+            "asserted before any plate read (DD-063-12); the freeze "
+            "and filing acts taken, execution not authorised "
+            "(DD-063-13); every section 2 pin re-verified two routes "
+            "and the preserved reference's digest pinned as computed "
+            "at commitment (DD-063-14); and the DD-038-10 AEE gate "
+            "reading adopted (DD-063-15)."
+        ),
+    },
+    "design": {
+        "phase": "Phase-425",
+        "predecessor": {
+            "spec": "specs/056-sign821-recovery",
+            "phase": "Phase-418",
+            "freeze_digest": "64c28ce1aa379d9b47d230544e372b3446906d53422fe16da51fbce3bc94a63e",
+            "outcome": "IDENTIFICATION FAILED",
+            "posture": (
+                "Spec 056's record is cited, never edited "
+                "(DD-063-1); its IDENTIFICATION FAILED stands as "
+                "the record until a successor execution under this "
+                "spec replaces the outcome with its own"
+            ),
+        },
+        "candidate": {
+            "id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001",
+            "candidate": "K-1",
+            "proposition": (
+                "sign 821, in the Dholavira signboard contexts, has "
+                "a meaning of 'city', either as a determinative or "
+                "as a word (Wells 2015, printed p. 92; held text "
+                "lines 2835-2836)"
+            ),
+            "record": (
+                "Spec 056's executed record: K-1 passed R-1, R-2, "
+                "R-4 and R-5 on the pinned passage (digest "
+                "51d6fb3a460d94abc98c2ff735b17c5131a68c203e4d16692a21725790c0c604) "
+                "and failed R-3 only - the registry carries no W821 "
+                "entry and Figure 2.6's entry is graphic-only in "
+                "the held text (captions only, lines 868-880); the "
+                "argument conditions are of record under this spec "
+                "(DD-063-2) and R-3 is run afresh under the section "
+                "5 protocol"
+            ),
+        },
+        "preservation": {
+            "file": "specs/063-sign821-identification-successor/drawn-form-reference-821.json",
+            "sha256": "695dd35d55bd2f68d8c9db0ea79dde249b53c55d11ed2f622752a18511e65999",
+            "bytes": 5689,
+            "schema": "glossa.drawn-form-reference/1",
+            "contents": (
+                "exactly the amendment draft section 6.1 contents: "
+                "target with list-naming evidence (held text lines "
+                "414 and 665); citation-pinned reference (Figure "
+                "2.6, printed pp. 19-22; Figure 6.13, printed p. 93; "
+                "held-text caption lines); formation reference "
+                "(Appendix II 'Doubled Signs', held text lines "
+                "3691-3704, verbatim); base-sign registry anchor "
+                "(P378, W820, M391, 'Wheel with 6 spokes with even "
+                "angles'); the descriptor ('Sign 821 is the doubled "
+                "form of sign 820: two identical oval outlines side "
+                "by side, touching at the vertical midline, each "
+                "oval divided by three straight diameters (one "
+                "vertical, two diagonal) into six sectors'); plate "
+                "confirmation (Wells 2006 thesis p. 92 / PDF p. 104; "
+                "file SHA-256 "
+                "4b39330c7f4ccf2770093318bfdaf4efaffa7fdf4a8cb5763a650351fffa4b4e); "
+                "traps named (Yunmapped_0821; any number-only match; "
+                "sign 861); provenance chain; license position "
+                "(amendment draft section 4 paragraphs 1, 2, 4)"
+            ),
+            "posture": (
+                "the preservation act is performed inside this spec "
+                "(DD-063-4); text only - no image is committed "
+                "anywhere in this spec"
+            ),
+        },
+        "protocol": {
+            "step0_gates": (
+                "fail-closed, in order, before any derivation (spec "
+                "section 3): gate 0.1 input integrity - a mismatch "
+                "closes as CLOSED AT STEP 0 - INPUT PIN MISMATCH, "
+                "naming the input; gate 0.2 thesis file asserted - "
+                "the local thesis PDF's SHA-256 is asserted to "
+                "4b39330c7f4ccf2770093318bfdaf4efaffa7fdf4a8cb5763a650351fffa4b4e "
+                "before any plate is read, a failure closes as "
+                "CLOSED AT STEP 0 - THESIS FILE PIN MISMATCH; gate "
+                "0.3 reference producible - the preserved reference "
+                "at its pinned digest and the plate page (thesis "
+                "p. 92 / PDF p. 104) produced from the pinned local "
+                "file, a failure closes as CLOSED AT STEP 0 - "
+                "REFERENCE NOT PRODUCIBLE; nothing is repaired at "
+                "run time and no substitute artefact, edition, "
+                "reference, or file is admitted (DD-063-12)"
+            ),
+            "step_d": (
+                "two independent derivations of the drawn-form "
+                "descriptor from the plate, each performed without "
+                "sight of the other and without sight of the "
+                "preserved record's drafted descriptor wording, each "
+                "recording the plate locator, the feature list it "
+                "read, and the neighbour set it discriminated "
+                "against; reconciliation by the recorded features; "
+                "an unsettled disagreement is recorded verbatim and "
+                "resolves AGAINST identification (the DD-056-14 "
+                "rule, carried); the reconciled descriptor must "
+                "agree with the preserved record's descriptor - a "
+                "material difference closes the run as "
+                "IDENTIFICATION FAILED (reference not sustained), "
+                "naming the difference"
+            ),
+            "step_c": (
+                "continuity check for 821, by anchors: the run "
+                "states what anchors the plate number to the "
+                "2011/2015 numbering - the formation passage (the "
+                "2015 book's own text), the registry's 2015-form "
+                "cross-match (W820 on P378's six-spoke-wheel "
+                "description), and the plate agreement (820 a "
+                "six-sector wheel in an oval; 821 that wheel "
+                "doubled); the check passes on the anchors' "
+                "agreement (DD-063-6); a plate number read without "
+                "this step is a number match and is forbidden; "
+                "failure closes as IDENTIFICATION FAILED "
+                "(continuity not sustained)"
+            ),
+            "step_m": (
+                "the match, by exactly one frozen route. Route 1 "
+                "(registry, by drawn form): a registry row whose "
+                "drawn description matches the reconciled "
+                "descriptor, never by number; the composition "
+                "descriptor is matched as a drawn form (a doubled "
+                "six-spoke wheel), not via the W820 cell; if no row "
+                "carries that drawn form, route 1 fails and the run "
+                "proceeds to route 2 - it does not fall back to "
+                "P378, which is the base sign, not the target. "
+                "Route 2 (the list's own entry, through the "
+                "preserved reference): the preserved reference "
+                "record itself, cited as the preserved drawn-form "
+                "reference for the source list's entry. Route 3 "
+                "(composition; 821 only; NEW; DD-063-11): the "
+                "formation passage plus the base sign's registry "
+                "drawn description, with the plate confirmation as "
+                "its check, frozen with its justification, verbatim "
+                "in substance from the amendment draft section 7: a "
+                "formation statement in the source's own appendix, "
+                "anchored to a registry drawn description and "
+                "confirmed on the author's own earlier plate, is a "
+                "drawn-form identification and not a number match, "
+                "because every step is a drawn form - the base "
+                "sign's registry description, the doubling operation "
+                "from the source's own appendix, the plate's drawn "
+                "pair - and the number is used only to locate them. "
+                "No route may be constructed at run time"
+            ),
+            "traps": (
+                "asserted in every run record: Yunmapped_0821 (a "
+                "Yajnadevam glyph identifier, not Wells's 821); "
+                "sign 861 (Figure 6.12) as a reading-confusion "
+                "trap; P378 used as the target's match (it is the "
+                "base sign, 820); and number-only matching in any "
+                "form, including a plate number read without step C"
+            ),
+        },
+        "recovery_test": (
+            "Spec 056's section 5 test carried verbatim in "
+            "substance, applied to K-1: conjunctive R-1 through "
+            "R-5 - R-1 stated from the passage's own argument, "
+            "R-2 a specific contention, R-3 its subject identified "
+            "under the protocol above, R-4 a falsification "
+            "condition statable from the passage's own logic, R-5 "
+            "the passage's stated numbers, contexts, and "
+            "conditions carried; R-1, R-2, R-4 and R-5 stand as "
+            "adjudicated on Spec 056's executed record (DD-063-2); "
+            "a candidate failing any one condition is not "
+            "recovered, with the failing condition named"
+        ),
+        "outcomes": [
+            "RECOVERED",
+            "IDENTIFICATION FAILED",
+            "CLOSED AT STEP 0",
+        ],
+        "recovered_claim": {
+            "placement": (
+                "an appended, dated restatement on the fragment's "
+                "own claim record, same claim identifier (the "
+                "DD-056-3 / DD-056-12 placement, carried), carrying "
+                "the recovered proposition, its verbatim quote and "
+                "locator, the named sign list and the identification "
+                "(route and reference, with the preserved "
+                "reference's digest), the R-4 falsification "
+                "condition, the R-5 numbers and conditions, and the "
+                "test-design note; the fragment's original entry "
+                "and its spec056_closure append stand above the "
+                "append, unedited"
+            ),
+            "lifecycle": (
+                "DD-056-6 confirmed for this spec: the recovered "
+                "claim enters at the created stage, status "
+                "untested; recovery is not checking, explanation, "
+                "or acceptance, and no output may present it as "
+                "supported, checked, or digested"
+            ),
+            "test_note": (
+                "DD-056-17 pattern carried: the test-design note "
+                "states, at minimum, what would be checked, on what "
+                "named data, against the R-4 condition; the test is "
+                "designed as part of the recovery output, and no "
+                "test is executed under this spec"
+            ),
+        },
+        "closure_writes": (
+            "on IDENTIFICATION FAILED: the outcome record with "
+            "its section 6.1 wording and the section 8 reporting "
+            "set, an appended dated closure entry on the "
+            "fragment's own claim record stating the gap (the "
+            "failed limb), the LEDGER entry, and the "
+            "experiment-graph node record; the fragment's stage "
+            "and status are unchanged. On CLOSED AT STEP 0: the "
+            "outcome record with the gate record and the LEDGER "
+            "entry"
+        ),
+        "freeze_does_not": (
+            "freezing the reference does not establish that sign "
+            "821 is identified - identification is the execution's "
+            "step D/C/M work, which has not run; Spec 056's "
+            "IDENTIFICATION FAILED stands as the record until a "
+            "successor execution replaces the outcome with its "
+            "own; the freeze also recovers nothing, retires "
+            "nothing, designs no test, and decides nothing about "
+            "what sign 821 means"
+        ),
+        "execution_gate": (
+            "Not satisfied at the freeze: execution (Phase-425) "
+            "begins only after this freeze has merged, the OSF "
+            "registration's approval act has completed, and a "
+            "separate execution order is given (DD-063-13)"
+        ),
+    },
+    "inputs": {
+        "held_text": {
+            "file": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+            "sha256": "62acf855ac3ecf39fc7a7e6597dba9a3cb6e35948528f69e9424eb81308d261e",
+            "bytes": 268195,
+        },
+        "registry": {
+            "file": "data/crosswalks/canonical_sign_registry.csv",
+            "sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",
+            "bytes": 111583,
+            "rows": 803,
+            "w821_entries": 0,
+            "base_anchor": "P378 / W820 / M391, 'Wheel with 6 spokes with even angles'",
+            "trap": "the Yunmapped_0821 row is a Yajnadevam glyph identifier, not Wells's 821",
+        },
+        "witness": {
+            "file": "data/crosswalks/wells_segmentation_witness_v1.csv",
+            "sha256": "ecbc37a461553cd1d06fb7f88a27d2daf85bf53c40b7558f597cbc6735b3c0da",
+            "bytes": 67692,
+            "rows": 157,
+            "grapheme_821_rows": 0,
+        },
+        "spec056_freeze": {
+            "file": "specs/056-sign821-recovery/freeze.json",
+            "digest": "64c28ce1aa379d9b47d230544e372b3446906d53422fe16da51fbce3bc94a63e",
+        },
+        "spec056_outcome": {
+            "file": "specs/056-sign821-recovery/outcome.md",
+            "sha256": "ff16184aa265b68358865c51e8f43dc9c9ec40688a53614792640f1d2e2d844e",
+            "bytes": 24515,
+        },
+        "spec056_extraction": {
+            "file": "specs/056-sign821-recovery/extraction-record.md",
+            "sha256": "ad4a3f747d6ae4e0f13ae984c1169bd4a94570625e7dcc199146ff2ef73fb6ab",
+            "bytes": 17773,
+        },
+        "claim_file": {
+            "file": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+            "sha256": "bd0f7abddc9c26537f4ebe5f66f6a1fc69d394a4c2edbe745a8b7eb1ddc3333a",
+            "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001",
+            "posture": (
+                "the freeze-time hash is carried as this definition "
+                "constant in the Spec 038 form: the extracted-claims "
+                "store is regenerated by the backend suite, so the "
+                "freeze tests assert the constant plus the "
+                "fragment's facts on the live file (entry present, "
+                "UNTESTED, created, spec056_closure append present), "
+                "never a live-file hash on it"
+            ),
+        },
+        "phase104_evaluation": {
+            "file": "glossa-indus/reports/phase104_claims_evaluation.json",
+            "sha256": "2d0b83e8055a04b96635007054cfadde472f605dc7e5b249a61c8f9ea89b858d",
+            "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001",
+            "verdict": "stays_untested",
+            "rule": "RULE-NUM",
+        },
+        "lane2_drafts": {
+            "file": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+            "sha256": "3f645c9a4132ba5a0bc5fca4ca22810b8b6169a2f1f9f85f35990c7b72df33fb",
+        },
+        "anchors": {
+            "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+            "sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+            "posture": "this spec moves no anchor; the file is asserted byte-identical before and after any execution",
+        },
+        "passage": {
+            "sha256": "51d6fb3a460d94abc98c2ff735b17c5131a68c203e4d16692a21725790c0c604",
+            "bytes": 5354,
+            "lines": "2783-2871",
+        },
+        "reference": {
+            "file": "specs/063-sign821-identification-successor/drawn-form-reference-821.json",
+            "sha256": "695dd35d55bd2f68d8c9db0ea79dde249b53c55d11ed2f622752a18511e65999",
+            "bytes": 5689,
+            "schema": "glossa.drawn-form-reference/1",
+        },
+        "thesis_pdf": {
+            "file": "Wells2006_PhD_EpigraphicApproachesToIndusWriting.pdf (held locally under downloads/wells-phd-thesis-2006/; open deposit, not committed)",
+            "sha256": "4b39330c7f4ccf2770093318bfdaf4efaffa7fdf4a8cb5763a650351fffa4b4e",
+            "bytes": 19313853,
+            "posture": (
+                "asserted on the local file before freezing, and "
+                "asserted again at execution gate 0.2 before any "
+                "plate is read; the file is not a repository file "
+                "and no live-repo hash is asserted on it"
+            ),
+        },
+        "pin_verification": (
+            "before freezing, every repository pin above was "
+            "re-derived by two independent routes (git-blob and "
+            "contents-API raw) at main "
+            "e03f7832f99463d3496241676e21bf85e62fb9cc, the routes "
+            "agreeing byte-for-byte on every file and every hash "
+            "equalling its pin; the thesis PDF's digest was "
+            "asserted on the local file itself in the same pass "
+            "(freeze.md section 2)"
+        ),
+    },
+    "environment": {
+        "python": "3.12.3",
+        "runner": "backend (venv glossa-lab)",
+        "aee": "1.5.3 (the 1.5.x line; adopted environment; package pinned >=1.5.0,<1.6)",
+        "specify": "1.0.10",
+    },
+}
+
+SOURCES = [
+    f"{SPEC_DIR}/freeze.md",
+    f"{SPEC_DIR}/spec.md",
+    f"{SPEC_DIR}/claims.json",
+    f"{SPEC_DIR}/adjudication.md",
+    f"{SPEC_DIR}/drawn-form-reference-821.json",
+    f"{SPEC_DIR}/aee/freeze-aee-note.md",
+    f"{SPEC_DIR}/build_freeze.py",
+    "backend/tests/test_spec063_freeze.py",
+]
+
+
+def main() -> int:
+    record = build_freeze(DEFINITION, REPO, SOURCES)
+    out = REPO / SPEC_DIR / "freeze.json"
+    out.write_text(
+        json.dumps(record, indent=1) + "\n", encoding="utf-8"
+    )
+    print(record["digest"])
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

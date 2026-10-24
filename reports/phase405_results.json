@@ -1,0 +1,112 @@
+{
+ "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
+ "closure_class": "IDENTIFICATION FAILED (sign unmatched)",
+ "execution_date": "2026-10-21",
+ "executor": "Muse Spark via Muse (AI agent)",
+ "fence": "This result settles what the published lists say the drawn sign depicts. It is not evidence of what the sign meant in use.",
+ "freeze_act_digest": "80c3be31e5af5236f71cb2c1894b2946f9b8ad47b12bdeab9d03cd76468af405",
+ "freeze_digest": "e0d7add84b9d28ae5f6a6b392dca578b727ad4d99a117360a57d39f3b94b01c6",
+ "headline_wording": "The fragment 'sign 297 is the horned tiger' cannot be carried to a concordance: the drawn sign could not be matched from Wells's published list. The record stays a stated gap. No statement about the sign is made, and nothing is fed to Asset A.",
+ "osf_registration": "dnts8 (approved + public before the run)",
+ "outcome": "IDENTIFICATION FAILED",
+ "phase": "Phase-405",
+ "spec": "046",
+ "step0": {
+  "gate_0_1": {
+   "claim_record": {
+    "expected_sha256": "bd0f7abddc9c26537f4ebe5f66f6a1fc69d394a4c2edbe745a8b7eb1ddc3333a",
+    "file": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+    "match": true,
+    "observed_sha256": "bd0f7abddc9c26537f4ebe5f66f6a1fc69d394a4c2edbe745a8b7eb1ddc3333a"
+   },
+   "crosswalk_registry": {
+    "expected_sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",
+    "file": "data/crosswalks/canonical_sign_registry.csv",
+    "match": true,
+    "observed_sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420"
+   },
+   "lane2_drafts": {
+    "expected_sha256": "3f645c9a4132ba5a0bc5fca4ca22810b8b6169a2f1f9f85f35990c7b72df33fb",
+    "file": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+    "match": true,
+    "observed_sha256": "3f645c9a4132ba5a0bc5fca4ca22810b8b6169a2f1f9f85f35990c7b72df33fb"
+   },
+   "phase104_evaluation": {
+    "expected_sha256": "2d0b83e8055a04b96635007054cfadde472f605dc7e5b249a61c8f9ea89b858d",
+    "file": "glossa-indus/reports/phase104_claims_evaluation.json",
+    "match": true,
+    "observed_sha256": "2d0b83e8055a04b96635007054cfadde472f605dc7e5b249a61c8f9ea89b858d"
+   },
+   "source_book_held_text": {
+    "expected_sha256": "62acf855ac3ecf39fc7a7e6597dba9a3cb6e35948528f69e9424eb81308d261e",
+    "file": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+    "match": true,
+    "observed_sha256": "62acf855ac3ecf39fc7a7e6597dba9a3cb6e35948528f69e9424eb81308d261e"
+   }
+  },
+  "gate_0_2": {
+   "located_verbatim": true,
+   "passage_lines_in_held_text": [
+    2941
+   ],
+   "passage_locator": "printed p. 97",
+   "passage_quote": "Sign 532 and sign 297 are positioned in such a way as to resemble the position of the graphic element and several of their features are repeated in the image field. It is proposed here that sign 532 is a logograph for the anthropomorphic figure and that sign 297 represents the horned tiger, or perhaps just \u2018tiger\u2019 generically.",
+   "source": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt"
+  },
+  "gate_0_3": {
+   "CISI": {
+    "availability": "HELD",
+    "basis": "Phase-124 catalogue layers; committed local-store manifest reports/phase124_cisi_local_store_manifest.json present",
+    "citation": "Joshi & Parpola (eds.), Corpus of Indus Seals and Inscriptions 1 (1987; MASI 86); Shah & Parpola (eds.), vol. 2 (1991) (CITATIONS.md \u00a7\u00a7A.2\u2013A.3)",
+    "locator_form": "volume plus catalogue/object entry plus page or plate",
+    "role": "INDEPENDENT"
+   },
+   "MAHADEVAN": {
+    "availability": "CITABLE",
+    "basis": "full citation of record; Mahadevan crosswalk data held in the pinned registry",
+    "citation": "Mahadevan, The Indus Script: Texts, Concordance and Tables, 1977 (MASI No. 77) (CITATIONS.md \u00a7A.1)",
+    "locator_form": "M-number plus concordance/tables page or entry",
+    "role": "INDEPENDENT"
+   },
+   "PARPOLA": {
+    "availability": "CITABLE",
+    "basis": "full citation of record; the program's crosswalk registry is keyed to Parpola 1982 numbering",
+    "citation": "Parpola, Deciphering the Indus Script, 1994 (CITATIONS.md \u00a7C.1)",
+    "locator_form": "P-number (sign list of 386 signs)",
+    "role": "INDEPENDENT"
+   },
+   "WELLS": {
+    "availability": "HELD",
+    "basis": "held cleaned text, pin-verified at gate 0.1",
+    "citation": "Wells, The Archaeology and Epigraphy of Indus Writing, 2015 (CITATIONS.md \u00a7A.7)",
+    "locator_form": "chapter/figure plus the book's own sign number",
+    "role": "SOURCE"
+   }
+  }
+ },
+ "step1": {
+  "apparatus_evidence": {
+   "chapter_2_gives_the_list": true,
+   "figure_2_6_caption": true,
+   "sign_list_used_here_wells_2011": true
+  },
+  "drawn_sign_match": null,
+  "match_evidence": {
+   "p297_description": "Ladder motif. Two nearby vertical lines with a number of horizontal lines going across the middle, going the length of the verticals.",
+   "registry_rows": 803,
+   "registry_tiger_descriptions": 0,
+   "w297_cells": [
+    {
+     "description": "Prismed light rays, with opposite slanting on top vs bottom, more rays on bottom",
+     "sign_id": "P205",
+     "singleton": false,
+     "wells_ids": "W289|W290|W291|W292|W293|W294|W295|W296|W297|W299|W300|W301|W302|W303|W304|W305|W306"
+    }
+   ],
+   "wells_witness_grapheme_297_rows": [],
+   "wells_witness_rows": 157
+  },
+  "match_failure": "No crosswalk-registry entry carries the drawn sign: the only W297 occurrence in the pinned registry is one value inside the 17-value wells_ids cell on the P205 row ('Prismed light rays\u2026'), which the frozen spec (section 4.3) names as a trap that does not by itself identify the passage's sign; no registry description names a tiger; the Phase-123 Wells segmentation witness carries no Wells grapheme 297. In Wells's published list itself (Figure 2.6), the drawn forms did not survive the held copy's text extraction (the figure pages carry captions only), so no drawn-sign reference the executor can inspect and defend exists in the held record. The prior in-repo search stands unrebutted: Spec 004 WS2 (glossa-indus/LEDGER.md, 2026-10-05) recorded three candidate referents \u2014 M297, P297, W297\u2192P205/M180 \u2014 none matching the description in-repo. Matching by number is forbidden (F046-C07) and was not used.",
+  "source_list_named": "Wells's own sign list (Wells 2011), as given in Wells 2015, Chapter 2, 'The Indus Sign List' (Figure 2.6)"
+ }
+}

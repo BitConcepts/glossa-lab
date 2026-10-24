@@ -1,0 +1,895 @@
+{
+  "anchors_assertion": {
+    "after_sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+    "before_sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+    "byte_identical": true
+  },
+  "asset_b": {
+    "path": "specs/047-roif-ledger-distribution/asset-b/site-functions.jsonl",
+    "rows": 30,
+    "sha256": "a1a9e48422ab7ab2ef1d340c5ca0eb81a315253b196fdc199d77d2e5739c9f85",
+    "status_counts": {
+      "AGREED": 3,
+      "DISAGREED": 1,
+      "NO-SOURCE": 16,
+      "SINGLE-SOURCE": 10
+    },
+    "testable_count": 2,
+    "testable_sites": [
+      {
+        "primary_class": "administrative",
+        "program_site_id": "harappa",
+        "site_name_as_published": "Harappa"
+      },
+      {
+        "primary_class": "port/trade",
+        "program_site_id": "lothal",
+        "site_name_as_published": "Lothal"
+      }
+    ]
+  },
+  "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_003",
+  "counting_layer": {
+    "bytes": 593253,
+    "columns": [
+      "letters",
+      "form",
+      "cisi_number",
+      "site",
+      "iconography",
+      "position",
+      "seal_id",
+      "upos",
+      "xpos",
+      "letter_label_encoded",
+      "prefix",
+      "vowel",
+      "morpheme boundary",
+      "noun",
+      "verb",
+      "FormWithoutLemma",
+      "Counts",
+      "MorphemeSeparated",
+      "prefix_label_encoded"
+    ],
+    "export_form": "CSV, the file bytes as held; 7,002 sign-token rows in file order (grouped by inscription, position ascending within each inscription); no reordering, filtering, or re-encoding applied — the export is the file as held, pinned by the digest below",
+    "identification": "the Holdat corpus file the Phase-45/46/54 scripts of record read, as held in the database downloads tree; the layer Phase-104 counted (site-attributed, M-numbered)",
+    "inscriptions": 1670,
+    "m391_census_reproduced": true,
+    "path": "corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv",
+    "per_site": {
+      "Banawali": {
+        "inscriptions": 60,
+        "m391_occurrences": 3,
+        "mean_inscription_length": 4.25,
+        "token_rows": 255
+      },
+      "Chanhu-daro": {
+        "inscriptions": 78,
+        "m391_occurrences": 10,
+        "mean_inscription_length": 3.9743589743589745,
+        "token_rows": 310
+      },
+      "Dholavira": {
+        "inscriptions": 106,
+        "m391_occurrences": 16,
+        "mean_inscription_length": 4.1415094339622645,
+        "token_rows": 439
+      },
+      "Harappa": {
+        "inscriptions": 492,
+        "m391_occurrences": 52,
+        "mean_inscription_length": 4.225609756097561,
+        "token_rows": 2079
+      },
+      "Kalibangan": {
+        "inscriptions": 110,
+        "m391_occurrences": 10,
+        "mean_inscription_length": 4.409090909090909,
+        "token_rows": 485
+      },
+      "Lothal": {
+        "inscriptions": 124,
+        "m391_occurrences": 14,
+        "mean_inscription_length": 4.088709677419355,
+        "token_rows": 507
+      },
+      "Mohenjo-daro": {
+        "inscriptions": 606,
+        "m391_occurrences": 75,
+        "mean_inscription_length": 4.181518151815181,
+        "token_rows": 2534
+      },
+      "Rakhigarhi": {
+        "inscriptions": 33,
+        "m391_occurrences": 2,
+        "mean_inscription_length": 4.121212121212121,
+        "token_rows": 136
+      },
+      "Surkotada": {
+        "inscriptions": 61,
+        "m391_occurrences": 11,
+        "mean_inscription_length": 4.213114754098361,
+        "token_rows": 257
+      }
+    },
+    "sha256": "62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e",
+    "token_rows": 7002
+  },
+  "execution": "Full execution (campaign Wave 3, Group 3) — executed 2026-10-21",
+  "freeze_digest": "818cfa4ecd32d286dbe0fcc8d73f4a79f42610f181e5f19594d057a32dab64b1",
+  "gates": [
+    {
+      "gate": "0.1",
+      "hash_pins": "all section 2 hash pins match",
+      "phase104_facts_match": true,
+      "roles_m391_facts_match": true,
+      "spec047_freeze_anchor_replays": true,
+      "verdict": "PASS"
+    },
+    {
+      "asset_path": "specs/047-roif-ledger-distribution/asset-b/site-functions.jsonl",
+      "digest_present_in_pin_source": true,
+      "gate": "0.2",
+      "observed_sha256": "a1a9e48422ab7ab2ef1d340c5ca0eb81a315253b196fdc199d77d2e5739c9f85",
+      "pin_source": "specs/047-roif-ledger-distribution/outcome.md",
+      "pin_source_digest": "a1a9e48422ab7ab2ef1d340c5ca0eb81a315253b196fdc199d77d2e5739c9f85",
+      "verdict": "PASS"
+    },
+    {
+      "form_errors": [],
+      "gate": "0.3",
+      "rows": 30,
+      "status_counts": {
+        "AGREED": 3,
+        "DISAGREED": 1,
+        "NO-SOURCE": 16,
+        "SINGLE-SOURCE": 10
+      },
+      "testable_count": 2,
+      "testable_sites": [
+        {
+          "primary_class": "administrative",
+          "program_site_id": "harappa",
+          "site_name_as_published": "Harappa"
+        },
+        {
+          "primary_class": "port/trade",
+          "program_site_id": "lothal",
+          "site_name_as_published": "Lothal"
+        }
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "census_reproduced": true,
+      "census_total_observed": 193,
+      "expected_layer_sha256": "62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e",
+      "gate": "0.4",
+      "layer_sha256": "62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e",
+      "m391_census_expected": {
+        "Banawali": 3,
+        "Chanhu-daro": 10,
+        "Dholavira": 16,
+        "Harappa": 52,
+        "Kalibangan": 10,
+        "Lothal": 14,
+        "Mohenjo-daro": 75,
+        "Rakhigarhi": 2,
+        "Surkotada": 11
+      },
+      "m391_census_observed": {
+        "Banawali": 3,
+        "Chanhu-daro": 10,
+        "Dholavira": 16,
+        "Harappa": 52,
+        "Kalibangan": 10,
+        "Lothal": 14,
+        "Mohenjo-daro": 75,
+        "Rakhigarhi": 2,
+        "Surkotada": 11
+      },
+      "verdict": "PASS"
+    },
+    {
+      "accounted": 7002,
+      "gate": "0.5",
+      "joined_records": 6117,
+      "no_site_value_records": 0,
+      "non_spine_records": 885,
+      "total_records": 7002,
+      "verdict": "PASS"
+    },
+    {
+      "floors": {
+        "contrast_side_non_empty": false,
+        "contrast_sites": 0,
+        "gateway_border_sites_carrying_m391": 0,
+        "gateway_floor": 3,
+        "gateway_floor_pass": false,
+        "pooled_side_non_empty": true,
+        "pooled_sites": 2
+      },
+      "gate": "0.6",
+      "per_class": {
+        "administrative": {
+          "joined_inscriptions": 492,
+          "m391_occurrences": 52,
+          "sites": [
+            "harappa"
+          ],
+          "testable_sites": 1
+        },
+        "domestic": {
+          "joined_inscriptions": 0,
+          "m391_occurrences": 0,
+          "sites": [],
+          "testable_sites": 0
+        },
+        "gateway/border": {
+          "joined_inscriptions": 0,
+          "m391_occurrences": 0,
+          "sites": [],
+          "testable_sites": 0
+        },
+        "mixed/unknown": {
+          "joined_inscriptions": 0,
+          "m391_occurrences": 0,
+          "sites": [],
+          "testable_sites": 0
+        },
+        "port/trade": {
+          "joined_inscriptions": 124,
+          "m391_occurrences": 14,
+          "sites": [
+            "lothal"
+          ],
+          "testable_sites": 1
+        },
+        "ritual": {
+          "joined_inscriptions": 0,
+          "m391_occurrences": 0,
+          "sites": [],
+          "testable_sites": 0
+        }
+      },
+      "verdict": "INCONCLUSIVE — THE CLASSIFICATION IS THE FINDING"
+    }
+  ],
+  "headline": "The arrow-sign test did not run: 0 testable gateway/border sites carry the arrow sign (floor 3); one side of the comparison is empty in the test population. The finding of this execution is the classification and the census themselves (Asset B, digest a1a9e48422ab7ab2ef1d340c5ca0eb81a315253b196fdc199d77d2e5739c9f85): status counts AGREED 3, DISAGREED 1, NO-SOURCE 16, SINGLE-SOURCE 10; testable sites 2 (harappa — administrative, 52 M391 occurrences in 492 joined inscriptions; lothal — port/trade, 14 M391 occurrences in 124 joined inscriptions); per-site M391 counts over the layer of record: Mohenjo-daro 75, Harappa 52, Dholavira 16, Lothal 14, Surkotada 11, Kalibangan 10, Chanhu-daro 10, Banawali 3, Rakhigarhi 2 (total 193), with the excluded and non-spine sites named in full — including, on the record, Dholavira, Chanhu-daro, and Rakhigarhi, which carry 28 of the sign's 193 recorded occurrences outside the gazetteer spine. No share was computed. The claim stands UNTESTED, now with the reason measured rather than asserted.",
+  "join_census": {
+    "accounted_exactly_once": true,
+    "inscriptions_joined": 1453,
+    "inscriptions_non_spine": 217,
+    "inscriptions_total": 1670,
+    "joined_by_cluster": {
+      "amri": {
+        "inscriptions": 0,
+        "m391_occurrences": 0,
+        "records": 0
+      },
+      "banawali": {
+        "inscriptions": 60,
+        "m391_occurrences": 3,
+        "records": 255
+      },
+      "chagylly": {
+        "inscriptions": 0,
+        "m391_occurrences": 0,
+        "records": 0
+      },
+      "desalpur": {
+        "inscriptions": 0,
+        "m391_occurrences": 0,
+        "records": 0
+      },
+      "harappa": {
+        "inscriptions": 492,
+        "m391_occurrences": 52,
+        "records": 2079
+      },
+      "hiregudda": {
+        "inscriptions": 0,
+        "m391_occurrences": 0,
+        "records": 0
+      },
+      "islam chowki": {
+        "inscriptions": 0,
+        "m391_occurrences": 0,
+        "records": 0
+      },
+      "jhukar": {
+        "inscriptions": 0,
+        "m391_occurrences": 0,
+        "records": 0
+      },
+      "joenniemi": {
+        "inscriptions": 0,
+        "m391_occurrences": 0,
+        "records": 0
+      },
+      "kalibangan": {
+        "inscriptions": 110,
+        "m391_occurrences": 10,
+        "records": 485
+      },
+      "kanispur": {
+        "inscriptions": 0,
+        "m391_occurrences": 0,
+        "records": 0
+      },
+      "khirsara": {
+        "inscriptions": 0,
+        "m391_occurrences": 0,
+        "records": 0
+      },
+      "kunal": {
+        "inscriptions": 0,
+        "m391_occurrences": 0,
+        "records": 0
+      },
+      "lothal": {
+        "inscriptions": 124,
+        "m391_occurrences": 14,
+        "records": 507
+      },
+      "mohenjo daro": {
+        "inscriptions": 606,
+        "m391_occurrences": 75,
+        "records": 2534
+      },
+      "mullali": {
+        "inscriptions": 0,
+        "m391_occurrences": 0,
+        "records": 0
+      },
+      "ojiyana": {
+        "inscriptions": 0,
+        "m391_occurrences": 0,
+        "records": 0
+      },
+      "piklihal": {
+        "inscriptions": 0,
+        "m391_occurrences": 0,
+        "records": 0
+      },
+      "qasim bagh": {
+        "inscriptions": 0,
+        "m391_occurrences": 0,
+        "records": 0
+      },
+      "rangpur": {
+        "inscriptions": 0,
+        "m391_occurrences": 0,
+        "records": 0
+      },
+      "rojdi": {
+        "inscriptions": 0,
+        "m391_occurrences": 0,
+        "records": 0
+      },
+      "sannarachamma": {
+        "inscriptions": 0,
+        "m391_occurrences": 0,
+        "records": 0
+      },
+      "shahr i sokhta": {
+        "inscriptions": 0,
+        "m391_occurrences": 0,
+        "records": 0
+      },
+      "sheri khan tarakai": {
+        "inscriptions": 0,
+        "m391_occurrences": 0,
+        "records": 0
+      },
+      "sheri khan tarakai 3": {
+        "inscriptions": 0,
+        "m391_occurrences": 0,
+        "records": 0
+      },
+      "sheri khan tarakai 4": {
+        "inscriptions": 0,
+        "m391_occurrences": 0,
+        "records": 0
+      },
+      "surkotada": {
+        "inscriptions": 61,
+        "m391_occurrences": 11,
+        "records": 257
+      },
+      "ter kala dheri": {
+        "inscriptions": 0,
+        "m391_occurrences": 0,
+        "records": 0
+      },
+      "tigrana": {
+        "inscriptions": 0,
+        "m391_occurrences": 0,
+        "records": 0
+      },
+      "yalangach": {
+        "inscriptions": 0,
+        "m391_occurrences": 0,
+        "records": 0
+      }
+    },
+    "joined_records": 6117,
+    "no_site_value_records": 0,
+    "non_spine_m391_total": 28,
+    "non_spine_records": 885,
+    "non_spine_sites": [
+      {
+        "inscriptions": 78,
+        "m391_occurrences": 10,
+        "records": 310,
+        "site_as_in_layer": "Chanhu-daro"
+      },
+      {
+        "inscriptions": 106,
+        "m391_occurrences": 16,
+        "records": 439,
+        "site_as_in_layer": "Dholavira"
+      },
+      {
+        "inscriptions": 33,
+        "m391_occurrences": 2,
+        "records": 136,
+        "site_as_in_layer": "Rakhigarhi"
+      }
+    ],
+    "total_records": 7002,
+    "unit": "sign-token records of the pinned export (inscription-level accounting stated beside it)"
+  },
+  "osf_registration": "xnrph (approved + public)",
+  "outcome": "INCONCLUSIVE — THE CLASSIFICATION IS THE FINDING",
+  "phase": 409,
+  "pins": {
+    "anchors": {
+      "match": true,
+      "observed_sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+      "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
+      "pinned_sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569"
+    },
+    "claim_file": {
+      "form": "Spec 038 form: freeze-time hash carried as a definition constant; facts asserted on the live file, no live-file hash",
+      "freeze_time_sha256_constant": "bc22d6f010f800d608d6e3f620fb430b3cf8d3ccd3caadc6a989116fbfd125ed",
+      "manual_003_facts_match": true,
+      "observed_live_sha256": "27661b3c967142329f32cef7af659bb8a172866bb7d87801fbd883127727fcd2",
+      "path": "glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json"
+    },
+    "defect_distribution_file": {
+      "match": true,
+      "observed_sha256": "fc05e552819bdcaee926dc63b728688e88668a3246ec182aacd798aa4dfeed3f",
+      "path": "data/raw/other_sites/holdatllc_core_symbol_site_distribution.csv",
+      "pinned_sha256": "fc05e552819bdcaee926dc63b728688e88668a3246ec182aacd798aa4dfeed3f"
+    },
+    "gazetteer": {
+      "match": true,
+      "observed_sha256": "5ac76a3031121a61fa39f87b1d2760855374d171ddd036988fee2820dca9b8b6",
+      "path": "data/movement/gazetteer_rows.jsonl",
+      "pinned_sha256": "5ac76a3031121a61fa39f87b1d2760855374d171ddd036988fee2820dca9b8b6"
+    },
+    "holdat_roles": {
+      "match": true,
+      "observed_sha256": "3f1c24ed03b6393c4d222b4794d27cce9cbeaf8e30938dd4e0db0fddadd2d08f",
+      "path": "outputs/analysis/holdatllc_sign_roles.json",
+      "pinned_sha256": "3f1c24ed03b6393c4d222b4794d27cce9cbeaf8e30938dd4e0db0fddadd2d08f"
+    },
+    "phase104_evaluation": {
+      "match": true,
+      "observed_sha256": "2d0b83e8055a04b96635007054cfadde472f605dc7e5b249a61c8f9ea89b858d",
+      "path": "glossa-indus/reports/phase104_claims_evaluation.json",
+      "pinned_sha256": "2d0b83e8055a04b96635007054cfadde472f605dc7e5b249a61c8f9ea89b858d"
+    },
+    "spec047_frozen_spec": {
+      "match": true,
+      "observed_sha256": "1a18dac0f54809ba04171de0b2320e862366377bc7a1a995ba694583db861102",
+      "path": "specs/047-roif-ledger-distribution/spec.md",
+      "pinned_sha256": "1a18dac0f54809ba04171de0b2320e862366377bc7a1a995ba694583db861102"
+    }
+  },
+  "reviewer": "Muse Spark via Muse (AI agent)",
+  "roif_hold": "This record is internal under the Roif gate (spec section 9); it is not a publication.",
+  "spec": "051-roif-arrow-sign",
+  "spec047_freeze_digest": "8501feabb7beee621e99ae48529e5a74c0788fb0619ac49c615912e13914cdc7",
+  "test_population_census": {
+    "excluded_sites": [
+      {
+        "exclusion": "NO-SOURCE",
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "primary_class": null,
+        "program_site_id": "amri",
+        "site_name_as_published": "Amri",
+        "source_mapped_classes": [],
+        "status": "NO-SOURCE"
+      },
+      {
+        "exclusion": "NO-SOURCE",
+        "joined_inscriptions": 60,
+        "m391_occurrences": 3,
+        "primary_class": null,
+        "program_site_id": "banawali",
+        "site_name_as_published": "Banawali",
+        "source_mapped_classes": [],
+        "status": "NO-SOURCE"
+      },
+      {
+        "exclusion": "NO-SOURCE",
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "primary_class": null,
+        "program_site_id": "chagylly",
+        "site_name_as_published": "Chagylly",
+        "source_mapped_classes": [],
+        "status": "NO-SOURCE"
+      },
+      {
+        "exclusion": "NO-SOURCE",
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "primary_class": null,
+        "program_site_id": "desalpur",
+        "site_name_as_published": "Desalpur",
+        "source_mapped_classes": [],
+        "status": "NO-SOURCE"
+      },
+      {
+        "exclusion": "SINGLE-SOURCE",
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "primary_class": null,
+        "program_site_id": "hiregudda",
+        "site_name_as_published": "Hiregudda",
+        "source_mapped_classes": [
+          "mixed/unknown"
+        ],
+        "status": "SINGLE-SOURCE"
+      },
+      {
+        "exclusion": "NO-SOURCE",
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "primary_class": null,
+        "program_site_id": "islam chowki",
+        "site_name_as_published": "Islam Chowki",
+        "source_mapped_classes": [],
+        "status": "NO-SOURCE"
+      },
+      {
+        "exclusion": "NO-SOURCE",
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "primary_class": null,
+        "program_site_id": "jhukar",
+        "site_name_as_published": "Jhukar",
+        "source_mapped_classes": [],
+        "status": "NO-SOURCE"
+      },
+      {
+        "exclusion": "NO-SOURCE",
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "primary_class": null,
+        "program_site_id": "joenniemi",
+        "site_name_as_published": "Joenniemi",
+        "source_mapped_classes": [],
+        "status": "NO-SOURCE"
+      },
+      {
+        "exclusion": "SINGLE-SOURCE",
+        "joined_inscriptions": 110,
+        "m391_occurrences": 10,
+        "primary_class": null,
+        "program_site_id": "kalibangan",
+        "site_name_as_published": "Kalibangan",
+        "source_mapped_classes": [
+          "administrative"
+        ],
+        "status": "SINGLE-SOURCE"
+      },
+      {
+        "exclusion": "NO-SOURCE",
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "primary_class": null,
+        "program_site_id": "kanispur",
+        "site_name_as_published": "Kanispur",
+        "source_mapped_classes": [],
+        "status": "NO-SOURCE"
+      },
+      {
+        "exclusion": "SINGLE-SOURCE",
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "primary_class": null,
+        "program_site_id": "khirsara",
+        "site_name_as_published": "Khirsara",
+        "source_mapped_classes": [
+          "mixed/unknown"
+        ],
+        "status": "SINGLE-SOURCE"
+      },
+      {
+        "exclusion": "NO-SOURCE",
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "primary_class": null,
+        "program_site_id": "kunal",
+        "site_name_as_published": "Kunal",
+        "source_mapped_classes": [],
+        "status": "NO-SOURCE"
+      },
+      {
+        "exclusion": "SINGLE-SOURCE",
+        "joined_inscriptions": 606,
+        "m391_occurrences": 75,
+        "primary_class": null,
+        "program_site_id": "mohenjo daro",
+        "site_name_as_published": "Mohenjo-Daro",
+        "source_mapped_classes": [
+          "administrative"
+        ],
+        "status": "SINGLE-SOURCE"
+      },
+      {
+        "exclusion": "NO-SOURCE",
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "primary_class": null,
+        "program_site_id": "mullali",
+        "site_name_as_published": "Mullali",
+        "source_mapped_classes": [],
+        "status": "NO-SOURCE"
+      },
+      {
+        "exclusion": "NO-SOURCE",
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "primary_class": null,
+        "program_site_id": "ojiyana",
+        "site_name_as_published": "Ojiyana",
+        "source_mapped_classes": [],
+        "status": "NO-SOURCE"
+      },
+      {
+        "exclusion": "SINGLE-SOURCE",
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "primary_class": null,
+        "program_site_id": "piklihal",
+        "site_name_as_published": "Piklihal",
+        "source_mapped_classes": [
+          "domestic"
+        ],
+        "status": "SINGLE-SOURCE"
+      },
+      {
+        "exclusion": "NO-SOURCE",
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "primary_class": null,
+        "program_site_id": "qasim bagh",
+        "site_name_as_published": "Qasim Bagh",
+        "source_mapped_classes": [],
+        "status": "NO-SOURCE"
+      },
+      {
+        "exclusion": "NO-SOURCE",
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "primary_class": null,
+        "program_site_id": "rangpur",
+        "site_name_as_published": "Rangpur",
+        "source_mapped_classes": [],
+        "status": "NO-SOURCE"
+      },
+      {
+        "exclusion": "SINGLE-SOURCE",
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "primary_class": null,
+        "program_site_id": "rojdi",
+        "site_name_as_published": "Rojdi",
+        "source_mapped_classes": [
+          "domestic"
+        ],
+        "status": "SINGLE-SOURCE"
+      },
+      {
+        "exclusion": "SINGLE-SOURCE",
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "primary_class": null,
+        "program_site_id": "sannarachamma",
+        "site_name_as_published": "Sannarachamma",
+        "source_mapped_classes": [
+          "domestic"
+        ],
+        "status": "SINGLE-SOURCE"
+      },
+      {
+        "exclusion": "AGREED at mixed/unknown",
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "primary_class": "mixed/unknown",
+        "program_site_id": "shahr i sokhta",
+        "site_name_as_published": "Shahr-i Sokhta",
+        "source_mapped_classes": [
+          "mixed/unknown",
+          "mixed/unknown"
+        ],
+        "status": "AGREED"
+      },
+      {
+        "exclusion": "SINGLE-SOURCE",
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "primary_class": null,
+        "program_site_id": "sheri khan tarakai",
+        "site_name_as_published": "Sheri Khan Tarakai",
+        "source_mapped_classes": [
+          "domestic"
+        ],
+        "status": "SINGLE-SOURCE"
+      },
+      {
+        "exclusion": "NO-SOURCE",
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "primary_class": null,
+        "program_site_id": "sheri khan tarakai 3",
+        "site_name_as_published": "Sheri Khan Tarakai 3",
+        "source_mapped_classes": [],
+        "status": "NO-SOURCE"
+      },
+      {
+        "exclusion": "NO-SOURCE",
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "primary_class": null,
+        "program_site_id": "sheri khan tarakai 4",
+        "site_name_as_published": "Sheri Khan Tarakai 4",
+        "source_mapped_classes": [],
+        "status": "NO-SOURCE"
+      },
+      {
+        "exclusion": "DISAGREED",
+        "joined_inscriptions": 61,
+        "m391_occurrences": 11,
+        "primary_class": null,
+        "program_site_id": "surkotada",
+        "site_name_as_published": "Surkotada",
+        "source_mapped_classes": [
+          "gateway/border",
+          "mixed/unknown"
+        ],
+        "status": "DISAGREED"
+      },
+      {
+        "exclusion": "SINGLE-SOURCE",
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "primary_class": null,
+        "program_site_id": "ter kala dheri",
+        "site_name_as_published": "Ter Kala Dheri",
+        "source_mapped_classes": [
+          "domestic"
+        ],
+        "status": "SINGLE-SOURCE"
+      },
+      {
+        "exclusion": "SINGLE-SOURCE",
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "primary_class": null,
+        "program_site_id": "tigrana",
+        "site_name_as_published": "Tigrana",
+        "source_mapped_classes": [
+          "mixed/unknown"
+        ],
+        "status": "SINGLE-SOURCE"
+      },
+      {
+        "exclusion": "NO-SOURCE",
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "primary_class": null,
+        "program_site_id": "yalangach",
+        "site_name_as_published": "Yalangach",
+        "source_mapped_classes": [],
+        "status": "NO-SOURCE"
+      }
+    ],
+    "floors": {
+      "contrast_side_non_empty": false,
+      "contrast_sites": 0,
+      "gateway_border_sites_carrying_m391": 0,
+      "gateway_floor": 3,
+      "gateway_floor_pass": false,
+      "pooled_side_non_empty": true,
+      "pooled_sites": 2
+    },
+    "non_spine_sites": [
+      {
+        "inscriptions": 78,
+        "m391_occurrences": 10,
+        "records": 310,
+        "site_as_in_layer": "Chanhu-daro"
+      },
+      {
+        "inscriptions": 106,
+        "m391_occurrences": 16,
+        "records": 439,
+        "site_as_in_layer": "Dholavira"
+      },
+      {
+        "inscriptions": 33,
+        "m391_occurrences": 2,
+        "records": 136,
+        "site_as_in_layer": "Rakhigarhi"
+      }
+    ],
+    "per_class": {
+      "administrative": {
+        "joined_inscriptions": 492,
+        "m391_occurrences": 52,
+        "sites": [
+          "harappa"
+        ],
+        "testable_sites": 1
+      },
+      "domestic": {
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "sites": [],
+        "testable_sites": 0
+      },
+      "gateway/border": {
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "sites": [],
+        "testable_sites": 0
+      },
+      "mixed/unknown": {
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "sites": [],
+        "testable_sites": 0
+      },
+      "port/trade": {
+        "joined_inscriptions": 124,
+        "m391_occurrences": 14,
+        "sites": [
+          "lothal"
+        ],
+        "testable_sites": 1
+      },
+      "ritual": {
+        "joined_inscriptions": 0,
+        "m391_occurrences": 0,
+        "sites": [],
+        "testable_sites": 0
+      }
+    },
+    "test_population": [
+      {
+        "corpus_coverage": "COVERED",
+        "joined_inscriptions": 492,
+        "m391_occurrences": 52,
+        "primary_class": "administrative",
+        "program_site_id": "harappa",
+        "site_name_as_published": "Harappa"
+      },
+      {
+        "corpus_coverage": "COVERED",
+        "joined_inscriptions": 124,
+        "m391_occurrences": 14,
+        "primary_class": "port/trade",
+        "program_site_id": "lothal",
+        "site_name_as_published": "Lothal"
+      }
+    ]
+  }
+}

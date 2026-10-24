@@ -3210,6 +3210,76 @@ PENDING.
 (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution §VI.
 
+## [2026-10-22] Entry — Spec 025: Paper-Search MCP Client + RESEARCH-CHECK Stage
+
+Objective:
+  Implement the owner-ordered scholarly research-checking MCP
+  (openags/paper-search-mcp) in Glossa Lab — tooling only; the audit
+  of Glossa's own material is separate follow-on work assigned to
+  the Glossa Lab chat.
+
+What was done:
+
+  1. SPEC: specs/025-paper-search-research-check/ (spec.md, plan.md,
+     tasks.md) — proposal with H13 epistemic boundaries recorded
+     before execution (H2).
+
+  2. CLIENT: backend/glossa_lab/paper_search.py — stdio MCP client
+     running under the backend venv (existing mcp>=1,<2 dependency),
+     spawning the shared server from ~/workspace/venvs/paper-search-mcp
+     (the pinned install maintained from the RCPH workspace; not
+     duplicated). Sci-Hub is hard-off in code. Timeouts on every call
+     (H9/H11); NO_PROXY sanitized as in the house clients.
+
+  3. STAGE: backend/glossa_lab/research_check.py — RESEARCH-CHECK
+     stage for claim dossiers, designed to run BEFORE AEE scoring /
+     adjudication. Per claim: >=2 concept phrasings x >=2 sources,
+     DOI resolution for supplied citations, nearest-neighbor
+     surfacing with full-text reads of reachable OA neighbors.
+     Records are advisory sidecars in glossa-indus/claims/
+     research_checks/; verdict is always null; the claim file is
+     never modified. Placement decision (client module beside the
+     loop, not new glossa_mcp tools): glossa_mcp's 33 tools are
+     route-drift-guarded backend controls; paper search has no
+     backend route. Recorded in the spec.
+
+  4. DOCS: docs/paper-search-mcp.md (connector/usage doc; the audit
+     protocol carried over unchanged from the RCPH connector) and an
+     AGENTS.md pointer section (H8).
+
+  5. TESTS: backend/tests/test_paper_search.py — 10 offline tests
+     (client config, Sci-Hub refusal, phrasing plan, record shaping
+     against a stubbed client, advisory invariant). Run with the
+     governance lint and MCP suites: 39 passed.
+
+  6. SMOKE (live, raw outputs in the spec's smoke/): 57 tools via
+     the Glossa client; federated + arXiv concept queries on Indus
+     decipherment returned the real literature (Yadav et al. n-grams
+     paper at the top); DOI 10.1126/science.1170391 resolved to the
+     Rao et al. 2009 Science record; end-to-end stage run wrote the
+     first sidecar (25 neighbors, 3 full-text reads, verdict null).
+     MEASURED TRAP: the arXiv connector answers a no-match
+     conjunction with a default high-profile list (ATLAS /
+     gravitational-wave papers) instead of an empty result — the
+     first stage run spent its read slots on those. The stage now
+     ranks neighbors by claim-vocabulary overlap and gates reads on
+     it; the rerun's reads were all on-topic. Recorded in
+     docs/paper-search-mcp.md limits.
+     Process note (H9): the first stage invocation was killed by a
+     service restart mid-run (no record written; two downloaded
+     PDFs remained under research_checks/full_text/, gitignored per
+     the repo's PDF policy); retried detached and completed.
+
+  7. COMMIT: this spec's files only, on branch
+     spec/025-paper-search-research-check. The pre-existing
+     uncommitted working-tree modifications (claims extraction,
+     anchor staging, partial loop results) are not this session's
+     work and were not staged. origin/main has advanced beyond this
+     checkout (6215690d vs c4a3ef4c); push of this branch attempted
+     as a new branch only — main was not touched.
+
+**AI disclosure:** execution recorded by an AI agent (Muse, via
+Muse) at the direction of Tristen Pierson, per constitution SSVI.
 ## 2026-10-09 — Phase-135 (Spec 024): Evidence Integration, Stage 1 Re-Pilot — clarified codebook, fresh sample; exact agreement 0.78, Cohen's κ 0.7129; MIDDLE BAND for the second time; no Stage 2(b) design
 
 Owner approval (Tristen Pierson, 2026-10-09): "Run
@@ -4120,6 +4190,75 @@ constitution sec.VI. No external correspondence sent.
 
 AI disclosure: drafted by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
+## 2026-10-21 — Spec 060 EXECUTED (Phase-422): margin curve published (sensitivity); COMPOSITION DOES NOT on the shared population
+
+Spec 060 was executed in full as Phase-422
+under the frozen contract (freeze digest
+8c04b1a8…; OSF registration 8ywxc approved
+and public, DOI 10.17605/OSF.IO/8YWXC), in
+Wave 3 Group 2 of the runnable-experiments
+campaign, from origin/main at 3200b7b5.
+Graph-first build (H15/H23): script
+backend/scripts/phase422_f2_margin_curve.py,
+graph node IndusPhase422F2MarginCurve,
+registration verified by import before the
+run. Gate 0.1 PASS: every spec §3 input
+hashes to its stated value by two routes,
+including both held layers at the Phase-137
+loaders' default paths (Holdat 62d14d2b…;
+ICIT c368f290…). Gate 0.2 PASS: both layers'
+recorded profile tables reproduce exactly
+(Holdat 1,670 inscriptions, 9 × 98, χ²
+745.953, V 0.1154; ICIT 5,410, 7 × 187, χ²
+4966.362, V 0.2190). Gate 0.3 PASS: the
+Phase-384 v2 estimator, imported unchanged,
+reproduces both recorded governing intervals
+float-for-float (F2 basic [0.058939204306206666,
+0.0777941604081594]; F3 basic [0.18229651053139323,
+0.21036863506165235]). Gate 0.4 PASS: the
+shared-population census (site intersection
+re-derived: Chanhu-daro, Dholavira, Harappa,
+Kalibangan, Lothal, Mohenjo-daro) retains
+1,516 Holdat inscriptions and 2,139 ICIT
+SEAL inscriptions, above the frozen floors.
+Arm 1 (sensitivity display): the F2 margin
+curve on the fixed grid — SUPPORTED AT 0.05,
+STRADDLES 0.075, CONTRADICTED AT 0.10,
+CONTRADICTED AT 0.125, CONTRADICTED AT 0.15 —
+on governing interval [0.0589, 0.0778], point
+V 0.1154; the recorded verdict at 0.10 stands
+and no cell replaces it. Arm 2: on the shared
+population (SEAL; DD-060-12), under identical
+code with signs never pooled or mapped, the
+Holdat governing interval [0.055251710457321024,
+0.07607996659365032] (point V 0.1154) and the
+ICIT governing interval [0.08368810617885544,
+0.10835095759573735] (point V 0.1349) still
+exclude each other — COMPOSITION DOES NOT,
+recorded in the frozen §6.3 wording alongside
+Spec 034's finished attribution (ATTRIBUTED
+TO COMPOSITION on 169 matched objects, all
+Mohenjo-daro seals): both statements stand,
+neither edits the other, and no successor
+study is designed or implied. Period mix:
+PERIOD MIX NOT DESCRIBED FOR THIS LAYER -
+FIELD NOT CARRIED for both layers (DD-060-13);
+no period assignment was imported. No verdict
+moves: F2 stands CONTRADICTED at 0.10 and F3
+stands SUPPORTED at 0.10, exactly as recorded.
+A second full run reproduced every quantity
+identically. Anchors asserted byte-identical
+before and after (df0cf620…). Foundation
+check at the run: 40 passed / 0 failed /
+8 warnings. Records:
+specs/060-f2-margin-curve/outcome.md,
+reports/phase422_results.json,
+reports/phase422_report.md.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
 
 ## 2026-10-11 — Spec 027 FROZEN (owner adjudication of §13)
@@ -7523,3 +7662,2825 @@ NOT-YET-TESTABLE.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson,
 per constitution sec.VI.
+
+## 2026-10-21 — Spec 047 step-1 execution (Phase-406: Asset B build and freeze)
+
+Spec 047 was executed through step 1 as
+Phase-406 under the frozen contract (freeze
+digest 8501feab…; OSF registration b2a8w
+approved and public). Step 0 gates all PASS:
+input integrity (the eight §2 inputs hash
+to their freeze pins, verified by two
+independent routes), spine reproduction (36
+rows, 30 clusters), and the join census
+(5,679 records accounted for exactly once:
+joined 5,106; non-spine 573 over 66 site
+values; no site value 0). **Asset B froze**:
+specs/047-roif-ledger-distribution/asset-b/
+site-functions.jsonl, SHA-256 a1a9e484…,
+30 rows — AGREED 3 (harappa administrative,
+lothal port/trade, shahr i sokhta
+mixed/unknown), DISAGREED 1 (surkotada),
+SINGLE-SOURCE 10, NO-SOURCE 16; **testable
+2**. The §4.3 verification pass demoted
+khirsara and sheri khan tarakai to
+SINGLE-SOURCE on independence grounds
+before the freeze (recorded in full in the
+outcome record). The ledger-sign list froze
+in the same act: SHA-256 dfa48f50…, 8
+entries from Roif's two postings of
+record, 3 mapped (fish, jar, grid), 5
+UNMAPPED; the DD-047-13 all-UNMAPPED case
+does not fire. Step 2 was not run: no
+distribution quantity exists, and the
+claim stands UNTESTED. This concerns the
+distribution component of Roif's ledger
+thesis only; the guild-authority and
+Akkadian-influence components were not
+tested. Held under the Roif gate.
+Outcome record:
+specs/047-roif-ledger-distribution/outcome.md;
+machine record: reports/phase406_results.json;
+report: reports/phase406_step1_report.md.
+## 2026-10-21 — Spec 046 (Phase-405) executed — IDENTIFICATION FAILED (sign unmatched)
+
+Spec 046 ("Sign 297 Is the Horned Tiger": an
+Identification Concordance, design D-18) was executed
+as Phase-405 under its frozen contract (freeze-act
+digest
+80c3be31e5af5236f71cb2c1894b2946f9b8ad47b12bdeab9d03cd76468af405;
+successor digest
+e0d7add84b9d28ae5f6a6b392dca578b727ad4d99a117360a57d39f3b94b01c6
+in freeze.json as merged), in Wave 3 group 1 of the
+runnable-experiments campaign, before Asset A freezes.
+The execution gate was satisfied before the run: OSF
+registration dnts8 is approved + public.
+
+Outcome, in the frozen wording: **IDENTIFICATION
+FAILED (sign unmatched)** — "The fragment 'sign 297
+is the horned tiger' cannot be carried to a
+concordance: the drawn sign could not be matched from
+Wells's published list. The record stays a stated gap.
+No statement about the sign is made, and nothing is
+fed to Asset A."
+
+Step 0 passed in full: every spec section 2 input
+pin recomputed by two independent routes and matched
+(claim record bd0f7abd…, held Wells 2015 text
+62acf855…, Phase-104 evaluation 2d0b83e8…, crosswalk
+registry 8a0b2a82…, lane-2 drafts 3f645c9a…); the
+source book produced from the held copy with the
+printed-p. 97 passage located verbatim; all four
+lists of record accounted for as HELD or CITABLE
+(Wells HELD, CISI HELD, Parpola CITABLE, Mahadevan
+CITABLE). Step 1 named the source's sign list from
+the book's own apparatus — Wells's own list (Wells
+2011), in Wells 2015 Chapter 2 / Figure 2.6 — and the
+drawn-sign match then failed: the pinned registry
+carries no entry for the drawn sign (its only W297
+value sits inside the 17-value wells_ids cell on the
+P205 "Prismed light rays" row, the trap the frozen
+spec names in advance; P297 is the "Ladder motif", a
+different sign; 0 of 803 registry descriptions name
+a tiger); the Phase-123 Wells witness carries no
+Wells grapheme 297; the drawn forms of Figure 2.6 did
+not survive the held copy's text extraction (captions
+only), so no inspectable drawn-sign reference exists
+in the held record; and the Spec 004 WS2 record
+(three candidate referents, none matching the
+description in-repo) stands unrebutted. Matching by
+number is forbidden (F046-C07) and was not used.
+
+Step 2 was not reached: no list was scored, no
+concurrence state was computed, and the hypothesis
+is unjudged — neither supported nor falsified on
+concurrence grounds. Delivery in the frozen closure
+form: specs/046-horned-tiger-concordance/
+concordance-297.json (schema glossa.concordance/1;
+signs empty; closure block), SHA-256
+772db4df152ec4f1071bed088250677e55f69743532c9e89f339a8cf9134aaaf
+(derived twice, identical; the run is deterministic
+and reproducible byte-identically). Records:
+reports/phase405_results.json,
+reports/phase405_concordance_report.md,
+specs/046-horned-tiger-concordance/outcome.md; graph
+node IndusPhase405HornedTigerConcordance registered
+and verified by import before the run; the claim's
+record received its dated first-check append
+(F046-C15; pre-existing content verified
+byte-identical with the append removed; status and
+stage unchanged). Anchors asserted byte-identical
+before and after (df0cf620…). Asset A (Spec 045)
+proceeds without this feed and records its absence;
+the closure does not block the asset.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson,
+per constitution sec.VI.
+
+## 2026-10-21 — Spec 044 step 0 EXECUTED (Phase-404): Asset F built and frozen; execution closed TOO THIN at gate 0.4 (held under the Roif gate)
+
+Spec 044 (design D-02, the fish-sign coastal
+residue, sign by sign) executed its step 0 only,
+under the runnable-experiments campaign approved
+2026-10-21 (Wave 3, Group 1), as Phase-404. The
+execution rule was satisfied: the frozen
+contract's OSF registration 6p9et is approved
+and public (freeze digest
+6851f943d196fa389e48b67cb5161b90daa1180d8a3e1cf3f020fcf25691d9c8).
+Graph-first build: backend/scripts/
+phase404_fish_coastal_step0.py, graph node
+IndusPhase404FishCoastalStep0 registered and
+verified by import before the run. Gate 0.1
+PASS: the CISI-based layer of record (the
+Holdat corpus file, SHA-256
+62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e)
+re-asserted and the original family-level
+test's population reproduced exactly (7,002
+tokens; 1,670 inscriptions over 9 sites; M047
+at 13 tokens in 13 inscriptions; Phase-45 T6
+table 2 / 10 / 228 / 1,369, Fisher two-sided
+p = 0.685), every figure verified by two
+independent routes. Gate 0.2 PASS: Asset F,
+the fish-family list, built solely from
+Parpola's published list (1994, fig. 5.1,
+pp. 70–78) via the pinned Mahadevan–Parpola
+crosswalk and frozen at
+specs/044-fish-sign-coastal-residue/
+asset-f-fish-family.json — 7 members (M047,
+M048, M050, M052, M060, M145, M147), digest
+ca5fb1b5a52d9ad0c8301174996562cdc024bf4063e6193bef77328b1acc58c3
+(SHA-256 of the canonical bytes, digest field
+excluded; verified by two independent routes).
+The DD-044-5 cross-check is on the record
+(claim-record trio 72/64/70: no member in
+Asset F; Phase-43 six: only 60) and added and
+removed no member. Gate 0.3 PASS: the coastal
+list frozen under the design's rule —
+coastal/maritime Lothal and Dholavira (members
+by name); Surkotada classed inland and listed
+as contested. Gate 0.4 TOO THIN: the census
+(margins only) is M047 13, M048 157, M050 17,
+M052 22, M060 20, M145 3, M147 2 — one member
+clears the 30-occurrence floor, fewer than the
+two the frozen criterion needs, so the
+execution closed as TOO THIN in the spec's
+pre-written wording, with the full census as
+its finding. Gate 0.5 was not reached; no
+per-sign coastal test was computed and no
+coastal split of any sign was counted. The
+family-level verdict (partially falsified)
+stands exactly as recorded, and the claim's
+record was not edited. Anchors asserted
+byte-identical before and after (df0cf620…).
+Foundation check at the run: 40 passed /
+0 failed / 8 warnings. Records:
+specs/044-fish-sign-coastal-residue/outcome.md
+(the step-0 outcome record and Spec 048's
+pin source for Asset F's digest),
+reports/phase404_results.json,
+reports/phase404_step0_report.md. This entry
+and those records are internal under the
+campaign's Roif gate (R-7); they are not a
+publication, and campaign reporting names
+this member only as executed — held under
+the Roif gate.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
+## 2026-10-21 — Spec 045 step 0 EXECUTED (Phase-411): INVALID at gate 0.2 (positional reproduction)
+
+Spec 045 was executed at step 0 as Phase-411
+under the frozen contract (freeze digest
+5d8254dd…; OSF registration 4mt9k approved
+and public), in Wave 3 Group 1 of the
+runnable-experiments campaign, with step 0
+running before the step-1 Asset A build as
+the Group 1 executions of Specs 044 and 047
+ran their step-0 gates first. Gate 0.1 PASS:
+every spec §4 input recomputes to its freeze
+pin, verified by two independent routes
+(positional record 0e546962…, Phase-43 record
+78a6c219…, corpus layer c02e3d7b…, crosswalk
+4ace1a61… — 205 rows, 187 distinct sign keys,
+anchors df0cf620…). **Gate 0.2 FAIL — the
+execution closed INVALID in the frozen §5.5
+wording.** The pinned corpus carries 3,463
+inscriptions of length >= 3 against the
+recorded 2,267; the 40/61/20 strong-sign
+classes are exhibited by no record of record
+(the Phase-43 record exhibits 10 of its 20
+terminal-strong signs and no initial or
+medial member list, and states no position
+rule, count floor, threshold, or profiled-set
+rule); and the corpus the recorded quantities
+belong to — the Firestore V3 corpus (3,137
+sequences), named by the Batch-5 record of
+the same test — is absent from the tree (its
+loader dump path does not exist on main).
+No threshold was invented, no neighbouring
+battery borrowed, and no corpus substituted:
+the only tripartite code path in the tree is
+Phase-45's iconography test, whose own rule
+yields 75/22/5 on the Holdat roles, not the
+recorded classes. Gates 0.3 and 0.4 were NOT
+REACHED. Asset A was not built — gates A1–A6
+never ran, no sign was classified, and **no
+Asset A digest exists** for the D-06 / D-13
+dependents to pin (stated plainly in the
+outcome record for wave planning). The D-18
+feed state was recorded, not consumed: Spec
+046's concordance-297.json re-verified
+(772db4df…, empty signs, IDENTIFICATION
+FAILED closure form) — an empty feed, neither
+consumed nor reconstructed. No model was
+fitted, no closing score computed, and no
+verdict recorded; the claim
+without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001
+stands IN QUESTION, partially supported for
+position only, exactly as recorded. This
+closure is about runnability, not about
+Hunt's account or the grammar account, and
+it quotes no other spec's closing measure
+(DD-045-19). Anchors asserted byte-identical
+before and after (df0cf620…). Records:
+specs/045-hunt-depicted-kinds/outcome.md,
+reports/phase411_results.json,
+reports/phase411_step0_report.md.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
+## 2026-10-21 — Spec 057 EXECUTED (Phase-419): Class C — PARTIAL RECOVERY WITH UNLOCATED SOURCES (r=2, e=1, u=2)
+
+Spec 057 was executed as Phase-419 under the
+frozen contract (freeze digest 237b923a…;
+OSF registration chq5e approved and public,
+DOI 10.17605/OSF.IO/CHQ5E), in Wave 3 group 2
+of the runnable-experiments campaign. Step 0
+passed in full: gate 0.1 input integrity —
+every §2 live pin recomputes to its freeze
+value (five cleaned texts, five registry
+files, Phase-104 2d0b83e8…, lane-2 drafts
+3f645c9a…, anchors df0cf620…), verified in
+the foreground by two independent routes;
+the extracted-claims store was asserted by
+entry facts under the freeze's Spec 038 form
+(the S-4 claims file's live hash differs
+from its freeze constant only by Spec 046's
+first_check append to a different claim in
+the same file; the …_statisti_0003 entry's
+facts are unchanged — recorded on the
+record, not passed over). Gate 0.2
+source-set integrity: the canonical record
+carries exactly the four recorded evidence
+instances with fingerprint a4874349…. The
+accounting, one outcome per source: S-1
+SOURCE UNLOCATED, sub-state HEADING NOT
+PRESENT IN HELD TEXT (its two occurrences
+are a running sentence at line 102 and a
+bibliography entry for S-3's paper at line
+663; the full stated search ran, no document
+copy exists in the repository, and the
+unblocking act — re-acquisition of the
+edition the extraction ran on — is named on
+the row). S-2 PASSAGE EMPTY: the held
+Search Inside excerpt of Fuls 2023 Chapter 3
+(lines 536–615; chapter running heads at
+lines 536 and 612) states the normalised
+weighted position method, a worked histogram
+example, and the stipulative INS/TMK
+classification definitions of §3.3, and no
+checkable finding — the judgement is stated
+on the record with the byte-exact passage
+artifact (25a0a558…) as its evidence. S-3
+CLAIM RECOVERED: Fuls 2013's paper, its own
+title as heading, findings-bearing body
+lines 54–601 (artifact 88f29146…); its §7
+Summary states the positional classification
+finding (signs classifiable as Initial,
+Early-Medial, Mid-Medial, Late-Medial,
+Terminal, constant, or constant-but-not;
+doubling/mirroring/hatching/marking can
+change a sign's class; signs 382, 790, 832,
+892 are good syllable candidates) on the
+ICIT corpus as stated (3723 complete texts,
+13556 signs, reduced 2474 texts / 9700
+signs, mean length 4.01) — recovered as
+fuls2013_positional_analysis_057_recovered_0001
+at the created stage, unchecked, intake
+record intake-S3.json. S-4 CLAIM RECOVERED:
+Wells 2015 Appendix II, heading at line
+3456, passage lines 3455–3822 (artifact
+af28153c…); its Summary states the same
+classification finding in the appendix's own
+terms (classification list Initial through
+Terminal; modified signs; the same four
+syllable candidates; the same corpus
+numbers as stated) — recovered as
+wells2015_appendix_ii_positional_analysis_057_recovered_0001
+at the created stage, unchecked, intake
+record intake-S4.json. S-5 SOURCE UNLOCATED,
+sub-state HEADING NOT PRESENT IN HELD TEXT
+(its single occurrence at line 267 is
+sentence-initial inside a running paragraph;
+stated search and unblocking act as S-1).
+Headline class C in the frozen §7.1 wording,
+counts (2, 1, 2) shown beside it. Disposition
+(§7.2, r ≥ 1): the heading record is
+superseded by the two recovered claims,
+by appended dated disposition note only —
+no pre-existing field altered (removing the
+append reproduces the pre-act file
+byte-identically), status and stage
+unchanged. Hypothesis F057-C14 borne out.
+No claim was checked, no positional finding
+is established by this act, and the passage
+artifacts are internal records under
+license_status "unclear". This act recovered
+what five passages state. It checked none of
+it. Anchors asserted byte-identical before
+and after (df0cf620…). Records:
+specs/057-five-sources-heading/outcome.md,
+specs/057-five-sources-heading/passages/,
+specs/057-five-sources-heading/intake-S3.json,
+specs/057-five-sources-heading/intake-S4.json,
+reports/phase419_results.json,
+reports/phase419_five_sources_report.md.
+## 2026-10-21 — Spec 058 EXECUTED (Phase-420): LOCALISED TO SIGNS
+
+Spec 058 was executed as Phase-420 under the
+frozen contract (freeze digest 8bdd4764…; OSF
+registration 86dgh approved and public, DOI
+10.17605/OSF.IO/86DGH), in Wave 3 Group 2 of the
+runnable-experiments campaign — design D-21 arm A
+only; arm B stays blocked and no AI substitution
+for human coders was designed or run (F058-C06).
+Step 0 passed in full, in frozen order: gate 0.1
+every spec §2.1 input recomputes to its freeze
+pin (verified in the foreground by two
+independent routes — git blob and GitHub contents
+API — at the run's base 3200b7b5); gate 0.2 the
+Phase-132 pilot-pass record set produced at the
+execution venue (the main-checkout machine's
+gitignored store, read-only; the main checkout
+was never modified) at the pilot report's §9
+inventory — frame.json, 50 Pass A, 50 Pass B, 10
+gold, 50 adjudication records, effort log 320
+events — with a per-file SHA-256 manifest of the
+162-file set recorded in the results JSON; gate
+0.3 frame identity exact; gate 0.4 the pinned
+phase132_metrics.py, imported unchanged,
+reproduces the committed metrics file in full
+(0.20 P and M; 0.4798; 0.4286; estimator 0.05;
+totals 191/190/40/189; every per-object flag);
+gate 0.5 taxonomy exact (identity 93, legibility
+45, count 11, key 10, orientation 2, order 1;
+total 162); gate 0.6 census 40 mismatched
+objects. Tabulations over the frozen alignment:
+E = 103 mismatch events (88 SUBSTITUTION, 15
+INDEL); summed involvement 191. **LOCALISED TO
+SIGNS (the frozen §5.2 wording): the 10
+most-involved signs account for 54.5% (104/191)
+of all mismatch involvement — UNK, P310, P144,
+UNMAPPED:M817, P145, P245, P119, P184, P268,
+P324 — with the mandatory UNK sentence carried:
+UNK itself is the most-involved value (53/191,
+27.7% of involvement), so the localisation is in
+part a localisation to illegibility.** The
+object-type locus did not fire: Seals carry
+77.7% (80/103) of events but a 9.7-point
+enrichment over their 68.0% frame share, below
+the frozen 10-point margin (DD-058-8). The
+segmentation locus did not fire: INDEL share
+14.6% (the registered proxy, spec §8(4)).
+First divergence falls at alignment position 1
+in 21 of 40 objects, with UNK the most-involved
+value there too (26). The descriptive
+UNK-excluded secondary (no headline): E = 50,
+top-10 share 41.5% (BETWEEN — the concentration
+does not survive setting illegibility aside,
+reported as found); the M-space sensitivity
+agrees descriptively (top-10 53.9%). The claim
+STUDY-SPEC-023/PHASE-132+383 stands CONTRADICTED
+exactly as recorded; this entry and the outcome
+record are its dated mechanism-account append —
+the lane-2 drafts file is a frozen pin and was
+not edited. Anchors asserted byte-identical
+before and after (df0cf620…). Foundation check
+at the run: 40 passed / 0 failed / 8 warnings.
+Records:
+specs/058-transcription-disagreement-mechanism/outcome.md,
+reports/phase420_results.json (3d140333…),
+reports/phase420_report.md (b8634d76…).
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+## 2026-10-21 — Spec 055 (Phase-414) executed — NOT NUMERAL-LIKE
+
+Spec 055 ("Sign 900 Means Six": identify the sign, then
+test it as a numeral; design D-15) was executed as
+Phase-414 under its frozen contract (freeze digest
+42ef82829ade894918b0bf946ac44354224d689202e2f7bf00eb747821bdedfc),
+in Wave 3 group 2 of the runnable-experiments campaign.
+The execution gate was satisfied before the run: OSF
+registration tbyqg is approved + public.
+
+Step 0 passed in full: every spec section 2 input pin
+recomputed by two independent routes at the run's base
+(3200b7b5) and matched (claim record e9819089…, held
+cleaned text 1275b795…, literature record 92e19e6d…,
+Phase-104 evaluation 2d0b83e8…, crosswalk registry
+8a0b2a82…, lane-2 drafts 3f645c9a…, anchors df0cf620…);
+the source produced from the held copy with the
+sign-900 material located verbatim (Table 1's numeric
+grid did not survive the held copy's extraction —
+caption and prose recovered, nothing reconstructed);
+the recovery record written before any verdict
+wording.
+
+Stage 1 — IDENTIFIED. The source's sign list is named
+from the document's own text (four verbatim naming
+statements, printed pp. 57, 59, 85, 88): the extended
+Wells (2011, 2015) sign list of 702 distinct signs.
+The drawn sign was matched by drawn form only: the
+named list's sign 900 is the single-arc grapheme (the
+verified Phase-123 Wells segmentation witness, row
+M287, from Wells's PhD 2006 Figure 3.2 plates), and
+exactly one registry row is a plain right parenthesis
+with no added element — P154 ("Right parenthesis
+(perhaps with a backward curve at the bottom)"),
+whose Mahadevan crosswalk is M287. The registry's
+W900 cell on that row is recorded as the frozen trap
+(F055-C07) and was not used as the identification.
+The recovery is preserved in the section 6 form:
+specs/055-sign900-numeral/source-table-recovery.json
+(schema glossa.source-table-recovery/1), SHA-256
+439f1449b8d7707d1feb88ef34e2edf90d3d192ba5c6f30bfa29cdf34b48852d.
+The sign-700 statements are located by locator only
+(printed p. 70; pp. 72–74) and adjudicated in no way:
+Design D-16 does not join this campaign even though
+this recovery is the act that would unblock it; D-16
+waits for its own planning gate (campaign decision
+E-7).
+
+Gate 0.4 passed: the strict-corpus layer (the
+Mahadevan-lineage corpus as held — the indusscript-m77
+records of the tracked primary corpus, the executed
+Spec 033 precedent for this layer) was exported in
+full and pinned (specs/055-sign900-numeral/
+strict-corpus-export.jsonl, SHA-256
+1e421af1b75f09f49c928ef7eaa86e4c9a382e059d4771f164256a069896e02c;
+2,906 records, 11,507 tokens); the identified sign,
+Mahadevan 287, stands at 79 occurrences, above the
+frozen floor of 5.
+
+Stage 2 outcome, in the frozen wording: "The sign
+that Fuls's paper numbers 900, identified in Spec
+055's recovery record as P154, does not behave as a
+numeral sign behaves in the pinned strict corpus: on
+3 of the three frozen measures it sits inside the
+range of frequency-matched ordinary signs. The
+numeral reading the fragment carries is contradicted
+at the behaviour stage. The identification itself
+stands as recovered; what fails is the behaviour the
+reading predicts." The known-numeral set was fixed
+before counting from the source's published
+stroke-sign identification (29 Mahadevan identifiers;
+the target excluded; Signs 415 and 70 hedged and
+excluded under DD-055-14); the control set by the
+frozen nearest-10 rule; a dry-run on Mahadevan 342
+preceded the target (DD-055-16). Measures for the
+target: short-text share 0.164557, numeral adjacency
+share 0.455696, positional entropy 2.708415 bits —
+numeral-side 1, control-side 3, NOT NUMERAL-LIKE by
+the section 5.3 mapping alone. The claim hypothesis
+(F055-C03) is falsified at the behaviour stage. No
+outcome of this spec establishes the value six: the
+source's own argument for six is preserved in the
+recovery record as source material and was evidence
+at no stage. Records: reports/phase414_results.json
+(SHA-256 173a67a1d22651b1da03da0c40457e7234298fc6686dc22f3c2b6a25a2a5a6d5),
+reports/phase414_sign900_report.md, graph node
+IndusPhase414Sign900Numeral (registration verified by
+import), the appended first_check entry on the
+claim's record, and specs/055-sign900-numeral/
+outcome.md. Anchors asserted byte-identical before
+and after (df0cf620… at both points).
+
+## 2026-10-21 — Spec 059 EXECUTED (Phase-421): CLOSED AT STEP 0 — JOIN GATE NOT MET
+
+Spec 059 (design D-22, the seal/tablet
+difference on a better join) was executed as
+Phase-421 under the frozen contract (freeze
+digest bba1caca…; OSF registration yfw7h
+approved and public, DOI
+10.17605/OSF.IO/YFW7H), in Wave 3 group 2 of
+the runnable-experiments campaign. Graph-first
+build: backend/scripts/phase421_f1_object_join.py,
+graph node IndusPhase421F1ObjectJoin registered
+and verified by import before the run. Gate 0.1
+PASS: every spec section 2 pin and every
+DD-059-9 object-identifier source pin
+recomputes to its freeze-record value, verified
+in the foreground by two independent routes
+(committed pins: Phase-136 results 11a07413…,
+Stage 2(a) freeze c65a4b9b…, Phase-136 builder
+d5ceec46…, Phase-141 report d442f8d2…, combined
+report 6a4f5d26…, registry 8a0b2a82…, Spec 034
+outcome c0cc615d…, Spec 037 outcome 28e444f2…,
+anchors df0cf620…, intake schema b94d03ad…,
+Phase-398 builder 278f16b0…, intake validator
+02b24e33…; local-store pins: horus84 layer
+c368f290…, CISI vols 1–2 e0d698f9… /
+e751244e…, ICIT converted keyed layer v2
+bbfdbcd5…). Gate 0.2 PASS: the original
+concordance join reproduced exactly (5,679
+layer rows; 2,895 matched; 2 ambiguous; 2,782
+unmatched). Gate 0.3 PASS: the object-ID join
+dataset built by the pinned route-(b)
+construction (5,018 records carrying
+provenance.object_id) validated under the
+pinned Phase-130 schema — verdict pass,
+0 errors, 0 warnings — and censused against
+the catalogue's 3,493 distinct objects:
+**2,899 joined rows; 2,780 unjoined (661
+carrying no identifier, 2,119 whose
+identifier resolves to zero catalogue
+objects); 0 ambiguous; 2,479 distinct
+catalogue objects joined to.** The census was
+derived twice (intake-dataset route and
+lineage-direct route) with every row's joined
+classification in agreement; five raw-value
+discrepancies between the lineage layer and
+its converted form are recorded per row in
+the census and change no classification.
+Gate 0.4 FAIL: 2,899 joined rows = 51.0477%
+against the bar adopted at DD-059-7 (joined
+share at least 61.0%, at least 3,465 of 5,679
+rows) — a shortfall of 566 rows. The
+object-ID join adds exactly 4 rows over the
+original join (the two H-311 rows and the
+trailing-space references L-78 and M-929) and
+loses none. The execution therefore closed
+**CLOSED AT STEP 0 — JOIN GATE NOT MET** in
+the frozen section 3.5 wording, with the
+census published as the finding. No F1
+quantity was computed — no terminal mapping,
+no CMH statistic, no p-value, no odds ratio —
+and STUDY-SPEC-024/F1 stands exactly as
+recorded: SUPPORTED on its original joined
+subset, its "on the joined subset" scope
+unchanged. The closure establishes nothing
+about the claim; it is a measured property of
+the available catalogue data. Anchors asserted
+byte-identical before and after (df0cf620…).
+Records: specs/059-f1-object-join/outcome.md,
+reports/phase421_results.json (SHA-256
+3948cd01…), reports/phase421_join_census.json
+(95282931…), reports/phase421_report.md
+(167584e1…); the script is deterministic
+(byte-identical rerun).
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson,
+per constitution sec.VI.
+
+## 2026-10-21 — Spec 043 (Phase-410) EXECUTED: PRED-2026-012 closed PROVENANCE — CANNOT BE RUN AS WRITTEN at step 0, check 0.3 (unscored)
+
+Phase-410 executed the frozen Spec 043 contract
+(freeze digest 8a8a334f…; OSF registration
+vmcra approved and public) in Wave 3 Group 2
+of the runnable-experiments campaign, under
+the campaign approval's execution
+authorization (adjudication.md §7.6), with
+the step-0 provenance adjudication running
+first, before any Phase 5 lookup, as the
+frozen order requires. Check 0.1 PASS: all
+seven frozen sources hashed to their pins,
+re-derived by two independent routes. Check
+0.2 PASS: the registry enumeration over 803
+rows reproduced the draft census exactly
+(791 uncoded, 12 coded; ITM = P056, P324,
+P378, P385), the re-derivation of all 803
+icit_function values from the pinned builder
+rule agreed exactly (zero mismatches), the
+held records verified (P098 carries no
+code), and the cross-check read in full (611
+records: 579 empty, 32 free-text glosses, no
+ITM, no LOG) with every disagreement recorded
+sign-by-sign, all of the expected kind.
+**Check 0.3 — the provenance gate — FAIL on
+all three limbs; the study closed
+PROVENANCE — CANNOT BE RUN AS WRITTEN,
+unscored.** The evidence set was produced in
+full: D1 the pinned builder ("from ICIT docs
++ Fuls 2013"; W740 glossed "Initial Cluster
+Terminal Marker"), D2 the pinned parser with
+its test (function "(from Wells)" read off
+the same catalog line as a positional class),
+D3 Fuls 2013 "Positional Analysis of Indus
+Signs" (held cleaned text, 9ed24098…,
+two-route), and D4 Wells 2015 "The
+Archaeology and Epigraphy of Indus Writing"
+(held cleaned text, 62acf855…, two-route).
+Class definition: positional — Wells
+classifies signs "according to their
+preferred text position" (Fuls 2013 §2), the
+ICTM class is named "since they mark the end
+of initial clusters" (§3.7), and Wells 2015
+(ch. 3) defines it by the same cluster-final
+role. Per-sign basis: every stated basis is
+positional (W740 terminal distribution; W820,
+W817, W861 initial distribution), and W231
+(P056) has no stated basis at all — silence,
+which the frozen standard (DD-043-10) fixes
+as failure. Source agreement: Wells' published
+ICTM class is exactly signs 060, 001, 002
+(Wells 2015, ch. 3) — none a builder ITM key;
+817/820/861 are published as initial signs,
+820 also as a terminal marker, and W231 is
+omitted where the table asserts ITM. The LOG
+trace is recorded in the same form and gates
+nothing (DD-043-12): sign 520 is "the other
+common TM" in Wells 2015, not LOG, and no
+per-sign LOG basis is stated for sign 700.
+Check 0.4 never ran: the Phase 5 output was
+byte-hashed at 0.1 and never opened, the
+sanity anchor was never reproduced, and **no
+Phase 5 assignment was looked up for any
+sign**. No share, coverage figure, or verdict
+exists. PRED-2026-012 remains unscored, its
+§3 Outcome standing PENDING; PRED-2026-007's
+PARTIALLY CONFIRMED stands untouched. The
+closure is recorded in the register by dated
+§6 append only (insertions-only
+prefix-verified; the Phase D pin advanced by
+name a ninth time), and it records what the
+classification's assignments rest on — it is
+not a verdict on the criterion and not a
+refutation. Records:
+specs/043-pred-2026-007-registry-frame/outcome.md,
+reports/phase410_results.json (step-0 record
+sha256 019c65991835505c7f8ecac11e3b62f5b01b1
+fe825bed3c46eb23fdb2879c948),
+reports/phase410_step0_report.md.
+
+## 2026-10-21 — Spec 053 EXECUTED (Phase-413): STRICT CORPUS NOT PINNABLE at gate 0.3
+
+Spec 053 was executed as Phase-413 under the
+frozen contract (freeze digest fd2d5cb8…; OSF
+registration s9yfe approved and public), in
+Wave 3 Group 2 of the runnable-experiments
+campaign (design D-07, arm A only; arm B
+trigger-armed and not joined, campaign E-3),
+under the graph-first build (script
+backend/scripts/phase413_yadav_zipf_controls.py;
+node IndusPhase413YadavZipfControls; registration
+verified by import before the run). Gate 0.1
+PASS: every spec §2 pin recomputes to its freeze
+value, verified by two independent routes (claim
+file 90476623…, anchors df0cf620… — 287 anchors,
+94 strict_sa_independent — crosswalk 4ace1a61…,
+Mahadevan–Parpola crosswalk 9ebd7723…, Phase-43
+record 78a6c219…, re-read in the same pass: no
+Zipf fit, exactly as DD-053-11 recorded; no
+Phase-43 estimator was sought or substituted).
+Gate 0.2 PASS: the §4.2 estimator the freeze
+specified completely recovered the planted
+parameters — fitted α 1.256 (error 0.056,
+tolerance 0.10) and q 2.72 (error 0.72,
+tolerance 1.0) from α 1.20 / q 2.0, V 200,
+N 50,000, seed 20261021. **Gate 0.3 FAIL — the
+execution closed STRICT CORPUS NOT PINNABLE in
+the frozen §6 wording.** The V3 /
+Mahadevan-lineage layer's only loader of record
+reads the Firestore 'indusarrays' dump at
+glossa-corpus/indus/sources/rmrl/raw/indusscript-probe/firestore_indusarrays_full.jsonl,
+which is absent from the tree (the sources/
+subtree is untracked) and from the programme's
+main checkout; the loader loads zero sequences,
+so the layer cannot be exported or pinned. No
+database copy exists in the execution tree, and
+the main-checkout database (inspected read-only)
+holds nine texts and no V3 Indus corpus. No
+other layer in the tree is the corpus the
+Phase-43 record names (Firestore source, 3,916
+records / 3,137 sequences / 2,665 dockeys /
+12,494 instances): the site-attributed layer
+carries 5,679 records, the V1 export 15,508
+mixed-source objects, the ICIT export 3,085
+ICIT-encoded sequences, and the Holdat path is
+absent and a different compilation besides. No
+layer was substituted and no rule invented.
+Gates 0.4 and 0.5 were NOT REACHED: no control
+count was entered (no judgement on the control
+set is recorded or implied), no census exists,
+no system was fitted, the §4.4 condition was
+never evaluated, and no sensitivity was
+computed. The claim yadav_2009_arxiv_manual_001
+stands exactly as recorded (strongly supported;
+recorded exponent about 1.35); no strength
+label was appended and its record was not
+edited. Anchors asserted byte-identical before
+and after (df0cf620…). Foundation check at the
+run: 40 passed / 0 failed / 8 warnings. Records:
+specs/053-yadav-zipf-controls/outcome.md,
+reports/phase413_results.json,
+reports/phase413_step0_report.md.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
+## 2026-10-21 — Spec 042 EXECUTED (Phase-407): THIN at gate 0.4 — the tablet stratum is too thin
+
+Spec 042 (design D-28, the object-type split of
+Spec 028's Arm B) executed in full under the
+runnable-experiments campaign approved
+2026-10-21 (Wave 3; campaign member 19), as
+Phase-407. The execution gate was satisfied:
+the frozen contract's OSF registration tmyzg
+is approved and public (freeze digest
+6be2988d7f4c290591d36f391ac84a772f18a9121e35ddd0e251956b5260f753).
+Graph-first build: backend/scripts/
+phase407_arm_b_object_type_split.py, graph node
+IndusPhase407ArmBObjectTypeSplit registered and
+verified by import before the run. Every spec
+section 2 pin was re-derived in the foreground
+by two independent routes (working-tree
+sha256sum; git-blob hashlib at the base commit
+3200b7b5) and agreed with the freeze record on
+all six inputs. Gate 0.1 PASS: every section 2
+input hashes to its freeze-record value.
+Gate 0.2 PASS: the frozen population flow,
+re-run on the Phase-393 machinery inputs
+(supplied from the program's existing local
+downloads and hash-verified, bbfdbcd5… /
+c368f290…), reproduces the recorded counts
+exactly (5,679 / 4,531 / 4,505 / 3,605 /
+3,144 / 3,030), the recorded flow dict of both
+the Phase-393 results and the Spec 028 margins
+audit, the recorded Arm B analysis set, its
+site x type cell table (identical to the
+margins audit's, cell for cell), and the 125
+sign columns. Gate 0.3 PASS: the partition
+census — SEAL 1,768 + TAB 1,262 = 3,030, no
+record of any other type (per site: Chanhu-daro
+52/2, Dholavira 96/15, Harappa 361/1,076,
+Kalibangan 49/3, Lothal 72/2, Mohenjo-daro
+1,138/164). **Gate 0.4 fired THIN: the seal
+stratum clears the floor at all 6 sites
+(minimum Kalibangan, 49), but the tablet
+stratum carries at least 20 inscriptions at
+only 2 of the 6 sites and is recorded TOO
+THIN with its counts; under DD-042-2 the
+execution closed at that gate with headline
+THIN, in the spec's pre-written section 4.3
+wording.** Neither stratum was computed,
+gate 0.5 (the pooled regression) was not
+reached, and no verdict is recorded: the
+section 1.2 hypothesis is unjudged, object
+type is not exonerated, and Spec 028's Arm B
+INCONCLUSIVE verdict stands exactly as
+recorded, unedited. Per-stratum period and
+preservation mixes are published with the
+record (described, not controlled; Spec
+037's 49% compilation-relativity caution
+restated). Anchors asserted byte-identical
+before and after (df0cf620…). Records:
+specs/042-arm-b-object-type-split/outcome.md,
+reports/phase407_results.json (SHA-256
+6f0f5a4f37918d7acb2e899b916131d133d13fc6cecd3b2f4b03662d96919d72),
+reports/phase407_report.md (SHA-256
+67f0cc005508e52e304bff03c277834558abc06c25d299e587b2bb4898a6c37e)
+— both digests verified by two independent
+routes, and the script deterministic
+(byte-identical on a second run).
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
+## 2026-10-21 — Spec 056 (Phase-418) executed — IDENTIFICATION FAILED
+
+Spec 056 (design D-17, the sign-821 fragment
+recovery) was executed as Phase-418 under the
+frozen contract (freeze digest 64c28ce1…;
+OSF registration 3eygs approved and public,
+DOI 10.17605/OSF.IO/3EYGS), in Wave 3 Group 2
+of the runnable-experiments campaign.
+Graph-first build: backend/scripts/
+phase418_sign821_recovery.py, graph node
+IndusPhase418Sign821Recovery registered and
+verified by import before the run. Step 0
+passed in full: every §2 pin recomputed by
+two independent routes at base 3200b7b5 (held
+text 62acf855…, Phase-104 evaluation
+2d0b83e8…, lane-2 drafts 3f645c9a…, registry
+8a0b2a82…, anchors df0cf620…); the claim
+record asserted in the freeze's Spec 038 form
+(constant bd0f7abd… in freeze.json plus the
+fragment's facts on the live file — the live
+file's only delta from the pinned bytes is
+Spec 046's first_check append on the _0002
+claim); the passage of record (Wells 2015,
+"The Dholavira signboard, revisited", lines
+2783–2871) produced from the held copy with
+both anchor lines and the anchor sentence
+located verbatim, and its slice recomputed to
+the freeze-pinned digest (5,354 bytes,
+51d6fb3a…). The DD-056-16 dry-run was worked
+on the "Mohenjo-daro bangle pot" section
+before the protocol touched the fragment.
+Two independent extraction passes over the
+pinned passage found the same candidate set
+{K-1…K-4} and agreed on every checklist line
+at reconciliation. The decisive candidate
+K-1 — sign 821, in the Dholavira signboard
+contexts, has a meaning of "city", either as
+a determinative or as a word (printed p. 92),
+with eyil the passage's preferred gloss among
+DED 752 ūr, DED 808 eyil, DED 3568 nakar and
+DED 4112 pāri — passes the argument
+conditions R-1, R-2, R-4 and R-5 (its R-4
+condition respects the passage's own ruling
+that the non-attestation of eyil-ay/eyil-i is
+not a nullification). The sign list is named
+from the document itself: Wells's own list
+(Wells 2011), in Wells 2015 Chapter 2 /
+Figure 2.6. But the drawn sign is identified
+by neither route R-3 allows: the pinned
+registry carries no W821 value in any of its
+803 rows (sole or multi-value), no registry
+description names a city, and the Phase-123
+Wells witness carries no grapheme 821; and
+the source list's own entry stands in Figure
+2.6, whose drawn forms did not survive the
+held copy's text extraction (captions only),
+so no entry can be quoted. The registry's
+Yunmapped_0821 row is a Yajnadevam glyph
+identifier — the frozen number-collision
+trap — asserted as a trap and not used.
+Under §6's mapping the run therefore closes
+as IDENTIFICATION FAILED: the fragment is
+neither recovered nor retired, and the
+hypothesis is unjudged at the identification
+condition — the passage does argue something
+specific, so the retirement wording cannot
+fire, and no claim enters the lifecycle. The
+unblocking act is named on the record: the
+preservation, as a committed and hashed
+record, of an inspectable drawn-form
+reference for Wells's sign 821. Records:
+specs/056-sign821-recovery/outcome.md,
+specs/056-sign821-recovery/extraction-record.md,
+reports/phase418_results.json,
+reports/phase418_recovery_report.md; the
+claim's record received its dated closure
+append (spec056_closure; removal reproduces
+the pre-act file byte-identically; status and
+stage unchanged). Anchors asserted
+byte-identical before and after (df0cf620…).
+This act is record repair: it establishes, at
+most, what the source passage argues — never
+whether the argument is right, and nothing
+about sign 821 itself.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson,
+per constitution sec.VI.
+
+## 2026-10-21 — Spec 061 EXECUTED (Phase-423): CANNOT BE RUN AS WRITTEN at gate 0.5 (construction calibration)
+
+Spec 061 was executed as Phase-423 under the
+frozen contract (freeze digest 41b1785c…;
+OSF registration fza8c approved and public,
+DOI 10.17605/OSF.IO/FZA8C), in Wave 3
+Group 2 of the runnable-experiments campaign
+(member 18, design D-27 arm A1 only; Arm A2
+is not in this pass, E-3). Graph-first build
+(H15/H23): script
+backend/scripts/phase423_arm_a_precision.py,
+graph module
+backend/glossa_lab/experiment_graph_phase423.py
+(node IndusPhase423ArmAPrecision), registration
+verified by import before the run. The run of
+record executed on the owner's desktop
+(TRISTEN-DESKTOP) in the freeze environment
+(Python 3.12.3, NumPy 2.5.3), the executed
+script byte-identical to the committed script.
+Step 0, gates in frozen order: **0.1 PASS**
+(every composite-pin component recomputes to
+its freeze value: results 0a1657a8…, corpus
+c02e3d7b…, pipeline 6c2ff91c…, margins
+15ae0281…, Spec 028 freeze 376cd8e7…, anchors
+df0cf620…). **0.2 PASS** (the frozen
+population flow reproduces the recorded Arm A
+population exactly: 1,593 records, the five
+site totals, the audit's cell table, 6
+included cells, 294 per draw). **0.3 PASS,
+exact** (the frozen Arm A primary re-run at
+seed 20261012 reproduces the recorded summary
+digit-for-digit: median adjusted R²
+0.00878393455594817, interval
+[0.004626892186724407, 0.01297407559730989],
+rejection share 0.6231155778894473). **0.4
+PASS** (the freeze record states the full
+§4.7 frame). **0.5 FAIL — the execution
+closed CANNOT BE RUN AS WRITTEN.** The frozen
+calibration's A(b) — the frozen estimator on
+the constructed population in expectation —
+recomputes to a step function: A(1) =
+−0.0025188916876574316 (the frozen record's
+own value, 1 − 1592/1588) and A(b) = 1.0
+exactly at every b > 1 evaluated (1.5, 2.0,
+3.0; between-site sum of squares equal to the
+total at each). The mechanism: every
+inscription at a site carries the same
+expected proportion vector, so the
+constructed population has zero within-site
+variation and the estimator sees perfect site
+separation at any boost above 1. No boost in
+[1, 3] achieves |A(b) − θ| ≤ 1e-6 for either
+scenario (θ₁ = 0.00878393455594817,
+θ₂ = 0.015); Scenario 1's bisection did not
+reach the tolerance within 100 iterations and
+the gate closed the run there. Spec 028's
+recorded positive control at boost 3.0
+(median 0.023963353007570576) is a median over
+generated worlds — a different quantity from
+A(3), which recomputes to 1.0; the drawing of
+inscriptions is what creates the within-site
+variation the in-expectation construction
+averages away. No trial ran, no world was
+built, no target quantity was computed, and
+no substitute construction was supplied at
+run time. Spec 028 Arm A stands exactly as
+recorded (INCONCLUSIVE); the operative
+target T* (DD-061-5) is undefined on this
+record, so Arm A2's trigger does not fire on
+it and no target may be quoted from this
+record. A successor calibration is a new act
+under a new freeze or an amendment. Records:
+specs/061-arm-a-precision/outcome.md,
+reports/phase423_results.json (SHA-256
+f7007009…), reports/phase423_report.md
+(SHA-256 3669eb38…). Anchors byte-identical
+before and after (df0cf620…).
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
+
+## 2026-10-21 — Spec 047 step-2 EXECUTED (Phase-406): INCONCLUSIVE — classification gate (§6.3); held under the Roif gate
+
+Spec 047's step 2 (the builder's own test,
+design D-09) was executed as Phase-406 under
+the frozen contract (freeze digest
+8501feab…; OSF registration b2a8w approved
+and public), in Wave 3 Group 3 of the
+runnable-experiments campaign, against
+Asset B as pinned in the step-1 outcome
+record. Graph-first build (H15/H23): script
+backend/scripts/phase406_roif_ledger_step2.py;
+graph node IndusPhase406RoifLedgerStep2
+added to backend/glossa_lab/
+experiment_graph_phase406.py (the step-1 node
+unchanged beside it), registration verified
+by import before the run. Step 0 re-run
+passed in full, in the frozen order: input
+integrity (every §2 pin recomputed, by two
+independent routes in the foreground and
+again by the phase machinery), spine
+reproduction (36 rows, 30 clusters), and
+the join census accounting for all 5,679
+primary-layer records exactly once (joined
+5,106; non-spine 573 over 66 site values;
+no site value 0) — identical to the step-1
+census in every figure. Asset B was
+re-asserted at its step-1 digest
+(a1a9e484…; 30 rows; AGREED 3, DISAGREED 1,
+SINGLE-SOURCE 10, NO-SOURCE 16; testable 2)
+and the ledger-sign list at its digest
+(dfa48f50…; 8 entered, 3 mapped, 5
+UNMAPPED; the DD-047-13 all-UNMAPPED case
+does not fire). **The §6.3 classification
+gate fired on both of its clauses**: 2
+testable sites (harappa — administrative;
+lothal — port/trade) is below the frozen
+floor of 12, and in the test population
+(harappa 2,717 joined records; lothal 208;
+NO-CORPUS-COVERAGE none) the pooled
+ADMIN-TRADE-GATEWAY side carries both sites
+while the domestic/ritual contrast side is
+empty. The execution therefore closed
+INCONCLUSIVE — the classification is the
+finding, in the spec's pre-written §7
+wording. No distribution quantity was
+computed (no R, no permutation p-value, no
+R_ledger, no per-sign counts); E6 (the
+primaries and the each-source-alone /
+five-largest recomputations) was not run,
+and the §6.4 exclusions were republished in
+full. The claim
+indus_valley_script_deciphered_from_myth_65ff0a26_manual_001
+received its dated, component-scoped
+step-2 append (key spec047_step2; removal
+reproduces the pre-act record file
+byte-identically, verified at the act;
+claim_status untested and stage created
+unchanged) — the claim stands UNTESTED for
+its distribution component, now with the
+reason measured rather than asserted. The
+standing step-1 disclosures were carried
+unchanged and not relitigated (the §4.5
+attestation disclosure; the §4.3
+verification-pass demotions of khirsara and
+sheri khan tarakai; the quoted-source basis
+of the surkotada DISAGREED row). This
+concerns the distribution component of
+Roif's ledger thesis only; the
+guild-authority and Akkadian-influence
+components were not tested. Records:
+specs/047-roif-ledger-distribution/outcome.md
+(step-2 record appended; the step-1 text
+unedited), reports/phase406_step2_results.json
+(SHA-256 7d0a303f…), reports/
+phase406_step2_report.md (SHA-256
+87b6e0a0…) — the script deterministic, both
+outputs byte-identical on a second run.
+Anchors asserted byte-identical before and
+after (df0cf620…). Held under the Roif
+gate.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson,
+per constitution sec.VI.
+
+## 2026-10-21 — Spec 050 EXECUTED (Phase-416): CLOSED AT STEP 0 — ASSET NOT FROZEN (dependency closure)
+
+Spec 050 was executed as Phase-416 under the
+frozen contract (freeze digest fdcbae64…;
+OSF registration uwdmy approved and public,
+DOI 10.17605/OSF.IO/UWDMY), in Wave 3 Group 3
+of the runnable-experiments campaign (member
+10, design D-13; consumer of Asset A). Step 0
+ran in the frozen order, fail-closed, and
+closed at its first gate. **Gate 0.1 FAIL, in
+its absent branch — CLOSED AT STEP 0 — ASSET
+NOT FROZEN.** The gate reads Asset A's SHA-256
+from the fixed pin source, Spec 045's
+asset-a/asset-a-freeze.json (DD-050-11), and
+asserts it before any join or counting; that
+file does not exist, and neither does the
+canonical depicted-kind-classification.csv, so
+no Asset A digest exists to assert. The
+absence was verified first-hand at the
+execution base (main at 3e75d7b0…) by two
+independent routes — the fresh clone's tree
+(listing, existence tests, and the full
+recursive ls-tree at the base commit) and the
+GitHub API (contents API 404 for the asset-a
+directory and the freeze file; the recursive
+git-trees read at the same commit, 6,124
+entries, not truncated, with no asset-a path
+anywhere) — and the two routes agree. The
+dependency's terminal record is Spec 045's:
+executed as Phase-411, INVALID at its step-0
+gate 0.2 (PR #268, merged c97c8d4c…; landing
+record PR #269), its outcome record stating
+plainly that Asset A was not built — build
+gates A1–A6 never ran, no asset-a directory,
+CSV, or freeze file exists, and no Asset A
+digest exists for any dependent to pin. Gates
+0.2–0.6 of Spec 050 were NOT REACHED. No join
+was made, no sign was classified, no census
+was taken, and no final-position quantity was
+computed; no substitute asset, digest, or
+stand-in file was created, and Asset A was
+not reconstructed from any material. The
+standing consequence: the D-13 comparison was
+never run and its hypothesis is unjudged. The
+claim
+without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004
+stands UNTESTED as recorded — this is a
+dependency closure under the campaign's
+cluster rule, not a verdict on the claim, and
+position is not meaning. Anchors asserted
+byte-identical before and after (df0cf620…).
+Records: specs/050-hunt-sky-signs-endings/outcome.md.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+## 2026-10-21 — Spec 051 EXECUTED (Phase-409): INCONCLUSIVE at gate 0.6 — the classification is the finding
+
+Spec 051 was executed as Phase-409 under the
+frozen contract (freeze digest 818cfa4e…;
+OSF registration xnrph approved and public),
+in Wave 3 Group 3 of the runnable-experiments
+campaign (member 9, design D-10). Graph-first
+build (H15/H23): script
+backend/scripts/phase409_roif_arrow_sign.py,
+graph module
+backend/glossa_lab/experiment_graph_phase409.py
+(node IndusPhase409RoifArrowSign), registration
+verified by import before the run (497
+registered nodes). Step 0, gates in frozen
+order: **0.1 PASS** (every §2 hash pin
+recomputes to its freeze value — Phase-104
+evaluation 2d0b83e8…, Holdat roles 3f1c24ed…,
+gazetteer 5ac76a30…, defect file fc05e552…,
+Spec 047 frozen spec 1a18dac0…, anchors
+df0cf620…; the claim file asserted in the
+Spec 038 form, its manual_003 facts matching
+on the live file). **0.2 PASS** (Asset B,
+consumed from Spec 047's step 1, recomputes
+to a1a9e484… — identical to the digest
+recorded in Spec 047's step-1 outcome record,
+the pin source fixed by DD-051-14; the digest's
+presence in that record verified
+mechanically). **0.3 PASS** (exactly 30 rows,
+one per gazetteer cluster, the seven contract
+fields, contract vocabularies; per-status
+counts AGREED 3, DISAGREED 1, SINGLE-SOURCE
+10, NO-SOURCE 16; testable set derived by
+rule: 2 — harappa, administrative; lothal,
+port/trade). **0.4 PASS** (the Holdat counting
+layer of record identified from the
+database-held downloads tree — the Holdat
+corpus file the Phase-45/46/54 scripts of
+record read — exported in full as held and
+pinned at 62d14d2b…: 7,002 sign-token rows,
+1,670 inscriptions over 9 sites; the
+re-derived M391 census reproduces the §1
+census exactly: 75 / 52 / 16 / 14 / 11 / 10 /
+10 / 3 / 2, total 193). **0.5 PASS** (every
+one of the 7,002 records accounted for
+exactly once: joined 6,117 to a spine cluster
+over 1,453 inscriptions; non-spine 885 over
+217 inscriptions — Dholavira 439 records /
+16 M391, Chanhu-daro 310 / 10, Rakhigarhi
+136 / 2; no site value 0). **0.6 — THE
+FLOORS FIRE; the execution closes as
+INCONCLUSIVE — THE CLASSIFICATION IS THE
+FINDING.** Testable gateway/border sites
+carrying M391: 0, against the floor of 3;
+the pooled side is non-empty (2 sites) and
+the contrast side {domestic, ritual} is
+empty in the test population. No share,
+ratio, permutation, or regression quantity
+was computed, and the §5 primary (task E5)
+did not run. The claim
+indus_valley_script_deciphered_from_myth_65ff0a26_manual_003
+stands UNTESTED, now with the reason measured
+rather than asserted; its record received its
+dated append (spec051_execution; removal
+reproduces the pre-act file byte-identically;
+status and stage unchanged). Records:
+specs/051-roif-arrow-sign/outcome.md,
+reports/phase409_results.json (SHA-256
+3f4bf2a5…), reports/phase409_report.md
+(SHA-256 51a9d3a1…). Anchors byte-identical
+before and after (df0cf620…). All products
+are held under the Roif gate (spec §9).
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson,
+per constitution sec.VI.
+
+## 2026-10-21 — Spec 048 EXECUTED (Phase-408): STRICT CORPUS NOT PINNABLE at gate 0.3 (held under the Roif gate)
+
+Spec 048 was executed as Phase-408 under the
+frozen contract (freeze digest 56beec70…; OSF
+registration eqpab approved and public, DOI
+10.17605/OSF.IO/EQPAB), in Wave 3 Group 3 of
+the runnable-experiments campaign (design
+D-04; consumer of Asset F), under the
+graph-first build (script
+backend/scripts/phase408_fish_family_step0.py;
+node IndusPhase408FishFamilyStep0; registration
+verified by import before the run, 497 nodes).
+Integrity PASS: every §2 byte pin recomputes
+to its freeze value by two independent routes
+(Phase-43 record 78a6c219…, anchors
+df0cf620… — 287 anchors, 94
+strict_sa_independent, M072
+pending_non_sa_validation — Mahadevan–Parpola
+crosswalk 9ebd7723…, Spec 033 spec
+eaea0e2e…); the claim file was asserted in
+the Spec 038 form (manual_002's facts on the
+live file; its freeze-time hash 3202aeca… a
+definition constant — the live file's only
+delta for manual_002 after the post-freeze
+store regeneration is its extracted_at
+timestamp). **Gate 0.1 PASS**: Asset F's
+digest, recomputed over the canonical bytes
+with the digest field excluded (Spec 044
+§4.2), is
+ca5fb1b5a52d9ad0c8301174996562cdc024bf4063e6193bef77328b1acc58c3
+— identical to the digest recorded in Spec
+044's step-0 outcome record (the pin source
+fixed at the freeze, DD-048-9) and to the
+file's own digest field; 7 members; the asset
+was not rebuilt or substituted. **Gate 0.2
+PASS**: every member joins via its
+mahadevan_number locator through the pinned
+crosswalk (M047, M048, M050, M052, M060,
+M145, M147 — all MAPPED, none UNMAPPED, the
+crosswalk's Parpola locator agreeing in
+every case); the cross-check names every
+divergence — of the claim record's trio
+(72, 64, 70) none is an Asset F member, of
+the Phase-43 six (267, 72, 65, 59, 60, 70)
+only 60 is — and adds and removes no member.
+**Gate 0.3 FAIL — the execution closed
+STRICT CORPUS NOT PINNABLE in the frozen §6
+wording.** The V3 / Mahadevan-lineage layer's
+only loader of record reads the Firestore
+'indusarrays' dump at
+glossa-corpus/indus/sources/rmrl/raw/indusscript-probe/firestore_indusarrays_full.jsonl,
+which is absent from the tree (the tracked
+rmrl directory holds only its bulletin and
+provenance files); the loader, imported from
+its file and run, loads zero records and zero
+sequences, so the layer cannot be exported
+whole or pinned, and the T2.4 reference
+points (sign 72 — 181 occurrences, 25.9%,
+supported; sign 267 — 356, 3.8%, not
+supported) cannot be re-derived from a
+pinned layer. No database copy exists in the
+execution tree, and no other layer in the
+tree is the corpus the Phase-43 record names
+(Firestore source, 3,916 records / 3,137
+sequences / 2,665 dockeys / 12,494
+instances): the site-attributed layer carries
+5,679 records, the V1 export 15,508
+mixed-source objects, the ICIT export 3,085
+ICIT-encoded sequences, and the Holdat path
+is absent from the tracked tree and is the
+second compilation besides. No layer was
+substituted and no rule invented. Gates 0.4,
+0.5, and 0.6 were NOT REACHED: no Holdat
+judgement, no census (no TOO THIN judgement
+is recorded or implied for any member), and
+no control judgement exists. No
+ending-follower rate was computed for any
+sign in either arm, no sensitivity was
+computed, and no family verdict is recorded:
+the claim
+parpola_2010_dravidian_solution_manual_002
+stands exactly as recorded (IN QUESTION,
+partially supported), its record unedited.
+Anchors asserted byte-identical before and
+after (df0cf620…). Foundation check at the
+run: 40 passed / 0 failed / 8 warnings.
+Records: specs/048-parpola-fish-family-profiles/outcome.md,
+reports/phase408_results.json (SHA-256
+c08e775c…), reports/phase408_step0_report.md
+(SHA-256 9dca830c…) — both digests verified
+by two independent routes, and the script
+deterministic (byte-identical on a second
+run). This entry and its records are
+internal under the campaign's Roif gate
+(R-7); not a publication.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
+
+## 2026-10-21 — Phase-43 battery deposit: producing script restored byte-for-byte as the record of record
+
+Owner-approved amendment (Item 2 of the 2026-10-21 amendment queue): the
+Phase-43 positional battery is pinned as a record of record. Deposited:
+(1) backend/scripts/phase43_part2.py restored byte-for-byte from commit
+3e0ab651fb3f38aed0385c73c66600819cc04f1c, SHA-256
+6d5a079d47113937afd3340ab4b35781d1b7202644b180ba814d15f03f49699e — the
+producing script of the Phase-43 results file; (2)
+backend/scripts/phase43_all.py restored byte-for-byte from the same
+commit, SHA-256
+6a3bc7764ea32ddc4b578cad66881fdcb2b542ab03daa3f9a0ddcac6c30fb133 — the
+sibling run whose T2.3 candidate-scan constants differ (top-50; floors
+10 / 0.40 / 0.20) and which did not produce the deposited results; (3)
+docs/phase43-battery-methods.md, stating the battery exactly as run
+(V3 loader with min_length=2; position rule first=initial / last=terminal
+/ else medial on sequences of length at least 2; count floor total at
+least 5, 201 signs profiled; the six-step cascade TERMINAL_STRONG at
+t_rate at least 0.60, INITIAL_STRONG at i_rate at least 0.55,
+MEDIAL_STRONG at m_rate at least 0.65, TERMINAL_MODERATE at least 0.40,
+INITIAL_MODERATE at least 0.40, else MIXED; the T2.3 opening-formula
+counting rule; the T2.4 fish floors; the deposited corpus statistics
+3,916 records / 2,665 dockeys / 3,137 sequences / 12,494 sign
+instances), including the explicit statements that the battery contains
+no chance-baseline step (none ever existed) and that the full member
+lists for the 40/61 classes plus terminal ranks 11-20 were never written
+to any file; (4) docs/phase43-battery-provenance.md, recording the
+deletion (commit fac2f2c8f97f3982178b8f869b1542e1ffb4c389, 2026-05-17
+cleanup), the recovery source (pre-purge mirror history), the results
+file pin outputs/phase43_all.json SHA-256
+78a6c21908b9362854c54dd3d820d717be22feab3af11135663fa14aaf554fe4, and
+the loader pin (backend/glossa_lab/data/indus_corpus_v3.py as on main —
+loading logic byte-identical to the Phase-43 original; one cosmetic
+__main__-block line differs). Restored files carry their original bytes;
+no annotation was added inside them. This deposit does not establish
+that the frozen classes can be reproduced today (the corpus dump is
+missing; gates G3/G4 have never run), that the Phase-43 results are
+correct, or that Specs 049 / 052 / 054 pass their other gates.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
+## 2026-10-21 — Spec 066 EXECUTED (Phase-428): INTAKE COMPLETE — CATALOGUE EXTENSION PINNED
+
+The Phase-130 catalogue-extension intake (amendment package Item 7, owner-approved
+2026-10-21) ran under the frozen contract: freeze digest
+0b81d8421c8fe66b486b2c729bb7e978faa6327c74b8f1bff7984128a31aa355, freeze PR #314
+merged at c6140cf199b158b25ee4cef6e3bcd9837eb000db on genuine CI green (run
+39715444485, 7 of 7). The CISI 3.1 portion and its extraction are restricted
+research material under PROVENANCE entry 22 of the restricted local store (the
+gate is quoted verbatim in the spec's outcome.md §1); no scan, render, extraction
+row, or extracted field beyond number + site section + published type class +
+grade class entered git at any point, and repo cleanliness was checked before
+any join work and again before the outcome commit. Step 0 asserted every pin
+(portion PDF, extraction table, vols 1–2 catalogue CSVs, horus84
+inscriptions.csv, the committed Phase-421 census/results, the Phase-130 schema,
+the validator) and re-derived the candidate sets exactly: 2,101 distinct
+well-formed portion numbers (1,341 referenced — 1,293 zero-resolution + 48
+already-joined — and 760 unreferenced). Graded by the frozen ladder (corroboration
+rung UNGRADED for every candidate, DD-066-7, because the in-hand layers carry no
+FC/excavation/museum values): VERIFIED 2,089, CONFLICT 12 (NUMBER-AMBIGUOUS 11,
+SITE 1), UNRESOLVED 0; referenced 1,331/10/0, unreferenced 758/2/0. The 2
+low-confidence candidates were hand-verified against page renders and confirmed
+as printed; the 183 medium-confidence candidates stand VERIFIED under the
+stratum determination. The seeded stratum (seed 20261021; 30 VERIFIED, the whole
+12-candidate CONFLICT class, the empty UNRESOLVED class) was hand-read on page
+renders: 30 of 30 sampled VERIFIED sound; all 12 sampled CONFLICTs attributed
+to extraction error (scan text-layer number misreads, photo-column spill into
+data fields, OCR variants, empty key fields in duplicate plate listings); true
+non-identity 0. HALT VERDICT: conflict share 12/2,101 = 0.57% against the 20%
+cap, tripwire count 0 — NO HALT. The merged catalogue layer v2 was built and
+held in the restricted local store only (SHA-256
+cd0c2ba8823678be9f7573616528ae0b6be2fe579dc7e34c93add421c80886ad; 2,655,958
+bytes; 9,741 rows; 5,529 distinct objects; 2,036 new objects; 53 collisions
+where the existing object stands). The Phase-130 validator over the extension
+dataset form (2,089 records, license_basis = the entry-22 gate) returned
+pass-with-warnings, 0 errors. Committed: the extension index
+data/intake/cisi31_extension_index.csv (2,101 rows, the four lawful columns),
+reports/phase428_results.json, and specs/066-phase130-catalogue-extension/
+outcome.md. The projected join — 2,899 + 1,777 = 4,676 rows (82.34%) against
+the Spec 059 bar of 3,465 — is a projection only; no join has run. A VERIFIED
+catalogue object is not a verified join; no F1 quantity exists from this act;
+STUDY-SPEC-024/F1 stands as recorded SUPPORTED on its original joined subset
+(MH OR 2.384 [1.847, 3.077], q=0.00015), and Spec 059's record stands unpatched.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
+## 2026-10-22 — Spec 064 EXECUTED (Phase-426): IDENTIFICATION FAILED — continuity/discrimination not sustained
+
+Spec 064 ("Sign 297 Is the Horned Tiger": an Identification Concordance,
+Successor to Spec 046) was executed as Phase-426 under its frozen contract
+(freeze digest cfeb7baf71fad26e81ca80a08395c87a07d158974480923fd38eb2fed854c405),
+under the separate execution order the freeze awaited (DD-064-17). The
+execution gate was satisfied before the run: OSF registration s6hr9 is
+approved + public (approved and API-verified 2026-10-22).
+
+Outcome, in the frozen wording: **IDENTIFICATION FAILED
+(continuity/discrimination not sustained)** — "The fragment 'sign 297 is
+the horned tiger' cannot be carried to a concordance: the descriptor's
+discrimination of 297 from its neighbours in the 289–308 run was not
+sustained by both independent derivations. The record stays a stated gap.
+No statement about the sign is made, and nothing is fed to Asset A.
+Qualification (carried from the preserved reference, Spec 064 §1): the
+identification of Wells's 297 rests on a drawn-form reference whose
+continuity status is QUALIFIED — anchored at family level only; its
+step C discrimination check is part of this run's record."
+
+Step 0 passed in full: every spec section 2 pin recomputed and matched
+(claim record 997fa336…, held Wells 2015 text 62acf855…, Phase-104
+evaluation 2d0b83e8…, crosswalk registry 8a0b2a82…, Phase-123 witness
+ecbc37a4…, lane-2 drafts 3f645c9a…, Spec 046 closure delivery 772db4df…
+standing unedited, and the preserved drawn-form reference 33ee22ec…);
+the source book produced from the held copy with the printed-p. 97
+passage located verbatim; all four lists of record accounted for as HELD
+or CITABLE (Wells HELD, CISI HELD, Parpola CITABLE, Mahadevan CITABLE);
+and gate 0.4 passed — the local thesis file's digest asserted against
+its pin (4b39330c…, 19,313,853 bytes) before any plate was read, and the
+plate page (Wells 2006 thesis, Figure 3.2, thesis p. 90 / PDF p. 102)
+produced from it. No image is committed anywhere in the run.
+
+Step 1 named the source's sign list from the book's own apparatus —
+Wells's own list (Wells 2011), in Wells 2015 Chapter 2 / Figure 2.6.
+Step D derived the drawn-form descriptor twice, independently, from the
+thesis plate (three strokes clear above a single sharp bend, four stroke
+ends at the base, uppers slanting steeply down-left, lowers running down
+to the right with a basal splay) and sustained the preserved reference:
+agreement on its feature set, with two noted readings (the preserved
+"four" is the count at the base; its "near-vertical" lowers slant about
+30 degrees from vertical) judged not material. Step C — mandatory in
+this successor — was then not sustained: neither derivation affirms that
+the descriptor picks out plate 297 and no neighbour in the 289–308 run
+(signs 299, 302 and 303 satisfy every stated feature of the descriptor;
+the family anchor, registry row P205, is corroboration only and expressly
+not an identification). The run closed under the pre-registered closure
+before step M and before any scoring; step 2 was not reached, no list was
+scored, and the hypothesis is unjudged on concurrence grounds. The
+preserved reference's continuity status remains QUALIFIED, carried on
+every product of the run.
+
+Delivery in the frozen closure form:
+specs/064-sign297-concordance-successor/concordance-297.json (schema
+glossa.concordance/1; producer_spec 064; signs empty; closure block),
+SHA-256 9e765576349d4d294a4fc04f0d6750be3718dfc60fa267ea16c04c6130db7488
+(derived twice, identical; the run is deterministic and reproducible
+byte-identically). Records: reports/phase426_results.json,
+reports/phase426_concordance_report.md,
+specs/064-sign297-concordance-successor/outcome.md; graph node
+IndusPhase426Sign297ConcordanceSuccessor registered and verified by
+import before the run; the claim's record received its dated
+successor-check append (spec064_check, Phase-426, 2026-10-22) beside
+Spec 046's unedited first_check entry, verified at the act (removal
+reproduces the pre-act file byte-identically; status and stage
+unchanged). Spec 046's frozen record, outcome, and closure delivery
+stand unedited. Anchors asserted byte-identical before and after
+(df0cf620…).
+
+## 2026-10-22 — Spec 063 (Phase-425) executed — RECOVERED (route 2)
+
+Spec 063 (the sign-821 identification successor
+to Spec 056) was executed as Phase-425 under
+the frozen contract (freeze digest dc24a10e…;
+OSF registration kfet5 approved and public,
+API-verified 2026-10-22), under the owner's
+separate execution order (DD-063-13).
+Graph-first build: backend/scripts/
+phase425_sign821_identification.py, graph node
+IndusPhase425Sign821Identification registered
+and verified by import before the run. Step 0
+passed in full: every §2 pin recomputed (held
+text 62acf855…, registry 8a0b2a82…, witness
+ecbc37a4…, Spec 056's freeze/outcome/extraction
+records, Phase-104 evaluation 2d0b83e8…,
+lane-2 drafts 3f645c9a…, anchors df0cf620…,
+preserved reference 695dd35d…); the claim
+record asserted in the Spec 038 form (constant
+bd0f7abd… in freeze.json plus the fragment's
+facts on the live file — entry present,
+UNTESTED, created, its spec056_closure append
+present); the local Wells 2006 thesis PDF
+asserted to its frozen digest on the local
+file BEFORE any plate was read (4b39330c…,
+19,313,853 bytes); and the plate page (thesis
+p. 92 / PDF p. 104, Figure 3.2) produced from
+that pinned file (its embedded plate image
+Im106.tiff, SHA-256 961ed7de…). Step D: two
+independent derivations from the plate —
+sequential plate read and neighbour-contrast
+read, each without sight of the other or of
+the drafted descriptor wording — agree feature
+by feature: two identical vertical oval
+outlines side by side, touching at the
+vertical midline, each divided by three
+straight diameters (one vertical, two
+diagonal) into six sectors; their neighbour
+discriminations agree on all five named
+neighbours (818 a single 4-sector circle; 820
+the single oval; 822 a single spoked oval
+flanked by paired vertical strokes; 823 a
+single denser-crossed oval; 791 two plain
+ovals). No disagreement arose. The reconciled
+descriptor agrees with the preserved record's
+descriptor on every feature — the reference
+is SUSTAINED, checked not inherited. Step C:
+continuity passes on the anchors' agreement —
+the Appendix II formation passage ("sign 820
+doubles to form sign 821", held-text lines
+3691–3704, verified verbatim), the P378
+registry anchor (W820 / M391, "Wheel with 6
+spokes with even angles"), and the plate
+agreement at 820/821 all agree on the doubled
+six-spoke-wheel form; the plate number alone
+anchored nothing. Step M: route 1 (registry,
+by drawn form) was attempted and FAILED — no
+registry row carries the doubled form (its
+only two "6 spokes" descriptions are P378, a
+single wheel, and P379, a single flanked
+wheel), with no fallback to P378, the base
+sign; route 2 (the list's own entry, through
+the preserved reference) SATISFIED the match;
+route 3 (composition) was not used — exactly
+one route identifies the sign. Traps asserted
+by name: Yunmapped_0821 (a Yajnadevam glyph
+identifier, empty wells_ids, frequency 10 —
+asserted as a trap, never used), sign 861
+(Figure 6.12 reading-confusion trap), P378 as
+the target, and number-only matching in any
+form (none used). Candidate K-1 — sign 821,
+in the Dholavira signboard contexts, has a
+meaning of "city", either as a determinative
+or as a word (Wells 2015, printed p. 92) —
+therefore passes R-1 through R-5 (R-1, R-2,
+R-4, R-5 of record in Spec 056's executed
+record on the pinned passage; R-3 run afresh
+under §5) and the outcome is RECOVERED. The
+claim enters the lifecycle at the created
+stage, untested, as the appended
+spec063_restatement entry on the fragment's
+own record (proposition, verbatim quote and
+locator, named sign list and identification,
+R-4 condition, R-5 numbers and conditions, and
+the designed-never-run test note; removal of
+the append reproduces the pre-act file
+byte-identically; the fragment's original
+entry and its spec056_closure append stand
+above it, unedited). No test was run. Spec
+056's record is unedited; its IDENTIFICATION
+FAILED stands as the record of the first run.
+Records: specs/063-sign821-identification-successor/
+outcome.md, specs/063-sign821-identification-successor/
+identification-record.md,
+reports/phase425_results.json (SHA-256
+c7b246e9…), reports/phase425_identification_report.md
+(SHA-256 67f753bf…). Anchors asserted
+byte-identical before and after (df0cf620…).
+Foundation check as measured: 40 passed / 0
+failed / 8 warnings. This act is
+identification on a preserved reference: it
+establishes, at most, whether the drawn sign
+candidate K-1 names is identified in the
+program's claim form — never whether K-1's
+suggested meaning is right, and nothing about
+sign 821 itself beyond the identification.
+
+## 2026-10-22 — Spec 067 EXECUTED (Phase-429): REPLICATED
+
+Spec 059's question re-run against the Spec 066 merged catalogue layer v2, under
+the frozen Spec 067 contract (freeze digest
+73463ab949f65ecf620a9f4544b9a84fe18f72056a86c48ce9d5d0164f3d41db; freeze PR #318
+merged at dcfa3af6; OSF registration qsthg approved and API-verified public
+before the run). Step 0, in the frozen order: gate 0.1 PASS — every pin
+recomputed, the merged layer v2 asserted on the local file first (SHA-256
+cd0c2ba8823678be9f7573616528ae0b6be2fe579dc7e34c93add421c80886ad, 2,655,958
+bytes, 9,741 rows, 5,529 distinct objects); gate 0.2 PASS — the original
+concordance join reproduced exactly against the vols. 1–2 layer (5,679 / 2,895
+/ 2 / 2,782), contributing no row; gate 0.3 PASS — the object-ID join through
+the Phase-130 schema (5,018 records, validation pass) joined 4,676 of 5,679
+rows (82.34%) against layer v2 (661 no identifier, 342 resolving to zero, 0
+ambiguous; 3,763 distinct objects); gate 0.4 PASS — the mandatory type-fill
+census before any F1 quantity: newly joined objects 1,777 rows / 1,284 distinct
+objects, type filled 1,152 objects, unfilled 132; whole joined set type filled
+3,511 of 3,763 distinct objects (317 rows unfilled), restricted to
+{Seals, Tablets} 4,077 rows, census-form eligible strata Harappa, Kalibangan,
+Mohenjo-daro; gate 0.5 PASS — 4,676 joined rows against the bar carried from
+Spec 059 at DD-067-7 (≥ 3,465 rows, 61.0%), a margin of 1,211 rows, judged on
+this execution's own census (Spec 066's projection is not cited as a result).
+The frozen Phase-136 flow on the enlarged set, unchanged: 4,676 joined → 4,359
+typed → 4,077 seals/tablets → 3,315 terminal-mapped → 3,181 in the eligible
+strata (Harappa, Mohenjo-daro, Kalibangan — the original three); estimable
+(pooled expected counts ≥ 5 in 4 of 4 cells). CMH chi-square 67.3998;
+permutation raw p = 0.0001 (B = 9,999, seed 20261009); family-adjusted
+q = 0.0001 (single-test family, DD-067-8); Mantel–Haenszel common odds ratio
+2.452, 95% CI [1.965, 3.058] — entirely above 1.5, so the §5 verdict is
+REPLICATED. Leave-one-site-out (descriptive): drop Harappa 2.214
+[1.611, 3.042], drop Mohenjo-daro 2.723 [2.026, 3.659], drop Kalibangan 2.465
+[1.974, 3.079] — every subset estimable, no site load-bearing. Both covariate
+comparisons are in the machine record (the added rows are chiefly Harappa's,
+shorter, and more fragmentary than the original joined set). The claim's
+"on the joined subset" scope is re-stated by the outcome's appended record
+only, as §5 provides for a REPLICATED outcome: the difference is now recorded
+on the enlarged object-ID-joined subset, 4,676 of 5,679 rows (82.34%). Spec
+024's frozen verdict and Spec 059's gate closure stand exactly as recorded,
+unedited. Anchors asserted byte-identical before and after (df0cf620…).
+Foundation check as measured on the execution tree: 40 passed / 0 failed /
+8 warnings. The per-row join census against layer v2 stays restricted-local
+(phase429_join_census.json, 5,679 rows, beside the merged layer in the
+restricted local store), named by filename and count only; no row-level
+merged-layer data entered git. Records: specs/067-f1-enlarged-join/outcome.md,
+reports/phase429_results.json (SHA-256 f08d469b…), reports/phase429_report.md
+(SHA-256 8cc2c154…); the script is deterministic (all outputs byte-identical
+on a second run).
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
+## 2026-10-22 — Spec 065 EXECUTED (Phase-427): Class B — S-5 RESOLVED, S-1 STILL BLOCKED
+
+Spec 065 was executed as Phase-427 under the
+frozen contract (freeze digest f50a6e9c…;
+OSF registration 34s9u approved and public,
+API-verified by the parent before the
+execution order; owner's 2026-10-21 approval
+of the amendment package as written, Item 6).
+Step 0 passed in full, in frozen order: gate
+0.1 input integrity — every §2 live pin
+recomputes to its freeze value (the two held
+cleaned texts, the two registry files, Spec
+057's freeze record, outcome, spec, and
+adjudication, and the anchors file), with the
+extracted-claims store asserted by entry
+facts under the Spec 038 form (fingerprint
+a4874349…, the merged_into posture as Spec
+057 left it, the rows' quote fragments —
+S-1's lowercase "positional analysis", S-5's
+sentence-case "Positional analysis"); gate
+0.2 the acquired S-5 file asserted on the
+local file (657,863 bytes, SHA-256
+77f10f32…, MD5 36616e20… matching the Zenodo
+record); gate 0.3 the S-1 intake
+determination — the blocked arm, on evidence
+re-read first-hand at step 0 (no intake-S1.json
+in the spec directory; PROVENANCE.md carries
+no S-1 provenance entry, entry 23 being
+Hunt/S-5 and both S-1 sections stating no
+file acquired and no provenance entry taken;
+the S-1 downloads folder holds only
+BLOCKED.md; the Oakland ILL portion-copy
+request placed 2026-10-22 is pending, with
+nothing delivered and nothing intake-pinned);
+gate 0.4 order. The accounting, one outcome
+per source: S-5 HEADING ABSENT FROM DOCUMENT
+— the acquired file's own text layer,
+extracted in full from the pinned bytes
+(pdftotext -layout; 2,273 lines, 84,672 bytes;
+artifact extraction-S5.txt, 74e42f8e…),
+carries exactly one occurrence of "positional
+analysis" (extraction line 340, PDF page 9),
+sentence-initial inside a running paragraph
+of §5.5 "Governance and Civic Authority"
+("…waterworks. Positional analysis / shows a
+clear tripartite administrative grammar:") —
+a mention inside a running sentence, not in
+heading form under the carried §5.1 rule; the
+Spec 057 sub-state HEADING NOT PRESENT IN
+HELD TEXT is converted to a document-level
+finding on the acquired file's hash, and no
+passage or claim arises. S-1 STILL UNLOCATED
+— ACQUISITION BLOCKED (owner account act) —
+no search was run for S-1 and nothing about
+the chapter is found or implied; its evidence
+is the blocker record, and the unblocking act
+remains a handed-over, intake-pinned copy
+before a later run. Headline class B in the
+frozen §7.1 wording. Disposition (§7.2): the
+heading record stands superseded-not-retired
+exactly as Spec 057 left it, by appended
+dated disposition_spec065 note only — no
+pre-existing field altered, Spec 057's
+disposition entry unedited, removal of the
+append reproducing the pre-act file
+byte-identically (verified at the act), status
+and stage unchanged; retirement is not
+available while S-1 remains unlocated.
+Hypothesis F065-C14 is defeated over the one
+document actually searched (S-5) and stands
+unjudged as to S-1. No claim was recovered,
+no claim was checked, and no positional
+finding is established by this act. This act
+searched two documents for a heading. It
+checked nothing either passage states.
+Anchors asserted byte-identical before and
+after (df0cf620…). Foundation check at the
+execution: 40 passed, 0 failed, 8 warnings.
+Records: specs/065-s1-s5-heading-successor/
+outcome.md, specs/065-s1-s5-heading-successor/
+extraction-S5.txt, reports/phase427_results.json,
+reports/phase427_s1_s5_report.md.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
+## 2026-10-22 — Spec 065 S-1 RECOVERY ACT (Phase-427): S-1 RESOLVED — HEADING ABSENT FROM DOCUMENT; combined accounting Class A; heading record RETIRED
+
+The separately commissioned recovery act
+named by the frozen contract (spec §4.2: an
+intake record appended after the run arms a
+later act) and by the execution record's S-1
+row. The document was handed over by the
+owner on 2026-10-22 — his own download from
+the author's Academia.edu posting, delivered
+by upload — and pinned at hand-over
+(PROVENANCE.md entry 24, local research
+store) and by the intake record appended to
+the spec's directory (intake-S1.json):
+Ancient_Writing_and_Modern_Technologies.pdf,
+3,565,316 bytes, SHA-256 51831ac9… — one
+value across the intake pin, the registry's
+recorded checksum for S-1's source document,
+and the spec §2.1 pin. The pinned file was
+asserted by SHA-256 before any search, its
+§2 record inputs re-asserted on the live
+files, and its own text layer extracted in
+full from the pinned bytes (pdftotext
+-layout; 1,097 lines, 54,058 bytes; artifact
+extraction-S1.txt, e5bc973d…; deterministic,
+reproduced byte-identically on a second
+run). Every occurrence of "positional
+analysis" (case-insensitive) in that text
+layer — exactly two, none pre-filtered, a
+whitespace-flexible search confirming none
+is split: extraction line 121, PDF page 4
+(printed p. 60), a mention inside a running
+sentence of SEGMENTATION METHODS ("…
+paradigmatic cluster analysis, structural
+analysis, or positional analysis of
+signs"); and extraction line 925, PDF page
+31 (printed p. 87), a bibliography entry in
+LITERATURE for Fuls 2013's "Positional
+Analysis of Indus Signs". Neither is in
+heading form under the carried §5.1 rule
+(running-sentence mentions and bibliography
+entries never anchor a passage). S-1
+therefore resolves HEADING ABSENT FROM
+DOCUMENT, a document-level finding on the
+searched file's hash, converting the Spec
+057 sub-state HEADING NOT PRESENT IN HELD
+TEXT; in substance it matches the held
+text's posture (the same two occurrences in
+the same two postures), now on the document
+itself. No passage was delimited, no claim
+recovered, none checked. On the completed
+two-row accounting (S-5 HEADING ABSENT FROM
+DOCUMENT at the execution; S-1 HEADING
+ABSENT FROM DOCUMENT by this act), the
+frozen §7 derivation gives headline class
+A — BOTH SOURCES RESOLVED, in the §7.1
+pre-written wording (outcome.md §9.3); the
+execution's class B headline stands
+unedited as that run's record. Disposition
+(§7.2): both sources resolved and neither
+row of the successor recovered a claim, so
+the canonical heading record
+ancient_writing_and_modern_technologies_51831ac9_statisti_0004
+stands RETIRED — as an extraction artefact,
+in the form Spec 057 §7.2's retirement limb
+states for a complete accounting — by
+appended dated disposition_spec065_recovery
+note only; Spec 057's disposition and Spec
+065's disposition_spec065 entries stand
+unedited, no pre-existing field was
+altered, and removing the append reproduces
+the pre-act file byte-identically (pre-act
+c994b18d…, post-act 861b1468…, verified at
+the act); the record's status (untested)
+and stage (created) are unchanged.
+Hypothesis F065-C14 is now defeated over
+both documents actually searched; it no
+longer stands unjudged as to S-1. Anchors
+asserted byte-identical before and after
+(df0cf620…). Foundation check at the act:
+40 passed, 0 failed, 8 warnings (the store's
+combined hash stood at 07fb35c9… on the
+act's base and moves by this act's append;
+the committed report is regenerated with
+this record). Records:
+specs/065-s1-s5-heading-successor/outcome.md
+§9, specs/065-s1-s5-heading-successor/intake-S1.json,
+specs/065-s1-s5-heading-successor/extraction-S1.txt.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
+## 2026-10-22 — Spec 025 MATERIAL AUDIT EXECUTED: paper-search check of all 31 extracted claims + preprint citations
+
+Per the owner's 2026-10-22 order, executed on
+branch spec/025-paper-search-research-check
+(main merged in at a5a65f86) under the protocol
+in docs/paper-search-mcp.md. RESEARCH-CHECK
+stage sidecars now exist for all 31 claims in
+glossa-indus/claims/extracted_claims/ (advisory,
+verdict null by construction); all raw outputs,
+worker findings, and the audit report are filed
+in specs/025-paper-search-research-check/
+audit-2026-10-22/. Headline outcomes: both
+strongly_supported Yadav extractions verified
+verbatim against the source papers' full texts
+(the Zipf fit is on the EBUDS subset of M77;
+beginner/ender priority runs to Kondratov 1976
+and Mahadevan 1977); the Farmer-cluster
+"contradicted" framing did not survive the
+challenge pass as a settled refutation (Sproat
+2014 and Rao et al. 2010 read in full text —
+the literature position is contested and
+unresolved); a three-part positional grammar is
+published prior art (Wells 2015 ch. 3; Sinha et
+al. 2010; Yadav 2009; Fuls's positional classes);
+the fish = mīn rebus priority is Heras's, with
+Parpola 2010 a synthesis; the Roif document is
+a self-published manuscript with no venue or
+identifier of its own. No claim status, anchor,
+or score was changed by the audit; ten
+correction proposals are filed gate-pending in
+the audit directory. Open gaps include Kak
+1988, Mahadevan 1977 full text, Kondratov 1976,
+Korvink 2011, the Rao Science/PNAS full texts
+via this connector, and the session-long
+OpenAlex/Semantic Scholar 429 outages.
+
+AI disclosure: executed by an AI agent (Muse,
+via Muse) at the direction of Tristen Pierson,
+per constitution sec.VI.
+
+## 2026-10-22 — Preprint v5: citation corrections from the Spec 025 material audit
+
+glossa-corpus/indus/pierson_2026_indus_
+decipherment.tex bumped v4 → v5 (citation
+corrections only; docs/research/
+PREPRINT_VERSIONING.md and AGENTS.md updated).
+§8 entries corrected: Wells & Fuls 2015 (was
+"Wells 2011"); Parpola, Parpola & Brunswig 1977,
+JESHO 20(2), Simo Parpola first author (was
+1975, 18(2)); Crawford 2001 as the monograph
+(was an Archaeology International article);
+Parpola 2010 as the CICT conference lecture,
+Coimbatore (the World Archaeology 42(2)
+attribution was not verified in any reachable
+index — seven Crossref searches across two
+workers). Rao et al. Science 2009 entry added;
+the §1.2 entropy result now cites it instead of
+the PNAS Markov paper; the §2.1 Zipf exponent
+~1.7 no longer carries a Rao 2009 attribution
+(no text read reports it; Yadav 2010's full-text
+fit gives b = 2.59 on EBUDS/M77). Nair 2026
+characterizations in §1.3/§3.10/Acknowledgments
+corrected to his full text (independent scorecard
+study; hedged intermediate result — not a
+replication of this paper's tests); his three
+quoted statistics verified exact. Evidence and
+bounds per item: audit-2026-10-22/
+corrections_log.md. The v5 PDF was NOT
+regenerated (no xelatex in the audit
+environment); the v4 PDF remains the compiled
+artifact of record. Nothing submitted.
+Adversarial pass required before submission.
+
+AI disclosure: executed by an AI agent (Muse,
+via Muse) at the direction of Tristen Pierson,
+per constitution sec.VI.
+
+## 2026-10-22 — Spec 025 material audit: merge record (addendum)
+
+PR #331 (branch spec/025-paper-search-
+research-check) merged to main as 814a5dc2.
+Commits: 5d436362 (audit records, stage
+sidecars for all 31 claims, preprint v5,
+ledger entries) and 0abf27f3 (AUDIT_REPORT.md,
+W5 findings reconstruction by repair worker
+W7, and a ruff F401 fix in
+backend/glossa_lab/research_check.py — an
+unused typing.Callable import that the
+shell-wrappers CI job caught on all three
+OSes; ruff check backend/ passes). CI on the
+final head: all seven checks green (backend
+pytest, frontend Playwright, evidence-graph
+smoke, Indus public validation, shell
+wrappers ×3). No anchors, phase data, claim
+statuses, or scores were touched, so the H21
+foundation check was not triggered. This
+addendum and the report's merge line land
+via a small follow-up PR.
+
+AI disclosure: executed by an AI agent (Muse,
+via Muse) at the direction of Tristen Pierson,
+per constitution sec.VI.
+
+## 2026-10-22 — Spec 025 material audit: fix commission, batch A (proposals P1–P8 notes and metadata; P5)
+
+Owner order 2026-10-22: "fix all of these and make all the
+corrections and get back on track." Executed against
+correction_proposals.md in specs/025-paper-search-research-check/
+audit-2026-10-22/. Dossier framing/priority/scope notes were
+appended as dated audit_note_2026_10_22 entries on the affected
+claims (P1 Farmer framing — contested and unresolved; P6 Parpola
+priority — the fish rebus is Heras's, Parpola 2010 a synthesis;
+P7 Yadav corpus-scope and priority; P8 Hunt/positional prior-art
+and the Fuls source identification of the "Positional Analysis"
+stubs). Literature-registry source fields were corrected in
+place with the old values preserved in an appended
+metadata_correction record (P2 fuls2023 detected_year 2008 →
+2023; P3 the Roif document's detected_doi removed — it is a
+self-published manuscript with no identifier of its own; P4 the
+Fuls chapter's authorship, year, title, and the removed DOI,
+which belongs to Fuls 2015). P5: the DECIPHERMENT_DOSSIER_v1.md
+"Nair (2026) scorecard: 4/4 linguistic-consistent" line was
+corrected in both places it appears to Nair's own framing
+(4/4 against the heraldic baseline, 2/4 against the
+administrative baseline; intermediate conclusion). No claim
+status, stage, anchor, or score was changed anywhere, so H26
+is satisfied by construction — the audit records are the cited
+non-SA evidence — and the H21 foundation check was not
+triggered; its posture is asserted in the fix addendum. P9/P10
+and the preprint version follow in batch C; the tooling proof
+and gap-closure evidence are batch B.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-22 — Spec 025 material audit: fix commission, batch B (tooling proof, gap-closure evidence, public-surface check)
+
+Batch B files the fix commission's evidence records in
+specs/025-paper-search-research-check/audit-2026-10-22/:
+fix_execution_addendum_2026-10-22.md (per-proposal execution
+record for batches A and B), raw/fix_ws2_unpaywall_proof.md
+(the Unpaywall email configured per the connector doc's
+environment mechanism; the audit session's failed Yadav DOI
+re-run — proven end-to-end via the Europe PMC route with the
+artifact identity-checked; the crossref download route's
+wrong-artifact defect recorded as standing),
+raw/fix_ws3_evidence_notes.md and raw/fix_ws3_handoff.md
+(Rao Science and Rao PNAS full texts read — the PNAS paper
+contains no Zipf content, upgrading audit correction #6 to
+full-text confirmation; Wells 1998 thesis resolved at record
+level; Kak 1988 examined, Zipf attribution unsupported at the
+reached evidence level; the five in-text Mahadevan works
+verified at published-bibliography level; Steinkeller narrowed
+but still open), raw/fix_ws3_rao_pnas_crossref.json,
+raw/fix_ws2_yadav2010_first_page.txt, and
+public_surface_check_2026-10-22.md (neither research page
+states any corrected item; one clarifying prior-art draft
+filed for the owner's approval — nothing published).
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-22 — Spec 025 material audit: fix commission, batch C (P9, P10 flag, preprint v6 + adversarial pass)
+
+Batch C completes the fix commission. P9: the preprint's §8
+gains the five Mahadevan works the text already relied on
+(1981, 1982, 1986, 1989, 2011), from records verified at
+published-bibliography level on the batch-B evidence (the
+2011 identification is inferred and is stated as such
+wherever the entry is described); the §3.23/§3.24 paper
+counts, which no verifiable source supports, are qualified
+in the text as this program's own text-mining corpus counts.
+P10: the §8 Steinkeller 1982 entry is unchanged and stands
+flagged as unverified — new evidence positively indicates
+the titled article is JAOS 108(2):197–202 (1988), the 1988
+record was not substituted per the proposal's own rule, and
+the JAOS 102(2) contents check remains the one named open
+item. The preprint is bumped to v6 (source + regenerated
+PDF: TinyTeX XeLaTeX, two clean passes, 18 pages, corrected
+entries spot-checked in the rendered output; the v4 PDF is
+superseded). The adversarial pass required before submission
+was run on the v6 source by an independent engine and
+adjudicated finding-by-finding
+(audit-2026-10-22/adversarial_pass_2026-10-22.md): one
+finding sustained in narrow form (the §2.1 Zipf exponent
+~1.7 is the paper's own unreleased-corpus statistic without
+a checkable derivation — flagged for the owner's submission
+decision, not silently rewritten), three not sustained.
+Nothing has been submitted or deposited; the package stops
+at submission-ready (audit-2026-10-22/
+submission_package_summary_2026-10-22.md). No claim status,
+anchor, or score changed in any batch; H21 was not
+triggered (no anchor, language-model, or phase-result files
+touched) and the committed foundation report stands at
+59 OK / 0 failed / 6 warnings.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-22 — Spec 025 material audit: fix repair (literature records restored to frozen pins; P2/P4/P8 corrections moved to dossier notes)
+
+Repair landed with batch C (PR #336). Batch A's in-place
+edits to three literature-registry records (the Fuls 2023
+catalogue, the Fuls chapter, the Positional Analysis paper)
+changed bytes that are freeze-pinned whole-file by the Spec
+055 and Spec 057 freeze tests (SHA-256 92e19e6d…,
+bb23e5e9…, 9b95174b…). PR #334's first backend failure was
+this collision; it was misclassified at the time as a
+cold-cache transient, and that classification is corrected
+here and in audit-2026-10-22/fix_repair_2026-10-22.md (the
+passing runs are consistent with the suite's in-job store
+regeneration restoring the pinned bytes; the job runs with
+--maxfail=1, so only the first failing test was ever shown).
+The three records are restored byte-for-byte (hashes verified
+equal to their pins), and the P2, P4, and P8 source
+corrections are preserved as dated audit_correction_2026_
+10_22 notes on the corresponding claims dossiers — the
+proposals' own alternative limb for frozen fields. P3's
+registry edit stands (that record is not whole-file pinned).
+No frozen test was re-pinned; if the owner prefers the
+registry records themselves corrected, the ruling needed is
+to amend the Spec 055/057 pins to the corrected bytes.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-22 — Roif credit: preprint v7 (fish credit landed; §3.32 restoration draft held)
+
+Owner-directed addenda to the spec-025 audit fix commission
+(record: audit-2026-10-22/roif_credit_addendum_2026-10-22.md).
+Preprint v6 carried zero mentions of Avishai Roif while §3.5
+and §3.19 report tests of his published fish-sign model.
+Preprint v7 corrects that: §8 gains Roif 2025a (Academia.edu,
+12 June 2025, academia.edu/129921039) and Roif 2025b
+(Academia.edu, 2 August 2025, academia.edu/143222807) — no
+DOIs, stable URLs are the identifiers; §3.5 and §3.19 credit
+the model to him in his terms (/mi/ (mīn) value/divine marker
+and guild/title marker; the "coastal controller"
+maritime-guild reading) with the division of labour stated
+(his model and predictions; the program's measurements); §7
+Acknowledgments names him as the model's source. PDF
+regenerated (two clean XeLaTeX passes, 18 pages, SHA-256
+b7a640ac…), Roif content verified in the rendered output.
+Dossiers: the Roif literature record's detected_authors now
+names him (dated credit note; record not freeze-pinned), and
+all six Roif-dossier claims carry dated credit notes naming
+him as the claims' author (P3 extended). §3.32 (betweenness)
+was NOT restored: a marked restoration draft reconstructed
+from the Phase 172–177 records is filed with the package,
+HELD PENDING ROIF'S REPLY, carrying the agreed verbatim
+attribution sentence. Nothing submitted, posted, or sent;
+no claim status, anchor, or score changed; H21 not
+triggered.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-22] Entry — Shakti readiness decisions recorded; P-F1 intake adopted; successor drafts commissioned
+
+Objective:
+  File the owner's seven Shakti-readiness decisions of 2026-10-22 in
+  the program's records — the adopted P-F1 intake record for the
+  ShaktiOSindia corpus, the prediction-register notes those decisions
+  require, and this ledger entry — without changing any frozen
+  record, register term, or campaign outcome. The decisions come from
+  the owner's item-by-item walk through section 4 of the readiness
+  memo (research_notes/shakti-readiness-proposals-2026-10-22.md) in
+  the parent chat on 2026-10-22; the memo itself is unchanged and
+  unedited.
+
+What was done:
+
+  1. DECISIONS RECORD: docs/decisions/2026-10-22-shakti-readiness-
+     decisions.md — the seven decisions in substance: (1) P-F1
+     adopted as written, gates S1–S4 the standing citation form for
+     the Shakti corpus, senior to every successor; (2) Spec 053
+     successor approved for drafting under Amendment S-053
+     (documented-only primary, 3,212 rows; documented+corroborated
+     sensitivity, 5,299 rows; strict-set choice reserved to the
+     freeze; the result is a new baseline, neither confirming nor
+     correcting Phase-43); (3) Hunt re-scope commissioned in
+     dependency order; (4) fish-family re-design commissioned,
+     ICIT-native, with the Roif gate carried; (5) Spec 018's frozen
+     matrix confirmed governing PRED-2026-001/002/003, no class
+     amendment to fit Shakti, all three remain PENDING unscored, no
+     section 8 dry-run on Shakti; (6) PRED-2026-012 note only — its
+     block is documentary, no documents hunt commissioned, remains
+     PENDING unscored, Spec 043's closure stands; (7) D-24 trigger
+     discipline — Shakti does not trip D-24 / D-01B / D-07B / D-27A2,
+     all triggers remain armed.
+
+  2. INTAKE RECORD: docs/decisions/2026-10-22-shakti-corpus-intake-
+     record.md — the P-F1 intake record as adopted: corpus identity
+     and pins (sanitized_corpus.json, SHA-256 345241b1…; upstream
+     commit e48b3ec1; licence as stated by the deposit: corpus
+     GPL-3.0, scripts MIT; held restricted-local, never in git), the
+     row-grades file pin (shakti_row_grades_2026-10-22.csv, SHA-256
+     02394241… — the provenance audit recorded the path but no hash;
+     this hash was computed on the held file and is pinned for the
+     first time by the intake record), the Yajnadevam lineage
+     evidence pin (population-script.sql, SHA-256 a1bcc150…), the
+     census (5,704 rows; 5,536 analyzable; grades 3,212 / 2,087 /
+     405; 4,904 of 5,536 analyzable rows, 88.6%, carrying a CISI
+     identifier; 18,065 true sign tokens; 713 distinct signs; 77
+     sites), the four gates S1–S4 in adopted form, and the citation
+     rule (a successor cites the corpus only through this record and
+     asserts S1/S2 in its step-0 record).
+
+  3. PRED NOTES: docs/PREDICTION_REGISTER.md, section 6 only, two
+     dated notes appended, no other text touched — the Shakti
+     corpus adjudicated NON-QUALIFYING for PRED-2026-001/002/003
+     under Spec 018's frozen matrix, with the owner's confirmation
+     recorded; and the PRED-2026-012 owner note (documentary block;
+     no documents commission). No prediction's Tested or Outcome
+     field moved.
+
+  4. COMMISSIONED DRAFTS: Spec 068 (Spec 053 successor), Spec 069
+     (Asset A build), Spec 070 (openings successor), Spec 071
+     (sky-signs successor), Spec 072 (fish-family re-design) — to be
+     prepared as freeze-ready drafts. Freezes are reserved to
+     separate owner acts; nothing in this entry freezes, executes,
+     or registers any of them.
+
+  5. DATA WATCH: the D-24 trigger-discipline note was appended to
+     ~/workspace/glossa-run/indus-data-watch-state.md on 2026-10-22,
+     instructing the weekly data watch that Shakti does not unblock
+     D-24 / D-01B / D-07B / D-27A2 and that all triggers remain
+     armed.
+
+AI disclosure: produced by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
+## 2026-10-22 — Spec 068 EXECUTED (Phase-430): COMPARISON UNINFORMATIVE
+
+Spec 053's frozen control-systems comparison executed on the Shakti corpus as
+its successor under Amendment S-053, under the frozen Spec 068 contract
+(freeze digest ab890859c0ec313b4e2cdf89a9dddd885fae505e888c5f8c9ef2ba68c5f3c62d;
+freeze PR #342 merged at 9bdb21d0; OSF registration 3pbwe filed 2026-10-22 and
+standing pending approval at the run, recorded as it stands per freeze.md §7
+and the owner's execution order of 2026-10-22). Step 0, in the frozen order,
+all PASS: gate 0.1 — every §3 pin recomputed (the claim file at its DD-068-8
+re-pinned hash ec31778a…, the intake record standing); gate 0.2 — the
+estimator self-test by Phase-413's own functions (planted α 1.20 / q 2.0
+recovered as 1.256 / 2.72); gates 0.3–0.4 — the Shakti pins recompute and the
+audit census reproduces exactly (5,704 rows; 5,536 analyzable; grades 3,212 /
+2,087 / 405; 18,065 tokens; 713 signs; 77 sites), with this successor's own
+census governing (primary 3,045 analyzable / 11,805 tokens / 557 signs;
+sensitivity 5,131 / 17,216 / 707); gate 0.5 — the population act under limb B
+(DD-068-7: the full ICIT sign inventory of the restricted corpus; no mapping
+act); gate 0.6 — the four controls entered whole as cited data before any fit
+(N1 Mesopotamian numerical signs, 12 types / 1,981 tokens, from the published
+SFU NatLang proto-cuneiform derivation; N2 heraldic charges, 57 types / 825
+tokens, from the Dering Roll's 324 blazons under the frozen counting rules;
+P1 Linear B, 89 types / 47,292 tokens, from the DAMOS transliterations; N3 the
+Yule–Simon process, ρ = 0.10, seed 20261021, 99 replicates); gate 0.7 — floors
+met (557 ≥ 50 types; 11,805 ≥ 2,000 tokens). Fits under Spec 053's one frozen
+estimator (every system cross-checked exactly against Phase-413's
+implementation of record): Indus primary α 2.004, q 19.9, NRMSE_log 0.1584;
+N1 0.5335; N2 0.1839; N3 median 0.2405 (as-well share 0.00); P1 Linear B 0.9229.
+No non-linguistic control fits as well as the Indus primary — the falsifier
+does not fire, and no control is a NEAR MISS (the closest, heraldic charges at
+gap +0.0255, sits above the frozen 0.02 band). But the positive-control
+condition fails: Linear B, the set's one certain writing system, fits worse
+than every non-linguistic control — worst of all five systems — so under the
+frozen §5.5 mapping the headline is COMPARISON UNINFORMATIVE whatever the
+falsifier does. The sensitivity fit (α 1.96, NRMSE_log 0.1544) carries the
+same verdict-relevant ordering — not grade-sensitive — and the subsampling
+tables are in the machine record. Per the §7 wording for this outcome, the
+claim yadav_2009_arxiv_manual_001 stands exactly as recorded with no strength
+label added; the Indus quantities are a new baseline on the Shakti corpus,
+neither confirming nor correcting any Phase-43 quantity. Anchors asserted
+byte-identical before and after (df0cf620…). Foundation check as measured on
+the execution tree: 40 passed / 0 failed / 8 warnings. The restricted corpus
+and row-grades files were read from the restricted local store only; no
+corpus data entered git. Records: specs/068-yadav-zipf-controls-successor/
+outcome.md, reports/phase430_results.json (SHA-256 ca83af8f…),
+reports/phase430_report.md (SHA-256 e7597718…); the script is deterministic
+(the control tables were re-issued with LF line endings before the
+record was finalised, so the committed bytes are the cited bytes;
+the final record then reproduced byte-identically on a second run).
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+## 2026-10-22 — Spec 069 EXECUTED (Phase-432): ASSET BUILT AND FROZEN
+
+The Asset A build under Spec 045's frozen §§2–3 contract, quoted
+verbatim in Spec 069 (Spec 069 freeze digest 657b930c…; freeze PR #338
+merged at ba61d9cd; OSF registration r3xqb filed at the freeze,
+pending the owner's approval act at the time of the run). Gates A1–A6
+in order, all PASS, before any join: A1 the CISI volumes (vols. 1–2,
+1991) and Parpola's published identifications in hand and named by
+edition — the CISI sign list entered through the held mayig CISI
+digitization, restored from the public upstream at commit ad2f1e2
+after the programme's downloads copy was found missing during a
+concurrent workspace sweep (spot values agree across the loss);
+Parpola 2010 consulted in held form, its numbers not keyable to the
+crosswalk's sign keys, so agreement is single_source throughout and
+no row is contested — recorded openly in the build record. A2 the
+D-18 input re-asserted as Spec 046's terminal empty feed
+(concordance-297.json, SHA-256 772db4df…, signs empty, IDENTIFICATION
+FAILED closure); the build proceeded without the feed and did not
+reconstruct it. Blind double entry with reconciliation: 187 rows
+over the full pinned-crosswalk universe (crosswalk SHA-256
+4ace1a61…, 205 rows / 187 distinct sign keys) — animal 20, sky_cycle
+0, object_goods 14, human 25, other 127, contested 0, unidentified 1
+(M059: no governing identification in any held §2.3 source; sources
+searched recorded). Four borderline rows (P073, P074, P217, P320).
+Asset A SHA-256
+952319355098698f01e6d8499b0384f84ac964e1bc4ecdc03c77ed920c7a5b5b,
+published as the spec's first product in
+specs/069-hunt-asset-a/asset-a/ (canonical CSV, asset-a-freeze.json,
+entry log entry-decisions.json); it is the asserted step-0 input of
+Specs 070 and 071. The zero sky_cycle count is a fact about the held
+published identifications of this universe, recorded as it landed.
+Deterministic (second run byte-identical); anchors byte-identical
+before and after (df0cf620…). Foundation check on the execution
+tree: 40 passed / 0 failed / 8 warnings. Records:
+specs/069-hunt-asset-a/outcome.md, build-record.md,
+reports/phase432_results.json, reports/phase432_report.md.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.
+## 2026-10-12 — Plain-language pass, phase 1 (owner directive)
+
+At the owner's direction (2026-10-12: all papers, analyses, and
+documents in plain language — easy for a general reader, still
+scientifically accurate), a language-only pass was applied to the
+program's living prose documents on branch
+`plain-language-phase1`: docs/research/ DECIPHERMENT_DOSSIER_v1,
+DECIPHERMENT_LIMITS, STRUCTURAL_MODEL, BASELINE_COMPARISON,
+CORPUS_DEFINITION, SIGNAL_STATUS, SIGN_INVENTORY,
+REPRODUCIBILITY_PROTOCOL, NORMALIZATION_RULES (explanatory prose
+only — no rule statement changed), CORPUS_EXPANSION_LEADS, and
+the unpublished v5 addendum draft
+(glossa-corpus/indus/pierson_2026_indus_decipherment_addendum_v5.md).
+Method: jargon replaced where a plain word carries the same
+meaning; irreplaceable technical terms defined in plain words at
+first use. No number, verdict, claim, or conclusion was changed.
+Frozen material was not touched: the v3/v4 preprints and their
+DOIs, the numbered program notes, ledgers and registers, claim
+records, and run reports. Full inventory and classification:
+~/workspace/your_files/2026-10-12-plain-language-inventory.md.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.
+
+## 2026-10-22 — Spec 072 EXECUTED (Phase-431): FAMILY NOT SUPPORTED
+
+Spec 048's question re-designed ICIT-native and executed on the Shakti
+corpus, under the frozen Spec 072 contract (freeze digest
+3925f365bdc452031bb7356f9b357c6d5068da4a835afcfd75b0e9ffa3a69e92; freeze
+PR #341 merged at 862f56d8; OSF registration tc8ey filed at the freeze,
+pending the owner's approval act at the time of the run; execution
+commissioned in the same owner tasking as the freeze). Step 0, in the
+frozen order, PASS in full: gate 0.1 the Shakti intake assertion
+(corpus 345241b1…, row-grades 02394241…, census reproduced exactly —
+5,704 rows / 5,536 analyzable / 3,212 documented / 2,087 corroborated /
+405 uncorroborated / 4,904 CISI-keyed / 18,065 true tokens / 713 signs /
+77 sites); gate 0.2 the Asset F digest assertion (ca5fb1b5…, 7 members,
+Spec 044 §4.2 rule); gate 0.3 the freeze-pinned concordance exhibited
+(M048 = ICIT 243, M050 = 220, M060 = 235, M145 = 032, M147 = 033
+identified; M047 and M052 UNIDENTIFIED IN ICIT under the confirmed
+DD-072-5 disposition — named in every record, excluded from both
+populations' weighting, their ICIT occurrence share not measurable);
+gate 0.4 the census re-derived exactly (primary totals 243: 9 NOT
+SCANNED; 220: 286; 235: 188; 032: 334; 033: 315 — four testable, not
+TOO THIN); gate 0.5 the freeze-fixed verdict line exhibited (L = 0.765,
+95th percentile nearest-rank rank 82 of the 86-sign non-fish reference
+distribution on the primary population, record pin 55d266b3…; derived
+at the freeze from non-members only, before any member was scored; Spec
+048's 25.9% / 3.8% and its 20% line were never inputs). Primary run
+(documented-lineage rows): ending-follower fractions M050 0.4056
+(101/249), M060 0.3010 (31/103), M145 0.2500 (46/184), M147 0.0850
+(13/153) — no tested member passes L = 0.765; tested members carry
+1,123 occurrences, passing members 0, w = 0.0000; the coverage
+condition does not fire (the one untested identified member, M048 at 9
+occurrences, does not outweigh the tested side). Under the frozen
+majority partition (OPEN-072-5, confirmed as drafted — Spec 048's
+70%/30% lines not carried) the family word is FAMILY NOT SUPPORTED.
+The mandatory documented + corroborated sensitivity returns the same
+word (M050 0.2045, M060 0.1942, M145 0.2052, M147 0.1142; w = 0.0000),
+so the headline is not GRADE-SENSITIVE; the one member-level
+grade-flip finding is M048's carried label (primary not scanned →
+sensitivity not supported; the member is untested in both populations
+and the flip moves no verdict). The verdict is about shared positional
+behaviour on this corpus only: it establishes nothing about what any
+fish sign meant or was pronounced, and Spec 048's closure and the
+Phase-43 record stand exactly as recorded. Records:
+specs/072-fish-family-profiles-redesign/outcome.md,
+reports/phase431_results.json (SHA-256 f0679d90…),
+reports/phase431_report.md (SHA-256 d4fa6cb9…); the script is
+deterministic (both outputs byte-identical on a second run). The
+corpus and its row-level products stayed restricted-local; no
+restricted data entered git. A dated outcome append
+(spec072_outcome_2026_10_22) was added to claim
+parpola_2010_dravidian_solution_manual_002, append-only. Foundation
+check as measured on the execution tree: 40 passed / 0 failed /
+8 warnings (the standing eight; none new). All records are internal
+under the Roif gate: no publication of this result in any form without
+citation of Roif 2025a + 2025b and the owner's clearance of the
+specific act.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
+## 2026-10-22 — Spec 070 EXECUTED (Phase-433): CLOSED AT STEP 0 — POPULATION NOT KEYED
+
+The opening-signs successor on Shakti, under its frozen contract
+(Spec 070 freeze digest 763108f8…; freeze PR #340 merged at 1213029d;
+OSF registration nghs5 filed at the freeze, pending the owner's
+approval act at the time of the run). Step-0 gates in order: 0.1
+Asset A asserted PASS (Spec 069's executed record; canonical CSV
+recomputes to 95231935…; per-kind counts match); 0.2 the Shakti
+intake reproduced under P-F1 S1/S2 PASS (hashes recompute; census
+5,704 rows, 5,536 analyzable, grades 3,212/2,087/405, 4,904
+CISI-carrying, all recounted from the files); 0.3 input integrity
+PASS. At 0.4 the section 2 battery over the 3,212 documented-lineage
+rows classified 220 signs (TERMINAL_STRONG 42, MEDIAL_STRONG 81,
+TERMINAL_MODERATE 37, INITIAL_STRONG 31, INITIAL_MODERATE 6, MIXED
+23) and the opening-strong set — 31 signs — was enumerated in full
+in Wells space and published (hash recorded before any join; no
+join quantity exists in the record). Keying under the freeze-fixed
+route (DD-070-9) resolved 26 of the 31; five could not be keyed —
+ICIT 136, 298, 401, 617, 824: no parpola_1982 registry row carries
+their Wells ids (verified independently: no registry row in any
+numbering system carries W136/W298/W401/W617/W824; the numberings
+are genuinely different lists — Parpola 136 carries Wells W048|W049).
+Under the disposition the freeze fixed in advance (DD-070-11, the
+conservative branch), the execution closed as POPULATION NOT KEYED:
+no join performed, no test quantity computed, claim
+without_kings…_manual_003 stands as recorded (IN QUESTION), no dated
+append made (the appends belong to the verdict classes). The answer
+to Spec 049's question in re-scoped form is therefore not settled
+by this execution, in either direction; a successor must first
+repair the keying surface by a new freeze decision. Deterministic
+(second run byte-identical); anchors byte-identical before and
+after; foundation check on the execution tree 40 passed / 0 failed
+/ 8 warnings. Records: specs/070-hunt-opening-signs-successor/
+outcome.md, reports/phase433_results.json,
+reports/phase433_report.md.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-22 — Spec 071 EXECUTED (Phase-434): STOPPED AT STEP 0, GATE 0.3 — INVALID
+
+The sky-signs successor on Shakti, under its frozen contract (Spec
+071 freeze digest c06a7a86…; freeze PR #343 merged at 161bbe0d; OSF
+registration b62p4 filed at the freeze, pending the owner's approval
+act at the time of the run). Step-0 gates in order: 0.1 Asset A
+asserted PASS against the freeze-fixed pin source (Spec 069's
+asset-a-freeze.json; canonical CSV recomputes to 95231935…; counts
+match); 0.2 the Shakti intake reproduced under P-F1 S1/S2 PASS
+(census recounted from the files); 0.3 input integrity PASS, but
+coverage FAIL, and the run stops as INVALID in the gate's own
+terms: of the 557 distinct signs occurring in the primary
+population (3,212 documented-lineage rows; totals only counted at
+the gate, no positional quantity taken), 285 carry exactly one
+Asset A row under the shared keying route (DD-071-10) and 272 carry
+none — 134 Wells ids with no resolution in the pinned registry's
+parpola_1982 Wells map, and 138 resolving to registry signs
+outside Asset A's 187-row crosswalk universe; every uncovered sign
+is listed in the machine record with its total and reason. The
+gate's rationale is the design's: an absent row is never treated
+as non-celestial by default, because that default would silently
+define the comparison class. Gates 0.4/0.5 were not reached; no
+final-position quantity was computed; no verdict is recorded; the
+claim without_kings…_manual_004 stands UNTESTED as recorded and no
+dated append is made (the appends belong to the verdict classes).
+Recorded adjacently, as a fact of the frozen asset rather than a
+second outcome: the celestial class is empty in Asset A (zero
+sky_cycle rows), so a coverage repair alone would have met gate
+0.4's TOO THIN floor (0 of 30 occurrences). Deterministic (second
+run byte-identical); anchors byte-identical before and after;
+foundation check on the execution tree 40 passed / 0 failed / 8
+warnings. Records: specs/071-hunt-sky-signs-successor/outcome.md,
+reports/phase434_results.json, reports/phase434_report.md.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-23 — Preprint v8: F2 Zipf qualification + Spec 068 integration; Spec 072 insert held
+
+Preprint v8 (branch preprint-v8-f2-spec068; version note:
+specs/025-paper-search-research-check/audit-2026-10-22/v8_version_note_2026-10-23.md)
+resolves the spec-025 audit's F2 finding (the §2.1 Zipf exponent ~1.7
+printed without a checkable derivation; adversarial pass 2026-10-22,
+SUSTAINED in narrow form) by the qualify-in-place branch of its
+recommendation — the add-the-derivation branch was not honestly
+available, because the only derivation on record (−1.7046,
+Sproat-benchmark script) belongs to a different corpus (7,138 texts /
+24,502 tokens / 649 types) than §2.1's Holdat corpus. §2.1 now presents
+the exponent as the program's own uncheckable corpus statistic, no
+longer as evidence the script is a language, citing Yadav et al.
+(2010) and its own stated limit; the Yadav entry is added to §8 after
+Wells & Fuls (no other §8 entry touched; both Rao entries and both
+Roif entries byte-identical). New §2.1.1 reports the Spec 068
+(Phase-430; OSF 3pbwe) registered frequency-curve test on the Shakti
+corpus (α = 2.004, error 0.1584 documented-lineage; α = 1.96, error
+0.1544 documented + corroborated; Linear B, the one certain writing
+system among the controls, fitted worst at 0.9229) with its
+registered outcome wording: COMPARISON UNINFORMATIVE. §3.10 applies
+the same qualification to Nair's Zipf slope. Everything else is
+carried from v7 intact, including all Roif credit (§§3.5/3.19/§7/§8);
+§3.32 remains absent and its restoration draft held. The Spec 072
+(Phase-431) fish-family result is NOT integrated: its insert is filed
+HELD at glossa-corpus/indus/pierson_2026_indus_decipherment_spec072_insert_HELD.md
+(publication requires Roif 2025a/b citation AND owner clearance of
+the specific act; claim F072-C14). PDF regenerated (TinyTeX XeLaTeX,
+two clean passes, zero errors, 19 pages; SHA-256
+0f70dece76d3cdd31fa2ccb5c9fdbc9c2953587a9895700b8cf4632cd81f6670),
+all v8 changes verified in the rendered output (E1 wording, §2.1.1
+figures and UNINFORMATIVE, Yadav entry, Roif entries, "End of
+Preprint v8"; no betweenness, no §3.32). An independent red-team
+pass on v8 is IN PROGRESS under the standing rule (no paper
+publishes without TeX + a red-team pass); its record will be filed
+in the audit directory when complete. Nothing submitted.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-23 — Preprint v8 red-team round 1: adjudicated and revised (R-01..R-45)
+
+The independent red-team pass on preprint v8 ran as round 1 (attack:
+independent engine, full text ×3 passes, 241 raw findings aggregated
+to 125 items; adjudication against primary records: 44 sustained /
+76 sustained in part / 3 not sustained / 2 moot). All adjudicated
+replacement blocks R-01..R-45 were applied verbatim to
+glossa-corpus/indus/pierson_2026_indus_decipherment.tex (revision
+commit 8a9e80cf; §6 data-availability commit string pinned to that
+commit by pin-only commit dba6d486). Corrected anchor arithmetic
+(6,369 of 7,002; HIGH 70.34%); INCONCLUSIVE verdicts restored in
+§§3.11/3.13; Phase-107 SA held-out failure disclosed in §2.4; 79.8%
+aggregate and 6,869/47 mining counts withdrawn as evidence; §2.1.1
+exponent non-comparability guard added. The Phase-109 re-based
+anchor numbers were NOT substituted (owner's decision, per
+adjudication §D item 2). Protected Roif/Rao text byte-intact; §3.32
+still absent; no betweenness. PDF rebuilt with TinyTeX XeLaTeX, two
+passes, exit 0, zero errors/warnings, 23 pages, SHA-256
+1ef5eb721f4b9cdd7fc4f1afbe790793cd2c0ba74d48898c0331a0ae0309d2b0,
+render-verified (pdftotext). Still open: Holdat corpus release; SA
+re-base (owner); DEDR 135 (M176) / 4988 (M261) verification (repo
+records conflict — audit tables blank, Phase-132 V08 asserts both);
+red-team round 2 pending. Record:
+specs/025-paper-search-research-check/audit-2026-10-22/v8_version_note_2026-10-23.md.
+Nothing submitted, deposited, or published; PR #353 not merged.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-23 — Preprint v8 red-team round 2: adjudicated and revised (R2R-01..R2R-58)
+
+Round 2 of the independent red-team pass on preprint v8 (attack:
+independent engine, full text ×4 passes, 207 raw findings aggregated
+to 58 items + positives; adjudication against primary records:
+28 sustained / 29 sustained in part / 0 not sustained / 1 moot;
+positives P1–P5 all confirmed). All adjudicated replacement blocks
+R2R-01..R2R-58 were applied verbatim to
+glossa-corpus/indus/pierson_2026_indus_decipherment.tex (57 blocks
+with replacement text; R2R-06 moot) — revision commit 2d26b929; §6
+data-availability commit string pinned to that commit by pin-only
+commit d39f75f0. Corrected permutation parenthetical at all three
+locations (0.0005); Phase-134 inputs unrounded (z = 10.344); all
+four sibilants PROVISIONAL_MEDIUM everywhere; SA-affected count and
+85.28% bound printed; Phase-107 "pre-registered" replaced by the
+Spec 005 wording; Gulf echoes cured; Phase-133 figures corrected
+(43.5%); 19 blockers named in §3.29; §8 gains Sproat (2014) and
+Rao et al. (2010) (additions only). Protected Roif/Rao text
+byte-intact; §3.32 still absent; no betweenness; Spec 072 insert
+still HELD. PDF rebuilt with TinyTeX XeLaTeX, two passes, exit 0,
+zero errors/warnings, 27 pages, SHA-256
+8d0d676eee187de71ad268c6ff374b9d6d6e8a788582552f366e9dc59365ddd0,
+render-verified (pdftotext); printed word count 14,370 measured on
+the shipped PDF by the adjudicated command (pre-revision figure
+10,837). Still open: Phase-132 V03 motif counts vs §3.4 printed
+counts (deliberately out of R2R-26's scope; reserved for round 3);
+§3.19 combined-figure cross-reference (no replacement prescribed;
+flagged for round 3); Holdat release, SA re-base, DEDR verification
+(owner decisions); red-team round 3 pending. Record:
+specs/025-paper-search-research-check/audit-2026-10-22/v8_version_note_2026-10-23.md.
+Nothing submitted, deposited, or published; PR #353 not merged.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-23 — Preprint v8 red-team round 3: adjudicated and revised (R3R-01..R3R-X3)
+
+Round 3 of the independent red-team pass on preprint v8 (attack:
+independent engine, GPT-5.5 via OpenAI API, full text ×4 passes,
+116 raw findings aggregated to 53 items + 4 adjudicator-only
+probes + 36 positives; adjudication against primary records:
+12 sustained / 32 sustained in part / 9 moot of 53; probes
+R3X-1/R3X-2/R3X-3 sustained, R3X-4 not sustained; positives 36/36
+confirmed). All adjudicated replacement blocks R3R-01..R3R-X3
+(47 blocks) were applied verbatim to
+glossa-corpus/indus/pierson_2026_indus_decipherment.tex (MOOT and
+not-sustained items have no replacement; R3R-23/42/46 disclosures
+stand) — revision commit 196ea0a2; §6 commit string pinned to
+that commit by pin-only commit 20463bd9. §3.4 prints the
+Phase-132 V03 motif table (147/78/43…) beside χ² = 12.98; §3.8
+prints the true top five (M060/M045/M016/M067/M039); §3.19 free
+of the combined 0/140; §3.27 free of "Formal cross-validation"
+and of the SUPPORTED verdict label; §4.4 SA item aligned to
+§2.4; §3.3 prints the M342/M176/M261 HIGH basis. Protected
+Roif/Rao text byte-intact; §3.32 still absent; no betweenness;
+Spec 072 insert still HELD. PDF rebuilt with TinyTeX XeLaTeX,
+two passes, exit 0, zero errors, 30 pages, SHA-256
+ddf71f1db2f6655c651420a7c103e0492c9325e5a0fa36d8019173206dd1934d,
+render-verified (pdftotext); printed word count 17,016 measured
+on the shipped PDF by the adjudicated command (round-2 figure
+14,370). Still open: the §D owner decisions (Holdat release,
+calibration, SA/V07 re-base, rival comparisons, Zenodo archive)
+and the §E record gaps; red-team round 4 pending. Record:
+specs/025-paper-search-research-check/audit-2026-10-22/v8_version_note_2026-10-23.md.
+Nothing submitted, deposited, or published; PR #353 not merged.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-23 — Preprint v8 red-team round 4: adjudicated and revised (R4R-01..R4R-21)
+
+Round 4 of the independent red-team pass on preprint v8 (attack:
+independent engine, GPT-5.5 via OpenAI API, full text ×4 passes,
+85 raw findings aggregated to 38 items + 68 positives; adjudication
+against primary records: 8 sustained / 9 sustained in part / 20 moot /
+1 not sustained of 38; positives 68/68 confirmed; settlements
+S1–S5). All adjudicated text-bearing replacement blocks
+R4R-01..R4R-21 were applied verbatim to
+glossa-corpus/indus/pierson_2026_indus_decipherment.tex (MOOT items
+and R4-17 not sustained have no replacement; R4R-16 is a class (c)
+record gap with no text; class (b) owner decisions not taken,
+interim text only) — revision commit ba5b4bf9; §6 commit string
+pinned to that commit by pin-only commit 0bf385b4. R4R-01
+re-describes the fish-sign isolation result at all eight locations
+at UNTESTABLE / no-single-sign-inscriptions strength (the corpus
+contains no single-sign inscriptions at all, Phase-134 F9);
+§3.16 sibilant count corrected (6 for the 157-set, 10 current);
+§3.11 markers corrected to 35/161 (21.7%), 0/161 stands; §1.3 S12
+wording aligned with §3.30; §2.2 gains the HIGH-rule limit
+sentence. Protected Roif/Rao text byte-intact; §3.32 still absent;
+no betweenness; Spec 072 insert still HELD. PDF rebuilt with
+TinyTeX XeLaTeX, two passes, exit 0, zero errors, 31 pages,
+SHA-256 ea924ec13f3e8a33fa7045bca386a5baed68bd94357800ceb339e6eedf38e942,
+render-verified (pdftotext); printed word count 17,997 measured
+on the shipped PDF by the adjudicated command (round-3 figure
+17,016). Prescribed survivals flagged in the version note: 39/161
+and 24.2% once each inside R4R-05's corrective sentence; three
+block-standing "compound-only pattern" remainders. Loop NOT
+closed at round 4 per adjudication §D. Still open: the §D owner
+decisions and the §E record gaps (incl. R4-16's seven unrecorded
+§8 identifications); red-team round 5 pending. Record:
+specs/025-paper-search-research-check/audit-2026-10-22/v8_version_note_2026-10-23.md.
+Nothing submitted, deposited, or published; PR #353 not merged.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-23 — Preprint v8 red-team round 5: adjudicated and revised (R5R-01..R5R-11)
+
+Round 5 of the independent red-team pass on preprint v8 (attack:
+independent engine, GPT-5.5 via OpenAI API, direct, full text ×4
+passes, 94 raw findings aggregated to 38 items + 87 positives;
+adjudication against primary records: 5 sustained / 6 sustained
+in part / 25 moot / 2 not sustained of 38; positives 87/87
+confirmed; settlements S6–S10). All adjudicated replacement
+blocks R5R-01..R5R-11 were applied verbatim to
+glossa-corpus/indus/pierson_2026_indus_decipherment.tex (formatting
+conversion only; each target verified by exact match; MOOT and
+NOT SUSTAINED items have no replacement; R5R-06's class (b)
+corpus-release decision is the owner's and was not taken) —
+revision commit 88a6bf46; §6 commit string pinned to that commit
+by pin-only commit e585c767. Load-bearing cures: R5R-04 (§1.3 +
+§6: the anchor table records a DEDR citation for 15 of its 161
+rows in anchor_table.csv — 16 of 161 in ANCHOR_STATUS_AUDIT.csv,
+per S8 — and the "with DEDR citations" claim is removed at both
+locations); R5R-03 (§3.8, per S9: 63 pairs enriched at
+single-cell contribution >1.0; exactly 14 at or above the
+Bonferroni threshold χ²≈14.7 on that statistic, a conservative
+comparison whose passes are valid for the full 2×2 statistic;
+the Phase-149 "robust" definition corrected to C2's subtraction
+estimate (~43 = 63 − 19.7); the 394 denominator's filters from
+the Phase-143 script printed); R5R-01 (§6 pin explanation
+corrected per S10); §5 Tier 2/Tier 3 defined (R5R-05); §5 lead
+"reproducible" split (R5R-06); §4.5 Gulf scope aligned with
+§3.19 (R5R-07); §3.28/§1.3 ICIT necessity claim replaced
+(R5R-08); §2.3 semantic labels restated as interpretation
+(R5R-09; §2.2's MEDIUM parenthetical left standing as a gloss
+read with that cure); §2.2 ghost DEDR/Parpola criteria removed
+(R5R-10); §2.3 z-score cross-reference corrected (R5R-02);
+abstract subject restored (R5R-11). POST-PIN TRUTH CHECK
+(flagged, not silently fixed): R5R-01's sentence as applied
+names a92c53aa / ba5b4bf9 — true of the round-4 state the
+adjudication examined, not of the final round-5 state (at the
+named commit 88a6bf46 the §6 first sentence names ff9b9146, and
+the shipped draft names 88a6bf46); the remainder of the
+sentence is verified true (one differing sentence, only in the
+commit string). Protected Roif/Rao text byte-intact (hash-verified
+per passage against ff9b9146); §3.32 still absent; no
+betweenness; Spec 072 insert still HELD. PDF rebuilt with
+TinyTeX XeLaTeX, two passes, exit 0, zero errors, 32 pages,
+SHA-256 969c45d8da58a110371fabdf48875641a466eb20daacec0a78b65efb3b2c7a1f,
+render-verified (pdftotext); printed word count 18,591 measured
+on the shipped PDF by the adjudicated command (round-4 figure
+17,997). The "16 of 161" audit-file figure appears in the
+adjudication and the version note, not in the PDF — no R5R
+block prints it. Loop NOT closed at round 5 per adjudication
+§D. Still open: the §D owner decisions, the §E record gaps
+(incl. the new Phase-143 pair-list, DEDR-column-discrepancy and
+Mitchell-search gaps), and the R5R-01 residual above; red-team
+round 6 pending. Record:
+specs/025-paper-search-research-check/audit-2026-10-22/v8_version_note_2026-10-23.md.
+Nothing submitted, deposited, or published; PR #353 not merged.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-23 — Preprint v8 red-team round 6: adjudicated and revised (R6R-01..R6R-10)
+
+Round 6 of the independent red-team pass on preprint v8 (attack:
+independent engine, GPT-5.5 via OpenAI API, direct, four passes,
+84 raw findings aggregated to 39 items + 74 positives, plus a
+14-sentence §6 line-by-line audit; adjudication against primary
+records: 5 sustained / 4 sustained in part / 28 moot / 2 not
+sustained of 39; positives 74/74 confirmed; settlements
+S11–S18). All adjudicated replacement blocks R6R-01..R6R-10 were
+applied verbatim to
+glossa-corpus/indus/pierson_2026_indus_decipherment.tex
+(formatting conversion only; each target verified by exact
+match; MOOT and NOT SUSTAINED items have no replacement;
+R6R-06's owner-confirmation fallback not invoked — the
+adjudicated text was applied) — revision commit b28cf2f5; §6
+commit string pinned to that commit by pin-only commit
+81a37e06. Load-bearing cures: R6R-01 (§6 pin replaced with the
+purely procedural form naming no historical commit, per S11 —
+post-pin clause-by-clause truth check passes in full: named
+commit b28cf2f5 is the revision commit, its parent is dff001c7
+which its §6 copy names, the revision→pin diff is one line and
+one string only in both the .tex and the rendered text, and the
+records commits change no paper text); R6R-02 (the three DEDR
+counts distinguished at §1.3, §2.4 and §3.27, per S12 — no
+number changes); R6R-03 (§6 anchor table described as its 397
+rows, per S13); R6R-04 (§6 selected-rows sentence corrected,
+per S14); R6R-05 + R6R-06 (§8 gains Jha & Rajaram (2000) only;
+§3.28 aligned to Parpola, Parpola & Brunswig 1977, per S15);
+R6R-07 (Appendix C Phase-44 ratio stated as 3.1334, a ratio of
+two lifts 0.4965 / 0.1584, with the §2.4 limit, per S16);
+R6R-08 (§3.23 span 1972–2018, 46 years); R6R-09 (Phase-134
+cross-reference to §2.3 only); R6R-10 (§3.7 PMI denominator
+5,332 printed; 2.43 recomputes, 2.432). Protected Roif/Rao text
+byte-intact (§8 identical apart from the Jha addition); §3.32
+still absent; no betweenness; Spec 072 insert still HELD. PDF
+rebuilt with TinyTeX XeLaTeX, two passes, exit 0, zero errors,
+32 pages, SHA-256
+48dfb48ed0d860af64c8d74786b79638dc8cd6185c491c2df2f76efe57a3a69b,
+render-verified (pdftotext); printed word count 19,011 measured
+on the shipped PDF by the adjudicated command (round-5 figure
+18,591). Loop NOT closed at round 6 per adjudication §D. Still
+open: the §D owner decisions (incl. the R6R-06 confirmation if
+a distinct 1975 Parpola source is identified), the §E record
+gaps (incl. the DEDR-column discrepancy / per-sign DEDR
+provenance and the title-level Phase-167 Parpola identity);
+red-team round 7 pending. Record:
+specs/025-paper-search-research-check/audit-2026-10-22/v8_version_note_2026-10-23.md.
+Nothing submitted, deposited, or published; PR #353 not merged.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-23 — Preprint v8 red-team round 7: adjudicated and revised (R7R-01..R7R-04)
+
+Round 7 of the independent red-team pass on preprint v8 (attack:
+independent engine, GPT-5.5 via OpenAI API, direct, four passes,
+93 raw findings aggregated to 40 items + 48 positives, plus a
+16-item §6 line-by-line audit; adjudication against primary
+records: 3 sustained / 1 sustained in part / 34 moot / 2 not
+sustained of 40; positives 48/48 confirmed; settlements
+S19–S22). All adjudicated replacement blocks R7R-01..R7R-04 were
+applied verbatim to
+glossa-corpus/indus/pierson_2026_indus_decipherment.tex
+(formatting conversion only; each target verified by exact
+match; MOOT and NOT SUSTAINED items have no replacement) —
+revision commit 649e0e75; §6 commit string pinned to that commit
+by pin-only commit 9133db8f. Cures: R7R-01 (§3.7, §3.12 and §3.28
+cluster population stated as the population the Phase-148 record
+groups — the 97 INITIAL-sign clusters partition all 1,670 seals
+by first sign alone, not the 1,165 fully H+M-covered seals of
+§3.6, per S19; no number changes); R7R-02 (§3.28 Phase-167 record
+path made breakable at its slashes; verified on the rendered
+page 23 — the full path and its closing parenthesis print inside
+the text block, nothing clipped); R7R-03 (§2.1 "primary published
+formal-seal assemblage" superlative replaced by the corpus's
+printed scope, the share of the full published assemblage stated
+as not measured); R7R-04 (§3.13 prints the Phase-150 permutation
+seed, 42, fixed in its script). Settlements: S19 (population
+label sustained, class (a)); S20 (§6 line-by-line audit NOT
+SUSTAINED — all 16 clauses verified true against the completed
+round-6 pin cycle; the R6R-01 procedural form's first full test,
+passed; this round §6 was not touched except its pin string, and
+the post-pin clause-by-clause check against the round-7 graph —
+revision 649e0e75, its §6 copy naming its parent 36e8c7ad, pin
+9133db8f one line / one string in both .tex and rendered text,
+records commits changing no paper text — passes in full); S21
+(Tier-2 sentence MOOT against its own definition and the body's
+adverse results); S22 (§5 "favours" MOOT, seventh airing, prior
+rulings upheld). Protected Roif/Rao/Jha & Rajaram text
+byte-intact (§8, §3.5/§3.19 Roif credit, §7 acknowledgment
+identical — the .tex diff touches only §2.1, §3.7, §3.12, §3.13,
+§3.28, §6's pin string and the word-count line); §3.32 still
+absent; no betweenness; Spec 072 insert still HELD. PDF rebuilt
+with TinyTeX XeLaTeX, two passes, exit 0, zero errors, 32 pages,
+SHA-256
+5335cdaba21c88c7ae6b56a75e5ec0f1a4db109ad480e57c652568709920b035,
+render-verified (pdftotext + rendered-page inspection of p. 23);
+printed word count 19,193 measured on the shipped PDF by the
+adjudicated command (round-6 figure 19,011). Loop NOT closed at
+round 7 per adjudication §D. Still open: the §D owner decisions
+(incl. the R6R-06 confirmation if a distinct 1975 Parpola source
+is identified), the §E record gaps (incl. the per-cluster fully
+H+M-covered breakdown no record reports, extended at §E.11);
+red-team round 8 pending. Record:
+specs/025-paper-search-research-check/audit-2026-10-22/v8_version_note_2026-10-23.md.
+Nothing submitted, deposited, or published; PR #353 not merged.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-23 — Preprint v8 red-team loop CLOSED at round 8; closure records filed
+
+Round 8 of the independent red-team pass on preprint v8 (attack:
+independent engine, GPT-5.5 via OpenAI API, direct, four passes,
+80 findings plus 44 positives, including a §6 line-by-line audit;
+adjudication against primary records, commit c8cea1d6):
+SUSTAINED 0 / SUSTAINED IN PART 0 / MOOT 38 / NOT SUSTAINED 2 of
+40 aggregated items (R8-01..R8-40); positives 44/44 confirmed;
+settlements S23 (§6 audit — all 16 clauses verified true against
+the completed round-7 pin cycle) and S24 (title word
+"Falsifiable"; owner decision R3-14 stands). §B of the round-8
+adjudication is empty — no R8R replacement texts, no revision
+act; the round-7-revised paper text stands unchanged. The loop
+CLOSES at round 8 per the adjudication's §D closure statement:
+the loop's test was the paper's text against its records, and a
+full independent pass finds no statement the records contradict
+and no claim worded beyond its printed disclosures. Closure is
+not a claim the decipherment is correct; the §E record gaps
+stand exactly as filed, and the owner decisions stand with
+their interim cures in place. Final state: 32 pages, PDF
+SHA-256
+5335cdaba21c88c7ae6b56a75e5ec0f1a4db109ad480e57c652568709920b035,
+word count 19,193 (pdftotext | wc -w, verified on the shipped
+PDF), §6 pins revision commit 649e0e75. This entry, the
+version note's "Red-team loop closure (2026-10-23)" section
+(full round-by-round ledger, rounds 1–8), and the AGENTS.md
+preprint "Current version" update are records only — no paper
+text changed. Protected text byte-intact; §3.32 still absent;
+Spec 072 insert still HELD. Standing gates: the owner's read of
+this build; deposit executed separately by the owner. Nothing
+submitted, deposited, or published.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.
+## 2026-10-23 — Spec 073 EXECUTED (Phase-436): REPAIRED WITH NAMED SHORTFALL
+
+The keying-surface repair is built and measured. Registry v2
+(data/crosswalks/canonical_sign_registry_v2.csv, SHA-256
+42ab09fb...) carries all 803 v1 rows byte-identical and adds 210
+icit_wells rows (sign ids W136-form), each cited to the published
+ICIT sign list in Fuls 2023, *A Catalog of Indus Signs*, Ch. 2.3
+(consulted from the held print PDF on the owner's desktop; the
+change schedule is at specs/073-keying-surface-repair/registry-v2/).
+No Wells-map completions were added: the Catalog's Parpola column
+states Parpola (1994)'s own numbering, not the registry's, so it
+grounds no completion (catalog-consult.json holds the evidence).
+Asset A v2 (SHA-256 681e017d...) carries all 187 v1 rows
+field-for-field and adds 365 rows entered blind under the Spec
+045/069 discipline — the deterministic second pass was first
+required to reproduce Spec 069's recorded pass-2 codings on all 187
+carried labels exactly (0 misses). Coverage over the recorded
+populations, counts only: Spec 070's 31-sign set now keys 31 of 31
+(baseline 26 by resolution), Spec 071's 557-sign documented set now
+keys 556 of 557 (baseline 285). The five named signs (ICIT 136, 298,
+401, 617, 824) are each resolved and keyed; none carries a verbal
+depiction in any ruled source, so each is coded unidentified —
+keyed for joining, honestly unclassified. Named shortfall: token
+999, a corpus placeholder occurring in the documented stratum but in
+no published sign list — NO PUBLISHED IDENTITY, named on the
+schedule, never dropped. The celestial class in Asset A v2 is 0
+rows (carried 0, new 0), stated beside Spec 071's frozen TOO THIN
+floor of 30. Closing re-assertion: Registry v1 (8a0b2a82...) and
+Asset A v1 (95231935...) re-hashed at the close and byte-identical.
+Neither predecessor study is re-run or amended; both Hunt claims
+stand untouched; whether either Hunt question is re-frozen against
+the repaired surface is a separate owner decision. Freeze digest
+5419c4c4...; OSF registration https://osf.io/9kh4a/ (approval
+pending at this entry's writing). Records:
+specs/073-keying-surface-repair/outcome.md,
+reports/phase436_results.json, reports/phase436_report.md.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.
+## 2026-10-24 — Spec 041 EXECUTED (Phase-435): site-period mapping built for the ICIT-lineage layer (horus84)
+
+The mapping the Spec 040 chronology-control dependency was waiting on now
+exists as a pinned artifact. Step 0 passed all six frozen gates on the
+hash-pinned layer (5,679 rows; census margins reproduced exactly: period
+2,266 / phase 2,638 / both 1,788 / union 3,116 / neither 2,294; the
+Phase-139 covariates agree on all 5,410 population rows; anchors
+df0cf620... asserted byte-identical before and after). Of the 78 local
+chronological labels attested on the population, 24 cells are MAPPED on a
+published determination verified to the spec section 3 bar (4 EARLY, 18
+MATURE, 2 LATE; artifact
+data/evidence_integration/site_period_mapping.jsonl, SHA-256
+1e5b54c9...) and 54 are UNASSIGNED with an enumerated reason (35 no
+published determination, 10 determination unverified, 4 boundary spans,
+3 labels uncertain in the layer, 2 not in the published scheme); 0 cells
+are CONTESTED. Dual verification re-read every grounded cell at its
+locator: 23 confirmed, 1 confirmed with a recorded caveat, and 4 Harappa
+phase cells (A, C, A-C, B/C) reclassified to UNASSIGNED /
+DETERMINATION_UNVERIFIED — never edited into agreement. Placement counts
+are reported under all four candidate derivations, none adopted (A1
+1,457 · A2 780 · B 1,366 · C 1,457 of 5,410 rows; at most 3,116 rows,
+57.6%, carry any label at all; Mohenjo-daro places zero rows under every
+derivation). One recorded departure from the freeze's illustrative text:
+Nausharo Period IV is MAPPED MATURE on the excavator's own published
+scheme (Jarrige et al. 2011, pp. 9, 30), which the freeze example had
+followed an incomplete consultation in expecting to be absent. This act
+computes no G1 quantity, amends no frozen record, and does not satisfy
+Spec 040's gate by existing — that judgment belongs to a future
+Spec 040 freeze. Freeze digest fe618886...; OSF registration
+https://osf.io/w2vkn/ (approved 2026-10-23). Records:
+specs/041-site-local-label-period-mapping/outcome.md,
+specs/041-site-local-label-period-mapping/coverage-report.md,
+reports/phase435_results.json.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.

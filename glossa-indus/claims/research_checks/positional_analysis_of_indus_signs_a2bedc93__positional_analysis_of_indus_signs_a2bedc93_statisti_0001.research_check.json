@@ -1,0 +1,374 @@
+{
+ "stage": "research_check",
+ "record_version": 1,
+ "claim_id": "positional_analysis_of_indus_signs_a2bedc93_statisti_0001",
+ "document_id": "positional_analysis_of_indus_signs_a2bedc93",
+ "claim_statement": "Statistical finding: Positional Analysis",
+ "checked_at": "2026-10-22T14:53:25.122281+00:00",
+ "advisory": true,
+ "verdict": null,
+ "protocol": "docs/paper-search-mcp.md#audit-protocol",
+ "phrasings": [
+  {
+   "text": "Statistical finding: Positional Analysis",
+   "origin": "claim"
+  },
+  {
+   "text": "Fuls 2013 positional analysis of Indus signs in Problems of Epigraphy: positional histograms distinguish allographs from distinct signs and classify Indus signs by preferred position in 2474 complete texts",
+   "origin": "caller"
+  }
+ ],
+ "sources_requested": [
+  "arxiv",
+  "crossref",
+  "openalex",
+  "semantic",
+  "core",
+  "europepmc"
+ ],
+ "queries": [
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_papers",
+   "query": "Statistical finding: Positional Analysis"
+  },
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_arxiv",
+   "query": "Statistical finding: Positional Analysis"
+  },
+  {
+   "phrasing_origin": "claim",
+   "tool": "search_crossref",
+   "query": "Statistical finding: Positional Analysis"
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_papers",
+   "query": "Fuls 2013 positional analysis of Indus signs in Problems of Epigraphy: positional histograms distinguish allographs from distinct signs and classify Indus signs by preferred position in 2474 complete texts"
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_arxiv",
+   "query": "Fuls 2013 positional analysis of Indus signs in Problems of Epigraphy: positional histograms distinguish allographs from distinct signs and classify Indus signs by preferred position in 2474 complete texts"
+  },
+  {
+   "phrasing_origin": "caller",
+   "tool": "search_crossref",
+   "query": "Fuls 2013 positional analysis of Indus signs in Problems of Epigraphy: positional histograms distinguish allographs from distinct signs and classify Indus signs by preferred position in 2474 complete texts"
+  }
+ ],
+ "source_errors": [],
+ "neighbors": [
+  {
+   "title": "Toward the Use of Statistical Analysis in Positional Tolerancing",
+   "authors": "F. Bennis; Ph. Castagliola; L. Pino",
+   "year": "2002-01-01T00:00:00",
+   "doi": "10.1007/978-94-015-9966-5_27",
+   "paper_id": "10.1007/978-94-015-9966-5_27",
+   "source": "crossref",
+   "url": "https://doi.org/10.1007/978-94-015-9966-5_27",
+   "abstract": null,
+   "relevance": 0.75
+  },
+  {
+   "title": "A statistical analysis of positional errors of a multiaxis machine tool",
+   "authors": "Y.C. Shin; Y. Wei",
+   "year": "1992-07-01T00:00:00",
+   "doi": "10.1016/0141-6359(92)90002-e",
+   "paper_id": "10.1016/0141-6359(92)90002-e",
+   "source": "crossref",
+   "url": "https://doi.org/10.1016/0141-6359(92)90002-e",
+   "abstract": null,
+   "relevance": 0.75
+  },
+  {
+   "title": "The Statistical Analysis of fMRI Data",
+   "authors": "Martin A. Lindquist",
+   "year": "2009-06-19T13:09:51",
+   "doi": "10.1214/09-STS282",
+   "paper_id": "0906.3662v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/0906.3662v1",
+   "abstract": "In recent years there has been explosive growth in the number of neuroimaging studies performed using functional Magnetic Resonance Imaging (fMRI). The field that has grown around the acquisition and analysis of fMRI data is intrinsically interdisciplinary in nature and involves contributions from researchers in neuroscience, psychology, physics and statistics, among others. A standard fMRI study gives rise to massive amounts of noisy data with a complicated spatio-temporal correlation structure. Statistics plays a crucial role in understanding the nature of the data and obtaining relevant res",
+   "relevance": 0.5
+  },
+  {
+   "title": "Statistical Inference for the Population Landscape via Moment Adjusted Stochastic Gradients",
+   "authors": "Tengyuan Liang; Weijie Su",
+   "year": "2017-12-20T15:16:53",
+   "doi": "10.1111/rssb.12313",
+   "paper_id": "1712.07519v2",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1712.07519v2",
+   "abstract": "Modern statistical inference tasks often require iterative optimization methods to compute the solution. Convergence analysis from an optimization viewpoint only informs us how well the solution is approximated numerically but overlooks the sampling nature of the data. In contrast, recognizing the randomness in the data, statisticians are keen to provide uncertainty quantification, or confidence, for the solution obtained using iterative optimization methods. This paper makes progress along this direction by introducing the moment-adjusted stochastic gradient descents, a new stochastic optimiz",
+   "relevance": 0.5
+  },
+  {
+   "title": "Methods for finding genes a major rate-limiting step in positional cloning",
+   "authors": "Julia E. Parrish; David L. Nelson",
+   "year": "1993-04-01T00:00:00",
+   "doi": "10.1016/1050-3862(93)90043-i",
+   "paper_id": "10.1016/1050-3862(93)90043-i",
+   "source": "crossref",
+   "url": "https://doi.org/10.1016/1050-3862(93)90043-i",
+   "abstract": null,
+   "relevance": 0.5
+  },
+  {
+   "title": "The Logic &amp; Language of Statistical Analysis",
+   "authors": "Ray W. Cooksey",
+   "year": "2020-01-01T00:00:00",
+   "doi": "10.1007/978-981-15-2537-7_1",
+   "paper_id": "10.1007/978-981-15-2537-7_1",
+   "source": "crossref",
+   "url": "https://doi.org/10.1007/978-981-15-2537-7_1",
+   "abstract": null,
+   "relevance": 0.5
+  },
+  {
+   "title": "A STATISTICAL ANALYSIS OF SITING ERROR IN RADIO DIRECTION-FINDING",
+   "authors": "Laurence A. Lyons",
+   "year": "1967-08-30T00:00:00",
+   "doi": "10.21236/ad0661341",
+   "paper_id": "10.21236/ad0661341",
+   "source": "crossref",
+   "url": "https://doi.org/10.21236/ad0661341",
+   "abstract": null,
+   "relevance": 0.5
+  },
+  {
+   "title": "Statistical analysis of the Indus script using $n$-grams",
+   "authors": "Nisha Yadav; Hrishikesh Joglekar; Rajesh P. N. Rao; M. N. Vahia; Iravatham Mahadevan; R. Adhikari",
+   "year": "2009-01-20T12:55:55",
+   "doi": "10.1371/journal.pone.0009506",
+   "paper_id": "0901.3017v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/0901.3017v1",
+   "abstract": "The Indus script is one of the major undeciphered scripts of the ancient world. The small size of the corpus, the absence of bilingual texts, and the lack of definite knowledge of the underlying language has frustrated efforts at decipherment since the discovery of the remains of the Indus civilisation. Recently, some researchers have questioned the premise that the Indus script encodes spoken language. Building on previous statistical approaches, we apply the tools of statistical language processing, specifically $n$-gram Markov chains, to analyse the Indus script for syntax. Our main results",
+   "relevance": 0.5
+  },
+  {
+   "title": "Twenty five years after KLS: A celebration of non-equilibrium statistical mechanics",
+   "authors": "R. K. P. Zia",
+   "year": "2009-11-28T19:34:51",
+   "doi": "10.1007/s10955-009-9884-0",
+   "paper_id": "0911.5421v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/0911.5421v1",
+   "abstract": "When Lenz proposed a simple model for phase transitions in magnetism, he couldn't have imagined that the \"Ising model\" was to become a jewel in field of equilibrium statistical mechanics. Its role spans the spectrum, from a good pedagogical example to a universality class in critical phenomena. A quarter century ago, Katz, Lebowitz and Spohn found a similar treasure. By introducing a seemingly trivial modification to the Ising lattice gas, they took it into the vast realms of non-equilibrium statistical mechanics. An abundant variety of unexpected behavior emerged and caught many of us by surp",
+   "relevance": 0.25
+  },
+  {
+   "title": "Positivity-Preserving Analysis of Numerical Schemes for Ideal Magnetohydrodynamics",
+   "authors": "Kailiang Wu",
+   "year": "2018-02-07T01:24:32",
+   "doi": "10.1137/18M1168017",
+   "paper_id": "1802.02278v2",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1802.02278v2",
+   "abstract": "Numerical schemes provably preserving the positivity of density and pressure are highly desirable for MHD, but the rigorous positivity-preserving (PP) analysis remains challenging. The difficulties mainly arise from the intrinsic complexity of the MHD equations as well as the indeterminate relation between the PP property and the divergence-free condition on magnetic field. We present the first rigorous PP analysis of conservative schemes with Lax-Friedrichs (LF) flux for ideal MHD. The significant innovation is the discovery of theoretical connection between PP property and a discrete diverge",
+   "relevance": 0.25
+  },
+  {
+   "title": "Robust and Differentially Private Principal Component Analysis",
+   "authors": "Minwoo Kim; Sungkyu Jung",
+   "year": "2025-07-21T04:27:09",
+   "doi": "10.1002/sam.70053",
+   "paper_id": "2507.15232v2",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2507.15232v2",
+   "abstract": "Recent advances have sparked significant interest in the development of privacy-preserving Principal Component Analysis (PCA). However, many existing approaches rely on restrictive assumptions, such as assuming sub-Gaussian data or being vulnerable to data contamination. Additionally, some methods are computationally expensive or depend on unknown model parameters that must be estimated, limiting their accessibility for data analysts seeking privacy-preserving PCA. In this paper, we propose a differentially private PCA method applicable to heavy-tailed and potentially contaminated data. Our ap",
+   "relevance": 0.25
+  },
+  {
+   "title": "Recurrence of benign paroxysmal positional vertigo: risk factors and outcomes",
+   "authors": "Kars A; Atalay F; Anbar S; Topal K; Altıparmak S",
+   "year": "",
+   "doi": "",
+   "paper_id": "PMC13552986",
+   "source": "europepmc",
+   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13552986/?tool=EBI",
+   "abstract": null,
+   "relevance": 0.25
+  },
+  {
+   "title": "Limited positional differences in lower-limb muscle contractile properties among female football players.",
+   "authors": "Sučka J; Pajonková F; Čech P; Lenková R",
+   "year": "2026-01-01T00:00:00",
+   "doi": "10.3389/fspor.2026.1915995",
+   "paper_id": "PMID:42630297",
+   "source": "europepmc",
+   "url": "https://europepmc.org/articles/PMC13493519",
+   "abstract": "<h4>Background</h4>Contractile properties of the lower-limb muscles are closely associated with high-intensity activities performed during a football match. Several studies have indicated that playing position significantly influences players' physical and performance demands, as well as the intensity of high-speed locomotor activities during match play. Nevertheless, it remains unclear to what extent muscle contractile properties differ according to specific playing positions in women's football. Therefore, the aim of this study was to describe the contractile properties of female football pl",
+   "relevance": 0.25
+  },
+  {
+   "title": "Prospective Exploratory Evaluation of Audiovestibular Function in Patients Receiving Oral Isotretinoin Using Audiometry and Videonystagmography.",
+   "authors": "Yüksel F; Yavuz C; Kahraman ME",
+   "year": "2026-01-01T00:00:00",
+   "doi": "10.4274/tao.2026.2026-4-9",
+   "paper_id": "PMID:42769804",
+   "source": "europepmc",
+   "url": "https://europepmc.org/articles/PMC13639332",
+   "abstract": "<h4>Objective</h4>To prospectively evaluate possible audiovestibular changes associated with short-term oral isotretinoin therapy using pure-tone audiometry and selected videonystagmography (VNG)-based vestibular assessments.<h4>Methods</h4>Participants older than 18 years receiving oral isotretinoin therapy constituted the study group. All participants underwent detailed otorhinolaryngological examination, along with pure-tone audiometry and tympanometric analysis, prior to treatment initiation and after three months of therapy. Vestibular assessment included VNG-based spontaneous nystagmus a",
+   "relevance": 0.25
+  },
+  {
+   "title": "The Relationship Between Serum Vitamin D Levels and the First-Attempt Success of the Epley Maneuver in Posterior Canal Benign Paroxysmal Positional Vertigo (PC-BPPV)",
+   "authors": "Bilgen A; Yalçindağ A; Akkoca Ö; Çikrikçi IŞIK G; Muz S; Islamoğlu Y; Yilmaz F; Gedikaslan Taşdemir Ş",
+   "year": "2026-01-01T00:00:00",
+   "doi": "",
+   "paper_id": "PMC13666152",
+   "source": "europepmc",
+   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13666152/?tool=EBI",
+   "abstract": null,
+   "relevance": 0.25
+  },
+  {
+   "title": "Beat-to-Beat Nystagmus Differentiation Between Benign Paroxysmal Positional Vertigo (BPPV) and Vestibular Migraine (VM): A Cross-Sectional Videonystagmographic Study From Northern India",
+   "authors": "Sachan P; Dorasala S; Bansal U; Gupta A; Sengar M; Verma V; Sachan B",
+   "year": "",
+   "doi": "",
+   "paper_id": "PMC13657663",
+   "source": "europepmc",
+   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13657663/?tool=EBI",
+   "abstract": null,
+   "relevance": 0.25
+  },
+  {
+   "title": "Network analysis of a corpus of undeciphered Indus civilization inscriptions indicates syntactic organization",
+   "authors": "Sitabhra Sinha; Md Izhar Ashraf; Raj Kumar Pan; Bryan Kenneth Wells",
+   "year": "2010-05-27T07:24:29",
+   "doi": "10.1016/j.csl.2010.05.007",
+   "paper_id": "1005.4997v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1005.4997v1",
+   "abstract": "Archaeological excavations in the sites of the Indus Valley civilization (2500-1900 BCE) in Pakistan and northwestern India have unearthed a large number of artifacts with inscriptions made up of hundreds of distinct signs. To date there is no generally accepted decipherment of these sign sequences and there have been suggestions that the signs could be non-linguistic. Here we apply complex network analysis techniques to a database of available Indus inscriptions, with the aim of detecting patterns indicative of syntactic organization. Our results show the presence of patterns, e.g., recursive",
+   "relevance": 0.25
+  },
+  {
+   "title": "How Non-Linguistic Is the Indus Sign System? A Synthetic-Baseline Scorecard",
+   "authors": "Ashish Nair",
+   "year": "2026-04-20T05:29:56",
+   "doi": "",
+   "paper_id": "2604.17828v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2604.17828v1",
+   "abstract": "Whether the Indus Valley sign system (c. 2600-1900 BCE) encodes spoken language has been debated for decades. This paper introduces a multi-metric discrimination framework that tests the observed Indus corpus against two kinds of computer-generated non-linguistic baseline -- one mimicking a heraldic emblem system, the other an administrative coding system -- each calibrated with Zipfian frequency distributions, positional constraints, and bigram dependencies derived from six attested non-linguistic corpora. The scorecard evaluates four properties central to the Farmer-Sproat-Witzel (2004) crit",
+   "relevance": 0.25
+  },
+  {
+   "title": "Image Classification using CNN for Traffic Signs in Pakistan",
+   "authors": "Abdul Azeem Sikander; Hamza Ali",
+   "year": "2021-02-19T19:16:22",
+   "doi": "",
+   "paper_id": "2102.10130v1",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/2102.10130v1",
+   "abstract": "The autonomous automotive industry is one of the largest and most conventional projects worldwide, with many technology companies effectively designing and orienting their products towards automobile safety and accuracy. These products are performing very well over the roads in developed countries. But can fail in the first minute in an underdeveloped country because there is much difference between a developed country environment and an underdeveloped country environment. The following study proposed to train these Artificial intelligence models in environment space in an underdeveloped count",
+   "relevance": 0.0
+  },
+  {
+   "title": "DARTS: Deceiving Autonomous Cars with Toxic Signs",
+   "authors": "Chawin Sitawarin; Arjun Nitin Bhagoji; Arsalan Mosenia; Mung Chiang; Prateek Mittal",
+   "year": "2018-02-18T19:39:28",
+   "doi": "",
+   "paper_id": "1802.06430v3",
+   "source": "arxiv",
+   "url": "http://arxiv.org/abs/1802.06430v3",
+   "abstract": "Sign recognition is an integral part of autonomous cars. Any misclassification of traffic signs can potentially lead to a multitude of disastrous consequences, ranging from a life-threatening accident to even a large-scale interruption of transportation services relying on autonomous cars. In this paper, we propose and examine security attacks against sign recognition systems for Deceiving Autonomous caRs with Toxic Signs (we call the proposed attacks DARTS). In particular, we introduce two novel methods to create these toxic signs. First, we propose Out-of-Distribution attacks, which expand t",
+   "relevance": 0.0
+  },
+  {
+   "title": "Appendix II:",
+   "authors": "Andreas Fuls",
+   "year": "2015-02-06T00:00:00",
+   "doi": "10.2307/j.ctvr43jmf.16",
+   "paper_id": "10.2307/j.ctvr43jmf.16",
+   "source": "crossref",
+   "url": "https://doi.org/10.2307/j.ctvr43jmf.16",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "Appendix I:",
+   "authors": "Andreas Fuls",
+   "year": "2015-02-06T00:00:00",
+   "doi": "10.2307/j.ctvr43jmf.15",
+   "paper_id": "10.2307/j.ctvr43jmf.15",
+   "source": "crossref",
+   "url": "https://doi.org/10.2307/j.ctvr43jmf.15",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "Deciphering the Indus Script: Decoding Missing and Unclear Indus signs and Identifying Anomalous Indus texts from West Asia using Markov Chain Language Models",
+   "authors": "Varun Venkatesh; Ali Farghaly",
+   "year": "2023-03-11T00:00:00",
+   "doi": "10.1109/isec57711.2023.10402308",
+   "paper_id": "10.1109/isec57711.2023.10402308",
+   "source": "crossref",
+   "url": "https://doi.org/10.1109/isec57711.2023.10402308",
+   "abstract": null,
+   "relevance": 0.0
+  },
+  {
+   "title": "Can the semasiographic/logographic Indus script answer the Dravidian question? Insights from Indus script’s gemstone related fish-signs, and Indus gemstone-word “maṇi”",
+   "authors": "Bahata Ansumali Mukhopadhyay",
+   "year": "2023-04-08T00:00:00",
+   "doi": "10.31235/osf.io/ftdzc",
+   "paper_id": "10.31235/osf.io/ftdzc",
+   "source": "crossref",
+   "url": "https://doi.org/10.31235/osf.io/ftdzc",
+   "abstract": "<p>From archaeogenetic, linguistic, archaeological, and ethnographic evidences, several scholars have linked the people of ancient Indus valley civilization (IVC) with the ancestors of Dravidian speakers. This article argues that the semasiographically/logographically written Indus script (ISC) used certain fish-like logograms, whose iconicity emerged from certain Indus symbolisms, which are linkable with certain linguistic symbolisms found across today’s Dravidian languages. As discussed in the author’s previous articles, ISC was a mercantile script, and different segments of the formulaic IS",
+   "relevance": 0.0
+  },
+  {
+   "title": "Can the Semasiographic/logographic Indus Script Answer the Dravidian Question? Insights from Indus Script's Gemstone Related Fish-Signs, and Indus Gemstone-Word 'maṇi'",
+   "authors": "Bahata A. Mukhopadhyay",
+   "year": "2023-01-01T00:00:00",
+   "doi": "10.2139/ssrn.4412558",
+   "paper_id": "10.2139/ssrn.4412558",
+   "source": "crossref",
+   "url": "https://doi.org/10.2139/ssrn.4412558",
+   "abstract": "<jats:p>From archaeogenetic, linguistic, archaeological, and ethnographic evidences, several scholars have linked the people of ancient Indus valley civilization (IVC) with the ancestors of Dravidian speakers. This article argues that the semasiographically/logographically written Indus script (ISC) used certain fish-like logograms, whose iconicity emerged from certain Indus symbolisms, which are linkable with certain linguistic symbolisms found across today’s Dravidian languages. As discussed in the author’s previous articles, ISC was a mercantile script, and different segments of the formula",
+   "relevance": 0.0
+  }
+ ],
+ "neighbors_read_full_text": [
+  {
+   "title": "The Statistical Analysis of fMRI Data",
+   "paper_id": "0906.3662v1",
+   "words": 19509
+  },
+  {
+   "title": "Statistical Inference for the Population Landscape via Moment Adjusted Stochastic Gradients",
+   "paper_id": "1712.07519v2",
+   "words": 13923
+  },
+  {
+   "title": "Statistical analysis of the Indus script using $n$-grams",
+   "paper_id": "0901.3017v1",
+   "words": 9723
+  }
+ ],
+ "gaps": [
+  {
+   "gap": "neighbors surfaced but not read in full text (abstracts never establish novelty)",
+   "neighbors": [
+    "Toward the Use of Statistical Analysis in Positional Tolerancing",
+    "A statistical analysis of positional errors of a multiaxis machine tool",
+    "Methods for finding genes a major rate-limiting step in positional cloning",
+    "The Logic &amp; Language of Statistical Analysis",
+    "A STATISTICAL ANALYSIS OF SITING ERROR IN RADIO DIRECTION-FINDING",
+    "Twenty five years after KLS: A celebration of non-equilibrium statistical mechanics",
+    "Positivity-Preserving Analysis of Numerical Schemes for Ideal Magnetohydrodynamics",
+    "Robust and Differentially Private Principal Component Analysis",
+    "Recurrence of benign paroxysmal positional vertigo: risk factors and outcomes",
+    "Limited positional differences in lower-limb muscle contractile properties among female football players."
+   ]
+  }
+ ],
+ "citation_checks": []
+}

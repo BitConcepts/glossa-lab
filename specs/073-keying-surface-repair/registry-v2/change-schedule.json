@@ -1,0 +1,2332 @@
+{
+ "spec": "073",
+ "phase": 436,
+ "product": "Registry v2 change schedule",
+ "base": {
+  "file": "data/crosswalks/canonical_sign_registry.csv",
+  "sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",
+  "rows": 803
+ },
+ "completions": [],
+ "icit_wells_additions": [
+  {
+   "sign_id": "W036",
+   "icit_code": "036",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 25,
+   "statement": "the sign list presents a sign under ICIT number 36 (printed p. 25)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W037",
+   "icit_code": "037",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 25,
+   "statement": "the sign list presents a sign under ICIT number 37 (printed p. 25)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W039",
+   "icit_code": "039",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 25,
+   "statement": "the sign list presents a sign under ICIT number 39 (printed p. 25)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W041",
+   "icit_code": "041",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 25,
+   "statement": "the sign list presents a sign under ICIT number 41 (printed p. 25)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W042",
+   "icit_code": "042",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 25,
+   "statement": "the sign list presents a sign under ICIT number 42 (printed p. 25)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W043",
+   "icit_code": "043",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 25,
+   "statement": "the sign list presents a sign under ICIT number 43 (printed p. 25)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W047",
+   "icit_code": "047",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 25,
+   "statement": "the sign list presents a sign under ICIT number 47 (printed p. 25)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W050",
+   "icit_code": "050",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 25,
+   "statement": "the sign list presents a sign under ICIT number 50 (printed p. 25)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W056",
+   "icit_code": "056",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 25,
+   "statement": "the sign list presents a sign under ICIT number 56 (printed p. 25)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W059",
+   "icit_code": "059",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 25,
+   "statement": "the sign list presents a sign under ICIT number 59 (printed p. 25)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W067",
+   "icit_code": "067",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 25,
+   "statement": "the sign list presents a sign under ICIT number 67 (printed p. 25)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W068",
+   "icit_code": "068",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 25,
+   "statement": "the sign list presents a sign under ICIT number 68 (printed p. 25)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W069",
+   "icit_code": "069",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 25,
+   "statement": "the sign list presents a sign under ICIT number 69 (printed p. 25)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W074",
+   "icit_code": "074",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 25,
+   "statement": "the sign list presents a sign under ICIT number 74 (printed p. 25)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W075",
+   "icit_code": "075",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 25,
+   "statement": "the sign list presents a sign under ICIT number 75 (printed p. 25)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W082",
+   "icit_code": "082",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 25,
+   "statement": "the sign list presents a sign under ICIT number 82 (printed p. 25)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W084",
+   "icit_code": "084",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 25,
+   "statement": "the sign list presents a sign under ICIT number 84 (printed p. 25)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W085",
+   "icit_code": "085",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 25,
+   "statement": "the sign list presents a sign under ICIT number 85 (printed p. 25)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W092",
+   "icit_code": "092",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 25,
+   "statement": "the sign list presents a sign under ICIT number 92 (printed p. 25)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W096",
+   "icit_code": "096",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 25,
+   "statement": "the sign list presents a sign under ICIT number 96 (printed p. 25)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W099",
+   "icit_code": "099",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 26,
+   "statement": "the sign list presents a sign under ICIT number 99 (printed p. 26)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W102",
+   "icit_code": "102",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 26,
+   "statement": "the sign list presents a sign under ICIT number 102 (printed p. 26)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W115",
+   "icit_code": "115",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 26,
+   "statement": "the sign list presents a sign under ICIT number 115 (printed p. 26)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W116",
+   "icit_code": "116",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 26,
+   "statement": "the sign list presents a sign under ICIT number 116 (printed p. 26)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W128",
+   "icit_code": "128",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 26,
+   "statement": "the sign list presents a sign under ICIT number 128 (printed p. 26)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W129",
+   "icit_code": "129",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 26,
+   "statement": "the sign list presents a sign under ICIT number 129 (printed p. 26)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W132",
+   "icit_code": "132",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 26,
+   "statement": "the sign list presents a sign under ICIT number 132 (printed p. 26)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W135",
+   "icit_code": "135",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 26,
+   "statement": "the sign list presents a sign under ICIT number 135 (printed p. 26)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W136",
+   "icit_code": "136",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 26,
+   "statement": "the sign list presents a sign under ICIT number 136 (printed p. 26)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W138",
+   "icit_code": "138",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 26,
+   "statement": "the sign list presents a sign under ICIT number 138 (printed p. 26)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W139",
+   "icit_code": "139",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 26,
+   "statement": "the sign list presents a sign under ICIT number 139 (printed p. 26)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W141",
+   "icit_code": "141",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 26,
+   "statement": "the sign list presents a sign under ICIT number 141 (printed p. 26)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W147",
+   "icit_code": "147",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 26,
+   "statement": "the sign list presents a sign under ICIT number 147 (printed p. 26)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W150",
+   "icit_code": "150",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 26,
+   "statement": "the sign list presents a sign under ICIT number 150 (printed p. 26)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W152",
+   "icit_code": "152",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 26,
+   "statement": "the sign list presents a sign under ICIT number 152 (printed p. 26)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W157",
+   "icit_code": "157",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 26,
+   "statement": "the sign list presents a sign under ICIT number 157 (printed p. 26)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W172",
+   "icit_code": "172",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 26,
+   "statement": "the sign list presents a sign under ICIT number 172 (printed p. 26)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W173",
+   "icit_code": "173",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 26,
+   "statement": "the sign list presents a sign under ICIT number 173 (printed p. 26)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W180",
+   "icit_code": "180",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 26,
+   "statement": "the sign list presents a sign under ICIT number 180 (printed p. 26)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W191",
+   "icit_code": "191",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 27,
+   "statement": "the sign list presents a sign under ICIT number 191 (printed p. 27)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W195",
+   "icit_code": "195",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 27,
+   "statement": "the sign list presents a sign under ICIT number 195 (printed p. 27)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W219",
+   "icit_code": "219",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 27,
+   "statement": "the sign list presents a sign under ICIT number 219 (printed p. 27)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W221",
+   "icit_code": "221",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 27,
+   "statement": "the sign list presents a sign under ICIT number 221 (printed p. 27)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W223",
+   "icit_code": "223",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 27,
+   "statement": "the sign list presents a sign under ICIT number 223 (printed p. 27)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W224",
+   "icit_code": "224",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 27,
+   "statement": "the sign list presents a sign under ICIT number 224 (printed p. 27)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W225",
+   "icit_code": "225",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 27,
+   "statement": "the sign list presents a sign under ICIT number 225 (printed p. 27)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W229",
+   "icit_code": "229",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 27,
+   "statement": "the sign list presents a sign under ICIT number 229 (printed p. 27)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W230",
+   "icit_code": "230",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 27,
+   "statement": "the sign list presents a sign under ICIT number 230 (printed p. 27)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W250",
+   "icit_code": "250",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 27,
+   "statement": "the sign list presents a sign under ICIT number 250 (printed p. 27)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W251",
+   "icit_code": "251",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 27,
+   "statement": "the sign list presents a sign under ICIT number 251 (printed p. 27)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W252",
+   "icit_code": "252",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 27,
+   "statement": "the sign list presents a sign under ICIT number 252 (printed p. 27)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W253",
+   "icit_code": "253",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 27,
+   "statement": "the sign list presents a sign under ICIT number 253 (printed p. 27)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W257",
+   "icit_code": "257",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 27,
+   "statement": "the sign list presents a sign under ICIT number 257 (printed p. 27)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W261",
+   "icit_code": "261",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 27,
+   "statement": "the sign list presents a sign under ICIT number 261 (printed p. 27)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W263",
+   "icit_code": "263",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 27,
+   "statement": "the sign list presents a sign under ICIT number 263 (printed p. 27)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W276",
+   "icit_code": "276",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 28,
+   "statement": "the sign list presents a sign under ICIT number 276 (printed p. 28)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W277",
+   "icit_code": "277",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 28,
+   "statement": "the sign list presents a sign under ICIT number 277 (printed p. 28)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W278",
+   "icit_code": "278",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 28,
+   "statement": "the sign list presents a sign under ICIT number 278 (printed p. 28)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W279",
+   "icit_code": "279",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 28,
+   "statement": "the sign list presents a sign under ICIT number 279 (printed p. 28)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W298",
+   "icit_code": "298",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 28,
+   "statement": "the sign list presents a sign under ICIT number 298 (printed p. 28)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W310",
+   "icit_code": "310",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 28,
+   "statement": "the sign list presents a sign under ICIT number 310 (printed p. 28)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W311",
+   "icit_code": "311",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 28,
+   "statement": "the sign list presents a sign under ICIT number 311 (printed p. 28)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W316",
+   "icit_code": "316",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 28,
+   "statement": "the sign list presents a sign under ICIT number 316 (printed p. 28)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W320",
+   "icit_code": "320",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 28,
+   "statement": "the sign list presents a sign under ICIT number 320 (printed p. 28)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W326",
+   "icit_code": "326",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 28,
+   "statement": "the sign list presents a sign under ICIT number 326 (printed p. 28)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W327",
+   "icit_code": "327",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 28,
+   "statement": "the sign list presents a sign under ICIT number 327 (printed p. 28)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W328",
+   "icit_code": "328",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 28,
+   "statement": "the sign list presents a sign under ICIT number 328 (printed p. 28)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W330",
+   "icit_code": "330",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 28,
+   "statement": "the sign list presents a sign under ICIT number 330 (printed p. 28)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W351",
+   "icit_code": "351",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 29,
+   "statement": "the sign list presents a sign under ICIT number 351 (printed p. 29)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W376",
+   "icit_code": "376",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 29,
+   "statement": "the sign list presents a sign under ICIT number 376 (printed p. 29)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W381",
+   "icit_code": "381",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 29,
+   "statement": "the sign list presents a sign under ICIT number 381 (printed p. 29)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W383",
+   "icit_code": "383",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 29,
+   "statement": "the sign list presents a sign under ICIT number 383 (printed p. 29)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W386",
+   "icit_code": "386",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 29,
+   "statement": "the sign list presents a sign under ICIT number 386 (printed p. 29)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W387",
+   "icit_code": "387",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 29,
+   "statement": "the sign list presents a sign under ICIT number 387 (printed p. 29)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W389",
+   "icit_code": "389",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 29,
+   "statement": "the sign list presents a sign under ICIT number 389 (printed p. 29)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W401",
+   "icit_code": "401",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 29,
+   "statement": "the sign list presents a sign under ICIT number 401 (printed p. 29)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W403",
+   "icit_code": "403",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 29,
+   "statement": "the sign list presents a sign under ICIT number 403 (printed p. 29)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W404",
+   "icit_code": "404",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 29,
+   "statement": "the sign list presents a sign under ICIT number 404 (printed p. 29)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W409",
+   "icit_code": "409",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 29,
+   "statement": "the sign list presents a sign under ICIT number 409 (printed p. 29)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W410",
+   "icit_code": "410",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 29,
+   "statement": "the sign list presents a sign under ICIT number 410 (printed p. 29)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W418",
+   "icit_code": "418",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 29,
+   "statement": "the sign list presents a sign under ICIT number 418 (printed p. 29)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W424",
+   "icit_code": "424",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 30,
+   "statement": "the sign list presents a sign under ICIT number 424 (printed p. 30)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W441",
+   "icit_code": "441",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 30,
+   "statement": "the sign list presents a sign under ICIT number 441 (printed p. 30)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W442",
+   "icit_code": "442",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 30,
+   "statement": "the sign list presents a sign under ICIT number 442 (printed p. 30)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W444",
+   "icit_code": "444",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 30,
+   "statement": "the sign list presents a sign under ICIT number 444 (printed p. 30)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W445",
+   "icit_code": "445",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 30,
+   "statement": "the sign list presents a sign under ICIT number 445 (printed p. 30)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W453",
+   "icit_code": "453",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 30,
+   "statement": "the sign list presents a sign under ICIT number 453 (printed p. 30)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W458",
+   "icit_code": "458",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 30,
+   "statement": "the sign list presents a sign under ICIT number 458 (printed p. 30)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W462",
+   "icit_code": "462",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 30,
+   "statement": "the sign list presents a sign under ICIT number 462 (printed p. 30)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W463",
+   "icit_code": "463",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 30,
+   "statement": "the sign list presents a sign under ICIT number 463 (printed p. 30)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W479",
+   "icit_code": "479",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 30,
+   "statement": "the sign list presents a sign under ICIT number 479 (printed p. 30)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W481",
+   "icit_code": "481",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 30,
+   "statement": "the sign list presents a sign under ICIT number 481 (printed p. 30)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W491",
+   "icit_code": "491",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 30,
+   "statement": "the sign list presents a sign under ICIT number 491 (printed p. 30)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W492",
+   "icit_code": "492",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 30,
+   "statement": "the sign list presents a sign under ICIT number 492 (printed p. 30)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W493",
+   "icit_code": "493",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 30,
+   "statement": "the sign list presents a sign under ICIT number 493 (printed p. 30)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W494",
+   "icit_code": "494",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 30,
+   "statement": "the sign list presents a sign under ICIT number 494 (printed p. 30)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W495",
+   "icit_code": "495",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 30,
+   "statement": "the sign list presents a sign under ICIT number 495 (printed p. 30)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W501",
+   "icit_code": "501",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 31,
+   "statement": "the sign list presents a sign under ICIT number 501 (printed p. 31)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W506",
+   "icit_code": "506",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 31,
+   "statement": "the sign list presents a sign under ICIT number 506 (printed p. 31)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W514",
+   "icit_code": "514",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 31,
+   "statement": "the sign list presents a sign under ICIT number 514 (printed p. 31)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W515",
+   "icit_code": "515",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 31,
+   "statement": "the sign list presents a sign under ICIT number 515 (printed p. 31)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W516",
+   "icit_code": "516",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 31,
+   "statement": "the sign list presents a sign under ICIT number 516 (printed p. 31)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W519",
+   "icit_code": "519",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 31,
+   "statement": "the sign list presents a sign under ICIT number 519 (printed p. 31)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W525",
+   "icit_code": "525",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 31,
+   "statement": "the sign list presents a sign under ICIT number 525 (printed p. 31)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W534",
+   "icit_code": "534",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 31,
+   "statement": "the sign list presents a sign under ICIT number 534 (printed p. 31)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W535",
+   "icit_code": "535",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 31,
+   "statement": "the sign list presents a sign under ICIT number 535 (printed p. 31)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W541",
+   "icit_code": "541",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 31,
+   "statement": "the sign list presents a sign under ICIT number 541 (printed p. 31)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W543",
+   "icit_code": "543",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 31,
+   "statement": "the sign list presents a sign under ICIT number 543 (printed p. 31)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W544",
+   "icit_code": "544",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 31,
+   "statement": "the sign list presents a sign under ICIT number 544 (printed p. 31)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W546",
+   "icit_code": "546",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 31,
+   "statement": "the sign list presents a sign under ICIT number 546 (printed p. 31)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W552",
+   "icit_code": "552",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 31,
+   "statement": "the sign list presents a sign under ICIT number 552 (printed p. 31)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W563",
+   "icit_code": "563",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 31,
+   "statement": "the sign list presents a sign under ICIT number 563 (printed p. 31)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W576",
+   "icit_code": "576",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 31,
+   "statement": "the sign list presents a sign under ICIT number 576 (printed p. 31)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W577",
+   "icit_code": "577",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 31,
+   "statement": "the sign list presents a sign under ICIT number 577 (printed p. 31)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W585",
+   "icit_code": "585",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 32,
+   "statement": "the sign list presents a sign under ICIT number 585 (printed p. 32)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W586",
+   "icit_code": "586",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 32,
+   "statement": "the sign list presents a sign under ICIT number 586 (printed p. 32)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W591",
+   "icit_code": "591",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 32,
+   "statement": "the sign list presents a sign under ICIT number 591 (printed p. 32)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W596",
+   "icit_code": "596",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 32,
+   "statement": "the sign list presents a sign under ICIT number 596 (printed p. 32)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W597",
+   "icit_code": "597",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 32,
+   "statement": "the sign list presents a sign under ICIT number 597 (printed p. 32)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W599",
+   "icit_code": "599",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 32,
+   "statement": "the sign list presents a sign under ICIT number 599 (printed p. 32)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W601",
+   "icit_code": "601",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 32,
+   "statement": "the sign list presents a sign under ICIT number 601 (printed p. 32)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W606",
+   "icit_code": "606",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 32,
+   "statement": "the sign list presents a sign under ICIT number 606 (printed p. 32)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W617",
+   "icit_code": "617",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 32,
+   "statement": "the sign list presents a sign under ICIT number 617 (printed p. 32)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W620",
+   "icit_code": "620",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 32,
+   "statement": "the sign list presents a sign under ICIT number 620 (printed p. 32)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W627",
+   "icit_code": "627",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 32,
+   "statement": "the sign list presents a sign under ICIT number 627 (printed p. 32)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W629",
+   "icit_code": "629",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 32,
+   "statement": "the sign list presents a sign under ICIT number 629 (printed p. 32)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W641",
+   "icit_code": "641",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 32,
+   "statement": "the sign list presents a sign under ICIT number 641 (printed p. 32)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W643",
+   "icit_code": "643",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 32,
+   "statement": "the sign list presents a sign under ICIT number 643 (printed p. 32)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W646",
+   "icit_code": "646",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 32,
+   "statement": "the sign list presents a sign under ICIT number 646 (printed p. 32)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W647",
+   "icit_code": "647",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 32,
+   "statement": "the sign list presents a sign under ICIT number 647 (printed p. 32)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W681",
+   "icit_code": "681",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 32,
+   "statement": "the sign list presents a sign under ICIT number 681 (printed p. 32)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W682",
+   "icit_code": "682",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 33,
+   "statement": "the sign list presents a sign under ICIT number 682 (printed p. 33)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W687",
+   "icit_code": "687",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 33,
+   "statement": "the sign list presents a sign under ICIT number 687 (printed p. 33)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W697",
+   "icit_code": "697",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 33,
+   "statement": "the sign list presents a sign under ICIT number 697 (printed p. 33)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W698",
+   "icit_code": "698",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 33,
+   "statement": "the sign list presents a sign under ICIT number 698 (printed p. 33)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W699",
+   "icit_code": "699",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 33,
+   "statement": "the sign list presents a sign under ICIT number 699 (printed p. 33)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W702",
+   "icit_code": "702",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 33,
+   "statement": "the sign list presents a sign under ICIT number 702 (printed p. 33)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W713",
+   "icit_code": "713",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 33,
+   "statement": "the sign list presents a sign under ICIT number 713 (printed p. 33)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W714",
+   "icit_code": "714",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 33,
+   "statement": "the sign list presents a sign under ICIT number 714 (printed p. 33)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W718",
+   "icit_code": "718",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 33,
+   "statement": "the sign list presents a sign under ICIT number 718 (printed p. 33)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W720",
+   "icit_code": "720",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 33,
+   "statement": "the sign list presents a sign under ICIT number 720 (printed p. 33)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W722",
+   "icit_code": "722",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 33,
+   "statement": "the sign list presents a sign under ICIT number 722 (printed p. 33)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W723",
+   "icit_code": "723",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 33,
+   "statement": "the sign list presents a sign under ICIT number 723 (printed p. 33)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W727",
+   "icit_code": "727",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 33,
+   "statement": "the sign list presents a sign under ICIT number 727 (printed p. 33)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W728",
+   "icit_code": "728",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 33,
+   "statement": "the sign list presents a sign under ICIT number 728 (printed p. 33)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W729",
+   "icit_code": "729",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 33,
+   "statement": "the sign list presents a sign under ICIT number 729 (printed p. 33)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W733",
+   "icit_code": "733",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 33,
+   "statement": "the sign list presents a sign under ICIT number 733 (printed p. 33)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W759",
+   "icit_code": "759",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 33,
+   "statement": "the sign list presents a sign under ICIT number 759 (printed p. 33)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W762",
+   "icit_code": "762",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 33,
+   "statement": "the sign list presents a sign under ICIT number 762 (printed p. 33)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W763",
+   "icit_code": "763",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 33,
+   "statement": "the sign list presents a sign under ICIT number 763 (printed p. 33)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W766",
+   "icit_code": "766",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 766 (printed p. 34)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W775",
+   "icit_code": "775",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 775 (printed p. 34)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W780",
+   "icit_code": "780",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 780 (printed p. 34)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W781",
+   "icit_code": "781",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 781 (printed p. 34)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W791",
+   "icit_code": "791",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 791 (printed p. 34)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W792",
+   "icit_code": "792",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 792 (printed p. 34)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W793",
+   "icit_code": "793",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 793 (printed p. 34)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W794",
+   "icit_code": "794",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 794 (printed p. 34)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W795",
+   "icit_code": "795",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 795 (printed p. 34)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W799",
+   "icit_code": "799",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 799 (printed p. 34)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W801",
+   "icit_code": "801",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 801 (printed p. 34)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W811",
+   "icit_code": "811",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 811 (printed p. 34)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W821",
+   "icit_code": "821",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 821 (printed p. 34)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W822",
+   "icit_code": "822",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 822 (printed p. 34)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W824",
+   "icit_code": "824",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 824 (printed p. 34)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W826",
+   "icit_code": "826",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 826 (printed p. 34)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W827",
+   "icit_code": "827",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 827 (printed p. 34)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W828",
+   "icit_code": "828",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 828 (printed p. 34)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W829",
+   "icit_code": "829",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 829 (printed p. 34)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W830",
+   "icit_code": "830",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 830 (printed p. 34)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W835",
+   "icit_code": "835",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 835 (printed p. 34)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W836",
+   "icit_code": "836",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 836 (printed p. 34)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W837",
+   "icit_code": "837",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 837 (printed p. 34)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W838",
+   "icit_code": "838",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 838 (printed p. 34)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W839",
+   "icit_code": "839",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 839 (printed p. 34)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W842",
+   "icit_code": "842",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 842 (printed p. 34)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W843",
+   "icit_code": "843",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 843 (printed p. 34)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W844",
+   "icit_code": "844",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 34,
+   "statement": "the sign list presents a sign under ICIT number 844 (printed p. 34)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W849",
+   "icit_code": "849",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 849 (printed p. 35)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W852",
+   "icit_code": "852",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 852 (printed p. 35)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W854",
+   "icit_code": "854",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 854 (printed p. 35)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W855",
+   "icit_code": "855",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 855 (printed p. 35)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W856",
+   "icit_code": "856",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 856 (printed p. 35)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W857",
+   "icit_code": "857",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 857 (printed p. 35)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W862",
+   "icit_code": "862",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 862 (printed p. 35)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W866",
+   "icit_code": "866",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 866 (printed p. 35)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W872",
+   "icit_code": "872",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 872 (printed p. 35)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W874",
+   "icit_code": "874",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 874 (printed p. 35)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W875",
+   "icit_code": "875",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 875 (printed p. 35)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W876",
+   "icit_code": "876",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 876 (printed p. 35)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W893",
+   "icit_code": "893",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 893 (printed p. 35)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W897",
+   "icit_code": "897",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 897 (printed p. 35)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W898",
+   "icit_code": "898",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 898 (printed p. 35)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W899",
+   "icit_code": "899",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 899 (printed p. 35)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W907",
+   "icit_code": "907",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 907 (printed p. 35)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W910",
+   "icit_code": "910",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 910 (printed p. 35)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W911",
+   "icit_code": "911",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 911 (printed p. 35)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W912",
+   "icit_code": "912",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 912 (printed p. 35)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W913",
+   "icit_code": "913",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 913 (printed p. 35)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W914",
+   "icit_code": "914",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 914 (printed p. 35)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W918",
+   "icit_code": "918",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 918 (printed p. 35)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W919",
+   "icit_code": "919",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 919 (printed p. 35)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W925",
+   "icit_code": "925",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 35,
+   "statement": "the sign list presents a sign under ICIT number 925 (printed p. 35)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W933",
+   "icit_code": "933",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 36,
+   "statement": "the sign list presents a sign under ICIT number 933 (printed p. 36)",
+   "attestation_strata": [
+    "documented"
+   ]
+  },
+  {
+   "sign_id": "W945",
+   "icit_code": "945",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 36,
+   "statement": "the sign list presents a sign under ICIT number 945 (printed p. 36)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W947",
+   "icit_code": "947",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 36,
+   "statement": "the sign list presents a sign under ICIT number 947 (printed p. 36)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W951",
+   "icit_code": "951",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 36,
+   "statement": "the sign list presents a sign under ICIT number 951 (printed p. 36)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W953",
+   "icit_code": "953",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 36,
+   "statement": "the sign list presents a sign under ICIT number 953 (printed p. 36)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W957",
+   "icit_code": "957",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 36,
+   "statement": "the sign list presents a sign under ICIT number 957 (printed p. 36)",
+   "attestation_strata": [
+    "corroborated"
+   ]
+  },
+  {
+   "sign_id": "W958",
+   "icit_code": "958",
+   "form": "icit_wells_row",
+   "source": "Fuls 2023, A Catalog of Indus Signs, Chapter 2.3 sign list",
+   "printed_page": 36,
+   "statement": "the sign list presents a sign under ICIT number 958 (printed p. 36)",
+   "attestation_strata": [
+    "documented"
+   ]
+  }
+ ],
+ "contested_identity": [],
+ "frame_accounting_section_4_3": {
+  "attested_frame_codes": 707,
+  "carried_by_v1_identity": 496,
+  "new_icit_wells_identity": 210,
+  "no_published_identity": 1,
+  "contested_identity": 0,
+  "check": true
+ }
+}

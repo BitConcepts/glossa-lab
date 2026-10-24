@@ -1,0 +1,803 @@
+{
+ "claims": [
+  {
+   "alternatives": [
+    "the original F1 verdict could be read as already answering the enlarged-set question (it cannot: 49.0% of the layer's rows were silent in it)"
+   ],
+   "assumptions": [
+    "ASM-F1-RECORD",
+    "ASM-LAYER-AS-HELD"
+   ],
+   "boundary": "The scope is the pinned ICIT-lineage (horus84) layer of 5,679 rows and its object-ID-joined subset against the pinned merged catalogue layer v2 (Spec 066). It excludes any statement about what the difference means, about sign meanings, about any other corpus or lineage, and about the frozen F1 verdict, which stands as recorded. If the gate fails, no statement under this spec about replication exists at all - the only outcome is the gate closure. Carried from the draft text: the outcome exists only if the step-0 join gate passes, and the set is the enlarged object-identifier-joined set of the same ICIT-lineage (horus84) layer.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 024 Stage 2(a) freeze (SHA-256 c65a4b9b..., recomputed at this draft): F1's frozen question, falsifier, population flow, TERMINAL14 definition, eligibility and estimability rules, and permutation parameters - the contract this variant stands beside.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "specs/024-evidence-integration/stage2a-freeze.md",
+     "source_id": "specs/024-evidence-integration/stage2a-freeze.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "reports/phase136_results.json",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
+    },
+    {
+     "description": "Phase-136 results of record (SHA-256 11a07413..., recomputed at this draft): flow 5,679 -> 2,895 matched -> 2,752 typed -> 2,676 seals/tablets -> 2,195 mapped -> 2,062 in eligible strata; CMH 47.0047; raw p 0.0001; MH odds ratio 2.384, CI [1.847, 3.077].",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "reports/phase136_results.json",
+     "source_id": "reports/phase136_results.json",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/024-evidence-integration/stage2a-freeze.md",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
+    },
+    {
+     "description": "Design D-22 (PR #195 packet, read in full at this draft): the residue question, the step-0 join gate, the hypothesis and falsifier for the gate-passed case, the method, and the criteria this spec registers.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/024-evidence-integration/stage2a-freeze.md",
+      "reports/phase136_results.json"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "the claim is falsified in scope if any Spec 067 output states a conclusion about a population, corpus, or question outside the object-ID-joined replication of F1 on this layer, or states a replication conclusion after a gate failure"
+   ],
+   "id": "F067-C01",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "phase136-record",
+     "spec024-design"
+    ],
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-MEANING"
+    ],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the alternative reading in which a replication verdict licenses a claim about the whole Indus corpus or about why seals and tablets differ",
+    "verdict_rule": "scope is judged by inspection of every Spec 067 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding"
+   },
+   "status": "draft",
+   "text": "An outcome under Spec 067 states only whether F1's seal/tablet TERMINAL14 difference replicates on the enlarged object-ID-joined set."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-F1-RECORD"
+   ],
+   "boundary": "These are the Phase-136, combined Stage 2, and Phase-141 records for the original joined subset. The SUPPORTED verdict follows from the Spec 024 family correction in the combined report; the raw p alone minted no verdict. Phase-141 minted no verdict either: it is a robustness record qualifying F1's summary language.",
+   "depends_on": [
+    "F067-C01"
+   ],
+   "evidence": [
+    {
+     "description": "Phase-136 primary quantities read first-hand from the pinned file at this draft; SHA-256 recomputed equal to 11a07413....",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "reports/phase136_results.json",
+     "source_id": "reports/phase136_results.json",
+     "source_quality": "artifact",
+     "independent_of": [
+      "reports/phase136_137_138_stage2_report.md",
+      "reports/phase141_report.md"
+     ]
+    },
+    {
+     "description": "Combined Stage 2 report (SHA-256 6a4f5d26..., recomputed at this draft): the family table - F1 raw p 0.0001, BH q 0.00015, verdict SUPPORTED; F2 NOT SUPPORTED; F3 SUPPORTED.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "reports/phase136_137_138_stage2_report.md",
+     "source_id": "reports/phase136_137_138_stage2_report.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "reports/phase136_results.json",
+      "reports/phase141_report.md"
+     ]
+    },
+    {
+     "description": "Phase-141 report (SHA-256 d442f8d2..., recomputed at this draft): F1 STABLE under LOSO - drop Mohenjo-daro OR 2.706 [1.858-3.940], drop Harappa 2.162 [1.541-3.033], drop Kalibangan 2.400 [1.857-3.103]; LOSO mints no verdicts.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "reports/phase141_report.md",
+     "source_id": "reports/phase141_report.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "reports/phase136_results.json",
+      "reports/phase136_137_138_stage2_report.md"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "recompute SHA-256 of reports/phase136_results.json (11a07413...) and read the CMH statistic, raw p, and odds-ratio values; read the combined Stage 2 report's family table (F1 q = 0.00015, SUPPORTED) and Phase-141's LOSO table; any mismatch falsifies this statement and voids the draft's basis"
+   ],
+   "id": "F067-C02",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "phase136-record",
+     "phase141-record",
+     "stage2-combined-report"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "the record could have been misread or superseded (the Spec 040 stale-pin precedent shows draft-cited pins can be wrong; this draft's pins were recomputed, not inherited)",
+    "verdict_rule": "the statement stands or falls on the pinned records hashing to their recorded values with the stated quantities in them"
+   },
+   "status": "draft",
+   "text": "STUDY-SPEC-024/F1 stands SETTLED - SUPPORTED on its recorded numbers: Mantel-Haenszel common odds ratio 2.384, 95% CI [1.847, 3.077], permutation raw p 0.0001, family Benjamini-Hochberg q = 0.00015, with Phase-141 leave-one-site-out stability (every dropped-site odds-ratio interval excluding 1)."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-F1-RECORD",
+    "ASM-LAYER-AS-HELD"
+   ],
+   "boundary": "This is the gate's baseline, stated at the point in the frozen flow before any object-type restriction or terminal mapping. Downstream shares (typed 2,752; seals/tablets 2,676; mapped 2,195) are different quantities and are never substituted for the joined share in the gate comparison. Carried from the draft text: the census of record is: 2,895 matched by the concordance rule (a row's cisi value a printed catalogue ID in exactly one volume, exact string); 2 ambiguous; 2,782 unmatched; the joined share is 51.0% (50.977% unrounded) and the unjoinable-or-ambiguous share is 49.0% (2,784 of 5,679).",
+   "depends_on": [
+    "F067-C02"
+   ],
+   "evidence": [
+    {
+     "description": "The recorded flow block: layer_rows 5679, matched_single_volume 2895, ambiguous 2, unmatched 2782, unjoinable_or_ambiguous 2784 (share 0.4902). Read first-hand at this draft.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "reports/phase136_results.json",
+     "source_id": "reports/phase136_results.json",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/024-evidence-integration/stage2a-freeze.md"
+     ]
+    },
+    {
+     "description": "Freeze section 3 states the join rule verbatim (exact string; exactly one volume; the H-311 ambiguity; the trailing-whitespace clarification) and the same audit counts.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "specs/024-evidence-integration/stage2a-freeze.md",
+     "source_id": "specs/024-evidence-integration/stage2a-freeze.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "reports/phase136_results.json"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "gate 0.2 is the operational test: re-running the frozen concordance rule on the pinned layer and catalogue must reproduce 5,679 / 2,895 / 2 / 2,782 exactly, or the run stops INVALID and this statement's basis is impeached"
+   ],
+   "id": "F067-C03",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "phase136-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "a downstream share (e.g. the 38.7% mapped share) silently used as the gate baseline, lowering the bar the design fixed",
+    "verdict_rule": "the statement stands or falls on the gate-0.2 exact reproduction at execution, and on the pinned results file at draft"
+   },
+   "status": "draft",
+   "text": "The original join's joined share is 2,895 of 5,679 lineage rows (51.0%)."
+  },
+  {
+   "alternatives": [
+    "deriving a new bar from Spec 066's projection (refused: a projection over grades has no standing, and a bar fitted to a projection is not a gate)",
+    "computing an F1 quantity anyway on a sub-gate join because the join 'improved somewhat' (refused: the gate is the design's defining feature, carried from Spec 059)"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "boundary": "The bar is Spec 059's, carried unchanged and adopted openly at this freeze (DD-067-7, in the DD-059-7 form): joined share at least 61.0%, i.e. at least 3,465 of 5,679 joined rows (0.61 x 5,679 = 3,464.19; 3,464 rows = 60.997% and fails). Basis: the successor re-runs Spec 059's design on the same layer, the same denominator, and the same original baseline (2,895 of 5,679 = 50.977%, the design's rounded 51.0%); the enlargement standard fixed at DD-059-7 - the design's own stated reading, the strictest of the three readings recorded there (exact-points: 60.977%, at least 3,463 rows; relative: 56.1%, at least 3,186 rows, or 56.075% / at least 3,185 on the unrounded base) - is carried, and the refused readings stay refused. No bar is derived from Spec 066's projection (4,676 rows, 82.34%, Spec 066 outcome section 7): that projection is arithmetic over grades with no standing, and the gate is judged on this execution's own census. A row counts as joined only under F067-C05's rule (exactly one catalogue object in layer v2 via object identifier). The joined share is joined rows divided by the 5,679 layer rows, taken at the same point in the flow as the original 51.0%; below the bar the execution closes at step 0, unscored, in the pre-written wording of spec section 3.6.",
+   "depends_on": [
+    "F067-C03",
+    "F067-C05"
+   ],
+   "evidence": [
+    {
+     "description": "Spec 059's freeze ruling DD-059-7 and its executed closure (specs/059-f1-object-join/adjudication.md section 8; outcome.md): the bar adopted as the design's stated 61.0% (at least 3,465 of 5,679), the alternative readings refused on the record, and the Phase-421 census (2,899 joined, 51.05%) judged against it - the bar and the form this claim carries.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "specs/059-f1-object-join/adjudication.md",
+     "source_id": "specs/059-f1-object-join/adjudication.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "the gate-0.4 comparison is mechanical from the published census: any execution that proceeds to a primary quantity with a joined share below the operative bar falsifies compliance, on its face"
+   ],
+   "id": "F067-C04",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "bar-shopping after the census is known - re-reading the carried bar, or substituting the intake projection, in whichever sense the observed share happens to clear",
+    "verdict_rule": "the bar is registered here, before any layer-v2 census exists; the gate outcome is recomputed from the published census by any reader"
+   },
+   "status": "draft",
+   "text": "The step-0 gate bar is a joined share of at least 61.0%."
+  },
+  {
+   "alternatives": [
+    "joining on the layer's cisi string under a normalisation (trimming, case-folding) and calling it an object-ID join (refused: that is string identity with preprocessing - F067-C06 bars it)"
+   ],
+   "assumptions": [
+    "ASM-OBJECT-ID-JOIN",
+    "ASM-LAYER-AS-HELD"
+   ],
+   "boundary": "The unit is the layer row, as in the original flow; two rows resolving to the same catalogue object both count as joined rows, with the distinct-object count reported descriptively (DD-067-2). The route's precedent is Spec 034 route (b), executed for this layer by Spec 059 (5,018 ICIT inscriptions admitted through the Phase-130 schema, validation verdict pass, joined on provenance.object_id only). Freeze ruling DD-067-9: the object-identifier sources are NAMED AND PINNED, in the DD-059-9 form carried. Lineage side: the pinned ICIT-lineage (horus84) inscription layer itself (local store, SHA-256 c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef, 1,190,884 bytes) - each row's published CISI object reference is its cisi field, carried as provenance.object_id under the Phase-130 intake schema exactly as Spec 034's route-(b) construction carried it (backend/glossa_lab/phase398_matched_object.py, build_intake_dataset, SHA-256 278f16b0ae8b02b77412cc925ac9e767110f5d5461729b73e8c122a9ff7673f0); the layer's programme-built converted form, corpora/downloads/icit_fieldcady/icit_converted_v2_keyed.json (local store, SHA-256 bbfdbcd5d5e3e3121251de91462af51dc702a4114a4d10ffd7061e1f5593a5c8, 1,586,137 bytes), carries the same rows and the same cisi values and is the same source in converted form, not a second source. Catalogue side: the pinned merged catalogue layer v2, cisi_catalogue_layer_v2.csv (restricted local store, never committed; SHA-256 cd0c2ba8823678be9f7573616528ae0b6be2fe579dc7e34c93add421c80886ad, 2,655,958 bytes, 9,741 rows, 5,529 distinct objects, as pinned in Spec 066's outcome), whose object key is its cisi_id column. Also pinned at DD-067-9: the Spec 066 extension index (data/intake/cisi31_extension_index.csv, SHA-256 be20439a094d4196352bd8c31fd8eeee3f92cd81d8443786a1c520d8355f2540, 78,531 bytes, 2,101 rows) and the Spec 066 freeze digest 0b81d8421c8fe66b486b2c729bb7e978faa6327c74b8f1bff7984128a31aa355. Schema: data/intake/intake_dataset_schema_v1.json, SHA-256 b94d03add0318044b559b7b2976bbd2722abc19adcf67a0ea0cf093f8d7de49b (6,197 bytes), validated by backend/glossa_lab/intake.py (SHA-256 02b24e3312a9a4ac4f7e3b14aeaee2cda0268f41cb5bd573494340c2e7d2df03). Gate 0.1 asserts every one of these pins - the layer v2 pin on the local file, before any join work; a mismatch stops the run as INVALID - PIN FAILURE. Restricted discipline (spec section 7.3): the merged layer stays restricted-local; row-level products of the merged layer stay restricted-local and are named in the outcome by filename and counts only; committed products are aggregates, the censuses, and the results record.",
+   "depends_on": [
+    "F067-C03"
+   ],
+   "evidence": [
+    {
+     "description": "Spec 066 outcome (specs/066-phase130-catalogue-extension/outcome.md): the merged catalogue layer v2 built and pinned - SHA-256 cd0c2ba8..., 2,655,958 bytes, 9,741 rows, 5,529 distinct objects; the extension index committed at data/intake/cisi31_extension_index.csv (2,101 rows); the intake's fences (a VERIFIED catalogue object is not a verified join; no join ran).",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "specs/066-phase130-catalogue-extension/outcome.md",
+     "source_id": "specs/066-phase130-catalogue-extension/outcome.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/034-matched-object-attribution/outcome.md",
+      "specs/021-phase130-intake-pack/spec.md"
+     ]
+    },
+    {
+     "description": "Spec 034 outcome (SHA-256 c0cc615d...): step 0 route (b): 5,018 inscriptions carrying a CISI reference admitted through the Phase-130 schema, validation verdict pass, joined on provenance.object_id only; Holdat cisi_number never read and never used as a join key.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "specs/034-matched-object-attribution/outcome.md",
+     "source_id": "specs/034-matched-object-attribution/outcome.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/066-phase130-catalogue-extension/outcome.md",
+      "specs/021-phase130-intake-pack/spec.md"
+     ]
+    },
+    {
+     "description": "Spec 021 (Phase-130): the intake dataset schema v1 (per-inscription provenance with source_reference required; object_type declared), the validator with its license gate, and the rule that duplicate source-assigned IDs are rejects - the schema the join dataset is built and validated under.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "specs/021-phase130-intake-pack/spec.md",
+     "source_id": "specs/021-phase130-intake-pack/spec.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/066-phase130-catalogue-extension/outcome.md",
+      "specs/034-matched-object-attribution/outcome.md"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "the join census is published by resolution class (exactly-one / zero / more-than-one); a joined row whose resolution cannot be traced to an object identifier in the Phase-130-validated dataset falsifies the join's construction"
+   ],
+   "id": "F067-C05",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec034-record",
+     "phase130-schema"
+    ],
+    "forbidden_assumptions": [
+     "ASM-STRING-AS-IDENTITY"
+    ],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "identifier coverage quietly patched with string matches for rows the identifiers miss, inflating the census the gate judges",
+    "verdict_rule": "construction is judged from the execution record: the validated intake dataset, the per-row identifier provenance, and the census by resolution class"
+   },
+   "status": "draft",
+   "text": "The enlarged join is built through object identifiers only."
+  },
+  {
+   "alternatives": [
+    "the original F1 join itself, which was a string rule (it stands as the historical baseline, reproduced at gate 0.2 and not reused as a join)"
+   ],
+   "assumptions": [
+    "ASM-STRING-JOIN-UNRELIABLE"
+   ],
+   "boundary": "The ground is Spec 037's census: of 693 CISI-to-corpus exact-string matches, 269 verified as same-object joins under the frozen grading ladder, 341 were CONFLICT (49.21%, mostly on object type), and 83 were UNRESOLVED; a string match is a candidate, never an identity. The one licensed use of a string rule in this spec is gate 0.2's reproduction of the original concordance join, run only to re-derive the recorded baseline the gate is stated against; it contributes no row to the enlarged set. Carried from the draft text: the barred strings are a catalogue number string, a name, the layer's cisi field, or a cisi_number, used as a string. Carried from Spec 059's recovered register: the head states the join's recording treatment in positive form - a string match is a candidate, not an identity; the prohibition itself (no step of the join, census, or test treats string equality as evidence that two records concern the same physical object) stands in this boundary and in spec section 7.1.",
+   "depends_on": [
+    "F067-C05"
+   ],
+   "evidence": [
+    {
+     "description": "Spec 037 outcome (SHA-256 28e444f2..., recomputed at this draft): census of all 693 string-match candidates - VERIFIED 269 (38.82%), CONFLICT 341 (49.21%), UNRESOLVED 83 (11.98%); conflicts almost all on object type; the concordance spine halted by its own rule.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "specs/037-cisi31-concordance-spine/outcome.md",
+     "source_id": "specs/037-cisi31-concordance-spine/outcome.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "inspection of the execution's join construction and code: any identity decision taken on string equality outside gate 0.2's reproduction falsifies compliance"
+   ],
+   "id": "F067-C06",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "C06 states the identity rule for Spec 067's own join: a string match is a candidate, not an identity, and no string equality is taken as evidence that two records concern the same physical object. F067-C15 states the record rule for Specs 024 and 059: their frozen records and verdicts stand unedited and are not re-adjudicated by this spec. The pair shares only the boundary of the original join's status: C06 bars reusing the original concordance STRING rule as this spec's join, while C15 preserves that same original join's frozen record - including its result - exactly as recorded; gate 0.2 re-runs the string rule solely to reproduce the baseline C15 preserves, and contributes no row to the enlarged set. Barring a method for new use does not edit or impeach the frozen record of its old use. Both claims stand as stated; neither negates the other.",
+    "evidence_origin_groups": [
+     "spec037-census"
+    ],
+    "forbidden_assumptions": [
+     "ASM-STRING-AS-IDENTITY"
+    ],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "a 'cleaned' string match (trimmed, case-folded, punctuation-stripped) presented as an identifier join",
+    "verdict_rule": "compliance is judged by inspection of the join dataset's construction record: every joined row traces to an object identifier, none to a string comparison"
+   },
+   "status": "draft",
+   "text": "A string match is recorded as a candidate join under Spec 067."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "boundary": "These are spec section 3's gates 0.1-0.5, in order: input integrity (0.1, asserting every spec section 2 pin and every DD-067-9 pin, the layer v2 pin on the local file before any join work), original-join reproduction exactly against the vols. 1-2 layer (0.2: 5,679 / 2,895 / 2 / 2,782), the object-ID census against layer v2 (0.3, under Phase-130 validation), the type-fill census (0.4: type fill on the newly joined objects and on the whole joined set, and the resulting eligible seal/tablet strata under the frozen Phase-136 eligibility mapping - before any F1 quantity exists), and the gate comparison (0.5) against the bar adopted at DD-067-7 (61.0%, at least 3,465 joined rows, carried from DD-059-7). Failure classes are named: INVALID - PIN FAILURE (0.1), INVALID - CENSUS FAILURE (0.2 reproduction or 0.3 validation), and CLOSED AT STEP 0 - JOIN GATE NOT MET (0.5). No failure is repaired at run time; a repaired input is a new freeze, not a resumed run. The gate closure is a pre-registered outcome, not an execution failure. Freeze ruling DD-067-11: the gate census and the type-fill census, published either way with per-row identifier provenance held under the restricted discipline of section 7.3, suffice as the join's audit; no separate join audit is required before execution.",
+   "depends_on": [
+    "F067-C04",
+    "F067-C05",
+    "F067-C06"
+   ],
+   "evidence": [
+    {
+     "description": "D-22 fixes the gate-first shape: step 0 is a join census with a fixed gate, and the F1 test is specified for the gate-passed case.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "each gate's check is itself the test: the execution record must show every gate's verdict, in order, before the first enlarged-set quantity, or the run is non-compliant on its face"
+   ],
+   "id": "F067-C07",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "phase136-record",
+     "design-packet"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "gate-skipping under the pressure of a near-miss census (e.g. 60% joined), with the shortfall rationalised afterwards",
+    "verdict_rule": "the run's own record is the judge: gate verdicts precede quantities in it, in order, or the outcome is INVALID by construction"
+   },
+   "status": "draft",
+   "text": "Execution stops before any enlarged-set quantity is computed on any step-0 gate failure."
+  },
+  {
+   "alternatives": [
+    "the falsifier (F067-C09): the original result was partly an artefact of which rows could be joined",
+    "a weakened replication (F067-C11): the difference survives but smaller - evidence about size, not about existence"
+   ],
+   "assumptions": [
+    "ASM-F1-RECORD",
+    "ASM-OBJECT-ID-JOIN"
+   ],
+   "boundary": "This hypothesis exists only in the gate-passed case (F067-C04). It is a statement about this lineage layer's enlarged joined subset under the frozen machinery, and about nothing else: not about seals or tablets in other compilations, not about ancient practice, and not about why. Carried from the draft text: replication at comparable size means the family-adjusted q is below 0.05 and the Mantel-Haenszel odds-ratio interval lies entirely above 1.5.",
+   "depends_on": [
+    "F067-C01",
+    "F067-C02",
+    "F067-C04"
+   ],
+   "evidence": [
+    {
+     "description": "Design D-22's step-1 hypothesis, verbatim in substance: 'The seal/tablet difference in TERMINAL14 endings, within sites, replicates on the enlarged joined set at comparable size.'",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "run the section 4 primary: if the adjusted q is at or above 0.05, or the odds-ratio interval does not lie entirely above 1.5, this hypothesis is not supported - WEAKENED if the interval excludes 1.0 with q below 0.05, NOT REPLICATED otherwise"
+   ],
+   "id": "F067-C08",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "phase136-record",
+     "design-packet"
+    ],
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-MEANING"
+    ],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the strongest rival is the falsifier itself: join selection manufactured part of the original effect size",
+    "verdict_rule": "SUPPORTED for the hypothesis iff the outcome is REPLICATED under F067-C11; WEAKENED and NOT REPLICATED do not support it"
+   },
+   "status": "draft",
+   "text": "On the enlarged object-ID-joined set, the within-site seal/tablet difference in TERMINAL14 endings replicates at comparable size."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-FAMILY-RULES"
+   ],
+   "boundary": "The falsifier's text is design D-22's, carried verbatim in substance: 'the within-site test's interval for the odds ratio includes 1.0, or the point estimate falls below 1.5'. Its mapping onto the three verdict words is F067-C11's, with the precedence of DD-059-3 (an interval including 1.0 is NOT REPLICATED even when q is below 0.05). Carried from the draft text: where the falsifier fires in this form the outcome is NOT REPLICATED; it also fires in its size form if the point estimate falls below 1.5 with the interval reaching below 1.5, which the outcome records as WEAKENED rather than REPLICATED. Carried from Spec 059’s recovered register: it also fires if the family-adjusted q is at or above 0.05, and in its size form if the point estimate falls below 1.5 with the interval reaching below 1.5 - the outcome mappings are carried in this claim's boundary at 0.7-draft.",
+   "depends_on": [
+    "F067-C08"
+   ],
+   "evidence": [
+    {
+     "description": "D-22's falsifier and criteria block: REPLICATED / WEAKENED / NOT REPLICATED with the q, 1.5, and 1.0 thresholds this claim carries.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "the verdict assignment is mechanical from the recorded quantities; any verdict not following this claim's conditions from the run's numbers falsifies the outcome record"
+   ],
+   "id": "F067-C09",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "post-hoc softening of a fired falsifier into 'partial replication' language the design never wrote",
+    "verdict_rule": "the falsifier is registered here, before any enlarged-set quantity exists; the outcome record shows the quantities and the fired (or unfired) clauses together"
+   },
+   "status": "draft",
+   "text": "The falsifier fires if the enlarged set's odds-ratio interval includes 1.0."
+  },
+  {
+   "alternatives": [
+    "re-deriving eligibility or estimability thresholds for the enlarged population (refused: the frozen rules are what 'replication' means here)"
+   ],
+   "assumptions": [
+    "ASM-FAMILY-RULES",
+    "ASM-TERMINAL14-FROZEN"
+   ],
+   "boundary": "Machinery identity is what makes the enlarged-set result a replication of F1 rather than a new test. The only change from the frozen run is the joined set feeding the flow (object-ID join instead of concordance join). Any other change is a different test and would require a different spec; it cannot be introduced at execution. Failure of the estimability rule on the enlarged set yields NOT ESTIMABLE (F067-C12), not a verdict. Carried from the draft text: unchanged means: the same flow (catalogue object_type, restriction to {Seals, Tablets}, sequence parse, frozen Spec 018 canonical W-to-P mapping, UNK excluded and counted), the same TERMINAL14 class, stratum eligibility (N >= 20, >= 5 Seals, >= 5 Tablets), estimability rule (>= 2 eligible strata; pooled expected counts >= 5 in at least 80% of cells), Cochran-Mantel-Haenszel statistic, permutation null (B = 9,999, seed 20261009), and Mantel-Haenszel odds ratio with Robins-Breslow-Greenland interval.",
+   "depends_on": [
+    "F067-C05",
+    "F067-C07"
+   ],
+   "evidence": [
+    {
+     "description": "The Stage 2(a) freeze in full: sections 3-6 state the population flow, variables (TERMINAL14 set listed), estimability rule, statistic, permutation parameters, and effect sizes carried by this claim.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "specs/024-evidence-integration/stage2a-freeze.md",
+     "source_id": "specs/024-evidence-integration/stage2a-freeze.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "backend/scripts/phase136_terminal_type.py",
+      "data/crosswalks/canonical_sign_registry.csv"
+     ]
+    },
+    {
+     "description": "The Phase-136 builder (SHA-256 d5ceec46..., recomputed at this draft) - the machinery of record whose frozen steps the enlarged run reuses with the joined set as its only changed input.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "backend/scripts/phase136_terminal_type.py",
+     "source_id": "backend/scripts/phase136_terminal_type.py",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/024-evidence-integration/stage2a-freeze.md",
+      "data/crosswalks/canonical_sign_registry.csv"
+     ]
+    },
+    {
+     "description": "The canonical sign registry (SHA-256 8a0b2a82..., recomputed at this draft, equal to the value Phase-136 recorded): substrate of the frozen W-to-P mapping and its conflict rule.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "data/crosswalks/canonical_sign_registry.csv",
+     "source_id": "data/crosswalks/canonical_sign_registry.csv",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/024-evidence-integration/stage2a-freeze.md",
+      "backend/scripts/phase136_terminal_type.py"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "gate 0.2 plus flow reproduction is the operational check: the enlarged run's flow table must show the frozen steps in order with every exclusion counted, and its parameters must equal the frozen ones recorded in reports/phase136_results.json"
+   ],
+   "id": "F067-C10",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec024-freeze",
+     "phase136-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "silent machinery drift (a mapping change, a seed change, an eligibility tweak) presenting as a join effect",
+    "verdict_rule": "identity is judged against the frozen freeze text and the recorded parameter block, not by code resemblance"
+   },
+   "status": "draft",
+   "text": "The primary test on the enlarged set is Phase-136's frozen test unchanged."
+  },
+  {
+   "alternatives": [
+    "reading the criteria as an unordered set and choosing the kindest applicable word after the run (refused: the precedence is registered here)"
+   ],
+   "assumptions": [
+    "ASM-MARGIN-FAMILY"
+   ],
+   "boundary": "These are design D-22's criteria, carried verbatim, with one precedence the design leaves implicit and this draft makes explicit (DD-059-3): where the WEAKENED and NOT REPLICATED wordings would both literally apply (q below 0.05, interval including 1.0), NOT REPLICATED governs, because the design's falsifier names inclusion of 1.0. The adjusted q is the Benjamini-Hochberg adjustment of F067-C13. The freeze may overturn the precedence openly. Freeze ruling DD-067-3 (2026-10-21), confirming DD-059-3/DD-059-12: the precedence is CONFIRMED for this spec - an odds-ratio interval including 1.0 is NOT REPLICATED even when the adjusted q is below 0.05; WEAKENED is reserved for intervals excluding 1.0 but reaching below 1.5. Carried from the draft text: REPLICATED: adjusted q below 0.05 and the odds-ratio interval entirely above 1.5; WEAKENED: adjusted q below 0.05, the interval not including 1.0, but reaching below 1.5; NOT REPLICATED: adjusted q at or above 0.05, or the interval including 1.0. Carried from Spec 059's register: the outcome is exactly one of REPLICATED, WEAKENED, or NOT REPLICATED, under the definitions carried in this claim's boundary.",
+   "depends_on": [
+    "F067-C09",
+    "F067-C10",
+    "F067-C13"
+   ],
+   "evidence": [
+    {
+     "description": "D-22's 'Criteria fixed in advance' block: REPLICATED / WEAKENED / NOT REPLICATED with the thresholds this claim carries, and the rule that the original verdict is not edited in any case.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "the outcome record's verdict word must be derivable from the published q, point estimate, and interval by this claim's rules alone"
+   ],
+   "id": "F067-C11",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "verdict-shopping among literally applicable wordings once the numbers are known",
+    "verdict_rule": "the mapping from (q, interval) to verdict word is fixed here, before execution; the outcome record shows the quantities and the word together"
+   },
+   "status": "draft",
+   "text": "The gate-passed, estimable outcome is assigned by the mapping of spec section 5 alone."
+  },
+  {
+   "alternatives": [
+    "relaxing eligibility so a test can be quoted anyway (refused: the rule is frozen and mechanical)"
+   ],
+   "assumptions": [
+    "ASM-FAMILY-RULES"
+   ],
+   "boundary": "NOT ESTIMABLE is Spec 024's own frozen class for this case (freeze section 5), carried unchanged - it is not a drafting invention. It asserts something about the enlarged set's stratum structure, and nothing about the hypothesis. Carried from Spec 059's provision: the failed clause and cell counts are shown, no p-value is computed, and no verdict under this spec exists. The gate-0.4 type-fill census is part of this outcome's record: a gate-passed join with too few typed seals/tablets in eligible strata under the frozen Phase-136 eligibility mapping closes NOT ESTIMABLE on the census's own counts, before any test is attempted.",
+   "depends_on": [
+    "F067-C10"
+   ],
+   "evidence": [
+    {
+     "description": "Freeze section 5: the estimability rule and its consequence - NOT ESTIMABLE, cell counts shown, no p-value, the member contributes nothing to the correction.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "specs/024-evidence-integration/stage2a-freeze.md",
+     "source_id": "specs/024-evidence-integration/stage2a-freeze.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "the eligibility and estimability computations are published with the outcome; a p-value or verdict word attached to a set failing the rule falsifies the outcome record"
+   ],
+   "id": "F067-C12",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec024-freeze"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "an inestimable enlarged set reported as a weak replication",
+    "verdict_rule": "the estimability check precedes the test in the run order and its record is part of every gate-passed outcome"
+   },
+   "status": "draft",
+   "text": "If the enlarged set passes the gate but fails the frozen estimability rule, the outcome is NOT ESTIMABLE."
+  },
+  {
+   "alternatives": [
+    "re-running the original three-member family correction with the new p substituted for F1's (refused: it would re-adjudicate closed family members' q-values)",
+    "reporting the raw p as the verdict basis with no correction language (refused: the design's criteria are stated in q)"
+   ],
+   "assumptions": [
+    "ASM-FAMILY-RULES"
+   ],
+   "boundary": "This is the draft's proposal, recorded as OPEN item OF-059-2 (DD-059-4): the design says 'the same family correction across the Spec 024 family', but that family (F1/F2/F3) was corrected once in its combined report and is closed - it cannot be re-opened or re-corrected by this spec. If the freeze declares a wider family, its membership is recorded in the freeze record before execution and the verdict wordings stand unchanged. Freeze ruling DD-067-8 (2026-10-21), carrying DD-059-8: the single-test family is CONFIRMED for this spec. The confirmatory family under Spec 059 is its single primary test; the Benjamini-Hochberg adjustment at q = 0.05 is over one p-value and the adjusted q equals the raw permutation p. The design's 'same family correction across the Spec 024 family' instruction is NOT executed, because that family was corrected once in its combined report and is closed; re-running it would re-adjudicate F2's and F3's closed q-values. No wider family is declared. Carried: the single-test family was confirmed for Spec 059 at DD-059-8 and is confirmed for this spec at DD-067-8, so the adjusted q equals the raw permutation p.",
+   "depends_on": [
+    "F067-C10"
+   ],
+   "evidence": [
+    {
+     "description": "The combined report applied the family BH correction once across F1/F2/F3 raw p-values (0.0001, 0.7354, 0.0001) -> q (0.00015, 0.7354, 0.00015); that correction is a closed record this spec does not re-open.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "reports/phase136_137_138_stage2_report.md",
+     "source_id": "reports/phase136_137_138_stage2_report.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "the outcome record must state the family its q was computed over; a q not derivable from the stated family and raw p falsifies the record"
+   ],
+   "id": "F067-C13",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec024-freeze",
+     "stage2-combined-report"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "family-shopping: choosing the correction scope after seeing the raw p",
+    "verdict_rule": "the family is fixed at the freeze, before execution; the draft's proposal and the freeze's ruling are both on record"
+   },
+   "status": "draft",
+   "text": "The verdict words of F067-C11 are stated in terms of a Benjamini-Hochberg-adjusted q at 0.05 over this spec's single primary test."
+  },
+  {
+   "alternatives": [
+    "treating a LOSO failure as a verdict change (refused: Phase-141's record is explicit that LOSO qualifies language only)"
+   ],
+   "assumptions": [
+    "ASM-F1-RECORD",
+    "ASM-DESCRIPTION-NOT-CONTROL"
+   ],
+   "boundary": "LOSO mints no verdict and changes no verdict word (the Phase-141 rule); it qualifies the outcome's summary language and names any load-bearing site. The covariate comparison is reported whether or not the test replicates, and likewise the comparison between the original joined set and the rows the object-ID join adds. A covariate absent from the data is named as not carried. Carried from the draft text: the covariates are site, object type, text length, and preservation as recorded; no covariate the data does not carry is reconstructed; LOSO mints no verdict. Carried from Spec 059’s recovered register: every gate-passed outcome also reports the covariate comparison of joined versus unjoined rows, on the terms carried in this claim's boundary.",
+   "depends_on": [
+    "F067-C04",
+    "F067-C10"
+   ],
+   "evidence": [
+    {
+     "description": "Phase-141's framing, verbatim in substance: the LOSO outcome 'is about the already-decided F1 result only... LOSO mints no verdicts' - the posture this claim carries onto the enlarged set.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "reports/phase141_report.md",
+     "source_id": "reports/phase141_report.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
+    },
+    {
+     "description": "D-22's method requires 'a stated comparison of the joined and unjoined rows on every covariate the data carries (site, object type, text length, preservation)' and the LOSO rerun 'as in Phase-141'.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "reports/phase141_report.md"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "an outcome product lacking the LOSO table or either covariate comparison falsifies compliance; a product using LOSO to change the verdict word falsifies the boundary"
+   ],
+   "id": "F067-C14",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "phase141-record",
+     "design-packet"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "a replication quoted without the description of the rows still silent, repeating the original result's scope problem one level up",
+    "verdict_rule": "the LOSO table and the comparisons are section 6 reporting obligations: their absence from any product is a defect of that product, recorded as such"
+   },
+   "status": "draft",
+   "text": "Every gate-passed outcome reports the leave-one-site-out rerun descriptively."
+  },
+  {
+   "alternatives": [
+    "folding an enlarged-set result back into the frozen claim's verdict (refused: frozen records are not edited in this program)",
+    "a meaning narrative attached to a replication because the enlarged set 'confirms' one (refused: the test measures association in recorded use, prior to any reading)"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "Any outcome - gate closure, NOT ESTIMABLE, or a section 5 verdict - appends to STUDY-SPEC-024/F1 as a dated replication record beside the frozen one, and appends beside Spec 059's record in the same posture; neither frozen record is edited. The claim's wording gains or loses the phrase 'on the joined subset' only by that appended record, under the section 5 re-statement rule exactly as Spec 059 reserved it: F1 stands as recorded unless a gate-passed execution earns the re-statement (REPLICATED on a materially enlarged set); a gate closure or NOT ESTIMABLE outcome earns none. Genre, habit, and survival remain live rival explanations for the difference, named as such in every outcome; the within-site design controls place, not kind, and every output carries the lineage label and the scope sentence of spec section 7.4. A gate closure establishes nothing about the claim - it is a statement about the enlarged catalogue data's joinability. Spec 059's record is cited, never patched; STUDY-SPEC-024/F1's standing is not pre-judged by this spec.",
+   "depends_on": [
+    "F067-C01",
+    "F067-C04",
+    "F067-C11"
+   ],
+   "evidence": [
+    {
+     "description": "Spec 024's freeze, section 8 language fence: associations describe use, not meaning; the lineage label and joined-subset scope sentence are mandatory on every F1 statement - the fences this variant inherits.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "specs/024-evidence-integration/stage2a-freeze.md",
+     "source_id": "specs/024-evidence-integration/stage2a-freeze.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "inspection: any Spec 059 product that modifies a Spec 024 file, restates the frozen verdict, presents the enlarged result as replacing it, or states a meaning, movement, or whole-corpus conclusion falsifies compliance with this requirement"
+   ],
+   "id": "F067-C15",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "C15 states the record rule for Specs 024 and 059: their frozen records and verdicts stand unedited, un-re-adjudicated, and un-superseded by Spec 067. F067-C06 states the identity rule for Spec 067's own new join: a string match is a candidate, not an identity. The pair shares only the boundary of the original join's status: C15 preserves the frozen record of the original concordance join and its result; C06 bars that join's string rule from serving as this spec's enlarged join, and gate 0.2's reproduction of it - run only to re-derive the preserved baseline - is recording, not re-adjudication. Preserving a record does not license its method for new use, and barring the method does not touch the record. Both claims stand as stated; neither negates the other.",
+    "evidence_origin_groups": [
+     "spec024-freeze",
+     "phase136-record"
+    ],
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-MEANING"
+    ],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "the pressure to announce the enlarged result as the 'real' F1 verdict, superseding the frozen ones - or to read Spec 066's projection as pre-judging it",
+    "verdict_rule": "compliance is judged by file inspection at execution close: Spec 024's pinned hashes unchanged, the frozen verdict quoted only as recorded, the outcome filed as an append"
+   },
+   "status": "draft",
+   "text": "Spec 024's frozen verdict stands unedited by Spec 067."
+  }
+ ],
+ "note": "Register for Spec 067 (the F1 successor: Spec 059's design re-run on the enlarged joined set produced by the Spec 066 intake), opened 2026-10-21 under the owner's approval of 2026-10-21 (amendment package Item 7 section 6). The register is carried from Spec 059's recovered freeze register (0.8-draft) with the successor's changes recorded in adjudication.md: the catalogue side is the pinned merged layer v2 (DD-067-9), the gate bar is adopted openly at DD-067-7, and the step-0 type-fill census of Item 7 section 6 is carried in F067-C07 and F067-C12. Conventions as in Specs 032-042 and 059: requirement claims carry no falsification test where a gate or inspection is the operative check; boundaries carry the conditions under which each claim holds; evidence items carry observed_at from this draft because the cited facts were verified first-hand at drafting. The AEE lifecycle hooks run at the freeze gate (tasks L4) under the DD-067-14 gate reading.",
+ "register_version": "0.8-draft",
+ "spec": "067-f1-enlarged-join"
+}

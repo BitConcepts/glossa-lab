@@ -1,0 +1,631 @@
+{
+  "derivation": {
+    "line_recording": "p95 stated to three decimal places, rounding up at the fourth decimal place",
+    "method": "nearest-rank",
+    "nearest_rank_index_1based": 82,
+    "p95_counts": "13 ending followers of 17 bigrams",
+    "p95_fraction": 0.7647058823529411,
+    "p95_sign": "226",
+    "percentile": 95,
+    "verdict_line_L": 0.765
+  },
+  "entries": [
+    {
+      "bigrams": 1,
+      "ending_followers": 0,
+      "fraction": 0.0,
+      "sign": "501",
+      "total": 30
+    },
+    {
+      "bigrams": 46,
+      "ending_followers": 2,
+      "fraction": 0.043478260869565216,
+      "sign": "752",
+      "total": 47
+    },
+    {
+      "bigrams": 102,
+      "ending_followers": 5,
+      "fraction": 0.049019607843137254,
+      "sign": "090",
+      "total": 110
+    },
+    {
+      "bigrams": 17,
+      "ending_followers": 1,
+      "fraction": 0.058823529411764705,
+      "sign": "503",
+      "total": 68
+    },
+    {
+      "bigrams": 14,
+      "ending_followers": 1,
+      "fraction": 0.07142857142857142,
+      "sign": "416",
+      "total": 37
+    },
+    {
+      "bigrams": 12,
+      "ending_followers": 1,
+      "fraction": 0.08333333333333333,
+      "sign": "745",
+      "total": 20
+    },
+    {
+      "bigrams": 354,
+      "ending_followers": 31,
+      "fraction": 0.08757062146892655,
+      "sign": "400",
+      "total": 355
+    },
+    {
+      "bigrams": 34,
+      "ending_followers": 3,
+      "fraction": 0.08823529411764706,
+      "sign": "142",
+      "total": 51
+    },
+    {
+      "bigrams": 33,
+      "ending_followers": 3,
+      "fraction": 0.09090909090909091,
+      "sign": "055",
+      "total": 45
+    },
+    {
+      "bigrams": 21,
+      "ending_followers": 2,
+      "fraction": 0.09523809523809523,
+      "sign": "350",
+      "total": 24
+    },
+    {
+      "bigrams": 30,
+      "ending_followers": 3,
+      "fraction": 0.1,
+      "sign": "335",
+      "total": 31
+    },
+    {
+      "bigrams": 36,
+      "ending_followers": 4,
+      "fraction": 0.1111111111111111,
+      "sign": "585",
+      "total": 36
+    },
+    {
+      "bigrams": 60,
+      "ending_followers": 7,
+      "fraction": 0.11666666666666667,
+      "sign": "690",
+      "total": 72
+    },
+    {
+      "bigrams": 59,
+      "ending_followers": 7,
+      "fraction": 0.11864406779661017,
+      "sign": "803",
+      "total": 102
+    },
+    {
+      "bigrams": 54,
+      "ending_followers": 7,
+      "fraction": 0.12962962962962962,
+      "sign": "061",
+      "total": 74
+    },
+    {
+      "bigrams": 113,
+      "ending_followers": 15,
+      "fraction": 0.13274336283185842,
+      "sign": "407",
+      "total": 113
+    },
+    {
+      "bigrams": 7,
+      "ending_followers": 1,
+      "fraction": 0.14285714285714285,
+      "sign": "034",
+      "total": 124
+    },
+    {
+      "bigrams": 91,
+      "ending_followers": 13,
+      "fraction": 0.14285714285714285,
+      "sign": "176",
+      "total": 167
+    },
+    {
+      "bigrams": 7,
+      "ending_followers": 1,
+      "fraction": 0.14285714285714285,
+      "sign": "413",
+      "total": 40
+    },
+    {
+      "bigrams": 32,
+      "ending_followers": 5,
+      "fraction": 0.15625,
+      "sign": "820",
+      "total": 144
+    },
+    {
+      "bigrams": 18,
+      "ending_followers": 3,
+      "fraction": 0.16666666666666666,
+      "sign": "005",
+      "total": 40
+    },
+    {
+      "bigrams": 134,
+      "ending_followers": 23,
+      "fraction": 0.17164179104477612,
+      "sign": "741",
+      "total": 148
+    },
+    {
+      "bigrams": 23,
+      "ending_followers": 4,
+      "fraction": 0.17391304347826086,
+      "sign": "440",
+      "total": 33
+    },
+    {
+      "bigrams": 88,
+      "ending_followers": 16,
+      "fraction": 0.18181818181818182,
+      "sign": "031",
+      "total": 142
+    },
+    {
+      "bigrams": 11,
+      "ending_followers": 2,
+      "fraction": 0.18181818181818182,
+      "sign": "630",
+      "total": 27
+    },
+    {
+      "bigrams": 22,
+      "ending_followers": 4,
+      "fraction": 0.18181818181818182,
+      "sign": "742",
+      "total": 26
+    },
+    {
+      "bigrams": 70,
+      "ending_followers": 13,
+      "fraction": 0.18571428571428572,
+      "sign": "003",
+      "total": 184
+    },
+    {
+      "bigrams": 43,
+      "ending_followers": 9,
+      "fraction": 0.20930232558139536,
+      "sign": "231",
+      "total": 63
+    },
+    {
+      "bigrams": 19,
+      "ending_followers": 4,
+      "fraction": 0.21052631578947367,
+      "sign": "236",
+      "total": 23
+    },
+    {
+      "bigrams": 44,
+      "ending_followers": 10,
+      "fraction": 0.22727272727272727,
+      "sign": "617",
+      "total": 56
+    },
+    {
+      "bigrams": 65,
+      "ending_followers": 15,
+      "fraction": 0.23076923076923078,
+      "sign": "798",
+      "total": 93
+    },
+    {
+      "bigrams": 38,
+      "ending_followers": 9,
+      "fraction": 0.23684210526315788,
+      "sign": "004",
+      "total": 62
+    },
+    {
+      "bigrams": 24,
+      "ending_followers": 6,
+      "fraction": 0.25,
+      "sign": "850",
+      "total": 32
+    },
+    {
+      "bigrams": 245,
+      "ending_followers": 62,
+      "fraction": 0.2530612244897959,
+      "sign": "520",
+      "total": 246
+    },
+    {
+      "bigrams": 47,
+      "ending_followers": 12,
+      "fraction": 0.2553191489361702,
+      "sign": "920",
+      "total": 108
+    },
+    {
+      "bigrams": 121,
+      "ending_followers": 31,
+      "fraction": 0.256198347107438,
+      "sign": "001",
+      "total": 128
+    },
+    {
+      "bigrams": 31,
+      "ending_followers": 8,
+      "fraction": 0.25806451612903225,
+      "sign": "904",
+      "total": 36
+    },
+    {
+      "bigrams": 1296,
+      "ending_followers": 338,
+      "fraction": 0.26080246913580246,
+      "sign": "740",
+      "total": 1299
+    },
+    {
+      "bigrams": 80,
+      "ending_followers": 21,
+      "fraction": 0.2625,
+      "sign": "760",
+      "total": 87
+    },
+    {
+      "bigrams": 19,
+      "ending_followers": 5,
+      "fraction": 0.2631578947368421,
+      "sign": "016",
+      "total": 34
+    },
+    {
+      "bigrams": 187,
+      "ending_followers": 50,
+      "fraction": 0.26737967914438504,
+      "sign": "240",
+      "total": 254
+    },
+    {
+      "bigrams": 68,
+      "ending_followers": 19,
+      "fraction": 0.27941176470588236,
+      "sign": "151",
+      "total": 69
+    },
+    {
+      "bigrams": 25,
+      "ending_followers": 7,
+      "fraction": 0.28,
+      "sign": "388",
+      "total": 32
+    },
+    {
+      "bigrams": 28,
+      "ending_followers": 8,
+      "fraction": 0.2857142857142857,
+      "sign": "482",
+      "total": 31
+    },
+    {
+      "bigrams": 17,
+      "ending_followers": 5,
+      "fraction": 0.29411764705882354,
+      "sign": "384",
+      "total": 21
+    },
+    {
+      "bigrams": 93,
+      "ending_followers": 28,
+      "fraction": 0.3010752688172043,
+      "sign": "705",
+      "total": 135
+    },
+    {
+      "bigrams": 43,
+      "ending_followers": 13,
+      "fraction": 0.3023255813953488,
+      "sign": "706",
+      "total": 70
+    },
+    {
+      "bigrams": 85,
+      "ending_followers": 26,
+      "fraction": 0.3058823529411765,
+      "sign": "100",
+      "total": 90
+    },
+    {
+      "bigrams": 26,
+      "ending_followers": 8,
+      "fraction": 0.3076923076923077,
+      "sign": "595",
+      "total": 29
+    },
+    {
+      "bigrams": 19,
+      "ending_followers": 6,
+      "fraction": 0.3157894736842105,
+      "sign": "717",
+      "total": 33
+    },
+    {
+      "bigrams": 53,
+      "ending_followers": 17,
+      "fraction": 0.32075471698113206,
+      "sign": "255",
+      "total": 91
+    },
+    {
+      "bigrams": 118,
+      "ending_followers": 40,
+      "fraction": 0.3389830508474576,
+      "sign": "590",
+      "total": 160
+    },
+    {
+      "bigrams": 196,
+      "ending_followers": 67,
+      "fraction": 0.34183673469387754,
+      "sign": "390",
+      "total": 202
+    },
+    {
+      "bigrams": 75,
+      "ending_followers": 26,
+      "fraction": 0.3466666666666667,
+      "sign": "415",
+      "total": 117
+    },
+    {
+      "bigrams": 51,
+      "ending_followers": 18,
+      "fraction": 0.35294117647058826,
+      "sign": "892",
+      "total": 61
+    },
+    {
+      "bigrams": 52,
+      "ending_followers": 19,
+      "fraction": 0.36538461538461536,
+      "sign": "806",
+      "total": 103
+    },
+    {
+      "bigrams": 19,
+      "ending_followers": 7,
+      "fraction": 0.3684210526315789,
+      "sign": "455",
+      "total": 25
+    },
+    {
+      "bigrams": 45,
+      "ending_followers": 17,
+      "fraction": 0.37777777777777777,
+      "sign": "017",
+      "total": 62
+    },
+    {
+      "bigrams": 18,
+      "ending_followers": 7,
+      "fraction": 0.3888888888888889,
+      "sign": "790",
+      "total": 24
+    },
+    {
+      "bigrams": 43,
+      "ending_followers": 17,
+      "fraction": 0.3953488372093023,
+      "sign": "550",
+      "total": 77
+    },
+    {
+      "bigrams": 108,
+      "ending_followers": 43,
+      "fraction": 0.39814814814814814,
+      "sign": "233",
+      "total": 136
+    },
+    {
+      "bigrams": 10,
+      "ending_followers": 4,
+      "fraction": 0.4,
+      "sign": "013",
+      "total": 23
+    },
+    {
+      "bigrams": 30,
+      "ending_followers": 12,
+      "fraction": 0.4,
+      "sign": "125",
+      "total": 44
+    },
+    {
+      "bigrams": 5,
+      "ending_followers": 2,
+      "fraction": 0.4,
+      "sign": "692",
+      "total": 41
+    },
+    {
+      "bigrams": 60,
+      "ending_followers": 24,
+      "fraction": 0.4,
+      "sign": "900",
+      "total": 71
+    },
+    {
+      "bigrams": 86,
+      "ending_followers": 43,
+      "fraction": 0.5,
+      "sign": "405",
+      "total": 87
+    },
+    {
+      "bigrams": 46,
+      "ending_followers": 23,
+      "fraction": 0.5,
+      "sign": "527",
+      "total": 48
+    },
+    {
+      "bigrams": 38,
+      "ending_followers": 20,
+      "fraction": 0.5263157894736842,
+      "sign": "140",
+      "total": 66
+    },
+    {
+      "bigrams": 90,
+      "ending_followers": 49,
+      "fraction": 0.5444444444444444,
+      "sign": "156",
+      "total": 90
+    },
+    {
+      "bigrams": 31,
+      "ending_followers": 17,
+      "fraction": 0.5483870967741935,
+      "sign": "154",
+      "total": 31
+    },
+    {
+      "bigrams": 63,
+      "ending_followers": 35,
+      "fraction": 0.5555555555555556,
+      "sign": "840",
+      "total": 81
+    },
+    {
+      "bigrams": 25,
+      "ending_followers": 14,
+      "fraction": 0.56,
+      "sign": "158",
+      "total": 26
+    },
+    {
+      "bigrams": 67,
+      "ending_followers": 38,
+      "fraction": 0.5671641791044776,
+      "sign": "368",
+      "total": 71
+    },
+    {
+      "bigrams": 34,
+      "ending_followers": 20,
+      "fraction": 0.5882352941176471,
+      "sign": "923",
+      "total": 37
+    },
+    {
+      "bigrams": 23,
+      "ending_followers": 14,
+      "fraction": 0.6086956521739131,
+      "sign": "070",
+      "total": 24
+    },
+    {
+      "bigrams": 39,
+      "ending_followers": 24,
+      "fraction": 0.6153846153846154,
+      "sign": "575",
+      "total": 51
+    },
+    {
+      "bigrams": 13,
+      "ending_followers": 8,
+      "fraction": 0.6153846153846154,
+      "sign": "817",
+      "total": 140
+    },
+    {
+      "bigrams": 542,
+      "ending_followers": 343,
+      "fraction": 0.6328413284132841,
+      "sign": "002",
+      "total": 549
+    },
+    {
+      "bigrams": 78,
+      "ending_followers": 51,
+      "fraction": 0.6538461538461539,
+      "sign": "861",
+      "total": 193
+    },
+    {
+      "bigrams": 47,
+      "ending_followers": 31,
+      "fraction": 0.6595744680851063,
+      "sign": "845",
+      "total": 47
+    },
+    {
+      "bigrams": 24,
+      "ending_followers": 17,
+      "fraction": 0.7083333333333334,
+      "sign": "460",
+      "total": 26
+    },
+    {
+      "bigrams": 17,
+      "ending_followers": 13,
+      "fraction": 0.7647058823529411,
+      "sign": "226",
+      "total": 21
+    },
+    {
+      "bigrams": 157,
+      "ending_followers": 130,
+      "fraction": 0.8280254777070064,
+      "sign": "060",
+      "total": 158
+    },
+    {
+      "bigrams": 51,
+      "ending_followers": 47,
+      "fraction": 0.9215686274509803,
+      "sign": "435",
+      "total": 52
+    },
+    {
+      "bigrams": 50,
+      "ending_followers": 47,
+      "fraction": 0.94,
+      "sign": "615",
+      "total": 55
+    },
+    {
+      "bigrams": 376,
+      "ending_followers": 363,
+      "fraction": 0.9654255319148937,
+      "sign": "700",
+      "total": 384
+    }
+  ],
+  "excluded_family_codes": [
+    "032",
+    "033",
+    "220",
+    "235",
+    "243"
+  ],
+  "family_exclusion_basis": "the freeze-stage concordance (freeze.md section 4): Asset F members identified in ICIT as M048=243, M050=220, M060=235, M145=032, M147=033; M047 and M052 UNIDENTIFIED IN ICIT and so carry no ICIT code that could enter this distribution",
+  "floor": "signs clearing the carried supported floor (total >= 20) in the primary population",
+  "measure": "ending-follower fraction of spec section 5.2 (share of the sign's any-position bigrams whose second sign is TERMINAL_STRONG or TERMINAL_MODERATE under the carried cascade, classes computed on this population)",
+  "no_bigram_signs_excluded": [],
+  "population": "Shakti corpus, documented-lineage rows only (primary population): 3,212 rows, 3,045 analyzable; sequences as stored, ICIT-000 gated out before counting",
+  "produced": "2026-10-22, at the freeze act, from non-members only, before any fish member was scored",
+  "record": "Spec 072 freeze-stage reference distribution (spec section 5.3)",
+  "sign_count": 86
+}

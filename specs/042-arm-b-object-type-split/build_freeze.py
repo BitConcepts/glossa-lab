@@ -1,0 +1,440 @@
+#!/usr/bin/env python3
+"""Build the Spec 042 freeze record (freeze.json).
+
+This builder computed the freeze digest over the
+frozen contract at the freeze act of 2026-10-21
+(campaign Wave 2; the campaign plan approved as
+written, authorisation E-1), after the AEE
+lifecycle hooks passed over the recovered register
+(0.7-draft) on the DD-042-9 gate reading, with
+every spec section 2 input pin re-derived in the
+foreground by two routes before digesting. Run
+with the Glossa backend venv python from the
+repository root:
+
+    python specs/042-arm-b-object-type-split/build_freeze.py
+
+Writes specs/042-arm-b-object-type-split/freeze.json
+(framework026 build_freeze payload: definition +
+source hashes + environment, digest = SHA-256 of
+the canonical JSON serialisation) and prints the
+digest.
+"""
+from __future__ import annotations
+
+import json
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(REPO / "backend"))
+
+from glossa_lab.framework026 import build_freeze  # noqa: E402
+
+SPEC_DIR = "specs/042-arm-b-object-type-split"
+
+DEFINITION = {
+    "spec": "specs/042-arm-b-object-type-split/spec.md",
+    "freeze_doc": "specs/042-arm-b-object-type-split/freeze.md",
+    "experiment_id": "spec042-arm-b-object-type-split",
+    "register": {
+        "path": "specs/042-arm-b-object-type-split/claims.json",
+        "register_version": "0.7-draft",
+        "claims": 15,
+        "aee_hook_pass": (
+            "PASSED at the freeze act of 2026-10-21 "
+            "under aee 1.5.0: after_specify cleared "
+            "in three adjudicated rounds (48 failure "
+            "modes over the 0.6 vocabulary-recovery "
+            "text; 24 over the 0.7 restatement; 15 "
+            "FR-2.3 draft-cap records only over the "
+            "completed 0.7 text), after_plan and "
+            "after_tasks clean at first pass over "
+            "the same register; at every hook zero "
+            "correctness failure modes and no claim "
+            "below the 0.70 threshold (minimum "
+            "propagated 0.72); the engine outcome "
+            "word reads iterate solely from the "
+            "draft-cap records (gate reading "
+            "DD-042-9, adopting DD-038-10; record in "
+            "specs/042-arm-b-object-type-split/aee/"
+            "freeze-aee-note.md)"
+        ),
+    },
+    "basis": {
+        "adjudication": (
+            "specs/042-arm-b-object-type-split/adjudication.md"
+        ),
+        "decisions": (
+            "Drafted under the owner's order of "
+            "2026-10-21 and the portfolio triage of "
+            "the same date (design D-28 RIPE, the "
+            "highest-ranked PR #195 packet design "
+            "never yet taken up). Frozen under the "
+            "campaign plan approved as written on "
+            "2026-10-21 (authorisation E-1). Freeze "
+            "decisions DD-042-6 to DD-042-9 are "
+            "recorded in adjudication.md section 6: "
+            "the spec's own OSF contract "
+            "registration filed at the freeze "
+            "(DD-042-6); a fresh synthetic "
+            "calibration DECLINED, gate 0.5 exact "
+            "reproduction standing as the machinery "
+            "check (DD-042-7); no separate margins "
+            "audit, the gate-0.3/0.4 census standing "
+            "as the margins instrument (DD-042-8); "
+            "the DD-038-10 AEE gate reading adopted "
+            "(DD-042-9). DD-042-2 and DD-042-3 are "
+            "CONFIRMED as drafted; DD-042-5 is "
+            "discharged by the Phase-407 allocation."
+        ),
+    },
+    "design": {
+        "phase": "Phase-407",
+        "act": (
+            "run Spec 028's Arm B machinery "
+            "unchanged, separately on the seal-only "
+            "and tablet-only sets of the Phase-393 "
+            "analysis population (3,030 records, 6 "
+            "sites), each stratum under the frozen "
+            "family verdict rules, the headline "
+            "pre-registered as one pattern (SPLIT / "
+            "UNIFORM-PASS / UNIFORM-FAIL / THIN)"
+        ),
+        "claim_under_test": (
+            "STUDY-SPEC-028/ARM-B - INCONCLUSIVE on "
+            "its recorded numbers (median adjusted "
+            "R^2 0.0223721, interval [0.0122174, "
+            "0.0333271], rejection share 0.9548, "
+            "drop-Harappa LOSO median 0.0066068 "
+            "against the 0.01 margin); this variant "
+            "appends a dated, stratum-resolved entry "
+            "to that claim's record and never edits "
+            "the frozen pooled verdict (DD-042-1)"
+        ),
+        "step0_gates": [
+            {
+                "id": "0.1",
+                "check": (
+                    "every section 2 input hashes to "
+                    "its freeze-record value"
+                ),
+                "failure_class": "INVALID",
+            },
+            {
+                "id": "0.2",
+                "check": (
+                    "the frozen population flow re-run "
+                    "on the pinned layer reproduces "
+                    "the recorded counts exactly "
+                    "(5,679 / 4,531 / 4,505 / 3,605 / "
+                    "3,144 / 3,030) and the recorded "
+                    "Arm B analysis set"
+                ),
+                "failure_class": "INVALID",
+            },
+            {
+                "id": "0.3",
+                "check": (
+                    "partition census by recorded "
+                    "object type, per stratum and per "
+                    "site, the two strata summing to "
+                    "3,030; a record typed neither "
+                    "SEAL nor TAB stops the run"
+                ),
+                "failure_class": "INVALID",
+            },
+            {
+                "id": "0.4",
+                "check": (
+                    "stratum floors: at least 6 sites "
+                    "each carrying at least 20 "
+                    "inscriptions of the type, per "
+                    "stratum"
+                ),
+                "failure_class": "THIN (execution closes)",
+            },
+            {
+                "id": "0.5",
+                "check": (
+                    "the un-split Arm B machinery on "
+                    "the full analysis population "
+                    "reproduces the recorded primary "
+                    "quantities exactly (median "
+                    "adjusted R^2 0.0223721, interval "
+                    "[0.0122174, 0.0333271], rejection "
+                    "share 0.9548, every recorded LOSO "
+                    "median including drop-Harappa "
+                    "0.0066068)"
+                ),
+                "failure_class": "INVALID",
+            },
+        ],
+        "verdict_rules": {
+            "source": (
+                "Spec 028's frozen family rules, "
+                "carried verbatim (spec section 4.1); "
+                "no threshold, margin, or clause is "
+                "adjusted for the smaller stratum "
+                "populations"
+            ),
+            "margin_adjusted_r2": 0.01,
+            "seed": 20261012,
+            "supported": (
+                "within a stratum whose controls "
+                "pass: the stratum's primary median "
+                "adjusted R^2 is > 0.01 and every "
+                "leave-one-site-out median adjusted "
+                "R^2 of that stratum is > 0.01"
+            ),
+            "contradicted": (
+                "within a stratum whose controls "
+                "pass: >= 95% of the stratum's "
+                "primary draws fail to reject, or "
+                "the stratum's adjusted R^2 "
+                "percentile interval lies entirely "
+                "at or below 0.01"
+            ),
+            "inconclusive": (
+                "within a stratum whose controls "
+                "pass: neither SUPPORTED nor "
+                "CONTRADICTED fires"
+            ),
+            "control_failure": (
+                "a stratum whose controls fail is "
+                "NOT ADJUDICATED - a machinery "
+                "finding, never folded into "
+                "INCONCLUSIVE - and the headline is "
+                "NOT ADJUDICATED with the failing "
+                "control named (DD-042-3, confirmed)"
+            ),
+        },
+        "headline_patterns": [
+            "SPLIT",
+            "UNIFORM-PASS",
+            "UNIFORM-FAIL",
+            "THIN",
+        ],
+        "split_direction": (
+            "a SPLIT is reported with its direction: "
+            "SPLIT AS PREDICTED (seal SUPPORTED, "
+            "tablet not) or SPLIT REVERSED (tablet "
+            "SUPPORTED, seal not); a reversed split "
+            "does not support the section 1.2 "
+            "hypothesis as stated"
+        ),
+        "stratum_floors": {
+            "min_sites": 6,
+            "min_inscriptions_per_site": 20,
+            "on_failure": (
+                "the stratum is recorded TOO THIN "
+                "with its counts, the execution "
+                "closes at gate 0.4 with headline "
+                "THIN, and neither stratum is "
+                "computed (DD-042-2, confirmed: the "
+                "headline is the pattern across "
+                "strata, and a one-stratum result "
+                "quoted alone would misstate the "
+                "test)"
+            ),
+        },
+        "machinery": (
+            "Phase-393's Arm B machinery unchanged "
+            "(specs/028-harappa-robustness/"
+            "pipeline393.py as pinned): the same "
+            "similarity-distance estimator, equal "
+            "site weights with the recorded quota "
+            "scheme, the same draw design and seed, "
+            "the same negative and positive "
+            "controls; the only change from the "
+            "frozen Arm B run is the population - "
+            "the stratum's records only"
+        ),
+        "fences": (
+            "no movement conclusion and no mechanism "
+            "conclusion (spec section 7); period is "
+            "described per stratum, not controlled "
+            "(the period-controlled variant is "
+            "design D-26, blocked, and is not "
+            "merged); object type is as recorded "
+            "within the Phase-393 layer only; the "
+            "exploratory Arm C figures are the "
+            "hypothesis's source, never evidence"
+        ),
+        "execution_gate": (
+            "Satisfied at the freeze of 2026-10-21 "
+            "for the freeze act itself: execution "
+            "runs as Phase-407 under this frozen "
+            "contract on a separate execution "
+            "order, and no stratum quantity was "
+            "computed at the freeze - in particular "
+            "the gate-0.3/0.4 stratum census "
+            "appears nowhere in the frozen record"
+        ),
+    },
+    "decisions": {
+        "osf_registration": (
+            "DD-042-6 (decided at freeze): this "
+            "spec files its own OSF contract "
+            "registration at the freeze, following "
+            "the Spec 027/028 study-design pattern, "
+            "so the split's gates, floors, and "
+            "pattern rules are timestamped outside "
+            "the repo before execution; the filing "
+            "is recorded in osf-registration.md, "
+            "completed by append after filing, and "
+            "execution awaits its approval"
+        ),
+        "synthetic_calibration": (
+            "DD-042-7 (decided at freeze): a fresh "
+            "synthetic calibration is DECLINED. "
+            "Spec 028's calibration was required "
+            "because Phase-393's machinery was new "
+            "and its control construction changed "
+            "before its freeze; here the machinery "
+            "is byte-identical to the calibrated "
+            "pipeline of record (pin re-derived at "
+            "this freeze), its calibration stands "
+            "on record with all four arm controls "
+            "passing, and the variant changes only "
+            "the input population. Gate 0.5 - exact "
+            "reproduction of the recorded pooled "
+            "quantities on the full population "
+            "before any stratum quantity - is the "
+            "variant's machinery check, and each "
+            "stratum's own negative and positive "
+            "controls run at its primary under the "
+            "frozen definitions"
+        ),
+        "margins_audit": (
+            "DD-042-8 (decided at freeze): no "
+            "separate margins audit is required. "
+            "The draft's proposal is confirmed: "
+            "this variant's margins instrument is "
+            "the gate-0.3 partition census with "
+            "the gate-0.4 floors - the census is "
+            "computed at execution, before any "
+            "stratum quantity, and a THIN closure "
+            "publishes it as the finding. Spec "
+            "028's margins audit stands as a "
+            "pinned input of record"
+        ),
+        "dd_042_2": (
+            "CONFIRMED as drafted: THIN closes the "
+            "whole execution; neither stratum is "
+            "computed when either is below its floor"
+        ),
+        "dd_042_3": (
+            "CONFIRMED as drafted: NOT ADJUDICATED "
+            "is the control-failure class, named in "
+            "the headline with the failing control"
+        ),
+    },
+    "inputs": {
+        "corpus_layer": {
+            "file": (
+                "backend/glossa_lab/data/"
+                "yajnadevam_inscriptions.csv"
+            ),
+            "sha256": (
+                "c02e3d7bb74cf5abb11cc94f88d8d469e6acc5d6fad4b7153c02c43428f58d98"
+            ),
+            "records": 5679,
+        },
+        "phase393_results": {
+            "file": "reports/phase393_results.json",
+            "sha256": (
+                "0a1657a8af84615afbee95164cd1c10ea6fc5bc53d1b5a0a006b1862fa5ff607"
+            ),
+            "arm_b_verdict": "INCONCLUSIVE",
+            "arm_b_median_adjusted_r2": 0.0223721,
+            "arm_b_interval": [0.0122174, 0.0333271],
+            "arm_b_rejection_share": 0.9548,
+            "arm_b_loso_harappa_median": 0.0066068,
+        },
+        "pipeline393": {
+            "file": (
+                "specs/028-harappa-robustness/pipeline393.py"
+            ),
+            "sha256": (
+                "6c2ff91c41bbb283a513127c6ab7157c1805b640ba0d846f9c7d3349ab8a7b0e"
+            ),
+        },
+        "spec028_margins_audit": {
+            "file": (
+                "specs/028-harappa-robustness/margins-audit.json"
+            ),
+            "sha256": (
+                "15ae0281bb003f3b02742819349d3905004a282b28e9a2c00f433ac41c04bb6d"
+            ),
+        },
+        "spec028_freeze": {
+            "file": (
+                "specs/028-harappa-robustness/freeze.json"
+            ),
+            "sha256": (
+                "376cd8e7ebc21ef7c31d43270607f475bb7e685cdcbe88205d7092e17fc526cc"
+            ),
+            "digest": (
+                "619ab0c30048b934a14f2f2e7583a1a2e93c25c0599488f97165c285cd38bb61"
+            ),
+        },
+        "anchors": {
+            "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+            "sha256": (
+                "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569"
+            ),
+            "note": (
+                "this spec moves no anchor; the file "
+                "is asserted byte-identical before "
+                "and after any execution"
+            ),
+        },
+        "population": {
+            "flow": [5679, 4531, 4505, 3605, 3144, 3030],
+            "analysis_records": 3030,
+            "analysis_sites": 6,
+            "sites": [
+                "Chanhu-daro",
+                "Dholavira",
+                "Harappa",
+                "Kalibangan",
+                "Lothal",
+                "Mohenjo-daro",
+            ],
+        },
+    },
+    "environment": {
+        "python": "3.12.3",
+        "runner": "backend (venv glossa-aee150)",
+        "aee": (
+            "1.5.0 (adopted environment, PR #231; "
+            "package pinned >=1.5.0,<1.6)"
+        ),
+        "specify": "1.0.10",
+    },
+}
+
+SOURCES = [
+    f"{SPEC_DIR}/freeze.md",
+    f"{SPEC_DIR}/spec.md",
+    f"{SPEC_DIR}/claims.json",
+    f"{SPEC_DIR}/adjudication.md",
+    f"{SPEC_DIR}/aee/freeze-aee-note.md",
+    f"{SPEC_DIR}/build_freeze.py",
+    "backend/tests/test_spec042_freeze.py",
+]
+
+
+def main() -> int:
+    record = build_freeze(DEFINITION, REPO, SOURCES)
+    out = REPO / SPEC_DIR / "freeze.json"
+    out.write_text(
+        json.dumps(record, indent=1) + "\n", encoding="utf-8"
+    )
+    print(record["digest"])
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

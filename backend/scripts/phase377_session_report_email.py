@@ -201,7 +201,7 @@ Generated: {now}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Glossa Lab Automated Research Platform | {now}
 Repository: github.com/BitConcepts/glossa-lab (branch: phase-next)
-Preprint: https://zenodo.org/records/20414696
+Preprint: https://doi.org/10.5281/zenodo.20379070
 """
 
 

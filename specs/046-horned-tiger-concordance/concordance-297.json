@@ -1,0 +1,10 @@
+{
+ "closure": {
+  "class": "IDENTIFICATION FAILED (sign unmatched)",
+  "wording": "The fragment 'sign 297 is the horned tiger' cannot be carried to a concordance: the drawn sign could not be matched from Wells's published list. The record stays a stated gap. No statement about the sign is made, and nothing is fed to Asset A."
+ },
+ "producer_claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
+ "producer_spec": "046",
+ "schema": "glossa.concordance/1",
+ "signs": []
+}

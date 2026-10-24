@@ -1,0 +1,12 @@
+{
+ "product": "Registry v2 \u2014 canonical sign registry (Spec 073)",
+ "canonical_file": "data/crosswalks/canonical_sign_registry_v2.csv",
+ "sha256": "42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71",
+ "rows_total": 1013,
+ "rows_carried_from_v1": 803,
+ "completions_applied": 0,
+ "icit_wells_rows_appended": 210,
+ "base_v1_sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",
+ "consult_record": "specs/073-keying-surface-repair/execution/catalog-consult.json",
+ "freeze_date": "2026-10-23"
+}

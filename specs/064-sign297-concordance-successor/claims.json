@@ -1,0 +1,891 @@
+{
+ "spec": "064-sign297-concordance-successor",
+ "register_version": "0.7-draft",
+ "note": "Claims-first register for Spec 064 (successor to Spec 046, design D-18 carried), opened 2026-10-21 under the owner's approval of the same date (amendment package Item 5), on the amendment-queue commission (Item 5: drawn-form references for Wells's signs 821 and 297; the draft's section 6.2 is the reference record, section 7 the identification protocol, section 8 the successor's charter). Conventions as in Spec 046 at draft; evidence items carry observed_at from the draft because the cited facts were verified first-hand at drafting (DD-064-8). The register parallels Spec 046's F046-C01...C15 claim for claim in substance; the successor's deltas are the preserved drawn-form reference and its QUALIFIED continuity status (F064-C05 gate 0.4, F064-C06 steps D/C/M, F064-C13 reporting), the extended trap set (F064-C07), and the predecessor fence (F064-C11, F064-C15). FREEZE RECOVERY (2026-10-21): the draft register (0.5-draft) already carried engine evidence values (kind observed, source_quality artifact) and mutual independent_of declarations, so no loadability recovery was needed: round 1 of the AEE lifecycle hooks loaded it as drafted and returned 17 failure modes - 15 FR-2.3 draft-cap records and 2 irreducibility challenges recorded under the engine's coverage_gap category (F064-C06, F064-C15) - with minimum propagated score 0.72 and no claim below the 0.70 threshold. At 0.6-draft the 2 challenged heads were restated as single head propositions with their carried clauses moved into boundaries verbatim-in-substance (F064-C06: the list-naming half of the step 1 gate; F064-C15: the dated-append half of the record discipline); round 2 over 0.6-draft returned 16 failure modes - 15 draft-cap records and 1 remaining irreducibility challenge on F064-C06, whose head still named two instruments. At 0.7-draft the F064-C06 head was restated to the single proposition (step 1 identifies the drawn sign by drawn form) with the preserved-reference and frozen-protocol instruments carried in its boundary. The freeze rulings DD-064-15 (Phase-426 allocated) and DD-064-16 (OSF registration filed at the freeze, E-1) stand in adjudication.md section 7; no claim text carries a phase number or filing fact, so no boundary required a freeze-ruling insertion. Over the recovered 0.7-draft register every hook (after_specify, after_plan, after_tasks) carries 15 failure modes - 15 FR-2.3 draft-cap records, zero correctness failure modes, minimum propagated score 0.72, no claim below the 0.70 threshold. No claim's falsifier, outcome wording, or protocol step changed in recovery.",
+ "claims": [
+  {
+   "id": "F064-C01",
+   "kind": "hypothesis",
+   "text": "An outcome under Spec 064 states only whether the published sign lists concur on the identification of the drawn sign that Wells (2015) numbers 297 as a tiger.",
+   "status": "draft",
+   "boundary": "The scope is the drawn sign identified at step 1 and the four named published lists. It excludes any statement about what the sign meant in use, any role in inscriptions, any other sign's identification, and the correctness of the identification beyond the published record's agreement about it. The head proposition carries the identification-layer clause in this boundary: the statement is about that one drawn sign at the identification layer, with nothing else stated.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-SOURCE-IS-WELLS"
+   ],
+   "alternatives": [
+    "the fragment could be read as a meaning claim testable by corpus statistics (refused by design D-18, carried by Spec 046: an identification claim is checked by concordance, not by corpus statistics)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified in scope if any Spec 064 output states a conclusion about meaning, use, another sign, or a population outside the four lists' record on this drawn sign"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-IDENTIFICATION-AS-MEANING"
+    ],
+    "strongest_rival": "the alternative reading in which a concordance outcome licenses a claim about the sign's meaning or use",
+    "verdict_rule": "scope is judged by inspection of every Spec 064 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding",
+    "evidence_origin_groups": [
+     "claim-record",
+     "design-packet"
+    ],
+    "boundary_confirmation": "C01 states what an outcome may state (identification-layer concurrence for this one sign); C15 states where predecessor and successor records stand (Spec 046's records unedited, this successor's outcome as dated appends). The two govern different objects - the content of an outcome, and the place of records - and are consistent by construction: an outcome inside C01's scope is exactly one that C15 records without editing any frozen record. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-18 (PR #195 packet, section D-18, read in full at Spec 046's draft and carried by this successor): identification step as D-15 step 1, then the concordance test across the CISI, Parpola, Mahadevan, and Wells lists, scored AGREE / DISAGREE / SILENT, with the outcome words CONSENSUS / SINGLE-SOURCE / CONTESTED and the identification-layer limit.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json"
+     ]
+    },
+    {
+     "ref": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The adopted lane-2 explanation for this claim (SHA-256 3f645c9a...): what remains unknown is which drawn sign this is and whether the horned-tiger identification is agreed or one scholar's call; animal identifications are raw material for the shared classification behind D-05/D-06/D-13.",
+     "source_id": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/03-fragments.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F064-C02",
+   "kind": "requirement",
+   "text": "The record under test is the fragment the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002.",
+   "status": "draft",
+   "boundary": "These are the claim record and the Phase-104 evaluation as pinned in spec section 2. The source book is Wells, The Archaeology and Epigraphy of Indus Writing (Archaeopress, 2015), held as cleaned text in the repository; the passage stands at printed p. 97 of the held text (lines 2938-2941). The head proposition carries the record description in this boundary: normalised claim 'Sign value: 297 / the horned tiger, or perhaps just 'tiger' generically', status untested, whose Phase-104 evaluation stopped at RULE-NUM for an unnamed numbering system, no located crosswalk match, with no falsification condition; and whose Spec 046 run (Phase-405) closed IDENTIFICATION FAILED at step 1.2, recorded in the claim record by a dated first-check append.",
+   "depends_on": [
+    "F064-C01"
+   ],
+   "assumptions": [
+    "ASM-SOURCE-IS-WELLS"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "recompute the section 2 pins and read the claim record and the Phase-104 entry for this claim_id; any mismatch in the quoted wording, status, or rule falsifies this statement and voids the draft's basis"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the record could have been misread or superseded (the Spec 040 stale-pin precedent shows draft-cited pins can be wrong)",
+    "verdict_rule": "the statement stands or falls on the pinned files hashing to their recorded values with the stated contents in them",
+    "evidence_origin_groups": [
+     "claim-record",
+     "phase104-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The claim record of the fragment (SHA-256 997fa336..., recomputed at this freeze): claim_id the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002, normalised claim 'Sign value: 297 / the horned tiger, or perhaps just 'tiger' generically', status untested, stage created; the record now carries Spec 046's dated first-check append of Phase-405 beside the frozen entry.",
+     "source_id": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/reports/phase104_claims_evaluation.json",
+      "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt"
+     ]
+    },
+    {
+     "ref": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-104 evaluation of this claim (SHA-256 2d0b83e8...): verdict stays_untested under RULE-NUM - sign number cited without a stated numbering system; no matching entry located in the in-repo crosswalk; no falsification condition; evidence notes 86 crosswalk numeric IDs present in that record.",
+     "source_id": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+      "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt"
+     ]
+    },
+    {
+     "ref": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The held cleaned text of Wells, The Archaeology and Epigraphy of Indus Writing (Archaeopress, 2015; ISBN 978 1 78491 046 4), SHA-256 62acf855...: title pages name the book and author; the passage at printed p. 97 (held text lines 2938-2941) states sign 532 is proposed as a logograph for the anthropomorphic figure and sign 297 'represents the horned tiger, or perhaps just 'tiger' generically'; the list-naming statements stand at lines 414 and 665; Figure 2.6 survives as captions only (lines 868, 872, 876, 880).",
+     "source_id": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+      "glossa-indus/reports/phase104_claims_evaluation.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F064-C03",
+   "kind": "hypothesis",
+   "text": "The identification of the drawn sign as a tiger is the published consensus under the counting rule of F064-C08.",
+   "status": "draft",
+   "boundary": "Consensus is counted over the independent lists only (CISI, Parpola, Mahadevan); the source list (Wells) is scored but never counts toward the two (F064-C08). AGREE is at the tiger-kind level, the 'horned' qualifier recorded not scored (F064-C09). The statement is about the published record, not about the ancient sign beyond the identification layer (F064-C01). The head proposition carries the threshold clause in this boundary: CONSENSUS requires at least two published lists independent of the source scoring AGREE, with zero held or citable published lists scoring DISAGREE.",
+   "depends_on": [
+    "F064-C01",
+    "F064-C02"
+   ],
+   "assumptions": [
+    "ASM-SOURCE-IS-WELLS",
+    "ASM-LIST-INDEPENDENCE",
+    "ASM-TIGER-KIND"
+   ],
+   "alternatives": [
+    "the identification is one scholar's call (SINGLE-SOURCE)",
+    "the identification is corroborated once but not a consensus (PARTIAL CONCURRENCE)",
+    "a published list identifies the sign otherwise (CONTESTED)"
+   ],
+   "falsification_tests": [
+    "run the section 5 concordance: if fewer than two independent lists score AGREE, or any list scores DISAGREE, this hypothesis is not supported and the outcome is recorded under F064-C10's mapping"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-IDENTIFICATION-AS-MEANING"
+    ],
+    "strongest_rival": "the strongest rival is the falsifier itself: the identification is Wells's own, shared by nobody else in print",
+    "verdict_rule": "SUPPORTED for the hypothesis iff the section 5.2 mapping returns CONSENSUS; every other adjudicated outcome does not support it",
+    "evidence_origin_groups": [
+     "design-packet",
+     "claim-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-18 (PR #195 packet, section D-18, read in full at Spec 046's draft and carried by this successor): identification step as D-15 step 1, then the concordance test across the CISI, Parpola, Mahadevan, and Wells lists, scored AGREE / DISAGREE / SILENT, with the outcome words CONSENSUS / SINGLE-SOURCE / CONTESTED and the identification-layer limit.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt"
+     ]
+    },
+    {
+     "ref": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The held cleaned text of Wells, The Archaeology and Epigraphy of Indus Writing (Archaeopress, 2015; ISBN 978 1 78491 046 4), SHA-256 62acf855...: title pages name the book and author; the passage at printed p. 97 (held text lines 2938-2941) states sign 532 is proposed as a logograph for the anthropomorphic figure and sign 297 'represents the horned tiger, or perhaps just 'tiger' generically'; the list-naming statements stand at lines 414 and 665; Figure 2.6 survives as captions only (lines 868, 872, 876, 880).",
+     "source_id": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/03-fragments.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F064-C04",
+   "kind": "requirement",
+   "text": "A non-concurrence outcome is recorded under the spec section 5.2 mapping with CONSENSUS-level prominence.",
+   "status": "draft",
+   "boundary": "Non-concurrence is the falsifier's outcome, in three shapes the mapping keeps distinct. Quoting is verbatim from the list's entry at its recorded locator; a paraphrase of a disagreement does not satisfy this requirement. The head proposition carries the quoting clause in this boundary: any disagreeing identification is quoted verbatim, with the mapped outcome word from CONTESTED / PARTIAL CONCURRENCE / SINGLE-SOURCE.",
+   "depends_on": [
+    "F064-C03"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "if the outcome record of a non-consensus run lacks the mapped outcome word, the quoted disagreement (where D >= 1), or equal prominence, that record falsifies compliance with this requirement"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a contested or single-source result softened into 'broadly consistent with the lists' after the rows are known",
+    "verdict_rule": "the outcome record must carry the section 5.3 wording for the mapped outcome whenever its condition holds",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-18 (PR #195 packet, section D-18, read in full at Spec 046's draft and carried by this successor): identification step as D-15 step 1, then the concordance test across the CISI, Parpola, Mahadevan, and Wells lists, scored AGREE / DISAGREE / SILENT, with the outcome words CONSENSUS / SINGLE-SOURCE / CONTESTED and the identification-layer limit.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "observed_at": "2026-10-21",
+     "independent_of": []
+    }
+   ]
+  },
+  {
+   "id": "F064-C05",
+   "kind": "requirement",
+   "text": "Execution closes at step 0 before any identification work begins on a step-0 gate failure.",
+   "status": "draft",
+   "boundary": "Citable means citable enough to quote from: citation plus volume, page or table, and the list's sign numbering, such that a reader holding the list can find its entry for a named drawn sign. There is no three-list concordance: the section 5.2 outcome rules count over the full named set, and a missing list would silently change what CONSENSUS means. Closure classes are named in spec section 11; nothing is repaired or substituted at run time. The head proposition carries the gate enumeration in this boundary: the source book cannot be produced from the program held copy with the passage located verbatim; any of the four named lists (CISI, Parpola, Mahadevan, Wells) is neither held nor citable with a full bibliographic citation plus its own locator form; any spec section 2 input hash mismatches, including the preserved reference record at its pinned digest; the thesis plate page cannot be produced from the local thesis file after that file's digest is asserted against its section 2 pin.",
+   "depends_on": [
+    "F064-C02"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [
+    "scoring over whichever lists happen to be at hand (refused: it changes the registered test's denominator)"
+   ],
+   "falsification_tests": [
+    "each gate's check is itself the test: the execution record must show every step-0 verdict, with each list's HELD or CITABLE-with-locator accounting and the reference-producibility verdict, before the first identification act, or the run is non-compliant on its face"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a list waved through as 'well known' without a producible copy or a quotable locator, discovered only when its row cannot be written; or a reference waved through without its digest asserted",
+    "verdict_rule": "the gate precedes step 1 in run order; a run that identifies or scores past a failed gate falsifies compliance",
+    "evidence_origin_groups": [
+     "claim-record",
+     "design-packet",
+     "drawn-form-reference"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The claim record of the fragment (SHA-256 997fa336..., recomputed at this freeze): claim_id the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002, normalised claim 'Sign value: 297 / the horned tiger, or perhaps just 'tiger' generically', status untested, stage created; the record now carries Spec 046's dated first-check append of Phase-405 beside the frozen entry.",
+     "source_id": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+      "specs/064-sign297-concordance-successor/drawn-form-reference-297.json"
+     ]
+    },
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-18 (PR #195 packet, section D-18, read in full at Spec 046's draft and carried by this successor): identification step as D-15 step 1, then the concordance test across the CISI, Parpola, Mahadevan, and Wells lists, scored AGREE / DISAGREE / SILENT, with the outcome words CONSENSUS / SINGLE-SOURCE / CONTESTED and the identification-layer limit.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+      "specs/064-sign297-concordance-successor/drawn-form-reference-297.json"
+     ]
+    },
+    {
+     "ref": "specs/064-sign297-concordance-successor/drawn-form-reference-297.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The preserved drawn-form reference for Wells's sign 297 (schema glossa.drawn-form-reference/1; SHA-256 33ee22ec..., computed at its commitment in this spec): the citation-pinned Figure 2.6 reference, the bent-ray descriptor derived from the thesis plate (thesis p. 90 / PDF p. 102; file SHA-256 4b39330c...), the P205 family anchor recorded as corroboration only and NOT an identification, the named traps, and continuity_status QUALIFIED with its recorded limitation as part of the record.",
+     "source_id": "specs/064-sign297-concordance-successor/drawn-form-reference-297.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+      "docs/research/experiment-designs-2026-10-13/03-fragments.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F064-C06",
+   "kind": "requirement",
+   "text": "Step 1 identifies the drawn sign by drawn form.",
+   "status": "draft",
+   "boundary": "The identification this claim states is step 1's drawn-form identification of Wells's sign 297, performed through the preserved reference and the frozen protocol of spec section 4. Step 1 also names the source's sign list from the source document's own apparatus - sign apparatus, headings, or citations - as the first half of the gate this claim states. The expected naming, from the held text, is Wells's own numbering (the passage stands in Wells 2015 and names no other list at the passage; the list-naming evidence is held text lines 414 and 665); step 1 confirms it from the book's apparatus rather than assuming it from this draft. The match, its basis, and its reference are recorded in the section 6 output's target_sign block. The head proposition carries the protocol clause in this boundary: identification runs step D (two independent descriptor derivations from the thesis plate, reconciled by recorded features, an unsettled disagreement resolving against identification, and agreement with the preserved reference's descriptor required - a material difference closes IDENTIFICATION FAILED (reference not sustained)), then step C, then step M (route 1, a registry row matched by drawn form, or route 2, the preserved reference cited as the source list's own entry; no route constructed at run time); failure to name the list or to match the drawn sign closes the execution as IDENTIFICATION FAILED with the reason named.",
+   "depends_on": [
+    "F064-C05"
+   ],
+   "assumptions": [
+    "ASM-SOURCE-IS-WELLS",
+    "ASM-DRAWN-FORM-MATCHING"
+   ],
+   "alternatives": [
+    "treating the passage's presence in Wells's book as itself naming the list, without the apparatus check (refused: that is the inference Phase-104's RULE-NUM stop exists to prevent)",
+    "inheriting the preserved descriptor without the step D derivations (refused: the reference is checked, not inherited)"
+   ],
+   "falsification_tests": [
+    "the identification record either names the list from the document and records the step D sheets, the step C statement, and a drawn-form match with its reference and route, or the run closes IDENTIFICATION FAILED; a scored run without that record falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "identification by assertion - a worker 'recognising' the sign without a recorded, inspectable match; or a descriptor inherited from the preserved record without independent derivation",
+    "verdict_rule": "step 1 is a gate: no step-2 row exists unless the identification record precedes it in the run's record",
+    "evidence_origin_groups": [
+     "claim-record",
+     "crosswalk-registry",
+     "drawn-form-reference"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The held cleaned text of Wells, The Archaeology and Epigraphy of Indus Writing (Archaeopress, 2015; ISBN 978 1 78491 046 4), SHA-256 62acf855...: title pages name the book and author; the passage at printed p. 97 (held text lines 2938-2941) states sign 532 is proposed as a logograph for the anthropomorphic figure and sign 297 'represents the horned tiger, or perhaps just 'tiger' generically'; the list-naming statements stand at lines 414 and 665; Figure 2.6 survives as captions only (lines 868, 872, 876, 880).",
+     "source_id": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "data/crosswalks/canonical_sign_registry.csv",
+      "specs/064-sign297-concordance-successor/drawn-form-reference-297.json"
+     ]
+    },
+    {
+     "ref": "data/crosswalks/canonical_sign_registry.csv",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The crosswalk registry of record (SHA-256 8a0b2a82..., 803 rows), keyed to Parpola 1982 numbering with wells_ids and mahadevan_ids columns. Read at this freeze: Parpola P297 is described as 'Ladder motif'; the value W297 appears inside a 17-value wells_ids cell on the P205 row ('Prismed light rays, with opposite slanting on top vs bottom, more rays on bottom', mahadevan_ids M180); no registry description names a tiger (0 of 803).",
+     "source_id": "data/crosswalks/canonical_sign_registry.csv",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+      "specs/064-sign297-concordance-successor/drawn-form-reference-297.json"
+     ]
+    },
+    {
+     "ref": "specs/064-sign297-concordance-successor/drawn-form-reference-297.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The preserved drawn-form reference for Wells's sign 297 (schema glossa.drawn-form-reference/1; SHA-256 33ee22ec..., computed at its commitment in this spec): the citation-pinned Figure 2.6 reference, the bent-ray descriptor derived from the thesis plate (thesis p. 90 / PDF p. 102; file SHA-256 4b39330c...), the P205 family anchor recorded as corroboration only and NOT an identification, the named traps, and continuity_status QUALIFIED with its recorded limitation as part of the record.",
+     "source_id": "specs/064-sign297-concordance-successor/drawn-form-reference-297.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+      "data/crosswalks/canonical_sign_registry.csv"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F064-C07",
+   "kind": "requirement",
+   "text": "Cross-list matching under Spec 064 is by drawn sign.",
+   "status": "draft",
+   "boundary": "The registry itself carries the two Spec 046 traps, read at this freeze: Parpola's P297 is described as a 'Ladder motif', a different sign from Wells's 297; and the registry's W297 value sits inside a multi-value wells_ids cell on the P205 row, which does not by itself identify the passage's sign. The reference record names the successor's further traps: witness M297 (a Mahadevan sign whose Wells grapheme is 924), P205's Mahadevan crosswalk M180 used as W297's identity, and a plate number read without step C. Within-list numbers are used as locators only (spec section 6 citation form). The head proposition carries the number clause in this boundary: a number is meaningful only inside its own list; cross-list matching is by drawn sign through the crosswalk registry or drawn-form comparison.",
+   "depends_on": [
+    "F064-C06"
+   ],
+   "assumptions": [
+    "ASM-DRAWN-FORM-MATCHING"
+   ],
+   "alternatives": [
+    "number-matching with a manual sanity glance (refused: the P297 ladder is exactly the plausible-looking wrong answer such a glance passes)"
+   ],
+   "falsification_tests": [
+    "inspection of the run's match record: any cross-list step justified by equal numbers, rather than by a recorded drawn-form basis and reference, falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the silent number-match - the failure mode that made this fragment family untestable at Phase-104",
+    "verdict_rule": "the match basis recorded per sign must be 'crosswalk-registry' or 'wells-list-entry' with its reference; any other basis stops the run at step 1",
+    "evidence_origin_groups": [
+     "crosswalk-registry",
+     "phase104-record",
+     "drawn-form-reference"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "data/crosswalks/canonical_sign_registry.csv",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The crosswalk registry of record (SHA-256 8a0b2a82..., 803 rows), keyed to Parpola 1982 numbering with wells_ids and mahadevan_ids columns. Read at this freeze: Parpola P297 is described as 'Ladder motif'; the value W297 appears inside a 17-value wells_ids cell on the P205 row ('Prismed light rays, with opposite slanting on top vs bottom, more rays on bottom', mahadevan_ids M180); no registry description names a tiger (0 of 803).",
+     "source_id": "data/crosswalks/canonical_sign_registry.csv",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/reports/phase104_claims_evaluation.json",
+      "specs/064-sign297-concordance-successor/drawn-form-reference-297.json"
+     ]
+    },
+    {
+     "ref": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-104 evaluation of this claim (SHA-256 2d0b83e8...): verdict stays_untested under RULE-NUM - sign number cited without a stated numbering system; no matching entry located in the in-repo crosswalk; no falsification condition; evidence notes 86 crosswalk numeric IDs present in that record.",
+     "source_id": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "data/crosswalks/canonical_sign_registry.csv",
+      "specs/064-sign297-concordance-successor/drawn-form-reference-297.json"
+     ]
+    },
+    {
+     "ref": "specs/064-sign297-concordance-successor/drawn-form-reference-297.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The preserved drawn-form reference for Wells's sign 297 (schema glossa.drawn-form-reference/1; SHA-256 33ee22ec..., computed at its commitment in this spec): the citation-pinned Figure 2.6 reference, the bent-ray descriptor derived from the thesis plate (thesis p. 90 / PDF p. 102; file SHA-256 4b39330c...), the P205 family anchor recorded as corroboration only and NOT an identification, the named traps, and continuity_status QUALIFIED with its recorded limitation as part of the record.",
+     "source_id": "specs/064-sign297-concordance-successor/drawn-form-reference-297.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "data/crosswalks/canonical_sign_registry.csv",
+      "glossa-indus/reports/phase104_claims_evaluation.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F064-C08",
+   "kind": "requirement",
+   "text": "Wells scores in the SOURCE role in the Spec 064 concordance.",
+   "status": "draft",
+   "boundary": "Independence here is publication-level: a list other than the source's, published under its own authority. It does not assert the lists' scholarly traditions are unrelated (spec section 7); the lineage note stands in the CONSENSUS wording before scoring and no row may be re-weighted after scoring. If Wells's own sign apparatus contradicts his passage, the divergence is quoted and the outcome cannot be CONSENSUS (spec section 5.1). The head proposition carries the counting clause in this boundary: Wells never counts toward the two independent agreements CONSENSUS requires, because the claim source document is Wells (2015) itself.",
+   "depends_on": [
+    "F064-C03",
+    "F064-C06"
+   ],
+   "assumptions": [
+    "ASM-SOURCE-IS-WELLS",
+    "ASM-LIST-INDEPENDENCE"
+   ],
+   "alternatives": [
+    "counting Wells among the agreeing lists, as a naive reading of design D-18's four-list set would allow (refused: a source cannot corroborate itself; the design's own word is 'independent')"
+   ],
+   "falsification_tests": [
+    "the section 5.2 count A is computed over CISI, Parpola, and Mahadevan rows only; an outcome record whose A includes the Wells row falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "self-corroboration dressed as consensus - the single most likely way this concordance could manufacture a false CONSENSUS",
+    "verdict_rule": "the counting rule is registered here, before execution; the outcome record shows the four rows, their roles, and the count together",
+    "evidence_origin_groups": [
+     "claim-record",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The held cleaned text of Wells, The Archaeology and Epigraphy of Indus Writing (Archaeopress, 2015; ISBN 978 1 78491 046 4), SHA-256 62acf855...: title pages name the book and author; the passage at printed p. 97 (held text lines 2938-2941) states sign 532 is proposed as a logograph for the anthropomorphic figure and sign 297 'represents the horned tiger, or perhaps just 'tiger' generically'; the list-naming statements stand at lines 414 and 665; Figure 2.6 survives as captions only (lines 868, 872, 876, 880).",
+     "source_id": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/03-fragments.md"
+     ]
+    },
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-18 (PR #195 packet, section D-18, read in full at Spec 046's draft and carried by this successor): identification step as D-15 step 1, then the concordance test across the CISI, Parpola, Mahadevan, and Wells lists, scored AGREE / DISAGREE / SILENT, with the outcome words CONSENSUS / SINGLE-SOURCE / CONTESTED and the identification-layer limit.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F064-C09",
+   "kind": "requirement",
+   "text": "Each list row carries one scored state from the AGREE / DISAGREE / SILENT set.",
+   "status": "draft",
+   "boundary": "Scoring is from the list's own entry for the drawn sign at its recorded locator. A functional or graphic description offered by a list as its identification of the sign scores DISAGREE, not SILENT: the distinction is whether the list identifies the sign as something, not whether that something is an animal. The source's own hedge ('horned tiger, or perhaps just 'tiger' generically') is one identification with a qualifier in doubt, which is why agreement is scored at the kind level. The head proposition carries the scoring definitions in this boundary: AGREE means the list identifies the drawn sign as a tiger, the horned qualifier recorded verbatim in place of being scored; DISAGREE means the list identifies the drawn sign as something other than a tiger, quoted verbatim; SILENT means the list gives no referent identification for the drawn sign, with the sub-state entry_present recording whether an entry for the sign exists.",
+   "depends_on": [
+    "F064-C06",
+    "F064-C07"
+   ],
+   "assumptions": [
+    "ASM-TIGER-KIND",
+    "ASM-DRAWN-FORM-MATCHING"
+   ],
+   "alternatives": [
+    "scoring 'horned' as part of the agreement test, so a list saying plain 'tiger' would count against the source that itself hedges the qualifier (refused)"
+   ],
+   "falsification_tests": [
+    "each row's verbatim quote (or recorded silence) at its locator either satisfies its scored state under these definitions or it does not; any reader can re-score the four rows from the published quotes alone"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "scoring drift at the AGREE/SILENT boundary - a vague list entry argued into agreement because the outcome needs it",
+    "verdict_rule": "rows are published with quotes and locators; the scoring definitions here are the only ones the outcome record may use",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-18 (PR #195 packet, section D-18, read in full at Spec 046's draft and carried by this successor): identification step as D-15 step 1, then the concordance test across the CISI, Parpola, Mahadevan, and Wells lists, scored AGREE / DISAGREE / SILENT, with the outcome words CONSENSUS / SINGLE-SOURCE / CONTESTED and the identification-layer limit.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "observed_at": "2026-10-21",
+     "independent_of": []
+    }
+   ]
+  },
+  {
+   "id": "F064-C10",
+   "kind": "requirement",
+   "text": "The per-sign concurrence state comes from the spec section 5.2 mapping over the four scored rows.",
+   "status": "draft",
+   "boundary": "The mapping is total: every pattern of scored rows lands in exactly one state. CONSENSUS, SINGLE-SOURCE, and CONTESTED are design D-18's words, carried verbatim; PARTIAL CONCURRENCE is Spec 046's freeze-confirmed addition (DD-046-3, DD-046-9), carried by this successor unchanged. The head proposition carries the state definitions in this boundary: CONSENSUS (at least two independent lists AGREE, zero lists DISAGREE); CONTESTED (at least one list DISAGREEs); PARTIAL CONCURRENCE (exactly one independent list AGREEs, zero lists DISAGREE); SINGLE-SOURCE (zero independent lists AGREE, zero lists DISAGREE).",
+   "depends_on": [
+    "F064-C08",
+    "F064-C09"
+   ],
+   "assumptions": [
+    "ASM-LIST-INDEPENDENCE"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "the stated state must be derivable from the four published rows by this mapping alone; a state that requires any fact outside the rows falsifies the outcome record"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "outcome-shopping: naming the pattern with whichever word flatters the hypothesis after the rows are known",
+    "verdict_rule": "the mapping is frozen in this register before any row exists; the outcome record shows the rows and the state together",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-18 (PR #195 packet, section D-18, read in full at Spec 046's draft and carried by this successor): identification step as D-15 step 1, then the concordance test across the CISI, Parpola, Mahadevan, and Wells lists, scored AGREE / DISAGREE / SILENT, with the outcome words CONSENSUS / SINGLE-SOURCE / CONTESTED and the identification-layer limit.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "observed_at": "2026-10-21",
+     "independent_of": []
+    }
+   ]
+  },
+  {
+   "id": "F064-C11",
+   "kind": "requirement",
+   "text": "The concordance delivery is the machine-readable file concordance-297.json in this spec directory.",
+   "status": "draft",
+   "boundary": "The delivery form is carried from Spec 046 section 6 (DD-064-1), coordinated with Spec 045's stated acceptance form for Asset A inputs (a sign-by-sign record whose depicted-kind label carries its published source per sign). On CONTESTED the feed's depicted_kind and specific_identification are null, flagged_disputed is true, and every verbatim identification travels in disputed_identifications, so the asset records the dispute instead of picking a side. The human-readable rendering in the outcome record must not diverge from the JSON. Asset A consumes only this successor's delivery if one is produced; Spec 046's closure delivery in its own directory is not overwritten, replaced, or re-issued by this spec. The head proposition carries the form clause in this boundary: the file follows the spec section 6 form with producer_spec 064, produced on every terminal outcome, with an empty signs array plus a closure block on a closure before scoring.",
+   "depends_on": [
+    "F064-C10"
+   ],
+   "assumptions": [
+    "ASM-FEED-FORM",
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "a prose-only delivery that Spec 045's build would have to re-interpret (refused: reinterpretation at the asset build is where feed errors would enter, unrecorded)"
+   ],
+   "falsification_tests": [
+    "schema inspection at delivery: the file exists on every terminal outcome, parses, carries exactly the section 6 fields, four rows for the one sign (or the closure block), and its concurrence state equals F064-C10's mapping of its own rows"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a delivery whose form is negotiated after the result is known, shaped to what the asset would prefer to hear",
+    "verdict_rule": "the form is fixed in spec section 6 at draft, before any row is scored; the freeze of Spec 045 or of this spec may amend it only openly and before either spec executes",
+    "evidence_origin_groups": [
+     "design-packet",
+     "spec046-closure"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-18 (PR #195 packet, section D-18, read in full at Spec 046's draft and carried by this successor): identification step as D-15 step 1, then the concordance test across the CISI, Parpola, Mahadevan, and Wells lists, scored AGREE / DISAGREE / SILENT, with the outcome words CONSENSUS / SINGLE-SOURCE / CONTESTED and the identification-layer limit.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/046-horned-tiger-concordance/concordance-297.json"
+     ]
+    },
+    {
+     "ref": "specs/046-horned-tiger-concordance/concordance-297.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 046's closure delivery (SHA-256 772db4df...): concordance-297.json in the frozen closure form (schema glossa.concordance/1, signs empty, closure block IDENTIFICATION FAILED (sign unmatched)). It stands unedited under this successor (DD-064-9).",
+     "source_id": "specs/046-horned-tiger-concordance/concordance-297.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/03-fragments.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F064-C12",
+   "kind": "requirement",
+   "text": "The Spec 064 concordance draws solely on published-list sources.",
+   "status": "draft",
+   "boundary": "This is the design's no-circularity rule: the concordance feeds the classification, so the classification cannot be among its inputs. The crosswalk registry is a matching instrument, not a classification: registry descriptions are used to locate entries, never as a list's identification of the drawn sign (that comes only from the list itself, quoted). The preserved reference is a drawn-form reference for the source list's own entry, not a classification: its family anchor is corroboration of family placement, never a list's identification. The head proposition carries the exclusion clause in this boundary: Asset A material, Spec 045 depicted-kind labels, plus positional results are excluded; the only identification sources are the four published lists, with the crosswalk registry as matching instrument and the preserved reference as the source list's drawn-form reference.",
+   "depends_on": [
+    "F064-C06",
+    "F064-C11"
+   ],
+   "assumptions": [
+    "ASM-DRAWN-FORM-MATCHING"
+   ],
+   "alternatives": [
+    "using an Asset A draft label to break a matching tie (refused: the feed would then certify the asset with the asset's own answer)"
+   ],
+   "falsification_tests": [
+    "inspection of the run's inputs and match record: any use of Asset A material, D-05 labels, or positional data in matching or scoring falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "circularity by convenience - the asset's draft and the concordance drafted in the same week, each quietly leaning on the other",
+    "verdict_rule": "the run's recorded inputs are the section 2 set; anything outside it in the match or scoring path is a defect of the run, recorded as such",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-18 (PR #195 packet, section D-18, read in full at Spec 046's draft and carried by this successor): identification step as D-15 step 1, then the concordance test across the CISI, Parpola, Mahadevan, and Wells lists, scored AGREE / DISAGREE / SILENT, with the outcome words CONSENSUS / SINGLE-SOURCE / CONTESTED and the identification-layer limit.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json"
+     ]
+    },
+    {
+     "ref": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The adopted lane-2 explanation for this claim (SHA-256 3f645c9a...): what remains unknown is which drawn sign this is and whether the horned-tiger identification is agreed or one scholar's call; animal identifications are raw material for the shared classification behind D-05/D-06/D-13.",
+     "source_id": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/03-fragments.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F064-C13",
+   "kind": "requirement",
+   "text": "Every outcome product carries the spec section 8 reporting elements.",
+   "status": "draft",
+   "boundary": "The wording forms are spec section 5.3's, fixed in advance for the full outcome set including closures. A product for a closure carries the closure wording and the closure block instead of rows it does not have. The head proposition carries the element enumeration in this boundary: the source passage quoted with its locator; the four list rows in the spec section 6 citation/locator form with verbatim identifications or SILENT states; the per-sign concurrence state with its section 5.3 headline wording; the asset_a_feed block exactly as delivered; the fence sentence quoted in the claim text of record at draft; the preserved reference's digest, both step D derivation sheets and their reconciliation, the step C statement with the family anchor at its frozen status, the step M route used and the traps asserted; and the reference's QUALIFIED continuity status stated wherever the run's result is stated.",
+   "depends_on": [
+    "F064-C04",
+    "F064-C11"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "an outcome product lacking any named element - in particular a product that states the result without the QUALIFIED status, or without the step C statement - or carrying a headline wording not among section 5.3's forms, falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a result reported in fresh words chosen after the rows are known, softer than the pre-written wording for the outcome reached; or a result stated without its qualification, reading stronger than the reference it rests on",
+    "verdict_rule": "the section 8 reporting obligations are checked against the product at execution close; the wording used must be traceable to section 5.3 verbatim in structure",
+    "evidence_origin_groups": [
+     "design-packet",
+     "drawn-form-reference"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-18 (PR #195 packet, section D-18, read in full at Spec 046's draft and carried by this successor): identification step as D-15 step 1, then the concordance test across the CISI, Parpola, Mahadevan, and Wells lists, scored AGREE / DISAGREE / SILENT, with the outcome words CONSENSUS / SINGLE-SOURCE / CONTESTED and the identification-layer limit.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/064-sign297-concordance-successor/drawn-form-reference-297.json"
+     ]
+    },
+    {
+     "ref": "specs/064-sign297-concordance-successor/drawn-form-reference-297.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The preserved drawn-form reference for Wells's sign 297 (schema glossa.drawn-form-reference/1; SHA-256 33ee22ec..., computed at its commitment in this spec): the citation-pinned Figure 2.6 reference, the bent-ray descriptor derived from the thesis plate (thesis p. 90 / PDF p. 102; file SHA-256 4b39330c...), the P205 family anchor recorded as corroboration only and NOT an identification, the named traps, and continuity_status QUALIFIED with its recorded limitation as part of the record.",
+     "source_id": "specs/064-sign297-concordance-successor/drawn-form-reference-297.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/03-fragments.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F064-C14",
+   "kind": "requirement",
+   "text": "A Spec 064 outcome establishes identification-layer agreement only.",
+   "status": "draft",
+   "boundary": "Also excluded, and stated wherever an outcome is stated: any generalisation from this one sign to other animal identifications, and any reading of any inscription. Concordance measures agreement among published lists; lists can concur and be wrong together. The head proposition carries the exclusion clause in this boundary: meaning in use, role in inscriptions, plus correctness beyond the published record agreement are excluded, with no generalisation from this one sign.",
+   "depends_on": [
+    "F064-C01",
+    "F064-C03",
+    "F064-C10"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "a consensus result narrated as a decipherment result ('the tiger sign') because the identification layer 'feels' settled (refused: depiction-as-recorded is not meaning-in-use)"
+   ],
+   "falsification_tests": [
+    "inspection of every Spec 064 output: a meaning, use, role, or correctness claim beyond the identification layer falsifies compliance and is corrected by dated addendum, never by silent edit"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-IDENTIFICATION-AS-MEANING"
+    ],
+    "strongest_rival": "the reading in which a published consensus about a drawing settles what a sign meant",
+    "verdict_rule": "outputs are judged against this boundary at execution close; violations are recorded defects",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-18 (PR #195 packet, section D-18, read in full at Spec 046's draft and carried by this successor): identification step as D-15 step 1, then the concordance test across the CISI, Parpola, Mahadevan, and Wells lists, scored AGREE / DISAGREE / SILENT, with the outcome words CONSENSUS / SINGLE-SOURCE / CONTESTED and the identification-layer limit.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "observed_at": "2026-10-21",
+     "independent_of": []
+    }
+   ]
+  },
+  {
+   "id": "F064-C15",
+   "kind": "requirement",
+   "text": "Spec 046's records stand unedited under this successor.",
+   "status": "draft",
+   "boundary": "This successor's own outcome is recorded by dated appends, as the second half of the discipline this claim states. Spec 046's frozen record, its outcome record, and its closure delivery (SHA-256 772db4df...) stay exactly as executed; this successor re-runs the question in its own directory under its own freeze and delivery. Spec 046's IDENTIFICATION FAILED stands until a successor execution produces its own outcome - the preservation of the reference in this spec does not by itself change any verdict. The head proposition carries the append-only clause in this boundary: this successor's outcome uses the section 5.3 wording; the claim record receives a dated first-check append at execution close; the frozen claim record's prior entries, the Phase-104 evaluation, plus the lane-2 adopted explanation stay unedited by this spec's drafting and freeze acts.",
+   "depends_on": [
+    "F064-C01"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "inspection at execution close: any Spec 064 product that modifies a Spec 046 file or any frozen record file, or presents the preserved reference alone as a verdict on the identification, falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the pressure to tidy the fragment's record by rewriting the predecessor once a reference exists; or to read the reference's preservation as the identification Spec 046 could not make",
+    "verdict_rule": "compliance is judged by file inspection: predecessor and frozen files' pins unchanged, the outcome present as dated appends only",
+    "evidence_origin_groups": [
+     "claim-record",
+     "phase104-record",
+     "spec046-outcome"
+    ],
+    "boundary_confirmation": "C15 states where records stand (Spec 046's unedited; this successor's outcome as dated appends beside frozen records); C01 states what an outcome may state (identification-layer concurrence for this one sign). The two govern different objects - the place of records, and the content of the outcome - and are consistent by construction. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The claim record of the fragment (SHA-256 997fa336..., recomputed at this freeze): claim_id the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002, normalised claim 'Sign value: 297 / the horned tiger, or perhaps just 'tiger' generically', status untested, stage created; the record now carries Spec 046's dated first-check append of Phase-405 beside the frozen entry.",
+     "source_id": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/reports/phase104_claims_evaluation.json",
+      "specs/046-horned-tiger-concordance/outcome.md"
+     ]
+    },
+    {
+     "ref": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-104 evaluation of this claim (SHA-256 2d0b83e8...): verdict stays_untested under RULE-NUM - sign number cited without a stated numbering system; no matching entry located in the in-repo crosswalk; no falsification condition; evidence notes 86 crosswalk numeric IDs present in that record.",
+     "source_id": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+      "specs/046-horned-tiger-concordance/outcome.md"
+     ]
+    },
+    {
+     "ref": "specs/046-horned-tiger-concordance/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 046's outcome record (Phase-405, executed 2026-10-21): step 0 passed in full, step 1.1 named the source's list from the book's own apparatus, and step 1.2 closed IDENTIFICATION FAILED (sign unmatched) because Figure 2.6's drawn forms did not survive the held copy's text extraction and no inspectable drawn-form reference existed in the held record; the outcome names the unblocking act - an inspectable drawn-form reference for Wells's sign 297 preserved as a committed, hashed record.",
+     "source_id": "specs/046-horned-tiger-concordance/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+      "glossa-indus/reports/phase104_claims_evaluation.json"
+     ]
+    }
+   ]
+  }
+ ]
+}

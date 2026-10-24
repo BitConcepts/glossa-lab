@@ -1,0 +1,107 @@
+{
+ "schema_version": "1.0",
+ "definition": {
+  "spec": "specs/071-hunt-sky-signs-successor/spec.md",
+  "freeze_doc": "specs/071-hunt-sky-signs-successor/freeze.md",
+  "experiment_id": "spec071-hunt-sky-signs-successor",
+  "register": {
+   "path": "specs/071-hunt-sky-signs-successor/claims.json",
+   "register_version": "0.9-frozen-candidate",
+   "claims": 13,
+   "aee_hook_pass": "PASSED at the freeze act of 2026-10-22 under aee 1.5.3: the register was recovered at the freeze from 0.5-draft (not loadable as drafted: evidence kinds and a source quality the engine does not accept) through 0.6 (loadability restatement), 0.7 (round 1: 6 failure modes - 4 irreducibility and 2 negation-conflict challenges, minimum propagated 0.845) and a second round to 0.9-frozen-candidate, over which after_specify, after_plan and after_tasks each PASS with zero failure modes and no claim below the 0.70 threshold (minimum propagated 0.845); the freeze rulings DD-071-9, DD-071-10 and DD-071-11 were carried into the boundaries of F071-C08 and F071-C07 before the final round (gate reading DD-071-14, the DD-038-10 form; record in specs/071-hunt-sky-signs-successor/aee/freeze-aee-note.md)"
+  },
+  "basis": {
+   "adjudication": "specs/071-hunt-sky-signs-successor/adjudication.md",
+   "decisions": "DD-071-1 to DD-071-7 as drafted (first measurement not reproduction; the commissioned freeze order 069-070-071; one battery statement; no phase at draft; Spec 050's criteria carried unchanged; evidence observed_at of the draft; the AEE freeze gate in the DD-038-10 form), and the freeze rulings DD-071-8 to DD-071-14 at adjudication section 8 (intake record landed; Asset A digest copied and the order recorded; the shared keying route; POPULATION NOT KEYED disposition; own OSF registration; Phase 434; the gate reading)"
+  },
+  "design": {
+   "phase": "Phase 434",
+   "question": "Do the sky signs gather at the ends of texts - Spec 050's question in re-scoped form, measured on the graded ICIT corpus, the celestial class fixed by Spec 069's frozen Asset A classification",
+   "celestial_class": "Exactly the signs whose Asset A row carries depicted_kind = sky_cycle (section 4.1); the class is not widened to any jurisdiction-coded subset, to any sign whose label a reader might call celestial while its kind is object_goods, human or other, or to any worker's judgement; contested signs are excluded from the primary and enter only in S2 under their CISI-governed labels; unidentified signs are never celestial",
+   "frame": "The ending population is Shakti's own terminal-strong set: the signs classed TERMINAL_STRONG by the section 2 battery over the primary population (documented-lineage rows only), enumerated in full in Wells space and published at gate 0.4 before any test",
+   "criteria": "Spec 050's criteria carried unchanged (DD-071-5): enrichment ratio R_sky / R_cmp at least 1.5; Fisher's exact test, two-sided, at the 5 percent level; and the half-of-occurrences condition - at least half the celestial class's total occurrences come from member signs individually above the corpus-wide final-position rate. TOO THIN floor (DD-050-3): below 30 total occurrences for the celestial class or the comparison class at gate 0.4 closes TOO THIN, recorded as INCONCLUSIVE's thin form",
+   "comparison_class": "The frequency-matched class of section 4.2: non-celestial, non-contested signs in the primary whose total occurrence count lies within the celestial members' minimum-to-maximum band, inclusive; primary rates are pooled occurrence rates",
+   "keying": "DD-071-10: the route Spec 070's freeze fixed, stated in this spec's own record - a Shakti sign's ICIT code is its Wells number, resolved through the pinned canonical sign registry's parpola_1982 rows' wells_ids to exactly one Asset A sign_key; zero or multiple resolutions is unkeyable",
+   "disposition": "DD-071-11 (conservative): an unkeyable sign enumerated at gate 0.4 closes the execution as POPULATION NOT KEYED, the sign named",
+   "sensitivities": "S1 borderline Asset A rows removed; S2 contested rows included under their CISI-governed sky labels; S3 the documented + corroborated population with the battery classes re-derived (P-F1 S4 both-ways reporting)",
+   "outcomes": [
+    "SUPPORTED",
+    "NOT SUPPORTED",
+    "INCONCLUSIVE",
+    "TOO THIN",
+    "CLOSED AT STEP 0 - ASSET NOT FROZEN",
+    "CLOSED AT STEP 0 - ASSET PIN MISMATCH",
+    "SHAKTI INTAKE NOT REPRODUCED",
+    "POPULATION NOT KEYED",
+    "INVALID",
+    "NOT-RUN",
+    "NOT ADJUDICATED"
+   ],
+   "osf": "DD-071-12: this spec files its own OSF registration at its freeze under the programme's OSF project; the filing is recorded in osf-spec-registration.md in this directory",
+   "execution_gate": "Phase 434 executes only against this frozen record; step 0 asserts Asset A against the pin source this freeze fixes (Spec 069's asset-a-freeze.json in its merged executed record, gate 0.1) and the Shakti intake under P-F1 S1/S2 (gate 0.2), input integrity and coverage (gate 0.3), the enumeration, keying and class census with the TOO THIN floor (gate 0.4), and the freeze-order proof including this freeze following Spec 070's freeze (gate 0.5)",
+   "limits": "Position is not meaning: no outcome establishes that sky signs marked calendars, cycles, or any content; depiction is the published identification layer, not ground truth; Spec 037's 49 percent census caution travels with every statement of the result"
+  },
+  "inputs": {
+   "asset_a": {
+    "path": "specs/069-hunt-asset-a/asset-a/depicted-kind-classification.csv",
+    "sha256": "952319355098698f01e6d8499b0384f84ac964e1bc4ecdc03c77ed920c7a5b5b",
+    "rows": 187,
+    "per_kind_counts": {
+     "animal": 20,
+     "sky_cycle": 0,
+     "object_goods": 14,
+     "human": 25,
+     "other": 127,
+     "contested": 0,
+     "unidentified": 1
+    }
+   },
+   "shakti_corpus": {
+    "record": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+    "corpus_sha256": "345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68",
+    "row_grades_sha256": "02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739",
+    "rows": 5704,
+    "grades": {
+     "documented": 3212,
+     "corroborated": 2087,
+     "uncorroborated": 405
+    }
+   },
+   "canonical_registry": {
+    "path": "data/crosswalks/canonical_sign_registry.csv",
+    "sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",
+    "rows": 803
+   },
+   "crosswalk": {
+    "path": "data/crosswalks/sign_crosswalk_master.csv",
+    "sha256": "4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf"
+   },
+   "anchors": {
+    "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
+    "sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569"
+   },
+   "pin_verification": "verified first-hand at the freeze act of 2026-10-22 on the merged record as it stands after Spec 070's freeze merge (1213029d): Asset A's digest recomputed from the canonical CSV on the merged tree equals the executed record's quoted value; the Shakti corpus and row-grades files hashed directly at their restricted-local paths and equal the intake record's pins, their grade census recounted from the grades file itself; the registry, crosswalk and anchors hashed in the tree and equal their pins; the registry's parpola_1982 Wells map recounted (498 Wells ids, zero ambiguous)"
+  },
+  "environment": {
+   "python": "3.12.3",
+   "runner": "backend (venv glossa-lab)",
+   "aee": "1.5.3 (adopted environment; package pinned >=1.5.0,<1.6)",
+   "specify": "1.0.10"
+  }
+ },
+ "sources": {
+  "specs/071-hunt-sky-signs-successor/freeze.md": "31332f85dccd68cd5b19bc708ba9254e41ecacf9e2d747c3969e9ccb7e3c8681",
+  "specs/071-hunt-sky-signs-successor/spec.md": "4977256626647134fbbb3e7505307e44becdc88ad527d64efae07166c6ecf0da",
+  "specs/071-hunt-sky-signs-successor/claims.json": "2d8f2ea63ce5e7619d7cf5b23b0c56a29743be987e53734d3b7bdd1c11b5e30e",
+  "specs/071-hunt-sky-signs-successor/adjudication.md": "effdbfcbd5ef18b2e68f963fa864ac3bdd8c308f0873d25fec6041621299dcaa",
+  "specs/071-hunt-sky-signs-successor/aee/freeze-aee-note.md": "1120cf3d06776a6a74615320d1c0befbe6a876d55c9dc4cfe89773d355843986",
+  "specs/071-hunt-sky-signs-successor/build_freeze.py": "fe167eafacfdd4463c6f349ffa1ab5db583b01812ce1caaa7add27645d2cb34d",
+  "backend/tests/test_spec071_freeze.py": "1cab935986a8a6054f0fdd6f20e44c066fe9fcfe46efbe573044f5bd281a7276"
+ },
+ "environment": {
+  "python": "3.12.3",
+  "platform": "Linux",
+  "aee": "1.0.4"
+ },
+ "digest": "c06a7a86804d8da2c9896638446f5712be9eccb8716a7b02303a5944f4bc0478"
+}

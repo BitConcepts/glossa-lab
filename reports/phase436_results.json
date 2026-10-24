@@ -1,0 +1,123 @@
+{
+ "phase": 436,
+ "spec": "073",
+ "spec_freeze_digest": "5419c4c413189acdec31c15494daf1be759c10c28f84d594935c9629e761dc98",
+ "outcome": "REPAIRED WITH NAMED SHORTFALL",
+ "registry_v2_sha256": "42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71",
+ "asset_a_v2_sha256": "681e017da8b3f93aeade7e85361565fa8f3f4178b167dfa2448f5b4c239a8193",
+ "step0_verdict": "PASS",
+ "M1_wells_coverage": {
+  "baseline_distinct_wells_ids_v1": 498,
+  "parpola_1982_rows_distinct_wells_ids_v2": 498,
+  "icit_wells_rows_distinct_ids_v2": 210,
+  "completions_added_to_parpola_map": 0,
+  "total_distinct_ids_v2": 708
+ },
+ "M2_five_named_signs": {
+  "136": {
+   "disposition": "resolved + keyed",
+   "registry_v2_sign_id": "W136",
+   "asset_a_v2_row": true,
+   "depicted_kind": "unidentified",
+   "row_origin": "new_entry",
+   "catalog_section_2_5_placement": "Parpola (1994) sign 6 (Fuls 2023, Catalog of Indus Signs, section 2.5)"
+  },
+  "298": {
+   "disposition": "resolved + keyed",
+   "registry_v2_sign_id": "W298",
+   "asset_a_v2_row": true,
+   "depicted_kind": "unidentified",
+   "row_origin": "new_entry",
+   "catalog_section_2_5_placement": "Parpola (1994) sign 217 (Fuls 2023, Catalog of Indus Signs, section 2.5)"
+  },
+  "401": {
+   "disposition": "resolved + keyed",
+   "registry_v2_sign_id": "W401",
+   "asset_a_v2_row": true,
+   "depicted_kind": "unidentified",
+   "row_origin": "new_entry",
+   "catalog_section_2_5_placement": "Parpola (1994) sign 107 (Fuls 2023, Catalog of Indus Signs, section 2.5)"
+  },
+  "617": {
+   "disposition": "resolved + keyed",
+   "registry_v2_sign_id": "W617",
+   "asset_a_v2_row": true,
+   "depicted_kind": "unidentified",
+   "row_origin": "new_entry",
+   "catalog_section_2_5_placement": "Parpola (1994) sign 272 (Fuls 2023, Catalog of Indus Signs, section 2.5)"
+  },
+  "824": {
+   "disposition": "resolved + keyed",
+   "registry_v2_sign_id": "W824",
+   "asset_a_v2_row": true,
+   "depicted_kind": "unidentified",
+   "row_origin": "new_entry",
+   "catalog_section_2_5_placement": "Parpola (1994) sign 373 (Fuls 2023, Catalog of Indus Signs, section 2.5)"
+  }
+ },
+ "M3_keyable_shares": {
+  "opening_strong_31": {
+   "baseline_keyed_v1_route": 26,
+   "keyed_after_repair": 31,
+   "remainder_by_reason": {},
+   "remainder": []
+  },
+  "documented_557": {
+   "baseline_keyed_v1_route": 285,
+   "keyed_after_repair": 556,
+   "remainder_by_reason": {
+    "no registry resolution": 1
+   },
+   "remainder": [
+    {
+     "code": "999",
+     "reason": "no registry resolution"
+    }
+   ]
+  }
+ },
+ "M4_census": {
+  "census_by_kind_and_origin": {
+   "animal|carried_v1": 20,
+   "animal|new_entry": 10,
+   "human|carried_v1": 25,
+   "human|new_entry": 18,
+   "object_goods|carried_v1": 14,
+   "object_goods|new_entry": 8,
+   "other|carried_v1": 127,
+   "other|new_entry": 119,
+   "unidentified|carried_v1": 1,
+   "unidentified|new_entry": 210
+  },
+  "celestial_sky_cycle_rows": 0,
+  "spec_071_too_thin_floor": 30,
+  "note": "the celestial count is a class size of the repaired classification asset, stated for comparison beside Spec 071's frozen floor; it is not a re-run of Spec 071 and carries no verdict"
+ },
+ "M5_frame_schedule": {
+  "frame_accounting": {
+   "attested_frame_codes": 707,
+   "carried_by_v1_identity": 496,
+   "new_icit_wells_identity": 210,
+   "no_published_identity": 1,
+   "contested_identity": 0,
+   "check": true
+  },
+  "no_published_identity_codes": [
+   "999"
+  ],
+  "contested_identity_codes": [],
+  "lineage_statement_PF1_S3": "every identity statement behind Registry v2 and every label behind Asset A v2 sits in the ICIT tradition and its published concordances (the CISI sign list, the Fuls 2023 Catalog) \u2014 consistency within one tradition, not independent corroboration"
+ },
+ "closing_v1_reassertion": {
+  "registry_v1_sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",
+  "asset_a_v1_sha256": "952319355098698f01e6d8499b0384f84ac964e1bc4ecdc03c77ed920c7a5b5b",
+  "registry_v1_pin": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",
+  "asset_a_v1_pin": "952319355098698f01e6d8499b0384f84ac964e1bc4ecdc03c77ed920c7a5b5b",
+  "untouched": true
+ },
+ "does_not_establish": [
+  "It does not re-run, amend, or supersede Spec 070's POPULATION NOT KEYED closure or Spec 071's INVALID closure; both stand exactly as recorded, and neither Hunt claim changes state.",
+  "It does not decide whether either Hunt question should be re-frozen against the repaired surface; that is a separate owner decision.",
+  "It establishes nothing about what any sign means or depicts beyond the published labels entered; the celestial class size is a property of the published sources' labels, not of the script."
+ ]
+}

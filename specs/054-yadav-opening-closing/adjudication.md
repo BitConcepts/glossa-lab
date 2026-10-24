@@ -1181,3 +1181,58 @@ clean under `verify_freeze`. Nothing else in §9
 changes: the append's text, its proof standard,
 and the claim's untouched status and stage are as
 recorded.
+
+### 9.7 CI interaction addendum — 2026-10-23 (same act, before merge)
+
+The freeze PR's first full CI run (run 40061894770
+on the merged tree) failed exactly one test of
+1,139: Spec 029's Phase-104 blast-radius test
+(`test_spec029_phase104_correction.py`). Two
+interactions, both recorded here because this PR
+carries both reconciliations:
+
+- **The append's own score movement (expected,
+  now pinned).** That test scores the whole
+  extracted-claims store live and pins every
+  claim's exact AEE score against its
+  post-correction fixture. The §8 append gave
+  `yadav_2009_arxiv_manual_002` its first
+  falsification condition, so its falsifiability
+  component moved 0.0 → 1.0 (direct/propagated
+  0.70 → 0.85, band medium → high) — the append
+  doing exactly what it was for. Following the
+  test file's own supersession precedent (its
+  2026-10-20 aee-1.5.0 fixture regeneration),
+  the post-correction fixture was regenerated
+  from the live store under aee 1.5.0: exactly
+  one entry differs, manual_002's, in exactly
+  those four values. The movement test now names
+  the append as a second, separately caused
+  governed movement beside the Phase-104
+  correction's three, and pins it exactly; any
+  further unexplained movement still fails it.
+  The post-merge (pre-correction) fixture is
+  unchanged.
+- **A pre-existing key-set skew, exposed by the
+  merge (not caused by this freeze).** The same
+  file's corrected-records test pins the three
+  Phase-104 records' exact key sets. On `main`,
+  two of the three (critique_0001 / critique_0002)
+  also carry `audit_note_2026_10_22` — the dated
+  Roif-credit note appended 2026-10-22 — which
+  the key pin predates; the merged tree is the
+  first state in which pin and records stood
+  together under a full CI run. The pin now
+  admits the note field for those two records,
+  with its provenance commented in the test, in
+  the same form as the file's existing
+  `evidence_instances` admission. No claim record
+  was changed by this reconciliation.
+
+Because this file is a digest-covered source,
+the freeze digest is recomputed over the
+corrected texts in this same act and stands in
+`freeze.json` (the §9.6 digest is superseded in
+the same manner §9.6 recorded). The freeze's
+substance — the append, its proof, the pins,
+the hooks, the decisions — is unchanged.

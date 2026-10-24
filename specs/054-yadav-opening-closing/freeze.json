@@ -69,8 +69,8 @@
    "claim_store": {
     "file": "glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json",
     "sha256_before_append": "904766238d4aec8fecf0a01dc7c8935689f378e31062485edc699874a36847a3",
-    "sha256_after_append": "dcbaf64a728bc4ff7a0a1f76f2c867f924734cbe7f9c8cab2554d131b22533d7",
-    "bytes_after_append": 15402
+    "sha256_after_append": "938174b0dee14169a5340c9299c73f4eb5b997377f8198a146ef611e73924050",
+    "bytes_after_append": 17276
    },
    "phase43": {
     "file": "outputs/phase43_all.json",
@@ -103,19 +103,19 @@
   }
  },
  "sources": {
-  "specs/054-yadav-opening-closing/freeze.md": "f999e395ba150d19e39fbeca7b3c45b82b75472f6adc27cf2867af56ba6e13c3",
+  "specs/054-yadav-opening-closing/freeze.md": "7eeaa23b32740e487e015dacef1ef28191c9cffa7b58516c99ac83a1d716150b",
   "specs/054-yadav-opening-closing/spec.md": "21021835b11fe8ba78072d4c273f2bdd23cdfd8b7b25386d0d1382382c5e2cca",
   "specs/054-yadav-opening-closing/amendment.md": "4edd3e20e680179160552394c80f280688e96018f390e0e7f04306a35281b0db",
   "specs/054-yadav-opening-closing/claims.json": "ea161e47ed355af909af707f84e2ff5f4367b88f8160dd30d6e8938d8c7d24f0",
-  "specs/054-yadav-opening-closing/adjudication.md": "5c426266b88b5e0c75ba5509078cac2781e0762f3087294e07f95bc138c06d1f",
+  "specs/054-yadav-opening-closing/adjudication.md": "39bc541ac68e31bce2bf07cfdbd3ef81513c37004958aff7f112be940c1b116d",
   "specs/054-yadav-opening-closing/aee/freeze-aee-note.md": "15f67a08fb12cbc014a263b7e799354a6a3e933cbe015a675176395bad480372",
-  "specs/054-yadav-opening-closing/build_freeze.py": "a659c718f8de192abe6f6732c581bf8cfc3986f78013e937cef98f78d74f9b06",
-  "backend/tests/test_spec054_freeze.py": "c9946b487bd56163f72c78b6a2cc5d740cab4003d4e04b8c0c8b48544ed28a8c"
+  "specs/054-yadav-opening-closing/build_freeze.py": "a70f36b56844a507cd9649e2b06a6c65998e01860f07faa89405ec4ff8aa435b",
+  "backend/tests/test_spec054_freeze.py": "015a89d09ded81a72798695db4e16e553d6051a229f9f71969bb1dbcbdce63a7"
  },
  "environment": {
   "python": "3.12.3",
   "platform": "Linux",
   "aee": "1.5.0"
  },
- "digest": "60d2405770e3f87bf925abb5913651eb96fab1598bd5cb344135662ccefc3db0"
+ "digest": "4d1e348087891d42a1e9c8c95decdf15c383fdf352cfefdefc8eeb6baf71d43d"
 }

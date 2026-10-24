@@ -83,7 +83,7 @@ the files as committed by this freeze:
 | Input | SHA-256 | Bytes |
 |---|---|---|
 | `glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json` — **before the append** (the §7.1 pin) | `904766238d4aec8fecf0a01dc7c8935689f378e31062485edc699874a36847a3` | 13,230 |
-| `glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json` — **after the append** (the pin this freeze registers) | `dcbaf64a728bc4ff7a0a1f76f2c867f924734cbe7f9c8cab2554d131b22533d7` | 15,402 |
+| `glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json` — **after the append** (the pin this freeze registers; re-based at merge, §4) | `938174b0dee14169a5340c9299c73f4eb5b997377f8198a146ef611e73924050` | 17,276 |
 | `outputs/phase43_all.json` | `78a6c21908b9362854c54dd3d820d717be22feab3af11135663fa14aaf554fe4` | 15,047 |
 | `glossa-indus/analysis/positional/hunt_tripartite_test.json` | `0e546962c1b72b929c87d4ce40c97633e8e3e340737f32f5dd3eae9f04759e48` | 923 |
 | `data/crosswalks/parpola_mahadevan_crosswalk_v1.json` | `4e7559dfc2ced83c79440029a1b2749fe9d21eca7f6db3bf3b66f0cfa647dcbb` | 257,779 |
@@ -159,7 +159,28 @@ that the design's original falsifier was never
 appended because the 2026-10-21 freeze failed
 before any append (`adjudication.md` §7.2),
 and that this condition belongs to the amended
-statement (amendment §2). The durability proof
+statement (amendment §2).
+
+**Merge resolution (recorded at
+`adjudication.md` §9.6).** On `main`, the
+store had moved after the draft's §7.1
+verification — a regeneration of 2026-10-21
+and `audit_note_2026_10_22` fields on both
+manual claims (the Spec 025 material audit) —
+so the append was re-based onto `main`'s
+current store (SHA-256 `ec31778a…` before the
+append; its `manual_002` still carried no
+falsification condition), entered identically
+and without regenerating the committed file,
+because regeneration drops the dated note
+fields it does not carry and the audit notes
+are another act's record. The §7 proof was
+re-run against that base and passed verbatim.
+The §2 post-append pin is the resolved file's
+hash; the append as first performed on the
+branch's pinned copy (post-append SHA-256
+`dcbaf64a…`) stands at `adjudication.md` §9.4
+as the freeze act's record. The durability proof
 (the amendment §7 standard) was run at this
 freeze and is recorded at `adjudication.md`
 §9.4: regeneration through the fixed generator

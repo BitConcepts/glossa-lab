@@ -1128,3 +1128,56 @@ the amended statement.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+### 9.6 Merge-resolution addendum — 2026-10-23 (same act, before merge)
+
+Recorded openly, because it changes two values the
+freeze registered. When PR #260 was marked ready,
+GitHub reported it CONFLICTING with `main`, on one
+file: the claim store. The draft branch's copy was
+the §7.1-pinned record (SHA-256 `90476623…`), but on
+`main` the store had moved after the draft's
+verification: a regeneration of 2026-10-21
+(`extraction_date` 2026-10-21T15:29:26Z) and, on
+**both** manual claims, an `audit_note_2026_10_22`
+field (the Spec 025 material audit's dated notes).
+`main`'s store recomputes to SHA-256
+`ec31778a75cbc56f27f385ed7da800edb874a8f600cbe102f46087a8159d6239`
+(15,104 bytes), and its `manual_002` still carries
+no `falsification_condition` — the append's object
+is unchanged, and no other file in the PR
+conflicts (the generator on `main` is byte-identical
+to the branch's base; the fix applies cleanly).
+
+**Resolution.** The append was re-based onto
+`main`'s current store: the §8 condition and the
+dated note were entered on that record identically,
+**without** regenerating the committed file —
+regeneration under the fixed generator preserves
+the condition but drops dated note fields it does
+not carry, and dropping the Spec 025 audit notes
+(another act's dated record) is not this freeze's
+to do. The §7 proof was re-run against the new base
+in a scratch tree: the appended condition survives
+regeneration **verbatim** on this base too, and
+`manual_001`'s authored condition is intact. The
+resolved store — `main`'s record plus exactly the
+two appended fields — recomputes to SHA-256
+`938174b0dee14169a5340c9299c73f4eb5b997377f8198a146ef611e73924050`
+(17,276 bytes). **That hash supersedes
+`dcbaf64a…`** (the append as first performed on the
+branch's pinned copy, §9.4, which stands as the
+record of the freeze act as performed) as the
+post-append pin the freeze registers, in
+`freeze.md` §2, in the freeze definition, and in
+the freeze tests. Because `freeze.md`, this file,
+`build_freeze.py`, and the test file are
+digest-covered sources, the freeze digest
+`60d2405770e3f87b…` — computed over the
+pre-resolution texts — is superseded by the digest
+recomputed over the corrected texts in this same
+act, which stands in `freeze.json` and replays
+clean under `verify_freeze`. Nothing else in §9
+changes: the append's text, its proof standard,
+and the claim's untouched status and stage are as
+recorded.

@@ -231,8 +231,8 @@ DEFINITION = {
         "claim_store": {
             "file": "glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json",
             "sha256_before_append": "904766238d4aec8fecf0a01dc7c8935689f378e31062485edc699874a36847a3",
-            "sha256_after_append": "dcbaf64a728bc4ff7a0a1f76f2c867f924734cbe7f9c8cab2554d131b22533d7",
-            "bytes_after_append": 15402,
+            "sha256_after_append": "938174b0dee14169a5340c9299c73f4eb5b997377f8198a146ef611e73924050",
+            "bytes_after_append": 17276,
         },
         "phase43": {
             "file": "outputs/phase43_all.json",

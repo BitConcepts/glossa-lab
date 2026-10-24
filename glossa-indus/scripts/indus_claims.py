@@ -495,20 +495,28 @@ def process_document(doc_id: str) -> dict:
         }
         for claim in all_claims:
             claim.update(prior_corrections.get(claim.get("claim_id"), {}))
-        # Dated-append carry-over (Spec 052 execution, 2026-10-24):
-        # entries appended to a claim record under the program's
-        # append-only discipline — audit notes, spec outcome
-        # appends — are dated records keyed with a trailing
-        # _YYYY_MM_DD date (e.g. audit_note_2026_10_22,
-        # spec052_outcome_append_2026_10_24). They are not
+        # Outcome-append carry-over (Spec 052 execution,
+        # 2026-10-24): a spec execution's outcome append to a
+        # claim record (the frozen Spec 052 section 4.2 duty) is
+        # a dated record keyed specNNN_outcome_append_YYYY_MM_DD
+        # (e.g. spec052_outcome_append_2026_10_24). It is not
         # extraction output and a regeneration must never drop
-        # them (the same never-drop principle as the stage,
+        # it (the same never-drop principle as the stage,
         # merge-state, and status-correction carry-overs above):
-        # carry any such prior key the regenerated claim does not
-        # itself emit, verbatim, by claim identity. CI on the
-        # Spec 052 execution PR caught a regeneration stripping
-        # the section 4.2 outcome appends in-tree.
-        _dated_append = re.compile(r"_\d{4}_\d{2}_\d{2}$")
+        # carry any such prior key the regenerated claim does
+        # not itself emit, verbatim, by claim identity. CI on
+        # the Spec 052 execution PR caught a regeneration
+        # stripping the section 4.2 outcome appends in-tree.
+        # Scoped deliberately to outcome-append keys: the
+        # broader dated-append family (audit_note_YYYY_MM_DD)
+        # keeps its prior regeneration behaviour — the Spec 029
+        # Phase I verbatim-instance pin compares a preserved
+        # instance against the live record, and carrying audit
+        # notes over regeneration broke that pin in the same
+        # CI run; widening this carry-over is a separate,
+        # separately-pinned change.
+        _dated_append = re.compile(
+            r"^spec\d{3}_outcome_append_\d{4}_\d{2}_\d{2}$")
         prior_appends = {
             c.get("claim_id"): {
                 k: c[k]

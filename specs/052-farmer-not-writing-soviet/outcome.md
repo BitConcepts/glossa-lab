@@ -140,13 +140,24 @@ this execution, carried over only enumerated
 fields — a regeneration would have stripped
 these appends (CI on this execution's PR
 caught exactly that, in-tree, via the Spec 029
-tests). The generator now carries over dated
-append keys (a trailing `_YYYY_MM_DD` date) by
-claim identity, under the same never-drop
-principle as its stage, merge-state, and
+tests). The generator now carries over
+spec outcome-append keys
+(`specNNN_outcome_append_YYYY_MM_DD`) by claim
+identity, under the same never-drop principle
+as its stage, merge-state, and
 status-correction carry-overs; a test in
 `backend/tests/test_spec052_execution.py`
 proves the preservation and fails without it.
+The carry-over is scoped to outcome-append
+keys deliberately: audit notes
+(`audit_note_YYYY_MM_DD`) keep their prior
+regeneration behaviour, because the Spec 029
+Phase I verbatim-instance pin compares a
+preserved instance against the live record
+and carrying audit notes over regeneration
+broke that pin in the same CI run — widening
+the carry-over is a separate, separately
+pinned change, not this execution's to make.
 The one exact-shape pin over the corrected
 fragment records (the Phase-104 correction
 tests) was amended the same day, in its own

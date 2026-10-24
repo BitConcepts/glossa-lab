@@ -159,10 +159,10 @@ def test_regeneration_preserves_the_outcome_append(tmp_path):
     """The extracted-claims generator regenerates the store
     wholesale (the Spec 029 tests do it in-tree); the dated
     section 4.2 outcome append is a record, not extraction
-    output, and the generator's dated-append carry-over must
-    preserve it — and the 2026-10-22 audit note — verbatim.
-    (CI on this spec's execution PR caught the append being
-    stripped in-tree before the carry-over existed.)"""
+    output, and the generator's outcome-append carry-over
+    must preserve it verbatim. (CI on this spec's execution
+    PR caught the append being stripped in-tree before the
+    carry-over existed.)"""
     import importlib.util
 
     spec = importlib.util.spec_from_file_location(
@@ -209,10 +209,6 @@ def test_regeneration_preserves_the_outcome_append(tmp_path):
     ]
     prior_claim = prior["claims"][0]
     assert claim[APPEND_KEY] == prior_claim[APPEND_KEY]
-    assert (
-        claim["audit_note_2026_10_22"]
-        == prior_claim["audit_note_2026_10_22"]
-    )
     assert claim["claim_status"] == "contradicted"
 
 

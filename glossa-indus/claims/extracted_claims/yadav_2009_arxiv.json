@@ -1,7 +1,7 @@
 {
   "document_id": "yadav_2009_arxiv",
   "title": "Statistical analysis of the Indus script using n-grams (preprint)",
-  "extraction_date": "2026-10-13T12:11:33.533607",
+  "extraction_date": "2026-10-24T03:39:02.889251",
   "total_claims": 2,
   "auto_extracted": 2,
   "manually_curated": 2,
@@ -16,7 +16,7 @@
       "falsification_condition": "If frequency distribution deviates from Zipf-Mandelbrot law.",
       "glossa_lab_evidence": "Phase-43: V3 Zipf exponent ~1.35 (super-Zipfian) [VERIFIED]",
       "confidence_in_source": 0.95,
-      "extracted_at": "2026-10-13T12:11:33.528307",
+      "extracted_at": "2026-10-24T03:39:02.860408",
       "stage": "explained",
       "stage_source": "transition-service:stage_history[1]",
       "stage_as_of": "2026-10-13T10:12:00+00:00",
@@ -102,7 +102,7 @@
       "testability": "directly_testable",
       "glossa_lab_evidence": "Phase-43: 20 TERMINAL_STRONG + 40 INITIAL_STRONG signs identified in V3 corpus [VERIFIED]",
       "confidence_in_source": 0.95,
-      "extracted_at": "2026-10-13T12:11:33.528307",
+      "extracted_at": "2026-10-24T03:39:02.860408",
       "stage": "explained",
       "stage_source": "transition-service:stage_history[1]",
       "stage_as_of": "2026-10-13T10:12:00+00:00",
@@ -176,6 +176,18 @@
         "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
         "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
         "explanation_text": "The program's positional battery (Phase-43) found the pattern clearly on the V3 corpus: 40 signs that strongly prefer the opening position and 20 that strongly prefer the closing position. That is a real, reproducible feature of this corpus, and it is why the claim is recorded as strongly supported. The defect sits in the claim's own paperwork, and the audit flagged it: this record carries no falsification condition - nothing on the record states what result would have counted against the claim. A strong verdict without a stated way to be wrong is exactly the verified-but-unexplained risk this program now tracks: the counts are checked, but the claim as recorded could not have failed. Like its companion Zipf claim, this one was also double-recorded (2009 and 2010 extractions) until the Phase I dedupe merged the pair into this single claim."
+      },
+      "falsification_condition": "This claim, as evaluated under battery NB-1 (the Spec 054 amendment, as frozen), is falsified if any of the following holds when the frozen battery is run on the frozen arm-1 and arm-2 corpora: (1) either arm-1 positional-strong set (opening or closing) is empty; (2) for either class, fewer than half of arm 1's positional-strong signs are also positional-strong in arm 2 in the same class, through the pinned crosswalk; or (3) the pooled cross-arm overlap of positional-strong signs does not exceed the 95th percentile of the 999-shuffle label-permutation null — the three conditions applied under the precedence rule of the Spec 054 amendment (§5.5).",
+      "spec054_falsifier_append_2026_10_23": {
+        "date": "2026-10-23",
+        "kind": "spec054-freeze-falsifier-append",
+        "note": "Falsifier append (Spec 054 amended freeze, 2026-10-23): the falsification_condition appended beside this note is the Spec 054 amendment's section 8 text, appended at the amended freeze under the owner's mini-gate approval of 2026-10-23. The design's original falsifier was never appended, because the 2026-10-21 freeze failed before any append (specs/054-yadav-opening-closing/adjudication.md section 7.2). This condition belongs to the amended statement (amendment.md section 2), not to Yadav et al. (2010)'s original Phase-43 statement. The generator's regeneration carry-over (the Spec 054 amendment's section 7.5(3) act) preserves falsification_condition by claim identity, so this append survives regeneration - proven at this freeze by regenerate-and-read-back. This note field is not in the carry-over list: a future regeneration keeps the condition and drops this note.",
+        "evidence": [
+          "specs/054-yadav-opening-closing/amendment.md",
+          "specs/054-yadav-opening-closing/adjudication.md",
+          "specs/054-yadav-opening-closing/freeze.md"
+        ],
+        "effect": "yadav_2009_arxiv_manual_002 gains a falsification_condition (the amendment's section 8 text, verbatim); no other field of the claim changes; its recorded status (strongly_supported) and stage (explained) are untouched."
       }
     }
   ],

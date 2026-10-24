@@ -10573,3 +10573,49 @@ reports/phase438_results.json, reports/phase438_report.md.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-24 — Spec 040 EXECUTED (Phase-439): D-25 G1 chronology-controlled rerun — NOT-YET-TESTABLE at the section 5 margins gate
+
+The chronology-controlled rerun of G1 is now executed under the
+frozen contract (freeze digest 16aeeb70...; OSF registration
+https://osf.io/2rgtb/, approved 2026-10-24). Step 0 ran in order,
+fail-closed, and PASSED all three gates: pin verification (every
+freeze section 3 pin recomputed — the accepted Spec 041 artifact
+at 1e5b54c9..., its meta and step-0 census, Spec 039's artifact at
+64f288d3..., the Phase-139 covariates at a0f0d05a..., the spine at
+9dc2fba5..., the anchors at df0cf620...; the freeze record
+replays; the ICIT-lineage layer (horus84) asserted at c368f290...
+before any use); population reproduction and the section 4.1 join
+under derivation A1 (5,410 rows; covariates in agreement with the
+layer on every row; the join yields exactly one assignment row
+per inscription ID and reproduces the freeze counts exactly —
+1,457 placed: EARLY 32, MATURE 1,386, LATE 39; 3,953 unplaced);
+and determinism (the record computed twice, identical; two venue
+runs byte-identical). The section 5 margins gate then FAILED on
+arms 1 and 2 and passed arm 3: EARLY retains assigned
+inscriptions from 1 distinct site (Harappa) and LATE from 2
+(Dholavira, Lothal) against the 5-site arm (MATURE retains 5);
+the unassigned share is 73.1% against the 40% arm; permutable
+inscriptions under the primary strata number 1,205 against the
+1,000 arm (DD-040-6 retained). The execution closes
+NOT-YET-TESTABLE (DD-040-5): no profile table, no permutation,
+and no interval was computed, and the section 7 regression, the
+section 6 primary, and the section 8 sensitivities were not
+reached. No consequence arises for G1: STUDY-SPEC-025/G1 stands
+exactly as Spec 025 and Phase-385 left it — SUPPORTED under
+composition and preservation control, governing basic interval
+[0.1838, 0.2102] against V = 0.10, with the standing rider
+(chronology is NOT controlled in the primary test). This closure
+is the outcome the freeze record forecast on the pinned counts;
+the margins here were recomputed from those inputs at this run.
+Anchors df0cf620... asserted byte-identical before and after; no
+PRED contact. Venue note: the run's fresh git worktree was
+reaped by the VM write restriction mid-run; the run executed in
+a minimal tree assembled from origin/main via the API with every
+input hash-verified at gate 1, and the record was landed through
+the git-data API. Records: specs/040-d25-g1-chronology-controlled/
+outcome.md, specs/040-d25-g1-chronology-controlled/step0-record.md,
+reports/phase439_results.json, reports/phase439_report.md.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.

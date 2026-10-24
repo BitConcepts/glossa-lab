@@ -1,0 +1,367 @@
+{
+  "spec": "040",
+  "phase": 439,
+  "claim_under_test": "STUDY-SPEC-025/G1",
+  "contract": {
+    "freeze_digest": "16aeeb7017f34f079742e56f13bfd88e3955ce75722693eae87fbbbaa9927515",
+    "osf_registration": "2rgtb",
+    "derivation": "A1",
+    "dependency": "Spec 041 artifact accepted at the freeze by successor-artifact substitution (Spec 039 executed and named; its artifact recorded as NOT satisfying section 1)",
+    "rulings": [
+      "DD-040-1 adopted",
+      "DD-040-5 confirmed (NOT-YET-TESTABLE)",
+      "DD-040-6 retained (all three section 5 arms)"
+    ]
+  },
+  "execution": {
+    "date": "2026-10-24",
+    "order": "owner's execution order of 2026-10-24 (19:04 EDT)",
+    "executed_from_commit": "HEAD",
+    "venue": "program VM; the fresh git worktree off origin/main was reaped by the VM write restriction mid-run, so the run executed in a minimal tree assembled from origin/main via the API with every input hash-verified at step 0 (see step0-record.md)"
+  },
+  "gates": [
+    {
+      "gate": "1",
+      "name": "pin verification (E2)",
+      "verdict": "PASS",
+      "detail": "every freeze section 3 pin recomputed; the freeze record replays; the layer asserted at its pin before any use"
+    },
+    {
+      "gate": "2",
+      "name": "population reproduction and the section 4.1 join under A1 (E2)",
+      "verdict": "PASS",
+      "detail": "5,410 population rows reproduced; the join yields exactly one assignment row per inscription ID and reproduces the freeze section 3 A1 counts exactly"
+    },
+    {
+      "gate": "3",
+      "name": "determinism",
+      "verdict": "PASS",
+      "detail": "the step-0 + margins record computed twice from the pinned inputs; canonical records identical"
+    }
+  ],
+  "step0": {
+    "pins": {
+      "spec041_artifact": {
+        "file": "data/evidence_integration/site_period_mapping.jsonl",
+        "expected": "1e5b54c9193fb52092c34e1c959ec64a48b83cacbb8e5705f629635183c12b67",
+        "observed": "1e5b54c9193fb52092c34e1c959ec64a48b83cacbb8e5705f629635183c12b67",
+        "match": true
+      },
+      "spec041_artifact_meta": {
+        "file": "data/evidence_integration/site_period_mapping_meta.json",
+        "expected": "bda1017dd88da0b14efaa3ffc5ff280b09818349bda4de1ed20f8c60d42864a9",
+        "observed": "bda1017dd88da0b14efaa3ffc5ff280b09818349bda4de1ed20f8c60d42864a9",
+        "match": true
+      },
+      "spec041_step0_census": {
+        "file": "specs/041-site-local-label-period-mapping/step0-census.json",
+        "expected": "b57fb6b1a0aa1e491ba38bf18978eec58c355f3bf833f58298c7516aabeca6be",
+        "observed": "b57fb6b1a0aa1e491ba38bf18978eec58c355f3bf833f58298c7516aabeca6be",
+        "match": true
+      },
+      "spec039_artifact": {
+        "file": "data/movement/gazetteer_rows_assigned.jsonl",
+        "expected": "64f288d35c492d8babacb4efb9c7446573a62168095db44f7469cd7904fcabb4",
+        "observed": "64f288d35c492d8babacb4efb9c7446573a62168095db44f7469cd7904fcabb4",
+        "match": true
+      },
+      "covariates": {
+        "file": "data/evidence_integration/phase139_harmonized_covariates.json",
+        "expected": "a0f0d05a578826208e3fee5c8e1e296c44db3450d9ef27a9a837a57123b04413",
+        "observed": "a0f0d05a578826208e3fee5c8e1e296c44db3450d9ef27a9a837a57123b04413",
+        "match": true
+      },
+      "spine": {
+        "file": "data/movement/chronology_rows_phase394.jsonl",
+        "expected": "9dc2fba5019c34ecc57bb1bda3c341ac142876f8ee5c4f058807458faf7eae93",
+        "observed": "9dc2fba5019c34ecc57bb1bda3c341ac142876f8ee5c4f058807458faf7eae93",
+        "match": true
+      },
+      "anchors": {
+        "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+        "expected": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+        "observed": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+        "match": true
+      },
+      "spec039_freeze_digest": {
+        "expected": "ec53a841a7f7f7afd56ab69f1caf23557e1e26c834d35563c42990ce66aa2742",
+        "observed": "ec53a841a7f7f7afd56ab69f1caf23557e1e26c834d35563c42990ce66aa2742",
+        "match": true
+      },
+      "spec041_freeze_digest": {
+        "expected": "fe6188864d5ff497fed5e3e89456d0499987c2cbc8ada5997920e864360dfdc7",
+        "observed": "fe6188864d5ff497fed5e3e89456d0499987c2cbc8ada5997920e864360dfdc7",
+        "match": true
+      },
+      "spec040_freeze_replay": {
+        "digest": "16aeeb7017f34f079742e56f13bfd88e3955ce75722693eae87fbbbaa9927515",
+        "problems": [],
+        "match": true
+      },
+      "layer": {
+        "file": "horus84 inscriptions.csv",
+        "expected": "c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef",
+        "observed": "c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef",
+        "match": true,
+        "source": "held copy at /home/hatch/workspace/glossa-run/spec040-phase439-layer/inscriptions.csv",
+        "bytes": 1190884
+      }
+    },
+    "layer_source": "held copy at /home/hatch/workspace/glossa-run/spec040-phase439-layer/inscriptions.csv",
+    "join": {
+      "layer_rows_total": 5679,
+      "population_rows": 5410,
+      "population_by_site": {
+        "Mohenjo-daro": 1923,
+        "Chanhu-daro": 74,
+        "Harappa": 2717,
+        "Dholavira": 238,
+        "Kalibangan": 212,
+        "Lothal": 208,
+        "Nausharo": 38
+      },
+      "label_margins": {
+        "period": 2266,
+        "phase": 2638,
+        "both": 1788,
+        "union": 3116,
+        "neither": 2294
+      },
+      "census_triples": 78,
+      "covariate_layer_agreement": {
+        "rows_checked": 5410,
+        "mismatches": 0
+      },
+      "artifact_cells": {
+        "total": 78,
+        "mapped_by_period": {
+          "MATURE": 18,
+          "LATE": 2,
+          "EARLY": 4
+        },
+        "unassigned": 54,
+        "contested": 0
+      },
+      "placed": {
+        "MATURE": 1386,
+        "EARLY": 32,
+        "LATE": 39
+      },
+      "unplaced": {
+        "no_informative_label": 2294,
+        "all_unassigned": 1658,
+        "disagreement": 1
+      },
+      "placed_by_site": {
+        "Harappa": 1021,
+        "Dholavira": 133,
+        "Kalibangan": 157,
+        "Lothal": 108,
+        "Nausharo": 38
+      },
+      "placed_by_site_period": {
+        "Dholavira": {
+          "MATURE": 97,
+          "LATE": 36
+        },
+        "Harappa": {
+          "MATURE": 989,
+          "EARLY": 32
+        },
+        "Kalibangan": {
+          "MATURE": 157
+        },
+        "Lothal": {
+          "MATURE": 105,
+          "LATE": 3
+        },
+        "Nausharo": {
+          "MATURE": 38
+        }
+      }
+    },
+    "determinism": {
+      "runs": 2,
+      "canonical_identical": true
+    }
+  },
+  "margins": {
+    "assigned_total": 1457,
+    "unassigned_total": 3953,
+    "unassigned_share": 0.730684,
+    "unplaced_reasons": {
+      "no_informative_label": 2294,
+      "all_unassigned": 1658,
+      "disagreement": 1
+    },
+    "assigned_by_period": {
+      "EARLY": 32,
+      "MATURE": 1386,
+      "LATE": 39
+    },
+    "sites_per_period": {
+      "EARLY": 1,
+      "MATURE": 5,
+      "LATE": 2
+    },
+    "sites_per_period_named": {
+      "EARLY": [
+        "Harappa"
+      ],
+      "MATURE": [
+        "Dholavira",
+        "Harappa",
+        "Kalibangan",
+        "Lothal",
+        "Nausharo"
+      ],
+      "LATE": [
+        "Dholavira",
+        "Lothal"
+      ]
+    },
+    "contested_excluded": 0,
+    "by_site": {
+      "Chanhu-daro": {
+        "population": 74,
+        "assigned": 0,
+        "unassigned": 74,
+        "unassigned_share": 1.0,
+        "assigned_by_period": {}
+      },
+      "Dholavira": {
+        "population": 238,
+        "assigned": 133,
+        "unassigned": 105,
+        "unassigned_share": 0.441176,
+        "assigned_by_period": {
+          "MATURE": 97,
+          "LATE": 36
+        }
+      },
+      "Harappa": {
+        "population": 2717,
+        "assigned": 1021,
+        "unassigned": 1696,
+        "unassigned_share": 0.624218,
+        "assigned_by_period": {
+          "MATURE": 989,
+          "EARLY": 32
+        }
+      },
+      "Kalibangan": {
+        "population": 212,
+        "assigned": 157,
+        "unassigned": 55,
+        "unassigned_share": 0.259434,
+        "assigned_by_period": {
+          "MATURE": 157
+        }
+      },
+      "Lothal": {
+        "population": 208,
+        "assigned": 108,
+        "unassigned": 100,
+        "unassigned_share": 0.480769,
+        "assigned_by_period": {
+          "MATURE": 105,
+          "LATE": 3
+        }
+      },
+      "Mohenjo-daro": {
+        "population": 1923,
+        "assigned": 0,
+        "unassigned": 1923,
+        "unassigned_share": 1.0,
+        "assigned_by_period": {}
+      },
+      "Nausharo": {
+        "population": 38,
+        "assigned": 38,
+        "unassigned": 0,
+        "unassigned_share": 0.0,
+        "assigned_by_period": {
+          "MATURE": 38
+        }
+      }
+    },
+    "strata": {
+      "strata_total": 65,
+      "strata_multi_site": 36,
+      "permutable_inscriptions": 1205
+    },
+    "arms": [
+      {
+        "arm": 1,
+        "rule": "each of EARLY, MATURE, LATE retains assigned inscriptions from at least 5 distinct sites",
+        "observed": {
+          "EARLY": 1,
+          "MATURE": 5,
+          "LATE": 2
+        },
+        "sites": {
+          "EARLY": [
+            "Harappa"
+          ],
+          "MATURE": [
+            "Dholavira",
+            "Harappa",
+            "Kalibangan",
+            "Lothal",
+            "Nausharo"
+          ],
+          "LATE": [
+            "Dholavira",
+            "Lothal"
+          ]
+        },
+        "verdict": "FAIL"
+      },
+      {
+        "arm": 2,
+        "rule": "unassigned share at most 40% of the 5,410-row population",
+        "observed": {
+          "unassigned": 3953,
+          "population": 5410,
+          "share": 0.730684
+        },
+        "verdict": "FAIL"
+      },
+      {
+        "arm": 3,
+        "rule": "permutable inscriptions under the primary strata at least 1,000 (DD-040-6, retained)",
+        "observed": {
+          "permutable": 1205
+        },
+        "verdict": "PASS"
+      }
+    ],
+    "gate_verdict": "FAIL"
+  },
+  "margins_gate": {
+    "verdict": "FAIL",
+    "closure": "NOT-YET-TESTABLE"
+  },
+  "regression": {
+    "status": "NOT REACHED",
+    "reason": "the section 5 margins gate failed; spec section 13 places the regression after the margins gate"
+  },
+  "primary": {
+    "status": "NOT REACHED",
+    "reason": "the section 5 margins gate failed; no profile table outcome, no permutation, no interval computed (spec section 5)"
+  },
+  "sensitivities": {
+    "status": "NOT REACHED",
+    "reason": "no primary outcome exists to bound (spec section 8)"
+  },
+  "outcome": "NOT-YET-TESTABLE",
+  "headline_wording": "On the ICIT-lineage layer (horus84), Spec 040 (Phase-439) closes NOT-YET-TESTABLE at the section 5 margins gate. Assignment census under derivation A1, consuming Spec 041's artifact data/evidence_integration/site_period_mapping.jsonl (SHA-256 1e5b54c9193fb52092c34e1c959ec64a48b83cacbb8e5705f629635183c12b67; Spec 039's artifact, named in the freeze record, did not satisfy section 1 and is not the consumed artifact): assigned 1457 of 5,410 inscriptions (26.9%), unassigned 3953 (73.1%) \u2014 no informative label 2294; all labels UNASSIGNED 1658; 1 disagreement left unplaced; contested-excluded 0. Margins gate: arm 1 FAIL (EARLY retains assigned inscriptions from 1 distinct site(s), MATURE from 5, LATE from 2, against the 5-site arm); arm 2 FAIL (unassigned share 73.1% against the 40% arm); arm 3 PASS (permutable inscriptions 1205 against the 1,000 arm, DD-040-6 retained). No profile table, no permutation, and no interval was computed; the section 7 regression and the section 6 primary were not reached. G1 stands unchanged: SUPPORTED under composition and preservation control, with the standing rider carried verbatim in this record.",
+  "anchors": {
+    "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+    "pin": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+    "before": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+    "after": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+    "byte_identical": true
+  },
+  "ai_disclosure": "Executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution section VI."
+}

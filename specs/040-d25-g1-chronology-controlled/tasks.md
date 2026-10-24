@@ -80,10 +80,16 @@
 
 ## Execution — gated on the freeze and a separate execution order
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Dependency re-verification and
+      Executed 2026-10-24 (Phase-439):
+      `backend/scripts/phase439_g1_chronology_controlled.py`,
+      node `IndusPhase439G1ChronologyControlled`
+      in `backend/glossa_lab/experiment_graph_phase439.py`,
+      registered in `experiment_graph.py` and
+      verified before the run.
+- [x] **E2 — Dependency re-verification and
       input integrity:** the Spec 039 artifact
       and every §3 pin hash to their freeze
       values; the §4.1 join covers the 5,410-row
@@ -91,30 +97,47 @@
       per inscription id; no duplicates; site
       agreement asserted). Any failure stops
       the run as INVALID before margins.
-- [ ] **E3 — Margins gate** (spec §5): margins
+      Step 0 PASSED all three gates (pins;
+      population reproduction + the A1 join,
+      reproducing the freeze §3 counts exactly;
+      determinism) — `step0-record.md`.
+- [x] **E3 — Margins gate** (spec §5): margins
       only — assigned/unassigned by site and
       period, sites per period, contested-
       excluded count, permutable N. Failure
       closes the execution NOT-YET-TESTABLE;
       no outcome quantity is computed.
-- [ ] **E4 — Comparability regression**
+      FAILED on arms 1 and 2 (arm 3 passed):
+      EARLY 1 site and LATE 2 against the
+      5-site arm; unassigned share 73.1%
+      against the 40% arm; permutable 1,205
+      against the 1,000 arm. The execution
+      closed NOT-YET-TESTABLE (DD-040-5).
+- [x] **E4 — Comparability regression**
       (spec §7): the composition-only and
       composition × preservation configurations
       reproduce Phase-137/Phase-140 exactly.
       Any mismatch stops the run as INVALID.
-- [ ] **E5 — Primary** (spec §6): the
+      NOT REACHED — §13 places the regression
+      after the margins gate, which failed.
+- [x] **E5 — Primary** (spec §6): the
       period-stratified permutation (B = 9,999,
       seed 20261009) and the stratified basic
       bootstrap interval (B = 4,999, seed
       20261012, basic interval governing);
       outcome assigned by §6.4 alone.
-- [ ] **E6 — Sensitivities** (spec §8):
+      NOT REACHED — no outcome quantity was
+      computed past the failed gate (§5).
+- [x] **E6 — Sensitivities** (spec §8):
       contested-included; leave-one-site-out
       over every analysis site; drop-Harappa
       named in the headline sensitivity
       paragraph (or NOT APPLICABLE, recorded);
       recorded companions reported as recorded.
-- [ ] **E7 — Outcome:** the §10 record —
+      NOT REACHED — no primary outcome exists
+      to bound; §8.1 stands NOT APPLICABLE on
+      the zero-contested-cell record, as frozen.
+- [x] **E7 — Outcome:** the §10 record —
       results JSON and report under the
       headline rules, the appended outcome in
       this directory, the G1 consequence append
@@ -122,6 +145,16 @@
       the LEDGER entry; anchors asserted
       byte-identical before and after;
       foundation check reported as measured.
+      Recorded 2026-10-24: outcome
+      NOT-YET-TESTABLE appended above in
+      `outcome.md` (no G1 consequence arose);
+      `reports/phase439_results.json` and
+      `reports/phase439_report.md` filed; the
+      LEDGER entry made; anchors byte-identical
+      (`df0cf620…` at both readings); the
+      foundation check is reported in the
+      outcome record's landing record, as
+      measured on the merged tree.
 
 ---
 

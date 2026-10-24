@@ -89,9 +89,13 @@
       made to the record of
       `yadav_2009_arxiv_manual_002`, verbatim**
       (claim F054-C04).
-- [ ] **L7 — Freeze PR merged**, house gates
+- [x] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).
+      (PR #260, merge `b40dcfc1`, CI run
+      40066263075 at 7/7; the CI interactions
+      of the freeze are recorded at
+      adjudication.md §9.7–§9.10.)
 
 ## Execution — gated on the freeze and a separate execution order
 

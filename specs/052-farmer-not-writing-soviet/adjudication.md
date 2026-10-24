@@ -399,6 +399,68 @@ patched mid-pass).
 2. The OSF filing under E-1, executed at the
    freeze (§5, item 5).
 
+## 10. Owner mini-gate approval and the freeze act — 2026-10-23
+
+### 10.1 Approval
+
+On 2026-10-23 at 22:59 EDT the owner approved the
+mini-gate as specified: "Approve both mini-gates as
+specified." The three decisions of `amendment.md` §7
+stand as there written: (1) battery NB-1 adopted as
+specified in `amendment.md` §3; (2) the data re-scoped
+to the Shakti corpus layer as §4 states it; (3) the
+amended step-0 gates A–D and the re-pointed outcome
+semantics of §§5–6 adopted. Approval of this mini-gate
+is approval of the freeze path of §9.4. It is not an
+execution order; execution still awaits a separate
+owner order.
+
+### 10.2 The freeze act
+
+Executed the same evening under that approval:
+
+- The draft branch (forked from main on 2026-10-21 at
+  83b6a563) was brought onto the merged record as it
+  stands by merging main, so the freeze is built on
+  the record that includes the Specs 068–073 freezes
+  and the Spec 041 execution.
+- L4 ran: the AEE lifecycle hooks (after_specify,
+  after_plan, after_tasks) over the register, with
+  three recovery rounds (register 0.5-draft →
+  0.8-draft). The gate passes on the DD-038-10
+  reading: zero correctness failure modes, only
+  FR-2.3 draft-cap records, minimum propagated
+  confidence 0.72 against the 0.70 threshold. The
+  rounds are recorded in the register's note and in
+  `aee/freeze-aee-note.md`.
+- The corpus-layer pins were taken at the freeze
+  from the restricted-local store, and the
+  populations were reproduced from the pinned files
+  (`freeze.md` §3): corpus SHA-256 `345241b1…`, row
+  grades SHA-256 `02394241…`; primary 3,045 rows /
+  11,805 tokens / 557 signs; sensitivity 5,131 rows
+  / 17,216 tokens / 707 signs.
+- **Phase-437** is allocated to this spec's execution
+  (DD-052-6, from the merged record: the highest
+  phase report on main at the freeze was Phase-436,
+  Spec 073).
+- L5 stands decided **as amended** (tasks A3): the
+  battery-derivation and Soviet-mapping items are
+  closed by §9's rulings, not by the freeze;
+  DD-052-3 (PARTIAL) is confirmed, retained in the
+  amendment's outcome semantics; DD-052-5 is
+  superseded by the amendment route; the
+  battery-reproduction question is answered by
+  amended gate C (determinism) — no Soviet battery is
+  reproduced, because none is run; the OSF filing is
+  executed under campaign decision E-1.
+- The OSF registration for the frozen spec is filed
+  at the freeze and recorded in
+  `osf-spec-registration.md`. The registration's
+  approval is the owner's act; execution does not
+  begin while approval is pending, nor after it
+  without the separate execution order.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark,

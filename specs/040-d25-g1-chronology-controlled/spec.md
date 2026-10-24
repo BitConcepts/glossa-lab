@@ -1,29 +1,32 @@
 # Spec 040 — D-25: G1 With Time Held Fixed (Chronology-Controlled Site-Repertoire Test)
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-20
+> ## FROZEN — 2026-10-24
 >
 > Drafted under the owner's 2026-10-20 bundle
 > decision: the gazetteer period-assignment act
 > (Spec 039) runs first, under the published-
 > determinations-only evidence standard, and
-> D-25 follows it. This draft designs the test
-> and executes nothing. **Spec 040 cannot be
+> D-25 follows it. **Spec 040 cannot be
 > frozen until Spec 039 has executed and its
 > period labels are frozen in a form this spec
-> can consume (§1).** The freeze and execution
-> of Spec 040 are separate later acts. No AEE
-> lifecycle hooks have run on this draft; they
-> are a freeze gate (`aee/freeze-aee-note.md`).
+> can consume (§1).** At the freeze act of
+> 2026-10-24, §1 was judged satisfied by the
+> openly recorded successor-artifact
+> substitution of Spec 041's artifact
+> (`adjudication.md` §5.1; `freeze.md` §1–§2):
+> Spec 039's own artifact did not satisfy §1,
+> and that finding stands. The AEE lifecycle
+> hooks ran at the freeze gate over the
+> recovered register (0.7-draft) and passed
+> (`aee/freeze-aee-note.md`). **This freeze
+> executes nothing.** Execution is a separate
+> later owner act.
 >
-> The execution phase number is **unassigned**
-> at this draft. Phase-400 is Spec 036's and
-> Phase-401 is claimed by the Spec 037 draft;
-> the Spec 038 draft also provisionally claims
-> Phase-401. Spec 040 does not add another
-> provisional claim to that collision: its phase
-> number is allocated at the freeze act, after
-> the in-flight drafts have settled theirs
-> (DD-040-10).
+> The execution phase number, unassigned at
+> draft, is allocated at this freeze act under
+> DD-040-10: **Phase-439** (the highest phase
+> on the merged record at the act is
+> Phase-438, Spec 054's).
 
 **Design source:** D-25 in the experiment-design
 packet at PR #195
@@ -203,8 +206,8 @@ consequence.
 | Phase-140 results (`reports/phase140_results.json`) | The regression target of §7 |
 | Phase-385 results (`reports/phase385_results.json`) | The interval precedent of §6.3 |
 | Extended chronology spine (`data/movement/chronology_rows_phase394.jsonl`) | 205 rows; SHA-256 `9dc2fba5019c34ecc57bb1bda3c341ac142876f8ee5c4f058807458faf7eae93` |
-| Spec 039 period-assignment artifact | **Not yet in existence.** Path, version, and SHA-256 are named in Spec 040's freeze record; §1 fails closed until then |
-| Anchors file (`backend/reports/INDUS_FINAL_ANCHORS.json`) | SHA-256 `eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed`; asserted byte-identical before and after any execution; this spec moves no anchor |
+| Period-assignment artifact (the §1 dependency) | **Spec 041's artifact, accepted at the 2026-10-24 freeze by successor-artifact substitution** (`adjudication.md` §5.1): `data/evidence_integration/site_period_mapping.jsonl`, SHA-256 `1e5b54c9193fb52092c34e1c959ec64a48b83cacbb8e5705f629635183c12b67`. Spec 039's own artifact (`data/movement/gazetteer_rows_assigned.jsonl`, SHA-256 `64f288d35c492d8babacb4efb9c7446573a62168095db44f7469cd7904fcabb4`) did not satisfy §1 and is not the consumed artifact |
+| Anchors file (`backend/reports/INDUS_FINAL_ANCHORS.json`) | SHA-256 `df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569` (refreshed at the freeze from the draft's stale `eccea6d5…` pin); asserted byte-identical before and after any execution; this spec moves no anchor |
 
 The spine's role is bounded: its rows may be
 cited inside Spec 039's published-determination

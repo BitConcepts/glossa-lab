@@ -38,45 +38,45 @@
       as a DRAFT PR and left unmerged for the
       owner's freeze decision, CI state
       reported from the run's own conclusions.
-- [ ] **L4 — AEE lifecycle hooks (FREEZE GATE
-      — not run on this draft).** At the freeze
-      act, run `run_aee.py assess`
-      after_specify, after_plan, and
-      after_tasks over the claim register; the
-      gate is **pass**, and a stricter outcome
-      blocks the freeze until its named
-      recovery is complete and recorded.
-      Deliberate ordering (the Spec 035
-      record): any recovery round changes
-      claim text, and the freeze digest is
-      computed over the recovered register
-      exactly once, at freeze.
-- [ ] **L5 — Dependency gate (FREEZE GATE).**
-      Verify spec §1 against the merged record:
-      Spec 039 executed, its freeze digest and
-      outcome named; the assignment artifact
-      pinned by SHA-256 and satisfying the §4
-      interface (site-period resolution,
-      citations, contested flags,
-      published determinations only). Failure
-      is recorded as NOT-YET-TESTABLE at the
-      dependency gate; no freeze proceeds.
-- [ ] **L6 — Freeze.** On the owner's freeze
-      order, with L4 and L5 passed: hooks
-      recorded, `freeze.md` finalised (Spec 039
-      artifact named in), `freeze.json`
-      recomputed over the recovered register
-      and finalised texts, the execution phase
-      number allocated (DD-040-10), and
-      DD-040-1, DD-040-5, DD-040-6, DD-040-9
-      decided.
-- [ ] **L7 — Freeze PR merged**, house gates
-      green (full suite, branding sweep,
-      foundation check after any anchor- or
-      phase-bearing change — none exists at
-      draft; the freeze allocates a phase
-      number and its record states the measured
-      foundation state).
+- [x] **L4 — AEE lifecycle hooks (FREEZE GATE).**
+      Run at the freeze act of 2026-10-24 (see
+      the freeze-act record appended below):
+      `aee assess` after_specify, after_plan,
+      and after_tasks over the claim register,
+      recovered in two rounds (0.5-draft →
+      0.7-draft); the gate **passed** on the
+      DD-038-10 reading (15 FR-2.3 draft-cap
+      records only; zero correctness modes;
+      minimum propagated confidence 0.8445).
+      Record: `aee/freeze-aee-note.md`.
+- [x] **L5 — Dependency gate (FREEZE GATE).**
+      Verified at the freeze act of 2026-10-24:
+      §1 judged satisfied by the openly recorded
+      successor-artifact substitution of Spec
+      041's artifact (Spec 039 executed and
+      named; its own artifact did not satisfy
+      §1; Spec 041's artifact pinned at
+      `1e5b54c9…` and mechanically verified —
+      `adjudication.md` §5, `freeze.md` §3).
+- [x] **L6 — Freeze.** Executed 2026-10-24 on
+      the owner's approval of the freeze plan
+      as specified: hooks recorded, `freeze.md`
+      finalised (both artifacts named in),
+      `freeze.json` recomputed exactly once
+      over the recovered register and finalised
+      texts, the execution phase number
+      allocated as **Phase-439** (DD-040-10),
+      and DD-040-1 adopted, DD-040-5 confirmed,
+      DD-040-6 retained, DD-040-9 filed.
+- [x] **L7 — Freeze PR and OSF record.** The
+      freeze PR carries this record; its merge
+      on genuine CI green (read from the run's
+      own job conclusions) and the OSF filing
+      under DD-040-9 complete the act — the
+      filing is recorded in
+      `osf-spec-registration.md`, completed by
+      append after filing. Execution (E1–E7)
+      remains gated on a separate owner order.
 
 ## Execution — gated on the freeze and a separate execution order
 
@@ -157,6 +157,64 @@ dependency gate:
 - **E1-E7 - NOT REACHED.** No execution was
   ordered or run; no label joined, no margin
   computed, no quantity calculated.
+
+---
+
+## Freeze-act record - appended 2026-10-24
+
+The freeze was reached again on 2026-10-24
+under the owner's approval of the freeze plan
+as specified (2026-10-24, 10:54 EDT, "Approve
+as specified"; the plan is
+`2026-10-24-spec-040-freeze-plan.md` in the
+program goal's files; the adjudication record
+is `adjudication.md` §5):
+
+- **L5 - PASSED, by substitution.** Spec 039
+  stands executed (digest `ec53a841...`) with
+  its artifact at `64f288d3...` — and its
+  §1 failure stands. Spec 041's artifact
+  (`1e5b54c9...`, freeze digest `fe618886...`,
+  Phase-435) is accepted as the successor
+  dependency artifact the 2026-10-20 closure
+  contemplated, and was mechanically verified
+  at the act: pin recomputed; 78 cells
+  schema-valid; the covariate census equal to
+  the artifact's triples; the A1 join covering
+  the 5,410 population IDs exactly once and
+  reproducing the published A1 counts (1,457
+  placed; 32 / 1,386 / 39).
+- **L4 - PASSED.** Hooks run over the register
+  recovered in two rounds (0.5-draft ->
+  0.7-draft): 15 failure modes, all FR-2.3
+  draft-cap; zero correctness modes; minimum
+  propagated confidence 0.8445 (`aee/`).
+- **L6 - DONE.** Derivation A1 adopted as the
+  primary; DD-040-1 adopted; DD-040-5
+  confirmed (NOT-YET-TESTABLE); DD-040-6
+  retained; DD-040-9 filed; DD-040-10
+  allocated **Phase-439**; section 8.1 recorded
+  NOT APPLICABLE (zero CONTESTED cells). The
+  stale anchors pin was refreshed
+  (`eccea6d5...` -> `df0cf620...`). The freeze
+  digest was computed exactly once over the
+  recovered register and the finalised texts.
+  The freeze record states the known margins
+  consequence in the open: on the pinned
+  counts the section 5 gate already fails under
+  every derivation, and a later execution is
+  expected to close NOT-YET-TESTABLE at the
+  margins gate.
+- **L7 - CARRIED BY THE FREEZE PR.** Its merge
+  on genuine CI green, read from the run's own
+  job conclusions, and the OSF registration
+  filed under DD-040-9 (record:
+  `osf-spec-registration.md`, completed by
+  append after filing) complete the act.
+- **E1-E7 - NOT REACHED.** No execution was
+  ordered; nothing was joined for outcome
+  purposes, no margin was run, and no outcome
+  quantity exists.
 
 ---
 

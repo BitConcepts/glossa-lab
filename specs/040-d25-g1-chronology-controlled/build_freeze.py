@@ -1,21 +1,32 @@
 #!/usr/bin/env python3
 """Build the Spec 040 freeze record (freeze.json).
 
-This builder computes the DRAFT digest over the
-draft contract under the owner's bundle decision
-of 2026-10-20 (adjudication.md). At the freeze
-act - on the owner's separate freeze order, after
-spec section 1's dependency gate is verified
-against the executed Spec 039 record and the AEE
-lifecycle hooks pass over the recovered register -
-it is re-run to compute the final digest over the
-frozen contract exactly once, and its DEFINITION
-text is finalised in the same act (the Spec 035
-pattern): the dependency block's placeholders are
-replaced by the Spec 039 artifact's path, version,
-and SHA-256, and the phase block by the allocated
-execution phase number. Run with the Glossa
-backend venv python from the repository root:
+This builder was written at the draft under the
+owner's bundle decision of 2026-10-20
+(adjudication.md) and finalised at the freeze
+act of 2026-10-24, under the owner's approval
+of the freeze plan as specified (adjudication.md
+section 5). Its DEFINITION text is finalised in
+the same act (the Spec 035 pattern): the
+dependency block names Spec 039's executed
+record and its artifact (which did not satisfy
+spec section 1) and Spec 041's artifact as the
+accepted successor dependency artifact, pinned
+by SHA-256; the derivation block names A1; the
+decisions block records DD-040-1 adopted,
+DD-040-5 confirmed, DD-040-6 retained,
+DD-040-9 filed, section 8.1 NOT APPLICABLE;
+the phase block carries the allocated execution
+phase (Phase-439, DD-040-10); and the anchors
+pin is refreshed from the draft's stale value
+to the current pin. The register is the draft
+register recovered in two rounds at the freeze
+(0.5-draft to 0.7-draft), the AEE lifecycle
+hooks passed over it at the freeze gate, and
+the digest is computed over the recovered
+register and the finalised freeze texts exactly
+once. Run with the Glossa backend venv python
+from the repository root:
 
     python specs/040-d25-g1-chronology-controlled/build_freeze.py
 
@@ -38,22 +49,33 @@ from glossa_lab.framework026 import build_freeze  # noqa: E402
 
 SPEC_DIR = "specs/040-d25-g1-chronology-controlled"
 
+SPEC039_DIGEST = "ec53a841a7f7f7afd56ab69f1caf23557e1e26c834d35563c42990ce66aa2742"
+SPEC039_ARTIFACT_SHA256 = "64f288d35c492d8babacb4efb9c7446573a62168095db44f7469cd7904fcabb4"
+SPEC041_DIGEST = "fe6188864d5ff497fed5e3e89456d0499987c2cbc8ada5997920e864360dfdc7"
+SPEC041_ARTIFACT_SHA256 = "1e5b54c9193fb52092c34e1c959ec64a48b83cacbb8e5705f629635183c12b67"
+SPEC041_META_SHA256 = "bda1017dd88da0b14efaa3ffc5ff280b09818349bda4de1ed20f8c60d42864a9"
+SPEC041_CENSUS_SHA256 = "b57fb6b1a0aa1e491ba38bf18978eec58c355f3bf833f58298c7516aabeca6be"
+ANCHORS_SHA256 = "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569"
+
 DEFINITION = {
     "spec": "specs/040-d25-g1-chronology-controlled/spec.md",
     "freeze_doc": "specs/040-d25-g1-chronology-controlled/freeze.md",
     "experiment_id": "spec040-d25-g1-chronology-controlled",
     "register": {
         "path": "specs/040-d25-g1-chronology-controlled/claims.json",
-        "register_version": "0.5-draft",
+        "register_version": "0.7-draft",
         "claims": 15,
         "aee_hook_pass": (
-            "NOT RUN on this draft: the AEE lifecycle "
-            "hooks (after_specify / after_plan / "
-            "after_tasks) are a freeze gate, run at the "
-            "freeze act over the recovered register "
-            "(the Spec 035 ordering; see "
-            "specs/040-d25-g1-chronology-controlled/aee/"
-            "freeze-aee-note.md)"
+            "PASSED at the freeze act 2026-10-24 "
+            "(applied-epistemic-engineering 1.5.3, lenient load, "
+            "evidence verification off, no ledger): after_specify, "
+            "after_plan and after_tasks over the recovered register "
+            "each carried exactly 15 failure modes, every one an "
+            "FR-2.3 draft-cap record; zero correctness failure "
+            "modes; no claim below the 0.70 propagated-confidence "
+            "threshold (minimum 0.8445). Two recovery rounds "
+            "(0.5-draft to 0.7-draft) are recorded in the register "
+            "note and aee/freeze-aee-note.md."
         ),
     },
     "basis": {
@@ -67,21 +89,30 @@ DEFINITION = {
             "(Spec 039) and D-25 are authorised as a "
             "bundle with the act first, and the act's "
             "evidence standard is published period "
-            "determinations only. No freeze order and "
-            "no execution order exist for this "
-            "contract. The design implemented is D-25 "
-            "of the PR #195 experiment-design packet "
-            "over the Spec 025 / Phase-140 / "
-            "Phase-385 record of claim "
-            "STUDY-SPEC-025/G1."
+            "determinations only. The owner's "
+            "approval of the freeze plan as specified "
+            "(2026-10-24, 10:54 EDT, 'Approve as "
+            "specified'; adjudication.md section 5) "
+            "authorises this freeze: the section 1 "
+            "judgment by successor-artifact "
+            "substitution, derivation A1, DD-040-1 "
+            "adopted, DD-040-5 confirmed, DD-040-6 "
+            "retained, DD-040-9 filed, DD-040-10 "
+            "allocated at the act, and section 8.1 "
+            "recorded NOT APPLICABLE. No execution "
+            "order exists for this contract. The "
+            "design implemented is D-25 of the "
+            "PR #195 experiment-design packet over "
+            "the Spec 025 / Phase-140 / Phase-385 "
+            "record of claim STUDY-SPEC-025/G1."
         ),
     },
     "design": {
         "phase": (
-            "UNASSIGNED at draft (DD-040-10): allocated "
-            "at the freeze act; Phase-400 is Spec 036's "
-            "and Phase-401 is claimed by the Spec 037 "
-            "and Spec 038 drafts"
+            "Phase-439 (allocated at the freeze act "
+            "of 2026-10-24 under DD-040-10; the "
+            "highest phase on the merged record at "
+            "the act is Phase-438, Spec 054's)"
         ),
         "claim_under_test": "STUDY-SPEC-025/G1",
         "design_source": (
@@ -97,11 +128,18 @@ DEFINITION = {
             "V = 0.10 practical margin?"
         ),
         "dependency_gate": {
-            "state_at_draft": (
-                "NOT SATISFIED: Spec 039 has not "
-                "executed; the gazetteer assignment "
-                "column is empty on every published "
-                "Stage 0 row"
+            "state_at_freeze": (
+                "SATISFIED at the freeze act of "
+                "2026-10-24, by successor-artifact "
+                "substitution, openly recorded "
+                "(adjudication.md section 5.1): Spec "
+                "039 executed, but its own artifact "
+                "did not satisfy section 1 conditions "
+                "2 and 4 (the 2026-10-20 finding, "
+                "unamended); Spec 041's artifact is "
+                "accepted as the successor dependency "
+                "artifact the 2026-10-20 closure "
+                "contemplated"
             ),
             "requires": [
                 "Spec 039 executed, with its freeze "
@@ -126,18 +164,91 @@ DEFINITION = {
                 "the freeze does not proceed"
             ),
             "spec039_artifact": {
-                "path": "PENDING - named at the freeze act",
-                "version": "PENDING - named at the freeze act",
-                "sha256": "PENDING - named at the freeze act",
+                "path": "data/movement/gazetteer_rows_assigned.jsonl",
+                "version": "Spec 039 Output A (Phase-403 execution)",
+                "sha256": SPEC039_ARTIFACT_SHA256,
+                "spec039_freeze_digest": SPEC039_DIGEST,
+                "standing": (
+                    "executed and named; did NOT satisfy "
+                    "section 1 conditions 2 and 4 (site-level "
+                    "label sets, no site x local-label key, "
+                    "three of the seven G1 sites without rows)"
+                ),
             },
+            "spec041_artifact": {
+                "path": "data/evidence_integration/site_period_mapping.jsonl",
+                "version": "Spec 041 artifact (freeze 2026-10-22; Phase-435 execution)",
+                "sha256": SPEC041_ARTIFACT_SHA256,
+                "spec041_freeze_digest": SPEC041_DIGEST,
+                "meta_sha256": SPEC041_META_SHA256,
+                "step0_census_sha256": SPEC041_CENSUS_SHA256,
+                "standing": (
+                    "ACCEPTED at this freeze as the successor "
+                    "dependency artifact for section 1, by the "
+                    "owner's approval of the freeze plan as "
+                    "specified (adjudication.md section 5.1); "
+                    "78 cells: 24 MAPPED (4 EARLY, 18 MATURE, "
+                    "2 LATE), 54 UNASSIGNED, 0 CONTESTED"
+                ),
+            },
+            "verification_at_freeze": (
+                "the artifact recomputes to its pin and "
+                "validates against the frozen schema (every "
+                "MAPPED cell: exactly one OWN_TEXT "
+                "determination with citation, locator, "
+                "mapping rule, contested false; every "
+                "UNASSIGNED cell: exactly one enumerated "
+                "reason - 35 / 10 / 4 / 3 / 2); the cell "
+                "census from the pinned Phase-139 "
+                "covariates equals the artifact's 78 "
+                "(site, field, local label) triples "
+                "exactly, attested_rows equal; population "
+                "margins reproduce exactly (2,266 / 2,638 "
+                "/ 1,788 / 3,116 / 2,294); the section 4.1 "
+                "join under A1 covers the 5,410 population "
+                "inscription IDs exactly once"
+            ),
         },
         "period_assignment": {
             "labels": ["EARLY", "MATURE", "LATE"],
             "key": (
                 "site x the inscription's recorded local "
-                "chronological label(s), per the frozen "
-                "Spec 039 artifact"
+                "chronological label(s), per the accepted "
+                "Spec 041 artifact"
             ),
+            "derivation": {
+                "name": "A1 - agreement of mapped labels, no veto (decided at the freeze, adjudication.md section 5.3)",
+                "rule": (
+                    "a row is placed when at least one of "
+                    "its recorded labels is MAPPED and every "
+                    "MAPPED label agrees on one coarse "
+                    "period; an UNASSIGNED label does not "
+                    "veto; disagreement between MAPPED "
+                    "labels, no recorded label, or all "
+                    "labels UNASSIGNED leaves the row "
+                    "UNASSIGNED in the primary; no field "
+                    "precedence applies"
+                ),
+                "not_chosen": (
+                    "A2 (agreement with an UNASSIGNED veto), "
+                    "B (period precedence) and C (phase-"
+                    "eligible union) are not primary "
+                    "derivations and are not silently "
+                    "substituted at execution; A1 and C "
+                    "produce identical placements on this "
+                    "artifact"
+                ),
+                "reproduced_at_freeze": (
+                    "1,457 placed (EARLY 32, MATURE 1,386, "
+                    "LATE 39); 3,953 unplaced (2,294 no "
+                    "informative label; 1,658 all labels "
+                    "UNASSIGNED; 1 disagreement, the "
+                    "Kalibangan row, unplaced); placed by "
+                    "site: Dholavira 133, Harappa 1,021, "
+                    "Kalibangan 157, Lothal 108, Nausharo "
+                    "38, Mohenjo-daro 0, Chanhu-daro 0"
+                ),
+            },
             "primary_rule": (
                 "a unique uncontested mapping places the "
                 "inscription; missing, ambiguous, "
@@ -152,11 +263,12 @@ DEFINITION = {
                 "analyst judgement at execution time",
             ],
             "contested": (
-                "excluded from the primary; included in "
-                "the labelled sensitivity under the "
-                "sensitivity labels Spec 039 froze, or "
-                "the sensitivity is NOT ESTIMABLE for "
-                "the affected mappings"
+                "the accepted artifact contains zero "
+                "CONTESTED cells; spec section 8.1 "
+                "(contested-included) is recorded NOT "
+                "APPLICABLE at this freeze: there are no "
+                "contested mappings to include and no "
+                "sensitivity label to consume"
             ),
         },
         "margins_gate": {
@@ -165,15 +277,32 @@ DEFINITION = {
             "unassigned_share_max": 0.4,
             "permutable_min": 1000,
             "permutable_arm_status": (
-                "DD-040-6, proposed at draft: carried "
-                "from Spec 025's covariate-gate floor"
+                "DD-040-6, RETAINED at the freeze "
+                "(decided 2026-10-24): all three section "
+                "5 margins arms stand in the frozen gate"
             ),
             "failure_state": (
                 "NOT-YET-TESTABLE, margins stated, no "
-                "outcome quantity computed (D-25's "
-                "source wording: INCONCLUSIVE-BY-DESIGN; "
-                "the governing word is DD-040-5, "
-                "proposed at draft)"
+                "outcome quantity computed (the closure "
+                "word confirmed at the freeze: DD-040-5, "
+                "NOT-YET-TESTABLE, not D-25's "
+                "INCONCLUSIVE-BY-DESIGN)"
+            ),
+            "known_consequence": (
+                "on the pinned Spec 041 counts reproduced "
+                "at the freeze, arms 1 and 2 already fail "
+                "under every derivation: EARLY retains 1 "
+                "distinct site (Harappa) and LATE 2 "
+                "(Dholavira, Lothal) against the 5-site "
+                "arm; the unassigned share exceeds 40% "
+                "under every derivation (A1/C 73.1%, B "
+                "74.8%, A2 85.6%); Mohenjo-daro places 0 "
+                "of its 1,923 population rows under every "
+                "derivation. This freeze is a dependency-"
+                "settlement and closure act; a later "
+                "execution under the retained gate is "
+                "expected to close NOT-YET-TESTABLE at "
+                "the margins gate"
             ),
         },
         "primary_test": {
@@ -208,7 +337,8 @@ DEFINITION = {
                 ),
                 "role": (
                     "reported with the outcome; not the "
-                    "verdict rule (DD-040-1)"
+                    "verdict rule (DD-040-1, adopted at the "
+                    "freeze)"
                 ),
             },
             "interval": {
@@ -229,10 +359,11 @@ DEFINITION = {
         },
         "decision_rules": {
             "rule_source": (
-                "DD-040-1, proposed at draft: the "
-                "interval-at-margin rule of D-25 and "
-                "Phase-385, re-derived in place of Spec "
-                "025's permutation-p-only verdict rule"
+                "DD-040-1, ADOPTED at the freeze "
+                "(decided 2026-10-24): the interval-at-"
+                "margin rule of D-25 and Phase-385, "
+                "re-derived in place of Spec 025's "
+                "permutation-p-only verdict rule"
             ),
             "supported": (
                 "governing interval entirely above 0.10: "
@@ -253,8 +384,9 @@ DEFINITION = {
             ),
         },
         "sensitivities": [
-            "contested-included, under the frozen "
-            "sensitivity labels (spec section 8.1)",
+            "contested-included (spec section 8.1): NOT "
+            "APPLICABLE at this freeze - the accepted "
+            "artifact contains zero contested cells",
             "leave-one-site-out over every analysis "
             "site (spec section 8.2)",
             "drop-Harappa, named in the headline "
@@ -273,13 +405,13 @@ DEFINITION = {
             "mismatch stops the run as INVALID"
         ),
         "execution_gate": (
-            "NOT satisfied: no freeze order and no "
-            "execution order exist for this contract, "
-            "and the freeze itself is barred until the "
-            "dependency gate is satisfied; this draft "
-            "performs neither, joins no label, computes "
-            "no margin, and calculates no repertoire "
-            "quantity"
+            "The freeze is satisfied at the act of "
+            "2026-10-24. Execution (Phase-439) "
+            "requires a separate owner order naming "
+            "Spec 040 and Phase-439; none exists at "
+            "the freeze. This freeze joins no label "
+            "for outcome purposes, runs no margin, "
+            "and calculates no repertoire quantity"
         ),
     },
     "inputs": {
@@ -347,20 +479,24 @@ DEFINITION = {
         },
         "anchors": {
             "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
-            "sha256": (
-                "eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed"
-            ),
+            "sha256": ANCHORS_SHA256,
             "rule": "asserted byte-identical before and after any execution",
+            "note": (
+                "pin refreshed at the freeze from the "
+                "draft's stale eccea6d5... value to the "
+                "current anchors pin, recomputed at the "
+                "freeze act"
+            ),
         },
     },
     "environment": {
         "python": "3.12.3",
         "runner": "backend (venv glossa-lab)",
         "aee": (
-            "the version pinned in the Glossa venv at "
-            "the freeze act (the aee 1.5.0 adoption is "
-            "a separate in-flight owner decision; this "
-            "draft runs no hooks under any version)"
+            "1.5.3 (venv glossa-aee153) at the freeze "
+            "gate: the lifecycle hooks passed over the "
+            "recovered register (0.7-draft) before the "
+            "digest was computed"
         ),
         "specify": "1.0.10",
     },

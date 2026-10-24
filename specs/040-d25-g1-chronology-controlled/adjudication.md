@@ -259,6 +259,185 @@ record. When it is reached, the freeze decides:
   the Spec 037 / Spec 038 claims on Phase-401
   are settled on the merged record.
 
+## 5. Freeze-plan approval and the freeze act — 2026-10-24
+
+§3 asked the freeze to decide five things. The
+freeze-plan package
+(`2026-10-24-spec-040-freeze-plan.md`, prepared
+2026-10-24 on the owner's order from the merged
+record at `58bb6ac7`) put those decisions, the
+dependency judgment, and the derivation choice
+to the owner as one package. **On 2026-10-24 at
+10:54 EDT the owner approved the plan as
+specified ("Approve as specified").** This
+section records that approval and the decisions
+it carries. It is the freeze record's
+adjudication half; `freeze.md` is its other
+half.
+
+### 5.1 The dependency judgment (plan R1)
+
+The §1 gate is judged **satisfied by
+successor-artifact substitution, openly
+recorded**:
+
+- **Spec 039's own artifact did not satisfy
+  §1.** That 2026-10-20 finding stands
+  unchanged: Spec 039 executed (freeze digest
+  `ec53a841a7f7f7afd56ab69f1caf23557e1e26c834d35563c42990ce66aa2742`;
+  PRs #226/#234/#235), and its artifact,
+  `data/movement/gazetteer_rows_assigned.jsonl`
+  (SHA-256
+  `64f288d35c492d8babacb4efb9c7446573a62168095db44f7469cd7904fcabb4`,
+  recomputed at this freeze), assigns periods
+  per site as label sets with no site ×
+  local-label mapping key, and carries no rows
+  for three of the seven G1 sites — §1
+  conditions 2 and 4 failed, and Spec 040
+  closed NOT-YET-TESTABLE at the dependency
+  gate.
+- **Spec 041's artifact satisfies the §1
+  interface in substance and is accepted as
+  the successor dependency artifact** — the
+  separately governed act Spec 040's own
+  closure contemplated. Spec 041 froze on
+  2026-10-22 (freeze digest
+  `fe6188864d5ff497fed5e3e89456d0499987c2cbc8ada5997920e864360dfdc7`)
+  and executed as Phase-435. Its artifact,
+  `data/evidence_integration/site_period_mapping.jsonl`
+  (SHA-256
+  `1e5b54c9193fb52092c34e1c959ec64a48b83cacbb8e5705f629635183c12b67`;
+  meta record SHA-256
+  `bda1017dd88da0b14efaa3ffc5ff280b09818349bda4de1ed20f8c60d42864a9`;
+  step-0 census SHA-256
+  `b57fb6b1a0aa1e491ba38bf18978eec58c355f3bf833f58298c7516aabeca6be`
+  — all three recomputed at this freeze), is
+  keyed by site × field × local label and
+  carries, for each of its 24 MAPPED cells,
+  exactly one published determination verified
+  `OWN_TEXT` with citation, locator, mapping
+  rule, verification mode and `contested:
+  false`; its 54 UNASSIGNED cells each carry
+  exactly one enumerated reason
+  (NO_PUBLISHED_DETERMINATION 35,
+  DETERMINATION_UNVERIFIED 10,
+  SPANS_COARSE_BOUNDARY 4, LABEL_UNCERTAIN_IN_LAYER 3,
+  NOT_IN_PUBLISHED_SCHEME 2); no cell is
+  CONTESTED. The substitution is stated here
+  and in `freeze.md`, never smoothed over: the
+  accepted artifact is Spec 041's product, not
+  Spec 039's.
+
+### 5.2 §1 verification at the freeze (plan R2)
+
+Verified mechanically at this act, before the
+digest was computed: the artifact recomputes
+to its pin; all 78 cells validate against the
+frozen schema; the cell census built from the
+pinned Phase-139 covariates
+(`a0f0d05a…`) equals the artifact's 78
+(site, field, local label) triples exactly,
+with every cell's `attested_rows` equal; the
+population margins reproduce exactly (period
+labels 2,266; phase labels 2,638; both 1,788;
+any label 3,116; neither 2,294); and the
+§4.1 three-record join under derivation A1
+yields exactly one assignment row for each of
+the 5,410 population inscription IDs — no
+missing ID, duplicate, extra row, or site
+mismatch. Anchors stand at
+`df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569`
+(recomputed at this freeze).
+
+### 5.3 The derivation (plan R3)
+
+**Derivation A1 governs** as the sole primary
+row derivation: a row is placed when at least
+one of its recorded labels is MAPPED and every
+MAPPED label agrees on one coarse period; an
+UNASSIGNED label does not veto; disagreement
+between MAPPED labels, no recorded label, or
+all labels UNASSIGNED leaves the row
+UNASSIGNED in the primary. No field precedence
+applies. A2, B and C are not chosen and are not
+silently substituted at execution. Reproduced
+at this freeze from the pinned inputs under
+A1: **1,457 placed** (EARLY 32, MATURE 1,386,
+LATE 39); 3,953 unplaced (2,294 no informative
+label, 1,658 all labels UNASSIGNED, 1
+disagreement — the Kalibangan row, period 1
+EARLY against phase "Late" MATURE, left
+unplaced and visible). Placed by site:
+Dholavira 133, Harappa 1,021, Kalibangan 157,
+Lothal 108, Nausharo 38, Mohenjo-daro 0,
+Chanhu-daro 0.
+
+### 5.4 The remaining decisions (plan R4)
+
+- **DD-040-1 — ADOPTED.** The governing basic
+  bootstrap interval against the V = 0.10
+  margin assigns any eventual §6 outcome; the
+  permutation p is computed and reported but
+  cannot rescue an interval that fails the
+  margin; no p-value threshold is a second
+  gate.
+- **DD-040-5 — CONFIRMED.** The thinness
+  closure's word is **NOT-YET-TESTABLE**, not
+  D-25's "INCONCLUSIVE-BY-DESIGN."
+- **DD-040-6 — RETAINED.** The third §5
+  margins arm (at least 1,000 permutable
+  inscriptions) stays in the frozen gate. All
+  three §5 margins arms are retained.
+- **DD-040-9 — FILED.** The frozen spec files
+  its own OSF registration, following the
+  standing freeze → OSF sequence (record:
+  `osf-spec-registration.md`, completed by
+  append after filing).
+- **DD-040-10 — ALLOCATED.** The highest
+  phase on the merged record at this act is
+  Phase-438 (Spec 054); the execution phase
+  allocated mechanically is **Phase-439**.
+- **§8.1 — NOT APPLICABLE.** The accepted
+  artifact contains zero CONTESTED cells, so
+  there are no contested mappings to include
+  and no sensitivity label to consume; the
+  contested-included sensitivity is recorded
+  NOT APPLICABLE for this freeze. Candidate
+  disagreement strands preserved inside Spec
+  041's determination sets are not
+  reclassified as contested cells.
+
+### 5.5 The known margins consequence — stated, not hidden
+
+On Spec 041's published counts, reproduced at
+§5.3 above, Spec 040 §5's margins gate already
+fails under **every** derivation: EARLY
+retains assigned inscriptions from 1 distinct
+site (Harappa) and LATE from 2 (Dholavira,
+Lothal), against the 5-site arm; and the
+unassigned share exceeds the 40% arm under
+every derivation (A1/C 73.1%, B 74.8%,
+A2 85.6%) — Mohenjo-daro places 0 of its
+1,923 population rows under every derivation.
+This freeze is therefore a
+dependency-settlement and closure act: it
+settles the dependency and the derivation and
+locks the contract. If execution is later
+ordered and §5 is retained unchanged, the
+expected outcome is **NOT-YET-TESTABLE at the
+margins gate**, not a chronology-controlled
+verdict on G1. No part of this act loosens §5
+to make the test run.
+
+### 5.6 What the approval does not authorise
+
+No execution of Spec 040 in any part — no
+margins run, regression, primary, sensitivity,
+or outcome (plan R7). Execution begins only on
+a later owner order naming Spec 040 and
+Phase-439. No anchor, reading, or PRED-2026
+state is touched by this act.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark,

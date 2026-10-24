@@ -141,3 +141,45 @@
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## Amendment — 2026-10-23 (owner mini-gate)
+
+Drafted under Item 2 of the owner-approved
+waiting-decisions package of 2026-10-23. The
+amendment returns to the owner as a mini-gate;
+it does not freeze this spec.
+
+- [x] **A1 — Settled rulings recorded.**
+      `adjudication.md` §9: ruling (a) — no
+      battery element, the chance baseline
+      included, invented or borrowed under the
+      Phase-43 name; the amendment route adopted
+      (§8.5 route (2)); the recovery route stays
+      open. Ruling (b) — the Soviet mapping
+      impossible on the current record; arm A as
+      designed closed; the Soviet tables retired
+      from the member.
+- [x] **A2 — Amendment drafted.**
+      `amendment.md`: battery NB-1 specified in
+      full (elements NB-1.1–NB-1.9, every
+      constant with its derivation or its
+      labelled basis); the re-scoped data (the
+      Shakti corpus layer; Spec 068's primary
+      population; restricted venue; pins at
+      freeze); amended step-0 gates A–D;
+      outcome semantics re-pointed. Claims
+      F052-C16…C19 appended to the register at
+      0.5-draft.
+- [ ] **A3 — Owner mini-gate.** The owner
+      approves, amends, or declines the
+      amendment (amendment.md §7 lists the three
+      decisions). On approval: L4 runs over the
+      recovered register; L5 is decided **as
+      amended** — its battery-derivation and
+      Soviet-mapping items are closed by
+      adjudication §9, not by the freeze — and
+      the freeze path (L5 remainder, L6, L7)
+      resumes. Nothing in the amendment
+      executes before a separate execution
+      order, and no task is added to the
+      Execution list by this amendment.

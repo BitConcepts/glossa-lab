@@ -549,3 +549,107 @@ open as the record.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## 9. Settled rulings — owner approval 2026-10-23 (Item 2)
+
+§8 closed the 2026-10-21 freeze attempt: the battery could not
+be pinned out of the Phase-43 record, and the Soviet mapping
+could not be constructed from the records the program holds.
+§8.5 named three candidate routes to a freeze-grade design and
+reserved both questions to the owner. The owner decided both
+on 2026-10-23, approving Item 2 of the waiting-decisions
+package as written. The rulings are recorded here; the
+amendment they commission is `amendment.md` in this
+directory, and it returns to the owner as a mini-gate. This
+spec is not frozen by anything in this section.
+
+### 9.1 Ruling (a) — the battery: nothing under the Phase-43 name
+
+**Ruled:** no battery element — the chance baseline
+included — may be invented or borrowed under the Phase-43
+name. The route adopted is §8.5 route (2): an amendment with
+a new, explicitly defined battery, honestly labelled as new.
+Route (1) — recovery of the original Phase-43 pipeline —
+remains open as a standing possibility: if the original
+script or scratch directory surfaces, the owner may redirect
+this spec to it by a fresh ruling, and the amendment is then
+moot. Route (3) — a narrowed Soviet-only design on the
+surviving sub-record — is not adopted.
+
+Consequence for this draft: gate 0.5's demand is discharged
+differently than §5 item 1 imagined. The battery definition
+is no longer "derived from the Phase-43 record and cited,
+element by element"; it is defined in full in the amendment,
+with every element's derivation — or its honest basis as a
+stated design choice — written next to it. Claims
+F052-C09's boundary is superseded to that extent by the
+amendment (claim F052-C16), and the amendment says so in its
+own text.
+
+### 9.2 Ruling (b) — the Soviet mapping: impossible on the current record
+
+**Ruled:** the Soviet mapping is impossible on the current
+record. Arm A **as designed** — the Phase-43 battery run on
+the Soviet compilation's dataset through a Marshall →
+Mahadevan mapping — is closed. The Soviet tables retire from
+this member: K1965-T4 and the Phase-121 dataset pins remain
+in §2 and in the freeze-failure record as history, but no
+amended run consumes them.
+
+The record the ruling rests on is §8.3's and §8.4's:
+Spec 020's findings F3, F5 and F6 (the crosswalk carries no
+Marshall passage; K1965-T4's cells are aggregated pair-by-
+final counts, pair (267, 99) its largest, with no per-sign
+denominators and no first-sign marginals; the tabulated signs
+are functions of two signs at once, not of single signs);
+the Phase-121 dataset is the Bulgarian volume's sign list,
+not inscription texts; and the crosswalk's 383 conflict
+pairs sit exactly where the mapping would have to work
+hardest. A mapping built from these records would have been
+invented, and an invented mapping would have decided the
+outcome before the run.
+
+### 9.3 What the amendment therefore changes, and what it does not
+
+The amendment keeps the spec's question and its outcome
+machinery, and changes the data and the battery:
+
+- The pattern under test is unchanged: §2's two
+  sub-predictions of the Farmer–Sproat–Witzel thesis —
+  dedicated final-position sign sets (F) and a fixed opening
+  formula (O) — evaluated as a consistency check on a settled
+  claim, never as a verdict machine (F052-C01 stands).
+- The data changes: the amended run evaluates F and O on
+  inscription-level material — the Shakti corpus layer —
+  whose compilation lineage (the CISI corpus tradition) is
+  distinct from the Soviet compilation behind the claim's
+  original outcome and distinct from the Holdat/M77 lineage.
+  What "distinct lineage" does and does not buy is stated in
+  the amendment, not overclaimed.
+- The battery changes: NB-1, defined in full in the
+  amendment (claim F052-C16), replaces the unrecoverable
+  Phase-43 battery. The outcome words of §4.1 and the
+  append duties of §4.2 survive, re-pointed at NB-1 and the
+  new population (claim F052-C19); the Soviet-specific
+  step-0 gates and closure classes of §3 are replaced by the
+  amended gates (claim F052-C18).
+- The parent claim's status does not move: it stands
+  contradicted as recorded, and no outcome of the amended
+  run moves it (§6's rule, unchanged).
+
+### 9.4 What returns to the owner
+
+The amendment draft — this section, `amendment.md`, claims
+F052-C16…C19, and the amendment tasks — is the mini-gate.
+The owner approves it, amends it, or declines it. Only on
+approval does the freeze path resume: AEE lifecycle hooks
+over the recovered register (L4), the freeze act with the
+corpus-layer pins taken at freeze time, the OSF filing, and
+then a separate execution order. Nothing in this section
+freezes, files, or executes anything.
+
+---
+
+*AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution §VI.*

@@ -37,6 +37,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import re
 from pathlib import Path
 
 import pytest
@@ -141,7 +142,22 @@ def test_corrected_records_carry_the_phase104_outcome():
                                   "not_understood", "explanation_record"}
         if claim_id.endswith(("critique_0001", "critique_0002")):
             want_keys |= {"evidence_instances"}
-        assert set(rec) == want_keys, claim_id
+        # Amendment (Spec 052 execution, 2026-10-24): the frozen
+        # Spec 052 section 4.2 appends a dated outcome entry to
+        # each of these three records — as the 2026-10-22 Spec 025
+        # audit appended one to the parent record. Dated appends
+        # (keys carrying a trailing _YYYY_MM_DD date) are
+        # append-only records under the program's discipline, not
+        # changes to the proposition or to this correction, so
+        # the exact-shape pin covers every non-append key and any
+        # extra key must be a dated append. The generator's
+        # dated-append carry-over (indus_claims.py) preserves
+        # them across regeneration under the same rule.
+        extra = set(rec) - want_keys
+        assert all(
+            re.search(r"_\d{4}_\d{2}_\d{2}$", k) for k in extra
+        ), claim_id
+        assert set(rec) - extra == want_keys, claim_id
         # The previous status is preserved on the record itself.
         corr = rec["status_correction"]
         assert corr["kind"] == "phase104-carryover-correction"

@@ -147,6 +147,14 @@ principle as its stage, merge-state, and
 status-correction carry-overs; a test in
 `backend/tests/test_spec052_execution.py`
 proves the preservation and fails without it.
+The one exact-shape pin over the corrected
+fragment records (the Phase-104 correction
+tests) was amended the same day, in its own
+dated amendment note, to admit dated append
+keys while still pinning every non-append key
+exactly — the same surgical correction the
+Spec 052 freeze itself applied to a live-hash
+pin (freeze §8).
 
 ## What this does not establish
 

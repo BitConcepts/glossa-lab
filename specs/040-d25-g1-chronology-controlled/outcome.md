@@ -483,10 +483,20 @@ as measured.
 
 ## Landing record
 
-Appended at merge (append-only): PR number,
-merge commit, CI conclusions, and the
-foundation check as measured on the merged
-tree.
+Landed 2026-10-24 via PR #369 (execution),
+merged at
+`f340c68f470e25cf1ec959c6d1943bcf934222fb`
+with the full CI suite green (7/7: Backend
+pytest, Frontend Playwright, Indus public
+validation, Evidence Graph smoke, Shell
+wrappers ×3 — read from the run's own job
+conclusions). Foundation check on the merged
+tree: 40 checks passed, 0 failed, 8 warnings
+(run on the tree extracted from the merge
+commit, with the owner's local copy of the
+one gitignored corpus file the check reads;
+the posture matches the Spec 052 and Spec
+054 landings).
 
 ---
 

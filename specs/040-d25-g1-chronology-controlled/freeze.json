@@ -6,21 +6,21 @@
   "experiment_id": "spec040-d25-g1-chronology-controlled",
   "register": {
    "path": "specs/040-d25-g1-chronology-controlled/claims.json",
-   "register_version": "0.5-draft",
+   "register_version": "0.7-draft",
    "claims": 15,
-   "aee_hook_pass": "NOT RUN on this draft: the AEE lifecycle hooks (after_specify / after_plan / after_tasks) are a freeze gate, run at the freeze act over the recovered register (the Spec 035 ordering; see specs/040-d25-g1-chronology-controlled/aee/freeze-aee-note.md)"
+   "aee_hook_pass": "PASSED at the freeze act 2026-10-24 (applied-epistemic-engineering 1.5.3, lenient load, evidence verification off, no ledger): after_specify, after_plan and after_tasks over the recovered register each carried exactly 15 failure modes, every one an FR-2.3 draft-cap record; zero correctness failure modes; no claim below the 0.70 propagated-confidence threshold (minimum 0.8445). Two recovery rounds (0.5-draft to 0.7-draft) are recorded in the register note and aee/freeze-aee-note.md."
   },
   "basis": {
    "adjudication": "specs/040-d25-g1-chronology-controlled/adjudication.md",
-   "decisions": "The owner's decisions of 2026-10-20 commission this draft and fix its basis: the gazetteer period-assignment act (Spec 039) and D-25 are authorised as a bundle with the act first, and the act's evidence standard is published period determinations only. No freeze order and no execution order exist for this contract. The design implemented is D-25 of the PR #195 experiment-design packet over the Spec 025 / Phase-140 / Phase-385 record of claim STUDY-SPEC-025/G1."
+   "decisions": "The owner's decisions of 2026-10-20 commission this draft and fix its basis: the gazetteer period-assignment act (Spec 039) and D-25 are authorised as a bundle with the act first, and the act's evidence standard is published period determinations only. The owner's approval of the freeze plan as specified (2026-10-24, 10:54 EDT, 'Approve as specified'; adjudication.md section 5) authorises this freeze: the section 1 judgment by successor-artifact substitution, derivation A1, DD-040-1 adopted, DD-040-5 confirmed, DD-040-6 retained, DD-040-9 filed, DD-040-10 allocated at the act, and section 8.1 recorded NOT APPLICABLE. No execution order exists for this contract. The design implemented is D-25 of the PR #195 experiment-design packet over the Spec 025 / Phase-140 / Phase-385 record of claim STUDY-SPEC-025/G1."
   },
   "design": {
-   "phase": "UNASSIGNED at draft (DD-040-10): allocated at the freeze act; Phase-400 is Spec 036's and Phase-401 is claimed by the Spec 037 and Spec 038 drafts",
+   "phase": "Phase-439 (allocated at the freeze act of 2026-10-24 under DD-040-10; the highest phase on the merged record at the act is Phase-438, Spec 054's)",
    "claim_under_test": "STUDY-SPEC-025/G1",
    "design_source": "D-25, docs/research/experiment-designs-2026-10-13/04-study-headlines.md (PR #195)",
    "question": "When inscriptions are compared only against inscriptions from the same coarse period, with composition and preservation still held fixed, does the G1 site association stay clearly above the V = 0.10 practical margin?",
    "dependency_gate": {
-    "state_at_draft": "NOT SATISFIED: Spec 039 has not executed; the gazetteer assignment column is empty on every published Stage 0 row",
+    "state_at_freeze": "SATISFIED at the freeze act of 2026-10-24, by successor-artifact substitution, openly recorded (adjudication.md section 5.1): Spec 039 executed, but its own artifact did not satisfy section 1 conditions 2 and 4 (the 2026-10-20 finding, unamended); Spec 041's artifact is accepted as the successor dependency artifact the 2026-10-20 closure contemplated",
     "requires": [
      "Spec 039 executed, with its freeze digest and outcome merged and named in Spec 040's freeze record",
      "a frozen machine-readable period-assignment artifact, SHA-256 pinned in Spec 040's freeze record, resolving G1 inscriptions at site-period resolution",
@@ -29,10 +29,22 @@
     ],
     "failure_state": "NOT-YET-TESTABLE - dependency gate; the freeze does not proceed",
     "spec039_artifact": {
-     "path": "PENDING - named at the freeze act",
-     "version": "PENDING - named at the freeze act",
-     "sha256": "PENDING - named at the freeze act"
-    }
+     "path": "data/movement/gazetteer_rows_assigned.jsonl",
+     "version": "Spec 039 Output A (Phase-403 execution)",
+     "sha256": "64f288d35c492d8babacb4efb9c7446573a62168095db44f7469cd7904fcabb4",
+     "spec039_freeze_digest": "ec53a841a7f7f7afd56ab69f1caf23557e1e26c834d35563c42990ce66aa2742",
+     "standing": "executed and named; did NOT satisfy section 1 conditions 2 and 4 (site-level label sets, no site x local-label key, three of the seven G1 sites without rows)"
+    },
+    "spec041_artifact": {
+     "path": "data/evidence_integration/site_period_mapping.jsonl",
+     "version": "Spec 041 artifact (freeze 2026-10-22; Phase-435 execution)",
+     "sha256": "1e5b54c9193fb52092c34e1c959ec64a48b83cacbb8e5705f629635183c12b67",
+     "spec041_freeze_digest": "fe6188864d5ff497fed5e3e89456d0499987c2cbc8ada5997920e864360dfdc7",
+     "meta_sha256": "bda1017dd88da0b14efaa3ffc5ff280b09818349bda4de1ed20f8c60d42864a9",
+     "step0_census_sha256": "b57fb6b1a0aa1e491ba38bf18978eec58c355f3bf833f58298c7516aabeca6be",
+     "standing": "ACCEPTED at this freeze as the successor dependency artifact for section 1, by the owner's approval of the freeze plan as specified (adjudication.md section 5.1); 78 cells: 24 MAPPED (4 EARLY, 18 MATURE, 2 LATE), 54 UNASSIGNED, 0 CONTESTED"
+    },
+    "verification_at_freeze": "the artifact recomputes to its pin and validates against the frozen schema (every MAPPED cell: exactly one OWN_TEXT determination with citation, locator, mapping rule, contested false; every UNASSIGNED cell: exactly one enumerated reason - 35 / 10 / 4 / 3 / 2); the cell census from the pinned Phase-139 covariates equals the artifact's 78 (site, field, local label) triples exactly, attested_rows equal; population margins reproduce exactly (2,266 / 2,638 / 1,788 / 3,116 / 2,294); the section 4.1 join under A1 covers the 5,410 population inscription IDs exactly once"
    },
    "period_assignment": {
     "labels": [
@@ -40,7 +52,13 @@
      "MATURE",
      "LATE"
     ],
-    "key": "site x the inscription's recorded local chronological label(s), per the frozen Spec 039 artifact",
+    "key": "site x the inscription's recorded local chronological label(s), per the accepted Spec 041 artifact",
+    "derivation": {
+     "name": "A1 - agreement of mapped labels, no veto (decided at the freeze, adjudication.md section 5.3)",
+     "rule": "a row is placed when at least one of its recorded labels is MAPPED and every MAPPED label agrees on one coarse period; an UNASSIGNED label does not veto; disagreement between MAPPED labels, no recorded label, or all labels UNASSIGNED leaves the row UNASSIGNED in the primary; no field precedence applies",
+     "not_chosen": "A2 (agreement with an UNASSIGNED veto), B (period precedence) and C (phase-eligible union) are not primary derivations and are not silently substituted at execution; A1 and C produce identical placements on this artifact",
+     "reproduced_at_freeze": "1,457 placed (EARLY 32, MATURE 1,386, LATE 39); 3,953 unplaced (2,294 no informative label; 1,658 all labels UNASSIGNED; 1 disagreement, the Kalibangan row, unplaced); placed by site: Dholavira 133, Harappa 1,021, Kalibangan 157, Lothal 108, Nausharo 38, Mohenjo-daro 0, Chanhu-daro 0"
+    },
     "primary_rule": "a unique uncontested mapping places the inscription; missing, ambiguous, transitional, or contested-only mappings leave it UNASSIGNED and excluded from the primary, counted",
     "forbidden_placements": [
      "site-level occupation label inheritance",
@@ -48,7 +66,7 @@
      "the Phase-139 chron_band harmonization",
      "analyst judgement at execution time"
     ],
-    "contested": "excluded from the primary; included in the labelled sensitivity under the sensitivity labels Spec 039 froze, or the sensitivity is NOT ESTIMABLE for the affected mappings"
+    "contested": "the accepted artifact contains zero CONTESTED cells; spec section 8.1 (contested-included) is recorded NOT APPLICABLE at this freeze: there are no contested mappings to include and no sensitivity label to consume"
    },
    "margins_gate": {
     "sites_per_period_min": 5,
@@ -59,8 +77,9 @@
     ],
     "unassigned_share_max": 0.4,
     "permutable_min": 1000,
-    "permutable_arm_status": "DD-040-6, proposed at draft: carried from Spec 025's covariate-gate floor",
-    "failure_state": "NOT-YET-TESTABLE, margins stated, no outcome quantity computed (D-25's source wording: INCONCLUSIVE-BY-DESIGN; the governing word is DD-040-5, proposed at draft)"
+    "permutable_arm_status": "DD-040-6, RETAINED at the freeze (decided 2026-10-24): all three section 5 margins arms stand in the frozen gate",
+    "failure_state": "NOT-YET-TESTABLE, margins stated, no outcome quantity computed (the closure word confirmed at the freeze: DD-040-5, NOT-YET-TESTABLE, not D-25's INCONCLUSIVE-BY-DESIGN)",
+    "known_consequence": "on the pinned Spec 041 counts reproduced at the freeze, arms 1 and 2 already fail under every derivation: EARLY retains 1 distinct site (Harappa) and LATE 2 (Dholavira, Lothal) against the 5-site arm; the unassigned share exceeds 40% under every derivation (A1/C 73.1%, B 74.8%, A2 85.6%); Mohenjo-daro places 0 of its 1,923 population rows under every derivation. This freeze is a dependency-settlement and closure act; a later execution under the retained gate is expected to close NOT-YET-TESTABLE at the margins gate"
    },
    "primary_test": {
     "population": "the Phase-137 F3 population reproduced by rule (7 eligible sites, 5,410 inscriptions), restricted to the assigned inscriptions of the assignment discipline",
@@ -71,7 +90,7 @@
      "B": 9999,
      "seed": 20261009,
      "p_formula": "(1 + #{chi2_perm >= chi2_obs}) / (1 + B)",
-     "role": "reported with the outcome; not the verdict rule (DD-040-1)"
+     "role": "reported with the outcome; not the verdict rule (DD-040-1, adopted at the freeze)"
     },
     "interval": {
      "estimator": "Phase-385 v2: stratified bootstrap of inscriptions within the primary strata, stratum sizes preserved",
@@ -83,19 +102,19 @@
     "margin_v": 0.1
    },
    "decision_rules": {
-    "rule_source": "DD-040-1, proposed at draft: the interval-at-margin rule of D-25 and Phase-385, re-derived in place of Spec 025's permutation-p-only verdict rule",
+    "rule_source": "DD-040-1, ADOPTED at the freeze (decided 2026-10-24): the interval-at-margin rule of D-25 and Phase-385, re-derived in place of Spec 025's permutation-p-only verdict rule",
     "supported": "governing interval entirely above 0.10: SUPPORTED - CHRONOLOGY CONTROLLED; the rider is retired by appended record",
     "weakened": "governing interval straddles 0.10: WEAKENED - RIDER CONFIRMED AS MATERIAL; G1 restated as a period-confounded association by appended record",
     "contradicted": "governing interval entirely at or below 0.10: CONTRADICTED AT THE DECLARED MARGIN; the chronology-controlled form of G1 is defeated at the margin"
    },
    "sensitivities": [
-    "contested-included, under the frozen sensitivity labels (spec section 8.1)",
+    "contested-included (spec section 8.1): NOT APPLICABLE at this freeze - the accepted artifact contains zero contested cells",
     "leave-one-site-out over every analysis site (spec section 8.2)",
     "drop-Harappa, named in the headline sensitivity paragraph or NOT APPLICABLE recorded (spec section 8.3)",
     "recorded companions, not recomputed: the Phase-140 primary and the Phase-385 interval; Spec 025's EXPLORATORY S-chron interval (spec section 8.4)"
    ],
    "regression": "before the primary, the composition-only and composition x preservation configurations reproduce the Phase-137 and Phase-140 records exactly; any mismatch stops the run as INVALID",
-   "execution_gate": "NOT satisfied: no freeze order and no execution order exist for this contract, and the freeze itself is barred until the dependency gate is satisfied; this draft performs neither, joins no label, computes no margin, and calculates no repertoire quantity"
+   "execution_gate": "The freeze is satisfied at the act of 2026-10-24. Execution (Phase-439) requires a separate owner order naming Spec 040 and Phase-439; none exists at the freeze. This freeze joins no label for outcome purposes, runs no margin, and calculates no repertoire quantity"
   },
   "inputs": {
    "layer": {
@@ -154,30 +173,31 @@
    },
    "anchors": {
     "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
-    "sha256": "eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed",
-    "rule": "asserted byte-identical before and after any execution"
+    "sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+    "rule": "asserted byte-identical before and after any execution",
+    "note": "pin refreshed at the freeze from the draft's stale eccea6d5... value to the current anchors pin, recomputed at the freeze act"
    }
   },
   "environment": {
    "python": "3.12.3",
    "runner": "backend (venv glossa-lab)",
-   "aee": "the version pinned in the Glossa venv at the freeze act (the aee 1.5.0 adoption is a separate in-flight owner decision; this draft runs no hooks under any version)",
+   "aee": "1.5.3 (venv glossa-aee153) at the freeze gate: the lifecycle hooks passed over the recovered register (0.7-draft) before the digest was computed",
    "specify": "1.0.10"
   }
  },
  "sources": {
-  "specs/040-d25-g1-chronology-controlled/freeze.md": "412ddb913c55d534c2ddd4480873ffe9b4385ae7224757eb196d7dc94e395450",
-  "specs/040-d25-g1-chronology-controlled/spec.md": "1b016e444a8c646e9b1689750c69edc182afed275c11bb026125abeddc1916a2",
-  "specs/040-d25-g1-chronology-controlled/claims.json": "73ec48f3b6af25e2d0ff145177eb7961a890f151e72e80849500e6305d689244",
-  "specs/040-d25-g1-chronology-controlled/adjudication.md": "5259fa799a8a166e9e9009616e877a818ecd292b3018ef46683653c90f531c69",
-  "specs/040-d25-g1-chronology-controlled/aee/freeze-aee-note.md": "e8eafbeb2f3b1bf942db2bc1149e661be4d63a05099cc2d61f1d0f33c0f2ea3c",
-  "specs/040-d25-g1-chronology-controlled/build_freeze.py": "dbfb7dcd47391eb5ef32c98f2ad0d2cf2f51d27b18f29bd9b7848166dad40178",
-  "backend/tests/test_spec040_freeze.py": "05db8fcd90148b5dd591efb50b2047c0100293631212ef867f3875dea5123801"
+  "specs/040-d25-g1-chronology-controlled/freeze.md": "b66fc123f194178cd3da843bdd77fdcf68535e63ab8f1c0f050dddeb849f5ec3",
+  "specs/040-d25-g1-chronology-controlled/spec.md": "a9882c9bf0c484d9ba04e719cb40023eb90d7e2e3d9f27531bdf2daea163a34a",
+  "specs/040-d25-g1-chronology-controlled/claims.json": "75e7582cdaee25c303a27ca1f0a5b79c29253a35504cfa0a745e7e91b8ceb9d3",
+  "specs/040-d25-g1-chronology-controlled/adjudication.md": "c7528ed9b363ef198e27ecc32dcc56b13c1688443f60d1dd51e07cc757115faa",
+  "specs/040-d25-g1-chronology-controlled/aee/freeze-aee-note.md": "49a2257eaee55eec360df2bf11630c3c66e3357a6804ef178db8449fc10397d2",
+  "specs/040-d25-g1-chronology-controlled/build_freeze.py": "1f07a988063a6516ef32204a5dcc2b9c053593ad2860b3de2e9ddb6beb430f82",
+  "backend/tests/test_spec040_freeze.py": "c9bfb45845598925cf02a7602f0ed1dc7c51ba4ee7f43e513681d1f8c0997620"
  },
  "environment": {
   "python": "3.12.3",
   "platform": "Linux",
   "aee": "1.0.4"
  },
- "digest": "63ca1ac99ed106b7bb7cc3d0e324e7522617021ea353af2a6055d975d316ac85"
+ "digest": "16aeeb7017f34f079742e56f13bfd88e3955ce75722693eae87fbbbaa9927515"
 }

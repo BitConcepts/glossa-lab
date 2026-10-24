@@ -1,7 +1,7 @@
 {
  "spec": "040-d25-g1-chronology-controlled",
- "register_version": "0.5-draft",
- "note": "Claims-first draft register for Spec 040, generated alongside spec.md from design D-25 (PR #195 portfolio, read in full) and the Spec 025 / Phase-140 / Phase-385 record, under the owner's 2026-10-20 bundle decision (gazetteer act first, published determinations only; D-25 follows). DRAFT: the AEE lifecycle hooks have not run on this register; they are a freeze gate (the Spec 035 ordering), and any recovery rounds at the freeze act will be recorded in aee/ and advance this version. Draft-stage self-checks (dependency integrity over this register; the cited-record facts) are pinned by backend/tests/test_spec040_freeze.py.",
+ "register_version": "0.7-draft",
+ "note": "Claims-first draft register for Spec 040, generated alongside spec.md from design D-25 (PR #195 portfolio, read in full) and the Spec 025 / Phase-140 / Phase-385 record, under the owner's 2026-10-20 bundle decision (gazetteer act first, published determinations only; D-25 follows). DRAFT: the AEE lifecycle hooks have not run on this register; they are a freeze gate (the Spec 035 ordering), and any recovery rounds at the freeze act will be recorded in aee/ and advance this version. Draft-stage self-checks (dependency integrity over this register; the cited-record facts) are pinned by backend/tests/test_spec040_freeze.py. Recovery at the freeze act of 2026-10-24 (round 1, 0.5-draft -> 0.6-draft): every evidence item gained an independent_of declaration naming the register's other evidence sources (separate documents, independently inspectable); the heads of F040-C03, F040-C05, F040-C06 and F040-C11 were restated as single propositions, each draft head carried verbatim into its claim's boundary with its remaining clause governed there - no proposition was dropped. Round 1's hooks (aee 1.5.3, lenient load, evidence verification off, no ledger) had returned 41 failure modes: 22 independence_unmodeled (one per evidence item), 4 coverage_gap irreducibility challenges (the four restated heads), 15 FR-2.3 draft-cap records; minimum propagated confidence 0.695. Recovery round 2 at the same act (0.6-draft -> 0.7-draft): F040-C11's head restated a second time as the single upper-bound condition (its first restated head is carried in its boundary); seven claims (F040-C07, C08, C09, C10, C12, C14, C15) each gained a second evidence item from a distinct record that states the claimed proposition (the Phase-385 report; the Spec 025 design record; the D-25 design source; the Spec 025 Phase-140 freeze record), and every independent_of declaration was recomputed against the enlarged source set. Round 2's hooks had returned 16 failure modes: 15 FR-2.3 draft-cap records and one coverage_gap challenge on F040-C11; eight claims stood below the 0.70 threshold at 0.695 - the seven single-evidence claims on their direct scores and F040-C11 by propagation from F040-C08.",
  "claims": [
   {
    "id": "F040-C01",
@@ -40,7 +40,18 @@
      "direction": "supports",
      "source_quality": "artifact",
      "description": "Spec 025: G1's design, verdict rule, and the chronology rider carried in its freeze records",
-     "source_id": "specs/025-stage2-controlled-followup/spec.md"
+     "source_id": "specs/025-stage2-controlled-followup/spec.md",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_report.md",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
     },
     {
      "ref": "reports/phase140_results.json",
@@ -48,7 +59,18 @@
      "direction": "supports",
      "source_quality": "artifact",
      "description": "Phase-140 results: G1 SUPPORTED under composition and preservation control, chronology not controlled",
-     "source_id": "reports/phase140_results.json"
+     "source_id": "reports/phase140_results.json",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase385_report.md",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
     }
    ]
   },
@@ -91,7 +113,18 @@
      "direction": "supports",
      "source_quality": "artifact",
      "description": "Spec 027 section 6.2: the gazetteer unit, the program_period_assignment field, and its reservation to a governed act",
-     "source_id": "specs/027-movement-culture-language/spec.md"
+     "source_id": "specs/027-movement-culture-language/spec.md",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_report.md",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
     },
     {
      "ref": "specs/030-q6-chronology-spine-extension/outcome.md",
@@ -99,16 +132,27 @@
      "direction": "supports",
      "source_quality": "artifact",
      "description": "Spec 030 outcome: the extended spine is 205 traced dated-context rows and Q6 remains NOT-YET-TESTABLE on it",
-     "source_id": "specs/030-q6-chronology-spine-extension/outcome.md"
+     "source_id": "specs/030-q6-chronology-spine-extension/outcome.md",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_report.md",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
     }
    ]
   },
   {
    "id": "F040-C03",
-   "text": "The primary test's base population and sign columns are the Phase-137 population and profile configuration reproduced exactly.",
+   "text": "The primary test's base population is the Phase-137 population reproduced exactly.",
    "kind": "requirement",
    "status": "draft",
-   "boundary": "The population claim (spec section 6.1). Base population: 5,410 inscriptions at the 7 Phase-137 eligible sites from the pinned layer; sign columns fixed from that full population (count at least 10, rarer pooled to OTHER, placeholders 000/999 excluded). The analysis population is the assigned subset under C04; the column set is not re-derived on it. It does not govern period assignment (C04) or inference (C06-C07).",
+   "boundary": "The population claim (spec section 6.1). Base population: 5,410 inscriptions at the 7 Phase-137 eligible sites from the pinned layer; sign columns fixed from that full population (count at least 10, rarer pooled to OTHER, placeholders 000/999 excluded). The analysis population is the assigned subset under C04; the column set is not re-derived on it. It does not govern period assignment (C04) or inference (C06-C07). Draft head carried verbatim: 'The primary test's base population and sign columns are the Phase-137 population and profile configuration reproduced exactly.' The sign-column clause of the draft head is governed with the population clause by this claim: the sign columns are the Phase-140 profile configuration, fixed from the full base population and never re-derived on the assigned subset (DD-040-4).",
    "depends_on": [
     "F040-C01"
    ],
@@ -141,7 +185,18 @@
      "direction": "supports",
      "source_quality": "artifact",
      "description": "Phase-140 results: population 5,410, the 7 eligible sites, and the profile configuration asserted against Phase-137",
-     "source_id": "reports/phase140_results.json"
+     "source_id": "reports/phase140_results.json",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase385_report.md",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
     },
     {
      "ref": "specs/025-stage2-controlled-followup/phase140-freeze.md",
@@ -149,7 +204,18 @@
      "direction": "supports",
      "source_quality": "artifact",
      "description": "Phase-140 freeze record: the population, profile table, and statistic configuration fixed for G1",
-     "source_id": "specs/025-stage2-controlled-followup/phase140-freeze.md"
+     "source_id": "specs/025-stage2-controlled-followup/phase140-freeze.md",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_report.md",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
     }
    ]
   },
@@ -195,7 +261,18 @@
      "direction": "supports",
      "source_quality": "artifact",
      "description": "Spec 027 section 6.2/6.5: source assertions are preserved with their scheme and conflicts, never silently harmonised",
-     "source_id": "specs/027-movement-culture-language/spec.md"
+     "source_id": "specs/027-movement-culture-language/spec.md",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_report.md",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
     },
     {
      "ref": "data/movement/chronology_rows_phase394.jsonl",
@@ -203,16 +280,27 @@
      "direction": "supports",
      "source_quality": "artifact",
      "description": "The 205-row extended spine: dated sample/context assertions by site, the support record the assignment artifact may cite",
-     "source_id": "data/movement/chronology_rows_phase394.jsonl"
+     "source_id": "data/movement/chronology_rows_phase394.jsonl",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_report.md",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
     }
    ]
   },
   {
    "id": "F040-C05",
-   "text": "The primary permutation respects composition, preservation, and period strata jointly.",
+   "text": "The primary permutation holds period fixed jointly with the Spec 025 control strata.",
    "kind": "requirement",
    "status": "draft",
-   "boundary": "The strata claim (spec sections 4 and 6.2). The stratum key is composition_stratum | preservation_class | period_stratum over the assigned population; site labels move only inside a stratum. Period enters by stratification, not as a regression covariate or matching score. It does not govern the statistic computed under the permutation (C06) or the interval estimator (C07).",
+   "boundary": "The strata claim (spec sections 4 and 6.2). The stratum key is composition_stratum | preservation_class | period_stratum over the assigned population; site labels move only inside a stratum. Period enters by stratification, not as a regression covariate or matching score. It does not govern the statistic computed under the permutation (C06) or the interval estimator (C07). Draft head carried verbatim: 'The primary permutation respects composition, preservation, and period strata jointly.' The control strata named in the draft head are composition and preservation (the Phase-140 strata), with period added by this spec as the third stratum (DD-040-2).",
    "depends_on": [
     "F040-C03",
     "F040-C04"
@@ -246,7 +334,18 @@
      "direction": "supports",
      "source_quality": "artifact",
      "description": "Phase-140 freeze record: site labels permuted within composition x preservation strata, UNRECORDED retained as a level",
-     "source_id": "specs/025-stage2-controlled-followup/phase140-freeze.md"
+     "source_id": "specs/025-stage2-controlled-followup/phase140-freeze.md",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_report.md",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
     },
     {
      "ref": "specs/040-d25-g1-chronology-controlled/spec.md",
@@ -254,16 +353,27 @@
      "direction": "supports",
      "source_quality": "artifact",
      "description": "Spec 040 section 6.2: the stratum key with period added, carried from design D-25",
-     "source_id": "specs/040-d25-g1-chronology-controlled/spec.md"
+     "source_id": "specs/040-d25-g1-chronology-controlled/spec.md",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_report.md",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md"
+     ]
     }
    ]
   },
   {
    "id": "F040-C06",
-   "text": "The primary statistic and permutation follow the Phase-140 configuration with 9,999 shuffles under seed 20261009.",
+   "text": "The primary statistic follows the Phase-140 configuration.",
    "kind": "requirement",
    "status": "draft",
-   "boundary": "The inference claim (spec section 6.2). Pearson chi-square of the site x sign table as the divergence statistic; p = (1 + #{chi2_perm >= chi2_obs}) / (1 + B); Fisher-Yates via shuffle; no asymptotic p-value. The permutation p is reported with the outcome; under DD-040-1 it does not by itself mint the verdict, which C08-C11 assign from the interval. It does not govern the interval estimator (C07).",
+   "boundary": "The inference claim (spec section 6.2). Pearson chi-square of the site x sign table as the divergence statistic; p = (1 + #{chi2_perm >= chi2_obs}) / (1 + B); Fisher-Yates via shuffle; no asymptotic p-value. The permutation p is reported with the outcome; under DD-040-1 it does not by itself mint the verdict, which C08-C11 assign from the interval. It does not govern the interval estimator (C07). Draft head carried verbatim: 'The primary statistic and permutation follow the Phase-140 configuration with 9,999 shuffles under seed 20261009.' The permutation clause of the draft head is governed with the statistic clause by this claim: the primary permutation runs 9,999 shuffles under seed 20261009 (spec section 6.2).",
    "depends_on": [
     "F040-C05"
    ],
@@ -296,7 +406,18 @@
      "direction": "supports",
      "source_quality": "artifact",
      "description": "Phase-140 freeze record: statistic, B, seed, and p formula frozen for G1",
-     "source_id": "specs/025-stage2-controlled-followup/phase140-freeze.md"
+     "source_id": "specs/025-stage2-controlled-followup/phase140-freeze.md",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_report.md",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
     },
     {
      "ref": "reports/phase140_results.json",
@@ -304,7 +425,18 @@
      "direction": "supports",
      "source_quality": "artifact",
      "description": "Phase-140 results: the recorded permutation quantities the regression of section 7 must reproduce",
-     "source_id": "reports/phase140_results.json"
+     "source_id": "reports/phase140_results.json",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase385_report.md",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
     }
    ]
   },
@@ -346,7 +478,37 @@
      "direction": "supports",
      "source_quality": "artifact",
      "description": "Phase-385 results v2: stratified bootstrap, B = 4,999, seed 20261012, basic interval governing over the percentile interval",
-     "source_id": "reports/phase385_results.json"
+     "source_id": "reports/phase385_results.json",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_report.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
+    },
+    {
+     "ref": "reports/phase385_report.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-385 report: the v2 stratified basic bootstrap interval is the governing interval for this result family, with the percentile interval reported beside it",
+     "source_id": "reports/phase385_report.md",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
     }
    ]
   },
@@ -388,7 +550,37 @@
      "direction": "supports",
      "source_quality": "artifact",
      "description": "Phase-385 results: margin_v = 0.1 declared before the run, governing interval the basic bootstrap",
-     "source_id": "reports/phase385_results.json"
+     "source_id": "reports/phase385_results.json",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_report.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
+    },
+    {
+     "ref": "reports/phase385_report.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-385 report: 'Margin declared before any run: Cramer's V = 0.10' - the declared practical floor for this result family",
+     "source_id": "reports/phase385_report.md",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
     }
    ]
   },
@@ -432,7 +624,37 @@
      "direction": "supports",
      "source_quality": "artifact",
      "description": "Phase-385 verdict: the governing basic CI [0.1838, 0.2102] lies entirely above the 0.10 floor, with the rider retained because chronology was not controlled",
-     "source_id": "reports/phase385_results.json"
+     "source_id": "reports/phase385_results.json",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_report.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
+    },
+    {
+     "ref": "specs/025-stage2-controlled-followup/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 025: G1's design, verdict rule, and the chronology rider every G1 statement carries - the rider this consequence retires",
+     "source_id": "specs/025-stage2-controlled-followup/spec.md",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_report.md",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
     }
    ]
   },
@@ -474,16 +696,46 @@
      "direction": "supports",
      "source_quality": "artifact",
      "description": "Phase-385 report: an interval crossing the declared margin is inconclusive at that margin, the discipline this consequence carries",
-     "source_id": "reports/phase385_results.json"
+     "source_id": "reports/phase385_results.json",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_report.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
+    },
+    {
+     "ref": "reports/phase385_report.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-385 report: the governing basic interval read against the declared V = 0.10 floor - the precedent for judging an interval against the margin",
+     "source_id": "reports/phase385_report.md",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
     }
    ]
   },
   {
    "id": "F040-C11",
-   "text": "A governing interval lying entirely at or below 0.10 contradicts the chronology-controlled form of G1 at the declared margin.",
+   "text": "An interval whose upper bound does not exceed the margin contradicts the chronology-controlled form of G1.",
    "kind": "hypothesis",
    "status": "draft",
-   "boundary": "The contradicted consequence (spec section 6.4): upper bound at or below 0.10 after every gate has passed. It defeats the claim that the site association survives holding time fixed, at the declared practical margin. It does not assert that no site association exists in any form, and it does not alter Phase-140's differently-controlled result. It does not govern the straddle position (C10).",
+   "boundary": "The contradicted consequence (spec section 6.4): upper bound at or below 0.10 after every gate has passed. It defeats the claim that the site association survives holding time fixed, at the declared practical margin. It does not assert that no site association exists in any form, and it does not alter Phase-140's differently-controlled result. It does not govern the straddle position (C10). Draft head carried verbatim: 'A governing interval lying entirely at or below 0.10 contradicts the chronology-controlled form of G1 at the declared margin.' In the restated head, 'the margin' is the declared margin V = 0.10 (F040-C08) and the interval is the governing basic bootstrap interval (F040-C07). Second restatement at the same act: 'An interval entirely at or below the margin contradicts the chronology-controlled form of G1.' - the disjunctive form restated as the single upper-bound condition spec section 6.4 states.",
    "depends_on": [
     "F040-C08"
    ],
@@ -517,7 +769,18 @@
      "direction": "supports",
      "source_quality": "artifact",
      "description": "Phase-385 results: the margin adjudication form for this result family, basic interval against the 0.10 floor",
-     "source_id": "reports/phase385_results.json"
+     "source_id": "reports/phase385_results.json",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_report.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
     },
     {
      "ref": "reports/phase140_results.json",
@@ -525,7 +788,18 @@
      "direction": "supports",
      "source_quality": "artifact",
      "description": "Phase-140 results: the differently-controlled primary result that stands as its own design's record",
-     "source_id": "reports/phase140_results.json"
+     "source_id": "reports/phase140_results.json",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase385_report.md",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
     }
    ]
   },
@@ -557,7 +831,8 @@
     "strongest_rival": "A thin design could proceed anyway and let the interval speak for itself.",
     "verdict_rule": "Gate failure is NOT-YET-TESTABLE, reported with its margins, and is not a verdict on G1.",
     "evidence_origin_groups": [
-     "spec040-design"
+     "spec040-design",
+     "design-source"
     ],
     "boundary_confirmation": "C12 governs the execution-stage gate; C02 governs the freeze-stage gate. The two run in sequence over different quantities and are consistent by construction. Neither negates the other."
    },
@@ -568,7 +843,37 @@
      "direction": "supports",
      "source_quality": "artifact",
      "description": "Spec 040 section 5: the margins gate, its three arms, and the NOT-YET-TESTABLE closure",
-     "source_id": "specs/040-d25-g1-chronology-controlled/spec.md"
+     "source_id": "specs/040-d25-g1-chronology-controlled/spec.md",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_report.md",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md"
+     ]
+    },
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-25 (read in full at draft): the margins gate's first two arms - at least 5 sites in each period stratum, and more than 40% of rows unassignable closes the design - and its too-thin closure, whose word this spec governs as NOT-YET-TESTABLE (DD-040-5)",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "reports/phase140_results.json",
+      "reports/phase385_report.md",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
     }
    ]
   },
@@ -611,7 +916,18 @@
      "direction": "supports",
      "source_quality": "artifact",
      "description": "Spec 030 outcome: contested rows are neither silently dropped nor silently kept; both computations are reported",
-     "source_id": "specs/030-q6-chronology-spine-extension/outcome.md"
+     "source_id": "specs/030-q6-chronology-spine-extension/outcome.md",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_report.md",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
     },
     {
      "ref": "specs/027-movement-culture-language/spec.md",
@@ -619,7 +935,18 @@
      "direction": "supports",
      "source_quality": "artifact",
      "description": "Spec 027 section 6.5: competing chronology assertions are preserved and any analysis names its scenario",
-     "source_id": "specs/027-movement-culture-language/spec.md"
+     "source_id": "specs/027-movement-culture-language/spec.md",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_report.md",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
     }
    ]
   },
@@ -662,7 +989,37 @@
      "direction": "supports",
      "source_quality": "artifact",
      "description": "Spec 025 section 5: leave-one-site-out members are sensitivity analyses of an already-decided test and mint no verdicts of their own",
-     "source_id": "specs/025-stage2-controlled-followup/spec.md"
+     "source_id": "specs/025-stage2-controlled-followup/spec.md",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_report.md",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
+    },
+    {
+     "ref": "specs/025-stage2-controlled-followup/phase140-freeze.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 025 Phase-140 freeze record: the sensitivity panel is EXPLORATORY and pre-declared; no sensitivity mints the verdict",
+     "source_id": "specs/025-stage2-controlled-followup/phase140-freeze.md",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_report.md",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
     }
    ]
   },
@@ -708,7 +1065,37 @@
      "direction": "supports",
      "source_quality": "artifact",
      "description": "Spec 025 sections 7-8: provenance and reporting obligations, the mandatory lineage headline, and append-only corrections",
-     "source_id": "specs/025-stage2-controlled-followup/spec.md"
+     "source_id": "specs/025-stage2-controlled-followup/spec.md",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_report.md",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
+    },
+    {
+     "ref": "specs/025-stage2-controlled-followup/phase140-freeze.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 025 Phase-140 freeze record: the mandatory headline rider and lineage-labelling discipline this spec's section 10 carries",
+     "source_id": "specs/025-stage2-controlled-followup/phase140-freeze.md",
+     "independent_of": [
+      "data/movement/chronology_rows_phase394.jsonl",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+      "reports/phase140_results.json",
+      "reports/phase385_report.md",
+      "reports/phase385_results.json",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "specs/027-movement-culture-language/spec.md",
+      "specs/030-q6-chronology-spine-extension/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md"
+     ]
     }
    ]
   }

@@ -1312,3 +1312,29 @@ is unchanged; `freeze.md`, `build_freeze.py`,
 the freeze tests, and `freeze.json` carry
 Phase-438 from this entry forward, and the
 freeze digest is recomputed in this same act.
+
+### 9.10 Third CI interaction — 2026-10-24 (same act, before merge)
+
+The third CI run (40065035788, on the tree
+carrying §9.8 and §9.9) advanced past the
+Phase-104 file and this spec's freeze tests and
+failed exactly one test of 1,350:
+`test_spec029_phase_i.py::test_falsifiers_preserved_and_never_invented`.
+That Phase-I test pinned the audit finding that
+the text-beginning/end canonical carried no
+falsifier and was "not repaired by inventing
+one". The repair it declined to invent was
+later supplied by governance — this freeze's
+append — so the pin is superseded in that file
+by a dated entry asserting the 2009 canonical
+now carries exactly the amendment's §8 text,
+and the 2010 instance (never appended to)
+still carries none. Verified under suite
+conditions (the intake API tests, then the
+Phase-I file: 43 passed). Two further bare-run
+failures in the same file are the committed-
+store-notes artefact of §9.8 (they pass in
+suite conditions and are not defects); no
+change was made for them. The freeze digest is
+recomputed in this same act over the appended
+record and stands in `freeze.json`.

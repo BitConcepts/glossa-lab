@@ -107,7 +107,7 @@
   "specs/054-yadav-opening-closing/spec.md": "21021835b11fe8ba78072d4c273f2bdd23cdfd8b7b25386d0d1382382c5e2cca",
   "specs/054-yadav-opening-closing/amendment.md": "4edd3e20e680179160552394c80f280688e96018f390e0e7f04306a35281b0db",
   "specs/054-yadav-opening-closing/claims.json": "ea161e47ed355af909af707f84e2ff5f4367b88f8160dd30d6e8938d8c7d24f0",
-  "specs/054-yadav-opening-closing/adjudication.md": "dbf337e6ee5d2b866d924c927b35a94282702940fd5da694273f00f91eba75f0",
+  "specs/054-yadav-opening-closing/adjudication.md": "35c3deb95671bb88ae73ad75a570f9b06d000ec78ddcd1c24767b7df93f565ab",
   "specs/054-yadav-opening-closing/aee/freeze-aee-note.md": "15f67a08fb12cbc014a263b7e799354a6a3e933cbe015a675176395bad480372",
   "specs/054-yadav-opening-closing/build_freeze.py": "625e211ae9f7fe6066f4eb0b7e12eb5fce71394296054f732459c88fadd094ab",
   "backend/tests/test_spec054_freeze.py": "ddeee717a1f1a3008c41895c9048f45d2014272b70b4b6611f29cd2beed73d39"
@@ -117,5 +117,5 @@
   "platform": "Linux",
   "aee": "1.5.0"
  },
- "digest": "5d939332999580f52cedade5d268b266345e0b7acaf28099d2a0957c4200c1e2"
+ "digest": "d85f6ace80e2ae2935d96d4916e51db686f11fb2c4473dc24d1198580012bb57"
 }

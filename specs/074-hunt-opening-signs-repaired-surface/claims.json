@@ -1,0 +1,732 @@
+{
+ "claims": [
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-SUCCESSOR-STATED"
+   ],
+   "boundary": "The scope is the re-scoped test of section 4: Shakti's own opening-strong set, the frozen Asset A v2 classification, and the two arms. It excludes any statement about the Phase-43 framework, about what any sign means, and about any other corpus or compilation. The claim as drafted states the proposition in full: An outcome under Spec 074 states only whether, measured on the graded ICIT corpus, the animal signs are enriched among that corpus's own opening-strong signs under the criteria of Spec 074 section 4.3 - a verdict about Hunt's opening-sign claim in its re-scoped form, and about nothing else.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 070's frozen contract (freeze digest 763108f89311ab2791827b347a155a8b4f9abad940ab59f921af129f79c73e3e) and its executed closure: the battery enumerated 31 INITIAL_STRONG signs on the documented-lineage primary; keying under DD-070-9 resolved 26; ICIT 136, 298, 401, 617 and 824 had no parpola_1982 registry row carrying their Wells ids; the execution closed at gate 0.4 as POPULATION NOT KEYED under DD-070-11, no join performed, no test quantity computed; the claim stands IN QUESTION.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "specs/070-hunt-opening-signs-successor/spec.md; specs/070-hunt-opening-signs-successor/outcome.md; reports/phase433_results.json",
+     "source_id": "spec-070 record (frozen 2026-10-22; executed Phase 433)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-073 executed record (Phase 436, PR #354)",
+      "2026-10-22-shakti-corpus-intake-record"
+     ]
+    },
+    {
+     "description": "Spec 073's executed outcome REPAIRED WITH NAMED SHORTFALL: Registry v2 (SHA-256 42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71, 1,013 rows = 803 v1 rows byte-identical + 210 icit_wells rows cited to Fuls 2023, Catalog, Ch. 2.3) and Asset A v2 (SHA-256 681e017da8b3f93aeade7e85361565fa8f3f4178b167dfa2448f5b4c239a8193, 552 rows = 187 carried untouched + 365 new-entry; per-kind animal 30, sky_cycle 0, object_goods 22, human 43, other 246, contested 0, unidentified 211); the 31-sign opening-strong set keys 31 of 31 under v2; the five named signs are keyed with depicted kind unidentified; token 999 is named on the NO PUBLISHED IDENTITY schedule.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "specs/073-keying-surface-repair/outcome.md; specs/073-keying-surface-repair/registry-v2/registry-v2-freeze.json; specs/073-keying-surface-repair/asset-a-v2/asset-a-v2-freeze.json; specs/073-keying-surface-repair/registry-v2/no-published-identity.json",
+     "source_id": "spec-073 executed record (Phase 436, PR #354)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-070 record (frozen 2026-10-22; executed Phase 433)",
+      "2026-10-22-shakti-corpus-intake-record"
+     ]
+    },
+    {
+     "description": "Shakti corpus pins and census: sanitized_corpus.json SHA-256 345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68; 5,704 rows, 5,536 analyzable; grades 3,212 documented-lineage / 2,087 undocumented-corroborated / 405 undocumented-uncorroborated (provenance audit of 2026-10-22); row-grades file SHA-256 02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739. Both files re-hashed first-hand at this draft at their restricted-local paths and equal the pins.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+     "source_id": "2026-10-22-shakti-corpus-intake-record",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-070 record (frozen 2026-10-22; executed Phase 433)",
+      "spec-073 executed record (Phase 436, PR #354)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "the claim is falsified in scope if any Spec 074 output states a conclusion about the Phase-43 framework, a population outside section 4, or a meaning of any sign"
+   ],
+   "id": "F074-C01",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec070-record",
+     "spec073-record",
+     "shakti-intake"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which a successor's verdict silently inherits the authority of the test it succeeds, or rewrites the predecessor's closure",
+    "verdict_rule": "scope is judged by inspection of every Spec 074 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding"
+   },
+   "status": "draft",
+   "text": "An outcome under Spec 074 is a verdict on the re-scoped opening-sign claim."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-CLAIM-RECORD"
+   ],
+   "boundary": "The claim's standing is as read at this draft from its record. The re-scoped verdict appends to the record by dated append only. The claim as drafted states the proposition in full: The claim without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003 stands IN QUESTION, partially supported for position only, with the recorded falsification condition 'Faunal signs not enriched in initial position above random baseline'; Spec 074 tests its animal half in re-scoped form and edits neither the claim's record nor Spec 070's frozen contract or closure.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The claim without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003 stands IN QUESTION, partially supported (positional half only), with the recorded falsification condition 'Faunal signs not enriched in initial position above random baseline'; Spec 070's execution made no append to the record (its closure wordings carry the claim forward unchanged).",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json",
+     "source_id": "claim record (glossa-indus extracted claims)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-070 record (frozen 2026-10-22; executed Phase 433)"
+     ]
+    },
+    {
+     "description": "Spec 070's frozen contract (freeze digest 763108f89311ab2791827b347a155a8b4f9abad940ab59f921af129f79c73e3e) and its executed closure: the battery enumerated 31 INITIAL_STRONG signs on the documented-lineage primary; keying under DD-070-9 resolved 26; ICIT 136, 298, 401, 617 and 824 had no parpola_1982 registry row carrying their Wells ids; the execution closed at gate 0.4 as POPULATION NOT KEYED under DD-070-11, no join performed, no test quantity computed; the claim stands IN QUESTION.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "specs/070-hunt-opening-signs-successor/spec.md; specs/070-hunt-opening-signs-successor/outcome.md; reports/phase433_results.json",
+     "source_id": "spec-070 record (frozen 2026-10-22; executed Phase 433)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "claim record (glossa-indus extracted claims)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "recompute and re-read the claim record at the freeze: a standing or falsification condition differing from this claim's statement is a freeze finding, recorded, not silently absorbed"
+   ],
+   "id": "F074-C02",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "claim-record",
+     "spec070-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which Spec 070's step-0 closure changed the claim's standing",
+    "verdict_rule": "the claim record as read at the freeze governs; any discrepancy is recorded as a freeze finding before any digest is computed"
+   },
+   "status": "draft",
+   "text": "The claim without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003 stands IN QUESTION."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-BATTERY-APPLIED-NEW",
+    "ASM-REPAIRED-SURFACE-FROZEN"
+   ],
+   "boundary": "This is the SUPPORTED criterion of section 4.3, stated against the documented-lineage primary population, with animal signs as the frozen Asset A v2 classes them (depicted_kind = animal). It is a statement about depiction and position on the graded ICIT corpus, not about identity, guild, or goods marking, and not about the Phase-43 framework. The claim as drafted states the proposition in full: Animal signs (Asset A v2 depicted_kind = animal) are enriched among Shakti's opening-strong signs: the primary ratio R1 is at least 1.5 with the exact test below 0.05, and the reversed arm does not contradict the direction (R2 above 1.0).",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 070's frozen contract (freeze digest 763108f89311ab2791827b347a155a8b4f9abad940ab59f921af129f79c73e3e) and its executed closure: the battery enumerated 31 INITIAL_STRONG signs on the documented-lineage primary; keying under DD-070-9 resolved 26; ICIT 136, 298, 401, 617 and 824 had no parpola_1982 registry row carrying their Wells ids; the execution closed at gate 0.4 as POPULATION NOT KEYED under DD-070-11, no join performed, no test quantity computed; the claim stands IN QUESTION.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "specs/070-hunt-opening-signs-successor/spec.md; specs/070-hunt-opening-signs-successor/outcome.md; reports/phase433_results.json",
+     "source_id": "spec-070 record (frozen 2026-10-22; executed Phase 433)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-073 executed record (Phase 436, PR #354)",
+      "design D-06 and Spec 049 draft (PR #250), carried through Spec 070"
+     ]
+    },
+    {
+     "description": "Spec 073's executed outcome REPAIRED WITH NAMED SHORTFALL: Registry v2 (SHA-256 42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71, 1,013 rows = 803 v1 rows byte-identical + 210 icit_wells rows cited to Fuls 2023, Catalog, Ch. 2.3) and Asset A v2 (SHA-256 681e017da8b3f93aeade7e85361565fa8f3f4178b167dfa2448f5b4c239a8193, 552 rows = 187 carried untouched + 365 new-entry; per-kind animal 30, sky_cycle 0, object_goods 22, human 43, other 246, contested 0, unidentified 211); the 31-sign opening-strong set keys 31 of 31 under v2; the five named signs are keyed with depicted kind unidentified; token 999 is named on the NO PUBLISHED IDENTITY schedule.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "specs/073-keying-surface-repair/outcome.md; specs/073-keying-surface-repair/registry-v2/registry-v2-freeze.json; specs/073-keying-surface-repair/asset-a-v2/asset-a-v2-freeze.json; specs/073-keying-surface-repair/registry-v2/no-published-identity.json",
+     "source_id": "spec-073 executed record (Phase 436, PR #354)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-070 record (frozen 2026-10-22; executed Phase 433)",
+      "design D-06 and Spec 049 draft (PR #250), carried through Spec 070"
+     ]
+    },
+    {
+     "description": "Design D-06's test form as drafted in Spec 049 and re-scoped in Spec 070: the two arms, the section 4.3 precedence carried from DD-049-3, the three sensitivities (contested included; unicorn removed; corroborated population), the frequency control (the comparison inventory restricted to signs with at least 30 occurrences), and the step-0 gate order.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md (D-06); specs/049-hunt-opening-animal-signs/spec.md (draft branch)",
+     "source_id": "design D-06 and Spec 049 draft (PR #250), carried through Spec 070",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-070 record (frozen 2026-10-22; executed Phase 433)",
+      "spec-073 executed record (Phase 436, PR #354)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "run section 4: if R1 is at or below 1.0, or the primary exact test cannot reject equality, the hypothesis is not supported under the precedence of F074-C10; if R1 is at least 1.5 with p below 0.05 but R2 is at or below 1.0, the outcome is INCONCLUSIVE, not SUPPORTED"
+   ],
+   "id": "F074-C03",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec070-record",
+     "spec073-record",
+     "design-source"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which the repaired surface's larger animal class (30 signs in Asset A v2 against 20 in v1) by itself manufactures enrichment",
+    "verdict_rule": "the section 4.3 precedence, applied to the published counts, decides; the ratio is computed against the comparison inventory's animal share on the same frozen asset, never against a v1 quantity"
+   },
+   "status": "draft",
+   "text": "Animal signs are enriched among Shakti's opening-strong signs."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-CLAIM-RECORD"
+   ],
+   "boundary": "The falsifier is the claim record's own condition - 'Faunal signs not enriched in initial position above random baseline' - operationalised as section 4.3 rule 1 (R1 at or below 1.0, or the primary exact test unable to reject equality), carried from Spec 070 section 1.2 unchanged. No falsifier is invented, borrowed, or strengthened by this spec. The claim as drafted states the proposition in full: if the falsifier fires, the claim's animal half is recorded as not supported in its re-scoped form, in the pre-written words of section 4.6, and the claim stands on its positional half alone.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The claim without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003 stands IN QUESTION, partially supported (positional half only), with the recorded falsification condition 'Faunal signs not enriched in initial position above random baseline'; Spec 070's execution made no append to the record (its closure wordings carry the claim forward unchanged).",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json",
+     "source_id": "claim record (glossa-indus extracted claims)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-070 record (frozen 2026-10-22; executed Phase 433)"
+     ]
+    },
+    {
+     "description": "Spec 070's frozen contract (freeze digest 763108f89311ab2791827b347a155a8b4f9abad940ab59f921af129f79c73e3e) and its executed closure: the battery enumerated 31 INITIAL_STRONG signs on the documented-lineage primary; keying under DD-070-9 resolved 26; ICIT 136, 298, 401, 617 and 824 had no parpola_1982 registry row carrying their Wells ids; the execution closed at gate 0.4 as POPULATION NOT KEYED under DD-070-11, no join performed, no test quantity computed; the claim stands IN QUESTION.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "specs/070-hunt-opening-signs-successor/spec.md; specs/070-hunt-opening-signs-successor/outcome.md; reports/phase433_results.json",
+     "source_id": "spec-070 record (frozen 2026-10-22; executed Phase 433)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "claim record (glossa-indus extracted claims)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "if the primary arm returns R1 at or below 1.0 or p at or above 0.05 and the headline is not NOT SUPPORTED, compliance is falsified on inspection of the outcome record"
+   ],
+   "id": "F074-C04",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "claim-record",
+     "spec070-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which a successor quietly substitutes a weaker or stronger falsifier than the claim's own",
+    "verdict_rule": "the outcome record's headline is checked against section 4.3 rule 1 and the claim record's condition, both quoted in the spec"
+   },
+   "status": "draft",
+   "text": "The falsifier of the tested claim is its own recorded falsification condition."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-REPAIRED-SURFACE-FROZEN"
+   ],
+   "boundary": "Gate 0.1 asserts, in order: Spec 073's executed record shows Registry v2 and Asset A v2 frozen (their freeze records landed); the presented files recompute to the digests quoted from that record - Registry v2 SHA-256 42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71 (1,013 rows) and Asset A v2 SHA-256 681e017da8b3f93aeade7e85361565fa8f3f4178b167dfa2448f5b4c239a8193 (552 rows; per-kind animal 30, sky_cycle 0, object_goods 22, human 43, other 246, contested 0, unidentified 211). The freeze rulings carried into this boundary at the freeze are recorded in adjudication section 8. The claim as drafted states the proposition in full: no join, enumeration, or test quantity precedes both assertions passing, and a failed assertion is a closure (NOT-RUN, ASSET NOT FROZEN, or ASSET PIN MISMATCH), never a run-time repair.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 073's executed outcome REPAIRED WITH NAMED SHORTFALL: Registry v2 (SHA-256 42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71, 1,013 rows = 803 v1 rows byte-identical + 210 icit_wells rows cited to Fuls 2023, Catalog, Ch. 2.3) and Asset A v2 (SHA-256 681e017da8b3f93aeade7e85361565fa8f3f4178b167dfa2448f5b4c239a8193, 552 rows = 187 carried untouched + 365 new-entry; per-kind animal 30, sky_cycle 0, object_goods 22, human 43, other 246, contested 0, unidentified 211); the 31-sign opening-strong set keys 31 of 31 under v2; the five named signs are keyed with depicted kind unidentified; token 999 is named on the NO PUBLISHED IDENTITY schedule.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "specs/073-keying-surface-repair/outcome.md; specs/073-keying-surface-repair/registry-v2/registry-v2-freeze.json; specs/073-keying-surface-repair/asset-a-v2/asset-a-v2-freeze.json; specs/073-keying-surface-repair/registry-v2/no-published-identity.json",
+     "source_id": "spec-073 executed record (Phase 436, PR #354)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-070 record (frozen 2026-10-22; executed Phase 433)"
+     ]
+    },
+    {
+     "description": "Spec 070's frozen contract (freeze digest 763108f89311ab2791827b347a155a8b4f9abad940ab59f921af129f79c73e3e) and its executed closure: the battery enumerated 31 INITIAL_STRONG signs on the documented-lineage primary; keying under DD-070-9 resolved 26; ICIT 136, 298, 401, 617 and 824 had no parpola_1982 registry row carrying their Wells ids; the execution closed at gate 0.4 as POPULATION NOT KEYED under DD-070-11, no join performed, no test quantity computed; the claim stands IN QUESTION.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "specs/070-hunt-opening-signs-successor/spec.md; specs/070-hunt-opening-signs-successor/outcome.md; reports/phase433_results.json",
+     "source_id": "spec-070 record (frozen 2026-10-22; executed Phase 433)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-073 executed record (Phase 436, PR #354)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "the gate record is falsified as a compliance record if any quantity is shown to have been computed before both assertions passed, or if a failed assertion was repaired at run time"
+   ],
+   "id": "F074-C05",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec073-record",
+     "spec070-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which the v1 surface (Registry v1, Asset A v1) is silently substituted because it is still on the tree",
+    "verdict_rule": "the gate 0.1 record, against the two freeze records of Spec 073 quoted in the freeze record, decides"
+   },
+   "status": "draft",
+   "text": "Step 0 asserts the frozen state of the repaired surface before any join."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-BATTERY-APPLIED-NEW"
+   ],
+   "boundary": "The battery is section 2, carried from Spec 070 unchanged: sequences of length at least 2; I/M/T by position; floor total at least 5; the cascade TERMINAL_STRONG (t_rate at least 0.60), INITIAL_STRONG (i_rate at least 0.55), MEDIAL_STRONG (m_rate at least 0.65), TERMINAL_MODERATE (t_rate at least 0.40), INITIAL_MODERATE (i_rate at least 0.40), MIXED; first match wins. The battery is threshold-only (the G5 attestation): it contains no chance-baseline step, and no product may describe the section 4 inventory-share comparison as a Phase-43 element. The claim as drafted states the proposition in full: the classes are a measurement on this corpus under these rules, asserted against Spec 070's recorded census at gate 0.4, and against no Phase-43 quantity anywhere.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 070's frozen contract (freeze digest 763108f89311ab2791827b347a155a8b4f9abad940ab59f921af129f79c73e3e) and its executed closure: the battery enumerated 31 INITIAL_STRONG signs on the documented-lineage primary; keying under DD-070-9 resolved 26; ICIT 136, 298, 401, 617 and 824 had no parpola_1982 registry row carrying their Wells ids; the execution closed at gate 0.4 as POPULATION NOT KEYED under DD-070-11, no join performed, no test quantity computed; the claim stands IN QUESTION.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "specs/070-hunt-opening-signs-successor/spec.md; specs/070-hunt-opening-signs-successor/outcome.md; reports/phase433_results.json",
+     "source_id": "spec-070 record (frozen 2026-10-22; executed Phase 433)",
+     "source_quality": "artifact",
+     "independent_of": []
+    }
+   ],
+   "falsification_tests": [
+    "inspect the derivation record against section 2: any threshold, floor, order, or rule differing from the stated battery, or any product describing a baseline as restored from Phase-43, falsifies compliance"
+   ],
+   "id": "F074-C06",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec070-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which the battery is quietly adjusted until the enumeration matches the recorded one",
+    "verdict_rule": "the derivation is inspected against section 2 as written; the reproduction assertion of gate 0.4 checks the output, never licenses editing the rules"
+   },
+   "status": "draft",
+   "text": "The positional classes are derived on the Shakti corpus under the recovered Phase-43 battery rules."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-SUCCESSOR-STATED",
+    "ASM-BATTERY-APPLIED-NEW"
+   ],
+   "boundary": "The population is the INITIAL_STRONG set of section 4.1, enumerated in full in Wells space and published at gate 0.4 before any join. Because the corpus, grades, and battery are pinned identically to Spec 070's, the enumeration is asserted against Spec 070's recorded 31 signs - the sign set and each sign's I/M/T counts as published in reports/phase433_results.json - and the full class census against Spec 070's recorded census (220 at the floor). A difference closes the execution as POPULATION NOT REPRODUCED. No other count - not 40, not any Phase-43 count - stands as a check on the set's size. The claim as drafted states the proposition in full: the successor asks Spec 070's question, so its population must be demonstrably Spec 070's population.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 070's frozen contract (freeze digest 763108f89311ab2791827b347a155a8b4f9abad940ab59f921af129f79c73e3e) and its executed closure: the battery enumerated 31 INITIAL_STRONG signs on the documented-lineage primary; keying under DD-070-9 resolved 26; ICIT 136, 298, 401, 617 and 824 had no parpola_1982 registry row carrying their Wells ids; the execution closed at gate 0.4 as POPULATION NOT KEYED under DD-070-11, no join performed, no test quantity computed; the claim stands IN QUESTION.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "specs/070-hunt-opening-signs-successor/spec.md; specs/070-hunt-opening-signs-successor/outcome.md; reports/phase433_results.json",
+     "source_id": "spec-070 record (frozen 2026-10-22; executed Phase 433)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "phase433 machine record",
+      "2026-10-22-shakti-corpus-intake-record"
+     ]
+    },
+    {
+     "description": "Spec 070's machine record (SHA-256 667560a5c185051ea7acc9afacf2f9c4bbf3f863e9d17851c634fa56eb3ad214 on the merged tree): the 31-sign opening-strong enumeration in Wells space with per-sign I/M/T counts, the population publication SHA-256 30092b6fd64f221ee0808addeedd11e1e800cf3d79716ba26b3fb971f396a93b recorded ahead of any join, the battery class census (220 at the floor: TERMINAL_STRONG 42, MEDIAL_STRONG 81, TERMINAL_MODERATE 37, INITIAL_MODERATE 6, MIXED 23, INITIAL_STRONG 31), and the five unkeyable signs with their reasons.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "reports/phase433_results.json",
+     "source_id": "phase433 machine record",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-070 record (frozen 2026-10-22; executed Phase 433)",
+      "2026-10-22-shakti-corpus-intake-record"
+     ]
+    },
+    {
+     "description": "Shakti corpus pins and census: sanitized_corpus.json SHA-256 345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68; 5,704 rows, 5,536 analyzable; grades 3,212 documented-lineage / 2,087 undocumented-corroborated / 405 undocumented-uncorroborated (provenance audit of 2026-10-22); row-grades file SHA-256 02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739. Both files re-hashed first-hand at this draft at their restricted-local paths and equal the pins.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+     "source_id": "2026-10-22-shakti-corpus-intake-record",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-070 record (frozen 2026-10-22; executed Phase 433)",
+      "phase433 machine record"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "if the executed population is not the gate-0.4 published enumeration, if the enumeration differs from Spec 070's recorded 31 in any sign or count and the execution does not close as POPULATION NOT REPRODUCED, or if any product checks its size against 40 or any Phase-43 count, compliance is falsified on inspection"
+   ],
+   "id": "F074-C07",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec070-record",
+     "shakti-intake"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which a near-identical enumeration (30 of 31, or one differing count) is treated as the same population for convenience",
+    "verdict_rule": "gate 0.4's assertion is exact: set equality and per-sign count equality against the pinned machine record, or the named closure"
+   },
+   "status": "draft",
+   "text": "The population of Spec 074 is Shakti's own opening-strong set, reproducing Spec 070's recorded enumeration."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-REPAIRED-SURFACE-FROZEN"
+   ],
+   "boundary": "Keying runs over Registry v2 under the two-leg route fixed at the freeze: the parpola_1982 leg of DD-070-9 first (a sign's ICIT code is its Wells number, resolved through the registry's parpola_1982 rows' wells_ids to exactly one Asset A v2 sign_key), then Registry v2's icit_wells leg for signs the first leg cannot resolve (the appended row whose sign_id is the Wells id itself, to the Asset A v2 row of that sign_key). Zero or multiple resolutions across both legs is unkeyable. The disposition carried from DD-070-11 and re-ruled at this freeze (adjudication section 8) governs an unkeyable sign enumerated in the opening-strong set: the execution closes at gate 0.4 as POPULATION NOT KEYED, the sign named. Verified at this draft against the pinned files: the two legs resolve all 31 of Spec 070's recorded signs to exactly one Asset A v2 row each; the combined Wells map carries 708 distinct Wells ids, zero ambiguous. The claim as drafted states the proposition in full: keying is resolution through the frozen registry, never a hand-keyed row, a silent drop, or a default classification.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 073's executed outcome REPAIRED WITH NAMED SHORTFALL: Registry v2 (SHA-256 42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71, 1,013 rows = 803 v1 rows byte-identical + 210 icit_wells rows cited to Fuls 2023, Catalog, Ch. 2.3) and Asset A v2 (SHA-256 681e017da8b3f93aeade7e85361565fa8f3f4178b167dfa2448f5b4c239a8193, 552 rows = 187 carried untouched + 365 new-entry; per-kind animal 30, sky_cycle 0, object_goods 22, human 43, other 246, contested 0, unidentified 211); the 31-sign opening-strong set keys 31 of 31 under v2; the five named signs are keyed with depicted kind unidentified; token 999 is named on the NO PUBLISHED IDENTITY schedule.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "specs/073-keying-surface-repair/outcome.md; specs/073-keying-surface-repair/registry-v2/registry-v2-freeze.json; specs/073-keying-surface-repair/asset-a-v2/asset-a-v2-freeze.json; specs/073-keying-surface-repair/registry-v2/no-published-identity.json",
+     "source_id": "spec-073 executed record (Phase 436, PR #354)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-070 record (frozen 2026-10-22; executed Phase 433)"
+     ]
+    },
+    {
+     "description": "Spec 070's frozen contract (freeze digest 763108f89311ab2791827b347a155a8b4f9abad940ab59f921af129f79c73e3e) and its executed closure: the battery enumerated 31 INITIAL_STRONG signs on the documented-lineage primary; keying under DD-070-9 resolved 26; ICIT 136, 298, 401, 617 and 824 had no parpola_1982 registry row carrying their Wells ids; the execution closed at gate 0.4 as POPULATION NOT KEYED under DD-070-11, no join performed, no test quantity computed; the claim stands IN QUESTION.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "specs/070-hunt-opening-signs-successor/spec.md; specs/070-hunt-opening-signs-successor/outcome.md; reports/phase433_results.json",
+     "source_id": "spec-070 record (frozen 2026-10-22; executed Phase 433)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-073 executed record (Phase 436, PR #354)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "inspect the keyed population list: any sign keyed to zero or to more than one Asset A v2 row without a named finding and its freeze-stated disposition falsifies compliance"
+   ],
+   "id": "F074-C08",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec073-record",
+     "spec070-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which the icit_wells leg becomes a general completion device for any unresolved identity, beyond the published ICIT sign list it transcribes",
+    "verdict_rule": "the keyed list is inspected sign by sign against Registry v2 as pinned; each resolution names its leg and its registry row"
+   },
+   "status": "draft",
+   "text": "Every enumerated sign is keyed to exactly one Asset A v2 row in Wells space."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-GRADE-DISCIPLINE"
+   ],
+   "boundary": "Grade discipline is P-F1 S4, carried from Spec 070: the primary is the documented-lineage rows (3,212 rows; 3,045 analyzable, as graded); undocumented-uncorroborated rows (405) enter no count, statistic, or argument; the documented + corroborated population enters only in sensitivity S-C, reported beside the primary under the both-ways rule. Every headline block carries the P-F1 S3 lineage statement verbatim. The claim as drafted states the proposition in full: no primary quantity is computed over any other rows.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Shakti corpus pins and census: sanitized_corpus.json SHA-256 345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68; 5,704 rows, 5,536 analyzable; grades 3,212 documented-lineage / 2,087 undocumented-corroborated / 405 undocumented-uncorroborated (provenance audit of 2026-10-22); row-grades file SHA-256 02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739. Both files re-hashed first-hand at this draft at their restricted-local paths and equal the pins.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+     "source_id": "2026-10-22-shakti-corpus-intake-record",
+     "source_quality": "artifact",
+     "independent_of": []
+    }
+   ],
+   "falsification_tests": [
+    "a primary quantity computed over any row outside the documented-lineage grade, a load-bearing use of an uncorroborated row, a contested row folded into the primary, or a headline block missing the lineage statement falsifies compliance"
+   ],
+   "id": "F074-C09",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "shakti-intake"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which the larger documented + corroborated population is pooled into the primary for power",
+    "verdict_rule": "the step-0 census and the S-C sensitivity, published beside the primary, decide; pooling is visible in the census if it happens"
+   },
+   "status": "draft",
+   "text": "The primary population of Spec 074 is the documented-lineage rows only."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-SUCCESSOR-STATED"
+   ],
+   "boundary": "The precedence is carried from DD-049-3 through Spec 070 unchanged: NOT SUPPORTED if R1 is at or below 1.0 or the primary exact test cannot reject equality (p at least 0.05); SUPPORTED if R1 is at least 1.5 with p below 0.05 and the reversed arm does not contradict the direction (R2 above 1.0); otherwise INCONCLUSIVE, including the empty-baseline case. The claim as drafted states the proposition in full: the headline word is derivable from the published counts by this precedence alone, and no other consideration - including either predecessor's outcome - moves it.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Design D-06's test form as drafted in Spec 049 and re-scoped in Spec 070: the two arms, the section 4.3 precedence carried from DD-049-3, the three sensitivities (contested included; unicorn removed; corroborated population), the frequency control (the comparison inventory restricted to signs with at least 30 occurrences), and the step-0 gate order.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md (D-06); specs/049-hunt-opening-animal-signs/spec.md (draft branch)",
+     "source_id": "design D-06 and Spec 049 draft (PR #250), carried through Spec 070",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-070 record (frozen 2026-10-22; executed Phase 433)"
+     ]
+    },
+    {
+     "description": "Spec 070's frozen contract (freeze digest 763108f89311ab2791827b347a155a8b4f9abad940ab59f921af129f79c73e3e) and its executed closure: the battery enumerated 31 INITIAL_STRONG signs on the documented-lineage primary; keying under DD-070-9 resolved 26; ICIT 136, 298, 401, 617 and 824 had no parpola_1982 registry row carrying their Wells ids; the execution closed at gate 0.4 as POPULATION NOT KEYED under DD-070-11, no join performed, no test quantity computed; the claim stands IN QUESTION.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "specs/070-hunt-opening-signs-successor/spec.md; specs/070-hunt-opening-signs-successor/outcome.md; reports/phase433_results.json",
+     "source_id": "spec-070 record (frozen 2026-10-22; executed Phase 433)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "design D-06 and Spec 049 draft (PR #250), carried through Spec 070"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "recompute the headline from the published counts under section 4.3: a headline word not derivable from the counts by the stated precedence falsifies compliance"
+   ],
+   "id": "F074-C10",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "design-source",
+     "spec070-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which a reversed-arm result, a sensitivity, or the successor's purpose (reaching the question at last) bends the headline",
+    "verdict_rule": "recomputation from the published counts under the stated precedence decides"
+   },
+   "status": "draft",
+   "text": "The headline outcome of Spec 074 is decided by section 4.3's precedence."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-REPAIRED-SURFACE-FROZEN",
+    "ASM-GRADE-DISCIPLINE"
+   ],
+   "boundary": "U is enumerated and published at gate 0.5 with per-sign counts, under the counting rule carried from DD-070-10: every occurrence in sequences of length at least 2, counted once under the battery's own counting, on the population in question (re-derived on the documented + corroborated population for S-C). Every sign in U is shown at gate 0.5 to carry an Asset A v2 row; a population sign with no Asset A v2 row stops the run as INVALID - an absent row is never treated as non-animal by default. The unicorn sign(s) of sensitivity S-B are named at gate 0.5 from the frozen Asset A v2 verbatim labels, before any test quantity exists. The claim as drafted states the proposition in full: the base rate is the frozen inventory's, enumerated before the test, not chosen after it.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 073's executed outcome REPAIRED WITH NAMED SHORTFALL: Registry v2 (SHA-256 42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71, 1,013 rows = 803 v1 rows byte-identical + 210 icit_wells rows cited to Fuls 2023, Catalog, Ch. 2.3) and Asset A v2 (SHA-256 681e017da8b3f93aeade7e85361565fa8f3f4178b167dfa2448f5b4c239a8193, 552 rows = 187 carried untouched + 365 new-entry; per-kind animal 30, sky_cycle 0, object_goods 22, human 43, other 246, contested 0, unidentified 211); the 31-sign opening-strong set keys 31 of 31 under v2; the five named signs are keyed with depicted kind unidentified; token 999 is named on the NO PUBLISHED IDENTITY schedule.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "specs/073-keying-surface-repair/outcome.md; specs/073-keying-surface-repair/registry-v2/registry-v2-freeze.json; specs/073-keying-surface-repair/asset-a-v2/asset-a-v2-freeze.json; specs/073-keying-surface-repair/registry-v2/no-published-identity.json",
+     "source_id": "spec-073 executed record (Phase 436, PR #354)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-070 record (frozen 2026-10-22; executed Phase 433)"
+     ]
+    },
+    {
+     "description": "Spec 070's frozen contract (freeze digest 763108f89311ab2791827b347a155a8b4f9abad940ab59f921af129f79c73e3e) and its executed closure: the battery enumerated 31 INITIAL_STRONG signs on the documented-lineage primary; keying under DD-070-9 resolved 26; ICIT 136, 298, 401, 617 and 824 had no parpola_1982 registry row carrying their Wells ids; the execution closed at gate 0.4 as POPULATION NOT KEYED under DD-070-11, no join performed, no test quantity computed; the claim stands IN QUESTION.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "specs/070-hunt-opening-signs-successor/spec.md; specs/070-hunt-opening-signs-successor/outcome.md; reports/phase433_results.json",
+     "source_id": "spec-070 record (frozen 2026-10-22; executed Phase 433)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-073 executed record (Phase 436, PR #354)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "a share computed over an inventory not enumerated at gate 0.5, or a unicorn set named after a test quantity exists, falsifies compliance on inspection of the gate record"
+   ],
+   "id": "F074-C11",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec073-record",
+     "spec070-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which the 30-occurrence floor is a tuning knob rather than the design's frequency control",
+    "verdict_rule": "the gate 0.5 census, published with the outcome either way, decides"
+   },
+   "status": "draft",
+   "text": "The comparison inventory U is every sign with at least 30 occurrences in the primary population."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "Append-only discipline, carried from Spec 070: the outcome appends in this spec's directory; a verdict-class outcome appends to the claim's record by dated append; Spec 049's, Spec 070's, and Spec 073's records are never edited by this spec, and Spec 070's POPULATION NOT KEYED closure stands exactly as recorded whatever this spec's outcome. Anchors are asserted byte-identical before and after any execution. The claim as drafted states the proposition in full: corrections, if any are ever needed, are themselves dated appends, never edits to a frozen or closed record.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 070's frozen contract (freeze digest 763108f89311ab2791827b347a155a8b4f9abad940ab59f921af129f79c73e3e) and its executed closure: the battery enumerated 31 INITIAL_STRONG signs on the documented-lineage primary; keying under DD-070-9 resolved 26; ICIT 136, 298, 401, 617 and 824 had no parpola_1982 registry row carrying their Wells ids; the execution closed at gate 0.4 as POPULATION NOT KEYED under DD-070-11, no join performed, no test quantity computed; the claim stands IN QUESTION.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "specs/070-hunt-opening-signs-successor/spec.md; specs/070-hunt-opening-signs-successor/outcome.md; reports/phase433_results.json",
+     "source_id": "spec-070 record (frozen 2026-10-22; executed Phase 433)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-073 executed record (Phase 436, PR #354)"
+     ]
+    },
+    {
+     "description": "Spec 073's executed outcome REPAIRED WITH NAMED SHORTFALL: Registry v2 (SHA-256 42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71, 1,013 rows = 803 v1 rows byte-identical + 210 icit_wells rows cited to Fuls 2023, Catalog, Ch. 2.3) and Asset A v2 (SHA-256 681e017da8b3f93aeade7e85361565fa8f3f4178b167dfa2448f5b4c239a8193, 552 rows = 187 carried untouched + 365 new-entry; per-kind animal 30, sky_cycle 0, object_goods 22, human 43, other 246, contested 0, unidentified 211); the 31-sign opening-strong set keys 31 of 31 under v2; the five named signs are keyed with depicted kind unidentified; token 999 is named on the NO PUBLISHED IDENTITY schedule.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "specs/073-keying-surface-repair/outcome.md; specs/073-keying-surface-repair/registry-v2/registry-v2-freeze.json; specs/073-keying-surface-repair/asset-a-v2/asset-a-v2-freeze.json; specs/073-keying-surface-repair/registry-v2/no-published-identity.json",
+     "source_id": "spec-073 executed record (Phase 436, PR #354)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-070 record (frozen 2026-10-22; executed Phase 433)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "a diff against any predecessor record attributable to this spec's execution falsifies compliance"
+   ],
+   "id": "F074-C12",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec070-record",
+     "spec073-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which a successor's SUPPORTED would quietly supersede the predecessor's closure in the predecessor's own record",
+    "verdict_rule": "the diff of every predecessor record across the execution decides; the claim's record carries both attempts, each under its own spec"
+   },
+   "status": "draft",
+   "text": "Spec 074's writes to records are appends only."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-SUCCESSOR-STATED"
+   ],
+   "boundary": "Asset A v2 records what the published lists say a sign depicts, with citations; a verdict under this spec is a statement about that layer, not ground truth and not meaning. Every output carries the honesty fence (the Phase-43 quantities 805/2,267 and 40/61/20 are never this spec's basis), the P-F1 S3 lineage statement, Spec 037's 49 percent census caution, and the fence sentence of section 6 item 9. The five formerly unkeyable signs are classified unidentified in Asset A v2 - keyed, honestly unclassified - and no output may present their keying as a depiction. The claim as drafted states the proposition in full: even a clean SUPPORTED shows depiction and position coincide on this corpus; that animal signs marked identity, a guild, or goods remains Hunt's reading, not a measurement of this test.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 073's executed outcome REPAIRED WITH NAMED SHORTFALL: Registry v2 (SHA-256 42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71, 1,013 rows = 803 v1 rows byte-identical + 210 icit_wells rows cited to Fuls 2023, Catalog, Ch. 2.3) and Asset A v2 (SHA-256 681e017da8b3f93aeade7e85361565fa8f3f4178b167dfa2448f5b4c239a8193, 552 rows = 187 carried untouched + 365 new-entry; per-kind animal 30, sky_cycle 0, object_goods 22, human 43, other 246, contested 0, unidentified 211); the 31-sign opening-strong set keys 31 of 31 under v2; the five named signs are keyed with depicted kind unidentified; token 999 is named on the NO PUBLISHED IDENTITY schedule.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "specs/073-keying-surface-repair/outcome.md; specs/073-keying-surface-repair/registry-v2/registry-v2-freeze.json; specs/073-keying-surface-repair/asset-a-v2/asset-a-v2-freeze.json; specs/073-keying-surface-repair/registry-v2/no-published-identity.json",
+     "source_id": "spec-073 executed record (Phase 436, PR #354)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-070 record (frozen 2026-10-22; executed Phase 433)",
+      "2026-10-22-shakti-corpus-intake-record"
+     ]
+    },
+    {
+     "description": "Spec 070's frozen contract (freeze digest 763108f89311ab2791827b347a155a8b4f9abad940ab59f921af129f79c73e3e) and its executed closure: the battery enumerated 31 INITIAL_STRONG signs on the documented-lineage primary; keying under DD-070-9 resolved 26; ICIT 136, 298, 401, 617 and 824 had no parpola_1982 registry row carrying their Wells ids; the execution closed at gate 0.4 as POPULATION NOT KEYED under DD-070-11, no join performed, no test quantity computed; the claim stands IN QUESTION.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "specs/070-hunt-opening-signs-successor/spec.md; specs/070-hunt-opening-signs-successor/outcome.md; reports/phase433_results.json",
+     "source_id": "spec-070 record (frozen 2026-10-22; executed Phase 433)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-073 executed record (Phase 436, PR #354)",
+      "2026-10-22-shakti-corpus-intake-record"
+     ]
+    },
+    {
+     "description": "Shakti corpus pins and census: sanitized_corpus.json SHA-256 345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68; 5,704 rows, 5,536 analyzable; grades 3,212 documented-lineage / 2,087 undocumented-corroborated / 405 undocumented-uncorroborated (provenance audit of 2026-10-22); row-grades file SHA-256 02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739. Both files re-hashed first-hand at this draft at their restricted-local paths and equal the pins.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-24",
+     "ref": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+     "source_id": "2026-10-22-shakti-corpus-intake-record",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-073 executed record (Phase 436, PR #354)",
+      "spec-070 record (frozen 2026-10-22; executed Phase 433)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "an output stating a meaning conclusion, presenting the re-scoped verdict as a verdict on the Phase-43 framework, citing 805/2,267 or 40/61/20 as basis, or omitting the fence or the lineage statement falsifies compliance"
+   ],
+   "id": "F074-C13",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec073-record",
+     "spec070-record",
+     "shakti-intake"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which a repaired keying surface upgrades a depiction-layer result into a decipherment claim",
+    "verdict_rule": "inspection of every output against section 8's limits decides"
+   },
+   "status": "draft",
+   "text": "Depiction under Spec 074 is the published identification layer."
+  }
+ ],
+ "note": "Draft register for Spec 074 (successor to Spec 070, design D-06; commissioned by the owner's order of 2026-10-24 to re-freeze and execute Spec 070's question on the repaired surface built by Spec 073). Conventions as in Specs 042-070: requirement claims carry no falsification test where a gate or inspection is the operative check; boundaries carry the conditions under which each claim holds; evidence items carry observed_at from this draft because the cited facts were verified first-hand at drafting. The AEE lifecycle hooks have NOT run on this register; they are the freeze gate (tasks L4), applied in the substantive form of DD-038-10, and any recovery round they force changes claim text before any freeze digest is computed. ASM- ids name the assumptions each claim stands on: ASM-SUCCESSOR-STATED (the succession - the same re-scoped question, Spec 070's population rule and test carried, the keying surface re-based on Spec 073's Registry v2 and Asset A v2, the two-leg keying route, and the gate 0.4 reproduction assertion - is stated openly in spec section 1.3, and Spec 070's closure stands unamended), ASM-CLAIM-RECORD (the claim file is the claim's record of standing), ASM-BATTERY-APPLIED-NEW (the recovered Phase-43 battery rules, applied to an ICIT corpus, derive the positional classes; the battery is threshold-only per the G5 attestation), ASM-REPAIRED-SURFACE-FROZEN (Registry v2 and Asset A v2 exist as frozen products of Spec 073 before this spec freezes), ASM-GRADE-DISCIPLINE (the provenance audit's grades govern population membership under P-F1 S4), ASM-APPEND-ONLY (outcomes append; frozen and closed records are never edited). Recovery at the freeze act of 2026-10-24 (owner's order of 2026-10-24, re-freeze and execute Spec 070's question on the repaired surface): round 1 (0.5-draft to 0.6-draft) - loadability only: every evidence item's kind restated program-record/design-source/record -> observed and its source_quality restated authoritative/program-record -> artifact (the Spec 059/063/069/070/072 recovery form; the as-drafted register does not load - the strict loader refuses the single-string boundary and even the lenient loader rejects the as-drafted kinds as not valid EvidenceKind values). No claim text changed in this round. Round 2 (0.6-draft to 0.7-draft) - independence: round 1's hooks over 0.6-draft returned 40 failure modes: 27 independence challenges (one per evidence item but one, category independence_unmodeled), 13 FR-2.3 draft-cap records, zero irreducibility, zero negation-conflict, zero counterexample challenges, and no claim below the 0.70 threshold (minimum propagated 0.795). The draft heads were already single propositions in the recovered form, so no head restatement was needed; each evidence item gained an independent_of declaration naming the register's other evidence sources within its claim (separate documents, independently inspectable), with an empty declaration on the two single-evidence claims, as in Spec 070's frozen register. No proposition changed in this round. The final round was round 2 - over 0.7-draft, after_specify, after_plan and after_tasks each carried exactly 13 failure modes, every one an FR-2.3 draft-cap record, zero correctness failure modes, and no claim below the 0.70 threshold (minimum propagated 0.795 at every hook); the freeze gate (tasks L4) passes on the DD-038-10 reading, and the full rounds record is aee/freeze-aee-note.md. The freeze rulings DD-074-7 to DD-074-14 (adjudication section 8) stand in the boundaries of F074-C05, F074-C08 and F074-C11 as drafted, this draft having been written against the decided positions those rulings record. The freeze digest (freeze.json) was computed over the recovered register (0.7-draft) exactly once, at the freeze.",
+ "register_version": "0.7-draft",
+ "spec": "074-hunt-opening-signs-repaired-surface"
+}

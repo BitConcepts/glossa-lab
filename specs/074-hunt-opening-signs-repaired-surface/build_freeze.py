@@ -1,0 +1,261 @@
+#!/usr/bin/env python3
+"""Build the Spec 074 freeze record (freeze.json).
+
+This builder was written at the freeze act of
+2026-10-24. The register was recovered at the
+freeze from 0.5-draft to 0.7-draft (the rounds
+are recorded in aee/freeze-aee-note.md), the AEE
+lifecycle hooks passed over it at the freeze
+gate (DD-074-13), and the digest is computed
+over the recovered register exactly once, at
+the freeze - the Spec 035 ordering. Run with
+the Glossa backend venv python from the
+repository root:
+
+    python specs/074-hunt-opening-signs-repaired-surface/build_freeze.py
+
+Writes specs/074-hunt-opening-signs-repaired-surface/freeze.json
+(framework026 build_freeze payload: definition +
+source hashes + environment, digest = SHA-256 of
+the canonical JSON serialisation) and prints the
+digest.
+"""
+from __future__ import annotations
+
+import json
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(REPO / "backend"))
+
+from glossa_lab.framework026 import build_freeze  # noqa: E402
+
+SPEC_DIR = "specs/074-hunt-opening-signs-repaired-surface"
+
+DEFINITION = {
+    "spec": "specs/074-hunt-opening-signs-repaired-surface/spec.md",
+    "freeze_doc": "specs/074-hunt-opening-signs-repaired-surface/freeze.md",
+    "experiment_id": "spec074-hunt-opening-signs-repaired-surface",
+    "register": {
+        "path": "specs/074-hunt-opening-signs-repaired-surface/claims.json",
+        "register_version": "0.7-draft",
+        "claims": 13,
+        "aee_hook_pass": (
+            "PASSED at the freeze act of 2026-10-24 under aee 1.5.3: the register "
+            "was recovered at the freeze from 0.5-draft (not loadable as drafted: "
+            "evidence kinds and a source quality the engine does not accept) "
+            "through 0.6-draft (loadability restatement; round 1 after_specify: "
+            "40 failure modes - 27 independence_unmodeled and 13 draft-cap, "
+            "minimum propagated 0.795, no irreducibility or negation-conflict "
+            "challenges, the draft heads having been written as single "
+            "propositions in the recovered form) to 0.7-draft (independent_of "
+            "declarations on every evidence item), over which after_specify, "
+            "after_plan and after_tasks each carry exactly 13 failure modes, "
+            "every one an FR-2.3 draft-cap record, zero correctness failure "
+            "modes, and no claim below the 0.70 threshold (minimum propagated "
+            "0.795); the freeze rulings DD-074-7 to DD-074-13 were already "
+            "carried in the boundaries of F074-C05, F074-C08 and F074-C11 as "
+            "drafted (gate reading DD-074-13, the DD-038-10 form; record in "
+            "specs/074-hunt-opening-signs-repaired-surface/aee/freeze-aee-note.md)"
+        ),
+    },
+    "basis": {
+        "adjudication": "specs/074-hunt-opening-signs-repaired-surface/adjudication.md",
+        "decisions": (
+            "DD-074-1 to DD-074-6 as drafted (same question, same test; Spec "
+            "070's closure stands; keying is not classification; no phase at "
+            "draft; evidence observed_at of the draft; the AEE freeze gate in "
+            "the DD-038-10 form), and the freeze rulings DD-074-7 to DD-074-13 "
+            "at adjudication section 8 (v2 digests copied and re-verified; "
+            "two-leg keying route with DD-070-10's counting rule carried; "
+            "reproduction assertion and POPULATION NOT REPRODUCED; DD-070-11 "
+            "disposition carried; own OSF registration; Phase 440; the gate "
+            "reading)"
+        ),
+    },
+    "design": {
+        "phase": "Phase 440",
+        "question": (
+            "Are Shakti's opening-strong signs the animal signs - Spec 070's "
+            "question re-asked unchanged on the surface Spec 073 repaired "
+            "(Registry v2 / Asset A v2), the predecessor's POPULATION NOT "
+            "KEYED closure standing unamended"
+        ),
+        "battery": (
+            "The recovered Phase-43 battery applied new to Shakti (section 2): "
+            "sequences of length >= 2, I/M/T by position, floor total >= 5, "
+            "cascade TERMINAL_STRONG t_rate >= 0.60, INITIAL_STRONG i_rate "
+            ">= 0.55, MEDIAL_STRONG m_rate >= 0.65, TERMINAL_MODERATE t_rate "
+            ">= 0.40, INITIAL_MODERATE i_rate >= 0.40, MIXED; threshold-only, "
+            "no chance baseline (G5 attestation mandatory); the Phase-43 "
+            "counts (805/2,267; the 40/61/20 classes) are never a basis for "
+            "any product"
+        ),
+        "populations": (
+            "Primary: documented-lineage rows only. Sensitivity S-C: documented + "
+            "corroborated rows, classes and counts re-derived; rows graded "
+            "undocumented-uncorroborated enter no count anywhere"
+        ),
+        "test": (
+            "O is the INITIAL_STRONG set, enumerated in full in Wells space and "
+            "published before any join, and asserted at gate 0.4 to reproduce "
+            "Spec 070's recorded 31 signs exactly (DD-074-9); U is every sign "
+            "with >= 30 occurrences in the primary population under the "
+            "counting rule carried from DD-070-10; R1 is the animal share of O "
+            "over the animal share of U, Fisher exact on the disjoint 2x2 (O "
+            "against U minus O), the one-sided p the criterion and the "
+            "two-sided p published; R2 the reversed arm"
+        ),
+        "precedence": (
+            "Section 4.3, carried from Spec 049's DD-049-3 through Spec 070: "
+            "NOT SUPPORTED if R1 <= 1.0 or p >= 0.05; SUPPORTED if R1 >= 1.5, "
+            "p < 0.05 and R2 > 1.0; otherwise INCONCLUSIVE"
+        ),
+        "keying": (
+            "DD-074-8 (two-leg): leg 1 is DD-070-9 carried - a Shakti sign's "
+            "ICIT code is its Wells number, resolved through the canonical "
+            "registry v2's parpola_1982 rows' wells_ids to exactly one Asset A "
+            "v2 sign_key; leg 2, for a sign with no attested Wells code in the "
+            "Phase-433 record, Registry v2's icit_wells rows are consulted, "
+            "the row's sign_id being the sign's own Wells code, to the Asset A "
+            "v2 row of that sign_key; zero or multiple resolutions across both "
+            "legs is unkeyable"
+        ),
+        "disposition": (
+            "DD-074-10 (conservative; DD-070-11 carried unchanged): an "
+            "unkeyable sign enumerated in the opening-strong set closes the "
+            "execution at gate 0.4 as POPULATION NOT KEYED, the sign named"
+        ),
+        "sensitivities": (
+            "S-A contested Asset A v2 rows included under their CISI-governed "
+            "labels (Asset A v2 carries zero contested rows, so S-A equals "
+            "the primary and is reported as such); S-B unicorn removed, the "
+            "sign(s) named at gate 0.5 from the frozen asset's verbatim "
+            "labels or S-B recorded not applicable; S-C the corroborated "
+            "sensitivity"
+        ),
+        "outcomes": [
+            "SUPPORTED",
+            "NOT SUPPORTED",
+            "INCONCLUSIVE",
+            "ASSET NOT FROZEN",
+            "ASSET PIN MISMATCH",
+            "SHAKTI INTAKE NOT REPRODUCED",
+            "POPULATION NOT REPRODUCED",
+            "POPULATION NOT KEYED",
+            "INVALID",
+        ],
+        "osf": (
+            "DD-074-11: this spec files its own OSF registration at its freeze "
+            "under the programme's OSF project; the filing is recorded in "
+            "osf-spec-registration.md in this directory"
+        ),
+        "execution_gate": (
+            "Phase 440 executes only against this frozen record; step 0 asserts "
+            "the repaired surface (gate 0.1: Registry v2 and Asset A v2 "
+            "against Spec 073's executed record) and the Shakti intake under "
+            "P-F1 S1/S2 (gate 0.2), checks input integrity (gate 0.3), then "
+            "enumerates the population, asserts its reproduction of Spec "
+            "070's recorded measurement, and keys it (gate 0.4), publishes "
+            "the comparison census (gate 0.5), and gives the freeze-order "
+            "proof (gate 0.6) before any test quantity"
+        ),
+        "limits": (
+            "Depiction is the published identification layer, not ground truth; "
+            "Spec 037's 49 percent census caution travels with every statement "
+            "of the result; no outcome establishes that animal signs marked "
+            "identity, a guild, or goods"
+        ),
+    },
+    "inputs": {
+        "asset_a_v2": {
+            "path": "specs/073-keying-surface-repair/asset-a-v2/depicted-kind-classification.csv",
+            "sha256": "681e017da8b3f93aeade7e85361565fa8f3f4178b167dfa2448f5b4c239a8193",
+            "rows": 552,
+            "per_kind_counts": {
+                "animal": 30, "sky_cycle": 0, "object_goods": 22,
+                "human": 43, "other": 246, "contested": 0, "unidentified": 211,
+            },
+        },
+        "registry_v2": {
+            "path": "data/crosswalks/canonical_sign_registry_v2.csv",
+            "sha256": "42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71",
+            "rows": 1013,
+        },
+        "spec070_record": {
+            "freeze_digest": "763108f89311ab2791827b347a155a8b4f9abad940ab59f921af129f79c73e3e",
+            "phase433_results": {
+                "path": "reports/phase433_results.json",
+                "sha256": "667560a5c185051ea7acc9afacf2f9c4bbf3f863e9d17851c634fa56eb3ad214",
+            },
+        },
+        "shakti_corpus": {
+            "record": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+            "corpus_sha256": "345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68",
+            "row_grades_sha256": "02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739",
+            "rows": 5704,
+            "grades": {"documented": 3212, "corroborated": 2087, "uncorroborated": 405},
+        },
+        "canonical_registry_v1": {
+            "path": "data/crosswalks/canonical_sign_registry.csv",
+            "sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",
+            "rows": 803,
+        },
+        "crosswalk": {
+            "path": "data/crosswalks/sign_crosswalk_master.csv",
+            "sha256": "4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf",
+        },
+        "anchors": {
+            "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
+            "sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+        },
+        "pin_verification": (
+            "verified first-hand at the freeze act of 2026-10-24 on the merged "
+            "record as it stands after Spec 073's execution merge (33e49b65) "
+            "and Spec 040's OSF record merge (1978a4a6): Asset A v2's and "
+            "Registry v2's digests recomputed from the canonical CSVs on the "
+            "merged tree equal Spec 073's executed record's quoted values, "
+            "and their row counts and Asset A v2's per-kind counts recounted "
+            "from the files themselves; the Shakti corpus and row-grades "
+            "files hashed directly at their restricted-local paths and equal "
+            "the intake record's pins; registry v1, the crosswalk and the "
+            "anchors hashed in the tree and equal their pins, registry v1 "
+            "untouched by Spec 073; the Phase-433 record hashed in the tree "
+            "and equals its pin; the two-leg keying route over Registry v2 "
+            "resolves all 31 of Spec 070's recorded opening-strong signs to "
+            "exactly one Asset A v2 row each, and the combined Wells map "
+            "carries 708 distinct Wells ids with zero ambiguous"
+        ),
+    },
+    "environment": {
+        "python": "3.12.3",
+        "runner": "backend (venv glossa-lab)",
+        "aee": "1.5.3 (adopted environment; package pinned >=1.5.0,<1.6)",
+        "specify": "1.0.10",
+    },
+}
+
+SOURCES = [
+    f"{SPEC_DIR}/freeze.md",
+    f"{SPEC_DIR}/spec.md",
+    f"{SPEC_DIR}/claims.json",
+    f"{SPEC_DIR}/adjudication.md",
+    f"{SPEC_DIR}/aee/freeze-aee-note.md",
+    f"{SPEC_DIR}/build_freeze.py",
+    "backend/tests/test_spec074_freeze.py",
+]
+
+
+def main() -> int:
+    record = build_freeze(DEFINITION, REPO, SOURCES)
+    out = REPO / SPEC_DIR / "freeze.json"
+    out.write_text(
+        json.dumps(record, indent=1) + "\n", encoding="utf-8"
+    )
+    print(record["digest"])
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

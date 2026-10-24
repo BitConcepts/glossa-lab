@@ -457,6 +457,16 @@ def process_document(doc_id: str) -> dict:
     # store carrying stage 'explained' with no explanation record
     # behind it, which is exactly the incoherence the lifecycle
     # machinery exists to prevent.
+    # Spec 054 amendment (2026-10-23, owner ruling on the
+    # sec.7.5(3) generator act): the same carry-over preserves
+    # falsification_condition. A falsifier appended to a claim
+    # record (as Spec 054's freeze appends one to
+    # yadav_2009_arxiv_manual_002) is an authored act of the
+    # same standing as the fields above; before this addition a
+    # regeneration silently dropped an appended condition
+    # (proven 2026-10-23: append -> regenerate -> field absent
+    # from the read-back). A regeneration must never strip an
+    # appended falsifier.
     out = EXTRACTED_CLAIMS / f"{doc_id}.json"
     if out.exists():
         prior = json.loads(out.read_text("utf-8"))
@@ -467,7 +477,8 @@ def process_document(doc_id: str) -> dict:
                           "stage_history", "verified_unexplained",
                           "proposition_fingerprint", "merged_into",
                           "evidence_instances",
-                          "not_understood", "explanation_record")
+                          "not_understood", "explanation_record",
+                          "falsification_condition")
                 if k in c
             }
             for c in prior.get("claims", [])

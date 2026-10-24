@@ -200,6 +200,18 @@
         ],
         "evidence_level": "FULL TEXT (priority items: metadata level for Kondratov 1976)",
         "effect": "No claim status, stage, anchor, or score is changed by this note."
+      },
+      "falsification_condition": "This claim, as evaluated under battery NB-1 (the Spec 054 amendment, as frozen), is falsified if any of the following holds when the frozen battery is run on the frozen arm-1 and arm-2 corpora: (1) either arm-1 positional-strong set (opening or closing) is empty; (2) for either class, fewer than half of arm 1's positional-strong signs are also positional-strong in arm 2 in the same class, through the pinned crosswalk; or (3) the pooled cross-arm overlap of positional-strong signs does not exceed the 95th percentile of the 999-shuffle label-permutation null — the three conditions applied under the precedence rule of the Spec 054 amendment (§5.5).",
+      "spec054_falsifier_append_2026_10_23": {
+        "date": "2026-10-23",
+        "kind": "spec054-freeze-falsifier-append",
+        "note": "Falsifier append (Spec 054 amended freeze, 2026-10-23): the falsification_condition appended beside this note is the Spec 054 amendment's section 8 text, appended at the amended freeze under the owner's mini-gate approval of 2026-10-23. The design's original falsifier was never appended, because the 2026-10-21 freeze failed before any append (specs/054-yadav-opening-closing/adjudication.md section 7.2). This condition belongs to the amended statement (amendment.md section 2), not to Yadav et al. (2010)'s original Phase-43 statement. The generator's regeneration carry-over (the Spec 054 amendment's section 7.5(3) act) preserves falsification_condition by claim identity, so this append survives regeneration - proven at this freeze by regenerate-and-read-back. This note field is not in the carry-over list: a future regeneration keeps the condition and drops this note.",
+        "evidence": [
+          "specs/054-yadav-opening-closing/amendment.md",
+          "specs/054-yadav-opening-closing/adjudication.md",
+          "specs/054-yadav-opening-closing/freeze.md"
+        ],
+        "effect": "yadav_2009_arxiv_manual_002 gains a falsification_condition (the amendment's section 8 text, verbatim); no other field of the claim changes; its recorded status (strongly_supported) and stage (explained) are untouched."
       }
     }
   ],

@@ -266,7 +266,29 @@ def test_falsifiers_preserved_and_never_invented():
     # Text-begin/end: NEITHER instance carried a falsifier, so the
     # canonical honestly carries none (audit finding; not repaired
     # by inventing one).
-    assert "falsification_condition" not in records[BEGIN_2009]
+    # Spec 054 supersession (2026-10-23): the repair the audit
+    # declined to invent was later supplied by governance - the
+    # Spec 054 amendment's section 8 falsifier, owner-approved
+    # and appended verbatim to the 2009 record at that spec's
+    # freeze through the fixed generator path (registered
+    # post-append SHA-256 938174b0...; the condition survives
+    # regeneration by the generator's carry-over). The 2009
+    # canonical therefore carries exactly that text now. The
+    # 2010 instance was not appended to and still carries none.
+    assert records[BEGIN_2009]["falsification_condition"] == (
+        "This claim, as evaluated under battery NB-1 (the Spec 054 "
+        "amendment, as frozen), is falsified if any of the following "
+        "holds when the frozen battery is run on the frozen arm-1 and "
+        "arm-2 corpora: (1) either arm-1 positional-strong set "
+        "(opening or closing) is empty; (2) for either class, fewer "
+        "than half of arm 1's positional-strong signs are also "
+        "positional-strong in arm 2 in the same class, through the "
+        "pinned crosswalk; or (3) the pooled cross-arm overlap of "
+        "positional-strong signs does not exceed the 95th percentile "
+        "of the 999-shuffle label-permutation null \u2014 the three "
+        "conditions applied under the precedence rule of the Spec 054 "
+        "amendment (\u00a75.5)."
+    )
     assert "falsification_condition" not in records[BEGIN_2010]
 
 

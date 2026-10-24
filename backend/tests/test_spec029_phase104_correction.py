@@ -57,6 +57,18 @@ _FIXTURES = Path(__file__).resolve().parent / "fixtures"
 # post-correction one from the live store), so the movement
 # comparison below stays within one engine's semantics; the
 # pre-1.5 fixtures are preserved untouched.
+# Spec 054 supersession (2026-10-23): the post-correction
+# fixture was regenerated once more from the live store
+# after Spec 054's amended freeze appended a
+# falsification_condition to yadav_2009_arxiv_manual_002 -
+# that record's first falsifier (owner mini-gate approval
+# 2026-10-23; specs/054-yadav-opening-closing/freeze.md).
+# Exactly one entry moved (manual_002's: falsifiability
+# 0.0 -> 1.0, direct/propagated 0.70 -> 0.85, band medium
+# -> high), and the movement test below names that second,
+# separately caused movement beside the three correction
+# movements. The post-merge fixture (the pre-correction
+# baseline) is unchanged.
 _POST_MERGE_SCORES = json.loads(
     (_FIXTURES / "spec029_post_merge_aee150_scores.json").read_text("utf-8"))
 _POST_CORRECTION_SCORES = json.loads(
@@ -222,7 +234,7 @@ def test_carryover_and_lane2_fields_coexist_on_the_corrected_records():
 
 # ── Blast radius: scores move only where the record changed ─────────────
 
-def test_score_movement_is_exactly_the_three_corrected_claims():
+def test_score_movement_is_the_corrected_claims_plus_the_spec054_append():
     summary = assessment_summary(_CLAIMS_DIR)
     assert summary["total_claims"] == len(_POST_MERGE_SCORES) == 23
     moved = set()
@@ -231,7 +243,23 @@ def test_score_movement_is_exactly_the_three_corrected_claims():
         assert entry["aee_score"] == _POST_CORRECTION_SCORES[cid], cid
         if entry["aee_score"] != _POST_MERGE_SCORES[cid]:
             moved.add(cid)
-    assert moved == CORRECTED
+    # The Phase-104 correction's three movements, plus the one
+    # later governed movement: Spec 054's falsifier append to
+    # yadav_2009_arxiv_manual_002 (2026-10-23, its freeze act) -
+    # the claim gained its first falsification_condition, so
+    # its falsifiability component, and only that component,
+    # moved. Any further unexplained movement fails here.
+    assert moved == CORRECTED | {"yadav_2009_arxiv_manual_002"}
+    before = _POST_MERGE_SCORES["yadav_2009_arxiv_manual_002"]
+    after = _POST_CORRECTION_SCORES["yadav_2009_arxiv_manual_002"]
+    b_comp = dict(before["components"])
+    a_comp = dict(after["components"])
+    assert b_comp.pop("falsifiability") == 0.0
+    assert a_comp.pop("falsifiability") == 1.0
+    assert a_comp == b_comp
+    assert before["band"] == "medium" and after["band"] == "high"
+    assert before["direct_score"] == 0.7000000000000001
+    assert after["direct_score"] == 0.8500000000000001
     for cid in CORRECTED:
         before, after = _POST_MERGE_SCORES[cid], _POST_CORRECTION_SCORES[cid]
         # The movement is the contradiction penalty, and only that:

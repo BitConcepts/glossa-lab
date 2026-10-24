@@ -212,6 +212,21 @@
           "specs/054-yadav-opening-closing/freeze.md"
         ],
         "effect": "yadav_2009_arxiv_manual_002 gains a falsification_condition (the amendment's section 8 text, verbatim); no other field of the claim changes; its recorded status (strongly_supported) and stage (explained) are untouched."
+      },
+      "spec054_outcome_append_2026_10_24": {
+        "date": "2026-10-24",
+        "kind": "spec-054-execution-outcome-append",
+        "spec": "054",
+        "phase": 438,
+        "outcome": "STRICT CORPUS NOT PINNABLE",
+        "note": "Spec 054 (Phase-438), executed 2026-10-24 under the frozen amended contract (freeze digest d85f6ace80e2ae2935d96d4916e51db686f11fb2c4473dc24d1198580012bb57; OSF registration 8spvf): Spec 054 closed at step 0, gate 0.3: the strict corpus layer of record could not be uniquely identified and pinned from the database as the V3 / Mahadevan-lineage corpus the Phase-43 battery used (the V3 loader's data file — the Firestore 'indusarrays' dump the Phase-43 record names as its corpus's source — is absent at its path in this tree, in the main checkout, and in every sibling tree scanned, so the loader loads zero records and zero sequences and the layer cannot be exported or pinned; no database copy of the layer exists (the programme database's only Indus text is the synthetic prototype); and no other layer held is the corpus the Phase-43 record names (the site-attributed layer at 5,679 records, the V1 research export, the mayig CISI layer, the Holdat downloads layer, and the Shakti layer are each a different corpus or lineage)). No positional quantity was computed. This closure is a statement about runnability, not about the claim; the claim stands exactly as recorded, with the falsifier appended at this spec's freeze.",
+        "evidence": [
+          "specs/054-yadav-opening-closing/outcome.md",
+          "specs/054-yadav-opening-closing/step0-record.md",
+          "reports/phase438_results.json",
+          "reports/phase438_report.md"
+        ],
+        "effect": "No claim status, stage, or falsification condition is changed by this append; the claim stands exactly as recorded (strongly supported, stage explained, with the falsifier appended at the Spec 054 freeze)."
       }
     }
   ],

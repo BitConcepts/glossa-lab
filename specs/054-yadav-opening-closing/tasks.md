@@ -99,17 +99,30 @@
 
 ## Execution — gated on the freeze and a separate execution order
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Step 0, part 1** (spec §3 gates
+      Executed 2026-10-24 as Phase-438: script
+      `backend/scripts/phase438_yadav_opening_closing.py`,
+      node `IndusPhase438YadavOpeningClosing`,
+      registration verified by import before
+      the run (513 nodes total).
+- [x] **E2 — Step 0, part 1** (spec §3 gates
       0.1–0.2): input integrity against the
       freeze pins; the original 40/20 sets
       exhibited sign by sign from a pinned
       source. A failure stops the run as
       INVALID (0.1) or ORIGINAL SETS NOT
       EXHIBITABLE (0.2) before any quantity.
-- [ ] **E3 — Step 0, part 2** (gates
+      Executed 2026-10-24 under the amendment's
+      gate order: input integrity is amended
+      gate G1 — **PASS** (every freeze §2 pin
+      recomputes, the freeze digest
+      re-asserted). The 0.2 exhibition half was
+      retired by the amendment (adjudication
+      §9.2: OPEN-054-2 discharged as a gate);
+      no set was exhibited or reconstructed.
+- [x] **E3 — Step 0, part 2** (gates
       0.3–0.5): strict corpus identified,
       exported, pinned, and the battery
       reproduced against the recorded
@@ -122,6 +135,23 @@
       frozen floor (a THIN closure ends the
       execution here, with the census as its
       finding).
+      Executed 2026-10-24 under the amendment's
+      gates (BATTERY NOT REPRODUCED retired,
+      replaced by the determinism gate):
+      **amended gate G2 (draft 0.3) FAILED —
+      the execution closed STRICT CORPUS NOT
+      PINNABLE** (the V3 layer's Firestore
+      data file is absent at all 9 candidate
+      paths, the loader loads zero records, no
+      database copy of the layer exists, and
+      no other layer held is the corpus the
+      Phase-43 record names; the full
+      identification record is
+      `step0-record.md`). Amended gates G3
+      (thinness), G4 (second arm) and G5
+      (determinism) were NOT REACHED. E4
+      cannot run under this execution; the
+      record is `outcome.md` in this directory.
 - [ ] **E4 — Arms and overlap** (spec §5):
       arm 1 on the pinned strict corpus; arm
       2 on the Holdat layer through the
@@ -130,7 +160,9 @@
       arm; the pooled and per-class overlap
       against the frozen 999-shuffle null;
       the §5.1 sensitivity beside the primary.
-- [ ] **E5 — Outcome:** the §9 record —
+      (Not run — the execution closed at
+      step 0, gate G2; see E3.)
+- [x] **E5 — Outcome:** the §9 record —
       results JSON and report under the
       headline rules (the falsifier verbatim
       with its append date, the full step-0
@@ -144,6 +176,25 @@
       and the LEDGER entry; anchors asserted
       byte-identical before and after;
       foundation check reported as measured.
+      Executed 2026-10-24 for the step-0
+      closure the run reached:
+      `reports/phase438_results.json` and
+      `reports/phase438_report.md` carry the
+      falsifier verbatim with its append date,
+      the full step-0 record, and the headline
+      in §6's STRICT CORPUS NOT PINNABLE
+      wording; the per-arm tables, reappearance
+      counts, overlap/null record and
+      sensitivity do not exist (no arm was
+      counted) and the records say so. The
+      dated outcome append is on
+      `yadav_2009_arxiv_manual_002`'s record
+      (key `spec054_outcome_append_2026_10_24`;
+      durability proven by regeneration in a
+      scratch tree). Anchors byte-identical
+      before and after. Foundation check and
+      CI are recorded in the landing record
+      appended to `outcome.md`.
 
 ---
 

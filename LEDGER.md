@@ -10526,3 +10526,50 @@ reports/phase437_results.json, reports/phase437_report.md.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-24 — Spec 054 EXECUTED (Phase-438): Yadav's opening/closing signs under battery NB-1 — STRICT CORPUS NOT PINNABLE at gate G2
+
+The amended falsifier act is now executed. Step 0 ran in the
+amendment §6 order, fail-closed: gate G1 (pin checks) PASS — every
+freeze §2 pin recomputed (the claim store after the falsifier
+append at 938174b0...; the Phase-43 record at 78a6c219...; the
+positional companion at 0e546962...; crosswalk v1 JSON/CSV at
+4e7559df.../3d0b9ef1...; the anchors at df0cf620...; the recovered
+register at ea161e47...) and the freeze digest re-asserted
+(d85f6ace...). Gate G2 (strict corpus identification and pin)
+FAILED on observed values: the V3 loader's data file — the
+Firestore 'indusarrays' dump the pinned Phase-43 record names as
+its corpus's source (T1_1: 3,916 records / 2,665 dockeys / 3,137
+sequences / 12,494 sign instances) — is absent at its path in the
+execution tree, in the main checkout, and in every sibling tree
+scanned (9 candidate paths), so the loader loads zero records and
+zero sequences and the layer cannot be exported or pinned; no
+database copy of the layer exists (the programme database's only
+Indus text is the synthetic prototype); and every other layer held
+was censused and is a different corpus or lineage (the
+site-attributed yajnadevam layer at 5,679 records; the V1 research
+export at 15,508 records; the mayig CISI layer at 179 / 1,003 /
+182; the Holdat downloads layer at 1,670 / 7,002 / 390 — arm 2's
+own layer; the Shakti layer at 5,704 rows), so none was
+substituted. Gates G3 (thinness), G4 (second arm) and G5
+(determinism) were NOT REACHED; no positional quantity was
+computed in either arm, no strong set was produced, and the
+amended statement stands untested. The outcome was appended as a
+dated entry to the record of yadav_2009_arxiv_manual_002
+(spec054_outcome_append_2026_10_24; the store moved 938174b0... ->
+21009b4a... by exactly that entry; durability proven by
+regeneration in a scratch tree — the entry and the falsifier both
+survive verbatim). The claim stands exactly as recorded: strongly
+supported, stage explained, with the falsifier appended at this
+spec's freeze — this closure moves no status and is not a verdict
+on Yadav et al. (2010)'s statement or on the amended one. The
+same observed facts closed Spec 053 (Phase-413) at its gate 0.3
+on 2026-10-21. Anchors df0cf620... asserted byte-identical before
+and after. Freeze digest d85f6ace...; OSF registration
+https://osf.io/8spvf/ (approved 2026-10-24). Records:
+specs/054-yadav-opening-closing/outcome.md,
+specs/054-yadav-opening-closing/step0-record.md,
+reports/phase438_results.json, reports/phase438_report.md.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.

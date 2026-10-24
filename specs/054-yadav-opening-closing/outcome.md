@@ -195,6 +195,41 @@ gates in the same order.
 - Anchors asserted byte-identical before and
   after (`df0cf620…` at both readings).
 
+## Landing record
+
+Appended at merge (append-only): PR number,
+merge commit, CI conclusions, and the
+foundation check as measured on the merged
+tree.
+
+**Landed 2026-10-24.** Execution PR **#364**,
+merged as merge commit
+`d8aa41a636900771738de8d7145fe3c515ca2025`.
+CI on the PR head (`49f72953`), run
+40095871845: **7/7 jobs successful**, read
+from the run's own job conclusions — Backend
+tests (pytest); Frontend tests (Playwright);
+Evidence Graph script smoke tests; Indus
+public validation checks; Shell wrappers
+(ubuntu-latest, windows-latest, macos-latest).
+Foundation check on the merged tree (merge
+commit `d8aa41a6`, run 2026-10-24 with the
+program's local corpora linked in read-only):
+**40 checks passed, 0 failed, 8 warnings** —
+the warnings are the standing caveats (site
+coverage, sign-numbering crosswalks, the
+superseded TB corpus, the Phase-29/30 notes,
+torch absence); none touches this spec's
+records. Read back from merged `main` by API
+after the merge: the machine record (outcome
+STRICT CORPUS NOT PINNABLE; G1 PASS, G2 FAIL,
+G3–G5 NOT REACHED; battery and decision
+null), this outcome record, and the claim
+store at `21009b4a…` carrying the dated
+outcome append with the claim's status
+(strongly supported) and stage (explained)
+unchanged and the falsifier verbatim.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse

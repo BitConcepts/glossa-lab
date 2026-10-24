@@ -133,6 +133,21 @@ record:
 moves by dated appends, as with the 2026-10-22
 audit note).
 
+Durability note: the extracted-claims
+generator (`glossa-indus/scripts/indus_claims.py`)
+regenerates the store wholesale and, before
+this execution, carried over only enumerated
+fields — a regeneration would have stripped
+these appends (CI on this execution's PR
+caught exactly that, in-tree, via the Spec 029
+tests). The generator now carries over dated
+append keys (a trailing `_YYYY_MM_DD` date) by
+claim identity, under the same never-drop
+principle as its stage, merge-state, and
+status-correction carry-overs; a test in
+`backend/tests/test_spec052_execution.py`
+proves the preservation and fails without it.
+
 ## What this does not establish
 
 - It does not re-open, confirm, or flip the

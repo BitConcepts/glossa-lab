@@ -155,6 +155,67 @@ def test_outcome_appended_in_same_words_everywhere():
     assert seen == 4
 
 
+def test_regeneration_preserves_the_outcome_append(tmp_path):
+    """The extracted-claims generator regenerates the store
+    wholesale (the Spec 029 tests do it in-tree); the dated
+    section 4.2 outcome append is a record, not extraction
+    output, and the generator's dated-append carry-over must
+    preserve it — and the 2026-10-22 audit note — verbatim.
+    (CI on this spec's execution PR caught the append being
+    stripped in-tree before the carry-over existed.)"""
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location(
+        "indus_claims",
+        REPO_ROOT / "glossa-indus" / "scripts" / "indus_claims.py",
+    )
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    lit = tmp_path / "documents"
+    lit.mkdir()
+    processed = tmp_path / "cleaned"
+    processed.mkdir()
+    out_dir = tmp_path / "extracted"
+    out_dir.mkdir()
+    prior_text = (
+        REPO_ROOT
+        / "glossa-indus/claims/extracted_claims/"
+        "farmer_sproat_witzel_2004.json"
+    ).read_text("utf-8")
+    prior = json.loads(prior_text)
+    (lit / "farmer_sproat_witzel_2004.json").write_text(
+        json.dumps({"title": prior["title"]}), "utf-8"
+    )
+    (out_dir / "farmer_sproat_witzel_2004.json").write_text(
+        prior_text, "utf-8"
+    )
+    mod.LIT_DOCS = lit
+    mod.PROCESSED_TEXT = processed
+    mod.EXTRACTED_CLAIMS = out_dir
+    result = mod.process_document(
+        "farmer_sproat_witzel_2004"
+    )
+    assert result["status"] == "extracted"
+    regenerated = json.loads(
+        (out_dir / "farmer_sproat_witzel_2004.json").read_text(
+            "utf-8"
+        )
+    )
+    (claim,) = [
+        c
+        for c in regenerated["claims"]
+        if c["claim_id"]
+        == "farmer_sproat_witzel_2004_manual_001"
+    ]
+    prior_claim = prior["claims"][0]
+    assert claim[APPEND_KEY] == prior_claim[APPEND_KEY]
+    assert (
+        claim["audit_note_2026_10_22"]
+        == prior_claim["audit_note_2026_10_22"]
+    )
+    assert claim["claim_status"] == "contradicted"
+
+
 def test_outcome_record_carries_the_result():
     outcome = (SPEC_DIR / "outcome.md").read_text(
         "utf-8"

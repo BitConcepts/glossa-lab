@@ -198,6 +198,39 @@ merge commit, CI conclusions, and the
 foundation check as measured on the merged
 tree.
 
+**Landed 2026-10-24.** Execution PR **#361**,
+merged as merge commit
+`65d0c75e92e691e596a593d0a48b21c2f8fff76a`.
+CI on the merged head (`90d3a103`), run
+40067100181: **7/7 jobs successful**, read
+from the run's own job conclusions — Backend
+tests (pytest); Frontend tests (Playwright);
+Evidence Graph script smoke tests; Indus
+public validation checks; Shell wrappers
+(ubuntu-latest, windows-latest, macos-latest).
+Three earlier runs of the PR failed, each on
+a regeneration interaction the fixes in this
+PR resolved (the outcome append stripped
+in-tree; the Phase-104 exact-shape pin; the
+Phase I verbatim-instance pin via audit-note
+carry-over) — the full account is in the
+durability note above and the generator's own
+comments. Foundation check on the merged
+tree (merge commit `65d0c75e`, run
+2026-10-24 with the program's local corpora
+linked in read-only): **40 checks passed,
+0 failed, 8 warnings** — the warnings are the
+standing caveats (site coverage, sign-numbering
+crosswalks, the superseded TB corpus, the
+Phase-32 inconclusive test); none touches
+this spec's records. Read back from merged
+`main` by API after the merge: this outcome
+record, the machine record (outcome
+INCONSISTENT, sensitivity INCONSISTENT, gates
+PASS ×4), and the §4.2 append on the parent
+record (status still contradicted) are all
+present as landed.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse

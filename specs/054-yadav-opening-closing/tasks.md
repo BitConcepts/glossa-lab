@@ -41,8 +41,8 @@
       as a DRAFT PR and left unmerged for the
       owner's freeze decision, CI state
       reported from the run's own conclusions.
-- [ ] **L4 — AEE lifecycle hooks (FREEZE GATE
-      — not run on this draft).** At the
+- [x] **L4 — AEE lifecycle hooks (FREEZE GATE
+      — run at the amended freeze, 2026-10-23).** At the
       freeze act, run `run_aee.py assess`
       after_specify, after_plan, and
       after_tasks over the claim register;
@@ -59,7 +59,7 @@
       1.5.x engine at the freeze rather than
       assumed from pre-adoption habit
       (campaign Part 4, Wave 2).
-- [ ] **L5 — Freeze-decision items.** The
+- [x] **L5 — Freeze-decision items.** The
       freeze decides OPEN-054-1 (the battery's
       threshold rule, stated from the record),
       OPEN-054-2 ("strict", operationally),
@@ -73,7 +73,7 @@
       (DD-054-2's precedence rule), and
       confirms or openly overturns
       DD-054-1…DD-054-6.
-- [ ] **L6 — Freeze.** On the owner's freeze
+- [x] **L6 — Freeze.** On the owner's freeze
       order, with L4 passed and L5 decided:
       hooks recorded, `freeze.md` finalised,
       `freeze.json` recomputed over the
@@ -192,7 +192,7 @@ nothing to any claim record.
       regeneration; fixed generator preserves
       it verbatim, with no other change beyond
       baseline timestamps.
-- [ ] **A4 — Owner mini-gate.** The owner
+- [x] **A4 — Owner mini-gate.** The owner
       approves, amends, or declines the
       amendment (amendment.md §11 lists the
       decisions). On approval: L4 runs over

@@ -938,3 +938,193 @@ files, appends, or executes anything.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## 9. Mini-gate approval and the amended freeze — 2026-10-23
+
+§8 recorded the settled rulings and returned the
+amendment to the owner as a mini-gate. This section
+records the owner's decision and the freeze act it
+authorised. It is the freeze record's adjudication
+half; `freeze.md` is its other half.
+
+### 9.1 The mini-gate approval
+
+On 2026-10-23 at 22:59 EDT the owner approved both
+mini-gates as specified ("Approve both mini-gates as
+specified") — for this spec, the four decisions of
+`amendment.md` §11: (1) the amended statement (§2) and
+battery NB-1 as specified (§3), floor 20 and bands
+2/3 and 1/2 included; (2) the decision procedure (§5)
+— per-class reappearance at ≥ 1/2 with DD-054-5
+denominators, the pooled-overlap null as constructed
+(label permutation, 999 shuffles, seed 44054,
+nearest-rank 95th percentile), and DD-054-2's
+precedence as ordered in §5.5; (3) the verdict
+wordings (§9) and the falsifier text (§8) as the
+exact words the amended freeze appends; (4) the
+generator fix (§7) landing with the PR. `amendment.md`
+and `spec.md` stand byte-untouched by this act, as
+approved. Tasks A4 is complete.
+
+### 9.2 L5 decided as amended
+
+- **OPEN-054-1 — discharged.** NB-1's definition in
+  the amendment replaces the unstatable Phase-43 rule
+  (§8.1); nothing is pinned out of the Phase-43
+  record and nothing is borrowed under its name.
+- **OPEN-054-2 — discharged as a gate.** The amended
+  run produces its own sets, so the gate-0.2
+  exhibition check retires; the unexhibitability fact
+  stands in §7.2 and in the amended SUPPORTED
+  wording's stated limit. Arm 1's identify-and-pin
+  act survives at step 0 as the STRICT CORPUS NOT
+  PINNABLE closure (amendment §6).
+- **OPEN-054-3 — decided.** The floor is fixed by
+  NB-1.4 at N(s) ≥ 20, identical in both arms, and
+  DD-054-5's denominator reading is confirmed as the
+  primary (amendment §5.4): unmapped, conflict-paired,
+  and below-floor-in-arm-2 signs count as not
+  reappeared, named with their reasons; the
+  sensitivity that removes named signs is reported
+  with the same prominence and never governs.
+- **OPEN-054-4 — confirmed.** The Phase-122 crosswalk
+  v1 pinned in spec §2 is the crosswalk of record —
+  re-asserted at this freeze against the files: JSON
+  SHA-256 `4e7559dfc2ced83c79440029a1b2749fe9d21eca7f6db3bf3b66f0cfa647dcbb`,
+  CSV SHA-256 `3d0b9ef12e6ce4eb8426d449656272365ee157b8c326a130d2261f8e39452823`;
+  766 rows of which 762 are mapped pairs (4 unmapped)
+  and 383 are conflict pairs. DD-054-4 is confirmed:
+  a second-arm failure closes the execution as SECOND
+  ARM NOT RUNNABLE (amendment §6); arm 1 does not
+  stand alone.
+- **OPEN-054-5 — answered.** The null is the
+  amendment §5.3 construction: arm 2's strong-set
+  membership labels permuted over its classifiable
+  signs, marginals and mapping fixed; 999 shuffles;
+  seed 44054; chance level the nearest-rank 95th
+  percentile.
+- **OPEN-054-6 — reconciled, as recorded.** The
+  §7.3 reconciliation carries (amendment §10): Spec
+  045's "Holdat final-position concentration"
+  (joint-sign rate > 0.5, object-frequency basis) and
+  this spec's closing measure — "closing-strong under
+  NB-1", a per-sign terminal-rate band on an
+  inscription-position basis — are different
+  quantities, distinctly named in every outcome
+  record of either spec.
+- **OPEN-054-7 — confirmed.** DD-054-2's precedence
+  stands in the amendment §5.5 form: empty arm-1 set
+  first; then, both classes reappearing, the pooled
+  overlap decides; then the residue (NOT SUPPORTED if
+  the overlap is at or below the chance level,
+  INCONCLUSIVE above it, with the rates stated).
+- **OPEN-054-8 — yes.** This spec files its own OSF
+  contract registration at this freeze, under
+  campaign decision E-1 (record:
+  `osf-spec-registration.md`, completed by append
+  after filing).
+- **OPEN-054-9 — Phase-437 allocated** (DD-054-10).
+  Verified at this freeze act: the merged record's
+  highest allocated execution phase is Phase-436
+  (Spec 073; Spec 041 holds Phase-435), and Spec
+  052's draft branch (PR #249) carries no freeze and
+  no phase allocation. Phase-437 is therefore the
+  next free number and is allocated to Spec 054's
+  execution.
+- **DD-054-1, DD-054-2, DD-054-5, DD-054-6** are
+  carried into the amended design as the amendment
+  states them; **DD-054-3 and DD-054-4** are
+  confirmed as amended above; **DD-054-7** is
+  discharged by the allocation; **DD-054-8** stands
+  (the register's evidence carried `observed_at`
+  from the draft, and carries `independent_of` from
+  the freeze recovery).
+
+### 9.3 Two freeze decisions recorded here
+
+- **DD-054-9 — The AEE gate reading.** The
+  DD-038-10 reading is adopted for this spec, as
+  Specs 037, 041, and 053 adopted it before: the L4
+  gate passes when every hook carries zero
+  correctness failure modes (no irreducibility,
+  negation-conflict, counterexample, or precision
+  challenge) and no claim below the 0.70 threshold;
+  FR-2.3 draft-cap records (one per claim) may
+  remain, and the engine's "iterate" word from
+  draft-cap alone is not a failure. Applied at this
+  freeze: the hooks PASS (19 draft-cap records at
+  every hook; minimum propagated 0.72;
+  `aee/freeze-aee-note.md`).
+- **DD-054-10 — Phase allocation.** The execution
+  of Spec 054 under this frozen contract runs as
+  **Phase-437** (OPEN-054-9, decided at §9.2).
+
+### 9.4 The falsifier append — performed and proven
+
+The freeze act of `amendment.md` §8, performed
+2026-10-23 on the claim store of record:
+
+- **Pre-append pin.** `glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json`
+  recomputed to SHA-256
+  `904766238d4aec8fecf0a01dc7c8935689f378e31062485edc699874a36847a3`
+  — the §7.1 pin, unchanged.
+- **The append.** `yadav_2009_arxiv_manual_002`
+  gained `falsification_condition` carrying the
+  amendment §8 text **verbatim**, and the dated
+  note field `spec054_falsifier_append_2026_10_23`
+  (date 2026-10-23; kind
+  `spec054-freeze-falsifier-append`) stating that
+  the design's original falsifier was never
+  appended because the 2026-10-21 freeze failed
+  before any append (§7.2), and that this condition
+  belongs to the amended statement (amendment §2).
+  No other field of the claim changed; its recorded
+  status (`strongly_supported`) and stage
+  (`explained`) are untouched.
+- **The proof (the amendment §7 standard).** Run
+  first in a scratch copy of the generator's tree,
+  then on the record itself: a baseline
+  regeneration of the untouched store changes
+  nothing but timestamps (the file's
+  `extraction_date` and the two manual claims'
+  `extracted_at`); with the append in place,
+  regeneration through the fixed generator's
+  `process_document("yadav_2009_arxiv")` was run
+  and read back — the appended condition survives
+  **verbatim**, `manual_001`'s authored condition
+  ("If frequency distribution deviates from
+  Zipf-Mandelbrot law.") is intact, and the final
+  diff against the pre-append store (timestamps
+  apart) is exactly the two added fields on
+  `manual_002`.
+- **The note's durability, stated openly.** The
+  dated note field is **not** in the generator's
+  carry-over list (the §8 condition is, by the
+  §7.5(3) fix): a future regeneration keeps the
+  condition and drops the note. The note was
+  therefore re-entered on the regenerated record
+  as part of this act, and the post-append hash
+  below is the hash of the record carrying both.
+  Extending the carry-over to note fields was not
+  decided by any ruling and is not done here.
+- **Post-append pin.** The claim record as
+  committed by this freeze: SHA-256
+  `dcbaf64a728bc4ff7a0a1f76f2c867f924734cbe7f9c8cab2554d131b22533d7`.
+  This is the hash `freeze.md` and the freeze
+  definition register (amendment §8's step,
+  unchanged from §7.5(4)).
+
+### 9.5 The execution gate
+
+Not satisfied. This freeze orders no execution:
+the amended run (Phase-437) starts only on a
+separate owner execution order. At the freeze
+itself no positional quantity was computed, no
+arm was counted, and no verdict was reached on
+the amended statement.
+
+---
+
+*AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution §VI.*

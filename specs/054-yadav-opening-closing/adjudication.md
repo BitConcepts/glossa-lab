@@ -795,3 +795,146 @@ in-pass.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## 8. Settled rulings — owner approval 2026-10-23 (Item 3)
+
+§7 closed the 2026-10-21 freeze attempt: the battery
+could not be pinned (OPEN-054-1), the original sets could
+not be exhibited (OPEN-054-2), and no freeze could append
+a falsifier the claim's record never carried, because the
+append had no durable home (the §7.3 generator finding).
+§7.5 reserved both design questions to the owner. The
+owner decided both on 2026-10-23, approving Item 3 of
+the waiting-decisions package as written. The rulings
+are recorded here; the amendment they commission is
+`amendment.md` in this directory, and it returns to the
+owner as a mini-gate. This spec is not frozen by
+anything in this section.
+
+### 8.1 The falsifier design — §7.5(2) adopted
+
+**Ruled:** the falsifier design of §7.5(2) is adopted.
+The amended spec does not re-earn the original
+Phase-43 sets (nothing can: OPEN-054-2's finding
+stands — the sets cannot be exhibited, and no amended
+text in this directory pretends otherwise). Instead the
+amendment evaluates an amended statement under a new,
+explicitly defined battery — **NB-1**, the same battery
+Spec 052's amendment defines — which produces its own
+opening-strong and closing-strong sets in both arms.
+The design's three conditions are carried over and
+re-aimed at the new battery's sets:
+
+- reappearance **< ½**, read per class
+  (DD-054-1's per-set reading);
+- pooled overlap against the **999-shuffle null's 95th
+  percentile** — the null's construction, left open at
+  OPEN-054-5, is specified in the amendment (label
+  permutation of arm 2's strong-set membership, set
+  sizes and mapping held fixed, seed 44054);
+- under **DD-054-2's precedence** and **DD-054-5's
+  denominator discipline**, both carried into the
+  amendment's decision procedure.
+
+The verdict wordings are **rewritten**: the draft's
+SUPPORTED (RE-EARNED) is struck — nothing is re-earned,
+because the original sets remain unexhibitable — and
+the amended SUPPORTED states what the new battery's own
+sets establish, with its limits in the wording
+(amendment §9). The new falsifier's exact text is fixed
+in the amendment (§8) and is **appended at the amended
+freeze**, not now: the append is a freeze act, and this
+draft performs no freeze act.
+
+Consequences for the draft's open items: OPEN-054-1 is
+discharged by NB-1's definition (the battery no longer
+needs pinning out of the Phase-43 record — the same
+owner ruling as Spec 052's §9.1: nothing invented or
+borrowed under the Phase-43 name). OPEN-054-2 is
+discharged as a gate: the gate-0.2 ORIGINAL SETS NOT
+EXHIBITABLE check retires, because the amended run
+produces its own sets; the underlying fact stays in
+this record and in the SUPPORTED wording's stated
+limit. The draft's BATTERY NOT REPRODUCED closure
+retires with it — NB-1 has no external original to
+reproduce; the amendment substitutes a determinism
+gate. OPEN-054-5 is answered by the amendment's null
+construction.
+
+### 8.2 The generator act — §7.5(3) decided, fix prepared
+
+**Ruled:** the §7.5(3) act is decided together with the
+design: the claim-store generator is amended so that an
+appended `falsification_condition` survives
+regeneration, giving the amended freeze's append a
+durable home.
+
+The fix is **prepared in this amendment's PR**, as a
+separate commit touching only
+`glossa-indus/scripts/indus_claims.py`: the
+regeneration carry-over — the mechanism that already
+preserves the stage fields, the merge state, and the
+lane-2 authored fields by claim identity — gains
+`falsification_condition`, with a dated comment in the
+block's own style. It lands with this draft PR because
+the act is machinery, decided on its own footing,
+independent of the freeze it serves; it changes no
+claim's content (no falsifier is appended by it — the
+append remains the amended freeze's act).
+
+Both halves of the proof were run on 2026-10-23 in a
+scratch copy of the generator's tree, and are recorded
+in full in `amendment.md` §7:
+
+- **Failure mode (unmodified generator):** a marker
+  `falsification_condition` appended to
+  `yadav_2009_arxiv_manual_002`'s store record is
+  absent from the record after regeneration — only
+  `manual_001`'s generator-authored condition remains.
+  §7.3's finding, reproduced on demand.
+- **Fixed generator:** the same append survives
+  regeneration verbatim; the only differences from the
+  un-appended store are the appended field itself and
+  the regeneration timestamps (the baseline noise,
+  measured first on the unmodified tree).
+
+### 8.3 What the amendment changes, and what it does not
+
+- The **parent claim record is untouched**: no edit,
+  no append, no status movement. The claim stands
+  strongly supported with no falsification condition,
+  exactly as §7.1 records, until the amended freeze
+  performs the append.
+- **§7.3's Spec 045 reconciliation carries unchanged:**
+  Spec 045's "Holdat final-position concentration"
+  (joint-sign rate > 0.5, object-frequency basis) and
+  this spec's closing measure are different quantities,
+  distinctly named in every outcome record
+  (amendment §10).
+- DD-054-1, DD-054-2, DD-054-5 and DD-054-6 carry into
+  the amendment; DD-054-6's pooled-overlap headline is
+  the overlap the amendment's §5 tests.
+- The unamended draft's step-0 closures stand in the
+  record as the 2026-10-21 attempt left them; the
+  amendment's §6 states which survive, which retire,
+  and what replaces them.
+
+### 8.4 What returns to the owner
+
+The amendment draft — this section, `amendment.md`,
+claims F054-C16…C19, the amendment tasks, and the
+generator-fix commit — is the mini-gate. The owner
+approves it, amends it, or declines it. Only on
+approval does the freeze path resume: AEE lifecycle
+hooks over the recovered register (L4), the freeze act
+— which appends the §8 falsifier text to the claim's
+record and registers the claim-record hash **after**
+the append — the OSF filing, and then a separate
+execution order. Nothing in this section freezes,
+files, appends, or executes anything.
+
+---
+
+*AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution §VI.*

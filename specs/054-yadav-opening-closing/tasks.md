@@ -146,3 +146,62 @@
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## Amendment — 2026-10-23 (owner mini-gate)
+
+Drafted under Item 3 of the owner-approved
+waiting-decisions package of 2026-10-23. The
+amendment returns to the owner as a mini-gate;
+it does not freeze this spec and it appends
+nothing to any claim record.
+
+- [x] **A1 — Settled rulings recorded.**
+      `adjudication.md` §8: the §7.5(2)
+      falsifier design adopted (new battery
+      NB-1 producing its own sets in both
+      arms; the three conditions re-aimed —
+      per-class reappearance < ½, pooled
+      overlap vs the 999-shuffle null's 95th
+      percentile, DD-054-2 precedence,
+      DD-054-5 denominator discipline;
+      verdict wordings rewritten, no
+      RE-EARNED); the §7.5(3) generator act
+      decided with it.
+- [x] **A2 — Amendment drafted.**
+      `amendment.md`: the amended statement;
+      battery NB-1 specified in full; the
+      decision procedure (sets, reappearance,
+      overlap null with its construction
+      stated — answering OPEN-054-5 —
+      precedence, denominators); amended
+      step-0 gates (BATTERY NOT REPRODUCED
+      replaced by determinism; ORIGINAL SETS
+      NOT EXHIBITABLE retired as a closure,
+      its fact retained); the exact falsifier
+      text for the amended freeze; rewritten
+      verdict wordings. Claims F054-C16…C19
+      appended to the register at 0.5-draft.
+- [x] **A3 — Generator fix prepared.**
+      Separate commit in this PR:
+      `glossa-indus/scripts/indus_claims.py`
+      carry-over gains `falsification_condition`
+      (dated comment in the block's style).
+      Proven both ways in a scratch tree
+      (amendment.md §7): unmodified generator
+      drops an appended condition on
+      regeneration; fixed generator preserves
+      it verbatim, with no other change beyond
+      baseline timestamps.
+- [ ] **A4 — Owner mini-gate.** The owner
+      approves, amends, or declines the
+      amendment (amendment.md §11 lists the
+      decisions). On approval: L4 runs over
+      the recovered register; L5 is decided
+      **as amended** — including the falsifier
+      append (amendment.md §8 text) performed
+      as a freeze act and the claim-record
+      hash registered **after** the append —
+      and the freeze path resumes. The
+      generator commit lands with this PR on
+      approval of the amendment; on decline it
+      is withdrawn with the draft.

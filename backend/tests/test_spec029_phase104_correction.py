@@ -153,18 +153,6 @@ def test_corrected_records_carry_the_phase104_outcome():
                                   "not_understood", "explanation_record"}
         if claim_id.endswith(("critique_0001", "critique_0002")):
             want_keys |= {"evidence_instances"}
-        # The 2026-10-22 Roif-credit act (the spec-025 audit
-        # fix commission's addendum; preprint v7) appended its
-        # dated credit note to these two records under
-        # audit_note_2026_10_22 - 21 of the store's records
-        # carry a note under that field; language_0001 does
-        # not. The Phase-104 correction neither wrote nor
-        # removed it; the coexistence is recorded here, as
-        # with the lane-2 fields above. (The note's presence
-        # postdates this test's key pin; the merged tree is
-        # the first state in which both stood together.)
-        if claim_id.endswith(("critique_0001", "critique_0002")):
-            want_keys |= {"audit_note_2026_10_22"}
         assert set(rec) == want_keys, claim_id
         # The previous status is preserved on the record itself.
         corr = rec["status_correction"]

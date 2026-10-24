@@ -194,14 +194,24 @@ def test_freeze_hook_artifacts_record_the_pass():
 
 
 def test_cited_records_carry_the_design_facts():
-    # The claim store at its post-append pin, the
-    # appended falsifier verbatim, the note present,
-    # and manual_001's authored condition intact.
-    store_bytes = CLAIM_STORE.read_bytes()
-    assert hashlib.sha256(store_bytes).hexdigest() == (
-        CLAIM_STORE_SHA256_AFTER
-    )
-    store = json.loads(store_bytes)
+    # The appended falsifier verbatim in the claim
+    # store's live record, and manual_001's authored
+    # condition intact — content assertions, not a
+    # byte pin on the store file. The suite's intake
+    # test (TEST-IEA-018) re-runs the extraction
+    # pipeline against the real tree, regenerating
+    # the store in place before these tests run:
+    # regeneration carries falsification_condition
+    # over (the amendment's §7 proof) but not the
+    # dated note fields, so the store's post-append
+    # bytes and the append note are asserted from
+    # the freeze record (freeze.json's definition
+    # and inputs-verified blocks, checked in
+    # test_freeze_definition_constants and
+    # test_freeze_record_replays), not from the live
+    # file. The Spec 068 freeze tests set the same
+    # pattern. (Adjudication §9.8.)
+    store = json.loads(CLAIM_STORE.read_text(encoding="utf-8"))
     by_id = {c["claim_id"]: c for c in store["claims"]}
     manual_002 = by_id["yadav_2009_arxiv_manual_002"]
     record = json.loads(FREEZE_JSON.read_text(encoding="utf-8"))
@@ -209,9 +219,6 @@ def test_cited_records_carry_the_design_facts():
     assert manual_002["falsification_condition"] == frozen_text
     assert "battery NB-1" in manual_002["falsification_condition"]
     assert "(§5.5)" in manual_002["falsification_condition"]
-    note = manual_002["spec054_falsifier_append_2026_10_23"]
-    assert note["date"] == "2026-10-23"
-    assert "never appended" in note["note"]
     assert manual_002["claim_status"] == "strongly_supported"
     assert manual_002["stage"] == "explained"
     manual_001 = by_id["yadav_2009_arxiv_manual_001"]

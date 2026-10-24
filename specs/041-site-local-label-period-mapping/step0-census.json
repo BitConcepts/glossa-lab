@@ -1,0 +1,487 @@
+{
+ "phase": "Phase-435",
+ "spec": "041",
+ "stage": "step0",
+ "layer_sha256": "c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef",
+ "value_convention": "period/phase values stripped of leading/trailing whitespace (Phase-139 loader convention); internal query/span marks verbatim",
+ "whitespace_findings_population_rows": 7,
+ "population_rows": 5410,
+ "margins": {
+  "period": 2266,
+  "phase": 2638,
+  "both": 1788,
+  "union": 3116,
+  "neither": 2294
+ },
+ "cells": [
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "local_label": "1",
+   "rows": 1
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "local_label": "2",
+   "rows": 2
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "local_label": "3",
+   "rows": 1
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "local_label": "4",
+   "rows": 40
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "local_label": "4/5",
+   "rows": 13
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "local_label": "5",
+   "rows": 44
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "local_label": "5/6",
+   "rows": 1
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "local_label": "5?",
+   "rows": 1
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "local_label": "6",
+   "rows": 36
+  },
+  {
+   "site": "Dholavira",
+   "field": "phase",
+   "local_label": "F",
+   "rows": 1
+  },
+  {
+   "site": "Harappa",
+   "field": "period",
+   "local_label": "1",
+   "rows": 2
+  },
+  {
+   "site": "Harappa",
+   "field": "period",
+   "local_label": "2",
+   "rows": 30
+  },
+  {
+   "site": "Harappa",
+   "field": "period",
+   "local_label": "2/3",
+   "rows": 7
+  },
+  {
+   "site": "Harappa",
+   "field": "period",
+   "local_label": "3",
+   "rows": 989
+  },
+  {
+   "site": "Harappa",
+   "field": "period",
+   "local_label": "3/4",
+   "rows": 1
+  },
+  {
+   "site": "Harappa",
+   "field": "period",
+   "local_label": "4/5",
+   "rows": 3
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "A",
+   "rows": 1
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "A-C",
+   "rows": 3
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "B",
+   "rows": 186
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "B/C",
+   "rows": 402
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "B?",
+   "rows": 6
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "C",
+   "rows": 169
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "Ravi",
+   "rows": 1
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "Stratum I",
+   "rows": 67
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "Stratum II",
+   "rows": 135
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "Stratum III",
+   "rows": 142
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "Stratum IV",
+   "rows": 170
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "Stratum V",
+   "rows": 155
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "Stratum VI",
+   "rows": 159
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "local_label": "Stratum VII",
+   "rows": 9
+  },
+  {
+   "site": "Kalibangan",
+   "field": "period",
+   "local_label": "1",
+   "rows": 1
+  },
+  {
+   "site": "Kalibangan",
+   "field": "period",
+   "local_label": "2",
+   "rows": 157
+  },
+  {
+   "site": "Kalibangan",
+   "field": "phase",
+   "local_label": "Early",
+   "rows": 11
+  },
+  {
+   "site": "Kalibangan",
+   "field": "phase",
+   "local_label": "Late",
+   "rows": 103
+  },
+  {
+   "site": "Kalibangan",
+   "field": "phase",
+   "local_label": "Middle",
+   "rows": 11
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "A",
+   "rows": 3
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "II",
+   "rows": 1
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 10",
+   "rows": 2
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 11",
+   "rows": 2
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 12",
+   "rows": 1
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 13",
+   "rows": 3
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 15",
+   "rows": 2
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 19",
+   "rows": 1
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 2",
+   "rows": 29
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 25",
+   "rows": 1
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 3",
+   "rows": 17
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 3-8",
+   "rows": 1
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 4",
+   "rows": 13
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 4-6",
+   "rows": 1
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 5",
+   "rows": 3
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 6",
+   "rows": 5
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 6A",
+   "rows": 1
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 7",
+   "rows": 3
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 8",
+   "rows": 2
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 8C",
+   "rows": 1
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer 9",
+   "rows": 3
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "local_label": "Layer13",
+   "rows": 1
+  },
+  {
+   "site": "Lothal",
+   "field": "phase",
+   "local_label": "I",
+   "rows": 3
+  },
+  {
+   "site": "Lothal",
+   "field": "phase",
+   "local_label": "II",
+   "rows": 9
+  },
+  {
+   "site": "Lothal",
+   "field": "phase",
+   "local_label": "II-III",
+   "rows": 13
+  },
+  {
+   "site": "Lothal",
+   "field": "phase",
+   "local_label": "III",
+   "rows": 61
+  },
+  {
+   "site": "Lothal",
+   "field": "phase",
+   "local_label": "IV",
+   "rows": 16
+  },
+  {
+   "site": "Lothal",
+   "field": "phase",
+   "local_label": "V",
+   "rows": 3
+  },
+  {
+   "site": "Mohenjo-daro",
+   "field": "period",
+   "local_label": "Early",
+   "rows": 48
+  },
+  {
+   "site": "Mohenjo-daro",
+   "field": "period",
+   "local_label": "Intermediate",
+   "rows": 425
+  },
+  {
+   "site": "Mohenjo-daro",
+   "field": "period",
+   "local_label": "Late",
+   "rows": 330
+  },
+  {
+   "site": "Mohenjo-daro",
+   "field": "phase",
+   "local_label": "I",
+   "rows": 267
+  },
+  {
+   "site": "Mohenjo-daro",
+   "field": "phase",
+   "local_label": "IA",
+   "rows": 4
+  },
+  {
+   "site": "Mohenjo-daro",
+   "field": "phase",
+   "local_label": "IB",
+   "rows": 10
+  },
+  {
+   "site": "Mohenjo-daro",
+   "field": "phase",
+   "local_label": "II",
+   "rows": 201
+  },
+  {
+   "site": "Mohenjo-daro",
+   "field": "phase",
+   "local_label": "II/III",
+   "rows": 1
+  },
+  {
+   "site": "Mohenjo-daro",
+   "field": "phase",
+   "local_label": "III",
+   "rows": 315
+  },
+  {
+   "site": "Mohenjo-daro",
+   "field": "phase",
+   "local_label": "III?",
+   "rows": 1
+  },
+  {
+   "site": "Nausharo",
+   "field": "period",
+   "local_label": "2",
+   "rows": 1
+  },
+  {
+   "site": "Nausharo",
+   "field": "period",
+   "local_label": "3",
+   "rows": 36
+  },
+  {
+   "site": "Nausharo",
+   "field": "period",
+   "local_label": "4",
+   "rows": 1
+  },
+  {
+   "site": "Nausharo",
+   "field": "phase",
+   "local_label": "B",
+   "rows": 2
+  },
+  {
+   "site": "Nausharo",
+   "field": "phase",
+   "local_label": "C",
+   "rows": 1
+  }
+ ],
+ "ai_disclosure": "Executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution section VI."
+}

@@ -96,10 +96,10 @@
 
 ## Execution — gated on the freeze and a separate execution order
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Step 0 (spec §6):** gates
+- [x] **E2 — Step 0 (spec §6):** gates
       G0.1–G0.6 in order, fail-closed — layer
       identity; population reproduction (the
       seven sites, 5,410 rows); the value-level
@@ -111,37 +111,37 @@
       extraction; the no-computation fence
       observed. Any failure closes the act at
       step 0 with no artifact.
-- [ ] **E3 — Extraction (spec §7.1):** per
+- [x] **E3 — Extraction (spec §7.1):** per
       attested cell, the site publication's
       own determination sought and recorded
       (citation, locator, mapping rule,
       verification mode) under the §3 standard
       and the freeze's DD-041-11 scope.
-- [ ] **E4 — Classification (spec §§7.2–7.3):**
+- [x] **E4 — Classification (spec §§7.2–7.3):**
       contested cells retained with both
       determinations and binding value
       UNASSIGNED; unassigned cells given
       exactly one enumerated reason; no
       precedence applied; no class skipped.
-- [ ] **E5 — Dual verification (spec §7.4):**
+- [x] **E5 — Dual verification (spec §7.4):**
       every MAPPED or CONTESTED cell
       re-verified at its locator by a second
       pass; reclassifications recorded, never
       edited into agreement.
-- [ ] **E6 — Completeness + artifact
+- [x] **E6 — Completeness + artifact
       (spec §5.5):** the artifact's cell set
       asserted equal to the step-0 census
       triple set, exactly once each; the
       artifact and its meta written (§5.6)
       and pinned by SHA-256.
-- [ ] **E7 — Coverage report (spec §8):**
+- [x] **E7 — Coverage report (spec §8):**
       cell counts by site × field × status;
       placement counts under derivations
       A1 / A2 / B / C with unplaced rows split
       by cause and the 57.6% ceiling stated;
       the secondary full-layer attestation
       census; the dual-verification record.
-- [ ] **E8 — Outcome:** the §9 record in this
+- [x] **E8 — Outcome:** the §9 record in this
       directory (artifact pin, gate and
       construction record, claim consequences),
       the LEDGER entry, anchors asserted

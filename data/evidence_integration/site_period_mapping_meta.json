@@ -1,0 +1,21 @@
+{
+ "artifact": "site_period_mapping.jsonl",
+ "phase": "Phase-435",
+ "spec": "041",
+ "lineage": "ICIT-lineage layer (horus84)",
+ "layer_sha256": "c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef",
+ "covariates_sha256": "a0f0d05a578826208e3fee5c8e1e296c44db3450d9ef27a9a837a57123b04413",
+ "anchors_sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+ "census_sha256": "b57fb6b1a0aa1e491ba38bf18978eec58c355f3bf833f58298c7516aabeca6be",
+ "freeze_digest": "fe6188864d5ff497fed5e3e89456d0499987c2cbc8ada5997920e864360dfdc7",
+ "standard": "Spec 041 section 3 (DD-039-3 carried): published determinations only; venue-and-locator test; verification OWN_TEXT or PAGINATED_RESTATEMENT",
+ "key_order": "site, field, local_label (lexicographic)",
+ "cells_total": 78,
+ "cells_by_status": {
+  "MAPPED": 24,
+  "UNASSIGNED": 54
+ },
+ "sensitivity_labels_frozen": "none (DD-041-10): the determination set is the frozen sensitivity basis",
+ "ceiling": "At most 3,116 of 5,410 population rows (57.6%) carry any recorded label; no derivation places more than that share.",
+ "ai_disclosure": "Executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution section VI."
+}

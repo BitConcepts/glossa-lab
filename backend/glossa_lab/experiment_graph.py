@@ -3179,6 +3179,16 @@ try:
     logger.info("Registered %d Phase-438 (spec 054) nodes", len(list(_p438_defs())))
 except Exception as _p438_exc:  # noqa: BLE001
     logger.warning("Phase-438 (spec 054) nodes not registered: %s", _p438_exc)
+# ── Phase-439 node (spec 040: G1 chronology-controlled rerun, D-25) ──
+try:
+    from glossa_lab.experiment_graph_phase439 import (
+        _phase439_node_defs as _p439_defs,  # noqa: PLC0415
+    )
+    for _d in _p439_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-439 (spec 040) nodes", len(list(_p439_defs())))
+except Exception as _p439_exc:  # noqa: BLE001
+    logger.warning("Phase-439 (spec 040) nodes not registered: %s", _p439_exc)
 # ── Phase-410 node (spec 043: PRED-2026-012 registry frame, step 0) ──
 try:
     from glossa_lab.experiment_graph_phase410 import (

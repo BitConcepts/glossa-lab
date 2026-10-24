@@ -111,6 +111,20 @@
         "kind": "roif-credit-note",
         "proposal": "P3-extended (Roif credit addendum to the spec-025 audit fix commission)",
         "note": "Credit note (2026-10-22): this claim is Avishai Roif's claim, from his published work - Roif 2025a, 'Deciphering the Indus Valley Script: A Phonetic-Mnemonic Akkadian Shorthand Approach' (Academia.edu, 12 June 2025, https://www.academia.edu/129921039) and Roif 2025b, 'Indus Valley Script deciphered - From Mythology to History using the Akkadian shorthand approach' (Academia.edu, 2 August 2025, https://www.academia.edu/143222807). He is the claims' author, not merely a cited source. The program's tests of his claims are the program's own work and its statistics are not his."
+      },
+      "spec052_outcome_append_2026_10_24": {
+        "date": "2026-10-24",
+        "kind": "spec-052-execution-outcome-append",
+        "spec": "052",
+        "phase": 437,
+        "outcome": "INCONSISTENT",
+        "note": "Spec 052 (Phase-437), executed 2026-10-24 under the frozen amended contract (freeze digest 83658949f9988990ddf265735f099e96d4c6c59c93eed66d4a648d3e8307c019; OSF registration 7cu23): battery NB-1 (Spec 052 amendment as frozen) run on the Shakti corpus layer (CISI-compilation lineage), primary population 3,045 inscriptions / 11,805 tokens / 557 signs. Condition F (dedicated final sets): holds — 7 TERMINAL_STRONG sign(s) against a permutation-null chance level of 0 (999 permutations, seed 43052). Condition O (opening formula): holds — the most frequent opening bigram (400, 740) recurs 179 times (dominance 0.0608 over B = 2942) against a chance level of 76 occurrences. Outcome: INCONSISTENT. Both conditions hold: positional structure of the kind the thesis denies is present in this compilation, and the caveat widens. The sensitivity population's run returned INCONSISTENT under the same battery. The parent claim's contradicted status stands as recorded; this outcome moves no verdict and is not a verdict on the Farmer-Sproat-Witzel thesis.",
+        "evidence": [
+          "reports/phase437_results.json",
+          "reports/phase437_report.md",
+          "specs/052-farmer-not-writing-soviet/outcome.md",
+          "specs/052-farmer-not-writing-soviet/step0-record.md"
+        ]
       }
     },
     {
@@ -218,6 +232,20 @@
         "kind": "roif-credit-note",
         "proposal": "P3-extended (Roif credit addendum to the spec-025 audit fix commission)",
         "note": "Credit note (2026-10-22): this claim is Avishai Roif's claim, from his published work - Roif 2025a, 'Deciphering the Indus Valley Script: A Phonetic-Mnemonic Akkadian Shorthand Approach' (Academia.edu, 12 June 2025, https://www.academia.edu/129921039) and Roif 2025b, 'Indus Valley Script deciphered - From Mythology to History using the Akkadian shorthand approach' (Academia.edu, 2 August 2025, https://www.academia.edu/143222807). He is the claims' author, not merely a cited source. The program's tests of his claims are the program's own work and its statistics are not his."
+      },
+      "spec052_outcome_append_2026_10_24": {
+        "date": "2026-10-24",
+        "kind": "spec-052-execution-outcome-append",
+        "spec": "052",
+        "phase": 437,
+        "outcome": "INCONSISTENT",
+        "note": "Spec 052 (Phase-437), executed 2026-10-24 under the frozen amended contract (freeze digest 83658949f9988990ddf265735f099e96d4c6c59c93eed66d4a648d3e8307c019; OSF registration 7cu23): battery NB-1 (Spec 052 amendment as frozen) run on the Shakti corpus layer (CISI-compilation lineage), primary population 3,045 inscriptions / 11,805 tokens / 557 signs. Condition F (dedicated final sets): holds — 7 TERMINAL_STRONG sign(s) against a permutation-null chance level of 0 (999 permutations, seed 43052). Condition O (opening formula): holds — the most frequent opening bigram (400, 740) recurs 179 times (dominance 0.0608 over B = 2942) against a chance level of 76 occurrences. Outcome: INCONSISTENT. Both conditions hold: positional structure of the kind the thesis denies is present in this compilation, and the caveat widens. The sensitivity population's run returned INCONSISTENT under the same battery. The parent claim's contradicted status stands as recorded; this outcome moves no verdict and is not a verdict on the Farmer-Sproat-Witzel thesis.",
+        "evidence": [
+          "reports/phase437_results.json",
+          "reports/phase437_report.md",
+          "specs/052-farmer-not-writing-soviet/outcome.md",
+          "specs/052-farmer-not-writing-soviet/step0-record.md"
+        ]
       }
     },
     {

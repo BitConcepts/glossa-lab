@@ -71,6 +71,20 @@
         ],
         "evidence_level": "FULL TEXT",
         "effect": "No claim status, stage, anchor, or score is changed by this note."
+      },
+      "spec052_outcome_append_2026_10_24": {
+        "date": "2026-10-24",
+        "kind": "spec-052-execution-outcome-append",
+        "spec": "052",
+        "phase": 437,
+        "outcome": "INCONSISTENT",
+        "note": "Spec 052 (Phase-437), executed 2026-10-24 under the frozen amended contract (freeze digest 83658949f9988990ddf265735f099e96d4c6c59c93eed66d4a648d3e8307c019; OSF registration 7cu23): battery NB-1 (Spec 052 amendment as frozen) run on the Shakti corpus layer (CISI-compilation lineage), primary population 3,045 inscriptions / 11,805 tokens / 557 signs. Condition F (dedicated final sets): holds — 7 TERMINAL_STRONG sign(s) against a permutation-null chance level of 0 (999 permutations, seed 43052). Condition O (opening formula): holds — the most frequent opening bigram (400, 740) recurs 179 times (dominance 0.0608 over B = 2942) against a chance level of 76 occurrences. Outcome: INCONSISTENT. Both conditions hold: positional structure of the kind the thesis denies is present in this compilation, and the caveat widens. The sensitivity population's run returned INCONSISTENT under the same battery. The parent claim's contradicted status stands as recorded; this outcome moves no verdict and is not a verdict on the Farmer-Sproat-Witzel thesis.",
+        "evidence": [
+          "reports/phase437_results.json",
+          "reports/phase437_report.md",
+          "specs/052-farmer-not-writing-soviet/outcome.md",
+          "specs/052-farmer-not-writing-soviet/step0-record.md"
+        ]
       }
     }
   ],

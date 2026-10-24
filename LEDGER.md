@@ -10448,3 +10448,39 @@ reports/phase436_results.json, reports/phase436_report.md.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+## 2026-10-24 — Spec 041 EXECUTED (Phase-435): site-period mapping built for the ICIT-lineage layer (horus84)
+
+The mapping the Spec 040 chronology-control dependency was waiting on now
+exists as a pinned artifact. Step 0 passed all six frozen gates on the
+hash-pinned layer (5,679 rows; census margins reproduced exactly: period
+2,266 / phase 2,638 / both 1,788 / union 3,116 / neither 2,294; the
+Phase-139 covariates agree on all 5,410 population rows; anchors
+df0cf620... asserted byte-identical before and after). Of the 78 local
+chronological labels attested on the population, 24 cells are MAPPED on a
+published determination verified to the spec section 3 bar (4 EARLY, 18
+MATURE, 2 LATE; artifact
+data/evidence_integration/site_period_mapping.jsonl, SHA-256
+1e5b54c9...) and 54 are UNASSIGNED with an enumerated reason (35 no
+published determination, 10 determination unverified, 4 boundary spans,
+3 labels uncertain in the layer, 2 not in the published scheme); 0 cells
+are CONTESTED. Dual verification re-read every grounded cell at its
+locator: 23 confirmed, 1 confirmed with a recorded caveat, and 4 Harappa
+phase cells (A, C, A-C, B/C) reclassified to UNASSIGNED /
+DETERMINATION_UNVERIFIED — never edited into agreement. Placement counts
+are reported under all four candidate derivations, none adopted (A1
+1,457 · A2 780 · B 1,366 · C 1,457 of 5,410 rows; at most 3,116 rows,
+57.6%, carry any label at all; Mohenjo-daro places zero rows under every
+derivation). One recorded departure from the freeze's illustrative text:
+Nausharo Period IV is MAPPED MATURE on the excavator's own published
+scheme (Jarrige et al. 2011, pp. 9, 30), which the freeze example had
+followed an incomplete consultation in expecting to be absent. This act
+computes no G1 quantity, amends no frozen record, and does not satisfy
+Spec 040's gate by existing — that judgment belongs to a future
+Spec 040 freeze. Freeze digest fe618886...; OSF registration
+https://osf.io/w2vkn/ (approved 2026-10-23). Records:
+specs/041-site-local-label-period-mapping/outcome.md,
+specs/041-site-local-label-period-mapping/coverage-report.md,
+reports/phase435_results.json.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.

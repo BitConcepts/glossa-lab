@@ -3917,6 +3917,17 @@ try:
 except Exception as _kalyan_exc:  # noqa: BLE001
     logger.warning("Kalyanaraman node not registered: %s", _kalyan_exc)
 
+# ── Phase-435 node (spec 041: site-period mapping) ──
+try:
+    from glossa_lab.experiment_graph_phase435 import (
+        _phase435_node_defs as _p435_defs,  # noqa: PLC0415
+    )
+    for _d in _p435_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-435 (spec 041) nodes", len(list(_p435_defs())))
+except Exception as _p435_exc:  # noqa: BLE001
+    logger.warning("Phase-435 (spec 041) nodes not registered: %s", _p435_exc)
+
 # ── Graph experiment file storage ────────────────────────────────────────────
 
 _GRAPHS_DIR.mkdir(parents=True, exist_ok=True)

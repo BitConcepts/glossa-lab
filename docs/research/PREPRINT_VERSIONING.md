@@ -74,7 +74,12 @@ HELD document. Record:
 The v8 PDF has been regenerated (two clean XeLaTeX passes,
 19 pages) and is the compiled artifact of record; the v7 PDF is
 superseded. An independent red-team pass on v8 is in progress
-under the standing rule. **Nothing has been submitted or deposited.**
+under the standing rule. **Deposited on Zenodo 2026-10-23 as record
+23604590, DOI 10.5281/zenodo.23604590 (concept DOI
+10.5281/zenodo.20379070), CC BY 4.0.** (This deposit sentence replaces
+"Nothing has been submitted or deposited", which stood here and in
+the v8 table row from before the deposit act; correction recorded
+2026-10-25 under realignment item 2.1, finding RT-04.)
 
 v7 adds the Roif credit: both Roif 2025a/b citations in §8,
 fish-sign model credit in §3.5 and §3.19 in Roif's own terms with

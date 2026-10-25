@@ -178,6 +178,24 @@ appended by the follow-up landing PR, per the programme's pattern.
   (`df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569` at both
   readings).
 
+## Correction note — 2026-10-25 (realignment item 2.3; RT-27)
+
+The headline enrichment ratio is printed in this record as
+**R1 = 0.8654**, computed over the pooled disjoint-table classified
+universe (animal share 8/90 = 0.0889), as the denominator note above
+discloses. The frozen §4.2 formula — R1 = (animal share of O) /
+(animal share of U), with U the >=30-occurrence inventory — gives the
+inventory's own animal share as 6/73 = 0.0822 and therefore
+**R1 = 0.9359** under the frozen formula's literal reading. Both
+values stand printed here so the headline record carries the
+frozen-formula figure beside the published one. The verdict is
+identical under every reading: R1 <= 1.0 in all of them (0.9359,
+0.8654, and 0.8205 on the U\O reading), and the Fisher one-sided
+p = 0.7345 >= 0.05 independently. The machine record names the pooled
+totals `U_animal_total` / `U_classified_total`; future records should
+name the pooled universe as what it is. This note is append-only: no
+verdict, status, or frozen text changes.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the

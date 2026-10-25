@@ -131,16 +131,3 @@ corpus under the adopted form.
 
 *AI disclosure: produced by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.*
-
-## Custody verification — appended 2026-10-25 (realignment item 3.3)
-
-On 2026-10-25 the two deposits were re-hashed on the owner's VM and
-both recomputed values equal the pins in §2 above exactly
-(`sanitized_corpus.json` → `345241b13f…c01da68`; row-grades CSV →
-`0239424177…4dd739`). A search of the owner's desktop on the same
-date found NO second copies of either file; creating one over the
-programme's transfer route would place the files in a git
-repository, which this record's holding terms forbid. Status: single
-copy, hash-verified 2026-10-25; an owner-side local copy on the
-desktop (outside any repo) is the recommended remedy. Full custody
-table: `docs/decisions/2026-10-25-custody-verification.md`.

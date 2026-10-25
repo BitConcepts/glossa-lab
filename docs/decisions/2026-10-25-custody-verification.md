@@ -34,12 +34,16 @@ freeze record states that fact as an accepted risk.
 
 ## Note on the in-repo provenance stubs (item 3.3(ii))
 
-The May-2026 acquisition stubs under `glossa-corpus/indus/sources/`
-are not edited by this act: at least one of them (the CISI source
-record) is cited by a frozen spec record and hash-pinned by its
-freeze test (`test_spec052_freeze.py::test_cited_records_carry_the_design_facts`,
-which failed on an appended custody block during this act's first
-pass and passes with the file untouched). The verified state of the
+Two records that would naturally carry this act's notes are not
+edited by it, because both are cited by Spec 052's frozen record and
+hash-pinned by its freeze test
+(`test_spec052_freeze.py::test_cited_records_carry_the_design_facts` —
+the failure named first the Shakti intake record's hash, then, on a
+second pass, confirmed both pins): the May-2026 acquisition stub at
+`glossa-corpus/indus/sources/cisi/provenance.yaml` and the Shakti
+intake record `docs/decisions/2026-10-22-shakti-corpus-intake-record.md`.
+Both stand byte-identical to their pins. The verified state of the
 held layers therefore lives in this custody record, which supersedes
-the stubs as the statement of what is held; the stubs stand as
-acquisition history.
+the stub as the statement of what is held; the stub stands as
+acquisition history, and the intake record's pins were re-verified
+against the files themselves on this date (see the table).

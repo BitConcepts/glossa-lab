@@ -1,0 +1,351 @@
+{
+  "metadata": {
+    "rebuild": {
+      "status": "REBUILT 2026-10-25 — new file, new provenance; NOT the lost original",
+      "register_citation": "Holdings reconciliation 2026-10-25, RECORDED-NOT-HELD item #29",
+      "see": "provenance record: contact_zone_rebuild_provenance.md (repo, glossa-corpus/indus/sources/contact-zone-rebuilt-2026-10-25/)"
+    },
+    "phase23_sign_ingestion": {
+      "n_seals": 13,
+      "n_updated": 13,
+      "n_with_signs": 10,
+      "n_without_signs": 3,
+      "total_indus_signs": 37,
+      "method": "Hand-curated overlay from Parpola 1994, Frenez 2018, Gadd 1932, Mallowan 1947, Vidale/Desset/Frenez 2021, David-Cuny/Neyme 2016, Laursen 2010 + 2026. Sign IDs placeheld with '?' pending CISI Vol 3 plate ingestion."
+    },
+    "phase24_sign_upgrade": {
+      "n_seals_total": 14,
+      "n_with_signs": 11,
+      "n_with_high_conf_signs": 1,
+      "total_indus_signs": 44,
+      "n_crossreferenced_with_laursen": 4,
+      "n_seals_added": 1,
+      "upgrade_log": [
+        {
+          "catalogue_id": "BM_122187_UR_seal_1",
+          "laursen_seal_no": 16,
+          "rationale": "Gadd 1932 pl. I no. 2 (round Ur seal with zebu motif). Best-fit Laursen Table 1 "
+        },
+        {
+          "catalogue_id": "GADD_1",
+          "laursen_seal_no": 17,
+          "rationale": "Gadd 1932 pl. I no. 3 (square Ur seal)."
+        },
+        {
+          "catalogue_id": "GADD_2",
+          "laursen_seal_no": 18,
+          "rationale": "Gadd 1932 pl. I no. 4 (Ur)."
+        },
+        {
+          "catalogue_id": "SUSA_INDUS_1",
+          "laursen_seal_no": 14,
+          "rationale": "Amiet 1972 no. 1643 — Susa Gulf INDUS seal (Laursen Table 1 row 14)."
+        }
+      ],
+      "method": "Hand-curated cross-reference of catalogue_id -> Laursen 2010 Table 1 seal_no by reference inspection. Janabiyah seal #10 added with full Parpola 1994b sign IDs from Laursen footnote 2."
+    }
+  },
+  "seals": [
+    {
+      "catalogue_id": "AO_22310",
+      "type": "akkadian_with_meluhha_mention",
+      "find_country": "(unknown — unprovenanced)",
+      "find_spot": "(unprovenanced; no excavation context)",
+      "find_period": "Late Akkadian / early Ur III (ca. 2200-2113 BC)",
+      "current_collection": "Musée du Louvre, Paris (AO 22310)",
+      "inscription_reading": "Cuneiform only: 'Shu-ilishu, EME.BAL.ME.LUH.HA.KI' — Shu-ilishu, interpreter of the Meluhhan language. No Indus signs.",
+      "source": "Possehl 2006, Expedition 48(1); Parpola, Parpola & Brunswig 1977",
+      "inscription_length": 0,
+      "indus_signs": [],
+      "signs_confidence": "none",
+      "signs_source": "Possehl 2006 (Expedition 48:1) — cuneiform-only",
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
+    },
+    {
+      "catalogue_id": "BM_122187_UR_seal_1",
+      "type": "indus_type_at_mesopotamia",
+      "find_country": "Iraq (Mesopotamia)",
+      "find_spot": "Ur",
+      "find_period": "Akkadian period (ca. 2334-2154 BC)",
+      "current_collection": "British Museum, London (BM 122187)",
+      "inscription_reading": "5-sign Indus inscription (sign IDs not ingested; see signs_source)",
+      "source": "Gadd 1932, Proc. British Academy XVIII, pl. I no. 2; Frenez 2018",
+      "inscription_length": 5,
+      "indus_signs": [
+        "?",
+        "?",
+        "?",
+        "?",
+        "?"
+      ],
+      "signs_confidence": "length_only",
+      "signs_source": "Gadd 1932 (Iraq); Frenez 2018 plate IV | Laursen 2010 Table 1 row 16 (Gadd 1932 pl. I no. 2, site=Ur)",
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json).",
+      "laursen_2010_seal_no": 16,
+      "laursen_table1_reference": "Gadd 1932 pl. I no. 2",
+      "laursen_table1_site": "Ur",
+      "laursen_table1_gulf_type": "Gulf INDUS",
+      "phase24_crossref_rationale": "Gadd 1932 pl. I no. 2 (round Ur seal with zebu motif). Best-fit Laursen Table 1 row for the BM 122187 entry."
+    },
+    {
+      "catalogue_id": "GADD_1",
+      "type": "indus_type_at_mesopotamia",
+      "find_country": "Iraq (Mesopotamia)",
+      "find_spot": "Ur",
+      "find_period": "Akkadian period (ca. 2334-2154 BC)",
+      "current_collection": "British Museum, London (per Gadd 1932)",
+      "inscription_reading": "3-sign Indus inscription (sign IDs not ingested; see signs_source)",
+      "source": "Gadd 1932, pl. I no. 3; Parpola 1994a corpus no. 2050",
+      "inscription_length": 3,
+      "indus_signs": [
+        "?",
+        "?",
+        "?"
+      ],
+      "signs_confidence": "length_only",
+      "signs_source": "Gadd 1932 #1; Laursen 2010 PCA classification | Laursen 2010 Table 1 row 17 (Gadd 1932 pl. I no. 3, site=Ur)",
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json).",
+      "laursen_2010_seal_no": 17,
+      "laursen_table1_reference": "Gadd 1932 pl. I no. 3",
+      "laursen_table1_site": "Ur",
+      "laursen_table1_gulf_type": "Gulf INDUS",
+      "phase24_crossref_rationale": "Gadd 1932 pl. I no. 3 (square Ur seal)."
+    },
+    {
+      "catalogue_id": "GADD_2",
+      "type": "indus_type_at_mesopotamia",
+      "find_country": "Iraq (Mesopotamia)",
+      "find_spot": "Ur",
+      "find_period": "Akkadian period (ca. 2334-2154 BC)",
+      "current_collection": "British Museum, London (per Gadd 1932)",
+      "inscription_reading": "4-sign Indus inscription (sign IDs not ingested; see signs_source)",
+      "source": "Gadd 1932, pl. I no. 4",
+      "inscription_length": 4,
+      "indus_signs": [
+        "?",
+        "?",
+        "?",
+        "?"
+      ],
+      "signs_confidence": "length_only",
+      "signs_source": "Gadd 1932 #2; Laursen 2010 | Laursen 2010 Table 1 row 18 (Gadd 1932 pl. I no. 4, site=Ur)",
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json).",
+      "laursen_2010_seal_no": 18,
+      "laursen_table1_reference": "Gadd 1932 pl. I no. 4",
+      "laursen_table1_site": "Ur",
+      "laursen_table1_gulf_type": "Gulf INDUS",
+      "phase24_crossref_rationale": "Gadd 1932 pl. I no. 4 (Ur)."
+    },
+    {
+      "catalogue_id": "ASMAR_TA",
+      "type": "indus_type_at_mesopotamia",
+      "find_country": "Iraq (Mesopotamia)",
+      "find_spot": "Tell Asmar (Eshnunna)",
+      "find_period": "Akkadian period (ca. 2334-2154 BC)",
+      "current_collection": "Tell Asmar excavation division (Iraq Museum / Oriental Institute) — division unrecorded in sources consulted",
+      "inscription_reading": "3-sign Indus inscription with bull motif (sign IDs not ingested; see signs_source)",
+      "source": "Mallowan 1947 (Iraq); Wheeler 1968; Frankfort 1939 (Diyala glyptic)",
+      "inscription_length": 3,
+      "indus_signs": [
+        "?",
+        "?",
+        "?"
+      ],
+      "signs_confidence": "length_only",
+      "signs_source": "Mallowan 1947 (Iraq); Wheeler 1968",
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
+    },
+    {
+      "catalogue_id": "KISH_INDUS_1",
+      "type": "indus_type_at_mesopotamia",
+      "find_country": "Iraq (Mesopotamia)",
+      "find_spot": "Kish",
+      "find_period": "Akkadian (ca. 2334-2154 BC)",
+      "current_collection": "Ashmolean Museum, Oxford",
+      "inscription_reading": "Short (~3-sign) Indus inscription (sign IDs not ingested; see signs_source)",
+      "source": "MacKay 1925 (JRAS); Langdon 1931; Mallowan 1947",
+      "inscription_length": 3,
+      "indus_signs": [
+        "?",
+        "?",
+        "?"
+      ],
+      "signs_confidence": "length_only",
+      "signs_source": "Mallowan 1947; CISI Vol 3 (pending plate)",
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
+    },
+    {
+      "catalogue_id": "SUSA_INDUS_1",
+      "type": "indus_type_at_iran",
+      "find_country": "Iran",
+      "find_spot": "Susa",
+      "find_period": "Akkadian / Sukkalmah (ca. 2300-1600 BC)",
+      "current_collection": "Musée du Louvre, Paris",
+      "inscription_reading": "4-sign Indus inscription (sign IDs not ingested; see signs_source)",
+      "source": "Amiet 1972 no. 1643; Wheeler 1968; Possehl 2002",
+      "inscription_length": 4,
+      "indus_signs": [
+        "?",
+        "?",
+        "?",
+        "?"
+      ],
+      "signs_confidence": "length_only",
+      "signs_source": "Wheeler 1968; Possehl 2002 | Laursen 2010 Table 1 row 14 (Amiet 1972 no. 1643, site=Susa)",
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json).",
+      "laursen_2010_seal_no": 14,
+      "laursen_table1_reference": "Amiet 1972 no. 1643",
+      "laursen_table1_site": "Susa",
+      "laursen_table1_gulf_type": "Gulf INDUS",
+      "phase24_crossref_rationale": "Amiet 1972 no. 1643 — Susa Gulf INDUS seal (Laursen Table 1 row 14)."
+    },
+    {
+      "catalogue_id": "LOTHAL_PERSIAN_GULF_SEAL",
+      "type": "gulf_type_at_indus",
+      "find_country": "India",
+      "find_spot": "Lothal",
+      "find_period": "Mature Harappan (ca. 2200-1900 BC)",
+      "current_collection": "Archaeological Survey of India (excavated collection, Lothal)",
+      "inscription_reading": "Short Indus sign group, 2 signs (sign IDs not ingested; see signs_source)",
+      "source": "Rao 1963, Antiquity 37; Laursen 2010",
+      "inscription_length": 2,
+      "indus_signs": [
+        "?",
+        "?"
+      ],
+      "signs_confidence": "length_only",
+      "signs_source": "Rao 1963 (Antiquity 37); Laursen 2010",
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
+    },
+    {
+      "catalogue_id": "FAILAKA_KM_1113",
+      "type": "dilmun_type_with_indus_signs",
+      "find_country": "Kuwait",
+      "find_spot": "Failaka Island",
+      "find_period": "Early Dilmun (ca. 1950-1750 BC)",
+      "current_collection": "Kuwait National Museum (KM 1113)",
+      "inscription_reading": "4-sign Indus inscription in the Persian-Gulf 'twins' style (sign IDs not ingested; see signs_source)",
+      "source": "David-Cuny & Neyme 2016, Failaka Seals Vol. 2",
+      "inscription_length": 4,
+      "indus_signs": [
+        "?",
+        "?",
+        "?",
+        "?"
+      ],
+      "signs_confidence": "length_only",
+      "signs_source": "David-Cuny & Neyme 2016 (Failaka Vol 2)",
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
+    },
+    {
+      "catalogue_id": "VA_243_BERLIN",
+      "type": "indus_type_at_mesopotamia",
+      "find_country": "Mesopotamia (attributed; unprovenanced)",
+      "find_spot": "(unprovenanced; Berlin collection piece)",
+      "find_period": "Old Akkadian / Larsa (ca. 2200-1900 BC)",
+      "current_collection": "Vorderasiatisches Museum, Berlin (VA 243)",
+      "inscription_reading": "Markhor motif with ~5 Indus signs (sign IDs not ingested; see signs_source)",
+      "source": "Frenez 2018; Kalyanaraman ANE corpus",
+      "inscription_length": 5,
+      "indus_signs": [
+        "?",
+        "?",
+        "?",
+        "?",
+        "?"
+      ],
+      "signs_confidence": "length_only",
+      "signs_source": "Kalyanaraman ANE; Frenez 2018",
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
+    },
+    {
+      "catalogue_id": "KONAR_SANDAL_S_CYLINDER",
+      "type": "indus_iconography_at_iran",
+      "find_country": "Iran",
+      "find_spot": "Konar Sandal South (Jiroft)",
+      "find_period": "Late 3rd millennium BC",
+      "current_collection": "Iran (excavation collection)",
+      "inscription_reading": "Iconographic only; no Indus signs",
+      "source": "Vidale & Frenez 2015",
+      "inscription_length": 0,
+      "indus_signs": [],
+      "signs_confidence": "none",
+      "signs_source": "Vidale & Frenez 2015 — iconographic-only",
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
+    },
+    {
+      "catalogue_id": "JALALABAD_FARS",
+      "type": "indus_inscribed_at_iran",
+      "find_country": "Iran",
+      "find_spot": "Jalalabad, Fars",
+      "find_period": "Late 3rd millennium BC",
+      "current_collection": "Iran (excavation collection)",
+      "inscription_reading": "4-sign Indus sequence (sign IDs not ingested; see signs_source)",
+      "source": "Vidale, Desset & Frenez 2021; Ascalone 2008",
+      "inscription_length": 4,
+      "indus_signs": [
+        "?",
+        "?",
+        "?",
+        "?"
+      ],
+      "signs_confidence": "length_only",
+      "signs_source": "Vidale, Desset & Frenez 2021; Ascalone 2008",
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
+    },
+    {
+      "catalogue_id": "AL_MAQSHA_TOKEN_2",
+      "type": "dilmun_token_with_indus_morphology",
+      "find_country": "Bahrain (Dilmun)",
+      "find_spot": "Al-Maqsha",
+      "find_period": "Old Dilmun (ca. 1700 BC)",
+      "current_collection": "Bahrain National Museum",
+      "inscription_reading": "Akkadian inscription: 'Yagli-el, servant of the goddess Panipa'. No Indus signs.",
+      "source": "Laursen et al. 2026, Journal of Near Eastern Studies 85/1",
+      "inscription_length": 0,
+      "indus_signs": [],
+      "signs_confidence": "none",
+      "signs_source": "Laursen et al. 2026 JNES — Akkadian-only",
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
+    },
+    {
+      "catalogue_id": "JANABIYAH_LAURSEN_10",
+      "type": "gulf_indus_with_parpola_reading",
+      "find_country": "Bahrain (Dilmun)",
+      "find_spot": "Janabiyah Cemetery, Bahrain",
+      "find_period": "Early Dilmun (ca. 2100-2000 BC)",
+      "current_collection": "Bahrain National Museum",
+      "inscription_reading": "7-sign Indus inscription read right-to-left on impression: [53|60]-147 / 364 / 145 / 126 / 16 / 145 (Asko Parpola, Laursen 2010 footnote 2)",
+      "source": "Laursen 2010 (AAE 21:96-134) Table 1 row 10 + footnote 2",
+      "indus_signs": [
+        "53",
+        "147",
+        "364",
+        "145",
+        "126",
+        "16",
+        "145"
+      ],
+      "indus_signs_alternates": {
+        "0": [
+          "60"
+        ],
+        "3": [
+          "125",
+          "128"
+        ]
+      },
+      "inscription_length": 7,
+      "signs_confidence": "high",
+      "signs_source": "Asko Parpola personal communication, in Laursen 2010 footnote 2; sign IDs from Parpola 1994b: 70-78, fig. 5.1",
+      "laursen_2010_seal_no": 10,
+      "parpola_attestation_notes": [
+        "Sequence 16-145 also at beginning of Kalibangan K-69 to K-75 (Joshi & Parpola 1987:312-313)",
+        "Signs 16 and 364 co-occur on Mohenjo-Daro M-798 unicorn seal (Shah & Parpola 1991:68)",
+        "Sign 145 in Parpola 1994a Near Eastern texts nos. 5, 8, 29",
+        "Sign 16 in Parpola 1994a Near Eastern texts nos. 6-8, 31, 35"
+      ],
+      "field_provenance": "VERBATIM record from the surviving Phase-24 script (scripts/phase24/upgrade_seal_signs.py, _JANABIYAH_NEW_ENTRY)."
+    }
+  ]
+}

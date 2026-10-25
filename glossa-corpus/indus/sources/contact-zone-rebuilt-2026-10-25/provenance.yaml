@@ -1,0 +1,35 @@
+item_id: indus/contact-zone-rebuilt-2026-10-25
+source_name: "Contact-zone source datasets — REBUILT 2026-10-25 (meluhha_tablets, seals_at_mesopotamia, laursen_2010_table1 partial)"
+source_url: "https://github.com/cdli-gh/data"
+download_url: "https://media.githubusercontent.com/media/cdli-gh/data/master/cdliatf_unblocked.atf ; https://media.githubusercontent.com/media/cdli-gh/data/master/cdli_cat.csv"
+download_date: "2026-10-25"
+local_path: "corpora/downloads/contact_zone/{cdli_meluhha,indus_seals_mesopotamia,gulf_seals}/ (canonical loader paths, gitignored store) + tracked copies in this directory"
+checksum_sha256: "inputs: cdliatf_unblocked.atf 2896ec253767fa07fcaa5424af6fc25d6a047dc30b99c95f99d57ce75384d836 ; cdli_cat.csv 2e3232f75325b61c4d1e788d4d8c074c6230a947aed422110f9f35a6e353d09c8"
+license: "CDLI data: public, Cuneiform Digital Library Initiative (cdli-gh/data). Laursen 2010 catalogue data: factual data extracted from Laursen 2010, Arabian Archaeology and Epigraphy 21:96-134 (Wiley), DOI 10.1111/j.1600-0471.2010.00329.x — the paper itself is closed-access and is NOT reproduced; only catalogue facts and the programme's own earlier transcription of its footnote 2 are carried. Seal records: factual catalogue data from the cited publications."
+license_url: ""
+rights_status: research_use
+license_class: mixed_public_and_factual
+title: "Contact-zone datasets (CDLI Meluhha tablets; Indus seals in Mesopotamia/Iran/Gulf; Laursen 2010 Gulf Type seal table, partial)"
+author: "Rebuilt by the Glossa programme from CDLI public data and published catalogues; originals: CDLI contributors; Laursen, Steffen Terp; Gadd 1932 et al."
+publication_date: "2026-10-25 (rebuild)"
+language: eng
+script: cuneiform transliteration / Indus sign IDs
+period: "3200–1600 BCE (attestations)"
+region: "Mesopotamia, Iran, Persian Gulf, Dilmun"
+genre: corpus_data
+source_format: json
+processing_stage: rebuilt
+confidence: "meluhha_tablets: verified-equivalent (all 30+ surviving aggregate checkpoints reproduce exactly); seals: aggregates exact, inscription layer verbatim, base prose re-derived; laursen_table1: PARTIAL (5/121 rows + verbatim parpola_readings)"
+manually_reviewed: true
+status: keep
+glossa_legacy_asset: false
+notes: >
+  REBUILD of the three contact-zone datasets confirmed lost by the holdings
+  reconciliation of 2026-10-25 (RECORDED-NOT-HELD items #28-#30). These are
+  NEW files with NEW provenance — not the lost originals. Full record:
+  contact_zone_rebuild_provenance.md in this directory. Placement decision:
+  the files live at the canonical loader paths (corpora/downloads/contact_zone/,
+  a gitignored store — the loss mode that destroyed the originals) AND as
+  tracked copies here, so the loss cannot silently repeat. laursen_2010_table1
+  remains an open gap beyond the 5 recovered rows until a lawful copy of
+  Laursen 2010 (closed access; DOI above) is in hand.

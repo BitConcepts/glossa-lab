@@ -227,6 +227,14 @@
           "reports/phase438_report.md"
         ],
         "effect": "No claim status, stage, or falsification condition is changed by this append; the claim stands exactly as recorded (strongly supported, stage explained, with the falsifier appended at the Spec 054 freeze)."
+      },
+      "spec054_outcome_append_2026_10_25": {
+        "date": "2026-10-25",
+        "kind": "spec-054-execution-outcome-append",
+        "spec": "054",
+        "phase": 438,
+        "outcome": "NOT SUPPORTED",
+        "note": "Spec 054 (Phase-438) RE-EXECUTION, executed 2026-10-25 under the owner's execution order of 2026-10-25 (15:00 EDT), on the recovered indusarrays layer \u2014 located in place in the owner's desktop clone, where it had been held since its 2026-05-14 acquisition, and intake-pinned 2026-10-25 (PR #393) \u2014 under the frozen amended contract (freeze digest d85f6ace80e2ae2935d96d4916e51db686f11fb2c4473dc24d1198580012bb57; OSF registration 8spvf). All step-0 gates passed: the strict corpus was identified and pinned (the V3 loader's census of the layer reproduces the Phase-43 record's census exactly: 3,916 records; 2,665 unique dockeys; 3,137 sequences; 12,494 sign instances) and battery NB-1 ran in both arms. The amended statement is not supported under battery NB-1 as frozen: a positional class reappears at less than one half, with the pooled overlap at or below the label-shuffle null's 95th percentile. This verdict falsifies the amended statement only. It does not falsify Yadav et al. (2010)'s original statement \u2014 the original battery's sets cannot be exhibited \u2014 and it does not move the parent claim's recorded status."
       }
     }
   ],

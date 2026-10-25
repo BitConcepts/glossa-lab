@@ -154,14 +154,18 @@
       "spec072_outcome_2026_10_22": {
         "date": "2026-10-22",
         "kind": "spec072-phase431-execution-outcome",
-        "note": "Spec 072 (Phase-431) tested the fish-sign family claim as a family claim under its frozen contract (freeze digest 3925f365bdc452031bb7356f9b357c6d5068da4a835afcfd75b0e9ffa3a69e92; OSF contract registration tc8ey): the seven Asset F fish signs (Mahadevan/Parpola 47, 48, 50, 52, 60, 145, 147) expressed in Wells/ICIT numbering on the Shakti corpus, against a verdict line derived at the freeze from non-fish signs only (L = 0.765, the 95th percentile of the 86-sign reference distribution). Five members were identified in ICIT numbering (M048 = 243, M050 = 220, M060 = 235, M145 = 032, M147 = 033); M047 and M052 were named UNIDENTIFIED IN ICIT and excluded from weighting under the freeze-ruled disposition. Outcome: FAMILY NOT SUPPORTED - no tested member passes the line on the documented-lineage population (M050 fraction 0.4056, M060 0.3010, M145 0.2500, M147 0.0850; tested members' passing token-weighted share w = 0.0000), and the documented + corroborated sensitivity returns the same word. This is a verdict on the family's shared positional behaviour on this corpus under the frozen design; it establishes nothing about what any fish sign meant or was pronounced, and it does not re-open Spec 048's closure or the Phase-43 record. The record is internal under the Roif gate (no publication without citation of Roif 2025a + 2025b and the owner's clearance of the specific act).",
+        "note": "Spec 072 (Phase-431) executed — held under the Roif gate. This append formerly carried the study's result content; that content was removed on 2026-10-25 under the owner's realignment decision (docs/decisions/2026-10-25-realignment-decision.md; red-team finding RT-26), because Spec 072 spec.md §7 limit 1 permits the study to be named in public register wording only as executed — held under the Roif gate, until Roif 2025a + 2025b are cited and the owner clears the specific publication act. Git history retains the original append text; no history purge has been authorised or performed.",
         "evidence": [
           "specs/072-fish-family-profiles-redesign/freeze.md",
-          "specs/072-fish-family-profiles-redesign/outcome.md",
-          "reports/phase431_results.json",
-          "reports/phase431_report.md"
+          "docs/decisions/2026-10-25-realignment-decision.md"
         ],
-        "effect": "No claim status, stage, anchor, or score is changed by this append. The family-level positional claim is recorded as not supported on the Shakti corpus under Spec 072's frozen design; the claim's own wording and fields stand as extracted."
+        "effect": "No claim status, stage, anchor, or score is changed by this append or by its redaction."
+      },
+      "spec072_outcome_redaction_2026_10_25": {
+        "date": "2026-10-25",
+        "kind": "roif-gate-redaction",
+        "decision": "docs/decisions/2026-10-25-realignment-decision.md (owner decision of 2026-10-25; realignment Item 1.1, option (a) REDACT)",
+        "note": "The result content of the spec072_outcome_2026_10_22 append was replaced with the Roif gate's permitted form by this act. The same act reduced LEDGER.md's 2026-10-22 Spec 072 entry, specs/072-fish-family-profiles-redesign/outcome.md, reports/phase431_report.md, reports/phase431_results.json, backend/glossa_lab/experiment_graph_phase431.py's recorded outcome sentence, and glossa-corpus/indus/pierson_2026_indus_decipherment_spec072_insert_HELD.md. Git history retains the original texts; no history purge has been authorised or performed."
       }
     }
   ],

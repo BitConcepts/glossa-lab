@@ -38,7 +38,13 @@ from freeze_records import validate_c2, validate_c3  # noqa: E402
 HERE = pathlib.Path(__file__).resolve().parent
 REPO_ROOT = HERE.parents[1]
 EXPECTED_CASES = {"i", "ii", "iii", "iv"}
-PR_SCOPE_ROOTS = ("specs/", "tools/freeze-gate/demo/fixtures/")
+# PR-scope watches specs/ only. The demonstration fixtures under
+# tools/freeze-gate/demo/fixtures/ are the machinery tests' corpus
+# (they include deliberately failing record sets, so triggering on
+# them would fail any PR that touches the tooling itself);
+# demonstration PRs exercise this same code path by copying a
+# fixture into a scratch specs/ directory.
+PR_SCOPE_ROOTS = ("specs/",)
 
 
 def current_evaluator_version():

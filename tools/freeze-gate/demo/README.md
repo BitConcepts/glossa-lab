@@ -7,7 +7,9 @@ Each directory under `fixtures/` is a make-believe freeze: a
 (`unresolved-c2/` — an unresolved mismatch on a gate-turning
 quantity; `unverified-c3/` — an unverified verdict-bearing
 claim). The machinery tests in `../tests/` check the C4 checker
-against all six, and the checker's able-to-fail demonstration on
-live CI (test PRs touching one fixture each) is filed with the
-build's records. The fixtures are not real freezes and carry no
-claim about anything.
+against all six. The checker's able-to-fail demonstration on live
+CI copies one fixture at a time into a scratch `specs/`
+directory (the C4 job's PR-scope watches `specs/`, as it will
+for real freezes) in a test PR that is then closed unmerged;
+the results are filed with the build's records. The fixtures
+are not real freezes and carry no claim about anything.

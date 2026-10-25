@@ -59,6 +59,23 @@ def WARN(label, detail=""):
     warn_list.append(f"[WARN] {label}: {detail}")
     print(f"  ⚠ {label}: {detail}")
 
+# ── Withdrawn numbers (realignment Item 1.4, 2026-10-25; RT-30) ─────────
+# A statistic the programme has withdrawn must never be certified by
+# this check again: a report generated after the Phase-169 figure was
+# withdrawn still passed it as [OK], because the check kept reading
+# the withdrawn field. When a number is withdrawn, register it here
+# the same day; a check that would read a registered field reports
+# WITHDRAWN (a warning) instead of [OK] or [FAIL], whatever value the
+# source file still carries.
+WITHDRAWN_FIELDS = {
+    "phase169_master_synthesis.json:aggregate_confidence_pct": (
+        "WITHDRAWN 2026-10-23 (preprint v8): the Phase-169 aggregate "
+        "confidence figure (79.8%) has no recorded weighting rule, "
+        "so the number carries no meaning; this check does not "
+        "certify it."
+    ),
+}
+
 print("=" * 70)
 print("GLOSSA LAB FOUNDATION CHECK")
 print("=" * 70)
@@ -359,6 +376,7 @@ print("\n── SUMMARY: What can we claim to Dr. Fuls? ────────
 # stamped with the anchors file's SHA-256 — never hand-typed. The
 # computation lives in glossa_lab.foundation_annotations (single
 # source; the status endpoint uses the same hash helper).
+import platform as _platform
 import sys as _sys
 from datetime import datetime as _datetime, timezone as _timezone
 _sys.path.insert(0, str(REPO / "backend"))
@@ -679,11 +697,16 @@ print("\n── CHECK NEW-U: Phase-169 master synthesis ────────
 p169_path = BKRPT / "phase169_master_synthesis.json"
 if p169_path.exists():
     p169 = json.loads(p169_path.read_text(encoding="utf-8"))
-    agg_conf  = p169.get("aggregate_confidence_pct", 0)
     n_items   = p169.get("n_evidence_items", 0)
     n_strong  = p169.get("n_strongly_confirmed", 0)
-    CHECK("Phase-169 aggregate confidence >= 75%", agg_conf >= 75.0,
-          f"{agg_conf:.1f}% aggregate confidence across {n_items} evidence items")
+    _withdrawn = WITHDRAWN_FIELDS.get(
+        "phase169_master_synthesis.json:aggregate_confidence_pct")
+    if _withdrawn is not None:
+        WARN("Phase-169 aggregate confidence", _withdrawn)
+    else:
+        agg_conf = p169.get("aggregate_confidence_pct", 0)
+        CHECK("Phase-169 aggregate confidence >= 75%", agg_conf >= 75.0,
+              f"{agg_conf:.1f}% aggregate confidence across {n_items} evidence items")
     CHECK("Phase-169 strongly confirmed >= 15", n_strong >= 15,
           f"{n_strong} items STRONGLY_SUPPORTED or CERTAIN")
 else:
@@ -727,6 +750,17 @@ print()
     # the report's permanent provenance line; the hash stamps name
     # the exact canonical inputs the computed annotations describe.
     "generated_at": _generated_at,
+    # Realignment Item 1.4 (2026-10-25; RT-30): every report names the
+    # surface that produced it and the environment it ran in, so two
+    # reports' differing counts can never again be quoted as one
+    # undifferentiated "foundation check".
+    "surface": ("backend/scripts/foundation_check.py (script surface; "
+                "canonical report at reports/foundation_check_report.json)"),
+    "environment": {
+        "python": _sys.version.split()[0],
+        "platform": _platform.platform(),
+        "repo_root": str(REPO),
+    },
     "annotations_as_of": _snapshot["as_of_label"],
     "anchors_file": _snapshot["anchors_file"],
     "anchors_file_sha256": _snapshot["anchors_file_sha256"],

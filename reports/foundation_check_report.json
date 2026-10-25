@@ -1,7 +1,7 @@
 {
-  "n_ok": 40,
+  "n_ok": 38,
   "n_fail": 0,
-  "n_warn": 8,
+  "n_warn": 9,
   "passed": [
     "[OK]   Holdat seal count: 1670 seals (expected 1670)",
     "[OK]   Holdat token count: 7002 tokens (expected 7002)",
@@ -25,7 +25,6 @@
     "[OK]   Fish sign P47 in iconographic_anchors: fish anchor sign IDs: ['47', '47']",
     "[OK]   Phase-31 T3 file exists: indus_phase31_t3_zipf_restored.json",
     "[OK]   Zipf slope delta < 0.3: |delta| = 0.180 (threshold 0.3, FAVORABLE if <0.3)",
-    "[OK]   CISI corpus file exists: 179 inscriptions",
     "[OK]   Dravidian Tamil LM (clean, 944 bigrams): dravidian_tamil_lm.json: 944 bigrams, verdict=CLEAN, contamination=0/15 top bigrams, citation=\u2713. Sources: DEDR (Burrow & Emeneau 1984) + Sangam corpus + Parpola 1994/2010.",
     "[OK]   Syllabic LM present: 5630 syllables, 31681 bigrams",
     "[OK]   Phase-52 constrained SA z >= 4 (historical record; not evidence \u2014 Phase-107): z=17.64 (116 anchors pinned) \u2014 historical: Phase-107 held-out agreement 0.000 falsified SA as evidence for sign values",
@@ -39,7 +38,6 @@
     "[OK]   Phase-166 sibilant n_rejected == 0: 0 rejected, 3 confirmed, overall=PROVISIONAL_SUPPORTED",
     "[OK]   Phase-168 blocker plausibility >= 90%: 19/19 LOW blocker readings phonotactically plausible",
     "[OK]   Phase-168 coverage estimate >= 91%: Coverage if blockers promoted: 92.35%",
-    "[OK]   Phase-169 aggregate confidence >= 75%: 79.8% aggregate confidence across 32 evidence items",
     "[OK]   Phase-169 strongly confirmed >= 15: 18 items STRONGLY_SUPPORTED or CERTAIN",
     "[OK]   Phase-170 grammar sign accuracy >= 90%: 93.2% sign-level grammar accuracy at 161 H+M anchors",
     "[OK]   Phase-170 H+M count == 161: 161 H+M signs tested (expected 161)"
@@ -50,12 +48,19 @@
     "[WARN] Sign numbering (iconographic_anchors): Uses Parpola P-numbers (47, 87, 261, etc.); INDUS_FINAL_ANCHORS uses Mahadevan M-numbers. Phase-51 crosswalk bridges 45 P\u2192M entries. SEPARATE SYSTEMS for uncrosswalked signs.",
     "[WARN] Phase-29d file exists: phase29d_reverse_janabiyah_v3.json cleaned up \u2014 was verified; result archived",
     "[WARN] P30-A1-A3: Used hardcoded fallback candidates \u2014 live data not available",
-    "[WARN] CISI sign numbering: P-numbers=True, M-numbers=False",
+    "[WARN] CISI corpus: indus_cisi_corpus.json not found at expected paths",
     "[WARN] Sign numbering: Holdat V3 uses M-numbers; CISI/iconographic use Parpola P-numbers. Phase-51 crosswalk: 45/390 M\u2194P entries mapped. Remaining 345 M-signs without P-crosswalk. Claims using both systems require explicit crosswalk citation.",
     "[WARN] TB corpus: 121-inscription epub corpus contaminated with English/OCR. SUPERSEDED by 944-bigram dravidian_tamil_lm.json (Phase-44, clean, z=12.1 Dravidian). TB issues do not affect Phase-44+ results.",
-    "[WARN] torch not installed: GPU checks skipped"
+    "[WARN] torch not installed: GPU checks skipped",
+    "[WARN] Phase-169 aggregate confidence: WITHDRAWN 2026-10-23 (preprint v8): the Phase-169 aggregate confidence figure (79.8%) has no recorded weighting rule, so the number carries no meaning; this check does not certify it."
   ],
-  "generated_at": "2026-10-25T00:11:48+00:00",
+  "generated_at": "2026-10-25T10:50:11+00:00",
+  "surface": "backend/scripts/foundation_check.py (script surface; canonical report at reports/foundation_check_report.json)",
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Linux-7.0.0-39-generic-x86_64-with-glibc2.39",
+    "repo_root": "/home/hatch/workspace/glossa-run/realign-2026-10-25/run-tree"
+  },
   "annotations_as_of": "As of 2026-10-25 \u2014 computed at report generation from the canonical anchors file backend/reports/INDUS_FINAL_ANCHORS.json (SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569) and the extracted-claims store glossa-indus/claims/extracted_claims (combined SHA-256 f5d98a912931f1370ff3639961f162d4bad184008129ee2a85e743da0cdd5f05). Figures describe that anchor table; if the anchors file changes, this label's hash no longer matches and the report is stale.",
   "anchors_file": "backend/reports/INDUS_FINAL_ANCHORS.json",
   "anchors_file_sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",

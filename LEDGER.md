@@ -10673,3 +10673,44 @@ status, stage, or score is changed by this act.
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+
+
+## 2026-10-25 — Spec 062 EXECUTED (Phase-424): NO TARGET UNDER EITHER SCENARIO
+
+Spec 062 — Spec 061's successor carrying construction R-1's repaired
+calibration — executed under the frozen Spec 062 contract (freeze digest
+1800de53...; freeze PR #307 merged 9e4e8ead; OSF registration 4m27t
+approved and public, DOI 10.17605/OSF.IO/4M27T). Step 0 passed every
+gate at two venues with byte-identical calibration records, including
+the repaired gate 0.5-R: A_R strictly increasing on the scan grid
+(A_R(1) = 0.00022759124836990718, A_R(3) = 0.028821884413380183);
+Scenario 1 b* = 1.8665771484375 (|error| 8.22e-07), Scenario 2 b* =
+2.2470703125 (|error| 1.68e-08) — the R-1 repair calibrates on the real
+recorded population, where Spec 061's frozen calibration could not
+impose either scenario value at all. Gate 0.3 reproduced the recorded
+Arm A summary exactly (median adjusted R2 0.00878393455594817, interval
+[0.004626892186724407, 0.01297407559730989], rejection share
+0.6231155778894473). The grid then ran on the owner's desktop as two
+detached checkpointed processes (launched 2026-10-22T09:24:18Z; all 25
+checkpoints per scenario; both processes exited cleanly) and was
+assembled on the desktop on 2026-10-25, its step-0 re-run again
+digit-for-digit. No grid point inside the frozen search frame (integer
+multiples m = 1..25; ceiling m = 25, added total 38,232; 199 trials per
+point; a point qualifies at a resolving share of at least 0.80)
+qualified under either scenario. The highest resolving share anywhere
+is at m = 1: 0.0804 under Scenario 1 (16/199) and 0.1759 under
+Scenario 2 (35/199); the next highest is Scenario 2 at m = 4, 0.1005.
+Verdict under section 5: NO TARGET UNDER EITHER SCENARIO — the
+falsifier's outcome, scoped to the frozen search frame (no grid point
+inside the frame qualified; never that no amount of data could resolve
+Arm A in principle). No intake target exists under this spec, no
+operative target exists, and Spec 061's T* remains undefined on Spec
+061's record. Spec 028 Arm A stands INCONCLUSIVE exactly as recorded.
+Arm A2 was never armed, joined, or touched, and with no target
+returned its trigger does not fire on this record — nothing about Arm
+A2 may be claimed from it. Anchors df0cf620... asserted byte-identical
+before and after. Records: specs/062-arm-a-precision-calibration-repair/
+outcome.md, reports/phase424_results.json, reports/phase424_report.md.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.

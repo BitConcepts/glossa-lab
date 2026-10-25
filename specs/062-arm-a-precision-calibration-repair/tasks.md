@@ -131,24 +131,74 @@
       execution (E2–E5) awaits its approval
       act and a separate execution order
       (DD-062-11).
-- [ ] **E2 — Graph-first build** (H15/H23) —
+- [x] **E2 — Graph-first build** (H15/H23) —
       script, graph node, registration,
       verification. **OWNER-APPROVAL** (as
-      part of the execution order).
-- [ ] **E3 — Step 0** (spec §3) — composite
+      part of the execution order). DONE
+      2026-10-22 under the execution order
+      (OSF 4m27t approved + public, verified
+      by the parent): script
+      `backend/scripts/phase424_arm_a_precision_calibration_repair.py`
+      (SHA-256 26d6da01…), graph module
+      `backend/glossa_lab/experiment_graph_phase424.py`
+      (node `IndusPhase424ArmAPrecisionRepair`),
+      registration in
+      `backend/glossa_lab/experiment_graph.py`
+      verified by import before the run.
+- [x] **E3 — Step 0** (spec §3) — composite
       pin, population reproduction,
       recorded-distribution reproduction
       (gate 0.3, exact), search-frame
       assertion, gate 0.5-R calibration
       verification. **OWNER-APPROVAL** (the
-      execution order).
-- [ ] **E4 — Computation** (spec §4) — both
+      execution order). DONE 2026-10-22, run
+      twice with identical results: gates
+      0.1, 0.2, 0.3 (exact: median
+      0.00878393455594817, interval
+      [0.004626892186724407,
+      0.01297407559730989], share
+      0.6231155778894473), and 0.4 PASS;
+      gate 0.5-R PASS — A_R strictly
+      increasing on the scan grid (A_R(1) =
+      0.00022759124836990718, A_R(3) =
+      0.028821884413380183); Scenario 1
+      b* = 1.8665771484375 (A_R =
+      0.008783112877008503, err 8.22e-07);
+      Scenario 2 b* = 2.2470703125 (A_R =
+      0.015000016834981533, err 1.68e-08).
+      Full record in the execution worktree's
+      step-0 record (outcome.md at E5).
+- [x] **E4 — Computation** (spec §4) — both
       scenarios, ascending grid m = 1…25,
       full grid table recorded.
       **OWNER-APPROVAL** (the execution
-      order).
-- [ ] **E5 — Outcome** (spec §6) — appended
+      order). DONE 2026-10-25: the grid ran
+      on the owner's desktop as two detached
+      checkpointed processes (launched
+      2026-10-22T09:24:18Z, one per scenario);
+      all m01–m25 checkpoints complete for
+      both scenarios, both processes exited
+      cleanly; `--assemble` on the desktop
+      (step-0 re-run PASS, calibration
+      digit-for-digit) wrote
+      `reports/phase424_results.json` +
+      `reports/phase424_report.md`. No grid
+      point qualified under either scenario
+      (best shares 0.0804 Scenario 1, 0.1759
+      Scenario 2, both at m = 1, against the
+      0.80 bar) — NO TARGET UNDER EITHER
+      SCENARIO. Full record in `outcome.md`.
+- [x] **E5 — Outcome** (spec §6) — appended
       records only; anchors asserted
       byte-identical; foundation check
       reported as measured. No Arm A2 step
-      exists in this plan.
+      exists in this plan. DONE 2026-10-25:
+      `outcome.md` in this directory (Spec
+      061's form: headline, gate-by-gate
+      step 0, the full grid table, claim
+      lines F062-C01…C15, anchors
+      `df0cf620…` byte-identical before and
+      after) + the root LEDGER entry. CI and
+      foundation figures are completed by
+      append in outcome.md §6 at the landing,
+      per the house pattern.

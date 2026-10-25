@@ -354,6 +354,21 @@
         ],
         "evidence_level": "FULL TEXT",
         "effect": "No claim status, stage, anchor, or score is changed by this note."
+      },
+      "spec074_outcome_append_2026_10_24": {
+        "date": "2026-10-24",
+        "kind": "spec-074-execution-outcome-append",
+        "spec": "074",
+        "phase": 440,
+        "outcome": "NOT SUPPORTED",
+        "note": "Spec 074 (Phase-440), executed 2026-10-24 under the frozen contract (freeze digest 5416a0d331e76fcec720746849969f2e86e9d79f2cc0fa583e1050662ffba36c; OSF registration cfe7z): Measured on the graded ICIT corpus, of the 31 opening-strong signs Shakti's own battery returns, 2 are animal signs under the frozen classification (Asset A v2, SHA-256 681e017da8b3f93aeade7e85361565fa8f3f4178b167dfa2448f5b4c239a8193) — a share of 0.0769 against the animal share 0.0889 of the comparison inventory: enrichment ratio 0.8654, exact test p = 0.7345. Animal signs appear among the opening-strong signs at no better than the base rate. The animal half of the claim `without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003` is not supported in its re-scoped form; the claim stands on its positional half alone, exactly as its record is amended to say by the dated append that carries this outcome.",
+        "evidence": [
+          "specs/074-hunt-opening-signs-repaired-surface/outcome.md",
+          "specs/074-hunt-opening-signs-repaired-surface/step0-record.md",
+          "reports/phase440_results.json",
+          "reports/phase440_report.md"
+        ],
+        "effect": "The animal half of the claim is recorded as not supported in its re-scoped form (Spec 074, Phase-440): animal signs appear among Shakti's opening-strong signs at no better than the inventory base rate (R1 = 0.8654, Fisher exact one-sided p = 0.7345; reversed arm R2 = 0.0). The claim stands on its positional half alone. No claim status or stage is changed by this append: the claim stands partially supported (positional half only), stage explained, exactly as recorded, with its falsification condition unchanged. Spec 070's POPULATION NOT KEYED closure stands unamended beside this outcome; the claim's record carries both attempts, each under its own spec."
       }
     },
     {

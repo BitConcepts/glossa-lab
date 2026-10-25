@@ -1,0 +1,1718 @@
+{
+ "phase": 440,
+ "spec": "074",
+ "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003",
+ "contract": {
+  "freeze_digest": "5416a0d331e76fcec720746849969f2e86e9d79f2cc0fa583e1050662ffba36c",
+  "osf_registration": "cfe7z",
+  "spec070_freeze_digest": "763108f89311ab2791827b347a155a8b4f9abad940ab59f921af129f79c73e3e",
+  "asset_a_v2_sha256": "681e017da8b3f93aeade7e85361565fa8f3f4178b167dfa2448f5b4c239a8193",
+  "registry_v2_sha256": "42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71",
+  "phase433_results_sha256": "667560a5c185051ea7acc9afacf2f9c4bbf3f863e9d17851c634fa56eb3ad214"
+ },
+ "execution_order": [
+  "freeze (Spec 074, digest quoted; OSF cfe7z approved and public)",
+  "gate 0.1 repaired-surface assertion (Spec 073's executed record)",
+  "gate 0.2 intake assertion (P-F1 S1/S2)",
+  "gate 0.3 input integrity",
+  "gate 0.4 population enumerated + published (hash) BEFORE any join; reproduction asserted against Spec 070's recorded enumeration; keying under the two-leg route (DD-074-8)",
+  "gate 0.5 comparison census + coverage",
+  "gate 0.6 freeze-order proof (this record's order)",
+  "join + test (section 4)"
+ ],
+ "honesty_fence": "This test measures Hunt's claim against a positional framework measured on the graded ICIT corpus (the Shakti corpus). It does not test it against the Phase-43 framework. The recorded Phase-43 quantities \u2014 805/2,267 and the 40/61/20 strong-sign classes \u2014 are never cited as this spec's basis: not as its population, not as its reference points, and not as quantities it reproduces or corrects.",
+ "lineage_statement_PF1_S3": "This corpus is an ICIT-lineage corpus. Agreement between it and the program's earlier ICIT-lineage layer is consistency within one tradition, not independent corroboration.",
+ "g5_attestation": "The Phase-43 battery applied here is threshold-only: it contains no chance-baseline step - no permutation, shuffle, or expected-rate baseline - and none is restored or claimed. The inventory-share comparison of section 4 is this design's own test construction, not a Phase-43 element.",
+ "population_rows": {
+  "primary_documented": 3212,
+  "sensitivity_sc_documented_plus_corroborated": 5299
+ },
+ "gate_0_4_population_publication_sha256": "30092b6fd64f221ee0808addeedd11e1e800cf3d79716ba26b3fb971f396a93b",
+ "population": {
+  "population": "primary (documented-lineage rows only)",
+  "O_enumeration_wells_space": [
+   {
+    "wells_code": "064",
+    "I": 3,
+    "M": 1,
+    "T": 1,
+    "total": 5
+   },
+   {
+    "wells_code": "090",
+    "I": 87,
+    "M": 15,
+    "T": 8,
+    "total": 110
+   },
+   {
+    "wells_code": "136",
+    "I": 6,
+    "M": 0,
+    "T": 0,
+    "total": 6
+   },
+   {
+    "wells_code": "151",
+    "I": 61,
+    "M": 7,
+    "T": 1,
+    "total": 69
+   },
+   {
+    "wells_code": "154",
+    "I": 23,
+    "M": 8,
+    "T": 0,
+    "total": 31
+   },
+   {
+    "wells_code": "155",
+    "I": 3,
+    "M": 2,
+    "T": 0,
+    "total": 5
+   },
+   {
+    "wells_code": "156",
+    "I": 73,
+    "M": 17,
+    "T": 0,
+    "total": 90
+   },
+   {
+    "wells_code": "161",
+    "I": 10,
+    "M": 0,
+    "T": 0,
+    "total": 10
+   },
+   {
+    "wells_code": "167",
+    "I": 14,
+    "M": 0,
+    "T": 0,
+    "total": 14
+   },
+   {
+    "wells_code": "226",
+    "I": 14,
+    "M": 3,
+    "T": 4,
+    "total": 21
+   },
+   {
+    "wells_code": "241",
+    "I": 8,
+    "M": 2,
+    "T": 0,
+    "total": 10
+   },
+   {
+    "wells_code": "298",
+    "I": 4,
+    "M": 3,
+    "T": 0,
+    "total": 7
+   },
+   {
+    "wells_code": "317",
+    "I": 4,
+    "M": 0,
+    "T": 3,
+    "total": 7
+   },
+   {
+    "wells_code": "400",
+    "I": 325,
+    "M": 29,
+    "T": 1,
+    "total": 355
+   },
+   {
+    "wells_code": "401",
+    "I": 4,
+    "M": 1,
+    "T": 0,
+    "total": 5
+   },
+   {
+    "wells_code": "422",
+    "I": 6,
+    "M": 2,
+    "T": 0,
+    "total": 8
+   },
+   {
+    "wells_code": "423",
+    "I": 5,
+    "M": 1,
+    "T": 0,
+    "total": 6
+   },
+   {
+    "wells_code": "426",
+    "I": 4,
+    "M": 0,
+    "T": 1,
+    "total": 5
+   },
+   {
+    "wells_code": "520",
+    "I": 213,
+    "M": 32,
+    "T": 1,
+    "total": 246
+   },
+   {
+    "wells_code": "526",
+    "I": 13,
+    "M": 0,
+    "T": 0,
+    "total": 13
+   },
+   {
+    "wells_code": "527",
+    "I": 42,
+    "M": 4,
+    "T": 2,
+    "total": 48
+   },
+   {
+    "wells_code": "565",
+    "I": 7,
+    "M": 1,
+    "T": 1,
+    "total": 9
+   },
+   {
+    "wells_code": "592",
+    "I": 4,
+    "M": 1,
+    "T": 2,
+    "total": 7
+   },
+   {
+    "wells_code": "617",
+    "I": 36,
+    "M": 8,
+    "T": 12,
+    "total": 56
+   },
+   {
+    "wells_code": "621",
+    "I": 11,
+    "M": 1,
+    "T": 2,
+    "total": 14
+   },
+   {
+    "wells_code": "679",
+    "I": 10,
+    "M": 0,
+    "T": 4,
+    "total": 14
+   },
+   {
+    "wells_code": "700",
+    "I": 362,
+    "M": 14,
+    "T": 8,
+    "total": 384
+   },
+   {
+    "wells_code": "740",
+    "I": 919,
+    "M": 377,
+    "T": 3,
+    "total": 1299
+   },
+   {
+    "wells_code": "804",
+    "I": 4,
+    "M": 2,
+    "T": 1,
+    "total": 7
+   },
+   {
+    "wells_code": "824",
+    "I": 11,
+    "M": 0,
+    "T": 5,
+    "total": 16
+   },
+   {
+    "wells_code": "868",
+    "I": 10,
+    "M": 0,
+    "T": 0,
+    "total": 10
+   }
+  ],
+  "battery_class_counts_primary": {
+   "MEDIAL_STRONG": 81,
+   "INITIAL_STRONG": 31,
+   "TERMINAL_MODERATE": 37,
+   "INITIAL_MODERATE": 6,
+   "MIXED": 23,
+   "TERMINAL_STRONG": 42
+  }
+ },
+ "gate_0_4_reproduction": {
+  "recorded_publication_sha256": "30092b6fd64f221ee0808addeedd11e1e800cf3d79716ba26b3fb971f396a93b",
+  "executed_publication_sha256": "30092b6fd64f221ee0808addeedd11e1e800cf3d79716ba26b3fb971f396a93b",
+  "enumeration_equal": true,
+  "census_equal": true,
+  "differing_signs": [],
+  "differing_census_cells": {}
+ },
+ "keyed_population": [
+  {
+   "wells_code": "064",
+   "sign_key": "P085",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Singly, symetrically bifurcated tall vertical stroke"
+  },
+  {
+   "wells_code": "090",
+   "sign_key": "P013",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "human",
+   "depicted_label_verbatim": "Person with two arms and two legs, \ue06e"
+  },
+  {
+   "wells_code": "136",
+   "sign_key": "W136",
+   "keying_leg": "leg2_icit_wells",
+   "depicted_kind": "unidentified",
+   "depicted_label_verbatim": ""
+  },
+  {
+   "wells_code": "151",
+   "sign_key": "P001",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "human",
+   "depicted_label_verbatim": "Person carrying two burdens, \ue008"
+  },
+  {
+   "wells_code": "154",
+   "sign_key": "P004",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "human",
+   "depicted_label_verbatim": "Person carrying two burdens, jar handles for a head"
+  },
+  {
+   "wells_code": "155",
+   "sign_key": "P004",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "human",
+   "depicted_label_verbatim": "Person carrying two burdens, jar handles for a head"
+  },
+  {
+   "wells_code": "156",
+   "sign_key": "P004",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "human",
+   "depicted_label_verbatim": "Person carrying two burdens, jar handles for a head"
+  },
+  {
+   "wells_code": "161",
+   "sign_key": "P003",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "human",
+   "depicted_label_verbatim": "Person carrying two burdens, triangle or diamond for a head"
+  },
+  {
+   "wells_code": "167",
+   "sign_key": "P344",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "The 'headphones' motif. Upside down U with small cirles on each end"
+  },
+  {
+   "wells_code": "226",
+   "sign_key": "P051",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "animal",
+   "depicted_label_verbatim": "Fish with four small vertical strokes around the four corners"
+  },
+  {
+   "wells_code": "241",
+   "sign_key": "P063",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "animal",
+   "depicted_label_verbatim": "Fish with extra whiskers on cheeks, caged by four small vertical strokes"
+  },
+  {
+   "wells_code": "298",
+   "sign_key": "W298",
+   "keying_leg": "leg2_icit_wells",
+   "depicted_kind": "unidentified",
+   "depicted_label_verbatim": ""
+  },
+  {
+   "wells_code": "317",
+   "sign_key": "P296",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Two long vertical strokes, connected by multiple horizontal lines"
+  },
+  {
+   "wells_code": "400",
+   "sign_key": "P098",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Vertical line with small horizontal lines coming off one side across the entire height"
+  },
+  {
+   "wells_code": "401",
+   "sign_key": "W401",
+   "keying_leg": "leg2_icit_wells",
+   "depicted_kind": "unidentified",
+   "depicted_label_verbatim": ""
+  },
+  {
+   "wells_code": "422",
+   "sign_key": "P306",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Long horizontal at bottom, multiple vertical lines coming off for the entire length. Each vertical decorated near top, low horizontal is made of abutting small rectangles, possibly decorated"
+  },
+  {
+   "wells_code": "423",
+   "sign_key": "P306",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Long horizontal at bottom, multiple vertical lines coming off for the entire length. Each vertical decorated near top, low horizontal is made of abutting small rectangles, possibly decorated"
+  },
+  {
+   "wells_code": "426",
+   "sign_key": "P306",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Long horizontal at bottom, multiple vertical lines coming off for the entire length. Each vertical decorated near top, low horizontal is made of abutting small rectangles, possibly decorated"
+  },
+  {
+   "wells_code": "520",
+   "sign_key": "P217",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "object_goods",
+   "depicted_label_verbatim": "Isocolese triangle on top of vertical line (arrow? spear?)"
+  },
+  {
+   "wells_code": "526",
+   "sign_key": "P301",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Small box with horizontal hatching, vertical lines coming from top left and bottom right corners"
+  },
+  {
+   "wells_code": "527",
+   "sign_key": "P301",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Small box with horizontal hatching, vertical lines coming from top left and bottom right corners"
+  },
+  {
+   "wells_code": "565",
+   "sign_key": "P238",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "X with vertical connection on left two tips, right tips both have a slight vertical line toward each other, and three lines off the tip away from each other. Line with three downward lines coming off left"
+  },
+  {
+   "wells_code": "592",
+   "sign_key": "P277",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Square at bottom with vertical bar coming off top middle. Caged by four small vertical strokes"
+  },
+  {
+   "wells_code": "617",
+   "sign_key": "W617",
+   "keying_leg": "leg2_icit_wells",
+   "depicted_kind": "unidentified",
+   "depicted_label_verbatim": ""
+  },
+  {
+   "wells_code": "621",
+   "sign_key": "P265",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Tall rectangle with vertical full height bar inside, and a horizontal bar across the left or right area"
+  },
+  {
+   "wells_code": "679",
+   "sign_key": "P243",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "An 'X' with a 'table' hat"
+  },
+  {
+   "wells_code": "700",
+   "sign_key": "P310",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Simple U with no other decoration"
+  },
+  {
+   "wells_code": "740",
+   "sign_key": "P324",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "object_goods",
+   "depicted_label_verbatim": "Classic jar symbol with two horizontal handles at the top of each arm pointed outward"
+  },
+  {
+   "wells_code": "804",
+   "sign_key": "P365",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Leaf with tree at bottom, caged by four small vertical strokes"
+  },
+  {
+   "wells_code": "824",
+   "sign_key": "W824",
+   "keying_leg": "leg2_icit_wells",
+   "depicted_kind": "unidentified",
+   "depicted_label_verbatim": ""
+  },
+  {
+   "wells_code": "868",
+   "sign_key": "P388",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Diamond with a small diamond attached to the top, lower left edge has a doubling parallel line inside the diamond"
+  }
+ ],
+ "gate_0_5": {
+  "U_enumeration": [
+   {
+    "wells_code": "001",
+    "sign_key": "P121",
+    "total": 128
+   },
+   {
+    "wells_code": "002",
+    "sign_key": "P122",
+    "total": 549
+   },
+   {
+    "wells_code": "003",
+    "sign_key": "P123",
+    "total": 184
+   },
+   {
+    "wells_code": "004",
+    "sign_key": "P124",
+    "total": 62
+   },
+   {
+    "wells_code": "005",
+    "sign_key": "P125",
+    "total": 40
+   },
+   {
+    "wells_code": "016",
+    "sign_key": "P126",
+    "total": 34
+   },
+   {
+    "wells_code": "017",
+    "sign_key": "P127",
+    "total": 62
+   },
+   {
+    "wells_code": "031",
+    "sign_key": "P144",
+    "total": 142
+   },
+   {
+    "wells_code": "032",
+    "sign_key": "P145",
+    "total": 334
+   },
+   {
+    "wells_code": "033",
+    "sign_key": "P147",
+    "total": 315
+   },
+   {
+    "wells_code": "034",
+    "sign_key": "P150",
+    "total": 124
+   },
+   {
+    "wells_code": "055",
+    "sign_key": "P142",
+    "total": 45
+   },
+   {
+    "wells_code": "060",
+    "sign_key": "P120",
+    "total": 158
+   },
+   {
+    "wells_code": "061",
+    "sign_key": "P204",
+    "total": 74
+   },
+   {
+    "wells_code": "090",
+    "sign_key": "P013",
+    "total": 110
+   },
+   {
+    "wells_code": "100",
+    "sign_key": "P009",
+    "total": 90
+   },
+   {
+    "wells_code": "125",
+    "sign_key": "P035",
+    "total": 44
+   },
+   {
+    "wells_code": "140",
+    "sign_key": "P011",
+    "total": 66
+   },
+   {
+    "wells_code": "142",
+    "sign_key": "P031",
+    "total": 51
+   },
+   {
+    "wells_code": "151",
+    "sign_key": "P001",
+    "total": 69
+   },
+   {
+    "wells_code": "154",
+    "sign_key": "P004",
+    "total": 31
+   },
+   {
+    "wells_code": "156",
+    "sign_key": "P004",
+    "total": 90
+   },
+   {
+    "wells_code": "176",
+    "sign_key": "P194",
+    "total": 167
+   },
+   {
+    "wells_code": "220",
+    "sign_key": "P050",
+    "total": 286
+   },
+   {
+    "wells_code": "231",
+    "sign_key": "P056",
+    "total": 63
+   },
+   {
+    "wells_code": "233",
+    "sign_key": "P058",
+    "total": 136
+   },
+   {
+    "wells_code": "235",
+    "sign_key": "P060",
+    "total": 188
+   },
+   {
+    "wells_code": "240",
+    "sign_key": "P062",
+    "total": 254
+   },
+   {
+    "wells_code": "255",
+    "sign_key": "P073",
+    "total": 91
+   },
+   {
+    "wells_code": "335",
+    "sign_key": "P308",
+    "total": 31
+   },
+   {
+    "wells_code": "368",
+    "sign_key": "P202",
+    "total": 71
+   },
+   {
+    "wells_code": "388",
+    "sign_key": "P110",
+    "total": 32
+   },
+   {
+    "wells_code": "390",
+    "sign_key": "P086",
+    "total": 202
+   },
+   {
+    "wells_code": "400",
+    "sign_key": "P098",
+    "total": 355
+   },
+   {
+    "wells_code": "405",
+    "sign_key": "P086",
+    "total": 87
+   },
+   {
+    "wells_code": "407",
+    "sign_key": "P086",
+    "total": 113
+   },
+   {
+    "wells_code": "413",
+    "sign_key": "P099",
+    "total": 40
+   },
+   {
+    "wells_code": "415",
+    "sign_key": "P092",
+    "total": 117
+   },
+   {
+    "wells_code": "416",
+    "sign_key": "P095",
+    "total": 37
+   },
+   {
+    "wells_code": "435",
+    "sign_key": "P188",
+    "total": 52
+   },
+   {
+    "wells_code": "440",
+    "sign_key": "P283",
+    "total": 33
+   },
+   {
+    "wells_code": "482",
+    "sign_key": "P197",
+    "total": 31
+   },
+   {
+    "wells_code": "501",
+    "sign_key": "W501",
+    "total": 30
+   },
+   {
+    "wells_code": "503",
+    "sign_key": "P210",
+    "total": 68
+   },
+   {
+    "wells_code": "520",
+    "sign_key": "P217",
+    "total": 246
+   },
+   {
+    "wells_code": "527",
+    "sign_key": "P301",
+    "total": 48
+   },
+   {
+    "wells_code": "550",
+    "sign_key": "P230",
+    "total": 77
+   },
+   {
+    "wells_code": "575",
+    "sign_key": "P289",
+    "total": 51
+   },
+   {
+    "wells_code": "585",
+    "sign_key": "W585",
+    "total": 36
+   },
+   {
+    "wells_code": "590",
+    "sign_key": "P276",
+    "total": 160
+   },
+   {
+    "wells_code": "615",
+    "sign_key": "P268",
+    "total": 55
+   },
+   {
+    "wells_code": "617",
+    "sign_key": "W617",
+    "total": 56
+   },
+   {
+    "wells_code": "690",
+    "sign_key": "P255",
+    "total": 72
+   },
+   {
+    "wells_code": "692",
+    "sign_key": "P256",
+    "total": 41
+   },
+   {
+    "wells_code": "700",
+    "sign_key": "P310",
+    "total": 384
+   },
+   {
+    "wells_code": "705",
+    "sign_key": "P316",
+    "total": 135
+   },
+   {
+    "wells_code": "706",
+    "sign_key": "P316",
+    "total": 70
+   },
+   {
+    "wells_code": "717",
+    "sign_key": "P320",
+    "total": 33
+   },
+   {
+    "wells_code": "740",
+    "sign_key": "P324",
+    "total": 1299
+   },
+   {
+    "wells_code": "741",
+    "sign_key": "P325",
+    "total": 148
+   },
+   {
+    "wells_code": "752",
+    "sign_key": "P332",
+    "total": 47
+   },
+   {
+    "wells_code": "760",
+    "sign_key": "P332",
+    "total": 87
+   },
+   {
+    "wells_code": "798",
+    "sign_key": "P075",
+    "total": 93
+   },
+   {
+    "wells_code": "803",
+    "sign_key": "P364",
+    "total": 102
+   },
+   {
+    "wells_code": "806",
+    "sign_key": "P364",
+    "total": 103
+   },
+   {
+    "wells_code": "817",
+    "sign_key": "P385",
+    "total": 140
+   },
+   {
+    "wells_code": "820",
+    "sign_key": "P378",
+    "total": 144
+   },
+   {
+    "wells_code": "840",
+    "sign_key": "P349",
+    "total": 81
+   },
+   {
+    "wells_code": "845",
+    "sign_key": "P352",
+    "total": 47
+   },
+   {
+    "wells_code": "850",
+    "sign_key": "P355",
+    "total": 32
+   },
+   {
+    "wells_code": "861",
+    "sign_key": "P385",
+    "total": 193
+   },
+   {
+    "wells_code": "892",
+    "sign_key": "P182",
+    "total": 61
+   },
+   {
+    "wells_code": "900",
+    "sign_key": "P154",
+    "total": 71
+   },
+   {
+    "wells_code": "904",
+    "sign_key": "P172",
+    "total": 36
+   },
+   {
+    "wells_code": "920",
+    "sign_key": "P160",
+    "total": 108
+   },
+   {
+    "wells_code": "923",
+    "sign_key": "P175",
+    "total": 37
+   }
+  ],
+  "unicorn_signs_named_from_asset_labels": [],
+  "S_B": "not applicable - no Asset A v2 verbatim label identifies a unicorn"
+ },
+ "classification_table_O": [
+  {
+   "wells_code": "064",
+   "sign_key": "P085",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Singly, symetrically bifurcated tall vertical stroke"
+  },
+  {
+   "wells_code": "090",
+   "sign_key": "P013",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "human",
+   "depicted_label_verbatim": "Person with two arms and two legs, \ue06e"
+  },
+  {
+   "wells_code": "136",
+   "sign_key": "W136",
+   "keying_leg": "leg2_icit_wells",
+   "depicted_kind": "unidentified",
+   "depicted_label_verbatim": ""
+  },
+  {
+   "wells_code": "151",
+   "sign_key": "P001",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "human",
+   "depicted_label_verbatim": "Person carrying two burdens, \ue008"
+  },
+  {
+   "wells_code": "154",
+   "sign_key": "P004",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "human",
+   "depicted_label_verbatim": "Person carrying two burdens, jar handles for a head"
+  },
+  {
+   "wells_code": "155",
+   "sign_key": "P004",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "human",
+   "depicted_label_verbatim": "Person carrying two burdens, jar handles for a head"
+  },
+  {
+   "wells_code": "156",
+   "sign_key": "P004",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "human",
+   "depicted_label_verbatim": "Person carrying two burdens, jar handles for a head"
+  },
+  {
+   "wells_code": "161",
+   "sign_key": "P003",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "human",
+   "depicted_label_verbatim": "Person carrying two burdens, triangle or diamond for a head"
+  },
+  {
+   "wells_code": "167",
+   "sign_key": "P344",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "The 'headphones' motif. Upside down U with small cirles on each end"
+  },
+  {
+   "wells_code": "226",
+   "sign_key": "P051",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "animal",
+   "depicted_label_verbatim": "Fish with four small vertical strokes around the four corners"
+  },
+  {
+   "wells_code": "241",
+   "sign_key": "P063",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "animal",
+   "depicted_label_verbatim": "Fish with extra whiskers on cheeks, caged by four small vertical strokes"
+  },
+  {
+   "wells_code": "298",
+   "sign_key": "W298",
+   "keying_leg": "leg2_icit_wells",
+   "depicted_kind": "unidentified",
+   "depicted_label_verbatim": ""
+  },
+  {
+   "wells_code": "317",
+   "sign_key": "P296",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Two long vertical strokes, connected by multiple horizontal lines"
+  },
+  {
+   "wells_code": "400",
+   "sign_key": "P098",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Vertical line with small horizontal lines coming off one side across the entire height"
+  },
+  {
+   "wells_code": "401",
+   "sign_key": "W401",
+   "keying_leg": "leg2_icit_wells",
+   "depicted_kind": "unidentified",
+   "depicted_label_verbatim": ""
+  },
+  {
+   "wells_code": "422",
+   "sign_key": "P306",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Long horizontal at bottom, multiple vertical lines coming off for the entire length. Each vertical decorated near top, low horizontal is made of abutting small rectangles, possibly decorated"
+  },
+  {
+   "wells_code": "423",
+   "sign_key": "P306",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Long horizontal at bottom, multiple vertical lines coming off for the entire length. Each vertical decorated near top, low horizontal is made of abutting small rectangles, possibly decorated"
+  },
+  {
+   "wells_code": "426",
+   "sign_key": "P306",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Long horizontal at bottom, multiple vertical lines coming off for the entire length. Each vertical decorated near top, low horizontal is made of abutting small rectangles, possibly decorated"
+  },
+  {
+   "wells_code": "520",
+   "sign_key": "P217",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "object_goods",
+   "depicted_label_verbatim": "Isocolese triangle on top of vertical line (arrow? spear?)"
+  },
+  {
+   "wells_code": "526",
+   "sign_key": "P301",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Small box with horizontal hatching, vertical lines coming from top left and bottom right corners"
+  },
+  {
+   "wells_code": "527",
+   "sign_key": "P301",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Small box with horizontal hatching, vertical lines coming from top left and bottom right corners"
+  },
+  {
+   "wells_code": "565",
+   "sign_key": "P238",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "X with vertical connection on left two tips, right tips both have a slight vertical line toward each other, and three lines off the tip away from each other. Line with three downward lines coming off left"
+  },
+  {
+   "wells_code": "592",
+   "sign_key": "P277",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Square at bottom with vertical bar coming off top middle. Caged by four small vertical strokes"
+  },
+  {
+   "wells_code": "617",
+   "sign_key": "W617",
+   "keying_leg": "leg2_icit_wells",
+   "depicted_kind": "unidentified",
+   "depicted_label_verbatim": ""
+  },
+  {
+   "wells_code": "621",
+   "sign_key": "P265",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Tall rectangle with vertical full height bar inside, and a horizontal bar across the left or right area"
+  },
+  {
+   "wells_code": "679",
+   "sign_key": "P243",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "An 'X' with a 'table' hat"
+  },
+  {
+   "wells_code": "700",
+   "sign_key": "P310",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Simple U with no other decoration"
+  },
+  {
+   "wells_code": "740",
+   "sign_key": "P324",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "object_goods",
+   "depicted_label_verbatim": "Classic jar symbol with two horizontal handles at the top of each arm pointed outward"
+  },
+  {
+   "wells_code": "804",
+   "sign_key": "P365",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Leaf with tree at bottom, caged by four small vertical strokes"
+  },
+  {
+   "wells_code": "824",
+   "sign_key": "W824",
+   "keying_leg": "leg2_icit_wells",
+   "depicted_kind": "unidentified",
+   "depicted_label_verbatim": ""
+  },
+  {
+   "wells_code": "868",
+   "sign_key": "P388",
+   "keying_leg": "leg1_parpola_1982",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Diamond with a small diamond attached to the top, lower left edge has a doubling parallel line inside the diamond"
+  }
+ ],
+ "classification_table_U": [
+  {
+   "wells_code": "001",
+   "sign_key": "P121",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Simple, half-height vertical stroke"
+  },
+  {
+   "wells_code": "002",
+   "sign_key": "P122",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Two adjacent half-height simple vertical strokes"
+  },
+  {
+   "wells_code": "003",
+   "sign_key": "P123",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Three adjacent half-height simple vertical strokes"
+  },
+  {
+   "wells_code": "004",
+   "sign_key": "P124",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Four adjacent half-height simple vertical strokes"
+  },
+  {
+   "wells_code": "005",
+   "sign_key": "P125",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Five simple vertical strokes"
+  },
+  {
+   "wells_code": "016",
+   "sign_key": "P126",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Six short vertical strokes"
+  },
+  {
+   "wells_code": "017",
+   "sign_key": "P127",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Seven short vertical strokes"
+  },
+  {
+   "wells_code": "031",
+   "sign_key": "P144",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "One full-height vertical stroke"
+  },
+  {
+   "wells_code": "032",
+   "sign_key": "P145",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Two adjacent full-height vertical strokes"
+  },
+  {
+   "wells_code": "033",
+   "sign_key": "P147",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Three adjacent full-height vertical strokes"
+  },
+  {
+   "wells_code": "034",
+   "sign_key": "P150",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Four adjacent full-height vertical strokes"
+  },
+  {
+   "wells_code": "055",
+   "sign_key": "P142",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Four small vertical strokes above the same, above the same"
+  },
+  {
+   "wells_code": "060",
+   "sign_key": "P120",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "A single small vertical line, then another vertical line with the bottom half slanting under the first line (like a Japanese 'ri' character)."
+  },
+  {
+   "wells_code": "061",
+   "sign_key": "P204",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Simple lambda but reversed horizontally, and the leg may not be quite connected to the long stem"
+  },
+  {
+   "wells_code": "090",
+   "sign_key": "P013",
+   "depicted_kind": "human",
+   "depicted_label_verbatim": "Person with two arms and two legs, \ue06e"
+  },
+  {
+   "wells_code": "100",
+   "sign_key": "P009",
+   "depicted_kind": "human",
+   "depicted_label_verbatim": "Person with three heads"
+  },
+  {
+   "wells_code": "125",
+   "sign_key": "P035",
+   "depicted_kind": "human",
+   "depicted_label_verbatim": "Person with bow and arrow"
+  },
+  {
+   "wells_code": "140",
+   "sign_key": "P011",
+   "depicted_kind": "human",
+   "depicted_label_verbatim": "Person with round breasts and one raised arm"
+  },
+  {
+   "wells_code": "142",
+   "sign_key": "P031",
+   "depicted_kind": "human",
+   "depicted_label_verbatim": "Person with staff"
+  },
+  {
+   "wells_code": "151",
+   "sign_key": "P001",
+   "depicted_kind": "human",
+   "depicted_label_verbatim": "Person carrying two burdens, \ue008"
+  },
+  {
+   "wells_code": "154",
+   "sign_key": "P004",
+   "depicted_kind": "human",
+   "depicted_label_verbatim": "Person carrying two burdens, jar handles for a head"
+  },
+  {
+   "wells_code": "156",
+   "sign_key": "P004",
+   "depicted_kind": "human",
+   "depicted_label_verbatim": "Person carrying two burdens, jar handles for a head"
+  },
+  {
+   "wells_code": "176",
+   "sign_key": "P194",
+   "depicted_kind": "human",
+   "depicted_label_verbatim": "Person sitting with bent knees, four small tangent lines coming off the back"
+  },
+  {
+   "wells_code": "220",
+   "sign_key": "P050",
+   "depicted_kind": "animal",
+   "depicted_label_verbatim": "Fish with no other decoration"
+  },
+  {
+   "wells_code": "231",
+   "sign_key": "P056",
+   "depicted_kind": "animal",
+   "depicted_label_verbatim": "Fish with a small vertical stroke in the body"
+  },
+  {
+   "wells_code": "233",
+   "sign_key": "P058",
+   "depicted_kind": "animal",
+   "depicted_label_verbatim": "Fish with a horizontal line through body"
+  },
+  {
+   "wells_code": "235",
+   "sign_key": "P060",
+   "depicted_kind": "animal",
+   "depicted_label_verbatim": "Fish with a caret shaped hat"
+  },
+  {
+   "wells_code": "240",
+   "sign_key": "P062",
+   "depicted_kind": "animal",
+   "depicted_label_verbatim": "Fish with extra whiskers on cheeks"
+  },
+  {
+   "wells_code": "255",
+   "sign_key": "P073",
+   "depicted_kind": "animal",
+   "depicted_label_verbatim": "Unknown asymmetric animal? Perhaps a fish with asymmetric fins and legs?"
+  },
+  {
+   "wells_code": "335",
+   "sign_key": "P308",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "M with the bottom of the legs connected by a horizontal line, and vertical lines connected at midpoint by horizontal line"
+  },
+  {
+   "wells_code": "368",
+   "sign_key": "P202",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Vertical stroke with a triangular wing attached near the middle"
+  },
+  {
+   "wells_code": "388",
+   "sign_key": "P110",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Upside-down heart symbol with horizontal hatching, with vertical stroke coming from bottom of heart. Heart has two small decorations coming off the top center"
+  },
+  {
+   "wells_code": "390",
+   "sign_key": "P086",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Simple tree with branches at the top"
+  },
+  {
+   "wells_code": "400",
+   "sign_key": "P098",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Vertical line with small horizontal lines coming off one side across the entire height"
+  },
+  {
+   "wells_code": "405",
+   "sign_key": "P086",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Simple tree with branches at the top"
+  },
+  {
+   "wells_code": "407",
+   "sign_key": "P086",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Simple tree with branches at the top"
+  },
+  {
+   "wells_code": "413",
+   "sign_key": "P099",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Vertical line with small horizontal lines crossing it across the entire height"
+  },
+  {
+   "wells_code": "415",
+   "sign_key": "P092",
+   "depicted_kind": "object_goods",
+   "depicted_label_verbatim": "Pitchfork with tines"
+  },
+  {
+   "wells_code": "416",
+   "sign_key": "P095",
+   "depicted_kind": "object_goods",
+   "depicted_label_verbatim": "Pitckfork with two stacked heads"
+  },
+  {
+   "wells_code": "435",
+   "sign_key": "P188",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Vertical line with diagonal going down from top right, diagonal going up from bottom left"
+  },
+  {
+   "wells_code": "440",
+   "sign_key": "P283",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Rectangle, but with bottom line missing, and bottom-half of left line missing (like backward greek capital gamma with a prominent serif)"
+  },
+  {
+   "wells_code": "482",
+   "sign_key": "P197",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Tall caret drawn in outline, with diamond inscribed at the point"
+  },
+  {
+   "wells_code": "501",
+   "sign_key": "W501",
+   "depicted_kind": "unidentified",
+   "depicted_label_verbatim": ""
+  },
+  {
+   "wells_code": "503",
+   "sign_key": "P210",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Tall isoceles triangle with horizontal stripes"
+  },
+  {
+   "wells_code": "520",
+   "sign_key": "P217",
+   "depicted_kind": "object_goods",
+   "depicted_label_verbatim": "Isocolese triangle on top of vertical line (arrow? spear?)"
+  },
+  {
+   "wells_code": "527",
+   "sign_key": "P301",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Small box with horizontal hatching, vertical lines coming from top left and bottom right corners"
+  },
+  {
+   "wells_code": "550",
+   "sign_key": "P230",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "The 'pincer' motif. Right-pointing isocoles triangle on left, left-pointing isosceles triangle on right, with small part of right line removed in middle"
+  },
+  {
+   "wells_code": "575",
+   "sign_key": "P289",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Trapezoid with no bottom line, small box resting on the top middle"
+  },
+  {
+   "wells_code": "585",
+   "sign_key": "W585",
+   "depicted_kind": "unidentified",
+   "depicted_label_verbatim": ""
+  },
+  {
+   "wells_code": "590",
+   "sign_key": "P276",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Square at bottom with vertical bar coming off top middle"
+  },
+  {
+   "wells_code": "615",
+   "sign_key": "P268",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "A grid of x by y cells"
+  },
+  {
+   "wells_code": "617",
+   "sign_key": "W617",
+   "depicted_kind": "unidentified",
+   "depicted_label_verbatim": ""
+  },
+  {
+   "wells_code": "690",
+   "sign_key": "P255",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Two nested greater-than symbols, touching two nested less-than symbols"
+  },
+  {
+   "wells_code": "692",
+   "sign_key": "P256",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "An X but drawn in outline"
+  },
+  {
+   "wells_code": "700",
+   "sign_key": "P310",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Simple U with no other decoration"
+  },
+  {
+   "wells_code": "705",
+   "sign_key": "P316",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "U with a long vertical stroke inserted into the gap of U"
+  },
+  {
+   "wells_code": "706",
+   "sign_key": "P316",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "U with a long vertical stroke inserted into the gap of U"
+  },
+  {
+   "wells_code": "717",
+   "sign_key": "P320",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "A cat's paw perhaps, two vertical strokes on each side, and four fingers, with fingers on one side a little shorter than the other"
+  },
+  {
+   "wells_code": "740",
+   "sign_key": "P324",
+   "depicted_kind": "object_goods",
+   "depicted_label_verbatim": "Classic jar symbol with two horizontal handles at the top of each arm pointed outward"
+  },
+  {
+   "wells_code": "741",
+   "sign_key": "P325",
+   "depicted_kind": "object_goods",
+   "depicted_label_verbatim": "Classic jar symbol with two horizontal handles at the top of each arm pointed outward, single small vertical stroke inside mouth of jar"
+  },
+  {
+   "wells_code": "752",
+   "sign_key": "P332",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "U with decorated branching at top"
+  },
+  {
+   "wells_code": "760",
+   "sign_key": "P332",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "U with decorated branching at top"
+  },
+  {
+   "wells_code": "798",
+   "sign_key": "P075",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Leaf with 'pincers' coming off the right, possibly with small stroke legs off top and bottom of leaf"
+  },
+  {
+   "wells_code": "803",
+   "sign_key": "P364",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Leaf with tree at bottom"
+  },
+  {
+   "wells_code": "806",
+   "sign_key": "P364",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Leaf with tree at bottom"
+  },
+  {
+   "wells_code": "817",
+   "sign_key": "P385",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Diamond or leaf shape with a small diamond attached to the top"
+  },
+  {
+   "wells_code": "820",
+   "sign_key": "P378",
+   "depicted_kind": "object_goods",
+   "depicted_label_verbatim": "Wheel with 6 spokes with even angles"
+  },
+  {
+   "wells_code": "840",
+   "sign_key": "P349",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Two vertical leaves, slightly overlapping"
+  },
+  {
+   "wells_code": "845",
+   "sign_key": "P352",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Two overlapping leaves with diagonal hatches across the three midsections, possibly with a cage of small vertical strokes"
+  },
+  {
+   "wells_code": "850",
+   "sign_key": "P355",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Simple leaf or diamond, possibly rotated 45 degrees"
+  },
+  {
+   "wells_code": "861",
+   "sign_key": "P385",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Diamond or leaf shape with a small diamond attached to the top"
+  },
+  {
+   "wells_code": "892",
+   "sign_key": "P182",
+   "depicted_kind": "object_goods",
+   "depicted_label_verbatim": "Bow and arrow"
+  },
+  {
+   "wells_code": "900",
+   "sign_key": "P154",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Right parenthesis (perhaps with a backward curve at the bottom)"
+  },
+  {
+   "wells_code": "904",
+   "sign_key": "P172",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Two slightly nested right parentheses"
+  },
+  {
+   "wells_code": "920",
+   "sign_key": "P160",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Right parenthesis with small leaf at middle"
+  },
+  {
+   "wells_code": "923",
+   "sign_key": "P175",
+   "depicted_kind": "other",
+   "depicted_label_verbatim": "Right parenthesis drawn in outline"
+  }
+ ],
+ "join_sha256": "e904e6df30a0f602219390455113663199dfb8848d13880a12e7634fef3bfa14",
+ "primary": {
+  "O_size": 31,
+  "U_size": 76,
+  "O_animal": 2,
+  "O_non_animal": 24,
+  "O_contested": 0,
+  "O_unidentified": 5,
+  "U_animal_total": 8,
+  "U_non_animal_total": 82,
+  "U_contested": 0,
+  "U_unidentified": 3,
+  "table_R1": [
+   [
+    2,
+    24
+   ],
+   [
+    6,
+    58
+   ]
+  ],
+  "animal_share_O": 0.07692307692307693,
+  "animal_share_U": 0.08888888888888889,
+  "R1": 0.8653846153846154,
+  "p_one_sided": 0.7345333427543884,
+  "p_two_sided": 1.0,
+  "table_R2": [
+   [
+    0,
+    6
+   ],
+   [
+    9,
+    58
+   ]
+  ],
+  "animal_in_O_share_of_U_animals": 0.0,
+  "non_animal_in_O_share_of_U_non_animals": 0.13432835820895522,
+  "R2": 0.0,
+  "R2_p_one_sided": 1.0,
+  "R2_p_two_sided": 1.0,
+  "S_A": {
+   "table_R1": [
+    [
+     2,
+     24
+    ],
+    [
+     6,
+     58
+    ]
+   ],
+   "animal_share_O": 0.07692307692307693,
+   "animal_share_U": 0.08888888888888889,
+   "R1": 0.8653846153846154,
+   "p_one_sided": 0.7345333427543884,
+   "p_two_sided": 1.0
+  }
+ },
+ "S_B_quantities": null,
+ "S_C": {
+  "O_size": 35,
+  "U_size": 89,
+  "unkeyable_signs_named": [],
+  "quantities": {
+   "O_size": 35,
+   "U_size": 89,
+   "O_animal": 2,
+   "O_non_animal": 26,
+   "O_contested": 0,
+   "O_unidentified": 7,
+   "U_animal_total": 8,
+   "U_non_animal_total": 92,
+   "U_contested": 0,
+   "U_unidentified": 3,
+   "table_R1": [
+    [
+     2,
+     26
+    ],
+    [
+     6,
+     66
+    ]
+   ],
+   "animal_share_O": 0.07142857142857142,
+   "animal_share_U": 0.08,
+   "R1": 0.8928571428571428,
+   "p_one_sided": 0.7140271361703511,
+   "p_two_sided": 1.0,
+   "table_R2": [
+    [
+     1,
+     6
+    ],
+    [
+     13,
+     66
+    ]
+   ],
+   "animal_in_O_share_of_U_animals": 0.14285714285714285,
+   "non_animal_in_O_share_of_U_non_animals": 0.16455696202531644,
+   "R2": 0.8681318681318682,
+   "R2_p_one_sided": 0.7258413119295105,
+   "R2_p_two_sided": 1.0,
+   "S_A": {
+    "table_R1": [
+     [
+      2,
+      26
+     ],
+     [
+      6,
+      66
+     ]
+    ],
+    "animal_share_O": 0.07142857142857142,
+    "animal_share_U": 0.08,
+    "R1": 0.8928571428571428,
+    "p_one_sided": 0.7140271361703511,
+    "p_two_sided": 1.0
+   }
+  },
+  "verdict_under_same_precedence": "NOT SUPPORTED",
+  "grade_sensitive": false
+ },
+ "headline_wording": "Measured on the graded ICIT corpus, of the 31 opening-strong signs Shakti's own battery returns, 2 are animal signs under the frozen classification (Asset A v2, SHA-256 681e017da8b3f93aeade7e85361565fa8f3f4178b167dfa2448f5b4c239a8193) \u2014 a share of 0.0769 against the animal share 0.0889 of the comparison inventory: enrichment ratio 0.8654, exact test p = 0.7345. Animal signs appear among the opening-strong signs at no better than the base rate. The animal half of the claim `without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003` is not supported in its re-scoped form; the claim stands on its positional half alone, exactly as its record is amended to say by the dated append that carries this outcome.",
+ "outcome": "NOT SUPPORTED",
+ "gates": [
+  {
+   "gate": "0.1",
+   "result": "PASS",
+   "detail": "Spec 073's executed record shows both products frozen; Registry v2 recomputes to 42ab09fb... and Asset A v2 to 681e017d...; Asset A v2 per-kind counts match the freeze record (animal 30, sky_cycle 0, object_goods 22, human 43, other 246, contested 0, unidentified 211)"
+  },
+  {
+   "gate": "0.2",
+   "result": "PASS",
+   "detail": "S1 hashes recompute; S2 census reproduces (5,704 rows; 5,536 analyzable; 3,212/2,087/405; 4,904 CISI-carrying)"
+  },
+  {
+   "gate": "0.3",
+   "result": "PASS",
+   "detail": "the Phase-433 record, Registry v1, the crosswalk and the anchors hash to their freeze values; this spec's freeze record carries digest 5416a0d3..."
+  },
+  {
+   "gate": "0.4",
+   "result": "PASS",
+   "detail": "O enumerated in Wells space (31 signs), publication sha 30092b6fd64f221e...; the enumeration and the class census reproduce Spec 070's recorded measurement exactly (31 signs, per-sign I/M/T; census 220 at the floor); every sign keyed to exactly one Asset A v2 row under the two-leg route (DD-074-8)"
+  },
+  {
+   "gate": "0.5",
+   "result": "PASS",
+   "detail": "U enumerated (76 signs, total >= 30 under DD-070-10's counting rule); every O and U sign carries an Asset A v2 row; S-B unicorn naming: none - not applicable"
+  },
+  {
+   "gate": "0.6",
+   "result": "PASS",
+   "detail": "order recorded in this file: the freeze quoted the v2 digests from Spec 073's executed record and the recorded enumeration from Spec 070's; the population was hashed at gate 0.4 before the join below was computed"
+  }
+ ],
+ "outcome_append_text": "Spec 074 (Phase-440), executed 2026-10-24 under the frozen contract (freeze digest 5416a0d331e76fcec720746849969f2e86e9d79f2cc0fa583e1050662ffba36c; OSF registration cfe7z): Measured on the graded ICIT corpus, of the 31 opening-strong signs Shakti's own battery returns, 2 are animal signs under the frozen classification (Asset A v2, SHA-256 681e017da8b3f93aeade7e85361565fa8f3f4178b167dfa2448f5b4c239a8193) \u2014 a share of 0.0769 against the animal share 0.0889 of the comparison inventory: enrichment ratio 0.8654, exact test p = 0.7345. Animal signs appear among the opening-strong signs at no better than the base rate. The animal half of the claim `without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003` is not supported in its re-scoped form; the claim stands on its positional half alone, exactly as its record is amended to say by the dated append that carries this outcome.",
+ "anchors": {
+  "before": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+  "after": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+  "byte_identical": true
+ }
+}

@@ -10619,3 +10619,63 @@ reports/phase439_results.json, reports/phase439_report.md.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-24 — Spec 074 EXECUTED (Phase-440): Hunt's opening signs on the repaired keying surface — NOT SUPPORTED
+
+Spec 074 — Spec 070's successor on the keying surface Spec 073 repaired —
+executed under the owner's order of 2026-10-24 ("Shouldn't we do all three
+of these?"), after OSF registration cfe7z was approved and public (DOI
+10.17605/OSF.IO/CFE7Z; freeze digest 5416a0d3..., freeze PR #368 merged
+c561f293; OSF record PR #371). All six step-0 gates passed, fail-closed in
+the frozen order. Gate 0.4's reproduction assertion held exactly: the
+enumerated population's canonical publication hash (30092b6f...) equals
+Spec 070's recorded hash; the 31 opening-strong signs, their per-sign
+I/M/T counts, and the full battery census (220 signs at the floor) all
+reproduce Spec 070's recorded measurement. Keying under the frozen
+two-leg route (DD-074-8) resolved 31/31: 26 signs under leg 1
+(parpola_1982 wells_ids over Registry v2) and the five signs Spec 070
+could not key — 136, 298, 401, 617, 824 — under leg 2 (Registry v2's
+icit_wells rows) to their own W-keyed Asset A v2 rows, each classified
+unidentified in the frozen asset (SHA-256 681e017d...; 552 rows; animal
+30, sky_cycle 0, object_goods 22, human 43, other 246, contested 0,
+unidentified 211): counted, listed, excluded from the primary's numerator
+and denominator. Keying is not classification. The frozen section 4 test
+then scored: the disjoint 2x2 over classified members is [[2, 24],
+[6, 58]] — of the 31 opening-strong signs, 2 are animal signs (226 and
+241, both fish), a share of 0.0769 against 0.0889 over the table's
+classified universe; enrichment ratio R1 = 0.8654; Fisher exact one-sided
+p = 0.7345 (two-sided 1.0). The reversed arm agrees in direction (R2 =
+0.0: none of the comparison inventory's six animal signs is
+opening-strong; the two animal signs in the population occur 21 and 10
+times, below the inventory's 30-occurrence floor). Sensitivities: S-A
+equals the primary (zero contested rows in Asset A v2); S-B is not
+applicable (no Asset A v2 verbatim label identifies a unicorn — stated,
+not assumed); S-C on the documented + corroborated population (O = 35,
+U = 89) returns the same word (R1 = 0.8929, p = 0.7140), so the result is
+not grade-sensitive. Verdict under section 4.3 rule 1, on both grounds
+independently (R1 at or below 1.0; p at or above 0.05): NOT SUPPORTED —
+the section 1.2 falsifier fires, and the animal half of Hunt's claim
+(without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003) is
+recorded not supported in its re-scoped form; the claim stands partially
+supported on its positional half alone, stage explained, falsification
+condition unchanged, via the dated append
+spec074_outcome_append_2026_10_24. This is the first verdict the claim's
+animal half has had in either direction — Spec 070 closed before
+scoring, and its POPULATION NOT KEYED closure stands unamended beside
+this outcome. Honesty fence: the test measures the claim against a
+positional framework measured on the graded ICIT corpus, never against
+the Phase-43 framework; lineage statement (P-F1 S3): this corpus is an
+ICIT-lineage corpus, and agreement between it and the program's earlier
+ICIT-lineage layer is consistency within one tradition, not independent
+corroboration. Fence sentence: this result is about depiction and
+position in recorded data; it is not evidence that any sign marked
+identity, a guild, or goods. Spec 037's 49% cross-compilation label
+caution travels with the result. Anchors df0cf620... asserted
+byte-identical before and after; the results record is byte-identical
+across two runs (SHA-256 d539519d...). Records:
+specs/074-hunt-opening-signs-repaired-surface/outcome.md,
+specs/074-hunt-opening-signs-repaired-surface/step0-record.md,
+reports/phase440_results.json, reports/phase440_report.md.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.

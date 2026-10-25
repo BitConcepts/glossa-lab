@@ -1,0 +1,64 @@
+item_id: indus/mahadevan-1977
+source_name: "Mahadevan 1977 — The Indus Script: Texts, Concordance and Tables (MASI No. 77), full-volume scan"
+source_url: ""
+download_url: ""
+download_date: "2026-10-25"
+local_path: "C:/Users/trist/Downloads/MASI 77 Indus Script Texts Concordances & Tables Iravatham Mahadevan.pdf (TRISTEN-DESKTOP; not in git)"
+checksum_sha256: "ef68fe8dc25e94fe9cb75b418c5189a084383e72498560ef393372e90a27e110"
+license: "© Archaeological Survey of India 1977. Scan produced for the Digital Library of India (Central Archaeological Library, New Delhi, accession copy; DLI barcode 99999990041354). Held for internal research use; the PDF is not redistributed and is not committed to this repository."
+license_url: ""
+rights_status: research_use
+license_class: restricted
+title: "The Indus Script: Texts, Concordance and Tables"
+author: "Mahadevan, Iravatham"
+publication_date: "1977"
+language: eng
+script: Indus
+period: "2600–1900 BCE"
+region: "Indus Valley"
+genre: epigraphy
+source_format: pdf
+processing_stage: raw
+confidence: "0.99"
+ocr_quality: low
+manually_reviewed: true
+status: keep
+glossa_legacy_asset: false
+notes: >
+  FULL VOLUME intake-pinned 2026-10-25 (owner-surfaced copy on TRISTEN-DESKTOP;
+  verification on the desktop via relay — see masi77_full_volume_intake_2026-10-25.md
+  in this directory for the full record). Identity confirmed from the volume's own
+  title page: Memoirs of the Archaeological Survey of India No. 77, The Indus Script:
+  Texts, Concordance and Tables, Iravatham Mahadevan, ASI, New Delhi, 1977
+  (original edition; © page: Tata Press, Bombay; price Rs. 250).
+  File: 16,445,165 bytes; 843 PDF pages = 1 DLI cover sheet + 842 leaves;
+  printed extent 825 pp. (printed page = PDF page − 12, verified at sampled
+  folios 4, 6, 10, 32, 39, 417, 548, 717, 728 and at printed p. 825).
+  IMAGE-ONLY scan: no text layer (842 of 843 pages carry zero extractable text);
+  effective scan resolution ~150 dpi (min 140 / median 150 / max 176).
+  Structure (contents, corroborated at sampled pages): Map printed p. 29;
+  Codes p. 30; Sign List from p. 32; Texts pp. 163–416; Concordance pp. 417–716;
+  Tables I–IX from p. 717; Appendices I–V from p. 785, Appendix V still running
+  at printed p. 825. Completeness basis: page-count arithmetic + an image on
+  every book leaf + sampled folio continuity — not a leaf-by-leaf collation.
+  OCR behaviour at this resolution: Latin text and the numeric scaffolding
+  (sign numbers, variant '+' markers, text numbers) are reference-grade;
+  Indus sign glyphs are NOT OCR-recoverable and must be read visually.
+  DESIGNATED USE: the Mahadevan arm of the Spec 071 reopening-trigger census
+  (the exhibited published list; see docs/decisions/2026-10-25-spec-071-retirement-decision.md)
+  and M77 sign-list reference. A public copy of the same edition is documented
+  in CITATIONS.md §A.1 (Internet Archive); the held file's immediate download
+  source was not recorded — its own scan identity is the DLI barcode above.
+  This pin complements, and does not supersede, the 25-page Introduction
+  transcription recorded in CITATIONS.md §A.1 (a separate 400-dpi artifact).
+source_score:
+  textual_value: 5
+  metadata_quality: 5
+  license_clarity: 3
+  language_coverage: 5
+  rarity: 4
+  ocr_quality: 2
+  scholarly_reliability: 5
+  alignment_potential: 5
+  annotation_depth: 5
+  acquisition_difficulty: 1

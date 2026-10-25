@@ -75,6 +75,9 @@ _NODE_SPECS = [
      "carried cascade; gate 0.5 the freeze-fixed verdict "
      "line L = 0.765 (95th percentile, nearest-rank, of "
      "the 86-sign non-fish reference distribution) "
+     # Correction (2026-10-25, programme red team, RT-17/E-9): L = 0.765 is the MAXIMUM of the
+     # 86-sign non-fish reference distribution, not its 95th percentile; the description string
+     # above is the frozen record's wording and stands as executed.
      "asserted. Primary run on documented-lineage rows "
      "and the mandatory documented + corroborated "
      "sensitivity against the same line; the family word "

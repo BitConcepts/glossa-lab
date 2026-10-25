@@ -49,6 +49,8 @@ never delete. This tool is the merge's only writer. Its rules:
 
 from __future__ import annotations
 
+import re
+
 import argparse
 import copy
 import hashlib
@@ -195,6 +197,20 @@ def additive_only_check(before: list[tuple[Path, dict]],
     return problems
 
 
+# Dated-append key family (see the note in verify_store): the
+# generator's carry-over preserves these keys across regeneration
+# (glossa-indus/scripts/indus_claims.py), and they postdate the
+# Phase I merge, so the verbatim comparison excludes them.
+_DATED_APPEND = re.compile(
+    r"^(?:audit_(?:note|correction)_\d{4}_\d{2}_\d{2}"
+    r"|spec\d{3}_.+_\d{4}_\d{2}_\d{2})$")
+
+
+def _merge_frozen_view(record: dict) -> dict:
+    return {k: v for k, v in record.items()
+            if k != "extracted_at" and not _DATED_APPEND.search(k)}
+
+
 def verify_store(files: list[tuple[Path, dict]], plan: list[dict]) -> dict:
     records = all_records(files)
     problems = []
@@ -219,10 +235,22 @@ def verify_store(files: list[tuple[Path, dict]], plan: list[dict]) -> dict:
                 # refreshed by later extraction regenerations on
                 # the live instance record (pre-existing store
                 # behaviour, Phases A/D) and is excluded from the
-                # comparison. Every other field must match exactly.
-                live = {k: v for k, v in record.items() if k != "extracted_at"}
-                kept = {k: v for k, v in (entry.get("record") or {}).items()
-                        if k != "extracted_at"} if entry else None
+                # comparison. Dated-append keys (the audit notes /
+                # corrections of 2026-10-22 and the spec outcome /
+                # falsifier appends) are likewise excluded from
+                # BOTH sides: they are a governed layer added to
+                # live records after the merge froze the embedded
+                # copies, and since the generator's dated-append
+                # carry-over was widened (realignment Item 1.2,
+                # 2026-10-25, finding RT-02) regeneration preserves
+                # them on the live records in all conditions. The
+                # comparison is thus pinned to the merge-frozen
+                # content — it still proves the merge preserved
+                # every instance record verbatim. Every other field
+                # must match exactly.
+                live = _merge_frozen_view(record)
+                kept = _merge_frozen_view(entry.get("record") or {}) \
+                    if entry else None
                 if entry is None or kept != live:
                     problems.append(
                         f"{record['claim_id']}: not preserved verbatim "

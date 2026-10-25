@@ -1,0 +1,102 @@
+record: custody_addendum
+date: 2026-10-25
+occasion: programme red team 2026-10-25, finding E-8; owner order 2026-10-25 17:23 EDT
+scope: owner-side second copies of single-copy holdings; metadata only, no content in git
+machines:
+  vm: Muse VM (/home/hatch/workspace)
+  desktop: TRISTEN-DESKTOP (WSL2 /home/tpierson; Windows C:\Users\trist)
+transfer_channel: owner desktop relay only; CISI restricted material never left the owner's two machines
+excluded: firestore_indusarrays_full.jsonl bundle (separate custody record, PR #404); im77intro.pdf (not named)
+copies_vm_to_desktop:
+  desktop_root: ~/glossa-custody/copies-from-vm/2026-10-25/
+  items:
+    - id: A1-shakti
+      files: 58
+      source_bytes: 3254536
+      package_bytes: 688859
+      package_sha256: 330abac5b75c0bbd262a7ce1447d51184d9123bec2a6613eabb2fd62dc763852
+      verified: package + full manifest
+    - id: A2-cisi31-portion
+      restricted: true
+      files: 120
+      source_bytes: 102681865
+      package_bytes: 100250977
+      package_sha256: c400de0558495a0dd7d9f177d52cff84dd614e066982bca8339d5cec3b958621
+      verified: package + full manifest
+    - id: A3-cisi-image-layer
+      restricted: true
+      files: 18056
+      source_bytes: 870884730
+      package_bytes: 859481441
+      package_sha256: bcfd1ecb683cd92a9b0382b86f1cdcddcc275c5378a8cf7dde7d493650b0c1f9
+      verified: package + full manifest
+    - id: A4-ia-scans
+      files: 6
+      source_bytes: 96072975
+      package_bytes: 90809673
+      package_sha256: acfa322052071313f8fb838da4e3dbe7eb74f3f256adc7408bbf524df7e43e17
+      verified: package + full manifest
+    - id: A5a-field-cady-icit
+      files: 628
+      source_bytes: 2574432
+      package_sha256: cc630469d7a5c89e3c747314f7893b1a368f6727f67bfb313d7930985e7e458d
+      verified: package + full manifest
+    - id: A5b-icit-fieldcady
+      files: 3
+      source_bytes: 1740274
+      package_sha256: 3c0b1d35b35aec3be499004f45a80a77f33f63b6cde16e017f87ea272c52651d
+      verified: package + full manifest
+    - id: A5c-mayig-indus-valley
+      files: 608
+      source_bytes: 867897
+      package_sha256: ae16034f32ad83b3c6c0470cdef06e67088ffdca0ab20589bd6d2aa05bc20597
+      verified: package + full manifest
+    - id: A5d-mayig-cisi-layer
+      files: 1
+      source_bytes: 102003
+      package_sha256: 6646581894f58b9828e090691431cba048b2c5d7d04e3278e00880954c41a307
+      verified: package + full manifest
+    - id: A5e-restricted-local
+      restricted: true
+      files: 6
+      source_bytes: 4754040
+      package_sha256: 3846f607cc3c4d98f6915068fea36238fc0ea85d9c774f57d261dfab7833473e
+      verified: package + full manifest
+copies_desktop_to_vm:
+  vm_root: ~/workspace/glossa-custody-e8/copies-from-desktop/
+  items:
+    - id: B1-fuls-vol1
+      file: Corpus of Indus Inscriptions.pdf
+      bytes: 285116101
+      sha256: 185fd0575d881568583a7002d705b2ded1313a525fafe093108f72e0fe897727
+      verified: full SHA-256 against register pin
+    - id: B1-fuls-vol2
+      file: A Catalog of Indus Signs.pdf
+      bytes: 274176439
+      sha256: 31729a4f7b33bd1ec08633bb677f963b5de8f50d96afdfc25cff5ddc96f9a32a
+      verified: full SHA-256 against register pin
+    - id: B1-masi77
+      file: MASI 77 Indus Script Texts Concordances & Tables Iravatham Mahadevan.pdf
+      bytes: 16445165
+      sha256: ef68fe8dc25e94fe9cb75b418c5189a084383e72498560ef393372e90a27e110
+      verified: full SHA-256 against intake pin
+    - id: B2-sib-indusarrays-full-json
+      file: firestore_indusarrays_full.json
+      bytes: 3282806
+      sha256: 0a3961ace8eb81dcfa1a29c5866724439c7721407827c4253a6f064a77c534d9
+      verified: SHA-256 computed on desktop, matched on VM copy
+    - id: B2-sib-indusarray-extra-json
+      file: firestore_indusarray_extra.json
+      bytes: 3294021
+      sha256: da1a3e4d7f97d743971cfcafd50456039e94cfbfcc5d99be8b5aed2cab3bb048
+      verified: SHA-256 computed on desktop, matched on VM copy
+    - id: B2-sib-missing-texts-json
+      file: firestore_missing_texts.json
+      bytes: 3293902
+      sha256: 460f703fa8f9728a77a1f28e0d56a33d7db6c2afa558e691c57d0e7192fa72f1
+      verified: SHA-256 computed on desktop, matched on VM copy
+    - id: B2-sib-indusscript-har
+      file: indusscript.har
+      bytes: 22636105
+      sha256: 8d1061c4f0a0fabf70da8be1709ac5c2f6ece3df2b2515cbe8ec61e0a26133b8
+      verified: SHA-256 computed on desktop, matched on VM copy

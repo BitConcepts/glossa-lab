@@ -23,8 +23,8 @@ this act.
 | Finding | Disposition | What landed where | Evidence |
 |---|---|---|---|
 | RT-18 (072 outcome cites a file that does not exist) | DISPOSITIONED — overtaken by the redaction; no append | Nothing. The wrong-pointer sentence no longer exists on the public record, so there is nothing to correct by append. | Current `specs/072-fish-family-profiles-redesign/outcome.md` on main is the 2026-10-25 redacted record (Roif gate permitted form); a repo-wide grep for `phase431_nonfish_distribution.json` returns no occurrence anywhere. The pointer was removed by the RT-26 redaction, not by this batch. |
-| RT-19 (074's S-B sensitivity vacuous) | FIXED (record append + standing rule) | Dated addendum §9 appended to `specs/074-hunt-opening-signs-repaired-surface/adjudication.md`: records the vacuity (the "unicorn" label of Spec 069's attestation never entered Asset A v2's columns, so S-B could only return not-applicable) and adopts the standing rule — at any future asset rebuild, assert every frozen sensitivity label exists in the new table's vocabulary before freeze, with the result recorded in the build record. | Outcome record's own S-B lines (not applicable; gate 0.5 unicorn naming scan returns no sign); adjudication §6's drafting note (nothing at drafting turned on the label; the not-applicable branch was carried). |
-| RT-20 (054's digest-covered §§9.2/9.5 still say Phase-437) | FIXED (pointer append) | Dated addendum §9.11 appended to `specs/054-yadav-opening-closing/adjudication.md`, pointing single-section readers to §9.9 (the Phase-437 → Phase-438 reassignment). The digest-covered text itself is not edited. | §9.9's text (allocation at §§9.2/9.3; reassignment recorded there); the execution in fact ran as Phase-438 (`reports/phase438_results.json`). |
+| RT-19 (074's S-B sensitivity vacuous) | FIXED (record append + standing rule) | Dated addendum appended to `specs/074-hunt-opening-signs-repaired-surface/outcome.md` (post-freeze note surface — see the relocation note below): records the vacuity (the "unicorn" label of Spec 069's attestation never entered Asset A v2's columns, so S-B could only return not-applicable) and adopts the standing rule — at any future asset rebuild, assert every frozen sensitivity label exists in the new table's vocabulary before freeze, with the result recorded in the build record. | Outcome record's own S-B lines (not applicable; gate 0.5 unicorn naming scan returns no sign); adjudication §6's drafting note (nothing at drafting turned on the label; the not-applicable branch was carried). |
+| RT-20 (054's digest-covered §§9.2/9.5 still say Phase-437) | FIXED (pointer append) | Dated pointer addendum (§9.11 in the adjudication's numbering) appended to `specs/054-yadav-opening-closing/outcome.md`, pointing single-section readers of the adjudication to its §9.9 (the Phase-437 → Phase-438 reassignment). The digest-covered text itself is not edited. | §9.9's text (allocation at §§9.2/9.3; reassignment recorded there); the execution in fact ran as Phase-438 (`reports/phase438_results.json`). |
 | RT-21 (Yadav + Hunt claims' `not_understood` fields stale) | FIXED (refresh + dated refresh keys; regeneration-safety proven) | `glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json`, claim `yadav_2009_arxiv_manual_002`: `not_understood` refreshed (the falsifier was appended at the Spec 054 amended freeze, 2026-10-23; the test froze and closed UNEXECUTED at step 0, STRICT CORPUS NOT PINNABLE, corpus not pinnable — claim untouched, strongly_supported, falsifier carried, execution awaits the corpus layer's recovery) + dated key `spec054_not_understood_refresh_2026_10_25`. `glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json`, claim `without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003`: `not_understood` refreshed (the animal test ran as Spec 074 / Phase-440 on the repaired surface; the refreshed text carries only what the merged outcome record states, with its containment — internal restatement of the claim, one compilation (Shakti), ICIT numbering) + dated key `spec074_not_understood_refresh_2026_10_25`. No status, stage, or falsification condition changes in either file. | The claims' own dated appends (`spec054_falsifier_append_2026_10_23`, `spec054_outcome_append_2026_10_24`, `spec074_outcome_append_2026_10_24`) and the two outcome records. Regeneration-safety: both refresh keys match the generator's dated-append carry-over pattern (`^spec\d{3}_.+_\d{4}_\d{2}_\d{2}$`, glossa-indus/scripts/indus_claims.py, the widened carry-over of 2026-10-25) and `not_understood` is in the generator's fixed carry-over list; `backend/tests/test_indus_claims_carryover.py` passes against the edited store (2 tests, including the real yadav_2009_arxiv regression case), as do the regeneration-preservation tests in the Spec 052/054/074 execution test files. No regeneration was committed. |
 | RT-22 (preprint "independent" in two senses) | DISPOSITIONED — no repo change | The fix is queued verbatim in the v9 journal-readiness checklist (goal record `2026-10-25-v9-journal-readiness.md`, item B7): where v9 calls the linguistic and distributional routes "independent lines of evidence," it adds the clause *independent of each other as methods; both rest on the single-lineage corpus of §6*. | Checklist item B7, state "REQUIREMENT RECORDED," read first-hand in this act. The preprint itself is not edited by this batch. |
 | RT-23 (074's verdict travelling without containment) | DISPOSITIONED — verified in substance, one element a gap (see note) | No repo change; the daily article is a dated published record and is not edited by this batch. Verification recorded here; the v9 side was already recorded in the readiness checklist (item B6). | The 2026-10-25 daily article (see the RT-23 note below). |
@@ -70,6 +70,32 @@ is a separate owner-visible act, flagged here and in the
 Step 7 report. The v9 side of RT-23 is already recorded
 (readiness checklist item B6: any Spec 074 mention carries
 its containment).
+
+## Relocation note — the RT-19 and RT-20 appends stand in the outcome records, not the adjudications
+
+This batch's dispositions for RT-19 and RT-20 were first
+landed as dated appends to the two specs' adjudication
+records. That placement cannot stand, on evidence read
+first-hand in this act: each adjudication.md is a
+digest-covered frozen source — its SHA-256 stands in the
+spec's freeze.json, and the freeze-replay tests
+(`test_spec054_freeze.py` / `test_spec074_freeze.py`,
+`verify_freeze`) fail on any changed byte. Appending there
+would change frozen text, which this batch's own rules
+forbid, and the batch's first CI run confirmed it (run
+40217946870: Backend tests failed; the same two replay
+tests fail locally on the appended tree and pass on clean
+main). The appends were therefore moved, text preserved,
+to the specs' outcome records — the programme's established
+surface for post-freeze dated notes (the RT-27 correction
+note in Spec 074's outcome record, landed 2026-10-25 in
+PR #377, is the nearest precedent) — and the adjudication
+files stand byte-identical to their frozen pins
+(Spec 054: as frozen; Spec 074: SHA-256
+`4e6d6f818e4a515f62631aec296321b0d8c057615e9bfc91e7bc53649db15e05`,
+recomputed in this act). The RT-20 addendum keeps its
+§9.11 number, recorded in the outcome record as §9.11 in
+the adjudication's numbering.
 
 ## What this batch does not establish
 

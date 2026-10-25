@@ -196,6 +196,53 @@ totals `U_animal_total` / `U_classified_total`; future records should
 name the pooled universe as what it is. This note is append-only: no
 verdict, status, or frozen text changes.
 
+
+## Addendum — 2026-10-25 (red-team finding RT-19): the S-B sensitivity is vacuous, and a standing rule for future asset rebuilds
+
+*Placement note.* This addendum was first drafted for the
+adjudication record. That record is a digest-covered frozen
+source (its SHA-256 stands in `freeze.json`), so a post-freeze
+note cannot be appended to it without changing frozen bytes;
+per this programme's established pattern for post-freeze dated
+notes (the RT-27 correction note above is the nearest
+instance), it is appended here, in the outcome record.
+The adjudication record itself is untouched.
+
+**The vacuity.** The frozen sensitivity arm S-B (the primary
+arm rerun without the unicorn sign(s)) is recorded in this
+outcome record as not applicable: no Asset A v2 verbatim
+label identifies a unicorn; the step-0 unicorn naming scan
+at gate 0.5 returns no sign. Spec 069's attestation had
+recorded a "unicorn" verbatim label, but Asset A v2's
+rebuilt table never carried that label into its columns, so
+the arm could never run on the repaired surface: it is
+vacuous by construction, not by measurement. The drafting
+record (adjudication §6) had already noted that nothing at
+drafting turned on the unicorn's label under Asset A v2 and
+that S-B's not-applicable branch was carried; the red-team
+finding (RT-19, 2026-10-24/25) is that a frozen sensitivity
+which structurally cannot execute should have been caught
+at Spec 073's asset build or at this spec's freeze, rather
+than only disclosed in the results. That criticism stands.
+The outcome does not turn on S-B: the verdict rests on the
+primary arm, and the other sensitivity arms (S-A, S-C) ran
+as frozen.
+
+**Standing rule (adopted by this addendum).** At any future
+asset rebuild — any new version of the depicted-kind asset
+or of any classification table a frozen sensitivity names —
+the build must assert, before freeze, that every frozen
+sensitivity label exists in the new table's vocabulary:
+each label a sensitivity arm would scan for is checked
+against the rebuilt table's actual labels/columns, and the
+assertion's result is recorded in the build record. A label
+absent from the new vocabulary is named at the build, not
+discovered at execution; a sensitivity that cannot run on
+the rebuilt table is dispositioned openly at that point
+(carried as not-applicable by design, re-scoped, or the
+arm is dropped by a recorded ruling), never frozen in a
+form that can only return "not applicable."
+
 ## Correction note — 2026-10-26 (programme red team 2026-10-25, finding B-9)
 
 The 2026-10-25 correction note above repaired the primary headline

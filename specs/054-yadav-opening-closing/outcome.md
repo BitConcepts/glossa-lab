@@ -230,6 +230,36 @@ outcome append with the claim's status
 (strongly supported) and stage (explained)
 unchanged and the falsifier verbatim.
 
+
+## Pointer addendum — 2026-10-25 (red-team finding RT-20; adjudication §9.11 in that record's numbering)
+
+*Placement note.* This addendum is §9.11 of the adjudication
+record by number and intent. The adjudication is a
+digest-covered frozen source (its SHA-256 stands in
+`freeze.json`), so a post-freeze addendum cannot be appended
+to it without changing frozen bytes; per this programme's
+established pattern for post-freeze dated notes, it is
+appended here, in the outcome record. The adjudication
+record itself is untouched, and its digest-covered text is
+not edited.
+
+A reader of the adjudication's §9.2 or §9.5 alone will
+still find this spec's execution phase named there as
+Phase-437 (§9.9 records that §§9.2/9.3 allocated Phase-437,
+DD-054-10; §9.5 states it in words: "the amended run
+(Phase-437) starts only on a separate owner execution
+order"). That phase number is superseded: the Phase-437 →
+Phase-438 reassignment is recorded at §9.9 of the
+adjudication, where it was made — Phase-437 is Spec 052's,
+and this spec's execution phase is Phase-438. The §§9.2/9.5
+sentences stand unamended because they sit inside the
+digest-covered record; append-only discipline preserves
+them, and this addendum is the pointer a single-section
+reader needs: **for the execution phase of this spec, §9.9
+of the adjudication governs — read Phase-438 wherever
+§§9.2/9.5 say Phase-437.** The execution in fact ran as
+Phase-438 (see `reports/phase438_results.json`).
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse

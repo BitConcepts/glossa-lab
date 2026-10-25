@@ -2,7 +2,9 @@
 
 **Preprint:** *A Falsifiable Computational Decipherment Hypothesis for the Indus Valley Script: 161 Candidate Proto-Dravidian Anchors and a Three-Slot Positional Grammar*
 **Author:** Tristen Kyle Pierson — BitConcepts LLC
-**Date:** May 2026 · Preprint v2 — Not peer-reviewed
+**Date:** May 2026 (directory) · Current preprint v8, deposited 2026-10-23 — Not peer-reviewed · DOI: 10.5281/zenodo.23604590
+
+> **Currency note (2026-10-25, programme red team):** this header previously read "Preprint v2". The anchor table in this directory is the historical 161-candidate table of the published preprint; the canonical current anchor table is `backend/reports/INDUS_FINAL_ANCHORS.json` (287 entries; strict core 94 readings). Where the two differ, the canonical file governs.
 
 ---
 
@@ -36,7 +38,7 @@ for all 397 Mahadevan catalogue signs. Columns:
 | `Basis` | One-line evidence summary |
 
 **Coverage:** 75 HIGH + 86 MEDIUM = **161 H+M candidates** covering **90.96%** of corpus tokens
-(6,363 / 7,002 tokens across 1,670 seals at 9 sites).
+(6,369 / 7,002 tokens across 1,670 seals at 9 sites). (Figure corrected 2026-10-25: 6,363/7,002 = 90.88%; 90.96% corresponds to 6,369 tokens.)
 
 **NOT counted toward coverage:** 236 LOW-confidence signs (heuristic assignments only).
 
@@ -76,7 +78,7 @@ Key phases:
 | 151 | `phase151_site_kl_bootstrap.json` | Bootstrap CIs for 36 site-pair KL divergences |
 | 156 | `phase156_gulf_seal_fish_test.json` | Gulf catalog validation (0/27 isolated fish signs) |
 | 163 | `phase163_sibilant_discovery.json` | 4 PROVISIONAL_MEDIUM sibilant promotions |
-| 169 | `phase169_master_synthesis.json` | Final master synthesis (32 items, 79.8% confidence) |
+| 169 | `phase169_master_synthesis.json` | Final master synthesis (32 items; the 79.8% aggregate confidence figure is WITHDRAWN as of preprint v8, 2026-10-23 — it has no recorded weighting rule; see the foundation check report) |
 | 170 | `phase170_grammar_variance.json` | Grammar variance retest at 161 H+M (93.2% accuracy) |
 
 ---
@@ -120,7 +122,7 @@ licensed under the MIT License — see the root [`LICENSE`](../../LICENSE) file.
 ```
 Pierson, T.K. (2026). A Falsifiable Computational Decipherment Hypothesis for the
 Indus Valley Script: 161 Candidate Proto-Dravidian Anchors and a Three-Slot Positional
-Grammar. Preprint v2. BitConcepts LLC / Glossa-Lab.
+Grammar. Preprint v8 (2026-10-23). BitConcepts LLC / Glossa-Lab. DOI: 10.5281/zenodo.23604590.
 https://github.com/BitConcepts/glossa-lab
 ```
 

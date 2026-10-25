@@ -13,6 +13,16 @@ spec's gate-records/ directory carries, in the tree being checked:
   (c) c3-evidence-sample.json — a valid C3 record with verification
       on and no unverified verdict-bearing claim.
 
+HARDENING (2026-10-25, programme red team finding D-1): a fully
+fabricated record set passed this check end-to-end. The validators
+now derive C2 status from the filed values, require the C2
+recomputation to be filed, require a named C3 verifier distinct
+from the drafter with evidence refs for every sampled claim,
+require at least one gate-turning quantity, and match the C1
+record's determinations against the canonical battery output.
+Honest bound: a mechanical check enforces consistency, not
+proof that work was done — that remains the human records' job.
+
 ENFORCEMENT STATE (recorded honestly, per the build decision of
 2026-10-25): this check runs in CI as a NON-REQUIRED job. The first
 strengthened freeze (the endings atlas) is a shadow freeze — the
@@ -72,6 +82,27 @@ def check_battery(records_dir, problems):
     cases = {c.get("case_id"): c for c in rec.get("cases", [])}
     if set(cases) != EXPECTED_CASES:
         problems.append(f"C1: battery result covers cases {sorted(cases)}, expected {sorted(EXPECTED_CASES)}")
+    # D-1 hardening (2026-10-25): the filed record's determinations
+    # must match the canonical battery output produced by
+    # run_battery.py for the current evaluator version. Before this
+    # change only the version string was compared, so a record
+    # claiming the opposite determinations passed.
+    canonical_path = HERE / "battery" / "results" / "battery-result.json"
+    if canonical_path.exists():
+        try:
+            canonical = json.loads(canonical_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            canonical = None
+        if canonical and canonical.get("evaluator_version") == want:
+            canon_cases = {c.get("case_id"): c for c in canonical.get("cases", [])}
+            for cid, c in cases.items():
+                cc = canon_cases.get(cid)
+                if cc is not None and isinstance(c.get("flagged"), bool) and c["flagged"] != cc.get("flagged"):
+                    problems.append(
+                        f"C1: case {cid} claims flagged={c['flagged']} but the canonical battery result "
+                        f"for evaluator {want} records flagged={cc.get('flagged')} — the filed record must "
+                        f"be the battery's own output (tools/freeze-gate/run_battery.py)"
+                    )
     for cid, c in cases.items():
         if not isinstance(c.get("flagged"), bool):
             problems.append(f"C1: case {cid} has no boolean flagged determination")
@@ -103,6 +134,37 @@ def check_spec_dir(spec_dir):
     check_battery(records_dir, problems)
     check_record(records_dir, "c2-spotcheck.json", validate_c2, "C2", problems)
     check_record(records_dir, "c3-evidence-sample.json", validate_c3, "C3", problems)
+    # D-1/D-6 hardening (2026-10-25): cross-record checks the single
+    # record validators cannot make.
+    def _load(name):
+        try:
+            return json.loads((records_dir / name).read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            return None
+    c2 = _load("c2-spotcheck.json")
+    c3 = _load("c3-evidence-sample.json")
+    if c2 and c3:
+        drafter = (c2.get("drafter") or "").strip()
+        verifier = (c3.get("verifier") or "").strip()
+        if drafter and verifier and (verifier == drafter or verifier.startswith(drafter)):
+            problems.append("C3: verifier is the same identity as the C2 drafter — evidence verification must be by someone other than the drafter")
+    claims_path = spec_dir / "claims.json"
+    if c3 and claims_path.exists():
+        try:
+            bundle = json.loads(claims_path.read_text(encoding="utf-8"))
+            register_ids = {c.get("id") for c in bundle.get("claims", [])}
+        except (OSError, json.JSONDecodeError):
+            register_ids = None
+        if register_ids:
+            record_ids = {c.get("claim_id") for c in c3.get("claims", [])}
+            if record_ids != register_ids:
+                missing = sorted(register_ids - record_ids)
+                extra = sorted(record_ids - register_ids)
+                problems.append(
+                    f"C3: record covers {len(record_ids)} claims but the spec's claims.json registers {len(register_ids)}"
+                    + (f"; missing from the record: {missing}" if missing else "")
+                    + (f"; not in the register: {extra}" if extra else "")
+                )
     return problems
 
 

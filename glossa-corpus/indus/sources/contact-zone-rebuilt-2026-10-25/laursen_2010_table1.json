@@ -1,0 +1,190 @@
+{
+  "source_paper": "Laursen 2010, Arabian Archaeology and Epigraphy 21:96-134 (Wiley), DOI 10.1111/j.1600-0471.2010.00329.x",
+  "n_rows_parsed": 5,
+  "n_rows_expected": 121,
+  "n_inscribed_with_indus_text": 23,
+  "by_gulf_type": {
+    "Gulf INDUS": 5
+  },
+  "by_site": {
+    "Ur": 3,
+    "Janabiyah Cemetery": 1,
+    "Susa": 1
+  },
+  "rows": [
+    {
+      "seal_no": 10,
+      "reference": "",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf INDUS",
+      "site": "Janabiyah Cemetery",
+      "bbm_no": ""
+    },
+    {
+      "seal_no": 14,
+      "reference": "Amiet 1972 no. 1643",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf INDUS",
+      "site": "Susa",
+      "bbm_no": ""
+    },
+    {
+      "seal_no": 16,
+      "reference": "Gadd 1932 pl. I no. 2",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf INDUS",
+      "site": "Ur",
+      "bbm_no": ""
+    },
+    {
+      "seal_no": 17,
+      "reference": "Gadd 1932 pl. I no. 3",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf INDUS",
+      "site": "Ur",
+      "bbm_no": ""
+    },
+    {
+      "seal_no": 18,
+      "reference": "Gadd 1932 pl. I no. 4",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf INDUS",
+      "site": "Ur",
+      "bbm_no": ""
+    }
+  ],
+  "parpola_readings": {
+    "10": {
+      "site": "Janabiyah Cemetery, Bahrain",
+      "reading_source": "Asko Parpola, personal communication, in Laursen 2010 footnote 2",
+      "sign_list": "Parpola 1994b: 70-78, fig. 5.1",
+      "n_signs": 7,
+      "indus_signs": [
+        {
+          "position": 1,
+          "primary": "53",
+          "alternates": [
+            "60"
+          ],
+          "note": "uncertain 53 OR unidentified (possibly badly-drawn 'fish' 60)"
+        },
+        {
+          "position": 1,
+          "primary": "147",
+          "alternates": [],
+          "note": "follows position 1a"
+        },
+        {
+          "position": 2,
+          "primary": "364",
+          "alternates": []
+        },
+        {
+          "position": 3,
+          "primary": "145",
+          "alternates": []
+        },
+        {
+          "position": 4,
+          "primary": "126",
+          "alternates": [
+            "125",
+            "128"
+          ],
+          "note": "very uncertain; cf. Parpola 1994a fig. 1718 text 5"
+        },
+        {
+          "position": 5,
+          "primary": "16",
+          "alternates": [],
+          "note": "uncertain; rare in Indus Valley but common in Near East"
+        },
+        {
+          "position": 6,
+          "primary": "145",
+          "alternates": []
+        }
+      ],
+      "linear_sign_ids": [
+        "53|60",
+        "147",
+        "364",
+        "145",
+        "126",
+        "16",
+        "145"
+      ],
+      "noted_parallels": [
+        {
+          "sign_seq": [
+            "16",
+            "145"
+          ],
+          "found_at": "Kalibangan sealings K-69 to K-75",
+          "ref": "Joshi & Parpola 1987:312-313"
+        },
+        {
+          "sign_seq": [
+            "16",
+            "364"
+          ],
+          "found_at": "Mohenjo-Daro M-798 unicorn seal",
+          "ref": "Shah & Parpola 1991:68"
+        },
+        {
+          "sign_id": "145",
+          "found_at": "Parpola 1994a Near Eastern texts nos. 5, 8, 29"
+        },
+        {
+          "sign_id": "16",
+          "found_at": "Parpola 1994a Near Eastern texts nos. 6-8, 31, 35"
+        },
+        {
+          "sign_id": "125",
+          "found_at": "Parpola 1994a Near Eastern texts nos. 29, 18, 34, 39, 15, 36"
+        }
+      ]
+    }
+  },
+  "ingestion_method": "REBUILT 2026-10-25 (partial). The published paper is closed-access (OpenAlex oa_status 'closed'; no repository full text in CORE) and no lawful copy was reachable in this session, so Table 1 could not be re-parsed. Rows below are only those recoverable from surviving programme evidence (Phase-24 cross-reference rationales) plus the verbatim parpola_readings block transcribed in the surviving parser script. Empty-string cells are unknown, NOT 'N/A' in the original. n_inscribed_with_indus_text (=23) and the lost parse's aggregate distributions are carried from the surviving Phase-46 derived output as reconciliation targets, not as rebuilt data.",
+  "rebuild": {
+    "status": "PARTIAL REBUILD 2026-10-25 — new file, new provenance; NOT the lost original",
+    "register_citation": "Holdings reconciliation 2026-10-25, RECORDED-NOT-HELD item #30",
+    "lost_parse_aggregates_from_phase46_output": {
+      "n_rows_catalogued": 102,
+      "n_inscribed_with_indus_text": 23,
+      "site_distribution": {
+        "Karzakkan Cemetery": 28,
+        "Saar Cemetery": 11,
+        "Ur": 6,
+        "Saar": 6,
+        "Failaka": 4,
+        "Mohenjo-Daro": 3,
+        "Mesopotamia?": 3,
+        "Near East": 2,
+        "Chanhu-Daro": 1,
+        "Susa": 1,
+        "Luristan": 1,
+        "Girsu": 1,
+        "western Iranian plateau": 1,
+        "Rifa mounds": 1,
+        "Janabiyah Cemetery": 1,
+        "Janabiyah": 1,
+        "Bahrain": 1
+      },
+      "gulf_type_distribution": {
+        "Gulf Type": 76,
+        "Gulf INDUS": 23,
+        "Linear-Elamite": 1
+      }
+    },
+    "rows_recovered": [
+      10,
+      14,
+      16,
+      17,
+      18
+    ],
+    "rows_missing": "all other seal numbers 1-121 (97 of the 102 parsed rows, plus the 19 rows the original parser never captured)"
+  }
+}

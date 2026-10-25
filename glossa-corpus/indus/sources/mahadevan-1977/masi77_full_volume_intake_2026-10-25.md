@@ -1,0 +1,90 @@
+# Mahadevan (1977) — Full Volume (MASI No. 77): Intake Record
+
+**Source work:** I. Mahadevan, *The Indus Script: Texts, Concordance and
+Tables* (Memoirs of the Archaeological Survey of India No. 77,
+Archaeological Survey of India, New Delhi, 1977). Printed extent 825 pp.
+
+**This holding:** the complete volume as a single scanned PDF, held by
+T. Pierson on TRISTEN-DESKTOP at
+`C:\Users\trist\Downloads\MASI 77 Indus Script Texts Concordances & Tables Iravatham Mahadevan.pdf`
+(WSL path `/mnt/c/Users/trist/Downloads/…`). Surfaced by the owner
+2026-10-25. The PDF is **not** committed to this repository.
+
+- Bytes: 16,445,165
+- SHA-256: `ef68fe8dc25e94fe9cb75b418c5189a084383e72498560ef393372e90a27e110`
+- PDF pages: 843 (1 Digital Library of India cover sheet + 842 leaves)
+- PDF metadata: Title "memoirs of the archeological survey of india
+  no.77"; Author "mahadevan, iravatham"; Producer iText 5.4.1;
+  file dates 2013-06-25.
+- Scan identity: Digital Library of India scan, barcode
+  99999990041354; the scanned copy is the Central Archaeological
+  Library (New Delhi) accession copy (library stamp, PDF p. 2;
+  loan pastedown on the final leaf).
+
+**Verification performed (2026-10-25, on the desktop, via relay;
+pypdf 6.21.2 + Ghostscript renders + Tesseract 5.3.4 OCR samples):**
+
+- *Identity — confirmed from the volume's own title page* (PDF p. 7):
+  "MEMOIRS OF THE ARCHAEOLOGICAL SURVEY OF INDIA No. 77 / THE INDUS
+  SCRIPT / Texts, Concordance and Tables / IRAVATHAM MAHADEVAN …
+  Published by The Director General, Archaeological Survey of India,
+  NEW DELHI, 1977." Copyright page (PDF p. 8): © ASI 1977, Tata Press
+  Bombay, price Rs. 250 — the original 1977 edition; no reprint
+  statement seen.
+- *Pagination:* printed page = PDF page − 12, verified at printed
+  folios 4, 6, 10 (Introduction), 32 and 39 (Sign List), 417 and 548
+  (Concordance), 717 and 728 (Tables), with Appendix V content at
+  printed p. 825.
+- *Structure* (contents page, PDF p. 9, corroborated at the sampled
+  pages): Map printed p. 29; Codes p. 30; Sign List from p. 32;
+  Texts in the Indus Script pp. 163–416; Concordance to the Texts
+  pp. 417–716; Tables I–IX from p. 717; Appendices I–V from p. 785.
+- *Completeness:* every one of the 842 book leaves carries a page
+  image (the only image-less page is the DLI cover sheet); sampled
+  folios run continuously with no duplicated or out-of-order leaves
+  found; the bibliographic final page (printed 825) is present inside
+  the scan, followed by plate/library leaves. This is page-count
+  arithmetic + image presence + sampled folios — **not** a
+  leaf-by-leaf collation against the printed edition.
+- *Text layer:* none. 842 of 843 pages carry zero extractable text
+  (only the DLI cover sheet has any). Effective scan resolution
+  ~150 dpi (min 140 / median 150 / max 176 across all pages).
+
+**Known limitations:** at ~150 dpi, OCR (Tesseract samples, 2026-10-25)
+reads Latin body text and the numeric scaffolding — sign numbers,
+variant "+" markers, text numbers, tabular numerals — at
+reference grade (best on clean lists: Appendix V page, mean word
+confidence 72; dense glyph pages 39–55). The Indus sign glyphs
+themselves are **not** OCR-recoverable (they emerge as noise); any
+use that turns on a sign's drawn form must read the page image
+visually. The Sign List's per-sign entries pair drawn forms with
+occurrence text-number lists; the numbers are machine-legible with
+human verification, the forms are not machine-legible at all.
+
+**Why it is here — designated use:** (1) the Mahadevan arm of the
+Spec 071 reopening-trigger census: this volume is one of the two
+named candidate sources whose exhibition can reopen the retired
+sky-signs question (see
+`docs/decisions/2026-10-25-spec-071-retirement-decision.md`); this
+intake record is the exhibition/pin record for that arm. (2) M77
+sign-list reference for the programme's M-numbering. It complements,
+and does not supersede, the 25-page Introduction transcription
+recorded in `CITATIONS.md` §A.1 (a separate 400-dpi artifact).
+
+**Census readiness (what remains before a count can run):**
+
+1. ✅ Pinned artifact in hand and identity/hash verified (this record).
+2. ☐ Sign-list extraction: transcribe printed pp. 32–162 (PDF
+   pp. 44–174) — sign numbers and variant markers by OCR + human
+   double-keying; candidate signs' drawn forms transcribed visually.
+3. ☐ Identification determination under the census instrument's
+   rules (Spec 071 §4.1 discipline): M77's list attaches no per-sign
+   depictive labels, so any celestial identification must be sourced
+   to Mahadevan's own statements and mapped to sign numbers first.
+4. ☐ Occurrence counting in the primary population per the census
+   instrument (M77's Concordance, pp. 417–716, and Table I,
+   pp. 717 ff., serve as cross-checks).
+5. ☐ Threshold application against the recorded trigger
+   (≥5 celestially identified signs / ≥30 primary-population
+   occurrences), reported as the pair: what the count establishes /
+   what it does not.

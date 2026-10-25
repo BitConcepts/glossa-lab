@@ -24,6 +24,8 @@ underlying data sources below** in addition to the Glossa-Lab project itself.
 
 **Local transcription (2026-10-06):** the Introduction (printed pp. 3–27) was OCR'd locally (RapidOCR) from `im77intro.pdf`, a 25-page 400-dpi bitonal scan with no text layer, supplied by T. Pierson. Transcription held in the local sources store at `glossa-corpus/indus/sources/mahadevan-1977/im77_introduction_ocr.md` (reference-grade; inline sign glyphs not OCR-recoverable; verify quotations against the scan). §11 (signs vs. symbols vs. graphic variants; 417 signs, 641 variant forms) is the signary basis for the program's M-numbering.
 
+**Held full-volume copy (intake-pinned 2026-10-25):** the complete volume as an 843-page scanned PDF (1 DLI cover sheet + 842 leaves; printed extent 825 pp.), held on TRISTEN-DESKTOP at `C:\Users\trist\Downloads\MASI 77 Indus Script Texts Concordances & Tables Iravatham Mahadevan.pdf` — 16,445,165 bytes, SHA-256 `ef68fe8dc25e94fe9cb75b418c5189a084383e72498560ef393372e90a27e110`, image-only (~150 dpi, no text layer). Intake record: `glossa-corpus/indus/sources/mahadevan-1977/masi77_full_volume_intake_2026-10-25.md`. Designated use: the Mahadevan arm of the Spec 071 reopening-trigger census, and M77 sign-list reference. The PDF itself is not committed to git.
+
 > Mahadevan, Iravatham. 1977. *The Indus Script: Texts, Concordance and Tables.*
 > Memoirs of the Archaeological Survey of India, No. 77. New Delhi:
 > Archaeological Survey of India. Pp. 825.

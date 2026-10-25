@@ -10714,3 +10714,59 @@ outcome.md, reports/phase424_results.json, reports/phase424_report.md.
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+
+
+## 2026-10-25 — Spec 075 EXECUTED (Phase-441): per-kind verdicts — other INCONCLUSIVE; human, animal, object_goods NOT SUPPORTED
+
+Spec 075 — the depicted-kind endings atlas, this programme's own claim
+family F075 (not Spec 071's retired question, not Hunt's claims in any
+form) — executed under the frozen Spec 075 contract (freeze digest
+aa06726f...; freeze PR #389 merged fd9bd448 on genuine CI including the
+C4 freeze-gate-records check, this freeze being the designated C4
+shadow freeze; OSF registration jv74f approved and public, DOI
+10.17605/OSF.IO/JV74F), on the owner's execution order of 2026-10-25
+(12:03 EDT). The celestial arm was reported first, as pre-registered:
+the celestial class as frozen in Asset A v2 contains zero signs; there
+is no celestial rate; the empty class is Spec 071's closing finding,
+restated where a reader of an endings atlas would look for it, and it
+establishes nothing new about sky signs. Spec 071's retirement stands
+untouched and its claim UNTESTED. All six step-0 gates passed in order:
+the asset pins against Spec 073's executed record; the Shakti intake
+under P-F1 S1/S2; input integrity (crosswalk, Registry v1, anchors);
+the primary population reproduced exactly (3,045 analyzable
+documented-lineage rows, 557 distinct signs, 550 in sequences of length
+>= 2 — the spec's flagged replay/drift gate) and keyed in full under
+the two-leg route of DD-075-5 (556 signs keyed, 423 by leg 1 and 133 by
+leg 2, to 424 distinct Asset A v2 rows; token 999 the named exclusion,
+2 rows / 2 occurrences, counted and never classed); the census
+published before any rate (other 307 signs / 7,006 occurrences; human
+53 / 978; animal 39 / 1,179; object_goods 24 / 2,159; unidentified 133
+signs / 481 occurrences as context; corpus-wide final-position rate
+0.2579), no kind TOO THIN; and the freeze-order proof from the external
+records. The per-kind verdicts under section 5.2's frozen bands,
+against each kind's frequency-matched comparison class: other
+INCONCLUSIVE (rate 0.2900 vs 0.2686; ratio 1.0796; Fisher two-sided
+p = 0.0295; the half-of-occurrences share 0.4970 also just under its
+condition); human NOT SUPPORTED (0.2526 vs 0.3244; ratio 0.7785;
+p = 6.93e-06); animal NOT SUPPORTED (0.2774 vs 0.3112; ratio 0.8912;
+p = 0.0200); object_goods NOT SUPPORTED (0.1153 vs 0.2844; ratio
+0.4055; p = 2.34e-67 — the atlas's strongest departure, in the
+depleting direction). Three falsifier-word verdicts and one
+inconclusive: the family hypothesis (F075-C03) stands in question, and
+no pooled depicted-kinds verdict exists. The sensitivities agree in
+every word: S1 (borderline removed: 255, 256, 520, 716, 717) returns
+the same four words; S2 (contested included) equals the primary
+exactly, Asset A v2 carrying zero contested rows; S3 (documented +
+corroborated, 5,131 rows, 707 signs, none unkeyable) returns the same
+four words — no verdict is grade-sensitive. Position is not meaning:
+these are positional facts about the published identification layer on
+this ICIT-lineage corpus, carrying Spec 037's 49% cross-compilation
+caution. Two runs byte-identical (results SHA-256 f55ae911...).
+Anchors df0cf620... asserted byte-identical before and after. Records:
+specs/075-depicted-kind-endings-atlas/outcome.md and step0-record.md,
+reports/phase441_results.json, reports/phase441_report.md; the
+registration record (osf-spec-registration.md) landed ahead of the
+execution (PR #392, merged 83cea50d).
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.

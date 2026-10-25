@@ -517,3 +517,71 @@ recomputed at assembly with the same value).
 *AI disclosure: executed by an AI agent (Muse,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+---
+
+## Landing record — 2026-10-25 (appended at merge; append-only)
+
+- Execution PR: **#379** (branch
+  `spec-062-phase424-execution`), merged to `main`
+  as merge commit
+  **`26111dc4648a643dd99e2c5fb9cab98fc2eba159`**.
+  The build of record was first secured on branch
+  `spec-062-execution` (head `a847aa46`, via the
+  git-data API) before the grid launched; because
+  `main` advanced 195 commits while the grid ran,
+  the record landed from a fresh branch off
+  current `main` carrying the identical contents —
+  script and graph module byte-identical to the
+  secured build, the `experiment_graph.py`
+  registration applied as the same 10-line delta
+  onto current `main`'s file.
+- CI: GitHub Actions run **40188371361** on the
+  PR head `b4e7e68f` — **7 of 7 jobs success**,
+  verified from the run's own job conclusions
+  (Backend tests (pytest) — 1777 passed, 20
+  skipped; Frontend tests (Playwright); Indus
+  public validation checks; Evidence Graph script
+  smoke tests; Shell wrappers ubuntu / macos /
+  windows).
+- Run digests re-verified on `main` at the
+  merge commit by the contents API:
+  `reports/phase424_results.json`
+  `cb144835117a6991dbb64b730b6ecc931993a518e2efd592348061400232d44b`,
+  `reports/phase424_report.md`
+  `245b868d0ebb2dd3c6f123241d0acbd81c192102f17135401563f24e0f432b9c`,
+  script
+  `26d6da01831d6679b7f60bfb9a0eaa25bdd6fbf31feb326f82d0dd19c59d5483`
+  — identical to the values in §1 of this
+  record, and the anchors file at the merge
+  commit recomputes to `df0cf620…`.
+- Foundation check (H21) at the merge
+  commit, on a fresh checkout of `26111dc4`
+  in the prepared foundation clone (Holdat
+  corpus CSV SHA-256
+  `62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e`
+  verified first; its counts verified exact —
+  1,670 seals, 7,002 tokens): **39 checks
+  passed, 0 failed, 9 warnings**, read from
+  the generated report JSON. The figure
+  differs from the standing 40/0/8 for a
+  recorded reason that is not a defect of
+  this execution: the realignment merged
+  earlier the same day (PR #376) deliberately
+  stopped the foundation check certifying the
+  withdrawn Phase-169 aggregate-confidence
+  figure — that check now reports a warning
+  ("does not certify it") instead of a pass.
+  Zero failures stands, and no check this
+  execution touches changed state.
+- Terminal outcome stands as recorded above:
+  **NO TARGET UNDER EITHER SCENARIO**. No
+  target was returned under either scenario;
+  no operative target exists under this spec;
+  Spec 061's T* is undefined on its record;
+  Arm A2's trigger does not fire and nothing
+  about Arm A2 is claimed. Spec 028 Arm A
+  stands INCONCLUSIVE exactly as recorded.
+
+*AI disclosure: appended by an AI agent (Muse, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.*

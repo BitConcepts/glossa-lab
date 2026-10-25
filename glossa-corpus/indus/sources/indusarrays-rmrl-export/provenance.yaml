@@ -1,0 +1,81 @@
+item_id: indus/indusarrays-rmrl-export
+source_name: "RMRL indusarrays layer — Firestore export of the indusscript.in corpus (firestore_indusarrays_full), with the 2026-05-14 indusscript.in probe bundle"
+source_url: "https://indusscript.in"
+download_url: ""
+download_date: "2026-05-14"
+local_path: "C:/Users/trist/Development/BitConcepts/glossa-lab/glossa-corpus/indus/sources/rmrl/raw/indusscript-probe/firestore_indusarrays_full.jsonl (TRISTEN-DESKTOP, Windows clone, branch phase-next; gitignored; not in git)"
+checksum_sha256: "073a83aa5e0f81055e7b68d2ccdf160027bb5061b4b870e58f3d3457cad1a578"
+license: "RMRL research use — contact required for concordance export (per sources/rmrl/provenance.yaml). The permission basis recorded elsewhere stands unchanged by this pin. Internal research use only; the export is not redistributed and its content is not committed to this repository."
+license_url: "https://rmrl.in"
+rights_status: research_use
+license_class: restricted
+title: "Indusarrays — RMRL Indus Script portal (indusscript.in) Firestore corpus export"
+author: "Roja Muthiah Research Library, Chennai; Indus Research Centre (indusscript.in portal; concordance based on Mahadevan 1977)"
+publication_date: ""
+language: und
+script: Indus
+period: "2600–1900 BCE"
+region: "Indus Valley"
+genre: epigraphy
+source_format: jsonl
+processing_stage: raw
+confidence: "0.99"
+ocr_quality: n_a
+manually_reviewed: true
+status: keep
+glossa_legacy_asset: false
+notes: >
+  INTAKE-PINNED IN PLACE 2026-10-25 (holdings reconciliation register
+  item #24; verification on the desktop via relay — see
+  indusarrays_intake_2026-10-25.md in this directory for the full record).
+  The file was never lost: it has sat since its capture on 2026-05-14
+  (file mtimes 2026-05-14, EDT) in the indusscript-probe bundle inside the
+  Windows glossa-lab clone on TRISTEN-DESKTOP, under
+  glossa-corpus/indus/sources/rmrl/raw/ — a tree excluded from git by
+  glossa-corpus/.gitignore line 12 ("sources/"), so it was never committed,
+  appears in no other clone, and is absent from this repository.
+  The standing record describing this layer as LOST (the Spec 054 execution
+  outcome and the Route 2 recovery procedure, both written on the facts as
+  then known) is factually superseded by this pin: the layer is LOCATED,
+  at the path above. Spec 054's executed verdict stands exactly as
+  executed — its G2 gate failed on the facts as known at execution time;
+  this pin corrects the custody fact only, and changes no verdict, no spec
+  record, and no permission basis.
+  File of record: firestore_indusarrays_full.jsonl — 1,938,791 bytes;
+  3,916 records (line count re-counted on the desktop 2026-10-25 by two
+  methods, agreeing); SHA-256
+  073a83aa5e0f81055e7b68d2ccdf160027bb5061b4b870e58f3d3457cad1a578.
+  The probe bundle around it (the rmrl/raw tree totals 53,576,874 bytes;
+  the indusscript-probe folder itself 41,807,016 bytes) holds the sibling
+  exports firestore_indusarrays_full.json (3,282,806 bytes, SHA-256
+  0a3961ace8eb81dcfa1a29c5866724439c7721407827c4253a6f064a77c534d9),
+  firestore_indusarray_extra.json (3,294,021 bytes, SHA-256
+  da1a3e4d7f97d743971cfcafd50456039e94cfbfcc5d99be8b5aed2cab3bb048),
+  firestore_missing_texts.json (3,293,902 bytes, SHA-256
+  460f703fa8f9728a77a1f28e0d56a33d7db6c2afa558e691c57d0e7192fa72f1),
+  the network capture indusscript.har (22,636,105 bytes),
+  firestore_calls.json, firestore_collection_analysis.json, the portal
+  app bundle files, and im77intro.pdf (2,705,072 bytes, SHA-256
+  d146f66168b321e52ea2745a97e875cf251d8147ae0e7f2819e7d23eba77f443 — the
+  same scan recorded at CITATIONS.md §A.1 / sources/mahadevan-1977).
+  DESIGNATED USE: the substrate for a Spec 054 re-execution, if and when
+  the owner orders one, and the data leg of Route 2. The Route 2 read
+  script's frozen census figures (3,916 / 2,665 / 3,137 / 12,494) can be
+  checked against this held file first; its record count already matches
+  the first figure exactly.
+  CUSTODY WARNING: SINGLE-COPY. The file exists only on the desktop's
+  disk, gitignored, with no second copy in any swept store. Whether a
+  content copy is made, and to where, is an OWNER decision — it is not
+  made by this pin. This intake is metadata-only: no content was copied,
+  moved, or ingested by it, and the file itself never enters git.
+source_score:
+  textual_value: 5
+  metadata_quality: 4
+  license_clarity: 2
+  language_coverage: 5
+  rarity: 5
+  ocr_quality: 3
+  scholarly_reliability: 4
+  alignment_potential: 5
+  annotation_depth: 4
+  acquisition_difficulty: 1

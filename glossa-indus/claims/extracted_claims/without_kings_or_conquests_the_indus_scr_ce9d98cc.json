@@ -426,6 +426,39 @@
         ],
         "evidence_level": "FULL TEXT",
         "effect": "No claim status, stage, anchor, or score is changed by this note."
+      },
+      "spec071_retirement_append_2026_10_25": {
+        "date": "2026-10-25",
+        "kind": "spec071-retirement-closing-append",
+        "decision": "docs/decisions/2026-10-25-spec-071-retirement-decision.md",
+        "authority": "Owner decision, Tristen Pierson, 2026-10-25: Candidate C of the 2026-10-24 Spec 071 redesign proposal, approved as recommended. Candidate B (the endings atlas) was not approved and is not part of this act.",
+        "closing_state": "RETIRED - the sky-signs endings question is untestable in this programme",
+        "claim_status_after": "untested",
+        "closing_finding": "The celestial class is empty in every classification this programme can honestly build. Asset A v1 (187 rows) and Asset A v2 (552 rows), both built from published sources only, entered blind, the second on the repaired keying surface that keys 556 of the 557 signs the documented corpus uses, each contain zero sky_cycle rows - because no ruled published source depicts any keyed sign as a sky object. The verbatim labels beneath the kind column were checked for this closure: across 552 rows, the only celestial words in any published label describe ray or sunburst features of other depicted objects, in three rows, none an identification of a sign as a celestial body (each excluded in advance by Spec 071 section 4.1). A class cannot be tested at a floor of 30 occurrences when it has no members. The claim stands UNTESTED, and the question is retired in this programme - not falsified, not supported: untestable here, because the published-identification layer the programme's discipline requires does not contain the class the question is about. The empty celestial class is the line's closing finding.",
+        "reopening_trigger": {
+          "condition": "The line reopens if and only if a published sign list that actually identifies signs as celestial becomes available to the programme and is exhibited - its labels inspectable in full, as Spec 073's gate 0.3 required of its sources.",
+          "named_candidate_sources": [
+            "Mahadevan 1977",
+            "Wells 1998"
+          ],
+          "candidate_source_note": "The two sources struck at Spec 073's freeze for non-exhibition. The record contains no evidence that either source depicts celestial signs; the trigger names them because they are the programme's known unexamined published lists, not because they are promising.",
+          "census": "If either source is ever acquired for any reason, a bounded census - count its celestial identifications against Registry v2, with occurrences in the primary population - decides whether a classification build is warranted.",
+          "thresholds": {
+            "min_celestial_signs": 5,
+            "min_primary_population_occurrences": 30,
+            "threshold_source": "Spec 071's floor: at least 5 celestially identified signs totalling at least 30 primary-population occurrences."
+          },
+          "if_below_thresholds": "The closure stands and the census is appended to it.",
+          "until_trigger_fires": "No successor spec, re-freeze, or re-test of this question is to be proposed."
+        },
+        "honesty_condition": "If a ruled source already in the programme's hands is shown to identify a sign as celestial - a row this closure's label check missed - the closure is wrong on its own terms and must be corrected by dated append, with the row named.",
+        "evidence": [
+          "specs/071-hunt-sky-signs-successor/outcome.md",
+          "specs/073-keying-surface-repair/outcome.md",
+          "specs/073-keying-surface-repair/asset-a-v2/depicted-kind-classification.csv",
+          "docs/decisions/2026-10-25-spec-071-retirement-decision.md"
+        ],
+        "effect": "No claim status, stage, anchor, or score is changed by this append. The claim stands UNTESTED; the retirement is the question's formal closing state in this programme, not a verdict, and it establishes nothing about sky signs, Hunt's claim, calendars, cycles, or sign meanings."
       }
     },
     {

@@ -174,6 +174,23 @@ work that quoted the lost file's exact strings (rather than its data)
 will differ. Sign IDs remain '?' placeholders exactly as in the lost
 file's Phase-23 state — the rebuild does not upgrade them.
 
+**Correction (2026-10-25, later the same day):** a late-surfacing
+derived output — the Phase-23a seal-sign audit
+(`outputs/phase23a_seal_sign_audit.json` in run trees) — preserves the
+lost file's exact `find_country` strings for the 11 sign-bearing seals
+and the exact Phase-24-augmented `signs_source` strings (including the
+lost Laursen rows' reference strings) for the four cross-referenced
+seals. The rebuilt file was amended to adopt those strings **verbatim**
+("Mesopotamia" ×5; "Iran (Elam)"; "India (Indus civilization)"; "Kuwait
+(Dilmun)"; "Mesopotamia (presumed)"; suffix references "Gadd 1932:
+pl. I, no. 2" etc.), and the Phase-24b audit independently confirms all
+five Laursen cross-reference assignments. The three none-tier seals
+(AO_22310, KONAR_SANDAL_S_CYLINDER, AL_MAQSHA_TOKEN_2) are absent from
+that audit, so their `find_country` values remain re-derived. With this
+amendment, the cross-check against every surviving per-record output is
+diff-free for the 11 sign-bearing seals. The Laursen rows in §3
+likewise adopt the verbatim reference strings for rows 14, 16, 17, 18.
+
 ## 3. laursen_2010_table1.json — PARTIAL REBUILD; the table itself is an open gap
 
 **Source paper:** Laursen, S. T. (2010), "The westward transmission of

@@ -1,0 +1,45 @@
+# Scientific stack — pinned 2026-10-25 (red-team finding RT-25).
+#
+# The backend's execution and analysis scripts import numpy,
+# scipy, and pandas (grep of backend/ for the three imports:
+# numpy in 72 files, pandas in 26, scipy in 11, including the
+# statistics-bearing scripts phase132_comprehensive_validation.py,
+# phase424_arm_a_precision_calibration_repair.py, and
+# phase437_farmer_nb1_shakti.py's permutation battery via numpy),
+# but the declared environment carried none of them as pins:
+# pyproject.toml declares numpy only as a range (>=1.26,<3) and
+# scipy and pandas not at all, so a declared-environment install
+# could not recompute the programme's statistics. This file pins
+# the imported scientific stack at the versions of the
+# environments of record:
+#
+#   numpy 2.5.3  — the programme venv of record
+#                  (~/workspace/venvs/glossa-lab) and the desktop
+#                  execution environment of record for Spec 062
+#                  (specs/062-arm-a-precision-calibration-repair/
+#                  outcome.md: Python 3.12.3, NumPy 2.5.3,
+#                  SciPy 1.18.1).
+#   scipy 1.18.1 — the same Spec 062 environment of record. The
+#                  programme venv of record carries no scipy at
+#                  all — that absence is the gap this pin closes.
+#                  A second environment's versions are on record
+#                  in the same outcome file: the drafting
+#                  machine ran NumPy 1.26.4 / SciPy 1.11.4,
+#                  expressly "not the execution environment of
+#                  record."
+#   pandas 3.0.6 — no glossa execution of record imports pandas
+#                  (the Phase-430…440 execution scripts do not);
+#                  pandas is imported by legacy analysis scripts
+#                  under backend/scripts/. 3.0.6 is the only
+#                  pandas version installed in any workspace
+#                  venv at the pin date; the pin declares the
+#                  imported stack completely rather than leaving
+#                  the import undeclared.
+#
+# The full dependency set remains pyproject.toml; this file is
+# the scientific-stack pin the finding required, and CI's
+# fallback install path (pip install -r requirements.txt)
+# reads it.
+numpy==2.5.3
+scipy==1.18.1
+pandas==3.0.6

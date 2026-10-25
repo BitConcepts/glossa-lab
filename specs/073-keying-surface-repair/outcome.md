@@ -67,3 +67,30 @@ Step-0 gates 0.1–0.4 all PASS (execution/step0-record.json).
   against the repaired surface; that is a separate owner decision.
 - It establishes nothing about what any sign means; the celestial
   count is a property of the published labels, not of the script.
+
+---
+
+## Correction append — 2026-10-25 (red-team finding RT-31)
+
+The five sign bullets under "The five named signs" above each end
+"…the Catalog's Parpola concordance places it at Parpola." — the
+object of the sentence is missing in all five; the bullets stand
+as written and are not edited. The complete placements, verified
+against the machine record (`reports/phase436_results.json`,
+M2_five_named_signs, field `catalog_section_2_5_placement`; Fuls
+2023, *Catalog of Indus Signs*, section 2.5) on 2026-10-25, are:
+
+- ICIT 136 → Parpola (1994) sign 6
+- ICIT 298 → Parpola (1994) sign 217
+- ICIT 401 → Parpola (1994) sign 107
+- ICIT 617 → Parpola (1994) sign 272
+- ICIT 824 → Parpola (1994) sign 373
+
+This append changes no outcome, count, or disposition in the
+record above; it supplies the truncated object of five sentences
+from the record's own machine layer.
+
+---
+
+*AI disclosure: correction append executed by an AI agent (Muse,
+via Muse) at the direction of Tristen Pierson, per constitution §VI.*

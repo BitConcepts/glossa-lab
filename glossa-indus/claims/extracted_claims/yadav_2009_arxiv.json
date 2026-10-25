@@ -178,7 +178,7 @@
           }
         }
       ],
-      "not_understood": "Positional preference is not meaning. Opening and closing markers appear in many symbol systems, linguistic and not, so this pattern cannot show the script encodes language. The counts also depend on where inscriptions are segmented - where one text ends and another begins - and on the sign inventory of one corpus lineage; the cross-compilation disagreement (Phase-125) means the same exercise on the other great compilation might not return the same sign sets. What would change the picture: a falsifier written onto the record, and the test rerun on the strict core and on an independent corpus with the position rules fixed in advance.",
+      "not_understood": "Positional preference is not meaning. Opening and closing markers appear in many symbol systems, linguistic and not, so this pattern cannot show the script encodes language. The counts also depend on where inscriptions are segmented - where one text ends and another begins - and on the sign inventory of one corpus lineage; the cross-compilation disagreement (Phase-125) means the same exercise on the other great compilation might not return the same sign sets. Refreshed 2026-10-25 (red-team finding RT-21): the two things this text formerly said would change the picture have both happened, and neither has yet produced a test result. A falsifier was written onto the record: the Spec 054 amendment's falsification condition was appended at that spec's amended freeze on 2026-10-23 (see spec054_falsifier_append_2026_10_23 on this claim). The test then froze and was executed as Spec 054 (Phase-438), and closed UNEXECUTED at step 0: STRICT CORPUS NOT PINNABLE - the strict corpus layer of record could not be uniquely identified and pinned, so no positional quantity was computed (see spec054_outcome_append_2026_10_24 on this claim). The claim itself is untouched by that closure: it stands strongly_supported, stage explained, with the falsifier carried on the record. What would change the picture now: execution of the frozen test once the corpus layer is recovered and pinnable - the falsifier is in place and awaits that execution.",
       "explanation_record": {
         "author": "Tristen Pierson",
         "author_kind": "human",
@@ -235,6 +235,18 @@
         "phase": 438,
         "outcome": "NOT SUPPORTED",
         "note": "Spec 054 (Phase-438) RE-EXECUTION, executed 2026-10-25 under the owner's execution order of 2026-10-25 (15:00 EDT), on the recovered indusarrays layer \u2014 located in place in the owner's desktop clone, where it had been held since its 2026-05-14 acquisition, and intake-pinned 2026-10-25 (PR #393) \u2014 under the frozen amended contract (freeze digest d85f6ace80e2ae2935d96d4916e51db686f11fb2c4473dc24d1198580012bb57; OSF registration 8spvf). All step-0 gates passed: the strict corpus was identified and pinned (the V3 loader's census of the layer reproduces the Phase-43 record's census exactly: 3,916 records; 2,665 unique dockeys; 3,137 sequences; 12,494 sign instances) and battery NB-1 ran in both arms. The amended statement is not supported under battery NB-1 as frozen: a positional class reappears at less than one half, with the pooled overlap at or below the label-shuffle null's 95th percentile. This verdict falsifies the amended statement only. It does not falsify Yadav et al. (2010)'s original statement \u2014 the original battery's sets cannot be exhibited \u2014 and it does not move the parent claim's recorded status."
+      },
+      "spec054_not_understood_refresh_2026_10_25": {
+        "date": "2026-10-25",
+        "kind": "rt21-not-understood-refresh",
+        "spec": "054",
+        "note": "Refresh of this claim's not_understood field under red-team finding RT-21 (2026-10-24/25): the field's closing sentence described a pre-October state (a falsifier still to be written and a test still to be rerun). Both have since happened - the falsifier was appended at the Spec 054 amended freeze (2026-10-23) and the frozen test closed UNEXECUTED at step 0 as STRICT CORPUS NOT PINNABLE (Phase-438, 2026-10-24) - so the field is refreshed to the true current state. The claim's first sentences (what the pattern does not establish) are unchanged in substance.",
+        "evidence": [
+          "specs/054-yadav-opening-closing/outcome.md",
+          "specs/054-yadav-opening-closing/step0-record.md",
+          "reports/phase438_results.json"
+        ],
+        "effect": "not_understood refreshed only; claim_status (strongly_supported), stage (explained), and the appended falsification_condition are unchanged."
       }
     }
   ],

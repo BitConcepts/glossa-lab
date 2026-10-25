@@ -81,16 +81,11 @@ _NODE_SPECS = [
      "under the frozen majority partition; grade-flips "
      "are findings. Records internal under the Roif "
      "gate. CPU. "
-     "Outcome (2026-10-22): gates 0.1-0.5 PASS — the "
-     "primary run returned FAMILY NOT SUPPORTED "
-     "(w = 0.0000: no tested member passes L = 0.765; "
-     "M050 0.4056, M060 0.3010, M145 0.2500, M147 "
-     "0.0850; M048 not tested, total 9); the "
-     "documented + corroborated sensitivity returned "
-     "the same word (not GRADE-SENSITIVE); one "
-     "member-level grade-flip finding (M048's carried "
-     "label). Records internal under the Roif gate "
-     "(spec 072 outcome.md)."),
+     "Outcome (2026-10-22): executed — held under "
+     "the Roif gate (spec 072 outcome.md; result "
+     "content redacted 2026-10-25 under the owner's "
+     "realignment decision — see docs/decisions/"
+     "2026-10-25-realignment-decision.md)."),
 ]
 
 

@@ -9895,64 +9895,34 @@ records, and run reports. Full inventory and classification:
 **AI disclosure:** executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per constitution §VI.
 
-## 2026-10-22 — Spec 072 EXECUTED (Phase-431): FAMILY NOT SUPPORTED
+## 2026-10-22 — Spec 072 EXECUTED (Phase-431) — held under the Roif gate
 
-Spec 048's question re-designed ICIT-native and executed on the Shakti
-corpus, under the frozen Spec 072 contract (freeze digest
+Spec 072 (Phase-431) was executed on 2026-10-22 under its frozen
+contract (freeze digest
 3925f365bdc452031bb7356f9b357c6d5068da4a835afcfd75b0e9ffa3a69e92; freeze
-PR #341 merged at 862f56d8; OSF registration tc8ey filed at the freeze,
-pending the owner's approval act at the time of the run; execution
-commissioned in the same owner tasking as the freeze). Step 0, in the
-frozen order, PASS in full: gate 0.1 the Shakti intake assertion
-(corpus 345241b1…, row-grades 02394241…, census reproduced exactly —
-5,704 rows / 5,536 analyzable / 3,212 documented / 2,087 corroborated /
-405 uncorroborated / 4,904 CISI-keyed / 18,065 true tokens / 713 signs /
-77 sites); gate 0.2 the Asset F digest assertion (ca5fb1b5…, 7 members,
-Spec 044 §4.2 rule); gate 0.3 the freeze-pinned concordance exhibited
-(M048 = ICIT 243, M050 = 220, M060 = 235, M145 = 032, M147 = 033
-identified; M047 and M052 UNIDENTIFIED IN ICIT under the confirmed
-DD-072-5 disposition — named in every record, excluded from both
-populations' weighting, their ICIT occurrence share not measurable);
-gate 0.4 the census re-derived exactly (primary totals 243: 9 NOT
-SCANNED; 220: 286; 235: 188; 032: 334; 033: 315 — four testable, not
-TOO THIN); gate 0.5 the freeze-fixed verdict line exhibited (L = 0.765,
-95th percentile nearest-rank rank 82 of the 86-sign non-fish reference
-distribution on the primary population, record pin 55d266b3…; derived
-at the freeze from non-members only, before any member was scored; Spec
-048's 25.9% / 3.8% and its 20% line were never inputs). Primary run
-(documented-lineage rows): ending-follower fractions M050 0.4056
-(101/249), M060 0.3010 (31/103), M145 0.2500 (46/184), M147 0.0850
-(13/153) — no tested member passes L = 0.765; tested members carry
-1,123 occurrences, passing members 0, w = 0.0000; the coverage
-condition does not fire (the one untested identified member, M048 at 9
-occurrences, does not outweigh the tested side). Under the frozen
-majority partition (OPEN-072-5, confirmed as drafted — Spec 048's
-70%/30% lines not carried) the family word is FAMILY NOT SUPPORTED.
-The mandatory documented + corroborated sensitivity returns the same
-word (M050 0.2045, M060 0.1942, M145 0.2052, M147 0.1142; w = 0.0000),
-so the headline is not GRADE-SENSITIVE; the one member-level
-grade-flip finding is M048's carried label (primary not scanned →
-sensitivity not supported; the member is untested in both populations
-and the flip moves no verdict). The verdict is about shared positional
-behaviour on this corpus only: it establishes nothing about what any
-fish sign meant or was pronounced, and Spec 048's closure and the
-Phase-43 record stand exactly as recorded. Records:
+PR #341 merged at 862f56d8; OSF registration tc8ey). Under spec §7
+limit 1 (the Roif gate), this study is named in programme reporting
+only as: **executed — held under the Roif gate**, without result
+content, until Roif 2025a + 2025b are cited and the owner clears the
+specific publication act. Records:
 specs/072-fish-family-profiles-redesign/outcome.md,
-reports/phase431_results.json (SHA-256 f0679d90…),
-reports/phase431_report.md (SHA-256 d4fa6cb9…); the script is
-deterministic (both outputs byte-identical on a second run). The
-corpus and its row-level products stayed restricted-local; no
-restricted data entered git. A dated outcome append
-(spec072_outcome_2026_10_22) was added to claim
-parpola_2010_dravidian_solution_manual_002, append-only. Foundation
-check as measured on the execution tree: 40 passed / 0 failed /
-8 warnings (the standing eight; none new). All records are internal
-under the Roif gate: no publication of this result in any form without
-citation of Roif 2025a + 2025b and the owner's clearance of the
-specific act.
+reports/phase431_report.md, reports/phase431_results.json — all held
+in the same form.
+
+**Redaction — 2026-10-25.** This entry formerly carried the study's
+full result content. It was reduced to the permitted form above on
+2026-10-25 under the owner's realignment decision
+(docs/decisions/2026-10-25-realignment-decision.md; red-team finding
+RT-26), by the same act that reduced the outcome record, the phase
+report and machine record, the claim append, the experiment-graph
+description, and the held insert file. Git history retains the
+original text of this entry; no history purge has been authorised or
+performed. A superseding entry recording the act stands at the end of
+this ledger under 2026-10-25.
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
 
 ## 2026-10-22 — Spec 070 EXECUTED (Phase-433): CLOSED AT STEP 0 — POPULATION NOT KEYED
 
@@ -10678,4 +10648,28 @@ specs/074-hunt-opening-signs-repaired-surface/step0-record.md,
 reports/phase440_results.json, reports/phase440_report.md.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.
+
+
+## 2026-10-25 — Realignment: Spec 072 records redacted to the Roif gate's permitted form
+
+Under the owner's decision of 2026-10-25 (criterion directed by the
+owner: the option best suited to the success of the programme;
+docs/decisions/2026-10-25-realignment-decision.md), the full
+realignment package arising from the 2026-10-24 red-team attack is
+approved, and its Item 1.1 is decided as option (a), REDACT. The
+2026-10-22 Spec 072 entry above is reduced to the Roif gate's
+permitted form, as are specs/072-fish-family-profiles-redesign/
+outcome.md, reports/phase431_report.md, reports/phase431_results.json,
+the spec072_outcome_2026_10_22 append on claim
+parpola_2010_dravidian_solution_manual_002,
+backend/glossa_lab/experiment_graph_phase431.py's recorded outcome
+sentence, and glossa-corpus/indus/
+pierson_2026_indus_decipherment_spec072_insert_HELD.md. The act is
+recorded in full — surfaces, reasoning, sweep, and the standing
+residual that git history retains the original text (no history purge
+authorised or performed) — in the decision record. No verdict, claim
+status, stage, or score is changed by this act.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.

@@ -5,8 +5,7 @@ records on main. Do not edit by hand; regenerate.
 
 ## The strengthened gate (C1–C4)
 
-- Freezes carrying gate records so far: **0** — none yet.
-- The first strengthened freeze is the endings atlas, designated a SHADOW freeze in its design: the gate runs in full and is reported; the C4 check becomes a required branch-protection check with the freeze after it. Until then this table is the machinery's own readiness record, not a freeze record.
+- Freezes carrying gate records so far: **1** (075-depicted-kind-endings-atlas)
 - Freezes blocked by C2 (spot-check outcome not PASS): **0**
 - Freezes blocked by C3 (evidence-sample outcome not PASS): **0**
 - C2 mismatches recorded (resolved + unresolved): **0**
@@ -33,7 +32,7 @@ Named blind spots, in plain words:
 
 ## The register-discipline gate (for scale)
 
-- Freezes with an AEE freeze note on main: **46** (counted from `specs/*/aee/freeze-aee-note.md`; the notes are prose and are not parsed by this generator). Across those freezes the gate's recorded findings were FR-2.3 draft-cap hygiene records; it blocked no freeze. That is the finding (RT-01) this machinery answers.
+- Freezes with an AEE freeze note on main: **47** (counted from `specs/*/aee/freeze-aee-note.md`; the notes are prose and are not parsed by this generator). Across those freezes the gate's recorded findings were FR-2.3 draft-cap hygiene records; it blocked no freeze. That is the finding (RT-01) this machinery answers.
 
 ## What these statistics do and do not establish
 

@@ -1,0 +1,138 @@
+{
+ "record_type": "c3-evidence-sample",
+ "schema_version": "1.0",
+ "spec": "specs/075-depicted-kind-endings-atlas",
+ "claims_file": "specs/075-depicted-kind-endings-atlas/claims.json",
+ "verification_mode": "on",
+ "verifier": "Cosmo (Muse subagent, freeze worker; session d02f80d3) \u2014 read each sampled claim's cited evidence against the claim text; engine resolution run: aee assess --verify-evidence (lenient, aee 1.5.3), 27 evidence items checked, findings recorded per claim in the notes",
+ "sample_rule": "every verdict-bearing claim + random sample of at least 20% of the remainder",
+ "sample_seed": 20261025,
+ "claims": [
+  {
+   "claim_id": "F075-C01",
+   "verdict_bearing": false,
+   "sampled": false,
+   "verification": "not-sampled",
+   "evidence_refs_checked": [],
+   "note": ""
+  },
+  {
+   "claim_id": "F075-C02",
+   "verdict_bearing": false,
+   "sampled": false,
+   "verification": "not-sampled",
+   "evidence_refs_checked": [],
+   "note": ""
+  },
+  {
+   "claim_id": "F075-C03",
+   "verdict_bearing": true,
+   "sampled": true,
+   "verification": "verified",
+   "evidence_refs_checked": [
+    "2026-10-25-endings-atlas-design.md (programme goal record, files/)",
+    "specs/073-keying-surface-repair/outcome.md; specs/073-keying-surface-repair/asset-a-v2/depicted-kind-classification.csv"
+   ],
+   "note": "Verifier read the design (\u00a71, \u00a75: per-kind test, ratio >= 1.5, Fisher 5%, half-of-occurrences; falsifiable shape) and Spec 073's executed census (kinds other 246 / human 43 / animal 30 / object_goods 22). Both support the claim as bounded. Engine (assess --verify-evidence, lenient): EV0/EV1 MISSING-REF findings are the engine's single-path reading of multi-path and out-of-repo (goal-record) refs; every individual path was resolved and read by the verifier."
+  },
+  {
+   "claim_id": "F075-C04",
+   "verdict_bearing": false,
+   "sampled": false,
+   "verification": "not-sampled",
+   "evidence_refs_checked": [],
+   "note": ""
+  },
+  {
+   "claim_id": "F075-C05",
+   "verdict_bearing": false,
+   "sampled": true,
+   "verification": "verified",
+   "evidence_refs_checked": [
+    "specs/073-keying-surface-repair/asset-a-v2/asset-a-v2-freeze.json; specs/073-keying-surface-repair/registry-v2/registry-v2-freeze.json; specs/073-keying-surface-repair/outcome.md",
+    "docs/decisions/2026-10-22-shakti-corpus-intake-record.md"
+   ],
+   "note": "Verifier read Spec 073's freeze records for both assets (digests and counts as pinned; recomputed equal at this freeze) and the 2026-10-22 intake record (corpus and grades pins as stated). Support confirmed. Engine: EV0 MISSING-REF is the multi-path single-string reading; EV1 QUALITY-MISMATCH is the engine deriving 'primary' for a docs/decisions ref against the declared 'artifact' \u2014 a labelling difference, recorded, not a support failure."
+  },
+  {
+   "claim_id": "F075-C06",
+   "verdict_bearing": true,
+   "sampled": true,
+   "verification": "verified",
+   "evidence_refs_checked": [
+    "specs/071-hunt-sky-signs-successor/spec.md",
+    "docs/decisions/2026-10-22-shakti-corpus-intake-record.md"
+   ],
+   "note": "Verifier read Spec 071's frozen \u00a73 (documented-lineage only; 3,045 analyzable; 550 of 557 in sequences >= 2) and the intake record + grades (3,212 / 2,087 / 405); population figures independently recomputed at this freeze and in the C2 spot-check. Support confirmed. Engine: EV1 QUALITY-MISMATCH only (docs ref labelling, as C05)."
+  },
+  {
+   "claim_id": "F075-C07",
+   "verdict_bearing": true,
+   "sampled": true,
+   "verification": "verified",
+   "evidence_refs_checked": [
+    "2026-10-25-endings-atlas-design.md (programme goal record, files/)",
+    "specs/073-keying-surface-repair/outcome.md; specs/073-keying-surface-repair/asset-a-v2/depicted-kind-classification.csv"
+   ],
+   "note": "Verifier read the design (R5 census-before-rates, R9 TOO THIN, \u00a74 floor table 20/30 with the floor set below object_goods 22) and Spec 073's census. Support confirmed. Engine: EV0/EV1 MISSING-REF are the multi-path / goal-record ref forms; paths resolved and read individually."
+  },
+  {
+   "claim_id": "F075-C08",
+   "verdict_bearing": true,
+   "sampled": true,
+   "verification": "verified",
+   "evidence_refs_checked": [
+    "specs/074-hunt-opening-signs-repaired-surface/freeze.json; specs/074-hunt-opening-signs-repaired-surface/outcome.md; specs/074-hunt-opening-signs-repaired-surface/step0-record.md",
+    "specs/073-keying-surface-repair/registry-v2/no-published-identity.json; specs/073-keying-surface-repair/registry-v2/registry-v2-freeze.json; specs/073-keying-surface-repair/asset-a-v2/asset-a-v2-freeze.json"
+   ],
+   "note": "Verifier read Spec 074's freeze record (DD-074-8 two-leg route), its outcome and step-0 record (31 of 31 keyed under the route), and Spec 073's NO PUBLISHED IDENTITY schedule (sole entry: token 999). Support confirmed. Engine: EV0/EV1 MISSING-REF are multi-path strings; every path resolved and read."
+  },
+  {
+   "claim_id": "F075-C09",
+   "verdict_bearing": false,
+   "sampled": false,
+   "verification": "not-sampled",
+   "evidence_refs_checked": [],
+   "note": ""
+  },
+  {
+   "claim_id": "F075-C10",
+   "verdict_bearing": false,
+   "sampled": false,
+   "verification": "not-sampled",
+   "evidence_refs_checked": [],
+   "note": ""
+  },
+  {
+   "claim_id": "F075-C11",
+   "verdict_bearing": true,
+   "sampled": true,
+   "verification": "verified",
+   "evidence_refs_checked": [
+    "2026-10-25-endings-atlas-design.md (programme goal record, files/)",
+    "specs/071-hunt-sky-signs-successor/spec.md"
+   ],
+   "note": "Verifier read the design (\u00a75 verdict words; no pooled verdict) and Spec 071's frozen \u00a7\u00a74.2-4.4 (pooled rate, frequency-matched comparison, two-sided Fisher, per-sign report). Support confirmed. Engine: EV0 MISSING-REF is the goal-record ref form; resolved and read."
+  },
+  {
+   "claim_id": "F075-C12",
+   "verdict_bearing": false,
+   "sampled": true,
+   "verification": "verified",
+   "evidence_refs_checked": [
+    "2026-10-25-endings-atlas-design.md (programme goal record, files/)",
+    "docs/decisions/2026-10-25-spec-071-retirement-decision.md"
+   ],
+   "note": "Verifier read the design (\u00a78: no outcome moves any anchor, reading, state, verdict, status, or frozen text) and the retirement decision (\u00a75: the act wrote nothing else; regeneration byte-identical). Support confirmed. Engine: EV0 MISSING-REF (goal-record form) and EV1 QUALITY-MISMATCH (docs ref labelling), as above."
+  },
+  {
+   "claim_id": "F075-C13",
+   "verdict_bearing": false,
+   "sampled": false,
+   "verification": "not-sampled",
+   "evidence_refs_checked": [],
+   "note": ""
+  }
+ ],
+ "outcome": "PASS"
+}

@@ -1,0 +1,291 @@
+{
+ "record_type": "c2-spotcheck",
+ "schema_version": "1.0",
+ "spec": "specs/075-depicted-kind-endings-atlas",
+ "drafter": "Cosmo (Muse subagent, freeze worker; session d02f80d3)",
+ "recomputer": "independent recomputer subagent (spawned for this freeze; did not draft the spec; worked from the spec text and the pinned inputs only)",
+ "method": "Recomputed from the spec text and the pinned inputs only; the drafter's workings were not consulted.",
+ "sample_rule": "every gate-turning quantity + random 25% (minimum 3) of the rest",
+ "sample_seed": 20261025,
+ "quantities": [
+  {
+   "name": "asset_a_v2_sha256",
+   "source_in_spec": "spec \u00a73 inputs table (Asset A v2 pin)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": "681e017da8b3f93aeade7e85361565fa8f3f4178b167dfa2448f5b4c239a8193",
+   "recomputed_value": "681e017da8b3f93aeade7e85361565fa8f3f4178b167dfa2448f5b4c239a8193",
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "asset_a_v2_rows",
+   "source_in_spec": "spec \u00a73 inputs table",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": 552,
+   "recomputed_value": 552,
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "asset_a_v2_kind_counts",
+   "source_in_spec": "spec \u00a73 (Asset A v2 census; recounted at the freeze)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": {
+    "animal": 30,
+    "human": 43,
+    "object_goods": 22,
+    "other": 246,
+    "sky_cycle": 0,
+    "unidentified": 211
+   },
+   "recomputed_value": {
+    "animal": 30,
+    "human": 43,
+    "object_goods": 22,
+    "other": 246,
+    "unidentified": 211
+   },
+   "status": "agree",
+   "note": "Recomputer's dict carries no sky_cycle key: no CSV row carries that depicted_kind, which is the spec's stated 0. Equal in substance to the pinned vector."
+  },
+  {
+   "name": "asset_a_v2_borderline_rows",
+   "source_in_spec": "spec \u00a75.4 S1 (dispute_status distribution)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": 4,
+   "recomputed_value": 4,
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "asset_a_v2_contested_rows",
+   "source_in_spec": "spec \u00a75.4 S2 (dispute_status distribution)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": 0,
+   "recomputed_value": 0,
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "registry_v2_sha256",
+   "source_in_spec": "spec \u00a73 inputs table (Registry v2 pin)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": "42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71",
+   "recomputed_value": "42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71",
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "registry_v2_rows",
+   "source_in_spec": "spec \u00a73 inputs table",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": 1013,
+   "recomputed_value": 1013,
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "corpus_sha256",
+   "source_in_spec": "spec \u00a73 inputs table (Shakti corpus pin)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": "345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68",
+   "recomputed_value": "345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68",
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "grades_sha256",
+   "source_in_spec": "spec \u00a73 inputs table (row-grades pin)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": "02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739",
+   "recomputed_value": "02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739",
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "grade_counts",
+   "source_in_spec": "spec \u00a73 (provenance audit grades)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": {
+    "documented-lineage": 3212,
+    "undocumented-corroborated": 2087,
+    "undocumented-uncorroborated": 405
+   },
+   "recomputed_value": {
+    "documented-lineage": 3212,
+    "undocumented-corroborated": 2087,
+    "undocumented-uncorroborated": 405
+   },
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "population_rows",
+   "source_in_spec": "spec \u00a73 population statement; gate 0.4",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": 3045,
+   "recomputed_value": 3045,
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "population_signs",
+   "source_in_spec": "spec \u00a73 population statement; gate 0.4",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": 557,
+   "recomputed_value": 557,
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "population_signs_ge2",
+   "source_in_spec": "spec \u00a73 population statement; gate 0.4",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": 550,
+   "recomputed_value": 550,
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "corroborated_population_rows",
+   "source_in_spec": "spec \u00a73 (sensitivity S3 population)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": 5131,
+   "recomputed_value": 5131,
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "smallest_identified_kind_count",
+   "source_in_spec": "spec \u00a74.5 (sign floor set just below this count)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": 22,
+   "recomputed_value": 22,
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "token999_primary_rows",
+   "source_in_spec": "spec \u00a74.3 (named exclusion spot-fact)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": 2,
+   "recomputed_value": 2,
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "token999_primary_occurrences",
+   "source_in_spec": "spec \u00a74.3 (named exclusion spot-fact)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": 2,
+   "recomputed_value": 2,
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "registry_v1_sha256",
+   "source_in_spec": "spec \u00a73 inputs table (Registry v1 pin)",
+   "gate_turning": false,
+   "sampled": true,
+   "pinned_value": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",
+   "recomputed_value": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "registry_v1_rows",
+   "source_in_spec": "spec \u00a73 inputs table",
+   "gate_turning": false,
+   "sampled": false,
+   "pinned_value": 803,
+   "recomputed_value": 803,
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "crosswalk_sha256",
+   "source_in_spec": "spec \u00a73 inputs table (final crosswalk pin)",
+   "gate_turning": false,
+   "sampled": true,
+   "pinned_value": "4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf",
+   "recomputed_value": "4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf",
+   "status": "agree",
+   "note": "Path correction recorded: the recomputer was tasked with data/crosswalks/final_crosswalk.csv, which does not exist; the spec's section 3 names data/crosswalks/sign_crosswalk_master.csv, the recomputer used that file, and the digest agrees with the pin. See adjudication section 6."
+  },
+  {
+   "name": "crosswalk_rows",
+   "source_in_spec": "spec \u00a73 inputs table",
+   "gate_turning": false,
+   "sampled": false,
+   "pinned_value": 205,
+   "recomputed_value": 205,
+   "status": "agree",
+   "note": "Same path correction as crosswalk_sha256; the row count agrees on the spec-named file."
+  },
+  {
+   "name": "anchors_sha256",
+   "source_in_spec": "spec \u00a73 inputs table (anchors pin, gate 0.3)",
+   "gate_turning": false,
+   "sampled": false,
+   "pinned_value": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+   "recomputed_value": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "corpus_rows",
+   "source_in_spec": "spec \u00a73 (corpus census)",
+   "gate_turning": false,
+   "sampled": true,
+   "pinned_value": 5704,
+   "recomputed_value": 5704,
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "total_analyzable_rows",
+   "source_in_spec": "spec \u00a73 (analyzable across grades)",
+   "gate_turning": false,
+   "sampled": false,
+   "pinned_value": 5536,
+   "recomputed_value": 5536,
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "documented_lineage_rows_total",
+   "source_in_spec": "spec \u00a73 (documented-lineage rows before analyzability)",
+   "gate_turning": false,
+   "sampled": false,
+   "pinned_value": 3212,
+   "recomputed_value": 3212,
+   "status": "agree",
+   "note": ""
+  }
+ ],
+ "coverage": {
+  "gate_turning_total": 17,
+  "gate_turning_checked": 17,
+  "other_total": 8,
+  "other_sampled": 3,
+  "other_checked": 8
+ },
+ "outcome": "PASS"
+}

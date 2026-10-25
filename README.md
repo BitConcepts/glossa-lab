@@ -13,9 +13,9 @@ Agentic computational linguistics research platform for statistical analysis, de
 
 > **Decipherment Status (re-based 2026-10-06 — see note below):** **94 strict SA-independent H+M readings** (90 HIGH + 4 MEDIUM) covering **73.68%** of Holdat IVS tokens (5,159/7,002) · 0 Dravidian phonotactic violations · grammar site-invariance 65/65 tested signs · 44 further anchors (43 HIGH + 1 MEDIUM) flagged `pending_non_sa_validation` (SA-lineage provenance; excluded from the strict set) · Fish-sign isolation test: 0/140 isolated across all 9 sites and Gulf catalog · M267 reclassified as genitive particle · 3-slot positional grammar z=10.3 (0/2000 permutations) · Independent replication: Nair 2026 (arXiv:2604.17828)
 
-> **Preprint (v4):** Pierson, T.K. (2026). *A Falsifiable Computational Decipherment Hypothesis for the Indus Valley Script: 161 Candidate Proto-Dravidian Anchors and a Three-Slot Positional Grammar.* Zenodo. DOI: [10.5281/zenodo.20414696](https://doi.org/10.5281/zenodo.20414696)
+> **Preprint (v8):** Pierson, T.K. (2026). *A Falsifiable Computational Decipherment Hypothesis for the Indus Valley Script: 161 Candidate Proto-Dravidian Anchors and a Three-Slot Positional Grammar.* Zenodo. DOI: [10.5281/zenodo.23604590](https://doi.org/10.5281/zenodo.23604590)
 
-> **Re-based after Phase-107/108 (Phase-109, 2026-10-06).** The v4 preprint's headline set (161 H+M anchors / 90.96% coverage / 59% Parpola agreement) has been **retired** as this programme's headline basis. Phase-107 falsified the project's simulated-annealing (SA) machinery as evidence for sign values (held-out anchor agreement 0.000; Sanskrit and scrambled controls statistically indistinguishable from Dravidian). Phase-108 classified all 287 anchors by provenance: 44 HIGH anchors were SA-derived or SA-confirmed-only, and a 116-anchor cohort traced to research-loop heuristic tables promoted without validation. Phase-109 re-reviewed that cohort under pre-registered rules (112 prior sourced readings restored, 1 kept on Parpola crosswalk support, 3 demoted), flagged the 44 SA-lineage anchors `pending_non_sa_validation`, and individually re-reviewed M293, M362, and M398 (each HIGH → MEDIUM). Headline numbers are now the **strict SA-independent set** — anchors whose provenance chain contains no SA — recomputed fresh on the post-review anchor table (`reports/phase109_rebase.json`). The v4 preprint remains the citation of record; a draft addendum recording the re-base is at `glossa-corpus/indus/pierson_2026_indus_decipherment_addendum_v5.md` (draft only, not submitted). Artifacts: `reports/phase107_*`, `reports/phase108_*`, `reports/phase109_*`.
+> **Re-based after Phase-107/108 (Phase-109, 2026-10-06).** The v4 preprint's headline set (161 H+M anchors / 90.96% coverage / 59% Parpola agreement) has been **retired** as this programme's headline basis. Phase-107 falsified the project's simulated-annealing (SA) machinery as evidence for sign values (held-out anchor agreement 0.000; Sanskrit and scrambled controls statistically indistinguishable from Dravidian). Phase-108 classified all 287 anchors by provenance: 44 HIGH anchors were SA-derived or SA-confirmed-only, and a 116-anchor cohort traced to research-loop heuristic tables promoted without validation. Phase-109 re-reviewed that cohort under pre-registered rules (112 prior sourced readings restored, 1 kept on Parpola crosswalk support, 3 demoted), flagged the 44 SA-lineage anchors `pending_non_sa_validation`, and individually re-reviewed M293, M362, and M398 (each HIGH → MEDIUM). Headline numbers are now the **strict SA-independent set** — anchors whose provenance chain contains no SA — recomputed fresh on the post-review anchor table (`reports/phase109_rebase.json`). The citation of record is now preprint v8 (Zenodo DOI 10.5281/zenodo.23604590, deposited 2026-10-23), which carries the re-based strict set; v4 is superseded. (Correction 2026-10-25, programme red team: the banner above previously named v4 as citation of record and linked a DOI that resolves to the v3.0.0 record.) Artifacts: `reports/phase107_*`, `reports/phase108_*`, `reports/phase109_*`.
 
 > **Errata (2026-10-12).** Two figures in this README misstated the canonical anchor table (`backend/reports/INDUS_FINAL_ANCHORS.json`) and are corrected in place. (1) The full post-review anchor table holds **166 HIGH + 5 MEDIUM + 3 LOW + 113 CANDIDATE** entries (the Indus Script Decipherment section previously stated 112 LOW + 4 CANDIDATE). (2) The anchors flagged `pending_non_sa_validation` number 44, of which **43 HIGH + 1 MEDIUM** (the status banner, the metrics table, and the research-status list previously stated 44 HIGH). The one MEDIUM anchor is M293, re-reviewed HIGH → MEDIUM in Phase-109, after the Phase-108 classification that flagged the set. Corrected immediately as errata under Spec 029 decision D-C (`specs/029-tao-claim-lifecycle/audit.md` §9): factual misstatements of the canonical record, distinct from interpretive re-staging.
 
@@ -299,7 +299,7 @@ The programme's provenance registry is indexed publicly on the Open Science Fram
 
 ---
 
-## Current research status (October 2026 — post Phase-109 re-base; preprint v4 of record)
+## Current research status (October 2026 — post Phase-109 re-base; preprint v8 of record)
 
 - **94 strict SA-independent H+M readings** — 90 HIGH + 4 MEDIUM confidence; **73.68% token coverage** of the 7,002-token Holdat corpus
 - **44 anchors flagged** `pending_non_sa_validation` (43 HIGH + 1 MEDIUM; SA-derived or SA-confirmed-only provenance, Phase-108 audit)
@@ -309,10 +309,10 @@ The programme's provenance registry is indexed publicly on the Open Science Fram
 - **M267 reclassified**: genitive particle (iN/in), not fish sign
 - **Three-slot grammar** (CLASSIFIER–TITLE–SUFFIX): z=10.3, 0/2000 permutations
 - **External replication**: Nair 2026 (arXiv:2604.17828) confirms non-random structure on ICIT corpus
-- **Preprint v4** remains the citation of record (`glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v4.pdf`); a draft v5 addendum recording this re-base is in-repo, not submitted
+- **Preprint v8** is the citation of record (Zenodo DOI 10.5281/zenodo.23604590, deposited 2026-10-23), superseding v4
 
 ---
 
 ## Status
 
-**Preprint v4 published (Zenodo DOI: 10.5281/zenodo.20414696). Seeking peer review.** Backend and frontend operational at `http://localhost:8001`.
+**Preprint v8 published (Zenodo DOI: 10.5281/zenodo.23604590). Not peer-reviewed.** Backend and frontend operational at `http://localhost:8001`.

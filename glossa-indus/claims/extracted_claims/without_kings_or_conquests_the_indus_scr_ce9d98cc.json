@@ -332,7 +332,7 @@
       ],
       "verified_unexplained": false,
       "proposition_fingerprint": "8e6551ad3b3fa1044a5990b49c78255601561b57ede8c2a8a578f8798e20da83",
-      "not_understood": "Whether the opening-strong signs are animals, and whether they marked identity, guild or goods if they are, is entirely open. The claim's own test - animal signs enriched in opening position above a random baseline - cannot be run until the program has a visual classification of which signs are animals. What would change the picture: that classification, built once and frozen, then the enrichment test run exactly as the claim's falsifier states it.",
+      "not_understood": "Whether the opening-strong signs marked identity, guild or goods if they are animals remains open: the test measured depiction and position, not function, so nothing in its result speaks to what any opening sign marked. Refreshed 2026-10-25 (red-team finding RT-21): this field formerly stated that the claim's own test - animal signs enriched in opening position above a random baseline - could not be run until the program had a visual classification of which signs are animals. That classification was built and frozen (Asset A v2, built by Spec 073 on the repaired keying surface), and the animal test ran as Spec 074 (Phase-440) on that repaired surface. Its outcome record (specs/074-hunt-opening-signs-repaired-surface/outcome.md) states the result with its containment: measured on the graded ICIT corpus (the Shakti compilation, ICIT numbering), of the 31 opening-strong signs the battery returns, 2 are animal signs under the frozen classification - a share of 0.0769 against the animal share 0.0889 of the comparison inventory: enrichment ratio R1 = 0.8654, Fisher exact one-sided p = 0.7345 - and the outcome is recorded as NOT SUPPORTED: animal signs appear among the opening-strong signs at no better than the base rate. The verdict attaches to the programme's internal restatement of this claim (this record, manual_003), tested on that one compilation in ICIT numbering over Asset A v2's classifications. The claim stands partially supported on its positional half alone, stage explained, falsification condition unchanged; Spec 070's earlier POPULATION NOT KEYED closure stands unamended beside this outcome. What would change the picture now: the same test on an independent corpus or classification, outside the single ICIT lineage this run shares with its inputs.",
       "explanation_record": {
         "author": "Tristen Pierson",
         "author_kind": "human",
@@ -369,6 +369,19 @@
           "reports/phase440_report.md"
         ],
         "effect": "The animal half of the claim is recorded as not supported in its re-scoped form (Spec 074, Phase-440): animal signs appear among Shakti's opening-strong signs at no better than the inventory base rate (R1 = 0.8654, Fisher exact one-sided p = 0.7345; reversed arm R2 = 0.0). The claim stands on its positional half alone. No claim status or stage is changed by this append: the claim stands partially supported (positional half only), stage explained, exactly as recorded, with its falsification condition unchanged. Spec 070's POPULATION NOT KEYED closure stands unamended beside this outcome; the claim's record carries both attempts, each under its own spec."
+      },
+      "spec074_not_understood_refresh_2026_10_25": {
+        "date": "2026-10-25",
+        "kind": "rt21-not-understood-refresh",
+        "spec": "074",
+        "phase": 440,
+        "note": "Refresh of this claim's not_understood field under red-team finding RT-21 (2026-10-24/25): the field described a pre-October state (the animal test un-runnable for want of a visual classification). The classification was built (Asset A v2, Spec 073) and the test ran as Spec 074 (Phase-440), returning its outcome on the repaired surface, so the field is refreshed to the true current state, carrying the outcome record's own containment (internal restatement of the claim; one compilation, Shakti; ICIT numbering). No result content beyond what the merged outcome record and the dated outcome append on this claim already carry is added.",
+        "evidence": [
+          "specs/074-hunt-opening-signs-repaired-surface/outcome.md",
+          "reports/phase440_results.json",
+          "reports/phase440_report.md"
+        ],
+        "effect": "not_understood refreshed only; claim_status (partially_supported), stage (explained), and the falsification_condition are unchanged."
       }
     },
     {

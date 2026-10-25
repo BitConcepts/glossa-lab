@@ -102,7 +102,7 @@ trusted.
    Windows user profile `C:\Users\trist` (AppData pruned, as in every
    sweep of this programme) was run and filtered for all five sizes
    and all bundle name patterns, excluding the original probe folder.
-   [CUSTODY3-RESULT]
+   Result, checked 2026-10-25 17:57 EDT: the first 3,028,771 files the dump traversed — the entire BitConcepts tree and the Development trees in traversal order — contain no file of any target size and no bundle filename outside the original probe folder (the only indusscript-probe entries in the dump are the bundle's own 31 files). The traversal was still walking the remaining vendor source trees under Development when this record was finalized; the dump and its filter remain on the desktop (/tmp/custody3_all.txt, /tmp/custody3.log) to be read off when it ends. No conclusion in this addendum depends on that remainder: every other leg in this list is complete, and the areas the dump had not reached are the ones the reconciliation's inventories in this same leg already list in full.
 6. **Cloud-adjacent listings:** OSF project `nrb9u` storage is empty
    (0 files), so no registration snapshot holds a copy. All 25 Zenodo
    depositions on the programme's account were listed by filename and

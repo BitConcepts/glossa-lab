@@ -231,6 +231,38 @@ PASS ×4), and the §4.2 append on the parent
 record (status still contradicted) are all
 present as landed.
 
+## Correction and disclosure notes — 2026-10-25 (realignment item 2.3)
+
+**NB-1's band provenance and threshold-robustness (RT-05).** Battery
+NB-1's constants were calibrated against the exhibited Phase-43 class,
+and this record should have said so at headline strength: the STRONG
+band (>= 2/3) sits just below the lowest exhibited Phase-43
+TERMINAL_STRONG rate (0.683), and the classifiability floor (N >= 20)
+sits just below the smallest total among the exhibited signs (22). The
+calibration is a consistency property, not an independent derivation.
+What protects the outcome word is measured, and is recorded here from
+`reports/phase437_results.json`: the seven primary TERMINAL_STRONG
+rates sit at 0.750-0.967, and the next two classifiable signs sit at
+0.6216 and 0.6196 — no classifiable sign lies between 0.622 and 0.750,
+so the strong set, and with it condition F, is **identical at every
+threshold in (0.6196, 0.75]**, including the frozen 2/3 and the
+exhibited 0.683. At the Phase-43 cascade's own 0.60 threshold the
+primary count would be 9 (sensitivity 11); the permutation null at
+the 0.60 statistic was **not** computed in this record, and that is
+stated here as an open sensitivity — it is not repaired post hoc, and
+no number in this record changes.
+
+**Outcome-word pointer (RT-28).** A reader of `spec.md` §4.1 alone
+will read this outcome backwards. §4.1 as originally drafted mapped
+CONSISTENT to "F and O both hold" and INCONSISTENT to "neither holds";
+the owner-approved amendment (§6) deliberately re-pointed both words
+— CONSISTENT = neither holds, INCONSISTENT = F and O both hold — and
+`freeze.md` §6 records the re-pointing. The amendment and the freeze
+record govern. Never quote §4.1 without them.
+
+These notes are append-only: no verdict, status, or frozen text
+changes.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse

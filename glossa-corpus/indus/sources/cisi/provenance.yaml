@@ -60,3 +60,19 @@ source_score:
   alignment_potential: 5
   annotation_depth: 5
   acquisition_difficulty: 2
+
+# ── CUSTODY STATUS — appended 2026-10-25 (realignment item 3.3) ──
+# The May-2026 stub above is SUPERSEDED as a statement of what is
+# held: CISI material is held by the programme in restricted-local
+# form. Verified state on 2026-10-25 (full table:
+# docs/decisions/2026-10-25-custody-verification.md):
+#  - Vol. 3.1 "Basic data" portion copy (PDF, 8,206,446 bytes,
+#    restricted ILL-supplied portion, received 2026-10-14):
+#    SHA-256 514338b1f6c498bd318b114e39b0e77a79a6685918a0a4c2c5b116dfc2482b6a
+#    recomputed on the owner's VM on 2026-10-25 — equals the
+#    intake pin. NO second copy found (desktop search); its terms
+#    prohibit uploading or sharing copies.
+#  - IA (DLI) scans of Vols. 1–2 and a partial Vol. 3.1 scan are the
+#    programme's working CISI copies (downloads-tree provenance).
+# Holding discipline (unchanged): derived statistics publishable;
+# the scans themselves are never redistributed.

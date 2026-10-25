@@ -1,0 +1,31 @@
+{
+ "record_type": "c3-evidence-sample",
+ "schema_version": "1.0",
+ "spec": "fixture",
+ "claims_file": "fixture/claims.json",
+ "verification_mode": "on",
+ "verifier": "fixture verifier",
+ "sample_rule": "every verdict-bearing claim + random sample of at least 20% of the remainder",
+ "sample_seed": 1,
+ "claims": [
+  {
+   "claim_id": "FX-C01",
+   "verdict_bearing": true,
+   "sampled": true,
+   "verification": "unverified",
+   "evidence_refs_checked": [
+    "fixture"
+   ],
+   "note": ""
+  },
+  {
+   "claim_id": "FX-C02",
+   "verdict_bearing": false,
+   "sampled": false,
+   "verification": "not-sampled",
+   "evidence_refs_checked": [],
+   "note": ""
+  }
+ ],
+ "outcome": "BLOCKED"
+}

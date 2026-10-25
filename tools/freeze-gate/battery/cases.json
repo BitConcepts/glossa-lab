@@ -1,0 +1,77 @@
+{
+ "cases": [
+  {
+   "blind_spot_if_unflagged": "The evaluator raises no correctness finding against the real Phase-114 design: the non-discriminating-instrument defect that the programme itself found only by execution is invisible to the evaluator as operated, in this design as in the era's own gate.",
+   "defect_class": "non-discriminating instrument in a real historical design (programme-falsified)",
+   "dir": "case-i-spec026-era",
+   "expected_catcher": "none in the gate as operated \u2014 historically caught by execution, which is the gap this battery documents",
+   "id": "i",
+   "input": "design.md",
+   "name": "The real Spec 026-era design (Phase-114 blind affiliation, Spec 012)",
+   "catch_criteria": [
+    "discrimin",
+    "non-discriminating",
+    "grammar-free"
+   ],
+   "determination_rule": "Flagged only if a correctness finding names the instrument's failure to discriminate; a run that extracts no assessable claims is a blind spot by the design's own rule (the evaluator cannot be run against the case in its current form)."
+  },
+  {
+   "blind_spot_if_unflagged": "The evaluator does not detect a falsifier that is present in form and empty in substance: the planted headline claim FB2-C01 passes with no correctness finding naming its untestable test.",
+   "defect_class": "unfalsifiable headline claim (falsifier present in form, empty in substance)",
+   "dir": "case-ii-unfalsifiable",
+   "expected_catcher": "the evaluator's falsifiability/irreducibility challenges, if they bite on substance rather than form",
+   "id": "ii",
+   "input": "claims.json",
+   "name": "Planted unfalsifiable headline claim",
+   "catch_criteria": [
+    "falsif",
+    "irreducib",
+    "tautolog",
+    "circular",
+    "untestab",
+    "negation"
+   ],
+   "determination_rule": "Flagged only if a correctness finding against FB2-C01 names the falsifiability defect (empty/circular/untestable falsifier). Independence or hygiene findings do not count: they fire on sound registers too.",
+   "score_probe": {
+    "claim_id": "FB2-C01",
+    "component": "falsifiability"
+   }
+  },
+  {
+   "blind_spot_if_unflagged": "The evaluator does not recompute pinned quantities against their cited sources: a total of 52 pinned against a source summing to 47 passes without a correctness finding. C2 (independent recomputation) is the component that carries this class.",
+   "defect_class": "pinned quantity arithmetically wrong against its own cited source",
+   "dir": "case-iii-wrong-pin",
+   "expected_catcher": "C2 independent recomputation (the evaluator is not an arithmetic engine)",
+   "id": "iii",
+   "input": "claims.json",
+   "name": "Planted wrong pin (52 against a source summing to 47)",
+   "catch_criteria": [
+    "arithmetic",
+    "recomput",
+    "sums to",
+    "47",
+    "mismatch with",
+    "inconsistent with the cited"
+   ],
+   "determination_rule": "Flagged only if a correctness finding identifies the pinned quantities as wrong against SOURCE.md. Independence or hygiene findings do not count."
+  },
+  {
+   "blind_spot_if_unflagged": "The evaluator verifies that citations resolve, not that they support: claims stating the opposite of their cited records pass in both the freeze configuration and with evidence verification on. C3's verification step \u2014 a verifier reading the cited text against the claim \u2014 is the component that carries this class.",
+   "defect_class": "evidence citation that does not support its claim",
+   "dir": "case-iv-unsupported-citation",
+   "expected_catcher": "C3 evidence verification with a human/verifier read of the cited text (the engine checks resolution and hashes, not support)",
+   "id": "iv",
+   "input": "claims.json",
+   "name": "Planted unsupported citations (claims stating the opposite of their cited records)",
+   "catch_criteria": [
+    "does not support",
+    "not support",
+    "contradict",
+    "content_hash",
+    "hash mismatch",
+    "unsupported"
+   ],
+   "determination_rule": "Flagged only if a correctness finding on an FB4 claim identifies that its cited evidence does not support it (in either run). missing_ref resolution findings do not count: the refs resolve inside the repo; support, not resolution, is the defect."
+  }
+ ]
+}

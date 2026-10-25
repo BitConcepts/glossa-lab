@@ -1,0 +1,22 @@
+{
+ "record_type": "c3-evidence-sample",
+ "schema_version": "1.0",
+ "spec": "specs/<NNN-spec-name>",
+ "claims_file": "specs/<NNN-spec-name>/claims.json",
+ "verification_mode": "on",
+ "verifier": "<verifier>",
+ "sample_rule": "every verdict-bearing claim + random sample of at least 20% of the remainder",
+ "sample_seed": 20261025,
+ "claims": [
+  {
+   "claim_id": "<claim id>",
+   "verdict_bearing": true,
+   "sampled": true,
+   "verification": "pending",
+   "evidence_refs_checked": [],
+   "note": ""
+  }
+ ],
+ "outcome": "INCOMPLETE",
+ "_instructions": "Template for the C3 evidence-sample record. Scaffold a real one with freeze_records.py scaffold-c3, naming the verdict-bearing claims; the verifier reads each sampled claim's cited evidence against the claim (aee assess --verify-evidence / aee verify-evidence resolves refs and hashes; support is judged by the verifier), records verification per claim, and sets outcome PASS only when no verdict-bearing claim is unverified."
+}

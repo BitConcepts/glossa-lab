@@ -1,0 +1,31 @@
+{
+ "record_type": "c1-battery-result",
+ "schema_version": "1.0",
+ "evaluator": "aee (applied-epistemic-engineering)",
+ "evaluator_version": "1.5.3",
+ "configuration": "fixture",
+ "run_at": "2026-10-25T00:00:00Z",
+ "cases": [
+  {
+   "case_id": "i",
+   "flagged": false,
+   "blind_spot": "fixture blind spot"
+  },
+  {
+   "case_id": "ii",
+   "flagged": false,
+   "blind_spot": "fixture blind spot"
+  },
+  {
+   "case_id": "iii",
+   "flagged": false,
+   "blind_spot": "fixture blind spot"
+  },
+  {
+   "case_id": "iv",
+   "flagged": false,
+   "blind_spot": "fixture blind spot"
+  }
+ ],
+ "blind_spots": []
+}

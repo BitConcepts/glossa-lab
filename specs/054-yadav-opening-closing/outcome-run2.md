@@ -254,3 +254,37 @@ check as measured on the merged tree.
 *AI disclosure: executed by an AI agent (Muse
 Spark, via Muse) at the direction of
 Tristen Pierson, per constitution §VI.*
+
+**Landed 2026-10-25.** Re-execution records
+PR **#399**, merged as merge commit
+`9424883364e9b6103e0a5af5175f0da53de89a46`.
+CI on the PR head (`5ca68988`), run
+40228973355: **8/8 jobs successful**, read from
+the run's own job conclusions — Backend tests
+(pytest); Frontend tests (Playwright);
+Evidence Graph script smoke tests; Indus
+public validation checks; Freeze gate records
+check (C4); Shell wrappers (ubuntu-latest,
+windows-latest, macos-latest). Foundation
+check on the merged tree (merge commit
+`94248833`, run 2026-10-25 with the programme's
+local corpora linked in read-only): **39
+checks passed, 0 failed, 9 warnings** — the
+warnings are the standing caveats; none
+touches this spec's records. Read back from
+merged `main` by API after the merge: the
+machine record (outcome NOT SUPPORTED; gates
+G1–G5 PASS), this outcome record, the step-0
+record, and the claim store at `7151cb70…`
+carrying the dated outcome append with the
+claim's status (strongly supported) and stage
+(explained) unchanged and the falsifier
+verbatim. Venue note: the execution ran on
+TRISTEN-DESKTOP in a worktree at the first
+execution's base `9b5ebaf8…`; the worktree
+and the `~/workspace/glossa-lab` symlink
+remain on the desktop as the venue's record.
+OSF: no filing made or needed — registration
+8spvf covers the frozen contract this
+execution ran under; no new registration was
+created.

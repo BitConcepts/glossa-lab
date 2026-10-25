@@ -59,12 +59,12 @@
       "indus_signs": [],
       "signs_confidence": "none",
       "signs_source": "Possehl 2006 (Expedition 48:1) — cuneiform-only",
-      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py); find_country is verbatim from the Phase-23a audit output for the 11 sign-bearing seals (outputs/phase23a_seal_sign_audit.json); the Phase-24 signs_source suffixes and laursen_table1_reference strings are verbatim from the same audit. type, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
     },
     {
       "catalogue_id": "BM_122187_UR_seal_1",
       "type": "indus_type_at_mesopotamia",
-      "find_country": "Iraq (Mesopotamia)",
+      "find_country": "Mesopotamia",
       "find_spot": "Ur",
       "find_period": "Akkadian period (ca. 2334-2154 BC)",
       "current_collection": "British Museum, London (BM 122187)",
@@ -79,10 +79,10 @@
         "?"
       ],
       "signs_confidence": "length_only",
-      "signs_source": "Gadd 1932 (Iraq); Frenez 2018 plate IV | Laursen 2010 Table 1 row 16 (Gadd 1932 pl. I no. 2, site=Ur)",
-      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json).",
+      "signs_source": "Gadd 1932 (Iraq); Frenez 2018 plate IV | Laursen 2010 Table 1 row 16 (Gadd 1932: pl. I, no. 2, site=Ur)",
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py); find_country is verbatim from the Phase-23a audit output for the 11 sign-bearing seals (outputs/phase23a_seal_sign_audit.json); the Phase-24 signs_source suffixes and laursen_table1_reference strings are verbatim from the same audit. type, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json).",
       "laursen_2010_seal_no": 16,
-      "laursen_table1_reference": "Gadd 1932 pl. I no. 2",
+      "laursen_table1_reference": "Gadd 1932: pl. I, no. 2",
       "laursen_table1_site": "Ur",
       "laursen_table1_gulf_type": "Gulf INDUS",
       "phase24_crossref_rationale": "Gadd 1932 pl. I no. 2 (round Ur seal with zebu motif). Best-fit Laursen Table 1 row for the BM 122187 entry."
@@ -90,7 +90,7 @@
     {
       "catalogue_id": "GADD_1",
       "type": "indus_type_at_mesopotamia",
-      "find_country": "Iraq (Mesopotamia)",
+      "find_country": "Mesopotamia",
       "find_spot": "Ur",
       "find_period": "Akkadian period (ca. 2334-2154 BC)",
       "current_collection": "British Museum, London (per Gadd 1932)",
@@ -103,10 +103,10 @@
         "?"
       ],
       "signs_confidence": "length_only",
-      "signs_source": "Gadd 1932 #1; Laursen 2010 PCA classification | Laursen 2010 Table 1 row 17 (Gadd 1932 pl. I no. 3, site=Ur)",
-      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json).",
+      "signs_source": "Gadd 1932 #1; Laursen 2010 PCA classification | Laursen 2010 Table 1 row 17 (Gadd 1932: pl. I, no. 3, site=Ur)",
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py); find_country is verbatim from the Phase-23a audit output for the 11 sign-bearing seals (outputs/phase23a_seal_sign_audit.json); the Phase-24 signs_source suffixes and laursen_table1_reference strings are verbatim from the same audit. type, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json).",
       "laursen_2010_seal_no": 17,
-      "laursen_table1_reference": "Gadd 1932 pl. I no. 3",
+      "laursen_table1_reference": "Gadd 1932: pl. I, no. 3",
       "laursen_table1_site": "Ur",
       "laursen_table1_gulf_type": "Gulf INDUS",
       "phase24_crossref_rationale": "Gadd 1932 pl. I no. 3 (square Ur seal)."
@@ -114,7 +114,7 @@
     {
       "catalogue_id": "GADD_2",
       "type": "indus_type_at_mesopotamia",
-      "find_country": "Iraq (Mesopotamia)",
+      "find_country": "Mesopotamia",
       "find_spot": "Ur",
       "find_period": "Akkadian period (ca. 2334-2154 BC)",
       "current_collection": "British Museum, London (per Gadd 1932)",
@@ -128,10 +128,10 @@
         "?"
       ],
       "signs_confidence": "length_only",
-      "signs_source": "Gadd 1932 #2; Laursen 2010 | Laursen 2010 Table 1 row 18 (Gadd 1932 pl. I no. 4, site=Ur)",
-      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json).",
+      "signs_source": "Gadd 1932 #2; Laursen 2010 | Laursen 2010 Table 1 row 18 (Gadd 1932: pl. I, no. 4, site=Ur)",
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py); find_country is verbatim from the Phase-23a audit output for the 11 sign-bearing seals (outputs/phase23a_seal_sign_audit.json); the Phase-24 signs_source suffixes and laursen_table1_reference strings are verbatim from the same audit. type, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json).",
       "laursen_2010_seal_no": 18,
-      "laursen_table1_reference": "Gadd 1932 pl. I no. 4",
+      "laursen_table1_reference": "Gadd 1932: pl. I, no. 4",
       "laursen_table1_site": "Ur",
       "laursen_table1_gulf_type": "Gulf INDUS",
       "phase24_crossref_rationale": "Gadd 1932 pl. I no. 4 (Ur)."
@@ -139,7 +139,7 @@
     {
       "catalogue_id": "ASMAR_TA",
       "type": "indus_type_at_mesopotamia",
-      "find_country": "Iraq (Mesopotamia)",
+      "find_country": "Mesopotamia",
       "find_spot": "Tell Asmar (Eshnunna)",
       "find_period": "Akkadian period (ca. 2334-2154 BC)",
       "current_collection": "Tell Asmar excavation division (Iraq Museum / Oriental Institute) — division unrecorded in sources consulted",
@@ -153,12 +153,12 @@
       ],
       "signs_confidence": "length_only",
       "signs_source": "Mallowan 1947 (Iraq); Wheeler 1968",
-      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py); find_country is verbatim from the Phase-23a audit output for the 11 sign-bearing seals (outputs/phase23a_seal_sign_audit.json); the Phase-24 signs_source suffixes and laursen_table1_reference strings are verbatim from the same audit. type, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
     },
     {
       "catalogue_id": "KISH_INDUS_1",
       "type": "indus_type_at_mesopotamia",
-      "find_country": "Iraq (Mesopotamia)",
+      "find_country": "Mesopotamia",
       "find_spot": "Kish",
       "find_period": "Akkadian (ca. 2334-2154 BC)",
       "current_collection": "Ashmolean Museum, Oxford",
@@ -172,12 +172,12 @@
       ],
       "signs_confidence": "length_only",
       "signs_source": "Mallowan 1947; CISI Vol 3 (pending plate)",
-      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py); find_country is verbatim from the Phase-23a audit output for the 11 sign-bearing seals (outputs/phase23a_seal_sign_audit.json); the Phase-24 signs_source suffixes and laursen_table1_reference strings are verbatim from the same audit. type, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
     },
     {
       "catalogue_id": "SUSA_INDUS_1",
       "type": "indus_type_at_iran",
-      "find_country": "Iran",
+      "find_country": "Iran (Elam)",
       "find_spot": "Susa",
       "find_period": "Akkadian / Sukkalmah (ca. 2300-1600 BC)",
       "current_collection": "Musée du Louvre, Paris",
@@ -191,10 +191,10 @@
         "?"
       ],
       "signs_confidence": "length_only",
-      "signs_source": "Wheeler 1968; Possehl 2002 | Laursen 2010 Table 1 row 14 (Amiet 1972 no. 1643, site=Susa)",
-      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json).",
+      "signs_source": "Wheeler 1968; Possehl 2002 | Laursen 2010 Table 1 row 14 (Amiet 1972: no. 1643, site=Susa)",
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py); find_country is verbatim from the Phase-23a audit output for the 11 sign-bearing seals (outputs/phase23a_seal_sign_audit.json); the Phase-24 signs_source suffixes and laursen_table1_reference strings are verbatim from the same audit. type, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json).",
       "laursen_2010_seal_no": 14,
-      "laursen_table1_reference": "Amiet 1972 no. 1643",
+      "laursen_table1_reference": "Amiet 1972: no. 1643",
       "laursen_table1_site": "Susa",
       "laursen_table1_gulf_type": "Gulf INDUS",
       "phase24_crossref_rationale": "Amiet 1972 no. 1643 — Susa Gulf INDUS seal (Laursen Table 1 row 14)."
@@ -202,7 +202,7 @@
     {
       "catalogue_id": "LOTHAL_PERSIAN_GULF_SEAL",
       "type": "gulf_type_at_indus",
-      "find_country": "India",
+      "find_country": "India (Indus civilization)",
       "find_spot": "Lothal",
       "find_period": "Mature Harappan (ca. 2200-1900 BC)",
       "current_collection": "Archaeological Survey of India (excavated collection, Lothal)",
@@ -215,12 +215,12 @@
       ],
       "signs_confidence": "length_only",
       "signs_source": "Rao 1963 (Antiquity 37); Laursen 2010",
-      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py); find_country is verbatim from the Phase-23a audit output for the 11 sign-bearing seals (outputs/phase23a_seal_sign_audit.json); the Phase-24 signs_source suffixes and laursen_table1_reference strings are verbatim from the same audit. type, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
     },
     {
       "catalogue_id": "FAILAKA_KM_1113",
       "type": "dilmun_type_with_indus_signs",
-      "find_country": "Kuwait",
+      "find_country": "Kuwait (Dilmun)",
       "find_spot": "Failaka Island",
       "find_period": "Early Dilmun (ca. 1950-1750 BC)",
       "current_collection": "Kuwait National Museum (KM 1113)",
@@ -235,12 +235,12 @@
       ],
       "signs_confidence": "length_only",
       "signs_source": "David-Cuny & Neyme 2016 (Failaka Vol 2)",
-      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py); find_country is verbatim from the Phase-23a audit output for the 11 sign-bearing seals (outputs/phase23a_seal_sign_audit.json); the Phase-24 signs_source suffixes and laursen_table1_reference strings are verbatim from the same audit. type, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
     },
     {
       "catalogue_id": "VA_243_BERLIN",
       "type": "indus_type_at_mesopotamia",
-      "find_country": "Mesopotamia (attributed; unprovenanced)",
+      "find_country": "Mesopotamia (presumed)",
       "find_spot": "(unprovenanced; Berlin collection piece)",
       "find_period": "Old Akkadian / Larsa (ca. 2200-1900 BC)",
       "current_collection": "Vorderasiatisches Museum, Berlin (VA 243)",
@@ -256,7 +256,7 @@
       ],
       "signs_confidence": "length_only",
       "signs_source": "Kalyanaraman ANE; Frenez 2018",
-      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py); find_country is verbatim from the Phase-23a audit output for the 11 sign-bearing seals (outputs/phase23a_seal_sign_audit.json); the Phase-24 signs_source suffixes and laursen_table1_reference strings are verbatim from the same audit. type, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
     },
     {
       "catalogue_id": "KONAR_SANDAL_S_CYLINDER",
@@ -271,7 +271,7 @@
       "indus_signs": [],
       "signs_confidence": "none",
       "signs_source": "Vidale & Frenez 2015 — iconographic-only",
-      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py); find_country is verbatim from the Phase-23a audit output for the 11 sign-bearing seals (outputs/phase23a_seal_sign_audit.json); the Phase-24 signs_source suffixes and laursen_table1_reference strings are verbatim from the same audit. type, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
     },
     {
       "catalogue_id": "JALALABAD_FARS",
@@ -291,7 +291,7 @@
       ],
       "signs_confidence": "length_only",
       "signs_source": "Vidale, Desset & Frenez 2021; Ascalone 2008",
-      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py); find_country is verbatim from the Phase-23a audit output for the 11 sign-bearing seals (outputs/phase23a_seal_sign_audit.json); the Phase-24 signs_source suffixes and laursen_table1_reference strings are verbatim from the same audit. type, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
     },
     {
       "catalogue_id": "AL_MAQSHA_TOKEN_2",
@@ -306,7 +306,7 @@
       "indus_signs": [],
       "signs_confidence": "none",
       "signs_source": "Laursen et al. 2026 JNES — Akkadian-only",
-      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, find_country, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
+      "field_provenance": "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, signs_confidence, signs_source are verbatim from the surviving Phase-23 script (scripts/phase23/ingest_seal_signs.py); find_country is verbatim from the Phase-23a audit output for the 11 sign-bearing seals (outputs/phase23a_seal_sign_audit.json); the Phase-24 signs_source suffixes and laursen_table1_reference strings are verbatim from the same audit. type, find_spot, find_period, current_collection, inscription_reading, source re-derived from the cited publications; type and find_period assignments reproduce the lost file's recorded aggregate distributions (outputs/phase46_t1_contact_zone.json)."
     },
     {
       "catalogue_id": "JANABIYAH_LAURSEN_10",

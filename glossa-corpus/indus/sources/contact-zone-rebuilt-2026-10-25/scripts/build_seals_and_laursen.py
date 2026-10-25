@@ -58,7 +58,7 @@ BASE = {
     },
     "BM_122187_UR_seal_1": {
         "type": "indus_type_at_mesopotamia",
-        "find_country": "Iraq (Mesopotamia)",
+        "find_country": "Mesopotamia",
         "find_spot": "Ur",
         "find_period": "Akkadian period (ca. 2334-2154 BC)",
         "current_collection": "British Museum, London (BM 122187)",
@@ -67,7 +67,7 @@ BASE = {
     },
     "GADD_1": {
         "type": "indus_type_at_mesopotamia",
-        "find_country": "Iraq (Mesopotamia)",
+        "find_country": "Mesopotamia",
         "find_spot": "Ur",
         "find_period": "Akkadian period (ca. 2334-2154 BC)",
         "current_collection": "British Museum, London (per Gadd 1932)",
@@ -76,7 +76,7 @@ BASE = {
     },
     "GADD_2": {
         "type": "indus_type_at_mesopotamia",
-        "find_country": "Iraq (Mesopotamia)",
+        "find_country": "Mesopotamia",
         "find_spot": "Ur",
         "find_period": "Akkadian period (ca. 2334-2154 BC)",
         "current_collection": "British Museum, London (per Gadd 1932)",
@@ -85,7 +85,7 @@ BASE = {
     },
     "ASMAR_TA": {
         "type": "indus_type_at_mesopotamia",
-        "find_country": "Iraq (Mesopotamia)",
+        "find_country": "Mesopotamia",
         "find_spot": "Tell Asmar (Eshnunna)",
         "find_period": "Akkadian period (ca. 2334-2154 BC)",
         "current_collection": "Tell Asmar excavation division (Iraq Museum / Oriental Institute) — division unrecorded in sources consulted",
@@ -94,7 +94,7 @@ BASE = {
     },
     "KISH_INDUS_1": {
         "type": "indus_type_at_mesopotamia",
-        "find_country": "Iraq (Mesopotamia)",
+        "find_country": "Mesopotamia",
         "find_spot": "Kish",
         "find_period": "Akkadian (ca. 2334-2154 BC)",
         "current_collection": "Ashmolean Museum, Oxford",
@@ -103,7 +103,7 @@ BASE = {
     },
     "SUSA_INDUS_1": {
         "type": "indus_type_at_iran",
-        "find_country": "Iran",
+        "find_country": "Iran (Elam)",
         "find_spot": "Susa",
         "find_period": "Akkadian / Sukkalmah (ca. 2300-1600 BC)",
         "current_collection": "Musée du Louvre, Paris",
@@ -112,7 +112,7 @@ BASE = {
     },
     "LOTHAL_PERSIAN_GULF_SEAL": {
         "type": "gulf_type_at_indus",
-        "find_country": "India",
+        "find_country": "India (Indus civilization)",
         "find_spot": "Lothal",
         "find_period": "Mature Harappan (ca. 2200-1900 BC)",
         "current_collection": "Archaeological Survey of India (excavated collection, Lothal)",
@@ -121,7 +121,7 @@ BASE = {
     },
     "FAILAKA_KM_1113": {
         "type": "dilmun_type_with_indus_signs",
-        "find_country": "Kuwait",
+        "find_country": "Kuwait (Dilmun)",
         "find_spot": "Failaka Island",
         "find_period": "Early Dilmun (ca. 1950-1750 BC)",
         "current_collection": "Kuwait National Museum (KM 1113)",
@@ -130,7 +130,7 @@ BASE = {
     },
     "VA_243_BERLIN": {
         "type": "indus_type_at_mesopotamia",
-        "find_country": "Mesopotamia (attributed; unprovenanced)",
+        "find_country": "Mesopotamia (presumed)",
         "find_spot": "(unprovenanced; Berlin collection piece)",
         "find_period": "Old Akkadian / Larsa (ca. 2200-1900 BC)",
         "current_collection": "Vorderasiatisches Museum, Berlin (VA 243)",
@@ -172,11 +172,15 @@ BASE = {
 FIELD_PROV = (
     "REBUILT 2026-10-25: catalogue_id, inscription_length, indus_signs, "
     "signs_confidence, signs_source are verbatim from the surviving "
-    "Phase-23 script (scripts/phase23/ingest_seal_signs.py). type, "
-    "find_country, find_spot, find_period, current_collection, "
-    "inscription_reading, source re-derived from the cited publications; "
-    "type and find_period assignments reproduce the lost file's recorded "
-    "aggregate distributions (outputs/phase46_t1_contact_zone.json)."
+    "Phase-23 script (scripts/phase23/ingest_seal_signs.py); find_country "
+    "is verbatim from the Phase-23a audit output for the 11 sign-bearing "
+    "seals (outputs/phase23a_seal_sign_audit.json); the Phase-24 "
+    "signs_source suffixes and laursen_table1_reference strings are "
+    "verbatim from the same audit. type, find_spot, find_period, "
+    "current_collection, inscription_reading, source re-derived from "
+    "the cited publications; type and find_period assignments reproduce "
+    "the lost file's recorded aggregate distributions "
+    "(outputs/phase46_t1_contact_zone.json)."
 )
 
 seals = []
@@ -194,10 +198,10 @@ for cid, base in BASE.items():
 # Phase-24 cross-references (verbatim rationale; laursen row fields from the
 # rebuilt Laursen file below, flagged there).
 LAURSEN_ROW_FIELDS = {
-    16: {"reference": "Gadd 1932 pl. I no. 2", "site": "Ur", "gulf_type": "Gulf INDUS"},
-    17: {"reference": "Gadd 1932 pl. I no. 3", "site": "Ur", "gulf_type": "Gulf INDUS"},
-    18: {"reference": "Gadd 1932 pl. I no. 4", "site": "Ur", "gulf_type": "Gulf INDUS"},
-    14: {"reference": "Amiet 1972 no. 1643", "site": "Susa", "gulf_type": "Gulf INDUS"},
+    16: {"reference": "Gadd 1932: pl. I, no. 2", "site": "Ur", "gulf_type": "Gulf INDUS"},
+    17: {"reference": "Gadd 1932: pl. I, no. 3", "site": "Ur", "gulf_type": "Gulf INDUS"},
+    18: {"reference": "Gadd 1932: pl. I, no. 4", "site": "Ur", "gulf_type": "Gulf INDUS"},
+    14: {"reference": "Amiet 1972: no. 1643", "site": "Susa", "gulf_type": "Gulf INDUS"},
 }
 upgrade_log = []
 for rec in seals:
@@ -283,13 +287,13 @@ print(f"seals: {len(seals)} records; with signs {n_with}; "
 rows = [
     {"seal_no": 10, "reference": "", "al_sindi_1999_no": "",
      "gulf_type": "Gulf INDUS", "site": "Janabiyah Cemetery", "bbm_no": ""},
-    {"seal_no": 14, "reference": "Amiet 1972 no. 1643", "al_sindi_1999_no": "",
+    {"seal_no": 14, "reference": "Amiet 1972: no. 1643", "al_sindi_1999_no": "",
      "gulf_type": "Gulf INDUS", "site": "Susa", "bbm_no": ""},
-    {"seal_no": 16, "reference": "Gadd 1932 pl. I no. 2", "al_sindi_1999_no": "",
+    {"seal_no": 16, "reference": "Gadd 1932: pl. I, no. 2", "al_sindi_1999_no": "",
      "gulf_type": "Gulf INDUS", "site": "Ur", "bbm_no": ""},
-    {"seal_no": 17, "reference": "Gadd 1932 pl. I no. 3", "al_sindi_1999_no": "",
+    {"seal_no": 17, "reference": "Gadd 1932: pl. I, no. 3", "al_sindi_1999_no": "",
      "gulf_type": "Gulf INDUS", "site": "Ur", "bbm_no": ""},
-    {"seal_no": 18, "reference": "Gadd 1932 pl. I no. 4", "al_sindi_1999_no": "",
+    {"seal_no": 18, "reference": "Gadd 1932: pl. I, no. 4", "al_sindi_1999_no": "",
      "gulf_type": "Gulf INDUS", "site": "Ur", "bbm_no": ""},
 ]
 by_type, by_site = {}, {}

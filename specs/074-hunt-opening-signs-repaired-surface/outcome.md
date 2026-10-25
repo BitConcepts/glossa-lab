@@ -148,8 +148,15 @@ exact test's p is a property of the table under both readings.
 
 ## Landing
 
-[To be completed by the landing record: execution PR, CI run, merge commit,
-foundation posture.]
+Execution PR #372 (`spec-074-execution`, commit `3f64a678`), merged to main
+as `d5dc6cb0d327f493030370a7f89a8aa6a6a75f66` on 2026-10-25 after CI run
+40145790130 passed 7/7 jobs (Backend pytest, Frontend Playwright, Indus
+public validation, Evidence Graph smoke, Shell wrappers ×3 — conclusions
+read from the run itself). Foundation posture on the merged tree, from
+`reports/foundation_check_report.json` as merged: **40 checks passed,
+0 failed, 8 warnings** (the check was run on the execution tree before
+landing; its report is part of the merged record). This landing record is
+appended by the follow-up landing PR, per the programme's pattern.
 
 ## Records
 

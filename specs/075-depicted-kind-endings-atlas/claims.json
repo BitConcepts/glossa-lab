@@ -1,0 +1,713 @@
+{
+ "claims": [
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-NEW-FAMILY-STATED"
+   ],
+   "boundary": "The scope is the test of spec sections 4-5: the depicted kinds of Asset A v2, keyed over Registry v2, counted on the documented-lineage primary population of the Shakti corpus. It excludes any statement about Hunt's claims in any form, about sky signs, calendars, or cycles, about what any sign means, and about any other corpus or compilation. The claim as drafted states the proposition in full: An outcome under Spec 075 states only whether, measured on the graded ICIT corpus, an identified depicted kind's signs are enriched at inscription endings under the criteria of Spec 075 section 5.2 - a verdict about the depicted-kind endings question, and about nothing else.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 073's executed outcome REPAIRED WITH NAMED SHORTFALL: Registry v2 (SHA-256 42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71, 1,013 rows = 803 v1 rows byte-identical + 210 icit_wells rows cited to Fuls 2023, Catalog, Ch. 2.3) and Asset A v2 (SHA-256 681e017da8b3f93aeade7e85361565fa8f3f4178b167dfa2448f5b4c239a8193, 552 rows; per-kind other 246, unidentified 211, human 43, animal 30, object_goods 22, sky_cycle 0); token 999 is named on the NO PUBLISHED IDENTITY schedule as the one primary-population sign with no published identity.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "specs/073-keying-surface-repair/outcome.md; specs/073-keying-surface-repair/registry-v2/registry-v2-freeze.json; specs/073-keying-surface-repair/asset-a-v2/asset-a-v2-freeze.json; specs/073-keying-surface-repair/registry-v2/no-published-identity.json",
+     "source_id": "spec-073 executed record (Phase 436, PR #354)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "endings-atlas design (2026-10-25, goal record)",
+      "spec-071 retirement decision (2026-10-25, PR #381)"
+     ]
+    },
+    {
+     "description": "The endings-atlas design (Candidate B of the Spec 071 redesign proposal, designed in full 2026-10-25): the question is which kinds of depicted signs gather at the ends of inscriptions, asked of the kinds the published identifications actually contain; the design states the study mints its own claim family, is not the Hunt sky-signs claim, and carries the celestial class as a pre-registered empty arm (its R7) rather than a test.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "2026-10-25-endings-atlas-design.md (programme goal record, files/)",
+     "source_id": "endings-atlas design (2026-10-25, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-073 executed record (Phase 436, PR #354)",
+      "spec-071 retirement decision (2026-10-25, PR #381)"
+     ]
+    },
+    {
+     "description": "The Spec 071 retirement decision of 2026-10-25: the sky-signs endings question is retired as untestable in this programme; the claim without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004 stands UNTESTED with a governed reopening trigger (an exhibited published list with celestial identifications at >=5 signs / >=30 occurrences; Mahadevan 1977 and Wells 1998 named); nothing in the decision makes any later endings study a successor to Spec 071.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "docs/decisions/2026-10-25-spec-071-retirement-decision.md",
+     "source_id": "spec-071 retirement decision (2026-10-25, PR #381)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-073 executed record (Phase 436, PR #354)",
+      "endings-atlas design (2026-10-25, goal record)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "the claim is falsified in scope if any Spec 075 output states a conclusion about Hunt's claims, sky signs, a population outside section 3, or a meaning of any sign"
+   ],
+   "id": "F075-C01",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec073-record",
+     "atlas-design",
+     "spec071-retirement"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which an endings atlas silently inherits the retired sky-signs question, or presents a per-kind verdict as a verdict on Hunt's claims",
+    "verdict_rule": "scope is judged by inspection of every Spec 075 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding"
+   },
+   "status": "draft",
+   "text": "An outcome under Spec 075 is a verdict on the depicted-kind endings question."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-CLAIM-RECORD"
+   ],
+   "boundary": "The claim family's standing is created by this register at this freeze; Spec 071's claim record is read, never edited, and its standing is as the retirement decision left it. The claim as drafted states the proposition in full: Spec 075 mints the depicted-kind positional-behaviour claim family (F075-C01 to F075-C13) as a new family; the claim without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004 stands UNTESTED under its 2026-10-25 retirement, and no outcome under Spec 075 appends to, amends, or moves that claim or its record in any direction.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The Spec 071 retirement decision of 2026-10-25 and its claim append (key spec071_retirement_append_2026_10_25): the claim's claim_status is untested and its stage unchanged; the append records the retirement and the reopening trigger, and was proven to survive the claim-store generator's regeneration under the widened carry-over of PR #375.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "docs/decisions/2026-10-25-spec-071-retirement-decision.md; glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json",
+     "source_id": "spec-071 retirement decision (2026-10-25, PR #381)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "endings-atlas design (2026-10-25, goal record)"
+     ]
+    },
+    {
+     "description": "The endings-atlas design states in its section 1 that the study mints its own claim family (depicted-kind positional behaviour), that it is not the Hunt sky-signs claim, and that no outcome under it moves that claim in any direction; its section 8 states no outcome moves any anchor, reading, PRED-2026 state, verdict, status, or frozen text anywhere in the programme.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "2026-10-25-endings-atlas-design.md (programme goal record, files/)",
+     "source_id": "endings-atlas design (2026-10-25, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-071 retirement decision (2026-10-25, PR #381)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "re-read the claim record at the freeze and after any Spec 075 outcome: a standing for the retired claim other than UNTESTED, or any edit to its record attributable to Spec 075, falsifies this claim and is recorded as a defect"
+   ],
+   "id": "F075-C02",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec071-retirement",
+     "atlas-design"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which minting a neighbouring claim family quietly re-opens or re-scores the retired claim",
+    "verdict_rule": "judged by the claim record's state at the freeze and at the execution's close; any movement of the retired claim is a defect of this spec's products, not a result"
+   },
+   "status": "draft",
+   "text": "Spec 075 mints a new claim family; Spec 071's claim stands UNTESTED under its retirement, unedited."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-DESIGN-CARRIED",
+    "ASM-REPAIRED-SURFACE-FROZEN"
+   ],
+   "boundary": "The hypothesis is per-kind in its testing and is bounded by sections 4-5: the identified kinds of Asset A v2, the documented-lineage primary population, the frequency-matched comparison of section 2.3, and the criteria of section 5.2. The claim as drafted states the proposition in full: At least one identified depicted kind - other, human, animal, or object_goods - is enriched at inscription endings on the primary population, in that its pooled final-position rate exceeds the rate of signs of comparable frequency from the other identified kinds at an enrichment ratio of at least 1.5 with Fisher's exact test significant at the 5 percent level and at least half its occurrences from signs individually above the corpus-wide final-position rate.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The endings-atlas design's section 1 states the question and section 5 states the per-kind test and verdict words in advance: enrichment ratio >= 1.5, two-sided Fisher exact at the 5 percent level, and the half-of-occurrences condition for SUPPORTED; ratio <= 1.0 for NOT SUPPORTED; the falsifiable shape for the atlas as a whole is that no identified kind is enriched at endings.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "2026-10-25-endings-atlas-design.md (programme goal record, files/)",
+     "source_id": "endings-atlas design (2026-10-25, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-073 executed record (Phase 436, PR #354)"
+     ]
+    },
+    {
+     "description": "Spec 073's executed record: Asset A v2 carries the identified kinds at sizes other 246, human 43, animal 30, object_goods 22 (552 rows, SHA-256 681e017da8b3f93aeade7e85361565fa8f3f4178b167dfa2448f5b4c239a8193) - the kinds exist in the classification at sizes the design's floors were set from; no final-position quantity for any kind has been computed at this draft.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "specs/073-keying-surface-repair/outcome.md; specs/073-keying-surface-repair/asset-a-v2/depicted-kind-classification.csv",
+     "source_id": "spec-073 executed record (Phase 436, PR #354)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "endings-atlas design (2026-10-25, goal record)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "the hypothesis is falsified per kind by an enrichment ratio at or below 1.0 under section 5.2, and falsified as a family if every tested kind returns NOT SUPPORTED"
+   ],
+   "id": "F075-C03",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "atlas-design",
+     "spec073-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the null reading: ending behaviour is kind-blind on this corpus, and every identified kind's ratio sits at or below 1.0 against its frequency-matched comparison",
+    "verdict_rule": "judged per kind by section 5.2's frozen bands at the execution; no pooled family verdict is computed or stated"
+   },
+   "status": "draft",
+   "text": "At least one identified depicted kind is enriched at inscription endings."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-DESIGN-CARRIED"
+   ],
+   "boundary": "The falsifier's form is Spec 071 section 4.3's, applied per kind, and is bounded by the criteria of section 5.2: it speaks only of the enrichment ratio against the frequency-matched comparison on the primary population. The claim as drafted states the proposition in full: The falsifier of Spec 075 is stated in advance, per kind: a kind whose enrichment ratio is at or below 1.0 is not enriched at endings; and for the atlas as a whole the falsifiable shape - that no identified kind is enriched at endings - is named in advance as a result the study can honestly return.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The endings-atlas design's requirement R12 states the falsifier verbatim in substance: per kind, Spec 071's - a kind whose enrichment ratio is at or below 1.0 is not enriched at endings; for the atlas as a whole, the falsifiable shape is that no identified kind is enriched at endings, and four NOT SUPPORTED words would state it.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "2026-10-25-endings-atlas-design.md (programme goal record, files/)",
+     "source_id": "endings-atlas design (2026-10-25, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-071 frozen record (Phase 437 freeze; executed closure INVALID at gate 0.3)"
+     ]
+    },
+    {
+     "description": "Spec 071's frozen section 4.3 states the falsifier's word: NOT SUPPORTED is an enrichment ratio at or below 1.0 - the class is not enriched at endings, at the rate signs of comparable frequency show; its section 1.2 files the falsifier before the hypothesis.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "specs/071-hunt-sky-signs-successor/spec.md",
+     "source_id": "spec-071 frozen record (Phase 437 freeze; executed closure INVALID at gate 0.3)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "endings-atlas design (2026-10-25, goal record)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "inspection at the freeze: a falsifier first stated after any count exists, or stated for the family in a form no outcome could return, falsifies this claim"
+   ],
+   "id": "F075-C04",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "atlas-design",
+     "spec071-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "a falsifier written so loosely that every outcome is consistent with the hypothesis",
+    "verdict_rule": "judged by inspection of this register and spec section 1.2 at the freeze, before any count exists"
+   },
+   "status": "draft",
+   "text": "The falsifier of Spec 075 is stated in advance, per kind."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-REPAIRED-SURFACE-FROZEN"
+   ],
+   "boundary": "The pins are Asset A v2 (specs/073-keying-surface-repair/asset-a-v2/depicted-kind-classification.csv, SHA-256 681e017da8b3f93aeade7e85361565fa8f3f4178b167dfa2448f5b4c239a8193, 552 rows) and Registry v2 (data/crosswalks/canonical_sign_registry_v2.csv, SHA-256 42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71, 1,013 rows), as frozen by Spec 073's executed record. The claim as drafted states the proposition in full: Step 0 of any execution asserts the frozen state of Asset A v2 and Registry v2 against Spec 073's executed record - digests, row counts, and Asset A v2's per-kind counts recomputed - before any class is counted, closing as ASSET NOT FROZEN or ASSET PIN MISMATCH on any disagreement.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 073's executed record freezes Asset A v2 at SHA-256 681e017da8b3f93aeade7e85361565fa8f3f4178b167dfa2448f5b4c239a8193 (552 rows; per-kind other 246, unidentified 211, human 43, animal 30, object_goods 22, sky_cycle 0) and Registry v2 at SHA-256 42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71 (1,013 rows); both digests and counts were recomputed first-hand at this draft from the files on main and agree.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "specs/073-keying-surface-repair/asset-a-v2/asset-a-v2-freeze.json; specs/073-keying-surface-repair/registry-v2/registry-v2-freeze.json; specs/073-keying-surface-repair/outcome.md",
+     "source_id": "spec-073 executed record (Phase 436, PR #354)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "2026-10-22-shakti-corpus-intake-record"
+     ]
+    },
+    {
+     "description": "Shakti corpus pins: sanitized_corpus.json SHA-256 345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68; row-grades file SHA-256 02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739; both re-hashed first-hand at this draft at their restricted-local paths and equal the intake record's pins - the step-0 gate order (assets, then intake, then population) rests on both records being what they state.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+     "source_id": "2026-10-22-shakti-corpus-intake-record",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-073 executed record (Phase 436, PR #354)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "recompute the two assets' digests and counts at the freeze and at step 0: any disagreement with the pins, unrecorded, falsifies this claim"
+   ],
+   "id": "F075-C05",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec073-record",
+     "shakti-intake"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "a surface that drifted after Spec 073 froze it, silently re-basing every later count",
+    "verdict_rule": "judged by gate 0.1's recomputation at the execution, against Spec 073's executed record - never against this spec's own statement of the pins"
+   },
+   "status": "draft",
+   "text": "Step 0 asserts the frozen state of the repaired surface before any class is counted."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-GRADE-DISCIPLINE"
+   ],
+   "boundary": "The population is bounded by section 3's construction exactly: documented-lineage rows of the pinned Shakti corpus, analyzable as there defined (recorded symbol list non-empty and not all 000 placeholders; sequence = the symbol list with 000 tokens dropped). The claim as drafted states the proposition in full: The primary population of Spec 075 is the documented-lineage rows only, and step 0 reproduces it as 3,045 analyzable rows using 557 distinct signs, 550 of them in sequences of length at least 2 - or closes as POPULATION NOT REPRODUCED before any class is counted.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 071's frozen record carries this population: its section 3 states the primary population is documented-lineage rows only (3,212 rows; 3,045 analyzable, as graded) and its population statement (550 of the 557 distinct signs in sequences of length >= 2) is the figure the design of this spec carries unchanged (design R1).",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "specs/071-hunt-sky-signs-successor/spec.md",
+     "source_id": "spec-071 frozen record (Phase 437 freeze; executed closure INVALID at gate 0.3)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "2026-10-22-shakti-corpus-intake-record"
+     ]
+    },
+    {
+     "description": "The intake record and the 2026-10-22 provenance audit's grades: 3,212 documented-lineage / 2,087 undocumented-corroborated / 405 undocumented-uncorroborated of 5,704 rows; corpus SHA-256 345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68 and row-grades SHA-256 02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739, both re-hashed first-hand at this draft; the population figures were recomputed first-hand at this draft from those pinned files under section 3's construction and reproduce 3,045 / 557 / 550 exactly.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+     "source_id": "2026-10-22-shakti-corpus-intake-record",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-071 frozen record (Phase 437 freeze; executed closure INVALID at gate 0.3)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "recompute the population from the pinned corpus and grades at step 0: a row, sign, or sequence count differing from 3,045 / 557 / 550 that the execution proceeds past, or records as anything but POPULATION NOT REPRODUCED, falsifies this claim"
+   ],
+   "id": "F075-C06",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec071-record",
+     "shakti-intake"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "a population quietly rebuilt under a different analyzability or grade rule than the one Spec 071 froze, making the two studies' counts incommensurable",
+    "verdict_rule": "judged by gate 0.4's enumeration at the execution against the frozen figures, with the census committed before any rate exists"
+   },
+   "status": "draft",
+   "text": "The population of Spec 075 is the documented-lineage rows only, reproduced at step 0 or the run closes."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-DESIGN-CARRIED"
+   ],
+   "boundary": "The floors are the design's section 4 numbers, pre-registered from measured asset-level sizes: 20 member signs (set just below object_goods at 22) and 30 pooled occurrences (carried from Spec 071's gate 0.4), applied at the step-0 census to in-population counts. The claim as drafted states the proposition in full: The step-0 census is published before any final-position rate exists, the floors of 20 member signs and 30 pooled occurrences are applied to it, and a kind failing either floor is reported TOO THIN with its census - named, never dropped, never merged into a neighbour to clear a floor.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The endings-atlas design's requirements R5 (census before rates) and R9 (below-floor classes reported TOO THIN with their census, never dropped or merged) and its section 4 floor table: sign-count floor 20 member signs, occurrence floor 30 pooled occurrences, the sign floor set just below the smallest real identified kind (object_goods, 22 at asset level).",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "2026-10-25-endings-atlas-design.md (programme goal record, files/)",
+     "source_id": "endings-atlas design (2026-10-25, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-073 executed record (Phase 436, PR #354)"
+     ]
+    },
+    {
+     "description": "Spec 073's executed record gives the measured asset-level sizes the floors were set from: other 246, unidentified 211, human 43, animal 30, object_goods 22, sky_cycle 0 (Asset A v2, 552 rows) - recounted first-hand at this draft from the canonical CSV on main.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "specs/073-keying-surface-repair/outcome.md; specs/073-keying-surface-repair/asset-a-v2/depicted-kind-classification.csv",
+     "source_id": "spec-073 executed record (Phase 436, PR #354)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "endings-atlas design (2026-10-25, goal record)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "inspection of the step-0 record: a rate computed for a kind before its census entry exists, or a below-floor kind tested, merged, or silently absent from the outcome table, falsifies this claim"
+   ],
+   "id": "F075-C07",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "atlas-design",
+     "spec073-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "floors tuned after a census is seen, or a small kind folded into a neighbour so the study never has to print TOO THIN",
+    "verdict_rule": "judged by the step-0 census record's order and contents at the execution: census committed first, floors applied to it, every class of section 4 present in the outcome table with its standing"
+   },
+   "status": "draft",
+   "text": "The census is published before any rate, and the floors are applied to it."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-REPAIRED-SURFACE-FROZEN"
+   ],
+   "boundary": "The keying route is the two-leg route of Spec 074 (DD-074-8), adopted for this spec at DD-075-5: leg 1 resolves a Shakti sign's ICIT code (its Wells number) through the canonical Registry v2's parpola_1982 rows' wells_ids to exactly one Asset A v2 sign_key; leg 2 consults Registry v2's icit_wells rows, whose sign_id is the sign's own Wells code. Zero or multiple resolutions across both legs is unkeyable and closes the execution at gate 0.4 as POPULATION NOT KEYED, the sign named - with the single named exception of token 999, excluded in advance under section 4.3 as the one primary-population sign on Spec 073's NO PUBLISHED IDENTITY schedule. Keying is not classification: a sign keyed to an unidentified row is counted and listed, and is a member of no class. The claim as drafted states the proposition in full: Every primary-population sign is keyed to exactly one Asset A v2 row in Wells space under the two-leg route, or is token 999, the named exclusion - and any other unkeyable sign closes the run as POPULATION NOT KEYED.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 074's frozen record carries the two-leg route (DD-074-8) and its executed outcome records that under it the 31-sign opening-strong set keys 31 of 31, the five formerly unkeyable signs keying to rows whose depicted kind is unidentified - the route exists as an executed, recorded rule, not a proposal.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "specs/074-hunt-opening-signs-repaired-surface/freeze.json; specs/074-hunt-opening-signs-repaired-surface/outcome.md; specs/074-hunt-opening-signs-repaired-surface/step0-record.md",
+     "source_id": "spec-074 executed record (Phase 440, PRs #368/#372/#373)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-073 executed record (Phase 436, PR #354)"
+     ]
+    },
+    {
+     "description": "Spec 073's NO PUBLISHED IDENTITY schedule names token 999 as its sole entry - the one primary-population sign with no published identity in any ruled source, a corpus placeholder; Registry v2 (1,013 rows) and Asset A v2 (552 rows) are the surfaces the route runs over, their digests recomputed first-hand at this draft.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "specs/073-keying-surface-repair/registry-v2/no-published-identity.json; specs/073-keying-surface-repair/registry-v2/registry-v2-freeze.json; specs/073-keying-surface-repair/asset-a-v2/asset-a-v2-freeze.json",
+     "source_id": "spec-073 executed record (Phase 436, PR #354)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-074 executed record (Phase 440, PRs #368/#372/#373)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "recompute the keying of every enumerated sign at step 0: a sign other than 999 resolving to zero or multiple rows that the execution proceeds past, or a sign admitted to a class by any route but this one, falsifies this claim"
+   ],
+   "id": "F075-C08",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec074-record",
+     "spec073-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "a keying improvised at execution - a sign assigned a kind by label-reading or judgement where the route returns none",
+    "verdict_rule": "judged by gate 0.4's keying record at the execution: every enumerated sign with its resolution or its named closure, token 999 recorded as the named exclusion with its count"
+   },
+   "status": "draft",
+   "text": "Every enumerated sign is keyed to exactly one Asset A v2 row in Wells space, or is the named exclusion."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-DESIGN-CARRIED"
+   ],
+   "boundary": "The arm's content is bounded by Spec 073's executed census and the 2026-10-25 retirement decision: the celestial class in Asset A v2 is empty (sky_cycle 0 of 552 rows), and the arm restates that finding where a reader of an endings atlas would look for it. The claim as drafted states the proposition in full: The celestial arm of Spec 075 is pre-registered EMPTY - reported first in every outcome product as the Spec 071 line's closing finding, with its census number 0 - and it is never tested, sampled, or counted as an arm of the battery.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 073's executed record: Asset A v2's celestial class is 0 (census: other 246, unidentified 211, human 43, animal 30, object_goods 22, sky_cycle 0) - no ruled source depicts any newly keyed sign as a sky object; recounted first-hand at this draft from the canonical CSV on main.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "specs/073-keying-surface-repair/outcome.md; specs/073-keying-surface-repair/asset-a-v2/depicted-kind-classification.csv",
+     "source_id": "spec-073 executed record (Phase 436, PR #354)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-071 retirement decision (2026-10-25, PR #381)"
+     ]
+    },
+    {
+     "description": "The Spec 071 retirement decision of 2026-10-25 records the empty celestial class as the line's closing finding and the claim's standing as UNTESTED, with the governed reopening trigger; the endings-atlas design's R7 pre-registers the arm as EMPTY on that basis - reported, never tested.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "docs/decisions/2026-10-25-spec-071-retirement-decision.md; 2026-10-25-endings-atlas-design.md (programme goal record, files/)",
+     "source_id": "spec-071 retirement decision (2026-10-25, PR #381)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-073 executed record (Phase 436, PR #354)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "inspection of every Spec 075 product: a celestial rate, a celestial comparison, or any wording presenting the arm as a test or as new evidence about sky signs, falsifies this claim"
+   ],
+   "id": "F075-C09",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec073-record",
+     "spec071-retirement"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the arm quietly becoming a test - a keyword-built celestial class of ray-feature labels, the construction Spec 071 section 4.1 excluded in advance",
+    "verdict_rule": "judged by inspection of the outcome record's opening arm: census number 0, the retirement citation, and no rate, comparison, or verdict word attached to the arm"
+   },
+   "status": "draft",
+   "text": "The celestial arm is pre-registered EMPTY and is reported, never tested."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-DESIGN-CARRIED"
+   ],
+   "boundary": "The exclusion is bounded by section 2.3's stated deviation (design R8, ruled DD-075-4): the comparison for each kind is the other identified kinds only. Unidentified signs remain in the population for the census and for the corpus-wide descriptive rate, and token 999's separate exclusion is section 4.3's, not this claim's. The claim as drafted states the proposition in full: Unidentified signs enter no class and no comparison class under Spec 075; they are counted in the step-0 census, the corpus-wide final-position rate over all signs is published as descriptive context, and no verdict word attaches to them.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The endings-atlas design's R8 states the rule and its reason: unidentified signs enter no class and no comparison class (the question is kind against kind, so the comparison is the other identified kinds - a stated deviation from Spec 071 section 4.2); they are counted in the census, and the corpus-wide final-position rate over all signs is published as descriptive context.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "2026-10-25-endings-atlas-design.md (programme goal record, files/)",
+     "source_id": "endings-atlas design (2026-10-25, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-073 executed record (Phase 436, PR #354)"
+     ]
+    },
+    {
+     "description": "Spec 073's executed record: 211 of Asset A v2's 552 rows carry depicted kind unidentified - signs the published sources do not identify; Spec 074's executed record carries the standing consequence of the same fact for its five formerly unkeyable signs: keyed, counted, listed, and excluded from the primary's numerator and denominator, because keying is not classification.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "specs/073-keying-surface-repair/outcome.md; specs/074-hunt-opening-signs-repaired-surface/outcome.md",
+     "source_id": "spec-073 executed record (Phase 436, PR #354)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "endings-atlas design (2026-10-25, goal record)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "recompute any kind's comparison class at the execution: an unidentified sign among its members, or a verdict word attached to the unidentified signs anywhere in the products, falsifies this claim"
+   ],
+   "id": "F075-C10",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "atlas-design",
+     "spec073-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the unidentified mass quietly re-entering as comparison members (Spec 071's rule), inflating or deflating a kind's ratio while the design's deviation goes unrecorded",
+    "verdict_rule": "judged by the step-0 census and the comparison-class enumerations at the execution: unidentified counted as context, absent from every class and comparison class"
+   },
+   "status": "draft",
+   "text": "Unidentified signs enter no class and no comparison class."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-DESIGN-CARRIED"
+   ],
+   "boundary": "The criteria are section 5.2's frozen bands: SUPPORTED at an enrichment ratio of at least 1.5 with Fisher's exact test (two-sided) significant at the 5 percent level and at least half the kind's occurrences from signs above the corpus-wide final-position rate; NOT SUPPORTED at a ratio at or below 1.0; INCONCLUSIVE between; TOO THIN below the floors of section 4.5. The claim as drafted states the proposition in full: The verdicts of Spec 075 are per kind, four words published together with their per-sign tables in one outcome record, each computed by section 5.2's frozen criteria - and no pooled verdict over depicted kinds is computed, stated, or implied by any arrangement of the four.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The endings-atlas design's R10-R11 and section 5: the per-kind test is Fisher's exact (two-sided) on the pooled 2x2 against the frequency-matched comparison, at the 5 percent level; SUPPORTED requires ratio >= 1.5, significance, and the half-of-occurrences condition; NOT SUPPORTED is ratio <= 1.0; anything else is INCONCLUSIVE; below a floor is TOO THIN; and no pooled 'depicted signs' verdict exists under the design.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "2026-10-25-endings-atlas-design.md (programme goal record, files/)",
+     "source_id": "endings-atlas design (2026-10-25, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-071 frozen record (Phase 437 freeze; executed closure INVALID at gate 0.3)"
+     ]
+    },
+    {
+     "description": "Spec 071's frozen sections 4.2-4.4 carry the machinery this spec takes over per kind: the pooled final-position rate, the frequency-matched comparison, the two-sided Fisher exact combination, and the per-sign report published in full so one frequent sign cannot carry a class silently.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "specs/071-hunt-sky-signs-successor/spec.md",
+     "source_id": "spec-071 frozen record (Phase 437 freeze; executed closure INVALID at gate 0.3)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "endings-atlas design (2026-10-25, goal record)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "recompute each kind's word from its frozen inputs at the execution: a word differing from the bands' output, a pooled verdict anywhere in the products, or a per-kind table published without its per-sign table, falsifies this claim"
+   ],
+   "id": "F075-C11",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "atlas-design",
+     "spec071-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "four careful words collapsed in a headline into one pooled claim - 'depicted kinds gather at endings' - that no single test under this spec ever ran",
+    "verdict_rule": "judged by recomputation of each word from the frozen inputs and by inspection of every product for a pooled statement"
+   },
+   "status": "draft",
+   "text": "The verdicts are per kind; no pooled depicted-kinds verdict exists."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "Append-only covers every write this spec's products make: the outcome appends to this spec's directory, the programme ledger, and this claim family; the retirement record, the frozen records of Specs 071 and 073, the graded corpus, and Asset A v2 are read under their pins, never edited. The claim as drafted states the proposition in full: All writes under Spec 075 are appends; no frozen, closed, or retired record of any other spec is edited by any act of this spec.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The endings-atlas design's section 8 states the programme standing rule this claim carries: no outcome under the study moves an anchor, a reading, a PRED-2026 state, a verdict, a status, or a frozen text anywhere in the programme; writes are appends to the outcome record, the ledger, and the claim family.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "2026-10-25-endings-atlas-design.md (programme goal record, files/)",
+     "source_id": "endings-atlas design (2026-10-25, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-071 retirement decision (2026-10-25, PR #381)"
+     ]
+    },
+    {
+     "description": "The Spec 071 retirement decision's section 5 states the retirement writes nothing else: the claim's apriori dump was proven to survive regeneration byte-identically under the widened carry-over, and no store file was edited by hand in the act - the same discipline this claim imposes on every Spec 075 act.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "docs/decisions/2026-10-25-spec-071-retirement-decision.md",
+     "source_id": "spec-071 retirement decision (2026-10-25, PR #381)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "endings-atlas design (2026-10-25, goal record)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "diff the repository across any Spec 075 act: an edited line in a frozen, closed, or retired record of another spec falsifies this claim"
+   ],
+   "id": "F075-C12",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "atlas-design",
+     "spec071-retirement"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "a small courtesy edit - a status word, a cross-reference - made directly in a frozen record instead of by append",
+    "verdict_rule": "judged by the diffs of every PR landed under this spec: additions only, outside this spec's own directory and the standing append surfaces"
+   },
+   "status": "draft",
+   "text": "All writes under Spec 075 are appends; frozen and retired records are never edited."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-DESIGN-CARRIED"
+   ],
+   "boundary": "The layer statement and the two cautions are bounded by their sources: the identification layer is Asset A v2 as Spec 073 built it under the governing hierarchy (CISI -> Fuls 2023 Catalog -> Parpola 1994); the 49 percent caution is Spec 037's census of object-type labels over matched objects; the lineage is the ICIT lineage of the Shakti corpus per the 2026-10-22 provenance audit (P-F1 S3). The claim as drafted states the proposition in full: Depiction under Spec 075 is the published-identification layer of Spec 073, not ground truth; Spec 037's 49 percent caution travels with Asset A v2 wherever it or a verdict from it is stated; and every headline block names the ICIT lineage of the corpus.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 073's executed record: Asset A v2 was built from held published sources only under the governing hierarchy, every identification row carrying its verbatim label and a citation; its outcome states Asset A v2 records what the published sources say, not what the object is.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "specs/073-keying-surface-repair/outcome.md; specs/073-keying-surface-repair/asset-a-v2/asset-a-v2-freeze.json",
+     "source_id": "spec-073 executed record (Phase 436, PR #354)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-071 frozen record (Phase 437 freeze; executed closure INVALID at gate 0.3)"
+     ]
+    },
+    {
+     "description": "Spec 071's frozen section 8 carries both cautions in the form this claim inherits: the 49 percent figure is Spec 037's census of object-type labels diverging between the CISI volumes and the corpus across matched objects, and the lineage statement is the provenance audit's - the Shakti corpus is an ICIT-lineage corpus, and its sign identity is the ICIT sign list's.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-25",
+     "ref": "specs/071-hunt-sky-signs-successor/spec.md",
+     "source_id": "spec-071 frozen record (Phase 437 freeze; executed closure INVALID at gate 0.3)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "spec-073 executed record (Phase 436, PR #354)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "inspection of every Spec 075 product: a verdict or asset statement presented as ground truth about what a sign depicts, the 49 percent caution dropped, or the lineage statement missing from a headline block, falsifies this claim"
+   ],
+   "id": "F075-C13",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec073-record",
+     "spec071-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the careful layer statement quietly dropped in a summary, so a verdict about published identifications is read as a verdict about the objects themselves",
+    "verdict_rule": "judged by inspection of every product's headline block and verdict wording against sections 9.2, 9.3, and 9.4"
+   },
+   "status": "draft",
+   "text": "Depiction is the published-identification layer; the 49% caution and the lineage statement travel with every product."
+  }
+ ],
+ "note": "Register drafted directly in the recovered (0.7) register form used by Spec 074's register - the form that survives the claim-store generator's round trip (framework 0.2.6 convert-spec-optional; see Spec 071's adjudication section 3): every claim carries text / boundary / evidence / falsification_tests / kind / status, and metadata carrying boundary_confirmation, evidence_origin_groups, forbidden_assumptions, framework_kind, layer, strongest_rival, verdict_rule; every evidence item carries independent_of naming the other sources cited in the same claim, so independence is a field, never prose. Assumptions referenced by id and defined here: ASM-NEW-FAMILY-STATED = the spec states openly that this family is new, is not Spec 071's question, and that the celestial arm is a republished settled finding (spec section 1) - the non-succession is a stated property of the spec, not an inference a reader must supply; ASM-CLAIM-RECORD = a claim's standing lives in its claim file, and a retirement or verdict is carried there as an append, never as an edit - proven for the Spec 071 claim by the widened carry-over of PR #375; ASM-REPAIRED-SURFACE-FROZEN = Registry v2 and Asset A v2 exist as frozen products of Spec 073's executed record before this spec freezes, and this freeze's gate 0.1 asserts them against that record; ASM-GRADE-DISCIPLINE = the 2026-10-22 provenance audit's row grades govern population membership in this programme (P-F1 S4), and Spec 071's construction of the primary population is carried unchanged so the two studies' counts are commensurable; ASM-DESIGN-CARRIED = the endings-atlas design (2026-10-25) is the governing design for this spec, its requirements R1-R13 carried as written, and every deviation from it or from a carried text stated in the spec and ruled in the adjudication; ASM-APPEND-ONLY = programme records are append-only; frozen, closed, and retired records are read under their pins and never edited. Status values use the verified vocabulary of the adjacent registers (draft / supported / contradicted / untested / in question / partially supported); at this freeze every claim is draft. The evaluator-side verdict on this register at the freeze is recorded in the freeze record, not here; the frozen bands in spec section 5.2 are the verdict rule of the tested claims, and the draft cap of the evaluator's FR-2.3 (claims in draft cap at 0.70) applies to every claim in this register until an execution adjudicates them.",
+ "register_version": "0.7-draft",
+ "spec": "075-depicted-kind-endings-atlas"
+}

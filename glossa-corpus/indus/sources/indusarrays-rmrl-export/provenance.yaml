@@ -3,7 +3,7 @@ source_name: "RMRL indusarrays layer — Firestore export of the indusscript.in 
 source_url: "https://indusscript.in"
 download_url: ""
 download_date: "2026-05-14"
-local_path: "C:/Users/trist/Development/BitConcepts/glossa-lab/glossa-corpus/indus/sources/rmrl/raw/indusscript-probe/firestore_indusarrays_full.jsonl (TRISTEN-DESKTOP, Windows clone, branch phase-next; gitignored; not in git)"
+local_path: "COPY 1 (original): C:/Users/trist/Development/BitConcepts/glossa-lab/glossa-corpus/indus/sources/rmrl/raw/indusscript-probe/firestore_indusarrays_full.jsonl (TRISTEN-DESKTOP, Windows clone, branch phase-next; gitignored; not in git). COPY 2 (custody copy, created 2026-10-25): ~/workspace/glossa-lab/glossa-corpus/indus/sources/rmrl/raw/indusscript-probe/firestore_indusarrays_full.jsonl (VM local checkout sources store, same relative path; gitignored by the same rule; not in git). Both copies SHA-256 073a83aa5e0f81055e7b68d2ccdf160027bb5061b4b870e58f3d3457cad1a578."
 checksum_sha256: "073a83aa5e0f81055e7b68d2ccdf160027bb5061b4b870e58f3d3457cad1a578"
 license: "RMRL research use — contact required for concordance export (per sources/rmrl/provenance.yaml). The permission basis recorded elsewhere stands unchanged by this pin. Internal research use only; the export is not redistributed and its content is not committed to this repository."
 license_url: "https://rmrl.in"
@@ -63,11 +63,20 @@ notes: >
   script's frozen census figures (3,916 / 2,665 / 3,137 / 12,494) can be
   checked against this held file first; its record count already matches
   the first figure exactly.
-  CUSTODY WARNING: SINGLE-COPY. The file exists only on the desktop's
-  disk, gitignored, with no second copy in any swept store. Whether a
-  content copy is made, and to where, is an OWNER decision — it is not
-  made by this pin. This intake is metadata-only: no content was copied,
-  moved, or ingested by it, and the file itself never enters git.
+  CUSTODY: RESOLVED 2026-10-25 — TWO COPIES, TWO MACHINES. An exhaustive
+  search that day (every glossa-lab git history and object store on the VM,
+  on TRISTEN-DESKTOP, and on the GitHub remote; both filesystems by name, by
+  exact byte size, and by content signature; the OSF and Zenodo file
+  listings) found no second copy anywhere — git history included. A custody
+  copy was therefore created the same day under the owner's directive: copy
+  2 sits in the VM's local checkout sources store at the same relative path,
+  SHA-256 identical to this pin, with the checkout's tracked state proven
+  untouched. The full search-and-creation record is
+  indusarrays_custody_addendum_2026-10-25.md in this directory. This intake
+  remains metadata-only as a record: the pin itself copied nothing, and the
+  file itself never enters git. The bundle's siblings (the .json export, the
+  extra and missing-texts exports, and the .har capture) remain single-copy
+  on the desktop.
 source_score:
   textual_value: 5
   metadata_quality: 4

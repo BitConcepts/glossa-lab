@@ -31,3 +31,15 @@ the owner-side remedy, rather than rounded up to "backed up".
 Standing rule adopted with this record (from RT-11's mitigation): a
 freeze may not proceed on an input with a single copy unless the
 freeze record states that fact as an accepted risk.
+
+## Note on the in-repo provenance stubs (item 3.3(ii))
+
+The May-2026 acquisition stubs under `glossa-corpus/indus/sources/`
+are not edited by this act: at least one of them (the CISI source
+record) is cited by a frozen spec record and hash-pinned by its
+freeze test (`test_spec052_freeze.py::test_cited_records_carry_the_design_facts`,
+which failed on an appended custody block during this act's first
+pass and passes with the file untouched). The verified state of the
+held layers therefore lives in this custody record, which supersedes
+the stubs as the statement of what is held; the stubs stand as
+acquisition history.

@@ -51,6 +51,19 @@ notes: >
   source was not recorded — its own scan identity is the DLI barcode above.
   This pin complements, and does not supersede, the 25-page Introduction
   transcription recorded in CITATIONS.md §A.1 (a separate 400-dpi artifact).
+  DIVERGENCE FLAG (2026-10-25, holdings reconciliation register item #41):
+  the derived M77 raw text mahadevan_m77_raw.txt exists in divergent
+  copies — the VM local checkout's data/mahadevan_m77_raw.txt (673,943
+  bytes, SHA-256
+  11441e38286784a1f4215f73d91cbba8acd153b7e5b30daed9252f9f7b77304a,
+  re-hashed 2026-10-25) and the desktop clones' data/import/ copy
+  (SHA-256 prefix 1e8a91e2… per the register) — different contents at
+  different paths. NO canonical pin exists yet: neither copy is designated
+  canonical by this record. The VM checkout is behind main, so its copy is
+  presumptively stale, but that is an inference, not a pin. Until a pin
+  decision is recorded, cross-clone M77-derived figures are to be treated
+  as unverified. This flag records the divergence only; no content
+  reconciliation was attempted.
 source_score:
   textual_value: 5
   metadata_quality: 5

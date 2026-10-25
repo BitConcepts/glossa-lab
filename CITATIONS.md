@@ -79,7 +79,17 @@ underlying data sources below** in addition to the Glossa-Lab project itself.
 ### A.4 Parpola, Pande & Koskikallio 2010 — CISI Vol. 3.1: Mohenjo-daro and Harappa
 
 **Used in:** Phase-26 find-spot map cross-checking; Phase-28 catalogue reference.
-**To acquire:** Phase-30 priority. €220 from Tiedekirja or via ILL.
+
+**Held in part (record corrected 2026-10-25):** the "Basic data for the
+objects illustrated" portion (printed pp. 413–443) was delivered by Oakland
+University interlibrary loan on 2026-10-14 and is held locally
+(`oakland-ill-cisi31-portion/376929.pdf`, 8,206,446 bytes, SHA-256
+514338b1f6c498bd318b114e39b0e77a79a6685918a0a4c2c5b116dfc2482b6a, with derived
+CSVs; restricted — statistics and locations only, never redistributed; intake
+record: deep-sweep PROVENANCE §22). The complete 3.1 volume is NOT held;
+acquiring it (€220 from Tiedekirja or further ILL) remains open. The earlier
+"to acquire" line described the whole volume as outstanding and predated the
+ILL delivery.
 
 > Parpola, Asko, B. M. Pande & Petteri Koskikallio (eds.). 2010. *Corpus of Indus
 > Seals and Inscriptions. Volume 3: New material, untraced objects, and
@@ -130,6 +140,13 @@ membership; Phase-30 target for full integration.
 > technical appendices by Andreas Fuls. Oxford: Archaeopress. Pp. x + 143.
 > ISBN paperback 978-1-78491-046-4. ISBN epublication 978-1-78491-047-1.
 
+**Held (record corrected 2026-10-25):** the book's full text is held in
+processed form in the programme's literature corpus (cleaned text,
+268,195 bytes, at `glossa-indus/processed/cleaned_text/`, with the document
+record in `glossa-indus/literature/documents/`). No purchase is needed for
+content access — the eBook purchase question is moot. The typeset original
+is not held.
+
 - **Available:** Archaeopress eBook £15.83 (private use). Google Play Books $22.
   https://www.archaeopress.com/Archaeopress/Products/9781784910464
 
@@ -143,10 +160,38 @@ membership; Phase-30 target for full integration.
 - **Open access:** Internet Archive
   https://archive.org/details/epigraphicapproachestoinduswritingbryankennethwellsphd.thesis_230_Z
 
+### A.8a Wells 1998 — MA thesis: *An Introduction to Indus Writing*
+
+(Entry added 2026-10-25 — the thesis was held from 2026-10-08 but had no
+CITATIONS entry.)
+
+> Wells, Bryan Kenneth. 1998. *An Introduction to Indus Writing.* MA thesis,
+> University of Calgary.
+
+- **Held:** the full-text PDF is held locally in the programme's downloads
+  store (`research_notes/indus-data-deep-sweep-20261008/downloads/wells-ma-thesis-1998/Wells1998_MA_AnIntroductionToIndusWriting_Calgary.pdf`)
+  — 12,298,934 bytes, 295 pp., SHA-256
+  5720dc010acc68d6b50827fa89fb7bf3c4c0eb0aee67597e7662e5fd74508906. Source:
+  University of Calgary PRISM/Scholaris, open full text (DOI
+  10.11575/PRISM/23641). Intake record: deep-sweep PROVENANCE §5 and its
+  sha256 manifest.
+- **Named in:** the Spec 071 reopening trigger — an exhibited published list
+  (Mahadevan 1977 / Wells 1998) identifying ≥5 celestial signs totalling ≥30
+  primary-population occurrences can reopen the retired sky-signs question
+  (see `docs/decisions/2026-10-25-spec-071-retirement-decision.md`).
+
 ### A.9 Fuls 2022, 2023a — *Corpus of Indus Inscriptions* (Mathematica Epigraphica vol. 3)
 
-**Used in:** Phase-29 `MathematicaEpigraphicaLoader` (no-op default; not yet
-acquired). Expected: 5,509 inscriptions, 19,616 sign occurrences.
+**Used in:** Phase-29 `MathematicaEpigraphicaLoader` (no-op default).
+Expected: 5,509 inscriptions, 19,616 sign occurrences.
+
+**Held (record corrected 2026-10-25):** the owner's Kindle PDF of this
+volume (2nd ed. 2023) has been held on TRISTEN-DESKTOP since 2026-10-22 and
+is hash-verified — 285,116,101 bytes, 583 pp., image-only, SHA-256
+185fd0575d881568583a7002d705b2ded1313a525fafe093108f72e0fe897727. Intake
+record: deep-sweep PROVENANCE §27 and the 2026-10-22 acquisition memo. The
+PDF stays on the desktop; it is not committed to git. The earlier "not yet
+acquired" line was never updated after the acquisition.
 
 > Fuls, Andreas. 2022 (1st ed.) / 2023 (2nd ed.). *Corpus of Indus Inscriptions.*
 > Mathematica Epigraphica vol. 3. Berlin: Independently published. Pp. 582.
@@ -160,7 +205,14 @@ acquired). Expected: 5,509 inscriptions, 19,616 sign occurrences.
 
 ### A.10 Fuls 2023b — *A Catalog of Indus Signs* (Mathematica Epigraphica vol. 4)
 
-**Used in:** Phase-30 target — sign list (~700 graphemes) cross-validation.
+**Used in:** sign list (~700 graphemes) cross-validation.
+
+**Held (record corrected 2026-10-25):** the owner's Kindle PDF of this
+volume has been held on TRISTEN-DESKTOP since 2026-10-22 and is
+hash-verified — 274,176,439 bytes, 571 pp., image-only, SHA-256
+31729a4f7b33bd1ec08633bb677f963b5de8f50d96afdfc25cff5ddc96f9a32a. Same
+intake record as A.9. The PDF stays on the desktop; it is not committed to
+git.
 
 > Fuls, Andreas. 2023. *A Catalog of Indus Signs.* Mathematica Epigraphica vol. 4.
 > Berlin: Independently published. Pp. ~540. ISBN 979-8-398-42230-6.
@@ -1342,6 +1394,35 @@ in `glossa-corpus/indus/sources/*/provenance.yaml`.
 - **Rights class**: `internet-archive-derivative` — OCR seeding only
 - **Used in**: `corpus_indus_acquire_free.py` (IIIF manifests for OCR seed data)
 - **Rights gate**: Do NOT canonicalize readings without reconciliation against official editions. Do NOT include in ML training or redistribution.
+
+### I.9 — ShaktiOSindia, *Two Sign-Regimes in the Indus Corpus* reproducibility deposit
+
+(Entry added 2026-10-25 — the deposit was held from 2026-10-22 but had no
+CITATIONS entry.)
+
+- **Author**: ShaktiOSindia (GitHub)
+- **Title**: *Two Sign-Regimes in the Indus Corpus* — reproducibility deposit
+  for the paper of that name (CHR 2027)
+- **Repository**: https://github.com/ShaktiOSindia/indus-sign-regimes-deposit
+  (upstream commit e48b3ec1e90f368079f5126790613cded6f6f56c)
+- **Held**: cloned 2026-10-22 into the programme's local downloads store
+  (`downloads/shaktiosindia-indus-sign-regimes-deposit/`; 57 files, ~2.6 MB;
+  single copy, on this machine only). File of record:
+  `sanitized_corpus.json` — 1,570,041 bytes, SHA-256
+  345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68 —
+  matching the deposit README's own pin exactly. Counts at intake: 5,704
+  inscription records; 5,536 analyzable; 18,065 true sign tokens; 713
+  distinct signs. Full intake record: deep-sweep PROVENANCE §25. Programme
+  row grades: `shakti_row_grades_2026-10-22.csv`.
+- **License**: corpus GPL-3.0; analysis scripts MIT (per the deposit README;
+  no separate LICENSE file exists).
+- **Provenance caveat**: ICIT-lineage snapshot (ICIT encoding follows Fuls
+  2014; Mahadevan 1977 concordance backbone). The deposit README documents
+  3,212 of 5,704 rows (56.3%) as matching a sign sequence in the Yajnadevam
+  upstream population (see C.7); the remaining rows carry only the deposit's
+  internal source label and are undocumented pending audit.
+- **Rights gate**: redistribution governed by the stated GPL-3.0 licence;
+  held in the restricted-local research store, outside git.
 
 ---
 

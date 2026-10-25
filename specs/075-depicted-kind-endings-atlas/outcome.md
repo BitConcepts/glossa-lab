@@ -213,3 +213,20 @@ measured in the landing record appended to this file.
 
 *AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the
 direction of Tristen Pierson, per constitution §VI.*
+
+---
+
+## Landing record (appended at landing, 2026-10-25)
+
+Execution PR #395 (branch spec-075-execution, commit 0c63004) merged
+to main at e9e283f3 on CI 8/8 green read from the run's own job
+conclusions (Backend pytest, Frontend Playwright, Evidence Graph
+smoke, C4 freeze-gate check, Indus public validation, Shell wrappers
+x3). Foundation check on the execution tree, as measured: 39 passed /
+0 failed / 9 warnings — the same posture as main's committed report;
+the regenerated report JSON was not committed, because the sparse
+execution tree lacks the extracted-claims store and a regeneration
+there would misstate the store's figures (0 claims in 0 files in place
+of the canonical 31 in 10). Results byte-identical across the two
+execution runs (SHA-256 f55ae911...). This landing record is appended
+by the follow-up landing PR; no frozen or closed record was edited.

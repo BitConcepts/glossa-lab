@@ -131,3 +131,25 @@ corpus under the adopted form.
 
 *AI disclosure: produced by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.*
+
+
+---
+
+## Definition note — 2026-10-25 (programme red team, finding C-5)
+
+The grade **"documented-lineage"** in this record is a
+**sequence-equality** measure: a row is graded documented when its
+sign sequence occurs in the Yajnadevam/ICIT extraction under the
+deposit's stated rule — not when that artefact's own reading is
+documented. Verified by independent recomputation from the
+deposit (2026-10-25): 3,212/5,704 rows match (56.31%), with 0
+mismatches against the row-grades file on all 5,704 rows. Two
+consequences every downstream use should carry: (1) only 1,790
+distinct sequences stand behind the 3,212 documented rows, and
+1,571 of the 3,045 primary-population rows (51.6%) share their
+sequence with at least one other corpus row, so the grade
+certifies the sequence, possibly on a different artefact; (2) the
+corroborated tier (2,087 rows) depends on the programme's
+pre-existing ICIT-lineage layer, which is not in the deposit, and
+is not reproducible from the deposit alone. Read
+"documented-lineage" throughout as "sequence-documented."

@@ -526,8 +526,33 @@ def process_document(doc_id: str) -> dict:
         # notes over regeneration broke that pin in the same
         # CI run; widening this carry-over is a separate,
         # separately-pinned change.
+        #
+        # Widening (realignment Item 1.2, 2026-10-25; red-team
+        # finding RT-02; owner decision of 2026-10-25,
+        # docs/decisions/2026-10-25-realignment-decision.md):
+        # the separately-pinned change is this one. The
+        # 2026-10-23 freeze-pin ruling rests on the dated audit
+        # notes (audit_note_YYYY_MM_DD and
+        # audit_correction_YYYY_MM_DD) and the Spec 054
+        # falsifier append (specNNN_falsifier_append_YYYY_MM_DD)
+        # surviving in the store permanently, yet regeneration
+        # stripped all three families silently (proven in suite
+        # conditions, Spec 054 adjudication section 9.8). The
+        # carry-over now covers the full dated-append family:
+        # the audit keys, and any specNNN key ending in a date
+        # (outcome appends, falsifier appends, and outcome keys
+        # of the specNNN_outcome_YYYY_MM_DD shape). The hazard
+        # that scoped the original change is retired at its
+        # source: the Phase I verbatim-instance pin is re-pinned
+        # against the merge-frozen record (the dated-append
+        # layer is excluded from that comparison in
+        # backend/tests/test_spec029_phase_i.py), and
+        # backend/tests/test_indus_claims_carryover.py proves
+        # each family survives regeneration verbatim — and
+        # fails on a generator without this widening.
         _dated_append = re.compile(
-            r"^spec\d{3}_outcome_append_\d{4}_\d{2}_\d{2}$")
+            r"^(?:audit_(?:note|correction)_\d{4}_\d{2}_\d{2}"
+            r"|spec\d{3}_.+_\d{4}_\d{2}_\d{2})$")
         prior_appends = {
             c.get("claim_id"): {
                 k: c[k]

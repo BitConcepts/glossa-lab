@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import re
 from pathlib import Path
 
 import pytest
@@ -172,6 +173,31 @@ def test_duplicate_groups_are_exactly_the_five_expected():
             records[canonical]["proposition_fingerprint"]
 
 
+# Dated-append keys (realignment Item 1.2 re-pin, 2026-10-25):
+# the audit notes / corrections of 2026-10-22 and the spec outcome
+# and falsifier appends are a governed layer added to live records
+# AFTER the Phase I merge froze the embedded instance copies. They
+# are preserved across regeneration by the generator's dated-append
+# carry-over (glossa-indus/scripts/indus_claims.py, widened
+# 2026-10-25 under finding RT-02), so they can no longer be absent
+# from the live record in suite conditions — the accident the
+# original form of the pin below silently relied on (Spec 054
+# adjudication section 9.8). The pin is therefore taken against
+# the merge-frozen content of the record: dated-append keys are
+# excluded from BOTH sides of the comparison. What the pin still
+# proves, unchanged: the merge itself preserved every instance
+# record verbatim; the append layer's own preservation is pinned
+# separately by backend/tests/test_indus_claims_carryover.py.
+_DATED_APPEND = re.compile(
+    r"^(?:audit_(?:note|correction)_\d{4}_\d{2}_\d{2}"
+    r"|spec\d{3}_.+_\d{4}_\d{2}_\d{2})$")
+
+
+def _merge_frozen_view(record: dict) -> dict:
+    return {k: v for k, v in record.items()
+            if k != "extracted_at" and not _DATED_APPEND.search(k)}
+
+
 def test_instances_preserved_verbatim_on_canonical():
     records = _load_store()
     for canonical, instances in EXPECTED_GROUPS.items():
@@ -181,10 +207,11 @@ def test_instances_preserved_verbatim_on_canonical():
             # The embedded copy is the record as merged; the
             # store's one volatile field, ``extracted_at``, is
             # refreshed on the live record by later extraction
-            # regenerations (pre-existing behaviour) and is the
-            # only field excluded from the comparison.
-            kept = {k: v for k, v in entry["record"].items() if k != "extracted_at"}
-            live = {k: v for k, v in records[cid].items() if k != "extracted_at"}
+            # regenerations (pre-existing behaviour) and is
+            # excluded from the comparison, as is the dated-append
+            # layer (see the re-pin note above _DATED_APPEND).
+            kept = _merge_frozen_view(entry["record"])
+            live = _merge_frozen_view(records[cid])
             assert kept == live
             assert entry["source_document_id"] == records[cid]["source_document_id"]
 

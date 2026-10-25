@@ -115,3 +115,40 @@ Two statements in this record are qualified, dated today:
    identifications, if any, live is an open question, and no
    census arm should be designed against either description
    alone.
+
+
+---
+
+## Correction — 2026-10-25 (sign-list extraction)
+
+Three statements above are corrected by the extraction recorded in
+`m77_sign_list_extraction_2026-10-25.md` (same folder):
+
+1. **Page map.** The structure line above ("Sign List from p. 32;
+   Texts in the Indus Script pp. 163–416; Concordance to the Texts
+   pp. 417–716") swapped the Texts and the Concordance. The volume's
+   own contents leaf (PDF p. 9) reads: SIGN LIST 32 · TEXTS IN THE
+   INDUS SCRIPT 39 · CONCORDANCE TO THE TEXTS 163. Correct map:
+   Sign List printed pp. 32–35 (PDF pp. 44–47); Texts printed
+   pp. 39–162; Concordance printed pp. 163–716; Tables from p. 717
+   (unchanged).
+2. **What the sign list contains.** The sentence "The Sign List's
+   per-sign entries pair drawn forms with occurrence text-number
+   lists" describes the Concordance, not the Sign List. The
+   sign-list grid prints, per sign, its number, one drawn normal
+   form, and the variant dagger where it applies — no occurrence
+   lists, no frequencies.
+3. **Readiness items 2 and 3 (and F-6) are resolved.** Item 2 is
+   complete: the sign list is transcribed (417 signs; dataset and
+   hashes in the extraction record). One method deviation is
+   recorded there and must be read with the dataset: transcription
+   was by machine consensus, not the human double-keying item 2
+   specified, because a machine write restriction made landing page
+   images for human keying impossible this session; 30 signs are
+   named UNCERTAIN in the dataset, none guessed. Item 3 / F-6:
+   M77 attaches no per-sign identifications; the Introduction's
+   §11.5 classes are reported classification under the author's own
+   disclaimer ("the classification is merely conventional and no
+   stress is laid on any identification"), and no celestial class
+   exists in M77 — so M77 cannot by itself exhibit the ≥5
+   celestially identified signs the Spec 071 trigger requires.

@@ -1,0 +1,41 @@
+{
+ "record_type": "c2-spotcheck",
+ "schema_version": "1.0",
+ "spec": "specs/<NNN-spec-name>",
+ "drafter": "<drafter>",
+ "recomputer": "<recomputer \u2014 not the drafter>",
+ "method": "Recomputed from the spec text and the pinned inputs only; the drafter's workings were not consulted.",
+ "sample_rule": "every gate-turning quantity + random 25% (minimum 3) of the rest",
+ "sample_seed": 20261025,
+ "quantities": [
+  {
+   "name": "<quantity name>",
+   "source_in_spec": "<spec section / freeze.json path>",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": null,
+   "recomputed_value": null,
+   "status": "not-checked",
+   "note": ""
+  },
+  {
+   "name": "<quantity name>",
+   "source_in_spec": "<spec section / freeze.json path>",
+   "gate_turning": false,
+   "sampled": true,
+   "pinned_value": null,
+   "recomputed_value": null,
+   "status": "not-checked",
+   "note": ""
+  }
+ ],
+ "coverage": {
+  "gate_turning_total": 1,
+  "gate_turning_checked": 0,
+  "other_total": 1,
+  "other_sampled": 1,
+  "other_checked": 0
+ },
+ "outcome": "INCOMPLETE",
+ "_instructions": "Template for the C2 spot-check record. Scaffold a real one with freeze_records.py scaffold-c2 from the freeze's quantity list; the recomputer fills recomputed_value/status/note and the coverage counts, and sets outcome PASS only when every gate-turning quantity agrees or its mismatch is resolved and recorded."
+}

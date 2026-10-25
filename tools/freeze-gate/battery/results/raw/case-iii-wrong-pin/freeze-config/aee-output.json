@@ -1,0 +1,486 @@
+{
+  "schema_version": "1.0",
+  "methodology_version": "2.0",
+  "project": "project",
+  "phase": "after_plan",
+  "outcome": "iterate",
+  "summary": "Assessed 3 claim(s); found 6 failure mode(s); 0 claim(s) below the 0.70 confidence threshold. Shared evidence: 1 supporting source(s) shared across 3 of 3 claim(s); the same evidence set supports multiple claims (FR-2.8, reporting only, no outcome effect in this phase). Draft cap: 3 draft claim(s) capped at gather_evidence/iterate (FR-2.3). Stage cap: 3 claim(s) below stage 'explained'; the outcome cannot be 'pass' (Spec 004 R1.4). Stage default: 3 claim(s) loaded without a stage defaulted to 'created' (lenient path, Spec 004 R1.1; recorded in metadata.stage_defaulted_claims). Not understood: 6 residual unknown(s) are recorded on this assessment (Spec 004 R5.2). Lane 1 (machine verification): outcome iterate; 3 claim(s) at or above the 0.70 threshold, 0 below. Lane 2 (human acceptance): stages by effective stage: created 3. Lane-2 lag: 3 claim(s) below explained.",
+  "created_at": "2026-10-25T14:26:13.319110Z",
+  "claims": [
+    {
+      "id": "FB3-C01",
+      "text": "The pinned population total is 52 signs across the four inscriptions in the cited census.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": [
+        "The four inscriptions in SOURCE.md are the whole population."
+      ],
+      "depends_on": [],
+      "conflicts_with": [],
+      "evidence": [
+        {
+          "ref": "tools/freeze-gate/battery/case-iii-wrong-pin/SOURCE.md",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "The census table in SOURCE.md, summed at the freeze.",
+          "source_id": "battery-case-iii source table",
+          "independent_of": [],
+          "observed_at": "2026-10-25",
+          "content_hash": null
+        }
+      ],
+      "assumptions": [
+        "SOURCE.md is the complete census."
+      ],
+      "alternatives": [],
+      "falsification_tests": [
+        "A recount of SOURCE.md producing any other total defeats this claim."
+      ],
+      "uncertainty": "insufficient_evidence",
+      "severity": "medium",
+      "source_ref": "",
+      "domain": "",
+      "confidence": 0.7950000000000002,
+      "confidence_band": "high",
+      "failures": [
+        {
+          "id": "AEE-FB3-C01-INDEPENDENCE-UNMODELED",
+          "claim_id": "FB3-C01",
+          "challenge": "Shared-evidence independence challenge",
+          "breakpoint": "Supporting evidence 'battery-case-iii source table' (ref(s): tools/freeze-gate/battery/case-iii-wrong-pin/SOURCE.md) is shared with claim(s) FB3-C02, FB3-C03 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim",
+          "severity": "medium",
+          "category": "independence_unmodeled",
+          "recovery_hint": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-FB3-C01-DRAFT-CAP",
+          "claim_id": "FB3-C01",
+          "challenge": "Draft outcome cap",
+          "breakpoint": "Claim status is draft: the assessment outcome is capped at gather_evidence/iterate and policy verdicts below accept regardless of score (Spec 003 FR-2.3); a human ratification (status change) lifts the cap",
+          "severity": "low",
+          "category": "draft_cap",
+          "recovery_hint": "Ratify the claim (change its status from draft) to lift the cap.",
+          "resolved": false,
+          "disposition": null
+        }
+      ],
+      "metadata": {
+        "pinned_total_signs": 52
+      },
+      "dispositions": [],
+      "stage": "created",
+      "stage_events": [],
+      "headline": false,
+      "role": null
+    },
+    {
+      "id": "FB3-C02",
+      "text": "The pinned mean inscription length is 13.0 signs.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": [
+        "Derived from FB3-C01 and the four inscriptions."
+      ],
+      "depends_on": [
+        "FB3-C01"
+      ],
+      "conflicts_with": [],
+      "evidence": [
+        {
+          "ref": "tools/freeze-gate/battery/case-iii-wrong-pin/SOURCE.md",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Derived at the freeze from the pinned total and the inscription count.",
+          "source_id": "battery-case-iii source table",
+          "independent_of": [],
+          "observed_at": "2026-10-25",
+          "content_hash": null
+        }
+      ],
+      "assumptions": [
+        "The pinned total of FB3-C01 is correct."
+      ],
+      "alternatives": [],
+      "falsification_tests": [
+        "A mean other than 52 / 4 following from the pinned total defeats this claim."
+      ],
+      "uncertainty": "insufficient_evidence",
+      "severity": "medium",
+      "source_ref": "",
+      "domain": "",
+      "confidence": 0.7950000000000002,
+      "confidence_band": "high",
+      "failures": [
+        {
+          "id": "AEE-FB3-C02-INDEPENDENCE-UNMODELED",
+          "claim_id": "FB3-C02",
+          "challenge": "Shared-evidence independence challenge",
+          "breakpoint": "Supporting evidence 'battery-case-iii source table' (ref(s): tools/freeze-gate/battery/case-iii-wrong-pin/SOURCE.md) is shared with claim(s) FB3-C01, FB3-C03 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim",
+          "severity": "medium",
+          "category": "independence_unmodeled",
+          "recovery_hint": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-FB3-C02-DRAFT-CAP",
+          "claim_id": "FB3-C02",
+          "challenge": "Draft outcome cap",
+          "breakpoint": "Claim status is draft: the assessment outcome is capped at gather_evidence/iterate and policy verdicts below accept regardless of score (Spec 003 FR-2.3); a human ratification (status change) lifts the cap",
+          "severity": "low",
+          "category": "draft_cap",
+          "recovery_hint": "Ratify the claim (change its status from draft) to lift the cap.",
+          "resolved": false,
+          "disposition": null
+        }
+      ],
+      "metadata": {
+        "pinned_mean_signs": 13.0
+      },
+      "dispositions": [],
+      "stage": "created",
+      "stage_events": [],
+      "headline": false,
+      "role": null
+    },
+    {
+      "id": "FB3-C03",
+      "text": "The pinned share of the total held by M-003 is 0.269.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": [
+        "Derived from FB3-C01."
+      ],
+      "depends_on": [
+        "FB3-C01"
+      ],
+      "conflicts_with": [],
+      "evidence": [
+        {
+          "ref": "tools/freeze-gate/battery/case-iii-wrong-pin/SOURCE.md",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "Derived at the freeze from the pinned total and M-003's count of 14.",
+          "source_id": "battery-case-iii source table",
+          "independent_of": [],
+          "observed_at": "2026-10-25",
+          "content_hash": null
+        }
+      ],
+      "assumptions": [
+        "The pinned total of FB3-C01 is correct."
+      ],
+      "alternatives": [],
+      "falsification_tests": [
+        "A share other than 14 / 52 following from the pinned total defeats this claim."
+      ],
+      "uncertainty": "insufficient_evidence",
+      "severity": "medium",
+      "source_ref": "",
+      "domain": "",
+      "confidence": 0.7950000000000002,
+      "confidence_band": "high",
+      "failures": [
+        {
+          "id": "AEE-FB3-C03-INDEPENDENCE-UNMODELED",
+          "claim_id": "FB3-C03",
+          "challenge": "Shared-evidence independence challenge",
+          "breakpoint": "Supporting evidence 'battery-case-iii source table' (ref(s): tools/freeze-gate/battery/case-iii-wrong-pin/SOURCE.md) is shared with claim(s) FB3-C01, FB3-C02 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim",
+          "severity": "medium",
+          "category": "independence_unmodeled",
+          "recovery_hint": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-FB3-C03-DRAFT-CAP",
+          "claim_id": "FB3-C03",
+          "challenge": "Draft outcome cap",
+          "breakpoint": "Claim status is draft: the assessment outcome is capped at gather_evidence/iterate and policy verdicts below accept regardless of score (Spec 003 FR-2.3); a human ratification (status change) lifts the cap",
+          "severity": "low",
+          "category": "draft_cap",
+          "recovery_hint": "Ratify the claim (change its status from draft) to lift the cap.",
+          "resolved": false,
+          "disposition": null
+        }
+      ],
+      "metadata": {
+        "pinned_m003_share": 0.269
+      },
+      "dispositions": [],
+      "stage": "created",
+      "stage_events": [],
+      "headline": false,
+      "role": null
+    }
+  ],
+  "scores": {
+    "FB3-C01": {
+      "claim_id": "FB3-C01",
+      "direct_score": 0.7950000000000002,
+      "propagated_score": 0.7950000000000002,
+      "band": "high",
+      "components": {
+        "evidence": 0.9,
+        "independence": 0.5,
+        "falsifiability": 1.0,
+        "boundary": 0.5,
+        "contradiction_penalty": 0
+      },
+      "declared_state": {
+        "status": "draft",
+        "uncertainty": "insufficient_evidence",
+        "severity": "medium",
+        "conflicts_with": []
+      },
+      "propagation": {
+        "status": "propagated",
+        "cycle_component": []
+      },
+      "notes": [
+        "Fewer than two independent supporting sources",
+        "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+        "Boundary entry 'The four inscriptions in SOURCE.md are the whole population.' earns partial credit (FR-8.7): failed criteria: names no scope or limit (no scope term or numeric bound)"
+      ]
+    },
+    "FB3-C02": {
+      "claim_id": "FB3-C02",
+      "direct_score": 0.8450000000000001,
+      "propagated_score": 0.7950000000000002,
+      "band": "high",
+      "components": {
+        "evidence": 0.9,
+        "independence": 0.5,
+        "falsifiability": 1.0,
+        "boundary": 1.0,
+        "contradiction_penalty": 0
+      },
+      "declared_state": {
+        "status": "draft",
+        "uncertainty": "insufficient_evidence",
+        "severity": "medium",
+        "conflicts_with": []
+      },
+      "propagation": {
+        "status": "propagated",
+        "cycle_component": []
+      },
+      "notes": [
+        "Fewer than two independent supporting sources",
+        "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+        "Capped by weakest dependency at 0.795"
+      ]
+    },
+    "FB3-C03": {
+      "claim_id": "FB3-C03",
+      "direct_score": 0.8450000000000001,
+      "propagated_score": 0.7950000000000002,
+      "band": "high",
+      "components": {
+        "evidence": 0.9,
+        "independence": 0.5,
+        "falsifiability": 1.0,
+        "boundary": 1.0,
+        "contradiction_penalty": 0
+      },
+      "declared_state": {
+        "status": "draft",
+        "uncertainty": "insufficient_evidence",
+        "severity": "medium",
+        "conflicts_with": []
+      },
+      "propagation": {
+        "status": "propagated",
+        "cycle_component": []
+      },
+      "notes": [
+        "Fewer than two independent supporting sources",
+        "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+        "Capped by weakest dependency at 0.795"
+      ]
+    }
+  },
+  "verdicts": {},
+  "recoveries": [
+    {
+      "failure_id": "AEE-FB3-C01-INDEPENDENCE-UNMODELED",
+      "claim_id": "FB3-C01",
+      "strategy": "clarify",
+      "action": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+      "priority": 3,
+      "verification": "Independence between the shared evidence items is declared, or the shared corroboration is recorded as shared."
+    },
+    {
+      "failure_id": "AEE-FB3-C02-INDEPENDENCE-UNMODELED",
+      "claim_id": "FB3-C02",
+      "strategy": "clarify",
+      "action": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+      "priority": 3,
+      "verification": "Independence between the shared evidence items is declared, or the shared corroboration is recorded as shared."
+    },
+    {
+      "failure_id": "AEE-FB3-C03-INDEPENDENCE-UNMODELED",
+      "claim_id": "FB3-C03",
+      "strategy": "clarify",
+      "action": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+      "priority": 3,
+      "verification": "Independence between the shared evidence items is declared, or the shared corroboration is recorded as shared."
+    },
+    {
+      "failure_id": "AEE-FB3-C01-DRAFT-CAP",
+      "claim_id": "FB3-C01",
+      "strategy": "define_falsifier",
+      "action": "Ratify the claim (change its status from draft) to lift the cap.",
+      "priority": 4,
+      "verification": "A concrete observation that would refute the claim is documented."
+    },
+    {
+      "failure_id": "AEE-FB3-C02-DRAFT-CAP",
+      "claim_id": "FB3-C02",
+      "strategy": "define_falsifier",
+      "action": "Ratify the claim (change its status from draft) to lift the cap.",
+      "priority": 4,
+      "verification": "A concrete observation that would refute the claim is documented."
+    },
+    {
+      "failure_id": "AEE-FB3-C03-DRAFT-CAP",
+      "claim_id": "FB3-C03",
+      "strategy": "define_falsifier",
+      "action": "Ratify the claim (change its status from draft) to lift the cap.",
+      "priority": 4,
+      "verification": "A concrete observation that would refute the claim is documented."
+    }
+  ],
+  "metadata": {
+    "threshold": 0.7,
+    "input": "/home/hatch/workspace/glossa-run/gate-build/repo/tools/freeze-gate/battery/case-iii-wrong-pin/claims.json",
+    "ledger": {
+      "mode": "disabled",
+      "path": null
+    },
+    "loading_mode": "lenient",
+    "stage_defaulted_claims": [
+      "FB3-C01",
+      "FB3-C02",
+      "FB3-C03"
+    ],
+    "engine_version": "1.5.3"
+  },
+  "reported_statuses": {
+    "FB3-C01": "draft",
+    "FB3-C02": "draft",
+    "FB3-C03": "draft"
+  },
+  "stage_caps": [],
+  "not_understood": [
+    "FB3-C01: its lifecycle stage was not recorded and defaulted to 'created' on load - its position in the lifecycle is unrecorded, not established.",
+    "FB3-C01: open challenges this assessment does not resolve: independence_unmodeled.",
+    "FB3-C02: its lifecycle stage was not recorded and defaulted to 'created' on load - its position in the lifecycle is unrecorded, not established.",
+    "FB3-C02: open challenges this assessment does not resolve: independence_unmodeled.",
+    "FB3-C03: its lifecycle stage was not recorded and defaulted to 'created' on load - its position in the lifecycle is unrecorded, not established.",
+    "FB3-C03: open challenges this assessment does not resolve: independence_unmodeled."
+  ],
+  "lanes": {
+    "lane_1": {
+      "label": "machine verification",
+      "outcome": "iterate",
+      "threshold": 0.7,
+      "claims_at_or_above_threshold": 3,
+      "claims_below_threshold": 0
+    },
+    "lane_2": {
+      "label": "human acceptance",
+      "stage_counts": {
+        "created": 3,
+        "checked": 0,
+        "explained": 0,
+        "accepted": 0,
+        "digested": 0
+      },
+      "claims_below_explained": 3,
+      "exposition_covered_claims": 0,
+      "exposition_missing_claims": 3,
+      "verified_unexplained_claims": 0,
+      "stage_capped_claims": 0,
+      "attribution_contested_claims": 0
+    },
+    "per_claim": {
+      "FB3-C01": {
+        "lane_1": {
+          "score": 0.7950000000000002,
+          "direct_score": 0.7950000000000002,
+          "author_status": "draft",
+          "at_or_above_threshold": true
+        },
+        "lane_2": {
+          "stage": "created",
+          "stored_stage": "created",
+          "stage_capped": false,
+          "cap_reasons": [],
+          "exposition": false,
+          "explainers": [],
+          "verified_unexplained": false,
+          "attribution_contested": false
+        }
+      },
+      "FB3-C02": {
+        "lane_1": {
+          "score": 0.7950000000000002,
+          "direct_score": 0.8450000000000001,
+          "author_status": "draft",
+          "at_or_above_threshold": true
+        },
+        "lane_2": {
+          "stage": "created",
+          "stored_stage": "created",
+          "stage_capped": false,
+          "cap_reasons": [],
+          "exposition": false,
+          "explainers": [],
+          "verified_unexplained": false,
+          "attribution_contested": false
+        }
+      },
+      "FB3-C03": {
+        "lane_1": {
+          "score": 0.7950000000000002,
+          "direct_score": 0.8450000000000001,
+          "author_status": "draft",
+          "at_or_above_threshold": true
+        },
+        "lane_2": {
+          "stage": "created",
+          "stored_stage": "created",
+          "stage_capped": false,
+          "cap_reasons": [],
+          "exposition": false,
+          "explainers": [],
+          "verified_unexplained": false,
+          "attribution_contested": false
+        }
+      }
+    }
+  },
+  "digestion": {
+    "FB3-C01": {
+      "stage": "created",
+      "exposition_present": false,
+      "explainers": []
+    },
+    "FB3-C02": {
+      "stage": "created",
+      "exposition_present": false,
+      "explainers": []
+    },
+    "FB3-C03": {
+      "stage": "created",
+      "exposition_present": false,
+      "explainers": []
+    }
+  }
+}

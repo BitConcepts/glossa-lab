@@ -1,0 +1,340 @@
+{
+  "schema_version": "1.0",
+  "methodology_version": "2.0",
+  "project": "project",
+  "phase": "after_plan",
+  "outcome": "iterate",
+  "summary": "Assessed 2 claim(s); found 4 failure mode(s); 0 claim(s) below the 0.70 confidence threshold. Shared evidence: 1 supporting source(s) shared across 2 of 2 claim(s); the same evidence set supports multiple claims (FR-2.8, reporting only, no outcome effect in this phase). Draft cap: 2 draft claim(s) capped at gather_evidence/iterate (FR-2.3). Stage cap: 2 claim(s) below stage 'explained'; the outcome cannot be 'pass' (Spec 004 R1.4). Stage default: 2 claim(s) loaded without a stage defaulted to 'created' (lenient path, Spec 004 R1.1; recorded in metadata.stage_defaulted_claims). Not understood: 4 residual unknown(s) are recorded on this assessment (Spec 004 R5.2). Lane 1 (machine verification): outcome iterate; 2 claim(s) at or above the 0.70 threshold, 0 below. Lane 2 (human acceptance): stages by effective stage: created 2. Lane-2 lag: 2 claim(s) below explained.",
+  "created_at": "2026-10-25T14:26:08.782383Z",
+  "claims": [
+    {
+      "id": "FB2-C01",
+      "text": "The Indus signary encodes a lunisolar calendar whose structure is revealed by the internal coherence of the sign sequences themselves.",
+      "kind": "hypothesis",
+      "status": "draft",
+      "boundary": [
+        "The claim concerns the signary as a whole.",
+        "Coherence is judged by the calendrical reading it supports."
+      ],
+      "depends_on": [],
+      "conflicts_with": [],
+      "evidence": [
+        {
+          "ref": "tools/freeze-gate/battery/case-ii-unfalsifiable/claims.json",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "The register's own statement of the calendrical reading.",
+          "source_id": "battery-case-ii self-citation",
+          "independent_of": [],
+          "observed_at": "2026-10-25",
+          "content_hash": null
+        }
+      ],
+      "assumptions": [
+        "Internal coherence of sign sequences is evidence of calendrical structure."
+      ],
+      "alternatives": [
+        "The signary encodes no calendar."
+      ],
+      "falsification_tests": [
+        "This claim is defeated if the signary is shown to lack the internal coherence that the calendrical reading reveals."
+      ],
+      "uncertainty": "insufficient_evidence",
+      "severity": "medium",
+      "source_ref": "",
+      "domain": "",
+      "confidence": 0.7950000000000002,
+      "confidence_band": "high",
+      "failures": [
+        {
+          "id": "AEE-FB2-C01-INDEPENDENCE-UNMODELED",
+          "claim_id": "FB2-C01",
+          "challenge": "Shared-evidence independence challenge",
+          "breakpoint": "Supporting evidence 'battery-case-ii self-citation' (ref(s): tools/freeze-gate/battery/case-ii-unfalsifiable/claims.json) is shared with claim(s) FB2-C02 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim",
+          "severity": "medium",
+          "category": "independence_unmodeled",
+          "recovery_hint": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-FB2-C01-DRAFT-CAP",
+          "claim_id": "FB2-C01",
+          "challenge": "Draft outcome cap",
+          "breakpoint": "Claim status is draft: the assessment outcome is capped at gather_evidence/iterate and policy verdicts below accept regardless of score (Spec 003 FR-2.3); a human ratification (status change) lifts the cap",
+          "severity": "low",
+          "category": "draft_cap",
+          "recovery_hint": "Ratify the claim (change its status from draft) to lift the cap.",
+          "resolved": false,
+          "disposition": null
+        }
+      ],
+      "metadata": {},
+      "dispositions": [],
+      "stage": "created",
+      "stage_events": [],
+      "headline": false,
+      "role": null
+    },
+    {
+      "id": "FB2-C02",
+      "text": "This battery case register contains exactly two claims.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": [
+        "The register is this file only."
+      ],
+      "depends_on": [],
+      "conflicts_with": [],
+      "evidence": [
+        {
+          "ref": "tools/freeze-gate/battery/case-ii-unfalsifiable/claims.json",
+          "kind": "observed",
+          "direction": "supports",
+          "source_quality": "artifact",
+          "description": "The file itself, counted directly.",
+          "source_id": "battery-case-ii self-citation",
+          "independent_of": [],
+          "observed_at": "2026-10-25",
+          "content_hash": null
+        }
+      ],
+      "assumptions": [],
+      "alternatives": [],
+      "falsification_tests": [
+        "A third claim appearing in this file defeats this claim."
+      ],
+      "uncertainty": "insufficient_evidence",
+      "severity": "medium",
+      "source_ref": "",
+      "domain": "",
+      "confidence": 0.77,
+      "confidence_band": "high",
+      "failures": [
+        {
+          "id": "AEE-FB2-C02-INDEPENDENCE-UNMODELED",
+          "claim_id": "FB2-C02",
+          "challenge": "Shared-evidence independence challenge",
+          "breakpoint": "Supporting evidence 'battery-case-ii self-citation' (ref(s): tools/freeze-gate/battery/case-ii-unfalsifiable/claims.json) is shared with claim(s) FB2-C01 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim",
+          "severity": "medium",
+          "category": "independence_unmodeled",
+          "recovery_hint": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-FB2-C02-DRAFT-CAP",
+          "claim_id": "FB2-C02",
+          "challenge": "Draft outcome cap",
+          "breakpoint": "Claim status is draft: the assessment outcome is capped at gather_evidence/iterate and policy verdicts below accept regardless of score (Spec 003 FR-2.3); a human ratification (status change) lifts the cap",
+          "severity": "low",
+          "category": "draft_cap",
+          "recovery_hint": "Ratify the claim (change its status from draft) to lift the cap.",
+          "resolved": false,
+          "disposition": null
+        }
+      ],
+      "metadata": {},
+      "dispositions": [],
+      "stage": "created",
+      "stage_events": [],
+      "headline": false,
+      "role": null
+    }
+  ],
+  "scores": {
+    "FB2-C01": {
+      "claim_id": "FB2-C01",
+      "direct_score": 0.7950000000000002,
+      "propagated_score": 0.7950000000000002,
+      "band": "high",
+      "components": {
+        "evidence": 0.9,
+        "independence": 0.5,
+        "falsifiability": 1.0,
+        "boundary": 0.5,
+        "contradiction_penalty": 0
+      },
+      "declared_state": {
+        "status": "draft",
+        "uncertainty": "insufficient_evidence",
+        "severity": "medium",
+        "conflicts_with": []
+      },
+      "propagation": {
+        "status": "propagated",
+        "cycle_component": []
+      },
+      "notes": [
+        "Fewer than two independent supporting sources",
+        "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+        "Boundary entry 'The claim concerns the signary as a whole.' earns partial credit (FR-8.7): failed criteria: names no scope or limit (no scope term or numeric bound)",
+        "Boundary entry 'Coherence is judged by the calendrical reading it supports.' earns partial credit (FR-8.7): failed criteria: names no scope or limit (no scope term or numeric bound)"
+      ]
+    },
+    "FB2-C02": {
+      "claim_id": "FB2-C02",
+      "direct_score": 0.77,
+      "propagated_score": 0.77,
+      "band": "high",
+      "components": {
+        "evidence": 0.9,
+        "independence": 0.5,
+        "falsifiability": 0.5,
+        "boundary": 1.0,
+        "contradiction_penalty": 0
+      },
+      "declared_state": {
+        "status": "draft",
+        "uncertainty": "insufficient_evidence",
+        "severity": "medium",
+        "conflicts_with": []
+      },
+      "propagation": {
+        "status": "propagated",
+        "cycle_component": []
+      },
+      "notes": [
+        "Fewer than two independent supporting sources",
+        "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+        "Falsification test 'A third claim appearing in this file defeats this claim.' earns partial credit (FR-8.7): failed criteria: no checkable condition (no numeric bound, comparator, or observation/action term)"
+      ]
+    }
+  },
+  "verdicts": {},
+  "recoveries": [
+    {
+      "failure_id": "AEE-FB2-C01-INDEPENDENCE-UNMODELED",
+      "claim_id": "FB2-C01",
+      "strategy": "clarify",
+      "action": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+      "priority": 3,
+      "verification": "Independence between the shared evidence items is declared, or the shared corroboration is recorded as shared."
+    },
+    {
+      "failure_id": "AEE-FB2-C02-INDEPENDENCE-UNMODELED",
+      "claim_id": "FB2-C02",
+      "strategy": "clarify",
+      "action": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+      "priority": 3,
+      "verification": "Independence between the shared evidence items is declared, or the shared corroboration is recorded as shared."
+    },
+    {
+      "failure_id": "AEE-FB2-C01-DRAFT-CAP",
+      "claim_id": "FB2-C01",
+      "strategy": "define_falsifier",
+      "action": "Ratify the claim (change its status from draft) to lift the cap.",
+      "priority": 4,
+      "verification": "A concrete observation that would refute the claim is documented."
+    },
+    {
+      "failure_id": "AEE-FB2-C02-DRAFT-CAP",
+      "claim_id": "FB2-C02",
+      "strategy": "define_falsifier",
+      "action": "Ratify the claim (change its status from draft) to lift the cap.",
+      "priority": 4,
+      "verification": "A concrete observation that would refute the claim is documented."
+    }
+  ],
+  "metadata": {
+    "threshold": 0.7,
+    "input": "/home/hatch/workspace/glossa-run/gate-build/repo/tools/freeze-gate/battery/case-ii-unfalsifiable/claims.json",
+    "ledger": {
+      "mode": "disabled",
+      "path": null
+    },
+    "loading_mode": "lenient",
+    "stage_defaulted_claims": [
+      "FB2-C01",
+      "FB2-C02"
+    ],
+    "engine_version": "1.5.3"
+  },
+  "reported_statuses": {
+    "FB2-C01": "draft",
+    "FB2-C02": "draft"
+  },
+  "stage_caps": [],
+  "not_understood": [
+    "FB2-C01: its lifecycle stage was not recorded and defaulted to 'created' on load - its position in the lifecycle is unrecorded, not established.",
+    "FB2-C01: open challenges this assessment does not resolve: independence_unmodeled.",
+    "FB2-C02: its lifecycle stage was not recorded and defaulted to 'created' on load - its position in the lifecycle is unrecorded, not established.",
+    "FB2-C02: open challenges this assessment does not resolve: independence_unmodeled."
+  ],
+  "lanes": {
+    "lane_1": {
+      "label": "machine verification",
+      "outcome": "iterate",
+      "threshold": 0.7,
+      "claims_at_or_above_threshold": 2,
+      "claims_below_threshold": 0
+    },
+    "lane_2": {
+      "label": "human acceptance",
+      "stage_counts": {
+        "created": 2,
+        "checked": 0,
+        "explained": 0,
+        "accepted": 0,
+        "digested": 0
+      },
+      "claims_below_explained": 2,
+      "exposition_covered_claims": 0,
+      "exposition_missing_claims": 2,
+      "verified_unexplained_claims": 0,
+      "stage_capped_claims": 0,
+      "attribution_contested_claims": 0
+    },
+    "per_claim": {
+      "FB2-C01": {
+        "lane_1": {
+          "score": 0.7950000000000002,
+          "direct_score": 0.7950000000000002,
+          "author_status": "draft",
+          "at_or_above_threshold": true
+        },
+        "lane_2": {
+          "stage": "created",
+          "stored_stage": "created",
+          "stage_capped": false,
+          "cap_reasons": [],
+          "exposition": false,
+          "explainers": [],
+          "verified_unexplained": false,
+          "attribution_contested": false
+        }
+      },
+      "FB2-C02": {
+        "lane_1": {
+          "score": 0.77,
+          "direct_score": 0.77,
+          "author_status": "draft",
+          "at_or_above_threshold": true
+        },
+        "lane_2": {
+          "stage": "created",
+          "stored_stage": "created",
+          "stage_capped": false,
+          "cap_reasons": [],
+          "exposition": false,
+          "explainers": [],
+          "verified_unexplained": false,
+          "attribution_contested": false
+        }
+      }
+    }
+  },
+  "digestion": {
+    "FB2-C01": {
+      "stage": "created",
+      "exposition_present": false,
+      "explainers": []
+    },
+    "FB2-C02": {
+      "stage": "created",
+      "exposition_present": false,
+      "explainers": []
+    }
+  }
+}

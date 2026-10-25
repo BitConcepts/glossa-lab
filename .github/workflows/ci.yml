@@ -363,3 +363,38 @@ jobs:
           assert total >= 22, f'Expected >= 22 total claims, found {total}'
           print(f'Claims check OK: {len(files)} files, {total} total claims')
           "
+
+  # ── Freeze gate: C4 records check (correctness-bearing gate, 2026-10-25) ──
+  # ENFORCEMENT STATE: this job is NOT a required branch-protection check.
+  # The first strengthened freeze (the endings atlas) is a shadow freeze;
+  # the check becomes required with the freeze after it (build decision,
+  # docs/decisions/2026-10-25-freeze-gate-build-decision.md, choice 3).
+  freeze-gate:
+    name: Freeze gate records check (C4)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: []  # run in parallel
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Install pytest
+        run: pip install pytest
+
+      - name: Freeze-gate machinery tests
+        run: python -m pytest tools/freeze-gate/tests/ -q
+
+      - name: C4 check — freezes touched by this change
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            python tools/freeze-gate/check_freeze_gate.py --pr-scope --base "origin/${{ github.base_ref }}"
+          else
+            python tools/freeze-gate/check_freeze_gate.py --all
+          fi

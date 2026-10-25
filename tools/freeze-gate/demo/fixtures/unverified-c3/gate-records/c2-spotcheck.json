@@ -1,0 +1,40 @@
+{
+ "record_type": "c2-spotcheck",
+ "schema_version": "1.0",
+ "spec": "fixture",
+ "drafter": "fixture drafter",
+ "recomputer": "fixture recomputer",
+ "method": "fixture",
+ "sample_rule": "every gate-turning quantity + random 25% (minimum 3) of the rest",
+ "sample_seed": 1,
+ "quantities": [
+  {
+   "name": "total",
+   "source_in_spec": "fixture \u00a71",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": 47,
+   "recomputed_value": 47,
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "mean",
+   "source_in_spec": "fixture \u00a71",
+   "gate_turning": false,
+   "sampled": true,
+   "pinned_value": 11.75,
+   "recomputed_value": 11.75,
+   "status": "agree",
+   "note": ""
+  }
+ ],
+ "coverage": {
+  "gate_turning_total": 1,
+  "gate_turning_checked": 1,
+  "other_total": 1,
+  "other_sampled": 1,
+  "other_checked": 1
+ },
+ "outcome": "PASS"
+}

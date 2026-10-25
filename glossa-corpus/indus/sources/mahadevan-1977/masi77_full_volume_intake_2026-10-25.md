@@ -88,3 +88,30 @@ recorded in `CITATIONS.md` §A.1 (a separate 400-dpi artifact).
    (≥5 celestially identified signs / ≥30 primary-population
    occurrences), reported as the pair: what the count establishes /
    what it does not.
+
+
+---
+
+## Correction and qualification — 2026-10-25 (programme red team, finding F-6)
+
+Two statements in this record are qualified, dated today:
+
+1. **Completeness.** The holding statement above ("the complete
+   volume as a single scanned PDF") rests on the basis stated in
+   this record's own completeness section: page-count arithmetic,
+   image presence, and nine sampled folios — **not a leaf-by-leaf
+   collation against the printed edition**. Cite the holding as
+   "complete by page-count and sampling; not collated
+   leaf-by-leaf." The provenance.yaml `confidence: "0.99"` figure
+   carries no stated basis and should not be cited.
+2. **Readiness item 3 vs the trigger-census instrument.** Item 3
+   states that M77's sign list attaches no per-sign depictive
+   labels. That is asserted before readiness item 2 (extraction
+   of the sign list, printed pp. 32–162) has been done, and the
+   trigger-census instrument describes its Mahadevan target as
+   "the sign list (the M77 signary and its identifications)" —
+   the two records cannot both describe the census's source.
+   Until the item-2 extraction reads pp. 32–162, where Mahadevan
+   identifications, if any, live is an open question, and no
+   census arm should be designed against either description
+   alone.

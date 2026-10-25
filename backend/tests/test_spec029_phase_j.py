@@ -257,7 +257,14 @@ def test_historical_population_figures_are_labelled():
 
 def test_disk_report_counts_unchanged():
     report = _report()
-    assert (report["n_ok"], report["n_fail"], report["n_warn"]) == (40, 0, 8)
+    # Counts re-baselined 2026-10-25 (realignment item 1.4, RT-30):
+    # the corrected foundation check no longer certifies the
+    # withdrawn Phase-169 aggregate confidence figure — it moved
+    # from the passed list to a WITHDRAWN warning, so the canonical
+    # counts are 39/0/9 where they were 40/0/8. Nothing else moved:
+    # the regeneration that set this baseline differs from the
+    # previous one by exactly that one item.
+    assert (report["n_ok"], report["n_fail"], report["n_warn"]) == (39, 0, 9)
     assert report["verdict"] == "READY WITH CAVEATS"
 
 
@@ -353,7 +360,8 @@ def test_script_regeneration_reproduces_annotations(tmp_path):
     repo layout it needs is impractical (it reads the whole repo),
     so run it in place: the regenerated report's computed
     annotations and hash stamp must equal a fresh computation from
-    the canonical stores, and the check counts stay 40/0/8."""
+    the canonical stores, and the check counts stay 39/0/9
+    (re-baselined 2026-10-25 — see test_disk_report_counts_unchanged)."""
     env = dict(os.environ, GLOSSA_REPO_ROOT=str(REPO))
     proc = subprocess.run(
         [sys.executable, str(SCRIPT)],
@@ -361,7 +369,7 @@ def test_script_regeneration_reproduces_annotations(tmp_path):
     )
     assert proc.returncode == 0, proc.stderr[-500:]
     report = _report()
-    assert (report["n_ok"], report["n_fail"], report["n_warn"]) == (40, 0, 8)
+    assert (report["n_ok"], report["n_fail"], report["n_warn"]) == (39, 0, 9)
     snap = compute_canonical_snapshot(
         REPO,
         as_of=report["annotations_as_of"].split(" — ")[0].removeprefix("As of "),

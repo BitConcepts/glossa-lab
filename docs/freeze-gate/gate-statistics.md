@@ -1,11 +1,11 @@
 # Freeze-gate statistics (C5)
 
-Generated 2026-10-25 by `tools/freeze-gate/gate_statistics.py` from the
+Generated 2026-10-26 by `tools/freeze-gate/gate_statistics.py` from the
 records on main. Do not edit by hand; regenerate.
 
 ## The strengthened gate (C1–C4)
 
-- Freezes carrying gate records so far: **1** (075-depicted-kind-endings-atlas)
+- Freezes carrying gate records so far: **2** (075-depicted-kind-endings-atlas, 076-projected-constraint-corpus-model)
 - Freezes blocked by C2 (spot-check outcome not PASS): **0**
 - Freezes blocked by C3 (evidence-sample outcome not PASS): **0**
 - C2 mismatches recorded (resolved + unresolved): **0**
@@ -32,7 +32,7 @@ Named blind spots, in plain words:
 
 ## The register-discipline gate (for scale)
 
-- Freezes with an AEE freeze note on main: **47** (counted from `specs/*/aee/freeze-aee-note.md`; the notes are prose and are not parsed by this generator). Across those freezes the gate's recorded findings were FR-2.3 draft-cap hygiene records; it blocked no freeze. That is the finding (RT-01) this machinery answers.
+- Freezes with an AEE freeze note on main: **48** (counted from `specs/*/aee/freeze-aee-note.md`; the notes are prose and are not parsed by this generator). Across those freezes the gate's recorded findings were FR-2.3 draft-cap hygiene records; it blocked no freeze. That is the finding (RT-01) this machinery answers.
 
 ## What these statistics do and do not establish
 

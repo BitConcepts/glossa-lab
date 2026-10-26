@@ -42,3 +42,22 @@ generated report itself is not hand-edited.
 *This note establishes the qualifications a reader must carry
 when citing the committed foundation report. It does not
 establish any change to the measured counts.*
+
+---
+
+**Addendum (2026-10-26).** Items (1) and (2) are now fixed at
+generation: `foundation_check.py` moves any claim whose inputs
+fell back in the run out of `solid_claims` into
+`caveated_claims` with a NOT VERIFIED fallback status (P30-A1 is
+the current case), and the Phase-53/59/68 entries are worded as
+candidate-reading assignments, not decipherment. The report was
+regenerated with the fixed generator; counts unchanged
+(39/0/9). Item (3): the Phase-169 generator now emits
+`aggregate_confidence_pct_status` (WITHDRAWN) beside the value,
+but the committed Phase-169 JSON files are **not yet
+regenerated** — the generator needs PyTorch (absent from this
+environment) and stamps its host's GPU state, and the current
+canonical anchors have moved since Phase 169, so a regeneration
+here would rewrite more than the annotation. Until that
+regeneration runs in the right environment, item (3)'s
+qualification above still applies to the committed JSON files.

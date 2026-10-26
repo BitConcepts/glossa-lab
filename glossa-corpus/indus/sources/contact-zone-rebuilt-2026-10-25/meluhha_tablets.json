@@ -1,4 +1,9 @@
 {
+  "rebuild": {
+    "status": "REBUILT 2026-10-25 \u2014 new file, new provenance; NOT the lost original",
+    "register_citation": "Holdings reconciliation 2026-10-25, RECORDED-NOT-HELD item #28",
+    "see": "provenance record: contact_zone_rebuild_provenance.md (repo, glossa-corpus/indus/sources/contact-zone-rebuilt-2026-10-25/)"
+  },
   "n_total_atf_texts": 135255,
   "n_hits": 1462,
   "keyword_counts": {

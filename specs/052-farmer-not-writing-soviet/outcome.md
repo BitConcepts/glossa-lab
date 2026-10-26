@@ -263,6 +263,33 @@ record govern. Never quote §4.1 without them.
 These notes are append-only: no verdict, status, or frozen text
 changes.
 
+## Correction and disclosure note — 2026-10-26 (programme red team 2026-10-25, finding B-4)
+
+**Expected false-positive count and the sensitivity null
+distributions.** No record of this execution stated an expected
+false-positive count, and this note supplies the bound the
+published record supports. The null distributions exist: they
+were computed in the Phase-437 execution itself — 999
+within-sequence permutations per population (seed 43052, model
+and generator recorded in the machine record) — and their
+summaries are published in `reports/phase437_results.json`,
+under `battery_primary/null` and `battery_sensitivity/null`
+(terminal-strong count and max opening-bigram count, each as
+min / median / max / 950th). The full 999-value distributions
+themselves were not published; only those summaries were. For
+the primary population the null terminal-strong count is
+0/0/0 (min/median/max), so no null run produced a strong sign.
+For the sensitivity population the published summary is
+min 0 / median 0 / max 1 / 950th 0, and from those four numbers
+the expected false-positive count per run is only boundable to
+**[0.001, 0.049]**: at least one permutation produced a strong
+sign, and at most 49 can have, or the 950th order statistic
+would exceed 0. Any future citation of the sensitivity result
+should carry this bound and should publish the full null
+distributions with it. This note is append-only: no verdict,
+status, or frozen text changes, and no number in this record
+changes.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse

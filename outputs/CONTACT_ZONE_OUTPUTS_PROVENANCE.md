@@ -37,3 +37,16 @@ with their provenance record). Read them with that history:
 *This note establishes the provenance status of this outputs
 tree as of 2026-10-25. It does not establish that any output
 here is numerically wrong.*
+
+**Update (2026-10-26, finding C-8 landed):** the loader
+described in the last bullet above no longer returns empty
+results silently. `_safe_load` in
+`backend/glossa_lab/data/mesopotamian_contact.py` now raises
+`FileNotFoundError` naming the path when a source file is
+missing; behaviour is unchanged when the files exist. The
+tracked rebuilt copies must still be copied to the loader
+paths before the loader sees them — the difference is that a
+missing copy now fails loudly instead of returning an empty
+result that could be mistaken for an empty dataset. The
+2026-10-25 text above stands as the record of the earlier
+behaviour.

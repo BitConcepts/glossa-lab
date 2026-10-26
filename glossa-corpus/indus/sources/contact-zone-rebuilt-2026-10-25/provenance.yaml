@@ -33,3 +33,9 @@ notes: >
   tracked copies here, so the loss cannot silently repeat. laursen_2010_table1
   remains an open gap beyond the 5 recovered rows until a lawful copy of
   Laursen 2010 (closed access; DOI above) is in hand.
+
+# COMPLETION 2026-10-26: laursen_2010_table1.json is complete (121/121 rows),
+# transcribed from the author's own Table 1 spreadsheet received by author copy
+# the same day. The 'partial' wording in source_name / confidence / notes above
+# is the 2026-10-25 state, retained as history. Record:
+# contact_zone_rebuild_provenance.md section 4 (appended 2026-10-26).

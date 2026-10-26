@@ -273,3 +273,72 @@ verification output is filed with the rebuild scripts
   ultimately needs: the original Laursen file never contained sign
   sequences (catalogue fields only) beyond the Janabiyah reading. See
   the readiness note for the consequence, stated plainly.
+
+## 4. Completion of laursen_2010_table1.json (2026-10-26) — the Table 1 gap is closed
+
+*Dated append. §3 above is the 2026-10-25 state and stands unaltered as history;
+this section records the completion it named as pending a lawful copy.*
+
+**The lawful copy arrived.** On 2026-10-26 Dr. Steffen Laursen (Al Ain Museum),
+asked directly by the owner, sent both the publisher's published-version PDF of
+Laursen 2010 (pp. 96–134 complete; SHA-256
+`b28d81501f573fcf218d863092687caf47199b077969c14af965a6a2ac31ba57`) and his own
+final pre-publication Table 1 spreadsheet, `Table 1.xls` (SHA-256
+`ca8cf71ed9424ecd764f87c9c3e912fb4646ee44ee96c7e3e50477c4615fc3c0`). Both files
+are in programme custody under the deep-sweep downloads tree
+(`laursen-2010-author-copy/`, PROVENANCE §22 Phase-130 gate terms: local research
+use; extraction and derived statistics permitted; no redistribution, deposit, or
+publication of the files or page images; never in git). Intake record: goal
+files, `2026-10-26-laursen-2010-intake-record.md`.
+
+**What was done.** All 121 rows (seals 1–121) were transcribed from the
+spreadsheet into this file, completing it in place under its own conventions.
+The schema was extended from the original six fields to the table's full eleven
+columns: the five measurement fields (`th`, `dh`, `dia`, `boss_dia`, `grooves`)
+are new; measurement values are JSON numbers or `null` where the source cell is
+"N/A", blank, or a non-numeric note; the printed table's derived columns
+(Boss Height = TH − DH; Collar Width × 2 = Dia − boss dia) are not carried.
+Each row now carries a `provenance` object (sources, reference form, the fields
+whose spreadsheet cell was "N/A" or blank, adjudication notes where one applies).
+The `parpola_readings` block, the `ingestion_method` text, and the
+lost-parse target block are byte-identical to the partial rebuild — verified.
+
+**Govern rules applied** (from the intake record): print governs Reference
+strings, including punctuation; the spreadsheet governs measurements, except
+seals 10 and 107 `th`, where the spreadsheet cells are decimal slips (1.6, 1.3)
+and the print-implied values (16.0, 12.6) are carried and flagged in-row.
+Nine rows carry adjudication notes. The substantive one: **seal 5's Reference**
+— spreadsheet "Marshall 1931b Pl. XCVL no 500" vs print "Mackay et al. 1937–38:
+pl. XCVL no 500"; print carried. String-level: seals 2–4 (print drops "1931a"),
+22 (print "&" for "and"), 52 (print drops "unpub."). Seal 10's reference,
+unrecovered in the partial rebuild, is filled ("This paper"; both sources agree).
+
+**One correction to the intake record, found in this work.** Intake §7.4 stated
+that print has "N/A" in seal 61's boss-diameter cell. It does not: the printed
+row (printed p. 101, read first-hand from the received PDF) carries the author's
+working note **"13øsken?"** in that cell — the same note the spreadsheet holds.
+There is therefore no numeric boss diameter for seal 61 in either source; the
+row carries `boss_dia: null` with the note preserved in its provenance.
+
+**Aggregates.** The carried targets are retired as reconciliation targets (the
+lost parse's 102-row subset statistics) and are retained verbatim in the file's
+`rebuild` block as history, marked superseded. Aggregates computed from the
+completed table: Gulf Type **92**, Gulf INDUS **28**, Gulf Linear-Elamite **1**;
+inscribed seals (Gulf INDUS) = **seals 1–27 and 56** (28, superseding the
+carried 23); site distribution headed by Karzakkan Cemetery 28, "Charnel House"
+15, Saar Cemetery 12, Qala'at al-Bahrain 10 (full distribution in the file).
+
+**Verification (independent of the transcription pass).** 121 rows, seals 1–121
+each exactly once; the 5 previously recovered rows carry their intake-verified
+values; aggregates recomputed from the finished file match the spreadsheet
+totals; a seeded random sample of 15 Reference strings (seed 20261026) plus all
+11 rotated-block references (seals 111–121) checked against the printed PDF by
+fresh text extraction — all match. The unmodified loader returns
+`get_laursen_table1()` = 121 rows and the intact Janabiyah reading. Completion
+record: goal files, `2026-10-26-laursen-table1-rebuild-completion.md`.
+
+**What this completion does not do.** It adds no sign sequences: like every
+version of this table, the completed file is catalogue fields only (beyond the
+Janabiyah reading). Test Line 1's sequence-level leg still requires the CISI
+Vol. 3 / inscription-discussion transcription pass; its catalogue leg is now
+runnable from this file.

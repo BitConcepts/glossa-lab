@@ -1,24 +1,380 @@
 {
   "source_paper": "Laursen 2010, Arabian Archaeology and Epigraphy 21:96-134 (Wiley), DOI 10.1111/j.1600-0471.2010.00329.x",
-  "n_rows_parsed": 5,
+  "n_rows_parsed": 121,
   "n_rows_expected": 121,
-  "n_inscribed_with_indus_text": 23,
+  "n_inscribed_with_indus_text": 28,
   "by_gulf_type": {
-    "Gulf INDUS": 5
+    "Gulf Type": 92,
+    "Gulf INDUS": 28,
+    "Gulf Linear-Elamite": 1
   },
   "by_site": {
-    "Ur": 3,
-    "Janabiyah Cemetery": 1,
-    "Susa": 1
+    "Karzakkan Cemetery": 28,
+    "\"Charnel House\"": 15,
+    "Saar Cemetery": 12,
+    "Qala'at al-Bahrain": 10,
+    "Saar Settlement": 7,
+    "Sar Burial complex": 6,
+    "Ur": 6,
+    "Failaka": 4,
+    "Hamad Town": 4,
+    "Janabiyah Cemetery": 4,
+    "Mohenjo-Daro": 4,
+    "Mesopotamia?": 3,
+    "Near East": 2,
+    "Aali Cemetery": 1,
+    "Al Khobar": 1,
+    "Al Maqsha": 1,
+    "Bahrain unsp.": 1,
+    "Chanhu-Daro": 1,
+    "Dhahran South": 1,
+    "Diraz East": 1,
+    "Girsu": 1,
+    "Karanah": 1,
+    "Luristan": 1,
+    "Rifa mounds": 1,
+    "Stray find Diraz": 1,
+    "Susa": 1,
+    "Tarut Island": 1,
+    "Tepe Yahya": 1,
+    "western Iranian plateau": 1
   },
   "rows": [
     {
+      "seal_no": 1,
+      "reference": "Mackay 1943: pl. LI 23 ⁄ CISI vol.1",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf INDUS",
+      "site": "Chanhu-Daro",
+      "bbm_no": "",
+      "th": 14,
+      "dh": 6.5,
+      "dia": 33,
+      "boss_dia": 13,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 2,
+      "reference": "Marshall 1931: pl. CX.309",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf INDUS",
+      "site": "Mohenjo-Daro",
+      "bbm_no": "",
+      "th": 15,
+      "dh": 7.5,
+      "dia": 22.9,
+      "boss_dia": 12,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ],
+        "adjudications": [
+          "Reference: print drops the XLS's '1931a' bibliography disambiguator; print form carried per govern rule."
+        ]
+      }
+    },
+    {
+      "seal_no": 3,
+      "reference": "Marshall 1931: pl. CXIV.478",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf INDUS",
+      "site": "Mohenjo-Daro",
+      "bbm_no": "",
+      "th": 17,
+      "dh": 7.18,
+      "dia": 32.5,
+      "boss_dia": 14.5,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ],
+        "adjudications": [
+          "Reference: print drops the XLS's '1931a' bibliography disambiguator; print form carried per govern rule."
+        ]
+      }
+    },
+    {
+      "seal_no": 4,
+      "reference": "Marshall 1931: pl. CXII.383",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf INDUS",
+      "site": "Mohenjo-Daro",
+      "bbm_no": "",
+      "th": 18,
+      "dh": 9.45,
+      "dia": 33,
+      "boss_dia": 14.5,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ],
+        "adjudications": [
+          "Reference: print drops the XLS's '1931a' bibliography disambiguator; print form carried per govern rule."
+        ]
+      }
+    },
+    {
+      "seal_no": 5,
+      "reference": "Mackay et al. 1937–38: pl. XCVL no 500",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf INDUS",
+      "site": "Mohenjo-Daro",
+      "bbm_no": "",
+      "th": 13.5,
+      "dh": 6,
+      "dia": 29,
+      "boss_dia": 14,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ],
+        "adjudications": [
+          "Reference: print governs — XLS reads 'Marshall 1931b Pl. XCVL no 500'; the published table reads 'Mackay et al. 1937–38: pl. XCVL no 500' (same plate and item; the publication attribution changed between the author's final table and print)."
+        ]
+      }
+    },
+    {
+      "seal_no": 6,
+      "reference": "Kjærum 1994: fig.1726",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf INDUS",
+      "site": "Qala'at al-Bahrain",
+      "bbm_no": "",
+      "th": 14,
+      "dh": 8,
+      "dia": 27,
+      "boss_dia": 14,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "blank_in_xls": [
+          "al_sindi_1999_no",
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 7,
+      "reference": "Kjærum 1994: fig.1725",
+      "al_sindi_1999_no": "279",
+      "gulf_type": "Gulf INDUS",
+      "site": "Qala'at al-Bahrain",
+      "bbm_no": "",
+      "th": 15,
+      "dh": 10,
+      "dia": 28.5,
+      "boss_dia": 13,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 8,
+      "reference": "Srivastava 1991: fig. 55, left",
+      "al_sindi_1999_no": "180",
+      "gulf_type": "Gulf INDUS",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "18839",
+      "th": 15,
+      "dh": 10,
+      "dia": 28,
+      "boss_dia": 16,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print"
+      }
+    },
+    {
+      "seal_no": 9,
+      "reference": "Al-Sindi 1999: no. 182",
+      "al_sindi_1999_no": "182",
+      "gulf_type": "Gulf INDUS",
+      "site": "Saar Cemetery",
+      "bbm_no": "",
+      "th": 14,
+      "dh": 8,
+      "dia": 27,
+      "boss_dia": 14,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
       "seal_no": 10,
-      "reference": "",
+      "reference": "This paper",
       "al_sindi_1999_no": "",
       "gulf_type": "Gulf INDUS",
       "site": "Janabiyah Cemetery",
-      "bbm_no": ""
+      "bbm_no": "",
+      "th": 16.0,
+      "dh": 10.6,
+      "dia": 30.5,
+      "boss_dia": 18.9,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "bbm_no"
+        ],
+        "recovered_2026_10_25": true,
+        "adjudications": [
+          "Reference filled at completion: unrecovered ('') in the 2026-10-25 partial rebuild; XLS and print both read 'This paper'.",
+          "th: the XLS cell (1.6) is a decimal slip; print (Disc 10.6 + Boss 5.4) implies 16.0 — the print-implied value is carried and flagged here."
+        ]
+      }
+    },
+    {
+      "seal_no": 11,
+      "reference": "This paper",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf INDUS",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "14569",
+      "th": 11.3,
+      "dh": 7,
+      "dia": 25.8,
+      "boss_dia": 11.7,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 12,
+      "reference": "Kjærum 1983: cat. no 319",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf INDUS",
+      "site": "Failaka",
+      "bbm_no": "",
+      "th": 9,
+      "dh": 4.5,
+      "dia": 20,
+      "boss_dia": 10,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 13,
+      "reference": "Kjærum 1983: cat. no 279",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf INDUS",
+      "site": "Failaka",
+      "bbm_no": "",
+      "th": 15,
+      "dh": 10,
+      "dia": 33,
+      "boss_dia": 20,
+      "grooves": 3,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
     },
     {
       "seal_no": 14,
@@ -26,7 +382,52 @@
       "al_sindi_1999_no": "",
       "gulf_type": "Gulf INDUS",
       "site": "Susa",
-      "bbm_no": ""
+      "bbm_no": "",
+      "th": 9,
+      "dh": 3,
+      "dia": 22,
+      "boss_dia": 10,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ],
+        "recovered_2026_10_25": true
+      }
+    },
+    {
+      "seal_no": 15,
+      "reference": "Amiet 1973: pl. 23a-b",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf INDUS",
+      "site": "Luristan",
+      "bbm_no": "",
+      "th": 11.9,
+      "dh": 0.5,
+      "dia": 25,
+      "boss_dia": 11,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
     },
     {
       "seal_no": 16,
@@ -34,7 +435,26 @@
       "al_sindi_1999_no": "",
       "gulf_type": "Gulf INDUS",
       "site": "Ur",
-      "bbm_no": ""
+      "bbm_no": "",
+      "th": 15.8,
+      "dh": 8.7,
+      "dia": 25.5,
+      "boss_dia": 14.85,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ],
+        "recovered_2026_10_25": true
+      }
     },
     {
       "seal_no": 17,
@@ -42,7 +462,26 @@
       "al_sindi_1999_no": "",
       "gulf_type": "Gulf INDUS",
       "site": "Ur",
-      "bbm_no": ""
+      "bbm_no": "",
+      "th": 16,
+      "dh": 10.5,
+      "dia": 27.4,
+      "boss_dia": 13.9,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ],
+        "recovered_2026_10_25": true
+      }
     },
     {
       "seal_no": 18,
@@ -50,7 +489,2689 @@
       "al_sindi_1999_no": "",
       "gulf_type": "Gulf INDUS",
       "site": "Ur",
-      "bbm_no": ""
+      "bbm_no": "",
+      "th": 11.35,
+      "dh": 7.6,
+      "dia": 25.5,
+      "boss_dia": 13,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ],
+        "recovered_2026_10_25": true
+      }
+    },
+    {
+      "seal_no": 19,
+      "reference": "Gadd 1932: pl. I, no. 5",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf INDUS",
+      "site": "Ur",
+      "bbm_no": "",
+      "th": 14.5,
+      "dh": 9,
+      "dia": 25,
+      "boss_dia": 14,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 20,
+      "reference": "Gadd 1932: pl. I, no. 15",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf INDUS",
+      "site": "Ur",
+      "bbm_no": "",
+      "th": null,
+      "dh": null,
+      "dia": 24,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "th",
+          "dh",
+          "boss_dia",
+          "grooves"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 21,
+      "reference": "Gadd 1932: pl. I, no. 16",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf INDUS",
+      "site": "Ur",
+      "bbm_no": "",
+      "th": 15.4,
+      "dh": 9.1,
+      "dia": 23.25,
+      "boss_dia": 14.7,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 22,
+      "reference": "Sarzec & Heuzey 1884-1912: pl. 30.3a-b",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf INDUS",
+      "site": "Girsu",
+      "bbm_no": "",
+      "th": 10,
+      "dh": 5,
+      "dia": 24,
+      "boss_dia": 10,
+      "grooves": 2,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ],
+        "adjudications": [
+          "Reference: print reads 'Sarzec & Heuzey …' where the XLS has 'Sarzec and Heuzey …'; print form carried per govern rule."
+        ]
+      }
+    },
+    {
+      "seal_no": 23,
+      "reference": "Gadd 1932: pl. I, no. 17",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf INDUS",
+      "site": "Near East",
+      "bbm_no": "",
+      "th": 11,
+      "dh": 7.5,
+      "dia": 25.35,
+      "boss_dia": 14.4,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "grooves"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 24,
+      "reference": "Gadd 1932: pl. I, no. 18",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf INDUS",
+      "site": "Near East",
+      "bbm_no": "",
+      "th": 20.2,
+      "dh": 13.9,
+      "dia": 33.2,
+      "boss_dia": 20.1,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 25,
+      "reference": "Langdon 1932: p. 48 (J. Rosen collection)",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf INDUS",
+      "site": "Mesopotamia?",
+      "bbm_no": "",
+      "th": 12,
+      "dh": 6.5,
+      "dia": 24.5,
+      "boss_dia": 11.5,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 26,
+      "reference": "Buchanan 1981: no. 1088 ⁄ Newell 23",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf INDUS",
+      "site": "Mesopotamia?",
+      "bbm_no": "",
+      "th": 13.5,
+      "dh": 9,
+      "dia": 23.5,
+      "boss_dia": 11,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 27,
+      "reference": "Buchanan 1981: no. 1089 ⁄ Newell 876",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf INDUS",
+      "site": "Mesopotamia?",
+      "bbm_no": "",
+      "th": 12,
+      "dh": 8.6,
+      "dia": 22.2,
+      "boss_dia": 13.8,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 28,
+      "reference": "Winkelmann 1999: abb. 2",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Linear-Elamite",
+      "site": "western Iranian plateau",
+      "bbm_no": "",
+      "th": 14,
+      "dh": 7,
+      "dia": 25,
+      "boss_dia": 10,
+      "grooves": 0,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 29,
+      "reference": "Kjærum 1983 cat. no. 294",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Failaka",
+      "bbm_no": "",
+      "th": 11.5,
+      "dh": 7,
+      "dia": 24,
+      "boss_dia": 15,
+      "grooves": 2,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 30,
+      "reference": "Kjærum 1983: cat. no. 295",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Failaka",
+      "bbm_no": "",
+      "th": 11,
+      "dh": 7.5,
+      "dia": 23,
+      "boss_dia": 15,
+      "grooves": 3,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 31,
+      "reference": "Al-Sindi 1999: no. 284",
+      "al_sindi_1999_no": "284",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "20393",
+      "th": null,
+      "dh": null,
+      "dia": null,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "th",
+          "dh",
+          "dia",
+          "boss_dia",
+          "grooves"
+        ]
+      }
+    },
+    {
+      "seal_no": 32,
+      "reference": "Al-Sindi 1999: no. 163",
+      "al_sindi_1999_no": "163",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "20038",
+      "th": 15,
+      "dh": 11,
+      "dia": 20,
+      "boss_dia": 13.5,
+      "grooves": 0,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print"
+      }
+    },
+    {
+      "seal_no": 33,
+      "reference": "Al-Sindi 1999: no. 162",
+      "al_sindi_1999_no": "162",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "75306",
+      "th": null,
+      "dh": null,
+      "dia": 19.5,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "th",
+          "dh",
+          "boss_dia",
+          "grooves"
+        ]
+      }
+    },
+    {
+      "seal_no": 34,
+      "reference": "Al-Sindi 1999: no. 137",
+      "al_sindi_1999_no": "137",
+      "gulf_type": "Gulf Type",
+      "site": "Rifa mounds",
+      "bbm_no": "",
+      "th": 17,
+      "dh": 13.2,
+      "dia": 24.8,
+      "boss_dia": 15,
+      "grooves": 3,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 35,
+      "reference": "Al-Sindi 1999: no. 98",
+      "al_sindi_1999_no": "98",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "",
+      "th": null,
+      "dh": null,
+      "dia": 18.5,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "th",
+          "dh",
+          "boss_dia",
+          "grooves",
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 36,
+      "reference": "Al-Sindi 1999: no. 89",
+      "al_sindi_1999_no": "89",
+      "gulf_type": "Gulf Type",
+      "site": "Saar Cemetery",
+      "bbm_no": "",
+      "th": 11.5,
+      "dh": null,
+      "dia": 17,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "dh",
+          "boss_dia",
+          "grooves",
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 37,
+      "reference": "Al-Sindi 1999: no. 8",
+      "al_sindi_1999_no": "8",
+      "gulf_type": "Gulf Type",
+      "site": "Saar Cemetery",
+      "bbm_no": "",
+      "th": null,
+      "dh": null,
+      "dia": 20,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "th",
+          "dh",
+          "boss_dia",
+          "grooves",
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 38,
+      "reference": "Al-Sindi 1999: no. 130",
+      "al_sindi_1999_no": "129",
+      "gulf_type": "Gulf Type",
+      "site": "Hamad Town",
+      "bbm_no": "",
+      "th": 14,
+      "dh": null,
+      "dia": 20.5,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "dh",
+          "boss_dia",
+          "grooves",
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 39,
+      "reference": "Al-Sindi 1999: no. 133",
+      "al_sindi_1999_no": "133",
+      "gulf_type": "Gulf Type",
+      "site": "Hamad Town",
+      "bbm_no": "",
+      "th": 11,
+      "dh": null,
+      "dia": 23,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "dh",
+          "boss_dia",
+          "grooves",
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 40,
+      "reference": "Al-Sindi 1999: no. 166",
+      "al_sindi_1999_no": "166",
+      "gulf_type": "Gulf Type",
+      "site": "Al Maqsha",
+      "bbm_no": "",
+      "th": 10,
+      "dh": null,
+      "dia": 20,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "dh",
+          "boss_dia",
+          "grooves"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 41,
+      "reference": "Al-Sindi 1999: no. 134",
+      "al_sindi_1999_no": "134",
+      "gulf_type": "Gulf Type",
+      "site": "Saar Cemetery",
+      "bbm_no": "",
+      "th": 11.5,
+      "dh": null,
+      "dia": 26,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "dh",
+          "boss_dia",
+          "grooves",
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 42,
+      "reference": "Al-Sindi 1999: no. 129",
+      "al_sindi_1999_no": "129",
+      "gulf_type": "Gulf Type",
+      "site": "Hamad Town",
+      "bbm_no": "",
+      "th": 14,
+      "dh": null,
+      "dia": 21,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "dh",
+          "boss_dia",
+          "grooves",
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 43,
+      "reference": "Al-Sindi 1999: no. 181",
+      "al_sindi_1999_no": "181",
+      "gulf_type": "Gulf Type",
+      "site": "Saar Cemetery",
+      "bbm_no": "",
+      "th": 12.5,
+      "dh": null,
+      "dia": 22.5,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "dh",
+          "boss_dia",
+          "grooves",
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 44,
+      "reference": "Al-Sindi 1999: no. 179",
+      "al_sindi_1999_no": "179",
+      "gulf_type": "Gulf Type",
+      "site": "Saar Cemetery",
+      "bbm_no": "",
+      "th": 12,
+      "dh": null,
+      "dia": 25.5,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "dh",
+          "boss_dia",
+          "grooves",
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 45,
+      "reference": "Al-Sindi 1999: no. 159",
+      "al_sindi_1999_no": "159",
+      "gulf_type": "Gulf Type",
+      "site": "Hamad Town",
+      "bbm_no": "",
+      "th": 14,
+      "dh": null,
+      "dia": 26.5,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "dh",
+          "boss_dia",
+          "grooves",
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 46,
+      "reference": "Mughal 1983: pl. XlV no. 5",
+      "al_sindi_1999_no": "125",
+      "gulf_type": "Gulf Type",
+      "site": "Sar Burial complex",
+      "bbm_no": "",
+      "th": null,
+      "dh": null,
+      "dia": 21,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "th",
+          "dh",
+          "boss_dia",
+          "grooves"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 47,
+      "reference": "Mughal 1983: pl. XlV no. 4",
+      "al_sindi_1999_no": "127",
+      "gulf_type": "Gulf Type",
+      "site": "Sar Burial complex",
+      "bbm_no": "",
+      "th": null,
+      "dh": null,
+      "dia": 25.5,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "th",
+          "dh",
+          "boss_dia",
+          "grooves"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 48,
+      "reference": "During Caspers, 1977",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Stray find Diraz",
+      "bbm_no": "",
+      "th": 9,
+      "dh": 6,
+      "dia": 21,
+      "boss_dia": 14,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 49,
+      "reference": "This paper",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "20160",
+      "th": 13,
+      "dh": 9,
+      "dia": 23,
+      "boss_dia": 13,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 50,
+      "reference": "Ibrahim 1982: pl. 61.2",
+      "al_sindi_1999_no": "14",
+      "gulf_type": "Gulf Type",
+      "site": "Sar Burial complex",
+      "bbm_no": "",
+      "th": 12,
+      "dh": 7,
+      "dia": 22,
+      "boss_dia": 14,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 51,
+      "reference": "Al-Sindi 1999: no. 174",
+      "al_sindi_1999_no": "174",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "14337",
+      "th": 12,
+      "dh": 9.5,
+      "dia": 22.5,
+      "boss_dia": 13.5,
+      "grooves": 2,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print"
+      }
+    },
+    {
+      "seal_no": 52,
+      "reference": "McNicoll and Roaf: 1975 pl. III:B-C",
+      "al_sindi_1999_no": "128",
+      "gulf_type": "Gulf Type",
+      "site": "Diraz East",
+      "bbm_no": "",
+      "th": 10,
+      "dh": 5,
+      "dia": 20,
+      "boss_dia": 12,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "blank_in_xls": [
+          "bbm_no"
+        ],
+        "adjudications": [
+          "Reference: print drops the XLS's 'unpub.' (XLS: 'McNicoll and Roaf unpub. [1975] Pl.III:B-C'); print form carried per govern rule."
+        ]
+      }
+    },
+    {
+      "seal_no": 53,
+      "reference": "Al-Sindi 1999: no. 138",
+      "al_sindi_1999_no": "138",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "19081",
+      "th": 11.5,
+      "dh": 9,
+      "dia": 16,
+      "boss_dia": 10,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print"
+      }
+    },
+    {
+      "seal_no": 54,
+      "reference": "Al-Sindi 1999: no. 298",
+      "al_sindi_1999_no": "298",
+      "gulf_type": "Gulf Type",
+      "site": "Janabiyah Cemetery",
+      "bbm_no": "",
+      "th": 8.5,
+      "dh": null,
+      "dia": 18,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "dh",
+          "boss_dia",
+          "grooves",
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 55,
+      "reference": "Al-Sindi 1999: no. 164",
+      "al_sindi_1999_no": "164",
+      "gulf_type": "Gulf Type",
+      "site": "Aali Cemetery",
+      "bbm_no": "",
+      "th": 12,
+      "dh": null,
+      "dia": 20,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "dh",
+          "boss_dia",
+          "grooves",
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 56,
+      "reference": "Al-Sindi 1999: no. 160",
+      "al_sindi_1999_no": "160",
+      "gulf_type": "Gulf INDUS",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "20362",
+      "th": 14.5,
+      "dh": 10,
+      "dia": 25,
+      "boss_dia": 14,
+      "grooves": 3,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print"
+      }
+    },
+    {
+      "seal_no": 57,
+      "reference": "Al-Sindi 1999: no. 65",
+      "al_sindi_1999_no": "65",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "",
+      "th": 15,
+      "dh": 9.5,
+      "dia": 27.5,
+      "boss_dia": 13.5,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 58,
+      "reference": "Al-Sindi 1999: no. 71",
+      "al_sindi_1999_no": "71",
+      "gulf_type": "Gulf Type",
+      "site": "Saar Cemetery",
+      "bbm_no": "",
+      "th": 12,
+      "dh": 9,
+      "dia": 25,
+      "boss_dia": 15,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 59,
+      "reference": "Al-Sindi 1999: no. 126",
+      "al_sindi_1999_no": "126",
+      "gulf_type": "Gulf Type",
+      "site": "Saar Cemetery",
+      "bbm_no": "",
+      "th": 10,
+      "dh": null,
+      "dia": 18,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "dh",
+          "boss_dia",
+          "bbm_no"
+        ],
+        "blank_in_xls": [
+          "grooves"
+        ]
+      }
+    },
+    {
+      "seal_no": 60,
+      "reference": "Al-Sindi 1999: no. 165",
+      "al_sindi_1999_no": "165",
+      "gulf_type": "Gulf Type",
+      "site": "Saar Cemetery",
+      "bbm_no": "",
+      "th": 11,
+      "dh": 0,
+      "dia": 21,
+      "boss_dia": 0,
+      "grooves": 0,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 61,
+      "reference": "Al-Sindi 1999: no. 86",
+      "al_sindi_1999_no": "86",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "",
+      "th": null,
+      "dh": 10.5,
+      "dia": 24.5,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "grooves",
+          "bbm_no"
+        ],
+        "blank_in_xls": [
+          "th"
+        ],
+        "adjudications": [
+          "boss_dia: no numeric value in either source — the XLS cell and the printed table alike (printed p. 101) carry the author's working note '13øsken?' in place of a boss diameter; carried as null with the note preserved here. (This corrects the intake record §7.4, which stated print has N/A in this cell; the printed row, read first-hand from the received PDF, carries the note.)"
+        ]
+      }
+    },
+    {
+      "seal_no": 62,
+      "reference": "Srivastava 1991: fig. 55, right",
+      "al_sindi_1999_no": "10",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "18789",
+      "th": 14,
+      "dh": 8.5,
+      "dia": 26,
+      "boss_dia": 18,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print"
+      }
+    },
+    {
+      "seal_no": 63,
+      "reference": "Al-Sindi 1999: no. 136",
+      "al_sindi_1999_no": "136",
+      "gulf_type": "Gulf Type",
+      "site": "Sar Burial complex",
+      "bbm_no": "",
+      "th": 11,
+      "dh": 7,
+      "dia": 20.5,
+      "boss_dia": 13.5,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 64,
+      "reference": "Ibrahim 1982: pl. 61.3",
+      "al_sindi_1999_no": "176",
+      "gulf_type": "Gulf Type",
+      "site": "Sar Burial complex",
+      "bbm_no": "",
+      "th": 12.5,
+      "dh": 8.5,
+      "dia": 20,
+      "boss_dia": 13,
+      "grooves": 0,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 65,
+      "reference": "Ibrahim 1982: pl. 60.4",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Saar Cemetery",
+      "bbm_no": "",
+      "th": 12.3,
+      "dh": 7.7,
+      "dia": 23.8,
+      "boss_dia": 13.8,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 66,
+      "reference": "Ibrahim 1982: pl. 60.3",
+      "al_sindi_1999_no": "295",
+      "gulf_type": "Gulf Type",
+      "site": "Saar Cemetery",
+      "bbm_no": "",
+      "th": 12.5,
+      "dh": null,
+      "dia": 25.5,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "dh",
+          "boss_dia",
+          "grooves",
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 67,
+      "reference": "Mughal 1983: pl. XIV no. 2",
+      "al_sindi_1999_no": "296",
+      "gulf_type": "Gulf Type",
+      "site": "Sar Burial complex",
+      "bbm_no": "",
+      "th": 16,
+      "dh": null,
+      "dia": 22,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "dh",
+          "boss_dia",
+          "grooves"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 68,
+      "reference": "Kjærum 1994: fig.1731",
+      "al_sindi_1999_no": "140",
+      "gulf_type": "Gulf Type",
+      "site": "Qala'at al-Bahrain",
+      "bbm_no": "",
+      "th": 16,
+      "dh": 11,
+      "dia": 28,
+      "boss_dia": 14.5,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 69,
+      "reference": "Kjærum 1994: fig.1727",
+      "al_sindi_1999_no": "283",
+      "gulf_type": "Gulf Type",
+      "site": "Qala'at al-Bahrain",
+      "bbm_no": "",
+      "th": 17,
+      "dh": 12,
+      "dia": 25,
+      "boss_dia": 15,
+      "grooves": 0,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 70,
+      "reference": "Kjærum 1994: fig.1732",
+      "al_sindi_1999_no": "177",
+      "gulf_type": "Gulf Type",
+      "site": "Qala'at al-Bahrain",
+      "bbm_no": "",
+      "th": 11,
+      "dh": 7.5,
+      "dia": 21,
+      "boss_dia": 13,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 71,
+      "reference": "Kjærum 1994: fig.1728",
+      "al_sindi_1999_no": "297",
+      "gulf_type": "Gulf Type",
+      "site": "Qala'at al-Bahrain",
+      "bbm_no": "",
+      "th": null,
+      "dh": 8,
+      "dia": 22,
+      "boss_dia": 9,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "th",
+          "grooves"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 72,
+      "reference": "Kjærum 1994: fig.1729",
+      "al_sindi_1999_no": "172",
+      "gulf_type": "Gulf Type",
+      "site": "Qala'at al-Bahrain",
+      "bbm_no": "",
+      "th": 14.5,
+      "dh": 10.5,
+      "dia": 20,
+      "boss_dia": 13.5,
+      "grooves": 2,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 73,
+      "reference": "Kjærum 1994: fig.1734",
+      "al_sindi_1999_no": "171",
+      "gulf_type": "Gulf Type",
+      "site": "Qala'at al-Bahrain",
+      "bbm_no": "",
+      "th": 12,
+      "dh": null,
+      "dia": 20,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "dh",
+          "boss_dia",
+          "grooves"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 74,
+      "reference": "Al-Sindi 1999: no. 2",
+      "al_sindi_1999_no": "2",
+      "gulf_type": "Gulf Type",
+      "site": "Saar Cemetery",
+      "bbm_no": "",
+      "th": 16,
+      "dh": 11,
+      "dia": 27.5,
+      "boss_dia": 16.5,
+      "grooves": 2,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 75,
+      "reference": "Kjærum 1994: fig.1733",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Qala'at al-Bahrain",
+      "bbm_no": "",
+      "th": null,
+      "dh": null,
+      "dia": 26,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "th",
+          "dh",
+          "boss_dia",
+          "grooves"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 76,
+      "reference": "Kjærum 1994: fig.1730",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Qala'at al-Bahrain",
+      "bbm_no": "",
+      "th": 9.5,
+      "dh": 7.5,
+      "dia": 20.5,
+      "boss_dia": 12,
+      "grooves": 2,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 77,
+      "reference": "Al-Sindi 1999: no. 310",
+      "al_sindi_1999_no": "310",
+      "gulf_type": "Gulf Type",
+      "site": "Karanah",
+      "bbm_no": "",
+      "th": 12,
+      "dh": 8,
+      "dia": 22,
+      "boss_dia": 15,
+      "grooves": 2,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 78,
+      "reference": "This paper",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "18207",
+      "th": 11,
+      "dh": null,
+      "dia": 22,
+      "boss_dia": null,
+      "grooves": 0,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "dh",
+          "boss_dia"
+        ]
+      }
+    },
+    {
+      "seal_no": 79,
+      "reference": "Al-Sindi 1999: no. 237",
+      "al_sindi_1999_no": "237",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "18207",
+      "th": 16,
+      "dh": 10.5,
+      "dia": 25,
+      "boss_dia": 17,
+      "grooves": 3,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print"
+      }
+    },
+    {
+      "seal_no": 80,
+      "reference": "unpublished",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Janabiyah Cemetery",
+      "bbm_no": "",
+      "th": 13,
+      "dh": 9,
+      "dia": 23,
+      "boss_dia": 16,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "bbm_no"
+        ],
+        "blank_in_xls": [
+          "al_sindi_1999_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 81,
+      "reference": "unpublished",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Janabiyah Cemetery",
+      "bbm_no": "",
+      "th": 10,
+      "dh": 5,
+      "dia": 18,
+      "boss_dia": 13,
+      "grooves": 0,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "bbm_no"
+        ],
+        "blank_in_xls": [
+          "al_sindi_1999_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 82,
+      "reference": "Kjærum 2007: no. 1",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "\"Charnel House\"",
+      "bbm_no": "",
+      "th": null,
+      "dh": null,
+      "dia": 29,
+      "boss_dia": 17,
+      "grooves": 0,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "th",
+          "dh"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 83,
+      "reference": "Kjærum 2007: no. 2",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "\"Charnel House\"",
+      "bbm_no": "",
+      "th": null,
+      "dh": null,
+      "dia": 22,
+      "boss_dia": 15,
+      "grooves": 0,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "th",
+          "dh"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 84,
+      "reference": "Kjærum 2007: no. 3",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "\"Charnel House\"",
+      "bbm_no": "",
+      "th": null,
+      "dh": null,
+      "dia": 26,
+      "boss_dia": 15,
+      "grooves": 3,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "th",
+          "dh"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 85,
+      "reference": "Kjærum 2007: no. 4",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "\"Charnel House\"",
+      "bbm_no": "",
+      "th": null,
+      "dh": null,
+      "dia": 23,
+      "boss_dia": 13,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "th",
+          "dh"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 86,
+      "reference": "Kjærum 2007: no. 5",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "\"Charnel House\"",
+      "bbm_no": "",
+      "th": null,
+      "dh": null,
+      "dia": 23,
+      "boss_dia": 16,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "th",
+          "dh"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 87,
+      "reference": "Kjærum 2007: no. 6",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "\"Charnel House\"",
+      "bbm_no": "",
+      "th": null,
+      "dh": null,
+      "dia": null,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "th",
+          "dh",
+          "dia",
+          "boss_dia",
+          "grooves"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 88,
+      "reference": "Kjærum 2007: no. 7",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "\"Charnel House\"",
+      "bbm_no": "",
+      "th": null,
+      "dh": null,
+      "dia": 25,
+      "boss_dia": 14,
+      "grooves": 2,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "th",
+          "dh"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 89,
+      "reference": "Kjærum 2007: no. 8",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "\"Charnel House\"",
+      "bbm_no": "",
+      "th": null,
+      "dh": null,
+      "dia": 21,
+      "boss_dia": 11,
+      "grooves": 0,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "th",
+          "dh"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 90,
+      "reference": "Kjærum 2007: no. 9",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "\"Charnel House\"",
+      "bbm_no": "",
+      "th": null,
+      "dh": null,
+      "dia": 22,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "th",
+          "dh",
+          "boss_dia",
+          "grooves"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 91,
+      "reference": "Kjærum 2007: no. 10",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "\"Charnel House\"",
+      "bbm_no": "",
+      "th": null,
+      "dh": null,
+      "dia": 15,
+      "boss_dia": null,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "th",
+          "dh",
+          "boss_dia"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 92,
+      "reference": "Kjærum 2007: no. 11",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "\"Charnel House\"",
+      "bbm_no": "",
+      "th": null,
+      "dh": null,
+      "dia": 16,
+      "boss_dia": 11,
+      "grooves": 0,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "th",
+          "dh"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 93,
+      "reference": "Kjærum 2007: no. 12",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "\"Charnel House\"",
+      "bbm_no": "",
+      "th": null,
+      "dh": null,
+      "dia": 20,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "th",
+          "dh",
+          "boss_dia",
+          "grooves"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 94,
+      "reference": "Kjærum 2007: no. 13",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "\"Charnel House\"",
+      "bbm_no": "",
+      "th": null,
+      "dh": null,
+      "dia": null,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "th",
+          "dh",
+          "dia",
+          "boss_dia",
+          "grooves"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 95,
+      "reference": "Kjærum 2007: no. 14",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "\"Charnel House\"",
+      "bbm_no": "",
+      "th": null,
+      "dh": null,
+      "dia": 19,
+      "boss_dia": 14,
+      "grooves": 0,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "th",
+          "dh"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 96,
+      "reference": "Kjærum 2007: no. 15",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "\"Charnel House\"",
+      "bbm_no": "",
+      "th": null,
+      "dh": null,
+      "dia": null,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "th",
+          "dh",
+          "dia",
+          "boss_dia",
+          "grooves"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 97,
+      "reference": "Crawford 2001: no. 2622:05",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Saar Settlement",
+      "bbm_no": "",
+      "th": 14,
+      "dh": null,
+      "dia": 19,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "dh",
+          "boss_dia",
+          "grooves"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 98,
+      "reference": "Crawford 2001: no. 4197:03",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Saar Settlement",
+      "bbm_no": "",
+      "th": 15,
+      "dh": null,
+      "dia": 19,
+      "boss_dia": null,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "dh",
+          "boss_dia"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 99,
+      "reference": "Crawford 2001: no. 4139:01",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Saar Settlement",
+      "bbm_no": "",
+      "th": 11.4,
+      "dh": null,
+      "dia": 16.4,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "dh",
+          "boss_dia",
+          "grooves"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 100,
+      "reference": "Crawford 2001: no. 4300:01",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Saar Settlement",
+      "bbm_no": "",
+      "th": 12.2,
+      "dh": null,
+      "dia": 22.7,
+      "boss_dia": null,
+      "grooves": 3,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "dh",
+          "boss_dia"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 101,
+      "reference": "Crawford 2001: no. 5506:05",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Saar Settlement",
+      "bbm_no": "",
+      "th": 10.5,
+      "dh": null,
+      "dia": 23,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "dh",
+          "boss_dia",
+          "grooves"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 102,
+      "reference": "Crawford 2001: no. 6581:02",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Saar Settlement",
+      "bbm_no": "",
+      "th": null,
+      "dh": null,
+      "dia": 17.8,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "th",
+          "dh",
+          "boss_dia",
+          "grooves"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 103,
+      "reference": "Crawford 2001: no. L18:27:07",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Saar Settlement",
+      "bbm_no": "",
+      "th": 7,
+      "dh": null,
+      "dia": 18,
+      "boss_dia": null,
+      "grooves": null,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "dh",
+          "boss_dia",
+          "grooves"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 104,
+      "reference": "This paper",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "75548",
+      "th": 12,
+      "dh": 9.9,
+      "dia": 21.9,
+      "boss_dia": 13.2,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 105,
+      "reference": "This paper",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "23522",
+      "th": null,
+      "dh": 7.7,
+      "dia": 23.2,
+      "boss_dia": 13,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "th"
+        ]
+      }
+    },
+    {
+      "seal_no": 106,
+      "reference": "This paper",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "23047",
+      "th": 12.8,
+      "dh": 9.4,
+      "dia": 19.4,
+      "boss_dia": 14.6,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 107,
+      "reference": "This paper",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "22363",
+      "th": 12.6,
+      "dh": 9.5,
+      "dia": 24.2,
+      "boss_dia": 14.2,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "adjudications": [
+          "th: the XLS cell (1.3) is a decimal slip; print (Disc 9.5 + Boss 3.1) implies 12.6 — the print-implied value is carried and flagged here."
+        ]
+      }
+    },
+    {
+      "seal_no": 108,
+      "reference": "This paper",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "23559",
+      "th": 15.1,
+      "dh": 8.1,
+      "dia": 26.5,
+      "boss_dia": 1.7,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 109,
+      "reference": "This paper",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "15309",
+      "th": 12.3,
+      "dh": 8.8,
+      "dia": 21,
+      "boss_dia": 13.7,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 110,
+      "reference": "This paper",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "14784",
+      "th": 9.7,
+      "dh": 6.2,
+      "dia": 17,
+      "boss_dia": 12.9,
+      "grooves": 3,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 111,
+      "reference": "This paper",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "75638",
+      "th": 11.9,
+      "dh": 8.4,
+      "dia": 23.4,
+      "boss_dia": 12,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 112,
+      "reference": "This paper",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "15473",
+      "th": 14.8,
+      "dh": 10.5,
+      "dia": 20.4,
+      "boss_dia": 12.8,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 113,
+      "reference": "This paper",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "75621",
+      "th": 14.7,
+      "dh": 10.4,
+      "dia": 21.6,
+      "boss_dia": 14.7,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 114,
+      "reference": "This paper",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "22010",
+      "th": 14,
+      "dh": 10.3,
+      "dia": 22.8,
+      "boss_dia": 12.8,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 115,
+      "reference": "This paper",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "20160",
+      "th": 15.7,
+      "dh": 10.5,
+      "dia": 23.5,
+      "boss_dia": 15.5,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 116,
+      "reference": "This paper",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Karzakkan Cemetery",
+      "bbm_no": "15557",
+      "th": 15,
+      "dh": 9.8,
+      "dia": 23.6,
+      "boss_dia": 13.4,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 117,
+      "reference": "Beyer 1989: no. 249",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Bahrain unsp.",
+      "bbm_no": "",
+      "th": 13,
+      "dh": 7.5,
+      "dia": 24,
+      "boss_dia": 14,
+      "grooves": 2,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 118,
+      "reference": "Presinger 1983: fig. 186 ⁄ 11",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Dhahran South",
+      "bbm_no": "",
+      "th": 9,
+      "dh": 4,
+      "dia": 20,
+      "boss_dia": 14.5,
+      "grooves": 0,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 119,
+      "reference": "Lamberg-Karlovsky 1970 fig. 4.6",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Tepe Yahya",
+      "bbm_no": "",
+      "th": 14,
+      "dh": 8.2,
+      "dia": 25,
+      "boss_dia": 15,
+      "grooves": 0,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 120,
+      "reference": "Barger 1969: 139-140",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Al Khobar",
+      "bbm_no": "",
+      "th": null,
+      "dh": null,
+      "dia": 22,
+      "boss_dia": null,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no",
+          "th",
+          "dh",
+          "boss_dia"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
+    },
+    {
+      "seal_no": 121,
+      "reference": "Zarins 1978: pl. 70 ⁄ 583",
+      "al_sindi_1999_no": "",
+      "gulf_type": "Gulf Type",
+      "site": "Tarut Island",
+      "bbm_no": "",
+      "th": 10.5,
+      "dh": 6,
+      "dia": 21,
+      "boss_dia": 14,
+      "grooves": 1,
+      "provenance": {
+        "sources": [
+          "xls",
+          "print"
+        ],
+        "reference_form": "print",
+        "na_in_xls": [
+          "al_sindi_1999_no"
+        ],
+        "blank_in_xls": [
+          "bbm_no"
+        ]
+      }
     }
   ],
   "parpola_readings": {
@@ -185,6 +3306,104 @@
       17,
       18
     ],
-    "rows_missing": "all other seal numbers 1-121 (97 of the 102 parsed rows, plus the 19 rows the original parser never captured)"
+    "rows_missing": "all other seal numbers 1-121 (97 of the 102 parsed rows, plus the 19 rows the original parser never captured)",
+    "completion_2026_10_26": {
+      "status": "COMPLETED 2026-10-26 — all 121 rows transcribed; the open gap named above is closed.",
+      "note": "The lost-parse aggregates in 'lost_parse_aggregates_from_phase46_output' were reconciliation targets only and are SUPERSEDED by the aggregates computed from the completed table (top-level by_gulf_type, by_site, n_inscribed_with_indus_text = 28; inscribed seals 1-27 and 56). The target values are retained verbatim above as history. See the top-level 'completion_2026_10_26' block for sources, govern rules and adjudications."
+    }
+  },
+  "completion_2026_10_26": {
+    "date": "2026-10-26",
+    "status": "COMPLETE — 121 of 121 rows. This block documents the completion of the partial rebuild of 2026-10-25; the 2026-10-25 history (ingestion_method, rebuild block) is retained unaltered above.",
+    "sources": {
+      "spreadsheet": "Table 1.xls — the author's final pre-publication Table 1, received by author copy from Dr. Steffen Laursen (Al Ain Museum) 2026-10-26; SHA-256 ca8cf71ed9424ecd764f87c9c3e912fb4646ee44ee96c7e3e50477c4615fc3c0; custody: research_notes/indus-data-deep-sweep-20261008/downloads/laursen-2010-author-copy/ (restricted, not in git).",
+      "published_pdf": "Indus paper published version.pdf — publisher production version of Laursen 2010, pp. 96-134, received with the spreadsheet; SHA-256 b28d81501f573fcf218d863092687caf47199b077969c14af965a6a2ac31ba57; Table 1 at printed pp. 100-103.",
+      "intake_record": "Goal files: 2026-10-26-laursen-2010-intake-record.md (custody + verification) and 2026-10-26-laursen-table1-rebuild-completion.md (this completion, incl. verification results)."
+    },
+    "schema_decision": "The six legacy fields (seal_no, reference, al_sindi_1999_no, gulf_type, site, bbm_no) are unchanged in name, order and convention ('' = not applicable/unknown, never the paper's 'N/A'). Five measurement fields from the spreadsheet are added after bbm_no: th (XLS 'TH. ', total height), dh (XLS 'DH', disc height), dia (XLS 'Dia', diameter), boss_dia (XLS 'boss dia', boss diameter), grooves (XLS 'Groves' [sic]). Measurement values are JSON numbers, or null where the source cell is 'N/A', blank, or a non-numeric note. The printed table's derived columns (Boss Height = TH-DH, Collar Width x2 = Dia-boss dia) are NOT carried — they are arithmetic on the carried fields. Each row gains a 'provenance' object: sources consulted, reference form, the fields whose XLS cell was 'N/A' or blank, and per-row adjudication notes where one applies.",
+    "govern_rules": [
+      "Reference strings follow the published table (print), including punctuation; the spreadsheet supplies all other values.",
+      "Measurements follow the spreadsheet, except seals 10 and 107 th, where the XLS cells are decimal slips and the print-implied values (16.0, 12.6) are carried and flagged in the rows' provenance.",
+      "Seal 61 boss_dia: no numeric value in either source (author's note '13øsken?' in both the XLS cell and the printed table); carried as null, note preserved in the row's provenance.",
+      "Site strings follow the spreadsheet, trimmed, with print's spacing restored for its two concatenated strings ('Stray find Diraz', 'Sar Burial complex')."
+    ],
+    "adjudications_applied": [
+      "Seal 5 reference: print attribution (Mackay et al. 1937-38) carried over the XLS's (Marshall 1931b) — the one substantive XLS/print divergence.",
+      "Seals 2, 3, 4 reference: print's dropped '1931a' disambiguator accepted (print form carried).",
+      "Seal 22 reference: print's '&' form carried over the XLS's 'and'.",
+      "Seal 52 reference: print's dropped 'unpub.' accepted (print form carried).",
+      "Seals 10 and 107 th: print-implied values (16.0, 12.6) carried over the XLS decimal slips (1.6, 1.3); both flagged in-row.",
+      "Seal 61 boss_dia: null (author's working note in both sources; no measurement exists).",
+      "Seal 10 reference: filled ('This paper', XLS and print agree) — unrecovered in the partial rebuild."
+    ],
+    "aggregates_computed": {
+      "by_gulf_type": {
+        "Gulf Type": 92,
+        "Gulf INDUS": 28,
+        "Gulf Linear-Elamite": 1
+      },
+      "n_inscribed_with_indus_text": 28,
+      "inscribed_seals": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        56
+      ],
+      "by_site": {
+        "Karzakkan Cemetery": 28,
+        "\"Charnel House\"": 15,
+        "Saar Cemetery": 12,
+        "Qala'at al-Bahrain": 10,
+        "Saar Settlement": 7,
+        "Sar Burial complex": 6,
+        "Ur": 6,
+        "Failaka": 4,
+        "Hamad Town": 4,
+        "Janabiyah Cemetery": 4,
+        "Mohenjo-Daro": 4,
+        "Mesopotamia?": 3,
+        "Near East": 2,
+        "Aali Cemetery": 1,
+        "Al Khobar": 1,
+        "Al Maqsha": 1,
+        "Bahrain unsp.": 1,
+        "Chanhu-Daro": 1,
+        "Dhahran South": 1,
+        "Diraz East": 1,
+        "Girsu": 1,
+        "Karanah": 1,
+        "Luristan": 1,
+        "Rifa mounds": 1,
+        "Stray find Diraz": 1,
+        "Susa": 1,
+        "Tarut Island": 1,
+        "Tepe Yahya": 1,
+        "western Iranian plateau": 1
+      }
+    }
   }
 }

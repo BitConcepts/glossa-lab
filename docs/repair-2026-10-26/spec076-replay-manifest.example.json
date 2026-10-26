@@ -1,0 +1,190 @@
+{
+ "schema_version": "1.0",
+ "wrapper_version": "1.0.0",
+ "experiment_id": "spec076-projected-constraint-corpus-model",
+ "repo": "BitConcepts/glossa-lab",
+ "repo_head_as_staged": "d80dcb7c (byte-verified staged copies, per the repair task brief)",
+ "freeze_digest": "83259ed3d3a20189e5c22e4645d26452c9c3b79a60348b3f5c38b8405addde9a",
+ "frozen": {
+  "tree_root": "../../../work/specs/076-projected-constraint-corpus-model"
+ },
+ "code": {
+  "runner": "pilot_run.py (frozen Spec 076 pilot runner, run only as a hash-verified staged copy)",
+  "runner_sha256": "15876db7678441aa8f02d469d0f7f12e7ecb7d944a2014f964441c124bd31ab3",
+  "wrapper": "backend/glossa_lab/replay076.py, wrapper version 1.0.0",
+  "note": "freeze.json's sources list does not include pilot_run.py, so the runner hash below is a repair-time hash of the staged frozen copy, not a prospective freeze hash. That timing difference is stated, not hidden."
+ },
+ "historical_environment": {
+  "python": "3.12.3",
+  "platform": "Linux",
+  "runner": "unknown",
+  "aee": "unknown",
+  "specify": "unknown",
+  "os": "unknown",
+  "_note": "python and platform are the values recorded in freeze.json at the freeze act of 2026-10-26. The pilot run's own environment was not recorded separately in pilot-results.json or pilot-record.md, so every other historical field is 'unknown'. freeze.json also carries two different aee values in different sections (1.5.3 for the freeze-act evaluator configuration, 1.0.4 in its outer environment block), so aee is recorded as unknown rather than picking one. The replay environment is pinned separately by the wrapper at run time, in replay-record.json."
+ },
+ "artifacts": [
+  {
+   "name": "pilot-runner",
+   "role": "code",
+   "path": "specs/076-projected-constraint-corpus-model/pilot/pilot_run.py",
+   "sha256": "15876db7678441aa8f02d469d0f7f12e7ecb7d944a2014f964441c124bd31ab3",
+   "hash_provenance": "hash_recorded_at_repair_2026_10_26",
+   "hash_provenance_note": "The runner is not listed in freeze.json's sources, so no prospective freeze hash exists for it. This hash was computed at repair time from the staged frozen copy.",
+   "acquisition": "Staged byte-verified copy of the frozen runner in the glossa-lab repository under specs/076-projected-constraint-corpus-model/pilot/. Read only; never run in place."
+  },
+  {
+   "name": "corpus-export",
+   "role": "input",
+   "path": "wp6-scratch-inputs/indus_research.jsonl",
+   "repo_path": "glossa-corpus/indus/exports/indus_research.jsonl",
+   "sha256": "08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e",
+   "hash_provenance": "prospective_frozen_input_hash",
+   "hash_provenance_note": "Pinned in freeze.json (definition.inputs.corpus_export.sha256) at the freeze act, before the pilot run. The staged repair copy was fetched from the repository by git blob API and its hash equals the pin exactly.",
+   "staging_name": "inputs/indus_research.jsonl",
+   "acquisition": "Documented local path in a full checkout: glossa-corpus/indus/exports/indus_research.jsonl. In the repair staging it was fetched with the verified-fetcher pattern via 'gh api repos/BitConcepts/glossa-lab/git/blobs/<blob sha from the contents API>' because the file is 10,146,212 bytes, too large for a reliable contents-API raw fetch; the fetched bytes were accepted only because their SHA-256 equals the freeze pin."
+  },
+  {
+   "name": "anchors",
+   "role": "input",
+   "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
+   "repo_path": "backend/reports/INDUS_FINAL_ANCHORS.json",
+   "sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+   "hash_provenance": "prospective_frozen_input_hash",
+   "hash_provenance_note": "Pinned in freeze.json (definition.inputs.anchors.sha256) at the freeze act, before the pilot run.",
+   "staging_name": "inputs/INDUS_FINAL_ANCHORS.json",
+   "acquisition": "Documented local path in a full checkout: backend/reports/INDUS_FINAL_ANCHORS.json (also staged in the repair work tree at that same relative path)."
+  },
+  {
+   "name": "strict-coding-input",
+   "role": "coding_input",
+   "path": "specs/076-projected-constraint-corpus-model/pilot/strict-coding-input.json",
+   "sha256": "9785e538e5853beb670e08505ac619fa9cb987368d5c6a8f344a0588f9c60511",
+   "hash_provenance": "hash_recorded_at_repair_2026_10_26",
+   "hash_provenance_note": "The coder's only input, prepared before the blind coding. No prospective hash for it was found in freeze.json; this hash was computed at repair time from the staged frozen copy. It must not be described as frozen at the freeze act.",
+   "acquisition": "Archived with the pilot under specs/076-projected-constraint-corpus-model/pilot/ in the repository."
+  },
+  {
+   "name": "strict-coding-output",
+   "role": "coding_output",
+   "path": "specs/076-projected-constraint-corpus-model/pilot/strict-coding-output.json",
+   "sha256": "f566c6ad094b3a45a5d1f0cc26429d995d1dbe39e6359467946cde8c937b663e",
+   "hash_provenance": "coding_artifact_hash_recorded_after_coding",
+   "hash_provenance_note": "The blind coding was produced after the freeze, during pilot execution, so its hash could only be recorded after coding. This hash was computed at repair time from the staged frozen copy of that artifact; the timing class (after coding) is the point of this label.",
+   "staging_name": "strict-coding-output.json",
+   "acquisition": "Archived with the pilot under specs/076-projected-constraint-corpus-model/pilot/ in the repository."
+  },
+  {
+   "name": "pilot-results-archived",
+   "role": "archived_result",
+   "path": "specs/076-projected-constraint-corpus-model/pilot/pilot-results.json",
+   "sha256": "d825077d0b77471b1c7f1c7b81399b4406d1e230a3a9a395090a60912794f2ff",
+   "hash_provenance": "archived_result_hash_recorded_after_run",
+   "hash_provenance_note": "The archived output of the single frozen run of 2026-10-26. Verified, never overwritten: the replay writes its own results only inside its new output directory.",
+   "acquisition": "Archived with the pilot under specs/076-projected-constraint-corpus-model/pilot/ in the repository."
+  },
+  {
+   "name": "spec076-spec",
+   "role": "frozen_spec",
+   "path": "specs/076-projected-constraint-corpus-model/spec.md",
+   "sha256": "3dc7c33140945e828e8902cb2858d71753d4fdc09b7cd8d7e7a217e89cc16c15",
+   "hash_provenance": "hash_recorded_in_freeze_json_sources_at_freeze",
+   "hash_provenance_note": "freeze.json's sources map records this file's SHA-256 as 3dc7c33140945e828e8902cb2858d71753d4fdc09b7cd8d7e7a217e89cc16c15; the staged copy matches it.",
+   "acquisition": "Repository path specs/076-projected-constraint-corpus-model/spec.md."
+  },
+  {
+   "name": "spec076-freeze-record",
+   "role": "freeze_record",
+   "path": "specs/076-projected-constraint-corpus-model/freeze.json",
+   "sha256": "997d1f8bd298efb6318c729b0004e87e0875942c504bcd876a7935abde8bfdb4",
+   "hash_provenance": "hash_recorded_at_repair_2026_10_26",
+   "hash_provenance_note": "A freeze record cannot contain its own hash; freeze.json carries an internal digest over its definition and sources (83259ed3d3a20189e5c22e4645d26452c9c3b79a60348b3f5c38b8405addde9a). This file hash was computed at repair time.",
+   "acquisition": "Repository path specs/076-projected-constraint-corpus-model/freeze.json."
+  },
+  {
+   "name": "registry-v2",
+   "role": "input",
+   "path": "wp6-scratch-inputs/canonical_sign_registry_v2.csv",
+   "repo_path": "data/crosswalks/canonical_sign_registry_v2.csv",
+   "sha256": "42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71",
+   "hash_provenance": "prospective_frozen_input_hash",
+   "hash_provenance_note": "Pinned in freeze.json (definition.inputs.registry_v2.sha256) and in spec section 5. The pilot runner does not read this file; it is verified here because the spec names it as the keying source. Marked not required for the replay itself.",
+   "required": false,
+   "acquisition": "Documented local path in a full checkout: data/crosswalks/canonical_sign_registry_v2.csv. The repair copy was fetched via the GitHub contents API (verified-fetcher pattern) and its hash equals the pin."
+  }
+ ],
+ "known_access_blockers": [
+  {
+   "name": "holdat-corpus-csv",
+   "documented_local_path": "corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv",
+   "needed_by": "The legacy loaders inspected for this work package: backend/glossa_lab/pipelines/provenance_audit.py (its HOLDAT_CSV constant; Spec 006 step 3 token coverage and site_invariance) and backend/scripts/phase69_site_stratification.py. It is NOT an input of the frozen Spec 076 pilot runner: pilot_run.py reads only inputs/indus_research.jsonl, inputs/INDUS_FINAL_ANCHORS.json, and strict-coding-output.json. Its absence therefore does not block the Spec 076 replay, and does block those legacy-loader recomputations in this staged tree.",
+   "status_in_staged_tree": "Absent. The corpora/ directory is not in the staged work tree, is not in the repository tree (a recursive tree listing shows no corpora/ path), and the GitHub contents API returns 404 for the documented path. It is a downloaded external corpus, not a committed file.",
+   "lawful_acquisition_route": "Download the Holdat LLC Indus corpus from its external repository (the source of the corpora/downloads/external_repos/holdatllc_indus/ directory in a full local checkout, as documented in Spec 006 step 3 and in provenance_audit.py) and place the CSV at the documented local path. No hash for this file is stated in the frozen Spec 076 material, so none is recorded here; inventing one would be false.",
+   "sha256": "unknown"
+  }
+ ],
+ "census_expected": {
+  "coding_input_entries": 94,
+  "coding_output_entries": 94,
+  "anchors_entries": 287,
+  "anchors_strict": 94,
+  "anchors_pending": 44,
+  "census_artifact_names": {
+   "coding_input": "strict-coding-input",
+   "coding_output": "strict-coding-output",
+   "anchors": "anchors"
+  },
+  "pilot_results": {
+   "step0": {
+    "records": 2906,
+    "dropped_000": 680,
+    "dropped_star": 452,
+    "tokens": 11507,
+    "strict_tokens": 5883,
+    "nonempty_sequences": 2880,
+    "pass": true
+   },
+   "step1": {
+    "slot_totals": {
+     "init": 2655,
+     "fin": 2655,
+     "solo": 225,
+     "med": 5972
+    },
+    "finals_partition": {
+     "strict": 1707,
+     "pending": 250,
+     "anchored_other": 520,
+     "no_anchor": 178
+    },
+    "u2_signs": 122,
+    "u2_exclusions": 677,
+    "u2_finals_residual": 178,
+    "solo_only_count": 13,
+    "pass": true
+   },
+   "step2": {
+    "residual_real": 178,
+    "residual_null_p5": 395.0,
+    "residual_null_min": 371,
+    "residual_null_median": 421.0,
+    "residual_null_max": 474,
+    "bar_i_pass": true,
+    "solo_real": 13,
+    "solo_null_p95": 5.0,
+    "solo_null_min": 0,
+    "solo_null_median": 2.0,
+    "solo_null_max": 12,
+    "bar_ii_pass": true
+   },
+   "step3": {
+    "strict_total": 94,
+    "frame_attested": 89,
+    "exclusion_count": 36,
+    "bar_pass": false
+   },
+   "verdict": "ASSUMPTION SET DOES NOT HOLD"
+  },
+  "_note": "Population counts as stated in the frozen spec (sections 7 and 8), freeze.json, pilot-record.md, and the archived pilot-results.json: 2,906 records, 11,507 tokens, 5,883 strict tokens, 2,880 non-empty sequences."
+ }
+}

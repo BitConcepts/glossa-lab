@@ -1,0 +1,6681 @@
+{
+ "phase": 443,
+ "spec": "077",
+ "claim_family": "F077",
+ "contract": {},
+ "step0": {
+  "pins": {
+   "registry_v2": {
+    "ok": true,
+    "sha256": "42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71"
+   },
+   "phase441_record": {
+    "ok": true,
+    "sha256": "f55ae91124e1ac74268f79035d862586a81a2f2e9596fd2318f3741c6e39ea29"
+   },
+   "m77_raw_text": {
+    "ok": true,
+    "sha256": "11441e38286784a1f4215f73d91cbba8acd153b7e5b30daed9252f9f7b77304a"
+   },
+   "anchors": {
+    "ok": true,
+    "sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569"
+   },
+   "m77_dataset_v3": {
+    "ok": true,
+    "sha256": "9c619bfe2520e63e2968be0ab4ddc9cef1f9aff7dfa3f8eddbf58f21fb414f7e"
+   },
+   "wells1998_dataset": {
+    "ok": true,
+    "sha256": "22bde128551adbd6d91cd76bb41b4f40199ab3e45af76d500a1008d27c5bea95"
+   },
+   "fig36_crossrefs": {
+    "ok": true,
+    "sha256": "b0ef40da7cd65cdcb6910fd2b1e6aeae4eac47cb31cbe2b2c6205f2ac5da270d"
+   },
+   "wells_thesis": {
+    "ok": true,
+    "sha256": "5720dc010acc68d6b50827fa89fb7bf3c4c0eb0aee67597e7662e5fd74508906"
+   },
+   "restricted_corpus": {
+    "ok": true,
+    "sha256": "345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68"
+   },
+   "restricted_grades": {
+    "ok": true,
+    "sha256": "02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739"
+   }
+  },
+  "columns": {
+   "registry_v2": [
+    "internal_id",
+    "sign_id",
+    "numbering_system",
+    "description",
+    "parpola_id",
+    "wells_ids",
+    "mahadevan_ids",
+    "parpola_allographs",
+    "icit_function",
+    "corpus_freq",
+    "start_rate",
+    "end_rate",
+    "internal_rate",
+    "in_corpus",
+    "n_feature_dims"
+   ],
+   "m77_dataset_v3": [
+    "sign_no",
+    "variant_marker",
+    "morph_class_no",
+    "morph_class_label",
+    "page_printed",
+    "page_pdf",
+    "status",
+    "evidence"
+   ],
+   "wells1998_dataset": [
+    "sign_no",
+    "total",
+    "varieties",
+    "set",
+    "class_code",
+    "type_code",
+    "freq_mohenjo_daro",
+    "freq_harappa",
+    "freq_lothal",
+    "freq_other_sites",
+    "percent_by_site",
+    "page_pdf",
+    "page_printed",
+    "status",
+    "mahadevan_xref_fig36",
+    "identifications",
+    "evidence"
+   ],
+   "fig36_crossrefs": [
+    "glyph_shape_note",
+    "mahadevan_1977",
+    "fairservis_1992",
+    "parpola_1994",
+    "wells_1997"
+   ]
+  },
+  "population_reproduction": {
+   "analyzable_rows": 3045,
+   "distinct_signs": 557,
+   "signs_in_sequences_ge2": 550,
+   "token_999_occurrences": 2,
+   "token_999_finals": 0
+  },
+  "duplicated_id_resolution": {
+   "M002": {
+    "claiming_rows": [
+     "P015",
+     "P016"
+    ],
+    "wells_ids_by_row": {
+     "P015": [
+      "W097"
+     ],
+     "P016": [
+      "W091"
+     ]
+    }
+   },
+   "M050": {
+    "claiming_rows": [
+     "P043",
+     "P044"
+    ],
+    "wells_ids_by_row": {
+     "P043": [
+      "W340",
+      "W341",
+      "W342",
+      "W343",
+      "W344",
+      "W345",
+      "W347",
+      "W348"
+     ],
+     "P044": [
+      "W346"
+     ]
+    }
+   },
+   "M064": {
+    "claiming_rows": [
+     "P054",
+     "P055"
+    ],
+    "wells_ids_by_row": {
+     "P054": [
+      "W940"
+     ],
+     "P055": [
+      "W942",
+      "W943"
+     ]
+    }
+   },
+   "M076": {
+    "claiming_rows": [
+     "P066",
+     "P071"
+    ],
+    "wells_ids_by_row": {
+     "P066": [
+      "W264",
+      "W266",
+      "W268"
+     ],
+     "P071": [
+      "W260"
+     ]
+    }
+   },
+   "M099": {
+    "claiming_rows": [
+     "P119",
+     "P122"
+    ],
+    "wells_ids_by_row": {
+     "P119": [],
+     "P122": [
+      "W002"
+     ]
+    }
+   },
+   "M103": {
+    "claiming_rows": [
+     "P123",
+     "P139"
+    ],
+    "wells_ids_by_row": {
+     "P123": [
+      "W003"
+     ],
+     "P139": [
+      "W013"
+     ]
+    }
+   },
+   "M161": {
+    "claiming_rows": [
+     "P085",
+     "P086"
+    ],
+    "wells_ids_by_row": {
+     "P085": [
+      "W064"
+     ],
+     "P086": [
+      "W390",
+      "W392",
+      "W405",
+      "W406",
+      "W407",
+      "W408"
+     ]
+    }
+   },
+   "M167": {
+    "claiming_rows": [
+     "P086",
+     "P101"
+    ],
+    "wells_ids_by_row": {
+     "P086": [
+      "W390",
+      "W392",
+      "W405",
+      "W406",
+      "W407",
+      "W408"
+     ],
+     "P101": []
+    }
+   },
+   "M168": {
+    "claiming_rows": [
+     "P086",
+     "P100"
+    ],
+    "wells_ids_by_row": {
+     "P086": [
+      "W390",
+      "W392",
+      "W405",
+      "W406",
+      "W407",
+      "W408"
+     ],
+     "P100": [
+      "W411"
+     ]
+    }
+   },
+   "M199": {
+    "claiming_rows": [
+     "P292",
+     "P293"
+    ],
+    "wells_ids_by_row": {
+     "P292": [
+      "W570",
+      "W571"
+     ],
+     "P293": [
+      "W315",
+      "W360"
+     ]
+    }
+   },
+   "M216": {
+    "claiming_rows": [
+     "P230",
+     "P234"
+    ],
+    "wells_ids_by_row": {
+     "P230": [
+      "W550",
+      "W555"
+     ],
+     "P234": [
+      "W551"
+     ]
+    }
+   },
+   "M264": {
+    "claiming_rows": [
+     "P260",
+     "P359"
+    ],
+    "wells_ids_by_row": {
+     "P260": [],
+     "P359": [
+      "W853"
+     ]
+    }
+   },
+   "M409": {
+    "claiming_rows": [
+     "P346",
+     "P348"
+    ],
+    "wells_ids_by_row": {
+     "P346": [
+      "W171"
+     ],
+     "P348": [
+      "W170"
+     ]
+    }
+   }
+  },
+  "signs_with_mahadevan_numbers": 399,
+  "table1": {
+   "path": "/home/hatch/workspace/glossa-lab/glossa-corpus/indus/sources/mahadevan-1977/m77_table1_occurrences.csv",
+   "sha256": "c047c2517474062db9eec508eccb62cd83cb2be045e1fc847fd426030f50b168",
+   "columns": [
+    "sign_no",
+    "occurrences",
+    "page_printed",
+    "raw_ocr",
+    "uncertain"
+   ],
+   "rows": 417,
+   "complete_rows": 405,
+   "unsettled_signs": [
+    97,
+    102,
+    162,
+    167,
+    173,
+    179,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185
+   ],
+   "bad_rows": [],
+   "complete_column_sums": [
+    177,
+    2886,
+    6695,
+    2567,
+    12325
+   ],
+   "residuals_vs_printed": [
+    13,
+    124,
+    501,
+    409,
+    1047
+   ],
+   "reconciliation": "complete-row sums + landing record residuals (M77 Table I extraction and adjudication record, 2026-10-26 (Phase B; section 4 reconciliation table, section 5 unsettled list); dataset m77_table1_occurrences.csv SHA-256 c047c2517474062db9eec508eccb62cd83cb2be045e1fc847fd426030f50b168) equal printed totals"
+  },
+  "failures": []
+ },
+ "outcome": "EXECUTED",
+ "counting": {
+  "population": 557,
+  "witnessed_any": 399,
+  "raw_share": 0.7163375224416517,
+  "witnessed_m77": 399,
+  "ancestry_adjusted_share": 0.7163375224416517,
+  "witnessed_wells1998": 42,
+  "witnessed_both": 42,
+  "witnessed_only_wells1998": 0,
+  "sensitivities": {
+   "S1_strictest_ancestry": 0.7163375224416517,
+   "S2_registry_construction_exclusion": {
+    "excluded_signs": 0,
+    "share": 0.7163375224416517
+   }
+  },
+  "gap_list": [
+   "036",
+   "041",
+   "042",
+   "050",
+   "056",
+   "058",
+   "059",
+   "065",
+   "067",
+   "069",
+   "082",
+   "084",
+   "092",
+   "096",
+   "132",
+   "136",
+   "138",
+   "141",
+   "143",
+   "145",
+   "150",
+   "152",
+   "157",
+   "172",
+   "173",
+   "180",
+   "191",
+   "195",
+   "219",
+   "221",
+   "224",
+   "229",
+   "230",
+   "250",
+   "252",
+   "253",
+   "257",
+   "263",
+   "276",
+   "277",
+   "278",
+   "279",
+   "298",
+   "311",
+   "316",
+   "319",
+   "320",
+   "326",
+   "328",
+   "330",
+   "351",
+   "376",
+   "381",
+   "383",
+   "386",
+   "389",
+   "401",
+   "409",
+   "410",
+   "412",
+   "424",
+   "441",
+   "442",
+   "444",
+   "445",
+   "452",
+   "479",
+   "481",
+   "490",
+   "491",
+   "494",
+   "495",
+   "501",
+   "506",
+   "514",
+   "515",
+   "516",
+   "519",
+   "521",
+   "525",
+   "528",
+   "534",
+   "541",
+   "542",
+   "552",
+   "563",
+   "576",
+   "577",
+   "585",
+   "586",
+   "596",
+   "597",
+   "606",
+   "617",
+   "620",
+   "629",
+   "640",
+   "647",
+   "681",
+   "697",
+   "698",
+   "702",
+   "710",
+   "711",
+   "712",
+   "720",
+   "723",
+   "727",
+   "728",
+   "729",
+   "748",
+   "751",
+   "775",
+   "781",
+   "791",
+   "792",
+   "793",
+   "794",
+   "795",
+   "799",
+   "808",
+   "810",
+   "811",
+   "818",
+   "821",
+   "822",
+   "824",
+   "826",
+   "828",
+   "829",
+   "830",
+   "836",
+   "838",
+   "842",
+   "843",
+   "844",
+   "849",
+   "852",
+   "855",
+   "859",
+   "862",
+   "866",
+   "872",
+   "876",
+   "879",
+   "893",
+   "897",
+   "898",
+   "910",
+   "912",
+   "914",
+   "918",
+   "919",
+   "922",
+   "933",
+   "956",
+   "958",
+   "999"
+  ],
+  "per_sign": [
+   {
+    "sign": "001",
+    "mahadevan_numbers": [
+     97,
+     98
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "002",
+    "mahadevan_numbers": [
+     99,
+     100
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "003",
+    "mahadevan_numbers": [
+     102,
+     103
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "004",
+    "mahadevan_numbers": [
+     104,
+     105
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "005",
+    "mahadevan_numbers": [
+     106,
+     107
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "006",
+    "mahadevan_numbers": [
+     108,
+     109
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "007",
+    "mahadevan_numbers": [
+     110,
+     112
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "012",
+    "mahadevan_numbers": [
+     101
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "013",
+    "mahadevan_numbers": [
+     103
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "014",
+    "mahadevan_numbers": [
+     104,
+     105
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "015",
+    "mahadevan_numbers": [
+     106,
+     107
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "016",
+    "mahadevan_numbers": [
+     108,
+     109
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "017",
+    "mahadevan_numbers": [
+     110,
+     112
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "018",
+    "mahadevan_numbers": [
+     114
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "019",
+    "mahadevan_numbers": [
+     115,
+     116
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "025",
+    "mahadevan_numbers": [
+     119,
+     120
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "027",
+    "mahadevan_numbers": [
+     119,
+     120
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "028",
+    "mahadevan_numbers": [
+     119,
+     120
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "029",
+    "mahadevan_numbers": [
+     119,
+     120
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "031",
+    "mahadevan_numbers": [
+     86
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "032",
+    "mahadevan_numbers": [
+     87
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "033",
+    "mahadevan_numbers": [
+     89
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "034",
+    "mahadevan_numbers": [
+     95
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "035",
+    "mahadevan_numbers": [
+     96
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "036",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "041",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "042",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "045",
+    "mahadevan_numbers": [
+     90,
+     91
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "046",
+    "mahadevan_numbers": [
+     90,
+     91
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "048",
+    "mahadevan_numbers": [
+     111,
+     113
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "049",
+    "mahadevan_numbers": [
+     111,
+     113
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "050",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "051",
+    "mahadevan_numbers": [
+     117
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "055",
+    "mahadevan_numbers": [
+     121
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "056",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "057",
+    "mahadevan_numbers": [
+     122
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "058",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "059",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "060",
+    "mahadevan_numbers": [
+     123
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "061",
+    "mahadevan_numbers": [
+     124,
+     125
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "062",
+    "mahadevan_numbers": [
+     124,
+     125
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "063",
+    "mahadevan_numbers": [
+     124,
+     125
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "064",
+    "mahadevan_numbers": [
+     161
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "065",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "066",
+    "mahadevan_numbers": [
+     129
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "067",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "069",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "070",
+    "mahadevan_numbers": [
+     155
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "071",
+    "mahadevan_numbers": [
+     157
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "072",
+    "mahadevan_numbers": [
+     155
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "073",
+    "mahadevan_numbers": [
+     156
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "081",
+    "mahadevan_numbers": [
+     160
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "082",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "083",
+    "mahadevan_numbers": [
+     159
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "084",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "090",
+    "mahadevan_numbers": [
+     1
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "091",
+    "mahadevan_numbers": [
+     2
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "092",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "093",
+    "mahadevan_numbers": [
+     3
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "094",
+    "mahadevan_numbers": [
+     38
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "095",
+    "mahadevan_numbers": [
+     18
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "096",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "097",
+    "mahadevan_numbers": [
+     2
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "098",
+    "mahadevan_numbers": [
+     7
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "100",
+    "mahadevan_numbers": [
+     8
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "101",
+    "mahadevan_numbers": [
+     9
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "103",
+    "mahadevan_numbers": [
+     9
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "104",
+    "mahadevan_numbers": [
+     41
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "105",
+    "mahadevan_numbers": [
+     4
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "106",
+    "mahadevan_numbers": [
+     5
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "107",
+    "mahadevan_numbers": [
+     4
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "110",
+    "mahadevan_numbers": [
+     32
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "111",
+    "mahadevan_numbers": [
+     32
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "112",
+    "mahadevan_numbers": [
+     34
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "117",
+    "mahadevan_numbers": [
+     31
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "118",
+    "mahadevan_numbers": [
+     42
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "119",
+    "mahadevan_numbers": [
+     30
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "121",
+    "mahadevan_numbers": [
+     37
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "122",
+    "mahadevan_numbers": [
+     36
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "125",
+    "mahadevan_numbers": [
+     28
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "126",
+    "mahadevan_numbers": [
+     28
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "127",
+    "mahadevan_numbers": [
+     29
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "130",
+    "mahadevan_numbers": [
+     19
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "131",
+    "mahadevan_numbers": [
+     20
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "132",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "133",
+    "mahadevan_numbers": [
+     23
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "136",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "137",
+    "mahadevan_numbers": [
+     40
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "138",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "140",
+    "mahadevan_numbers": [
+     17
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "141",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "142",
+    "mahadevan_numbers": [
+     25
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "143",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "144",
+    "mahadevan_numbers": [
+     26
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "145",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "146",
+    "mahadevan_numbers": [
+     27
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "150",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "151",
+    "mahadevan_numbers": [
+     12
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "152",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "153",
+    "mahadevan_numbers": [
+     15
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "154",
+    "mahadevan_numbers": [
+     15
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "155",
+    "mahadevan_numbers": [
+     15
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "156",
+    "mahadevan_numbers": [
+     15
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "157",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "158",
+    "mahadevan_numbers": [
+     15
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "159",
+    "mahadevan_numbers": [
+     11,
+     14
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "160",
+    "mahadevan_numbers": [
+     11,
+     14
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "161",
+    "mahadevan_numbers": [
+     11,
+     14
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "165",
+    "mahadevan_numbers": [
+     319
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "166",
+    "mahadevan_numbers": [
+     320
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "167",
+    "mahadevan_numbers": [
+     321
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "168",
+    "mahadevan_numbers": [
+     322
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "170",
+    "mahadevan_numbers": [
+     409
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "171",
+    "mahadevan_numbers": [
+     409
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "172",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "173",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "175",
+    "mahadevan_numbers": [
+     47
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "176",
+    "mahadevan_numbers": [
+     48
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "177",
+    "mahadevan_numbers": [
+     48
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "178",
+    "mahadevan_numbers": [
+     48
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "179",
+    "mahadevan_numbers": [
+     48
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "180",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "190",
+    "mahadevan_numbers": [
+     54,
+     55
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "191",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "192",
+    "mahadevan_numbers": [
+     54,
+     55
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "193",
+    "mahadevan_numbers": [
+     53
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "195",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "200",
+    "mahadevan_numbers": [
+     410
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "201",
+    "mahadevan_numbers": [
+     412
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "202",
+    "mahadevan_numbers": [
+     268
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "203",
+    "mahadevan_numbers": [
+     413
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "204",
+    "mahadevan_numbers": [
+     56
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "205",
+    "mahadevan_numbers": [
+     57
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "207",
+    "mahadevan_numbers": [
+     57
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "208",
+    "mahadevan_numbers": [
+     57
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "209",
+    "mahadevan_numbers": [
+     57
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "215",
+    "mahadevan_numbers": [
+     415,
+     417
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "216",
+    "mahadevan_numbers": [
+     415,
+     417
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "219",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "220",
+    "mahadevan_numbers": [
+     59
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "221",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "222",
+    "mahadevan_numbers": [
+     62
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "224",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "226",
+    "mahadevan_numbers": [
+     60
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "228",
+    "mahadevan_numbers": [
+     74
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "229",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "230",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "231",
+    "mahadevan_numbers": [
+     70
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "232",
+    "mahadevan_numbers": [
+     71
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "233",
+    "mahadevan_numbers": [
+     72
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "234",
+    "mahadevan_numbers": [
+     73
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "235",
+    "mahadevan_numbers": [
+     65
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "236",
+    "mahadevan_numbers": [
+     66
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "240",
+    "mahadevan_numbers": [
+     67
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "241",
+    "mahadevan_numbers": [
+     68
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "242",
+    "mahadevan_numbers": [
+     67
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "243",
+    "mahadevan_numbers": [
+     75
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "244",
+    "mahadevan_numbers": [
+     83
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "250",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "252",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "253",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "255",
+    "mahadevan_numbers": [
+     51
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "256",
+    "mahadevan_numbers": [
+     52
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "257",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "260",
+    "mahadevan_numbers": [
+     76
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "262",
+    "mahadevan_numbers": [
+     79
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "263",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "264",
+    "mahadevan_numbers": [
+     76,
+     77,
+     78
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "266",
+    "mahadevan_numbers": [
+     76,
+     77,
+     78
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "267",
+    "mahadevan_numbers": [
+     81
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "268",
+    "mahadevan_numbers": [
+     76,
+     77,
+     78
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "269",
+    "mahadevan_numbers": [
+     81
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "272",
+    "mahadevan_numbers": [
+     80
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "276",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "277",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "278",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "279",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "280",
+    "mahadevan_numbers": [
+     84
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "281",
+    "mahadevan_numbers": [
+     85
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "285",
+    "mahadevan_numbers": [
+     395
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "286",
+    "mahadevan_numbers": [
+     395
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "287",
+    "mahadevan_numbers": [
+     395
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "291",
+    "mahadevan_numbers": [
+     180
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "292",
+    "mahadevan_numbers": [
+     180
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "293",
+    "mahadevan_numbers": [
+     180
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "294",
+    "mahadevan_numbers": [
+     180
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "295",
+    "mahadevan_numbers": [
+     180
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "297",
+    "mahadevan_numbers": [
+     180
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "298",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "299",
+    "mahadevan_numbers": [
+     180
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "300",
+    "mahadevan_numbers": [
+     180
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "301",
+    "mahadevan_numbers": [
+     180
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "302",
+    "mahadevan_numbers": [
+     180
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "304",
+    "mahadevan_numbers": [
+     180
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "305",
+    "mahadevan_numbers": [
+     180
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "306",
+    "mahadevan_numbers": [
+     180
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "307",
+    "mahadevan_numbers": [
+     181
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "309",
+    "mahadevan_numbers": [
+     181
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "311",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "315",
+    "mahadevan_numbers": [
+     199
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "316",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "317",
+    "mahadevan_numbers": [
+     186
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "318",
+    "mahadevan_numbers": [
+     188
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "319",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "320",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "321",
+    "mahadevan_numbers": [
+     183
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "322",
+    "mahadevan_numbers": [
+     182
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "323",
+    "mahadevan_numbers": [
+     182
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "324",
+    "mahadevan_numbers": [
+     182
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "325",
+    "mahadevan_numbers": [
+     182
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "326",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "328",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "329",
+    "mahadevan_numbers": [
+     191
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "330",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "335",
+    "mahadevan_numbers": [
+     192
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "336",
+    "mahadevan_numbers": [
+     193
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "337",
+    "mahadevan_numbers": [
+     193
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "338",
+    "mahadevan_numbers": [
+     193
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "340",
+    "mahadevan_numbers": [
+     50
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "341",
+    "mahadevan_numbers": [
+     50
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "343",
+    "mahadevan_numbers": [
+     50
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "344",
+    "mahadevan_numbers": [
+     50
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "345",
+    "mahadevan_numbers": [
+     50
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "346",
+    "mahadevan_numbers": [
+     50
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "347",
+    "mahadevan_numbers": [
+     50
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "350",
+    "mahadevan_numbers": [
+     174,
+     175
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "351",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "352",
+    "mahadevan_numbers": [
+     174,
+     175
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "353",
+    "mahadevan_numbers": [
+     174,
+     175
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "354",
+    "mahadevan_numbers": [
+     174,
+     175
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "360",
+    "mahadevan_numbers": [
+     199
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "361",
+    "mahadevan_numbers": [
+     203
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "362",
+    "mahadevan_numbers": [
+     201
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "363",
+    "mahadevan_numbers": [
+     255
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "365",
+    "mahadevan_numbers": [
+     402
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "367",
+    "mahadevan_numbers": [
+     402
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "368",
+    "mahadevan_numbers": [
+     402
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "370",
+    "mahadevan_numbers": [
+     397
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "371",
+    "mahadevan_numbers": [
+     397
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "372",
+    "mahadevan_numbers": [
+     397
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "373",
+    "mahadevan_numbers": [
+     399
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "374",
+    "mahadevan_numbers": [
+     400
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "375",
+    "mahadevan_numbers": [
+     401
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "376",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "380",
+    "mahadevan_numbers": [
+     323
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "381",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "382",
+    "mahadevan_numbers": [
+     325
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "383",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "384",
+    "mahadevan_numbers": [
+     326
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "385",
+    "mahadevan_numbers": [
+     326
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "386",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "388",
+    "mahadevan_numbers": [
+     327
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "389",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "390",
+    "mahadevan_numbers": [
+     161,
+     162,
+     167,
+     168,
+     169
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "391",
+    "mahadevan_numbers": [
+     163
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "392",
+    "mahadevan_numbers": [
+     161,
+     162,
+     167,
+     168,
+     169
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "393",
+    "mahadevan_numbers": [
+     164
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "400",
+    "mahadevan_numbers": [
+     176
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "401",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "405",
+    "mahadevan_numbers": [
+     161,
+     162,
+     167,
+     168,
+     169
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "406",
+    "mahadevan_numbers": [
+     161,
+     162,
+     167,
+     168,
+     169
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "407",
+    "mahadevan_numbers": [
+     161,
+     162,
+     167,
+     168,
+     169
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "408",
+    "mahadevan_numbers": [
+     161,
+     162,
+     167,
+     168,
+     169
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "409",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "410",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "411",
+    "mahadevan_numbers": [
+     168
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "412",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "413",
+    "mahadevan_numbers": [
+     177
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "415",
+    "mahadevan_numbers": [
+     171
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "416",
+    "mahadevan_numbers": [
+     173
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "417",
+    "mahadevan_numbers": [
+     172
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "420",
+    "mahadevan_numbers": [
+     189
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "421",
+    "mahadevan_numbers": [
+     190
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "422",
+    "mahadevan_numbers": [
+     190
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "423",
+    "mahadevan_numbers": [
+     190
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "424",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "426",
+    "mahadevan_numbers": [
+     190
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "427",
+    "mahadevan_numbers": [
+     190
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "428",
+    "mahadevan_numbers": [
+     190
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "429",
+    "mahadevan_numbers": [
+     190
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "430",
+    "mahadevan_numbers": [
+     190
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "435",
+    "mahadevan_numbers": [
+     130
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "436",
+    "mahadevan_numbers": [
+     130
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "440",
+    "mahadevan_numbers": [
+     127
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "441",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "442",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "443",
+    "mahadevan_numbers": [
+     128
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "444",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "445",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "450",
+    "mahadevan_numbers": [
+     132
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "452",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "455",
+    "mahadevan_numbers": [
+     233
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "456",
+    "mahadevan_numbers": [
+     234
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "460",
+    "mahadevan_numbers": [
+     230
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "465",
+    "mahadevan_numbers": [
+     178
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "467",
+    "mahadevan_numbers": [
+     178
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "468",
+    "mahadevan_numbers": [
+     178
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "469",
+    "mahadevan_numbers": [
+     178
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "470",
+    "mahadevan_numbers": [
+     178
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "471",
+    "mahadevan_numbers": [
+     178
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "472",
+    "mahadevan_numbers": [
+     178
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "475",
+    "mahadevan_numbers": [
+     178
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "479",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "480",
+    "mahadevan_numbers": [
+     134
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "481",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "482",
+    "mahadevan_numbers": [
+     135
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "483",
+    "mahadevan_numbers": [
+     259
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "484",
+    "mahadevan_numbers": [
+     136
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "490",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "491",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "494",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "495",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "500",
+    "mahadevan_numbers": [
+     209
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "501",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "502",
+    "mahadevan_numbers": [
+     210
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "503",
+    "mahadevan_numbers": [
+     204
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "504",
+    "mahadevan_numbers": [
+     206
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "505",
+    "mahadevan_numbers": [
+     208
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "506",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "510",
+    "mahadevan_numbers": [
+     253
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "511",
+    "mahadevan_numbers": [
+     253
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "513",
+    "mahadevan_numbers": [
+     253
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "514",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "515",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "516",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "518",
+    "mahadevan_numbers": [
+     398
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "519",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "520",
+    "mahadevan_numbers": [
+     211
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "521",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "525",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "526",
+    "mahadevan_numbers": [
+     254
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "527",
+    "mahadevan_numbers": [
+     254
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "528",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "530",
+    "mahadevan_numbers": [
+     225
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "531",
+    "mahadevan_numbers": [
+     228,
+     309
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "533",
+    "mahadevan_numbers": [
+     228,
+     309
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "534",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "540",
+    "mahadevan_numbers": [
+     214
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "541",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "542",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "545",
+    "mahadevan_numbers": [
+     215
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "550",
+    "mahadevan_numbers": [
+     216
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "552",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "554",
+    "mahadevan_numbers": [
+     226
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "555",
+    "mahadevan_numbers": [
+     216
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "556",
+    "mahadevan_numbers": [
+     221
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "560",
+    "mahadevan_numbers": [
+     219
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "561",
+    "mahadevan_numbers": [
+     219
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "563",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "564",
+    "mahadevan_numbers": [
+     223
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "565",
+    "mahadevan_numbers": [
+     224
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "570",
+    "mahadevan_numbers": [
+     199,
+     200
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "571",
+    "mahadevan_numbers": [
+     199,
+     200
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "572",
+    "mahadevan_numbers": [
+     195
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "573",
+    "mahadevan_numbers": [
+     196
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "575",
+    "mahadevan_numbers": [
+     197
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "576",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "577",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "578",
+    "mahadevan_numbers": [
+     198
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "579",
+    "mahadevan_numbers": [
+     198
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "585",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "586",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "590",
+    "mahadevan_numbers": [
+     249
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "592",
+    "mahadevan_numbers": [
+     250
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "595",
+    "mahadevan_numbers": [
+     252
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "596",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "597",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "600",
+    "mahadevan_numbers": [
+     237
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "603",
+    "mahadevan_numbers": [
+     238
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "604",
+    "mahadevan_numbers": [
+     258
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "605",
+    "mahadevan_numbers": [
+     258
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "606",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "610",
+    "mahadevan_numbers": [
+     257
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "611",
+    "mahadevan_numbers": [
+     256
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "615",
+    "mahadevan_numbers": [
+     241,
+     245
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "617",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "620",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "621",
+    "mahadevan_numbers": [
+     242
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "625",
+    "mahadevan_numbers": [
+     237
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "626",
+    "mahadevan_numbers": [
+     247
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "629",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "630",
+    "mahadevan_numbers": [
+     244
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "632",
+    "mahadevan_numbers": [
+     244
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "634",
+    "mahadevan_numbers": [
+     244
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "635",
+    "mahadevan_numbers": [
+     244
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "636",
+    "mahadevan_numbers": [
+     244
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "637",
+    "mahadevan_numbers": [
+     244
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "640",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "645",
+    "mahadevan_numbers": [
+     137
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "647",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "678",
+    "mahadevan_numbers": [
+     138
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "679",
+    "mahadevan_numbers": [
+     139
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "680",
+    "mahadevan_numbers": [
+     140
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "681",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "683",
+    "mahadevan_numbers": [
+     146,
+     147
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "684",
+    "mahadevan_numbers": [
+     146,
+     147
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "686",
+    "mahadevan_numbers": [
+     145
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "689",
+    "mahadevan_numbers": [
+     143
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "690",
+    "mahadevan_numbers": [
+     149
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "692",
+    "mahadevan_numbers": [
+     150
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "693",
+    "mahadevan_numbers": [
+     152
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "694",
+    "mahadevan_numbers": [
+     151
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "697",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "698",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "700",
+    "mahadevan_numbers": [
+     328
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "702",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "703",
+    "mahadevan_numbers": [
+     330
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "704",
+    "mahadevan_numbers": [
+     336
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "705",
+    "mahadevan_numbers": [
+     336
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "706",
+    "mahadevan_numbers": [
+     336
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "707",
+    "mahadevan_numbers": [
+     336
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "710",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "711",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "712",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "716",
+    "mahadevan_numbers": [
+     341
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "717",
+    "mahadevan_numbers": [
+     341
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "720",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "721",
+    "mahadevan_numbers": [
+     338
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "723",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "727",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "728",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "729",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "731",
+    "mahadevan_numbers": [
+     334
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "732",
+    "mahadevan_numbers": [
+     332
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "734",
+    "mahadevan_numbers": [
+     332
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "736",
+    "mahadevan_numbers": [
+     335
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "740",
+    "mahadevan_numbers": [
+     342
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "741",
+    "mahadevan_numbers": [
+     343
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "742",
+    "mahadevan_numbers": [
+     344
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "744",
+    "mahadevan_numbers": [
+     344
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "745",
+    "mahadevan_numbers": [
+     345
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "746",
+    "mahadevan_numbers": [
+     345
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "747",
+    "mahadevan_numbers": [
+     345
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "748",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "749",
+    "mahadevan_numbers": [
+     346
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "751",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "752",
+    "mahadevan_numbers": [
+     347,
+     358
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "753",
+    "mahadevan_numbers": [
+     355
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "760",
+    "mahadevan_numbers": [
+     347,
+     358
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "761",
+    "mahadevan_numbers": [
+     357
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "764",
+    "mahadevan_numbers": [
+     350
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "765",
+    "mahadevan_numbers": [
+     349
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "767",
+    "mahadevan_numbers": [
+     351
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "768",
+    "mahadevan_numbers": [
+     372
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "770",
+    "mahadevan_numbers": [
+     348
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "772",
+    "mahadevan_numbers": [
+     348
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "773",
+    "mahadevan_numbers": [
+     348
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "775",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "776",
+    "mahadevan_numbers": [
+     367
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "777",
+    "mahadevan_numbers": [
+     362,
+     363,
+     364
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "778",
+    "mahadevan_numbers": [
+     362,
+     363,
+     364
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "781",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "783",
+    "mahadevan_numbers": [
+     367
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "785",
+    "mahadevan_numbers": [
+     367
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "786",
+    "mahadevan_numbers": [
+     367
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "790",
+    "mahadevan_numbers": [
+     261,
+     373,
+     374
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "791",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "792",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "793",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "794",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "795",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "796",
+    "mahadevan_numbers": [
+     306
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "797",
+    "mahadevan_numbers": [
+     53
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "798",
+    "mahadevan_numbers": [
+     53
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "799",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "803",
+    "mahadevan_numbers": [
+     387
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "804",
+    "mahadevan_numbers": [
+     388,
+     390
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "805",
+    "mahadevan_numbers": [
+     387
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "806",
+    "mahadevan_numbers": [
+     387
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "807",
+    "mahadevan_numbers": [
+     388,
+     390
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "808",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "810",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "811",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "812",
+    "mahadevan_numbers": [
+     381
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "813",
+    "mahadevan_numbers": [
+     381
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "814",
+    "mahadevan_numbers": [
+     381
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "817",
+    "mahadevan_numbers": [
+     267
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "818",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "820",
+    "mahadevan_numbers": [
+     391
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "821",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "822",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "824",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "825",
+    "mahadevan_numbers": [
+     380
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "826",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "828",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "829",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "830",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "831",
+    "mahadevan_numbers": [
+     379
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "832",
+    "mahadevan_numbers": [
+     375
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "833",
+    "mahadevan_numbers": [
+     379
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "836",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "838",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "840",
+    "mahadevan_numbers": [
+     403
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "842",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "843",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "844",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "845",
+    "mahadevan_numbers": [
+     407
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "849",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "850",
+    "mahadevan_numbers": [
+     261,
+     373,
+     374
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "852",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "853",
+    "mahadevan_numbers": [
+     264
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "855",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "859",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "861",
+    "mahadevan_numbers": [
+     267
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "862",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "863",
+    "mahadevan_numbers": [
+     270
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "864",
+    "mahadevan_numbers": [
+     271
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "866",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "868",
+    "mahadevan_numbers": [
+     275
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "869",
+    "mahadevan_numbers": [
+     277,
+     279,
+     280,
+     282,
+     283
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "870",
+    "mahadevan_numbers": [
+     278
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "871",
+    "mahadevan_numbers": [
+     277,
+     279,
+     280,
+     282,
+     283
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "872",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "876",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "877",
+    "mahadevan_numbers": [
+     284
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "878",
+    "mahadevan_numbers": [
+     285
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "879",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "880",
+    "mahadevan_numbers": [
+     286
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "890",
+    "mahadevan_numbers": [
+     304
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "891",
+    "mahadevan_numbers": [
+     305
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "892",
+    "mahadevan_numbers": [
+     307
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "893",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "894",
+    "mahadevan_numbers": [
+     310
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "896",
+    "mahadevan_numbers": [
+     311
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "897",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "898",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "900",
+    "mahadevan_numbers": [
+     287
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "901",
+    "mahadevan_numbers": [
+     288
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "902",
+    "mahadevan_numbers": [
+     300
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "903",
+    "mahadevan_numbers": [
+     290
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "904",
+    "mahadevan_numbers": [
+     294
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "905",
+    "mahadevan_numbers": [
+     295
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "906",
+    "mahadevan_numbers": [
+     303
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "908",
+    "mahadevan_numbers": [
+     298
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "909",
+    "mahadevan_numbers": [
+     299
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "910",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "912",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "914",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "918",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "919",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "920",
+    "mahadevan_numbers": [
+     293
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "921",
+    "mahadevan_numbers": [
+     301
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "922",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "923",
+    "mahadevan_numbers": [
+     296
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "924",
+    "mahadevan_numbers": [
+     297
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "927",
+    "mahadevan_numbers": [
+     294
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": true,
+    "witnessed": true
+   },
+   {
+    "sign": "930",
+    "mahadevan_numbers": [
+     393
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "931",
+    "mahadevan_numbers": [
+     317
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "932",
+    "mahadevan_numbers": [
+     318
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "933",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "940",
+    "mahadevan_numbers": [
+     64
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "942",
+    "mahadevan_numbers": [
+     64
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "944",
+    "mahadevan_numbers": [
+     61
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "950",
+    "mahadevan_numbers": [
+     170
+    ],
+    "witnessed_m77": true,
+    "witnessed_wells1998": false,
+    "witnessed": true
+   },
+   {
+    "sign": "956",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "958",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   },
+   {
+    "sign": "999",
+    "mahadevan_numbers": [],
+    "witnessed_m77": false,
+    "witnessed_wells1998": false,
+    "witnessed": false
+   }
+  ]
+ },
+ "verdicts": {
+  "F077-C01": "NOT SUPPORTED",
+  "closure_word": "SIGNARY NOT WITNESSED AT THE STATED LEVEL",
+  "F077-C02": {
+   "identity": [
+    {
+     "list": "mahadevan_1977",
+     "sign": 11
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 21
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 27
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 31
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 34
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 36
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 43
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 44
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 49
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 64
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 74
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 77
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 90
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 105
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 116
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 120
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 143
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 159
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 199
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 203
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 213
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 257
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 309
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 313
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 324
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 335
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 346
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 355
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 359
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 362
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 368
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 369
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 376
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 378
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 394
+    },
+    {
+     "list": "mahadevan_1977",
+     "sign": 416
+    },
+    {
+     "list": "wells_1998",
+     "sign": 438
+    },
+    {
+     "list": "wells_1998",
+     "sign": 439
+    },
+    {
+     "list": "wells_1998",
+     "sign": 533
+    }
+   ]
+  }
+ },
+ "token_999_attack": {
+  "reference": {
+   "occurrences": 2,
+   "finals": 0,
+   "final_rate": 0.0
+  },
+  "candidates_m77_tot2": [
+   {
+    "m77_sign": 4,
+    "tot": 2,
+    "fin": 1,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false
+   },
+   {
+    "m77_sign": 5,
+    "tot": 2,
+    "fin": 2,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false
+   },
+   {
+    "m77_sign": 11,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 21,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 24,
+    "tot": 2,
+    "fin": 1,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false
+   },
+   {
+    "m77_sign": 27,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 30,
+    "tot": 2,
+    "fin": 1,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false
+   },
+   {
+    "m77_sign": 31,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 34,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 36,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 43,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 44,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 49,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 64,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 74,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 77,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 90,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 91,
+    "tot": 2,
+    "fin": 2,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false
+   },
+   {
+    "m77_sign": 97,
+    "tot": null,
+    "fin": null,
+    "condition_1": null,
+    "condition_2": null,
+    "meets_both": false,
+    "note": "TOT/FIN unsettled in the landed Table I - cannot be shown to meet the conditions (FF-7)"
+   },
+   {
+    "m77_sign": 102,
+    "tot": null,
+    "fin": null,
+    "condition_1": null,
+    "condition_2": null,
+    "meets_both": false,
+    "note": "TOT/FIN unsettled in the landed Table I - cannot be shown to meet the conditions (FF-7)"
+   },
+   {
+    "m77_sign": 105,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 116,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 120,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 140,
+    "tot": 2,
+    "fin": 1,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false
+   },
+   {
+    "m77_sign": 143,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 159,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 162,
+    "tot": null,
+    "fin": null,
+    "condition_1": null,
+    "condition_2": null,
+    "meets_both": false,
+    "note": "TOT/FIN unsettled in the landed Table I - cannot be shown to meet the conditions (FF-7)"
+   },
+   {
+    "m77_sign": 167,
+    "tot": null,
+    "fin": null,
+    "condition_1": null,
+    "condition_2": null,
+    "meets_both": false,
+    "note": "TOT/FIN unsettled in the landed Table I - cannot be shown to meet the conditions (FF-7)"
+   },
+   {
+    "m77_sign": 172,
+    "tot": 2,
+    "fin": 1,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false
+   },
+   {
+    "m77_sign": 173,
+    "tot": null,
+    "fin": null,
+    "condition_1": null,
+    "condition_2": null,
+    "meets_both": false,
+    "note": "TOT/FIN unsettled in the landed Table I - cannot be shown to meet the conditions (FF-7)"
+   },
+   {
+    "m77_sign": 179,
+    "tot": null,
+    "fin": null,
+    "condition_1": null,
+    "condition_2": null,
+    "meets_both": false,
+    "note": "TOT/FIN unsettled in the landed Table I - cannot be shown to meet the conditions (FF-7)"
+   },
+   {
+    "m77_sign": 180,
+    "tot": null,
+    "fin": null,
+    "condition_1": null,
+    "condition_2": null,
+    "meets_both": false,
+    "note": "TOT/FIN unsettled in the landed Table I - cannot be shown to meet the conditions (FF-7)"
+   },
+   {
+    "m77_sign": 181,
+    "tot": null,
+    "fin": null,
+    "condition_1": null,
+    "condition_2": null,
+    "meets_both": false,
+    "note": "TOT/FIN unsettled in the landed Table I - cannot be shown to meet the conditions (FF-7)"
+   },
+   {
+    "m77_sign": 182,
+    "tot": null,
+    "fin": null,
+    "condition_1": null,
+    "condition_2": null,
+    "meets_both": false,
+    "note": "TOT/FIN unsettled in the landed Table I - cannot be shown to meet the conditions (FF-7)"
+   },
+   {
+    "m77_sign": 183,
+    "tot": null,
+    "fin": null,
+    "condition_1": null,
+    "condition_2": null,
+    "meets_both": false,
+    "note": "TOT/FIN unsettled in the landed Table I - cannot be shown to meet the conditions (FF-7)"
+   },
+   {
+    "m77_sign": 184,
+    "tot": null,
+    "fin": null,
+    "condition_1": null,
+    "condition_2": null,
+    "meets_both": false,
+    "note": "TOT/FIN unsettled in the landed Table I - cannot be shown to meet the conditions (FF-7)"
+   },
+   {
+    "m77_sign": 185,
+    "tot": null,
+    "fin": null,
+    "condition_1": null,
+    "condition_2": null,
+    "meets_both": false,
+    "note": "TOT/FIN unsettled in the landed Table I - cannot be shown to meet the conditions (FF-7)"
+   },
+   {
+    "m77_sign": 199,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 203,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 213,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 257,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 276,
+    "tot": 2,
+    "fin": 1,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false
+   },
+   {
+    "m77_sign": 278,
+    "tot": 2,
+    "fin": 1,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false
+   },
+   {
+    "m77_sign": 280,
+    "tot": 2,
+    "fin": 1,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false
+   },
+   {
+    "m77_sign": 309,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 312,
+    "tot": 2,
+    "fin": 1,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false
+   },
+   {
+    "m77_sign": 313,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 324,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 335,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 346,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 355,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 359,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 362,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 368,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 369,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 376,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 378,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 394,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "m77_sign": 416,
+    "tot": 2,
+    "fin": 0,
+    "condition_1": true,
+    "condition_2": true,
+    "meets_both": true
+   }
+  ],
+  "candidates_wells1998_total2": [
+   {
+    "wells1998_sign": 30,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 31,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 32,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 33,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 34,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 35,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 36,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 37,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 89,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 99,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 100,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 126,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 127,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 128,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 129,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 130,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 131,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 151,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 155,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 178,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 180,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 212,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 249,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 284,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 297,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 298,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 314,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 315,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 316,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 317,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 338,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 365,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 366,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 367,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 368,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 389,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 396,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 397,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 398,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 438,
+    "total": 2,
+    "fig36_mahadevan_pairing": 178,
+    "condition_1": true,
+    "paired_final_rate": 0.0,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "wells1998_sign": 439,
+    "total": 2,
+    "fig36_mahadevan_pairing": 178,
+    "condition_1": true,
+    "paired_final_rate": 0.0,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "wells1998_sign": 454,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 455,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 456,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 457,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 492,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 499,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 502,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 518,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 519,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 521,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 533,
+    "total": 2,
+    "fig36_mahadevan_pairing": 244,
+    "condition_1": true,
+    "paired_final_rate": 0.0,
+    "condition_2": true,
+    "meets_both": true
+   },
+   {
+    "wells1998_sign": 547,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 548,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 564,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 565,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 578,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 579,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   },
+   {
+    "wells1998_sign": 580,
+    "total": 2,
+    "fig36_mahadevan_pairing": null,
+    "condition_1": true,
+    "condition_2": false,
+    "meets_both": false,
+    "note": "no Figure 3.6 pairing - no final-position rate in its own list (FF-6)"
+   }
+  ],
+  "identities_meeting_both": [
+   {
+    "list": "mahadevan_1977",
+    "sign": 11
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 21
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 27
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 31
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 34
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 36
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 43
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 44
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 49
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 64
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 74
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 77
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 90
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 105
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 116
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 120
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 143
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 159
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 199
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 203
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 213
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 257
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 309
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 313
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 324
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 335
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 346
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 355
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 359
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 362
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 368
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 369
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 376
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 378
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 394
+   },
+   {
+    "list": "mahadevan_1977",
+    "sign": 416
+   },
+   {
+    "list": "wells_1998",
+    "sign": 438
+   },
+   {
+    "list": "wells_1998",
+    "sign": 439
+   },
+   {
+    "list": "wells_1998",
+    "sign": 533
+   }
+  ]
+ },
+ "anchors_after": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+ "anchors_byte_identical": true
+}

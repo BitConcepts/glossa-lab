@@ -1,0 +1,2157 @@
+{
+ "spec": "078",
+ "parent_step2": {
+  "source": "Spec 076 pilot record (step 2, seed 20261026, B=999)",
+  "standing": "INHERITED \u2014 not re-run (spec \u00a77.2)",
+  "bars": "both passed wide (residual 178 vs null 5th pct 395.0; solo-only 13 vs null 95th pct 5.0; empirical 0.000 both)"
+ },
+ "step0": {
+  "records": 2906,
+  "dropped_000": 680,
+  "dropped_star": 452,
+  "tokens": 11507,
+  "strict_tokens": 5883,
+  "nonempty_sequences": 2880,
+  "slot_totals": {
+   "init": 2655,
+   "med": 5972,
+   "fin": 2655,
+   "solo": 225
+  },
+  "finals_partition": {
+   "strict": 1707,
+   "pending": 250,
+   "anchored_other": 520,
+   "no_anchor": 178
+  },
+  "expected": {
+   "records": 2906,
+   "dropped_000": 680,
+   "dropped_star": 452,
+   "tokens": 11507,
+   "strict_tokens": 5883,
+   "nonempty_sequences": 2880,
+   "slot_totals": {
+    "init": 2655,
+    "med": 5972,
+    "fin": 2655,
+    "solo": 225
+   },
+   "finals_partition": {
+    "strict": 1707,
+    "pending": 250,
+    "anchored_other": 520,
+    "no_anchor": 178
+   }
+  },
+  "pass": true
+ },
+ "step2_standing": "STANDS (inherited, \u00a77.2)",
+ "base_rates": {
+  "init": 0.2307,
+  "med": 0.519,
+  "fin": 0.2307,
+  "solo": 0.0196
+ },
+ "step3prime": {
+  "counted_population": 86,
+  "worked_example_line": [
+   "M002",
+   "M342",
+   "M347"
+  ],
+  "frame_absent_line": [
+   "M039",
+   "M044",
+   "M046",
+   "M362",
+   "M374"
+  ],
+  "signs_with_checkable_claims": 7,
+  "checkable_signs": [
+   "M176",
+   "M267",
+   "M305",
+   "M336",
+   "M351",
+   "M367",
+   "M375"
+  ],
+  "distributional_failures": 0,
+  "functional_failures": 5,
+  "total_failures": 5,
+  "failure_detail": [
+   {
+    "sign": "M267",
+    "line": "functional",
+    "type": "TERM-FUNC",
+    "rule": "NC-2",
+    "anchor_share": 0.0266,
+    "base_rate": 0.2307
+   },
+   {
+    "sign": "M305",
+    "line": "functional",
+    "type": "TERM-FUNC",
+    "rule": "NC-2",
+    "anchor_share": 0.0,
+    "base_rate": 0.2307
+   },
+   {
+    "sign": "M336",
+    "line": "functional",
+    "type": "TERM-FUNC",
+    "rule": "NC-2",
+    "anchor_share": 0.0388,
+    "base_rate": 0.2307
+   },
+   {
+    "sign": "M351",
+    "line": "functional",
+    "type": "MED-FUNC",
+    "rule": "NC-2",
+    "anchor_share": 0.0,
+    "base_rate": 0.519
+   },
+   {
+    "sign": "M367",
+    "line": "functional",
+    "type": "TERM-FUNC",
+    "rule": "NC-2",
+    "anchor_share": 0.1667,
+    "base_rate": 0.2307
+   }
+  ],
+  "worked_example_detail": [
+   {
+    "sign": "M002",
+    "row": {
+     "init": 7,
+     "med": 10,
+     "fin": 0,
+     "solo": 1,
+     "t": 18
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 16,
+      "plurality_here": "med",
+      "transfers": false
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 16,
+      "rule": "NC-3",
+      "basis_quote": "Round 2: INITIAL position (freq=16), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M342",
+    "row": {
+     "init": 26,
+     "med": 349,
+     "fin": 876,
+     "solo": 23,
+     "t": 1274
+    },
+    "failures": [],
+    "checkable_claims": 1,
+    "summaries": [],
+    "codings": [
+     {
+      "kind": "functional",
+      "type": "TERM-FUNC",
+      "anchor": "final",
+      "sample_size": null,
+      "rule": "NC-2",
+      "basis_quote": "Terminal marker, Dravidian case suffix"
+     }
+    ]
+   },
+   {
+    "sign": "M347",
+    "row": {
+     "init": 9,
+     "med": 83,
+     "fin": 9,
+     "solo": 0,
+     "t": 101
+    },
+    "failures": [],
+    "checkable_claims": 1,
+    "summaries": [],
+    "codings": [
+     {
+      "kind": "functional",
+      "type": "MED-FUNC",
+      "anchor": "medial",
+      "sample_size": null,
+      "rule": "NC-2",
+      "basis_quote": "slot=MEDIAL_BETWEEN_CONF"
+     }
+    ]
+   }
+  ],
+  "frame_absent_detail": [
+   {
+    "sign": "M039",
+    "checkable_claims_coded": 0,
+    "codings": []
+   },
+   {
+    "sign": "M044",
+    "checkable_claims_coded": 0,
+    "codings": []
+   },
+   {
+    "sign": "M046",
+    "checkable_claims_coded": 0,
+    "codings": []
+   },
+   {
+    "sign": "M362",
+    "checkable_claims_coded": 2,
+    "codings": [
+     {
+      "kind": "functional",
+      "type": "MED-FUNC",
+      "anchor": "medial",
+      "sample_size": null,
+      "rule": "NC-2",
+      "basis_quote": "appears in name-slot patterns between animal classifiers and titles"
+     },
+     {
+      "kind": "functional",
+      "type": "INIT-FUNC",
+      "anchor": "initial",
+      "sample_size": null,
+      "rule": "NC-2",
+      "basis_quote": "a\u1e47i- prefix in personal names"
+     },
+     {
+      "kind": "summary",
+      "type": "MEDIAL",
+      "anchor": null,
+      "sample_size": 3,
+      "rule": "NC-3",
+      "basis_quote": "predominantly MEDIAL in personal name sequences. Freq=3; Pos=MEDIAL"
+     }
+    ]
+   },
+   {
+    "sign": "M374",
+    "checkable_claims_coded": 1,
+    "codings": [
+     {
+      "kind": "functional",
+      "type": "MED-FUNC",
+      "anchor": "medial",
+      "sample_size": null,
+      "rule": "NC-2",
+      "basis_quote": "Positional: MEDIAL between authority signs (M328=\u0101l/man, M073=k\u014d\u1e49/king) and vessel/cargo signs (M065=kuTam, M099=kol)"
+     }
+    ]
+   }
+  ],
+  "summary_census": {
+   "counted_summaries": 36,
+   "transfers": 15,
+   "non_transfers": 21
+  },
+  "counted_detail": [
+   {
+    "sign": "M004",
+    "row": {
+     "init": 1,
+     "med": 0,
+     "fin": 1,
+     "solo": 0,
+     "t": 2
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 17,
+      "plurality_here": "init",
+      "transfers": true
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 17,
+      "rule": "NC-3",
+      "basis_quote": "Round 1: INITIAL position (freq=17), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M005",
+    "row": {
+     "init": 0,
+     "med": 0,
+     "fin": 2,
+     "solo": 0,
+     "t": 2
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 15,
+      "plurality_here": "fin",
+      "transfers": false
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 15,
+      "rule": "NC-3",
+      "basis_quote": "Round 2: INITIAL position (freq=15), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M006",
+    "row": {
+     "init": 5,
+     "med": 0,
+     "fin": 0,
+     "solo": 0,
+     "t": 5
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M007",
+    "row": {
+     "init": 3,
+     "med": 1,
+     "fin": 1,
+     "solo": 2,
+     "t": 7
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M009",
+    "row": {
+     "init": 2,
+     "med": 8,
+     "fin": 0,
+     "solo": 0,
+     "t": 10
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 16,
+      "plurality_here": "med",
+      "transfers": false
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 16,
+      "rule": "NC-3",
+      "basis_quote": "Round 2: INITIAL position (freq=16), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M010",
+    "row": {
+     "init": 0,
+     "med": 3,
+     "fin": 0,
+     "solo": 1,
+     "t": 4
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 17,
+      "plurality_here": "med",
+      "transfers": false
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 17,
+      "rule": "NC-3",
+      "basis_quote": "Round 1: INITIAL position (freq=17), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M012",
+    "row": {
+     "init": 2,
+     "med": 4,
+     "fin": 55,
+     "solo": 4,
+     "t": 65
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M013",
+    "row": {
+     "init": 0,
+     "med": 0,
+     "fin": 1,
+     "solo": 0,
+     "t": 1
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M014",
+    "row": {
+     "init": 0,
+     "med": 2,
+     "fin": 11,
+     "solo": 0,
+     "t": 13
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 17,
+      "plurality_here": "fin",
+      "transfers": false
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 17,
+      "rule": "NC-3",
+      "basis_quote": "Round 1: INITIAL position (freq=17), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M015",
+    "row": {
+     "init": 2,
+     "med": 28,
+     "fin": 81,
+     "solo": 2,
+     "t": 113
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 15,
+      "plurality_here": "fin",
+      "transfers": false
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 15,
+      "rule": "NC-3",
+      "basis_quote": "Round 2: INITIAL position (freq=15), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M016",
+    "row": {
+     "init": 1,
+     "med": 0,
+     "fin": 0,
+     "solo": 0,
+     "t": 1
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M017",
+    "row": {
+     "init": 34,
+     "med": 43,
+     "fin": 4,
+     "solo": 1,
+     "t": 82
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 18,
+      "plurality_here": "med",
+      "transfers": false
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 18,
+      "rule": "NC-3",
+      "basis_quote": "Round 1: INITIAL position (freq=18), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M018",
+    "row": {
+     "init": 6,
+     "med": 15,
+     "fin": 1,
+     "solo": 0,
+     "t": 22
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 18,
+      "plurality_here": "med",
+      "transfers": false
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 18,
+      "rule": "NC-3",
+      "basis_quote": "Round 1: INITIAL position (freq=18), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M020",
+    "row": {
+     "init": 1,
+     "med": 0,
+     "fin": 0,
+     "solo": 0,
+     "t": 1
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 18,
+      "plurality_here": "init",
+      "transfers": true
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 18,
+      "rule": "NC-3",
+      "basis_quote": "Round 1: INITIAL position (freq=18), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M023",
+    "row": {
+     "init": 1,
+     "med": 0,
+     "fin": 0,
+     "solo": 0,
+     "t": 1
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 16,
+      "plurality_here": "init",
+      "transfers": true
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 16,
+      "rule": "NC-3",
+      "basis_quote": "Round 1: INITIAL position (freq=16), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M025",
+    "row": {
+     "init": 10,
+     "med": 34,
+     "fin": 4,
+     "solo": 2,
+     "t": 50
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 17,
+      "plurality_here": "med",
+      "transfers": false
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 17,
+      "rule": "NC-3",
+      "basis_quote": "Round 1: INITIAL position (freq=17), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M026",
+    "row": {
+     "init": 1,
+     "med": 0,
+     "fin": 0,
+     "solo": 0,
+     "t": 1
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 17,
+      "plurality_here": "init",
+      "transfers": true
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 17,
+      "rule": "NC-3",
+      "basis_quote": "Round 1: INITIAL position (freq=17), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M027",
+    "row": {
+     "init": 2,
+     "med": 0,
+     "fin": 0,
+     "solo": 0,
+     "t": 2
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 17,
+      "plurality_here": "init",
+      "transfers": true
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 17,
+      "rule": "NC-3",
+      "basis_quote": "Round 1: INITIAL position (freq=17), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M029",
+    "row": {
+     "init": 1,
+     "med": 0,
+     "fin": 1,
+     "solo": 0,
+     "t": 2
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 11,
+      "plurality_here": "init",
+      "transfers": true
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 11,
+      "rule": "NC-3",
+      "basis_quote": "Round 3: INITIAL position (freq=11), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M030",
+    "row": {
+     "init": 1,
+     "med": 0,
+     "fin": 1,
+     "solo": 0,
+     "t": 2
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 18,
+      "plurality_here": "init",
+      "transfers": true
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 18,
+      "rule": "NC-3",
+      "basis_quote": "Round 1: INITIAL position (freq=18), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M032",
+    "row": {
+     "init": 2,
+     "med": 5,
+     "fin": 2,
+     "solo": 0,
+     "t": 9
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M034",
+    "row": {
+     "init": 2,
+     "med": 0,
+     "fin": 0,
+     "solo": 0,
+     "t": 2
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 17,
+      "plurality_here": "init",
+      "transfers": true
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 17,
+      "rule": "NC-3",
+      "basis_quote": "Round 1: INITIAL position (freq=17), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M037",
+    "row": {
+     "init": 1,
+     "med": 0,
+     "fin": 0,
+     "solo": 0,
+     "t": 1
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 16,
+      "plurality_here": "init",
+      "transfers": true
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 16,
+      "rule": "NC-3",
+      "basis_quote": "Round 2: INITIAL position (freq=16), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M038",
+    "row": {
+     "init": 1,
+     "med": 2,
+     "fin": 2,
+     "solo": 1,
+     "t": 6
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 17,
+      "plurality_here": "med",
+      "transfers": false
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 17,
+      "rule": "NC-3",
+      "basis_quote": "Round 1: INITIAL position (freq=17), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M041",
+    "row": {
+     "init": 13,
+     "med": 4,
+     "fin": 0,
+     "solo": 0,
+     "t": 17
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 17,
+      "plurality_here": "init",
+      "transfers": true
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 17,
+      "rule": "NC-3",
+      "basis_quote": "Round 1: INITIAL position (freq=17), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M042",
+    "row": {
+     "init": 1,
+     "med": 0,
+     "fin": 0,
+     "solo": 0,
+     "t": 1
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M045",
+    "row": {
+     "init": 3,
+     "med": 0,
+     "fin": 1,
+     "solo": 0,
+     "t": 4
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M047",
+    "row": {
+     "init": 5,
+     "med": 8,
+     "fin": 0,
+     "solo": 2,
+     "t": 15
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M048",
+    "row": {
+     "init": 69,
+     "med": 73,
+     "fin": 5,
+     "solo": 3,
+     "t": 150
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "TERMINAL",
+      "sample_size": 157,
+      "plurality_here": "med",
+      "transfers": false
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "TERMINAL",
+      "anchor": null,
+      "sample_size": 157,
+      "rule": "NC-3",
+      "basis_quote": "consistent TERMINAL position (n=157)"
+     }
+    ]
+   },
+   {
+    "sign": "M049",
+    "row": {
+     "init": 0,
+     "med": 2,
+     "fin": 0,
+     "solo": 0,
+     "t": 2
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M050",
+    "row": {
+     "init": 4,
+     "med": 3,
+     "fin": 0,
+     "solo": 0,
+     "t": 7
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 17,
+      "plurality_here": "init",
+      "transfers": true
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 17,
+      "rule": "NC-3",
+      "basis_quote": "Round 1: INITIAL position (freq=17), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M051",
+    "row": {
+     "init": 25,
+     "med": 59,
+     "fin": 5,
+     "solo": 1,
+     "t": 90
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M052",
+    "row": {
+     "init": 0,
+     "med": 0,
+     "fin": 1,
+     "solo": 0,
+     "t": 1
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M053",
+    "row": {
+     "init": 38,
+     "med": 73,
+     "fin": 6,
+     "solo": 1,
+     "t": 118
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M054",
+    "row": {
+     "init": 9,
+     "med": 8,
+     "fin": 1,
+     "solo": 0,
+     "t": 18
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M055",
+    "row": {
+     "init": 1,
+     "med": 1,
+     "fin": 0,
+     "solo": 0,
+     "t": 2
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M057",
+    "row": {
+     "init": 3,
+     "med": 2,
+     "fin": 1,
+     "solo": 1,
+     "t": 7
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M059",
+    "row": {
+     "init": 29,
+     "med": 250,
+     "fin": 29,
+     "solo": 9,
+     "t": 317
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M060",
+    "row": {
+     "init": 2,
+     "med": 5,
+     "fin": 18,
+     "solo": 2,
+     "t": 27
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M061",
+    "row": {
+     "init": 0,
+     "med": 1,
+     "fin": 0,
+     "solo": 0,
+     "t": 1
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M062",
+    "row": {
+     "init": 2,
+     "med": 8,
+     "fin": 0,
+     "solo": 0,
+     "t": 10
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M063",
+    "row": {
+     "init": 0,
+     "med": 2,
+     "fin": 0,
+     "solo": 5,
+     "t": 7
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M065",
+    "row": {
+     "init": 70,
+     "med": 111,
+     "fin": 10,
+     "solo": 1,
+     "t": 192
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M066",
+    "row": {
+     "init": 3,
+     "med": 5,
+     "fin": 5,
+     "solo": 2,
+     "t": 15
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 16,
+      "plurality_here": "med",
+      "transfers": false
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 16,
+      "rule": "NC-3",
+      "basis_quote": "Round 1: INITIAL position (freq=16), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M067",
+    "row": {
+     "init": 67,
+     "med": 179,
+     "fin": 12,
+     "solo": 3,
+     "t": 261
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M068",
+    "row": {
+     "init": 0,
+     "med": 2,
+     "fin": 6,
+     "solo": 0,
+     "t": 8
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M069",
+    "row": {
+     "init": 1,
+     "med": 1,
+     "fin": 0,
+     "solo": 1,
+     "t": 3
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 16,
+      "plurality_here": "init",
+      "transfers": true
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 16,
+      "rule": "NC-3",
+      "basis_quote": "Round 2: INITIAL position (freq=16), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M070",
+    "row": {
+     "init": 16,
+     "med": 46,
+     "fin": 6,
+     "solo": 0,
+     "t": 68
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 17,
+      "plurality_here": "med",
+      "transfers": false
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 17,
+      "rule": "NC-3",
+      "basis_quote": "Round 1: INITIAL position (freq=17), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M073",
+    "row": {
+     "init": 4,
+     "med": 0,
+     "fin": 2,
+     "solo": 1,
+     "t": 7
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M074",
+    "row": {
+     "init": 0,
+     "med": 2,
+     "fin": 0,
+     "solo": 0,
+     "t": 2
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M075",
+    "row": {
+     "init": 5,
+     "med": 6,
+     "fin": 1,
+     "solo": 1,
+     "t": 13
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 14,
+      "plurality_here": "med",
+      "transfers": false
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 14,
+      "rule": "NC-3",
+      "basis_quote": "Round 2: INITIAL position (freq=14), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M076",
+    "row": {
+     "init": 7,
+     "med": 5,
+     "fin": 0,
+     "solo": 0,
+     "t": 12
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M077",
+    "row": {
+     "init": 1,
+     "med": 1,
+     "fin": 0,
+     "solo": 0,
+     "t": 2
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 18,
+      "plurality_here": "init",
+      "transfers": true
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 18,
+      "rule": "NC-3",
+      "basis_quote": "Round 1: INITIAL position (freq=18), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M078",
+    "row": {
+     "init": 0,
+     "med": 7,
+     "fin": 0,
+     "solo": 0,
+     "t": 7
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "INITIAL",
+      "sample_size": 17,
+      "plurality_here": "med",
+      "transfers": false
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "INITIAL",
+      "anchor": null,
+      "sample_size": 17,
+      "rule": "NC-3",
+      "basis_quote": "Round 1: INITIAL position (freq=17), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M080",
+    "row": {
+     "init": 2,
+     "med": 0,
+     "fin": 0,
+     "solo": 0,
+     "t": 2
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M082",
+    "row": {
+     "init": 0,
+     "med": 1,
+     "fin": 0,
+     "solo": 0,
+     "t": 1
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M087",
+    "row": {
+     "init": 65,
+     "med": 171,
+     "fin": 17,
+     "solo": 2,
+     "t": 255
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M089",
+    "row": {
+     "init": 23,
+     "med": 141,
+     "fin": 17,
+     "solo": 2,
+     "t": 183
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "TERMINAL",
+      "sample_size": 171,
+      "plurality_here": "med",
+      "transfers": false
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "TERMINAL",
+      "anchor": null,
+      "sample_size": 171,
+      "rule": "NC-3",
+      "basis_quote": "consistent TERMINAL position (n=171)"
+     }
+    ]
+   },
+   {
+    "sign": "M099",
+    "row": {
+     "init": 32,
+     "med": 540,
+     "fin": 43,
+     "solo": 0,
+     "t": 615
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M108",
+    "row": {
+     "init": 1,
+     "med": 1,
+     "fin": 0,
+     "solo": 0,
+     "t": 2
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M124",
+    "row": {
+     "init": 18,
+     "med": 51,
+     "fin": 5,
+     "solo": 0,
+     "t": 74
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M128",
+    "row": {
+     "init": 0,
+     "med": 7,
+     "fin": 0,
+     "solo": 0,
+     "t": 7
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "MEDIAL",
+      "sample_size": 7,
+      "plurality_here": "med",
+      "transfers": true
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "MEDIAL",
+      "anchor": null,
+      "sample_size": 7,
+      "rule": "NC-3",
+      "basis_quote": "Round 3: MEDIAL position (freq=7), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M130",
+    "row": {
+     "init": 2,
+     "med": 48,
+     "fin": 8,
+     "solo": 0,
+     "t": 58
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M145",
+    "row": {
+     "init": 0,
+     "med": 1,
+     "fin": 0,
+     "solo": 0,
+     "t": 1
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M151",
+    "row": {
+     "init": 1,
+     "med": 0,
+     "fin": 0,
+     "solo": 0,
+     "t": 1
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "MEDIAL",
+      "sample_size": 5,
+      "plurality_here": "init",
+      "transfers": false
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "MEDIAL",
+      "anchor": null,
+      "sample_size": 5,
+      "rule": "NC-3",
+      "basis_quote": "Round 4: MEDIAL position (freq=5), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M162",
+    "row": {
+     "init": 12,
+     "med": 96,
+     "fin": 80,
+     "solo": 2,
+     "t": 190
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M165",
+    "row": {
+     "init": 0,
+     "med": 0,
+     "fin": 0,
+     "solo": 1,
+     "t": 1
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M176",
+    "row": {
+     "init": 0,
+     "med": 37,
+     "fin": 301,
+     "solo": 4,
+     "t": 342
+    },
+    "failures": [],
+    "checkable_claims": 1,
+    "summaries": [],
+    "codings": [
+     {
+      "kind": "functional",
+      "type": "TERM-FUNC",
+      "anchor": "final",
+      "sample_size": null,
+      "rule": "NC-2",
+      "basis_quote": "Masculine suffix"
+     }
+    ]
+   },
+   {
+    "sign": "M194",
+    "row": {
+     "init": 5,
+     "med": 40,
+     "fin": 6,
+     "solo": 0,
+     "t": 51
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M202",
+    "row": {
+     "init": 4,
+     "med": 2,
+     "fin": 1,
+     "solo": 0,
+     "t": 7
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M220",
+    "row": {
+     "init": 0,
+     "med": 0,
+     "fin": 0,
+     "solo": 1,
+     "t": 1
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M222",
+    "row": {
+     "init": 3,
+     "med": 18,
+     "fin": 1,
+     "solo": 0,
+     "t": 22
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M233",
+    "row": {
+     "init": 4,
+     "med": 18,
+     "fin": 2,
+     "solo": 1,
+     "t": 25
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M264",
+    "row": {
+     "init": 10,
+     "med": 1,
+     "fin": 0,
+     "solo": 0,
+     "t": 11
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M267",
+    "row": {
+     "init": 270,
+     "med": 52,
+     "fin": 9,
+     "solo": 7,
+     "t": 338
+    },
+    "failures": [
+     {
+      "line": "functional",
+      "type": "TERM-FUNC",
+      "rule": "NC-2",
+      "anchor_share": 0.0266,
+      "base_rate": 0.2307
+     }
+    ],
+    "checkable_claims": 1,
+    "summaries": [],
+    "codings": [
+     {
+      "kind": "functional",
+      "type": "TERM-FUNC",
+      "anchor": "final",
+      "sample_size": null,
+      "rule": "NC-2",
+      "basis_quote": "functional/suffixal sign"
+     }
+    ]
+   },
+   {
+    "sign": "M305",
+    "row": {
+     "init": 3,
+     "med": 0,
+     "fin": 0,
+     "solo": 0,
+     "t": 3
+    },
+    "failures": [
+     {
+      "line": "functional",
+      "type": "TERM-FUNC",
+      "rule": "NC-2",
+      "anchor_share": 0.0,
+      "base_rate": 0.2307
+     }
+    ],
+    "checkable_claims": 1,
+    "summaries": [
+     {
+      "named_position": "TERMINAL",
+      "sample_size": 83,
+      "plurality_here": "init",
+      "transfers": false
+     }
+    ],
+    "codings": [
+     {
+      "kind": "functional",
+      "type": "TERM-FUNC",
+      "anchor": "final",
+      "sample_size": null,
+      "rule": "NC-2",
+      "basis_quote": "terminal pinch mark"
+     },
+     {
+      "kind": "summary",
+      "type": "TERMINAL",
+      "anchor": null,
+      "sample_size": 83,
+      "rule": "NC-3",
+      "basis_quote": "consistent TERMINAL position (n=83)"
+     }
+    ]
+   },
+   {
+    "sign": "M311",
+    "row": {
+     "init": 3,
+     "med": 0,
+     "fin": 0,
+     "solo": 0,
+     "t": 3
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M328",
+    "row": {
+     "init": 14,
+     "med": 13,
+     "fin": 19,
+     "solo": 1,
+     "t": 47
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M329",
+    "row": {
+     "init": 3,
+     "med": 3,
+     "fin": 0,
+     "solo": 0,
+     "t": 6
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "MEDIAL",
+      "sample_size": 5,
+      "plurality_here": "init",
+      "transfers": false
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "MEDIAL",
+      "anchor": null,
+      "sample_size": 5,
+      "rule": "NC-3",
+      "basis_quote": "Round 5: MEDIAL position (freq=5), distributional assignment"
+     }
+    ]
+   },
+   {
+    "sign": "M330",
+    "row": {
+     "init": 5,
+     "med": 2,
+     "fin": 0,
+     "solo": 0,
+     "t": 7
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M336",
+    "row": {
+     "init": 65,
+     "med": 132,
+     "fin": 8,
+     "solo": 1,
+     "t": 206
+    },
+    "failures": [
+     {
+      "line": "functional",
+      "type": "TERM-FUNC",
+      "rule": "NC-2",
+      "anchor_share": 0.0388,
+      "base_rate": 0.2307
+     }
+    ],
+    "checkable_claims": 1,
+    "summaries": [
+     {
+      "named_position": "TERMINAL",
+      "sample_size": 161,
+      "plurality_here": "med",
+      "transfers": false
+     }
+    ],
+    "codings": [
+     {
+      "kind": "functional",
+      "type": "TERM-FUNC",
+      "anchor": "final",
+      "sample_size": null,
+      "rule": "NC-2",
+      "basis_quote": "chevron terminal = locative case marker"
+     },
+     {
+      "kind": "summary",
+      "type": "TERMINAL",
+      "anchor": null,
+      "sample_size": 161,
+      "rule": "NC-3",
+      "basis_quote": "consistent TERMINAL position (n=161)"
+     }
+    ]
+   },
+   {
+    "sign": "M351",
+    "row": {
+     "init": 1,
+     "med": 0,
+     "fin": 0,
+     "solo": 0,
+     "t": 1
+    },
+    "failures": [
+     {
+      "line": "functional",
+      "type": "MED-FUNC",
+      "rule": "NC-2",
+      "anchor_share": 0.0,
+      "base_rate": 0.519
+     }
+    ],
+    "checkable_claims": 1,
+    "summaries": [],
+    "codings": [
+     {
+      "kind": "functional",
+      "type": "MED-FUNC",
+      "anchor": "medial",
+      "sample_size": null,
+      "rule": "NC-2",
+      "basis_quote": "Positional: MEDIAL after locative M336=i\u1e49 and before unicorn M211=kol and terminal M342=ay"
+     }
+    ]
+   },
+   {
+    "sign": "M367",
+    "row": {
+     "init": 0,
+     "med": 5,
+     "fin": 1,
+     "solo": 0,
+     "t": 6
+    },
+    "failures": [
+     {
+      "line": "functional",
+      "type": "TERM-FUNC",
+      "rule": "NC-2",
+      "anchor_share": 0.1667,
+      "base_rate": 0.2307
+     }
+    ],
+    "checkable_claims": 1,
+    "summaries": [
+     {
+      "named_position": "TERMINAL",
+      "sample_size": 190,
+      "plurality_here": "med",
+      "transfers": false
+     }
+    ],
+    "codings": [
+     {
+      "kind": "functional",
+      "type": "TERM-FUNC",
+      "anchor": "final",
+      "sample_size": null,
+      "rule": "NC-2",
+      "basis_quote": "terminal diamond = neuter suffix"
+     },
+     {
+      "kind": "summary",
+      "type": "TERMINAL",
+      "anchor": null,
+      "sample_size": 190,
+      "rule": "NC-3",
+      "basis_quote": "consistent TERMINAL position (n=190)"
+     }
+    ]
+   },
+   {
+    "sign": "M375",
+    "row": {
+     "init": 13,
+     "med": 24,
+     "fin": 11,
+     "solo": 1,
+     "t": 49
+    },
+    "failures": [],
+    "checkable_claims": 1,
+    "summaries": [
+     {
+      "named_position": "MEDIAL",
+      "sample_size": 7,
+      "plurality_here": "med",
+      "transfers": true
+     }
+    ],
+    "codings": [
+     {
+      "kind": "functional",
+      "type": "INIT-FUNC",
+      "anchor": "initial",
+      "sample_size": null,
+      "rule": "NC-2",
+      "basis_quote": "ta\u1e47- is a common personal name prefix"
+     },
+     {
+      "kind": "summary",
+      "type": "MEDIAL",
+      "anchor": null,
+      "sample_size": 7,
+      "rule": "NC-3",
+      "basis_quote": "Freq=7; Pos=MEDIAL"
+     }
+    ]
+   },
+   {
+    "sign": "M391",
+    "row": {
+     "init": 125,
+     "med": 35,
+     "fin": 17,
+     "solo": 4,
+     "t": 181
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [],
+    "codings": []
+   },
+   {
+    "sign": "M398",
+    "row": {
+     "init": 4,
+     "med": 2,
+     "fin": 0,
+     "solo": 0,
+     "t": 6
+    },
+    "failures": [],
+    "checkable_claims": 0,
+    "summaries": [
+     {
+      "named_position": "MEDIAL",
+      "sample_size": 3,
+      "plurality_here": "init",
+      "transfers": false
+     }
+    ],
+    "codings": [
+     {
+      "kind": "summary",
+      "type": "MEDIAL",
+      "anchor": null,
+      "sample_size": 3,
+      "rule": "NC-3",
+      "basis_quote": "Freq=3; Pos=MEDIAL"
+     }
+    ]
+   }
+  ]
+ },
+ "administrability": {
+  "floor": 25,
+  "observed": 7,
+  "pass": false
+ },
+ "verdict": "CANNOT BE ADMINISTERED \u2014 THE CORE MAKES TOO FEW CHECKABLE CLAIMS"
+}

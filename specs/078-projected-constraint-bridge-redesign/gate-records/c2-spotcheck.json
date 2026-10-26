@@ -1,0 +1,410 @@
+{
+ "record_type": "c2-spotcheck",
+ "schema_version": "1.0",
+ "spec": "specs/078-projected-constraint-bridge-redesign",
+ "drafter": "Cosmo (Muse subagent, freeze worker; Spec 078 freeze session)",
+ "recomputer": "independent recomputation for this freeze (support/recompute_c2.py, written fresh from the spec text and the pinned inputs only; it does not import or consult the spec's derivation code, Spec 076's derivation, or the drafter's workings)",
+ "method": "Recomputed from the spec text and the pinned inputs only; the drafter's workings were not consulted.",
+ "sample_rule": "every gate-turning quantity + random 25% (minimum 3) of the rest",
+ "sample_seed": 20261026,
+ "quantities": [
+  {
+   "name": "export_sha256",
+   "source_in_spec": "spec \u00a77.1 (corpus export pin)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": "08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e",
+   "recomputed_value": "08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e",
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "anchors_sha256",
+   "source_in_spec": "spec \u00a77.1 (anchors pin)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+   "recomputed_value": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "registry_v2",
+   "source_in_spec": "spec \u00a77.1 (Registry v2 pin)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": {
+    "sha256": "42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71",
+    "rows": 1013
+   },
+   "recomputed_value": {
+    "sha256": "42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71",
+    "rows": 1013
+   },
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "m77_records",
+   "source_in_spec": "spec \u00a77.1",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": 2906,
+   "recomputed_value": 2906,
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "tokens",
+   "source_in_spec": "spec \u00a77.1",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": 11507,
+   "recomputed_value": 11507,
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "strict_tokens",
+   "source_in_spec": "spec \u00a77.1",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": 5883,
+   "recomputed_value": 5883,
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "anchors_counts",
+   "source_in_spec": "spec \u00a77.1",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": {
+    "total": 287,
+    "strict_sa_independent": 94,
+    "pending_non_sa_validation": 44
+   },
+   "recomputed_value": {
+    "total": 287,
+    "strict_sa_independent": 94,
+    "pending_non_sa_validation": 44
+   },
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "slot_totals",
+   "source_in_spec": "spec \u00a77.1",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": {
+    "init": 2655,
+    "fin": 2655,
+    "solo": 225,
+    "med": 5972
+   },
+   "recomputed_value": {
+    "init": 2655,
+    "fin": 2655,
+    "solo": 225,
+    "med": 5972
+   },
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "finals_partition",
+   "source_in_spec": "spec \u00a77.1",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": {
+    "strict": 1707,
+    "pending": 250,
+    "anchored-other": 520,
+    "no-anchor": 178
+   },
+   "recomputed_value": {
+    "strict": 1707,
+    "pending": 250,
+    "anchored-other": 520,
+    "no-anchor": 178
+   },
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "base_rates",
+   "source_in_spec": "spec \u00a73.2 / \u00a77.1 / \u00a77.3 (slot base rates to 4dp)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": {
+    "init": 0.2307,
+    "fin": 0.2307,
+    "med": 0.519,
+    "solo": 0.0196
+   },
+   "recomputed_value": {
+    "init": 0.2307,
+    "fin": 0.2307,
+    "med": 0.519,
+    "solo": 0.0196
+   },
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "counted_population",
+   "source_in_spec": "spec \u00a70 FF-078-2 / \u00a77.3 (counted population)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": {
+    "strict": 94,
+    "frame_absent": 5,
+    "frame_absent_list": [
+     "039",
+     "044",
+     "046",
+     "362",
+     "374"
+    ],
+    "frame_attested": 89,
+    "worked_examples": 3,
+    "counted": 86
+   },
+   "recomputed_value": {
+    "strict": 94,
+    "frame_absent": 5,
+    "frame_absent_list": [
+     "039",
+     "044",
+     "046",
+     "362",
+     "374"
+    ],
+    "frame_attested": 89,
+    "worked_examples": 3,
+    "counted": 86
+   },
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "u2_exclusions",
+   "source_in_spec": "spec \u00a73.4 / \u00a77.1 (inherited headline derivation numbers)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": {
+    "exclusions": 677,
+    "possibility_size_distribution": {
+     "1": 14,
+     "2": 29,
+     "3": 23,
+     "5": 56
+    }
+   },
+   "recomputed_value": {
+    "exclusions": 677,
+    "possibility_size_distribution": {
+     "1": 14,
+     "2": 29,
+     "3": 23,
+     "5": 56
+    }
+   },
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "solo_only_set",
+   "source_in_spec": "spec \u00a77.1",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": {
+    "count": 13,
+    "members": {
+     "031": 2,
+     "378": 2,
+     "165": 1,
+     "220": 1,
+     "317": 1,
+     "377": 1,
+     "085": 1,
+     "118": 1,
+     "115": 1,
+     "411": 1,
+     "232": 1,
+     "269": 1,
+     "392": 1
+    }
+   },
+   "recomputed_value": {
+    "count": 13,
+    "members": {
+     "031": 2,
+     "085": 1,
+     "115": 1,
+     "118": 1,
+     "165": 1,
+     "220": 1,
+     "232": 1,
+     "269": 1,
+     "317": 1,
+     "377": 1,
+     "378": 2,
+     "392": 1,
+     "411": 1
+    }
+   },
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "dropped_tokens",
+   "source_in_spec": "spec \u00a77.1",
+   "gate_turning": false,
+   "sampled": true,
+   "pinned_value": {
+    "000": 680,
+    "star_prefixed": 452
+   },
+   "recomputed_value": {
+    "000": 680,
+    "star_prefixed": 452
+   },
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "absent_signs",
+   "source_in_spec": "spec \u00a710 F078-C10 boundary (24 frame-absent signs, inherited census)",
+   "gate_turning": false,
+   "sampled": true,
+   "pinned_value": {
+    "count": 24,
+    "list": [
+     "039",
+     "044",
+     "046",
+     "088",
+     "144",
+     "154",
+     "156",
+     "179",
+     "231",
+     "235",
+     "266",
+     "275",
+     "279",
+     "282",
+     "312",
+     "315",
+     "324",
+     "346",
+     "362",
+     "363",
+     "374",
+     "383",
+     "405",
+     "408"
+    ]
+   },
+   "recomputed_value": {
+    "count": 24,
+    "list": [
+     "039",
+     "044",
+     "046",
+     "088",
+     "144",
+     "154",
+     "156",
+     "179",
+     "231",
+     "235",
+     "266",
+     "275",
+     "279",
+     "282",
+     "312",
+     "315",
+     "324",
+     "346",
+     "362",
+     "363",
+     "374",
+     "383",
+     "405",
+     "408"
+    ]
+   },
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "worked_example_rows",
+   "source_in_spec": "spec \u00a76.1-6.3 (worked-example rows and anchor shares)",
+   "gate_turning": false,
+   "sampled": true,
+   "pinned_value": {
+    "002": {
+     "init": 7,
+     "med": 10,
+     "fin": 0,
+     "solo": 1,
+     "total": 18
+    },
+    "342": {
+     "init": 26,
+     "med": 349,
+     "fin": 876,
+     "solo": 23,
+     "total": 1274,
+     "anchor_share_fin": 0.6876
+    },
+    "347": {
+     "init": 9,
+     "med": 83,
+     "fin": 9,
+     "solo": 0,
+     "total": 101,
+     "anchor_share_med": 0.8218
+    }
+   },
+   "recomputed_value": {
+    "002": {
+     "init": 7,
+     "med": 10,
+     "fin": 0,
+     "solo": 1,
+     "total": 18
+    },
+    "342": {
+     "init": 26,
+     "med": 349,
+     "fin": 876,
+     "solo": 23,
+     "total": 1274,
+     "anchor_share_fin": 0.6876
+    },
+    "347": {
+     "init": 9,
+     "med": 83,
+     "fin": 9,
+     "solo": 0,
+     "total": 101,
+     "anchor_share_med": 0.8218
+    }
+   },
+   "status": "agree",
+   "note": ""
+  }
+ ],
+ "coverage": {
+  "gate_turning_total": 13,
+  "gate_turning_checked": 13,
+  "other_total": 3,
+  "other_sampled": 3,
+  "other_checked": 3
+ },
+ "outcome": "PASS"
+}

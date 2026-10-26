@@ -26,12 +26,12 @@ check.
       current evaluator), C2 independent spot-check,
       C3 evidence sample (verification on); run the
       C4 checker locally on the assembled directory.
-- [ ] T5 — Compute the freeze digest (build_freeze.py,
+- [x] T5 — Compute the freeze digest (build_freeze.py,
       framework026) over the final texts; write
       freeze.md; regenerate the gate statistics (C5);
       open the freeze PR; merge only on genuine CI
       green including the required C4 check.
-- [ ] T6 — Execution step 0: verify every §3 pin;
+- [x] T6 — Execution step 0: verify every §3 pin;
       verify witness tables' actual columns and
       content; reproduce the population census and
       999's reference behavior; file the 13-id
@@ -39,15 +39,15 @@ check.
       against FF-7 and record its SHA-256. Any
       failure closes the execution CANNOT BE RUN AS
       WRITTEN, naming the failed item.
-- [ ] T7 — Counting: per-sign witness table under
+- [x] T7 — Counting: per-sign witness table under
       FF-3/FF-4; raw share, ancestry-adjusted share,
       per-witness breakdown; sensitivities S1 and
       S2; the gap list.
-- [ ] T8 — Token 999 attack: the candidate table
+- [x] T8 — Token 999 attack: the candidate table
       (every witness sign meeting condition 1, with
       its condition-2 reading) under FF-6/FF-7; the
       identity named or NO PUBLISHED IDENTITY.
-- [ ] T9 — Verdict and filing: verdicts in the frozen
+- [x] T9 — Verdict and filing: verdicts in the frozen
       words (F077-C01, F077-C02); `step0-record.md`,
       `outcome.md` and `reports/phase443_results.json`
       filed; anchors byte-identical check; execution

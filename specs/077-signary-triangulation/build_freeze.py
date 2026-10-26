@@ -1,0 +1,238 @@
+#!/usr/bin/env python3
+"""Build the Spec 077 freeze record (freeze.json).
+
+This builder was written at the freeze act of
+2026-10-26. The register was drafted directly in
+the recovered (0.7) form, the AEE lifecycle hooks
+ran over it at the freeze with the pinned
+evaluator (aee 1.5.3), and the digest is computed
+over the register exactly once, at the freeze -
+the Spec 035 ordering. This freeze is a
+required-C4 freeze: the gate records under
+gate-records/ are filed beside this record and
+are summarized in freeze.md. Run with the Glossa
+backend venv python from the repository root:
+
+    python specs/077-signary-triangulation/build_freeze.py
+
+Writes specs/077-signary-triangulation/freeze.json
+(framework026 build_freeze payload: definition +
+source hashes + environment, digest = SHA-256 of
+the canonical JSON serialisation) and prints the
+digest.
+"""
+from __future__ import annotations
+
+import json
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(REPO / "backend"))
+
+from glossa_lab.framework026 import build_freeze  # noqa: E402
+
+SPEC_DIR = "specs/077-signary-triangulation"
+
+DEFINITION = {
+    "spec": "specs/077-signary-triangulation/spec.md",
+    "freeze_doc": "specs/077-signary-triangulation/freeze.md",
+    "experiment_id": "spec077-signary-triangulation",
+    "register": {
+        "path": "specs/077-signary-triangulation/claims.json",
+        "register_version": "0.7-draft",
+        "claims": 10,
+        "aee_hook_pass": (
+            "Run at the freeze act of 2026-10-26 under the pinned evaluator "
+            "aee 1.5.3 in the freeze configuration (assess --lenient "
+            "--no-ledger, phases after_specify / after_plan / after_tasks): "
+            "each of the three artifacts carries 21 findings - the 10 FR-2.3 "
+            "draft caps (one per claim), 10 irreducibility challenges (one "
+            "per claim) and 1 negation-conflict challenge (F077-C01 against "
+            "F077-C03) - zero findings of independence, ambiguity, or "
+            "evidence-resolution kind, and no claim below the 0.70 "
+            "confidence threshold (minimum propagated 0.7200). The "
+            "challenges are answered in aee/freeze-aee-note.md from the "
+            "spec's own structure (the register's two verdict-bearing "
+            "claims carry the design's claims and every other condition is "
+            "filed as its own claim; C01 and C03 are a claim and its gate, "
+            "not a contradiction) and ruled at adjudication DD-077-3; the "
+            "register was not reworded to silence them"
+        ),
+    },
+    "basis": {
+        "adjudication": "specs/077-signary-triangulation/adjudication.md",
+        "decisions": (
+            "DD-077-1 to DD-077-9 at the adjudication (numbering 077 / "
+            "Phase 443; the 10-claim set carrying the design's D-M7-C01/C02 "
+            "and its step-0, ancestry, collision, sensitivity, gap-list "
+            "and Table I conditions; the freeze-fixed completions FF-1 to "
+            "FF-8; no OSF registration at this freeze, DD-077-5, the M7 "
+            "design naming none; this freeze a required-C4 freeze, "
+            "DD-077-9)"
+        ),
+        "design": (
+            "the M7 design draft of 2026-10-25 (program goal record; "
+            "SHA-256 2e9f9967ec30a558e3a31f93f54540b3d8450e25080c447d37ecd598175c1369), "
+            "as amended by its 2026-10-25 iteration-pass amendment "
+            "(trigger-census instrument SHA-256 "
+            "3fa1234e68395d6b202e303b9eeba195e0e9a9681f684e8f6d4b9c67b0acebef), "
+            "carried as written except the freeze-fixed completions of "
+            "spec section 0"
+        ),
+    },
+    "design": {
+        "phase": "Phase 443",
+        "question": (
+            "Is the program's 557-sign population frame witnessed by sign "
+            "lists that did not come from the program - Mahadevan 1977 and "
+            "Wells 1998 - mapped through Registry v2 under pre-stated "
+            "match rules, and can any witness sign be token 999's "
+            "published identity under a frozen two-condition rule"
+        ),
+        "method": (
+            "Witness presence counted by sign number: a population sign's "
+            "Mahadevan number set is read from Registry v2's parpola_1982 "
+            "crosswalk rows; M77-witnessing is membership in the extracted "
+            "M77 sign list (dataset v3), Wells-1998-witnessing runs "
+            "through Figure 3.6's glyph-anchored pairings, the 13 "
+            "duplicated Mahadevan ids are administered under FF-4, the "
+            "ancestry adjustment under FF-5 (root-list reading; both "
+            "shares reported), and the token 999 attack under FF-6/FF-7 "
+            "(absolute counts: witness total exactly 2, final count 0)"
+        ),
+        "bars": (
+            "Frozen, from the design, not movable after the freeze: "
+            "F077-C01 is SUPPORTED only if the ancestry-adjusted share "
+            "reaches 90% - at least 502 of 557 signs; below it the claim "
+            "is NOT SUPPORTED under the closure word SIGNARY NOT "
+            "WITNESSED AT THE STATED LEVEL. F077-C02 names an identity "
+            "only for a witness sign meeting both frozen conditions; "
+            "otherwise 999 stands NO PUBLISHED IDENTITY"
+        ),
+        "closures": [
+            "SUPPORTED",
+            "NOT SUPPORTED",
+            "SIGNARY NOT WITNESSED AT THE STATED LEVEL",
+            "NO PUBLISHED IDENTITY",
+            "CANNOT BE RUN AS WRITTEN",
+        ],
+        "osf": (
+            "No OSF registration is filed at this freeze (DD-077-5): "
+            "the M7 design's filing provisions name none, and the repo "
+            "freeze record governs; the absence is recorded in "
+            "freeze.md, not improvised around"
+        ),
+        "execution_gate": (
+            "Phase 443's execution runs only against this frozen "
+            "record, on the owner's order of 2026-10-26 (freeze and "
+            "execute), after the freeze PR merges on genuine CI "
+            "including the required C4 check; one run, as frozen; "
+            "step 0 verifies every pin, reproduces the population and "
+            "999's reference behavior, files the 13-id resolution "
+            "table, and verifies the Table I input against FF-7 - any "
+            "failure closes the execution CANNOT BE RUN AS WRITTEN, "
+            "and that closure is an execution state, not a verdict"
+        ),
+        "limits": (
+            "Witness presence by sign number only, under the "
+            "crosswalk's own claim; no reading's value, no glyph-shape "
+            "statement (the M77 scan cannot carry shapes), and no "
+            "claim that any list's divisions are correct; the script "
+            "is not deciphered"
+        ),
+    },
+    "inputs": {
+        "registry_v2": {
+            "path": "data/crosswalks/canonical_sign_registry_v2.csv",
+            "sha256": "42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71",
+            "rows": 1013,
+            "breakdown": {
+                "parpola_1982": 396,
+                "yajnadevam_glyphid": 407,
+                "icit_wells": 210,
+            },
+        },
+        "population_record": {
+            "path": "reports/phase441_results.json",
+            "sha256": "f55ae91124e1ac74268f79035d862586a81a2f2e9596fd2318f3741c6e39ea29",
+            "census": {
+                "analyzable_rows": 3045,
+                "distinct_signs": 557,
+                "signs_in_sequences_ge2": 550,
+            },
+            "token_999": {"primary_rows": 2, "occurrences": 2, "finals": 0},
+        },
+        "witness_m77": {
+            "dataset": "glossa-corpus/indus/sources/mahadevan-1977/m77_sign_list.csv",
+            "sha256": "9c619bfe2520e63e2968be0ab4ddc9cef1f9aff7dfa3f8eddbf58f21fb414f7e",
+            "rows": 417,
+            "dagger_split": {"dagger": 179, "not_dagger": 238, "uncertain": 0},
+            "volume_sha256": "ef68fe8d (held volume; full digest in spec section 3 records)",
+        },
+        "witness_wells1998": {
+            "dataset": "glossa-corpus/indus/sources/wells-1998/wells1998_sign_list.csv",
+            "sha256": "22bde128551adbd6d91cd76bb41b4f40199ab3e45af76d500a1008d27c5bea95",
+            "rows": 588,
+            "printed_entries": 587,
+            "thesis_sha256": "5720dc010acc68d6b50827fa89fb7bf3c4c0eb0aee67597e7662e5fd74508906",
+            "fig36_crossrefs_sha256": "b0ef40da7cd65cdcb6910fd2b1e6aeae4eac47cb31cbe2b2c6205f2ac5da270d",
+            "fig36_pairings": 55,
+            "fig36_distinct_mahadevan_targets": 17,
+        },
+        "m77_raw_text": {
+            "path": "data/mahadevan_m77_raw.txt",
+            "sha256": "11441e38286784a1f4215f73d91cbba8acd153b7e5b30daed9252f9f7b77304a",
+        },
+        "anchors": {
+            "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
+            "sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+            "entries": 287,
+            "strict": 94,
+            "pending": 44,
+        },
+        "pin_verification": (
+            "verified first-hand at the freeze act of 2026-10-26 from "
+            "repo main and the canonical store: every digest above "
+            "recomputed from the file as fetched or as held equals the "
+            "design's and the extraction records' pins; the population "
+            "census and token 999's reference behavior re-derived under "
+            "Spec 075's frozen construction from its hash-verified "
+            "restricted-local inputs reproduce the frozen figures "
+            "exactly (3,045 / 557 / 550; 999 at 2 occurrences, 0 "
+            "finals); every gate-turning quantity independently "
+            "recomputed for the C2 record in gate-records/ by a worker "
+            "who did not draft the spec"
+        ),
+    },
+    "environment": {
+        "python": "3.12.3",
+        "runner": "backend (venv glossa-lab)",
+        "aee": "1.5.3 (adopted environment; package pinned >=1.5.0,<1.6)",
+        "specify": "1.0.10",
+    },
+}
+
+SOURCES = [
+    f"{SPEC_DIR}/freeze.md",
+    f"{SPEC_DIR}/spec.md",
+    f"{SPEC_DIR}/claims.json",
+    f"{SPEC_DIR}/adjudication.md",
+    f"{SPEC_DIR}/aee/freeze-aee-note.md",
+    f"{SPEC_DIR}/build_freeze.py",
+    "backend/tests/test_spec077_freeze.py",
+]
+
+
+def main() -> int:
+    record = build_freeze(DEFINITION, REPO, SOURCES)
+    out = REPO / SPEC_DIR / "freeze.json"
+    out.write_text(
+        json.dumps(record, indent=1) + "\n", encoding="utf-8"
+    )
+    print(record["digest"])
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

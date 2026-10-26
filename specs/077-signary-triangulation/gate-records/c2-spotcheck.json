@@ -1,0 +1,314 @@
+{
+ "record_type": "c2-spotcheck",
+ "schema_version": "1.0",
+ "spec": "specs/077-signary-triangulation",
+ "drafter": "Cosmo (Muse subagent, freeze worker; Spec 077 freeze session)",
+ "recomputer": "independent recomputer subagent (spawned for this freeze; did not draft the spec; worked from the spec text and the pinned inputs only)",
+ "method": "Recomputed from the spec text and the pinned inputs only; the drafter's workings were not consulted.",
+ "sample_rule": "every gate-turning quantity + random 25% (minimum 3) of the rest",
+ "sample_seed": 20261026,
+ "quantities": [
+  {
+   "name": "registry_v2_sha256",
+   "source_in_spec": "spec section 3 (Registry v2 pin)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": "42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71",
+   "recomputed_value": "42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71",
+   "status": "agree",
+   "note": "SHA-256 (hashlib) of raw bytes fetched via gh api repos/BitConcepts/glossa-lab/contents/data/crosswalks/canonical_sign_registry_v2.csv with raw Accept header."
+  },
+  {
+   "name": "registry_v2_rows",
+   "source_in_spec": "spec section 3 (Registry v2 rows and breakdown)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": 1013,
+   "recomputed_value": 1013,
+   "status": "agree",
+   "note": "Counted data rows in the same fetched Registry v2 CSV (DictReader, header excluded): 1013; breakdown by numbering_system = 396 parpola_1982 + 407 yajnadevam_glyphid + 210 icit_wells."
+  },
+  {
+   "name": "phase441_record_sha256",
+   "source_in_spec": "spec section 3 (population enumeration pin)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": "f55ae91124e1ac74268f79035d862586a81a2f2e9596fd2318f3741c6e39ea29",
+   "recomputed_value": "f55ae91124e1ac74268f79035d862586a81a2f2e9596fd2318f3741c6e39ea29",
+   "status": "agree",
+   "note": "SHA-256 (hashlib) of raw bytes fetched via gh api for reports/phase441_results.json."
+  },
+  {
+   "name": "population_distinct_signs",
+   "source_in_spec": "spec sections 1-2 (the 557-sign population)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": 557,
+   "recomputed_value": 557,
+   "status": "agree",
+   "note": "Two ways: (1) census.population.distinct_signs in the fetched phase441 record = 557; (2) independent reproduction from restricted inputs (counts/hashes only): primary rows graded documented-lineage, symbols with '000' dropped, distinct signs over non-empty sequences = 557."
+  },
+  {
+   "name": "population_analyzable_rows",
+   "source_in_spec": "spec section 4.1 (step-0 reproduction)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": 3045,
+   "recomputed_value": 3045,
+   "status": "agree",
+   "note": "Two ways: (1) census.population.analyzable_rows in the fetched phase441 record = 3045; (2) reproduction as above: 3212 primary (documented-lineage) rows, 3045 with non-empty sequence after dropping '000'."
+  },
+  {
+   "name": "signs_in_sequences_ge2",
+   "source_in_spec": "spec section 4.1 (step-0 reproduction)",
+   "gate_turning": false,
+   "sampled": false,
+   "pinned_value": 550,
+   "recomputed_value": null,
+   "status": "not-sampled",
+   "note": ""
+  },
+  {
+   "name": "token_999_occurrences",
+   "source_in_spec": "spec section 0 FF-6 (999 reference behavior)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": 2,
+   "recomputed_value": 2,
+   "status": "agree",
+   "note": "Two ways: (1) census.token_999.occurrences in the fetched phase441 record = 2 (primary_rows also 2); (2) reproduction: total count of '999' over primary-population sequences = 2."
+  },
+  {
+   "name": "token_999_finals",
+   "source_in_spec": "spec section 0 FF-6 (999 reference behavior)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": 0,
+   "recomputed_value": 0,
+   "status": "agree",
+   "note": "Reproduction from restricted inputs per FF-6 / Spec 075 sec. 3 construction: sequences in the primary population whose last sign is '999' = 0 (both 999 occurrences are medial, in sequences 034-999-034); final rate 0/2 = 0.0."
+  },
+  {
+   "name": "c01_bar_count",
+   "source_in_spec": "spec section 2 (at least 502 of 557)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": 502,
+   "recomputed_value": 502,
+   "status": "agree",
+   "note": "Arithmetic: smallest integer n with n/557 >= 0.90 is 502 (501/557 = 0.89946 < 0.90; 502/557 = 0.90126 >= 0.90)."
+  },
+  {
+   "name": "m77_dataset_v3_sha256",
+   "source_in_spec": "spec section 3 (M77 sign list pin)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": "9c619bfe2520e63e2968be0ab4ddc9cef1f9aff7dfa3f8eddbf58f21fb414f7e",
+   "recomputed_value": "9c619bfe2520e63e2968be0ab4ddc9cef1f9aff7dfa3f8eddbf58f21fb414f7e",
+   "status": "agree",
+   "note": "SHA-256 (hashlib) of the canonical-store file glossa-corpus/indus/sources/mahadevan-1977/m77_sign_list.csv on this VM."
+  },
+  {
+   "name": "m77_sign_list_rows",
+   "source_in_spec": "spec section 3 (417 rows)",
+   "gate_turning": false,
+   "sampled": false,
+   "pinned_value": 417,
+   "recomputed_value": null,
+   "status": "not-sampled",
+   "note": ""
+  },
+  {
+   "name": "m77_dagger_split",
+   "source_in_spec": "spec section 3 (179 dagger / 238 not / 0 uncertain)",
+   "gate_turning": false,
+   "sampled": true,
+   "pinned_value": {
+    "dagger": 179,
+    "not_dagger": 238,
+    "uncertain": 0
+   },
+   "recomputed_value": {
+    "dagger": 179,
+    "not_dagger": 238,
+    "uncertain": 0
+   },
+   "status": "agree",
+   "note": "Counted the canonical-store m77_sign_list.csv (417 rows) by its own variant_marker column: Y = 179, N = 238, no other/uncertain marker values; status column values are CLEAN/ADJUDICATED/VERIFIED with no uncertain count, giving 179 dagger / 238 not / 0 uncertain."
+  },
+  {
+   "name": "wells1998_dataset_sha256",
+   "source_in_spec": "spec section 3 (Wells 1998 pin)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": "22bde128551adbd6d91cd76bb41b4f40199ab3e45af76d500a1008d27c5bea95",
+   "recomputed_value": "22bde128551adbd6d91cd76bb41b4f40199ab3e45af76d500a1008d27c5bea95",
+   "status": "agree",
+   "note": "SHA-256 (hashlib) of the canonical-store file glossa-corpus/indus/sources/wells-1998/wells1998_sign_list.csv on this VM."
+  },
+  {
+   "name": "wells1998_rows",
+   "source_in_spec": "spec section 3 (588 rows; 587 printed + 407 NOT PRINTED)",
+   "gate_turning": false,
+   "sampled": false,
+   "pinned_value": 588,
+   "recomputed_value": null,
+   "status": "not-sampled",
+   "note": ""
+  },
+  {
+   "name": "fig36_crossrefs_sha256",
+   "source_in_spec": "spec section 3 (Figure 3.6 file pin)",
+   "gate_turning": false,
+   "sampled": false,
+   "pinned_value": "b0ef40da7cd65cdcb6910fd2b1e6aeae4eac47cb31cbe2b2c6205f2ac5da270d",
+   "recomputed_value": null,
+   "status": "not-sampled",
+   "note": ""
+  },
+  {
+   "name": "fig36_pairings_and_targets",
+   "source_in_spec": "spec section 3 (55 pairings over 17 distinct Mahadevan targets)",
+   "gate_turning": false,
+   "sampled": true,
+   "pinned_value": {
+    "pairings": 55,
+    "distinct_mahadevan_targets": 17
+   },
+   "recomputed_value": {
+    "pairings": 55,
+    "distinct_mahadevan_targets": 17
+   },
+   "status": "agree",
+   "note": "Counted wells1998_fig36_crossrefs.csv (24 rows): expanding each row's wells_1997 ranges (e.g. 160-163, 165-169, 172; 436-446; 528-540) gives 55 individual Wells-to-Mahadevan pairings; distinct mahadevan_1977 values in the file = 17 (261, 373, 'None', 180, 178, 244, '352?', 358, 347, 174, 175, 484, 213, 400, 367, 371, 294). Corroborated by wells1998_sign_list.csv: 55 rows carry a non-empty mahadevan_xref_fig36, with the same 17 distinct xref strings."
+  },
+  {
+   "name": "m77_raw_text_sha256",
+   "source_in_spec": "spec section 3 (C-7 canonical pin)",
+   "gate_turning": false,
+   "sampled": true,
+   "pinned_value": "11441e38286784a1f4215f73d91cbba8acd153b7e5b30daed9252f9f7b77304a",
+   "recomputed_value": "11441e38286784a1f4215f73d91cbba8acd153b7e5b30daed9252f9f7b77304a",
+   "status": "agree",
+   "note": "SHA-256 (hashlib) of raw bytes fetched via gh api for data/mahadevan_m77_raw.txt."
+  },
+  {
+   "name": "wells_thesis_sha256",
+   "source_in_spec": "spec section 3 (held thesis pin)",
+   "gate_turning": false,
+   "sampled": false,
+   "pinned_value": "5720dc010acc68d6b50827fa89fb7bf3c4c0eb0aee67597e7662e5fd74508906",
+   "recomputed_value": null,
+   "status": "not-sampled",
+   "note": ""
+  },
+  {
+   "name": "duplicated_mahadevan_ids",
+   "source_in_spec": "spec section 0 FF-4 (the 13 duplicated ids)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": [
+    "M002",
+    "M050",
+    "M064",
+    "M076",
+    "M099",
+    "M103",
+    "M161",
+    "M167",
+    "M168",
+    "M199",
+    "M216",
+    "M264",
+    "M409"
+   ],
+   "recomputed_value": [
+    "M002",
+    "M050",
+    "M064",
+    "M076",
+    "M099",
+    "M103",
+    "M161",
+    "M167",
+    "M168",
+    "M199",
+    "M216",
+    "M264",
+    "M409"
+   ],
+   "status": "agree",
+   "note": "From the fetched Registry v2 CSV: took mahadevan_ids tokens (M-numbers split on '|') over the 396 parpola_1982 rows only; ids claimed by exactly two such rows are exactly the 13 listed, each with count 2 and no id with count >2."
+  },
+  {
+   "name": "c02_occurrence_admission",
+   "source_in_spec": "spec section 0 FF-6 (condition 1 administered)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": "witness total exactly 2 (2 within 20 percent admits no other integer)",
+   "recomputed_value": "witness total exactly 2 (2 within 20 percent admits no other integer)",
+   "status": "agree",
+   "note": "Arithmetic from FF-6 (reference total 2): a total t is within 20% iff |t-2|/2 <= 0.20, i.e. 1.6 <= t <= 2.4; the only integer t is 2 (t=1 and t=3 are 50% away)."
+  },
+  {
+   "name": "c02_final_rate_admission",
+   "source_in_spec": "spec section 0 FF-6 (condition 2 administered)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": "final rate at most 0.10; at a total of 2, a final count of 0",
+   "recomputed_value": "final rate at most 0.10; at a total of 2, a final count of 0",
+   "status": "agree",
+   "note": "Arithmetic from FF-6 (reference rate 0.0): within 10 points admits final rate <= 0.10; at witness total 2, final count 1 would give rate 0.5, so only final count 0 qualifies."
+  },
+  {
+   "name": "table1_printed_totals",
+   "source_in_spec": "spec section 0 FF-7 (printed totals row)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": {
+    "SOL": 190,
+    "INI": 3010,
+    "MED": 7196,
+    "FIN": 2976,
+    "TOT": 13372
+   },
+   "recomputed_value": {
+    "SOL": 190,
+    "INI": 3010,
+    "MED": 7196,
+    "FIN": 2976,
+    "TOT": 13372
+   },
+   "status": "agree",
+   "note": "Cross-checked in the Table I extraction workpapers under ~/workspace/glossa-run/m77-table1/: METHOD_FIXED_BEFORE_PARSE.md states the printed grand-total row as SOL 190 / INI 3010 / MED 7196 / FIN 2976 / TOT 13372 (twice, as scope and as validation 2), matching FF-7; the Phase A partial m77_table1_occurrences.csv in the canonical store is a per-sign partial file and carries no totals row itself."
+  },
+  {
+   "name": "restricted_corpus_sha256",
+   "source_in_spec": "spec section 3 (restricted-local derivation input)",
+   "gate_turning": false,
+   "sampled": false,
+   "pinned_value": "345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68",
+   "recomputed_value": null,
+   "status": "not-sampled",
+   "note": ""
+  },
+  {
+   "name": "restricted_grades_sha256",
+   "source_in_spec": "spec section 3 (restricted-local derivation input)",
+   "gate_turning": false,
+   "sampled": false,
+   "pinned_value": "02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739",
+   "recomputed_value": null,
+   "status": "not-sampled",
+   "note": ""
+  }
+ ],
+ "coverage": {
+  "gate_turning_total": 14,
+  "gate_turning_checked": 14,
+  "other_total": 10,
+  "other_sampled": 3,
+  "other_checked": 3
+ },
+ "outcome": "PASS"
+}

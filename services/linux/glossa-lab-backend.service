@@ -1,0 +1,28 @@
+[Unit]
+Description=Glossa Lab backend (supervised)
+Documentation=file:__REPO_ROOT__/services/linux/README.md
+Wants=network-online.target
+After=network-online.target
+# Restart discipline, following the Syncyard spec 007 pattern:
+# at most 3 starts per hour; beyond that the unit fails and the
+# OnFailure alert unit records OWNER NEEDED instead of crash-looping.
+StartLimitIntervalSec=3600
+StartLimitBurst=3
+OnFailure=glossa-lab-backend-alert.service
+
+[Service]
+Type=simple
+WorkingDirectory=__REPO_ROOT__/backend
+Environment=PYTHONPATH=__REPO_ROOT__/backend
+Environment=PYTHONUNBUFFERED=1
+# Placeholders are replaced by services/linux/install.sh at install time.
+ExecStart=__VENV_PYTHON__ -m uvicorn glossa_lab.main:create_app --factory --host 127.0.0.1 --port __PORT__ --app-dir __REPO_ROOT__/backend
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+KillSignal=SIGTERM
+StandardOutput=append:__STATE_DIR__/backend.log
+StandardError=append:__STATE_DIR__/backend.log
+
+[Install]
+WantedBy=__WANTED_BY__

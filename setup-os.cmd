@@ -45,7 +45,16 @@ echo [INSTALL] Registering Glossa Lab scheduled task...
 echo.
 
 if not exist "%VENV_PYTHONW%" (
-    echo [WARN] pythonw.exe not found. Run 'shell.cmd setup' first.
+    echo [SETUP] venv not found - running 'shell.cmd setup' ^(backend + tray^)...
+    call "%REPO_ROOT%\shell.cmd" setup
+)
+if not exist "%VENV_PYTHONW%" (
+    echo [ERROR] pythonw.exe still not found after setup. Install Python 3 and retry.
+    exit /b 1
+)
+if not exist "%REPO_ROOT%\tray\glossa_tray\assets\glossa-lab.ico" (
+    echo [ERROR] Glossa Lab tray icon asset missing: tray\glossa_tray\assets\glossa-lab.ico
+    exit /b 1
 )
 if not exist "%LOG_DIR%" mkdir "%LOG_DIR%"
 

@@ -108,41 +108,93 @@ _AUTOSTART_LABEL = (
 )
 
 
-# ── Icon generation ──────────────────────────────────────────────────
+# ── Icon: the Glossa Lab brand tile + a status badge ────────────────
+#
+# The base image is the project's own application mark (the blue
+# gradient tile with a white "G" used in the web UI), shipped as a
+# packaged asset — NOT a plain coloured circle and NOT another
+# project's mark. Status is shown as a small badge dot in the lower
+# right corner, the same treatment the Syncyard tray uses.
+
+_ASSETS_DIR = Path(__file__).resolve().parent / "assets"
+_BRAND_ICON_PATH = _ASSETS_DIR / "glossa-lab.png"
+_brand_image: Image.Image | None = None
+
+
+def _load_brand_image() -> Image.Image | None:
+    """Load (and cache) the packaged Glossa Lab brand tile."""
+    global _brand_image
+    if _brand_image is None and _BRAND_ICON_PATH.exists():
+        try:
+            _brand_image = Image.open(_BRAND_ICON_PATH).convert("RGBA")
+        except (OSError, ValueError):
+            _brand_image = None
+    return _brand_image
+
 
 def _create_icon_image(colour: str = "green") -> Image.Image:
-    """Generate a simple coloured circle icon."""
+    """Brand tile with a status badge; falls back to the tile alone."""
     colours = {"green": "#22c55e", "red": "#dc2626", "yellow": "#eab308", "grey": "#9ca3af"}
     fill = colours.get(colour, colours["grey"])
-    img = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
+    brand = _load_brand_image()
+    if brand is None:
+        img = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
+        draw = ImageDraw.Draw(img)
+        draw.rounded_rectangle([4, 4, 60, 60], radius=14, fill="#2563eb")
+        draw.ellipse([40, 40, 58, 58], fill=fill, outline="white", width=2)
+        return img
+    img = brand.copy().resize((64, 64), Image.LANCZOS)
     draw = ImageDraw.Draw(img)
-    draw.ellipse([8, 8, 56, 56], fill=fill)
+    draw.ellipse([42, 42, 60, 60], fill=fill, outline="white", width=2)
     return img
 
 
 # ── Autostart management ───────────────────────────────────────
 
+_LINUX_AUTOSTART_DESKTOP = (
+    Path.home() / ".config" / "autostart" / "glossa-lab-tray.desktop"
+)
+
+
 def _is_autostart_enabled() -> bool:
-    """Check if the GlossaLab scheduled task exists (Windows) or launchd entry (macOS)."""
+    """Windows: GlossaLab scheduled task. Linux: tray autostart entry."""
     if platform.system() == "Windows":
         result = subprocess.run(
             ["schtasks", "/query", "/tn", _SCHTASK_NAME],
-            capture_output=True, creationflags=_WIN_HIDDEN,
+            capture_output=True, creationflags=_WIN_HIDDEN, check=False,
         )
         return result.returncode == 0
+    if platform.system() == "Linux":
+        return _LINUX_AUTOSTART_DESKTOP.exists()
     return False
 
 
 def _set_autostart(enabled: bool) -> None:
-    """Install or remove the GlossaLab scheduled task."""
-    setup = str(_REPO_ROOT / "setup-os.cmd")
+    """Install or remove the OS autostart registration for the tray."""
     if platform.system() == "Windows":
+        setup = str(_REPO_ROOT / "setup-os.cmd")
         cmd = "install" if enabled else "uninstall"
         subprocess.run(
             ["cmd.exe", "/c", setup, cmd],
             capture_output=True,
             creationflags=_WIN_HIDDEN,
+            check=False,
         )
+    elif platform.system() == "Linux":
+        if enabled:
+            # The Linux installer is the single install path: a
+            # render-only run (re)writes the tray autostart entry,
+            # the icon, and the backend unit without touching the
+            # service manager.
+            installer = _REPO_ROOT / "services" / "linux" / "install.sh"
+            subprocess.run(
+                ["bash", str(installer), "--render-only", "--skip-dependencies"],
+                capture_output=True,
+                timeout=30,
+                check=False,
+            )
+        else:
+            _LINUX_AUTOSTART_DESKTOP.unlink(missing_ok=True)
 
 
 def _toggle_autostart(_icon=None, _item=None) -> None:
@@ -329,7 +381,7 @@ def _change_port(_icon=None, _item=None) -> None:
     root.attributes("-topmost", True)
     current = _current_port()
     answer = simpledialog.askstring(
-        "Glossa Lab — Change Port",
+        "Glossa Lab - Change Port",
         f"Enter new backend port (current: {current}):\n"
         "Common choices: 8001 (default), 8000, 5000, 3000",
         initialvalue=str(current),
@@ -421,7 +473,7 @@ def _status_poller(icon: pystray.Icon):
         health = _check_health()
         if health is None:
             icon.icon = _create_icon_image("red")
-            icon.title = "Glossa Lab — Backend stopped"
+            icon.title = "Glossa Lab - Backend stopped"
             _status_text = "Backend: Stopped  (click to view log)"
             _status_error = True
         elif health.get("status") in ("healthy", "degraded"):
@@ -430,17 +482,17 @@ def _status_poller(icon: pystray.Icon):
                 icon.icon = _create_icon_image("green")
                 ver = health.get('version', '?')
                 uptime = int(health.get('uptime_seconds', 0))
-                icon.title = f"Glossa Lab — Healthy (v{ver})"
+                icon.title = f"Glossa Lab - Healthy (v{ver})"
                 _status_text = f"Backend: Healthy  v{ver}  up {uptime}s"
                 _status_error = False
             else:
                 icon.icon = _create_icon_image("yellow")
-                icon.title = "Glossa Lab — Degraded"
+                icon.title = "Glossa Lab - Degraded"
                 _status_text = "Backend: Degraded  (click to view log)"
                 _status_error = True
         else:
             icon.icon = _create_icon_image("grey")
-            icon.title = "Glossa Lab — Unknown"
+            icon.title = "Glossa Lab - Unknown"
             _status_text = "Backend: Unknown  (click to view log)"
             _status_error = True
         try:
@@ -482,7 +534,7 @@ def main():
     icon = pystray.Icon(
         name="glossa-lab",
         icon=_create_icon_image("grey"),
-        title="Glossa Lab — Starting...",
+        title="Glossa Lab - Starting...",
         menu=menu,
     )
 

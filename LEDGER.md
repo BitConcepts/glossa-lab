@@ -10806,3 +10806,61 @@ than silently backfilled.
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
 
+## 2026-10-28 — G44-I Amendment 3 rerun: FAILED — KI-2 triggered; Step 0-G line closed; OD-1 ruled
+
+The G44-I implantation instrument (frozen draft 2026-10-26, Amendments
+1–3, PRs #422/#423 for the halt record and amendment package) was rerun
+under Amendment 3 and executed on TRISTEN-DESKTOP through the Syncyard
+gatekeeper (run 40736921121) on the hash-verified staged package:
+script SHA-256 6de44f06329b1111479a54bea3780ad41734e4f0e5e3928772a9e7575c7ca0f9,
+population pin SHA-256 f1d984c546c77bbd5459895e9ab31b877dd7a2af69a88ff4248049bf11e8811c;
+seeds model 20298464, split 20292778, leg-2 20298297, leg-3 20291685.
+
+Results: the §6 realization gate PASSED (implantation realized exactly,
+recounted independently — the first gate pass in this line). Leg 1
+PASSED (B = 0.6518 vs bar 0.60; 34/44 vs bar 33). Leg 1B FAILED
+(realized margin +0.0017 vs the frozen +0.05 bar — the scorer beat the
+frequency baseline, narrowly, instead of losing to it). Leg 2 PASSED.
+Leg 3 PASSED (both arms; five calibration checks first).
+
+Verdict under the draft's §§7–9: FAILED — KI-2 TRIGGERED. The gate
+passed and leg 1B failed with OD-1 undecided before the run, so the
+prediction-pair profile-scoring design stands convicted — wrong, not
+under-tuned; no further instrument under this scorer design in any
+validation family. Printed alongside the verdict, as §8 prescribes: the
+narrowing facts (gate and legs 1/2/3 passed, leg 1 with room; the 1B
+failure was a 0.0483 shortfall on a beat, not a loss) and the §8 doubt
+(under exact realization the baseline starts the race holding the
+planted pair for most signs, so the margin is decided by a minority of
+signs plus split-sample noise). KI-3 did not trigger as defined — it
+flags a validation, and this run did not validate; the margin half of
+its conditions is met (+0.0017 ≤ 0.10) and the agreement half is
+pending the counts. KI-1 stands at zero strikes: implantation is
+vindicated, not convicted — implantation-by-relabeling is recorded as
+a proven instrument, with Amendments 1–3 as its design record.
+
+OD-1 (owner decision, 2026-10-28): leg 1B is demoted to a reported
+diagnostic for any future draft, with the tripwire preserved — a
+baseline win (negative margin) under exact realization remains
+disqualifying in any future gate review. The decision is forward-only:
+it does not amend this verdict and does not revive the convicted
+scorer design.
+
+§9 endgame executes: the Step 0-G instrument line CLOSES entirely (no
+fifth design). M4 remains GATED — DRAFT ONLY, permanently under its
+current gate. The 44 pending readings remain pending indefinitely,
+carrying no weight — neither validated nor falsified; this run scored
+none of them. The scorer's honest measure stands on the record: it
+recovers planted truth above the frozen bar and cannot be
+distinguished from the corpus's own frequency summary of itself.
+
+§8 agreement counts (baseline full-pair / position-only /
+neighbor-only, of 44): PENDING-APPEND. The run's results file is in
+verified transit from the desktop; when it lands, the counts are
+appended to the full run record (goal record
+2026-10-28-g44i-rerun-record.md, with the red-team assessment at
+2026-10-28-g44i-rerun-od1-redteam-assessment.md) as a dated appendix.
+The append does not change the verdict.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.

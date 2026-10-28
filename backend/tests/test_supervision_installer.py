@@ -94,6 +94,7 @@ def test_linux_installer_render_only(tmp_path: Path) -> None:
     assert "StartLimitBurst=3" in unit
     assert "StartLimitIntervalSec=3600" in unit
     assert "OnFailure=glossa-lab-backend-alert.service" in unit
+    assert "OOMScoreAdjust=-300" in unit
     assert "__" not in unit  # every placeholder rendered
 
     alert = (service_dir / "glossa-lab-backend-alert.service").read_text(encoding="utf-8")

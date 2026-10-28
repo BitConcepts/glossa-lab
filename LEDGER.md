@@ -10864,3 +10864,90 @@ The append does not change the verdict.
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+
+## [2026-10-22] Entry — Spec 026: CORE as a Keyed Source for RESEARCH-CHECK
+
+Objective:
+  Mirror the RCPH workspace's CORE capability into Glossa Lab's
+  research-check tooling (owner's mirror directive, 2026-10-22:
+  APIs added for the RCPH program are mirrored for Glossa). CORE
+  via the registered custom.core connection was connected and
+  verified on the RCPH side the same day. Tooling only; no Glossa
+  material is audited by this spec.
+
+What was done:
+
+  1. SPEC: specs/026-core-research-source/ (spec.md, plan.md,
+     tasks.md) — proposal with H13 epistemic boundaries recorded
+     before execution (H2). Route decision recorded in the plan:
+     a direct client on the vault surrogate, not the MCP server's
+     search_core (its key slot is an environment variable the vault
+     route deliberately does not provide) and not keyless calls
+     (measured empty under spec 025).
+
+  2. CLIENT: backend/glossa_lab/core_search.py — CORE v3 client in
+     the shape of the proven RCPH connector helper. The registered
+     custom.core credential is attached as a runtime bearer
+     surrogate (dynamic_credentials.add_surrogate_to_request); the
+     key value is never read, printed, or stored by the code.
+     Canonical search path /v3/search/works/ WITH trailing slash
+     (the slashless form 301s; redirects are refused on
+     authenticated requests). Pace guard 2.1 s minimum interval
+     (registered tier ~5 single requests per 10 s). HTTP 429 raises
+     CoreRateLimitError and is never retried; every call carries an
+     explicit timeout (H9/H11). CLI: python -m glossa_lab.core_search
+     search|get.
+
+  3. STAGE: backend/glossa_lab/research_check.py — CORE joins the
+     source roster as a per-phrasing keyed search (injectable
+     core_client; --no-core to disable). Hits merge into the same
+     neighbor pool and vocabulary-overlap ranking; a CORE hit
+     carrying full text is its own read source (recorded in
+     neighbors_read_full_text with source "core" and word count;
+     the text itself never enters the sidecar). A 429 stops CORE
+     for the rest of the run with a source_errors record and a gap
+     entry; the run continues on the other sources. Existing
+     sources' behavior unchanged; verdict still null by
+     construction; claim files never modified.
+
+  4. DOCS: docs/paper-search-mcp.md gained a CORE section (route,
+     trailing-slash rule, pacing, 429 stop, protocol standing:
+     CORE is now a reached source) and its limits-list CORE line
+     was updated from "keyless returns empty"; AGENTS.md gained a
+     pointer bullet in the research-check section (H8).
+
+  5. TESTS: backend/tests/test_core_search.py — 11 offline tests
+     (request shape with slashed path + bearer surrogate, host
+     guard, redirect refusal, 429 hard stop with exactly one
+     attempt, pace-guard arithmetic, work normalization, stage pool
+     merge + CORE full-text read, stage 429 stop, --no-core). The
+     spec-025 tests now inject a null CORE client so that suite
+     stays offline. Run together — CORE + paper-search + governance
+     lint + MCP suites: 51 passed.
+
+  6. SMOKE (live, raw outputs in the spec's smoke/): two protocol
+     phrasings of an Indus concept via the client — "Indus script
+     decipherment" (673,990 hits; 1 of top 10 with full text) and
+     "statistical analysis of Indus signs n-grams linguistic
+     structure" (9 of top 10 with full text). CORE search is loose
+     (polysemy: Indus river-basin geology, generic n-gram papers);
+     the stage's vocabulary ranking is what makes it usable.
+     Scoped end-to-end stage run on the Yadav 2010 n-grams claim
+     (Zipf-Mandelbrot): CORE queried per phrasing, contributed 8 of
+     23 neighbors, zero source errors; the 3 full-text reads went
+     to on-topic arXiv neighbors — the two full-text-carrying CORE
+     neighbors scored relevance 0.0 and were correctly not read
+     (the CORE read path is covered by the offline tests). Sidecar
+     written to the usual place; verdict null. No backend process
+     was restarted or disturbed (the running uvicorn on :8001 was
+     left alone).
+
+  7. COMMIT: this spec's files only, on branch
+     spec/026-core-research-source. The pre-existing uncommitted
+     working-tree modifications (extracted-claims dossiers, claim
+     reports, anchor staging, partial loop results) are not this
+     session's work and were not staged; none of the files this
+     spec modifies carried uncommitted changes at branch time.
+
+**AI disclosure:** execution recorded by an AI agent (Muse, via
+Muse) at the direction of Tristen Pierson, per constitution SSVI.

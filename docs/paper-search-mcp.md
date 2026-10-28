@@ -47,9 +47,11 @@ below is carried over unchanged from the RCPH connector
   CLI: `python -m glossa_lab.research_check --claim-file <dossier>
   [--claim-id ID] [--alt-phrasing "..."] [--doi DOI] [--out DIR]
   [--no-full-text]`.
-- Optional upstream keys (Semantic Scholar / OpenAlex / CORE /
+- Optional upstream keys (Semantic Scholar / OpenAlex /
   Unpaywall email) travel only as `PAPER_SEARCH_MCP_*` environment
   variables at call time — never written into files, argv, or logs.
+  CORE is the exception: it is reached through the keyed direct
+  client below, not through this server (see next section).
 
 ## Workhorse tools (via the client)
 
@@ -67,6 +69,50 @@ below is carried over unchanged from the RCPH connector
 - Full text (open access only): `read_arxiv_paper` (`paper_id`,
   `save_path`) and `download_with_fallback` (OA chain). **`use_scihub`
   is hard-off** — the client refuses it in code.
+
+## CORE via the keyed connector (spec 026)
+
+CORE is the largest open-access full-text collection in the source
+roster, and the audit protocol's nearest-neighbor rule turns on full
+text — but the MCP server's CORE source is keyless in this setup
+and returns empty from this network. Since spec 026 the stage
+reaches CORE through a direct keyed client instead:
+
+- **Client:** `backend/glossa_lab/core_search.py` (stdlib `urllib`;
+  CLI `python -m glossa_lab.core_search search '<query>' [--limit N]`
+  / `get <core-id>` from `backend/`). It calls the CORE v3 API at
+  `api.core.ac.uk` using the registered `custom.core` connection:
+  the credential is attached as a runtime bearer surrogate
+  (`dynamic_credentials.add_surrogate_to_request`, credential name
+  `custom.core`) and swapped for the real key only on egress. The
+  key value is never read, stored, or logged by Glossa code, and no
+  `PAPER_SEARCH_MCP_CORE_API_KEY` is used anywhere.
+- **Path rule:** the canonical search path is `/v3/search/works/`
+  — trailing slash included. The slashless form answers 301 to the
+  same host, and redirects are refused on authenticated requests.
+- **Pacing:** the registered tier allows about 5 single requests
+  per 10 seconds; the client enforces a 2.1 s minimum interval
+  between calls.
+- **429 is a hard stop.** The client raises and never retries. In
+  the stage, a CORE 429 is recorded in the sidecar's
+  `source_errors`, a gap entry states that remaining phrasings were
+  not searched on CORE, CORE is skipped for the rest of the run,
+  and the run continues on the other sources.
+- **Stage integration:** `research_check.py` runs one CORE search
+  per claim phrasing (disable with `--no-core`). CORE hits join the
+  neighbor pool under source `"core"` with the same dedupe and
+  claim-vocabulary ranking as every other source. A CORE hit that
+  carries full text is its own read source: above the stage's
+  relevance gate, the read is recorded in
+  `neighbors_read_full_text` with `source: "core"` and the word
+  count — the text itself is never written into the sidecar.
+- **Protocol standing:** CORE is now a **reached** source for the
+  audit protocol — a second full-text route beside arXiv, and the
+  broadest one. CORE aggregates repository deposits of uneven
+  quality (duplicates and mis-dated records occur); a CORE hit is a
+  lead under the same rules as any other source, and load-bearing
+  citations still get independent metadata verification (protocol
+  rule 4).
 
 ## Audit protocol (binding for audits that use this server)
 
@@ -123,8 +169,12 @@ below is carried over unchanged from the RCPH connector
   exhausted (HTTP 429) via the shared egress IP. Remedy: free key
   (`PAPER_SEARCH_MCP_OPENALEX_API_KEY`) and/or
   `PAPER_SEARCH_MCP_OPENALEX_EMAIL`. Optional.
-- **CORE — keyless use returns empty** (hard unauthenticated
-  rate-limiting). Remedy: free key (`PAPER_SEARCH_MCP_CORE_API_KEY`).
+- **CORE — keyed route works (spec 026).** Keyless use returns
+  empty (hard unauthenticated rate-limiting), and the MCP server's
+  `search_core` remains in that state; the stage instead uses the
+  direct client `glossa_lab.core_search` on the registered
+  `custom.core` connection (see the CORE section above). Search
+  verified live 2026-10-22 from the Glossa tree.
 - **Unpaywall — disabled** until `PAPER_SEARCH_MCP_UNPAYWALL_EMAIL`
   is set (any valid contact email; API courtesy field).
 - **BASE — expected empty** from here: its OAI-PMH endpoint requires

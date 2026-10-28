@@ -1,0 +1,7 @@
+[Unit]
+Description=Record OWNER NEEDED for the Glossa Lab backend
+Documentation=file:__REPO_ROOT__/services/linux/README.md
+
+[Service]
+Type=oneshot
+ExecStart=__SUPPORT_DIR__/record-owner-needed.sh __STATE_DIR__

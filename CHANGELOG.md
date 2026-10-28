@@ -6,6 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Spec 079: the backend now starts under supervision following the
+  Syncyard spec 007 pattern. The Linux unit is renamed to
+  `glossa-lab-backend` and runs the production entry point
+  (`create_app --factory`, port 8001, no reload) directly, with a
+  3-starts-per-hour restart cap and an `OWNER_NEEDED` alert unit.
+  One installer (`services/linux/install.sh`, via
+  `setup-os.sh install`) installs the backend unit AND the tray
+  (autostart + icon), retires the legacy `glossa-lab.service`, and
+  verifies backend identity (not just liveness) with a bounded
+  health check. The tray icon is now the Glossa Lab brand tile —
+  packaged PNG/ICO/SVG assets with a status badge — instead of a
+  generated coloured circle; the Windows shortcut installer sets
+  the icon location. `shell.sh run` now matches production
+  (port 8001, factory, no reload) and `shell.sh tray` sets
+  `PYTHONPATH` on Linux.
+
 
 ### Changed
 

@@ -16,6 +16,7 @@ powershell -NoProfile -Command ^
    $sc.Arguments = 'tray'; ^
    $sc.WorkingDirectory = '%REPO_ROOT%'; ^
    $sc.Description = 'Glossa Lab Tray'; ^
+   $sc.IconLocation = '%REPO_ROOT%\tray\glossa_tray\assets\glossa-lab.ico'; ^
    $sc.Save()"
 
 if exist "%SHORTCUT%" (

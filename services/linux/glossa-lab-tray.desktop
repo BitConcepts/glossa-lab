@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Glossa Lab
+Comment=Glossa Lab tray supervisor
+Exec=/usr/bin/env PYTHONPATH=__REPO_ROOT__/tray __VENV_PYTHON__ -m glossa_tray
+Path=__REPO_ROOT__
+Icon=glossa-lab
+Terminal=false
+Categories=Utility;
+X-GNOME-Autostart-enabled=true

@@ -101,6 +101,26 @@ Polls `GET /api/v1/health` every 5 seconds and updates the icon colour:
 - Red: backend stopped
 - Grey: unknown/starting
 
+### Icon
+
+The tray icon is the Glossa Lab application mark — the blue
+gradient tile with a white "G" used by the web UI — shipped as
+`glossa_tray/assets/glossa-lab.png` (+ `.ico` / `.svg`), with the
+status colour shown as a small badge in the lower-right corner.
+It is not a plain coloured circle, and it is not another project's
+mark (not the BitConcepts company mark, not Syncyard's). Regenerate
+the rasters from the SVG source with
+`glossa_tray/assets/build_icon.py`.
+
+### Linux autostart + backend supervision
+
+On Linux the tray does not own the backend process: systemd does
+(`glossa-lab-backend.service`, installed by
+`services/linux/install.sh` — the same installer also installs the
+tray autostart entry and the icon). The tray's Start/Stop actions
+call `systemctl --user start/stop glossa-lab-backend`, and its
+autostart toggle manages `~/.config/autostart/glossa-lab-tray.desktop`.
+
 ### Dependencies
 
 Listed in `tray/requirements.txt`: `pystray`, `Pillow`.

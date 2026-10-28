@@ -18,7 +18,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   health check. The tray icon is now the Glossa Lab brand tile —
   packaged PNG/ICO/SVG assets with a status badge — instead of a
   generated coloured circle; the Windows shortcut installer sets
-  the icon location. `shell.sh run` now matches production
+  the icon location. The unit also sets `OOMScoreAdjust=-300`:
+  the 2026-10-27 backend deaths were root-caused to kernel OOM
+  kills (at adj 0 the backend carried the highest kill priority
+  on the box), and -300 takes it out of first-victim position
+  without approaching the host runtime daemon's -700. `shell.sh run` now matches production
   (port 8001, factory, no reload) and `shell.sh tray` sets
   `PYTHONPATH` on Linux.
 

@@ -12,5 +12,6 @@
 - [x] T010 Tests: icon assets, healthcheck identity, installer render, tray icon pixels
 - [x] T011 Docs: services/linux README, tray README, CHANGELOG, this spec
 - [x] T012 Scratch end-to-end verification (install → start → health → restart-on-kill → tray icon)
-- [ ] T013 PR + CI green (8/8 incl. C4) + merge
+- [x] T013 PR + CI green (8/8 incl. C4) + merge (PR #424, merge 463aa6ed)
 - [ ] T014 Live VM cutover to the system unit; verify; stand the cron watchdog's restart duty down
+- [x] T015 OOM hardening: OOMScoreAdjust=-300 in the backend unit (root cause of the 2026-10-27 deaths: kernel OOM kills at adj 0)

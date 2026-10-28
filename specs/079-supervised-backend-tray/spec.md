@@ -86,6 +86,14 @@ packaged asset.
 - **FR-002**: The unit MUST restart on failure with a cap of 3
   starts per hour; on cap/failure an alert unit MUST record an
   `OWNER_NEEDED` marker and a supervisor log line.
+- **FR-002a**: The unit MUST set `OOMScoreAdjust=-300`. Root cause
+  of the 2026-10-27 backend deaths (verified from live /proc): they
+  were kernel OOM kills — the log stops mid-stream with no shutdown
+  lines, lifetimes vary with memory pressure, and at adj 0 the
+  backend's footprint gave it the highest kill priority on the box
+  (oom_score 674) once the protected runtime daemon (-700) is
+  excluded. -300 takes it out of first-victim position without
+  approaching the daemon's protection.
 - **FR-003**: A single Linux installer MUST install the backend
   unit and the tray (autostart + icon) in one run, be idempotent,
   retire the legacy `glossa-lab.service` unit so no two supervisors

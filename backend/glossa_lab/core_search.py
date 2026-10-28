@@ -45,8 +45,18 @@ import urllib.parse
 import urllib.request
 from typing import Any
 
-sys.path.insert(0, "/opt/muse/skills/custom-connector-setup/bin")
-from dynamic_credentials import add_surrogate_to_request, read_json_response  # noqa: E402
+try:
+    sys.path.insert(0, "/opt/muse/skills/custom-connector-setup/bin")
+    from dynamic_credentials import add_surrogate_to_request, read_json_response  # noqa: E402
+except ImportError:
+    # The vault runtime (dynamic_credentials) exists only where the
+    # connector runtime runs. Without it this client cannot
+    # authenticate: stay importable (tests stub the surrogate) and
+    # fail clean at call time with this module's own error type.
+    add_surrogate_to_request = None  # type: ignore[assignment]
+
+    def read_json_response(response):  # type: ignore[no-redef]
+        return json.loads(response.read().decode("utf-8"))
 
 BASE = "https://api.core.ac.uk/v3"
 ALLOWED_HOSTS = ["api.core.ac.uk"]
@@ -94,6 +104,11 @@ def _fetch(path: str, timeout: float) -> dict[str, Any]:
         headers={"Accept": "application/json",
                  "User-Agent": "glossa-lab-core-search/1.0 (spec 026)"},
     )
+    if add_surrogate_to_request is None:
+        raise CoreError(
+            "CORE credential runtime unavailable (dynamic_credentials "
+            "not importable in this environment); the keyed CORE "
+            "source cannot run here")
     add_surrogate_to_request(request, CREDENTIAL,
                              allowed_hosts=ALLOWED_HOSTS)
     _pace()

@@ -56,8 +56,10 @@ exit /b %ERRORLEVEL%
 
 :do_run
 shift
-echo [OK] Backend running on http://localhost:8001 (Ctrl+C to stop)
-"%VENV_PYTHON%" -m uvicorn glossa_lab.main:app --host ********* --port 8001 --reload --app-dir "%REPO_ROOT%\backend" %1 %2 %3 %4 %5 %6 %7 %8 %9
+REM Spec 080 FR-001: production semantics everywhere - app factory,
+REM loopback only, no --reload on the production host.
+echo [OK] Backend running on http://127.0.0.1:8001 (Ctrl+C to stop)
+"%VENV_PYTHON%" -m uvicorn glossa_lab.main:create_app --factory --host 127.0.0.1 --port 8001 --app-dir "%REPO_ROOT%\backend" %1 %2 %3 %4 %5 %6 %7 %8 %9
 exit /b %ERRORLEVEL%
 
 :do_python

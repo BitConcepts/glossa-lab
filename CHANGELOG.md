@@ -6,6 +6,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Spec 080: Glossa Lab's production home moves to the Windows host
+  (TRISTEN-DESKTOP). All Windows launch surfaces now use production
+  semantics — `glossa_lab.main:create_app --factory` on 127.0.0.1,
+  no `--reload` (shell.cmd `run`, the tray backend start, and
+  `scripts/run-backend-svc.cmd`). There is one canonical Windows
+  installer (`setup-os.cmd install`; `services/windows/install.cmd`
+  delegates to it and the H25-violating Startup shortcut is
+  retired); the installer verifies the tray icon assets against
+  pinned SHA-256 hashes and fails loudly on mismatch. The stop path
+  is targeted — tray via `stop-tray.vbs`, backend via its shutdown
+  endpoint, force-kill only of a verified Glossa uvicorn listener —
+  and no longer kills every `pythonw.exe` on the machine. Installed
+  mode is set in the launch chain (`GLOSSA_MODE=installed`), so the
+  database deterministically lives under
+  `%LOCALAPPDATA%\GlossaLab\data`. The tray now supervises the
+  backend on Windows: capped auto-restart (3/hour) that never
+  overrides a user stop. New host tooling:
+  `scripts/install-desktop-host.cmd` and
+  `scripts/verify-desktop-host.cmd` (identity, tray, icon hashes,
+  task state, restart test — markers, not liveness).
 - Spec 079: the backend now starts under supervision following the
   Syncyard spec 007 pattern. The Linux unit is renamed to
   `glossa-lab-backend` and runs the production entry point

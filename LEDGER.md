@@ -10454,6 +10454,7 @@ reports/phase435_results.json.
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+
 ## 2026-10-24 — Spec 052 EXECUTED (Phase-437): battery NB-1 on the Shakti layer (CISI-compilation lineage) — INCONSISTENT
 
 The amended D-01 arm A the parent claim's contradicted verdict
@@ -10770,3 +10771,38 @@ execution (PR #392, merged 83cea50d).
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+## 2026-10-28 — Spec 080 BUILD: Windows host migration package (desktop production home)
+
+At the owner's direction (2026-10-28), Glossa Lab's production home
+moves from the Muse VM — where the backend was repeatedly killed by
+kernel OOM events outside the project's control (Spec 079 record) —
+to the owner's Windows host, TRISTEN-DESKTOP. This entry records the
+BUILD; the cutover outcome gets its own entry when it happens.
+
+Built under specs/080-desktop-host-migration (claims C080-1..C080-9
+with falsifiers): production launch semantics on every Windows
+surface (`create_app --factory`, 127.0.0.1, no reload) in shell.cmd,
+the tray start path, and scripts/run-backend-svc.cmd; one canonical
+installer (setup-os.cmd; services/windows delegators; the
+H25-violating Startup shortcut retired); a targeted stop path (the
+previous stop killed every pythonw.exe on the machine); installer
+verification of the tray icon assets against pinned SHA-256 hashes
+(ICO 315940742d75720388264dcdf03178c58f878ea0701d03eeba95688d935ff520,
+PNG bb41bf09d4177cee0c96b29ebe480f86a9e7115946f9e4ad132d2367a7adb077);
+deterministic installed-mode data path (%LOCALAPPDATA%\GlossaLab\data
+via GLOSSA_MODE=installed in the launch chain); tray supervision on
+Windows (capped auto-restart, 3/hour, never overriding a user stop —
+before this change the tray started the backend once and never
+restarted it); and the host tooling scripts/install-desktop-host.cmd
++ scripts/verify-desktop-host.cmd (identity-grade verification
+markers). An audit note for the record: shell.cmd's committed run
+line carried a redacted host token (asterisks) where the bind
+address belonged — the line is replaced wholesale by this spec.
+
+Also recorded plainly: this ledger has no entries for Specs
+076–079. That gap predates this change; it is flagged here rather
+than silently backfilled.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.
+

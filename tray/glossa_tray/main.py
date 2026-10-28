@@ -100,6 +100,16 @@ _status_text = "Backend: Checking..."
 _status_error = False
 _backend_starting = False  # set True while start is in progress, cleared by poller
 
+# Spec 080 (Windows host supervision): the tray owns backend liveness on
+# Windows — there is no service manager underneath it. A backend that
+# dies without a user stop is restarted automatically, capped so a
+# crash loop cannot spin forever (H11). A user-initiated stop is never
+# overridden.
+_MAX_AUTO_RESTARTS = 3
+_RESTART_WINDOW_SEC = 3600
+_restart_times: list[float] = []
+_user_stopped = False
+
 # Label for the autostart toggle, varies by OS
 _AUTOSTART_LABEL = (
     "Run at Windows startup" if platform.system() == "Windows"
@@ -324,17 +334,23 @@ def _start_backend(_icon=None, _item=None) -> None:
     so no cmd shell or console ever appears. uvicorn stdout/stderr are appended
     to logs/backend.log alongside the app's structured logs.
     """
+    global _user_stopped  # noqa: PLW0603
+    _user_stopped = False  # any start clears a prior user stop (Spec 080)
     _rotate_backend_log()   # ensure log file stays bounded before appending
     if platform.system() == "Windows":
         _BACKEND_LOG.parent.mkdir(parents=True, exist_ok=True)
         log_fh = open(str(_BACKEND_LOG), "ab")  # noqa: SIM115
         env = os.environ.copy()
         env["PYTHONPATH"] = _BACKEND_DIR
+        # Installed mode: the database lives under
+        # %LOCALAPPDATA%\GlossaLab\data regardless of the caller's cwd
+        # (Spec 080 FR-005).
+        env["GLOSSA_MODE"] = "installed"
         port = str(_current_port())
         subprocess.Popen(
             [
-                _VENV_PYTHON, "-m", "uvicorn", "glossa_lab.main:app",
-                "--host", "0.0.0.0", "--port", port,
+                _VENV_PYTHON, "-m", "uvicorn", "glossa_lab.main:create_app",
+                "--factory", "--host", "127.0.0.1", "--port", port,
                 "--app-dir", _BACKEND_DIR,
             ],
             cwd=_BACKEND_DIR,
@@ -353,7 +369,11 @@ def _stop_backend(_icon=None, _item=None) -> None:
     """Stop the backend gracefully via HTTP, then kill if still running.
 
     Linux: also tells systemd to stop the unit.
+    A user stop is remembered so the Windows auto-restart (Spec 080)
+    never overrides it.
     """
+    global _user_stopped  # noqa: PLW0603
+    _user_stopped = True
     try:
         req = urllib.request.Request(f"{BACKEND_URL}/api/v1/shutdown", method="POST")
         urllib.request.urlopen(req, timeout=3)
@@ -451,6 +471,30 @@ def _ensure_backend_running() -> None:
         _start_backend()
 
 
+def _maybe_auto_restart() -> str:
+    """Windows tray supervision (Spec 080 FR-006): restart a backend
+    that died without a user stop.
+
+    Returns "restarted", "user-stopped", "cap-reached", or
+    "not-windows". Bounded at _MAX_AUTO_RESTARTS restarts per
+    _RESTART_WINDOW_SEC window (H11); the caller surfaces
+    "cap-reached" in the tray status so a crash loop is visible
+    instead of silent. Linux is supervised by systemd and never
+    auto-restarts from the tray.
+    """
+    if platform.system() != "Windows":
+        return "not-windows"
+    if _user_stopped:
+        return "user-stopped"
+    now = time.monotonic()
+    _restart_times[:] = [t for t in _restart_times if now - t < _RESTART_WINDOW_SEC]
+    if len(_restart_times) >= _MAX_AUTO_RESTARTS:
+        return "cap-reached"
+    _restart_times.append(now)
+    _start_backend()
+    return "restarted"
+
+
 def _quit(icon, _item=None):
     """Exit the tray application."""
     icon.stop()
@@ -476,6 +520,17 @@ def _status_poller(icon: pystray.Icon):
             icon.title = "Glossa Lab - Backend stopped"
             _status_text = "Backend: Stopped  (click to view log)"
             _status_error = True
+            # Spec 080: on Windows the tray is the supervisor — a
+            # backend that died on its own is restarted (capped); a
+            # user stop is left alone and labelled as such.
+            outcome = _maybe_auto_restart()
+            if outcome == "user-stopped":
+                _status_text = "Backend: Stopped by user"
+            elif outcome == "cap-reached":
+                _status_text = (
+                    "Backend: Stopped - auto-restart limit reached "
+                    "(click to view log)"
+                )
         elif health.get("status") in ("healthy", "degraded"):
             _backend_starting = False  # clear the starting flag once we see it's up
             if health.get("status") == "healthy":

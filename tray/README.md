@@ -121,6 +121,18 @@ tray autostart entry and the icon). The tray's Start/Stop actions
 call `systemctl --user start/stop glossa-lab-backend`, and its
 autostart toggle manages `~/.config/autostart/glossa-lab-tray.desktop`.
 
+### Windows backend supervision (Spec 080)
+
+On Windows there is no service manager underneath the tray, so the
+tray itself supervises the backend: the status poller restarts a
+backend that died without a user stop (capped at 3 restarts per
+hour, H11). A user-initiated stop is never overridden, and when the
+cap is reached the tray status says so instead of going silent.
+Start/stop go only through the wscript VBS wrappers
+(`scripts\launch-tray.vbs` / `scripts\stop-tray.vbs`, rule H25) and
+the backend is spawned with the production factory entry point on
+127.0.0.1 with `GLOSSA_MODE=installed`.
+
 ### Dependencies
 
 Listed in `tray/requirements.txt`: `pystray`, `Pillow`.

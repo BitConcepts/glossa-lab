@@ -5,13 +5,18 @@ REM ============================================================
 REM
 REM One Task Scheduler task (GlossaLab) runs the tray at logon.
 REM The tray is the single entry point: it starts the backend
-REM automatically if it is not already running.
+REM automatically if it is not already running, and on Windows it
+REM supervises it (Spec 080: capped auto-restart, never overriding
+REM a user stop).
+REM
+REM This file is the ONE canonical Windows installer (Spec 080
+REM FR-004). services\windows\install.cmd delegates here.
 REM
 REM Usage:
 REM   setup-os.cmd install    Create/update the GlossaLab scheduled task
 REM   setup-os.cmd uninstall  Remove the task and clean up
 REM   setup-os.cmd start      Run the task now (tray + backend)
-REM   setup-os.cmd stop       Gracefully shut down backend then kill tray
+REM   setup-os.cmd stop       Gracefully shut down backend then stop tray
 REM   setup-os.cmd restart    Stop then start
 REM   setup-os.cmd status     Show task state and backend health
 REM ============================================================
@@ -26,6 +31,16 @@ set "ENTRY_POINT=%REPO_ROOT%\tray\start_tray.pyw"
 set "LOG_DIR=%REPO_ROOT%\logs"
 set "HEALTH_URL=http://localhost:8001/api/v1/health"
 set "TASK_NAME=GlossaLab"
+
+REM Spec 080 FR-007: the installer verifies the packaged tray icon
+REM assets by SHA-256 and fails loudly on any mismatch. These pins
+REM are the Spec 079 packaged assets; if the icon is ever re-cut,
+REM update the pins here, in scripts\verify_desktop_host.py, and in
+REM specs\080-desktop-host-migration in the same change.
+set "ICON_ICO=%REPO_ROOT%\tray\glossa_tray\assets\glossa-lab.ico"
+set "ICON_ICO_SHA256=315940742D75720388264DCDF03178C58F878EA0701D03EEBA95688D935FF520"
+set "ICON_PNG=%REPO_ROOT%\tray\glossa_tray\assets\glossa-lab.png"
+set "ICON_PNG_SHA256=BB41BF09D4177CEE0C96B29EBE480F86A9E7115946F9E4AD132D2367A7ADB077"
 
 if "%~1"==""          goto usage
 if /i "%~1"=="install"   goto do_install
@@ -52,10 +67,28 @@ if not exist "%VENV_PYTHONW%" (
     echo [ERROR] pythonw.exe still not found after setup. Install Python 3 and retry.
     exit /b 1
 )
-if not exist "%REPO_ROOT%\tray\glossa_tray\assets\glossa-lab.ico" (
+if not exist "%ICON_ICO%" (
     echo [ERROR] Glossa Lab tray icon asset missing: tray\glossa_tray\assets\glossa-lab.ico
     exit /b 1
 )
+if not exist "%ICON_PNG%" (
+    echo [ERROR] Glossa Lab tray icon asset missing: tray\glossa_tray\assets\glossa-lab.png
+    exit /b 1
+)
+REM Verify both icon assets against the pinned SHA-256 hashes.
+powershell -NoProfile -Command "if ((Get-FileHash -Algorithm SHA256 -LiteralPath '%ICON_ICO%').Hash -ne '%ICON_ICO_SHA256%') { exit 1 }"
+if errorlevel 1 (
+    echo [ERROR] Tray icon hash mismatch: tray\glossa_tray\assets\glossa-lab.ico
+    echo         Expected SHA-256 %ICON_ICO_SHA256% - refusing to install.
+    exit /b 1
+)
+powershell -NoProfile -Command "if ((Get-FileHash -Algorithm SHA256 -LiteralPath '%ICON_PNG%').Hash -ne '%ICON_PNG_SHA256%') { exit 1 }"
+if errorlevel 1 (
+    echo [ERROR] Tray icon hash mismatch: tray\glossa_tray\assets\glossa-lab.png
+    echo         Expected SHA-256 %ICON_PNG_SHA256% - refusing to install.
+    exit /b 1
+)
+echo [OK] Tray icon assets verified ^(SHA-256^).
 if not exist "%LOG_DIR%" mkdir "%LOG_DIR%"
 
 REM H25: Register via wscript.exe + launch-tray.vbs — no visible window.
@@ -112,16 +145,31 @@ echo [OK] Stopped.
 exit /b 0
 
 :do_stop_silent
-REM 1. Graceful backend shutdown via HTTP
+REM Spec 080 FR-003: targeted stop only. The previous version killed
+REM EVERY pythonw.exe on the machine; that is gone. Only processes
+REM that are verifiably Glossa's are touched, in this order:
+REM   1. the tray (H25 stop-tray.vbs targets -m glossa_tray only) —
+REM      first, so the tray's auto-restart cannot resurrect the
+REM      backend while it is being stopped;
+REM   2. the backend, gracefully, via its shutdown endpoint;
+REM   3. a bounded wait (H11: ~20 s) for port 8001 to drain;
+REM   4. only a process still listening on 8001 whose command line
+REM      matches glossa_lab + uvicorn is force-killed, by PID.
+wscript.exe //nologo "%REPO_ROOT%\scripts\stop-tray.vbs" >nul 2>&1
 curl.exe -sf --max-time 3 -X POST "http://localhost:8001/api/v1/shutdown" >nul 2>&1
-timeout /t 1 /nobreak >nul
-REM 2. Kill ALL pythonw.exe instances (tray + any background python GUI)
-taskkill /F /IM pythonw.exe >nul 2>&1
-REM 3. Force-kill anything still holding port 8001
-for /f "tokens=5" %%p in ('netstat -ano 2^>nul ^| findstr ":8001.*LISTENING"') do (
-    taskkill /F /PID %%p >nul 2>&1
+set "STOP_WAITS=0"
+:stop_wait_loop
+netstat -ano 2>nul | findstr ":8001.*LISTENING" >nul 2>&1
+if errorlevel 1 goto :eof
+set /a STOP_WAITS+=1
+if !STOP_WAITS! GEQ 10 (
+    for /f "tokens=5" %%p in ('netstat -ano 2^>nul ^| findstr ":8001.*LISTENING"') do (
+        powershell -NoProfile -Command "$p = Get-CimInstance Win32_Process -Filter 'ProcessId = %%p' -ErrorAction SilentlyContinue; if ($p -and $p.CommandLine -match 'glossa_lab' -and $p.CommandLine -match 'uvicorn') { Stop-Process -Id %%p -Force -ErrorAction SilentlyContinue }"
+    )
+    goto :eof
 )
-goto :eof
+timeout /t 2 /nobreak >nul
+goto stop_wait_loop
 
 REM ─────────────────────────────────────────────────────────────
 :do_restart
@@ -172,7 +220,7 @@ echo.
 echo  install    Register GlossaLab scheduled task (run once)
 echo  uninstall  Remove task and clean up legacy entries
 echo  start      Run task now  (tray + backend, no window)
-echo  stop       Graceful backend shutdown + kill tray
+echo  stop       Graceful backend shutdown + stop tray (targeted)
 echo  restart    Stop then start
 echo  status     Task state + backend health
 echo.

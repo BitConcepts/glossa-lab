@@ -116,7 +116,7 @@ def test_tray_icon_uses_brand_tile() -> None:
 
     try:
         import glossa_tray.main as tray_main
-    except Exception:  # noqa: BLE001 — headless CI has no display for pystray
+    except BaseException:  # noqa: B036 — headless CI: pystray import fails or exits
         pytest.skip("pystray is not importable in this environment")
 
         image = tray_main._create_icon_image("green")  # noqa: SLF001

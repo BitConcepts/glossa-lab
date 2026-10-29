@@ -44,6 +44,13 @@ def fingerprint(token: str) -> str:
     return hashlib.sha256(token.encode("utf-8")).hexdigest()[:8]
 
 
+def _header_dict(headers) -> dict[str, str]:
+    """Header dict with lowercased names: servers send wire casing
+    (uvicorn emits ``www-authenticate``), and HTTP header names are
+    case-insensitive, so all lookups use the lowercase form."""
+    return {name.lower(): value for name, value in headers.items()}
+
+
 def request(
     base_url: str, method: str, path: str, token: str | None, timeout: float
 ) -> tuple[int, dict, bytes]:
@@ -55,9 +62,9 @@ def request(
     )
     try:
         with urllib.request.urlopen(req, timeout=timeout) as response:
-            return response.status, dict(response.headers), response.read()
+            return response.status, _header_dict(response.headers), response.read()
     except urllib.error.HTTPError as exc:
-        return exc.code, dict(exc.headers), exc.read()
+        return exc.code, _header_dict(exc.headers), exc.read()
     except (urllib.error.URLError, OSError):
         return 0, {}, b""
 
@@ -123,8 +130,8 @@ def main(argv: list[str] | None = None) -> int:
     )
     leg(
         "no-token-401",
-        status == 401 and headers.get("WWW-Authenticate") == "Bearer",
-        f"status={status} www-authenticate={headers.get('WWW-Authenticate')!r}",
+        status == 401 and headers.get("www-authenticate") == "Bearer",
+        f"status={status} www-authenticate={headers.get('www-authenticate')!r}",
     )
 
     # Leg 3 — data route refuses a wrong token.

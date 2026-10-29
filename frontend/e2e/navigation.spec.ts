@@ -104,14 +104,14 @@ test.describe("Program-space navigation", () => {
   test("clicking Claims renders the claims register", async ({ page }) => {
     await page.goto("/");
     await page.getByTitle("Claims").first().click();
-    await expect(page.getByRole("heading", { name: /Indus evidence/i }).first())
+    await expect(page.getByRole("heading", { name: /Evidence Graph/i }).first())
       .toBeVisible({ timeout: 5000 });
   });
 
   test("clicking Evidence & sources renders the evidence workspace", async ({ page }) => {
     await page.goto("/");
     await page.getByTitle("Evidence & sources").first().click();
-    await expect(page.getByRole("heading", { name: /Indus evidence/i }).first())
+    await expect(page.getByRole("heading", { name: /Evidence Graph/i }).first())
       .toBeVisible({ timeout: 5000 });
   });
 

@@ -358,6 +358,22 @@ function AppContent() {
     }
   }, [tab]);
 
+  // Hash-driven navigation: a same-document hash change (deep link,
+  // back/forward, tray link opened in an existing tab) switches the
+  // route without a reload. replaceState in the sync effect above
+  // does not fire hashchange, so this cannot loop.
+  useEffect(() => {
+    const onHash = () => {
+      const m = window.location.hash.match(/^#\/([a-z-]+)/);
+      if (m && VALID_TABS.has(m[1])) {
+        userNavigatedRef.current = true;
+        setTab(m[1] as Tab);
+      }
+    };
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
+
   // Launch landing: with a program open and no deep link, land on the
   // program's home — the workbench opens where the work is. The tool
   // home (wireframe 01) stays one click away via Programs/switcher,

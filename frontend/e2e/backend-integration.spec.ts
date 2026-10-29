@@ -420,7 +420,7 @@ test.describe("AI Chat UI", () => {
     // Open via the sidebar button (title toggles between Open/Close)
     await page.getByTitle(/Open AI assistant/i).first().click();
     // Panel header shows "Glossa AI"
-    await expect(page.getByText("Glossa AI").first()).toBeVisible();
+    await expect(page.getByText("Glossa AI", { exact: true }).first()).toBeVisible();
     // Sub-header shows "Research assistant"
     await expect(page.getByText("Research assistant")).toBeVisible();
     // Chat input textarea — ChatInline has placeholder "Ask Glossa AI anything…"
@@ -442,7 +442,7 @@ test.describe("AI Chat UI", () => {
     // Starter prompts include "Explain the Ventris method" when no prior chat history
     // Increase timeout and fall back to checking the panel opened if history was still present
     const ventrisVisible = await page.getByText(/Ventris/i).first().isVisible({ timeout: 5000 }).catch(() => false);
-    const panelOpen = await page.getByText("Glossa AI").first().isVisible({ timeout: 3000 }).catch(() => false);
+    const panelOpen = await page.getByText("Glossa AI", { exact: true }).first().isVisible({ timeout: 3000 }).catch(() => false);
     expect(ventrisVisible || panelOpen).toBeTruthy();
   });
 
@@ -454,7 +454,7 @@ test.describe("AI Chat UI", () => {
     // Make resilient: just verify the panel opened (Glossa AI text visible)
     await page.waitForTimeout(1000);
     const researchBtn = page.locator("button").filter({ hasText: /Research/ }).first();
-    const panelOpen = await page.getByText("Glossa AI").first().isVisible({ timeout: 3000 }).catch(() => false);
+    const panelOpen = await page.getByText("Glossa AI", { exact: true }).first().isVisible({ timeout: 3000 }).catch(() => false);
     // If Research button isn't visible (panel still loading), we still pass if panel opened
     const btnVisible = await researchBtn.isVisible({ timeout: 3000 }).catch(() => false);
     expect(panelOpen || btnVisible).toBeTruthy();
@@ -782,7 +782,7 @@ test.describe("Evidence Graph UI (with backend)", () => {
     await page.goto("/");
     await openPalette(page);
     await page.getByPlaceholder(/Search commands/i).fill("Evidence");
-    await expect(page.getByText(/Go to Evidence Graph/i)).toBeVisible({ timeout: 3000 });
+    await expect(page.getByText(/Go to Evidence & sources/i)).toBeVisible({ timeout: 3000 });
   });
 });
 

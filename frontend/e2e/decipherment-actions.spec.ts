@@ -130,8 +130,17 @@ async function setupMocks(
   await page.route("**/api/v1/projects/active", (r) =>
     r.fulfill({ status: 404, contentType: "application/json",
       body: JSON.stringify({ detail: "No active project" }) }));
+  // Spec 081: the shell is program-centric — with zero programs it
+  // stays on the tool home and no program surface (dashboard, claims)
+  // renders. One fixture program auto-activates (single-project rule),
+  // which is the mocked equivalent of the old shell's global mode.
   await page.route("**/api/v1/projects", (r) =>
-    r.fulfill({ status: 200, contentType: "application/json", body: "[]" }));
+    r.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify([{
+        id: "indus_decipherment", label: "Indus Script Decipherment",
+        description: "Mock program (shell bootstrap).", prompt_context: "", question: "",
+        topic_ids: [], experiment_ids: [], corpus_ids: [], is_active: 1,
+        created_at: "2026-01-01T00:00:00Z", updated_at: "2026-01-01T00:00:00Z",
+      }]) }));
   // Python env status used by TerminalPanel — returning {} is fine here.
   await page.route("**/api/v1/env/status", (r) =>
     r.fulfill({ status: 200, contentType: "application/json",

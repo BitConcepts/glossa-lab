@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Increment this when adding a new _SCHEMA_Vn block below.
 # _apply_schema will raise if the DB is somehow ahead of the code.
-_SCHEMA_VERSION = 23
+_SCHEMA_VERSION = 24
 
 _SCHEMA_V1 = """
 CREATE TABLE IF NOT EXISTS _schema_version (
@@ -794,6 +794,19 @@ class Database:
                 pass  # column may already exist
             await self._conn.execute("UPDATE _schema_version SET version = ?", (23,))
             current_version = 23
+
+        if current_version < 24:
+            # Spec 081: a project (a "program" in UI language) carries the
+            # question it tests — shown on the program home and in the
+            # program switcher. Additive only; existing rows default to ''.
+            try:
+                await self._conn.execute(
+                    "ALTER TABLE projects ADD COLUMN question TEXT NOT NULL DEFAULT ''"
+                )
+            except Exception:  # noqa: BLE001
+                pass  # column may already exist
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (24,))
+            current_version = 24
 
         if current_version > _SCHEMA_VERSION:
             logger.warning(
@@ -2408,6 +2421,7 @@ class Database:
         label: str,
         description: str = "",
         prompt_context: str = "",
+        question: str = "",
         topic_ids: list[str] | None = None,
         experiment_ids: list[str] | None = None,
         corpus_ids: list[str] | None = None,
@@ -2422,11 +2436,11 @@ class Database:
             )
         await self._conn.execute(
             """INSERT OR REPLACE INTO projects
-               (id, label, description, prompt_context, topic_ids,
+               (id, label, description, prompt_context, question, topic_ids,
                 experiment_ids, corpus_ids, is_active, created_at, updated_at)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))""",
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))""",
             (
-                project_id, label, description, prompt_context,
+                project_id, label, description, prompt_context, question,
                 json.dumps(topic_ids or []),
                 json.dumps(experiment_ids or []),
                 json.dumps(corpus_ids or []),

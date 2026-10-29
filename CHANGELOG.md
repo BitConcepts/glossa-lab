@@ -49,6 +49,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   longer identifies the backend by the port-8001 listener —
   on the host that listener is tailscaled (Tailscale Serve),
   not the app — it uses the command-line process set instead.
+  Amendment 3 (2026-10-29): persistence — the logon task
+  gains restart-on-failure (3 x 1 min) and launch-tray.vbs
+  waits on the tray propagating its exit code, so the
+  scheduler supervises the tray's lifetime (job-launched
+  starts died with their job's teardown; runs 40855200786 +
+  40861773854); `setup-os.cmd start` is now idempotent
+  (identity-verified no-op when already healthy).
 - Spec 079: the backend now starts under supervision following the
   Syncyard spec 007 pattern. The Linux unit is renamed to
   `glossa-lab-backend` and runs the production entry point

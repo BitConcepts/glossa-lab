@@ -139,6 +139,20 @@ exit /b 0
 REM ────────────────────────────────────────────────────────────
 :do_start
 REM ────────────────────────────────────────────────────────────
+REM Idempotent start (Spec 080 Amendment 3, 2026-10-29): if the
+REM backend already answers healthy WITH the Spec 079 identity
+REM (bounded healthcheck.py: /docs 200 + health + OpenAPI title),
+REM the start is a no-op success. The previous stop-first-always
+REM shape let two starts race a second backend into an
+REM address-in-use exit (host run 40861773854 log evidence).
+if exist "%REPO_ROOT%\backend\venv\Scripts\python.exe" (
+    "%REPO_ROOT%\backend\venv\Scripts\python.exe" "%REPO_ROOT%\services\linux\healthcheck.py" --attempts 2 >nul 2>&1
+    if not errorlevel 1 (
+        echo GLOSSA_START_STATE already-running identity=verified
+        echo [OK] GlossaLab backend already running with verified identity - start is a no-op.
+        exit /b 0
+    )
+)
 REM Always stop existing instances first to prevent tray stacking.
 call :do_stop_silent
 timeout /t 2 /nobreak >nul

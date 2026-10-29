@@ -11045,3 +11045,33 @@ is never targeted for kill or identity.
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+
+## [2026-10-29] Entry - Spec 080 Amendment 3: Persistence (Task-Owned Start, Idempotent Start)
+
+Diagnosis (host runs 40855200786 + 40861773854): the desktop
+backend passed every verification leg, then vanished within
+~35 minutes. The logon task had never run (console session
+logged on since 2026-09-25; LastRunTime 11/30/1999); every
+verified start was launched inside a gatekeeper job and died
+with that job's teardown - tray and backend both at 0
+processes, backend log ending after startup with no shutdown
+lines. An earlier cycle also showed a double-start race
+(address-in-use).
+
+Amendment 3: register_task.ps1 gains the scheduler's
+restart-on-failure (RestartCount 3, RestartInterval 1 min);
+launch-tray.vbs now waits on the tray and propagates its exit
+code, so the task stays Running for the tray's lifetime and
+the scheduler restarts a crashed tray (a clean exit-0 quit is
+not restarted). setup-os.cmd start is idempotent: the bounded
+Spec 079 identity check runs first, and an already-healthy
+backend makes the start a no-op success
+(GLOSSA_START_STATE already-running). The durable start is
+the task fired on demand (Start-ScheduledTask) - scheduler-
+owned, so it outlives any job; the persistence proof must
+span a job boundary (separate later probe job). Spec record:
+specs/080-desktop-host-migration/spec.md, Amendment 3;
+contract tests C080-8 (extended) and C080-9 (new).
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.

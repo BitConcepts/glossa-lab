@@ -20,5 +20,15 @@ sh.Environment("PROCESS")("PYTHONPATH") = root & "\tray;" & sh.Environment("PROC
 ' %LOCALAPPDATA%\GlossaLab\data regardless of the caller's cwd.
 sh.Environment("PROCESS")("GLOSSA_MODE") = "installed"
 
-' Window style 0 = hidden.  False = fire-and-forget (do not wait).
-sh.Run Chr(34) & pythonw & Chr(34) & " -m glossa_tray", 0, False
+' Window style 0 = hidden. True = WAIT for the tray to exit and
+' propagate its exit code (Spec 080 Amendment 3, 2026-10-29):
+' the scheduled task stays Running for the tray's lifetime, so
+' the scheduler's restart-on-failure settings supervise the
+' tray - a tray crash (nonzero exit) is restarted by the
+' scheduler; a clean tray quit (exit 0) is not. A fire-and-
+' forget launch made every job-launched start die with its
+' launcher and left the scheduler nothing to supervise
+' (host runs 40855200786 + 40861773854).
+Dim exitCode
+exitCode = sh.Run(Chr(34) & pythonw & Chr(34) & " -m glossa_tray", 0, True)
+WScript.Quit(exitCode)

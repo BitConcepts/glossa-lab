@@ -11289,3 +11289,25 @@ direction of Tristen Pierson, per constitution sec.VI.
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-29] Entry — Leg C hardening 1: intake guards (C-05 upload traversal, C-06 SSRF)
+
+- **Findings (Leg C red team, live-confirmed on a throwaway instance):**
+  C-05 — `POST /indus-evidence/upload` honoured `../` filenames out of
+  `raw/user_uploads/`, with no size cap and no content validation;
+  C-06 — `POST /indus-evidence/import-url` and `/sweep/intake` fetched
+  arbitrary caller URLs (a loopback fetch of the backend's own health
+  endpoint succeeded and was stored as a `.pdf`).
+- **Fix (`backend/glossa_lab/api/indus_evidence.py`):** upload
+  filenames reduced to a sanitised basename; 25 MiB intake cap;
+  `%PDF-` magic check before any write/intake. URL fetches go through
+  an SSRF guard (http/https only; `localhost` refused; literal or
+  DNS-resolved private/loopback/link-local/reserved/multicast hosts
+  refused; redirects re-guarded; response read capped).
+  `sign_images` upload now rejects path-shaped `sign_id` values.
+- **Tests:** `backend/tests/test_indus_evidence_api.py` — traversal
+  filename confined, non-PDF content rejected, loopback import
+  blocked, `file://` scheme blocked.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec. VI.

@@ -1,0 +1,679 @@
+{
+ "spec": "031-stage2-q7-provenance-networks",
+ "register_version": "0.3-draft",
+ "note": "Governed claim register for Spec 031 (Spec 027 Stage 2 / Q7 design freeze). Drafted claims-first in the Spec 028/030 register shape on 2026-10-13. AEE recovery round 1 (after_specify, 20261013T060646Z) returned iterate with 5 failure modes; the recovery recorded in aee/recovery-specify.md rewrote C01 and C06 as single atomic propositions (their enumerations carried into the boundaries verbatim in substance) and added pairwise boundary confirmations for the three flagged pairs (C05-C07, C07-C11, C07-C12). No falsification test or verdict rule was altered. Register version 0.1-draft -> 0.2-draft. Recovery round 2 (after_specify, 20261013T060745Z) cleared the irreducibility challenges and left four negation-conflict challenges, which the assessor raises on claim texts alone (shared vocabulary with mismatched negation polarity); the texts of C01, C05, C11, and C12 were reworded to remove the accidental token collisions while preserving each claim's proposition, falsification test, and verdict rule (recorded in aee/recovery-specify.md). Register version 0.2-draft -> 0.3-draft.",
+ "claims": [
+  {
+   "id": "F031-C01",
+   "text": "Q7 verdicts under Spec 031 concern craft evidence only.",
+   "kind": "hypothesis",
+   "status": "draft",
+   "boundary": [
+    "The licensed-conclusion boundary of every Q7 output. Craft evidence means objects, materials, and techniques, and nothing beyond them. This claim governs what a verdict may mean, not how links are built (C02-C04), not how arms are computed (C05-C07), and not how verdicts are issued (C09)."
+   ],
+   "depends_on": [],
+   "assumptions": [
+    "ASM-LICENSED-CONCLUSION-ONLY"
+   ],
+   "alternatives": [
+    "A source-sharing pattern in materials licenses an inference that people, workshops, or a language moved."
+   ],
+   "falsification_tests": [
+    "One people, migration, workshop-population, or language conclusion in a Q7 report defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-OBJECT-AS-PEOPLE",
+     "ASM-TECHNIQUE-AS-LANGUAGE"
+    ],
+    "strongest_rival": "A source-sharing pattern in materials licenses an inference that people, workshops, or a language moved.",
+    "verdict_rule": "The verdict applies only to whether source-sharing predicts arm similarity net of the frozen distance controls; any broader reading is outside the verdict.",
+    "evidence_origin_groups": [
+     "spec027-design",
+     "spec027-q7-adjudication"
+    ],
+    "boundary_confirmation": "C01 bounds what a verdict MEANS; C09 governs how a verdict is ISSUED under the frozen rules. A verdict issued correctly under C09 still may not be read beyond C01, and C01's boundary does not weaken any C09 rule. C01 is inherited from F027-C15 and governs conclusions; C05 governs computation (arm separation). Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/027-movement-culture-language/spec.md#8.1",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 027 section 8.1 licensed-conclusion text",
+     "source_id": "specs/027-movement-culture-language/spec.md#8.1"
+    },
+    {
+     "ref": "specs/027-movement-culture-language/stage2-q7-adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Stage 2 Q7 adjudication record: non-goals stand as decided boundaries",
+     "source_id": "specs/027-movement-culture-language/stage2-q7-adjudication.md",
+     "independent_of": [
+      "specs/027-movement-culture-language/spec.md#8.1"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F031-C02",
+   "text": "The primary link set contains only Law (2011) determinations made by a named instrumental method.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Membership of the primary link set. This claim governs which determinations may enter the primary tier, not the sensitivity tier (C03), not contextual sources (C04), and not release (C11)."
+   ],
+   "depends_on": [],
+   "assumptions": [
+    "ASM-PROVENANCE-METHOD-RECORDED"
+   ],
+   "alternatives": [
+    "All Law (2011) attributions, instrumental and reference-based alike, enter one pooled link set."
+   ],
+   "falsification_tests": [
+    "One reference-based or method-unrecorded determination in the primary link set defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-VISUAL-AS-INSTRUMENTAL"
+    ],
+    "strongest_rival": "All Law (2011) attributions, instrumental and reference-based alike, enter one pooled link set.",
+    "verdict_rule": "Primary-tier membership is checked determination by determination against the method recorded in the material study; an unrecorded method excludes the determination from the primary tier.",
+    "evidence_origin_groups": [
+     "d8-audit",
+     "spec027-q7-adjudication"
+    ],
+    "boundary_confirmation": "C02 governs PRIMARY membership; C03 governs where reference-based assignments may appear (the sensitivity tier only). Admitting them under C03 does not admit them under C02, and excluding them under C02 does not erase them from the record. C02 restricts the primary set to Law determinations; C04 states that the Meluhha compilations add nothing to any link set. C11 governs release of what C02 admits; admission under C02 is internal use only and implies no release under C11. Distinct boundaries; none negates another."
+   },
+   "evidence": [
+    {
+     "ref": "specs/027-movement-culture-language/stage2-d8-audit.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D8 audit Stage 1: instrumental subsets (INAA; Sr/S isotopes) and method recorded per material study",
+     "source_id": "specs/027-movement-culture-language/stage2-d8-audit.md"
+    },
+    {
+     "ref": "specs/027-movement-culture-language/stage2-q7-adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Adopted Ask 2B: instrumental methods form the primary link set",
+     "source_id": "specs/027-movement-culture-language/stage2-q7-adjudication.md",
+     "independent_of": [
+      "specs/027-movement-culture-language/stage2-d8-audit.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F031-C03",
+   "text": "Reference-based assignments from Law (2011) enter only the separately labelled sensitivity tier.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Placement of Law's Chapter 4 reference-based assignments. This claim governs labelling and placement, not primary membership (C02) and not arm closure (C08)."
+   ],
+   "depends_on": [
+    "F031-C02"
+   ],
+   "assumptions": [
+    "ASM-TIER-SEPARATION"
+   ],
+   "alternatives": [
+    "Reference-based assignments are pooled with instrumental determinations, with method carried as a covariate."
+   ],
+   "falsification_tests": [
+    "One reference-based assignment inside the primary link set, or one sensitivity result reported without its label, defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-TIERS-POOLED"
+    ],
+    "strongest_rival": "Reference-based assignments are pooled with instrumental determinations, with method carried as a covariate.",
+    "verdict_rule": "The sensitivity tier is computed only alongside a testable primary, is labelled a sensitivity wherever reported, and carries no verdict.",
+    "evidence_origin_groups": [
+     "d8-audit",
+     "spec027-q7-adjudication"
+    ],
+    "boundary_confirmation": "C03 places reference-based assignments in the sensitivity tier; C02 keeps them out of the primary tier. The two rules are complementary, not contradictory: together they place every Law assignment in exactly one tier. C03 governs placement; C08 governs closure when the PRIMARY is too sparse. A sensitivity existing under C03 never re-bases a closed arm under C08."
+   },
+   "evidence": [
+    {
+     "ref": "specs/027-movement-culture-language/stage2-d8-audit.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D8 audit Stage 1 margins: Chapter 4 reference-based assignments are the visual tier",
+     "source_id": "specs/027-movement-culture-language/stage2-d8-audit.md"
+    },
+    {
+     "ref": "specs/027-movement-culture-language/stage2-q7-adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Adopted Ask 2B: visual-only links appear only in a separately labelled sensitivity",
+     "source_id": "specs/027-movement-culture-language/stage2-q7-adjudication.md",
+     "independent_of": [
+      "specs/027-movement-culture-language/stage2-d8-audit.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F031-C04",
+   "text": "The Meluhha compilations contribute no site-pair links under this design.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "The role of the Possehl (1996) Meluhha compilation. This claim governs link contribution only; the compilation's contextual use in narrative is outside every link set, covariate, and sensitivity."
+   ],
+   "depends_on": [],
+   "assumptions": [
+    "ASM-REGION-IS-NOT-A-SITE"
+   ],
+   "alternatives": [
+    "Region-level Meluhha references can be resolved to Indus sites and used as provenance links."
+   ],
+   "falsification_tests": [
+    "One site-pair link, covariate value, or sensitivity cell derived from the Meluhha compilation defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-REGION-AS-SITE-LINK"
+    ],
+    "strongest_rival": "Region-level Meluhha references can be resolved to Indus sites and used as provenance links.",
+    "verdict_rule": "The compilation is catalogue_only context; its 76 citations name a source region, never an Indus site, so no link construction may cite it.",
+    "evidence_origin_groups": [
+     "d8-audit"
+    ],
+    "boundary_confirmation": "C04 excludes one source from link construction; C02 defines what the primary set contains (Law instrumental determinations). Exclusion under C04 does not restrict C02's set further, and C02's definition does not admit the compilation by silence. Distinct boundaries; neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/027-movement-culture-language/stage2-d8-audit.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D8 audit Stage 3: the compilation names a source region, never an Indus site; posture catalogue_only",
+     "source_id": "specs/027-movement-culture-language/stage2-d8-audit.md"
+    },
+    {
+     "ref": "specs/031-stage2-q7-provenance-networks/spec.md#3",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 031 section 3: Meluhha enters no link set, covariate, or sensitivity",
+     "source_id": "specs/031-stage2-q7-provenance-networks/spec.md#3",
+     "independent_of": [
+      "specs/027-movement-culture-language/stage2-d8-audit.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F031-C05",
+   "text": "The two response arms are computed on separate eligible site sets.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Arm separation in computation. This claim governs the site sets and the ban on pooling the arms into one score; it does not govern either arm's response basis (C06 for bead/craft; spec section 4.2 for ceramic) or arm closure (C07, C08)."
+   ],
+   "depends_on": [],
+   "assumptions": [
+    "ASM-ARMS-SEPARATE"
+   ],
+   "alternatives": [
+    "Both arms are restricted to the intersection of their eligible sites, or combined into one craft-similarity response."
+   ],
+   "falsification_tests": [
+    "One pooled cross-arm score, or one arm computed on the other arm's site set, defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-ARMS-POOLED"
+    ],
+    "strongest_rival": "Both arms are restricted to the intersection of their eligible sites, or combined into one craft-similarity response.",
+    "verdict_rule": "Each arm returns its own verdict on its own eligible sites; different verdicts across arms are a feature of the bounded question, not an inconsistency.",
+    "evidence_origin_groups": [
+     "spec027-design",
+     "spec027-q7-adjudication"
+    ],
+    "boundary_confirmation": "C05 governs WHICH sites each arm is computed on; C06 governs WHAT the bead/craft arm's response is built from. A site set chosen under C05 does not change C06's source basis, and C06's basis does not merge the arms' site sets. C05 governs computation sets; C07 governs the ceramic arm's closure when its own set cannot be evidenced. Closure under C07 is a consequence inside C05's separation, not a pooling. Distinct boundaries; none negates another. C05 and C07: C05's rule applies to arms that are computed; C07 determines, before any computation, whether the ceramic arm is computed at all. A closure under C07 therefore does not contradict C05, and C05's separation does not compel a computation C07 has closed. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/027-movement-culture-language/spec.md#8.1",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 027 section 8.1: responses modelled separately, never pooled into one score",
+     "source_id": "specs/027-movement-culture-language/spec.md#8.1"
+    },
+    {
+     "ref": "specs/027-movement-culture-language/stage2-q7-adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Adopted Ask 3A: each response modelled on its own eligible site set",
+     "source_id": "specs/027-movement-culture-language/stage2-q7-adjudication.md",
+     "independent_of": [
+      "specs/027-movement-culture-language/spec.md#8.1"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F031-C06",
+   "text": "The bead/craft response is built only from published Kenoyer/Vidale technique classifications.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "The bead/craft arm's response basis. The classifications reach assemblages through their published applications; a cell's value is taken from a published application of the classification, with that application recorded as the cell's source. This claim governs source basis and per-cell source recording, not the arm's site set (C05) and not link construction (C02, C03)."
+   ],
+   "depends_on": [
+    "F031-C05"
+   ],
+   "assumptions": [
+    "ASM-CLASSIFICATION-AS-PUBLISHED"
+   ],
+   "alternatives": [
+    "The program re-classifies beads from photographs or descriptions into its own technique classes."
+   ],
+   "falsification_tests": [
+    "One bead/craft response cell built from a program-generated classification, or lacking its published classification source, defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-PROGRAM-AS-CLASSIFIER"
+    ],
+    "strongest_rival": "The program re-classifies beads from photographs or descriptions into its own technique classes.",
+    "verdict_rule": "A cell enters the bead/craft response only with its published classification and source recorded; unclassifiable published material is reported as missing, never re-classified.",
+    "evidence_origin_groups": [
+     "d8-audit",
+     "spec027-q7-adjudication"
+    ],
+    "boundary_confirmation": "C06 governs the bead/craft RESPONSE basis; C02 governs the LINK basis (Law determinations). Kenoyer/Vidale material under C06 is a response, never a link; Law material under C02 is a link, never a response. The two source families do not substitute for each other. C06 operates inside the arm separation C05 fixes; it changes no site set."
+   },
+   "evidence": [
+    {
+     "ref": "specs/027-movement-culture-language/stage2-d8-audit.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D8 audit Stage 2: the classification scheme and its published applications; no consolidated per-object dataset",
+     "source_id": "specs/027-movement-culture-language/stage2-d8-audit.md"
+    },
+    {
+     "ref": "specs/027-movement-culture-language/stage2-q7-adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Adopted Ask 3A: bead/craft similarity from published technique classifications",
+     "source_id": "specs/027-movement-culture-language/stage2-q7-adjudication.md",
+     "independent_of": [
+      "specs/027-movement-culture-language/stage2-d8-audit.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F031-C07",
+   "text": "The ceramic arm is NOT ESTIMABLE under this freeze if the execution margins step cannot evidence the frozen minimum eligible site count from sources at audited postures.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "The ceramic arm's estimability at the margins step. This claim governs the ceramic arm's closure consequence only; the general viability rule for both arms is C08, and the thresholds' provenance is C12."
+   ],
+   "depends_on": [
+    "F031-C05"
+   ],
+   "assumptions": [
+    "ASM-POSTURE-BEFORE-DIGITISATION"
+   ],
+   "alternatives": [
+    "The ceramic arm proceeds on whatever site reports are reachable, with postures assigned after the response is seen."
+   ],
+   "falsification_tests": [
+    "One ceramic response computed after a margins step that evidenced fewer than the frozen minimum eligible sites defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-POSTURE-AFTER-OUTCOME"
+    ],
+    "strongest_rival": "The ceramic arm proceeds on whatever site reports are reachable, with postures assigned after the response is seen.",
+    "verdict_rule": "If the margins step evidences fewer than 8 eligible ceramic sites from sources at verified_open or open_access_read_only postures, the ceramic arm closes NOT ESTIMABLE at margins and no ceramic response is computed.",
+    "evidence_origin_groups": [
+     "d8-audit",
+     "spec027-stage1-freeze"
+    ],
+    "not_yet_testable_is_registration_status": true,
+    "boundary_confirmation": "C07 is the ceramic-specific closure; C08 is the general viability closure for either arm. A ceramic arm can close under C07 (source basis cannot evidence the site floor) or under C08 (viability thresholds unmet on an evidenced set); the two closures have different triggers and neither substitutes for the other. C07 presumes the thresholds C12 fixes; it does not set them. C07 and C05: whether the ceramic arm is computed is decided under C07 at the margins step; which site set it is computed on, if computed, is C05's rule. The two act at different steps and neither negates the other. C07 and C11: C07 governs internal estimability - whether a ceramic response may be computed from sources digitised internally at audited postures; C11 governs release of derived data. Internal use under C07 releases nothing, so the two govern different acts and neither negates the other. C07 and C12: C07 applies the minimum eligible site count; C12 fixes where that count comes from. Applying the count under C07 does not set or move it under C12, and fixing it under C12 does not decide C07's closure. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/027-movement-culture-language/stage2-d8-audit.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D8 audit residual (i): ceramic-arm site-report sources are outside the audited components; posture assigned under section 5.1 at freeze time",
+     "source_id": "specs/027-movement-culture-language/stage2-d8-audit.md"
+    },
+    {
+     "ref": "specs/027-movement-culture-language/stage1-freeze.md#7",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Stage 1 freeze section 7 precedent: a component declared NOT ESTIMABLE from margins before any outcome",
+     "source_id": "specs/027-movement-culture-language/stage1-freeze.md#7",
+     "independent_of": [
+      "specs/027-movement-culture-language/stage2-d8-audit.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F031-C08",
+   "text": "An arm failing the frozen viability thresholds at the margins step closes NOT-YET-TESTABLE.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Arm closure on viability. This claim governs the consequence of unmet thresholds (8 eligible sites, 10 linked pairs) for either arm; it does not set the thresholds (C12) and does not govern the ceramic source-basis closure (C07)."
+   ],
+   "depends_on": [
+    "F031-C12"
+   ],
+   "assumptions": [
+    "ASM-MARGINS-BEFORE-OUTCOMES"
+   ],
+   "alternatives": [
+    "An arm short of the thresholds is re-based on the sensitivity tier or on lowered thresholds so a test can still run."
+   ],
+   "falsification_tests": [
+    "One primary test run for an arm that failed the frozen viability thresholds at the margins step defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-REBASE-ON-WEAKER-LINKS",
+     "ASM-THRESHOLD-FITTED-TO-DATA"
+    ],
+    "strongest_rival": "An arm short of the thresholds is re-based on the sensitivity tier or on lowered thresholds so a test can still run.",
+    "verdict_rule": "NOT-YET-TESTABLE is assigned at the margins step, before any response in that arm is computed; it is a registration status, not a verdict.",
+    "evidence_origin_groups": [
+     "spec027-q7-adjudication"
+    ],
+    "not_yet_testable_is_registration_status": true,
+    "boundary_confirmation": "C08 states the CONSEQUENCE of unmet thresholds; C12 states the thresholds' PROVENANCE (fixed in this freeze from the D8 margins). C08 does not set or move any threshold, and C12 does not close any arm. C08's closure is not re-basing: the sensitivity tier's existence under C03 does not reopen an arm closed under C08, because C03's tier carries no verdict and is computed only alongside a testable primary."
+   },
+   "evidence": [
+    {
+     "ref": "specs/027-movement-culture-language/stage2-q7-adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Adopted Ask 2B and 5A: if strong links are too sparse for the minimum-support rule, Q7 is NOT-YET-TESTABLE on the primary and is not re-based on visual links",
+     "source_id": "specs/027-movement-culture-language/stage2-q7-adjudication.md"
+    },
+    {
+     "ref": "specs/031-stage2-q7-provenance-networks/spec.md#4.3",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 031 section 4.3: arm viability thresholds and closure",
+     "source_id": "specs/031-stage2-q7-provenance-networks/spec.md#4.3",
+     "independent_of": [
+      "specs/027-movement-culture-language/stage2-q7-adjudication.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F031-C09",
+   "text": "A Q7 verdict is issued only under the frozen verdict rules.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Verdict issuance discipline for both arms, including the controls and the site jackknife. This claim governs how verdicts are produced, not what they may mean (C01) and not arm eligibility (C05, C08)."
+   ],
+   "depends_on": [],
+   "assumptions": [
+    "ASM-CONTROLS-DECLARED-BEFORE-OUTCOMES"
+   ],
+   "alternatives": [
+    "A control failure or a jackknife-dependent effect is recorded as a caveat beside a SUPPORTED or CONTRADICTED verdict."
+   ],
+   "falsification_tests": [
+    "One verdict issued after a failed control, or one SUPPORTED verdict whose effect depends on a single site under the frozen jackknife, defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-NONDISCRIMINATING-CONTROL-AS-CAVEAT"
+    ],
+    "strongest_rival": "A control failure or a jackknife-dependent effect is recorded as a caveat beside a SUPPORTED or CONTRADICTED verdict.",
+    "verdict_rule": "Control failure maps to INVALID; a jackknife-crossing or non-estimable LOSO cell caps the verdict at INCONCLUSIVE; SUPPORTED requires rejection, an interval entirely above the margin, and every LOSO estimate above the margin.",
+    "evidence_origin_groups": [
+     "spec027-design",
+     "spec027-q7-adjudication"
+    ],
+    "boundary_confirmation": "C09 governs how a verdict is ISSUED; C01 bounds what an issued verdict may MEAN. A verdict can satisfy C09 and still be misread beyond C01; neither claim substitutes for the other. C09 presumes an arm reached the outcome step; it says nothing about the margins-step closures of C07 and C08, which happen before any verdict exists."
+   },
+   "evidence": [
+    {
+     "ref": "specs/027-movement-culture-language/spec.md#7.6",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 027 section 7.6 verdict rules and section 7.5 discriminating controls, inherited wholesale under adopted Ask 5A",
+     "source_id": "specs/027-movement-culture-language/spec.md#7.6"
+    },
+    {
+     "ref": "specs/027-movement-culture-language/stage2-q7-adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Adopted Ask 5A: MRM/partial-Mantel null, the section 8.1 falsifier, discriminating controls, verdict taxonomy",
+     "source_id": "specs/027-movement-culture-language/stage2-q7-adjudication.md",
+     "independent_of": [
+      "specs/027-movement-culture-language/spec.md#7.6"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F031-C10",
+   "text": "Period eligibility for site pairs rests only on Stage 0 gazetteer period labels as published.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "The period-eligibility control. This claim governs the eligibility input only; it asserts no timing result, and sub-period-resolution variants are outside this design entirely."
+   ],
+   "depends_on": [],
+   "assumptions": [
+    "ASM-PERIOD-LABEL-AS-PUBLISHED"
+   ],
+   "alternatives": [
+    "Period eligibility is refined with the Spec 030 chronology-spine extension so sub-period networks can be tested."
+   ],
+   "falsification_tests": [
+    "One site pair admitted on a period assignment finer than the published gazetteer labels, or one sub-period variant tested under this design, defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-SUBPERIOD-RESOLUTION-FROM-LABELS"
+    ],
+    "strongest_rival": "Period eligibility is refined with the Spec 030 chronology-spine extension so sub-period networks can be tested.",
+    "verdict_rule": "A pair is period-eligible iff both sites' Stage 0 records indicate Mature Harappan occupation as published; no finer temporal slicing is attempted anywhere in this design.",
+    "evidence_origin_groups": [
+     "spec027-q7-adjudication",
+     "spec027-design"
+    ],
+    "boundary_confirmation": "C10 governs period ELIGIBILITY as a control input; it is not a timing test and borrows nothing from Q6 or Spec 030. C10's labels gate which pairs enter an arm; C05 governs the arm computation on the pairs admitted. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/027-movement-culture-language/stage2-q7-adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Adopted Ask 4A: Q7 proceeds independently of Spec 030 on the Stage 0 gazetteer and published period labels",
+     "source_id": "specs/027-movement-culture-language/stage2-q7-adjudication.md"
+    },
+    {
+     "ref": "specs/027-movement-culture-language/spec.md#8.1",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 027 section 8.1 controls: period eligibility among the frozen controls",
+     "source_id": "specs/027-movement-culture-language/spec.md#8.1",
+     "independent_of": [
+      "specs/027-movement-culture-language/stage2-q7-adjudication.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F031-C11",
+   "text": "No released row is derived from an open_access_read_only source.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Release posture of derived data. This claim governs publication of derived link and response data; the registration half of adopted Ask 6A (OSF registration of the frozen contract before execution) is recorded in the spec and freeze record and is not part of this claim's text."
+   ],
+   "depends_on": [
+    "F031-C02"
+   ],
+   "assumptions": [
+    "ASM-POSTURE-GOVERNS-RELEASE"
+   ],
+   "alternatives": [
+    "Internally digitised read-only determinations are released with the outcome so others can check the links."
+   ],
+   "falsification_tests": [
+    "One released row derived from an open_access_read_only source defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-READONLY-AS-RELEASABLE"
+    ],
+    "strongest_rival": "Internally digitised read-only determinations are released with the outcome so others can check the links.",
+    "verdict_rule": "Only verified_open-derived rows may ever be released, CC BY 4.0 through the release gate; read-only-derived rows are internal in every output, including supplements.",
+    "evidence_origin_groups": [
+     "spec027-q7-adjudication",
+     "spec027-design"
+    ],
+    "boundary_confirmation": "C11 governs RELEASE of what C02 admits for internal use. Admission to the primary set under C02 is not a release decision, and the release bar under C11 does not restrict internal link construction under C02. Distinct boundaries; neither negates the other. C11 and C07: C11 bars release of read-only-derived data; C07 permits internal computation from internally digitised sources at audited postures. Internal computation is not release, so C07's margins-step use of those sources does not contradict C11's bar. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/027-movement-culture-language/stage2-q7-adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Adopted Ask 6A: read-only-derived rows are never released; verified_open-derived rows may go CC BY 4.0 through the release gate",
+     "source_id": "specs/027-movement-culture-language/stage2-q7-adjudication.md"
+    },
+    {
+     "ref": "specs/027-movement-culture-language/spec.md#5.1",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 027 section 5.1 licensing rule and posture vocabulary",
+     "source_id": "specs/027-movement-culture-language/spec.md#5.1",
+     "independent_of": [
+      "specs/027-movement-culture-language/stage2-q7-adjudication.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F031-C12",
+   "text": "Support thresholds take their values from the D8 audit margins.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "The provenance of the support thresholds (DD-1, DD-2, DD-3): their values come from the D8 audit margins and they were fixed in this freeze, before any response was computed. This claim governs where the thresholds come from and when they were fixed; the consequences of unmet thresholds are C07 and C08."
+   ],
+   "depends_on": [],
+   "assumptions": [
+    "ASM-RULES-FROM-AUDIT-MARGINS"
+   ],
+   "alternatives": [
+    "Thresholds are set after digitisation, once the real eligible counts are known, so the design fits the data in hand."
+   ],
+   "falsification_tests": [
+    "One support threshold in this design that was set or changed after any response was computed, or that cites a margin the D8 audit does not report, defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-THRESHOLD-FITTED-TO-OUTCOME"
+    ],
+    "strongest_rival": "Thresholds are set after digitisation, once the real eligible counts are known, so the design fits the data in hand.",
+    "verdict_rule": "Each threshold traces to a margin stated in the D8 audit or the Stage 0 record, as recorded in spec section 10 (DD-1 to DD-3); changing one is a new adjudication and a new freeze.",
+    "evidence_origin_groups": [
+     "d8-audit",
+     "spec027-q7-adjudication"
+    ],
+    "boundary_confirmation": "C12 states the thresholds' PROVENANCE; C08 states the CONSEQUENCE of failing them and C07 the ceramic-specific closure. C12 closes no arm, and neither C07 nor C08 sets or moves a threshold. Distinct boundaries; none negates another. C12 and C07: C12 fixes the thresholds' provenance; C07 applies the minimum site count to the ceramic arm's source basis. Fixing a threshold under C12 does not apply it, and applying it under C07 does not move it. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/027-movement-culture-language/stage2-d8-audit.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D8 audit margins: determination counts, single-site concentration, method mix, per-arm margins carried to the freeze",
+     "source_id": "specs/027-movement-culture-language/stage2-d8-audit.md"
+    },
+    {
+     "ref": "specs/027-movement-culture-language/stage2-q7-adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Adopted Ask 5A: minimum-support rules fixed in the freeze from margins only, after the D8 audit and before any response is computed",
+     "source_id": "specs/027-movement-culture-language/stage2-q7-adjudication.md",
+     "independent_of": [
+      "specs/027-movement-culture-language/stage2-d8-audit.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  }
+ ]
+}

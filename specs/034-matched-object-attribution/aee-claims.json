@@ -1,0 +1,686 @@
+{
+ "spec": "034-matched-object-attribution",
+ "register_version": "0.5-draft",
+ "note": "Claims-first draft register for Spec 034, generated alongside spec.md from design D-20 of the experiment-design portfolio of 2026-10-13 (draft PR #195), under the owner's design commission (2026-10-13 06:13 EDT) and freeze order (2026-10-13 06:39 EDT). AEE recovery, if any, is recorded in aee/recovery-specify.md and appended to this note; propositions, falsifiers, and verdict rules do not change in recovery. AEE recovery round 1 (after_specify, 20261013T112521Z: iterate, 12 failure modes - irreducibility on C01, C02, C03, C04, C05, C07, C09, C10, C11, C12, C13 and a C01-C14 negation pairing): claim texts rewritten as short single propositions; the enumerations and second conditions (the three bridge routes, the three-sign text condition, the census-as-finding, the never-ground-truth posture, the site and object-type mixes) carried into the boundaries verbatim-in-substance; pairwise boundary confirmations added for C01-C14. Propositions, falsifiers, and verdict rules unchanged. Record: aee/recovery-specify.md. Recovery round 2 (after_specify, 20261013T112540Z: iterate, 4 failure modes - irreducibility on C05, C09, C10 and a C06-C13 negation pairing): the verdict-line claims recast as definitions of the lines (the shape the Spec 033 percentile claim passed in); C05's boundary trimmed to the closure, the census requirement standing in its verdict rule and spec section 4; C06 keyed to the prohibition rather than to use, removing the use/never-used mirror with C13, with the pair confirmed in both claims. Propositions, falsifiers, and verdict rules unchanged. Recovery round 3 (after_specify, 20261013T112556Z: iterate, 1 failure mode - irreducibility on C05): the boundary's remaining two-object sentence (the census and the unblocking act) was removed; both stand governed by spec section 4 and by C05's verdict rule. Propositions, falsifiers, and verdict rules unchanged. Recovery round 4 (after_specify, 20261013T112609Z: iterate, 1 failure mode - irreducibility on C05): the claim recast in the definitional form (the closure is named, not narrated). Propositions, falsifiers, and verdict rules unchanged.",
+ "claims": [
+  {
+   "id": "F034-C01",
+   "text": "Spec 034 attributes the Phase-125 disagreement residue only.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Scope claim for the whole spec. The settled result (STUDY-SPEC-019/PHASE-125: FAIL - DISAGREEMENT) is the input, not a question; the attribution outcome, whichever way it falls, is a statement about the residue's composition. It does not govern the bridge (C03), the gate (C04), or the verdict lines (C09-C11). Which compilation is right is never judged under this spec."
+   ],
+   "depends_on": [],
+   "assumptions": [
+    "ASM-SETTLED-INPUT"
+   ],
+   "alternatives": [
+    "Attribution may be read as a verdict on one compilation's correctness."
+   ],
+   "falsification_tests": [
+    "Any Spec 034 outcome statement naming a compilation as correct, or re-opening the Phase-125 verdict, defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-ATTRIBUTION-IS-ADJUDICATION"
+    ],
+    "strongest_rival": "Attribution may be read as a verdict on one compilation's correctness.",
+    "verdict_rule": "A Spec 034 product makes an attribution statement only.",
+    "evidence_origin_groups": [
+     "design-portfolio-d20",
+     "phase125-131-record"
+    ],
+    "boundary_confirmation": "C01 states this spec's scope (attribution of the residue); C14 states the settled record's protection (no re-judging, no edits). The two claims govern different objects - this study's outputs, and the earlier records - and are consistent by construction: attribution within scope is exactly what leaves the settled verdict untouched. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "reports/phase125_cross_compilation_summary.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-125 summary: FAIL / DISAGREEMENT verdict on 286 pairs",
+     "source_id": "reports/phase125_cross_compilation_summary.md"
+    },
+    {
+     "ref": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-20 'What it would NOT establish'",
+     "source_id": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "independent_of": [
+      "reports/phase125_cross_compilation_summary.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F034-C02",
+   "text": "Matched-object positional profiles agree far better than the corpus-level profiles.",
+   "kind": "hypothesis",
+   "status": "draft",
+   "boundary": [
+    "The hypothesis claim (design D-20). 'Far better' is made exact by the frozen verdict lines of C09-C11 on the matched-object median distance against the corpus-level 0.637 (Phase-125 median TV 0.636931). It does not govern the step-0 gate (C04-C05), which decides whether this hypothesis is reached at all."
+   ],
+   "depends_on": [
+    "F034-C07"
+   ],
+   "assumptions": [
+    "ASM-MATCHED-OBJECTS-COMPARABLE"
+   ],
+   "alternatives": [
+    "The disagreement is transcription: the compilations read the same objects differently, and matched-object distance stays high."
+   ],
+   "falsification_tests": [
+    "A matched-object median distance at or above 0.32 (C10's line) falsifies this claim, as designed."
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-CORPUS-DISTANCE-AS-BENCHMARK-WITHOUT-MATCHING"
+    ],
+    "strongest_rival": "The disagreement is transcription: the compilations read the same objects differently, and matched-object distance stays high.",
+    "verdict_rule": "Falsified by the frozen transcription line (C10); supported only in the composition region (C09) or the split region (C11).",
+    "evidence_origin_groups": [
+     "design-portfolio-d20"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-20 hypothesis section",
+     "source_id": "https://github.com/BitConcepts/glossa-lab/pull/195"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F034-C03",
+   "text": "Step 0 builds the object bridge through three named routes.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Bridge-construction claim. Every bridge pair enters as cited data with its source: route (a) the 7,705-row CISI catalogue of Phases 120-124; route (b) Mahadevan-side published object references through the Phase-130 intake schema; route (c) the 44 Phase-128 dossiers. No other route is used. It does not govern the gate count (C04) or the prohibited join (C06)."
+   ],
+   "depends_on": [],
+   "assumptions": [
+    "ASM-BRIDGE-ROUTES-EXHAUSTIVE"
+   ],
+   "alternatives": [
+    "Other joins (including the prohibited Holdat join of C06) may be added if they look productive."
+   ],
+   "falsification_tests": [
+    "One bridge pair in the Spec 034 census sourced outside routes (a)-(c), or entered without a cited source, defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-UNCITED-BRIDGE-PAIRS"
+    ],
+    "strongest_rival": "Other joins (including the prohibited Holdat join of C06) may be added if they look productive.",
+    "verdict_rule": "The bridge census carries a route and a source for every pair.",
+    "evidence_origin_groups": [
+     "design-portfolio-d20",
+     "phase124-128-130-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "reports/phase124_cisi_image_layer.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-124 CISI image layer: 7,705 catalogue rows",
+     "source_id": "reports/phase124_cisi_image_layer.md"
+    },
+    {
+     "ref": "reports/phase128_evidence_dossiers_44.csv",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-128 dossiers file: 44 rows",
+     "source_id": "reports/phase128_evidence_dossiers_44.csv",
+     "independent_of": [
+      "reports/phase124_cisi_image_layer.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F034-C04",
+   "text": "The step-0 gate is 150 matched objects.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Gate claim (design D-20, fixed in advance). A matched object counts only if its text, in each compilation, has three or more signs. The gate is applied to the bridge census of C03 before any measurement. It does not govern the below-gate closure (C05) or the measurement rules (C07)."
+   ],
+   "depends_on": [
+    "F034-C03"
+   ],
+   "assumptions": [
+    "ASM-GATE-FIXED-IN-ADVANCE"
+   ],
+   "alternatives": [
+    "A lower gate may be adopted if the bridge comes close, to let the study proceed."
+   ],
+   "falsification_tests": [
+    "Any step-1 measurement under Spec 034 on a bridge census below 150 qualifying objects defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-GATE-NEGOTIABLE-AT-OUTCOME"
+    ],
+    "strongest_rival": "A lower gate may be adopted if the bridge comes close, to let the study proceed.",
+    "verdict_rule": "Step 1 runs only on a census at or above the gate.",
+    "evidence_origin_groups": [
+     "design-portfolio-d20"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-20 step-0 gate, fixed in advance",
+     "source_id": "https://github.com/BitConcepts/glossa-lab/pull/195"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F034-C05",
+   "text": "The below-gate closure is TOO THIN TO ATTRIBUTE.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Below-gate closure claim (design D-20), governed by spec section 4. No attribution verdict is issued below the gate. It does not govern the gate itself (C04) or the step-1 verdict lines (C09-C11)."
+   ],
+   "depends_on": [
+    "F034-C04"
+   ],
+   "assumptions": [
+    "ASM-CENSUS-AS-FINDING"
+   ],
+   "alternatives": [
+    "A thin bridge may still support a provisional attribution, labelled as such."
+   ],
+   "falsification_tests": [
+    "Any attribution verdict under Spec 034 issued on a bridge census below the gate defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-PROVISIONAL-ATTRIBUTION-BELOW-GATE"
+    ],
+    "strongest_rival": "A thin bridge may still support a provisional attribution, labelled as such.",
+    "verdict_rule": "Below the gate, the only published outcome is the census closure.",
+    "evidence_origin_groups": [
+     "design-portfolio-d20"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-20 step-0 closure text",
+     "source_id": "https://github.com/BitConcepts/glossa-lab/pull/195"
+    },
+    {
+     "ref": "reports/phase131_attribution.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-131 attribution record: 0 shared artifact keys (the dead end this closure measures)",
+     "source_id": "reports/phase131_attribution.md",
+     "independent_of": [
+      "https://github.com/BitConcepts/glossa-lab/pull/195"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F034-C06",
+   "text": "Holdat cisi_number is a prohibited join key under Spec 034.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Prohibited-join claim. Phase-131 established that Holdat cisi_number is internal sequential numbering, not a CISI object ID, and rejected that join (179 apparent namesakes, 0 validated); the prohibition is carried here unchanged. It does not govern the admitted routes (C03)."
+   ],
+   "depends_on": [],
+   "assumptions": [
+    "ASM-PHASE131-PROHIBITION-CARRIED"
+   ],
+   "alternatives": [
+    "The Holdat namesakes may be validated one by one and admitted as a fourth route."
+   ],
+   "falsification_tests": [
+    "One bridge pair under Spec 034 joined on Holdat cisi_number defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-HOLDAT-KEY-AS-IDENTITY"
+    ],
+    "strongest_rival": "The Holdat namesakes may be validated one by one and admitted as a fourth route.",
+    "verdict_rule": "No bridge pair's join rests on Holdat cisi_number.",
+    "evidence_origin_groups": [
+     "phase131-record"
+    ],
+    "boundary_confirmation": "C06 bars one join key (Holdat cisi_number) at bridge construction; C13 sets the crosswalk's posture (a record of disagreement) inside the decomposition. The claims govern different instruments at different steps - what may join objects, and how sign disagreements are classified - and neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "reports/phase131_attribution.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-131 S1 row: CISI-ID join REJECTED as non-identity",
+     "source_id": "reports/phase131_attribution.md"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F034-C07",
+   "text": "The matched-object measurement uses Phase-125's own method on the matched subset only.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Method claim. Distance is total variation, as in Phase-125; the count floors are Phase-125's; profiles are computed per compilation on the pooled matched subset; per-object distances are reported as a distribution. Corpus-level profiles play no part in the step-1 measurement. It does not govern the decomposition categories (C08)."
+   ],
+   "depends_on": [
+    "F034-C04"
+   ],
+   "assumptions": [
+    "ASM-PHASE125-METHOD-CARRIED"
+   ],
+   "alternatives": [
+    "A modernised distance or floor may be substituted if it is stricter."
+   ],
+   "falsification_tests": [
+    "A step-1 distance under Spec 034 computed under any other distance or floor defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-METHOD-SUBSTITUTION"
+    ],
+    "strongest_rival": "A modernised distance or floor may be substituted if it is stricter.",
+    "verdict_rule": "The step-1 median is Phase-125's own statistic, on the matched subset.",
+    "evidence_origin_groups": [
+     "design-portfolio-d20",
+     "phase125-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "reports/phase125_cross_compilation_summary.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-125 summary: median TV distance and floors as published",
+     "source_id": "reports/phase125_cross_compilation_summary.md"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F034-C08",
+   "text": "The decomposition of the remaining disagreement uses Phase-131's own categories.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Decomposition claim. Every per-object difference is classified as segmentation (same signs, different cuts), substitution (a sign mapped differently, checked against the crosswalk's conflict pairs), or composition residue (objects in one compilation's subset only) - Phase-131's categories, so the 6.1 percent figure and this study's figure are directly comparable. It does not govern the verdict lines (C09-C11)."
+   ],
+   "depends_on": [
+    "F034-C07"
+   ],
+   "assumptions": [
+    "ASM-PHASE131-CATEGORIES-CARRIED"
+   ],
+   "alternatives": [
+    "Finer categories may be introduced where the three do not fit."
+   ],
+   "falsification_tests": [
+    "A Spec 034 attribution table using any category outside Phase-131's set defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-NEW-CATEGORIES"
+    ],
+    "strongest_rival": "Finer categories may be introduced where the three do not fit.",
+    "verdict_rule": "The attribution table's rows are Phase-131's categories.",
+    "evidence_origin_groups": [
+     "design-portfolio-d20",
+     "phase131-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "reports/phase131_attribution.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-131 attribution record and its category scheme",
+     "source_id": "reports/phase131_attribution.md"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F034-C09",
+   "text": "The composition line is a matched median of 0.20.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Verdict-line claim (design D-20). 0.20 sits near Phase-127's noise band of 0.083, allowing for the smaller matched sample. The line applies to the C07 statistic only. It does not govern the transcription line (C10) or the middle region (C11)."
+   ],
+   "depends_on": [
+    "F034-C07"
+   ],
+   "assumptions": [
+    "ASM-LINES-FROM-RECORD"
+   ],
+   "alternatives": [
+    "The composition line may be set nearer the noise band (for example 0.15) for strictness."
+   ],
+   "falsification_tests": [
+    "One ATTRIBUTED TO COMPOSITION outcome under Spec 034 at a matched median above 0.20 defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-LINE-FITTED-TO-OUTCOME"
+    ],
+    "strongest_rival": "The composition line may be set nearer the noise band (for example 0.15) for strictness.",
+    "verdict_rule": "The composition verdict fires only at or below 0.20.",
+    "evidence_origin_groups": [
+     "design-portfolio-d20"
+    ],
+    "boundary_confirmation": "C09-C11 state one partition of the step-1 outcomes: at or below 0.20 (C09), at or above 0.32 (C10), and between (C11) are disjoint and exhaustive regions of the matched median; below the step-0 gate none of them applies (C05). The three claims are consecutive cases of one rule, and none negates another."
+   },
+   "evidence": [
+    {
+     "ref": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-20 criteria: ATTRIBUTED TO COMPOSITION at or below 0.20",
+     "source_id": "https://github.com/BitConcepts/glossa-lab/pull/195"
+    },
+    {
+     "ref": "reports/phase127_cross_compilation_diagnostic.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-127 diagnostic: sampling noise alone produces 0.083",
+     "source_id": "reports/phase127_cross_compilation_diagnostic.md",
+     "independent_of": [
+      "https://github.com/BitConcepts/glossa-lab/pull/195"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F034-C10",
+   "text": "The transcription line is a matched median of 0.32.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Verdict-line claim (design D-20): the falsifier's line, half the corpus-level 0.637. The line applies to the C07 statistic only. It does not govern the composition line (C09) or the middle region (C11)."
+   ],
+   "depends_on": [
+    "F034-C07"
+   ],
+   "assumptions": [
+    "ASM-LINES-FROM-RECORD"
+   ],
+   "alternatives": [
+    "Transcription may require a higher line, since matched objects are a selected subset."
+   ],
+   "falsification_tests": [
+    "One step-1 outcome under Spec 034 at a matched median at or above 0.32 recorded as anything other than ATTRIBUTED TO TRANSCRIPTION defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-LINE-FITTED-TO-OUTCOME"
+    ],
+    "strongest_rival": "Transcription may require a higher line, since matched objects are a selected subset.",
+    "verdict_rule": "The transcription verdict fires at or above 0.32.",
+    "evidence_origin_groups": [
+     "design-portfolio-d20"
+    ],
+    "boundary_confirmation": "C10 states the transcription region of the outcome partition (C09-C11); it does not contradict C09, whose region is disjoint, nor C11, whose region lies strictly between the two lines."
+   },
+   "evidence": [
+    {
+     "ref": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-20 criteria and falsifier: at or above 0.32",
+     "source_id": "https://github.com/BitConcepts/glossa-lab/pull/195"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F034-C11",
+   "text": "A matched median between the two lines yields a split attribution.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Middle-region claim (design D-20). The split attribution is a complete outcome, not a failed verdict: the C08 decomposition table is its substance. It does not govern the two named regions (C09, C10)."
+   ],
+   "depends_on": [
+    "F034-C08",
+    "F034-C09",
+    "F034-C10"
+   ],
+   "assumptions": [
+    "ASM-SPLIT-AS-RESULT"
+   ],
+   "alternatives": [
+    "A middle outcome may be rounded to the nearer named attribution for a cleaner headline."
+   ],
+   "falsification_tests": [
+    "One middle-region outcome under Spec 034 reported as a single named attribution defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-ROUNDING-TO-NAMED-VERDICT"
+    ],
+    "strongest_rival": "A middle outcome may be rounded to the nearer named attribution for a cleaner headline.",
+    "verdict_rule": "The middle region reports the split, with the table.",
+    "evidence_origin_groups": [
+     "design-portfolio-d20"
+    ],
+    "boundary_confirmation": "C11 states the middle region of the outcome partition (C09-C11); its outcome is the decomposition table itself, which is why it depends on C08 as well as on the two boundary lines."
+   },
+   "evidence": [
+    {
+     "ref": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-20 criteria: BETWEEN reported as a split attribution",
+     "source_id": "https://github.com/BitConcepts/glossa-lab/pull/195"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F034-C12",
+   "text": "Every attribution outcome reports the matched subset's mix against both full mixes.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Selection-bias claim (design D-20). The bridge is a selection: matchable objects may be the better-published ones. The comparison is published with the outcome, and the verdict statement carries the subset's description with it. It does not govern the gate (C04) or the verdict lines (C09-C11). The mixes compared are the site mix and the object-type mix."
+   ],
+   "depends_on": [
+    "F034-C03"
+   ],
+   "assumptions": [
+    "ASM-SELECTION-REPORTED"
+   ],
+   "alternatives": [
+    "The subset description may be relegated to an appendix without entering the verdict statement."
+   ],
+   "falsification_tests": [
+    "One Spec 034 attribution outcome whose verdict statement omits the subset description defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-SUBSET-DESCRIPTION-OPTIONAL"
+    ],
+    "strongest_rival": "The subset description may be relegated to an appendix without entering the verdict statement.",
+    "verdict_rule": "No attribution outcome ships without its subset description.",
+    "evidence_origin_groups": [
+     "design-portfolio-d20"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-20 controls: matched subset mix reported against both full mixes",
+     "source_id": "https://github.com/BitConcepts/glossa-lab/pull/195"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F034-C13",
+   "text": "The crosswalk is used under Spec 034 as a record of disagreement.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Crosswalk-posture claim (design D-20). The crosswalk carries 762 P-to-M pairs, of which 383 are conflict pairs; substitution classification is checked against those conflict pairs. No crosswalk entry is treated as the correct reading of any sign. It does not govern the decomposition categories (C08), which it serves."
+   ],
+   "depends_on": [
+    "F034-C08"
+   ],
+   "assumptions": [
+    "ASM-CROSSWALK-AS-DISAGREEMENT-RECORD"
+   ],
+   "alternatives": [
+    "High-confidence crosswalk pairs may be treated as settled for classification purposes."
+   ],
+   "falsification_tests": [
+    "One substitution classification under Spec 034 resting on a crosswalk entry as ground truth defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-CROSSWALK-AS-TRUTH"
+    ],
+    "strongest_rival": "High-confidence crosswalk pairs may be treated as settled for classification purposes.",
+    "verdict_rule": "Crosswalk entries classify disagreements; they settle nothing.",
+    "evidence_origin_groups": [
+     "design-portfolio-d20",
+     "phase125-record"
+    ],
+    "boundary_confirmation": "C13 governs the crosswalk's use in classification; C06 bars a join key at bridge construction. A barred join key and a classification posture are independent rules, and the two claims do not conflict."
+   },
+   "evidence": [
+    {
+     "ref": "https://github.com/BitConcepts/glossa-lab/pull/195",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-20 confounders: crosswalk circularity paragraph",
+     "source_id": "https://github.com/BitConcepts/glossa-lab/pull/195"
+    },
+    {
+     "ref": "reports/phase125_cross_compilation_summary.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-125 summary: the 762-pair crosswalk basis, sensitivity arm",
+     "source_id": "reports/phase125_cross_compilation_summary.md",
+     "independent_of": [
+      "https://github.com/BitConcepts/glossa-lab/pull/195"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F034-C14",
+   "text": "The settled Phase-125 verdict stands untouched by Spec 034.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Non-revision claim. FAIL - DISAGREEMENT (16 judgeable of 286; median TV 0.636931) is a settled record; this study appends an attribution of its residue and edits nothing in the Phase-125, Phase-127, or Phase-131 records. It does not govern the attribution itself (C09-C11)."
+   ],
+   "depends_on": [
+    "F034-C01"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "A strong attribution may be recorded as revising the settled verdict's meaning."
+   ],
+   "falsification_tests": [
+    "Any edit to the Phase-125, Phase-127, or Phase-131 records, or any Spec 034 statement re-judging the settled verdict, defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-REVISION-BY-ATTRIBUTION"
+    ],
+    "strongest_rival": "A strong attribution may be recorded as revising the settled verdict's meaning.",
+    "verdict_rule": "The settled records are byte-stable; the attribution lives in Spec 034's own outcome record.",
+    "evidence_origin_groups": [
+     "phase125-131-record"
+    ],
+    "boundary_confirmation": "C14 protects the settled Phase-125 record from revision; C01 scopes this study to attribution. A Spec 034 attribution statement is an append in this spec's own outcome record, which is the behaviour both claims prescribe; neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "reports/phase125_cross_compilation_summary.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-125 summary: the settled verdict record",
+     "source_id": "reports/phase125_cross_compilation_summary.md"
+    }
+   ],
+   "stage": "created"
+  }
+ ]
+}

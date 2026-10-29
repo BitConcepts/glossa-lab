@@ -45,6 +45,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   non-elevated context. The scheduled task is restored as the
   canonical autostart in that shape; the HKCU Run route is
   removed. The icon-verification fix stands unchanged.
+  Verify-script fix (2026-10-29): the desktop verify script no
+  longer identifies the backend by the port-8001 listener —
+  on the host that listener is tailscaled (Tailscale Serve),
+  not the app — it uses the command-line process set instead.
 - Spec 079: the backend now starts under supervision following the
   Syncyard spec 007 pattern. The Linux unit is renamed to
   `glossa-lab-backend` and runs the production entry point

@@ -1,92 +1,82 @@
 import { test, expect } from "@playwright/test";
 
 /**
- * Reports & Data view tests — covers the H16 tab split:
- *   📋 Reports tab: PDF and formatted documents
- *   📂 Data tab: JSON results, CSV exports, raw artifacts
+ * Reports & ledger — Spec 081 wireframe 12 (PR-R).
+ *
+ * The surface is the program's outputs plus its record: a reports
+ * list (title / state / meta / Open), the spec-study register with
+ * verbatim outcome headlines, the program-items list (records that
+ * are not spec directories), and a Ledger tab that states the
+ * ledger's append-only terms. The retired file-browser UI (compose
+ * mode, AI synthesis, star pins, template editor, area tabs) must
+ * not reappear.
  */
 
 async function navigateToReports(page: import("@playwright/test").Page) {
   await page.goto("/");
-  const btn = page.getByRole("button", { name: /Reports/i }).first();
-  await btn.waitFor({ state: "visible", timeout: 8000 });
-  await btn.click();
-  await expect(page.getByRole("heading", { name: /Reports/i }).first()).toBeVisible();
+  const nav = page.getByTitle("Reports & ledger").first();
+  await nav.waitFor({ state: "visible", timeout: 8000 });
+  await nav.click();
+  await expect(
+    page.getByRole("heading", { name: "Reports & ledger" }),
+  ).toBeVisible();
 }
 
-// ── Tab structure ─────────────────────────────────────────────────────────────
-
-test.describe("Reports & Data tab bar", () => {
-  test("Reports heading is visible", async ({ page }) => {
+test.describe("Reports & ledger surface", () => {
+  test("heading and lede carry the append-only terms", async ({ page }) => {
     await navigateToReports(page);
-    await expect(page.getByRole("heading", { level: 2 }).first()).toBeVisible();
+    await expect(page.getByText(/append-only/)).toBeVisible();
+    await expect(page.getByText(/No ledger entry, no claim/)).toBeVisible();
   });
 
-  test("Reports tab button is visible", async ({ page }) => {
+  test("Generate report is the primary action and opens the dialog", async ({ page }) => {
     await navigateToReports(page);
-    await expect(page.getByRole("button", { name: /Reports/i }).last()).toBeVisible();
+    await page.getByRole("button", { name: /\+ Generate report/ }).click();
+    await expect(page.getByText("Built-in templates", { exact: true })).toBeVisible();
   });
 
-  test("Data tab button is visible", async ({ page }) => {
+  test("Reports and Ledger tabs are present; Ledger states where the record lives", async ({ page }) => {
     await navigateToReports(page);
-    await expect(page.getByRole("button", { name: /Data/i }).first()).toBeVisible();
+    await page.getByRole("button", { name: "Ledger", exact: true }).click();
+    await expect(page.getByText(/LEDGER\.md/)).toBeVisible();
+    await expect(page.getByText(/no ledger endpoint/)).toBeVisible();
   });
 
-  test("clicking Data tab changes view description", async ({ page }) => {
+  test("retired file-browser UI is absent", async ({ page }) => {
     await navigateToReports(page);
-    // Find and click the Data tab (not the nav button)
-    const dataTab = page.getByRole("button", { name: /📂\s*Data/i }).first();
-    const fallbackTab = page.getByText(/JSON results, CSV exports/i);
-    const hasDataTab = await dataTab.isVisible({ timeout: 3000 }).catch(() => false);
-    if (!hasDataTab) {
-      // Tab may not be visible if there are no reports yet
-      return;
-    }
-    await dataTab.click();
-    // Data tab description: "JSON data, CSV exports, markdown documents"
-    await expect(page.getByText(/JSON.*data|JSON.*CSV|CSV.*export/i).first()).toBeVisible({ timeout: 5000 });
+    await expect(page.getByRole("button", { name: /Compose/i })).toHaveCount(0);
+    await expect(page.getByRole("button", { name: /AI Report/i })).toHaveCount(0);
+    await expect(page.getByText(/Data & Docs/)).toHaveCount(0);
   });
 
-  test("clicking Reports tab shows PDF description", async ({ page }) => {
+  test("reports list shows its empty state or rows", async ({ page }) => {
     await navigateToReports(page);
-    const reportsTab = page.getByRole("button", { name: /📋\s*Reports/i }).first();
-    const hasTab = await reportsTab.isVisible({ timeout: 3000 }).catch(() => false);
-    if (!hasTab) return;
-    await reportsTab.click();
-    await expect(page.getByText(/PDF/i).first()).toBeVisible();
-  });
-});
-
-// ── Toolbar ───────────────────────────────────────────────────────────────────
-
-test.describe("Reports toolbar", () => {
-  test("Generate Report button is visible", async ({ page }) => {
-    await navigateToReports(page);
-    await expect(page.getByRole("button", { name: /Generate Report/i })).toBeVisible();
-  });
-
-  test("Compose button is visible", async ({ page }) => {
-    await navigateToReports(page);
-    await expect(page.getByRole("button", { name: /Compose/i })).toBeVisible();
-  });
-
-  test("Refresh button is visible", async ({ page }) => {
-    await navigateToReports(page);
-    await expect(page.getByRole("button", { name: /Refresh/i })).toBeVisible();
-  });
-});
-
-// ── Backend integration ───────────────────────────────────────────────────────
-
-test.describe("Reports view with backend", () => {
-  test.skip(!process.env.BACKEND_RUNNING, "Skipped: set BACKEND_RUNNING=1");
-
-  test("shows empty state or table when no reports exist", async ({ page }) => {
-    await navigateToReports(page);
-    // The Reports tab defaults to PDF-only; in CI only data files exist (PDFs
-    // are gitignored), so the empty state — not a table — is what renders.
     const empty = page.getByTestId("reports-empty-state");
-    const table = page.locator("table");
-    await expect(empty.or(table)).toBeVisible({ timeout: 5000 });
+    const open = page.getByRole("button", { name: "Open", exact: true }).first();
+    await expect(empty.or(open)).toBeVisible({ timeout: 8000 });
+  });
+});
+
+test.describe("Study register (build-tree backend)", () => {
+  test("register renders entries with outcome headlines", async ({ page }) => {
+    await navigateToReports(page);
+    await expect(page.getByText("Study register")).toBeVisible();
+    await expect(page.getByText(/\d+ register entries/).first()).toBeVisible({ timeout: 10000 });
+    // A study with no outcome record is labelled as such, never as executed.
+    await expect(page.getByText(/No outcome recorded/).first()).toBeVisible();
+  });
+
+  test("restricted entry renders name-only", async ({ page }) => {
+    await navigateToReports(page);
+    await expect(page.getByText(/Name-only record/)).toBeVisible({ timeout: 10000 });
+  });
+
+  test("program items carry their records' verdicts at full prominence", async ({ page }) => {
+    await navigateToReports(page);
+    await expect(
+      page.getByText("Program items — records outside the spec register"),
+    ).toBeVisible();
+    await expect(page.getByText(/FAILED — KI-2 TRIGGERED/)).toBeVisible();
+    await expect(page.getByText(/0 of 184/)).toBeVisible();
   });
 });

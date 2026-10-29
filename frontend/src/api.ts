@@ -478,6 +478,29 @@ export interface GenerateReportResult {
 export const listReportTemplates = (): Promise<ReportTemplate[]> =>
   request("GET", "/reports/templates");
 
+// ── Spec-study register (Spec 081 PR-R; endpoint from PR #443) ───────
+
+export interface SpecStudy {
+  spec_id: string;
+  slug: string;
+  directory: string;
+  title: string | null;
+  has_spec: boolean;
+  has_outcome: boolean | null;
+  outcome_headline: string | null;
+  restricted: boolean;
+}
+
+export interface SpecStudiesResponse {
+  studies: SpecStudy[];
+  total: number;
+  with_outcome: number;
+  source: string;
+}
+
+export const getSpecStudies = (): Promise<SpecStudiesResponse> =>
+  request<SpecStudiesResponse>("GET", "/spec-studies");
+
 export const generateReport = (template_id: string): Promise<GenerateReportResult> =>
   request("POST", "/reports/generate", { template_id });
 

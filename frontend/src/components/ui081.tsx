@@ -17,6 +17,7 @@ export interface Palette {
   border: string;
   borderSoft: string;
   fg: string;
+  bad: string;
   muted: string;
   faint: string;
   accent: string;
@@ -28,13 +29,13 @@ export function palette(dark: boolean): Palette {
   return dark
     ? {
         bg: "#0f172a", card: "#1e293b", border: "#334155", borderSoft: "#263449",
-        fg: "#e2e8f0", muted: "#94a3b8", faint: "#64748b",
+        fg: "#e2e8f0", bad: "#f87171", muted: "#94a3b8", faint: "#64748b",
         accent: "#60a5fa", accentSoft: "rgba(37,99,235,0.18)",
         inputBg: "#0f172a",
       }
     : {
         bg: "#f8fafc", card: "#ffffff", border: "#e5e7eb", borderSoft: "#eef1f5",
-        fg: "#111827", muted: "#64748b", faint: "#94a3b8",
+        fg: "#111827", bad: "#b91c1c", muted: "#64748b", faint: "#94a3b8",
         accent: "#2563eb", accentSoft: "#eff6ff",
         inputBg: "#ffffff",
       };

@@ -11515,3 +11515,13 @@ AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tris
 - **Claims:** C082-1, C082-2, C082-5, C082-6 carried by this PR's tests; C082-3 backend side (MCP + self-callers); C082-4 server side (rotation semantics). Consumer legs (tray, healthcheck, installer ensure, proof kit) land in step 2.
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-29] Entry — Spec 081 PR-R: Reports & ledger surface + spec-study register
+
+- **Surface (wireframe 12):** ReportsView replaced in place (route id "reports" unchanged) with the wireframe-12 layout: PageHead with the append-only lede verbatim, "+ Generate report" primary wired to the existing report-template flow, Reports/Ledger tabs, the instance report catalog as title / kind-state / meta / Open rows, then the study register, then (Ledger tab) the ledger's terms with its location — this instance exposes no ledger endpoint, so no entries are shown and none are invented.
+- **Register (Leg B delta D0):** new StudyRegister component consumes GET /api/v1/spec-studies (PR #443): 84 entries served by the build-tree backend (46 with outcome records), headlines verbatim, no-outcome studies labelled "not shown as executed", duplicate spec numbers flagged on both entries, Spec 072 name-only. Second list: program items that are not spec directories (G44-I final Amendment 3 verdict — FAILED, KI-2 TRIGGERED, line CLOSED; G44-S; G44-S2; repair WP1–WP10), each with its record citation as a text line (no fabricated links).
+- **Retired honestly (backend endpoints untouched):** compose mode, AI report-synthesis UI, star pins, user-template editor UI, delete / open-folder buttons. The two template families stay labelled separately in the Generate dialog (Leg B delta D5).
+- **Supporting changes:** api.ts gains SpecStudy types + getSpecStudies; ui081 Palette gains `bad` (dark #f87171, light #b91c1c); App passes darkMode to ReportsView. e2e/reports.spec.ts rewritten to the new surface (8 tests). Mobile overflow found in screenshot verification (grid min-content vs unbreakable filenames) and fixed with min-width/overflow-wrap guards; desktop 1440 + mobile 390 shots filed with the goal record.
+- **Verification:** build-tree backend on :8021 (never :8001); Playwright reports suite 8/8 locally; register count read from the endpoint, not assumed.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per constitution sec. VI.

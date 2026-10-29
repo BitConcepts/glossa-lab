@@ -57,6 +57,7 @@ from glossa_lab.api.results import router as results_router
 from glossa_lab.api.settings import router as settings_router
 from glossa_lab.api.shutdown import router as shutdown_router
 from glossa_lab.api.status import router as status_router
+from glossa_lab.api.spec_studies import router as spec_studies_router
 from glossa_lab.api.studies import router as studies_router
 from glossa_lab.api.system import router as system_router
 from glossa_lab.api.terminal import router as terminal_router
@@ -391,6 +392,7 @@ def create_app() -> FastAPI:
     application.include_router(presets_router, prefix="/api/v1")
     application.include_router(reports_router, prefix="/api/v1")
     application.include_router(studies_router, prefix="/api/v1")
+    application.include_router(spec_studies_router)  # already prefixed at /api/v1/spec-studies
     application.include_router(collab_router, prefix="/api/v1")
     application.include_router(analysis_router, prefix="/api/v1")
     application.include_router(research_router, prefix="/api/v1")

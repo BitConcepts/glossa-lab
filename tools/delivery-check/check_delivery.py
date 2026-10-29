@@ -19,7 +19,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "backend"))
 
-from glossa_lab.delivery_check import check_delivery  # noqa: E402
+from glossa_lab.delivery_check import check_delivery
 
 
 def main(argv: list[str]) -> int:

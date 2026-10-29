@@ -197,6 +197,10 @@ def test_verify_script_markers_and_icon_helper(tmp_path: Path) -> None:
     # 40835699406 measured exactly that misidentification).
     assert "Get-NetTCPConnection" not in source
     assert "def backend_pids" in source
+    # Identification must require the venv-python executable, so
+    # the query's own shell (whose command line carries the
+    # pattern text) is never in the set (run 40880047294).
+    assert "ExecutablePath" in source
     module = _load_verify_module()
     # The packaged assets in this repo are the pinned ones.
     ok, ico_sha, png_sha = module.icon_hashes_ok(REPO)

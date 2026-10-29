@@ -11075,3 +11075,18 @@ contract tests C080-8 (extended) and C080-9 (new).
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+
+## [2026-10-29] Entry - Spec 080: Verify Process Identification Precision
+
+Follow-up to the backend-identification fix: the command-line
+match also matched the PowerShell process running the CIM
+query itself (its -Command text carries the pattern), and
+that transient PID failed the restart leg's kill step (host
+run 40880047294; every other leg passed). Process
+identification in scripts\verify_desktop_host.py now requires
+the repo venv's python executable (ExecutablePath) in
+addition to the command-line pattern, for both the backend
+set and the tray set, via a shared helper.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.

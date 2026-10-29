@@ -72,51 +72,27 @@ def load_healthcheck():
     return module
 
 
-def tray_pids() -> list[int]:
-    """PIDs of processes whose command line runs the tray module."""
-    if sys.platform == "win32":
-        command = [
-            "powershell", "-NoProfile", "-NonInteractive", "-Command",
-            "Get-CimInstance Win32_Process | "
-            "Where-Object { $_.CommandLine -match '-m glossa_tray' } | "
-            "ForEach-Object { $_.ProcessId }",
-        ]
-    else:
-        command = ["pgrep", "-f", "glossa_tray"]
-    try:
-        result = subprocess.run(command, capture_output=True, text=True, timeout=15)
-    except (OSError, subprocess.TimeoutExpired):
-        return []
-    pids: list[int] = []
-    for token in result.stdout.split():
-        if token.strip().isdigit():
-            pids.append(int(token.strip()))
-    return [pid for pid in pids if pid != os.getpid()]
+def _app_python_pids(pattern: str) -> list[int]:
+    """PIDs of app processes: venv-python executables whose
+    command line matches `pattern`.
 
-
-def backend_pids() -> list[int]:
-    """PIDs of the app's own backend processes, by command line.
-
-    NEVER identify the backend by the port-8001 listener: on the
-    desktop host that listener is tailscaled.exe (Tailscale Serve
-    proxies the tailnet :8001 to the app's loopback :8001), a
-    session-0 service the verifier can neither kill nor learn
-    anything about the app from. That misidentification is
-    exactly what host run 40835699406 measured (kill-failed
-    pid=<tailscaled>). The app's backend is the process set
-    whose command line runs this repo's uvicorn entry - the
-    same test the targeted stop path uses.
+    The executable test matters: a bare command-line match also
+    matches the PowerShell process RUNNING this query (its own
+    -Command text contains the pattern), and that transient PID
+    then fails the kill step - host run 40880047294 measured
+    exactly that (kill-failed on a set containing the query
+    shell). App processes run from the repo venv's python.
     """
     if sys.platform == "win32":
         command = [
             "powershell", "-NoProfile", "-NonInteractive", "-Command",
             "Get-CimInstance Win32_Process | "
-            "Where-Object { $_.CommandLine -match 'glossa_lab' "
-            "-and $_.CommandLine -match 'uvicorn' } | "
+            "Where-Object { $_.ExecutablePath -match 'venv\\\\Scripts\\\\python' "
+            f"-and $_.CommandLine -match '{pattern}' }} | "
             "ForEach-Object { $_.ProcessId }",
         ]
     else:
-        command = ["pgrep", "-f", "glossa_lab.*uvicorn"]
+        command = ["pgrep", "-f", pattern]
     try:
         result = subprocess.run(
             command, capture_output=True, text=True, timeout=15,
@@ -129,6 +105,27 @@ def backend_pids() -> list[int]:
         if token.strip().isdigit():
             pids.append(int(token.strip()))
     return [pid for pid in pids if pid != os.getpid()]
+
+
+def tray_pids() -> list[int]:
+    """PIDs of the tray processes (-m glossa_tray, venv python)."""
+    return _app_python_pids("glossa_tray")
+
+
+def backend_pids() -> list[int]:
+    """PIDs of the app's own backend processes.
+
+    NEVER identify the backend by the port-8001 listener: on the
+    desktop host that listener is tailscaled.exe (Tailscale Serve
+    proxies the tailnet :8001 to the app's loopback :8001), a
+    session-0 service the verifier can neither kill nor learn
+    anything about the app from. That misidentification is
+    exactly what host run 40835699406 measured (kill-failed
+    pid=<tailscaled>). The app's backend is the venv-python
+    process set running this repo's uvicorn entry - the same
+    test the targeted stop path uses.
+    """
+    return _app_python_pids("glossa_lab.*uvicorn|uvicorn.*glossa_lab")
 
 
 def kill_pid(pid: int) -> bool:

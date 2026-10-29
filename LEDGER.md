@@ -11309,6 +11309,95 @@ direction of Tristen Pierson, per constitution sec. VI.
   filename confined, non-PDF content rejected, loopback import
   blocked, `file://` scheme blocked.
 
+## [2026-10-29] Entry — Leg C hardening 2: GlossaShell sandbox confinement (C-02)
+
+- **Finding (Leg C red team, live-confirmed):** `GlossaShell._resolve`
+  returned absolute paths and `../` traversals unchecked, so terminal
+  builtins (`cat`/`rm`/`cp`/`mv`/…) read and modified files outside
+  the repo sandbox; only `cd` enforced `sandbox_root`. A marker file
+  outside the sandbox was read live via both an absolute path and a
+  traversal path through `POST /terminal/run`.
+- **Fix:** `_resolve` now resolves every path and raises `ValueError`
+  when the result escapes `sandbox_root`; `run()` surfaces that as an
+  error line. `POST /terminal/run` also rejects a caller-supplied
+  `cwd` outside the repo root (400). The subprocess fallthrough for
+  unknown commands is unchanged — it is the terminal's documented
+  function for the local user; the systemic issue is the missing
+  authentication layer (finding C-01, owner decision), not the
+  fallthrough itself.
+- **Tests:** `backend/tests/test_glossa_shell_sandbox.py` — absolute
+  and traversal reads refused, in-sandbox reads work, traversal `rm`
+  does not delete the outside file.
+
+## [2026-10-29] Entry — Leg C hardening 3: promotion evidence refs must resolve (C-03)
+
+- **Finding (Leg C red team, live-confirmed end-to-end):** the H26
+  promotion gate accepted any non-empty string as an evidence
+  reference. On a throwaway instance, one caller approved a staged
+  candidate, "verified" it via `/staging/verify-archive` (which
+  performs no test), then promoted it with a fabricated
+  `evidence_refs` string supplied in the promote request itself —
+  producing a MEDIUM-confidence anchor citing the fabricated ref.
+- **Fix (`backend/glossa_lab/api/research_loop.py`):** the gate now
+  requires the reference to resolve via `_evidence_ref_resolves` —
+  its leading artifact token (`path` or `path:KEY` form, free-text
+  description after whitespace allowed) must name an existing file
+  relative to the repo root or `backend/`. Bare strings no longer
+  pass, from either the candidate record or the request map.
+- **Tests:** `backend/tests/test_staging_promotion_evidence.py` —
+  new regression: fabricated unresolvable ref is blocked and nothing
+  is written. The pre-existing "with candidate ref" fixture named a
+  fictional `reports/phase999_example.json`; it now names the real
+  `LEDGER.md` artifact (the test's intent — a recorded ref succeeds —
+  is unchanged; a non-existent ref succeeding was the bug).
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-29] Entry — Leg C hardening 6: study-run honesty (C-11)
+
+- **Finding:** `studies.py:_run_report_node` wrote reports to
+  `reports/<report_name>` with `report_name` taken unsanitised from
+  node params (path traversal out of `reports/`), and `run_study`
+  reported `final_status="completed"` unless a node returned the
+  literal status `error` — skipped/pending nodes (unimplemented
+  experiments, pipeline timeouts) were laundered into success.
+- **Fix:** `report_name` is reduced to a bare basename before the
+  write. The final status is now `failed` on errors,
+  `completed_with_skips` when any node was skipped/pending, and
+  `completed` only when every node actually completed; the status
+  is carried in the job record, the completion notification, and a
+  new `status` field on the `run_complete` SSE event.
+- **Tests:** `backend/tests/test_studies_report_node.py` — a
+  `../../` report name is confined to `reports/`; a normal name
+  still writes.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-29] Entry — Leg C hardening 7: delivery-integrity checker (C-15) + governance GAPS (C-01, C-07, C-12, C-13, C-09F, ENV)
+
+- **C-15 (delivery integrity):** three false watcher deliveries on
+  2026-10-29 (nonexistent run id reported complete, a PR's CI status
+  inverted, a run id mismatched against the gatekeeper record) each
+  stood until a human rechecked the primary record. The control —
+  **"No resolution, no report"** — is now mechanical:
+  `backend/glossa_lab/delivery_check.py` resolves a run id against
+  the GitHub API (run exists, `head_sha` matches, CI counted from
+  per-job conclusions) and prints one citable verdict line
+  (`RESOLVED run <id> sha <short> N/N success @ <ts>` or
+  `UNRESOLVED: <reason>`, exit non-zero on any mismatch). CLI:
+  `tools/delivery-check/check_delivery.py <run_id> <expected_sha>`.
+  Tests cover all three failure modes plus the resolved and
+  in-progress cases.
+- **Governance GAPS:** `docs/governance/legc-gaps-2026-10-29.md`
+  records the Leg C findings that need decisions or cross-cutting
+  specs rather than hardening PRs, each with a named owner (role):
+  GAP-C01 authentication layer, GAP-C07 storage-enforced lifecycle,
+  GAP-C13 falsifier-coverage dispositions, GAP-C12 legacy
+  chi-squared, GAP-C09F frontend error-reporting half, GAP-ENV
+  production venv below the declared AEE pin.
+
 ## [2026-10-29] Entry — Leg C hardening 5: health identity, FE-log honesty, page-previews unmounted (C-08, C-09, C-10)
 
 - **C-08 (health = liveness, not identity):** `GET /api/v1/health`

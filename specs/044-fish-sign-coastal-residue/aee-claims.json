@@ -1,0 +1,774 @@
+{
+ "spec": "044-fish-sign-coastal-residue",
+ "register_version": "0.7-draft",
+ "note": "Draft register for Spec 044 (design D-02, PR #195 packet), opened 2026-10-21 under the runnable-experiments campaign plan approved by the owner AS WRITTEN on 2026-10-21 (Wave 1, asset builders first). Conventions as in Specs 032\u2013042: requirement claims carry no falsification test where a gate or inspection is the operative check; boundaries carry the conditions under which each claim holds; evidence items carry observed_at from this draft because the cited facts were verified first-hand at drafting. The AEE lifecycle hooks have NOT run on this register; they are the freeze gate (tasks L4), and any recovery round they force changes claim text before any freeze digest is computed. ASM- ids name the assumptions each claim stands on: ASM-CLAIM-RECORD (the claim file as pinned is the record of the partially falsified verdict and its residue), ASM-LAYER-OF-RECORD (the CISI-based layer gate 0.1 pins is the layer the original test used), ASM-ASSET-F (Asset F as frozen at step 0 under spec \u00a74 is the family for this test and its consumers), ASM-PARPOLA-LIST (Parpola's published list, as pinned in spec \u00a72, is enumerable and citable per sign), ASM-COASTAL-LIST (the gate-0.3 frozen list is the coastal classification for this test), ASM-GAZETTEER (the Spec 027 Stage 0 gazetteer as pinned is the site spine), ASM-GATES-BEFORE-OUTCOME (pins, lists, and census precede any outcome quantity), ASM-APPEND-ONLY (outcomes append; frozen records are never edited), ASM-ROIF-GATE (campaign R-7 holds this spec's results internal until the owner's cleared publication act). FREEZE RECOVERY (2026-10-21, register 0.6-draft): the aee 1.5.0 loader refused the 0.5-draft register outright (evidence kind values such as 'program-record' and source_quality values such as 'authoritative' are not members of the adopted engine's enums). Every evidence item's kind was normalised to 'observed' and its source_quality to 'artifact' \u2014 the frozen house form of Specs 036-039 \u2014 with refs, directions, descriptions, source_ids, and observed_at values unchanged. No claim text, boundary, falsifier, or verdict rule changed in this round. FREEZE RECOVERY ROUND (2026-10-21, register 0.7-draft): the first hook round at after_specify over 0.6-draft returned iterate with 47 failure modes (15 irreducibility challenges, one per claim; 15 shared-evidence independence challenges; 1 negation-conflict challenge, C05 against C06; 1 counterexample challenge on C14's absolute wording; 15 FR-2.3 draft-cap records) with no claim below the 0.70 threshold (minimum propagated 0.72). Recovery, on the Spec 039 pattern: every claim text was restated as a single head proposition, with its carried clauses moved into its boundary verbatim in substance (each boundary names the carriage); C06's head proposition was restated under a distinct subject (the frozen asset's digest identity) and the C05/C06 pair carries boundary_confirmation metadata recording that the two govern different properties of the same asset; C14's head proposition drops the absolute wording, its carried clauses preserved in its boundary; every multi-item claim's later evidence items gained independent_of declarations naming the claim's first evidence source (the distinct-source pattern of Specs 036-039). Propositions' substance, falsifiers, and verdict rules are unchanged.",
+ "claims": [
+  {
+   "id": "F044-C01",
+   "kind": "hypothesis",
+   "text": "An outcome under Spec 044 states only the sign-by-sign distribution of Asset F members across the coastal/inland site split of the pinned CISI-based corpus layer.",
+   "status": "draft",
+   "boundary": [
+    "The scope is the pinned CISI-based layer, the frozen coastal list, and Asset F's members. It excludes any statement about what any fish sign meant, about the family-level verdict (which stands partially falsified and is not re-opened), about any other corpus, compilation, or site set, and about Roif's wider reading. Carried from the draft text verbatim in substance: the distribution is stated sign by sign against the layer's corpus-wide coastal share; the site split is coastal/maritime versus inland within the pinned layer."
+   ],
+   "depends_on": [],
+   "assumptions": [
+    "ASM-CLAIM-RECORD",
+    "ASM-LAYER-OF-RECORD"
+   ],
+   "alternatives": [
+    "the family-level verdict could be read as already answering the sign-by-sign question (it cannot: its population pooled the family, per the claim's own not-understood text)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified in scope if any Spec 044 output states a conclusion about a population, corpus, meaning, or question outside the per-sign coastal distribution in the pinned layer"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-MEANING"
+    ],
+    "strongest_rival": "the alternative reading in which a per-sign enrichment licenses a claim about what the sign meant or about the family as a whole",
+    "verdict_rule": "scope is judged by inspection of every Spec 044 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding",
+    "evidence_origin_groups": [
+     "claim-record",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The claim record for indus_valley_script_deciphered_from_myth_65ff0a26_manual_002 (partially falsified, stage explained), read first-hand at this draft from the pinned file (SHA-256 bc22d6f0\u2026): its not-understood text names the sign-by-sign residue this spec tests.",
+     "source_id": "glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json",
+     "observed_at": "2026-10-21"
+    },
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-02 (PR #195 packet, \u00a7D-02, read in full at this draft): the residue question, hypothesis, falsifier, data, method, and fixed criteria this spec registers.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F044-C02",
+   "kind": "requirement",
+   "text": "The claim indus_valley_script_deciphered_from_myth_65ff0a26_manual_002 stands SETTLED in its partially falsified state.",
+   "status": "draft",
+   "boundary": [
+    "The family-level result of record is the program's CISI-based count: no enrichment at coastal sites (Lothal, Dholavira), with the Phase-45 T6 test recording NO_ENRICHMENT for M047 at coastal sites (n = 13, p = 0.685). This spec's outcome appends to the claim's record as a dated residue entry beside that verdict, whatever it finds. Carried from the draft text verbatim in substance: the partial falsification rests on the claim's family-level coastal test; Spec 044 does not re-open, re-run, or re-adjudicate that verdict."
+   ],
+   "depends_on": [
+    "F044-C01"
+   ],
+   "assumptions": [
+    "ASM-CLAIM-RECORD",
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "re-opening the family verdict on the strength of a per-sign result (refused: the design states a finer test cannot quietly resurrect the family-level claim)"
+   ],
+   "falsification_tests": [
+    "recompute SHA-256 of the claim file (bc22d6f0\u2026) and read the manual_002 entry's status and explanation; any mismatch falsifies this statement and voids the draft's basis. Inspection at execution close: any Spec 044 product that edits or restates the family verdict falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the record could have been misread or superseded (the Spec 040 stale-pin precedent shows draft-cited pins can be wrong)",
+    "verdict_rule": "the statement stands or falls on the pinned claim file hashing to its recorded value with the stated status in it; compliance is judged by file inspection at execution close",
+    "evidence_origin_groups": [
+     "claim-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "manual_002 entry read first-hand at this draft: normalized claim 'The fish sign encodes a coastal guild controller or maritime trader identity (Lothal-linked)', status partially_falsified; explanation records the CISI-based coastal count and its no-enrichment result.",
+     "source_id": "glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json",
+     "observed_at": "2026-10-21"
+    },
+    {
+     "ref": "backend/scripts/phase46_t4_fish_expansion.py",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-46 script header, read at this draft: 'Phase-45 T6 found NO_ENRICHMENT for M047 at coastal sites (n=13, p=0.685)' \u2014 the recorded family-test line this draft cites, with its scope stated in the boundary.",
+     "source_id": "backend/scripts/phase46_t4_fish_expansion.py",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F044-C03",
+   "kind": "hypothesis",
+   "text": "At least one Asset F member clearing the 30-occurrence floor in the pinned layer is ENRICHED under F044-C10's criterion.",
+   "status": "draft",
+   "boundary": [
+    "This is the claim's hypothesis restated at sign level (design D-02). It is a statement about individual signs' distributions in this layer under the frozen lists, and about nothing else: not about the family jointly, not about any sign's meaning, and not about coastal trade. Carried from the draft text verbatim in substance: ENRICHED requires the member's coastal share to exceed the corpus-wide coastal share, the family-wise corrected exact test below 0.05, plus a share ratio of at least 1.5 (the criterion itself is F044-C10)."
+   ],
+   "depends_on": [
+    "F044-C01",
+    "F044-C02"
+   ],
+   "assumptions": [
+    "ASM-CLAIM-RECORD",
+    "ASM-ASSET-F",
+    "ASM-COASTAL-LIST"
+   ],
+   "alternatives": [
+    "no member is enriched (the falsifier, F044-C04)",
+    "the test cannot run: fewer than two members clear the floor (TOO THIN, F044-C11)"
+   ],
+   "falsification_tests": [
+    "run the \u00a75 primaries: if every tested member fails either clause of the ENRICHED criterion, this hypothesis is not supported and the outcome is NO MEMBER ENRICHED"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-MEANING"
+    ],
+    "strongest_rival": "the strongest rival is the falsifier itself: the family-level failure repeats member by member, because no member was ever coastal",
+    "verdict_rule": "SUPPORTED for the hypothesis iff at least one tested member satisfies both clauses of F044-C10; any other adjudicated pattern does not support it",
+    "evidence_origin_groups": [
+     "claim-record",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-02's hypothesis, restated at sign level: 'At least one individual fish sign is enriched at coastal/maritime sites relative to inland sites', with its falsifier and fixed criteria.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    },
+    {
+     "ref": "glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The claim's not-understood text: the family was treated together; the sign-by-sign test has not been run \u2014 the residue this hypothesis occupies.",
+     "source_id": "glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F044-C04",
+   "kind": "requirement",
+   "text": "A run with zero ENRICHED members records the outcome NO MEMBER ENRICHED in spec \u00a76's pre-written wording.",
+   "status": "draft",
+   "boundary": [
+    "Residue closure is scoped to this layer, these frozen lists, and this criterion. It does not close any other reading of any fish sign, which are separate claims with their own records. Carried from the draft text verbatim in substance: the partial falsification is recorded as covering the family member by member, plus the residue closes."
+   ],
+   "depends_on": [
+    "F044-C03"
+   ],
+   "assumptions": [
+    "ASM-ASSET-F",
+    "ASM-COASTAL-LIST"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "if any tested member satisfies F044-C10, this claim's condition does not arise and the headline is ENRICHED MEMBER FOUND under F044-C11"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a no-member outcome could be misread as a null result of no value; the requirement exists so the member-by-member coverage is recorded as the finding it is",
+    "verdict_rule": "the outcome record must carry the NO MEMBER ENRICHED wording of spec \u00a76 and the member-by-member coverage sentence whenever the condition holds",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-02's falsifier: 'No fish sign with at least 30 total occurrences shows coastal enrichment at the criterion below \u2014 in which case the partial falsification is recorded as covering the family member by member, and the residue closes.'",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F044-C05",
+   "kind": "requirement",
+   "text": "Asset F is a single canonical JSON list built at Spec 044's step 0 solely from Parpola's published fish-sign list.",
+   "status": "draft",
+   "boundary": [
+    "Membership is decided only by the published list (inclusion_basis parpola-list-fish or parpola-list-fish-variant). The publication numbers are locators, never membership criteria; sign_key \u2014 the identifier in the pinned corpus layer \u2014 is the member's identity. No count, census, or result may influence membership. Carried from the draft text verbatim in substance: each member carries sign_key, mahadevan_number, parpola_number, depiction_note, source_citation, source_locator, inclusion_basis, contested, plus notes, under the contract in spec \u00a74."
+   ],
+   "depends_on": [
+    "F044-C01"
+   ],
+   "assumptions": [
+    "ASM-PARPOLA-LIST",
+    "ASM-ASSET-F"
+   ],
+   "alternatives": [
+    "deriving the family from the Phase-43 fish candidates or the Phase-46/127 working lists (refused as the membership source: those are program working lists, not the published list the design and campaign name; they may be reported as a cross-check in the step-0 record, never as members by themselves)"
+   ],
+   "falsification_tests": [
+    "the step-0 record either exhibits Asset F in the \u00a74 form with a per-sign locator for every member, or the run has already closed ASSET F FREEZE FAILED; a member lacking a locator, or entered on any other basis, falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "family-definition discretion exercised silently \u2014 the failure mode the frozen, locator-carrying list exists to prevent",
+    "verdict_rule": "the asset file itself is the judge: its form, fields, and locators are inspected against spec \u00a74 at step 0 and again by any consumer pinning its digest",
+    "evidence_origin_groups": [
+     "parpola-list",
+     "crosswalk-record"
+    ],
+    "boundary_confirmation": "C05 states the asset's form (a canonical list built solely from Parpola's published list, with its per-member fields); C06 states the frozen asset's identity (its digest, its freeze timing, its no-in-place-edit rule). The two govern different properties of the same asset and are consistent by construction: a list in C05's form is exactly the object C06 freezes. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "backend/glossa_lab/data/mahadevan_parpola_crosswalk.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The program's Mahadevan\u2013Parpola crosswalk file (SHA-256 9ebd7723\u2026, recomputed at this draft) cites the published sign list: 'Parpola, Asko. 1994b. Sign list (= Parpola 1994a fig. 5.1, pp. 70-78)' \u2014 the bibliographic pin Asset F's source_citation carries.",
+     "source_id": "backend/glossa_lab/data/mahadevan_parpola_crosswalk.json",
+     "observed_at": "2026-10-21"
+    },
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-04's data note and campaign Part 3: family membership is fixed in advance from Parpola's published list and frozen before counting; campaign E-6 places the build inside D-02's spec.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "backend/glossa_lab/data/mahadevan_parpola_crosswalk.json"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F044-C06",
+   "kind": "requirement",
+   "text": "The frozen Asset F carries the SHA-256 digest of its canonical file as its identity.",
+   "status": "draft",
+   "boundary": [
+    "The digest in Spec 044's step-0 record is the only authoritative statement of Asset F's identity. Consuming specs pin that digest at their own freezes and assert it at their own step 0; a consumer's digest mismatch is the consumer's step-0 closure, never a reason to rebuild the asset. Carried from the draft text verbatim in substance: the asset is frozen before any coastal count exists; the digest is computed with the digest field excluded (spec \u00a74.2); the frozen file is never edited in place; a corrected list is a new asset version with a new digest, usable only under a new freeze."
+   ],
+   "depends_on": [
+    "F044-C05"
+   ],
+   "assumptions": [
+    "ASM-ASSET-F",
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "editing the frozen list when a member is found mis-entered (refused: the campaign's cluster tripwire marks affected results and queues a new version under a new freeze)"
+   ],
+   "falsification_tests": [
+    "ordering and digest inspection: the step-0 record must show Asset F's digest recorded before the gate-0.4 census and every count; any count timestamped or recorded before the freeze, or any in-place change to the frozen file (digest drift without a new version record), falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a list quietly adjusted after early counts were glimpsed, presenting a tuned family as a frozen one",
+    "verdict_rule": "identity and ordering are judged from the step-0 record and the file's digest, recomputed by any reader",
+    "evidence_origin_groups": [
+     "asset-contract"
+    ],
+    "boundary_confirmation": "C06 states the frozen asset's identity (digest, freeze timing, no in-place edits, new-version rule); C05 states the asset's form and membership source. The two govern different properties of the same asset and are consistent by construction. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-02's data note: fish family membership and the coastal list are 'frozen in the design, not adjusted per result' in spirit \u2014 the packet's shared rule that classifications are frozen before the test, never tuned to the result (packet README).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F044-C07",
+   "kind": "requirement",
+   "text": "The primary test runs on the CISI-based corpus layer of record pinned at step 0 under gate 0.1.",
+   "status": "draft",
+   "boundary": [
+    "Comparability with the family-level verdict is the reason for this layer and no other: a different layer's per-sign result would not be the residue of the recorded test. This draft states no file pin for the layer (DD-044-3): the scripts of record read a downloads-tree file absent from the repository tree on main, and other CISI-derived layers in the repo cannot carry a site test. Carried from the draft text verbatim in substance: the layer is the layer the original family-level test used, identified from the program's held data, exported whole, plus shown to reproduce the original population description; failure on any of those closes the execution as LAYER NOT PINNABLE with nothing counted. Freeze identification (OPEN-044-1, adjudication \u00a77): the layer is the Holdat corpus file corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv (SHA-256 62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e; 1,670 CISI-keyed inscriptions; 7,002 sign tokens; M047 at 13 tokens with Fisher p 0.685 reproduced exactly). Gate 0.1 re-verifies this pin at step 0."
+   ],
+   "depends_on": [
+    "F044-C02"
+   ],
+   "assumptions": [
+    "ASM-LAYER-OF-RECORD"
+   ],
+   "alternatives": [
+    "substituting the 179-inscription CISI corpus file or the mayig CISI layer (refused: all-Mohenjo-daro / single-site layers cannot express a coastal contrast, and substitution would change the estimand silently)"
+   ],
+   "falsification_tests": [
+    "gate 0.1 is the operational test: the step-0 record either pins the layer and reproduces the original population description from it, or the run has closed; a run that counts on an unpinned or non-reproducing layer falsifies compliance on its face"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "layer-shopping: choosing whichever CISI-derived layer gives the most interesting per-sign picture and calling it the original test's layer",
+    "verdict_rule": "the gate-0.1 record is the judge: pin, export, and population reproduction precede every count in the run's own record",
+    "evidence_origin_groups": [
+     "claim-record",
+     "phase-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "backend/scripts/phase54_falsification.py",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-54 falsification battery, read at this draft: the M047 coastal prediction ('should appear on seals with coastal trade contexts (Lothal, Dholavira) more than inland') run as a site_enrichment test over inscriptions keyed by cisi_number with site attribution \u2014 the shape of the original test the layer must reproduce.",
+     "source_id": "backend/scripts/phase54_falsification.py",
+     "observed_at": "2026-10-21"
+    },
+    {
+     "ref": "backend/glossa_lab/data/indus_cisi.py",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The repo's CISI corpus loader, read at this draft: 179 inscription sides, all Mohenjo-daro \u2014 evidence that this CISI-derived layer cannot be the layer of record for a site test, and why no pin is invented at draft.",
+     "source_id": "backend/glossa_lab/data/indus_cisi.py",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "backend/scripts/phase54_falsification.py"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F044-C08",
+   "kind": "requirement",
+   "text": "The coastal/maritime site list is frozen at step 0 under the design's rule from the Spec 027 Stage 0 gazetteer.",
+   "status": "draft",
+   "boundary": [
+    "The gazetteer of record is data/movement/gazetteer_rows.jsonl as pinned in spec \u00a72 (SHA-256 5ac76a30\u2026; 36 rows, 30 clusters). Spec 039's period labels are not consumed \u2014 period is not a variable in this test. A site in the pinned layer that cannot be classed from the gazetteer and published geography closes the run as COASTAL LIST FAILED. Carried from the draft text verbatim in substance: the rule classes a site coastal/maritime from published site geography (a port, or within the coastal zone); Lothal plus Dholavira are members by name; every contested site is listed as contested; no site is classed by its fish counts."
+   ],
+   "depends_on": [
+    "F044-C01"
+   ],
+   "assumptions": [
+    "ASM-COASTAL-LIST",
+    "ASM-GAZETTEER"
+   ],
+   "alternatives": [
+    "inheriting the site types as published in the CISI data, as the original test did (refused for the primary: the residue's whole point is the better classification; the original classification is the comparison the design moves beyond)"
+   ],
+   "falsification_tests": [
+    "the gate-0.3 record either exhibits the frozen list with a stated basis for every site in the pinned layer's site set, or the run has closed; a list whose membership correlates with fish counts, or a site classed without a gazetteer/geography basis, falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "coastal-status discretion exercised site by site after results are glimpsed \u2014 the failure mode the original test's published-types limit is being repaired against",
+    "verdict_rule": "the frozen list and its per-site bases are inspected at step 0; contested sites are named in the list itself, not discovered in the outcome",
+    "evidence_origin_groups": [
+     "gazetteer-record",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "data/movement/gazetteer_rows.jsonl",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Gazetteer rows file recomputed at this draft to SHA-256 5ac76a30\u2026, matching the pin in Spec 039's spec: 36 source-asserted rows over 30 program_site_id clusters, the site spine gate 0.3 classes from.",
+     "source_id": "data/movement/gazetteer_rows.jsonl",
+     "observed_at": "2026-10-21"
+    },
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-02's data note: 'site coastal status fixed in advance from the Spec 027 Stage 0 gazetteer and published site geography (a site is coastal/maritime if its published location is a port or within the coastal zone \u2014 the list is frozen in the design, not adjusted per result)'.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "data/movement/gazetteer_rows.jsonl"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F044-C09",
+   "kind": "requirement",
+   "text": "Execution stops before any per-sign coastal test on any step-0 gate failure.",
+   "status": "draft",
+   "boundary": [
+    "These are spec \u00a73's gates, in order. Their failure classes are LAYER NOT PINNABLE, ASSET F FREEZE FAILED, COASTAL LIST FAILED, TOO THIN, and INVALID (pin/anchors/ordering failures). No failure is repaired at run time; a repaired input is a new freeze, not a resumed run. Carried from the draft text verbatim in substance: the gate failures are the corpus layer unpinnable (gate 0.1), Asset F unfreezable (gate 0.2), the coastal list unfreezable (gates 0.3/0.5), plus a spec \u00a72 pin mismatch; gate 0.4 closes TOO THIN below two members clearing the 30-occurrence floor."
+   ],
+   "depends_on": [
+    "F044-C05",
+    "F044-C06",
+    "F044-C07",
+    "F044-C08"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "each gate's check is itself the test: the execution record must show every gate's verdict, in order, before the first per-sign quantity, or the run is non-compliant on its face"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "gate-skipping under time pressure, with the failure rationalised afterwards",
+    "verdict_rule": "the run's own record is the judge: gate verdicts precede quantities in it, in order, or the outcome is INVALID by construction",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-02 fixes the occurrence floor (at least 30 total occurrences), the TOO THIN outcome (fewer than two members clear the floor \u2014 counts stated), and the frozen-before-counting construction this claim's gates operationalise.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F044-C10",
+   "kind": "requirement",
+   "text": "A member is ENRICHED iff its coastal share ratio reaches 1.5 with its Bonferroni-corrected Fisher exact result below 0.05.",
+   "status": "draft",
+   "boundary": [
+    "The 1.5 ratio and 5% level are design D-02's fixed values, carried verbatim. The exact-test form, the Bonferroni correction, and the token unit are this draft's resolutions of points the design leaves open (DD-044-2, DD-044-4), recorded in adjudication.md and OPEN for the freeze to overturn openly before any counting. The inscription-level version is a reported sensitivity, never the primary. Carried from the draft text verbatim in substance: the ratio is the member coastal share against the corpus-wide coastal share; the exact test is Fisher's, one-sided in the enrichment direction, on sign tokens; the Bonferroni correction runs across the members tested; the primary counting unit is the sign token on both sides of the comparison."
+   ],
+   "depends_on": [
+    "F044-C03"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [
+    "an uncorrected per-sign test (refused: the design requires a family-wise correction across members tested)",
+    "the inscription as the primary unit (refused at draft for the primary: the design's measure is a share of occurrences; the inscription version is pre-registered as a sensitivity instead)"
+   ],
+   "falsification_tests": [
+    "the verdict assignment is mechanical from the recorded per-member tables; any ENRICHED label not following this rule from its member's numbers falsifies the outcome record"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "post-hoc criterion-shopping once a member's numbers are known \u2014 in particular, dropping the correction or the ratio clause for a near-miss member",
+    "verdict_rule": "the rule is frozen in this register before any member is counted; ENRICHED labels are recomputed from the published per-member counts by any reader",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-02's criteria, fixed in advance: 'A member is ENRICHED if its coastal share exceeds the corpus coastal share with the corrected test at the 5% level and the share ratio is at least 1.5', with 'an exact test per sign and a family-wise correction across the members tested'.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F044-C11",
+   "kind": "requirement",
+   "text": "The headline outcome of an execution is exactly one member of the seven-class outcome set of spec \u00a76.",
+   "status": "draft",
+   "boundary": [
+    "The first three are verdicts or census closures after the gates; the next three are step-0 closures (statements about runnability, \u00a76's wordings say so); INVALID is the integrity class. No other headline wording may be used, and no outcome class may be renamed after the run. Carried from the draft text verbatim in substance: the seven classes are ENRICHED MEMBER FOUND, NO MEMBER ENRICHED, TOO THIN, ASSET F FREEZE FAILED, LAYER NOT PINNABLE, COASTAL LIST FAILED, plus INVALID, each stated in spec \u00a76's pre-written wording for that outcome."
+   ],
+   "depends_on": [
+    "F044-C09",
+    "F044-C10"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "the outcome record's headline must be derivable from the gate record and the per-member tables by this claim's definitions alone, and must match \u00a76's wording form for its class"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "headline-shopping: choosing the outcome word that flatters the hypothesis \u2014 or softens a closure \u2014 after the numbers are known",
+    "verdict_rule": "the mapping from gate record and tables to headline word is fixed here, before execution; the outcome record shows the tables and the word together",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-02's residue outcomes, fixed in advance: ENRICHED member found, NO MEMBER ENRICHED, or TOO THIN, each with its recorded consequence; the step-0 closure classes are this draft's fail-closed completion of that set (DD-044-1).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F044-C12",
+   "kind": "requirement",
+   "text": "Every tested member's full counts are reported in the outcome record.",
+   "status": "draft",
+   "boundary": [
+    "Reporting is not selective: TOO THIN members are reported with counts beside the tested members, and a sensitivity that contradicts the primary is stated as contradicting it in the outcome record's first section. Sensitivities inform the reader; the frozen primary alone carries the headline. Carried from the draft text verbatim in substance: the full counts are coastal tokens, inland tokens, total, coastal share, base rate, ratio, uncorrected p, plus corrected p; the three pre-registered sensitivities (inscription-level measure, site-size-matched, contested-sites-removed) are reported alongside the primary without changing its verdict."
+   ],
+   "depends_on": [
+    "F044-C10"
+   ],
+   "assumptions": [
+    "ASM-COASTAL-LIST"
+   ],
+   "alternatives": [
+    "reporting only significant members (refused: the design requires every member's counts, not only significant ones)"
+   ],
+   "falsification_tests": [
+    "an outcome product missing any member's table or any named sensitivity falsifies compliance; a product whose headline follows a sensitivity rather than the primary falsifies the boundary"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a near-miss member or a friendlier sensitivity quietly promoted over the primary after the run",
+    "verdict_rule": "completeness is judged against spec \u00a79's reporting obligations at execution close: the tables and sensitivities are either all present or the product is defective on its face",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-02's method and controls: 'Report every member's counts, not only significant ones'; the site-size-matched sensitivity '(each coastal site's fish share versus its own total) is reported alongside'; contested sites listed 'and the test is rerun without it as a stated sensitivity'.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F044-C13",
+   "kind": "requirement",
+   "text": "The meaning of a fish sign is established by no outcome under Spec 044.",
+   "status": "draft",
+   "boundary": [
+    "Also excluded, and stated wherever an outcome is stated: any claim about coastal trade, guilds, or maritime identity as historical fact. Enrichment at ports is consistent with several stories; the design's own limit sentence binds every output. An ENRICHED MEMBER FOUND outcome appends a member note to the claim's record and changes no verdict (F044-C02). Carried from the draft text verbatim in substance: no output may present coastal enrichment as evidence for the claim's guild-badge story or its coastal-trader story."
+   ],
+   "depends_on": [
+    "F044-C01",
+    "F044-C03"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "a meaning narrative attached to an enriched member because the distribution 'fits' the story (refused: fitting a story is not testing it, and the design says the guild-badge story remains untested by any distributional test)"
+   ],
+   "falsification_tests": [
+    "inspection of every Spec 044 output: a meaning, guild, or trade claim in any output falsifies compliance and is corrected by dated addendum, never by silent edit"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-MEANING"
+    ],
+    "strongest_rival": "the reading in which a coastal concentration of one sign shows the sign marked coastal traders",
+    "verdict_rule": "outputs are judged against this boundary at execution close; violations are recorded defects, and the claim consequence is limited to the distribution statement of F044-C01",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-02's closing limit: 'What it would NOT establish. What the fish sign meant, even if a member is enriched. Enrichment at ports is consistent with several stories; the claim's specific guild-badge story remains untested by any distributional test.'",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F044-C14",
+   "kind": "requirement",
+   "text": "Records under Spec 044 are internal under the campaign's Roif gate.",
+   "status": "draft",
+   "boundary": [
+    "This is campaign requirement R-7 / Part 8 applied to this spec, and it survives execution. The 2026-10-21 verification that Roif's preprint is publicly posted on Academia.edu and citable satisfies at most one of the gate's two conditions; publication additionally requires the owner to clear the specific publication act, as its own act, outside this spec. Internal records, internal status reporting, and this spec's verdict records are not publication. Carried from the draft text verbatim in substance: nothing derived from these records is published or surfaced in any form under this campaign; campaign reporting names this member only as 'executed \u2014 held under the Roif gate', without result content."
+   ],
+   "depends_on": [
+    "F044-C01"
+   ],
+   "assumptions": [
+    "ASM-ROIF-GATE"
+   ],
+   "alternatives": [
+    "treating the preprint verification as lifting the hold (refused: the campaign plan as approved states the gate clears only when the verification has landed AND the specific act cites Roif and is cleared by the owner)"
+   ],
+   "falsification_tests": [
+    "a public-surface audit (the campaign's Part 12 held-out check): any paper, website, article, public register wording, or summary derived from this spec's results, appearing before the owner's cleared act, falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "routine surfacing: a held result leaking onto a public surface through a status summary or article process that drew on the record by routine",
+    "verdict_rule": "compliance is judged by the campaign's public-surface audit and by the form of campaign reporting (the held-under-gate naming, with no result content)",
+    "evidence_origin_groups": [
+     "campaign-plan"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "~/workspace/your_files/2026-10-21-runnable-experiments-campaign-plan.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The approved campaign plan, Part 8 and R-7 (read in full at this draft): Roif-claim results are computed and held, never surfaced; reporting names members 2, 3, 8, 9 only as 'executed \u2014 held under the Roif gate'. Evidence ref is a workspace path because the plan is the owner's approval package, not a repository file.",
+     "source_id": "~/workspace/your_files/2026-10-21-runnable-experiments-campaign-plan.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F044-C15",
+   "kind": "requirement",
+   "text": "Sign identities in this test are compilation-relative.",
+   "status": "draft",
+   "boundary": [
+    "The original test used site types as published in the CISI data; this test replaces them with the frozen gazetteer-based list (F044-C08), which mitigates and does not remove the relativity. Spec 037's census \u2014 compilations diverging on matched objects \u2014 is the standing caution, and Mahadevan/Parpola numbering differences are carried in Asset F as locators precisely so no output silently equates two compilations' signs. Carried from the draft text verbatim in substance: site classifications in this test are likewise compilation-relative; the outcome states the layer, the frozen lists, plus the contested sites wherever it is stated; the outcome claims nothing about member distribution in another compilation."
+   ],
+   "depends_on": [
+    "F044-C01",
+    "F044-C05",
+    "F044-C08"
+   ],
+   "assumptions": [
+    "ASM-LAYER-OF-RECORD",
+    "ASM-COASTAL-LIST"
+   ],
+   "alternatives": [
+    "stating the per-sign result as a fact about the fish signs simpliciter (refused: it is a fact about these signs, in this layer, under these frozen lists)"
+   ],
+   "falsification_tests": [
+    "an outcome product lacking the layer label, the Asset F digest, or the contested-site list falsifies compliance; a product generalising the result across compilations falsifies the boundary"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a compilation-relative distribution quoted as a timeless property of the signs, travelling without its layer and lists",
+    "verdict_rule": "the labels are \u00a79 reporting obligations: their absence from any product is a defect of that product, recorded as such",
+    "evidence_origin_groups": [
+     "census-record",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-02's open point: the original test 'used site types as published in the CISI data' \u2014 the compilation-relativity the residue design itself names as one of the two things the finer test changes.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    },
+    {
+     "ref": "specs/037-cisi31-concordance-spine/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 037's census record: sign/object classifications diverge between compilations \u2014 the standing caution this claim carries into every output.",
+     "source_id": "specs/037-cisi31-concordance-spine/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  }
+ ]
+}

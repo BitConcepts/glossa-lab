@@ -145,6 +145,9 @@ async def run_command(body: RunRequest) -> StreamingResponse:
     Output events: started, line (per line), done / error.
     """
     cwd = (_REPO_ROOT / body.cwd) if body.cwd else _REPO_ROOT
+    # C-02: a caller-supplied cwd must stay inside the repo root.
+    if not cwd.resolve().is_relative_to(_REPO_ROOT.resolve()):
+        raise HTTPException(status_code=400, detail="cwd escapes the repository root")
     if not cwd.exists():
         raise HTTPException(status_code=400, detail=f"Directory not found: {cwd}")
 

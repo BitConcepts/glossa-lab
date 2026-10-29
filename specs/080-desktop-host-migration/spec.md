@@ -349,3 +349,72 @@ through the app's own stop; (c) the start path's
 `timeout /t` waits (which print "Input redirection is not
 supported" under redirected stdin) are replaced with ping
 waits at the source.
+
+## Amendment 4 (2026-10-29) — the task is a starter, not a supervisor; every verify wait bounded
+
+Evidence. (a) Persistence probe run 40896349433 PASSED across a
+job boundary under Amendment 3 — and the model still failed in
+service the same day. (b) Start-verify3 (run 40911989844) HUNG
+inside the verify script at zero CPU and had to be cancelled:
+a wait with only a per-receive timeout (a drip-fed HTTP read;
+a pipe drain behind a surviving grandchild) can wait forever.
+(c) The task diagnosis (gatekeeper task-diag, 2026-10-29;
+Task Scheduler operational log + task XML read back) pinned
+the persistence failure: at 12:24:15 ET a logon-class trigger
+fired (event 110) under a Parallel multiple-instances policy
+then in force; the start-verify3 start leg no-oped at ~12:29
+(the Amendment 3 identity gate working); the Amendment 3
+waiting action held the task instance open on the tray, and
+when the verify's restart leg stopped the stack through the
+app's own controls, the stop killed the task-owned tray with
+everything else - the instance ended with LastTaskResult
+0xFFFFFFFF, and the tray's supervisor restarted the backend
+at 12:31:56 (app log) under no scheduler ownership. The
+registered XML otherwise read: ExecutionTimeLimit P3650D
+(effectively none), RestartOnFailure 3 x PT1M, Interactive /
+Limited principal - the limit was not the cause; the COUPLING
+was.
+
+Decisions.
+1. FR-004 revised again: the canonical autostart remains the
+   GlossaLab task (route-B principal), but its ONE action is
+   a short-lived starter - wscript + scripts\start-ensure.vbs
+   -> setup-os.cmd start (the idempotent ensure) - which
+   exits with the ensure result in seconds. Triggers: the
+   user-scoped logon trigger (reboots) PLUS a 15-minute
+   repetition trigger (the self-heal tick). Settings:
+   ExecutionTimeLimit 10 minutes (bounds the starter by
+   construction), MultipleInstances IgnoreNew (starters never
+   stack - a Parallel policy is expressly not this design),
+   restart-on-failure 3 x 1 min for starter-launch failures
+   only. Steady state: task Ready, LastTaskResult 0x0; the
+   tray and backend live detached, owned by no task instance
+   and no job. The tray supervises the backend (FR-006,
+   unchanged); an intentional setup-os.cmd stop stands until
+   the next ensure tick or an explicit start, by design.
+2. launch-tray.vbs is fire-and-forget again and gains a WMI
+   single-instance guard (a second tray is never launched).
+   Amendment 3's waiting action and its scheduler-supervision
+   rationale are SUPERSEDED.
+3. Defect 1 fix (FR-007 instrument): every external call in
+   scripts\verify_desktop_host.py goes through a bounded
+   helper with a TOTAL deadline - run_bounded (subprocess;
+   tree-kill on expiry so a surviving grandchild cannot turn
+   the drain into a second hang) and call_bounded (daemon
+   thread, for per-receive-timeout reads) - plus an overall
+   script deadline (GLOSSA_VERIFY_DEADLINE_SEC, default 480).
+   A wait that expires emits GLOSSA_WAIT name=<wait>
+   result=TIMEOUT timeout=<s> and fails its leg. The app stop
+   path's port-drain test now targets the loopback listener
+   only (the Tailscale proxy's tailnet listener never drains).
+4. Persistence re-proof (revised T021): fire the task -> the
+   task returns to Ready with LastTaskResult 0x0 -> a SEPARATE
+   later probe finds tray + backend alive with creation times
+   after the task instance ended, health 200 through the
+   Tailscale proxy with identity - across a job boundary and
+   across the task's own end.
+
+This amendment does not establish: that a true
+logoff/logon cycle was performed (the logon trigger remains
+proven only by its 12:24:15 firing in the event log), or
+anything about the desktop dataset.

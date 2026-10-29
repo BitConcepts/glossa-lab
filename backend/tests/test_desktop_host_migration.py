@@ -295,3 +295,45 @@ def test_no_timeout_exe_waits_in_windows_scripts() -> None:
         )
         assert "timeout /t" not in operational.lower(), str(path)
         assert "timeout.exe" not in operational.lower(), str(path)
+
+
+def test_c080_10_verify_waits_are_bounded_and_named():
+    """Defect 1 (run 40911989844 hung unbounded): every external
+    call in the verify script goes through the total-deadline
+    helpers; an expired wait emits a named GLOSSA_WAIT marker.
+    The only subprocess.run left is the tree-kill inside
+    run_bounded itself (timeout-bounded)."""
+    source = (REPO_ROOT / "scripts" / "verify_desktop_host.py").read_text(
+        encoding="utf-8"
+    )
+    assert "def run_bounded" in source
+    assert "def call_bounded" in source
+    assert "GLOSSA_WAIT" in source
+    assert "VERIFY_DEADLINE_SEC" in source
+    assert source.count("subprocess.run(") == 1
+
+
+def test_c080_11_task_is_a_short_lived_starter():
+    """Amendment 4: the task's one action is the starter
+    (start-ensure.vbs -> setup-os.cmd start); registration
+    carries the logon trigger AND the 15-minute repetition
+    tick, IgnoreNew, and a bounded ExecutionTimeLimit; the
+    tray launcher is fire-and-forget with a single-instance
+    guard and never waits on the tray."""
+    reg = (REPO_ROOT / "scripts" / "register_task.ps1").read_text(
+        encoding="utf-8"
+    )
+    assert "start-ensure.vbs" in reg
+    assert "RepetitionInterval" in reg
+    assert "IgnoreNew" in reg
+    assert "New-TimeSpan -Minutes 10" in reg
+    ensure = (REPO_ROOT / "scripts" / "start-ensure.vbs").read_text(
+        encoding="utf-8"
+    )
+    assert "setup-os.cmd" in ensure
+    vbs = (REPO_ROOT / "scripts" / "launch-tray.vbs").read_text(
+        encoding="utf-8"
+    )
+    assert "glossa_tray" in vbs
+    assert "0, False" in vbs  # fire-and-forget: do not wait
+    assert "ExecQuery" in vbs  # single-instance guard

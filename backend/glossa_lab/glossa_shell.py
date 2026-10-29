@@ -122,7 +122,18 @@ class GlossaShell:
     # ── Public entry point ────────────────────────────────────────────────────
 
     def run(self, command: str) -> Iterator[str]:
-        """Execute *command* and yield output lines."""
+        """Execute *command* and yield output lines.
+
+        Sandbox escapes raised by ``_resolve`` (ValueError) are
+        surfaced as a single error line, never executed.
+        """
+        try:
+            yield from self._run_dispatch(command)
+        except ValueError as exc:
+            yield f"error: {exc}"
+
+    def _run_dispatch(self, command: str) -> Iterator[str]:
+        """Dispatch one command line to a builtin or the subprocess fallback."""
         command = command.strip()
         if not command or command.startswith("#"):
             return
@@ -505,11 +516,21 @@ class GlossaShell:
     # ── Helpers ───────────────────────────────────────────────────────────────
 
     def _resolve(self, path_str: str) -> Path:
-        """Resolve *path_str* relative to cwd, returning an absolute Path."""
+        """Resolve *path_str* relative to cwd, confined to the sandbox.
+
+        Leg C finding C-02: this helper previously returned absolute
+        paths and ``../`` traversals unchecked, so builtins such as
+        ``cat``/``rm``/``cp`` could read or modify anything the backend
+        process could reach — only ``cd`` enforced the sandbox. Every
+        resolved path must now stay under ``sandbox_root``; escapes
+        raise ``ValueError`` (surfaced by ``run()`` as an error line).
+        """
         p = Path(path_str)
-        if p.is_absolute():
-            return p
-        return (self.cwd / p).resolve()
+        resolved = p.resolve() if p.is_absolute() else (self.cwd / p).resolve()
+        if not resolved.is_relative_to(self.sandbox_root):
+            raise ValueError(
+                f"path escapes sandbox ({self.sandbox_root}): {path_str}")
+        return resolved
 
     @staticmethod
     def _parse_n_flag(args: list[str], default: int = 10) -> tuple[int, list[str]]:

@@ -11223,3 +11223,46 @@ propagation, and the timeout.exe ban.
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+
+## [2026-10-29] Entry - Desktop UI-Log Audit Fix 3: Backend Fallthrough Honesty
+
+Objective:
+  Owner directive 2026-10-29 ("check ui logs too. I see lots of
+  failures and fallthroughs. fix all."): root-cause fixes for the
+  backend failures visible in the desktop host's live log.
+
+Findings fixed:
+  1. The discovery LLM client (backend/glossa_lab/discovery/
+     llm.py) retried a failing provider on EVERY call with no
+     memory: in the desktop backend log of 2026-10-29, one
+     scheduler tick produced dozens of consecutive "provider
+     mistral returned 429, falling through" lines (one per
+     classified item), in a log carrying 1,378 WARNING lines. The
+     client now carries the same circuit breaker as ai_utils.call_llm (the
+     newer stack): 5 consecutive failures open the circuit for
+     600 s (one WARNING at open, skips at DEBUG), success resets
+     the count, expiry allows a retry. Fall-through order and the
+     all-providers-failed LLMError are unchanged.
+  2. _sync_static_fallback_async (model_intelligence.py) swallowed
+     every per-model INSERT failure and the COMMIT failure with
+     bare except/pass and returned "errors": 0 unconditionally -
+     a partially written static fallback reported full success.
+     Errors are now counted, the first is logged at WARNING with
+     the counts, and the returned dict carries the real number.
+
+Not code-fixed, by evidence: the dashboard insight cascade in
+the same log (reasoning -> conversational -> short-prompt, then
+"empty response after 3 attempts") is an HONEST degraded path -
+the returned payload tells the user the provider may be
+overloaded and names the remedy (model "empty-fallback"); its
+root cause was the dead/rate-limited provider, addressed by
+item 1's circuit discipline in the discovery stack and by the
+pre-existing circuit in ai_utils.
+
+Tests: backend/tests/test_discovery_llm_circuit.py - circuit
+opens at the threshold and stops invoking the provider, a
+healthy fallback keeps serving during cooldown, success resets
+the failure count, cooldown expiry allows a retry.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.

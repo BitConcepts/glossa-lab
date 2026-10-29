@@ -335,12 +335,12 @@
     }
   },
   "parpola_2010_dravidian_solution_manual_001": {
-    "band": "high",
+    "band": "medium",
     "claim_id": "parpola_2010_dravidian_solution_manual_001",
     "components": {
       "boundary": 0.5,
       "contradiction_penalty": 0,
-      "evidence": 1.0,
+      "evidence": 0.706875,
       "falsifiability": 0.5,
       "independence": 1.0
     },
@@ -350,14 +350,15 @@
       "status": "unsupported",
       "uncertainty": "insufficient_evidence"
     },
-    "direct_score": 0.775,
+    "direct_score": 0.6137812500000001,
     "notes": [
+      "No observed supporting evidence",
       "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
       "Falsification test 'If Dravidian phonotactics do not fit Indus sign bigrams better than Sanskrit.' earns partial credit (FR-8.7): failed criteria: no checkable condition (no numeric bound, comparator, or observation/action term)",
       "Boundary entry 'testability=directly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
       "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 2 unknown of 2 item(s); unknown freshness counts as stale (FR-8.6)"
     ],
-    "propagated_score": 0.775,
+    "propagated_score": 0.6137812500000001,
     "propagation": {
       "cycle_component": [],
       "status": "propagated"
@@ -634,12 +635,12 @@
     }
   },
   "yadav_2009_arxiv_manual_001": {
-    "band": "high",
+    "band": "medium",
     "claim_id": "yadav_2009_arxiv_manual_001",
     "components": {
       "boundary": 0.5,
       "contradiction_penalty": 0,
-      "evidence": 1.0,
+      "evidence": 0.706875,
       "falsifiability": 0.5,
       "independence": 1.0
     },
@@ -649,26 +650,27 @@
       "status": "supported",
       "uncertainty": "insufficient_evidence"
     },
-    "direct_score": 0.775,
+    "direct_score": 0.6137812500000001,
     "notes": [
+      "No observed supporting evidence",
       "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
       "Falsification test 'If frequency distribution deviates from Zipf-Mandelbrot law.' earns partial credit (FR-8.7): failed criteria: no checkable condition (no numeric bound, comparator, or observation/action term)",
       "Boundary entry 'testability=directly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
       "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 2 unknown of 2 item(s); unknown freshness counts as stale (FR-8.6)"
     ],
-    "propagated_score": 0.775,
+    "propagated_score": 0.6137812500000001,
     "propagation": {
       "cycle_component": [],
       "status": "propagated"
     }
   },
   "yadav_2009_arxiv_manual_002": {
-    "band": "high",
+    "band": "medium",
     "claim_id": "yadav_2009_arxiv_manual_002",
     "components": {
       "boundary": 0.5,
       "contradiction_penalty": 0,
-      "evidence": 1.0,
+      "evidence": 0.706875,
       "falsifiability": 1.0,
       "independence": 1.0
     },
@@ -678,13 +680,14 @@
       "status": "supported",
       "uncertainty": "insufficient_evidence"
     },
-    "direct_score": 0.8500000000000001,
+    "direct_score": 0.6887812500000001,
     "notes": [
+      "No observed supporting evidence",
       "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
       "Boundary entry 'testability=directly_testable' earns partial credit (FR-8.7): failed criteria: placeholder content; names no scope or limit (no scope term or numeric bound)",
       "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 2 unknown of 2 item(s); unknown freshness counts as stale (FR-8.6)"
     ],
-    "propagated_score": 0.8500000000000001,
+    "propagated_score": 0.6887812500000001,
     "propagation": {
       "cycle_component": [],
       "status": "propagated"

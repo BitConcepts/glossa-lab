@@ -194,12 +194,20 @@ def expected_token() -> str:
 
 
 def verify_presented(presented: str | None) -> bool:
-    """Constant-time check of a presented token (never reflects it)."""
+    """Constant-time check of a presented token (never reflects it).
+
+    The expectation is resolved first, unconditionally: on a fresh
+    install that resolution is what generates + persists the token
+    (FR-001, generate at first use), so even an anonymous first
+    request leaves the install provisioned — its 401 then means
+    "present the token", never "no token exists".
+    """
     if auth_disabled():
         return True
+    expected = expected_token()
     if not presented:
         return False
-    return hmac.compare_digest(presented, expected_token())
+    return hmac.compare_digest(presented, expected)
 
 
 def bearer_token(headers: Mapping[str, str]) -> str | None:

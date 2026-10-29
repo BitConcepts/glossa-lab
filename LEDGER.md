@@ -11352,3 +11352,29 @@ direction of Tristen Pierson, per constitution sec. VI.
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-29] Entry — Leg C hardening 7: delivery-integrity checker (C-15) + governance GAPS (C-01, C-07, C-12, C-13, C-09F, ENV)
+
+- **C-15 (delivery integrity):** three false watcher deliveries on
+  2026-10-29 (nonexistent run id reported complete, a PR's CI status
+  inverted, a run id mismatched against the gatekeeper record) each
+  stood until a human rechecked the primary record. The control —
+  **"No resolution, no report"** — is now mechanical:
+  `backend/glossa_lab/delivery_check.py` resolves a run id against
+  the GitHub API (run exists, `head_sha` matches, CI counted from
+  per-job conclusions) and prints one citable verdict line
+  (`RESOLVED run <id> sha <short> N/N success @ <ts>` or
+  `UNRESOLVED: <reason>`, exit non-zero on any mismatch). CLI:
+  `tools/delivery-check/check_delivery.py <run_id> <expected_sha>`.
+  Tests cover all three failure modes plus the resolved and
+  in-progress cases.
+- **Governance GAPS:** `docs/governance/legc-gaps-2026-10-29.md`
+  records the Leg C findings that need decisions or cross-cutting
+  specs rather than hardening PRs, each with a named owner (role):
+  GAP-C01 authentication layer, GAP-C07 storage-enforced lifecycle,
+  GAP-C13 falsifier-coverage dispositions, GAP-C12 legacy
+  chi-squared, GAP-C09F frontend error-reporting half, GAP-ENV
+  production venv below the declared AEE pin.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec. VI.

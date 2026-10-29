@@ -71,8 +71,8 @@ def test_promotion_without_evidence_ref_is_blocked(client, staging_env):
 
 def test_promotion_with_candidate_evidence_ref_succeeds(client, staging_env):
     staging_env["archive"].write_text(json.dumps([_candidate(
-        evidence_ref="reports/phase999_example.json (positional "
-                     "adjudication)")]), encoding="utf-8")
+        evidence_ref="LEDGER.md (positional adjudication)")]),
+        encoding="utf-8")
     r = client.post(f"{BASE}/staging/promote", json={})
     data = r.json()
     assert data["promoted"] == 1
@@ -80,8 +80,7 @@ def test_promotion_with_candidate_evidence_ref_succeeds(client, staging_env):
     anchors = json.loads(
         staging_env["anchors"].read_text(encoding="utf-8"))["anchors"]
     assert anchors["M777"]["reading"] == "test"
-    assert "evidence_ref=reports/phase999_example.json" in \
-        anchors["M777"]["basis"]
+    assert "evidence_ref=LEDGER.md" in anchors["M777"]["basis"]
 
 
 def test_promotion_with_request_evidence_ref_map_succeeds(
@@ -110,3 +109,18 @@ def test_verify_archive_route_and_deprecated_alias(client, staging_env):
     r2 = client.post(f"{BASE}/staging/verify-sa")
     assert r2.status_code == 200
     assert r2.json()["ok"] is True
+
+
+def test_promotion_with_fabricated_unresolvable_ref_is_blocked(
+        client, staging_env):
+    """Leg C C-03: a non-empty string that names no existing artifact
+    must NOT pass the H26 gate (live-confirmed exploit pre-fix)."""
+    staging_env["archive"].write_text(
+        json.dumps([_candidate()]), encoding="utf-8")
+    before = staging_env["anchors"].read_text(encoding="utf-8")
+    r = client.post(f"{BASE}/staging/promote", json={
+        "evidence_refs": {"M777": "legc03-FABRICATED-ref-that-does-not-exist"}})
+    data = r.json()
+    assert data["promoted"] == 0
+    assert data["blocked_no_evidence"] == ["M777"]
+    assert staging_env["anchors"].read_text(encoding="utf-8") == before

@@ -35,7 +35,7 @@ except ImportError:
 
 # ── Constants ────────────────────────────────────
 
-_AUTOSTART_NAME = "GlossaLab"  # HKCU Run value owning tray autostart
+_SCHTASK_NAME = "GlossaLab"  # single task that owns tray + backend
 
 _CONFIG_FILE = Path.home() / ".glossa-lab" / "config.json"
 
@@ -167,22 +167,13 @@ _LINUX_AUTOSTART_DESKTOP = (
 
 
 def _is_autostart_enabled() -> bool:
-    """Windows: HKCU Run value (Spec 080 FR-004 as amended).
-
-    Linux: tray autostart entry.
-    """
+    """Windows: GlossaLab scheduled task. Linux: tray autostart entry."""
     if platform.system() == "Windows":
-        try:
-            import winreg
-
-            with winreg.OpenKey(
-                winreg.HKEY_CURRENT_USER,
-                r"Software\Microsoft\Windows\CurrentVersion\Run",
-            ) as key:
-                winreg.QueryValueEx(key, _AUTOSTART_NAME)
-            return True
-        except OSError:
-            return False
+        result = subprocess.run(
+            ["schtasks", "/query", "/tn", _SCHTASK_NAME],
+            capture_output=True, creationflags=_WIN_HIDDEN, check=False,
+        )
+        return result.returncode == 0
     if platform.system() == "Linux":
         return _LINUX_AUTOSTART_DESKTOP.exists()
     return False

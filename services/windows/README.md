@@ -3,15 +3,17 @@
 ## Canonical install path (Spec 080)
 
 There is exactly ONE Windows installer: `setup-os.cmd` at the repo
-root. It registers the per-user autostart entry — the `GlossaLab`
-value under `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`
-(Spec 080 FR-004 as amended 2026-10-29; per-user scheduled-task
-registration is denied in the installer's execution context, see
-Amendment 1 in the spec) — whose command is
-`wscript.exe //nologo scripts\launch-tray.vbs`, so the tray starts
-at logon with no visible window (governance rule H25). The
-installer reads the value back and verifies it before reporting
-success. The tray then starts and supervises the backend.
+root. It registers the one canonical autostart: the `GlossaLab`
+Task Scheduler task (Spec 080 FR-004, route-B registration
+shape per Amendment 2, 2026-10-29: scoped principal for the
+installing user, Interactive / Limited, user-scoped logon
+trigger, no elevation), registered by
+`scripts\register_task.ps1`, whose action is
+`wscript.exe //nologo scripts\launch-tray.vbs`, so the tray
+starts at logon with no visible window (governance rule H25).
+The registration is read back in the Ready state
+(`GLOSSA_TASK_STATE`) before the installer reports success.
+The tray then starts and supervises the backend.
 
 For a unattended host bring-up plus verification, use:
 

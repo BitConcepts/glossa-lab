@@ -11,9 +11,8 @@ that runs this script (TRISTEN-DESKTOP):
 * GLOSSA_TRAY_PROCESS   — tray process(es) running (-m glossa_tray)
 * GLOSSA_ICON_HASH      — installed-tree icon assets match the
   Spec 079 SHA-256 pins
-* GLOSSA_AUTOSTART_STATE — the per-user autostart registration:
-  the HKCU Run value written by setup-os.cmd install (Windows;
-  Spec 080 FR-004 as amended 2026-10-29)
+* GLOSSA_TASK_STATE     — the GlossaLab scheduled task state,
+  read via the CIM provider (Windows; Spec 080 FR-004)
 * GLOSSA_RESTART_TEST   — kill the backend process; the tray
   supervisor must bring it back (new PID) within the deadline
 
@@ -35,7 +34,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 ICON_ICO_SHA256 = "315940742d75720388264dcdf03178c58f878ea0701d03eeba95688d935ff520"
 ICON_PNG_SHA256 = "bb41bf09d4177cee0c96b29ebe480f86a9e7115946f9e4ad132d2367a7adb077"
-RUN_VALUE_NAME = "GlossaLab"
+TASK_NAME = "GlossaLab"
 RESTART_DEADLINE_SEC = 120
 POLL_INTERVAL_SEC = 2
 
@@ -139,33 +138,33 @@ def kill_pid(pid: int) -> bool:
         return False
 
 
-def autostart_state() -> str:
-    """State of the per-user autostart registration (Windows).
+def task_state() -> str:
+    """State of the GlossaLab scheduled task (Windows), via CIM.
 
-    Spec 080 FR-004 as amended 2026-10-29: the canonical autostart
-    is the HKCU Run value written by setup-os.cmd install, pointing
-    at wscript.exe + launch-tray.vbs. REGISTERED only when the
-    value exists AND names that entry point; a present-but-foreign
-    value is MISMATCH, never REGISTERED.
+    Spec 080 FR-004 (Amendment 2): the canonical autostart is the
+    GlossaLab task registered by scripts/register_task.ps1 in the
+    route-B shape. Read through Get-ScheduledTask (the CIM
+    provider) - the same read path host diagnostic run
+    40816104983 proved live; schtasks /Query proved unreliable in
+    that venue (exit 0 while creating nothing, run 40807602846).
     """
     if sys.platform != "win32":
         return "SKIP non-windows"
+    command = (
+        f"Get-ScheduledTask -TaskName '{TASK_NAME}' "
+        "-ErrorAction Stop | Select-Object -ExpandProperty State"
+    )
     try:
-        import winreg
-
-        with winreg.OpenKey(
-            winreg.HKEY_CURRENT_USER,
-            r"Software\Microsoft\Windows\CurrentVersion\Run",
-        ) as key:
-            value, _ = winreg.QueryValueEx(key, RUN_VALUE_NAME)
-    except OSError:
-        return "MISSING"
-    except ImportError as exc:  # pragma: no cover - winreg is win32 stdlib
+        result = subprocess.run(
+            ["powershell", "-NoProfile", "-NonInteractive", "-Command",
+             command],
+            capture_output=True, text=True, timeout=15, check=False,
+        )
+    except (OSError, subprocess.TimeoutExpired) as exc:
         return f"ERROR {exc}"
-    text = str(value)
-    if "wscript" in text.lower() and "launch-tray.vbs" in text.lower():
-        return "REGISTERED"
-    return "MISMATCH"
+    if result.returncode != 0:
+        return "MISSING"
+    return result.stdout.strip() or "MISSING"
 
 
 def wait_for_new_backend(healthcheck, base_url: str, old_pid: int | None,
@@ -218,8 +217,8 @@ def main(argv: list[str] | None = None) -> int:
     )
 
     marker(
-        "GLOSSA_AUTOSTART_STATE",
-        f"name={RUN_VALUE_NAME} state={autostart_state()} method=hkcu-run",
+        "GLOSSA_TASK_STATE",
+        f"name={TASK_NAME} state={task_state()}",
     )
 
     restart_ok = True

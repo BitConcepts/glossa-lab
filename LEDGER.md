@@ -10995,3 +10995,33 @@ contract tests C080-5 (updated) and C080-8 (new).
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+
+## [2026-10-29] Entry - Spec 080 Amendment 2: Autostart Restored to Route-B Scheduled Task
+
+Amendment 1's HKCU Run-key autostart is superseded. Host
+diagnostic glossa-host-diag2-2026-10-28 (gatekeeper run
+40816104983, 20 markers), from the same non-elevated job context
+as diag1 (tristen-desktop\trist, session 1), registered a task
+cleanly via the cmdlet route with a scoped principal: task file
+present, CIM state Ready, principal trist / Interactive /
+Limited, trigger MSFT_TaskLogonTrigger for
+TRISTEN-DESKTOP\trist. The schtasks route still fails there.
+Diag1's denials (run 40807602846) were therefore shape-caused
+(unscoped trigger, no scoped principal, elevation wrapper),
+not a venue-wide bar.
+
+This change restores Spec 080's design of record:
+scripts\register_task.ps1 returns in the route-B shape and is
+invoked directly by setup-os.cmd install (no elevation); it
+reads the task back, prints GLOSSA_TASK_STATE, and gates the
+install on the Ready state. The HKCU Run route is removed (Run
+deletes remain as legacy cleanup). The tray's autostart
+detection and scripts\verify_desktop_host.py return to the
+task (CIM read); FR-007's marker is GLOSSA_TASK_STATE again.
+Amendment 1's icon-verification fix (.NET SHA-256 helper,
+case-insensitive, discriminated failures) is unchanged.
+Spec record: specs/080-desktop-host-migration/spec.md,
+Amendment 2; contract test C080-8 (revised).
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.

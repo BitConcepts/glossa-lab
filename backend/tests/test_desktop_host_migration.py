@@ -97,24 +97,29 @@ def test_setup_os_install_verifies_icon_hashes() -> None:
         assert code in helper, code
 
 
-def test_setup_os_autostart_is_hkcu_run_key() -> None:
-    """C080-8 (Amendment 1): one canonical autostart — the HKCU Run
-    value; the scheduled-task registration path is removed."""
+def test_setup_os_autostart_is_routeb_task() -> None:
+    """C080-8 (Amendment 2): one canonical autostart - the GlossaLab
+    scheduled task, registered in the route-B shape proven by host
+    diagnostic run 40816104983: scoped principal (Interactive /
+    Limited), user-scoped logon trigger, no elevation. The HKCU
+    Run-key route (Amendment 1) is removed, not dual-pathed."""
     text = _text("setup-os.cmd")
-    assert r"HKCU\Software\Microsoft\Windows\CurrentVersion\Run" in text
-    assert "reg add" in text and "launch-tray.vbs" in text
-    # Registration is read back and verified before it is reported.
-    assert "GLOSSA_AUTOSTART_STATE" in text
-    assert "readback=verified" in text
-    # No task registration path remains: no elevation wrapper, no
-    # register_task.ps1 reference, and the file itself is deleted.
-    assert "register_task" not in text
-    assert "RunAs" not in text
-    assert not (REPO / "scripts" / "register_task.ps1").exists()
-    # The tray reads the same Run value to report autostart state.
+    assert "register_task.ps1" in text
+    assert "reg add" not in text
+    assert "RunAs" not in text  # no elevation wrapper (diag1's shape)
+    helper = _text("scripts/register_task.ps1")
+    assert "New-ScheduledTaskPrincipal" in helper
+    assert "LogonType Interactive" in helper
+    assert "RunLevel Limited" in helper
+    assert "New-ScheduledTaskTrigger -AtLogon -User" in helper
+    assert "wscript.exe" in helper and "launch-tray.vbs" in helper
+    # Registration is read back and gated on the Ready state.
+    assert "GLOSSA_TASK_STATE" in helper
+    assert "Get-ScheduledTask" in helper
+    # The tray detects autostart from the same task.
     tray = _text("tray/glossa_tray/main.py")
-    assert "winreg" in tray
-    assert "schtasks" not in tray
+    assert "schtasks" in tray
+    assert "winreg" not in tray
 
 
 def test_services_windows_delegates_to_canonical_installer() -> None:
@@ -161,7 +166,7 @@ def test_verify_script_markers_and_icon_helper(tmp_path: Path) -> None:
         "GLOSSA_HOST_IDENTITY",
         "GLOSSA_TRAY_PROCESS",
         "GLOSSA_ICON_HASH",
-        "GLOSSA_AUTOSTART_STATE",
+        "GLOSSA_TASK_STATE",
         "GLOSSA_RESTART_TEST",
     ):
         assert name in source, name

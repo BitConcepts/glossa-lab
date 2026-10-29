@@ -11111,3 +11111,60 @@ dirtying successful job logs.
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+
+## [2026-10-29] Entry - Desktop UI-Log Audit Fix 1: Tray Supervision Honesty
+
+Objective:
+  Owner directive 2026-10-29 ("check ui logs too. I see lots of
+  failures and fallthroughs. fix all."): audit the desktop host's
+  UI/tray/backend logs, catalog every failure and fallthrough, fix
+  root causes. This entry covers the tray (tray/glossa_tray/main.py).
+
+Findings fixed (all in the tray):
+  1. The status poller ENDED after ~24 h of polling
+     (_MAX_POLL_ITERATIONS) with only a print - invisible under
+     pythonw - leaving the tray showing a frozen status with
+     supervision silently over. Polling now runs in bounded
+     segments (H11: bound kept, expiry diagnosed) that renew
+     themselves and record each renewal in the tray log; a crashed
+     segment or a single failed poll is logged and polling
+     continues.
+  2. Auto-restart ignored in-flight starts: the 3-second poller
+     restarted over a still-booting backend, spawning duplicates
+     that raced for the port (Errno 10048 in logs/backend.log,
+     2026-10-29) and burned the 3/hour restart cap on one slow
+     start. Starts now record an in-flight flag + timestamp;
+     auto-restart returns "starting" inside a 120 s grace window,
+     and a start that never comes up is logged as failed before
+     supervision resumes. Cap-reached is logged once, not per poll.
+  3. The stop path's documented "then kill if still running" did
+     not exist: the shutdown request's failure was swallowed and
+     no kill was attempted. Stop now waits (bounded) for the
+     backend to go away, then kills the listening PID (netstat)
+     as the last resort, and logs the outcome either way.
+  4. The tray had NO log of its own - every diagnostic was a
+     print discarded by pythonw (audit confirmed no current-era
+     tray log file exists on the host). logs/tray.log now records
+     tray start, backend starts, auto-restarts, stop outcomes,
+     config failures, autostart failures, and poller renewals,
+     rotated under the same policy as the backend log (shared
+     _rotate_log_file helper).
+  5. Config load/save failures were silent (a corrupt config
+     silently defaulted the port, making the tray poll the wrong
+     port); autostart install results were discarded (a failed
+     install retried invisibly on every launch); a backend spawn
+     failure (e.g. missing venv pythonw) propagated out of main()
+     and killed the tray before its icon appeared. All three are
+     now logged, and a failed spawn leaves the tray alive showing
+     the failure in its status.
+
+Tests: backend/tests/test_tray_supervision.py - 11 behavior tests
+(pystray/Pillow stubbed, headless): in-flight start never
+duplicated, grace expiry resumes supervision, cap logged once,
+user stop never overridden, poller renews after a segment failure,
+segment survives a bad poll, tray log writes + rotates, config
+failure logged, spawn failure contained, stop kill-fallback
+exercised end to end.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.

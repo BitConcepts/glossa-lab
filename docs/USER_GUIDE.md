@@ -1103,6 +1103,9 @@ This is the most powerful mode for Indus Script research.
 
 - Check the tray icon — click **Start** if it shows as stopped.
 - Open the Logs panel to see the error.
+- Check the tray's own log (`logs/tray.log` in the install folder):
+  it records starts, auto-restarts, failed stops, and why
+  supervision is holding (for example the auto-restart limit).
 - Try: `setup-os.cmd` in a terminal to restart everything.
 
 ### Experiments tab is empty

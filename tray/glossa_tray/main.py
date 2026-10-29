@@ -44,8 +44,13 @@ def _load_config() -> dict:
     try:
         if _CONFIG_FILE.exists():
             return json.loads(_CONFIG_FILE.read_text(encoding="utf-8"))
-    except Exception:
-        pass
+    except Exception as exc:  # noqa: BLE001
+        # A corrupt config silently defaulting the port made the tray
+        # poll the wrong port and "restart" a second backend; the
+        # failure is recorded in the tray log instead (audit 2026-10-29).
+        _tray_log(
+            f"config load failed ({type(exc).__name__}: {exc}); using defaults"
+        )
     return {}
 
 
@@ -53,8 +58,8 @@ def _save_config(cfg: dict) -> None:
     try:
         _CONFIG_FILE.parent.mkdir(parents=True, exist_ok=True)
         _CONFIG_FILE.write_text(json.dumps(cfg, indent=2), encoding="utf-8")
-    except Exception:
-        pass
+    except Exception as exc:  # noqa: BLE001
+        _tray_log(f"config save failed ({type(exc).__name__}: {exc})")
 
 
 def _current_port() -> int:
@@ -95,10 +100,70 @@ _VENV_PYTHON = str(
     else _REPO_ROOT / "backend" / "venv" / "bin" / "python"
 )
 
+# ── Tray diagnostics log ─────────────────────────────────
+#
+# The tray runs under pythonw with stdout/stderr discarded, so
+# print() goes nowhere: before this log existed, poller death,
+# auto-restarts, failed stops and failed starts left no trace
+# anywhere (2026-10-29 UI-log audit — the tray had no log file at
+# all). logs/tray.log is the tray's durable diagnostic surface,
+# rotated with the same discipline as the backend log.
+
+_TRAY_LOG = _REPO_ROOT / "logs" / "tray.log"
+
+
+def _rotate_log_file(path: Path) -> None:
+    """Rotate ``path`` when it exceeds _MAX_LOG_BYTES.
+
+    Keeps at most _LOG_BACKUPS numbered copies alongside the current
+    log so total disk usage stays bounded (default: 4 × 10 MB max).
+    """
+    if not path.exists():
+        return
+    try:
+        if path.stat().st_size < _MAX_LOG_BYTES:
+            return
+    except OSError:
+        return
+    # Shift existing numbered backups: .3 is dropped, .2 → .3, .1 → .2
+    for n in range(_LOG_BACKUPS, 0, -1):
+        src = path.with_suffix(f".{n}.log")
+        dst = path.with_suffix(f".{n + 1}.log")
+        try:
+            if src.exists():
+                src.replace(dst)
+        except OSError:
+            pass
+    # Move current log to .1.log
+    try:
+        path.replace(path.with_suffix(".1.log"))
+    except OSError:
+        pass  # File may be locked — continue appending to it
+
+
+def _tray_log(message: str) -> None:
+    """Append one timestamped line to logs/tray.log.
+
+    Best-effort by necessity — a diagnostics failure must never kill
+    the tray — so OSError is swallowed here, and only here.
+    """
+    try:
+        _TRAY_LOG.parent.mkdir(parents=True, exist_ok=True)
+        _rotate_log_file(_TRAY_LOG)
+        stamp = time.strftime("%Y-%m-%d %H:%M:%S")
+        with open(_TRAY_LOG, "a", encoding="utf-8") as fh:
+            fh.write(f"{stamp} {message}\n")
+    except OSError:
+        pass
+
+
 # Updated by the status poller; read by the dynamic menu item.
 _status_text = "Backend: Checking..."
 _status_error = False
 _backend_starting = False  # set True while start is in progress, cleared by poller
+_backend_start_mono = 0.0  # monotonic time of the latest start attempt
+_START_GRACE_SEC = 120     # a start still not up after this is a failed start
+_cap_notice_logged = False  # auto-restart cap notice written to tray log once
 
 # Spec 080 (Windows host supervision): the tray owns backend liveness on
 # Windows — there is no service manager underneath it. A backend that
@@ -179,32 +244,56 @@ def _is_autostart_enabled() -> bool:
     return False
 
 
-def _set_autostart(enabled: bool) -> None:
-    """Install or remove the OS autostart registration for the tray."""
+def _set_autostart(enabled: bool) -> bool:
+    """Install or remove the OS autostart registration for the tray.
+
+    Returns True on success. Failures are written to the tray log:
+    previously the result was discarded entirely, so a failed install
+    was invisible and retried silently on every launch.
+    """
+    action = "install" if enabled else "uninstall"
     if platform.system() == "Windows":
         setup = str(_REPO_ROOT / "setup-os.cmd")
-        cmd = "install" if enabled else "uninstall"
-        subprocess.run(
-            ["cmd.exe", "/c", setup, cmd],
+        result = subprocess.run(
+            ["cmd.exe", "/c", setup, action],
             capture_output=True,
             creationflags=_WIN_HIDDEN,
             check=False,
         )
-    elif platform.system() == "Linux":
+        if result.returncode != 0:
+            err = (result.stderr or b"").decode(errors="replace").strip()[:200]
+            _tray_log(
+                f"autostart {action} failed (exit {result.returncode}): {err}"
+            )
+            return False
+        return True
+    if platform.system() == "Linux":
         if enabled:
             # The Linux installer is the single install path: a
             # render-only run (re)writes the tray autostart entry,
             # the icon, and the backend unit without touching the
             # service manager.
             installer = _REPO_ROOT / "services" / "linux" / "install.sh"
-            subprocess.run(
+            result = subprocess.run(
                 ["bash", str(installer), "--render-only", "--skip-dependencies"],
                 capture_output=True,
                 timeout=30,
                 check=False,
             )
-        else:
+            if result.returncode != 0:
+                err = (result.stderr or b"").decode(errors="replace").strip()[:200]
+                _tray_log(
+                    f"autostart install failed (exit {result.returncode}): {err}"
+                )
+                return False
+            return True
+        try:
             _LINUX_AUTOSTART_DESKTOP.unlink(missing_ok=True)
+        except OSError as exc:
+            _tray_log(f"autostart uninstall failed: {exc}")
+            return False
+        return True
+    return False
 
 
 def _toggle_autostart(_icon=None, _item=None) -> None:
@@ -299,75 +388,119 @@ def _restart_service(_icon=None, _item=None) -> None:
 
 
 def _rotate_backend_log() -> None:
-    """Rotate backend.log when it exceeds _MAX_LOG_BYTES.
-
-    Keeps at most _LOG_BACKUPS numbered copies alongside the current log
-    so total disk usage stays bounded (default: 4 × 10 MB = 40 MB max).
-    """
-    if not _BACKEND_LOG.exists():
-        return
-    try:
-        if _BACKEND_LOG.stat().st_size < _MAX_LOG_BYTES:
-            return
-    except OSError:
-        return
-    # Shift existing numbered backups: .3.log is dropped, .2 → .3, .1 → .2
-    for n in range(_LOG_BACKUPS, 0, -1):
-        src = _BACKEND_LOG.with_suffix(f".{n}.log")
-        dst = _BACKEND_LOG.with_suffix(f".{n + 1}.log")
-        try:
-            if src.exists():
-                src.replace(dst)
-        except OSError:
-            pass
-    # Move current log to .1.log
-    try:
-        _BACKEND_LOG.replace(_BACKEND_LOG.with_suffix(".1.log"))
-    except OSError:
-        pass  # File may be locked — continue appending to it
+    """Rotate backend.log when it exceeds _MAX_LOG_BYTES."""
+    _rotate_log_file(_BACKEND_LOG)
 
 
-def _start_backend(_icon=None, _item=None) -> None:
+def _start_backend(_icon=None, _item=None) -> bool:
     """Start the backend by launching Python directly — zero visible windows.
 
     Spawns the venv Python executable with CREATE_NO_WINDOW | DETACHED_PROCESS
     so no cmd shell or console ever appears. uvicorn stdout/stderr are appended
     to logs/backend.log alongside the app's structured logs.
+
+    Records the start as in-flight (``_backend_starting``) so the
+    supervisor never spawns a duplicate while this one is still
+    booting. A spawn failure is written to the tray log and reported
+    in the tray status instead of propagating: previously a Popen
+    failure (e.g. a missing venv pythonw) killed the tray silently
+    before its icon ever appeared. Returns True when the spawn was
+    issued.
     """
-    global _user_stopped  # noqa: PLW0603
+    global _user_stopped, _backend_starting, _backend_start_mono  # noqa: PLW0603
+    global _status_text, _status_error, _cap_notice_logged  # noqa: PLW0603
     _user_stopped = False  # any start clears a prior user stop (Spec 080)
+    _backend_starting = True
+    _backend_start_mono = time.monotonic()
+    _cap_notice_logged = False  # a fresh start re-arms the cap notice
     _rotate_backend_log()   # ensure log file stays bounded before appending
-    if platform.system() == "Windows":
-        _BACKEND_LOG.parent.mkdir(parents=True, exist_ok=True)
-        log_fh = open(str(_BACKEND_LOG), "ab")  # noqa: SIM115
-        env = os.environ.copy()
-        env["PYTHONPATH"] = _BACKEND_DIR
-        # Installed mode: the database lives under
-        # %LOCALAPPDATA%\GlossaLab\data regardless of the caller's cwd
-        # (Spec 080 FR-005).
-        env["GLOSSA_MODE"] = "installed"
-        port = str(_current_port())
-        subprocess.Popen(
-            [
-                _VENV_PYTHON, "-m", "uvicorn", "glossa_lab.main:create_app",
-                "--factory", "--host", "127.0.0.1", "--port", port,
-                "--app-dir", _BACKEND_DIR,
-            ],
-            cwd=_BACKEND_DIR,
-            creationflags=_WIN_HIDDEN,
-            env=env,
-            stdout=log_fh,
-            stderr=log_fh,
-            stdin=subprocess.DEVNULL,
+    try:
+        if platform.system() == "Windows":
+            _BACKEND_LOG.parent.mkdir(parents=True, exist_ok=True)
+            log_fh = open(str(_BACKEND_LOG), "ab")  # noqa: SIM115
+            env = os.environ.copy()
+            env["PYTHONPATH"] = _BACKEND_DIR
+            # Installed mode: the database lives under
+            # %LOCALAPPDATA%\GlossaLab\data regardless of the caller's cwd
+            # (Spec 080 FR-005).
+            env["GLOSSA_MODE"] = "installed"
+            port = str(_current_port())
+            subprocess.Popen(
+                [
+                    _VENV_PYTHON, "-m", "uvicorn", "glossa_lab.main:create_app",
+                    "--factory", "--host", "127.0.0.1", "--port", port,
+                    "--app-dir", _BACKEND_DIR,
+                ],
+                cwd=_BACKEND_DIR,
+                creationflags=_WIN_HIDDEN,
+                env=env,
+                stdout=log_fh,
+                stderr=log_fh,
+                stdin=subprocess.DEVNULL,
+            )
+            log_fh.close()  # parent closes; child keeps its inherited fd
+        else:
+            _run_silent("systemctl", "--user", "start", "glossa-lab-backend")
+    except Exception as exc:  # noqa: BLE001
+        _backend_starting = False
+        _status_text = "Backend: Start failed  (click to view log)"
+        _status_error = True
+        _tray_log(f"backend start failed: {type(exc).__name__}: {exc}")
+        return False
+    _tray_log("backend start issued")
+    return True
+
+
+def _listener_pid(port: int) -> int | None:
+    """PID of the process LISTENING on ``port`` (Windows, via netstat).
+
+    Used only as the stop path's last resort. Returns None when no
+    listener is found or netstat cannot be run.
+    """
+    if platform.system() != "Windows":
+        return None
+    try:
+        result = subprocess.run(
+            ["netstat", "-ano", "-p", "TCP"],
+            capture_output=True, text=True, timeout=5,
+            creationflags=_WIN_HIDDEN, check=False,
         )
-        log_fh.close()  # parent closes; child keeps its inherited fd
-    else:
-        _run_silent("systemctl", "--user", "start", "glossa-lab-backend")
+    except Exception:  # noqa: BLE001
+        return None
+    for line in result.stdout.splitlines():
+        parts = line.split()
+        if (
+            len(parts) >= 5
+            and parts[0].upper() == "TCP"
+            and parts[1].endswith(f":{port}")
+            and parts[3].upper() == "LISTENING"
+        ):
+            try:
+                return int(parts[4])
+            except ValueError:
+                return None
+    return None
+
+
+def _wait_until_stopped(attempts: int = 10, interval: float = 0.5) -> bool:
+    """Bounded wait (H11) for the backend to stop answering health."""
+    for _ in range(attempts):
+        if not _backend_running():
+            return True
+        time.sleep(interval)
+    return not _backend_running()
 
 
 def _stop_backend(_icon=None, _item=None) -> None:
     """Stop the backend gracefully via HTTP, then kill if still running.
 
+    Windows: after the shutdown request, wait (bounded) for the
+    backend to actually go away; if it is still answering, kill the
+    process listening on the backend port as the documented last
+    resort. Every failure is written to the tray log — previously the
+    shutdown request's failure was swallowed and the promised kill
+    did not exist, so a stop could silently not happen while the
+    tray reported the backend as stopped by the user.
     Linux: also tells systemd to stop the unit.
     A user stop is remembered so the Windows auto-restart (Spec 080)
     never overrides it.
@@ -377,10 +510,36 @@ def _stop_backend(_icon=None, _item=None) -> None:
     try:
         req = urllib.request.Request(f"{BACKEND_URL}/api/v1/shutdown", method="POST")
         urllib.request.urlopen(req, timeout=3)
-    except Exception:
-        pass
+    except Exception as exc:  # noqa: BLE001
+        _tray_log(f"shutdown request failed: {type(exc).__name__}: {exc}")
     if platform.system() != "Windows":
         _run_silent("systemctl", "--user", "stop", "glossa-lab-backend")
+        _tray_log("backend stop requested (systemd)")
+        return
+    if _wait_until_stopped():
+        _tray_log("backend stopped")
+        return
+    pid = _listener_pid(_current_port())
+    if pid is not None:
+        _tray_log(
+            "backend still running after the shutdown request; "
+            f"killing listener pid {pid}"
+        )
+        try:
+            subprocess.run(
+                ["taskkill", "/F", "/PID", str(pid), "/T"],
+                capture_output=True, timeout=10,
+                creationflags=_WIN_HIDDEN, check=False,
+            )
+        except Exception as exc:  # noqa: BLE001
+            _tray_log(f"taskkill failed: {type(exc).__name__}: {exc}")
+        if _wait_until_stopped():
+            _tray_log("backend stopped (via kill fallback)")
+            return
+    _tray_log(
+        "backend stop FAILED: still responding after the shutdown "
+        "request and the kill fallback"
+    )
 
 
 def _change_port(_icon=None, _item=None) -> None:
@@ -475,22 +634,49 @@ def _maybe_auto_restart() -> str:
     """Windows tray supervision (Spec 080 FR-006): restart a backend
     that died without a user stop.
 
-    Returns "restarted", "user-stopped", "cap-reached", or
-    "not-windows". Bounded at _MAX_AUTO_RESTARTS restarts per
+    Returns "restarted", "user-stopped", "cap-reached", "starting",
+    or "not-windows". Bounded at _MAX_AUTO_RESTARTS restarts per
     _RESTART_WINDOW_SEC window (H11); the caller surfaces
     "cap-reached" in the tray status so a crash loop is visible
     instead of silent. Linux is supervised by systemd and never
     auto-restarts from the tray.
+
+    A start already in flight is never duplicated: the poller runs
+    every POLL_INTERVAL seconds while a real start can take much
+    longer to answer health, and restarting over an in-flight start
+    spawned duplicate backends racing for the port (Errno 10048 in
+    the backend log, 2026-10-29) and burned the whole restart cap on
+    a single slow start. A start that has not come up within
+    _START_GRACE_SEC is treated as failed and supervision resumes.
     """
+    global _backend_starting, _cap_notice_logged  # noqa: PLW0603
     if platform.system() != "Windows":
         return "not-windows"
     if _user_stopped:
         return "user-stopped"
+    if _backend_starting:
+        if time.monotonic() - _backend_start_mono < _START_GRACE_SEC:
+            return "starting"
+        _backend_starting = False
+        _tray_log(
+            f"backend start did not come up within {_START_GRACE_SEC}s; "
+            "treating the start as failed"
+        )
     now = time.monotonic()
     _restart_times[:] = [t for t in _restart_times if now - t < _RESTART_WINDOW_SEC]
     if len(_restart_times) >= _MAX_AUTO_RESTARTS:
+        if not _cap_notice_logged:
+            _cap_notice_logged = True
+            _tray_log(
+                f"auto-restart cap reached ({_MAX_AUTO_RESTARTS} restarts "
+                f"per {_RESTART_WINDOW_SEC}s); supervision is holding"
+            )
         return "cap-reached"
     _restart_times.append(now)
+    _tray_log(
+        f"auto-restart {len(_restart_times)}/{_MAX_AUTO_RESTARTS} "
+        f"(window {_RESTART_WINDOW_SEC}s)"
+    )
     _start_backend()
     return "restarted"
 
@@ -502,7 +688,84 @@ def _quit(icon, _item=None):
 
 # ── Status polling thread ────────────────────────────────────────────
 
-_MAX_POLL_ITERATIONS = 86400 // POLL_INTERVAL  # ~24 hours of polling before self-stop
+_MAX_POLL_ITERATIONS = 86400 // POLL_INTERVAL  # one ~24 h bounded segment (H11)
+
+
+def _poll_once(icon: pystray.Icon) -> None:
+    """One health poll: refresh the icon/status and supervise."""
+    global _status_text, _status_error, _backend_starting  # noqa: PLW0603
+    health = _check_health()
+    if health is None:
+        # Spec 080: on Windows the tray is the supervisor — a
+        # backend that died on its own is restarted (capped); a
+        # user stop is left alone and labelled as such; a start
+        # already in flight is left to finish booting.
+        outcome = _maybe_auto_restart()
+        if outcome == "starting":
+            icon.icon = _create_icon_image("yellow")
+            icon.title = "Glossa Lab - Starting..."
+            _status_text = "Backend: Starting..."
+            _status_error = False
+        elif outcome == "user-stopped":
+            icon.icon = _create_icon_image("red")
+            icon.title = "Glossa Lab - Backend stopped"
+            _status_text = "Backend: Stopped by user"
+            _status_error = True
+        elif outcome == "cap-reached":
+            icon.icon = _create_icon_image("red")
+            icon.title = "Glossa Lab - Backend stopped"
+            _status_text = (
+                "Backend: Stopped - auto-restart limit reached "
+                "(click to view log)"
+            )
+            _status_error = True
+        elif outcome == "restarted":
+            icon.icon = _create_icon_image("yellow")
+            icon.title = "Glossa Lab - Starting..."
+            _status_text = "Backend: Restarting..."
+            _status_error = False
+        else:  # "not-windows" — systemd supervises; the tray only reports
+            icon.icon = _create_icon_image("red")
+            icon.title = "Glossa Lab - Backend stopped"
+            _status_text = "Backend: Stopped  (click to view log)"
+            _status_error = True
+    elif health.get("status") in ("healthy", "degraded"):
+        _backend_starting = False  # clear the starting flag once we see it's up
+        if health.get("status") == "healthy":
+            icon.icon = _create_icon_image("green")
+            ver = health.get('version', '?')
+            uptime = int(health.get('uptime_seconds', 0))
+            icon.title = f"Glossa Lab - Healthy (v{ver})"
+            _status_text = f"Backend: Healthy  v{ver}  up {uptime}s"
+            _status_error = False
+        else:
+            icon.icon = _create_icon_image("yellow")
+            icon.title = "Glossa Lab - Degraded"
+            _status_text = "Backend: Degraded  (click to view log)"
+            _status_error = True
+    else:
+        icon.icon = _create_icon_image("grey")
+        icon.title = "Glossa Lab - Unknown"
+        _status_text = "Backend: Unknown  (click to view log)"
+        _status_error = True
+    try:
+        icon.update_menu()  # Force pystray to re-evaluate dynamic labels
+    except Exception:  # noqa: BLE001
+        pass
+
+
+def _poll_segment(icon: pystray.Icon) -> None:
+    """One bounded polling segment: _MAX_POLL_ITERATIONS polls (H11).
+
+    A single failed poll is written to the tray log and polling
+    continues; one bad poll must never end supervision.
+    """
+    for _poll_iter in range(_MAX_POLL_ITERATIONS):
+        try:
+            _poll_once(icon)
+        except Exception as exc:  # noqa: BLE001
+            _tray_log(f"status poll failed: {type(exc).__name__}: {exc}")
+        time.sleep(POLL_INTERVAL)
 
 
 def _status_poller(icon: pystray.Icon):
@@ -510,61 +773,38 @@ def _status_poller(icon: pystray.Icon):
 
     Started via icon.run(setup=…) so icon.visible is already True.
     Runs as a daemon thread and is killed automatically on exit.
-    H11 compliant: bounded by _MAX_POLL_ITERATIONS (~24 h at POLL_INTERVAL).
+
+    Polling runs in bounded segments of _MAX_POLL_ITERATIONS polls
+    (H11: every loop bounded, expiry diagnosed). When a segment
+    ends — by reaching its bound or by an unexpected failure — the
+    renewal is written to the tray log and a fresh segment begins.
+    The previous design let the thread END at the bound with only a
+    print (invisible under pythonw): after ~24 h the tray kept
+    showing its last status forever with supervision silently over.
     """
-    global _status_text, _status_error, _backend_starting  # noqa: PLW0603
-    for _poll_iter in range(_MAX_POLL_ITERATIONS):
-        health = _check_health()
-        if health is None:
-            icon.icon = _create_icon_image("red")
-            icon.title = "Glossa Lab - Backend stopped"
-            _status_text = "Backend: Stopped  (click to view log)"
-            _status_error = True
-            # Spec 080: on Windows the tray is the supervisor — a
-            # backend that died on its own is restarted (capped); a
-            # user stop is left alone and labelled as such.
-            outcome = _maybe_auto_restart()
-            if outcome == "user-stopped":
-                _status_text = "Backend: Stopped by user"
-            elif outcome == "cap-reached":
-                _status_text = (
-                    "Backend: Stopped - auto-restart limit reached "
-                    "(click to view log)"
-                )
-        elif health.get("status") in ("healthy", "degraded"):
-            _backend_starting = False  # clear the starting flag once we see it's up
-            if health.get("status") == "healthy":
-                icon.icon = _create_icon_image("green")
-                ver = health.get('version', '?')
-                uptime = int(health.get('uptime_seconds', 0))
-                icon.title = f"Glossa Lab - Healthy (v{ver})"
-                _status_text = f"Backend: Healthy  v{ver}  up {uptime}s"
-                _status_error = False
-            else:
-                icon.icon = _create_icon_image("yellow")
-                icon.title = "Glossa Lab - Degraded"
-                _status_text = "Backend: Degraded  (click to view log)"
-                _status_error = True
-        else:
-            icon.icon = _create_icon_image("grey")
-            icon.title = "Glossa Lab - Unknown"
-            _status_text = "Backend: Unknown  (click to view log)"
-            _status_error = True
+    _tray_log("status poller started")
+    segment = 0
+    while True:
+        segment += 1
         try:
-            icon.update_menu()  # Force pystray to re-evaluate dynamic labels
-        except Exception:  # noqa: BLE001
-            pass
-        time.sleep(POLL_INTERVAL)
-    # H11: deadline reached — log and exit polling
-    print(f"[WARN] _status_poller: reached {_MAX_POLL_ITERATIONS} iterations "
-          f"({_MAX_POLL_ITERATIONS * POLL_INTERVAL}s). Stopping poller. "
-          "Restart tray to resume.")
+            _poll_segment(icon)
+        except Exception as exc:  # noqa: BLE001
+            _tray_log(
+                f"status poller segment {segment} failed: "
+                f"{type(exc).__name__}: {exc}; renewing"
+            )
+        else:
+            _tray_log(
+                f"status poller segment {segment} reached the "
+                f"{_MAX_POLL_ITERATIONS}-poll bound; renewing"
+            )
 
 
 # ── Entry point ──────────────────────────────────────────────────────
 
 def main():
     """Launch the Glossa Lab system tray icon."""
+    _tray_log("tray starting")
     menu = pystray.Menu(
         pystray.MenuItem("Open UI", _open_ui, default=True),
         pystray.Menu.SEPARATOR,
@@ -596,7 +836,9 @@ def main():
     # Start backend immediately if not running — tray is the single entry point
     _ensure_backend_running()
 
-    # Ensure autostart is registered on first launch (idempotent)
+    # Ensure autostart is registered on first launch (idempotent).
+    # A failed install is written to the tray log by _set_autostart
+    # instead of being silently retried on every launch.
     if not _is_autostart_enabled():
         _set_autostart(True)
 
@@ -607,6 +849,7 @@ def main():
         ic.visible = True
         poller = threading.Thread(target=_status_poller, args=(ic,), daemon=True)
         poller.start()
+        _tray_log("tray icon visible; status poller running")
 
     icon.run(setup=_on_setup)
 

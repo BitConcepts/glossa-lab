@@ -170,6 +170,12 @@ def test_verify_script_markers_and_icon_helper(tmp_path: Path) -> None:
         "GLOSSA_RESTART_TEST",
     ):
         assert name in source, name
+    # The backend must be identified by its command line, never
+    # by the port-8001 listener: on the desktop host that listener
+    # is tailscaled (Tailscale Serve), not the app (run
+    # 40835699406 measured exactly that misidentification).
+    assert "Get-NetTCPConnection" not in source
+    assert "def backend_pids" in source
     module = _load_verify_module()
     # The packaged assets in this repo are the pinned ones.
     ok, ico_sha, png_sha = module.icon_hashes_ok(REPO)

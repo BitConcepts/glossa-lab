@@ -13,7 +13,8 @@ that runs this script (TRISTEN-DESKTOP):
   Spec 079 SHA-256 pins
 * GLOSSA_TASK_STATE     — the GlossaLab scheduled task state,
   read via the CIM provider (Windows; Spec 080 FR-004)
-* GLOSSA_RESTART_TEST   — kill the backend process; the tray
+* GLOSSA_RESTART_TEST   — kill the app's backend process set
+  (command-line identified, never the port listener); the tray
   supervisor must bring it back (new PID) within the deadline
 
 Every wait is bounded (H11). Exit code 0 only if health, identity,
@@ -93,35 +94,41 @@ def tray_pids() -> list[int]:
     return [pid for pid in pids if pid != os.getpid()]
 
 
-def backend_pid(port: int) -> int | None:
-    """PID listening on the backend port, or None."""
+def backend_pids() -> list[int]:
+    """PIDs of the app's own backend processes, by command line.
+
+    NEVER identify the backend by the port-8001 listener: on the
+    desktop host that listener is tailscaled.exe (Tailscale Serve
+    proxies the tailnet :8001 to the app's loopback :8001), a
+    session-0 service the verifier can neither kill nor learn
+    anything about the app from. That misidentification is
+    exactly what host run 40835699406 measured (kill-failed
+    pid=<tailscaled>). The app's backend is the process set
+    whose command line runs this repo's uvicorn entry - the
+    same test the targeted stop path uses.
+    """
     if sys.platform == "win32":
         command = [
             "powershell", "-NoProfile", "-NonInteractive", "-Command",
-            f"Get-NetTCPConnection -LocalPort {port} -State Listen "
-            "-ErrorAction SilentlyContinue | "
-            "Select-Object -First 1 -ExpandProperty OwningProcess",
+            "Get-CimInstance Win32_Process | "
+            "Where-Object { $_.CommandLine -match 'glossa_lab' "
+            "-and $_.CommandLine -match 'uvicorn' } | "
+            "ForEach-Object { $_.ProcessId }",
         ]
-        try:
-            result = subprocess.run(command, capture_output=True, text=True, timeout=15)
-        except (OSError, subprocess.TimeoutExpired):
-            return None
-        token = result.stdout.strip()
-        return int(token) if token.isdigit() else None
-    # POSIX fallback for local contract tests / Linux dev machines.
+    else:
+        command = ["pgrep", "-f", "glossa_lab.*uvicorn"]
     try:
         result = subprocess.run(
-            ["ss", "-ltnp", f"sport = :{port}"],
-            capture_output=True, text=True, timeout=15,
+            command, capture_output=True, text=True, timeout=15,
+            check=False,
         )
     except (OSError, subprocess.TimeoutExpired):
-        return None
-    for token in result.stdout.replace(",", " ").split():
-        if token.startswith("pid="):
-            digits = token[4:].strip()
-            if digits.isdigit():
-                return int(digits)
-    return None
+        return []
+    pids: list[int] = []
+    for token in result.stdout.split():
+        if token.strip().isdigit():
+            pids.append(int(token.strip()))
+    return [pid for pid in pids if pid != os.getpid()]
 
 
 def kill_pid(pid: int) -> bool:
@@ -167,17 +174,19 @@ def task_state() -> str:
     return result.stdout.strip() or "MISSING"
 
 
-def wait_for_new_backend(healthcheck, base_url: str, old_pid: int | None,
+def wait_for_new_backend(healthcheck, base_url: str,
+                         old_pids: list[int],
                          deadline_sec: int) -> tuple[bool, int | None]:
-    """Bounded wait for a healthy backend under a different PID (H11)."""
+    """Bounded wait (H11): healthy again AND a backend process
+    exists that was not in the pre-kill set."""
     deadline = time.time() + deadline_sec
     attempts = 0
     while time.time() < deadline:
         attempts += 1
         ok, _result = healthcheck.check_once(base_url, 3.0)
-        pid = backend_pid(int(base_url.rsplit(":", 1)[1].split("/")[0]))
-        if ok and pid is not None and pid != old_pid:
-            return True, pid
+        fresh = [pid for pid in backend_pids() if pid not in old_pids]
+        if ok and fresh:
+            return True, fresh[0]
         time.sleep(POLL_INTERVAL_SEC)
     return False, None
 
@@ -228,21 +237,24 @@ def main(argv: list[str] | None = None) -> int:
         restart_ok = False
         marker("GLOSSA_RESTART_TEST", "result=FAIL reason=no-tray-process-to-supervise")
     else:
-        old_pid = backend_pid(int(base_url.rsplit(":", 1)[1].split("/")[0]))
-        if old_pid is None:
+        old_pids = backend_pids()
+        if not old_pids:
             restart_ok = False
-            marker("GLOSSA_RESTART_TEST", "result=FAIL reason=no-backend-listener")
-        elif not kill_pid(old_pid):
+            marker("GLOSSA_RESTART_TEST", "result=FAIL reason=no-backend-process")
+        elif not all(kill_pid(pid) for pid in old_pids):
             restart_ok = False
-            marker("GLOSSA_RESTART_TEST", f"result=FAIL reason=kill-failed pid={old_pid}")
+            marker(
+                "GLOSSA_RESTART_TEST",
+                f"result=FAIL reason=kill-failed pids={old_pids}",
+            )
         else:
             restart_ok, new_pid = wait_for_new_backend(
-                healthcheck, base_url, old_pid, RESTART_DEADLINE_SEC
+                healthcheck, base_url, old_pids, RESTART_DEADLINE_SEC
             )
             marker(
                 "GLOSSA_RESTART_TEST",
                 f"result={'PASS' if restart_ok else 'FAIL'} "
-                f"old_pid={old_pid} new_pid={new_pid}",
+                f"old_pids={old_pids} new_pid={new_pid}",
             )
 
     overall = ok and icons_ok and restart_ok

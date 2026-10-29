@@ -11025,3 +11025,23 @@ Amendment 2; contract test C080-8 (revised).
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+
+## [2026-10-29] Entry - Spec 080: Verify Script Backend Identification Fix
+
+scripts\verify_desktop_host.py identified the backend by the
+PID listening on port 8001. On TRISTEN-DESKTOP that listener is
+tailscaled.exe (session 0): Tailscale Serve holds the tailnet
+:8001 and proxies to the app's loopback :8001. The restart leg
+therefore tried to kill the Tailscale service process and
+reported kill-failed (host run 40835699406), failing
+GLOSSA_HOST_VERIFY while every app leg passed; a follow-up
+app-stop proof (run 40840066177) confirmed the app's own stop
+works and the "port still listening" reading was the proxy.
+Fix: the backend is identified by command line
+(glossa_lab + uvicorn - the targeted stop path's own test) as
+a process SET; the restart leg kills that set and waits for a
+healthy backend under a PID outside the set. The port listener
+is never targeted for kill or identity.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.

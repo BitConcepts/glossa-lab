@@ -3,10 +3,15 @@
 ## Canonical install path (Spec 080)
 
 There is exactly ONE Windows installer: `setup-os.cmd` at the repo
-root. It registers the `GlossaLab` scheduled task (at logon), whose
-action is `wscript.exe //nologo scripts\launch-tray.vbs` — the tray
-starts with no visible window (governance rule H25). The tray then
-starts and supervises the backend.
+root. It registers the per-user autostart entry — the `GlossaLab`
+value under `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`
+(Spec 080 FR-004 as amended 2026-10-29; per-user scheduled-task
+registration is denied in the installer's execution context, see
+Amendment 1 in the spec) — whose command is
+`wscript.exe //nologo scripts\launch-tray.vbs`, so the tray starts
+at logon with no visible window (governance rule H25). The
+installer reads the value back and verifies it before reporting
+success. The tray then starts and supervises the backend.
 
 For a unattended host bring-up plus verification, use:
 
@@ -25,7 +30,9 @@ setup-os.cmd install
 
 The installer verifies the packaged tray icon assets
 (`tray\glossa_tray\assets\glossa-lab.ico` / `.png`) against pinned
-SHA-256 hashes and refuses to install on any mismatch.
+SHA-256 hashes (`scripts\verify_icon_hashes.ps1`, .NET SHA-256,
+case-insensitive compare) and refuses to install on any mismatch
+— or when hashing itself cannot be performed.
 
 ### Uninstall
 

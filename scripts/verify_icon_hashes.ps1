@@ -69,6 +69,7 @@ function Test-IconAsset([string]$Path, [string]$Expected) {
     exit 4
 }
 
+Write-Host "GLOSSA_ICON_HASH method=dotnet-sha256 (System.Security.Cryptography)"
 Test-IconAsset $IcoPath $IcoSha256
 Test-IconAsset $PngPath $PngSha256
 exit 0

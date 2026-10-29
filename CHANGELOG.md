@@ -25,7 +25,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   overrides a user stop. New host tooling:
   `scripts/install-desktop-host.cmd` and
   `scripts/verify-desktop-host.cmd` (identity, tray, icon hashes,
-  task state, restart test — markers, not liveness).
+  autostart state, restart test — markers, not liveness).
+  Amendment 1 (2026-10-29) fixes two installer defects proven on
+  the host (install run 40802151979): the icon check no longer
+  depends on `Get-FileHash` module autoloading — it hashes with
+  .NET SHA-256 in `scripts\verify_icon_hashes.ps1` and compares
+  case-insensitively, with a hashing failure reported as itself,
+  never as a mismatch — and the canonical autostart is now the
+  per-user HKCU Run value (written and read-back-verified by the
+  installer), because per-user scheduled-task registration is
+  denied in the installer's execution context (diagnostic run
+  40807602846); the scheduled-task registration path and
+  `scripts\register_task.ps1` are removed.
 - Spec 079: the backend now starts under supervision following the
   Syncyard spec 007 pattern. The Linux unit is renamed to
   `glossa-lab-backend` and runs the production entry point

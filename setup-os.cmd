@@ -3,7 +3,11 @@ REM ============================================================
 REM Glossa Lab — OS Integration (Windows)
 REM ============================================================
 REM
-REM One Task Scheduler task (GlossaLab) runs the tray at logon.
+REM One per-user autostart entry runs the tray at logon: the HKCU
+REM Run value "GlossaLab" (Spec 080 FR-004, as amended 2026-10-29
+REM - Amendment 1: per-user scheduled-task registration is denied
+REM in the installer's execution context, so the Run key is the
+REM canonical mechanism; see specs\080-desktop-host-migration).
 REM The tray is the single entry point: it starts the backend
 REM automatically if it is not already running, and on Windows it
 REM supervises it (Spec 080: capped auto-restart, never overriding
@@ -13,9 +17,9 @@ REM This file is the ONE canonical Windows installer (Spec 080
 REM FR-004). services\windows\install.cmd delegates here.
 REM
 REM Usage:
-REM   setup-os.cmd install    Create/update the GlossaLab scheduled task
-REM   setup-os.cmd uninstall  Remove the task and clean up
-REM   setup-os.cmd start      Run the task now (tray + backend)
+REM   setup-os.cmd install    Create/update the HKCU Run autostart entry
+REM   setup-os.cmd uninstall  Remove the autostart entry and clean up
+REM   setup-os.cmd start      Start the tray now (tray + backend)
 REM   setup-os.cmd stop       Gracefully shut down backend then stop tray
 REM   setup-os.cmd restart    Stop then start
 REM   setup-os.cmd status     Show task state and backend health
@@ -31,6 +35,8 @@ set "ENTRY_POINT=%REPO_ROOT%\tray\start_tray.pyw"
 set "LOG_DIR=%REPO_ROOT%\logs"
 set "HEALTH_URL=http://localhost:8001/api/v1/health"
 set "TASK_NAME=GlossaLab"
+set "RUN_KEY=HKCU\Software\Microsoft\Windows\CurrentVersion\Run"
+set "RUN_COMMAND=wscript.exe //nologo "%REPO_ROOT%\scripts\launch-tray.vbs""
 
 REM Spec 080 FR-007: the installer verifies the packaged tray icon
 REM assets by SHA-256 and fails loudly on any mismatch. These pins
@@ -56,7 +62,7 @@ REM ─────────────────────────�
 :do_install
 REM ─────────────────────────────────────────────────────────────
 echo.
-echo [INSTALL] Registering Glossa Lab scheduled task...
+echo [INSTALL] Registering Glossa Lab autostart...
 echo.
 
 if not exist "%VENV_PYTHONW%" (
@@ -94,20 +100,29 @@ if errorlevel 1 (
 echo [OK] Tray icon assets verified ^(SHA-256^).
 if not exist "%LOG_DIR%" mkdir "%LOG_DIR%"
 
-REM H25: Register via wscript.exe + launch-tray.vbs — no visible window.
-REM Supersedes previous HKCU Run approach (used pythonw.exe directly).
-REM Remove stale HKCU Run key if present (was causing duplicate launches).
-reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "%TASK_NAME%" /f >nul 2>&1
-reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "GlossaLabTray" /f >nul 2>&1
-
-REM Register the scheduled task (requires elevation for ONLOGON trigger).
-powershell -NoProfile -Command "Start-Process -FilePath 'powershell.exe' -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File \"%REPO_ROOT%\scripts\register_task.ps1\"' -Verb RunAs -Wait" >nul 2>&1
+REM H25: the autostart launches via wscript.exe + launch-tray.vbs -
+REM no visible window. The canonical mechanism is the per-user HKCU
+REM Run value (Spec 080 FR-004 as amended 2026-10-29): exactly ONE
+REM autostart route - no scheduled-task attempt, no fallback chain.
+REM Remove the retired split values if present (legacy names).
+reg delete "%RUN_KEY%" /v "GlossaLabTray" /f >nul 2>&1
+reg delete "%RUN_KEY%" /v "GlossaLabBackend" /f >nul 2>&1
+reg add "%RUN_KEY%" /v "%TASK_NAME%" /t REG_SZ /d "wscript.exe //nologo \"%REPO_ROOT%\scripts\launch-tray.vbs\"" /f
 if errorlevel 1 (
-    echo [ERROR] Failed to register scheduled task (elevation required).
+    echo [ERROR] Failed to write the HKCU Run autostart value.
     exit /b 1
 )
+REM Read the value back and verify it is exactly what was written;
+REM an unverified registration is not a registration.
+set "EXPECTED_RUN=%RUN_COMMAND%"
+powershell -NoProfile -Command "if ((Get-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' -Name 'GlossaLab' -ErrorAction SilentlyContinue).GlossaLab -ne $env:EXPECTED_RUN) { exit 1 }"
+if errorlevel 1 (
+    echo [ERROR] Autostart read-back verification failed.
+    exit /b 1
+)
+echo GLOSSA_AUTOSTART_STATE name=%TASK_NAME% state=REGISTERED method=hkcu-run readback=verified
 
-echo [OK] '%TASK_NAME%' scheduled task registered — starts at next login.
+echo [OK] '%TASK_NAME%' autostart registered (HKCU Run) - starts at next login.
 echo.
 echo To start immediately: setup-os.cmd start
 echo.
@@ -116,8 +131,9 @@ exit /b 0
 REM ─────────────────────────────────────────────────────────────
 :do_uninstall
 REM ─────────────────────────────────────────────────────────────
-echo [UNINSTALL] Removing GlossaLab scheduled task...
+echo [UNINSTALL] Removing GlossaLab autostart...
 call :do_stop_silent
+REM The schtasks delete is legacy cleanup only (pre-amendment installs).
 schtasks /delete /tn "%TASK_NAME%" /f >nul 2>&1
 reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "%TASK_NAME%" /f >nul 2>&1
 reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "GlossaLabBackend" /f >nul 2>&1
@@ -188,9 +204,9 @@ REM ─────────────────────────�
 REM ─────────────────────────────────────────────────────────────
 echo.
 echo ── GlossaLab Status ──────────────────────────────────────
-schtasks /query /tn "%TASK_NAME%" >nul 2>&1
+reg query "%RUN_KEY%" /v "%TASK_NAME%" >nul 2>&1
 if not errorlevel 1 (
-    echo   Autostart: scheduled task registered
+    echo   Autostart: HKCU Run entry registered
 ) else (
     echo   Autostart: NOT registered  (run: setup-os.cmd install)
 )
@@ -220,11 +236,11 @@ echo Glossa Lab OS Integration (Windows)
 echo.
 echo Usage: setup-os.cmd [install ^| uninstall ^| start ^| stop ^| restart ^| status]
 echo.
-echo  install    Register GlossaLab scheduled task (run once)
-echo  uninstall  Remove task and clean up legacy entries
-echo  start      Run task now  (tray + backend, no window)
+echo  install    Register the HKCU Run autostart entry (run once)
+echo  uninstall  Remove autostart entry and clean up legacy entries
+echo  start      Start tray now  (tray + backend, no window)
 echo  stop       Graceful backend shutdown + stop tray (targeted)
 echo  restart    Stop then start
-echo  status     Task state + backend health
+echo  status     Autostart state + backend health
 echo.
 exit /b 0

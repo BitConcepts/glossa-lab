@@ -10951,3 +10951,47 @@ What was done:
 
 **AI disclosure:** execution recorded by an AI agent (Muse, via
 Muse) at the direction of Tristen Pierson, per constitution SSVI.
+
+## 2026-10-29 — Spec 080 Amendment 1: installer defects fixed; autostart mechanism amended
+
+The Spec 080 desktop install job (gatekeeper
+`glossa-host-install-2026-10-28-r1`, run 40802151979) completed
+GitHub-green while its 27 markers proved the install had NOT
+landed: INSTALL_EXIT 1 and no `GlossaLab` scheduled task. Two
+defects, pinned in the source and on the host:
+
+1. Icon verification: `setup-os.cmd install` hashed the tray
+   icons with an inline `Get-FileHash` one-liner in a
+   `powershell -NoProfile` child. In that context the cmdlet
+   threw CommandNotFoundException and the batch check reported
+   the hashing failure as a hash "mismatch", refusing an
+   install whose assets match the pins exactly.
+2. Autostart registration: `Register-ScheduledTask` returned
+   HRESULT 0x80070005 in both the installer's elevation-wrapper
+   path and the direct fallback, and the fallback script still
+   printed "Task registered." after the failure.
+
+Host diagnostic `glossa-host-diag-2026-10-28` (run 40807602846)
+established the execution context (tristen-desktop\trist,
+session 1, not elevated) and that per-user task registration
+is denied in it with and without an explicit principal, while
+schtasks.exe exits 0 creating nothing. On that evidence the
+Desktop Access program directed, and this change records,
+Amendment 1 to Spec 080: the canonical per-user autostart is
+the HKCU Run value `GlossaLab` (wscript.exe + launch-tray.vbs),
+written and read-back-verified by the installer; the
+scheduled-task path and scripts\register_task.ps1 are removed
+(no dual mechanism). Icon verification moves to
+scripts\verify_icon_hashes.ps1 (.NET SHA-256, case-insensitive
+comparison, exit 2/3/4 discriminating hashing failure /
+missing asset / mismatch; the method is printed as
+GLOSSA_ICON_HASH method=dotnet-sha256). The tray's autostart
+detection and scripts\verify_desktop_host.py read the Run
+value; FR-007's GLOSSA_TASK_STATE marker is renamed
+GLOSSA_AUTOSTART_STATE. FR-005's bar — verify, fail loudly,
+refuse on any failure — is unchanged. Spec record:
+specs/080-desktop-host-migration/spec.md, Amendment 1;
+contract tests C080-5 (updated) and C080-8 (new).
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.

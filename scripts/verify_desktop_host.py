@@ -11,7 +11,9 @@ that runs this script (TRISTEN-DESKTOP):
 * GLOSSA_TRAY_PROCESS   — tray process(es) running (-m glossa_tray)
 * GLOSSA_ICON_HASH      — installed-tree icon assets match the
   Spec 079 SHA-256 pins
-* GLOSSA_TASK_STATE     — the GlossaLab scheduled task (Windows)
+* GLOSSA_AUTOSTART_STATE — the per-user autostart registration:
+  the HKCU Run value written by setup-os.cmd install (Windows;
+  Spec 080 FR-004 as amended 2026-10-29)
 * GLOSSA_RESTART_TEST   — kill the backend process; the tray
   supervisor must bring it back (new PID) within the deadline
 
@@ -33,7 +35,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 ICON_ICO_SHA256 = "315940742d75720388264dcdf03178c58f878ea0701d03eeba95688d935ff520"
 ICON_PNG_SHA256 = "bb41bf09d4177cee0c96b29ebe480f86a9e7115946f9e4ad132d2367a7adb077"
-TASK_NAME = "GlossaLab"
+RUN_VALUE_NAME = "GlossaLab"
 RESTART_DEADLINE_SEC = 120
 POLL_INTERVAL_SEC = 2
 
@@ -137,22 +139,33 @@ def kill_pid(pid: int) -> bool:
         return False
 
 
-def task_state() -> str:
+def autostart_state() -> str:
+    """State of the per-user autostart registration (Windows).
+
+    Spec 080 FR-004 as amended 2026-10-29: the canonical autostart
+    is the HKCU Run value written by setup-os.cmd install, pointing
+    at wscript.exe + launch-tray.vbs. REGISTERED only when the
+    value exists AND names that entry point; a present-but-foreign
+    value is MISMATCH, never REGISTERED.
+    """
     if sys.platform != "win32":
         return "SKIP non-windows"
     try:
-        result = subprocess.run(
-            ["schtasks", "/query", "/tn", TASK_NAME, "/fo", "LIST"],
-            capture_output=True, text=True, timeout=15,
-        )
-    except (OSError, subprocess.TimeoutExpired) as exc:
-        return f"ERROR {exc}"
-    if result.returncode != 0:
+        import winreg
+
+        with winreg.OpenKey(
+            winreg.HKEY_CURRENT_USER,
+            r"Software\Microsoft\Windows\CurrentVersion\Run",
+        ) as key:
+            value, _ = winreg.QueryValueEx(key, RUN_VALUE_NAME)
+    except OSError:
         return "MISSING"
-    for line in result.stdout.splitlines():
-        if "Status:" in line or "Scheduled Task State:" in line:
-            return line.split(":", 1)[1].strip()
-    return "REGISTERED"
+    except ImportError as exc:  # pragma: no cover - winreg is win32 stdlib
+        return f"ERROR {exc}"
+    text = str(value)
+    if "wscript" in text.lower() and "launch-tray.vbs" in text.lower():
+        return "REGISTERED"
+    return "MISMATCH"
 
 
 def wait_for_new_backend(healthcheck, base_url: str, old_pid: int | None,
@@ -204,7 +217,10 @@ def main(argv: list[str] | None = None) -> int:
         f"ico={ico_sha} png={png_sha} result={'PASS' if icons_ok else 'FAIL'}",
     )
 
-    marker("GLOSSA_TASK_STATE", f"name={TASK_NAME} state={task_state()}")
+    marker(
+        "GLOSSA_AUTOSTART_STATE",
+        f"name={RUN_VALUE_NAME} state={autostart_state()} method=hkcu-run",
+    )
 
     restart_ok = True
     if args.skip_restart_test:

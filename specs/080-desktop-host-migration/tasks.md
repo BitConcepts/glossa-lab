@@ -17,3 +17,4 @@
 - [ ] T015 Access route: Tailscale Serve proof — health + MCP get_status from the VM against the desktop instance
 - [ ] T016 Cutover: VM unit stop + disable; MCP repointed; post-cutover smoke test
 - [ ] T017 VM cleanup per safe-workspace-cleanup (inventory → prove → salvage → remove), before/after RAM + disk in the migration record
+- [ ] T018 Amendment 1 fix: icon verification via .NET SHA-256 helper (case-insensitive, discriminated failures); autostart amended to the HKCU Run value (read-back verified), scheduled-task path + register_task.ps1 removed, tray + verify script read the Run value (marker GLOSSA_AUTOSTART_STATE); PR + CI green (8/8 incl. C4) + merge, then desktop install re-run green

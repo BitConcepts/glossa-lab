@@ -97,6 +97,26 @@ def test_setup_os_install_verifies_icon_hashes() -> None:
         assert code in helper, code
 
 
+def test_setup_os_autostart_is_hkcu_run_key() -> None:
+    """C080-8 (Amendment 1): one canonical autostart — the HKCU Run
+    value; the scheduled-task registration path is removed."""
+    text = _text("setup-os.cmd")
+    assert r"HKCU\Software\Microsoft\Windows\CurrentVersion\Run" in text
+    assert "reg add" in text and "launch-tray.vbs" in text
+    # Registration is read back and verified before it is reported.
+    assert "GLOSSA_AUTOSTART_STATE" in text
+    assert "readback=verified" in text
+    # No task registration path remains: no elevation wrapper, no
+    # register_task.ps1 reference, and the file itself is deleted.
+    assert "register_task" not in text
+    assert "RunAs" not in text
+    assert not (REPO / "scripts" / "register_task.ps1").exists()
+    # The tray reads the same Run value to report autostart state.
+    tray = _text("tray/glossa_tray/main.py")
+    assert "winreg" in tray
+    assert "schtasks" not in tray
+
+
 def test_services_windows_delegates_to_canonical_installer() -> None:
     """C080-4: services/windows is a shim, never a second installer."""
     install = _text("services/windows/install.cmd")
@@ -141,7 +161,7 @@ def test_verify_script_markers_and_icon_helper(tmp_path: Path) -> None:
         "GLOSSA_HOST_IDENTITY",
         "GLOSSA_TRAY_PROCESS",
         "GLOSSA_ICON_HASH",
-        "GLOSSA_TASK_STATE",
+        "GLOSSA_AUTOSTART_STATE",
         "GLOSSA_RESTART_TEST",
     ):
         assert name in source, name

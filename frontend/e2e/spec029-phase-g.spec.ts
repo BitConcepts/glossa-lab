@@ -200,7 +200,7 @@ async function setupMocks(page: Page) {
 
 async function openClaimsTab(page: Page) {
   await page.goto("/");
-  const btn = page.getByTitle("Evidence Graph").first();
+  const btn = page.getByTitle("Evidence & sources").first();
   await btn.waitFor({ state: "visible", timeout: 10000 });
   await btn.click();
   await page.getByText(/🔖 Claims/).first().click();

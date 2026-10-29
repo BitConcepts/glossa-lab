@@ -327,7 +327,7 @@ test.describe("System metrics peaks", () => {
 test.describe("Corpora UI", () => {
   test("corpora page shows corpus cards", async ({ page }) => {
     await page.goto("/");
-    await page.getByTitle("Corpora").first().click();
+    await page.getByTitle("Data").first().click();
     await page.waitForTimeout(1000);
     // Either shows corpora or "No corpora yet" message
     const hasCorpora = await page.locator("div").filter({ hasText: /corpus entries/i }).count() > 0;
@@ -337,7 +337,7 @@ test.describe("Corpora UI", () => {
 
   test("corpus card expands on click", async ({ page }) => {
     await page.goto("/");
-    await page.getByTitle("Corpora").first().click();
+    await page.getByTitle("Data").first().click();
     await page.waitForTimeout(1500);
     // If there are corpus cards, click the first one
     const cards = page.locator("[style*='border: 1px solid'][style*='border-radius: 8px']");
@@ -358,28 +358,30 @@ test.describe("Corpora UI", () => {
 test.describe("Entropy Dashboard UI", () => {
   test("entropy tab shows dashboard with corpus selector", async ({ page }) => {
     await page.goto("/");
-    await page.getByTitle("Entropy").first().click();
+    await page.getByTitle("Analysis").first().click();
     await expect(page.getByRole("heading", { name: "Entropy Dashboard" })).toBeVisible();
     await expect(page.getByRole("button", { name: /Add Corpus/i })).toBeVisible();
   });
 
   test("entropy dashboard shows select corpus dropdown", async ({ page }) => {
     await page.goto("/");
-    await page.getByTitle("Entropy").first().click();
+    await page.getByTitle("Analysis").first().click();
     await page.waitForTimeout(1000);
     await expect(page.locator("select").filter({ hasText: /select corpus/i })).toBeVisible();
   });
 });
 
 test.describe("Hypothesis Tracker UI", () => {
-  test("hypotheses tab loads", async ({ page }) => {
+  // Spec 081 (Q7): hypotheses fold into Claims; the tracker form returns with the claims surface (step 3).
+  test.fixme("hypotheses tab loads", async ({ page }) => {
     await page.goto("/");
     await page.getByTitle("Hypotheses").first().click();
     await expect(page.getByRole("heading", { name: "Hypothesis Tracker" })).toBeVisible();
     await expect(page.getByPlaceholder(/New hypothesis title/i)).toBeVisible();
   });
 
-  test("can type a hypothesis title", async ({ page }) => {
+  // Spec 081 (Q7): see above — restored by the claims surface (step 3).
+  test.fixme("can type a hypothesis title", async ({ page }) => {
     await page.goto("/");
     await page.getByTitle("Hypotheses").first().click();
     const input = page.getByPlaceholder(/New hypothesis title/i);
@@ -391,7 +393,8 @@ test.describe("Hypothesis Tracker UI", () => {
 });
 
 test.describe("Research Notebook UI", () => {
-  test("notebooks tab loads", async ({ page }) => {
+  // Spec 081 (Q10): notebooks return as the 4th tab of Evidence & sources (step 6).
+  test.fixme("notebooks tab loads", async ({ page }) => {
     await page.goto("/");
     await page.getByTitle("Notebooks").first().click();
     await expect(page.getByRole("heading", { name: "Research Notebooks" })).toBeVisible();
@@ -400,7 +403,8 @@ test.describe("Research Notebook UI", () => {
 });
 
 test.describe("Citation Manager UI", () => {
-  test("citations tab loads with add form", async ({ page }) => {
+  // Spec 081: citations return inside Evidence & sources (step 6).
+  test.fixme("citations tab loads with add form", async ({ page }) => {
     await page.goto("/");
     await page.getByTitle("Citations").first().click();
     await expect(page.getByRole("heading", { name: "Citation Manager" })).toBeVisible();
@@ -460,7 +464,7 @@ test.describe("AI Chat UI", () => {
 test.describe("AI Tools UI", () => {
   test("AI Tools tab shows tool sections", async ({ page }) => {
     await page.goto("/");
-    await page.getByTitle("AI Tools").first().click();
+    await page.goto("/#/ai-tools"); // Spec 081: AI tools is a utility route (Q6), not a nav item
     // Heading is "✨ AI Hub" — check for that or the section content
     const hub = await page.getByRole("heading", { name: /AI Hub/i }).first().isVisible({ timeout: 3000 }).catch(() => false);
     const decipherment = await page.getByText(/Decipherment/i).first().isVisible({ timeout: 3000 }).catch(() => false);
@@ -472,7 +476,7 @@ test.describe("AI Tools UI", () => {
 test.describe("Sign Dictionary UI", () => {
   test("signs tab shows dictionary grid", async ({ page }) => {
     await page.goto("/");
-    await page.getByTitle("Signs").first().click();
+    await page.goto("/#/signs"); // Spec 081: Analysis tab (step 6) will own this click
     // SignsView renders "🔣 Signs" heading (not "Sign Dictionary")
     await expect(page.getByRole("heading", { level: 2 }).first()).toBeVisible({ timeout: 5000 });
     // Verify sign content area or loading state
@@ -482,7 +486,7 @@ test.describe("Sign Dictionary UI", () => {
 
   test("sign search filters results", async ({ page }) => {
     await page.goto("/");
-    await page.getByTitle("Signs").first().click();
+    await page.goto("/#/signs"); // Spec 081: Analysis tab (step 6) will own this click
     // Try both placeholder variants
     const searchInput = page.getByPlaceholder(/Search sign/i).first();
     const hasSearch = await searchInput.isVisible({ timeout: 3000 }).catch(() => false);
@@ -502,7 +506,7 @@ test.describe("Sign Dictionary UI", () => {
 test.describe("Timeline UI", () => {
   test("timeline tab loads", async ({ page }) => {
     await page.goto("/");
-    await page.getByTitle("Timeline").first().click();
+    await page.goto("/#/timeline"); // Spec 081: Analysis tab (step 6) will own this click
     await expect(page.getByRole("heading", { name: "Timeline" })).toBeVisible();
   });
 });
@@ -532,8 +536,8 @@ test.describe("Command Palette", () => {
   test("filtering by query shows relevant commands", async ({ page }) => {
     await page.goto("/");
     await openPalette(page);
-    await page.getByPlaceholder(/Search commands/i).fill("Entropy");
-    await expect(page.getByText(/Go to Entropy/i)).toBeVisible({ timeout: 3000 });
+    await page.getByPlaceholder(/Search commands/i).fill("Analysis");
+    await expect(page.getByText(/Go to Analysis/i)).toBeVisible({ timeout: 3000 });
   });
 
   test("clicking ⌘K button opens palette", async ({ page }) => {
@@ -744,14 +748,14 @@ test.describe("Evidence Graph API", () => {
 test.describe("Evidence Graph UI (with backend)", () => {
   test("Evidence Graph tab is reachable and shows library stats", async ({ page }) => {
     await page.goto("/");
-    await page.getByTitle("Evidence Graph").first().click();
+    await page.getByTitle("Evidence & sources").first().click();
     await page.waitForTimeout(3000);
     await expect(page.getByText(/Registered Papers/i).first()).toBeVisible();
   });
 
   test("claims count in stats row is >= 22", async ({ page }) => {
     await page.goto("/");
-    await page.getByTitle("Evidence Graph").first().click();
+    await page.getByTitle("Evidence & sources").first().click();
     await page.getByText(/🔖 Claims/).first().click();
     await page.waitForTimeout(3000);
     // Should show total count in the counter text
@@ -766,7 +770,7 @@ test.describe("Evidence Graph UI (with backend)", () => {
 
   test("Sweep tab config loads from backend", async ({ page }) => {
     await page.goto("/");
-    await page.getByTitle("Evidence Graph").first().click();
+    await page.getByTitle("Evidence & sources").first().click();
     await page.getByText(/🔭 Sweep/).first().click();
     await page.waitForTimeout(4000);
     // Should either show config form or loading state

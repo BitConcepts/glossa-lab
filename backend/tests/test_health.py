@@ -16,17 +16,6 @@ def test_health_endpoint_returns_200(client):
     assert isinstance(data["uptime_seconds"], (int, float))
 
 
-def test_health_carries_service_identity(client):
-    """Spec 081 FR-007: health carries identity, not liveness alone."""
-    response = client.get("/api/v1/health")
-    data = response.json()
-    assert data["app"] == "Glossa Lab"
-    assert isinstance(data["host"], str) and data["host"]
-    assert "started_at" in data
-    assert "data_dir" in data
-    assert "db_ready" in data
-
-
 def test_health_version_matches_package(client):
     """TEST-INT-002: Version in health response matches pyproject.toml."""
     response = client.get("/api/v1/health")

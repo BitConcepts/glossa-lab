@@ -6,6 +6,13 @@ desktop.ini
 # ---- macOS app artifacts ----
 *.app
 
+# ---- Frontend generated output (never tracked) ----
+# TypeScript incremental build state is regenerated on every
+# build; tracking it only produces phantom modifications on
+# every host. (frontend/dist is different: intentionally
+# tracked for deployment - see the Frontend section below.)
+*.tsbuildinfo
+
 # ---- Editors / IDEs ----
 .vscode/
 .idea/

@@ -422,7 +422,7 @@ test.describe("DeciphermentPanel › ▶ Run SA button state machine", () => {
     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 3000 });
     await expect(page.getByRole("button", { name: "▶ Run SA" })).not.toBeVisible();
     // ↻ re-run button must be present
-    const rerunBtns = page.getByRole("button", { name: "↻" });
+    const rerunBtns = page.getByRole("button", { name: "↻", exact: true });
     expect(await rerunBtns.count()).toBeGreaterThan(0);
   });
 
@@ -435,7 +435,7 @@ test.describe("DeciphermentPanel › ▶ Run SA button state machine", () => {
     await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
     await expect(page.locator("text=✗ Error").first()).toBeVisible({ timeout: 3000 });
     await expect(page.getByRole("button", { name: "▶ Run SA" })).not.toBeVisible();
-    const rerunBtns = page.getByRole("button", { name: "↻" });
+    const rerunBtns = page.getByRole("button", { name: "↻", exact: true });
     expect(await rerunBtns.count()).toBeGreaterThan(0);
   });
 
@@ -473,7 +473,7 @@ test.describe("DeciphermentPanel › ▶ Run SA button state machine", () => {
     await setLS(page, "success");
     await page.reload();
     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 10_000 });
-    const rerun = page.getByRole("button", { name: "↻" }).first();
+    const rerun = page.getByRole("button", { name: "↻", exact: true }).first();
     await rerun.click();
     await expect(page.getByRole("button", { name: "⏳ Running…" }).first()).toBeVisible({ timeout: 2000 });
     await expect(page.locator("text=✓ Done").first()).not.toBeVisible();
@@ -491,7 +491,7 @@ test.describe("DeciphermentPanel › ▶ Run SA button state machine", () => {
     await setLS(page, "error");
     await page.reload();
     await expect(page.locator("text=✗ Error").first()).toBeVisible({ timeout: 10_000 });
-    const rerun = page.getByRole("button", { name: "↻" }).first();
+    const rerun = page.getByRole("button", { name: "↻", exact: true }).first();
     await rerun.click();
     // Should go through busy then done
     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 15_000 });
@@ -517,7 +517,7 @@ test.describe("DeciphermentPanel › ▶ Run SA button state machine", () => {
       return r.fulfill({ status: 200, contentType: "text/event-stream",
         headers: { "Cache-Control": "no-cache" }, body: sseSuccess(id) });
     });
-    const rerun = page.getByRole("button", { name: "↻" }).first();
+    const rerun = page.getByRole("button", { name: "↻", exact: true }).first();
     await rerun.click();
     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 15_000 });
     const state = await getLS(page);
@@ -704,7 +704,7 @@ test.describe("DeciphermentPanel › Run SA — error scenarios", () => {
     await setLS(page, "error");
     await page.reload();
     await expect(page.locator("text=✗ Error").first()).toBeVisible({ timeout: 10_000 });
-    const rerun = page.getByRole("button", { name: "↻" }).first();
+    const rerun = page.getByRole("button", { name: "↻", exact: true }).first();
     await rerun.click();
     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 15_000 });
     const state = await getLS(page);

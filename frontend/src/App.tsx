@@ -308,6 +308,11 @@ function AppContent() {
   // link (#/status from the tray, etc.) names a route.
   const [tab, _setTab] = useState<Tab>(() => initialTabFromHash());
   const tabRef = useRef<Tab>(tab);
+  const initialTabRef = useRef<Tab>(tab);
+  // The last hash this app itself wrote via replaceState. A current
+  // hash that differs from it AND from the tab's target was set from
+  // outside (deep link landing during boot) and is authoritative.
+  const lastSyncedHashRef = useRef<string | null>(null);
   const [navHistory, setNavHistory] = useState<Tab[]>([]);
   const [navFuture, setNavFuture] = useState<Tab[]>([]);
   const userNavigatedRef = useRef(false);
@@ -353,9 +358,28 @@ function AppContent() {
   // session log" opens /#/status — Spec 081 step 8).
   useEffect(() => {
     const target = `#/${tab}`;
-    if (window.location.hash !== target) {
-      window.history.replaceState(null, "", target);
+    const current = window.location.hash;
+    if (current === target) {
+      lastSyncedHashRef.current = target;
+      return;
     }
+    // A hash naming another valid route that this app did not write
+    // (a deep link or tray link that landed while the shell was still
+    // booting, before the hashchange listener could catch it) wins
+    // over the tab state — adopt it instead of clobbering it with the
+    // sync write. Hashes the app itself wrote are told apart via
+    // lastSyncedHashRef, so in-app navigation is unaffected.
+    const m = current.match(/^#\/([a-z-]+)/);
+    if (
+      lastSyncedHashRef.current !== current &&
+      m && VALID_TABS.has(m[1]) && m[1] !== tab
+    ) {
+      userNavigatedRef.current = true;
+      setTab(m[1] as Tab);
+      return;
+    }
+    window.history.replaceState(null, "", target);
+    lastSyncedHashRef.current = target;
   }, [tab]);
 
   // Hash-driven navigation: a same-document hash change (deep link,
@@ -380,7 +404,13 @@ function AppContent() {
   // and is the landing whenever no program is open (wireframe 16).
   const landedRef = useRef(false);
   useEffect(() => {
-    if (landedRef.current || userNavigatedRef.current || hadHashAtLoadRef.current) return;
+    if (landedRef.current || userNavigatedRef.current) return;
+    // A hash naming a non-default route is a deep link and wins. The
+    // default route's own synced hash (#/programs) is NOT a deep
+    // link: a reload that happens before the first landing completes
+    // (or any return to the tool home's URL) must still land on the
+    // open program's home.
+    if (hadHashAtLoadRef.current && initialTabRef.current !== "programs") return;
     if (projCtx.loading) return;
     landedRef.current = true;
     if (projCtx.activeProject) setTab("home");

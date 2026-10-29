@@ -104,14 +104,24 @@ test.describe("Program-space navigation", () => {
   test("clicking Claims renders the claims register", async ({ page }) => {
     await page.goto("/");
     await page.getByTitle("Claims").first().click();
-    await expect(page.getByRole("heading", { name: /Evidence Graph/i }).first())
+    // The interim claims surface is the evidence workspace with its
+    // Claims tab active: its title is a styled div (not a heading
+    // element), and the register's own count line proves the lane
+    // rendered. PR-5 replaces this surface with the wireframe-03
+    // register and its PageHead.
+    await expect(page.getByText("Evidence Graph").first())
+      .toBeVisible({ timeout: 5000 });
+    await expect(page.getByText(/total claims/).first())
       .toBeVisible({ timeout: 5000 });
   });
 
   test("clicking Evidence & sources renders the evidence workspace", async ({ page }) => {
     await page.goto("/");
     await page.getByTitle("Evidence & sources").first().click();
-    await expect(page.getByRole("heading", { name: /Evidence Graph/i }).first())
+    await expect(page.getByText("Evidence Graph").first())
+      .toBeVisible({ timeout: 5000 });
+    // Library tab is the workspace's landing lane.
+    await expect(page.getByText(/Registered Papers/).first())
       .toBeVisible({ timeout: 5000 });
   });
 

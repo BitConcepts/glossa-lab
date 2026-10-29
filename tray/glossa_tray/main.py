@@ -157,6 +157,67 @@ def _tray_log(message: str) -> None:
         pass
 
 
+# ── Spec 082: API token ──────────────────────────────────
+#
+# The backend requires a per-install API token (Spec 082). The tray
+# resolves it the same way the backend's other consumers do: the
+# GLOSSA_API_TOKEN environment value, then a token file named by
+# GLOSSA_TOKEN_FILE, then this install's token file (the installed
+# data dir; in a repo checkout, backend/data). Resolution runs per
+# use — never cached — so a rotation applies on the next action
+# without restarting the tray. The token value is never written to
+# the tray log; a resolution miss is named, never silent (T009).
+
+
+def _token_candidates() -> list[Path]:
+    candidates: list[Path] = []
+    named = os.environ.get("GLOSSA_TOKEN_FILE", "").strip()
+    if named:
+        candidates.append(Path(named).expanduser())
+    system = platform.system()
+    if system == "Windows":
+        local_app_data = os.environ.get("LOCALAPPDATA", "")
+        if local_app_data:
+            candidates.append(
+                Path(local_app_data) / "GlossaLab" / "data" / "api_token"
+            )
+    elif system == "Darwin":
+        candidates.append(
+            Path.home()
+            / "Library"
+            / "Application Support"
+            / "GlossaLab"
+            / "data"
+            / "api_token"
+        )
+    else:
+        xdg_data = os.environ.get("XDG_DATA_HOME", "").strip()
+        base = (
+            Path(xdg_data).expanduser()
+            if xdg_data
+            else Path.home() / ".local" / "share"
+        )
+        candidates.append(base / "glossa-lab" / "api_token")
+    candidates.append(_REPO_ROOT / "backend" / "data" / "api_token")
+    return candidates
+
+
+def _resolve_token() -> str | None:
+    """Resolve this install's API token, or None when unresolvable."""
+    env_token = os.environ.get("GLOSSA_API_TOKEN", "").strip()
+    if env_token:
+        return env_token
+    for candidate in _token_candidates():
+        try:
+            if candidate.is_file():
+                value = candidate.read_text(encoding="utf-8").strip()
+                if value:
+                    return value
+        except OSError:
+            continue
+    return None
+
+
 # Updated by the status poller; read by the dynamic menu item.
 _status_text = "Backend: Checking..."
 _status_error = False
@@ -320,8 +381,59 @@ def _backend_running() -> bool:
 # ── Actions (all via CLI or browser — no backend logic) ──────────────
 
 def _open_ui(_icon=None, _item=None):
-    """Open the frontend in the default browser."""
+    """Open the frontend in the default browser.
+
+    Spec 082: the resolved token rides in a URL fragment
+    (``#token=...``) — fragments are never sent to the server or
+    written to access logs, and the SPA moves the value into
+    session storage and strips it from the address bar
+    (ui-contract.md). When no token resolves, the UI opens bare
+    and the miss is named in the tray log; a fragment is never
+    fabricated.
+    """
+    token = _resolve_token()
+    if token:
+        webbrowser.open(f"{FRONTEND_URL}#token={token}")
+        return
+    _tray_log(
+        "open UI: no API token resolved (checked GLOSSA_API_TOKEN, "
+        "GLOSSA_TOKEN_FILE, the installed data dir, backend/data); "
+        "opening the UI without the token handoff"
+    )
     webbrowser.open(FRONTEND_URL)
+
+
+def _copy_api_token(_icon=None, _item=None) -> None:
+    """Copy the install's API token to the clipboard (Spec 082 T009).
+
+    Uses tkinter, the same toolkit as the Change Port dialog. Every
+    failure is named in the tray log — an unresolvable token, a
+    missing tkinter, a clipboard error — and the token value itself
+    is never logged.
+    """
+    token = _resolve_token()
+    if not token:
+        _tray_log(
+            "copy API token: no token resolved (checked "
+            "GLOSSA_API_TOKEN, GLOSSA_TOKEN_FILE, the installed "
+            "data dir, backend/data)"
+        )
+        return
+    try:
+        import tkinter as tk  # noqa: PLC0415
+    except ImportError:
+        _tray_log("copy API token failed: tkinter is not available")
+        return
+    try:
+        root = tk.Tk()
+        root.withdraw()
+        root.clipboard_clear()
+        root.clipboard_append(token)
+        root.update()  # settle clipboard ownership before destroying
+        root.destroy()
+        _tray_log("API token copied to the clipboard")
+    except Exception as exc:  # noqa: BLE001
+        _tray_log(f"copy API token failed: {type(exc).__name__}: {exc}")
 
 
 # Windows process-creation flags (no console window, detached, new group)
@@ -508,7 +620,18 @@ def _stop_backend(_icon=None, _item=None) -> None:
     global _user_stopped  # noqa: PLW0603
     _user_stopped = True
     try:
-        req = urllib.request.Request(f"{BACKEND_URL}/api/v1/shutdown", method="POST")
+        # Spec 082: the shutdown route is token-gated. Present the
+        # resolved token when one is available; without one the
+        # request is refused (401, logged below) and the bounded
+        # kill fallback behind this block remains the last resort,
+        # exactly as before.
+        headers = {}
+        token = _resolve_token()
+        if token:
+            headers["Authorization"] = f"Bearer {token}"
+        req = urllib.request.Request(
+            f"{BACKEND_URL}/api/v1/shutdown", method="POST", headers=headers
+        )
         urllib.request.urlopen(req, timeout=3)
     except Exception as exc:  # noqa: BLE001
         _tray_log(f"shutdown request failed: {type(exc).__name__}: {exc}")
@@ -807,6 +930,7 @@ def main():
     _tray_log("tray starting")
     menu = pystray.Menu(
         pystray.MenuItem("Open UI", _open_ui, default=True),
+        pystray.MenuItem("Copy API Token", _copy_api_token),
         pystray.Menu.SEPARATOR,
         pystray.MenuItem(lambda _: _status_text, _on_status_click),
         pystray.Menu.SEPARATOR,

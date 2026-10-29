@@ -133,6 +133,34 @@ Start/stop go only through the wscript VBS wrappers
 the backend is spawned with the production factory entry point on
 127.0.0.1 with `GLOSSA_MODE=installed`.
 
+### API token (Spec 082)
+
+The backend requires a per-install API token on every route
+except the open health check. The token lives in the install's
+data dir (`%LOCALAPPDATA%\GlossaLab\data\api_token` on Windows;
+`backend/data/api_token` in a repo checkout) and is provisioned
+at install time (`setup-os.cmd install` on Windows; the backend
+generates it on first use elsewhere). The tray:
+
+- resolves the token **per use** — the `GLOSSA_API_TOKEN`
+  environment value, then a file named by `GLOSSA_TOKEN_FILE`,
+  then the install's token file — never cached, so a rotation
+  applies on the next action without restarting the tray;
+- sends it on the backend shutdown request (the health poll
+  stays unauthenticated: health is an open route);
+- hands it to the web UI on **Open UI** as a `#token=` URL
+  fragment (fragments never reach the server; the SPA moves the
+  value into session storage and strips the fragment) — and
+  writes a named line to `logs/tray.log` when no token can be
+  resolved, opening the UI bare;
+- offers **Copy API Token** in the menu, for pasting into the
+  web UI's Settings field or another local client; failures are
+  named in `logs/tray.log`.
+
+The token value never appears in the tray log. Rotate it with
+`python -m glossa_lab.auth rotate` (from `backend/`); every
+consumer picks the new value up on its next use.
+
 ### Dependencies
 
 Listed in `tray/requirements.txt`: `pystray`, `Pillow`.

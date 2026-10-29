@@ -11329,6 +11329,28 @@ direction of Tristen Pierson, per constitution sec. VI.
   and traversal reads refused, in-sandbox reads work, traversal `rm`
   does not delete the outside file.
 
+## [2026-10-29] Entry — Leg C hardening 3: promotion evidence refs must resolve (C-03)
+
+- **Finding (Leg C red team, live-confirmed end-to-end):** the H26
+  promotion gate accepted any non-empty string as an evidence
+  reference. On a throwaway instance, one caller approved a staged
+  candidate, "verified" it via `/staging/verify-archive` (which
+  performs no test), then promoted it with a fabricated
+  `evidence_refs` string supplied in the promote request itself —
+  producing a MEDIUM-confidence anchor citing the fabricated ref.
+- **Fix (`backend/glossa_lab/api/research_loop.py`):** the gate now
+  requires the reference to resolve via `_evidence_ref_resolves` —
+  its leading artifact token (`path` or `path:KEY` form, free-text
+  description after whitespace allowed) must name an existing file
+  relative to the repo root or `backend/`. Bare strings no longer
+  pass, from either the candidate record or the request map.
+- **Tests:** `backend/tests/test_staging_promotion_evidence.py` —
+  new regression: fabricated unresolvable ref is blocked and nothing
+  is written. The pre-existing "with candidate ref" fixture named a
+  fictional `reports/phase999_example.json`; it now names the real
+  `LEDGER.md` artifact (the test's intent — a recorded ref succeeds —
+  is unchanged; a non-existent ref succeeding was the bug).
+
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec. VI.
 

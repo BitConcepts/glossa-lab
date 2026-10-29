@@ -601,6 +601,29 @@ _STAGING_JSON = _REPO / "outputs" / "anchor_staging.json"
 _ARCHIVE_JSON = _REPO / "outputs" / "anchor_staging_archive.json"
 
 
+def _evidence_ref_resolves(ref: Any) -> bool:
+    """Return True when an H26 evidence reference names a real artifact.
+
+    Leg C finding C-03: the promotion gate previously accepted ANY
+    non-empty string — including a fabricated reference supplied in
+    the promote request itself — and conferred MEDIUM confidence on
+    it (live-confirmed end-to-end). A reference now resolves only
+    when its leading artifact token names an existing file, checked
+    relative to the repo root and to ``backend/``. The token may use
+    the recorded ``path:KEY`` form (e.g. a reclassification-ledger
+    entry) or be followed by free-text description after whitespace
+    (e.g. ``"LEDGER.md Phase-X entry"``); in both cases the artifact
+    path itself must exist.
+    """
+    if not isinstance(ref, str) or not ref.strip():
+        return False
+    token = ref.strip().split()[0].strip("()[]{},;")
+    path_part = token.split(":")[0] if ":" in token else token
+    if not path_part or path_part == token and "://" in token:
+        return False
+    return (_REPO / path_part).is_file() or (_REPO / "backend" / path_part).is_file()
+
+
 @router.get("/staging")
 async def get_staging() -> dict[str, Any]:
     """Return all anchor candidates from the staging file."""
@@ -1329,9 +1352,12 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
             continue
         # Phase-109 evidence gate (H26): a recorded non-SA evidence
         # reference is REQUIRED — the candidate's own evidence_ref
-        # field or the request's evidence_refs map.
+        # field or the request's evidence_refs map. Leg C (C-03): the
+        # reference must also RESOLVE to an existing artifact (see
+        # _evidence_ref_resolves) — a bare non-empty string, including
+        # one fabricated in this same request, no longer passes.
         ev_ref = c.get("evidence_ref") or evidence_refs.get(sid) or ""
-        if not (isinstance(ev_ref, str) and ev_ref.strip()):
+        if not _evidence_ref_resolves(ev_ref):
             blocked_signs.append(sid)
             continue
         score = float(c.get("evidence_score", 0) or 0)

@@ -303,9 +303,7 @@ def test_c080_10_verify_waits_are_bounded_and_named():
     helpers; an expired wait emits a named GLOSSA_WAIT marker.
     The only subprocess.run left is the tree-kill inside
     run_bounded itself (timeout-bounded)."""
-    source = (REPO_ROOT / "scripts" / "verify_desktop_host.py").read_text(
-        encoding="utf-8"
-    )
+    source = _text("scripts/verify_desktop_host.py")
     assert "def run_bounded" in source
     assert "def call_bounded" in source
     assert "GLOSSA_WAIT" in source
@@ -320,20 +318,14 @@ def test_c080_11_task_is_a_short_lived_starter():
     tick, IgnoreNew, and a bounded ExecutionTimeLimit; the
     tray launcher is fire-and-forget with a single-instance
     guard and never waits on the tray."""
-    reg = (REPO_ROOT / "scripts" / "register_task.ps1").read_text(
-        encoding="utf-8"
-    )
+    reg = _text("scripts/register_task.ps1")
     assert "start-ensure.vbs" in reg
     assert "RepetitionInterval" in reg
     assert "IgnoreNew" in reg
     assert "New-TimeSpan -Minutes 10" in reg
-    ensure = (REPO_ROOT / "scripts" / "start-ensure.vbs").read_text(
-        encoding="utf-8"
-    )
+    ensure = _text("scripts/start-ensure.vbs")
     assert "setup-os.cmd" in ensure
-    vbs = (REPO_ROOT / "scripts" / "launch-tray.vbs").read_text(
-        encoding="utf-8"
-    )
+    vbs = _text("scripts/launch-tray.vbs")
     assert "glossa_tray" in vbs
     assert "0, False" in vbs  # fire-and-forget: do not wait
     assert "ExecQuery" in vbs  # single-instance guard

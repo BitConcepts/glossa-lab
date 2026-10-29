@@ -13,7 +13,7 @@
 - [x] T009 Wireframe 15: tray spec sheet (icon states, menu, tooltip, status lines incl. stopped-by-user and limit-reached; single-instance; program named)
 - [x] T010 Wireframes 16–17: empty states — no program yet (create/import); program with data but no claims (teach + first claim)
 - [ ] T011 Screenshots: Playwright renders of all 17 screens at desktop 1440 + mobile 390 → `wireframes/shots/` *(blocked at first attempt 2026-10-29 by the VM's browser-launch state — headless Chromium/Firefox processes die under the current platform write restriction; `wireframes/render-shots.py` is the ready-to-run script; re-run when browser launches work)*
-- [ ] T012 Owner review on the renders; rulings on Q1–Q10 recorded as spec.md amendments; phase 2 unblocked by that record
+- [x] T012 Owner review: APPROVED as recommended (Q1–Q10) 2026-10-29 on the HTML package; rulings recorded as spec.md Amendment 1; phase 2 unblocked. (T011 PNG renders owed as a record; superseded as a gate by phase-2 built-UI screenshot verification.)
 
 ## Phase 2 — build (starts only after T012)
 

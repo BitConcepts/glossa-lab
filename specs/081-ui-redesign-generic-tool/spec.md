@@ -2,7 +2,7 @@
 
 **Feature Branch**: `spec/081-ui-redesign`
 **Created**: 2026-10-29
-**Status**: Draft — claims frozen before code (spec-kit + AEE flow). **Phase 1 of 2: design only.** No application code changes under this spec until the owner approves the rendered wireframes.
+**Status**: APPROVED 2026-10-29 (see Amendments) — Phase 2 build unblocked. Claims frozen before code (spec-kit + AEE flow).
 **Input**: Owner directive, 2026-10-29: "make wireframes for the entire ui then make fixes to make it more suitable for the work. and make sure it fully agrees with how we work and has a better layout. it must be set up as a generic tool, not tied exclusively for indus. indus is one use of it but it can be used for other things."
 **Predecessor**: Spec 029 (TAO claim lifecycle — the two-lane discipline and the five stage names this design carries verbatim), Spec 079 (supervised backend + tray), Spec 080 (desktop host migration — the tray and installer behavior this design builds on).
 **Design artifacts**: `wireframes/` in this folder (17 full-fidelity HTML renders + stylesheet + screenshots at desktop 1440 and mobile 390), `inventory.md` in this folder (the complete "before" record).
@@ -148,4 +148,24 @@ Sequenced so each step lands green on its own; the frontend's Indus-hardcoding i
 
 ## Amendments
 
-*(None at draft. Amendments land here, dated, as the owner rules on the open questions and as phase 2 proceeds.)*
+### Amendment 1 — Owner approval + Q1–Q10 rulings (2026-10-29)
+
+The owner approved the wireframe package as recommended on 2026-10-29
+("Approve the wireframes as recommended (Q1–Q10) — start Phase 2"),
+on the HTML package. The recommendations are therefore DECIDED, not open:
+
+- Q1 program switcher: sidebar card.
+- Q2 digestion board: columns by act owed.
+- Q3 density: comfortable, with a compact toggle on the claims register only.
+- Q4 tray scope: status + open-program name, no counts.
+- Q5 analysis: one nav item, three tabs (Entropy / Signs / Timeline).
+- Q6 AI assistant: utility only (button + side panel, not a nav destination).
+- Q7 hypotheses: fold into Claims.
+- Q8 bottom panel: removed.
+- Q9 dark mode: toggle kept.
+- Q10 notebooks: fourth tab of Evidence & sources.
+
+The wireframe PNG renders (T011) remain owed as a record but are superseded
+as an approval gate by the built-UI screenshot verification in phase 2
+(step 10): every built screen is screenshot at desktop 1440 and mobile 390
+and compared against its approved wireframe before it is claimed done.

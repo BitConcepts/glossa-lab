@@ -11331,3 +11331,24 @@ direction of Tristen Pierson, per constitution sec. VI.
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-29] Entry — Leg C hardening 6: study-run honesty (C-11)
+
+- **Finding:** `studies.py:_run_report_node` wrote reports to
+  `reports/<report_name>` with `report_name` taken unsanitised from
+  node params (path traversal out of `reports/`), and `run_study`
+  reported `final_status="completed"` unless a node returned the
+  literal status `error` — skipped/pending nodes (unimplemented
+  experiments, pipeline timeouts) were laundered into success.
+- **Fix:** `report_name` is reduced to a bare basename before the
+  write. The final status is now `failed` on errors,
+  `completed_with_skips` when any node was skipped/pending, and
+  `completed` only when every node actually completed; the status
+  is carried in the job record, the completion notification, and a
+  new `status` field on the `run_complete` SSE event.
+- **Tests:** `backend/tests/test_studies_report_node.py` — a
+  `../../` report name is confined to `reports/`; a normal name
+  still writes.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec. VI.

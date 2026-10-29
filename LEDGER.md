@@ -11466,3 +11466,34 @@ Leg C set and asserts its cause mechanically (record carries
 `[VERIFIED]`, `_verified_marker_is_referenced` is false, only the
 evidence component fell). The post-merge baseline fixture is
 unchanged.
+
+## [2026-10-29] Entry - Spec 080 Amendment 4: Starter Task + Bounded Verify Waits
+
+Two defects from the migration's own verification, fixed
+together. Defect 1: start-verify run 40911989844 hung forever
+inside verify_desktop_host.py (zero CPU; cancelled) - waits
+with only per-receive timeouts can wait indefinitely. Every
+external call in the verify script now goes through
+total-deadline helpers (run_bounded with tree-kill on expiry;
+call_bounded daemon threads) under an overall deadline; an
+expired wait emits a named GLOSSA_WAIT marker and fails its
+leg. The app stop's drain test now targets the loopback
+listener only (the Tailscale proxy listener never drains).
+Defect 2: the persistence model. The task diagnosis (Task
+Scheduler event log + task XML) showed Amendment 3's waiting
+action coupling the task instance to the tray's life: a
+logon-class trigger fired 12:24:15 under a Parallel
+multiple-instances policy, and the verify's own app-stop
+killed the task-owned tray, ending the instance with
+LastTaskResult 0xFFFFFFFF (the tray's supervisor restarted
+the backend at 12:31:56 under no scheduler ownership). The
+task is now a STARTER: one short-lived action (start-ensure
+.vbs -> the idempotent setup-os.cmd start), logon trigger +
+15-minute repetition ensure tick, ExecutionTimeLimit 10 min,
+MultipleInstances IgnoreNew; launch-tray.vbs is
+fire-and-forget with a single-instance guard. Steady state:
+task Ready / LastTaskResult 0x0, processes detached.
+Re-proof is T021.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.

@@ -3,12 +3,14 @@ REM ============================================================
 REM Glossa Lab — OS Integration (Windows)
 REM ============================================================
 REM
-REM One Task Scheduler task (GlossaLab) runs the tray at logon,
-REM registered by scripts\register_task.ps1 in the route-B shape
-REM (Spec 080 FR-004, as amended 2026-10-29 - Amendment 2: scoped
-REM principal for the installing user, Interactive logon type,
-REM Limited run level, user-scoped logon trigger, no elevation;
-REM see specs\080-desktop-host-migration).
+REM One Task Scheduler task (GlossaLab) is the host's starter
+REM (Spec 080 FR-004, Amendment 4, 2026-10-29): registered by
+REM scripts\register_task.ps1 in the route-B shape (scoped
+REM principal, Interactive / Limited, no elevation), its one
+REM short-lived action runs the idempotent ensure-start
+REM (scripts\start-ensure.vbs -> this file's start) at logon
+REM and on a 15-minute repetition tick. It supervises nothing
+REM itself; the tray + backend live detached (see the spec).
 REM The tray is the single entry point: it starts the backend
 REM automatically if it is not already running, and on Windows it
 REM supervises it (Spec 080: capped auto-restart, never overriding
@@ -121,7 +123,7 @@ if errorlevel 1 (
     echo [ERROR] Failed to register the GlossaLab scheduled task.
     exit /b 1
 )
-echo [OK] '%TASK_NAME%' scheduled task registered - starts at next login.
+echo [OK] '%TASK_NAME%' scheduled task registered - starter armed (logon + 15-minute ensure tick).
 echo.
 echo To start immediately: setup-os.cmd start
 echo.
@@ -205,13 +207,17 @@ REM   4. only a process still listening on 8001 whose command line
 REM      matches glossa_lab + uvicorn is force-killed, by PID.
 wscript.exe //nologo "%REPO_ROOT%\scripts\stop-tray.vbs" >nul 2>&1
 curl.exe -sf --max-time 3 -X POST "http://localhost:8001/api/v1/shutdown" >nul 2>&1
+REM Drain test targets the LOOPBACK listener only: the
+REM Tailscale Serve proxy holds its own tailnet :8001
+REM listener forever, so an unqualified :8001 test never
+REM drains on this host (Defect 1 context, 2026-10-29).
 set "STOP_WAITS=0"
 :stop_wait_loop
-netstat -ano 2>nul | findstr ":8001.*LISTENING" >nul 2>&1
+netstat -ano 2>nul | findstr "127.0.0.1:8001.*LISTENING" >nul 2>&1
 if errorlevel 1 goto :eof
 set /a STOP_WAITS+=1
 if !STOP_WAITS! GEQ 10 (
-    for /f "tokens=5" %%p in ('netstat -ano 2^>nul ^| findstr ":8001.*LISTENING"') do (
+    for /f "tokens=5" %%p in ('netstat -ano 2^>nul ^| findstr "127.0.0.1:8001.*LISTENING"') do (
         powershell -NoProfile -Command "$p = Get-CimInstance Win32_Process -Filter 'ProcessId = %%p' -ErrorAction SilentlyContinue; if ($p -and $p.CommandLine -match 'glossa_lab' -and $p.CommandLine -match 'uvicorn') { Stop-Process -Id %%p -Force -ErrorAction SilentlyContinue }"
     )
     goto :eof

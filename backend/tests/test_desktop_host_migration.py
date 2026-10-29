@@ -112,17 +112,23 @@ def test_setup_os_autostart_is_routeb_task() -> None:
     assert "LogonType Interactive" in helper
     assert "RunLevel Limited" in helper
     assert "New-ScheduledTaskTrigger -AtLogon -User" in helper
-    assert "wscript.exe" in helper and "launch-tray.vbs" in helper
+    assert "wscript.exe" in helper and "start-ensure.vbs" in helper
     # Registration is read back and gated on the Ready state.
     assert "GLOSSA_TASK_STATE" in helper
     assert "Get-ScheduledTask" in helper
-    # Amendment 3: scheduler restart-on-failure, with the VBS
-    # waiting on the tray so the settings have a lifetime to
-    # supervise (a fire-and-forget launch died with its job).
+    # Amendment 4 (supersedes Amendment 3's waiting action):
+    # the task is a short-lived starter - restart-on-failure
+    # covers starter-launch failures only, a repetition tick
+    # re-ensures every 15 minutes, and the tray launcher is
+    # fire-and-forget with a single-instance guard (the waiting
+    # coupling ended the task instance 0xFFFFFFFF when the
+    # app's own stop killed its tray - task-diag 2026-10-29).
     assert "RestartCount 3" in helper
     assert "RestartInterval" in helper
+    assert "RepetitionInterval" in helper
     vbs = _text("scripts/launch-tray.vbs")
-    assert ", 0, True)" in vbs
+    assert ", 0, False" in vbs
+    assert "ExecQuery" in vbs
     assert "WScript.Quit" in vbs
     # The tray detects autostart from the same task.
     tray = _text("tray/glossa_tray/main.py")
@@ -216,10 +222,15 @@ def test_verify_script_markers_and_icon_helper(tmp_path: Path) -> None:
     # the query's own shell (whose command line carries the
     # pattern text) is never in the set (run 40880047294).
     assert "ExecutablePath" in source
-    # No raw process kills anywhere in the verify suite: the
-    # restart leg cycles the app through its own controls.
-    assert "taskkill" not in source
+    # No raw process kills OF THE APP anywhere in the verify
+    # suite: the restart leg cycles the app through its own
+    # controls. The single taskkill occurrence is run_bounded's
+    # timeout cleanup, which kills only the verify script's OWN
+    # hung subprocess tree (/T /F on its own child PID) - the
+    # Defect 1 fix; it never targets an app process.
     assert "def kill_pid" not in source
+    assert source.count("taskkill") == 1
+    assert '"/T", "/F", "/PID", str(proc.pid)' in source
     assert "def restart_test" in source
     module = _load_verify_module()
     # The packaged assets in this repo are the pinned ones.
@@ -295,3 +306,37 @@ def test_no_timeout_exe_waits_in_windows_scripts() -> None:
         )
         assert "timeout /t" not in operational.lower(), str(path)
         assert "timeout.exe" not in operational.lower(), str(path)
+
+
+def test_c080_10_verify_waits_are_bounded_and_named():
+    """Defect 1 (run 40911989844 hung unbounded): every external
+    call in the verify script goes through the total-deadline
+    helpers; an expired wait emits a named GLOSSA_WAIT marker.
+    The only subprocess.run left is the tree-kill inside
+    run_bounded itself (timeout-bounded)."""
+    source = _text("scripts/verify_desktop_host.py")
+    assert "def run_bounded" in source
+    assert "def call_bounded" in source
+    assert "GLOSSA_WAIT" in source
+    assert "VERIFY_DEADLINE_SEC" in source
+    assert source.count("subprocess.run(") == 1
+
+
+def test_c080_11_task_is_a_short_lived_starter():
+    """Amendment 4: the task's one action is the starter
+    (start-ensure.vbs -> setup-os.cmd start); registration
+    carries the logon trigger AND the 15-minute repetition
+    tick, IgnoreNew, and a bounded ExecutionTimeLimit; the
+    tray launcher is fire-and-forget with a single-instance
+    guard and never waits on the tray."""
+    reg = _text("scripts/register_task.ps1")
+    assert "start-ensure.vbs" in reg
+    assert "RepetitionInterval" in reg
+    assert "IgnoreNew" in reg
+    assert "New-TimeSpan -Minutes 10" in reg
+    ensure = _text("scripts/start-ensure.vbs")
+    assert "setup-os.cmd" in ensure
+    vbs = _text("scripts/launch-tray.vbs")
+    assert "glossa_tray" in vbs
+    assert "0, False" in vbs  # fire-and-forget: do not wait
+    assert "ExecQuery" in vbs  # single-instance guard

@@ -8,12 +8,17 @@ Task Scheduler task (Spec 080 FR-004, route-B registration
 shape per Amendment 2, 2026-10-29: scoped principal for the
 installing user, Interactive / Limited, user-scoped logon
 trigger, no elevation), registered by
-`scripts\register_task.ps1`, whose action is
-`wscript.exe //nologo scripts\launch-tray.vbs`, so the tray
-starts at logon with no visible window (governance rule H25).
-The registration is read back in the Ready state
+`scripts\register_task.ps1`. Since Amendment 4 (2026-10-29)
+the task is a STARTER: its one action,
+`wscript.exe //nologo scripts\start-ensure.vbs`, runs the
+idempotent ensure-start (`setup-os.cmd start`) hidden and
+exits with its result in seconds - at logon and on a
+15-minute repetition tick. The tray and backend then live
+detached; the tray supervises the backend. (Amendment 3's
+waiting action was superseded: the app's own stop ended the
+coupled instance with LastTaskResult 0xFFFFFFFF.) The
+registration is read back in the Ready state
 (`GLOSSA_TASK_STATE`) before the installer reports success.
-The tray then starts and supervises the backend.
 
 For a unattended host bring-up plus verification, use:
 

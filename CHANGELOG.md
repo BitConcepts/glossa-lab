@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Spec 080 Amendment 4 (2026-10-29): the GlossaLab task is
+  now a short-lived starter (start-ensure.vbs -> the
+  idempotent ensure-start) on a logon trigger plus a
+  15-minute self-heal tick, replacing Amendment 3's
+  waiting action (the app-stop coupling ended its
+  instance with 0xFFFFFFFF); launch-tray.vbs is
+  fire-and-forget with a single-instance guard; every
+  wait in verify_desktop_host.py is total-deadline
+  bounded with named GLOSSA_WAIT timeout markers
+  (run 40911989844 had hung unbounded); the app stop's
+  drain test targets the loopback listener only.
 - Backend fallthrough honesty (2026-10-29 UI-log audit): the
   discovery LLM client (`glossa_lab/discovery/llm.py`) now has the
   same provider circuit breaker as `ai_utils.call_llm` — after 5

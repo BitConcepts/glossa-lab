@@ -50,6 +50,87 @@ def marker(name: str, value: str) -> None:
     print(f"{name} {value}", flush=True)
 
 
+# ------------------------------------------------------------------
+# Bounded waits (Defect 1 fix, 2026-10-29). Host run 40911989844
+# parked forever inside this script at zero CPU: a call with only
+# a PER-RECEIVE timeout (a drip-fed HTTP read, a pipe drain behind
+# a surviving grandchild) can wait indefinitely. Every external
+# call below therefore goes through a helper with a TOTAL
+# deadline; a wait that expires emits a NAMED marker -
+# GLOSSA_WAIT name=<wait> result=TIMEOUT timeout=<seconds> - and
+# fails its leg instead of hanging the run.
+# ------------------------------------------------------------------
+VERIFY_DEADLINE_SEC = int(os.environ.get("GLOSSA_VERIFY_DEADLINE_SEC", "480"))
+_started_at = time.monotonic()
+
+
+class WaitTimeout(Exception):
+    """A named bounded wait expired."""
+
+
+def _deadline_left() -> float:
+    return VERIFY_DEADLINE_SEC - (time.monotonic() - _started_at)
+
+
+def run_bounded(name: str, argv: list[str], timeout: float,
+                cwd: str | None = None) -> subprocess.CompletedProcess:
+    """subprocess with a total deadline and tree-kill on expiry
+    (a surviving grandchild holding the pipes must not turn the
+    post-kill drain into a second, unbounded wait)."""
+    timeout = max(1.0, min(timeout, _deadline_left()))
+    proc = subprocess.Popen(
+        argv, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+        text=True, cwd=cwd,
+    )
+    try:
+        out, err = proc.communicate(timeout=timeout)
+    except subprocess.TimeoutExpired:
+        marker("GLOSSA_WAIT", f"name={name} result=TIMEOUT timeout={timeout:.0f}")
+        try:
+            if sys.platform == "win32":
+                subprocess.run(
+                    ["taskkill", "/T", "/F", "/PID", str(proc.pid)],
+                    capture_output=True, timeout=15,
+                )
+            else:
+                proc.kill()
+        except Exception:
+            pass
+        try:
+            proc.communicate(timeout=10)
+        except Exception:
+            pass
+        raise WaitTimeout(name) from None
+    return subprocess.CompletedProcess(argv, proc.returncode, out, err)
+
+
+def call_bounded(name: str, fn, timeout: float):
+    """Run fn() in a daemon thread with a total deadline - for
+    in-process calls whose own timeouts are per-operation, not
+    total (urllib reads). On expiry the leg fails; the daemon
+    thread is abandoned, never joined again."""
+    import threading
+
+    timeout = max(1.0, min(timeout, _deadline_left()))
+    box: dict = {}
+
+    def _run() -> None:
+        try:
+            box["value"] = fn()
+        except Exception as exc:  # surfaced to the caller below
+            box["error"] = exc
+
+    thread = threading.Thread(target=_run, daemon=True)
+    thread.start()
+    thread.join(timeout)
+    if thread.is_alive():
+        marker("GLOSSA_WAIT", f"name={name} result=TIMEOUT timeout={timeout:.0f}")
+        raise WaitTimeout(name)
+    if "error" in box:
+        raise box["error"]
+    return box.get("value")
+
+
 def sha256_of(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -100,11 +181,8 @@ def _app_python_pids(pattern: str) -> list[int]:
     else:
         command = ["pgrep", "-f", pattern]
     try:
-        result = subprocess.run(
-            command, capture_output=True, text=True, timeout=15,
-            check=False,
-        )
-    except (OSError, subprocess.TimeoutExpired):
+        result = run_bounded("cim-process-query", command, timeout=15)
+    except (WaitTimeout, OSError):
         return []
     pids: list[int] = []
     for token in result.stdout.split():
@@ -146,12 +224,12 @@ def setup_os(verb: str) -> int | None:
     if sys.platform != "win32":
         return None
     try:
-        result = subprocess.run(
+        result = run_bounded(
+            f"setup-os-{verb}",
             ["cmd", "/c", str(REPO_ROOT / "setup-os.cmd"), verb],
-            capture_output=True, text=True, timeout=120, check=False,
-            cwd=str(REPO_ROOT),
+            timeout=90, cwd=str(REPO_ROOT),
         )
-    except (OSError, subprocess.TimeoutExpired):
+    except (WaitTimeout, OSError):
         return None
     return result.returncode
 
@@ -201,14 +279,21 @@ def restart_test(healthcheck, base_url: str) -> tuple[bool, str]:
     if not old_pids:
         return False, "no-backend-process"
     stop_exit = setup_os("stop")
+    if stop_exit is None:
+        return False, "app-stop-unavailable-or-timeout"
     if stop_exit != 0:
         return False, f"app-stop-exit={stop_exit}"
     if not wait_backend_gone(RESTART_DEADLINE_SEC // 2):
         return False, "backend-set-not-gone-after-app-stop"
-    proxy_code = proxy_health_code()
+    try:
+        proxy_code = call_bounded("proxy-health", proxy_health_code, 15)
+    except WaitTimeout:
+        return False, "wait-timeout proxy-health"
     if proxy_code == "200":
         return False, "proxy-still-200-while-backend-down"
     start_exit = setup_os("start")
+    if start_exit is None:
+        return False, "app-start-unavailable-or-timeout"
     if start_exit != 0:
         return False, f"app-start-exit={start_exit}"
     back, new_pid = wait_for_new_backend(
@@ -239,13 +324,14 @@ def task_state() -> str:
         "-ErrorAction Stop | Select-Object -ExpandProperty State"
     )
     try:
-        result = subprocess.run(
+        result = run_bounded(
+            "task-state-query",
             ["powershell", "-NoProfile", "-NonInteractive", "-Command",
              command],
-            capture_output=True, text=True, timeout=15, check=False,
+            timeout=15,
         )
-    except (OSError, subprocess.TimeoutExpired) as exc:
-        return f"ERROR {exc}"
+    except WaitTimeout:
+        return "TIMEOUT"
     if result.returncode != 0:
         return "MISSING"
     return result.stdout.strip() or "MISSING"
@@ -260,7 +346,13 @@ def wait_for_new_backend(healthcheck, base_url: str,
     attempts = 0
     while time.time() < deadline:
         attempts += 1
-        ok, _result = healthcheck.check_once(base_url, 3.0)
+        try:
+            ok, _result = call_bounded(
+                "health-poll",
+                lambda: healthcheck.check_once(base_url, 3.0), 20,
+            )
+        except WaitTimeout:
+            return False, None
         fresh = [pid for pid in backend_pids() if pid not in old_pids]
         if ok and fresh:
             return True, fresh[0]
@@ -279,7 +371,15 @@ def main(argv: list[str] | None = None) -> int:
     base_url = args.base_url.rstrip("/")
     healthcheck = load_healthcheck()
 
-    ok, result = healthcheck.check_once(base_url, 3.0)
+    try:
+        ok, result = call_bounded(
+            "health-initial",
+            lambda: healthcheck.check_once(base_url, 3.0), 20,
+        )
+    except WaitTimeout:
+        ok, result = False, {"health": {}, "docs_status": 0,
+                             "app_title": None,
+                             "errors": ["wait-timeout health-initial"]}
     health = result.get("health") or {}
     marker(
         "GLOSSA_HOST_HEALTH",

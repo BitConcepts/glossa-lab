@@ -11497,3 +11497,11 @@ Re-proof is T021.
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+
+## [2026-10-29] Entry — Spec 082: per-install API token authentication (spec + UI contract)
+
+- **Decision (owner, 2026-10-29):** token auth lands before the desktop cutover is declared final — closes GAP-C01 (Leg C red-team Critical C-01: no authentication anywhere in the backend).
+- **This PR (spec only):** specs/082-api-token-auth/ — spec.md (FR-001…008; open routes are health, the built bundle, and sign glyphs only — everything else, /docs and /openapi.json included, goes behind the token), plan.md (three-PR sequence + proof-kit cutover gate), tasks.md, ui-contract.md (the frontend token contract, published ahead of the backend for the Spec 081 Phase 2 build), aee-claims.json (C082-1…6; `aee validate` clean and assessed under the pinned AEE 1.5.3 — 6 draft claims, asserted evidence, outcome iterate: the honest pre-implementation posture).
+- **Design:** one per-install bearer token (secrets.token_urlsafe(32)), stored only in the data-dir api_token file (0600 on POSIX), Authorization: Bearer as the single credential form, middleware enforcement in create_app, live rotation via mtime-keyed re-read, and a named GLOSSA_API_AUTH=off switch (startup warning + health reports auth: disabled) scoped to CI's frontend-tests until the SPA implements the contract (removal filed as T010).
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per constitution sec. VI.

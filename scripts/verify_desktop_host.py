@@ -13,8 +13,10 @@ that runs this script (TRISTEN-DESKTOP):
   Spec 079 SHA-256 pins
 * GLOSSA_TASK_STATE     — the GlossaLab scheduled task state,
   read via the CIM provider (Windows; Spec 080 FR-004)
-* GLOSSA_RESTART_TEST   — kill the app's backend process set
-  (command-line identified, never the port listener); the tray
+* GLOSSA_RESTART_TEST   — stop/start through the app's own
+  controls (setup-os.cmd): process set gone and proxy health
+  no longer the app's 200 while down; healthy with identity
+  under a fresh PID when back. No raw process kills.
   supervisor must bring it back (new PID) within the deadline
 
 Every wait is bounded (H11). Exit code 0 only if health, identity,
@@ -72,51 +74,27 @@ def load_healthcheck():
     return module
 
 
-def tray_pids() -> list[int]:
-    """PIDs of processes whose command line runs the tray module."""
-    if sys.platform == "win32":
-        command = [
-            "powershell", "-NoProfile", "-NonInteractive", "-Command",
-            "Get-CimInstance Win32_Process | "
-            "Where-Object { $_.CommandLine -match '-m glossa_tray' } | "
-            "ForEach-Object { $_.ProcessId }",
-        ]
-    else:
-        command = ["pgrep", "-f", "glossa_tray"]
-    try:
-        result = subprocess.run(command, capture_output=True, text=True, timeout=15)
-    except (OSError, subprocess.TimeoutExpired):
-        return []
-    pids: list[int] = []
-    for token in result.stdout.split():
-        if token.strip().isdigit():
-            pids.append(int(token.strip()))
-    return [pid for pid in pids if pid != os.getpid()]
+def _app_python_pids(pattern: str) -> list[int]:
+    """PIDs of app processes: venv-python executables whose
+    command line matches `pattern`.
 
-
-def backend_pids() -> list[int]:
-    """PIDs of the app's own backend processes, by command line.
-
-    NEVER identify the backend by the port-8001 listener: on the
-    desktop host that listener is tailscaled.exe (Tailscale Serve
-    proxies the tailnet :8001 to the app's loopback :8001), a
-    session-0 service the verifier can neither kill nor learn
-    anything about the app from. That misidentification is
-    exactly what host run 40835699406 measured (kill-failed
-    pid=<tailscaled>). The app's backend is the process set
-    whose command line runs this repo's uvicorn entry - the
-    same test the targeted stop path uses.
+    The executable test matters: a bare command-line match also
+    matches the PowerShell process RUNNING this query (its own
+    -Command text contains the pattern), and that transient PID
+    then fails the kill step - host run 40880047294 measured
+    exactly that (kill-failed on a set containing the query
+    shell). App processes run from the repo venv's python.
     """
     if sys.platform == "win32":
         command = [
             "powershell", "-NoProfile", "-NonInteractive", "-Command",
             "Get-CimInstance Win32_Process | "
-            "Where-Object { $_.CommandLine -match 'glossa_lab' "
-            "-and $_.CommandLine -match 'uvicorn' } | "
+            "Where-Object { $_.ExecutablePath -match 'venv\\\\Scripts\\\\python' "
+            f"-and $_.CommandLine -match '{pattern}' }} | "
             "ForEach-Object { $_.ProcessId }",
         ]
     else:
-        command = ["pgrep", "-f", "glossa_lab.*uvicorn"]
+        command = ["pgrep", "-f", pattern]
     try:
         result = subprocess.run(
             command, capture_output=True, text=True, timeout=15,
@@ -131,18 +109,113 @@ def backend_pids() -> list[int]:
     return [pid for pid in pids if pid != os.getpid()]
 
 
-def kill_pid(pid: int) -> bool:
+def tray_pids() -> list[int]:
+    """PIDs of the tray processes (-m glossa_tray, venv python)."""
+    return _app_python_pids("glossa_tray")
+
+
+def backend_pids() -> list[int]:
+    """PIDs of the app's own backend processes.
+
+    NEVER identify the backend by the port-8001 listener: on the
+    desktop host that listener is tailscaled.exe (Tailscale Serve
+    proxies the tailnet :8001 to the app's loopback :8001), a
+    session-0 service the verifier can neither kill nor learn
+    anything about the app from. That misidentification is
+    exactly what host run 40835699406 measured (kill-failed
+    pid=<tailscaled>). The app's backend is the venv-python
+    process set running this repo's uvicorn entry - the same
+    test the targeted stop path uses.
+    """
+    return _app_python_pids("glossa_lab.*uvicorn|uvicorn.*glossa_lab")
+
+
+PROXY_HEALTH_URL = os.environ.get(
+    "GLOSSA_PROXY_HEALTH_URL",
+    "http://tristen-desktop.tailbfa48d.ts.net:8001/api/v1/health",
+)
+
+
+def setup_os(verb: str) -> int | None:
+    """Run the app's own setup-os.cmd verb (stop/start) in the
+    repo root; return its exit code (None if it cannot run)."""
+    if sys.platform != "win32":
+        return None
     try:
-        if sys.platform == "win32":
-            result = subprocess.run(
-                ["taskkill", "/F", "/PID", str(pid)],
-                capture_output=True, text=True, timeout=15,
-            )
-            return result.returncode == 0
-        os.kill(pid, 9)
-        return True
+        result = subprocess.run(
+            ["cmd", "/c", str(REPO_ROOT / "setup-os.cmd"), verb],
+            capture_output=True, text=True, timeout=120, check=False,
+            cwd=str(REPO_ROOT),
+        )
     except (OSError, subprocess.TimeoutExpired):
-        return False
+        return None
+    return result.returncode
+
+
+def proxy_health_code() -> str:
+    """HTTP status of the health endpoint THROUGH Tailscale
+    Serve, or UNREACHABLE. While the app is down the proxy alone
+    answers 502 - the down-judgment restart-verify2 proved
+    (host run 40849993917)."""
+    import urllib.error
+    import urllib.request
+
+    try:
+        with urllib.request.urlopen(PROXY_HEALTH_URL, timeout=8) as resp:
+            return str(resp.status)
+    except urllib.error.HTTPError as exc:
+        return str(exc.code)
+    except Exception:
+        return "UNREACHABLE"
+
+
+def wait_backend_gone(deadline_sec: int) -> bool:
+    """Bounded wait (H11) for the backend process set to empty."""
+    deadline = time.time() + deadline_sec
+    while time.time() < deadline:
+        if not backend_pids():
+            return True
+        time.sleep(POLL_INTERVAL_SEC)
+    return not backend_pids()
+
+
+def restart_test(healthcheck, base_url: str) -> tuple[bool, str]:
+    """The restart property, proven the way restart-verify2
+    proved it on the host (run 40849993917): the app's OWN stop
+    (setup-os.cmd stop) -> backend process set gone + health
+    through the proxy no longer the app's 200 -> the app's own
+    start -> healthy with identity under a fresh PID.
+
+    NO raw process kills anywhere in this suite: the venue
+    proved three times (runs 40835699406, 40840066177,
+    40880047294) that job-context kills cannot act on the app
+    processes, while the app's own stop works every time.
+    """
+    if sys.platform != "win32":
+        return False, "non-windows: app-stop path is Windows-only"
+    old_pids = backend_pids()
+    if not old_pids:
+        return False, "no-backend-process"
+    stop_exit = setup_os("stop")
+    if stop_exit != 0:
+        return False, f"app-stop-exit={stop_exit}"
+    if not wait_backend_gone(RESTART_DEADLINE_SEC // 2):
+        return False, "backend-set-not-gone-after-app-stop"
+    proxy_code = proxy_health_code()
+    if proxy_code == "200":
+        return False, "proxy-still-200-while-backend-down"
+    start_exit = setup_os("start")
+    if start_exit != 0:
+        return False, f"app-start-exit={start_exit}"
+    back, new_pid = wait_for_new_backend(
+        healthcheck, base_url, old_pids, RESTART_DEADLINE_SEC
+    )
+    if not back:
+        return False, "backend-not-back-after-app-start"
+    return True, (
+        f"stop_exit=0 set_gone=1 proxy_down={proxy_code} "
+        f"start_exit=0 new_pid={new_pid}"
+    )
 
 
 def task_state() -> str:
@@ -178,7 +251,7 @@ def wait_for_new_backend(healthcheck, base_url: str,
                          old_pids: list[int],
                          deadline_sec: int) -> tuple[bool, int | None]:
     """Bounded wait (H11): healthy again AND a backend process
-    exists that was not in the pre-kill set."""
+    exists that was not in the pre-stop set."""
     deadline = time.time() + deadline_sec
     attempts = 0
     while time.time() < deadline:
@@ -195,7 +268,7 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base-url", default="http://127.0.0.1:8001")
     parser.add_argument("--skip-restart-test", action="store_true",
-                        help="report state only; do not kill the backend")
+                        help="report state only; do not cycle the backend")
     args = parser.parse_args(argv)
     base_url = args.base_url.rstrip("/")
     healthcheck = load_healthcheck()
@@ -233,29 +306,12 @@ def main(argv: list[str] | None = None) -> int:
     restart_ok = True
     if args.skip_restart_test:
         marker("GLOSSA_RESTART_TEST", "result=SKIP requested")
-    elif not pids:
-        restart_ok = False
-        marker("GLOSSA_RESTART_TEST", "result=FAIL reason=no-tray-process-to-supervise")
     else:
-        old_pids = backend_pids()
-        if not old_pids:
-            restart_ok = False
-            marker("GLOSSA_RESTART_TEST", "result=FAIL reason=no-backend-process")
-        elif not all(kill_pid(pid) for pid in old_pids):
-            restart_ok = False
-            marker(
-                "GLOSSA_RESTART_TEST",
-                f"result=FAIL reason=kill-failed pids={old_pids}",
-            )
-        else:
-            restart_ok, new_pid = wait_for_new_backend(
-                healthcheck, base_url, old_pids, RESTART_DEADLINE_SEC
-            )
-            marker(
-                "GLOSSA_RESTART_TEST",
-                f"result={'PASS' if restart_ok else 'FAIL'} "
-                f"old_pids={old_pids} new_pid={new_pid}",
-            )
+        restart_ok, detail = restart_test(healthcheck, base_url)
+        marker(
+            "GLOSSA_RESTART_TEST",
+            f"result={'PASS' if restart_ok else 'FAIL'} {detail}",
+        )
 
     overall = ok and icons_ok and restart_ok
     marker("GLOSSA_HOST_VERIFY", f"result={'PASS' if overall else 'FAIL'}")

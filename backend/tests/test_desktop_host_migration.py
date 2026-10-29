@@ -77,7 +77,24 @@ def test_setup_os_install_verifies_icon_hashes() -> None:
     text = _text("setup-os.cmd").upper()
     assert ICO_SHA256.upper() in text
     assert PNG_SHA256.upper() in text
-    assert "GET-FILEHASH" in text
+    # The comparison runs in scripts\verify_icon_hashes.ps1, which
+    # hashes with the .NET SHA-256 implementation. The previous
+    # inline Get-FileHash check depended on module autoloading,
+    # which was unavailable in the Syncyard runner's
+    # powershell.exe -NoProfile context (2026-10-28), and the
+    # hashing failure was then misreported as a hash mismatch.
+    assert "VERIFY_ICON_HASHES.PS1" in text
+    helper = _text("scripts/verify_icon_hashes.ps1")
+    assert "System.Security.Cryptography.SHA256" in helper
+    # The helper must not invoke Get-FileHash (its header comment
+    # names it only to explain why it is not used).
+    assert "(Get-FileHash" not in helper
+    assert "Get-FileHash -Algorithm" not in helper
+    assert "-ieq" in helper  # a hex digest's letter case is not data
+    # Failure stays loud and discriminated: hashing failure,
+    # missing asset, and mismatch are distinct nonzero exits.
+    for code in ("exit 2", "exit 3", "exit 4"):
+        assert code in helper, code
 
 
 def test_services_windows_delegates_to_canonical_installer() -> None:

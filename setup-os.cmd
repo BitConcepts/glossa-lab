@@ -76,16 +76,19 @@ if not exist "%ICON_PNG%" (
     exit /b 1
 )
 REM Verify both icon assets against the pinned SHA-256 hashes.
-powershell -NoProfile -Command "if ((Get-FileHash -Algorithm SHA256 -LiteralPath '%ICON_ICO%').Hash -ne '%ICON_ICO_SHA256%') { exit 1 }"
+REM The comparison lives in scripts\verify_icon_hashes.ps1, which
+REM hashes with the .NET SHA-256 implementation. The previous
+REM inline Get-FileHash one-liner depended on module autoloading:
+REM in the Syncyard runner's powershell.exe -NoProfile context
+REM (2026-10-28) Get-FileHash threw CommandNotFoundException, and
+REM this check then misreported that hashing failure as a hash
+REM mismatch and refused a good install. The helper compares
+REM case-insensitively (a hex digest's letter case carries no
+REM information) and distinguishes "could not hash" from
+REM "mismatch"; any nonzero exit refuses the install, loudly.
+powershell -NoProfile -ExecutionPolicy Bypass -File "%REPO_ROOT%\scripts\verify_icon_hashes.ps1" -IcoPath "%ICON_ICO%" -IcoSha256 "%ICON_ICO_SHA256%" -PngPath "%ICON_PNG%" -PngSha256 "%ICON_PNG_SHA256%"
 if errorlevel 1 (
-    echo [ERROR] Tray icon hash mismatch: tray\glossa_tray\assets\glossa-lab.ico
-    echo         Expected SHA-256 %ICON_ICO_SHA256% - refusing to install.
-    exit /b 1
-)
-powershell -NoProfile -Command "if ((Get-FileHash -Algorithm SHA256 -LiteralPath '%ICON_PNG%').Hash -ne '%ICON_PNG_SHA256%') { exit 1 }"
-if errorlevel 1 (
-    echo [ERROR] Tray icon hash mismatch: tray\glossa_tray\assets\glossa-lab.png
-    echo         Expected SHA-256 %ICON_PNG_SHA256% - refusing to install.
+    echo [ERROR] Tray icon verification failed - refusing to install.
     exit /b 1
 )
 echo [OK] Tray icon assets verified ^(SHA-256^).

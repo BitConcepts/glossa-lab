@@ -11090,3 +11090,24 @@ set and the tray set, via a shared helper.
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+
+## [2026-10-29] Entry - Spec 080 Amendment 3 Consolidation: Kill-Based Restart Leg Purged
+
+Per Desktop Access direction after start-verify run
+40880047294 (start fully green; the kill-based restart leg
+failed a third time; three tray processes had accumulated):
+(a) GLOSSA_RESTART_TEST in scripts\verify_desktop_host.py no
+longer kills anything - it cycles the app through its own
+controls (setup-os.cmd stop -> backend set gone + proxy
+health not 200 -> setup-os.cmd start -> identity under a
+fresh PID), the restart-verify2 method (proof of record:
+run 40849993917). kill_pid/taskkill are gone from the suite.
+(b) setup-os.cmd start's idempotency covers the tray too:
+backend healthy + tray running = full no-op; tray missing =
+launch only the tray. (c) timeout /t waits in setup-os.cmd
+are replaced with ping waits - timeout.exe prints "Input
+redirection is not supported" under redirected stdin,
+dirtying successful job logs.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.

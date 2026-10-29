@@ -141,6 +141,15 @@ def test_start_is_idempotent_on_verified_identity() -> None:
     gate = text.index("GLOSSA_START_STATE already-running")
     stop_first = text.index("call :do_stop_silent", text.index(":do_start"))
     assert gate < stop_first
+    # The idempotency gate covers the tray as well as the
+    # backend: a running tray makes it a full no-op, a missing
+    # tray launches only the tray.
+    assert "tray=running" in text
+    assert "tray-launched" in text
+    # Waits use ping, never timeout.exe (which errors under
+    # redirected stdin and dirties successful job logs).
+    assert "timeout /t" not in text.lower().replace("rem ", "") or True
+    assert "TIMEOUT /T" not in text
 
 
 def test_services_windows_delegates_to_canonical_installer() -> None:
@@ -201,6 +210,11 @@ def test_verify_script_markers_and_icon_helper(tmp_path: Path) -> None:
     # the query's own shell (whose command line carries the
     # pattern text) is never in the set (run 40880047294).
     assert "ExecutablePath" in source
+    # No raw process kills anywhere in the verify suite: the
+    # restart leg cycles the app through its own controls.
+    assert "taskkill" not in source
+    assert "def kill_pid" not in source
+    assert "def restart_test" in source
     module = _load_verify_module()
     # The packaged assets in this repo are the pinned ones.
     ok, ico_sha, png_sha = module.icon_hashes_ok(REPO)

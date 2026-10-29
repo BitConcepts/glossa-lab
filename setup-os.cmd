@@ -148,14 +148,30 @@ REM address-in-use exit (host run 40861773854 log evidence).
 if exist "%REPO_ROOT%\backend\venv\Scripts\python.exe" (
     "%REPO_ROOT%\backend\venv\Scripts\python.exe" "%REPO_ROOT%\services\linux\healthcheck.py" --attempts 2 >nul 2>&1
     if not errorlevel 1 (
-        echo GLOSSA_START_STATE already-running identity=verified
-        echo [OK] GlossaLab backend already running with verified identity - start is a no-op.
+        REM Backend identity verified. Ensure the TRAY too
+        REM (Amendment 3): if a venv-python tray process is
+        REM already running, the start is a full no-op; if not,
+        REM launch ONLY the tray - never a second backend, never
+        REM a stop. (Tray processes accumulated across repeated
+        REM starts before this gate: host run 40880047294.)
+        powershell -NoProfile -NonInteractive -Command "if (Get-CimInstance Win32_Process | Where-Object { $_.ExecutablePath -match 'venv\\Scripts\\python' -and $_.CommandLine -match 'glossa_tray' }) { exit 0 } else { exit 1 }" >nul 2>&1
+        if not errorlevel 1 (
+            echo GLOSSA_START_STATE already-running identity=verified tray=running
+            echo [OK] GlossaLab backend and tray already running - start is a no-op.
+            exit /b 0
+        )
+        echo GLOSSA_START_STATE tray-launched backend=already-running
+        wscript.exe //nologo "%REPO_ROOT%\scripts\launch-tray.vbs"
+        echo [OK] Backend already running with verified identity; tray launched.
         exit /b 0
     )
 )
 REM Always stop existing instances first to prevent tray stacking.
 call :do_stop_silent
-timeout /t 2 /nobreak >nul
+REM Waits use ping, not timeout.exe: timeout errors out under
+REM redirected stdin ("Input redirection is not supported"),
+REM printing ERROR lines into successful job logs.
+ping -n 3 127.0.0.1 >nul
 REM H25: Launch via wscript.exe + launch-tray.vbs — zero visible window.
 wscript.exe //nologo "%REPO_ROOT%\scripts\launch-tray.vbs"
 if errorlevel 1 (
@@ -196,7 +212,7 @@ if !STOP_WAITS! GEQ 10 (
     )
     goto :eof
 )
-timeout /t 2 /nobreak >nul
+ping -n 3 127.0.0.1 >nul
 goto stop_wait_loop
 
 REM ─────────────────────────────────────────────────────────────
@@ -204,7 +220,7 @@ REM ─────────────────────────�
 REM ─────────────────────────────────────────────────────────────
 echo [RESTART] Stopping...
 call :do_stop_silent
-timeout /t 3 /nobreak >nul
+ping -n 4 127.0.0.1 >nul
 echo [RESTART] Starting...
 goto do_start
 

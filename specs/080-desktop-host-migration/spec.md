@@ -330,3 +330,22 @@ implemented in this amendment:
   with health 200 through the Tailscale proxy carrying the
   app identity. Only a pass across a job boundary counts as
   a durable start.
+
+Amendment 3 consolidation (2026-10-29, later the same day):
+the start-verify re-run (run 40880047294) showed the verify
+script's kill-based restart leg failing a third time on
+job-context kills, and three accumulated tray processes from
+the day's repeated starts. Accordingly: (a) the kill-based
+restart leg is PURGED from the verify suite — GLOSSA_RESTART_TEST
+now proves the property by the restart-verify2 method (app
+stop -> process set gone + proxy health no longer the app's
+200 -> app start -> identity under a fresh PID), and no raw
+process kills remain in the suite; the restart proof of
+record is restart-verify2, run 40849993917; (b) the
+idempotent start covers the tray as well as the backend
+(backend healthy + tray running -> full no-op; tray missing
+-> launch only the tray), and surplus trays are retired
+through the app's own stop; (c) the start path's
+`timeout /t` waits (which print "Input redirection is not
+supported" under redirected stdin) are replaced with ping
+waits at the source.

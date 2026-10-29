@@ -67,6 +67,10 @@ echo.
 if not exist "%VENV_PYTHONW%" (
     echo [SETUP] venv not found - running 'shell.cmd setup' ^(backend + tray^)...
     call "%REPO_ROOT%\shell.cmd" setup
+    if errorlevel 1 (
+        echo [ERROR] shell.cmd setup failed - dependencies were NOT installed. Aborting install.
+        exit /b 1
+    )
 )
 if not exist "%VENV_PYTHONW%" (
     echo [ERROR] pythonw.exe still not found after setup. Install Python 3 and retry.

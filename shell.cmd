@@ -87,23 +87,43 @@ popd
 exit /b %E2E_EXIT%
 
 :do_setup
+REM Every step is checked: setup used to print "[OK] Dependencies
+REM updated." and exit 0 even when a step had failed, so installers
+REM calling this script could not tell a broken venv from a good
+REM one (2026-10-29 UI-log audit). The failing step is named.
+set "SETUP_STEP=pip self-upgrade"
 "%VENV_PYTHON%" -m pip install --upgrade pip
+if errorlevel 1 goto :setup_fail
+set "SETUP_STEP=backend install"
 "%VENV_PYTHON%" -m pip install -e "%REPO_ROOT%\backend[dev,tray]"
-if exist "%REPO_ROOT%\tray\requirements.txt" (
-    "%VENV_PYTHON%" -m pip install -r "%REPO_ROOT%\tray\requirements.txt"
-)
+if errorlevel 1 goto :setup_fail
+if not exist "%REPO_ROOT%\tray\requirements.txt" goto :setup_gpu
+set "SETUP_STEP=tray requirements"
+"%VENV_PYTHON%" -m pip install -r "%REPO_ROOT%\tray\requirements.txt"
+if errorlevel 1 goto :setup_fail
+:setup_gpu
 REM Auto-detect GPU and install the right accelerator package (CuPy for NVIDIA, etc.)
-if exist "%REPO_ROOT%\backend\scripts\install_gpu.py" (
-    "%VENV_PYTHON%" "%REPO_ROOT%\backend\scripts\install_gpu.py"
-)
-if exist "%REPO_ROOT%\frontend\package.json" (
-    pushd "%REPO_ROOT%\frontend"
-    call npm install
-    call npm run build
-    popd
-)
+if not exist "%REPO_ROOT%\backend\scripts\install_gpu.py" goto :setup_frontend
+set "SETUP_STEP=GPU accelerator install"
+"%VENV_PYTHON%" "%REPO_ROOT%\backend\scripts\install_gpu.py"
+if errorlevel 1 goto :setup_fail
+:setup_frontend
+if not exist "%REPO_ROOT%\frontend\package.json" goto :setup_done
+pushd "%REPO_ROOT%\frontend"
+set "SETUP_STEP=npm install"
+call npm install
+if errorlevel 1 ( popd & goto :setup_fail )
+set "SETUP_STEP=frontend build"
+call npm run build
+if errorlevel 1 ( popd & goto :setup_fail )
+popd
+:setup_done
 echo [OK] Dependencies updated.
 exit /b 0
+
+:setup_fail
+echo [ERROR] setup failed during: %SETUP_STEP%. Dependencies were NOT fully updated.
+exit /b 1
 
 :do_default
 set "CMD=%~1"

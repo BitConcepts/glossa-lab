@@ -11168,3 +11168,58 @@ exercised end to end.
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+
+## [2026-10-29] Entry - Desktop UI-Log Audit Fix 2: Windows Script Honesty
+
+Objective:
+  Owner directive 2026-10-29 ("check ui logs too. I see lots of
+  failures and fallthroughs. fix all."): root-cause fixes for the
+  Windows launch/install scripts and the host verifier.
+
+Findings fixed:
+  1. shell.cmd setup ran five fallible steps (pip upgrade, backend
+     install, tray requirements, GPU installer, npm install +
+     build) with no errorlevel checks and ended with "[OK]
+     Dependencies updated." + exit 0 unconditionally - success
+     reported on failure. Every step is now checked; a failure
+     exits 1 naming the step. install-desktop-host.cmd already
+     checked the result (a check that could never fire); now it
+     can. setup-os.cmd's install path only re-checked that
+     pythonw.exe existed after its shell.cmd setup call; it now
+     aborts on a setup failure as well.
+  2. scripts/start_services.cmd, start_services.ps1 and
+     start_services_safe.ps1 were stale duplicate entry points:
+     they launched uvicorn with the retired non-factory app object
+     (glossa_lab.main:app), no GLOSSA_MODE (so the dev data
+     directory, not the installed one), hard-coded port 8001, and
+     printed success unconditionally (the .ps1 is on record as
+     having shipped with a parser error; the _safe variant existed
+     only to work around it). All three are now delegating shims
+     to the canonical setup-os.cmd start, per the C080-4 shim
+     precedent (a shim, never a second launch path).
+  3. Retired two-task machinery deleted: scripts/register-tasks.ps1
+     (registered the retired GlossaLabBackend + GlossaLabTray task
+     pair; the single GlossaLab task via register_task.ps1 is the
+     only registrar) and scripts/run-tray-svc.cmd (the retired
+     task's wrapper; its timeout /t wait under redirected stdin is
+     one historical source of "Input redirection is not
+     supported" noise in logs/tray.log).
+  4. scripts/exec.cmd's wait loop used timeout /t 1 - the last
+     timeout.exe wait in the Windows scripts; now a ping wait.
+     A contract test scans every Windows .cmd for operational
+     timeout.exe waits. The pre-existing assertion for this in
+     test_start_is_idempotent_on_verified_identity ended in
+     "or True" and could never fail; it is a real check now.
+  5. scripts/verify_desktop_host.py reported GLOSSA_TRAY_PROCESS
+     but its overall verdict ignored it: a host with no tray
+     (its user interface down) verified PASS. Tray presence is
+     now part of the verdict, with --skip-tray-check recording
+     an explicit skip in the marker, mirroring --skip-restart-test.
+
+Tests: backend/tests/test_desktop_host_migration.py - the
+repaired timeout assertion plus new contract tests for the
+shims, the retired files' absence, shell.cmd failure
+propagation, and the timeout.exe ban.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.

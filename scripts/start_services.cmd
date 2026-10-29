@@ -1,25 +1,13 @@
 @echo off
-REM Start Glossa Lab backend + tray in the background
-
-set "ROOT=%~dp0.."
-set "VENV_PY=%ROOT%\backend\venv\Scripts\python.exe"
-set "LOGS=%ROOT%\logs"
-
-if not exist "%LOGS%" mkdir "%LOGS%"
-
-echo [INFO] Starting backend on http://localhost:8001 ...
-start "GlossaBackend" /B "%VENV_PY%" -m uvicorn glossa_lab.main:app --host 127.0.0.1 --port 8001 --app-dir "%ROOT%\backend" > "%LOGS%\backend.log" 2> "%LOGS%\backend_err.log"
-
-echo [INFO] Waiting 7 seconds for startup...
-timeout /t 7 /nobreak >nul
-
-REM Health check
-"%VENV_PY%" -c "import urllib.request; r=urllib.request.urlopen('http://localhost:8001/api/v1/health',timeout=5); print('[OK] Backend health:', r.read().decode()[:120])" 2>nul || echo [WARN] Backend not responding yet - check logs\backend_err.log
-
-echo [INFO] Starting tray...
-set "PYTHONPATH=%ROOT%\tray;%PYTHONPATH%"
-start "GlossaTray" /B "%VENV_PY%" -m glossa_tray > "%LOGS%\tray.log" 2> "%LOGS%\tray_err.log"
-
-echo [DONE] Services started.
-echo   Backend:  http://localhost:8001
-echo   Log dir:  %LOGS%
+REM Glossa Lab service starter - DELEGATING SHIM.
+REM
+REM The canonical start is setup-os.cmd (Spec 080): production entry
+REM (create_app --factory), installed mode (GLOSSA_MODE=installed,
+REM database under %LOCALAPPDATA%\GlossaLab), and the idempotent,
+REM identity-checked start. This file used to launch the backend
+REM directly with the retired non-factory app object and no
+REM installed mode - the wrong app against the wrong data
+REM directory - and printed [DONE] even when its health check had
+REM failed. It now delegates; do not add launch logic here.
+call "%~dp0..\setup-os.cmd" start
+exit /b %ERRORLEVEL%

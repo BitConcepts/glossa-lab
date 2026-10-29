@@ -41,7 +41,7 @@ set /a ELAPSED=0
 tasklist /fi "PID eq %CMD_PID%" /nh 2>nul | findstr /i "%CMD_PID%" >nul
 if errorlevel 1 goto :done
 if %ELAPSED% geq %TIMEOUT_SEC% goto :timeout
-timeout /t 1 /nobreak >nul
+ping -n 2 127.0.0.1 >nul
 set /a ELAPSED+=1
 goto :wait_loop
 

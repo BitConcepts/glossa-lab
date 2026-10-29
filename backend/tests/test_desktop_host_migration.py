@@ -147,8 +147,14 @@ def test_start_is_idempotent_on_verified_identity() -> None:
     assert "tray=running" in text
     assert "tray-launched" in text
     # Waits use ping, never timeout.exe (which errors under
-    # redirected stdin and dirties successful job logs).
-    assert "timeout /t" not in text.lower().replace("rem ", "") or True
+    # redirected stdin and dirties successful job logs). Checked
+    # over operational (non-REM) lines: this assertion previously
+    # ended in "or True" and could never fail (2026-10-29 audit).
+    operational = "\n".join(
+        line for line in text.splitlines()
+        if not line.lstrip().upper().startswith("REM")
+    )
+    assert "timeout /t" not in operational.lower()
     assert "TIMEOUT /T" not in text
 
 
@@ -228,3 +234,64 @@ def test_verify_script_markers_and_icon_helper(tmp_path: Path) -> None:
     assert module.sha256_of(probe) == (
         "a19f5afd22174fa5e381b583c622bdbb98091676a20b9983e3e47b4d64f27378"
     )
+
+
+def test_start_services_files_delegate_to_setup_os() -> None:
+    """The retired direct-launch starters are shims, never a second
+    launch path (2026-10-29 UI-log audit: start_services.* launched
+    the non-factory app object with no installed mode — the wrong
+    app against the wrong data directory — and reported success
+    regardless). The retired two-task machinery is gone entirely:
+    the single GlossaLab task (register_task.ps1) is the only
+    registrar."""
+    for rel in (
+        "scripts/start_services.cmd",
+        "scripts/start_services.ps1",
+        "scripts/start_services_safe.ps1",
+    ):
+        text = _text(rel)
+        assert "setup-os.cmd" in text, rel
+        assert "glossa_lab.main:app" not in text, rel
+        # No direct launch anywhere operational (headers may describe
+        # the canonical path, including its --factory entry).
+        operational = "\n".join(
+            line for line in text.splitlines()
+            if not line.lstrip().startswith(("REM", "#", "::"))
+        )
+        assert "uvicorn" not in operational.lower(), rel
+        assert "Start-Process" not in operational, rel
+    assert not (REPO / "scripts" / "run-tray-svc.cmd").exists()
+    assert not (REPO / "scripts" / "register-tasks.ps1").exists()
+
+
+def test_shell_setup_propagates_step_failures() -> None:
+    """shell.cmd setup must fail loudly when any step fails
+    (2026-10-29 audit: it printed [OK] and exited 0 unconditionally,
+    so the installers' errorlevel checks could never fire)."""
+    text = _text("shell.cmd")
+    assert "goto :setup_fail" in text
+    assert ":setup_fail" in text
+    assert "exit /b 1" in text
+    # The callers check the result as well.
+    assert "shell.cmd\" setup" in _text("scripts/install-desktop-host.cmd")
+    setup_os = _text("setup-os.cmd")
+    assert "shell.cmd setup failed" in setup_os
+
+
+def test_no_timeout_exe_waits_in_windows_scripts() -> None:
+    """timeout.exe errors under redirected stdin ("ERROR: Input
+    redirection is not supported") and dirtied every successful
+    start/restart job log. No operational line of any Windows
+    script may use it (2026-10-29 audit)."""
+    scripts_dir = REPO / "scripts"
+    candidates = [REPO / "shell.cmd", REPO / "setup-os.cmd"]
+    candidates += sorted(scripts_dir.glob("*.cmd"))
+    candidates += sorted((REPO / "services" / "windows").glob("*.cmd"))
+    for path in candidates:
+        text = path.read_text(encoding="utf-8", errors="replace")
+        operational = "\n".join(
+            line for line in text.splitlines()
+            if not line.lstrip().upper().startswith("REM")
+        )
+        assert "timeout /t" not in operational.lower(), str(path)
+        assert "timeout.exe" not in operational.lower(), str(path)

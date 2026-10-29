@@ -890,7 +890,7 @@ function AppContent() {
                   <ResearchLoopPanel />
                 </div>
               )}
-              {tab === "reports" && <ReportsView />}
+              {tab === "reports" && <ReportsView darkMode={darkMode} />}
               {tab === "jobs" && <JobsView />}
               {tab === "status" && <StatusView />}
               {tab === "settings" && <SettingsView />}

@@ -30,9 +30,11 @@ levels above this file's package root (alongside ``backend/``).
 from __future__ import annotations
 
 import asyncio
+import ipaddress
 import json
 import logging
 import re
+import socket
 import sys
 import urllib.parse
 import urllib.request
@@ -57,6 +59,94 @@ _SWEEP_CFG    = _EVIDENCE_BASE / "config" / "sweep.yaml"
 _SWEEP_CANDS  = _EVIDENCE_BASE / "logs" / "sweep_candidates_latest.json"
 _RAW_UPLOADS  = _EVIDENCE_BASE / "raw" / "user_uploads"
 _SCRIPTS      = _EVIDENCE_BASE / "scripts"
+
+# ── Intake hardening (Leg C red team, findings C-05 / C-06) ──────────────────
+# Uploads and URL imports are the backend's untrusted-input boundary:
+# filenames are never trusted as paths, bodies are size-capped and
+# magic-checked, and outbound fetches refuse non-public destinations
+# (SSRF guard). See legC-findings.md (hardening program, 2026-10-29).
+
+_MAX_INTAKE_BYTES = 25 * 1024 * 1024  # 25 MiB cap for uploads and URL imports
+_PDF_MAGIC = b"%PDF-"
+
+
+def _safe_upload_name(filename: str) -> str:
+    """Reduce an untrusted upload filename to a bare, sanitised basename.
+
+    Directory components (including ``../`` traversal) are stripped, so
+    the result can never escape the uploads directory it is joined to.
+    """
+    name = Path(filename or "").name
+    name = re.sub(r"[^A-Za-z0-9._\-]", "_", name)[:120]
+    return name
+
+
+def _ip_is_public(ip: ipaddress.IPv4Address | ipaddress.IPv6Address) -> bool:
+    return not (
+        ip.is_private or ip.is_loopback or ip.is_link_local
+        or ip.is_reserved or ip.is_multicast or ip.is_unspecified
+    )
+
+
+def _assert_fetchable_url(url: str) -> None:
+    """SSRF guard for caller-supplied fetch URLs (finding C-06).
+
+    Allows only http/https URLs whose host is public: literal IPs must
+    be public, ``localhost`` names are refused, and hostnames are
+    refused when DNS resolution yields any non-public address. When
+    DNS resolution itself fails, the fetch is left to fail naturally
+    downstream (reported as a download failure, never silently
+    allowed to a known-private target).
+    """
+    parsed = urllib.parse.urlparse(url)
+    if parsed.scheme not in ("http", "https"):
+        raise HTTPException(
+            status_code=400, detail="Only http/https URLs may be imported")
+    host = (parsed.hostname or "").strip().lower()
+    if not host or host == "localhost" or host.endswith(".localhost"):
+        raise HTTPException(
+            status_code=400, detail="URL host is not a public address")
+    try:
+        ips = [ipaddress.ip_address(host)]
+    except ValueError:
+        try:
+            infos = socket.getaddrinfo(host, None)
+        except Exception:  # noqa: BLE001 — unresolved: download will fail as 502
+            return
+        ips = []
+        for info in infos:
+            try:
+                ips.append(ipaddress.ip_address(info[4][0]))
+            except ValueError:
+                continue
+    if any(not _ip_is_public(ip) for ip in ips):
+        raise HTTPException(
+            status_code=400, detail="URL host resolves to a non-public address")
+
+
+class _GuardedRedirectHandler(urllib.request.HTTPRedirectHandler):
+    """Re-run the SSRF guard on every redirect target."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):  # noqa: ANN001, ANN202
+        try:
+            _assert_fetchable_url(newurl)
+        except HTTPException as exc:
+            raise ValueError(f"Redirect blocked: {exc.detail}") from exc
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
+def _fetch_url_capped(url: str) -> bytes:
+    """Fetch *url* under the SSRF guard with a hard size cap."""
+    _assert_fetchable_url(url)
+    req = urllib.request.Request(url, headers={"User-Agent": "GlossaLab/1.0"})
+    opener = urllib.request.build_opener(_GuardedRedirectHandler())
+    with opener.open(req, timeout=30) as resp:  # noqa: S310 — guarded above
+        content = resp.read(_MAX_INTAKE_BYTES + 1)
+    if len(content) > _MAX_INTAKE_BYTES:
+        raise HTTPException(
+            status_code=413,
+            detail=f"Remote file exceeds the {_MAX_INTAKE_BYTES} byte intake cap")
+    return content
 
 
 def _now_iso() -> str:
@@ -572,19 +662,30 @@ async def upload_paper(
     """Upload a PDF and queue it for intake."""
     if not file.filename:
         raise HTTPException(status_code=400, detail="No filename provided")
-    if not file.filename.lower().endswith(".pdf"):
+    # C-05: never trust the client filename as a path — basename only.
+    safe_name = _safe_upload_name(file.filename)
+    if not safe_name.lower().endswith(".pdf"):
         raise HTTPException(status_code=400, detail="Only PDF files are supported")
 
-    _RAW_UPLOADS.mkdir(parents=True, exist_ok=True)
-    dest = _RAW_UPLOADS / file.filename
     content = await file.read()
+    if len(content) > _MAX_INTAKE_BYTES:
+        raise HTTPException(
+            status_code=413,
+            detail=f"Upload exceeds the {_MAX_INTAKE_BYTES} byte intake cap")
+    if not content.startswith(_PDF_MAGIC):
+        raise HTTPException(
+            status_code=400,
+            detail="Only PDF files are supported (content is not a PDF)")
+
+    _RAW_UPLOADS.mkdir(parents=True, exist_ok=True)
+    dest = _RAW_UPLOADS / safe_name
     dest.write_bytes(content)
     _log.info("uploaded: %s (%d bytes)", dest.name, len(content))
 
     background_tasks.add_task(_run_intake_on_file, str(dest))
     return {
         "status": "uploaded",
-        "filename": file.filename,
+        "filename": safe_name,
         "size_bytes": len(content),
         "message": "Intake queued — document will be processed in the background.",
     }
@@ -630,13 +731,15 @@ async def import_url(body: ImportUrlBody, background_tasks: BackgroundTasks) -> 
     _RAW_UPLOADS.mkdir(parents=True, exist_ok=True)
     dest = _RAW_UPLOADS / fname
 
+    # C-06: SSRF guard + size cap (raises 400/413 before any write).
+    _assert_fetchable_url(url)
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": "GlossaLab/1.0"})
-        with urllib.request.urlopen(req, timeout=30) as resp:  # noqa: S310
-            content = resp.read()
-        dest.write_bytes(content)
+        content = _fetch_url_capped(url)
+    except HTTPException:
+        raise
     except Exception as exc:
         raise HTTPException(status_code=502, detail=f"Failed to download: {exc}") from exc
+    dest.write_bytes(content)
 
     background_tasks.add_task(_run_intake_on_file, str(dest))
     return {
@@ -955,13 +1058,15 @@ async def intake_sweep_candidate(
             "url": target_url,
         }
 
+    # C-06: same SSRF guard + size cap as /import-url.
+    _assert_fetchable_url(target_url)
     try:
-        req = urllib.request.Request(target_url, headers={"User-Agent": "GlossaLab/1.0"})
-        with urllib.request.urlopen(req, timeout=30) as resp:  # noqa: S310
-            content = resp.read()
-        dest.write_bytes(content)
+        content = _fetch_url_capped(target_url)
+    except HTTPException:
+        raise
     except Exception as exc:
         raise HTTPException(status_code=502, detail=f"Download failed: {exc}") from exc
+    dest.write_bytes(content)
 
     background_tasks.add_task(_run_intake_on_file, str(dest))
     return {

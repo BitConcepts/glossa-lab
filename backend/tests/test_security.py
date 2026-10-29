@@ -15,11 +15,14 @@ def test_health_no_secrets(client):
     Leg C C-08: the response also carries served identity
     (component + build stamp) — still no secrets, and the key set is
     pinned exactly so identity cannot silently drift again.
+    Spec 082: the pinned set gains the `auth` mode word
+    (token|disabled) — a mode, never a credential — per the
+    ui-contract.md field set.
     """
     response = client.get("/api/v1/health")
     data = response.json()
     assert set(data.keys()) == {
-        "status", "version", "uptime_seconds", "component", "build"}
+        "status", "version", "uptime_seconds", "component", "build", "auth"}
     assert data["component"] == "glossa-lab-backend"
 
 

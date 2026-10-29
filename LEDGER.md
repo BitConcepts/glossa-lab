@@ -11289,3 +11289,28 @@ direction of Tristen Pierson, per constitution sec.VI.
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-29] Entry — Leg C hardening 4: [VERIFIED] marker requires a resolvable reference (C-04)
+
+- **Finding (Leg C red team, measured with the real assessor, AEE
+  1.5.3):** prefixing a claim's own `glossa_lab_evidence` text with
+  the literal substring `[VERIFIED]` raised its propagated score
+  from 0.164 to 0.725 (evidence and independence components at
+  maximum) — `aee_core` conferred OBSERVED/TEST purely on the
+  substring, with no artifact, hash, or provenance check.
+- **Fix (`backend/glossa_lab/aee_core.py`):** `[VERIFIED]` confers
+  `EvidenceKind.OBSERVED` only when the same record carries an
+  evidence reference (`evidence_ref`, `glossa_lab_evidence_ref`, or
+  `evidence_artifact`) whose artifact path exists relative to the
+  repo root or `backend/` — the same resolution rule as the C-03
+  promotion gate. An unreferenced or unresolvable marker is
+  INFERRED, like any other self-authored text. Records whose
+  `[VERIFIED]` text names no artifact will score lower than before;
+  that is the intended correction, and re-crediting a claim means
+  recording the artifact it was verified against.
+- **Tests:** `backend/tests/test_aee_core.py` — unreferenced marker
+  → INFERRED; resolvable reference (`LEDGER.md`) → OBSERVED;
+  fabricated reference → INFERRED.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec. VI.

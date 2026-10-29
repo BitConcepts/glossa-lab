@@ -222,10 +222,15 @@ def test_verify_script_markers_and_icon_helper(tmp_path: Path) -> None:
     # the query's own shell (whose command line carries the
     # pattern text) is never in the set (run 40880047294).
     assert "ExecutablePath" in source
-    # No raw process kills anywhere in the verify suite: the
-    # restart leg cycles the app through its own controls.
-    assert "taskkill" not in source
+    # No raw process kills OF THE APP anywhere in the verify
+    # suite: the restart leg cycles the app through its own
+    # controls. The single taskkill occurrence is run_bounded's
+    # timeout cleanup, which kills only the verify script's OWN
+    # hung subprocess tree (/T /F on its own child PID) - the
+    # Defect 1 fix; it never targets an app process.
     assert "def kill_pid" not in source
+    assert source.count("taskkill") == 1
+    assert '"/T", "/F", "/PID", str(proc.pid)' in source
     assert "def restart_test" in source
     module = _load_verify_module()
     # The packaged assets in this repo are the pinned ones.

@@ -11266,3 +11266,26 @@ the failure count, cooldown expiry allows a retry.
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+
+## [2026-10-29] Entry — Leg B hardening: spec-study register API (the program record gets a surface)
+
+- **Gap (Leg B reconciliation, delta D0):** every spec-kit study execution
+  (Specs 001–081) had NO API surface — `/studies` serves canvas graphs,
+  and no endpoint enumerated the `specs/` register, so no UI surface
+  could show a study verdict or status.
+- **Fix:** new read-only `GET /api/v1/spec-studies` and
+  `GET /api/v1/spec-studies/{spec_id}` (`backend/glossa_lab/api/spec_studies.py`),
+  serving one entry per `specs/NNN-slug/` directory: spec_id, slug,
+  title (spec.md H1), has_outcome, and the outcome record's own headline
+  verbatim-truncated (never paraphrased). Duplicate spec numbers
+  (021/025/026) return `ambiguous: true` with all matches.
+- **Restricted entry:** Spec 072's directory contents are never opened
+  by this module; its entry is built from the directory name only
+  (public naming) with `restricted: true`.
+- **Tests:** `backend/tests/test_spec_studies.py` — 6 passed (register
+  enumeration, 052 INCONSISTENT headline, duplicate ambiguity, 404,
+  restricted-contents-never-read on a synthetic register, restricted
+  entry shape on the real register). Ruff clean.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec. VI.

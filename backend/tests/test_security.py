@@ -10,11 +10,17 @@ def test_default_host_is_localhost():
 
 
 def test_health_no_secrets(client):
-    """TEST-SEC-002: Health endpoint contains no secrets."""
+    """TEST-SEC-002: Health endpoint contains no secrets.
+
+    Leg C C-08: the response also carries served identity
+    (component + build stamp) — still no secrets, and the key set is
+    pinned exactly so identity cannot silently drift again.
+    """
     response = client.get("/api/v1/health")
     data = response.json()
-    # Should only contain status, version, uptime_seconds
-    assert set(data.keys()) == {"status", "version", "uptime_seconds"}
+    assert set(data.keys()) == {
+        "status", "version", "uptime_seconds", "component", "build"}
+    assert data["component"] == "glossa-lab-backend"
 
 
 def test_cors_preflight_in_dev_mode(client):

@@ -22,7 +22,7 @@ from pathlib import Path
 from typing import Any
 
 from fastapi import APIRouter, HTTPException
-from fastapi.responses import StreamingResponse
+from fastapi.responses import JSONResponse, StreamingResponse
 from pydantic import BaseModel
 
 from glossa_lab.glossa_shell import GlossaShell
@@ -318,7 +318,7 @@ class FrontendLogEntry(BaseModel):
 
 
 @router.post("/log/frontend")
-async def log_frontend(body: FrontendLogEntry) -> dict[str, str]:
+async def log_frontend(body: FrontendLogEntry) -> Any:
     """Receive a log entry from the frontend and write it to the backend log.
 
     The entry is formatted as a standard structured JSON log line so it appears
@@ -343,16 +343,26 @@ async def log_frontend(body: FrontendLogEntry) -> dict[str, str]:
 
     # Write to the active log file directly as a JSON line
     log_file = _active_log_file()
+    write_failed = False
     try:
         log_file.parent.mkdir(parents=True, exist_ok=True)
         with open(str(log_file), "a", encoding="utf-8") as fh:  # noqa: PTH123
             fh.write(json.dumps(log_record) + "\n")
     except Exception:  # noqa: BLE001
-        pass  # best-effort; never break the frontend because of a log failure
+        # Leg C C-09: a failed write must be DISTINGUISHABLE from a
+        # logged entry. The endpoint previously swallowed the failure
+        # and still returned {"ok": "logged"}, so zero FE entries in
+        # the log proved nothing about whether the path ever fired.
+        write_failed = True
 
     # Also emit via Python logging so it appears in any other log handlers
     py_logger = logging.getLogger("glossa_lab.frontend")
     py_level = getattr(logging, level, logging.INFO)
     py_logger.log(py_level, "[FE] %s", body.message)
 
+    if write_failed:
+        return JSONResponse(
+            status_code=500,
+            content={"ok": "error", "detail": "frontend log write failed"},
+        )
     return {"ok": "logged"}

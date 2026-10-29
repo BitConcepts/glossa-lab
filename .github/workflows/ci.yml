@@ -111,6 +111,13 @@ jobs:
           GLOSSA_DATA_DIR: ${{ runner.temp }}/glossa_playwright_data
           GLOSSA_DEV_MODE: "1"
           PYTHONPATH: ${{ github.workspace }}/backend
+          # Spec 082 (FR-006): the SPA does not yet implement the
+          # ui-contract.md token handoff, so this job's throwaway
+          # backend runs with the named auth-off switch — startup
+          # logs a warning and health reports auth: disabled.
+          # Removal is Spec 082 task T010, owned by the Spec 081
+          # Phase 2 landing. No other job may set this switch.
+          GLOSSA_API_AUTH: "off"
         run: |
           python -m uvicorn glossa_lab.main:app \
             --host 127.0.0.1 --port 8001 \

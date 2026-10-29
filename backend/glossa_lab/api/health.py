@@ -6,6 +6,7 @@ import time
 from fastapi import APIRouter
 
 from glossa_lab import __version__
+from glossa_lab.auth import auth_mode
 
 router = APIRouter()
 
@@ -24,6 +25,11 @@ async def health():
     tooling to the deployed commit/build stamp; ``"dev"`` when
     unset). Callers verifying a deployment must check ``component``
     and ``build``, not just ``status``.
+
+    Spec 082 (C082-5): the payload also carries the auth mode word
+    (``auth``: ``"token"`` when enforcing, ``"disabled"`` under the
+    named ``GLOSSA_API_AUTH=off`` switch). The field set is pinned —
+    identity and auth mode only, never any credential material.
     """
     from glossa_lab.main import get_start_time
 
@@ -36,4 +42,5 @@ async def health():
         "uptime_seconds": round(uptime, 1),
         "component": "glossa-lab-backend",
         "build": os.environ.get("GLOSSA_BUILD_ID", "dev"),
+        "auth": auth_mode(),
     }

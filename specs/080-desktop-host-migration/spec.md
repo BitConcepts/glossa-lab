@@ -103,17 +103,29 @@ never bound to a public interface.
   machine-wide `taskkill /IM pythonw.exe` (or `python.exe`) MUST
   NOT appear in the stop path.
 - **FR-004**: There MUST be exactly one Windows autostart
-  mechanism: the `GlossaLab` scheduled task registered by
-  `setup-os.cmd install` (action `wscript.exe` + `launch-tray.vbs`,
-  per H25). `services/windows/install.cmd` MUST delegate to it and
+  mechanism: the per-user `GlossaLab` value under
+  `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`, written
+  and read-back-verified by `setup-os.cmd install` (command
+  `wscript.exe` + `launch-tray.vbs`, per H25).
+  `services/windows/install.cmd` MUST delegate to it and
   MUST NOT create a Startup shortcut; uninstall MUST remove the
-  task and any legacy shortcut.
+  Run value and any legacy shortcut. (Mechanism amended
+  2026-10-29 — see Amendment 1: per-user scheduled-task
+  registration is denied in the installer's execution context,
+  so the scheduled-task design this FR originally specified is
+  replaced, not supplemented: no task attempt, no fallback
+  chain.)
 - **FR-005**: `setup-os.cmd install` MUST verify the SHA-256 of
   `tray\glossa_tray\assets\glossa-lab.ico`
   (`315940742d75720388264dcdf03178c58f878ea0701d03eeba95688d935ff520`)
   and `glossa-lab.png`
   (`bb41bf09d4177cee0c96b29ebe480f86a9e7115946f9e4ad132d2367a7adb077`)
-  and fail loudly on missing or mismatched assets.
+  and fail loudly on missing or mismatched assets. (Comparison
+  mechanism amended 2026-10-29 — see Amendment 1: the digests
+  are computed by `scripts\verify_icon_hashes.ps1` with the
+  .NET SHA-256 implementation and compared case-insensitively;
+  a hashing failure is reported as a hashing failure, never as
+  a mismatch, and still refuses the install.)
 - **FR-006**: The tray MUST supervise the backend on Windows:
   when the health poll finds the backend down and the owner has
   not deliberately stopped it, the tray restarts it, capped at
@@ -121,8 +133,8 @@ never bound to a public interface.
   state instead of looping (H11: every wait bounded).
 - **FR-007**: A desktop verify script MUST emit the markers
   `GLOSSA_HOST_HEALTH`, `GLOSSA_HOST_IDENTITY`,
-  `GLOSSA_TRAY_PROCESS`, `GLOSSA_ICON_HASH`, `GLOSSA_TASK_STATE`,
-  `GLOSSA_RESTART_TEST`, where identity means the bounded Spec 079
+  `GLOSSA_TRAY_PROCESS`, `GLOSSA_ICON_HASH`,
+  `GLOSSA_AUTOSTART_STATE`, `GLOSSA_RESTART_TEST`, where identity means the bounded Spec 079
   check (`/docs` 200 + health status/version + OpenAPI title
   "Glossa Lab" with matching version) — never liveness alone.
 - **FR-008**: The desktop backend MUST bind loopback only. Remote
@@ -144,8 +156,9 @@ never bound to a public interface.
 
 - The Actions runner's Windows session may not be the owner's
   interactive session; anything that must live in the owner's
-  session (tray icon, logon task) is verified from the task/process
-  state the runner can see, and any owner-session-only remainder is
+  session (tray icon, logon autostart entry) is verified from the
+  registration/process state the runner can see, and any
+  owner-session-only remainder is
   reported as such, never faked.
 - The snapshot source of record is the production data directory
   identified by the migration inventory (Phase C of the migration
@@ -156,3 +169,63 @@ never bound to a public interface.
   tray's Windows backend start/supervision only.
 - The restart cap mirrors the fleet pattern (3 per hour, then
   owner attention) used by Spec 079 and Syncyard spec 007.
+
+## Amendment 1 (2026-10-29) — installer defects fixed; autostart mechanism changed
+
+Two defects in the shipped installer were proven on the desktop
+host by gatekeeper job `glossa-host-install-2026-10-28-r1`
+(run 40802151979, 27 markers): the install exited 1 without
+registering any autostart, GitHub-green notwithstanding.
+
+1. **Icon verification (FR-005).** The inline check spawned
+   `powershell -NoProfile -Command` with a `Get-FileHash`
+   one-liner. In that run's context the cmdlet threw
+   CommandNotFoundException, and the batch check reported the
+   hashing failure as a tray icon "hash mismatch" against pins
+   the assets in fact match (the job's own markers printed both
+   digests equal to the pins). Host diagnostic
+   `glossa-host-diag-2026-10-28` (run 40807602846) further
+   showed the digest the cmdlet computes is UPPERCASE hex, so
+   any case-sensitive comparison against a differently-cased
+   pin is a comparison defect waiting for a context. Fix: the
+   comparison now lives in `scripts\verify_icon_hashes.ps1`,
+   which hashes with the .NET SHA-256 implementation
+   (System.Security.Cryptography — no module-autoload
+   dependency), compares case-insensitively, reports which
+   method ran (`GLOSSA_ICON_HASH method=dotnet-sha256`), and
+   distinguishes exit 2 (could not hash) from exit 3 (asset
+   missing) and exit 4 (digest mismatch). Any nonzero exit
+   still refuses the install. FR-005's bar is unchanged.
+
+2. **Autostart registration (FR-004).** The same diagnostic
+   (run 40807602846) established the installer's context —
+   `tristen-desktop\trist`, interactive session 1, NOT
+   elevated (`IS_ADMIN_ROLE False`) — and that per-user
+   scheduled-task registration is denied in it across every
+   route: `Register-ScheduledTask` returned access denied
+   (HRESULT 0x80131500) with no principal AND with an explicit
+   current-user Interactive/Limited principal, and
+   `schtasks.exe /Create` exited 0 while creating nothing.
+   The design is therefore amended, on decision of the Desktop
+   Access program on this evidence: the canonical per-user
+   autostart is the HKCU Run value `GlossaLab`
+   (`wscript.exe //nologo <root>\scripts\launch-tray.vbs`, the
+   existing H25 windowless entry point), written and
+   read-back-verified by `setup-os.cmd install`
+   (`GLOSSA_AUTOSTART_STATE ... readback=verified` in its
+   output) and removed by uninstall. The scheduled-task path
+   is REMOVED — `scripts\register_task.ps1` is deleted, the
+   elevation wrapper is gone, and there is no try-task-then-
+   fallback dual mechanism (one canonical route, per this
+   spec's own pruning principle). Consequences carried through
+   in the same change: the tray's autostart detection reads
+   the Run value (winreg) instead of querying the task
+   scheduler, and FR-007's `GLOSSA_TASK_STATE` marker is
+   renamed `GLOSSA_AUTOSTART_STATE` (source:
+   `scripts\verify_desktop_host.py`, which now reads the Run
+   value and reports MISMATCH for a present-but-foreign one).
+   The pre-amendment `schtasks /delete` in uninstall remains
+   as legacy cleanup only. A true logoff/logon cycle remains
+   the eventual end-to-end proof of any logon mechanism and
+   is reported as performed or not in the migration record,
+   never assumed.

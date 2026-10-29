@@ -938,14 +938,10 @@ test.describe("Research Loop Dashboard (with backend)", () => {
     ).toBeVisible({ timeout: 8000 });
   });
 
-  test("Palette nodes counter is visible on dashboard", async ({ page }) => {
-    await page.goto("/");
-    await page.waitForTimeout(2000);
-    // The counter tile label is 'Palette nodes' (UI) or 'Atomic nodes' in older builds
-    await expect(
-      page.getByText(/Palette nodes|Atomic nodes/i).first()
-    ).toBeVisible({ timeout: 5000 });
-  });
+  // Removed (Spec 081 step 5, T017): "Palette nodes counter is visible
+  // on dashboard" — the counter tile belonged to the retired Dashboard
+  // home surface (D2.2). The program home carries no palette counter;
+  // its surface is covered by e2e/program-home.spec.ts.
 });
 
 test.describe("Status view - system metrics", () => {

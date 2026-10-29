@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Spec 081 steps 4–5 (2026-10-29): the Digestion route is now
+  the human queue board (columns by act owed — needs
+  explanation / needs acceptance / ready to digest — every card
+  naming its missing act, oldest first), and the program home
+  replaces the Dashboard: claims and verdicts first, the
+  digestion queue with its doorway, anchor totals from /signs,
+  the canonical foundation status with its checked-at time, and
+  one primary action (register a claim). The Dashboard's AI
+  narrative, feed furniture and embedded panels leave the home.
 - Spec 080 Amendment 4 (2026-10-29): the GlossaLab task is
   now a short-lived starter (start-ensure.vbs -> the
   idempotent ensure-start) on a logon trigger plus a

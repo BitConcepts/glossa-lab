@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Backend fallthrough honesty (2026-10-29 UI-log audit): the
+  discovery LLM client (`glossa_lab/discovery/llm.py`) now has the
+  same provider circuit breaker as `ai_utils.call_llm` — after 5
+  consecutive failures a provider is skipped for 10 minutes (one
+  WARNING when the circuit opens) instead of being re-hit on every
+  classified item. A single rate-limited provider previously
+  flooded the log with dozens of "falling through" lines inside
+  one scheduler tick. The static model-score fallback
+  (`_sync_static_fallback_async`) now counts and logs per-model
+  write errors and returns the real count instead of an
+  unconditional `"errors": 0`.
 - Windows script honesty (2026-10-29 UI-log audit): `shell.cmd
   setup` now checks every step and exits non-zero naming the failed
   step (it previously printed "[OK]" and exited 0 on any failure,

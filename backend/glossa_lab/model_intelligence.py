@@ -635,6 +635,8 @@ async def _sync_static_fallback_async() -> dict[str, Any]:
         return {"synced": 0, "errors": 0, "message": "Database not ready"}
     now = datetime.now(timezone.utc).isoformat()
     synced = 0
+    errors = 0
+    first_error: Exception | None = None
     for model_name, benchmarks in _KNOWN_MODELS.items():
         scores = _compute_bucket_scores(benchmarks)
         try:
@@ -652,14 +654,32 @@ async def _sync_static_fallback_async() -> dict[str, Any]:
                 ),
             )
             synced += 1
-        except Exception:  # noqa: BLE001
-            pass
+        except Exception as exc:  # noqa: BLE001
+            # Counted and reported below — this used to be a silent
+            # swallow under an unconditional "errors": 0 return, so a
+            # partially-written fallback reported full success
+            # (2026-10-29 UI-log audit).
+            errors += 1
+            if first_error is None:
+                first_error = exc
     try:
         await db._conn.commit()  # noqa: SLF001
-    except Exception:  # noqa: BLE001
-        pass
-    _log.info("Static model scores (async) loaded: %d models", synced)
-    return {"synced": synced, "errors": 0, "message": f"Loaded {synced} static model scores"}
+    except Exception as exc:  # noqa: BLE001
+        errors += 1
+        if first_error is None:
+            first_error = exc
+    if errors:
+        _log.warning(
+            "Static model scores (async): %d loaded, %d errors (first: %s)",
+            synced, errors, first_error,
+        )
+    else:
+        _log.info("Static model scores (async) loaded: %d models", synced)
+    return {
+        "synced": synced,
+        "errors": errors,
+        "message": f"Loaded {synced} static model scores",
+    }
 
 
 # ── Background sync task ────────────────────────────────────────────────────────────────

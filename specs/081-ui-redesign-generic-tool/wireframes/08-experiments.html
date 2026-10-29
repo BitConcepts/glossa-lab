@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — Experiments (Spec 081 wireframe 08)</title>
+<link rel="stylesheet" href="wireframes.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-row"><div class="tile">G</div><div><div class="brand-name">Glossa Lab</div><div class="brand-sub">Epistemic research workbench</div></div></div></div>
+    <a class="program-switch" href="01-programs.html" style="text-decoration:none"><div class="ps-label">Program</div><div class="ps-name">Indus Script <span>▾</span></div><div class="ps-q">What do the signs mean — tested claim by claim?</div></a>
+    <nav class="nav">
+      <h4>Program</h4>
+      <a href="02-program-home.html"><span class="ic">⌂</span>Home</a>
+      <a href="03-claims.html"><span class="ic">§</span>Claims<span class="count">94</span></a>
+      <a href="05-digestion.html"><span class="ic">✓</span>Digestion<span class="count alert">9</span></a>
+      <a href="06-evidence.html"><span class="ic">▤</span>Evidence &amp; sources</a>
+      <a href="07-data.html"><span class="ic">▦</span>Data</a>
+      <a href="#"><span class="ic">◈</span>Analysis</a>
+      <a href="08-experiments.html" class="active"><span class="ic">⬡</span>Experiments</a>
+      <a href="10-discovery.html"><span class="ic">◎</span>Discovery<span class="count">12</span></a>
+      <a href="11-research-loop.html"><span class="ic">↻</span>Research loop</a>
+      <a href="12-reports.html"><span class="ic">▨</span>Reports &amp; ledger</a>
+      <div class="nav-tool"><h4>Tool</h4>
+        <a href="09-jobs.html"><span class="ic">⚙</span>Jobs<span class="count">2</span></a>
+        <a href="14-status.html"><span class="ic">♥</span>Status</a>
+        <a href="13-settings.html"><span class="ic">⚙</span>Settings</a>
+        <a href="#"><span class="ic">?</span>Help</a>
+      </div>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="crumb">Glossa Lab / <b>Indus Script</b> / Experiments</span>
+      <div class="spacer"></div>
+      <button class="icon-btn">⌘K&nbsp; Search</button>
+      <button class="icon-btn">✦ AI assistant</button>
+      <div class="service-chip"><span class="dot"></span><span><b>Glossa Lab v0.1.0</b> · TRISTEN-DESKTOP · checked 14:02</span></div>
+    </div>
+
+    <div class="content">
+      <p class="specimen-note">Specimen — experiment names and outcomes are the program's real executed tests.</p>
+
+      <div class="head-row">
+        <div class="page-head">
+          <h1>Experiments</h1>
+          <p class="lede">An experiment is a graph of steps, registered before it runs, that tests one claim against its falsifier. The graph is the method — if the method changes, it is a new experiment, never an edited result.</p>
+        </div>
+        <div class="spacer"></div>
+        <button class="btn primary">+ New experiment</button>
+      </div>
+
+      <div class="grid main-side">
+        <div class="card">
+          <h3>Implantation test — G44-I <span class="sub">· tests: “The profile scorer beats frequency counting” · frozen before the run</span></h3>
+          <svg viewBox="0 0 640 150" style="width:100%;height:auto" role="img" aria-label="Experiment graph: corpus to implant to score to verdict">
+            <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/></marker></defs>
+            <g font-family="system-ui" font-size="12">
+              <rect x="5" y="45" width="130" height="52" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="1.5"/><text x="70" y="68" text-anchor="middle" font-weight="700">Corpus</text><text x="70" y="86" text-anchor="middle" fill="#64748b">103 solo texts</text>
+              <rect x="170" y="45" width="130" height="52" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/><text x="235" y="68" text-anchor="middle" font-weight="700">Implant</text><text x="235" y="86" text-anchor="middle" fill="#64748b">relabel only</text>
+              <rect x="335" y="45" width="130" height="52" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/><text x="400" y="68" text-anchor="middle" font-weight="700">Score</text><text x="400" y="86" text-anchor="middle" fill="#64748b">frozen scorer</text>
+              <rect x="500" y="45" width="130" height="52" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/><text x="565" y="68" text-anchor="middle" font-weight="700">Verdict</text><text x="565" y="86" text-anchor="middle" fill="#64748b">vs frozen bar</text>
+              <line x1="135" y1="71" x2="168" y2="71" stroke="#94a3b8" marker-end="url(#ar)"/>
+              <line x1="300" y1="71" x2="333" y2="71" stroke="#94a3b8" marker-end="url(#ar)"/>
+              <line x1="465" y1="71" x2="498" y2="71" stroke="#94a3b8" marker-end="url(#ar)"/>
+            </g>
+          </svg>
+          <div class="row-item">
+            <div class="grow"><div class="row-title">Outcome</div><div class="row-meta">Realization proven by recount before scoring · margin +0.0017 vs the +0.05 bar · the claim it tested is <b>not supported</b> · run record and hashes in Reports &amp; ledger</div></div>
+            <span class="chip bad">Not supported</span>
+          </div>
+          <p class="row-meta">Ports keep their type colors from the current builder (sequences green, frequency maps blue, profiles violet, verdicts red family) — the redesign keeps the working canvas language and changes the framing around it, not the craft inside it.</p>
+        </div>
+
+        <div class="card" style="padding:6px 18px">
+          <h3 style="padding-top:10px">Registered experiments</h3>
+          <div class="row-item"><div class="grow"><div class="row-title">Signary triangulation (Spec 077)</div><div class="row-meta">Oct 27 · witnessed 399 of 557</div></div><span class="chip warn">Inconclusive</span></div>
+          <div class="row-item"><div class="grow"><div class="row-title">Opening/closing pattern, amended re-test (Spec 054)</div><div class="row-meta">Oct 26 · 0 of 8 / 0 of 10 strong</div></div><span class="chip bad">Not supported</span></div>
+          <div class="row-item"><div class="grow"><div class="row-title">Implantation test (G44-I)</div><div class="row-meta">Oct 28 · margin +0.0017</div></div><span class="chip bad">Not supported</span></div>
+          <div class="row-item"><div class="grow"><div class="row-title">Specimen — a drafted experiment</div><div class="row-meta">Not yet frozen · cannot run until its claim and falsifier are registered</div></div><span class="chip neutral">Draft</span></div>
+        </div>
+      </div>
+
+      <div class="annotation">
+        <div class="a-title">Annotation — wireframe 08 · not part of the UI</div>
+        <dl>
+          <dt>Purpose</dt><dd>Build and inspect the tests: each experiment named for the claim it tests, its graph, and its outcome in verdict language.</dd>
+          <dt>Primary action</dt><dd>“New experiment” — which starts from a registered claim and its falsifier, not from a blank canvas.</dd>
+          <dt>Changed &amp; why</dt><dd>The canvas itself (typed nodes, colored ports, saved graphs) already works and is kept. What changes is the frame: experiments are listed by the claim they test with outcomes attached, drafts are visibly barred from running until claim + falsifier exist, and Pipelines stop being a separate gallery — a pipeline is an experiment's reusable graph, filed here.</dd>
+          <dt>Spec claims</dt><dd>C081-2, C081-5 (failed experiments listed at full weight, in the same list).</dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</div>
+<nav class="mobile-nav">
+  <a href="02-program-home.html"><span class="mi">⌂</span>Home</a>
+  <a href="03-claims.html"><span class="mi">§</span>Claims</a>
+  <a href="05-digestion.html"><span class="mi">✓</span>Digestion</a>
+  <a href="09-jobs.html" class="active"><span class="mi">⚙</span>Jobs</a>
+  <a href="01-programs.html"><span class="mi">☰</span>More</a>
+</nav>
+</body>
+</html>

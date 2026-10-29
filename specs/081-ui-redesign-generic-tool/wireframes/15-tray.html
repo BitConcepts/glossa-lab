@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — Tray surfaces (Spec 081 wireframe 15)</title>
+<link rel="stylesheet" href="wireframes.css">
+<style>
+  body { background:#e8edf3; }
+  .sheet { max-width: 980px; margin: 0 auto; padding: 28px 20px 40px; }
+  .traymenu {
+    width: 300px; background: #fff; border: 1px solid #cbd5e1; border-radius: 8px;
+    box-shadow: 0 10px 32px rgba(15,23,42,.22); padding: 5px 0; font-size: 13px; color:#1f2937;
+  }
+  .traymenu .mi2 { padding: 6px 14px; display:flex; justify-content:space-between; gap:10px; }
+  .traymenu .mi2.default { font-weight: 700; }
+  .traymenu .mi2.status { color:#475569; }
+  .traymenu .mi2.disabled { color:#b6c0cd; }
+  .traymenu hr { border:none; border-top:1px solid #e5e7eb; margin:5px 0; }
+  .iconstate { text-align:center; }
+  .iconstate .big-tile { width:52px;height:52px;border-radius:12px;margin:0 auto 6px; position:relative;
+    background:linear-gradient(135deg,#2563eb,#60a5fa); display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:22px; }
+  .iconstate .bdot { position:absolute; right:-3px; bottom:-3px; width:15px; height:15px; border-radius:50%; border:2.5px solid #e8edf3; }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <p class="specimen-note">Wireframe 15 is a spec sheet for the system-tray surface — the tray has no page of its own, so its surfaces (icon, tooltip, menu, status texts) are specified here at full fidelity.</p>
+  <div class="page-head">
+    <h1>Tray — icon, tooltip, menu</h1>
+    <p class="lede">The tray is the service's handle on the desktop: it starts the backend, supervises it, and reports its state. In the redesign it also names the open program — the person at the machine should be able to see <i>which work</i> the healthy service is serving. It stays a status-and-control surface: no research work moves into the tray.</p>
+  </div>
+
+  <div class="card" style="margin-bottom:14px">
+    <h3>Icon states <span class="sub">— the packaged brand tile with a status badge; a drawn fallback tile if the asset is ever missing</span></h3>
+    <div class="grid c4">
+      <div class="iconstate"><div class="big-tile">G<span class="bdot" style="background:#22c55e"></span></div><b>Healthy</b><div class="row-meta">Backend verified as Glossa Lab and answering</div></div>
+      <div class="iconstate"><div class="big-tile">G<span class="bdot" style="background:#eab308"></span></div><b>Degraded</b><div class="row-meta">Answering, but a named check is failing — the tooltip says which</div></div>
+      <div class="iconstate"><div class="big-tile">G<span class="bdot" style="background:#ef4444"></span></div><b>Stopped</b><div class="row-meta">Not running — by the user's choice, or stopped after the restart budget ran out; the status line says which</div></div>
+      <div class="iconstate"><div class="big-tile">G<span class="bdot" style="background:#94a3b8"></span></div><b>Starting / unknown</b><div class="row-meta">First seconds after launch, before the first verified health check</div></div>
+    </div>
+  </div>
+
+  <div class="grid c2" style="align-items:start">
+    <div>
+      <div class="traymenu" role="img" aria-label="Tray menu render">
+        <div class="mi2 default"><span>Open Glossa Lab</span></div>
+        <div class="mi2 status"><span>Indus Script — backend healthy · v0.1.0 · up 5 h 50 m</span></div>
+        <hr>
+        <div class="mi2"><span>Stop service</span></div>
+        <div class="mi2"><span>Restart service</span></div>
+        <div class="mi2"><span>View status &amp; session log</span></div>
+        <hr>
+        <div class="mi2 disabled"><span>Port: 8001</span></div>
+        <div class="mi2"><span>Change port…</span></div>
+        <div class="mi2"><span>Run at Windows startup</span><span>✓</span></div>
+        <hr>
+        <div class="mi2"><span>Quit</span></div>
+      </div>
+      <p class="row-meta" style="margin-top:8px">Tooltip (hover): “Glossa Lab — Healthy (v0.1.0) · Indus Script”</p>
+    </div>
+
+    <div class="card">
+      <h3>Status lines — every state, in words</h3>
+      <table class="tbl">
+        <tbody>
+          <tr><td><span class="chip ok">Healthy</span></td><td class="row-meta">“Indus Script — backend healthy · v0.1.0 · up 5 h 50 m” (uptime humanized; raw seconds never shown)</td></tr>
+          <tr><td><span class="chip warn">Degraded</span></td><td class="row-meta">Names the failing check, e.g. “backend degraded — database read-only”. Clicking the line opens Status.</td></tr>
+          <tr><td><span class="chip bad">Stopped by user</span></td><td class="row-meta">“Backend stopped by you — it will not restart itself.” The supervision never overrides a person's stop.</td></tr>
+          <tr><td><span class="chip bad">Stopped — limit</span></td><td class="row-meta">“Backend stopped — auto-restart limit reached (3 in the last hour).” Clicking opens Status &amp; the session log.</td></tr>
+          <tr><td><span class="chip neutral">Starting</span></td><td class="row-meta">“Backend starting…” for the bounded start window only; a start that never verifies becomes Stopped with its reason, never a permanent spinner.</td></tr>
+        </tbody>
+      </table>
+      <p class="row-meta" style="margin-top:8px"><b>One instance.</b> Starting the tray when one is already running focuses the existing tray instead of adding another — the 2026-10-29 start tests accumulated three trays; the redesign makes accumulation impossible by construction, and the installer/start path checks for it.</p>
+    </div>
+  </div>
+
+  <div class="annotation">
+    <div class="a-title">Annotation — wireframe 15 · not part of the UI</div>
+    <dl>
+      <dt>Purpose</dt><dd>Supervise the service from the desktop: state at a glance, start/stop/restart, and a door into the framed status view.</dd>
+      <dt>Primary action</dt><dd>“Open Glossa Lab” (the menu's default, bold item). The tray deliberately gets no research actions.</dd>
+      <dt>Changed &amp; why</dt><dd>Four changes from today's tray: (1) the status line and tooltip name the open program — healthy <i>for what</i>; (2) uptime is humanized (“up 5 h 50 m”, not “up 1803s”); (3) “View Log” becomes “View status &amp; session log” and opens the framed Status screen instead of dropping the raw cumulative file into a text editor — the exact route by which historical errors read as current failures; (4) single-instance is specified, closing the tray-accumulation finding. Menu structure, port display, change-port dialogs, autostart toggle, supervision cap (3/hour, user stop never overridden) are unchanged — they work.</dd>
+      <dt>Spec claims</dt><dd>C081-3, C081-7, C081-12 (tray single-instance + program named in status).</dd>
+    </dl>
+  </div>
+</div>
+<nav class="mobile-nav">
+  <a href="02-program-home.html"><span class="mi">⌂</span>Home</a>
+  <a href="03-claims.html"><span class="mi">§</span>Claims</a>
+  <a href="05-digestion.html"><span class="mi">✓</span>Digestion</a>
+  <a href="09-jobs.html"><span class="mi">⚙</span>Jobs</a>
+  <a href="01-programs.html"><span class="mi">☰</span>More</a>
+</nav>
+</body>
+</html>

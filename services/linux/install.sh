@@ -156,6 +156,10 @@ if [ "$START" -eq 1 ]; then
         "${SYSTEMCTL[@]}" start "$UNIT_NAME"
     fi
     echo "          verifying backend identity (bounded, 30 attempts)..."
+    # Spec 082 (T012): /docs and /openapi.json are token-gated; the
+    # install-time check presents this install's token file (the
+    # supervised unit's data dir is the repo's backend/data).
+    GLOSSA_TOKEN_FILE="$REPO_ROOT/backend/data/api_token" \
     "$VENV_PYTHON" "$SUPPORT_DIR/healthcheck.py" \
         --base-url "http://127.0.0.1:${PORT}" \
         --attempts 30 --interval 1 --timeout 3 \

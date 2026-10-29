@@ -124,6 +124,24 @@ if errorlevel 1 (
     exit /b 1
 )
 echo [OK] '%TASK_NAME%' scheduled task registered - starter armed (logon + 15-minute ensure tick).
+
+REM Spec 082 (T011): provision this install's API token before the
+REM first start. The token module creates the installed data dir's
+REM api_token file atomically (mode owner-only where the platform
+REM supports it) when absent and leaves an existing token untouched;
+REM its output is the token file's PATH plus a fingerprint - never
+REM the value. A failure here refuses the install loudly rather
+REM than leaving a backend no client can authenticate to.
+set "PYTHONPATH=%REPO_ROOT%\backend"
+set "GLOSSA_MODE=installed"
+"%REPO_ROOT%\backend\venv\Scripts\python.exe" -m glossa_lab.auth ensure
+if errorlevel 1 (
+    echo [ERROR] API token provisioning failed - refusing to install.
+    exit /b 1
+)
+set "GLOSSA_MODE="
+set "PYTHONPATH="
+echo [OK] API token provisioned for this install (path only, above).
 echo.
 echo To start immediately: setup-os.cmd start
 echo.
@@ -206,7 +224,20 @@ REM   3. a bounded wait (H11: ~20 s) for port 8001 to drain;
 REM   4. only a process still listening on 8001 whose command line
 REM      matches glossa_lab + uvicorn is force-killed, by PID.
 wscript.exe //nologo "%REPO_ROOT%\scripts\stop-tray.vbs" >nul 2>&1
-curl.exe -sf --max-time 3 -X POST "http://localhost:8001/api/v1/shutdown" >nul 2>&1
+REM Spec 082 (T011): the shutdown endpoint is token-gated. When
+REM this install's token file exists, present the token as the
+REM Bearer header; when it does not, send the bare request exactly
+REM as before - the bounded drain + verified kill below remains
+REM the last resort either way. The value is read into a variable
+REM for this one call and cleared after; it is never echoed.
+set "GLOSSA_TOKEN="
+if exist "%LOCALAPPDATA%\GlossaLab\data\api_token" set /p GLOSSA_TOKEN=<"%LOCALAPPDATA%\GlossaLab\data\api_token"
+if defined GLOSSA_TOKEN (
+    curl.exe -sf --max-time 3 -X POST -H "Authorization: Bearer %GLOSSA_TOKEN%" "http://localhost:8001/api/v1/shutdown" >nul 2>&1
+) else (
+    curl.exe -sf --max-time 3 -X POST "http://localhost:8001/api/v1/shutdown" >nul 2>&1
+)
+set "GLOSSA_TOKEN="
 REM Drain test targets the LOOPBACK listener only: the
 REM Tailscale Serve proxy holds its own tailnet :8001
 REM listener forever, so an unqualified :8001 test never

@@ -6,6 +6,12 @@ query and control the server directly without manual API calls.
 Configuration:
   GLOSSA_BASE_URL  — base URL of the running Glossa Lab backend
                      (default: http://127.0.0.1:8001)
+  GLOSSA_API_TOKEN — the backend's Spec 082 per-install API token.
+                     When unset, the token is read from the install's
+                     api_token file (GLOSSA_TOKEN_FILE, the installed
+                     data dir, or the dev backend/data dir). A 401
+                     from the backend surfaces as a tool error naming
+                     the token as the cause.
 
 Run:
   python backend/glossa_mcp/server.py
@@ -14,6 +20,7 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 import threading
 from pathlib import Path
 from typing import Any
@@ -26,6 +33,47 @@ from mcp.server.fastmcp import FastMCP
 BASE_URL = os.environ.get("GLOSSA_BASE_URL", "http://127.0.0.1:8001")
 _REPO = Path(__file__).resolve().parent.parent.parent
 _TIMEOUT = 30.0
+
+
+def _token_file_candidates() -> list[Path]:
+    """Where an install's Spec 082 api_token file may live, in order."""
+    candidates: list[Path] = []
+    explicit = os.environ.get("GLOSSA_TOKEN_FILE", "").strip()
+    if explicit:
+        candidates.append(Path(explicit))
+    if sys.platform == "win32":
+        local = os.environ.get("LOCALAPPDATA", "")
+        base = Path(local) if local else Path.home() / "AppData" / "Local"
+        candidates.append(base / "GlossaLab" / "data" / "api_token")
+    elif sys.platform == "darwin":
+        candidates.append(
+            Path.home() / "Library" / "Application Support"
+            / "GlossaLab" / "data" / "api_token"
+        )
+    else:
+        data_home = os.environ.get(
+            "XDG_DATA_HOME", str(Path.home() / ".local" / "share")
+        )
+        candidates.append(Path(data_home) / "glossa-lab" / "api_token")
+    # Dev / supervised layout: backend/data beside the database.
+    candidates.append(_REPO / "backend" / "data" / "api_token")
+    return candidates
+
+
+def _resolve_api_token() -> str | None:
+    """Spec 082 token: GLOSSA_API_TOKEN env, else the token file."""
+    env_token = os.environ.get("GLOSSA_API_TOKEN", "").strip()
+    if env_token:
+        return env_token
+    for candidate in _token_file_candidates():
+        try:
+            value = candidate.read_text(encoding="utf-8").strip()
+        except OSError:
+            continue
+        if value:
+            return value
+    return None
+
 
 mcp = FastMCP(
     "glossa-lab",
@@ -51,8 +99,18 @@ def _client(timeout: float | None) -> httpx.Client:
     block those calls — e.g. a NO_PROXY list containing bracketed IPv6
     entries makes httpx raise InvalidURL ("Invalid port: ':1]'").
     Every client in this module MUST be built here (regression-tested).
+
+    Spec 082: when a token resolves (env or token file), every client
+    carries the Authorization header; the token is re-resolved per
+    client so a rotation is picked up without restarting the server.
     """
-    return httpx.Client(base_url=BASE_URL, timeout=timeout, trust_env=False)
+    headers: dict[str, str] = {}
+    token = _resolve_api_token()
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    return httpx.Client(
+        base_url=BASE_URL, timeout=timeout, trust_env=False, headers=headers
+    )
 
 
 def _get() -> httpx.Client:
@@ -66,6 +124,16 @@ def _fmt(data: Any) -> str:
 
 
 def _err(exc: Exception) -> str:
+    if isinstance(exc, httpx.HTTPStatusError) and exc.response.status_code == 401:
+        # Spec 082 (FR-003): a 401 names the token as the cause.
+        return json.dumps({
+            "error": (
+                "backend returned 401 — the Spec 082 API token was "
+                "missing or invalid; set GLOSSA_API_TOKEN or keep the "
+                "install's api_token file in place"
+            ),
+            "type": type(exc).__name__,
+        })
     return json.dumps({"error": str(exc), "type": type(exc).__name__})
 
 

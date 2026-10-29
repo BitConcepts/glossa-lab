@@ -35,6 +35,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from glossa_lab.auth import auth_headers
+
 _log = logging.getLogger("glossa_lab.cli")
 
 # ── Configuration ─────────────────────────────────────────────────────────────────────────
@@ -56,12 +58,19 @@ def _http(method: str, path: str, body: dict | None = None) -> dict | None:
     job-status drift can be detected.  We still return None on failure so
     callers don't crash if the backend is offline, but we no longer pretend
     nothing went wrong.
+
+    Spec 082: every request carries the install API token when one is
+    resolvable (glossa_lab.auth.auth_headers). When none resolves, the
+    request goes out bare and the backend's 401 is what the warning
+    log shows — a named failure, never a silent pass (FR-003).
     """
     url = f"{_API_BASE}{path}"
     # Use ensure_ascii=True (default) so non-Latin-1 characters are escaped.
     # Encode the bytes explicitly as UTF-8 (which JSON-escaped ASCII already is).
     data = json.dumps(body or {}).encode("utf-8") if body is not None else None
-    headers = {"Content-Type": "application/json"} if data else {}
+    headers = auth_headers()
+    if data:
+        headers["Content-Type"] = "application/json"
     req = urllib.request.Request(url, data=data, headers=headers, method=method)
     try:
         with urllib.request.urlopen(req, timeout=5) as resp:

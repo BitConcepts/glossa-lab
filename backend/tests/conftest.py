@@ -13,7 +13,38 @@ import os as _os
 import pytest
 from fastapi.testclient import TestClient
 
-from glossa_lab.main import create_app
+# ── Spec 082 test seam ────────────────────────────────────────────────────────
+# The backend enforces a per-install API token (Spec 082). The suite
+# runs against a fixed, clearly-fake session token carried in the
+# environment (the backend resolves the env first), and every
+# TestClient built anywhere in the suite presents it by default —
+# several test modules construct their own TestClient instead of
+# using the client fixture below. Per-request headers still win, so
+# the auth matrix (tests/test_api_token_auth.py) can present missing,
+# empty, or wrong credentials explicitly. This seam must be installed
+# BEFORE glossa_lab.main is imported anywhere in the process.
+_TEST_API_TOKEN = "glossa-lab-test-token-082"  # test fixture value, not a secret
+_os.environ.setdefault("GLOSSA_API_TOKEN", _TEST_API_TOKEN)
+
+import fastapi.testclient as _fastapi_testclient  # noqa: E402
+
+_RealTestClient = _fastapi_testclient.TestClient
+
+
+class _AuthedTestClient(_RealTestClient):
+    """TestClient presenting the session test token by default."""
+
+    def __init__(self, *args, **kwargs):  # noqa: ANN002, ANN003
+        headers = dict(kwargs.pop("headers", None) or {})
+        if not any(key.lower() == "authorization" for key in headers):
+            headers["Authorization"] = f"Bearer {_TEST_API_TOKEN}"
+        super().__init__(*args, headers=headers, **kwargs)
+
+
+_fastapi_testclient.TestClient = _AuthedTestClient
+TestClient = _AuthedTestClient
+
+from glossa_lab.main import create_app  # noqa: E402
 
 if _os.name == "nt":
     try:

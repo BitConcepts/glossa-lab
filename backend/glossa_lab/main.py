@@ -64,6 +64,7 @@ from glossa_lab.api.terminal import router as terminal_router
 from glossa_lab.api.signs import router as signs_router
 from glossa_lab.api.sign_images import router as sign_images_router
 from glossa_lab.api.texts import router as texts_router
+from glossa_lab.auth import ApiTokenMiddleware, auth_disabled, token_file_path
 from glossa_lab.config import get_settings
 from glossa_lab.database import close_db, init_db
 from glossa_lab.engine import run_engine_loop
@@ -363,6 +364,23 @@ def create_app() -> FastAPI:
         return JSONResponse(
             status_code=503 if isinstance(exc, (ValueError, AssertionError)) else 500,
             content={"detail": f"{type(exc).__name__}: {exc}"},
+        )
+
+    # Spec 082: per-install API token enforcement (FR-001). Added
+    # BEFORE CORS so CORS stays the outermost middleware and dev-mode
+    # preflights are answered by CORS, not rejected by auth. The
+    # startup posture is logged — mode and token file path, never
+    # the value (FR-006).
+    application.add_middleware(ApiTokenMiddleware)
+    if auth_disabled():
+        _log.warning(
+            "API token authentication DISABLED by GLOSSA_API_AUTH=off "
+            "(Spec 082 FR-006 named switch) — health reports auth: disabled"
+        )
+    else:
+        _log.info(
+            "API token authentication enabled (token file: %s)",
+            token_file_path(),
         )
 
     # CORS — allow localhost origins in development mode

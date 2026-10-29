@@ -11314,3 +11314,19 @@ direction of Tristen Pierson, per constitution sec. VI.
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec. VI.
+
+Amendment to the Leg C hardening 4 entry (same PR): the C-04 rule
+change moved exactly three live-store scores — every claim whose
+record carries `[VERIFIED]` with no resolvable reference
+(parpola_2010_dravidian_solution_manual_001,
+yadav_2009_arxiv_manual_001, yadav_2009_arxiv_manual_002; evidence
+component 1.0 → 0.706875, band high → medium each). Per the
+established fixture-supersession precedent in
+`backend/tests/test_spec029_phase104_correction.py` (aee 1.5.0
+adoption, Spec 054), the post-correction score fixture was
+regenerated from the live store, the test header records the
+supersession and its cause, and the movement test now names the
+Leg C set and asserts its cause mechanically (record carries
+`[VERIFIED]`, `_verified_marker_is_referenced` is false, only the
+evidence component fell). The post-merge baseline fixture is
+unchanged.

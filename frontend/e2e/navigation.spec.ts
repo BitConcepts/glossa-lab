@@ -7,9 +7,9 @@ import { expect, test } from "@playwright/test";
  * research workbench", a program switcher card, program-space nav in
  * loop order (Home, Claims, Digestion, Evidence & sources, Data,
  * Analysis, Experiments, Discovery, Research loop, Reports & ledger)
- * and a tool group (Jobs, Status, Settings, Help). The Playwright
- * global setup seeds one active program ("E2E Program") against the
- * CI backend, so program space is exercised here; the no-program
+ * and a tool group (Jobs, Status, Settings, Help). The backend
+ * seeds one active program ("Indus Script Decipherment") on a fresh
+ * data dir, so program space is exercised here; the no-program
  * first run needs an empty backend and is verified separately.
  *
  * Sidebar nav buttons use title attr = clean label. Use getByTitle()
@@ -38,10 +38,10 @@ test.describe("App shell", () => {
 
   test("program switcher card names the open program and its question", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByText("E2E Program").first()).toBeVisible();
-    await expect(
-      page.getByText(/Does the redesigned shell hold together end to end\?/i).first(),
-    ).toBeVisible();
+    await expect(page.getByText("Indus Script Decipherment").first()).toBeVisible();
+    // The seeded program has no question yet; the card falls back to
+    // its description (a program's question shows here once set).
+    await expect(page.getByText(/Decipher the Indus/i).first()).toBeVisible();
   });
 
   test("shows Cmd+K button in header", async ({ page }) => {
@@ -98,7 +98,7 @@ test.describe("Program-space navigation", () => {
     await page.getByLabel("Switch program").click();
     await page.getByText(/All programs/).click();
     await expect(page.getByRole("heading", { name: "Programs" })).toBeVisible();
-    await expect(page.getByText("E2E Program").first()).toBeVisible();
+    await expect(page.getByText("Indus Script Decipherment").first()).toBeVisible();
   });
 
   test("clicking Claims renders the claims register", async ({ page }) => {

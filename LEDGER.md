@@ -11290,6 +11290,48 @@ direction of Tristen Pierson, per constitution sec.VI.
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec. VI.
 
+## [2026-10-29] Entry — Leg C hardening 1: intake guards (C-05 upload traversal, C-06 SSRF)
+
+- **Findings (Leg C red team, live-confirmed on a throwaway instance):**
+  C-05 — `POST /indus-evidence/upload` honoured `../` filenames out of
+  `raw/user_uploads/`, with no size cap and no content validation;
+  C-06 — `POST /indus-evidence/import-url` and `/sweep/intake` fetched
+  arbitrary caller URLs (a loopback fetch of the backend's own health
+  endpoint succeeded and was stored as a `.pdf`).
+- **Fix (`backend/glossa_lab/api/indus_evidence.py`):** upload
+  filenames reduced to a sanitised basename; 25 MiB intake cap;
+  `%PDF-` magic check before any write/intake. URL fetches go through
+  an SSRF guard (http/https only; `localhost` refused; literal or
+  DNS-resolved private/loopback/link-local/reserved/multicast hosts
+  refused; redirects re-guarded; response read capped).
+  `sign_images` upload now rejects path-shaped `sign_id` values.
+- **Tests:** `backend/tests/test_indus_evidence_api.py` — traversal
+  filename confined, non-PDF content rejected, loopback import
+  blocked, `file://` scheme blocked.
+
+## [2026-10-29] Entry — Leg C hardening 2: GlossaShell sandbox confinement (C-02)
+
+- **Finding (Leg C red team, live-confirmed):** `GlossaShell._resolve`
+  returned absolute paths and `../` traversals unchecked, so terminal
+  builtins (`cat`/`rm`/`cp`/`mv`/…) read and modified files outside
+  the repo sandbox; only `cd` enforced `sandbox_root`. A marker file
+  outside the sandbox was read live via both an absolute path and a
+  traversal path through `POST /terminal/run`.
+- **Fix:** `_resolve` now resolves every path and raises `ValueError`
+  when the result escapes `sandbox_root`; `run()` surfaces that as an
+  error line. `POST /terminal/run` also rejects a caller-supplied
+  `cwd` outside the repo root (400). The subprocess fallthrough for
+  unknown commands is unchanged — it is the terminal's documented
+  function for the local user; the systemic issue is the missing
+  authentication layer (finding C-01, owner decision), not the
+  fallthrough itself.
+- **Tests:** `backend/tests/test_glossa_shell_sandbox.py` — absolute
+  and traversal reads refused, in-sandbox reads work, traversal `rm`
+  does not delete the outside file.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec. VI.
+
 ## [2026-10-29] Entry — Leg C hardening 4: [VERIFIED] marker requires a resolvable reference (C-04)
 
 - **Finding (Leg C red team, measured with the real assessor, AEE

@@ -1,0 +1,789 @@
+{
+ "spec": "042-arm-b-object-type-split",
+ "register_version": "0.7-draft",
+ "note": "Draft register for Spec 042 (design D-28, PR #195 packet), opened 2026-10-21 under the owner's order of the same date and the portfolio triage of the same date. Conventions as in Specs 032\u2013040: requirement claims carry no falsification test where a gate or inspection is the operative check; boundaries carry the conditions under which each claim holds; evidence items carry observed_at from this draft because the cited facts were verified first-hand at drafting (the completion Spec 038's freeze had to retrofit). The AEE lifecycle hooks have NOT run on this register; they are the freeze gate (tasks L4), and any recovery round they force changes claim text before any freeze digest is computed. ASM- ids name the assumptions each claim stands on: ASM-PHASE393-RECORD (Phase-393's recorded results are the record of the frozen test), ASM-PHASE393-MACHINERY (pipeline393.py as pinned is the machinery of record), ASM-ARMC-EXPLORATORY (Arm C's dissimilarities are exploratory description \u2014 a hypothesis source, never evidence), ASM-TYPE-AS-RECORDED (object type is the corpus's recorded value; compilation-relative per Spec 037's census), ASM-MARGIN-FAMILY (the Spec 027/028 family's single 0.01 adjusted-R\u00b2 margin and verdict rules), ASM-GATES-BEFORE-OUTCOME (margins and integrity precede any outcome quantity), ASM-DESCRIPTION-NOT-CONTROL (a described covariate is not a controlled one), ASM-APPEND-ONLY (outcomes append; frozen records are never edited). FREEZE RECOVERY (2026-10-21, round toward 0.6-draft): the draft register's evidence vocabulary (kinds 'program-record' / 'design-source'; source_quality 'authoritative' / 'program-record') is not accepted by aee 1.5.0, whose EvidenceKind set is observed / inferred / asserted / contradicted / unsupported / exposition; every frozen register in this family (Specs 037 / 038 / 039) carries kind 'observed' and source_quality 'artifact' for the same class of first-hand verified program records. The freeze therefore normalises kind to 'observed' and source_quality to 'artifact' on every evidence item (refs, directions, descriptions, and observed_at unchanged; no proposition, boundary, falsifier, or verdict rule changed). FREEZE RECOVERY (2026-10-21, round toward 0.7-draft): after_specify round 1 over the 0.6 text returned iterate with 48 failure modes \u2014 15 FR-2.3 draft-cap records, 18 shared-evidence independence records (FR-6.2), 13 irreducibility challenges (C02\u2013C14), 2 negation-conflict challenges (C03/C10, C08/C13) \u2014 with no claim below the 0.70 threshold (minimum propagated 0.72). Recovery, on the Spec 039 pattern: (i) the thirteen challenged texts are restated as single head propositions, their carried clauses moved into the boundaries verbatim in substance (C10's boundary now carries the frozen verdict rules verbatim from spec \u00a74.1; spec.md itself is untouched, so the frozen rules are unaltered); the two negation pairings dissolve because the restated claims carry distinct subjects (a prediction about the seal stratum vs the verdict rule it is judged under; the stratum floor vs the control-failure class), which the register records openly rather than by disposition. (ii) Independence is modelled on the Spec 039 pattern: within each multi-item claim, each evidence item declares independent_of the claim's other cited source_ids \u2014 a record-level declaration (the cited artifacts are distinct documents, separately authored acts: design, freeze record, execution results); corroboration across claims rests on the same program record cited for different propositions, recorded here as shared, not independent. Propositions' substance, falsifiers, verdict rules, dependencies, and evidence refs/directions/descriptions are unchanged throughout. FREEZE (2026-10-21): round 2 at after_specify over the 0.7 restatement returned 24 failure modes (15 draft-cap records, 9 independence records for the two sources standing as first or only items in their claims); the declaration completion within the same 0.7 text cleared those 9, and round 3 returned 15 failure modes, all FR-2.3 draft-cap records, zero correctness failure modes, minimum propagated 0.72. after_plan and after_tasks over the same register were clean at first pass on the same terms. The hooks pass on the DD-042-9 gate reading (DD-038-10 adopted); the full record is aee/freeze-aee-note.md. The freeze digest was computed over this register (0.7-draft) exactly once.",
+ "claims": [
+  {
+   "id": "F042-C01",
+   "kind": "hypothesis",
+   "text": "An outcome under Spec 042 states only how the Spec 028 Arm B similarity\u2013distance association behaves within the object-type strata of the Phase-393 analysis population.",
+   "status": "draft",
+   "boundary": [
+    "The scope is the Phase-393 layer's 3,030-record analysis population and its two recorded object types. It excludes any statement about movement of people (Spec 027's fence), about why a stratum differs, about sign meanings, about any other corpus or population, and about the frozen pooled Arm B verdict, which stands as recorded."
+   ],
+   "depends_on": [],
+   "assumptions": [
+    "ASM-PHASE393-RECORD"
+   ],
+   "alternatives": [
+    "the pooled Arm B verdict could be read as already answering the object-type question (it cannot: its population mixes both types)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified in scope if any Spec 042 output states a conclusion about a population, corpus, or question outside the stratum-split of the Phase-393 Arm B population"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-MOVEMENT"
+    ],
+    "strongest_rival": "the alternative reading in which a stratum verdict licenses a claim about the whole corpus or about people",
+    "verdict_rule": "scope is judged by inspection of every Spec 042 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding",
+    "evidence_origin_groups": [
+     "phase393-record",
+     "spec028-design"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/028-harappa-robustness/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 028's frozen design: the two arms, the family margin (adjusted PERMANOVA R\u00b2 = 0.01), the seed, and the verdict rules the split inherits unchanged.",
+     "source_id": "specs/028-harappa-robustness/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "reports/phase393_results.json",
+      "specs/028-harappa-robustness/freeze.json"
+     ]
+    },
+    {
+     "ref": "reports/phase393_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-393 results of record (SHA-256 0a1657a8\u2026, recomputed at this draft): Arm B median adjusted R\u00b2 0.0223721, interval [0.0122174, 0.0333271], rejection share 0.9548; drop-Harappa LOSO median 0.0066068; Arm C tablet/seal dissimilarities 0.4952733 / 0.1113521.",
+     "source_id": "reports/phase393_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/028-harappa-robustness/spec.md",
+      "specs/028-harappa-robustness/freeze.json"
+     ]
+    },
+    {
+     "ref": "specs/028-harappa-robustness/freeze.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 028's freeze record (SHA-256 376cd8e7\u2026): the frozen contract this variant is registered beside, and does not edit.",
+     "source_id": "specs/028-harappa-robustness/freeze.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/028-harappa-robustness/spec.md",
+      "reports/phase393_results.json"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F042-C02",
+   "kind": "requirement",
+   "text": "STUDY-SPEC-028/ARM-B stands INCONCLUSIVE on its recorded numbers.",
+   "status": "draft",
+   "boundary": [
+    "These are the Phase-393 results of record for the pooled Arm B population. The other recorded LOSO medians stand above the margin (Mohenjo-daro 0.0237627, Dholavira 0.0243568, Lothal 0.0247476, read at this draft); the INCONCLUSIVE verdict follows from the frozen family rule, under which the SUPPORTED clause requires every LOSO median above 0.01. The recorded numbers are: median adjusted R\u00b2 0.0223721, percentile interval [0.0122174, 0.0333271], rejection share 0.9548, with a drop-Harappa leave-one-site-out median of 0.0066068 against the 0.01 margin."
+   ],
+   "depends_on": [
+    "F042-C01"
+   ],
+   "assumptions": [
+    "ASM-PHASE393-RECORD"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "recompute SHA-256 of reports/phase393_results.json (0a1657a8\u2026) and read the arm_b primary and loso/Harappa values; any mismatch falsifies this statement and voids the draft's basis"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the record could have been misread or superseded (the Spec 040 stale-pin precedent shows draft-cited pins can be wrong)",
+    "verdict_rule": "the statement stands or falls on the pinned results file hashing to its recorded value with the stated quantities in it",
+    "evidence_origin_groups": [
+     "phase393-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "reports/phase393_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Arm B primary and LOSO values read first-hand from the pinned file at this draft; SHA-256 recomputed equal to 0a1657a8\u2026.",
+     "source_id": "reports/phase393_results.json",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F042-C03",
+   "kind": "hypothesis",
+   "text": "The seal stratum satisfies the frozen SUPPORTED rule in full.",
+   "status": "draft",
+   "boundary": [
+    "The hypothesis is directional because the exploratory Arm C clue is directional (Harappa dissimilarity 0.4952733 on tablets vs 0.1113521 on seals). It is a statement about this corpus layer's strata under the frozen machinery, and about nothing else: not about seals or tablets in other compilations, not about ancient practice, and not about why. The hypothesis's second clause: the tablet stratum does not satisfy the frozen SUPPORTED rule in full (spec \u00a71.2)."
+   ],
+   "depends_on": [
+    "F042-C01",
+    "F042-C02"
+   ],
+   "assumptions": [
+    "ASM-PHASE393-RECORD",
+    "ASM-ARMC-EXPLORATORY",
+    "ASM-TYPE-AS-RECORDED"
+   ],
+   "alternatives": [
+    "the strata behave alike (the falsifier, F042-C04)",
+    "the split runs reversed (tablet SUPPORTED, seal not) \u2014 recorded under F042-C12, not as support"
+   ],
+   "falsification_tests": [
+    "run the \u00a74 primaries: if the seal stratum fails any clause of the SUPPORTED rule, or the tablet stratum satisfies it in full, this hypothesis is not supported"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-MOVEMENT",
+     "ASM-ARMC-AS-EVIDENCE"
+    ],
+    "strongest_rival": "the strongest rival is the falsifier itself: the Harappa dependence is a whole-corpus property that survives any split",
+    "verdict_rule": "SUPPORTED for the hypothesis iff the seal stratum is SUPPORTED under F042-C10 and the tablet stratum is not; any other adjudicated pattern does not support it",
+    "evidence_origin_groups": [
+     "phase393-record",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-28 (PR #195 packet, \u00a7D-28, read in full at this draft): the hypothesis, falsifier, method, floors, and headline pattern set this spec registers.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "reports/phase393_results.json"
+     ]
+    },
+    {
+     "ref": "reports/phase393_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Arm C's recorded dissimilarities (0.4952733 tablets / 0.1113521 seals) are the hypothesis's directional source; Arm C was exploratory, which is why this claim is a hypothesis to be tested, not a result to be cited.",
+     "source_id": "reports/phase393_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F042-C04",
+   "kind": "requirement",
+   "text": "Uniform stratum outcomes exonerate object type as the locus of the Harappa dependence.",
+   "status": "draft",
+   "boundary": [
+    "Exoneration is scoped to the object-type split of this corpus layer under this machinery. It does not exonerate object type as a variable in any other test, layer, or question. The uniform case is the seal stratum with the tablet stratum returning the same side of the frozen SUPPORTED rule; the outcome is then recorded as UNIFORM-PASS (both SUPPORTED) or UNIFORM-FAIL (neither SUPPORTED)."
+   ],
+   "depends_on": [
+    "F042-C03"
+   ],
+   "assumptions": [
+    "ASM-PHASE393-RECORD"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "if the primaries return one stratum SUPPORTED and the other not, this claim's condition does not arise and the headline is SPLIT under F042-C11"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a uniform outcome could be misread as a null result of no value; the requirement exists so the exoneration is recorded as the finding it is",
+    "verdict_rule": "the outcome record must carry the UNIFORM word and the exoneration sentence of spec \u00a74.3 whenever the condition holds",
+    "evidence_origin_groups": [
+     "phase393-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/028-harappa-robustness/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 028's frozen design: the two arms, the family margin (adjusted PERMANOVA R\u00b2 = 0.01), the seed, and the verdict rules the split inherits unchanged.",
+     "source_id": "specs/028-harappa-robustness/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "reports/phase393_results.json"
+     ]
+    },
+    {
+     "ref": "reports/phase393_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-393 results of record (SHA-256 0a1657a8\u2026, recomputed at this draft): Arm B median adjusted R\u00b2 0.0223721, interval [0.0122174, 0.0333271], rejection share 0.9548; drop-Harappa LOSO median 0.0066068; Arm C tablet/seal dissimilarities 0.4952733 / 0.1113521.",
+     "source_id": "reports/phase393_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/028-harappa-robustness/spec.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F042-C05",
+   "kind": "requirement",
+   "text": "Spec 042 is a new pre-registered variant of the frozen Arm B test.",
+   "status": "draft",
+   "boundary": [
+    "The variant changes exactly one thing \u2014 the population is split by recorded object type before the same machinery runs. Every other element (estimator, weights, margin, seed, controls, verdict rules) is inherited unchanged, and any outcome appends to the claim's record as a dated entry beside the frozen one. Carried clause, verbatim in substance: Spec 028's frozen records with its pooled INCONCLUSIVE verdict are not re-adjudicated, edited, or superseded by this spec."
+   ],
+   "depends_on": [
+    "F042-C01"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY",
+    "ASM-PHASE393-RECORD"
+   ],
+   "alternatives": [
+    "re-opening Spec 028 and amending its frozen verdict (refused: frozen records are not edited in this program)"
+   ],
+   "falsification_tests": [
+    "inspection: any Spec 042 product that modifies a Spec 028 file, restates the pooled verdict, or presents the stratum result as replacing it falsifies compliance with this requirement"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the pressure to fold a cleaner stratum result back into the pooled claim's wording",
+    "verdict_rule": "compliance is judged by file inspection at execution close: Spec 028's pinned hashes unchanged, the pooled verdict quoted only as recorded",
+    "evidence_origin_groups": [
+     "phase393-record",
+     "spec028-freeze"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/028-harappa-robustness/freeze.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 028's freeze record, pinned at this draft (SHA-256 376cd8e7\u2026), is the frozen contract this variant stands beside.",
+     "source_id": "specs/028-harappa-robustness/freeze.json",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F042-C06",
+   "kind": "requirement",
+   "text": "Each stratum is computed with Phase-393's Arm B machinery unchanged.",
+   "status": "draft",
+   "boundary": [
+    "Machinery identity is what makes the stratum verdicts comparable to the pooled verdict they sit beside. Any change to an element named here is a different test and would require a different spec; it cannot be introduced at execution. The unchanged machinery comprises: the same estimator, equal site weights with the recorded quota scheme, the 0.01 adjusted-R\u00b2 margin, the recorded seed 20261012, with the same negative plus positive controls."
+   ],
+   "depends_on": [
+    "F042-C05"
+   ],
+   "assumptions": [
+    "ASM-PHASE393-MACHINERY"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "gate 0.5 (the pooled regression) is the operational test: machinery that cannot reproduce the recorded pooled quantities exactly under the recorded seed is not the frozen machinery, and the run stops INVALID"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "silent machinery drift (a library change, a quota difference) presenting as a stratum effect",
+    "verdict_rule": "identity is judged by the gate-0.5 exact-reproduction standard, not by code inspection alone",
+    "evidence_origin_groups": [
+     "phase393-record",
+     "spec028-design"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/028-harappa-robustness/pipeline393.py",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The Phase-393 pipeline, pinned at this draft (SHA-256 6c2ff91c\u2026), is the machinery of record the split reuses.",
+     "source_id": "specs/028-harappa-robustness/pipeline393.py",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/028-harappa-robustness/margins-audit.json"
+     ]
+    },
+    {
+     "ref": "specs/028-harappa-robustness/margins-audit.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 028's margins audit (SHA-256 15ae0281\u2026): the frozen population margins the machinery was calibrated against.",
+     "source_id": "specs/028-harappa-robustness/margins-audit.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/028-harappa-robustness/pipeline393.py"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F042-C07",
+   "kind": "requirement",
+   "text": "The strata partition the Phase-393 Arm B analysis population of 3,030 records by recorded object type.",
+   "status": "draft",
+   "boundary": [
+    "Object type is the value recorded in the corpus layer for that record; no record is re-typed under this spec. A record whose recorded type is neither SEAL nor TAB is a stop condition (INVALID), not an exclusion: the frozen population flow admits none, so one appearing is a machinery finding. The step-0 census asserts the two stratum counts sum to 3,030 with every record in exactly one stratum (the seal-only set, the tablet-only set)."
+   ],
+   "depends_on": [
+    "F042-C05",
+    "F042-C06"
+   ],
+   "assumptions": [
+    "ASM-TYPE-AS-RECORDED",
+    "ASM-PHASE393-RECORD"
+   ],
+   "alternatives": [
+    "treating unexpected types as a third stratum or dropping them (both refused: the design registers two strata and a fail-closed census)"
+   ],
+   "falsification_tests": [
+    "the gate-0.3 census either asserts the partition exactly or stops the run; the census table is published with the outcome either way"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the partition could quietly lose records between the pooled population and the strata, manufacturing a difference",
+    "verdict_rule": "the census assertion is a hard gate: counts that do not sum to 3,030 stop the execution as INVALID before any stratum quantity exists",
+    "evidence_origin_groups": [
+     "phase393-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "reports/phase393_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The recorded population flow (5,679 \u2192 4,531 \u2192 4,505 \u2192 3,605 seal/tablet \u2192 3,144 \u2192 3,030 analysis) and the Arm B quota table's SEAL/TAB cells ground the two-stratum partition.",
+     "source_id": "reports/phase393_results.json",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F042-C08",
+   "kind": "requirement",
+   "text": "Stratum entry is gated by the frozen floor (six sites, twenty inscriptions of the type per site).",
+   "status": "draft",
+   "boundary": [
+    "The floor values are design D-28's, carried verbatim. Closing the whole execution on THIN (rather than computing the surviving stratum) is this draft's reading of the design (DD-042-2): the headline under this spec is the pattern across strata, and a one-stratum result quoted alone would misstate the test. The freeze may overturn that reading openly. A stratum below that floor is recorded TOO THIN with its counts; the execution closes with headline THIN without computing either stratum (DD-042-2)."
+   ],
+   "depends_on": [
+    "F042-C07"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [
+    "computing the non-thin stratum and reporting it alone (refused at draft; OPEN for the freeze to reverse)"
+   ],
+   "falsification_tests": [
+    "the gate-0.4 margins are computed and published before any repertoire quantity; a run that computes a stratum quantity past a failed floor falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a thin tablet stratum computed anyway, because its result would be interesting",
+    "verdict_rule": "the gate is margins-only and precedes the primary in the run order; the outcome classes in spec \u00a79 make THIN terminal",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-28 fixes the floors (\u22656 sites carrying \u226520 inscriptions of the type) and the TOO THIN reporting with counts.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F042-C09",
+   "kind": "requirement",
+   "text": "Execution stops before any stratum quantity is computed on any step-0 gate failure.",
+   "status": "draft",
+   "boundary": [
+    "These are spec \u00a73's gates 0.1, 0.2, 0.3, and 0.5. Their failure classes are INVALID (0.1/0.2/0.3/0.5) and THIN (0.4, under F042-C08). No failure is repaired at run time; a repaired input is a new freeze, not a resumed run. The step-0 gate failures are: an input hash mismatch, the analysis population not reproduced exactly, a partition census failure, a pooled Arm B regression failing to reproduce the recorded quantities (spec \u00a73 gates 0.1, 0.2, 0.3, 0.5)."
+   ],
+   "depends_on": [
+    "F042-C06",
+    "F042-C07"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "each gate's check is itself the test: the execution record must show every gate's verdict before the first stratum quantity, or the run is non-compliant on its face"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "gate-skipping under time pressure, with the failure rationalised afterwards",
+    "verdict_rule": "the run's own record is the judge: gate verdicts precede quantities in it, in order, or the outcome is INVALID by construction",
+    "evidence_origin_groups": [
+     "phase393-record",
+     "spec028-design"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/028-harappa-robustness/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 028's frozen design: the two arms, the family margin (adjusted PERMANOVA R\u00b2 = 0.01), the seed, and the verdict rules the split inherits unchanged.",
+     "source_id": "specs/028-harappa-robustness/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "reports/phase393_results.json"
+     ]
+    },
+    {
+     "ref": "reports/phase393_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-393 results of record (SHA-256 0a1657a8\u2026, recomputed at this draft): Arm B median adjusted R\u00b2 0.0223721, interval [0.0122174, 0.0333271], rejection share 0.9548; drop-Harappa LOSO median 0.0066068; Arm C tablet/seal dissimilarities 0.4952733 / 0.1113521.",
+     "source_id": "reports/phase393_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/028-harappa-robustness/spec.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F042-C10",
+   "kind": "requirement",
+   "text": "Per-stratum verdicts follow the frozen family rules of Spec 028 verbatim.",
+   "status": "draft",
+   "boundary": [
+    "These are Spec 028's frozen family rules, carried verbatim; no threshold, margin, or clause is adjusted for the smaller stratum populations. A stratum whose controls fail is NOT ADJUDICATED (F042-C13), not INCONCLUSIVE. The rules, verbatim from spec \u00a74.1: SUPPORTED iff the stratum's primary median adjusted R\u00b2 is > 0.01 with every leave-one-site-out median adjusted R\u00b2 of that stratum > 0.01; CONTRADICTED iff (\u2265 95% of the stratum's primary draws fail to reject, or the stratum's adjusted R\u00b2 percentile interval lies entirely at or below 0.01); INCONCLUSIVE iff neither fires \u2014 each within a stratum whose controls pass."
+   ],
+   "depends_on": [
+    "F042-C06"
+   ],
+   "assumptions": [
+    "ASM-MARGIN-FAMILY"
+   ],
+   "alternatives": [
+    "re-deriving stratum-specific margins from the smaller populations (refused: the family's single margin is what makes the strata comparable to the pooled test)"
+   ],
+   "falsification_tests": [
+    "the verdict assignment is mechanical from the recorded quantities; any verdict not following this rule from its stratum's numbers falsifies the outcome record"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "post-hoc rule-shopping once a stratum's numbers are known",
+    "verdict_rule": "the rule is frozen in this register before any stratum quantity exists; verdicts are recomputed from the published quantities by any reader",
+    "evidence_origin_groups": [
+     "spec028-design"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/028-harappa-robustness/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 028 spec.md states the family rules verbatim (SUPPORTED / CONTRADICTED / INCONCLUSIVE conditions and the 0.01 margin), read at this draft.",
+     "source_id": "specs/028-harappa-robustness/spec.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F042-C11",
+   "kind": "requirement",
+   "text": "The headline outcome of an execution is exactly one of SPLIT, UNIFORM-PASS, UNIFORM-FAIL, THIN.",
+   "status": "draft",
+   "boundary": [
+    "SPLIT means one stratum SUPPORTED and the other not; UNIFORM-PASS both SUPPORTED; UNIFORM-FAIL neither SUPPORTED; THIN is the gate-0.4 closure. INVALID and NOT ADJUDICATED are stop classes, not headline patterns. The pattern set is design D-28's, carried verbatim. A SPLIT is reported with its direction (spec \u00a74.2: SPLIT AS PREDICTED, SPLIT REVERSED)."
+   ],
+   "depends_on": [
+    "F042-C08",
+    "F042-C10"
+   ],
+   "assumptions": [
+    "ASM-MARGIN-FAMILY"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "the outcome record's headline word must be derivable from the two per-stratum verdicts (or the gate record) by this claim's definitions alone"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "headline-shopping: choosing the pattern word that flatters the hypothesis after the verdicts are known",
+    "verdict_rule": "the mapping from verdict pairs to pattern words is fixed here, before execution; the outcome record shows the pair and the word together",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-28 pre-registers the headline as one of SPLIT / UNIFORM-PASS / UNIFORM-FAIL / THIN.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F042-C12",
+   "kind": "requirement",
+   "text": "A tablet-supported split is recorded as SPLIT REVERSED.",
+   "status": "draft",
+   "boundary": [
+    "A reversed split still defeats the falsifier (the strata did not behave alike) and is a genuine finding about the layer; what it may not do is be reported as support for a directional hypothesis it contradicts. The pre-written reversed wording is spec \u00a74.3. The split in full: the tablet stratum is SUPPORTED with the seal stratum not SUPPORTED; that pattern does not support the hypothesis of F042-C03."
+   ],
+   "depends_on": [
+    "F042-C03",
+    "F042-C11"
+   ],
+   "assumptions": [
+    "ASM-ARMC-EXPLORATORY"
+   ],
+   "alternatives": [
+    "treating any split as support for 'object type matters' and quietly dropping the direction (refused: the hypothesis was directional because its source clue was)"
+   ],
+   "falsification_tests": [
+    "if the outcome record of a reversed split claims support for F042-C03, that record falsifies compliance with this requirement"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "direction-forgetting after the fact \u2014 the failure mode the pre-written \u00a74.3 wordings exist to prevent",
+    "verdict_rule": "the direction rule is registered here, before execution; the outcome's first paragraph must carry the direction and, for a reversed split, the non-support sentence",
+    "evidence_origin_groups": [
+     "design-packet",
+     "phase393-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-28's hypothesis is directional (seals survive; tablets carry the dependence), sourced from Arm C's recorded dissimilarities.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F042-C13",
+   "kind": "requirement",
+   "text": "Control failure in a stratum is recorded NOT ADJUDICATED.",
+   "status": "draft",
+   "boundary": [
+    "NOT ADJUDICATED is a machinery finding about the stratum's test, not a verdict about the claim; it asserts nothing about the hypothesis. This class is this draft's addition to design D-28's outcome set (DD-042-3), made because the frozen family rules condition every verdict on controls passing and name no word for the contrary case; the freeze confirms or replaces it openly. The class in full: a stratum whose negative or positive controls fail under the frozen definitions takes this class; the execution's headline is NOT ADJUDICATED with the failing control named."
+   ],
+   "depends_on": [
+    "F042-C06",
+    "F042-C10"
+   ],
+   "assumptions": [
+    "ASM-PHASE393-MACHINERY"
+   ],
+   "alternatives": [
+    "folding a control failure into INCONCLUSIVE (refused: it would let a machinery failure masquerade as evidence about the claim)"
+   ],
+   "falsification_tests": [
+    "control outcomes are published per stratum; a verdict word attached to a stratum with a failed control falsifies the outcome record"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a failed control explained away so a verdict can still be quoted",
+    "verdict_rule": "control outcomes are part of the \u00a76 results JSON and precede verdict assignment in the run order",
+    "evidence_origin_groups": [
+     "spec028-design"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/028-harappa-robustness/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 028's verdict rules are each conditioned on the arm's controls passing; the frozen text names no outcome for a control failure.",
+     "source_id": "specs/028-harappa-robustness/spec.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F042-C14",
+   "kind": "requirement",
+   "text": "Period mix is described for each stratum in every outcome product.",
+   "status": "draft",
+   "boundary": [
+    "Description is not control: the outcome wording carries each stratum's recorded preservation distribution and period composition so a reader can see the mixes the verdicts sit on. The period-controlled design is D-26, blocked on the site \u00d7 local-label mapping whose absence Spec 040's dependency-gate record establishes; the two designs are complementary and are not merged here. Period is not controlled under this spec; preservation mix is likewise described for each stratum in every outcome product."
+   ],
+   "depends_on": [
+    "F042-C01"
+   ],
+   "assumptions": [
+    "ASM-DESCRIPTION-NOT-CONTROL"
+   ],
+   "alternatives": [
+    "adding a period stratification to this spec to 'complete' it (refused: the mapping it needs does not exist, and borrowing D-26's question would change this design's registered estimand)"
+   ],
+   "falsification_tests": [
+    "an outcome product lacking either per-stratum description falsifies compliance; a product claiming period control falsifies the boundary"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a stratum difference that is really a period or preservation difference, quoted without its mixes",
+    "verdict_rule": "the descriptions are \u00a76 reporting obligations: their absence from any product is a defect of that product, recorded as such",
+    "evidence_origin_groups": [
+     "phase393-record",
+     "spec040-gate-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/040-d25-g1-chronology-controlled/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 040's dependency-gate record: the site \u00d7 local-label \u2192 coarse-period mapping does not exist (Spec 039's product is per-site label sets; three G1 sites absent), which is why no period control is available to this spec.",
+     "source_id": "specs/040-d25-g1-chronology-controlled/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "reports/phase393_results.json"
+     ]
+    },
+    {
+     "ref": "reports/phase393_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-393's recorded covariate and population data carry the preservation and period descriptions the outcome products must reproduce per stratum.",
+     "source_id": "reports/phase393_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F042-C15",
+   "kind": "requirement",
+   "text": "No outcome under Spec 042 establishes a mechanism for any difference between the strata.",
+   "status": "draft",
+   "boundary": [
+    "Also excluded by this boundary, and stated wherever an outcome is stated: any conclusion that a population moved (Spec 027's ecological-fallacy fence), and any conclusion about what any sign means. Genre, administrative practice, and chronology remain live rival explanations for a split, named as such in the outcome record; this test localises a dependence and adjudicates nothing among them."
+   ],
+   "depends_on": [
+    "F042-C01",
+    "F042-C03",
+    "F042-C04",
+    "F042-C11"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "a mechanism narrative attached to a split because the split 'suggests' one (refused: suggestion is not adjudication, and the rivals are named, not eliminated)"
+   ],
+   "falsification_tests": [
+    "inspection of every Spec 042 output: a mechanism, movement, or meaning claim in any output falsifies compliance and is corrected by dated addendum, never by silent edit"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-MOVEMENT"
+    ],
+    "strongest_rival": "the reading in which localising the dependence to tablets explains it",
+    "verdict_rule": "outputs are judged against this boundary at execution close; violations are recorded defects, and the claim consequence is limited to the stratum-localisation statement of F042-C01",
+    "evidence_origin_groups": [
+     "spec027-fence",
+     "phase393-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/027-movement-culture-language/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 027's \u00a76.4/\u00a711 fence: association-level results license no movement-of-people conclusion; the fence binds this variant's wording as it bound the originals'.",
+     "source_id": "specs/027-movement-culture-language/spec.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  }
+ ]
+}

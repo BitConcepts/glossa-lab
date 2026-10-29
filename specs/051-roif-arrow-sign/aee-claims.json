@@ -1,0 +1,1156 @@
+{
+ "spec": "051-roif-arrow-sign",
+ "register_version": "0.7-draft",
+ "note": "Draft register for Spec 051 (design D-10, PR #195 packet), opened 2026-10-21 under the runnable-experiments campaign plan approved by the owner as written the same date (D-10 = member 9; consumer of Asset B built inside Spec 047 per E-6). Conventions as in Specs 032\u2013047: requirement claims carry no falsification test where a gate or inspection is the operative check; boundaries carry the conditions under which each claim holds; evidence items carry observed_at from this draft because the cited facts were verified first-hand at drafting. The AEE lifecycle hooks have NOT run on this register; they are the freeze gate (tasks L4), and any recovery round they force changes claim text before any freeze digest is computed. ASM- ids name the assumptions each claim stands on: ASM-PHASE104-RECORD (Phase-104's evaluation is the claim's record of standing and the census of record), ASM-HOLDAT-LAYER (the Holdat corpus layer Phase-104 counted is the counting layer of record), ASM-GAZETTEER-SPINE (the Spec 027 Stage 0 gazetteer, as pinned, is the site universe Asset B classifies), ASM-ASSETB-CONTRACT (Spec 047 \u00a74's contract \u2014 form, classes, groupings, testable rule, digest discipline \u2014 governs the consumed asset), ASM-ADMIN-AS-CITY (the administrative class operationalises the design's 'great-city sites' wording, per spec \u00a74.2's stated boundary), ASM-SHARES-CONTROL (comparing shares rather than counts, with the size/class regression comparison, is the design's size control), ASM-ROLE-COEXISTENCE (the sign's recorded positional role and a site-function distribution are separately scored; neither verdict is a verdict on the other gloss), ASM-GATES-BEFORE-OUTCOME (integrity, asset, census, and floor gates precede any outcome quantity), ASM-APPEND-ONLY (outcomes append; frozen records are never edited), ASM-ROIF-GATE (campaign R-7 holds this member's results internal until the owner's publication act). FREEZE (2026-10-21): the AEE lifecycle hooks ran at the freeze act under aee 1.5.0; the full record is in aee/freeze-aee-note.md. Before the hooks ran, the freeze's own rulings were carried into the register: DD-051-14's Asset B pin-timing ruling into F051-C10 (text, boundary, falsification test, evidence), DD-051-13's counting-layer posture into F051-C12's boundary, DD-051-10's seed 20261021 and DD-051-11's Fisher ruling into F051-C14, and DD-051-10's class-addition seed with DD-051-8's confirmation into F051-C15's boundary. Rounds at after_specify: a loadability recovery from 0.5-draft to 0.6-draft (every evidence item normalised to kind observed and source_quality artifact \u2014 the draft's free-form kind and source_quality labels are not engine values); 75 failure modes over 0.6-draft (19 irreducibility challenges recorded as coverage_gap, 34 shared-evidence independence-unmodelled records, 1 negation-conflict challenge (C07/C10), 1 counterexample challenge (C18), 20 FR-2.3 draft-cap records); a recovery to 0.7-draft restating the 19 challenged claim texts as single head propositions with their carried clauses moved into the boundaries verbatim-in-substance, and mutual independent_of declarations on every multi-item claim's evidence; then 20 draft-cap records only, zero correctness failure modes, minimum propagated 0.72. after_plan and after_tasks clean at first pass on the same terms. The engine outcome word reads iterate solely from the draft-cap records (gate reading DD-051-16, adopting DD-038-10).",
+ "claims": [
+  {
+   "id": "F051-C01",
+   "kind": "hypothesis",
+   "text": "An outcome under Spec 051 states only how the arrow sign M391 distributes, by share of inscriptions, across the frozen site-function classes of Asset B at the testable spine sites of the Holdat layer of record.",
+   "status": "draft",
+   "boundary": [
+    "The scope is sign M391 in the Holdat layer of record, at Asset B's testable sites. It excludes any statement about what the sign meant, about any other sign, corpus, or layer, about sites outside the gazetteer spine, and about Roif's ledger thesis (Spec 047's claim), which this outcome does not touch."
+   ],
+   "depends_on": [],
+   "assumptions": [
+    "ASM-PHASE104-RECORD"
+   ],
+   "alternatives": [
+    "the pooled Spec 047 result could be read as already answering the arrow question (it cannot: its measures pool all inscriptions and Roif's named ledger classes, never this sign's share)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified in scope if any Spec 051 output states a conclusion about a sign, population, layer, or question outside the M391 share distribution as bounded here"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-MEANING"
+    ],
+    "strongest_rival": "the alternative reading in which a distribution verdict licenses a claim about the sign's meaning or about the whole corpus",
+    "verdict_rule": "scope is judged by inspection of every Spec 051 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding",
+    "evidence_origin_groups": [
+     "phase104-record",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-10 (PR #195 packet, \u00a7D-10, read in full at this draft): the question, hypothesis (arrow share higher at gateway/border sites), falsifier (share at gateway/border at or below the great-city share once totals are controlled), data, method (per-site shares, exact test and permutation control, shares regressed on size alone), criteria (SUPPORTED at ratio \u2265 1.5 at the 5% level with class adding power beyond size; NOT SUPPORTED at ratio \u2264 1.0 or size alone explaining; INCONCLUSIVE between, or fewer than 3 gateway/border sites carrying the sign), and limits (distribution fit is not the gloss; the two roles could coexist).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/reports/phase104_claims_evaluation.json"
+     ]
+    },
+    {
+     "ref": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-104 evaluation (SHA-256 2d0b83e8\u2026, recomputed at this draft by two routes): manual_003 stays untested, rule RULE-SITE; evidence records the M391 Holdat distribution {Mohenjo-daro 75, Harappa 52, Dholavira 16, Lothal 14, Surkotada 11, Kalibangan 10, Chanhu-daro 10, Banawali 3, Rakhigarhi 2} (total 193) and 'M391 semantic role per Holdat roles file: CASE_MARKER_SUFFIX (is_ending=True)'.",
+     "source_id": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F051-C02",
+   "kind": "requirement",
+   "text": "The claim indus_valley_script_deciphered_from_myth_65ff0a26_manual_003 stands UNTESTED on its Phase-104 record under RULE-SITE.",
+   "status": "draft",
+   "boundary": [
+    "These are the claim file's and Phase-104's recorded statements, quoted at this draft from the pinned files. The UNTESTED standing is a statement about the missing site-typology input, not about the proposition's truth; this spec's outcome appends to the claim's record as a dated entry and does not edit the frozen record. Carried from the draft text: its falsification condition is 'If arrow sign does not cluster at gateway/border sites'; its normalised proposition is that the arrow sign (t\u012br) encodes border enforcement or guild authority."
+   ],
+   "depends_on": [
+    "F051-C01"
+   ],
+   "assumptions": [
+    "ASM-PHASE104-RECORD",
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "recompute SHA-256 of the claim file (bc22d6f0\u2026) and of the Phase-104 evaluation (2d0b83e8\u2026) and read the manual_003 entries; any mismatch falsifies this statement and voids the draft's basis"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the record could have been misread or superseded (the Spec 040 stale-pin precedent shows draft-cited pins can be wrong; both pins here were recomputed by two routes at this draft)",
+    "verdict_rule": "the statement stands or falls on the pinned files hashing to their recorded values with the stated entries in them",
+    "evidence_origin_groups": [
+     "phase104-record",
+     "claim-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Claim record of manual_003 (SHA-256 bc22d6f0\u2026, recomputed at this draft by two routes): normalised claim 'The arrow sign (t\u012br) encodes border enforcement or guild authority', proposed value 't\u012br (enforcement at borders)', falsification condition 'If arrow sign does not cluster at gateway/border sites', claim_status untested; its not-understood text names the missing site classification and the great-city lean of the counts.",
+     "source_id": "glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/reports/phase104_claims_evaluation.json"
+     ]
+    },
+    {
+     "ref": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-104 evaluation (SHA-256 2d0b83e8\u2026, recomputed at this draft by two routes): manual_003 stays untested, rule RULE-SITE; evidence records the M391 Holdat distribution {Mohenjo-daro 75, Harappa 52, Dholavira 16, Lothal 14, Surkotada 11, Kalibangan 10, Chanhu-daro 10, Banawali 3, Rakhigarhi 2} (total 193) and 'M391 semantic role per Holdat roles file: CASE_MARKER_SUFFIX (is_ending=True)'.",
+     "source_id": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F051-C03",
+   "kind": "requirement",
+   "text": "The recorded census of M391 in the Holdat corpus totals 193 occurrences over nine sites.",
+   "status": "draft",
+   "boundary": [
+    "These are recorded counts in the pinned Phase-104 evaluation and roles file, not counts computed at this draft. The design text quotes five of the nine sites; this claim carries the full nine-site record as the census gate 0.4 must reproduce from the counting layer. Carried from the draft text: the per-site counts are Mohenjo-daro 75, Harappa 52, Dholavira 16, Lothal 14, Surkotada 11, Kalibangan 10, Chanhu-daro 10, Banawali 3, Rakhigarhi 2; the Holdat roles file independently records M391 with count 193."
+   ],
+   "depends_on": [
+    "F051-C02"
+   ],
+   "assumptions": [
+    "ASM-PHASE104-RECORD",
+    "ASM-HOLDAT-LAYER"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "gate 0.4 re-derives the per-site counts from the pinned counting-layer export; any value differing from this census stops the run, so a wrong census here cannot survive execution silently"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the Phase-104 evidence string could misstate its own corpus (the reproduction gate exists because a recorded census is a claim, not a measurement by this spec)",
+    "verdict_rule": "the statement stands on the two pinned records agreeing at 193, and is put at risk by design at gate 0.4, where reproduction is exact or the run closes",
+    "evidence_origin_groups": [
+     "phase104-record",
+     "holdat-roles"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-104 evaluation (SHA-256 2d0b83e8\u2026, recomputed at this draft by two routes): manual_003 stays untested, rule RULE-SITE; evidence records the M391 Holdat distribution {Mohenjo-daro 75, Harappa 52, Dholavira 16, Lothal 14, Surkotada 11, Kalibangan 10, Chanhu-daro 10, Banawali 3, Rakhigarhi 2} (total 193) and 'M391 semantic role per Holdat roles file: CASE_MARKER_SUFFIX (is_ending=True)'.",
+     "source_id": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "outputs/analysis/holdatllc_sign_roles.json"
+     ]
+    },
+    {
+     "ref": "outputs/analysis/holdatllc_sign_roles.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Holdat sign-roles file (SHA-256 3f1c24ed\u2026, recomputed at this draft by two routes): M391 \u2014 holdatllc_role CASE_MARKER_SUFFIX, mapped_to TERMINAL, count 193, is_ending true, avg_position 0.6; the count agrees with the Phase-104 distribution total.",
+     "source_id": "outputs/analysis/holdatllc_sign_roles.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/reports/phase104_claims_evaluation.json"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F051-C04",
+   "kind": "hypothesis",
+   "text": "Within the test population of Spec 051, the arrow sign's pooled administrative/trade/gateway share exceeds its domestic/ritual contrast share.",
+   "status": "draft",
+   "boundary": [
+    "The hypothesis is directional in both clauses because the claim's falsifier is directional (gateway/border clustering) and the recorded counts lean toward the great cities. It is a statement about this layer, this sign, and Asset B's frozen classes, and about nothing else: not about the sign's meaning, and not about any other corpus. Carried from the draft text: its gateway/border share likewise exceeds its administrative share; both clauses are directional, per the claim's falsifier."
+   ],
+   "depends_on": [
+    "F051-C01",
+    "F051-C03"
+   ],
+   "assumptions": [
+    "ASM-ASSETB-CONTRACT",
+    "ASM-SHARES-CONTROL"
+   ],
+   "alternatives": [
+    "the shares fit the city reading instead (the falsifier, F051-C05)",
+    "the shares track site size alone, as the case-ending rival predicts (scored under F051-C15)"
+   ],
+   "falsification_tests": [
+    "run the \u00a75 test: if the pooled ratio is at or below 1.0, or the gateway/border share is at or below the administrative share, or size alone explains the shares, this hypothesis is not supported"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-MEANING"
+    ],
+    "strongest_rival": "the strongest rival is the falsifier itself in its city form: the sign is a great-city sign whose raw-count lean survives size control",
+    "verdict_rule": "SUPPORTED for the hypothesis iff the \u00a75.4 partition returns SUPPORTED; any other adjudicated outcome does not support it",
+    "evidence_origin_groups": [
+     "phase104-record",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-10 (PR #195 packet, \u00a7D-10, read in full at this draft): the question, hypothesis (arrow share higher at gateway/border sites), falsifier (share at gateway/border at or below the great-city share once totals are controlled), data, method (per-site shares, exact test and permutation control, shares regressed on size alone), criteria (SUPPORTED at ratio \u2265 1.5 at the 5% level with class adding power beyond size; NOT SUPPORTED at ratio \u2264 1.0 or size alone explaining; INCONCLUSIVE between, or fewer than 3 gateway/border sites carrying the sign), and limits (distribution fit is not the gloss; the two roles could coexist).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/reports/phase104_claims_evaluation.json"
+     ]
+    },
+    {
+     "ref": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-104 evaluation (SHA-256 2d0b83e8\u2026, recomputed at this draft by two routes): manual_003 stays untested, rule RULE-SITE; evidence records the M391 Holdat distribution {Mohenjo-daro 75, Harappa 52, Dholavira 16, Lothal 14, Surkotada 11, Kalibangan 10, Chanhu-daro 10, Banawali 3, Rakhigarhi 2} (total 193) and 'M391 semantic role per Holdat roles file: CASE_MARKER_SUFFIX (is_ending=True)'.",
+     "source_id": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F051-C05",
+   "kind": "requirement",
+   "text": "A pooled ratio not exceeding 1.0 is recorded as NOT SUPPORTED.",
+   "status": "draft",
+   "boundary": [
+    "The three conditions are the claim's own falsifier (no gateway/border clustering), the design's great-city comparison, and the design's size-alone clause. NOT SUPPORTED here is a distributional verdict about this layer and population; it asserts nothing about what the sign meant. Carried from the draft text: a gateway/border share not exceeding the administrative share likewise returns NOT SUPPORTED; site size alone explaining the per-site shares likewise returns NOT SUPPORTED; in each case the record states that the distribution fits the rival reading."
+   ],
+   "depends_on": [
+    "F051-C04"
+   ],
+   "assumptions": [
+    "ASM-SHARES-CONTROL"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "if the \u00a75 quantities meet none of the three conditions yet the outcome record carries NOT SUPPORTED, or meet one yet it does not, that record falsifies compliance with this requirement"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a border-leaning pooled figure quoted without its city comparison or its size rival, so a rival-fitting distribution is reported as support",
+    "verdict_rule": "the outcome record must carry the NOT SUPPORTED word and name the firing condition whenever any condition holds, per spec \u00a76",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-10 (PR #195 packet, \u00a7D-10, read in full at this draft): the question, hypothesis (arrow share higher at gateway/border sites), falsifier (share at gateway/border at or below the great-city share once totals are controlled), data, method (per-site shares, exact test and permutation control, shares regressed on size alone), criteria (SUPPORTED at ratio \u2265 1.5 at the 5% level with class adding power beyond size; NOT SUPPORTED at ratio \u2264 1.0 or size alone explaining; INCONCLUSIVE between, or fewer than 3 gateway/border sites carrying the sign), and limits (distribution fit is not the gloss; the two roles could coexist).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F051-C06",
+   "kind": "requirement",
+   "text": "Spec 051 consumes Asset B as frozen by Spec 047.",
+   "status": "draft",
+   "boundary": [
+    "The classification, its two-source rule, and its dispute handling are Spec 047's step-1 act (campaign E-6). Any defect found in the asset under this spec is handled by Spec 047 \u00a74.6's unsound-asset rule (the cluster closes as not-run), never by a local repair or a substitute classification. Carried from the draft text: this spec does not build, re-derive, adjust, or supplement any site classification; a defect in the asset is handled by Spec 047 \u00a74.6's unsound-asset rule, never by a local repair."
+   ],
+   "depends_on": [
+    "F051-C01"
+   ],
+   "assumptions": [
+    "ASM-ASSETB-CONTRACT"
+   ],
+   "alternatives": [
+    "building a D-10-specific classification so the great-city comparison can be run literally (refused: two classifications would destroy the campaign's comparability rule R-2, and the design hangs both Roif distribution tests on one asset)"
+   ],
+   "falsification_tests": [
+    "inspection: any Spec 051 product that classifies a site, alters a grouping, or substitutes another typology falsifies compliance with this requirement"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "consumer-side re-classification presented as 'just operationalising' the design",
+    "verdict_rule": "compliance is judged by file inspection at execution close: classes in every product trace to the pinned asset file and to no other source",
+    "evidence_origin_groups": [
+     "assetb-contract",
+     "campaign-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/047-roif-ledger-distribution/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 047's draft (branch spec-047-roif-ledger-distribution-draft, PR #246; \u00a74 read in full at this draft): Asset B's contract \u2014 file form (\u00a74.1), six classes and the groupings fixed 'for the test and for D-10's use' (\u00a74.2), the two-source agreement and testable rules (\u00a7\u00a74.3\u20134.4), freeze point and digest pinning with the consumer rule \u2014 dependents name the digest and re-assert it at step 0, mismatch stops the consumer as INVALID (\u00a74.6).",
+     "source_id": "specs/047-roif-ledger-distribution/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "campaign-plan-2026-10-21"
+     ]
+    },
+    {
+     "ref": "2026-10-21-runnable-experiments-campaign-plan.md (owner-approved)",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The campaign plan approved as written 2026-10-21: D-10 is member 9, consumes Asset B (Part 3); assets are built once and consumed by identical digest (R-2); Roif-claim members 2, 3, 8, 9 execute with results held, never surfaced (E-2, R-7, Part 8); builders freeze before dependents (Part 4, Wave 2).",
+     "source_id": "campaign-plan-2026-10-21",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/047-roif-ledger-distribution/spec.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F051-C07",
+   "kind": "requirement",
+   "text": "Asset B, as consumed, is the file specs/047-roif-ledger-distribution/asset-b/site-functions.jsonl with exactly 30 rows.",
+   "status": "draft",
+   "boundary": [
+    "This is Spec 047 \u00a74.1's form, restated for the consumer and checked at gate 0.3. Corpus sites outside the spine are outside the asset by rule and are accounted for in the gate-0.5 join census, never added to the asset. Carried from the draft text: one row per gazetteer program_site_id; fields exactly program_site_id, site_name_as_published, status, primary_class, source_a, source_b, notes; each of source_a / source_b is either null or an object with exactly citation, locator, stated_function, mapped_class (Spec 047 \u00a74.1)."
+   ],
+   "depends_on": [
+    "F051-C06"
+   ],
+   "assumptions": [
+    "ASM-ASSETB-CONTRACT",
+    "ASM-GAZETTEER-SPINE"
+   ],
+   "alternatives": [
+    "extending the asset to corpus sites the spine lacks \u2014 Dholavira, Chanhu-daro, Rakhigarhi among them (refused: the asset's universe is the spine as frozen; extension is a different act)"
+   ],
+   "falsification_tests": [
+    "gate 0.3 either exhibits exactly 30 rows matching the pinned cluster list in the contract fields, or the run stops INVALID; the exhibited file is checkable against the pinned gazetteer by any reader"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "silent form drift: an asset re-issued with extra rows or fields between the builder's freeze and this spec's run",
+    "verdict_rule": "the gate-0.3 form check is the judge: any deviation from this claim's form stops the execution before a class is read",
+    "evidence_origin_groups": [
+     "assetb-contract",
+     "gazetteer-spine"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/047-roif-ledger-distribution/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 047's draft (branch spec-047-roif-ledger-distribution-draft, PR #246; \u00a74 read in full at this draft): Asset B's contract \u2014 file form (\u00a74.1), six classes and the groupings fixed 'for the test and for D-10's use' (\u00a74.2), the two-source agreement and testable rules (\u00a7\u00a74.3\u20134.4), freeze point and digest pinning with the consumer rule \u2014 dependents name the digest and re-assert it at step 0, mismatch stops the consumer as INVALID (\u00a74.6).",
+     "source_id": "specs/047-roif-ledger-distribution/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "data/movement/gazetteer_rows.jsonl"
+     ]
+    },
+    {
+     "ref": "data/movement/gazetteer_rows.jsonl",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 027 Stage 0 gazetteer of record (SHA-256 5ac76a30\u2026, recomputed at this draft by two routes): 36 source-assertion rows over 30 distinct program_site_id clusters, counted at this draft. The cluster list carries no Dholavira, Chanhu-daro, or Rakhigarhi cluster.",
+     "source_id": "data/movement/gazetteer_rows.jsonl",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/047-roif-ledger-distribution/spec.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F051-C08",
+   "kind": "requirement",
+   "text": "The comparison groupings are those fixed in Spec 047 \u00a74.2 for D-10's use.",
+   "status": "draft",
+   "boundary": [
+    "Asset B contains no great-city or size class, and this spec invents none: site size is the rival variable of \u00a75.3 and cannot also define a class. Whether any given great centre is administrative, mixed/unknown, or another class is Asset B's frozen output; this draft pre-assigns no site. The design's literal gateway-versus-city discrimination is carried by the R_city verdict clause (F051-C13, F051-C16). Carried from the draft text: pooled ADMIN-TRADE-GATEWAY = {gateway/border, administrative, port/trade} against contrast = {domestic, ritual}, with mixed/unknown in neither; the design's 'great-city sites' wording is operationalised as the administrative class, with that translation stated as a boundary wherever the comparison is stated (DD-051-1, DD-051-2)."
+   ],
+   "depends_on": [
+    "F051-C06",
+    "F051-C07"
+   ],
+   "assumptions": [
+    "ASM-ASSETB-CONTRACT",
+    "ASM-ADMIN-AS-CITY"
+   ],
+   "alternatives": [
+    "reading the design's 'great-city' as a size-defined set (the five largest sites) for the verdict (refused as circular: size is the rival under test; the five largest are reported as a descriptive sensitivity under F051-C18)"
+   ],
+   "falsification_tests": [
+    "inspection: any Spec 051 product that groups classes differently from this claim, or states the city comparison without the translation boundary, falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "silent re-mapping: the design's words quietly re-drawn onto the asset's classes so the translation is invisible to a reader",
+    "verdict_rule": "the groupings and the translation are frozen in this register before any class is read; products are judged against them by inspection",
+    "evidence_origin_groups": [
+     "assetb-contract",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/047-roif-ledger-distribution/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 047's draft (branch spec-047-roif-ledger-distribution-draft, PR #246; \u00a74 read in full at this draft): Asset B's contract \u2014 file form (\u00a74.1), six classes and the groupings fixed 'for the test and for D-10's use' (\u00a74.2), the two-source agreement and testable rules (\u00a7\u00a74.3\u20134.4), freeze point and digest pinning with the consumer rule \u2014 dependents name the digest and re-assert it at step 0, mismatch stops the consumer as INVALID (\u00a74.6).",
+     "source_id": "specs/047-roif-ledger-distribution/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md"
+     ]
+    },
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-10 (PR #195 packet, \u00a7D-10, read in full at this draft): the question, hypothesis (arrow share higher at gateway/border sites), falsifier (share at gateway/border at or below the great-city share once totals are controlled), data, method (per-site shares, exact test and permutation control, shares regressed on size alone), criteria (SUPPORTED at ratio \u2265 1.5 at the 5% level with class adding power beyond size; NOT SUPPORTED at ratio \u2264 1.0 or size alone explaining; INCONCLUSIVE between, or fewer than 3 gateway/border sites carrying the sign), and limits (distribution fit is not the gloss; the two roles could coexist).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/047-roif-ledger-distribution/spec.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F051-C09",
+   "kind": "requirement",
+   "text": "Test entry requires an Asset B row with status AGREED.",
+   "status": "draft",
+   "boundary": [
+    "This is Spec 047 \u00a7\u00a74.3\u20134.4's testable rule, carried unchanged. Excluded sites' M391 counts are published with the outcome where the join census carries them, so the verdict's coverage is inspectable; no excluded site is rescued by judgement after counts are seen. Carried from the draft text: the row's primary_class must not be mixed/unknown; DISAGREED, SINGLE-SOURCE, NO-SOURCE, plus AGREED mixed/unknown sites are excluded by rule, listed in full with the outcome, with their M391 counts where the join census carries them."
+   ],
+   "depends_on": [
+    "F051-C07"
+   ],
+   "assumptions": [
+    "ASM-ASSETB-CONTRACT"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "the step-0 record either derives the testable set by this rule from the exhibited asset or the run stops; a test population containing a non-testable site falsifies the outcome record"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "selective inclusion: a disagreed site admitted because its class would help one side of the comparison",
+    "verdict_rule": "the testable set is derived mechanically at gate 0.3 and published in the gate-0.6 census before any share exists",
+    "evidence_origin_groups": [
+     "assetb-contract"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/047-roif-ledger-distribution/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 047's draft (branch spec-047-roif-ledger-distribution-draft, PR #246; \u00a74 read in full at this draft): Asset B's contract \u2014 file form (\u00a74.1), six classes and the groupings fixed 'for the test and for D-10's use' (\u00a74.2), the two-source agreement and testable rules (\u00a7\u00a74.3\u20134.4), freeze point and digest pinning with the consumer rule \u2014 dependents name the digest and re-assert it at step 0, mismatch stops the consumer as INVALID (\u00a74.6).",
+     "source_id": "specs/047-roif-ledger-distribution/spec.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F051-C10",
+   "kind": "requirement",
+   "text": "Asset B is consumed by a digest pin whose source this freeze fixes as Spec 047's step-1 outcome record.",
+   "status": "draft",
+   "boundary": [
+    "No Asset B byte-digest exists at this freeze, and none is invented here: the asset is built at Spec 047's execution step 1 (Wave 3 group 1), after both freezes. This freeze quotes Spec 047's freeze digest 8501feabb7beee621e99ae48529e5a74c0788fb0619ac49c615912e13914cdc7 as the contract anchor and fixes the pin source as Spec 047's step-1 outcome record, specs/047-roif-ledger-distribution/outcome.md, which will record the asset's SHA-256 digest with its row, testable, and per-status counts (Spec 047 \u00a74.6) \u2014 freeze ruling DD-051-14. The INVALID-on-mismatch closure is Spec 047 \u00a74.6's consumer rule, pre-written in spec \u00a76; fail-closed semantics are unchanged. Carried from the draft text: execution re-asserts the digest that record carries at gate 0.2; a mismatch closes the run as INVALID; an unfrozen or unsound asset closes it as NOT-RUN by dependency closure (DD-051-14)."
+   ],
+   "depends_on": [
+    "F051-C06",
+    "F051-C07"
+   ],
+   "assumptions": [
+    "ASM-ASSETB-CONTRACT",
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [
+    "pinning the asset by branch, path, or description instead of by digest (refused: identity by description is how two tests come to run on two classifications while claiming one)"
+   ],
+   "falsification_tests": [
+    "digest comparison across Spec 047's step-1 outcome record (the fixed pin source) and the execution's gate-0.2 record: any inequality lands in one of this claim's two pre-written closures, or compliance is falsified"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "digest drift: the asset quietly re-issued after this spec has pinned it, so the two Roif distribution tests no longer share one classification",
+    "verdict_rule": "identity is judged by digest equality (campaign R-2); the gate-0.2 record shows the exhibited digest and the pin side by side",
+    "evidence_origin_groups": [
+     "assetb-contract",
+     "campaign-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/047-roif-ledger-distribution/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 047 as frozen on main (freeze digest 8501feabb7beee621e99ae48529e5a74c0788fb0619ac49c615912e13914cdc7; \u00a74 re-read in full at this freeze against the draft restatement \u2014 no contract drift in form, classes, groupings, testable rule, or the \u00a74.6 consumer rule): Asset B's contract \u2014 file form (\u00a74.1), six classes and the groupings fixed 'for the test and for D-10's use' (\u00a74.2), the two-source agreement and testable rules (\u00a7\u00a74.3\u20134.4), freeze point and digest pinning with the consumer rule \u2014 dependents name the digest and re-assert it at step 0, mismatch stops the consumer as INVALID (\u00a74.6); the digest is recorded in the step-1 outcome record.",
+     "source_id": "specs/047-roif-ledger-distribution/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "campaign-plan-2026-10-21"
+     ]
+    },
+    {
+     "ref": "2026-10-21-runnable-experiments-campaign-plan.md (owner-approved)",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The campaign plan approved as written 2026-10-21: D-10 is member 9, consumes Asset B (Part 3); assets are built once and consumed by identical digest (R-2); Roif-claim members 2, 3, 8, 9 execute with results held, never surfaced (E-2, R-7, Part 8); builders freeze before dependents (Part 4, Wave 2).",
+     "source_id": "campaign-plan-2026-10-21",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/047-roif-ledger-distribution/spec.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F051-C11",
+   "kind": "requirement",
+   "text": "The test population is the set of testable spine sites carrying at least one joined inscription in the counting layer.",
+   "status": "draft",
+   "boundary": [
+    "The population follows from the asset's universe (the gazetteer spine) and the join census of gate 0.5; the excluded occurrences are a stated property of the verdict's coverage, not a detail. Testable sites with no joined inscription are listed as NO-CORPUS-COVERAGE and enter no share. Carried from the draft text: M391 occurrences at non-spine sites \u2014 28 of the recorded 193, at Dholavira (16), Chanhu-daro (10), Rakhigarhi (2) on the present record \u2014 are outside the test by rule, listed with their counts in every outcome; testable sites with no joined inscription are listed as NO-CORPUS-COVERAGE."
+   ],
+   "depends_on": [
+    "F051-C09"
+   ],
+   "assumptions": [
+    "ASM-GAZETTEER-SPINE",
+    "ASM-HOLDAT-LAYER"
+   ],
+   "alternatives": [
+    "admitting non-spine sites under an ad-hoc classification so their counts can vote (refused under F051-C06: no classification exists for them in the frozen asset)"
+   ],
+   "falsification_tests": [
+    "the gate-0.5 census accounts for every counting-layer record exactly once and names the non-spine sites with their M391 counts; a population containing a non-spine or non-testable site falsifies the outcome record"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "coverage shrinkage quoted without its size: a verdict stated as if it covered the sign's whole recorded distribution",
+    "verdict_rule": "the census is published with the outcome either way, and \u00a78 reporting forces the non-spine list into every product's headline record",
+    "evidence_origin_groups": [
+     "gazetteer-spine",
+     "phase104-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "data/movement/gazetteer_rows.jsonl",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 027 Stage 0 gazetteer of record (SHA-256 5ac76a30\u2026, recomputed at this draft by two routes): 36 source-assertion rows over 30 distinct program_site_id clusters, counted at this draft. The cluster list carries no Dholavira, Chanhu-daro, or Rakhigarhi cluster.",
+     "source_id": "data/movement/gazetteer_rows.jsonl",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/reports/phase104_claims_evaluation.json"
+     ]
+    },
+    {
+     "ref": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-104 evaluation (SHA-256 2d0b83e8\u2026, recomputed at this draft by two routes): manual_003 stays untested, rule RULE-SITE; evidence records the M391 Holdat distribution {Mohenjo-daro 75, Harappa 52, Dholavira 16, Lothal 14, Surkotada 11, Kalibangan 10, Chanhu-daro 10, Banawali 3, Rakhigarhi 2} (total 193) and 'M391 semantic role per Holdat roles file: CASE_MARKER_SUFFIX (is_ending=True)'.",
+     "source_id": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "data/movement/gazetteer_rows.jsonl"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F051-C12",
+   "kind": "requirement",
+   "text": "The counting layer of record is the Holdat corpus layer Phase-104 counted.",
+   "status": "draft",
+   "boundary": [
+    "The layer is database-held ('as held in the database', the Specs 044/048 posture), so no file pin is stated at this freeze. The one per-symbol site-distribution file on main covers five sites and carries no M391 row (verified at this draft), so it is not the layer and is not pinned as one. Ruled at the freeze (DD-051-13): the identify/export/pin-at-step-0 posture stands as drafted \u2014 no file-pinned layer is substituted and no separate canonical export form is named; the step-0 record states the export's file form and sort order as produced, and the digest plus exact census reproduction are the identity test. Carried from the draft text: the layer is identified at step 0, exported in full, pinned by digest in the step-0 record; the run proceeds only if that export reproduces the recorded M391 census exactly (gate 0.4; DD-051-13)."
+   ],
+   "depends_on": [
+    "F051-C03"
+   ],
+   "assumptions": [
+    "ASM-HOLDAT-LAYER",
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [
+    "counting from the five-site distribution file because it is the pinnable file at hand (refused: it cannot reproduce the census \u2014 its M391 row does not exist)"
+   ],
+   "falsification_tests": [
+    "gate 0.4 is the operational test: the exported layer's recomputed per-site counts either equal the \u00a71 census site by site (total 193) or the run closes INVALID before any share exists"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "layer substitution: a convenient neighbouring layer counted in place of the layer the recorded census describes, with the difference never stated",
+    "verdict_rule": "identity is judged by exact census reproduction from the pinned export, not by the layer's name or provenance description",
+    "evidence_origin_groups": [
+     "phase104-record",
+     "holdat-roles"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-104 evaluation (SHA-256 2d0b83e8\u2026, recomputed at this draft by two routes): manual_003 stays untested, rule RULE-SITE; evidence records the M391 Holdat distribution {Mohenjo-daro 75, Harappa 52, Dholavira 16, Lothal 14, Surkotada 11, Kalibangan 10, Chanhu-daro 10, Banawali 3, Rakhigarhi 2} (total 193) and 'M391 semantic role per Holdat roles file: CASE_MARKER_SUFFIX (is_ending=True)'.",
+     "source_id": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "outputs/analysis/holdatllc_sign_roles.json"
+     ]
+    },
+    {
+     "ref": "outputs/analysis/holdatllc_sign_roles.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Holdat sign-roles file (SHA-256 3f1c24ed\u2026, recomputed at this draft by two routes): M391 \u2014 holdatllc_role CASE_MARKER_SUFFIX, mapped_to TERMINAL, count 193, is_ending true, avg_position 0.6; the count agrees with the Phase-104 distribution total.",
+     "source_id": "outputs/analysis/holdatllc_sign_roles.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/reports/phase104_claims_evaluation.json"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F051-C13",
+   "kind": "requirement",
+   "text": "For each test-population site the arrow share is its M391 occurrences divided by its inscriptions.",
+   "status": "draft",
+   "boundary": [
+    "Aggregate shares (occurrences pooled over inscriptions pooled, per side) are the design's shares-not-counts construction: site totals are the exposure control. Per-site shares are published with their counts under \u00a78, so the aggregates can be recomputed and their small-site components seen. Carried from the draft text: R is the pooled class's aggregate share over the contrast class's; R_city is the gateway/border class's aggregate share over the administrative class's; every per-class aggregate share is reported beside them."
+   ],
+   "depends_on": [
+    "F051-C09",
+    "F051-C11",
+    "F051-C12"
+   ],
+   "assumptions": [
+    "ASM-SHARES-CONTROL"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "the measures are mechanical from the gate-0.6 census counts; any reported R or R_city not following these definitions from the published counts falsifies the outcome record"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "raw-count comparison presented as a distribution result \u2014 the failure the design's shares construction exists to prevent, and the reading the \u00a71 city lean invites",
+    "verdict_rule": "the definitions are frozen here before any share exists; verdicts are recomputed from the published counts by any reader",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-10 (PR #195 packet, \u00a7D-10, read in full at this draft): the question, hypothesis (arrow share higher at gateway/border sites), falsifier (share at gateway/border at or below the great-city share once totals are controlled), data, method (per-site shares, exact test and permutation control, shares regressed on size alone), criteria (SUPPORTED at ratio \u2265 1.5 at the 5% level with class adding power beyond size; NOT SUPPORTED at ratio \u2264 1.0 or size alone explaining; INCONCLUSIVE between, or fewer than 3 gateway/border sites carrying the sign), and limits (distribution fit is not the gloss; the two roles could coexist).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F051-C14",
+   "kind": "requirement",
+   "text": "Significance for R is judged by the label-shuffling permutation test at the freeze-recorded seed 20261021.",
+   "status": "draft",
+   "boundary": [
+    "The design specifies 'an exact test and a permutation control'; the permutation is verdict-bearing (as in Spec 047's sibling design) and the exact test is reported. Ruled at the freeze (DD-051-11): the Fisher exact test's draft status is confirmed \u2014 computed and reported, not verdict-bearing. The seed value is fixed at the freeze as 20261021 (DD-051-10), before any share exists. Carried from the draft text: site class labels are shuffled across the test-population sites 9,999 times, rejecting at the 5% level; a Fisher exact test on the pooled 2 \u00d7 2 table is computed, reported beside the permutation result, not verdict-bearing (DD-051-10, DD-051-11)."
+   ],
+   "depends_on": [
+    "F051-C13"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [
+    "letting whichever of the two tests flatters the outcome carry the verdict after the fact (refused: the verdict-bearing test is named here, in advance)"
+   ],
+   "falsification_tests": [
+    "the results JSON records the shuffle count, the seed, and both p-values; a verdict whose significance clause does not follow the permutation p-value falsifies the outcome record"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "test-shopping between the exact and permutation results once both are known",
+    "verdict_rule": "the permutation record precedes verdict assignment in the run order, and both tests' values are published with the outcome",
+    "evidence_origin_groups": [
+     "design-packet",
+     "assetb-contract"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-10 (PR #195 packet, \u00a7D-10, read in full at this draft): the question, hypothesis (arrow share higher at gateway/border sites), falsifier (share at gateway/border at or below the great-city share once totals are controlled), data, method (per-site shares, exact test and permutation control, shares regressed on size alone), criteria (SUPPORTED at ratio \u2265 1.5 at the 5% level with class adding power beyond size; NOT SUPPORTED at ratio \u2264 1.0 or size alone explaining; INCONCLUSIVE between, or fewer than 3 gateway/border sites carrying the sign), and limits (distribution fit is not the gloss; the two roles could coexist).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/047-roif-ledger-distribution/spec.md"
+     ]
+    },
+    {
+     "ref": "specs/047-roif-ledger-distribution/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 047's draft (branch spec-047-roif-ledger-distribution-draft, PR #246; \u00a74 read in full at this draft): Asset B's contract \u2014 file form (\u00a74.1), six classes and the groupings fixed 'for the test and for D-10's use' (\u00a74.2), the two-source agreement and testable rules (\u00a7\u00a74.3\u20134.4), freeze point and digest pinning with the consumer rule \u2014 dependents name the digest and re-assert it at step 0, mismatch stops the consumer as INVALID (\u00a74.6).",
+     "source_id": "specs/047-roif-ledger-distribution/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F051-C15",
+   "kind": "requirement",
+   "text": "The case-ending rival is scored in the same run by regressing per-site arrow shares on site size alone.",
+   "status": "draft",
+   "boundary": [
+    "The rival's prediction, from the roles record, is that a case-ending marker's distribution tracks text length and corpus size rather than site function. Per-site mean inscription length is reported descriptively beside each share (\u00a75.3); no verdict clause turns on the length description. Sites are weighted equally in the regressions (DD-051-8, confirmed at the freeze). The class-addition permutation uses the freeze-recorded seed 20261021 (DD-051-10). Carried from the draft text: the same shares are then regressed on size plus class, returning exactly one class-addition outcome \u2014 ADDS, SIZE-ONLY, or NEITHER as spec \u00a75.3 defines them; the two scores (the class test, the rival score) are reported separately; the class-addition permutation uses seed 20261021 (DD-051-10); sites are weighted equally (DD-051-8)."
+   ],
+   "depends_on": [
+    "F051-C13"
+   ],
+   "assumptions": [
+    "ASM-SHARES-CONTROL",
+    "ASM-ROLE-COEXISTENCE"
+   ],
+   "alternatives": [
+    "forcing a single choice between the border reading and the case-ending role (refused by the design: both roles could coexist, and the scores are reported separately)"
+   ],
+   "falsification_tests": [
+    "the results JSON records both fits and the class-addition outcome; a run that reports a verdict without the rival score, or merges the two scores into one, falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the rival acknowledged in prose and then never actually scored, so a size-driven pattern is quoted as a class result",
+    "verdict_rule": "the class-addition outcome is a named input to the \u00a75.4 partition (F051-C16): SIZE-ONLY forces NOT SUPPORTED, and its absence blocks any verdict",
+    "evidence_origin_groups": [
+     "holdat-roles",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "outputs/analysis/holdatllc_sign_roles.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Holdat sign-roles file (SHA-256 3f1c24ed\u2026, recomputed at this draft by two routes): M391 \u2014 holdatllc_role CASE_MARKER_SUFFIX, mapped_to TERMINAL, count 193, is_ending true, avg_position 0.6; the count agrees with the Phase-104 distribution total.",
+     "source_id": "outputs/analysis/holdatllc_sign_roles.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md"
+     ]
+    },
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-10 (PR #195 packet, \u00a7D-10, read in full at this draft): the question, hypothesis (arrow share higher at gateway/border sites), falsifier (share at gateway/border at or below the great-city share once totals are controlled), data, method (per-site shares, exact test and permutation control, shares regressed on size alone), criteria (SUPPORTED at ratio \u2265 1.5 at the 5% level with class adding power beyond size; NOT SUPPORTED at ratio \u2264 1.0 or size alone explaining; INCONCLUSIVE between, or fewer than 3 gateway/border sites carrying the sign), and limits (distribution fit is not the gloss; the two roles could coexist).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "outputs/analysis/holdatllc_sign_roles.json"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F051-C16",
+   "kind": "requirement",
+   "text": "The verdict is assigned mechanically by spec \u00a75.4's partition.",
+   "status": "draft",
+   "boundary": [
+    "The partition is exhaustive over (R, p, class-addition, R_city). One clause diverges from Spec 047's partition, openly: permutation non-rejection with R > 1.0 is INCONCLUSIVE here, because D-10's text fixes NOT SUPPORTED as ratio at or below 1.0 or size alone explaining the pattern \u2014 the design governs (DD-051-3). No threshold is adjusted for the small site count. Carried from the draft text: SUPPORTED iff R \u2265 1.5, permutation p < 0.05, the class-addition outcome is ADDS, R_city > 1.0; NOT SUPPORTED iff R \u2264 1.0, or R_city \u2264 1.0, or the class-addition outcome is SIZE-ONLY; INCONCLUSIVE in every remaining case (DD-051-3)."
+   ],
+   "depends_on": [
+    "F051-C13",
+    "F051-C14",
+    "F051-C15"
+   ],
+   "assumptions": [
+    "ASM-SHARES-CONTROL"
+   ],
+   "alternatives": [
+    "re-deriving thresholds from the observed shares, or importing Spec 047's non-rejection clause to harden an inconclusive outcome into a falsification (both refused: the frozen partition is the verdict)"
+   ],
+   "falsification_tests": [
+    "the verdict assignment is recomputed from the published quantities by any reader; a verdict not following this partition from its run's numbers falsifies the outcome record"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "post-hoc clause-shopping once the quantities are known \u2014 in particular borrowing the sibling spec's stricter partition",
+    "verdict_rule": "the partition is frozen in this register before any share exists, and the outcome record shows the quantities and the verdict together",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-10 (PR #195 packet, \u00a7D-10, read in full at this draft): the question, hypothesis (arrow share higher at gateway/border sites), falsifier (share at gateway/border at or below the great-city share once totals are controlled), data, method (per-site shares, exact test and permutation control, shares regressed on size alone), criteria (SUPPORTED at ratio \u2265 1.5 at the 5% level with class adding power beyond size; NOT SUPPORTED at ratio \u2264 1.0 or size alone explaining; INCONCLUSIVE between, or fewer than 3 gateway/border sites carrying the sign), and limits (distribution fit is not the gloss; the two roles could coexist).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F051-C17",
+   "kind": "requirement",
+   "text": "Fewer than 3 testable gateway/border sites carrying M391 closes the execution as INCONCLUSIVE.",
+   "status": "draft",
+   "boundary": [
+    "The 3-carrier floor is the design's own. Spec 047's 12-testable-site gate governs Spec 047's test only and is not imported here: this spec proceeds against a frozen Asset B of any testable count under its own floors (DD-051-5). The closure's wording is pre-written in spec \u00a76. Carried from the draft text: an empty pooled side or an empty contrast side in the test population likewise closes the execution as INCONCLUSIVE, with the classification as the finding, counts stated, no share computed (DD-051-5)."
+   ],
+   "depends_on": [
+    "F051-C09",
+    "F051-C10"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [
+    "importing the sibling test's 12-site floor so a thin-but-honest asset closes both tests on one rule (refused at draft: the floors are design-specific; the freeze of either spec may align them openly)"
+   ],
+   "falsification_tests": [
+    "the gate-0.6 census is computed and published before any share; a run that computes a share past a failed floor falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a border class of one or two carrying sites quoted as a clustering result",
+    "verdict_rule": "the floors are margins-only gates in the run order, and the outcome classes in spec \u00a712 make the classification closure terminal",
+    "evidence_origin_groups": [
+     "design-packet",
+     "assetb-contract"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-10 (PR #195 packet, \u00a7D-10, read in full at this draft): the question, hypothesis (arrow share higher at gateway/border sites), falsifier (share at gateway/border at or below the great-city share once totals are controlled), data, method (per-site shares, exact test and permutation control, shares regressed on size alone), criteria (SUPPORTED at ratio \u2265 1.5 at the 5% level with class adding power beyond size; NOT SUPPORTED at ratio \u2264 1.0 or size alone explaining; INCONCLUSIVE between, or fewer than 3 gateway/border sites carrying the sign), and limits (distribution fit is not the gloss; the two roles could coexist).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/047-roif-ledger-distribution/spec.md"
+     ]
+    },
+    {
+     "ref": "specs/047-roif-ledger-distribution/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 047's draft (branch spec-047-roif-ledger-distribution-draft, PR #246; \u00a74 read in full at this draft): Asset B's contract \u2014 file form (\u00a74.1), six classes and the groupings fixed 'for the test and for D-10's use' (\u00a74.2), the two-source agreement and testable rules (\u00a7\u00a74.3\u20134.4), freeze point and digest pinning with the consumer rule \u2014 dependents name the digest and re-assert it at step 0, mismatch stops the consumer as INVALID (\u00a74.6).",
+     "source_id": "specs/047-roif-ledger-distribution/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F051-C18",
+   "kind": "requirement",
+   "text": "The spec \u00a75.5 sensitivities are reported beside the primary outcome.",
+   "status": "draft",
+   "boundary": [
+    "These sensitivities exist to expose excavation and publication bias, classification contestability, and coverage \u2014 the design's named confounders. A sensitivity that disagrees with the primary is published as it stands; it is context for digestion, not a second verdict. Carried from the draft text: the sensitivities are the per-class shares, the five-largest-sites description, the each-source-alone recomputations, the restated exclusion lists; no sensitivity result changes the headline verdict."
+   ],
+   "depends_on": [
+    "F051-C16"
+   ],
+   "assumptions": [
+    "ASM-ASSETB-CONTRACT"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "an outcome product lacking any \u00a75.5 sensitivity falsifies compliance; a product that lets a sensitivity override the \u00a75.4 verdict falsifies the boundary"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the sensitivity that agrees with the preferred reading promoted over the frozen primary after the fact",
+    "verdict_rule": "the sensitivities are \u00a78 reporting obligations: their absence from any product is a defect of that product, recorded as such",
+    "evidence_origin_groups": [
+     "design-packet",
+     "assetb-contract"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-10 (PR #195 packet, \u00a7D-10, read in full at this draft): the question, hypothesis (arrow share higher at gateway/border sites), falsifier (share at gateway/border at or below the great-city share once totals are controlled), data, method (per-site shares, exact test and permutation control, shares regressed on size alone), criteria (SUPPORTED at ratio \u2265 1.5 at the 5% level with class adding power beyond size; NOT SUPPORTED at ratio \u2264 1.0 or size alone explaining; INCONCLUSIVE between, or fewer than 3 gateway/border sites carrying the sign), and limits (distribution fit is not the gloss; the two roles could coexist).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/047-roif-ledger-distribution/spec.md"
+     ]
+    },
+    {
+     "ref": "specs/047-roif-ledger-distribution/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 047's draft (branch spec-047-roif-ledger-distribution-draft, PR #246; \u00a74 read in full at this draft): Asset B's contract \u2014 file form (\u00a74.1), six classes and the groupings fixed 'for the test and for D-10's use' (\u00a74.2), the two-source agreement and testable rules (\u00a7\u00a74.3\u20134.4), freeze point and digest pinning with the consumer rule \u2014 dependents name the digest and re-assert it at step 0, mismatch stops the consumer as INVALID (\u00a74.6).",
+     "source_id": "specs/047-roif-ledger-distribution/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F051-C19",
+   "kind": "requirement",
+   "text": "Every record of Spec 051 stays internal under the Roif gate.",
+   "status": "draft",
+   "boundary": [
+    "The 2026-10-21 verification \u2014 Roif's work publicly posted and citable \u2014 satisfies the gate's evidence condition but clears nothing by itself: under campaign E-2/R-7 the owner's publication act is separate and later, for this member exactly as for D-02, D-04, and D-09. Internal records, internal status reporting in the prescribed form, and the verdict records themselves are not publication. Carried from the draft text: nothing derived from its results is surfaced on any public surface; campaign reporting names the member only as 'executed \u2014 held under the Roif gate' with no result content; publication requires the owner's separate GATE act on the specific text, citing Roif's Academia.edu postings."
+   ],
+   "depends_on": [
+    "F051-C01"
+   ],
+   "assumptions": [
+    "ASM-ROIF-GATE"
+   ],
+   "alternatives": [
+    "treating the landed verification as itself clearing publication (refused by the campaign plan Part 8: verification landed and owner-cleared act are both required)"
+   ],
+   "falsification_tests": [
+    "a public-surface audit at campaign acceptance (plan Part 12) that finds any Roif-claim content from this spec on the paper, the website, or any article falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "leakage by routine \u2014 a status summary, daily article, or paper update drafted from the held record because it was nearby",
+    "verdict_rule": "compliance is judged by the campaign acceptance public-surface audit and by the prescribed reporting form's use in every campaign report naming this member",
+    "evidence_origin_groups": [
+     "campaign-record",
+     "roif-verification"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "2026-10-21-runnable-experiments-campaign-plan.md (owner-approved)",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The campaign plan approved as written 2026-10-21: D-10 is member 9, consumes Asset B (Part 3); assets are built once and consumed by identical digest (R-2); Roif-claim members 2, 3, 8, 9 execute with results held, never surfaced (E-2, R-7, Part 8); builders freeze before dependents (Part 4, Wave 2).",
+     "source_id": "campaign-plan-2026-10-21",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "roif-preprint-check-2026-10-21"
+     ]
+    },
+    {
+     "ref": "research_notes/roif-preprint-check-2026-10-21.md (workspace)",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The Roif preprint verification of 2026-10-21: Roif's work is publicly posted on Academia.edu in two 2025 versions, full text, citable by URL (no DOI). Held outside the repo as a workspace note; its citations are restated in spec \u00a72.1.",
+     "source_id": "roif-preprint-check-2026-10-21",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "campaign-plan-2026-10-21"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F051-C20",
+   "kind": "requirement",
+   "text": "No outcome under Spec 051 establishes that the arrow sign meant border enforcement.",
+   "status": "draft",
+   "boundary": [
+    "A distribution can fit the border story without proving the gloss \u2014 the design's own limit \u2014 and a positional role and a border-enforcement meaning could both be true, or neither. The single distributional exception is \u00a75.4's SIZE-ONLY clause, which states that size fits the shares better than class; it is a preference between distributional accounts, not a disproof of either gloss, and the outcome wording says so. Carried from the draft text: no outcome establishes guild authority either; no outcome falsifies the sign's recorded case-ending role; the single distributional exception is \u00a75.4's SIZE-ONLY clause, a preference between distributional accounts, not a disproof of either gloss."
+   ],
+   "depends_on": [
+    "F051-C01",
+    "F051-C04",
+    "F051-C05",
+    "F051-C16"
+   ],
+   "assumptions": [
+    "ASM-ROLE-COEXISTENCE"
+   ],
+   "alternatives": [
+    "a meaning narrative attached to a SUPPORTED outcome because the distribution 'points to' checkpoints (refused: pointing is not translation, and the rival role survives every distributional outcome)"
+   ],
+   "falsification_tests": [
+    "inspection of every Spec 051 output: a meaning claim, or a claim that the case-ending role is disproved, in any output falsifies compliance and is corrected by dated addendum, never by silent edit"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-MEANING"
+    ],
+    "strongest_rival": "the reading in which winning the distribution test settles what the sign was for",
+    "verdict_rule": "outputs are judged against this boundary at execution close; the \u00a76 wordings carry the fence verbatim, and violations are recorded defects",
+    "evidence_origin_groups": [
+     "design-packet",
+     "holdat-roles"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-10 (PR #195 packet, \u00a7D-10, read in full at this draft): the question, hypothesis (arrow share higher at gateway/border sites), falsifier (share at gateway/border at or below the great-city share once totals are controlled), data, method (per-site shares, exact test and permutation control, shares regressed on size alone), criteria (SUPPORTED at ratio \u2265 1.5 at the 5% level with class adding power beyond size; NOT SUPPORTED at ratio \u2264 1.0 or size alone explaining; INCONCLUSIVE between, or fewer than 3 gateway/border sites carrying the sign), and limits (distribution fit is not the gloss; the two roles could coexist).",
+     "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "outputs/analysis/holdatllc_sign_roles.json"
+     ]
+    },
+    {
+     "ref": "outputs/analysis/holdatllc_sign_roles.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Holdat sign-roles file (SHA-256 3f1c24ed\u2026, recomputed at this draft by two routes): M391 \u2014 holdatllc_role CASE_MARKER_SUFFIX, mapped_to TERMINAL, count 193, is_ending true, avg_position 0.6; the count agrees with the Phase-104 distribution total.",
+     "source_id": "outputs/analysis/holdatllc_sign_roles.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  }
+ ]
+}

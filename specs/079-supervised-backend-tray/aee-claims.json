@@ -1,47 +1,175 @@
 {
-  "claims": [
+ "schema_version": "1.0",
+ "feature": "079-supervised-backend-tray",
+ "claims": [
+  {
+   "id": "C079-1",
+   "text": "The installed backend unit executes the production entry point (create_app factory on port 8001) under the name glossa-lab-backend, matching what the tray controls.",
+   "kind": "requirement",
+   "status": "draft",
+   "stage": "created",
+   "boundary": [],
+   "depends_on": [],
+   "conflicts_with": [],
+   "falsification_tests": [
+    "A rendered unit containing shell.sh, --reload, port 8000, or a unit name other than glossa-lab-backend."
+   ],
+   "source_ref": "spec.md",
+   "uncertainty": "insufficient_evidence",
+   "evidence": [
     {
-      "claim": "The installed backend unit executes the production entry point (create_app factory on port 8001) under the name glossa-lab-backend, matching what the tray controls.",
-      "evidence": "services/linux/glossa-lab-backend.service template + render assertions in backend/tests/test_supervision_installer.py; tray main.py start/stop target the same unit name.",
-      "falsifier": "A rendered unit containing shell.sh, --reload, port 8000, or a unit name other than glossa-lab-backend.",
-      "id": "C079-1"
-    },
-    {
-      "claim": "Restarts are capped at 3 starts per hour and cap/failure records an OWNER NEEDED marker via the alert unit.",
-      "evidence": "StartLimitBurst=3 / StartLimitIntervalSec=3600 / OnFailure=glossa-lab-backend-alert.service in the unit; record-owner-needed.sh writes OWNER_NEEDED + supervisor.log.",
-      "falsifier": "A unit without a start limit or OnFailure target, or an alert path that restarts the backend instead of recording the alert.",
-      "id": "C079-2"
-    },
-    {
-      "claim": "One idempotent installer installs backend unit, tray autostart, and icon in a single run, and retires the legacy unit.",
-      "evidence": "services/linux/install.sh (render-only test asserts unit, alert, support scripts, desktop entry, and byte-identical icon); legacy glossa-lab.service removal in the service-manager step.",
-      "falsifier": "An install run that leaves the legacy unit enabled, or a second run that changes rendered files.",
-      "id": "C079-3"
-    },
-    {
-      "claim": "Install/start verification checks backend identity, not liveness alone.",
-      "evidence": "services/linux/healthcheck.py requires /docs 200, health status+version, and openapi title 'Glossa Lab' with matching version; unit tests cover accept and reject cases; installer runs it after start with bounded attempts.",
-      "falsifier": "A verification path that passes when a different application answers on the port, or an unbounded wait.",
-      "id": "C079-4"
-    },
-    {
-      "claim": "The tray icon is the Glossa Lab brand tile (frontend mark: #2563eb to #60a5fa gradient, white G) with a status badge, in PNG/ICO/SVG packaged assets.",
-      "evidence": "tray/glossa_tray/assets/{glossa-lab.svg,glossa-lab.png,glossa-lab.ico} built by build_icon.py from the frontend tile spec; PNG sha256 recorded in the change record; tray pixel test asserts brand-blue corner + badge.",
-      "falsifier": "A tray build whose icon is a plain coloured circle, the BitConcepts mark, or any other project's logo.",
-      "id": "C079-5"
-    },
-    {
-      "claim": "After live cutover, exactly one supervisor owns the VM backend: systemd (system mode); the cron watchdog keeps history but no restart duty.",
-      "evidence": "Cutover record: systemctl status + kill/restart check on the VM; watchdog cron file annotated with restart duty stood down and its prompt changed to report-only.",
-      "falsifier": "A post-cutover state where the watchdog can still start the backend, or the backend runs outside the systemd unit.",
-      "id": "C079-6"
-    },
-    {
-      "claim": "The backend unit lowers the backend's OOM kill priority with OOMScoreAdjust=-300, addressing the verified root cause of the 2026-10-27 deaths (kernel OOM kills at adj 0, oom_score 674, log stopping mid-stream with no shutdown lines).",
-      "evidence": "OOMScoreAdjust=-300 in services/linux/glossa-lab-backend.service, asserted by backend/tests/test_supervision_installer.py; post-cutover systemctl show + /proc/<pid>/oom_score_adj read-back on the VM.",
-      "falsifier": "A rendered unit without OOMScoreAdjust, a value at or below -700 (daemon territory), or a live backend process whose oom_score_adj is still 0 after cutover.",
-      "id": "C079-7"
+     "ref": "spec.md",
+     "kind": "asserted",
+     "direction": "supports",
+     "source_quality": "unknown",
+     "description": "services/linux/glossa-lab-backend.service template + render assertions in backend/tests/test_supervision_installer.py; tray main.py start/stop target the same unit name."
     }
-  ],
-  "feature": "079-supervised-backend-tray"
+   ]
+  },
+  {
+   "id": "C079-2",
+   "text": "Restarts are capped at 3 starts per hour and cap/failure records an OWNER NEEDED marker via the alert unit.",
+   "kind": "requirement",
+   "status": "draft",
+   "stage": "created",
+   "boundary": [],
+   "depends_on": [],
+   "conflicts_with": [],
+   "falsification_tests": [
+    "A unit without a start limit or OnFailure target, or an alert path that restarts the backend instead of recording the alert."
+   ],
+   "source_ref": "spec.md",
+   "uncertainty": "insufficient_evidence",
+   "evidence": [
+    {
+     "ref": "spec.md",
+     "kind": "asserted",
+     "direction": "supports",
+     "source_quality": "unknown",
+     "description": "StartLimitBurst=3 / StartLimitIntervalSec=3600 / OnFailure=glossa-lab-backend-alert.service in the unit; record-owner-needed.sh writes OWNER_NEEDED + supervisor.log."
+    }
+   ]
+  },
+  {
+   "id": "C079-3",
+   "text": "One idempotent installer installs backend unit, tray autostart, and icon in a single run, and retires the legacy unit.",
+   "kind": "requirement",
+   "status": "draft",
+   "stage": "created",
+   "boundary": [],
+   "depends_on": [],
+   "conflicts_with": [],
+   "falsification_tests": [
+    "An install run that leaves the legacy unit enabled, or a second run that changes rendered files."
+   ],
+   "source_ref": "spec.md",
+   "uncertainty": "insufficient_evidence",
+   "evidence": [
+    {
+     "ref": "spec.md",
+     "kind": "asserted",
+     "direction": "supports",
+     "source_quality": "unknown",
+     "description": "services/linux/install.sh (render-only test asserts unit, alert, support scripts, desktop entry, and byte-identical icon); legacy glossa-lab.service removal in the service-manager step."
+    }
+   ]
+  },
+  {
+   "id": "C079-4",
+   "text": "Install/start verification checks backend identity, not liveness alone.",
+   "kind": "requirement",
+   "status": "draft",
+   "stage": "created",
+   "boundary": [],
+   "depends_on": [],
+   "conflicts_with": [],
+   "falsification_tests": [
+    "A verification path that passes when a different application answers on the port, or an unbounded wait."
+   ],
+   "source_ref": "spec.md",
+   "uncertainty": "insufficient_evidence",
+   "evidence": [
+    {
+     "ref": "spec.md",
+     "kind": "asserted",
+     "direction": "supports",
+     "source_quality": "unknown",
+     "description": "services/linux/healthcheck.py requires /docs 200, health status+version, and openapi title 'Glossa Lab' with matching version; unit tests cover accept and reject cases; installer runs it after start with bounded attempts."
+    }
+   ]
+  },
+  {
+   "id": "C079-5",
+   "text": "The tray icon is the Glossa Lab brand tile (frontend mark: #2563eb to #60a5fa gradient, white G) with a status badge, in PNG/ICO/SVG packaged assets.",
+   "kind": "requirement",
+   "status": "draft",
+   "stage": "created",
+   "boundary": [],
+   "depends_on": [],
+   "conflicts_with": [],
+   "falsification_tests": [
+    "A tray build whose icon is a plain coloured circle, the BitConcepts mark, or any other project's logo."
+   ],
+   "source_ref": "spec.md",
+   "uncertainty": "insufficient_evidence",
+   "evidence": [
+    {
+     "ref": "spec.md",
+     "kind": "asserted",
+     "direction": "supports",
+     "source_quality": "unknown",
+     "description": "tray/glossa_tray/assets/{glossa-lab.svg,glossa-lab.png,glossa-lab.ico} built by build_icon.py from the frontend tile spec; PNG sha256 recorded in the change record; tray pixel test asserts brand-blue corner + badge."
+    }
+   ]
+  },
+  {
+   "id": "C079-6",
+   "text": "After live cutover, exactly one supervisor owns the VM backend: systemd (system mode); the cron watchdog keeps history but no restart duty.",
+   "kind": "requirement",
+   "status": "draft",
+   "stage": "created",
+   "boundary": [],
+   "depends_on": [],
+   "conflicts_with": [],
+   "falsification_tests": [
+    "A post-cutover state where the watchdog can still start the backend, or the backend runs outside the systemd unit."
+   ],
+   "source_ref": "spec.md",
+   "uncertainty": "insufficient_evidence",
+   "evidence": [
+    {
+     "ref": "spec.md",
+     "kind": "asserted",
+     "direction": "supports",
+     "source_quality": "unknown",
+     "description": "Cutover record: systemctl status + kill/restart check on the VM; watchdog cron file annotated with restart duty stood down and its prompt changed to report-only."
+    }
+   ]
+  },
+  {
+   "id": "C079-7",
+   "text": "The backend unit lowers the backend's OOM kill priority with OOMScoreAdjust=-300, addressing the verified root cause of the 2026-10-27 deaths (kernel OOM kills at adj 0, oom_score 674, log stopping mid-stream with no shutdown lines).",
+   "kind": "requirement",
+   "status": "draft",
+   "stage": "created",
+   "boundary": [],
+   "depends_on": [],
+   "conflicts_with": [],
+   "falsification_tests": [
+    "A rendered unit without OOMScoreAdjust, a value at or below -700 (daemon territory), or a live backend process whose oom_score_adj is still 0 after cutover."
+   ],
+   "source_ref": "spec.md",
+   "uncertainty": "insufficient_evidence",
+   "evidence": [
+    {
+     "ref": "spec.md",
+     "kind": "asserted",
+     "direction": "supports",
+     "source_quality": "unknown",
+     "description": "OOMScoreAdjust=-300 in services/linux/glossa-lab-backend.service, asserted by backend/tests/test_supervision_installer.py; post-cutover systemctl show + /proc/<pid>/oom_score_adj read-back on the VM."
+    }
+   ]
+  }
+ ],
+ "normalization_note": "Leg D hardening 2026-10-29: field-name migration from the informal {claim, falsifier, evidence} shape to the AEE 1.5.3 claim schema. All claim, falsifier, and evidence strings preserved verbatim (evidence prose carried in evidence[0].description, classified asserted/unknown because the original bundle declared no resolvable reference). kind/status/stage/uncertainty set to the template defaults (requirement/draft/created/insufficient_evidence)."
 }

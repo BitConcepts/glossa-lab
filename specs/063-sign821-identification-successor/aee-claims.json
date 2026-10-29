@@ -1,0 +1,873 @@
+{
+ "spec": "063-sign821-identification-successor",
+ "register_version": "0.6-draft",
+ "note": "Recovered register for Spec 063 (successor to Spec 056, sign 821 identification) at the freeze act of 2026-10-21, under the owner's approval of the same date (amendment package Item 5), on the authoritative draft at Amendment Queue Item 5 sections 6.1, 7 and 8. The draft register (0.5-draft) already carried engine evidence values (kind observed, source_quality artifact) and mutual independent_of declarations, so no loadability recovery was needed: round 1 of the AEE lifecycle hooks loaded it as drafted and returned 16 failure modes - 15 FR-2.3 draft-cap records and 1 irreducibility challenge recorded under the engine's coverage_gap category (F063-C12) - with minimum propagated score 0.795 and no claim below the 0.70 threshold. FREEZE RECOVERY (2026-10-21): at 0.6-draft the challenged claim text of F063-C12 was restated as a single head proposition with its condition (the closure outcomes IDENTIFICATION FAILED and CLOSED AT STEP 0) moved into its boundary verbatim-in-substance, and the freeze rulings DD-063-10 (Phase-425 allocated), DD-063-11 (route 3 adopted), DD-063-12 (step-0 class names confirmed), DD-063-13 (freeze and filing taken; execution not authorised), and DD-063-14 (reference digest pinned) were carried into the boundaries of F063-C03, C05, C06, C09, and C10. ASM- ids name the assumptions each claim stands on: ASM-HELD-SOURCE (the held cleaned text is the source of record for Wells 2015; its hash governs over any other copy), ASM-056-RECORD (Spec 056's executed record is the evidence of record for candidate K-1 and its R-1, R-2, R-4 and R-5 passes, on the pinned passage), ASM-PRESERVED-REFERENCE (the drawn-form reference preserved in this spec's directory at its freeze-pinned digest is the reference the section 5 protocol checks, and is itself checked at step D), ASM-CLAIM-FORM (a claim in this program's form states a proposition about an identified subject with a statable falsification condition), ASM-TWO-DERIVATION (two independent descriptor derivations plus feature-settled reconciliation are a trustworthy instrument for the drawn-form judgement), ASM-GATES-BEFORE-OUTCOME (integrity and pinning precede any identification step), ASM-APPEND-ONLY (outcomes append; prior and frozen records are never edited), ASM-OPEN-DEPOSIT (the Wells 2006 thesis is an open deposit and a text descriptor derived from its plates is a lawful derived factual record, per the amendment draft section 4).",
+ "claims": [
+  {
+   "id": "F063-C01",
+   "kind": "hypothesis",
+   "text": "An outcome under Spec 063 states nothing about sign 821 itself.",
+   "status": "draft",
+   "boundary": [
+    "The scope is one candidate (K-1, of record in Spec 056's execution) and one identification question: whether the drawn sign Wells's 821 labels can be identified under spec section 5's protocol. It excludes any statement that sign 821 means 'city' or anything else, any statement about the sign's reading, classification, or distribution beyond the identification itself, and any statement about any other sign or claim. Carried from Spec 056's fence (F056-C01): an outcome states only whether candidate K-1 is recovered in the program's claim form on the new record, or the run closes."
+   ],
+   "depends_on": [],
+   "assumptions": [
+    "ASM-HELD-SOURCE"
+   ],
+   "alternatives": [
+    "the identification act could be read as a finding about the sign's meaning (it cannot: identification fixes which drawn sign the number labels, not what the sign means)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified in scope if any Spec 063 output states a conclusion about what sign 821 means, about another sign, or about another claim"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-RECOVERY-AS-VERDICT"
+    ],
+    "strongest_rival": "the alternative reading in which identifying the sign settles its suggested meaning",
+    "verdict_rule": "scope is judged by inspection of every Spec 063 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding",
+    "evidence_origin_groups": [
+     "spec056-outcome",
+     "spec056-freeze"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/056-sign821-recovery/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 056 outcome record (Phase-418, executed 2026-10-21; SHA-256 ff16184a\u2026, verified two-route at this draft from main at e03f7832): outcome IDENTIFICATION FAILED; candidate K-1 \u2014 'sign 821, in the Dholavira signboard contexts, has a meaning of \u2018city\u2019, either as a determinative or as a word' (Wells 2015, printed p. 92; held text lines 2835\u20132836) \u2014 passed R-1, R-2, R-4 and R-5 and failed R-3 only; the unblocking act named is the preservation, as a committed and hashed record, of an inspectable drawn-form reference for Wells's sign 821.",
+     "source_id": "specs/056-sign821-recovery/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/056-sign821-recovery/freeze.json"
+     ]
+    },
+    {
+     "ref": "specs/056-sign821-recovery/freeze.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 056 freeze record (digest 64c28ce1aa379d9b47d230544e372b3446906d53422fe16da51fbce3bc94a63e): the frozen recovery test R-1\u2026R-5, the two R-3 routes then allowed (registry by drawn form, or the source list's own entry quoted with its locator; never by number), the IDENTIFICATION FAILED closure (DD-056-11), and the recovered claim's lifecycle position (created, untested, designed-never-run test note; DD-056-6, DD-056-17).",
+     "source_id": "specs/056-sign821-recovery/freeze.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/056-sign821-recovery/outcome.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F063-C02",
+   "kind": "requirement",
+   "text": "Candidate K-1 is the candidate of record for this spec.",
+   "status": "draft",
+   "boundary": [
+    "K-1, as Spec 056's executed record states it: 'sign 821, in the Dholavira signboard contexts, has a meaning of \u2018city\u2019, either as a determinative or as a word' (Wells 2015, printed p. 92; held text lines 2835\u20132836), with the passage's gloss list, the eyil preference with its reason, and the passage's hedge carried under R-5. Spec 056's two independent passes found K-1 and its reconciliation agreed on every checklist line; K-1 passed R-1, R-2, R-4 and R-5 and failed R-3 only. No other candidate is before this spec, and no new extraction pass is run under it: the argument conditions are of record, and the open condition is identification alone."
+   ],
+   "depends_on": [
+    "F063-C01"
+   ],
+   "assumptions": [
+    "ASM-056-RECORD"
+   ],
+   "alternatives": [
+    "re-extracting the passage afresh under this spec (refused: Spec 056's executed extraction is the record of the argument; re-extraction would manufacture a second, competing record of the same passage)"
+   ],
+   "falsification_tests": [
+    "recompute the cited Spec 056 records' hashes and read K-1's checklist in them; any mismatch with this statement falsifies it and closes the run at step 0"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the candidate could have been mis-stated, or its argument-condition passes misread, in the predecessor record",
+    "verdict_rule": "the statement stands or falls on Spec 056's outcome and extraction records carrying K-1 exactly as stated, at the hashes pinned in this spec",
+    "evidence_origin_groups": [
+     "spec056-outcome",
+     "spec056-extraction"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/056-sign821-recovery/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 056 outcome record (Phase-418, executed 2026-10-21; SHA-256 ff16184a\u2026, verified two-route at this draft from main at e03f7832): outcome IDENTIFICATION FAILED; candidate K-1 \u2014 'sign 821, in the Dholavira signboard contexts, has a meaning of \u2018city\u2019, either as a determinative or as a word' (Wells 2015, printed p. 92; held text lines 2835\u20132836) \u2014 passed R-1, R-2, R-4 and R-5 and failed R-3 only; the unblocking act named is the preservation, as a committed and hashed record, of an inspectable drawn-form reference for Wells's sign 821.",
+     "source_id": "specs/056-sign821-recovery/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/056-sign821-recovery/extraction-record.md"
+     ]
+    },
+    {
+     "ref": "specs/056-sign821-recovery/extraction-record.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 056 extraction record (SHA-256 ad4a3f74\u2026, verified two-route at this draft): two independent extraction passes found the same candidate set {K-1\u2026K-4} with full agreement at reconciliation; every quote verified verbatim against the pinned passage; the R-3 record shows the registry carries no W821 value in any of its 803 rows and Figure 2.6's entry is unquotable from the held text (captions only, lines 868\u2013880).",
+     "source_id": "specs/056-sign821-recovery/extraction-record.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/056-sign821-recovery/outcome.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F063-C03",
+   "kind": "hypothesis",
+   "text": "The drawn sign Wells's number 821 labels can be identified under the identification protocol of spec section 5.",
+   "status": "draft",
+   "boundary": [
+    "Identification here means exactly what Spec 056's R-3 required and could not satisfy: the sign list is named from the document itself (Wells 2011, as given in Wells 2015, Chapter 2 / Figure 2.6; held text lines 414 and 665), and the drawn sign is identified by a frozen route of spec section 5 \u2014 never by number alone. The hypothesis is about identifiability on the new record (the preserved drawn-form reference plus the section 5 protocol), not about whether K-1's suggested meaning is right. Freeze ruling DD-063-10 allocates the execution phase as Phase-425."
+   ],
+   "depends_on": [
+    "F063-C01",
+    "F063-C02"
+   ],
+   "assumptions": [
+    "ASM-CLAIM-FORM",
+    "ASM-PRESERVED-REFERENCE"
+   ],
+   "alternatives": [
+    "the preserved reference does not sustain identification under the protocol's own checks (the falsifier: step D disagreement or descriptor mismatch, step C failure, or no section 5 route satisfiable)"
+   ],
+   "falsification_tests": [
+    "run spec sections 3 and 5: if no frozen route identifies the drawn sign on the new record, this hypothesis is not supported and the outcome is IDENTIFICATION FAILED under F063-C04"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-RECOVERY-AS-VERDICT"
+    ],
+    "strongest_rival": "the strongest rival is the falsifier itself: the reference is a text descriptor of a drawing the program cannot produce from its held text, and the protocol's double derivation may not sustain it",
+    "verdict_rule": "SUPPORTED for the hypothesis iff the execution's outcome is RECOVERED under F063-C08; IDENTIFICATION FAILED refutes it on the new record; CLOSED AT STEP 0 leaves it unjudged, and the outcome record says so",
+    "evidence_origin_groups": [
+     "spec056-outcome",
+     "drawn-form-reference"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/056-sign821-recovery/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 056 outcome record (Phase-418, executed 2026-10-21; SHA-256 ff16184a\u2026, verified two-route at this draft from main at e03f7832): outcome IDENTIFICATION FAILED; candidate K-1 \u2014 'sign 821, in the Dholavira signboard contexts, has a meaning of \u2018city\u2019, either as a determinative or as a word' (Wells 2015, printed p. 92; held text lines 2835\u20132836) \u2014 passed R-1, R-2, R-4 and R-5 and failed R-3 only; the unblocking act named is the preservation, as a committed and hashed record, of an inspectable drawn-form reference for Wells's sign 821.",
+     "source_id": "specs/056-sign821-recovery/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/063-sign821-identification-successor/drawn-form-reference-821.json"
+     ]
+    },
+    {
+     "ref": "specs/063-sign821-identification-successor/drawn-form-reference-821.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The preserved drawn-form reference for Wells's sign 821 (schema glossa.drawn-form-reference/1; SHA-256 695dd35d55bd2f68d8c9db0ea79dde249b53c55d11ed2f622752a18511e65999 at this draft, computed at commitment and pinned in this spec's freeze): target and list-naming evidence, citation-pinned reference (Figure 2.6, printed pp. 19\u201322; Figure 6.13, printed p. 93), formation reference (held text lines 3691\u20133704, verbatim), base-sign registry anchor P378 / W820 / M391, the drawn-form descriptor with its plate-neighbour discriminators, plate confirmation (thesis p. 92 / PDF p. 104; thesis file SHA-256 4b39330c\u2026, re-verified on the local file at this draft), traps named, provenance chain, and license position. Text only; no image.",
+     "source_id": "specs/063-sign821-identification-successor/drawn-form-reference-821.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/056-sign821-recovery/outcome.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F063-C04",
+   "kind": "requirement",
+   "text": "If identification fails on the new record, the outcome is IDENTIFICATION FAILED.",
+   "status": "draft",
+   "boundary": [
+    "The closure is Spec 056's DD-056-2 form carried as this spec's own: the fragment is neither recovered (the claim form is incomplete while R-3 fails) nor retired (the retirement wording asserts an extraction artefact, which is false of K-1: it passed the argument conditions on Spec 056's executed record). The closure names the limb that failed \u2014 step D (derivation), step C (continuity), or step M (no route) \u2014 and the record it failed on. Carried outcome set: exactly RECOVERED, IDENTIFICATION FAILED, or CLOSED AT STEP 0; no retirement outcome exists under this spec."
+   ],
+   "depends_on": [
+    "F063-C03"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "if any frozen route of spec section 5 satisfies R-3 on the new record, this claim's condition does not arise and the outcome is RECOVERED under F063-C10"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "an identification failure could be misread as a verdict against K-1's argument or against the sign; the requirement exists so the closure is recorded as the identification finding it is",
+    "verdict_rule": "the outcome record must carry the IDENTIFICATION FAILED wording of spec section 6.1, naming the failed limb, whenever the condition holds",
+    "evidence_origin_groups": [
+     "spec056-freeze"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/056-sign821-recovery/freeze.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 056 freeze record (digest 64c28ce1aa379d9b47d230544e372b3446906d53422fe16da51fbce3bc94a63e): the frozen recovery test R-1\u2026R-5, the two R-3 routes then allowed (registry by drawn form, or the source list's own entry quoted with its locator; never by number), the IDENTIFICATION FAILED closure (DD-056-11), and the recovered claim's lifecycle position (created, untested, designed-never-run test note; DD-056-6, DD-056-17).",
+     "source_id": "specs/056-sign821-recovery/freeze.json",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F063-C05",
+   "kind": "requirement",
+   "text": "The drawn-form reference for sign 821 is preserved as the committed record drawn-form-reference-821.json in this spec's directory.",
+   "status": "draft",
+   "boundary": [
+    "The record's contents are exactly the reference record drafted in Amendment Queue Item 5 section 6.1 (schema glossa.drawn-form-reference/1): target with list-naming evidence (held text lines 414 and 665); citation-pinned reference (Figure 2.6, printed pp. 19\u201322; Figure 6.13, printed p. 93; held-text caption lines); formation reference (Appendix II 'Doubled Signs', held text lines 3691\u20133704, quoted verbatim); base-sign registry anchor (P378, W820, M391, 'Wheel with 6 spokes with even angles'); the drawn-form descriptor with its plate-neighbour discriminators; plate confirmation (Wells 2006 thesis p. 92 / PDF p. 104; file SHA-256 4b39330c7f4ccf2770093318bfdaf4efaffa7fdf4a8cb5763a650351fffa4b4e); traps named (Yunmapped_0821; any number-only match; sign 861); provenance chain; license position. Its SHA-256 at commitment is 695dd35d55bd2f68d8c9db0ea79dde249b53c55d11ed2f622752a18511e65999, pinned in this spec's freeze. No image is committed anywhere in this spec. Freeze ruling DD-063-14 confirms this digest as pinned in the freeze record, computed at commitment before the hooks ran."
+   ],
+   "depends_on": [
+    "F063-C02"
+   ],
+   "assumptions": [
+    "ASM-PRESERVED-REFERENCE",
+    "ASM-OPEN-DEPOSIT"
+   ],
+   "alternatives": [
+    "preserving the Figure 2.6 pages as images (refused: the no-images rule bars the image form; the descriptor plus citation meets the unblocking act's purpose in text form, per the amendment draft section 5.1)"
+   ],
+   "falsification_tests": [
+    "recompute SHA-256 of drawn-form-reference-821.json and compare with the freeze pin; read the record against Amendment Queue Item 5 section 6.1 field by field; any difference falsifies this statement"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a preserved record could drift from the drafted section 6.1 contents in transcription, silently changing the reference the protocol checks against",
+    "verdict_rule": "the record stands or falls on its digest equalling the freeze pin and its contents equalling the drafted record field by field",
+    "evidence_origin_groups": [
+     "drawn-form-reference",
+     "held-source"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/063-sign821-identification-successor/drawn-form-reference-821.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The preserved drawn-form reference for Wells's sign 821 (schema glossa.drawn-form-reference/1; SHA-256 695dd35d55bd2f68d8c9db0ea79dde249b53c55d11ed2f622752a18511e65999 at this draft, computed at commitment and pinned in this spec's freeze): target and list-naming evidence, citation-pinned reference (Figure 2.6, printed pp. 19\u201322; Figure 6.13, printed p. 93), formation reference (held text lines 3691\u20133704, verbatim), base-sign registry anchor P378 / W820 / M391, the drawn-form descriptor with its plate-neighbour discriminators, plate confirmation (thesis p. 92 / PDF p. 104; thesis file SHA-256 4b39330c\u2026, re-verified on the local file at this draft), traps named, provenance chain, and license position. Text only; no image.",
+     "source_id": "specs/063-sign821-identification-successor/drawn-form-reference-821.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt"
+     ]
+    },
+    {
+     "ref": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Wells (2015), The Archaeology and Epigraphy of Indus Writing, as held cleaned text (SHA-256 62acf855\u2026, verified two-route at this draft): list-naming lines 414 and 665; Figure 2.6 captions at lines 868, 872, 876, 880; K-1 suggestion at lines 2835\u20132836 (printed p. 92); Figure 6.13 caption at line 2860 (list of figures, line 176); sign 861 passage at lines 2848\u20132853; Appendix II 'Doubled Signs' formation passage at lines 3691\u20133704 with Table AII.4 caption at lines 3705\u20133706.",
+     "source_id": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/063-sign821-identification-successor/drawn-form-reference-821.json"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F063-C06",
+   "kind": "requirement",
+   "text": "Execution stops at step 0 if any pinned input fails to recompute.",
+   "status": "draft",
+   "boundary": [
+    "These are spec section 3's gates, in order, before any identification step: input integrity (every section 2 pin recomputes \u2014 CLOSED AT STEP 0 \u2014 INPUT PIN MISMATCH); reference producible (the preserved reference exists at its freeze-pinned digest and the thesis plate page, thesis p. 92 / PDF p. 104, is produced from the pinned local file \u2014 CLOSED AT STEP 0 \u2014 REFERENCE NOT PRODUCIBLE); thesis file asserted (the local thesis PDF's SHA-256 is asserted to 4b39330c7f4ccf2770093318bfdaf4efaffa7fdf4a8cb5763a650351fffa4b4e before any plate is read \u2014 CLOSED AT STEP 0 \u2014 THESIS FILE PIN MISMATCH). No failure is repaired at run time; no substitute artefact, edition, or reference is admitted. Freeze ruling DD-063-12 confirms the three step-0 class names as drafted."
+   ],
+   "depends_on": [
+    "F063-C05"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "each gate's check is itself the test: the execution record must show every gate's verdict before the first derivation sheet, or the run is non-compliant on its face"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "gate-skipping under familiarity \u2014 the thesis plates are known to the program, and a run could proceed from memory while reporting the gates as passed",
+    "verdict_rule": "the run's own record is the judge: gate verdicts precede derivation sheets in it, in order, or the outcome is CLOSED AT STEP 0 by construction",
+    "evidence_origin_groups": [
+     "held-source",
+     "drawn-form-reference"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Wells (2015), The Archaeology and Epigraphy of Indus Writing, as held cleaned text (SHA-256 62acf855\u2026, verified two-route at this draft): list-naming lines 414 and 665; Figure 2.6 captions at lines 868, 872, 876, 880; K-1 suggestion at lines 2835\u20132836 (printed p. 92); Figure 6.13 caption at line 2860 (list of figures, line 176); sign 861 passage at lines 2848\u20132853; Appendix II 'Doubled Signs' formation passage at lines 3691\u20133704 with Table AII.4 caption at lines 3705\u20133706.",
+     "source_id": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/063-sign821-identification-successor/drawn-form-reference-821.json"
+     ]
+    },
+    {
+     "ref": "specs/063-sign821-identification-successor/drawn-form-reference-821.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The preserved drawn-form reference for Wells's sign 821 (schema glossa.drawn-form-reference/1; SHA-256 695dd35d55bd2f68d8c9db0ea79dde249b53c55d11ed2f622752a18511e65999 at this draft, computed at commitment and pinned in this spec's freeze): target and list-naming evidence, citation-pinned reference (Figure 2.6, printed pp. 19\u201322; Figure 6.13, printed p. 93), formation reference (held text lines 3691\u20133704, verbatim), base-sign registry anchor P378 / W820 / M391, the drawn-form descriptor with its plate-neighbour discriminators, plate confirmation (thesis p. 92 / PDF p. 104; thesis file SHA-256 4b39330c\u2026, re-verified on the local file at this draft), traps named, provenance chain, and license position. Text only; no image.",
+     "source_id": "specs/063-sign821-identification-successor/drawn-form-reference-821.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F063-C07",
+   "kind": "requirement",
+   "text": "The descriptor derivation is performed twice independently.",
+   "status": "draft",
+   "boundary": [
+    "Spec section 5 step D: two independent derivations of the drawn-form descriptor from the thesis plate, each performed without sight of the other and without sight of the preserved record's drafted descriptor wording, each recording the plate locator, the feature list it read (stroke count, outline, internal divisions), and the neighbour set it discriminated against. Reconciliation is by the recorded features; an unsettled disagreement is recorded verbatim and resolves against identification (the DD-056-14 rule, carried). The reconciled descriptor is then compared with the preserved record's descriptor: agreement is required; a material difference closes the run as IDENTIFICATION FAILED (reference not sustained), naming the difference. The drafted descriptor is thereby checked, not inherited."
+   ],
+   "depends_on": [
+    "F063-C05",
+    "F063-C06"
+   ],
+   "assumptions": [
+    "ASM-TWO-DERIVATION"
+   ],
+   "alternatives": [
+    "a single derivation (refused: the descriptor is the identification's whole basis, and one unrecorded reading would carry it \u2014 the Spec 055 rule that the draft's expected reading has no standing)"
+   ],
+   "falsification_tests": [
+    "the derivation sheets and reconciliation are deliverables on every non-closure outcome; an outcome whose sheets are absent, single, or show sight of the drafted descriptor wording falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the derivers' prior knowledge \u2014 including this spec's own drafted descriptor \u2014 presenting itself as an independent reading of the plate",
+    "verdict_rule": "compliance is judged from the sheets themselves: two sheets, plate locators, feature lists, neighbour sets, and a reconciliation that quotes features, not conclusions",
+    "evidence_origin_groups": [
+     "drawn-form-reference",
+     "witness"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/063-sign821-identification-successor/drawn-form-reference-821.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The preserved drawn-form reference for Wells's sign 821 (schema glossa.drawn-form-reference/1; SHA-256 695dd35d55bd2f68d8c9db0ea79dde249b53c55d11ed2f622752a18511e65999 at this draft, computed at commitment and pinned in this spec's freeze): target and list-naming evidence, citation-pinned reference (Figure 2.6, printed pp. 19\u201322; Figure 6.13, printed p. 93), formation reference (held text lines 3691\u20133704, verbatim), base-sign registry anchor P378 / W820 / M391, the drawn-form descriptor with its plate-neighbour discriminators, plate confirmation (thesis p. 92 / PDF p. 104; thesis file SHA-256 4b39330c\u2026, re-verified on the local file at this draft), traps named, provenance chain, and license position. Text only; no image.",
+     "source_id": "specs/063-sign821-identification-successor/drawn-form-reference-821.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "data/crosswalks/wells_segmentation_witness_v1.csv"
+     ]
+    },
+    {
+     "ref": "data/crosswalks/wells_segmentation_witness_v1.csv",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-123 Wells segmentation witness (SHA-256 ecbc37a4\u2026, verified two-route at this draft; 157 rows): no grapheme 821 in any row's wells_graphemes field; its records are glyph inspections of Wells 2006 PhD thesis Figure 3.2 plates, the method precedent for a derived text descriptor of a plate glyph.",
+     "source_id": "data/crosswalks/wells_segmentation_witness_v1.csv",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/063-sign821-identification-successor/drawn-form-reference-821.json"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F063-C08",
+   "kind": "requirement",
+   "text": "A candidate is a recovered claim only under the recovery test of spec section 4.",
+   "status": "draft",
+   "boundary": [
+    "The conditions are conjunctive and are applied to candidate K-1: R-1 stated from the passage's own argument; R-2 a specific contention; R-3 its subject identified under F063-C09; R-4 a falsification condition statable from the passage's own logic; R-5 the passage's stated numbers, contexts, and conditions carried with it. R-1, R-2, R-4 and R-5 stand as adjudicated on Spec 056's executed record over the pinned passage (they are passage-argument conditions, and the passage and its extraction are of record); R-3 is run afresh under spec section 5 on the new record. A candidate failing any one condition is not recovered, with the failing condition named."
+   ],
+   "depends_on": [
+    "F063-C03",
+    "F063-C07"
+   ],
+   "assumptions": [
+    "ASM-CLAIM-FORM",
+    "ASM-056-RECORD"
+   ],
+   "alternatives": [
+    "recovering K-1 on its argument passes alone, with identification waived (refused: that is the incomplete claim form Spec 056 closed on)",
+    "re-opening the argument conditions de novo (refused: Spec 056's executed record adjudicated them on the pinned passage; this spec's open question is R-3 alone)"
+   ],
+   "falsification_tests": [
+    "the checklist for K-1 is the test: the outcome record must show R-1\u2026R-5 with each condition's basis (of record, or run under section 5), and any outcome inconsistent with its own checklist falsifies the outcome record"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "post-hoc condition-shopping \u2014 softening R-3 to let the recovery through, or re-hardening the argument conditions to keep it out",
+    "verdict_rule": "the conditions are frozen in this register before any derivation exists; the checklist is recomputed from the records by any reader",
+    "evidence_origin_groups": [
+     "spec056-freeze",
+     "spec056-outcome"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/056-sign821-recovery/freeze.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 056 freeze record (digest 64c28ce1aa379d9b47d230544e372b3446906d53422fe16da51fbce3bc94a63e): the frozen recovery test R-1\u2026R-5, the two R-3 routes then allowed (registry by drawn form, or the source list's own entry quoted with its locator; never by number), the IDENTIFICATION FAILED closure (DD-056-11), and the recovered claim's lifecycle position (created, untested, designed-never-run test note; DD-056-6, DD-056-17).",
+     "source_id": "specs/056-sign821-recovery/freeze.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/056-sign821-recovery/outcome.md"
+     ]
+    },
+    {
+     "ref": "specs/056-sign821-recovery/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 056 outcome record (Phase-418, executed 2026-10-21; SHA-256 ff16184a\u2026, verified two-route at this draft from main at e03f7832): outcome IDENTIFICATION FAILED; candidate K-1 \u2014 'sign 821, in the Dholavira signboard contexts, has a meaning of \u2018city\u2019, either as a determinative or as a word' (Wells 2015, printed p. 92; held text lines 2835\u20132836) \u2014 passed R-1, R-2, R-4 and R-5 and failed R-3 only; the unblocking act named is the preservation, as a committed and hashed record, of an inspectable drawn-form reference for Wells's sign 821.",
+     "source_id": "specs/056-sign821-recovery/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/056-sign821-recovery/freeze.json"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F063-C09",
+   "kind": "requirement",
+   "text": "Sign 821 is identified only by a route spec section 5 freezes.",
+   "status": "draft",
+   "boundary": [
+    "Step M routes, exactly: route 1, a registry row whose drawn description matches the reconciled descriptor, by drawn form and never by number \u2014 the composition descriptor is matched as a drawn form (a doubled six-spoke wheel), and the run does not fall back to P378, which is the base sign, not the target; route 2, the source list's own entry through the preserved drawn-form reference record, cited as the preserved reference for the list's entry; route 3 (composition; 821 only; NEW), the formation passage plus the base sign's registry drawn description, with the plate confirmation as its check, frozen with its justification: every step is a drawn form \u2014 the base sign's registry description, the doubling operation from the source's own appendix, the plate's drawn pair \u2014 and the number is used only to locate them. Traps asserted in every run record: Yunmapped_0821 (a Yajnadevam glyph identifier, not Wells's 821) and sign 861 (Figure 6.12), a reading-confusion trap. No route may be constructed at run time. Freeze ruling DD-063-11 adopts route 3 (composition) as drafted, with the amendment draft section 7 justification carried into spec section 5 step M verbatim in substance."
+   ],
+   "depends_on": [
+    "F063-C08"
+   ],
+   "assumptions": [
+    "ASM-HELD-SOURCE",
+    "ASM-PRESERVED-REFERENCE"
+   ],
+   "alternatives": [
+    "treating the P378 base-sign row as the target's registry match (refused: P378 is sign 820; the doubled form is the target, and no registry row carries it)",
+    "identifying by the thesis plate's number alone, without step C's continuity anchors (refused: a plate number read without its anchors is a number match in a new costume)"
+   ],
+   "falsification_tests": [
+    "the outcome record must show, for K-1, the list named with its document locator, the route used, and the traps asserted; an identification resting on a number match, on P378 as the target, or on a route section 5 does not freeze falsifies the outcome record"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "number-matching across systems or across list states \u2014 the fragment family's standing trap, which would identify a different drawn sign and recover a claim about the wrong sign",
+    "verdict_rule": "identification is judged by the recorded route and reference, inspectable against the pinned registry, the preserved reference, and the pinned thesis file",
+    "evidence_origin_groups": [
+     "crosswalk-registry",
+     "drawn-form-reference"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "data/crosswalks/canonical_sign_registry.csv",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Crosswalk registry (SHA-256 8a0b2a82\u2026, verified two-route at this draft; 803 rows): no W821 value in any row; row P378 carries wells_ids W820, mahadevan_ids M391, description 'Wheel with 6 spokes with even angles' \u2014 the base-sign anchor; the Yunmapped_0821 row is a Yajnadevam glyph identifier with empty wells_ids and corpus frequency 10.",
+     "source_id": "data/crosswalks/canonical_sign_registry.csv",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/063-sign821-identification-successor/drawn-form-reference-821.json"
+     ]
+    },
+    {
+     "ref": "specs/063-sign821-identification-successor/drawn-form-reference-821.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The preserved drawn-form reference for Wells's sign 821 (schema glossa.drawn-form-reference/1; SHA-256 695dd35d55bd2f68d8c9db0ea79dde249b53c55d11ed2f622752a18511e65999 at this draft, computed at commitment and pinned in this spec's freeze): target and list-naming evidence, citation-pinned reference (Figure 2.6, printed pp. 19\u201322; Figure 6.13, printed p. 93), formation reference (held text lines 3691\u20133704, verbatim), base-sign registry anchor P378 / W820 / M391, the drawn-form descriptor with its plate-neighbour discriminators, plate confirmation (thesis p. 92 / PDF p. 104; thesis file SHA-256 4b39330c\u2026, re-verified on the local file at this draft), traps named, provenance chain, and license position. Text only; no image.",
+     "source_id": "specs/063-sign821-identification-successor/drawn-form-reference-821.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "data/crosswalks/canonical_sign_registry.csv"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F063-C10",
+   "kind": "requirement",
+   "text": "The headline outcome of an execution is assigned by the mapping of spec section 6 alone.",
+   "status": "draft",
+   "boundary": [
+    "RECOVERED means K-1 passes R-1\u2026R-5 on the new record (R-3 satisfied under section 5); IDENTIFICATION FAILED means identification fails on the new record at step D, step C, or step M, with the limb named; CLOSED AT STEP 0 is a section 3 gate closure in its named class. No fourth word exists, no retirement word exists under this spec, and no outcome is partial. Freeze rulings: DD-063-10 allocates the execution as Phase-425; DD-063-13 records the freeze and filing acts taken and the execution not authorised."
+   ],
+   "depends_on": [
+    "F063-C04",
+    "F063-C08",
+    "F063-C09"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "the outcome record's headline word must be derivable from the gate record, the derivation sheets, the step C statement, and the K-1 checklist by this claim's definitions alone"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "outcome-shopping: choosing the word that flatters the program's record after the protocol is known",
+    "verdict_rule": "the mapping from protocol records to outcome words is fixed here, before execution; the outcome record shows the records and the word together",
+    "evidence_origin_groups": [
+     "spec056-outcome"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/056-sign821-recovery/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 056 outcome record (Phase-418, executed 2026-10-21; SHA-256 ff16184a\u2026, verified two-route at this draft from main at e03f7832): outcome IDENTIFICATION FAILED; candidate K-1 \u2014 'sign 821, in the Dholavira signboard contexts, has a meaning of \u2018city\u2019, either as a determinative or as a word' (Wells 2015, printed p. 92; held text lines 2835\u20132836) \u2014 passed R-1, R-2, R-4 and R-5 and failed R-3 only; the unblocking act named is the preservation, as a committed and hashed record, of an inspectable drawn-form reference for Wells's sign 821.",
+     "source_id": "specs/056-sign821-recovery/outcome.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F063-C11",
+   "kind": "requirement",
+   "text": "A recovered claim enters the lifecycle at the created stage with status untested.",
+   "status": "draft",
+   "boundary": [
+    "The DD-056-6 / DD-056-17 pattern, carried as this spec's own: on RECOVERED, the recovered claim is recorded as an appended, dated restatement on the fragment's own claim record, same claim identifier, carrying the recovered proposition, its verbatim passage quote and locator, the named sign list and the identification (route and reference), the R-4 falsification condition, the R-5 numbers and conditions, and a test-design note stating at minimum what would be checked, on what named data, against the R-4 condition. The test is designed as part of the recovery output; no test is executed under this spec. Recovery is the claim's creation in proper form, not its checking, explanation, or acceptance."
+   ],
+   "depends_on": [
+    "F063-C08",
+    "F063-C10"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "recording the recovered claim as a brand-new claim record with a new identifier (refused, as at DD-056-3: the fragment's own record is what is repaired)",
+    "presenting recovery as support (refused: nothing has been checked)"
+   ],
+   "falsification_tests": [
+    "inspection: any Spec 063 product that stages a recovered claim above created, marks it other than untested, or reports a test result for it falsifies compliance with this requirement"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the pressure to let a clean recovery read as a result \u2014 'the passage argues X and the sign is identified' quietly becoming 'X is established'",
+    "verdict_rule": "the restatement entry's own text carries the stage, the status, and the no-test sentence; compliance is judged from that entry and the outcome record at execution close",
+    "evidence_origin_groups": [
+     "claim-record",
+     "spec056-freeze"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The fragment's claim record (freeze-time SHA-256 bd0f7abd\u2026 carried as the Spec 056 freeze constant in the Spec 038 form): fragment the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001, 'Sign value: 821 / it is used in a variety of contexts (Figure 6', claim_status untested, stage created; Spec 056's execution appended its spec056_closure entry naming the IDENTIFICATION FAILED closure and the unblocking act.",
+     "source_id": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/056-sign821-recovery/freeze.json"
+     ]
+    },
+    {
+     "ref": "specs/056-sign821-recovery/freeze.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 056 freeze record (digest 64c28ce1aa379d9b47d230544e372b3446906d53422fe16da51fbce3bc94a63e): the frozen recovery test R-1\u2026R-5, the two R-3 routes then allowed (registry by drawn form, or the source list's own entry quoted with its locator; never by number), the IDENTIFICATION FAILED closure (DD-056-11), and the recovered claim's lifecycle position (created, untested, designed-never-run test note; DD-056-6, DD-056-17).",
+     "source_id": "specs/056-sign821-recovery/freeze.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F063-C12",
+   "kind": "requirement",
+   "text": "On a closure outcome, execution writes exactly the entries spec section 7 enumerates.",
+   "status": "draft",
+   "boundary": [
+    "The closure outcomes are IDENTIFICATION FAILED and CLOSED AT STEP 0. The outcome record in this directory carrying the section 6.1 wording for the outcome reached; on IDENTIFICATION FAILED only, an appended, dated closure entry on the fragment's own claim record stating the gap (the failed limb) and that Spec 056's IDENTIFICATION FAILED stands until a successor execution replaces the outcome with its own; the LEDGER entry (H1); and the experiment-graph node record (H15/H23). The fragment's stage and status are unchanged by a closure, and nothing is deleted or edited."
+   ],
+   "depends_on": [
+    "F063-C04",
+    "F063-C10"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "a bare closure announcement with no closure append (refused: an unrecorded closure changes nothing the record shows)"
+   ],
+   "falsification_tests": [
+    "file inspection at execution close: the section 7 entries present in the stated form, and the pinned prior records' hashes unchanged, together constitute compliance; either half failing falsifies it"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "quiet editing dressed as closure, or a closure announced in prose that no record entry carries out",
+    "verdict_rule": "compliance is judged by the presence of the enumerated appends and the byte-identity of the prior records they append to and beside",
+    "evidence_origin_groups": [
+     "claim-record",
+     "spec056-outcome"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The fragment's claim record (freeze-time SHA-256 bd0f7abd\u2026 carried as the Spec 056 freeze constant in the Spec 038 form): fragment the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001, 'Sign value: 821 / it is used in a variety of contexts (Figure 6', claim_status untested, stage created; Spec 056's execution appended its spec056_closure entry naming the IDENTIFICATION FAILED closure and the unblocking act.",
+     "source_id": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/056-sign821-recovery/outcome.md"
+     ]
+    },
+    {
+     "ref": "specs/056-sign821-recovery/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 056 outcome record (Phase-418, executed 2026-10-21; SHA-256 ff16184a\u2026, verified two-route at this draft from main at e03f7832): outcome IDENTIFICATION FAILED; candidate K-1 \u2014 'sign 821, in the Dholavira signboard contexts, has a meaning of \u2018city\u2019, either as a determinative or as a word' (Wells 2015, printed p. 92; held text lines 2835\u20132836) \u2014 passed R-1, R-2, R-4 and R-5 and failed R-3 only; the unblocking act named is the preservation, as a committed and hashed record, of an inspectable drawn-form reference for Wells's sign 821.",
+     "source_id": "specs/056-sign821-recovery/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F063-C13",
+   "kind": "requirement",
+   "text": "Every execution product carries the reporting set of spec section 8.",
+   "status": "draft",
+   "boundary": [
+    "The reporting set is outcome-independent: a recovery and a closure are reported with the same completeness and prominence. It carries: the preserved reference's digest; both derivation sheets and the reconciliation; the step C continuity statement; the route used and the traps asserted; the per-condition R-1\u2026R-5 checklist for K-1 with each condition's basis; the outcome word with its spec section 6.1 pre-written wording; and the fence sentence of spec section 8. On a step-0 closure the gate record replaces the sheets, because no sheet may exist."
+   ],
+   "depends_on": [
+    "F063-C10"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "an execution product lacking any element of the reporting set falsifies compliance; a headline word not matching a spec section 6.1 form falsifies the outcome record"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a disappointing outcome reported thinly \u2014 a closure whose sheets or gate record never surface, leaving only the word",
+    "verdict_rule": "the reporting set is a checklist over the execution's own products, applied at execution close before the outcome is recorded as complete",
+    "evidence_origin_groups": [
+     "drawn-form-reference",
+     "spec056-outcome"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/063-sign821-identification-successor/drawn-form-reference-821.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The preserved drawn-form reference for Wells's sign 821 (schema glossa.drawn-form-reference/1; SHA-256 695dd35d55bd2f68d8c9db0ea79dde249b53c55d11ed2f622752a18511e65999 at this draft, computed at commitment and pinned in this spec's freeze): target and list-naming evidence, citation-pinned reference (Figure 2.6, printed pp. 19\u201322; Figure 6.13, printed p. 93), formation reference (held text lines 3691\u20133704, verbatim), base-sign registry anchor P378 / W820 / M391, the drawn-form descriptor with its plate-neighbour discriminators, plate confirmation (thesis p. 92 / PDF p. 104; thesis file SHA-256 4b39330c\u2026, re-verified on the local file at this draft), traps named, provenance chain, and license position. Text only; no image.",
+     "source_id": "specs/063-sign821-identification-successor/drawn-form-reference-821.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/056-sign821-recovery/outcome.md"
+     ]
+    },
+    {
+     "ref": "specs/056-sign821-recovery/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 056 outcome record (Phase-418, executed 2026-10-21; SHA-256 ff16184a\u2026, verified two-route at this draft from main at e03f7832): outcome IDENTIFICATION FAILED; candidate K-1 \u2014 'sign 821, in the Dholavira signboard contexts, has a meaning of \u2018city\u2019, either as a determinative or as a word' (Wells 2015, printed p. 92; held text lines 2835\u20132836) \u2014 passed R-1, R-2, R-4 and R-5 and failed R-3 only; the unblocking act named is the preservation, as a committed and hashed record, of an inspectable drawn-form reference for Wells's sign 821.",
+     "source_id": "specs/056-sign821-recovery/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/063-sign821-identification-successor/drawn-form-reference-821.json"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F063-C14",
+   "kind": "requirement",
+   "text": "No outcome under Spec 063 establishes that sign 821 means 'city'.",
+   "status": "draft",
+   "boundary": [
+    "Also excluded, and stated wherever an outcome is stated: any conclusion about the truth of K-1's suggested meaning, any reading or classification of any sign, and any statement about the book's other passages. A RECOVERED outcome establishes that the passage argues K-1 and that its subject is now identified in the program's claim form; the recovered claim enters created and untested, and its truth is a future act's question. An IDENTIFICATION FAILED outcome establishes only that identification failed on the new record, at the limb named."
+   ],
+   "depends_on": [
+    "F063-C01",
+    "F063-C03",
+    "F063-C04",
+    "F063-C11"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "a meaning narrative attached to a recovery because the identification succeeded (refused: the recovered claim is the passage's proposition in form, nothing larger)"
+   ],
+   "falsification_tests": [
+    "inspection of every Spec 063 output: a statement that sign 821 means 'city' as a finding, or any statement of the recovered proposition's truth, in any output falsifies compliance and is corrected by dated addendum, never by silent edit"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-RECOVERY-AS-VERDICT"
+    ],
+    "strongest_rival": "the reading in which completing the claim form settles something about the script",
+    "verdict_rule": "outputs are judged against this boundary at execution close; violations are recorded defects, and the act's consequence is limited to the record statements of F063-C01",
+    "evidence_origin_groups": [
+     "spec056-outcome"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/056-sign821-recovery/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 056 outcome record (Phase-418, executed 2026-10-21; SHA-256 ff16184a\u2026, verified two-route at this draft from main at e03f7832): outcome IDENTIFICATION FAILED; candidate K-1 \u2014 'sign 821, in the Dholavira signboard contexts, has a meaning of \u2018city\u2019, either as a determinative or as a word' (Wells 2015, printed p. 92; held text lines 2835\u20132836) \u2014 passed R-1, R-2, R-4 and R-5 and failed R-3 only; the unblocking act named is the preservation, as a committed and hashed record, of an inspectable drawn-form reference for Wells's sign 821.",
+     "source_id": "specs/056-sign821-recovery/outcome.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F063-C15",
+   "kind": "requirement",
+   "text": "Spec 063 appends records only.",
+   "status": "draft",
+   "boundary": [
+    "Appends are dated entries in the forms spec section 7 fixes, placed on the records section 7 names. Spec 056's record \u2014 its spec, freeze, extraction record, and outcome \u2014 is cited, never edited: its IDENTIFICATION FAILED stands as the record of the first run until a successor execution replaces the outcome with its own appended outcome record under this spec. A correction to any Spec 063 output is itself a dated append, never a silent edit."
+   ],
+   "depends_on": [
+    "F063-C11",
+    "F063-C12"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "folding the successor's result back into Spec 056's outcome record (refused: the first run's closure is the evidence this successor started from, and it stands)"
+   ],
+   "falsification_tests": [
+    "the pinned hashes of the prior records are re-asserted at execution close; any change to a prior record falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the tidiness pressure to update the predecessor's record so it 'says the outcome now', erasing what the first run actually found",
+    "verdict_rule": "compliance is judged by hash re-assertion and by the appends' dated, additive form at execution close",
+    "evidence_origin_groups": [
+     "spec056-outcome",
+     "spec056-freeze"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/056-sign821-recovery/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 056 outcome record (Phase-418, executed 2026-10-21; SHA-256 ff16184a\u2026, verified two-route at this draft from main at e03f7832): outcome IDENTIFICATION FAILED; candidate K-1 \u2014 'sign 821, in the Dholavira signboard contexts, has a meaning of \u2018city\u2019, either as a determinative or as a word' (Wells 2015, printed p. 92; held text lines 2835\u20132836) \u2014 passed R-1, R-2, R-4 and R-5 and failed R-3 only; the unblocking act named is the preservation, as a committed and hashed record, of an inspectable drawn-form reference for Wells's sign 821.",
+     "source_id": "specs/056-sign821-recovery/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/056-sign821-recovery/freeze.json"
+     ]
+    },
+    {
+     "ref": "specs/056-sign821-recovery/freeze.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 056 freeze record (digest 64c28ce1aa379d9b47d230544e372b3446906d53422fe16da51fbce3bc94a63e): the frozen recovery test R-1\u2026R-5, the two R-3 routes then allowed (registry by drawn form, or the source list's own entry quoted with its locator; never by number), the IDENTIFICATION FAILED closure (DD-056-11), and the recovered claim's lifecycle position (created, untested, designed-never-run test note; DD-056-6, DD-056-17).",
+     "source_id": "specs/056-sign821-recovery/freeze.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/056-sign821-recovery/outcome.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  }
+ ]
+}

@@ -1,0 +1,762 @@
+{
+ "spec": "048-parpola-fish-family-profiles",
+ "register_version": "0.7-draft",
+ "note": "Draft register for Spec 048 (design D-04, PR #195 packet), opened 2026-10-21 under the runnable-experiments campaign plan approved by the owner AS WRITTEN on 2026-10-21 (Wave 1, dependents second; campaign member 3). Conventions as in Specs 032\u2013044: requirement claims carry no falsification test where a gate or inspection is the operative check; boundaries carry the conditions under which each claim holds; evidence items carry observed_at from this draft because the cited facts were verified first-hand at drafting. The AEE lifecycle hooks have NOT run on this register; they are the freeze gate (tasks L4), and any recovery round they force changes claim text before any freeze digest is computed. No Asset F digest appears in this register: the asset does not exist until Spec 044's step 0 builds it, and the digest pin is taken at this spec's freeze from Spec 044's step-0 record (claim F048-C06). ASM- ids name the assumptions each claim stands on: ASM-CLAIM-RECORD (the claim file as pinned is the record of the partially supported, split-family status), ASM-ASSET-F (Asset F as frozen at Spec 044's step 0 under its \u00a74 contract is the family for this test), ASM-T24-MEASURE (the Phase-43 T2.4 measure, as reproduced at gate 0.3, is the measure of record), ASM-MARGIN-FAMILY (design D-04's fixed lines: member bar 20%, family lines 70% / 30%, floor 30), ASM-GATES-BEFORE-OUTCOME (pins, join, census, and control set precede any outcome quantity), ASM-APPEND-ONLY (outcomes append; frozen records are never edited), ASM-ROIF-GATE (campaign R-7 holds this spec's results internal until the owner's cleared publication act). FREEZE RECOVERY (2026-10-21, register 0.6-draft): the aee 1.5.0 loader refused the 0.5-draft register outright (evidence kind values such as 'design-source'/'program-record' and source_quality values such as 'authoritative'/'program-record' are not members of the adopted engine's enums). Every evidence item's kind was normalised to 'observed' and its source_quality to 'artifact' - the frozen house form of Specs 036-039 - with refs, directions, descriptions, source_ids, and observed_at values unchanged. No claim text, boundary, falsifier, or verdict rule changed in this round. FREEZE RECOVERY ROUNDS (2026-10-21, register 0.7-draft): the first hook round at after_specify over 0.6-draft returned clarify with 48 failure modes (15 irreducibility challenges, one per claim; 17 shared-evidence independence challenges; 1 circular-inference challenge, the F048-C01/F048-C05 dependency cycle; 15 FR-2.3 draft-cap records) with no claim below the 0.70 threshold (minimum propagated 0.72). Recovery, on the Spec 039 pattern: every claim text was restated as a single head proposition, with its carried clauses moved into its boundary verbatim in substance (each boundary names the carriage); F048-C01 stands as the register's root with no dependencies (the Spec 044 pattern), breaking the C01/C05 cycle; multi-item claims gained independent_of declarations naming the claim's first evidence source. A second round then carried 21 failure modes (5 shared-evidence independence challenges on shared single items, 1 negation-conflict challenge, F048-C03 against F048-C04, and 15 draft-cap records): the shared single items of F048-C02, F048-C05, F048-C06, F048-C09, and F048-C15 gained mutual independence declarations naming the distinct co-cited artifact (the Spec 047 pattern), the C03/C04 pair gained boundary_confirmation metadata recording that the two govern complementary branches of one partition, and F048-C04's head proposition was restated under a distinct subject (the partition's lower branch), its outcome word carried in its boundary. The next round at after_specify, and first passes at after_plan and after_tasks over the same register, each carry 15 FR-2.3 draft-cap records only: zero correctness failure modes and no claim below the 0.70 threshold (minimum propagated 0.72). Two restatements carry freeze rulings in substance, recorded in adjudication.md section 7: F048-C06 carries the coordinator's Asset F pin-timing ruling (DD-048-9 - the freeze quotes Spec 044's freeze digest as the contract anchor and fixes the pin source as Spec 044's step-0 outcome record; gate 0.1 asserts the byte-digest at execution step 0), and F048-C13 carries the control-set rules fixed at the freeze (DD-048-13). Propositions' substance, falsifiers, and verdict rules are otherwise unchanged.",
+ "claims": [
+  {
+   "id": "F048-C01",
+   "kind": "hypothesis",
+   "text": "An outcome under Spec 048 states only how the members of Asset F behave positionally under the Phase-43 T2.4 ending-follower measure.",
+   "status": "draft",
+   "boundary": [
+    "The scope is Asset F's members as joined at gate 0.2, the pinned primary corpus, and the pinned Holdat layer. It excludes any statement about what any fish sign meant or was pronounced, about the coastal distribution tested by Spec 044 (design D-02), about any other corpus or family definition, and about the claim's family-level status except through the dated append \u00a76 prescribes. Carried from the draft text: the behaviour is stated sign by sign; the two arms are the pinned strict corpus (primary) and the pinned Holdat layer (second)."
+   ],
+   "depends_on": [],
+   "assumptions": [
+    "ASM-ASSET-F"
+   ],
+   "alternatives": [
+    "the claim record's shorthand lists (Mahadevan 72, 64, 70; the Phase-43 six candidates) could be read as the family (refused: Asset F governs, F048-C05)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified in scope if any Spec 048 output states a conclusion about a population, corpus, family definition, or question outside the Asset F members' T2.4 behaviour in the two pinned arms"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-READING"
+    ],
+    "strongest_rival": "the alternative reading in which a positional family verdict licenses a claim about the 'meen' reading itself",
+    "verdict_rule": "scope is judged by inspection of every Spec 048 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding",
+    "evidence_origin_groups": [
+     "phase43-record",
+     "asset-f-contract"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/01-language-and-position.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-04 (PR #195 packet, read in full at this draft): the question, hypothesis, falsifier, data, method, fixed criteria, controls, and limits this spec registers.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/01-language-and-position.md",
+     "observed_at": "2026-10-21"
+    },
+    {
+     "ref": "outputs/phase43_all.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-43 results of record (SHA-256 78a6c219\u2026, recomputed at this draft): \u00a7T2_4_fish_rebus states the measure and the family split this spec tests sign by sign.",
+     "source_id": "outputs/phase43_all.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/01-language-and-position.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F048-C02",
+   "kind": "requirement",
+   "text": "The claim parpola_2010_dravidian_solution_manual_002 stands IN QUESTION with partial support on a split family record.",
+   "status": "draft",
+   "boundary": [
+    "These are the claim file's and the Phase-43 record's stated values, read first-hand at this draft. The claim file (SHA-256 3202aeca\u2026) records claim_status partially_supported, stage explained, the falsification condition 'If fish signs do not show terminal-sign followers consistent with case suffixes', and the not-understood text naming this sign-by-sign run as what would change the picture. Six fish candidates were tested by T2.4 in total: 267, 72, 65, 59, 60, 70. Carried from the draft text: sign 72 passed Phase-43 T2.4 (181 occurrences, ending-follower fraction 25.9%, recorded supported); sign 267, the family's most frequent member, failed it (356 occurrences, 3.8%, recorded not supported)."
+   ],
+   "depends_on": [
+    "F048-C01"
+   ],
+   "assumptions": [
+    "ASM-CLAIM-RECORD"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "recompute SHA-256 of the claim file (3202aeca\u2026) and of outputs/phase43_all.json (78a6c219\u2026) and read manual_002's status and \u00a7T2_4_fish_rebus; any mismatch falsifies this statement and voids the draft's basis"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the record could have been misread or superseded (the Spec 040 stale-pin precedent shows draft-cited pins can be wrong)",
+    "verdict_rule": "the statement stands or falls on the two pinned files hashing to their recorded values with the stated quantities in them",
+    "evidence_origin_groups": [
+     "claim-record",
+     "phase43-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "manual_002 as read at this draft: normalized claim, partially_supported status, sign_ids mahadevan [72, 64, 70], T2.4 evidence line for sign 72, and the not-understood text.",
+     "source_id": "glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "outputs/phase43_all.json"
+     ]
+    },
+    {
+     "ref": "outputs/phase43_all.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "\u00a7T2_4_fish_rebus read at this draft: fish_sign_candidates_tested [267, 72, 65, 59, 60, 70]; primary_fish_72 total 181, terminal_frac 0.259, supported true; primary_fish_267 total 356, terminal_frac 0.038, supported false.",
+     "source_id": "outputs/phase43_all.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F048-C03",
+   "kind": "hypothesis",
+   "text": "Tested members of Asset F carrying at least 70% of the family's tested occurrences pass the frozen member criterion.",
+   "status": "draft",
+   "boundary": [
+    "The hypothesis is the design's family-uniformity statement, token-weighted so the family's most frequent members decide it. It is a statement about positional behaviour in the two pinned compilations, and about nothing else: not about pronunciation, meaning, or any other corpus. Carried from the draft text: the frozen member criterion is an ending-follower rate of at least 20% under the T2.4 measure; the statement is for the primary arm; it holds only without the section 6 cross-arm disagreement about the family's most frequent tested member."
+   ],
+   "depends_on": [
+    "F048-C01",
+    "F048-C02"
+   ],
+   "assumptions": [
+    "ASM-ASSET-F",
+    "ASM-T24-MEASURE"
+   ],
+   "alternatives": [
+    "the falsifier (F048-C04): the token-weighted majority behaves like sign 267",
+    "an intermediate passing share, or a cross-arm disagreement on the most frequent member \u2014 recorded INCONCLUSIVE under F048-C10, not as support"
+   ],
+   "falsification_tests": [
+    "run \u00a75: if passing members carry less than 70% of tested occurrences, or the arms disagree on the most frequent tested member's pass status, this hypothesis is not supported"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-READING"
+    ],
+    "strongest_rival": "the strongest rival is the falsifier itself: sign 72's pass was the exception in a family that mostly behaves like sign 267",
+    "verdict_rule": "SUPPORTED for the hypothesis iff the outcome is FAMILY SUPPORTED under F048-C10; any other adjudicated outcome does not support it",
+    "evidence_origin_groups": [
+     "design-packet",
+     "phase43-record"
+    ],
+    "boundary_confirmation": "C03 states the supported-side branch of the section 6 partition (passing members carry at least 70% of tested occurrences); C04 states the not-supported-side branch (at most 30%). The two govern complementary branches of one partition and are consistent by construction: the band between the lines routes to INCONCLUSIVE under F048-C10. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/01-language-and-position.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-04's hypothesis: if the fish family carries one reading, its members should share the positional behaviour the reading predicts.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/01-language-and-position.md",
+     "observed_at": "2026-10-21"
+    },
+    {
+     "ref": "outputs/phase43_all.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Sign 72's recorded 25.9% is the behaviour the hypothesis generalises; sign 267's 3.8% is the counter-instance whose weight the token weighting makes decisive.",
+     "source_id": "outputs/phase43_all.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/01-language-and-position.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F048-C04",
+   "kind": "requirement",
+   "text": "The lower branch of the section 6 partition is a passing share of at most 30% among tested members.",
+   "status": "draft",
+   "boundary": [
+    "The falsifier is scoped to the token-weighted family rule of this spec. It does not erase sign 72's recorded individual pass, which the \u00a76 wording carries as the exception it was recorded as. Carried from the draft text: the outcome requires that the two arms do not disagree under F048-C10's rule; the outcome is recorded in spec section 6's pre-written wording. The headline word recorded for this branch is FAMILY NOT SUPPORTED, in spec section 6's pre-written wording."
+   ],
+   "depends_on": [
+    "F048-C03"
+   ],
+   "assumptions": [
+    "ASM-ASSET-F",
+    "ASM-T24-MEASURE"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "if passing members carry more than 30% of tested occurrences, this claim's condition does not arise and the headline is FAMILY SUPPORTED or INCONCLUSIVE under F048-C10"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a not-supported family verdict could be misread as a verdict on sign 72 individually; the requirement exists so the wording keeps the two apart",
+    "verdict_rule": "the outcome record must carry the FAMILY NOT SUPPORTED word and \u00a76's wording whenever the condition holds",
+    "evidence_origin_groups": [
+     "phase43-record"
+    ],
+    "boundary_confirmation": "C04 states the not-supported-side branch of the section 6 partition (passing members carry at most 30% of tested occurrences); C03 states the supported-side branch (at least 70%). The two govern complementary branches of one partition and are consistent by construction: the band between the lines routes to INCONCLUSIVE under F048-C10. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "outputs/phase43_all.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Sign 267's recorded failure (356 occurrences, 3.8%) is the falsifier's shape: the most frequent member already behaves as the falsifier describes; the test is whether its weight is the family's majority.",
+     "source_id": "outputs/phase43_all.json",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F048-C05",
+   "kind": "requirement",
+   "text": "Family membership under Spec 048 is exactly Asset F as frozen at Spec 044's step 0.",
+   "status": "draft",
+   "boundary": [
+    "Membership is decided solely by Spec 044 \u00a74's contract (Parpola's published list, per-sign locator required). The claim record's trio (72, 64, 70) and the Phase-43 six candidates are a gate-0.2 cross-check and a \u00a75 sensitivity population, never a membership source. The design packet's D-02 line placing the freeze 'in D-04' is superseded by the campaign (E-6) and is not a basis for this spec. Carried from the draft text: the asset is consumed by digest; this spec builds, re-derives, edits, and substitutes no membership list of its own. The join to this spec's numberings runs through each member's mahadevan_number locator (gate 0.2; DD-048-5 confirmed at the freeze as DD-048-15): a member carrying no Mahadevan mapping is recorded UNMAPPED, listed with the reason, and excluded from both arms' weighting; it is never counted as TOO THIN."
+   ],
+   "depends_on": [
+    "F048-C01"
+   ],
+   "assumptions": [
+    "ASM-ASSET-F"
+   ],
+   "alternatives": [
+    "deriving membership from the claim record's shorthand lists (refused: they conflict in numbering system and possibly in membership, and the campaign assigns the build to Spec 044)"
+   ],
+   "falsification_tests": [
+    "inspection: any Spec 048 product whose tested population differs from Asset F's mapped, above-floor members, by addition or removal on any other basis, falsifies compliance with this requirement"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the pressure to test the familiar six candidates because they are the signs the old test used",
+    "verdict_rule": "compliance is judged by the gate-0.2 join record: the tested population is exhibited as Asset F's members under the stated join, with UNMAPPED and TOO THIN dispositions shown",
+    "evidence_origin_groups": [
+     "asset-f-contract",
+     "campaign-plan"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/044-fish-sign-coastal-residue/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 044 \u00a74 (read on its draft branch, PR #243, at this draft): Asset F's form, nine required fields, freeze rule, and \u00a74.4 digest pinning for consumers, which names the consuming spec's step-0 digest assertion and closure on mismatch.",
+     "source_id": "specs/044-fish-sign-coastal-residue/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "backend/glossa_lab/data/mahadevan_parpola_crosswalk.json"
+     ]
+    },
+    {
+     "ref": "backend/glossa_lab/data/mahadevan_parpola_crosswalk.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The Mahadevan\u2013Parpola crosswalk (SHA-256 9ebd7723\u2026, recomputed at this draft) cites Parpola 1994b, sign list (= Parpola 1994a fig. 5.1, pp. 70\u201378) \u2014 the published list Asset F is built from.",
+     "source_id": "backend/glossa_lab/data/mahadevan_parpola_crosswalk.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/044-fish-sign-coastal-residue/spec.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F048-C06",
+   "kind": "requirement",
+   "text": "Asset F's byte-digest is asserted at gate 0.1 against Spec 044's step-0 outcome record.",
+   "status": "draft",
+   "boundary": [
+    "The pin exists only from the freeze act, because Asset F does not exist at draft. If Spec 044's step 0 has not produced the file and record, gate 0.1 closes as ASSET F NOT AVAILABLE \u2014 a dependency closure, not a verdict. In neither case is the asset rebuilt or substituted under this spec. Carried from the draft text, as ruled at the freeze (DD-048-9, the coordinator's Asset F pin-timing ruling): this spec's freeze quotes Spec 044's freeze digest as the contract anchor (6851f943d196fa389e48b67cb5161b90daa1180d8a3e1cf3f020fcf25691d9c8) and fixes the pin source as Spec 044's step-0 outcome record for the canonical file specs/044-fish-sign-coastal-residue/asset-f-fish-family.json (Spec 044 section 4.1, section 9). At execution step 0 the exhibited canonical file, hashed over its exact bytes with the digest field excluded, must recompute to the digest recorded in that record. A mismatch closes the execution as ASSET F DIGEST MISMATCH with no count computed. Absence of the file or of the step-0 record closes it as ASSET F NOT AVAILABLE. The asset is never rebuilt, re-derived, or substituted under this spec."
+   ],
+   "depends_on": [
+    "F048-C05"
+   ],
+   "assumptions": [
+    "ASM-ASSET-F",
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "the gate-0.1 assertion is itself the test: the step-0 record exhibits the exhibited file's recomputed digest beside the freeze pin, before the first count, or the run is non-compliant on its face"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a near-matching asset (a corrected or re-entered list) quietly consumed because its differences look small \u2014 the failure this gate exists to refuse",
+    "verdict_rule": "the digest comparison is mechanical and precedes every quantity in the run record; mismatch and unavailability each have their \u00a76 pre-written closure wording",
+    "evidence_origin_groups": [
+     "asset-f-contract"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/044-fish-sign-coastal-residue/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 044 \u00a74.1\u2013\u00a74.4: canonical form, the digest-field exclusion rule, and the consumer rule \u2014 a digest mismatch in a consumer is that consumer's step-0 closure, never a reason to rebuild the asset to fit.",
+     "source_id": "specs/044-fish-sign-coastal-residue/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "backend/glossa_lab/data/mahadevan_parpola_crosswalk.json"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F048-C07",
+   "kind": "requirement",
+   "text": "The primary arm runs on the strict corpus identified at gate 0.3 as the V3 / Mahadevan-lineage layer the Phase-43 framework used.",
+   "status": "draft",
+   "boundary": [
+    "No corpus pin is stated at draft, deliberately, on the Spec 044 DD-044-3 precedent: Spec 033 \u00a74 states this corpus as held in the database, not as a repository file on main. The reproduction standard is the Phase-43 record's own numbers (sign 72: 181 occurrences, 25.9% within rounding; sign 267: 356, 3.8%). What 'strict' operationally restricts is OPEN-048-2 for the freeze; gate 0.3's reproduction is required under any resolution of it. Carried from the draft text: the layer is exported whole and pinned by digest in the step-0 record before any counting; if it cannot be uniquely identified and pinned, or the pinned layer does not reproduce the T2.4 reference points (sign 72: 181 occurrences, 25.9%; sign 267: 356 occurrences, 3.8%), the execution closes as STRICT CORPUS NOT PINNABLE. Confirmed at the freeze (DD-048-10, OPEN-048-2): 'strict corpus' names this corpus as Spec 033 section 4 states it; it is not a restriction of counted signs to the 94 strict_sa_independent readings, which would exclude sign 72 itself (its anchors entry carries validation status pending_non_sa_validation, not a strict reading)."
+   ],
+   "depends_on": [
+    "F048-C05"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [
+    "pinning a plausible-looking repository corpus file at draft (refused: the Spec 040 stale-pin precedent, and no file on main is asserted to be this layer)"
+   ],
+   "falsification_tests": [
+    "each gate's check is itself the test: the execution record must show the pin and the reproduction values before the first member rate, or the run is non-compliant on its face"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "an approximately-right corpus presenting a reproduction drift as a family effect",
+    "verdict_rule": "the gate is fail-closed and precedes the primary in the run order; the outcome classes in spec \u00a710 make the closure terminal",
+    "evidence_origin_groups": [
+     "spec033-record",
+     "phase43-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/033-sa-free-language-comparison/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 033 \u00a74 (read on main at this draft): the strict sign set is the 94 strict_sa_independent readings in the anchors file, and the corpus is the V3/Mahadevan-lineage corpus as held in the database \u2014 the data statement D-04's 'same strict sign set as D-03' and 'strict corpus' refer to.",
+     "source_id": "specs/033-sa-free-language-comparison/spec.md",
+     "observed_at": "2026-10-21"
+    },
+    {
+     "ref": "backend/reports/INDUS_FINAL_ANCHORS.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Anchors file (SHA-256 df0cf620\u2026, recomputed at this draft): 287 anchors, 94 strict_sa_independent by census at this draft; sign 72 carries no anchor entry \u2014 the caution spec \u00a77 limit 5 and adjudication defect 3 record.",
+     "source_id": "backend/reports/INDUS_FINAL_ANCHORS.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/033-sa-free-language-comparison/spec.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F048-C08",
+   "kind": "requirement",
+   "text": "Each tested member's measure is the Phase-43 T2.4 ending-follower rate.",
+   "status": "draft",
+   "boundary": [
+    "The 20% bar is design D-04's fixed value, set from sign 72's recorded 25.9% as the reading's signature against sign 267's 3.8%. The design directs that the exact bar be confirmed at freeze against the T2.4 record before any new counting (OPEN-048-3); no other element of the measure \u2014 the ending-sign set, the follower definition, the counting unit \u2014 is adjusted under this spec. Carried from the draft text: the measure is unchanged; a member PASSES at a rate of 20% or more. The 20% bar is confirmed at the freeze against the T2.4 record (DD-048-11, OPEN-048-3): it sits between sign 72's recorded 25.9% (supported) and sign 267's recorded 3.8% (not supported), exactly as design D-04 fixed it."
+   ],
+   "depends_on": [
+    "F048-C07"
+   ],
+   "assumptions": [
+    "ASM-T24-MEASURE"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "gate 0.3's reproduction is the operational test: a measure that cannot reproduce the recorded reference points under the pinned corpus is not the T2.4 measure, and the run closes before any member is judged"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "silent measure drift (a redefined ending-sign set) presenting as a family change since Phase-43",
+    "verdict_rule": "member verdicts are mechanical from the published per-member rates and the frozen bar; any reader recomputes them from the \u00a79 tables",
+    "evidence_origin_groups": [
+     "phase43-record",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "outputs/phase43_all.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "\u00a7T2_4_fish_rebus: the measure's recorded outputs (terminal_frac per sign, supported flags) are the reproduction target and the bar's source.",
+     "source_id": "outputs/phase43_all.json",
+     "observed_at": "2026-10-21"
+    },
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/01-language-and-position.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-04 fixes the member criterion: 'A member PASSES at an ending-follower rate of 20% or more (the level sign 72's recorded behaviour establishes as the reading's signature; the exact bar is confirmed at freeze against the T2.4 record before any new counting).'",
+     "source_id": "docs/research/experiment-designs-2026-10-13/01-language-and-position.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "outputs/phase43_all.json"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F048-C09",
+   "kind": "requirement",
+   "text": "Execution stops before any ending-follower rate is computed on a step-0 gate failure.",
+   "status": "draft",
+   "boundary": [
+    "These are spec \u00a73's gates 0.1, 0.3, and 0.4; gates 0.2, 0.5, and 0.6 produce the join record, the census, and the control set the primary consumes. Failure classes are ASSET F DIGEST MISMATCH, ASSET F NOT AVAILABLE, STRICT CORPUS NOT PINNABLE, SECOND ARM NOT RUNNABLE, and THIN (gate 0.5, under F048-C11). No failure is repaired at run time; a repaired input is a new freeze, not a resumed run. Carried from the draft text: the gates named are the Asset F assertion (gate 0.1), the strict corpus pin with its T2.4 reproduction (gate 0.3), and the Holdat layer pin with its per-sign crosswalk (gate 0.4)."
+   ],
+   "depends_on": [
+    "F048-C06",
+    "F048-C07"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "each gate's check is itself the test: the execution record must show every gate's verdict before the first member rate, or the run is non-compliant on its face"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "gate-skipping under time pressure, with the failure rationalised afterwards",
+    "verdict_rule": "the run's own record is the judge: gate verdicts precede quantities in it, in order, or the outcome is INVALID by construction",
+    "evidence_origin_groups": [
+     "phase43-record",
+     "asset-f-contract"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/044-fish-sign-coastal-residue/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 044 \u00a73/\u00a74.4: the consumer-side step-0 pattern this spec's gates follow \u2014 assertion before counting, closure on mismatch, no repair at run time.",
+     "source_id": "specs/044-fish-sign-coastal-residue/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/033-sa-free-language-comparison/spec.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F048-C10",
+   "kind": "requirement",
+   "text": "The headline outcome of an execution is exactly one of the outcome words frozen in spec section 6.",
+   "status": "draft",
+   "boundary": [
+    "Tested members are Asset F's mapped members at or above the 30-occurrence floor; the weighting is by their primary-corpus occurrences. The most-frequent-member disagreement rule is the design's, carried verbatim: it compares the same member's pass status across arms, not the arms' family figures. Carried from the draft text: FAMILY SUPPORTED (passing members carry at least 70% of tested occurrences), FAMILY NOT SUPPORTED (at most 30%), or INCONCLUSIVE (between those lines, or the two arms disagree about the family's most frequent tested member's pass status); otherwise one of the step-0 or integrity classes of spec section 10."
+   ],
+   "depends_on": [
+    "F048-C08",
+    "F048-C09"
+   ],
+   "assumptions": [
+    "ASM-MARGIN-FAMILY"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "the outcome record's headline word must be derivable from the published per-member tables of both arms by this claim's definitions alone"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "headline-shopping: choosing the family word that flatters the hypothesis after the rates are known",
+    "verdict_rule": "the mapping from per-member tables to headline words is fixed here, before execution; the outcome record shows the tables and the word together",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/01-language-and-position.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-04 pre-registers the family rule (70% / 30% token-weighted lines), the INCONCLUSIVE band, and the cross-arm most-frequent-member disagreement clause.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/01-language-and-position.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F048-C11",
+   "kind": "requirement",
+   "text": "A mapped member below 30 total occurrences in the pinned primary corpus is recorded TOO THIN.",
+   "status": "draft",
+   "boundary": [
+    "The per-member floor is design D-04's, carried verbatim. The no-member-clears closure is this draft's fail-closed completion (DD-048-2): without a tested member the token-weighted rate the verdict turns on does not exist, so there is nothing to adjudicate. An UNMAPPED member (gate 0.2) is not a TOO THIN member and is never counted as one. Carried from the draft text: the member's count is stated and the member is excluded from the weighting; if no mapped member clears the floor, the execution closes with headline TOO THIN and no rate is computed (DD-048-2)."
+   ],
+   "depends_on": [
+    "F048-C07"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [
+    "computing the family figure over below-floor members because the census is interesting (refused: the floor precedes the outcome in the run order)"
+   ],
+   "falsification_tests": [
+    "the gate-0.5 census is computed and published before any follower quantity; a run that computes a rate past a failed census falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a thin member's noisy rate carrying the family weighting",
+    "verdict_rule": "the census assertion is a hard gate: its table is part of the step-0 record and precedes every rate in it",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/01-language-and-position.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-04 fixes the floor: 'Any member below the 30-occurrence floor is reported as TOO THIN and excluded from the weighting, with its count stated.'",
+     "source_id": "docs/research/experiment-designs-2026-10-13/01-language-and-position.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F048-C12",
+   "kind": "requirement",
+   "text": "Every Asset F member's disposition is reported in the outcome record.",
+   "status": "draft",
+   "boundary": [
+    "Reporting covers UNMAPPED and TOO THIN members with their reasons and counts beside the tested members. The sensitivity is restricted to Asset F members among signs 72, 64, 70 that are mapped and above the floor; it is reported alongside the primary and changes no verdict beyond \u00a76's stated rules. Carried from the draft text: tested members carry full figures per arm (occurrences, followers counted, ending-follower rate, pass word), together with the token-weighted family rate, the control set's figures, and the 72/64/70 sensitivity."
+   ],
+   "depends_on": [
+    "F048-C10",
+    "F048-C11"
+   ],
+   "assumptions": [
+    "ASM-ASSET-F"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "a results product omitting any member, arm, control figure, or the sensitivity falsifies compliance; a headline following the sensitivity instead of the primary falsifies the boundary"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "selective reporting: only the members that fit the headline reaching the record",
+    "verdict_rule": "the \u00a79 reporting obligations are part of the outcome record's definition; their absence from any product is a defect of that product, recorded as such",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/01-language-and-position.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-04's method: 'Report each member separately and the token-weighted family rate', with the 72/64/70 sensitivity 'using only signs 72, 64, 70 (the three the claim's own record names)'.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/01-language-and-position.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F048-C13",
+   "kind": "requirement",
+   "text": "The control set is the gate-0.6 frozen set of non-fish animal signs matched for frequency.",
+   "status": "draft",
+   "boundary": [
+    "Same rate means the controls' token-weighted passing share is at or above the family's, under the rule the freeze confirms at OPEN-048-5. The control comparison changes the \u00a76 wording's support sentence, never the headline word's derivation from F048-C10's rule. Carried from the draft text: the controls run through the identical T2.4 measure; if the controls pass at the same rate as the family, the outcome record reports the fish result as a positional fact, not as support for the reading. 'Same rate' carries DD-048-7's reading, confirmed at the freeze (DD-048-13): the controls' token-weighted passing share at or above the family's. The frequency-matching rule fixed at the freeze (DD-048-13, OPEN-048-5): a control qualifies iff its published animal identification is citable from the program's records, its primary-corpus total is at least 30, and its total lies between half the smallest tested member's total and twice the largest tested member's total, all stated in the step-0 record before any follower quantity is computed."
+   ],
+   "depends_on": [
+    "F048-C08"
+   ],
+   "assumptions": [
+    "ASM-T24-MEASURE"
+   ],
+   "alternatives": [
+    "treating a family pass as reading-support while ignoring a matching control pass (refused: the design names this confounder and its consequence in advance)"
+   ],
+   "falsification_tests": [
+    "control outcomes are published beside the family's; a FAMILY SUPPORTED record whose support sentence does not follow the control comparison falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a positional effect shared by all animal signs presented as specific to the fish family",
+    "verdict_rule": "control figures precede verdict wording in the run order and are part of the \u00a79 results JSON",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/01-language-and-position.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "D-04's control: 'a control set of non-fish animal signs, matched for frequency, run through the identical measure \u2014 if control animals pass at the same rate, the fish result is reported as a positional fact, not as support for the reading.'",
+     "source_id": "docs/research/experiment-designs-2026-10-13/01-language-and-position.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F048-C14",
+   "kind": "requirement",
+   "text": "Every record under Spec 048 stays internal under the Roif gate.",
+   "status": "draft",
+   "boundary": [
+    "The hold covers summaries, article drafts, status lines, paper and website text, and public register wording. The 2026-10-21 verification that Roif's preprint is publicly posted on Academia.edu and citable satisfies at most one of the gate's conditions; the owner's cleared act on the specific publication is the other, and it is not given by this draft, by any freeze, or by any execution. Carried from the draft text: nothing derived from this spec's results is published or surfaced in any form under this campaign until the owner clears a specific publication act under campaign R-7 / Part 8; campaign reporting names this member only as 'executed - held under the Roif gate', without result content."
+   ],
+   "depends_on": [
+    "F048-C01"
+   ],
+   "assumptions": [
+    "ASM-ROIF-GATE"
+   ],
+   "alternatives": [
+    "surfacing a held result through a routine status summary or article process (the leak route campaign Part 8 names and closes by rule)"
+   ],
+   "falsification_tests": [
+    "the campaign's public-surface audit at acceptance finds nothing from this spec; campaign reporting using any other naming than the held-under-gate form falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "held results leaking onto a public surface by routine rather than by decision",
+    "verdict_rule": "compliance is judged at campaign acceptance by the public-surface audit and by inspection of campaign reporting",
+    "evidence_origin_groups": [
+     "campaign-plan"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "~/workspace/your_files/2026-10-21-runnable-experiments-campaign-plan.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Campaign plan Parts 5 (R-7) and 8, approved AS WRITTEN 2026-10-21: members 2, 3, 8, 9 execute, their records are internal, and reporting names them only as 'executed \u2014 held under the Roif gate'. Spec 048 is member 3.",
+     "source_id": "~/workspace/your_files/2026-10-21-runnable-experiments-campaign-plan.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F048-C15",
+   "kind": "requirement",
+   "text": "No outcome under Spec 048 establishes that any fish sign was pronounced 'meen'.",
+   "status": "draft",
+   "boundary": [
+    "Also carried by this boundary, and stated wherever an outcome is stated: sign identities are compilation-relative (the two arms are two compilations' numberings, joined by a crosswalk whose conflict pairs are reported, per Phase-125), and a family verdict is a statement about following-sign behaviour in recorded data. An account of sign 267's difference is a separate act, not an output of this test. Carried from the draft text: no outcome establishes the fish/star wordplay, the reading of any inscription, or an explanation of why sign 267 behaves differently."
+   ],
+   "depends_on": [
+    "F048-C01",
+    "F048-C03",
+    "F048-C10"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "a mechanism or pronunciation narrative attached to a family verdict because the verdict 'suggests' one (refused: suggestion is not adjudication)"
+   ],
+   "falsification_tests": [
+    "inspection of every Spec 048 output: a pronunciation, meaning, wordplay, or mechanism claim in any output falsifies compliance and is corrected by dated addendum, never by silent edit"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-READING"
+    ],
+    "strongest_rival": "the reading in which a uniform positional profile confirms the 'meen' sound value",
+    "verdict_rule": "outputs are judged against this boundary at execution close; violations are recorded defects, and the claim consequence is limited to the family positional statement of F048-C01",
+    "evidence_origin_groups": [
+     "claim-record",
+     "phase43-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "manual_002's not-understood text states the limit itself: 'The positional test cannot show that sign 72 was pronounced meen \u2014 it shows only that what follows it looks like endings.'",
+     "source_id": "glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "outputs/phase43_all.json"
+     ]
+    }
+   ],
+   "stage": "created"
+  }
+ ]
+}

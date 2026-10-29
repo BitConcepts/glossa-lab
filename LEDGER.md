@@ -11309,5 +11309,25 @@ direction of Tristen Pierson, per constitution sec. VI.
   filename confined, non-PDF content rejected, loopback import
   blocked, `file://` scheme blocked.
 
+## [2026-10-29] Entry — Leg C hardening 2: GlossaShell sandbox confinement (C-02)
+
+- **Finding (Leg C red team, live-confirmed):** `GlossaShell._resolve`
+  returned absolute paths and `../` traversals unchecked, so terminal
+  builtins (`cat`/`rm`/`cp`/`mv`/…) read and modified files outside
+  the repo sandbox; only `cd` enforced `sandbox_root`. A marker file
+  outside the sandbox was read live via both an absolute path and a
+  traversal path through `POST /terminal/run`.
+- **Fix:** `_resolve` now resolves every path and raises `ValueError`
+  when the result escapes `sandbox_root`; `run()` surfaces that as an
+  error line. `POST /terminal/run` also rejects a caller-supplied
+  `cwd` outside the repo root (400). The subprocess fallthrough for
+  unknown commands is unchanged — it is the terminal's documented
+  function for the local user; the systemic issue is the missing
+  authentication layer (finding C-01, owner decision), not the
+  fallthrough itself.
+- **Tests:** `backend/tests/test_glossa_shell_sandbox.py` — absolute
+  and traversal reads refused, in-sandbox reads work, traversal `rm`
+  does not delete the outside file.
+
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec. VI.

@@ -452,14 +452,14 @@ def create_app() -> FastAPI:
             name="sign_images",
         )
 
-    # Serve page preview images (local scans of Mahadevan, Fuls, etc.)
-    _page_previews = Path(__file__).parent.parent.parent / "data" / "page_previews"
-    if _page_previews.exists():
-        application.mount(
-            "/static/page_previews",
-            StaticFiles(directory=str(_page_previews)),
-            name="page_previews",
-        )
+    # Leg C finding C-10: page preview images are local scans of
+    # restricted source material (Mahadevan, Fuls, etc.). They were
+    # previously mounted unauthenticated at /static/page_previews, so
+    # populating the directory on any served instance would have made
+    # the scans reachable by anyone who could reach the port. The
+    # mount is removed: previews stay local files, served by no route.
+    # (The /signs/images/page-previews API route, which reads the same
+    # directory through the API layer, is unaffected.)
 
     # Serve built frontend
     # Skipped silently in dev if the dist directory does not yet exist.

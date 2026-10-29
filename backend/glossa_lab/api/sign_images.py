@@ -185,7 +185,9 @@ async def list_page_previews() -> dict[str, Any]:
                 pages.append({
                     "filename": f.name,
                     "source": source,
-                    "url": f"/static/page_previews/{f.name}",
+                    # Leg C C-10: no served URL — the scans are local
+                    # restricted material and are no longer mounted.
+                    "url": None,
                     "size_bytes": f.stat().st_size,
                 })
     return {

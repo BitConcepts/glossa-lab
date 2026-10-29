@@ -11398,6 +11398,31 @@ direction of Tristen Pierson, per constitution sec. VI.
   chi-squared, GAP-C09F frontend error-reporting half, GAP-ENV
   production venv below the declared AEE pin.
 
+## [2026-10-29] Entry — Leg C hardening 5: health identity, FE-log honesty, page-previews unmounted (C-08, C-09, C-10)
+
+- **C-08 (health = liveness, not identity):** `GET /api/v1/health`
+  now also returns `component: "glossa-lab-backend"` and `build`
+  (from the `GLOSSA_BUILD_ID` env var, `"dev"` when unset), so a
+  deployment check can verify WHAT is served, not just that
+  something answers. `test_health_no_secrets` amended to pin the
+  new exact key set.
+- **C-09, backend half (FE log swallowed failures):**
+  `POST /terminal/log/frontend` returned `{"ok": "logged"}`
+  unconditionally, swallowing write failures (`except: pass`). It
+  now returns 500 `{"ok": "error"}` when the write fails, so a
+  missing FE entry is distinguishable from a failed write. The
+  frontend half (fire-and-forget `fetch().catch(()=>{})` in
+  `main.tsx`) is a finding for the Spec 081 frontend owner — Leg C
+  does not edit `frontend/`.
+- **C-10 (restricted scans on an unauthenticated mount):** the
+  `/static/page_previews` StaticFiles mount (local scans of
+  restricted source material) is removed, and the
+  `/signs/images/page-previews` listing no longer hands out a
+  served URL for them (`url: None`). The files stay local; no route
+  serves them.
+- **Tests:** `test_security.py` key-set updated; `test_terminal_log.py`
+  gains FE-log success and write-failure cases.
+
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec. VI.
 

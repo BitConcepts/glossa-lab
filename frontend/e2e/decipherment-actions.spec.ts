@@ -130,8 +130,17 @@ async function setupMocks(
   await page.route("**/api/v1/projects/active", (r) =>
     r.fulfill({ status: 404, contentType: "application/json",
       body: JSON.stringify({ detail: "No active project" }) }));
+  // Spec 081: the shell is program-centric — with zero programs it
+  // stays on the tool home and no program surface (dashboard, claims)
+  // renders. One fixture program auto-activates (single-project rule),
+  // which is the mocked equivalent of the old shell's global mode.
   await page.route("**/api/v1/projects", (r) =>
-    r.fulfill({ status: 200, contentType: "application/json", body: "[]" }));
+    r.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify([{
+        id: "indus_decipherment", label: "Indus Script Decipherment",
+        description: "Mock program (shell bootstrap).", prompt_context: "", question: "",
+        topic_ids: [], experiment_ids: [], corpus_ids: [], is_active: 1,
+        created_at: "2026-01-01T00:00:00Z", updated_at: "2026-01-01T00:00:00Z",
+      }]) }));
   // Python env status used by TerminalPanel — returning {} is fine here.
   await page.route("**/api/v1/env/status", (r) =>
     r.fulfill({ status: 200, contentType: "application/json",
@@ -413,7 +422,7 @@ test.describe("DeciphermentPanel › ▶ Run SA button state machine", () => {
     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 3000 });
     await expect(page.getByRole("button", { name: "▶ Run SA" })).not.toBeVisible();
     // ↻ re-run button must be present
-    const rerunBtns = page.getByRole("button", { name: "↻" });
+    const rerunBtns = page.getByRole("button", { name: "↻", exact: true });
     expect(await rerunBtns.count()).toBeGreaterThan(0);
   });
 
@@ -426,7 +435,7 @@ test.describe("DeciphermentPanel › ▶ Run SA button state machine", () => {
     await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
     await expect(page.locator("text=✗ Error").first()).toBeVisible({ timeout: 3000 });
     await expect(page.getByRole("button", { name: "▶ Run SA" })).not.toBeVisible();
-    const rerunBtns = page.getByRole("button", { name: "↻" });
+    const rerunBtns = page.getByRole("button", { name: "↻", exact: true });
     expect(await rerunBtns.count()).toBeGreaterThan(0);
   });
 
@@ -464,7 +473,7 @@ test.describe("DeciphermentPanel › ▶ Run SA button state machine", () => {
     await setLS(page, "success");
     await page.reload();
     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 10_000 });
-    const rerun = page.getByRole("button", { name: "↻" }).first();
+    const rerun = page.getByRole("button", { name: "↻", exact: true }).first();
     await rerun.click();
     await expect(page.getByRole("button", { name: "⏳ Running…" }).first()).toBeVisible({ timeout: 2000 });
     await expect(page.locator("text=✓ Done").first()).not.toBeVisible();
@@ -482,7 +491,7 @@ test.describe("DeciphermentPanel › ▶ Run SA button state machine", () => {
     await setLS(page, "error");
     await page.reload();
     await expect(page.locator("text=✗ Error").first()).toBeVisible({ timeout: 10_000 });
-    const rerun = page.getByRole("button", { name: "↻" }).first();
+    const rerun = page.getByRole("button", { name: "↻", exact: true }).first();
     await rerun.click();
     // Should go through busy then done
     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 15_000 });
@@ -508,7 +517,7 @@ test.describe("DeciphermentPanel › ▶ Run SA button state machine", () => {
       return r.fulfill({ status: 200, contentType: "text/event-stream",
         headers: { "Cache-Control": "no-cache" }, body: sseSuccess(id) });
     });
-    const rerun = page.getByRole("button", { name: "↻" }).first();
+    const rerun = page.getByRole("button", { name: "↻", exact: true }).first();
     await rerun.click();
     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 15_000 });
     const state = await getLS(page);
@@ -695,7 +704,7 @@ test.describe("DeciphermentPanel › Run SA — error scenarios", () => {
     await setLS(page, "error");
     await page.reload();
     await expect(page.locator("text=✗ Error").first()).toBeVisible({ timeout: 10_000 });
-    const rerun = page.getByRole("button", { name: "↻" }).first();
+    const rerun = page.getByRole("button", { name: "↻", exact: true }).first();
     await rerun.click();
     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 15_000 });
     const state = await getLS(page);

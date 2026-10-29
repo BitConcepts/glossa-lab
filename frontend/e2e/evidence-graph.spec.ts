@@ -23,7 +23,7 @@ import { expect, test } from "@playwright/test";
 
 async function navigateToEvidence(page: import("@playwright/test").Page) {
   await page.goto("/");
-  const btn = page.getByTitle("Evidence Graph").first();
+  const btn = page.getByTitle("Evidence & sources").first();
   await btn.waitFor({ state: "visible", timeout: 8000 });
   await btn.click();
   // Wait for the evidence view header to appear
@@ -35,7 +35,7 @@ async function navigateToEvidence(page: import("@playwright/test").Page) {
 test.describe("Evidence Graph navigation", () => {
   test("Evidence Graph nav item is visible in sidebar Research section", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByTitle("Evidence Graph").first()).toBeVisible();
+    await expect(page.getByTitle("Evidence & sources").first()).toBeVisible();
   });
 
   test("clicking Evidence Graph tab renders the view header", async ({ page }) => {

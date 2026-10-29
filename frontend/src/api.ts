@@ -85,6 +85,15 @@ export interface HealthResponse {
 
 export interface StatusResponse {
   status: string;
+  version: string;
+  uptime_seconds: number;
+  /** Spec 081 identity block (FR-007) — on /status, since /health's
+   *  key set is pinned minimal by TEST-SEC-002. */
+  app?: string;
+  host?: string;
+  started_at?: string;
+  data_dir?: string;
+  db_ready?: boolean;
   jobs: Record<string, number>;
   job_counts: Record<string, number>;
   pipelines: string[];
@@ -2080,6 +2089,8 @@ export interface Project {
   label: string;
   description: string;
   prompt_context: string;
+  /** Spec 081: the question the program tests (UI language: "program"). */
+  question?: string;
   topic_ids: string[];
   experiment_ids: string[];
   corpus_ids: string[];

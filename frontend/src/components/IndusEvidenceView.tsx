@@ -50,8 +50,16 @@ function fmtDate(s: string): string {
 
 type EvidenceTab = "library" | "claims" | "sweep";
 
-export function IndusEvidenceView({ darkMode = true }: { darkMode?: boolean }) {
-  const [activeTab, setActiveTab] = useState<EvidenceTab>("library");
+export function IndusEvidenceView({
+  darkMode = true,
+  initialTab,
+}: {
+  darkMode?: boolean;
+  /** Spec 081: the Claims route opens on the register; Evidence &
+   *  sources on the library. Restructured by step 3. */
+  initialTab?: EvidenceTab;
+}) {
+  const [activeTab, setActiveTab] = useState<EvidenceTab>(initialTab ?? "library");
   const { toast } = useToast();
 
   const bg     = darkMode ? "#0f172a" : "#f8fafc";

@@ -1,6 +1,8 @@
 """System status endpoint (REQ-API-002)."""
 
+import platform
 import time
+from datetime import datetime, timezone
 
 from fastapi import APIRouter
 
@@ -17,11 +19,24 @@ async def status():
     """Return detailed system status including job counts and pipeline states.
 
     Satisfies REQ-API-002.
+
+    Spec 081 (FR-007): status surfaces show identity — what is
+    serving, where, and since when — not liveness alone. The identity
+    block lives here rather than on /health, whose key set is pinned
+    minimal by TEST-SEC-002.
     """
     from glossa_lab.main import get_ollama_state, get_start_time  # noqa: PLC0415
 
     start = get_start_time()
     uptime = time.time() - start if start > 0 else 0.0
+
+    data_dir = ""
+    try:
+        from glossa_lab.config import get_settings
+
+        data_dir = str(get_settings().data_dir)
+    except Exception:  # noqa: BLE001 — identity is best-effort
+        data_dir = ""
 
     db = get_db()
     job_counts = (
@@ -43,6 +58,16 @@ async def status():
         "status": "healthy",
         "version": __version__,
         "uptime_seconds": round(uptime, 1),
+        # ── Spec 081 identity block (FR-007) ─────────────────────────
+        "app": "Glossa Lab",
+        "host": platform.node(),
+        "started_at": (
+            datetime.fromtimestamp(start, tz=timezone.utc).isoformat()
+            if start > 0
+            else ""
+        ),
+        "data_dir": data_dir,
+        "db_ready": db is not None,
         "jobs": job_counts,
         "job_counts": job_counts,
         "pipelines": pipelines,

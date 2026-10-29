@@ -17,8 +17,8 @@
 
 ## Phase 2 — build (starts only after T012)
 
-- [ ] T013 Shell & routing per FR-001/002/018 (spec outline step 1)
-- [ ] T014 Program model presentation + import (step 2)
+- [x] T013 Shell & routing per FR-001/002/018 (spec outline step 1) — PR-2 (feat/081-shell-programs): two-space nav, switcher card (Q1), service chip, hash deep links, legacy alias resolution
+- [x] T014 Program model presentation + import (step 2) — PR-2: ProgramsView tool home + first run (wireframes 01/16), question field (backend, schema V24)
 - [ ] T015 Claims surface + endpoint generalization with one-release shim (step 3; Q7 ruling applied)
 - [ ] T016 Digestion board (step 4)
 - [ ] T017 Program home; Dashboard retired (step 5)

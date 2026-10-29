@@ -36,6 +36,30 @@ def test_create_project_with_goals(_client):
     assert body["topic_ids"] == ["topic_a", "topic_b"]
 
 
+def test_project_question_roundtrip(_client):
+    """Spec 081: a program's question is stored and returned verbatim."""
+    r = _client.put("/api/v1/projects/test_question_proj", json={
+        "label": "Question Program",
+        "question": "What do the signs mean — tested claim by claim?",
+        "is_active": False,
+    })
+    assert r.status_code == 200
+    assert r.json()["question"] == "What do the signs mean — tested claim by claim?"
+    r = _client.get("/api/v1/projects/test_question_proj")
+    assert r.status_code == 200
+    assert r.json()["question"] == "What do the signs mean — tested claim by claim?"
+
+
+def test_project_question_defaults_empty(_client):
+    """Spec 081: legacy projects without a question read back ''."""
+    r = _client.put("/api/v1/projects/test_noquestion_proj", json={
+        "label": "No Question Program",
+        "is_active": False,
+    })
+    assert r.status_code == 200
+    assert r.json().get("question", "") == ""
+
+
 def test_get_project_returns_goals(_client):
     """GET /api/v1/projects/{id} roundtrips prompt_context."""
     r = _client.get("/api/v1/projects/test_goals_proj")

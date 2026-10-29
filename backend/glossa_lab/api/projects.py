@@ -33,6 +33,8 @@ class ProjectBody(BaseModel):
     label: str
     description: str = ""
     prompt_context: str = ""
+    # Spec 081: the question the program tests (UI: switcher + program home).
+    question: str = ""
     topic_ids: list[str] = []
     experiment_ids: list[str] = []
     corpus_ids: list[str] = []
@@ -80,6 +82,7 @@ async def upsert_project(project_id: str, body: ProjectBody) -> dict[str, Any]:
         label=body.label,
         description=body.description,
         prompt_context=body.prompt_context,
+        question=body.question,
         topic_ids=body.topic_ids,
         experiment_ids=body.experiment_ids,
         corpus_ids=body.corpus_ids,
@@ -102,6 +105,7 @@ async def activate_project(project_id: str) -> dict[str, Any]:
         label=existing["label"],
         description=existing.get("description", ""),
         prompt_context=existing.get("prompt_context", ""),
+        question=existing.get("question", ""),
         topic_ids=existing.get("topic_ids", []),
         experiment_ids=existing.get("experiment_ids", []),
         corpus_ids=existing.get("corpus_ids", []),

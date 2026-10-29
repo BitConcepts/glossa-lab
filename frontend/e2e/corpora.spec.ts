@@ -10,7 +10,7 @@ test.describe("Corpora view structure", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
     // Use getByTitle to scope to sidebar nav button
-    await page.getByTitle("Corpora").first().click();
+    await page.getByTitle("Data").first().click();
     await expect(page.getByRole("heading", { name: "Corpora" })).toBeVisible();
   });
 
@@ -84,7 +84,7 @@ test.describe("Corpora view with backend", () => {
 
   test("shows empty state OR list of corpora", async ({ page }) => {
     await page.goto("/");
-    await page.getByTitle("Corpora").first().click();
+    await page.getByTitle("Data").first().click();
     await page.waitForTimeout(1500);
     // Corpora may be shown as:
     //   - cards with text containing the corpus name or 'tokens'

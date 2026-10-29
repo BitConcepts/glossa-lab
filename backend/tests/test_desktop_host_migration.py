@@ -112,17 +112,23 @@ def test_setup_os_autostart_is_routeb_task() -> None:
     assert "LogonType Interactive" in helper
     assert "RunLevel Limited" in helper
     assert "New-ScheduledTaskTrigger -AtLogon -User" in helper
-    assert "wscript.exe" in helper and "launch-tray.vbs" in helper
+    assert "wscript.exe" in helper and "start-ensure.vbs" in helper
     # Registration is read back and gated on the Ready state.
     assert "GLOSSA_TASK_STATE" in helper
     assert "Get-ScheduledTask" in helper
-    # Amendment 3: scheduler restart-on-failure, with the VBS
-    # waiting on the tray so the settings have a lifetime to
-    # supervise (a fire-and-forget launch died with its job).
+    # Amendment 4 (supersedes Amendment 3's waiting action):
+    # the task is a short-lived starter - restart-on-failure
+    # covers starter-launch failures only, a repetition tick
+    # re-ensures every 15 minutes, and the tray launcher is
+    # fire-and-forget with a single-instance guard (the waiting
+    # coupling ended the task instance 0xFFFFFFFF when the
+    # app's own stop killed its tray - task-diag 2026-10-29).
     assert "RestartCount 3" in helper
     assert "RestartInterval" in helper
+    assert "RepetitionInterval" in helper
     vbs = _text("scripts/launch-tray.vbs")
-    assert ", 0, True)" in vbs
+    assert ", 0, False" in vbs
+    assert "ExecQuery" in vbs
     assert "WScript.Quit" in vbs
     # The tray detects autostart from the same task.
     tray = _text("tray/glossa_tray/main.py")

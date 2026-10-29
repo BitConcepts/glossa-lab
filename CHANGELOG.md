@@ -6,6 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Windows script honesty (2026-10-29 UI-log audit): `shell.cmd
+  setup` now checks every step and exits non-zero naming the failed
+  step (it previously printed "[OK]" and exited 0 on any failure,
+  so the installers' error checks could never fire); `setup-os.cmd`
+  aborts its install when that setup fails. The retired
+  `start_services.cmd` / `.ps1` / `_safe.ps1` starters — which
+  launched the non-factory app object with no installed mode and
+  reported success anyway — are now delegating shims to the
+  canonical `setup-os.cmd start`. The retired two-task machinery
+  (`scripts/register-tasks.ps1`, `scripts/run-tray-svc.cmd`) is
+  deleted; the single GlossaLab task is the only registrar. The
+  last `timeout /t` wait (`scripts/exec.cmd`) is a ping wait, and a
+  contract test now bans timeout.exe waits in all Windows scripts
+  (the previous assertion for this ended in "or True" and could
+  never fail). Host verification now counts tray presence in its
+  overall verdict (`--skip-tray-check` records an explicit skip).
 - Tray supervision honesty (2026-10-29 UI-log audit): the tray now
   keeps its own bounded log (`logs/tray.log`) — starts, auto-restarts,
   failed stops, config failures, and poller renewals are recorded

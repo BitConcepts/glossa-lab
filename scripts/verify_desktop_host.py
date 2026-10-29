@@ -20,7 +20,11 @@ that runs this script (TRISTEN-DESKTOP):
   supervisor must bring it back (new PID) within the deadline
 
 Every wait is bounded (H11). Exit code 0 only if health, identity,
-icon and (when the tray is running) the restart test all pass.
+icon, tray presence, and the restart test all pass (a check can be
+explicitly skipped, which its marker records). Tray presence is
+part of the verdict because the tray IS the host's user interface:
+a verify that passed with no tray running certified a host whose
+UI was down (2026-10-29 UI-log audit).
 """
 
 from __future__ import annotations
@@ -269,6 +273,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--base-url", default="http://127.0.0.1:8001")
     parser.add_argument("--skip-restart-test", action="store_true",
                         help="report state only; do not cycle the backend")
+    parser.add_argument("--skip-tray-check", action="store_true",
+                        help="do not require a running tray process")
     args = parser.parse_args(argv)
     base_url = args.base_url.rstrip("/")
     healthcheck = load_healthcheck()
@@ -287,10 +293,17 @@ def main(argv: list[str] | None = None) -> int:
     )
 
     pids = tray_pids()
-    marker(
-        "GLOSSA_TRAY_PROCESS",
-        f"count={len(pids)} pids={','.join(str(p) for p in pids) if pids else 'NONE'}",
-    )
+    tray_ok = len(pids) >= 1
+    if args.skip_tray_check:
+        tray_ok = True
+        marker("GLOSSA_TRAY_PROCESS", "result=SKIP requested")
+    else:
+        marker(
+            "GLOSSA_TRAY_PROCESS",
+            f"count={len(pids)} "
+            f"pids={','.join(str(p) for p in pids) if pids else 'NONE'} "
+            f"result={'PASS' if tray_ok else 'FAIL'}",
+        )
 
     icons_ok, ico_sha, png_sha = icon_hashes_ok(REPO_ROOT)
     marker(
@@ -313,7 +326,7 @@ def main(argv: list[str] | None = None) -> int:
             f"result={'PASS' if restart_ok else 'FAIL'} {detail}",
         )
 
-    overall = ok and icons_ok and restart_ok
+    overall = ok and icons_ok and restart_ok and tray_ok
     marker("GLOSSA_HOST_VERIFY", f"result={'PASS' if overall else 'FAIL'}")
     return 0 if overall else 1
 

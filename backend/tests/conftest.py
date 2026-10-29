@@ -11,7 +11,7 @@
 import os as _os
 
 import pytest
-from fastapi.testclient import TestClient
+from fastapi.testclient import TestClient as _ImportedTestClient
 
 # ── Spec 082 test seam ────────────────────────────────────────────────────────
 # The backend enforces a per-install API token (Spec 082). The suite
@@ -28,10 +28,8 @@ _os.environ.setdefault("GLOSSA_API_TOKEN", _TEST_API_TOKEN)
 
 import fastapi.testclient as _fastapi_testclient  # noqa: E402
 
-_RealTestClient = _fastapi_testclient.TestClient
 
-
-class _AuthedTestClient(_RealTestClient):
+class _AuthedTestClient(_ImportedTestClient):
     """TestClient presenting the session test token by default."""
 
     def __init__(self, *args, **kwargs):  # noqa: ANN002, ANN003

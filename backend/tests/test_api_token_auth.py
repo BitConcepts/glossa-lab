@@ -4,9 +4,10 @@ Claim coverage (specs/082-api-token-auth/aee-claims.json):
 
 - C082-1  enforcement matrix: route families x {missing, wrong,
   empty} -> 401, install token -> not 401; plus an enumeration of
-  every /api route on the built app, each held to 401 without a
-  token (enforcement is middleware-level, so the inventory is
-  derived from the app, not a hand list).
+  every schema-visible /api route in the built app's OpenAPI
+  document, each held to 401 without a token (enforcement is
+  middleware-level, so the inventory is derived from the app,
+  not a hand list).
 - C082-2  token generation (CSPRNG, >= 43 chars, unique), file
   perms 0600, non-disclosure (token in no response body, no log
   line, never reflected, never accepted via query string).
@@ -57,28 +58,36 @@ def _anon_client(app) -> TestClient:
     return c
 
 
-def _pick(app, prefix: str, method: str) -> str:
-    """First concrete route under ``prefix`` supporting ``method``."""
-    for route in app.routes:
-        path = getattr(route, "path", "")
-        methods = getattr(route, "methods", None) or set()
-        if path.startswith(prefix) and method in methods:
-            return re.sub(r"\{[^}]+\}", "1", path)
-    raise AssertionError(f"no {method} route under {prefix}")
+def _route_table(client) -> list[tuple[str, str]]:
+    """(method, concrete path) for every schema-visible /api route.
 
-
-def _api_routes(app) -> list[tuple[str, str]]:
-    """Every (method, concrete path) under /api except open health."""
+    Read from the app's own OpenAPI document — the same source the
+    MCP drift guard (tests/test_glossa_mcp.py) uses — because
+    Starlette 1.x keeps included routers as lazy wrappers in
+    ``app.routes`` rather than a flat route list.
+    """
+    spec = client.get("/openapi.json").json()
     found: set[tuple[str, str]] = set()
-    for route in app.routes:
-        path = getattr(route, "path", "")
-        methods = getattr(route, "methods", None) or set()
+    for path, operations in spec.get("paths", {}).items():
         if not path.startswith("/api/") or path == "/api/v1/health":
             continue
         concrete = re.sub(r"\{[^}]+\}", "1", path)
-        for method in methods & {"GET", "POST", "PUT", "PATCH", "DELETE"}:
-            found.add((method, concrete))
+        for method in operations:
+            if method.upper() in {"GET", "POST", "PUT", "PATCH", "DELETE"}:
+                found.add((method.upper(), concrete))
     return sorted(found)
+
+
+def _pick(client, prefix: str, method: str) -> str:
+    """The shortest concrete route under ``prefix`` for ``method``."""
+    candidates = [
+        path
+        for m, path in _route_table(client)
+        if m == method and path.startswith(prefix)
+    ]
+    if not candidates:
+        raise AssertionError(f"no {method} route under {prefix}")
+    return sorted(candidates, key=lambda p: (len(p), p))[0]
 
 
 # ── C082-1: enforcement matrix ────────────────────────────────────
@@ -97,7 +106,7 @@ FAMILIES = [
 
 @pytest.mark.parametrize("method,prefix", FAMILIES)
 def test_route_family_matrix(app, client, method, prefix):
-    path = _pick(app, prefix, method)
+    path = _pick(client, prefix, method)
     anon = _anon_client(app)
     assert anon.request(method, path).status_code == 401
     assert (
@@ -119,8 +128,8 @@ def test_route_family_matrix(app, client, method, prefix):
         assert client.request(method, path).status_code != 401
 
 
-def test_every_api_route_requires_the_token(app):
-    routes = _api_routes(app)
+def test_every_api_route_requires_the_token(app, client):
+    routes = _route_table(client)
     assert len(routes) >= 50, f"route enumeration too small: {len(routes)}"
     anon = _anon_client(app)
     failures = [

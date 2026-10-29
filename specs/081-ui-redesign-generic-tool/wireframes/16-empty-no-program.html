@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — First run · no program yet (Spec 081 wireframe 16)</title>
+<link rel="stylesheet" href="wireframes.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-row"><div class="tile">G</div><div><div class="brand-name">Glossa Lab</div><div class="brand-sub">Epistemic research workbench</div></div></div></div>
+    <div class="program-switch" style="border-style:dashed;border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.04)"><div class="ps-label">Program</div><div class="ps-name" style="color:#a8c2e2">None open <span>▾</span></div><div class="ps-q">Open a program to work in it, or start a new one.</div></div>
+    <nav class="nav">
+      <h4>Tool home</h4>
+      <a href="01-programs.html" class="active"><span class="ic">▦</span>Programs</a>
+      <a href="09-jobs.html"><span class="ic">⚙</span>Jobs</a>
+      <a href="14-status.html"><span class="ic">♥</span>Status</a>
+      <a href="13-settings.html"><span class="ic">⚙</span>Settings</a>
+      <a href="#"><span class="ic">?</span>Help</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="crumb"><b>Glossa Lab</b> / Welcome</span>
+      <div class="spacer"></div>
+      <div class="service-chip"><span class="dot"></span><span><b>Glossa Lab v0.1.0</b> · TRISTEN-DESKTOP · checked 14:02</span></div>
+    </div>
+
+    <div class="content">
+      <div class="head-row">
+        <div class="page-head">
+          <h1>Glossa Lab is ready. The work starts with a program.</h1>
+          <p class="lede">Glossa Lab is a workbench for evidence-tested research. A <b>program</b> is one research effort inside it: a question, the claims that test it — each registered with the evidence that could prove it wrong — and the record of what people have settled. No program exists yet on this machine.</p>
+        </div>
+      </div>
+
+      <div class="grid c2">
+        <div class="card">
+          <h3>Start a program</h3>
+          <p class="row-meta" style="margin-bottom:10px">You need two things. Everything else — data, claims, experiments — is added inside the program, as the work grows.</p>
+          <div class="row-item"><div class="grow"><div class="row-title">1 · A name</div><div class="row-meta">Short and plain: the effort's name, as you would say it.</div></div></div>
+          <div class="row-item"><div class="grow"><div class="row-title">2 · The question it tests</div><div class="row-meta">One sentence. It appears on the program's home and in the switcher, so it should say what would count as an answer.</div></div></div>
+          <div style="margin-top:12px"><button class="btn primary">+ Create your first program</button></div>
+        </div>
+        <div class="card">
+          <h3>Or bring existing work</h3>
+          <p class="row-meta" style="margin-bottom:10px">A project folder from the current version imports as a program: its topics, corpora, experiments, and records keep their names and dates. Importing never renames anything silently — the import report lists every item and where it landed.</p>
+          <button class="btn">Import an existing project…</button>
+          <div class="divider"></div>
+          <p class="row-meta">The service underneath is already verified: <b>Glossa Lab v0.1.0</b> on this machine, data folder %LOCALAPPDATA%\GlossaLab\data, checked just now. Details live under Status — you do not need them to begin.</p>
+        </div>
+      </div>
+
+      <div class="annotation">
+        <div class="a-title">Annotation — wireframe 16 · not part of the UI</div>
+        <dl>
+          <dt>Purpose</dt><dd>First run: explain the program model in one screen and get the first program created or imported.</dd>
+          <dt>Primary action</dt><dd>“Create your first program” — the form asks for a name and a question, nothing program-specific (C081-6's checkable form).</dd>
+          <dt>Changed &amp; why</dt><dd>There is no first-run state today: the app opens on a global dashboard over empty data, and “project” is a filter you may never meet. The empty state teaches the model (tool vs program) at the moment it is needed, and the import door acknowledges the real migration path from today's projects.</dd>
+          <dt>Spec claims</dt><dd>C081-1, C081-2, C081-6.</dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</div>
+<nav class="mobile-nav">
+  <a href="02-program-home.html"><span class="mi">⌂</span>Home</a>
+  <a href="03-claims.html"><span class="mi">§</span>Claims</a>
+  <a href="05-digestion.html"><span class="mi">✓</span>Digestion</a>
+  <a href="09-jobs.html"><span class="mi">⚙</span>Jobs</a>
+  <a href="01-programs.html" class="active"><span class="mi">☰</span>More</a>
+</nav>
+</body>
+</html>

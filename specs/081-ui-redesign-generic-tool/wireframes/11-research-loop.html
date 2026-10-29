@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — Research loop (Spec 081 wireframe 11)</title>
+<link rel="stylesheet" href="wireframes.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-row"><div class="tile">G</div><div><div class="brand-name">Glossa Lab</div><div class="brand-sub">Epistemic research workbench</div></div></div></div>
+    <a class="program-switch" href="01-programs.html" style="text-decoration:none"><div class="ps-label">Program</div><div class="ps-name">Indus Script <span>▾</span></div><div class="ps-q">What do the signs mean — tested claim by claim?</div></a>
+    <nav class="nav">
+      <h4>Program</h4>
+      <a href="02-program-home.html"><span class="ic">⌂</span>Home</a>
+      <a href="03-claims.html"><span class="ic">§</span>Claims<span class="count">94</span></a>
+      <a href="05-digestion.html"><span class="ic">✓</span>Digestion<span class="count alert">9</span></a>
+      <a href="06-evidence.html"><span class="ic">▤</span>Evidence &amp; sources</a>
+      <a href="07-data.html"><span class="ic">▦</span>Data</a>
+      <a href="#"><span class="ic">◈</span>Analysis</a>
+      <a href="08-experiments.html"><span class="ic">⬡</span>Experiments</a>
+      <a href="10-discovery.html"><span class="ic">◎</span>Discovery<span class="count">12</span></a>
+      <a href="11-research-loop.html" class="active"><span class="ic">↻</span>Research loop</a>
+      <a href="12-reports.html"><span class="ic">▨</span>Reports &amp; ledger</a>
+      <div class="nav-tool"><h4>Tool</h4>
+        <a href="09-jobs.html"><span class="ic">⚙</span>Jobs<span class="count">2</span></a>
+        <a href="14-status.html"><span class="ic">♥</span>Status</a>
+        <a href="13-settings.html"><span class="ic">⚙</span>Settings</a>
+        <a href="#"><span class="ic">?</span>Help</a>
+      </div>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="crumb">Glossa Lab / <b>Indus Script</b> / Research loop</span>
+      <div class="spacer"></div>
+      <button class="icon-btn">⌘K&nbsp; Search</button>
+      <button class="icon-btn">✦ AI assistant</button>
+      <div class="service-chip"><span class="dot"></span><span><b>Glossa Lab v0.1.0</b> · TRISTEN-DESKTOP · checked 14:02</span></div>
+    </div>
+
+    <div class="content">
+      <p class="specimen-note">Specimen state — the loop's real posture on 2026-10-29: stopped, scheduler off.</p>
+
+      <div class="head-row">
+        <div class="page-head">
+          <h1>Research loop</h1>
+          <p class="lede">The loop runs study iterations for this program: it proposes, tests against falsifiers, and stages candidate findings. It can move a claim to <b>checked</b> — never further. Explaining, accepting, and digesting stay human, on the digestion board.</p>
+        </div>
+        <div class="spacer"></div>
+        <button class="btn primary">▶ Start a session</button>
+      </div>
+
+      <div class="grid c2">
+        <div class="card">
+          <h3>State <span class="sub">— identity first: what this is, and when it last moved</span></h3>
+          <div class="row-item"><div class="grow"><div class="row-title">Stopped</div><div class="row-meta">Last session Oct 27 · 14 iterations · ended by the owner · its findings are staged below, none auto-applied</div></div><span class="chip neutral">Idle since Oct 27</span></div>
+          <div class="row-item"><div class="grow"><div class="row-title">Scheduler</div><div class="row-meta">Off. The loop never starts itself. Turning the daily schedule on is a program setting, changed deliberately, and recorded in the ledger.</div></div><button class="btn small">Open settings</button></div>
+          <div class="row-item"><div class="grow"><div class="row-title">Session shape</div><div class="row-meta">Iterations per session: chosen at start (presets 5 / 10 / 25). A session can be stopped at any iteration boundary; partial work is kept and labelled partial.</div></div></div>
+        </div>
+
+        <div class="card">
+          <h3>Staged findings <span class="sub">— the loop proposes; people dispose</span></h3>
+          <div class="row-item"><div class="grow"><div class="row-title">Candidate claim from the last session</div><div class="row-meta">Staged, not registered. Registering it requires a falsifier — the staging area holds it until a person writes one.</div></div><button class="btn small">Review</button></div>
+          <div class="row-item"><div class="grow"><div class="row-title">Anchor candidates</div><div class="row-meta">Staged pairings wait in Data → Anchor sets → Pending. The loop cannot promote an anchor into the strict set.</div></div><button class="btn small">Review</button></div>
+          <p class="row-meta" style="margin-top:8px">Session history (each with its full record): Oct 27 · Oct 24 · Oct 21 — under Reports &amp; ledger.</p>
+        </div>
+      </div>
+
+      <div class="annotation">
+        <div class="a-title">Annotation — wireframe 11 · not part of the UI</div>
+        <dl>
+          <dt>Purpose</dt><dd>Run and supervise the autonomous study loop for this program, inside the doctrine's hard limit: machine work stops at “checked”.</dd>
+          <dt>Primary action</dt><dd>“Start a session” (with the iteration count chosen in the State card, not as a rival button).</dd>
+          <dt>Changed &amp; why</dt><dd>Today the loop is a ~3,000-line panel embedded at the bottom of the Dashboard, under counts and an AI narrative — the program's engine filed as dashboard decoration, with two endpoint families behind it. Here it is a first-class program surface whose state is stated as identity (what, since when, ended by whom), whose scheduler is honestly off by default, and whose outputs land in a staging area that visibly cannot cross into claims or strict anchors on its own.</dd>
+          <dt>Spec claims</dt><dd>C081-2, C081-3, C081-4 (the loop's ceiling — checked, never beyond — is stated on its own surface).</dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</div>
+<nav class="mobile-nav">
+  <a href="02-program-home.html"><span class="mi">⌂</span>Home</a>
+  <a href="03-claims.html"><span class="mi">§</span>Claims</a>
+  <a href="05-digestion.html"><span class="mi">✓</span>Digestion</a>
+  <a href="09-jobs.html"><span class="mi">⚙</span>Jobs</a>
+  <a href="01-programs.html" class="active"><span class="mi">☰</span>More</a>
+</nav>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — Settings (Spec 081 wireframe 13)</title>
+<link rel="stylesheet" href="wireframes.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-row"><div class="tile">G</div><div><div class="brand-name">Glossa Lab</div><div class="brand-sub">Epistemic research workbench</div></div></div></div>
+    <a class="program-switch" href="01-programs.html" style="text-decoration:none"><div class="ps-label">Program</div><div class="ps-name">Indus Script <span>▾</span></div><div class="ps-q">What do the signs mean — tested claim by claim?</div></a>
+    <nav class="nav">
+      <h4>Program</h4>
+      <a href="02-program-home.html"><span class="ic">⌂</span>Home</a>
+      <a href="03-claims.html"><span class="ic">§</span>Claims<span class="count">94</span></a>
+      <a href="05-digestion.html"><span class="ic">✓</span>Digestion<span class="count alert">9</span></a>
+      <a href="06-evidence.html"><span class="ic">▤</span>Evidence &amp; sources</a>
+      <a href="07-data.html"><span class="ic">▦</span>Data</a>
+      <a href="#"><span class="ic">◈</span>Analysis</a>
+      <a href="08-experiments.html"><span class="ic">⬡</span>Experiments</a>
+      <a href="10-discovery.html"><span class="ic">◎</span>Discovery<span class="count">12</span></a>
+      <a href="11-research-loop.html"><span class="ic">↻</span>Research loop</a>
+      <a href="12-reports.html"><span class="ic">▨</span>Reports &amp; ledger</a>
+      <div class="nav-tool"><h4>Tool</h4>
+        <a href="09-jobs.html"><span class="ic">⚙</span>Jobs<span class="count">2</span></a>
+        <a href="14-status.html"><span class="ic">♥</span>Status</a>
+        <a href="13-settings.html" class="active"><span class="ic">⚙</span>Settings</a>
+        <a href="#"><span class="ic">?</span>Help</a>
+      </div>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="crumb">Glossa Lab / <b>Tool</b> / Settings</span>
+      <div class="spacer"></div>
+      <button class="icon-btn">⌘K&nbsp; Search</button>
+      <button class="icon-btn">✦ AI assistant</button>
+      <div class="service-chip"><span class="dot"></span><span><b>Glossa Lab v0.1.0</b> · TRISTEN-DESKTOP · checked 14:02</span></div>
+    </div>
+
+    <div class="content">
+      <div class="head-row">
+        <div class="page-head">
+          <h1>Settings</h1>
+          <p class="lede">Two kinds of settings, kept apart: the <b>tool's</b> (the service, its environment, its AI providers — shared by every program) and the open <b>program's</b> (its sources, its loop schedule, its question). Changing a program setting never touches another program.</p>
+        </div>
+        <div class="spacer"></div>
+        <button class="btn primary">Save changes</button>
+      </div>
+
+      <div class="grid c2">
+        <div style="display:grid;gap:14px;align-content:start">
+          <div class="card">
+            <h3>Tool — service</h3>
+            <div class="row-item"><div class="grow"><div class="row-title">Port</div><div class="row-meta">The backend listens on this machine only; the tray's “Change Port” writes the same setting.</div></div><span class="chip line">8001</span><button class="btn small">Change…</button></div>
+            <div class="row-item"><div class="grow"><div class="row-title">Data folder</div><div class="row-meta">%LOCALAPPDATA%\GlossaLab\data · shown, not editable here — moving data is an installer act, recorded in the ledger.</div></div></div>
+            <div class="row-item"><div class="grow"><div class="row-title">Start at sign-in</div><div class="row-meta">One scheduled task launches the tray, which supervises the backend. No second autostart mechanism exists.</div></div><span class="chip ok">On</span></div>
+          </div>
+          <div class="card">
+            <h3>Tool — environment &amp; AI</h3>
+            <div class="row-item"><div class="grow"><div class="row-title">Python environment</div><div class="row-meta">Healthy · package list and rebuild live behind this row — maintenance, not daily work.</div></div><button class="btn small">Manage</button></div>
+            <div class="row-item"><div class="grow"><div class="row-title">AI providers &amp; models</div><div class="row-meta">Which models the assistant, extraction, and the loop may call, and what each is assigned to. Keys are stored by the provider panels; no key is ever shown back.</div></div><button class="btn small">Manage</button></div>
+            <div class="row-item"><div class="grow"><div class="row-title">Assistant behavior</div><div class="row-meta">The assistant advises and drafts. It cannot register a claim, move a digestion stage, or send anything.</div></div><button class="btn small">Manage</button></div>
+          </div>
+        </div>
+
+        <div style="display:grid;gap:14px;align-content:start">
+          <div class="card">
+            <h3>Program — Indus Script</h3>
+            <div class="row-item"><div class="grow"><div class="row-title">The question</div><div class="row-meta">“What do the signs of the Indus script mean — tested claim by claim?” Shown on the program home and the switcher. Editing it is a ledger event.</div></div><button class="btn small">Edit</button></div>
+            <div class="row-item"><div class="grow"><div class="row-title">Discovery sources</div><div class="row-meta">The feeds and indexes the inbox fetches from (incl. bioRxiv via Europe PMC). Per program — another program watches different sources.</div></div><button class="btn small">Manage</button></div>
+            <div class="row-item"><div class="grow"><div class="row-title">Research-loop schedule</div><div class="row-meta">Off. The loop starts only when a person starts it, unless this is deliberately turned on.</div></div><span class="chip neutral">Off</span></div>
+            <div class="row-item"><div class="grow"><div class="row-title">Foundation-check gate</div><div class="row-meta">The gate the constitution sets before anything leaves the program (publication, external letters). Its state shows on the program home; a failing gate blocks report generation here, in the open — not silently.</div></div><span class="chip ok">Passing</span></div>
+          </div>
+          <div class="callout"><b>What is not here:</b> accounts and permissions. Glossa Lab is a single-operator tool — generic across <i>programs</i>, not across tenants. Nothing in Settings invents a multi-user system.</div>
+        </div>
+      </div>
+
+      <div class="annotation">
+        <div class="a-title">Annotation — wireframe 13 · not part of the UI</div>
+        <dl>
+          <dt>Purpose</dt><dd>Configure the tool once, and the open program separately, with the boundary visible on the page.</dd>
+          <dt>Primary action</dt><dd>“Save changes.”</dd>
+          <dt>Changed &amp; why</dt><dd>Settings today mixes environment repair (venv rebuilds), provider keys, model assignment, and program configuration (discovery sources) in one peer list of panels. Here tool and program settings are two labelled groups; environment maintenance is demoted behind “Manage”; the foundation-check gate is stated where its block would land; and the port setting is the same one the tray edits — one setting, two doors, named as such.</dd>
+          <dt>Spec claims</dt><dd>C081-2, C081-6 (program settings are per-program; tool settings name no program).</dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</div>
+<nav class="mobile-nav">
+  <a href="02-program-home.html"><span class="mi">⌂</span>Home</a>
+  <a href="03-claims.html"><span class="mi">§</span>Claims</a>
+  <a href="05-digestion.html"><span class="mi">✓</span>Digestion</a>
+  <a href="09-jobs.html"><span class="mi">⚙</span>Jobs</a>
+  <a href="01-programs.html" class="active"><span class="mi">☰</span>More</a>
+</nav>
+</body>
+</html>

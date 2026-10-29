@@ -37,6 +37,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   denied in the installer's execution context (diagnostic run
   40807602846); the scheduled-task registration path and
   `scripts\register_task.ps1` are removed.
+  Amendment 2 (2026-10-29) supersedes Amendment 1's autostart
+  change on newer host evidence (diagnostic run 40816104983):
+  the diag1 denials were shape-caused, and a route-B
+  registration (scoped principal, Interactive / Limited,
+  user-scoped logon trigger) registers cleanly from the same
+  non-elevated context. The scheduled task is restored as the
+  canonical autostart in that shape; the HKCU Run route is
+  removed. The icon-verification fix stands unchanged.
 - Spec 079: the backend now starts under supervision following the
   Syncyard spec 007 pattern. The Linux unit is renamed to
   `glossa-lab-backend` and runs the production entry point

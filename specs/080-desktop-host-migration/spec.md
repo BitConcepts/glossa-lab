@@ -103,18 +103,22 @@ never bound to a public interface.
   machine-wide `taskkill /IM pythonw.exe` (or `python.exe`) MUST
   NOT appear in the stop path.
 - **FR-004**: There MUST be exactly one Windows autostart
-  mechanism: the per-user `GlossaLab` value under
-  `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`, written
-  and read-back-verified by `setup-os.cmd install` (command
-  `wscript.exe` + `launch-tray.vbs`, per H25).
+  mechanism: the `GlossaLab` Task Scheduler task, registered by
+  `setup-os.cmd install` via `scripts\register_task.ps1` in the
+  route-B shape — a principal scoped to the installing user
+  (Interactive logon type, Limited run level), a logon trigger
+  scoped to that user, no elevation — and read back in the Ready
+  state before the install reports success (marker
+  `GLOSSA_TASK_STATE` in the registration output). Its action is
+  `wscript.exe` + `launch-tray.vbs`, per H25.
   `services/windows/install.cmd` MUST delegate to it and
   MUST NOT create a Startup shortcut; uninstall MUST remove the
-  Run value and any legacy shortcut. (Mechanism amended
-  2026-10-29 — see Amendment 1: per-user scheduled-task
-  registration is denied in the installer's execution context,
-  so the scheduled-task design this FR originally specified is
-  replaced, not supplemented: no task attempt, no fallback
-  chain.)
+  task. (Mechanism history 2026-10-29 — see Amendments 1 and 2:
+  Amendment 1's HKCU Run-key replacement rested on diagnostic
+  run 40807602846, whose denials a second diagnostic
+  (run 40816104983) proved shape-caused; Amendment 2 restores
+  this scheduled-task design in the route-B registration form.
+  The Run key is NOT a fallback: no dual mechanism.)
 - **FR-005**: `setup-os.cmd install` MUST verify the SHA-256 of
   `tray\glossa_tray\assets\glossa-lab.ico`
   (`315940742d75720388264dcdf03178c58f878ea0701d03eeba95688d935ff520`)
@@ -134,7 +138,7 @@ never bound to a public interface.
 - **FR-007**: A desktop verify script MUST emit the markers
   `GLOSSA_HOST_HEALTH`, `GLOSSA_HOST_IDENTITY`,
   `GLOSSA_TRAY_PROCESS`, `GLOSSA_ICON_HASH`,
-  `GLOSSA_AUTOSTART_STATE`, `GLOSSA_RESTART_TEST`, where identity means the bounded Spec 079
+  `GLOSSA_TASK_STATE`, `GLOSSA_RESTART_TEST`, where identity means the bounded Spec 079
   check (`/docs` 200 + health status/version + OpenAPI title
   "Glossa Lab" with matching version) — never liveness alone.
 - **FR-008**: The desktop backend MUST bind loopback only. Remote
@@ -229,3 +233,41 @@ registering any autostart, GitHub-green notwithstanding.
    the eventual end-to-end proof of any logon mechanism and
    is reported as performed or not in the migration record,
    never assumed.
+
+## Amendment 2 (2026-10-29) — autostart design restored: route-B task registration
+
+Amendment 1's autostart change is SUPERSEDED on newer venue
+evidence. A second host diagnostic, `glossa-host-diag2-2026-10-28`
+(gatekeeper run 40816104983, 20 markers), ran from the same
+non-elevated job context (`tristen-desktop\trist`, session 1) and
+found a WORKING registration route: the cmdlet route with a
+SCOPED principal registers cleanly — the task file exists, the
+CIM state reads Ready, the principal reads
+`trist / Interactive / Limited`, and the trigger is an
+`MSFT_TaskLogonTrigger` scoped to `TRISTEN-DESKTOP\trist`. The
+schtasks route still fails in that context (exit 0, nothing
+created). The diag1 denials (run 40807602846) therefore trace to
+the registration SHAPE — the pre-Amendment-1 form (unscoped
+AtLogon trigger, no explicit principal, invoked through an
+elevation wrapper) and its variants — not to a venue-wide bar on
+per-user task registration.
+
+Direction (Desktop Access program, on this evidence): Spec 080's
+design of record stands — the canonical autostart is the
+scheduled task, registered by the installer in the route-B
+shape: scoped principal for the installing user, Interactive
+logon type, Limited run level, user-scoped logon trigger.
+`scripts\register_task.ps1` is restored in exactly that shape,
+invoked directly by `setup-os.cmd install` (no elevation
+wrapper); it reads the task back and prints `GLOSSA_TASK_STATE`
+with the state, principal, and trigger class, and any
+registration or read-back failure refuses the install.
+Amendment 1's HKCU Run-key route is REMOVED (the installer's Run
+deletes remain as legacy cleanup only, as they were before
+Amendment 1); FR-007's marker returns to `GLOSSA_TASK_STATE`
+(read via the CIM provider, the read path diag2 proved live);
+the tray's autostart detection returns to the task query.
+Amendment 1's icon-verification fix (FR-005) is unaffected and
+stands. A true logoff/logon cycle remains the eventual
+end-to-end proof of the logon trigger and is reported as
+performed or not in the migration record, never assumed.

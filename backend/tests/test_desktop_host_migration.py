@@ -116,10 +116,31 @@ def test_setup_os_autostart_is_routeb_task() -> None:
     # Registration is read back and gated on the Ready state.
     assert "GLOSSA_TASK_STATE" in helper
     assert "Get-ScheduledTask" in helper
+    # Amendment 3: scheduler restart-on-failure, with the VBS
+    # waiting on the tray so the settings have a lifetime to
+    # supervise (a fire-and-forget launch died with its job).
+    assert "RestartCount 3" in helper
+    assert "RestartInterval" in helper
+    vbs = _text("scripts/launch-tray.vbs")
+    assert ", 0, True)" in vbs
+    assert "WScript.Quit" in vbs
     # The tray detects autostart from the same task.
     tray = _text("tray/glossa_tray/main.py")
     assert "schtasks" in tray
     assert "winreg" not in tray
+
+
+def test_start_is_idempotent_on_verified_identity() -> None:
+    """C080-9 (Amendment 3): setup-os.cmd start is a no-op success
+    when the backend already answers with the Spec 079 identity;
+    the gate is the bounded healthcheck, checked before any
+    stop/launch in the start path."""
+    text = _text("setup-os.cmd")
+    assert "healthcheck.py" in text
+    assert "GLOSSA_START_STATE already-running" in text
+    gate = text.index("GLOSSA_START_STATE already-running")
+    stop_first = text.index("call :do_stop_silent", text.index(":do_start"))
+    assert gate < stop_first
 
 
 def test_services_windows_delegates_to_canonical_installer() -> None:

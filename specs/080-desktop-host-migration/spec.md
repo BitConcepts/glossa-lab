@@ -271,3 +271,62 @@ Amendment 1's icon-verification fix (FR-005) is unaffected and
 stands. A true logoff/logon cycle remains the eventual
 end-to-end proof of the logon trigger and is reported as
 performed or not in the migration record, never assumed.
+
+## Amendment 3 (2026-10-29) — persistence: the task owns the start; starts are idempotent
+
+Host evidence after the Amendment 2 install passed every leg:
+serve probe `glossa-host-serve-probe2-2026-10-28` (run
+40855200786) found the desktop backend DOWN — Serve config
+intact, loopback refused, FQDN health 502 (the proxy with
+nothing behind it) — roughly 35 minutes after restart-verify2
+(run 40849993917) had left it started and healthy. Diagnosis
+run 40861773854 established the mechanism:
+
+1. The GlossaLab logon task has NEVER run (LastRunTime
+   11/30/1999, result 0x00041303): the console session has been
+   logged on continuously since 2026-09-25, so no logon
+   trigger has fired since registration. Every verified start
+   was launched inside a gatekeeper job.
+2. A start launched inside a job's lifetime dies with that
+   job's teardown on this venue. restart-verify2's start came
+   up clean at 05:29:54 EDT; the backend log then ends with no
+   shutdown lines, and by the 06:08 EDT probe both the tray
+   (0 processes) and the backend (0 processes) were gone.
+3. An earlier cycle (03:29 EDT) shows a double-start race:
+   two backend instances started together and the loser exited
+   on an address-in-use bind error.
+
+Direction (Desktop Access program, on this evidence), as
+implemented in this amendment:
+
+- **The scheduled task stays the SINGLE launcher.** Its one
+  action (`wscript.exe` + `scripts\launch-tray.vbs`) launches
+  both processes through the windowless chain: the tray
+  (pythonw, hidden), which starts and supervises the backend
+  (DETACHED_PROCESS | CREATE_NO_WINDOW). No second action or
+  mechanism is added.
+- **The durable start is the task, fired on demand**
+  (`Start-ScheduledTask`): the scheduler owns the processes,
+  so they outlive any job. The logon trigger stays for
+  reboots and future logons.
+- **Scheduler restart-on-failure**: the registration carries
+  `RestartCount 3` / `RestartInterval 1 minute`. For those
+  settings to supervise anything, `launch-tray.vbs` now WAITS
+  on the tray and propagates its exit code, so the task stays
+  Running for the tray's lifetime: a tray crash (nonzero
+  exit) is restarted by the scheduler up to the bound; a
+  clean tray quit (exit 0) is not restarted. (The backend's
+  mid-session exits while the tray lives remain the tray's
+  FR-006 brief, unchanged.)
+- **Start is idempotent**: `setup-os.cmd start` first runs
+  the bounded Spec 079 identity check; if the backend already
+  answers healthy with the right identity, the start is a
+  no-op success (`GLOSSA_START_STATE already-running`) and
+  nothing is stopped or relaunched. This removes the
+  double-start race class.
+- **Persistence proof (cutover gate)**: the task is fired
+  from one job; after that job has fully ended, a SEPARATE
+  later job must find the backend + tray process sets alive
+  with health 200 through the Tailscale proxy carrying the
+  app identity. Only a pass across a job boundary counts as
+  a durable start.

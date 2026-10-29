@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Tray supervision honesty (2026-10-29 UI-log audit): the tray now
+  keeps its own bounded log (`logs/tray.log`) — starts, auto-restarts,
+  failed stops, config failures, and poller renewals are recorded
+  instead of vanishing under pythonw. The status poller no longer
+  ends after ~24 h; polling runs in bounded, logged, self-renewing
+  segments. Auto-restart never duplicates a start still in flight
+  (the duplicate-spawn race behind Errno 10048 port conflicts), the
+  stop path's documented kill fallback now exists (listener PID via
+  netstat, bounded waits), autostart install failures are logged
+  instead of silently retried, and a failed backend spawn no longer
+  kills the tray before its icon appears.
 - Spec 080: Glossa Lab's production home moves to the Windows host
   (TRISTEN-DESKTOP). All Windows launch surfaces now use production
   semantics — `glossa_lab.main:create_app --factory` on 127.0.0.1,

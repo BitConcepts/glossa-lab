@@ -1,7 +1,8 @@
 # Tasks: Glossa Lab Cloud Edition — Accounts, Workspaces, Hosted Tool (Spec 083)
 
-Amendments 1–3 govern where they conflict with the base spec (workspaces,
-not programs; no staging, ever; the glassbreak seed email). Every task names
+Amendments 1–4 govern where they conflict with the base spec (workspaces,
+not programs; no staging, ever; the glassbreak seed email; Amendment 4:
+Cloud Run compute + Google Cloud Storage bundles). Every task names
 its claim(s) or the FR / decision it discharges.
 
 ## Step 0 — spec adoption (PR: `spec/083-cloud-edition`)
@@ -19,9 +20,9 @@ its claim(s) or the FR / decision it discharges.
 - [x] T008 Image smoke test: build verifies `applied-epistemic-engineering` resolves within ≥1.5.0,<1.6 and runs the GAP-ENV 23-claim regression set against the image; out-of-pin or divergent score fails the build (C083-9)
 - [x] T009 `cloud/edge/`: edge Worker + Durable Object front — `X-Robots-Tag: noindex, nofollow` on every response, `robots.txt` disallowing all, session termination point, routing to the single container instance (C083-7, C083-4)
 - [x] T010 D1 identity schema + migrations: `users` (global type owner/admin/member/guest), `invites` (hash only), `sessions` (hash only), `workspaces`, `workspace_roles`, `audit_log` (append-only), `setup_state` (C083-2, C083-4, C083-12, C083-16, C083-19)
-- [x] T011 R2 bundle plumbing: manifest format (bundle id, build time, source commit, per-artifact SHA-256); hydration library verifies the full manifest and swaps atomically — never a mixture (C083-13); job state restored before the engine resumes, sleep suppressed while jobs run (C083-10)
+- [x] T011 R2 bundle plumbing: manifest format (bundle id, build time, source commit, per-artifact SHA-256); hydration library verifies the full manifest and swaps atomically — never a mixture (C083-13); job state restored before the engine resumes, sleep suppressed while jobs run (C083-10) — **Amendment 4**: transport gains a GCS adapter (T045) and R2 is never enabled in production; the sleep-suppression clause is superseded by the Jobs model (T047)
 - [x] T012 Wrangler configuration: production only + ephemeral preview deployments for verification; no staging project and no staging hostname created (Amendment 2, C083-14)
-- [x] T013 GitHub Actions deploy workflow (image build/push to the Cloudflare container registry, wrangler deploy, D1 migrations) under the repo's existing CI discipline; local production-shaped build (compose file) for later steps' proofs; LEDGER.md entry
+- [x] T013 GitHub Actions deploy workflow (image build/push to the Cloudflare container registry, wrangler deploy, D1 migrations) under the repo's existing CI discipline; local production-shaped build (compose file) for later steps' proofs; LEDGER.md entry — **Amendment 4**: the compute leg retargets to Cloud Run (T049)
 
 ## Step 2 — identity implementation (PR: `feat/083-identity`)
 
@@ -49,7 +50,7 @@ its claim(s) or the FR / decision it discharges.
 
 - [ ] T030 `tools/cloud-publish/` builder (home-side): allowlist configuration (publishable tables + checkout paths); restricted stores structurally excluded (C083-6, FR-006)
 - [ ] T031 Restricted-marker scan: maintained marker-list file; scan over every artifact before upload; a failed scan uploads nothing (C083-6)
-- [ ] T032 Manifest emission (Step 1 format) + R2 upload; publish recorded with its scan-gate result as a first-class report line (C083-6, C083-13, C083-12)
+- [ ] T032 Manifest emission (Step 1 format) + bundle-store upload (Amendment 4: Google Cloud Storage); publish recorded with its scan-gate result as a first-class report line (C083-6, C083-13, C083-12)
 - [ ] T033 Planted-canary test wired into CI: a restricted marker planted in a publishable source must fail the publish (C083-6)
 - [ ] T034 Primary-workspace seeding: the bundle assigns all existing project state to the seeded "Indus Script" workspace; per-class counts reconciled against the source in the publish report (C083-15)
 - [ ] T035 Export / reviewed-import tooling: cloud-side changes come home as an inspected diff (by table and file), owner-triggered — never an auto-sync (D-4); LEDGER.md entry
@@ -61,6 +62,19 @@ its claim(s) or the FR / decision it discharges.
 - [ ] T038 Adversarial pass over the auth surface: invite brute force / code guessing, session fixation, role escalation (member→admin, guest→member-role grant, cross-workspace id probing for every Step 2 resource class) (C083-2, C083-4, C083-5, C083-17, C083-18)
 - [ ] T039 Anonymous payload scan: anonymous fetches of the shell and assets contain no project data, names, or counts; every non-public route answers redirect-to-login or 401 (C083-4, C083-18)
 - [ ] T040 Noindex checks across response types (pages, API, errors, assets) — `X-Robots-Tag: noindex, nofollow` on each — plus `robots.txt` disallowing all (C083-7, FR-007)
-- [ ] T041 External gate + production deploy: BitConcepts Cloudflare account access in hand (DNS record, Pages/Workers/Containers resources, Workers Paid plan), then deploy to `glossa.bitconcepts.tech` — production follows the proofs directly, no staging-proof gate (C083-14; Amendment 2)
+- [ ] T041 External gate + production deploy: the owner's Google Cloud account + project with billing enabled in hand (owner act; Amendment 4) + BitConcepts Cloudflare write access (DNS record, Workers/D1 deploys — no paid plan), then deploy to `glossa.bitconcepts.tech` — production follows the proofs directly, no staging-proof gate (C083-14; Amendments 2 + 4)
 - [ ] T042 Glassbreak setup prompt: the one-time setup code + `https://glossa.bitconcepts.tech` delivered to the owner through the coordinator only; owner sets his own password at `/setup` (C083-3)
 - [ ] T043 Rollout record (proofs, falsifier results, deployed image/bundle identity, go-live timestamp) + LEDGER.md entry (H1)
+
+## Amendment 4 — Cloud Run delta (owner decision, 2026-10-30)
+
+The compute/bundle swap's build consequences, for the Phase 3+ coordinator. The frontend (Step 3) does not depend on these; the publisher (Step 4) depends on T045. Suggested vehicle: one follow-on PR `feat/083-cloud-run-delta` for T044–T049, with T050 folding into Step 5 and T051 into the rollout record.
+
+- [ ] T044 Image contract for Cloud Run: the same root Dockerfile serves both venues — the app honors the platform's `$PORT` (the desktop/compose default stays 8001) and gains a runner entrypoint mode (hydrate → drain queued job rows → export → exit) selected by environment; under `GLOSSA_CLOUD` service mode the resident engine loop is gated off (dispatcher only) (C083-9, C083-10)
+- [ ] T045 GCS bundle adapter: `cloud_bundles.py` gains a Google Cloud Storage transport beside the R2 one (identical manifest format; the service's Google identity authorizes it — no keys in the image; bucket in us-central1); the compose fixture's storage stand-in swaps to the adapter's local fake; the R2 transport remains for tests, never enabled in production (C083-13)
+- [ ] T046 Cloud Run service definition as repo config: request-based billing, 2 vCPU / 4 GiB, concurrency 80, maximum instances 1, minimum instances 0, request timeout 3,600 s, startup CPU boost on; the SIGTERM handler flushes the export journal inside the 10-second grace (C083-10, C083-13)
+- [ ] T047 Cloud Run Jobs + Scheduler definitions as repo config: the engine-drain job (task timeout set per pipeline class, ceiling 168 h; platform retries 0 — the app's stall semantics own failure) and the periodic set (discovery sync, foundation auto-check, stall watchdog) as Scheduler-triggered executions, costed against the 3-free-then-$0.10-per-job rule (C083-10)
+- [ ] T048 Edge retarget: GlossaFront's backend pointer becomes the service's `*.run.app` URL; the wake path holds and health-polls through cold start instead of starting a named container instance; service-credential injection unchanged (C083-8, C083-4)
+- [ ] T049 Deploy workflow retarget (`deploy-cloud.yml`): image push to Artifact Registry + `gcloud run deploy` (service + Jobs) authenticated by Workload Identity Federation (no stored Google keys in GitHub); wrangler legs (edge deploy, D1 migrations) unchanged; the fail-closed property is preserved — any leg failing deploys nothing (C083-14)
+- [ ] T050 Step 5 proof deltas: cold-start latency measured and recorded (first request after ≥15 minutes idle); the SIGTERM journal-flush test; one end-to-end Job execution (submit → execution → terminal state visible) in the acceptance script; C083-10's revised falsifier executed as written (C083-10, C083-13)
+- [ ] T051 Records: the rollout record carries the deployed service revision + Job definitions + bundle identity; LEDGER.md entry for Amendment 4 and this delta (H1)

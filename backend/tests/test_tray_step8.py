@@ -13,7 +13,6 @@ failure), and the "View status & session log" URL shapes.
 from __future__ import annotations
 
 import importlib.util
-import io
 import json
 import os
 import subprocess
@@ -21,11 +20,9 @@ import sys
 import time
 import types
 import urllib.error
+from pathlib import Path
 
 import pytest
-
-REPO = None  # set below (kept import-order simple)
-from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 TRAY_MAIN = REPO / "tray" / "glossa_tray" / "main.py"

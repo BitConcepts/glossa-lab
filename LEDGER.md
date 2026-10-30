@@ -11682,3 +11682,46 @@ consumers).
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-30] Entry — Spec 081 PR-8: tray amendments (step 8, T020 code + tests)
+
+Wireframe 15 lands in tray/glossa_tray/main.py: the healthy
+status line and tooltip name the open program (read each
+healthy poll from the active-program record, token presented;
+404 clears it, transport failure keeps the last label); uptime
+is humanized ("up 5 h 50 m", never raw seconds); stopped
+states carry the wireframe's words (stopped-by-you; the
+auto-restart limit composed from the 3-per-hour constants);
+"View Log" and the raw-file status click are replaced by
+"View status & session log" opening the web Status screen via
+a routed token fragment (#/status#token= — a dated addendum
+to Spec 082's ui-contract.md; the SPA intake now accepts the
+token segment after a route, query strings still refused);
+"Open UI" becomes "Open Glossa Lab". Single instance: a PID
+lock beside the tray config — a second launch drops a focus
+marker and exits, the poller consumes the marker; stale locks
+are taken over; an unreadable lock is logged and the tray
+proceeds (named, never silent). Log rotation and icon hashes
+unchanged.
+
+Contract tests: backend/tests/test_tray_step8.py (23 tests:
+humanizer, status-line composition per state, program read
+label/404/raise, lock acquire/deny/stale/release, focus
+consumption, status-door URL shapes) — 54/54 across the three
+tray suites; auth-token.spec.ts gains the routed-fragment case
+(7/7). Recorded deviations (spec.md step-8 note): Copy API
+Token stays (post-wireframe Spec 082 action the SPA gate
+names); the program name is the record's full label (no
+short-name field exists); the degraded line quotes the health
+payload's detail when present, else points at Status; focus
+is the marker hand-off (pystray has no window to raise).
+
+T020 stays open on its desktop-verify leg alone: the verify
+is staged for the Spec 080 cutover (script + README in the
+program records under hidden_files/spec081-tray-desktop-verify/)
+— tray suites on the desktop checkout, a two-launch
+single-instance check in the operator's session, the observed
+status line recorded in the migration record.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

@@ -139,12 +139,24 @@ export function noteUnauthorized(): void {
  * stripped before the router's hash sync can observe it.
  */
 export function intakeTokenFromFragment(): boolean {
+  // Two accepted shapes (ui-contract.md + its step-8 addendum):
+  // the bare handoff `#token=<value>` (the tray's Open action), and
+  // the routed form `#/<route>#token=<value>` (the tray's "View
+  // status & session log" door). In the routed form only the token
+  // segment is stripped — the route survives.
   const hash = window.location.hash;
-  if (!hash.startsWith("#token=")) return false;
-  const token = decodeURIComponent(hash.slice("#token=".length)).trim();
-  // Strip the fragment whatever it carried — it must not linger in
-  // the address bar, history, or screenshots.
-  window.history.replaceState(null, "", window.location.pathname + window.location.search);
+  const marker = "#token=";
+  const at = hash.indexOf(marker);
+  if (at < 0) return false;
+  const routePart = hash.slice(0, at);
+  const token = decodeURIComponent(hash.slice(at + marker.length)).trim();
+  // Strip the token segment whatever it carried — it must not
+  // linger in the address bar, history, or screenshots.
+  window.history.replaceState(
+    null,
+    "",
+    window.location.pathname + window.location.search + routePart,
+  );
   if (!token) return false;
   try { sessionStorage.setItem(TOKEN_STORAGE_KEY, token); } catch { /* */ }
   void _refreshTokenMeta().then(_emit);

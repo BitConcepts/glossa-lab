@@ -2,42 +2,54 @@
 
 **Feature Branch**: `spec/083-cloud-edition` (spec) · implementation branches per the Phase 2 plan
 **Created**: 2026-10-30
-**Status**: APPROVED 2026-10-30 by the owner, as recommended (route + decisions D-1…D-7), **as amended** by Amendment 1 (workspaces are the tenancy unit), Amendment 2 (no staging — D-7 cancelled), and Amendment 3 (the glassbreak account's email; the setup prompt), all adopted with this spec in the Phase 0 PR. **Amendment 4** (2026-10-30, after the Phase 1 merge) supersedes the route's compute and bundle legs: Cloudflare Containers → a Google Cloud Run service + Jobs; R2 → Google Cloud Storage. Where an amendment and the original text differ, the amendment governs. Claims frozen before code (spec-kit + AEE flow).
-**Input**: Owner orders, 2026-10-30, in sequence: (1) a BitConcepts subdomain for Glossa Lab, hosted there; an admin dashboard for user management; himself added as the **glassbreak** user; invite codes to invite people to the project; (2) **not** hosted from his desktop — "the same approach we've always been using… using GitHub"; (3) **robots kept away** — the site must not show up in searches, at least not yet; (4) scope settled: the **full working tool** for invitees in the cloud (over the coordinator's project-space-first recommendation — the owner's override stands and this spec implements it).
+**Status**: APPROVED 2026-10-30 by the owner, as recommended (route + decisions D-1…D-7), **as amended** by Amendment 1 (workspaces are the tenancy unit), Amendment 2 (no staging — D-7 cancelled), and Amendment 3 (the glassbreak account's email; the setup prompt), all adopted with this spec in the Phase 0 PR. Amendment 4 (Cloud Run compute; GCS bundles) was adopted and then **superseded in full by Amendment 5** (2026-10-30): the origin is the owner's Spec 080 production desktop install on TRISTEN-DESKTOP, reached through a named Cloudflare Tunnel consumed by the edge Worker through a Workers VPC Service binding; no cloud dataset exists. Where an amendment and the original text differ, the amendment governs. Claims frozen before code (spec-kit + AEE flow).
+
+**Input**: Owner orders, 2026-10-30, in sequence: (1) a BitConcepts subdomain for Glossa Lab, hosted there; an admin dashboard for user management; himself added as the **glassbreak** user; invite codes to invite people to the project; (2) **not** hosted from his desktop — "the same approach we've always been using… using GitHub"; (3) **robots kept away** — the site must not show up in searches, at least not yet; (4) scope settled: the **full working tool** for invitees in the cloud (over the coordinator's project-space-first recommendation — the owner's override stands and this spec implements it); (5) **Amendment 5 (later on 2026-10-30, superseding item (2)'s hosting outcome and Amendment 4)**: "host on the desktop (Tristen-desktop) and route to the cloudflare subdomain. but again, only allow members to log in and use." — the hosted edition runs on the owner's desktop and reaches members through Cloudflare; the member login is the gate.
 **Predecessors**: Spec 079 (supervised install), Spec 080 (desktop host migration — the desktop remains the owner's local install and the dataset's home side), Spec 081 (the generic-tool UI: programs, scoped surfaces, the 17 screens this edition carries over), Spec 082 (per-install token auth — explicitly *not* the cloud credential; see FR-008).
 
 ## Problem statement
 
 Glossa Lab is a single-operator local tool: one install token, no accounts,
 no concept of *who* acted. The owner now wants collaborators inside the
-tool — real invited users, working in the real surfaces, on infrastructure
-that follows his standing hosting pattern (GitHub as source, Cloudflare as
-host, staging → production) on `glossa.bitconcepts.tech` — while two
-boundaries hold absolutely: the restricted material under the program's
-custody (the CISI class) never enters the cloud copy, and the site stays
+tool — real invited users, working in the real surfaces — hosted on the
+Spec 080 production install on TRISTEN-DESKTOP and routed through
+Cloudflare to `glossa.bitconcepts.tech` (Amendment 5) — while two
+boundaries hold absolutely: project data and the restricted material
+under the program's custody (the CISI class) are never copied into a
+cloud dataset — none exists in this design — and the site stays
 invisible to search engines until he lifts that himself.
 
+
 The architecture route is decided by the companion study
-(`architecture-route-study.md`): **Cloudflare Containers running the
-existing FastAPI application**, fronted by an edge Worker + Durable Object
-that own identity and the perimeter, identity data in **D1**, the research
-dataset moving as hash-verified **bundles through R2** (Amendment 4: bundles through Google Cloud Storage, compute on Google Cloud Run — the amendment governs the route's compute and bundle legs). It is the only
-route under which "the full working tool" is literally true — same code,
-same pinned assessor (AEE ≥1.5.0), same verdicts.
+(`architecture-route-study.md`) as amended by Amendment 5's fact-check
+(`amendment-5-desktop-tunnel-hosting.md` §2): **the Spec 080 production
+desktop install is the application, and its dataset's only home**. An
+edge Worker + D1 own identity and the perimeter at
+`glossa.bitconcepts.tech`; a Workers VPC Service binding carries
+authorized origin traffic through a named Cloudflare Tunnel to the
+desktop backend at `127.0.0.1:8001`. "The full working tool" is
+literally true — same code, same pinned assessor (AEE ≥1.5.0), same
+verdicts — because the hosted route serves the desktop install itself.
+
 
 ## Design summary
 
-- **Topology.** Pages serves the built SPA on `glossa.bitconcepts.tech`
-  — the single production deployment (Amendment 2: there is no staging
-  deployment or staging hostname; verification runs against local builds
-  and ephemeral preview deployments). An edge Worker fronts all dynamic traffic: it
-  terminates sessions, enforces the perimeter, sets the noindex header on
-  every response, and routes authenticated API traffic through a Durable
-  Object to the single named backend instance running the unmodified
-  application (Amendment 4: a Cloud Run service capped at one instance;
-  the engine runs as Job executions of the same image, not in the
-  serving process). GitHub remains the source: the repo builds the SPA, the
-  edge Worker, and the container image.
+- **Topology.** `glossa.bitconcepts.tech` is a **Worker Custom
+  Domain**: the edge Worker is the public entry and the origin for
+  the hostname (Cloudflare creates the DNS records and certificate;
+  there is no staging deployment or staging hostname — Amendment 2).
+  The Worker terminates sessions, enforces the perimeter, sets the
+  noindex header on every response, and — only after the session and
+  route authorization checks pass — calls a **Workers VPC Service
+  binding** whose registered target is the named Cloudflare Tunnel
+  `glossa-desktop` to the desktop backend at `127.0.0.1:8001`. The
+  desktop backend serves the built SPA and the API. The tunnel
+  publishes no hostname in this design: there is no
+  `glossa` CNAME to `<UUID>.cfargotunnel.com` and no published
+  application route for the hostname (Amendment 5 §2.2). GitHub
+  remains the source of the code; the running origin is the desktop
+  install.
+
 - **Accounts.** Username + password; passwords hashed with Argon2id
   (parameters in the Phase 2 plan) and never stored, logged, or transmitted
   in any other form. Registration exists **only** as invite redemption
@@ -76,31 +88,34 @@ same pinned assessor (AEE ≥1.5.0), same verdicts.
   "no program access yet" state (wireframe 07); the workspace switcher
   is the Spec 081 Q1 sidebar card (wireframe 11).
 - **Attribution.** The edge passes the authenticated identity into the
-  container API on every request; acts are stamped with the acting user
+  desktop API on every request; acts are stamped with the acting user
   (FR-011). Lane-2 digestion is by named humans — multi-user makes that
   literally true in the cloud edition.
-- **The dataset.** Research state (app SQLite + checkout file state) is
-  *not* edited in place in the cloud from some shared drive; it moves as
-  a **bundle**: built by the publish pipeline from allowlisted sources,
-  scanned, manifested (bundle id, build time, source commit, per-artifact
-  SHA-256), stored in R2 (Amendment 4: in Google Cloud Storage). The container hydrates atomically from the
-  manifest and exports its changed state back on cadence and on orderly
-  stop. Importing cloud changes back into the repo/desktop side is a
-  reviewed step, never a silent overwrite (FR-013, Out of scope).
-- **Data boundary.** The publish builder works from an **allowlist**
-  (publishable tables, publishable checkout paths) with **structural
-  exclusion** of restricted stores (raw scan directories, page previews,
-  restricted folders), then runs a **restricted-marker scan** over every
-  artifact. A scan failure fails the publish before anything uploads
-  (FR-006, claim C083-6 with a planted-canary falsifier).
+- **The dataset.** Research state (app SQLite + checkout file state)
+  is resident in the Spec 080 production desktop install and is
+  served in place through the edge/Tunnel route. There is no second
+  dataset: no publish, no bundle, no hydration, no import, and no
+  sync. The primary workspace's scope assignment is verified in that
+  resident dataset before go-live (FR-015, T057).
+- **Data boundary.** No cloud dataset exists. The edge stores only
+  accounts, invites, sessions, workspace-access records, setup state,
+  and audit data (D1). Restricted material remains on the desktop
+  under the program's existing custody restrictions; it is never
+  copied into D1, Worker storage, a bundle store, or any other cloud
+  storage, and it may be returned through the hosted route only
+  inside an authenticated, workspace-authorized member session under
+  the desktop application's existing restrictions (FR-006, claim
+  C083-6 as restated by Amendment 5).
+
 - **Noindex.** Three layers (FR-007): `X-Robots-Tag: noindex, nofollow`
   set by the edge on *every* response; a `robots.txt` that disallows
   everything; and the login wall itself. Standing until the owner lifts
   it by name.
 - **Credential separation.** Spec 082's install token governs desktop
   installs and first-party automation only; the cloud edge never accepts
-  it. The edge↔container hop uses a per-deployment service credential
-  held only in platform secret stores (FR-008).
+  it. The edge↔desktop-origin hop uses a per-deployment service credential
+  held only in the Worker secret store and the desktop install's
+  protected credential storage (FR-008).
 
 ## User Scenarios & Testing
 
@@ -180,24 +195,30 @@ preserved; the account can no longer sign in).
    **Then** the attribution still renders (as the removed username,
    marked removed) — history is not rewritten.
 
-### User Story 5 — The dataset moves honestly (Priority: P2)
+### User Story 5 — Members work on the desktop-resident dataset; offline fails closed (Priority: P2)
 
-The owner (or the pipeline on cadence) publishes a new dataset bundle
-from the repo/desktop side. The cloud Status surface shows the bundle id
-and source commit being served; members see the new state; a bundle that
-fails the restricted-marker scan never exists in the bundle store (Amendment 4: Google Cloud Storage).
+A member signs in through the hosted route and works against the
+current state of the desktop install — there is no publish step and
+no second copy to wait for. When the desktop backend or the tunnel
+is down, the subdomain serves the edge's own error and no data.
 
 **Acceptance Scenarios**:
 
-1. **Given** a publish with a planted restricted marker in a publishable
-   source, **When** the pipeline runs, **Then** the publish fails at the
-   scan gate and the bundle store holds no new bundle (Amendment 4).
-2. **Given** a hydration interrupted mid-transfer, **When** the instance
-   next serves, **Then** the dataset is entirely the old manifest or
-   entirely the new one — verified by sampled artifact hashes.
-3. **Given** a long-running job in flight, **When** the instance sleeps
-   and wakes (or is redeployed), **Then** the job reaches a terminal
-   state with its outcome or its failure reason recorded.
+1. **Given** restricted material exists in the desktop install's
+   restricted stores, **When** the cloud side (D1, Worker storage and
+   configuration) is audited, **Then** no project artifact, restricted
+   marker, or scan/preview exists there; and no anonymous or
+   workspace-unauthorized request receives restricted or project
+   content through the hosted route.
+2. **Given** the desktop backend is stopped, or `cloudflared` is
+   stopped, **When** a member requests a project surface, **Then**
+   the edge returns its own noindex 503 containing no project data
+   and no cached dataset; when the host returns, the same resident
+   state serves again.
+3. **Given** a long-running job in flight, **When** the desktop
+   backend restarts, **Then** the job reaches a terminal state with
+   its outcome or its failure reason recorded (FR-010).
+
 
 ## Requirements
 
@@ -225,75 +246,101 @@ fails the restricted-marker scan never exists in the bundle store (Amendment 4: 
   anonymous requests every other route answers redirect-to-login or 401,
   and no project data — records, names, counts, content-bearing payloads
   — is served anonymously in any form; the shell may load but contains
-  no project data, and the dataset hydrates only after authentication.
+  no project data, and the edge does not call the desktop origin for project data
+  before authentication.
 - **FR-005 Roles and membership.** *Replaced by Amendment 1* — the
   two-axis access model (global user type × per-workspace role) is
   specified as FR-015…FR-017 below and in `amendment-1-workspaces.md`,
   which governs wherever this section's original single-axis wording
   appeared. The terminal remains a global Admin/Owner facility in the
   cloud edition (D-5).
-- **FR-006 Publish pipeline and data boundary.** The bundle builder is
-  allowlist-based with structural exclusion of restricted stores, and
-  every artifact passes the restricted-marker scan before upload; a
-  failed scan uploads nothing. The marker list is a maintained file in
-  the repo (its *patterns* are publishable; the restricted content is
-  not). Direct editing of the cloud dataset outside a publish is not a
-  supported path.
+- **FR-006 Desktop residency and the data boundary (restated by
+  Amendment 5).** No cloud dataset exists. Project and research data
+  are resident only on TRISTEN-DESKTOP, in the Spec 080 production
+  install. The edge stores only accounts, invite and session records,
+  workspace-access records, setup state, and audit data. Restricted
+  material is never copied into D1, Worker storage, a bundle store,
+  or any other cloud storage, and may be returned through the hosted
+  route only inside an authenticated, workspace-authorized member
+  session under the desktop application's existing restrictions. The
+  former publish pipeline — allowlist builder, marker scan, bundle,
+  hydration — is retired; no production path creates a dataset copy.
+
 - **FR-007 Noindex perimeter.** Edge-set `X-Robots-Tag: noindex, nofollow`
   on every response from both hostnames; `robots.txt` disallowing all;
   the login wall. Removal requires the owner's named lift and a spec
   amendment — it is not a dashboard toggle.
 - **FR-008 Credential separation.** The Spec 082 token is never accepted
   by the cloud edge in any position (cookie, header, query). The
-  edge↔container service credential is per-deployment, held only in
-  platform secret stores, injected by the edge, and never rendered into
-  any client-visible artifact.
-- **FR-009 Assessor identity.** The container image installs
+  edge↔desktop-origin service credential is per-deployment, held only
+  in the Worker secret store and the desktop install's protected
+  credential storage, injected by the edge onto the Workers VPC
+  binding request, and never rendered into any client-visible
+  artifact. The desktop application accepts edge-injected identity
+  only when that credential validates; identity headers without it
+  confer nothing.
+
+- **FR-009 Assessor identity.** The hosted route serves the Spec 080
+  production desktop install, which installs
   `applied-epistemic-engineering` within the repo's existing pin
   (≥1.5.0,<1.6) and runs the repo's `aee_core` adapter unmodified; the
   GAP-ENV regression set (23 claims, incl. the 0.1625 sign_val
-  expectations) is part of the deployment acceptance run.
-- **FR-010 Job durability.** Job state lives in the dataset (exported to the bundle
-  store on cadence and on job completion — Amendment 4); the engine's stall semantics carry
-  over — a job without heartbeat past the stall window is failed *with
-  the reason recorded*; hydration restores job state before the engine
-  resumes; the instance's sleep policy is suppressed while jobs run.
-  **Revised by Amendment 4**: jobs execute as Cloud Run Job executions
-  of the cloud image, not in the web process; the stall watchdog runs
-  as a scheduled pass; the sleep-suppression clause is superseded —
-  service instances scale to zero freely because no job state lives
-  only in them, and a SIGTERM handler flushes the state journal within
-  the platform's 10-second shutdown grace. Terminal-state semantics
-  are unchanged.
+  expectations) is part of the deployment acceptance run against that
+  install.
+
+- **FR-010 Job durability (revised by Amendment 5).** Jobs execute in
+  the resident engine of the Spec 080 production desktop install, and
+  job state lives in the desktop-resident dataset. The engine's stall
+  semantics carry over — a job without heartbeat past the stall
+  window is failed *with the reason recorded* — across ordinary
+  desktop-backend restarts. Amendment 4's machinery is retired: no
+  Cloud Run Job executions, no service scale-to-zero, no journal
+  export to a bundle store, and no scheduled cloud watchdog.
+
 - **FR-011 Attribution.** Every mutating act in the cloud edition is
   stamped with the acting user's id and timestamp at the record level;
   surfaces that show an act show its actor (wireframe notes in
   `carryover-touchpoints.md`).
 - **FR-012 Audit log.** Append-only (no update/delete path in any API);
   records logins (success/failure), invite events, membership and role
-  changes, disable/removal, setup, publishes, and admin API denials;
+  changes, disable/removal, setup, hosted-route configuration
+  changes, and admin API denials;
   viewable and filterable in the admin dashboard.
-- **FR-013 Dataset versioning and atomic hydration.** Every bundle has a
-  manifest (id, build time, source commit, per-artifact SHA-256);
-  hydration verifies the full manifest before swap; the Status surface
-  displays the served bundle id + source commit + hydration time.
-- **FR-014 Production-only rollout (Amendment 2; D-7 cancelled).** There
-  is exactly one deployment, at `glossa.bitconcepts.tech`; no staging
-  resources or staging hostname are ever created. Verification runs
-  against local production-shaped builds and ephemeral preview
-  deployments. The pre-launch proof battery — the claim-test suites, the
-  planted-canary and marker-scan gates, a fresh adversarial pass over
-  the auth surface, and the noindex header checks — passes against the
-  production-shaped build *before* the production deploy, and go-live
-  follows the proofs directly, recorded in the rollout record. There
-  is no separate staging-proof gate; the login wall (FR-004) is the
-  protection this rollout relies on.
-- **FR-015 Workspaces and the primary seed (Amendment 1).** The
-  workspace is the tenancy unit and is the existing Program/`projects`
-  entity. At deploy, a primary workspace (**Indus Script**) is seeded
-  and the publish pipeline assigns *all* existing project state to it;
-  every project resource carries a workspace scope from the first
-  bundle onward — nothing is served unscoped.
+- **FR-013 Dataset versioning and atomic hydration — SUPERSEDED by
+  Amendment 5.** No dataset bundle, manifest, bundle store, or
+  hydration exists in this design, because no dataset moves. Claim
+  C083-13 is superseded with it. The Status surface instead displays
+  the desktop install's revision/source commit and the origin's
+  health — the honest identity of what is being served.
+
+- **FR-014 Production-only rollout (Amendment 2; D-7 cancelled;
+  revised by Amendment 5).** There is exactly one public hosted
+  route, at `glossa.bitconcepts.tech`: a Worker Custom Domain whose
+  edge reaches the desktop origin only through the named Tunnel's
+  Workers VPC Service. No staging resources or staging hostname are
+  ever created; no published Tunnel application or
+  `cfargotunnel.com` CNAME exists for the hostname; and no second
+  public origin or bypass route reaches the desktop backend.
+  Verification runs against local production-shaped builds and
+  ephemeral preview deployments, and the route-specific proof
+  battery (T059) passes on the assembled production route before it
+  opens for member use: the claim-test suites as amended, the
+  C083-6 cloud-storage audit, a fresh adversarial pass over the auth
+  surface, the noindex header checks, and the desktop-offline and
+  bypass proofs. Go-live follows the proofs directly, recorded in
+  the rollout record, and requires Amendment 5's three gates (§8 of
+  the amendment). There is no separate staging-proof gate; the login
+  wall (FR-004) is the protection this rollout relies on.
+
+- **FR-015 Workspaces and the primary seed (Amendment 1; mechanism
+  revised by Amendment 5).** The workspace is the tenancy unit and is
+  the existing Program/`projects` entity. A primary workspace
+  (**Indus Script**) exists in the desktop-resident dataset and holds
+  *all* existing project state, assigned and verified there before
+  the hosted route opens (T057); every project resource carries a
+  workspace scope from the first hosted request onward — nothing is
+  served unscoped.
+
 - **FR-016 Workspace lifecycle (Amendment 1).** Only global Admin/Owner
   accounts can create or archive workspaces (D-1 applied). An archived
   workspace serves nothing: scoped 404 to all non-admin users, listed
@@ -302,7 +349,7 @@ fails the restricted-marker scan never exists in the bundle store (Amendment 4: 
   Owner (singular, glassbreak), Admin, Member, Guest (Viewer-only
   ceiling). Per-workspace roles: Owner (exactly one per workspace),
   Admin, Member, Viewer, none. Enforcement on every request — at the
-  edge for global/admin surfaces, in the container API for workspace
+  edge for global/admin surfaces, in the desktop API for workspace
   scope (the API binds queries to the identity's entitled workspace
   ids itself). Workspaces a user has no role in answer scoped 404 in
   every resource class enumerated in Amendment 1 §3, and contribute
@@ -317,54 +364,75 @@ Frozen in `aee-claims.json` (C083-1…C083-19), each with evidence and a
 falsifier, in the post-PR-#450 normalized bundle format. Summary:
 invite-only registration (1), invite lifecycle (2), glassbreak seeding
 (3), the login wall + session perimeter (4, strengthened by Amendment
-2's enumerated anonymous-access falsifier), access-model enforcement
-(5, revised to the two-axis model by Amendment 1), the data
-boundary + marker-scan gate (6), noindex (7), credential separation (8),
-assessor identity (9), job durability (10, revised by Amendment 4 — the Jobs execution model), attribution (11), audit
-completeness (12), dataset version honesty + atomic hydration (13, evidence venue updated by Amendment 4 — GCS),
-production-only rollout (14, revised by Amendment 2 — no staging; falsifier extended to both platforms by Amendment 4),
-primary-workspace seeding fidelity (15), workspace creation gating
-(16), per-workspace role enforcement (17), cross-workspace isolation —
-scoped 404s and no count/list/search leakage (18), and admin
-access-matrix accuracy (19).
+2's enumerated anonymous-access falsifier; wording updated by
+Amendment 5 — the desktop origin is not called for project data
+before authentication), access-model enforcement (5, revised to the
+two-axis model by Amendment 1; the enforcing API is the desktop API
+after Amendment 5), the data boundary (6, **restated by Amendment 5**
+— desktop residency; no cloud dataset), noindex (7), credential
+separation (8, revised by Amendment 5 — edge → desktop origin through
+the Workers VPC binding and the named Tunnel), assessor identity (9,
+evidence re-anchored by Amendment 5 in the desktop install itself),
+job durability (10, revised by Amendment 5 — the resident desktop
+engine; Amendment 4's Jobs model retired), attribution (11), audit
+completeness (12, event list updated by Amendment 5), dataset
+version honesty + atomic hydration (13, **SUPERSEDED by Amendment
+5** — no bundle or hydration exists), production-only rollout (14,
+revised by Amendment 2 — no staging — and by Amendment 5 — one
+hosted route, no published Tunnel application, no bypass),
+primary-workspace seeding fidelity (15, mechanism revised by
+Amendment 5 — assignment verified in the desktop-resident dataset),
+workspace creation gating (16), per-workspace role enforcement (17),
+cross-workspace isolation — scoped 404s and no count/list/search
+leakage (18), and admin access-matrix accuracy (19).
+
 
 ## Assumptions — epistemic boundaries (H13)
 
 - **Trust model**: invited collaborators are trusted *as researchers*
   and untrusted *as infrastructure operators*. Members get the full
   working tool inside their programs; shells, user management, and
-  publishing are operator facilities. A member is not sandboxed from
+  host management are operator facilities. A member is not sandboxed from
   their own programs' data — membership *is* the authorization.
-- **Single instance**: one backend instance serves the edition
-  (matching the tool's single-process design; Amendment 4: the Cloud Run
-  service's maximum-instances = 1 setting, with the engine running as
-  Job executions rather than in the serving process). Concurrent members share
-  one engine; long jobs queue exactly as they do on the desktop. If the
-  invited team outgrows one instance, that is a new spec, not a setting.
-- **Cloud work is a branch, not a fork**: the cloud dataset is a working
-  copy of the repo/desktop state with a reviewed import path back.
-  Simultaneous editing of the same records on desktop and cloud is a
-  merge the owner reviews — the spec does not pretend otherwise.
-- **Restricted material**: the boundary claim (C083-6) is mechanical, not
-  promissory — allowlist + structural exclusion + scan + canary — because
-  the custody rule (statistics publishable, scans never redistributed)
-  does not soften for a friendlier audience.
-- **Adversarial challenge that would break this design**: compromise of
-  the Cloudflare account itself (it holds the edge secrets and the
-  identity store; Amendment 4: the Google account holding the dataset
-  and the compute is the second such surface) — mitigated by the owner's existing account
-  posture (Microsoft SSO on the BitConcepts account), and stated here
-  because no application-layer control answers it; and a restricted
-  marker that matches nothing on the maintained list — mitigated by the
-  allowlist being the primary control and the scan the second, so a
-  list gap alone does not publish restricted material (the source must
-  also be allowlisted).
-- **Confidence**: the route rests on structural platform facts read from
-  Cloudflare's docs on 2026-10-30 (route study §2); Amendment 4's
-  Cloud Run facts were likewise read from Google's official Cloud Run
-  documentation on 2026-10-30. Pricing figures are
-  estimates from published rates. The Phase 2 plan re-verifies the
+- **Single instance**: the one Spec 080 production desktop install
+  serves the edition — locally and through the hosted route alike
+  (matching the tool's single-process design). Concurrent members
+  share one engine; long jobs queue exactly as they do on the
+  desktop. If the invited team outgrows one desktop install, that is
+  a new spec, not a setting.
+
+- **One dataset, on the desktop**: hosted use and local use are two
+  doors into the same desktop dataset. There is no branch, fork,
+  sync, or import to reconcile; simultaneous editing is concurrency
+  inside one install, governed by the application's existing
+  single-process design — the spec does not pretend otherwise.
+
+- **Restricted material**: the boundary claim (C083-6) is structural,
+  not promissory — desktop residency plus cloud-storage exclusion,
+  membership and workspace authorization, and the desktop
+  application's existing restrictions — because the custody rule
+  (statistics publishable, scans never redistributed) does not soften
+  for a friendlier audience.
+
+- **Adversarial surfaces that would break this design**: compromise
+  of the Cloudflare account itself (it holds the edge secrets and
+  the identity store); compromise of the Tunnel token (anyone
+  holding it can run the tunnel — Amendment 5 §2.3) or of the
+  edge↔origin service credential; and compromise of the desktop host
+  itself, which is now the origin as well as the owner's local
+  install. These are stated here because no application-layer
+  control answers them; the mitigations are the owner's account
+  posture (Microsoft SSO on the BitConcepts account), credential
+  custody and rotation, the login wall, and the bypass proofs
+  (T059). There is no Google account surface: Amendment 4's is dead.
+
+- **Confidence**: the route rests on structural platform facts read
+  from Cloudflare's official documentation on 2026-10-30 (Tunnel,
+  Worker Custom Domains, Workers VPC — Amendment 5 §2, with
+  citations). Amendment 4's Google Cloud Run facts are historical;
+  that route is superseded. The Phase 2 plan re-verifies the
   structural facts before the first deploy.
+
 
 ## Out of scope
 
@@ -372,23 +440,27 @@ access-matrix accuracy (19).
   admin sends it by his own channel). A transactional-email integration
   is a follow-up spec if the owner wants it.
 - **Host-management surfaces whose object is the local machine** —
-  excluded from the cloud edition with reasons, present unchanged on the
-  desktop: environment setup/rebuild/upgrade (pip mutation of a running
-  shared instance contradicts the immutable container image and endangers
-  every member's work); the shutdown endpoint (instance lifecycle belongs
-  to the platform (Amendment 4: Cloud Run owns it — the Durable
-  Object no longer starts or stops an instance); a per-user shutdown
-  of a shared
-  instance is a denial of service against the other members — an admin
-  *restart* action through the deployment tooling replaces it);
-  the tray (no desktop exists in this edition).
-- **Bundled local LLM (Ollama)** in the container image: no GPU, model
-  weights against a 20 GB disk ceiling; the provider reports offline
-  exactly as on a desktop without Ollama, and external providers from the
-  existing registry serve the AI surfaces. Not a surface removal.
+  excluded from the *hosted route*, present unchanged for the owner's
+  local desktop use: environment setup/rebuild/upgrade (pip mutation
+  of the production install endangers every member's work and the
+  owner's local tool alike) and the shutdown endpoint (a remote
+  per-user shutdown of the shared desktop origin is a denial of
+  service against the other members and the owner). Edge-authenticated
+  requests cannot invoke either (Amendment 5 §5). The tray is the
+  owner's local desktop surface; hosted members have no tray.
+
+- **Bundled local LLM (Ollama).** Spec 083 installs and bundles no
+  Ollama. A desktop does exist in this edition — it is the origin —
+  so a provider already configured on that desktop is a
+  desktop-install fact, not a Spec 083 component; this spec neither
+  adds nor promises one. Not a surface removal.
+
 - **Multi-instance scaling, per-program databases, public registration,
   password self-service by email** (reset is an admin-issued link),
-  and any change to the desktop edition's behavior. The desktop remains
-  the owner's local install; Spec 083 changes nothing there except adding
-  the publish/export tooling on the dataset's home side.
+  and any change to the desktop edition's behavior beyond the
+  edge-identity acceptance and hosted-route restrictions Amendment 5
+  requires. The desktop remains the owner's local install — and, by
+  Amendment 5, the hosted origin; no publish/export tooling is added
+  to it.
+
 - **Lifting the noindex perimeter** — owner's named act, future amendment.

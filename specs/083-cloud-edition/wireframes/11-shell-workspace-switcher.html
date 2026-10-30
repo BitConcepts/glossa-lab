@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — Cloud shell, workspace switcher (Spec 083 wireframe 11)</title>
+<link rel="stylesheet" href="wireframes.css">
+</head>
+<body>
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-row">
+        <div class="tile">G</div>
+        <div>
+          <div class="brand-name">Glossa Lab</div>
+          <div class="brand-sub">Epistemic research workbench</div>
+        </div>
+      </div>
+    </div>
+    <div class="program-switch" style="border-bottom-left-radius:0;border-bottom-right-radius:0;margin-bottom:0">
+      <div class="ps-label">Workspace</div>
+      <div class="ps-name">Indus Script <span>▴</span></div>
+      <div class="ps-q">Indus Script · Admin</div>
+    </div>
+    <div style="margin:0 12px 4px;padding:6px;border:1px solid rgba(96,165,250,.45);border-top:none;border-radius:0 0 8px 8px;background:rgba(255,255,255,.06)">
+      <div style="display:flex;align-items:center;gap:8px;padding:7px 6px;border-radius:6px;background:rgba(96,165,250,.22)">
+        <span style="color:#fff;font-weight:700;font-size:13px;flex:1;min-width:0">Indus Script</span>
+        <span class="chip contest">admin</span>
+        <span style="color:#93c5fd;font-size:12px">✓ current</span>
+      </div>
+      <a href="#" style="display:flex;align-items:center;gap:8px;padding:7px 6px;border-radius:6px;color:#dbeafe">
+        <span style="font-weight:600;font-size:13px;flex:1;min-width:0">Comparative Scripts</span>
+        <span class="chip neutral">member</span>
+      </a>
+      <a href="#" style="display:flex;align-items:center;gap:8px;padding:7px 6px;border-radius:6px;color:#dbeafe">
+        <span style="font-weight:600;font-size:13px;flex:1;min-width:0">Field Notes Archive</span>
+        <span class="chip line" style="color:#a8c2e2;border-color:rgba(255,255,255,.25)">viewer</span>
+      </a>
+      <div style="border-top:1px solid rgba(255,255,255,.12);margin:6px 0"></div>
+      <a href="09-admin-workspaces.html" style="display:flex;align-items:center;gap:8px;padding:7px 6px;border-radius:6px;color:#fff">
+        <span style="font-size:13px;flex:1;min-width:0">▦ All workspaces</span>
+        <span style="font-size:11px;color:#93c5fd;font-weight:700">manage →</span>
+      </a>
+      <div style="padding:4px 6px 5px;font-size:11px;color:#7a9bbf;line-height:1.4">Only the workspaces you have access to are listed. Roles are per workspace — yours differ above.</div>
+    </div>
+    <nav class="nav">
+      <h4>Workspace</h4>
+      <a href="11-shell-workspace-switcher.html" class="active"><span class="ic">⌂</span>Home</a>
+      <a href="#"><span class="ic">§</span>Claims</a>
+      <a href="#"><span class="ic">✓</span>Digestion</a>
+      <a href="#"><span class="ic">▤</span>Evidence &amp; sources</a>
+      <h4>Tool</h4>
+      <a href="#"><span class="ic">▦</span>Workspaces</a>
+      <a href="#"><span class="ic">⚙</span>Jobs<span class="count">1</span></a>
+      <a href="#"><span class="ic">♥</span>Status</a>
+      <a href="#"><span class="ic">⚙</span>Settings</a>
+      <h4>Admin</h4>
+      <a href="04-admin-users.html"><span class="ic">👥</span>Users</a>
+      <a href="09-admin-workspaces.html"><span class="ic">▦</span>Workspaces</a>
+      <a href="05-admin-invites.html"><span class="ic">✉</span>Invites<span class="count">1</span></a>
+      <a href="06-admin-audit.html"><span class="ic">☰</span>Audit log</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="crumb"><b>Glossa Lab</b> / Indus Script / Home</span>
+      <div class="spacer"></div>
+      <button class="icon-btn">⌘K&nbsp; Search</button>
+      <div class="service-chip"><span class="dot"></span><span><b>Glossa Lab v0.1.0</b> · cloud · dataset 2026-10-30-03 · checked 09:41</span></div>
+      <div class="user-chip"><span class="avatar">g</span><span><b>glassbreak</b> <span class="role">· admin</span></span><span>▾</span></div>
+    </div>
+
+    <div class="content">
+      <div class="head-row">
+        <div class="page-head">
+          <h1>Indus Script</h1>
+          <p class="lede">You are working in the <b>Indus Script</b> workspace, as <b>Admin</b> there. Everything on this screen — claims, evidence, jobs — belongs to this workspace only. Use the workspace card at the top of the sidebar to switch.</p>
+        </div>
+        <div class="spacer"></div>
+        <button class="btn primary">Open claims</button>
+      </div>
+
+      <div class="grid" style="gap:14px">
+        <div class="card">
+          <div class="head-row">
+            <div class="grow">
+              <div style="font-size:16px;font-weight:750">Indus Script <span class="chip contest">Primary</span></div>
+              <div class="row-meta" style="font-size:13px">What do the signs of the Indus script mean — tested claim by claim, each reading carrying the evidence that could prove it wrong.</div>
+            </div>
+            <span class="chip contest">your role: admin</span>
+          </div>
+          <div class="divider"></div>
+          <div class="head-row">
+            <span class="row-meta">Members: <b>glassbreak</b> (admin), <b>j-mensah</b> (member), <b>guest-reader</b> (viewer) + 1 more</span>
+            <div class="spacer"></div>
+            <span class="row-meta">9 claims waiting on a human · last verdict Oct 28</span>
+          </div>
+        </div>
+
+        <div class="card" style="border-style:dashed">
+          <div style="font-size:16px;font-weight:750;color:var(--muted)">The switcher, specimen notes <span class="chip line">specimen</span></div>
+          <div class="row-item">
+            <div class="grow"><div class="row-title">Roles differ across workspaces</div><div class="row-meta">The same signed-in user is Admin in Indus Script, Member in Comparative Scripts, and Viewer in Field Notes Archive — each row of the open switcher carries its own role badge, because the badge is the stored per-workspace grant, not the person&rsquo;s global type.</div></div>
+          </div>
+          <div class="row-item">
+            <div class="grow"><div class="row-title">What is not in the list is not hinted at</div><div class="row-meta">A workspace this user has No access to does not appear in the switcher at all — no name, no count, no greyed-out row. The list&rsquo;s footnote says only that listed workspaces are the ones the user can reach.</div></div>
+          </div>
+          <div class="row-item">
+            <div class="grow"><div class="row-title">&ldquo;All workspaces&rdquo; is an admin entry</div><div class="row-meta">Admins get the manage entry at the foot of the list, leading to wireframe 09. Members and viewers see the same list without it — their list ends at their last workspace.</div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Service <span class="sub">— the tool itself, shared by every workspace</span></h3>
+          <div class="row-item">
+            <div class="grow">
+              <div class="row-title">Glossa Lab cloud instance · v0.1.0</div>
+              <div class="row-meta">Dataset bundle 2026-10-30-03 · source commit 124a1ac3 · hydrated 08:44 · Serving since 08:44, checked just now</div>
+            </div>
+            <span class="chip ok">Healthy</span>
+            <button class="btn small">Open status</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="annotation">
+        <div class="a-title">Annotation — wireframe 11 · not part of the UI</div>
+        <dl>
+          <dt>Purpose</dt><dd>The cloud shell (wireframe 07&rsquo;s shell) with the sidebar workspace switcher in its expanded state — the Spec 081 Q1 sidebar-card switcher pattern, re-pointed from Program to Workspace: where the user is, what else they can reach, and what role they hold in each place, all in the sidebar card.</dd>
+          <dt>Primary action</dt><dd>Picking another workspace in the open switcher list (the current workspace, Indus Script, is marked ✓ current and carries its Admin badge).</dd>
+          <dt>Changed &amp; why</dt><dd>Against wireframe 07: the collapsed &ldquo;None open&rdquo; program card becomes an open workspace card — current workspace &ldquo;Indus Script · Admin&rdquo;, the user&rsquo;s other workspaces listed beneath it, each with its own per-workspace role badge. The specimen is built to prove two things at a glance: roles are per-workspace (Admin / Member / Viewer for one person, in one list), and absence leaks nothing — this edition also holds a specimen workspace the signed-in user has No access to, and it is entirely absent from the list: unnamed, uncounted, and not greyed out, in the list and in this screen&rsquo;s body alike (it is named nowhere in this wireframe). The &ldquo;All workspaces&rdquo; manage entry appears because the signed-in user is an admin; it is not part of a member&rsquo;s or viewer&rsquo;s switcher.</dd>
+          <dt>Spec claims</dt><dd>C083-17 (per-workspace roles — the switcher badges are the stored grants and differ across workspaces for the same user), C083-18 (no leakage through the switcher list — a No-access workspace is entirely absent, so the list reveals nothing about workspaces the user cannot reach).</dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</div>
+<nav class="mobile-nav">
+  <a href="11-shell-workspace-switcher.html" class="active"><span class="mi">⌂</span>Home</a>
+  <a href="#"><span class="mi">§</span>Claims</a>
+  <a href="#"><span class="mi">✓</span>Digestion</a>
+  <a href="#"><span class="mi">⚙</span>Jobs</a>
+  <a href="#"><span class="mi">☰</span>More</a>
+</nav>
+</body>
+</html>

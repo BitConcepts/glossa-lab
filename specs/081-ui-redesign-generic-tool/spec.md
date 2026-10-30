@@ -379,3 +379,58 @@ verdict, and a guard is not retired because the furniture moved):
 - Nothing else was orphaned by the deletions: the panel's
   co-imports (ResearchLoopPanel, the hooks) all have living
   consumers, verified by reference sweep after the removal.
+
+### Step 8 as-built note (2026-10-30, PR-8)
+
+- Tray amendments landed per wireframe 15: the healthy status
+  line reads "{Program} — backend healthy · v{version} · up
+  {humanized}" and the tooltip "Glossa Lab — Healthy
+  (v{version}) · {Program}"; uptime is humanized in the tray's
+  own helper (mirrors the web UI's; raw seconds are never
+  shown); stopped states say which kind of stop they are, in
+  the wireframe's words (stopped by you / auto-restart limit
+  reached, composed from the supervision constants 3-per-hour);
+  starting is one bounded state; the status click and the new
+  "View status & session log" item open the web Status screen,
+  and "View Log" (the raw-file door) is removed. "Open UI" is
+  "Open Glossa Lab" now. Log rotation and icon assets are
+  untouched.
+- The program name comes from the backend's active-program
+  record each healthy poll (token presented per Spec 082); a
+  completed 404 clears it, a transport failure keeps the last
+  known label — the name never flaps on a hiccup.
+- Single instance: a PID lock file beside the tray config.
+  A second launch against a live holder drops a focus marker
+  and exits; the running tray's poller consumes the marker
+  (icon re-asserted, menu refreshed, request logged). A stale
+  lock (dead PID) is taken over. Every launch path funnels
+  through main(), so the guard covers VBS wrappers, autostart
+  and manual launches by construction. If the lock itself is
+  unreadable the tray proceeds and logs the guard's absence —
+  a running tray outranks the guard, and the exception is
+  named, never silent.
+- The tray's status door needed a routed token fragment
+  (`#/status#token=…`): recorded as a dated addendum to Spec
+  082's ui-contract.md, with the SPA intake accepting the token
+  segment after a route as well as bare (query-string tokens
+  remain refused). Proven by a new case in auth-token.spec.ts.
+- Recorded deviations: (i) "Copy API Token" stays on the menu —
+  wireframe 15's menu mock predates Spec 082, the action shipped
+  with the token work, and the SPA's gate copy names it as the
+  recovery path; removing a shipped recovery action was not
+  among step 8's four changes. (ii) The program name is the
+  program record's full label — the wireframe specimen shows a
+  shortened form ("Indus Script"), but no short-name field
+  exists on the record and none was invented. (iii) The
+  degraded line names the failing check when the health payload
+  carries a detail, and otherwise points at the Status screen,
+  which is where checks are named; the health payload has no
+  check list to quote. (iv) "Focus" is the marker hand-off
+  above — pystray has no window to raise; the single surviving
+  instance is the guarantee, the marker its evidence.
+- Desktop verify is STAGED, not run: T020's verify leg rides
+  the Spec 080 cutover (script + README in the program records:
+  tray suites on the desktop checkout, a two-launch
+  single-instance check in the operator's session, the observed
+  status line recorded in the migration record). T020 therefore
+  stays open on that leg alone.

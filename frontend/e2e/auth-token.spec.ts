@@ -98,4 +98,18 @@ test.describe("Spec 082 token contract", () => {
     expect(html).not.toContain(TOKEN);
     await ctx.close();
   });
+test("routed fragment: #/status#token= lands on Status, token stored, route kept", async ({ browser }) => {
+    // The tray's "View status & session log" door (Spec 081 step 8;
+    // ui-contract step-8 addendum).
+    const ctx = await browser.newContext();
+    const page = await ctx.newPage();
+    await page.goto(`/#/status#token=${TOKEN}`);
+    await expect(page.getByRole("heading", { name: "Status" })).toBeVisible({ timeout: 10000 });
+    await expect(page.getByText("API token needed")).toHaveCount(0);
+    expect(await page.evaluate(() => sessionStorage.getItem("glossa_api_token"))).toBe(TOKEN);
+    const hash = await page.evaluate(() => window.location.hash);
+    expect(hash).toBe("#/status");
+    expect(hash).not.toContain(TOKEN);
+    await ctx.close();
+  });
 });

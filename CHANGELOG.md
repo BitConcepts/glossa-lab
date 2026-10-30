@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Spec 081 step 8 (2026-10-30): the tray names the open
+  program in its status line and tooltip, uptime is humanized,
+  stopped states say which kind of stop they are, "View Log"
+  becomes "View status & session log" (the framed web Status
+  screen, via a routed token fragment — Spec 082 ui-contract
+  addendum), and the tray is single-instance by construction
+  (PID lock + focus hand-off). Contract tests extend the tray
+  suites; the on-host verify rides the Spec 080 cutover.
 - Spec 081 step 9 (2026-10-30): dead code removed — the nine
   orphaned components and StudyBuilderView (with its bundled
   fallback data, never ported), plus the Dashboard and the

@@ -24,6 +24,6 @@
 - [x] T017 Program home; Dashboard retired (step 5) — PR #457 (incl. Amendment 2: standing position + stage summary as program data)
 - [x] T018 Evidence & Data consolidation; Analysis route (step 6)
 - [x] T019 Jobs / Status / Settings / Research-loop surfaces; BottomPanel removed (step 7)
-- [ ] T020 Tray amendments + extended contract tests + desktop verify (step 8)
+- [ ] T020 Tray amendments + extended contract tests + desktop verify (step 8) — code + contract tests landed in PR-8 (2026-10-30); desktop verify staged with the Spec 080 cutover (see the step-8 as-built note)
 - [x] T021 Dead-code removal with ledger note (step 9)
 - [ ] T022 Verification: C081-1…12 checks, screenshot pass vs approved wireframes, CI-parity suite, foundation check, CHANGELOG + LEDGER (step 10)

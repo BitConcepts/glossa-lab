@@ -54,3 +54,17 @@ throwaway backend with the named switch `GLOSSA_API_AUTH=off` (health reports
 `auth: disabled`, startup logs the warning). Local dev may do the same, or set
 `GLOSSA_API_TOKEN` and seed `sessionStorage` manually. Removing the CI switch is
 Spec 082 task T010, owned by the Phase 2 landing.
+
+## Addendum — the routed fragment form (2026-10-30, Spec 081 step 8)
+
+The tray gained a second door in Spec 081 step 8 (wireframe 15):
+"View status & session log" opens the web Status screen directly.
+A URL fragment can carry only one value, so the tray's status
+door uses the routed form `#/status#token=<value>`: the route
+first, the token segment after it. The SPA's intake accepts both
+shapes — it finds the `#token=` segment wherever it sits in the
+fragment, stores the token, and strips ONLY the token segment
+(the route survives in the address bar). The bare form
+(`#token=<value>`, the tray's Open action) is unchanged, as is
+everything else in this contract: query-string tokens remain
+refused, and the token still never reaches the server.

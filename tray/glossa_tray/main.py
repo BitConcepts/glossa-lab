@@ -219,7 +219,7 @@ def _resolve_token() -> str | None:
 
 
 # Updated by the status poller; read by the dynamic menu item.
-_status_text = "Backend: Checking..."
+_status_text = "Backend starting…"
 _status_error = False
 _backend_starting = False  # set True while start is in progress, cleared by poller
 _backend_start_mono = 0.0  # monotonic time of the latest start attempt
@@ -235,6 +235,161 @@ _MAX_AUTO_RESTARTS = 3
 _RESTART_WINDOW_SEC = 3600
 _restart_times: list[float] = []
 _user_stopped = False
+
+# Spec 081 step 8 (wireframe 15): the tray names the open program.
+# The label is refreshed by the status poller from the backend's
+# active-program record (token-gated; the tray already resolves the
+# token for its own calls). None = no program open, or not yet read.
+_program_label: str | None = None
+
+
+def _humanize_uptime(seconds: float) -> str:
+    """Human units for a duration — raw seconds are never shown
+    (wireframe 15: "up 5 h 50 m", not "up 1803s"). Mirrors the web
+    UI's humanizer."""
+    total = max(0, int(seconds))
+    if total < 60:
+        return "under a minute"
+    days, rem = divmod(total, 86400)
+    hours, rem = divmod(rem, 3600)
+    minutes = rem // 60
+    if days:
+        return f"{days} d {hours} h" if hours else f"{days} d"
+    if hours:
+        return f"{hours} h {minutes} m" if minutes else f"{hours} h"
+    return f"{minutes} m"
+
+
+def _fetch_active_program_label() -> str | None:
+    """The open program's label from the backend, or None when no
+    program is open.
+
+    Token-gated route (Spec 082) — the tray presents its resolved
+    token. A 404 is a completed answer (no program open → None).
+    Transport failures RAISE, so the caller can keep the last known
+    label instead of flapping the status line on a hiccup.
+    """
+    headers = {}
+    token = _resolve_token()
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    req = urllib.request.Request(
+        f"{BACKEND_URL}/api/v1/projects/active",
+        method="GET",
+        headers=headers,
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=3) as resp:
+            payload = json.loads(resp.read().decode())
+    except urllib.error.HTTPError as exc:
+        if exc.code == 404:
+            return None
+        raise
+    label = payload.get("label")
+    return label if isinstance(label, str) and label else None
+
+
+# ── Single instance (Spec 081 step 8; wireframe 15) ─────────────
+#
+# "One instance. Starting the tray when one is already running
+# focuses the existing tray instead of adding another — the
+# 2026-10-29 start tests accumulated three trays." The guard is a
+# lock file beside the tray config naming the holder's PID. A
+# second launch whose lock names a live process drops a focus
+# marker and exits; the running tray's poller consumes the marker
+# (re-asserts its icon and logs the request — pystray offers no
+# window to raise, and the marker + single surviving icon is the
+# honest maximum the toolkit allows). A lock naming a dead PID is
+# stale and is taken over. Every launch path (VBS wrappers,
+# autostart, manual) funnels through main(), so the guard covers
+# them all by construction.
+
+_INSTANCE_LOCK = _CONFIG_FILE.parent / "tray-instance.lock"
+_FOCUS_MARKER = _CONFIG_FILE.parent / "tray-focus-request"
+
+
+def _pid_alive(pid: int) -> bool:
+    """Best-effort process-existence check, per platform."""
+    if pid <= 0:
+        return False
+    if platform.system() == "Windows":
+        try:
+            import ctypes  # noqa: PLC0415
+
+            handle = ctypes.windll.kernel32.OpenProcess(0x1000, False, pid)
+            if handle:
+                ctypes.windll.kernel32.CloseHandle(handle)
+                return True
+            return False
+        except Exception:  # noqa: BLE001
+            return False
+    try:
+        os.kill(pid, 0)
+    except OSError:
+        return False
+    return True
+
+
+def _acquire_instance_lock() -> bool:
+    """Take the single-instance lock. False = another live tray
+    holds it (a focus marker has been dropped for it)."""
+    try:
+        _INSTANCE_LOCK.parent.mkdir(parents=True, exist_ok=True)
+        if _INSTANCE_LOCK.exists():
+            try:
+                holder = int(_INSTANCE_LOCK.read_text(encoding="utf-8").strip())
+            except (OSError, ValueError):
+                holder = -1
+            if holder != os.getpid() and _pid_alive(holder):
+                try:
+                    _FOCUS_MARKER.write_text(
+                        f"{time.time():.0f}", encoding="utf-8"
+                    )
+                except OSError:
+                    pass
+                _tray_log(
+                    f"another tray instance is already running (pid {holder}); "
+                    "focus requested; this launch exits"
+                )
+                return False
+        _INSTANCE_LOCK.write_text(str(os.getpid()), encoding="utf-8")
+        return True
+    except OSError as exc:
+        # A lock we cannot even read must not silently allow a
+        # duplicate: log it and proceed as the instance (the tray
+        # running at all outranks the guard), named in the log.
+        _tray_log(f"instance lock unavailable ({type(exc).__name__}: {exc}); "
+                  "proceeding without the single-instance guard")
+        return True
+
+
+def _release_instance_lock() -> None:
+    """Drop the lock on quit — only if it still names this process."""
+    try:
+        if _INSTANCE_LOCK.exists():
+            holder = _INSTANCE_LOCK.read_text(encoding="utf-8").strip()
+            if holder == str(os.getpid()):
+                _INSTANCE_LOCK.unlink()
+    except OSError:
+        pass
+
+
+def _consume_focus_request(icon) -> None:
+    """The poller's half of the focus hand-off: a second launch
+    asked for focus — re-assert the icon, refresh the menu, log it,
+    and clear the marker. Bounded: at most one marker exists."""
+    try:
+        if _FOCUS_MARKER.exists():
+            _FOCUS_MARKER.unlink()
+            icon.visible = True
+            try:
+                icon.update_menu()
+            except Exception:  # noqa: BLE001
+                pass
+            _tray_log("focus requested by a second launch; "
+                      "this tray remains the single instance")
+    except OSError:
+        pass
 
 # Label for the autostart toggle, varies by OS
 _AUTOSTART_LABEL = (
@@ -476,7 +631,7 @@ def _start_or_stop_service(_icon=None, _item=None) -> None:
 
 
 def _service_label(_item) -> str:
-    return "Stop Service" if _backend_running() else "Start Service"
+    return "Stop service" if _backend_running() else "Start service"
 
 
 def _service_enabled(_item) -> bool:
@@ -555,7 +710,7 @@ def _start_backend(_icon=None, _item=None) -> bool:
             _run_silent("systemctl", "--user", "start", "glossa-lab-backend")
     except Exception as exc:  # noqa: BLE001
         _backend_starting = False
-        _status_text = "Backend: Start failed  (click to view log)"
+        _status_text = "Backend start failed — the Status screen & session log carry the record."
         _status_error = True
         _tray_log(f"backend start failed: {type(exc).__name__}: {exc}")
         return False
@@ -725,26 +880,42 @@ def _port_label(_item) -> str:
     return f"Port: {_current_port()}"
 
 
-def _open_log(_icon=None, _item=None) -> None:
-    """Open the backend log file in the default text editor."""
-    log = _BACKEND_LOG
-    if not log.exists():
+def _open_status_screen(_icon=None, _item=None) -> None:
+    """Open the web Status screen ("View status & session log").
+
+    Spec 081 step 8 (wireframe 15): this replaces the old "View
+    Log" item, which dropped the raw cumulative backend log into a
+    text editor — the route by which historical errors read as
+    current failures. The Status screen frames the present session
+    and labels history as history.
+
+    The route and the token ride in one fragment
+    (``#/status#token=<value>``): the SPA's intake accepts the
+    token segment after a route as well as in the bare form
+    (ui-contract.md, step-8 addendum). Without a resolvable token
+    the screen opens bare and the miss is named in the tray log,
+    exactly as for Open Glossa Lab.
+    """
+    token = _resolve_token()
+    if token:
+        webbrowser.open(f"{FRONTEND_URL}#/status#token={token}")
         return
-    try:
-        if platform.system() == "Windows":
-            os.startfile(str(log))  # type: ignore[attr-defined]
-        elif platform.system() == "Darwin":
-            subprocess.Popen(["open", str(log)])
-        else:
-            subprocess.Popen(["xdg-open", str(log)])
-    except Exception:
-        pass
+    _tray_log(
+        "view status: no API token resolved (checked GLOSSA_API_TOKEN, "
+        "GLOSSA_TOKEN_FILE, the installed data dir, backend/data); "
+        "opening the Status screen without the token handoff"
+    )
+    webbrowser.open(f"{FRONTEND_URL}#/status")
 
 
 def _on_status_click(_icon=None, _item=None) -> None:
-    """Click the status item: open log when backend is stopped/errored."""
-    if _status_error:
-        _open_log()
+    """Click the status item: open the Status screen.
+
+    Wireframe 15: clicking the status line opens Status (for the
+    degraded / stopped states it names the failing check there);
+    it no longer opens the raw log file.
+    """
+    _open_status_screen()
 
 
 def _ensure_backend_running() -> None:
@@ -805,7 +976,8 @@ def _maybe_auto_restart() -> str:
 
 
 def _quit(icon, _item=None):
-    """Exit the tray application."""
+    """Exit the tray application (releasing the instance lock)."""
+    _release_instance_lock()
     icon.stop()
 
 
@@ -815,8 +987,17 @@ _MAX_POLL_ITERATIONS = 86400 // POLL_INTERVAL  # one ~24 h bounded segment (H11)
 
 
 def _poll_once(icon: pystray.Icon) -> None:
-    """One health poll: refresh the icon/status and supervise."""
+    """One health poll: refresh the icon/status and supervise.
+
+    Status lines and tooltips follow wireframe 15 (Spec 081
+    step 8): the healthy line names the open program and humanizes
+    uptime; stopped states say which kind of stop they are, in
+    words; raw seconds and "(click to view log)" are gone — the
+    status click opens the framed Status screen.
+    """
     global _status_text, _status_error, _backend_starting  # noqa: PLW0603
+    global _program_label  # noqa: PLW0603
+    _consume_focus_request(icon)
     health = _check_health()
     if health is None:
         # Spec 080: on Windows the tray is the supervisor — a
@@ -826,50 +1007,72 @@ def _poll_once(icon: pystray.Icon) -> None:
         outcome = _maybe_auto_restart()
         if outcome == "starting":
             icon.icon = _create_icon_image("yellow")
-            icon.title = "Glossa Lab - Starting..."
-            _status_text = "Backend: Starting..."
+            icon.title = "Glossa Lab — Starting…"
+            _status_text = "Backend starting…"
             _status_error = False
         elif outcome == "user-stopped":
             icon.icon = _create_icon_image("red")
-            icon.title = "Glossa Lab - Backend stopped"
-            _status_text = "Backend: Stopped by user"
+            icon.title = "Glossa Lab — Backend stopped"
+            _status_text = "Backend stopped by you — it will not restart itself."
             _status_error = True
         elif outcome == "cap-reached":
             icon.icon = _create_icon_image("red")
-            icon.title = "Glossa Lab - Backend stopped"
+            icon.title = "Glossa Lab — Backend stopped"
+            window = (
+                "the last hour"
+                if _RESTART_WINDOW_SEC == 3600
+                else f"the last {_RESTART_WINDOW_SEC // 60} minutes"
+            )
             _status_text = (
-                "Backend: Stopped - auto-restart limit reached "
-                "(click to view log)"
+                "Backend stopped — auto-restart limit reached "
+                f"({_MAX_AUTO_RESTARTS} in {window})."
             )
             _status_error = True
         elif outcome == "restarted":
             icon.icon = _create_icon_image("yellow")
-            icon.title = "Glossa Lab - Starting..."
-            _status_text = "Backend: Restarting..."
+            icon.title = "Glossa Lab — Starting…"
+            _status_text = "Backend starting…"
             _status_error = False
         else:  # "not-windows" — systemd supervises; the tray only reports
             icon.icon = _create_icon_image("red")
-            icon.title = "Glossa Lab - Backend stopped"
-            _status_text = "Backend: Stopped  (click to view log)"
+            icon.title = "Glossa Lab — Backend stopped"
+            _status_text = "Backend stopped."
             _status_error = True
     elif health.get("status") in ("healthy", "degraded"):
         _backend_starting = False  # clear the starting flag once we see it's up
+        # Refresh the open program's name for the status line; a
+        # failed read keeps the last known label (see the fetch's
+        # contract) — the name must not flap on a hiccup.
+        try:
+            _program_label = _fetch_active_program_label()
+        except Exception:  # noqa: BLE001
+            pass
+        program = _program_label
         if health.get("status") == "healthy":
             icon.icon = _create_icon_image("green")
             ver = health.get('version', '?')
-            uptime = int(health.get('uptime_seconds', 0))
-            icon.title = f"Glossa Lab - Healthy (v{ver})"
-            _status_text = f"Backend: Healthy  v{ver}  up {uptime}s"
+            uptime = _humanize_uptime(health.get('uptime_seconds', 0))
+            icon.title = f"Glossa Lab — Healthy (v{ver})"
+            if program:
+                icon.title += f" · {program}"
+                _status_text = f"{program} — backend healthy · v{ver} · up {uptime}"
+            else:
+                _status_text = f"Backend healthy · v{ver} · up {uptime}"
             _status_error = False
         else:
             icon.icon = _create_icon_image("yellow")
-            icon.title = "Glossa Lab - Degraded"
-            _status_text = "Backend: Degraded  (click to view log)"
+            icon.title = "Glossa Lab — Degraded"
+            detail = health.get("detail") or health.get("reason")
+            _status_text = (
+                f"Backend degraded — {detail}."
+                if isinstance(detail, str) and detail
+                else "Backend degraded — the Status screen names the failing check."
+            )
             _status_error = True
     else:
         icon.icon = _create_icon_image("grey")
-        icon.title = "Glossa Lab - Unknown"
-        _status_text = "Backend: Unknown  (click to view log)"
+        icon.title = "Glossa Lab — Unknown"
+        _status_text = "Backend state unknown — the Status screen is the framed view."
         _status_error = True
     try:
         icon.update_menu()  # Force pystray to re-evaluate dynamic labels
@@ -926,17 +1129,26 @@ def _status_poller(icon: pystray.Icon):
 # ── Entry point ──────────────────────────────────────────────────────
 
 def main():
-    """Launch the Glossa Lab system tray icon."""
+    """Launch the Glossa Lab system tray icon.
+
+    Single instance (Spec 081 step 8): if a live tray already
+    holds the instance lock, this launch has already dropped a
+    focus marker for it in _acquire_instance_lock and exits here —
+    accumulation is impossible by construction, on every launch
+    path, because they all funnel through main().
+    """
     _tray_log("tray starting")
+    if not _acquire_instance_lock():
+        return
     menu = pystray.Menu(
-        pystray.MenuItem("Open UI", _open_ui, default=True),
+        pystray.MenuItem("Open Glossa Lab", _open_ui, default=True),
         pystray.MenuItem("Copy API Token", _copy_api_token),
         pystray.Menu.SEPARATOR,
         pystray.MenuItem(lambda _: _status_text, _on_status_click),
         pystray.Menu.SEPARATOR,
         pystray.MenuItem(_service_label, _start_or_stop_service, enabled=_service_enabled),
-        pystray.MenuItem("Restart Service", _restart_service),
-        pystray.MenuItem("View Log", _open_log),
+        pystray.MenuItem("Restart service", _restart_service),
+        pystray.MenuItem("View status & session log", _open_status_screen),
         pystray.Menu.SEPARATOR,
         pystray.MenuItem(_port_label, None, enabled=False),  # display-only
         pystray.MenuItem("Change Port...", _change_port),
@@ -953,7 +1165,7 @@ def main():
     icon = pystray.Icon(
         name="glossa-lab",
         icon=_create_icon_image("grey"),
-        title="Glossa Lab - Starting...",
+        title="Glossa Lab — Starting…",
         menu=menu,
     )
 

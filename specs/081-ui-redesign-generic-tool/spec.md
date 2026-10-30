@@ -210,3 +210,25 @@ verdict, and a guard is not retired because the furniture moved):
 - D3 is unchanged: the stat cards still print only endpoint-exposed
   figures, and the stage summary's counts are the payload's published
   `by_stage` index — never the unexposed strict/pending split.
+
+### Step 3 as-built note (2026-10-30, PR-5)
+
+- The claims surface shipped as scoped: the register and detail
+  consume `/api/v1/programs/{program_id}/…`; the `/indus-evidence`
+  paths are the one-release shim (FR-018). Scope semantics: the
+  program that owns the evidence store resolves to it; any other
+  existing program resolves to its own honest empty surfaces;
+  unknown ids 404.
+- Two outline items deferred, recorded here rather than silently
+  dropped: (a) IndusEvidenceView keeps its claims tab — and its
+  Spec 029 source pin — until step 6 consolidates Evidence &
+  sources and owns that pin's amendment; (b) the sweep tab's move
+  under the research loop lands with the step 6/7 surface work for
+  the same reason. The sweep CONFIG endpoints are unchanged.
+- The wireframe-03 primary ("Register a claim") ships as a
+  doorway, not a form: claims enter by registering their source in
+  Evidence & sources, where extraction states the falsifier — the
+  register has no direct-entry write path, and none was invented
+  for this step.
+- The digestion doorway deep link deferred by PR-4 lands here:
+  a board card click opens that claim's detail on this surface.

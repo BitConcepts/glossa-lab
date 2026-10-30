@@ -13,6 +13,7 @@ import { SignsView } from "./components/SignsView";
 import { TimelineView } from "./components/TimelineView";
 import { ProgramHome } from "./components/ProgramHome";
 import { DigestionBoard, effectiveStage } from "./components/DigestionBoard";
+import { ClaimsView } from "./components/ClaimsView";
 import { FoundationCheckView } from "./components/FoundationCheckView";
 import { DiscoveryView } from "./components/Discovery/DiscoveryView";
 import { IndusEvidenceView } from "./components/IndusEvidenceView";
@@ -877,7 +878,7 @@ function AppContent() {
             }}>
               {tab === "programs" && <ProgramsView darkMode={darkMode} onNavigate={(v) => goTo(v as Tab)} />}
               {tab === "home" && <ProgramHome darkMode={darkMode} onNavigate={(v) => goTo(v as Tab)} />}
-              {tab === "claims" && <IndusEvidenceView darkMode={darkMode} initialTab="claims" />}
+              {tab === "claims" && <ClaimsView darkMode={darkMode} onNavigate={(v) => goTo(v as Tab)} />}
               {tab === "digestion" && <DigestionBoard darkMode={darkMode} onNavigate={(v) => goTo(v as Tab)} />}
               {tab === "evidence" && <IndusEvidenceView darkMode={darkMode} initialTab="library" />}
               {tab === "data" && <CorporaView />}

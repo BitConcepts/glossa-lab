@@ -68,6 +68,20 @@ export function effectiveStage(c: IndusClaim): string | null {
   return c.bundle?.stage_computation?.stage ?? c.stage?.stage ?? null;
 }
 
+/** The act a claim at this stage is missing (the board's column copy). */
+export function missingActFor(stage: string | null): string | null {
+  switch (stage) {
+    case "checked":
+      return "an explanation record — what the claim means, and why its evidence is or is not enough.";
+    case "explained":
+      return "an acceptance record — a named person accepts the verdict and what it carries.";
+    case "accepted":
+      return "a digestion record — independent scholarly engagement with the claim, by name. Nothing here can be rushed by the tool.";
+    default:
+      return null;
+  }
+}
+
 function stageDate(c: IndusClaim): string | null {
   if (c.stage?.stage_as_of) return c.stage.stage_as_of;
   const at = c.stage?.latest_transition?.at;

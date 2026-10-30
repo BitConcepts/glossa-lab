@@ -11548,3 +11548,50 @@ AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tris
 - **Verification:** spec029-phase-e2 + spec029-phase-g + program-home suites 18/18 locally (full-capture); program home screenshots at desktop 1440 + mobile 390 re-filed with the goal record, showing the standing position leading under the program title and the stage summary (created 193 · checked 94 on the live payload) above the stat cards, no overflow at either width. D3 intact (the D3 absence test passes against the live surface with the summary rendered).
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-30] Entry — Spec 081 PR-5: claims surface (step 3, T015)
+
+Step 3 landed as PR-5 (branch feat/081-claims-surface): the claims
+register + detail (wireframes 03–04) on the program-scoped
+endpoints, with the /indus-evidence paths documented in-module as
+the one-release shim (FR-018). Backend: scoped router in
+indus_evidence.py (claims, aee-scores, trail, library, hypotheses)
+with honest scope semantics — the store-owning program resolves to
+the store; any other existing program resolves to its own empty
+surfaces; unknown ids 404; trails resolve only inside their own
+program. Frontend: ClaimsView (verdict filter chips with counts,
+falsifier column, machine-verdict vs digestion-stage columns, Q3
+compact toggle on the register only; detail = falsifier block,
+lane 1 / lane 2 kept apart, trail section), hypotheses folded into
+the register as early-state entries (Q7), the digestion doorway
+deep link (glossa_open_claim) now lands on the claim detail, and
+the navigation spec's claims test updated to the new surface (its
+own comment anticipated this replacement). The register-a-claim
+primary is a doorway stating how claims enter (source registration
++ extraction with a stated falsifier); no direct-entry write path
+exists and none was invented.
+
+**Deferrals, recorded not silent** (also in spec.md's step-3
+as-built note): IndusEvidenceView keeps its claims tab and its
+Spec 029 source pin until step 6; the sweep tab's move under the
+research loop lands with step 6/7 for the same reason.
+
+**Verification.** Backend: 6 new tests in test_projects.py
+(scoped/shim parity, empty-scope semantics, unknown 404,
+standing_position roundtrips) — test_projects + test_database +
+test_spec029_phase_e2 = 26 passed. Frontend targeted set
+(claims-surface 7 + navigation + program-home + Spec 029 E2/G):
+49 passed, 0 failed, against a build-tree backend on :8021
+(full-capture reads). Screenshots desktop 1440 + mobile 390 filed
+(claims-built-*, claim-detail-built-*) and visually checked
+against wireframes 03/04. Two process notes: (1) the branch was
+initially created from a stale local origin/main ref (pre-#457);
+the standing_position roundtrip test caught it immediately and
+the branch was rebased onto the API-verified tip before any push;
+(2) a VM replacement mid-verification wiped /tmp captures and the
+local full-suite run — the full suite's authoritative run for
+this PR is CI's. Backend-run corpus mutations were restored by
+exact path before commit, per the standing hazard rule.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

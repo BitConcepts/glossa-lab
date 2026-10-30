@@ -2728,6 +2728,54 @@ export const listIndusClaims = (
 export const listIndusHypotheses = (): Promise<{ models: IndusHypothesisModel[] }> =>
   request("GET", "/indus-evidence/hypotheses");
 
+// ── Program-scoped claim surface (Spec 081 step 3, T015; FR-018) ────────────
+// The canonical paths for the claims register + detail. The
+// /indus-evidence/* helpers above are the one-release shim.
+
+export const listProgramClaims = (
+  programId: string,
+  params: { q?: string; claim_type?: string; claim_status?: string; doc_id?: string; sign?: string; limit?: number; offset?: number; aee?: boolean } = {}
+): Promise<{ claims: IndusClaim[]; total: number; limit: number; offset: number }> => {
+  const qs = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== "") qs.set(k, String(v));
+  });
+  const q = qs.toString();
+  return request("GET", `/programs/${encodeURIComponent(programId)}/claims${q ? `?${q}` : ""}`);
+};
+
+export const listProgramHypotheses = (
+  programId: string
+): Promise<{ models: IndusHypothesisModel[] }> =>
+  request("GET", `/programs/${encodeURIComponent(programId)}/hypotheses`);
+
+/** Per-claim inspectable trail (Spec 029 Phase C), program-scoped. */
+export interface ClaimTrail {
+  claim_id: string;
+  record_kind: string;
+  source_pointer?: string;
+  stage?: ClaimStageObject | null;
+  verified_unexplained?: boolean;
+  evidence?: Array<Record<string, unknown>>;
+  origin_groups?: Array<Record<string, unknown>>;
+  origin_group_count?: number;
+  evidence_instances?: Array<Record<string, unknown>>;
+  falsifier?: Record<string, unknown> | null;
+  stage_transitions?: Array<Record<string, unknown>>;
+  verdicts?: Array<Record<string, unknown>>;
+  bundle?: BundleSerialization | null;
+  completeness?: Record<string, unknown>;
+}
+
+export const getProgramClaimTrail = (
+  programId: string,
+  claimId: string
+): Promise<ClaimTrail> =>
+  request(
+    "GET",
+    `/programs/${encodeURIComponent(programId)}/claims/${encodeURIComponent(claimId)}/trail`
+  );
+
 export const getIndusSweepConfig = (): Promise<SweepConfig> =>
   request("GET", "/indus-evidence/sweep/config");
 

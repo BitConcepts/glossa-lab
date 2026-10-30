@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Spec 081 step 3 (2026-10-30): the Claims route is now the
+  program-scoped register + detail (wireframes 03–04) — verdict
+  filter chips, a falsifier column, machine-verdict and
+  human-digestion stages in separate columns, hypotheses folded
+  in as early-state entries. Claims data is served from the new
+  /api/v1/programs/{program_id}/claims, /claims/aee-scores,
+  /claims/{claim_id}/trail, /library and /hypotheses endpoints;
+  the /api/v1/indus-evidence/* paths remain as a one-release
+  compatibility shim and are deprecated as of this step.
 - Spec 081 Amendment 2 (2026-10-30): the program home now
   leads with the program's standing position and the lane-2
   stage summary, both rendered as program data — the position

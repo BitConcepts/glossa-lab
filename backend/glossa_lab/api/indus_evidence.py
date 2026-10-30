@@ -2,6 +2,14 @@
 
 Mounted at ``/api/v1/indus-evidence``.
 
+Spec 081 step 3 (T015; FR-018): the claim/library read surface also
+lives at program-scoped paths — ``/api/v1/programs/{program_id}/…`` —
+implemented at the bottom of this module. The ``/indus-evidence``
+paths are the compatibility shim for one release: they serve the
+Indus program's store exactly as the scoped paths do, and retire
+with the shim's release. Write/intake/sweep paths are not scoped
+this step.
+
 Endpoints
 ---------
 GET  /library                   List registered literature documents
@@ -47,6 +55,7 @@ from pydantic import BaseModel
 
 _log = logging.getLogger("glossa_lab.api.indus_evidence")
 router = APIRouter(prefix="/api/v1/indus-evidence", tags=["indus-evidence"])
+scoped_router = APIRouter(prefix="/api/v1/programs", tags=["programs-evidence"])
 
 # ── Path constants ────────────────────────────────────────────────────────────
 
@@ -650,6 +659,108 @@ async def list_hypotheses() -> dict[str, Any]:
             "n_tests":    len(d.get("tests_planned") or []),
         })
     return {"models": models}
+
+
+# ── Program-scoped equivalents (Spec 081 step 3, T015; FR-018) ───────────────
+#
+# The evidence store on disk (glossa-indus/) belongs to the default
+# program this release. The scoped routes resolve a program id to one
+# of two scopes:
+#
+#   "store" — the program that owns the on-disk store; its scoped
+#             reads delegate to the handlers above, unchanged.
+#   "empty" — any other existing program; it has no evidence store
+#             yet, so its register, library and hypothesis list are
+#             honestly empty (never the store program's data — one
+#             program's claims are never served under another's name).
+#
+# An unknown program id 404s. The /indus-evidence paths above are the
+# one-release compatibility shim for these routes.
+
+_STORE_PROGRAM_ID = "indus_decipherment"
+
+
+async def _program_scope(program_id: str) -> str:
+    if program_id == _STORE_PROGRAM_ID:
+        return "store"
+    from glossa_lab.database import get_db  # noqa: PLC0415
+
+    db = get_db()
+    if db is not None and await db.get_project(program_id) is not None:
+        return "empty"
+    raise HTTPException(404, f"Program {program_id} not found")
+
+
+@scoped_router.get("/{program_id}/claims")
+async def list_program_claims(
+    program_id: str,
+    q: str | None = None,
+    claim_type: str | None = None,
+    claim_status: str | None = None,
+    doc_id: str | None = None,
+    sign: str | None = None,
+    limit: int = 200,
+    offset: int = 0,
+    aee: bool = False,
+    verified_unexplained: bool | None = None,
+) -> dict[str, Any]:
+    """Program-scoped claim register (the /indus-evidence/claims shim
+    serves the store program's same register)."""
+    if await _program_scope(program_id) == "empty":
+        return {"claims": [], "total": 0, "limit": limit, "offset": offset}
+    return await list_claims(
+        q=q, claim_type=claim_type, claim_status=claim_status,
+        doc_id=doc_id, sign=sign, limit=limit, offset=offset, aee=aee,
+        verified_unexplained=verified_unexplained,
+    )
+
+
+@scoped_router.get("/{program_id}/claims/aee-scores")
+async def program_claims_aee_scores(program_id: str) -> dict[str, Any]:
+    """Program-scoped AEE scoring; an empty-scope program scores its
+    (empty) register, yielding the summary's natural empty shape."""
+    if await _program_scope(program_id) == "empty":
+        import tempfile  # noqa: PLC0415
+
+        from glossa_lab.aee_core import assessment_summary  # noqa: PLC0415
+
+        with tempfile.TemporaryDirectory() as empty_dir:
+            return assessment_summary(Path(empty_dir))
+    return await claims_aee_scores()
+
+
+@scoped_router.get("/{program_id}/claims/{claim_id}/trail")
+async def program_claim_trail(program_id: str, claim_id: str) -> dict[str, Any]:
+    """Program-scoped per-claim trail; a claim id is only resolvable
+    inside the program whose register holds it."""
+    if await _program_scope(program_id) == "empty":
+        raise HTTPException(404, f"Claim {claim_id} not found in program {program_id}")
+    return await claim_trail(claim_id)
+
+
+@scoped_router.get("/{program_id}/library")
+async def list_program_library(
+    program_id: str,
+    q: str | None = None,
+    status: str | None = None,
+    limit: int = 100,
+    offset: int = 0,
+) -> dict[str, Any]:
+    """Program-scoped source library (the /indus-evidence/library shim
+    serves the store program's same library)."""
+    if await _program_scope(program_id) == "empty":
+        return {"documents": [], "total": 0, "limit": limit, "offset": offset}
+    return await list_library(q=q, status=status, limit=limit, offset=offset)
+
+
+@scoped_router.get("/{program_id}/hypotheses")
+async def list_program_hypotheses(program_id: str) -> dict[str, Any]:
+    """Program-scoped hypothesis models; under the Q7 fold-in these
+    read as the register's early-state claims on the claims surface —
+    the endpoint remains for the record."""
+    if await _program_scope(program_id) == "empty":
+        return {"models": []}
+    return await list_hypotheses()
 
 
 # ── Upload PDF ────────────────────────────────────────────────────────────────

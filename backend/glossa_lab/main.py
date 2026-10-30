@@ -39,6 +39,7 @@ from glossa_lab.api.experiments import router as experiments_router
 from glossa_lab.api.foundation_check import router as foundation_check_router
 from glossa_lab.api.health import router as health_router
 from glossa_lab.api.indus_evidence import router as indus_evidence_router
+from glossa_lab.api.indus_evidence import scoped_router as programs_evidence_router
 from glossa_lab.api.jobs import router as jobs_router
 from glossa_lab.api.model_assignments import router as model_assignments_router
 from glossa_lab.api.notifications import router as notifications_router
@@ -441,6 +442,7 @@ def create_app() -> FastAPI:
     application.include_router(model_assignments_router)  # /api/v1/model-assignments
     application.include_router(model_intelligence_router)  # /api/v1/model-intelligence
     application.include_router(indus_evidence_router)  # already prefixed at /api/v1/indus-evidence
+    application.include_router(programs_evidence_router)  # /api/v1/programs/{id}/… (Spec 081 step 3 scoped equivalents)
     application.include_router(research_loop_router)  # already prefixed at /api/v1/research-loop
     application.include_router(study_loop_router)  # already prefixed at /api/v1/study-loop
     application.include_router(events_router)  # already prefixed at /api/v1/events

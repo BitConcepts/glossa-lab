@@ -84,6 +84,16 @@ def cloud(tmp_path_factory):
         key: os.environ.get(key)
         for key in ("GLOSSA_CLOUD", "GLOSSA_SERVICE_CREDENTIAL", "GLOSSA_DATA_DIR")
     }
+    # The app lifespan owns the process-global DB handle
+    # (glossa_lab.database._db): entering the cloud client below
+    # rebinds it to this module's data dir, and leaving the client
+    # closes it to None. Capture the session binding now so teardown
+    # can restore exactly what this fixture disturbs — otherwise
+    # later modules reading through the session client see an
+    # unbound database (GET /corpus-catalogue returns [] on None).
+    from glossa_lab import database as _database
+
+    saved_db = _database.get_db()
     os.environ["GLOSSA_CLOUD"] = "1"
     os.environ["GLOSSA_SERVICE_CREDENTIAL"] = SERVICE_CREDENTIAL
     os.environ["GLOSSA_DATA_DIR"] = str(data_dir)
@@ -129,6 +139,13 @@ def cloud(tmp_path_factory):
         else:
             os.environ[key] = value
     get_settings.cache_clear()
+    # Restore the DB binding captured at setup: exiting the cloud
+    # client ran close_db(), leaving the global handle None. The
+    # saved session Database was never closed (the cloud lifespan
+    # only replaced the reference), so restoring the reference
+    # reinstates the exact session state. Standalone, saved_db is
+    # None — also the pre-fixture state.
+    _database._db = saved_db
 
 
 # ── Credential + login wall (container side) ─────────────────────────

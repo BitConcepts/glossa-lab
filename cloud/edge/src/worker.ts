@@ -1,4 +1,5 @@
-// The Glossa Lab cloud edge Worker (Spec 083, Step 1 / T009).
+// The Glossa Lab cloud edge Worker (Spec 083, Step 1 / T009;
+// Step 2 identity routes added on the same seams).
 //
 // The Worker is the perimeter:
 //   1. EVERY response carries `X-Robots-Tag: noindex, nofollow`
@@ -6,14 +7,21 @@
 //   2. `GET /robots.txt` is served by the edge itself, disallowing all.
 //   3. Sessions terminate here: the session cookie is checked against
 //      D1 (via the SessionStore seam) before any traffic is routed.
+//      Only the session cookie authenticates — Authorization headers
+//      are never consulted, and the Spec 082 install token is not a
+//      cloud credential in any position (FR-008, T024).
 //   4. The anonymous surface is exactly /login, /setup, /invite/*,
 //      /robots.txt, and the SPA shell/assets (FR-004, Amendment 2).
 //      Anonymous API requests answer 401; anonymous page requests
 //      redirect to /login.
-//   5. Everything that reaches the container goes through the single
-//      named Durable Object instance (GlossaFront, "glossa-lab"),
-//      which is the serialization point in front of the single
-//      container instance.
+//   5. Identity routes (Step 2) are answered by the edge itself from
+//      D1: POST /login, POST /logout, POST /invite/:code/redeem,
+//      POST /setup, and the whole /api/admin/* surface. Account
+//      creation exists ONLY as invite redemption and the setup —
+//      there is no other registration route in this Worker (FR-001).
+//   6. Everything else that reaches the container goes through the
+//      single named Durable Object instance (GlossaFront,
+//      "glossa-lab").
 
 import { classifyRoute, normalizePathname } from "./routes";
 import {
@@ -31,6 +39,23 @@ import {
   withNoindex,
 } from "./headers";
 import type { Env } from "./types";
+import {
+  D1IdentityStore,
+  type IdentitySessionStore,
+} from "./identity-store";
+import {
+  auditContainerDenial,
+  handleAdminApi,
+  handleInviteRedeem,
+  handleLogin,
+  handleLogout,
+  handleSetup,
+  isSetupOpen,
+  jsonError,
+  requireAdmin,
+  type IdentityDeps,
+} from "./identity";
+import { defaultHasher, type PasswordHasher } from "./password";
 
 /** The one named GlossaFront instance — there is exactly one. */
 export const FRONT_INSTANCE_NAME = "glossa-lab";
@@ -38,9 +63,12 @@ export const FRONT_INSTANCE_NAME = "glossa-lab";
 /** robots.txt body: disallow everything, on every crawler. */
 export const ROBOTS_TXT = "User-agent: *\nDisallow: /\n";
 
-/** Test seam: Phase 1 tests inject a fake SessionStore and clock. */
+/** Test seam: Phase 1 tests inject a fake SessionStore and clock;
+ *  Step 2 tests additionally inject an IdentityStore + hasher. */
 export interface EdgeDeps {
   store?: SessionStore;
+  identityStore?: IdentitySessionStore;
+  hasher?: PasswordHasher;
   now?: () => Date;
 }
 
@@ -58,6 +86,36 @@ export async function handleRequest(
       jsonError(500, "internal_error", "The edge failed to handle this request."),
     );
   }
+}
+
+/**
+ * Paths that must never create an account at the edge (FR-001).
+ * They are refused outright (404) for write methods, for anonymous
+ * and authenticated callers alike — defensive depth behind the fact
+ * that no registration handler is registered for them at all.
+ */
+const REGISTRATION_REFUSAL_PATHS = new Set([
+  "/register",
+  "/signup",
+  "/api/register",
+  "/api/signup",
+  "/api/auth/register",
+  "/api/auth/signup",
+  "/api/users",
+]);
+
+function resolveIdentityStore(env: Env, deps: EdgeDeps): IdentitySessionStore | null {
+  if (deps.identityStore) return deps.identityStore;
+  const db = env.DB as unknown as { prepare?: unknown } | undefined;
+  if (db && typeof db.prepare === "function") {
+    return new D1IdentityStore(env.DB);
+  }
+  return null;
+}
+
+/** Container routes whose 403/404 answers are workspace-scope denials. */
+function isScopedContainerRoute(pathname: string): boolean {
+  return pathname.startsWith("/api/") || pathname.startsWith("/workspaces/");
 }
 
 async function route(
@@ -80,22 +138,101 @@ async function route(
     });
   }
 
-  const store = deps.store ?? new D1SessionStore(env.DB);
-  const now = (deps.now ?? (() => new Date()))();
+  const nowFn = deps.now ?? (() => new Date());
+  const now = nowFn();
+  const identityStore = resolveIdentityStore(env, deps);
+  const store: SessionStore =
+    deps.store ?? identityStore ?? new D1SessionStore(env.DB);
+  const identityDeps: IdentityDeps | null = identityStore
+    ? { store: identityStore, hasher: deps.hasher ?? defaultHasher, now: nowFn }
+    : null;
+
   const token = readSessionCookie(request);
   const tokenHash = token ? await sha256Hex(token) : null;
   const identity = tokenHash
     ? await store.findIdentityByTokenHash(tokenHash, now)
     : null;
 
+  const method = request.method.toUpperCase();
+
+  // ---- Step 2 edge-handled identity routes (never forwarded) ----
+
+  if (pathname === "/login" && method === "POST") {
+    if (!identityDeps) return identityUnavailable();
+    return handleLogin(request, identityDeps);
+  }
+
+  if (pathname === "/logout" && method === "POST") {
+    if (!identityDeps) return identityUnavailable();
+    return handleLogout(identityDeps, identity, tokenHash);
+  }
+
+  const redeemMatch = pathname.match(/^\/invite\/([^/]+)\/redeem$/);
+  if (redeemMatch && method === "POST") {
+    if (!identityDeps) return identityUnavailable();
+    return handleInviteRedeem(
+      request,
+      identityDeps,
+      decodeURIComponent(redeemMatch[1]),
+    );
+  }
+
+  if (pathname === "/setup") {
+    // Once any admin/owner exists (or setup completed), /setup
+    // answers 404 forever — page and API alike (T017).
+    if (identityDeps && !(await isSetupOpen(identityDeps))) {
+      return jsonError(404, "not_found", "Not found.");
+    }
+    if (method === "POST") {
+      if (!identityDeps) return identityUnavailable();
+      return handleSetup(request, identityDeps);
+    }
+    // An open GET /setup falls through to the public-page forward.
+  }
+
+  if (REGISTRATION_REFUSAL_PATHS.has(pathname) && method !== "GET" && method !== "HEAD") {
+    return jsonError(404, "not_found", "Not found.");
+  }
+
+  if (pathname === "/api/admin" || pathname.startsWith("/api/admin/")) {
+    if (!identityDeps) {
+      if (!identity) {
+        return jsonError(401, "authentication_required", "Sign in is required for this route.");
+      }
+      if (identity.globalType !== "admin" && identity.globalType !== "owner") {
+        return jsonError(403, "admin_required", "Admin access is required for this route.");
+      }
+      return identityUnavailable();
+    }
+    const gate = await requireAdmin(identityDeps, identity, pathname);
+    if (!gate.ok) return gate.response;
+    const handled = await handleAdminApi(request, identityDeps, gate.identity, pathname);
+    return handled ?? jsonError(404, "not_found", "Not found.");
+  }
+
+  // ---- Step 1 perimeter ----
+
   if (identity && tokenHash) {
-    // Sliding activity stamp (FR-004's 30-day sliding lifetime is
-    // Phase 2; Phase 1 records last_seen_at). Best-effort: a failed
-    // stamp never blocks the request.
+    // Sliding activity stamp (FR-004, D-3): last_seen_at is stamped
+    // and expires_at extended to now + 30 days (SessionStore.touch).
+    // Best-effort: a failed stamp never blocks the request.
     ctx.waitUntil(
       store.touchSession(tokenHash, now).catch(() => undefined),
     );
-    return forwardToFront(request, env, identity);
+    const response = await forwardToFront(request, env, identity);
+    // T022: log container-scope denials the edge observes on proxied
+    // responses (authenticated actor + scoped route + 403/404).
+    if (
+      identityDeps &&
+      (response.status === 403 || response.status === 404) &&
+      isScopedContainerRoute(pathname)
+    ) {
+      ctx.waitUntil(
+        auditContainerDenial(identityDeps, identity, method, pathname, response.status)
+          .catch(() => undefined),
+      );
+    }
+    return response;
   }
 
   // Anonymous. A presented-but-invalid session (forged, expired,
@@ -130,6 +267,14 @@ async function route(
   }
 }
 
+function identityUnavailable(): Response {
+  return jsonError(
+    500,
+    "identity_unavailable",
+    "The identity store is unavailable for this request.",
+  );
+}
+
 /**
  * Forward a request through the single GlossaFront instance to the
  * container. Client-supplied `X-Glossa-*` headers are deleted first —
@@ -157,11 +302,4 @@ function forwardToFront(
   const forwarded = new Request(request, { headers });
   const stub = env.GLOSSA_FRONT.getByName(FRONT_INSTANCE_NAME);
   return stub.fetch(forwarded);
-}
-
-function jsonError(status: number, code: string, message: string): Response {
-  return new Response(JSON.stringify({ error: { code, message } }), {
-    status,
-    headers: { "Content-Type": "application/json; charset=utf-8" },
-  });
 }

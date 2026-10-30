@@ -17,6 +17,8 @@ the instance awake around the clock, less with idle sleep; the account
 needs the Workers Paid plan ($5/month minimum, which the container
 charges ride on).
 
+> **SUPERSEDED IN PART — Amendment 4 (owner, 2026-10-30).** The route's edge and identity legs stand (Worker + Durable Object front, D1, Pages) — they never needed a paid plan. The compute and bundle legs are superseded: the owner declined the Workers Paid plan, so the app runs as a **Google Cloud Run service + Jobs** and dataset bundles live in **Google Cloud Storage** (same Google account), deployed by GitHub Actions to us-central1, at $0 within the free-tier allotments. The $35–40/month estimate and the Workers Paid passage above are the original record, kept unedited. Full text and the fit-check: `amendment-4-cloud-run-compute.md`.
+
 Open questions the study could not settle from evidence — each with the
 coordinator's recommendation, per standing practice:
 

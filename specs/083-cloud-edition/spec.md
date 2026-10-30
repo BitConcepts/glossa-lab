@@ -2,7 +2,7 @@
 
 **Feature Branch**: `spec/083-cloud-edition` (spec) · implementation branches per the Phase 2 plan
 **Created**: 2026-10-30
-**Status**: APPROVED 2026-10-30 by the owner, as recommended (route + decisions D-1…D-7), **as amended** by Amendment 1 (workspaces are the tenancy unit), Amendment 2 (no staging — D-7 cancelled), and Amendment 3 (the glassbreak account's email; the setup prompt), all adopted with this spec in the Phase 0 PR. Where an amendment and the original text differ, the amendment governs. Claims frozen before code (spec-kit + AEE flow).
+**Status**: APPROVED 2026-10-30 by the owner, as recommended (route + decisions D-1…D-7), **as amended** by Amendment 1 (workspaces are the tenancy unit), Amendment 2 (no staging — D-7 cancelled), and Amendment 3 (the glassbreak account's email; the setup prompt), all adopted with this spec in the Phase 0 PR. **Amendment 4** (2026-10-30, after the Phase 1 merge) supersedes the route's compute and bundle legs: Cloudflare Containers → a Google Cloud Run service + Jobs; R2 → Google Cloud Storage. Where an amendment and the original text differ, the amendment governs. Claims frozen before code (spec-kit + AEE flow).
 **Input**: Owner orders, 2026-10-30, in sequence: (1) a BitConcepts subdomain for Glossa Lab, hosted there; an admin dashboard for user management; himself added as the **glassbreak** user; invite codes to invite people to the project; (2) **not** hosted from his desktop — "the same approach we've always been using… using GitHub"; (3) **robots kept away** — the site must not show up in searches, at least not yet; (4) scope settled: the **full working tool** for invitees in the cloud (over the coordinator's project-space-first recommendation — the owner's override stands and this spec implements it).
 **Predecessors**: Spec 079 (supervised install), Spec 080 (desktop host migration — the desktop remains the owner's local install and the dataset's home side), Spec 081 (the generic-tool UI: programs, scoped surfaces, the 17 screens this edition carries over), Spec 082 (per-install token auth — explicitly *not* the cloud credential; see FR-008).
 
@@ -21,7 +21,7 @@ The architecture route is decided by the companion study
 (`architecture-route-study.md`): **Cloudflare Containers running the
 existing FastAPI application**, fronted by an edge Worker + Durable Object
 that own identity and the perimeter, identity data in **D1**, the research
-dataset moving as hash-verified **bundles through R2**. It is the only
+dataset moving as hash-verified **bundles through R2** (Amendment 4: bundles through Google Cloud Storage, compute on Google Cloud Run — the amendment governs the route's compute and bundle legs). It is the only
 route under which "the full working tool" is literally true — same code,
 same pinned assessor (AEE ≥1.5.0), same verdicts.
 
@@ -33,8 +33,10 @@ same pinned assessor (AEE ≥1.5.0), same verdicts.
   and ephemeral preview deployments). An edge Worker fronts all dynamic traffic: it
   terminates sessions, enforces the perimeter, sets the noindex header on
   every response, and routes authenticated API traffic through a Durable
-  Object to the single named container instance running the unmodified
-  application. GitHub remains the source: the repo builds the SPA, the
+  Object to the single named backend instance running the unmodified
+  application (Amendment 4: a Cloud Run service capped at one instance;
+  the engine runs as Job executions of the same image, not in the
+  serving process). GitHub remains the source: the repo builds the SPA, the
   edge Worker, and the container image.
 - **Accounts.** Username + password; passwords hashed with Argon2id
   (parameters in the Phase 2 plan) and never stored, logged, or transmitted
@@ -81,7 +83,7 @@ same pinned assessor (AEE ≥1.5.0), same verdicts.
   *not* edited in place in the cloud from some shared drive; it moves as
   a **bundle**: built by the publish pipeline from allowlisted sources,
   scanned, manifested (bundle id, build time, source commit, per-artifact
-  SHA-256), stored in R2. The container hydrates atomically from the
+  SHA-256), stored in R2 (Amendment 4: in Google Cloud Storage). The container hydrates atomically from the
   manifest and exports its changed state back on cadence and on orderly
   stop. Importing cloud changes back into the repo/desktop side is a
   reviewed step, never a silent overwrite (FR-013, Out of scope).
@@ -183,13 +185,13 @@ preserved; the account can no longer sign in).
 The owner (or the pipeline on cadence) publishes a new dataset bundle
 from the repo/desktop side. The cloud Status surface shows the bundle id
 and source commit being served; members see the new state; a bundle that
-fails the restricted-marker scan never exists in R2.
+fails the restricted-marker scan never exists in the bundle store (Amendment 4: Google Cloud Storage).
 
 **Acceptance Scenarios**:
 
 1. **Given** a publish with a planted restricted marker in a publishable
    source, **When** the pipeline runs, **Then** the publish fails at the
-   scan gate and R2 holds no new bundle.
+   scan gate and the bundle store holds no new bundle (Amendment 4).
 2. **Given** a hydration interrupted mid-transfer, **When** the instance
    next serves, **Then** the dataset is entirely the old manifest or
    entirely the new one — verified by sampled artifact hashes.
@@ -251,11 +253,18 @@ fails the restricted-marker scan never exists in R2.
   (≥1.5.0,<1.6) and runs the repo's `aee_core` adapter unmodified; the
   GAP-ENV regression set (23 claims, incl. the 0.1625 sign_val
   expectations) is part of the deployment acceptance run.
-- **FR-010 Job durability.** Job state lives in the dataset (exported to
-  R2 on cadence and on orderly stop); the engine's stall semantics carry
+- **FR-010 Job durability.** Job state lives in the dataset (exported to the bundle
+  store on cadence and on job completion — Amendment 4); the engine's stall semantics carry
   over — a job without heartbeat past the stall window is failed *with
   the reason recorded*; hydration restores job state before the engine
   resumes; the instance's sleep policy is suppressed while jobs run.
+  **Revised by Amendment 4**: jobs execute as Cloud Run Job executions
+  of the cloud image, not in the web process; the stall watchdog runs
+  as a scheduled pass; the sleep-suppression clause is superseded —
+  service instances scale to zero freely because no job state lives
+  only in them, and a SIGTERM handler flushes the state journal within
+  the platform's 10-second shutdown grace. Terminal-state semantics
+  are unchanged.
 - **FR-011 Attribution.** Every mutating act in the cloud edition is
   stamped with the acting user's id and timestamp at the record level;
   surfaces that show an act show its actor (wireframe notes in
@@ -311,9 +320,9 @@ invite-only registration (1), invite lifecycle (2), glassbreak seeding
 2's enumerated anonymous-access falsifier), access-model enforcement
 (5, revised to the two-axis model by Amendment 1), the data
 boundary + marker-scan gate (6), noindex (7), credential separation (8),
-assessor identity (9), job durability (10), attribution (11), audit
-completeness (12), dataset version honesty + atomic hydration (13),
-production-only rollout (14, revised by Amendment 2 — no staging),
+assessor identity (9), job durability (10, revised by Amendment 4 — the Jobs execution model), attribution (11), audit
+completeness (12), dataset version honesty + atomic hydration (13, evidence venue updated by Amendment 4 — GCS),
+production-only rollout (14, revised by Amendment 2 — no staging; falsifier extended to both platforms by Amendment 4),
 primary-workspace seeding fidelity (15), workspace creation gating
 (16), per-workspace role enforcement (17), cross-workspace isolation —
 scoped 404s and no count/list/search leakage (18), and admin
@@ -326,8 +335,10 @@ access-matrix accuracy (19).
   working tool inside their programs; shells, user management, and
   publishing are operator facilities. A member is not sandboxed from
   their own programs' data — membership *is* the authorization.
-- **Single instance**: one container instance serves the edition
-  (matching the tool's single-process design). Concurrent members share
+- **Single instance**: one backend instance serves the edition
+  (matching the tool's single-process design; Amendment 4: the Cloud Run
+  service's maximum-instances = 1 setting, with the engine running as
+  Job executions rather than in the serving process). Concurrent members share
   one engine; long jobs queue exactly as they do on the desktop. If the
   invited team outgrows one instance, that is a new spec, not a setting.
 - **Cloud work is a branch, not a fork**: the cloud dataset is a working
@@ -339,8 +350,9 @@ access-matrix accuracy (19).
   the custody rule (statistics publishable, scans never redistributed)
   does not soften for a friendlier audience.
 - **Adversarial challenge that would break this design**: compromise of
-  the Cloudflare account itself (it holds the secrets, the identity
-  store, and the dataset) — mitigated by the owner's existing account
+  the Cloudflare account itself (it holds the edge secrets and the
+  identity store; Amendment 4: the Google account holding the dataset
+  and the compute is the second such surface) — mitigated by the owner's existing account
   posture (Microsoft SSO on the BitConcepts account), and stated here
   because no application-layer control answers it; and a restricted
   marker that matches nothing on the maintained list — mitigated by the
@@ -348,7 +360,9 @@ access-matrix accuracy (19).
   list gap alone does not publish restricted material (the source must
   also be allowlisted).
 - **Confidence**: the route rests on structural platform facts read from
-  Cloudflare's docs on 2026-10-30 (route study §2). Pricing figures are
+  Cloudflare's docs on 2026-10-30 (route study §2); Amendment 4's
+  Cloud Run facts were likewise read from Google's official Cloud Run
+  documentation on 2026-10-30. Pricing figures are
   estimates from published rates. The Phase 2 plan re-verifies the
   structural facts before the first deploy.
 
@@ -362,9 +376,11 @@ access-matrix accuracy (19).
   desktop: environment setup/rebuild/upgrade (pip mutation of a running
   shared instance contradicts the immutable container image and endangers
   every member's work); the shutdown endpoint (instance lifecycle belongs
-  to the platform/Durable Object; a per-user shutdown of a shared
+  to the platform (Amendment 4: Cloud Run owns it — the Durable
+  Object no longer starts or stops an instance); a per-user shutdown
+  of a shared
   instance is a denial of service against the other members — an admin
-  *restart instance* action through the Durable Object replaces it);
+  *restart* action through the deployment tooling replaces it);
   the tray (no desktop exists in this edition).
 - **Bundled local LLM (Ollama)** in the container image: no GPU, model
   weights against a 20 GB disk ceiling; the provider reports offline

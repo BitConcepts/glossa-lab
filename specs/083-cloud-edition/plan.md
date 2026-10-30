@@ -6,7 +6,7 @@ freeze gate included; branches deleted on merge). Nothing here changes the
 desktop edition. Production go-live is Step 5 and follows the pre-launch
 proofs directly — there is no staging deployment at any point.
 
-**Reading note — amendments govern.** Amendments 1–3 supersede the base
+**Reading note — amendments govern.** Amendments 1–4 supersede the base
 spec and decisions file wherever they conflict: Amendment 1 replaces the
 spec's program-membership model with **workspaces** (global user types
 crossed with per-workspace roles) and adds claims C083-15…19; Amendment 2
@@ -39,10 +39,10 @@ the PR body. No build step starts from an unvalidated bundle.
 | Image smoke test | The build verifies `applied-epistemic-engineering` resolves inside the pin ≥1.5.0,<1.6 and runs the GAP-ENV 23-claim regression set (incl. the 0.1625 sign_val expectations) against the image (C083-9). An out-of-pin resolution or a divergent score fails the build. |
 | `cloud/edge/` — edge Worker + Durable Object | The plan's chosen layout for the edge layer. The Worker is the perimeter and the session termination point: it sets `X-Robots-Tag: noindex, nofollow` on **every** response, serves a `robots.txt` disallowing all, and routes authenticated traffic through the Durable Object to the single named container instance. |
 | D1 identity schema + migrations | `users` (global type: owner / admin / member / guest), `invites` (hash only — no plaintext code column), `sessions` (hash only), `workspaces`, `workspace_roles` (per-user, per-workspace role), `audit_log` (append-only — no update/delete path), `setup_state`. Identity lives at the edge so auth never depends on the container being awake. |
-| R2 dataset-bundle plumbing | Manifest format: bundle id, build time, source commit, per-artifact SHA-256. Hydration library: verify the **full** manifest before swap, swap atomically, never serve a mixture of two manifests (C083-13). Hydration restores job state before the engine resumes, and the instance's sleep is suppressed while jobs run (FR-010, C083-10). |
+| R2 dataset-bundle plumbing | Manifest format: bundle id, build time, source commit, per-artifact SHA-256. Hydration library: verify the **full** manifest before swap, swap atomically, never serve a mixture of two manifests (C083-13). Hydration restores job state before the engine resumes, and the instance's sleep is suppressed while jobs run (FR-010, C083-10). **Amendment 4**: jobs move to Cloud Run Job executions (T047) — the sleep-suppression mechanism is superseded; the bundle transport gains a GCS adapter (T045) and R2 is never enabled in production. |
 | Wrangler configuration | **Production only**, plus ephemeral preview deployments used for verification and torn down after. Amendment 2: no staging project, no staging hostname, ever (C083-14). |
-| Deploy workflow (GitHub Actions) | Image build/push to the Cloudflare container registry, `wrangler deploy`, D1 migrations — following the repo's existing CI discipline. |
-| Local production-shaped build | A compose file reproducing the production topology (edge, container, D1/R2 stand-ins) on one machine. Steps 3 and 5 run their proofs against it; it is a verification fixture, not a deployment. |
+| Deploy workflow (GitHub Actions) | Image build/push to the Cloudflare container registry, `wrangler deploy`, D1 migrations — following the repo's existing CI discipline. **Amendment 4**: the compute leg retargets — Artifact Registry push + Cloud Run deploy (service + Jobs, T049); the wrangler legs are unchanged. |
+| Local production-shaped build | A compose file reproducing the production topology (edge, container, D1/R2 stand-ins — Amendment 4: the storage stand-in becomes the GCS adapter's local fake, T045) on one machine. Steps 3 and 5 run their proofs against it; it is a verification fixture, not a deployment. |
 
 ## Step 2 — identity implementation (PR: `feat/083-identity`)
 
@@ -111,7 +111,7 @@ home-side (repo/desktop), never in the cloud.
 | Allowlist configuration: publishable tables + publishable checkout paths. Anything not allowlisted does not ship — the allowlist is the primary control | C083-6 |
 | Structural exclusion of the restricted stores (raw scan directories, page previews, restricted folders): they are outside the builder's reach by construction, not filtered after collection | C083-6 |
 | Restricted-marker scan: the maintained restricted-marker list file (its patterns are publishable; the restricted content is not) is scanned over **every** artifact before upload. A failed scan uploads nothing | C083-6 |
-| Manifest emission + R2 upload in the Step 1 bundle format; the publish is recorded as an auditable event with its scan-gate result as a first-class report line | C083-6, C083-13 |
+| Manifest emission + bundle-store upload in the Step 1 bundle format (**Amendment 4**: Google Cloud Storage); the publish is recorded as an auditable event with its scan-gate result as a first-class report line | C083-6, C083-13 |
 | Planted-canary test, wired into CI: a restricted marker planted in a publishable source must fail the publish. If the canary ever ships, the boundary claim is falsified and the step is not done | C083-6 |
 | Primary-workspace seeding: the bundle assigns **all** existing project state to the seeded "Indus Script" workspace; the publish report reconciles per-class counts (claims, digestion, evidence, anchors/data, studies, experiments, jobs, discovery, research-loop, notebooks, reports) against the source. A count mismatch fails the publish report, loudly | C083-15 |
 | Export / reviewed import: tooling to bring cloud-side changes home as an inspected diff (summary by table and file) the owner triggers and reviews — never an auto-sync (D-4) | — (D-4) |
@@ -128,7 +128,7 @@ deployment. Production follows the proofs directly.
 | (b) Falsifier suites for C083-1…19 executed as written in `aee-claims.json`; every result recorded in the rollout record — a falsified claim stops the rollout, it is not waived | C083-1…19 |
 | (c) Fresh adversarial pass over the auth surface: invite brute force / code guessing; session fixation; role escalation (member→admin, guest→member-role grant, cross-workspace id probing for **every** resource class in Step 2); anonymous payload scan — anonymous fetches of the shell and its assets must contain no project data, names, or counts, and every non-public route answers redirect-to-login or 401 | C083-2, C083-4, C083-5, C083-17, C083-18 |
 | (d) Noindex checks across response types — pages, API responses, error responses, static assets — each carrying `X-Robots-Tag: noindex, nofollow`, plus `robots.txt` disallowing all | C083-7 |
-| (e) **Production deploy** to `glossa.bitconcepts.tech`. Named external gate: BitConcepts Cloudflare account access — the DNS record, the Pages/Workers/Containers resources, and the Workers Paid plan the container charges ride on. The rollout waits at this gate until that access is in hand; nothing substitutes for it | C083-14 |
+| (e) **Production deploy** to `glossa.bitconcepts.tech`. **Restated by Amendment 4 (2026-10-30).** Named external gate: the owner's **Google Cloud account + project with billing enabled** (Free Tier) — an owner act at deploy time that nothing earlier requires — with the deploy's spend-cap budget set, plus BitConcepts Cloudflare write access (the DNS record, Workers/D1 deploys; no paid plan, no R2). The rollout waits at this gate until both are in hand; nothing substitutes for them | C083-14 |
 | (f) Glassbreak setup prompt: the one-time setup code and `https://glossa.bitconcepts.tech` are delivered to the owner through the coordinator; the owner sets his own password at `/setup`. The code travels by that channel only — it is not written into the rollout record, git, or email | C083-3 |
 | (g) Rollout record (proofs, falsifier results, deployed bundle/image identity, the go-live timestamp) + LEDGER.md entry (H1) | — |
 
@@ -138,8 +138,8 @@ deployment. Production follows the proofs directly.
 |---|---|
 | Base spec text (staging, "programs") read without the amendments | The reading note above; Amendment 2 forbids creating any staging resource, and Step 1's wrangler config carries production + ephemeral previews only (C083-14) |
 | A count or badge leaks a workspace a user cannot see | Counts/badges are scope-filtered with the lists they summarize, and the adversarial pass probes for exactly this (C083-18) |
-| Restricted material reaches R2 through a gap in the marker list | The list is the second control, not the first: allowlist + structural exclusion stand in front of it, and the planted-canary test runs in CI on every publish-path change (C083-6) |
+| Restricted material reaches the bundle store through a gap in the marker list (Amendment 4; R2 in the original text) | The list is the second control, not the first: allowlist + structural exclusion stand in front of it, and the planted-canary test runs in CI on every publish-path change (C083-6) |
 | Hydration leaves a mixed dataset after an interrupted transfer | Full-manifest verification before an atomic swap; the served dataset is always exactly one manifest (C083-13) |
-| A job is silently lost across container sleep/restart | Job state lives in the dataset, hydration restores it before the engine resumes, sleep is suppressed while jobs run, and stall semantics fail the job *with the reason recorded* (C083-10) |
+| A job is silently lost across container sleep/restart | Job state lives in the dataset, hydration restores it before the engine resumes, sleep is suppressed while jobs run, and stall semantics fail the job *with the reason recorded* (C083-10). **Amendment 4**: the mechanism is restated — Job executions + state journal + scheduled stall watchdog; the guarantee is unchanged |
 | The 082 desktop token becomes a second cloud credential by accident | Refused at the edge in every position, tested in Step 2 and re-probed in Step 5's adversarial pass (C083-8) |
 | Cloud and desktop datasets diverge silently | Cloud work is a branch, not a fork: changes come home only as an owner-reviewed import diff, never an auto-sync (D-4) |

@@ -11850,3 +11850,43 @@ environment secrets exist.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## Spec 083 — Step 2: identity and workspaces (2026-10-30)
+
+Step 2 of the cloud edition (tasks T014–T024) is delivered in
+this change. Identity lives at the edge in D1: invite codes
+are 192-bit CSPRNG values stored only as SHA-256 hashes,
+redeemed by a single conditional update so a second, expired,
+or revoked redemption always fails; account creation exists
+only as invite redemption or the first-run setup. Sessions
+are 256-bit opaque tokens, hashed at rest, sliding on a
+30-day lifetime, and deleted in the same operation as logout,
+disable, removal, or any role/type change. Passwords are
+Argon2id (hash-wasm; 19 MiB, t=2, p=1 — the OWASP floor). The
+glassbreak seed step stores only the hash of a one-time
+24-hour setup code beside the seed record (username
+`glassbreak`, the Amendment 3 email), creates no user, and
+prints the code once in the operator's terminal; the setup
+path answers 404 forever once an admin exists. The admin API
+covers users, invites, workspaces, and the per-user
+workspace-access matrix, with the global Owner held singular
+and Guests capped at Viewer; every identity event and every
+admin denial lands in the append-only audit log. On the
+container side, a cloud-mode-only middleware enforces
+workspace scope from the edge's identity headers: the Spec
+082 install credential is refused, non-members receive a
+scoped 404 with no data, lists and counts are filtered to
+entitled workspaces, mutating records are stamped with the
+acting user, and the terminal surface is global-admin only.
+
+One limit is recorded plainly, not smoothed over: five
+resource classes — anchors/data, studies, jobs, research
+loop, reports — have no project linkage in the current data
+model, so they are held as authenticated global classes with
+role-gated writes rather than workspace-scoped ones. Claims
+C083-17/C083-18 as written demand scoped 404s for every
+class, so closing those linkages (or amending the claims) is
+a named pre-launch gate for Step 5.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

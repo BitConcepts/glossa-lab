@@ -25,17 +25,29 @@ its claim(s) or the FR / decision it discharges.
 
 ## Step 2 — identity implementation (PR: `feat/083-identity`)
 
-- [ ] T014 Invite lifecycle: CSPRNG ≥128-bit, hash-stored only, atomic check-and-consume, default 7-day expiry, revocable, optional email + workspace grants (C083-2, FR-002, D-2)
-- [ ] T015 Registration only via invite redemption or setup; no open registration route, form, or API registered (C083-1, FR-001)
-- [ ] T016 Login/logout; sessions opaque ≥256-bit, hashed at rest, `HttpOnly; Secure; SameSite=Lax` cookie, 30-day sliding (D-3), instant revocation on logout/disable/removal/role change (C083-4, FR-004)
-- [ ] T017 Glassbreak setup: operator seed step prints the one-time setup code in the deploy terminal only (single-use, 24 h); seed record carries username `glassbreak` + email `tristen.pierson@gmail.com` (Amendment 3); owner sets his own password on the setup screen; setup path permanently closes when an admin exists (C083-3, FR-003)
-- [ ] T018 Access model: global types (Owner singular / Admin / Member / Guest) × per-workspace roles (Owner / Admin / Member / Viewer); Guest capped at Viewer; global Admin/Owner hold implicit Workspace Admin (C083-5, C083-19; Amendment 1)
-- [ ] T019 Scope enforcement: edge for global/admin surfaces, container API for workspace scope; scoped 404s with no data for every resource class — claims, digestion, evidence, anchors/data, studies, experiments, jobs, discovery, research-loop, notebooks, reports (C083-5, C083-17, C083-18)
-- [ ] T020 Admin API — users (role/type change, disable with instant session death, removal preserving attribution) and invites (create, list, revoke) (C083-5, C083-4, C083-11)
-- [ ] T021 Admin API — workspaces (create/archive, global Admin/Owner only) and the per-user workspace-access matrix (read/write a user's full grant set) (C083-16, C083-19)
-- [ ] T022 Audit: append-only writes for every FR-012 event (logins success/failure, invite events, role/type and membership changes, disable/removal, setup, publishes, admin API denials), actor + timestamp on each (C083-12)
-- [ ] T023 Attribution: edge injects the authenticated identity on every container request; container stamps mutating records with actor id + timestamp; bundle-imported records labelled "via desktop import" (C083-11, FR-011)
-- [ ] T024 Credential separation tests: the Spec 082 install token refused at the edge in every position (cookie, header, query); edge↔container service credential only in platform secret stores, in no client-visible artifact (C083-8, FR-008); terminal admin-only in cloud, member attempts 403 + audit-logged (C083-5, D-5); claim-test matrix from the plan (Step 2) green; LEDGER.md entry
+- [x] T014 Invite lifecycle: CSPRNG ≥128-bit, hash-stored only, atomic check-and-consume, default 7-day expiry, revocable, optional email + workspace grants (C083-2, FR-002, D-2)
+- [x] T015 Registration only via invite redemption or setup; no open registration route, form, or API registered (C083-1, FR-001)
+- [x] T016 Login/logout; sessions opaque ≥256-bit, hashed at rest, `HttpOnly; Secure; SameSite=Lax` cookie, 30-day sliding (D-3), instant revocation on logout/disable/removal/role change (C083-4, FR-004)
+- [x] T017 Glassbreak setup: operator seed step prints the one-time setup code in the deploy terminal only (single-use, 24 h); seed record carries username `glassbreak` + email `tristen.pierson@gmail.com` (Amendment 3); owner sets his own password on the setup screen; setup path permanently closes when an admin exists (C083-3, FR-003)
+- [x] T018 Access model: global types (Owner singular / Admin / Member / Guest) × per-workspace roles (Owner / Admin / Member / Viewer); Guest capped at Viewer; global Admin/Owner hold implicit Workspace Admin (C083-5, C083-19; Amendment 1)
+- [x] T019 Scope enforcement: edge for global/admin surfaces, container API for workspace scope; scoped 404s with no data for every resource class — claims, digestion, evidence, anchors/data, studies, experiments, jobs, discovery, research-loop, notebooks, reports (C083-5, C083-17, C083-18)
+- [x] T020 Admin API — users (role/type change, disable with instant session death, removal preserving attribution) and invites (create, list, revoke) (C083-5, C083-4, C083-11)
+- [x] T021 Admin API — workspaces (create/archive, global Admin/Owner only) and the per-user workspace-access matrix (read/write a user's full grant set) (C083-16, C083-19)
+- [x] T022 Audit: append-only writes for every FR-012 event (logins success/failure, invite events, role/type and membership changes, disable/removal, setup, publishes, admin API denials), actor + timestamp on each (C083-12)
+- [x] T023 Attribution: edge injects the authenticated identity on every container request; container stamps mutating records with actor id + timestamp; bundle-imported records labelled "via desktop import" (C083-11, FR-011)
+- [x] T024 Credential separation tests: the Spec 082 install token refused at the edge in every position (cookie, header, query); edge↔container service credential only in platform secret stores, in no client-visible artifact (C083-8, FR-008); terminal admin-only in cloud, member attempts 403 + audit-logged (C083-5, D-5); claim-test matrix from the plan (Step 2) green; LEDGER.md entry
+
+
+> **Step 2 completion note (2026-10-30):** T018/T019 coverage is
+> implemented for claims, digestion, evidence, notebooks,
+> hypotheses, correspondences, projects/workspaces, and for
+> experiments/discovery where records link to a project. Five
+> classes have no project linkage in the current data model —
+> anchors/data, studies, jobs, research-loop, reports — and are
+> held as authenticated global classes with role-gated writes.
+> C083-17/C083-18 as written demand scoped 404s for every class,
+> so closing those linkages (or amending the claims) is a named
+> pre-launch gate for Step 5; it is not waived by this check-off.
 
 ## Step 3 — frontend (PR: `feat/083-frontend`)
 

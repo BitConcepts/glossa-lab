@@ -1,9 +1,12 @@
 # Tasks: Glossa Lab Cloud Edition — Accounts, Workspaces, Hosted Tool (Spec 083)
 
-Amendments 1–4 govern where they conflict with the base spec (workspaces,
-not programs; no staging, ever; the glassbreak seed email; Amendment 4:
-Cloud Run compute + Google Cloud Storage bundles). Every task names
-its claim(s) or the FR / decision it discharges.
+Amendments 1–5 govern where they conflict with the base spec
+(workspaces, not programs; no staging, ever; the glassbreak seed
+email; Amendment 4's Cloud Run + GCS route **superseded in full by
+Amendment 5**: desktop origin via Cloudflare Tunnel + Workers VPC;
+no cloud dataset). Every task names its claim(s) or the FR /
+decision it discharges.
+
 
 ## Step 0 — spec adoption (PR: `spec/083-cloud-edition`)
 
@@ -18,11 +21,13 @@ its claim(s) or the FR / decision it discharges.
 - [x] T006 Container image: Dockerfile builds the existing backend app + built SPA as one immutable image; image identity recorded for the rollout record (C083-9)
 - [x] T007 Cloud configuration switch (env-driven): under it the env setup/rebuild/upgrade endpoints and the shutdown endpoint are not registered, and Ollama is not bundled or probed (spec Out of scope; FR-010's instance lifecycle)
 - [x] T008 Image smoke test: build verifies `applied-epistemic-engineering` resolves within ≥1.5.0,<1.6 and runs the GAP-ENV 23-claim regression set against the image; out-of-pin or divergent score fails the build (C083-9)
-- [x] T009 `cloud/edge/`: edge Worker + Durable Object front — `X-Robots-Tag: noindex, nofollow` on every response, `robots.txt` disallowing all, session termination point, routing to the single container instance (C083-7, C083-4)
+- [x] T009 `cloud/edge/`: edge Worker + Durable Object front — `X-Robots-Tag: noindex, nofollow` on every response, `robots.txt` disallowing all, session termination point, routing to the single container instance (C083-7, C083-4) — **Amendment 5:** the container origin is superseded prospectively; the production origin transport is T055 (Workers VPC binding → named Tunnel → desktop). The Phase 1 build record stands
 - [x] T010 D1 identity schema + migrations: `users` (global type owner/admin/member/guest), `invites` (hash only), `sessions` (hash only), `workspaces`, `workspace_roles`, `audit_log` (append-only), `setup_state` (C083-2, C083-4, C083-12, C083-16, C083-19)
-- [x] T011 R2 bundle plumbing: manifest format (bundle id, build time, source commit, per-artifact SHA-256); hydration library verifies the full manifest and swaps atomically — never a mixture (C083-13); job state restored before the engine resumes, sleep suppressed while jobs run (C083-10) — **Amendment 4**: transport gains a GCS adapter (T045) and R2 is never enabled in production; the sleep-suppression clause is superseded by the Jobs model (T047)
+- [x] T011 R2 bundle plumbing: manifest format (bundle id, build time, source commit, per-artifact SHA-256); hydration library verifies the full manifest and swaps atomically — never a mixture (C083-13); job state restored before the engine resumes, sleep suppressed while jobs run (C083-10) — **Amendment 4:** GCS adapter/R2-never-enabled notes superseded in turn by **Amendment 5:** the bundle/hydration production path is retired (T058); C083-13 is superseded; the Phase 1 plumbing remains as built history and test material only
+
 - [x] T012 Wrangler configuration: production only + ephemeral preview deployments for verification; no staging project and no staging hostname created (Amendment 2, C083-14)
-- [x] T013 GitHub Actions deploy workflow (image build/push to the Cloudflare container registry, wrangler deploy, D1 migrations) under the repo's existing CI discipline; local production-shaped build (compose file) for later steps' proofs; LEDGER.md entry — **Amendment 4**: the compute leg retargets to Cloud Run (T049)
+- [x] T013 GitHub Actions deploy workflow (image build/push to the Cloudflare container registry, wrangler deploy, D1 migrations) under the repo's existing CI discipline; local production-shaped build (compose file) for later steps' proofs; LEDGER.md entry — **Amendment 5:** the compute/image deploy legs are retired prospectively; the surviving legs are the edge deploy (Worker + Custom Domain + VPC binding) and D1 migrations (T053–T055)
+
 
 ## Step 2 — identity implementation (PR: `feat/083-identity`)
 
@@ -31,50 +36,87 @@ its claim(s) or the FR / decision it discharges.
 - [ ] T016 Login/logout; sessions opaque ≥256-bit, hashed at rest, `HttpOnly; Secure; SameSite=Lax` cookie, 30-day sliding (D-3), instant revocation on logout/disable/removal/role change (C083-4, FR-004)
 - [ ] T017 Glassbreak setup: operator seed step prints the one-time setup code in the deploy terminal only (single-use, 24 h); seed record carries username `glassbreak` + email `tristen.pierson@gmail.com` (Amendment 3); owner sets his own password on the setup screen; setup path permanently closes when an admin exists (C083-3, FR-003)
 - [ ] T018 Access model: global types (Owner singular / Admin / Member / Guest) × per-workspace roles (Owner / Admin / Member / Viewer); Guest capped at Viewer; global Admin/Owner hold implicit Workspace Admin (C083-5, C083-19; Amendment 1)
-- [ ] T019 Scope enforcement: edge for global/admin surfaces, container API for workspace scope; scoped 404s with no data for every resource class — claims, digestion, evidence, anchors/data, studies, experiments, jobs, discovery, research-loop, notebooks, reports (C083-5, C083-17, C083-18)
+- [ ] T019 Scope enforcement: edge for global/admin surfaces, desktop API for workspace scope; scoped 404s with no data for every resource class — claims, digestion, evidence, anchors/data, studies, experiments, jobs, discovery, research-loop, notebooks, reports (C083-5, C083-17, C083-18)
 - [ ] T020 Admin API — users (role/type change, disable with instant session death, removal preserving attribution) and invites (create, list, revoke) (C083-5, C083-4, C083-11)
 - [ ] T021 Admin API — workspaces (create/archive, global Admin/Owner only) and the per-user workspace-access matrix (read/write a user's full grant set) (C083-16, C083-19)
-- [ ] T022 Audit: append-only writes for every FR-012 event (logins success/failure, invite events, role/type and membership changes, disable/removal, setup, publishes, admin API denials), actor + timestamp on each (C083-12)
-- [ ] T023 Attribution: edge injects the authenticated identity on every container request; container stamps mutating records with actor id + timestamp; bundle-imported records labelled "via desktop import" (C083-11, FR-011)
-- [ ] T024 Credential separation tests: the Spec 082 install token refused at the edge in every position (cookie, header, query); edge↔container service credential only in platform secret stores, in no client-visible artifact (C083-8, FR-008); terminal admin-only in cloud, member attempts 403 + audit-logged (C083-5, D-5); claim-test matrix from the plan (Step 2) green; LEDGER.md entry
+- [ ] T022 Audit: append-only writes for every FR-012 event (logins success/failure, invite events, role/type and membership changes, disable/removal, setup, hosted-route configuration changes, admin API denials), actor + timestamp on each (C083-12)
+- [ ] T023 Attribution: edge injects the authenticated identity on every desktop-bound request; the desktop API stamps mutating records with actor id + timestamp; records created by the owner's local desktop use carry no cloud actor and are never given a fake one (C083-11, FR-011)
+
+- [ ] T024 Credential separation tests: the Spec 082 install token refused at the edge in every position (cookie, header, query); edge↔desktop-origin service credential only in the Worker secret store and the desktop install's protected credential storage, in no client-visible artifact (C083-8, FR-008); terminal admin-only in the hosted edition, member attempts 403 + audit-logged (C083-5, D-5); claim-test matrix from the plan (Step 2) green; LEDGER.md entry
+
 
 ## Step 3 — frontend (PR: `feat/083-frontend`)
 
 - [ ] T025 Wireframes 01–06 in the SPA's existing design system: login, invite acceptance, glassbreak setup, admin users, admin invites, admin audit (C083-1, C083-2, C083-3, C083-12)
 - [ ] T026 Wireframes 07–11: shell with membership + workspace switcher, account & security, admin workspaces, admin user-access matrix (C083-5, C083-16, C083-19)
-- [ ] T027 Carryover deltas on the 17 carried-over screens per carryover-touchpoints.md: user chip, dataset chip (bundle id · source commit · hydrated at), *Started by* on jobs, actor rendering on claims/digestion/evidence (C083-11, C083-13)
+- [ ] T027 Carryover deltas on the 17 carried-over screens per carryover-touchpoints.md: user chip, install chip (desktop install revision · source commit · origin health — Amendment 5's replacement for the retired dataset/bundle chip), *Started by* on jobs, actor rendering on claims/digestion/evidence (C083-11; C083-13 superseded)
+
 - [ ] T028 Membership filtering applied to lists **and** counts/badges — no count computed over a workspace the user cannot see (C083-18)
 - [ ] T029 Verification: Playwright screenshots at desktop 1440 + mobile 390 compared against the approved wireframes screen by screen; any deviation stops the step and is reported, not improvised around; LEDGER.md entry
 
-## Step 4 — the data-boundary publisher (PR: `feat/083-cloud-publish`)
+## Step 4 — the data-boundary publisher (RETIRED by Amendment 5)
 
-- [ ] T030 `tools/cloud-publish/` builder (home-side): allowlist configuration (publishable tables + checkout paths); restricted stores structurally excluded (C083-6, FR-006)
-- [ ] T031 Restricted-marker scan: maintained marker-list file; scan over every artifact before upload; a failed scan uploads nothing (C083-6)
-- [ ] T032 Manifest emission (Step 1 format) + bundle-store upload (Amendment 4: Google Cloud Storage); publish recorded with its scan-gate result as a first-class report line (C083-6, C083-13, C083-12)
-- [ ] T033 Planted-canary test wired into CI: a restricted marker planted in a publishable source must fail the publish (C083-6)
-- [ ] T034 Primary-workspace seeding: the bundle assigns all existing project state to the seeded "Indus Script" workspace; per-class counts reconciled against the source in the publish report (C083-15)
-- [ ] T035 Export / reviewed-import tooling: cloud-side changes come home as an inspected diff (by table and file), owner-triggered — never an auto-sync (D-4); LEDGER.md entry
+No publisher is built: the dataset is desktop-resident and served in
+place, so there is nothing to allowlist, scan, manifest, upload, or
+hydrate. The tasks below are superseded, not open work.
+
+- [ ] T030 **SUPERSEDED by Amendment 5** — the `tools/cloud-publish/` builder is not built; the data boundary is FR-006/C083-6 as restated (desktop residency + cloud-storage exclusion). No replacement
+- [ ] T031 **SUPERSEDED by Amendment 5** — the restricted-marker scan over bundle artifacts is retired with the bundle; the boundary is enforced by residency and audited under T059. No replacement
+- [ ] T032 **SUPERSEDED by Amendment 5** — no manifest is emitted and no bundle store exists (R2 or GCS). No replacement
+- [ ] T033 **SUPERSEDED by Amendment 5** — the planted-canary publish test is retired; its intent (prove the boundary mechanically) is carried by the C083-6 cloud-storage audit and unauthorized-return probes in T059
+- [ ] T034 **SUPERSEDED by Amendment 5** — primary-workspace assignment is not a publish step; replaced by T057 (scope verification in the desktop-resident dataset) (C083-15)
+- [ ] T035 **SUPERSEDED by Amendment 5** — export/reviewed-import tooling is not built; D-4's two-datasets premise is retired (one desktop dataset). No replacement
+
 
 ## Step 5 — pre-launch proofs + production go-live (Amendment 2 rollout; no staging)
 
-- [ ] T036 Acceptance script (Stories 1–5 as amended by the workspace model) run against the local production-shaped build **and** an ephemeral preview deployment; both runs recorded (C083-1…19)
-- [ ] T037 Falsifier suites for C083-1…19 executed as written; results recorded in the rollout record; a falsified claim stops the rollout (C083-1…19)
+- [ ] T036 Acceptance script (Stories 1–5 as amended, incl. Amendment 5's desktop-resident/offline Story 5) run against the local production-shaped build **and** an ephemeral preview deployment, with the route-specific proofs of T059 run against the assembled production route before go-live; all runs recorded (C083-1…19)
+
+- [ ] T037 Falsifier suites for C083-1…19 executed as written; results recorded in the rollout record; a falsified claim stops the rollout (C083-1…19, as amended by Amendment 5; C083-13 is executed as a retirement audit, not a hydration test)
 - [ ] T038 Adversarial pass over the auth surface: invite brute force / code guessing, session fixation, role escalation (member→admin, guest→member-role grant, cross-workspace id probing for every Step 2 resource class) (C083-2, C083-4, C083-5, C083-17, C083-18)
-- [ ] T039 Anonymous payload scan: anonymous fetches of the shell and assets contain no project data, names, or counts; every non-public route answers redirect-to-login or 401 (C083-4, C083-18)
-- [ ] T040 Noindex checks across response types (pages, API, errors, assets) — `X-Robots-Tag: noindex, nofollow` on each — plus `robots.txt` disallowing all (C083-7, FR-007)
-- [ ] T041 External gate + production deploy: the owner's Google Cloud account + project with billing enabled in hand (owner act; Amendment 4) + BitConcepts Cloudflare write access (DNS record, Workers/D1 deploys — no paid plan), then deploy to `glossa.bitconcepts.tech` — production follows the proofs directly, no staging-proof gate (C083-14; Amendments 2 + 4)
+- [ ] T039 Anonymous payload scan: anonymous fetches of the shell and assets contain no project data, names, or counts; every non-public route answers redirect-to-login or 401 — run against the local build and, under T059, against the real Tunnel/VPC route (C083-4, C083-18)
+
+- [ ] T040 Noindex checks across response types (pages, API, errors — including the edge's desktop-offline 503 — assets) — `X-Robots-Tag: noindex, nofollow` on each — plus `robots.txt` disallowing all (C083-7, FR-007)
+
+- [ ] T041 External gates + production deploy: Amendment 5's three gates in hand — (a) Spec 080 cutover-final (the hosted route rides the production desktop install), (b) BitConcepts Cloudflare write/configuration scopes (DNS / Worker Custom Domain, Workers + D1 deploys, a Tunnel write scope, Connectivity Directory Admin + Bind for Workers VPC), (c) the `cloudflared` desktop service installed via Desktop Access's screened service path — then deploy to `glossa.bitconcepts.tech`; production follows the proofs directly, no staging-proof gate. **The Amendment 4 Google Cloud gate is dead** (C083-14; Amendments 2 + 5)
+
 - [ ] T042 Glassbreak setup prompt: the one-time setup code + `https://glossa.bitconcepts.tech` delivered to the owner through the coordinator only; owner sets his own password at `/setup` (C083-3)
-- [ ] T043 Rollout record (proofs, falsifier results, deployed image/bundle identity, go-live timestamp) + LEDGER.md entry (H1)
+- [ ] T043 Rollout record (proofs, falsifier results, desktop install revision/source commit, Tunnel ID, VPC Service ID, Worker Custom Domain state, go-live timestamp) + LEDGER.md entry (H1)
 
-## Amendment 4 — Cloud Run delta (owner decision, 2026-10-30)
 
-The compute/bundle swap's build consequences, for the Phase 3+ coordinator. The frontend (Step 3) does not depend on these; the publisher (Step 4) depends on T045. Suggested vehicle: one follow-on PR `feat/083-cloud-run-delta` for T044–T049, with T050 folding into Step 5 and T051 into the rollout record.
+## Amendment 4 — Cloud Run delta (SUPERSEDED in full by Amendment 5, 2026-10-30)
 
-- [ ] T044 Image contract for Cloud Run: the same root Dockerfile serves both venues — the app honors the platform's `$PORT` (the desktop/compose default stays 8001) and gains a runner entrypoint mode (hydrate → drain queued job rows → export → exit) selected by environment; under `GLOSSA_CLOUD` service mode the resident engine loop is gated off (dispatcher only) (C083-9, C083-10)
-- [ ] T045 GCS bundle adapter: `cloud_bundles.py` gains a Google Cloud Storage transport beside the R2 one (identical manifest format; the service's Google identity authorizes it — no keys in the image; bucket in us-central1); the compose fixture's storage stand-in swaps to the adapter's local fake; the R2 transport remains for tests, never enabled in production (C083-13)
-- [ ] T046 Cloud Run service definition as repo config: request-based billing, 2 vCPU / 4 GiB, concurrency 80, maximum instances 1, minimum instances 0, request timeout 3,600 s, startup CPU boost on; the SIGTERM handler flushes the export journal inside the 10-second grace (C083-10, C083-13)
-- [ ] T047 Cloud Run Jobs + Scheduler definitions as repo config: the engine-drain job (task timeout set per pipeline class, ceiling 168 h; platform retries 0 — the app's stall semantics own failure) and the periodic set (discovery sync, foundation auto-check, stall watchdog) as Scheduler-triggered executions, costed against the 3-free-then-$0.10-per-job rule (C083-10)
-- [ ] T048 Edge retarget: GlossaFront's backend pointer becomes the service's `*.run.app` URL; the wake path holds and health-polls through cold start instead of starting a named container instance; service-credential injection unchanged (C083-8, C083-4)
-- [ ] T049 Deploy workflow retarget (`deploy-cloud.yml`): image push to Artifact Registry + `gcloud run deploy` (service + Jobs) authenticated by Workload Identity Federation (no stored Google keys in GitHub); wrangler legs (edge deploy, D1 migrations) unchanged; the fail-closed property is preserved — any leg failing deploys nothing (C083-14)
-- [ ] T050 Step 5 proof deltas: cold-start latency measured and recorded (first request after ≥15 minutes idle); the SIGTERM journal-flush test; one end-to-end Job execution (submit → execution → terminal state visible) in the acceptance script; C083-10's revised falsifier executed as written (C083-10, C083-13)
-- [ ] T051 Records: the rollout record carries the deployed service revision + Job definitions + bundle identity; LEDGER.md entry for Amendment 4 and this delta (H1)
+Amendment 4's route is retired: no Cloud Run service or Jobs, no
+Artifact Registry deploy, no Google Cloud Storage. The tasks below
+are superseded, not open work; their replacements are the Amendment 5
+tasks that follow.
+
+- [ ] T044 **SUPERSEDED by Amendment 5** — the Cloud Run image contract / runner entrypoint is not built; the resident desktop application needs neither. No replacement
+- [ ] T045 **SUPERSEDED by Amendment 5** — no GCS bundle adapter; the bundle production path is retired by T058
+- [ ] T046 **SUPERSEDED by Amendment 5** — no Cloud Run service definition; replaced by T052–T054 (desktop service, Tunnel/VPC configuration, Worker Custom Domain)
+- [ ] T047 **SUPERSEDED by Amendment 5** — no Cloud Run Jobs or Scheduler definitions; jobs run in the resident desktop engine (C083-10 as revised). No replacement
+- [ ] T048 **SUPERSEDED by Amendment 5** — the edge retarget to a `*.run.app` origin is replaced by T055 (retarget to the Workers VPC Service binding)
+- [ ] T049 **SUPERSEDED by Amendment 5** — no Artifact Registry / Workload Identity Federation deploy leg; the surviving workflow legs are the edge deploy and D1 migrations (T053–T055)
+- [ ] T050 **SUPERSEDED by Amendment 5** — the Cloud Run proof deltas (cold start, SIGTERM journal flush, Job execution) are replaced by T059 (route, offline, and bypass proofs)
+- [ ] T051 **SUPERSEDED by Amendment 5** — Amendment 4's records task is replaced by T060
+
+## Amendment 5 — Desktop origin via Cloudflare Tunnel + Workers VPC (owner decision, 2026-10-30)
+
+The hosted edition's origin is the Spec 080 production desktop
+install on TRISTEN-DESKTOP; the edge reaches it through a named
+Cloudflare Tunnel consumed through a Workers VPC Service binding
+(amendment-5-desktop-tunnel-hosting.md). Suggested vehicle: one
+follow-on PR for T053–T056 + T058 (repo-side configuration and code),
+with T052 and the Cloudflare-side parts of T053/T054 executed as the
+coordination steps they name, T057 in the Step 2/4 line, and
+T059–T060 folding into Step 5 and the rollout record.
+
+- [ ] T052 `cloudflared` as a durable desktop service (repo pattern + coordination): extend the repo's setup-os pattern with the cloudflared companion for the named tunnel `glossa-desktop` (install/status/uninstall surface in the same shape as the existing Windows integration; the tunnel token is handled only on the desktop and never appears in the repo, logs, or chat). **Coordination step:** the actual service installation/registration on TRISTEN-DESKTOP is executed only through the Desktop Access venue's screened service path, under the sole-registrar regime for desktop task/service registration — this spec's build does not install it directly. Acceptance: the venue's record shows the service installed and the tunnel connected/healthy after a logon cycle (C083-14)
+- [ ] T053 Tunnel + Workers VPC configuration as code/checklist: create the named, remotely managed tunnel `glossa-desktop`; register exactly one HTTP VPC Service `glossa-desktop-origin` (that tunnel's ID; host IPv4 `127.0.0.1`; HTTP port `8001`; no HTTPS port); record the Tunnel ID and VPC Service ID for the rollout record (never the token); the checklist asserts **no published application route and no ingress hostname** exists for `glossa.bitconcepts.tech`, and carries the token-rotation procedure (Amendment 5 §2.3) (C083-8, C083-14)
+- [ ] T054 Worker Custom Domain + DNS verification: deploy the edge with `glossa.bitconcepts.tech` as a Worker Custom Domain (the wrangler route already declares `custom_domain = true`); verify the Cloudflare-created DNS records point to the Worker and the certificate is active; verify there is **no `glossa` CNAME to `<UUID>.cfargotunnel.com`** and no published Tunnel application for the hostname. Executed under go-live gate (b) (DNS + Tunnel + VPC scopes) (C083-14)
+- [ ] T055 Edge origin retarget (container/run.app → Workers VPC binding): production wrangler configuration carries a `vpc_services` binding `GLOSSA_ORIGIN` for the T053 service and no container or Cloud Run origin; the Worker calls the binding's `fetch()` only after session termination and route authorization (anonymous traffic only for the exact public surface), strips client-supplied `X-Glossa-*` headers, injects the service credential and (for authenticated requests) the identity headers, and preserves method/path/query/body and streaming responses; a failed VPC fetch becomes the edge's own noindex 503 with no project data, and project-data responses are not cached; GlossaFront's container role is retired from the production request path; edge tests gain a fake VPC binding seam mirroring the former front seam (C083-8, C083-4, C083-7)
+- [ ] T056 Desktop acceptance of edge-injected identity (the app side of C083-8 in this topology): the desktop backend accepts `X-Glossa-*` identity only on a request carrying the valid per-deployment service credential (the desktop's copy held in protected credential storage, provisioned through the venue coordination of T052; the value never enters the repo, logs, or chat); identity headers without the credential confer nothing, and local use continues under the Spec 082 token, unchanged; edge-authenticated requests cannot reach the shutdown or environment setup/rebuild/upgrade endpoints, whatever the role; the terminal remains global Admin/Owner only; attribution stamping per FR-011 (C083-8, C083-5, C083-11)
+- [ ] T057 Desktop-resident primary-workspace scope (replaces T034): in the Spec 080 production dataset, the primary workspace "Indus Script" exists and **all** existing project state carries its scope; a reconciliation report compares per-class counts (claims, digestion, evidence, anchors/data, studies, experiments, jobs, discovery, research-loop, notebooks, reports) against the desktop dataset itself and fails loudly on any unscoped or misassigned resource; no resource is served unscoped through the hosted route (C083-15)
+- [ ] T058 Retire the bundle production path (replaces T045 and Step 4): R2/GCS transports, the publisher, and hydration have no production role — production configuration (wrangler bindings, deploy workflow) carries no bundle store, bucket, or publish leg, and a config-guard test asserts it; Phase 1 bundle code may remain for tests/history but must be unreachable from the production configuration; code deletion, if wanted, is a separate later task (C083-6, C083-13 as superseded)
+- [ ] T059 Go-live proof deltas on the real route (replaces T050): anonymous-fetch login-wall scan and payload scan against `glossa.bitconcepts.tech` on the assembled route; noindex sweep including the offline 503; an authenticated member happy path Worker → VPC → Tunnel → desktop, including one streaming (SSE) surface and one job carried to a terminal state; workspace-scope probes; **desktop-backend-stopped** and **tunnel-stopped** tests (edge answers its own 503; no project data; no cached dataset); bypass probes (forged `X-Glossa-*` headers direct to the origin path, the Spec 082 token presented at the edge, any alternate public route to the backend); and the C083-6 cloud-storage audit (D1 and Worker storage/configuration hold no project artifacts) (C083-4, C083-6, C083-7, C083-8, C083-10, C083-14, C083-18)
+- [ ] T060 Records (replaces T051): the rollout record carries the Tunnel ID, the VPC Service ID, the Worker Custom Domain state, the desktop install revision/source commit, the proof results, and the go-live timestamp; LEDGER.md entry for Amendment 5 and this delta (H1)

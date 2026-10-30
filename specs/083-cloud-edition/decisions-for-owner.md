@@ -18,6 +18,23 @@ needs the Workers Paid plan ($5/month minimum, which the container
 charges ride on).
 
 > **SUPERSEDED IN PART — Amendment 4 (owner, 2026-10-30).** The route's edge and identity legs stand (Worker + Durable Object front, D1, Pages) — they never needed a paid plan. The compute and bundle legs are superseded: the owner declined the Workers Paid plan, so the app runs as a **Google Cloud Run service + Jobs** and dataset bundles live in **Google Cloud Storage** (same Google account), deployed by GitHub Actions to us-central1, at $0 within the free-tier allotments. The $35–40/month estimate and the Workers Paid passage above are the original record, kept unedited. Full text and the fit-check: `amendment-4-cloud-run-compute.md`.
+>
+> **SUPERSEDED AGAIN — Amendment 5 (owner, 2026-10-30).** The owner
+> changed the hosting plan again: **host on the desktop
+> (TRISTEN-DESKTOP) and route to the Cloudflare subdomain; only
+> members may log in and use it.** D-0's governing statement now
+> reads: origin = the owner's Spec 080 production desktop install;
+> public entry = the edge Worker at `glossa.bitconcepts.tech` (a
+> Worker Custom Domain); origin transport = a named Cloudflare
+> Tunnel consumed through a **Workers VPC Service** binding
+> (edge → Tunnel → `127.0.0.1:8001`); the edge/D1 identity legs
+> stand. There is **no cloud dataset**: project data is resident
+> only on the desktop, and the bundle/hydration machinery (R2, then
+> GCS) is retired. Cloud Run, Jobs, and the Google Cloud go-live
+> gate are **dead**. The earlier D-0 text and the Amendment 4 note
+> above are the historical record, kept unedited. Full text,
+> fact-check, claim deltas, and gates:
+> `amendment-5-desktop-tunnel-hosting.md`.
 
 Open questions the study could not settle from evidence — each with the
 coordinator's recommendation, per standing practice:
@@ -49,6 +66,12 @@ and file), never an automatic sync. Automatic two-way sync between two
 live copies of a research dataset is how records get silently lost;
 the spec's claim set covers the cloud side's honesty, and the import
 gate is the home side's.
+>
+> **SUPERSEDED — Amendment 5 (2026-10-30).** There is no cloud
+> dataset to export and nothing to import: hosted members work in
+> the desktop dataset itself, through the edge/Tunnel route. The
+> two-live-copies risk this decision guarded against is retired
+> with the second copy.
 
 **D-5 · The terminal in the cloud edition.**
 Recommendation: **admin-only, kept.** It is the full tool's own operator
@@ -56,6 +79,12 @@ facility and the owner's break-glass inside the deployment (its sandbox
 root becomes the cloud working tree). Members never see it. The Phase 2
 red-team pass (standing practice before any new auth surface goes live)
 gets the terminal's cloud posture as an explicit item.
+>
+> **Amendment 5 note.** The terminal's posture is unchanged
+> (global Admin/Owner only), but its object is now the production
+> desktop install reached through the hosted route; the red-team
+> pass must also cover the hosted route's exclusion of the
+> host-management and shutdown endpoints (Amendment 5 §5).
 
 **D-6 · Sending invite emails from inside the app.**
 Recommendation: **not in this spec.** The dashboard produces the link;

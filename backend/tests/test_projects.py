@@ -114,3 +114,83 @@ def test_delete_project(_client):
     # Confirm gone
     r2 = _client.get("/api/v1/projects/test_goals_proj")
     assert r2.status_code == 404
+
+
+def test_project_standing_position_roundtrip(_client):
+    """Spec 081 Amendment 2: a program's standing position is stored on
+    its record and returned verbatim (it is program data, rendered on
+    the program home — never a shell constant)."""
+    position = "The script is not deciphered. Readings are candidate claims."
+    r = _client.put("/api/v1/projects/test_position_proj", json={
+        "label": "Position Program",
+        "standing_position": position,
+        "is_active": False,
+    })
+    assert r.status_code == 200
+    assert r.json()["standing_position"] == position
+    r = _client.get("/api/v1/projects/test_position_proj")
+    assert r.status_code == 200
+    assert r.json()["standing_position"] == position
+
+
+def test_project_standing_position_defaults_empty(_client):
+    """Spec 081 Amendment 2: a program that states no position reads ''."""
+    r = _client.put("/api/v1/projects/test_noposition_proj", json={
+        "label": "No Position Program",
+        "is_active": False,
+    })
+    assert r.status_code == 200
+    assert r.json().get("standing_position", "") == ""
+
+
+def test_scoped_claims_match_shim_for_store_program(_client):
+    """Spec 081 step 3 (T015): the program-scoped claims register serves
+    the store program's register identically to the /indus-evidence shim."""
+    scoped = _client.get("/api/v1/programs/indus_decipherment/claims?limit=5")
+    shim = _client.get("/api/v1/indus-evidence/claims?limit=5")
+    assert scoped.status_code == 200
+    assert shim.status_code == 200
+    assert scoped.json()["total"] == shim.json()["total"]
+    assert scoped.json()["total"] > 0
+
+
+def test_scoped_library_and_hypotheses_for_store_program(_client):
+    """Spec 081 step 3: scoped library + hypotheses answer for the store
+    program with the same shapes as the shim endpoints."""
+    lib = _client.get("/api/v1/programs/indus_decipherment/library?limit=1")
+    assert lib.status_code == 200
+    assert lib.json()["total"] > 0
+    hyp = _client.get("/api/v1/programs/indus_decipherment/hypotheses")
+    assert hyp.status_code == 200
+    assert isinstance(hyp.json()["models"], list)
+
+
+def test_scoped_routes_unknown_program_404(_client):
+    """Spec 081 step 3: an unknown program id 404s on the scoped surface."""
+    r = _client.get("/api/v1/programs/no_such_program_xyz/claims")
+    assert r.status_code == 404
+
+
+def test_scoped_routes_empty_for_other_program(_client):
+    """Spec 081 step 3: an existing non-store program gets its own honest
+    empty register — never the store program's data under its name."""
+    r = _client.put("/api/v1/projects/test_empty_scope_proj", json={
+        "label": "Empty Scope Program",
+        "is_active": False,
+    })
+    assert r.status_code == 200
+    claims = _client.get("/api/v1/programs/test_empty_scope_proj/claims")
+    assert claims.status_code == 200
+    assert claims.json() == {"claims": [], "total": 0, "limit": 200, "offset": 0}
+    lib = _client.get("/api/v1/programs/test_empty_scope_proj/library")
+    assert lib.status_code == 200
+    assert lib.json()["total"] == 0
+    hyp = _client.get("/api/v1/programs/test_empty_scope_proj/hypotheses")
+    assert hyp.status_code == 200
+    assert hyp.json() == {"models": []}
+    scores = _client.get("/api/v1/programs/test_empty_scope_proj/claims/aee-scores")
+    assert scores.status_code == 200
+    assert scores.json()["total_claims"] == 0
+    trail = _client.get(
+        "/api/v1/programs/test_empty_scope_proj/claims/any_claim/trail")
+    assert trail.status_code == 404

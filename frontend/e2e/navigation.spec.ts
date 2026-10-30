@@ -104,14 +104,14 @@ test.describe("Program-space navigation", () => {
   test("clicking Claims renders the claims register", async ({ page }) => {
     await page.goto("/");
     await page.getByTitle("Claims").first().click();
-    // The interim claims surface is the evidence workspace with its
-    // Claims tab active: its title is a styled div (not a heading
-    // element), and the register's own count line proves the lane
-    // rendered. PR-5 replaces this surface with the wireframe-03
-    // register and its PageHead.
-    await expect(page.getByText("Evidence Graph").first())
+    // PR-5 (step 3) replaced the interim evidence-workspace claims
+    // tab with the wireframe-03 register: the claims surface with
+    // its PageHead and the separated verdict/digestion columns.
+    await expect(page.getByTestId("claims-surface"))
       .toBeVisible({ timeout: 5000 });
-    await expect(page.getByText(/total claims/).first())
+    await expect(page.getByText("Verdict (machine checks)"))
+      .toBeVisible({ timeout: 5000 });
+    await expect(page.getByText("Digestion (human settlement)"))
       .toBeVisible({ timeout: 5000 });
   });
 

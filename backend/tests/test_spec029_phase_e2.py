@@ -68,7 +68,15 @@ _ADOPTED_NOT_UNDERSTOOD = {
     for d in _ADOPTED_DRAFTS["drafts"]
     if d["record_kind"] == "extracted_claim"
 }
-_PANEL = _REPO / "frontend" / "src" / "components" / "DeciphermentPanel.tsx"
+# Spec 081 step 9 (T021): DeciphermentPanel.tsx is deleted as dead
+# code (its only mounter left the shell in step 5); the panel pins
+# re-point to ProgramHome.tsx, which has rendered the standing
+# position + stage summary as program data since step 4
+# (Amendment 2). The standing-position TEXT is program data now —
+# it is asserted on the seeder that carries it. Record:
+# specs/029-tao-claim-lifecycle/pin-surface-amendment-step9-2026-10-30.md
+_PANEL = _REPO / "frontend" / "src" / "components" / "ProgramHome.tsx"
+_SEEDER = _REPO / "backend" / "glossa_lab" / "project_seeder.py"
 # Spec 081 step 6: the claims surface is ClaimsView.tsx (the pin's
 # text and intent are unchanged; only the carrying file moved).
 _EVIDENCE_VIEW = _REPO / "frontend" / "src" / "components" / "ClaimsView.tsx"
@@ -289,13 +297,18 @@ def test_evidence_view_renders_two_labelled_lane_regions():
     assert "mean_propagated_score" not in source
 
 
-def test_panel_leads_with_standing_position_and_stage_summary():
+def test_home_leads_with_standing_position_and_stage_summary():
+    # Was test_panel_leads_with_... on DeciphermentPanel; the home
+    # surface carries both blocks since Spec 081 step 4, and the
+    # panel is deleted in step 9 (see the _PANEL note above).
     source = _PANEL.read_text(encoding="utf-8")
     assert 'data-testid="standing-position"' in source
-    assert "The Indus script is not deciphered" in source
     assert 'data-testid="stage-summary"' in source
     assert "by_stage" in source
     assert "StageLegend" in source
+    # The standing position itself is program data (Amendment 2):
+    # its text is pinned where the record is seeded.
+    assert "The Indus script is not deciphered" in _SEEDER.read_text(encoding="utf-8")
     # E1's withdrawals stay withdrawn on this surface.
     for withdrawn in ("signs deciphered", "Signs Deciphered", "SA Confidence",
                       "Seals Decoded", "Inscriptions Fully Decoded",

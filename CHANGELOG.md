@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Spec 081 step 9 (2026-10-30): dead code removed — the nine
+  orphaned components and StudyBuilderView (with its bundled
+  fallback data, never ported), plus the Dashboard and the
+  DeciphermentPanel it alone mounted. The Spec 029 source pins
+  that named the panel re-point to the living surfaces
+  (ProgramHome; the E1 purge scan now covers the whole frontend
+  tree) under a recorded amendment in the Spec 029 folder.
 - Spec 081 steps 6–7 + Spec 082 frontend (2026-10-30): Evidence
   & sources is one tabbed surface (Library / Citations /
   Correspondence / Notebooks), Data is Corpora + Anchor sets,

@@ -356,3 +356,26 @@ verdict, and a guard is not retired because the furniture moved):
   commit (the untracked graph-experiment outputs were removed by
   exact name — the reports directory carries tracked files of the
   same pattern).
+
+### Step 9 as-built note (2026-10-30, PR-7)
+
+- The D4 removal list is deleted, each verified at zero live
+  references first: StudiesView (with its bundled
+  REAL_CATALOG_SUMMARY fallback — deleted, never ported, exactly
+  as D4 required), AG2Panel, AIChatView, CollaborationPanel,
+  ExperimentRegistry, PhaseAdvancerPanel, SignDictionary,
+  PresetsView, ExperimentsView, StudyBuilderView. Remaining
+  mentions are historical comments in living files.
+- The step-9 sentence from the step-3 note is also discharged:
+  DashboardView (unmounted since step 5) and DeciphermentPanel
+  (mounted only by it) are deleted. DeciphermentPanel carried
+  Spec 029 source pins; they are re-pointed with their own
+  record — `specs/029-tao-claim-lifecycle/pin-surface-amendment-step9-2026-10-30.md`:
+  the E1 purge scan widens to the whole frontend source tree,
+  and the E2/G surface pins move to ProgramHome (the standing
+  text itself is pinned on the project seeder, its home since
+  Amendment 2 made it program data). All 39 Spec 029 pin tests
+  (E1+E2+G) pass; no guard value changed.
+- Nothing else was orphaned by the deletions: the panel's
+  co-imports (ResearchLoopPanel, the hooks) all have living
+  consumers, verified by reference sweep after the removal.

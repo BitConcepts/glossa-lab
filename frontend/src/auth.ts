@@ -36,21 +36,32 @@ let _authMode: AuthState["authMode"] = null;
 let _tokenNeeded = false;
 let _initialized = false;
 
+// useSyncExternalStore requires a STABLE snapshot reference — a
+// fresh object per call loops React forever (error #185). The
+// snapshot is rebuilt only when the state actually changes.
+let _snapshot: AuthState = {
+  hasToken: false,
+  fingerprint: "",
+  authMode: null,
+  tokenNeeded: false,
+};
+
 const _listeners = new Set<() => void>();
 
 function _emit(): void {
+  _snapshot = {
+    hasToken: _hasToken,
+    fingerprint: _fingerprint,
+    authMode: _authMode,
+    tokenNeeded: _tokenNeeded,
+  };
   for (const fn of _listeners) {
     try { fn(); } catch { /* a listener must never break auth */ }
   }
 }
 
 export function getAuthState(): AuthState {
-  return {
-    hasToken: _hasToken,
-    fingerprint: _fingerprint,
-    authMode: _authMode,
-    tokenNeeded: _tokenNeeded,
-  };
+  return _snapshot;
 }
 
 export function subscribeAuth(fn: () => void): () => void {

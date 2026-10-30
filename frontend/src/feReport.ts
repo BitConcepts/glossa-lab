@@ -64,15 +64,19 @@ const state: FeReportState = {
 
 const listeners = new Set<(s: FeReportState) => void>();
 
+// Cached snapshot — useSyncExternalStore (the Status screen) needs a
+// stable reference between changes, or React loops (error #185).
+let snapshot: FeReportState = { ...state };
+
 function notify(): void {
-  const snapshot = { ...state };
+  snapshot = { ...state };
   listeners.forEach((fn) => {
     try { fn(snapshot); } catch { /* a listener must not break reporting */ }
   });
 }
 
 export function getFeReportState(): FeReportState {
-  return { ...state };
+  return snapshot;
 }
 
 export function subscribeFeReport(fn: (s: FeReportState) => void): () => void {

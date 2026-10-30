@@ -16,8 +16,10 @@ import { expect, test } from "@playwright/test";
  *   npx playwright test e2e/study-loop.spec.ts
  */
 
+// Spec 081 (D2.2): the loop panel left the dashboard in step 5 —
+// it lives on its own Loop surface now; navigate there directly.
 async function navigateToDashboard(page: import("@playwright/test").Page) {
-  await page.goto("/");
+  await page.goto("/#/loop");
   await page.waitForTimeout(500);
 }
 

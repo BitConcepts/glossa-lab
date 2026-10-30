@@ -118,7 +118,7 @@ test.describe("Program-space navigation", () => {
   test("clicking Evidence & sources renders the evidence workspace", async ({ page }) => {
     await page.goto("/");
     await page.getByTitle("Evidence & sources").first().click();
-    await expect(page.getByText("Evidence Graph").first())
+    await expect(page.getByRole("heading", { name: "Evidence & sources" }))
       .toBeVisible({ timeout: 5000 });
     // Library tab is the workspace's landing lane.
     await expect(page.getByText(/Registered Papers/).first())
@@ -131,10 +131,10 @@ test.describe("Program-space navigation", () => {
     await expect(page.getByRole("heading", { name: "Corpora" })).toBeVisible();
   });
 
-  test("clicking Status tab shows System Status", async ({ page }) => {
+  test("clicking Status tab shows Status", async ({ page }) => {
     await page.goto("/");
     await page.getByTitle("Status").first().click();
-    await expect(page.getByRole("heading", { name: "System Status" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Status" })).toBeVisible();
   });
 
   test("clicking Experiments renders the Experiment Builder canvas", async ({ page }) => {

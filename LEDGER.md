@@ -11595,3 +11595,59 @@ exact path before commit, per the standing hazard rule.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-30] Entry — Spec 081 PR-6: step 6/7 surfaces + Spec 082 token frontend + T010 (T018, T019)
+
+Steps 6 and 7 land together, with T018's remainder (the Analysis
+wrapper; the AnchorSetEditor's promotion into Data). Evidence &
+sources is one tabbed surface (Library extracted verbatim from
+the retired IndusEvidenceView; Citations, Correspondence,
+Notebooks — the last three mounted nowhere by the old shell);
+Data is Corpora + Anchor sets; the sweep moved under the
+Research loop with its fence lede. Step 3's two recorded
+deferrals close here. The Spec 029 claims-surface pins moved
+from the deleted IndusEvidenceView to ClaimsView (amendment
+record in the Spec 029 folder; one header-comment word changed
+for the frozen substring synonym scan, reasoned there); the
+Spec 029 e2e guards moved with them, three multi-claim tests
+re-expressed as sequential detail visits with assertions intact.
+
+Spec 082's frontend half implements ui-contract.md (fragment
+read-once before routing → sessionStorage → stripped; Bearer
+everywhere; both EventSources converted to fetch streams;
+query-string tokens never read; 401 → clear + named gate;
+Settings field shows fingerprint, never the value), and T010
+removes the CI auth-off accommodation — frontend-tests now
+enforces a throwaway token, seeded by the e2e fixtures.
+feReport lands (C-09 frontend half): confirmation only on
+200 {"ok":"logged"}; Status states never-fired / confirmed /
+FAILED. Jobs gain the program column (stamped at submit/retry;
+"Not recorded" otherwise — backend-originated jobs carry no
+program field, a named gap), failure rows from the job's own
+record, and a meaning-first details modal. Status leads with
+identity; Settings is grouped tool/program. BottomPanel and
+its wiring are deleted (Q8).
+
+**Defect found and fixed in this PR:** the auth and feReport
+stores returned fresh snapshot objects per call, looping
+useSyncExternalStore (React #185) and crashing the shell at
+boot under token enforcement; snapshots are cached now. The
+token-mode probe caught it before any user did.
+
+**Verification.** Full Playwright suite against a build-tree
+backend with token auth enforcing: 289 passed, 13 skipped,
+0 failed (full capture read). Spec 029 backend pin tests
+33/33. Screenshots desktop 1440 + mobile 390 for every touched
+screen, visually checked against wireframes 09/11/13/14.
+Recorded process incident: the first local run exercised a
+stale dist (a checkpoint's dist restore reverted the bundle);
+that run was discarded and the suite rerun against the
+identity-verified bundle. Settings carries four recorded
+deviations (spec.md step 6/7 as-built note): served-port row,
+no Restart primary (no endpoint exists; the tray owns it),
+no global save (panels persist per-section), Discovery
+sources presented as a program setting with its store
+unchanged.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

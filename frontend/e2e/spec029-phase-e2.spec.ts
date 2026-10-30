@@ -209,17 +209,30 @@ async function setupMocks(page: Page) {
     r.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ models: [] }) }));
   await page.route("**/api/v1/indus-evidence/claims**", (r) =>
     r.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(CLAIMS) }));
+  // Spec 081 step 6: the claims register reads the program-scoped
+  // family now (the /indus-evidence/* routes above remain as the
+  // backend's one-release shim). Same synthetic payloads.
+  await page.route("**/api/v1/programs/*/claims**", (r) =>
+    r.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(CLAIMS) }));
+  await page.route("**/api/v1/programs/*/hypotheses", (r) =>
+    r.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ models: [] }) }));
+  await page.route("**/api/v1/programs/*/library**", (r) =>
+    r.fulfill({ status: 200, contentType: "application/json",
+      body: JSON.stringify({ documents: [], total: 0, limit: 100, offset: 0 }) }));
+  await page.route("**/api/v1/programs/**/trail", (r) =>
+    r.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({}) }));
   await page.route("**/api/v1/dashboard/decipherment", (r) =>
     r.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(MOCK_DECIPHER) }));
 }
 
 async function openClaimsTab(page: Page) {
+  // Spec 081 step 6: claims are their own program surface now (the
+  // Evidence & sources claims tab retired with IndusEvidenceView).
   await page.goto("/");
-  const btn = page.getByTitle("Evidence & sources").first();
+  const btn = page.getByTitle("Claims").first();
   await btn.waitFor({ state: "visible", timeout: 10000 });
   await btn.click();
-  await page.getByText(/🔖 Claims/).first().click();
-  await expect(page.getByText(/2 total claims/i)).toBeVisible({ timeout: 8000 });
+  await expect(page.getByText("Synthetic plain claim about a sign value.")).toBeVisible({ timeout: 8000 });
 }
 
 test.describe("Spec 029 Phase E2 — lane-separated rendering", () => {
@@ -282,12 +295,18 @@ test.describe("Spec 029 Phase E2 — lane-separated rendering", () => {
 
   test("verbatim-name guard: no stage name renders inside a lane-1 region", async ({ page }) => {
     await openClaimsTab(page);
-    await page.getByText("Synthetic plain claim about a sign value.").click();
-    await page.getByText("Synthetic bundle parent claim.").click();
-    const lane1s = page.getByTestId("lane1-region");
-    await expect(lane1s).toHaveCount(2);
-    for (let i = 0; i < 2; i++) {
-      const text = (await lane1s.nth(i).innerText()).toLowerCase();
+    // Spec 081: the register opens one claim's detail at a time (the
+    // old surface expanded rows in place). The guard is unchanged —
+    // it now visits each claim's detail in turn and checks its
+    // lane-1 region.
+    for (const claimText of [
+      "Synthetic plain claim about a sign value.",
+      "Synthetic bundle parent claim.",
+    ]) {
+      await page.getByText(claimText).click();
+      const lane1 = page.getByTestId("lane1-region");
+      await expect(lane1).toBeVisible();
+      const text = (await lane1.innerText()).toLowerCase();
       for (const name of ["created", "explained", "accepted", "digested"]) {
         expect(text).not.toMatch(new RegExp(`\\b${name}\\b`));
       }
@@ -295,6 +314,8 @@ test.describe("Spec 029 Phase E2 — lane-separated rendering", () => {
       for (const synonym of ["proven", "confirmed"]) {
         expect(text).not.toContain(synonym);
       }
+      await page.getByRole("button", { name: "← All claims" }).click();
+      await expect(page.getByText("Synthetic plain claim about a sign value.")).toBeVisible();
     }
   });
 

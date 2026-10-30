@@ -26,4 +26,4 @@
 - [x] T019 Jobs / Status / Settings / Research-loop surfaces; BottomPanel removed (step 7)
 - [ ] T020 Tray amendments + extended contract tests + desktop verify (step 8) — code + contract tests landed in PR-8 (2026-10-30); desktop verify staged with the Spec 080 cutover (see the step-8 as-built note)
 - [x] T021 Dead-code removal with ledger note (step 9)
-- [ ] T022 Verification: C081-1…12 checks, screenshot pass vs approved wireframes, CI-parity suite, foundation check, CHANGELOG + LEDGER (step 10)
+- [x] T022 Verification: C081-1…12 checks, screenshot pass vs approved wireframes, CI-parity suite, foundation check, CHANGELOG + LEDGER (step 10) — done 2026-10-30 in PR-9: verdicts + D0–D8 reconciliation in closeout-2026-10-30.md; 34 wireframe renders + 36 built renders filed in this spec folder; foundation check 39/0/9 READY WITH CAVEATS

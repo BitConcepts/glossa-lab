@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./fixtures";
 
 /**
  * Program home + digestion board (Spec 081 steps 4–5, T016/T017;

@@ -20,8 +20,11 @@ depends on:
   OD-4 legend with the five stage names verbatim; no stage-label
   synonym (``verified`` / ``proven`` / ``confirmed`` as warmer
   renames) appears in the touched sources outside the governed
-  ``verified_unexplained`` flag name; lane-1 badges in
-  IndusEvidenceView no longer take per-status colours.
+  ``verified_unexplained`` flag name; lane-1 badges in the claims
+  surface no longer take per-status colours. (The claims surface
+  was IndusEvidenceView's claims tab until Spec 081 step 6 moved
+  the pin to ClaimsView.tsx — see
+  ``specs/029-tao-claim-lifecycle/pin-surface-amendment-2026-10-30.md``.)
 * E1 stays withdrawn — the panel keeps none of the E1 purge list.
 
 All bundle fixtures are synthetic (invented persons, example
@@ -66,7 +69,9 @@ _ADOPTED_NOT_UNDERSTOOD = {
     if d["record_kind"] == "extracted_claim"
 }
 _PANEL = _REPO / "frontend" / "src" / "components" / "DeciphermentPanel.tsx"
-_EVIDENCE_VIEW = _REPO / "frontend" / "src" / "components" / "IndusEvidenceView.tsx"
+# Spec 081 step 6: the claims surface is ClaimsView.tsx (the pin's
+# text and intent are unchanged; only the carrying file moved).
+_EVIDENCE_VIEW = _REPO / "frontend" / "src" / "components" / "ClaimsView.tsx"
 _LEGEND = _REPO / "frontend" / "src" / "components" / "StageLegend.tsx"
 
 TS = "2026-10-12T12:00:00+00:00"

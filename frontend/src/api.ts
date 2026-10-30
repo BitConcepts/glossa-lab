@@ -3,6 +3,8 @@
  * All functions return typed results or throw on HTTP error.
  */
 
+import { authHeaders, noteUnauthorized } from "./auth";
+
 const BASE = "/api/v1";
 
 /**
@@ -63,12 +65,18 @@ async function request<T>(
 ): Promise<T> {
   const opts: RequestInit = {
     method,
-    headers: { "Content-Type": "application/json" },
+    // Spec 082: every call carries the stored Bearer token (empty
+    // object when none is stored — e.g. the open health route, or a
+    // backend running with auth disabled).
+    headers: { "Content-Type": "application/json", ...authHeaders() },
     signal,
   };
   if (body !== undefined) opts.body = JSON.stringify(body);
   const res = await fetch(`${BASE}${path}`, opts);
   if (!res.ok) {
+    // Spec 082 contract: a 401 clears the stored token and raises the
+    // named "API token needed" state.
+    if (res.status === 401) noteUnauthorized();
     const text = await res.text().catch(() => "");
     throw _makeHttpError(method, path, res.status, res.statusText, text);
   }
@@ -81,6 +89,11 @@ export interface HealthResponse {
   status: "healthy" | "degraded" | "down";
   version: string;
   uptime_seconds: number;
+  /** Spec 079/082: the health payload's pinned key set also carries
+   *  the serving component, the build stamp, and the auth mode. */
+  component?: string;
+  build?: string;
+  auth?: "token" | "disabled";
 }
 
 export interface StatusResponse {
@@ -656,6 +669,7 @@ export interface ExpRunEvent {
 /** Shared SSE line reader — parses a fetch ReadableStream into typed events. */
 async function* _sseStream<T>(response: Response, signal?: AbortSignal): AsyncGenerator<T> {
   if (!response.ok) {
+    if (response.status === 401) noteUnauthorized();
     const text = await response.text().catch(() => "");
     throw _makeHttpError("POST", new URL(response.url).pathname, response.status, response.statusText, text);
   }
@@ -688,7 +702,7 @@ export async function* runStudyStream(
 ): AsyncGenerator<StudyRunEvent> {
   const res = await fetch(`${BASE}/studies/${studyId}/run`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", ...authHeaders() },
     body: JSON.stringify({ notify }),
     signal,
   });
@@ -703,7 +717,7 @@ export async function* runGraphExperimentStream(
 ): AsyncGenerator<ExpRunEvent> {
   const res = await fetch(`${BASE}/experiment-graphs/${expId}/run`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", ...authHeaders() },
     body: JSON.stringify({ kwargs, notify }),
     signal,
   });
@@ -1157,6 +1171,26 @@ export const clearPeaks = (): Promise<{ cleared: boolean; peaks: Record<string, 
 
 export const getSystemMetricsStreamUrl = (): string => `/api/v1/system/metrics/stream`;
 
+/**
+ * Spec 082: the metrics stream is consumed by fetch-streaming, never
+ * EventSource (which cannot send the Authorization header). Yields one
+ * parsed metrics object per SSE `data:` line until the signal aborts
+ * or the stream ends.
+ */
+export async function* streamSystemMetrics(
+  signal?: AbortSignal,
+): AsyncGenerator<SystemMetrics> {
+  const res = await fetch(getSystemMetricsStreamUrl(), {
+    headers: { ...authHeaders() },
+    signal,
+  });
+  if (!res.ok) {
+    if (res.status === 401) noteUnauthorized();
+    throw new Error(`metrics stream HTTP ${res.status}`);
+  }
+  yield* _sseStream<SystemMetrics>(res, signal);
+}
+
 // ── Ollama ─────────────────────────────────────────────────────────
 
 export interface OllamaInstalledModel {
@@ -1401,10 +1435,12 @@ export const getEnvSetupUrl  = (): string => `/api/v1/env/setup`;
 export const getEnvRebuildUrl = (): string => `/api/v1/env/rebuild`;
 export const getEnvUpgradeUrl = (): string => `/api/v1/env/upgrade`;
 
-// POST wrappers that return a raw Response (SSE body)
-export const runEnvSetup   = (): Promise<Response> => fetch(`${BASE}/env/setup`,   { method: "POST" });
-export const runEnvRebuild = (): Promise<Response> => fetch(`${BASE}/env/rebuild`, { method: "POST" });
-export const runEnvUpgrade = (): Promise<Response> => fetch(`${BASE}/env/upgrade`, { method: "POST" });
+// POST wrappers that return a raw Response (SSE body). Spec 082: the
+// stored Bearer token rides along — EventSource cannot send headers,
+// so these streams are consumed by fetch, never EventSource.
+export const runEnvSetup   = (): Promise<Response> => fetch(`${BASE}/env/setup`,   { method: "POST", headers: { ...authHeaders() } });
+export const runEnvRebuild = (): Promise<Response> => fetch(`${BASE}/env/rebuild`, { method: "POST", headers: { ...authHeaders() } });
+export const runEnvUpgrade = (): Promise<Response> => fetch(`${BASE}/env/upgrade`, { method: "POST", headers: { ...authHeaders() } });
 
 // ── Terminal + Logs ─────────────────────────────────────────────────
 
@@ -1419,7 +1455,7 @@ export const purgeLog = (): Promise<{ cleared: number; file: string }> =>
 export const runTerminalCommand = (command: string, cwd?: string): Promise<Response> =>
   fetch(`${BASE}/terminal/run`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", ...authHeaders() },
     body: JSON.stringify({ command, cwd, use_venv: true }),
   });
 
@@ -1495,11 +1531,14 @@ export async function* streamAG2Chat(
 ): AsyncGenerator<AG2Event> {
   const res = await fetch(`${BASE}/ag2/chat`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", ...authHeaders() },
     body: JSON.stringify({ message, history, context_type: contextType, context_id: contextId }),
     signal,
   });
-  if (!res.ok) throw new Error(`AG2 HTTP ${res.status}`);
+  if (!res.ok) {
+    if (res.status === 401) noteUnauthorized();
+    throw new Error(`AG2 HTTP ${res.status}`);
+  }
   const reader = res.body!.getReader();
   const decoder = new TextDecoder();
   let buffer = "";
@@ -1832,11 +1871,52 @@ export interface StudyLoopStatus {
   [key: string]: unknown;
 }
 
+export const getLoopSchedulerStatus = (): Promise<LoopSchedulerStatus> =>
+  request("GET", "/study-loop/scheduler/status");
+
+export const setLoopSchedulerEnabled = (
+  enabled: boolean,
+): Promise<{ enabled: boolean }> =>
+  request("POST", `/study-loop/scheduler/${enabled ? "enable" : "disable"}`);
+
+export interface LoopSchedulerStatus {
+  enabled: boolean;
+  running?: boolean;
+  interval_hours?: number;
+  iterations?: number;
+}
+
 export const getStudyLoopStatus = (): Promise<StudyLoopStatus> =>
   request("GET", "/study-loop/status");
 
 export const runFoundationCheck = (): Promise<FoundationCheckResult> =>
   request("POST", "/foundation/check");
+
+/**
+ * Spec 081 (D2.1): the API-native foundation check set — this
+ * instance's own checks, served by GET /research/foundation-check
+ * (the call runs the checks). Kept distinct from the canonical
+ * program record above (/foundation/status); surfaces that show both
+ * label them separately, never merged.
+ */
+export interface ResearchFoundationCheck {
+  timestamp?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  checks?: Record<string, any>[];
+  summary?: {
+    overall_status?: string;
+    n_pass?: number;
+    n_fail?: number;
+    n_warn?: number;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [key: string]: any;
+  };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
+}
+
+export const getResearchFoundationCheck = (): Promise<ResearchFoundationCheck> =>
+  request("GET", "/research/foundation-check");
 
 export const updateFoundationConfig = (
   body: { auto_check_enabled?: boolean },
@@ -2816,7 +2896,11 @@ export const runIndusIntake = (): Promise<{ status: string; message: string }> =
 export const uploadIndusPaper = (file: File): Promise<Response> => {
   const fd = new FormData();
   fd.append("file", file);
-  return fetch(`${BASE}/indus-evidence/upload`, { method: "POST", body: fd });
+  return fetch(`${BASE}/indus-evidence/upload`, {
+    method: "POST",
+    headers: { ...authHeaders() },
+    body: fd,
+  });
 };
 
 // ── Signs API ────────────────────────────────────────────────────────────

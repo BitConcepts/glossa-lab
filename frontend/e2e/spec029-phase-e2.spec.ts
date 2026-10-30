@@ -1,4 +1,4 @@
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test, type Page } from "./fixtures";
 
 /**
  * Spec 029 Phase E2 — lane-separated rendering (FR-029-09/10,

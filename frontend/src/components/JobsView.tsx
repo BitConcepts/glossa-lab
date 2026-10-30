@@ -1,10 +1,11 @@
-import { useEffect, useState, useCallback, useRef } from "react";
+import { Fragment, useEffect, useState, useCallback, useRef } from "react";
 import { fmtTime, fmtDateTimeCompact, fmtElapsed } from "../dateFormat";
 import {
   cancelJob, clearJobs, createJob, getJobResults, getPipelineCatalog,
   listJobs, pauseJob, resumeJob, pauseAllJobs, resumeAllJobs,
   CatalogPipeline, JobResponse,
 } from "../api";
+import { useProject } from "../hooks/useProject";
 
 // Internal runtime-only param keys that should NOT be re-submitted on retry
 const RUNTIME_PARAM_KEYS = new Set(["node_count", "nodes_done", "stall_reason"]);
@@ -197,7 +198,142 @@ export function JobErrorModal({ title, message, detail, params, job, onRetry, on
   );
 }
 
+/**
+ * Job details (Spec 081, FR-009): the completed job's record with the
+ * meaning first — the result's own summary fields — and the raw
+ * record one click deeper, never the other way round.
+ */
+function JobDetailsModal({ job, program, onClose }: {
+  job: JobResponse;
+  program: string;
+  onClose: () => void;
+}) {
+  const [result, setResult] = useState<unknown>(undefined);
+  const [showRaw, setShowRaw] = useState(false);
+  useEffect(() => {
+    let cancelled = false;
+    getJobResults(job.id)
+      .then((r) => { if (!cancelled) setResult(r); })
+      .catch(() => { if (!cancelled) setResult(null); });
+    return () => { cancelled = true; };
+  }, [job.id]);
+
+  const meaning: [string, string][] = [];
+  if (result && typeof result === "object" && !Array.isArray(result)) {
+    const r = result as Record<string, unknown>;
+    for (const key of ["verdict", "outcome", "status", "summary", "message", "headline", "conclusion"]) {
+      const v = r[key];
+      if (typeof v === "string" && v.trim()) meaning.push([fmtParamKey(key), v]);
+      else if (typeof v === "number" || typeof v === "boolean") meaning.push([fmtParamKey(key), String(v)]);
+    }
+  }
+  const displayParams = Object.entries(job.params ?? {})
+    .filter(([k]) => !k.startsWith("_") && k !== "traceback");
+
+  return (
+    <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.55)", zIndex: 12000,
+      display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}
+      onClick={onClose}>
+      <div style={{ background: "#fff", borderRadius: 12, maxWidth: 720, width: "100%", maxHeight: "85vh",
+        display: "flex", flexDirection: "column", boxShadow: "0 24px 64px rgba(0,0,0,0.4)" }}
+        onClick={(e) => e.stopPropagation()}>
+        <div style={{ padding: "16px 20px", borderBottom: "1px solid #e5e7eb",
+          display: "flex", alignItems: "center", gap: 10 }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ fontWeight: 700, fontSize: 14, color: "#111827", overflow: "hidden",
+              textOverflow: "ellipsis", whiteSpace: "nowrap" }} title={job.name}>{job.name}</div>
+            <div style={{ fontSize: 11, color: "#6b7280" }}>
+              {job.pipeline} · {program} · {job.status}
+            </div>
+          </div>
+          <button onClick={onClose} style={{ border: "none", background: "none",
+            cursor: "pointer", fontSize: 22, color: "#9ca3af", lineHeight: 1, padding: "0 4px" }}>×</button>
+        </div>
+        <div style={{ flex: 1, overflowY: "auto", padding: "14px 20px" }}>
+          <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 12 }}>
+            Started {fmtDateTimeCompact(job.created_at)}
+            {job.updated_at ? <> · Finished {fmtDateTimeCompact(job.updated_at)}</> : ""}
+          </div>
+
+          <div style={{ fontSize: 12, fontWeight: 600, color: "#374151", marginBottom: 6,
+            textTransform: "uppercase", letterSpacing: "0.05em" }}>Result</div>
+          {result === undefined && <div style={{ fontSize: 13, color: "#6b7280" }}>Reading the result record…</div>}
+          {result === null && (
+            <div style={{ fontSize: 13, color: "#6b7280" }}>
+              No result record is stored for this job — the run finished
+              without leaving one, and this screen will not invent one.
+            </div>
+          )}
+          {result !== undefined && result !== null && meaning.length === 0 && (
+            <div style={{ fontSize: 13, color: "#6b7280" }}>
+              The result record carries no summary fields — its content is
+              the raw record below.
+            </div>
+          )}
+          {meaning.length > 0 && (
+            <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12, marginBottom: 12 }}>
+              <tbody>
+                {meaning.map(([k, v]) => (
+                  <tr key={k} style={{ borderBottom: "1px solid #f3f4f6" }}>
+                    <td style={{ padding: "4px 10px 4px 0", color: "#6b7280", fontWeight: 500, whiteSpace: "nowrap", verticalAlign: "top", width: "35%" }}>{k}</td>
+                    <td style={{ padding: "4px 0", color: "#111827", wordBreak: "break-word" }}>{v}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+
+          {displayParams.length > 0 && (
+            <>
+              <div style={{ fontSize: 12, fontWeight: 600, color: "#374151", marginBottom: 6,
+                textTransform: "uppercase", letterSpacing: "0.05em" }}>Job parameters</div>
+              <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12, marginBottom: 12 }}>
+                <tbody>
+                  {displayParams.map(([k, v]) => (
+                    <tr key={k} style={{ borderBottom: "1px solid #f3f4f6" }}>
+                      <td style={{ padding: "4px 10px 4px 0", color: "#6b7280", fontWeight: 500, whiteSpace: "nowrap", verticalAlign: "top", width: "35%" }}>{fmtParamKey(k)}</td>
+                      <td style={{ padding: "4px 0", color: "#111827", wordBreak: "break-all",
+                        fontFamily: typeof v === "string" ? "inherit" : "monospace" }}>{fmtParamValue(v)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </>
+          )}
+
+          {result !== undefined && result !== null && (
+            <div>
+              <button onClick={() => setShowRaw((v) => !v)}
+                style={{ fontSize: 11, border: "1px solid #e5e7eb", background: "#f9fafb",
+                  borderRadius: 4, cursor: "pointer", padding: "2px 8px", color: "#6b7280" }}>
+                {showRaw ? "Hide the raw record" : "Show the raw record"}
+              </button>
+              {showRaw && (
+                <pre style={{ fontFamily: "monospace", fontSize: 11, color: "#374151",
+                  background: "#f8fafc", padding: "10px 14px", borderRadius: 7,
+                  border: "1px solid #e5e7eb", lineHeight: 1.6, marginTop: 8,
+                  whiteSpace: "pre-wrap", wordBreak: "break-word", maxHeight: 300, overflowY: "auto" }}>
+                  {JSON.stringify(result, null, 2)}
+                </pre>
+              )}
+            </div>
+          )}
+        </div>
+        <div style={{ padding: "12px 20px", borderTop: "1px solid #f3f4f6",
+          display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
+          <div style={{ fontSize: 10, color: "#9ca3af", fontFamily: "monospace" }}>
+            Job ID: {job.id.slice(0, 12)}… · {job.pipeline}
+          </div>
+          <button onClick={onClose} style={{ padding: "6px 18px", border: "1px solid #d1d5db",
+            borderRadius: 6, background: "#fff", cursor: "pointer", fontSize: 13 }}>Close</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function JobsView() {
+  const { projects, activeProject } = useProject();
   const [jobs, setJobs] = useState<JobResponse[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -224,6 +360,48 @@ export function JobsView() {
     onRetry?: (() => void) | null;
   } | null>(null);
 
+  // Details modal (completed jobs: meaning first, raw record deeper)
+  const [detailsJob, setDetailsJob] = useState<JobResponse | null>(null);
+
+  // Spec 081 (FR-009): every row names its program. The job record
+  // carries no program field of its own; jobs submitted from this
+  // screen are stamped with the open program's id in their params
+  // (below), and older/unstamped jobs say so honestly.
+  const programLabel = useCallback((job: JobResponse): string => {
+    const pid = job.params?.project_id;
+    if (typeof pid === "string" && pid) {
+      return projects.find((p) => p.id === pid)?.label ?? pid;
+    }
+    return "Not recorded";
+  }, [projects]);
+
+  // What-happened lines for failed rows, read once per failed job
+  // from its stored result record (never invented, never re-polled).
+  const [failureLines, setFailureLines] = useState<Record<string, string>>({});
+  useEffect(() => {
+    const missing = jobs.filter((j) => j.status === "failed" && !(j.id in failureLines));
+    if (missing.length === 0) return;
+    let cancelled = false;
+    (async () => {
+      const updates: Record<string, string> = {};
+      for (const j of missing.slice(0, 10)) {
+        try {
+          const data = (await getJobResults(j.id)) as Record<string, unknown>;
+          const msg = (data.error as string) ?? (data.message as string) ?? (data.detail as string) ?? "";
+          updates[j.id] = msg
+            ? String(msg).slice(0, 240)
+            : "The job failed; no error message was stored with it.";
+        } catch {
+          updates[j.id] = "The job failed; its error record could not be read.";
+        }
+      }
+      if (!cancelled && Object.keys(updates).length > 0) {
+        setFailureLines((prev) => ({ ...prev, ...updates }));
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [jobs, failureLines]);
+
   const load = useCallback(async (manual = false) => {
     if (manual) setRefreshing(true);
     try {
@@ -248,16 +426,22 @@ export function JobsView() {
 
   const makeRetryHandler = useCallback((job: JobResponse) => async () => {
     try {
+      const retryParams = buildRetryParams(job.params ?? {});
+      // Keep the job's program stamp; stamp the open program when the
+      // original carried none (FR-009).
+      if (!retryParams.project_id && activeProject) {
+        retryParams.project_id = activeProject.id;
+      }
       await createJob({
         name: `${job.name} (retry)`,
         pipeline: job.pipeline,
-        params: buildRetryParams(job.params ?? {}),
+        params: retryParams,
       });
       await load();
     } catch (e) {
       alert(e instanceof Error ? e.message : "Retry failed");
     }
-  }, [load]);
+  }, [load, activeProject]);
 
   const handleClearJobs = async () => {
     if (!confirm("Delete all jobs and results?")) return;
@@ -280,6 +464,10 @@ export function JobsView() {
     try {
       setSubmitting(true);
       setSubmitError(null);
+      // Stamp the open program so the row can name it (FR-009).
+      if (activeProject && !params.project_id) {
+        params = { ...params, project_id: activeProject.id };
+      }
       await createJob({ name: jobName.trim(), pipeline, params });
       setJobName("");
       await load();
@@ -437,7 +625,7 @@ export function JobsView() {
       {/* Submit panel */}
       <details style={{ marginBottom: "1.5rem" }}>
         <summary style={{ cursor: "pointer", fontWeight: 600 }}>
-          + Submit new job
+          + New job
         </summary>
         <div
           style={{
@@ -497,16 +685,17 @@ export function JobsView() {
           border: "1px solid #e2e8f0", borderRadius: 8, maxWidth: 560,
         }}>
           <p style={{ margin: "0 0 8px", fontWeight: 600, color: "#374151", fontSize: 13 }}>
-            No pipeline jobs yet
+            No jobs yet
           </p>
           <p style={{ margin: "0 0 6px", fontSize: 12, color: "#6b7280", lineHeight: 1.6 }}>
-            This tab tracks analysis pipelines submitted through the
-            <strong> Submit new job</strong> panel above. Pipeline jobs run corpus analysis
-            (block entropy, NWSP, hypothesis engine, etc.) on corpora you upload to the Corpora tab.
+            Jobs are the tool's background runs — experiments, the research loop,
+            discovery fetches and pipeline runs appear here while they work and
+            stay here as the record once they finish. Start one with the
+            <strong> New job</strong> panel above, or from the surface that owns the work.
           </p>
           <p style={{ margin: 0, fontSize: 12, color: "#6b7280", lineHeight: 1.6 }}>
-            <strong>Note:</strong> background scripts like OCR run separately and do not appear
-            here — check the <strong>Experiments</strong> tab to run or stream those.
+            A failed job stays visible with what happened and a retry — it is
+            never silently cleared.
           </p>
         </div>
       )}
@@ -514,7 +703,7 @@ export function JobsView() {
         <table style={{ borderCollapse: "collapse", width: "100%" }}>
           <thead>
             <tr>
-              {["Name", "Pipeline", "Device", "Status", "Created", "Actions"].map((h) => (
+              {["Job", "Program", "State", "Started", "Finished", "Result"].map((h) => (
                 <Th key={h}>{h}</Th>
               ))}
             </tr>
@@ -573,11 +762,36 @@ export function JobsView() {
                 ? `node ${nodesDone + 1}/${nodeCount} computing…`
                 : null;
               return (
-              <tr key={j.id}>
+              <Fragment key={j.id}>
+              <tr>
                 <Td>
                   <div style={{ fontWeight: 500 }}>{j.name}</div>
-                  <div style={{ fontSize: 11, color: "#6b7280", fontFamily: "monospace" }}>
-                    {j.id.slice(0, 8)}…
+                  <div style={{ fontSize: 11, color: "#6b7280", display: "flex", gap: 6, alignItems: "center", flexWrap: "wrap", marginTop: 2 }}>
+                    <code style={{ fontFamily: "monospace" }}>{j.pipeline}</code>
+                    <span style={{ fontFamily: "monospace" }}>{j.id.slice(0, 8)}…</span>
+                    {deviceBadge && (
+                      <span style={{ fontSize: 11, padding: "2px 7px", borderRadius: 6,
+                                     background: deviceBadge.bg, color: deviceBadge.color,
+                                     fontWeight: 600, whiteSpace: "nowrap" }}>
+                        {deviceBadge.text}
+                      </span>
+                    )}
+                    {isCli && (
+                      <span style={{ fontSize: 11, padding: "2px 7px", borderRadius: 6,
+                                     background: "#f0fdf4", color: "#15803d",
+                                     fontWeight: 600, whiteSpace: "nowrap" }}
+                            title="Run from CLI (terminal/script)">
+                        💻 CLI
+                      </span>
+                    )}
+                    {isAiAction && (
+                      <span style={{ fontSize: 11, padding: "2px 7px", borderRadius: 6,
+                                     background: "#fdf4ff", color: "#7e22ce",
+                                     fontWeight: 600, whiteSpace: "nowrap" }}
+                            title="Triggered by AI assistant">
+                        ✨ AI
+                      </span>
+                    )}
                   </div>
                   {/* Resource-wait banner — job is pending but blocked on CPU/RAM/VRAM */}
                   {j.status === "pending" && resourceWait && (
@@ -606,37 +820,9 @@ export function JobsView() {
                   )}
                 </Td>
                 <Td>
-                  <code style={{ fontSize: 12 }}>{j.pipeline}</code>
-                </Td>
-                <Td>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
-                  {deviceBadge && (
-                    <span style={{ fontSize: 11, padding: "2px 7px", borderRadius: 6,
-                                   background: deviceBadge.bg, color: deviceBadge.color,
-                                   fontWeight: 600, whiteSpace: "nowrap" }}>
-                      {deviceBadge.text}
-                    </span>
-                  )}
-                  {isCli && (
-                    <span style={{ fontSize: 11, padding: "2px 7px", borderRadius: 6,
-                                   background: "#f0fdf4", color: "#15803d",
-                                   fontWeight: 600, whiteSpace: "nowrap" }}
-                          title="Run from CLI (terminal/script)">
-                      💻 CLI
-                    </span>
-                  )}
-                  {isAiAction && (
-                    <span style={{ fontSize: 11, padding: "2px 7px", borderRadius: 6,
-                                   background: "#fdf4ff", color: "#7e22ce",
-                                   fontWeight: 600, whiteSpace: "nowrap" }}
-                          title="Triggered by AI assistant">
-                      ✨ AI
-                    </span>
-                  )}
-                  {!deviceBadge && !isCli && !isAiAction && (
-                    <span style={{ fontSize: 11, color: "#9ca3af" }}>—</span>
-                  )}
-                  </div>
+                  <span style={{ fontSize: 12, color: programLabel(j) === "Not recorded" ? "#9ca3af" : "#111827" }}>
+                    {programLabel(j)}
+                  </span>
                 </Td>
                 <Td>
                   <span style={{ display: "inline-block", padding: "1px 7px", borderRadius: 10,
@@ -649,15 +835,29 @@ export function JobsView() {
                 </Td>
                 <Td>{fmtDateTimeCompact(j.created_at)}</Td>
                 <Td>
+                  {(j.status === "completed" || j.status === "failed" || j.status === "cancelled") && j.updated_at
+                    ? fmtDateTimeCompact(j.updated_at)
+                    : <span style={{ color: "#9ca3af" }}>—</span>}
+                </Td>
+                <Td>
                   <span style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                     {j.status === "completed" && (
-                      <button
-                        style={{ ...btnStyle, padding: "2px 10px", fontSize: 12, background: "#059669" }}
-                        onClick={() => handleViewResults(j)}
-                        title="Open result in Reports → Data tab"
-                      >
-                        📂 View in Reports
-                      </button>
+                      <>
+                        <button
+                          style={{ ...btnStyle, padding: "2px 10px", fontSize: 12, background: "#059669" }}
+                          onClick={() => handleViewResults(j)}
+                          title="Open the result in Reports & ledger"
+                        >
+                          📂 Results
+                        </button>
+                        <button
+                          style={{ ...btnStyle, padding: "2px 10px", fontSize: 12, background: "#f3f4f6", color: "#374151" }}
+                          onClick={() => setDetailsJob(j)}
+                          title="The job's record — result summary first, raw record inside"
+                        >
+                          Details
+                        </button>
+                      </>
                     )}
                     {j.status === "failed" && (
                       <button
@@ -701,6 +901,32 @@ export function JobsView() {
                   </span>
                 </Td>
               </tr>
+              {j.status === "failed" && (
+                <tr>
+                  <td colSpan={6} style={{ padding: "8px 12px 10px", background: "#fef2f2", borderBottom: "1px solid #fee2e2" }}>
+                    <div style={{ display: "flex", gap: 10, alignItems: "flex-start", flexWrap: "wrap" }}>
+                      <div style={{ flex: "1 1 320px", fontSize: 12, color: "#7f1d1d", lineHeight: 1.55 }}>
+                        <b>What happened:</b>{" "}
+                        {failureLines[j.id] ?? "Reading the error record…"}
+                      </div>
+                      <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                        <button
+                          style={{ ...btnStyle, padding: "3px 12px", fontSize: 12, background: "#2563eb" }}
+                          onClick={() => { void makeRetryHandler(j)(); }}
+                          title="Re-submit this job with the same parameters">
+                          ↻ Retry — re-submits with the same parameters
+                        </button>
+                        <button
+                          style={{ ...btnStyle, padding: "3px 12px", fontSize: 12, background: "#f3f4f6", color: "#374151" }}
+                          onClick={() => handleViewResults(j)}>
+                          Error details
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              )}
+              </Fragment>
             );
             })}
           </tbody>
@@ -717,6 +943,15 @@ export function JobsView() {
           job={errorModal.job}
           onRetry={errorModal.onRetry}
           onClose={() => setErrorModal(null)}
+        />
+      )}
+
+      {/* Details modal */}
+      {detailsJob && (
+        <JobDetailsModal
+          job={detailsJob}
+          program={programLabel(detailsJob)}
+          onClose={() => setDetailsJob(null)}
         />
       )}
 

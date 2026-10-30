@@ -18,11 +18,12 @@
  * falsifier the claim stands or falls by; a claim without one
  * cannot be entered. There is no direct-entry form, because the
  * register's records are extracted claims with their source
- * provenance — the doorway below states this rather than faking a
+ * record — the doorway below states this rather than faking a
  * write path the API does not have.
  *
- * IndusEvidenceView keeps its own claims tab (and its Spec 029
- * source pin) until step 6 consolidates Evidence & sources.
+ * Since Spec 081 step 6 this surface carries the Spec 029 source
+ * pin that IndusEvidenceView's claims tab carried before it
+ * (specs/029-tao-claim-lifecycle/pin-surface-amendment-2026-10-30.md).
  */
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import {

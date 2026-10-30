@@ -1,30 +1,29 @@
 import { useEffect, useRef, useState } from "react";
 import { StatusView } from "./components/StatusView";
-import { CorporaView } from "./components/CorporaView";
 import { JobsView } from "./components/JobsView";
 import { SettingsView } from "./components/SettingsView";
 import { ReportsView } from "./components/ReportsView";
 import { ProjectsView } from "./components/ProjectsView";
 import { ExperimentBuilderView } from "./components/ExperimentBuilderView";
-import { EntropyDashboard } from "./components/EntropyDashboard";
 import { AIToolsView } from "./components/AIToolsView";
 import { HelpView } from "./components/HelpView";
-import { SignsView } from "./components/SignsView";
-import { TimelineView } from "./components/TimelineView";
 import { ProgramHome } from "./components/ProgramHome";
 import { DigestionBoard, effectiveStage } from "./components/DigestionBoard";
 import { ClaimsView } from "./components/ClaimsView";
 import { FoundationCheckView } from "./components/FoundationCheckView";
 import { DiscoveryView } from "./components/Discovery/DiscoveryView";
-import { IndusEvidenceView } from "./components/IndusEvidenceView";
+import { EvidenceSourcesView } from "./components/EvidenceSourcesView";
+import { DataView } from "./components/DataView";
+import { AnalysisView } from "./components/AnalysisView";
+import { SweepPanel } from "./components/SweepPanel";
+import { ApiTokenGate, useAuthState } from "./components/ApiToken";
 import { ResearchLoopPanel } from "./components/ResearchLoopPanel";
 import { ProgramsView } from "./components/ProgramsView";
 import { CommandPalette, type PaletteCommand } from "./components/CommandPalette";
 import { AISidePanel } from "./components/AIChatWindow";
-import { BottomPanel } from "./components/BottomPanel";
 import { NotificationCenter } from "./components/NotificationDrawer";
 import { ToastProvider } from "./hooks/useToast";
-import { AIChatProvider, useAIChat } from "./hooks/useAIChat";
+import { AIChatProvider } from "./hooks/useAIChat";
 import { ProjectProvider, useProject } from "./hooks/useProject";
 import {
   getDiscoveryStats, getStatus, listIndusClaims, listJobs,
@@ -52,8 +51,8 @@ type Tab =
   // the palette/settings, not a destination (Q6); builder is the
   // legacy program manager.
   | "foundation-check" | "ai-tools" | "builder"
-  // Analysis sub-views, addressed directly until the Analysis
-  // wrapper (step 6) renders them as tabs.
+  // Analysis sub-views, addressed directly; the Analysis wrapper
+  // renders them as tabs (step 6).
   | "entropy" | "signs" | "timeline"
   // Legacy ids — resolved at navigation time, never stored.
   | "dashboard" | "corpora" | "pipelines" | "hypotheses" | "notebooks"
@@ -62,9 +61,7 @@ type Tab =
 interface NavItem { id: Tab; label: string; icon: string; count?: number; alert?: boolean }
 
 const SIDEBAR_W = 232;
-const DEFAULT_PANEL_HEIGHT = 220;
 const MOBILE_NAV_H = 56;
-type PanelTab = "logs" | "jobs" | "terminal" | "chat";
 
 /** Resolve any legacy/alias view id to a current route id (Spec 081 step 1). */
 function resolveView(view: string, hasProgram: boolean): Tab | null {
@@ -305,6 +302,7 @@ function ProgramSwitchCard({ onNavigate }: { onNavigate: (t: Tab) => void }) {
 
 function AppContent() {
   const projCtx = useProject();
+  const auth = useAuthState();
   const hasProgram = !!projCtx.activeProject;
   // The tool opens on the program list (wireframe 01) unless a deep
   // link (#/status from the tray, etc.) names a route.
@@ -324,6 +322,12 @@ function AppContent() {
 
   const goTo = (view: Tab) => {
     userNavigatedRef.current = true;
+    // Evidence & sources sub-tab hint: the legacy notebooks /
+    // citations / correspondence routes open the matching tab of the
+    // consolidated surface (step 6).
+    if (view === "notebooks" || view === "citations" || view === "correspondence") {
+      try { sessionStorage.setItem("glossa_evidence_tab", view); } catch { /* */ }
+    }
     const resolved = (resolveView(view, hasProgram) ?? view) as Tab;
     const cur = tabRef.current;
     if (cur !== resolved) {
@@ -460,9 +464,6 @@ function AppContent() {
       if (d.builder !== "exp") return;
       if (d.running) {
         setExpRunState(prev => ({ count: prev.count + 1, lastStatus: prev.lastStatus }));
-        setPanelVisible(true);
-        setPanelMinimized(false);
-        setPanelTab("jobs");
       } else {
         const newStatus: RunState["lastStatus"] = d.status === "fail" ? "fail" : "success";
         setExpRunState(prev => ({ count: Math.max(0, prev.count - 1), lastStatus: newStatus }));
@@ -524,19 +525,9 @@ function AppContent() {
     return () => { cancelled = true; clearInterval(t); };
   }, []);
 
-  // Bottom panel state (removed with its Status session-log home in
-  // Spec 081 step 7 — T019).
-  const [panelHeight, setPanelHeight] = useState(DEFAULT_PANEL_HEIGHT);
-  const [panelMinimized, setPanelMinimized] = useState(() => window.innerWidth <= 768);
-  const [panelTab, setPanelTab] = useState<PanelTab>("logs");
-  const [panelVisible, setPanelVisible] = useState(true);
-  const { isDocked } = useAIChat();
-  useEffect(() => {
-    if (isDocked) { setPanelVisible(true); setPanelMinimized(false); setPanelTab("chat"); }
-  }, [isDocked]);
-  const mobilePanelH = Math.floor(window.innerHeight * 0.45);
-  const activePanelH = isMobile ? mobilePanelH : panelHeight;
-  const effectivePanelH = panelVisible ? (panelMinimized ? 30 : activePanelH) : 0;
+  // Spec 081 step 7 (Q8): the bottom panel is removed. Running work
+  // lives on the Jobs screen; the session log lives on Status. The
+  // AI assistant docks as a side panel only.
 
   useEffect(() => {
     document.body.style.background = darkMode ? "#0f172a" : "#fff";
@@ -547,7 +538,6 @@ function AppContent() {
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") { e.preventDefault(); setPaletteOpen(p => !p); }
-      if ((e.metaKey || e.ctrlKey) && e.key === "j") { e.preventDefault(); setPanelVisible(v => !v); }
       if (e.altKey && e.key === "ArrowLeft") { e.preventDefault(); goBack(); }
       if (e.altKey && e.key === "ArrowRight") { e.preventDefault(); goForward(); }
     };
@@ -576,6 +566,9 @@ function AppContent() {
       const detail = (e as CustomEvent<{ view: string; claimId?: string }>).detail;
       const raw = detail?.view;
       if (!raw) return;
+      if (raw === "notebooks" || raw === "citations" || raw === "correspondence") {
+        try { sessionStorage.setItem("glossa_evidence_tab", raw); } catch { /* */ }
+      }
       const resolved = resolveView(raw, !!projCtx.activeProject) ?? (VALID_TABS.has(raw) ? (raw as Tab) : null);
       if (resolved) {
         goTo(resolved);
@@ -621,7 +614,6 @@ function AppContent() {
       action: () => goTo(t.id),
     })),
     { id: "dark-mode", label: "Toggle Dark Mode", icon: darkMode ? "☀️" : "🌙", action: () => setDarkMode(d => !d) },
-    { id: "panel-toggle", label: "Toggle Bottom Panel", icon: "⊟", description: "Ctrl+J", action: () => setPanelVisible(v => !v) },
   ];
 
   const bg = darkMode ? "#0f172a" : "#f8fafc";
@@ -840,15 +832,6 @@ function AppContent() {
               ✦ AI assistant
             </button>
           )}
-          {!isMobile && (
-            <button
-              onClick={() => setPanelVisible((v) => !v)}
-              title="Toggle panel (Ctrl+J)"
-              style={{ padding: "4px 10px", border: `1px solid ${border}`, borderRadius: 6, background: "none", cursor: "pointer", fontSize: 12, color: panelVisible ? "#2563eb" : muted }}
-            >
-              ⊟
-            </button>
-          )}
           {!isMobile && <ServiceChip onOpenStatus={() => goTo("status")} />}
           <NotificationCenter />
           <button
@@ -870,36 +853,47 @@ function AppContent() {
               display: "flex", flexDirection: "column",
               padding: isCanvas ? 0 : (isMobile ? "12px" : "24px"),
               paddingBottom: isCanvas ? mobileBottomPad : (isMobile ? mobileBottomPad + 8 : 32),
-              marginBottom: isMobile ? 0 : effectivePanelH,
               color: fg,
               maxWidth: "none",
               overflow: isCanvas ? "hidden" : "auto",
               userSelect: "text",
             }}>
-              {tab === "programs" && <ProgramsView darkMode={darkMode} onNavigate={(v) => goTo(v as Tab)} />}
-              {tab === "home" && <ProgramHome darkMode={darkMode} onNavigate={(v) => goTo(v as Tab)} />}
-              {tab === "claims" && <ClaimsView darkMode={darkMode} onNavigate={(v) => goTo(v as Tab)} />}
-              {tab === "digestion" && <DigestionBoard darkMode={darkMode} onNavigate={(v) => goTo(v as Tab)} />}
-              {tab === "evidence" && <IndusEvidenceView darkMode={darkMode} initialTab="library" />}
-              {tab === "data" && <CorporaView />}
-              {(tab === "analysis" || tab === "entropy") && <EntropyDashboard />}
-              {tab === "signs" && <SignsView />}
-              {tab === "timeline" && <TimelineView onNavigate={(t) => goTo(t as Tab)} />}
-              {tab === "experiments" && <ExperimentBuilderView darkMode={darkMode} />}
-              {tab === "discovery" && <DiscoveryView />}
-              {tab === "loop" && (
-                <div style={{ maxWidth: 1180, margin: "0 auto", width: "100%" }}>
-                  <ResearchLoopPanel />
-                </div>
+              {auth.tokenNeeded && tab !== "settings" ? (
+                <ApiTokenGate darkMode={darkMode} />
+              ) : (
+                <>
+                  {tab === "programs" && <ProgramsView darkMode={darkMode} onNavigate={(v) => goTo(v as Tab)} />}
+                  {tab === "home" && <ProgramHome darkMode={darkMode} onNavigate={(v) => goTo(v as Tab)} />}
+                  {tab === "claims" && <ClaimsView darkMode={darkMode} onNavigate={(v) => goTo(v as Tab)} />}
+                  {tab === "digestion" && <DigestionBoard darkMode={darkMode} onNavigate={(v) => goTo(v as Tab)} />}
+                  {tab === "evidence" && <EvidenceSourcesView darkMode={darkMode} />}
+                  {tab === "data" && <DataView darkMode={darkMode} />}
+                  {(tab === "analysis" || tab === "entropy" || tab === "signs" || tab === "timeline") && (
+                    <AnalysisView
+                      key={tab}
+                      darkMode={darkMode}
+                      initialTab={tab === "signs" ? "signs" : tab === "timeline" ? "timeline" : "entropy"}
+                      onNavigate={(v) => goTo(v as Tab)}
+                    />
+                  )}
+                  {tab === "experiments" && <ExperimentBuilderView darkMode={darkMode} />}
+                  {tab === "discovery" && <DiscoveryView />}
+                  {tab === "loop" && (
+                    <div style={{ maxWidth: 1180, margin: "0 auto", width: "100%" }}>
+                      <ResearchLoopPanel />
+                      <SweepPanel darkMode={darkMode} />
+                    </div>
+                  )}
+                  {tab === "reports" && <ReportsView darkMode={darkMode} />}
+                  {tab === "jobs" && <JobsView />}
+                  {tab === "status" && <StatusView />}
+                  {tab === "settings" && <SettingsView darkMode={darkMode} />}
+                  {tab === "help" && <HelpView />}
+                  {tab === "foundation-check" && <FoundationCheckView />}
+                  {tab === "ai-tools" && <AIToolsView />}
+                  {tab === "builder" && <ProjectsView />}
+                </>
               )}
-              {tab === "reports" && <ReportsView darkMode={darkMode} />}
-              {tab === "jobs" && <JobsView />}
-              {tab === "status" && <StatusView />}
-              {tab === "settings" && <SettingsView />}
-              {tab === "help" && <HelpView />}
-              {tab === "foundation-check" && <FoundationCheckView />}
-              {tab === "ai-tools" && <AIToolsView />}
-              {tab === "builder" && <ProjectsView />}
             </main>
           );
         })()}
@@ -907,24 +901,11 @@ function AppContent() {
 
       {paletteOpen && <CommandPalette commands={paletteCommands} onClose={() => setPaletteOpen(false)} />}
 
-      {panelVisible && !isMobile && (
-        <BottomPanel
-          height={activePanelH}
-          onHeightChange={isMobile ? () => {} : setPanelHeight}
-          minimized={panelMinimized}
-          onMinimizedChange={setPanelMinimized}
-          activeTab={panelTab}
-          onTabChange={setPanelTab}
-          leftOffset={isMobile ? 0 : SIDEBAR_W}
-          activeJobCount={activeJobCount}
-        />
-      )}
-
       {aiPanelOpen && (
         <AISidePanel
           onClose={() => setAiPanelOpen(false)}
           leftOffset={SIDEBAR_W}
-          bottomOffset={effectivePanelH}
+          bottomOffset={0}
           initialSide={aiPanelSide}
           initialWidth={aiPanelWidth}
           onWidthChange={setAiPanelWidth}

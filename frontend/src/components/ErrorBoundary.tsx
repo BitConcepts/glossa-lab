@@ -6,32 +6,21 @@
  * as a readable error card instead of a blank page.
  *
  * The error is also forwarded to POST /api/v1/terminal/log/frontend so it
- * appears in the Glossa Lab log panel alongside backend messages, tagged [FE].
+ * appears in the Glossa Lab log alongside backend messages, tagged [FE].
+ * Reporting goes through the shared reporter (feReport.ts, GAP-C09F):
+ * its outcome is tracked, and a failed report is console-visible —
+ * the Status screen shows the reporting state for this session.
  */
 import { Component, type ErrorInfo, type ReactNode } from "react";
+import { reportFrontend } from "../feReport";
 
 interface Props { children: ReactNode; }
 interface State { hasError: boolean; error: Error | null; info: ErrorInfo | null; }
 
-const BASE_URL = import.meta.env.VITE_API_BASE ?? "http://127.0.0.1:8001/api/v1";
-
 function sendToBackend(error: Error, info: ErrorInfo | null): void {
-  try {
-    const message = `${error.name}: ${error.message}`;
-    const stack = (error.stack ?? "") + "\n\nComponent Stack:\n" + (info?.componentStack ?? "");
-    fetch(`${BASE_URL}/terminal/log/frontend`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        level: "ERROR",
-        message,
-        source: "FE",
-        module: "ErrorBoundary",
-        stack: stack.slice(0, 1200),
-        url: window.location.href,
-      }),
-    }).catch(() => {});
-  } catch { /* never let logging itself crash */ }
+  const message = `${error.name}: ${error.message}`;
+  const stack = (error.stack ?? "") + "\n\nComponent Stack:\n" + (info?.componentStack ?? "");
+  reportFrontend("ERROR", message, { stack, module: "ErrorBoundary" });
 }
 
 export class ErrorBoundary extends Component<Props, State> {
@@ -187,7 +176,7 @@ export class ErrorBoundary extends Component<Props, State> {
             </button>
             <div style={{ flex: 1 }} />
             <span style={{ fontSize: 11, color: "#475569", alignSelf: "center" }}>
-              Check Logs panel for details
+              Session log on the Status screen carries the details
             </span>
           </div>
         </div>

@@ -765,7 +765,10 @@ def test_g3_meta_every_gates_negative_controls_actually_fail_their_gate():
 WITHDRAWN_DASHBOARD_FIELDS = ("sa_aggregate", "fully_decoded_pct", "n_fully_decoded")
 CLAIM_SURFACES = (
     _REPO / "frontend" / "src" / "components" / "DeciphermentPanel.tsx",
-    _REPO / "frontend" / "src" / "components" / "IndusEvidenceView.tsx",
+    # Spec 081 step 6: ClaimsView.tsx carries the claims-surface pin
+    # (was IndusEvidenceView.tsx; text and intent unchanged — see
+    # specs/029-tao-claim-lifecycle/pin-surface-amendment-2026-10-30.md).
+    _REPO / "frontend" / "src" / "components" / "ClaimsView.tsx",
     _REPO / "frontend" / "src" / "components" / "StageLegend.tsx",
 )
 STAGE_NAMES = ("created", "checked", "explained", "accepted", "digested")

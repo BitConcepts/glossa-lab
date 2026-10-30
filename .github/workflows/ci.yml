@@ -409,3 +409,44 @@ jobs:
           else
             python tools/freeze-gate/check_freeze_gate.py --all
           fi
+
+  # ── Spec 083 (T008): cloud image smoke ─────────────────────────────────────
+  # Builds the repo-root Dockerfile (T006) as ONE immutable image tagged
+  # with the git SHA (the image identity scheme), then runs the GAP-ENV
+  # regression smoke INSIDE the image: applied-epistemic-engineering must
+  # resolve within >=1.5.0,<1.6 and the 23-claim set must score byte-
+  # identically to the aee150 expectation fixture (incl. the 0.1625
+  # sign_val evidence expectations). Out-of-pin or divergent = red build.
+  cloud-image-smoke:
+    name: Cloud image smoke (Spec 083)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: []  # run in parallel
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Build the cloud image (tag = git SHA)
+        run: |
+          docker build \
+            --build-arg GIT_SHA="${{ github.sha }}" \
+            -t "glossa-lab:${{ github.sha }}" \
+            .
+
+      - name: Smoke — assessor pin + GAP-ENV 23-claim regression (in image)
+        run: |
+          docker run --rm "glossa-lab:${{ github.sha }}" \
+            python backend/scripts/cloud_image_smoke.py
+
+      - name: Smoke — cloud switch surface (in image)
+        run: |
+          docker run --rm "glossa-lab:${{ github.sha }}" \
+            python -c "
+          from glossa_lab.main import create_app
+          paths = set(create_app().openapi()['paths'])
+          banned = {'/api/v1/env/status', '/api/v1/env/setup', '/api/v1/env/rebuild', '/api/v1/env/upgrade', '/api/v1/env/packages', '/api/v1/shutdown'}
+          leaked = paths & banned
+          assert not leaked, f'host-management routes registered in cloud mode: {leaked}'
+          assert '/api/v1/health' in paths
+          print('cloud switch OK: env + shutdown routers absent, health present')
+          "

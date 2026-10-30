@@ -11817,3 +11817,36 @@ docs/governance/rules.md requires (H1, H7).
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## Spec 083 — Step 1: cloud foundation (2026-10-30)
+
+Step 1 of the cloud edition (tasks T006–T013) is delivered in
+this change. The container image builds the existing backend
+app and the built SPA into one immutable image, tagged with
+the full git SHA (T006). The cloud configuration switch
+(`GLOSSA_CLOUD=1`, T007) leaves the environment
+setup/rebuild/upgrade endpoints and the shutdown endpoint
+unregistered — absent, not gated — and Ollama is neither
+bundled nor probed, reporting offline exactly as on a desktop
+without it. The image smoke test (T008) verifies the
+assessor resolves inside the AEE pin (>=1.5.0,<1.6) and runs
+the GAP-ENV 23-claim regression set inside the image in CI;
+locally it passes in a conforming AEE 1.5.3 venv and fails, as
+designed, in the GAP-ENV 1.0.4 configuration. The edge layer
+(T009, T012) is a TypeScript Worker plus the GlossaFront
+Durable Object: `X-Robots-Tag: noindex, nofollow` on every
+response, a disallowing robots.txt, session termination at the
+edge, and a production-only wrangler configuration — no
+staging project or hostname exists (Amendment 2). The D1
+identity schema (T010) stores invites and sessions as hashes
+only and makes the audit log append-only in the schema
+itself. The bundle plumbing (T011) verifies a full manifest
+before an atomic swap, so the served dataset is always
+exactly one manifest, and exposes the jobs-running guard the
+instance consults before sleeping. The deploy workflow and
+the local production-shaped build (T013) complete the step;
+the workflow fails closed until the cloud-production
+environment secrets exist.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

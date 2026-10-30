@@ -35,6 +35,9 @@ class Settings:
     host: str = "127.0.0.1"
     port: int = 8001
     dev_mode: bool = True
+    # Spec 083 (T007): cloud-edition switch, set via GLOSSA_CLOUD=1.
+    # The ``_env_overrides`` mapping turns GLOSSA_CLOUD into this field.
+    cloud: bool = False
     log_level: str = "INFO"   # DEBUG generates massive aiosqlite spam; use GLOSSA_LOG_LEVEL=DEBUG to override
 
     # Paths (set dynamically based on platform and mode)
@@ -126,6 +129,17 @@ def get_settings() -> Settings:
                 setattr(settings, key, value)
 
     return settings
+
+
+def cloud_mode_enabled() -> bool:
+    """Return True when the cloud-edition switch (``GLOSSA_CLOUD=1``) is on.
+
+    Spec 083 (T007): under cloud mode the env-mutation and shutdown
+    routers are not registered and Ollama is neither bundled nor
+    probed. With the switch unset this is False and desktop behaviour
+    is unchanged.
+    """
+    return bool(get_settings().cloud)
 
 
 # ---------------------------------------------------------------------------

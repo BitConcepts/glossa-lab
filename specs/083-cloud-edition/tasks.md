@@ -14,14 +14,14 @@ its claim(s) or the FR / decision it discharges.
 
 ## Step 1 — cloud foundation (PR: `feat/083-cloud-foundation`)
 
-- [ ] T006 Container image: Dockerfile builds the existing backend app + built SPA as one immutable image; image identity recorded for the rollout record (C083-9)
-- [ ] T007 Cloud configuration switch (env-driven): under it the env setup/rebuild/upgrade endpoints and the shutdown endpoint are not registered, and Ollama is not bundled or probed (spec Out of scope; FR-010's instance lifecycle)
-- [ ] T008 Image smoke test: build verifies `applied-epistemic-engineering` resolves within ≥1.5.0,<1.6 and runs the GAP-ENV 23-claim regression set against the image; out-of-pin or divergent score fails the build (C083-9)
-- [ ] T009 `cloud/edge/`: edge Worker + Durable Object front — `X-Robots-Tag: noindex, nofollow` on every response, `robots.txt` disallowing all, session termination point, routing to the single container instance (C083-7, C083-4)
-- [ ] T010 D1 identity schema + migrations: `users` (global type owner/admin/member/guest), `invites` (hash only), `sessions` (hash only), `workspaces`, `workspace_roles`, `audit_log` (append-only), `setup_state` (C083-2, C083-4, C083-12, C083-16, C083-19)
-- [ ] T011 R2 bundle plumbing: manifest format (bundle id, build time, source commit, per-artifact SHA-256); hydration library verifies the full manifest and swaps atomically — never a mixture (C083-13); job state restored before the engine resumes, sleep suppressed while jobs run (C083-10)
-- [ ] T012 Wrangler configuration: production only + ephemeral preview deployments for verification; no staging project and no staging hostname created (Amendment 2, C083-14)
-- [ ] T013 GitHub Actions deploy workflow (image build/push to the Cloudflare container registry, wrangler deploy, D1 migrations) under the repo's existing CI discipline; local production-shaped build (compose file) for later steps' proofs; LEDGER.md entry
+- [x] T006 Container image: Dockerfile builds the existing backend app + built SPA as one immutable image; image identity recorded for the rollout record (C083-9)
+- [x] T007 Cloud configuration switch (env-driven): under it the env setup/rebuild/upgrade endpoints and the shutdown endpoint are not registered, and Ollama is not bundled or probed (spec Out of scope; FR-010's instance lifecycle)
+- [x] T008 Image smoke test: build verifies `applied-epistemic-engineering` resolves within ≥1.5.0,<1.6 and runs the GAP-ENV 23-claim regression set against the image; out-of-pin or divergent score fails the build (C083-9)
+- [x] T009 `cloud/edge/`: edge Worker + Durable Object front — `X-Robots-Tag: noindex, nofollow` on every response, `robots.txt` disallowing all, session termination point, routing to the single container instance (C083-7, C083-4)
+- [x] T010 D1 identity schema + migrations: `users` (global type owner/admin/member/guest), `invites` (hash only), `sessions` (hash only), `workspaces`, `workspace_roles`, `audit_log` (append-only), `setup_state` (C083-2, C083-4, C083-12, C083-16, C083-19)
+- [x] T011 R2 bundle plumbing: manifest format (bundle id, build time, source commit, per-artifact SHA-256); hydration library verifies the full manifest and swaps atomically — never a mixture (C083-13); job state restored before the engine resumes, sleep suppressed while jobs run (C083-10)
+- [x] T012 Wrangler configuration: production only + ephemeral preview deployments for verification; no staging project and no staging hostname created (Amendment 2, C083-14)
+- [x] T013 GitHub Actions deploy workflow (image build/push to the Cloudflare container registry, wrangler deploy, D1 migrations) under the repo's existing CI discipline; local production-shaped build (compose file) for later steps' proofs; LEDGER.md entry
 
 ## Step 2 — identity implementation (PR: `feat/083-identity`)
 

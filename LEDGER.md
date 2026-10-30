@@ -11725,3 +11725,38 @@ status line recorded in the migration record.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-30] Entry — Spec 081 PR-9: closeout (step 10, T022)
+
+Phase 2 closes. The closeout record
+(specs/081-ui-redesign-generic-tool/closeout-2026-10-30.md)
+carries: verdicts on C081-1…12 against the aee-claims.json
+register (eleven SUPPORTED; C081-12 SUPPORTED as specified for
+phase 2, its on-desktop observation remaining with T020); the
+D0–D8 as-built reconciliation against the Phase 2 decision
+map; two observations recorded rather than fixed (sidebar
+count badges are store-register counts while a non-store
+program is open; the builder tab keeps its pre-redesign
+interior, outside the 17 wireframes); and the named
+remainders (T020's desktop leg at the Spec 080 cutover; PR-3
+still held on the absent F1 fix).
+
+Screenshot pass: the 34 wireframe renders were produced from
+the approved HTML (wireframes/shots/) and 36 built-app renders
+were captured against a build-tree backend (renders/): every
+screen at 1440 + 390, claim detail, the create-program form
+(name + question only), and a second program's empty register.
+Foundation check at closeout: 39 pass / 0 fail / 9 warn —
+READY WITH CAVEATS, matching the canonical record.
+
+Closeout also removed three further zero-reference components
+of the step-9 class (HypothesisTracker, PipelinesView,
+ResultsView — reference-verified before deletion; the D7
+keep-list's "Pipelines" is the Experiments-canvas
+functionality, untouched), and rebuilt the served bundle so
+dist reflects the PR-8 + PR-9 source. The Phase 1 design
+branch spec/081-ui-redesign is carried and extended on main;
+it is deleted with this closeout.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

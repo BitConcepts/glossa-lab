@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Spec 081 step 10 (2026-10-30): phase-2 closeout — C081-1…12
+  verdicts and the D0–D8 as-built reconciliation recorded in
+  specs/081-ui-redesign-generic-tool/closeout-2026-10-30.md,
+  with the full screenshot pass filed in that spec folder (34
+  wireframe renders + 36 built renders at 1440 + 390).
+  HypothesisTracker, PipelinesView, and ResultsView removed
+  (zero-reference, found at closeout). T020's desktop-verify
+  leg remains staged at the Spec 080 cutover.
 - Spec 081 step 8 (2026-10-30): the tray names the open
   program in its status line and tooltip, uptime is humanized,
   stopped states say which kind of stop they are, "View Log"

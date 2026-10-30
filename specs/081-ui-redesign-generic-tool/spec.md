@@ -434,3 +434,17 @@ verdict, and a guard is not retired because the furniture moved):
   single-instance check in the operator's session, the observed
   status line recorded in the migration record). T020 therefore
   stays open on that leg alone.
+
+**Step 10 as-built note (2026-10-30, PR-9).** Closeout record:
+closeout-2026-10-30.md in this folder — C081-1…12 verdicts
+(eleven supported; C081-12 supported as specified for phase 2,
+desktop observation carried by T020), the D0–D8 reconciliation,
+the 34 wireframe renders (wireframes/shots/) + 36 built renders
+(renders/) screenshot pass, and the foundation check at
+closeout (39 pass / 0 fail / 9 warn — READY WITH CAVEATS). Two
+observations are recorded there rather than fixed (store-scoped
+sidebar badges; the builder tab's pre-redesign interior), and
+three more zero-reference components were removed
+(HypothesisTracker, PipelinesView, ResultsView). T022 is
+complete; T020 remains open on the cutover leg alone, and PR-3
+remains held on its F1 precondition.

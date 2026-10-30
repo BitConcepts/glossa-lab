@@ -152,6 +152,14 @@ async function setupMocks(page: Page) {
     r.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify([{
         id: "indus_decipherment", label: "Indus Script Decipherment",
         description: "Mock program (shell bootstrap).", prompt_context: "", question: "",
+        // Spec 081 Amendment 2: the standing position is program data,
+        // carried on the program's record; the guards below assert it
+        // on the program home, where the record renders it.
+        standing_position:
+          "The Indus script is not deciphered. The readings this program records are " +
+          "candidate readings, each one a claim standing at a stage of the claim " +
+          "lifecycle. A reading is not settled by being recorded and checked, and " +
+          "no count in this program is a measure of decipherment.",
         topic_ids: [], experiment_ids: [], corpus_ids: [], is_active: 1,
         created_at: "2026-01-01T00:00:00Z", updated_at: "2026-01-01T00:00:00Z",
       }]) }));

@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Increment this when adding a new _SCHEMA_Vn block below.
 # _apply_schema will raise if the DB is somehow ahead of the code.
-_SCHEMA_VERSION = 24
+_SCHEMA_VERSION = 25
 
 _SCHEMA_V1 = """
 CREATE TABLE IF NOT EXISTS _schema_version (
@@ -807,6 +807,22 @@ class Database:
                 pass  # column may already exist
             await self._conn.execute("UPDATE _schema_version SET version = ?", (24,))
             current_version = 24
+
+        if current_version < 25:
+            # Spec 081 Amendment 2 (D2.2 refinement): a project also carries
+            # its standing position — the program's lead verdict line,
+            # rendered on the program home as program data (never a shell
+            # constant). Additive only; existing rows default to '' (no
+            # position stated), and the seeder backfills the default
+            # program's position where its record is still empty.
+            try:
+                await self._conn.execute(
+                    "ALTER TABLE projects ADD COLUMN standing_position TEXT NOT NULL DEFAULT ''"
+                )
+            except Exception:  # noqa: BLE001
+                pass  # column may already exist
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (25,))
+            current_version = 25
 
         if current_version > _SCHEMA_VERSION:
             logger.warning(
@@ -2422,6 +2438,7 @@ class Database:
         description: str = "",
         prompt_context: str = "",
         question: str = "",
+        standing_position: str = "",
         topic_ids: list[str] | None = None,
         experiment_ids: list[str] | None = None,
         corpus_ids: list[str] | None = None,
@@ -2436,11 +2453,11 @@ class Database:
             )
         await self._conn.execute(
             """INSERT OR REPLACE INTO projects
-               (id, label, description, prompt_context, question, topic_ids,
+               (id, label, description, prompt_context, question, standing_position, topic_ids,
                 experiment_ids, corpus_ids, is_active, created_at, updated_at)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))""",
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))""",
             (
-                project_id, label, description, prompt_context, question,
+                project_id, label, description, prompt_context, question, standing_position,
                 json.dumps(topic_ids or []),
                 json.dumps(experiment_ids or []),
                 json.dumps(corpus_ids or []),

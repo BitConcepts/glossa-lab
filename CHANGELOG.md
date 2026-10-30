@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Spec 081 Amendment 2 (2026-10-30): the program home now
+  leads with the program's standing position and the lane-2
+  stage summary, both rendered as program data — the position
+  from the program's own record (new `standing_position` field,
+  schema v25; seeded for the default program and backfilled
+  where an existing default record is still empty), the stage
+  summary from the decipherment payload's by-stage anchor
+  counts with the five-stage legend. The Spec 029 display
+  guards assert both blocks on this surface now, unchanged in
+  text and intent.
 - Spec 081 steps 4–5 (2026-10-29): the Digestion route is now
   the human queue board (columns by act owed — needs
   explanation / needs acceptance / ready to digest — every card

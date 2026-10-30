@@ -2132,6 +2132,9 @@ export interface Project {
   prompt_context: string;
   /** Spec 081: the question the program tests (UI language: "program"). */
   question?: string;
+  /** Spec 081 Amendment 2: the program's standing position — its lead
+   * verdict line, rendered on the program home as program data. */
+  standing_position?: string;
   topic_ids: string[];
   experiment_ids: string[];
   corpus_ids: string[];

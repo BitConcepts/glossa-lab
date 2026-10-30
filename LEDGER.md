@@ -11771,3 +11771,49 @@ the direction of Tristen Pierson, per constitution sec. VI.
 - **Boundary held in the design:** the cloud dataset is built only from publishable state — allowlist, structural exclusion of restricted stores, and a restricted-marker scan gate with a planted-canary falsifier (C083-6). The CISI custody rule does not soften for a friendlier audience.
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-30] Entry — Born-truncated records repaired: Spec 081 wireframes.css restored (PR #464); Spec 025 findings_W5 errata filed (PR #465)
+
+A repo-wide sweep for the truncation marker (`git grep -F
+'[truncated'` over all tracked text files on main) found
+exactly two files carrying it, and both proved to have been
+born truncated — committed already cut, with no complete
+version anywhere in history. Both are now repaired in the
+record, each in the shape its record class allows.
+
+Spec 081's wireframe stylesheet
+(specs/081-ui-redesign-generic-tool/wireframes/wireframes.css)
+was truncated at creation in PR #439: the blob ends mid-rule
+at `.callout.bad` with a literal `...[truncated 8292 chars]`
+line standing in for the remaining rules, and every ref to
+ever carry the file holds that same truncated blob. PR #464
+(merge ca4d4814) restored it from the labeled reconstruction
+prepared for the Spec 083 phase-1 package — the damaged rule
+completed, the missing tail reinstated, the reconstruction
+label preserved in-file as provenance (that package's own
+Spec 083 additions were not imported). Proof was by render:
+a Playwright capture of 01-programs.html against the restored
+stylesheet matches the filed render everywhere the surviving
+CSS governs, the annotation block renders as designed, and
+the mobile-nav leak in the filed render is gone.
+
+Spec 025's findings_W5.md
+(specs/025-paper-search-research-check/audit-2026-10-22/raw/)
+was truncated in its single 2026-10-22 audit commit, cut
+mid-sentence in "Nearest neighbor 1" of prior-art question
+(a). As a raw audit record it is not rewritten: PR #465
+(merge 39bf3ca5) leaves the original byte-identical and adds
+an append-only errata, findings_W5.ERRATA.md, co-locating the
+forensic facts with the file. The substantive remedy already
+stood in the record from 2026-10-22 — findings_W5_part2.md,
+the labeled W7 reconstruction built only from W5's filed
+evidence, disclosed in AUDIT_REPORT.md's method notes. The
+errata states plainly that W5's original prose from the cut
+point onward is unrecoverable and will not be fabricated.
+
+This entry is filed after both merges, closing the ledger
+gap: until now neither repair was recorded here, as
+docs/governance/rules.md requires (H1, H7).
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

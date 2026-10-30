@@ -11634,11 +11634,15 @@ useSyncExternalStore (React #185) and crashing the shell at
 boot under token enforcement; snapshots are cached now. The
 token-mode probe caught it before any user did.
 
-**Verification.** Full Playwright suite against a build-tree
-backend with token auth enforcing: 289 passed, 13 skipped,
-0 failed (full capture read). Spec 029 backend pin tests
-33/33. Screenshots desktop 1440 + mobile 390 for every touched
-screen, visually checked against wireframes 09/11/13/14.
+**Verification.** Spec 029 backend pin tests 33/33. Locally
+against a build-tree backend with token auth enforcing: the
+affected spec files pass (127 in the six-file set after the
+stale re-points; the two Spec 029 guard files + claims-surface
+16/16 after the legend/contest fix recorded in the Spec 029
+amendment's addendum). The authoritative full-suite run is
+CI's frontend-tests job on this PR. Screenshots desktop 1440 +
+mobile 390 for every touched screen, visually checked against
+wireframes 09/11/13/14.
 Recorded process incident: the first local run exercised a
 stale dist (a checkpoint's dist restore reverted the bundle);
 that run was discarded and the suite rerun against the

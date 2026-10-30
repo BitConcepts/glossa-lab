@@ -36,7 +36,7 @@ import {
 } from "../api";
 import { useProject } from "../hooks/useProject";
 import { effectiveStage, missingActFor } from "./DigestionBoard";
-import { NotUnderstood } from "./StageLegend";
+import { ContestDisplay, NotUnderstood, StageLegend } from "./StageLegend";
 import {
   Card,
   Chip,
@@ -266,6 +266,11 @@ export function ClaimsView({
         </label>
       </div>
 
+      {/* Spec 029 Phase E2 (E2.1; OD-4): the stage legend sits above
+          the claim list on this surface — carried from the retired
+          IndusEvidenceView claims tab with the step-6 pin move. */}
+      <StageLegend fg={p.fg} muted={p.muted} border={p.border} />
+
       {error ? (
         <div style={{ fontSize: 12.5, color: p.bad }}>{`This instance states: ${error}`}</div>
       ) : !claims ? (
@@ -410,7 +415,6 @@ function ClaimDetail({
   const stage = effectiveStage(claim);
   const missing = missingActFor(stage);
   const score = claim.lane1_score ?? claim.aee_score ?? null;
-  const contest = claim.bundle?.contest_record ?? null;
   const transitions = trail?.stage_transitions ?? [];
   const evidenceRefs = trail?.evidence ?? [];
 
@@ -442,6 +446,10 @@ function ClaimDetail({
           "checked, and what people have settled."
         }
       />
+
+      {/* The OD-4 legend rides on the detail too — the claim surface
+          keeps its reader aid wherever a claim is being read. */}
+      <StageLegend fg={p.fg} muted={p.muted} border={p.border} />
 
       <Card p={p} style={{ padding: 16, marginBottom: 14 }}>
         <div style={laneHead}>Falsifier</div>
@@ -511,18 +519,12 @@ function ClaimDetail({
                   `${claim.stage.stage_as_of ? ` · as of ${fmtDayTime(claim.stage.stage_as_of)}` : ""}.`
                 : "No stage stamp on this record yet."}
             </div>
-            {claim.bundle?.attribution_contested && (
-              <div style={{ marginTop: 10 }}>
-                <Chip tone="contest">Attribution contested</Chip>
-                <div style={{ fontSize: 12.5, color: p.muted, marginTop: 6, lineHeight: 1.55 }}>
-                  {contest?.contested_by
-                    ? `Contested by ${contest.contested_by}` +
-                      `${contest.contested_on ? ` · ${contest.contested_on}` : ""}` +
-                      " — a contested attribution caps the claim at checked until it is answered."
-                    : "A contested attribution caps the claim at checked until it is answered."}
-                </div>
-              </div>
-            )}
+            {/* The governed contest display (FR-029-05; OD-3): renders
+                the contest state on the parent — contested with its
+                cap and record, or the explicit no-bundle absence.
+                It replaces this surface's earlier paraphrase block,
+                which carried no data-state for the guards to read. */}
+            <ContestDisplay bundle={claim.bundle} fg={p.fg} muted={p.muted} />
             {missing && (
               <div style={{ marginTop: 12 }}>
                 <MissingAct>

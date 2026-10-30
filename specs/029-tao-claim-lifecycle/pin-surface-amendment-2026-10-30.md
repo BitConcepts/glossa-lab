@@ -60,6 +60,20 @@ records where the guarded claims rendering lives after Spec 081's
 redesign, so the guards' continued green is read as the same
 protection on the new surface, not as a weakened gate.
 
+**Rendered-guard addendum (same day, PR-6 verification).** The
+source pins moved cleanly, but the *rendered* e2e guards exposed
+two gaps in ClaimsView as built by step 3: it rendered neither
+the OD-4 `StageLegend` nor the governed `ContestDisplay` — its
+lane 2 carried a paraphrase of the contest state with no
+`data-state`, and no explicit no-bundle absence. The retired
+surface had rendered both governed components all along, which
+is why the guards stayed green until the pin move. PR-6 now
+renders `StageLegend` above the register's claim list and on
+the claim detail, and `ContestDisplay` in lane 2 in place of
+the paraphrase (the component carries strictly more: the state,
+the cap computation, the contest record). The guards then pass
+against ClaimsView unchanged in text and intent.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse, via Muse) at

@@ -281,6 +281,16 @@ verdict, and a guard is not retired because the furniture moved):
   per call, which loops `useSyncExternalStore` forever (React
   error #185) and crashed the shell at boot. Snapshots are cached
   and rebuilt only on state change now.
+- A second gap, found by the Spec 029 *rendered* guards during
+  this PR's verification (the source pins had passed): step 3's
+  ClaimsView rendered neither the OD-4 StageLegend nor the
+  governed ContestDisplay — lane 2 paraphrased the contest state
+  with no data-state and no explicit no-bundle absence. The
+  retired surface had carried both components, masking the gap
+  until the pin move. ClaimsView now renders the legend above
+  the register and on the detail, and ContestDisplay in lane 2;
+  the guards pass against it unchanged. Recorded in the Spec 029
+  amendment's rendered-guard addendum.
 - feReport landed (C-09 frontend half): reports count as
   confirmed ONLY on the backend's 200 `{"ok":"logged"}`; the
   Status screen states never-fired / last-confirmed / last-FAILED
@@ -324,11 +334,19 @@ verdict, and a guard is not retired because the furniture moved):
   /research-loop split, and the staging fence copy. All 18 raw
   fetches in the panel now carry the token. Q8 closed: BottomPanel
   deleted with its App wiring, palette command and Ctrl+J.
-- Verification: full Playwright suite against a build-tree
-  backend (:8021, token auth enforcing) — 289 passed, 13 skipped,
-  0 failed, read from full capture; Spec 029 pin tests 33/33;
-  screenshots desktop 1440 + mobile 390 for every touched screen
-  filed with the program records and visually checked. One
+- Verification: Spec 029 pin tests 33/33; the full Playwright
+  suite was run locally against a build-tree backend (:8021,
+  token auth enforcing) — its first clean-tree run exposed the
+  stale spec re-points fixed in this PR, and after those fixes
+  the affected files (backend-integration, navigation, the two
+  Spec 029 guard files, status, study-loop) pass locally
+  (127 passed in that set), with the guard files re-verified
+  16/16 after the legend/contest fix above. The authoritative
+  full-suite run for this PR is CI's frontend-tests job (the
+  local full run's tally was initially misread against a prior
+  PR's CI count — recorded here so the record does not carry the
+  error). Screenshots desktop 1440 + mobile 390 for every touched
+  screen filed with the program records and visually checked. One
   process incident, recorded honestly: the first local run tested
   a stale dist (a checkpoint commit's dist restore reverted the
   bundle on disk) and its failures were the stale artifact's, not

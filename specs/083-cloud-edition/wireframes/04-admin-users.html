@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — Admin · Users (Spec 083 wireframe 04)</title>
+<link rel="stylesheet" href="wireframes.css">
+</head>
+<body>
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-row">
+        <div class="tile">G</div>
+        <div>
+          <div class="brand-name">Glossa Lab</div>
+          <div class="brand-sub">Epistemic research workbench</div>
+        </div>
+      </div>
+    </div>
+    <div class="program-switch">
+      <div class="ps-label">Program</div>
+      <div class="ps-name">Indus Script <span>▾</span></div>
+      <div class="ps-q">What do the signs of the Indus script mean?</div>
+    </div>
+    <nav class="nav">
+      <h4>Program</h4>
+      <a href="#"><span class="ic">⌂</span>Home</a>
+      <a href="#"><span class="ic">§</span>Claims</a>
+      <a href="#"><span class="ic">✓</span>Digestion</a>
+      <a href="#"><span class="ic">▤</span>Evidence &amp; sources</a>
+      <h4>Tool</h4>
+      <a href="#"><span class="ic">▦</span>Programs</a>
+      <a href="#"><span class="ic">⚙</span>Jobs</a>
+      <a href="#"><span class="ic">♥</span>Status</a>
+      <a href="#"><span class="ic">⚙</span>Settings</a>
+      <h4>Admin</h4>
+      <a href="04-admin-users.html" class="active"><span class="ic">👥</span>Users</a>
+      <a href="05-admin-invites.html"><span class="ic">✉</span>Invites<span class="count">1</span></a>
+      <a href="06-admin-audit.html"><span class="ic">☰</span>Audit log</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="crumb"><b>Glossa Lab</b> / Admin / Users</span>
+      <div class="spacer"></div>
+      <div class="service-chip"><span class="dot"></span><span><b>Glossa Lab v0.1.0</b> · cloud · checked 09:41</span></div>
+      <div class="user-chip"><span class="avatar">g</span><span><b>glassbreak</b> <span class="role">· admin</span></span><span>▾</span></div>
+    </div>
+
+    <div class="content">
+      <div class="head-row">
+        <div class="page-head">
+          <h1>Admin</h1>
+          <p class="lede">Who can use this Glossa Lab, what they can reach, and what they have done. Every action on these three tabs is written to the audit log.</p>
+        </div>
+        <div class="spacer"></div>
+        <a class="btn primary" href="05-admin-invites.html">+ Invite user</a>
+      </div>
+
+      <div class="tabs">
+        <a href="04-admin-users.html" class="active">Users<span class="count">3</span></a>
+        <a href="05-admin-invites.html">Invites<span class="count">1 outstanding</span></a>
+        <a href="06-admin-audit.html">Audit log</a>
+      </div>
+
+      <div class="card">
+        <table class="tbl">
+          <thead><tr><th>User</th><th>Role</th><th>Status</th><th>Programs</th><th>Last active</th><th></th></tr></thead>
+          <tbody>
+            <tr>
+              <td><b>glassbreak</b> <span class="chip line">you</span><div class="row-meta">Admin account · created at first-run setup, Oct 30</div></td>
+              <td><span class="chip contest">admin</span></td>
+              <td><span class="chip ok">active</span></td>
+              <td>All programs</td>
+              <td>now</td>
+              <td><button class="btn small quiet">···</button></td>
+            </tr>
+            <tr>
+              <td><b>j-mensah</b> <span class="chip line">specimen</span><div class="row-meta">Joined Oct 30 via invite · specimen@example.org</div></td>
+              <td><span class="chip neutral">member</span></td>
+              <td><span class="chip ok">active</span></td>
+              <td>Indus Script</td>
+              <td>09:12 today</td>
+              <td><button class="btn small">Manage</button></td>
+            </tr>
+            <tr>
+              <td><b>r-hale</b> <span class="chip line">specimen</span><div class="row-meta">Joined Oct 30 via invite · access paused by glassbreak</div></td>
+              <td><span class="chip neutral">member</span></td>
+              <td><span class="chip warn">disabled</span></td>
+              <td>Indus Script</td>
+              <td>Oct 30</td>
+              <td><button class="btn small">Manage</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="divider"></div>
+        <p class="row-meta"><b>Manage</b> opens: program memberships (grant / remove per program) · make admin / make member · disable or re-enable · issue a password-reset link · remove account. Removal keeps the person's past work attributed to their name, marked <i>removed</i> — history is not rewritten. Disabling ends their sessions immediately. The admin's own row offers no disable or remove: the edition cannot lock out its only admin.</p>
+      </div>
+
+      <div class="annotation">
+        <div class="a-title">Annotation — wireframe 04 · not part of the UI</div>
+        <dl>
+          <dt>Purpose</dt><dd>User management: the whole population of the edition on one screen, with role, status, membership, and activity visible at a glance (FR-005, FR-012).</dd>
+          <dt>Primary action</dt><dd>“+ Invite user” (people enter through invites, never through a create-user form — this screen deliberately has none).</dd>
+          <dt>Changed &amp; why</dt><dd>New surface — the admin dashboard the owner ordered. Two rules are designed in, not bolted on: the audit lede ("every action here is written to the audit log") states FR-012 where the actions happen; and the last-admin guard (no disable/remove on the sole admin's row) prevents the one self-inflicted lockout a single-admin edition cannot recover from without a redeploy.</dd>
+          <dt>Spec claims</dt><dd>C083-5 (role enforcement — this surface is admin-only, 403 to members), C083-12 (audit), C083-11 (removed users' attribution persists, stated in the Manage note).</dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</div>
+<nav class="mobile-nav">
+  <a href="#"><span class="mi">⌂</span>Home</a>
+  <a href="#"><span class="mi">§</span>Claims</a>
+  <a href="#"><span class="mi">✓</span>Digestion</a>
+  <a href="#"><span class="mi">⚙</span>Jobs</a>
+  <a href="04-admin-users.html" class="active"><span class="mi">☰</span>More</a>
+</nav>
+</body>
+</html>

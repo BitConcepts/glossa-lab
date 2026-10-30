@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — Accept invite (Spec 083 wireframe 02)</title>
+<link rel="stylesheet" href="wireframes.css">
+</head>
+<body>
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-brand">
+      <div class="tile">G</div>
+      <div>
+        <div class="brand-name" style="color:var(--ink);font-size:14px">Glossa Lab</div>
+        <div class="brand-sub" style="color:var(--faint)">Epistemic research workbench</div>
+      </div>
+    </div>
+    <h1>You've been invited</h1>
+    <p class="lede"><b>glassbreak</b> (admin) invited you to join the <b>Indus Script</b> program as a member. Choose your username and password to create your account — this link works once.</p>
+    <form>
+      <div class="field">
+        <label for="u">Choose a username</label>
+        <input id="u" type="text" placeholder="e.g. j-mensah" autocomplete="username">
+      </div>
+      <div class="field">
+        <label for="e">Email <span class="hint">— from the invite; change it if you were reached at a different address</span></label>
+        <input id="e" type="email" value="specimen@example.org">
+      </div>
+      <div class="field">
+        <label for="p">Set a password</label>
+        <input id="p" type="password" placeholder="a password only you know" autocomplete="new-password">
+      </div>
+      <div class="field">
+        <label for="p2">Repeat the password</label>
+        <input id="p2" type="password" autocomplete="new-password">
+      </div>
+      <button class="btn primary block">Create account &amp; join Indus Script</button>
+    </form>
+    <p class="row-meta" style="margin-top:13px">Your work in the program is attributed to your username — claims you register and digestion acts you complete carry your name.</p>
+  </div>
+
+  <div class="auth-card" style="margin-top:16px">
+    <h1 style="font-size:16px">Specimen — a link that can no longer be used</h1>
+    <p class="lede" style="margin-bottom:0">“This invite link has already been used. Invite links work once — ask the person who invited you for a new one.” The same page, with the same wording shape, serves expired and revoked links (“…has expired”, “…was withdrawn”), and never reveals whether the code ever existed.</p>
+  </div>
+  <p class="auth-foot">glossa.bitconcepts.tech · Invitation links are single-use and expire — this one was set to expire on Nov 6.</p>
+
+  <div class="annotation" style="max-width:640px;margin-top:26px">
+    <div class="a-title">Annotation — wireframe 02 · not part of the UI</div>
+    <dl>
+      <dt>Purpose</dt><dd>Turn an invite link into a member account in exactly the programs the invite names (FR-001, FR-002). This screen is the edition's only registration path.</dd>
+      <dt>Primary action</dt><dd>“Create account &amp; join …”.</dd>
+      <dt>Changed &amp; why</dt><dd>New surface. Three design points are load-bearing: the inviting admin and the program are named up front (the invitee knows whose project they are entering); the email is pre-filled but editable (decision D-2 — possession of the link is the credential, not the address); and the attribution note is stated before the account exists, because lane-2 work is signed. The spent/expired/revoked specimen shares one wording skeleton so the page cannot be used to probe which codes exist.</dd>
+      <dt>Spec claims</dt><dd>C083-1 (invite-only registration), C083-2 (single-use, expiring, revocable), C083-11 (attribution, promised here and kept by the surfaces), C083-12 (redemption is audit-logged).</dd>
+    </dl>
+  </div>
+</div>
+</body>
+</html>

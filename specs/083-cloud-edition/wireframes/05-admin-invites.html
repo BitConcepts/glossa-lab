@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — Admin · Invites (Spec 083 wireframe 05)</title>
+<link rel="stylesheet" href="wireframes.css">
+</head>
+<body>
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-row">
+        <div class="tile">G</div>
+        <div>
+          <div class="brand-name">Glossa Lab</div>
+          <div class="brand-sub">Epistemic research workbench</div>
+        </div>
+      </div>
+    </div>
+    <div class="program-switch">
+      <div class="ps-label">Program</div>
+      <div class="ps-name">Indus Script <span>▾</span></div>
+      <div class="ps-q">What do the signs of the Indus script mean?</div>
+    </div>
+    <nav class="nav">
+      <h4>Program</h4>
+      <a href="#"><span class="ic">⌂</span>Home</a>
+      <a href="#"><span class="ic">§</span>Claims</a>
+      <a href="#"><span class="ic">✓</span>Digestion</a>
+      <a href="#"><span class="ic">▤</span>Evidence &amp; sources</a>
+      <h4>Tool</h4>
+      <a href="#"><span class="ic">▦</span>Programs</a>
+      <a href="#"><span class="ic">⚙</span>Jobs</a>
+      <a href="#"><span class="ic">♥</span>Status</a>
+      <a href="#"><span class="ic">⚙</span>Settings</a>
+      <h4>Admin</h4>
+      <a href="04-admin-users.html"><span class="ic">👥</span>Users</a>
+      <a href="05-admin-invites.html" class="active"><span class="ic">✉</span>Invites<span class="count">1</span></a>
+      <a href="06-admin-audit.html"><span class="ic">☰</span>Audit log</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="crumb"><b>Glossa Lab</b> / Admin / Invites</span>
+      <div class="spacer"></div>
+      <div class="service-chip"><span class="dot"></span><span><b>Glossa Lab v0.1.0</b> · cloud · checked 09:41</span></div>
+      <div class="user-chip"><span class="avatar">g</span><span><b>glassbreak</b> <span class="role">· admin</span></span><span>▾</span></div>
+    </div>
+
+    <div class="content">
+      <div class="head-row">
+        <div class="page-head">
+          <h1>Admin</h1>
+          <p class="lede">An invite is a single-use link that creates one member account in the programs you choose. You send the link yourself — by email, message, however you reach the person.</p>
+        </div>
+        <div class="spacer"></div>
+        <button class="btn primary">+ New invite</button>
+      </div>
+
+      <div class="tabs">
+        <a href="04-admin-users.html">Users<span class="count">3</span></a>
+        <a href="05-admin-invites.html" class="active">Invites<span class="count">1 outstanding</span></a>
+        <a href="06-admin-audit.html">Audit log</a>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <h3>New invite <span class="sub">— specimen form state</span></h3>
+        <div class="grid c2">
+          <div class="field" style="margin-bottom:0">
+            <label>Email <span class="hint">— optional; pre-fills the acceptance screen, the link is what counts</span></label>
+            <input type="email" placeholder="person@example.org">
+          </div>
+          <div class="field" style="margin-bottom:0">
+            <label>Expires</label>
+            <select><option>7 days (default)</option><option>2 days</option><option>30 days</option></select>
+          </div>
+        </div>
+        <div class="field" style="margin-top:13px;margin-bottom:0">
+          <label>Joins these programs as a member</label>
+          <div><span class="chip ok">✓ Indus Script</span> <span class="chip line">+ Gulf Seals Survey (specimen)</span></div>
+        </div>
+        <div class="divider"></div>
+        <button class="btn primary">Create invite link</button>
+        <span class="row-meta" style="margin-left:8px">Creating shows the full link once, on the next screen, with a copy button.</span>
+      </div>
+
+      <div class="card" style="margin-bottom:14px;border-color:#bfdbfe;background:var(--accent-soft)">
+        <h3>Invite created — copy it now <span class="sub">— specimen; this panel is the only place the full link ever appears</span></h3>
+        <div class="linkbox" style="background:#fff"><span class="grow">https://glossa.bitconcepts.tech/invite/…specimen…</span><button class="btn small primary">Copy link</button></div>
+        <p class="row-meta" style="margin-top:8px">The code is stored only as a hash, so this link cannot be shown again — if it is lost, revoke the invite below and issue a new one. That is deliberate: a list of live, reusable entry links sitting in a database would be a standing way in.</p>
+      </div>
+
+      <div class="card">
+        <table class="tbl">
+          <thead><tr><th>Invite</th><th>For</th><th>Programs</th><th>State</th><th>Expires</th><th></th></tr></thead>
+          <tbody>
+            <tr>
+              <td><div class="row-meta">Created by glassbreak · Oct 30, 09:38</div></td>
+              <td>specimen@example.org</td>
+              <td>Indus Script</td>
+              <td><span class="chip warn">outstanding</span></td>
+              <td>Nov 6</td>
+              <td><button class="btn small danger-quiet">Revoke</button></td>
+            </tr>
+            <tr>
+              <td><div class="row-meta">Created by glassbreak · Oct 30, 09:05</div></td>
+              <td>—</td>
+              <td>Indus Script</td>
+              <td><span class="chip ok">used by j-mensah</span></td>
+              <td>—</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><div class="row-meta">Created by glassbreak · Oct 30, 08:57</div></td>
+              <td>—</td>
+              <td>Indus Script</td>
+              <td><span class="chip bad">revoked</span></td>
+              <td>—</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="row-meta" style="margin-top:10px">Used, expired, and revoked invites stay on this list — the record of who was invited, and what became of it, is part of the project's history and lands in the audit log.</p>
+      </div>
+
+      <div class="annotation">
+        <div class="a-title">Annotation — wireframe 05 · not part of the UI</div>
+        <dl>
+          <dt>Purpose</dt><dd>Create and govern the edition's only entry tickets (FR-002): single-use, expiring, revocable links into named programs.</dd>
+          <dt>Primary action</dt><dd>“Create invite link”, then “Copy link”.</dd>
+          <dt>Changed &amp; why</dt><dd>New surface. The form's wording carries decision D-2 in the UI itself (email optional, "the link is what counts"), so nobody has to remember the policy. The one-time link panel is the C083-2 hash rule made visible: because only the hash is kept, the full link exists exactly once — and the UI says so at the moment it matters, with revoke-and-reissue as the stated recovery. A dashboard that could re-display live invite links would be a standing credential store; this one is not.</dd>
+          <dt>Spec claims</dt><dd>C083-1, C083-2 (lifecycle + hashed storage), C083-12 (create/redeem/revoke are audit events).</dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</div>
+<nav class="mobile-nav">
+  <a href="#"><span class="mi">⌂</span>Home</a>
+  <a href="#"><span class="mi">§</span>Claims</a>
+  <a href="#"><span class="mi">✓</span>Digestion</a>
+  <a href="#"><span class="mi">⚙</span>Jobs</a>
+  <a href="05-admin-invites.html" class="active"><span class="mi">☰</span>More</a>
+</nav>
+</body>
+</html>

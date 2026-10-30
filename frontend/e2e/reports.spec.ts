@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./fixtures";
 
 /**
  * Reports & ledger — Spec 081 wireframe 12 (PR-R).

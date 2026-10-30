@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./fixtures";
 
 /**
  * Claims surface (Spec 081 step 3, T015; wireframes 03–04; FR-018).

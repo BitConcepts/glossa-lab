@@ -1,4 +1,4 @@
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test, type Page } from "./fixtures";
 
 /**
  * Spec 029 Phase G — display guards as a permanent gate
@@ -211,17 +211,30 @@ async function setupMocks(page: Page) {
     r.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ models: [] }) }));
   await page.route("**/api/v1/indus-evidence/claims**", (r) =>
     r.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(CLAIMS) }));
+  // Spec 081 step 6: the claims register reads the program-scoped
+  // family now (the /indus-evidence/* routes above remain as the
+  // backend's one-release shim). Same synthetic payloads.
+  await page.route("**/api/v1/programs/*/claims**", (r) =>
+    r.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(CLAIMS) }));
+  await page.route("**/api/v1/programs/*/hypotheses", (r) =>
+    r.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ models: [] }) }));
+  await page.route("**/api/v1/programs/*/library**", (r) =>
+    r.fulfill({ status: 200, contentType: "application/json",
+      body: JSON.stringify({ documents: [], total: 0, limit: 100, offset: 0 }) }));
+  await page.route("**/api/v1/programs/**/trail", (r) =>
+    r.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({}) }));
   await page.route("**/api/v1/dashboard/decipherment", (r) =>
     r.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(MOCK_DECIPHER) }));
 }
 
 async function openClaimsTab(page: Page) {
+  // Spec 081 step 6: claims are their own program surface now (the
+  // Evidence & sources claims tab retired with IndusEvidenceView).
   await page.goto("/");
-  const btn = page.getByTitle("Evidence & sources").first();
+  const btn = page.getByTitle("Claims").first();
   await btn.waitFor({ state: "visible", timeout: 10000 });
   await btn.click();
-  await page.getByText(/🔖 Claims/).first().click();
-  await expect(page.getByText(/2 total claims/i)).toBeVisible({ timeout: 8000 });
+  await expect(page.getByText("Synthetic plain claim about a sign value.")).toBeVisible({ timeout: 8000 });
 }
 
 test.describe("Spec 029 Phase G — display guards", () => {
@@ -243,8 +256,6 @@ test.describe("Spec 029 Phase G — display guards", () => {
 
   test("stage vocabulary is exactly the five verbatim names; no synonym labels", async ({ page }) => {
     await openClaimsTab(page);
-    await page.getByText("Synthetic plain claim about a sign value.").click();
-    await page.getByText("Synthetic bundle parent claim.").click();
     // Legend: exactly the five names, each present.
     const legendText = (await page.getByTestId("stage-legend").innerText()).toLowerCase();
     for (const name of ["created", "checked", "explained", "accepted", "digested"]) {
@@ -252,12 +263,28 @@ test.describe("Spec 029 Phase G — display guards", () => {
     }
     // No synonym renders as a stage label anywhere on the claim
     // surfaces (legend, both lane regions, standing position,
-    // stage summary).
-    const surfaces = [
-      legendText,
-      (await page.getByTestId("lane1-region").first().innerText()).toLowerCase(),
-      (await page.getByTestId("lane2-region").first().innerText()).toLowerCase(),
-    ];
+    // stage summary). Spec 081: the register opens one claim's
+    // detail at a time, so each claim's lanes are visited in turn —
+    // the set of surfaces checked is the same, plus the second
+    // claim's lanes.
+    const surfaces: string[] = [legendText];
+    for (const [claimText, stageName] of [
+      ["Synthetic plain claim about a sign value.", "created"],
+      ["Synthetic bundle parent claim.", "checked"],
+    ] as const) {
+      await page.getByText(claimText).click();
+      const lane1 = page.getByTestId("lane1-region");
+      const lane2 = page.getByTestId("lane2-region");
+      await expect(lane1).toBeVisible();
+      await expect(lane2).toBeVisible();
+      surfaces.push((await lane1.innerText()).toLowerCase());
+      const lane2Text = (await lane2.innerText()).toLowerCase();
+      surfaces.push(lane2Text);
+      // Stage names render in lane-2 positions.
+      expect(lane2Text).toContain(stageName);
+      await page.getByRole("button", { name: "← All claims" }).click();
+      await expect(page.getByText("Synthetic plain claim about a sign value.")).toBeVisible();
+    }
     for (const text of surfaces) {
       for (const synonym of ["proven", "confirmed"]) {
         expect(text).not.toContain(synonym);
@@ -267,23 +294,24 @@ test.describe("Spec 029 Phase G — display guards", () => {
       const withoutFlag = text.replace(/verified_unexplained/g, "");
       expect(withoutFlag).not.toContain("verified");
     }
-    // Stage names render in lane-2 positions (both expanded claims).
-    const lane2s = page.getByTestId("lane2-region");
-    await expect(lane2s).toHaveCount(2);
-    expect((await lane2s.nth(0).innerText()).toLowerCase()).toContain("created");
-    expect((await lane2s.nth(1).innerText()).toLowerCase()).toContain("checked");
   });
 
   test("every verdict display carries a not_understood slot", async ({ page }) => {
     await openClaimsTab(page);
-    await page.getByText("Synthetic plain claim about a sign value.").click();
-    await page.getByText("Synthetic bundle parent claim.").click();
-    const slots = page.getByTestId("not-understood");
-    await expect(slots).toHaveCount(2);
-    const states = [
-      await slots.nth(0).getAttribute("data-state"),
-      await slots.nth(1).getAttribute("data-state"),
-    ];
+    // Spec 081: one claim's detail at a time — visit each in turn
+    // and collect its slot's state; the pair expectation is unchanged.
+    const states: (string | null)[] = [];
+    for (const claimText of [
+      "Synthetic plain claim about a sign value.",
+      "Synthetic bundle parent claim.",
+    ]) {
+      await page.getByText(claimText).click();
+      const slot = page.getByTestId("not-understood");
+      await expect(slot).toBeVisible();
+      states.push(await slot.getAttribute("data-state"));
+      await page.getByRole("button", { name: "← All claims" }).click();
+      await expect(page.getByText("Synthetic plain claim about a sign value.")).toBeVisible();
+    }
     expect(states.sort()).toEqual(["not-yet-recorded", "recorded"]);
   });
 

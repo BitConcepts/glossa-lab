@@ -232,3 +232,127 @@ verdict, and a guard is not retired because the furniture moved):
   for this step.
 - The digestion doorway deep link deferred by PR-4 lands here:
   a board card click opens that claim's detail on this surface.
+
+### Step 6/7 as-built note (2026-10-30, PR-6)
+
+- Steps 6 and 7 shipped together (T018 + T019), with T018's
+  remainder included: the Analysis wrapper (Entropy / Signs /
+  Timeline as its three tabs) and the AnchorSetEditor's promotion
+  out of CorporaView into the Data surface's second tab. The PR-7/
+  PR-8/PR-9 sequence left them no other home (PR-9 is
+  verification-only).
+- Consolidation: Evidence & sources is one tabbed surface —
+  Library (extracted verbatim from the retired IndusEvidenceView),
+  Citations, Correspondence, Notebooks (Q10) — mounting the three
+  legacy components the old shell never mounted at all. Data is
+  Corpora + Anchor sets. The two deferrals from the step-3 note
+  are CLOSED: (a) IndusEvidenceView and its claims tab are deleted;
+  the Spec 029 source pins moved to ClaimsView with the amendment
+  record `specs/029-tao-claim-lifecycle/pin-surface-amendment-2026-10-30.md`
+  (one wording change: a header comment's "provenance" became
+  "source record" — the frozen synonym scan reads substrings, and
+  ClaimsView otherwise satisfies every pin assertion verbatim);
+  (b) the sweep moved under the Research loop as SweepPanel, its
+  content verbatim plus the fence lede (importing stages a source;
+  it changes no claim by itself). The Spec 029 e2e guards moved
+  with the pins: they had asserted on IndusEvidenceView's claims
+  tab all along, and now assert on ClaimsView; the three tests
+  that expanded two claims side-by-side were re-expressed as
+  sequential detail visits (register → detail → back) with the
+  same assertions, plus the second claim's lanes now scanned too.
+- Spec 082's frontend half landed to `ui-contract.md`: fragment
+  read-once in main.tsx before the router exists →
+  sessionStorage `glossa_api_token` → fragment stripped; Bearer
+  on every API call (api.ts request + all fetch streams; both
+  remaining EventSources — system metrics and the ollama pull —
+  converted to fetch-streaming); query-string tokens never read;
+  401 clears the token and raises the named "API token needed"
+  gate (Settings stays reachable — its paste field is the second
+  door, showing present/absent + SHA-256 first-8 fingerprint,
+  never the value); health `auth: "disabled"` treats the token as
+  unnecessary. T010 is done with it: CI's frontend-tests backend
+  now runs with a throwaway `GLOSSA_API_TOKEN`, and the e2e
+  fixtures seed it per the contract's manual-seeding path. New
+  `frontend/e2e/auth-token.spec.ts` proves the contract end to
+  end (gate, fragment intake + strip, query refusal, 401 clear,
+  paste-to-enter, Settings fingerprint).
+- One real defect found by the token-mode probe and fixed in this
+  PR: the auth/feReport stores returned a fresh snapshot object
+  per call, which loops `useSyncExternalStore` forever (React
+  error #185) and crashed the shell at boot. Snapshots are cached
+  and rebuilt only on state change now.
+- A second gap, found by the Spec 029 *rendered* guards during
+  this PR's verification (the source pins had passed): step 3's
+  ClaimsView rendered neither the OD-4 StageLegend nor the
+  governed ContestDisplay — lane 2 paraphrased the contest state
+  with no data-state and no explicit no-bundle absence. The
+  retired surface had carried both components, masking the gap
+  until the pin move. ClaimsView now renders the legend above
+  the register and on the detail, and ContestDisplay in lane 2;
+  the guards pass against it unchanged. Recorded in the Spec 029
+  amendment's rendered-guard addendum.
+- feReport landed (C-09 frontend half): reports count as
+  confirmed ONLY on the backend's 200 `{"ok":"logged"}`; the
+  Status screen states never-fired / last-confirmed / last-FAILED
+  from the shared store; ErrorBoundary and main.tsx's feLog both
+  delegate to it.
+- Jobs: program column (submit/retry stamp `params.project_id`
+  from the open program; unstamped rows read "Not recorded" —
+  never inferred, never a hardcoded store id in shell code),
+  Finished column, "+ New job", failed jobs carry a full-width
+  "What happened" row fed once from the job's own result record,
+  and a details modal that leads with the record's meaning fields
+  and keeps the raw JSON behind a disclosure. Named gap:
+  backend-originated jobs (loop/discovery) carry no program field
+  at all — stamping those server-side is a backend change outside
+  this frontend step; the column states the absence honestly.
+- Settings (wireframe 13): the tab machinery is gone; rows carry
+  name + state + Manage disclosures grouped Tool — service /
+  Tool — environment & AI / Program — {open program}. Four
+  recorded deviations: (i) the Port row shows the served origin's
+  port — the settings API exposes no port and the tray owns
+  Change Port (the row says so: two doors, one setting); (ii)
+  wireframe 14's "Restart service" primary is not implemented —
+  no backend restart endpoint exists, and restart belongs to the
+  tray/supervisor (Spec 079); not invented in a UI step; (iii)
+  no global "Save changes" primary — the underlying panels
+  persist per-section, as they always have; (iv) Discovery
+  sources is presented as a program setting per the wireframe;
+  its store is unchanged this step.
+- Status (wireframe 14): identity first (application, version +
+  build, host + serving origin, data folder + database-verified
+  state, serving-since with humanized uptime, API-token mode),
+  health strip with humanized uptime, the FE-reporting card, the
+  foundation section keeping the canonical record and the
+  API-native set in separate labelled boxes (D2.1), the machine
+  sections unchanged below, and the session log last (this
+  session only by default; full history behind a labelled toggle
+  that warns it is not this session's record).
+- Research loop (wireframe 11): ceiling lede, one state line
+  (state · last session · scheduler, named as a program setting
+  also in Settings), the D5 meta line naming the /study-loop vs
+  /research-loop split, and the staging fence copy. All 18 raw
+  fetches in the panel now carry the token. Q8 closed: BottomPanel
+  deleted with its App wiring, palette command and Ctrl+J.
+- Verification: Spec 029 pin tests 33/33; the full Playwright
+  suite was run locally against a build-tree backend (:8021,
+  token auth enforcing) — its first clean-tree run exposed the
+  stale spec re-points fixed in this PR, and after those fixes
+  the affected files (backend-integration, navigation, the two
+  Spec 029 guard files, status, study-loop) pass locally
+  (127 passed in that set), with the guard files re-verified
+  16/16 after the legend/contest fix above. The authoritative
+  full-suite run for this PR is CI's frontend-tests job (the
+  local full run's tally was initially misread against a prior
+  PR's CI count — recorded here so the record does not carry the
+  error). Screenshots desktop 1440 + mobile 390 for every touched
+  screen filed with the program records and visually checked. One
+  process incident, recorded honestly: the first local run tested
+  a stale dist (a checkpoint commit's dist restore reverted the
+  bundle on disk) and its failures were the stale artifact's, not
+  the code's; the run was discarded, the bundle rebuilt and
+  identity-verified by asset hash, and the suite rerun clean.
+  Backend-run corpus mutations were restored by exact path before
+  commit (the untracked graph-experiment outputs were removed by
+  exact name — the reports directory carries tracked files of the
+  same pattern).

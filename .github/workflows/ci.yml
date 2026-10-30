@@ -111,13 +111,15 @@ jobs:
           GLOSSA_DATA_DIR: ${{ runner.temp }}/glossa_playwright_data
           GLOSSA_DEV_MODE: "1"
           PYTHONPATH: ${{ github.workspace }}/backend
-          # Spec 082 (FR-006): the SPA does not yet implement the
-          # ui-contract.md token handoff, so this job's throwaway
-          # backend runs with the named auth-off switch — startup
-          # logs a warning and health reports auth: disabled.
-          # Removal is Spec 082 task T010, owned by the Spec 081
-          # Phase 2 landing. No other job may set this switch.
-          GLOSSA_API_AUTH: "off"
+          # Spec 082 (T010, landed with Spec 081 step 6/7): the SPA
+          # implements the ui-contract.md token handoff, so the old
+          # GLOSSA_API_AUTH=off accommodation is REMOVED — this job's
+          # throwaway backend now enforces token auth like any real
+          # install. The token below is a CI-only throwaway for a
+          # throwaway backend on a throwaway runner; the e2e fixtures
+          # seed it into sessionStorage (the contract's sanctioned
+          # manual-seeding path for tests).
+          GLOSSA_API_TOKEN: "ci-e2e-token"
         run: |
           python -m uvicorn glossa_lab.main:app \
             --host 127.0.0.1 --port 8001 \
@@ -148,6 +150,8 @@ jobs:
           # the API on the same origin.  No separate Vite preview server needed.
           PLAYWRIGHT_USE_BACKEND: "1"
           PLAYWRIGHT_BACKEND_URL: "http://127.0.0.1:8001"
+          # Must match the backend-start step's token (Spec 082 T010).
+          GLOSSA_API_TOKEN: "ci-e2e-token"
         run: |
           npx playwright test \
             --reporter=github \

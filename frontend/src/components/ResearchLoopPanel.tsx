@@ -17,6 +17,25 @@
  */
 
 import { Fragment, useCallback, useEffect, useState } from "react";
+import { authHeaders, noteUnauthorized } from "../auth";
+import { fmtDayTime } from "./ui081";
+
+/**
+ * Spec 082: every call this panel makes carries the stored Bearer
+ * token (EventSource-style unauthenticated calls are refused by the
+ * backend). A 401 clears the token and raises the app-wide
+ * "API token needed" state.
+ */
+function authFetch(input: string, init?: RequestInit): Promise<Response> {
+  const merged: RequestInit = {
+    ...init,
+    headers: { ...(init?.headers as Record<string, string> | undefined), ...authHeaders() },
+  };
+  return window.fetch(input, merged).then((res) => {
+    if (res.status === 401) noteUnauthorized();
+    return res;
+  });
+}
 
 const BASE    = "/api/v1/study-loop";
 // Staging and SA-delta endpoints live on the older research-loop router
@@ -232,7 +251,7 @@ export function ResearchLoopPanel() {
 
   const fetchStatus = useCallback(async () => {
     try {
-      const res = await fetch(`${BASE}/status`);
+      const res = await authFetch(`${BASE}/status`);
       if (!res.ok) return;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const s = await res.json() as any;
@@ -264,7 +283,7 @@ export function ResearchLoopPanel() {
 
   const fetchLastSession = useCallback(async () => {
     try {
-      const res = await fetch(`${BASE}/last-session`);
+      const res = await authFetch(`${BASE}/last-session`);
       if (!res.ok) return;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const raw = await res.json() as Record<string, any>;
@@ -315,21 +334,21 @@ export function ResearchLoopPanel() {
 
   const fetchStaging = useCallback(async () => {
     try {
-      const res = await fetch(`${BASE_RL}/staging`);
+      const res = await authFetch(`${BASE_RL}/staging`);
       if (res.ok) setStaging(await res.json() as StagingData);
     } catch { /* ignore */ }
   }, []);
 
   const fetchSchedulerStatus = useCallback(async () => {
     try {
-      const res = await fetch(`${BASE}/scheduler/status`);
+      const res = await authFetch(`${BASE}/scheduler/status`);
       if (res.ok) setSchedulerStatus(await res.json() as SchedulerStatus);
     } catch { /* ignore */ }
   }, []);
 
   const fetchHistory = useCallback(async () => {
     try {
-      const res = await fetch(`${BASE}/history`);
+      const res = await authFetch(`${BASE}/history`);
       if (!res.ok) return;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const raw = await res.json() as { sessions?: any[] } | any[];
@@ -420,7 +439,7 @@ export function ResearchLoopPanel() {
     setSchedulerBusy(true);
     try {
       const action = schedulerStatus.enabled ? "disable" : "enable";
-      const res = await fetch(`${BASE}/scheduler/${action}`, { method: "POST" });
+      const res = await authFetch(`${BASE}/scheduler/${action}`, { method: "POST" });
       if (res.ok) await fetchSchedulerStatus();
     } catch { /* ignore */ }
     finally { setSchedulerBusy(false); }
@@ -446,7 +465,7 @@ export function ResearchLoopPanel() {
     setShowFullLog(false);
 
     try {
-      const res = await fetch(`${BASE}/start?iterations=${iterCount}`, { method: "POST" });
+      const res = await authFetch(`${BASE}/start?iterations=${iterCount}`, { method: "POST" });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
       const reader = res.body?.getReader();
@@ -641,7 +660,7 @@ export function ResearchLoopPanel() {
   };
 
   const stopLoop = async () => {
-    try { await fetch(`${BASE}/stop`, { method: "POST" }); } catch { /* ignore */ }
+    try { await authFetch(`${BASE}/stop`, { method: "POST" }); } catch { /* ignore */ }
   };
 
   const pauseLoop = async () => {
@@ -782,6 +801,37 @@ export function ResearchLoopPanel() {
             </>
           )}
         </div>
+      </div>
+
+      {/* ── Surface framing (Spec 081 step 7, wireframe 11) ── */}
+      <div style={{ fontSize: 12, color: "#374151", lineHeight: 1.6, marginBottom: 8, maxWidth: "72ch" }}>
+        The loop reads the record and runs experiments against it. It can move a
+        claim to <em>checked</em> — never further. Explaining, accepting and
+        digesting stay human work, and every claim the loop touches still owes
+        those acts afterwards.
+      </div>
+      <div style={{ display: "flex", gap: 14, flexWrap: "wrap", fontSize: 11, color: "#6b7280", marginBottom: 4 }}>
+        <span>
+          State:{" "}
+          <b style={{ color: "#111827" }}>
+            {running ? "Running" : paused ? "Paused" : currentPhase === "done" ? "Done" : "Ready"}
+          </b>
+        </span>
+        <span>
+          Last session:{" "}
+          {lastSession?.completed_at
+            ? `${fmtDayTime(lastSession.completed_at)} · ${lastSession.iterations_run ?? "—"} iterations`
+            : "none recorded"}
+        </span>
+        <span>
+          Scheduler: {schedulerStatus ? (schedulerStatus.enabled ? "on" : "off") : "—"} — a program
+          setting, also in Settings → Program
+        </span>
+      </div>
+      <div style={{ fontSize: 10, color: "#9ca3af", marginBottom: 10 }}>
+        One surface, two endpoint families behind it: run state and history are served
+        by /study-loop; staged candidates and the SA-delta tools further down are
+        served by /research-loop (Spec 081, D5 — the split is named, not hidden).
       </div>
 
       {/* ── Daily scheduler toggle ── */}
@@ -1072,6 +1122,11 @@ export function ResearchLoopPanel() {
          (staging.counts.approved ?? 0) > 0 ||
          (staging.counts.rejected ?? 0) > 0) && (
         <div style={{ marginTop: 8 }}>
+          <div style={{ fontSize: 11, color: "#92400e", lineHeight: 1.55, marginBottom: 6, maxWidth: "72ch" }}>
+            Staged, not registered: nothing in this queue is part of the anchor
+            record until a person promotes it. Approving here stages the
+            promotion — it does not settle the claim the candidate supports.
+          </div>
           <button
             onClick={() => setShowReview((v) => !v)}
             style={{
@@ -1111,7 +1166,7 @@ export function ResearchLoopPanel() {
           <StagingReview
               staging={staging}
               onAction={async (sign, reading, action, reason) => {
-                const res = await fetch(`${BASE_RL}/staging/action`, {
+                const res = await authFetch(`${BASE_RL}/staging/action`, {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
                   body: JSON.stringify({ sign, proposed_reading: reading, action, reason }),
@@ -1119,15 +1174,15 @@ export function ResearchLoopPanel() {
                 if (res.ok) void fetchStaging();
               }}
               onArchive={async () => {
-                await fetch(`${BASE_RL}/staging/archive`, { method: "POST" });
+                await authFetch(`${BASE_RL}/staging/archive`, { method: "POST" });
                 void fetchStaging();
               }}
               onDelete={async () => {
-                const res = await fetch(`${BASE_RL}/staging/rejected`, { method: "DELETE" });
+                const res = await authFetch(`${BASE_RL}/staging/rejected`, { method: "DELETE" });
                 if (res.ok) await fetchStaging();
               }}
               onCleanup={async () => {
-                const res = await fetch(`${BASE_RL}/staging/cleanup`, { method: "POST" });
+                const res = await authFetch(`${BASE_RL}/staging/cleanup`, { method: "POST" });
                 if (res.ok) await fetchStaging();
               }}
             />
@@ -1488,7 +1543,7 @@ function RunSummary({
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch("/api/v1/foundation/status");
+        const res = await authFetch("/api/v1/foundation/status");
         if (res.ok) {
           const data = await res.json() as { n_ok?: number; n_fail?: number; n_warn?: number; verdict?: string };
           if (data.verdict != null) {
@@ -1505,7 +1560,7 @@ function RunSummary({
     })();
     // Also listen for foundation_complete events to refresh
     const handler = () => {
-      fetch("/api/v1/foundation/status")
+      authFetch("/api/v1/foundation/status")
         .then(r => r.ok ? r.json() : null)
         .then((data: { n_ok?: number; n_fail?: number; n_warn?: number; verdict?: string } | null) => {
           if (data?.verdict != null) {
@@ -2082,7 +2137,7 @@ function StagingReview({
     setVerifyResult(null);
     setSaRunDone(false);
     try {
-      const res = await fetch(`${BASE_RL}/staging/verify-archive`, { method: "POST" });
+      const res = await authFetch(`${BASE_RL}/staging/verify-archive`, { method: "POST" });
       const data = await res.json() as {
         ok: boolean; message: string; suggested_sa_exp?: string;
         suggested_sa_name?: string; error?: string;
@@ -2110,7 +2165,7 @@ function StagingReview({
   const runSaValidation = async (expId: string) => {
     setSaRunBusy(true);
     try {
-      const res = await fetch(`/api/v1/experiment-graphs/${encodeURIComponent(expId)}/run`, {
+      const res = await authFetch(`/api/v1/experiment-graphs/${encodeURIComponent(expId)}/run`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ kwargs: {}, notify: false }),
@@ -2132,7 +2187,7 @@ function StagingReview({
     setCleanupBusy(true);
     setCleanupResult(null);
     try {
-      const res = await fetch(`${BASE_RL}/staging/cleanup`, { method: "POST" });
+      const res = await authFetch(`${BASE_RL}/staging/cleanup`, { method: "POST" });
       const data = await res.json() as { ok: boolean; message: string };
       setCleanupResult(data);
       await onCleanup();
@@ -2781,7 +2836,7 @@ function PromoteToAnchors({
     setConfirm(false);
     setResult(null);
     try {
-      const res = await fetch(`${BASE_RL}/staging/promote`, { method: "POST" });
+      const res = await authFetch(`${BASE_RL}/staging/promote`, { method: "POST" });
       const data = await res.json() as PromoteResult & { ok: boolean; message: string };
       const withTs = { ...data, ts: Date.now() };
       setResult(withTs);

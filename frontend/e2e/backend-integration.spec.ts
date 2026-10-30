@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./fixtures";
 
 /**
  * Backend integration tests — run against the live backend on port 8001.
@@ -754,24 +754,24 @@ test.describe("Evidence Graph UI (with backend)", () => {
   });
 
   test("claims count in stats row is >= 22", async ({ page }) => {
+    // Spec 081 step 6: claims live on the program's Claims surface;
+    // the register's "All" filter chip carries the total count.
     await page.goto("/");
-    await page.getByTitle("Evidence & sources").first().click();
-    await page.getByText(/🔖 Claims/).first().click();
-    await page.waitForTimeout(3000);
-    // Should show total count in the counter text
-    const counterText = await page.getByText(/\d+ total claims/).textContent();
-    if (counterText) {
-      const match = counterText.match(/(\d+)/);
-      if (match) {
-        expect(parseInt(match[1])).toBeGreaterThanOrEqual(22);
-      }
+    await page.getByTitle("Claims").first().click();
+    const chip = page.getByText(/All · \d+/).first();
+    await expect(chip).toBeVisible({ timeout: 10000 });
+    const chipText = await chip.textContent();
+    const match = chipText?.match(/(\d+)/);
+    if (match) {
+      expect(parseInt(match[1])).toBeGreaterThanOrEqual(22);
     }
   });
 
   test("Sweep tab config loads from backend", async ({ page }) => {
+    // Spec 081 step 6: the sweep lives under the Research loop now.
     await page.goto("/");
-    await page.getByTitle("Evidence & sources").first().click();
-    await page.getByText(/🔭 Sweep/).first().click();
+    await page.getByTitle("Research loop").first().click();
+    await expect(page.getByText(/Literature sweep/)).toBeVisible({ timeout: 8000 });
     await page.waitForTimeout(4000);
     // Should either show config form or loading state
     const hasConfig = await page.getByText(/Sweep Name|Primary Keywords|Exclusions/).count() > 0;

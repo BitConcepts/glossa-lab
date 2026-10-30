@@ -6,6 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Spec 081 steps 6–7 + Spec 082 frontend (2026-10-30): Evidence
+  & sources is one tabbed surface (Library / Citations /
+  Correspondence / Notebooks), Data is Corpora + Anchor sets,
+  Analysis groups Entropy / Signs / Timeline, the sweep lives
+  under the Research loop, and the bottom panel is gone. Jobs
+  gained a program column ("Not recorded" when the record carries
+  none), a details modal, and plain-language failure rows; Status
+  leads with the serving backend's identity, humanized uptime,
+  the frontend error-reporting state, the two foundation sets
+  shown separately, and this session's log; Settings is grouped
+  Tool vs Program with an API-token section. The SPA now
+  implements the Spec 082 token contract (tray `#token=` fragment
+  read once into sessionStorage, Bearer on every call, SSE by
+  fetch-streaming, a named "API token needed" state on 401) —
+  and CI's `GLOSSA_API_AUTH=off` accommodation is removed
+  (Spec 082 T010): the frontend-tests backend enforces a
+  throwaway token like a real install. IndusEvidenceView is
+  retired; the Spec 029 claims-surface pins ride on ClaimsView
+  (amendment recorded in the Spec 029 spec folder).
 - Spec 081 step 3 (2026-10-30): the Claims route is now the
   program-scoped register + detail (wireframes 03–04) — verdict
   filter chips, a falsifier column, machine-verdict and

@@ -17,7 +17,7 @@
 ## Step 2 — consumers + proof kit (PR: `feat/082-consumers`)
 
 - [x] T009 Tray: token resolution per use; shutdown header; Open Glossa Lab fragment handoff; Copy API Token menu item; named tray-log lines on resolution failure; `tests/test_tray_token_auth.py` headless tests; tray/README.md token section
-- [ ] T010 (filed, owned by Spec 081 Phase 2 landing) Remove the CI `GLOSSA_API_AUTH=off` accommodation once the SPA implements ui-contract.md — *not* part of this spec's PRs; recorded here so the switch has a named death
+- [x] T010 (filed, owned by Spec 081 Phase 2 landing) Remove the CI `GLOSSA_API_AUTH=off` accommodation once the SPA implements ui-contract.md — *not* part of this spec's PRs; recorded here so the switch has a named death — **done 2026-10-30 with Spec 081 PR-6**: ci.yml's frontend-tests backend now runs a throwaway `GLOSSA_API_TOKEN` and the e2e fixtures seed it; the SPA implements the contract.
 - [x] T011 `setup-os.cmd`: install-time token ensure (fail-loud, path-only output); stop path sends the token header when the file exists
 - [x] T012 `services/linux/healthcheck.py`: token resolution + authenticated /docs & /openapi.json legs + named failure listing paths tried; `services/linux/install.sh` passes `GLOSSA_TOKEN_FILE` for its install-time check
 - [x] T013 Proof kit: `tools/auth-proof/check_auth.py` (stdlib, bounded, marker output, exit code) + a local end-to-end run against a test instance recorded in the PR body

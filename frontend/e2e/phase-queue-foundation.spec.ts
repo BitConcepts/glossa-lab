@@ -10,7 +10,7 @@
  *   - Phase refresh button works
  *   - Job queue shows correct items
  */
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./fixtures";
 
 // Uses baseURL from playwright config.
 // With PLAYWRIGHT_USE_BACKEND=1, baseURL = http://127.0.0.1:8001, so relative paths work.

@@ -25,5 +25,5 @@
 - [x] T018 Evidence & Data consolidation; Analysis route (step 6)
 - [x] T019 Jobs / Status / Settings / Research-loop surfaces; BottomPanel removed (step 7)
 - [ ] T020 Tray amendments + extended contract tests + desktop verify (step 8)
-- [ ] T021 Dead-code removal with ledger note (step 9)
+- [x] T021 Dead-code removal with ledger note (step 9)
 - [ ] T022 Verification: C081-1…12 checks, screenshot pass vs approved wireframes, CI-parity suite, foundation check, CHANGELOG + LEDGER (step 10)

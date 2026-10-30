@@ -11655,3 +11655,30 @@ unchanged.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-30] Entry — Spec 081 PR-7: dead-code removal (step 9, T021)
+
+Deleted, each verified at zero live references first:
+StudiesView (with its bundled REAL_CATALOG_SUMMARY fallback —
+deleted, never ported, per D4), AG2Panel, AIChatView,
+CollaborationPanel, ExperimentRegistry, PhaseAdvancerPanel,
+SignDictionary, PresetsView, ExperimentsView, StudyBuilderView,
+and — discharging the step-3 note's step-9 sentence —
+DashboardView with DeciphermentPanel, which it alone mounted
+and which has been unrendered since step 5.
+
+DeciphermentPanel carried Spec 029 source pins. They are
+re-pointed under a recorded amendment
+(specs/029-tao-claim-lifecycle/pin-surface-amendment-step9-2026-10-30.md):
+the E1 purge scan widens from the panel to the whole frontend
+source tree (strictly stronger); the E2/G surface pins move to
+ProgramHome, which has carried the standing position + stage
+summary since step 4; the standing-position text is pinned on
+the project seeder, its home since Amendment 2. No guard value
+changed. All 39 Spec 029 pin tests (E1+E2+G) pass, the build is
+clean, and a post-deletion reference sweep confirms nothing
+else was orphaned (the panel's co-imports have living
+consumers).
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

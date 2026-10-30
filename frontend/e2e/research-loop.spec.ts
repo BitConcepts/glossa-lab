@@ -3,7 +3,8 @@ import { expect, test } from "@playwright/test";
 /**
  * Research Loop Panel — end-to-end tests.
  *
- * Tests the dashboard-embedded research loop panel:
+ * Tests the research loop panel (dashboard-embedded until
+ * Spec 081 step 5 moved it to its own Loop surface — D2.2):
  *   - Panel visibility and structure
  *   - Controls (cycle selector, start/stop buttons)
  *   - Metrics row rendering
@@ -17,9 +18,10 @@ import { expect, test } from "@playwright/test";
  *   npx playwright test e2e/research-loop.spec.ts
  */
 
+// Spec 081 (D2.2): the loop panel left the dashboard in step 5 —
+// it lives on its own Loop surface now; navigate there directly.
 async function navigateToDashboard(page: import("@playwright/test").Page) {
-  await page.goto("/");
-  // Dashboard is the default view
+  await page.goto("/#/loop");
   await page.waitForTimeout(500);
 }
 
@@ -117,23 +119,10 @@ test.describe("Research Loop Panel — status display", () => {
   });
 });
 
-// ── Atomic nodes counter (Phase 5) ────────────────────────────────────────────
-
-test.describe("Dashboard — Atomic Nodes counter", () => {
-  test("atomic nodes tile is visible on dashboard", async ({ page }) => {
-    await navigateToDashboard(page);
-    // UI label is 'Palette nodes' (was 'Atomic nodes' in earlier versions)
-    await expect(
-      page.getByText(/Palette nodes|Atomic nodes/i).first()
-    ).toBeVisible({ timeout: 8000 });
-  });
-
-  test("atomic nodes count is a positive number", async ({ page }) => {
-    await navigateToDashboard(page);
-    const tile = page.locator("text=/Palette nodes|Atomic nodes/").first();
-    await expect(tile).toBeVisible({ timeout: 5000 });
-  });
-});
+// Removed (Spec 081 step 5, T017): the "Dashboard — Atomic Nodes
+// counter" describe — the counter tile belonged to the retired
+// Dashboard home surface (D2.2), like the Palette-nodes test in
+// backend-integration.spec.ts.
 
 // ── Scheduler toggle (Study Loop) ─────────────────────────────────────────────
 // Phase Guide was removed; the loop panel now shows a daily scheduler toggle.

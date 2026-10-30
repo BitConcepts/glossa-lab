@@ -32,6 +32,19 @@ _DEFAULT_PROJECT = {
         "Dholavira, Rakhigarhi). Classify items by how relevant they are to "
         "advancing or challenging this decipherment effort."
     ),
+    # Spec 081 Amendment 2 (D2.2 refinement): the program's standing
+    # position is program data, carried on this record and rendered as
+    # the lead line of the program home. The text is Spec 029 Phase
+    # E2's standing position, verbatim in substance — the two
+    # panel-relative phrases of the panel rendering ("lane 2, below";
+    # "on this panel") are carried in surface-neutral form here,
+    # because the record is not a panel.
+    "standing_position": (
+        "The Indus script is not deciphered. The readings this program records are "
+        "candidate readings, each one a claim standing at a stage of the claim "
+        "lifecycle. A reading is not settled by being recorded and checked, and "
+        "no count in this program is a measure of decipherment."
+    ),
     "topic_ids": ["indus_script", "dravidian_linguistics", "ivc_archaeology"],
 }
 
@@ -41,6 +54,7 @@ async def seed_projects(db: Database) -> None:
     existing = await db.list_projects()
     if existing:
         _log.debug("Projects already seeded (%d project(s)), skipping.", len(existing))
+        await _backfill_default_standing_position(db, existing)
         return
 
     # Discover all registered graph experiments to link to the project.
@@ -57,6 +71,7 @@ async def seed_projects(db: Database) -> None:
         label=_DEFAULT_PROJECT["label"],
         description=_DEFAULT_PROJECT["description"],
         prompt_context=_DEFAULT_PROJECT["prompt_context"],
+        standing_position=_DEFAULT_PROJECT["standing_position"],
         topic_ids=_DEFAULT_PROJECT["topic_ids"],
         experiment_ids=experiment_ids,
         corpus_ids=[],
@@ -67,3 +82,41 @@ async def seed_projects(db: Database) -> None:
         "Seeded default project: %s (%d experiments linked)",
         _DEFAULT_PROJECT_ID, len(experiment_ids),
     )
+
+
+async def _backfill_default_standing_position(
+    db: Database, existing: list[dict],
+) -> None:
+    """Fill the default program's standing position where it is empty.
+
+    Existing installs predate the ``standing_position`` column (schema
+    v25), so their default record carries ''. The position must not go
+    silently missing from the program home on those installs — that is
+    the loss the Spec 029 guards exist to prevent — so an EMPTY default
+    record is backfilled from the seed text. A position the owner has
+    edited (any non-empty value) is never overwritten, and no other
+    field of the record is changed.
+    """
+    for proj in existing:
+        if proj.get("id") != _DEFAULT_PROJECT_ID:
+            continue
+        if (proj.get("standing_position") or "").strip():
+            return
+        await db.upsert_project(
+            project_id=proj["id"],
+            label=proj["label"],
+            description=proj.get("description", ""),
+            prompt_context=proj.get("prompt_context", ""),
+            question=proj.get("question", ""),
+            standing_position=_DEFAULT_PROJECT["standing_position"],
+            topic_ids=proj.get("topic_ids", []),
+            experiment_ids=proj.get("experiment_ids", []),
+            corpus_ids=proj.get("corpus_ids", []),
+            is_active=bool(proj.get("is_active")),
+            created_at=proj.get("created_at") or datetime.now(timezone.utc).isoformat(),
+        )
+        _log.info(
+            "Backfilled standing position on default project: %s",
+            _DEFAULT_PROJECT_ID,
+        )
+        return

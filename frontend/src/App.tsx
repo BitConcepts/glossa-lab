@@ -11,7 +11,8 @@ import { AIToolsView } from "./components/AIToolsView";
 import { HelpView } from "./components/HelpView";
 import { SignsView } from "./components/SignsView";
 import { TimelineView } from "./components/TimelineView";
-import { DashboardView } from "./components/DashboardView";
+import { ProgramHome } from "./components/ProgramHome";
+import { DigestionBoard, effectiveStage } from "./components/DigestionBoard";
 import { FoundationCheckView } from "./components/FoundationCheckView";
 import { DiscoveryView } from "./components/Discovery/DiscoveryView";
 import { IndusEvidenceView } from "./components/IndusEvidenceView";
@@ -507,7 +508,7 @@ function AppContent() {
           setClaimsCount(r.total);
           setDigestionCount(
             r.claims.filter((c) => {
-              const s = c.stage?.stage;
+              const s = effectiveStage(c);
               return s === "checked" || s === "explained" || s === "accepted";
             }).length,
           );
@@ -875,9 +876,9 @@ function AppContent() {
               userSelect: "text",
             }}>
               {tab === "programs" && <ProgramsView darkMode={darkMode} onNavigate={(v) => goTo(v as Tab)} />}
-              {tab === "home" && <DashboardView />}
+              {tab === "home" && <ProgramHome darkMode={darkMode} onNavigate={(v) => goTo(v as Tab)} />}
               {tab === "claims" && <IndusEvidenceView darkMode={darkMode} initialTab="claims" />}
-              {tab === "digestion" && <IndusEvidenceView darkMode={darkMode} initialTab="claims" />}
+              {tab === "digestion" && <DigestionBoard darkMode={darkMode} onNavigate={(v) => goTo(v as Tab)} />}
               {tab === "evidence" && <IndusEvidenceView darkMode={darkMode} initialTab="library" />}
               {tab === "data" && <CorporaView />}
               {(tab === "analysis" || tab === "entropy") && <EntropyDashboard />}

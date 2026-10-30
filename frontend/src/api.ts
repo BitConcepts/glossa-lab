@@ -1817,6 +1817,24 @@ export interface FoundationCheckResult {
 export const getFoundationStatus = (): Promise<FoundationStatus> =>
   request("GET", "/foundation/status");
 
+/**
+ * Spec 081 program home: the research loop's one-line status. The loop
+ * panel reads the same /study-loop family (its staging endpoints live
+ * on /research-loop; the surface split is named where the loop is
+ * presented in full — Spec 081 step 7). Only the fields the home card
+ * states are typed; everything else stays the panel's business.
+ */
+export interface StudyLoopStatus {
+  running?: boolean;
+  iterations?: number;
+  cycles_completed?: number;
+  last_run_at?: string | null;
+  [key: string]: unknown;
+}
+
+export const getStudyLoopStatus = (): Promise<StudyLoopStatus> =>
+  request("GET", "/study-loop/status");
+
 export const runFoundationCheck = (): Promise<FoundationCheckResult> =>
   request("POST", "/foundation/check");
 
@@ -2114,6 +2132,9 @@ export interface Project {
   prompt_context: string;
   /** Spec 081: the question the program tests (UI language: "program"). */
   question?: string;
+  /** Spec 081 Amendment 2: the program's standing position — its lead
+   * verdict line, rendered on the program home as program data. */
+  standing_position?: string;
   topic_ids: string[];
   experiment_ids: string[];
   corpus_ids: string[];

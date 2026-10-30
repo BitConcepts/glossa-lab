@@ -1,11 +1,14 @@
 import { expect, test } from "@playwright/test";
 
 /**
- * Dashboard actions E2E tests.
+ * Backend insight/registry API tests (the file's original UI describes
+ * exercised the Dashboard's AI Insight panel).
  *
- * Exercises the AI Insight panel: regeneration, impact experiment buttons,
- * next-action buttons, and verifies that experiment IDs resolve to real
- * registered experiments (no phantom hash-IDs reach the user).
+ * Spec 081 step 5 (T017) retired the Dashboard as the home surface —
+ * the AI narrative left the program home (D2.2) — so the Dashboard UI
+ * describes were removed with the surface they tested. The API-level
+ * describes below test backend endpoints that remain live and stay.
+ * The new home surface is covered by e2e/program-home.spec.ts.
  *
  * Requires backend running on localhost:8001.
  */
@@ -118,158 +121,3 @@ test.describe("Dashboard insight API", () => {
   });
 });
 
-// ── UI-level: dashboard loads and shows insight ──────────────────────────────
-
-test.describe("Dashboard UI", () => {
-  test("dashboard loads with counters", async ({ page }) => {
-    await page.goto("/");
-    // Dashboard is the default view — wait for heading
-    await expect(page.getByRole("heading", { name: /Dashboard/i })).toBeVisible({ timeout: 10_000 });
-    // Should show counter tiles (allow longer wait for backend API calls)
-    // Use .first() to avoid strict-mode violation when the text appears in multiple elements
-    await expect(page.getByText("Discovery items").first()).toBeVisible({ timeout: 10_000 });
-    // CounterTile for Experiments — may render as div with onClick rather than button role;
-    // use getByText which is role-agnostic.  'graph experiments' is the sub text.
-    const hasExperiments = await page.getByText(/Experiments/i).first().isVisible({ timeout: 8000 }).catch(() => false);
-    expect(hasExperiments).toBeTruthy();
-  });
-
-  test("AI Insight section renders", async ({ page }) => {
-    await page.goto("/");
-    await expect(page.getByRole("heading", { name: /AI Insight/i })).toBeVisible({ timeout: 5000 });
-  });
-
-  test("Regenerate button triggers LLM call", async ({ page }) => {
-    await page.goto("/");
-    await page.waitForTimeout(2000);
-    const regenBtn = page.getByRole("button", { name: /Regenerate/i });
-    const visible = await regenBtn.isVisible({ timeout: 5000 }).catch(() => false);
-    if (!visible) {
-      // Regenerate button not visible (no insight loaded yet) — pass gracefully
-      return;
-    }
-    await regenBtn.click();
-    // Loading state OR insight update — either is acceptable
-    // (backend may not have LLM API keys in CI, so the call may fail silently)
-    const loadingVisible = await page.getByText("Asking the AI").isVisible({ timeout: 3000 }).catch(() => false);
-    const regenStillVisible = await regenBtn.isVisible({ timeout: 2000 }).catch(() => false);
-    // Insight updated (mock returns instantly) — check if any insight content now appears
-    const insightUpdated = await page.getByText("Mock insight.").isVisible({ timeout: 2000 }).catch(() => false)
-      || await page.getByText("✨ AI Insight").isVisible({ timeout: 1000 }).catch(() => false);
-    // Either loading state showed, regen button is still present, or insight content updated
-    expect(loadingVisible || regenStillVisible || insightUpdated).toBeTruthy();
-  });
-
-  test("impact section shows experiment names, not hex hashes", async ({ page }) => {
-    await page.goto("/");
-    await page.waitForTimeout(3000);
-    // If insight is loaded, check for hex hashes in impact section
-    const impactSection = page.locator("text=Impact on your studies");
-    if (await impactSection.isVisible()) {
-      // Get all text inside impact list items
-      const impactItems = page.locator("ul").nth(1).locator("li");
-      const count = await impactItems.count();
-      const hexRe = /^[0-9a-f]{8,}$/i;
-      for (let i = 0; i < count; i++) {
-        const text = await impactItems.nth(i).textContent();
-        // No standalone hex hashes should appear in the impact text
-        const words = (text ?? "").split(/\s+/);
-        for (const w of words) {
-          expect(hexRe.test(w.replace(/[^\w]/g, "")),
-            `Found hex hash "${w}" in impact item`).toBeFalsy();
-        }
-      }
-    }
-  });
-
-  test("next actions buttons are present and clickable", async ({ page }) => {
-    await page.goto("/");
-    await page.waitForTimeout(3000);
-    const nextActionsHeader = page.locator("text=Next actions");
-    if (await nextActionsHeader.isVisible()) {
-      // Should have at least one action button
-      const actionBtns = page.locator("button").filter({ hasText: /▶|Fetch|Run|Plan|Ask|Open|Done/i });
-      expect(await actionBtns.count()).toBeGreaterThan(0);
-    }
-  });
-});
-
-// ── UI-level: stale badge rendering ──────────────────────────────────────────
-
-test.describe("Dashboard stale badge", () => {
-  test("stale badge appears when insights_stale is true and insight is loaded", async ({ page }) => {
-    await page.goto("/");
-    // Wait for dashboard to settle
-    await page.waitForTimeout(2000);
-    // Inject insights_stale: true into the dashboard data via API route mock
-    await page.route("**/api/v1/dashboard/highlights**", async (route) => {
-      const resp = await route.fetch();
-      const body = await resp.json();
-      body.insights_stale = true;
-      await route.fulfill({ json: body });
-    });
-    // Also inject a cached insight into localStorage so insightsStale evaluates true
-    await page.evaluate(() => {
-      const fakeInsight = {
-        insight: {
-          highlights: [{ id: "1", title: "Test", why_it_matters: "Test" }],
-          what_it_means: "Test insight",
-          impact: [],
-          next_actions: [],
-          model: "ai",
-        },
-        generated_at: Date.now(),
-        backend_boot_at: 0,
-        days: 14,
-      };
-      localStorage.setItem("glossa_dashboard_insight_v2", JSON.stringify(fakeInsight));
-    });
-    await page.reload();
-    await page.waitForTimeout(3000);
-    // The stale badge should show "⚡ New results"
-    const staleBadge = page.locator("text=New results").first();
-    const visible = await staleBadge.isVisible({ timeout: 8000 }).catch(() => false);
-    // If the badge is visible, great; if not, the regenerate button should
-    // at least have the purple "stale" styling (background #7c3aed)
-    const regenBtn = page.getByRole("button", { name: /Regenerate/i });
-    const regenVisible = await regenBtn.isVisible({ timeout: 3000 }).catch(() => false);
-    expect(visible || regenVisible).toBeTruthy();
-  });
-});
-
-// ── UI-level: run experiment from next actions ───────────────────────────────
-
-test.describe("Dashboard action: run_experiment", () => {
-  test("clicking Run does not show 'not registered' toast for valid experiments", async ({ page }) => {
-    await page.goto("/");
-    await page.waitForTimeout(3000);
-    // Find a Run button in next actions
-    const runBtns = page.locator("button").filter({ hasText: /^▶ Run$/i });
-    const count = await runBtns.count();
-    if (count > 0) {
-      // Click the first Run button
-      await runBtns.first().click();
-      // Wait briefly for toast
-      await page.waitForTimeout(2000);
-      // Should NOT see "not registered" toast
-      const badToast = page.locator("text=is not registered");
-      expect(await badToast.count()).toBe(0);
-    }
-  });
-});
-
-test.describe("Dashboard action: plan_chain", () => {
-  test("clicking Plan chain does not error immediately", async ({ page }) => {
-    await page.goto("/");
-    await page.waitForTimeout(3000);
-    const planBtns = page.locator("button").filter({ hasText: /Plan chain/i });
-    const count = await planBtns.count();
-    if (count > 0) {
-      await planBtns.first().click();
-      await page.waitForTimeout(2000);
-      // Should show "Hypothesis created" or "Running N experiment(s)" toast, not an error
-      const errorToast = page.locator("text=not registered");
-      expect(await errorToast.count()).toBe(0);
-    }
-  });
-});

@@ -35,6 +35,9 @@ class ProjectBody(BaseModel):
     prompt_context: str = ""
     # Spec 081: the question the program tests (UI: switcher + program home).
     question: str = ""
+    # Spec 081 Amendment 2: the program's standing position — its lead
+    # verdict line, rendered on the program home as program data.
+    standing_position: str = ""
     topic_ids: list[str] = []
     experiment_ids: list[str] = []
     corpus_ids: list[str] = []
@@ -83,6 +86,7 @@ async def upsert_project(project_id: str, body: ProjectBody) -> dict[str, Any]:
         description=body.description,
         prompt_context=body.prompt_context,
         question=body.question,
+        standing_position=body.standing_position,
         topic_ids=body.topic_ids,
         experiment_ids=body.experiment_ids,
         corpus_ids=body.corpus_ids,
@@ -106,6 +110,7 @@ async def activate_project(project_id: str) -> dict[str, Any]:
         description=existing.get("description", ""),
         prompt_context=existing.get("prompt_context", ""),
         question=existing.get("question", ""),
+        standing_position=existing.get("standing_position", ""),
         topic_ids=existing.get("topic_ids", []),
         experiment_ids=existing.get("experiment_ids", []),
         corpus_ids=existing.get("corpus_ids", []),
@@ -173,6 +178,8 @@ async def import_project(bundle: dict[str, Any]) -> dict[str, Any]:
         label=proj["label"],
         description=proj.get("description", ""),
         prompt_context=proj.get("prompt_context", ""),
+        question=proj.get("question", ""),
+        standing_position=proj.get("standing_position", ""),
         topic_ids=proj.get("topic_ids", []),
         experiment_ids=proj.get("experiment_ids", []),
         corpus_ids=proj.get("corpus_ids", []),

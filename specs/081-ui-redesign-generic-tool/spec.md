@@ -169,3 +169,44 @@ The wireframe PNG renders (T011) remain owed as a record but are superseded
 as an approval gate by the built-UI screenshot verification in phase 2
 (step 10): every built screen is screenshot at desktop 1440 and mobile 390
 and compared against its approved wireframe before it is claimed done.
+
+### Amendment 2 — D2.2 refinement: the standing position and stage summary are program data on the program home (2026-10-30)
+
+D2.2 removed the embedded DeciphermentPanel from the home. The panel,
+however, was the surface carrying two things that are not panel
+furniture: the program's **standing position** (Spec 029 Phase E2) and
+the **lane-2 stage summary** over the anchor records, guarded on the
+home surface by the Spec 029 Phase E2/G e2e guards
+(`standing-position` / `stage-summary` testids). PR-4's CI exposed the
+collision: the guards failed because their surface had been removed
+under them. Adjudicated 2026-10-29 (parent decision on the worker's
+three options; the claims-surface placement and the retire-the-guards
+options were rejected — the standing position is the program's lead
+verdict, and a guard is not retired because the furniture moved):
+
+- The standing position and the stage summary live on the **program
+  home** (wireframe 02's surface), directly under the program title,
+  rendered as **program data**:
+  - the standing position is a field of the program's own record
+    (`projects.standing_position`, schema v25), rendered verbatim
+    when the record states one; a program that states none shows
+    none — the generic shell carries no subject-matter text, and no
+    shell component supplies a position the record does not state.
+    The seeded default program carries Spec 029's standing position
+    on its record; the seeder backfills an existing default record
+    whose position is still empty, and never overwrites a stated one.
+  - the stage summary renders the decipherment payload's `by_stage`
+    anchor counts under the FR-029-08 framing (an index into the
+    anchor records, not a measure of decipherment) with the OD-4
+    legend — the same data and framing the panel rendering carries.
+- The Spec 029 E2/G guards are re-pointed at the program-home surface
+  with their assertions' text and intent unchanged (the guard specs'
+  mocked program record now carries the position, as the record it
+  guards); the amendment is recorded on the Spec 029 side in
+  `specs/029-tao-claim-lifecycle/guard-surface-amendment-2026-10-30.md`.
+- DeciphermentPanel is untouched: it keeps its own rendering (and its
+  backend source pin) for the surfaces that still mount it, until
+  step 9 (T021) removes the unrendered files with their own record.
+- D3 is unchanged: the stat cards still print only endpoint-exposed
+  figures, and the stage summary's counts are the payload's published
+  `by_stage` index — never the unexposed strict/pending split.

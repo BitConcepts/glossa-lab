@@ -236,8 +236,17 @@ async def list_library(
             except Exception:
                 pass
 
+        # Spec 083 (T023): evidence records carry the same attribution
+        # label as claims (see list_claims) in cloud mode.
+        from glossa_lab.cloud_scope import attribution_label  # noqa: PLC0415
+        from glossa_lab.config import cloud_mode_enabled  # noqa: PLC0415
+
         docs.append({
             "document_id":        d.get("document_id", f.stem),
+            **(
+                {"attribution_label": attribution_label(d)}
+                if cloud_mode_enabled() else {}
+            ),
             "title":              d.get("detected_title", ""),
             "authors":            d.get("detected_authors", []),
             "year":               d.get("detected_year"),
@@ -320,6 +329,16 @@ async def list_claims(
                 **claim,
                 "_source_file": f.stem,
             }
+            # Spec 083 (T023): attribution at serialization. A claim
+            # record with a cloud actor stamp renders that username;
+            # every other record (the whole desktop/bundle-imported
+            # register today) renders "via desktop import" — computed
+            # here, never written back into the stored record.
+            from glossa_lab.cloud_scope import attribution_label  # noqa: PLC0415
+            from glossa_lab.config import cloud_mode_enabled  # noqa: PLC0415
+
+            if cloud_mode_enabled():
+                entry["attribution_label"] = attribution_label(claim)
             entry["stage"] = serialize_stage(claim)
             entry["verified_unexplained"] = compute_verified_unexplained(claim)
             # Phase E2: the not-understood statement travels with the
@@ -628,13 +647,21 @@ async def claim_trail(claim_id: str) -> dict[str, Any]:
         if register.unseal_due():
             _save_priority_register(register)
         priority_entries = register.entries_for_claim(claim_id)
-    return build_claim_trail(
+    trail = build_claim_trail(
         record,
         record_kind=record_kind,
         claim_id=claim_id,
         priority_entries=priority_entries,
         strict_set_rule=strict_rule,
     )
+    # Spec 083 (T023): the trail is the digestion/evidence surface —
+    # label its actor the same way the claims list does.
+    from glossa_lab.cloud_scope import attribution_label  # noqa: PLC0415
+    from glossa_lab.config import cloud_mode_enabled  # noqa: PLC0415
+
+    if cloud_mode_enabled() and isinstance(trail, dict):
+        trail = {**trail, "attribution_label": attribution_label(record)}
+    return trail
 
 
 # ── Hypotheses ────────────────────────────────────────────────────────────────

@@ -380,6 +380,17 @@ def create_app() -> FastAPI:
     # startup posture is logged — mode and token file path, never
     # the value (FR-006).
     application.add_middleware(ApiTokenMiddleware)
+
+    # Spec 083 Step 2 (T018/T019): workspace scope enforcement. Cloud
+    # mode only — under GLOSSA_CLOUD=1 the edge-injected identity is
+    # enforced per request (service credential, scoped 404s, terminal
+    # gating; see glossa_lab/cloud_scope.py). Desktop installs never
+    # install it and are unchanged.
+    if cloud_mode_enabled():
+        from glossa_lab.cloud_scope import CloudScopeMiddleware  # noqa: PLC0415
+
+        application.add_middleware(CloudScopeMiddleware)
+        _log.info("Cloud mode: workspace scope middleware installed (Spec 083)")
     if auth_disabled():
         _log.warning(
             "API token authentication DISABLED by GLOSSA_API_AUTH=off "

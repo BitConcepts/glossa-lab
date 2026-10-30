@@ -1,0 +1,67 @@
+# Glossa Lab cloud edge — Spec 083 (T012).
+#
+# PRODUCTION ONLY (Amendment 2, C083-14): exactly one deployment exists,
+# at glossa.bitconcepts.tech. Verification runs against the local
+# production-shaped build (cloud/docker-compose.yml) and ephemeral
+# preview deployments (`wrangler deploy --name glossa-edge-preview-<suffix>`,
+# torn down after the run). Do NOT add environment sections or extra
+# routes that create another standing environment.
+
+name = "glossa-edge"
+main = "src/index.ts"
+compatibility_date = "2025-10-01"
+
+# The single production hostname.
+[[routes]]
+pattern = "glossa.bitconcepts.tech"
+custom_domain = true
+
+# D1 identity store (migrations in ./migrations, T010).
+# database_id is a PLACEHOLDER: the real database is created once the
+# Cloudflare account gate clears, and the deploy step fills in the id
+# (`wrangler d1 create glossa-identity`, then paste the returned id).
+# The deploy workflow refuses to run while the placeholder stands.
+[[d1_databases]]
+binding = "DB"
+database_name = "glossa-identity"
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "migrations"
+
+# R2 bucket for dataset bundles (Step 1 bundle plumbing, T011).
+[[r2_buckets]]
+binding = "DATASETS"
+bucket_name = "glossa-datasets"
+
+# The Durable Object front: one class, bound once. The Worker always
+# addresses the single named instance "glossa-lab" (src/worker.ts).
+[[durable_objects.bindings]]
+name = "GLOSSA_FRONT"
+class_name = "GlossaFront"
+
+# Durable Object class registration (SQLite-backed storage). This
+# [exports] block is the current registration mechanism; it supersedes
+# the legacy [[migrations]] array, which cannot be combined with it.
+[exports.GlossaFront]
+type = "durable-object"
+storage = "sqlite"
+
+# The container application (name: glossa-lab, the single instance the
+# GlossaFront Durable Object fronts). `image` is a path to the
+# Dockerfile, resolved relative to this file's directory (cloud/edge/),
+# so ../../Dockerfile is the repository-root Dockerfile — the same
+# image the local production-shaped build runs. Wrangler builds it
+# (Docker required) with the Dockerfile's directory as build context
+# and pushes it to the Cloudflare container registry on deploy.
+# max_instances = 1 is a correctness property, not a sizing choice:
+# the application is single-instance by design (spec Assumptions).
+[[containers]]
+class_name = "GlossaFront"
+image = "../../Dockerfile"
+instance_type = "standard-1"
+max_instances = 1
+
+# Secrets are NOT declared here. The edge-to-container service
+# credential is a Worker secret:
+#   wrangler secret put SERVICE_CREDENTIAL
+# (see README.md, "Deploy checklist"). No secret value ever appears in
+# this file, in code, or in the repository.

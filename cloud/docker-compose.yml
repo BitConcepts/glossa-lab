@@ -1,0 +1,71 @@
+# Local production-shaped build — Spec 083 Step 1 (T013).
+#
+# Reproduces the production topology on one machine for the Step 3/5
+# proofs (Amendment 2: verification runs here and on ephemeral preview
+# deployments; there is no other standing environment):
+#
+#   browser ──> edge (wrangler dev, this repo's cloud/edge Worker)
+#                 │  session termination, login wall, noindex perimeter
+#                 └──> GlossaFront Durable Object ──> app container
+#                                                        (repo-root
+#                                                        Dockerfile,
+#                                                        GLOSSA_CLOUD=1)
+#
+# D1 and R2 are wrangler's local persistence stand-ins (same bindings,
+# same migrations) — the identity data is throwaway local state, never
+# the production database.
+#
+# Usage (from the repository root):
+#   docker compose -f cloud/docker-compose.yml build
+#   docker compose -f cloud/docker-compose.yml up
+#   # then, once, to create the local identity schema:
+#   docker compose -f cloud/docker-compose.yml exec edge \
+#     npx wrangler d1 migrations apply glossa-identity --local
+# Proofs run against the edge at http://localhost:8787 — never against
+# the app service directly, mirroring production, where the container
+# is reachable only through the Durable Object.
+
+name: glossa-cloud-local
+
+services:
+  # The application container: the exact image production runs, built
+  # from the repository-root Dockerfile. Also the target for the image
+  # smoke checks (the AEE pin + GAP-ENV regression of T008 run against
+  # this service's image). Its port is published on localhost ONLY so
+  # smoke checks can reach it; application proofs must go through the
+  # edge, exactly as in production.
+  app:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    environment:
+      GLOSSA_CLOUD: "1"
+    ports:
+      - "127.0.0.1:8001:8001"
+
+  # The edge: the real Worker + migrations under `wrangler dev`
+  # (miniflare), with local D1/R2 persistence. Wrangler's local
+  # container support builds and runs the GlossaFront container from
+  # the same repo-root Dockerfile, which needs the host Docker socket;
+  # the socket mount is local-only and exists solely for that.
+  edge:
+    image: node:24-slim
+    working_dir: /repo/cloud/edge
+    command: >
+      sh -c "npm ci && npx wrangler dev
+      --ip 0.0.0.0 --port 8787 --persist-to /state"
+    environment:
+      # Local stand-in for the Worker secret of the same name. This
+      # value is a throwaway for the local build only; production's
+      # value lives in the platform secret store (wrangler secret put)
+      # and in no file anywhere.
+      SERVICE_CREDENTIAL: "local-only-throwaway-credential"
+    ports:
+      - "8787:8787"
+    volumes:
+      - ..:/repo
+      - edge-state:/state
+      - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+  edge-state:

@@ -66,7 +66,7 @@ from glossa_lab.api.signs import router as signs_router
 from glossa_lab.api.sign_images import router as sign_images_router
 from glossa_lab.api.texts import router as texts_router
 from glossa_lab.auth import ApiTokenMiddleware, auth_disabled, token_file_path
-from glossa_lab.config import get_settings
+from glossa_lab.config import cloud_mode_enabled, get_settings
 from glossa_lab.database import close_db, init_db
 from glossa_lab.engine import run_engine_loop
 from glossa_lab.log_setup import setup_logging
@@ -91,6 +91,13 @@ def get_ollama_state() -> dict[str, bool]:
 def _try_start_ollama() -> None:
     """Start `ollama serve` in the background if Ollama is installed."""
     global _ollama_installed, _ollama_started  # noqa: PLW0603
+
+    # Spec 083 (T007): in cloud mode Ollama is neither bundled nor
+    # probed — report offline exactly as on a desktop without Ollama.
+    if cloud_mode_enabled():
+        _ollama_installed = False
+        _ollama_started = False
+        return
 
     exe = shutil.which("ollama")
     if exe is None:
@@ -421,8 +428,19 @@ def create_app() -> FastAPI:
     application.include_router(ollama_router, prefix="/api/v1")
     application.include_router(terminal_router, prefix="/api/v1")
     application.include_router(settings_router)
-    application.include_router(shutdown_router, prefix="/api/v1")
-    application.include_router(env_router, prefix="/api/v1")
+    # Spec 083 (T007): under GLOSSA_CLOUD=1 the host-management routers
+    # are NOT registered at all (absent, not gated): the env router
+    # mutates the running instance's Python environment, which
+    # contradicts the immutable container image, and instance lifecycle
+    # (shutdown) belongs to the platform, not to a shared instance's
+    # users (spec 083, Out of scope). Desktop registration is unchanged.
+    if cloud_mode_enabled():
+        _log.info(
+            "Cloud mode (GLOSSA_CLOUD=1): env and shutdown routers not registered"
+        )
+    else:
+        application.include_router(shutdown_router, prefix="/api/v1")
+        application.include_router(env_router, prefix="/api/v1")
     application.include_router(node_registry_router, prefix="/api/v1")
     application.include_router(rag_router, prefix="/api/v1")
     application.include_router(experiment_graphs_router, prefix="/api/v1")

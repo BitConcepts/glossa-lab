@@ -187,5 +187,45 @@ table.tbl tr:last-child td { border-bottom: none; }
   border-radius: 8px; padding: 12px 14px; background: var(--card); font-size: 13px;
 }
 .callout.warn { border-left-color: var(--warn); background: var(--warn-bg); }
-.callout.bad { border-left-color: var(--bad); background: var(
-...[truncated 8292 chars]
+.callout.bad { border-left-color: var(--bad); background: var(--bad-bg); }
+
+/* ── Reconstructed tail (Spec 083 package only) ──────────────────────
+   The Spec 081 design-system file, as committed in the repo and copied
+   in the 081 package, ends mid-rule at .callout.bad with a tool
+   truncation marker in place of its remaining rules. The rules below
+   restore the furniture the 081 screens use (.divider, .annotation,
+   .mobile-nav, responsive shell) in the same visual language so the
+   083 wireframes render as designed. The repo file itself is NOT
+   repaired here — that defect is reported with this package. */
+
+.divider { border-top: 1px solid var(--line-soft); margin: 14px 0; }
+
+.annotation {
+  margin-top: 30px; border: 1px dashed var(--faint); border-radius: var(--radius);
+  background: #fff; padding: 16px 18px; font-size: 12.5px; color: var(--neutral);
+}
+.annotation .a-title {
+  font-size: 11px; font-weight: 800; letter-spacing: .8px; text-transform: uppercase;
+  color: var(--navy); margin-bottom: 10px;
+}
+.annotation dl { display: grid; grid-template-columns: 92px 1fr; gap: 6px 12px; }
+.annotation dt { font-weight: 700; color: var(--ink); }
+.annotation dd { margin: 0; }
+
+.mobile-nav { display: none; }
+@media (max-width: 820px) {
+  .sidebar { display: none; }
+  .content { padding: 16px 14px 76px; }
+  .grid.c2, .grid.c3, .grid.c4, .grid.main-side { grid-template-columns: 1fr; }
+  .topbar { padding: 10px 14px; flex-wrap: wrap; }
+  .mobile-nav {
+    display: flex; position: fixed; bottom: 0; left: 0; right: 0; z-index: 20;
+    background: var(--card); border-top: 1px solid var(--line);
+  }
+  .mobile-nav a {
+    flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px;
+    padding: 8px 0 9px; font-size: 10px; font-weight: 600; color: var(--muted);
+  }
+  .mobile-nav a .mi { font-size: 16px; }
+  .mobile-nav a.active { color: var(--accent); }
+}

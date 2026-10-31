@@ -255,6 +255,36 @@ describe("/api/account — self-service", () => {
   });
 });
 
+describe("workspace update + restore (wireframe 09 Manage)", () => {
+  it("renames and re-describes without touching the slug, and restores an archive", async () => {
+    const h = makeHarness();
+    const admin = await ownerCookie(h);
+    const created = await h.call(
+      "/api/admin/workspaces",
+      post("/api/admin/workspaces", { name: "Comparative Scripts" }, admin),
+    );
+    const ws = ((await created.json()) as any).workspace;
+    const patched = await h.call(`/api/admin/workspaces/${ws.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: "Comparative Scripts II", description: "Cross-script comparisons." }),
+      cookie: admin,
+    });
+    expect(patched.status).toBe(200);
+    const after = ((await patched.json()) as any).workspace;
+    expect(after.name).toBe("Comparative Scripts II");
+    expect(after.description).toBe("Cross-script comparisons.");
+    expect(after.slug).toBe(ws.slug);
+    expect(h.store.audit.some((a) => a.event === "workspace_updated")).toBe(true);
+
+    await h.call(`/api/admin/workspaces/${ws.id}/archive`, post("", {}, admin));
+    const restored = await h.call(`/api/admin/workspaces/${ws.id}/restore`, post("", {}, admin));
+    expect(restored.status).toBe(200);
+    expect(((await restored.json()) as any).workspace.archived_at).toBeNull();
+    expect(h.store.audit.some((a) => a.event === "workspace_restored")).toBe(true);
+  });
+});
+
 describe("workspace description + admin list enrichment (migration 0005)", () => {
   it("round-trips the description and reports members + the caller's role", async () => {
     const h = makeHarness();

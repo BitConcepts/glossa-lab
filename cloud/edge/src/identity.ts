@@ -840,6 +840,41 @@ export async function handleAdminApi(
     });
   }
 
+  // Step 3 (wireframe 09 Manage): restore an archived workspace.
+  if (wsSub?.sub === "restore" && method === "POST") {
+    const ws = await deps.store.getWorkspaceById(wsSub.id);
+    if (!ws) return jsonError(404, "workspace_not_found", "No such workspace.");
+    const restored = await deps.store.unarchiveWorkspace(ws.id);
+    if (restored) {
+      await auditBestEffort(deps, actor, "workspace_restored", ws.id, {});
+    }
+    const updated = await deps.store.getWorkspaceById(ws.id);
+    return json(200, { workspace: updated ? publicWorkspace(updated) : null });
+  }
+
+  // Step 3 (wireframe 09 Manage): rename / re-describe. The slug is
+  // the workspace's identity and never changes here.
+  if (seg.length === 4 && seg[2] === "workspaces" && method === "PATCH") {
+    const ws = await deps.store.getWorkspaceById(seg[3]);
+    if (!ws) return jsonError(404, "workspace_not_found", "No such workspace.");
+    const body = await readJsonBody(request);
+    const name =
+      typeof body.name === "string" && body.name.trim() ? body.name.trim() : ws.name;
+    const description =
+      body.description === null
+        ? null
+        : typeof body.description === "string"
+          ? body.description.trim().slice(0, 500) || null
+          : ws.description;
+    await deps.store.updateWorkspace(ws.id, { name, description });
+    await auditBestEffort(deps, actor, "workspace_updated", ws.id, {
+      from: { name: ws.name, description: ws.description },
+      to: { name, description },
+    });
+    const updated = await deps.store.getWorkspaceById(ws.id);
+    return json(200, { workspace: updated ? publicWorkspace(updated) : null });
+  }
+
   return null;
 }
 

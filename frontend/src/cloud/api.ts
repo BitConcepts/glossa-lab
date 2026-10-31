@@ -191,6 +191,23 @@ export const archiveWorkspace = (
     method: "POST",
   });
 
+export const restoreWorkspace = (
+  workspaceId: string,
+): Promise<{ workspace: AdminWorkspace }> =>
+  cloudFetch(`/api/admin/workspaces/${encodeURIComponent(workspaceId)}/restore`, {
+    method: "POST",
+  });
+
+export const updateWorkspace = (
+  workspaceId: string,
+  body: { name?: string; description?: string | null },
+): Promise<{ workspace: AdminWorkspace }> =>
+  cloudFetch(`/api/admin/workspaces/${encodeURIComponent(workspaceId)}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+
 export const listAudit = (params: {
   event?: string;
   actorId?: string;

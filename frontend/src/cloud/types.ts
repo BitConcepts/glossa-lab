@@ -57,6 +57,7 @@ export interface AdminUser extends CloudUser {
 
 export interface AdminInvite {
   id: string;
+  created_by: string;
   email: string | null;
   workspace_grants: Record<string, WorkspaceRole>;
   created_at: string;
@@ -64,7 +65,16 @@ export interface AdminInvite {
   revoked_at: string | null;
   redeemed_by: string | null;
   redeemed_at: string | null;
-  status: "outstanding" | "redeemed" | "revoked" | "expired";
+}
+
+export type InviteLifecycle = "outstanding" | "redeemed" | "revoked" | "expired";
+
+/** The lifecycle is computed from the stored fields, as the edge serves it. */
+export function inviteState(i: AdminInvite): InviteLifecycle {
+  if (i.revoked_at) return "revoked";
+  if (i.redeemed_at) return "redeemed";
+  if (i.expires_at <= new Date().toISOString()) return "expired";
+  return "outstanding";
 }
 
 export interface AdminWorkspaceMember {

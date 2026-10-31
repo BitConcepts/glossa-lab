@@ -272,6 +272,22 @@ export class InMemoryIdentityStore implements IdentityStore, SessionStore {
     }
     return out.sort((a, b) => (a.username < b.username ? -1 : 1));
   }
+  async updateWorkspace(
+    id: string,
+    fields: { name: string; description: string | null },
+  ): Promise<void> {
+    const ws = this.workspaces.find((w) => w.id === id);
+    if (ws) {
+      ws.name = fields.name;
+      ws.description = fields.description;
+    }
+  }
+  async unarchiveWorkspace(id: string): Promise<boolean> {
+    const ws = this.workspaces.find((w) => w.id === id);
+    if (!ws || !ws.archivedAt) return false;
+    ws.archivedAt = null;
+    return true;
+  }
 }
 
 /** Fast deterministic hasher for API-flow tests (real Argon2id is

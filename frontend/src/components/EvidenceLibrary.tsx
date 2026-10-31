@@ -205,6 +205,11 @@ function LibraryTab({ darkMode, cardBg, border, fg, muted, inputBg, inputBdr, to
                     {doc.doi ? ` · DOI: ${doc.doi}` : ""}
                   </div>
                 )}
+                {doc.attribution_label && (
+                  <div style={{ fontSize: 11, color: muted }} title="Who registered this record (cloud attribution)">
+                    {`Registered by ${doc.attribution_label}`}
+                  </div>
+                )}
               </div>
               <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 4, flexShrink: 0 }}>
                 <span style={{ fontSize: 9, padding: "2px 7px", borderRadius: 8,

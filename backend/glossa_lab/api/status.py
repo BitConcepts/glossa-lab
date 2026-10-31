@@ -53,6 +53,37 @@ async def status():
     )
     pipelines = get_registered_pipelines()
 
+    # Spec 083 (T027): the dataset identity the shell's dataset chip
+    # renders — the bundle currently in place (C083-13), or None when
+    # no bundle has been hydrated into this data dir. Best-effort,
+    # like the rest of the identity block: a missing or unreadable
+    # manifest means "no bundle identity to state", never an error.
+    dataset = None
+    if data_dir:
+        try:
+            import os
+
+            from glossa_lab.cloud_bundles import MANIFEST_NAME, served_manifest
+
+            manifest = served_manifest(data_dir)
+            if manifest is not None:
+                hydrated_at = ""
+                try:
+                    mtime = os.path.getmtime(os.path.join(data_dir, MANIFEST_NAME))
+                    hydrated_at = datetime.fromtimestamp(
+                        mtime, tz=timezone.utc
+                    ).isoformat()
+                except Exception:  # noqa: BLE001 — mtime is best-effort
+                    hydrated_at = ""
+                dataset = {
+                    "bundle_id": manifest.bundle_id,
+                    "source_commit": manifest.source_commit,
+                    "built_at": manifest.built_at,
+                    "hydrated_at": hydrated_at,
+                }
+        except Exception:  # noqa: BLE001 — identity is best-effort
+            dataset = None
+
     ollama = get_ollama_state()
     return {
         "status": "healthy",
@@ -67,6 +98,7 @@ async def status():
             else ""
         ),
         "data_dir": data_dir,
+        "dataset": dataset,
         "db_ready": db is not None,
         "jobs": job_counts,
         "job_counts": job_counts,

@@ -32,6 +32,9 @@ import {
 } from "./api";
 import { fmtClock } from "./components/ui081";
 import { CloudGate, CloudSessionProvider, useCloudSession } from "./cloud/session";
+import { AdminView } from "./cloud/AdminView";
+import { AccountView } from "./cloud/AccountView";
+import { CloudWorkspaceCard, UserChip, useAdminInviteCount } from "./cloud/widgets";
 
 /**
  * Spec 081 shell. The tool's top-level unit is the *program* (the
@@ -47,6 +50,9 @@ type Tab =
   | "programs" | "home" | "claims" | "digestion" | "evidence" | "data"
   | "analysis" | "experiments" | "discovery" | "loop" | "reports"
   | "jobs" | "status" | "settings" | "help"
+  // Cloud edition (Spec 083): account self-service + the admin
+  // surface. These tabs exist only while a cloud session is active.
+  | "account" | "admin"
   // Utility routes (not in the nav): the foundation check opens from
   // the program home (FR-006); AI tools is a workbench reached from
   // the palette/settings, not a destination (Q6); builder is the
@@ -88,6 +94,7 @@ const VALID_TABS: ReadonlySet<string> = new Set([
   "programs", "home", "claims", "digestion", "evidence", "data", "analysis",
   "experiments", "discovery", "loop", "reports", "jobs", "status", "settings",
   "help", "foundation-check", "ai-tools", "builder", "entropy", "signs", "timeline",
+  "account", "admin",
 ]);
 
 const TAB_LABELS: Partial<Record<Tab, string>> = {
@@ -96,6 +103,7 @@ const TAB_LABELS: Partial<Record<Tab, string>> = {
   experiments: "Experiments", discovery: "Discovery", loop: "Research loop",
   reports: "Reports & ledger", jobs: "Jobs", status: "Status",
   settings: "Settings", help: "Help", "foundation-check": "Foundation Check",
+  account: "Account & security", admin: "Admin",
   "ai-tools": "AI Tools", builder: "Manage programs",
   entropy: "Analysis", signs: "Analysis", timeline: "Analysis",
 };
@@ -584,6 +592,21 @@ function AppContent() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [projCtx.activeProject]);
 
+  // Spec 083 (T028): a cloud session must never present a program
+  // the user cannot enter as the active one (e.g. a localStorage
+  // remnant from another account, or a membership since revoked).
+  // The container enforces access on every request regardless —
+  // this keeps the shell honest about what it shows as open.
+  const activeProjectId = projCtx.activeProject?.id ?? null;
+  const activeProjectSlug = projCtx.activeProject?.slug;
+  useEffect(() => {
+    if (!cloud.active || !activeProjectId || !activeProjectSlug) return;
+    if (!cloud.workspaces.some((w) => w.slug === activeProjectSlug)) {
+      void projCtx.setActiveProject(null);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cloud.active, cloud.workspaces, activeProjectId, activeProjectSlug]);
+
   const programItems: NavItem[] = [
     { id: "home", label: "Home", icon: "⌂" },
     { id: "claims", label: "Claims", icon: "§", count: claimsCount },
@@ -596,10 +619,20 @@ function AppContent() {
     { id: "loop", label: "Research loop", icon: "↻" },
     { id: "reports", label: "Reports & ledger", icon: "▨" },
   ];
+  const adminInviteCount = useAdminInviteCount(cloud.isAdmin);
   const toolItems: NavItem[] = [
     { id: "jobs", label: "Jobs", icon: "⚙", count: activeJobCount || undefined },
     { id: "status", label: "Status", icon: "♥" },
     { id: "settings", label: "Settings", icon: "⚙" },
+    // Cloud edition (Spec 083, wireframe 07): the account entry for
+    // every signed-in user; the Admin entry for global admins only —
+    // for a member it disappears entirely, it is not greyed out.
+    ...(cloud.active
+      ? [{ id: "account" as Tab, label: "Account & security", icon: "👤" }]
+      : []),
+    ...(cloud.isAdmin
+      ? [{ id: "admin" as Tab, label: "Admin", icon: "👥", count: adminInviteCount || undefined }]
+      : []),
     { id: "help", label: "Help", icon: "?" },
   ];
   const toolHomeItems: NavItem[] = [
@@ -629,7 +662,7 @@ function AppContent() {
   const muted = darkMode ? "#94a3b8" : "#6b7280";
 
   const currentLabel = TAB_LABELS[tab] ?? tab;
-  const isToolView = (["jobs", "status", "settings", "help", "ai-tools"] as Tab[]).includes(tab);
+  const isToolView = (["jobs", "status", "settings", "help", "ai-tools", "account", "admin"] as Tab[]).includes(tab);
   const crumbMiddle = tab === "programs" ? null : isToolView ? "Tool" : (projCtx.activeProject?.label ?? "Tool");
 
   const NavBtn = ({ item }: { item: NavItem }) => {
@@ -720,7 +753,20 @@ function AppContent() {
           </div>
         </div>
 
-        <ProgramSwitchCard onNavigate={goTo} />
+        {cloud.active ? (
+          <CloudWorkspaceCard
+            projects={projCtx.projects}
+            activeProject={projCtx.activeProject}
+            onSelectProject={(id) => { void projCtx.setActiveProject(id); goTo("home"); }}
+            onOpenPrograms={() => goTo("programs")}
+            onOpenAdminWorkspaces={() => {
+              try { sessionStorage.setItem("glossa_admin_tab", "workspaces"); } catch { /* */ }
+              goTo("admin");
+            }}
+          />
+        ) : (
+          <ProgramSwitchCard onNavigate={goTo} />
+        )}
 
         <div style={{ flex: 1, overflowY: "auto", paddingTop: 2, paddingBottom: 6 }}>
           {hasProgram ? (
@@ -734,6 +780,13 @@ function AppContent() {
             <NavSection title="Tool home" items={toolHomeItems} />
           )}
         </div>
+
+        {cloud.active && (
+          <UserChip
+            onOpenAccount={() => goTo("account")}
+            onOpenAdmin={() => goTo("admin")}
+          />
+        )}
       </aside>
 
       <div style={{
@@ -891,6 +944,8 @@ function AppContent() {
                   {tab === "status" && <StatusView />}
                   {tab === "settings" && <SettingsView darkMode={darkMode} />}
                   {tab === "help" && <HelpView />}
+                  {tab === "account" && cloud.active && <AccountView />}
+                  {tab === "admin" && cloud.isAdmin && <AdminView />}
                   {tab === "foundation-check" && <FoundationCheckView />}
                   {tab === "ai-tools" && <AIToolsView />}
                   {tab === "builder" && <ProjectsView />}

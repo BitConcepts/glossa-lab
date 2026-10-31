@@ -178,6 +178,14 @@ export interface IdentityStore {
   findWorkspaceOwner(workspaceId: string): Promise<string | null>;
   /** Stored members of one workspace (Step 3 admin reads). */
   listWorkspaceMembers(workspaceId: string): Promise<WorkspaceMember[]>;
+  /** Rename / re-describe a workspace (Step 3, wireframe 09 Manage).
+   *  The slug never changes: it is the workspace's identity. */
+  updateWorkspace(
+    id: string,
+    fields: { name: string; description: string | null },
+  ): Promise<void>;
+  /** Reverse an archive (Step 3, wireframe 09 Manage). */
+  unarchiveWorkspace(id: string): Promise<boolean>;
 }
 
 // ---------------------------------------------------------------------------
@@ -713,6 +721,26 @@ export class D1IdentityStore implements IdentityStore, SessionStore {
       username: r.username,
       role: r.role,
     }));
+  }
+
+  async updateWorkspace(
+    id: string,
+    fields: { name: string; description: string | null },
+  ): Promise<void> {
+    await this.db
+      .prepare(`UPDATE workspaces SET name = ?, description = ? WHERE id = ?`)
+      .bind(fields.name, fields.description, id)
+      .run();
+  }
+
+  async unarchiveWorkspace(id: string): Promise<boolean> {
+    const res = await this.db
+      .prepare(
+        `UPDATE workspaces SET archived_at = NULL WHERE id = ? AND archived_at IS NOT NULL`,
+      )
+      .bind(id)
+      .run();
+    return changes(res) === 1;
   }
 }
 

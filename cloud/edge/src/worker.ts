@@ -19,6 +19,10 @@
 //      POST /setup, and the whole /api/admin/* surface. Account
 //      creation exists ONLY as invite redemption and the setup —
 //      there is no other registration route in this Worker (FR-001).
+//      Step 3 adds the read/self-service companions the frontend
+//      needs: GET /invite/:code/preview, GET /api/session, the
+//      /api/account/* self-service surface, GET /api/admin/audit,
+//      and workspace descriptions (migration 0005).
 //   6. Everything else that reaches the container goes through the
 //      single named Durable Object instance (GlossaFront,
 //      "glossa-lab").
@@ -45,10 +49,13 @@ import {
 } from "./identity-store";
 import {
   auditContainerDenial,
+  handleAccountApi,
   handleAdminApi,
+  handleInvitePreview,
   handleInviteRedeem,
   handleLogin,
   handleLogout,
+  handleSessionIdentity,
   handleSetup,
   isSetupOpen,
   jsonError,
@@ -175,6 +182,34 @@ async function route(
       identityDeps,
       decodeURIComponent(redeemMatch[1]),
     );
+  }
+
+  // ---- Step 3 edge-handled read + self-service routes ----
+
+  const previewMatch = pathname.match(/^\/invite\/([^/]+)\/preview$/);
+  if (previewMatch && method === "GET") {
+    if (!identityDeps) return identityUnavailable();
+    return handleInvitePreview(
+      identityDeps,
+      decodeURIComponent(previewMatch[1]),
+    );
+  }
+
+  if (pathname === "/api/session" && method === "GET") {
+    if (!identityDeps) return identityUnavailable();
+    if (!identity) {
+      return jsonError(401, "authentication_required", "Sign in is required for this route.");
+    }
+    return handleSessionIdentity(identityDeps, identity);
+  }
+
+  if (pathname === "/api/account" || pathname.startsWith("/api/account/")) {
+    if (!identityDeps) return identityUnavailable();
+    if (!identity || !tokenHash) {
+      return jsonError(401, "authentication_required", "Sign in is required for this route.");
+    }
+    const handled = await handleAccountApi(request, identityDeps, identity, tokenHash, pathname);
+    return handled ?? jsonError(404, "not_found", "Not found.");
   }
 
   if (pathname === "/setup") {

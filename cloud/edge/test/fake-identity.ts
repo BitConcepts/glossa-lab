@@ -70,6 +70,25 @@ export class InMemoryIdentityStore implements IdentityStore, SessionStore {
   async appendAudit(row: AuditRow): Promise<void> {
     this.audit.push({ ...row, detail: { ...row.detail } });
   }
+  async listAudit(filter: {
+    event?: string;
+    actorId?: string;
+    limit: number;
+    offset: number;
+  }): Promise<AuditRow[]> {
+    const rows = this.audit.filter(
+      (r) =>
+        (!filter.event || r.event === filter.event) &&
+        (!filter.actorId || r.actorId === filter.actorId),
+    );
+    // Newest first; id breaks ties the same way the D1 read does.
+    const sorted = [...rows].sort((a, b) =>
+      a.ts === b.ts ? (a.id < b.id ? 1 : -1) : a.ts < b.ts ? 1 : -1,
+    );
+    return sorted
+      .slice(filter.offset, filter.offset + filter.limit)
+      .map((r) => ({ ...r, detail: { ...r.detail } }));
+  }
 
   // --- setup ---
   async getSetupState(): Promise<SetupStateRow | null> {
@@ -172,6 +191,14 @@ export class InMemoryIdentityStore implements IdentityStore, SessionStore {
       u.status = "disabled";
     }
   }
+  async updateUserEmail(id: string, email: string | null): Promise<void> {
+    const u = this.users.find((x) => x.id === id);
+    if (u) u.email = email;
+  }
+  async updateUserPasswordHash(id: string, passwordHash: string): Promise<void> {
+    const u = this.users.find((x) => x.id === id);
+    if (u) u.passwordHash = passwordHash;
+  }
 
   // --- sessions ---
   async createSession(row: SessionRow): Promise<void> {
@@ -182,6 +209,19 @@ export class InMemoryIdentityStore implements IdentityStore, SessionStore {
   }
   async deleteSessionByTokenHash(tokenHash: string): Promise<void> {
     this.sessions = this.sessions.filter((s) => s.tokenHash !== tokenHash);
+  }
+  async listSessionsForUser(userId: string): Promise<SessionRow[]> {
+    return this.sessions
+      .filter((s) => s.userId === userId && !s.revokedAt)
+      .map((s) => ({ ...s }))
+      .sort((a, b) => (a.lastSeenAt < b.lastSeenAt ? 1 : -1));
+  }
+  async deleteSessionById(userId: string, sessionId: string): Promise<boolean> {
+    const before = this.sessions.length;
+    this.sessions = this.sessions.filter(
+      (s) => !(s.id === sessionId && s.userId === userId),
+    );
+    return this.sessions.length !== before;
   }
 
   // --- workspaces + roles ---
@@ -221,6 +261,16 @@ export class InMemoryIdentityStore implements IdentityStore, SessionStore {
       if (roles[workspaceId] === "owner") return userId;
     }
     return null;
+  }
+  async listWorkspaceMembers(workspaceId: string) {
+    const out: { userId: string; username: string; role: WorkspaceRole }[] = [];
+    for (const [userId, roles] of this.roles) {
+      const role = roles[workspaceId];
+      if (!role) continue;
+      const user = this.users.find((u) => u.id === userId);
+      out.push({ userId, username: user?.username ?? userId, role });
+    }
+    return out.sort((a, b) => (a.username < b.username ? -1 : 1));
   }
 }
 

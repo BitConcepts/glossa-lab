@@ -9,7 +9,12 @@
 // Audit (T022, FR-012): every handler appends its audit rows through
 // the store's append-only audit path, with actor + timestamp.
 
-import type { IdentityStore, UserRow } from "./identity-store";
+import type {
+  AuditRow,
+  IdentityStore,
+  UserRow,
+  WorkspaceRow,
+} from "./identity-store";
 import type { SessionIdentity } from "./session-store";
 import {
   DUMMY_PASSWORD_HASH,
@@ -135,6 +140,22 @@ const WORKSPACE_ROLES: WorkspaceRole[] = ["owner", "admin", "member", "viewer"];
 
 function isGlobalType(v: unknown): v is GlobalType {
   return typeof v === "string" && (GLOBAL_TYPES as string[]).includes(v);
+}
+/** Global Owner/Admin — the two types holding implicit Workspace Admin. */
+function isGlobalAdmin(t: GlobalType): boolean {
+  return t === "admin" || t === "owner";
+}
+/** Public audit entry: every stored field is safe to show an admin. */
+export function publicAudit(r: AuditRow) {
+  return {
+    id: r.id,
+    ts: r.ts,
+    actor_id: r.actorId,
+    actor_label: r.actorLabel,
+    event: r.event,
+    target: r.target,
+    detail: r.detail,
+  };
 }
 function isWorkspaceRole(v: unknown): v is WorkspaceRole {
   return typeof v === "string" && (WORKSPACE_ROLES as string[]).includes(v);
@@ -442,6 +463,18 @@ function publicInvite(invite: import("./identity-store").InviteRow) {
   };
 }
 
+export function publicWorkspace(w: WorkspaceRow) {
+  return {
+    id: w.id,
+    name: w.name,
+    slug: w.slug,
+    description: w.description,
+    archived_at: w.archivedAt,
+    created_by: w.createdBy,
+    created_at: w.createdAt,
+  };
+}
+
 export function slugify(name: string): string {
   return name
     .trim()
@@ -586,6 +619,7 @@ export async function handleAdminApi(
           id: w.id,
           name: w.name,
           slug: w.slug,
+          description: w.description,
           archived_at: w.archivedAt,
           role: roles[w.id] ?? null,
         })),
@@ -704,31 +738,80 @@ export async function handleAdminApi(
     return json(200, { invite: updated ? publicInvite(updated) : null });
   }
 
+  // ---- audit (Step 3 read surface: wireframes 06 + 08) ----
+  if (seg.length === 3 && seg[2] === "audit" && method === "GET") {
+    const params = new URL(request.url).searchParams;
+    const limitRaw = Number(params.get("limit") ?? "100");
+    const offsetRaw = Number(params.get("offset") ?? "0");
+    const limit = Number.isFinite(limitRaw)
+      ? Math.min(500, Math.max(1, Math.floor(limitRaw)))
+      : 100;
+    const offset = Number.isFinite(offsetRaw)
+      ? Math.max(0, Math.floor(offsetRaw))
+      : 0;
+    const rows = await deps.store.listAudit({
+      event: params.get("event") ?? undefined,
+      actorId: params.get("actor_id") ?? undefined,
+      limit,
+      offset,
+    });
+    return json(200, {
+      entries: rows.map(publicAudit),
+      limit,
+      offset,
+    });
+  }
+
   // ---- workspaces ----
   if (seg.length === 3 && seg[2] === "workspaces" && method === "GET") {
+    // Step 3 (wireframe 09): each row carries its member list, its
+    // member count, and the CALLER's effective role in it (stored
+    // grant, else the implicit Workspace Admin of a global
+    // Owner/Admin — T018), so one read drives the whole screen.
     const workspaces = await deps.store.listWorkspaces();
-    return json(200, {
-      workspaces: workspaces.map((w) => ({
-        id: w.id, name: w.name, slug: w.slug,
-        archived_at: w.archivedAt, created_by: w.createdBy, created_at: w.createdAt,
-      })),
-    });
+    const actorRoles = await deps.store.getWorkspaceRoles(identity.userId);
+    const views = [];
+    for (const w of workspaces) {
+      const members = await deps.store.listWorkspaceMembers(w.id);
+      const stored = actorRoles[w.id];
+      views.push({
+        ...publicWorkspace(w),
+        member_count: members.length,
+        members: members.map((m) => ({
+          user_id: m.userId,
+          username: m.username,
+          role: m.role,
+        })),
+        your_role: stored ?? (isGlobalAdmin(identity.globalType) ? "admin" : null),
+        your_role_source: stored
+          ? "stored"
+          : isGlobalAdmin(identity.globalType)
+            ? "implicit"
+            : null,
+      });
+    }
+    return json(200, { workspaces: views });
   }
 
   if (seg.length === 3 && seg[2] === "workspaces" && method === "POST") {
     const body = await readJsonBody(request);
     const name = typeof body.name === "string" ? body.name.trim() : "";
     if (!name) return jsonError(400, "invalid_name", "A workspace name is required.");
+    const description =
+      typeof body.description === "string" && body.description.trim()
+        ? body.description.trim().slice(0, 500)
+        : null;
     const baseSlug = slugify(name);
     if (!baseSlug) return jsonError(400, "invalid_name", "The workspace name yields no usable slug.");
     let slug = baseSlug;
     for (let n = 2; await deps.store.getWorkspaceBySlug(slug); n++) {
       slug = `${baseSlug}-${n}`;
     }
-    const workspace = {
+    const workspace: WorkspaceRow = {
       id: newId("ws"),
       name,
       slug,
+      description,
       archivedAt: null,
       createdBy: identity.userId,
       createdAt: nowIso,
@@ -737,12 +820,7 @@ export async function handleAdminApi(
     await auditBestEffort(deps, actor, "workspace_created", workspace.id, {
       name, slug,
     });
-    return json(201, {
-      workspace: {
-        id: workspace.id, name, slug, archived_at: null,
-        created_by: workspace.createdBy, created_at: workspace.createdAt,
-      },
-    });
+    return json(201, { workspace: publicWorkspace(workspace) });
   }
 
   const wsSub =
@@ -760,6 +838,184 @@ export async function handleAdminApi(
         ? { id: updated.id, name: updated.name, slug: updated.slug, archived_at: updated.archivedAt }
         : null,
     });
+  }
+
+  return null;
+}
+
+// --- Step 3 (T025/T026) read + self-service surfaces ----------------------
+
+/**
+ * GET /api/session — the shell bootstrap (wireframes 07/11). Returns
+ * the signed-in user and the workspaces THEY can enter: non-archived,
+ * with the effective role (stored grant, else the implicit Workspace
+ * Admin of a global Owner/Admin). A member sees only granted
+ * workspaces; the container re-checks every request regardless —
+ * this list shapes navigation, it is not the enforcement.
+ */
+export async function handleSessionIdentity(
+  deps: IdentityDeps,
+  identity: SessionIdentity,
+): Promise<Response> {
+  const user = await deps.store.findUserById(identity.userId);
+  if (!user) {
+    return jsonError(401, "authentication_required", "Sign in is required for this route.");
+  }
+  const roles = identity.workspaceRoles;
+  const all = await deps.store.listWorkspaces();
+  const workspaces = [];
+  for (const w of all) {
+    if (w.archivedAt) continue;
+    const stored = roles[w.id];
+    if (stored) {
+      workspaces.push({ ...publicWorkspace(w), role: stored, role_source: "stored" });
+    } else if (isGlobalAdmin(user.globalType)) {
+      workspaces.push({ ...publicWorkspace(w), role: "admin", role_source: "implicit" });
+    }
+  }
+  return json(200, {
+    user: { ...publicUser(user), workspace_roles: roles },
+    implicit_workspace_admin: isGlobalAdmin(user.globalType),
+    workspaces,
+  });
+}
+
+/**
+ * GET /invite/:code/preview — what the acceptance screen shows BEFORE
+ * redemption (wireframe 02): inviter, workspaces, expiry. Reading
+ * never consumes. An unknown code returns only {state:"invalid"} —
+ * no field distinguishes "never existed" from anything else, so the
+ * preview is no existence oracle beyond what redeem already answers.
+ */
+export async function handleInvitePreview(
+  deps: IdentityDeps,
+  code: string,
+): Promise<Response> {
+  const invite = await deps.store.peekInviteByHash(await sha256Hex(code));
+  if (!invite) return json(200, { state: "invalid" });
+  const nowIso = deps.now().toISOString();
+  const state = invite.revokedAt
+    ? "revoked"
+    : invite.redeemedAt
+      ? "redeemed"
+      : invite.expiresAt <= nowIso
+        ? "expired"
+        : "open";
+  const creator = await deps.store.findUserById(invite.createdBy);
+  const workspaces = [];
+  for (const [workspaceId, role] of Object.entries(invite.workspaceGrants)) {
+    const ws = await deps.store.getWorkspaceById(workspaceId);
+    if (ws) workspaces.push({ id: ws.id, name: ws.name, role });
+  }
+  return json(200, {
+    state,
+    email: invite.email,
+    expires_at: invite.expiresAt,
+    created_by: creator
+      ? { username: creator.username, global_type: creator.globalType }
+      : null,
+    workspaces,
+  });
+}
+
+const EMAIL_SHAPE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+/**
+ * /api/account* — self-service for any signed-in user (wireframe 08).
+ * Everything is scoped to the caller's own rows; session summaries
+ * never carry token hashes (the current session is matched by hash
+ * server-side and reported as a boolean).
+ */
+export async function handleAccountApi(
+  request: Request,
+  deps: IdentityDeps,
+  identity: SessionIdentity,
+  tokenHash: string,
+  path: string,
+): Promise<Response | null> {
+  const method = request.method;
+  const actor = { id: identity.userId, label: identity.username };
+  const user = await deps.store.findUserById(identity.userId);
+  if (!user) {
+    return jsonError(401, "authentication_required", "Sign in is required for this route.");
+  }
+
+  if (path === "/api/account" && method === "GET") {
+    const sessions = await deps.store.listSessionsForUser(user.id);
+    const activity = await deps.store.listAudit({
+      actorId: user.id,
+      limit: 20,
+      offset: 0,
+    });
+    return json(200, {
+      user: {
+        ...publicUser(user),
+        workspace_roles: await deps.store.getWorkspaceRoles(user.id),
+      },
+      sessions: sessions.map((s) => ({
+        id: s.id,
+        created_at: s.createdAt,
+        last_seen_at: s.lastSeenAt,
+        expires_at: s.expiresAt,
+        current: s.tokenHash === tokenHash,
+      })),
+      activity: activity.map(publicAudit),
+    });
+  }
+
+  if (path === "/api/account/email" && method === "POST") {
+    const body = await readJsonBody(request);
+    const raw = typeof body.email === "string" ? body.email.trim() : "";
+    const email = raw ? raw : null;
+    if (email && (email.length > 254 || !EMAIL_SHAPE.test(email))) {
+      return jsonError(400, "invalid_email", "That does not look like an email address.");
+    }
+    await deps.store.updateUserEmail(user.id, email);
+    await auditBestEffort(deps, actor, "account_email_changed", user.id, {
+      from: user.email,
+      to: email,
+    });
+    const updated = await deps.store.findUserById(user.id);
+    return json(200, { user: publicUser(updated ?? user) });
+  }
+
+  if (path === "/api/account/password" && method === "POST") {
+    const body = await readJsonBody(request);
+    const current = typeof body.current_password === "string" ? body.current_password : "";
+    const next = typeof body.new_password === "string" ? body.new_password : "";
+    const verified = await deps.hasher.verify(current, user.passwordHash);
+    if (!verified) {
+      return jsonError(400, "current_password_invalid", "The current password did not match.");
+    }
+    if (!isAcceptablePassword(next)) {
+      return jsonError(400, "invalid_password", "Choose a password of at least 8 characters.");
+    }
+    await deps.store.updateUserPasswordHash(user.id, await deps.hasher.hash(next));
+    // A password change ends every OTHER session; this one survives.
+    const sessions = await deps.store.listSessionsForUser(user.id);
+    for (const s of sessions) {
+      if (s.tokenHash !== tokenHash) {
+        await deps.store.deleteSessionById(user.id, s.id);
+      }
+    }
+    await auditBestEffort(deps, actor, "password_changed", user.id, {});
+    return json(200, { ok: true });
+  }
+
+  const revokeMatch = path.match(/^\/api\/account\/sessions\/([^/]+)\/revoke$/);
+  if (revokeMatch && method === "POST") {
+    const sessionId = revokeMatch[1];
+    const sessions = await deps.store.listSessionsForUser(user.id);
+    const target = sessions.find((s) => s.id === sessionId);
+    if (!target) return jsonError(404, "session_not_found", "No such session.");
+    if (target.tokenHash === tokenHash) {
+      return jsonError(400, "current_session", "This is your current session — sign out to end it.");
+    }
+    await deps.store.deleteSessionById(user.id, sessionId);
+    await auditBestEffort(deps, actor, "session_revoked", user.id, {
+      session_id: sessionId,
+    });
+    return json(200, { ok: true });
   }
 
   return null;

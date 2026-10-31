@@ -68,9 +68,26 @@ export interface WorkspaceRow {
   id: string;
   name: string;
   slug: string;
+  /** The question/scope line shown on cards (Step 3, migration 0005). */
+  description: string | null;
   archivedAt: string | null;
   createdBy: string;
   createdAt: string;
+}
+
+/** Filter for audit reads (Step 3): exact event and/or actor, paged. */
+export interface AuditFilter {
+  event?: string;
+  actorId?: string;
+  limit: number;
+  offset: number;
+}
+
+/** One row of a workspace's member list (Step 3 admin reads). */
+export interface WorkspaceMember {
+  userId: string;
+  username: string;
+  role: WorkspaceRole;
 }
 
 export interface SetupStateRow {
@@ -99,8 +116,10 @@ export interface AuditRow extends AuditInput {
 export type RevokeOutcome = "ok" | "not_found" | "redeemed" | "revoked";
 
 export interface IdentityStore {
-  // --- audit (append-only) ---
+  // --- audit (append-only writes; reads added Step 3) ---
   appendAudit(row: AuditRow): Promise<void>;
+  /** Newest-first audit reads for the admin surface + own-activity. */
+  listAudit(filter: AuditFilter): Promise<AuditRow[]>;
 
   // --- setup ---
   getSetupState(): Promise<SetupStateRow | null>;
@@ -127,12 +146,20 @@ export interface IdentityStore {
   updateUserGlobalType(id: string, globalType: GlobalType): Promise<void>;
   setUserStatus(id: string, status: UserStatus): Promise<void>;
   markUserRemoved(id: string, nowIso: string): Promise<void>;
+  /** Account self-service (Step 3): the user's own contact email. */
+  updateUserEmail(id: string, email: string | null): Promise<void>;
+  /** Account self-service (Step 3): password change (hash only). */
+  updateUserPasswordHash(id: string, passwordHash: string): Promise<void>;
 
   // --- sessions ---
   createSession(row: SessionRow): Promise<void>;
   /** Instant revocation cascade: the user's session rows are deleted. */
   deleteSessionsForUser(userId: string): Promise<void>;
   deleteSessionByTokenHash(tokenHash: string): Promise<void>;
+  /** The user's live session rows (Step 3 account screen). */
+  listSessionsForUser(userId: string): Promise<SessionRow[]>;
+  /** Delete one session, only if it belongs to the user. */
+  deleteSessionById(userId: string, sessionId: string): Promise<boolean>;
 
   // --- workspaces + roles ---
   createWorkspace(row: WorkspaceRow): Promise<void>;
@@ -149,6 +176,8 @@ export interface IdentityStore {
   ): Promise<void>;
   /** The user id holding the workspace's `owner` role, if any. */
   findWorkspaceOwner(workspaceId: string): Promise<string | null>;
+  /** Stored members of one workspace (Step 3 admin reads). */
+  listWorkspaceMembers(workspaceId: string): Promise<WorkspaceMember[]>;
 }
 
 // ---------------------------------------------------------------------------
@@ -181,9 +210,19 @@ interface DbWorkspaceRow {
   id: string;
   name: string;
   slug: string;
+  description: string | null;
   archived_at: string | null;
   created_by: string;
   created_at: string;
+}
+interface DbAuditRow {
+  id: string;
+  ts: string;
+  actor_id: string | null;
+  actor_label: string;
+  event: string;
+  target: string | null;
+  detail: string;
 }
 interface DbSetupRow {
   setup_code_hash: string | null;
@@ -222,9 +261,28 @@ const toWorkspace = (r: DbWorkspaceRow): WorkspaceRow => ({
   id: r.id,
   name: r.name,
   slug: r.slug,
+  description: r.description ?? null,
   archivedAt: r.archived_at,
   createdBy: r.created_by,
   createdAt: r.created_at,
+});
+const toAudit = (r: DbAuditRow): AuditRow => ({
+  id: r.id,
+  ts: r.ts,
+  actorId: r.actor_id,
+  actorLabel: r.actor_label,
+  event: r.event,
+  target: r.target,
+  detail: (() => {
+    try {
+      const parsed = JSON.parse(r.detail || "{}") as unknown;
+      return parsed && typeof parsed === "object" && !Array.isArray(parsed)
+        ? (parsed as Record<string, unknown>)
+        : {};
+    } catch {
+      return {};
+    }
+  })(),
 });
 
 function changes(res: D1Result): number {
@@ -261,6 +319,27 @@ export class D1IdentityStore implements IdentityStore, SessionStore {
         JSON.stringify(row.detail),
       )
       .run();
+  }
+
+  async listAudit(filter: AuditFilter): Promise<AuditRow[]> {
+    const clauses: string[] = [];
+    const binds: unknown[] = [];
+    if (filter.event) {
+      clauses.push(`event = ?`);
+      binds.push(filter.event);
+    }
+    if (filter.actorId) {
+      clauses.push(`actor_id = ?`);
+      binds.push(filter.actorId);
+    }
+    const where = clauses.length ? `WHERE ${clauses.join(" AND ")}` : "";
+    const res = await this.db
+      .prepare(
+        `SELECT * FROM audit_log ${where} ORDER BY ts DESC, id DESC LIMIT ? OFFSET ?`,
+      )
+      .bind(...binds, filter.limit, filter.offset)
+      .all<DbAuditRow>();
+    return (res.results ?? []).map(toAudit);
   }
 
   async getSetupState(): Promise<SetupStateRow | null> {
@@ -443,6 +522,20 @@ export class D1IdentityStore implements IdentityStore, SessionStore {
       .run();
   }
 
+  async updateUserEmail(id: string, email: string | null): Promise<void> {
+    await this.db
+      .prepare(`UPDATE users SET email = ? WHERE id = ?`)
+      .bind(email, id)
+      .run();
+  }
+
+  async updateUserPasswordHash(id: string, passwordHash: string): Promise<void> {
+    await this.db
+      .prepare(`UPDATE users SET password_hash = ? WHERE id = ?`)
+      .bind(passwordHash, id)
+      .run();
+  }
+
   async createSession(row: SessionRow): Promise<void> {
     await this.db
       .prepare(
@@ -476,13 +569,48 @@ export class D1IdentityStore implements IdentityStore, SessionStore {
       .run();
   }
 
+  async listSessionsForUser(userId: string): Promise<SessionRow[]> {
+    const res = await this.db
+      .prepare(
+        `SELECT * FROM sessions WHERE user_id = ? AND revoked_at IS NULL
+          ORDER BY last_seen_at DESC`,
+      )
+      .bind(userId)
+      .all<{
+        id: string;
+        token_hash: string;
+        user_id: string;
+        created_at: string;
+        last_seen_at: string;
+        expires_at: string;
+        revoked_at: string | null;
+      }>();
+    return (res.results ?? []).map((r) => ({
+      id: r.id,
+      tokenHash: r.token_hash,
+      userId: r.user_id,
+      createdAt: r.created_at,
+      lastSeenAt: r.last_seen_at,
+      expiresAt: r.expires_at,
+      revokedAt: r.revoked_at,
+    }));
+  }
+
+  async deleteSessionById(userId: string, sessionId: string): Promise<boolean> {
+    const res = await this.db
+      .prepare(`DELETE FROM sessions WHERE id = ? AND user_id = ?`)
+      .bind(sessionId, userId)
+      .run();
+    return changes(res) === 1;
+  }
+
   async createWorkspace(row: WorkspaceRow): Promise<void> {
     await this.db
       .prepare(
-        `INSERT INTO workspaces (id, name, slug, archived_at, created_by, created_at)
-         VALUES (?, ?, ?, ?, ?, ?)`,
+        `INSERT INTO workspaces (id, name, slug, description, archived_at, created_by, created_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?)`,
       )
-      .bind(row.id, row.name, row.slug, row.archivedAt, row.createdBy, row.createdAt)
+      .bind(row.id, row.name, row.slug, row.description, row.archivedAt, row.createdBy, row.createdAt)
       .run();
   }
 
@@ -567,6 +695,24 @@ export class D1IdentityStore implements IdentityStore, SessionStore {
       .bind(workspaceId)
       .first<{ user_id: string }>();
     return r?.user_id ?? null;
+  }
+
+  async listWorkspaceMembers(workspaceId: string): Promise<WorkspaceMember[]> {
+    const res = await this.db
+      .prepare(
+        `SELECT wr.user_id AS user_id, u.username AS username, wr.role AS role
+           FROM workspace_roles AS wr
+           JOIN users AS u ON u.id = wr.user_id
+          WHERE wr.workspace_id = ?
+          ORDER BY u.username ASC`,
+      )
+      .bind(workspaceId)
+      .all<{ user_id: string; username: string; role: WorkspaceRole }>();
+    return (res.results ?? []).map((r) => ({
+      userId: r.user_id,
+      username: r.username,
+      role: r.role,
+    }));
   }
 }
 

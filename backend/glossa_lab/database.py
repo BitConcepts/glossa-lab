@@ -30,7 +30,7 @@ def _stamp_to_json(value: Any, fallback: Any = "") -> str:
 
 # Increment this when adding a new _SCHEMA_Vn block below.
 # _apply_schema will raise if the DB is somehow ahead of the code.
-_SCHEMA_VERSION = 26
+_SCHEMA_VERSION = 27
 
 _SCHEMA_V1 = """
 CREATE TABLE IF NOT EXISTS _schema_version (
@@ -877,6 +877,21 @@ class Database:
             await self._conn.execute("UPDATE _schema_version SET version = ?", (26,))
             current_version = 26
 
+        if current_version < 27:
+            # Spec 083 (Step 3, T027): jobs gain the same additive
+            # ``created_by`` attribution stamp the Step 2 entities
+            # carry, so the Jobs screen can render "Started by" from a
+            # real record. Existing rows default to '' (no cloud
+            # actor — they render as "via desktop import").
+            try:
+                await self._conn.execute(
+                    "ALTER TABLE jobs ADD COLUMN created_by TEXT NOT NULL DEFAULT ''"
+                )
+            except Exception:  # noqa: BLE001
+                pass  # column may already exist
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (27,))
+            current_version = 27
+
         if current_version > _SCHEMA_VERSION:
             logger.warning(
                 "DB schema version %s is ahead of code version %s",
@@ -895,6 +910,7 @@ class Database:
         params: dict[str, Any] | None = None,
         created_at: str,
         initial_status: str = "pending",
+        created_by: Any = None,
     ) -> dict[str, Any]:
         assert self._conn
         job_id = uuid.uuid4().hex[:12]
@@ -903,9 +919,10 @@ class Database:
             "pending", "running", "completed", "failed", "cancelled"
         ) else "pending"
         await self._conn.execute(
-            """INSERT INTO jobs (id, name, pipeline, status, params, created_at, updated_at)
-               VALUES (?, ?, ?, ?, ?, ?, ?)""",
-            (job_id, name, pipeline, safe_status, params_json, created_at, created_at),
+            """INSERT INTO jobs (id, name, pipeline, status, params, created_at, updated_at, created_by)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
+            (job_id, name, pipeline, safe_status, params_json, created_at, created_at,
+             _stamp_to_json(created_by)),
         )
         await self._conn.commit()
         return await self.get_job(job_id)  # type: ignore[return-value]

@@ -318,8 +318,18 @@ def _pid_alive(pid: int) -> bool:
 
             handle = ctypes.windll.kernel32.OpenProcess(0x1000, False, pid)
             if handle:
-                ctypes.windll.kernel32.CloseHandle(handle)
-                return True
+                try:
+                    exit_code = ctypes.c_ulong()
+                    ok = ctypes.windll.kernel32.GetExitCodeProcess(
+                        handle, ctypes.byref(exit_code)
+                    )
+                    # STILL_ACTIVE (259) is the only "alive" answer: a
+                    # terminated process whose object lingers because a
+                    # caller still holds a handle (e.g. a parent that
+                    # spawned it) is dead, and its lock is stale.
+                    return bool(ok) and exit_code.value == 259
+                finally:
+                    ctypes.windll.kernel32.CloseHandle(handle)
             return False
         except Exception:  # noqa: BLE001
             return False

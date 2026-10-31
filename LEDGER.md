@@ -11997,3 +11997,46 @@ placement) reads the same fingerprint.
   restore would fight the forwarder for port 8001; the restore
   routine must install the forwarder (unit + regenerated env
   file), not the backend.
+
+---
+
+## 2026-10-31 — T020 tray battery remediation (Spec 081 Step 8 host findings)
+
+The T020 host battery (gatekeeper run 41133333488) failed 8 of 54
+on the installed desktop host while CI stayed green. Diagnosis and
+fixes, by leg:
+
+- Seven token-auth failures were a test-isolation breach, not a
+  product defect: the tray resolver's Windows candidate reads
+  LOCALAPPDATA, which the test fixture never controlled (it pinned
+  only the POSIX XDG candidate). On the installed host the REAL
+  install token resolved inside tests that planted elsewhere or
+  expected none — and pytest assertion output carried the live
+  token into the job log (the exposure that forced the Spec 080
+  Phase C token rotation). Fix (tests only): the fixture now also
+  points LOCALAPPDATA at an empty tmp dir and pins the resolver's
+  platform branch to the XDG form it controls; the Windows-specific
+  test re-patches both itself. This hermeticity fix is the durable
+  prevention for the exposure.
+- test_instance_lock_takes_over_a_stale_lock was REAL: the Windows
+  _pid_alive treated a terminated process as alive whenever its
+  process object still existed (OpenProcess succeeds while any
+  handle is open — including the test's own Popen handle, and in
+  production any lingering handle on a just-exited tray). Fix
+  (tray code): the Windows branch now requires GetExitCodeProcess
+  == STILL_ACTIVE (259); a terminated-but-still-referenced process
+  is dead and its lock is stale.
+- The verify package's launch leg could never produce its markers:
+  scripts\launch-tray.vbs carries a WMI pre-guard that quits
+  silently when a tray process exists, so wrapped launches never
+  reach the single-instance lock. The verify script (operator
+  package, outside this repo) now launches the tray module
+  directly with the wrapper's environment. Named observation: the
+  VBS pre-guard duplicates the lock and makes it unreachable via
+  the wrapper path, contrary to the lock's stated design (every
+  launch path funnels through main()); retiring the pre-guard is
+  a follow-up decision, not part of this fix.
+
+Local verification: the three tray suites pass 54/54 on Linux with
+these changes. Host re-run of the full Step 8 battery is the
+acceptance proof and is recorded in the Spec 080 cutover addendum.

@@ -57,6 +57,16 @@ def tray(monkeypatch, tmp_path):
     # at empty tmp dirs so only a test's own plants can resolve.
     monkeypatch.setenv("XDG_DATA_HOME", str(tmp_path / "xdg"))
     monkeypatch.setattr(mod, "_REPO_ROOT", tmp_path / "repo")
+    # Hermeticity on an INSTALLED host (T020 host run, 2026-10-30):
+    # the resolver's Windows candidate reads LOCALAPPDATA, which the
+    # lines above do not touch — on the desktop install the REAL
+    # api_token resolved inside tests that planted elsewhere or
+    # expected none (and assertion output carried the live value
+    # into the job log). Pin the platform branch to the XDG form
+    # this fixture controls, and point LOCALAPPDATA at an empty tmp
+    # dir as well; the Windows-specific test re-patches both itself.
+    monkeypatch.setenv("LOCALAPPDATA", str(tmp_path / "localappdata"))
+    monkeypatch.setattr(mod.platform, "system", lambda: "Linux")
     mod._test_log_lines = log_lines
     mod._test_tmp = tmp_path
     return mod

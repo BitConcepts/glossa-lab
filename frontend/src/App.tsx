@@ -31,6 +31,7 @@ import {
   type StatusResponse,
 } from "./api";
 import { fmtClock } from "./components/ui081";
+import { CloudGate, CloudSessionProvider, useCloudSession } from "./cloud/session";
 
 /**
  * Spec 081 shell. The tool's top-level unit is the *program* (the
@@ -303,6 +304,7 @@ function ProgramSwitchCard({ onNavigate }: { onNavigate: (t: Tab) => void }) {
 function AppContent() {
   const projCtx = useProject();
   const auth = useAuthState();
+  const cloud = useCloudSession();
   const hasProgram = !!projCtx.activeProject;
   // The tool opens on the program list (wireframe 01) unless a deep
   // link (#/status from the tray, etc.) names a route.
@@ -858,7 +860,7 @@ function AppContent() {
               overflow: isCanvas ? "hidden" : "auto",
               userSelect: "text",
             }}>
-              {auth.tokenNeeded && tab !== "settings" ? (
+              {auth.tokenNeeded && !cloud.active && tab !== "settings" ? (
                 <ApiTokenGate darkMode={darkMode} />
               ) : (
                 <>
@@ -947,12 +949,16 @@ function AppContent() {
 
 export function App() {
   return (
-    <ToastProvider>
-      <AIChatProvider>
-        <ProjectProvider>
-          <AppContent />
-        </ProjectProvider>
-      </AIChatProvider>
-    </ToastProvider>
+    <CloudSessionProvider>
+      <CloudGate>
+        <ToastProvider>
+          <AIChatProvider>
+            <ProjectProvider>
+              <AppContent />
+            </ProjectProvider>
+          </AIChatProvider>
+        </ToastProvider>
+      </CloudGate>
+    </CloudSessionProvider>
   );
 }

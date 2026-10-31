@@ -29,19 +29,30 @@
 .cl-auth-wrap {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 24px 16px;
   overflow-y: auto;
-  background: linear-gradient(160deg, #16283f 0%, #1e3a5f 55%, #26507e 100%);
+  background: #edf0f3;
 }
 .cl-auth-card {
   width: 100%;
   max-width: 400px;
   background: #fff;
+  border: 1px solid #e2e8f0;
   border-radius: 12px;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.08);
   padding: 26px 26px 20px;
+}
+.cl-page-foot {
+  max-width: 400px; text-align: center; margin-top: 14px;
+  font-size: 11.5px; color: #8a94a6; line-height: 1.55;
+}
+.cl-code-input {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace !important;
+  letter-spacing: 1.5px; text-align: center;
+  border-style: dashed !important; background: #f8fafc !important;
 }
 .cl-auth-card.wide { max-width: 430px; }
 .cl-brand { display: flex; align-items: center; gap: 9px; margin-bottom: 14px; }
@@ -57,9 +68,10 @@
 .cl-auth-card .cl-lede { font-size: 12.5px; color: var(--cl-muted); margin: 0 0 16px; line-height: 1.5; }
 .cl-field { margin-bottom: 12px; }
 .cl-field label {
-  display: block; font-size: 11px; font-weight: 700; color: var(--cl-body);
-  letter-spacing: 0.3px; text-transform: uppercase; margin-bottom: 5px;
+  display: block; font-size: 13px; font-weight: 600; color: var(--cl-ink);
+  margin-bottom: 5px;
 }
+.cl-field label .cl-label-hint { font-weight: 400; color: var(--cl-muted); }
 .cl-field input, .cl-field select, .cl-field textarea {
   width: 100%; padding: 9px 11px; font-size: 14px; color: var(--cl-ink);
   border: 1px solid #d1d5db; border-radius: 8px; background: #fff;
@@ -116,6 +128,7 @@
 .cl-chip.green { background: var(--cl-ok-bg); color: var(--cl-ok); }
 .cl-chip.amber { background: var(--cl-warn-bg); color: var(--cl-warn); }
 .cl-chip.red { background: var(--cl-bad-bg); color: var(--cl-bad); }
+.cl-chip.violet { background: #ede9fe; color: #6d28d9; }
 .cl-chip.on-dark { background: rgba(255, 255, 255, 0.14); color: #dbeafe; }
 
 /* ── Content screens (admin + account) ─────────────────────────── */

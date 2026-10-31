@@ -34,23 +34,14 @@ function Brand() {
   );
 }
 
-function fmtWhen(iso: string): string {
-  const d = new Date(iso);
-  return Number.isNaN(d.getTime())
-    ? iso
-    : d.toLocaleString(undefined, {
-        month: "short", day: "numeric", year: "numeric",
-        hour: "numeric", minute: "2-digit",
-      });
-}
-
-function Shell({ children, wide }: { children: ReactNode; wide?: boolean }) {
+function Shell({ children, wide, foot }: { children: ReactNode; wide?: boolean; foot?: string }) {
   return (
     <div className="cl-auth-wrap">
       <div className={`cl-auth-card${wide ? " wide" : ""}`}>
         <Brand />
         {children}
       </div>
+      {foot && <div className="cl-page-foot">{foot}</div>}
     </div>
   );
 }
@@ -79,18 +70,19 @@ export function LoginPage() {
       window.location.assign(dest);
     } catch {
       // One undifferentiated message, whatever the edge answered:
-      // no hint which part was wrong or whether the account exists.
-      setError("Those details don't match an account, or the account is disabled.");
+      // no hint which part was wrong or whether the account exists
+      // (wireframe 01's specimen sentence, verbatim).
+      setError("That username and password don't match our records. Check them and try again.");
       setBusy(false);
     }
   };
 
   return (
-    <Shell>
+    <Shell foot="glossa.bitconcepts.tech · This site is deliberately not indexed by search engines, and there is no public registration — accounts are created from invite links only.">
       <h1>Sign in</h1>
       <p className="cl-lede">
-        Glossa Lab is members-only. Sign in with the username and
-        password from your invite — there is no public sign-up.
+        Glossa Lab is invitation-only. Sign in with the username and
+        password you set when you accepted your invite.
       </p>
       {error && <div className="cl-form-error">{error}</div>}
       <form onSubmit={submit}>
@@ -99,6 +91,7 @@ export function LoginPage() {
           <input
             id="cl-login-username"
             autoComplete="username"
+            placeholder="your username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
@@ -110,6 +103,7 @@ export function LoginPage() {
             id="cl-login-password"
             type="password"
             autoComplete="current-password"
+            placeholder="your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -139,16 +133,18 @@ export function LoginPage() {
 
 // The setup identity is fixed by the deployment's seed record
 // (Amendment 3); the edge takes it from that record and never from
-// this form — the fields render disabled, as the wireframe shows.
+// this form. The username therefore renders pre-filled AND disabled
+// (wireframe 03's annotation imagines it editable at this one
+// moment; the Phase 2 seed contract + Amendment 3 fix it — named
+// deviation in the BUILD-RECORD). The seed's email is not a form
+// field at all, as the wireframe shows.
 const SETUP_USERNAME = "glassbreak";
-const SETUP_EMAIL = "tristen.pierson@gmail.com";
 
 export function SetupPage() {
   const [open, setOpen] = useState<boolean | null>(null);
   const [code, setCode] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
-  const [ack, setAck] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
@@ -220,43 +216,45 @@ export function SetupPage() {
   };
 
   return (
-    <Shell wide>
-      <h1>Set up the owner account</h1>
+    <Shell wide foot="glossa.bitconcepts.tech · Setup is part of the deployment record: its completion (not the code, not the password) is written to the audit log.">
+      <h1>First-run setup</h1>
       <p className="cl-lede">
-        This deployment has no accounts yet. Setup creates the
-        break-glass owner — <strong>glassbreak</strong> — exactly
-        once, and then closes forever. You need the one-time setup
-        code from whoever deployed this.
+        This deployment has no users yet. This screen creates its one
+        administrator account — and then it closes, permanently. It
+        can be completed only with the one-time setup code from the
+        deployment terminal.
       </p>
       {error && <div className="cl-form-error">{error}</div>}
       <form onSubmit={submit}>
         <div className="cl-field">
-          <label htmlFor="cl-setup-username">Username</label>
-          <input id="cl-setup-username" value={SETUP_USERNAME} disabled />
-          <div className="cl-hint">Fixed by the deployment. This account is the recovery path if every admin is locked out.</div>
-        </div>
-        <div className="cl-field">
-          <label htmlFor="cl-setup-email">Email</label>
-          <input id="cl-setup-email" value={SETUP_EMAIL} disabled />
-        </div>
-        <div className="cl-field">
-          <label htmlFor="cl-setup-code">One-time setup code</label>
+          <label htmlFor="cl-setup-code">
+            Setup code <span className="cl-label-hint">— shown once, where the deployment was run</span>
+          </label>
           <input
             id="cl-setup-code"
-            type="password"
+            className="cl-code-input"
             autoComplete="off"
             value={code}
             onChange={(e) => setCode(e.target.value)}
             required
           />
-          <div className="cl-hint">Single use, and it expires 24 hours after it was issued.</div>
+          <div className="cl-hint">
+            In the real flow the owner pastes the code here; nothing about it is ever
+            sent by email or chat, and it stops working 24 hours after it was issued.
+          </div>
         </div>
         <div className="cl-field">
-          <label htmlFor="cl-setup-password">New password</label>
+          <label htmlFor="cl-setup-username">Admin username</label>
+          <input id="cl-setup-username" value={SETUP_USERNAME} disabled />
+          <div className="cl-hint">Fixed by the deployment seed. This account is the recovery path if every admin is locked out.</div>
+        </div>
+        <div className="cl-field">
+          <label htmlFor="cl-setup-password">Set the admin password</label>
           <input
             id="cl-setup-password"
             type="password"
             autoComplete="new-password"
+            placeholder="a password only you know"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -264,7 +262,7 @@ export function SetupPage() {
           <div className="cl-hint">At least 8 characters. There is no email recovery for this account — keep it somewhere safe.</div>
         </div>
         <div className="cl-field">
-          <label htmlFor="cl-setup-confirm">Confirm password</label>
+          <label htmlFor="cl-setup-confirm">Repeat the password</label>
           <input
             id="cl-setup-confirm"
             type="password"
@@ -274,18 +272,15 @@ export function SetupPage() {
             required
           />
         </div>
-        <label className="cl-check">
-          <input type="checkbox" checked={ack} onChange={(e) => setAck(e.target.checked)} />
-          <span>I understand this account is the break-glass owner: it can manage every user and workspace, and its password cannot be recovered by email.</span>
-        </label>
-        <button className="cl-btn primary" type="submit" disabled={busy || !ack}>
-          {busy ? "Creating the owner account…" : "Create the owner account"}
+        <div className="cl-callout warn">
+          <strong>Once, only.</strong> When this account exists, this page is gone —
+          there is no second setup and no back door. If the code expires unused,
+          the operator issues a new one from the deployment side.
+        </div>
+        <button className="cl-btn primary" type="submit" disabled={busy} style={{ marginTop: 14 }}>
+          {busy ? "Creating the admin account…" : "Create the admin account"}
         </button>
       </form>
-      <div className="cl-auth-foot">
-        Already set up? <a href="/login">Sign in</a> instead — setup
-        closes itself the moment it completes.
-      </div>
     </Shell>
   );
 }
@@ -318,7 +313,6 @@ export function InvitePage({ code }: { code: string }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
-  const [consent, setConsent] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState(false);
@@ -326,7 +320,14 @@ export function InvitePage({ code }: { code: string }) {
   useEffect(() => {
     let live = true;
     getInvitePreview(code)
-      .then((p) => { if (live) setPreview(p); })
+      .then((p) => {
+        if (!live) return;
+        setPreview(p);
+        // The email arrives pre-filled from the invite (wireframe
+        // 02) and stays editable on screen; the edge's binding check
+        // decides at redemption (a mismatch never spends the invite).
+        if (p.email) setEmail(p.email);
+      })
       .catch(() => { if (live) setLoadFailed(true); });
     return () => { live = false; };
   }, [code]);
@@ -357,9 +358,6 @@ export function InvitePage({ code }: { code: string }) {
       <Shell>
         <h1>{copy.title}</h1>
         <p className="cl-lede">{copy.body}</p>
-        <div className="cl-auth-foot">
-          Already have an account? <a href="/login">Sign in</a>.
-        </div>
       </Shell>
     );
   }
@@ -380,8 +378,6 @@ export function InvitePage({ code }: { code: string }) {
     );
   }
 
-  const addressedTo = preview.email ?? null;
-
   const submit = async (e: FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -393,7 +389,7 @@ export function InvitePage({ code }: { code: string }) {
     try {
       await redeemInvite(code, {
         username: username.trim(),
-        ...(addressedTo ? { email: addressedTo } : email.trim() ? { email: email.trim() } : {}),
+        ...(email.trim() ? { email: email.trim() } : {}),
         password,
       });
       setDone(true);
@@ -430,44 +426,29 @@ export function InvitePage({ code }: { code: string }) {
     }
   };
 
+  const grants = preview.workspaces ?? [];
+  const inviter = preview.created_by;
+  const joinPhrase =
+    grants.length === 1
+      ? `join the ${grants[0].name} program as a ${grants[0].role}`
+      : grants.length > 1
+        ? `join ${grants.map((g) => `${g.name} (${g.role})`).join(" and ")}`
+        : "join Glossa Lab";
+  const expiresNote = preview.expires_at
+    ? ` · Invitation links are single-use and expire — this one was set to expire on ${new Date(preview.expires_at).toLocaleDateString(undefined, { month: "short", day: "numeric" })}`
+    : "";
   return (
-    <Shell wide>
+    <Shell wide foot={`glossa.bitconcepts.tech${expiresNote}.`}>
       <h1>You've been invited</h1>
       <p className="cl-lede">
-        Create your account to join Glossa Lab. This invite works
-        once — when you're done, the link is spent.
+        {inviter && (
+          <>
+            <strong>{inviter.username}</strong> ({inviter.global_type}) invited you to{" "}
+          </>
+        )}
+        {joinPhrase}. Choose your username and password to create
+        your account — this link works once.
       </p>
-      <div className="cl-kv">
-        {preview.created_by && (
-          <div className="cl-kv-row">
-            <span className="cl-kv-k">Invited by</span>
-            <span className="cl-kv-v">
-              {preview.created_by.username}{" "}
-              <span className="cl-chip grey">{preview.created_by.global_type}</span>
-            </span>
-          </div>
-        )}
-        {addressedTo && (
-          <div className="cl-kv-row">
-            <span className="cl-kv-k">Email</span>
-            <span className="cl-kv-v">{addressedTo}</span>
-          </div>
-        )}
-        {(preview.workspaces ?? []).map((w) => (
-          <div className="cl-kv-row" key={w.id}>
-            <span className="cl-kv-k">Workspace</span>
-            <span className="cl-kv-v">
-              {w.name} <span className="cl-chip">{w.role}</span>
-            </span>
-          </div>
-        ))}
-        {preview.expires_at && (
-          <div className="cl-kv-row">
-            <span className="cl-kv-k">Invite expires</span>
-            <span className="cl-kv-v">{fmtWhen(preview.expires_at)}</span>
-          </div>
-        )}
-      </div>
       {error && <div className="cl-form-error">{error}</div>}
       <form onSubmit={submit}>
         <div className="cl-field">
@@ -475,39 +456,43 @@ export function InvitePage({ code }: { code: string }) {
           <input
             id="cl-invite-username"
             autoComplete="username"
+            placeholder="e.g. j-mensah"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
-          <div className="cl-hint">Lowercase letters, numbers, and _ . - — this is how your work will be attributed.</div>
         </div>
-        {!addressedTo && (
-          <div className="cl-field">
-            <label htmlFor="cl-invite-email">Email (optional)</label>
-            <input
-              id="cl-invite-email"
-              type="email"
-              autoComplete="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <div className="cl-hint">Only used to identify your account to admins. There is no email password reset in this edition.</div>
-          </div>
-        )}
         <div className="cl-field">
-          <label htmlFor="cl-invite-password">Password</label>
+          <label htmlFor="cl-invite-email">
+            Email{" "}
+            <span className="cl-label-hint">
+              {preview.email
+                ? "— from the invite; change it if you were reached at a different address"
+                : "— optional; it identifies your account to admins"}
+            </span>
+          </label>
+          <input
+            id="cl-invite-email"
+            type="email"
+            autoComplete="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="cl-field">
+          <label htmlFor="cl-invite-password">Set a password</label>
           <input
             id="cl-invite-password"
             type="password"
             autoComplete="new-password"
+            placeholder="a password only you know"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <div className="cl-hint">At least 8 characters.</div>
         </div>
         <div className="cl-field">
-          <label htmlFor="cl-invite-confirm">Confirm password</label>
+          <label htmlFor="cl-invite-confirm">Repeat the password</label>
           <input
             id="cl-invite-confirm"
             type="password"
@@ -517,17 +502,18 @@ export function InvitePage({ code }: { code: string }) {
             required
           />
         </div>
-        <label className="cl-check">
-          <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} />
-          <span>I understand my name will be attached to the records I create and change, and that admins can see an audit log of sign-ins and changes.</span>
-        </label>
-        <button className="cl-btn primary" type="submit" disabled={busy || !consent}>
-          {busy ? "Creating your account…" : "Create my account"}
+        <button className="cl-btn primary" type="submit" disabled={busy}>
+          {busy
+            ? "Creating your account…"
+            : grants.length >= 1
+              ? `Create account & join ${grants[0].name}`
+              : "Create my account"}
         </button>
       </form>
       <div className="cl-auth-foot">
-        Already have an account? <a href="/login">Sign in</a> — don't
-        use this link; it would create a second account.
+        Your work in the program is attributed to your username —
+        claims you register and digestion acts you complete carry
+        your name.
       </div>
     </Shell>
   );

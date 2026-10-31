@@ -213,7 +213,7 @@ export function CloudWorkspaceCard({
                     )}
                   </span>
                   {isCurrent
-                    ? <span className="cl-chip on-dark">current</span>
+                    ? <><span className="cl-chip on-dark">{w.role}</span> <span className="cl-chip on-dark">current</span></>
                     : <span className="cl-chip on-dark">{w.role}</span>}
                 </span>
                 {w.description && (

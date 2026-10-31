@@ -214,8 +214,15 @@ async function route(
 
   if (pathname === "/setup") {
     // Once any admin/owner exists (or setup completed), /setup
-    // answers 404 forever — page and API alike (T017).
-    if (identityDeps && !(await isSetupOpen(identityDeps))) {
+    // answers 404 forever (T017) — for API-style reads. A browser
+    // NAVIGATION (Accept: text/html) falls through to the SPA
+    // instead: the setup page probes the status itself with fetch()
+    // and renders its own "setup is closed" state, so answering a
+    // navigation with raw JSON would strand a human on an error
+    // document (Step 3 fix — Playwright verification caught it).
+    const isNavigation =
+      method === "GET" && (request.headers.get("accept") ?? "").includes("text/html");
+    if (identityDeps && !isNavigation && !(await isSetupOpen(identityDeps))) {
       return jsonError(404, "not_found", "Not found.");
     }
     if (method === "POST") {

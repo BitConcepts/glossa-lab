@@ -65,7 +65,7 @@ type Tab =
   | "dashboard" | "corpora" | "pipelines" | "hypotheses" | "notebooks"
   | "citations" | "correspondence" | "exp-builder";
 
-interface NavItem { id: Tab; label: string; icon: string; count?: number; alert?: boolean }
+interface NavItem { id: Tab; label: string; icon: string; count?: number; alert?: boolean; adminTab?: string; key?: string }
 
 const SIDEBAR_W = 232;
 const MOBILE_NAV_H = 56;
@@ -175,6 +175,7 @@ function MobileNavBar({
  * bare dot — app, version, host, and when this was last checked.
  */
 function ServiceChip({ onOpenStatus }: { onOpenStatus: () => void }) {
+  const cloud = useCloudSession();
   const [health, setHealth] = useState<StatusResponse | null>(null);
   const [checkedAt, setCheckedAt] = useState<Date | null>(null);
   useEffect(() => {
@@ -204,7 +205,9 @@ function ServiceChip({ onOpenStatus }: { onOpenStatus: () => void }) {
             <b style={{ color: "#111827", fontWeight: 600 }}>
               {health.app ?? "Glossa Lab"} v{health.version}
             </b>
-            {" · "}{health.host ?? "this machine"}
+            {cloud.active && health.dataset
+              ? <>{" · cloud · dataset "}{health.dataset.bundle_id}</>
+              : <>{" · "}{health.host ?? "this machine"}</>}
             {" · checked "}{checkedAt ? fmtClock(checkedAt.toISOString()) : "—"}
           </>
         ) : (
@@ -631,12 +634,21 @@ function AppContent() {
       ? [{ id: "account" as Tab, label: "Account & security", icon: "👤" }]
       : []),
     ...(cloud.isAdmin
-      ? [{ id: "admin" as Tab, label: "Admin", icon: "👥", count: adminInviteCount || undefined }]
+      ? [
+          { id: "admin" as Tab, label: "Admin", icon: "👥", count: adminInviteCount || undefined },
+          // Wireframes 04–07 carry an ADMIN group in the sidebar:
+          // the dashboard's own tabs as deep links (they set the
+          // dashboard's initial-tab hint, then open it).
+          { id: "admin" as Tab, label: "Users", icon: "·", adminTab: "users", key: "admin-users" },
+          { id: "admin" as Tab, label: "Workspaces", icon: "·", adminTab: "workspaces", key: "admin-workspaces" },
+          { id: "admin" as Tab, label: "Invites", icon: "·", adminTab: "invites", key: "admin-invites" },
+          { id: "admin" as Tab, label: "Audit log", icon: "·", adminTab: "audit", key: "admin-audit" },
+        ]
       : []),
     { id: "help", label: "Help", icon: "?" },
   ];
   const toolHomeItems: NavItem[] = [
-    { id: "programs", label: "Programs", icon: "▦" },
+    { id: "programs", label: cloud.active ? "Workspaces" : "Programs", icon: "▦" },
     ...toolItems,
   ];
 
@@ -666,23 +678,32 @@ function AppContent() {
   const crumbMiddle = tab === "programs" ? null : isToolView ? "Tool" : (projCtx.activeProject?.label ?? "Tool");
 
   const NavBtn = ({ item }: { item: NavItem }) => {
-    const active = tab === item.id
-      || (item.id === "analysis" && (tab === "entropy" || tab === "signs" || tab === "timeline"));
+    const active = !item.adminTab && (tab === item.id
+      || (item.id === "analysis" && (tab === "entropy" || tab === "signs" || tab === "timeline")));
     const dirty = item.id === "experiments" && expDirty;
     const running = item.id === "experiments" && expRunState.count > 0;
     return (
       <button
-        onClick={() => { goTo(item.id); if (isMobile) setSidebarOpen(false); }}
+        onClick={() => {
+          if (item.adminTab) {
+            // Admin deep link: set the dashboard's tab hint, tell a
+            // mounted dashboard directly, then open it.
+            try { sessionStorage.setItem("glossa_admin_tab", item.adminTab); } catch { /* ignore */ }
+            window.dispatchEvent(new CustomEvent("glossa:admin-tab", { detail: item.adminTab }));
+          }
+          goTo(item.id);
+          if (isMobile) setSidebarOpen(false);
+        }}
         title={item.label + (dirty ? " (unsaved changes)" : "")}
         style={{
           display: "flex", alignItems: "center", gap: 9,
-          width: "100%", padding: "7px 16px",
+          width: "100%", padding: item.adminTab ? "5px 16px 5px 34px" : "7px 16px",
           border: "none", borderRadius: 0,
           background: active ? activeBg : "none",
           borderLeft: active ? "3px solid #60a5fa" : "3px solid transparent",
           cursor: "pointer",
           color: active ? "#fff" : sideText,
-          fontSize: 13,
+          fontSize: item.adminTab ? 12 : 13,
           fontWeight: active ? 600 : 400,
           textAlign: "left",
           transition: "background 0.12s",
@@ -717,7 +738,7 @@ function AppContent() {
       }}>
         {title}
       </div>
-      {items.map((item) => <NavBtn key={item.id} item={item} />)}
+      {items.map((item) => <NavBtn key={item.key ?? item.id} item={item} />)}
     </div>
   );
 

@@ -85,14 +85,20 @@ export function ProgramsView({
         <>
           <PageHead
             p={p}
-            title="Programs"
-            lede={
+            title={cloud.active ? "Workspaces" : "Programs"}
+            lede={cloud.active ? (
+              <>
+                The workspaces you belong to. Membership is granted by an admin — if a
+                workspace is missing here, it was never hidden from you; you were never
+                added to it.
+              </>
+            ) : (
               <>
                 A program is one research effort: a question, the claims that test it, and the
                 evidence behind them. Glossa Lab is the tool — programs hold the work. Open one
                 to continue, or start a new one.
               </>
-            }
+            )}
             primary={cloud.active ? undefined : <PrimaryButton onClick={() => setCreating(true)} testId="new-program">+ New program</PrimaryButton>}
           />
 
@@ -129,12 +135,18 @@ export function ProgramsView({
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <RowTitle p={p}>
                     {health
-                      ? `${health.app ?? "Glossa Lab"} backend · v${health.version} · ${health.host ?? "this machine"}`
+                      ? cloud.active
+                        ? `Glossa Lab cloud instance · v${health.version}`
+                        : `${health.app ?? "Glossa Lab"} backend · v${health.version} · ${health.host ?? "this machine"}`
                       : "Backend not answering"}
                   </RowTitle>
                   <RowMeta p={p}>
                     {health
-                      ? `Data folder: ${health.data_dir || "—"} · Database ${health.db_ready ? "ready" : "not ready"} · Serving since ${health.started_at ? fmtClock(health.started_at) : "—"} · checked ${checkedAt ? fmtClock(checkedAt.toISOString()) : "—"}`
+                      ? cloud.active
+                        ? health.dataset
+                          ? `Dataset bundle ${health.dataset.bundle_id} · source commit ${health.dataset.source_commit.slice(0, 7)} · hydrated ${health.dataset.hydrated_at ? fmtClock(health.dataset.hydrated_at) : "—"} · Serving since ${health.started_at ? fmtClock(health.started_at) : "—"} · checked ${checkedAt ? fmtClock(checkedAt.toISOString()) : "—"}`
+                          : `Serving since ${health.started_at ? fmtClock(health.started_at) : "—"} · checked ${checkedAt ? fmtClock(checkedAt.toISOString()) : "—"}`
+                        : `Data folder: ${health.data_dir || "—"} · Database ${health.db_ready ? "ready" : "not ready"} · Serving since ${health.started_at ? fmtClock(health.started_at) : "—"} · checked ${checkedAt ? fmtClock(checkedAt.toISOString()) : "—"}`
                       : "The service did not answer the identity check just now."}
                   </RowMeta>
                 </div>

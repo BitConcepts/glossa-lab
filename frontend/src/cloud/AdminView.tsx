@@ -45,6 +45,23 @@ import { fmtDay, fmtWhenShort } from "./fmt";
 import { useCloudSession } from "./session";
 
 const PRIMARY_SLUG = "indus-script";
+
+/** Event-chip colors for the audit table (wireframe 06's palette). */
+const EVENT_CHIP: Record<string, string> = {
+  login_success: "grey",
+  login_failure: "amber",
+  logout: "grey",
+  invite_created: "grey",
+  invite_redeemed: "green",
+  invite_revoked: "red",
+  setup_completed: "green",
+  dataset_published: "violet",
+  dataset_publish_failed: "red",
+  admin_api_denial: "red",
+  container_scope_denial: "red",
+  user_disabled: "amber",
+  user_removed: "red",
+};
 const AUDIT_PAGE = 200;
 
 type AdminTab = "users" | "workspaces" | "invites" | "audit";
@@ -80,6 +97,16 @@ export function AdminView() {
     } catch { /* */ }
     return "users";
   });
+  // Sidebar ADMIN-group deep links (wireframes 04–07) retarget a
+  // dashboard that is already mounted.
+  useEffect(() => {
+    const h = (e: Event) => {
+      const t = (e as CustomEvent<string>).detail;
+      if (t === "users" || t === "workspaces" || t === "invites" || t === "audit") setTab(t);
+    };
+    window.addEventListener("glossa:admin-tab", h);
+    return () => window.removeEventListener("glossa:admin-tab", h);
+  }, []);
   const [users, setUsers] = useState<AdminUser[] | null>(null);
   const [invites, setInvites] = useState<AdminInvite[] | null>(null);
   const [workspaces, setWorkspaces] = useState<AdminWorkspace[] | null>(null);
@@ -126,10 +153,15 @@ export function AdminView() {
     workspaceNames: new Map((workspaces ?? []).map((w) => [w.id, w.name])),
   }), [users, workspaces]);
 
+  // "Last active" = the newest audit row the account itself acted
+  // in (the log is newest-first, so the first hit wins). A login is
+  // the common case, but an account created by invite redemption
+  // has acted — it redeemed — before it ever posts a /login, so
+  // restricting this to login_success would show a false "never".
   const lastActive = useMemo(() => {
     const out = new Map<string, string>();
     for (const e of audit) {
-      if (e.event === "login_success" && e.actor_id && !out.has(e.actor_id)) {
+      if (e.actor_id && !out.has(e.actor_id)) {
         out.set(e.actor_id, e.ts);
       }
     }
@@ -159,7 +191,7 @@ export function AdminView() {
           {tab === "users" && "Who can use this Glossa Lab, what they can reach, and what they have done. Every action on these tabs is written to the audit log."}
           {tab === "workspaces" && "Workspaces are the tenancy unit of this edition: claims, evidence, jobs and membership all live inside one workspace, and no workspace sees another's data. Every action on this screen is written to the audit log."}
           {tab === "invites" && "An invite is a single-use link that creates one account with access to the workspaces you choose. You send the link yourself — by email, message, however you reach the person."}
-          {tab === "audit" && "The append-only record of security-relevant events: who signed in, who was invited, what changed. Entries cannot be edited or deleted from any screen — including this one."}
+          {tab === "audit" && "The append-only record of security-relevant events: who signed in, who was invited, what changed, what was published. Entries cannot be edited or deleted from any screen — including this one."}
         </p>
         {error && <div className="cl-form-error">{error}</div>}
         <div className="cl-tabs">
@@ -272,7 +304,7 @@ function UsersTab({
                           ? `Admin account · created at first-run setup, ${fmtDay(u.created_at)}`
                           : u.removed
                             ? `Removed ${fmtDay(u.removed_at)} · work stays attributed to this name`
-                            : `Joined ${fmtDay(u.created_at)}${u.email ? ` · ${u.email}` : ""}`}
+                            : `Joined ${fmtDay(u.created_at)} via invite${u.email ? ` · ${u.email}` : ""}`}
                       </div>
                     </td>
                     <td><TypeChip type={u.global_type} /></td>
@@ -377,7 +409,7 @@ function AccessMatrixScreen({
       <p className="cl-small cl-muted" style={{ marginTop: 0 }}>
         {user.global_type === "owner"
           ? `Admin account · created at first-run setup, ${fmtDay(user.created_at)}`
-          : `Joined ${fmtDay(user.created_at)}${user.email ? ` · ${user.email}` : ""}`} · last active {isSelf ? "now" : fmtWhenShort(lastActive)}
+          : `Joined ${fmtDay(user.created_at)} via invite${user.email ? ` · ${user.email}` : ""}`} · last active {isSelf ? "now" : fmtWhenShort(lastActive)}
       </p>
       <p className="cl-sub" style={{ marginBottom: 14 }}>
         One user, every workspace, the exact grant stored for each. A change here takes effect
@@ -468,6 +500,11 @@ function AccessMatrixScreen({
           Every role change is written to the audit log with the old and new role. Lowering a
           role to No access ends that workspace for the user on their next request; work they
           already did there stays attributed to them.
+          {isSelf && (
+            <> <strong>Saving changes to your own access signs you out immediately</strong> —
+            a role change revokes the target's sessions by design; you will sign in again
+            with the new access in effect.</>
+          )}
         </span>
       </div>
 
@@ -579,14 +616,19 @@ function WorkspacesTab({
         name: name.trim(),
         ...(description.trim() ? { description: description.trim() } : {}),
       });
-      // Initial members (and the creator's Owner grant) are stored
-      // grants like any other: merge each pick into that user's
-      // existing matrix and PUT the full set.
+      // Initial members are stored grants like any other: merge
+      // each pick into that user's existing matrix and PUT the full
+      // set. The CREATOR is deliberately not granted a stored role
+      // on their own account here: a matrix change revokes the
+      // target's sessions instantly (T016), so self-granting would
+      // sign the creator out mid-creation — and a global Owner/Admin
+      // already holds implicit Workspace Admin in the new workspace.
+      // (Named deviation from wireframe 09's "Added as Owner" row;
+      // see the BUILD-RECORD.)
       const grants: Record<string, WorkspaceRole> = {};
       for (const [userId, role] of Object.entries(initial)) {
-        if (role) grants[userId] = role;
+        if (role && userId !== selfId) grants[userId] = role;
       }
-      if (selfId) grants[selfId] = "owner";
       for (const [userId, role] of Object.entries(grants)) {
         if (!role) continue;
         const current = await getAccessMatrix(userId);
@@ -641,7 +683,7 @@ function WorkspacesTab({
                   {u.id === selfId && <> <span className="cl-chip">you</span></>}
                 </span>
                 {u.id === selfId ? (
-                  <span className="cl-small cl-muted">Added as Owner of the new workspace</span>
+                  <span className="cl-small cl-muted">You administer it implicitly as {u.global_type} — no stored grant needed</span>
                 ) : (
                   <select
                     value={initial[u.id] ?? ""}
@@ -852,30 +894,6 @@ function InvitesTab({
         </button>
       </div>
 
-      {created && (
-        <div className="cl-card" style={{ borderColor: "#bbf7d0", background: "#f0fdf4" }}>
-          <h2>Invite created — copy it now</h2>
-          <p className="cl-card-sub" style={{ marginBottom: 0 }}>
-            This panel is the only place the full link ever appears.
-          </p>
-          <div className="cl-codebox">
-            <code>{created.url}</code>
-            <button
-              onClick={() => {
-                void navigator.clipboard?.writeText(created.url).then(() => setCopied(true)).catch(() => setCopied(false));
-              }}
-            >
-              {copied ? "Copied" : "Copy link"}
-            </button>
-          </div>
-          <p className="cl-small" style={{ marginBottom: 0, lineHeight: 1.55 }}>
-            The code is stored only as a hash, so this link cannot be shown again — if it is
-            lost, revoke the invite below and issue a new one. That is deliberate: a list of
-            live, reusable entry links sitting in a database would be a standing way in.
-          </p>
-        </div>
-      )}
-
       {formOpen && (
         <div className="cl-card">
           <h2>New invite</h2>
@@ -922,7 +940,31 @@ function InvitesTab({
             Create invite link
           </button>
           <p className="cl-small cl-muted" style={{ marginBottom: 0 }}>
-            Creating shows the full link once, in the panel above, with a copy button.
+            Creating shows the full link once, in the panel below, with a copy button.
+          </p>
+        </div>
+      )}
+
+      {created && (
+        <div className="cl-card" style={{ borderColor: "#bbf7d0", background: "#f0fdf4" }}>
+          <h2>Invite created — copy it now</h2>
+          <p className="cl-card-sub" style={{ marginBottom: 0 }}>
+            This panel is the only place the full link ever appears.
+          </p>
+          <div className="cl-codebox">
+            <code>{created.url}</code>
+            <button
+              onClick={() => {
+                void navigator.clipboard?.writeText(created.url).then(() => setCopied(true)).catch(() => setCopied(false));
+              }}
+            >
+              {copied ? "Copied" : "Copy link"}
+            </button>
+          </div>
+          <p className="cl-small" style={{ marginBottom: 0, lineHeight: 1.55 }}>
+            The code is stored only as a hash, so this link cannot be shown again — if it is
+            lost, revoke the invite below and issue a new one. That is deliberate: a list of
+            live, reusable entry links sitting in a database would be a standing way in.
           </p>
         </div>
       )}
@@ -1028,7 +1070,7 @@ function AuditTab({
                 <tr key={e.id}>
                   <td className="cl-small" style={{ whiteSpace: "nowrap" }}>{fmtWhenShort(e.ts)}</td>
                   <td className="cl-small">{e.actor_label || "—"}</td>
-                  <td className="cl-small"><strong>{auditLabel(e.event)}</strong></td>
+                  <td className="cl-small"><span className={`cl-chip ${EVENT_CHIP[e.event] ?? "grey"}`}>{auditLabel(e.event)}</span></td>
                   <td className="cl-small">{describeAudit(e, ctx)}</td>
                 </tr>
               ))}

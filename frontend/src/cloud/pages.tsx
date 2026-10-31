@@ -323,9 +323,15 @@ export function InvitePage({ code }: { code: string }) {
       .then((p) => {
         if (!live) return;
         setPreview(p);
-        // The email arrives pre-filled from the invite (wireframe
-        // 02) and stays editable on screen; the edge's binding check
-        // decides at redemption (a mismatch never spends the invite).
+        // The email arrives pre-filled from the invite and renders
+        // disabled: the edge binds redemption to the address the
+        // invite was issued to (a mismatch is refused before the
+        // invite is spent), so the screen shows that address as
+        // fixed rather than offer an edit that can never succeed.
+        // (Parent decision on the Phase 3 flags, BUILD-RECORD
+        // 2026-10-31 — supersedes wireframe 02's annotation and
+        // the D-2 line, the same treatment as the setup screen's
+        // fixed username.)
         if (p.email) setEmail(p.email);
       })
       .catch(() => { if (live) setLoadFailed(true); });
@@ -467,7 +473,7 @@ export function InvitePage({ code }: { code: string }) {
             Email{" "}
             <span className="cl-label-hint">
               {preview.email
-                ? "— from the invite; change it if you were reached at a different address"
+                ? "— the address this invite was issued to"
                 : "— optional; it identifies your account to admins"}
             </span>
           </label>
@@ -477,7 +483,15 @@ export function InvitePage({ code }: { code: string }) {
             autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            disabled={!!preview.email}
           />
+          {preview.email && (
+            <div className="cl-hint">
+              This invite was issued to this address, so it can&rsquo;t be
+              changed here. If you need the invite at a different address,
+              ask whoever invited you to send a fresh one to it.
+            </div>
+          )}
         </div>
         <div className="cl-field">
           <label htmlFor="cl-invite-password">Set a password</label>

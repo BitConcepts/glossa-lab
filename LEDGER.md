@@ -11890,3 +11890,66 @@ a named pre-launch gate for Step 5.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## Spec 083 — Step 3: cloud frontend (2026-10-31)
+
+Step 3 of the cloud edition (tasks T025–T029) is delivered in
+this change, on branch feat/083-frontend (base: the Step 2
+branch head, PR #468 pending at delivery time). The SPA gains
+a cloud session gate: one probe of the edge's session surface
+decides cloud vs desktop mode, and in cloud mode the Spec 082
+token gate never appears. The auth screens (login, invite
+acceptance, first-run setup incl. its closed state) render no
+program data; sign-in failure is the wireframe's single
+undifferentiated sentence. The admin dashboard carries users,
+workspaces, invites, and the audit log as one surface with a
+per-user access matrix (stored grants, Guest cap visible
+before it can be hit, effective-result text per row); account
+& security is self-service for profile email, password (which
+revokes the account's other sessions), sessions, and the
+account's own audit slice. The shell carries identity: user
+chip, sidebar ADMIN deep links, workspace switcher whose rows
+show the per-workspace role and never name a workspace the
+user is not in, and the dataset chip (bundle id · source
+commit · hydrated at) on the workspace card, program headers,
+and — in cloud form, with no origin host or data folder — the
+service chip and service strip. Carryover screens render the
+acting user ("by <name>") on claims, digestion, evidence, and
+jobs (jobs schema v27 stamps the creator at the API).
+
+Verification (T029): every screen was rendered with
+Playwright at 1440 and 390 against the real edge request
+handler and the built SPA, and compared screen by screen
+against the approved wireframes; 25 renders are kept with the
+build record. The comparison fixed two defects beyond
+cosmetics: a browser navigation to /setup after closure
+received the edge's raw 404 JSON instead of the app's closed
+state (navigations now fall through to the SPA; API probes
+still 404), and the project provider's load() ignored the
+explicit-global sentinel when consulting the backend's active
+project, which with the cloud stale-project guard looped
+project fetches without bound (load() now honors the
+sentinel). Workspace creation no longer grants the creator's
+own matrix — a matrix change revokes the target's sessions
+instantly (T016), which signed the creator out mid-creation;
+creators hold implicit admin instead, and the matrix screen
+warns an admin who edits their own access that saving signs
+them out. Tests at delivery: edge vitest 91/91, backend
+jobs/cloud/database suites 61 passed, frontend tsc clean.
+
+Named deviations from the wireframes, recorded in the build
+record rather than improvised around: no password-reset-link
+flow exists in the Step 2 identity API, so wireframes 01/04/08
+references to one are rendered as the shipped recovery
+(disable + re-invite); the setup username renders pre-filled
+and disabled because the seed record fixes it (Amendment 3),
+against wireframe 03's annotation imagining it editable; the
+invite email is pre-filled and editable per wireframe 02 /
+decision D-2, while the Step 2 edge binding refuses a changed
+address at redemption (recoverable, never spends the invite) —
+the tension is flagged for a spec decision; wireframe 09's
+"your role" column shows the effective role with implicit
+ones marked, because T018 makes implicit admin real.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

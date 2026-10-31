@@ -51,11 +51,11 @@ its claim(s) or the FR / decision it discharges.
 
 ## Step 3 — frontend (PR: `feat/083-frontend`)
 
-- [ ] T025 Wireframes 01–06 in the SPA's existing design system: login, invite acceptance, glassbreak setup, admin users, admin invites, admin audit (C083-1, C083-2, C083-3, C083-12)
-- [ ] T026 Wireframes 07–11: shell with membership + workspace switcher, account & security, admin workspaces, admin user-access matrix (C083-5, C083-16, C083-19)
-- [ ] T027 Carryover deltas on the 17 carried-over screens per carryover-touchpoints.md: user chip, dataset chip (bundle id · source commit · hydrated at), *Started by* on jobs, actor rendering on claims/digestion/evidence (C083-11, C083-13)
-- [ ] T028 Membership filtering applied to lists **and** counts/badges — no count computed over a workspace the user cannot see (C083-18)
-- [ ] T029 Verification: Playwright screenshots at desktop 1440 + mobile 390 compared against the approved wireframes screen by screen; any deviation stops the step and is reported, not improvised around; LEDGER.md entry
+- [x] T025 Wireframes 01–06 in the SPA's existing design system: login, invite acceptance, glassbreak setup, admin users, admin invites, admin audit (C083-1, C083-2, C083-3, C083-12)
+- [x] T026 Wireframes 07–11: shell with membership + workspace switcher, account & security, admin workspaces, admin user-access matrix (C083-5, C083-16, C083-19)
+- [x] T027 Carryover deltas on the 17 carried-over screens per carryover-touchpoints.md: user chip, dataset chip (bundle id · source commit · hydrated at), *Started by* on jobs, actor rendering on claims/digestion/evidence (C083-11, C083-13)
+- [x] T028 Membership filtering applied to lists **and** counts/badges — no count computed over a workspace the user cannot see (C083-18)
+- [x] T029 Verification: Playwright screenshots at desktop 1440 + mobile 390 compared against the approved wireframes screen by screen; any deviation stops the step and is reported, not improvised around; LEDGER.md entry
 
 ## Step 4 — the data-boundary publisher (PR: `feat/083-cloud-publish`)
 

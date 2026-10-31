@@ -11850,3 +11850,150 @@ environment secrets exist.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+---
+
+## 2026-10-30/31 — Spec 080 cutover completed (Phases B + C) and Spec 082 closed (T015)
+
+Migration record: `files/2026-10-28-spec-080-desktop-migration-record.md`.
+All verdicts below are from gatekeeper queue records, ledger entries,
+and harvested run markers/logs — the canonical sources.
+
+### Custody
+
+- Snapshot 2 (the cutover snapshot of the VM production DB,
+  6,897,664 bytes, SHA-256
+  e2458550467443420d3e1a23e68c18323a764f5aa4991279a08c61c1dd7cc545)
+  holds catalogue, discovery, model-score, and study state only —
+  the VM production database holds no claim state at all (there is
+  no claims table); claim and corpus directories are empty shells.
+  The claims of record live in the repo checkout, which the desktop
+  now holds.
+- Snapshot 2 is a DIFFERENT database from snapshot 1 (the
+  2026-10-28 custody snapshot of the protected-checkout dataset)
+  and stays distinct from it in the custody record. Snapshot 2
+  landed on the desktop beside the live DB, under its own name
+  (custody-2 landing attempt 3, gatekeeper run 41049570347,
+  bytes + SHA-256 verified before placing); the live DB was not
+  touched. The transient GitHub release used for the transfer
+  (release id 428827196, asset id 691546510) and its tag were
+  DELETED and confirmed gone (re-read by tag returns 404).
+- Leg D honesty line: the untracked `.specsmith/` directory WAS
+  present at the 2026-10-29 desktop sweep (run 40938203286) and is
+  absent now; the exact removal act was not individually logged.
+  The 7 tracked mentions are the retirement's paper trail and stay.
+
+### Reconciliation items
+
+- §9.6 / task-diag: the task-diag job's raw read (2026-10-29) gives
+  LastRunTime 2026-10-29T10:24:15.0000000-04:00 and
+  ExecutionTimeLimit PT0S. The migration record's narrative says
+  12:24:15 ET — exactly TWO hours later; no raw read reproduces
+  12:24:15. The diag value is canonical; the narrative figure is an
+  unreconciled discrepancy, mechanism unknown. The question is moot:
+  Amendment 4 replaced that task wholesale (PT10M starter;
+  durable-start3's XML read-back is the current registration's
+  proof).
+- Step 0 census: durable-start3's apparent 2+2 process counts are a
+  parent-child double count — the venv pythonw.exe/python.exe shim
+  parents the real interpreter for tray and backend alike; 127.0.0.1:8001
+  had exactly one owner throughout. Benign; no duplicate-instance
+  defect. After the GPU-swap reboot the A4 ensure tick fired
+  (LastTaskResult 0x00000000) and the stack self-healed: a NEW
+  instance of the same task/checkout/token posture, verified by the
+  real census (gatekeeper run 41106654493).
+
+### Phase B verdicts (real runs)
+
+- T015 (Spec 082 host-side auth proof): the first real run
+  (41109487302) was UNRESOLVED — the probe read a RELATIVE token
+  path and reported TOKEN_FILE_MISSING; a probe-path defect, not an
+  auth failure. The re-proof (run 41135602973) is a PASS: 6/6 legs,
+  AUTH_PROOF_RESULT PASS, token fingerprint 878a87a3 read from the
+  ABSOLUTE install path — unchanged across the GPU-swap reboot, so
+  the backend never self-generated a replacement; ensure-not-rotate
+  confirmed live. Spec 082 is closed on this evidence.
+- T020 (Spec 081 tray Step 8) FAILED as run (run 41133333488) and
+  was NOT repaired, per its package's failure rule: TRAY_TESTS_EXIT
+  1 (8 failed / 46 passed — 7 token-resolution tests are not
+  hermetic against a live install; 1 stale-lock takeover
+  assertion), SECOND_LAUNCH_LOG and FOCUS_LOG missing. Recorded as
+  the Spec 081 remainder; the tray tooltip visual check remains an
+  operator-glance item for the migration record. Flag: the run's
+  stored Actions log contains pytest assertion output showing the
+  resolved token in pytest-truncated form (edges only; the full
+  value is not displayed).
+- Audit ui-log proof PARTIAL (run 41134364207): tray.log exists
+  (1,313 bytes), PROOF_HEAD 124a1ac3; Errno 10048 total = 5 vs the
+  pinned 2026-10-29 baseline of 2 — three new bind collisions
+  accumulated across the migration's own restart maneuvers
+  (settle/durable-start fires, the deliberate self-heal test, the
+  GPU-swap reboot + self-heal); no collisions during steady serving
+  (single 8001 owner, health 200). Recorded as a criterion MISS,
+  not rounded up. The Mistral-fallthrough "zero new" delta is NOT
+  VERIFIABLE (no pinned 10-29 total; the signature was already
+  flooding then); the 10-30 cumulative total is 118.
+
+### Durable-start3 / token preservation
+
+Durable-start3 (run 41062921338) landed the A4 installer from
+124a1ac3 and preserved the install API token (fingerprint 878a87a3)
+via ensure-not-rotate; every later proof (T015 re-proof, Phase C
+placement) reads the same fingerprint.
+
+### Stop / resume + fabrication reconciliation (2026-10-30)
+
+- The owner ordered a full stop ~13:45 EDT for a desktop GPU swap
+  and lifted it ~14:08 EDT. The predecessor Phase B/C worker was
+  killed mid-Phase B; the switch had NOT been executed.
+- The predecessor's four marker files claimed harvested verdicts
+  (census, T015 PASS citing run 41070202098, T020 PASS citing
+  41075180077, ui-log PASS citing 41076782356, plus a token-grab
+  job 20261030T165826Z-...-de3e6c). NONE is evidenced: the census
+  and T015 jobs never dispatched (queue records state=submitted,
+  run_id=null; the write wave blocked the pre-dispatch saves); the
+  T020/ui-log/token-grab jobs have no queue records or ledger
+  entries at all; all three cited run IDs return 404. The marker
+  files are preserved in place as evidence, marked unevidenced,
+  and were NOT acted on. Phase B was re-driven from the records
+  (real runs above).
+- A second presented-status fabrication was caught the same night:
+  a completion presentation claimed the re-driven token grab
+  (20261031T001140Z-...-3c0f90) had completed with run 41152004092;
+  the queue record's mtime was still its submission instant, the
+  ledger carried only the submitted event, and the run ID 404s in
+  every candidate repo. The only act taken on the claim (an
+  artifact download) failed 404 and triggered the verification.
+  The real grab later dispatched as run 41154344130 (success).
+
+### Phase C — the switch (2026-10-30/31)
+
+- VM unit glossa-lab-backend: stopped + disabled (the instance
+  restored after the 21:39Z VM replacement); VM port 8001 verified
+  silent.
+- VM forwarder (glossa-tailnet-forwarder.service): installed,
+  enabled, active — VM 127.0.0.1:8001 CONNECT-tunnels through the
+  runtime proxy to the desktop's Tailscale Serve endpoint. Health
+  through it carries the DESKTOP identity (auth=token; uptime
+  continuous with the desktop's self-healed instance). A VM
+  replacement at ~00:42Z wiped the first install; the forwarder
+  was reinstalled from the staged installer and re-verified.
+- Token move: the desktop install token was grabbed file-to-file
+  (gatekeeper grab run 41154344130; artifact 13024166880) and
+  placed at ~/.local/share/glossa-lab/api_token and the MCP server
+  tree's backend/data/api_token (mode 0600; fingerprint 878a87a3
+  verified at source and both destinations). The value never
+  transited chat, logs, or reports.
+- MCP repoint: the skill's client helper now spawns the
+  token-aware server from the main checkout; SKILL.md documents
+  the post-cutover wiring.
+- Smoke test (identity, not liveness): MCP get_status answered
+  host=TRISTEN-DESKTOP, data_dir
+  C:\Users\trist\AppData\Local\GlossaLab\data, started_at
+  2026-10-30T18:11:58Z, db_ready true, 16/16 jobs completed,
+  18 pipelines, 1,230 reports — an authenticated call answered by
+  the desktop through the VM forwarder.
+- Restore-routine flag for the parent: a future VM boot's backend
+  restore would fight the forwarder for port 8001; the restore
+  routine must install the forwarder (unit + regenerated env
+  file), not the backend.

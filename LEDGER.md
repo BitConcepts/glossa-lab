@@ -12040,3 +12040,108 @@ fixes, by leg:
 Local verification: the three tray suites pass 54/54 on Linux with
 these changes. Host re-run of the full Step 8 battery is the
 acceptance proof and is recorded in the Spec 080 cutover addendum.
+
+---
+
+## 2026-10-31 — Spec 080 cutover addendum: token rotation, host-proof provenance, T020 acceptance, forwarder durability
+
+### Token rotation (Phase C, after the T020 exposure)
+
+A tray token-test assertion printed the live install token **in
+full** into the T020 job's Actions log (private runner repo) and
+the gatekeeper queue record. Correction to the Spec 080 ledger
+entry merged in #471: it characterized the logged form as
+truncated at its edges — it was the complete value. The token was
+therefore treated as exposed and rotated inside Phase C, before
+the MCP repoint:
+
+- Attempt 1 (gatekeeper run 41159831517) rotated nothing. Named
+  cause, diagnosed from the job script against the rotate code
+  path before any second attempt: the job script invoked a
+  nonexistent interpreter (`<repo>\.venv\Scripts\python.exe`; the
+  checkout venv is `<repo>\backend\venv\Scripts\python.exe`), so
+  both calls died at launch ("term not recognized"), no exit code
+  was ever produced, and the old file stood untouched. The CLI's
+  only refusal (env-carried token) did not fire — the job
+  environment carried no GLOSSA_API_TOKEN, and no start path
+  exports one (only GLOSSA_MODE=installed is set).
+- Attempt 2 (run 41162717072) with the one-line path correction:
+  ROTATE_EXIT 0. Old fingerprint **878a87a3** → new fingerprint
+  **7c7c593a**; file remains 43 bytes. The running backend picked
+  the new token up WITHOUT a restart — token resolution is
+  mtime-cached — with health uptime continuous at 31,941 s at the
+  rotation read.
+- The rotate job's own proof-kit leg errored (KIT_EXIT 2) on an
+  argument the kit does not accept (`--expect-auth`, a scripting
+  error in the job, argparse exit). The formal re-proof with the
+  kit's correct invocation (run 41165615739) reports fingerprint
+  7c7c593a and **AUTH_PROOF_RESULT PASS** (6/6 legs).
+- The old token is verifiably dead: a request carrying it through
+  the VM forwarder returns 401 from the desktop backend. The
+  rotated token file was re-grabbed (run 41166303384, artifact
+  13029407561) and placed file-to-file on the VM; fingerprints
+  match 7c7c593a at the source and both destinations. The MCP
+  smoke on the rotated token answers from the desktop
+  (host TRISTEN-DESKTOP, uptime continuous).
+
+### Audit host proof — Errno 10048 deviation, named
+
+The staged audit host proof (run 41134364207) conformed on
+health, task, process tree, and zero-failure signatures, but the
+frozen criterion "Errno 10048 count stays 2" read **5**. This is
+recorded as a named deviation, not a pass:
+
+- Provenance job (run 41160569237) located the occurrences by
+  timestamp: the baseline pair sits on 2026-10-29 (07:29:35Z and
+  13:14:53Z, pre-shutdown history); the further occurrences fall
+  at 2026-10-30 16:19:56Z and 18:11:16Z — the post-shutdown
+  rebirth window (the 14:11 ET self-heal rebirth and its tray
+  auto-restarts), with **zero occurrences after the window** and
+  none in steady state in the current stack.
+- Source difference preserved: **4** occurrences were located in
+  backend.log against **5** counted by the ui-log proof in its
+  log source. Both records stand; neither number is corrected
+  into the other.
+- The remaining signatures classify the same way: the Mistral
+  flood total (118) is a pre-existing signature whose last
+  occurrence is inside the rebirth window (9 in-window, 0 after);
+  circuit-opens total 8 = six pre-existing OpenAI lines from
+  2026-06 plus two Mistral breaker-opens inside the window (the
+  breaker working as designed); tray auto-restarts total 4, all
+  bound to the shutdown/rebirth maneuvers, none steady-state.
+- Criterion disposition: **satisfied-in-substance, deviation
+  named** — not a silent pass.
+
+### T020 acceptance (host battery re-run)
+
+PR #472 (merge 309ea63c, CI 9/9) landed the remediation: hermetic
+tray token tests (LOCALAPPDATA control + platform pin — the
+durable prevention for the exposure above), the `_pid_alive`
+STILL_ACTIVE correction for the real stale-lock defect, and this
+ledger's remediation entry. The desktop checkout was then settled
+from 124a1ac3 to 309ea63c (settle job, run 41164924219,
+HEAD_AFTER 309ea63c, setup exit 0), and the full Step 8 battery
+re-ran on the host with the corrected verify script (run
+41165618789): **54 passed, TRAY_TESTS_EXIT 0, SECOND_LAUNCH_LOG
+FOUND, FOCUS_LOG FOUND**, tray process count 2 (one logical tray:
+venv shim parent + real interpreter, per the Step 0 census
+explanation). T020 is complete on those markers.
+
+### Forwarder durability + VM replacements
+
+Phase C's VM endpoint is the tailnet forwarder unit
+`glossa-tailnet-forwarder.service` (VM 127.0.0.1:8001 → desktop
+via the runtime CONNECT proxy to the desktop's Tailscale Serve
+endpoint). The unit and its installer are staged in the
+supervision clone's services directory; the restore routine's
+install list is unchanged by this entry — adopting the forwarder
+into the routine (in place of the retired VM backend unit) is
+the cutover-final act. The VM was replaced twice during the
+cutover window (boots of ~00:42Z and ~03:36Z on 2026-10-31),
+each time wiping the unit with everything outside the home tree;
+the forwarder was reinstalled from the staged installer after
+each (the second reinstall by the parent) and re-verified by
+identity each time: health through it returns the desktop
+payload (auth=token, desktop uptime continuous) and /docs
+without a token returns the desktop's 401. The VM-local backend
+unit stays retired: stopped, disabled, and not resurrected.

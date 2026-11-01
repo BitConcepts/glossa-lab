@@ -116,7 +116,7 @@
    },
    "lane2_drafts": {
     "file": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
-    "sha256": "3f645c9a4132ba5a0bc5fca4ca22810b8b6169a2f1f9f85f35990c7b72df33fb",
+    "sha256": "7b62d7dba6cf8bc294dcd340b550aff7c5bd44cdababfbf24e475ca620a87bc9",
     "claim_id": "STUDY-SPEC-023/PHASE-132+383"
    },
    "anchors": {
@@ -138,15 +138,15 @@
   "specs/058-transcription-disagreement-mechanism/freeze.md": "c9ab09e1145aa8eb23b4dc851c58d030971a10c1fd7bcdea94d8a63994062c46",
   "specs/058-transcription-disagreement-mechanism/spec.md": "2a6bfe6e54fecc640c50824ce33736dd5b01db0db73dac49caf0c17bb2ffb24d",
   "specs/058-transcription-disagreement-mechanism/claims.json": "cfd3ec456afe237efa712a9e1e899702bacd4ba9d7c8434fd89b25a5671b8abd",
-  "specs/058-transcription-disagreement-mechanism/adjudication.md": "c233e46d5cb93a87276d0b4905f78eb030ee4702eecaee5ad2021df0bd5d123d",
+  "specs/058-transcription-disagreement-mechanism/adjudication.md": "2884a83a6281ae6025f607c6d3d4b9f06c96ebdacf1f892867c275180e623ee0",
   "specs/058-transcription-disagreement-mechanism/aee/freeze-aee-note.md": "a1719e759912463b22c0007ddb1eea2b62c299d438011d245ae7a2482f1a6faf",
-  "specs/058-transcription-disagreement-mechanism/build_freeze.py": "eefe3f7faab9a2faa47794310bcc0008d623ce687f5ba4a2338d99bd3bc645ef",
-  "backend/tests/test_spec058_freeze.py": "803c62241780eaea26aae00d061866d6ba2f8b39df7d2dd18d055f605a511dbd"
+  "specs/058-transcription-disagreement-mechanism/build_freeze.py": "e2aaf4a77a2f1cffa5d0c45ffc3f14d97b9b55f51a94c6d29c5d0732c1459770",
+  "backend/tests/test_spec058_freeze.py": "d0555a59906c4e67ebe7bbb7fc42d1ebe731e369955a6da1fed81c86ab99c36f"
  },
  "environment": {
   "python": "3.12.3",
   "platform": "Linux",
   "aee": "1.5.3"
  },
- "digest": "8bdd4764380bf9e6cb442b1cc75a3b57f4507284676bcb65603e481a49435713"
+ "digest": "79421dae740b68d1820f4e891ca219b9d86944e42a127f8d9fe36943e30fd53d"
 }

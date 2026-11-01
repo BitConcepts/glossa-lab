@@ -830,3 +830,79 @@ these facts so later drift fails loudly.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+
+## 9. Post-freeze citation refresh - 2026-11-01
+
+Recorded by dated append; the digest-covered
+text above is not edited, and no ruling, design
+fact, claim, or verdict of this spec changes.
+
+**The drift.** This spec's section 2 pins the
+Spec 029 lane-2 adopted drafts file
+(`specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json`)
+at SHA-256
+`3f645c9a4132ba5a0bc5fca4ca22810b8b6169a2f1f9f85f35990c7b72df33fb`
+(127,338 bytes at this freeze). On 2026-11-01
+that file changed under the owner's own act:
+the Spec 029 lane-2 adoption amendment of
+2026-11-01 (PR #477) recorded Tristen
+Pierson's adoption - "Adopt the two RT-21
+refreshed texts as mine", 2026-11-01 06:08
+EST - of the two lane-2 `not_understood` texts
+refreshed on 2026-10-25 under red-team finding
+RT-21. The amendment changed exactly 2 of the
+file's 35 records -
+`without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003`
+and `yadav_2009_arxiv_manual_002` - in each
+case the `not_understood` field and the
+`explanation_record` carrying the adoption
+disclosure. The file now stands at 130,733
+bytes, SHA-256
+`7b62d7dba6cf8bc294dcd340b550aff7c5bd44cdababfbf24e475ca620a87bc9`.
+
+
+**Intersection check.** This spec's freeze
+tests assert the drafts file by its pin only -
+no field of any lane-2 record is read. The
+claim under test's own lane-2 record
+(`ancient_writing_and_modern_technologies_51831ac9_sign_val_0001`)
+is in any case not one of the two amended
+records: a record-by-record comparison against
+the pre-amendment file shows exactly the two
+records named above changed, and this spec's
+record is byte-identical across the amendment.
+No fact this design rests on is touched.
+
+**The act.** This spec's documents prescribe
+no separate post-freeze procedure for a
+changed citation, so the act follows the house
+pattern of Specs 054 and 074: a dated record
+appended here and the freeze digest recomputed
+in the same act. The pin stands in three
+places, and all three move together: the
+the `LANE2_SHA256` constant in
+`backend/tests/test_spec055_freeze.py`, the
+`lane2_drafts` input of the freeze definition
+carried in this spec's `build_freeze.py` (the
+instrument `freeze.md` section 3 names as
+computing the machine record - without the
+update there, the recomputation would
+regenerate the superseded pin), and the
+machine record itself. The freeze digest is
+recomputed in this same act over the appended
+record and stands in `freeze.json`; the digest
+it supersedes is
+`42ef82829ade894918b0bf946ac44354224d689202e2f7bf00eb747821bdedfc`.
+The section 2 pin tables in `spec.md` and
+`freeze.md` stand unamended as the record of
+the freeze-time verification; this addendum is
+the pointer a later reader needs.
+
+*- adjudication record section 9, addendum
+of 2026-11-01 (lane-2 citation refresh,
+consequent on the Spec 029 lane-2 adoption
+amendment, PR #477). AI disclosure: executed
+by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per
+constitution section VI.*

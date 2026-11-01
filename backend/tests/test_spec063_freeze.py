@@ -5,7 +5,7 @@ Pins: (1) the frozen machine record replays exactly
 source, including the preserved drawn-form
 reference); (2) the definition carries the frozen
 contract exactly - Spec 056's executed record as
-predecessor (freeze digest 64c28ce1..., outcome
+predecessor (freeze digest 039b16eb..., outcome
 IDENTIFICATION FAILED at R-3, Phase-418), candidate
 K-1 with its argument conditions of record, the
 preservation act (drawn-form-reference-821.json,
@@ -91,7 +91,7 @@ PHASE104_SHA256 = (
     "2d0b83e8055a04b96635007054cfadde472f605dc7e5b249a61c8f9ea89b858d"
 )
 LANE2_SHA256 = (
-    "3f645c9a4132ba5a0bc5fca4ca22810b8b6169a2f1f9f85f35990c7b72df33fb"
+    "7b62d7dba6cf8bc294dcd340b550aff7c5bd44cdababfbf24e475ca620a87bc9"
 )
 ANCHORS_SHA256 = (
     "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569"
@@ -103,7 +103,7 @@ PASSAGE_SHA256 = (
     "51d6fb3a460d94abc98c2ff735b17c5131a68c203e4d16692a21725790c0c604"
 )
 SPEC056_FREEZE_DIGEST = (
-    "64c28ce1aa379d9b47d230544e372b3446906d53422fe16da51fbce3bc94a63e"
+    "039b16eb11424e5ffb3f523199d9b7849ee53afd2f9b9b709ab75bef73d5f50e"
 )
 SPEC056_OUTCOME_SHA256 = (
     "ff16184aa265b68358865c51e8f43dc9c9ec40688a53614792640f1d2e2d844e"

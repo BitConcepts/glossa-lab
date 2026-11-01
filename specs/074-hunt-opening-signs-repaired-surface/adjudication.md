@@ -438,3 +438,30 @@ form that can only return "not applicable."
 *— adjudication record §9, addendum of 2026-10-25
 (red-team finding RT-19 disposition, road-to-decipherment
 plan Step 7).*
+
+## 10. Post-freeze digest recomputation — 2026-11-01
+
+The §9 addendum appended to this record on
+2026-10-25 for the RT-19 disposition drifted this
+digest-covered file's hash from the digest then
+standing in `freeze.json`. Although §9 altered no
+ruling, verdict, or frozen text, the freeze
+mechanism hashes the whole file, so the append
+left the freeze record unreplayed: it did not
+complete the append-then-recompute act the
+programme's freeze pattern prescribes (Spec 054's
+adjudication record, §§9.7–9.10: the freeze digest
+is recomputed in this same act over the appended
+record and stands in `freeze.json`).
+
+The freeze digest is therefore recomputed in
+this same act over the appended record —
+including this §10 — and stands in `freeze.json`.
+No ruling, verdict, decision, or previously
+frozen text was edited by this completion act;
+the only textual addition is this dated record.
+
+*— adjudication record §10, post-freeze digest
+recomputation record of 2026-11-01 (completing
+the §9 addendum's append act, road-to-decipherment
+plan Step 7 re-PR).*

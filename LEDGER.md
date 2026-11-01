@@ -12145,3 +12145,42 @@ identity each time: health through it returns the desktop
 payload (auth=token, desktop uptime continuous) and /docs
 without a token returns the desktop's 401. The VM-local backend
 unit stays retired: stopped, disabled, and not resurrected.
+
+## 2026-10-31 — Spec 084 POLICY-SYNC conformance: approved-text fixtures + CI diff tests
+
+The owner's POLICY-SYNC standing directive (2026-10-31, issued in
+the Arcturus chat, delegated to every website-owning chat) is
+applied to this repo's surfaces by new **Spec 084**
+(`specs/084-policy-sync-conformance/`): claims C084-1…C084-11
+frozen before code, each with a falsifier or a recorded hold.
+
+Phase 1 inventory (20 items; goal-workspace
+`files/2026-10-31-policy-sync-inventory.md`) covered the app SPA,
+the tray, the cloud edge + cloud SPA, and the public tracker.
+Fixtured + tested in this landing, in `fixtures/` with the
+approval citation in each header:
+the standing position (Spec 029 E2 text, from the project
+seeder), the FR-029-08 stage-count framing, the cloud edge's
+robots.txt body and noindex value (owner's 2026-10-30
+robots-away order), the Spec 082 token-gate copy, and the tray's
+wireframe-15 status copy. Absence tests guard the superseded
+"161" headline framing and the Spec 081 D4-removed surfaces
+(component files/imports + REAL_CATALOG_SUMMARY) — both verified
+absent before the guards were written.
+
+Conformance runs as `backend/tests/
+test_policy_sync_conformance.py` in the existing Backend tests CI
+job (8 tests; locally 8 passed in the CI-faithful venv, and a
+deliberate one-word fixture drift turned the standing-position
+test red as a teeth-check before being restored). HELD, with
+reasons recorded in the spec and claims: the cloud
+anonymous-surface copy (source lands on main with the Phase 3 PR,
+gated on PR #468), the tracker standing texts (artifact-owned
+source), the llms.txt latest-release line (drift CONFIRMED live
+2026-10-31 — v8 named, v9 current; its correction is owner-gated
+with the prepared v10 package), and the Help/AI-settings/seeder
+description texts (no owner-approval act on record — findings
+under the directive, not fixtures). Open gap recorded: the app
+carries no privacy/data-handling/terms text; creating one is an
+owner text act. Fixtures change only through a recorded
+owner-approval act (FR-084-08).

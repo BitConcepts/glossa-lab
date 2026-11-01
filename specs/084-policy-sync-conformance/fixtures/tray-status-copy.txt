@@ -1,0 +1,16 @@
+# FIXTURE — approved text under Spec 084 (POLICY-SYNC). Do not edit
+# without a recorded owner-approval act on the actual text
+# (FR-084-08); an unapproved fixture edit is itself a finding.
+# Approval: Spec 081 wireframe 15 forms, in the package the owner
+# ratified 2026-10-29 (Q1–Q10); step-8 as-built note. One approved
+# string (or string template fragment) per line; each must appear
+# verbatim (modulo whitespace) in the surface.
+# Surface: tray/glossa_tray/main.py status/tooltip assignments.
+# ---
+— backend healthy · v{ver} · up {uptime}
+Backend healthy · v{ver} · up {uptime}
+Glossa Lab — Healthy (v{ver})
+Backend stopped by you — it will not restart itself.
+Backend stopped — auto-restart limit reached
+Backend starting…
+Backend stopped.

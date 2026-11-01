@@ -1,0 +1,14 @@
+# FIXTURE — approved text under Spec 084 (POLICY-SYNC). Do not edit
+# without a recorded owner-approval act on the actual text
+# (FR-084-08); an unapproved fixture edit is itself a finding.
+# Approval: Spec 082 ui-contract.md (merged PR #453) fixes the
+# named "API token needed" state and the token storage/display
+# rules; the sentences below as implemented landed in PR #459 on
+# green CI. One approved string per line; each must appear verbatim
+# (modulo whitespace) in the surface.
+# Surface: frontend/src/components/ApiToken.tsx (Spec 082 §4/§5).
+# ---
+API token needed
+This backend has token authentication disabled — no token is needed.
+No token stored. Paste the token from the tray's “Copy API token” action — the app cannot read the token file itself.
+The value itself is never shown.

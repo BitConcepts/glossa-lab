@@ -1,0 +1,9 @@
+# FIXTURE — approved text under Spec 084 (POLICY-SYNC). Do not edit
+# without a recorded owner-approval act on the actual text
+# (FR-084-08); an unapproved fixture edit is itself a finding.
+# Approval: Spec 029 FR-029-08 framing (frozen spec): stage counts
+# are an index into the records, never a measure of decipherment.
+# Surface: frontend/src/components/ProgramHome.tsx, stage-summary
+# block.
+# ---
+These counts are an index into the anchor records — how many records stand at each stage — not a measure of decipherment.

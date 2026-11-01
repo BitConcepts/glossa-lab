@@ -408,3 +408,98 @@ that the gate stands in the merge path).
 **AI disclosure:** executed by an AI agent (Muse, via
 Muse) at the direction of Tristen Pierson, per
 constitution sec. VI.
+
+---
+
+## Addendum — 2026-11-01: the PR #481 CI failure and its repair
+
+The first CI run of this stage's PR (run **41349735844**)
+failed one seat: the Backend tests job stopped (`-x`) at
+`tests/test_spec086_ledger_gate.py::test_gate_passes_clean_tree`.
+In-suite, the gate reported FAIL on **V1 recorded source
+hashes**, with V3 and V4 failing downstream; every named
+mismatch was a file under
+`glossa-indus/claims/extracted_claims/` (the family:
+`ancient_writing_and_modern_technologies_51831ac9`,
+`farmer_sproat_witzel_2004`,
+`fuls2023_catalog_of_indussigns_searchins_1dbdecdb`,
+`indus_valley_script_deciphered_from_myth_65ff0a26`,
+`parpola_2010_dravidian_solution`,
+`positional_analysis_of_indus_signs_a2bedc93`,
+`the_archaeology_and_epigraphy_of_indus_w_27f45a68`,
+`without_kings_or_conquests_the_indus_scr_ce9d98cc`,
+`yadav_2009_arxiv`, `yadav_2010_ngrams`). The dedicated
+ledger-gate CI job on the same run passed, and the gate
+passes standalone on a clean tree: the gate was not the
+defect.
+
+**Root cause** (reproduced locally before repair: the
+evidence-API file run first in one process, then the
+clean-tree test — `1 failed, 29 passed`, the failure the
+gate's own refusal naming the files above): sibling
+tests in the shared suite — `tests/test_indus_evidence_api.py`
+and kin — regenerate the extracted-claims store files
+in-tree with transient bytes during the run, so whether
+the gate test sees a pristine tree depends on execution
+order. The defect was the test's pristine-tree
+precondition, previously guarded by a substring heuristic
+over the full-gate report that did not trip, because the
+downstream V3/V4 evidence lines do not all carry the
+heuristic's trigger phrases. This is the Stage 1
+false-hash mechanism in a new seat, and the same one
+Stage 2 met.
+
+**The repair** — the Stage 2 discipline, in the pytest
+seat only (`tests/test_spec086_ledger_gate.py`); the gate
+itself (`ledger_gate.py`, `check_ledger_gate.py`,
+`gated_publish.py`, `matrix_generate.py`, the CI
+ledger-gate job, C4) is byte-untouched and no check is
+loosened anywhere:
+
+- `test_gate_passes_clean_tree` first verifies its
+  precondition mechanically — the gate's V1
+  recorded-source-hash verification alone
+  (`run_gate(root, scope={"V1"})`). If and only if that
+  arm names diverged source files, the test skips with
+  the cause named: the check that failed, the
+  in-tree rewrite by the earlier suite test, and the
+  first diverged paths. Where the precondition holds,
+  the full gate runs through the same test and must
+  pass exactly as before.
+- Two teeth for the new logic (battery 19 → **21**):
+  one alters an extracted-claims file's bytes in a
+  scratch tree and requires the precondition to trip
+  naming that file, in the helper's divergence list
+  and in the skip reason; the other requires the
+  precondition to hold on a pristine scratch tree and
+  the full gate to pass through the same entry.
+- One extension the repair's own proof forced, recorded
+  here rather than smoothed over: CI's `-x` had masked
+  further failures behind the first. Re-measured against
+  the unmodified test file on a polluted tree, the file
+  fails **6** tests, not 1 — five battery tests
+  (`test_teeth_v3…`, `test_teeth_v4_atlas…`,
+  `test_v4_conforming_edges_pass`, `test_teeth_v7…`,
+  `test_gated_publication_publishes_on_a_clean_tree`)
+  share the same unstated precondition through the
+  scratch fixture, whose inputs symlink the real tree's
+  source files. The fixture now applies the same guard:
+  in a polluted process the battery skips with the cause
+  named instead of failing; assertions are unchanged
+  wherever the precondition holds. Pre-existing in the
+  stage as built; not introduced by this repair.
+
+**Verification** (local, this repair): the gate test
+file alone on a clean tree — **21 passed**. The polluted
+order, one invocation (`test_indus_evidence_api.py`
+first, then the gate file) — **33 passed, 17 skipped,
+0 failed**; the pre-repair reproduction of the same
+order failed the clean-tree test. Spec 086 family —
+**62 passed**. Freeze family (`-k freeze`) — **263
+passed, 1 skipped** (the established count).
+
+**Standing pointer:** the permanent cure — the
+rewriting tests should write to tmp dirs, not the tree —
+belongs to the program's test-harness hardening item,
+not this PR. This addendum changes no claim assessment
+in the body above.

@@ -23,15 +23,23 @@ clean-tree test builds over the committed tree, whose
 source files the ledger mirrors by canonical hash; the
 pre-existing test_indus_evidence_api.py rewrites those
 files in-tree when it runs first in a suite process, in
-which case the source-hash family fails by design and this
-test skips with the cause named (assertions unchanged
-wherever the precondition holds). The scratch-tree battery
-runs in every context.
+which case the source-hash family fails by design. The
+test verifies that precondition mechanically before the
+full run — the gate's V1 recorded-source-hash arm alone —
+and skips with the cause named only when that arm names
+diverged files (assertions unchanged wherever the
+precondition holds). The scratch-tree battery shares
+that precondition through its fixture — its inputs link
+the same source files — so the fixture applies the same
+guard: in a polluted process the battery skips with the
+cause named rather than failing on a precondition it
+never stated.
 """
 
 from __future__ import annotations
 
 import json
+import re
 import shutil
 from collections import Counter
 from pathlib import Path
@@ -88,20 +96,67 @@ def test_gate_definitions_match_the_generator_copies():
 # T301 — the gate passes a clean tree, enumerating every check
 
 
-def test_gate_passes_clean_tree():
-    report = lg.run_gate(ROOT)
-    failing = [c for c in report.checks if c.status == "FAIL"]
-    if failing and all(
-        "does not match" in ev or "register mismatch" in ev
-        for c in failing
-        for ev in c.evidence
-    ):
-        pytest.skip(
-            "tree no longer matches the ledger's recorded hashes "
-            "(an earlier suite test rewrote the source files); "
-            "the gate's refusal is the designed behavior: "
-            + "; ".join(c.name for c in failing)
+_DIVERGENCE_RE = re.compile(
+    r"recorded (?:sidecar )?sha256 for (?P<hashed>\S+) does not match"
+    r"|(?:source|sidecar) (?P<missing>\S+) not found"
+)
+
+
+def _recorded_source_hash_divergences(root: Path) -> list[str]:
+    """The clean-tree test's precondition, checked
+    mechanically: run the gate's V1 recorded-source-hash
+    verification alone over ``root`` and return the source
+    paths it names as diverged. An empty list means every
+    recorded hash still verifies — the precondition holds.
+    (If the arm fails without naming a path, the list is
+    empty and the full gate below fails loudly instead:
+    the skip is earned by a named divergence, never
+    assumed.)"""
+    report = lg.run_gate(root, scope={"V1"})
+    arm = _check(report, "V1 recorded source hashes")
+    if arm.status != "FAIL":
+        return []
+    paths: list[str] = []
+    for ev in arm.evidence:
+        match = _DIVERGENCE_RE.search(ev)
+        if match:
+            path = match.group("hashed") or match.group("missing")
+            if path not in paths:
+                paths.append(path)
+    return paths
+
+
+def _require_recorded_hashes(root: Path) -> None:
+    """Skip-with-cause (the Stage 2 discipline) when the
+    real-tree precondition is destroyed: the gate's
+    recorded-source-hash arm refuses because an earlier
+    suite test (tests/test_indus_evidence_api.py) rewrote
+    the extracted-claims source files in-tree. Where the
+    precondition holds this returns, and the full gate in
+    the caller must pass exactly as before."""
+    divergences = _recorded_source_hash_divergences(root)
+    if divergences:
+        shown = ", ".join(divergences[:3])
+        more = (
+            f" (+{len(divergences) - 3} more)"
+            if len(divergences) > 3
+            else ""
         )
+        pytest.skip(
+            "clean-tree precondition destroyed: the gate's "
+            "check 'V1 recorded source hashes' fails — the "
+            "tree no longer matches the ledger's recorded "
+            "hashes because an earlier suite test "
+            "(tests/test_indus_evidence_api.py) rewrote the "
+            "extracted-claims source files in-tree; the "
+            "gate's refusal is the designed behavior. "
+            f"Diverged: {shown}{more}"
+        )
+
+
+def test_gate_passes_clean_tree():
+    _require_recorded_hashes(ROOT)
+    report = lg.run_gate(ROOT)
     assert report.ok, report.render()
     names = [c.name for c in report.checks]
     for cls in ("V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9"):
@@ -109,6 +164,34 @@ def test_gate_passes_clean_tree():
     v4 = _check(report, "V4 relation-carrying")
     assert v4.status == "PASS"
     assert "1363 matrix cells" in v4.evidence[0]
+
+
+def test_precondition_names_an_altered_extracted_claims_file(scratch):
+    """Teeth for the precondition itself: alter one
+    extracted-claims source file in a scratch tree and the
+    precondition must trip, naming that file — in the
+    helper's divergence list and in the skip reason."""
+    target = scratch / YADAV_FILE
+    data = target.read_bytes()
+    target.unlink()  # replace the fixture's symlink with a real file
+    target.write_bytes(data + b"\n")
+    divergences = _recorded_source_hash_divergences(scratch)
+    assert YADAV_FILE in divergences
+    with pytest.raises(pytest.skip.Exception) as excinfo:
+        _require_recorded_hashes(scratch)
+    reason = str(excinfo.value)
+    assert "V1 recorded source hashes" in reason
+    assert YADAV_FILE in reason
+
+
+def test_precondition_holds_and_full_gate_passes_on_scratch(scratch):
+    """The other direction: on a pristine tree the
+    precondition does not trip, and the full gate passes
+    through the same entry the real-tree test uses."""
+    assert _recorded_source_hash_divergences(scratch) == []
+    _require_recorded_hashes(scratch)  # must not skip
+    report = lg.run_gate(scratch)
+    assert report.ok, report.render()
 
 
 # ---------------------------------------------------------------------------
@@ -159,6 +242,16 @@ def pristine_scratch(tmp_path_factory) -> Path:
 def scratch(pristine_scratch: Path, tmp_path: Path) -> Path:
     dst = tmp_path / "tree"
     shutil.copytree(pristine_scratch, dst, symlinks=True)
+    # The battery shares the clean-tree test's precondition:
+    # the scratch tree links the real tree's source files,
+    # so when an earlier suite test has rewritten them
+    # in-tree, the battery's inputs no longer match the
+    # ledger either. Every scratch test then skips with
+    # the cause named (the Stage 2 discipline) instead of
+    # failing on a precondition it never stated; the
+    # assertions are unchanged wherever the precondition
+    # holds.
+    _require_recorded_hashes(dst)
     return dst
 
 

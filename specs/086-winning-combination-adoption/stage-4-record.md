@@ -604,6 +604,67 @@ map legs; it now PASSes on the clean tree.
 - Ledger validator: **PASS**. Gate full + --regen: PASS
   (above).
 
+### CI repair addendum (2026-11-01, post-push)
+
+PR #483's first CI run (41359909760) failed the three
+Shell wrappers jobs (macOS / Ubuntu / Windows) at the
+step "shell.sh lint — backend passes ruff". The defect
+class is unused-import / unused-variable hygiene in the
+two files this PR introduced. Running the invocation
+shell.sh defines (`ruff check backend/`, config from
+backend/pyproject.toml; run with the CI venv's python,
+as this clone carries no backend/venv for shell.sh to
+resolve) surfaced five findings, each verified unused
+by grep before removal:
+
+- F401 `dataclasses.field` imported but unused —
+  settling.py:66 (the finding quoted from the CI log);
+  `field` is never called or referenced in the module.
+- F841 `scope_ids` assigned but never used —
+  settling.py:486 (a pure comprehension; the evaluator
+  recomputes the intersection inline).
+- F841 `assignments` assigned but never used —
+  settling.py:639; the `_validate_candidate(candidate)`
+  call is kept as a bare call, preserving its validation
+  side effect.
+- F401 `shutil` imported but unused —
+  test_settling_canonical.py:52.
+- F401 `glossa_lab.ledger_intake` imported but unused —
+  test_settling_canonical.py:58.
+
+Scope note, stated plainly: the repair brief named
+settling.py plus this record as the commit set. The two
+test-file findings are the same defect class in the
+PR's other new file and block the same lint step, so
+they were fixed in the same motion rather than left to
+fail the next run; no other file was touched.
+
+Local lint proof after the fix (verbatim):
+
+```text
+$ python -m ruff check backend/
+All checks passed!
+```
+
+(exit 0). Re-runs on the repaired tree:
+test_settling_canonical.py **13 passed**; the ledger
+gate in full mode **16 PASS / 0 FAIL / 4 NOT-RUN,
+RESULT: PASS** (the same counts as at the PR head);
+the remaining Spec 086 family files (ledger gate,
+intake, migration, matrix) **67 passed**. The test
+runs left no in-tree rewrites to restore — `git status`
+shows only the two repaired files plus this record.
+
+The same CI run's Backend job failure is a different
+animal: the teardown ERROR on
+`test_copy_api_token_without_tkinter_is_named`
+(sqlite3 "Cannot operate on a closed database" exiting
+the conftest TestClient) — the known tray teardown
+flake, fourth sighting (cf. PR #477 run 41319020208
+attempt 1). It is remedied by rerun at the parent's
+gate, not by this change; nothing in this repair
+touches it.
+
 ### Claim assessments (engine scope only)
 
 - **C086-13 (canonical cases reproduce exactly)** —

@@ -49,13 +49,11 @@ from __future__ import annotations
 import hashlib
 import json
 import re
-import shutil
 from pathlib import Path
 
 import pytest
 
 from glossa_lab import ledger_gate as lg
-from glossa_lab import ledger_intake as li
 from glossa_lab import settling as st
 
 ROOT = Path(__file__).resolve().parents[2]

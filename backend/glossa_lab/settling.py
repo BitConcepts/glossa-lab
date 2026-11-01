@@ -63,7 +63,7 @@ from __future__ import annotations
 
 import hashlib
 import json
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Optional
 
@@ -483,7 +483,6 @@ def evaluate_candidate(
 ) -> dict[str, Any]:
     assignments = _validate_candidate(candidate)
     scope_pairs = _validate_scope(scope)
-    scope_ids = {identity for _, identity in scope_pairs}
 
     # The run's effective candidate (§3): assignments
     # whose sign is in the scope, in scope order;
@@ -636,7 +635,7 @@ def run_record(
     header (label, semantics, candidate, scope, input
     pins) over the evaluator's result block. Pure — the
     record is returned, not written."""
-    assignments = _validate_candidate(candidate)
+    _validate_candidate(candidate)
     scope_pairs = _validate_scope(scope)
     scope_ids = {identity for _, identity in scope_pairs}
     out_of_scope = [

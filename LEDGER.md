@@ -12404,3 +12404,28 @@ status, stage, or score was changed by this landing
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-01 — Spec 086 Stage 1 correction: post-#477 provenance re-trace
+
+PR #477's merge into this branch (the owner's lane-2
+adoption act: RT-21 `not_understood` refreshes on two P1
+source records) left two migrated ledger entries
+(`without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003`,
+`yadav_2009_arxiv_manual_002`) with mirrored
+does-not-establish texts tracing to no current source
+record; CI run `41327195581` failed on exactly those two
+provenance errors. Correction: the Stage 1 D-E migration
+run was re-executed with its own tool against the current
+sources (state never published; C086-4's migration-record
+carve-out), re-tracing the two entries and — a second
+defect the diff exposed — the recorded source hashes of 21
+further P1 entries that named no committed state of their
+files. No status, stage, falsifier, or verdict moved;
+counts unchanged (871 lines; falsifier 831 of 840);
+validator PASS. Ledger SHA-256 `c4e2326e…` supersedes
+`30eb6235…`. Full record:
+`specs/086-winning-combination-adoption/records/reconciliation-p1.md`
+(addendum) and `stage-1-record.md` (correction section).
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

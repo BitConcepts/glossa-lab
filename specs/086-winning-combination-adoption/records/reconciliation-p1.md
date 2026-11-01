@@ -88,3 +88,106 @@ the build; the migration test
 (`test_spec086_ledger_migration.py`) re-runs this comparison
 in CI. Status or stage differences: none (any difference
 would be listed here and would stop the stage).
+
+---
+
+## Addendum — 2026-11-01: provenance re-trace after PR #477 (post-migration source change)
+
+**What changed upstream.** This migration was first executed
+against main `84777bca`. PR #477 (merged to main as `665414b4`,
+then merged into this branch) carried the owner's 2026-11-01
+lane-2 adoption act: under red-team finding RT-21, the
+`not_understood` field of two source-of-record claim records
+was refreshed in place in the extraction store, each with its
+own dated append block on the record —
+
+- `without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003`
+  (`glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json`;
+  append block `spec074_not_understood_refresh_2026_10_25`),
+- `yadav_2009_arxiv_manual_002`
+  (`glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json`;
+  append block `spec054_not_understood_refresh_2026_10_25`).
+
+No other ledger source file was touched by that merge
+(verified by diff: exactly these two files under
+`glossa-indus/` and `specs/` bundle paths).
+
+**How it surfaced.** CI run `41327195581` on this branch
+failed `test_spec086_ledger_migration.py::test_ledger_validates_clean`
+with exactly two errors, both of the form
+"provenance: does_not_establish traces to no representative
+source record" — ledger lines 19 and 23, the two entries
+above. The validator compares each entry's
+`does_not_establish` (mirrored at migration from the source
+record's `not_understood`) against the `not_understood` /
+`boundary` texts of the records named in the entry's
+`sources` with role `source_of_record` / `bundle_aee`; the
+two entries still carried the pre-refresh texts. Every
+headline count in CI matched this report exactly (871 lines;
+840 claims; falsifier 831/840; does-not-establish 755/840).
+
+**The correction, and its authority.** The two claims'
+`status`, `stage`, and `falsifier` are unchanged by the
+upstream act (each refresh append states so, and both were
+verified byte-equal against the current records:
+`partially_supported` / `explained` and
+`strongly_supported` / `explained`, falsification conditions
+untouched). Only the mirrored `does_not_establish` texts and
+the two files' source hashes had gone stale. The correction
+re-executes this same D-E migration run
+(`migration-2026-11-01-stage1`, same date) with the stage's
+own tool against the current sources, before this stage's PR
+has merged — the state has never been published. This is the
+form C086-4's falsifier expressly excepts from the
+append-only rule ("a D-E migration record that itself
+reconciles"), and it follows this record's own precedent:
+the first build's ledger hash was superseded in-stage by the
+canonical-hash rebuild and recorded in `stage-1-record.md`.
+An appended reclassification entry was not used: a
+reclassification marks a superseded claim state (SCHEMA.md),
+but a migration entry must mirror its source of record
+(spec Point 6 (c)(i): a source-of-record act is "mirrored by
+bundle/extraction intake"), and the intake validator checks
+every migration line against its named sources — a stale
+migration line cannot be cured by an appended line, only by
+the migration record reconciling against the moved sources.
+
+**Second finding, disclosed.** The re-execution also
+re-traced the recorded source hash of 21 further P1 entries
+(lines 1–18 and 20–22). Their recorded hashes matched no
+committed state of their source files: the files are
+byte-identical at the migration base `84777bca` and at HEAD,
+and they hash to the values the re-execution now records.
+The first execution evidently ran against the extraction
+store's suite-regenerated transient bytes (the backend suite
+regenerates this store in-tree); the store was later restored
+to its committed state without re-running the migration, and
+no Stage 1 check compares recorded source hashes, so the
+drift was invisible until this diff. Only `sources[].sha256`
+changed on those 21 entries — no statement, status, stage,
+falsifier, or does-not-establish field moved. Entries:
+`ancient_writing_and_modern_technologies_51831ac9_sign_val_0001`,
+`…_sign_val_0002`, `…_sign_val_0003`, `…_statisti_0004`,
+`farmer_sproat_witzel_2004_manual_001`,
+`indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001`,
+`…_critique_0002`, `…_manual_001`, `…_manual_002`,
+`…_manual_003`, `…_manual_004`,
+`parpola_2010_dravidian_solution_manual_001`, `…_manual_002`,
+`the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001`,
+`…_sign_val_0002`,
+`without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001`,
+`…_manual_001`, `…_manual_002`, `…_manual_004`, `…_manual_005`,
+`yadav_2009_arxiv_manual_001`.
+
+**Reconciliation after the correction.** Unchanged, exactly:
+31 P1 source records in → 23 canonical entries out (8 merged
+evidence instances preserved as sources); ledger totals 871
+lines = 840 claim entries (bundle 817, extracted 23) + 31
+annotation entries; falsifier coverage 831 of 840 (extracted
+14 of 23); does-not-establish coverage 755 of 840. The
+validator over the corrected ledger reports PASS with these
+counts (output re-filed at `records/stage-1-validator-output.txt`,
+byte-identical text to the pre-correction filing, as the
+counts did not move). Ledger SHA-256: `c4e2326e…`
+(supersedes `30eb6235…`, the pre-correction build, never
+published).

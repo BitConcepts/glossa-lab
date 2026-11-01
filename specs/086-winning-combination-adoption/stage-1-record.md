@@ -83,12 +83,16 @@ RESULT: PASS
 ```
 
 Ledger file: 871 lines, SHA-256
-`30eb623570241d927277e0a862ee37ba8a90cba3f36d93f8a73fef451ebe281b`
+`c4e2326ec8757bb700dac0142dd0adf17d7464b4d929f5b103868c9228f13ccf`
 (the file is LF-pinned: its raw and canonical hashes
 coincide. This is the rebuilt ledger — canonical source
 hashes plus the adoption #3 confidence fields; the first
 build's hash, `b1872456…`, is superseded and was never
-published).
+published. The canonical rebuild's hash, `30eb6235…`, was
+itself superseded before publication by the post-#477
+provenance re-trace recorded in the correction section
+below; the validator output above is unchanged by that
+correction, as no count moved).
 
 ## Reconciliation headlines (full reports in `records/`)
 
@@ -204,6 +208,43 @@ failure this spec exists to prevent; the defect, its
 discovery, and its fix are recorded here rather than
 quietly absorbed.
 
+## Correction after an upstream source act (PR #477), and a provenance defect it exposed
+
+After this record was first written, main merged into this
+branch carrying PR #477 — the owner's 2026-11-01 lane-2
+adoption act, which refreshed the `not_understood` field of
+two P1 source records in place (the RT-21 refreshes, each
+with its dated append block). CI run `41327195581` then
+failed `test_ledger_validates_clean` with exactly two
+provenance errors: the two migrated entries' mirrored
+`does_not_establish` texts no longer traced to their moved
+sources of record. The correction re-executed this stage's
+D-E migration run (same run id and date, the stage's own
+tool, state never published) against the current sources —
+the form C086-4's falsifier excepts ("a D-E migration record
+that itself reconciles") — rather than editing lines or
+appending reclassifications that cannot cure a stale
+migration mirror. The two claims' status, stage, and
+falsifier are unchanged (verified byte-equal); only the
+mirrored does-not-establish texts and the affected source
+hashes moved. Full account:
+`records/reconciliation-p1.md`, addendum of 2026-11-01.
+
+The re-execution's diff exposed a second, older defect in
+this stage's own provenance: 21 further P1 entries carried
+recorded source hashes matching no committed state of their
+source files (the first execution ran against the extraction
+store's suite-regenerated transient bytes; the store was
+restored to its committed state without re-running the
+migration, and no Stage 1 check compares recorded source
+hashes). The re-execution re-traced all 23 P1 entries'
+source hashes to the committed files; no substance field of
+the 21 moved. The gap is named here because the Stage 3
+gate's V1 class ("migration entries' source hashes match
+their source files") would have caught it — Stage 1's own
+tests should have, and the addendum lists every affected
+entry by name.
+
 ## Test evidence
 
 - **Targeted (this stage's gate set):** the two Spec 086
@@ -299,7 +340,10 @@ quietly absorbed.
   nothing (teeth test).
 - **C086-4 — SUPPORTED (stage scope).** Appends are
   prefix-preserving verified writes (test); no ledger line
-  has been edited in place; no reclassification exists yet.
+  has been edited in place outside the one D-E migration
+  re-execution recorded in the correction section above
+  (C086-4's own carve-out: a migration record that itself
+  reconciles); no reclassification exists yet.
 - **C086-5 — SUPPORTED.** Provenance checks refuse untraced
   falsifier text (teeth test); the validator publishes the
   coverage count on every run (831 of 840; the 9 nulls are

@@ -12429,3 +12429,47 @@ validator PASS. Ledger SHA-256 `c4e2326e…` supersedes
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-01 — Spec 086 Stage 2: the matrix generator
+
+Point 2 of the winning-combination adoption is built. The
+claims×evidence matrix is now generated, never made:
+`glossa-indus/matrix/DEFINITIONS.md` registers
+`matrix-defs v1` (column classes, derivation rules R1–R6,
+the R3 outcome table), and the generator
+(`backend/glossa_lab/matrix_generate.py`, invoked as
+`tools/ledger/generate_matrix.py`; pure builder + thin
+write wrapper) reads only the ledger and the registers
+the definitions name — source records reached solely
+through entries' `sources[]` pointers, canonical-hash
+verified, refusal on mismatch — and writes
+`glossa-indus/matrix/matrix.json` (SHA-256 `b3cdbf49…`)
+and `matrix.md` (SHA-256 `7c963ff5…`) over the Stage 1
+ledger (SHA-256 `c4e2326e…`). 1,363 cells over 840 rows
+(826 with cells, 14 empty): 1,356 supports / 7 opposes /
+0 constrains; the 7 study cells are all opposes under the
+outcome table (Spec 052 ×4, Spec 054, Spec 055, Spec 074);
+the Spec 054 teeth case resolves by construction (the
+superseded 2026-10-24 block mints nothing; the 2026-10-25
+NOT SUPPORTED re-execution mints the Yadav cell, citing
+both appends). Delete-and-regenerate reproduces both
+artifacts byte-for-byte; the committed artifacts equal a
+fresh pure build under test. Research-check (31, all
+unused — the verdict table is registered empty in v1),
+anchor (287, all unused — the ledger's three Mahadevan
+sign refs name anchors absent from the register), and
+corpus-text columns state their emptiness in the coverage
+block rather than hiding it. The measurement entry kind
+was added to `ledger-schema v1` additively (schema +
+validator artifact-hash verification; `$id` unchanged —
+the addition alters no existing kind's shape; the
+versioning ambiguity is recorded in SCHEMA.md); no
+measurement entries were minted, the generator never
+writes the ledger. Full record, generator output +
+coverage verbatim, traces, and claim assessments:
+`specs/086-winning-combination-adoption/stage-2-record.md`.
+No claim's status, stage, or score was changed by this
+landing.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

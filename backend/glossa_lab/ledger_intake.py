@@ -191,6 +191,27 @@ def validate_entry(
         errors.append(f"schema: {where}: {err.message}")
     if errors:
         return errors
+    if entry.get("kind") == "measurement":
+        # Spec 086 Stage 2 (adoption 3, item 1): a measurement
+        # entry's provenance is its artifact — the recorded
+        # sha256 must verify against the artifact on disk,
+        # under the same canonical-hash discipline as every
+        # other recorded hash in the ledger.
+        artifact = entry.get("artifact") or {}
+        art_path = artifact.get("path")
+        art_sha = artifact.get("sha256")
+        if art_path and art_sha:
+            target = root / art_path
+            if not target.is_file():
+                errors.append(
+                    f"provenance: measurement artifact not found: {art_path}"
+                )
+            elif sha256_file(target) != art_sha:
+                errors.append(
+                    "provenance: measurement artifact hash does not "
+                    f"match its recorded sha256: {art_path}"
+                )
+        return errors
     if entry.get("kind") != "claim":
         return errors
     cache = cache or _SourceCache(root)

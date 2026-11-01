@@ -81,6 +81,55 @@ its `stage`, `verdict`, `checked_at`, `protocol`,
 `neighbors`), and `gaps` (count of its `gaps`). An annotation
 changes no status, stage, or score.
 
+## Amendment — 2026-11-01 (Spec 086 Stage 2): the `measurement` kind
+
+Adoption 3, item 1 (MPCodec's findings, adopted 2026-11-01)
+assessed at Stage 1 that a `measurement` kind fits this
+schema as an addition without altering the pinned
+claim-entry shape, and assigned its implementation to
+Stage 2. It is implemented here, additively:
+
+- the `kind` enum gains `measurement` (the three existing
+  values and every existing kind's required shape are
+  byte-unchanged);
+- a fourth per-kind branch requires, for `measurement`
+  entries: `subject` (what is measured — an entry id, a
+  sign pair, a named population), `statistic` (the named
+  statistic), `value` (a number), `unit`, `direction`,
+  `condition_class` (the conditions the value holds
+  under), and `artifact` (`{path, sha256}` — the artifact
+  the value was read from);
+- the validator gains the kind's provenance check: the
+  recorded `artifact.sha256` must verify against the
+  artifact on disk under the canonical-hash recipe above
+  (a measurement traces to its artifact or it does not
+  enter — the C086-5 discipline, applied to this kind).
+
+**Versioning reading, recorded because the schema pins no
+explicit rule for kind additions.** The ambiguity: adding a
+kind changes what the schema accepts, which could be read
+as requiring a new version string. The conservative
+reading taken here: the pinned substance of `ledger-schema
+v1` is the per-kind entry shapes, above all the claim
+shape; an *additive* kind branch alters no existing shape,
+and the Stage 1 assessment framed the addition as within
+v1's kind-discrimination design — so the `$id` stays
+`ledger-schema v1`. A future change that alters an
+existing kind's shape, or removes a kind, would require a
+new version. If the owner rules otherwise, the correction
+is a version bump recorded the same way.
+
+**No measurement entries exist yet.** Stage 2 mints none:
+minting is an intake act with its own reconciliation, the
+matrix generator never writes the ledger (spec 086 Point
+6, one-way flow), and no pre-existing measured source
+artifact is in Stage 2's migration scope. The measured
+evidence that arises in Stage 2's registers (the sign×sign
+block's weights and frequencies) is carried in the matrix
+artifact with full provenance (`glossa-indus/matrix/
+DEFINITIONS.md` §11). The kind stands ready for the intake
+that mints from a named source.
+
 ## Invariants the validator enforces
 
 1. Every line validates against `ledger-schema.json`.
@@ -96,3 +145,5 @@ changes no status, stage, or score.
 6. Annotation targets and reclassification `supersedes`
    pointers resolve to ledger entries.
 7. Every run publishes the falsifier-coverage count.
+8. A `measurement` entry's recorded artifact hash verifies
+   against the artifact on disk (Stage 2 amendment, above).

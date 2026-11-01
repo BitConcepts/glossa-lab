@@ -86,7 +86,7 @@ test output) — not a summary of it.
 
 ## Stage 2 — Matrix generator (PR: `feat/086-matrix-generator`)
 
-- [ ] T201 Registered definitions: `glossa-indus/matrix/
+- [x] T201 Registered definitions: `glossa-indus/matrix/
   DEFINITIONS.md` (`matrix-defs v1`) — column classes, the
   supports/opposes/constrains derivation rules, the evidence
   registers named — with machine copies registered in the
@@ -96,7 +96,7 @@ test output) — not a summary of it.
   not establish the definitions are the right semantics — it
   establishes they are written down, versioned, and the only
   ones the generator may use.*
-- [ ] T202 The generator (`backend/glossa_lab/matrix_generate.py`,
+- [x] T202 The generator (`backend/glossa_lab/matrix_generate.py`,
   invoked as `tools/ledger/generate_matrix.py`): reads only the
   ledger + referenced registers; writes `matrix.json` +
   `matrix.md` with per-cell relation, citation ids, derivation
@@ -108,7 +108,7 @@ test output) — not a summary of it.
   sampled cells traced to their cited ledger entries. *This
   does not establish that the underlying relations are true —
   only that the matrix is the ledger, in matrix form.*
-- [ ] T203 Stage 2 closeout: generator output + coverage block
+- [x] T203 Stage 2 closeout: generator output + coverage block
   filed verbatim. Acceptance: gate. *This does not establish
   the matrix is verified — Stage 3 exists because generation
   alone proves nothing about itself.*

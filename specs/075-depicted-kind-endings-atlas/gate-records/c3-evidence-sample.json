@@ -4,7 +4,7 @@
  "spec": "specs/075-depicted-kind-endings-atlas",
  "claims_file": "specs/075-depicted-kind-endings-atlas/claims.json",
  "verification_mode": "on",
- "verifier": "Cosmo (Muse subagent, freeze worker; session d02f80d3) \u2014 read each sampled claim's cited evidence against the claim text; engine resolution run: aee assess --verify-evidence (lenient, aee 1.5.3), 27 evidence items checked, findings recorded per claim in the notes",
+ "verifier": "Muse subagent (C4 freeze-gate repair worker; session 4413edc7) - independent verifier; not the drafting session (the C2 record's drafter is session d02f80d3)",
  "sample_rule": "every verdict-bearing claim + random sample of at least 20% of the remainder",
  "sample_seed": 20261025,
  "claims": [
@@ -30,10 +30,10 @@
    "sampled": true,
    "verification": "verified",
    "evidence_refs_checked": [
-    "2026-10-25-endings-atlas-design.md (programme goal record, files/)",
-    "specs/073-keying-surface-repair/outcome.md; specs/073-keying-surface-repair/asset-a-v2/depicted-kind-classification.csv"
+    "2026-10-25-endings-atlas-design.md (programme goal record, files/) - sections 4-5 (R10-R12)",
+    "specs/073-keying-surface-repair/asset-a-v2/depicted-kind-classification.csv (census recounted from the file in this pass)"
    ],
-   "note": "Verifier read the design (\u00a71, \u00a75: per-kind test, ratio >= 1.5, Fisher 5%, half-of-occurrences; falsifiable shape) and Spec 073's executed census (kinds other 246 / human 43 / animal 30 / object_goods 22). Both support the claim as bounded. Engine (assess --verify-evidence, lenient): EV0/EV1 MISSING-REF findings are the engine's single-path reading of multi-path and out-of-repo (goal-record) refs; every individual path was resolved and read by the verifier."
+   "note": "Correction-pass verification (2026-10-31, session 4413edc7): the design record's R10-R12 state the per-kind test in exactly the registered shape (enrichment ratio at least 1.5, two-sided Fisher exact test at the 5 percent level, at least half the kind's occurrences from signs above the corpus-wide final rate; the family falsifiable in advance). The Asset A v2 census was recounted from the CSV itself in this pass: 552 rows - other 246, human 43, animal 30, object_goods 22, unidentified 211 - the four identified kinds the claim enumerates. Supported as registered."
   },
   {
    "claim_id": "F075-C04",
@@ -49,10 +49,11 @@
    "sampled": true,
    "verification": "verified",
    "evidence_refs_checked": [
-    "specs/073-keying-surface-repair/asset-a-v2/asset-a-v2-freeze.json; specs/073-keying-surface-repair/registry-v2/registry-v2-freeze.json; specs/073-keying-surface-repair/outcome.md",
-    "docs/decisions/2026-10-22-shakti-corpus-intake-record.md"
+    "specs/073-keying-surface-repair/asset-a-v2/asset-a-v2-freeze.json",
+    "specs/073-keying-surface-repair/registry-v2/registry-v2-freeze.json",
+    "docs/decisions/2026-10-22-shakti-corpus-intake-record.md (corpus and grades pins; both files re-hashed in this pass)"
    ],
-   "note": "Verifier read Spec 073's freeze records for both assets (digests and counts as pinned; recomputed equal at this freeze) and the 2026-10-22 intake record (corpus and grades pins as stated). Support confirmed. Engine: EV0 MISSING-REF is the multi-path single-string reading; EV1 QUALITY-MISMATCH is the engine deriving 'primary' for a docs/decisions ref against the declared 'artifact' \u2014 a labelling difference, recorded, not a support failure."
+   "note": "Correction-pass verification (2026-10-31, session 4413edc7): both Spec 073 freeze records were read (Asset A v2 SHA-256 681e017d..., 552 rows, per-kind counts as pinned; Registry v2 SHA-256 42ab09fb..., 1,013 rows), and both digests were recomputed from the canonical files in this pass and match; row counts and the Asset A census were recounted from the files (dispute census 548 none / 4 borderline / 0 contested). The intake record pins the corpus and row-grades files; both hashes were re-verified against those pins in this pass. Supported as registered."
   },
   {
    "claim_id": "F075-C06",
@@ -60,10 +61,11 @@
    "sampled": true,
    "verification": "verified",
    "evidence_refs_checked": [
-    "specs/071-hunt-sky-signs-successor/spec.md",
-    "docs/decisions/2026-10-22-shakti-corpus-intake-record.md"
+    "specs/071-hunt-sky-signs-successor/spec.md (section 3)",
+    "docs/decisions/2026-10-22-shakti-corpus-intake-record.md (census and pins)",
+    "the pinned corpus and row-grades files themselves (population recomputed in this pass)"
    ],
-   "note": "Verifier read Spec 071's frozen \u00a73 (documented-lineage only; 3,045 analyzable; 550 of 557 in sequences >= 2) and the intake record + grades (3,212 / 2,087 / 405); population figures independently recomputed at this freeze and in the C2 spot-check. Support confirmed. Engine: EV1 QUALITY-MISMATCH only (docs ref labelling, as C05)."
+   "note": "Correction-pass verification (2026-10-31, session 4413edc7): Spec 071 section 3 and the intake record state the population as registered, and the population itself was recomputed in this pass from the pinned corpus and row-grades files: 3,212 documented-lineage rows, 3,045 analyzable, 557 distinct signs, 550 of them in sequences of length at least 2 - every figure in the full claim text reproduces. Supported as registered."
   },
   {
    "claim_id": "F075-C07",
@@ -71,10 +73,10 @@
    "sampled": true,
    "verification": "verified",
    "evidence_refs_checked": [
-    "2026-10-25-endings-atlas-design.md (programme goal record, files/)",
-    "specs/073-keying-surface-repair/outcome.md; specs/073-keying-surface-repair/asset-a-v2/depicted-kind-classification.csv"
+    "2026-10-25-endings-atlas-design.md (programme goal record, files/) - R5, section 4 floor table, R9",
+    "specs/073-keying-surface-repair/asset-a-v2/depicted-kind-classification.csv (census recounted from the file in this pass)"
    ],
-   "note": "Verifier read the design (R5 census-before-rates, R9 TOO THIN, \u00a74 floor table 20/30 with the floor set below object_goods 22) and Spec 073's census. Support confirmed. Engine: EV0/EV1 MISSING-REF are the multi-path / goal-record ref forms; paths resolved and read individually."
+   "note": "Correction-pass verification (2026-10-31, session 4413edc7): the design record's R5 requires the step-0 census published before any final-position rate exists; its section 4 states the floors as registered (20 member signs, set just below object_goods at 22; 30 pooled occurrences carried from Spec 071's gate 0.4) and R9 gives the TOO THIN standing (named, never dropped, never merged into a neighbour). The asset-level census the floors were set from was recounted from the CSV in this pass. Supported as registered."
   },
   {
    "claim_id": "F075-C08",
@@ -82,10 +84,11 @@
    "sampled": true,
    "verification": "verified",
    "evidence_refs_checked": [
-    "specs/074-hunt-opening-signs-repaired-surface/freeze.json; specs/074-hunt-opening-signs-repaired-surface/outcome.md; specs/074-hunt-opening-signs-repaired-surface/step0-record.md",
-    "specs/073-keying-surface-repair/registry-v2/no-published-identity.json; specs/073-keying-surface-repair/registry-v2/registry-v2-freeze.json; specs/073-keying-surface-repair/asset-a-v2/asset-a-v2-freeze.json"
+    "specs/074-hunt-opening-signs-repaired-surface/freeze.json (DD-074-8; pin verification)",
+    "specs/074-hunt-opening-signs-repaired-surface/outcome.md; specs/074-hunt-opening-signs-repaired-surface/step0-record.md (31 of 31 keyed)",
+    "specs/073-keying-surface-repair/registry-v2/no-published-identity.json (read in full: sole entry, token 999)"
    ],
-   "note": "Verifier read Spec 074's freeze record (DD-074-8 two-leg route), its outcome and step-0 record (31 of 31 keyed under the route), and Spec 073's NO PUBLISHED IDENTITY schedule (sole entry: token 999). Support confirmed. Engine: EV0/EV1 MISSING-REF are multi-path strings; every path resolved and read."
+   "note": "Correction-pass verification (2026-10-31, session 4413edc7): Spec 074's freeze record states the DD-074-8 two-leg keying route in the claim's terms, and its pin verification, outcome record and step-0 record report all 31 of Spec 070's enumerated signs keyed to exactly one Asset A v2 row. Spec 073's no-published-identity record was read in full in this pass: exactly one entry, token 999 - the claim's single named exclusion. Supported as registered."
   },
   {
    "claim_id": "F075-C09",
@@ -109,10 +112,10 @@
    "sampled": true,
    "verification": "verified",
    "evidence_refs_checked": [
-    "2026-10-25-endings-atlas-design.md (programme goal record, files/)",
-    "specs/071-hunt-sky-signs-successor/spec.md"
+    "2026-10-25-endings-atlas-design.md (programme goal record, files/) - section 5 (R11)",
+    "specs/071-hunt-sky-signs-successor/spec.md (sections 4.2-4.4)"
    ],
-   "note": "Verifier read the design (\u00a75 verdict words; no pooled verdict) and Spec 071's frozen \u00a7\u00a74.2-4.4 (pooled rate, frequency-matched comparison, two-sided Fisher, per-sign report). Support confirmed. Engine: EV0 MISSING-REF is the goal-record ref form; resolved and read."
+   "note": "Correction-pass verification (2026-10-31, session 4413edc7): the design record's R11 states the verdicts as per kind under the frozen bands, published together with the per-sign tables, and that no pooled depicted-signs claim is minted; Spec 071 sections 4.2-4.4 supply the machinery the claim carries (pooled final-position rate, frequency-matched comparison class, two-sided Fisher test on the pooled table, per-sign results reported alongside). Supported as registered."
   },
   {
    "claim_id": "F075-C12",
@@ -120,10 +123,10 @@
    "sampled": true,
    "verification": "verified",
    "evidence_refs_checked": [
-    "2026-10-25-endings-atlas-design.md (programme goal record, files/)",
-    "docs/decisions/2026-10-25-spec-071-retirement-decision.md"
+    "2026-10-25-endings-atlas-design.md (programme goal record, files/) - section 8",
+    "docs/decisions/2026-10-25-spec-071-retirement-decision.md (honesty condition: correction by dated append)"
    ],
-   "note": "Verifier read the design (\u00a78: no outcome moves any anchor, reading, state, verdict, status, or frozen text) and the retirement decision (\u00a75: the act wrote nothing else; regeneration byte-identical). Support confirmed. Engine: EV0 MISSING-REF (goal-record form) and EV1 QUALITY-MISMATCH (docs ref labelling), as above."
+   "note": "Correction-pass verification (2026-10-31, session 4413edc7): the design record's section 8 states that no outcome of the atlas moves any anchor, reading, PRED-2026 state, verdict, status or frozen text anywhere in the programme; the Spec 071 retirement decision prescribes correction of the retired record by dated append only. The spec's own record on main is consistent with the claim as registered: its writes are new files and dated appends. Supported as registered."
   },
   {
    "claim_id": "F075-C13",
@@ -134,5 +137,13 @@
    "note": ""
   }
  ],
- "outcome": "PASS"
+ "outcome": "PASS",
+ "correction": {
+  "date": "2026-10-31",
+  "agent": "Muse subagent (C4 freeze-gate repair worker; session 4413edc7)",
+  "occasion": "Main-branch CI job 'Freeze gate records check' (checker --all) failed on this spec in runs 41155682213, 41157454467 and 41167817221: this record's verifier was the same identity as the C2 record's drafter, and verification must be by someone other than the drafter.",
+  "what_was_wrong": "As filed, the verifier was the drafting session itself (session d02f80d3) - a self-verification. That defect was disclosed in the open at the time (specs/075-depicted-kind-endings-atlas/RED-TEAM-ADDENDUM-2026-10-25.md, section 5) but never cured; the hardened checker now fails it, correctly.",
+  "what_changed": "The verifier is replaced by the correcting agent, who is not the drafter, and the cure is substantive rather than nominal: on 2026-10-31 the correcting agent independently re-read the cited evidence for all seven sampled claims and re-derived every checkable number in them (the Asset A v2 and Registry v2 digests, row counts and census; the documented-lineage population 3,045 / 557 / 550 recomputed from the pinned corpus and grades files; the sole no-published-identity entry). Each sampled claim's note and evidence list are now the correcting agent's own, recording what was actually read and recomputed. All seven sampled claims verified as registered; no claim's verification status was weakened. The six unsampled claims are untouched, as are the verdict-bearing designations (the frozen drafting act's).",
+  "what_did_not_change": "The claim sample (deterministic, seed 20261025), the verification mode, and the outcome stand as filed. The as-filed record - including the original verifier's attestation - is preserved in git history at commit fa34a92b (the Spec 075 freeze commit). This correction is also narrated in gate-records/CORRECTION-2026-10-31.md beside this record and in LEDGER.md."
+ }
 }

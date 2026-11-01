@@ -92,7 +92,7 @@ DEFINITION = {
         "predecessor": {
             "spec": "specs/056-sign821-recovery",
             "phase": "Phase-418",
-            "freeze_digest": "64c28ce1aa379d9b47d230544e372b3446906d53422fe16da51fbce3bc94a63e",
+            "freeze_digest": "039b16eb11424e5ffb3f523199d9b7849ee53afd2f9b9b709ab75bef73d5f50e",
             "outcome": "IDENTIFICATION FAILED",
             "posture": (
                 "Spec 056's record is cited, never edited "
@@ -339,7 +339,7 @@ DEFINITION = {
         },
         "spec056_freeze": {
             "file": "specs/056-sign821-recovery/freeze.json",
-            "digest": "64c28ce1aa379d9b47d230544e372b3446906d53422fe16da51fbce3bc94a63e",
+            "digest": "039b16eb11424e5ffb3f523199d9b7849ee53afd2f9b9b709ab75bef73d5f50e",
         },
         "spec056_outcome": {
             "file": "specs/056-sign821-recovery/outcome.md",
@@ -374,7 +374,7 @@ DEFINITION = {
         },
         "lane2_drafts": {
             "file": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
-            "sha256": "3f645c9a4132ba5a0bc5fca4ca22810b8b6169a2f1f9f85f35990c7b72df33fb",
+            "sha256": "7b62d7dba6cf8bc294dcd340b550aff7c5bd44cdababfbf24e475ca620a87bc9",
         },
         "anchors": {
             "file": "backend/reports/INDUS_FINAL_ANCHORS.json",

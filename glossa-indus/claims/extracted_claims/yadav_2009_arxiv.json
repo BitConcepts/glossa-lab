@@ -178,7 +178,7 @@
           }
         }
       ],
-      "not_understood": "Positional preference is not meaning. Opening and closing markers appear in many symbol systems, linguistic and not, so this pattern cannot show the script encodes language. The counts also depend on where inscriptions are segmented - where one text ends and another begins - and on the sign inventory of one corpus lineage; the cross-compilation disagreement (Phase-125) means the same exercise on the other great compilation might not return the same sign sets. What would change the picture: a falsifier written onto the record, and the test rerun on the strict core and on an independent corpus with the position rules fixed in advance.",
+      "not_understood": "Positional preference is not meaning. Opening and closing markers appear in many symbol systems, linguistic and not, so this pattern cannot show the script encodes language. The counts also depend on where inscriptions are segmented - where one text ends and another begins - and on the sign inventory of one corpus lineage; the cross-compilation disagreement (Phase-125) means the same exercise on the other great compilation might not return the same sign sets. Refreshed 2026-10-25 (red-team finding RT-21): the two things this text formerly said would change the picture have both happened, and neither has yet produced a test result. A falsifier was written onto the record: the Spec 054 amendment's falsification condition was appended at that spec's amended freeze on 2026-10-23 (see spec054_falsifier_append_2026_10_23 on this claim). The test then froze and was executed as Spec 054 (Phase-438), and closed UNEXECUTED at step 0: STRICT CORPUS NOT PINNABLE - the strict corpus layer of record could not be uniquely identified and pinned, so no positional quantity was computed (see spec054_outcome_append_2026_10_24 on this claim). The claim itself is untouched by that closure: it stands strongly_supported, stage explained, with the falsifier carried on the record. What would change the picture now: execution of the frozen test once the corpus layer is recovered and pinnable - the falsifier is in place and awaits that execution.",
       "explanation_record": {
         "author": "Tristen Pierson",
         "author_kind": "human",
@@ -227,6 +227,18 @@
           "reports/phase438_report.md"
         ],
         "effect": "No claim status, stage, or falsification condition is changed by this append; the claim stands exactly as recorded (strongly supported, stage explained, with the falsifier appended at the Spec 054 freeze)."
+      },
+      "spec054_not_understood_refresh_2026_10_25": {
+        "date": "2026-10-25",
+        "kind": "rt21-not-understood-refresh",
+        "spec": "054",
+        "note": "Refresh of this claim's not_understood field under red-team finding RT-21 (2026-10-24/25): the field's closing sentence described a pre-October state (a falsifier still to be written and a test still to be rerun). Both have since happened - the falsifier was appended at the Spec 054 amended freeze (2026-10-23) and the frozen test closed UNEXECUTED at step 0 as STRICT CORPUS NOT PINNABLE (Phase-438, 2026-10-24) - so the field is refreshed to the true current state. The claim's first sentences (what the pattern does not establish) are unchanged in substance.",
+        "evidence": [
+          "specs/054-yadav-opening-closing/outcome.md",
+          "specs/054-yadav-opening-closing/step0-record.md",
+          "reports/phase438_results.json"
+        ],
+        "effect": "not_understood refreshed only; claim_status (strongly_supported), stage (explained), and the appended falsification_condition are unchanged."
       },
       "spec054_outcome_append_2026_10_25": {
         "date": "2026-10-25",

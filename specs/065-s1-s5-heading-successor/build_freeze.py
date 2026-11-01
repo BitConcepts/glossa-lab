@@ -95,7 +95,7 @@ DEFINITION = {
                 "in the repository"
             ),
             "freeze_digest": (
-                "237b923a2c19b216e0476f70d17a956db0ca68d1ba8af6902109099a82c820d9"
+                "695293dfe32b29204f99d425b39cb266a19b3bd0b34f63feeab1ecbdbdce0318"
             ),
             "posture": (
                 "Spec 057's frozen record, outcome, and the canonical "
@@ -385,11 +385,11 @@ DEFINITION = {
             "spec057_freeze_record": {
                 "path": "specs/057-five-sources-heading/freeze.json",
                 "sha256": (
-                    "3cc68c372790d6bd62d9ab1bb43b15ec2f43502dd614150d660d33b4c452d8af"
+                    "c6b081ad00a6a9ae1f06710daa5d3b13395d7eb4615afb898fcea89bdaf68d9d"
                 ),
                 "bytes": 23935,
                 "digest": (
-                    "237b923a2c19b216e0476f70d17a956db0ca68d1ba8af6902109099a82c820d9"
+                    "695293dfe32b29204f99d425b39cb266a19b3bd0b34f63feeab1ecbdbdce0318"
                 ),
             },
             "spec057_outcome": {

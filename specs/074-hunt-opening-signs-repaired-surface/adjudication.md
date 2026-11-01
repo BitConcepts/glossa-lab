@@ -392,3 +392,76 @@ gate passed in that form over register 0.7-draft
 
 *— adjudication record §8, the freeze rulings,
 2026-10-24. This section is append-only from here.*
+
+## 9. Addendum — 2026-10-25 (red-team finding RT-19): the S-B sensitivity is vacuous, and a standing rule for future asset rebuilds
+
+Recorded by dated append; §§1–8 above are unchanged and no
+ruling, verdict, or frozen text is altered by this addendum.
+
+**The vacuity.** The frozen sensitivity arm S-B (the primary
+arm rerun without the unicorn sign(s)) is recorded in the
+execution record as not applicable: no Asset A v2 verbatim
+label identifies a unicorn (outcome.md: S-B is not applicable
+— "no Asset A v2 verbatim label identifies a unicorn"; the
+step-0 unicorn naming scan at gate 0.5 returns no sign).
+Spec 069's attestation had recorded a "unicorn" verbatim
+label, but Asset A v2's rebuilt table never carried that
+label into its columns, so the arm could never run on the
+repaired surface: it is vacuous by construction, not by
+measurement. The drafting record (§6 above) had already
+noted that nothing at drafting turned on the unicorn's label
+under Asset A v2 and that S-B's not-applicable branch was
+carried; the red-team finding (RT-19, 2026-10-24/25) is
+that a frozen sensitivity which structurally cannot execute
+should have been caught at Spec 073's asset build or at
+this spec's freeze, rather than only disclosed in the
+results. That criticism stands. The outcome does not turn
+on S-B: the verdict rests on the primary arm and is stated
+with its containment in the outcome record, and the other
+sensitivity arms (S-A, S-C) ran as frozen.
+
+**Standing rule (adopted by this addendum).** At any future
+asset rebuild — any new version of the depicted-kind asset
+or of any classification table a frozen sensitivity names —
+the build must assert, before freeze, that every frozen
+sensitivity label exists in the new table's vocabulary:
+each label a sensitivity arm would scan for is checked
+against the rebuilt table's actual labels/columns, and the
+assertion's result is recorded in the build record. A label
+absent from the new vocabulary is named at the build, not
+discovered at execution; a sensitivity that cannot run on
+the rebuilt table is dispositioned openly at that point
+(carried as not-applicable by design, re-scoped, or the
+arm is dropped by a recorded ruling), never frozen in a
+form that can only return "not applicable."
+
+*— adjudication record §9, addendum of 2026-10-25
+(red-team finding RT-19 disposition, road-to-decipherment
+plan Step 7).*
+
+## 10. Post-freeze digest recomputation — 2026-11-01
+
+The §9 addendum appended to this record on
+2026-10-25 for the RT-19 disposition drifted this
+digest-covered file's hash from the digest then
+standing in `freeze.json`. Although §9 altered no
+ruling, verdict, or frozen text, the freeze
+mechanism hashes the whole file, so the append
+left the freeze record unreplayed: it did not
+complete the append-then-recompute act the
+programme's freeze pattern prescribes (Spec 054's
+adjudication record, §§9.7–9.10: the freeze digest
+is recomputed in this same act over the appended
+record and stands in `freeze.json`).
+
+The freeze digest is therefore recomputed in
+this same act over the appended record —
+including this §10 — and stands in `freeze.json`.
+No ruling, verdict, decision, or previously
+frozen text was edited by this completion act;
+the only textual addition is this dated record.
+
+*— adjudication record §10, post-freeze digest
+recomputation record of 2026-11-01 (completing
+the §9 addendum's append act, road-to-decipherment
+plan Step 7 re-PR).*

@@ -1338,3 +1338,28 @@ suite conditions and are not defects); no
 change was made for them. The freeze digest is
 recomputed in this same act over the appended
 record and stands in `freeze.json`.
+
+### 9.11 Pointer addendum — 2026-10-25 (red-team finding RT-20)
+
+Recorded by dated append; the digest-covered text above is
+not edited, and no ruling, digest, or frozen text changes.
+
+A reader of §9.2 or §9.5 alone will still find this spec's
+execution phase named there as Phase-437 (§9.9 records
+that §§9.2/9.3 allocated Phase-437, DD-054-10; §9.5
+states it in words: "the amended run (Phase-437) starts
+only on a separate owner execution order"). That phase number is superseded: the Phase-437 →
+Phase-438 reassignment is recorded at §9.9 above, where it
+was made — Phase-437 is Spec 052's, and this spec's
+execution phase is Phase-438. The §§9.2/9.5 sentences stand
+unamended because they sit inside the digest-covered
+record; append-only discipline preserves them, and this
+addendum is the pointer a single-section reader needs:
+**for the execution phase of this spec, §9.9 governs —
+read Phase-438 wherever §§9.2/9.5 say Phase-437.** The
+execution in fact ran as Phase-438 (see outcome.md and
+`reports/phase438_results.json`).
+
+*— adjudication record §9.11, addendum of 2026-10-25
+(red-team finding RT-20 disposition, road-to-decipherment
+plan Step 7).*

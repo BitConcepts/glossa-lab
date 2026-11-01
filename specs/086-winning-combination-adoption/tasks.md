@@ -170,7 +170,7 @@ test output) — not a summary of it.
 
 ## Stage 4 — Executable settling (PRs: `feat/086-settling-semantics`, then `feat/086-settling-engine`)
 
-- [ ] T401 **Semantics registration FIRST** (its own PR; no
+- [x] T401 **Semantics registration FIRST** (its own PR; no
   engine code in it): `glossa-indus/ledger/SETTLING-SEMANTICS.md`
   at `glossa-settle-1` — rules S-R1…S-R4 and the forced-
   consequence definition, derived from Glossa's own ledger
@@ -181,7 +181,7 @@ test output) — not a summary of it.
   as such. *This does not establish the rules are the right
   rules — each carries its grounding so a reviewer can
   disagree in the open.*
-- [ ] T402 **Canonical scenarios derived by hand** (same PR as
+- [x] T402 **Canonical scenarios derived by hand** (same PR as
   T401 or its immediate successor; still no engine):
   `glossa-indus/ledger/settling-canonical.json` with at least
   the four scenarios of spec.md Point 3, each with its prose

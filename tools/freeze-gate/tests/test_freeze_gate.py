@@ -8,12 +8,14 @@ not by running the evaluator).
 
 import json
 import pathlib
+import subprocess
 import sys
 
 HERE = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(HERE))
 
-from check_freeze_gate import check_spec_dir  # noqa: E402
+import check_freeze_gate  # noqa: E402
+from check_freeze_gate import check_spec_dir, pr_scope_dirs  # noqa: E402
 from freeze_records import scaffold_c2, scaffold_c3, validate_c2, validate_c3  # noqa: E402
 
 FIXTURES = HERE / "demo" / "fixtures"
@@ -112,3 +114,109 @@ def test_battery_manifest_covers_four_cases():
         assert (HERE / "battery" / c["dir"] / c["input"]).exists()
         assert (HERE / "battery" / c["dir"] / "DEFECT.md").exists()
         assert c["blind_spot_if_unflagged"].strip()
+
+
+# --- --pr-scope population (gate-records regime) -------------------
+# pr_scope_dirs shells to git, so these tests build temp git repos
+# and point check_freeze_gate.REPO_ROOT at them.
+
+
+def _git(repo, *args):
+    subprocess.run(
+        ["git", *args], cwd=repo, check=True, capture_output=True, text=True
+    )
+
+
+def _write(repo, rel, content):
+    path = repo / rel
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(content, encoding="utf-8")
+
+
+def _commit_all(repo, message):
+    _git(repo, "add", "-A")
+    _git(repo, "commit", "-q", "-m", message)
+    out = subprocess.run(
+        ["git", "rev-parse", "HEAD"], cwd=repo,
+        check=True, capture_output=True, text=True,
+    )
+    return out.stdout.strip()
+
+
+def _spec_repo(tmp_path, monkeypatch, base_files):
+    """Temp git repo with one base commit carrying base_files;
+    returns (repo, base_sha) with REPO_ROOT pointed at the repo."""
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    _git(repo, "init", "-q", "-b", "main")
+    _git(repo, "config", "user.email", "freeze-gate-tests@example.invalid")
+    _git(repo, "config", "user.name", "Freeze Gate Tests")
+    _git(repo, "config", "commit.gpgsign", "false")
+    for rel, content in base_files.items():
+        _write(repo, rel, content)
+    base = _commit_all(repo, "base")
+    monkeypatch.setattr(check_freeze_gate, "REPO_ROOT", repo)
+    return repo, base
+
+
+def test_pr_scope_skips_pre_regime_freeze_change(tmp_path, monkeypatch):
+    # framework026-regime shape: freeze.json, no gate-records/ at
+    # base or in the tree. A freeze.json recompute must NOT select
+    # the dir (the PR #477 false positive).
+    repo, base = _spec_repo(tmp_path, monkeypatch, {
+        "specs/054-pre-regime/freeze.json": "{}\n",
+        "specs/054-pre-regime/adjudication.md": "record\n",
+    })
+    _write(repo, "specs/054-pre-regime/freeze.json", '{"recomputed": true}\n')
+    _commit_all(repo, "recompute freeze")
+    assert pr_scope_dirs(base) == []
+
+
+def test_pr_scope_selects_regime_freeze_change(tmp_path, monkeypatch):
+    repo, base = _spec_repo(tmp_path, monkeypatch, {
+        "specs/075-regime/freeze.json": "{}\n",
+        "specs/075-regime/gate-records/c2-spotcheck.json": "{}\n",
+    })
+    _write(repo, "specs/075-regime/freeze.json", '{"recomputed": true}\n')
+    _commit_all(repo, "recompute freeze")
+    assert pr_scope_dirs(base) == [repo / "specs/075-regime"]
+
+
+def test_pr_scope_selects_regime_gate_records_deletion(tmp_path, monkeypatch):
+    # Deleting a regime spec's gate-records/ must stay in scope so
+    # check_spec_dir fails it — the base-ref arm of the regime
+    # test carries this case (the dir is gone from the tree).
+    repo, base = _spec_repo(tmp_path, monkeypatch, {
+        "specs/075-regime/freeze.json": "{}\n",
+        "specs/075-regime/gate-records/c2-spotcheck.json": "{}\n",
+    })
+    records = repo / "specs/075-regime/gate-records"
+    (records / "c2-spotcheck.json").unlink()
+    records.rmdir()
+    _commit_all(repo, "delete gate-records")
+    assert not records.exists()
+    assert pr_scope_dirs(base) == [repo / "specs/075-regime"]
+
+
+def test_pr_scope_ignores_non_trigger_change(tmp_path, monkeypatch):
+    repo, base = _spec_repo(tmp_path, monkeypatch, {
+        "specs/075-regime/freeze.json": "{}\n",
+        "specs/075-regime/gate-records/c2-spotcheck.json": "{}\n",
+        "specs/075-regime/adjudication.md": "record\n",
+    })
+    _write(repo, "specs/075-regime/adjudication.md", "record, appended\n")
+    _commit_all(repo, "append adjudication")
+    assert pr_scope_dirs(base) == []
+
+
+def test_pr_scope_477_shape_selects_nothing(tmp_path, monkeypatch):
+    # The PR #477 shape end to end: freeze.json recomputed for two
+    # pre-regime specs (054/074-style append acts), nothing else.
+    repo, base = _spec_repo(tmp_path, monkeypatch, {
+        "specs/054-a/freeze.json": "{}\n",
+        "specs/074-b/freeze.json": "{}\n",
+    })
+    _write(repo, "specs/054-a/freeze.json", '{"recomputed": true}\n')
+    _write(repo, "specs/074-b/freeze.json", '{"recomputed": true}\n')
+    _commit_all(repo, "recompute freezes")
+    assert pr_scope_dirs(base) == []

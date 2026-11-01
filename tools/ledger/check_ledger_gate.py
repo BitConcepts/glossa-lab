@@ -3,8 +3,8 @@
 
 Recomputes the matrix (and, when present, the map) from the
 ledger by the gate's own independent route and checks the
-chain under classes V1–V7 and V9 of spec.md Point 4 (V8
-arrives with Stage 4). The gate never writes: bytecode
+chain under classes V1–V9 of spec.md Point 4 (V8, the
+settling canonicals, arrived with Stage 4). The gate never writes: bytecode
 writing is disabled before any backend module is imported,
 and the gate calls only pure builders and read paths
 (parent-carried write-freedom requirement; V9 audits the
@@ -50,14 +50,15 @@ from glossa_lab.ledger_gate import run_gate  # noqa: E402
 # "--pr-scope on PRs (gate over the artifacts the change
 # touches)"). Machinery changes run the full gate.
 _LAYER_CLASSES = {
-    "ledger": {"V1", "V2", "V3", "V4", "V9"},
+    "ledger": {"V1", "V2", "V3", "V4", "V8", "V9"},
     "matrix": {"V2", "V3", "V4"},
     "map": {"V2", "V4", "V5", "V6"},
-    "anchors": {"V4", "V6"},
+    "anchors": {"V4", "V6", "V8"},
 }
 _MACHINERY = (
     "backend/glossa_lab/ledger_gate.py",
     "backend/glossa_lab/gated_publish.py",
+    "backend/glossa_lab/settling.py",
     "tools/ledger/",
     ".github/workflows/ci.yml",
 )

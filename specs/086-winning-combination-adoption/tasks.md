@@ -190,7 +190,7 @@ test output) — not a summary of it.
   *This does not establish the derivations are error-free —
   it establishes they exist in prose, where an error can be
   found by reading, before any code depends on them.*
-- [ ] T403 The engine (`backend/glossa_lab/settling.py`):
+- [x] T403 The engine (`backend/glossa_lab/settling.py`):
   evaluates an assignment-set record over one ledger build;
   writes run records only; imports no intake/write module.
   Assignment sets of record registered: incumbent (strict-94)
@@ -199,7 +199,7 @@ test output) — not a summary of it.
   diff across a run is empty outside the run store; the V9
   import audit passes. *This does not establish the engine is
   correct — that is T404's bar, not this task's.*
-- [ ] T404 **Exact-reproduction test**
+- [x] T404 **Exact-reproduction test**
   (`backend/tests/test_settling_canonical.py`): the engine
   reproduces every registered canonical exactly — counts,
   enumerations, tallies. Wired into the gate as check V8.

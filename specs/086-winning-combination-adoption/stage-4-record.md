@@ -365,3 +365,356 @@ or deleted by this worker; main was not touched.
 **AI disclosure:** executed by an AI agent (Muse, via
 Muse) at the direction of Tristen Pierson, per
 constitution sec. VI.
+
+---
+
+## T403–T404 — the engine and the oracle test
+
+### What was built
+
+- `backend/glossa_lab/settling.py` — the settling engine.
+  Pure builders plus thin write wrappers, mirroring the
+  matrix generator's architecture (harmonization adoption
+  3, item 5): `evaluate_candidate` / `run_record` /
+  `compare_runs` / `build_assignment_sets` compute records
+  in memory and write nothing; `write_assignment_sets` and
+  `write_run_record` are the only writers, reached through
+  the command. The module imports no intake/write entry
+  point — it reads the ledger through `ledger_intake`'s
+  read path only — and carries its own registered copies of
+  the glossa-settle-1 constants (strict rule, outcome table,
+  frame prefixes, tally keys); a test pins those copies
+  equal to the gate's.
+- `tools/ledger/run_settling.py` — the thin command:
+  `materialize-sets`, `run`, `compare`, `verify-canonicals`.
+- `glossa-indus/ledger/assignment-sets.json` — the
+  assignment sets of record, materialized from the
+  canonical anchors register at its pinned hash
+  (26,287 bytes, sha256
+  36bce404db20792826e7ffba220857c71d058423c8f8e47fca7aa900af27c5be;
+  regeneration over the unchanged register is
+  byte-identical): **incumbent 94 assignments** (the
+  recomputed strict set read as assignments),
+  **full-register 286 assignments** (every record of the
+  mahadevan frame). Registered reading, carried from the
+  registration record: tasks.md T403's "(287)" counts the
+  register's records; the register holds 287 records, of
+  which H003 belongs to a frame the anchors file does not
+  name (UNMEASURED, SETTLING-SEMANTICS.md §2) and is out of
+  v1 scope — the artifact counts it in
+  `out_of_frame_records`, assigned by no set, never
+  silently dropped.
+- Run records are **not** published artifacts in v1's
+  design and none are committed by this PR: a run writes
+  its record only into the run store
+  (`glossa-indus/ledger/runs/`, created on first use), and
+  the canonical reproduction lives in the T404 test and in
+  gate V8. T405 owns the first executed, stored dual run.
+
+### Engine discipline (as registered, as built)
+
+- Strictness is recomputed under the recorded D-A rule,
+  never trusted from stored flags; `load_state` refuses
+  when the recomputation disagrees with the stored
+  `strict_set` flags, when the recorded strict count
+  disagrees, or when the anchors file records a different
+  rule id (semantics §1). Pinned in every run-record
+  header: the ledger canonical hash + line count, the
+  anchors register's raw-byte sha256 + byte/record/strict
+  counts + rule id and version, the Phase-108 register's
+  canonical hash, and the corpus snapshot's canonical
+  hash (carried, per §7's dual-run protocol; settling does
+  not read the corpus in v1).
+- Sign identity is by (frame, number) — glossa-settle-1's
+  rule, resolving mahadevan:64 → M064. The registered
+  divergence from matrix-defs v1 R4's literal key
+  construction stands as recorded at registration; the
+  engine amends neither matrix-defs, the matrix, nor the
+  semantics.
+- S-R2 runs in its registered determinate v1 form and is
+  value-independent; every run record carries the
+  statement (`s_r2_value_independence`). S-R3 reports the
+  determinate zero with `class_table: null` (UNMEASURED,
+  §10). Confidences are carried verbatim from the register
+  records into every context record.
+- A candidate assigning one sign twice (by identity,
+  padding included) is refused as malformed; a comparison
+  whose two run records disagree on semantics version or
+  on the ledger or corpus pins is refused (§7, C086-15's
+  registered falsifier).
+- Out-of-scope candidate assignments (§3) are enumerated
+  on the run record at envelope level
+  (`out_of_scope_assignments`), outside the S-R4 result
+  block, whose field set stays exactly the registered one
+  the canonicals pin.
+
+### T404 — oracle reproduction (verbatim)
+
+Filed at `records/stage-4-canonical-output.txt`: the
+command's `verify-canonicals` output —
+
+```
+PASS null-over-subset
+PASS incumbent-over-subset
+PASS full-register-over-subset
+PASS seeded-conflict-over-subset
+PASS untouched-sign
+PASS incumbent-vs-full-register-over-subset
+  expectations note: absence clause reproduced exactly; the registered note's remainder is brief-specific prose (FINDING-S4-1, stage record)
+verify-canonicals: 6/6 registered canonicals reproduce
+```
+
+— and the T404 test file's run: **13 passed**. All five
+scenarios reproduce field-for-field; the comparison
+reproduces on every mechanical field. One registered field
+is not wholly mechanical — see FINDING-S4-1.
+
+### FINDING-S4-1 — the comparison's expectations note is
+### not fully derivable
+
+The canonical comparison's expected
+`pre_registered_expectations_note` reads: "No
+pre-registered expectation exists in the program's record
+for the one touched claim; Spec 074's outcome record
+concerns yadav_2009_arxiv_manual_002, touched by neither
+run." The first clause is the absence statement semantics
+§7 requires, and it is mechanically derivable: no
+expectations register exists in v1's record, so the
+comparison states the absence for the touched claim(s).
+The second clause is prose from the T405 brief (which
+names Spec 074's outcome record as the expectation to
+check); no registered rule derives *which* untouched
+claim's record to name — an exhaustive census of
+outcome-carrying claims would name dozens. The engine
+therefore takes expectations (and, where a caller carries
+one, an expectations note) as comparison **input data**,
+generates the absence statement itself, and the T404 test
+and gate V8 both assert the generated clause equals the
+registered note's first clause verbatim and record the
+remainder as registered prose. Nothing in the canonical
+artifact was edited; the engine was not bent to
+regurgitate the clause. If the program wants the clause
+mechanical, the route is a registered expectations
+register in a future semantics version — an owner's oracle
+call, not this PR's.
+
+### Tally-key reading (an engine defect found and fixed in
+### the open, per T404's rule)
+
+The engine's first oracle run mismatched on exactly one
+thing: the S-R2 tally keys. The first build keyed tallies
+by the matrix's cell relation values (supports / opposes /
+constrains); SETTLING-SEMANTICS.md §5 registers the tally
+keys as `supporting`, `opposing`, `constraining` (and the
+canonicals carry them). The engine was fixed to the
+registration; the canonicals were not touched. Recorded
+here because T404's acceptance is that mismatches are
+fixed in the open.
+
+### Gate V8 (T404's wiring)
+
+`backend/glossa_lab/ledger_gate.py` gains V8 in three
+checks, in the Stage 3 idiom — the gate recomputes by its
+own route from its own registered copies of glossa-settle-1
+(`SETTLE_*` constants, `_gate_settle`, `_gate_compare`),
+never importing the engine:
+
+1. **Scenarios reproduce** — the canonical artifact's
+   provenance pins are verified against the tree first
+   (ledger canonical hash + lines; anchors raw-byte
+   sha256; corpus canonical hash; strict rule id; stored
+   vs recomputed strict set; source-hash verification of
+   the records S-R2 reads). A pin failure FAILs naming the
+   pin. Then each scenario is settled by the gate's route
+   and divergences are named by scenario and field path.
+2. **The registered comparison reproduces** — same
+   treatment; the expectations note is checked per
+   FINDING-S4-1 (absence clause verbatim; remainder named
+   as brief-specific prose in the check's evidence).
+3. **Scenario/verdict separation** — every settling/
+   scenario module under `backend/glossa_lab` is audited
+   for imports of **and reachability to** a ledger write
+   entry point: attribute uses (`li.append_entry(...)`)
+   and bare name references count, extending V9.2's
+   import-only audit rather than duplicating it. Where
+   the canonical artifact is present but no settling
+   module exists, the arm FAILs (the layer the canonicals
+   govern is missing); where the settling layer is absent
+   from a tree entirely, all three V8 checks enumerate
+   NOT-RUN with the absent inputs named.
+
+The gate's header now states the settling semantics
+version and the canonical path on every run. The CLI's
+PR-scope map gains V8 for the ledger and anchors layers,
+and `backend/glossa_lab/settling.py` joins the machinery
+list (an engine change runs the full gate).
+
+Gate output, verbatim: `records/stage-4-gate-output.txt`
+(full: **16 PASS / 0 FAIL / 4 NOT-RUN, RESULT PASS**) and
+`records/stage-4-regen-output.txt` (--regen: **18 PASS /
+0 FAIL / 4 NOT-RUN, RESULT PASS**). The remaining NOT-RUNs
+are the Stage 5 map legs (V2 map leg, V5, V6 map leg) and
+V7 in non-regen mode. V8 was the last NOT-RUN besides the
+map legs; it now PASSes on the clean tree.
+
+### Teeth (each seeded in a scratch copy; the real tree
+### untouched)
+
+- Canonical flip: incumbent `consistent` 2→3 in the
+  scratch canonical copy → V8 FAILs, naming scenario
+  `incumbent-over-subset` and field `consistent`.
+- Reachability seed: a scratch settling module importing
+  only the intake module and calling `li.append_entry(...)`
+  → V9.2's import audit PASSes it; V8's separation arm
+  FAILs, naming the module and `append_entry` (the
+  extension, proven distinct).
+- Import seed: a scratch settling module importing
+  `write_ledger` directly → V8's separation arm FAILs,
+  naming the module.
+- Engine refusals (`test_settling_canonical.py`): a
+  duplicate assignment by identity (mahadevan:70 and
+  mahadevan:070); a flipped stored strict flag in a
+  scratch anchors copy; a comparison over two ledger
+  builds.
+- Store discipline (T403's acceptance): the pure builders
+  write nothing (tree hashes identical across an
+  evaluation); `write_run_record` adds exactly one file,
+  under the run store, and changes no other hash;
+  evaluation is byte-deterministic across runs.
+- The live V9 pass: with the real engine in the tree,
+  V9.2's audit scans 1 settling module and PASSes — the
+  audit armed at Stage 3 over a then-absent layer now has
+  its live subject.
+
+### Local checks
+
+- Spec 086 family (gate battery incl. the V8 teeth, the
+  canonical tests, intake, migration, matrix): **107
+  passed**. Freeze family: green inside the full
+  enumeration below.
+- Full backend suite, no `-x`, enumerated in five chunks
+  (2,273 tests): **2,205 passed / 67 skipped / 1 failed** —
+  the one failure is the known environmental baseline,
+  `test_phase133_stage0_inventory.py::test_builder_recomputation_skips_without_inputs`
+  (it needs a download this environment lacks; it fails
+  identically on main). In-tree rewrites the suite causes
+  (the evidence-API tests' extracted-claims rewrites and
+  two report files) were restored before committing;
+  `git status` at commit time shows only this PR's files.
+- Ledger validator: **PASS**. Gate full + --regen: PASS
+  (above).
+
+### CI repair addendum (2026-11-01, post-push)
+
+PR #483's first CI run (41359909760) failed the three
+Shell wrappers jobs (macOS / Ubuntu / Windows) at the
+step "shell.sh lint — backend passes ruff". The defect
+class is unused-import / unused-variable hygiene in the
+two files this PR introduced. Running the invocation
+shell.sh defines (`ruff check backend/`, config from
+backend/pyproject.toml; run with the CI venv's python,
+as this clone carries no backend/venv for shell.sh to
+resolve) surfaced five findings, each verified unused
+by grep before removal:
+
+- F401 `dataclasses.field` imported but unused —
+  settling.py:66 (the finding quoted from the CI log);
+  `field` is never called or referenced in the module.
+- F841 `scope_ids` assigned but never used —
+  settling.py:486 (a pure comprehension; the evaluator
+  recomputes the intersection inline).
+- F841 `assignments` assigned but never used —
+  settling.py:639; the `_validate_candidate(candidate)`
+  call is kept as a bare call, preserving its validation
+  side effect.
+- F401 `shutil` imported but unused —
+  test_settling_canonical.py:52.
+- F401 `glossa_lab.ledger_intake` imported but unused —
+  test_settling_canonical.py:58.
+
+Scope note, stated plainly: the repair brief named
+settling.py plus this record as the commit set. The two
+test-file findings are the same defect class in the
+PR's other new file and block the same lint step, so
+they were fixed in the same motion rather than left to
+fail the next run; no other file was touched.
+
+Local lint proof after the fix (verbatim):
+
+```text
+$ python -m ruff check backend/
+All checks passed!
+```
+
+(exit 0). Re-runs on the repaired tree:
+test_settling_canonical.py **13 passed**; the ledger
+gate in full mode **16 PASS / 0 FAIL / 4 NOT-RUN,
+RESULT: PASS** (the same counts as at the PR head);
+the remaining Spec 086 family files (ledger gate,
+intake, migration, matrix) **67 passed**. The test
+runs left no in-tree rewrites to restore — `git status`
+shows only the two repaired files plus this record.
+
+The same CI run's Backend job failure is a different
+animal: the teardown ERROR on
+`test_copy_api_token_without_tkinter_is_named`
+(sqlite3 "Cannot operate on a closed database" exiting
+the conftest TestClient) — the known tray teardown
+flake, fourth sighting (cf. PR #477 run 41319020208
+attempt 1). It is remedied by rerun at the parent's
+gate, not by this change; nothing in this repair
+touches it.
+
+### Claim assessments (engine scope only)
+
+- **C086-13 (canonical cases reproduce exactly)** —
+  SUPPORTED at engine scope: every registered scenario and
+  the comparison's mechanical content reproduce exactly,
+  in the T404 test and under the gate's independent route
+  (V8). The one registered field not reproduced verbatim
+  is the comparison note's brief-specific remainder —
+  FINDING-S4-1, named above, not silently matched.
+- **C086-14 (settling is mechanical, labeled, and
+  read-only against the ledger)** — SUPPORTED at engine
+  scope: the engine computes run records mechanically from
+  pinned inputs; every run record and the assignment sets
+  carry the verbatim glossa-settle-1 label; the engine
+  imports no write path, writes only run records into the
+  run store, and the gate's V9 audit passes over it live.
+  The Experiment Builder surface leg is T406's, still open.
+- **C086-16** — its T403 leg is established (a run creates
+  only run records; the store-hash diff across a run is
+  empty outside the run store, tested). The claim as a
+  whole also carries T405/T406 legs and is not closed here.
+- C086-15 (the dual run) is T405's and is **not** executed
+  by this PR: the registered comparison remains its
+  expectation, now with an engine and a gate that both
+  reproduce it.
+
+### Still open in Stage 4
+
+T405 (first interchangeability run, executed and stored),
+T406 (Experiment Builder stub disposition), T407 (stage
+closeout — its canonical-reproduction leg is filed here;
+the dual-run leg lands with T405).
+
+## Cleanup determination (T403–T404)
+
+The clone (`~/workspace/glossa-run/spec086-stage4-engine`)
+is kept on the PR branch with a clean tree apart from the
+PR's own files, as the seat discipline requires, for the
+parent's merge motion. One full-suite run was lost to a
+VM replacement mid-flight (its log sat in /tmp); the
+suite was re-run in five chunks with logs in durable
+storage (`~/workspace/glossa-run/stage4-suite-logs/`,
+outside the repo, retained as this stage's working
+record). The smoke-test run records written during
+development were removed; the run store does not exist in
+the committed tree. No background processes, containers,
+worktrees, or venvs were created by this worker. No branch
+was merged or deleted by this worker; main was not
+touched.
+
+**AI disclosure:** executed by an AI agent (Muse, via
+Muse) at the direction of Tristen Pierson, per
+constitution sec. VI.

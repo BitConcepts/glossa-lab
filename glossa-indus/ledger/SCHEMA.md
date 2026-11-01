@@ -13,6 +13,17 @@ the pinned-schema + CI validator pattern of Spec 029 decision
 D-A (whose literal subject was the anchors file) to the ledger
 — an extension, labeled as such in the spec (Point 7).
 
+**Ledger type (declared).** This ledger is a **claim ledger**
+under the framework ruling of 2026-11-01 (duplicate
+propositions are layer-scoped; canonical winning-combination
+pattern note, commit `3bcd1fd`): one entry per proposition,
+and a duplicate proposition is **refused at intake** per D-B
+— never counted-and-kept. Glossa operates no
+assertion/evidence ledger in v1: research-check sidecars
+enter as annotation entries in this ledger, and evidence
+instances are `sources[]` records of a claim entry,
+preserved per D-B.
+
 ## Entry kinds
 
 Every entry carries `id`, `kind`, `date` (the entry's

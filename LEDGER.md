@@ -12473,3 +12473,68 @@ landing.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-01 — Spec 086 Stage 3: the verification gate
+
+Point 4 of the winning-combination adoption is built.
+The verification gate (`backend/glossa_lab/ledger_gate.py`,
+invoked as `tools/ledger/check_ledger_gate.py`) guards the
+ledger → matrix chain under check classes V1–V7 and V9 of
+spec.md Point 4 (V8 arrives with Stage 4 and is enumerated
+NOT-RUN until then). It recomputes the matrix from the
+ledger by an independent route — its own registered copies
+of `matrix-defs v1`, not the generator's tables — and on
+the clean tree reports 13 PASS / 0 FAIL / 5 NOT-RUN: the
+Stage 1 validator plus a recorded-source-hash arm that
+verifies all 1,686 `sources[]`/sidecar hashes under the
+canonical helper (the Stage 1 gap, closed); counts equal
+by status, stage, population, and falsifier coverage
+(831 of 840, published in the gate's header on every run);
+1,363 cells recomputed cell-for-cell equal; all 1,364
+citations tie under V4's rules T1–T4 (the numeric arm's
+live population is unexercised and the gate says so); the
+strict anchor set recomputes at 94 of 287 (share 0.3275)
+under the D-A rule the anchors file records; `--regen`
+byte-compares matrix.json `b3cdbf49…` and matrix.md
+`7c963ff5…` identical. Publication is gated
+(`gated_publish.py`; `generate_matrix.py --gated`):
+candidate → gate → atomic replace only on ALL PASS, and
+the negative control (flipped ledger status, stale
+candidate) refuses, names V2 and V3, and leaves the
+published artifacts byte-identical; a red gate run is
+proven to mutate nothing it checks (Amendment 1
+corollary 5, tested). The teeth battery seeds one
+divergence per class — including the Atlas miscarriage,
+Spec 054's 2026-10-24 `STRICT CORPUS NOT PINNABLE`
+closure cited as support for the Yadav claim, which
+fails V4 while passing V1–V3. CI gains the `ledger-gate`
+job beside `freeze-gate` (C4 untouched). Harmonization
+recorded the same day (full text:
+`specs/086-winning-combination-adoption/records/harmonization-2026-11-01.md`):
+the Atlas adopted Glossa's T105 ledger-schema note
+(541-entry census, SCHEMA class, coverage 541/541, gate
+206/207, no check loosened); Tristen ratified that note
+as Amendment 3 to the canonical pattern (commit
+`4e1ff09`) and Amendment 2, canonicalize-before-you-hash,
+as well (commit `d1de85d`) — Glossa conforms as adopted
+(canonical helper since Stage 1, pinned-LF artifacts,
+root `.gitattributes` already `eol=lf`) and the
+framework026 freeze pins are not migrated; RCPH recorded
+its own adoption (44 entries, 3 shapes, no falsifier
+field, no pinned schema; build queued); and the
+layer-scoped duplicate-propositions ruling (commit
+`3bcd1fd`) leaves Glossa's D-B refusal unchanged — the
+explicit declared-type sentence now stands at the head
+of `glossa-indus/ledger/SCHEMA.md`, and Glossa operates
+no assertion ledger in v1. The falsifier-gap census
+pattern note is written
+(`records/pattern-note-falsifier-gap-census.md`); its
+delivery to the RCPH and Atlas chats is owed by the
+parent chat. Full record, gate output, battery output,
+and the negative-control transcript:
+`specs/086-winning-combination-adoption/stage-3-record.md`
+and its `records/` files. No claim's status, stage, or
+score was changed by this landing.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

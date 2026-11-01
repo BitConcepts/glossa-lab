@@ -13,9 +13,17 @@ Usage (from the repo root):
     python3 tools/ledger/generate_matrix.py [--root PATH]
                                             [--out-dir PATH]
                                             [--check]
+                                            [--gated]
 
 `--check` builds without writing and exits 0 only if the
 committed artifacts are byte-identical to the fresh build.
+
+`--gated` (Spec 086 Stage 3, T303) publishes through the
+verification gate: the build is written as a candidate, the
+gate runs against the candidate, and the published artifacts
+are replaced only on ALL PASS — on a red gate the published
+files are byte-untouched and the command exits 1 with the
+gate output.
 
 Exit code 0 on success, 1 on a named refusal (a source whose
 hash does not match the ledger's record, an unregistered
@@ -58,6 +66,12 @@ def main() -> int:
         action="store_true",
         help="build only; exit 0 iff committed artifacts match the build",
     )
+    parser.add_argument(
+        "--gated",
+        action="store_true",
+        help="publish through the Stage 3 verification gate "
+        "(candidate -> gate -> replace only on ALL PASS)",
+    )
     args = parser.parse_args()
     root = args.root.resolve()
     out_dir = (
@@ -66,6 +80,23 @@ def main() -> int:
         else (root / "glossa-indus" / "matrix")
     )
     try:
+        if args.gated:
+            from glossa_lab.gated_publish import publish_matrix
+
+            result = publish_matrix(root, out_dir)
+            gate = result["gate"]
+            sys.stdout.write(gate.render())
+            if not result["published"]:
+                print(
+                    "PUBLICATION REFUSED: the gate is red; the "
+                    "published artifacts are byte-untouched.",
+                    file=sys.stderr,
+                )
+                return 1
+            for name, info in result["written"].items():
+                print(f"published {info['path']} ({info['bytes']} bytes, "
+                      f"sha256 {info['sha256']})")
+            return 0
         if args.check:
             build = build_matrix(root)
             ok = True

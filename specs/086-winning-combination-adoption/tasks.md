@@ -115,7 +115,7 @@ test output) — not a summary of it.
 
 ## Stage 3 — Verification gate (PR: `feat/086-ledger-gate`)
 
-- [ ] T301 The gate (`tools/ledger/check_ledger_gate.py`) with
+- [x] T301 The gate (`tools/ledger/check_ledger_gate.py`) with
   check classes V1–V7 and V9 of spec.md Point 4 (V8 arrives
   with Stage 4), including the **relation-carrying citation
   class (V4)** with tie rules T1–T4 adapted to Glossa's edge
@@ -126,14 +126,14 @@ test output) — not a summary of it.
   establish the gate catches everything — it establishes the
   named classes are checked mechanically, and the teeth tests
   below bound what "catches" means.*
-- [ ] T302 `--regen` mode: hash, regenerate, byte-compare,
+- [x] T302 `--regen` mode: hash, regenerate, byte-compare,
   classify any diff as intended-change-named or
   downstream-defect. (C086-12) Acceptance: test — regen over a
   clean tree is byte-identical; regen over a hand-edited
   artifact names that file as the defect. *This does not
   establish the artifacts are substantively right — only that
   they are exactly what the ledger generates.*
-- [ ] T303 Gated publication wiring: generator and map builder
+- [x] T303 Gated publication wiring: generator and map builder
   write candidates; the gate runs against candidates
   (`--candidate`); published files are replaced only on ALL
   PASS (Atlas `build_graph.py` publish block is the reference
@@ -143,7 +143,7 @@ test output) — not a summary of it.
   leave the published artifact byte-identical to its pre-run
   hash. *This does not establish the published content is true
   — it establishes nothing unverified replaces it.*
-- [ ] T304 Teeth battery: one seeded divergence per check
+- [x] T304 Teeth battery: one seeded divergence per check
   class, each required to turn the gate red and name its
   check — including the Atlas failure mode as a first-class
   case: a citation that exists and is relevant but carries no
@@ -153,14 +153,14 @@ test output) — not a summary of it.
   *This does not establish immunity to unseeded failure modes
   — it establishes the named modes are caught, and names the
   battery as the standing place to add new ones.*
-- [ ] T305 CI wiring: job `ledger-gate` in
+- [x] T305 CI wiring: job `ledger-gate` in
   `.github/workflows/ci.yml` beside `freeze-gate` (C4
   untouched): `--pr-scope` on PRs, full mode on pushes,
   `--regen` in the push job. (C086-10) Acceptance: test — the
   job runs green on the adopting PR and red on a seeded-
   divergence PR. *This does not establish future PRs will be
   honest — it establishes the gate stands in the merge path.*
-- [ ] T306 Stage 3 closeout: clean-tree gate output, regen
+- [x] T306 Stage 3 closeout: clean-tree gate output, regen
   output, teeth-battery output, and the negative-control record
   filed verbatim; the falsifier-gap census pattern note
   written and delivered to the RCPH and Atlas chats.

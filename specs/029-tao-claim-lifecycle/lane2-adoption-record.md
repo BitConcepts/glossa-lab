@@ -206,3 +206,86 @@ both fields on the prior record and asserts they survive
 verbatim. No live record changed: the ingestion's committed
 store was always correct; only a regeneration could have
 stripped it.
+
+## Amendment — 2026-11-01: adoption of the two RT-21 refreshed `not_understood` texts
+
+### The owner act
+
+Two of the 35 adopted `not_understood` texts were refreshed on
+2026-10-25 under red-team finding RT-21, because each described
+a state that no longer held (provenance below). The refreshed
+texts were carried onto the Step 7 branch's claim records at
+that time, but no adoption act covered them: the 2026-10-13
+adoption speaks for the texts as they then stood, and the
+Phase E2 guard (`test_spec029_phase_e2.py`) pins the live
+stores to the adopted record exactly. On the Step 7 branch the
+live records and the adopted record therefore diverged on
+exactly these two fields, and PR #391 (Road Step 7, closed
+unmerged 2026-10-28) failed CI on exactly that assertion.
+
+On 2026-11-01 the owner was presented with both routes —
+adopt the refreshed texts, or re-scope the Spec 029 pin so the
+guard no longer covers these two records — and chose adoption.
+The act, verbatim, 2026-11-01 06:08 EST (Glossa Lab chat):
+
+> "Adopt the two RT-21 refreshed texts as mine."
+
+Under OD-2 the refreshed texts now count as authored by
+Tristen Pierson, the author of record, exactly as the original
+35 do. The drafting AI is not the author of either refreshed
+text. The re-scoping route was not chosen: the pin's meaning is
+preserved (below).
+
+### The two claims
+
+- `without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003`
+  (the Hunt opening-signs claim; source record
+  `glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json`);
+- `yadav_2009_arxiv_manual_002`
+  (the Yadav opening/closing claim; source record
+  `glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json`).
+
+### Provenance of the refreshes (2026-10-25, RT-21)
+
+Each refreshed text was drafted by an AI agent on 2026-10-25
+under red-team finding RT-21 and carries its own provenance
+block on the claim record: `spec074_not_understood_refresh_2026_10_25`
+(Spec 074, Phase-440) on the Hunt claim, and
+`spec054_not_understood_refresh_2026_10_25` (Spec 054) on the
+Yadav claim. Neither refresh changed its claim's status, stage,
+or falsification condition — `not_understood` only.
+
+### What this amendment changes
+
+- `lane2-drafts/drafts.json`: for exactly the two records
+  above, `not_understood` now carries the refreshed text
+  verbatim as it stands on the claim record, and
+  `ai_assistance_disclosure` is restated to record the RT-21
+  refresh and this adoption. `author` (Tristen Pierson),
+  `author_kind` (`human`), `drafter`, `artifact_uri`, and
+  `challenge_venue` are unchanged. `explanation_text` is
+  unchanged, so each record's `content_hash` — the SHA-256 of
+  its explanation text, the record's own rule — re-computes to
+  the same value; all 35 records validate under
+  `glossa_lab.claim_bundle.validate_explanation_record` and all
+  35 `content_hash` values verify under this amendment.
+- `lane2-drafts/drafts-review.md`: regenerated from
+  `drafts.json` (`build_review.py`); the two refreshed texts
+  appear in place of the superseded wordings.
+- The other 33 records are untouched, byte for byte.
+
+No live record is changed by the amendment itself. Within this
+same PR, the Road Step 7 dispositions carry the refreshed
+texts onto the live claim records (where they have stood on
+the branch since 2026-10-25), and this amendment brings the
+adopted record into agreement with them. The two land together
+because the guard asserts the equality in both directions: an
+amendment-only PR would fail CI against main's still-superseded
+live texts, and the dispositions alone fail against the
+unamended adopted record.
+
+AI disclosure: this amendment was executed by an AI agent
+(Muse, via Muse) at the direction of Tristen Pierson,
+per constitution sec.VI. The refreshed texts it adopts were
+AI-drafted and human-adopted as recorded above; the drafting
+AI is not the author of any explanation record.

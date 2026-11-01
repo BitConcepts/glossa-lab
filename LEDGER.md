@@ -12184,3 +12184,46 @@ under the directive, not fixtures). Open gap recorded: the app
 carries no privacy/data-handling/terms text; creating one is an
 owner text act. Fixtures change only through a recorded
 owner-approval act (FR-084-08).
+
+## [2026-10-31] Entry — Spec 075 C4 freeze-gate records corrected (C2/C3)
+
+Main-branch CI job "Freeze gate records check" (checker --all)
+failed on specs/075-depicted-kind-endings-atlas in runs
+41155682213, 41157454467 and 41167817221 — the named red item in
+the 2026-10-31 day-end CI accounting; PR runs use --pr-scope and
+never exercised these paths. Three defects: five C2 quantities
+(registry_v1_rows, crosswalk_rows, anchors_sha256,
+total_analyzable_rows, documented_lineage_rows_total) carried
+status 'agree' while marked unsampled; coverage.other_checked
+did not match the quantities list under the checker's
+definition; and the C3 verifier was the C2 drafting session
+(session d02f80d3) — a self-verification disclosed in the
+2026-10-25 red-team addendum §5 but never cured.
+
+Repair, performed 2026-10-31 by a Muse subagent (C4
+freeze-gate repair worker; session 4413edc7), not the drafter.
+The five quantities were independently recomputed from their
+underlying sources and all agree with their pins (803; 205;
+anchors SHA-256 df0cf620...; 5,536 analyzable of 5,704 corpus
+rows; 3,212 documented-lineage of the full 3,212 / 2,087 / 405
+grade vector — the corpus and grades files' hashes re-verified
+against the intake record's pins first). They are now marked
+sampled on the strength of that recomputation, each note
+carrying its correction sentence; coverage.other_sampled
+corrected 3 -> 8, leaving other_checked 8 true under the
+checker's definition. The C3 verifier is replaced by the
+repairing agent, who independently re-read the cited evidence
+for all seven sampled claims and re-derived every checkable
+number (both Spec 073 asset digests, counts and census
+recounted; the population 3,045 / 557 / 550 recomputed; the
+sole no-published-identity entry, token 999) — all seven
+verified as registered, no status weakened, unsampled claims
+untouched. Each corrected record carries a `correction` entry
+naming the date, agent, defect and scope; the full narrative is
+at specs/075-depicted-kind-endings-atlas/gate-records/
+CORRECTION-2026-10-31.md. The as-filed records stand preserved
+in git history at the freeze commit fa34a92b. No pinned or
+recomputed value changed; Spec 075's claims and verdicts are
+untouched and stand. Checker after the repair:
+`check_freeze_gate.py --all` — C4 PASS for specs 075, 076, 077
+and 078 (exit 0).

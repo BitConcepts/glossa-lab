@@ -213,11 +213,11 @@
    "name": "registry_v1_rows",
    "source_in_spec": "spec \u00a73 inputs table",
    "gate_turning": false,
-   "sampled": false,
+   "sampled": true,
    "pinned_value": 803,
    "recomputed_value": 803,
    "status": "agree",
-   "note": ""
+   "note": "[Correction 2026-10-31: this quantity was filed unsampled while carrying status 'agree', which the C4 checker rejects - an unsampled quantity has no checked status. In this correction pass the repairing agent (Muse subagent (C4 freeze-gate repair worker; session 4413edc7)) independently recounted the data rows of data/crosswalks/canonical_sign_registry.csv (header row excluded): 803, agreeing with the pin; the same file's SHA-256 also recomputes to the pinned registry_v1_sha256 value above. The quantity is therefore recorded as sampled, by the correction pass.]"
   },
   {
    "name": "crosswalk_sha256",
@@ -233,21 +233,21 @@
    "name": "crosswalk_rows",
    "source_in_spec": "spec \u00a73 inputs table",
    "gate_turning": false,
-   "sampled": false,
+   "sampled": true,
    "pinned_value": 205,
    "recomputed_value": 205,
    "status": "agree",
-   "note": "Same path correction as crosswalk_sha256; the row count agrees on the spec-named file."
+   "note": "Same path correction as crosswalk_sha256; the row count agrees on the spec-named file. [Correction 2026-10-31: this quantity was filed unsampled while carrying status 'agree', which the C4 checker rejects. In this correction pass the repairing agent (Muse subagent (C4 freeze-gate repair worker; session 4413edc7)) independently recounted the data rows of data/crosswalks/sign_crosswalk_master.csv (header row excluded): 205, agreeing with the pin; the same file's SHA-256 also recomputes to the pinned crosswalk_sha256 value above. The quantity is therefore recorded as sampled, by the correction pass.]"
   },
   {
    "name": "anchors_sha256",
    "source_in_spec": "spec \u00a73 inputs table (anchors pin, gate 0.3)",
    "gate_turning": false,
-   "sampled": false,
+   "sampled": true,
    "pinned_value": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
    "recomputed_value": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
    "status": "agree",
-   "note": ""
+   "note": "[Correction 2026-10-31: this quantity was filed unsampled while carrying status 'agree', which the C4 checker rejects. In this correction pass the repairing agent (Muse subagent (C4 freeze-gate repair worker; session 4413edc7)) independently hashed backend/reports/INDUS_FINAL_ANCHORS.json: SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569, agreeing with the pin. The quantity is therefore recorded as sampled, by the correction pass.]"
   },
   {
    "name": "corpus_rows",
@@ -263,29 +263,44 @@
    "name": "total_analyzable_rows",
    "source_in_spec": "spec \u00a73 (analyzable across grades)",
    "gate_turning": false,
-   "sampled": false,
+   "sampled": true,
    "pinned_value": 5536,
    "recomputed_value": 5536,
    "status": "agree",
-   "note": ""
+   "note": "[Correction 2026-10-31: this quantity was filed unsampled while carrying status 'agree', which the C4 checker rejects. In this correction pass the repairing agent (Muse subagent (C4 freeze-gate repair worker; session 4413edc7)) recomputed it from the pinned corpus at its restricted-local path, re-verifying the file's SHA-256 against the intake record's pin (345241b1...) before counting: 5,704 corpus rows, of which 5,536 are analyzable under spec section 3 (recorded symbol list non-empty after dropping 000 tokens), agreeing with the pin. Consistency cross-checks from the same pass also reproduce the filed population figures (3,045 documented analyzable; 5,131 documented+corroborated analyzable). The quantity is therefore recorded as sampled, by the correction pass.]"
   },
   {
    "name": "documented_lineage_rows_total",
    "source_in_spec": "spec \u00a73 (documented-lineage rows before analyzability)",
    "gate_turning": false,
-   "sampled": false,
+   "sampled": true,
    "pinned_value": 3212,
    "recomputed_value": 3212,
    "status": "agree",
-   "note": ""
+   "note": "[Correction 2026-10-31: this quantity was filed unsampled while carrying status 'agree', which the C4 checker rejects. In this correction pass the repairing agent (Muse subagent (C4 freeze-gate repair worker; session 4413edc7)) recomputed it from the pinned row-grades file at its restricted-local path, re-verifying the file's SHA-256 against the intake record's pin (02394241...) before counting: the grade vector reproduces in full (3,212 documented-lineage / 2,087 undocumented-corroborated / 405 undocumented-uncorroborated), so the documented-lineage total is 3,212, agreeing with the pin. The quantity is therefore recorded as sampled, by the correction pass.]"
   }
  ],
  "coverage": {
   "gate_turning_total": 17,
   "gate_turning_checked": 17,
   "other_total": 8,
-  "other_sampled": 3,
+  "other_sampled": 8,
   "other_checked": 8
  },
- "outcome": "PASS"
+ "outcome": "PASS",
+ "correction": {
+  "date": "2026-10-31",
+  "agent": "Muse subagent (C4 freeze-gate repair worker; session 4413edc7)",
+  "occasion": "Main-branch CI job 'Freeze gate records check' (checker --all) failed on this spec in runs 41155682213, 41157454467 and 41167817221; PR-scope runs never exercised these paths. The C4 gate requires its records to mean what they say, so the defect is repaired by correction, in the open: this entry, the per-quantity correction notes, gate-records/CORRECTION-2026-10-31.md beside this record, and an entry in LEDGER.md.",
+  "what_was_wrong": [
+   "Five quantities (registry_v1_rows, crosswalk_rows, anchors_sha256, total_analyzable_rows, documented_lineage_rows_total) carried recomputed values and status 'agree' while marked sampled: false. Under the checker's definition an unsampled quantity has no checked status; the filed statuses were therefore unsupported as filed.",
+   "coverage.other_checked was filed as 8, but under the checker's definition (non-gate-turning quantities that are sampled and carry a checked status) the filed sampling supported only 3.",
+   "The companion C3 record's verifier was this record's drafting session; repaired in that record's own correction entry."
+  ],
+  "what_changed": [
+   "The five quantities were independently recomputed by the correcting agent on 2026-10-31 from the underlying sources named in their notes; all five agree with their pins. They are now marked sampled on the strength of that recomputation, each note carrying its correction sentence. The scaffold's seeded draw (seed 20261025) was re-run and reproduces the originally filed sample exactly, confirming the five stood outside the drawn sample; the correction pass extends the sample beyond the draw, which the sample rule permits (it sets a minimum sample, not a maximum).",
+   "coverage.other_sampled corrected 3 -> 8 to match the quantities list as corrected; coverage.other_checked stands at 8, now true under the checker's definition."
+  ],
+  "what_did_not_change": "Every pinned value, every recomputed value, the sample rule, the drafter and recomputer attestations, and the outcome stand exactly as filed. The as-filed record is preserved in git history at commit fa34a92b (the Spec 075 freeze commit)."
+ }
 }

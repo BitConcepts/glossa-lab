@@ -1,0 +1,900 @@
+{
+ "spec": "065-s1-s5-heading-successor",
+ "register_version": "0.6-draft",
+ "note": "Claims-first register for Spec 065 (successor recovery act for Spec 057's S-1 and S-5 rows), opened 2026-10-21 under the owner's approval of the same date (amendment package Item 6), on the amendment-queue commission (Item 6, whose section 3 gives this successor's form). Conventions as in Spec 057: evidence items carry observed_at from the draft because the cited facts were verified first-hand at drafting (DD-065-9). ASM- ids name the assumptions each claim stands on: ASM-TWO-ROW-SET (the set is exactly Spec 057's S-1 and S-5 rows), ASM-RULE-CARRIED (Spec 057 section 5's heading rule and section 6's standards are carried unmodified), ASM-HEADING-FORM (a heading is a structural object in the document, not any occurrence of its words), ASM-ACQUIRED-FILE-IS-THE-DOCUMENT (the acquired S-5 file at its pinned hash is the document searched; the held cleaned text is never substituted), ASM-BLOCKED-ARM-IS-ACCOUNTING (S-1's frozen blocked outcome is an accounting of its row, not an interruption), ASM-PRIOR-ASSESSMENTS-NO-STANDING (the Item 6 draft's heading-absence assessments decide nothing), ASM-RECOVERY-NOT-VERIFICATION (a recovered claim is created, not checked), ASM-VERBATIM (extracted text is the pinned bytes, with line-rejoining the only permitted normalisation), ASM-APPEND-ONLY (frozen records are dispositioned by appended notes, never edited). The AEE lifecycle hooks have NOT run on this register; they are the freeze gate (tasks L4), and any recovery round they force changes claim text before any freeze digest is computed. FREEZE RECOVERY (2026-10-21): round 1 of the AEE lifecycle hooks over 0.5-draft returned 18 failure modes - 15 FR-2.3 draft-cap records and 3 irreducibility challenges recorded under the coverage_gap category (F065-C01, C03, C09) - with minimum propagated score 0.8695 and no claim below the 0.70 threshold. At 0.6-draft the 3 challenged heads were restated as single head propositions with their carried clauses moved into boundaries verbatim-in-substance (F065-C01: the two rows named; F065-C03: the set's two members; F065-C09: the sources and the frozen set). Final round over the recovered 0.6-draft register: at every hook (after_specify, after_plan, after_tasks) 15 failure modes - 15 FR-2.3 draft-cap records, zero correctness failure modes, minimum propagated score 0.8695, no claim below the 0.70 threshold - pass on the DD-038-10 reading. No claim's falsifier, outcome wording, or search rule changed in recovery; three heads were restated singly with their clauses carried into boundaries.",
+ "claims": [
+  {
+   "id": "F065-C01",
+   "kind": "hypothesis",
+   "text": "An outcome under Spec 065 states only the resolution of the two unlocated rows.",
+   "status": "draft",
+   "boundary": [
+    "The scope is the two rows of spec section 2.1 and their resolution on the documents named there. It excludes any statement about whether signs occupy preferred positions, about any positional result recorded elsewhere in the program, about the three rows Spec 057 closed, and about the truth of anything a recovered passage asserts. Carried from the draft head at the freeze recovery (0.6-draft): the two rows are S-1 and S-5 of Spec 057 section 2.1, the rows Spec 057 closed SOURCE UNLOCATED."
+   ],
+   "depends_on": [],
+   "assumptions": [
+    "ASM-TWO-ROW-SET",
+    "ASM-RECOVERY-NOT-VERIFICATION"
+   ],
+   "alternatives": [
+    "the two rows could be read as re-opening Spec 057's whole accounting (refused: Spec 057's record is closed, DD-065-1)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified in scope if any Spec 065 output states a positional finding, re-accounts a closed row, or attributes to a source a proposition its quoted passage does not state"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-RECOVERY-AS-VERIFICATION"
+    ],
+    "strongest_rival": "the reading in which resolving a row is the same act as establishing what its passage claims",
+    "verdict_rule": "scope is judged by inspection of every Spec 065 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding",
+    "evidence_origin_groups": [
+     "spec057-record",
+     "acquisition-record"
+    ],
+    "boundary_confirmation": "C01 states what an outcome may state (the resolution of the two rows); C15 states where predecessor and successor records stand (Spec 057's records unedited, this successor's products as dated appends). The two govern different objects - the content of an outcome, and the place of records - and are consistent by construction. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/057-five-sources-heading/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 057 outcome record (SHA-256 d3ae1325...): class C, r=2, e=1, u=2; S-1 (section 4.1) and S-5 (section 4.2) SOURCE UNLOCATED - HEADING NOT PRESENT IN HELD TEXT, each naming re-acquisition so the document text layer can be searched under section 5.",
+     "source_id": "specs/057-five-sources-heading/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "/home/hatch/workspace/research_notes/amendment-queue-2026-10-21/item-6-spec057-sources.md"
+     ]
+    },
+    {
+     "ref": "/home/hatch/workspace/research_notes/amendment-queue-2026-10-21/item-6-spec057-sources.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Amendment-queue Item 6 draft, section 3: the unblocking reading is done by a successor recovery act for S-1/S-5 under a NEW spec; Spec 057's records are never patched.",
+     "source_id": "/home/hatch/workspace/research_notes/amendment-queue-2026-10-21/item-6-spec057-sources.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/057-five-sources-heading/outcome.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F065-C02",
+   "kind": "requirement",
+   "text": "The record under resolution is Spec 057's two SOURCE UNLOCATED rows for the merged heading claim.",
+   "status": "draft",
+   "boundary": [
+    "The rows are S-1 and S-5 of Spec 057 section 2.1, for claim ancient_writing_and_modern_technologies_51831ac9_statisti_0004 ('Statistical finding: positional analysis', UNTESTED, Phase-104 RULE-NOCOND, fingerprint a4874349e0cc0ba23b711f10c78f60372639c2dc6f352165b48d4a9e44272469), each closed SOURCE UNLOCATED with sub-state HEADING NOT PRESENT IN HELD TEXT because Spec 057 section 4 step 4 could not run."
+   ],
+   "depends_on": [
+    "F065-C01"
+   ],
+   "assumptions": [
+    "ASM-TWO-ROW-SET"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "recompute the section 2.3 pins and read Spec 057's outcome record sections 4.1-4.2; any mismatch in the rows, their sub-states, or their unblocking acts falsifies the claim"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-REOPENING-057"
+    ],
+    "strongest_rival": "the reading in which the successor inherits all five rows",
+    "verdict_rule": "judged by recomputation of the section 2.3 pins and inspection of the cited outcome sections",
+    "evidence_origin_groups": [
+     "spec057-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/057-five-sources-heading/freeze.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 057 freeze.json: freeze digest 237b923a2c19b216e0476f70d17a956db0ca68d1ba8af6902109099a82c820d9, computed over the frozen 057 contract including its section 4 step 4 and section 5 heading rule.",
+     "source_id": "specs/057-five-sources-heading/freeze.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/057-five-sources-heading/outcome.md"
+     ]
+    },
+    {
+     "ref": "specs/057-five-sources-heading/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 057 outcome record sections 4.1-4.2: the two rows' occurrence postures (S-1 lines 102 and 663; S-5 line 267), their full search logs, and the named unblocking act on each row.",
+     "source_id": "specs/057-five-sources-heading/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/057-five-sources-heading/freeze.json"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F065-C03",
+   "kind": "requirement",
+   "text": "Spec 065's source set is fixed by Spec 057's record.",
+   "status": "draft",
+   "boundary": [
+    "Identity is by claim_id and document_id: S-1 ancient_writing_and_modern_technologies_51831ac9 (claim ..._statisti_0004, quote_fragment the lowercase 'positional analysis'); S-5 without_kings_or_conquests_the_indus_scr_ce9d98cc (claim ..._statisti_0002, quote_fragment 'Positional analysis'). Registry metadata never identifies a source (Spec 057 defect D-2). No source may be added, dropped, or substituted. Carried from the draft head at the freeze recovery (0.6-draft): the set is exactly S-1 and S-5 as recorded in Spec 057 section 2.1 - two sources, no more."
+   ],
+   "depends_on": [
+    "F065-C02"
+   ],
+   "assumptions": [
+    "ASM-TWO-ROW-SET"
+   ],
+   "alternatives": [
+    "the design's prose descriptions ('the canonical record's own source', 'Hunt's book') could be re-matched to other documents (refused: the rows are resolved to records, DD-065-2)"
+   ],
+   "falsification_tests": [
+    "read the accounting table of any Spec 065 outcome record; a row outside the two recorded claim_ids, or a missing row, falsifies the claim"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-REGISTRY-METADATA-AS-IDENTITY"
+    ],
+    "strongest_rival": "the alternative in which a source is matched by title or registry metadata at run time",
+    "verdict_rule": "judged by inspection of the outcome record's accounting table against the two recorded claim_ids",
+    "evidence_origin_groups": [
+     "spec057-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/057-five-sources-heading/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 057 spec section 2.1: the five-source table with claim_ids, document_ids, and the recorded quote_fragment difference between S-1 and the other four.",
+     "source_id": "specs/057-five-sources-heading/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/057-five-sources-heading/outcome.md"
+     ]
+    },
+    {
+     "ref": "specs/057-five-sources-heading/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 057 outcome record section 6.1 accounting table: S-1 and S-5 the two unlocated rows of the five.",
+     "source_id": "specs/057-five-sources-heading/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/057-five-sources-heading/spec.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F065-C04",
+   "kind": "requirement",
+   "text": "Each input to Spec 065 is pinned at spec section 2 by SHA-256.",
+   "status": "draft",
+   "boundary": [
+    "The pins are: the two held cleaned texts and two registry files at Spec 057's section 2.1 hashes (recomputed at this draft); the two extracted-claims files as Spec 057 freeze definition constants, with each entry's facts asserted live; Spec 057's freeze.json file hash and digest and its outcome record hash; and the anchors file, asserted byte-identical before and after any execution."
+   ],
+   "depends_on": [
+    "F065-C03"
+   ],
+   "assumptions": [
+    "ASM-TWO-ROW-SET"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "recompute every section 2 pin from main at the freeze; any mismatch between a recomputed hash and its pin falsifies the claim"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-UNPINNED-INPUT"
+    ],
+    "strongest_rival": "the alternative in which an input is taken on its filename or registry record alone",
+    "verdict_rule": "judged by two-route recomputation of every pin at the freeze, recorded in freeze.md section 2",
+    "evidence_origin_groups": [
+     "spec057-record",
+     "repository-state"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/057-five-sources-heading/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 057 spec section 2.1 pin table: cleaned-text, extracted-claims, and registry SHA-256 values for S-1 and S-5, with the source documents' recorded filenames, sizes, and checksums.",
+     "source_id": "specs/057-five-sources-heading/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/057-five-sources-heading/freeze.json"
+     ]
+    },
+    {
+     "ref": "specs/057-five-sources-heading/freeze.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 057 freeze.json and freeze.md section 2: the two-route pin verification and the extracted-claims-store convention (constants plus live entry facts, never live hashes on that store).",
+     "source_id": "specs/057-five-sources-heading/freeze.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/057-five-sources-heading/spec.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F065-C05",
+   "kind": "requirement",
+   "text": "Execution stops before any text layer is searched on a step-0 gate failure.",
+   "status": "draft",
+   "boundary": [
+    "The gates are spec section 3: 0.1 input integrity, 0.2 the acquired S-5 file's hash assertion on the local file, 0.3 the S-1 intake determination (an intake record whose document does not verify is a pin mismatch), 0.4 order. Each failure closes the run as CLOSED AT STEP 0 - INPUT PIN MISMATCH, naming the input; nothing is repaired at run time and no substitute bytes are ever searched."
+   ],
+   "depends_on": [
+    "F065-C04"
+   ],
+   "assumptions": [
+    "ASM-ACQUIRED-FILE-IS-THE-DOCUMENT"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "inspect the execution record: the gate verdicts stand before the first per-source row, or a step-0 closure names its gate and observed values; a searched text layer ahead of a recorded gate pass falsifies the claim"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-SUBSTITUTE-BYTES"
+    ],
+    "strongest_rival": "the alternative in which a missing acquired file is replaced by the held cleaned text and the run proceeds",
+    "verdict_rule": "judged by inspection of the execution record's order and the gate verdicts against the observed hashes",
+    "evidence_origin_groups": [
+     "spec057-record",
+     "acquisition-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/057-five-sources-heading/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 057 spec sections 3-4: the fail-closed step-0 pattern and the stated search this successor carries, including step 4 as the document-layer search.",
+     "source_id": "specs/057-five-sources-heading/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/PROVENANCE.md"
+     ]
+    },
+    {
+     "ref": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/PROVENANCE.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "PROVENANCE.md entry 23: the acquired S-5 file's size, SHA-256, and MD5 as recorded at acquisition, the values gate 0.2 asserts on the local file.",
+     "source_id": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/PROVENANCE.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/057-five-sources-heading/spec.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F065-C06",
+   "kind": "requirement",
+   "text": "For each source with a document in hand, the document's own text layer is searched under Spec 057 section 5's heading rule.",
+   "status": "draft",
+   "boundary": [
+    "This is Spec 057 section 4 step 4, the search 057 could not run. For S-5 the document in hand is the acquired file of section 2.2, asserted at gate 0.2; for S-1, a document is in hand only on the section 4.2 search arm (handed over and intake-pinned before the run). Every occurrence of 'positional analysis' (case-insensitive) in the extracted text layer is listed with its locator and judged; no occurrence is pre-filtered."
+   ],
+   "depends_on": [
+    "F065-C05"
+   ],
+   "assumptions": [
+    "ASM-RULE-CARRIED",
+    "ASM-ACQUIRED-FILE-IS-THE-DOCUMENT"
+   ],
+   "alternatives": [
+    "the held cleaned texts could be searched instead (refused, DD-065-3: that re-runs Spec 057's search, not its step 4)"
+   ],
+   "falsification_tests": [
+    "read the outcome record's occurrence lists against the pinned documents' text layers; an unlisted occurrence, or a search run on unpinned bytes, falsifies the claim"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-HELD-TEXT-AS-DOCUMENT"
+    ],
+    "strongest_rival": "the reading in which content-equality of the held text makes it the document for search purposes",
+    "verdict_rule": "judged by inspection of the outcome record's per-row occurrence lists and extraction artifacts against the pinned files",
+    "evidence_origin_groups": [
+     "spec057-record",
+     "acquisition-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/057-five-sources-heading/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 057 spec section 4 step 4 and section 5: the document text layer is searched under the heading rule; a heading found in the document but not the cleaned text is extracted from the document.",
+     "source_id": "specs/057-five-sources-heading/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/hunt-without-kings-zenodo-2025/edition-comparison.md"
+     ]
+    },
+    {
+     "ref": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/hunt-without-kings-zenodo-2025/edition-comparison.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "edition-comparison.md: the acquired file's text layer extracted for the provenance comparison (2,273 lines) and found content-equal to the held text modulo export/cleaning - provenance work only, no section 5 finding.",
+     "source_id": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/hunt-without-kings-zenodo-2025/edition-comparison.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/057-five-sources-heading/spec.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F065-C07",
+   "kind": "requirement",
+   "text": "An occurrence of 'positional analysis' anchors a passage only if it is in heading form.",
+   "status": "draft",
+   "boundary": [
+    "Heading form is Spec 057 section 5.1 carried verbatim in substance (spec section 5.1): the title of a section, chapter, appendix, or titled part - shown by standing alone as a line or running head, by chapter/appendix numbering, or by a table-of-contents entry pointing to the passage it introduces. Running-sentence mentions, bibliography and reference entries, figure and table captions, and cross-references never anchor a passage. The heading text as it stands is recorded verbatim on the row."
+   ],
+   "depends_on": [
+    "F065-C06"
+   ],
+   "assumptions": [
+    "ASM-RULE-CARRIED",
+    "ASM-HEADING-FORM"
+   ],
+   "alternatives": [
+    "a string-match rule could anchor any occurrence (refused by Spec 057 DD-057-4 on evidence: it would manufacture one source's passage from another's bibliography)"
+   ],
+   "falsification_tests": [
+    "read each judged occurrence on a row against the section 5.1 rule; an anchored passage whose occurrence is not in heading form, or a heading-form occurrence judged a non-heading, falsifies the claim"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-STRING-MATCH-AS-HEADING"
+    ],
+    "strongest_rival": "the naive string rule rejected at Spec 057's draft",
+    "verdict_rule": "judged by re-judgement of every listed occurrence from the recorded locators, so the judgement is re-judgeable from the record",
+    "evidence_origin_groups": [
+     "spec057-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/057-five-sources-heading/adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 057 adjudication section 4, DD-057-4 (heading form, not string match) with its evidence: S-1's bibliography entry for S-3's paper would otherwise anchor S-1's passage.",
+     "source_id": "specs/057-five-sources-heading/adjudication.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/057-five-sources-heading/spec.md"
+     ]
+    },
+    {
+     "ref": "specs/057-five-sources-heading/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 057 spec section 5.1: the heading-form rule and the excluded occurrence kinds, carried as this spec's section 5.1.",
+     "source_id": "specs/057-five-sources-heading/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/057-five-sources-heading/adjudication.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F065-C08",
+   "kind": "requirement",
+   "text": "Each passage found is recorded verbatim in a per-source passage artifact.",
+   "status": "draft",
+   "boundary": [
+    "The artifact carries the passage text exactly as it stands in the pinned document's text layer, delimited under spec section 5.2; its SHA-256 and the section 5.3 locator (page, line range, heading line, chapter/section designation where carried) stand on the source's row. Rejoining lines broken by the text layer is the only permitted normalisation; any other alteration makes the row non-compliant."
+   ],
+   "depends_on": [
+    "F065-C07"
+   ],
+   "assumptions": [
+    "ASM-VERBATIM"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "recompute a passage artifact's SHA-256 against its row and compare its bytes to the pinned document's text layer over the recorded locator; a mismatch falsifies the claim"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-PARAPHRASE-AS-RECORD"
+    ],
+    "strongest_rival": "the alternative in which the outcome record paraphrases the passage in place of an artifact",
+    "verdict_rule": "judged by hash recomputation and byte comparison against the pinned text layer",
+    "evidence_origin_groups": [
+     "spec057-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/057-five-sources-heading/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 057 spec sections 5.2-5.3: delimitation and the verbatim passage artifact with locator and SHA-256 on the row, carried as this spec's sections 5.2-5.3.",
+     "source_id": "specs/057-five-sources-heading/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/057-five-sources-heading/outcome.md"
+     ]
+    },
+    {
+     "ref": "specs/057-five-sources-heading/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 057 outcome record: the S-3/S-4 passage artifacts and intake records as executed under that standard (for example passage-S-2.txt at its recorded SHA-256).",
+     "source_id": "specs/057-five-sources-heading/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/057-five-sources-heading/spec.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F065-C09",
+   "kind": "requirement",
+   "text": "Each source receives exactly one outcome.",
+   "status": "draft",
+   "boundary": [
+    "The set is HEADING FOUND (with its recovered or recorded-empty sub-result), HEADING ABSENT FROM DOCUMENT, and - S-1 only - STILL UNLOCATED - ACQUISITION BLOCKED. Two rows, no fewer and no more; a row without an outcome, or with an outcome outside the set, is a failed execution under spec section 1.3. Carried from the draft head at the freeze recovery (0.6-draft): the sources are S-1 and S-5, and the outcome is drawn from the frozen outcome set of spec section 6."
+   ],
+   "depends_on": [
+    "F065-C06"
+   ],
+   "assumptions": [
+    "ASM-BLOCKED-ARM-IS-ACCOUNTING"
+   ],
+   "alternatives": [
+    "a blocked S-1 could be left without an outcome until a later act (refused, DD-065-6: the blocked arm is a frozen outcome of the row, not an interruption)"
+   ],
+   "falsification_tests": [
+    "count the accounting table's rows and outcomes; anything other than two rows each carrying exactly one outcome from the set falsifies the claim"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-PARTIAL-ACCOUNTING"
+    ],
+    "strongest_rival": "the reading in which only searched sources are accounted",
+    "verdict_rule": "judged by inspection of the two-row accounting table against the frozen set",
+    "evidence_origin_groups": [
+     "spec057-record",
+     "acquisition-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/057-five-sources-heading/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 057 outcome record section 6.1: the five-row accounting discipline this successor carries for its two rows - exactly one outcome per source, or the execution fails.",
+     "source_id": "specs/057-five-sources-heading/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/fuls-studies-on-indus-script-2020/BLOCKED.md"
+     ]
+    },
+    {
+     "ref": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/fuls-studies-on-indus-script-2020/BLOCKED.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "BLOCKED.md: the S-1 blocker record (Academia.edu sign-in wall; owner account act) that the STILL UNLOCATED - ACQUISITION BLOCKED outcome cites as its evidence.",
+     "source_id": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/fuls-studies-on-indus-script-2020/BLOCKED.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/057-five-sources-heading/outcome.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F065-C10",
+   "kind": "requirement",
+   "text": "A passage that states a checkable finding is recorded HEADING FOUND with the claim recovered under Spec 057 section 6's standard.",
+   "status": "draft",
+   "boundary": [
+    "The recovered claim record states, from the passage and nothing else: the proposition in plain words; its numbers verbatim, or 'numbers: none stated' (Spec 057 DD-057-5, confirmed DD-057-14); its corpus and stated conditions, or 'not stated'; and its falsifier status - a falsifier from the passage's own logic, or the recorded absence of one. A located passage stating no checkable finding is recorded empty under the same section's PASSAGE EMPTY standard, with the passage quoted as evidence and the judgement stated."
+   ],
+   "depends_on": [
+    "F065-C08"
+   ],
+   "assumptions": [
+    "ASM-RECOVERY-NOT-VERIFICATION"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "read a recovered claim beside its quoted passage; a proposition, number, or condition the passage does not state falsifies the claim"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-INVENTED-PROPOSITION"
+    ],
+    "strongest_rival": "the alternative in which the executor's summary of a passage stands as its claim",
+    "verdict_rule": "judged by inspection of each recovered claim record against its passage artifact",
+    "evidence_origin_groups": [
+     "spec057-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/057-five-sources-heading/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 057 spec section 6: the CLAIM RECOVERED content standard and the PASSAGE EMPTY standard, carried into this spec's section 6 sub-results.",
+     "source_id": "specs/057-five-sources-heading/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/057-five-sources-heading/adjudication.md"
+     ]
+    },
+    {
+     "ref": "specs/057-five-sources-heading/adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 057 adjudication DD-057-5 / DD-057-14: a checkable proposition without numbers is recovered, with 'numbers: none stated' on its record.",
+     "source_id": "specs/057-five-sources-heading/adjudication.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/057-five-sources-heading/spec.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F065-C11",
+   "kind": "requirement",
+   "text": "Each recovered claim enters the claim set through the program's intake at the created stage.",
+   "status": "draft",
+   "boundary": [
+    "Intake is inside the execution (Spec 057 DD-057-6, confirmed DD-057-12, carried); the claim enters unchecked, and designing its check is intake's later work, not this spec's. The intake record and the created-stage claim id stand on the source's row."
+   ],
+   "depends_on": [
+    "F065-C10"
+   ],
+   "assumptions": [
+    "ASM-RECOVERY-NOT-VERIFICATION"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "read the intake record for each recovered claim and its created-stage claim id on the row; a recovered claim with no intake record, or one entered at any other stage, falsifies the claim"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-RECOVERY-AS-CHECKED"
+    ],
+    "strongest_rival": "the reading in which recovery itself moves a claim past the created stage",
+    "verdict_rule": "judged by inspection of the intake records and the claim set's stage for each recovered claim id",
+    "evidence_origin_groups": [
+     "spec057-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/057-five-sources-heading/adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 057 adjudication DD-057-6 / DD-057-12: recovered claims are entered through normal intake inside the execution, at the created stage; their checks are designed later, per claim.",
+     "source_id": "specs/057-five-sources-heading/adjudication.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/057-five-sources-heading/outcome.md"
+     ]
+    },
+    {
+     "ref": "specs/057-five-sources-heading/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 057 outcome record: intake-S3.json and intake-S4.json and their created-stage claim ids as the executed form of that rule.",
+     "source_id": "specs/057-five-sources-heading/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/057-five-sources-heading/adjudication.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F065-C12",
+   "kind": "requirement",
+   "text": "The headline outcome of a completed execution is exactly one of the spec section 7 classes.",
+   "status": "draft",
+   "boundary": [
+    "Class A (both sources resolved) or class B (S-5 resolved, S-1 still blocked), derived mechanically from the two rows' outcomes under the pre-written section 7.1 wordings, with the outcomes shown beside the headline. A step-0 closure is not a headline class and carries its own section 7.1 wording."
+   ],
+   "depends_on": [
+    "F065-C09"
+   ],
+   "assumptions": [
+    "ASM-BLOCKED-ARM-IS-ACCOUNTING"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "recompute the class from the accounting table's two outcomes; a headline whose class the outcomes do not derive falsifies the claim"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-HEADLINE-BY-JUDGEMENT"
+    ],
+    "strongest_rival": "the alternative in which the executor names the headline by overall impression",
+    "verdict_rule": "judged by mechanical recomputation from the two recorded outcomes",
+    "evidence_origin_groups": [
+     "spec057-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/057-five-sources-heading/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 057 spec section 7: the mechanical headline partition over (r, e, u) with pre-written wordings, the pattern this spec's section 7 applies to its two rows.",
+     "source_id": "specs/057-five-sources-heading/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "/home/hatch/workspace/research_notes/amendment-queue-2026-10-21/item-6-spec057-sources.md"
+     ]
+    },
+    {
+     "ref": "/home/hatch/workspace/research_notes/amendment-queue-2026-10-21/item-6-spec057-sources.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Amendment-queue Item 6 draft section 3: the successor's possible outcomes per source, recordable without touching 057, from which the section 7 partition is built.",
+     "source_id": "/home/hatch/workspace/research_notes/amendment-queue-2026-10-21/item-6-spec057-sources.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/057-five-sources-heading/spec.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F065-C13",
+   "kind": "requirement",
+   "text": "The heading record retires only when both sources resolve.",
+   "status": "draft",
+   "boundary": [
+    "Carried verbatim from Spec 057's rule (Item 6 draft section 3): while either source remains unlocated the record stands superseded-not-retired exactly as Spec 057 left it. Under class A the disposition note of spec section 7.2 retires it in the stated form; under class B the appended note records S-5's resolution and S-1's blocked posture and states retirement is not available. The disposition is by appended, dated note only; the frozen record is never edited."
+   ],
+   "depends_on": [
+    "F065-C12"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "read the appended disposition note against the headline class; a retirement recorded under class B, or an edited (not appended) record, falsifies the claim"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-RETIREMENT-WHILE-UNLOCATED"
+    ],
+    "strongest_rival": "the reading in which resolving the acquirable source alone retires the record",
+    "verdict_rule": "judged by inspection of the disposition note and the canonical record's append-only posture",
+    "evidence_origin_groups": [
+     "spec057-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/057-five-sources-heading/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 057 outcome record section 5 and headline: the record dispositioned superseded by appended note only, not retired, with the sentence 'The heading record is not retired while a source remains unlocated.'",
+     "source_id": "specs/057-five-sources-heading/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "/home/hatch/workspace/research_notes/amendment-queue-2026-10-21/item-6-spec057-sources.md"
+     ]
+    },
+    {
+     "ref": "/home/hatch/workspace/research_notes/amendment-queue-2026-10-21/item-6-spec057-sources.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Amendment-queue Item 6 draft section 3: 'The heading record retires only when both sources resolve', carried as this claim and spec section 7.2.",
+     "source_id": "/home/hatch/workspace/research_notes/amendment-queue-2026-10-21/item-6-spec057-sources.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/057-five-sources-heading/outcome.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F065-C14",
+   "kind": "hypothesis",
+   "text": "At least one of the two documents carries the heading in heading form.",
+   "status": "draft",
+   "boundary": [
+    "The hypothesis is judged only over documents actually searched under F065-C06: if S-1 is never searched, it stands unjudged as to S-1, and no outcome wording may present it as defeated or confirmed by S-5's row alone. The Item 6 draft's assessments that both headings are likely absent are prior assessments with no standing (the Spec 055 rule); they are recorded in adjudication section 2 and decide nothing."
+   ],
+   "depends_on": [
+    "F065-C07"
+   ],
+   "assumptions": [
+    "ASM-PRIOR-ASSESSMENTS-NO-STANDING"
+   ],
+   "alternatives": [
+    "the prior assessments could be adopted as the expected result and the searches run as confirmation (refused, DD-065-7: expected outcomes are not pre-judged in this spec)"
+   ],
+   "falsification_tests": [
+    "the hypothesis is falsified over the searched documents if every searched document resolves HEADING ABSENT FROM DOCUMENT; it is confirmed for a document by a HEADING FOUND row under F065-C07"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-PRIOR-ASSESSMENT-AS-RESULT"
+    ],
+    "strongest_rival": "the strongest rival: the prior assessments themselves - that both headings are absent from the documents, as they are from the held texts",
+    "verdict_rule": "judged from the accounting table: HEADING FOUND on any searched row confirms it for that document; HEADING ABSENT on every searched row defeats it over those documents only",
+    "evidence_origin_groups": [
+     "spec057-record",
+     "acquisition-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/057-five-sources-heading/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 057 outcome record sections 4.1-4.2: the occurrence postures on which the prior assessments rest (S-1 two occurrences, neither heading-form; S-5 one, running text) - held-text evidence, not document findings.",
+     "source_id": "specs/057-five-sources-heading/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "/home/hatch/workspace/research_notes/amendment-queue-2026-10-21/item-6-spec057-sources.md"
+     ]
+    },
+    {
+     "ref": "/home/hatch/workspace/research_notes/amendment-queue-2026-10-21/item-6-spec057-sources.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Amendment-queue Item 6 draft sections 1.7 and 2.7: the heading-absence assessments, stated there as assessments about the held texts and visible structure, expressly 'not findings about the documents'.",
+     "source_id": "/home/hatch/workspace/research_notes/amendment-queue-2026-10-21/item-6-spec057-sources.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/057-five-sources-heading/outcome.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F065-C15",
+   "kind": "requirement",
+   "text": "No outcome under Spec 065 establishes any positional finding.",
+   "status": "draft",
+   "boundary": [
+    "The limits of spec section 9 are binding on all outputs: recovery is not verification; no credit transfers from other records; no invented propositions; Spec 057's frozen records stand unedited; the S-5 acquired copy's CC-BY-4.0 licence is recorded for that copy while S-1 and the held copies keep the registry's posture; the S-1 fence (no contact, no account, no credentials, no request) is absolute; and HEADING ABSENT FROM DOCUMENT is a finding about the searched document at its pinned hash, and about no other copy or edition."
+   ],
+   "depends_on": [
+    "F065-C01"
+   ],
+   "assumptions": [
+    "ASM-RECOVERY-NOT-VERIFICATION",
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "inspect every Spec 065 output against spec section 9; an output stating a positional finding, editing a frozen record, or generalising an absence beyond its searched document falsifies the claim"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-ABSENCE-AS-UNIVERSAL"
+    ],
+    "strongest_rival": "the reading in which a document-level absence settles the heading question for every edition",
+    "verdict_rule": "judged by inspection of every output against the section 9 limits; a breach is a defect of the output, recorded as such",
+    "evidence_origin_groups": [
+     "spec057-record",
+     "acquisition-record"
+    ],
+    "boundary_confirmation": "C15 states where predecessor and successor records stand and what no outcome may claim (Spec 057's records unedited; absences document-scoped); C01 states what an outcome may state (the resolution of the two rows). The two govern different objects - the place and reach of records, and the content of an outcome - and are consistent by construction. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/057-five-sources-heading/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 057 spec section 9: the epistemic limits carried into this spec's section 9, including recovery-is-not-verification and the frozen-records fence.",
+     "source_id": "specs/057-five-sources-heading/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/PROVENANCE.md"
+     ]
+    },
+    {
+     "ref": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/PROVENANCE.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "PROVENANCE.md entry 23: the acquired S-5 copy's licence as stated on the Zenodo record at acquisition (CC-BY-4.0), superseding the registry's 'unclear' for this copy.",
+     "source_id": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/PROVENANCE.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/057-five-sources-heading/spec.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  }
+ ]
+}

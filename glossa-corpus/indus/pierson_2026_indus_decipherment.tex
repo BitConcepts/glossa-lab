@@ -78,8 +78,8 @@ Glossa-Lab / BitConcepts LLC\\
 Correspondence: tpierson@bitconcepts.tech\\
 Date: May 2026 (revised October 2026)\\
 DOI: \href{https://doi.org/10.5281/zenodo.20379070}{10.5281/zenodo.20379070}\\
-The DOI identifies this preprint and its version record on Zenodo; the exact text of this draft is identified by the repository branch and commit named in §6, not by the DOI.\\
-Version: Preprint v8 --- Not peer-reviewed
+The DOI identifies this preprint and its version record on Zenodo; the exact text of this draft is identified by the SHA-256 of its source, recorded in the build record (\texttt{build/build\_record.md} in the deposit package; see §6), not by the DOI.\\
+Version: Preprint v9 --- Not peer-reviewed
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -119,7 +119,7 @@ corpora.
 Competing hypotheses have proposed proto-Dravidian (Parpola 1994;
 Mahadevan 1977), proto-Munda (Witzel 1999), an Indo-Aryan language
 ancestral to Sanskrit (Jha \& Rajaram 2000 --- widely rejected), and a
-non-linguistic semasiographic system (Farmer, Sproat \& Witzel 2004).
+non-linguistic semasiographic system (Farmer, Sproat \& Witzel 2004). A registered test of the pattern that proposal denies --- that the system has dedicated sign sets for final position, and a fixed opening formula --- executed on a second corpus layer (the Shakti corpus, §2.1.1), is reported in §3.2.1.
 The Dravidian hypothesis is among the most extensively developed linguistic interpretations: the
 geographic distribution of Dravidian languages, archaeological
 continuity between IVC and later South Asian cultures, and a long tradition of applying the ``rebus principle'' (phonetic punning via sound-alike words) to IVS signs, beginning with Heras in the 1930s and developed most fully by Parpola. Individual rebus readings remain contested; none is treated as established in this paper.
@@ -329,6 +329,62 @@ M336=iṉ (locative case marker)
 
 Under this interpretation, an inscription would encode `the [animal-totem guild title] [person's name]'. The model predicts the \emph{position} of the name element only; it does not read any person's name (§3.9, §4.3). The pattern is comparable in function to a medieval European guild seal identifying a craftsman by occupation and personal name --- an analogy, not evidence.
 
+\subsubsection{3.2.1 The Farmer Pattern in a Second Corpus Layer
+(Spec 052)}\label{the-farmer-pattern-in-a-second-corpus-layer-spec-052}
+
+Section 1.1 states the Farmer, Sproat \& Witzel (2004) proposal:
+that the Indus sign system is not writing, and shows no dedicated
+sign sets for particular positions and no fixed opening formula.
+That positional part of the proposal can be tested without taking
+any position on what the signs mean, and it was tested in this
+program under rules fixed and registered before the run (Spec
+052, executed as Phase-437; OSF registration 7cu23), on the
+Shakti corpus of §2.1.1 --- the same corpus layer as the Spec 068
+test, in the ICIT line (3,045 sequences of documented lineage;
+11,805 tokens; 557 distinct signs; 90 signs frequent enough to
+classify). The battery was run twice and produced identical
+outputs. Both conditions of the pattern were found present.
+Seven signs are concentrated in inscription-final position at
+the frozen strength --- signs 034, 413, 501, 503, 692, 817 and
+820 --- where 999 permutations of the signs within each sequence
+produced not one such sign (chance level 0). And one opening
+pair, signs 400 followed by 740, recurs 179 times among the
+2,942 sequences of two or more signs, against a permutation
+chance level of 76 recurrences. A sensitivity run on the wider
+set of rows from the same corpus (5,131 rows) returned the same
+outcome on both conditions (nine final-position signs; the same
+opening pair, 235 recurrences against a chance level of 95). The
+registered outcome word is INCONSISTENT: the absence the
+proposal predicts is not found in this corpus layer.
+
+What this establishes is narrower than it may look, and the
+record states its limits at headline strength. It is not a
+verdict on the Farmer--Sproat--Witzel thesis, and it does not
+show that the script is writing: dedicated final signs and a
+fixed opening pair are positional facts, and §5's caution stands
+--- positional structure of this kind is produced by some
+non-linguistic marking systems as well. The Shakti layer is a
+compilation in the CISI tradition, a different lineage from the
+Soviet compilation in which the pattern was reported absent, and
+from the Holdat corpus of this paper; but its editions cover
+substantially the same excavated objects, so the result is
+robustness of the pattern across compilations, not an
+independent discovery on new material. One calibration fact
+belongs on the record: the test's strength band and frequency
+floor were calibrated against the earlier exhibited class of
+strong signs, which is a consistency property, not an
+independent derivation. The seven final-position signs' rates
+(0.750--0.967) sit clear of the next classifiable signs'
+(0.6216 and 0.6196), so the final-set result is the same at
+every strength threshold between those values; at a lower band
+the count would be nine, but the permutation null was not
+computed at that band, and no outcome there is claimed. The
+full record --- rules fixed in advance, the per-sign tables,
+and the outcome --- is in the repository at
+\texttt{specs/052-farmer-not-writing-soviet/} (see
+\texttt{outcome.md}), registered before the run at OSF:
+\url{https://osf.io/7cu23}.
+
 \subsubsection{3.3 Selected High-Confidence
 Readings}\label{selected-high-confidence-readings}
 
@@ -472,6 +528,30 @@ Surkotada & inland & 3 & 0 (0\%) & 3 (100\%) \\
 
 A fish sign counts as `isolated' if it is the only sign in its inscription; the count is of fish-bearing seals (113). One fact about this corpus governs what the count can show: the corpus contains no single-sign inscriptions of any kind (Phase-134, test F9: 0 single-sign seals in 1,670), so no sign --- fish or otherwise --- can be isolated in it, and the fish count of 0 is therefore not a fish-specific result: it is the F9 fact restated for the fish family. The Phase-127 record, which made this count site by site, gives its own conclusion as `UNTESTABLE' for the same reason. What the count establishes is only that fish signs occur in this corpus in multi-sign inscriptions --- as every sign in this corpus does. A test that could separate a fish-specific rule from that corpus-wide fact would need a corpus or an object class that contains single-sign inscriptions; this one does not. The fish sign is therefore never isolated in the formal stamp seal corpus, at any site, including Lothal (a major coastal site, where a large basin has traditionally been interpreted as a dock --- an interpretation some archaeologists dispute) --- and neither is any other sign. The supplemental file \texttt{fish\_sign\_compound\_context.csv} lists 27 compound occurrences with their contexts (13 for M047 and 14 for M001; M001 is not in the family list printed above, and that mismatch is on record and unresolved). It is not an occurrence-by-occurrence listing of all 113 fish-bearing seals, and earlier wording that described it as one is corrected here. The compound-only pattern holds at coastal and inland sites alike. That rules out a purely local, single-site habit; it does not by itself prove a scribal rule, because this corpus contains formal stamp seals only, and selection or object-type effects could produce the same pattern. This result is compatible with a range of interpretations of the fish sign's function; the present study does not adjudicate between them. What it establishes is a fact about this corpus --- 0 isolated fish signs among its 113 fish-bearing formal stamp seals --- and, because the corpus is one private collection of formal stamp seals only, not yet a fact about the Indus script at large, and, for the reason given above, it is not evidence of a fish-specific rule. The fish-family list printed above is the family's citable form; no record gives a published page or figure for each sign's fish-shaped classification in the crosswalk, and none is claimed here.
 
+A further, registered test of this family was executed in this
+programme on 22 October 2026, before the previous version of this
+paper was deposited (Spec 072, executed as Phase-431): the
+positional behaviour of the fish family was examined sign by sign
+--- on Parpola's published list of fish signs, in ICIT numbering
+--- on a separate corpus (the Shakti corpus), under a contract,
+family list, and pass line all frozen before any fish sign was
+scored. (Two members of the frozen list could not be identified in
+that corpus's numbering, and one fell below the test's counting
+floor; those dispositions are part of the frozen record, not of
+its results.) Its results may be published only with citation of
+Roif (2025a, 2025b) --- the model under test is his, and he is
+cited throughout this section --- and with the programme owner's
+clearance of the specific publication; that clearance has not been
+given for publishing its results in this paper, so in this
+programme's reporting the study is named only as executed --- held
+under the Roif gate, and its results are not stated in this
+version. Nothing in this section or in §3.19 should be read as
+carrying its outcome in either direction. What this section
+presents therefore stands exactly as it did before that test was
+run: the compound-only pattern and the counts in this corpus,
+stated at the strength §3.5 gives them --- not a claim that the
+family has passed a registered test of its positional behaviour.
+
 A word on what 0 can and cannot show at these sizes. The binomial bounds printed in earlier drafts (about 2.6\% pooled; about 39\% at Lothal; about 63\% at the 3-seal sites) are withdrawn as estimates of a fish-sign isolation rate: they treat each fish-bearing seal as an independent chance to contain a single-sign inscription, and in this corpus there is no such chance, for any sign. The bounds remain correct as arithmetic for a corpus in which single-sign inscriptions occur. `Site-invariant' in this paper therefore means only that no site showed an exception --- not that every site's rate is tightly measured.
 
 A separate, weaker observation concerns pictures rather than script: Dilmun-style seals at Failaka Island (Hojlund \& Abu-Laban 2012) show fish in compound \emph{pictorial} contexts (human holding fish, fish attached to staffs), never as a solitary motif. This program's records do not tie the observation to specific catalogue numbers, figures, or pages in Hojlund \& Abu-Laban (2012); it is reported as a general observation from that volume, not as a checked count. Pictorial motifs are not Indus graphemes, and this is motif-level context only, not script evidence.
@@ -534,6 +614,50 @@ M039 & āṉai & elephant & 18 & 2.16 & 116.5 \\
 These are the five largest associations in the Phase-143 record and in the supplemental file, in order. The next associations are M068 (maṟi, rhinoceros, $\chi^2$ = 103.0), M062 (erutu, zebu, 84.6) and M073 (kōṉ, zebu, 75.5); M059 (ēḷ/eḷ, unicorn, 66.9) ranks ninth. An earlier draft printed M062 and M059 as the fourth and fifth rows; no selection rule for that choice is on record, and the table is corrected to the record's order here.
 
 For the enriched subset of pairs --- above all the largest associations --- this shows that the inscription's INITIAL sign and the carved animal on the same seal are co-selected, not independent decorations. It shows nothing about the pairs that did not pass the threshold. It does not by itself show what either channel means: in particular, for signs whose reading was itself suggested by the animal motif, `the reading matches the animal' is circular and is not claimed here as validation. Whether the co-selection encodes professional identity is an interpretation (§4.1), not a result of this test.
+
+\subsubsection{3.8.1 Animal Signs at Inscription Openings
+(Spec 074)}\label{animal-signs-at-inscription-openings-spec-074}
+
+Section 3.8 tests whether a seal's initial sign and its carved
+animal are chosen together. A related published claim about
+openings was tested separately, under rules fixed and
+registered before the run (Spec 074, executed as Phase-440;
+OSF registration cfe7z): Hunt's claim that the animal signs are
+the signs that open inscriptions. The test measured the claim
+against the positional battery of the Shakti corpus (§3.2.1)
+--- not against this program's earlier Phase-43 framework. Of the battery's 31 opening-strong signs (the signs the Shakti battery of §3.2.1 classifies as concentrated in inscription-initial position at its frozen strength), 26 carry an identified kind in the published identification layer (called Asset A v2 in this programme's records; the same layer used in §3.31.1), and 2 of the 26 are animal signs
+--- signs 226 and 241 in the Wells numbering the battery uses,
+both fish signs. That is a share of 0.0769, against an animal share of 0.0889 among the classified signs of the pooled comparison universe (the opening set together with the comparison inventory outside it; 8 animal signs of 90): animal signs appear among the opening-strong signs at
+no better than the base rate. The enrichment ratio is 0.8654 as
+published, and 0.9359 under the frozen formula's literal
+reading of the comparison set; both are below 1.0, and the
+Fisher exact test gives a one-sided p of 0.7345 under either
+reading, so the outcome does not rest on which denominator is
+used. Run the other way, none of the comparison inventory's six
+animal signs is opening-strong at all. A sensitivity run on the
+documented plus corroborated population returned the same word
+(ratio 0.8929, p = 0.7140), and two runs of the test returned
+byte-identical results. The registered outcome is NOT
+SUPPORTED. It is the first scored verdict on the animal half of
+Hunt's claim, in either direction; the wider claim stands
+partially supported on its positional half alone.
+
+The limits travel with the result. Depiction here is the
+field's published identification layer, not ground truth: an
+earlier census in this program (Spec 037) found object-type
+labels diverging between compilations in 49\% of matched cases,
+and that caution applies in full. The corpus is in the ICIT
+line, so agreement with this program's earlier ICIT-lineage
+measurements is consistency within one tradition, not
+independent corroboration. And the fence the test itself sets
+stands: this result is about depiction and position in recorded
+data. It is not evidence that any sign marked identity, a
+guild, or goods --- and its negative is not a measurement
+against that reading either; it answers the enrichment question
+and nothing more. The full record is in the repository at
+\texttt{specs/074-hunt-opening-signs-repaired-surface/} (see
+\texttt{outcome.md}), registered before the run at OSF:
+\url{https://osf.io/cfe7z}.
 
 \subsubsection{3.9 Blocking Sign Analysis and Structural Ceiling
 (Phase-144)}\label{blocking-sign-analysis-and-structural-ceiling-phase-144}
@@ -644,7 +768,7 @@ are this program's own measurements.
 
 Validation path §4.5, item 2, was executed using Laursen (2010) \emph{Arabian
 Archaeology and Epigraphy} 21:96-134 and Mitchell (1986) in
-\emph{Bahrain Through the Ages}. The Gulf extension searched about 145,000 characters of extracted text in the two source files named in the Phase-156 record: the extracted text of Laursen (2010) and the extracted text of the Bahrain volume (Mitchell 1986). The record names those files and the hit counts, but it does not record the search terms used, any term list, or an enumeration of the 27 Indus-script contexts, so the search cannot be re-run from the record as it stands. That text search found no mention of an isolated fish sign --- and, to be precise about what a text search can show, no fish-sign mentions at all in the Laursen text (Phase-156: 0 hits). An absence in catalogue prose is weaker evidence than inspection of the seal images, and we report it as such: the Gulf material provides no counterexample to the Holdat count, but it does not independently confirm it. Parpola's (1994) Appendix lists compounds ending in \emph{mīn} (4 attestations); an appendix of compounds cannot speak to isolated cases either way. The corpus result therefore stands on the Holdat count alone (0 isolated among 113 fish-bearing seals). The 27 Indus-script contexts in Laursen's catalog, in which likewise no isolated fish sign is reported, count a different unit (catalog contexts, not seals). They are not combined with the Holdat count, no combined figure is used anywhere in this paper, and the two results should always be cited separately: 0 isolated among 113 fish-bearing Holdat seals (§3.5), and no fish-sign mentions at all in the Laursen catalog text (this section).
+\emph{Bahrain Through the Ages}. The Gulf extension searched about 145,000 characters of extracted text in the two source files named in the Phase-156 record: the extracted text of Laursen (2010) and the extracted text of the Bahrain volume (Mitchell 1986). The record names those files and the hit counts, but it does not record the search terms used, any term list, or an enumeration of the 27 Indus-script contexts, so the search cannot be re-run from the record as it stands. That text search found no mention of an isolated fish sign --- and, to be precise about what a text search can show, no fish-sign mentions at all in the Laursen text (Phase-156: 0 hits). An absence in catalogue prose is weaker evidence than inspection of the seal images, and we report it as such: the Gulf material provides no counterexample to the Holdat count, but it does not independently confirm it. Parpola's (1994) Appendix lists compounds ending in \emph{mīn} (4 attestations); an appendix of compounds cannot speak to isolated cases either way. The corpus result therefore stands on the Holdat count alone (0 isolated among 113 fish-bearing seals). The 27 Indus-script contexts in Laursen's catalog, in which likewise no isolated fish sign is reported, count a different unit (catalog contexts, not seals). They are not combined with the Holdat count, no combined figure is used anywhere in this paper, and the two results should always be cited separately: 0 isolated among 113 fish-bearing Holdat seals (§3.5), and no fish-sign mentions at all in the Laursen catalog text (this section). (For the registered follow-up test of this family and the condition under which it is reported, see the note closing the §3.5 test discussion.)
 
 \subsubsection{3.20 Wells \& Fuls (2015) Sign List Cross-Reference (Phase-157)}\label{wells-2015-sign-list-cross-reference-phase-157}
 
@@ -751,6 +875,82 @@ I/M/T positional rates and test whether the 3-slot grammar model
 correctly classifies the sign's dominant positional class. The Phase-170 record states the rules in the order TERMINAL, INITIAL, MEDIAL, else MIXED; it does not state what happens when a sign's rates satisfy more than one threshold, and that tie/overlap handling is not on record.
 \textbf{Results}: 137/147 signs (93.2\%) are classified by the thresholds into the positional class that is already their dominant class. This is a self-consistency check, not an accuracy measurement: the thresholds (TERMINAL if T\textgreater{}=0.60, INITIAL if I\textgreater{}=0.50, MEDIAL if M\textgreater{}=0.65 --- program conventions, with no sensitivity analysis on record) are applied to the same rates that define each sign's dominant class, so a high figure is expected by construction and the check can only catch internal contradictions. It is not comparable to Phase-133's figures, which measured how well the grammar pattern matched whole inscriptions: full match 5.1\% of seals and partial match 38.4\%, together 43.5\%. Phase-133's 44.3\% is a different quantity in the same record --- its sign-position accuracy (explained variance) --- not the sum of the full and partial rates. The two numbers measure different things, and neither confirms the other. The evidential weight for the grammar model rests on the Phase-134 permutation and held-out tests, not on this retest.
 
+\subsubsection{3.31.1 Depicted Kinds at Inscription Endings
+(Spec 075)}\label{depicted-kinds-at-inscription-endings-spec-075}
+
+The tests above classify signs by position alone. A further
+registered test asked whether what a sign depicts predicts
+whether it ends inscriptions (Spec 075, executed as Phase-441;
+OSF registration jv74f). On the documented population of the
+Shakti corpus (3,045 analysable rows; 557 signs), each sign was
+assigned the kind its depiction carries in the published
+identification layer (Asset A v2): human (53 signs; 978
+occurrences), animal (39; 1,179), object or goods (24; 2,159),
+or other (307; 7,006); a further 133 signs (481 occurrences)
+are recorded as unidentified and enter only as context. Each
+kind's rate of inscription-final occurrences was measured
+against a comparison rate drawn from the other identified kinds, matched to the kind's own signs by frequency band. No pooled verdict across kinds was
+computed; each kind stands on its own word, and the words are
+these. Human signs end inscriptions below the comparison rate
+(0.2526 against 0.3244; ratio 0.7785; Fisher exact two-sided
+p = $6.93 \times 10^{-6}$): NOT SUPPORTED. Animal signs
+likewise (0.2774 against 0.3112; ratio 0.8912; p = 0.0200):
+NOT SUPPORTED. Object-and-goods signs end inscriptions at well
+under half the comparison rate (0.1153 against 0.2844; ratio
+0.4055; p = $2.34 \times 10^{-67}$) --- the strongest departure in this study, and in the depleting direction: NOT SUPPORTED.
+Only 0.1579 of that kind's occurrences come from signs
+individually above the corpus-wide final rate (0.2579). The
+remaining kind, other, is INCONCLUSIVE: its signs end
+inscriptions slightly above the comparison rate (0.2900
+against 0.2686; ratio 1.0796; p = 0.0295), far below the
+design's 1.5 support threshold, and it narrowly misses a second
+frozen condition --- 0.4970 of its occurrences come from signs
+individually above the corpus-wide rate, against the required
+half. The family hypothesis --- that at least one identified
+kind is enriched at inscription endings --- therefore stands IN QUESTION: no kind returned SUPPORTED, and the family is not falsified, because its registered falsifier requires every kind to return NOT SUPPORTED, and the other kind is INCONCLUSIVE. Three sensitivity
+variants (borderline signs removed; contested rows included
+--- there are none in this classification, so that variant
+equals the primary exactly; and the wider documented plus
+corroborated population) returned the same four words, on
+substantially the same excavated objects, and two runs of the
+test returned byte-identical results. One sensitivity came
+close to a boundary: removing the borderline signs moves the
+other kind's ratio to 1.0043, just above the not-supported
+line, though its word is unchanged. The celestial kind has no
+members in this classification at all --- Asset A v2 carries
+zero such rows --- so this study returns no rate and no verdict for it; that emptiness is stated here because this section is where a reader would look for it.
+
+Three qualifications are part of the result, not footnotes to
+it. First, the keying from signs to depictions is many-to-one: 556 population signs key to 424 distinct rows of the identification layer (other 307 signs to 204 distinct depictions; human 53 to 39; animal 39 to 29; object-and-goods 24 to 19). On the record's recount, 199 of the 556 signs --- and 3,399 of 11,322 identified-kind occurrences (30.0\%) --- take their kind from a depiction shared with other signs. The exposure is largest
+for the human kind, 46.1\% of whose occurrences are pooled in
+this way (other 37.0\%, animal 25.3\%, object-and-goods
+2.7\%), and no frozen sensitivity separates the pooled signs;
+the human word carries that unstated exposure until such a
+sensitivity is run. Second, the study's thinness floor was set
+in distinct depictions but applied in population signs: in the
+floor's own unit the object-and-goods kind stands at 19
+distinct depictions, below the floor of 20. Its verdict stands
+as executed under the frozen text --- and it is the strongest
+in the atlas --- but a reader recounting in the floor's unit
+should know the floor was crossed in the other unit. Third,
+the four p-values above are per-kind and uncorrected: at a
+family level for four kinds ($\alpha$ = 0.0125) the human and
+object-and-goods differences pass, and the animal and other
+figures do not; no verdict word rests on a p-value --- the
+words rest on the ratio bands --- and ``significant'' for the
+other kind reads at the uncorrected level only.
+
+As with §3.8.1, depiction is the published identification
+layer, carrying the Spec 037 census caution (object-type
+labels diverging between compilations in 49\% of matched
+cases), and position is not meaning: no kind's word ---
+supported, not supported, or inconclusive --- says anything
+about what any sign meant, marked, or was for. The full
+record, with the per-sign tables, is in the repository at
+\texttt{specs/075-depicted-kind-endings-atlas/} (see
+\texttt{outcome.md} and its red-team addendum), registered
+before the run at OSF: \url{https://osf.io/jv74f}.
+
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -843,7 +1043,7 @@ reports, scripts, and the anchor table are available in the Glossa-Lab repositor
 
 \subsection{6. Data Availability}\label{data-availability}
 
-All sign readings, confidence levels, DEDR citations, basis statements, analysis scripts, and phase reports are available in the Glossa-Lab repository (https://github.com/BitConcepts/glossa-lab; the version of the paper you are reading is on branch \texttt{preprint-v8-doi-correction}, commit \texttt{822f655d}). The DOI named on the title page identifies this preprint and its version record on Zenodo. The text of this draft is identified by the branch and commit named here, together with the one-string difference explained below, not by the DOI. The supplemental files named in this paper (the anchor table, the status audit, and the CSV supplements in \texttt{research/indus/supplemental/}) are in the same repository at the same commit; no separate archive copy of them exists yet. The commit named here is the revision commit: the commit at which this paper's text was frozen for the current round. A commit cannot contain its own hash, so the copy of this section at the named commit names, in its first sentence, the commit that the revision started from. The draft in hand differs from the text at the named commit in that one commit string, and in no other sentence. The commit that follows the named commit on this branch and changes that string --- the pin commit --- changes no other paper text, and the records commits that follow it (the rebuilt PDF, the version note, and the records of later rounds) change no paper text at all. The anchor table is \texttt{research/\allowbreak indus/\allowbreak anchor\_table.csv}: it has 397 rows --- one for every sign in the Mahadevan catalogue --- of which 161 are the HIGH/MEDIUM rows this paper's headline claims rest on and the other 236 carry LOW readings; each row gives the sign's reading and basis, and a DEDR citation is recorded in the table's DEDR column on 15 rows, all of them among the 161; the full 397-sign inventory, with each sign's status and corpus frequency, is \texttt{glossa-corpus/\allowbreak indus/\allowbreak ANCHOR\_STATUS\_AUDIT.csv}; per-phase results are in \texttt{backend/\allowbreak reports/}. Neither table is printed in this paper; both are in the repository, on the branch and at the commit named above. Both tables are the paper's central evidence. Selected rows from the anchor evidence are printed in this paper --- in §3.3 and in Appendix A --- as illustrations only; the complete tables are printed nowhere in this paper and are in the repository. A reader who wants to check any single reading should go to the anchor table itself, at the commit named in §6, rather than to the examples in §3.3. The Holdat LLC Indus Corpus v3 is not publicly available at time of writing. Because the Holdat corpus is not yet publicly released, full reproduction of corpus-level counts requires either access to that corpus under agreement or re-running the pipeline on a compatible public corpus after sign-code crosswalking. Supplemental datasets (fish-sign compound-context listing, iconographic formula enrichment table, formula bigram table, and positional grammar permutation summary) are available in \href{https://github.com/BitConcepts/glossa-lab/tree/main/research/indus/supplemental}{\texttt{research/\allowbreak indus/\allowbreak supplemental/}}.
+All sign readings, confidence levels, DEDR citations, basis statements, analysis scripts, and phase reports are available in the Glossa-Lab repository (https://github.com/BitConcepts/glossa-lab; the version of the paper you are reading is on branch \texttt{preprint-v9}, commit \texttt{8a5133ca}). The DOI named on the title page identifies this preprint and its version record on Zenodo. The text of this draft is identified by the branch and commit named here, together with the one-string difference explained below, not by the DOI. The supplemental files named in this paper (the anchor table, the status audit, and the CSV supplements in \texttt{research/indus/supplemental/}) are in the same repository at the same commit; no separate archive copy of them exists yet. The pin procedure is this. At deposit, a revision commit is named here: the commit at which the version's text was frozen for its round. A commit cannot contain its own hash, so the copy of this section at the named commit names, in its first sentence, the commit that the revision started from. The deposited text will differ from the text at the named commit in that one commit string, and in no other sentence. The commit that follows the named commit on its branch and changes that string --- the pin commit --- changes no other paper text, and the records commits that follow it (the rebuilt PDF, the version note, and the records of later rounds) change no paper text at all. The anchor table is \texttt{research/\allowbreak indus/\allowbreak anchor\_table.csv}: it has 397 rows --- one for every sign in the Mahadevan catalogue --- of which 161 are the HIGH/MEDIUM rows this paper's headline claims rest on and the other 236 carry LOW readings; each row gives the sign's reading and basis, and a DEDR citation is recorded in the table's DEDR column on 15 rows, all of them among the 161; the full 397-sign inventory, with each sign's status and corpus frequency, is \texttt{glossa-corpus/\allowbreak indus/\allowbreak ANCHOR\_STATUS\_AUDIT.csv}; per-phase results are in \texttt{backend/\allowbreak reports/}. Neither table is printed in this paper; both are in the repository. Both tables are the paper's central evidence. Selected rows from the anchor evidence are printed in this paper --- in §3.3 and in Appendix A --- as illustrations only; the complete tables are printed nowhere in this paper and are in the repository. A reader who wants to check any single reading should go to the anchor table itself, in the repository named in §6, rather than to the examples in §3.3. The Holdat LLC Indus Corpus v3 is not publicly available at time of writing. Because the Holdat corpus is not yet publicly released, full reproduction of corpus-level counts requires either access to that corpus under agreement or re-running the pipeline on a compatible public corpus after sign-code crosswalking. Supplemental datasets (fish-sign compound-context listing, iconographic formula enrichment table, formula bigram table, and positional grammar permutation summary) are available in \href{https://github.com/BitConcepts/glossa-lab/tree/main/research/indus/supplemental}{\texttt{research/\allowbreak indus/\allowbreak supplemental/}}.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1061,8 +1261,8 @@ Grammar model: the three positional classes are internally consistent under the 
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\emph{End of Preprint v8}\\
+\emph{End of Preprint v9}\\
 \emph{Glossa-Lab, May 2026; revised October 2026}\\
-\emph{Word count: 19,193}
+\emph{Word count: 21,239}
 
 \end{document}

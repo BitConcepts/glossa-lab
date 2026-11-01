@@ -4,10 +4,13 @@ import {
   listModelScores, getSettings, updateSettings, syncModelIntelligence,
   type OllamaLibraryEntry, type OllamaRecommendation, type ModelScore,
 } from "../../api";
+import { authHeaders } from "../../auth";
 import { useToast } from "../../hooks/useToast";
 
 // Module-level pull tracking — survives component unmount/remount (page navigation).
-const _activePulls: Map<string, { es: EventSource; pct: number; status: string }> = new Map();
+// Spec 082: pulls stream over fetch (EventSource cannot send the
+// Authorization header); the AbortController is the close handle.
+const _activePulls: Map<string, { ctrl: AbortController; pct: number; status: string }> = new Map();
 
 /** VRAM filter tiers — matches common GPU sizes. "My GPU" is added dynamically. */
 const VRAM_TIERS = [
@@ -75,43 +78,74 @@ export function ModelHubPanel() {
   const getScore = (name: string): ModelScore | undefined =>
     scores.find(s => s.model_name === name || name.includes(s.model_name) || s.model_name.includes(name));
 
-  // ── Pull via SSE (persisted in module-level map) ────────────────
+  // ── Pull via SSE over fetch (persisted in module-level map) ─────
   const handlePull = (modelName: string) => {
     if (_activePulls.has(modelName)) return;
-    const entry = { pct: 0, status: "connecting…" };
-    const es = new EventSource(`/api/v1/ollama/pull/${encodeURIComponent(modelName)}`);
-    _activePulls.set(modelName, { es, ...entry });
-    setPulling(p => ({ ...p, [modelName]: entry }));
-    es.onmessage = (ev) => {
-      try {
-        const d = JSON.parse(ev.data) as { status?: string; total?: number; completed?: number; error?: string };
-        if (d.error) {
-          toast(`Pull failed: ${d.error}`, "error");
-          _activePulls.delete(modelName);
-          setPulling(p => { const n = { ...p }; delete n[modelName]; return n; });
-          es.close();
-          return;
-        }
-        if (d.status === "success") {
-          toast(`${modelName} downloaded`, "success");
-          _activePulls.delete(modelName);
-          setPulling(p => { const n = { ...p }; delete n[modelName]; return n; });
-          es.close();
-          refresh();
-          return;
-        }
-        const pct = d.total && d.completed ? Math.round((d.completed / d.total) * 100) : 0;
-        const st = d.status || "downloading…";
-        const ap = _activePulls.get(modelName);
-        if (ap) { ap.pct = pct; ap.status = st; }
-        setPulling(p => ({ ...p, [modelName]: { pct, status: st } }));
-      } catch { /* */ }
-    };
-    es.onerror = () => {
+    const ctrl = new AbortController();
+    _activePulls.set(modelName, { ctrl, pct: 0, status: "connecting…" });
+    setPulling(p => ({ ...p, [modelName]: { pct: 0, status: "connecting…" } }));
+
+    const finish = () => {
       _activePulls.delete(modelName);
       setPulling(p => { const n = { ...p }; delete n[modelName]; return n; });
-      es.close();
     };
+    // Returns true when the stream is done (success or error event).
+    const handleData = (d: { status?: string; total?: number; completed?: number; error?: string }): boolean => {
+      if (d.error) {
+        toast(`Pull failed: ${d.error}`, "error");
+        finish();
+        return true;
+      }
+      if (d.status === "success") {
+        toast(`${modelName} downloaded`, "success");
+        finish();
+        refresh();
+        return true;
+      }
+      const pct = d.total && d.completed ? Math.round((d.completed / d.total) * 100) : 0;
+      const st = d.status || "downloading…";
+      const ap = _activePulls.get(modelName);
+      if (ap) { ap.pct = pct; ap.status = st; }
+      setPulling(p => ({ ...p, [modelName]: { pct, status: st } }));
+      return false;
+    };
+
+    void (async () => {
+      try {
+        const res = await fetch(`/api/v1/ollama/pull/${encodeURIComponent(modelName)}`, {
+          headers: { ...authHeaders() },
+          signal: ctrl.signal,
+        });
+        if (!res.ok || !res.body) throw new Error(`HTTP ${res.status}`);
+        const reader = res.body.getReader();
+        const dec = new TextDecoder();
+        let buf = "";
+        let done = false;
+        while (!done) {
+          const { done: streamDone, value } = await reader.read();
+          if (streamDone) break;
+          buf += dec.decode(value, { stream: true });
+          const parts = buf.split("\n\n");
+          buf = parts.pop() ?? "";
+          for (const part of parts) {
+            for (const ln of part.split("\n")) {
+              if (!ln.startsWith("data: ")) continue;
+              try {
+                const d = JSON.parse(ln.slice(6)) as { status?: string; total?: number; completed?: number; error?: string };
+                if (handleData(d)) { done = true; break; }
+              } catch { /* skip malformed */ }
+            }
+            if (done) break;
+          }
+        }
+        if (done) ctrl.abort();
+        else finish();
+      } catch {
+        // Aborted (finished above) or a network error — same cleanup
+        // the old EventSource onerror performed.
+        if (_activePulls.has(modelName)) finish();
+      }
+    })();
   };
 
   const handleSaveHfToken = async () => {

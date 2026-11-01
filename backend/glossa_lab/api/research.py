@@ -11,9 +11,11 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from typing import Any
 
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, HTTPException, Query, Request
 from pydantic import BaseModel
 
+from glossa_lab.cloud_scope import actor_from_request, decorate_attribution
+from glossa_lab.config import cloud_mode_enabled
 from glossa_lab.database import get_db
 
 router = APIRouter()
@@ -21,6 +23,24 @@ router = APIRouter()
 
 def _now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
+
+
+def _decorate(record: Any) -> Any:
+    """Spec 083 (T023): label the actor at serialization in cloud mode."""
+    if cloud_mode_enabled() and isinstance(record, dict):
+        return decorate_attribution(record)
+    return record
+
+
+def _decorate_list(records: Any) -> Any:
+    if cloud_mode_enabled() and isinstance(records, list):
+        return [_decorate(r) for r in records]
+    return records
+
+
+def _stamp(request: Request) -> dict | None:
+    actor = actor_from_request(request)
+    return actor.stamp() if actor is not None else None
 
 
 # ── Models ─────────────────────────────────────────────────────────────────────
@@ -94,11 +114,11 @@ async def list_hypotheses(
     db = get_db()
     if db is None:
         raise HTTPException(status_code=503, detail="Database not available")
-    return await db.list_hypotheses(project_id=project_id)
+    return _decorate_list(await db.list_hypotheses(project_id=project_id))
 
 
 @router.post("/hypotheses", status_code=201)
-async def create_hypothesis(body: HypothesisCreate) -> dict[str, Any]:
+async def create_hypothesis(body: HypothesisCreate, request: Request) -> dict[str, Any]:
     """Create a new hypothesis.  Returns the existing one if a hypothesis
     with an identical title (case-insensitive) already exists."""
     db = get_db()
@@ -107,23 +127,30 @@ async def create_hypothesis(body: HypothesisCreate) -> dict[str, Any]:
     # Dedup: check for an existing hypothesis with the same title.
     existing = await db.find_hypothesis_by_title(body.title)
     if existing is not None:
-        return existing
-    return await db.create_hypothesis(
+        return _decorate(existing)
+    return _decorate(await db.create_hypothesis(
         title=body.title, statement=body.statement, status=body.status,
         project_id=body.project_id, created_at=_now_iso(),
-    )
+        created_by=_stamp(request),
+    ))
 
 
 @router.put("/hypotheses/{hypothesis_id}")
-async def update_hypothesis(hypothesis_id: str, body: HypothesisUpdate) -> dict[str, Any]:
+async def update_hypothesis(
+    hypothesis_id: str, body: HypothesisUpdate, request: Request
+) -> dict[str, Any]:
     """Update a hypothesis."""
     db = get_db()
     if db is None:
         raise HTTPException(status_code=503, detail="Database not available")
-    hypothesis = await db.update_hypothesis(hypothesis_id, **body.model_dump(exclude_none=True))
+    fields = body.model_dump(exclude_none=True)
+    stamp = _stamp(request)
+    if stamp is not None:
+        fields["modified_by"] = stamp
+    hypothesis = await db.update_hypothesis(hypothesis_id, **fields)
     if hypothesis is None:
         raise HTTPException(status_code=404, detail="Hypothesis not found")
-    return hypothesis
+    return _decorate(hypothesis)
 
 
 @router.delete("/hypotheses/{hypothesis_id}")
@@ -189,35 +216,42 @@ async def list_notebooks(
     db = get_db()
     if db is None:
         raise HTTPException(status_code=503, detail="Database not available")
-    return await db.list_notebooks(project_id=project_id)
+    return _decorate_list(await db.list_notebooks(project_id=project_id))
 
 
 @router.post("/notebooks", status_code=201)
-async def create_notebook(body: NotebookCreate) -> dict[str, Any]:
+async def create_notebook(body: NotebookCreate, request: Request) -> dict[str, Any]:
     """Create a new notebook."""
     db = get_db()
     if db is None:
         raise HTTPException(status_code=503, detail="Database not available")
-    return await db.create_notebook(
+    return _decorate(await db.create_notebook(
         title=body.title,
         content=body.content,
         study_id=body.study_id,
         tags=body.tags,
         project_id=body.project_id,
         created_at=_now_iso(),
-    )
+        created_by=_stamp(request),
+    ))
 
 
 @router.put("/notebooks/{notebook_id}")
-async def update_notebook(notebook_id: str, body: NotebookUpdate) -> dict[str, Any]:
+async def update_notebook(
+    notebook_id: str, body: NotebookUpdate, request: Request
+) -> dict[str, Any]:
     """Update a notebook."""
     db = get_db()
     if db is None:
         raise HTTPException(status_code=503, detail="Database not available")
-    notebook = await db.update_notebook(notebook_id, **body.model_dump(exclude_none=True))
+    fields = body.model_dump(exclude_none=True)
+    stamp = _stamp(request)
+    if stamp is not None:
+        fields["modified_by"] = stamp
+    notebook = await db.update_notebook(notebook_id, **fields)
     if notebook is None:
         raise HTTPException(status_code=404, detail="Notebook not found")
-    return notebook
+    return _decorate(notebook)
 
 
 @router.delete("/notebooks/{notebook_id}")
@@ -241,31 +275,39 @@ async def list_citations() -> list[dict[str, Any]]:
     db = get_db()
     if db is None:
         raise HTTPException(status_code=503, detail="Database not available")
-    return await db.list_citations()
+    return _decorate_list(await db.list_citations())
 
 
 @router.post("/citations", status_code=201)
-async def create_citation(body: CitationCreate) -> dict[str, Any]:
+async def create_citation(body: CitationCreate, request: Request) -> dict[str, Any]:
     """Create a new citation."""
     db = get_db()
     if db is None:
         raise HTTPException(status_code=503, detail="Database not available")
     try:
-        return await db.create_citation(created_at=_now_iso(), **body.model_dump())
+        return _decorate(await db.create_citation(
+            created_at=_now_iso(), created_by=_stamp(request), **body.model_dump()
+        ))
     except Exception as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
 
 
 @router.put("/citations/{citation_id}")
-async def update_citation(citation_id: str, body: CitationUpdate) -> dict[str, Any]:
+async def update_citation(
+    citation_id: str, body: CitationUpdate, request: Request
+) -> dict[str, Any]:
     """Update a citation."""
     db = get_db()
     if db is None:
         raise HTTPException(status_code=503, detail="Database not available")
-    citation = await db.update_citation(citation_id, **body.model_dump(exclude_none=True))
+    fields = body.model_dump(exclude_none=True)
+    stamp = _stamp(request)
+    if stamp is not None:
+        fields["modified_by"] = stamp
+    citation = await db.update_citation(citation_id, **fields)
     if citation is None:
         raise HTTPException(status_code=404, detail="Citation not found")
-    return citation
+    return _decorate(citation)
 
 
 @router.delete("/citations/{citation_id}")

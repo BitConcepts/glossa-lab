@@ -1,0 +1,420 @@
+# Feature Specification: Desktop Host Migration — Glossa Lab on TRISTEN-DESKTOP
+
+**Feature Branch**: `spec/080-desktop-host-migration`
+**Created**: 2026-10-28
+**Status**: Draft — claims frozen before code (spec-kit + AEE flow)
+**Input**: Owner directive 2026-10-28 00:15 EDT: "we need to run
+glossa-lab on the tristen-desktop host. especially since this keeps
+causing issues. … make sure we have installer and tray icon and that
+it works correctly from the host. and then clean up what is not
+needed in muse."
+**Predecessor**: Spec 079 (supervised backend + tray on the Muse VM).
+The VM backend's deaths were kernel OOM kills driven by the host
+runtime daemon's memory growth — a platform property of the VM, not
+of the application. The application therefore moves to the owner's
+desktop, which is its natural host (tray-first design, H25 wrappers,
+owner's interactive session).
+
+## Audit findings (before the build)
+
+1. **Three Windows launch paths still use development semantics.**
+   `shell.cmd run` starts `glossa_lab.main:app` with `--reload` on
+   `0.0.0.0`; the tray's `_start_backend` starts `main:app` on
+   `0.0.0.0`; `scripts/run-backend-svc.cmd` starts `main:app`
+   (loopback, but no factory). Production is
+   `glossa_lab.main:create_app --factory` on `127.0.0.1:8001`
+   (the Spec 079 Linux unit semantics).
+2. **`setup-os.cmd stop` kills every `pythonw.exe` on the machine**
+   (`taskkill /F /IM pythonw.exe`) — it would terminate unrelated
+   GUI Python processes belonging to other programs.
+3. **Two competing autostart mechanisms.** `setup-os.cmd install`
+   registers the `GlossaLab` scheduled task (wscript + VBS, H25);
+   `services/windows/install.cmd` independently creates a Startup
+   shortcut pointing at `shell.cmd tray`, which violates H25 and
+   can double-launch the tray.
+4. **No deterministic data path on Windows.** Nothing in the
+   installed launch chain sets `GLOSSA_MODE`, so `Settings.data_dir`
+   resolves to `./data` relative to whatever cwd the launcher
+   happens to have. Installed mode exists (`config.py`:
+   `%LOCALAPPDATA%\GlossaLab\data` on win32) but is never selected.
+5. **The tray does not supervise on Windows.** It starts the backend
+   once at tray launch (`_ensure_backend_running`) and never again;
+   a backend that dies while the tray lives stays dead until a human
+   uses the menu. (On Linux, systemd supervises; on Windows the tray
+   is the supervisor of record and must do this job.)
+6. **Icon presence is checked, icon identity is not.**
+   `setup-os.cmd install` checks the ICO exists but never verifies
+   it is the packaged Glossa Lab asset (Spec 079 recorded SHA-256
+   pins for ICO/PNG).
+
+## User Scenarios & Testing
+
+### User Story 1 — Glossa Lab runs on the desktop (Priority: P1)
+
+The owner logs on to TRISTEN-DESKTOP; the tray appears with the
+Glossa Lab icon; the backend is running on 127.0.0.1:8001 with the
+migrated production data; if the backend process dies, the tray
+restarts it (bounded), with no visible console window at any point.
+
+**Acceptance Scenarios**:
+
+1. **Given** a completed install, **When** the backend process is
+   killed, **Then** the tray restarts it within the poll cycle
+   budget and the identity check passes against the new PID.
+2. **Given** the tray is running, **When** the owner chooses
+   "Stop Service", **Then** the backend stops and stays stopped
+   (supervision never overrides a deliberate stop).
+3. **Given** a corrupted or missing tray icon asset, **When** the
+   installer runs, **Then** it fails loudly and registers nothing.
+
+### User Story 2 — One installer, one autostart (Priority: P1)
+
+`setup-os.cmd install` is the only registration path; the legacy
+Startup-shortcut installer delegates to it; re-running install
+changes nothing (idempotent).
+
+### User Story 3 — The data survived the move (Priority: P1)
+
+The desktop backend serves the migrated production database:
+SHA-256 of the snapshot matches on both machines and
+`PRAGMA integrity_check` passes before first start.
+
+### User Story 4 — Muse can still reach it (Priority: P2)
+
+The VM-side MCP client reaches the desktop backend over the
+tailnet (Tailscale Serve, loopback bind on the desktop) and
+`get_status` answers from the desktop instance. The backend is
+never bound to a public interface.
+
+## Requirements
+
+- **FR-001**: Every Windows backend launch path (`shell.cmd run`,
+  tray `_start_backend`, `scripts/run-backend-svc.cmd`) MUST use
+  `glossa_lab.main:create_app --factory`, host `127.0.0.1`, port
+  8001 — no `--reload`, no `0.0.0.0`, no `main:app`.
+- **FR-002**: The installed launch chain (tray VBS launcher,
+  backend service wrapper, tray-spawned backend environment) MUST
+  set `GLOSSA_MODE=installed`, so the data directory is
+  `%LOCALAPPDATA%\GlossaLab\data` independent of caller cwd.
+- **FR-003**: `setup-os.cmd stop` MUST terminate only Glossa Lab
+  processes: graceful shutdown endpoint first, tray via
+  `scripts\stop-tray.vbs`, backend only via PIDs on port 8001 whose
+  command line matches this repo's uvicorn invocation. A
+  machine-wide `taskkill /IM pythonw.exe` (or `python.exe`) MUST
+  NOT appear in the stop path.
+- **FR-004**: There MUST be exactly one Windows autostart
+  mechanism: the `GlossaLab` Task Scheduler task, registered by
+  `setup-os.cmd install` via `scripts\register_task.ps1` in the
+  route-B shape — a principal scoped to the installing user
+  (Interactive logon type, Limited run level), a logon trigger
+  scoped to that user, no elevation — and read back in the Ready
+  state before the install reports success (marker
+  `GLOSSA_TASK_STATE` in the registration output). Its action is
+  `wscript.exe` + `launch-tray.vbs`, per H25.
+  `services/windows/install.cmd` MUST delegate to it and
+  MUST NOT create a Startup shortcut; uninstall MUST remove the
+  task. (Mechanism history 2026-10-29 — see Amendments 1 and 2:
+  Amendment 1's HKCU Run-key replacement rested on diagnostic
+  run 40807602846, whose denials a second diagnostic
+  (run 40816104983) proved shape-caused; Amendment 2 restores
+  this scheduled-task design in the route-B registration form.
+  The Run key is NOT a fallback: no dual mechanism.)
+- **FR-005**: `setup-os.cmd install` MUST verify the SHA-256 of
+  `tray\glossa_tray\assets\glossa-lab.ico`
+  (`315940742d75720388264dcdf03178c58f878ea0701d03eeba95688d935ff520`)
+  and `glossa-lab.png`
+  (`bb41bf09d4177cee0c96b29ebe480f86a9e7115946f9e4ad132d2367a7adb077`)
+  and fail loudly on missing or mismatched assets. (Comparison
+  mechanism amended 2026-10-29 — see Amendment 1: the digests
+  are computed by `scripts\verify_icon_hashes.ps1` with the
+  .NET SHA-256 implementation and compared case-insensitively;
+  a hashing failure is reported as a hashing failure, never as
+  a mismatch, and still refuses the install.)
+- **FR-006**: The tray MUST supervise the backend on Windows:
+  when the health poll finds the backend down and the owner has
+  not deliberately stopped it, the tray restarts it, capped at
+  3 restarts per rolling hour; past the cap it reports the stopped
+  state instead of looping (H11: every wait bounded).
+- **FR-007**: A desktop verify script MUST emit the markers
+  `GLOSSA_HOST_HEALTH`, `GLOSSA_HOST_IDENTITY`,
+  `GLOSSA_TRAY_PROCESS`, `GLOSSA_ICON_HASH`,
+  `GLOSSA_TASK_STATE`, `GLOSSA_RESTART_TEST`, where identity means the bounded Spec 079
+  check (`/docs` 200 + health status/version + OpenAPI title
+  "Glossa Lab" with matching version) — never liveness alone.
+- **FR-008**: The desktop backend MUST bind loopback only. Remote
+  access MUST be exclusively via Tailscale Serve on the owner's
+  tailnet; no public bind, funnel, or third-party tunnel.
+- **FR-009**: The production database MUST move as a
+  SQLite-consistent snapshot (source backend stopped; SQLite
+  backup API), SHA-256 recorded at the source, transferred only
+  through the desktop-runner fleet mechanism, and re-verified
+  (SHA-256 + `PRAGMA integrity_check`) on the desktop before the
+  backend first starts against it.
+- **FR-010**: All loops and waits added or touched by this change
+  MUST be bounded with an explicit deadline or attempt cap and a
+  diagnostic on timeout (H11). Windows multi-step automation MUST
+  live in `.cmd` files (H12); tray start/stop MUST use the VBS
+  wrappers (H25).
+
+## Assumptions / epistemic boundaries (H13)
+
+- The Actions runner's Windows session may not be the owner's
+  interactive session; anything that must live in the owner's
+  session (tray icon, logon autostart entry) is verified from the
+  registration/process state the runner can see, and any
+  owner-session-only remainder is
+  reported as such, never faked.
+- The snapshot source of record is the production data directory
+  identified by the migration inventory (Phase C of the migration
+  record), named there with hashes; this spec governs how it
+  moves, not which directory that is.
+- macOS behaviour is unchanged. Linux supervision stays with
+  systemd (Spec 079); this spec changes the Windows paths and the
+  tray's Windows backend start/supervision only.
+- The restart cap mirrors the fleet pattern (3 per hour, then
+  owner attention) used by Spec 079 and Syncyard spec 007.
+
+## Amendment 1 (2026-10-29) — installer defects fixed; autostart mechanism changed
+
+Two defects in the shipped installer were proven on the desktop
+host by gatekeeper job `glossa-host-install-2026-10-28-r1`
+(run 40802151979, 27 markers): the install exited 1 without
+registering any autostart, GitHub-green notwithstanding.
+
+1. **Icon verification (FR-005).** The inline check spawned
+   `powershell -NoProfile -Command` with a `Get-FileHash`
+   one-liner. In that run's context the cmdlet threw
+   CommandNotFoundException, and the batch check reported the
+   hashing failure as a tray icon "hash mismatch" against pins
+   the assets in fact match (the job's own markers printed both
+   digests equal to the pins). Host diagnostic
+   `glossa-host-diag-2026-10-28` (run 40807602846) further
+   showed the digest the cmdlet computes is UPPERCASE hex, so
+   any case-sensitive comparison against a differently-cased
+   pin is a comparison defect waiting for a context. Fix: the
+   comparison now lives in `scripts\verify_icon_hashes.ps1`,
+   which hashes with the .NET SHA-256 implementation
+   (System.Security.Cryptography — no module-autoload
+   dependency), compares case-insensitively, reports which
+   method ran (`GLOSSA_ICON_HASH method=dotnet-sha256`), and
+   distinguishes exit 2 (could not hash) from exit 3 (asset
+   missing) and exit 4 (digest mismatch). Any nonzero exit
+   still refuses the install. FR-005's bar is unchanged.
+
+2. **Autostart registration (FR-004).** The same diagnostic
+   (run 40807602846) established the installer's context —
+   `tristen-desktop\trist`, interactive session 1, NOT
+   elevated (`IS_ADMIN_ROLE False`) — and that per-user
+   scheduled-task registration is denied in it across every
+   route: `Register-ScheduledTask` returned access denied
+   (HRESULT 0x80131500) with no principal AND with an explicit
+   current-user Interactive/Limited principal, and
+   `schtasks.exe /Create` exited 0 while creating nothing.
+   The design is therefore amended, on decision of the Desktop
+   Access program on this evidence: the canonical per-user
+   autostart is the HKCU Run value `GlossaLab`
+   (`wscript.exe //nologo <root>\scripts\launch-tray.vbs`, the
+   existing H25 windowless entry point), written and
+   read-back-verified by `setup-os.cmd install`
+   (`GLOSSA_AUTOSTART_STATE ... readback=verified` in its
+   output) and removed by uninstall. The scheduled-task path
+   is REMOVED — `scripts\register_task.ps1` is deleted, the
+   elevation wrapper is gone, and there is no try-task-then-
+   fallback dual mechanism (one canonical route, per this
+   spec's own pruning principle). Consequences carried through
+   in the same change: the tray's autostart detection reads
+   the Run value (winreg) instead of querying the task
+   scheduler, and FR-007's `GLOSSA_TASK_STATE` marker is
+   renamed `GLOSSA_AUTOSTART_STATE` (source:
+   `scripts\verify_desktop_host.py`, which now reads the Run
+   value and reports MISMATCH for a present-but-foreign one).
+   The pre-amendment `schtasks /delete` in uninstall remains
+   as legacy cleanup only. A true logoff/logon cycle remains
+   the eventual end-to-end proof of any logon mechanism and
+   is reported as performed or not in the migration record,
+   never assumed.
+
+## Amendment 2 (2026-10-29) — autostart design restored: route-B task registration
+
+Amendment 1's autostart change is SUPERSEDED on newer venue
+evidence. A second host diagnostic, `glossa-host-diag2-2026-10-28`
+(gatekeeper run 40816104983, 20 markers), ran from the same
+non-elevated job context (`tristen-desktop\trist`, session 1) and
+found a WORKING registration route: the cmdlet route with a
+SCOPED principal registers cleanly — the task file exists, the
+CIM state reads Ready, the principal reads
+`trist / Interactive / Limited`, and the trigger is an
+`MSFT_TaskLogonTrigger` scoped to `TRISTEN-DESKTOP\trist`. The
+schtasks route still fails in that context (exit 0, nothing
+created). The diag1 denials (run 40807602846) therefore trace to
+the registration SHAPE — the pre-Amendment-1 form (unscoped
+AtLogon trigger, no explicit principal, invoked through an
+elevation wrapper) and its variants — not to a venue-wide bar on
+per-user task registration.
+
+Direction (Desktop Access program, on this evidence): Spec 080's
+design of record stands — the canonical autostart is the
+scheduled task, registered by the installer in the route-B
+shape: scoped principal for the installing user, Interactive
+logon type, Limited run level, user-scoped logon trigger.
+`scripts\register_task.ps1` is restored in exactly that shape,
+invoked directly by `setup-os.cmd install` (no elevation
+wrapper); it reads the task back and prints `GLOSSA_TASK_STATE`
+with the state, principal, and trigger class, and any
+registration or read-back failure refuses the install.
+Amendment 1's HKCU Run-key route is REMOVED (the installer's Run
+deletes remain as legacy cleanup only, as they were before
+Amendment 1); FR-007's marker returns to `GLOSSA_TASK_STATE`
+(read via the CIM provider, the read path diag2 proved live);
+the tray's autostart detection returns to the task query.
+Amendment 1's icon-verification fix (FR-005) is unaffected and
+stands. A true logoff/logon cycle remains the eventual
+end-to-end proof of the logon trigger and is reported as
+performed or not in the migration record, never assumed.
+
+## Amendment 3 (2026-10-29) — persistence: the task owns the start; starts are idempotent
+
+Host evidence after the Amendment 2 install passed every leg:
+serve probe `glossa-host-serve-probe2-2026-10-28` (run
+40855200786) found the desktop backend DOWN — Serve config
+intact, loopback refused, FQDN health 502 (the proxy with
+nothing behind it) — roughly 35 minutes after restart-verify2
+(run 40849993917) had left it started and healthy. Diagnosis
+run 40861773854 established the mechanism:
+
+1. The GlossaLab logon task has NEVER run (LastRunTime
+   11/30/1999, result 0x00041303): the console session has been
+   logged on continuously since 2026-09-25, so no logon
+   trigger has fired since registration. Every verified start
+   was launched inside a gatekeeper job.
+2. A start launched inside a job's lifetime dies with that
+   job's teardown on this venue. restart-verify2's start came
+   up clean at 05:29:54 EDT; the backend log then ends with no
+   shutdown lines, and by the 06:08 EDT probe both the tray
+   (0 processes) and the backend (0 processes) were gone.
+3. An earlier cycle (03:29 EDT) shows a double-start race:
+   two backend instances started together and the loser exited
+   on an address-in-use bind error.
+
+Direction (Desktop Access program, on this evidence), as
+implemented in this amendment:
+
+- **The scheduled task stays the SINGLE launcher.** Its one
+  action (`wscript.exe` + `scripts\launch-tray.vbs`) launches
+  both processes through the windowless chain: the tray
+  (pythonw, hidden), which starts and supervises the backend
+  (DETACHED_PROCESS | CREATE_NO_WINDOW). No second action or
+  mechanism is added.
+- **The durable start is the task, fired on demand**
+  (`Start-ScheduledTask`): the scheduler owns the processes,
+  so they outlive any job. The logon trigger stays for
+  reboots and future logons.
+- **Scheduler restart-on-failure**: the registration carries
+  `RestartCount 3` / `RestartInterval 1 minute`. For those
+  settings to supervise anything, `launch-tray.vbs` now WAITS
+  on the tray and propagates its exit code, so the task stays
+  Running for the tray's lifetime: a tray crash (nonzero
+  exit) is restarted by the scheduler up to the bound; a
+  clean tray quit (exit 0) is not restarted. (The backend's
+  mid-session exits while the tray lives remain the tray's
+  FR-006 brief, unchanged.)
+- **Start is idempotent**: `setup-os.cmd start` first runs
+  the bounded Spec 079 identity check; if the backend already
+  answers healthy with the right identity, the start is a
+  no-op success (`GLOSSA_START_STATE already-running`) and
+  nothing is stopped or relaunched. This removes the
+  double-start race class.
+- **Persistence proof (cutover gate)**: the task is fired
+  from one job; after that job has fully ended, a SEPARATE
+  later job must find the backend + tray process sets alive
+  with health 200 through the Tailscale proxy carrying the
+  app identity. Only a pass across a job boundary counts as
+  a durable start.
+
+Amendment 3 consolidation (2026-10-29, later the same day):
+the start-verify re-run (run 40880047294) showed the verify
+script's kill-based restart leg failing a third time on
+job-context kills, and three accumulated tray processes from
+the day's repeated starts. Accordingly: (a) the kill-based
+restart leg is PURGED from the verify suite — GLOSSA_RESTART_TEST
+now proves the property by the restart-verify2 method (app
+stop -> process set gone + proxy health no longer the app's
+200 -> app start -> identity under a fresh PID), and no raw
+process kills remain in the suite; the restart proof of
+record is restart-verify2, run 40849993917; (b) the
+idempotent start covers the tray as well as the backend
+(backend healthy + tray running -> full no-op; tray missing
+-> launch only the tray), and surplus trays are retired
+through the app's own stop; (c) the start path's
+`timeout /t` waits (which print "Input redirection is not
+supported" under redirected stdin) are replaced with ping
+waits at the source.
+
+## Amendment 4 (2026-10-29) — the task is a starter, not a supervisor; every verify wait bounded
+
+Evidence. (a) Persistence probe run 40896349433 PASSED across a
+job boundary under Amendment 3 — and the model still failed in
+service the same day. (b) Start-verify3 (run 40911989844) HUNG
+inside the verify script at zero CPU and had to be cancelled:
+a wait with only a per-receive timeout (a drip-fed HTTP read;
+a pipe drain behind a surviving grandchild) can wait forever.
+(c) The task diagnosis (gatekeeper task-diag, 2026-10-29;
+Task Scheduler operational log + task XML read back) pinned
+the persistence failure: at 12:24:15 ET a logon-class trigger
+fired (event 110) under a Parallel multiple-instances policy
+then in force; the start-verify3 start leg no-oped at ~12:29
+(the Amendment 3 identity gate working); the Amendment 3
+waiting action held the task instance open on the tray, and
+when the verify's restart leg stopped the stack through the
+app's own controls, the stop killed the task-owned tray with
+everything else - the instance ended with LastTaskResult
+0xFFFFFFFF, and the tray's supervisor restarted the backend
+at 12:31:56 (app log) under no scheduler ownership. The
+registered XML otherwise read: ExecutionTimeLimit P3650D
+(effectively none), RestartOnFailure 3 x PT1M, Interactive /
+Limited principal - the limit was not the cause; the COUPLING
+was.
+
+Decisions.
+1. FR-004 revised again: the canonical autostart remains the
+   GlossaLab task (route-B principal), but its ONE action is
+   a short-lived starter - wscript + scripts\start-ensure.vbs
+   -> setup-os.cmd start (the idempotent ensure) - which
+   exits with the ensure result in seconds. Triggers: the
+   user-scoped logon trigger (reboots) PLUS a 15-minute
+   repetition trigger (the self-heal tick). Settings:
+   ExecutionTimeLimit 10 minutes (bounds the starter by
+   construction), MultipleInstances IgnoreNew (starters never
+   stack - a Parallel policy is expressly not this design),
+   restart-on-failure 3 x 1 min for starter-launch failures
+   only. Steady state: task Ready, LastTaskResult 0x0; the
+   tray and backend live detached, owned by no task instance
+   and no job. The tray supervises the backend (FR-006,
+   unchanged); an intentional setup-os.cmd stop stands until
+   the next ensure tick or an explicit start, by design.
+2. launch-tray.vbs is fire-and-forget again and gains a WMI
+   single-instance guard (a second tray is never launched).
+   Amendment 3's waiting action and its scheduler-supervision
+   rationale are SUPERSEDED.
+3. Defect 1 fix (FR-007 instrument): every external call in
+   scripts\verify_desktop_host.py goes through a bounded
+   helper with a TOTAL deadline - run_bounded (subprocess;
+   tree-kill on expiry so a surviving grandchild cannot turn
+   the drain into a second hang) and call_bounded (daemon
+   thread, for per-receive-timeout reads) - plus an overall
+   script deadline (GLOSSA_VERIFY_DEADLINE_SEC, default 480).
+   A wait that expires emits GLOSSA_WAIT name=<wait>
+   result=TIMEOUT timeout=<s> and fails its leg. The app stop
+   path's port-drain test now targets the loopback listener
+   only (the Tailscale proxy's tailnet listener never drains).
+4. Persistence re-proof (revised T021): fire the task -> the
+   task returns to Ready with LastTaskResult 0x0 -> a SEPARATE
+   later probe finds tray + backend alive with creation times
+   after the task instance ended, health 200 through the
+   Tailscale proxy with identity - across a job boundary and
+   across the task's own end.
+
+This amendment does not establish: that a true
+logoff/logon cycle was performed (the logon trigger remains
+proven only by its 12:24:15 firing in the event log), or
+anything about the desktop dataset.

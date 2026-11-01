@@ -2,25 +2,23 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { App } from "./App";
 import { ErrorBoundary } from "./components/ErrorBoundary";
+import { intakeTokenFromFragment, initAuth } from "./auth";
+import { reportFrontend } from "./feReport";
 
-const BASE_URL = import.meta.env.VITE_API_BASE ?? "http://127.0.0.1:8001/api/v1";
+// Spec 082: take the API token in from the launch fragment and strip
+// it BEFORE anything else runs — the router's hash sync in App must
+// never observe (or preserve) the token-bearing fragment. initAuth
+// completes the startup probe (health auth mode) asynchronously.
+intakeTokenFromFragment();
+void initAuth();
 
-/** Send a frontend log entry to the backend (best-effort, never throws). */
+/**
+ * Send a frontend log entry to the backend. Delegates to the shared
+ * reporter (feReport.ts, GAP-C09F): the outcome of every report is
+ * tracked and a failure is console-visible — never fire-and-forget.
+ */
 function feLog(level: string, message: string, stack?: string): void {
-  try {
-    fetch(`${BASE_URL}/terminal/log/frontend`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        level,
-        message: message.slice(0, 800),
-        source: "FE",
-        module: "frontend",
-        stack: stack?.slice(0, 800),
-        url: window.location.href,
-      }),
-    }).catch(() => {});
-  } catch { /* noop */ }
+  reportFrontend(level, message, { stack });
 }
 
 // ── Global error capture ─────────────────────────────────────────────────────

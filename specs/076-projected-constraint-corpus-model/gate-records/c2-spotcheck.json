@@ -1,0 +1,395 @@
+{
+ "record_type": "c2-spotcheck",
+ "schema_version": "1.0",
+ "spec": "specs/076-projected-constraint-corpus-model",
+ "drafter": "Cosmo (Muse subagent, freeze worker; Spec 076 freeze session)",
+ "recomputer": "independent recomputer subagent (spawned for this freeze; did not draft the spec; worked from the spec text and the pinned inputs only)",
+ "method": "Recomputed from the spec text and the pinned inputs only; the drafter's workings were not consulted.",
+ "sample_rule": "every gate-turning quantity + random 25% (minimum 3) of the rest",
+ "sample_seed": 20261026,
+ "quantities": [
+  {
+   "name": "export_sha256",
+   "source_in_spec": "spec \u00a75.3 (corpus export pin)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": "08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e",
+   "recomputed_value": "08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e",
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "m77_records",
+   "source_in_spec": "spec \u00a77.1",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": 2906,
+   "recomputed_value": 2906,
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "dropped_tokens",
+   "source_in_spec": "spec \u00a77.1",
+   "gate_turning": false,
+   "sampled": true,
+   "pinned_value": {
+    "000": 680,
+    "star_prefixed": 452
+   },
+   "recomputed_value": {
+    "000": 680,
+    "star_prefixed": 452
+   },
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "tokens",
+   "source_in_spec": "spec \u00a77.1",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": 11507,
+   "recomputed_value": 11507,
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "strict_tokens",
+   "source_in_spec": "spec \u00a77.1",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": 5883,
+   "recomputed_value": 5883,
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "anchors_counts",
+   "source_in_spec": "spec \u00a77.1",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": {
+    "total": 287,
+    "strict_sa_independent": 94,
+    "pending_non_sa_validation": 44
+   },
+   "recomputed_value": {
+    "total": 287,
+    "strict_sa_independent": 94,
+    "pending_non_sa_validation": 44
+   },
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "slot_totals",
+   "source_in_spec": "spec \u00a77.2",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": {
+    "init": 2655,
+    "fin": 2655,
+    "solo": 225,
+    "med": 5972
+   },
+   "recomputed_value": {
+    "init": 2655,
+    "fin": 2655,
+    "solo": 225,
+    "med": 5972
+   },
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "finals_partition",
+   "source_in_spec": "spec \u00a77.3",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": {
+    "strict": 1707,
+    "pending": 250,
+    "anchored-other": 520,
+    "no-anchor": 178
+   },
+   "recomputed_value": {
+    "strict": 1707,
+    "pending": 250,
+    "anchored-other": 520,
+    "no-anchor": 178
+   },
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "u2_counts",
+   "source_in_spec": "spec \u00a72 U2 / \u00a77.3",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": {
+    "signs": 122,
+    "tokens": 1825,
+    "finals": 178
+   },
+   "recomputed_value": {
+    "signs": 122,
+    "tokens": 1825,
+    "finals": 178
+   },
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "u2_exclusions",
+   "source_in_spec": "spec \u00a78 step 1",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": {
+    "exclusions": 677,
+    "possibility_size_distribution": {
+     "1": 14,
+     "2": 29,
+     "3": 23,
+     "5": 56
+    }
+   },
+   "recomputed_value": {
+    "exclusions": 677,
+    "possibility_size_distribution": {
+     "1": 14,
+     "2": 29,
+     "3": 23,
+     "5": 56
+    }
+   },
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "solo_only_set",
+   "source_in_spec": "spec \u00a77.4",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": {
+    "count": 13,
+    "members": {
+     "031": 2,
+     "378": 2,
+     "165": 1,
+     "220": 1,
+     "317": 1,
+     "377": 1,
+     "085": 1,
+     "118": 1,
+     "115": 1,
+     "411": 1,
+     "232": 1,
+     "269": 1,
+     "392": 1
+    }
+   },
+   "recomputed_value": {
+    "count": 13,
+    "members": {
+     "031": 2,
+     "085": 1,
+     "115": 1,
+     "118": 1,
+     "165": 1,
+     "220": 1,
+     "232": 1,
+     "269": 1,
+     "317": 1,
+     "377": 1,
+     "378": 2,
+     "392": 1,
+     "411": 1
+    }
+   },
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "sign_rows",
+   "source_in_spec": "spec \u00a77.3-7.5",
+   "gate_turning": false,
+   "sampled": false,
+   "pinned_value": {
+    "358": {
+     "init": 0,
+     "med": 30,
+     "fin": 1,
+     "solo": 0,
+     "total": 31,
+     "poss": [
+      "NEVER-INIT",
+      "NEVER-SOLO",
+      "FREE"
+     ]
+    },
+    "342": {
+     "init": 26,
+     "med": 349,
+     "fin": 876,
+     "solo": 23,
+     "total": 1274
+    },
+    "276": {
+     "init": 0,
+     "med": 0,
+     "fin": 1,
+     "solo": 0,
+     "total": 1,
+     "poss": [
+      "ONLY-FIN",
+      "NEVER-INIT",
+      "NEVER-MED",
+      "NEVER-SOLO",
+      "FREE"
+     ]
+    },
+    "031": {
+     "init": 0,
+     "med": 0,
+     "fin": 0,
+     "solo": 2,
+     "total": 2,
+     "poss": [
+      "ONLY-SOLO",
+      "NEVER-INIT",
+      "NEVER-FIN",
+      "NEVER-MED",
+      "FREE"
+     ]
+    }
+   },
+   "recomputed_value": null,
+   "status": "not-sampled",
+   "note": ""
+  },
+  {
+   "name": "absent_signs",
+   "source_in_spec": "spec \u00a72 U5",
+   "gate_turning": false,
+   "sampled": true,
+   "pinned_value": {
+    "count": 24,
+    "list": [
+     "039",
+     "044",
+     "046",
+     "088",
+     "144",
+     "154",
+     "156",
+     "179",
+     "231",
+     "235",
+     "266",
+     "275",
+     "279",
+     "282",
+     "312",
+     "315",
+     "324",
+     "346",
+     "362",
+     "363",
+     "374",
+     "383",
+     "405",
+     "408"
+    ]
+   },
+   "recomputed_value": {
+    "count": 24,
+    "list": [
+     "039",
+     "044",
+     "046",
+     "088",
+     "144",
+     "154",
+     "156",
+     "179",
+     "231",
+     "235",
+     "266",
+     "275",
+     "279",
+     "282",
+     "312",
+     "315",
+     "324",
+     "346",
+     "362",
+     "363",
+     "374",
+     "383",
+     "405",
+     "408"
+    ]
+   },
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "registry_v2",
+   "source_in_spec": "spec \u00a75.4 (Registry v2 pin)",
+   "gate_turning": true,
+   "sampled": true,
+   "pinned_value": {
+    "sha256": "42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71",
+    "rows": 1013
+   },
+   "recomputed_value": {
+    "sha256": "42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71",
+    "rows": 1013
+   },
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "ordered_pairs",
+   "source_in_spec": "spec \u00a74 S2",
+   "gate_turning": false,
+   "sampled": true,
+   "pinned_value": {
+    "distinct_attested": 2558,
+    "possible": 154449
+   },
+   "recomputed_value": {
+    "distinct_attested": 2558,
+    "possible": 154449
+   },
+   "status": "agree",
+   "note": ""
+  },
+  {
+   "name": "top_u2_finals",
+   "source_in_spec": "spec \u00a77.3",
+   "gate_turning": false,
+   "sampled": false,
+   "pinned_value": {
+    "top3": {
+     "098": 13,
+     "373": 13,
+     "086": 12
+    },
+    "u2_signs_with_zero_finals": 70
+   },
+   "recomputed_value": null,
+   "status": "not-sampled",
+   "note": ""
+  }
+ ],
+ "coverage": {
+  "gate_turning_total": 11,
+  "gate_turning_checked": 11,
+  "other_total": 5,
+  "other_sampled": 3,
+  "other_checked": 3
+ },
+ "outcome": "PASS"
+}

@@ -1,0 +1,126 @@
+{
+ "schema_version": "1.0",
+ "definition": {
+  "spec": "specs/075-depicted-kind-endings-atlas/spec.md",
+  "freeze_doc": "specs/075-depicted-kind-endings-atlas/freeze.md",
+  "experiment_id": "spec075-depicted-kind-endings-atlas",
+  "register": {
+   "path": "specs/075-depicted-kind-endings-atlas/claims.json",
+   "register_version": "0.7-draft",
+   "claims": 13,
+   "aee_hook_pass": "Run at the freeze act of 2026-10-25 under the pinned evaluator aee 1.5.3 in the freeze configuration (assess --lenient --no-ledger, phases after_specify / after_plan / after_tasks): each of the three artifacts carries 22 findings - the 13 FR-2.3 draft caps (one per claim), 7 irreducibility challenges (F075-C06, C07, C08, C09, C10, C12, C13) and 2 counterexample challenges (F075-C09, C12) - zero findings of contradiction, independence, ambiguity, or evidence-resolution kind, and no claim below the 0.70 confidence threshold (minimum propagated 0.8695). The challenges are a recorded difference from Spec 074's register (draft caps only), answered in aee/freeze-aee-note.md from the spec's own gate structure and ruled at adjudication DD-075-6; the register was not reworded to silence them"
+  },
+  "basis": {
+   "adjudication": "specs/075-depicted-kind-endings-atlas/adjudication.md",
+   "decisions": "DD-075-1 to DD-075-7 at adjudication section 5 (the design's silences ruled in the adjudication; numbering 075 / Phase 441; the 13-claim set and its verdict-bearing five; the comparison class excluding the unidentified signs per design R8; the two-leg keying route of DD-074-8 adopted; the AEE record filed as it ran; this freeze designated the C4 shadow freeze)"
+  },
+  "design": {
+   "phase": "Phase 441",
+   "question": "For each kind of thing the published sign identifications depict, do that kind's signs gather at the ends of inscriptions - asked per kind (other, human, animal, object_goods) on the graded Shakti corpus over the surface Spec 073 repaired, in this spec's own claim family; not Spec 071's retired question and not Hunt's claims in any form",
+   "populations": "Primary: documented-lineage rows only, reproduced at step 0 as 3,045 analyzable rows / 557 distinct signs / 550 in sequences of length >= 2 (gate 0.4, POPULATION NOT REPRODUCED on disagreement). Sensitivity S3: documented + corroborated rows (5,131 analyzable), every quantity recomputed. Rows graded undocumented-uncorroborated enter no count anywhere",
+   "classes": "The classes are Asset A v2's depicted kinds over Registry v2: other, human, animal, object_goods tested; the celestial class pre-registered EMPTY (0 signs) and reported first, never tested; unidentified signs members of no class and no comparison class (design R8, DD-075-4), counted in the census as context; token 999 the named exclusion (no published identity)",
+   "keying": "DD-075-5: Spec 074's two-leg route (DD-074-8) - leg 1, a Shakti sign's ICIT code (its Wells number) resolved through Registry v2's parpola_1982 rows' wells_ids to exactly one Asset A v2 sign_key; leg 2, Registry v2's icit_wells rows, whose sign_id is the sign's own Wells code; zero or multiple resolutions across both legs is unkeyable and closes the execution at gate 0.4 as POPULATION NOT KEYED, token 999 excepted by name in advance",
+   "floors": "Applied at the step-0 census, before any rate: at least 20 member signs (set just below the smallest identified kind, object_goods at 22 in Asset A v2) and at least 30 pooled primary-population occurrences; a kind failing either is TOO THIN, reported with its census, never dropped or merged",
+   "test": "Per kind: the kind's pooled final-position rate against the pooled rate of its frequency-matched comparison class (the other identified kinds' signs in the kind's own member frequency band, Spec 071 sections 4.2-4.3 carried), Fisher's exact test (two-sided) on the pooled 2x2 at the 5% level; every member sign's own rate published in full beside the pooled result",
+   "verdicts": "Per kind, frozen bands: SUPPORTED at enrichment ratio >= 1.5, Fisher significant at 5%, and at least half the kind's occurrences from signs individually above the corpus-wide final-position rate; NOT SUPPORTED at ratio <= 1.0 (the falsifier's word, stated in advance per kind); INCONCLUSIVE between; TOO THIN below a floor. Four verdicts, published together; no pooled depicted-kinds verdict exists",
+   "sensitivities": "Per kind, beside the primary, never replacing its word: S1 borderline-removed (Asset A v2 carries 4 borderline rows); S2 contested-included under CISI-governed labels (Asset A v2 carries zero contested rows, so S2 is expected to equal the primary and is reported as such); S3 the corroborated sensitivity. Agreement across arms is not independence",
+   "outcomes": [
+    "SUPPORTED",
+    "NOT SUPPORTED",
+    "INCONCLUSIVE",
+    "TOO THIN",
+    "ASSET NOT FROZEN",
+    "ASSET PIN MISMATCH",
+    "SHAKTI INTAKE NOT REPRODUCED",
+    "POPULATION NOT REPRODUCED",
+    "POPULATION NOT KEYED",
+    "INVALID",
+    "NOT-RUN"
+   ],
+   "osf": "This spec files its own OSF registration at its freeze under the programme's OSF project; the filing is recorded in osf-spec-registration.md in this directory (registration id and DOI only, never the approval-token URL)",
+   "execution_gate": "Phase 441 executes only against this frozen record, on the owner's order; step 0 asserts the repaired surface (gate 0.1), the Shakti intake under P-F1 S1/S2 (gate 0.2), input integrity (gate 0.3), population reproduction and keying (gate 0.4), publishes the census and applies the floors (gate 0.5), and gives the freeze-order proof from external records (gate 0.6) before any final-position quantity. Gate 0.4's population reproduction is flagged in the spec as a replay/drift gate: its quantities were verified at this freeze (adjudication section 2 and the C2 record)",
+   "limits": "Position is not meaning; depiction is the published identification layer, not ground truth; Spec 037's 49 percent census caution travels with the asset and every verdict; one corpus, one (ICIT) lineage, named in every headline block; Spec 071's retirement and its reopening trigger stand untouched"
+  },
+  "inputs": {
+   "asset_a_v2": {
+    "path": "specs/073-keying-surface-repair/asset-a-v2/depicted-kind-classification.csv",
+    "sha256": "681e017da8b3f93aeade7e85361565fa8f3f4178b167dfa2448f5b4c239a8193",
+    "rows": 552,
+    "per_kind_counts": {
+     "animal": 30,
+     "sky_cycle": 0,
+     "object_goods": 22,
+     "human": 43,
+     "other": 246,
+     "unidentified": 211
+    },
+    "dispute_status_counts": {
+     "none": 548,
+     "borderline": 4,
+     "contested": 0
+    }
+   },
+   "registry_v2": {
+    "path": "data/crosswalks/canonical_sign_registry_v2.csv",
+    "sha256": "42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71",
+    "rows": 1013
+   },
+   "shakti_corpus": {
+    "record": "docs/decisions/2026-10-22-shakti-corpus-intake-record.md",
+    "corpus_sha256": "345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68",
+    "row_grades_sha256": "02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739",
+    "rows": 5704,
+    "grades": {
+     "documented-lineage": 3212,
+     "undocumented-corroborated": 2087,
+     "undocumented-uncorroborated": 405
+    },
+    "population": {
+     "primary_rows": 3045,
+     "distinct_signs": 557,
+     "signs_in_sequences_ge2": 550,
+     "corroborated_rows": 5131,
+     "total_analyzable_rows": 5536,
+     "token_999_primary_rows": 2,
+     "token_999_primary_occurrences": 2
+    }
+   },
+   "canonical_registry_v1": {
+    "path": "data/crosswalks/canonical_sign_registry.csv",
+    "sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",
+    "rows": 803
+   },
+   "crosswalk": {
+    "path": "data/crosswalks/sign_crosswalk_master.csv",
+    "sha256": "4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf",
+    "rows": 205
+   },
+   "anchors": {
+    "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
+    "sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569"
+   },
+   "pin_verification": "verified first-hand at the freeze act of 2026-10-25 on the freeze base (main 379a9fc3): Asset A v2's and Registry v2's digests recomputed from the canonical CSVs equal Spec 073's executed record's quoted values, their row counts and Asset A v2's per-kind and dispute counts recounted from the files themselves; the Shakti corpus and row-grades files hashed directly at their restricted-local paths and equal the intake record's pins; registry v1, the crosswalk and the anchors hashed in the tree and equal their pins; the primary population enumerated under section 3's construction reproduces 3,045 / 557 / 550 exactly, the corroborated population 5,131 analyzable rows, token 999 standing in 2 primary rows with 2 occurrences; every gate-turning quantity independently recomputed for the C2 record in gate-records/ by a worker who did not draft the spec"
+  },
+  "environment": {
+   "python": "3.12.3",
+   "runner": "backend (venv glossa-lab)",
+   "aee": "1.5.3 (adopted environment; package pinned >=1.5.0,<1.6)",
+   "specify": "1.0.10"
+  }
+ },
+ "sources": {
+  "specs/075-depicted-kind-endings-atlas/freeze.md": "086d262653a6a8f30f7a22de05e5aca7243180121e04e0ece95782d398389b9f",
+  "specs/075-depicted-kind-endings-atlas/spec.md": "073b65b108671c947e533755399ae1461c3849a0c2241b1264ba1c9f36d49887",
+  "specs/075-depicted-kind-endings-atlas/claims.json": "89f8b0da3360e7d9f66f3731351045ac63951615c9d5b07c4647a26b5fe29fd9",
+  "specs/075-depicted-kind-endings-atlas/adjudication.md": "825e2f72499044d43a7d8897a2c48a602acccc8a9ce4af51090a6d210a883b73",
+  "specs/075-depicted-kind-endings-atlas/aee/freeze-aee-note.md": "4c5f63535a7158d80ac7790f52dcdb14cb7888178dde402128f91460220200ed",
+  "specs/075-depicted-kind-endings-atlas/build_freeze.py": "ac5f85a24a578bfd4e02402949828a10b0110ea51df688e4701f0d646a28e60e",
+  "backend/tests/test_spec075_freeze.py": "2ab8dc6550809ff26196329918a3f3e033ec7a4cf4f3d262d6bb47fa49728afe"
+ },
+ "environment": {
+  "python": "3.12.3",
+  "platform": "Linux",
+  "aee": "1.0.4"
+ },
+ "digest": "aa06726f545218c5bcee4b3a5df94c920828fead4e06e2ccec1eeffce44ac5cf"
+}

@@ -2,6 +2,14 @@
 
 Mounted at ``/api/v1/indus-evidence``.
 
+Spec 081 step 3 (T015; FR-018): the claim/library read surface also
+lives at program-scoped paths — ``/api/v1/programs/{program_id}/…`` —
+implemented at the bottom of this module. The ``/indus-evidence``
+paths are the compatibility shim for one release: they serve the
+Indus program's store exactly as the scoped paths do, and retire
+with the shim's release. Write/intake/sweep paths are not scoped
+this step.
+
 Endpoints
 ---------
 GET  /library                   List registered literature documents
@@ -30,9 +38,11 @@ levels above this file's package root (alongside ``backend/``).
 from __future__ import annotations
 
 import asyncio
+import ipaddress
 import json
 import logging
 import re
+import socket
 import sys
 import urllib.parse
 import urllib.request
@@ -45,6 +55,7 @@ from pydantic import BaseModel
 
 _log = logging.getLogger("glossa_lab.api.indus_evidence")
 router = APIRouter(prefix="/api/v1/indus-evidence", tags=["indus-evidence"])
+scoped_router = APIRouter(prefix="/api/v1/programs", tags=["programs-evidence"])
 
 # ── Path constants ────────────────────────────────────────────────────────────
 
@@ -57,6 +68,94 @@ _SWEEP_CFG    = _EVIDENCE_BASE / "config" / "sweep.yaml"
 _SWEEP_CANDS  = _EVIDENCE_BASE / "logs" / "sweep_candidates_latest.json"
 _RAW_UPLOADS  = _EVIDENCE_BASE / "raw" / "user_uploads"
 _SCRIPTS      = _EVIDENCE_BASE / "scripts"
+
+# ── Intake hardening (Leg C red team, findings C-05 / C-06) ──────────────────
+# Uploads and URL imports are the backend's untrusted-input boundary:
+# filenames are never trusted as paths, bodies are size-capped and
+# magic-checked, and outbound fetches refuse non-public destinations
+# (SSRF guard). See legC-findings.md (hardening program, 2026-10-29).
+
+_MAX_INTAKE_BYTES = 25 * 1024 * 1024  # 25 MiB cap for uploads and URL imports
+_PDF_MAGIC = b"%PDF-"
+
+
+def _safe_upload_name(filename: str) -> str:
+    """Reduce an untrusted upload filename to a bare, sanitised basename.
+
+    Directory components (including ``../`` traversal) are stripped, so
+    the result can never escape the uploads directory it is joined to.
+    """
+    name = Path(filename or "").name
+    name = re.sub(r"[^A-Za-z0-9._\-]", "_", name)[:120]
+    return name
+
+
+def _ip_is_public(ip: ipaddress.IPv4Address | ipaddress.IPv6Address) -> bool:
+    return not (
+        ip.is_private or ip.is_loopback or ip.is_link_local
+        or ip.is_reserved or ip.is_multicast or ip.is_unspecified
+    )
+
+
+def _assert_fetchable_url(url: str) -> None:
+    """SSRF guard for caller-supplied fetch URLs (finding C-06).
+
+    Allows only http/https URLs whose host is public: literal IPs must
+    be public, ``localhost`` names are refused, and hostnames are
+    refused when DNS resolution yields any non-public address. When
+    DNS resolution itself fails, the fetch is left to fail naturally
+    downstream (reported as a download failure, never silently
+    allowed to a known-private target).
+    """
+    parsed = urllib.parse.urlparse(url)
+    if parsed.scheme not in ("http", "https"):
+        raise HTTPException(
+            status_code=400, detail="Only http/https URLs may be imported")
+    host = (parsed.hostname or "").strip().lower()
+    if not host or host == "localhost" or host.endswith(".localhost"):
+        raise HTTPException(
+            status_code=400, detail="URL host is not a public address")
+    try:
+        ips = [ipaddress.ip_address(host)]
+    except ValueError:
+        try:
+            infos = socket.getaddrinfo(host, None)
+        except Exception:  # noqa: BLE001 — unresolved: download will fail as 502
+            return
+        ips = []
+        for info in infos:
+            try:
+                ips.append(ipaddress.ip_address(info[4][0]))
+            except ValueError:
+                continue
+    if any(not _ip_is_public(ip) for ip in ips):
+        raise HTTPException(
+            status_code=400, detail="URL host resolves to a non-public address")
+
+
+class _GuardedRedirectHandler(urllib.request.HTTPRedirectHandler):
+    """Re-run the SSRF guard on every redirect target."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):  # noqa: ANN001, ANN202
+        try:
+            _assert_fetchable_url(newurl)
+        except HTTPException as exc:
+            raise ValueError(f"Redirect blocked: {exc.detail}") from exc
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
+def _fetch_url_capped(url: str) -> bytes:
+    """Fetch *url* under the SSRF guard with a hard size cap."""
+    _assert_fetchable_url(url)
+    req = urllib.request.Request(url, headers={"User-Agent": "GlossaLab/1.0"})
+    opener = urllib.request.build_opener(_GuardedRedirectHandler())
+    with opener.open(req, timeout=30) as resp:  # noqa: S310 — guarded above
+        content = resp.read(_MAX_INTAKE_BYTES + 1)
+    if len(content) > _MAX_INTAKE_BYTES:
+        raise HTTPException(
+            status_code=413,
+            detail=f"Remote file exceeds the {_MAX_INTAKE_BYTES} byte intake cap")
+    return content
 
 
 def _now_iso() -> str:
@@ -137,8 +236,17 @@ async def list_library(
             except Exception:
                 pass
 
+        # Spec 083 (T023): evidence records carry the same attribution
+        # label as claims (see list_claims) in cloud mode.
+        from glossa_lab.cloud_scope import attribution_label  # noqa: PLC0415
+        from glossa_lab.config import cloud_mode_enabled  # noqa: PLC0415
+
         docs.append({
             "document_id":        d.get("document_id", f.stem),
+            **(
+                {"attribution_label": attribution_label(d)}
+                if cloud_mode_enabled() else {}
+            ),
             "title":              d.get("detected_title", ""),
             "authors":            d.get("detected_authors", []),
             "year":               d.get("detected_year"),
@@ -221,6 +329,16 @@ async def list_claims(
                 **claim,
                 "_source_file": f.stem,
             }
+            # Spec 083 (T023): attribution at serialization. A claim
+            # record with a cloud actor stamp renders that username;
+            # every other record (the whole desktop/bundle-imported
+            # register today) renders "via desktop import" — computed
+            # here, never written back into the stored record.
+            from glossa_lab.cloud_scope import attribution_label  # noqa: PLC0415
+            from glossa_lab.config import cloud_mode_enabled  # noqa: PLC0415
+
+            if cloud_mode_enabled():
+                entry["attribution_label"] = attribution_label(claim)
             entry["stage"] = serialize_stage(claim)
             entry["verified_unexplained"] = compute_verified_unexplained(claim)
             # Phase E2: the not-understood statement travels with the
@@ -529,13 +647,21 @@ async def claim_trail(claim_id: str) -> dict[str, Any]:
         if register.unseal_due():
             _save_priority_register(register)
         priority_entries = register.entries_for_claim(claim_id)
-    return build_claim_trail(
+    trail = build_claim_trail(
         record,
         record_kind=record_kind,
         claim_id=claim_id,
         priority_entries=priority_entries,
         strict_set_rule=strict_rule,
     )
+    # Spec 083 (T023): the trail is the digestion/evidence surface —
+    # label its actor the same way the claims list does.
+    from glossa_lab.cloud_scope import attribution_label  # noqa: PLC0415
+    from glossa_lab.config import cloud_mode_enabled  # noqa: PLC0415
+
+    if cloud_mode_enabled() and isinstance(trail, dict):
+        trail = {**trail, "attribution_label": attribution_label(record)}
+    return trail
 
 
 # ── Hypotheses ────────────────────────────────────────────────────────────────
@@ -562,6 +688,108 @@ async def list_hypotheses() -> dict[str, Any]:
     return {"models": models}
 
 
+# ── Program-scoped equivalents (Spec 081 step 3, T015; FR-018) ───────────────
+#
+# The evidence store on disk (glossa-indus/) belongs to the default
+# program this release. The scoped routes resolve a program id to one
+# of two scopes:
+#
+#   "store" — the program that owns the on-disk store; its scoped
+#             reads delegate to the handlers above, unchanged.
+#   "empty" — any other existing program; it has no evidence store
+#             yet, so its register, library and hypothesis list are
+#             honestly empty (never the store program's data — one
+#             program's claims are never served under another's name).
+#
+# An unknown program id 404s. The /indus-evidence paths above are the
+# one-release compatibility shim for these routes.
+
+_STORE_PROGRAM_ID = "indus_decipherment"
+
+
+async def _program_scope(program_id: str) -> str:
+    if program_id == _STORE_PROGRAM_ID:
+        return "store"
+    from glossa_lab.database import get_db  # noqa: PLC0415
+
+    db = get_db()
+    if db is not None and await db.get_project(program_id) is not None:
+        return "empty"
+    raise HTTPException(404, f"Program {program_id} not found")
+
+
+@scoped_router.get("/{program_id}/claims")
+async def list_program_claims(
+    program_id: str,
+    q: str | None = None,
+    claim_type: str | None = None,
+    claim_status: str | None = None,
+    doc_id: str | None = None,
+    sign: str | None = None,
+    limit: int = 200,
+    offset: int = 0,
+    aee: bool = False,
+    verified_unexplained: bool | None = None,
+) -> dict[str, Any]:
+    """Program-scoped claim register (the /indus-evidence/claims shim
+    serves the store program's same register)."""
+    if await _program_scope(program_id) == "empty":
+        return {"claims": [], "total": 0, "limit": limit, "offset": offset}
+    return await list_claims(
+        q=q, claim_type=claim_type, claim_status=claim_status,
+        doc_id=doc_id, sign=sign, limit=limit, offset=offset, aee=aee,
+        verified_unexplained=verified_unexplained,
+    )
+
+
+@scoped_router.get("/{program_id}/claims/aee-scores")
+async def program_claims_aee_scores(program_id: str) -> dict[str, Any]:
+    """Program-scoped AEE scoring; an empty-scope program scores its
+    (empty) register, yielding the summary's natural empty shape."""
+    if await _program_scope(program_id) == "empty":
+        import tempfile  # noqa: PLC0415
+
+        from glossa_lab.aee_core import assessment_summary  # noqa: PLC0415
+
+        with tempfile.TemporaryDirectory() as empty_dir:
+            return assessment_summary(Path(empty_dir))
+    return await claims_aee_scores()
+
+
+@scoped_router.get("/{program_id}/claims/{claim_id}/trail")
+async def program_claim_trail(program_id: str, claim_id: str) -> dict[str, Any]:
+    """Program-scoped per-claim trail; a claim id is only resolvable
+    inside the program whose register holds it."""
+    if await _program_scope(program_id) == "empty":
+        raise HTTPException(404, f"Claim {claim_id} not found in program {program_id}")
+    return await claim_trail(claim_id)
+
+
+@scoped_router.get("/{program_id}/library")
+async def list_program_library(
+    program_id: str,
+    q: str | None = None,
+    status: str | None = None,
+    limit: int = 100,
+    offset: int = 0,
+) -> dict[str, Any]:
+    """Program-scoped source library (the /indus-evidence/library shim
+    serves the store program's same library)."""
+    if await _program_scope(program_id) == "empty":
+        return {"documents": [], "total": 0, "limit": limit, "offset": offset}
+    return await list_library(q=q, status=status, limit=limit, offset=offset)
+
+
+@scoped_router.get("/{program_id}/hypotheses")
+async def list_program_hypotheses(program_id: str) -> dict[str, Any]:
+    """Program-scoped hypothesis models; under the Q7 fold-in these
+    read as the register's early-state claims on the claims surface —
+    the endpoint remains for the record."""
+    if await _program_scope(program_id) == "empty":
+        return {"models": []}
+    return await list_hypotheses()
+
+
 # ── Upload PDF ────────────────────────────────────────────────────────────────
 
 @router.post("/upload")
@@ -572,19 +800,30 @@ async def upload_paper(
     """Upload a PDF and queue it for intake."""
     if not file.filename:
         raise HTTPException(status_code=400, detail="No filename provided")
-    if not file.filename.lower().endswith(".pdf"):
+    # C-05: never trust the client filename as a path — basename only.
+    safe_name = _safe_upload_name(file.filename)
+    if not safe_name.lower().endswith(".pdf"):
         raise HTTPException(status_code=400, detail="Only PDF files are supported")
 
-    _RAW_UPLOADS.mkdir(parents=True, exist_ok=True)
-    dest = _RAW_UPLOADS / file.filename
     content = await file.read()
+    if len(content) > _MAX_INTAKE_BYTES:
+        raise HTTPException(
+            status_code=413,
+            detail=f"Upload exceeds the {_MAX_INTAKE_BYTES} byte intake cap")
+    if not content.startswith(_PDF_MAGIC):
+        raise HTTPException(
+            status_code=400,
+            detail="Only PDF files are supported (content is not a PDF)")
+
+    _RAW_UPLOADS.mkdir(parents=True, exist_ok=True)
+    dest = _RAW_UPLOADS / safe_name
     dest.write_bytes(content)
     _log.info("uploaded: %s (%d bytes)", dest.name, len(content))
 
     background_tasks.add_task(_run_intake_on_file, str(dest))
     return {
         "status": "uploaded",
-        "filename": file.filename,
+        "filename": safe_name,
         "size_bytes": len(content),
         "message": "Intake queued — document will be processed in the background.",
     }
@@ -630,13 +869,15 @@ async def import_url(body: ImportUrlBody, background_tasks: BackgroundTasks) -> 
     _RAW_UPLOADS.mkdir(parents=True, exist_ok=True)
     dest = _RAW_UPLOADS / fname
 
+    # C-06: SSRF guard + size cap (raises 400/413 before any write).
+    _assert_fetchable_url(url)
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": "GlossaLab/1.0"})
-        with urllib.request.urlopen(req, timeout=30) as resp:  # noqa: S310
-            content = resp.read()
-        dest.write_bytes(content)
+        content = _fetch_url_capped(url)
+    except HTTPException:
+        raise
     except Exception as exc:
         raise HTTPException(status_code=502, detail=f"Failed to download: {exc}") from exc
+    dest.write_bytes(content)
 
     background_tasks.add_task(_run_intake_on_file, str(dest))
     return {
@@ -955,13 +1196,15 @@ async def intake_sweep_candidate(
             "url": target_url,
         }
 
+    # C-06: same SSRF guard + size cap as /import-url.
+    _assert_fetchable_url(target_url)
     try:
-        req = urllib.request.Request(target_url, headers={"User-Agent": "GlossaLab/1.0"})
-        with urllib.request.urlopen(req, timeout=30) as resp:  # noqa: S310
-            content = resp.read()
-        dest.write_bytes(content)
+        content = _fetch_url_capped(target_url)
+    except HTTPException:
+        raise
     except Exception as exc:
         raise HTTPException(status_code=502, detail=f"Download failed: {exc}") from exc
+    dest.write_bytes(content)
 
     background_tasks.add_task(_run_intake_on_file, str(dest))
     return {

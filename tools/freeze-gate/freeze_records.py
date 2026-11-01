@@ -38,6 +38,25 @@ import pathlib
 import random
 import sys
 
+def values_equal(a, b):
+    """Equality for a pinned vs recomputed value (red-team hardening,
+    2026-10-25, finding D-1). Exact, with one stated leniency: in a
+    dict, a key whose value is numeric zero may be omitted by the
+    recomputation (the Spec 075 kind-count case — a kind with zero
+    rows in the classification carries no row to count). No other
+    leniency: numbers compare exactly, strings exactly, lists
+    elementwise."""
+    if isinstance(a, dict) and isinstance(b, dict):
+        ka = {k for k, v in a.items() if not (isinstance(v, (int, float)) and v == 0)}
+        kb = {k for k, v in b.items() if not (isinstance(v, (int, float)) and v == 0)}
+        if ka != kb:
+            return False
+        return all(values_equal(a[k], b[k]) for k in ka)
+    if isinstance(a, list) and isinstance(b, list):
+        return len(a) == len(b) and all(values_equal(x, y) for x, y in zip(a, b))
+    return a == b
+
+
 C2_FRACTION = 0.25
 C2_MINIMUM = 3
 C3_FRACTION = 0.20
@@ -131,6 +150,8 @@ def validate_c2(rec):
     qs = rec.get("quantities")
     if not qs:
         return ["quantities missing or empty"]
+    if not any(q.get("gate_turning") for q in qs):
+        problems.append("no gate-turning quantity is declared — a freeze record must pin at least one (D-1 hardening)")
     for q in qs:
         for field in ("name", "source_in_spec", "gate_turning", "sampled", "pinned_value", "status"):
             if field not in q:
@@ -141,6 +162,19 @@ def validate_c2(rec):
             problems.append(f"quantity {q.get('name')}: sampled but status is {q.get('status')!r}")
         if q.get("status") == "mismatch-unresolved" and q.get("gate_turning"):
             problems.append(f"UNRESOLVED MISMATCH on gate-turning quantity {q.get('name')}")
+        # D-1 hardening (2026-10-25): the status is DERIVED from the
+        # values, never merely asserted. Before this change the
+        # validator never read recomputed_value at all, and a
+        # fabricated record passed C4.
+        if q.get("sampled"):
+            if q.get("recomputed_value") is None:
+                problems.append(f"quantity {q.get('name')}: sampled but recomputed_value is missing — the recomputation must be filed, not attested")
+            elif q.get("status") == "agree" and not values_equal(q.get("pinned_value"), q.get("recomputed_value")):
+                problems.append(f"quantity {q.get('name')}: status is 'agree' but recomputed_value does not equal pinned_value")
+            elif q.get("status") == "mismatch-resolved" and not values_equal(q.get("pinned_value"), q.get("recomputed_value")) and not (q.get("note") or "").strip():
+                problems.append(f"quantity {q.get('name')}: mismatch-resolved but no note records the resolution")
+        elif q.get("status") == "agree":
+            problems.append(f"quantity {q.get('name')}: not sampled but status is 'agree' — an unsampled quantity has no checked status")
     cov = rec.get("coverage") or {}
     gt = [q for q in qs if q.get("gate_turning")]
     if cov.get("gate_turning_total") != len(gt):
@@ -148,6 +182,9 @@ def validate_c2(rec):
     checked = [q for q in gt if q.get("status") in ("agree", "mismatch-resolved", "mismatch-unresolved")]
     if cov.get("gate_turning_checked") != len(checked):
         problems.append("coverage.gate_turning_checked does not match the quantities list")
+    other_checked = [q for q in qs if not q.get("gate_turning") and q.get("sampled") and q.get("status") in ("agree", "mismatch-resolved", "mismatch-unresolved")]
+    if cov.get("other_checked") is not None and cov.get("other_checked") != len(other_checked):
+        problems.append("coverage.other_checked does not match the quantities list")
     if rec.get("outcome") != "PASS":
         problems.append(f"outcome is {rec.get('outcome')!r}, not PASS")
     return problems
@@ -159,6 +196,8 @@ def validate_c3(rec):
         return ["record_type is not c3-evidence-sample"]
     if rec.get("verification_mode") != "on":
         problems.append("verification_mode is not 'on'")
+    if not (rec.get("verifier") or "").strip():
+        problems.append("verifier is empty — the record must name who verified (D-1 hardening)")
     claims = rec.get("claims")
     if not claims:
         return problems + ["claims missing or empty"]
@@ -170,6 +209,8 @@ def validate_c3(rec):
             problems.append(f"verdict-bearing claim {c.get('claim_id')} was not sampled")
         if c.get("sampled") and c.get("verification") not in ("verified", "unverified"):
             problems.append(f"claim {c.get('claim_id')}: sampled but verification is {c.get('verification')!r}")
+        if c.get("sampled") and not c.get("evidence_refs_checked"):
+            problems.append(f"claim {c.get('claim_id')}: sampled but evidence_refs_checked is empty — the verification must name the evidence it read (D-1 hardening)")
         if c.get("verdict_bearing") and c.get("verification") == "unverified":
             problems.append(f"UNVERIFIED verdict-bearing claim {c.get('claim_id')}")
     if rec.get("outcome") != "PASS":

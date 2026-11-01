@@ -185,7 +185,9 @@ async def list_page_previews() -> dict[str, Any]:
                 pages.append({
                     "filename": f.name,
                     "source": source,
-                    "url": f"/static/page_previews/{f.name}",
+                    # Leg C C-10: no served URL — the scans are local
+                    # restricted material and are no longer mounted.
+                    "url": None,
                     "size_bytes": f.stat().st_size,
                 })
     return {
@@ -305,6 +307,12 @@ async def upload_sign_image(sign_id: str, file: UploadFile = File(...)) -> dict[
     from glossa_lab.tools.sign_image_processor import (  # noqa: PLC0415
         normalize_sign_image, _save_sign, load_manifest, save_manifest,
     )
+
+    # C-05: sign_id becomes a file path inside _save_sign — accept only
+    # plain sign identifiers, never path separators or traversal.
+    if not sign_id or any(c in sign_id for c in ("/", "\\", "..")) or \
+            not all(ch.isalnum() or ch in "-_" for ch in sign_id):
+        raise HTTPException(status_code=400, detail="Invalid sign_id")
 
     if not file.content_type or not file.content_type.startswith("image/"):
         raise HTTPException(status_code=400, detail="File must be an image")

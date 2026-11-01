@@ -76,6 +76,36 @@ WITHDRAWN_FIELDS = {
     ),
 }
 
+# ── Fallback-input claims (red team 2026-10-25, finding E-6) ──────────
+# A claim whose inputs were hardcoded fallbacks — live data not
+# available — cannot be certified. When a check in this run records
+# that a claim's inputs fell back, the claim is named in
+# FALLBACK_CLAIM_STATUS (populated by the check that observed the
+# fallback) and apply_fallback_caveats() moves it out of solid_claims
+# into caveated_claims with the fallback status, at report assembly.
+# The exclusion stays visible: the claim remains in the report, in
+# the caveated list, carrying the reason in its own status.
+FALLBACK_CLAIM_STATUS: dict[str, str] = {}
+
+
+def apply_fallback_caveats(solid_claims, caveated_claims, fallback_status):
+    """Move fallback-input claims from solid to caveated.
+
+    ``fallback_status`` maps claim name -> the status the claim must
+    carry instead of its solid status. Claims not named are returned
+    unchanged, in order. Moved claims keep their detail and gain the
+    fallback status. Pure: returns new lists, mutates nothing.
+    """
+    if not fallback_status:
+        return list(solid_claims), list(caveated_claims)
+    kept, moved = [], []
+    for entry in solid_claims:
+        if entry[0] in fallback_status:
+            moved.append((entry[0], entry[1], fallback_status[entry[0]]))
+        else:
+            kept.append(entry)
+    return kept, list(caveated_claims) + moved
+
 print("=" * 70)
 print("GLOSSA LAB FOUNDATION CHECK")
 print("=" * 70)
@@ -235,6 +265,14 @@ else:
     # The result was validated at the time; downgraded to WARN (not FAIL).
     WARN("Phase-29d file exists", "phase29d_reverse_janabiyah_v3.json cleaned up — was verified; result archived")
     WARN("P30-A1-A3", "Used hardcoded fallback candidates — live data not available")
+    # E-6: the P30-A1 claim's inputs are these fallback candidates, so
+    # it cannot sit in solid_claims as VERIFIED. Record it here, where
+    # the fallback is observed; apply_fallback_caveats() moves it to
+    # caveated_claims at report assembly.
+    FALLBACK_CLAIM_STATUS["P30-A1 permutation null"] = (
+        "NOT VERIFIED — computed on hardcoded fallback candidates; "
+        "live data not available (simulation used a simplified model)"
+    )
 
 # ── 5. PHASE-31 T3 ZIPF SLOPE ─────────────────────────────────────────────
 print("\n── CHECK 5: Phase-31 T3 Zipf Slope (cleanest result) ─────────────────")
@@ -490,7 +528,10 @@ solid_claims += [
     ("Phase-48 30 signs promoted to HIGH", "30/30 MEDIUM signs validated; HIGH coverage 54%"
      + _historical_label("Phase-48"),
      "VERIFIED — 3-test battery"),
-    ("Phase-53 16 formulas decoded", "tiru-il-ay-an-kol and 15 others >=80% decoded",
+    ("Phase-53 16 formulas with candidate readings assigned",
+     "tiru-il-ay-an-kol and 15 others: candidate readings assigned to >=80% of "
+     "formula slots under the phase's own rules (an assignment statistic, not a "
+     "proven reading)",
      "VERIFIED — pilot readings with morphological annotation"),
 ]
 caveated_claims += [
@@ -600,8 +641,10 @@ solid_claims += [
     ("Phase-58 phonotactic VALID",
      "0 violations in HIGH/MEDIUM set; 16 distinct initials; max phoneme share 24.7% (<30%)",
      "VERIFIED — Krishnamurti 2003 Dravidian phonotactic rules"),
-    ("Phase-59 22 formulas decoded",
-     "22 formulas >=80% decoded incl. tiru-il-ay-an-kol-vil, ēḷ-tu, pār-kol",
+    ("Phase-59 22 formulas with candidate readings assigned",
+     "22 formulas with candidate readings assigned to >=80% of slots "
+     "incl. tiru-il-ay-an-kol-vil, ēḷ-tu, pār-kol (an assignment statistic, "
+     "not a proven reading)",
      "VERIFIED — pilot readings with morphological annotation and per-slot confidence"),
     ("Phase-61 94% vowel harmony",
      "94% of inscriptions (500-seal sample) pass Dravidian vowel harmony constraint",
@@ -638,7 +681,8 @@ solid_claims += [
      "(Levit 2010 = richest: 6 hits; Laursen 2010: 3 hits).",
      "VERIFIED — 7 notation patterns, English false-positive guard"),
     ("Phase-68 formula type annotation",
-     "20 decoded formulas classified: 9 PLACE_FORMULA, 3 TITLE_FORMULA, 8 UNCERTAIN. "
+     "20 formulas with candidate readings classified: 9 PLACE_FORMULA, "
+     "3 TITLE_FORMULA, 8 UNCERTAIN. "
      "48 DEDR citations assigned to morpheme slots.",
      "VERIFIED — morphological role database + DEDR citations"),
 ]
@@ -737,6 +781,15 @@ if n_fails > 0:
     print("\nFAILED CHECKS:")
     for i in issues: print(f"  {i}")
 print()
+
+# E-6 enforcement, at assembly: no claim whose inputs fell back in
+# this run may be written to solid_claims. Moved claims stay visible
+# in caveated_claims with the fallback status in the claim itself.
+solid_claims, caveated_claims = apply_fallback_caveats(
+    solid_claims, caveated_claims, FALLBACK_CLAIM_STATUS)
+for _name, _detail, _status in caveated_claims:
+    if _name in FALLBACK_CLAIM_STATUS:
+        print(f"  ⚠ [fallback] {_name}: {_status}")
 
 # Save report
 (RPRT / "foundation_check_report.json").write_text(json.dumps({

@@ -27,6 +27,7 @@ from typing import Any
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
+from glossa_lab.config import cloud_mode_enabled
 from glossa_lab.database import get_db
 
 router = APIRouter(prefix="/api/v1/providers", tags=["providers"])
@@ -209,6 +210,18 @@ def probe_provider(
 ) -> dict[str, Any]:
     """Probe any provider and return {valid, message, models}."""
     if provider_type == "ollama":
+        # Spec 083 (T007): in cloud mode Ollama is neither bundled nor
+        # probed — report offline exactly as on a desktop without
+        # Ollama, without any network call.
+        if cloud_mode_enabled():
+            return {
+                "valid": False,
+                "message": (
+                    "Not reachable: Ollama is not bundled or probed "
+                    "in cloud mode (GLOSSA_CLOUD=1)"
+                ),
+                "models": [],
+            }
         return _probe_ollama(base_url)
     if provider_type == "cloud" and provider_id == "anthropic":
         return _probe_anthropic(api_key)
@@ -277,6 +290,10 @@ async def create_provider(body: ProviderCreate) -> dict[str, Any]:
 @router.get("/detect-ollama")
 async def detect_ollama() -> dict[str, Any]:
     """Auto-detect Ollama on localhost and common LAN addresses."""
+    # Spec 083 (T007): cloud mode never probes for Ollama.
+    if cloud_mode_enabled():
+        return {"detected": []}
+
     import asyncio  # noqa: PLC0415
 
     candidates = [

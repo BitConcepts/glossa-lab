@@ -1,0 +1,1 @@
+{"record": "/home/hatch/workspace/glossa-lab/glossa-indus/claims/research_checks/yadav_2010_ngrams__yadav_2010_ngrams_manual_001.research_check.json", "claim_id": "yadav_2010_ngrams_manual_001", "neighbors": 23, "read_full_text": 3, "source_errors": 0, "verdict": null}

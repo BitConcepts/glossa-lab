@@ -41,8 +41,20 @@ _MAHADEVAN_CROSSWALK = Path(__file__).resolve().parent / "mahadevan_parpola_cros
 
 
 def _safe_load(path: Path) -> dict:
+    """Load a JSON source file, failing loudly when it is missing.
+
+    Hardened 2026-10-26 (programme red team 2026-10-25, finding C-8):
+    this loader previously returned ``{}`` silently when a source
+    file was missing, so a lost dataset was indistinguishable from an
+    empty one — the failure mode that hid the 2026-10-25 contact-zone
+    loss. A missing source now raises ``FileNotFoundError`` naming
+    the path. Behaviour is unchanged when the file exists (a present
+    but unparseable file still returns ``{}``, as before).
+    """
     if not path.exists():
-        return {}
+        raise FileNotFoundError(
+            f"mesopotamian_contact source file not found: {path}"
+        )
     try:
         return json.loads(path.read_text(encoding="utf-8"))
     except Exception:  # noqa: BLE001

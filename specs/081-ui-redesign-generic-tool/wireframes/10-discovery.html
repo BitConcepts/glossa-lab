@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — Discovery inbox (Spec 081 wireframe 10)</title>
+<link rel="stylesheet" href="wireframes.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-row"><div class="tile">G</div><div><div class="brand-name">Glossa Lab</div><div class="brand-sub">Epistemic research workbench</div></div></div></div>
+    <a class="program-switch" href="01-programs.html" style="text-decoration:none"><div class="ps-label">Program</div><div class="ps-name">Indus Script <span>▾</span></div><div class="ps-q">What do the signs mean — tested claim by claim?</div></a>
+    <nav class="nav">
+      <h4>Program</h4>
+      <a href="02-program-home.html"><span class="ic">⌂</span>Home</a>
+      <a href="03-claims.html"><span class="ic">§</span>Claims<span class="count">94</span></a>
+      <a href="05-digestion.html"><span class="ic">✓</span>Digestion<span class="count alert">9</span></a>
+      <a href="06-evidence.html"><span class="ic">▤</span>Evidence &amp; sources</a>
+      <a href="07-data.html"><span class="ic">▦</span>Data</a>
+      <a href="#"><span class="ic">◈</span>Analysis</a>
+      <a href="08-experiments.html"><span class="ic">⬡</span>Experiments</a>
+      <a href="10-discovery.html" class="active"><span class="ic">◎</span>Discovery<span class="count">12</span></a>
+      <a href="11-research-loop.html"><span class="ic">↻</span>Research loop</a>
+      <a href="12-reports.html"><span class="ic">▨</span>Reports &amp; ledger</a>
+      <div class="nav-tool"><h4>Tool</h4>
+        <a href="09-jobs.html"><span class="ic">⚙</span>Jobs<span class="count">2</span></a>
+        <a href="14-status.html"><span class="ic">♥</span>Status</a>
+        <a href="13-settings.html"><span class="ic">⚙</span>Settings</a>
+        <a href="#"><span class="ic">?</span>Help</a>
+      </div>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="crumb">Glossa Lab / <b>Indus Script</b> / Discovery</span>
+      <div class="spacer"></div>
+      <button class="icon-btn">⌘K&nbsp; Search</button>
+      <button class="icon-btn">✦ AI assistant</button>
+      <div class="service-chip"><span class="dot"></span><span><b>Glossa Lab v0.1.0</b> · TRISTEN-DESKTOP · checked 14:02</span></div>
+    </div>
+
+    <div class="content">
+      <p class="specimen-note">Specimen inbox — item shapes are real; titles are illustrative.</p>
+
+      <div class="head-row">
+        <div class="page-head">
+          <h1>Discovery</h1>
+          <p class="lede">New material the program's sources turned up, waiting for a person's triage. Nothing here is evidence yet: an item becomes evidence only when it is saved into Evidence &amp; sources with its citation — the inbox is a doorway, not a finding.</p>
+        </div>
+        <div class="spacer"></div>
+        <button class="btn primary">↻ Run fetch now</button>
+      </div>
+
+      <div class="filterbar">
+        <span class="fchip active">Waiting · 12</span>
+        <span class="fchip">Papers</span>
+        <span class="fchip">Datasets</span>
+        <span class="fchip">News</span>
+        <span class="fchip">Saved</span>
+        <span class="fchip">Dismissed</span>
+        <span class="grow"></span>
+        <span class="row-meta">Last fetch Oct 29, 06:00 · sources: the program's list, in Settings</span>
+      </div>
+
+      <div class="card" style="padding:6px 18px">
+        <div class="row-item">
+          <div class="grow">
+            <div class="row-title">A preprint on sign-order statistics in undeciphered scripts <span class="chip line">paper</span></div>
+            <div class="row-meta">bioRxiv (via Europe PMC) · found Oct 29, 06:00 · matched topics: sign order, statistics</div>
+            <div class="row-meta">Machine confidence 0.81 — a sorting hint, not a judgment. Read it before it supports anything.</div>
+          </div>
+          <button class="btn small primary">Save to sources</button>
+          <button class="btn small">Dismiss</button>
+          <button class="btn small">Open</button>
+        </div>
+        <div class="row-item">
+          <div class="grow">
+            <div class="row-title">A newly published seal corpus from the Gulf <span class="chip line">dataset</span></div>
+            <div class="row-meta">Open repository · found Oct 28, 06:00 · matched topics: Dilmun, seals</div>
+            <div class="row-meta">Machine confidence 0.64. If saved, it lands in Data as a draft corpus with provenance — it does not touch the strict anchor set.</div>
+          </div>
+          <button class="btn small primary">Save to sources</button>
+          <button class="btn small">Dismiss</button>
+          <button class="btn small">Open</button>
+        </div>
+        <div class="row-item">
+          <div class="grow">
+            <div class="row-title">A news piece repeating a “deciphered” claim <span class="chip line">news</span></div>
+            <div class="row-meta">News feed · found Oct 28, 06:00 · matched topics: decipherment claims</div>
+            <div class="row-meta">Machine confidence 0.42. Filed for awareness; popular claims are checked against the register, never echoed by it.</div>
+          </div>
+          <button class="btn small primary">Save to sources</button>
+          <button class="btn small">Dismiss</button>
+          <button class="btn small">Open</button>
+        </div>
+      </div>
+
+      <div class="annotation">
+        <div class="a-title">Annotation — wireframe 10 · not part of the UI</div>
+        <dl>
+          <dt>Purpose</dt><dd>Triage the incoming stream: save what earns a citation, dismiss the rest, and know exactly when the last fetch ran and from where.</dd>
+          <dt>Primary action</dt><dd>“Run fetch now” at page level; per item, “Save to sources” is the one promoted act.</dd>
+          <dt>Changed &amp; why</dt><dd>Discovery today sits in the mobile bottom nav — elevated above the claims loop — and its items blur into “findings”. Here it is a program inbox with an explicit epistemic fence (inbox ≠ evidence), the confidence number labelled as a sorting hint, and the fetch's time and source list stated on the surface. “Send to AI” is demoted to the item menu: the assistant advises, it does not triage.</dd>
+          <dt>Spec claims</dt><dd>C081-2, C081-3 (fetch time + sources stated).</dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</div>
+<nav class="mobile-nav">
+  <a href="02-program-home.html"><span class="mi">⌂</span>Home</a>
+  <a href="03-claims.html"><span class="mi">§</span>Claims</a>
+  <a href="05-digestion.html"><span class="mi">✓</span>Digestion</a>
+  <a href="09-jobs.html"><span class="mi">⚙</span>Jobs</a>
+  <a href="01-programs.html" class="active"><span class="mi">☰</span>More</a>
+</nav>
+</body>
+</html>

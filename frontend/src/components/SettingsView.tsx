@@ -1,19 +1,26 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   clearCache, clearLocalCache,
   getEnvPackages,
   getEnvStatus,
+  getFoundationStatus,
   getHealth,
+  getLoopSchedulerStatus,
   getSettings,
   runEnvRebuild, runEnvSetup, runEnvUpgrade,
-  type EnvPackage, type EnvStatus,
+  setLoopSchedulerEnabled,
+  updateFoundationConfig,
+  type EnvPackage, type EnvStatus, type FoundationStatus, type LoopSchedulerStatus,
 } from "../api";
+import { useProject } from "../hooks/useProject";
 import { useToast } from "../hooks/useToast";
+import { ApiTokenField } from "./ApiToken";
 import { NotificationsPanel } from "./Notifications/NotificationsPanel";
 import { AutoDiscoveryPanel } from "./Settings/AutoDiscoveryPanel";
 import { ProvidersPanel } from "./Settings/ProvidersPanel";
 import { ModelAssignmentsPanel } from "./Settings/ModelAssignmentsPanel";
 import { ModelHubPanel } from "./Settings/ModelHubPanel";
+import { fmtDayTime, humanizeUptime } from "./ui081";
 
 // Discovery key labels moved to AutoDiscoveryPanel.
 
@@ -211,119 +218,259 @@ function PythonEnvSection() {
   );
 }
 
-const SETTINGS_TAB_KEY = "glossa_settings_tab";
-type SettingsTab = "ai" | "discovery" | "notifications" | "system";
-const TABS: { id: SettingsTab; label: string; icon: string }[] = [
-  { id: "ai",            label: "AI",            icon: "🤖" },
-  { id: "discovery",     label: "Discovery",     icon: "🔭" },
-  { id: "notifications", label: "Notifications", icon: "✉️" },
-  { id: "system",        label: "System",        icon: "⚙️" },
-];
+// ── Grouped settings layout (Spec 081 step 7, wireframe 13) ─────────────
+//
+// Two kinds of settings, never mixed: the TOOL's (this install, this
+// machine) and the open PROGRAM's (its question, its sources, its
+// loop schedule, its foundation gate). A program setting changed
+// here changes it for the program everywhere; a tool setting never
+// touches a program's record.
+
+function GroupTitle({ children }: { children: ReactNode }) {
+  return (
+    <h3 style={{
+      margin: "26px 0 4px", fontSize: 12, fontWeight: 700, color: "#2563eb",
+      textTransform: "uppercase", letterSpacing: 0.8,
+    }}>
+      {children}
+    </h3>
+  );
+}
+
+function SettingRow({ name, state, children }: {
+  name: string;
+  state?: ReactNode;
+  children?: ReactNode;
+}) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div style={{ borderBottom: "1px solid #eef1f5", padding: "10px 0" }}>
+      <div style={{ display: "flex", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
+        <span style={{ fontSize: 13, fontWeight: 600, color: "#111827", minWidth: 170 }}>{name}</span>
+        <span style={{ fontSize: 12, color: "#6b7280", flex: "1 1 260px" }}>{state}</span>
+        {children && (
+          <button
+            onClick={() => setOpen((v) => !v)}
+            style={{
+              padding: "4px 12px", border: "1px solid #e5e7eb", borderRadius: 6,
+              background: "#fff", cursor: "pointer", fontSize: 12, color: "#374151",
+            }}
+          >
+            {open ? "Hide" : "Manage"}
+          </button>
+        )}
+      </div>
+      {open && children && <div style={{ marginTop: 12 }}>{children}</div>}
+    </div>
+  );
+}
 
 // ── Main SettingsView ─────────────────────────────────────────────────────
 
-export function SettingsView() {
-  const [tab, setTabState] = useState<SettingsTab>(() => {
-    const saved = localStorage.getItem(SETTINGS_TAB_KEY);
-    return (saved && TABS.some(t => t.id === saved) ? saved : "ai") as SettingsTab;
-  });
-  const setTab = (t: SettingsTab) => { setTabState(t); localStorage.setItem(SETTINGS_TAB_KEY, t); };
-
+export function SettingsView({ darkMode = true }: { darkMode?: boolean }) {
+  const { activeProject } = useProject();
   const [dataDir, setDataDir] = useState("");
   const [backendVersion, setBackendVersion] = useState("");
   const [backendUptime, setBackendUptime] = useState("");
-  const [error, setError] = useState("");
+  const [scheduler, setScheduler] = useState<LoopSchedulerStatus | null>(null);
+  const [schedulerBusy, setSchedulerBusy] = useState(false);
+  const [foundation, setFoundation] = useState<FoundationStatus | null>(null);
 
   const load = async () => {
     try {
       const [s, h] = await Promise.all([getSettings(), getHealth()]);
       setDataDir(s.data_dir);
       setBackendVersion(h.version ?? "");
-      const u = h.uptime_seconds ?? 0;
-      const mins = Math.floor(u / 60);
-      const hrs = Math.floor(mins / 60);
-      setBackendUptime(hrs > 0 ? `${hrs}h ${mins % 60}m` : mins > 0 ? `${mins}m` : `${Math.round(u)}s`);
-      setError("");
+      setBackendUptime(humanizeUptime(h.uptime_seconds ?? 0));
     } catch {
-      // Backend might not be available; localStorage still works
+      // Backend might not be available; the token field still works.
     }
+    getLoopSchedulerStatus().then(setScheduler).catch(() => {});
+    getFoundationStatus().then(setFoundation).catch(() => {});
   };
 
-  useEffect(() => { load(); }, []);
+  useEffect(() => { void load(); }, []);
+
+  const toggleScheduler = async () => {
+    if (!scheduler) return;
+    setSchedulerBusy(true);
+    try {
+      await setLoopSchedulerEnabled(!scheduler.enabled);
+      setScheduler(await getLoopSchedulerStatus());
+    } catch { /* state stays as read */ }
+    finally { setSchedulerBusy(false); }
+  };
+
+  const toggleFoundationAuto = async () => {
+    if (!foundation) return;
+    try {
+      await updateFoundationConfig({ auto_check_enabled: !foundation.auto_check_enabled });
+      setFoundation(await getFoundationStatus());
+    } catch { /* state stays as read */ }
+  };
+
+  const servedPort = window.location.port || (window.location.protocol === "https:" ? "443" : "80");
+  const programName = activeProject?.label ?? "No program open";
+  const question = (activeProject?.question ?? "").trim();
 
   return (
-    <div style={{ maxWidth: 760 }}>
-      <h2 style={{ marginTop: 0, marginBottom: 12 }}>Settings</h2>
+    <div style={{ maxWidth: 860 }}>
+      <h2 style={{ marginTop: 0, marginBottom: 6 }}>Settings</h2>
+      <p style={{ ...hintTextStyle, maxWidth: "68ch", marginBottom: 4 }}>
+        Two kinds of settings live here and are never mixed: the tool's — this
+        install, on this machine — and the open program's. Changing a program
+        setting changes it for the program everywhere it is opened.
+      </p>
 
-      {/* ── Tab bar ───────────────────────────────────────────────────── */}
-      <div style={{ display: "flex", gap: 2, borderBottom: "2px solid #e5e7eb", marginBottom: 20 }}>
-        {TABS.map(t => (
-          <button key={t.id} onClick={() => setTab(t.id)}
-            style={{
-              padding: "8px 16px", border: "none", cursor: "pointer",
-              fontSize: 13, fontWeight: tab === t.id ? 700 : 500,
-              color: tab === t.id ? "#2563eb" : "#6b7280",
-              background: tab === t.id ? "#eff6ff" : "transparent",
-              borderBottom: tab === t.id ? "2px solid #2563eb" : "2px solid transparent",
-              borderRadius: "6px 6px 0 0",
-              marginBottom: -2,  // overlap the container border
-            }}>
-            {t.icon} {t.label}
-          </button>
-        ))}
-      </div>
+      {/* ═══ TOOL — SERVICE ═══ */}
+      <GroupTitle>Tool — service</GroupTitle>
 
-      {error && (
-        <div style={{ ...alertStyle, background: "#fef2f2", borderColor: "#fca5a5", color: "#991b1b" }}>
-          {error}
-        </div>
+      <SettingRow name="API token" state="The credential this app sends the backend (Spec 082)">
+        <ApiTokenField darkMode={darkMode} />
+      </SettingRow>
+
+      <SettingRow
+        name="Port"
+        state={<>This page was served on port {servedPort}. The tray's Change Port writes the same service setting — two doors, one setting.</>}
+      />
+      <SettingRow
+        name="Data folder"
+        state={dataDir
+          ? <span style={{ fontFamily: "monospace", fontSize: 12 }}>{dataDir}</span>
+          : "Not read — the backend has not answered yet."}
+      />
+      <SettingRow
+        name="Backend"
+        state={backendVersion
+          ? <>v{backendVersion} · up {backendUptime}</>
+          : "Not read — the backend has not answered yet."}
+      />
+      <SettingRow
+        name="Start at sign-in"
+        state="On the desktop install the service starts at sign-in (the GlossaLab task owns this). It is stated here, not changed here — the tray is the door for it."
+      />
+
+      {/* ═══ TOOL — ENVIRONMENT & AI ═══ */}
+      <GroupTitle>Tool — environment &amp; AI</GroupTitle>
+
+      <SettingRow name="AI providers" state="Which providers this install can call, and their keys">
+        <ProvidersPanel />
+      </SettingRow>
+      <SettingRow name="Model assignments" state="Which model does which job in this install">
+        <ModelAssignmentsPanel />
+      </SettingRow>
+      <SettingRow name="Model hub" state="Local models available to this install">
+        <ModelHubPanel />
+      </SettingRow>
+      <SettingRow name="AI behavior" state="How the assistant's action proposals are approved">
+        <AutoApproveSetting />
+      </SettingRow>
+      <SettingRow name="Python environment" state="The backend's virtual environment on this machine">
+        <PythonEnvSection />
+      </SettingRow>
+      <SettingRow name="Notifications" state="What this install sends, and where">
+        <NotificationsPanel />
+      </SettingRow>
+      <SettingRow name="Cache" state="Clearing run state stored by this install">
+        <JobCacheSection />
+      </SettingRow>
+
+      {/* ═══ PROGRAM ═══ */}
+      <GroupTitle>Program — {programName}</GroupTitle>
+
+      {!activeProject && (
+        <p style={{ ...hintTextStyle, marginTop: 8 }}>
+          No program is open, so there are no program settings to show. Open a
+          program and its question, sources, loop schedule and foundation gate
+          appear here.
+        </p>
       )}
 
-      {/* ═════ TAB: AI ═════ */}
-      {tab === "ai" && (
+      {activeProject && (
         <>
-          <ProvidersPanel />
-          <ModelAssignmentsPanel />
-          <ModelHubPanel />
+          <SettingRow
+            name="The question"
+            state={question || "Not stated yet — the program has no question on its record."}
+          >
+            <div>
+              <p style={hintTextStyle}>
+                The question is part of the program's record and is edited
+                with the program itself.
+              </p>
+              <button
+                onClick={() => window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: "builder" } }))}
+                style={{
+                  marginTop: 8, padding: "5px 12px", border: "1px solid #e5e7eb", borderRadius: 6,
+                  background: "#fff", cursor: "pointer", fontSize: 12, color: "#374151",
+                }}
+              >
+                Edit in Manage programs
+              </button>
+            </div>
+          </SettingRow>
 
-          <section style={sectionStyle}>
-            <h3 style={sectionTitleStyle}>AI Behavior</h3>
-            <p style={hintTextStyle}>
-              Control how Glossa AI handles action proposals during chat.
-            </p>
-            <AutoApproveSetting />
-          </section>
-        </>
-      )}
+          <SettingRow
+            name="Discovery sources"
+            state="Where this program's discovery looks for new material"
+          >
+            <AutoDiscoveryPanel />
+          </SettingRow>
 
-      {/* ═════ TAB: Discovery ═════ */}
-      {tab === "discovery" && (
-        <AutoDiscoveryPanel />
-      )}
+          <SettingRow
+            name="Research-loop schedule"
+            state={scheduler
+              ? scheduler.enabled
+                ? <>On — runs every {scheduler.interval_hours ?? "—"} h, {scheduler.iterations ?? "—"} iterations a run</>
+                : "Off — the loop runs only when started by hand"
+              : "Not read — the backend has not answered yet."}
+          >
+            <div>
+              <p style={hintTextStyle}>
+                The schedule belongs to the program: when it is on, the loop
+                runs on its interval whether or not anyone is watching. The
+                loop surface shows the same state and links back here.
+              </p>
+              <button
+                onClick={() => void toggleScheduler()}
+                disabled={!scheduler || schedulerBusy}
+                style={{
+                  marginTop: 8, padding: "5px 12px", border: "1px solid #e5e7eb", borderRadius: 6,
+                  background: "#fff", cursor: scheduler ? "pointer" : "default", fontSize: 12, color: "#374151",
+                }}
+              >
+                {schedulerBusy ? "…" : scheduler?.enabled ? "Turn schedule off" : "Turn schedule on"}
+              </button>
+            </div>
+          </SettingRow>
 
-      {/* ═════ TAB: Notifications ═════ */}
-      {tab === "notifications" && <NotificationsPanel />}
-
-      {/* ═════ TAB: System ═════ */}
-      {tab === "system" && (
-        <>
-          <PythonEnvSection />
-          <JobCacheSection />
-
-          <section style={sectionStyle}>
-            <h3 style={sectionTitleStyle}>System</h3>
-            <table style={{ borderCollapse: "collapse" }}>
-              <tbody>
-                <InfoRow label="Data directory" value={dataDir || "—"} mono />
-                {backendVersion && <InfoRow label="Backend version" value={backendVersion} />}
-                {backendUptime && <InfoRow label="Backend uptime" value={backendUptime} />}
-              </tbody>
-            </table>
-            <p style={{ ...hintTextStyle, marginTop: 10, color: "#9ca3af" }}>
-              Corpus, sign mapping, and pipeline settings are project-specific.
-              Open or create a project to configure them.
-            </p>
-          </section>
+          <SettingRow
+            name="Foundation-check gate"
+            state={foundation
+              ? <>Last verdict: {foundation.verdict ?? "not run yet"} · automatic check {foundation.auto_check_enabled ? "on" : "off"}{foundation.last_checked_at ? ` · checked ${fmtDayTime(foundation.last_checked_at)}` : ""}</>
+              : "Not read — the backend has not answered yet."}
+          >
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <button
+                onClick={() => window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: "foundation-check" } }))}
+                style={{
+                  padding: "5px 12px", border: "1px solid #e5e7eb", borderRadius: 6,
+                  background: "#fff", cursor: "pointer", fontSize: 12, color: "#374151",
+                }}
+              >
+                Open foundation check
+              </button>
+              <button
+                onClick={() => void toggleFoundationAuto()}
+                disabled={!foundation}
+                style={{
+                  padding: "5px 12px", border: "1px solid #e5e7eb", borderRadius: 6,
+                  background: "#fff", cursor: foundation ? "pointer" : "default", fontSize: 12, color: "#374151",
+                }}
+              >
+                {foundation?.auto_check_enabled ? "Turn automatic check off" : "Turn automatic check on"}
+              </button>
+            </div>
+          </SettingRow>
         </>
       )}
     </div>
@@ -341,7 +488,7 @@ function JobCacheSection() {
     try {
       const result = await clearCache();
       clearLocalCache();
-      // Tell BottomPanel to re-read the now-empty seq queue from localStorage
+      // Tell listeners to re-read the now-empty seq queue from localStorage
       window.dispatchEvent(new CustomEvent("glossa:seq_queue_updated"));
       toast(`${result.cleared_jobs} job(s) cleared — cache reset`, "success");
     } catch (e) {
@@ -447,15 +594,6 @@ function AutoApproveSetting() {
   );
 }
 
-function InfoRow({ label, value, mono }: { label: string; value: string; mono?: boolean }) {
-  return (
-    <tr>
-      <td style={{ padding: "3px 16px 3px 0", fontSize: 13, color: "#6b7280", whiteSpace: "nowrap" }}>{label}</td>
-      <td style={{ padding: "3px 0", fontSize: 13, fontFamily: mono ? "monospace" : undefined }}>{value}</td>
-    </tr>
-  );
-}
-
 const sectionStyle: React.CSSProperties = {
   marginBottom: "2rem",
   padding: "1.25rem",
@@ -475,14 +613,6 @@ const hintTextStyle: React.CSSProperties = {
   fontSize: 12,
   color: "#6b7280",
   lineHeight: 1.5,
-};
-
-const alertStyle: React.CSSProperties = {
-  padding: "10px 14px",
-  borderRadius: 6,
-  border: "1px solid",
-  marginBottom: "1rem",
-  fontSize: 13,
 };
 
 

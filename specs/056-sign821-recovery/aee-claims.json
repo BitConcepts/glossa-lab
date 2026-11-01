@@ -1,0 +1,887 @@
+{
+ "spec": "056-sign821-recovery",
+ "register_version": "0.7-draft",
+ "note": "Draft register for Spec 056 (design D-17, PR #195 packet), opened 2026-10-21 under the runnable-experiments campaign plan approved by the owner AS WRITTEN on 2026-10-21 (campaign member 12; one of the three fragment recoveries, with D-15 and D-19). Conventions as in Specs 042/046: requirement claims carry no falsification test where a gate or inspection is the operative check; boundaries carry the conditions under which each claim holds; evidence items carry observed_at from this draft because the cited facts were verified first-hand at drafting. The AEE lifecycle hooks have NOT run on this register; they are the freeze gate (tasks L4), and any recovery round they force changes claim text before any freeze digest is computed. ASM- ids name the assumptions each claim stands on: ASM-HELD-SOURCE (the held cleaned text is the source of record for Wells 2015; its hash governs over any other copy), ASM-PASSAGE-IS-SECTION (the passage of record is the headed section spec \u00a72 fixes \u2014 a draft reading, DD-056-1, that the freeze confirms or re-bounds), ASM-CLAIM-FORM (a claim in this program's form states a proposition about an identified subject with a statable falsification condition), ASM-TWO-PASS (two independent extraction passes plus quotation-settled reconciliation are a trustworthy instrument for the argument-versus-catalogue judgement), ASM-GATES-BEFORE-OUTCOME (integrity and pinning precede any extraction), ASM-APPEND-ONLY (outcomes append; prior and frozen records are never edited). FREEZE RECOVERY (2026-10-21): normalised to engine evidence values at 0.6-draft (kind observed, source_quality artifact; refs, descriptions, observed_at unchanged - the draft's free-form labels are not engine values); freeze rulings DD-056-10 to DD-056-17 were carried into the boundaries of F056-C05, C07, C08, C09, C11, and C12 before the hooks ran. At 0.7-draft the 14 irreducibility-challenged claim texts (all except F056-C03) were restated as single head propositions with carried clauses moved into boundaries verbatim-in-substance, and every multi-item claim's evidence gained mutual independent_of declarations. A final restatement of F056-C08's head cleared the last irreducibility and absolute-language records.",
+ "claims": [
+  {
+   "id": "F056-C01",
+   "kind": "hypothesis",
+   "text": "An outcome under Spec 056 states nothing about sign 821 itself.",
+   "status": "draft",
+   "boundary": [
+    "The scope is one fragment (the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001) and one pinned passage in Wells (2015). It excludes any statement about the sign's reading, classification, distribution, or meaning, about any other passage of the same book, and about any other claim. Carried from the draft text: an outcome states only whether the pinned passage of record recovers a statable claim about sign 821, or whether the fragment is retired on the record as an extraction artefact."
+   ],
+   "depends_on": [],
+   "assumptions": [
+    "ASM-HELD-SOURCE"
+   ],
+   "alternatives": [
+    "the fragment could be read as already stating a claim about the sign (it cannot: 'used in a variety of contexts' is true of almost any common sign and carries no falsification condition)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified in scope if any Spec 056 output states a conclusion about sign 821, about another passage, or about another claim"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-RECOVERY-AS-VERDICT"
+    ],
+    "strongest_rival": "the alternative reading in which recovering (or retiring) a fragment is a finding about the sign it names",
+    "verdict_rule": "scope is judged by inspection of every Spec 056 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding",
+    "evidence_origin_groups": [
+     "claim-record",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-17 (PR #195 packet, \u00a7D-17, read in full at this draft): re-extract the source passage in full; two pre-registered outcomes \u2014 (a) a specific argument is extracted as the claim, with the sign list named and the sign identified, its test designed at that point; (b) a catalogue observation with no argument yields a recommendation, recorded on the record, to retire the fragment as an extraction artefact by an appended, dated disposition. Limit carried verbatim in substance: nothing about sign 821 is decided; this is record repair.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json"
+     ]
+    },
+    {
+     "ref": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The fragment's claim record (SHA-256 bd0f7abd\u2026, recomputed at this draft from main at 83b6a563): normalized_claim 'Sign value: 821 / it is used in a variety of contexts (Figure 6' (truncated mid-reference), claim_status untested, stage created; adopted explanation and not-understood text state the fragment carries no proposition and name the full source passage as what would change the picture.",
+     "source_id": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/03-fragments.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F056-C02",
+   "kind": "requirement",
+   "text": "The fragment stands UNTESTED at the created stage.",
+   "status": "draft",
+   "boundary": [
+    "These are the record's facts as pinned at this draft. The record's quote is truncated mid-reference ('(Figure 6'); the full anchor sentence stands in the source and is pinned by spec \u00a72, never reconstructed from the record's fragment text. Carried from the draft text: its record reads 'Sign value: 821 / it is used in a variety of contexts (Figure 6', Phase-104 left it stays_untested under RULE-NUM, and it carries no falsification condition and no stated proposition."
+   ],
+   "depends_on": [
+    "F056-C01"
+   ],
+   "assumptions": [
+    "ASM-HELD-SOURCE"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "recompute SHA-256 of the claim record (bd0f7abd\u2026) and of the Phase-104 evaluation (2d0b83e8\u2026) and read this claim's entries; any mismatch falsifies this statement and voids the draft's basis"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the record could have been misread, superseded, or repaired since Phase-104 (the Spec 040 stale-pin precedent shows draft-cited pins can be wrong)",
+    "verdict_rule": "the statement stands or falls on the pinned files hashing to their recorded values with the stated entries in them",
+    "evidence_origin_groups": [
+     "claim-record",
+     "phase104-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The fragment's claim record (SHA-256 bd0f7abd\u2026, recomputed at this draft from main at 83b6a563): normalized_claim 'Sign value: 821 / it is used in a variety of contexts (Figure 6' (truncated mid-reference), claim_status untested, stage created; adopted explanation and not-understood text state the fragment carries no proposition and name the full source passage as what would change the picture.",
+     "source_id": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/reports/phase104_claims_evaluation.json",
+      "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json"
+     ]
+    },
+    {
+     "ref": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-104 evaluation (SHA-256 2d0b83e8\u2026, recomputed at this draft): this claim stays_untested under RULE-NUM \u2014 sign number cited without a stated numbering system, no matching entry located in the crosswalk (86 numeric IDs present in that record), and no falsification condition carried.",
+     "source_id": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+      "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json"
+     ]
+    },
+    {
+     "ref": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Lane-2 adopted drafts (SHA-256 3f645c9a\u2026, recomputed at this draft): this claim's entry stands at stage created, lane-1 status untested, gist 'Fragment only: Sign 821 is used in a variety of contexts. Too thin to test.'",
+     "source_id": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+      "glossa-indus/reports/phase104_claims_evaluation.json"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F056-C03",
+   "kind": "hypothesis",
+   "text": "The pinned passage argues something specific about sign 821 that can be recovered as a claim in the program's claim form: a proposition from the passage's own argument, about an identified sign in a named sign list, with a falsification condition statable from the passage's own logic.",
+   "status": "draft",
+   "boundary": [
+    "The hypothesis is about the passage of record only (spec \u00a72's headed section of Wells 2015), and about recoverability in form \u2014 not about whether any recovered argument is true. The design's own illustrations of a specific argument (the sign's spread ruling out a narrow meaning; a specific classification) illustrate the form; they are not findings of this draft."
+   ],
+   "depends_on": [
+    "F056-C01",
+    "F056-C02"
+   ],
+   "assumptions": [
+    "ASM-PASSAGE-IS-SECTION",
+    "ASM-CLAIM-FORM"
+   ],
+   "alternatives": [
+    "the passage is a catalogue observation with no argument attached (the falsifier, F056-C04)"
+   ],
+   "falsification_tests": [
+    "run spec \u00a7\u00a74\u20135: if no reconciled candidate proposition passes conditions R-1 through R-5, this hypothesis is not supported and the outcome is RETIREMENT RECOMMENDED (or IDENTIFICATION FAILED where R-3 alone blocks a candidate that passed the argument conditions)"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-RECOVERY-AS-VERDICT"
+    ],
+    "strongest_rival": "the strongest rival is the falsifier itself: the passage observes and catalogues, and argues nothing that could be wrong",
+    "verdict_rule": "SUPPORTED for the hypothesis iff the execution's outcome is RECOVERED under F056-C08; RETIREMENT RECOMMENDED refutes it; IDENTIFICATION FAILED and CLOSED AT STEP 0 leave it unjudged, and the outcome record says so",
+    "evidence_origin_groups": [
+     "design-packet",
+     "held-source"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-17 (PR #195 packet, \u00a7D-17, read in full at this draft): re-extract the source passage in full; two pre-registered outcomes \u2014 (a) a specific argument is extracted as the claim, with the sign list named and the sign identified, its test designed at that point; (b) a catalogue observation with no argument yields a recommendation, recorded on the record, to retire the fragment as an extraction artefact by an appended, dated disposition. Limit carried verbatim in substance: nothing about sign 821 is decided; this is record repair.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt"
+     ]
+    },
+    {
+     "ref": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Wells (2015), The Archaeology and Epigraphy of Indus Writing, as held cleaned text (SHA-256 62acf855\u2026, recomputed at this draft). The headed section 'The Dholavira signboard, revisited' (cleaned-text lines 2783\u20132871; printed pp. 90\u201394) contains the anchor sentence 'Whatever sign 821 reads it is used in a variety of contexts (Figure 6.13).' (unique, occurrence count 1); the byte slice between the anchor heading lines hashes to 51d6fb3a\u2026 (5,354 bytes, draft-observed).",
+     "source_id": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/03-fragments.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F056-C04",
+   "kind": "requirement",
+   "text": "If re-extraction under the spec \u00a74 protocol recovers no proposition passing the \u00a75 recovery test, the outcome is RETIREMENT RECOMMENDED.",
+   "status": "draft",
+   "boundary": [
+    "Retirement is a disposition of the fragment as a record, reached only by the full protocol (both extraction passes and the reconciliation). It asserts that the fragment states no recoverable proposition; it asserts nothing about the source book's other discussions of sign 821, which are outside spec \u00a72's bounds. Carried from the draft text: the fragment is retired on the record as an extraction artefact in the mechanical form of spec \u00a77."
+   ],
+   "depends_on": [
+    "F056-C03"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "if any reconciled candidate passes R-1 through R-5, this claim's condition does not arise and the outcome is RECOVERED under F056-C10"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a no-recovery result could be misread as a verdict against the source or the sign; the requirement exists so the retirement is recorded as the record-repair finding it is",
+    "verdict_rule": "the outcome record must carry the RETIREMENT RECOMMENDED wording of spec \u00a76.1 and the \u00a77 disposition append whenever the condition holds",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-17 (PR #195 packet, \u00a7D-17, read in full at this draft): re-extract the source passage in full; two pre-registered outcomes \u2014 (a) a specific argument is extracted as the claim, with the sign list named and the sign identified, its test designed at that point; (b) a catalogue observation with no argument yields a recommendation, recorded on the record, to retire the fragment as an extraction artefact by an appended, dated disposition. Limit carried verbatim in substance: nothing about sign 821 is decided; this is record repair.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F056-C05",
+   "kind": "requirement",
+   "text": "The passage of record is the headed section 'The Dholavira signboard, revisited' of the held cleaned text of Wells (2015).",
+   "status": "draft",
+   "boundary": [
+    "The source file's SHA-256 (62acf855\u2026) governs; line numbers (cleaned-text lines 2783\u20132871) and printed pages (90\u201394) are locators subordinate to it. The draft-observed passage slice is 5,354 bytes with SHA-256 51d6fb3a\u2026; the freeze re-computes it byte-exactly and pins it. The passage as held is the passage as cleaned text \u2014 sign glyphs dropped, Figure 6.13 present only as its caption. Freeze rulings: DD-056-10 confirms these bounds and pins the passage digest byte-exactly at the freeze (5,354 bytes, SHA-256 51d6fb3a460d94abc98c2ff735b17c5131a68c203e4d16692a21725790c0c604, recomputed at the freeze from the pinned held text); DD-056-13 confirms the text-only position - Figure 6.13 is graphic-only in the held text, present only as its caption, so a contention carried only by the figure's images or by a dropped glyph is outside the passage of record and unrecoverable under this spec, and that limit stands as a stated boundary of the recovery test wherever the outcome is stated. Carried from the draft text: it is bounded by its standalone heading line and the next standalone heading line 'The Mohenjo-daro bangle pot', contains the anchor sentence 'Whatever sign 821 reads it is used in a variety of contexts (Figure 6.13).', and is pinned by the source file's SHA-256 and the passage slice's digest."
+   ],
+   "depends_on": [
+    "F056-C02"
+   ],
+   "assumptions": [
+    "ASM-HELD-SOURCE",
+    "ASM-PASSAGE-IS-SECTION"
+   ],
+   "alternatives": [
+    "a narrower passage (the anchor paragraph alone \u2014 refused at draft: it would repeat the extraction error that created the fragment)",
+    "a wider passage (the whole chapter or book \u2014 refused at draft: it would import arguments the extraction never pointed at)"
+   ],
+   "falsification_tests": [
+    "gates 0.2 and 0.3 are the operational tests: a produced document in which either anchor line or the anchor sentence cannot be located verbatim, or whose slice does not recompute to the freeze-pinned digest, closes the run at step 0"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a differently bounded passage could be substituted at execution, silently changing what 'the passage argues' means",
+    "verdict_rule": "the pin is judged by the step-0 gates: anchors located verbatim and slice digest recomputed, in the run's own record, before any extraction pass",
+    "evidence_origin_groups": [
+     "held-source"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Wells (2015), The Archaeology and Epigraphy of Indus Writing, as held cleaned text (SHA-256 62acf855\u2026, recomputed at this draft). The headed section 'The Dholavira signboard, revisited' (cleaned-text lines 2783\u20132871; printed pp. 90\u201394) contains the anchor sentence 'Whatever sign 821 reads it is used in a variety of contexts (Figure 6.13).' (unique, occurrence count 1); the byte slice between the anchor heading lines hashes to 51d6fb3a\u2026 (5,354 bytes, draft-observed).",
+     "source_id": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F056-C06",
+   "kind": "requirement",
+   "text": "Execution stops before any extraction pass if an input hash mismatches.",
+   "status": "draft",
+   "boundary": [
+    "These are spec \u00a73's gates 0.1, 0.2, and 0.3, closing respectively as CLOSED AT STEP 0 \u2014 INPUT PIN MISMATCH, PASSAGE NOT PRODUCIBLE, and PASSAGE PIN MISMATCH. No failure is repaired at run time; a different edition, a remembered passage, or an approximated slice is a new freeze, not a resumed run. Carried from the draft text: execution also stops if the passage cannot be produced from the program's held copy with its anchors and anchor sentence located verbatim, or if the passage slice does not recompute to its freeze-pinned digest."
+   ],
+   "depends_on": [
+    "F056-C05"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "each gate's check is itself the test: the execution record must show every gate's verdict before the first extraction sheet, or the run is non-compliant on its face"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "gate-skipping under familiarity \u2014 the book is well known to the program, and a run could proceed from memory while reporting the gates as passed",
+    "verdict_rule": "the run's own record is the judge: gate verdicts precede extraction sheets in it, in order, or the outcome is CLOSED AT STEP 0 by construction",
+    "evidence_origin_groups": [
+     "held-source",
+     "claim-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Wells (2015), The Archaeology and Epigraphy of Indus Writing, as held cleaned text (SHA-256 62acf855\u2026, recomputed at this draft). The headed section 'The Dholavira signboard, revisited' (cleaned-text lines 2783\u20132871; printed pp. 90\u201394) contains the anchor sentence 'Whatever sign 821 reads it is used in a variety of contexts (Figure 6.13).' (unique, occurrence count 1); the byte slice between the anchor heading lines hashes to 51d6fb3a\u2026 (5,354 bytes, draft-observed).",
+     "source_id": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json"
+     ]
+    },
+    {
+     "ref": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The fragment's claim record (SHA-256 bd0f7abd\u2026, recomputed at this draft from main at 83b6a563): normalized_claim 'Sign value: 821 / it is used in a variety of contexts (Figure 6' (truncated mid-reference), claim_status untested, stage created; adopted explanation and not-understood text state the fragment carries no proposition and name the full source passage as what would change the picture.",
+     "source_id": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F056-C07",
+   "kind": "requirement",
+   "text": "Re-extraction is two independent passes over the pinned passage only.",
+   "status": "draft",
+   "boundary": [
+    "Neither pass may consult the claim record's adopted explanation, the design packet, this spec's \u00a71, any other passage of the book, or any corpus or positional result while extracting. A candidate without its quote does not exist for this act; a proposition assembled from sentences in different parts of the book is not a candidate. Freeze rulings: DD-056-14 confirms the two-pass mechanics - the passes are two independent executor runs, each seeing only the pinned passage and spec section 5, and unsettled disagreement resolves against recovery; DD-056-16 requires a worked dry-run of the section 4-5 sheet and checklist machinery on a passage other than the passage of record before the protocol touches the fragment. Carried from the draft text: each pass produces an extraction sheet of candidate propositions carried by verbatim quotes with locators, followed by a recorded reconciliation whose candidate set is the union of the sheets and whose unsettled disagreements resolve against recovery."
+   ],
+   "depends_on": [
+    "F056-C05",
+    "F056-C06"
+   ],
+   "assumptions": [
+    "ASM-TWO-PASS",
+    "ASM-PASSAGE-IS-SECTION"
+   ],
+   "alternatives": [
+    "a single extraction pass (refused at draft: argument versus catalogue observation is a judgement, and one unrecorded reading would carry the act)",
+    "crediting an argument from the book's Chapter 3 or appendix discussions of sign 821 (refused: those passages exist and are excluded by spec \u00a72, on the record)"
+   ],
+   "falsification_tests": [
+    "the sheets and reconciliation are deliverables on every non-closure outcome; a RECOVERED or RETIREMENT RECOMMENDED outcome whose sheets are absent, single, or show material outside the \u00a72 bounds falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the extractor's prior knowledge of the book \u2014 including its suggested reading for this sign \u2014 presenting itself as the passage's argument, or burying a candidate it dislikes",
+    "verdict_rule": "compliance is judged from the sheets themselves: two sheets, quotes inside the pinned slice, reconciliation entries quoting the passage text that settles each disagreement or recording it as unsettled",
+    "evidence_origin_groups": [
+     "held-source",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Wells (2015), The Archaeology and Epigraphy of Indus Writing, as held cleaned text (SHA-256 62acf855\u2026, recomputed at this draft). The headed section 'The Dholavira signboard, revisited' (cleaned-text lines 2783\u20132871; printed pp. 90\u201394) contains the anchor sentence 'Whatever sign 821 reads it is used in a variety of contexts (Figure 6.13).' (unique, occurrence count 1); the byte slice between the anchor heading lines hashes to 51d6fb3a\u2026 (5,354 bytes, draft-observed).",
+     "source_id": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/03-fragments.md"
+     ]
+    },
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-17 (PR #195 packet, \u00a7D-17, read in full at this draft): re-extract the source passage in full; two pre-registered outcomes \u2014 (a) a specific argument is extracted as the claim, with the sign list named and the sign identified, its test designed at that point; (b) a catalogue observation with no argument yields a recommendation, recorded on the record, to retire the fragment as an extraction artefact by an appended, dated disposition. Limit carried verbatim in substance: nothing about sign 821 is decided; this is record repair.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F056-C08",
+   "kind": "requirement",
+   "text": "A candidate proposition is a recovered claim only under the recovery test of spec \u00a75.",
+   "status": "draft",
+   "boundary": [
+    "The conditions are conjunctive and are applied per candidate on the reconciled sheet, with the failing condition named for every candidate that fails. The design's illustrations (a spread that rules out a narrow meaning; a specific classification) illustrate R-2's form and bind nothing else. Freeze ruling: the conjunctive R-1 through R-5 recovery test is confirmed as drafted; a candidate failing any one condition is not recovered, with the failing condition named. Carried from the draft text: R-1 it is stated from the passage's own argument and is not the bare fragment restated; R-2 it is a specific contention a contrary finding could oppose; R-3 its subject is identified under F056-C09; R-4 a falsification condition is statable from the passage's own logic; R-5 the passage's stated numbers, contexts, and conditions are carried with it. Carried from the 0.7-draft head text: a candidate is a recovered claim if and only if it passes all five recovery conditions."
+   ],
+   "depends_on": [
+    "F056-C03",
+    "F056-C07"
+   ],
+   "assumptions": [
+    "ASM-CLAIM-FORM"
+   ],
+   "alternatives": [
+    "recovering a specific but unfalsifiable assertion (refused: specificity without a falsification condition is the fragment's own defect, at greater length)",
+    "inventing a falsification condition the passage's logic does not supply (refused under R-4: that manufactures the claim the act exists to test for)"
+   ],
+   "falsification_tests": [
+    "the checklist per candidate is the test: the outcome record must show R-1\u2026R-5 per reconciled candidate, and any outcome inconsistent with its own checklists falsifies the outcome record"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "post-hoc condition-shopping once a favoured candidate is known \u2014 softening R-2 or R-4 to let it through, or hardening them to keep it out",
+    "verdict_rule": "the conditions are frozen in this register before any extraction pass exists; checklists are recomputed from the sheets' quotes by any reader",
+    "evidence_origin_groups": [
+     "design-packet",
+     "claim-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-17 (PR #195 packet, \u00a7D-17, read in full at this draft): re-extract the source passage in full; two pre-registered outcomes \u2014 (a) a specific argument is extracted as the claim, with the sign list named and the sign identified, its test designed at that point; (b) a catalogue observation with no argument yields a recommendation, recorded on the record, to retire the fragment as an extraction artefact by an appended, dated disposition. Limit carried verbatim in substance: nothing about sign 821 is decided; this is record repair.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json"
+     ]
+    },
+    {
+     "ref": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The fragment's claim record (SHA-256 bd0f7abd\u2026, recomputed at this draft from main at 83b6a563): normalized_claim 'Sign value: 821 / it is used in a variety of contexts (Figure 6' (truncated mid-reference), claim_status untested, stage created; adopted explanation and not-understood text state the fragment carries no proposition and name the full source passage as what would change the picture.",
+     "source_id": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/03-fragments.md"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F056-C09",
+   "kind": "requirement",
+   "text": "A candidate's subject is identified only if the sign list the passage's numbering belongs to is named from the document itself.",
+   "status": "draft",
+   "boundary": [
+    "The registry route is known at draft to be doubtful: the pinned registry carries no wells_ids = W821 entry, so the list-entry route may carry the identification. The registry's Yunmapped_0821 row is a Yajnadevam glyph identifier and is never the passage's sign. If a candidate passes R-1, R-2, R-4, and R-5 but identification fails, the outcome is IDENTIFICATION FAILED \u2014 the fragment is neither recovered nor retired. Freeze ruling DD-056-11 confirms the IDENTIFICATION FAILED closure and its mapping as drafted. Carried from the draft text: the drawn sign is identified by drawn form through the crosswalk registry or by the source list's own published entry quoted with its locator; matching by number alone is forbidden."
+   ],
+   "depends_on": [
+    "F056-C08"
+   ],
+   "assumptions": [
+    "ASM-HELD-SOURCE"
+   ],
+   "alternatives": [
+    "treating the absence of a registry entry as proof the sign cannot be identified (refused: the source list's own entry is a complete route)",
+    "retiring the fragment when identification alone fails (refused: the retirement wording asserts an extraction artefact, which is false of a passage that argues something specific)"
+   ],
+   "falsification_tests": [
+    "the outcome record must show, for any candidate reaching R-3, the list named with its document locator and the identification route and reference; an identification resting on a number match falsifies the outcome record"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "number-matching across systems \u2014 the fragment family's standing trap, which would identify a different drawn sign and recover a claim about the wrong sign",
+    "verdict_rule": "identification is judged by the recorded route and reference, inspectable against the pinned registry and the produced document",
+    "evidence_origin_groups": [
+     "crosswalk-registry",
+     "held-source"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "data/crosswalks/canonical_sign_registry.csv",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Crosswalk registry (SHA-256 8a0b2a82\u2026, recomputed at this draft; 803 rows as held today). Verified at this draft: no row carries wells_ids = W821; the row Yunmapped_0821 is a Yajnadevam glyph identifier, not a Wells number \u2014 the number-collision trap spec \u00a75 R-3 names.",
+     "source_id": "data/crosswalks/canonical_sign_registry.csv",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt"
+     ]
+    },
+    {
+     "ref": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Wells (2015), The Archaeology and Epigraphy of Indus Writing, as held cleaned text (SHA-256 62acf855\u2026, recomputed at this draft). The headed section 'The Dholavira signboard, revisited' (cleaned-text lines 2783\u20132871; printed pp. 90\u201394) contains the anchor sentence 'Whatever sign 821 reads it is used in a variety of contexts (Figure 6.13).' (unique, occurrence count 1); the byte slice between the anchor heading lines hashes to 51d6fb3a\u2026 (5,354 bytes, draft-observed).",
+     "source_id": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "data/crosswalks/canonical_sign_registry.csv"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F056-C10",
+   "kind": "requirement",
+   "text": "The headline outcome of an execution is assigned by the mapping of spec \u00a76 alone.",
+   "status": "draft",
+   "boundary": [
+    "RECOVERED means at least one candidate passed R-1\u2026R-5; RETIREMENT RECOMMENDED means no candidate survived the argument conditions; IDENTIFICATION FAILED is the R-3 closure of \u00a75; CLOSED AT STEP 0 is a \u00a73 gate closure in its named class. No fifth word exists, and no outcome is partial. Carried from the draft text: the headline outcome is exactly one of RECOVERED, RETIREMENT RECOMMENDED, IDENTIFICATION FAILED, or CLOSED AT STEP 0."
+   ],
+   "depends_on": [
+    "F056-C04",
+    "F056-C08",
+    "F056-C09"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "the outcome record's headline word must be derivable from the gate record, the sheets, and the per-candidate checklists by this claim's definitions alone"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "outcome-shopping: choosing the word that flatters the program's record after the sheets are known",
+    "verdict_rule": "the mapping from protocol records to outcome words is fixed here, before execution; the outcome record shows the records and the word together",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-17 (PR #195 packet, \u00a7D-17, read in full at this draft): re-extract the source passage in full; two pre-registered outcomes \u2014 (a) a specific argument is extracted as the claim, with the sign list named and the sign identified, its test designed at that point; (b) a catalogue observation with no argument yields a recommendation, recorded on the record, to retire the fragment as an extraction artefact by an appended, dated disposition. Limit carried verbatim in substance: nothing about sign 821 is decided; this is record repair.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F056-C11",
+   "kind": "requirement",
+   "text": "A recovered claim enters the lifecycle at the created stage with status untested.",
+   "status": "draft",
+   "boundary": [
+    "Recovery is the claim's creation in proper form, not its checking: the test-design note states what would be checked, on what named data, against the R-4 condition, and designing it is part of the recovery output because the design fixes that the test belongs to the recovered claim and is designed when the argument is known. The claim's later lifecycle acts are its own future acts, outside this spec and outside the campaign pass. Freeze rulings: DD-056-12 confirms the recovered claim's placement as this appended restatement on the fragment's own record (DD-056-3); DD-056-6 is confirmed - a recovered claim enters at created, untested, with a designed-never-run test note; DD-056-17 fixes the test-design note's minimum depth at what would be checked, on what named data, against the R-4 condition. Carried from the draft text: it is recorded as an appended, dated restatement on the fragment's own claim record with its quote, identification, falsification condition, and a test-design note; no test of it is run under this spec."
+   ],
+   "depends_on": [
+    "F056-C08",
+    "F056-C10"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "recording the recovered claim as a brand-new claim record with a new identifier (refused at draft, DD-056-3: the fragment's own record is what is repaired, and a new identifier would orphan its provenance; OPEN for the freeze to reverse openly)",
+    "presenting recovery as support (refused: nothing has been checked)"
+   ],
+   "falsification_tests": [
+    "inspection: any Spec 056 product that stages a recovered claim above created, marks it other than untested, or reports a test result for it falsifies compliance with this requirement"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the pressure to let a clean recovery read as a result \u2014 'the passage argues X' quietly becoming 'X'",
+    "verdict_rule": "the restatement entry's own text carries the stage, the status, and the no-test sentence; compliance is judged from that entry and the outcome record at execution close",
+    "evidence_origin_groups": [
+     "claim-record",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The fragment's claim record (SHA-256 bd0f7abd\u2026, recomputed at this draft from main at 83b6a563): normalized_claim 'Sign value: 821 / it is used in a variety of contexts (Figure 6' (truncated mid-reference), claim_status untested, stage created; adopted explanation and not-understood text state the fragment carries no proposition and name the full source passage as what would change the picture.",
+     "source_id": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/03-fragments.md"
+     ]
+    },
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-17 (PR #195 packet, \u00a7D-17, read in full at this draft): re-extract the source passage in full; two pre-registered outcomes \u2014 (a) a specific argument is extracted as the claim, with the sign list named and the sign identified, its test designed at that point; (b) a catalogue observation with no argument yields a recommendation, recorded on the record, to retire the fragment as an extraction artefact by an appended, dated disposition. Limit carried verbatim in substance: nothing about sign 821 is decided; this is record repair.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F056-C12",
+   "kind": "requirement",
+   "text": "On RETIREMENT RECOMMENDED, execution writes exactly the entries spec \u00a77 enumerates.",
+   "status": "draft",
+   "boundary": [
+    "The appended disposition is the whole mechanical content of 'retired on the record': from it onward the fragment's live reading is retired artefact on this spec's recorded recommendation, while its extracted record, Phase-104 evaluation, and adopted lane-2 explanation stand unedited as its history. If a further program act is needed to strike the fragment from a listing this spec does not name, the outcome record names that act as outstanding instead of performing it. Freeze ruling DD-056-15 confirms DD-056-5: 'retired on the record' means exactly these appends - the outcome record, the appended dated disposition entry, the LEDGER entry, and the graph-node record; the execution deletes nothing, and these appends are the complete mechanical content of retirement for every program surface that presents the fragment as a claim. Carried from the draft text: the outcome record with both sheets and the reconciliation, an appended dated disposition entry on the fragment's claim record stating the retirement and its grounds, the LEDGER entry, and the graph-node record - and execution deletes nothing and edits no prior record."
+   ],
+   "depends_on": [
+    "F056-C04",
+    "F056-C10"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "deleting or withdrawing the fragment's record (refused: retirement on the record is a disposition appended to history, not an erasure of it)",
+    "a bare recommendation with no disposition append (refused: an unrecorded recommendation changes nothing the record shows)"
+   ],
+   "falsification_tests": [
+    "file inspection at execution close: the \u00a77 entries present in the stated form, and the pinned prior records' hashes unchanged, together constitute compliance; either half failing falsifies it"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "quiet deletion dressed as retirement, or a retirement announced in prose that no record entry carries out",
+    "verdict_rule": "compliance is judged by the presence of the enumerated appends and the byte-identity of the prior records they append to and beside",
+    "evidence_origin_groups": [
+     "claim-record",
+     "phase104-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The fragment's claim record (SHA-256 bd0f7abd\u2026, recomputed at this draft from main at 83b6a563): normalized_claim 'Sign value: 821 / it is used in a variety of contexts (Figure 6' (truncated mid-reference), claim_status untested, stage created; adopted explanation and not-understood text state the fragment carries no proposition and name the full source passage as what would change the picture.",
+     "source_id": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/reports/phase104_claims_evaluation.json"
+     ]
+    },
+    {
+     "ref": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-104 evaluation (SHA-256 2d0b83e8\u2026, recomputed at this draft): this claim stays_untested under RULE-NUM \u2014 sign number cited without a stated numbering system, no matching entry located in the crosswalk (86 numeric IDs present in that record), and no falsification condition carried.",
+     "source_id": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F056-C13",
+   "kind": "requirement",
+   "text": "Every execution product carries the passage of record in full identification.",
+   "status": "draft",
+   "boundary": [
+    "The reporting set is outcome-independent: a retirement, a closure, and a recovery are reported with the same completeness and prominence. On a step-0 closure the gate record replaces the sheets, because no sheet may exist. Carried from the draft text: document, anchor lines, printed pages, digest, anchor sentence quoted, both extraction sheets with the reconciliation or the step-0 gate record, the per-candidate R-1 through R-5 checklists, the outcome word with its spec section 6.1 pre-written wording, and the fence sentence of spec section 8."
+   ],
+   "depends_on": [
+    "F056-C10"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "an execution product lacking any element of the reporting set falsifies compliance; a headline word not matching a spec \u00a76.1 form falsifies the outcome record"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a disappointing outcome reported thinly \u2014 a retirement or closure whose sheets or gate record never surface, leaving only the word",
+    "verdict_rule": "the reporting set is a checklist over the execution's own products, applied at execution close before the outcome is recorded as complete",
+    "evidence_origin_groups": [
+     "held-source",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Wells (2015), The Archaeology and Epigraphy of Indus Writing, as held cleaned text (SHA-256 62acf855\u2026, recomputed at this draft). The headed section 'The Dholavira signboard, revisited' (cleaned-text lines 2783\u20132871; printed pp. 90\u201394) contains the anchor sentence 'Whatever sign 821 reads it is used in a variety of contexts (Figure 6.13).' (unique, occurrence count 1); the byte slice between the anchor heading lines hashes to 51d6fb3a\u2026 (5,354 bytes, draft-observed).",
+     "source_id": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/03-fragments.md"
+     ]
+    },
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-17 (PR #195 packet, \u00a7D-17, read in full at this draft): re-extract the source passage in full; two pre-registered outcomes \u2014 (a) a specific argument is extracted as the claim, with the sign list named and the sign identified, its test designed at that point; (b) a catalogue observation with no argument yields a recommendation, recorded on the record, to retire the fragment as an extraction artefact by an appended, dated disposition. Limit carried verbatim in substance: nothing about sign 821 is decided; this is record repair.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F056-C14",
+   "kind": "requirement",
+   "text": "No outcome under Spec 056 establishes anything about sign 821.",
+   "status": "draft",
+   "boundary": [
+    "Also excluded, and stated wherever an outcome is stated: any conclusion about the source book's other passages, any reading or classification of any sign, and \u2014 for a retirement \u2014 any refutation of anything the source says elsewhere. Recovery establishes that a passage argues a proposition; retirement establishes that a fragment states none. Both are statements about records. Carried from the draft text: a recovered claim is not thereby true, supported, or checked."
+   ],
+   "depends_on": [
+    "F056-C01",
+    "F056-C03",
+    "F056-C04",
+    "F056-C11"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "a mechanism or reading narrative attached to a recovery because the passage 'suggests' one beyond its stated proposition (refused: the recovered claim is the passage's proposition in form, nothing larger)"
+   ],
+   "falsification_tests": [
+    "inspection of every Spec 056 output: a statement about the sign, a reading, or the recovered proposition's truth in any output falsifies compliance and is corrected by dated addendum, never by silent edit"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-RECOVERY-AS-VERDICT"
+    ],
+    "strongest_rival": "the reading in which repairing the record settles something about the script",
+    "verdict_rule": "outputs are judged against this boundary at execution close; violations are recorded defects, and the act's consequence is limited to the record statements of F056-C01",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-17 (PR #195 packet, \u00a7D-17, read in full at this draft): re-extract the source passage in full; two pre-registered outcomes \u2014 (a) a specific argument is extracted as the claim, with the sign list named and the sign identified, its test designed at that point; (b) a catalogue observation with no argument yields a recommendation, recorded on the record, to retire the fragment as an extraction artefact by an appended, dated disposition. Limit carried verbatim in substance: nothing about sign 821 is decided; this is record repair.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "observed_at": "2026-10-21"
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F056-C15",
+   "kind": "requirement",
+   "text": "Spec 056 appends records only.",
+   "status": "draft",
+   "boundary": [
+    "Appends are dated entries in the forms spec \u00a77 fixes, placed on the records \u00a77 names. A correction to any Spec 056 output is itself a dated append, never a silent edit. Carried from the draft text: the fragment's extracted record, the Phase-104 evaluation, the lane-2 adopted texts, and every frozen record stand unedited by any outcome of this spec."
+   ],
+   "depends_on": [
+    "F056-C11",
+    "F056-C12"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "folding a recovered proposition back into the fragment's original normalized_claim text (refused: the original text is the evidence the recovery started from)"
+   ],
+   "falsification_tests": [
+    "the pinned hashes of the prior records are re-asserted at execution close; any change to a prior record falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the tidiness pressure to rewrite the fragment record so it 'says the claim now', erasing what was actually extracted in the first place",
+    "verdict_rule": "compliance is judged by hash re-assertion and by the appends' dated, additive form at execution close",
+    "evidence_origin_groups": [
+     "claim-record",
+     "phase104-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The fragment's claim record (SHA-256 bd0f7abd\u2026, recomputed at this draft from main at 83b6a563): normalized_claim 'Sign value: 821 / it is used in a variety of contexts (Figure 6' (truncated mid-reference), claim_status untested, stage created; adopted explanation and not-understood text state the fragment carries no proposition and name the full source passage as what would change the picture.",
+     "source_id": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/reports/phase104_claims_evaluation.json",
+      "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json"
+     ]
+    },
+    {
+     "ref": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-104 evaluation (SHA-256 2d0b83e8\u2026, recomputed at this draft): this claim stays_untested under RULE-NUM \u2014 sign number cited without a stated numbering system, no matching entry located in the crosswalk (86 numeric IDs present in that record), and no falsification condition carried.",
+     "source_id": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+      "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json"
+     ]
+    },
+    {
+     "ref": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Lane-2 adopted drafts (SHA-256 3f645c9a\u2026, recomputed at this draft): this claim's entry stands at stage created, lane-1 status untested, gist 'Fragment only: Sign 821 is used in a variety of contexts. Too thin to test.'",
+     "source_id": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+      "glossa-indus/reports/phase104_claims_evaluation.json"
+     ]
+    }
+   ],
+   "stage": "created"
+  }
+ ]
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — Admin · Workspaces (Spec 083 wireframe 09)</title>
+<link rel="stylesheet" href="wireframes.css">
+</head>
+<body>
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-row">
+        <div class="tile">G</div>
+        <div>
+          <div class="brand-name">Glossa Lab</div>
+          <div class="brand-sub">Epistemic research workbench</div>
+        </div>
+      </div>
+    </div>
+    <div class="program-switch">
+      <div class="ps-label">Workspace</div>
+      <div class="ps-name">Indus Script <span>▾</span></div>
+      <div class="ps-q">What do the signs of the Indus script mean?</div>
+    </div>
+    <nav class="nav">
+      <h4>Workspace</h4>
+      <a href="#"><span class="ic">⌂</span>Home</a>
+      <a href="#"><span class="ic">§</span>Claims</a>
+      <a href="#"><span class="ic">✓</span>Digestion</a>
+      <a href="#"><span class="ic">▤</span>Evidence &amp; sources</a>
+      <h4>Tool</h4>
+      <a href="07-shell-membership.html"><span class="ic">▦</span>Workspaces</a>
+      <a href="#"><span class="ic">⚙</span>Jobs</a>
+      <a href="#"><span class="ic">♥</span>Status</a>
+      <a href="#"><span class="ic">⚙</span>Settings</a>
+      <h4>Admin</h4>
+      <a href="04-admin-users.html"><span class="ic">👥</span>Users</a>
+      <a href="09-admin-workspaces.html" class="active"><span class="ic">▦</span>Workspaces</a>
+      <a href="05-admin-invites.html"><span class="ic">✉</span>Invites<span class="count">1</span></a>
+      <a href="06-admin-audit.html"><span class="ic">☰</span>Audit log</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="crumb"><b>Glossa Lab</b> / Admin / Workspaces</span>
+      <div class="spacer"></div>
+      <div class="service-chip"><span class="dot"></span><span><b>Glossa Lab v0.1.0</b> · cloud · checked 09:41</span></div>
+      <div class="user-chip"><span class="avatar">g</span><span><b>glassbreak</b> <span class="role">· admin</span></span><span>▾</span></div>
+    </div>
+
+    <div class="content">
+      <div class="head-row">
+        <div class="page-head">
+          <h1>Admin</h1>
+          <p class="lede">Workspaces are the tenancy unit of this edition: claims, evidence, jobs and membership all live inside one workspace, and no workspace sees another&rsquo;s data. Every action on this screen is written to the audit log.</p>
+        </div>
+        <div class="spacer"></div>
+        <a class="btn primary" href="#create-workspace">+ Create workspace</a>
+      </div>
+
+      <div class="tabs">
+        <a href="04-admin-users.html">Users<span class="count">3</span></a>
+        <a href="09-admin-workspaces.html" class="active">Workspaces<span class="count">3</span></a>
+        <a href="05-admin-invites.html">Invites<span class="count">1 outstanding</span></a>
+        <a href="06-admin-audit.html">Audit log</a>
+      </div>
+
+      <div class="card">
+        <table class="tbl">
+          <thead><tr><th>Workspace</th><th>Members</th><th>Your role</th><th>Status</th><th>Created</th><th></th></tr></thead>
+          <tbody>
+            <tr>
+              <td><b>Indus Script</b> <span class="chip contest">Primary</span><div class="row-meta">Seeded at first-run setup · what do the signs of the Indus script mean?</div></td>
+              <td>4</td>
+              <td><span class="chip contest">admin</span></td>
+              <td><span class="chip ok">active</span></td>
+              <td>Oct 30</td>
+              <td><button class="btn small">Manage</button></td>
+            </tr>
+            <tr>
+              <td><b>Comparative Scripts</b> <span class="chip line">specimen</span><div class="row-meta">Cross-script comparisons against the Indus corpus</div></td>
+              <td>2</td>
+              <td><span class="chip neutral">member</span></td>
+              <td><span class="chip ok">active</span></td>
+              <td>Oct 30</td>
+              <td><button class="btn small">Manage</button> <button class="btn small danger-quiet">Archive</button></td>
+            </tr>
+            <tr>
+              <td><b>Legacy Corpus Import</b> <span class="chip line">specimen</span><div class="row-meta">Import staging — kept for its record after the import finished</div></td>
+              <td>1</td>
+              <td><span class="chip neutral">viewer</span></td>
+              <td><span class="chip warn">archived</span></td>
+              <td>Oct 30</td>
+              <td><button class="btn small">Manage</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="divider"></div>
+        <p class="row-meta"><b>Your role</b> is the signed-in admin&rsquo;s own role in each workspace — an admin of the edition is not automatically an admin of every workspace; the role shown here is the stored grant, and it is what the workspace enforces. <b>Manage</b> opens: name &amp; description · members and their roles (see wireframe 10) · archive or restore.</p>
+      </div>
+
+      <div class="grid main-side" style="margin-top:14px">
+        <div class="card" id="create-workspace">
+          <h3>Create workspace <span class="sub">— an admin act; there is no member-facing create path</span></h3>
+          <div class="field">
+            <label for="ws-name">Name</label>
+            <input id="ws-name" type="text" value="" placeholder="e.g. Comparative Scripts">
+          </div>
+          <div class="field">
+            <label for="ws-desc">Description <span class="hint">— the question or scope this workspace holds, shown on its card</span></label>
+            <input id="ws-desc" type="text" value="" placeholder="What is this workspace for?">
+          </div>
+          <div class="field">
+            <label>Initial members <span class="hint">— pick from existing users; new people enter the edition by invite first</span></label>
+            <div class="row-item"><input type="checkbox" checked aria-label="Add glassbreak" style="width:auto;flex-shrink:0;margin-top:3px"> <div class="grow"><div class="row-title">glassbreak <span class="chip line">you</span></div><div class="row-meta">Added as Owner of the new workspace</div></div></div>
+            <div class="row-item"><input type="checkbox" checked aria-label="Add j-mensah" style="width:auto;flex-shrink:0;margin-top:3px"> <div class="grow"><div class="row-title">j-mensah</div><div class="row-meta">Added as Member</div></div></div>
+            <div class="row-item"><input type="checkbox" aria-label="Add r-hale" style="width:auto;flex-shrink:0;margin-top:3px"> <div class="grow"><div class="row-title">r-hale</div><div class="row-meta">Not added — can be granted later from Admin · Users</div></div></div>
+          </div>
+          <button class="btn primary">Create workspace</button>
+          <span class="row-meta" style="margin-left:8px">Creation, its initial members and their roles are written to the audit log.</span>
+        </div>
+
+        <div class="card" style="border-color:var(--warn)">
+          <h3>Archive workspace <span class="sub">— confirmation specimen</span></h3>
+          <div class="callout warn"><b>Archive &ldquo;Comparative Scripts&rdquo;?</b><br>Its 2 members lose access at their next request and it leaves their workspace switchers. Its claims, evidence and audit history are <b>kept, read-only in the record</b> — archiving is not deletion. An admin can restore it from this screen.</div>
+          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn small">Cancel</button>
+            <button class="btn small" style="background:var(--warn);border-color:var(--warn);color:#fff">Archive workspace</button>
+          </div>
+          <p class="row-meta" style="margin-top:10px">The Primary workspace cannot be archived while it is the edition&rsquo;s primary workspace — its Archive action is absent, not merely disabled.</p>
+        </div>
+      </div>
+
+      <div class="annotation">
+        <div class="a-title">Annotation — wireframe 09 · not part of the UI</div>
+        <dl>
+          <dt>Purpose</dt><dd>Workspace administration: every workspace in the edition on one screen — membership size, the signed-in admin&rsquo;s own role in it, status, and creation date — plus the create and archive acts in the same place.</dd>
+          <dt>Primary action</dt><dd>&ldquo;+ Create workspace&rdquo;, leading to the create form on this screen (name, description, initial members picker).</dd>
+          <dt>Changed &amp; why</dt><dd>New surface for the owner&rsquo;s workspace amendment: the earlier Program concept maps onto Workspace, so this is wireframe 04&rsquo;s table language re-pointed at the tenancy unit itself. The seeded primary workspace, &ldquo;Indus Script&rdquo;, is the first row and is badged Primary; archiving gets a confirmation specimen because it revokes access for every member at once, and the Primary workspace carries no Archive action at all. The &ldquo;Your role&rdquo; column is deliberate: edition admin and workspace role are separate grants, and this screen shows the stored one rather than assuming it.</dd>
+          <dt>Spec claims</dt><dd>C083-16 (workspace creation is an admin act — this surface is admin-only and the form states there is no member-facing create path), C083-18 (workspace isolation — the lede states the tenancy rule where workspaces are administered, and an archived workspace leaves its members&rsquo; switchers).</dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</div>
+<nav class="mobile-nav">
+  <a href="#"><span class="mi">⌂</span>Home</a>
+  <a href="#"><span class="mi">§</span>Claims</a>
+  <a href="#"><span class="mi">✓</span>Digestion</a>
+  <a href="#"><span class="mi">⚙</span>Jobs</a>
+  <a href="09-admin-workspaces.html" class="active"><span class="mi">☰</span>More</a>
+</nav>
+</body>
+</html>

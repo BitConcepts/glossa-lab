@@ -69,7 +69,7 @@ export function ProjectProvider({ children }: { children: React.ReactNode }) {
       if (storedId && !preferGlobal) {
         resolved = ps.find((p) => p.id === storedId) ?? null;
       }
-      if (!resolved) {
+      if (!resolved && !preferGlobal) {
         try {
           const backendActive = await getActiveProject();
           resolved = ps.find((p) => p.id === backendActive.id) ?? null;

@@ -1,0 +1,31 @@
+# Spec 083 (T006): keep the cloud image build context to what the
+# image actually contains — backend/, frontend/ sources, and the
+# extracted-claims store. The research dataset is never baked in
+# (it hydrates from R2 bundles); local runtime state likewise.
+.git
+.github
+.specify
+correspondence
+.correspondence
+.glossa-state
+.chronomemory
+outputs
+data
+reports
+research
+specs
+tools
+tray
+validation
+glossa-corpus
+external
+services
+docs
+**/__pycache__
+**/*.py[cod]
+.pytest_cache
+frontend/node_modules
+backend/venv
+venv
+*.md
+!backend/README.md

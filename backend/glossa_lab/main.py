@@ -39,6 +39,7 @@ from glossa_lab.api.experiments import router as experiments_router
 from glossa_lab.api.foundation_check import router as foundation_check_router
 from glossa_lab.api.health import router as health_router
 from glossa_lab.api.indus_evidence import router as indus_evidence_router
+from glossa_lab.api.indus_evidence import scoped_router as programs_evidence_router
 from glossa_lab.api.jobs import router as jobs_router
 from glossa_lab.api.model_assignments import router as model_assignments_router
 from glossa_lab.api.notifications import router as notifications_router
@@ -57,13 +58,15 @@ from glossa_lab.api.results import router as results_router
 from glossa_lab.api.settings import router as settings_router
 from glossa_lab.api.shutdown import router as shutdown_router
 from glossa_lab.api.status import router as status_router
+from glossa_lab.api.spec_studies import router as spec_studies_router
 from glossa_lab.api.studies import router as studies_router
 from glossa_lab.api.system import router as system_router
 from glossa_lab.api.terminal import router as terminal_router
 from glossa_lab.api.signs import router as signs_router
 from glossa_lab.api.sign_images import router as sign_images_router
 from glossa_lab.api.texts import router as texts_router
-from glossa_lab.config import get_settings
+from glossa_lab.auth import ApiTokenMiddleware, auth_disabled, token_file_path
+from glossa_lab.config import cloud_mode_enabled, get_settings
 from glossa_lab.database import close_db, init_db
 from glossa_lab.engine import run_engine_loop
 from glossa_lab.log_setup import setup_logging
@@ -88,6 +91,13 @@ def get_ollama_state() -> dict[str, bool]:
 def _try_start_ollama() -> None:
     """Start `ollama serve` in the background if Ollama is installed."""
     global _ollama_installed, _ollama_started  # noqa: PLW0603
+
+    # Spec 083 (T007): in cloud mode Ollama is neither bundled nor
+    # probed — report offline exactly as on a desktop without Ollama.
+    if cloud_mode_enabled():
+        _ollama_installed = False
+        _ollama_started = False
+        return
 
     exe = shutil.which("ollama")
     if exe is None:
@@ -364,6 +374,34 @@ def create_app() -> FastAPI:
             content={"detail": f"{type(exc).__name__}: {exc}"},
         )
 
+    # Spec 082: per-install API token enforcement (FR-001). Added
+    # BEFORE CORS so CORS stays the outermost middleware and dev-mode
+    # preflights are answered by CORS, not rejected by auth. The
+    # startup posture is logged — mode and token file path, never
+    # the value (FR-006).
+    application.add_middleware(ApiTokenMiddleware)
+
+    # Spec 083 Step 2 (T018/T019): workspace scope enforcement. Cloud
+    # mode only — under GLOSSA_CLOUD=1 the edge-injected identity is
+    # enforced per request (service credential, scoped 404s, terminal
+    # gating; see glossa_lab/cloud_scope.py). Desktop installs never
+    # install it and are unchanged.
+    if cloud_mode_enabled():
+        from glossa_lab.cloud_scope import CloudScopeMiddleware  # noqa: PLC0415
+
+        application.add_middleware(CloudScopeMiddleware)
+        _log.info("Cloud mode: workspace scope middleware installed (Spec 083)")
+    if auth_disabled():
+        _log.warning(
+            "API token authentication DISABLED by GLOSSA_API_AUTH=off "
+            "(Spec 082 FR-006 named switch) — health reports auth: disabled"
+        )
+    else:
+        _log.info(
+            "API token authentication enabled (token file: %s)",
+            token_file_path(),
+        )
+
     # CORS — allow localhost origins in development mode
     if settings.dev_mode:
         application.add_middleware(
@@ -391,6 +429,7 @@ def create_app() -> FastAPI:
     application.include_router(presets_router, prefix="/api/v1")
     application.include_router(reports_router, prefix="/api/v1")
     application.include_router(studies_router, prefix="/api/v1")
+    application.include_router(spec_studies_router)  # already prefixed at /api/v1/spec-studies
     application.include_router(collab_router, prefix="/api/v1")
     application.include_router(analysis_router, prefix="/api/v1")
     application.include_router(research_router, prefix="/api/v1")
@@ -400,8 +439,19 @@ def create_app() -> FastAPI:
     application.include_router(ollama_router, prefix="/api/v1")
     application.include_router(terminal_router, prefix="/api/v1")
     application.include_router(settings_router)
-    application.include_router(shutdown_router, prefix="/api/v1")
-    application.include_router(env_router, prefix="/api/v1")
+    # Spec 083 (T007): under GLOSSA_CLOUD=1 the host-management routers
+    # are NOT registered at all (absent, not gated): the env router
+    # mutates the running instance's Python environment, which
+    # contradicts the immutable container image, and instance lifecycle
+    # (shutdown) belongs to the platform, not to a shared instance's
+    # users (spec 083, Out of scope). Desktop registration is unchanged.
+    if cloud_mode_enabled():
+        _log.info(
+            "Cloud mode (GLOSSA_CLOUD=1): env and shutdown routers not registered"
+        )
+    else:
+        application.include_router(shutdown_router, prefix="/api/v1")
+        application.include_router(env_router, prefix="/api/v1")
     application.include_router(node_registry_router, prefix="/api/v1")
     application.include_router(rag_router, prefix="/api/v1")
     application.include_router(experiment_graphs_router, prefix="/api/v1")
@@ -421,6 +471,7 @@ def create_app() -> FastAPI:
     application.include_router(model_assignments_router)  # /api/v1/model-assignments
     application.include_router(model_intelligence_router)  # /api/v1/model-intelligence
     application.include_router(indus_evidence_router)  # already prefixed at /api/v1/indus-evidence
+    application.include_router(programs_evidence_router)  # /api/v1/programs/{id}/… (Spec 081 step 3 scoped equivalents)
     application.include_router(research_loop_router)  # already prefixed at /api/v1/research-loop
     application.include_router(study_loop_router)  # already prefixed at /api/v1/study-loop
     application.include_router(events_router)  # already prefixed at /api/v1/events
@@ -450,14 +501,14 @@ def create_app() -> FastAPI:
             name="sign_images",
         )
 
-    # Serve page preview images (local scans of Mahadevan, Fuls, etc.)
-    _page_previews = Path(__file__).parent.parent.parent / "data" / "page_previews"
-    if _page_previews.exists():
-        application.mount(
-            "/static/page_previews",
-            StaticFiles(directory=str(_page_previews)),
-            name="page_previews",
-        )
+    # Leg C finding C-10: page preview images are local scans of
+    # restricted source material (Mahadevan, Fuls, etc.). They were
+    # previously mounted unauthenticated at /static/page_previews, so
+    # populating the directory on any served instance would have made
+    # the scans reachable by anyone who could reach the port. The
+    # mount is removed: previews stay local files, served by no route.
+    # (The /signs/images/page-previews API route, which reads the same
+    # directory through the API layer, is unaffected.)
 
     # Serve built frontend
     # Skipped silently in dev if the dist directory does not yet exist.

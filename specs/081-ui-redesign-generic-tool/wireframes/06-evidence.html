@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — Evidence &amp; sources (Spec 081 wireframe 06)</title>
+<link rel="stylesheet" href="wireframes.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-row"><div class="tile">G</div><div><div class="brand-name">Glossa Lab</div><div class="brand-sub">Epistemic research workbench</div></div></div></div>
+    <a class="program-switch" href="01-programs.html" style="text-decoration:none"><div class="ps-label">Program</div><div class="ps-name">Indus Script <span>▾</span></div><div class="ps-q">What do the signs mean — tested claim by claim?</div></a>
+    <nav class="nav">
+      <h4>Program</h4>
+      <a href="02-program-home.html"><span class="ic">⌂</span>Home</a>
+      <a href="03-claims.html"><span class="ic">§</span>Claims<span class="count">94</span></a>
+      <a href="05-digestion.html"><span class="ic">✓</span>Digestion<span class="count alert">9</span></a>
+      <a href="06-evidence.html" class="active"><span class="ic">▤</span>Evidence &amp; sources</a>
+      <a href="07-data.html"><span class="ic">▦</span>Data</a>
+      <a href="#"><span class="ic">◈</span>Analysis</a>
+      <a href="08-experiments.html"><span class="ic">⬡</span>Experiments</a>
+      <a href="10-discovery.html"><span class="ic">◎</span>Discovery<span class="count">12</span></a>
+      <a href="11-research-loop.html"><span class="ic">↻</span>Research loop</a>
+      <a href="12-reports.html"><span class="ic">▨</span>Reports &amp; ledger</a>
+      <div class="nav-tool"><h4>Tool</h4>
+        <a href="09-jobs.html"><span class="ic">⚙</span>Jobs<span class="count">2</span></a>
+        <a href="14-status.html"><span class="ic">♥</span>Status</a>
+        <a href="13-settings.html"><span class="ic">⚙</span>Settings</a>
+        <a href="#"><span class="ic">?</span>Help</a>
+      </div>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="crumb">Glossa Lab / <b>Indus Script</b> / Evidence &amp; sources</span>
+      <div class="spacer"></div>
+      <button class="icon-btn">⌘K&nbsp; Search</button>
+      <button class="icon-btn">✦ AI assistant</button>
+      <div class="service-chip"><span class="dot"></span><span><b>Glossa Lab v0.1.0</b> · TRISTEN-DESKTOP · checked 14:02</span></div>
+    </div>
+
+    <div class="content">
+      <p class="specimen-note">Specimen data — sources are the program's real registered items; the Laursen entry carries its real restriction.</p>
+
+      <div class="head-row">
+        <div class="page-head">
+          <h1>Evidence &amp; sources</h1>
+          <p class="lede">Everything a claim can stand on: the library of sources, the citation record, and correspondence with the people behind them. A source enters with its citation and provenance, or it does not enter — uncited material cannot be attached to a claim.</p>
+        </div>
+        <div class="spacer"></div>
+        <button class="btn primary">+ Add a source</button>
+      </div>
+
+      <div class="tabs">
+        <span class="tab active">Library</span>
+        <span class="tab">Citations</span>
+        <span class="tab">Correspondence</span>
+      </div>
+
+      <div class="card" style="padding:6px 18px">
+        <div class="row-item">
+          <div class="grow">
+            <div class="row-title">Laursen (2010) — Indus seals outside the Indus valley</div>
+            <div class="row-meta"><i>Arabian Archaeology and Epigraphy</i> 21(2), 96–134 · DOI 10.1111/j.1600-0471.2010.00329.x · Table 1 rebuilt: 121 seals (92 Gulf Type · 28 Gulf Indus · 1 Linear-Elamite)</div>
+            <div class="row-meta">Supports: Atlas Line 1 catalog findings · Used by 3 claims</div>
+          </div>
+          <span class="chip warn">Author copy — private, never redistributed</span>
+        </div>
+        <div class="row-item">
+          <div class="grow">
+            <div class="row-title">Mahadevan (1977) — the corpus concordance</div>
+            <div class="row-meta">Source of the M77 corpus (417 entries in Table I extraction) · carries no per-sign identifier list — recorded as a limit, not worked around</div>
+            <div class="row-meta">Supports: corpus data · Used by 12 claims</div>
+          </div>
+          <span class="chip ok">Published source</span>
+        </div>
+        <div class="row-item">
+          <div class="grow">
+            <div class="row-title">Wells (1998) — sign list</div>
+            <div class="row-meta">588 rows extracted · its numbering does not join the program's registry — the mismatch is recorded on the source, so no claim can quietly rely on a false join</div>
+            <div class="row-meta">Supports: cross-checks only · Used by 2 claims</div>
+          </div>
+          <span class="chip ok">Published source</span>
+        </div>
+        <div class="row-item">
+          <div class="grow">
+            <div class="row-title">CDLI — Meluhha tablet records</div>
+            <div class="row-meta">1,462 tablets in the contact-zone set · raw counts overstate contact by about a third — the correction travels with the source</div>
+            <div class="row-meta">Supports: contact-zone findings · Used by 4 claims</div>
+          </div>
+          <span class="chip ok">Open dataset</span>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:14px">
+        <b>Correspondence lives here too.</b> Letters to and from scholars are part of the evidence record — who was asked, what they answered, what was promised. Private correspondence is never published from this screen; it is tracked, with its promises, so a commitment made in a letter cannot be forgotten by the program.
+      </div>
+
+      <div class="annotation">
+        <div class="a-title">Annotation — wireframe 06 · not part of the UI</div>
+        <dl>
+          <dt>Purpose</dt><dd>The program's source record: library, citations, and correspondence in one place, each item carrying citation, provenance, limits, and the claims that use it.</dd>
+          <dt>Primary action</dt><dd>“Add a source” (entry requires citation + provenance).</dd>
+          <dt>Changed &amp; why</dt><dd>Merges three scattered peers (Evidence Graph's Library tab, Citations, Correspondence) into one source record. Limits and restrictions render on the item itself (author-copy privacy, the Wells numbering non-join, the Meluhha count correction) instead of living in separate report files — the caveat travels with the source, as it does with claims.</dd>
+          <dt>Spec claims</dt><dd>C081-2, C081-4 (evidence reachable from a claim in one step, and from here back to its claims).</dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</div>
+<nav class="mobile-nav">
+  <a href="02-program-home.html"><span class="mi">⌂</span>Home</a>
+  <a href="03-claims.html"><span class="mi">§</span>Claims</a>
+  <a href="05-digestion.html"><span class="mi">✓</span>Digestion</a>
+  <a href="09-jobs.html"><span class="mi">⚙</span>Jobs</a>
+  <a href="01-programs.html" class="active"><span class="mi">☰</span>More</a>
+</nav>
+</body>
+</html>

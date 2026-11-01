@@ -1,0 +1,162 @@
+{
+  "schema": "glossa-repair-claim-status-overlay/1",
+  "generated": "2026-10-26",
+  "task": "WP1 item 5 containment overlay — prepared patch content only; nothing in this file publishes or changes any live surface by itself.",
+  "status_vocabulary": "Lifecycle states defined in docs/repair-2026-10-26/baseline-and-dispositions.md (reusing spec 006 categories where they fit; four narrow additions: invalid_method, requires_revalidation, insufficient_evidence, superseded_record).",
+  "rule": "No numerical replacement is invented anywhere in this overlay. Where a corrected evaluation has not been run, the guidance is to withdraw or qualify the claim, never to substitute a new number.",
+  "entries": [
+    {
+      "claim_id": "C-PHONO-0",
+      "surface": "README.md status banner (line 14)",
+      "current_text_pointer": "README.md line 14: '0 Dravidian phonotactic violations'",
+      "status": "invalid_method",
+      "reason": "The Phase-58 checker deletes the prohibited initial characters (ṭ ḍ ṇ ḷ ṟ ṉ) from each reading before testing it, returns PASS for input it cannot check, and tests only the first reading segment in word-initial position. Its zero is an artifact of the checker, not a measurement of the readings. This invalidates the certification; it does not falsify the underlying readings.",
+      "evidence_link": "docs/repair-2026-10-26/baseline-and-dispositions.md (WP2 disposition) + dependency-map.json claim C-PHONO-0",
+      "replacement_guidance": "Withdraw the figure. State that the checker was defective and the quantity is withdrawn pending a corrected analysis. Do not substitute a new count — none has been run."
+    },
+    {
+      "claim_id": "C-PHONO-0",
+      "surface": "README.md metrics table",
+      "current_text_pointer": "README.md metrics table row: 'Phonotactic violations (strict set) | 0'",
+      "status": "invalid_method",
+      "reason": "Same defective Phase-58 checker, reused through provenance_audit.phonotactic_check for both the Phase-108 subset recomputation and the Phase-109 rebase.",
+      "evidence_link": "docs/repair-2026-10-26/baseline-and-dispositions.md (WP2 disposition) + dependency-map.json claim C-PHONO-0",
+      "replacement_guidance": "Replace the 0 with a WITHDRAWN notice naming the defective checker and the pending corrected analysis. No new number."
+    },
+    {
+      "claim_id": "C-SITEINV-6565",
+      "surface": "README.md status banner (line 14)",
+      "current_text_pointer": "README.md line 14: 'grammar site-invariance 65/65 tested signs'",
+      "status": "invalid_method",
+      "reason": "The Phase-69 routine behind the count returns preset p-values (0.0 or 1.0) for wide ranges of its statistic and 0.5 on any exception, instead of computing them. Separately, 'no difference detected' by such a test would not establish equivalence in any case, and 29 of 94 strict-set signs (81 of 171 full H+M) were never tested and sit outside the displayed denominator.",
+      "evidence_link": "docs/repair-2026-10-26/baseline-and-dispositions.md (WP3 disposition) + dependency-map.json claim C-SITEINV-6565",
+      "replacement_guidance": "Withdraw the equivalence wording. At most, state that no difference was detected by a since-corrected routine and that equivalence is not established; otherwise withdraw pending a corrected test. No new figure."
+    },
+    {
+      "claim_id": "C-SITEINV-6565",
+      "surface": "README.md metrics table",
+      "current_text_pointer": "README.md metrics table row: 'Grammar site-invariance | 65/65 tested signs (strict set); 90/90 (full H+M)'",
+      "status": "invalid_method",
+      "reason": "Same defective Phase-69 routine (see banner entry). The 90/90 full-set figure rests on the same p-values.",
+      "evidence_link": "docs/repair-2026-10-26/baseline-and-dispositions.md (WP3 disposition) + dependency-map.json claim C-SITEINV-6565",
+      "replacement_guidance": "Withdraw both figures as established invariance; qualify or remove pending a corrected test with an explicit equivalence design. No new figure."
+    },
+    {
+      "claim_id": "C-PARPOLA-81",
+      "surface": "README.md metrics table",
+      "current_text_pointer": "README.md metrics table row: 'Parpola crosswalk comparison | 81/81 compared strict-set signs (crosswalk v2.1, Phase-108 method) — partially tautological (identity-only entries); not comparable to the retired 59% figure'",
+      "status": "invalid_method",
+      "reason": "The comparison is partly a self-comparison: the Phase-96 expansion wrote this project's own anchor readings into the crosswalk field that the agreement routine then treats as Parpola's reading, and the crosswalk file itself records 67 of 184 entries as identity-inference-only. The existing 'partially tautological' note understates this: on the affected entries the agreement is guaranteed by construction. Agreement with a copied value is not external validation.",
+      "evidence_link": "docs/repair-2026-10-26/baseline-and-dispositions.md (WP4 disposition) + dependency-map.json claim C-PARPOLA-81",
+      "replacement_guidance": "Withdraw the figure as validation evidence. It may be described only as an internal consistency count over a partly self-derived comparator, with the number of genuinely independent comparisons stated as not yet established. Do not publish a corrected agreement rate until the WP4 source-by-source reclassification is done."
+    },
+    {
+      "claim_id": "C-KEEP-RESTORE-109",
+      "surface": "README.md Phase-109 re-base note (line 18) and Current research status section",
+      "current_text_pointer": "README.md: '1 kept on Parpola crosswalk support' (Phase-109 cohort outcome: 112 restored, 1 kept, 3 demoted)",
+      "status": "requires_revalidation",
+      "reason": "One cohort decision rests on the same crosswalk support invalidated under C-PARPOLA-81. The decision is not thereby reversed — other evidence may survive — but it cannot stand on the crosswalk leg and must be reassessed individually (WP4 acceptance).",
+      "evidence_link": "docs/repair-2026-10-26/baseline-and-dispositions.md (WP4 disposition) + dependency-map.json claim C-KEEP-RESTORE-109",
+      "replacement_guidance": "Annotate the kept decision as requiring revalidation of its crosswalk leg. Do not change the anchor's status on the basis of this overlay alone."
+    },
+    {
+      "claim_id": "C-FISH-ISOLATION",
+      "surface": "README.md status banner (line 14)",
+      "current_text_pointer": "README.md line 14: 'Fish-sign isolation test: 0/140 isolated across all 9 sites and Gulf catalog'",
+      "status": "invalid_method",
+      "reason": "The displayed rate pools two different populations — the corpus (113) and the Gulf catalog (27) — into one denominator. A pooled rate over unlike populations is not a valid combined measurement, even though each component count is a descriptive census figure.",
+      "evidence_link": "docs/repair-2026-10-26/baseline-and-dispositions.md (WP10 disposition) + dependency-map.json claim C-FISH-ISOLATION",
+      "replacement_guidance": "Report the two populations separately, exactly as the README's own table row already splits them: 0/113 isolated in the corpus and 0/27 in the Gulf catalog. Never pool them. No new number is introduced — the split uses the file's own component counts."
+    },
+    {
+      "claim_id": "C-FISH-ISOLATION",
+      "surface": "README.md metrics table",
+      "current_text_pointer": "README.md metrics table row: 'Fish-sign isolation | 0/140 isolated (0/113 corpus + 0/27 Gulf)'",
+      "status": "invalid_method",
+      "reason": "Same pooled-denominator defect as the banner entry; the row's headline figure is the pooled one.",
+      "evidence_link": "docs/repair-2026-10-26/baseline-and-dispositions.md (WP10 disposition) + dependency-map.json claim C-FISH-ISOLATION",
+      "replacement_guidance": "Lead with the separate figures (0/113 corpus; 0/27 Gulf) and drop the pooled 0/140."
+    },
+    {
+      "claim_id": "C-FISH-ISOLATION",
+      "surface": "README.md Current research status section",
+      "current_text_pointer": "README.md status section: 'Fish-sign isolation test: 0/140 isolated across all 9 sites and Gulf deposit catalog'",
+      "status": "invalid_method",
+      "reason": "Same pooled-denominator defect, repeated on a second surface.",
+      "evidence_link": "docs/repair-2026-10-26/baseline-and-dispositions.md (WP10 disposition) + dependency-map.json claim C-FISH-ISOLATION",
+      "replacement_guidance": "Same correction as the banner and table: separate denominators only. NOTE: this occurrence sits outside the correction areas the WP10 patch was scoped to; it is inventoried here so the same fix is applied when the patch is landed — the staged patch/README.md flags it in the WP1/WP10 report."
+    },
+    {
+      "claim_id": "C-NAIR-REPLICATION",
+      "surface": "README.md status banner (line 14)",
+      "current_text_pointer": "README.md line 14: 'Independent replication: Nair 2026 (arXiv:2604.17828)'",
+      "status": "insufficient_evidence",
+      "reason": "Nothing in the record shows Nair 2026 testing Glossa readings or the Glossa grammar. It is an independent structural study on a different corpus (ICIT). Calling it a replication of this program's readings or grammar claims evidence that does not exist.",
+      "evidence_link": "docs/repair-2026-10-26/baseline-and-dispositions.md (WP10 disposition) + dependency-map.json claim C-NAIR-REPLICATION",
+      "replacement_guidance": "Describe Nair 2026 as an independent structural study on a different corpus. Do not call it a replication of Glossa readings or grammar."
+    },
+    {
+      "claim_id": "C-NAIR-REPLICATION",
+      "surface": "README.md metrics table",
+      "current_text_pointer": "README.md metrics table row: 'External replication | Nair 2026 (arXiv:2604.17828) on ICIT corpus'",
+      "status": "insufficient_evidence",
+      "reason": "Same mischaracterization as the banner entry.",
+      "evidence_link": "docs/repair-2026-10-26/baseline-and-dispositions.md (WP10 disposition) + dependency-map.json claim C-NAIR-REPLICATION",
+      "replacement_guidance": "Rename the row to 'Independent structural study' and describe the study as structural work on the ICIT corpus that does not test these readings or this grammar."
+    },
+    {
+      "claim_id": "C-NAIR-REPLICATION",
+      "surface": "README.md Current research status section",
+      "current_text_pointer": "README.md status section: 'External replication: Nair 2026 (arXiv:2604.17828) confirms non-random structure on ICIT corpus'",
+      "status": "insufficient_evidence",
+      "reason": "Same mischaracterization, repeated on a second surface; 'confirms' also overstates what a structural study on another corpus can confirm about this program's claims.",
+      "evidence_link": "docs/repair-2026-10-26/baseline-and-dispositions.md (WP10 disposition) + dependency-map.json claim C-NAIR-REPLICATION",
+      "replacement_guidance": "Same correction as the banner and table. NOTE: this occurrence sits outside the correction areas the WP10 patch was scoped to; inventoried here for the same fix at landing time."
+    },
+    {
+      "claim_id": "C-SEAL-COVERAGE-RETIRED",
+      "surface": "README.md metrics table",
+      "current_text_pointer": "README.md metrics table row: 'Seal coverage | 69.8% (1,165/1,670 seals fully covered) — Phase-170, computed on the retired 161-anchor set'",
+      "status": "superseded_record",
+      "reason": "The figure was computed on the retired 161-anchor set and describes that set, not the current strict set. Displayed inside the current metrics table, it reads as a current metric even with its label.",
+      "evidence_link": "docs/repair-2026-10-26/baseline-and-dispositions.md (WP10 disposition) + dependency-map.json claim C-SEAL-COVERAGE-RETIRED",
+      "replacement_guidance": "Remove from the current metrics table and retain, unchanged, in a clearly labeled historical note about the retired set. The figure itself is not recomputed or replaced."
+    },
+    {
+      "claim_id": "C-GRAMMAR-ACCURACY-RETIRED",
+      "surface": "README.md metrics table",
+      "current_text_pointer": "README.md metrics table row: 'Grammar accuracy | 93.2% sign-level — Phase-170, computed on the retired 161-anchor set'",
+      "status": "superseded_record",
+      "reason": "Same retired-basis defect as the seal-coverage row; additionally, 'accuracy' here is an internal consistency score on the retired set, not measured correctness of readings.",
+      "evidence_link": "docs/repair-2026-10-26/baseline-and-dispositions.md (WP10 disposition) + dependency-map.json claim C-GRAMMAR-ACCURACY-RETIRED",
+      "replacement_guidance": "Remove from the current metrics table and retain, unchanged, in the same labeled historical note. Not recomputed or replaced."
+    },
+    {
+      "claim_id": "C-RELEASE-CHAIN",
+      "surface": "README.md preprint citation (line 16), metrics-table DOI row, Key files layout line, closing Status section",
+      "current_text_pointer": "README.md line 16 (v8 citation, DOI 10.5281/zenodo.23604590); metrics table 'Preprint DOI | 10.5281/zenodo.20414696 (v4, citation of record…)'; Key files 'pierson_2026_indus_decipherment_preprint_v4.pdf'; Status 'Preprint v8 published (DOI 10.5281/zenodo.23604590)'",
+      "status": "superseded_record",
+      "reason": "The deposit of record moved: preprint v9 was deposited 2026-10-26 (version DOI 10.5281/zenodo.23668053; concept DOI 10.5281/zenodo.20379070 unchanged), per the goal-side v9 deposit record. The README still presents v8 as current, names a v4 DOI 'citation of record' in its own table (contradicting its line-18 note), and names a v4 PDF file that is two versions stale. The v8 citation's title also carries the retired 161-anchor basis while the headline set is 94 — the v8/161 conflict the brief names.",
+      "evidence_link": "docs/repair-2026-10-26/baseline-and-dispositions.md (WP10 disposition) + dependency-map.json claim C-RELEASE-CHAIN + goal record 2026-10-26-v9-deposit-record.md",
+      "replacement_guidance": "Cite v9 as the deposit of record (version DOI 10.5281/zenodo.23668053); keep the v8 row/line as superseded history; correct the layout line to the v9 PDF filename (pierson_2026_indus_decipherment_preprint_v9.pdf, per the deposit record). The deposited-PDF-vs-documented-hash comparison remains UNVERIFIED in this task (no deposit access exercised) and must be stated as such wherever the deposit is cited from this repair."
+    },
+    {
+      "claim_id": "C-PROGRESS-PCT",
+      "surface": "Program records and any current summary presenting a single decipherment-progress percentage (source occurrence: goal record 2026-10-26-rerun-invalidation-audit.md, Gap 8)",
+      "current_text_pointer": "'about 36% of the way by the program's own ladder (about 31% disputed, carried alongside, never blended), and 0% by the peer-reviewed ladder'",
+      "status": "insufficient_evidence",
+      "reason": "The percentage is a rung count on the program's own internal ladder. There is no defined population of 'what decipherment requires' and no sampling basis that would make a single percentage a measured distance to decipherment. The staged README carries no such percentage; its coverage percentages (73.68% / 92.19%) are assignment coverage and are equally not progress measures.",
+      "evidence_link": "docs/repair-2026-10-26/baseline-and-dispositions.md (WP10 disposition) + dependency-map.json claim C-PROGRESS-PCT",
+      "replacement_guidance": "Do not present any single percentage as measured distance to decipherment. If ladder position is reported at all, report it as a ladder position with the ladder defined, the disputed figure alongside, and the peer-reviewed figure (0%) unblended — or withdraw the percentage form."
+    },
+    {
+      "claim_id": "C-COVERAGE-94",
+      "surface": "README.md banner, decipherment section, metrics table (guard entry — claim itself stands)",
+      "current_text_pointer": "README.md: 'covering 73.68% of Holdat IVS tokens (5,159/7,002)'",
+      "status": "requires_revalidation",
+      "reason": "NOT a defect in the count: the coverage recomputation is a plain token count and is not routed through the WP2–WP4 defect sites. The entry exists to fix the claim's meaning on every surface: 73.68% is assignment coverage (tokens whose sign has a candidate reading), and it depends on the 94-set's composition, which is itself under WP5 audit. It must never be presented as accuracy, validation, or progress toward decipherment.",
+      "evidence_link": "docs/repair-2026-10-26/baseline-and-dispositions.md (WP1/WP10 dispositions) + dependency-map.json claim C-COVERAGE-94",
+      "replacement_guidance": "Keep the number with its denominator and method (5,159/7,002 Holdat tokens; covered iff the token's sign is in the strict set) and label it assignment coverage wherever it appears. Recompute only if the WP5 audit changes the set's composition; do not re-label it as anything stronger."
+    }
+  ]
+}

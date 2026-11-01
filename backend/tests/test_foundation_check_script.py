@@ -66,6 +66,62 @@ def test_no_hardcoded_windows_user_path():
     assert "C:/Users" not in src
 
 
+def _load_fallback_fn(script_file: Path):
+    """Exec only apply_fallback_caveats() from the script, in isolation."""
+    tree = ast.parse(script_file.read_text(encoding="utf-8"))
+    fn = next(
+        node for node in tree.body
+        if isinstance(node, ast.FunctionDef) and node.name == "apply_fallback_caveats"
+    )
+    ns: dict = {}
+    exec(compile(ast.Module(body=[fn], type_ignores=[]), str(script_file), "exec"), ns)
+    return ns["apply_fallback_caveats"]
+
+
+def test_fallback_claim_cannot_stay_solid():
+    """E-6: a claim generated from fallback inputs cannot come out VERIFIED-solid."""
+    apply_fn = _load_fallback_fn(SCRIPT)
+    solid = [("P30-A1 permutation null", "score 7.0", "VERIFIED — but simplified"),
+             ("Other claim", "d", "VERIFIED")]
+    solid_out, caveated_out = apply_fn(
+        solid, [], {"P30-A1 permutation null": "NOT VERIFIED — fallback"})
+    assert [c[0] for c in solid_out] == ["Other claim"]
+    assert caveated_out == [("P30-A1 permutation null", "score 7.0",
+                             "NOT VERIFIED — fallback")]
+
+
+def test_fallback_noop_without_fallbacks():
+    apply_fn = _load_fallback_fn(SCRIPT)
+    solid = [("A", "d", "VERIFIED")]
+    caveated = [("B", "d", "NEEDS CAVEAT")]
+    assert apply_fn(solid, caveated, {}) == (solid, caveated)
+
+
+def test_committed_report_carries_e6_and_e10_fixes():
+    """The committed (regenerated) report: P30-A1 caveated, no 'decoded' solids."""
+    report = json.loads((REPO / "reports" / "foundation_check_report.json")
+                        .read_text("utf-8"))
+    assert (report["n_ok"], report["n_fail"], report["n_warn"]) == (39, 0, 9)
+    solid_names = [c["claim"] for c in report["solid_claims"]]
+    assert "P30-A1 permutation null" not in solid_names
+    p30 = [c for c in report["caveated_claims"]
+           if c["claim"] == "P30-A1 permutation null"]
+    assert len(p30) == 1
+    assert "NOT VERIFIED" in p30[0]["status"]
+    assert "fallback" in p30[0]["status"]
+    for entry in report["solid_claims"]:
+        assert "decoded" not in entry["claim"].lower()
+        assert "decoded" not in entry["detail"].lower()
+
+
+def test_phase169_generator_annotates_withdrawn_figure():
+    """E-7 residual: the phase169 generator emits the WITHDRAWN status sibling."""
+    src = (REPO / "backend" / "scripts" / "phase169_master_synthesis.py") \
+        .read_text(encoding="utf-8")
+    assert '"aggregate_confidence_pct_status"' in src
+    assert "WITHDRAWN 2026-10-23" in src
+
+
 @pytest.mark.skipif(not HOLDAT.exists(), reason="Holdat corpus not downloaded (gitignored corpora/)")
 def test_foundation_check_script_runs_clean():
     env = dict(os.environ, GLOSSA_REPO_ROOT=str(REPO))

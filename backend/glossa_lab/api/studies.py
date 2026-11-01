@@ -536,6 +536,9 @@ def _run_report_node(
     if not report_name:
         label = node.get("label", "study_report")
         report_name = re.sub(r"[^a-z0-9_]+", "_", label.lower()).strip("_") + ".json"
+    # Leg C C-11: report_name is caller-supplied — never let it act as
+    # a path. Reduce to a bare basename so "../" cannot escape reports/.
+    report_name = Path(report_name).name
     if not report_name.endswith(".json"):
         report_name += ".json"
 
@@ -836,7 +839,16 @@ async def run_study(study_id: str, body: RunStudyBody | None = None) -> Streamin
         skipped     = sum(1 for r in node_results.values() if r["status"] in ("skipped", "pending"))
         annotations = sum(1 for r in node_results.values() if r["status"] in ("annotation", "corpus"))
         errors      = sum(1 for r in node_results.values() if r["status"] == "error")
-        final_status = "failed" if errors else "completed"
+        # Leg C C-11: a run whose nodes were skipped/pending (including
+        # unimplemented experiments and pipeline timeouts) must not
+        # report plain "completed" — that laundered failure into
+        # success. It is now reported distinctly at every surface
+        # (job record, notification, run_complete event).
+        final_status = (
+            "failed" if errors
+            else "completed_with_skips" if skipped
+            else "completed"
+        )
 
         logger.info("Study run '%s' done — %d complete, %d errors",
                     study["name"], completed, errors)
@@ -867,6 +879,7 @@ async def run_study(study_id: str, body: RunStudyBody | None = None) -> Streamin
                 duration_s=(datetime.now(timezone.utc) - _t0).total_seconds(),
             )
         yield _sse({"event": "run_complete", "study_id": study_id, "job_id": job_id,
+                    "status": final_status,
                     "node_count": len(ordered), "completed": completed,
                     "skipped": skipped, "annotations": annotations, "errors": errors,
                     "results": node_results})

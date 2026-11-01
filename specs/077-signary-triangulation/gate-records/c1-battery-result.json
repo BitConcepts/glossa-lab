@@ -1,0 +1,163 @@
+{
+ "record_type": "c1-battery-result",
+ "schema_version": "1.0",
+ "evaluator": "aee (applied-epistemic-engineering)",
+ "evaluator_version": "1.5.3",
+ "configuration": "lenient load; evidence verification off (freeze configuration); case iv additionally run with evidence verification on",
+ "run_at": "2026-10-26T15:08:20Z",
+ "cases": [
+  {
+   "case_id": "i",
+   "name": "The real Spec 026-era design (Phase-114 blind affiliation, Spec 012)",
+   "defect_class": "non-discriminating instrument in a real historical design (programme-falsified)",
+   "expected_catcher": "none in the gate as operated \u2014 historically caught by execution, which is the gap this battery documents",
+   "input": "tools/freeze-gate/battery/case-i-spec026-era/design.md",
+   "ran": false,
+   "flagged": false,
+   "correctness_findings": [],
+   "blind_spot": "The evaluator cannot be run against this case in its current form, so the gate has no reading on this defect class at all. Reason recorded: Error: input bundle contains zero claims: an empty bundle is an input error, never a pass (Spec 003 FR-1.1)\n",
+   "run_error": "evaluator could not be run against this case in the freeze configuration: Error: input bundle contains zero claims: an empty bundle is an input error, never a pass (Spec 003 FR-1.1)\n"
+  },
+  {
+   "case_id": "ii",
+   "name": "Planted unfalsifiable headline claim",
+   "defect_class": "unfalsifiable headline claim (falsifier present in form, empty in substance)",
+   "expected_catcher": "the evaluator's falsifiability/irreducibility challenges, if they bite on substance rather than form",
+   "input": "tools/freeze-gate/battery/case-ii-unfalsifiable/claims.json",
+   "ran": true,
+   "flagged": false,
+   "correctness_findings": [
+    {
+     "claim_id": "FB2-C01",
+     "id": "AEE-FB2-C01-INDEPENDENCE-UNMODELED",
+     "challenge": "Shared-evidence independence challenge",
+     "breakpoint": "Supporting evidence 'battery-case-ii self-citation' (ref(s): tools/freeze-gate/battery/case-ii-unfalsifiable/claims.json) is shared with claim(s) FB2-C02 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim"
+    },
+    {
+     "claim_id": "FB2-C02",
+     "id": "AEE-FB2-C02-INDEPENDENCE-UNMODELED",
+     "challenge": "Shared-evidence independence challenge",
+     "breakpoint": "Supporting evidence 'battery-case-ii self-citation' (ref(s): tools/freeze-gate/battery/case-ii-unfalsifiable/claims.json) is shared with claim(s) FB2-C01 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim"
+    }
+   ],
+   "blind_spot": "The evaluator does not detect a falsifier that is present in form and empty in substance: the planted headline claim FB2-C01 passes with no correctness finding naming its untestable test.",
+   "run_error": null,
+   "score_probe": {
+    "claim_id": "FB2-C01",
+    "component": "falsifiability",
+    "value": 1.0
+   },
+   "claims_assessed": 2,
+   "assessment_outcome": "iterate",
+   "draft_cap_findings": 2,
+   "determination_rule": "Flagged only if a correctness finding against FB2-C01 names the falsifiability defect (empty/circular/untestable falsifier). Independence or hygiene findings do not count: they fire on sound registers too.",
+   "findings_addressing_the_defect": []
+  },
+  {
+   "case_id": "iii",
+   "name": "Planted wrong pin (52 against a source summing to 47)",
+   "defect_class": "pinned quantity arithmetically wrong against its own cited source",
+   "expected_catcher": "C2 independent recomputation (the evaluator is not an arithmetic engine)",
+   "input": "tools/freeze-gate/battery/case-iii-wrong-pin/claims.json",
+   "ran": true,
+   "flagged": false,
+   "correctness_findings": [
+    {
+     "claim_id": "FB3-C01",
+     "id": "AEE-FB3-C01-INDEPENDENCE-UNMODELED",
+     "challenge": "Shared-evidence independence challenge",
+     "breakpoint": "Supporting evidence 'battery-case-iii source table' (ref(s): tools/freeze-gate/battery/case-iii-wrong-pin/SOURCE.md) is shared with claim(s) FB3-C02, FB3-C03 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim"
+    },
+    {
+     "claim_id": "FB3-C02",
+     "id": "AEE-FB3-C02-INDEPENDENCE-UNMODELED",
+     "challenge": "Shared-evidence independence challenge",
+     "breakpoint": "Supporting evidence 'battery-case-iii source table' (ref(s): tools/freeze-gate/battery/case-iii-wrong-pin/SOURCE.md) is shared with claim(s) FB3-C01, FB3-C03 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim"
+    },
+    {
+     "claim_id": "FB3-C03",
+     "id": "AEE-FB3-C03-INDEPENDENCE-UNMODELED",
+     "challenge": "Shared-evidence independence challenge",
+     "breakpoint": "Supporting evidence 'battery-case-iii source table' (ref(s): tools/freeze-gate/battery/case-iii-wrong-pin/SOURCE.md) is shared with claim(s) FB3-C01, FB3-C02 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim"
+    }
+   ],
+   "blind_spot": "The evaluator does not recompute pinned quantities against their cited sources: a total of 52 pinned against a source summing to 47 passes without a correctness finding. C2 (independent recomputation) is the component that carries this class.",
+   "run_error": null,
+   "claims_assessed": 3,
+   "assessment_outcome": "iterate",
+   "draft_cap_findings": 3,
+   "determination_rule": "Flagged only if a correctness finding identifies the pinned quantities as wrong against SOURCE.md. Independence or hygiene findings do not count.",
+   "findings_addressing_the_defect": []
+  },
+  {
+   "case_id": "iv",
+   "name": "Planted unsupported citations (claims stating the opposite of their cited records)",
+   "defect_class": "evidence citation that does not support its claim",
+   "expected_catcher": "C3 evidence verification with a human/verifier read of the cited text (the engine checks resolution and hashes, not support)",
+   "input": "tools/freeze-gate/battery/case-iv-unsupported-citation/claims.json",
+   "ran": true,
+   "flagged": false,
+   "correctness_findings": [
+    {
+     "claim_id": "FB4-C01",
+     "id": "AEE-FB4-C01-EV0-MISSING-REF",
+     "challenge": "Evidence verification (missing_ref)",
+     "breakpoint": "evidence ref does not resolve to a file inside the project root: specs/073-keying-surface-repair/outcome.md"
+    },
+    {
+     "claim_id": "FB4-C02",
+     "id": "AEE-FB4-C02-EV0-MISSING-REF",
+     "challenge": "Evidence verification (missing_ref)",
+     "breakpoint": "evidence ref does not resolve to a file inside the project root: specs/074-hunt-opening-signs-repaired-surface/outcome.md"
+    }
+   ],
+   "blind_spot": "The evaluator verifies that citations resolve, not that they support: claims stating the opposite of their cited records pass in both the freeze configuration and with evidence verification on. C3's verification step \u2014 a verifier reading the cited text against the claim \u2014 is the component that carries this class.",
+   "run_error": null,
+   "claims_assessed": 2,
+   "assessment_outcome": "iterate",
+   "draft_cap_findings": 2,
+   "determination_rule": "Flagged only if a correctness finding on an FB4 claim identifies that its cited evidence does not support it (in either run). missing_ref resolution findings do not count: the refs resolve inside the repo; support, not resolution, is the defect.",
+   "verify_evidence_run": {
+    "claims_assessed": 2,
+    "assessment_outcome": "iterate",
+    "correctness_findings": [
+     {
+      "claim_id": "FB4-C01",
+      "id": "AEE-FB4-C01-EV0-MISSING-REF",
+      "challenge": "Evidence verification (missing_ref)",
+      "breakpoint": "evidence ref does not resolve to a file inside the project root: specs/073-keying-surface-repair/outcome.md"
+     },
+     {
+      "claim_id": "FB4-C02",
+      "id": "AEE-FB4-C02-EV0-MISSING-REF",
+      "challenge": "Evidence verification (missing_ref)",
+      "breakpoint": "evidence ref does not resolve to a file inside the project root: specs/074-hunt-opening-signs-repaired-surface/outcome.md"
+     }
+    ]
+   },
+   "findings_addressing_the_defect": []
+  }
+ ],
+ "blind_spots": [
+  {
+   "case_id": "i",
+   "defect_class": "non-discriminating instrument in a real historical design (programme-falsified)",
+   "blind_spot": "The evaluator cannot be run against this case in its current form, so the gate has no reading on this defect class at all. Reason recorded: Error: input bundle contains zero claims: an empty bundle is an input error, never a pass (Spec 003 FR-1.1)\n"
+  },
+  {
+   "case_id": "ii",
+   "defect_class": "unfalsifiable headline claim (falsifier present in form, empty in substance)",
+   "blind_spot": "The evaluator does not detect a falsifier that is present in form and empty in substance: the planted headline claim FB2-C01 passes with no correctness finding naming its untestable test."
+  },
+  {
+   "case_id": "iii",
+   "defect_class": "pinned quantity arithmetically wrong against its own cited source",
+   "blind_spot": "The evaluator does not recompute pinned quantities against their cited sources: a total of 52 pinned against a source summing to 47 passes without a correctness finding. C2 (independent recomputation) is the component that carries this class."
+  },
+  {
+   "case_id": "iv",
+   "defect_class": "evidence citation that does not support its claim",
+   "blind_spot": "The evaluator verifies that citations resolve, not that they support: claims stating the opposite of their cited records pass in both the freeze configuration and with evidence verification on. C3's verification step \u2014 a verifier reading the cited text against the claim \u2014 is the component that carries this class."
+  }
+ ]
+}

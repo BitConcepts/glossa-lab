@@ -196,6 +196,29 @@ totals `U_animal_total` / `U_classified_total`; future records should
 name the pooled universe as what it is. This note is append-only: no
 verdict, status, or frozen text changes.
 
+## Correction note — 2026-10-26 (programme red team 2026-10-25, finding B-9)
+
+The 2026-10-25 correction note above repaired the primary headline
+only. The S-C sensitivity arm carries the same pooled-denominator
+construction, and both of its readings stand printed here. The
+published S-C figure is **R1 = 0.8929** — (2/28) / (8/100), the
+denominator being the pooled classified universe (8 animal of 100),
+from its table [[2, 26], [6, 66]], with Fisher one-sided
+p = 0.7140. Under the frozen §4.2 formula's literal reading, U's
+own classified inventory in S-C is 86 (U_size 89, less 3
+unidentified), of which 7 are animal — an animal share of
+7/86 = 0.0814 — giving **R1 = 0.8776** under the frozen formula.
+The verdict is identical under both readings: 0.8776 and 0.8929
+are both <= 1.0, and p = 0.7140 >= 0.05 independently, so S-C
+returns the same word (not grade-sensitive; NOT SUPPORTED) under
+every reading. The naming collision that caused the deviation is
+also recorded: in both arms the machine record's
+`U_animal_total` / `U_non_animal_total` fields denote the pooled
+universe, while `U_size` denotes the inventory — three different
+"U"s in one record; future records should name the pooled universe
+as what it is, per the undertaking in the note above. This note
+is append-only: no verdict, status, or frozen text changes.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the

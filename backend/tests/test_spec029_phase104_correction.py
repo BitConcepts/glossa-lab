@@ -70,6 +70,21 @@ _FIXTURES = Path(__file__).resolve().parent / "fixtures"
 # separately caused movement beside the three correction
 # movements. The post-merge fixture (the pre-correction
 # baseline) is unchanged.
+# Leg C supersession (2026-10-29): the post-correction
+# fixture was regenerated again from the live store after
+# the Leg C C-04 hardening changed the AEE adapter rule:
+# a [VERIFIED] marker in glossa_lab_evidence now confers
+# OBSERVED only when the record references a resolvable
+# evidence artifact; unreferenced markers are INFERRED.
+# Exactly three entries moved — every claim whose record
+# carries [VERIFIED] with no resolvable reference
+# (parpola_2010_dravidian_solution_manual_001,
+# yadav_2009_arxiv_manual_001, yadav_2009_arxiv_manual_002;
+# evidence component 1.0 -> 0.706875, band high -> medium
+# for each) — and the movement test below names that third,
+# separately caused movement set beside the correction and
+# Spec 054 movements, asserting its cause mechanically.
+# The post-merge fixture is unchanged.
 _POST_MERGE_SCORES = json.loads(
     (_FIXTURES / "spec029_post_merge_aee150_scores.json").read_text("utf-8"))
 _POST_CORRECTION_SCORES = json.loads(
@@ -250,6 +265,17 @@ def test_carryover_and_lane2_fields_coexist_on_the_corrected_records():
 
 # ── Blast radius: scores move only where the record changed ─────────────
 
+#: The Leg C C-04 movement set (2026-10-29): claims whose records
+#: carry a [VERIFIED] marker with no resolvable evidence reference.
+#: Their scores fell when the adapter stopped conferring OBSERVED
+#: on the bare substring (see the supersession note above).
+LEGC_VERIFIED_MOVED = {
+    "parpola_2010_dravidian_solution_manual_001",
+    "yadav_2009_arxiv_manual_001",
+    "yadav_2009_arxiv_manual_002",
+}
+
+
 def test_score_movement_is_the_corrected_claims_plus_the_spec054_append():
     summary = assessment_summary(_CLAIMS_DIR)
     assert summary["total_claims"] == len(_POST_MERGE_SCORES) == 23
@@ -259,23 +285,40 @@ def test_score_movement_is_the_corrected_claims_plus_the_spec054_append():
         assert entry["aee_score"] == _POST_CORRECTION_SCORES[cid], cid
         if entry["aee_score"] != _POST_MERGE_SCORES[cid]:
             moved.add(cid)
-    # The Phase-104 correction's three movements, plus the one
-    # later governed movement: Spec 054's falsifier append to
-    # yadav_2009_arxiv_manual_002 (2026-10-23, its freeze act) -
-    # the claim gained its first falsification_condition, so
-    # its falsifiability component, and only that component,
-    # moved. Any further unexplained movement fails here.
-    assert moved == CORRECTED | {"yadav_2009_arxiv_manual_002"}
+    # The Phase-104 correction's three movements, plus the two
+    # later governed movement causes: Spec 054's falsifier append
+    # to yadav_2009_arxiv_manual_002 (2026-10-23, its freeze act)
+    # and the Leg C C-04 adapter rule (2026-10-29), whose set
+    # overlaps the Spec 054 claim. Any further unexplained
+    # movement fails here.
+    assert moved == CORRECTED | LEGC_VERIFIED_MOVED
+    # The Leg C cause, asserted mechanically: each moved-by-Leg-C
+    # record carries [VERIFIED] with no resolvable reference, and
+    # only its evidence component fell (1.0 -> 0.706875).
+    from glossa_lab.aee_core import _verified_marker_is_referenced
+
+    records = _load_store()
+    for cid in LEGC_VERIFIED_MOVED:
+        assert "[VERIFIED]" in (records[cid].get("glossa_lab_evidence") or ""), cid
+        assert not _verified_marker_is_referenced(records[cid]), cid
+        assert _POST_CORRECTION_SCORES[cid]["components"]["evidence"] == 0.706875, cid
+        assert _POST_CORRECTION_SCORES[cid]["band"] == "medium", cid
     before = _POST_MERGE_SCORES["yadav_2009_arxiv_manual_002"]
     after = _POST_CORRECTION_SCORES["yadav_2009_arxiv_manual_002"]
     b_comp = dict(before["components"])
     a_comp = dict(after["components"])
+    # Spec 054's movement: falsifiability 0.0 -> 1.0 (first falsifier).
     assert b_comp.pop("falsifiability") == 0.0
     assert a_comp.pop("falsifiability") == 1.0
+    # Leg C C-04's movement on the same claim: evidence 1.0 ->
+    # 0.706875 (unreferenced [VERIFIED] downgraded to INFERRED).
+    # With both named components removed, nothing else may differ.
+    assert b_comp.pop("evidence") == 1.0
+    assert a_comp.pop("evidence") == 0.706875
     assert a_comp == b_comp
-    assert before["band"] == "medium" and after["band"] == "high"
+    assert before["band"] == "medium" and after["band"] == "medium"
     assert before["direct_score"] == 0.7000000000000001
-    assert after["direct_score"] == 0.8500000000000001
+    assert after["direct_score"] == 0.6887812500000001
     for cid in CORRECTED:
         before, after = _POST_MERGE_SCORES[cid], _POST_CORRECTION_SCORES[cid]
         # The movement is the contradiction penalty, and only that:

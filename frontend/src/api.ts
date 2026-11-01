@@ -3,6 +3,8 @@
  * All functions return typed results or throw on HTTP error.
  */
 
+import { authHeaders, noteUnauthorized } from "./auth";
+
 const BASE = "/api/v1";
 
 /**
@@ -63,12 +65,18 @@ async function request<T>(
 ): Promise<T> {
   const opts: RequestInit = {
     method,
-    headers: { "Content-Type": "application/json" },
+    // Spec 082: every call carries the stored Bearer token (empty
+    // object when none is stored — e.g. the open health route, or a
+    // backend running with auth disabled).
+    headers: { "Content-Type": "application/json", ...authHeaders() },
     signal,
   };
   if (body !== undefined) opts.body = JSON.stringify(body);
   const res = await fetch(`${BASE}${path}`, opts);
   if (!res.ok) {
+    // Spec 082 contract: a 401 clears the stored token and raises the
+    // named "API token needed" state.
+    if (res.status === 401) noteUnauthorized();
     const text = await res.text().catch(() => "");
     throw _makeHttpError(method, path, res.status, res.statusText, text);
   }
@@ -81,10 +89,24 @@ export interface HealthResponse {
   status: "healthy" | "degraded" | "down";
   version: string;
   uptime_seconds: number;
+  /** Spec 079/082: the health payload's pinned key set also carries
+   *  the serving component, the build stamp, and the auth mode. */
+  component?: string;
+  build?: string;
+  auth?: "token" | "disabled";
 }
 
 export interface StatusResponse {
   status: string;
+  version: string;
+  uptime_seconds: number;
+  /** Spec 081 identity block (FR-007) — on /status, since /health's
+   *  key set is pinned minimal by TEST-SEC-002. */
+  app?: string;
+  host?: string;
+  started_at?: string;
+  data_dir?: string;
+  db_ready?: boolean;
   jobs: Record<string, number>;
   job_counts: Record<string, number>;
   pipelines: string[];
@@ -92,6 +114,13 @@ export interface StatusResponse {
   catalog_counts: Record<string, number>;
   ollama_installed?: boolean;
   ollama_running?: boolean;
+  /** Spec 083 (T027): the dataset bundle currently in place, if any. */
+  dataset?: {
+    bundle_id: string;
+    source_commit: string;
+    built_at: string;
+    hydrated_at: string;
+  } | null;
 }
 
 export interface CatalogPipeline {
@@ -200,6 +229,9 @@ export interface JobResponse {
   params: Record<string, unknown>;
   created_at: string;
   updated_at: string;
+  /** Spec 083 (T027): cloud actor stamp + its label ("Started by"). */
+  created_by?: unknown;
+  attribution_label?: string | null;
 }
 
 // ── Experiment Graph types ───────────────────────────────────────────
@@ -469,6 +501,29 @@ export interface GenerateReportResult {
 export const listReportTemplates = (): Promise<ReportTemplate[]> =>
   request("GET", "/reports/templates");
 
+// ── Spec-study register (Spec 081 PR-R; endpoint from PR #443) ───────
+
+export interface SpecStudy {
+  spec_id: string;
+  slug: string;
+  directory: string;
+  title: string | null;
+  has_spec: boolean;
+  has_outcome: boolean | null;
+  outcome_headline: string | null;
+  restricted: boolean;
+}
+
+export interface SpecStudiesResponse {
+  studies: SpecStudy[];
+  total: number;
+  with_outcome: number;
+  source: string;
+}
+
+export const getSpecStudies = (): Promise<SpecStudiesResponse> =>
+  request<SpecStudiesResponse>("GET", "/spec-studies");
+
 export const generateReport = (template_id: string): Promise<GenerateReportResult> =>
   request("POST", "/reports/generate", { template_id });
 
@@ -624,6 +679,7 @@ export interface ExpRunEvent {
 /** Shared SSE line reader — parses a fetch ReadableStream into typed events. */
 async function* _sseStream<T>(response: Response, signal?: AbortSignal): AsyncGenerator<T> {
   if (!response.ok) {
+    if (response.status === 401) noteUnauthorized();
     const text = await response.text().catch(() => "");
     throw _makeHttpError("POST", new URL(response.url).pathname, response.status, response.statusText, text);
   }
@@ -656,7 +712,7 @@ export async function* runStudyStream(
 ): AsyncGenerator<StudyRunEvent> {
   const res = await fetch(`${BASE}/studies/${studyId}/run`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", ...authHeaders() },
     body: JSON.stringify({ notify }),
     signal,
   });
@@ -671,7 +727,7 @@ export async function* runGraphExperimentStream(
 ): AsyncGenerator<ExpRunEvent> {
   const res = await fetch(`${BASE}/experiment-graphs/${expId}/run`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", ...authHeaders() },
     body: JSON.stringify({ kwargs, notify }),
     signal,
   });
@@ -1125,6 +1181,26 @@ export const clearPeaks = (): Promise<{ cleared: boolean; peaks: Record<string, 
 
 export const getSystemMetricsStreamUrl = (): string => `/api/v1/system/metrics/stream`;
 
+/**
+ * Spec 082: the metrics stream is consumed by fetch-streaming, never
+ * EventSource (which cannot send the Authorization header). Yields one
+ * parsed metrics object per SSE `data:` line until the signal aborts
+ * or the stream ends.
+ */
+export async function* streamSystemMetrics(
+  signal?: AbortSignal,
+): AsyncGenerator<SystemMetrics> {
+  const res = await fetch(getSystemMetricsStreamUrl(), {
+    headers: { ...authHeaders() },
+    signal,
+  });
+  if (!res.ok) {
+    if (res.status === 401) noteUnauthorized();
+    throw new Error(`metrics stream HTTP ${res.status}`);
+  }
+  yield* _sseStream<SystemMetrics>(res, signal);
+}
+
 // ── Ollama ─────────────────────────────────────────────────────────
 
 export interface OllamaInstalledModel {
@@ -1369,10 +1445,12 @@ export const getEnvSetupUrl  = (): string => `/api/v1/env/setup`;
 export const getEnvRebuildUrl = (): string => `/api/v1/env/rebuild`;
 export const getEnvUpgradeUrl = (): string => `/api/v1/env/upgrade`;
 
-// POST wrappers that return a raw Response (SSE body)
-export const runEnvSetup   = (): Promise<Response> => fetch(`${BASE}/env/setup`,   { method: "POST" });
-export const runEnvRebuild = (): Promise<Response> => fetch(`${BASE}/env/rebuild`, { method: "POST" });
-export const runEnvUpgrade = (): Promise<Response> => fetch(`${BASE}/env/upgrade`, { method: "POST" });
+// POST wrappers that return a raw Response (SSE body). Spec 082: the
+// stored Bearer token rides along — EventSource cannot send headers,
+// so these streams are consumed by fetch, never EventSource.
+export const runEnvSetup   = (): Promise<Response> => fetch(`${BASE}/env/setup`,   { method: "POST", headers: { ...authHeaders() } });
+export const runEnvRebuild = (): Promise<Response> => fetch(`${BASE}/env/rebuild`, { method: "POST", headers: { ...authHeaders() } });
+export const runEnvUpgrade = (): Promise<Response> => fetch(`${BASE}/env/upgrade`, { method: "POST", headers: { ...authHeaders() } });
 
 // ── Terminal + Logs ─────────────────────────────────────────────────
 
@@ -1387,7 +1465,7 @@ export const purgeLog = (): Promise<{ cleared: number; file: string }> =>
 export const runTerminalCommand = (command: string, cwd?: string): Promise<Response> =>
   fetch(`${BASE}/terminal/run`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", ...authHeaders() },
     body: JSON.stringify({ command, cwd, use_venv: true }),
   });
 
@@ -1463,11 +1541,14 @@ export async function* streamAG2Chat(
 ): AsyncGenerator<AG2Event> {
   const res = await fetch(`${BASE}/ag2/chat`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", ...authHeaders() },
     body: JSON.stringify({ message, history, context_type: contextType, context_id: contextId }),
     signal,
   });
-  if (!res.ok) throw new Error(`AG2 HTTP ${res.status}`);
+  if (!res.ok) {
+    if (res.status === 401) noteUnauthorized();
+    throw new Error(`AG2 HTTP ${res.status}`);
+  }
   const reader = res.body!.getReader();
   const decoder = new TextDecoder();
   let buffer = "";
@@ -1785,8 +1866,67 @@ export interface FoundationCheckResult {
 export const getFoundationStatus = (): Promise<FoundationStatus> =>
   request("GET", "/foundation/status");
 
+/**
+ * Spec 081 program home: the research loop's one-line status. The loop
+ * panel reads the same /study-loop family (its staging endpoints live
+ * on /research-loop; the surface split is named where the loop is
+ * presented in full — Spec 081 step 7). Only the fields the home card
+ * states are typed; everything else stays the panel's business.
+ */
+export interface StudyLoopStatus {
+  running?: boolean;
+  iterations?: number;
+  cycles_completed?: number;
+  last_run_at?: string | null;
+  [key: string]: unknown;
+}
+
+export const getLoopSchedulerStatus = (): Promise<LoopSchedulerStatus> =>
+  request("GET", "/study-loop/scheduler/status");
+
+export const setLoopSchedulerEnabled = (
+  enabled: boolean,
+): Promise<{ enabled: boolean }> =>
+  request("POST", `/study-loop/scheduler/${enabled ? "enable" : "disable"}`);
+
+export interface LoopSchedulerStatus {
+  enabled: boolean;
+  running?: boolean;
+  interval_hours?: number;
+  iterations?: number;
+}
+
+export const getStudyLoopStatus = (): Promise<StudyLoopStatus> =>
+  request("GET", "/study-loop/status");
+
 export const runFoundationCheck = (): Promise<FoundationCheckResult> =>
   request("POST", "/foundation/check");
+
+/**
+ * Spec 081 (D2.1): the API-native foundation check set — this
+ * instance's own checks, served by GET /research/foundation-check
+ * (the call runs the checks). Kept distinct from the canonical
+ * program record above (/foundation/status); surfaces that show both
+ * label them separately, never merged.
+ */
+export interface ResearchFoundationCheck {
+  timestamp?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  checks?: Record<string, any>[];
+  summary?: {
+    overall_status?: string;
+    n_pass?: number;
+    n_fail?: number;
+    n_warn?: number;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [key: string]: any;
+  };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
+}
+
+export const getResearchFoundationCheck = (): Promise<ResearchFoundationCheck> =>
+  request("GET", "/research/foundation-check");
 
 export const updateFoundationConfig = (
   body: { auto_check_enabled?: boolean },
@@ -2078,8 +2218,15 @@ export const deleteAIProfile = (
 export interface Project {
   id: string;
   label: string;
+  /** Spec 083: the workspace slug (cloud scope identity). */
+  slug?: string;
   description: string;
   prompt_context: string;
+  /** Spec 081: the question the program tests (UI language: "program"). */
+  question?: string;
+  /** Spec 081 Amendment 2: the program's standing position — its lead
+   * verdict line, rendered on the program home as program data. */
+  standing_position?: string;
   topic_ids: string[];
   experiment_ids: string[];
   corpus_ids: string[];
@@ -2485,6 +2632,8 @@ export interface IndusDoc {
   intake_date: string;
   claim_count: number;
   claim_extraction_status: string;
+  /** Spec 083 (T027): the acting user, in cloud mode only. */
+  attribution_label?: string;
 }
 
 /**
@@ -2579,6 +2728,8 @@ export interface IndusClaim {
   not_understood_recorded?: boolean;
   /** Bundle serialization for bundle parents; null for non-bundle claims. */
   bundle?: BundleSerialization | null;
+  /** Spec 083 (T027): the acting user, in cloud mode only. */
+  attribution_label?: string;
 }
 
 export interface IndusHypothesisModel {
@@ -2673,6 +2824,54 @@ export const listIndusClaims = (
 export const listIndusHypotheses = (): Promise<{ models: IndusHypothesisModel[] }> =>
   request("GET", "/indus-evidence/hypotheses");
 
+// ── Program-scoped claim surface (Spec 081 step 3, T015; FR-018) ────────────
+// The canonical paths for the claims register + detail. The
+// /indus-evidence/* helpers above are the one-release shim.
+
+export const listProgramClaims = (
+  programId: string,
+  params: { q?: string; claim_type?: string; claim_status?: string; doc_id?: string; sign?: string; limit?: number; offset?: number; aee?: boolean } = {}
+): Promise<{ claims: IndusClaim[]; total: number; limit: number; offset: number }> => {
+  const qs = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== "") qs.set(k, String(v));
+  });
+  const q = qs.toString();
+  return request("GET", `/programs/${encodeURIComponent(programId)}/claims${q ? `?${q}` : ""}`);
+};
+
+export const listProgramHypotheses = (
+  programId: string
+): Promise<{ models: IndusHypothesisModel[] }> =>
+  request("GET", `/programs/${encodeURIComponent(programId)}/hypotheses`);
+
+/** Per-claim inspectable trail (Spec 029 Phase C), program-scoped. */
+export interface ClaimTrail {
+  claim_id: string;
+  record_kind: string;
+  source_pointer?: string;
+  stage?: ClaimStageObject | null;
+  verified_unexplained?: boolean;
+  evidence?: Array<Record<string, unknown>>;
+  origin_groups?: Array<Record<string, unknown>>;
+  origin_group_count?: number;
+  evidence_instances?: Array<Record<string, unknown>>;
+  falsifier?: Record<string, unknown> | null;
+  stage_transitions?: Array<Record<string, unknown>>;
+  verdicts?: Array<Record<string, unknown>>;
+  bundle?: BundleSerialization | null;
+  completeness?: Record<string, unknown>;
+}
+
+export const getProgramClaimTrail = (
+  programId: string,
+  claimId: string
+): Promise<ClaimTrail> =>
+  request(
+    "GET",
+    `/programs/${encodeURIComponent(programId)}/claims/${encodeURIComponent(claimId)}/trail`
+  );
+
 export const getIndusSweepConfig = (): Promise<SweepConfig> =>
   request("GET", "/indus-evidence/sweep/config");
 
@@ -2713,7 +2912,11 @@ export const runIndusIntake = (): Promise<{ status: string; message: string }> =
 export const uploadIndusPaper = (file: File): Promise<Response> => {
   const fd = new FormData();
   fd.append("file", file);
-  return fetch(`${BASE}/indus-evidence/upload`, { method: "POST", body: fd });
+  return fetch(`${BASE}/indus-evidence/upload`, {
+    method: "POST",
+    headers: { ...authHeaders() },
+    body: fd,
+  });
 };
 
 // ── Signs API ────────────────────────────────────────────────────────────

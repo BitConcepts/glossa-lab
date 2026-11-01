@@ -1,0 +1,692 @@
+[
+ {
+  "sign": "M002",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M004",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M005",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M006",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M007",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M009",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M010",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M012",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M013",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M014",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M015",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M016",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M017",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M018",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M020",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M023",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M025",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M026",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M027",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M029",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (freq=11), distributional assignment"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M030",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M032",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M034",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M037",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M038",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M039",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M041",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M042",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M044",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M045",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M046",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M047",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "Previous distributional basis quoted in basis: 'Round 2: INITIAL position (freq=13), distributional assignment'"
+  ],
+  "note": "CR-6 ambiguity: the INITIAL assertion appears in the quoted previous distributional assignment, which the fact-check correction says was overridden by semantic crosswalk evidence (fish). Coded positionally per CR-6, erring toward being able to fail."
+ },
+ {
+  "sign": "M048",
+  "coded_type": "ONLY-FIN",
+  "assertions_seen": [
+   "consistent TERMINAL position (n=157)",
+   "Positional analysis"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M049",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M050",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M051",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M052",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M053",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M054",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M055",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": "'MEDIUM' in '(ICON, MEDIUM)' is not a MEDIAL positional statement; no codable position seen."
+ },
+ {
+  "sign": "M057",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M059",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M060",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M061",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M062",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M063",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": "Basis discusses gharial motif association and a downgrade; no positional or functional-positional assertion. The quoted previous basis is also non-positional (exclusive to gharial seals)."
+ },
+ {
+  "sign": "M065",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M066",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M067",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M068",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M069",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M070",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M073",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M074",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M075",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (freq=14), distributional assignment"
+  ],
+  "note": "No 'consistent INITIAL' restatement in this basis; the INITIAL position statement alone codes ONLY-INIT under CR-1/CR-2."
+ },
+ {
+  "sign": "M076",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M077",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M078",
+  "coded_type": "ONLY-INIT",
+  "assertions_seen": [
+   "INITIAL position (distributional assignment)",
+   "consistent INITIAL"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M080",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M082",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M087",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M089",
+  "coded_type": "ONLY-FIN",
+  "assertions_seen": [
+   "consistent TERMINAL position (n=171)",
+   "Positional analysis"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M099",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M108",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M124",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M128",
+  "coded_type": "ONLY-MED",
+  "assertions_seen": [
+   "MEDIAL position (freq=7), distributional assignment"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M130",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M145",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M151",
+  "coded_type": "ONLY-MED",
+  "assertions_seen": [
+   "MEDIAL position (freq=5), distributional assignment"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M162",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M165",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M176",
+  "coded_type": "ONLY-FIN",
+  "assertions_seen": [
+   "Masculine suffix"
+  ],
+  "note": "Suffix in its terminal sense codes ONLY-FIN under CR-2."
+ },
+ {
+  "sign": "M194",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M202",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M220",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M222",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": "'compound_slot_coherence' mentions a slot but specifies no initial/medial/final position, so no codable type under CR-1/CR-2."
+ },
+ {
+  "sign": "M233",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": "'Settlement/place marker' is a semantic/functional place marker, not a terminal marker, suffix, or stated position; no codable position seen."
+ },
+ {
+  "sign": "M264",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M267",
+  "coded_type": "ONLY-FIN",
+  "assertions_seen": [
+   "most likely a high-frequency functional/suffixal sign"
+  ],
+  "note": "CR-6: 'suffixal' read in its terminal sense under CR-2; record ambiguity that the basis does not use the word TERMINAL for this sign."
+ },
+ {
+  "sign": "M305",
+  "coded_type": "ONLY-FIN",
+  "assertions_seen": [
+   "terminal pinch mark",
+   "consistent TERMINAL position (n=83)"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M311",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M328",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M329",
+  "coded_type": "ONLY-MED",
+  "assertions_seen": [
+   "MEDIAL position (freq=5), distributional assignment"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M330",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M336",
+  "coded_type": "ONLY-FIN",
+  "assertions_seen": [
+   "chevron terminal = locative case marker",
+   "consistent TERMINAL position (n=161)"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M342",
+  "coded_type": "ONLY-FIN",
+  "assertions_seen": [
+   "Terminal marker",
+   "Dravidian case suffix"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M347",
+  "coded_type": "ONLY-MED",
+  "assertions_seen": [
+   "slot=MEDIAL_BETWEEN_CONF",
+   "patterns 'M342-[M347]-M293' etc. (sign between two others)"
+  ],
+  "note": "Medial claim comes from a grammar-slot label and between-patterns rather than the words 'MEDIAL position'; coded positionally per CR-6."
+ },
+ {
+  "sign": "M351",
+  "coded_type": "ONLY-MED",
+  "assertions_seen": [
+   "Positional: MEDIAL after locative M336 and before unicorn M211 and terminal M342"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M362",
+  "coded_type": "ONLY-MED",
+  "assertions_seen": [
+   "Positional: predominantly MEDIAL in personal name sequences",
+   "Pos=MEDIAL",
+   "aNi- prefix in personal names (Sangam literature)"
+  ],
+  "note": "CR-6 / CR-5: two positional assertions seen - MEDIAL (the sign's stated inscription position, coded as strongest/direct claim) and prefix (a word-level claim about aNi- in Sangam names, which would code ONLY-INIT). Coded ONLY-MED on the direct Pos=MEDIAL statement; ambiguity recorded."
+ },
+ {
+  "sign": "M367",
+  "coded_type": "ONLY-FIN",
+  "assertions_seen": [
+   "terminal diamond = neuter suffix",
+   "consistent TERMINAL position (n=190)"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M374",
+  "coded_type": "ONLY-MED",
+  "assertions_seen": [
+   "Positional: MEDIAL between authority signs and vessel/cargo signs"
+  ],
+  "note": ""
+ },
+ {
+  "sign": "M375",
+  "coded_type": "ONLY-MED",
+  "assertions_seen": [
+   "Pos=MEDIAL",
+   "taN- is a common personal name prefix (Sangam)"
+  ],
+  "note": "CR-6 / CR-5: both MEDIAL and a word-level prefix assertion seen. Coded ONLY-MED on the direct Pos=MEDIAL statement for this sign; prefix ambiguity recorded."
+ },
+ {
+  "sign": "M391",
+  "coded_type": "FREE",
+  "assertions_seen": [],
+  "note": ""
+ },
+ {
+  "sign": "M398",
+  "coded_type": "ONLY-MED",
+  "assertions_seen": [
+   "Pos=MEDIAL",
+   "pattern [M267]-[M398]-[M342] (sign between two others)"
+  ],
+  "note": ""
+ }
+]

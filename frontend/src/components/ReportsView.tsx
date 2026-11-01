@@ -1,344 +1,90 @@
 /**
- * Reports View — browse, sort, filter, and open report artifacts.
- * View opens in a new browser window. Sort by name/kind/size/updated.
+ * Reports & ledger — Spec 081 (wireframe 12), replacing the old
+ * file-browser ReportsView in place (route id "reports" unchanged).
+ *
+ * Reports are what the program said; the ledger is what it did. The
+ * reports list is the instance's report catalog presented as
+ * title / state / meta / Open; the study register (the program
+ * record's own list, PR #443 endpoint) and the program-items list
+ * ride below it. The Ledger tab states the ledger's terms and where
+ * the record lives — this instance exposes no ledger endpoint, so no
+ * entries are shown and none are invented (Leg B delta D1: explicit
+ * instance states, never fake data).
+ *
+ * Retired with this surface (backend endpoints untouched): compose
+ * mode, the AI report-synthesis UI, star pins, the user-template
+ * editor UI, and the delete / open-folder buttons. The two report
+ * template families (built-in /reports/templates and user
+ * /report-templates) stay labelled as separate families in the
+ * Generate dialog — never silently merged (Leg B delta D5).
  */
 
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import {
-  listReports, deleteReport, getReportDownloadUrl, openReportFolder,
-  aiReportSynthesis,
+  listReports, getReportDownloadUrl,
   listReportTemplates, generateReport,
-  listUserReportTemplates, createUserReportTemplate,
-  deleteUserReportTemplate,
-  type CatalogReport, type ReportTemplate,
-  type UserReportTemplate, type ReportTemplateSection,
+  listUserReportTemplates,
+  type CatalogReport, type ReportTemplate, type UserReportTemplate,
 } from "../api";
 import { useProject } from "../hooks/useProject";
 import { fmtDateTimeCompact } from "../dateFormat";
+import {
+  Card, CardTitle, Chip, PageHead, palette, PrimaryButton, QuietButton,
+  RowItem, RowMeta, RowTitle, SmallButton, TabsRow, type Palette,
+} from "./ui081";
+import { StudyRegister } from "./StudyRegister";
 
-/** Simple markdown → HTML renderer for the AI report modal. */
-function renderMarkdown(md: string): string {
-  return md
-    .replace(/^### (.+)$/gm, '<h3 style="font-size:14px;margin:16px 0 6px;color:#1e3a5f">$1</h3>')
-    .replace(/^## (.+)$/gm, '<h2 style="font-size:16px;margin:20px 0 8px;color:#1e3a5f">$1</h2>')
-    .replace(/^# (.+)$/gm, '<h1 style="font-size:18px;margin:24px 0 10px;color:#111">$1</h1>')
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    .replace(/^\| (.+) \|$/gm, (row) => {
-      const cells = row.split('|').filter(c => c.trim());
-      return '<tr>' + cells.map(c => `<td style="padding:4px 10px;border:1px solid #e5e7eb">${c.trim()}</td>`).join('') + '</tr>';
-    })
-    .replace(/(<tr>.*?<\/tr>\n?)+/gs, (t) => `<table style="border-collapse:collapse;width:100%;margin:8px 0">${t}</table>`)
-    .replace(/^- (.+)$/gm, '<li style="margin:2px 0">$1</li>')
-    .replace(/(<li.*?<\/li>\n?)+/gs, '<ul style="margin:6px 0;padding-left:20px">$1</ul>')
-    .replace(/^(?!<[a-z])(.+)$/gm, '<p style="margin:6px 0">$1</p>')
-    .replace(/```[\s\S]*?```/g, (code) => `<pre style="background:#f8fafc;padding:8px;border-radius:4px;font-size:11px;overflow-x:auto">${code.replace(/```\w*/g, '').trim()}</pre>`);
-}
-
-type SortKey = "name" | "kind" | "size_bytes" | "updated_at";
-type SortDir = "asc" | "desc";
-
-/**
- * Three clean file categories:
- *   report   — formatted PDF documents (the only true reports)
- *   data     — structured outputs: JSON, CSV, TSV, etc.
- *   document — prose / markdown documents
- */
-const DATA_KINDS   = new Set(["data", "document"]);
-const REPORT_KINDS = new Set(["report"]);
-
-// Human-readable labels + colors per kind
 const KIND_LABEL: Record<string, string> = {
-  report:   "PDF Report",
-  data:     "Data",
+  report: "PDF Report",
+  data: "Data",
   document: "Document",
 };
-const KIND_COLOR: Record<string, string> = {
-  report:   "#dc2626",  // red — PDF
-  data:     "#2563eb",  // blue — JSON/CSV
-  document: "#7c3aed",  // purple — markdown
-};
 
-// ── Modern multi-select dropdown ───────────────────────────────────────────
-function MultiSelectDropdown({
-  label, options, selected, onChange, colorMap,
-}: {
-  label: string;
-  options: string[];
-  selected: Set<string>;
-  onChange: (s: Set<string>) => void;
-  colorMap?: Record<string, string>;
-}) {
-  const [open, setOpen] = useState(false);
-  const [search, setSearch] = useState("");
-  const ref = useRef<HTMLDivElement>(null);
+function fmtSize(b: number): string {
+  return b > 1_000_000
+    ? `${(b / 1_000_000).toFixed(1)} MB`
+    : b > 1_000
+      ? `${(b / 1_000).toFixed(0)} KB`
+      : `${b} B`;
+}
 
-  useEffect(() => {
-    if (!open) return;
-    const h = (e: MouseEvent) => { if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false); };
-    document.addEventListener("mousedown", h);
-    return () => document.removeEventListener("mousedown", h);
-  }, [open]);
-
-  const toggle = (v: string) => {
-    const next = new Set(selected);
-    next.has(v) ? next.delete(v) : next.add(v);
-    onChange(next);
-  };
-  const filtered = options.filter(o => !search || o.toLowerCase().includes(search.toLowerCase()));
-  const selCount = selected.size;
-
+function ReportRow({ p, r, onOpen }: { p: Palette; r: CatalogReport; onOpen: (r: CatalogReport) => void }) {
   return (
-    <div ref={ref} style={{ position: "relative" }}>
-      {/* Trigger */}
-      <button onClick={() => setOpen(o => !o)}
-        style={{ display: "flex", alignItems: "center", gap: 5, padding: "4px 10px",
-          border: `1px solid ${selCount > 0 ? "#2563eb" : "#d1d5db"}`,
-          borderRadius: 6, background: selCount > 0 ? "#eff6ff" : "#fff",
-          cursor: "pointer", fontSize: 12, color: "#374151", whiteSpace: "nowrap" }}>
-        <span style={{ fontSize: 11, color: "#6b7280" }}>{label}:</span>
-        {selCount === 0
-          ? <span style={{ color: "#9ca3af" }}>All</span>
-          : <span style={{ fontWeight: 700, color: "#2563eb" }}>{selCount} selected</span>}
-        <span style={{ fontSize: 9, color: "#9ca3af" }}>{open ? "▲" : "▼"}</span>
-      </button>
-      {/* Dropdown */}
-      {open && (
-        <div style={{ position: "absolute", top: "calc(100% + 4px)", left: 0, zIndex: 200,
-          background: "#fff", border: "1px solid #e5e7eb", borderRadius: 8,
-          boxShadow: "0 8px 24px rgba(0,0,0,0.12)", minWidth: 200, maxHeight: 280,
-          display: "flex", flexDirection: "column" }}>
-          {/* Search */}
-          {options.length > 6 && (
-            <div style={{ padding: "6px 8px", borderBottom: "1px solid #f3f4f6" }}>
-              <input value={search} onChange={e => setSearch(e.target.value)}
-                placeholder="Search\u2026"
-                style={{ width: "100%", border: "1px solid #e5e7eb", borderRadius: 4,
-                  padding: "3px 7px", fontSize: 11, outline: "none", boxSizing: "border-box" }}
-                autoFocus />
-            </div>
-          )}
-          {/* All toggle */}
-          <button onClick={() => onChange(new Set())}
-            style={{ padding: "6px 12px", border: "none", background: "none", textAlign: "left",
-              cursor: "pointer", fontSize: 11, color: selCount === 0 ? "#2563eb" : "#374151",
-              fontWeight: selCount === 0 ? 700 : 400, borderBottom: "1px solid #f3f4f6" }}>
-            {selCount === 0 ? "\u2714 " : ""} All ({options.length})
-          </button>
-          {/* Options */}
-          <div style={{ overflowY: "auto", flex: 1 }}>
-            {filtered.map(opt => {
-              const c = colorMap?.[opt] ?? "#2563eb";
-              const sel = selected.has(opt);
-              return (
-                <button key={opt} onClick={() => toggle(opt)}
-                  style={{ display: "flex", alignItems: "center", gap: 8, width: "100%",
-                    padding: "6px 12px", border: "none", background: sel ? c + "10" : "none",
-                    cursor: "pointer", textAlign: "left", fontSize: 11,
-                    borderBottom: "1px solid #f9fafb" }}>
-                  <span style={{ width: 14, height: 14, borderRadius: 3,
-                    border: `2px solid ${sel ? c : "#d1d5db"}`,
-                    background: sel ? c : "#fff", flexShrink: 0, display: "flex",
-                    alignItems: "center", justifyContent: "center" }}>
-                    {sel && <span style={{ color: "#fff", fontSize: 9, fontWeight: 700 }}>\u2713</span>}
-                  </span>
-                  <span style={{ flex: 1, color: sel ? c : "#374151", fontWeight: sel ? 600 : 400 }}>
-                    {opt}
-                  </span>
-                </button>
-              );
-            })}
-            {filtered.length === 0 && <div style={{ padding: "8px 12px", color: "#9ca3af", fontSize: 11 }}>No matches</div>}
-          </div>
-          {selCount > 0 && (
-            <button onClick={() => { onChange(new Set()); setOpen(false); }}
-              style={{ padding: "5px 12px", border: "none", background: "none",
-                borderTop: "1px solid #f3f4f6", cursor: "pointer",
-                fontSize: 10, color: "#6b7280", textAlign: "left" }}>
-              Clear selection
-            </button>
-          )}
+    <RowItem p={p}>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" }}>
+          <RowTitle p={p}><span style={{ overflowWrap: "anywhere" }}>{r.name}</span></RowTitle>
+          <Chip tone="line">{KIND_LABEL[r.kind] ?? r.kind}</Chip>
+          {r.experiment_id && <Chip tone="neutral">{r.experiment_id.replace(/_/g, " ")}</Chip>}
         </div>
-      )}
-      {/* Selected pills */}
-      {selCount > 0 && (
-        <div style={{ display: "flex", gap: 3, flexWrap: "wrap", marginTop: 4 }}>
-          {Array.from(selected).map(v => (
-            <span key={v} style={{ display: "inline-flex", alignItems: "center", gap: 3,
-              padding: "1px 6px", borderRadius: 10, fontSize: 10, fontWeight: 600,
-              background: (colorMap?.[v] ?? "#2563eb") + "18",
-              color: colorMap?.[v] ?? "#2563eb", border: `1px solid ${(colorMap?.[v] ?? "#2563eb")}30` }}>
-              {v}
-              <button onClick={() => toggle(v)}
-                style={{ border: "none", background: "none", cursor: "pointer",
-                  color: "inherit", fontSize: 11, padding: 0, lineHeight: 1 }}>\u00d7</button>
-            </span>
-          ))}
-        </div>
-      )}
-    </div>
+        <RowMeta p={p} style={{ overflowWrap: "anywhere" }}>
+          {r.relative_path} · {fmtSize(r.size_bytes)} · updated {fmtDateTimeCompact(r.updated_at)}
+        </RowMeta>
+      </div>
+      <SmallButton onClick={() => onOpen(r)}>Open</SmallButton>
+    </RowItem>
   );
 }
 
-export function ReportsView() {
+export function ReportsView({ darkMode }: { darkMode: boolean }) {
+  const p = palette(darkMode);
   const { activeProject } = useProject();
   const projectId = activeProject?.id ?? null;
+
+  const [tab, setTab] = useState<"reports" | "ledger">("reports");
   const [reports, setReports] = useState<CatalogReport[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [areaTab, setAreaTab] = useState<"data" | "reports" | "templates">("reports");
   const [search, setSearch] = useState("");
-  const [kindFilter, setKindFilter] = useState<Set<string>>(new Set());
-  const [expFilter, setExpFilter] = useState<Set<string>>(new Set());
-  const [sortKey, setSortKey] = useState<SortKey>("updated_at");
-  const [sortDir, setSortDir] = useState<SortDir>("desc");
-  const [groupByExp, setGroupByExp] = useState(true); // default on
   const [popupBlocked, setPopupBlocked] = useState<string | null>(null);
-  // ── Generate PDF Report modal ─────────────────────────────────────────
-  const [showGenerateModal, setShowGenerateModal] = useState(false);
+
+  // ── Generate report dialog (the wireframe's primary action) ──────
+  const [showGenerate, setShowGenerate] = useState(false);
   const [templates, setTemplates] = useState<ReportTemplate[]>([]);
-  const [selectedTemplate, setSelectedTemplate] = useState<string>("");
+  const [userTemplates, setUserTemplates] = useState<UserReportTemplate[]>([]);
+  const [selectedTemplate, setSelectedTemplate] = useState("");
   const [generating, setGenerating] = useState(false);
   const [generateMsg, setGenerateMsg] = useState<string | null>(null);
-
-  const openGenerateModal = async () => {
-    setGenerateMsg(null);
-    setShowGenerateModal(true);
-    try {
-      const t = await listReportTemplates();
-      setTemplates(t);
-      if (t.length > 0) setSelectedTemplate(t[0].id);
-    } catch { setTemplates([]); }
-  };
-
-  const handleGenerate = async () => {
-    if (!selectedTemplate) return;
-    setGenerating(true);
-    setGenerateMsg(null);
-    try {
-      const r = await generateReport(selectedTemplate);
-      setGenerateMsg(r.message);
-      setTimeout(() => { setShowGenerateModal(false); setGenerateMsg(null); load(); }, 3000);
-    } catch (e) {
-      setGenerateMsg(e instanceof Error ? e.message : "Generation failed");
-    } finally {
-      setGenerating(false);
-    }
-  };
-
-  // ── Compose mode ───────────────────────────────────────────────
-  const [composeMode, setComposeMode] = useState(false);
-  const [selected, setSelected] = useState<Set<string>>(new Set());
-
-  // AI Report generation
-  const [aiReportLoading, setAiReportLoading] = useState(false);
-  const [aiReportResult, setAiReportResult] = useState<{ title: string; markdown: string } | null>(null);
-
-  const generateAiReport = async () => {
-    const picked = reports.filter(r => selected.has(r.id));
-    if (!picked.length) return;
-    setAiReportLoading(true);
-    try {
-      // Fetch JSON content for each selected report
-      const contents = await Promise.all(picked.map(async r => {
-        const url = getReportDownloadUrl(r.id);
-        try {
-          const res = await fetch(url);
-          if (res.ok) {
-            const data = await res.json();
-            return { name: r.name, filename: r.relative_path, data };
-          }
-        } catch { /* ignore */ }
-        return { name: r.name, filename: r.relative_path, data: {} };
-      }));
-      const result = await aiReportSynthesis({
-        report_contents: contents,
-        title: picked.length === 1 ? `Analysis: ${picked[0].name}` : `Synthesis of ${picked.length} Reports`,
-      });
-      setAiReportResult(result);
-    } catch (e) {
-      alert(e instanceof Error ? e.message : "AI report generation failed. Check that a language model is configured in Settings.");
-    } finally {
-      setAiReportLoading(false);
-    }
-  };
-
-  const toggleSelected = (id: string) =>
-    setSelected((prev) => { const s = new Set(prev); s.has(id) ? s.delete(id) : s.add(id); return s; });
-
-  // ── Starred reports (persist to localStorage) ──────────────────
-  const [starredReports, setStarredReports] = useState<Set<string>>(() => {
-    try { return new Set(JSON.parse(localStorage.getItem("glossa_starred_reports") ?? "[]")); }
-    catch { return new Set(); }
-  });
-  const toggleStarReport = (id: string) => {
-    setStarredReports(prev => {
-      const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
-      localStorage.setItem("glossa_starred_reports", JSON.stringify([...next]));
-      return next;
-    });
-  };
-
-  const exportComposedPdf = async () => {
-    const picked = reports.filter((r) => selected.has(r.id));
-    if (!picked.length) return;
-
-    // Fetch actual JSON content from each selected report
-    const sectionsHtml = await Promise.all(picked.map(async (r) => {
-      const url = getReportDownloadUrl(r.id);
-      let contentHtml = `<a href="${url}" target="_blank" style="font-size:12px;color:#2563eb">Open source file →</a>`;
-      try {
-        const res = await fetch(url);
-        if (res.ok && r.kind === "data") {
-          const data = await res.json();
-          // If it's a Glossa study report, render results section
-          if (data.results && typeof data.results === "object") {
-            const rows = Object.entries(data.results as Record<string, unknown>).map(([key, val]) => {
-              const valStr = typeof val === "object" ? JSON.stringify(val, null, 2) : String(val);
-              return (
-                `<tr style="border-bottom:1px solid #f3f4f6">` +
-                `<td style="padding:6px 12px 6px 0;font-size:12px;font-weight:600;color:#1e3a5f;white-space:nowrap;vertical-align:top;width:220px">${key.replace(/_/g, ' ')}</td>` +
-                `<td style="padding:6px 0;font-size:11px;color:#374151"><pre style="margin:0;white-space:pre-wrap;font-family:monospace;font-size:10px;max-height:160px;overflow:hidden">${valStr.slice(0, 800)}${valStr.length > 800 ? '\u2026' : ''}</pre></td>` +
-                `</tr>`
-              );
-            }).join('');
-            const generated = typeof data.generated === "string" ? `<p style="font-size:10px;color:#9ca3af;margin:0 0 6px">${data.generated}</p>` : "";
-            contentHtml = generated + (rows.length
-              ? `<table style="border-collapse:collapse;width:100%">${rows}</table>`
-              : `<pre style="font-size:10px;color:#6b7280">${JSON.stringify(data, null, 2).slice(0, 1200)}</pre>`);
-          } else {
-            contentHtml = `<pre style="font-size:10px;color:#374151;white-space:pre-wrap">${JSON.stringify(data, null, 2).slice(0, 2000)}</pre>`;
-          }
-        }
-      } catch { /* leave fallback link */ }
-      return (
-        `<section style="margin-bottom:32px;page-break-inside:avoid">` +
-        `<h2 style="font-size:14px;margin:0 0 3px;color:#1e3a5f">${r.name}</h2>` +
-        `<p style="font-size:11px;color:#9ca3af;margin:0 0 8px">${r.kind.replace('_', ' ')} · ${r.relative_path}</p>` +
-        contentHtml +
-        `</section>`
-      );
-    }));
-
-    const sections = sectionsHtml.join("<hr style='border:none;border-top:1px solid #e5e7eb;margin:20px 0'>\n");
-    const win = window.open("", "_blank", "width=920,height=940");
-    if (!win) { alert("Allow popups from localhost in your browser settings, then try again."); return; }
-    win.document.write(
-      `<!DOCTYPE html><html><head><title>Glossa Lab — Research Report</title>` +
-      `<style>
-        body{font-family:system-ui,sans-serif;max-width:780px;margin:40px auto;font-size:13px;line-height:1.65;color:#111}
-        h1{font-size:20px;margin-bottom:4px}h2{font-size:15px;color:#1e3a5f}
-        @media print{body{margin:10px 20px}section{page-break-inside:avoid}}
-      </style></head><body>` +
-      `<h1>Glossa Lab — Research Report</h1>` +
-      `<p style="color:#9ca3af;font-size:11px;margin:0 0 16px">Generated ${new Date().toLocaleString()} · ${picked.length} report${picked.length !== 1 ? 's' : ''}</p>` +
-      `<hr style="border:none;border-top:2px solid #e5e7eb;margin-bottom:24px">` +
-      sections +
-      `<script>setTimeout(()=>{window.print()},600)</script></body></html>`
-    );
-    win.document.close();
-  };
 
   const load = async () => {
     setLoading(true);
@@ -352,36 +98,30 @@ export function ReportsView() {
     }
   };
 
-  useEffect(() => {
-    load();
-  }, [projectId]);
+  useEffect(() => { void load(); }, [projectId]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Listen for Jobs-tab 'Results' navigation
+  // Jobs 'Results' navigation lands here with a filename to surface.
   useEffect(() => {
     const handler = (e: Event) => {
-      const d = (e as CustomEvent<{ tab?: string; search?: string }>).detail;
-      if (d?.tab === "data") setAreaTab("data");
-      if (d?.search) setSearch(d.search);
-      // Clear kind/exp filters so the file is visible
-      setKindFilter(new Set());
-      setExpFilter(new Set());
-      // Scroll to top of list
+      const d = (e as CustomEvent<{ search?: string }>).detail;
+      if (d?.search) {
+        setTab("reports");
+        setSearch(d.search);
+      }
       window.scrollTo({ top: 0, behavior: "smooth" });
     };
     window.addEventListener("glossa:reports_highlight", handler);
     return () => window.removeEventListener("glossa:reports_highlight", handler);
   }, []);
 
-  const handleView = (r: CatalogReport) => {
+  const handleOpen = (r: CatalogReport) => {
     const url = getReportDownloadUrl(r.id);
-    // Open as a popup so it stays near the app; detect if blocked
     const popup = window.open(
       url,
       `glossa_report_${r.id}`,
-      "width=1100,height=800,menubar=no,toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes"
+      "width=1100,height=800,menubar=no,toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes",
     );
     if (!popup || popup.closed || typeof popup.closed === "undefined") {
-      // Popup blocked — show inline fallback
       setPopupBlocked(url);
     } else {
       popup.focus();
@@ -389,613 +129,248 @@ export function ReportsView() {
     }
   };
 
-  const handleDelete = async (r: CatalogReport) => {
-    if (!confirm(`Delete "${r.name}"?`)) return;
-    try { await deleteReport(r.id); await load(); }
-    catch (e) { alert(e instanceof Error ? e.message : "Delete failed"); }
-  };
-
-  const toggleSort = (key: SortKey) => {
-    if (sortKey === key) setSortDir((d) => d === "asc" ? "desc" : "asc");
-    else { setSortKey(key); setSortDir("asc"); }
-  };
-
-  const sortIcon = (key: SortKey) =>
-    sortKey !== key ? " ↕" : sortDir === "asc" ? " ↑" : " ↓";
-
-  const fmtSize = (b: number) =>
-    b > 1_000_000 ? `${(b / 1_000_000).toFixed(1)} MB`
-    : b > 1_000 ? `${(b / 1_000).toFixed(0)} KB`
-    : `${b} B`;
-
-  const kindColor = KIND_COLOR;
-
-  const allKinds = Array.from(new Set(reports.map((r) => r.kind)));
-  const allExps  = Array.from(new Set(reports.map((r) => r.experiment_id).filter(Boolean)));
-
-  // Filter the catalog by the active area tab
-  const areaFiltered = reports.filter(r =>
-    areaTab === "data" ? DATA_KINDS.has(r.kind) : REPORT_KINDS.has(r.kind)
-  );
-
-  const dataCnt   = reports.filter(r => DATA_KINDS.has(r.kind)).length;
-  const reportCnt = reports.filter(r => REPORT_KINDS.has(r.kind)).length;
-
-  // ── Template editor state ───────────────────────────────────────────────
-  const [userTemplates, setUserTemplates] = useState<UserReportTemplate[]>([]);
-  const [tmplLoading, setTmplLoading] = useState(false);
-  const [showNewTmpl, setShowNewTmpl] = useState(false);
-  const [newTmplName, setNewTmplName] = useState("");
-  const [newTmplCat, setNewTmplCat]   = useState("General");
-  const [newTmplDesc, setNewTmplDesc] = useState("");
-  const [newTmplSections, setNewTmplSections] = useState<ReportTemplateSection[]>([]);
-
-  const loadUserTemplates = async () => {
-    setTmplLoading(true);
-    try { setUserTemplates(await listUserReportTemplates()); }
-    catch { /* ignore */ }
-    finally { setTmplLoading(false); }
-  };
-
-  const handleCreateTmpl = async () => {
-    if (!newTmplName.trim()) return;
+  const openGenerate = async () => {
+    setGenerateMsg(null);
+    setShowGenerate(true);
     try {
-      const t = await createUserReportTemplate({
-        name: newTmplName.trim(), description: newTmplDesc.trim(),
-        category: newTmplCat, sections: newTmplSections,
-      });
-      setUserTemplates(prev => [t, ...prev]);
-      setShowNewTmpl(false); setNewTmplName(""); setNewTmplDesc(""); setNewTmplSections([]);
-    } catch { /* ignore */ }
+      const t = await listReportTemplates();
+      setTemplates(t);
+      if (t.length > 0) setSelectedTemplate(t[0].id);
+    } catch { setTemplates([]); }
+    try {
+      setUserTemplates(await listUserReportTemplates());
+    } catch { setUserTemplates([]); }
   };
 
-  const handleDeleteTmpl = async (id: string) => {
-    if (!confirm("Delete this template?")) return;
-    try { await deleteUserReportTemplate(id); setUserTemplates(prev => prev.filter(t => t.id !== id)); }
-    catch { /* ignore */ }
+  const handleGenerate = async () => {
+    if (!selectedTemplate) return;
+    setGenerating(true);
+    setGenerateMsg(null);
+    try {
+      const r = await generateReport(selectedTemplate);
+      setGenerateMsg(r.message);
+      setTimeout(() => { setShowGenerate(false); setGenerateMsg(null); void load(); }, 3000);
+    } catch (e) {
+      setGenerateMsg(e instanceof Error ? e.message : "Generation failed");
+    } finally {
+      setGenerating(false);
+    }
   };
 
-  const addSection = () => setNewTmplSections(prev => [
-    ...prev,
-    { title: "", data_source: "", data_key: "", chart_type: "table", include_table: true, description: "" },
-  ]);
-
-  const updateSection = (i: number, field: keyof ReportTemplateSection, val: unknown) =>
-    setNewTmplSections(prev => prev.map((s, idx) => idx === i ? { ...s, [field]: val } : s));
-
-  const sorted = [...areaFiltered]
-    .filter((r) => (!search || r.name.toLowerCase().includes(search.toLowerCase()))
-                && (kindFilter.size === 0 || kindFilter.has(r.kind))
-                && (expFilter.size === 0 || expFilter.has(r.experiment_id)))
-    .sort((a, b) => {
-      // Starred always float to top
-      const aS = starredReports.has(a.id), bS = starredReports.has(b.id);
-      if (aS && !bS) return -1;
-      if (!aS && bS) return 1;
-      // Then by selected sort key
-      const av = a[sortKey as keyof CatalogReport] as string | number;
-      const bv = b[sortKey as keyof CatalogReport] as string | number;
-      const cmp = av < bv ? -1 : av > bv ? 1 : 0;
-      return sortDir === "asc" ? cmp : -cmp;
-    });
+  const visible = reports.filter(
+    (r) => !search || r.name.toLowerCase().includes(search.toLowerCase()),
+  );
 
   return (
     <div>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.5rem" }}>
-        <h2 style={{ margin: 0 }}>Reports</h2>
-        <div style={{ display: "flex", gap: 6 }}>
-          <button
-            onClick={() => void openGenerateModal()}
-            style={{ ...btnStyle, padding: "4px 12px", fontSize: 12, background: "#16a34a" }}
-            title="Generate a PDF report from experiment results"
-          >
-            📄 Generate Report
-          </button>
-          <button
-            onClick={() => { setComposeMode((m) => !m); setSelected(new Set()); }}
-            style={{ ...btnStyle, padding: "4px 12px", fontSize: 12,
-              background: composeMode ? "#7c3aed" : "#f3f4f6",
-              color: composeMode ? "#fff" : "#374151",
-              border: composeMode ? "none" : "1px solid #d1d5db" }}
-          >
-            {composeMode ? "✕ Cancel Compose" : "📊 Compose"}
-          </button>
-          <button onClick={load} style={{ ...btnStyle, padding: "4px 12px", fontSize: 12, background: "#6b7280" }}>
-            ⟳ Refresh
-          </button>
-        </div>
-      </div>
+      <PageHead
+        p={p}
+        title="Reports & ledger"
+        lede={
+          <>
+            What the program has produced, and the record of how it got there. The{" "}
+            <b>ledger</b> is append-only: an entry is never edited or deleted — a
+            correction is a new entry that names the old one. No ledger entry, no
+            claim that the work happened.
+          </>
+        }
+        primary={<PrimaryButton onClick={() => void openGenerate()}>+ Generate report</PrimaryButton>}
+      />
 
-      {/* Area tabs */}
-      <div style={{ display: "flex", gap: 0, marginBottom: "0.75rem", borderBottom: "2px solid #e5e7eb" }}>
-        {(["reports", "data", "templates"] as const).map(tab => (
-          <button key={tab} onClick={() => { setAreaTab(tab); if (tab === "templates" && userTemplates.length === 0) void loadUserTemplates(); }}
-            style={{ padding: "7px 18px", border: "none", background: "none", cursor: "pointer",
-              fontSize: 13, fontWeight: areaTab === tab ? 700 : 400,
-              color: areaTab === tab ? "#1e3a5f" : "#6b7280",
-              borderBottom: areaTab === tab ? "2px solid #1e3a5f" : "2px solid transparent",
-              marginBottom: "-2px", whiteSpace: "nowrap" }}>
-            {tab === "reports"
-              ? `📄 Reports ${reportCnt > 0 ? `(${reportCnt})` : ""}`
-              : tab === "data"
-              ? `📂 Data & Docs ${dataCnt > 0 ? `(${dataCnt})` : ""}`
-              : `📝 Templates ${userTemplates.length > 0 ? `(${userTemplates.length})` : ""}`}
-          </button>
-        ))}
-        <div style={{ flex: 1 }} />
-        <span style={{ fontSize: 11, color: "#9ca3af", alignSelf: "center", paddingRight: 4 }}>
-          {areaTab === "reports" ? "PDF formatted reports only"
-            : areaTab === "data" ? "JSON data, CSV exports, markdown documents"
-            : "User-defined report templates (stored in database)"}
-        </span>
-      </div>
+      <TabsRow
+        p={p}
+        tabs={[
+          { id: "reports" as const, label: "Reports" },
+          { id: "ledger" as const, label: "Ledger" },
+        ]}
+        active={tab}
+        onSelect={setTab}
+      />
 
-      {/* Templates editor panel */}
-      {areaTab === "templates" && (
-        <div style={{ padding: "0 0 24px" }}>
-          <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
-            <button onClick={() => { setShowNewTmpl(s => !s); setNewTmplSections([]); }}
-              style={{ ...btnStyle, background: "#7c3aed", padding: "4px 14px", fontSize: 12 }}>
-              + New Template
-            </button>
-            <button onClick={() => void loadUserTemplates()} style={{ ...btnStyle, background: "#6b7280", padding: "4px 12px", fontSize: 12 }}>⟳</button>
-          </div>
-          {showNewTmpl && (
-            <div style={{ border: "1px solid #a78bfa", borderRadius: 8, padding: "16px 20px", marginBottom: 16, background: "#faf5ff", maxWidth: 680 }}>
-              <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 12, color: "#7c3aed", display: "flex", alignItems: "center", gap: 6 }}>📝 New Report Template</div>
-              {/* Name (full width) */}
-              <div style={{ marginBottom: 10 }}>
-                <label style={{ fontSize: 11, fontWeight: 600, color: "#374151", display: "block", marginBottom: 3 }}>Template Name</label>
-                <input value={newTmplName} onChange={e => setNewTmplName(e.target.value)}
-                  placeholder="e.g. Fuls NW Semitic Analysis Report"
-                  style={{ width: "100%", padding: "6px 9px", border: "1px solid #c4b5fd", borderRadius: 5, fontSize: 13, boxSizing: "border-box", outline: "none" }} />
+      {tab === "reports" && (
+        <div style={{ display: "grid", gap: 16, minWidth: 0 }}>
+          <Card p={p} style={{ minWidth: 0 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", marginBottom: 4 }}>
+              <div style={{ flex: "1 1 140px", minWidth: 0 }}>
+                <CardTitle p={p} sub="This instance's report catalog — what the program has produced, newest state first.">
+                  Reports
+                </CardTitle>
               </div>
-              {/* Category + Description side by side */}
-              <div style={{ display: "flex", gap: 10, marginBottom: 10 }}>
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <label style={{ fontSize: 11, fontWeight: 600, color: "#374151", display: "block", marginBottom: 3 }}>Category</label>
-                  <input value={newTmplCat} onChange={e => setNewTmplCat(e.target.value)}
-                    list="tmpl-category-options"
-                    placeholder="Select or type a category…"
-                    style={{ width: "100%", padding: "6px 9px", border: "1px solid #c4b5fd", borderRadius: 5, fontSize: 13, boxSizing: "border-box" }} />
-                  <datalist id="tmpl-category-options">
-                    <option value="General" />
-                    <option value="Decipherment" />
-                    <option value="Benchmark" />
-                    <option value="NW Semitic" />
-                    <option value="Indus Script" />
-                    <option value="Geez / Ethiopic" />
-                    <option value="Linear B" />
-                    <option value="Meroitic" />
-                    <option value="Comparison" />
-                    <option value="Research Summary" />
-                  </datalist>
-                </div>
-                <div style={{ flex: 2, minWidth: 0 }}>
-                  <label style={{ fontSize: 11, fontWeight: 600, color: "#374151", display: "block", marginBottom: 3 }}>Description</label>
-                  <input value={newTmplDesc} onChange={e => setNewTmplDesc(e.target.value)}
-                    placeholder="What this template covers…"
-                    style={{ width: "100%", padding: "6px 9px", border: "1px solid #c4b5fd", borderRadius: 5, fontSize: 13, boxSizing: "border-box" }} />
-                </div>
-              </div>
-              <div style={{ marginBottom: 10 }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-                  <label style={{ fontSize: 11, fontWeight: 600, color: "#374151" }}>Sections</label>
-                  <button onClick={addSection} style={{ fontSize: 11, background: "#ede9fe", border: "none", borderRadius: 4, padding: "2px 8px", cursor: "pointer", color: "#7c3aed" }}>+ Add Section</button>
-                </div>
-                {newTmplSections.map((s, i) => (
-                  <div key={i} style={{ display: "flex", gap: 6, marginBottom: 6, padding: "8px", background: "#fff", borderRadius: 4, border: "1px solid #e5e7eb" }}>
-                    <input placeholder="Title" value={s.title} onChange={e => updateSection(i, "title", e.target.value)}
-                      style={{ flex: 2, padding: "3px 6px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11 }} />
-                    <input placeholder="Data key" value={s.data_key} onChange={e => updateSection(i, "data_key", e.target.value)}
-                      style={{ flex: 2, padding: "3px 6px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11 }} />
-                    <select value={s.chart_type} onChange={e => updateSection(i, "chart_type", e.target.value)}
-                      style={{ padding: "3px 6px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11 }}>
-                      <option value="table">Table</option>
-                      <option value="bar">Bar</option>
-                      <option value="line">Line</option>
-                      <option value="text">Text</option>
-                    </select>
-                    <button onClick={() => setNewTmplSections(prev => prev.filter((_, j) => j !== i))}
-                      style={{ fontSize: 12, background: "none", border: "none", cursor: "pointer", color: "#dc2626" }}>×</button>
-                  </div>
-                ))}
-                {newTmplSections.length === 0 && <p style={{ fontSize: 11, color: "#9ca3af" }}>No sections yet. Add one above.</p>}
-              </div>
-              <div style={{ display: "flex", gap: 8 }}>
-                <button onClick={() => void handleCreateTmpl()} disabled={!newTmplName.trim()}
-                  style={{ ...btnStyle, background: "#7c3aed", padding: "5px 16px", fontSize: 12, opacity: newTmplName.trim() ? 1 : 0.4 }}>Create Template</button>
-                <button onClick={() => setShowNewTmpl(false)}
-                  style={{ ...btnStyle, background: "#6b7280", padding: "5px 14px", fontSize: 12 }}>Cancel</button>
-              </div>
+              <input
+                aria-label="Search reports"
+                placeholder="Search reports…"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                style={{
+                  padding: "6px 10px", border: `1px solid ${p.border}`, borderRadius: 6,
+                  fontSize: 12, width: 200, flex: "0 1 200px", minWidth: 120,
+                  background: p.inputBg, color: p.fg,
+                }}
+              />
+              <SmallButton onClick={() => void load()}>⟳ Refresh</SmallButton>
             </div>
-          )}
-          {tmplLoading && <p style={{ color: "#6b7280", fontSize: 13 }}>Loading…</p>}
-          {!tmplLoading && userTemplates.length === 0 && (
-            <div style={{ padding: "20px", border: "2px dashed #e5e7eb", borderRadius: 8, textAlign: "center", color: "#9ca3af" }}>
-              <div style={{ fontSize: 32, marginBottom: 8 }}>📝</div>
-              <div style={{ fontWeight: 600, marginBottom: 4 }}>No report templates yet</div>
-              <div style={{ fontSize: 12 }}>Create a template to define reusable report structures for your experiments.</div>
-            </div>
-          )}
-          {userTemplates.map(t => (
-            <div key={t.id} style={{ border: "1px solid #e5e7eb", borderRadius: 8, padding: "12px 16px", marginBottom: 8, background: "#fff" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: 700, fontSize: 13 }}>{t.name}</div>
-                  <div style={{ fontSize: 11, color: "#6b7280" }}>{t.category} · {t.sections.length} section{t.sections.length !== 1 ? "s" : ""} · {t.description}</div>
-                </div>
-                <button onClick={() => void handleDeleteTmpl(t.id)}
-                  style={{ fontSize: 11, border: "1px solid #fca5a5", borderRadius: 4, padding: "2px 8px", background: "none", cursor: "pointer", color: "#dc2626" }}>
-                  Delete
+
+            {popupBlocked && (
+              <div style={{
+                padding: "10px 14px", margin: "8px 0", borderRadius: 8,
+                background: darkMode ? "#3f1d1d" : "#fef2f2",
+                border: `1px solid ${p.bad}`, color: p.fg, fontSize: 12.5,
+              }}>
+                Popups are blocked by your browser, so the report could not open in
+                a new window.{" "}
+                <a href={popupBlocked} target="_blank" rel="noopener noreferrer" style={{ color: p.accent, fontWeight: 600 }}>
+                  Open it in a new tab instead →
+                </a>{" "}
+                <button onClick={() => setPopupBlocked(null)} style={{ border: "none", background: "none", cursor: "pointer", color: p.muted, fontSize: 14 }}>×</button>
+              </div>
+            )}
+
+            {loading && <RowMeta p={p}>Loading reports…</RowMeta>}
+            {error && (
+              <RowMeta p={p} style={{ color: p.bad }}>
+                The report catalog could not be loaded from this instance ({error}).{" "}
+                <button onClick={() => void load()} style={{ background: "none", border: "none", cursor: "pointer", color: p.accent, textDecoration: "underline", fontSize: 12 }}>
+                  Retry
                 </button>
+              </RowMeta>
+            )}
+            {!loading && !error && reports.length === 0 && (
+              <p data-testid="reports-empty-state" style={{ color: p.muted, fontSize: 13, margin: "8px 0" }}>
+                No reports yet. Run an experiment to generate one, or use Generate
+                report to build one from a template.
+              </p>
+            )}
+            {!loading && !error && reports.length > 0 && visible.length === 0 && (
+              <p data-testid="reports-empty-state" style={{ color: p.muted, fontSize: 13, margin: "8px 0" }}>
+                No reports match “{search}”. Clear the search to see all {reports.length}.
+              </p>
+            )}
+            {!loading && !error && visible.length > 0 && (
+              <div>
+                {visible.map((r) => (
+                  <ReportRow key={r.relative_path} p={p} r={r} onOpen={handleOpen} />
+                ))}
               </div>
-              {t.sections.length > 0 && (
-                <div style={{ marginTop: 6, display: "flex", gap: 4, flexWrap: "wrap" }}>
-                  {t.sections.map((s, i) => (
-                    <span key={i} style={{ fontSize: 10, padding: "2px 8px", borderRadius: 10,
-                      background: "#f3f4f6", color: "#374151" }}>{s.title || `Section ${i+1}`} ({s.chart_type})</span>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
+            )}
+          </Card>
+
+          <StudyRegister darkMode={darkMode} />
         </div>
       )}
 
-      {/* Generate Report Modal */}
-      {showGenerateModal && (
-        <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.45)", zIndex: 9000,
-                      display: "flex", alignItems: "center", justifyContent: "center" }}
-             onClick={() => setShowGenerateModal(false)}>
-          <div style={{ background: "#fff", borderRadius: 10, padding: 28, maxWidth: 560, width: "90%",
-                        boxShadow: "0 20px 60px rgba(0,0,0,0.25)" }}
-               onClick={(e) => e.stopPropagation()}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
-              <h3 style={{ margin: 0, fontSize: 16, color: "#111827" }}>📄 Generate PDF Report</h3>
-              <button onClick={() => setShowGenerateModal(false)}
-                style={{ border: "none", background: "none", fontSize: 20, cursor: "pointer", color: "#9ca3af" }}>×</button>
+      {tab === "ledger" && (
+        <Card p={p}>
+          <CardTitle p={p} sub="append-only; a correction is a new entry that names the old one">
+            Ledger — latest entries
+          </CardTitle>
+          <RowMeta p={p} style={{ maxWidth: "72ch" }}>
+            The ledger is the program's continuity record: every landed change
+            appends an entry to <b>LEDGER.md</b> at the repo root, and no entry is
+            ever edited or deleted. This instance exposes no ledger endpoint, so
+            entries are not listed here yet — the record itself is complete and
+            current in LEDGER.md; this surface will read it when an endpoint
+            serves it. Nothing is shown rather than anything invented.
+          </RowMeta>
+        </Card>
+      )}
+
+      {/* Generate report dialog */}
+      {showGenerate && (
+        <div
+          style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.45)", zIndex: 9000, display: "flex", alignItems: "center", justifyContent: "center" }}
+          onClick={() => setShowGenerate(false)}
+        >
+          <div
+            style={{ background: p.card, borderRadius: 10, padding: 28, maxWidth: 560, width: "90%", boxShadow: "0 20px 60px rgba(0,0,0,0.25)", maxHeight: "85vh", overflowY: "auto" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+              <h3 style={{ margin: 0, fontSize: 16, color: p.fg }}>Generate report</h3>
+              <button onClick={() => setShowGenerate(false)} style={{ border: "none", background: "none", fontSize: 20, cursor: "pointer", color: p.muted }}>×</button>
             </div>
-            <p style={{ fontSize: 12, color: "#6b7280", margin: "0 0 16px" }}>
-              Select a template. The corresponding experiments must have been run first.
-              The PDF will appear in the Reports list when complete, and the job will show in the Jobs panel.
+            <p style={{ fontSize: 12, color: p.muted, margin: "0 0 16px" }}>
+              Select a built-in template. The corresponding experiments must have
+              been run first. The report appears in the Reports list when complete,
+              and the job shows in the Jobs panel.
             </p>
+
+            <div style={{ fontSize: 11, fontWeight: 700, color: p.muted, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 8 }}>
+              Built-in templates
+            </div>
             {templates.length === 0
-              ? <p style={{ color: "#9ca3af", fontSize: 13 }}>Loading templates…</p>
+              ? <p style={{ color: p.muted, fontSize: 13 }}>Loading templates…</p>
               : (
                 <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 20 }}>
                   {templates.map((t) => (
                     <label key={t.id} style={{
                       display: "flex", alignItems: "flex-start", gap: 10, padding: "10px 14px",
-                      border: `2px solid ${selectedTemplate === t.id ? "#16a34a" : "#e5e7eb"}`,
+                      border: `2px solid ${selectedTemplate === t.id ? "#16a34a" : p.border}`,
                       borderRadius: 8, cursor: "pointer",
-                      background: selectedTemplate === t.id ? "#f0fdf4" : "#fafafa",
+                      background: selectedTemplate === t.id ? (darkMode ? "#14532d33" : "#f0fdf4") : "transparent",
                     }}>
                       <input type="radio" name="template" value={t.id}
                         checked={selectedTemplate === t.id}
                         onChange={() => setSelectedTemplate(t.id)}
                         style={{ marginTop: 2 }} />
                       <div style={{ flex: 1 }}>
-                        <div style={{ fontWeight: 700, fontSize: 13, color: "#111827" }}>
+                        <div style={{ fontWeight: 700, fontSize: 13, color: p.fg }}>
                           {t.name}
                           {!t.ready && (
-                            <span style={{ marginLeft: 8, fontSize: 10, color: "#d97706",
-                                           background: "#fef3c7", padding: "1px 6px", borderRadius: 4 }}>
+                            <span style={{ marginLeft: 8, fontSize: 10, color: "#b45309", background: "#fef3c7", padding: "1px 6px", borderRadius: 4 }}>
                               ⚠ run experiments first
                             </span>
                           )}
                         </div>
-                        <div style={{ fontSize: 11, color: "#6b7280", marginTop: 2 }}>{t.description}</div>
-                        <div style={{ fontSize: 10, color: "#9ca3af", marginTop: 2 }}>{t.category}</div>
+                        <div style={{ fontSize: 11, color: p.muted, marginTop: 2 }}>{t.description}</div>
+                        <div style={{ fontSize: 10, color: p.faint, marginTop: 2 }}>{t.category}</div>
                       </div>
                     </label>
                   ))}
                 </div>
               )}
+
+            {userTemplates.length > 0 && (
+              <>
+                <div style={{ fontSize: 11, fontWeight: 700, color: p.muted, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 8 }}>
+                  Your templates
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 20 }}>
+                  {userTemplates.map((t) => (
+                    <div key={t.id} style={{ padding: "8px 14px", border: `1px solid ${p.border}`, borderRadius: 8 }}>
+                      <div style={{ fontWeight: 600, fontSize: 13, color: p.fg }}>{t.name}</div>
+                      <div style={{ fontSize: 11, color: p.muted, marginTop: 2 }}>
+                        {t.category} · {t.sections.length} section{t.sections.length !== 1 ? "s" : ""} · {t.description}
+                      </div>
+                    </div>
+                  ))}
+                  <p style={{ fontSize: 11, color: p.faint, margin: "2px 0 0" }}>
+                    Your templates are a separate family from the built-in set and
+                    are never merged into it. Generation runs from built-in
+                    templates; the in-app template editor was retired with this
+                    redesign — your templates remain stored and available via the API.
+                  </p>
+                </div>
+              </>
+            )}
+
             {generateMsg && (
-              <div style={{ padding: "8px 12px", borderRadius: 6, marginBottom: 12, fontSize: 12,
-                             background: generateMsg.includes("fail") || generateMsg.includes("Cannot")
-                               ? "#fef2f2" : "#f0fdf4",
-                             color: generateMsg.includes("fail") || generateMsg.includes("Cannot")
-                               ? "#dc2626" : "#16a34a" }}>
+              <div style={{
+                padding: "8px 12px", borderRadius: 6, marginBottom: 12, fontSize: 12,
+                background: generateMsg.includes("fail") || generateMsg.includes("Cannot") ? "#fef2f2" : "#f0fdf4",
+                color: generateMsg.includes("fail") || generateMsg.includes("Cannot") ? "#b91c1c" : "#15803d",
+              }}>
                 {generateMsg}
               </div>
             )}
             <div style={{ display: "flex", gap: 8, justifyContent: "flex-end" }}>
-              <button onClick={() => setShowGenerateModal(false)}
-                style={{ padding: "6px 16px", border: "1px solid #d1d5db", borderRadius: 4, background: "#fff",
-                         fontSize: 13, cursor: "pointer", color: "#374151" }}>Cancel</button>
-              <button
-                onClick={() => void handleGenerate()}
-                disabled={!selectedTemplate || generating}
-                style={{ padding: "6px 20px", background: generating ? "#6b7280" : "#16a34a",
-                         color: "#fff", border: "none", borderRadius: 4, fontSize: 13,
-                         cursor: generating ? "not-allowed" : "pointer", fontWeight: 600 }}>
+              <QuietButton onClick={() => setShowGenerate(false)}>Cancel</QuietButton>
+              <PrimaryButton onClick={() => void handleGenerate()} disabled={!selectedTemplate || generating}>
                 {generating ? "⏳ Generating…" : "Generate PDF"}
-              </button>
+              </PrimaryButton>
             </div>
-          </div>
-        </div>
-      )}
-
-      {/* Compose toolbar */}
-      {composeMode && (
-        <div style={{
-          display: "flex", alignItems: "center", gap: 10,
-          padding: "10px 14px", background: "#f3e8ff",
-          border: "1px solid #a78bfa", borderRadius: 8, marginBottom: "0.75rem",
-        }}>
-          <span style={{ fontSize: 12, color: "#7c3aed", fontWeight: 600 }}>
-            📊 Compose mode &mdash; select reports to include
-          </span>
-          <span style={{ fontSize: 12, color: "#9ca3af" }}>
-            {selected.size} selected
-          </span>
-          <button onClick={() => setSelected(new Set(sorted.map((r) => r.id)))}
-            style={{ padding: "3px 10px", border: "1px solid #a78bfa", borderRadius: 4, background: "#fff", fontSize: 11, cursor: "pointer", color: "#7c3aed" }}>
-            Select all
-          </button>
-          <button onClick={() => setSelected(new Set())}
-            style={{ padding: "3px 10px", border: "1px solid #d1d5db", borderRadius: 4, background: "#fff", fontSize: 11, cursor: "pointer", color: "#6b7280" }}>
-            Clear
-          </button>
-          <div style={{ flex: 1 }} />
-          <button
-            onClick={() => void generateAiReport()}
-            disabled={selected.size === 0 || aiReportLoading}
-            style={{ ...btnStyle, padding: "5px 14px", fontSize: 12,
-              background: selected.size > 0 && !aiReportLoading ? "#2563eb" : "#d1d5db",
-              cursor: selected.size > 0 && !aiReportLoading ? "pointer" : "not-allowed" }}>
-            {aiReportLoading ? "⏳ Generating…" : "🤖 AI Report"}
-          </button>
-          <button
-            onClick={() => void exportComposedPdf()}
-            disabled={selected.size === 0}
-            style={{ ...btnStyle, padding: "5px 16px", fontSize: 12, background: selected.size > 0 ? "#7c3aed" : "#d1d5db", cursor: selected.size > 0 ? "pointer" : "not-allowed" }}>
-            📄 Export PDF ({selected.size})
-          </button>
-        </div>
-      )}
-
-      {/* Search + Filter row — modern MultiSelectDropdown components */}
-      <div style={{ display: "flex", gap: 8, marginBottom: "0.75rem", alignItems: "flex-start", flexWrap: "wrap" }}>
-        <input
-          placeholder="Search by name…"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          style={{ padding: "5px 10px", border: "1px solid #d1d5db", borderRadius: 6, fontSize: 12, width: 200 }}
-        />
-        {allKinds.length > 0 && (
-          <MultiSelectDropdown
-            label="Type"
-            options={allKinds.map(k => KIND_LABEL[k] ?? k)}
-            selected={new Set(Array.from(kindFilter).map(k => KIND_LABEL[k] ?? k))}
-            onChange={s => setKindFilter(new Set(
-              Array.from(s).map(label => Object.entries(KIND_LABEL).find(([, v]) => v === label)?.[0] ?? label)
-            ))}
-            colorMap={Object.fromEntries(allKinds.map(k => [KIND_LABEL[k] ?? k, KIND_COLOR[k] ?? "#374151"]))}
-          />
-        )}
-        {allExps.length > 0 && (
-          <MultiSelectDropdown
-            label="Experiment"
-            options={allExps.map(e => e.replace(/_/g, " "))}
-            selected={new Set(Array.from(expFilter).map(e => e.replace(/_/g, " ")))}
-            onChange={s => setExpFilter(new Set(
-              Array.from(s).map(label => allExps.find(e => e.replace(/_/g, " ") === label) ?? label)
-            ))}
-          />
-        )}
-        <label style={{ fontSize: 11, color: "#6b7280", display: "flex", alignItems: "center", gap: 4,
-          cursor: "pointer", marginLeft: "auto", alignSelf: "flex-start", paddingTop: 5 }}>
-          <input type="checkbox" checked={groupByExp} onChange={(e) => setGroupByExp(e.target.checked)} />
-          Group by experiment
-        </label>
-        <span style={{ fontSize: 11, color: "#9ca3af", alignSelf: "flex-start", paddingTop: 5, whiteSpace: "nowrap" }}>
-          {sorted.length} of {areaFiltered.length}
-        </span>
-      </div>
-
-      {/* Popup-blocked warning */}
-      {popupBlocked && (
-        <div style={{
-          display: "flex", alignItems: "flex-start", gap: 12,
-          padding: "12px 16px", marginBottom: "1rem",
-          background: "#fef2f2", border: "1px solid #fca5a5", borderRadius: 8,
-        }}>
-          <span style={{ fontSize: 20, lineHeight: 1, flexShrink: 0 }}>&#128683;</span>
-          <div style={{ flex: 1 }}>
-            <p style={{ margin: "0 0 6px", fontWeight: 700, color: "#b91c1c", fontSize: 13 }}>
-              Popups are blocked by your browser.
-            </p>
-            <p style={{ margin: "0 0 8px", fontSize: 12, color: "#7f1d1d" }}>
-              Allow popups for <strong>localhost:8001</strong> in your browser settings, then click View again.
-              Or open the file directly:
-            </p>
-            <a
-              href={popupBlocked}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ fontSize: 12, color: "#2563eb", fontWeight: 600 }}
-            >
-              Open in new tab instead →
-            </a>
-          </div>
-          <button
-            onClick={() => setPopupBlocked(null)}
-            style={{ border: "none", background: "none", cursor: "pointer", fontSize: 18, color: "#9ca3af", padding: 0, flexShrink: 0 }}
-          >×</button>
-        </div>
-      )}
-
-      {loading && <p style={{ color: "#6b7280" }}>Loading reports…</p>}
-      {error && (
-        <div style={{ padding: "10px 14px", background: "#fef2f2", border: "1px solid #fca5a5", borderRadius: 6, color: "#991b1b", fontSize: 13, marginBottom: 12 }}>
-          {error} — <button onClick={load} style={{ background: "none", border: "none", cursor: "pointer", color: "#2563eb", textDecoration: "underline" }}>Retry</button>
-        </div>
-      )}
-      {!loading && !error && areaTab !== "templates" && sorted.length === 0 && (
-        <p data-testid="reports-empty-state" style={{ color: "#6b7280" }}>
-          {reports.length === 0
-            ? "No reports yet. Run an experiment to generate one."
-            : areaFiltered.length === 0
-            ? areaTab === "reports"
-              ? "No PDF reports yet. Use Generate Report to create one, or open the Data & Docs tab for JSON/CSV outputs."
-              : "No data files yet. Run an experiment to generate one."
-            : "No items match the current search or filters."}
-        </p>
-      )}
-
-      {sorted.length > 0 && (
-        <table style={{ borderCollapse: "collapse", width: "100%" }}>
-          <thead>
-            <tr>
-              {/* Star column */}
-              <th style={{ ...thStyle, width: 24, cursor: "default" }}>⭐</th>
-              {composeMode && (
-                <th style={{ ...thStyle, width: 32, cursor: "default" }}></th>
-              )}
-              {([
-                ["name", "Name"],
-                ["kind", "Kind"],
-                ["size_bytes", "Size"],
-                ["updated_at", "Updated"],
-                ["", ""],
-              ] as [string, string][]).map(([key, label]) => (
-                <th
-                  key={key || "actions"}
-                  style={{ ...thStyle, cursor: key ? "pointer" : "default", userSelect: "none", whiteSpace: "nowrap" }}
-                  onClick={() => key && toggleSort(key as SortKey)}
-                >
-                  {label}{key ? sortIcon(key as SortKey) : ""}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {sorted.map((r) => {
-              const color = kindColor[r.kind] ?? "#6b7280";
-              const kindLabel = KIND_LABEL[r.kind] ?? r.kind;
-              const isSel = selected.has(r.id);
-              const isStarred = starredReports.has(r.id);
-              return (
-                <tr
-                  key={r.relative_path}
-                  style={{ cursor: "pointer",
-                    background: isSel ? "#f3e8ff" : isStarred ? "#fffbeb" : undefined }}
-                  onClick={() => composeMode ? toggleSelected(r.id) : handleView(r)}
-                >
-                  {/* Star toggle — stopPropagation so row click doesn't also fire */}
-                  <td style={{ ...tdStyle, width: 24 }} onClick={(e) => { e.stopPropagation(); toggleStarReport(r.id); }}>
-                    <span style={{ cursor: "pointer", fontSize: 13, opacity: isStarred ? 1 : 0.25, lineHeight: 1 }}
-                      title={isStarred ? "Unpin" : "Pin to top"}>
-                      {isStarred ? "⭐" : "☆"}
-                    </span>
-                  </td>
-                  {composeMode && (
-                    // Bug fix: td onClick only stops propagation; onChange on input does the actual toggle.
-                    // Previously both fired toggleSelected, causing a double-toggle (net = no change).
-                    <td style={{ ...tdStyle, width: 32 }} onClick={(e) => e.stopPropagation()}>
-                      <input type="checkbox" checked={isSel} onChange={() => toggleSelected(r.id)}
-                        style={{ cursor: "pointer", width: 14, height: 14 }} />
-                    </td>
-                  )}
-                  <td style={tdStyle}>
-                    <span style={{ fontWeight: 500, color: isSel ? "#7c3aed" : "#1e3a5f" }}>{r.name}</span>
-                    {r.experiment_id && (
-                      <span style={{ marginLeft: 6, fontSize: 10, padding: "1px 6px", borderRadius: 8, background: "#eff6ff", color: "#2563eb", fontWeight: 600 }}>
-                        {r.experiment_id.replace(/_/g, " ")}
-                      </span>
-                    )}
-                    <br /><span style={{ fontSize: 11, color: "#9ca3af" }}>{r.relative_path}</span>
-                  </td>
-                  <td style={tdStyle}>
-                    <span style={{ fontSize: 11, padding: "1px 6px", borderRadius: 8, background: color + "20", color, fontWeight: 600 }}>
-                      {kindLabel}
-                    </span>
-                  </td>
-                  <td style={{ ...tdStyle, whiteSpace: "nowrap" }}>{fmtSize(r.size_bytes)}</td>
-                  <td style={{ ...tdStyle, whiteSpace: "nowrap" }}>{fmtDateTimeCompact(r.updated_at)}</td>
-                  <td style={tdStyle} onClick={(e) => e.stopPropagation()}>
-                    <span style={{ display: "flex", gap: 4 }}>
-                      <button
-                        onClick={() => handleView(r)}
-                        style={{ ...btnStyle, padding: "2px 10px", fontSize: 11, background: "#2563eb" }}
-                        title="View in new window"
-                      >View</button>
-                      <button
-                        onClick={() => openReportFolder(r.id).catch(() => {})}
-                        style={{ ...btnStyle, padding: "2px 10px", fontSize: 11, background: "#6b7280" }}
-                        title="Open containing folder in Explorer"
-                      >Open Folder</button>
-                      <button
-                        onClick={() => handleDelete(r)}
-                        style={{ background: "none", border: "1px solid #fca5a5", borderRadius: 4, color: "#dc2626", fontSize: 11, padding: "2px 8px", cursor: "pointer" }}
-                      >Delete</button>
-                    </span>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      )}
-
-      {/* AI Report Modal */}
-      {aiReportResult && (
-        <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.55)", zIndex: 10000, display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}
-          onClick={() => setAiReportResult(null)}>
-          <div style={{ background: "#fff", borderRadius: 10, maxWidth: 860, width: "100%", maxHeight: "85vh",
-            display: "flex", flexDirection: "column", boxShadow: "0 20px 60px rgba(0,0,0,0.4)" }}
-            onClick={e => e.stopPropagation()}>
-            {/* Modal header */}
-            <div style={{ padding: "14px 20px", borderBottom: "1px solid #e5e7eb", display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
-              <span style={{ fontSize: 15, fontWeight: 700, color: "#1e3a5f", flex: 1 }}>🤖 {aiReportResult.title}</span>
-              <button
-                onClick={() => {
-                  const html = renderMarkdown(aiReportResult.markdown);
-                  const win = window.open("", "_blank", "width=860,height=900");
-                  if (!win) { alert("Allow popups to export PDF"); return; }
-                  win.document.write(
-                    `<!DOCTYPE html><html><head><title>${aiReportResult.title}</title>` +
-                    `<style>body{font-family:system-ui,sans-serif;max-width:760px;margin:40px auto;font-size:13px;line-height:1.7;color:#111}` +
-                    `table{border-collapse:collapse;width:100%}td,th{border:1px solid #e5e7eb;padding:5px 10px}` +
-                    `@media print{body{margin:10px 20px}}` +
-                    `</style></head><body>` +
-                    `<h1 style="font-size:20px;margin-bottom:4px">${aiReportResult.title}</h1>` +
-                    `<p style="color:#9ca3af;font-size:11px">Generated by Glossa AI · ${new Date().toLocaleString()}</p>` +
-                    `<hr style="border:none;border-top:2px solid #e5e7eb;margin:16px 0">` +
-                    html +
-                    `<script>setTimeout(()=>window.print(),600)</script></body></html>`
-                  );
-                  win.document.close();
-                }}
-                style={{ padding: "5px 14px", border: "none", borderRadius: 6, background: "#7c3aed", color: "#fff", cursor: "pointer", fontSize: 12, fontWeight: 600 }}>
-                📄 Export PDF
-              </button>
-              <button onClick={() => setAiReportResult(null)}
-                style={{ border: "none", background: "none", cursor: "pointer", fontSize: 18, color: "#9ca3af" }}>×</button>
-            </div>
-            {/* Modal body — rendered markdown */}
-            <div style={{ padding: "16px 24px", overflowY: "auto", flex: 1 }}
-              dangerouslySetInnerHTML={{ __html: renderMarkdown(aiReportResult.markdown) }} />
           </div>
         </div>
       )}
     </div>
   );
 }
-
-const thStyle: React.CSSProperties = {
-  textAlign: "left", padding: "6px 14px 6px 0",
-  borderBottom: "2px solid #e5e7eb", fontSize: 13, color: "#374151",
-};
-
-const tdStyle: React.CSSProperties = {
-  padding: "6px 12px 6px 0", borderBottom: "1px solid #f3f4f6", fontSize: 13, verticalAlign: "middle",
-};
-
-const btnStyle: React.CSSProperties = {
-  background: "#2563eb", color: "#fff", border: "none", borderRadius: 4,
-  padding: "6px 16px", fontSize: 13, cursor: "pointer",
-};

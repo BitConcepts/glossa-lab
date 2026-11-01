@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — Programs, cloud shell (Spec 083 wireframe 07)</title>
+<link rel="stylesheet" href="wireframes.css">
+</head>
+<body>
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-row">
+        <div class="tile">G</div>
+        <div>
+          <div class="brand-name">Glossa Lab</div>
+          <div class="brand-sub">Epistemic research workbench</div>
+        </div>
+      </div>
+    </div>
+    <div class="program-switch" style="border-style:dashed;border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.04)">
+      <div class="ps-label">Program</div>
+      <div class="ps-name" style="color:#a8c2e2">None open <span>▾</span></div>
+      <div class="ps-q">Open one of your programs below.</div>
+    </div>
+    <nav class="nav">
+      <h4>Tool home</h4>
+      <a href="07-shell-membership.html" class="active"><span class="ic">▦</span>Programs</a>
+      <a href="#"><span class="ic">⚙</span>Jobs<span class="count">1</span></a>
+      <a href="#"><span class="ic">♥</span>Status</a>
+      <a href="#"><span class="ic">⚙</span>Settings</a>
+      <h4>Admin</h4>
+      <a href="04-admin-users.html"><span class="ic">👥</span>Users</a>
+      <a href="05-admin-invites.html"><span class="ic">✉</span>Invites<span class="count">1</span></a>
+      <a href="06-admin-audit.html"><span class="ic">☰</span>Audit log</a>
+      <a href="#"><span class="ic">?</span>Help</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="crumb"><b>Glossa Lab</b> / Programs</span>
+      <div class="spacer"></div>
+      <button class="icon-btn">⌘K&nbsp; Search</button>
+      <div class="service-chip"><span class="dot"></span><span><b>Glossa Lab v0.1.0</b> · cloud · dataset 2026-10-30-03 · checked 09:41</span></div>
+      <div class="user-chip"><span class="avatar">g</span><span><b>glassbreak</b> <span class="role">· admin</span></span><span>▾</span></div>
+    </div>
+
+    <div class="content">
+      <div class="head-row">
+        <div class="page-head">
+          <h1>Programs</h1>
+          <p class="lede">The programs you belong to. Membership is granted by an admin — if a program is missing here, it was never hidden from you; you were never added to it.</p>
+        </div>
+        <div class="spacer"></div>
+        <button class="btn primary">+ New program</button>
+      </div>
+
+      <div class="card" style="margin-bottom:14px;max-width:520px">
+        <h3>Account menu <span class="sub">— specimen: the user chip, opened</span></h3>
+        <div class="row-item"><div class="grow"><div class="row-title">glassbreak</div><div class="row-meta">Admin · signed in since 09:41</div></div></div>
+        <div class="row-item"><div class="grow"><div class="row-title"><a href="08-account-settings.html">Account &amp; security</a></div><div class="row-meta">Password, sessions, your activity</div></div></div>
+        <div class="row-item"><div class="grow"><div class="row-title">Sign out</div><div class="row-meta">Ends this session on this device</div></div></div>
+      </div>
+
+      <div class="grid" style="gap:14px">
+        <div class="card">
+          <div class="head-row">
+            <div class="grow">
+              <div style="font-size:16px;font-weight:750">Indus Script</div>
+              <div class="row-meta" style="font-size:13px">What do the signs of the Indus script mean — tested claim by claim, each reading carrying the evidence that could prove it wrong.</div>
+            </div>
+            <button class="btn primary">Open program</button>
+          </div>
+          <div class="divider"></div>
+          <div class="head-row">
+            <span class="row-meta">Your role: <b>admin</b> · Members: <b>glassbreak</b> (admin), <b>j-mensah</b>, <b>r-hale</b> (disabled) + 1 more</span>
+            <div class="spacer"></div>
+            <span class="row-meta">9 claims waiting on a human · last verdict Oct 28</span>
+          </div>
+        </div>
+
+        <div class="card" style="border-style:dashed">
+          <div class="head-row">
+            <div class="grow">
+              <div style="font-size:16px;font-weight:750;color:var(--muted)">The member's view of this same screen <span class="chip line">specimen</span></div>
+              <div class="row-meta" style="font-size:13px">A member sees only the programs they belong to, with “Your role: member”, no Admin nav group, and no “+ New program”. A member who belongs to nothing sees one card instead of a list:</div>
+            </div>
+          </div>
+          <div class="callout" style="margin-top:10px"><b>No program access yet.</b> Your account is active, but an admin hasn't added you to a program. When they do, it will appear here. Nothing is hidden from you — membership is the whole mechanism.</div>
+        </div>
+
+        <div class="card">
+          <h3>Service <span class="sub">— the tool itself, shared by every program</span></h3>
+          <div class="row-item">
+            <div class="grow">
+              <div class="row-title">Glossa Lab cloud instance · v0.1.0</div>
+              <div class="row-meta">Dataset bundle 2026-10-30-03 · source commit 124a1ac3 · hydrated 08:44 · Serving since 08:44, checked just now</div>
+            </div>
+            <span class="chip ok">Healthy</span>
+            <button class="btn small">Open status</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="annotation">
+        <div class="a-title">Annotation — wireframe 07 · not part of the UI</div>
+        <dl>
+          <dt>Purpose</dt><dd>Spec 081's Programs screen, carried over — proving the redesign's shell absorbs multi-user without changing shape: identity joins the topbar, membership filters the cards, the Admin group joins the nav for admins only.</dd>
+          <dt>Primary action</dt><dd>“Open program” (admin specimen also carries “+ New program”, decision D-1).</dd>
+          <dt>Changed &amp; why</dt><dd>Against wireframe 01 of Spec 081: the service chip now names the <b>dataset bundle</b> (C083-13 — in the cloud, "which data am I looking at" is a version question, and the answer is on every screen, not buried in Status); the user chip and its menu are the session's furniture; the program card states the viewer's role and the membership roster, because shared work needs its cast visible; and the no-access specimen states the membership rule in words — a member must never have to wonder whether programs are being hidden from them (scoped 404s protect data; this sentence protects trust).</dd>
+          <dt>Spec claims</dt><dd>C083-5 (membership-scoped surfaces), C083-13 (dataset identity on the shell), C083-4 (the user chip is the session made visible; Sign out revokes it).</dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</div>
+<nav class="mobile-nav">
+  <a href="#"><span class="mi">⌂</span>Home</a>
+  <a href="#"><span class="mi">§</span>Claims</a>
+  <a href="#"><span class="mi">✓</span>Digestion</a>
+  <a href="#"><span class="mi">⚙</span>Jobs</a>
+  <a href="07-shell-membership.html" class="active"><span class="mi">☰</span>More</a>
+</nav>
+</body>
+</html>

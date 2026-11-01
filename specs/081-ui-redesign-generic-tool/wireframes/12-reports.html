@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — Reports &amp; ledger (Spec 081 wireframe 12)</title>
+<link rel="stylesheet" href="wireframes.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-row"><div class="tile">G</div><div><div class="brand-name">Glossa Lab</div><div class="brand-sub">Epistemic research workbench</div></div></div></div>
+    <a class="program-switch" href="01-programs.html" style="text-decoration:none"><div class="ps-label">Program</div><div class="ps-name">Indus Script <span>▾</span></div><div class="ps-q">What do the signs mean — tested claim by claim?</div></a>
+    <nav class="nav">
+      <h4>Program</h4>
+      <a href="02-program-home.html"><span class="ic">⌂</span>Home</a>
+      <a href="03-claims.html"><span class="ic">§</span>Claims<span class="count">94</span></a>
+      <a href="05-digestion.html"><span class="ic">✓</span>Digestion<span class="count alert">9</span></a>
+      <a href="06-evidence.html"><span class="ic">▤</span>Evidence &amp; sources</a>
+      <a href="07-data.html"><span class="ic">▦</span>Data</a>
+      <a href="#"><span class="ic">◈</span>Analysis</a>
+      <a href="08-experiments.html"><span class="ic">⬡</span>Experiments</a>
+      <a href="10-discovery.html"><span class="ic">◎</span>Discovery<span class="count">12</span></a>
+      <a href="11-research-loop.html"><span class="ic">↻</span>Research loop</a>
+      <a href="12-reports.html" class="active"><span class="ic">▨</span>Reports &amp; ledger</a>
+      <div class="nav-tool"><h4>Tool</h4>
+        <a href="09-jobs.html"><span class="ic">⚙</span>Jobs<span class="count">2</span></a>
+        <a href="14-status.html"><span class="ic">♥</span>Status</a>
+        <a href="13-settings.html"><span class="ic">⚙</span>Settings</a>
+        <a href="#"><span class="ic">?</span>Help</a>
+      </div>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="crumb">Glossa Lab / <b>Indus Script</b> / Reports &amp; ledger</span>
+      <div class="spacer"></div>
+      <button class="icon-btn">⌘K&nbsp; Search</button>
+      <button class="icon-btn">✦ AI assistant</button>
+      <div class="service-chip"><span class="dot"></span><span><b>Glossa Lab v0.1.0</b> · TRISTEN-DESKTOP · checked 14:02</span></div>
+    </div>
+
+    <div class="content">
+      <p class="specimen-note">Specimen — report and ledger entries are the program's real records, shortened.</p>
+
+      <div class="head-row">
+        <div class="page-head">
+          <h1>Reports &amp; ledger</h1>
+          <p class="lede">What the program has produced, and the record of how it got there. The <b>ledger</b> is append-only: an entry is never edited or deleted — a correction is a new entry that names the old one. No ledger entry, no claim that the work happened.</p>
+        </div>
+        <div class="spacer"></div>
+        <button class="btn primary">+ Generate report</button>
+      </div>
+
+      <div class="tabs">
+        <span class="tab active">Reports</span>
+        <span class="tab">Ledger</span>
+      </div>
+
+      <div class="card" style="padding:6px 18px">
+        <div class="row-item">
+          <div class="grow"><div class="row-title">Program preprint — current public version v9</div><div class="row-meta">Zenodo · version DOI 10.5281/zenodo.23668053 · 35 pages · a v10 correction set is prepared and awaits the owner's approval of its exact text — the prepared state is shown, not hidden</div></div>
+          <span class="chip ok">Published</span>
+          <button class="btn small">Open</button>
+        </div>
+        <div class="row-item">
+          <div class="grow"><div class="row-title">Public research tracker page</div><div class="row-meta">Reconciled against the findings inventory and republished Oct 28 · every finding stated as tested / result / means / does-not-establish</div></div>
+          <span class="chip ok">Published</span>
+          <button class="btn small">Open</button>
+        </div>
+        <div class="row-item">
+          <div class="grow"><div class="row-title">Repair-brief completion report</div><div class="row-meta">Oct 26 · what was repaired, what stayed blocked (a linguist for one work package, adjudication for three claims) — blocked items printed in the report, not footnoted away</div></div>
+          <span class="chip neutral">Internal record</span>
+          <button class="btn small">Open</button>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px;padding:6px 18px">
+        <h3 style="padding-top:10px">Ledger — latest entries <span class="sub">(append-only; newest first)</span></h3>
+        <div class="row-item"><div class="grow"><div class="row-title">Spec 026 core search landed on main</div><div class="row-meta">Oct 28 · PR #431 · includes the vault-import guard fix · AI-assisted work disclosed per the constitution</div></div><span class="chip line">Oct 28</span></div>
+        <div class="row-item"><div class="grow"><div class="row-title">G44-I rerun verdict recorded: FAILED, line closed</div><div class="row-meta">Oct 28 · agreement counts filed (baseline 43/44 full-pair) · the near-tautology mechanism named in the entry</div></div><span class="chip line">Oct 28</span></div>
+        <div class="row-item"><div class="grow"><div class="row-title">Correction to an earlier entry is a new entry</div><div class="row-meta">Example shown deliberately: when the Window-6 forensics reading was corrected, the correction was appended with the original left standing — the record shows the mistake and its repair.</div></div><span class="chip line">Standing rule</span></div>
+      </div>
+
+      <div class="annotation">
+        <div class="a-title">Annotation — wireframe 12 · not part of the UI</div>
+        <dl>
+          <dt>Purpose</dt><dd>The program's outputs and its continuity record, side by side: reports are what was said; the ledger is what was done.</dd>
+          <dt>Primary action</dt><dd>“Generate report” — from templates over the register, with the foundation-check state attached.</dd>
+          <dt>Changed &amp; why</dt><dd>Reports today are a file browser (name/kind/size/updated) with no relationship to the claims they report on, and the ledger — the constitution's sole continuity authority — has no surface at all. Here reports carry their publication state honestly (including “prepared, awaiting approval”), and the ledger is readable in the tool that writes it, append-only by construction.</dd>
+          <dt>Spec claims</dt><dd>C081-2, C081-7 (the ledger is history, framed and labelled as history — never presented as current state).</dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</div>
+<nav class="mobile-nav">
+  <a href="02-program-home.html"><span class="mi">⌂</span>Home</a>
+  <a href="03-claims.html"><span class="mi">§</span>Claims</a>
+  <a href="05-digestion.html"><span class="mi">✓</span>Digestion</a>
+  <a href="09-jobs.html"><span class="mi">⚙</span>Jobs</a>
+  <a href="01-programs.html" class="active"><span class="mi">☰</span>More</a>
+</nav>
+</body>
+</html>

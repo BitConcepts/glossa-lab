@@ -1,6 +1,8 @@
 @echo off
 REM Glossa Lab - Backend Service Wrapper
 REM Single-line uvicorn invocation (no caret continuation).
+REM Spec 080: production factory semantics + installed data mode
+REM (database under %LOCALAPPDATA%\GlossaLab\data, never cwd-dependent).
 
 set "SCRIPT_DIR=%~dp0"
 set "REPO_ROOT=%SCRIPT_DIR%.."
@@ -14,6 +16,7 @@ if not exist "%VENV_PYTHON%" ( echo [ERROR] venv not found. Run setup-os.cmd ins
 if not exist "%LOG_DIR%" mkdir "%LOG_DIR%"
 
 echo [%DATE% %TIME%] Glossa Lab backend starting... >> "%LOG_FILE%"
-"%VENV_PYTHON%" -m uvicorn glossa_lab.main:app --host 127.0.0.1 --port 8001 --app-dir "%REPO_ROOT%\backend" >> "%LOG_FILE%" 2>&1
+set "GLOSSA_MODE=installed"
+"%VENV_PYTHON%" -m uvicorn glossa_lab.main:create_app --factory --host 127.0.0.1 --port 8001 --app-dir "%REPO_ROOT%\backend" >> "%LOG_FILE%" 2>&1
 echo [%DATE% %TIME%] Glossa Lab backend stopped (exit %ERRORLEVEL%). >> "%LOG_FILE%"
 exit /b %ERRORLEVEL%

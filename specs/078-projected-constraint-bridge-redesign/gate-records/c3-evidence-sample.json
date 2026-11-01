@@ -1,0 +1,108 @@
+{
+ "record_type": "c3-evidence-sample",
+ "schema_version": "1.0",
+ "spec": "specs/078-projected-constraint-bridge-redesign",
+ "claims_file": "specs/078-projected-constraint-bridge-redesign/claims.json",
+ "verification_mode": "on",
+ "verifier": "Cosmo (Muse subagent, C3 verification pass for this freeze; read each sampled claim against its cited texts \u2014 the M13 design draft, the Spec 076 pilot record, and the rerun-invalidation audit \u2014 and recomputed the cited digests and population figures from the pinned inputs)",
+ "sample_rule": "every verdict-bearing claim + random sample of at least 20% of the remainder",
+ "sample_seed": 20261026,
+ "claims": [
+  {
+   "claim_id": "F078-C01",
+   "verdict_bearing": true,
+   "sampled": true,
+   "verification": "verified",
+   "evidence_refs_checked": [
+    "2026-10-26-m12-pilot-record.md (programme goal record, files/)",
+    "specs/078-projected-constraint-bridge-redesign/spec.md sections 7.1-7.2; specs/033 corpus export census (programme record)"
+   ],
+   "note": "Pilot record sections 1-3 state step 0 and step 1 passed exactly and both step-2 bars passed (U2 finals residual 178 against a null 5th percentile of 395.0; solo-only count 13 against a null 95th percentile of 5.0; B = 999, seed 20261026, empirical fraction 0.000 on both), and the M13 design's section 10 (D-M13-C04) states the inheritance claim in the claim's own words, including the step-0 falsifier. My C2 recomputation from the pinned inputs reproduced the census the standing rests on: 2,906 records to 11,507 tokens, 5,883 strict tokens, slot totals 2,655/2,655/225/5,972, finals partition 1,707/250/520/178, 677 exclusions, solo-only 13. The pilot record's SHA-256 recomputed as 837b4760a0f9d21e9a9a9b2ce5cea821446010d7fb3729f7ca877fd205e377b6, matching the citation."
+  },
+  {
+   "claim_id": "F078-C02",
+   "verdict_bearing": true,
+   "sampled": true,
+   "verification": "verified",
+   "evidence_refs_checked": [
+    "2026-10-26-spec-draft-m13-projected-constraint-bridge-redesign.md (programme goal record, files/)",
+    "programme goal record (owner order, 2026-10-26)"
+   ],
+   "note": "Design section 7.3 states the bar verbatim (total failures at most 3 among the counted population, neither line above 2, administrability at least 25 of 86 counted signs yielding a checkable claim), section 7.4 states the closure words including BRIDGE DOES NOT HOLD and the pattern failure, and section 10 (D-M13-C02) restates the claim with 'filed only if the successor pilot passes'. The design's section 7.3 also states the three reasons the bar is not fitted to 076's 36, including that no recount under NC-1 to NC-8 exists beyond the three worked examples excluded from the count. The owner order is corroborated by the freeze record quoting the 2026-10-26 order 'review, freeze, and run the M13 pilot'. The design draft's SHA-256 recomputed as 8bb02c07a8ad3245a899da660c48430b4cf1e16a53b1fb53a132215093e9a211, matching the citation."
+  },
+  {
+   "claim_id": "F078-C03",
+   "verdict_bearing": false,
+   "sampled": true,
+   "verification": "verified",
+   "evidence_refs_checked": [
+    "2026-10-26-spec-draft-m13-projected-constraint-bridge-redesign.md (programme goal record, files/)",
+    "specs/078-projected-constraint-bridge-redesign/spec.md sections 5-6; specs/033 corpus export census (programme record)"
+   ],
+   "note": "Design section 8.1 defines the register entry as exactly the triple the claim names (distributional possibility set, functional possibility set with anchor counts, claims ledger with EXCLUDED / UNSUPPORTED-BY-ATTESTATION / summary standings), section 3 defines the pair form the triple rests on, and section 10 (D-M13-C03) asserts pair-form sufficiency in the claim's own words, including extension-on-the-record rather than forcing. The three worked re-codings of section 6 are each expressible in the pair form as filed, and the C2 recomputation produced no derived constraint outside the section 3.4 / triple forms."
+  },
+  {
+   "claim_id": "F078-C04",
+   "verdict_bearing": false,
+   "sampled": false,
+   "verification": "not-sampled",
+   "evidence_refs_checked": [],
+   "note": ""
+  },
+  {
+   "claim_id": "F078-C05",
+   "verdict_bearing": false,
+   "sampled": false,
+   "verification": "not-sampled",
+   "evidence_refs_checked": [],
+   "note": ""
+  },
+  {
+   "claim_id": "F078-C06",
+   "verdict_bearing": false,
+   "sampled": true,
+   "verification": "verified",
+   "evidence_refs_checked": [
+    "2026-10-26-spec-draft-m13-projected-constraint-bridge-redesign.md (programme goal record, files/)",
+    "2026-10-26-m12-pilot-record.md (programme goal record, files/)"
+   ],
+   "note": "Design section 4.1 states A-FACE-2 in the claim's words (universal language binds universally, functional language binds to its anchor-attestation commitment only, summary language binds as a statement about its named sample, and the anti-retreat clause bars re-strengthening or weakening after the census is consulted), section 4.2 states both falsifiers the claim carries (the residue case and the pattern-mode pilot failure), and section 4.3 states that A-FACE (076 form) is not inherited. The 076 pilot record's section 6 confirms the premise: F076-C08's falsifier fired and the assumption set closed as not holding, with A-FACE named in the record's texture section as part of the indicted machinery."
+  },
+  {
+   "claim_id": "F078-C07",
+   "verdict_bearing": false,
+   "sampled": false,
+   "verification": "not-sampled",
+   "evidence_refs_checked": [],
+   "note": ""
+  },
+  {
+   "claim_id": "F078-C08",
+   "verdict_bearing": true,
+   "sampled": true,
+   "verification": "verified",
+   "evidence_refs_checked": [
+    "2026-10-26-spec-draft-m13-projected-constraint-bridge-redesign.md (programme goal record, files/)",
+    "glossa-corpus/indus/exports/indus_research.jsonl; backend/reports/INDUS_FINAL_ANCHORS.json; data/crosswalks/canonical_sign_registry_v2.csv"
+   ],
+   "note": "Design section 7.3 states the population lines exactly as the claim's boundary states them (94 strict signs coded from reading + basis only; the 5 frame-absent strict signs 039, 044, 046, 362, 374 on their own line under NC-8; the worked examples M002, M342, M347 excluded from the count; counted population 86), the three check lines with their standards, the bar, and the administrability floor; spec section 0 FF-078-3 states the blindness protocol in full (blind to census rows, to the 076 pilot's per-sign rows, and to the design draft's section 6 codings). I recomputed the population premise from the pinned files: exactly 5 of the 94 strict signs are frame-absent (the five named), leaving 89 frame-attested and 86 counted, and all pin hashes and counts match the cited evidence."
+  },
+  {
+   "claim_id": "F078-C09",
+   "verdict_bearing": false,
+   "sampled": false,
+   "verification": "not-sampled",
+   "evidence_refs_checked": [],
+   "note": ""
+  },
+  {
+   "claim_id": "F078-C10",
+   "verdict_bearing": false,
+   "sampled": false,
+   "verification": "not-sampled",
+   "evidence_refs_checked": [],
+   "note": ""
+  }
+ ],
+ "outcome": "PASS"
+}

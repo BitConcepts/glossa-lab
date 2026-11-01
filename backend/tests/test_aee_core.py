@@ -185,3 +185,35 @@ def test_load_real_claims_dir_and_summary():
     # Spec 029 Phase E1 (E1.3): the program-level mean score is
     # withdrawn from the summary position (FR-029-08).
     assert "mean_propagated_score" not in summary
+
+
+# ── Leg C hardening (C-04): [VERIFIED] requires a resolvable reference ───────
+
+def test_verified_marker_without_reference_is_inferred():
+    """An unreferenced [VERIFIED] marker must not confer OBSERVED."""
+    from aee.model import EvidenceKind
+
+    raw = dict(SUPPORTED)  # carries "[VERIFIED]" but no evidence reference
+    claim = claim_from_glossa(raw)
+    glossa_ev = [e for e in claim.evidence if e.ref.startswith("glossa-lab:")]
+    assert glossa_ev and glossa_ev[0].kind is EvidenceKind.INFERRED
+
+
+def test_verified_marker_with_resolvable_reference_is_observed():
+    """A [VERIFIED] marker backed by an existing artifact stays OBSERVED."""
+    from aee.model import EvidenceKind
+
+    raw = dict(SUPPORTED, evidence_ref="LEDGER.md")
+    claim = claim_from_glossa(raw)
+    glossa_ev = [e for e in claim.evidence if e.ref.startswith("glossa-lab:")]
+    assert glossa_ev and glossa_ev[0].kind is EvidenceKind.OBSERVED
+
+
+def test_verified_marker_with_fabricated_reference_is_inferred():
+    """A reference naming no existing file does not rescue the marker."""
+    from aee.model import EvidenceKind
+
+    raw = dict(SUPPORTED, evidence_ref="legc04-FABRICATED-ref")
+    claim = claim_from_glossa(raw)
+    glossa_ev = [e for e in claim.evidence if e.ref.startswith("glossa-lab:")]
+    assert glossa_ev and glossa_ev[0].kind is EvidenceKind.INFERRED

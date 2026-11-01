@@ -67,7 +67,11 @@ jobs:
   # ── Frontend: build + Playwright ────────────────────────────────────────────────
   frontend-tests:
     name: Frontend tests (Playwright)
-    runs-on: ubuntu-latest
+    # Pinned: the pinned Playwright version does not support chromium on
+    # ubuntu-26.04 (the current ubuntu-latest image) — browser install fails
+    # before any test runs (observed 2026-11-01, run 41290409981). Run the
+    # suite on the newest supported platform instead of skipping it.
+    runs-on: ubuntu-24.04
     timeout-minutes: 35  # includes 2-min research-loop SSE test
     needs: []  # run in parallel with backend-tests
 
@@ -111,6 +115,15 @@ jobs:
           GLOSSA_DATA_DIR: ${{ runner.temp }}/glossa_playwright_data
           GLOSSA_DEV_MODE: "1"
           PYTHONPATH: ${{ github.workspace }}/backend
+          # Spec 082 (T010, landed with Spec 081 step 6/7): the SPA
+          # implements the ui-contract.md token handoff, so the old
+          # GLOSSA_API_AUTH=off accommodation is REMOVED — this job's
+          # throwaway backend now enforces token auth like any real
+          # install. The token below is a CI-only throwaway for a
+          # throwaway backend on a throwaway runner; the e2e fixtures
+          # seed it into sessionStorage (the contract's sanctioned
+          # manual-seeding path for tests).
+          GLOSSA_API_TOKEN: "ci-e2e-token"
         run: |
           python -m uvicorn glossa_lab.main:app \
             --host 127.0.0.1 --port 8001 \
@@ -141,6 +154,8 @@ jobs:
           # the API on the same origin.  No separate Vite preview server needed.
           PLAYWRIGHT_USE_BACKEND: "1"
           PLAYWRIGHT_BACKEND_URL: "http://127.0.0.1:8001"
+          # Must match the backend-start step's token (Spec 082 T010).
+          GLOSSA_API_TOKEN: "ci-e2e-token"
         run: |
           npx playwright test \
             --reporter=github \
@@ -398,3 +413,44 @@ jobs:
           else
             python tools/freeze-gate/check_freeze_gate.py --all
           fi
+
+  # ── Spec 083 (T008): cloud image smoke ─────────────────────────────────────
+  # Builds the repo-root Dockerfile (T006) as ONE immutable image tagged
+  # with the git SHA (the image identity scheme), then runs the GAP-ENV
+  # regression smoke INSIDE the image: applied-epistemic-engineering must
+  # resolve within >=1.5.0,<1.6 and the 23-claim set must score byte-
+  # identically to the aee150 expectation fixture (incl. the 0.1625
+  # sign_val evidence expectations). Out-of-pin or divergent = red build.
+  cloud-image-smoke:
+    name: Cloud image smoke (Spec 083)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: []  # run in parallel
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Build the cloud image (tag = git SHA)
+        run: |
+          docker build \
+            --build-arg GIT_SHA="${{ github.sha }}" \
+            -t "glossa-lab:${{ github.sha }}" \
+            .
+
+      - name: Smoke — assessor pin + GAP-ENV 23-claim regression (in image)
+        run: |
+          docker run --rm "glossa-lab:${{ github.sha }}" \
+            python backend/scripts/cloud_image_smoke.py
+
+      - name: Smoke — cloud switch surface (in image)
+        run: |
+          docker run --rm "glossa-lab:${{ github.sha }}" \
+            python -c "
+          from glossa_lab.main import create_app
+          paths = set(create_app().openapi()['paths'])
+          banned = {'/api/v1/env/status', '/api/v1/env/setup', '/api/v1/env/rebuild', '/api/v1/env/upgrade', '/api/v1/env/packages', '/api/v1/shutdown'}
+          leaked = paths & banned
+          assert not leaked, f'host-management routes registered in cloud mode: {leaked}'
+          assert '/api/v1/health' in paths
+          print('cloud switch OK: env + shutdown routers absent, health present')
+          "

@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./fixtures";
 
 /**
  * Status view tests.
@@ -11,13 +11,13 @@ import { test, expect } from "@playwright/test";
 test.describe("Status view structure", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
-    // Default tab is 'Indus Studies' — navigate to Status first
+    // Navigate to Status first
     await page.getByRole("button", { name: "Status" }).click();
-    await expect(page.getByRole("heading", { name: "System Status" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Status" })).toBeVisible();
   });
 
-  test("shows System Status heading", async ({ page }) => {
-    await expect(page.getByRole("heading", { name: "System Status" })).toBeVisible();
+  test("shows Status heading", async ({ page }) => {
+    await expect(page.getByRole("heading", { name: "Status" })).toBeVisible();
   });
 
   test("shows loading or a status row within 5 seconds", async ({ page }) => {
@@ -67,12 +67,14 @@ test.describe("Status view with backend", () => {
     expect(hasVersion || hasVersionLabel).toBeTruthy();
   });
 
-  test("shows uptime in seconds", async ({ page }) => {
+  test("shows humanized uptime, never raw seconds", async ({ page }) => {
     await page.goto("/");
     await page.getByRole("button", { name: "Status" }).click();
     await page.waitForTimeout(2000);
-    // Uptime row should contain a number followed by 's'
-    await expect(page.getByText(/\d+s/).first()).toBeVisible({ timeout: 8000 });
+    // Spec 081 wireframe 14: uptime is humanized ("up 5 h 50 m",
+    // "up 12 m", "up under a minute") — a raw "<n>s" uptime is the
+    // anti-pattern the redesign removed.
+    await expect(page.getByText(/up (under a minute|\d+ [dhm])/).first()).toBeVisible({ timeout: 8000 });
   });
 
   test("shows registered pipeline count", async ({ page }) => {

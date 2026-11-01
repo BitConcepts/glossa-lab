@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — Status (Spec 081 wireframe 14)</title>
+<link rel="stylesheet" href="wireframes.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-row"><div class="tile">G</div><div><div class="brand-name">Glossa Lab</div><div class="brand-sub">Epistemic research workbench</div></div></div></div>
+    <a class="program-switch" href="01-programs.html" style="text-decoration:none"><div class="ps-label">Program</div><div class="ps-name">Indus Script <span>▾</span></div><div class="ps-q">What do the signs mean — tested claim by claim?</div></a>
+    <nav class="nav">
+      <h4>Program</h4>
+      <a href="02-program-home.html"><span class="ic">⌂</span>Home</a>
+      <a href="03-claims.html"><span class="ic">§</span>Claims<span class="count">94</span></a>
+      <a href="05-digestion.html"><span class="ic">✓</span>Digestion<span class="count alert">9</span></a>
+      <a href="06-evidence.html"><span class="ic">▤</span>Evidence &amp; sources</a>
+      <a href="07-data.html"><span class="ic">▦</span>Data</a>
+      <a href="#"><span class="ic">◈</span>Analysis</a>
+      <a href="08-experiments.html"><span class="ic">⬡</span>Experiments</a>
+      <a href="10-discovery.html"><span class="ic">◎</span>Discovery<span class="count">12</span></a>
+      <a href="11-research-loop.html"><span class="ic">↻</span>Research loop</a>
+      <a href="12-reports.html"><span class="ic">▨</span>Reports &amp; ledger</a>
+      <div class="nav-tool"><h4>Tool</h4>
+        <a href="09-jobs.html"><span class="ic">⚙</span>Jobs<span class="count">2</span></a>
+        <a href="14-status.html" class="active"><span class="ic">♥</span>Status</a>
+        <a href="13-settings.html"><span class="ic">⚙</span>Settings</a>
+        <a href="#"><span class="ic">?</span>Help</a>
+      </div>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="crumb">Glossa Lab / <b>Tool</b> / Status</span>
+      <div class="spacer"></div>
+      <button class="icon-btn">⌘K&nbsp; Search</button>
+      <button class="icon-btn">✦ AI assistant</button>
+      <div class="service-chip"><span class="dot"></span><span><b>Glossa Lab v0.1.0</b> · TRISTEN-DESKTOP · checked 14:02</span></div>
+    </div>
+
+    <div class="content">
+      <p class="specimen-note">Specimen — identity values are the desktop install's real ones (app, version, data path, snapshot hash prefix).</p>
+
+      <div class="head-row">
+        <div class="page-head">
+          <h1>Status</h1>
+          <p class="lede">What is running, proven by what it is — not by the fact that something answered. Identity first, then health, then the machine. History is labelled history.</p>
+        </div>
+        <div class="spacer"></div>
+        <button class="btn primary">Restart service</button>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <h3>Service identity <span class="sub">— verified at 14:02:11, re-checked when you open this page</span></h3>
+        <table class="tbl">
+          <tbody>
+            <tr><td style="width:22%"><b>Application</b></td><td>Glossa Lab <span class="row-meta">(OpenAPI title matches — this is the Glossa backend, not something else on the port)</span></td></tr>
+            <tr><td><b>Version</b></td><td>0.1.0</td></tr>
+            <tr><td><b>Host</b></td><td>TRISTEN-DESKTOP · listening on this machine only (127.0.0.1:8001), reached remotely only over the owner's private network</td></tr>
+            <tr><td><b>Data</b></td><td>%LOCALAPPDATA%\GlossaLab\data · database snapshot verified on arrival (hash ef0106ca…) · integrity check passed</td></tr>
+            <tr><td><b>Serving since</b></td><td>Today 08:12 · uptime 5 h 50 m · supervised by the tray (auto-restart budget: 3 per hour, none used this session)</td></tr>
+            <tr><td><b>Health</b></td><td><span class="chip ok">Healthy</span> <span class="row-meta">degraded and stopped are stated the same way, with the reason and the since-when</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid c2">
+        <div class="card">
+          <h3>Machine <span class="sub">— live, secondary to identity</span></h3>
+          <div class="row-item"><div class="grow"><div class="row-title">CPU 23% · Memory 41% · Disk 64%</div><div class="row-meta">Peaks this session are kept until you clear them — labelled as peaks, with the time they happened.</div></div></div>
+          <div class="row-item"><div class="grow"><div class="row-title">GPU</div><div class="row-meta">Idle · used by experiment jobs, named per job in Jobs.</div></div></div>
+        </div>
+
+        <div class="card">
+          <h3>This session's log <span class="sub">— the log, framed</span></h3>
+          <p class="row-meta" style="margin-bottom:8px">Showing <b>this session only</b> (since 08:12 today): 3 warnings · 0 errors. The full log file holds every session since install — thousands of historical lines, including old errors from fixed problems. It is a record, not a state: opening it does not mean those things are wrong now.</p>
+          <div class="logbox">08:12:04 service start · identity verified (Glossa Lab v0.1.0)
+08:12:05 database opened · integrity ok
+09:41:17 foundation check run · 39 pass / 0 fail / 9 warn
+13:58:40 discovery fetch started (job)
+14:01:02 warning: one source timed out; fetch continues without it</div>
+          <div style="margin-top:10px;display:flex;gap:8px"><button class="btn small">Open the full log file</button><button class="btn small">Copy session summary</button></div>
+        </div>
+      </div>
+
+      <div class="annotation">
+        <div class="a-title">Annotation — wireframe 14 · not part of the UI</div>
+        <dl>
+          <dt>Purpose</dt><dd>Prove what is running and how it is doing: identity, health with reasons and times, machine load, and this session's log — each labelled as what it is.</dd>
+          <dt>Primary action</dt><dd>“Restart service” — the act this page exists to make safe; it restarts only this service, by its identity.</dd>
+          <dt>Changed &amp; why</dt><dd>Status today is hardware gauges over an SSE stream plus a catalog summary, while the shell's health badge is a bare dot — and the log story is split between a 500-line live stream and a tray menu item that opens the raw cumulative file (how 989 historical ERROR lines came to read as “lots of failures” on 2026-10-29). Here identity leads, uptime is human (“5 h 50 m”, not 1803 s), and the log is framed by session with its history explicitly labelled history.</dd>
+          <dt>Spec claims</dt><dd>C081-3, C081-7.</dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</div>
+<nav class="mobile-nav">
+  <a href="02-program-home.html"><span class="mi">⌂</span>Home</a>
+  <a href="03-claims.html"><span class="mi">§</span>Claims</a>
+  <a href="05-digestion.html"><span class="mi">✓</span>Digestion</a>
+  <a href="09-jobs.html"><span class="mi">⚙</span>Jobs</a>
+  <a href="01-programs.html" class="active"><span class="mi">☰</span>More</a>
+</nav>
+</body>
+</html>

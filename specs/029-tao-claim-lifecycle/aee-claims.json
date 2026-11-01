@@ -1,0 +1,753 @@
+{
+ "claims": [
+  {
+   "id": "F029-C01",
+   "text": "Every governed Indus claim carries a lifecycle stage drawn from the fixed five-value stage set.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Governed Indus claims: extracted literature claims and anchor-reading claims, in the AEE wiring (aee_core), the claims API, and every display surface."
+   ],
+   "depends_on": [],
+   "assumptions": [],
+   "alternatives": [
+    "The existing flat claim_status vocabulary extended with more values.",
+    "Stage inferred at display time from score thresholds."
+   ],
+   "falsification_tests": [
+    "A governed claim representation (API response, stored record, or rendered surface) that carries a score or verdict but no lifecycle stage defeats this claim.",
+    "A lifecycle stage value outside the five-value set in any governed artifact defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "definition",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-STAGE-FROM-SCORE",
+     "ASM-STATUS-IS-STAGE"
+    ],
+    "strongest_rival": "claim_status already does this job and a second axis is redundant bookkeeping.",
+    "verdict_rule": "Stage is an explicit stored field with its own transition log; no code path derives it from a score or from claim_status.",
+    "evidence_origin_groups": [
+     "spec029-assessment"
+    ],
+    "tao_point": "P1 (five stages)",
+    "boundary_confirmation": "C01 governs the stage axis itself; C02 governs which actors may move a claim along that axis. Distinct boundaries; neither negates the other. C01 governs the stored stage field; C06 governs where scores may appear on surfaces. Distinct boundaries; neither negates the other. C01 governs the stage field; C07 governs the separation of lane-1 state from lane-2 state. Distinct boundaries; neither negates the other. C01 governs stages of program claims; C08 governs priority timestamps for external readings at intake. Distinct boundaries; neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/029-tao-claim-lifecycle/spec.md#5.1",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 029 section 5.1 lifecycle stage tracking requirements",
+     "source_id": "specs/029-tao-claim-lifecycle/spec.md#5.1"
+    },
+    {
+     "ref": "specs/029-tao-claim-lifecycle/assessment.md#P1",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Gap assessment finding P1: five stages absent from claim machinery",
+     "source_id": "specs/029-tao-claim-lifecycle/assessment.md#P1",
+     "independent_of": [
+      "specs/029-tao-claim-lifecycle/spec.md#5.1"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F029-C02",
+   "text": "Transitions past the checked stage take effect only through a recorded act of a named human.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "All stage transitions in the AEE wiring, the research loop, intake, and any batch or scheduled process."
+   ],
+   "depends_on": [
+    "F029-C01"
+   ],
+   "assumptions": [],
+   "alternatives": [
+    "Automated advancement to accepted for claims above a score threshold with human review afterwards."
+   ],
+   "falsification_tests": [
+    "A stage-transition log entry advancing a claim past checked whose actor is a process, job, model, or pipeline defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-AUTO-ACCEPT",
+     "ASM-SCORE-GATE-IS-HUMAN-GATE"
+    ],
+    "strongest_rival": "Human-gated transitions do not scale to hundreds of claims, so the lifecycle will stall at checked.",
+    "verdict_rule": "The transition function refuses non-human actors for stages above checked, and the refusal is itself logged.",
+    "evidence_origin_groups": [
+     "spec029-assessment"
+    ],
+    "tao_point": "P1/P6 (stages; lane rule)",
+    "boundary_confirmation": "C02 governs the actor permitted to effect any transition past checked; C04 governs the explanation record the accepted transition requires. Distinct boundaries; neither negates the other. C02 governs transition actors across all governed claims; C05 governs the attribution sub-claim inside decipherment bundles. Distinct boundaries; neither negates the other. C02 governs who may effect a transition; C09 governs the trail each decision record carries. Distinct boundaries; neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/029-tao-claim-lifecycle/spec.md#5.1",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 029 section 5.1 transition legality requirements",
+     "source_id": "specs/029-tao-claim-lifecycle/spec.md#5.1"
+    },
+    {
+     "ref": "specs/029-tao-claim-lifecycle/adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "primary",
+     "description": "Owner adjudication record: ratified lifecycle decisions including the lane rule",
+     "source_id": "specs/029-tao-claim-lifecycle/adjudication.md",
+     "independent_of": [
+      "specs/029-tao-claim-lifecycle/spec.md#5.1"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F029-C03",
+   "text": "Each anchor reading is a bundle of four named sub-claims with individual stages.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Anchor readings (the 287-anchor set and successors) and any future headline decipherment claim. Literature claims are governed by C01 but are not required to be bundles."
+   ],
+   "depends_on": [
+    "F029-C01"
+   ],
+   "assumptions": [],
+   "alternatives": [
+    "A single per-anchor record with a longer free-text basis field.",
+    "Sub-claims exist but the parent stage is a weighted average of sub-claim stages."
+   ],
+   "falsification_tests": [
+    "An anchor reading displayed or stored as a single-stage, single-score object with no sub-claim records defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-TIER-IS-DECOMPOSITION"
+    ],
+    "strongest_rival": "The existing HIGH/MEDIUM/LOW/CANDIDATE tier already encodes the bundle's outcome and decomposition is process theatre.",
+    "verdict_rule": "Each sub-claim carries its own evidence record, falsifier, and stage; the parent stage is computed under F029-C11.",
+    "evidence_origin_groups": [
+     "spec029-assessment"
+    ],
+    "tao_point": "P2 (decomposition)",
+    "sub_claim_kinds": [
+     "reading soundness",
+     "prior-scholarship accounting",
+     "attribution",
+     "explanation intelligibility"
+    ],
+    "boundary_confirmation": "C03 governs the bundle structure of anchor readings; C06 governs score placement on surfaces. Distinct boundaries; neither negates the other. C03 governs bundle composition; C07 governs lane separation in storage. Distinct boundaries; neither negates the other. C03 governs bundles for program anchor readings; C08 governs registration of external readings. Distinct boundaries; neither negates the other. C03 governs the structure of decipherment claims; C10 fences this draft register from touching existing records. Distinct boundaries; neither negates the other. C03 governs bundle composition; C11 governs the computation of the parent stage from sub-claim stages. C11 was split from C03 in this recovery; the two are complementary halves of one original claim."
+   },
+   "evidence": [
+    {
+     "ref": "specs/029-tao-claim-lifecycle/spec.md#5.2",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 029 section 5.2 decomposition requirements",
+     "source_id": "specs/029-tao-claim-lifecycle/spec.md#5.2"
+    },
+    {
+     "ref": "specs/029-tao-claim-lifecycle/assessment.md#P2",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Gap assessment finding P2: decomposition absent for decipherment claims",
+     "source_id": "specs/029-tao-claim-lifecycle/assessment.md#P2",
+     "independent_of": [
+      "specs/029-tao-claim-lifecycle/spec.md#5.2"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F029-C11",
+   "text": "The stage of an anchor reading equals the minimum stage among its sub-claims.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Anchor readings (the 287-anchor set and successors) and any future headline decipherment claim. Literature claims are governed by C01 but are not required to be bundles."
+   ],
+   "depends_on": [
+    "F029-C03"
+   ],
+   "assumptions": [],
+   "alternatives": [
+    "Parent stage as a weighted average of sub-claim stages."
+   ],
+   "falsification_tests": [
+    "A parent stage higher than any one of its sub-claim stages defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-PARENT-AVERAGES-CHILDREN"
+    ],
+    "strongest_rival": "A weighted average of sub-claim stages better reflects partial progress across a bundle.",
+    "verdict_rule": "Parent stage is computed as the minimum sub-claim stage and is never independently assignable.",
+    "evidence_origin_groups": [
+     "spec029-assessment"
+    ],
+    "tao_point": "P2 (decomposition)",
+    "boundary_confirmation": "C11 governs the computation of the parent stage from sub-claim stages; C03 governs bundle composition. C11 was split from C03 in the L3 recovery; the two are complementary halves of one original claim."
+   },
+   "evidence": [
+    {
+     "ref": "specs/029-tao-claim-lifecycle/spec.md#5.2",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 029 section 5.2 parent-stage computation requirement",
+     "source_id": "specs/029-tao-claim-lifecycle/spec.md#5.2"
+    },
+    {
+     "ref": "specs/029-tao-claim-lifecycle/assessment.md#P2",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Gap assessment finding P2: anchor records carry a single tier in place of staged sub-claims",
+     "source_id": "specs/029-tao-claim-lifecycle/assessment.md#P2",
+     "independent_of": [
+      "specs/029-tao-claim-lifecycle/spec.md#5.2"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F029-C04",
+   "text": "Acceptance of a claim requires a filed explanation record authored by a named human.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "The accepted and digested transitions for every governed claim."
+   ],
+   "depends_on": [
+    "F029-C01",
+    "F029-C02"
+   ],
+   "assumptions": [],
+   "alternatives": [
+    "Accepted on the strength of a program-internal review note not published for challenge.",
+    "Digested inferred from elapsed time since acceptance."
+   ],
+   "falsification_tests": [
+    "A claim at accepted with no explanation record naming a human author defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-AI-EXPLANATION-COUNTS"
+    ],
+    "strongest_rival": "No external scholar will ever write these accounts, so accepted/digested will be permanently empty and the lifecycle is decorative.",
+    "verdict_rule": "The accepted transition validates the explanation record's presence, named authorship, and hash; the digested transition is governed by F029-C12.",
+    "evidence_origin_groups": [
+     "spec029-assessment"
+    ],
+    "tao_point": "P3 (digestion is first-class)",
+    "boundary_confirmation": "C04 governs the record required for acceptance; C06 governs score placement on surfaces. Distinct boundaries; neither negates the other. C04 governs the acceptance gate; C07 governs lane separation in storage. Distinct boundaries; neither negates the other. C04 governs acceptance of program claims; C08 governs priority registration of external readings before any program assessment. Distinct boundaries; neither negates the other. C04 governs the acceptance gate for governed claims; C10 fences this draft register from touching existing records. Distinct boundaries; neither negates the other. C04 governs the accepted gate; C12 governs the digested gate one stage further on. C12 was split from C04 in this recovery; the two gates are sequential and complementary."
+   },
+   "evidence": [
+    {
+     "ref": "specs/029-tao-claim-lifecycle/spec.md#5.3",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 029 section 5.3 explanation gate requirements",
+     "source_id": "specs/029-tao-claim-lifecycle/spec.md#5.3"
+    },
+    {
+     "ref": "specs/029-tao-claim-lifecycle/assessment.md#P3",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Gap assessment finding P3: digestion absent from claim machinery",
+     "source_id": "specs/029-tao-claim-lifecycle/assessment.md#P3",
+     "independent_of": [
+      "specs/029-tao-claim-lifecycle/spec.md#5.3"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F029-C12",
+   "text": "Digestion of a claim requires a filed digestion record evidencing independent scholarly engagement.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "The accepted and digested transitions for every governed claim."
+   ],
+   "depends_on": [
+    "F029-C04"
+   ],
+   "assumptions": [],
+   "alternatives": [
+    "Digested inferred from elapsed time since acceptance."
+   ],
+   "falsification_tests": [
+    "A claim at digested with no digestion record defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-TIME-IS-DIGESTION"
+    ],
+    "strongest_rival": "Elapsed time since acceptance is a workable proxy for scholarly digestion.",
+    "verdict_rule": "The digested transition validates the digestion record against the adjudicated threshold (OD-5).",
+    "evidence_origin_groups": [
+     "spec029-assessment"
+    ],
+    "tao_point": "P3 (digestion is first-class)",
+    "boundary_confirmation": "C12 governs the digested gate; C04 governs the accepted gate one stage earlier. C12 was split from C04 in the L3 recovery; the two gates are sequential and complementary."
+   },
+   "evidence": [
+    {
+     "ref": "specs/029-tao-claim-lifecycle/spec.md#5.3",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 029 section 5.3 digestion gate requirements",
+     "source_id": "specs/029-tao-claim-lifecycle/spec.md#5.3"
+    },
+    {
+     "ref": "specs/029-tao-claim-lifecycle/adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "primary",
+     "description": "Owner adjudication record: OD-5 digestion threshold as ratified",
+     "source_id": "specs/029-tao-claim-lifecycle/adjudication.md",
+     "independent_of": [
+      "specs/029-tao-claim-lifecycle/spec.md#5.3"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F029-C05",
+   "text": "Attribution is a registered sub-claim of every decipherment claim.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Decipherment claims (anchor-reading bundles per C03); the cap binds stage, not score or verdict."
+   ],
+   "depends_on": [
+    "F029-C03",
+    "F029-C11"
+   ],
+   "assumptions": [],
+   "alternatives": [
+    "Attribution handled by narrative citation practice (e.g. ATTRIBUTION.md) without a per-claim record.",
+    "Contested attribution shown only inside a detail view, not on the parent."
+   ],
+   "falsification_tests": [
+    "A decipherment claim whose attribution sub-claim is contested while its displayed parent stage exceeds the adjudicated cap defeats this claim.",
+    "A decipherment claim with no attribution sub-claim record defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-CITATION-IS-ATTRIBUTION-CLAIM",
+     "ASM-CONTEST-IS-PRIVATE"
+    ],
+    "strongest_rival": "Completeness of prior scholarship is unprovable, so the sub-claim would be permanently contested and cap everything.",
+    "verdict_rule": "Cap enforcement is mechanical: parent stage = min(bundle rule per C03, cap) whenever the attribution contest state is contested.",
+    "evidence_origin_groups": [
+     "spec029-assessment"
+    ],
+    "tao_point": "P4 (attribution is a claim)",
+    "boundary_confirmation": "C05 governs the attribution sub-claim; C06 governs score placement on surfaces. Distinct boundaries; neither negates the other. C05 governs attribution inside program decipherment claims; C08 governs priority credit for external readings. Distinct boundaries; neither negates the other. C05 governs the attribution sub-claim; C10 fences this draft register from touching existing records. Distinct boundaries; neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/029-tao-claim-lifecycle/spec.md#5.2",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 029 section 5.2 attribution sub-claim requirements",
+     "source_id": "specs/029-tao-claim-lifecycle/spec.md#5.2"
+    },
+    {
+     "ref": "specs/029-tao-claim-lifecycle/assessment.md#P4",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Gap assessment finding P4: attribution absent as a governed claim",
+     "source_id": "specs/029-tao-claim-lifecycle/assessment.md#P4",
+     "independent_of": [
+      "specs/029-tao-claim-lifecycle/spec.md#5.2"
+     ]
+    },
+    {
+     "ref": "specs/029-tao-claim-lifecycle/audit.md#5",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Retroactive audit section 5 finding P4: live attribution contests unflagged on records",
+     "source_id": "specs/029-tao-claim-lifecycle/audit.md#5",
+     "independent_of": [
+      "specs/029-tao-claim-lifecycle/spec.md#5.2"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F029-C06",
+   "text": "Scores appear on program surfaces only inside checking-stage evidence presentations.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Frontend surfaces, API summary responses, generated reports, exports, and public pages produced by the program."
+   ],
+   "depends_on": [
+    "F029-C01"
+   ],
+   "assumptions": [],
+   "alternatives": [
+    "Scores shown with a disclaimer caption while remaining the headline metric.",
+    "Counts shown as progress bars toward decipherment."
+   ],
+   "falsification_tests": [
+    "A surface whose headline or summary position carries a score, band, mean, or count as the claim's standing defeats this claim (the current 'N signs deciphered' headline is a standing counterexample this spec exists to remove)."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-DISCLAIMER-CURES-HEADLINE",
+     "ASM-VOLUME-IS-PROGRESS"
+    ],
+    "strongest_rival": "Funders and readers need simple summary numbers; removing them hides real progress.",
+    "verdict_rule": "Display conformance is checkable per surface: scores appear only inside checking-stage evidence presentations.",
+    "evidence_origin_groups": [
+     "spec029-assessment"
+    ],
+    "tao_point": "P5 (anti-gradability)",
+    "boundary_confirmation": "C06 governs where scores may appear; C09 governs the trail decision records carry. Distinct boundaries; neither negates the other. C06 governs score placement; C13 governs the remaining-unknowns statement on verdict displays. C13 was split from C06 in this recovery; the two display rules are complementary halves of one original claim."
+   },
+   "evidence": [
+    {
+     "ref": "specs/029-tao-claim-lifecycle/spec.md#5.4",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 029 section 5.4 stage-aware display rules",
+     "source_id": "specs/029-tao-claim-lifecycle/spec.md#5.4"
+    },
+    {
+     "ref": "specs/029-tao-claim-lifecycle/audit.md#5",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Retroactive audit section 5 finding P5: anti-gradability violated on live surfaces",
+     "source_id": "specs/029-tao-claim-lifecycle/audit.md#5",
+     "independent_of": [
+      "specs/029-tao-claim-lifecycle/spec.md#5.4"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F029-C13",
+   "text": "Every verdict display carries an explicit statement of remaining unknowns.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Frontend surfaces, API summary responses, generated reports, exports, and public pages produced by the program."
+   ],
+   "depends_on": [
+    "F029-C01"
+   ],
+   "assumptions": [],
+   "alternatives": [
+    "Not-understood content generated by the pipeline from verdict metadata."
+   ],
+   "falsification_tests": [
+    "A verdict display with no not-understood statement defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-PROSE-IMPLIES-LIMITS"
+    ],
+    "strongest_rival": "Verdict prose already implies its limitations; a required field is boilerplate.",
+    "verdict_rule": "The not-understood statement is a required field of every verdict record.",
+    "evidence_origin_groups": [
+     "spec029-assessment"
+    ],
+    "tao_point": "P5 (anti-gradability)",
+    "boundary_confirmation": "C13 governs the remaining-unknowns statement on verdict displays; C06 governs score placement on program surfaces. C13 was split from C06 in the L3 recovery; the two display rules are complementary halves of one original claim."
+   },
+   "evidence": [
+    {
+     "ref": "specs/029-tao-claim-lifecycle/spec.md#5.4",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 029 section 5.4 display rules including the remaining-unknowns statement",
+     "source_id": "specs/029-tao-claim-lifecycle/spec.md#5.4"
+    },
+    {
+     "ref": "specs/029-tao-claim-lifecycle/audit.md#5",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Retroactive audit section 5 finding P8: no verdict states what remains not understood",
+     "source_id": "specs/029-tao-claim-lifecycle/audit.md#5",
+     "independent_of": [
+      "specs/029-tao-claim-lifecycle/spec.md#5.4"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F029-C07",
+   "text": "Lane-1 state is stored apart from lane-2 state on every governed claim.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Claims API responses and every frontend/report rendering of claim standing."
+   ],
+   "depends_on": [
+    "F029-C01",
+    "F029-C02"
+   ],
+   "assumptions": [],
+   "alternatives": [
+    "One combined status with a footnote distinguishing machine from human assessment."
+   ],
+   "falsification_tests": [
+    "A rendering in which an AEE band, score, or extraction status occupies the visual position or vocabulary reserved for scholarly acceptance defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-ONE-BADGE-TWO-MEANINGS"
+    ],
+    "strongest_rival": "Two displays for one claim will confuse readers more than one honest combined status.",
+    "verdict_rule": "API serializes lane1 and lane2 as distinct objects; UI components for the two lanes are distinct and lane-2 components accept no lane-1 fields.",
+    "evidence_origin_groups": [
+     "spec029-assessment"
+    ],
+    "tao_point": "P6 (two lanes)",
+    "boundary_confirmation": "C07 governs lane separation in storage; C09 governs the trail carried inside the claim API representation. Distinct boundaries; neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/029-tao-claim-lifecycle/spec.md#5.4",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 029 section 5.4 lane-separated display rules",
+     "source_id": "specs/029-tao-claim-lifecycle/spec.md#5.4"
+    },
+    {
+     "ref": "specs/029-tao-claim-lifecycle/assessment.md#P6",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Gap assessment finding P6: two lanes absent; single lane mislabelled",
+     "source_id": "specs/029-tao-claim-lifecycle/assessment.md#P6",
+     "independent_of": [
+      "specs/029-tao-claim-lifecycle/spec.md#5.4"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F029-C08",
+   "text": "An external reading registered at intake receives a priority timestamp independent of program assessment.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Readings submitted by scholars outside the program. Program-internal predictions remain governed by docs/PREDICTION_REGISTER.md."
+   ],
+   "depends_on": [],
+   "assumptions": [],
+   "alternatives": [
+    "Priority handled by publication dates in the literature corpus only.",
+    "Registration offered only for readings the program has checked."
+   ],
+   "falsification_tests": [
+    "A registration workflow that requires a program verdict, score, or stage before a timestamp is issued defeats this claim.",
+    "A registered reading whose credit display changes when the program's assessment of it changes defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-CREDIT-FOLLOWS-AGREEMENT",
+     "ASM-REGISTRATION-IS-ENDORSEMENT"
+    ],
+    "strongest_rival": "An open register invites speculative land-grabs of low-quality readings.",
+    "verdict_rule": "Timestamp issues at intake on completeness of the registration record alone; credit display is a function of the registration record, never of assessment state.",
+    "evidence_origin_groups": [
+     "spec029-assessment"
+    ],
+    "tao_point": "P7 (protect openness)",
+    "boundary_confirmation": "C08 governs priority registration at intake; C09 governs trails for verdicts on governed claims. Distinct boundaries; neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/029-tao-claim-lifecycle/spec.md#5.5",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 029 section 5.5 priority and credit registration requirements",
+     "source_id": "specs/029-tao-claim-lifecycle/spec.md#5.5"
+    },
+    {
+     "ref": "specs/029-tao-claim-lifecycle/adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "primary",
+     "description": "Owner adjudication record: OD-6 priority register visibility as ratified",
+     "source_id": "specs/029-tao-claim-lifecycle/adjudication.md",
+     "independent_of": [
+      "specs/029-tao-claim-lifecycle/spec.md#5.5"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F029-C09",
+   "text": "Every decision record on a governed claim carries an inspectable evidence trail inside the claim API representation.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Verdicts and stage transitions recorded after this spec is implemented; historical records are addressed only as OD-1 decides."
+   ],
+   "depends_on": [
+    "F029-C01"
+   ],
+   "assumptions": [],
+   "alternatives": [
+    "Trails kept in per-phase outcome documents, referenced by phase number only."
+   ],
+   "falsification_tests": [
+    "A verdict or stage transition whose claim-level API representation lacks any one of: evidence refs, origin groups, falsifier state, actor, timestamp \u2014 defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-LOG-IS-TRAIL",
+     "ASM-PHASE-RECORD-SUFFICES"
+    ],
+    "strongest_rival": "Spec-level outcome records already provide trails; per-claim serialization duplicates them.",
+    "verdict_rule": "A completeness check over verdict/transition records is part of the claims API's own output contract.",
+    "evidence_origin_groups": [
+     "spec029-assessment"
+    ],
+    "tao_point": "P8 (inspectable records)",
+    "boundary_confirmation": "C09 governs trails on decision records; C10 fences this draft register from touching existing records. Distinct boundaries; neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/029-tao-claim-lifecycle/spec.md#5.6",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 029 section 5.6 evidence trail requirements",
+     "source_id": "specs/029-tao-claim-lifecycle/spec.md#5.6"
+    },
+    {
+     "ref": "specs/029-tao-claim-lifecycle/assessment.md#P8",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Gap assessment finding P8: inspectable evidence trails partial",
+     "source_id": "specs/029-tao-claim-lifecycle/assessment.md#P8",
+     "independent_of": [
+      "specs/029-tao-claim-lifecycle/spec.md#5.6"
+     ]
+    }
+   ],
+   "stage": "created"
+  },
+  {
+   "id": "F029-C10",
+   "text": "This claims-first draft leaves every existing record exactly as published.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": [
+    "Spec 029 and all work done under it before an adjudicated, frozen implementation plan exists."
+   ],
+   "depends_on": [
+    "F029-C01"
+   ],
+   "assumptions": [],
+   "alternatives": [
+    "The spec PR quietly fixes the DeciphermentPanel headline as an obvious bug."
+   ],
+   "falsification_tests": [
+    "A diff under this spec that alters an existing claim record, anchor record, verdict, or display string defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-DRAFT-AUTHORIZES-EDITS"
+    ],
+    "strongest_rival": "The headline violation is live now; deferring its fix to a later plan leaves a known misstatement public.",
+    "verdict_rule": "The Spec 029 PR diff is confined to specs/029-tao-claim-lifecycle/ and the H1 ledger entry.",
+    "evidence_origin_groups": [
+     "spec029-governance"
+    ],
+    "tao_point": "governance guard (non-retroactivity until adjudicated)",
+    "boundary_confirmation": "C10 governs this register's own non-retroactivity; C01 governs the stage axis the register describes. The register describes the lifecycle without applying it to any existing record. Distinct boundaries; neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/029-tao-claim-lifecycle/spec.md#3.1",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 029 section 3.1 lifecycle of this spec: claims-first draft discipline",
+     "source_id": "specs/029-tao-claim-lifecycle/spec.md#3.1"
+    },
+    {
+     "ref": "specs/029-tao-claim-lifecycle/audit.md#6",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Retroactive audit section 6: corrections applied were records only; no live record modified",
+     "source_id": "specs/029-tao-claim-lifecycle/audit.md#6",
+     "independent_of": [
+      "specs/029-tao-claim-lifecycle/spec.md#3.1"
+     ]
+    }
+   ],
+   "stage": "created"
+  }
+ ],
+ "note": "Register recovered 2026-10-12 under the Spec 029 L3 recovery (see aee/recovery-specify.md). All claims remain status draft. Evidence lists and pairwise boundary confirmations were added in the Spec 028 register shape; compound claim texts were rewritten as single positive propositions with enumerations and apparatus carried by boundary, verdict rule, falsification tests, and metadata. Three splits, each recorded in the recovery file: the parent-stage minimum rule moved from F029-C03 to F029-C11; the digested gate moved from F029-C04 to F029-C12; the not-understood display rule moved from F029-C06 to F029-C13. Boundaries and verdict rules were preserved except where a split moved them to the successor claim. F029-C05 gained its dependency on F029-C11 because its cap rule invokes the minimum rule.",
+ "register_version": "draft-2",
+ "spec": "029-tao-claim-lifecycle"
+}

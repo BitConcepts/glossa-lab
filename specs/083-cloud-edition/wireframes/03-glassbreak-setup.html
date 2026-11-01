@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — First-run setup (Spec 083 wireframe 03)</title>
+<link rel="stylesheet" href="wireframes.css">
+</head>
+<body>
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-brand">
+      <div class="tile">G</div>
+      <div>
+        <div class="brand-name" style="color:var(--ink);font-size:14px">Glossa Lab</div>
+        <div class="brand-sub" style="color:var(--faint)">Epistemic research workbench</div>
+      </div>
+    </div>
+    <h1>First-run setup</h1>
+    <p class="lede">This deployment has no users yet. This screen creates its one administrator account — and then it closes, permanently. It can be completed only with the one-time setup code from the deployment terminal.</p>
+    <div class="field">
+      <label>Setup code <span class="hint">— shown once, where the deployment was run</span></label>
+      <div class="codebox">SPECIMEN-CODE-SHOWN-ONCE</div>
+      <p class="row-meta" style="margin-top:6px">In the real flow the owner pastes the code here; nothing about it is ever sent by email or chat, and it stops working 24 hours after it was issued.</p>
+    </div>
+    <form>
+      <div class="field">
+        <label for="u">Admin username</label>
+        <input id="u" type="text" value="glassbreak">
+      </div>
+      <div class="field">
+        <label for="p">Set the admin password</label>
+        <input id="p" type="password" placeholder="a password only you know" autocomplete="new-password">
+      </div>
+      <div class="field">
+        <label for="p2">Repeat the password</label>
+        <input id="p2" type="password" autocomplete="new-password">
+      </div>
+      <div class="callout warn" style="margin-bottom:13px"><b>Once, only.</b> When this account exists, this page is gone — there is no second setup and no back door. If the code expires unused, the operator issues a new one from the deployment side.</div>
+      <button class="btn primary block">Create the admin account</button>
+    </form>
+  </div>
+  <p class="auth-foot">glossa.bitconcepts.tech · Setup is part of the deployment record: its completion (not the code, not the password) is written to the audit log.</p>
+
+  <div class="annotation" style="max-width:640px;margin-top:26px">
+    <div class="a-title">Annotation — wireframe 03 · not part of the UI</div>
+    <dl>
+      <dt>Purpose</dt><dd>Seed the glassbreak admin exactly once, with a password that exists only in the owner's head and as a salted hash in D1 (FR-003). No password crosses chat, code, configuration, or logs at any point in the flow — the code is a capability, not a credential for the account itself.</dd>
+      <dt>Primary action</dt><dd>“Create the admin account”.</dd>
+      <dt>Changed &amp; why</dt><dd>New surface, and the security keystone of the edition: every later account descends from invites this admin issues, so the root of trust is this one screen. The username field arrives pre-filled with the owner's chosen name and stays editable here (setup is the one moment it can be set); after setup, usernames are immutable (wireframe 08). The specimen code is labelled as such — a real code never appears in any document.</dd>
+      <dt>Spec claims</dt><dd>C083-3 (seeding — single-use code, 24-hour expiry, permanent closure, no password material anywhere), C083-12 (completion is audit-logged), C083-14 (this runs on staging first).</dd>
+    </dl>
+  </div>
+</div>
+</body>
+</html>

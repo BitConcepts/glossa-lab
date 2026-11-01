@@ -1,0 +1,122 @@
+{
+  "stage": "1-population-ledger",
+  "pins": {
+    "sanitized_corpus.json": "345241b13fedada87b4783c24cd241123491bbd7edaf5bf636f9cdb36c01da68",
+    "shakti_row_grades_2026-10-22.csv": "02394241773cf8700f49ba19c30cdbaa589cf119d2c97c35e15e0447434dd739",
+    "canonical_sign_registry_v2.csv": "42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71",
+    "m77_sign_list.csv": "9c619bfe2520e63e2968be0ab4ddc9cef1f9aff7dfa3f8eddbf58f21fb414f7e"
+  },
+  "step0": {
+    "inscriptions": 3045,
+    "signs": 557,
+    "tokens": 11805,
+    "signs_in_seq_ge2": 550
+  },
+  "step0_pass": true,
+  "frame_role_totals": {
+    "FIRST": 2942,
+    "MIDDLE": 5818,
+    "LAST": 2942,
+    "ONLY": 103
+  },
+  "split": {
+    "fitting_inscriptions": 1523,
+    "scoring_inscriptions": 1522
+  },
+  "compilations": {
+    "fitting": {
+      "inscriptions": 1523,
+      "tokens": 6049,
+      "role_totals": {
+        "FIRST": 1473,
+        "MIDDLE": 3053,
+        "LAST": 1473,
+        "ONLY": 50
+      },
+      "base_shares": [
+        0.24351132418581584,
+        0.5047115225657134,
+        0.24351132418581584,
+        0.008265829062654984
+      ],
+      "solo_slots": 50,
+      "budget_tokens": 1209
+    },
+    "scoring": {
+      "inscriptions": 1522,
+      "tokens": 5756,
+      "role_totals": {
+        "FIRST": 1469,
+        "MIDDLE": 2765,
+        "LAST": 1469,
+        "ONLY": 53
+      },
+      "base_shares": [
+        0.2552119527449618,
+        0.4803683113273106,
+        0.2552119527449618,
+        0.00920778318276581
+      ],
+      "solo_slots": 53,
+      "budget_tokens": 1151
+    }
+  },
+  "position_reassignments": [],
+  "drawn_position_counts": {
+    "FIRST": 14,
+    "MIDDLE": 17,
+    "LAST": 11,
+    "ONLY": 2
+  },
+  "drawn_neighbor_counts": {
+    "FIRST": 10,
+    "MIDDLE": 9,
+    "LAST": 8,
+    "ONLY": 17
+  },
+  "feasibility": {
+    "fitting": {
+      "quota_sum_raw": 1369,
+      "budget_tokens": 1209,
+      "scaling_engaged": true,
+      "quota_sum_final": 1209,
+      "family_ONLY_cells": 28,
+      "family_ONLY_cap": 12.5,
+      "ONLY_cap_satisfied": false,
+      "family_demand_by_class": {
+        "FIRST": 374,
+        "MIDDLE": 501,
+        "LAST": 306,
+        "ONLY": 28
+      },
+      "slot_pools": {
+        "FIRST": 1473,
+        "MIDDLE": 3053,
+        "LAST": 1473,
+        "ONLY": 50
+      }
+    },
+    "scoring": {
+      "quota_sum_raw": 1288,
+      "budget_tokens": 1151,
+      "scaling_engaged": true,
+      "quota_sum_final": 1151,
+      "family_ONLY_cells": 24,
+      "family_ONLY_cap": 13.25,
+      "ONLY_cap_satisfied": false,
+      "family_demand_by_class": {
+        "FIRST": 351,
+        "MIDDLE": 462,
+        "LAST": 314,
+        "ONLY": 24
+      },
+      "slot_pools": {
+        "FIRST": 1469,
+        "MIDDLE": 2765,
+        "LAST": 1469,
+        "ONLY": 53
+      }
+    }
+  },
+  "feasibility_halt": true
+}

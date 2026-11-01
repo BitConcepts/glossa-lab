@@ -1,0 +1,499 @@
+{
+ "claims": [
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "The scope is the inherited foundation only: the section 6 census of the pilot frame (the Spec 033 corpus export under its pins), the Tier-C derivation of Spec 076's step 1, and the step-2 shuffle result as recorded in the Spec 076 pilot record (both bars passed; B = 999, seed 20261026). It excludes the bridge machinery Spec 076's step 3 falsified (the one-axis vocabulary, CR-1 to CR-7, A-FACE in its 076 form), which this spec replaces and does not inherit. The standing is conditional: it holds exactly as long as the successor pilot's step 0 re-verifies the census it rests on. The claim as drafted states the proposition in full.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The Spec 076 pilot record (executed 2026-10-26, once, exactly as frozen; freeze digest 83259ed3d3a20189e5c22e4645d26452c9c3b79a60348b3f5c38b8405addde9a): step 0 and step 1 passed exactly; both step-2 shuffle bars passed by wide margins (U2 finals residual 178 against a null 5th percentile of 395.0; solo-only count 13 against a null 95th percentile of 5.0; B = 999, seed 20261026, empirical fraction 0.000 on both statistics); step 3 excluded 36 of 89 frame-attested claimed types against a bar of at most 5, closing the pilot ASSUMPTION SET DOES NOT HOLD, with F076-C02 not filed and no register produced. SHA-256 837b4760a0f9d21e9a9a9b2ce5cea821446010d7fb3729f7ca877fd205e377b6.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "2026-10-26-m12-pilot-record.md (programme goal record, files/)",
+     "source_id": "spec-076 pilot record (2026-10-26, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "m13 design draft (2026-10-26, goal record)"
+     ]
+    },
+    {
+     "description": "The inherited census, re-derived at this freeze by the freeze worker from the named pins (and independently for the C2 record): 2,906 records to 11,507 tokens (680 placeholder + 452 marked tokens dropped); 5,883 strict tokens; slot totals init 2,655 / fin 2,655 / solo 225 / med 5,972; finals partition strict 1,707 / pending 250 / anchored-other 520 / no-anchor 178, summing to 2,655; 677 (sign, type) exclusions over the 122 no-anchor signs; solo-only set of 13 signs; slot base rates init 0.2307 / fin 0.2307 / med 0.5190 / solo 0.0196; counted population 86 (94 strict minus 5 frame-absent minus 3 worked examples). Every figure equals the Spec 076 pilot record's steps 0-1 values.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "specs/078-projected-constraint-bridge-redesign/spec.md sections 5-6; specs/076-projected-constraint-corpus-model pilot record steps 0-1 (programme record)",
+     "source_id": "spec-078 freeze derivation + spec-076 pilot record",
+     "source_quality": "artifact",
+     "independent_of": [
+      "m13 design draft (2026-10-26, goal record)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "a step-0 re-verification mismatch in the successor pilot falsifies this claim, closes that pilot CANNOT BE RUN AS WRITTEN, and voids the inherited step-2 standing in the same record"
+   ],
+   "id": "F078-C01",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec076-pilot",
+     "spec078-census"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which an inherited result is treated as unconditional \u2014 carried forward without the step-0 re-verification that alone keeps it standing",
+    "verdict_rule": "judged by the successor pilot's step 0: the census re-derived from the pins must reproduce every pre-named figure exactly"
+   },
+   "status": "draft",
+   "text": "The inheritance is sound: Spec 076's steps 0-2 results are properties of the inherited pins and derivation, and stand as this design's foundation \u2014 the census derivation is reproducible exactly, and the frame's constraint structure exceeds what its own marginals produce by chance in the tested family."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "The scope is the successor pilot of spec section 7 on the pilot frame only: the counted population of 86 signs (frame-attested strict signs minus the three worked examples M002, M342, M347, under the frozen definition of FF-078-2), the distributional line judged mechanically against census rows, the functional line judged by anchor share against the slot base rates computed from the re-verified census, summaries reported and never failed. It excludes any verdict on any individual strict reading and any statement about any sign's meaning. This claim is filed only on a pilot pass; on a failure the pilot record carries the design's closure word and this claim is not filed.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The M13 design draft (method M13 of the advance-to-decipherment plan, drafted 2026-10-26 as iteration 1 of the projected-constraint move's iteration loop): the bridge redesign \u2014 a two-axis (distributional + functional) pair-form vocabulary, coding rules NC-1 to NC-8, the successor assumption A-FACE-2 filed as draft claim D-M13-C01, worked re-codings of M002, M342 and M347 from the preserved Spec 076 pilot record, and the successor pilot of its section 7 (step-0 re-verification gate, inherited step-2 standing, step 3-prime blind positive control at pre-committed bars). SHA-256 8bb02c07a8ad3245a899da660c48430b4cf1e16a53b1fb53a132215093e9a211.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "2026-10-26-spec-draft-m13-projected-constraint-bridge-redesign.md (programme goal record, files/)",
+     "source_id": "m13 design draft (2026-10-26, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "owner freeze order (2026-10-26)"
+     ]
+    },
+    {
+     "description": "The owner's order of 2026-10-26: review, freeze, and run the M13 pilot, the bars and design frozen at freeze time, a premise failure a halt-and-report rather than an invitation to adjust.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "programme goal record (owner order, 2026-10-26)",
+     "source_id": "owner freeze order (2026-10-26)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "m13 design draft (2026-10-26, goal record)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "a total failure count above 3, either line above 2, a pattern finding under FF-078-4, or an administrability count below 25 falsifies this claim and closes the pilot under the section 7.4 closure words"
+   ],
+   "id": "F078-C02",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "m13-design",
+     "owner-order"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which the bar was fitted to a recount of the strict core under the new rules \u2014 no such recount exists at design or freeze time: the only bases coded under NC-1 to NC-8 are the three worked examples, which are excluded from the count",
+    "verdict_rule": "judged by the pilot run exactly as frozen in section 7; the bars are not movable after the freeze for any reason"
+   },
+   "status": "draft",
+   "text": "The bridge holds at the pre-committed bar: coded blind under NC-1 to NC-8, the strict core's checkable claims fail their own kinds' standards at most 3 times among the counted population, with neither line above 2 and no pattern, and at least 25 of the 86 counted signs yield at least one checkable claim (filed only if the successor pilot passes)."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "The scope is the register of section 8 under the two-axis vocabulary of section 3. It excludes any claim that the pair form exhausts what basis language can say in general: D-M13-C01's residue falsifier (F078-C06) is the standing test of exactly that, and a residue case produced on the record falsifies the pair jointly. The claim as drafted states the proposition in full: no entry or coded claim produced by this machinery falls outside the triple form.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The M13 design draft (method M13 of the advance-to-decipherment plan, drafted 2026-10-26 as iteration 1 of the projected-constraint move's iteration loop): the bridge redesign \u2014 a two-axis (distributional + functional) pair-form vocabulary, coding rules NC-1 to NC-8, the successor assumption A-FACE-2 filed as draft claim D-M13-C01, worked re-codings of M002, M342 and M347 from the preserved Spec 076 pilot record, and the successor pilot of its section 7 (step-0 re-verification gate, inherited step-2 standing, step 3-prime blind positive control at pre-committed bars). SHA-256 8bb02c07a8ad3245a899da660c48430b4cf1e16a53b1fb53a132215093e9a211.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "2026-10-26-spec-draft-m13-projected-constraint-bridge-redesign.md (programme goal record, files/)",
+     "source_id": "m13 design draft (2026-10-26, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "owner freeze order (2026-10-26)"
+     ]
+    },
+    {
+     "description": "The inherited census, re-derived at this freeze by the freeze worker from the named pins (and independently for the C2 record): 2,906 records to 11,507 tokens (680 placeholder + 452 marked tokens dropped); 5,883 strict tokens; slot totals init 2,655 / fin 2,655 / solo 225 / med 5,972; finals partition strict 1,707 / pending 250 / anchored-other 520 / no-anchor 178, summing to 2,655; 677 (sign, type) exclusions over the 122 no-anchor signs; solo-only set of 13 signs; slot base rates init 0.2307 / fin 0.2307 / med 0.5190 / solo 0.0196; counted population 86 (94 strict minus 5 frame-absent minus 3 worked examples). Every figure equals the Spec 076 pilot record's steps 0-1 values.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "specs/078-projected-constraint-bridge-redesign/spec.md sections 5-6; specs/076-projected-constraint-corpus-model pilot record steps 0-1 (programme record)",
+     "source_id": "spec-078 freeze derivation + spec-076 pilot record",
+     "source_quality": "artifact",
+     "independent_of": [
+      "m13 design draft (2026-10-26, goal record)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "a derived constraint or a basis assertion the pair form cannot state, produced on the record, falsifies this claim; the vocabulary is then extended as a new claim and prior entries re-derived, never translated by hand"
+   ],
+   "id": "F078-C03",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "m13-design",
+     "spec078-census"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which an awkward basis assertion is quietly forced into the nearest component instead of falsifying the vocabulary",
+    "verdict_rule": "judged over the filed register and the pilot's coding file: every entry's and coding's statement form is inspected against the triple form"
+   },
+   "status": "draft",
+   "text": "The pair form suffices to state the register: every register entry and every coded claim the successor machinery produces is expressible as a section 8.1 triple \u2014 a distributional possibility set, a functional possibility set with anchor counts, and a claims ledger \u2014 without residue."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "The scope is every register entry of this spec. It excludes inscriptions the frame excludes and any cross-frame transfer at Tier C. The claim as drafted states the proposition in full: frame-relativity is a property of every filed necessity, stated on its face. Inherited verbatim from Spec 076 (F076-C04), where it stood in the assumption set the 076 pilot did not falsify.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The pinned inputs as verified first-hand at this freeze from repo main: corpus export glossa-corpus/indus/exports/indus_research.jsonl SHA-256 08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e (2,906 indusscript-m77 records); anchors backend/reports/INDUS_FINAL_ANCHORS.json SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569 (287 entries, 94 strict_sa_independent, 44 pending_non_sa_validation); Registry v2 data/crosswalks/canonical_sign_registry_v2.csv SHA-256 42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71 (1,013 rows).",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "glossa-corpus/indus/exports/indus_research.jsonl; backend/reports/INDUS_FINAL_ANCHORS.json; data/crosswalks/canonical_sign_registry_v2.csv",
+     "source_id": "pinned inputs (repo main, verified 2026-10-26)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "m13 design draft (2026-10-26, goal record)"
+     ]
+    },
+    {
+     "description": "The M13 design draft (method M13 of the advance-to-decipherment plan, drafted 2026-10-26 as iteration 1 of the projected-constraint move's iteration loop): the bridge redesign \u2014 a two-axis (distributional + functional) pair-form vocabulary, coding rules NC-1 to NC-8, the successor assumption A-FACE-2 filed as draft claim D-M13-C01, worked re-codings of M002, M342 and M347 from the preserved Spec 076 pilot record, and the successor pilot of its section 7 (step-0 re-verification gate, inherited step-2 standing, step 3-prime blind positive control at pre-committed bars). SHA-256 8bb02c07a8ad3245a899da660c48430b4cf1e16a53b1fb53a132215093e9a211.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "2026-10-26-spec-draft-m13-projected-constraint-bridge-redesign.md (programme goal record, files/)",
+     "source_id": "m13 design draft (2026-10-26, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "owner freeze order (2026-10-26)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "a register entry stated without its frame pin, or carried across a frame change without re-derivation, falsifies this claim"
+   ],
+   "id": "F078-C04",
+   "kind": "assumption",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec078-pins",
+     "m13-design"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which frame-relative necessities are quietly read as corpus-wide laws",
+    "verdict_rule": "judged by inspection of the filed register: every entry names its frame and pin"
+   },
+   "status": "draft",
+   "text": "A-FRAME: the pinned frame construction is the attested corpus for this register; a necessity binds completions of that frame's language-as-attested and is re-derived, not carried over, when the frame changes."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "The scope is positional labelling within the pilot frame, including the anchor positions of section 3.2 (TERM-FUNC to final, INIT-FUNC to initial, MED-FUNC to medial, SOLO-FUNC to solo), which inherit this convention. It excludes any claim about the historical reading direction of the script; the convention is fixed by this assumption and every positional statement inherits it. The claim as drafted states the proposition in full. Inherited verbatim from Spec 076 (F076-C05).",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The M13 design draft (method M13 of the advance-to-decipherment plan, drafted 2026-10-26 as iteration 1 of the projected-constraint move's iteration loop): the bridge redesign \u2014 a two-axis (distributional + functional) pair-form vocabulary, coding rules NC-1 to NC-8, the successor assumption A-FACE-2 filed as draft claim D-M13-C01, worked re-codings of M002, M342 and M347 from the preserved Spec 076 pilot record, and the successor pilot of its section 7 (step-0 re-verification gate, inherited step-2 standing, step 3-prime blind positive control at pre-committed bars). SHA-256 8bb02c07a8ad3245a899da660c48430b4cf1e16a53b1fb53a132215093e9a211.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "2026-10-26-spec-draft-m13-projected-constraint-bridge-redesign.md (programme goal record, files/)",
+     "source_id": "m13 design draft (2026-10-26, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "owner freeze order (2026-10-26)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "a register entry or pilot check whose positional labels do not follow the stored order under this convention falsifies this claim"
+   ],
+   "id": "F078-C05",
+   "kind": "assumption",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "m13-design"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which a within-frame convention is presented as a discovered fact about the script's reading direction",
+    "verdict_rule": "judged by the derivation's slot assignment and the pilot's anchor-share computation against the stored sequences"
+   },
+   "status": "draft",
+   "text": "A-DIR: the stored sequence order is the reading order for positional labels \u2014 initial is the first stored token, final the last, a one-token sequence's token is SOLO."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "The scope is the reading of basis statements and of any claim submitted to the register, under the coding rules NC-1 to NC-8 of spec section 5. It replaces A-FACE (Spec 076, F076-C06), which stands falsified inside the closed Spec 076 assumption set and is not inherited; the replacement is prospective only and edits no 076 record. The claim as drafted states the proposition in full, with its two named deaths stated in its falsification tests.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The M13 design draft (method M13 of the advance-to-decipherment plan, drafted 2026-10-26 as iteration 1 of the projected-constraint move's iteration loop): the bridge redesign \u2014 a two-axis (distributional + functional) pair-form vocabulary, coding rules NC-1 to NC-8, the successor assumption A-FACE-2 filed as draft claim D-M13-C01, worked re-codings of M002, M342 and M347 from the preserved Spec 076 pilot record, and the successor pilot of its section 7 (step-0 re-verification gate, inherited step-2 standing, step 3-prime blind positive control at pre-committed bars). SHA-256 8bb02c07a8ad3245a899da660c48430b4cf1e16a53b1fb53a132215093e9a211.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "2026-10-26-spec-draft-m13-projected-constraint-bridge-redesign.md (programme goal record, files/)",
+     "source_id": "m13 design draft (2026-10-26, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "owner freeze order (2026-10-26)"
+     ]
+    },
+    {
+     "description": "The Spec 076 pilot record (executed 2026-10-26, once, exactly as frozen; freeze digest 83259ed3d3a20189e5c22e4645d26452c9c3b79a60348b3f5c38b8405addde9a): step 0 and step 1 passed exactly; both step-2 shuffle bars passed by wide margins (U2 finals residual 178 against a null 5th percentile of 395.0; solo-only count 13 against a null 95th percentile of 5.0; B = 999, seed 20261026, empirical fraction 0.000 on both statistics); step 3 excluded 36 of 89 frame-attested claimed types against a bar of at most 5, closing the pilot ASSUMPTION SET DOES NOT HOLD, with F076-C02 not filed and no register produced. SHA-256 837b4760a0f9d21e9a9a9b2ce5cea821446010d7fb3729f7ca877fd205e377b6.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "2026-10-26-m12-pilot-record.md (programme goal record, files/)",
+     "source_id": "spec-076 pilot record (2026-10-26, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "m13 design draft (2026-10-26, goal record)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "the residue case: a basis statement in the strict core, or a claim in any future completion submitted to the register, whose positional or functional content demonstrably cannot be assigned a strength by section 5's decision procedure without residue, falsifies this claim as stated",
+    "the pattern-mode pilot failure: the successor pilot failing with its failures concentrated in one coding family under FF-078-4 falsifies this claim with the pilot's closure word"
+   ],
+   "id": "F078-C06",
+   "kind": "assumption",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "m13-design",
+     "spec076-pilot"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which A-FACE-2 is A-FACE with softer enforcement \u2014 a licence to re-read a falsified universal as really a summary, or a summary as really a law when it happens to survive; the anti-retreat clause exists to bar exactly that",
+    "verdict_rule": "judged by the pilot record: every coding applied NC-1 to NC-8 as frozen, every ambiguity recorded verbatim, and no claim re-stated at a different strength after the census was consulted"
+   },
+   "status": "draft",
+   "text": "A-FACE-2: a claim binds its maker at the strength at which it is stated, and at no other strength \u2014 universal positional language binds universally as a distributional type-claim, functional language binds functionally to its anchor-attestation commitment and to nothing distributional beyond it, and summary language binds as a statement about the sample it names, transferring to no other frame; no claim may be strengthened or weakened after the census is consulted."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "The scope is keying in this spec. It excludes adjudicating the 13 collisions (future registry work, per Spec 073) and excludes any cross-frame derivation in the pilot. The claim as drafted states the proposition in full, carrying Spec 076's FF-4 clarification of where the ambiguity lives (the cross-scheme join surface), with the register flagging the attested members (002, 050, 064, 076, 099, 103, 161, 167, 168, 199, 216, 264, 409 where attested). Inherited from Spec 076 (F076-C07) unchanged in substance.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 073's keying-surface accounting (2026-10-25): 13 Mahadevan ids are claimed by two Parpola-keyed registry rows each (M002, M050, M064, M076, M099, M103, M161, M167, M168, M199, M216, M264, M409), and any future spec keying through mahadevan_ids must resolve these first, on the record.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "specs/073-keying-surface-repair/keying-surface-accounting-2026-10-25.md",
+     "source_id": "spec-073 keying-surface accounting (2026-10-25)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "m13 design draft (2026-10-26, goal record)"
+     ]
+    },
+    {
+     "description": "The pinned inputs as verified first-hand at this freeze from repo main: corpus export glossa-corpus/indus/exports/indus_research.jsonl SHA-256 08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e (2,906 indusscript-m77 records); anchors backend/reports/INDUS_FINAL_ANCHORS.json SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569 (287 entries, 94 strict_sa_independent, 44 pending_non_sa_validation); Registry v2 data/crosswalks/canonical_sign_registry_v2.csv SHA-256 42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71 (1,013 rows).",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "glossa-corpus/indus/exports/indus_research.jsonl; backend/reports/INDUS_FINAL_ANCHORS.json; data/crosswalks/canonical_sign_registry_v2.csv",
+     "source_id": "pinned inputs (repo main, verified 2026-10-26)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "m13 design draft (2026-10-26, goal record)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "a pilot derivation that joins through mahadevan_ids, or a register entry for an attested member of the 13 without its join-ambiguity flag, falsifies this claim"
+   ],
+   "id": "F078-C07",
+   "kind": "assumption",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec073-accounting",
+     "spec078-pins"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which a join-surface collision silently excludes frame rows the frame itself never joined, or silently passes unflagged into cross-frame use",
+    "verdict_rule": "judged by inspection of the derivation (no mahadevan_ids join) and of the filed register (flags present)"
+   },
+   "status": "draft",
+   "text": "A-KEY: Registry v2 is the identity relation between frames and witnesses; the 13 duplicated Mahadevan ids of Spec 073's accounting are ambiguous for joins through mahadevan_ids until resolved on the record; the pilot frame performs no such join, so no pilot-frame row is excluded and attested members of the 13 carry a join-ambiguity flag."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "The scope is the successor pilot's step 3-prime: the 94 strict signs of the anchors file, coded from reading + basis texts only under the blindness protocol of FF-078-3; the 5 frame-absent strict signs are coded and reported on their own line under NC-8 and enter neither the count nor its denominator; the 3 worked examples (M002, M342, M347) are coded like all others but excluded from the count and reported on their own line. It excludes any verdict on any individual strict reading. The claim as drafted states the proposition in full: the calibration is a property of the bridge against the knowns, reported as counts, never rounded to a pass adjective.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The M13 design draft (method M13 of the advance-to-decipherment plan, drafted 2026-10-26 as iteration 1 of the projected-constraint move's iteration loop): the bridge redesign \u2014 a two-axis (distributional + functional) pair-form vocabulary, coding rules NC-1 to NC-8, the successor assumption A-FACE-2 filed as draft claim D-M13-C01, worked re-codings of M002, M342 and M347 from the preserved Spec 076 pilot record, and the successor pilot of its section 7 (step-0 re-verification gate, inherited step-2 standing, step 3-prime blind positive control at pre-committed bars). SHA-256 8bb02c07a8ad3245a899da660c48430b4cf1e16a53b1fb53a132215093e9a211.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "2026-10-26-spec-draft-m13-projected-constraint-bridge-redesign.md (programme goal record, files/)",
+     "source_id": "m13 design draft (2026-10-26, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "owner freeze order (2026-10-26)"
+     ]
+    },
+    {
+     "description": "The pinned inputs as verified first-hand at this freeze from repo main: corpus export glossa-corpus/indus/exports/indus_research.jsonl SHA-256 08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e (2,906 indusscript-m77 records); anchors backend/reports/INDUS_FINAL_ANCHORS.json SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569 (287 entries, 94 strict_sa_independent, 44 pending_non_sa_validation); Registry v2 data/crosswalks/canonical_sign_registry_v2.csv SHA-256 42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71 (1,013 rows).",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "glossa-corpus/indus/exports/indus_research.jsonl; backend/reports/INDUS_FINAL_ANCHORS.json; data/crosswalks/canonical_sign_registry_v2.csv",
+     "source_id": "pinned inputs (repo main, verified 2026-10-26)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "m13 design draft (2026-10-26, goal record)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "a blind-coded failure count above 3 among the counted population, either line above 2, a pattern finding under FF-078-4, or fewer than 25 counted signs yielding a checkable claim falsifies this claim and closes the pilot under the section 7.4 closure words"
+   ],
+   "id": "F078-C08",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "m13-design",
+     "spec078-pins"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which the coding is steered \u2014 by sight of the census rows, of the 076 pilot's per-sign rows, or of the design draft's section 6 codings, or by charitable rule-bending \u2014 so the control cannot fail; NC-7's weaker-strength rule is the named temptation, and the administrability floor and the pattern clause are the frozen counters to it",
+    "verdict_rule": "judged by the pilot record: the coding was produced blind under FF-078-3, under NC-1 to NC-8 as frozen, and the counts are as they fall"
+   },
+   "status": "draft",
+   "text": "Pilot calibration: coded blind under the frozen rules NC-1 to NC-8, the counted population's checkable claims fail their own kinds' standards at most 3 times in total with neither line above 2 and no pattern, and at least 25 of the 86 counted signs yield at least one checkable claim; a worse outcome closes the pilot under the section 7.4 closure words and indicts the bridge \u2014 the vocabulary, the coding rules, or A-FACE-2 \u2014 before the strict core."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "The scope is every output of this spec, including any register a pass would license. It excludes scoring, promoting, or demoting any reading (M4's gate is untouched) and excludes any witness act (M7's attack remains M7's). The functional half of an entry never excludes a completion by itself: over function the register can only record EXCLUDED for a distributional claim, UNSUPPORTED-BY-ATTESTATION for a functional claim whose anchor is attested in no programme frame, and a summary as a summary. The claim as drafted states the proposition in full.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The M13 design draft (method M13 of the advance-to-decipherment plan, drafted 2026-10-26 as iteration 1 of the projected-constraint move's iteration loop): the bridge redesign \u2014 a two-axis (distributional + functional) pair-form vocabulary, coding rules NC-1 to NC-8, the successor assumption A-FACE-2 filed as draft claim D-M13-C01, worked re-codings of M002, M342 and M347 from the preserved Spec 076 pilot record, and the successor pilot of its section 7 (step-0 re-verification gate, inherited step-2 standing, step 3-prime blind positive control at pre-committed bars). SHA-256 8bb02c07a8ad3245a899da660c48430b4cf1e16a53b1fb53a132215093e9a211.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "2026-10-26-spec-draft-m13-projected-constraint-bridge-redesign.md (programme goal record, files/)",
+     "source_id": "m13 design draft (2026-10-26, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "owner freeze order (2026-10-26)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "an output of this spec stating a set identity on either axis ('sign x is final-only', 'sign x is a suffix'), a coherence verdict filed as a register entry, a likelihood ranking of readings, or a tendency cited as a necessity, falsifies this claim and is recorded as a defect of the output"
+   ],
+   "id": "F078-C09",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "m13-design"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which a possibility set is summarised to its most likely member, or the pilot's calibration statistic is quoted downstream as a finding about a sign, in any headline, abstract, or downstream citation",
+    "verdict_rule": "judged by inspection of every filed output against this boundary"
+   },
+   "status": "draft",
+   "text": "Output discipline: a register entry is a triple (distributional possibility set, functional possibility set with anchor counts, claims ledger); the register records distributional set membership and functional attested support, never identity on either axis; the pilot's anchor-share coherence statistic never enters a register entry; the resolution-value ranking feeds M4 as ordering only and M7 as bounds only; tendencies are recorded, if at all, in a separate annex and are never upgraded to necessities at any sample size."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "The scope is every statement made under this spec, in the repo and in programme reporting. It excludes no evidence and no future spec; it bounds this spec's own voice. The claim as drafted states the proposition in full: the standing position of the programme is unchanged by anything in this spec or its pilot.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The M13 design draft (method M13 of the advance-to-decipherment plan, drafted 2026-10-26 as iteration 1 of the projected-constraint move's iteration loop): the bridge redesign \u2014 a two-axis (distributional + functional) pair-form vocabulary, coding rules NC-1 to NC-8, the successor assumption A-FACE-2 filed as draft claim D-M13-C01, worked re-codings of M002, M342 and M347 from the preserved Spec 076 pilot record, and the successor pilot of its section 7 (step-0 re-verification gate, inherited step-2 standing, step 3-prime blind positive control at pre-committed bars). SHA-256 8bb02c07a8ad3245a899da660c48430b4cf1e16a53b1fb53a132215093e9a211.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "2026-10-26-spec-draft-m13-projected-constraint-bridge-redesign.md (programme goal record, files/)",
+     "source_id": "m13 design draft (2026-10-26, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "owner freeze order (2026-10-26)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "any statement under this spec claiming a reading, an identification, a completion's existence, a register where the pilot has not passed, or decipherment falsifies this claim"
+   ],
+   "id": "F078-C10",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "m13-design"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which narrowing a possibility space, or repairing the bridge that carries claims into it, is reported as reading what remains in it",
+    "verdict_rule": "judged by inspection of every filed output and report against this boundary"
+   },
+   "status": "draft",
+   "text": "The non-claims: this spec claims no reading, value, or identification for any sign; not that any completion exists; nothing about signs in frames not derived; nothing positional about the 24 frame-absent signs (the register's silence there is filed, not filled); that no register exists unless the successor pilot passes; and not decipherment in any wording \u2014 the script is not deciphered."
+  }
+ ],
+ "note": "Register drafted directly in the recovered (0.7) register form used by Specs 074/075/076's registers: every claim carries text / boundary / evidence / falsification_tests / kind / status, and metadata carrying boundary_confirmation, evidence_origin_groups, forbidden_assumptions, framework_kind, layer, strongest_rival, verdict_rule; every evidence item carries independent_of naming the other sources cited in the same claim. Assumptions referenced by id and defined here: ASM-APPEND-ONLY = programme records are append-only; frozen, closed, and retired records are read under their pins and never edited; a freeze's completions of its design are stated in the spec and ruled in the adjudication, never introduced silently. The register carries the M13 design's claims D-M13-C04/C02/C03 as F078-C01/C02/C03, its successor assumption A-FACE-2 (D-M13-C01) as F078-C06, the inherited assumptions A-FRAME/A-DIR/A-KEY as F078-C04/C05/C07, the successor pilot's calibration as F078-C08, and the design's output discipline and non-claims as F078-C09/C10. A-FACE (076 form) is not carried: it stands falsified inside the closed Spec 076 assumption set. F078-C02 is pilot-gated: it is filed as a supported claim only if the successor pilot passes; at this freeze it stands draft like the rest. Status values use the verified vocabulary of the adjacent registers (draft / supported / contradicted / untested / in question / partially supported); at this freeze every claim is draft. The evaluator-side verdict on this register at the freeze is recorded in the freeze record, not here; the draft cap of the evaluator's FR-2.3 (claims in draft cap at 0.70) applies to every claim until an execution adjudicates them.",
+ "register_version": "0.7-draft",
+ "spec": "078-projected-constraint-bridge-redesign"
+}

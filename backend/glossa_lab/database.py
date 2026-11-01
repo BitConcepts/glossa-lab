@@ -16,9 +16,21 @@ import aiosqlite
 
 logger = logging.getLogger(__name__)
 
+
+def _stamp_to_json(value: Any, fallback: Any = "") -> str:
+    """Serialize an attribution stamp (Spec 083 T023) for storage.
+
+    Stamps are stored as JSON text (or '' for "no cloud actor");
+    ``_row_to_dict`` parses them back to dicts on read.
+    """
+    chosen = value if value is not None else fallback
+    if isinstance(chosen, str):
+        return chosen
+    return json.dumps(chosen or "")
+
 # Increment this when adding a new _SCHEMA_Vn block below.
 # _apply_schema will raise if the DB is somehow ahead of the code.
-_SCHEMA_VERSION = 23
+_SCHEMA_VERSION = 27
 
 _SCHEMA_V1 = """
 CREATE TABLE IF NOT EXISTS _schema_version (
@@ -795,6 +807,91 @@ class Database:
             await self._conn.execute("UPDATE _schema_version SET version = ?", (23,))
             current_version = 23
 
+        if current_version < 24:
+            # Spec 081: a project (a "program" in UI language) carries the
+            # question it tests — shown on the program home and in the
+            # program switcher. Additive only; existing rows default to ''.
+            try:
+                await self._conn.execute(
+                    "ALTER TABLE projects ADD COLUMN question TEXT NOT NULL DEFAULT ''"
+                )
+            except Exception:  # noqa: BLE001
+                pass  # column may already exist
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (24,))
+            current_version = 24
+
+        if current_version < 25:
+            # Spec 081 Amendment 2 (D2.2 refinement): a project also carries
+            # its standing position — the program's lead verdict line,
+            # rendered on the program home as program data (never a shell
+            # constant). Additive only; existing rows default to '' (no
+            # position stated), and the seeder backfills the default
+            # program's position where its record is still empty.
+            try:
+                await self._conn.execute(
+                    "ALTER TABLE projects ADD COLUMN standing_position TEXT NOT NULL DEFAULT ''"
+                )
+            except Exception:  # noqa: BLE001
+                pass  # column may already exist
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (25,))
+            current_version = 25
+
+        if current_version < 26:
+            # Spec 083 (Step 2, T018/T023): a project — the workspace —
+            # carries its workspace ``slug`` (its identity for cloud
+            # scope; backfilled from the label/id, with the primary
+            # workspace pinned to ``indus-script``) and additive
+            # attribution stamps. Hypotheses, notebooks and citations
+            # gain ``created_by`` / ``modified_by`` stamps the same
+            # way. All additive; existing rows default to '' (no cloud
+            # actor — they render as "via desktop import").
+            for _stmt in (
+                "ALTER TABLE projects ADD COLUMN slug TEXT NOT NULL DEFAULT ''",
+                "ALTER TABLE projects ADD COLUMN created_by TEXT NOT NULL DEFAULT ''",
+                "ALTER TABLE projects ADD COLUMN modified_by TEXT NOT NULL DEFAULT ''",
+                "ALTER TABLE hypotheses ADD COLUMN created_by TEXT NOT NULL DEFAULT ''",
+                "ALTER TABLE hypotheses ADD COLUMN modified_by TEXT NOT NULL DEFAULT ''",
+                "ALTER TABLE notebooks ADD COLUMN created_by TEXT NOT NULL DEFAULT ''",
+                "ALTER TABLE notebooks ADD COLUMN modified_by TEXT NOT NULL DEFAULT ''",
+                "ALTER TABLE citations ADD COLUMN created_by TEXT NOT NULL DEFAULT ''",
+                "ALTER TABLE citations ADD COLUMN modified_by TEXT NOT NULL DEFAULT ''",
+            ):
+                try:
+                    await self._conn.execute(_stmt)
+                except Exception:  # noqa: BLE001
+                    pass  # column may already exist
+            # Backfill project slugs for rows that predate the column.
+            from glossa_lab.cloud_scope import project_slug  # noqa: PLC0415
+
+            _cursor = await self._conn.execute(
+                "SELECT id, label, slug FROM projects WHERE slug = ''"
+            )
+            for _row in await _cursor.fetchall():
+                _slug = project_slug(
+                    {"id": _row["id"], "label": _row["label"], "slug": ""}
+                )
+                await self._conn.execute(
+                    "UPDATE projects SET slug = ? WHERE id = ?",
+                    (_slug, _row["id"]),
+                )
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (26,))
+            current_version = 26
+
+        if current_version < 27:
+            # Spec 083 (Step 3, T027): jobs gain the same additive
+            # ``created_by`` attribution stamp the Step 2 entities
+            # carry, so the Jobs screen can render "Started by" from a
+            # real record. Existing rows default to '' (no cloud
+            # actor — they render as "via desktop import").
+            try:
+                await self._conn.execute(
+                    "ALTER TABLE jobs ADD COLUMN created_by TEXT NOT NULL DEFAULT ''"
+                )
+            except Exception:  # noqa: BLE001
+                pass  # column may already exist
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (27,))
+            current_version = 27
+
         if current_version > _SCHEMA_VERSION:
             logger.warning(
                 "DB schema version %s is ahead of code version %s",
@@ -813,6 +910,7 @@ class Database:
         params: dict[str, Any] | None = None,
         created_at: str,
         initial_status: str = "pending",
+        created_by: Any = None,
     ) -> dict[str, Any]:
         assert self._conn
         job_id = uuid.uuid4().hex[:12]
@@ -821,9 +919,10 @@ class Database:
             "pending", "running", "completed", "failed", "cancelled"
         ) else "pending"
         await self._conn.execute(
-            """INSERT INTO jobs (id, name, pipeline, status, params, created_at, updated_at)
-               VALUES (?, ?, ?, ?, ?, ?, ?)""",
-            (job_id, name, pipeline, safe_status, params_json, created_at, created_at),
+            """INSERT INTO jobs (id, name, pipeline, status, params, created_at, updated_at, created_by)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
+            (job_id, name, pipeline, safe_status, params_json, created_at, created_at,
+             _stamp_to_json(created_by)),
         )
         await self._conn.commit()
         return await self.get_job(job_id)  # type: ignore[return-value]
@@ -1192,14 +1291,16 @@ class Database:
         status: str = "active",
         project_id: str = "",
         created_at: str,
+        created_by: Any = None,
     ) -> dict[str, Any]:
         assert self._conn
         hid = uuid.uuid4().hex[:12]
         await self._conn.execute(  # noqa: E501
             """INSERT INTO hypotheses
-               (id,title,statement,status,evidence,study_ids,exp_ids,project_id,created_at,updated_at)
-               VALUES (?,?,?,?,?,?,?,?,?,?)""",
-            (hid, title, statement, status, "[]", "[]", "[]", project_id, created_at, created_at),
+               (id,title,statement,status,evidence,study_ids,exp_ids,project_id,created_at,updated_at,created_by)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?)""",
+            (hid, title, statement, status, "[]", "[]", "[]", project_id, created_at, created_at,
+             _stamp_to_json(created_by)),
         )
         await self._conn.commit()
         return await self.get_hypothesis(hid)  # type: ignore[return-value]
@@ -1255,8 +1356,10 @@ class Database:
         )
         await self._conn.execute(
             """UPDATE hypotheses SET title=?,statement=?,status=?,evidence=?,study_ids=?,exp_ids=?,
-               updated_at=datetime('now') WHERE id=?""",
-            (title, statement, status, evidence, study_ids, exp_ids, hid),
+               modified_by=?, updated_at=datetime('now') WHERE id=?""",
+            (title, statement, status, evidence, study_ids, exp_ids,
+             _stamp_to_json(fields.get("modified_by"), existing.get("modified_by", "")),
+             hid),
         )
         await self._conn.commit()
         return await self.get_hypothesis(hid)
@@ -1281,13 +1384,15 @@ class Database:
         tags: list[str] | None = None,
         project_id: str = "",
         created_at: str,
+        created_by: Any = None,
     ) -> dict[str, Any]:
         assert self._conn
         nid = uuid.uuid4().hex[:12]
         await self._conn.execute(
-            """INSERT INTO notebooks (id,title,content,study_id,tags,project_id,created_at,updated_at)
-               VALUES (?,?,?,?,?,?,?,?)""",
-            (nid, title, content, study_id, json.dumps(tags or []), project_id, created_at, created_at),
+            """INSERT INTO notebooks (id,title,content,study_id,tags,project_id,created_at,updated_at,created_by)
+               VALUES (?,?,?,?,?,?,?,?,?)""",
+            (nid, title, content, study_id, json.dumps(tags or []), project_id, created_at, created_at,
+             _stamp_to_json(created_by)),
         )
         await self._conn.commit()
         return await self.get_notebook(nid)  # type: ignore[return-value]
@@ -1321,9 +1426,11 @@ class Database:
             json.dumps(fields["tags"]) if "tags" in fields else json.dumps(existing.get("tags", []))
         )
         await self._conn.execute(
-            """UPDATE notebooks SET title=?,content=?,study_id=?,tags=?,
+            """UPDATE notebooks SET title=?,content=?,study_id=?,tags=?,modified_by=?,
                updated_at=datetime('now') WHERE id=?""",
-            (title, content, study_id, tags, nid),
+            (title, content, study_id, tags,
+             _stamp_to_json(fields.get("modified_by"), existing.get("modified_by", "")),
+             nid),
         )
         await self._conn.commit()
         return await self.get_notebook(nid)
@@ -1353,13 +1460,14 @@ class Database:
         notes: str = "",
         project_id: str = "",
         created_at: str,
+        created_by: Any = None,
     ) -> dict[str, Any]:
         assert self._conn
         cid = uuid.uuid4().hex[:12]
         await self._conn.execute(
             """INSERT INTO citations
-               (id,key,title,authors,year,venue,doi,url,bibtex,exp_ids,study_ids,notes,project_id,created_at)
-               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+               (id,key,title,authors,year,venue,doi,url,bibtex,exp_ids,study_ids,notes,project_id,created_at,created_by)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
             (
                 cid,
                 key,
@@ -1375,6 +1483,7 @@ class Database:
                 notes,
                 project_id,
                 created_at,
+                _stamp_to_json(created_by),
             ),
         )
         await self._conn.commit()
@@ -1410,7 +1519,7 @@ class Database:
         )
         await self._conn.execute(
             """UPDATE citations SET title=?,authors=?,year=?,venue=?,doi=?,url=?,bibtex=?,
-               exp_ids=?,study_ids=?,notes=? WHERE id=?""",
+               exp_ids=?,study_ids=?,notes=?,modified_by=? WHERE id=?""",
             (
                 existing["title"],
                 existing["authors"],
@@ -1422,6 +1531,7 @@ class Database:
                 exp_ids,
                 study_ids,
                 existing["notes"],
+                _stamp_to_json(fields.get("modified_by"), existing.get("modified_by", "")),
                 cid,
             ),
         )
@@ -2408,13 +2518,30 @@ class Database:
         label: str,
         description: str = "",
         prompt_context: str = "",
+        question: str = "",
+        standing_position: str = "",
         topic_ids: list[str] | None = None,
         experiment_ids: list[str] | None = None,
         corpus_ids: list[str] | None = None,
         is_active: bool = False,
         created_at: str,
+        slug: str | None = None,
+        created_by: Any = None,
+        modified_by: Any = None,
     ) -> dict[str, Any]:
         assert self._conn
+        # Spec 083: preserve the workspace slug and the creation stamp
+        # across replace-style upserts (activation, seed backfills)
+        # unless the caller supplies new values.
+        existing = await self.get_project(project_id)
+        if slug is None:
+            slug = (existing or {}).get("slug") or None
+        if slug is None:
+            from glossa_lab.cloud_scope import project_slug  # noqa: PLC0415
+
+            slug = project_slug({"id": project_id, "label": label, "slug": ""})
+        if created_by is None:
+            created_by = (existing or {}).get("created_by", "")
         # Enforce single active
         if is_active:
             await self._conn.execute(
@@ -2422,16 +2549,20 @@ class Database:
             )
         await self._conn.execute(
             """INSERT OR REPLACE INTO projects
-               (id, label, description, prompt_context, topic_ids,
-                experiment_ids, corpus_ids, is_active, created_at, updated_at)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))""",
+               (id, label, description, prompt_context, question, standing_position, topic_ids,
+                experiment_ids, corpus_ids, is_active, created_at, updated_at,
+                slug, created_by, modified_by)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'), ?, ?, ?)""",
             (
-                project_id, label, description, prompt_context,
+                project_id, label, description, prompt_context, question, standing_position,
                 json.dumps(topic_ids or []),
                 json.dumps(experiment_ids or []),
                 json.dumps(corpus_ids or []),
                 1 if is_active else 0,
                 created_at,
+                slug,
+                _stamp_to_json(created_by),
+                _stamp_to_json(modified_by),
             ),
         )
         await self._conn.commit()
@@ -2945,6 +3076,8 @@ class Database:
             "topic_ids",     # projects / research_goals
             "experiment_ids", # projects
             "corpus_ids",    # projects
+            "created_by",    # Spec 083 attribution stamps (JSON)
+            "modified_by",   # Spec 083 attribution stamps (JSON)
             "available_models_json",  # provider_registry
             "raw_benchmarks_json",    # model_scores
         ):

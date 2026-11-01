@@ -163,3 +163,37 @@ def test_log_stream_content_type(client, tmp_path):
     assert resp.status_code == 200
     ct = resp.headers.get("content-type", "")
     assert "text/event-stream" in ct
+
+
+# ── Leg C hardening (C-09): frontend log write failures are visible ───────────
+
+def test_frontend_log_success(client, tmp_path):
+    """A successful FE log write returns ok=logged and lands in the file."""
+    log_file = tmp_path / "glossa.log"
+    log_file.write_text("", encoding="utf-8")
+    import glossa_lab.api.terminal as _t
+    with patch.object(_t, "_active_log_file", return_value=log_file):
+        resp = client.post("/api/v1/terminal/log/frontend", json={
+            "level": "ERROR", "message": "legc09-success-marker",
+            "source": "FE", "module": "frontend"})
+    assert resp.status_code == 200
+    assert resp.json() == {"ok": "logged"}
+    assert "legc09-success-marker" in log_file.read_text(encoding="utf-8")
+
+
+def test_frontend_log_write_failure_is_not_reported_as_logged(client, tmp_path):
+    """C-09: when the write fails, the response must say so (500 + ok=error),
+    not the unconditional {"ok": "logged"} the endpoint returned before."""
+    bad_file = tmp_path / "no-such-dir" / "glossa.log"
+    import glossa_lab.api.terminal as _t
+    # Point the log at a path whose parent is a regular file, so the
+    # mkdir/open fails even though the endpoint tries to create it.
+    blocker = tmp_path / "blocker"
+    blocker.write_text("x", encoding="utf-8")
+    bad_file = blocker / "glossa.log"
+    with patch.object(_t, "_active_log_file", return_value=bad_file):
+        resp = client.post("/api/v1/terminal/log/frontend", json={
+            "level": "ERROR", "message": "legc09-failure-marker",
+            "source": "FE", "module": "frontend"})
+    assert resp.status_code == 500
+    assert resp.json()["ok"] == "error"

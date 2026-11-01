@@ -1,0 +1,1091 @@
+{
+  "schema": "glossa-repair-dependency-map/1",
+  "generated": "2026-10-26",
+  "task": "WP1 dependency inventory (Glossa Lab external-audit repair program)",
+  "baseline": {
+    "audited_snapshot": "cc9ffeb4c8afe9ab4f8a42ccd6467c7bc0c90278",
+    "head": "d80dcb7c",
+    "head_vs_snapshot": "11 commits ahead; 50 changed files, all Spec 077 freeze/execution, Spec 078 (M13) freeze/pilot, and the M77 Table I record; none touches the audited defect sites (phase58/69/96, provenance_audit, phase48/109). Coordinator-verified; see baseline-and-dispositions.md.",
+    "code_revision_statement": "repo HEAD d80dcb7c (main); defect-site files unchanged since audited snapshot cc9ffeb4 — the 11-commit, 50-file HEAD-vs-snapshot compare touches none of them (coordinator-verified; see baseline-and-dispositions.md)"
+  },
+  "hash_method": "SHA-256 computed 2026-10-26 over the byte-verified staged copies in ~/workspace/glossa-run/repair-2026-10-26/work/ (data files) and ~/workspace/glossa-run/repair-2026-10-26/inspect/ (code inspection copies).",
+  "records": [
+    {
+      "id": "anchors_table",
+      "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
+      "sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+      "kind": "evidence_record",
+      "note": "Canonical anchor table: 287 entries (166 HIGH + 5 MEDIUM + 3 LOW + 113 CANDIDATE per its own by_confidence block)."
+    },
+    {
+      "id": "phase48_validation",
+      "path": "outputs/phase48_medium_validation.json",
+      "sha256": "96540ece728513886fbbe957d68e9eb25b10a824c1960e0cb9f25c5eabddad14",
+      "kind": "evidence_record",
+      "note": "Phase-48 medium-validation output: 30 tested, 30 promoted."
+    },
+    {
+      "id": "phase108_trails",
+      "path": "reports/phase108_anchor_trails.json",
+      "sha256": "c49334003e8c83dcab1a5707de278510f0dae35d729888c35c891f2ed7b5532a",
+      "kind": "evidence_record",
+      "note": "Per-anchor evidence trails assembled from in-repo sources only (spec 006 Step 1)."
+    },
+    {
+      "id": "phase108_register",
+      "path": "reports/phase108_provenance_register.json",
+      "sha256": "2b04fed49d50a2958776c80e74a64fffd024b827c7da182077a405ace23f6a25",
+      "kind": "evidence_record",
+      "note": "Provenance classification of all 287 anchors (spec 006 taxonomy)."
+    },
+    {
+      "id": "phase108_subset",
+      "path": "reports/phase108_subset_recomputation.json",
+      "sha256": "c10a276104b23afc7127f8a20021d09a18ffb23ed15c78f4cc76e95c3b723f0f",
+      "kind": "evidence_record",
+      "note": "Subset recomputation on pre-review sets (full H+M n=275; SA-independent n=198, all tiers)."
+    },
+    {
+      "id": "phase108_impact",
+      "path": "reports/phase108_impact_map.json",
+      "sha256": "0bc9d9e5beeffa740382c09633819d202354c527649f004822c6657148059076",
+      "kind": "evidence_record",
+      "note": "Circularity chains, claims map, headline map, foundation-check map (spec 006 Step 4)."
+    },
+    {
+      "id": "phase109_rebase",
+      "path": "reports/phase109_rebase.json",
+      "sha256": "b724c8708652e02c3904f4c4a4a8cc828442edc80dd11458b4c728a6e1828123",
+      "kind": "evidence_record",
+      "note": "Post-review headline quantities: strict set n=94; full H+M n=171. Its header tier split (LOW 112 / CANDIDATE 4) disagrees with the canonical table's own split (LOW 3 / CANDIDATE 113); total (287) and H+M (171) agree."
+    },
+    {
+      "id": "phase109_changes",
+      "path": "reports/phase109_change_register.json",
+      "sha256": "beb12d6539770be844cb3e9a88f23fa9c268a625bf6c17e49381b7911527f7fd",
+      "kind": "evidence_record",
+      "note": "Per-anchor Phase-109 change register (restores, keeps, demotions with before/after)."
+    },
+    {
+      "id": "crosswalk_v2",
+      "path": "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json",
+      "sha256": "3c54ed09b869a5046eb7e25d9e77accf25e552f17aadef95a4757a668739a7cb",
+      "kind": "evidence_record",
+      "note": "Crosswalk v2.1: 184 entries; file stats record 67 identity-inference-only entries and 113 attested by an independent in-repo source. PARENT RECORD for the dry-run invalidation."
+    },
+    {
+      "id": "cisi_corpus",
+      "path": "data/indus_cisi_corpus.json",
+      "sha256": "f9633c7045ad0a74fc0dff66164e24117b3f9de1850e0257d16f1b8505e314c1",
+      "kind": "artifact",
+      "note": "Staged CISI corpus data file (corpus frame for crosswalk work)."
+    },
+    {
+      "id": "spec006",
+      "path": "specs/006-anchor-provenance-audit/spec.md",
+      "sha256": "2bdf4bbf63216fc47f481016881ec8ae130c7429fc605e44c36c7210c2232898",
+      "kind": "specification",
+      "note": "Registered taxonomy and methods for the provenance audit; source of the existing lifecycle categories reused by this repair."
+    },
+    {
+      "id": "code_phase58",
+      "path": "backend/scripts/phase58_phonological_gap.py",
+      "sha256": "5df152d30097aae12fbeb8fde7900543e1b28a114494b60f587a20e1a879469f",
+      "kind": "code",
+      "note": "Defect site (WP2). Staged inspection copy hashed; repo path shown."
+    },
+    {
+      "id": "code_phase69",
+      "path": "backend/scripts/phase69_site_stratification.py",
+      "sha256": "95d4e4626668b4a10f196bc9e1279973a468d0405d90fb68a37aab8f34e01a26",
+      "kind": "code",
+      "note": "Defect site (WP3). Staged inspection copy hashed; repo path shown."
+    },
+    {
+      "id": "code_phase96",
+      "path": "backend/scripts/phase96_cisi_crosswalk.py",
+      "sha256": "af4c90a6d1e120ba7b66b5daadf0fd2f67d120d27a9375fc1bd592eabfab42f6",
+      "kind": "code",
+      "note": "Defect site (WP4). Staged inspection copy hashed; repo path shown."
+    },
+    {
+      "id": "code_phase48",
+      "path": "backend/scripts/phase48_medium_validation.py",
+      "sha256": "e7fa7c1793e5f1574352c1595efa0ba64fb41849cba9f95ede5d39528c260e4d",
+      "kind": "code",
+      "note": "Defect site (WP5). Staged inspection copy hashed; repo path shown."
+    },
+    {
+      "id": "code_provenance_audit",
+      "path": "backend/glossa_lab/pipelines/provenance_audit.py",
+      "sha256": "2fcc5ceb74d2f1ae24aa978fb0ad2233e62a3d66cd849f864922414eccc1222d",
+      "kind": "code",
+      "note": "Shared audit library: phonotactic_check, parpola_agreement, site_invariance. Staged inspection copy hashed; repo path shown."
+    },
+    {
+      "id": "code_phase109_rebase",
+      "path": "backend/scripts/phase109_step5_rebase.py",
+      "sha256": "b6fbf46807b58f4efc63c65a1b5b98643bcf8f96f8e9e9dc6a79dcd9a38e8b08",
+      "kind": "code",
+      "note": "Rebase driver; imports provenance_audit. Staged inspection copy hashed; repo path shown."
+    },
+    {
+      "id": "readme_staged",
+      "path": "README.md",
+      "sha256": "9685b256d43efa7260f4a052839c10bfb45e8561a0bdd9baeece89611f688825",
+      "kind": "display_surface",
+      "note": "Repo-root README as staged (byte-verified copy of HEAD). Line numbers below refer to this copy."
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "C-PHASE48-PROMOTIONS",
+      "claim": "30 MEDIUM candidates were promoted on Phase-48's three tests (30 tested, 30 promoted).",
+      "chain": "Phase48 promotions (WP5 audit target)",
+      "depends_on_records": [
+        "phase48_validation",
+        "code_phase48",
+        "anchors_table"
+      ],
+      "depends_on_claims": [],
+      "evidence_records": [
+        "outputs/phase48_medium_validation.json",
+        "backend/reports/INDUS_FINAL_ANCHORS.json"
+      ],
+      "source_passages": [
+        "outputs/phase48_medium_validation.json: n_medium_tested=30, n_promoted=30; per-sign details include test2_dedr 'too_short_pass' (e.g. M328) and test3_bigram 'char_not_in_lm—pass_by_default'",
+        "inspect/phase48_medium_validation.py: test_positional returns pass_by_default when no expectation exists; test_dedr returns 'too_short_pass' for readings under 2 normalized characters; test_bigram_consistency returns pass_by_default when the reading's character is absent from the language model or when no anchor neighbors are checkable"
+      ],
+      "artifacts": [
+        "outputs/phase48_medium_validation.json"
+      ],
+      "input_hashes": {
+        "outputs/phase48_medium_validation.json": "96540ece728513886fbbe957d68e9eb25b10a824c1960e0cb9f25c5eabddad14",
+        "backend/reports/INDUS_FINAL_ANCHORS.json": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569"
+      },
+      "run_environment": "phase48_medium_validation.json records gpu_device 'cuda'; the script's bigram test takes a different branch when torch is present, so CPU and accelerated runs are not the same method (WP5 acceptance item).",
+      "displayed_summaries": [],
+      "code_revisions": [
+        "repo HEAD d80dcb7c (main); defect-site files unchanged since audited snapshot cc9ffeb4 — the 11-commit, 50-file HEAD-vs-snapshot compare touches none of them (coordinator-verified; see baseline-and-dispositions.md)"
+      ]
+    },
+    {
+      "claim_id": "C-PROV108-CLASSIFICATION",
+      "claim": "All 287 anchors classified by provenance: GRAMMAR 163, DEDR 33, SA_DERIVED 24, SA_CONFIRMED_ONLY 20, LITERATURE 17, MIXED 15, ICONOGRAPHIC 12, CROSSWALK_CORPUS 3, FORMULA 0, UNTRACEABLE 0; 44 anchors carry SA in their chain.",
+      "chain": "Phase48 promotions → Phase108 provenance → retained tiers → 94 subset",
+      "depends_on_records": [
+        "phase108_trails",
+        "phase108_register",
+        "spec006",
+        "anchors_table"
+      ],
+      "depends_on_claims": [
+        "C-PHASE48-PROMOTIONS"
+      ],
+      "evidence_records": [
+        "reports/phase108_anchor_trails.json",
+        "reports/phase108_provenance_register.json",
+        "specs/006-anchor-provenance-audit/spec.md"
+      ],
+      "source_passages": [
+        "reports/phase108_provenance_register.json headline_counts.by_category (counts above); per-anchor records carry components with citations, e.g. M342 GRAMMAR via 'INDUS_FINAL_ANCHORS.json entry (+Phase48_validated)'",
+        "specs/006-anchor-provenance-audit/spec.md: pre-registered taxonomy and the SA-dependence test (SA_DERIVED or SA_CONFIRMED_ONLY)"
+      ],
+      "artifacts": [
+        "reports/phase108_provenance_register.json"
+      ],
+      "input_hashes": {
+        "reports/phase108_anchor_trails.json": "c49334003e8c83dcab1a5707de278510f0dae35d729888c35c891f2ed7b5532a",
+        "reports/phase108_provenance_register.json": "2b04fed49d50a2958776c80e74a64fffd024b827c7da182077a405ace23f6a25"
+      },
+      "run_environment": "phase108_provenance_register.json records gpu_device 'cpu (torch absent)'.",
+      "displayed_summaries": [
+        {
+          "surface": "README.md",
+          "location": "line 18 (Phase-109 re-base note)",
+          "text": "Phase-108 classified all 287 anchors by provenance: 44 HIGH anchors were SA-derived or SA-confirmed-only, and a 116-anchor cohort traced to research-loop heuristic tables promoted without validation."
+        }
+      ],
+      "code_revisions": [
+        "repo HEAD d80dcb7c (main); defect-site files unchanged since audited snapshot cc9ffeb4 — the 11-commit, 50-file HEAD-vs-snapshot compare touches none of them (coordinator-verified; see baseline-and-dispositions.md)"
+      ]
+    },
+    {
+      "claim_id": "C-RETAINED-TIERS",
+      "claim": "44 anchors (43 HIGH + 1 MEDIUM) are flagged pending_non_sa_validation and excluded from the strict set; the remaining H+M anchors form the retained tiers.",
+      "chain": "Phase48 promotions → Phase108 provenance → retained tiers → 94 subset",
+      "depends_on_records": [
+        "phase108_register",
+        "phase109_changes",
+        "anchors_table"
+      ],
+      "depends_on_claims": [
+        "C-PROV108-CLASSIFICATION"
+      ],
+      "evidence_records": [
+        "reports/phase108_provenance_register.json",
+        "reports/phase109_change_register.json"
+      ],
+      "source_passages": [
+        "README.md line 20 errata (2026-10-12): the flagged set numbers 44, of which 43 HIGH + 1 MEDIUM (the MEDIUM anchor is M293, re-reviewed HIGH → MEDIUM in Phase-109)",
+        "reports/phase109_change_register.json: per-anchor before/after entries for the Phase-109 review of the 116-anchor staging cohort"
+      ],
+      "artifacts": [
+        "reports/phase109_change_register.json"
+      ],
+      "input_hashes": {
+        "reports/phase109_change_register.json": "beb12d6539770be844cb3e9a88f23fa9c268a625bf6c17e49381b7911527f7fd"
+      },
+      "run_environment": "phase109_change_register.json records phase 109, spec specs/007-phase109-follow-through, date 2026-10-06; run environment beyond that is not recorded (unknown).",
+      "displayed_summaries": [
+        {
+          "surface": "README.md",
+          "location": "line 14 (status banner)",
+          "text": "44 further anchors (43 HIGH + 1 MEDIUM) flagged `pending_non_sa_validation` (SA-lineage provenance; excluded from the strict set)"
+        },
+        {
+          "surface": "README.md",
+          "location": "metrics table",
+          "text": "SA-lineage anchors pending validation | 44 flagged `pending_non_sa_validation` (43 HIGH + 1 MEDIUM; excluded from the strict set)"
+        }
+      ],
+      "code_revisions": [
+        "repo HEAD d80dcb7c (main); defect-site files unchanged since audited snapshot cc9ffeb4 — the 11-commit, 50-file HEAD-vs-snapshot compare touches none of them (coordinator-verified; see baseline-and-dispositions.md)"
+      ]
+    },
+    {
+      "claim_id": "C-94SET",
+      "claim": "94 strict SA-independent H+M candidate readings (90 HIGH + 4 MEDIUM): anchors whose recorded provenance chain contains no SA, restricted to H+M tiers of the post-review anchor table.",
+      "chain": "Phase48 promotions → Phase108 provenance → retained tiers → 94 subset",
+      "depends_on_records": [
+        "phase109_rebase",
+        "phase108_register",
+        "anchors_table"
+      ],
+      "depends_on_claims": [
+        "C-PROV108-CLASSIFICATION",
+        "C-RETAINED-TIERS"
+      ],
+      "evidence_records": [
+        "reports/phase109_rebase.json",
+        "reports/phase108_provenance_register.json",
+        "backend/reports/INDUS_FINAL_ANCHORS.json"
+      ],
+      "source_passages": [
+        "reports/phase109_rebase.json: strict_subset_tiers {HIGH: 90, MEDIUM: 4}; methods.strict_definition = 'register category not in (SA_DERIVED, SA_CONFIRMED_ONLY) and register sa_in_chain == false, restricted to H+M of the post-change anchors file'",
+        "specs/006-anchor-provenance-audit/spec.md Assumptions: 'SA-independent does not mean validated — it means the recorded chain never passed through the SA lineage.' Assignment to the set is a provenance statement, not an accuracy statement."
+      ],
+      "artifacts": [
+        "reports/phase109_rebase.json"
+      ],
+      "input_hashes": {
+        "reports/phase109_rebase.json": "b724c8708652e02c3904f4c4a4a8cc828442edc80dd11458b4c728a6e1828123",
+        "backend/reports/INDUS_FINAL_ANCHORS.json": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569"
+      },
+      "run_environment": "phase109_rebase.json records gpu_device 'cpu (torch absent)', date 2026-10-06.",
+      "displayed_summaries": [
+        {
+          "surface": "README.md",
+          "location": "line 14 (status banner)",
+          "text": "94 strict SA-independent H+M readings (90 HIGH + 4 MEDIUM)"
+        },
+        {
+          "surface": "README.md",
+          "location": "Indus Script Decipherment section + metrics table",
+          "text": "94 strict SA-independent H+M candidate readings (90 HIGH + 4 MEDIUM); table row 'Strict SA-independent H+M readings | 94 (90 HIGH + 4 MEDIUM)'"
+        }
+      ],
+      "code_revisions": [
+        "repo HEAD d80dcb7c (main); defect-site files unchanged since audited snapshot cc9ffeb4 — the 11-commit, 50-file HEAD-vs-snapshot compare touches none of them (coordinator-verified; see baseline-and-dispositions.md)"
+      ]
+    },
+    {
+      "claim_id": "C-COVERAGE-94",
+      "claim": "The 94-sign strict set covers 73.68% of Holdat IVS tokens (5,159 of 7,002). This is assignment coverage — the share of corpus tokens whose sign carries a candidate reading — not accuracy: it says nothing about whether the readings are correct.",
+      "chain": "Phase48 promotions → Phase108 provenance → retained tiers → 94 subset",
+      "depends_on_records": [
+        "phase109_rebase"
+      ],
+      "depends_on_claims": [
+        "C-94SET"
+      ],
+      "evidence_records": [
+        "reports/phase109_rebase.json"
+      ],
+      "source_passages": [
+        "reports/phase109_rebase.json sets.sa_independent_strict.coverage {n_tokens: 7002, n_covered: 5159, coverage: 0.736789}; methods.coverage = 'Holdat CSV token rows; covered iff sign in set'"
+      ],
+      "artifacts": [
+        "reports/phase109_rebase.json"
+      ],
+      "input_hashes": {
+        "reports/phase109_rebase.json": "b724c8708652e02c3904f4c4a4a8cc828442edc80dd11458b4c728a6e1828123"
+      },
+      "run_environment": "cpu (torch absent), per phase109_rebase.json.",
+      "displayed_summaries": [
+        {
+          "surface": "README.md",
+          "location": "line 14 (status banner)",
+          "text": "covering 73.68% of Holdat IVS tokens (5,159/7,002)"
+        },
+        {
+          "surface": "README.md",
+          "location": "metrics table",
+          "text": "Token coverage (strict set) | 73.68% (5,159/7,002 Holdat tokens)"
+        }
+      ],
+      "code_revisions": [
+        "repo HEAD d80dcb7c (main); defect-site files unchanged since audited snapshot cc9ffeb4 — the 11-commit, 50-file HEAD-vs-snapshot compare touches none of them (coordinator-verified; see baseline-and-dispositions.md)"
+      ]
+    },
+    {
+      "claim_id": "C-COVERAGE-FULL",
+      "claim": "The full post-review H+M set (171 readings) covers 92.19% of Holdat tokens (6,455 of 7,002). Assignment coverage, not accuracy (same distinction as C-COVERAGE-94).",
+      "chain": "Phase48 promotions → Phase108 provenance → retained tiers → 94 subset",
+      "depends_on_records": [
+        "phase109_rebase"
+      ],
+      "depends_on_claims": [
+        "C-RETAINED-TIERS"
+      ],
+      "evidence_records": [
+        "reports/phase109_rebase.json"
+      ],
+      "source_passages": [
+        "reports/phase109_rebase.json sets.full_hm.coverage {n_tokens: 7002, n_covered: 6455, coverage: 0.921879}"
+      ],
+      "artifacts": [
+        "reports/phase109_rebase.json"
+      ],
+      "input_hashes": {
+        "reports/phase109_rebase.json": "b724c8708652e02c3904f4c4a4a8cc828442edc80dd11458b4c728a6e1828123"
+      },
+      "run_environment": "cpu (torch absent), per phase109_rebase.json.",
+      "displayed_summaries": [
+        {
+          "surface": "README.md",
+          "location": "metrics table",
+          "text": "Full H+M set (post-review) | 171 readings; 92.19% token coverage (6,455/7,002)"
+        }
+      ],
+      "code_revisions": [
+        "repo HEAD d80dcb7c (main); defect-site files unchanged since audited snapshot cc9ffeb4 — the 11-commit, 50-file HEAD-vs-snapshot compare touches none of them (coordinator-verified; see baseline-and-dispositions.md)"
+      ]
+    },
+    {
+      "claim_id": "C-PHONO-0",
+      "claim": "0 Dravidian phonotactic violations in the strict set (and 0 in the full H+M set), as computed by Phase-58's checker reused through provenance_audit.phonotactic_check.",
+      "chain": "Phase58/69 → provenance_audit → Phase109 rebase → headline metrics",
+      "depends_on_records": [
+        "phase109_rebase",
+        "phase108_subset",
+        "code_phase58",
+        "code_provenance_audit"
+      ],
+      "depends_on_claims": [
+        "C-94SET"
+      ],
+      "evidence_records": [
+        "reports/phase109_rebase.json",
+        "reports/phase108_subset_recomputation.json"
+      ],
+      "source_passages": [
+        "reports/phase109_rebase.json sets.sa_independent_strict.phonotactics {n_readings_checked: 94, n_violations: 0}; sets.full_hm.phonotactics {n_readings_checked: 171, n_violations: 0}; methods.phonotactics = 'phase58 analyze_phoneme_inventory'",
+        "inspect/phase58_phonological_gap.py is_valid_dravidian_initial + analyze_phoneme_inventory: readings are reduced with re.sub(r'[^a-zāīūēō]', '', ...) before testing, which deletes the prohibited initial characters (ṭ ḍ ṇ ḷ ṟ ṉ) themselves; an input that reduces to nothing returns True ('can't check'); only the first segment before '/' and only the word-initial position are ever tested",
+        "inspect/provenance_audit.py phonotactic_check: reuses Phase-58's machinery by file-path import, so the defect propagates unchanged into the Phase-108 and Phase-109 quantities"
+      ],
+      "artifacts": [
+        "reports/phase109_rebase.json",
+        "reports/phase108_subset_recomputation.json"
+      ],
+      "input_hashes": {
+        "reports/phase109_rebase.json": "b724c8708652e02c3904f4c4a4a8cc828442edc80dd11458b4c728a6e1828123",
+        "reports/phase108_subset_recomputation.json": "c10a276104b23afc7127f8a20021d09a18ffb23ed15c78f4cc76e95c3b723f0f",
+        "backend/scripts/phase58_phonological_gap.py (inspection copy)": "5df152d30097aae12fbeb8fde7900543e1b28a114494b60f587a20e1a879469f"
+      },
+      "run_environment": "cpu (torch absent) for the Phase-108/109 recomputations, per their artifacts; the original Phase-58 run environment is not recorded in the staged files (unknown).",
+      "displayed_summaries": [
+        {
+          "surface": "README.md",
+          "location": "line 14 (status banner)",
+          "text": "0 Dravidian phonotactic violations"
+        },
+        {
+          "surface": "README.md",
+          "location": "metrics table",
+          "text": "Phonotactic violations (strict set) | 0"
+        }
+      ],
+      "code_revisions": [
+        "repo HEAD d80dcb7c (main); defect-site files unchanged since audited snapshot cc9ffeb4 — the 11-commit, 50-file HEAD-vs-snapshot compare touches none of them (coordinator-verified; see baseline-and-dispositions.md)"
+      ]
+    },
+    {
+      "claim_id": "C-SITEINV-6565",
+      "claim": "Grammar site-invariance: 65/65 tested signs invariant (strict set); 90/90 (full H+M), as computed by Phase-69's chi2_test reused through provenance_audit.site_invariance, counting a sign invariant when p >= 0.05.",
+      "chain": "Phase58/69 → provenance_audit → Phase109 rebase → headline metrics",
+      "depends_on_records": [
+        "phase109_rebase",
+        "phase108_subset",
+        "code_phase69",
+        "code_provenance_audit"
+      ],
+      "depends_on_claims": [
+        "C-94SET"
+      ],
+      "evidence_records": [
+        "reports/phase109_rebase.json",
+        "reports/phase108_subset_recomputation.json"
+      ],
+      "source_passages": [
+        "reports/phase109_rebase.json sets.sa_independent_strict.site_invariance {n_signs: 94, n_tested: 65, n_invariant: 65, n_variant: 0, n_insufficient_data: 29}; sets.full_hm.site_invariance {n_tested: 90, n_invariant: 90, n_insufficient_data: 81} — the untested remainder is not in the displayed denominators",
+        "inspect/phase69_site_stratification.py chi2_test: returns p = 0.0 outright when chi2 > 2*df and p = 1.0 outright when chi2 < 0.5, without computing a p-value; on any exception it returns p = 0.5; degrees of freedom are first accumulated per-cell and then overwritten",
+        "inspect/provenance_audit.py site_invariance: eligibility = per-site token total >= 3 in at least 2 sites; signs below that are counted as insufficient data, not as tested"
+      ],
+      "artifacts": [
+        "reports/phase109_rebase.json",
+        "reports/phase108_subset_recomputation.json"
+      ],
+      "input_hashes": {
+        "reports/phase109_rebase.json": "b724c8708652e02c3904f4c4a4a8cc828442edc80dd11458b4c728a6e1828123",
+        "reports/phase108_subset_recomputation.json": "c10a276104b23afc7127f8a20021d09a18ffb23ed15c78f4cc76e95c3b723f0f",
+        "backend/scripts/phase69_site_stratification.py (inspection copy)": "95d4e4626668b4a10f196bc9e1279973a468d0405d90fb68a37aab8f34e01a26"
+      },
+      "run_environment": "cpu (torch absent) for the Phase-108/109 recomputations; the original Phase-69 run environment is not recorded in the staged files (unknown).",
+      "displayed_summaries": [
+        {
+          "surface": "README.md",
+          "location": "line 14 (status banner)",
+          "text": "grammar site-invariance 65/65 tested signs"
+        },
+        {
+          "surface": "README.md",
+          "location": "metrics table",
+          "text": "Grammar site-invariance | 65/65 tested signs (strict set); 90/90 (full H+M)"
+        }
+      ],
+      "code_revisions": [
+        "repo HEAD d80dcb7c (main); defect-site files unchanged since audited snapshot cc9ffeb4 — the 11-commit, 50-file HEAD-vs-snapshot compare touches none of them (coordinator-verified; see baseline-and-dispositions.md)"
+      ]
+    },
+    {
+      "claim_id": "C-PARPOLA-81",
+      "claim": "Parpola agreement 81/81 on the strict set (81 compared, 81 agree), computed by provenance_audit.parpola_agreement as normalized first-segment equality between each anchor reading and the 'reading' field of crosswalk v2.1.",
+      "chain": "Phase96 crosswalk → Parpola agreement → KEEP/RESTORE chain",
+      "depends_on_records": [
+        "crosswalk_v2",
+        "phase109_rebase",
+        "phase108_subset",
+        "code_phase96",
+        "code_provenance_audit"
+      ],
+      "depends_on_claims": [
+        "C-94SET"
+      ],
+      "evidence_records": [
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json",
+        "reports/phase109_rebase.json"
+      ],
+      "source_passages": [
+        "reports/phase109_rebase.json sets.sa_independent_strict.parpola {n_compared: 81, n_agree: 81, rate: 1.0}; the same file's parpola_caveat: '67/184 crosswalk entries are identity-only, so the rate is partially tautological (Phase-108)'",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json stats: total_entries 184, n_identity_inference_only 67, n_attested_by_independent_inrepo_sources 113",
+        "inspect/phase96_cisi_crosswalk.py (main, entry construction): loads the anchor table and writes each new crosswalk entry's 'reading' from the anchor's own reading (anchor_info.get('reading')) — the field provenance_audit later treats as Parpola's reading",
+        "inspect/provenance_audit.py parpola_agreement + normalize_reading: lowercase, strip diacritics, first segment before '/', letters only; agree iff the two normalized first segments are equal"
+      ],
+      "artifacts": [
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json",
+        "reports/phase109_rebase.json"
+      ],
+      "input_hashes": {
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json": "3c54ed09b869a5046eb7e25d9e77accf25e552f17aadef95a4757a668739a7cb",
+        "reports/phase109_rebase.json": "b724c8708652e02c3904f4c4a4a8cc828442edc80dd11458b4c728a6e1828123",
+        "backend/scripts/phase96_cisi_crosswalk.py (inspection copy)": "af4c90a6d1e120ba7b66b5daadf0fd2f67d120d27a9375fc1bd592eabfab42f6"
+      },
+      "run_environment": "cpu (torch absent) for the Phase-108/109 recomputations; the Phase-96 crosswalk construction environment is not recorded in the staged files (unknown).",
+      "displayed_summaries": [
+        {
+          "surface": "README.md",
+          "location": "metrics table",
+          "text": "Parpola crosswalk comparison | 81/81 compared strict-set signs (crosswalk v2.1, Phase-108 method) — partially tautological (identity-only entries); not comparable to the retired 59% figure"
+        }
+      ],
+      "code_revisions": [
+        "repo HEAD d80dcb7c (main); defect-site files unchanged since audited snapshot cc9ffeb4 — the 11-commit, 50-file HEAD-vs-snapshot compare touches none of them (coordinator-verified; see baseline-and-dispositions.md)"
+      ]
+    },
+    {
+      "claim_id": "C-KEEP-RESTORE-109",
+      "claim": "Phase-109 re-review of the 116-anchor staging cohort: 112 prior sourced readings restored, 1 kept on Parpola crosswalk support, 3 demoted; M293, M362, M398 individually re-reviewed HIGH → MEDIUM.",
+      "chain": "Phase96 crosswalk → Parpola agreement → KEEP/RESTORE chain",
+      "depends_on_records": [
+        "phase109_changes",
+        "phase109_rebase",
+        "crosswalk_v2"
+      ],
+      "depends_on_claims": [
+        "C-PARPOLA-81",
+        "C-PROV108-CLASSIFICATION"
+      ],
+      "evidence_records": [
+        "reports/phase109_change_register.json",
+        "reports/phase109_rebase.json"
+      ],
+      "source_passages": [
+        "README.md line 18 (Phase-109 re-base note) states the 112 / 1 / 3 outcome and names the crosswalk as the support for the single kept anchor",
+        "reports/phase109_change_register.json: per-anchor entries with rule, action, and before/after (e.g. step1(c) demotions)"
+      ],
+      "artifacts": [
+        "reports/phase109_change_register.json"
+      ],
+      "input_hashes": {
+        "reports/phase109_change_register.json": "beb12d6539770be844cb3e9a88f23fa9c268a625bf6c17e49381b7911527f7fd",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json": "3c54ed09b869a5046eb7e25d9e77accf25e552f17aadef95a4757a668739a7cb"
+      },
+      "run_environment": "Not recorded in the change register beyond phase/spec/date (unknown).",
+      "displayed_summaries": [
+        {
+          "surface": "README.md",
+          "location": "line 18 (Phase-109 re-base note)",
+          "text": "Phase-109 re-reviewed that cohort under pre-registered rules (112 prior sourced readings restored, 1 kept on Parpola crosswalk support, 3 demoted)"
+        },
+        {
+          "surface": "README.md",
+          "location": "Current research status section",
+          "text": "Staging cohort re-reviewed (Phase-109): 116 research-loop-promoted anchors — 112 prior sourced readings restored, 1 kept on Parpola crosswalk support, 3 demoted; M293, M362, M398 individually re-reviewed (HIGH → MEDIUM each)"
+        }
+      ],
+      "code_revisions": [
+        "repo HEAD d80dcb7c (main); defect-site files unchanged since audited snapshot cc9ffeb4 — the 11-commit, 50-file HEAD-vs-snapshot compare touches none of them (coordinator-verified; see baseline-and-dispositions.md)"
+      ]
+    },
+    {
+      "claim_id": "C-FISH-ISOLATION",
+      "claim": "Fish-sign isolation: 0 isolated in the corpus population (0/113) and 0 isolated in the Gulf catalog population (0/27), displayed in the README pooled as 0/140.",
+      "chain": "README/UI metrics (descriptive census claim)",
+      "depends_on_records": [
+        "readme_staged"
+      ],
+      "depends_on_claims": [],
+      "evidence_records": [
+        "README.md (the staged README is the only staged file carrying this figure; the underlying per-population test artifact is not among the staged files)"
+      ],
+      "source_passages": [
+        "README.md line 14: 'Fish-sign isolation test: 0/140 isolated across all 9 sites and Gulf catalog'",
+        "README.md metrics table: 'Fish-sign isolation | 0/140 isolated (0/113 corpus + 0/27 Gulf)' — the row itself preserves the two component counts"
+      ],
+      "artifacts": [],
+      "input_hashes": {
+        "README.md": "9685b256d43efa7260f4a052839c10bfb45e8561a0bdd9baeece89611f688825"
+      },
+      "run_environment": "Not recorded in the staged files (unknown). The split counts are taken from the README's own table row; no new number is introduced by this repair.",
+      "displayed_summaries": [
+        {
+          "surface": "README.md",
+          "location": "line 14 (status banner)",
+          "text": "Fish-sign isolation test: 0/140 isolated across all 9 sites and Gulf catalog"
+        },
+        {
+          "surface": "README.md",
+          "location": "metrics table",
+          "text": "Fish-sign isolation | 0/140 isolated (0/113 corpus + 0/27 Gulf)"
+        },
+        {
+          "surface": "README.md",
+          "location": "Current research status section",
+          "text": "Fish-sign isolation test: 0/140 isolated across all 9 sites and Gulf deposit catalog"
+        }
+      ],
+      "code_revisions": [
+        "repo HEAD d80dcb7c (main); defect-site files unchanged since audited snapshot cc9ffeb4 — the 11-commit, 50-file HEAD-vs-snapshot compare touches none of them (coordinator-verified; see baseline-and-dispositions.md)"
+      ]
+    },
+    {
+      "claim_id": "C-GRAMMAR-Z",
+      "claim": "Three-slot positional grammar: z = 10.3, with 0 of 2,000 permutations exceeding the observed statistic; M267 reclassified as a genitive particle.",
+      "chain": "README headline (descriptive/structural result; no dependency on the WP2–WP4 defect sites in the staged record)",
+      "depends_on_records": [
+        "readme_staged"
+      ],
+      "depends_on_claims": [
+        "C-94SET"
+      ],
+      "evidence_records": [
+        "README.md (figure carried in the banner and status section; the producing phase artifact is not among the staged files)"
+      ],
+      "source_passages": [
+        "README.md line 14: 'M267 reclassified as genitive particle · 3-slot positional grammar z=10.3 (0/2000 permutations)'"
+      ],
+      "artifacts": [],
+      "input_hashes": {
+        "README.md": "9685b256d43efa7260f4a052839c10bfb45e8561a0bdd9baeece89611f688825"
+      },
+      "run_environment": "Not recorded in the staged files (unknown).",
+      "displayed_summaries": [
+        {
+          "surface": "README.md",
+          "location": "line 14 (status banner)",
+          "text": "3-slot positional grammar z=10.3 (0/2000 permutations)"
+        },
+        {
+          "surface": "README.md",
+          "location": "metrics table",
+          "text": "Positional grammar | z=10.3; 0/2000 permutations exceeded observed"
+        }
+      ],
+      "code_revisions": [
+        "repo HEAD d80dcb7c (main); defect-site files unchanged since audited snapshot cc9ffeb4 — the 11-commit, 50-file HEAD-vs-snapshot compare touches none of them (coordinator-verified; see baseline-and-dispositions.md)"
+      ]
+    },
+    {
+      "claim_id": "C-SEAL-COVERAGE-RETIRED",
+      "claim": "Seal coverage 69.8% (1,165/1,670 seals fully covered), labeled in the README itself as Phase-170, computed on the retired 161-anchor set.",
+      "chain": "README/UI metrics → retired basis",
+      "depends_on_records": [
+        "readme_staged"
+      ],
+      "depends_on_claims": [],
+      "evidence_records": [
+        "README.md metrics table (self-labeled retired basis)"
+      ],
+      "source_passages": [
+        "README.md metrics table row: 'Seal coverage | 69.8% (1,165/1,670 seals fully covered) — Phase-170, computed on the retired 161-anchor set'"
+      ],
+      "artifacts": [],
+      "input_hashes": {
+        "README.md": "9685b256d43efa7260f4a052839c10bfb45e8561a0bdd9baeece89611f688825"
+      },
+      "run_environment": "Not recorded in the staged files (unknown).",
+      "displayed_summaries": [
+        {
+          "surface": "README.md",
+          "location": "metrics table",
+          "text": "Seal coverage | 69.8% (1,165/1,670 seals fully covered) — Phase-170, computed on the retired 161-anchor set"
+        }
+      ],
+      "code_revisions": [
+        "repo HEAD d80dcb7c (main); defect-site files unchanged since audited snapshot cc9ffeb4 — the 11-commit, 50-file HEAD-vs-snapshot compare touches none of them (coordinator-verified; see baseline-and-dispositions.md)"
+      ]
+    },
+    {
+      "claim_id": "C-GRAMMAR-ACCURACY-RETIRED",
+      "claim": "Grammar accuracy 93.2% sign-level, labeled in the README itself as Phase-170, computed on the retired 161-anchor set.",
+      "chain": "README/UI metrics → retired basis",
+      "depends_on_records": [
+        "readme_staged"
+      ],
+      "depends_on_claims": [],
+      "evidence_records": [
+        "README.md metrics table (self-labeled retired basis)"
+      ],
+      "source_passages": [
+        "README.md metrics table row: 'Grammar accuracy | 93.2% sign-level — Phase-170, computed on the retired 161-anchor set'"
+      ],
+      "artifacts": [],
+      "input_hashes": {
+        "README.md": "9685b256d43efa7260f4a052839c10bfb45e8561a0bdd9baeece89611f688825"
+      },
+      "run_environment": "Not recorded in the staged files (unknown).",
+      "displayed_summaries": [
+        {
+          "surface": "README.md",
+          "location": "metrics table",
+          "text": "Grammar accuracy | 93.2% sign-level — Phase-170, computed on the retired 161-anchor set"
+        }
+      ],
+      "code_revisions": [
+        "repo HEAD d80dcb7c (main); defect-site files unchanged since audited snapshot cc9ffeb4 — the 11-commit, 50-file HEAD-vs-snapshot compare touches none of them (coordinator-verified; see baseline-and-dispositions.md)"
+      ]
+    },
+    {
+      "claim_id": "C-NAIR-REPLICATION",
+      "claim": "Nair 2026 (arXiv:2604.17828) is presented in the README as an 'independent replication' of the program's work and as confirming non-random structure on the ICIT corpus.",
+      "chain": "README/UI metrics → external-study characterization",
+      "depends_on_records": [
+        "readme_staged"
+      ],
+      "depends_on_claims": [],
+      "evidence_records": [
+        "README.md (banner, metrics table, status section)"
+      ],
+      "source_passages": [
+        "README.md line 14: 'Independent replication: Nair 2026 (arXiv:2604.17828)'",
+        "README.md metrics table: 'External replication | Nair 2026 (arXiv:2604.17828) on ICIT corpus'",
+        "README.md Current research status: 'External replication: Nair 2026 (arXiv:2604.17828) confirms non-random structure on ICIT corpus'",
+        "work/AGENTS.md (preprint note): v8 carries 'the matching §3.10 qualification of Nair's Zipf slope' — the paper treats Nair as a structural comparison, not as a test of Glossa readings"
+      ],
+      "artifacts": [],
+      "input_hashes": {
+        "README.md": "9685b256d43efa7260f4a052839c10bfb45e8561a0bdd9baeece89611f688825"
+      },
+      "run_environment": "Not applicable (external study); Nair's own corpus is the ICIT corpus, a different corpus from the Holdat IVS corpus used for the headline set.",
+      "displayed_summaries": [
+        {
+          "surface": "README.md",
+          "location": "line 14 (status banner)",
+          "text": "Independent replication: Nair 2026 (arXiv:2604.17828)"
+        },
+        {
+          "surface": "README.md",
+          "location": "metrics table",
+          "text": "External replication | Nair 2026 (arXiv:2604.17828) on ICIT corpus"
+        },
+        {
+          "surface": "README.md",
+          "location": "Current research status section",
+          "text": "External replication: Nair 2026 (arXiv:2604.17828) confirms non-random structure on ICIT corpus"
+        }
+      ],
+      "code_revisions": [
+        "repo HEAD d80dcb7c (main); defect-site files unchanged since audited snapshot cc9ffeb4 — the 11-commit, 50-file HEAD-vs-snapshot compare touches none of them (coordinator-verified; see baseline-and-dispositions.md)"
+      ]
+    },
+    {
+      "claim_id": "C-RELEASE-CHAIN",
+      "claim": "The preprint version of record and its identifiers, as displayed: README cites v8 (version DOI 10.5281/zenodo.23604590) in the banner citation and closing status, a v4 DOI (10.5281/zenodo.20414696) in the metrics table as 'citation of record', and a v4 PDF filename in the repo-layout section; the deposit of record is now v9 (version DOI 10.5281/zenodo.23668053, concept DOI 10.5281/zenodo.20379070).",
+      "chain": "README and UI metrics → paper source, PDF, version manifest, and deposited record",
+      "depends_on_records": [
+        "readme_staged"
+      ],
+      "depends_on_claims": [
+        "C-94SET"
+      ],
+      "evidence_records": [
+        "README.md",
+        "work/AGENTS.md (preprint block: v8 source glossa-corpus/indus/pierson_2026_indus_decipherment.tex, v8 PDF pierson_2026_indus_decipherment_preprint_v8.pdf, final v8 PDF SHA-256 6d5b1e7fc7627cfc5f861f8f285c6a765fee7eda31f710eed3c8cd38633b2ead as recorded there)",
+        "goal record 2026-10-26-v9-deposit-record.md (v9 deposit: record 23668053; deposited PDF pierson_2026_indus_decipherment_preprint_v9.pdf, 206,529 bytes, documented SHA-256 d3cea9c35597faaa150c4a78ba84070f84f8978c63fedb29d588ecd40e5bf9d6)"
+      ],
+      "source_passages": [
+        "README.md line 16: 'Preprint (v8): Pierson, T.K. (2026). A Falsifiable Computational Decipherment Hypothesis for the Indus Valley Script: 161 Candidate Proto-Dravidian Anchors and a Three-Slot Positional Grammar. Zenodo. DOI: 10.5281/zenodo.23604590' — the cited title carries the retired 161-anchor basis while the headline set is 94",
+        "README.md metrics table: 'Preprint DOI | 10.5281/zenodo.20414696 (v4, citation of record; re-base addendum drafted, not submitted)' — contradicts line 18 of the same file, which names v8 as citation of record",
+        "README.md Key files: 'pierson_2026_indus_decipherment_preprint_v4.pdf' — stale filename (v8 PDF name per work/AGENTS.md; v9 PDF deposited 2026-10-26)",
+        "The deposited v9 PDF was NOT fetched or compared against its documented hash in this task — that comparison is UNVERIFIED here (no deposit access exercised)."
+      ],
+      "artifacts": [
+        "glossa-corpus/indus/pierson_2026_indus_decipherment.tex (paper source, named in work/AGENTS.md; not among the staged files)",
+        "pierson_2026_indus_decipherment_preprint_v9.pdf (deposited artifact, per the v9 deposit record; not fetched in this task)"
+      ],
+      "input_hashes": {
+        "README.md": "9685b256d43efa7260f4a052839c10bfb45e8561a0bdd9baeece89611f688825"
+      },
+      "run_environment": "Deposit executed 2026-10-26 per the goal-side v9 deposit record; PDF built from the deposited .tex with TinyTeX XeLaTeX per that record (reported, not re-verified in this task).",
+      "displayed_summaries": [
+        {
+          "surface": "README.md",
+          "location": "line 16 (preprint citation)",
+          "text": "Preprint (v8) … DOI: 10.5281/zenodo.23604590"
+        },
+        {
+          "surface": "README.md",
+          "location": "metrics table",
+          "text": "Preprint DOI | 10.5281/zenodo.20414696 (v4, citation of record; re-base addendum drafted, not submitted)"
+        },
+        {
+          "surface": "README.md",
+          "location": "Key files (repo layout)",
+          "text": "pierson_2026_indus_decipherment_preprint_v4.pdf ← preprint PDF (CC BY 4.0)"
+        },
+        {
+          "surface": "README.md",
+          "location": "closing Status section",
+          "text": "Preprint v8 published (Zenodo DOI: 10.5281/zenodo.23604590). Not peer-reviewed."
+        },
+        {
+          "surface": "bitconcepts.tech/research/ (website tracker)",
+          "location": "version block",
+          "text": "Per the v9 deposit record, the website was already promoted to v9 on 2026-10-26 (v9 row added above v8); the README is the surface that lagged. UI metric widgets beyond the README were not in the staged files and are inventoried as not staged, not as verified."
+        }
+      ],
+      "code_revisions": [
+        "repo HEAD d80dcb7c (main); defect-site files unchanged since audited snapshot cc9ffeb4 — the 11-commit, 50-file HEAD-vs-snapshot compare touches none of them (coordinator-verified; see baseline-and-dispositions.md)"
+      ]
+    },
+    {
+      "claim_id": "C-PROGRESS-PCT",
+      "claim": "A single percentage presented as the program's distance to decipherment (the 'about 36% of the way by the program's own ladder' figure in the 2026-10-26 rerun/invalidation audit, carried alongside a disputed ~31% and 0% on a peer-reviewed ladder).",
+      "chain": "Public-claim reconciliation (WP10: any percentage presented as measured distance to decipherment)",
+      "depends_on_records": [],
+      "depends_on_claims": [],
+      "evidence_records": [
+        "goal record 2026-10-26-rerun-invalidation-audit.md, Gap 8: 'The filed progress figures stand as measured: about 36% of the way by the program's own ladder (about 31% disputed, carried alongside, never blended), and 0% by the peer-reviewed ladder.'"
+      ],
+      "source_passages": [
+        "Same passage: the figure is a position on the program's own internal ladder — a rung count, not a measurement over a defined population of what decipherment requires."
+      ],
+      "artifacts": [],
+      "input_hashes": {},
+      "run_environment": "Not applicable.",
+      "displayed_summaries": [
+        {
+          "surface": "goal record 2026-10-26-rerun-invalidation-audit.md",
+          "location": "Gap 8",
+          "text": "about 36% of the way by the program's own ladder (about 31% disputed, carried alongside, never blended), and 0% by the peer-reviewed ladder"
+        },
+        {
+          "surface": "README.md (nearest staged analogue)",
+          "location": "banner + metrics table",
+          "text": "The staged README carries no decipherment-progress percentage; its percentages are token-coverage figures (73.68% strict, 92.19% full H+M), which are assignment coverage and must never be read or presented as progress toward, or probability of, decipherment."
+        }
+      ],
+      "code_revisions": [
+        "repo HEAD d80dcb7c (main); defect-site files unchanged since audited snapshot cc9ffeb4 — the 11-commit, 50-file HEAD-vs-snapshot compare touches none of them (coordinator-verified; see baseline-and-dispositions.md)"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "phase48_validation",
+      "to": "C-PHASE48-PROMOTIONS",
+      "type": "evidence_for"
+    },
+    {
+      "from": "code_phase48",
+      "to": "C-PHASE48-PROMOTIONS",
+      "type": "evidence_for"
+    },
+    {
+      "from": "anchors_table",
+      "to": "C-PHASE48-PROMOTIONS",
+      "type": "evidence_for"
+    },
+    {
+      "from": "phase108_trails",
+      "to": "C-PROV108-CLASSIFICATION",
+      "type": "evidence_for"
+    },
+    {
+      "from": "phase108_register",
+      "to": "C-PROV108-CLASSIFICATION",
+      "type": "evidence_for"
+    },
+    {
+      "from": "spec006",
+      "to": "C-PROV108-CLASSIFICATION",
+      "type": "evidence_for"
+    },
+    {
+      "from": "anchors_table",
+      "to": "C-PROV108-CLASSIFICATION",
+      "type": "evidence_for"
+    },
+    {
+      "from": "C-PHASE48-PROMOTIONS",
+      "to": "C-PROV108-CLASSIFICATION",
+      "type": "derives_from"
+    },
+    {
+      "from": "phase108_register",
+      "to": "C-RETAINED-TIERS",
+      "type": "evidence_for"
+    },
+    {
+      "from": "phase109_changes",
+      "to": "C-RETAINED-TIERS",
+      "type": "evidence_for"
+    },
+    {
+      "from": "anchors_table",
+      "to": "C-RETAINED-TIERS",
+      "type": "evidence_for"
+    },
+    {
+      "from": "C-PROV108-CLASSIFICATION",
+      "to": "C-RETAINED-TIERS",
+      "type": "derives_from"
+    },
+    {
+      "from": "phase109_rebase",
+      "to": "C-94SET",
+      "type": "evidence_for"
+    },
+    {
+      "from": "phase108_register",
+      "to": "C-94SET",
+      "type": "evidence_for"
+    },
+    {
+      "from": "anchors_table",
+      "to": "C-94SET",
+      "type": "evidence_for"
+    },
+    {
+      "from": "C-PROV108-CLASSIFICATION",
+      "to": "C-94SET",
+      "type": "derives_from"
+    },
+    {
+      "from": "C-RETAINED-TIERS",
+      "to": "C-94SET",
+      "type": "derives_from"
+    },
+    {
+      "from": "phase109_rebase",
+      "to": "C-COVERAGE-94",
+      "type": "evidence_for"
+    },
+    {
+      "from": "C-94SET",
+      "to": "C-COVERAGE-94",
+      "type": "derives_from"
+    },
+    {
+      "from": "phase109_rebase",
+      "to": "C-COVERAGE-FULL",
+      "type": "evidence_for"
+    },
+    {
+      "from": "C-RETAINED-TIERS",
+      "to": "C-COVERAGE-FULL",
+      "type": "derives_from"
+    },
+    {
+      "from": "phase109_rebase",
+      "to": "C-PHONO-0",
+      "type": "evidence_for"
+    },
+    {
+      "from": "phase108_subset",
+      "to": "C-PHONO-0",
+      "type": "evidence_for"
+    },
+    {
+      "from": "code_phase58",
+      "to": "C-PHONO-0",
+      "type": "evidence_for"
+    },
+    {
+      "from": "code_provenance_audit",
+      "to": "C-PHONO-0",
+      "type": "evidence_for"
+    },
+    {
+      "from": "C-94SET",
+      "to": "C-PHONO-0",
+      "type": "derives_from"
+    },
+    {
+      "from": "phase109_rebase",
+      "to": "C-SITEINV-6565",
+      "type": "evidence_for"
+    },
+    {
+      "from": "phase108_subset",
+      "to": "C-SITEINV-6565",
+      "type": "evidence_for"
+    },
+    {
+      "from": "code_phase69",
+      "to": "C-SITEINV-6565",
+      "type": "evidence_for"
+    },
+    {
+      "from": "code_provenance_audit",
+      "to": "C-SITEINV-6565",
+      "type": "evidence_for"
+    },
+    {
+      "from": "C-94SET",
+      "to": "C-SITEINV-6565",
+      "type": "derives_from"
+    },
+    {
+      "from": "crosswalk_v2",
+      "to": "C-PARPOLA-81",
+      "type": "evidence_for"
+    },
+    {
+      "from": "phase109_rebase",
+      "to": "C-PARPOLA-81",
+      "type": "evidence_for"
+    },
+    {
+      "from": "phase108_subset",
+      "to": "C-PARPOLA-81",
+      "type": "evidence_for"
+    },
+    {
+      "from": "code_phase96",
+      "to": "C-PARPOLA-81",
+      "type": "evidence_for"
+    },
+    {
+      "from": "code_provenance_audit",
+      "to": "C-PARPOLA-81",
+      "type": "evidence_for"
+    },
+    {
+      "from": "C-94SET",
+      "to": "C-PARPOLA-81",
+      "type": "derives_from"
+    },
+    {
+      "from": "phase109_changes",
+      "to": "C-KEEP-RESTORE-109",
+      "type": "evidence_for"
+    },
+    {
+      "from": "phase109_rebase",
+      "to": "C-KEEP-RESTORE-109",
+      "type": "evidence_for"
+    },
+    {
+      "from": "crosswalk_v2",
+      "to": "C-KEEP-RESTORE-109",
+      "type": "evidence_for"
+    },
+    {
+      "from": "C-PARPOLA-81",
+      "to": "C-KEEP-RESTORE-109",
+      "type": "derives_from"
+    },
+    {
+      "from": "C-PROV108-CLASSIFICATION",
+      "to": "C-KEEP-RESTORE-109",
+      "type": "derives_from"
+    },
+    {
+      "from": "readme_staged",
+      "to": "C-FISH-ISOLATION",
+      "type": "evidence_for"
+    },
+    {
+      "from": "readme_staged",
+      "to": "C-GRAMMAR-Z",
+      "type": "evidence_for"
+    },
+    {
+      "from": "C-94SET",
+      "to": "C-GRAMMAR-Z",
+      "type": "derives_from"
+    },
+    {
+      "from": "readme_staged",
+      "to": "C-SEAL-COVERAGE-RETIRED",
+      "type": "evidence_for"
+    },
+    {
+      "from": "readme_staged",
+      "to": "C-GRAMMAR-ACCURACY-RETIRED",
+      "type": "evidence_for"
+    },
+    {
+      "from": "readme_staged",
+      "to": "C-NAIR-REPLICATION",
+      "type": "evidence_for"
+    },
+    {
+      "from": "readme_staged",
+      "to": "C-RELEASE-CHAIN",
+      "type": "evidence_for"
+    },
+    {
+      "from": "C-94SET",
+      "to": "C-RELEASE-CHAIN",
+      "type": "derives_from"
+    }
+  ],
+  "notes": [
+    "Assignment coverage is kept distinct from accuracy throughout: C-COVERAGE-94 and C-COVERAGE-FULL count tokens whose sign has a candidate reading; they do not measure correctness.",
+    "Run environments are copied from the artifacts themselves; where an artifact records nothing, the entry says unknown.",
+    "The withheld study is not referenced anywhere in this map."
+  ]
+}

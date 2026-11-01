@@ -1,0 +1,85 @@
+{
+ "totalHits": 168735312,
+ "results": [
+  {
+   "id": 6905747,
+   "title": "The textcat Package for n-Gram Based Text\n\nCategorization in R",
+   "year": 2013,
+   "doi": "10.18637/jss.v052.i06",
+   "has_full_text": true,
+   "full_text_words": 6466
+  },
+  {
+   "id": 629600,
+   "title": "Statistical analysis of the Indus script using n-grams.",
+   "year": 2010,
+   "doi": "10.1371/journal.pone.0009506",
+   "has_full_text": false,
+   "full_text_words": 0
+  },
+  {
+   "id": 18388078,
+   "title": "Habitat fragmentation and species extirpation in freshwater ecosystems; causes of range decline of the indus river dolphin (Platanista gangetica minor)",
+   "year": 2014,
+   "doi": "10.1371/journal.pone.0101657",
+   "has_full_text": true,
+   "full_text_words": 8246
+  },
+  {
+   "id": 333140917,
+   "title": "Stemming and n-grams in Spanish: An evaluation of their impact on information retrieval",
+   "year": 2000,
+   "doi": null,
+   "has_full_text": true,
+   "full_text_words": 3515
+  },
+  {
+   "id": 4312777,
+   "title": "Stemming and n-grams in Spanish: an evaluation of their impact on information retrieval",
+   "year": 2000,
+   "doi": null,
+   "has_full_text": true,
+   "full_text_words": 3515
+  },
+  {
+   "id": 346762697,
+   "title": "Geology of the Cenozoic Indus Basin sedimentary rocks : paleoenvironmental interpretation of sedimentation from the western Himalaya during the early phases of India-Eurasia collision.",
+   "year": 2010,
+   "doi": null,
+   "has_full_text": true,
+   "full_text_words": 17952
+  },
+  {
+   "id": 215276,
+   "title": "Geology of the Cenozoic Indus Basin sedimentary rocks : paleoenvironmental interpretation of sedimentation from the western Himalaya during the early phases of India-Eurasia collision.",
+   "year": 2010,
+   "doi": "10.1029/2009tc002651",
+   "has_full_text": true,
+   "full_text_words": 17952
+  },
+  {
+   "id": 332602508,
+   "title": "Geology of the Cenozoic Indus Basin sedimentary rocks : paleoenvironmental interpretation of sedimentation from the western Himalaya during the early phases of India-Eurasia collision.",
+   "year": 2010,
+   "doi": null,
+   "has_full_text": true,
+   "full_text_words": 17952
+  },
+  {
+   "id": 385758574,
+   "title": "Geology of the Cenozoic Indus Basin sedimentary rocks : paleoenvironmental interpretation of sedimentation from the western Himalaya during the early phases of India-Eurasia collision.",
+   "year": 2010,
+   "doi": null,
+   "has_full_text": true,
+   "full_text_words": 17952
+  },
+  {
+   "id": 7794159,
+   "title": "Identifying idiolect in forensic authorship attribution: an n-gram textbite approach",
+   "year": 2014,
+   "doi": null,
+   "has_full_text": true,
+   "full_text_words": 16190
+  }
+ ]
+}

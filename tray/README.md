@@ -101,6 +101,66 @@ Polls `GET /api/v1/health` every 5 seconds and updates the icon colour:
 - Red: backend stopped
 - Grey: unknown/starting
 
+### Icon
+
+The tray icon is the Glossa Lab application mark — the blue
+gradient tile with a white "G" used by the web UI — shipped as
+`glossa_tray/assets/glossa-lab.png` (+ `.ico` / `.svg`), with the
+status colour shown as a small badge in the lower-right corner.
+It is not a plain coloured circle, and it is not another project's
+mark (not the BitConcepts company mark, not Syncyard's). Regenerate
+the rasters from the SVG source with
+`glossa_tray/assets/build_icon.py`.
+
+### Linux autostart + backend supervision
+
+On Linux the tray does not own the backend process: systemd does
+(`glossa-lab-backend.service`, installed by
+`services/linux/install.sh` — the same installer also installs the
+tray autostart entry and the icon). The tray's Start/Stop actions
+call `systemctl --user start/stop glossa-lab-backend`, and its
+autostart toggle manages `~/.config/autostart/glossa-lab-tray.desktop`.
+
+### Windows backend supervision (Spec 080)
+
+On Windows there is no service manager underneath the tray, so the
+tray itself supervises the backend: the status poller restarts a
+backend that died without a user stop (capped at 3 restarts per
+hour, H11). A user-initiated stop is never overridden, and when the
+cap is reached the tray status says so instead of going silent.
+Start/stop go only through the wscript VBS wrappers
+(`scripts\launch-tray.vbs` / `scripts\stop-tray.vbs`, rule H25) and
+the backend is spawned with the production factory entry point on
+127.0.0.1 with `GLOSSA_MODE=installed`.
+
+### API token (Spec 082)
+
+The backend requires a per-install API token on every route
+except the open health check. The token lives in the install's
+data dir (`%LOCALAPPDATA%\GlossaLab\data\api_token` on Windows;
+`backend/data/api_token` in a repo checkout) and is provisioned
+at install time (`setup-os.cmd install` on Windows; the backend
+generates it on first use elsewhere). The tray:
+
+- resolves the token **per use** — the `GLOSSA_API_TOKEN`
+  environment value, then a file named by `GLOSSA_TOKEN_FILE`,
+  then the install's token file — never cached, so a rotation
+  applies on the next action without restarting the tray;
+- sends it on the backend shutdown request (the health poll
+  stays unauthenticated: health is an open route);
+- hands it to the web UI on **Open UI** as a `#token=` URL
+  fragment (fragments never reach the server; the SPA moves the
+  value into session storage and strips the fragment) — and
+  writes a named line to `logs/tray.log` when no token can be
+  resolved, opening the UI bare;
+- offers **Copy API Token** in the menu, for pasting into the
+  web UI's Settings field or another local client; failures are
+  named in `logs/tray.log`.
+
+The token value never appears in the tray log. Rotate it with
+`python -m glossa_lab.auth rotate` (from `backend/`); every
+consumer picks the new value up on its next use.
+
 ### Dependencies
 
 Listed in `tray/requirements.txt`: `pystray`, `Pillow`.

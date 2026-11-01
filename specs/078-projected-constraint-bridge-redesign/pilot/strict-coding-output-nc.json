@@ -1,0 +1,1612 @@
+[
+ {
+  "sign": "M002",
+  "reading": "kuṉ",
+  "assertions": [
+   "Round 2: INITIAL position (freq=16), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=16)",
+   "has specific PDR reading",
+   "Phase-272: DEDR 1694 injected + existing evidence → HIGH"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 16,
+    "rule": "NC-3",
+    "basis_quote": "Round 2: INITIAL position (freq=16), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M004",
+  "reading": "kēḷ",
+  "assertions": [
+   "Round 1: INITIAL position (freq=17), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=17)",
+   "has specific PDR reading"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 17,
+    "rule": "NC-3",
+    "basis_quote": "Round 1: INITIAL position (freq=17), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M005",
+  "reading": "kōṉ",
+  "assertions": [
+   "Round 2: INITIAL position (freq=15), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=15)",
+   "HIGH-anchor collocate M342 (n=4)",
+   "has specific PDR reading",
+   "Phase-272: DEDR 2199 injected + existing evidence → HIGH"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 15,
+    "rule": "NC-3",
+    "basis_quote": "Round 2: INITIAL position (freq=15), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M006",
+  "reading": "puli",
+  "assertions": [
+   "Exclusive to tiger seals (lift > 5.0)",
+   "PDR puli = tiger"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M007",
+  "reading": "aaL",
+  "assertions": [
+   "Phase-255: commodity phoneme corroboration — matches PDr 'akatti'=agate (DEDR 7), appears on 4 trade/zebu seals"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M009",
+  "reading": "āṇ",
+  "assertions": [
+   "Round 2: INITIAL position (freq=16), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=16)",
+   "has specific PDR reading",
+   "Phase-272: DEDR 367 injected + existing evidence → HIGH"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 16,
+    "rule": "NC-3",
+    "basis_quote": "Round 2: INITIAL position (freq=16), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M010",
+  "reading": "paṭ",
+  "assertions": [
+   "Round 1: INITIAL position (freq=17), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=17)",
+   "has specific PDR reading",
+   "Phase-255: commodity phoneme corroboration — matches PDr 'akatti'=agate (DEDR 7), appears on 6 trade/zebu seals"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 17,
+    "rule": "NC-3",
+    "basis_quote": "Round 1: INITIAL position (freq=17), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M012",
+  "reading": "oṉṟu/1",
+  "assertions": [
+   "single stroke = numeral 1"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M013",
+  "reading": "nakaram",
+  "assertions": [
+   "Exclusive to gharial seals (lift > 5.0)",
+   "PDR nakaram = crocodile/makara"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M014",
+  "reading": "tiru",
+  "assertions": [
+   "Round 1: INITIAL position (freq=17), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=17)",
+   "has specific PDR reading"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 17,
+    "rule": "NC-3",
+    "basis_quote": "Round 1: INITIAL position (freq=17), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M015",
+  "reading": "mā",
+  "assertions": [
+   "Round 2: INITIAL position (freq=15), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=15)",
+   "has specific PDR reading",
+   "Phase-272: DEDR 4796 injected + existing evidence → HIGH"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 15,
+    "rule": "NC-3",
+    "basis_quote": "Round 2: INITIAL position (freq=15), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M016",
+  "reading": "kaḷiṟu",
+  "assertions": [
+   "Exclusive to elephant seals (lift > 5.0)",
+   "PDR kaḷiṟu = male elephant"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M017",
+  "reading": "kai",
+  "assertions": [
+   "Round 1: INITIAL position (freq=18), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=18)",
+   "has specific PDR reading"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 18,
+    "rule": "NC-3",
+    "basis_quote": "Round 1: INITIAL position (freq=18), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M018",
+  "reading": "nēr",
+  "assertions": [
+   "Round 1: INITIAL position (freq=18), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=18)",
+   "has specific PDR reading"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 18,
+    "rule": "NC-3",
+    "basis_quote": "Round 1: INITIAL position (freq=18), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M020",
+  "reading": "kuṉ",
+  "assertions": [
+   "Round 1: INITIAL position (freq=18), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=18)",
+   "has specific PDR reading"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 18,
+    "rule": "NC-3",
+    "basis_quote": "Round 1: INITIAL position (freq=18), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M023",
+  "reading": "vaḷ",
+  "assertions": [
+   "Round 1: INITIAL position (freq=16), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=16)",
+   "has specific PDR reading",
+   "Phase-255: commodity phoneme corroboration — matches PDr 'akatti'=agate (DEDR 7), appears on 6 trade/zebu seals"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 16,
+    "rule": "NC-3",
+    "basis_quote": "Round 1: INITIAL position (freq=16), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M025",
+  "reading": "cem",
+  "assertions": [
+   "Round 1: INITIAL position (freq=17), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=17)",
+   "has specific PDR reading",
+   "Phase-255: commodity phoneme corroboration — matches PDr 'cempu'=copper (DEDR 2781), appears on 5 trade/zebu seals"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 17,
+    "rule": "NC-3",
+    "basis_quote": "Round 1: INITIAL position (freq=17), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M026",
+  "reading": "mā",
+  "assertions": [
+   "Round 1: INITIAL position (freq=17), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=17)",
+   "has specific PDR reading"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 17,
+    "rule": "NC-3",
+    "basis_quote": "Round 1: INITIAL position (freq=17), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M027",
+  "reading": "māṟ",
+  "assertions": [
+   "Round 1: INITIAL position (freq=17), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=17)",
+   "has specific PDR reading"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 17,
+    "rule": "NC-3",
+    "basis_quote": "Round 1: INITIAL position (freq=17), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M029",
+  "reading": "yānai",
+  "assertions": [
+   "Round 3: INITIAL position (freq=11), distributional assignment [Phase-216: SA-cons=0.17 DEDR✓ source=Parpola 1994+]"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 11,
+    "rule": "NC-3",
+    "basis_quote": "Round 3: INITIAL position (freq=11), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M030",
+  "reading": "kō",
+  "assertions": [
+   "Round 1: INITIAL position (freq=18), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=18)",
+   "HIGH-anchor collocate M342 (n=4)",
+   "has specific PDR reading"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 18,
+    "rule": "NC-3",
+    "basis_quote": "Round 1: INITIAL position (freq=18), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M032",
+  "reading": "koL",
+  "assertions": [
+   "[Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M034",
+  "reading": "tōḷ",
+  "assertions": [
+   "Round 1: INITIAL position (freq=17), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=17)",
+   "has specific PDR reading"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 17,
+    "rule": "NC-3",
+    "basis_quote": "Round 1: INITIAL position (freq=17), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M037",
+  "reading": "kēḷ",
+  "assertions": [
+   "Round 2: INITIAL position (freq=16), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=16)",
+   "HIGH-anchor collocate M267 (n=4)",
+   "has specific PDR reading",
+   "Phase-272: DEDR 2017 injected + existing evidence → HIGH"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 16,
+    "rule": "NC-3",
+    "basis_quote": "Round 2: INITIAL position (freq=16), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M038",
+  "reading": "pōr",
+  "assertions": [
+   "Round 1: INITIAL position (freq=17), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=17)",
+   "has specific PDR reading",
+   "Phase-272: DEDR 4605 injected + existing evidence → HIGH"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 17,
+    "rule": "NC-3",
+    "basis_quote": "Round 1: INITIAL position (freq=17), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M039",
+  "reading": "āṉai",
+  "assertions": [
+   "Exclusive to elephant seals (lift > 5.0)",
+   "PDR āṉai = elephant (variant)"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M041",
+  "reading": "pēr",
+  "assertions": [
+   "Round 1: INITIAL position (freq=17), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=17)",
+   "has specific PDR reading"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 17,
+    "rule": "NC-3",
+    "basis_quote": "Round 1: INITIAL position (freq=17), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M042",
+  "reading": "vaN",
+  "assertions": [
+   "[Phase-116 recal: SA-cons=0.62✓ DEDR✓]"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M044",
+  "reading": "ku",
+  "assertions": [
+   "Phase-276: dual external corroboration — Elamite 'kun' (MC-18) + Sanskrit 'kona' (SL-04) + DEDR 1638"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M045",
+  "reading": "yānai",
+  "assertions": [
+   "Exclusive to elephant seals (lift > 5.0)",
+   "PDR yānai = elephant"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M046",
+  "reading": "kaL",
+  "assertions": [
+   "[Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M047",
+  "reading": "min/mīn",
+  "assertions": [
+   "FACT-CHECK CORRECTION 2026-05-11: Distributional assignment 'par' (LOW, Round 2) overridden by crosswalk evidence",
+   "M047 = P47 = 'fish (plain)' per mahadevan_parpola_crosswalk.json (sourced from Parpola 1994a + Mahadevan 1977)",
+   "Reading 'mīn' (fish/star, DEDR 4897) is the Parpola canonical anchor confirmed by iconographic_anchors.json (fish-in-crocodile-mouth, H-902B offerings tablet, eZu-miin compound)",
+   "Freq=13 in Holdat corpus",
+   "Previous distributional: {'reading': 'pār', 'confidence': 'LOW', 'basis': 'Round 2: INITIAL position (freq=13), distributional assignment'}",
+   "Phase-276: dual external corroboration — Elamite 'in' (MC-01) + Sanskrit 'mina' (SL-06)"
+  ],
+  "codings": [],
+  "ambiguities": [
+   {
+    "quote": "Previous distributional: {'reading': 'pār', 'confidence': 'LOW', 'basis': 'Round 2: INITIAL position (freq=13), distributional assignment'}",
+    "resolution": "Not coded as a current claim: the same basis states this distributional assignment was overridden by crosswalk evidence, so it is a superseded assertion. Applying NC-7's weaker-strength principle, no summary is coded for the current reading; the superseded text is recorded here and in assertions."
+   }
+  ],
+  "residue": null
+ },
+ {
+  "sign": "M048",
+  "reading": "mu/muṉ",
+  "assertions": [
+   "Positional analysis",
+   "UPGRADED: high frequency (157)",
+   "consistent TERMINAL position (n=157)",
+   "collocates with HIGH anchor M342 (n=13)",
+   "collocates with HIGH anchor M267 (n=7)",
+   "collocates with HIGH anchor M176 (n=5)",
+   "collocates with HIGH anchor M342 (n=17)",
+   "collocates with HIGH anchor M176 (n=8)",
+   "has specific PDR reading"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "TERMINAL",
+    "anchor": null,
+    "sample_size": 157,
+    "rule": "NC-3",
+    "basis_quote": "consistent TERMINAL position (n=157)"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M049",
+  "reading": "pu",
+  "assertions": [
+   "[Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M050",
+  "reading": "pār",
+  "assertions": [
+   "Round 1: INITIAL position (freq=17), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=17)",
+   "has specific PDR reading",
+   "Phase-272: DEDR 4084 injected + existing evidence → HIGH"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 17,
+    "rule": "NC-3",
+    "basis_quote": "Round 1: INITIAL position (freq=17), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M051",
+  "reading": "pū/puḷ",
+  "assertions": [
+   "Comb/flower sign"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M052",
+  "reading": "ta",
+  "assertions": [
+   "[Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M053",
+  "reading": "mi",
+  "assertions": [
+   "[Phase-216: SA-cons=0.17 DEDR✓ source=Phase-80 DEDR rebus (miiN = DEDR 4839)]"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M054",
+  "reading": "mi",
+  "assertions": [
+   "[Phase-216: SA-cons=0.17 DEDR✓ source=Phase-80 DEDR rebus (miiNDu = DEDR 4855)]"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M055",
+  "reading": "miN3",
+  "assertions": [
+   "[Phase-216: SA-cons=0.17 DEDR✓ source=Phase-89 systematic DEDR (ICON, MEDIUM)]"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M057",
+  "reading": "māṭu",
+  "assertions": [
+   "Exclusive to zebu bull seals (lift > 5.0)",
+   "PDR māṭu = cattle"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M059",
+  "reading": "ēḷ/eḷ",
+  "assertions": [
+   "Numeral 7"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M060",
+  "reading": "kāṇṭāmirukam",
+  "assertions": [
+   "Exclusive to rhinoceros seals (lift > 5.0)",
+   "PDR kāṇṭāmirukam = rhinoceros (horn-beast)"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M061",
+  "reading": "ka",
+  "assertions": [
+   "[Phase-116 recal: SA-cons=0.25✓ DEDR✓]"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M062",
+  "reading": "erutu",
+  "assertions": [
+   "Exclusive to zebu bull seals (lift > 5.0)",
+   "PDR erutu = bull, ox"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M063",
+  "reading": "mutalai",
+  "assertions": [
+   "FACT-CHECK CORRECTION 2026-05-11: Original V7 assignment was HIGH based on claimed 'lift > 5.0 on gharial seals'",
+   "Actual measured gharial lift = 4.35 (below threshold)",
+   "M063 appears on 3/18 seals with gharial motif (vs",
+   "4 unicorn, 3 zebu bull)",
+   "Reading 'mutalai' (Tamil: crocodile/gharial, DEDR 4954) is plausible given gharial association, but not exclusive enough for HIGH confidence",
+   "Downgraded HIGH → MEDIUM",
+   "Previous: {'reading': 'mutalai', 'confidence': 'HIGH', 'basis': 'Exclusive to gharial seals (lift > 5.0)",
+   "PDR mutalai = crocodile'}"
+  ],
+  "codings": [],
+  "ambiguities": [
+   {
+    "quote": "Previous: {'reading': 'mutalai', 'confidence': 'HIGH', 'basis': 'Exclusive to gharial seals (lift > 5.0); PDR mutalai = crocodile'}",
+    "resolution": "Not coded: the same basis corrects the claimed exclusivity (actual measured gharial lift = 4.35, below threshold; the sign also appears on unicorn and zebu bull seals), so the quoted assertion is superseded. It is also motif exclusivity, not a positional universal under NC-1."
+   }
+  ],
+  "residue": null
+ },
+ {
+  "sign": "M065",
+  "reading": "kuTam",
+  "assertions": [
+   "Phase-255: commodity phoneme corroboration — matches PDr 'akatti'=agate (DEDR 7), appears on 49 trade/zebu seals"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M066",
+  "reading": "cōḻ",
+  "assertions": [
+   "Round 1: INITIAL position (freq=16), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=16)",
+   "has specific PDR reading",
+   "Phase-272: DEDR 2905 injected + existing evidence → HIGH"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 16,
+    "rule": "NC-3",
+    "basis_quote": "Round 1: INITIAL position (freq=16), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M067",
+  "reading": "kōṭṭāṉ",
+  "assertions": [
+   "Exclusive to rhinoceros seals (lift > 5.0)",
+   "PDR kōṭṭāṉ = horned one",
+   "Phase-272: DEDR 2071 injected + existing evidence → HIGH"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M068",
+  "reading": "maṟi",
+  "assertions": [
+   "Exclusive to rhinoceros seals (lift > 5.0)",
+   "PDR maṟi = young animal/calf (generic)",
+   "UPGRADED-V18: HIGH-anchor collocate M342 (n=4)",
+   "has specific PDR reading",
+   "Phase-272: DEDR 4706 injected + existing evidence → HIGH"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M069",
+  "reading": "nēr",
+  "assertions": [
+   "Round 2: INITIAL position (freq=16), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=16)",
+   "has specific PDR reading",
+   "Phase-272: DEDR 3774 injected + existing evidence → HIGH"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 16,
+    "rule": "NC-3",
+    "basis_quote": "Round 2: INITIAL position (freq=16), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M070",
+  "reading": "vēl",
+  "assertions": [
+   "Round 1: INITIAL position (freq=17), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=17)",
+   "has specific PDR reading",
+   "Phase-272: DEDR 5540 injected + existing evidence → HIGH"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 17,
+    "rule": "NC-3",
+    "basis_quote": "Round 1: INITIAL position (freq=17), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M073",
+  "reading": "kōṉ",
+  "assertions": [
+   "Exclusive to zebu bull seals (lift > 5.0)",
+   "PDR kōṉ = king (bull metaphor)"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M074",
+  "reading": "ker",
+  "assertions": [
+   "Phase-255: commodity phoneme corroboration — matches PDr 'eḷḷu'=sesame (DEDR 839), appears on 4 trade/zebu seals"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M075",
+  "reading": "māṟ",
+  "assertions": [
+   "Round 2: INITIAL position (freq=14), distributional assignment",
+   "UPGRADED-V18: HIGH-anchor collocate M267 (n=4)",
+   "has specific PDR reading",
+   "Phase-272: DEDR 4796 injected + existing evidence → HIGH"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 14,
+    "rule": "NC-3",
+    "basis_quote": "Round 2: INITIAL position (freq=14), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M076",
+  "reading": "naN",
+  "assertions": [
+   "[Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M077",
+  "reading": "nal",
+  "assertions": [
+   "Round 1: INITIAL position (freq=18), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=18)",
+   "has specific PDR reading"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 18,
+    "rule": "NC-3",
+    "basis_quote": "Round 1: INITIAL position (freq=18), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M078",
+  "reading": "cēr",
+  "assertions": [
+   "Round 1: INITIAL position (freq=17), distributional assignment",
+   "UPGRADED-V18: consistent INITIAL (n=17)",
+   "has specific PDR reading",
+   "Phase-272: DEDR 2814 injected + existing evidence → HIGH"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "INITIAL",
+    "anchor": null,
+    "sample_size": 17,
+    "rule": "NC-3",
+    "basis_quote": "Round 1: INITIAL position (freq=17), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M080",
+  "reading": "vēṅkai",
+  "assertions": [
+   "Exclusive to tiger seals (lift > 5.0)",
+   "PDR vēṅkai = tiger (poetic)"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M082",
+  "reading": "pa",
+  "assertions": [
+   "Phase-255: commodity phoneme corroboration — matches PDr 'akatti'=agate (DEDR 7), appears on 3 trade/zebu seals"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M087",
+  "reading": "veL",
+  "assertions": [
+   "[Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M089",
+  "reading": "tu/tū",
+  "assertions": [
+   "Positional analysis",
+   "UPGRADED: high frequency (171)",
+   "consistent TERMINAL position (n=171)",
+   "collocates with HIGH anchor M342 (n=15)",
+   "collocates with HIGH anchor M267 (n=6)",
+   "collocates with HIGH anchor M176 (n=6)",
+   "collocates with HIGH anchor M342 (n=13)",
+   "collocates with HIGH anchor M176 (n=12)",
+   "collocates with HIGH anchor M267 (n=10)",
+   "has specific PDR reading"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "TERMINAL",
+    "anchor": null,
+    "sample_size": 171,
+    "rule": "NC-3",
+    "basis_quote": "consistent TERMINAL position (n=171)"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M099",
+  "reading": "kol/koḷ",
+  "assertions": [
+   "Jar/vessel sign"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M108",
+  "reading": "kaL",
+  "assertions": [
+   "[Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M124",
+  "reading": "kuTam",
+  "assertions": [
+   "Phase-276: dual external corroboration — Elamite 'kun' (MC-18) + Sanskrit 'kona' (SL-04) + DEDR 1651"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M128",
+  "reading": "kaṇ",
+  "assertions": [
+   "Round 3: MEDIAL position (freq=7), distributional assignment [Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "MEDIAL",
+    "anchor": null,
+    "sample_size": 7,
+    "rule": "NC-3",
+    "basis_quote": "Round 3: MEDIAL position (freq=7), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M130",
+  "reading": "mui",
+  "assertions": [
+   "[Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M145",
+  "reading": "miṭ",
+  "assertions": [
+   "[Phase-216: SA-cons=0.17 DEDR✓ source=Phase-95 retroflex expansion (score=1.90]"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M151",
+  "reading": "viḷ",
+  "assertions": [
+   "Round 4: MEDIAL position (freq=5), distributional assignment"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "MEDIAL",
+    "anchor": null,
+    "sample_size": 5,
+    "rule": "NC-3",
+    "basis_quote": "Round 4: MEDIAL position (freq=5), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M162",
+  "reading": "il/iḷ",
+  "assertions": [
+   "House/dwelling sign"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M165",
+  "reading": "cul",
+  "assertions": [
+   "Phase-163 sibilant discovery: reading 'cul' found in literature (4 mentions across sources: Parpola_1994)",
+   "Provides partial coverage for Shu-ilishu /su/ phonological slot",
+   "[Phase-216: SA-cons=0.17 DEDR✓ source=Phase-111]"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M176",
+  "reading": "an/aṇ",
+  "assertions": [
+   "Masculine suffix"
+  ],
+  "codings": [
+   {
+    "kind": "functional",
+    "type": "TERM-FUNC",
+    "anchor": "final",
+    "sample_size": null,
+    "rule": "NC-2",
+    "basis_quote": "Masculine suffix"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M194",
+  "reading": "kaṭ",
+  "assertions": [
+   "[Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M202",
+  "reading": "can",
+  "assertions": [
+   "Phase-163 sibilant discovery: reading 'can' found in literature (4 mentions across sources: Mahadevan_2009_vestiges)",
+   "Provides partial coverage for Shu-ilishu /su/ phonological slot.",
+   "Phase-276: dual external corroboration — Elamite 'an' (MC-07) + Sanskrit 'annam/anna' (SL-03)"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M220",
+  "reading": "al",
+  "assertions": [
+   "Phase-255: commodity phoneme corroboration — matches PDr 'akatti'=agate (DEDR 7), appears on 9 trade/zebu seals"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M222",
+  "reading": "min",
+  "assertions": [
+   "Promoted from anchor staging archive (2026-06-07T18:20:18Z)",
+   "evidence_type=compound_slot_coherence",
+   "score=1.00",
+   "status=verified",
+   "DEDR: shine / lightning (verb)"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": "evidence_type=compound_slot_coherence — this names a compound slot but gives no anchor position (initial, medial, final, or solo), no positional statement, and no sample size, so no functional type under NC-2 and no summary under NC-3 can be assigned without inventing an anchor."
+ },
+ {
+  "sign": "M233",
+  "reading": "ūr",
+  "assertions": [
+   "Settlement/place marker"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": "Settlement/place marker — 'marker' suggests a place-marking function, but the basis names no anchor position (initial, medial, final, or solo) and no role term from the NC-2 vocabulary (no suffix, prefix, terminal marker, or slot label), so no functional type can be assigned; the remaining content is semantic (settlement/place)."
+ },
+ {
+  "sign": "M264",
+  "reading": "peN",
+  "assertions": [
+   "[Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M267",
+  "reading": "iN/in (genitive of)",
+  "assertions": [
+   "FACT-CHECK CORRECTION 2026-05-11: Original V6 assignment 'min/mīn' (HIGH) was wrong",
+   "M267 has freq=400 in the Holdat corpus and appears across ALL motif types (unicorn 127, zebu bull 72, elephant 37, rhinoceros 25, etc.) — it is NOT an iconographic fish sign",
+   "The actual Mahadevan fish sign is M047 (freq=13, P47 in Parpola's system, as documented in mahadevan_parpola_crosswalk.json)",
+   "M267 is most likely a high-frequency functional/suffixal sign",
+   "Downgraded from HIGH",
+   "Previous: {'reading': 'min/mīn', 'confidence': 'HIGH', 'basis': 'Fish sign = star/planet (Parpola)'}",
+   "Phase-273: HIGH upgrade — grammar z=8.04 (Phase-74) + motif-independence χ²=12.98 p=0.1124 (Phase-132) + DEDR 494 (iṉ locative) + freq=400 (2nd most common sign) + Elamite 'in' genitive (McAlpin MC-01) + LE-in confirmed (E41)",
+   "Six independent evidence lines."
+  ],
+  "codings": [
+   {
+    "kind": "functional",
+    "type": "TERM-FUNC",
+    "anchor": "final",
+    "sample_size": null,
+    "rule": "NC-2",
+    "basis_quote": "functional/suffixal sign"
+   }
+  ],
+  "ambiguities": [
+   {
+    "quote": "Previous: {'reading': 'min/mīn', 'confidence': 'HIGH', 'basis': 'Fish sign = star/planet (Parpola)'}",
+    "resolution": "Not coded: the same basis states the original assignment was wrong. Only the current assertion 'functional/suffixal sign' is coded, as TERM-FUNC under NC-2."
+   }
+  ],
+  "residue": null
+ },
+ {
+  "sign": "M305",
+  "reading": "ōṭu/comitative",
+  "assertions": [
+   "terminal pinch mark",
+   "UPGRADED: moderate frequency (83)",
+   "consistent TERMINAL position (n=83)",
+   "collocates with HIGH anchor M342 (n=10)",
+   "collocates with HIGH anchor M176 (n=7)",
+   "has specific PDR reading"
+  ],
+  "codings": [
+   {
+    "kind": "functional",
+    "type": "TERM-FUNC",
+    "anchor": "final",
+    "sample_size": null,
+    "rule": "NC-2",
+    "basis_quote": "terminal pinch mark"
+   },
+   {
+    "kind": "summary",
+    "type": "TERMINAL",
+    "anchor": null,
+    "sample_size": 83,
+    "rule": "NC-3",
+    "basis_quote": "consistent TERMINAL position (n=83)"
+   }
+  ],
+  "ambiguities": [
+   {
+    "quote": "terminal pinch mark",
+    "resolution": "Honestly ambiguous between a form description and a terminal mark in the role sense. Coded as TERM-FUNC under NC-2; under NC-4 the separate sample-marked statement 'consistent TERMINAL position (n=83)' is also coded as a summary under NC-3, so both components stand."
+   }
+  ],
+  "residue": null
+ },
+ {
+  "sign": "M311",
+  "reading": "vaTamiin",
+  "assertions": [
+   "[Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M328",
+  "reading": "ā/āl",
+  "assertions": [
+   "Man/person sign"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M329",
+  "reading": "poṉ",
+  "assertions": [
+   "Round 5: MEDIAL position (freq=5), distributional assignment",
+   "Phase-276: dual external corroboration — Elamite 'bur/pur' (MC-21) + Sanskrit 'pura' (SL-14) + DEDR 4524"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "MEDIAL",
+    "anchor": null,
+    "sample_size": 5,
+    "rule": "NC-3",
+    "basis_quote": "Round 5: MEDIAL position (freq=5), distributional assignment"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M330",
+  "reading": "can",
+  "assertions": [
+   "Phase-163 sibilant discovery: reading 'can' found in literature (4 mentions across sources: Parpola_1994)",
+   "Provides partial coverage for Shu-ilishu /su/ phonological slot.",
+   "Phase-276: dual external corroboration — Elamite 'an' (MC-07) + Sanskrit 'annam/anna' (SL-03)"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M336",
+  "reading": "iṉ/locative",
+  "assertions": [
+   "chevron terminal = locative case marker",
+   "UPGRADED: high frequency (161)",
+   "consistent TERMINAL position (n=161)",
+   "collocates with HIGH anchor M342 (n=14)",
+   "collocates with HIGH anchor M099 (n=6)",
+   "collocates with HIGH anchor M267 (n=5)",
+   "collocates with HIGH anchor M342 (n=13)",
+   "collocates with HIGH anchor M267 (n=12)",
+   "collocates with HIGH anchor M176 (n=8)",
+   "has specific PDR reading"
+  ],
+  "codings": [
+   {
+    "kind": "functional",
+    "type": "TERM-FUNC",
+    "anchor": "final",
+    "sample_size": null,
+    "rule": "NC-2",
+    "basis_quote": "chevron terminal = locative case marker"
+   },
+   {
+    "kind": "summary",
+    "type": "TERMINAL",
+    "anchor": null,
+    "sample_size": 161,
+    "rule": "NC-3",
+    "basis_quote": "consistent TERMINAL position (n=161)"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M342",
+  "reading": "ay/ā",
+  "assertions": [
+   "Terminal marker, Dravidian case suffix"
+  ],
+  "codings": [
+   {
+    "kind": "functional",
+    "type": "TERM-FUNC",
+    "anchor": "final",
+    "sample_size": null,
+    "rule": "NC-2",
+    "basis_quote": "Terminal marker, Dravidian case suffix"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M347",
+  "reading": "ka",
+  "assertions": [
+   "Phase-117 grammar inference: slot=MEDIAL_BETWEEN_CONF, n_contexts=7, patterns=['M342-[M347]-M293', 'M028-[M347]-M367', 'M211-[M347]-M099']",
+   "Inferred from Dravidian grammar slot model (Phases 74-112)",
+   "[Phase-120: grammar n_ctx=7≥4 → MEDIUM] [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-117]"
+  ],
+  "codings": [
+   {
+    "kind": "functional",
+    "type": "MED-FUNC",
+    "anchor": "medial",
+    "sample_size": null,
+    "rule": "NC-2",
+    "basis_quote": "slot=MEDIAL_BETWEEN_CONF"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M351",
+  "reading": "vī",
+  "assertions": [
+   "Phase-123 substrate match: Munda 'bi' (seed/sprout)",
+   "DEDR 5388 vī = seed — attested Tamil/Telugu agricultural vocabulary",
+   "Phonological: Munda 'bi' → Dravidian 'vī' (voiced bilabial shift p/b→v)",
+   "Positional: MEDIAL after locative M336=iṉ and before unicorn M211=kol and terminal M342=ay",
+   "Semantic fit: vī (seed/grain) in agricultural-guild inscriptions",
+   "Phase-128 SUBSTRATE-MEDIUM",
+   "[Phase-216: SA-cons=0.17 DEDR✓ source=Phase-128 substrate upgrade]"
+  ],
+  "codings": [
+   {
+    "kind": "functional",
+    "type": "MED-FUNC",
+    "anchor": "medial",
+    "sample_size": null,
+    "rule": "NC-2",
+    "basis_quote": "Positional: MEDIAL after locative M336=iṉ and before unicorn M211=kol and terminal M342=ay"
+   }
+  ],
+  "ambiguities": [
+   {
+    "quote": "Positional: MEDIAL after locative M336=iṉ and before unicorn M211=kol and terminal M342=ay.",
+    "resolution": "Ambiguous in form between a distributional summary and a functional slot statement: it carries no universal quantifier and no sample marker. Coded under NC-2 as a 'between' pattern (MED-FUNC), the specific rule for between patterns, rather than as a weaker summary under NC-7; the ambiguity is recorded here."
+   }
+  ],
+  "residue": null
+ },
+ {
+  "sign": "M362",
+  "reading": "aṇi",
+  "assertions": [
+   "Starburst / asterisk iconography ~ aṇi 'ornament/adorn' (DEDR 0145)",
+   "Phase-103: appears in name-slot patterns between animal classifiers and titles",
+   "Sangam literature: aṇi- prefix in personal names (Aṇi-van, Aṇi-tan)",
+   "Positional: predominantly MEDIAL in personal name sequences",
+   "Freq=3",
+   "Pos=MEDIAL",
+   "name_slots=2",
+   "[Phase-216: SA-cons=0.17 DEDR✓ source=Phase-105]"
+  ],
+  "codings": [
+   {
+    "kind": "functional",
+    "type": "MED-FUNC",
+    "anchor": "medial",
+    "sample_size": null,
+    "rule": "NC-2",
+    "basis_quote": "appears in name-slot patterns between animal classifiers and titles"
+   },
+   {
+    "kind": "functional",
+    "type": "INIT-FUNC",
+    "anchor": "initial",
+    "sample_size": null,
+    "rule": "NC-2",
+    "basis_quote": "aṇi- prefix in personal names"
+   },
+   {
+    "kind": "summary",
+    "type": "MEDIAL",
+    "anchor": null,
+    "sample_size": 3,
+    "rule": "NC-3",
+    "basis_quote": "predominantly MEDIAL in personal name sequences. Freq=3; Pos=MEDIAL"
+   }
+  ],
+  "ambiguities": [
+   {
+    "quote": "aṇi- prefix in personal names",
+    "resolution": "The prefix statement describes Sangam-literature name usage rather than an inscription position. Coded as INIT-FUNC under NC-2 as written (role term 'prefix'), coexisting under NC-4 and NC-6 with this basis's MED-FUNC and MEDIAL summary codings."
+   }
+  ],
+  "residue": null
+ },
+ {
+  "sign": "M367",
+  "reading": "am/neuter",
+  "assertions": [
+   "terminal diamond = neuter suffix",
+   "UPGRADED: high frequency (190)",
+   "consistent TERMINAL position (n=190)",
+   "collocates with HIGH anchor M176 (n=8)",
+   "collocates with HIGH anchor M099 (n=6)",
+   "collocates with HIGH anchor M267 (n=5)",
+   "collocates with HIGH anchor M342 (n=16)",
+   "collocates with HIGH anchor M176 (n=13)",
+   "collocates with HIGH anchor M267 (n=12)",
+   "collocates with HIGH anchor M099 (n=9)",
+   "has specific PDR reading"
+  ],
+  "codings": [
+   {
+    "kind": "functional",
+    "type": "TERM-FUNC",
+    "anchor": "final",
+    "sample_size": null,
+    "rule": "NC-2",
+    "basis_quote": "terminal diamond = neuter suffix"
+   },
+   {
+    "kind": "summary",
+    "type": "TERMINAL",
+    "anchor": null,
+    "sample_size": 190,
+    "rule": "NC-3",
+    "basis_quote": "consistent TERMINAL position (n=190)"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M374",
+  "reading": "kul",
+  "assertions": [
+   "Phase-123 substrate match: Munda 'kul' (tiger/king-tiger, Witzel 1999)",
+   "DEDR 1709 kulam = clan/lineage — attested Tamil noun",
+   "Positional: MEDIAL between authority signs (M328=āl/man, M073=kōṉ/king) and vessel/cargo signs (M065=kuTam, M099=kol)",
+   "Semantic fit: 'kul' (clan-guild) as a social-group identifier within guild-title inscriptions",
+   "The Munda substrate + Dravidian cognate confirms this is a loanword or shared isogloss",
+   "Phase-128 SUBSTRATE-MEDIUM",
+   "[Phase-216: SA-cons=0.17 DEDR✓ source=Phase-128 substrate upgrade]"
+  ],
+  "codings": [
+   {
+    "kind": "functional",
+    "type": "MED-FUNC",
+    "anchor": "medial",
+    "sample_size": null,
+    "rule": "NC-2",
+    "basis_quote": "Positional: MEDIAL between authority signs (M328=āl/man, M073=kōṉ/king) and vessel/cargo signs (M065=kuTam, M099=kol)"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M375",
+  "reading": "taṇ",
+  "assertions": [
+   "Folded-arm sign ~ taṇ 'cool/refreshing' (DEDR 3009) or taṇṭu 'staff/rod'",
+   "Phase-103 NAME_AY_AN pattern: [M375]-M342-M176 (taṇ-ay-an = 'cool/noble man')",
+   "Sangam Akam poetry: taṇ- is a common personal name prefix",
+   "Freq=7",
+   "Pos=MEDIAL",
+   "name_slots=4",
+   "[Phase-216: SA-cons=0.17 DEDR✓ source=Phase-105]"
+  ],
+  "codings": [
+   {
+    "kind": "functional",
+    "type": "INIT-FUNC",
+    "anchor": "initial",
+    "sample_size": null,
+    "rule": "NC-2",
+    "basis_quote": "taṇ- is a common personal name prefix"
+   },
+   {
+    "kind": "summary",
+    "type": "MEDIAL",
+    "anchor": null,
+    "sample_size": 7,
+    "rule": "NC-3",
+    "basis_quote": "Freq=7; Pos=MEDIAL"
+   }
+  ],
+  "ambiguities": [
+   {
+    "quote": "taṇ- is a common personal name prefix",
+    "resolution": "The prefix statement describes Sangam Akam poetry name usage rather than an inscription position. Coded as INIT-FUNC under NC-2 as written (role term 'prefix'), coexisting under NC-4 and NC-6 with this basis's MEDIAL summary coding."
+   }
+  ],
+  "residue": null
+ },
+ {
+  "sign": "M391",
+  "reading": "ka/kaṇ",
+  "assertions": [
+   "Numeral/stroke sign"
+  ],
+  "codings": [],
+  "ambiguities": [],
+  "residue": null
+ },
+ {
+  "sign": "M398",
+  "reading": "kuṟi",
+  "assertions": [
+   "Hook+ring iconography ~ kuṟi 'mark/sign' (DEDR 1769) or kuṟu 'small/short'",
+   "Phase-103: NAME_AY_AN + GENITIVE_NAME_SUFFIX patterns",
+   "Pattern [M267]-[M398]-[M342]: 'of-kuṟi-belonging' = genitive personal name",
+   "Score 1.2 (highest name_score in Phase-103 top candidates)",
+   "Freq=3",
+   "Pos=MEDIAL",
+   "name_slots=3",
+   "[Phase-216: SA-cons=0.17 DEDR✓ source=Phase-105]"
+  ],
+  "codings": [
+   {
+    "kind": "summary",
+    "type": "MEDIAL",
+    "anchor": null,
+    "sample_size": 3,
+    "rule": "NC-3",
+    "basis_quote": "Freq=3; Pos=MEDIAL"
+   }
+  ],
+  "ambiguities": [],
+  "residue": null
+ }
+]

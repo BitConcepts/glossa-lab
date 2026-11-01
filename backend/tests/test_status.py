@@ -16,6 +16,21 @@ def test_status_endpoint_returns_200(client):
     assert "pipelines" in data
 
 
+def test_status_carries_service_identity(client):
+    """Spec 081 FR-007: status carries identity, not liveness alone.
+
+    The identity block lives on /status because /health's key set is
+    pinned minimal by TEST-SEC-002.
+    """
+    response = client.get("/api/v1/status")
+    data = response.json()
+    assert data["app"] == "Glossa Lab"
+    assert isinstance(data["host"], str) and data["host"]
+    assert "started_at" in data
+    assert "data_dir" in data
+    assert "db_ready" in data
+
+
 def test_status_jobs_counts_structure(client):
     """Job counts include expected keys."""
     response = client.get("/api/v1/status")

@@ -1,0 +1,66 @@
+{
+ "documents": [
+  {
+   "name": "projects/theindusscript/databases/(default)/documents/indusarrays/bad001",
+   "fields": {
+    "sideline": {
+     "stringValue": "a"
+    },
+    "texts": {
+     "arrayValue": {
+      "values": [
+       {
+        "stringValue": "342"
+       },
+       {
+        "stringValue": "99"
+       }
+      ]
+     }
+    },
+    "S1": {
+     "stringValue": "342"
+    },
+    "S2": {
+     "stringValue": "99"
+    },
+    "S3": {
+     "stringValue": "0"
+    },
+    "S4": {
+     "stringValue": "0"
+    },
+    "S5": {
+     "stringValue": "0"
+    },
+    "S6": {
+     "stringValue": "0"
+    },
+    "S7": {
+     "stringValue": "0"
+    },
+    "S8": {
+     "stringValue": "0"
+    },
+    "S9": {
+     "stringValue": "0"
+    },
+    "S10": {
+     "stringValue": "0"
+    },
+    "S11": {
+     "stringValue": "0"
+    },
+    "S12": {
+     "stringValue": "0"
+    },
+    "S13": {
+     "stringValue": "0"
+    },
+    "S14": {
+     "stringValue": "0"
+    }
+   }
+  }
+ ]
+}

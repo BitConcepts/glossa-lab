@@ -42,7 +42,9 @@ repository, the row says so and names the file and its pin.
   reason: the Shakti corpus and its row-grades (restricted-local,
   never published); CISI material (licence terms — statistics
   are publishable, the scans are never redistributed); the
-  indusarrays layer (lost; re-acquisition is Route 2, pending);
+  indusarrays layer (held on the owner's desktop, single-copy
+  and gitignored — not in this repository; located 2026-10-25,
+  PR #393 — see the correction note in the Spec 054 row);
   or the ICIT website CSVs (lost).
 
 ## Correction note — 2026-10-25 (red-team finding RT-10)
@@ -107,7 +109,7 @@ checked first-hand against current `main`:
 | 041 | Mapping EXECUTED | PARTIAL |
 | 052 | INCONSISTENT | PARTIAL |
 | 054 | STRICT CORPUS NOT PINNABLE (closure, no counts) | TRUST-ONLY |
-| 062 | NO TARGET UNDER EITHER SCENARIO | RECOMPUTABLE |
+| 062 | NO TARGET UNDER EITHER SCENARIO | PARTIAL |
 | 063 | RECOVERED | PARTIAL |
 | 064 | IDENTIFICATION FAILED | PARTIAL |
 | 065 | Class A complete — both sources resolved | PARTIAL |
@@ -128,7 +130,12 @@ Counts: 3 recomputable, 11 partial, 2 trust-only.
   show a Harappa start rate above the 0.40 bar (0.8739 and
   0.6111; share 1.0 against the registered ≥ 70% criterion).
   Two signs only; nothing about P000; nothing about the INITIAL
-  class as a whole.
+  class as a whole. Qualification (from the register, §6;
+  restored here 2026-10-25, programme red team): the withholding
+  is site withholding, not independence of scholarly lineage —
+  the withheld Harappa sequences are Yajnadevam-authored and
+  were withheld inside the pipeline, not drawn from an
+  independent source.
 - **Outcome record.** `specs/036-pred-2026-011-scoring/outcome.md`
   (freeze digest `bbbd5c4f…` in the spec's `freeze.json`).
 - **Script.** `backend/scripts/phase400_pred011_scoring.py`
@@ -279,11 +286,17 @@ Counts: 3 recomputable, 11 partial, 2 trust-only.
   all committed, and gate G1 re-verified them at the run.
 - **Why this label.** The verdict-bearing input is the V3
   layer's data file — the Firestore "indusarrays" dump the
-  Phase-43 record names as its corpus's source. It is **lost**:
-  absent from this tree, from the programme's database (whose
-  only Indus text is the synthetic prototype), and from every
-  neighbouring tree scanned. Re-acquisition is Route 2,
-  prepared 2026-10-24 and still pending. An outsider can audit
+  Phase-43 record names as its corpus's source. **Correction
+  (2026-10-25, programme red team, findings F-2/C-6): the file
+  was never lost.** It is held on the owner's desktop
+  (TRISTEN-DESKTOP) at its original loader path in the Windows
+  glossa-lab clone, gitignored, 3,916 records, SHA-256
+  073a83aa…, located and intake-pinned the same day (PR #393).
+  It is absent from this tree and is not public, so the
+  TRUST-ONLY label stands for an outsider — but for the
+  corrected reason: held, single-copy, desktop-only, not
+  public; not lost, and Route 2 re-acquisition is not needed
+  for the data. An outsider can audit
   the recorded identification attempt — the machine record
   carries the reference census (3,916 records / 2,665 dockeys /
   3,137 sequences / 12,494 sign instances) and the censuses of
@@ -291,7 +304,7 @@ Counts: 3 recomputable, 11 partial, 2 trust-only.
   statement about the programme's own stores, and it cannot be
   re-derived from public inputs.
 
-## Spec 062 — NO TARGET UNDER EITHER SCENARIO — RECOMPUTABLE
+## Spec 062 — NO TARGET UNDER EITHER SCENARIO — PARTIAL
 
 - **Verdict and scope.** Inside the frozen search frame (grid
   multiples m = 1…25, 199 trials per point), no grid point
@@ -317,12 +330,33 @@ Counts: 3 recomputable, 11 partial, 2 trust-only.
   `specs/028-harappa-robustness/margins-audit.json`
   `15ae0281…`; Spec 028 freeze record `376cd8e7…`; anchors
   `df0cf620…` — all committed.
-- **Why this label.** Every input is committed at its pin, and
-  step 0 reproduces the recorded Arm A summary digit-for-digit
-  — that reproduction is the cheap first check. The honest
-  caveat is cost, not access: the full grid is 9,950 trials
-  and ran as a multi-day checkpointed computation on the
-  owner's desktop. Recomputable, but not quick.
+- **Why this label. PARTIAL (corrected 2026-10-25,
+  programme red team, finding F-1 — this row previously read
+  RECOMPUTABLE, which was false as filed).** The six pinned
+  inputs above are committed and hash exactly, and the
+  recorded headline (best point 0.1759) is consistent with
+  the committed machine record. But the run also reads two
+  further inputs from a local store that this row did not
+  name: `corpora/downloads/spec028_harappa/icit_converted_v2_keyed.json`
+  (SHA-256 bbfdbcd5…, held in the local store, not committed)
+  and `corpora/downloads/spec028_harappa/horus_inscriptions.csv`
+  (SHA-256 c368f290…, the layer Spec 040's row names as
+  fetchable from horus84/Computational_Linguistics at
+  ac44f08c). The script takes the store path from the
+  SPEC028_STORE environment variable (default
+  `corpora/downloads/spec028_harappa/`). An outsider
+  following only this row hits a missing-file error at
+  step 0. Second caveat: step-0 gate 0.3 compares its
+  recomputed summary with exact equality, and on a second
+  conforming machine the recomputed interval's lower bound
+  differed from the recorded one by ~1×10⁻¹⁶ (one
+  floating-point step), closing the run INVALID; the
+  execution environment is not pinned (pyproject declares
+  numpy>=1.26,<3 and does not declare scipy, which the
+  script imports). "Digit-for-digit" is therefore a property
+  of the original machine configuration, not of the
+  artefact. The full grid is also 9,950 trials and ran as a
+  multi-day checkpointed computation on the owner's desktop.
 
 ## Spec 063 — RECOVERED — PARTIAL
 

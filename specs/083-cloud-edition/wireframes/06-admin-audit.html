@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — Admin · Audit log (Spec 083 wireframe 06)</title>
+<link rel="stylesheet" href="wireframes.css">
+</head>
+<body>
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-row">
+        <div class="tile">G</div>
+        <div>
+          <div class="brand-name">Glossa Lab</div>
+          <div class="brand-sub">Epistemic research workbench</div>
+        </div>
+      </div>
+    </div>
+    <div class="program-switch">
+      <div class="ps-label">Program</div>
+      <div class="ps-name">Indus Script <span>▾</span></div>
+      <div class="ps-q">What do the signs of the Indus script mean?</div>
+    </div>
+    <nav class="nav">
+      <h4>Program</h4>
+      <a href="#"><span class="ic">⌂</span>Home</a>
+      <a href="#"><span class="ic">§</span>Claims</a>
+      <a href="#"><span class="ic">✓</span>Digestion</a>
+      <a href="#"><span class="ic">▤</span>Evidence &amp; sources</a>
+      <h4>Tool</h4>
+      <a href="#"><span class="ic">▦</span>Programs</a>
+      <a href="#"><span class="ic">⚙</span>Jobs</a>
+      <a href="#"><span class="ic">♥</span>Status</a>
+      <a href="#"><span class="ic">⚙</span>Settings</a>
+      <h4>Admin</h4>
+      <a href="04-admin-users.html"><span class="ic">👥</span>Users</a>
+      <a href="05-admin-invites.html"><span class="ic">✉</span>Invites<span class="count">1</span></a>
+      <a href="06-admin-audit.html" class="active"><span class="ic">☰</span>Audit log</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="crumb"><b>Glossa Lab</b> / Admin / Audit log</span>
+      <div class="spacer"></div>
+      <div class="service-chip"><span class="dot"></span><span><b>Glossa Lab v0.1.0</b> · cloud · checked 09:41</span></div>
+      <div class="user-chip"><span class="avatar">g</span><span><b>glassbreak</b> <span class="role">· admin</span></span><span>▾</span></div>
+    </div>
+
+    <div class="content">
+      <div class="page-head">
+        <h1>Admin</h1>
+        <p class="lede">The append-only record of security-relevant events: who signed in, who was invited, what changed, what was published. Entries cannot be edited or deleted from any screen — including this one.</p>
+      </div>
+
+      <div class="tabs">
+        <a href="04-admin-users.html">Users<span class="count">3</span></a>
+        <a href="05-admin-invites.html">Invites<span class="count">1 outstanding</span></a>
+        <a href="06-admin-audit.html" class="active">Audit log</a>
+      </div>
+
+      <div class="head-row" style="margin-bottom:14px">
+        <div class="field" style="margin:0;min-width:180px"><label>Event</label><select><option>All events</option><option>Logins</option><option>Invites</option><option>User changes</option><option>Publishes</option></select></div>
+        <div class="field" style="margin:0;min-width:180px"><label>Actor</label><select><option>Everyone</option><option>glassbreak</option><option>j-mensah</option><option>system</option></select></div>
+        <div class="spacer"></div>
+        <span class="row-meta">Showing Oct 30 · newest first · times in the viewer's zone</span>
+      </div>
+
+      <div class="card">
+        <table class="tbl">
+          <thead><tr><th>Time</th><th>Actor</th><th>Event</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td>09:41</td><td><b>glassbreak</b></td><td><span class="chip neutral">login</span></td><td>Signed in (success).</td></tr>
+            <tr><td>09:38</td><td><b>glassbreak</b></td><td><span class="chip neutral">invite created</span></td><td>Invite for Indus Script, expires Nov 6; email noted (specimen@example.org).</td></tr>
+            <tr><td>09:12</td><td><b>j-mensah</b></td><td><span class="chip neutral">login</span></td><td>Signed in (success).</td></tr>
+            <tr><td>09:05</td><td><b>j-mensah</b></td><td><span class="chip ok">invite redeemed</span></td><td>Account created; membership granted: Indus Script.</td></tr>
+            <tr><td>08:57</td><td><b>glassbreak</b></td><td><span class="chip bad">invite revoked</span></td><td>Outstanding invite withdrawn before use.</td></tr>
+            <tr><td>08:52</td><td><b>—</b></td><td><span class="chip warn">login failed</span></td><td>Unknown username presented; no account exists for it. <span class="chip line">specimen</span></td></tr>
+            <tr><td>08:44</td><td><b>system</b></td><td><span class="chip contest">dataset published</span></td><td>Bundle 2026-10-30-03 · source commit 124a1ac3 · marker scan passed. <span class="chip line">specimen</span></td></tr>
+            <tr><td>08:31</td><td><b>glassbreak</b></td><td><span class="chip ok">setup completed</span></td><td>First-run setup created the admin account. This is the log's first entry — by construction.</td></tr>
+          </tbody>
+        </table>
+        <p class="row-meta" style="margin-top:10px">A failed dataset publish (marker scan) is also an entry here — with the scan's findings named — so a blocked publish is a recorded event, not a silent one.</p>
+      </div>
+
+      <div class="annotation">
+        <div class="a-title">Annotation — wireframe 06 · not part of the UI</div>
+        <dl>
+          <dt>Purpose</dt><dd>Make FR-012 inspectable: the audit log as a working surface, not a database promise. If an event class matters, its row shape is designed here.</dd>
+          <dt>Primary action</dt><dd>Reading/filtering — deliberately no mutating action exists on this screen.</dd>
+          <dt>Changed &amp; why</dt><dd>New surface. The specimen rows double as the event catalogue: logins (both outcomes), the full invite lifecycle, setup, and publishes — including the *failed* publish, which most audit designs forget and this program's honesty rules require. The setup row's note ("the log's first entry — by construction") encodes an invariant the Phase 2 tests can check exactly.</dd>
+          <dt>Spec claims</dt><dd>C083-12 (audit completeness + append-only), C083-3 (setup is the first entry), C083-6 (failed scans are recorded events).</dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</div>
+<nav class="mobile-nav">
+  <a href="#"><span class="mi">⌂</span>Home</a>
+  <a href="#"><span class="mi">§</span>Claims</a>
+  <a href="#"><span class="mi">✓</span>Digestion</a>
+  <a href="#"><span class="mi">⚙</span>Jobs</a>
+  <a href="06-admin-audit.html" class="active"><span class="mi">☰</span>More</a>
+</nav>
+</body>
+</html>

@@ -290,3 +290,42 @@ def test_upload_pdf_accepted(client, tmp_path):
         d = r.json()
         assert d["status"] == "uploaded"
         assert d["filename"] == "test_e2e.pdf"
+
+
+# ── Leg C hardening (C-05 / C-06) ─────────────────────────────────────────────
+
+def test_upload_traversal_filename_is_confined(client):
+    """C-05: a ../ filename is reduced to a basename inside user_uploads."""
+    fake_pdf = b"%PDF-1.4\n1 0 obj\n<< >>\nendobj\n"
+    r = client.post(
+        "/api/v1/indus-evidence/upload",
+        files={"file": ("../../legc_escape.pdf", fake_pdf, "application/pdf")},
+    )
+    assert r.status_code == 200, r.text
+    assert r.json()["filename"] == "legc_escape.pdf"
+
+
+def test_upload_non_pdf_content_rejected(client):
+    """C-05: a .pdf name with non-PDF bytes is rejected (magic check)."""
+    r = client.post(
+        "/api/v1/indus-evidence/upload",
+        files={"file": ("fake.pdf", b"NOT-A-REAL-PDF", "application/pdf")},
+    )
+    assert r.status_code == 400, r.text
+    assert "PDF" in r.json()["detail"]
+
+
+def test_import_url_loopback_blocked(client):
+    """C-06: loopback import targets are refused before any fetch."""
+    r = client.post("/api/v1/indus-evidence/import-url", json={
+        "url": "http://127.0.0.1:8001/api/v1/health",
+    })
+    assert r.status_code == 400, r.text
+
+
+def test_import_url_non_http_scheme_blocked(client):
+    """C-06: non-http(s) schemes are refused."""
+    r = client.post("/api/v1/indus-evidence/import-url", json={
+        "url": "file:///etc/passwd",
+    })
+    assert r.status_code == 400, r.text

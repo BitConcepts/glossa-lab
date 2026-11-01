@@ -1,24 +1,39 @@
 /**
- * StatusView — live system status + hardware metrics dashboard.
+ * StatusView — the Status screen (Spec 081 step 7, wireframe 14).
  *
- * Streams CPU, RAM, GPU, disk and network metrics via SSE at 1-second intervals.
- * Shows animated gauges, sparkline history, peak tracking, and clear-peaks button.
- * Also displays backend health and catalog summary.
+ * Identity before metrics, always: the first card names what is
+ * actually answering — application, version + build, host, data
+ * folder, serving-since — read from the serving backend itself
+ * (/status + /health), never inferred (FR-007 / C081-3). Then
+ * health, the two foundation sets shown separately and labelled
+ * (D2.1), the frontend error-reporting state (GAP-C09F: never fired /
+ * last confirmed / last FAILED), the machine metrics (kept from the
+ * previous dashboard; streamed by fetch, never EventSource — Spec
+ * 082), and finally the session log: this session's lines only,
+ * framed as such, with earlier lines behind a labelled history
+ * toggle. The bottom panel that used to carry the log is gone (Q8).
  */
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import {
   clearPeaks,
   getCatalog,
+  getFoundationStatus,
   getHealth,
+  getLog,
+  getResearchFoundationCheck,
   getStatus,
-  getSystemMetricsStreamUrl,
   listStudies,
+  streamSystemMetrics,
   type CatalogResponse,
+  type FoundationStatus,
   type HealthResponse,
+  type ResearchFoundationCheck,
   type StatusResponse,
   type SystemMetrics,
 } from "../api";
+import { getFeReportState, subscribeFeReport } from "../feReport";
 import { useToast } from "../hooks/useToast";
+import { fmtClock, fmtDayTime, humanizeUptime } from "./ui081";
 
 const HISTORY_LEN = 60; // 60 seconds of sparkline history
 
@@ -118,6 +133,41 @@ function CoreGrid({ values }: { values: number[] }) {
   );
 }
 
+// ── Identity rows ─────────────────────────────────────────────────────────────
+
+function IdRow({ k, children }: { k: string; children: React.ReactNode }) {
+  return (
+    <div style={{ display: "flex", gap: 12, padding: "5px 0", borderBottom: "1px solid #f3f4f6", fontSize: 13, alignItems: "baseline" }}>
+      <span style={{ color: "#9ca3af", width: 130, flexShrink: 0, fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5 }}>{k}</span>
+      <span style={{ color: "#111827", minWidth: 0 }}>{children}</span>
+    </div>
+  );
+}
+
+// ── Session log parsing ───────────────────────────────────────────────────────
+
+interface LogLine { raw: string; ts: number | null; level: string; text: string }
+
+function parseLogLine(raw: string): LogLine {
+  try {
+    const j = JSON.parse(raw) as { timestamp?: string; level?: string; module?: string; message?: string };
+    if (j && typeof j === "object" && typeof j.message === "string") {
+      let ts: number | null = null;
+      if (j.timestamp) {
+        const iso = j.timestamp.replace(" ", "T").replace(",", ".");
+        const parsed = Date.parse(iso.endsWith("Z") ? iso : `${iso}Z`);
+        ts = isNaN(parsed) ? null : parsed;
+      }
+      return {
+        raw, ts,
+        level: j.level ?? "",
+        text: `${j.timestamp ?? ""} ${j.level ?? ""} ${j.module ?? ""} ${j.message}`.trim(),
+      };
+    }
+  } catch { /* not a JSON line — show it raw */ }
+  return { raw, ts: null, level: "", text: raw };
+}
+
 // ── Main StatusView ───────────────────────────────────────────────────────────
 
 export function StatusView() {
@@ -129,6 +179,13 @@ export function StatusView() {
   const [metrics, setMetrics] = useState<SystemMetrics | null>(null);
   const [connError, setConnError] = useState<string | null>(null);
   const [clearingPeaks, setClearingPeaks] = useState(false);
+  const [checkedAt, setCheckedAt] = useState<Date | null>(null);
+  const [foundation, setFoundation] = useState<FoundationStatus | null>(null);
+  const [nativeCheck, setNativeCheck] = useState<ResearchFoundationCheck | null>(null);
+  const [logLines, setLogLines] = useState<LogLine[] | null>(null);
+  const [logExists, setLogExists] = useState(true);
+  const [showFullLog, setShowFullLog] = useState(false);
+  const fe = useSyncExternalStore(subscribeFeReport, getFeReportState);
 
   // Sparkline history buffers
   const history = useRef<Record<string, number[]>>({
@@ -142,12 +199,12 @@ export function StatusView() {
     history.current[key] = buf;
   }, []);
 
-  // Backend health poll
+  // Backend identity + health poll
   useEffect(() => {
     const poll = async () => {
       try {
         const [h, s] = await Promise.all([getHealth(), getStatus()]);
-        setHealth(h); setAppStatus(s); setConnError(null);
+        setHealth(h); setAppStatus(s); setConnError(null); setCheckedAt(new Date());
         getCatalog().then(setCatalog).catch(() => {});
         listStudies().then((ss) => setStudyCount(ss.length)).catch(() => {});
       } catch (e) {
@@ -159,38 +216,49 @@ export function StatusView() {
     return () => clearInterval(id);
   }, []);
 
-  // SSE metrics stream
-  const esRef = useRef<EventSource | null>(null);
-  const [streaming, setStreaming] = useState(false);
-
-  const startStream = useCallback(() => {
-    if (esRef.current) return;
-    const es = new EventSource(getSystemMetricsStreamUrl());
-    esRef.current = es;
-    setStreaming(true);
-    es.onmessage = (ev) => {
-      try {
-        const m: SystemMetrics = JSON.parse(ev.data);
-        setMetrics(m);
-        pushHistory("cpu", m.cpu.percent);
-        pushHistory("ram", m.ram.percent);
-        pushHistory("gpu", m.gpu[0]?.utilization_pct ?? 0);
-        pushHistory("disk_read", m.disk.read_mbps);
-        pushHistory("disk_write", m.disk.write_mbps);
-        pushHistory("net_send", m.network.send_mbps * 1000);
-        pushHistory("net_recv", m.network.recv_mbps * 1000);
-      } catch { /* ignore */ }
-    };
-    es.onerror = () => {
-      es.close(); esRef.current = null; setStreaming(false);
-      setTimeout(startStream, 3000);
-    };
-  }, [pushHistory]);
-
+  // Foundation — both sets, kept separate (D2.1)
   useEffect(() => {
-    startStream();
-    return () => { esRef.current?.close(); esRef.current = null; };
-  }, [startStream]);
+    getFoundationStatus().then(setFoundation).catch(() => {});
+    getResearchFoundationCheck().then(setNativeCheck).catch(() => {});
+  }, []);
+
+  // Session log
+  const loadLog = useCallback(() => {
+    getLog(500)
+      .then((r) => { setLogLines(r.lines.map(parseLogLine)); setLogExists(r.exists); })
+      .catch(() => { setLogLines([]); });
+  }, []);
+  useEffect(() => { loadLog(); }, [loadLog]);
+
+  // Metrics stream — fetch-streaming (Spec 082: EventSource cannot
+  // send the Authorization header).
+  const [streaming, setStreaming] = useState(false);
+  useEffect(() => {
+    let cancelled = false;
+    const ctrl = new AbortController();
+    const run = async () => {
+      while (!cancelled) {
+        try {
+          setStreaming(true);
+          for await (const m of streamSystemMetrics(ctrl.signal)) {
+            if (cancelled) break;
+            setMetrics(m);
+            pushHistory("cpu", m.cpu.percent);
+            pushHistory("ram", m.ram.percent);
+            pushHistory("gpu", m.gpu[0]?.utilization_pct ?? 0);
+            pushHistory("disk_read", m.disk.read_mbps);
+            pushHistory("disk_write", m.disk.write_mbps);
+            pushHistory("net_send", m.network.send_mbps * 1000);
+            pushHistory("net_recv", m.network.recv_mbps * 1000);
+          }
+        } catch { /* stream ended or backend down — retry below */ }
+        setStreaming(false);
+        if (!cancelled) await new Promise((r) => setTimeout(r, 3000));
+      }
+    };
+    void run();
+    return () => { cancelled = true; ctrl.abort(); };
+  }, [pushHistory]);
 
   const handleClearPeaks = async () => {
     setClearingPeaks(true);
@@ -202,10 +270,32 @@ export function StatusView() {
   const healthy = health?.status === "healthy";
   const m = metrics;
 
+  // Session framing for the log: lines at/after the backend's own
+  // started_at are this session; unparsed lines follow the line above.
+  const sessionStartMs = appStatus?.started_at ? Date.parse(appStatus.started_at) : NaN;
+  const sessionLines: LogLine[] = [];
+  const historyLines: LogLine[] = [];
+  if (logLines) {
+    let inSession = isNaN(sessionStartMs);
+    for (const l of logLines) {
+      if (l.ts !== null && !isNaN(sessionStartMs)) inSession = l.ts >= sessionStartMs;
+      (inSession ? sessionLines : historyLines).push(l);
+    }
+  }
+  const sessionErrors = sessionLines.filter((l) => l.level === "ERROR" || l.level === "CRITICAL").length;
+  const sessionWarnings = sessionLines.filter((l) => l.level === "WARNING").length;
+  const visibleLog = showFullLog ? (logLines ?? []) : sessionLines.slice(-50);
+
   return (
-    <div>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem" }}>
-        <h2 style={{ margin: 0 }}>System Status</h2>
+    <div style={{ maxWidth: 1180, margin: "0 auto", width: "100%" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1rem", flexWrap: "wrap", gap: 10 }}>
+        <div>
+          <h2 style={{ margin: 0, fontSize: 22 }}>Status</h2>
+          <div style={{ fontSize: 13, color: "#6b7280", marginTop: 4, maxWidth: "68ch" }}>
+            What the tool is, whether it is healthy, and what it has been doing this
+            session. Machine numbers are secondary; identity comes first.
+          </div>
+        </div>
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
           {streaming && (
             <span style={{ fontSize: 11, color: "#16a34a", display: "flex", alignItems: "center", gap: 4 }}>
@@ -220,8 +310,53 @@ export function StatusView() {
         </div>
       </div>
 
-      {/* Backend health */}
-      <div style={{ padding: "12px 16px", borderRadius: 8, border: `1px solid ${healthy ? "#bbf7d0" : "#fca5a5"}`, background: healthy ? "#f0fdf4" : "#fef2f2", marginBottom: "1.5rem" }}>
+      {/* ── Identity — what is actually answering ── */}
+      <section style={sectionStyle}>
+        <div style={sectionHeader}><span style={sectionTitle}>Identity — what is answering</span></div>
+        {connError && !appStatus ? (
+          <div style={{ fontSize: 13, color: "#b91c1c" }}>
+            The backend is not answering — {connError}. Nothing below can be
+            trusted until it does; the tray's status line says whether the
+            service is running at all.
+          </div>
+        ) : (
+          <>
+            <IdRow k="Application">{appStatus?.app ?? "Glossa Lab"}</IdRow>
+            <IdRow k="Version">
+              {health ? <>v{health.version}{health.build ? <> · build <span style={{ fontFamily: "monospace" }}>{health.build}</span></> : ""}</> : "—"}
+            </IdRow>
+            <IdRow k="Host">
+              {appStatus?.host ?? "—"}
+              <span style={{ color: "#6b7280" }}> · served to this browser from {window.location.origin}</span>
+            </IdRow>
+            <IdRow k="Data folder">
+              {appStatus?.data_dir
+                ? <><span style={{ fontFamily: "monospace", fontSize: 12 }}>{appStatus.data_dir}</span>
+                    <span style={{ color: "#6b7280" }}> · database {appStatus.db_ready ? "verified at startup" : "NOT verified"}</span></>
+                : "—"}
+            </IdRow>
+            <IdRow k="Serving since">
+              {appStatus?.started_at
+                ? <>{fmtDayTime(appStatus.started_at)} · up {health ? humanizeUptime(health.uptime_seconds) : "—"}</>
+                : "—"}
+            </IdRow>
+            <IdRow k="API token">
+              {health?.auth === "token"
+                ? "Required — this app sends the token the tray opened it with (Spec 082)"
+                : health?.auth === "disabled"
+                  ? "Disabled on this backend — no token is required"
+                  : "—"}
+            </IdRow>
+            <div style={{ fontSize: 11, color: "#9ca3af", marginTop: 8 }}>
+              Identity read from the serving backend{checkedAt ? ` at ${fmtClock(checkedAt.toISOString())}` : ""} — this
+              screen never guesses which service is answering.
+            </div>
+          </>
+        )}
+      </section>
+
+      {/* ── Health ── */}
+      <div style={{ padding: "12px 16px", borderRadius: 8, border: `1px solid ${healthy ? "#bbf7d0" : "#fca5a5"}`, background: healthy ? "#f0fdf4" : "#fef2f2", marginBottom: "1rem" }}>
         <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
           <span style={{ fontSize: 10, fontWeight: 700, color: "#9ca3af", textTransform: "uppercase" }}>Backend</span>
           <span style={{ fontWeight: 700, color: healthy ? "#16a34a" : "#dc2626" }}>
@@ -230,7 +365,7 @@ export function StatusView() {
           {health && (
             <>
               <span style={{ fontSize: 12, color: "#6b7280" }}>v{health.version}</span>
-              <span style={{ fontSize: 12, color: "#6b7280" }}>up {Math.round(health.uptime_seconds)}s</span>
+              <span style={{ fontSize: 12, color: "#6b7280" }}>up {humanizeUptime(health.uptime_seconds)}</span>
             </>
           )}
           {catalog && (
@@ -245,6 +380,74 @@ export function StatusView() {
           )}
         </div>
       </div>
+
+      {/* ── Frontend error reporting (GAP-C09F) ── */}
+      <section style={sectionStyle}>
+        <div style={sectionHeader}><span style={sectionTitle}>Frontend error reporting</span></div>
+        {fe.lastStatus === "never" && (
+          <div style={{ fontSize: 13, color: "#374151" }}>
+            No frontend error has been reported this session — the reporter has
+            not fired yet. That is a stated state, not missing data: when a
+            report fires, its outcome lands here.
+          </div>
+        )}
+        {fe.lastStatus === "confirmed" && (
+          <div style={{ fontSize: 13, color: "#374151" }}>
+            Last report <b style={{ color: "#15803d" }}>confirmed by the server</b>
+            {fe.lastAt ? <> at {fmtClock(fe.lastAt)}</> : ""} · {fe.confirmed} confirmed
+            of {fe.attempted} sent this session.
+          </div>
+        )}
+        {fe.lastStatus === "failed" && (
+          <div style={{ fontSize: 13, color: "#374151" }}>
+            Last report <b style={{ color: "#b91c1c" }}>FAILED</b>
+            {fe.lastAt ? <> at {fmtClock(fe.lastAt)}</> : ""} ({fe.lastDetail}) — it did
+            not reach the backend log; the failure itself is in the browser
+            console. {fe.confirmed} of {fe.attempted} reports confirmed this session.
+          </div>
+        )}
+      </section>
+
+      {/* ── Foundation — two sets, labelled separately (D2.1) ── */}
+      <section style={sectionStyle}>
+        <div style={sectionHeader}><span style={sectionTitle}>Foundation check — two sets, shown separately</span></div>
+        <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+          <div style={{ flex: "1 1 300px", border: "1px solid #f3f4f6", borderRadius: 8, padding: "10px 14px" }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: "#374151", marginBottom: 4 }}>The program's canonical record</div>
+            {foundation ? (
+              <div style={{ fontSize: 12, color: "#6b7280", lineHeight: 1.6 }}>
+                Verdict: <b style={{ color: "#111827" }}>{foundation.verdict ?? "not run yet"}</b>
+                {" · "}{foundation.n_ok} ok · {foundation.n_fail} failed · {foundation.n_warn} warnings
+                {foundation.last_checked_at && <><br />Last checked {fmtDayTime(foundation.last_checked_at)}</>}
+                {foundation.running && <><br />A check is running now.</>}
+                {foundation.dirty && <><br />Inputs changed since the last check.</>}
+              </div>
+            ) : (
+              <div style={{ fontSize: 12, color: "#9ca3af" }}>Not answering.</div>
+            )}
+          </div>
+          <div style={{ flex: "1 1 300px", border: "1px solid #f3f4f6", borderRadius: 8, padding: "10px 14px" }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: "#374151", marginBottom: 4 }}>This instance's own checks (API-native set)</div>
+            {nativeCheck?.summary ? (
+              <div style={{ fontSize: 12, color: "#6b7280", lineHeight: 1.6 }}>
+                Verdict: <b style={{ color: "#111827" }}>{nativeCheck.summary.overall_status ?? "—"}</b>
+                {" · "}{nativeCheck.summary.n_pass ?? 0} passed · {nativeCheck.summary.n_fail ?? 0} failed · {nativeCheck.summary.n_warn ?? 0} warnings
+                {nativeCheck.timestamp && <><br />Read {fmtDayTime(nativeCheck.timestamp)}</>}
+                <br />A different set from the canonical record — the two are
+                never merged into one number.
+              </div>
+            ) : (
+              <div style={{ fontSize: 12, color: "#9ca3af" }}>Not answering.</div>
+            )}
+          </div>
+        </div>
+        <button
+          onClick={() => window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: "foundation-check" } }))}
+          style={{ marginTop: 10, padding: "5px 12px", border: "1px solid #e5e7eb", borderRadius: 6, background: "none", cursor: "pointer", fontSize: 12, color: "#374151" }}
+        >
+          Open foundation check
+        </button>
+      </section>
 
       {!m && (
         <div style={{ textAlign: "center", padding: "3rem", color: "#9ca3af" }}>
@@ -391,6 +594,64 @@ export function StatusView() {
           )}
         </>
       )}
+
+      {/* ── Session log ── */}
+      <section style={sectionStyle}>
+        <div style={sectionHeader}>
+          <span style={sectionTitle}>
+            Session log — showing this session only
+            {appStatus?.started_at ? ` (since ${fmtClock(appStatus.started_at)})` : ""}
+          </span>
+          <button onClick={loadLog}
+            style={{ padding: "4px 12px", border: "1px solid #e5e7eb", borderRadius: 4, background: "#f9fafb", cursor: "pointer", fontSize: 12, color: "#6b7280" }}>
+            Refresh
+          </button>
+        </div>
+        <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 8 }}>
+          {sessionErrors} errors · {sessionWarnings} warnings this session. Warnings and
+          errors are counted for this session only — a clean count here never describes
+          earlier runs.
+        </div>
+        {!logExists && (
+          <div style={{ fontSize: 12, color: "#9ca3af" }}>No log file yet — the backend has not written one.</div>
+        )}
+        {logLines === null && logExists && (
+          <div style={{ fontSize: 12, color: "#9ca3af" }}>Loading the log…</div>
+        )}
+        {logLines !== null && logExists && visibleLog.length === 0 && (
+          <div style={{ fontSize: 12, color: "#9ca3af" }}>Nothing in the log for this session yet.</div>
+        )}
+        {visibleLog.length > 0 && (
+          <pre style={{
+            margin: 0, maxHeight: 340, overflowY: "auto", background: "#0f172a", color: "#cbd5e1",
+            borderRadius: 8, padding: "10px 12px", fontSize: 11, lineHeight: 1.55, whiteSpace: "pre-wrap",
+            wordBreak: "break-word",
+          }}>
+            {visibleLog.map((l, i) => (
+              <div key={i} style={{
+                color: l.level === "ERROR" || l.level === "CRITICAL" ? "#fca5a5"
+                  : l.level === "WARNING" ? "#fcd34d" : undefined,
+              }}>
+                {l.text}
+              </div>
+            ))}
+          </pre>
+        )}
+        {historyLines.length > 0 && (
+          <button
+            onClick={() => setShowFullLog((v) => !v)}
+            style={{ marginTop: 10, padding: "5px 12px", border: "1px solid #e5e7eb", borderRadius: 6, background: "none", cursor: "pointer", fontSize: 12, color: "#374151" }}
+          >
+            {showFullLog ? "Hide the full log" : `Full log — includes ${historyLines.length} earlier lines (history)`}
+          </button>
+        )}
+        {showFullLog && (
+          <div style={{ fontSize: 11, color: "#b45309", marginTop: 6 }}>
+            The full log includes lines from before this session started — history,
+            not this session's record.
+          </div>
+        )}
+      </section>
 
       <style>{`@keyframes healthPulse { 0%,100%{opacity:1} 50%{opacity:0.3} }`}</style>
     </div>

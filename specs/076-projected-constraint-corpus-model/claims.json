@@ -1,0 +1,485 @@
+{
+ "claims": [
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "The scope is the derivation of spec section 3.4 over one named, pinned frame (the pilot frame of section 5), under assumption set A-FRAME / A-DIR / A-FACE / A-KEY. It excludes any statement about what any sign means, about any other frame, and about completions' existence. The claim as drafted states the proposition in full: the derivation's outputs are exact functions of the pinned census, reproducible by any recomputation from the same pins.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The M12 design draft (method M12 of the advance-to-decipherment plan, owner-proposed 2026-10-26): the projected-constraint corpus model \u2014 the attested corpus as a constraint system, a decipherment as a completion, necessities derived for the missing signs under a stated assumption set, with the pilot of its section 8 (reproduction gate, marginals-preserving shuffle null at pre-committed bars, blind positive control over the strict core). SHA-256 8945399d7621f9db9286ce3773538c0b9821a93f07d400556366fe0a474a4122.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "2026-10-26-spec-draft-m12-projected-constraint-corpus-model.md (programme goal record, files/)",
+     "source_id": "m12 design draft (2026-10-26, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "owner freeze order (2026-10-26)"
+     ]
+    },
+    {
+     "description": "The drafting derivation, reproduced at this freeze by the freeze worker from the named pins (and independently for the C2 record): 2,906 records \u2192 11,507 tokens (680 placeholder + 452 marked tokens dropped); 5,883 strict tokens; slot totals init 2,655 / fin 2,655 / solo 225 / med 5,972; finals partition strict 1,707 / pending 250 / anchored-other 520 / no-anchor 178, summing to 2,655; 677 (sign, type) exclusions over the 122 no-anchor signs; solo-only set of 13 signs. Every figure equals the M12 design's section 7 values and Spec 033's recorded pipeline census (11,507 tokens; 5,883 strict tokens).",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "specs/076-projected-constraint-corpus-model/spec.md sections 7.1-7.4; specs/033 corpus export census (programme record)",
+     "source_id": "spec-076 freeze derivation + spec-033 census",
+     "source_quality": "artifact",
+     "independent_of": [
+      "m12 design draft (2026-10-26, goal record)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "a recomputation from the pins that violates an accounting identity, or two runs of the frozen derivation on the same pins producing different registers, falsifies this claim"
+   ],
+   "id": "F076-C01",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "m12-design",
+     "spec076-census"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which a derivation that reproduces its own drafting numbers has thereby proven itself, without independent recomputation from the pins",
+    "verdict_rule": "judged by recomputation from the pins at the C2 record and at the pilot's step 0; any identity violation is a defect of the derivation, recorded as such"
+   },
+   "status": "draft",
+   "text": "The Tier-C register derivation is sound and reproducible: run on a pinned frame under the frozen rules it reproduces the frame's accounting identities exactly, and its possibility sets are functions of the census rows alone."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "The scope is the pilot of spec section 8 on the pilot frame only: statistic (i) the no-anchor finals residual (real value 178) below the 5th percentile of the B=999 marginals-preserving shuffle null (seed 20261026), and statistic (ii) the solo-only sign count (real value 13) above the null's 95th percentile. It excludes any statement about language-likeness, about any other frame, and about any sign's meaning. This claim is filed only on a pilot pass; on a failure the pilot record carries the design's closure word and this claim is not filed.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The M12 design draft (method M12 of the advance-to-decipherment plan, owner-proposed 2026-10-26): the projected-constraint corpus model \u2014 the attested corpus as a constraint system, a decipherment as a completion, necessities derived for the missing signs under a stated assumption set, with the pilot of its section 8 (reproduction gate, marginals-preserving shuffle null at pre-committed bars, blind positive control over the strict core). SHA-256 8945399d7621f9db9286ce3773538c0b9821a93f07d400556366fe0a474a4122.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "2026-10-26-spec-draft-m12-projected-constraint-corpus-model.md (programme goal record, files/)",
+     "source_id": "m12 design draft (2026-10-26, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "owner freeze order (2026-10-26)"
+     ]
+    },
+    {
+     "description": "The owner's order of 2026-10-26 06:51 EDT: freeze and run the M12 pilot, the bars and design frozen at freeze time, a premise failure a halt-and-report rather than an invitation to adjust.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "programme goal record (owner order, 2026-10-26)",
+     "source_id": "owner freeze order (2026-10-26)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "m12 design draft (2026-10-26, goal record)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "either step-2 statistic inside its null range falsifies this claim and closes the pilot: THE FRAME'S CONSTRAINT STRUCTURE IS NOT DISTINGUISHABLE FROM A MARGINALS-PRESERVING SCRAMBLE IN THE TESTED FAMILY"
+   ],
+   "id": "F076-C02",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "m12-design",
+     "owner-order"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which a shuffle null that cannot fail (label permutation over invariant identities) is offered as the control",
+    "verdict_rule": "judged by the pilot run exactly as frozen in section 8; the bars are not movable after the freeze for any reason"
+   },
+   "status": "draft",
+   "text": "The pilot frame's constraint structure is distinguishable from a marginals-preserving scramble in the pre-named family, at the pre-committed bars (filed only if the pilot passes)."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "The scope is the pilot-frame register's Tier-C entries. It excludes Tier-S statements (which carry their own filed assumptions) and tendencies (annex only). The claim as drafted states the proposition in full: no derived Tier-C constraint of the pilot frame falls outside the frozen vocabulary's expressive power.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The M12 design draft (method M12 of the advance-to-decipherment plan, owner-proposed 2026-10-26): the projected-constraint corpus model \u2014 the attested corpus as a constraint system, a decipherment as a completion, necessities derived for the missing signs under a stated assumption set, with the pilot of its section 8 (reproduction gate, marginals-preserving shuffle null at pre-committed bars, blind positive control over the strict core). SHA-256 8945399d7621f9db9286ce3773538c0b9821a93f07d400556366fe0a474a4122.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "2026-10-26-spec-draft-m12-projected-constraint-corpus-model.md (programme goal record, files/)",
+     "source_id": "m12 design draft (2026-10-26, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "owner freeze order (2026-10-26)"
+     ]
+    },
+    {
+     "description": "The drafting derivation, reproduced at this freeze by the freeze worker from the named pins (and independently for the C2 record): 2,906 records \u2192 11,507 tokens (680 placeholder + 452 marked tokens dropped); 5,883 strict tokens; slot totals init 2,655 / fin 2,655 / solo 225 / med 5,972; finals partition strict 1,707 / pending 250 / anchored-other 520 / no-anchor 178, summing to 2,655; 677 (sign, type) exclusions over the 122 no-anchor signs; solo-only set of 13 signs. Every figure equals the M12 design's section 7 values and Spec 033's recorded pipeline census (11,507 tokens; 5,883 strict tokens).",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "specs/076-projected-constraint-corpus-model/spec.md sections 7.1-7.4; specs/033 corpus export census (programme record)",
+     "source_id": "spec-076 freeze derivation + spec-033 census",
+     "source_quality": "artifact",
+     "independent_of": [
+      "m12 design draft (2026-10-26, goal record)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "a derived constraint the vocabulary cannot state, produced by the derivation itself, falsifies this claim; the vocabulary is then extended on the record as a new claim and prior entries re-derived, never translated by hand"
+   ],
+   "id": "F076-C03",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "m12-design",
+     "spec076-census"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which an awkward derived constraint is quietly forced into the nearest type instead of falsifying the vocabulary",
+    "verdict_rule": "judged over the filed pilot register: every entry's statement form is inspected against the vocabulary"
+   },
+   "status": "draft",
+   "text": "The section 3.4 vocabulary suffices to state the register: every Tier-C entry the derivation produces is expressible in the nine positional value-types or the section 6.1 identity/bound forms."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "The scope is every register entry of this spec. It excludes inscriptions the frame excludes and any cross-frame transfer at Tier C. The claim as drafted states the proposition in full: frame-relativity is a property of every filed necessity, stated on its face.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The pinned inputs as verified first-hand at this freeze from repo main: corpus export glossa-corpus/indus/exports/indus_research.jsonl SHA-256 08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e (2,906 indusscript-m77 records); anchors backend/reports/INDUS_FINAL_ANCHORS.json SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569 (287 entries, 94 strict_sa_independent, 44 pending_non_sa_validation); Registry v2 data/crosswalks/canonical_sign_registry_v2.csv SHA-256 42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71 (1,013 rows).",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "glossa-corpus/indus/exports/indus_research.jsonl; backend/reports/INDUS_FINAL_ANCHORS.json; data/crosswalks/canonical_sign_registry_v2.csv",
+     "source_id": "pinned inputs (repo main, verified 2026-10-26)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "m12 design draft (2026-10-26, goal record)"
+     ]
+    },
+    {
+     "description": "The M12 design draft (method M12 of the advance-to-decipherment plan, owner-proposed 2026-10-26): the projected-constraint corpus model \u2014 the attested corpus as a constraint system, a decipherment as a completion, necessities derived for the missing signs under a stated assumption set, with the pilot of its section 8 (reproduction gate, marginals-preserving shuffle null at pre-committed bars, blind positive control over the strict core). SHA-256 8945399d7621f9db9286ce3773538c0b9821a93f07d400556366fe0a474a4122.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "2026-10-26-spec-draft-m12-projected-constraint-corpus-model.md (programme goal record, files/)",
+     "source_id": "m12 design draft (2026-10-26, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "owner freeze order (2026-10-26)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "a register entry stated without its frame pin, or carried across a frame change without re-derivation, falsifies this claim"
+   ],
+   "id": "F076-C04",
+   "kind": "assumption",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec076-pins",
+     "m12-design"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which frame-relative necessities are quietly read as corpus-wide laws",
+    "verdict_rule": "judged by inspection of the filed register: every entry names its frame and pin"
+   },
+   "status": "draft",
+   "text": "A-FRAME: the pinned frame construction is the attested corpus for this register; a necessity binds completions of that frame's language-as-attested and is re-derived, not carried over, when the frame changes."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "The scope is positional labelling within the pilot frame. It excludes any claim about the historical reading direction of the script; the convention is fixed by this assumption and every positional statement inherits it. The claim as drafted states the proposition in full: slot labels in this register are convention-relative and say so.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The M12 design draft (method M12 of the advance-to-decipherment plan, owner-proposed 2026-10-26): the projected-constraint corpus model \u2014 the attested corpus as a constraint system, a decipherment as a completion, necessities derived for the missing signs under a stated assumption set, with the pilot of its section 8 (reproduction gate, marginals-preserving shuffle null at pre-committed bars, blind positive control over the strict core). SHA-256 8945399d7621f9db9286ce3773538c0b9821a93f07d400556366fe0a474a4122.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "2026-10-26-spec-draft-m12-projected-constraint-corpus-model.md (programme goal record, files/)",
+     "source_id": "m12 design draft (2026-10-26, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "owner freeze order (2026-10-26)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "a register entry whose positional labels do not follow the stored order under this convention falsifies this claim"
+   ],
+   "id": "F076-C05",
+   "kind": "assumption",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "m12-design"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which a within-frame convention is presented as a discovered fact about the script's reading direction",
+    "verdict_rule": "judged by the derivation's slot assignment against the stored sequences"
+   },
+   "status": "draft",
+   "text": "A-DIR: the stored sequence order is the reading order for positional labels \u2014 initial is the first stored token, final the last, a one-token sequence's token is SOLO."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "The scope is the evaluation of type-claims against register entries. It excludes semantic content: A-FACE governs positional type-claims only. The claim as drafted states the proposition in full: exclusion by exhibition applies to a claim as stated, and a revised claim is a new claim, not a rescued one.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The M12 design draft (method M12 of the advance-to-decipherment plan, owner-proposed 2026-10-26): the projected-constraint corpus model \u2014 the attested corpus as a constraint system, a decipherment as a completion, necessities derived for the missing signs under a stated assumption set, with the pilot of its section 8 (reproduction gate, marginals-preserving shuffle null at pre-committed bars, blind positive control over the strict core). SHA-256 8945399d7621f9db9286ce3773538c0b9821a93f07d400556366fe0a474a4122.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "2026-10-26-spec-draft-m12-projected-constraint-corpus-model.md (programme goal record, files/)",
+     "source_id": "m12 design draft (2026-10-26, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "owner freeze order (2026-10-26)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "an exclusion rescinded because the excluded claim's author disowns the positional content of their own type-claim, without a new claim being filed, falsifies this claim"
+   ],
+   "id": "F076-C06",
+   "kind": "assumption",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "m12-design"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which type-claims are held to their distributional content only when convenient",
+    "verdict_rule": "judged by the register's exclusion practice over the pilot record"
+   },
+   "status": "draft",
+   "text": "A-FACE: a completion's value-type claims are taken at face value \u2014 a reading that calls a sign a suffix claims final-position behaviour for it, and may not disown that distributional content when the census contradicts it."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "The scope is keying in this spec. It excludes adjudicating the 13 collisions (future registry work, per Spec 073) and excludes any cross-frame derivation in the pilot. The claim as drafted states the proposition in full: FF-4's clarification of where the ambiguity lives (the cross-scheme join surface), with the pilot register flagging the attested members (002, 050, 064, 076, 099, 103, 161, 167, 168, 199, 216, 264, 409 where attested).",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 073's keying-surface accounting (2026-10-25): 13 Mahadevan ids are claimed by two Parpola-keyed registry rows each (M002, M050, M064, M076, M099, M103, M161, M167, M168, M199, M216, M264, M409), and any future spec keying through mahadevan_ids must resolve these first, on the record.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "specs/073-keying-surface-repair/keying-surface-accounting-2026-10-25.md",
+     "source_id": "spec-073 keying-surface accounting (2026-10-25)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "m12 design draft (2026-10-26, goal record)"
+     ]
+    },
+    {
+     "description": "The pinned inputs as verified first-hand at this freeze from repo main: corpus export glossa-corpus/indus/exports/indus_research.jsonl SHA-256 08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e (2,906 indusscript-m77 records); anchors backend/reports/INDUS_FINAL_ANCHORS.json SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569 (287 entries, 94 strict_sa_independent, 44 pending_non_sa_validation); Registry v2 data/crosswalks/canonical_sign_registry_v2.csv SHA-256 42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71 (1,013 rows).",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "glossa-corpus/indus/exports/indus_research.jsonl; backend/reports/INDUS_FINAL_ANCHORS.json; data/crosswalks/canonical_sign_registry_v2.csv",
+     "source_id": "pinned inputs (repo main, verified 2026-10-26)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "m12 design draft (2026-10-26, goal record)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "a pilot derivation that joins through mahadevan_ids, or a register entry for an attested member of the 13 without its join-ambiguity flag, falsifies this claim"
+   ],
+   "id": "F076-C07",
+   "kind": "assumption",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "spec073-accounting",
+     "spec076-pins"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which a join-surface collision silently excludes frame rows the frame itself never joined, or silently passes unflagged into cross-frame use",
+    "verdict_rule": "judged by inspection of the derivation (no mahadevan_ids join) and of the filed register (flags present)"
+   },
+   "status": "draft",
+   "text": "A-KEY: Registry v2 is the identity relation between frames and witnesses; the 13 duplicated Mahadevan ids of Spec 073's accounting are ambiguous for joins through mahadevan_ids until resolved on the record; the pilot frame performs no such join, so no pilot-frame row is excluded and attested members of the 13 carry a join-ambiguity flag."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "The scope is the pilot's step 3: the 94 strict signs of the anchors file, coded from reading + basis texts only, the coder blind to census rows; the 5 frame-absent strict signs are coded and reported on their own line under CR-7 and enter neither the count nor its denominator. It excludes any verdict on any individual strict reading. The claim as drafted states the proposition in full: the calibration is a property of the machinery against the knowns, reported as a count, never rounded to a pass adjective.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The M12 design draft (method M12 of the advance-to-decipherment plan, owner-proposed 2026-10-26): the projected-constraint corpus model \u2014 the attested corpus as a constraint system, a decipherment as a completion, necessities derived for the missing signs under a stated assumption set, with the pilot of its section 8 (reproduction gate, marginals-preserving shuffle null at pre-committed bars, blind positive control over the strict core). SHA-256 8945399d7621f9db9286ce3773538c0b9821a93f07d400556366fe0a474a4122.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "2026-10-26-spec-draft-m12-projected-constraint-corpus-model.md (programme goal record, files/)",
+     "source_id": "m12 design draft (2026-10-26, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "owner freeze order (2026-10-26)"
+     ]
+    },
+    {
+     "description": "The pinned inputs as verified first-hand at this freeze from repo main: corpus export glossa-corpus/indus/exports/indus_research.jsonl SHA-256 08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e (2,906 indusscript-m77 records); anchors backend/reports/INDUS_FINAL_ANCHORS.json SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569 (287 entries, 94 strict_sa_independent, 44 pending_non_sa_validation); Registry v2 data/crosswalks/canonical_sign_registry_v2.csv SHA-256 42ab09fb06750098dc8cc0370c4ba4c1a538353d943a49f983d7347f52e8ef71 (1,013 rows).",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "glossa-corpus/indus/exports/indus_research.jsonl; backend/reports/INDUS_FINAL_ANCHORS.json; data/crosswalks/canonical_sign_registry_v2.csv",
+     "source_id": "pinned inputs (repo main, verified 2026-10-26)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "m12 design draft (2026-10-26, goal record)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "a blind-coded exclusion count above 5 among frame-attested strict signs falsifies this claim and closes the pilot with the design's closure word"
+   ],
+   "id": "F076-C08",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "m12-design",
+     "spec076-pins"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which the coding is steered \u2014 by sight of the census rows or by charitable rule-bending \u2014 so the control cannot fail",
+    "verdict_rule": "judged by the pilot record: the coding was produced blind, under CR-1 to CR-7 as frozen, and the count is as it falls"
+   },
+   "status": "draft",
+   "text": "Positive-control calibration: coded blind under the frozen rules CR-1 to CR-7, the strict core's claimed types are excluded by the machinery at most 5 times among the frame-attested strict signs; a higher count closes the pilot ASSUMPTION SET DOES NOT HOLD and indicts the machinery, the coding rules, or A-FACE before the strict core."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "The scope is every output of this spec, including the pilot register and any later production register. It excludes scoring, promoting, or demoting any reading (M4's gate is untouched) and excludes any witness act (M7's attack remains M7's). The claim as drafted states the proposition in full: the register's language is membership and bounds, and no output of this spec speaks in likelihood or identity.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The M12 design draft (method M12 of the advance-to-decipherment plan, owner-proposed 2026-10-26): the projected-constraint corpus model \u2014 the attested corpus as a constraint system, a decipherment as a completion, necessities derived for the missing signs under a stated assumption set, with the pilot of its section 8 (reproduction gate, marginals-preserving shuffle null at pre-committed bars, blind positive control over the strict core). SHA-256 8945399d7621f9db9286ce3773538c0b9821a93f07d400556366fe0a474a4122.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "2026-10-26-spec-draft-m12-projected-constraint-corpus-model.md (programme goal record, files/)",
+     "source_id": "m12 design draft (2026-10-26, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "owner freeze order (2026-10-26)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "an output of this spec stating a set identity ('sign x is final-only'), a likelihood ranking of readings, or a tendency cited as a necessity, falsifies this claim and is recorded as a defect of the output"
+   ],
+   "id": "F076-C09",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "m12-design"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which a possibility set is summarised to its most likely member in any headline, abstract, or downstream citation",
+    "verdict_rule": "judged by inspection of every filed output against this boundary"
+   },
+   "status": "draft",
+   "text": "Output discipline: the register records set membership, never identity; the resolution-value ranking feeds M4 as ordering only and M7 as bounds only; tendencies are recorded, if at all, in a separate annex and are never upgraded to necessities at any sample size."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "The scope is every statement made under this spec, in the repo and in programme reporting. It excludes no evidence and no future spec; it bounds this spec's own voice. The claim as drafted states the proposition in full: the standing position of the programme is unchanged by anything in this spec or its pilot.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The M12 design draft (method M12 of the advance-to-decipherment plan, owner-proposed 2026-10-26): the projected-constraint corpus model \u2014 the attested corpus as a constraint system, a decipherment as a completion, necessities derived for the missing signs under a stated assumption set, with the pilot of its section 8 (reproduction gate, marginals-preserving shuffle null at pre-committed bars, blind positive control over the strict core). SHA-256 8945399d7621f9db9286ce3773538c0b9821a93f07d400556366fe0a474a4122.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-26",
+     "ref": "2026-10-26-spec-draft-m12-projected-constraint-corpus-model.md (programme goal record, files/)",
+     "source_id": "m12 design draft (2026-10-26, goal record)",
+     "source_quality": "artifact",
+     "independent_of": [
+      "owner freeze order (2026-10-26)"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "any statement under this spec claiming a reading, an identification, a completion's existence, or decipherment falsifies this claim"
+   ],
+   "id": "F076-C10",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "m12-design"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which narrowing a possibility space is reported as reading what remains in it",
+    "verdict_rule": "judged by inspection of every filed output and report against this boundary"
+   },
+   "status": "draft",
+   "text": "The non-claims: this spec claims no reading, value, or identification for any sign; not that any completion exists; nothing about signs in frames not derived; nothing positional about the 24 frame-absent signs (the register's silence there is filed, not filled); and not decipherment in any wording \u2014 the script is not deciphered."
+  }
+ ],
+ "note": "Register drafted directly in the recovered (0.7) register form used by Specs 074/075's registers: every claim carries text / boundary / evidence / falsification_tests / kind / status, and metadata carrying boundary_confirmation, evidence_origin_groups, forbidden_assumptions, framework_kind, layer, strongest_rival, verdict_rule; every evidence item carries independent_of naming the other sources cited in the same claim. Assumptions referenced by id and defined here: ASM-APPEND-ONLY = programme records are append-only; frozen, closed, and retired records are read under their pins and never edited; a freeze's completions of its design are stated in the spec and ruled in the adjudication, never introduced silently. The register carries the M12 design's claims D-M12-C01/C02/C03 as F076-C01/C02/C03, its standing assumption set A-FRAME/A-DIR/A-FACE/A-KEY as F076-C04 to C07, the pilot's positive-control calibration as F076-C08, and the design's output discipline and non-claims as F076-C09/C10. F076-C02 is pilot-gated: it is filed as a supported claim only if the pilot passes; at this freeze it stands draft like the rest. Status values use the verified vocabulary of the adjacent registers (draft / supported / contradicted / untested / in question / partially supported); at this freeze every claim is draft. The evaluator-side verdict on this register at the freeze is recorded in the freeze record, not here; the draft cap of the evaluator's FR-2.3 (claims in draft cap at 0.70) applies to every claim until an execution adjudicates them.",
+ "register_version": "0.7-draft",
+ "spec": "076-projected-constraint-corpus-model"
+}

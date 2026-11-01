@@ -1,0 +1,472 @@
+[
+ {
+  "sign": "M002",
+  "reading": "ku\u1e49",
+  "basis": "Round 2: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); has specific PDR reading; Phase-272: DEDR 1694 injected + existing evidence \u2192 HIGH"
+ },
+ {
+  "sign": "M004",
+  "reading": "k\u0113\u1e37",
+  "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading"
+ },
+ {
+  "sign": "M005",
+  "reading": "k\u014d\u1e49",
+  "basis": "Round 2: INITIAL position (freq=15), distributional assignment; UPGRADED-V18: consistent INITIAL (n=15); HIGH-anchor collocate M342 (n=4); has specific PDR reading; Phase-272: DEDR 2199 injected + existing evidence \u2192 HIGH"
+ },
+ {
+  "sign": "M006",
+  "reading": "puli",
+  "basis": "Exclusive to tiger seals (lift > 5.0); PDR puli = tiger"
+ },
+ {
+  "sign": "M007",
+  "reading": "aaL",
+  "basis": "; Phase-255: commodity phoneme corroboration \u2014 matches PDr 'akatti'=agate (DEDR 7), appears on 4 trade/zebu seals"
+ },
+ {
+  "sign": "M009",
+  "reading": "\u0101\u1e47",
+  "basis": "Round 2: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); has specific PDR reading; Phase-272: DEDR 367 injected + existing evidence \u2192 HIGH"
+ },
+ {
+  "sign": "M010",
+  "reading": "pa\u1e6d",
+  "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading; Phase-255: commodity phoneme corroboration \u2014 matches PDr 'akatti'=agate (DEDR 7), appears on 6 trade/zebu seals"
+ },
+ {
+  "sign": "M012",
+  "reading": "o\u1e49\u1e5fu/1",
+  "basis": "single stroke = numeral 1"
+ },
+ {
+  "sign": "M013",
+  "reading": "nakaram",
+  "basis": "Exclusive to gharial seals (lift > 5.0); PDR nakaram = crocodile/makara"
+ },
+ {
+  "sign": "M014",
+  "reading": "tiru",
+  "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading"
+ },
+ {
+  "sign": "M015",
+  "reading": "m\u0101",
+  "basis": "Round 2: INITIAL position (freq=15), distributional assignment; UPGRADED-V18: consistent INITIAL (n=15); has specific PDR reading; Phase-272: DEDR 4796 injected + existing evidence \u2192 HIGH"
+ },
+ {
+  "sign": "M016",
+  "reading": "ka\u1e37i\u1e5fu",
+  "basis": "Exclusive to elephant seals (lift > 5.0); PDR ka\u1e37i\u1e5fu = male elephant"
+ },
+ {
+  "sign": "M017",
+  "reading": "kai",
+  "basis": "Round 1: INITIAL position (freq=18), distributional assignment; UPGRADED-V18: consistent INITIAL (n=18); has specific PDR reading"
+ },
+ {
+  "sign": "M018",
+  "reading": "n\u0113r",
+  "basis": "Round 1: INITIAL position (freq=18), distributional assignment; UPGRADED-V18: consistent INITIAL (n=18); has specific PDR reading"
+ },
+ {
+  "sign": "M020",
+  "reading": "ku\u1e49",
+  "basis": "Round 1: INITIAL position (freq=18), distributional assignment; UPGRADED-V18: consistent INITIAL (n=18); has specific PDR reading"
+ },
+ {
+  "sign": "M023",
+  "reading": "va\u1e37",
+  "basis": "Round 1: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); has specific PDR reading; Phase-255: commodity phoneme corroboration \u2014 matches PDr 'akatti'=agate (DEDR 7), appears on 6 trade/zebu seals"
+ },
+ {
+  "sign": "M025",
+  "reading": "cem",
+  "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading; Phase-255: commodity phoneme corroboration \u2014 matches PDr 'cempu'=copper (DEDR 2781), appears on 5 trade/zebu seals"
+ },
+ {
+  "sign": "M026",
+  "reading": "m\u0101",
+  "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading"
+ },
+ {
+  "sign": "M027",
+  "reading": "m\u0101\u1e5f",
+  "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading"
+ },
+ {
+  "sign": "M029",
+  "reading": "y\u0101nai",
+  "basis": "Round 3: INITIAL position (freq=11), distributional assignment [Phase-216: SA-cons=0.17 DEDR\u2713 source=Parpola 1994+]"
+ },
+ {
+  "sign": "M030",
+  "reading": "k\u014d",
+  "basis": "Round 1: INITIAL position (freq=18), distributional assignment; UPGRADED-V18: consistent INITIAL (n=18); HIGH-anchor collocate M342 (n=4); has specific PDR reading"
+ },
+ {
+  "sign": "M032",
+  "reading": "koL",
+  "basis": " [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]"
+ },
+ {
+  "sign": "M034",
+  "reading": "t\u014d\u1e37",
+  "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading"
+ },
+ {
+  "sign": "M037",
+  "reading": "k\u0113\u1e37",
+  "basis": "Round 2: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); HIGH-anchor collocate M267 (n=4); has specific PDR reading; Phase-272: DEDR 2017 injected + existing evidence \u2192 HIGH"
+ },
+ {
+  "sign": "M038",
+  "reading": "p\u014dr",
+  "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading; Phase-272: DEDR 4605 injected + existing evidence \u2192 HIGH"
+ },
+ {
+  "sign": "M039",
+  "reading": "\u0101\u1e49ai",
+  "basis": "Exclusive to elephant seals (lift > 5.0); PDR \u0101\u1e49ai = elephant (variant)"
+ },
+ {
+  "sign": "M041",
+  "reading": "p\u0113r",
+  "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading"
+ },
+ {
+  "sign": "M042",
+  "reading": "vaN",
+  "basis": " [Phase-116 recal: SA-cons=0.62\u2713 DEDR\u2713]"
+ },
+ {
+  "sign": "M044",
+  "reading": "ku",
+  "basis": "; Phase-276: dual external corroboration \u2014 Elamite 'kun' (MC-18) + Sanskrit 'kona' (SL-04) + DEDR 1638"
+ },
+ {
+  "sign": "M045",
+  "reading": "y\u0101nai",
+  "basis": "Exclusive to elephant seals (lift > 5.0); PDR y\u0101nai = elephant"
+ },
+ {
+  "sign": "M046",
+  "reading": "kaL",
+  "basis": " [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]"
+ },
+ {
+  "sign": "M047",
+  "reading": "min/m\u012bn",
+  "basis": "FACT-CHECK CORRECTION 2026-05-11: Distributional assignment 'par' (LOW, Round 2) overridden by crosswalk evidence. M047 = P47 = 'fish (plain)' per mahadevan_parpola_crosswalk.json (sourced from Parpola 1994a + Mahadevan 1977). Reading 'm\u012bn' (fish/star, DEDR 4897) is the Parpola canonical anchor confirmed by iconographic_anchors.json (fish-in-crocodile-mouth, H-902B offerings tablet, eZu-miin compound). Freq=13 in Holdat corpus. Previous distributional: {'reading': 'p\u0101r', 'confidence': 'LOW', 'basis': 'Round 2: INITIAL position (freq=13), distributional assignment'}; Phase-276: dual external corroboration \u2014 Elamite 'in' (MC-01) + Sanskrit 'mina' (SL-06)"
+ },
+ {
+  "sign": "M048",
+  "reading": "mu/mu\u1e49",
+  "basis": "Positional analysis; UPGRADED: high frequency (157); consistent TERMINAL position (n=157); collocates with HIGH anchor M342 (n=13); collocates with HIGH anchor M267 (n=7); collocates with HIGH anchor M176 (n=5); collocates with HIGH anchor M342 (n=17); collocates with HIGH anchor M176 (n=8); has specific PDR reading"
+ },
+ {
+  "sign": "M049",
+  "reading": "pu",
+  "basis": " [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]"
+ },
+ {
+  "sign": "M050",
+  "reading": "p\u0101r",
+  "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading; Phase-272: DEDR 4084 injected + existing evidence \u2192 HIGH"
+ },
+ {
+  "sign": "M051",
+  "reading": "p\u016b/pu\u1e37",
+  "basis": "Comb/flower sign"
+ },
+ {
+  "sign": "M052",
+  "reading": "ta",
+  "basis": " [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]"
+ },
+ {
+  "sign": "M053",
+  "reading": "mi",
+  "basis": "[Phase-216: SA-cons=0.17 DEDR\u2713 source=Phase-80 DEDR rebus (miiN = DEDR 4839)]"
+ },
+ {
+  "sign": "M054",
+  "reading": "mi",
+  "basis": "[Phase-216: SA-cons=0.17 DEDR\u2713 source=Phase-80 DEDR rebus (miiNDu = DEDR 4855)]"
+ },
+ {
+  "sign": "M055",
+  "reading": "miN3",
+  "basis": "[Phase-216: SA-cons=0.17 DEDR\u2713 source=Phase-89 systematic DEDR (ICON, MEDIUM)]"
+ },
+ {
+  "sign": "M057",
+  "reading": "m\u0101\u1e6du",
+  "basis": "Exclusive to zebu bull seals (lift > 5.0); PDR m\u0101\u1e6du = cattle"
+ },
+ {
+  "sign": "M059",
+  "reading": "\u0113\u1e37/e\u1e37",
+  "basis": "Numeral 7"
+ },
+ {
+  "sign": "M060",
+  "reading": "k\u0101\u1e47\u1e6d\u0101mirukam",
+  "basis": "Exclusive to rhinoceros seals (lift > 5.0); PDR k\u0101\u1e47\u1e6d\u0101mirukam = rhinoceros (horn-beast)"
+ },
+ {
+  "sign": "M061",
+  "reading": "ka",
+  "basis": " [Phase-116 recal: SA-cons=0.25\u2713 DEDR\u2713]"
+ },
+ {
+  "sign": "M062",
+  "reading": "erutu",
+  "basis": "Exclusive to zebu bull seals (lift > 5.0); PDR erutu = bull, ox"
+ },
+ {
+  "sign": "M063",
+  "reading": "mutalai",
+  "basis": "FACT-CHECK CORRECTION 2026-05-11: Original V7 assignment was HIGH based on claimed 'lift > 5.0 on gharial seals'. Actual measured gharial lift = 4.35 (below threshold). M063 appears on 3/18 seals with gharial motif (vs. 4 unicorn, 3 zebu bull). Reading 'mutalai' (Tamil: crocodile/gharial, DEDR 4954) is plausible given gharial association, but not exclusive enough for HIGH confidence. Downgraded HIGH \u2192 MEDIUM. Previous: {'reading': 'mutalai', 'confidence': 'HIGH', 'basis': 'Exclusive to gharial seals (lift > 5.0); PDR mutalai = crocodile'}"
+ },
+ {
+  "sign": "M065",
+  "reading": "kuTam",
+  "basis": "; Phase-255: commodity phoneme corroboration \u2014 matches PDr 'akatti'=agate (DEDR 7), appears on 49 trade/zebu seals"
+ },
+ {
+  "sign": "M066",
+  "reading": "c\u014d\u1e3b",
+  "basis": "Round 1: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); has specific PDR reading; Phase-272: DEDR 2905 injected + existing evidence \u2192 HIGH"
+ },
+ {
+  "sign": "M067",
+  "reading": "k\u014d\u1e6d\u1e6d\u0101\u1e49",
+  "basis": "Exclusive to rhinoceros seals (lift > 5.0); PDR k\u014d\u1e6d\u1e6d\u0101\u1e49 = horned one; Phase-272: DEDR 2071 injected + existing evidence \u2192 HIGH"
+ },
+ {
+  "sign": "M068",
+  "reading": "ma\u1e5fi",
+  "basis": "Exclusive to rhinoceros seals (lift > 5.0); PDR ma\u1e5fi = young animal/calf (generic); UPGRADED-V18: HIGH-anchor collocate M342 (n=4); has specific PDR reading; Phase-272: DEDR 4706 injected + existing evidence \u2192 HIGH"
+ },
+ {
+  "sign": "M069",
+  "reading": "n\u0113r",
+  "basis": "Round 2: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); has specific PDR reading; Phase-272: DEDR 3774 injected + existing evidence \u2192 HIGH"
+ },
+ {
+  "sign": "M070",
+  "reading": "v\u0113l",
+  "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading; Phase-272: DEDR 5540 injected + existing evidence \u2192 HIGH"
+ },
+ {
+  "sign": "M073",
+  "reading": "k\u014d\u1e49",
+  "basis": "Exclusive to zebu bull seals (lift > 5.0); PDR k\u014d\u1e49 = king (bull metaphor)"
+ },
+ {
+  "sign": "M074",
+  "reading": "ker",
+  "basis": "; Phase-255: commodity phoneme corroboration \u2014 matches PDr 'e\u1e37\u1e37u'=sesame (DEDR 839), appears on 4 trade/zebu seals"
+ },
+ {
+  "sign": "M075",
+  "reading": "m\u0101\u1e5f",
+  "basis": "Round 2: INITIAL position (freq=14), distributional assignment; UPGRADED-V18: HIGH-anchor collocate M267 (n=4); has specific PDR reading; Phase-272: DEDR 4796 injected + existing evidence \u2192 HIGH"
+ },
+ {
+  "sign": "M076",
+  "reading": "naN",
+  "basis": " [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]"
+ },
+ {
+  "sign": "M077",
+  "reading": "nal",
+  "basis": "Round 1: INITIAL position (freq=18), distributional assignment; UPGRADED-V18: consistent INITIAL (n=18); has specific PDR reading"
+ },
+ {
+  "sign": "M078",
+  "reading": "c\u0113r",
+  "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading; Phase-272: DEDR 2814 injected + existing evidence \u2192 HIGH"
+ },
+ {
+  "sign": "M080",
+  "reading": "v\u0113\u1e45kai",
+  "basis": "Exclusive to tiger seals (lift > 5.0); PDR v\u0113\u1e45kai = tiger (poetic)"
+ },
+ {
+  "sign": "M082",
+  "reading": "pa",
+  "basis": "; Phase-255: commodity phoneme corroboration \u2014 matches PDr 'akatti'=agate (DEDR 7), appears on 3 trade/zebu seals"
+ },
+ {
+  "sign": "M087",
+  "reading": "veL",
+  "basis": " [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]"
+ },
+ {
+  "sign": "M089",
+  "reading": "tu/t\u016b",
+  "basis": "Positional analysis; UPGRADED: high frequency (171); consistent TERMINAL position (n=171); collocates with HIGH anchor M342 (n=15); collocates with HIGH anchor M267 (n=6); collocates with HIGH anchor M176 (n=6); collocates with HIGH anchor M342 (n=13); collocates with HIGH anchor M176 (n=12); collocates with HIGH anchor M267 (n=10); has specific PDR reading"
+ },
+ {
+  "sign": "M099",
+  "reading": "kol/ko\u1e37",
+  "basis": "Jar/vessel sign"
+ },
+ {
+  "sign": "M108",
+  "reading": "kaL",
+  "basis": " [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]"
+ },
+ {
+  "sign": "M124",
+  "reading": "kuTam",
+  "basis": "; Phase-276: dual external corroboration \u2014 Elamite 'kun' (MC-18) + Sanskrit 'kona' (SL-04) + DEDR 1651"
+ },
+ {
+  "sign": "M128",
+  "reading": "ka\u1e47",
+  "basis": "Round 3: MEDIAL position (freq=7), distributional assignment [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]"
+ },
+ {
+  "sign": "M130",
+  "reading": "mui",
+  "basis": " [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]"
+ },
+ {
+  "sign": "M145",
+  "reading": "mi\u1e6d",
+  "basis": "[Phase-216: SA-cons=0.17 DEDR\u2713 source=Phase-95 retroflex expansion (score=1.90]"
+ },
+ {
+  "sign": "M151",
+  "reading": "vi\u1e37",
+  "basis": "Round 4: MEDIAL position (freq=5), distributional assignment"
+ },
+ {
+  "sign": "M162",
+  "reading": "il/i\u1e37",
+  "basis": "House/dwelling sign"
+ },
+ {
+  "sign": "M165",
+  "reading": "cul",
+  "basis": "Phase-163 sibilant discovery: reading 'cul' found in literature (4 mentions across sources: Parpola_1994). Provides partial coverage for Shu-ilishu /su/ phonological slot. [Phase-216: SA-cons=0.17 DEDR\u2713 source=Phase-111]"
+ },
+ {
+  "sign": "M176",
+  "reading": "an/a\u1e47",
+  "basis": "Masculine suffix"
+ },
+ {
+  "sign": "M194",
+  "reading": "ka\u1e6d",
+  "basis": " [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]"
+ },
+ {
+  "sign": "M202",
+  "reading": "can",
+  "basis": "Phase-163 sibilant discovery: reading 'can' found in literature (4 mentions across sources: Mahadevan_2009_vestiges). Provides partial coverage for Shu-ilishu /su/ phonological slot.; Phase-276: dual external corroboration \u2014 Elamite 'an' (MC-07) + Sanskrit 'annam/anna' (SL-03)"
+ },
+ {
+  "sign": "M220",
+  "reading": "al",
+  "basis": "; Phase-255: commodity phoneme corroboration \u2014 matches PDr 'akatti'=agate (DEDR 7), appears on 9 trade/zebu seals"
+ },
+ {
+  "sign": "M222",
+  "reading": "min",
+  "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)"
+ },
+ {
+  "sign": "M233",
+  "reading": "\u016br",
+  "basis": "Settlement/place marker"
+ },
+ {
+  "sign": "M264",
+  "reading": "peN",
+  "basis": " [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]"
+ },
+ {
+  "sign": "M267",
+  "reading": "iN/in (genitive of)",
+  "basis": "FACT-CHECK CORRECTION 2026-05-11: Original V6 assignment 'min/m\u012bn' (HIGH) was wrong. M267 has freq=400 in the Holdat corpus and appears across ALL motif types (unicorn 127, zebu bull 72, elephant 37, rhinoceros 25, etc.) \u2014 it is NOT an iconographic fish sign. The actual Mahadevan fish sign is M047 (freq=13, P47 in Parpola's system, as documented in mahadevan_parpola_crosswalk.json). M267 is most likely a high-frequency functional/suffixal sign. Downgraded from HIGH. Previous: {'reading': 'min/m\u012bn', 'confidence': 'HIGH', 'basis': 'Fish sign = star/planet (Parpola)'}; Phase-273: HIGH upgrade \u2014 grammar z=8.04 (Phase-74) + motif-independence \u03c7\u00b2=12.98 p=0.1124 (Phase-132) + DEDR 494 (i\u1e49 locative) + freq=400 (2nd most common sign) + Elamite 'in' genitive (McAlpin MC-01) + LE-in confirmed (E41). Six independent evidence lines."
+ },
+ {
+  "sign": "M305",
+  "reading": "\u014d\u1e6du/comitative",
+  "basis": "terminal pinch mark; UPGRADED: moderate frequency (83); consistent TERMINAL position (n=83); collocates with HIGH anchor M342 (n=10); collocates with HIGH anchor M176 (n=7); has specific PDR reading"
+ },
+ {
+  "sign": "M311",
+  "reading": "vaTamiin",
+  "basis": " [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]"
+ },
+ {
+  "sign": "M328",
+  "reading": "\u0101/\u0101l",
+  "basis": "Man/person sign"
+ },
+ {
+  "sign": "M329",
+  "reading": "po\u1e49",
+  "basis": "Round 5: MEDIAL position (freq=5), distributional assignment; Phase-276: dual external corroboration \u2014 Elamite 'bur/pur' (MC-21) + Sanskrit 'pura' (SL-14) + DEDR 4524"
+ },
+ {
+  "sign": "M330",
+  "reading": "can",
+  "basis": "Phase-163 sibilant discovery: reading 'can' found in literature (4 mentions across sources: Parpola_1994). Provides partial coverage for Shu-ilishu /su/ phonological slot.; Phase-276: dual external corroboration \u2014 Elamite 'an' (MC-07) + Sanskrit 'annam/anna' (SL-03)"
+ },
+ {
+  "sign": "M336",
+  "reading": "i\u1e49/locative",
+  "basis": "chevron terminal = locative case marker; UPGRADED: high frequency (161); consistent TERMINAL position (n=161); collocates with HIGH anchor M342 (n=14); collocates with HIGH anchor M099 (n=6); collocates with HIGH anchor M267 (n=5); collocates with HIGH anchor M342 (n=13); collocates with HIGH anchor M267 (n=12); collocates with HIGH anchor M176 (n=8); has specific PDR reading"
+ },
+ {
+  "sign": "M342",
+  "reading": "ay/\u0101",
+  "basis": "Terminal marker, Dravidian case suffix"
+ },
+ {
+  "sign": "M347",
+  "reading": "ka",
+  "basis": "Phase-117 grammar inference: slot=MEDIAL_BETWEEN_CONF, n_contexts=7, patterns=['M342-[M347]-M293', 'M028-[M347]-M367', 'M211-[M347]-M099']. Inferred from Dravidian grammar slot model (Phases 74-112). [Phase-120: grammar n_ctx=7\u22654 \u2192 MEDIUM] [Phase-216: SA-cons=0.17 DEDR\u2713 source=Phase-117]"
+ },
+ {
+  "sign": "M351",
+  "reading": "v\u012b",
+  "basis": "Phase-123 substrate match: Munda 'bi' (seed/sprout). DEDR 5388 v\u012b = seed \u2014 attested Tamil/Telugu agricultural vocabulary. Phonological: Munda 'bi' \u2192 Dravidian 'v\u012b' (voiced bilabial shift p/b\u2192v). Positional: MEDIAL after locative M336=i\u1e49 and before unicorn M211=kol and terminal M342=ay. Semantic fit: v\u012b (seed/grain) in agricultural-guild inscriptions. Phase-128 SUBSTRATE-MEDIUM. [Phase-216: SA-cons=0.17 DEDR\u2713 source=Phase-128 substrate upgrade]"
+ },
+ {
+  "sign": "M362",
+  "reading": "a\u1e47i",
+  "basis": "Starburst / asterisk iconography ~ a\u1e47i 'ornament/adorn' (DEDR 0145). Phase-103: appears in name-slot patterns between animal classifiers and titles. Sangam literature: a\u1e47i- prefix in personal names (A\u1e47i-van, A\u1e47i-tan). Positional: predominantly MEDIAL in personal name sequences. Freq=3; Pos=MEDIAL; name_slots=2. [Phase-216: SA-cons=0.17 DEDR\u2713 source=Phase-105]"
+ },
+ {
+  "sign": "M367",
+  "reading": "am/neuter",
+  "basis": "terminal diamond = neuter suffix; UPGRADED: high frequency (190); consistent TERMINAL position (n=190); collocates with HIGH anchor M176 (n=8); collocates with HIGH anchor M099 (n=6); collocates with HIGH anchor M267 (n=5); collocates with HIGH anchor M342 (n=16); collocates with HIGH anchor M176 (n=13); collocates with HIGH anchor M267 (n=12); collocates with HIGH anchor M099 (n=9); has specific PDR reading"
+ },
+ {
+  "sign": "M374",
+  "reading": "kul",
+  "basis": "Phase-123 substrate match: Munda 'kul' (tiger/king-tiger, Witzel 1999). DEDR 1709 kulam = clan/lineage \u2014 attested Tamil noun. Positional: MEDIAL between authority signs (M328=\u0101l/man, M073=k\u014d\u1e49/king) and vessel/cargo signs (M065=kuTam, M099=kol). Semantic fit: 'kul' (clan-guild) as a social-group identifier within guild-title inscriptions. The Munda substrate + Dravidian cognate confirms this is a loanword or shared isogloss. Phase-128 SUBSTRATE-MEDIUM. [Phase-216: SA-cons=0.17 DEDR\u2713 source=Phase-128 substrate upgrade]"
+ },
+ {
+  "sign": "M375",
+  "reading": "ta\u1e47",
+  "basis": "Folded-arm sign ~ ta\u1e47 'cool/refreshing' (DEDR 3009) or ta\u1e47\u1e6du 'staff/rod'. Phase-103 NAME_AY_AN pattern: [M375]-M342-M176 (ta\u1e47-ay-an = 'cool/noble man'). Sangam Akam poetry: ta\u1e47- is a common personal name prefix. Freq=7; Pos=MEDIAL; name_slots=4. [Phase-216: SA-cons=0.17 DEDR\u2713 source=Phase-105]"
+ },
+ {
+  "sign": "M391",
+  "reading": "ka/ka\u1e47",
+  "basis": "Numeral/stroke sign"
+ },
+ {
+  "sign": "M398",
+  "reading": "ku\u1e5fi",
+  "basis": "Hook+ring iconography ~ ku\u1e5fi 'mark/sign' (DEDR 1769) or ku\u1e5fu 'small/short'. Phase-103: NAME_AY_AN + GENITIVE_NAME_SUFFIX patterns. Pattern [M267]-[M398]-[M342]: 'of-ku\u1e5fi-belonging' = genitive personal name. Score 1.2 (highest name_score in Phase-103 top candidates). Freq=3; Pos=MEDIAL; name_slots=3. [Phase-216: SA-cons=0.17 DEDR\u2713 source=Phase-105]"
+ }
+]

@@ -1,0 +1,54 @@
+item_id: indus/wells-1998
+source_name: "Wells 1998 — An Introduction to Indus Writing (MA thesis, University of Calgary)"
+source_url: "https://prism.ucalgary.ca/items/ (PRISM DOI 10.11575/PRISM/23641)"
+download_url: ""
+download_date: "2026-10-08"
+local_path: "~/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/wells-ma-thesis-1998/Wells1998_MA_AnIntroductionToIndusWriting_Calgary.pdf (VM holdings sweep store; not in git)"
+checksum_sha256: "5720dc010acc68d6b50827fa89fb7bf3c4c0eb0aee67597e7662e5fd74508906"
+license: "© Bryan Wells 1998. UMI dissertation scan (UMI Co. Dissertation # MQ31309). Held for internal research use; the PDF is not redistributed and is not committed to this repository."
+license_url: ""
+rights_status: research_use
+license_class: restricted
+title: "An Introduction to Indus Writing"
+author: "Wells, Bryan K."
+publication_date: "1998"
+language: eng
+script: Indus
+period: "2600–1900 BCE"
+region: "Indus Valley"
+genre: epigraphy
+source_format: pdf
+processing_stage: raw
+confidence: "0.99"
+ocr_quality: low
+manually_reviewed: true
+status: keep
+glossa_legacy_asset: false
+notes: >
+  INTAKE-PINNED 2026-10-25 (holdings sweep copy; verification in this
+  directory — see wells_1998_sign_list_extraction_2026-10-25.md for the
+  full record). Identity confirmed from the thesis title page:
+  "An Introduction To Indus Writing" by Bryan Wells, A Thesis submitted
+  to the Faculty of Graduate Studies in partial fulfilment of the
+  requirements for the degree of Master of Arts, Department of
+  Archaeology, Calgary, Alberta, January 1998. File: 12,298,934 bytes;
+  295 PDF pages; SHA-256 as above, re-verified at the start of the
+  2026-10-25 extraction and matched exactly (this is the exhibited
+  copy named in the trigger-census instrument, files/2026-10-25-
+  trigger-census-instrument.md, Arm 1). The PDF is a UMI scan produced
+  with Adobe Acrobat 6.02 Paper Capture (1999): it carries an embedded
+  OCR text layer of low quality (character error is heavy in prose and
+  the small table type of Appendix I is largely dropped), over
+  page images that are legible throughout. Printed pagination: printed
+  page = PDF page − 10, verified at PDF pp. 81 (printed 71), 82 (72),
+  87 (77), 126 (116), 132 (122), 146 (136).
+  Structure: Chapters 1–5 (printed pp. 1–124); Bibliography (to printed
+  ~134); Appendix I = Table 3.2 "Signs Sorted by Sign Number"
+  (printed pp. 136–~285, PDF pp. 146–295) — Wells' sign list data
+  base: 587 signs with 802 varieties (Chapter 3, printed p. 49).
+  DESIGNATED USE: the Wells arm of the Spec 071 reopening-trigger
+  census (an exhibited published list; see
+  docs/decisions/2026-10-25-spec-071-retirement-decision.md) and the
+  M7 witness census. CITATIONS.md §A.8a records this holding.
+  Wells 2006 (PhD thesis, sibling holding) is a separate item and is
+  not covered by this pin.

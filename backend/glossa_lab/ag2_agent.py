@@ -108,12 +108,14 @@ def _tool_run_experiment(experiment_id: str) -> str:
     import urllib.error  # noqa: PLC0415
     import urllib.request  # noqa: PLC0415
 
+    from glossa_lab.auth import auth_headers  # noqa: PLC0415
+
     base = "http://127.0.0.1:8001"
     url = f"{base}/api/v1/experiments/{experiment_id}/queue"
     try:
         req = urllib.request.Request(
             url, data=b'{}', method='POST',
-            headers={'Content-Type': 'application/json'},
+            headers={'Content-Type': 'application/json', **auth_headers()},
         )
         with urllib.request.urlopen(req, timeout=10) as resp:
             result = _json.loads(resp.read().decode('utf-8'))
@@ -126,6 +128,14 @@ def _tool_run_experiment(experiment_id: str) -> str:
     except urllib.error.HTTPError as exc:
         if exc.code == 404:
             return f"Experiment '{experiment_id}' not found. Use list_experiments to see available IDs."
+        if exc.code == 401:
+            # Spec 082 (FR-003): name the cause — the install API
+            # token was missing or invalid, not a generic failure.
+            return (
+                "Failed to queue experiment: the backend rejected the "
+                "request as unauthenticated (HTTP 401) — the Spec 082 "
+                "API token was missing or invalid."
+            )
         return f"Failed to queue experiment (HTTP {exc.code}): {exc.reason}"
     except Exception as exc:  # noqa: BLE001
         return f"Could not reach backend to queue '{experiment_id}': {exc}"

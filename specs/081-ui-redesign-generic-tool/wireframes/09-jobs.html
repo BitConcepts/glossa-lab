@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — Jobs (Spec 081 wireframe 09)</title>
+<link rel="stylesheet" href="wireframes.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-row"><div class="tile">G</div><div><div class="brand-name">Glossa Lab</div><div class="brand-sub">Epistemic research workbench</div></div></div></div>
+    <a class="program-switch" href="01-programs.html" style="text-decoration:none"><div class="ps-label">Program</div><div class="ps-name">Indus Script <span>▾</span></div><div class="ps-q">What do the signs mean — tested claim by claim?</div></a>
+    <nav class="nav">
+      <h4>Program</h4>
+      <a href="02-program-home.html"><span class="ic">⌂</span>Home</a>
+      <a href="03-claims.html"><span class="ic">§</span>Claims<span class="count">94</span></a>
+      <a href="05-digestion.html"><span class="ic">✓</span>Digestion<span class="count alert">9</span></a>
+      <a href="06-evidence.html"><span class="ic">▤</span>Evidence &amp; sources</a>
+      <a href="07-data.html"><span class="ic">▦</span>Data</a>
+      <a href="#"><span class="ic">◈</span>Analysis</a>
+      <a href="08-experiments.html"><span class="ic">⬡</span>Experiments</a>
+      <a href="10-discovery.html"><span class="ic">◎</span>Discovery<span class="count">12</span></a>
+      <a href="11-research-loop.html"><span class="ic">↻</span>Research loop</a>
+      <a href="12-reports.html"><span class="ic">▨</span>Reports &amp; ledger</a>
+      <div class="nav-tool"><h4>Tool</h4>
+        <a href="09-jobs.html" class="active"><span class="ic">⚙</span>Jobs<span class="count">2</span></a>
+        <a href="14-status.html"><span class="ic">♥</span>Status</a>
+        <a href="13-settings.html"><span class="ic">⚙</span>Settings</a>
+        <a href="#"><span class="ic">?</span>Help</a>
+      </div>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="crumb">Glossa Lab / <b>Tool</b> / Jobs</span>
+      <div class="spacer"></div>
+      <button class="icon-btn">⌘K&nbsp; Search</button>
+      <button class="icon-btn">✦ AI assistant</button>
+      <div class="service-chip"><span class="dot"></span><span><b>Glossa Lab v0.1.0</b> · TRISTEN-DESKTOP · checked 14:02</span></div>
+    </div>
+
+    <div class="content">
+      <p class="specimen-note">Specimen queue — times and outcomes are illustrative of the shape; the failed job is shown the way failures must appear.</p>
+
+      <div class="head-row">
+        <div class="page-head">
+          <h1>Jobs</h1>
+          <p class="lede">Work the tool is running, across every program. A job states what it is, which program it serves, when it started, and — when it ends — what it produced or exactly how it failed. A failure is a result, shown at full size.</p>
+        </div>
+        <div class="spacer"></div>
+        <button class="btn primary">+ New job</button>
+      </div>
+
+      <div class="card" style="padding:4px 8px">
+        <table class="tbl">
+          <thead><tr><th style="width:30%">Job</th><th>Program</th><th>State</th><th>Started</th><th>Finished</th><th>Result</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><b>Discovery fetch — program sources</b><div class="row-meta">Scheduled source sweep</div></td>
+              <td>Indus Script</td>
+              <td><span class="chip warn">Running · step 3 of 5</span></td>
+              <td class="row-meta">14:01</td><td class="row-meta">—</td>
+              <td><button class="btn small">Open</button></td>
+            </tr>
+            <tr>
+              <td><b>Implantation test — scoring leg</b><div class="row-meta">Experiment G44-I · frozen scorer</div></td>
+              <td>Indus Script</td>
+              <td><span class="chip neutral">Finished</span></td>
+              <td class="row-meta">Oct 28, 09:12</td><td class="row-meta">Oct 28, 09:47</td>
+              <td><a href="08-experiments.html">Verdict: not supported →</a></td>
+            </tr>
+            <tr style="background:var(--bad-bg)">
+              <td><b>Sign-image processing — batch 2</b><div class="row-meta">Failed at step 2: the source folder was moved; nothing was written. The job says so, and the retry starts from the new location — it does not silently succeed against stale paths.</div></td>
+              <td>Indus Script</td>
+              <td><span class="chip bad">Failed</span></td>
+              <td class="row-meta">Oct 29, 08:12</td><td class="row-meta">Oct 29, 08:13</td>
+              <td><button class="btn small">Retry</button> <button class="btn small">Details</button></td>
+            </tr>
+            <tr>
+              <td><b>Corpus statistics — M77</b><div class="row-meta">Entropy + frequency profile</div></td>
+              <td>Indus Script</td>
+              <td><span class="chip neutral">Finished</span></td>
+              <td class="row-meta">Oct 28, 16:20</td><td class="row-meta">Oct 28, 16:22</td>
+              <td><a href="07-data.html">Results →</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="row-meta" style="margin-top:10px">Jobs is a tool-level surface: the queue is shared machinery. A job always names its program, and a finished job links to the claim, experiment, or report it produced — never to a raw JSON dump as the first thing you see (the structured result is one click deeper, for the record).</p>
+
+      <div class="annotation">
+        <div class="a-title">Annotation — wireframe 09 · not part of the UI</div>
+        <dl>
+          <dt>Purpose</dt><dd>All running and finished work in one queue, with honest states and timestamps.</dd>
+          <dt>Primary action</dt><dd>“New job.” Row actions (open, retry) are secondary and local to their row.</dd>
+          <dt>Changed &amp; why</dt><dd>Jobs exist twice today (a full view and a bottom-panel mini list) and results default to raw JSON. Here there is one queue, tool-level, with the program named on every row; results render as what they mean (a verdict, a table) with the raw record one click deeper; and the failed row is full-width, explained, and actionable — the direct answer to “failures and fallthroughs” being invisible. The bottom panel's duplicate Jobs tab goes away.</dd>
+          <dt>Spec claims</dt><dd>C081-3 (states carry times), C081-5 (failures at full prominence), C081-7 (no unframed history).</dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</div>
+<nav class="mobile-nav">
+  <a href="02-program-home.html"><span class="mi">⌂</span>Home</a>
+  <a href="03-claims.html"><span class="mi">§</span>Claims</a>
+  <a href="05-digestion.html"><span class="mi">✓</span>Digestion</a>
+  <a href="09-jobs.html" class="active"><span class="mi">⚙</span>Jobs</a>
+  <a href="01-programs.html"><span class="mi">☰</span>More</a>
+</nav>
+</body>
+</html>

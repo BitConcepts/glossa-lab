@@ -10454,6 +10454,7 @@ reports/phase435_results.json.
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+
 ## 2026-10-24 — Spec 052 EXECUTED (Phase-437): battery NB-1 on the Shakti layer (CISI-compilation lineage) — INCONSISTENT
 
 The amended D-01 arm A the parent claim's contradicted verdict
@@ -10714,3 +10715,1617 @@ outcome.md, reports/phase424_results.json, reports/phase424_report.md.
 
 AI disclosure: executed by an AI agent (Muse, via Muse) at the
 direction of Tristen Pierson, per constitution sec.VI.
+
+
+## 2026-10-25 — Spec 075 EXECUTED (Phase-441): per-kind verdicts — other INCONCLUSIVE; human, animal, object_goods NOT SUPPORTED
+
+Spec 075 — the depicted-kind endings atlas, this programme's own claim
+family F075 (not Spec 071's retired question, not Hunt's claims in any
+form) — executed under the frozen Spec 075 contract (freeze digest
+aa06726f...; freeze PR #389 merged fd9bd448 on genuine CI including the
+C4 freeze-gate-records check, this freeze being the designated C4
+shadow freeze; OSF registration jv74f approved and public, DOI
+10.17605/OSF.IO/JV74F), on the owner's execution order of 2026-10-25
+(12:03 EDT). The celestial arm was reported first, as pre-registered:
+the celestial class as frozen in Asset A v2 contains zero signs; there
+is no celestial rate; the empty class is Spec 071's closing finding,
+restated where a reader of an endings atlas would look for it, and it
+establishes nothing new about sky signs. Spec 071's retirement stands
+untouched and its claim UNTESTED. All six step-0 gates passed in order:
+the asset pins against Spec 073's executed record; the Shakti intake
+under P-F1 S1/S2; input integrity (crosswalk, Registry v1, anchors);
+the primary population reproduced exactly (3,045 analyzable
+documented-lineage rows, 557 distinct signs, 550 in sequences of length
+>= 2 — the spec's flagged replay/drift gate) and keyed in full under
+the two-leg route of DD-075-5 (556 signs keyed, 423 by leg 1 and 133 by
+leg 2, to 424 distinct Asset A v2 rows; token 999 the named exclusion,
+2 rows / 2 occurrences, counted and never classed); the census
+published before any rate (other 307 signs / 7,006 occurrences; human
+53 / 978; animal 39 / 1,179; object_goods 24 / 2,159; unidentified 133
+signs / 481 occurrences as context; corpus-wide final-position rate
+0.2579), no kind TOO THIN; and the freeze-order proof from the external
+records. The per-kind verdicts under section 5.2's frozen bands,
+against each kind's frequency-matched comparison class: other
+INCONCLUSIVE (rate 0.2900 vs 0.2686; ratio 1.0796; Fisher two-sided
+p = 0.0295; the half-of-occurrences share 0.4970 also just under its
+condition); human NOT SUPPORTED (0.2526 vs 0.3244; ratio 0.7785;
+p = 6.93e-06); animal NOT SUPPORTED (0.2774 vs 0.3112; ratio 0.8912;
+p = 0.0200); object_goods NOT SUPPORTED (0.1153 vs 0.2844; ratio
+0.4055; p = 2.34e-67 — the atlas's strongest departure, in the
+depleting direction). Three falsifier-word verdicts and one
+inconclusive: the family hypothesis (F075-C03) stands in question, and
+no pooled depicted-kinds verdict exists. The sensitivities agree in
+every word: S1 (borderline removed: 255, 256, 520, 716, 717) returns
+the same four words; S2 (contested included) equals the primary
+exactly, Asset A v2 carrying zero contested rows; S3 (documented +
+corroborated, 5,131 rows, 707 signs, none unkeyable) returns the same
+four words — no verdict is grade-sensitive. Position is not meaning:
+these are positional facts about the published identification layer on
+this ICIT-lineage corpus, carrying Spec 037's 49% cross-compilation
+caution. Two runs byte-identical (results SHA-256 f55ae911...).
+Anchors df0cf620... asserted byte-identical before and after. Records:
+specs/075-depicted-kind-endings-atlas/outcome.md and step0-record.md,
+reports/phase441_results.json, reports/phase441_report.md; the
+registration record (osf-spec-registration.md) landed ahead of the
+execution (PR #392, merged 83cea50d).
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.
+## 2026-10-28 — Spec 080 BUILD: Windows host migration package (desktop production home)
+
+At the owner's direction (2026-10-28), Glossa Lab's production home
+moves from the Muse VM — where the backend was repeatedly killed by
+kernel OOM events outside the project's control (Spec 079 record) —
+to the owner's Windows host, TRISTEN-DESKTOP. This entry records the
+BUILD; the cutover outcome gets its own entry when it happens.
+
+Built under specs/080-desktop-host-migration (claims C080-1..C080-9
+with falsifiers): production launch semantics on every Windows
+surface (`create_app --factory`, 127.0.0.1, no reload) in shell.cmd,
+the tray start path, and scripts/run-backend-svc.cmd; one canonical
+installer (setup-os.cmd; services/windows delegators; the
+H25-violating Startup shortcut retired); a targeted stop path (the
+previous stop killed every pythonw.exe on the machine); installer
+verification of the tray icon assets against pinned SHA-256 hashes
+(ICO 315940742d75720388264dcdf03178c58f878ea0701d03eeba95688d935ff520,
+PNG bb41bf09d4177cee0c96b29ebe480f86a9e7115946f9e4ad132d2367a7adb077);
+deterministic installed-mode data path (%LOCALAPPDATA%\GlossaLab\data
+via GLOSSA_MODE=installed in the launch chain); tray supervision on
+Windows (capped auto-restart, 3/hour, never overriding a user stop —
+before this change the tray started the backend once and never
+restarted it); and the host tooling scripts/install-desktop-host.cmd
++ scripts/verify-desktop-host.cmd (identity-grade verification
+markers). An audit note for the record: shell.cmd's committed run
+line carried a redacted host token (asterisks) where the bind
+address belonged — the line is replaced wholesale by this spec.
+
+Also recorded plainly: this ledger has no entries for Specs
+076–079. That gap predates this change; it is flagged here rather
+than silently backfilled.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-28 — G44-I Amendment 3 rerun: FAILED — KI-2 triggered; Step 0-G line closed; OD-1 ruled
+
+The G44-I implantation instrument (frozen draft 2026-10-26, Amendments
+1–3, PRs #422/#423 for the halt record and amendment package) was rerun
+under Amendment 3 and executed on TRISTEN-DESKTOP through the Syncyard
+gatekeeper (run 40736921121) on the hash-verified staged package:
+script SHA-256 6de44f06329b1111479a54bea3780ad41734e4f0e5e3928772a9e7575c7ca0f9,
+population pin SHA-256 f1d984c546c77bbd5459895e9ab31b877dd7a2af69a88ff4248049bf11e8811c;
+seeds model 20298464, split 20292778, leg-2 20298297, leg-3 20291685.
+
+Results: the §6 realization gate PASSED (implantation realized exactly,
+recounted independently — the first gate pass in this line). Leg 1
+PASSED (B = 0.6518 vs bar 0.60; 34/44 vs bar 33). Leg 1B FAILED
+(realized margin +0.0017 vs the frozen +0.05 bar — the scorer beat the
+frequency baseline, narrowly, instead of losing to it). Leg 2 PASSED.
+Leg 3 PASSED (both arms; five calibration checks first).
+
+Verdict under the draft's §§7–9: FAILED — KI-2 TRIGGERED. The gate
+passed and leg 1B failed with OD-1 undecided before the run, so the
+prediction-pair profile-scoring design stands convicted — wrong, not
+under-tuned; no further instrument under this scorer design in any
+validation family. Printed alongside the verdict, as §8 prescribes: the
+narrowing facts (gate and legs 1/2/3 passed, leg 1 with room; the 1B
+failure was a 0.0483 shortfall on a beat, not a loss) and the §8 doubt
+(under exact realization the baseline starts the race holding the
+planted pair for most signs, so the margin is decided by a minority of
+signs plus split-sample noise). KI-3 did not trigger as defined — it
+flags a validation, and this run did not validate; the margin half of
+its conditions is met (+0.0017 ≤ 0.10) and the agreement half is
+pending the counts. KI-1 stands at zero strikes: implantation is
+vindicated, not convicted — implantation-by-relabeling is recorded as
+a proven instrument, with Amendments 1–3 as its design record.
+
+OD-1 (owner decision, 2026-10-28): leg 1B is demoted to a reported
+diagnostic for any future draft, with the tripwire preserved — a
+baseline win (negative margin) under exact realization remains
+disqualifying in any future gate review. The decision is forward-only:
+it does not amend this verdict and does not revive the convicted
+scorer design.
+
+§9 endgame executes: the Step 0-G instrument line CLOSES entirely (no
+fifth design). M4 remains GATED — DRAFT ONLY, permanently under its
+current gate. The 44 pending readings remain pending indefinitely,
+carrying no weight — neither validated nor falsified; this run scored
+none of them. The scorer's honest measure stands on the record: it
+recovers planted truth above the frozen bar and cannot be
+distinguished from the corpus's own frequency summary of itself.
+
+§8 agreement counts (baseline full-pair / position-only /
+neighbor-only, of 44): PENDING-APPEND. The run's results file is in
+verified transit from the desktop; when it lands, the counts are
+appended to the full run record (goal record
+2026-10-28-g44i-rerun-record.md, with the red-team assessment at
+2026-10-28-g44i-rerun-od1-redteam-assessment.md) as a dated appendix.
+The append does not change the verdict.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.
+
+## [2026-10-22] Entry — Spec 026: CORE as a Keyed Source for RESEARCH-CHECK
+
+Objective:
+  Mirror the RCPH workspace's CORE capability into Glossa Lab's
+  research-check tooling (owner's mirror directive, 2026-10-22:
+  APIs added for the RCPH program are mirrored for Glossa). CORE
+  via the registered custom.core connection was connected and
+  verified on the RCPH side the same day. Tooling only; no Glossa
+  material is audited by this spec.
+
+What was done:
+
+  1. SPEC: specs/026-core-research-source/ (spec.md, plan.md,
+     tasks.md) — proposal with H13 epistemic boundaries recorded
+     before execution (H2). Route decision recorded in the plan:
+     a direct client on the vault surrogate, not the MCP server's
+     search_core (its key slot is an environment variable the vault
+     route deliberately does not provide) and not keyless calls
+     (measured empty under spec 025).
+
+  2. CLIENT: backend/glossa_lab/core_search.py — CORE v3 client in
+     the shape of the proven RCPH connector helper. The registered
+     custom.core credential is attached as a runtime bearer
+     surrogate (dynamic_credentials.add_surrogate_to_request); the
+     key value is never read, printed, or stored by the code.
+     Canonical search path /v3/search/works/ WITH trailing slash
+     (the slashless form 301s; redirects are refused on
+     authenticated requests). Pace guard 2.1 s minimum interval
+     (registered tier ~5 single requests per 10 s). HTTP 429 raises
+     CoreRateLimitError and is never retried; every call carries an
+     explicit timeout (H9/H11). CLI: python -m glossa_lab.core_search
+     search|get.
+
+  3. STAGE: backend/glossa_lab/research_check.py — CORE joins the
+     source roster as a per-phrasing keyed search (injectable
+     core_client; --no-core to disable). Hits merge into the same
+     neighbor pool and vocabulary-overlap ranking; a CORE hit
+     carrying full text is its own read source (recorded in
+     neighbors_read_full_text with source "core" and word count;
+     the text itself never enters the sidecar). A 429 stops CORE
+     for the rest of the run with a source_errors record and a gap
+     entry; the run continues on the other sources. Existing
+     sources' behavior unchanged; verdict still null by
+     construction; claim files never modified.
+
+  4. DOCS: docs/paper-search-mcp.md gained a CORE section (route,
+     trailing-slash rule, pacing, 429 stop, protocol standing:
+     CORE is now a reached source) and its limits-list CORE line
+     was updated from "keyless returns empty"; AGENTS.md gained a
+     pointer bullet in the research-check section (H8).
+
+  5. TESTS: backend/tests/test_core_search.py — 11 offline tests
+     (request shape with slashed path + bearer surrogate, host
+     guard, redirect refusal, 429 hard stop with exactly one
+     attempt, pace-guard arithmetic, work normalization, stage pool
+     merge + CORE full-text read, stage 429 stop, --no-core). The
+     spec-025 tests now inject a null CORE client so that suite
+     stays offline. Run together — CORE + paper-search + governance
+     lint + MCP suites: 51 passed.
+
+  6. SMOKE (live, raw outputs in the spec's smoke/): two protocol
+     phrasings of an Indus concept via the client — "Indus script
+     decipherment" (673,990 hits; 1 of top 10 with full text) and
+     "statistical analysis of Indus signs n-grams linguistic
+     structure" (9 of top 10 with full text). CORE search is loose
+     (polysemy: Indus river-basin geology, generic n-gram papers);
+     the stage's vocabulary ranking is what makes it usable.
+     Scoped end-to-end stage run on the Yadav 2010 n-grams claim
+     (Zipf-Mandelbrot): CORE queried per phrasing, contributed 8 of
+     23 neighbors, zero source errors; the 3 full-text reads went
+     to on-topic arXiv neighbors — the two full-text-carrying CORE
+     neighbors scored relevance 0.0 and were correctly not read
+     (the CORE read path is covered by the offline tests). Sidecar
+     written to the usual place; verdict null. No backend process
+     was restarted or disturbed (the running uvicorn on :8001 was
+     left alone).
+
+  7. COMMIT: this spec's files only, on branch
+     spec/026-core-research-source. The pre-existing uncommitted
+     working-tree modifications (extracted-claims dossiers, claim
+     reports, anchor staging, partial loop results) are not this
+     session's work and were not staged; none of the files this
+     spec modifies carried uncommitted changes at branch time.
+
+**AI disclosure:** execution recorded by an AI agent (Muse, via
+Muse) at the direction of Tristen Pierson, per constitution SSVI.
+
+## 2026-10-29 — Spec 080 Amendment 1: installer defects fixed; autostart mechanism amended
+
+The Spec 080 desktop install job (gatekeeper
+`glossa-host-install-2026-10-28-r1`, run 40802151979) completed
+GitHub-green while its 27 markers proved the install had NOT
+landed: INSTALL_EXIT 1 and no `GlossaLab` scheduled task. Two
+defects, pinned in the source and on the host:
+
+1. Icon verification: `setup-os.cmd install` hashed the tray
+   icons with an inline `Get-FileHash` one-liner in a
+   `powershell -NoProfile` child. In that context the cmdlet
+   threw CommandNotFoundException and the batch check reported
+   the hashing failure as a hash "mismatch", refusing an
+   install whose assets match the pins exactly.
+2. Autostart registration: `Register-ScheduledTask` returned
+   HRESULT 0x80070005 in both the installer's elevation-wrapper
+   path and the direct fallback, and the fallback script still
+   printed "Task registered." after the failure.
+
+Host diagnostic `glossa-host-diag-2026-10-28` (run 40807602846)
+established the execution context (tristen-desktop\trist,
+session 1, not elevated) and that per-user task registration
+is denied in it with and without an explicit principal, while
+schtasks.exe exits 0 creating nothing. On that evidence the
+Desktop Access program directed, and this change records,
+Amendment 1 to Spec 080: the canonical per-user autostart is
+the HKCU Run value `GlossaLab` (wscript.exe + launch-tray.vbs),
+written and read-back-verified by the installer; the
+scheduled-task path and scripts\register_task.ps1 are removed
+(no dual mechanism). Icon verification moves to
+scripts\verify_icon_hashes.ps1 (.NET SHA-256, case-insensitive
+comparison, exit 2/3/4 discriminating hashing failure /
+missing asset / mismatch; the method is printed as
+GLOSSA_ICON_HASH method=dotnet-sha256). The tray's autostart
+detection and scripts\verify_desktop_host.py read the Run
+value; FR-007's GLOSSA_TASK_STATE marker is renamed
+GLOSSA_AUTOSTART_STATE. FR-005's bar — verify, fail loudly,
+refuse on any failure — is unchanged. Spec record:
+specs/080-desktop-host-migration/spec.md, Amendment 1;
+contract tests C080-5 (updated) and C080-8 (new).
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.
+
+## [2026-10-29] Entry - Spec 080 Amendment 2: Autostart Restored to Route-B Scheduled Task
+
+Amendment 1's HKCU Run-key autostart is superseded. Host
+diagnostic glossa-host-diag2-2026-10-28 (gatekeeper run
+40816104983, 20 markers), from the same non-elevated job context
+as diag1 (tristen-desktop\trist, session 1), registered a task
+cleanly via the cmdlet route with a scoped principal: task file
+present, CIM state Ready, principal trist / Interactive /
+Limited, trigger MSFT_TaskLogonTrigger for
+TRISTEN-DESKTOP\trist. The schtasks route still fails there.
+Diag1's denials (run 40807602846) were therefore shape-caused
+(unscoped trigger, no scoped principal, elevation wrapper),
+not a venue-wide bar.
+
+This change restores Spec 080's design of record:
+scripts\register_task.ps1 returns in the route-B shape and is
+invoked directly by setup-os.cmd install (no elevation); it
+reads the task back, prints GLOSSA_TASK_STATE, and gates the
+install on the Ready state. The HKCU Run route is removed (Run
+deletes remain as legacy cleanup). The tray's autostart
+detection and scripts\verify_desktop_host.py return to the
+task (CIM read); FR-007's marker is GLOSSA_TASK_STATE again.
+Amendment 1's icon-verification fix (.NET SHA-256 helper,
+case-insensitive, discriminated failures) is unchanged.
+Spec record: specs/080-desktop-host-migration/spec.md,
+Amendment 2; contract test C080-8 (revised).
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.
+
+## [2026-10-29] Entry - Spec 080: Verify Script Backend Identification Fix
+
+scripts\verify_desktop_host.py identified the backend by the
+PID listening on port 8001. On TRISTEN-DESKTOP that listener is
+tailscaled.exe (session 0): Tailscale Serve holds the tailnet
+:8001 and proxies to the app's loopback :8001. The restart leg
+therefore tried to kill the Tailscale service process and
+reported kill-failed (host run 40835699406), failing
+GLOSSA_HOST_VERIFY while every app leg passed; a follow-up
+app-stop proof (run 40840066177) confirmed the app's own stop
+works and the "port still listening" reading was the proxy.
+Fix: the backend is identified by command line
+(glossa_lab + uvicorn - the targeted stop path's own test) as
+a process SET; the restart leg kills that set and waits for a
+healthy backend under a PID outside the set. The port listener
+is never targeted for kill or identity.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.
+
+## [2026-10-29] Entry - Spec 080 Amendment 3: Persistence (Task-Owned Start, Idempotent Start)
+
+Diagnosis (host runs 40855200786 + 40861773854): the desktop
+backend passed every verification leg, then vanished within
+~35 minutes. The logon task had never run (console session
+logged on since 2026-09-25; LastRunTime 11/30/1999); every
+verified start was launched inside a gatekeeper job and died
+with that job's teardown - tray and backend both at 0
+processes, backend log ending after startup with no shutdown
+lines. An earlier cycle also showed a double-start race
+(address-in-use).
+
+Amendment 3: register_task.ps1 gains the scheduler's
+restart-on-failure (RestartCount 3, RestartInterval 1 min);
+launch-tray.vbs now waits on the tray and propagates its exit
+code, so the task stays Running for the tray's lifetime and
+the scheduler restarts a crashed tray (a clean exit-0 quit is
+not restarted). setup-os.cmd start is idempotent: the bounded
+Spec 079 identity check runs first, and an already-healthy
+backend makes the start a no-op success
+(GLOSSA_START_STATE already-running). The durable start is
+the task fired on demand (Start-ScheduledTask) - scheduler-
+owned, so it outlives any job; the persistence proof must
+span a job boundary (separate later probe job). Spec record:
+specs/080-desktop-host-migration/spec.md, Amendment 3;
+contract tests C080-8 (extended) and C080-9 (new).
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.
+
+## [2026-10-29] Entry - Spec 080: Verify Process Identification Precision
+
+Follow-up to the backend-identification fix: the command-line
+match also matched the PowerShell process running the CIM
+query itself (its -Command text carries the pattern), and
+that transient PID failed the restart leg's kill step (host
+run 40880047294; every other leg passed). Process
+identification in scripts\verify_desktop_host.py now requires
+the repo venv's python executable (ExecutablePath) in
+addition to the command-line pattern, for both the backend
+set and the tray set, via a shared helper.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.
+
+## [2026-10-29] Entry - Spec 080 Amendment 3 Consolidation: Kill-Based Restart Leg Purged
+
+Per Desktop Access direction after start-verify run
+40880047294 (start fully green; the kill-based restart leg
+failed a third time; three tray processes had accumulated):
+(a) GLOSSA_RESTART_TEST in scripts\verify_desktop_host.py no
+longer kills anything - it cycles the app through its own
+controls (setup-os.cmd stop -> backend set gone + proxy
+health not 200 -> setup-os.cmd start -> identity under a
+fresh PID), the restart-verify2 method (proof of record:
+run 40849993917). kill_pid/taskkill are gone from the suite.
+(b) setup-os.cmd start's idempotency covers the tray too:
+backend healthy + tray running = full no-op; tray missing =
+launch only the tray. (c) timeout /t waits in setup-os.cmd
+are replaced with ping waits - timeout.exe prints "Input
+redirection is not supported" under redirected stdin,
+dirtying successful job logs.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.
+
+## [2026-10-29] Entry - Desktop UI-Log Audit Fix 1: Tray Supervision Honesty
+
+Objective:
+  Owner directive 2026-10-29 ("check ui logs too. I see lots of
+  failures and fallthroughs. fix all."): audit the desktop host's
+  UI/tray/backend logs, catalog every failure and fallthrough, fix
+  root causes. This entry covers the tray (tray/glossa_tray/main.py).
+
+Findings fixed (all in the tray):
+  1. The status poller ENDED after ~24 h of polling
+     (_MAX_POLL_ITERATIONS) with only a print - invisible under
+     pythonw - leaving the tray showing a frozen status with
+     supervision silently over. Polling now runs in bounded
+     segments (H11: bound kept, expiry diagnosed) that renew
+     themselves and record each renewal in the tray log; a crashed
+     segment or a single failed poll is logged and polling
+     continues.
+  2. Auto-restart ignored in-flight starts: the 3-second poller
+     restarted over a still-booting backend, spawning duplicates
+     that raced for the port (Errno 10048 in logs/backend.log,
+     2026-10-29) and burned the 3/hour restart cap on one slow
+     start. Starts now record an in-flight flag + timestamp;
+     auto-restart returns "starting" inside a 120 s grace window,
+     and a start that never comes up is logged as failed before
+     supervision resumes. Cap-reached is logged once, not per poll.
+  3. The stop path's documented "then kill if still running" did
+     not exist: the shutdown request's failure was swallowed and
+     no kill was attempted. Stop now waits (bounded) for the
+     backend to go away, then kills the listening PID (netstat)
+     as the last resort, and logs the outcome either way.
+  4. The tray had NO log of its own - every diagnostic was a
+     print discarded by pythonw (audit confirmed no current-era
+     tray log file exists on the host). logs/tray.log now records
+     tray start, backend starts, auto-restarts, stop outcomes,
+     config failures, autostart failures, and poller renewals,
+     rotated under the same policy as the backend log (shared
+     _rotate_log_file helper).
+  5. Config load/save failures were silent (a corrupt config
+     silently defaulted the port, making the tray poll the wrong
+     port); autostart install results were discarded (a failed
+     install retried invisibly on every launch); a backend spawn
+     failure (e.g. missing venv pythonw) propagated out of main()
+     and killed the tray before its icon appeared. All three are
+     now logged, and a failed spawn leaves the tray alive showing
+     the failure in its status.
+
+Tests: backend/tests/test_tray_supervision.py - 11 behavior tests
+(pystray/Pillow stubbed, headless): in-flight start never
+duplicated, grace expiry resumes supervision, cap logged once,
+user stop never overridden, poller renews after a segment failure,
+segment survives a bad poll, tray log writes + rotates, config
+failure logged, spawn failure contained, stop kill-fallback
+exercised end to end.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.
+
+## [2026-10-29] Entry - Desktop UI-Log Audit Fix 2: Windows Script Honesty
+
+Objective:
+  Owner directive 2026-10-29 ("check ui logs too. I see lots of
+  failures and fallthroughs. fix all."): root-cause fixes for the
+  Windows launch/install scripts and the host verifier.
+
+Findings fixed:
+  1. shell.cmd setup ran five fallible steps (pip upgrade, backend
+     install, tray requirements, GPU installer, npm install +
+     build) with no errorlevel checks and ended with "[OK]
+     Dependencies updated." + exit 0 unconditionally - success
+     reported on failure. Every step is now checked; a failure
+     exits 1 naming the step. install-desktop-host.cmd already
+     checked the result (a check that could never fire); now it
+     can. setup-os.cmd's install path only re-checked that
+     pythonw.exe existed after its shell.cmd setup call; it now
+     aborts on a setup failure as well.
+  2. scripts/start_services.cmd, start_services.ps1 and
+     start_services_safe.ps1 were stale duplicate entry points:
+     they launched uvicorn with the retired non-factory app object
+     (glossa_lab.main:app), no GLOSSA_MODE (so the dev data
+     directory, not the installed one), hard-coded port 8001, and
+     printed success unconditionally (the .ps1 is on record as
+     having shipped with a parser error; the _safe variant existed
+     only to work around it). All three are now delegating shims
+     to the canonical setup-os.cmd start, per the C080-4 shim
+     precedent (a shim, never a second launch path).
+  3. Retired two-task machinery deleted: scripts/register-tasks.ps1
+     (registered the retired GlossaLabBackend + GlossaLabTray task
+     pair; the single GlossaLab task via register_task.ps1 is the
+     only registrar) and scripts/run-tray-svc.cmd (the retired
+     task's wrapper; its timeout /t wait under redirected stdin is
+     one historical source of "Input redirection is not
+     supported" noise in logs/tray.log).
+  4. scripts/exec.cmd's wait loop used timeout /t 1 - the last
+     timeout.exe wait in the Windows scripts; now a ping wait.
+     A contract test scans every Windows .cmd for operational
+     timeout.exe waits. The pre-existing assertion for this in
+     test_start_is_idempotent_on_verified_identity ended in
+     "or True" and could never fail; it is a real check now.
+  5. scripts/verify_desktop_host.py reported GLOSSA_TRAY_PROCESS
+     but its overall verdict ignored it: a host with no tray
+     (its user interface down) verified PASS. Tray presence is
+     now part of the verdict, with --skip-tray-check recording
+     an explicit skip in the marker, mirroring --skip-restart-test.
+
+Tests: backend/tests/test_desktop_host_migration.py - the
+repaired timeout assertion plus new contract tests for the
+shims, the retired files' absence, shell.cmd failure
+propagation, and the timeout.exe ban.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.
+
+## [2026-10-29] Entry - Desktop UI-Log Audit Fix 3: Backend Fallthrough Honesty
+
+Objective:
+  Owner directive 2026-10-29 ("check ui logs too. I see lots of
+  failures and fallthroughs. fix all."): root-cause fixes for the
+  backend failures visible in the desktop host's live log.
+
+Findings fixed:
+  1. The discovery LLM client (backend/glossa_lab/discovery/
+     llm.py) retried a failing provider on EVERY call with no
+     memory: in the desktop backend log of 2026-10-29, one
+     scheduler tick produced dozens of consecutive "provider
+     mistral returned 429, falling through" lines (one per
+     classified item), in a log carrying 1,378 WARNING lines. The
+     client now carries the same circuit breaker as ai_utils.call_llm (the
+     newer stack): 5 consecutive failures open the circuit for
+     600 s (one WARNING at open, skips at DEBUG), success resets
+     the count, expiry allows a retry. Fall-through order and the
+     all-providers-failed LLMError are unchanged.
+  2. _sync_static_fallback_async (model_intelligence.py) swallowed
+     every per-model INSERT failure and the COMMIT failure with
+     bare except/pass and returned "errors": 0 unconditionally -
+     a partially written static fallback reported full success.
+     Errors are now counted, the first is logged at WARNING with
+     the counts, and the returned dict carries the real number.
+
+Not code-fixed, by evidence: the dashboard insight cascade in
+the same log (reasoning -> conversational -> short-prompt, then
+"empty response after 3 attempts") is an HONEST degraded path -
+the returned payload tells the user the provider may be
+overloaded and names the remedy (model "empty-fallback"); its
+root cause was the dead/rate-limited provider, addressed by
+item 1's circuit discipline in the discovery stack and by the
+pre-existing circuit in ai_utils.
+
+Tests: backend/tests/test_discovery_llm_circuit.py - circuit
+opens at the threshold and stops invoking the provider, a
+healthy fallback keeps serving during cooldown, success resets
+the failure count, cooldown expiry allows a retry.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.
+
+## [2026-10-29] Entry — Leg B hardening: spec-study register API (the program record gets a surface)
+
+- **Gap (Leg B reconciliation, delta D0):** every spec-kit study execution
+  (Specs 001–081) had NO API surface — `/studies` serves canvas graphs,
+  and no endpoint enumerated the `specs/` register, so no UI surface
+  could show a study verdict or status.
+- **Fix:** new read-only `GET /api/v1/spec-studies` and
+  `GET /api/v1/spec-studies/{spec_id}` (`backend/glossa_lab/api/spec_studies.py`),
+  serving one entry per `specs/NNN-slug/` directory: spec_id, slug,
+  title (spec.md H1), has_outcome, and the outcome record's own headline
+  verbatim-truncated (never paraphrased). Duplicate spec numbers
+  (021/025/026) return `ambiguous: true` with all matches.
+- **Restricted entry:** Spec 072's directory contents are never opened
+  by this module; its entry is built from the directory name only
+  (public naming) with `restricted: true`.
+- **Tests:** `backend/tests/test_spec_studies.py` — 6 passed (register
+  enumeration, 052 INCONSISTENT headline, duplicate ambiguity, 404,
+  restricted-contents-never-read on a synthetic register, restricted
+  entry shape on the real register). Ruff clean.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-29] Entry — Leg C hardening 1: intake guards (C-05 upload traversal, C-06 SSRF)
+
+- **Findings (Leg C red team, live-confirmed on a throwaway instance):**
+  C-05 — `POST /indus-evidence/upload` honoured `../` filenames out of
+  `raw/user_uploads/`, with no size cap and no content validation;
+  C-06 — `POST /indus-evidence/import-url` and `/sweep/intake` fetched
+  arbitrary caller URLs (a loopback fetch of the backend's own health
+  endpoint succeeded and was stored as a `.pdf`).
+- **Fix (`backend/glossa_lab/api/indus_evidence.py`):** upload
+  filenames reduced to a sanitised basename; 25 MiB intake cap;
+  `%PDF-` magic check before any write/intake. URL fetches go through
+  an SSRF guard (http/https only; `localhost` refused; literal or
+  DNS-resolved private/loopback/link-local/reserved/multicast hosts
+  refused; redirects re-guarded; response read capped).
+  `sign_images` upload now rejects path-shaped `sign_id` values.
+- **Tests:** `backend/tests/test_indus_evidence_api.py` — traversal
+  filename confined, non-PDF content rejected, loopback import
+  blocked, `file://` scheme blocked.
+
+## [2026-10-29] Entry — Leg C hardening 2: GlossaShell sandbox confinement (C-02)
+
+- **Finding (Leg C red team, live-confirmed):** `GlossaShell._resolve`
+  returned absolute paths and `../` traversals unchecked, so terminal
+  builtins (`cat`/`rm`/`cp`/`mv`/…) read and modified files outside
+  the repo sandbox; only `cd` enforced `sandbox_root`. A marker file
+  outside the sandbox was read live via both an absolute path and a
+  traversal path through `POST /terminal/run`.
+- **Fix:** `_resolve` now resolves every path and raises `ValueError`
+  when the result escapes `sandbox_root`; `run()` surfaces that as an
+  error line. `POST /terminal/run` also rejects a caller-supplied
+  `cwd` outside the repo root (400). The subprocess fallthrough for
+  unknown commands is unchanged — it is the terminal's documented
+  function for the local user; the systemic issue is the missing
+  authentication layer (finding C-01, owner decision), not the
+  fallthrough itself.
+- **Tests:** `backend/tests/test_glossa_shell_sandbox.py` — absolute
+  and traversal reads refused, in-sandbox reads work, traversal `rm`
+  does not delete the outside file.
+
+## [2026-10-29] Entry — Leg C hardening 3: promotion evidence refs must resolve (C-03)
+
+- **Finding (Leg C red team, live-confirmed end-to-end):** the H26
+  promotion gate accepted any non-empty string as an evidence
+  reference. On a throwaway instance, one caller approved a staged
+  candidate, "verified" it via `/staging/verify-archive` (which
+  performs no test), then promoted it with a fabricated
+  `evidence_refs` string supplied in the promote request itself —
+  producing a MEDIUM-confidence anchor citing the fabricated ref.
+- **Fix (`backend/glossa_lab/api/research_loop.py`):** the gate now
+  requires the reference to resolve via `_evidence_ref_resolves` —
+  its leading artifact token (`path` or `path:KEY` form, free-text
+  description after whitespace allowed) must name an existing file
+  relative to the repo root or `backend/`. Bare strings no longer
+  pass, from either the candidate record or the request map.
+- **Tests:** `backend/tests/test_staging_promotion_evidence.py` —
+  new regression: fabricated unresolvable ref is blocked and nothing
+  is written. The pre-existing "with candidate ref" fixture named a
+  fictional `reports/phase999_example.json`; it now names the real
+  `LEDGER.md` artifact (the test's intent — a recorded ref succeeds —
+  is unchanged; a non-existent ref succeeding was the bug).
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-29] Entry — Leg C hardening 6: study-run honesty (C-11)
+
+- **Finding:** `studies.py:_run_report_node` wrote reports to
+  `reports/<report_name>` with `report_name` taken unsanitised from
+  node params (path traversal out of `reports/`), and `run_study`
+  reported `final_status="completed"` unless a node returned the
+  literal status `error` — skipped/pending nodes (unimplemented
+  experiments, pipeline timeouts) were laundered into success.
+- **Fix:** `report_name` is reduced to a bare basename before the
+  write. The final status is now `failed` on errors,
+  `completed_with_skips` when any node was skipped/pending, and
+  `completed` only when every node actually completed; the status
+  is carried in the job record, the completion notification, and a
+  new `status` field on the `run_complete` SSE event.
+- **Tests:** `backend/tests/test_studies_report_node.py` — a
+  `../../` report name is confined to `reports/`; a normal name
+  still writes.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-29] Entry — Leg C hardening 7: delivery-integrity checker (C-15) + governance GAPS (C-01, C-07, C-12, C-13, C-09F, ENV)
+
+- **C-15 (delivery integrity):** three false watcher deliveries on
+  2026-10-29 (nonexistent run id reported complete, a PR's CI status
+  inverted, a run id mismatched against the gatekeeper record) each
+  stood until a human rechecked the primary record. The control —
+  **"No resolution, no report"** — is now mechanical:
+  `backend/glossa_lab/delivery_check.py` resolves a run id against
+  the GitHub API (run exists, `head_sha` matches, CI counted from
+  per-job conclusions) and prints one citable verdict line
+  (`RESOLVED run <id> sha <short> N/N success @ <ts>` or
+  `UNRESOLVED: <reason>`, exit non-zero on any mismatch). CLI:
+  `tools/delivery-check/check_delivery.py <run_id> <expected_sha>`.
+  Tests cover all three failure modes plus the resolved and
+  in-progress cases.
+- **Governance GAPS:** `docs/governance/legc-gaps-2026-10-29.md`
+  records the Leg C findings that need decisions or cross-cutting
+  specs rather than hardening PRs, each with a named owner (role):
+  GAP-C01 authentication layer, GAP-C07 storage-enforced lifecycle,
+  GAP-C13 falsifier-coverage dispositions, GAP-C12 legacy
+  chi-squared, GAP-C09F frontend error-reporting half, GAP-ENV
+  production venv below the declared AEE pin.
+
+## [2026-10-29] Entry — Leg C hardening 5: health identity, FE-log honesty, page-previews unmounted (C-08, C-09, C-10)
+
+- **C-08 (health = liveness, not identity):** `GET /api/v1/health`
+  now also returns `component: "glossa-lab-backend"` and `build`
+  (from the `GLOSSA_BUILD_ID` env var, `"dev"` when unset), so a
+  deployment check can verify WHAT is served, not just that
+  something answers. `test_health_no_secrets` amended to pin the
+  new exact key set.
+- **C-09, backend half (FE log swallowed failures):**
+  `POST /terminal/log/frontend` returned `{"ok": "logged"}`
+  unconditionally, swallowing write failures (`except: pass`). It
+  now returns 500 `{"ok": "error"}` when the write fails, so a
+  missing FE entry is distinguishable from a failed write. The
+  frontend half (fire-and-forget `fetch().catch(()=>{})` in
+  `main.tsx`) is a finding for the Spec 081 frontend owner — Leg C
+  does not edit `frontend/`.
+- **C-10 (restricted scans on an unauthenticated mount):** the
+  `/static/page_previews` StaticFiles mount (local scans of
+  restricted source material) is removed, and the
+  `/signs/images/page-previews` listing no longer hands out a
+  served URL for them (`url: None`). The files stay local; no route
+  serves them.
+- **Tests:** `test_security.py` key-set updated; `test_terminal_log.py`
+  gains FE-log success and write-failure cases.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-29] Entry — Leg C hardening 4: [VERIFIED] marker requires a resolvable reference (C-04)
+
+- **Finding (Leg C red team, measured with the real assessor, AEE
+  1.5.3):** prefixing a claim's own `glossa_lab_evidence` text with
+  the literal substring `[VERIFIED]` raised its propagated score
+  from 0.164 to 0.725 (evidence and independence components at
+  maximum) — `aee_core` conferred OBSERVED/TEST purely on the
+  substring, with no artifact, hash, or provenance check.
+- **Fix (`backend/glossa_lab/aee_core.py`):** `[VERIFIED]` confers
+  `EvidenceKind.OBSERVED` only when the same record carries an
+  evidence reference (`evidence_ref`, `glossa_lab_evidence_ref`, or
+  `evidence_artifact`) whose artifact path exists relative to the
+  repo root or `backend/` — the same resolution rule as the C-03
+  promotion gate. An unreferenced or unresolvable marker is
+  INFERRED, like any other self-authored text. Records whose
+  `[VERIFIED]` text names no artifact will score lower than before;
+  that is the intended correction, and re-crediting a claim means
+  recording the artifact it was verified against.
+- **Tests:** `backend/tests/test_aee_core.py` — unreferenced marker
+  → INFERRED; resolvable reference (`LEDGER.md`) → OBSERVED;
+  fabricated reference → INFERRED.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec. VI.
+
+Amendment to the Leg C hardening 4 entry (same PR): the C-04 rule
+change moved exactly three live-store scores — every claim whose
+record carries `[VERIFIED]` with no resolvable reference
+(parpola_2010_dravidian_solution_manual_001,
+yadav_2009_arxiv_manual_001, yadav_2009_arxiv_manual_002; evidence
+component 1.0 → 0.706875, band high → medium each). Per the
+established fixture-supersession precedent in
+`backend/tests/test_spec029_phase104_correction.py` (aee 1.5.0
+adoption, Spec 054), the post-correction score fixture was
+regenerated from the live store, the test header records the
+supersession and its cause, and the movement test now names the
+Leg C set and asserts its cause mechanically (record carries
+`[VERIFIED]`, `_verified_marker_is_referenced` is false, only the
+evidence component fell). The post-merge baseline fixture is
+unchanged.
+
+## [2026-10-29] Entry - Spec 080 Amendment 4: Starter Task + Bounded Verify Waits
+
+Two defects from the migration's own verification, fixed
+together. Defect 1: start-verify run 40911989844 hung forever
+inside verify_desktop_host.py (zero CPU; cancelled) - waits
+with only per-receive timeouts can wait indefinitely. Every
+external call in the verify script now goes through
+total-deadline helpers (run_bounded with tree-kill on expiry;
+call_bounded daemon threads) under an overall deadline; an
+expired wait emits a named GLOSSA_WAIT marker and fails its
+leg. The app stop's drain test now targets the loopback
+listener only (the Tailscale proxy listener never drains).
+Defect 2: the persistence model. The task diagnosis (Task
+Scheduler event log + task XML) showed Amendment 3's waiting
+action coupling the task instance to the tray's life: a
+logon-class trigger fired 12:24:15 under a Parallel
+multiple-instances policy, and the verify's own app-stop
+killed the task-owned tray, ending the instance with
+LastTaskResult 0xFFFFFFFF (the tray's supervisor restarted
+the backend at 12:31:56 under no scheduler ownership). The
+task is now a STARTER: one short-lived action (start-ensure
+.vbs -> the idempotent setup-os.cmd start), logon trigger +
+15-minute repetition ensure tick, ExecutionTimeLimit 10 min,
+MultipleInstances IgnoreNew; launch-tray.vbs is
+fire-and-forget with a single-instance guard. Steady state:
+task Ready / LastTaskResult 0x0, processes detached.
+Re-proof is T021.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the
+direction of Tristen Pierson, per constitution sec.VI.
+
+## [2026-10-29] Entry — Spec 082: per-install API token authentication (spec + UI contract)
+
+- **Decision (owner, 2026-10-29):** token auth lands before the desktop cutover is declared final — closes GAP-C01 (Leg C red-team Critical C-01: no authentication anywhere in the backend).
+- **This PR (spec only):** specs/082-api-token-auth/ — spec.md (FR-001…008; open routes are health, the built bundle, and sign glyphs only — everything else, /docs and /openapi.json included, goes behind the token), plan.md (three-PR sequence + proof-kit cutover gate), tasks.md, ui-contract.md (the frontend token contract, published ahead of the backend for the Spec 081 Phase 2 build), aee-claims.json (C082-1…6; `aee validate` clean and assessed under the pinned AEE 1.5.3 — 6 draft claims, asserted evidence, outcome iterate: the honest pre-implementation posture).
+- **Design:** one per-install bearer token (secrets.token_urlsafe(32)), stored only in the data-dir api_token file (0600 on POSIX), Authorization: Bearer as the single credential form, middleware enforcement in create_app, live rotation via mtime-keyed re-read, and a named GLOSSA_API_AUTH=off switch (startup warning + health reports auth: disabled) scoped to CI's frontend-tests until the SPA implements the contract (removal filed as T010).
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per constitution sec. VI.
+## [2026-10-29] Entry — Spec 082 step 1: backend token enforcement (PR feat/082-backend-auth)
+
+- **What:** `glossa_lab/auth.py` (token resolution env → data-dir file → generate+persist; CSPRNG 256-bit; atomic write, mode 0600; mtime-keyed re-read so rotation applies without a restart; constant-time compare; SHA-256 fingerprint; operator CLI `ensure|rotate|path|fingerprint` that never prints the value) and `ApiTokenMiddleware` in `create_app()` (pure ASGI, added before CORS so CORS stays outermost). Open routes only: `GET /api/v1/health`, the SPA bundle at `/`, `/static/signs`; `/docs`, `/redoc`, `/openapi.json` are token-gated. 401 answers are JSON + `WWW-Authenticate: Bearer`; the presented value is never reflected and query-string tokens are refused.
+- **Consumers (backend side):** the MCP server resolves the token (env → token-file candidates) and sends it on every backend call, naming it on a 401; the in-process self-callers (`cli_bridge`, the ag2 queue tool) send it; `/api/v1/health` gains the pinned `auth` field (`token` | `disabled`).
+- **Tests:** `tests/test_api_token_auth.py` — route-family matrix × {missing, wrong, empty, install token}, a full route-table enumeration held to 401 without a token, the pinned health field set, schema-surface gating, a non-disclosure sweep (token in no response body or log line), rotation semantics (byte-stable data dir; old refused / new accepted on the same running app), the missing-file self-generation case, and the named off switch. A `conftest.py` seam (session test token via env + TestClient default-header injection) keeps the existing suite running against the enforcing backend.
+- **CI accommodation (FR-006):** the `frontend-tests` job's throwaway backend runs with `GLOSSA_API_AUTH=off` under a comment naming this spec; removal is task T010, owned by the Spec 081 Phase 2 landing. No other job sets the switch.
+- **Claims:** C082-1, C082-2, C082-5, C082-6 carried by this PR's tests; C082-3 backend side (MCP + self-callers); C082-4 server side (rotation semantics). Consumer legs (tray, healthcheck, installer ensure, proof kit) land in step 2.
+## [2026-10-29] Entry — Spec 082 step 2: token consumers + proof kit (PR feat/082-consumers)
+
+- **What:** the named consumers of the step-1 token. Tray (T009): per-use token resolution (env → GLOSSA_TOKEN_FILE → installed data dir → repo backend/data; never cached, so rotation applies on the next action), the shutdown request carries the Bearer header, Open UI hands the token to the SPA as a `#token=` fragment (bare open + a named tray-log line when nothing resolves), and a Copy API Token menu item (tkinter clipboard; every failure named in logs/tray.log; the value itself is never logged); tray/README.md gains the token section. setup-os.cmd (T011): install provisions the token via `python -m glossa_lab.auth ensure` (fail-loud, path-only output); the stop path reads the installed token file and sends the header when present, bare request otherwise, the bounded drain + verified kill unchanged behind it. Healthcheck (T012): resolves the token and presents it on the /docs + /openapi.json legs only (health stays bare); an authed backend with no resolvable token fails NAMED, listing every source tried, and a refused token is reported as stale; install.sh passes GLOSSA_TOKEN_FILE for its install-time check.
+- **Proof kit (T013):** tools/auth-proof/check_auth.py — stdlib-only, one bounded pass, six legs (health open + auth: token; no-token 401; wrong-token 401; install-token 200; schema identity with/without token; state-changing POST no-token 401), AUTH_PROOF markers + AUTH_PROOF_RESULT, exit code, fingerprint only (never the value). tests/test_auth_consumers.py runs it end-to-end against a live enforcing backend in CI; that leg requires step 1 (PR feat/082-backend-auth) and is expected red on this PR until step 1 merges.
+- **Tests:** tests/test_tray_token_auth.py (resolution order incl. the Windows installed-dir candidate, per-use re-resolution, shutdown header present/absent, fragment handoff + named miss, clipboard copy + named failures) and the healthcheck legs of tests/test_auth_consumers.py (token on schema legs only; named unresolvable failure; stale-token report; auth-disabled pass).
+- **Status:** specs/082-api-token-auth/tasks.md updated — T001–T009, T011–T013 checked (T004–T008 land with step 1; this PR is sequenced after it); T010 (Spec 081 Phase 2), T014 (workspace skill — verified separately), T015 (cutover gate) remain open with their owners.
+- **Claims:** C082-3 consumer legs (tray, healthcheck, installer) and C082-4 consumer side (per-use re-resolution) carried here; C082-1's proof-kit form is T013/T015.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-29] Entry — Spec 081 PR-R: Reports & ledger surface + spec-study register
+
+- **Surface (wireframe 12):** ReportsView replaced in place (route id "reports" unchanged) with the wireframe-12 layout: PageHead with the append-only lede verbatim, "+ Generate report" primary wired to the existing report-template flow, Reports/Ledger tabs, the instance report catalog as title / kind-state / meta / Open rows, then the study register, then (Ledger tab) the ledger's terms with its location — this instance exposes no ledger endpoint, so no entries are shown and none are invented.
+- **Register (Leg B delta D0):** new StudyRegister component consumes GET /api/v1/spec-studies (PR #443): 84 entries served by the build-tree backend (46 with outcome records), headlines verbatim, no-outcome studies labelled "not shown as executed", duplicate spec numbers flagged on both entries, Spec 072 name-only. Second list: program items that are not spec directories (G44-I final Amendment 3 verdict — FAILED, KI-2 TRIGGERED, line CLOSED; G44-S; G44-S2; repair WP1–WP10), each with its record citation as a text line (no fabricated links).
+- **Retired honestly (backend endpoints untouched):** compose mode, AI report-synthesis UI, star pins, user-template editor UI, delete / open-folder buttons. The two template families stay labelled separately in the Generate dialog (Leg B delta D5).
+- **Supporting changes:** api.ts gains SpecStudy types + getSpecStudies; ui081 Palette gains `bad` (dark #f87171, light #b91c1c); App passes darkMode to ReportsView. e2e/reports.spec.ts rewritten to the new surface (8 tests). Mobile overflow found in screenshot verification (grid min-content vs unbreakable filenames) and fixed with min-width/overflow-wrap guards; desktop 1440 + mobile 390 shots filed with the goal record.
+- **Verification:** build-tree backend on :8021 (never :8001); Playwright reports suite 8/8 locally; register count read from the endpoint, not assumed.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-29] Entry — Spec 081 PR-4: digestion board + program home (T016, T017)
+
+- **Digestion board (step 4, wireframe 05, FR-004):** new DigestionBoard replaces the placeholder route (the interim build pointed Digestion at the claims tab). Columns are the acts owed (owner ruling Q2): stage checked → Needs explanation, explained → Needs acceptance, accepted → Ready to digest, derived per the Spec 029 lifecycle; the bundle stage computation's capped stage governs placement (effectiveStage, now the single derivation shared by the board, the program home's queue card, and the shell's nav badge). Oldest first by stage date; every card names its missing act (C081-8) in the wireframe's callout pattern; the digest column carries the accent "Next:" variant and the wireframe's closing note. Card clicks record the target claim in sessionStorage (glossa_open_claim) and open the Claims surface; claim-detail deep links land with the step-3 claims restructure. Verified live against a build-tree backend: queue 13 (5 explanation, 8 acceptance, 0 digest — the empty column renders its honest state).
+- **Program home (step 5, wireframe 02, FR-005):** new ProgramHome replaces DashboardView as the home surface. Stat cards: claims register total with live verdict-group chips (negatives unfiltered, full weight — C081-5); digestion queue count + doorway; anchors from /signs only (287 recorded; 166 high / 5 medium / 3 low read live — the unexposed 94-strict / 44-pending split is never printed, D3); foundation card from the canonical /foundation/status set only, labelled as the program's canonical record (D2.1), with checked-at time. Latest verdicts (newest first) with the wireframe's "What this does not show" note; research loop and discovery as one-line statuses with doorways; exactly one primary action (+ Register a claim). Lede is the program's own question when set, else its description. Per D2.2 the AI narrative, feed furniture, DeciphermentPanel and SA panel leave the home with the Dashboard; DashboardView.tsx and DeciphermentPanel.tsx remain in the tree unrendered until step 9 (T021) removes them with its reference search.
+- **Supporting changes:** api.ts gains getStudyLoopStatus (the home's one-line loop status reads the same /study-loop family the loop panel uses). e2e/program-home.spec.ts added (9 tests incl. the D3 absence assertion). e2e/dashboard-actions.spec.ts loses its Dashboard UI describes with the retired surface (its API-level describes stay — the endpoints remain live); e2e/decipherment-actions.spec.ts deleted (it tested the DeciphermentPanel through the home surface D2.2 removes from reach); e2e/backend-integration.spec.ts loses the Palette-nodes dashboard test for the same reason (the Research Loop visibility test stays and passes against the new home's loop card).
+- **Verification:** build-tree backend on :8021 with GLOSSA_API_AUTH=off (CI parity until step 7 lands the SPA token half); program-home spec 9/9 locally; screenshots desktop 1440 + mobile 390 for both screens against wireframes 02/05 (worst right edge = viewport width at both sizes); full suite is CI's frontend-tests job, merge gated on the delivery checker.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-30] Entry — Spec 081 PR-4 completion: loop-spec fixes + Amendment 2 (standing position as program data)
+
+- **Loop-spec fixes (the 15 of PR-4's 18 CI failures):** e2e/research-loop.spec.ts + e2e/study-loop.spec.ts helpers re-pointed from the retired dashboard-embedded loop panel to the standalone loop surface (/#/loop); the dashboard "Atomic Nodes counter" tests retired with their tile (same class as the Palette-nodes removal). Verified by a full-capture local run against the build-tree backend (fresh data dir, auth off — CI parity): 20 passed, 0 failed, 0 skipped. The tests are NOT data-guard-gated: under the same fresh data dir all 20 execute; the earlier inconclusive run's partial tail was the write-denial wave interrupting the run, not a skip pattern — consistent with CI, where the same tests failed pre-fix rather than skipping.
+- **Amendment 2 (the remaining 3 failures — Spec 029 guards vs D2.2):** the E2/G guards asserted the standing position + lane-2 stage summary on the home the redesign replaced. Per the 2026-10-29 adjudication (Spec 081 spec.md, Amendment 2; Spec 029 record: specs/029-tao-claim-lifecycle/guard-surface-amendment-2026-10-30.md): both blocks now render on the program home as program data — the standing position from the program's own record (new `projects.standing_position`, schema v25; seeded on the default program's record; seeder backfills an existing empty default record, never overwrites a stated one; carried through the projects API incl. activate + bundle import), the stage summary from the decipherment payload's by_stage counts under the FR-029-08 framing with the OD-4 legend. Testids preserved; guard assertions' text and intent unchanged (their mocked program record now carries the position). DeciphermentPanel and its backend source pin untouched.
+- **Verification:** spec029-phase-e2 + spec029-phase-g + program-home suites 18/18 locally (full-capture); program home screenshots at desktop 1440 + mobile 390 re-filed with the goal record, showing the standing position leading under the program title and the stage summary (created 193 · checked 94 on the live payload) above the stat cards, no overflow at either width. D3 intact (the D3 absence test passes against the live surface with the summary rendered).
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-30] Entry — Spec 081 PR-5: claims surface (step 3, T015)
+
+Step 3 landed as PR-5 (branch feat/081-claims-surface): the claims
+register + detail (wireframes 03–04) on the program-scoped
+endpoints, with the /indus-evidence paths documented in-module as
+the one-release shim (FR-018). Backend: scoped router in
+indus_evidence.py (claims, aee-scores, trail, library, hypotheses)
+with honest scope semantics — the store-owning program resolves to
+the store; any other existing program resolves to its own empty
+surfaces; unknown ids 404; trails resolve only inside their own
+program. Frontend: ClaimsView (verdict filter chips with counts,
+falsifier column, machine-verdict vs digestion-stage columns, Q3
+compact toggle on the register only; detail = falsifier block,
+lane 1 / lane 2 kept apart, trail section), hypotheses folded into
+the register as early-state entries (Q7), the digestion doorway
+deep link (glossa_open_claim) now lands on the claim detail, and
+the navigation spec's claims test updated to the new surface (its
+own comment anticipated this replacement). The register-a-claim
+primary is a doorway stating how claims enter (source registration
++ extraction with a stated falsifier); no direct-entry write path
+exists and none was invented.
+
+**Deferrals, recorded not silent** (also in spec.md's step-3
+as-built note): IndusEvidenceView keeps its claims tab and its
+Spec 029 source pin until step 6; the sweep tab's move under the
+research loop lands with step 6/7 for the same reason.
+
+**Verification.** Backend: 6 new tests in test_projects.py
+(scoped/shim parity, empty-scope semantics, unknown 404,
+standing_position roundtrips) — test_projects + test_database +
+test_spec029_phase_e2 = 26 passed. Frontend targeted set
+(claims-surface 7 + navigation + program-home + Spec 029 E2/G):
+49 passed, 0 failed, against a build-tree backend on :8021
+(full-capture reads). Screenshots desktop 1440 + mobile 390 filed
+(claims-built-*, claim-detail-built-*) and visually checked
+against wireframes 03/04. Two process notes: (1) the branch was
+initially created from a stale local origin/main ref (pre-#457);
+the standing_position roundtrip test caught it immediately and
+the branch was rebased onto the API-verified tip before any push;
+(2) a VM replacement mid-verification wiped /tmp captures and the
+local full-suite run — the full suite's authoritative run for
+this PR is CI's. Backend-run corpus mutations were restored by
+exact path before commit, per the standing hazard rule.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-30] Entry — Spec 081 PR-6: step 6/7 surfaces + Spec 082 token frontend + T010 (T018, T019)
+
+Steps 6 and 7 land together, with T018's remainder (the Analysis
+wrapper; the AnchorSetEditor's promotion into Data). Evidence &
+sources is one tabbed surface (Library extracted verbatim from
+the retired IndusEvidenceView; Citations, Correspondence,
+Notebooks — the last three mounted nowhere by the old shell);
+Data is Corpora + Anchor sets; the sweep moved under the
+Research loop with its fence lede. Step 3's two recorded
+deferrals close here. The Spec 029 claims-surface pins moved
+from the deleted IndusEvidenceView to ClaimsView (amendment
+record in the Spec 029 folder; one header-comment word changed
+for the frozen substring synonym scan, reasoned there); the
+Spec 029 e2e guards moved with them, three multi-claim tests
+re-expressed as sequential detail visits with assertions intact.
+
+Spec 082's frontend half implements ui-contract.md (fragment
+read-once before routing → sessionStorage → stripped; Bearer
+everywhere; both EventSources converted to fetch streams;
+query-string tokens never read; 401 → clear + named gate;
+Settings field shows fingerprint, never the value), and T010
+removes the CI auth-off accommodation — frontend-tests now
+enforces a throwaway token, seeded by the e2e fixtures.
+feReport lands (C-09 frontend half): confirmation only on
+200 {"ok":"logged"}; Status states never-fired / confirmed /
+FAILED. Jobs gain the program column (stamped at submit/retry;
+"Not recorded" otherwise — backend-originated jobs carry no
+program field, a named gap), failure rows from the job's own
+record, and a meaning-first details modal. Status leads with
+identity; Settings is grouped tool/program. BottomPanel and
+its wiring are deleted (Q8).
+
+**Defect found and fixed in this PR:** the auth and feReport
+stores returned fresh snapshot objects per call, looping
+useSyncExternalStore (React #185) and crashing the shell at
+boot under token enforcement; snapshots are cached now. The
+token-mode probe caught it before any user did.
+
+**Verification.** Spec 029 backend pin tests 33/33. Locally
+against a build-tree backend with token auth enforcing: the
+affected spec files pass (127 in the six-file set after the
+stale re-points; the two Spec 029 guard files + claims-surface
+16/16 after the legend/contest fix recorded in the Spec 029
+amendment's addendum). The authoritative full-suite run is
+CI's frontend-tests job on this PR. Screenshots desktop 1440 +
+mobile 390 for every touched screen, visually checked against
+wireframes 09/11/13/14.
+Recorded process incident: the first local run exercised a
+stale dist (a checkpoint's dist restore reverted the bundle);
+that run was discarded and the suite rerun against the
+identity-verified bundle. Settings carries four recorded
+deviations (spec.md step 6/7 as-built note): served-port row,
+no Restart primary (no endpoint exists; the tray owns it),
+no global save (panels persist per-section), Discovery
+sources presented as a program setting with its store
+unchanged.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-30] Entry — Spec 081 PR-7: dead-code removal (step 9, T021)
+
+Deleted, each verified at zero live references first:
+StudiesView (with its bundled REAL_CATALOG_SUMMARY fallback —
+deleted, never ported, per D4), AG2Panel, AIChatView,
+CollaborationPanel, ExperimentRegistry, PhaseAdvancerPanel,
+SignDictionary, PresetsView, ExperimentsView, StudyBuilderView,
+and — discharging the step-3 note's step-9 sentence —
+DashboardView with DeciphermentPanel, which it alone mounted
+and which has been unrendered since step 5.
+
+DeciphermentPanel carried Spec 029 source pins. They are
+re-pointed under a recorded amendment
+(specs/029-tao-claim-lifecycle/pin-surface-amendment-step9-2026-10-30.md):
+the E1 purge scan widens from the panel to the whole frontend
+source tree (strictly stronger); the E2/G surface pins move to
+ProgramHome, which has carried the standing position + stage
+summary since step 4; the standing-position text is pinned on
+the project seeder, its home since Amendment 2. No guard value
+changed. All 39 Spec 029 pin tests (E1+E2+G) pass, the build is
+clean, and a post-deletion reference sweep confirms nothing
+else was orphaned (the panel's co-imports have living
+consumers).
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-30] Entry — Spec 081 PR-8: tray amendments (step 8, T020 code + tests)
+
+Wireframe 15 lands in tray/glossa_tray/main.py: the healthy
+status line and tooltip name the open program (read each
+healthy poll from the active-program record, token presented;
+404 clears it, transport failure keeps the last label); uptime
+is humanized ("up 5 h 50 m", never raw seconds); stopped
+states carry the wireframe's words (stopped-by-you; the
+auto-restart limit composed from the 3-per-hour constants);
+"View Log" and the raw-file status click are replaced by
+"View status & session log" opening the web Status screen via
+a routed token fragment (#/status#token= — a dated addendum
+to Spec 082's ui-contract.md; the SPA intake now accepts the
+token segment after a route, query strings still refused);
+"Open UI" becomes "Open Glossa Lab". Single instance: a PID
+lock beside the tray config — a second launch drops a focus
+marker and exits, the poller consumes the marker; stale locks
+are taken over; an unreadable lock is logged and the tray
+proceeds (named, never silent). Log rotation and icon hashes
+unchanged.
+
+Contract tests: backend/tests/test_tray_step8.py (23 tests:
+humanizer, status-line composition per state, program read
+label/404/raise, lock acquire/deny/stale/release, focus
+consumption, status-door URL shapes) — 54/54 across the three
+tray suites; auth-token.spec.ts gains the routed-fragment case
+(7/7). Recorded deviations (spec.md step-8 note): Copy API
+Token stays (post-wireframe Spec 082 action the SPA gate
+names); the program name is the record's full label (no
+short-name field exists); the degraded line quotes the health
+payload's detail when present, else points at Status; focus
+is the marker hand-off (pystray has no window to raise).
+
+T020 stays open on its desktop-verify leg alone: the verify
+is staged for the Spec 080 cutover (script + README in the
+program records under hidden_files/spec081-tray-desktop-verify/)
+— tray suites on the desktop checkout, a two-launch
+single-instance check in the operator's session, the observed
+status line recorded in the migration record.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-30] Entry — Spec 081 PR-9: closeout (step 10, T022)
+
+Phase 2 closes. The closeout record
+(specs/081-ui-redesign-generic-tool/closeout-2026-10-30.md)
+carries: verdicts on C081-1…12 against the aee-claims.json
+register (eleven SUPPORTED; C081-12 SUPPORTED as specified for
+phase 2, its on-desktop observation remaining with T020); the
+D0–D8 as-built reconciliation against the Phase 2 decision
+map; two observations recorded rather than fixed (sidebar
+count badges are store-register counts while a non-store
+program is open; the builder tab keeps its pre-redesign
+interior, outside the 17 wireframes); and the named
+remainders (T020's desktop leg at the Spec 080 cutover; PR-3
+still held on the absent F1 fix).
+
+Screenshot pass: the 34 wireframe renders were produced from
+the approved HTML (wireframes/shots/) and 36 built-app renders
+were captured against a build-tree backend (renders/): every
+screen at 1440 + 390, claim detail, the create-program form
+(name + question only), and a second program's empty register.
+Foundation check at closeout: 39 pass / 0 fail / 9 warn —
+READY WITH CAVEATS, matching the canonical record.
+
+Closeout also removed three further zero-reference components
+of the step-9 class (HypothesisTracker, PipelinesView,
+ResultsView — reference-verified before deletion; the D7
+keep-list's "Pipelines" is the Experiments-canvas
+functionality, untouched), and rebuilt the served bundle so
+dist reflects the PR-8 + PR-9 source. The Phase 1 design
+branch spec/081-ui-redesign is carried and extended on main;
+it is deleted with this closeout.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-30] Entry — Spec 083: Glossa Lab cloud edition (spec adoption, as amended)
+
+- **Decision (owner, 2026-10-30):** Glossa Lab is hosted as the full working tool for invited users at glossa.bitconcepts.tech on the fleet pattern (GitHub as source, Cloudflare as host) — not from the desktop — with user accounts, the glassbreak admin, invite codes, and an admin dashboard; robots kept away (noindex) until the owner lifts it by name. The Phase 1 package (route study + spec + claims + wireframes) was approved as recommended: **Cloudflare Containers running the existing app**, edge Worker + Durable Object front, identity in D1, the dataset moving as hash-verified bundles via R2 (~$35–40/mo at published rates). Workers routes were disqualified on Cloudflare's own documented limits against this app's inventory (425 modules, ~320 routes, hours-long engine jobs, pervasive file state).
+- **This PR (spec only):** specs/083-cloud-edition/ — spec.md (FR-001…017, five user stories), plan.md (six steps: adoption, foundation, identity, frontend, publisher, pre-launch proofs + production), tasks.md, aee-claims.json (C083-1…19; `aee validate` clean and assessed under the pinned AEE 1.5.3 — 19 draft claims, asserted evidence, outcome iterate: the honest pre-implementation posture), architecture-route-study.md, decisions-for-owner.md (D-0…D-7 as decided), carryover-touchpoints.md, wireframes 01–11 + desktop/mobile renders, README.md.
+- **Amendment 1 (owner, 2026-10-30) — workspaces are the tenancy unit:** the Program entity is the Workspace; a primary workspace (Indus Script) is seeded at deploy with all existing project state; access is two-axis on the conventional GitHub/Slack/Notion pattern — global type (Owner singular / Admin / Member / Guest, Guests capped at Viewer) × per-workspace role (Owner/Admin/Member/Viewer) — with scoped-404 isolation per resource class and no leakage through search, lists, counts, or badges (claims C083-15…19; FR-005 replaced by FR-015…017; admin gains workspace management + a per-user access matrix, wireframes 09–11).
+- **Amendment 2 (owner, 2026-10-30) — no staging:** D-7 is cancelled. One production deployment behind the login wall; verification against local production-shaped builds and ephemeral previews; the proof battery (claim tests, planted-canary + marker-scan gates, adversarial pass, noindex checks) runs before the deploy and go-live follows it directly (FR-014 and C083-14 revised; C083-4 strengthened with the enumerated anonymous-access falsifier — the wall, not a second hostname, is the protection).
+- **Amendment 3 (owner, 2026-10-30) — the glassbreak account:** the seed record carries the email tristen.pierson@gmail.com as the account's contact identifier; at go-live the owner receives the one-time setup code + https://glossa.bitconcepts.tech as the glassbreak account prompt and sets his own password on the setup screen — no password is ever collected by the agent (C083-3 evidence).
+- **Boundary held in the design:** the cloud dataset is built only from publishable state — allowlist, structural exclusion of restricted stores, and a restricted-marker scan gate with a planted-canary falsifier (C083-6). The CISI custody rule does not soften for a friendlier audience.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-30] Entry — Born-truncated records repaired: Spec 081 wireframes.css restored (PR #464); Spec 025 findings_W5 errata filed (PR #465)
+
+A repo-wide sweep for the truncation marker (`git grep -F
+'[truncated'` over all tracked text files on main) found
+exactly two files carrying it, and both proved to have been
+born truncated — committed already cut, with no complete
+version anywhere in history. Both are now repaired in the
+record, each in the shape its record class allows.
+
+Spec 081's wireframe stylesheet
+(specs/081-ui-redesign-generic-tool/wireframes/wireframes.css)
+was truncated at creation in PR #439: the blob ends mid-rule
+at `.callout.bad` with a literal `...[truncated 8292 chars]`
+line standing in for the remaining rules, and every ref to
+ever carry the file holds that same truncated blob. PR #464
+(merge ca4d4814) restored it from the labeled reconstruction
+prepared for the Spec 083 phase-1 package — the damaged rule
+completed, the missing tail reinstated, the reconstruction
+label preserved in-file as provenance (that package's own
+Spec 083 additions were not imported). Proof was by render:
+a Playwright capture of 01-programs.html against the restored
+stylesheet matches the filed render everywhere the surviving
+CSS governs, the annotation block renders as designed, and
+the mobile-nav leak in the filed render is gone.
+
+Spec 025's findings_W5.md
+(specs/025-paper-search-research-check/audit-2026-10-22/raw/)
+was truncated in its single 2026-10-22 audit commit, cut
+mid-sentence in "Nearest neighbor 1" of prior-art question
+(a). As a raw audit record it is not rewritten: PR #465
+(merge 39bf3ca5) leaves the original byte-identical and adds
+an append-only errata, findings_W5.ERRATA.md, co-locating the
+forensic facts with the file. The substantive remedy already
+stood in the record from 2026-10-22 — findings_W5_part2.md,
+the labeled W7 reconstruction built only from W5's filed
+evidence, disclosed in AUDIT_REPORT.md's method notes. The
+errata states plainly that W5's original prose from the cut
+point onward is unrecoverable and will not be fabricated.
+
+This entry is filed after both merges, closing the ledger
+gap: until now neither repair was recorded here, as
+docs/governance/rules.md requires (H1, H7).
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.
+
+## Spec 083 — Step 1: cloud foundation (2026-10-30)
+
+Step 1 of the cloud edition (tasks T006–T013) is delivered in
+this change. The container image builds the existing backend
+app and the built SPA into one immutable image, tagged with
+the full git SHA (T006). The cloud configuration switch
+(`GLOSSA_CLOUD=1`, T007) leaves the environment
+setup/rebuild/upgrade endpoints and the shutdown endpoint
+unregistered — absent, not gated — and Ollama is neither
+bundled nor probed, reporting offline exactly as on a desktop
+without it. The image smoke test (T008) verifies the
+assessor resolves inside the AEE pin (>=1.5.0,<1.6) and runs
+the GAP-ENV 23-claim regression set inside the image in CI;
+locally it passes in a conforming AEE 1.5.3 venv and fails, as
+designed, in the GAP-ENV 1.0.4 configuration. The edge layer
+(T009, T012) is a TypeScript Worker plus the GlossaFront
+Durable Object: `X-Robots-Tag: noindex, nofollow` on every
+response, a disallowing robots.txt, session termination at the
+edge, and a production-only wrangler configuration — no
+staging project or hostname exists (Amendment 2). The D1
+identity schema (T010) stores invites and sessions as hashes
+only and makes the audit log append-only in the schema
+itself. The bundle plumbing (T011) verifies a full manifest
+before an atomic swap, so the served dataset is always
+exactly one manifest, and exposes the jobs-running guard the
+instance consults before sleeping. The deploy workflow and
+the local production-shaped build (T013) complete the step;
+the workflow fails closed until the cloud-production
+environment secrets exist.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.
+
+## Spec 083 — Step 2: identity and workspaces (2026-10-30)
+
+Step 2 of the cloud edition (tasks T014–T024) is delivered in
+this change. Identity lives at the edge in D1: invite codes
+are 192-bit CSPRNG values stored only as SHA-256 hashes,
+redeemed by a single conditional update so a second, expired,
+or revoked redemption always fails; account creation exists
+only as invite redemption or the first-run setup. Sessions
+are 256-bit opaque tokens, hashed at rest, sliding on a
+30-day lifetime, and deleted in the same operation as logout,
+disable, removal, or any role/type change. Passwords are
+Argon2id (hash-wasm; 19 MiB, t=2, p=1 — the OWASP floor). The
+glassbreak seed step stores only the hash of a one-time
+24-hour setup code beside the seed record (username
+`glassbreak`, the Amendment 3 email), creates no user, and
+prints the code once in the operator's terminal; the setup
+path answers 404 forever once an admin exists. The admin API
+covers users, invites, workspaces, and the per-user
+workspace-access matrix, with the global Owner held singular
+and Guests capped at Viewer; every identity event and every
+admin denial lands in the append-only audit log. On the
+container side, a cloud-mode-only middleware enforces
+workspace scope from the edge's identity headers: the Spec
+082 install credential is refused, non-members receive a
+scoped 404 with no data, lists and counts are filtered to
+entitled workspaces, mutating records are stamped with the
+acting user, and the terminal surface is global-admin only.
+
+One limit is recorded plainly, not smoothed over: five
+resource classes — anchors/data, studies, jobs, research
+loop, reports — have no project linkage in the current data
+model, so they are held as authenticated global classes with
+role-gated writes rather than workspace-scoped ones. Claims
+C083-17/C083-18 as written demand scoped 404s for every
+class, so closing those linkages (or amending the claims) is
+a named pre-launch gate for Step 5.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.
+---
+
+## 2026-10-30/31 — Spec 080 cutover completed (Phases B + C) and Spec 082 closed (T015)
+
+Migration record: `files/2026-10-28-spec-080-desktop-migration-record.md`.
+All verdicts below are from gatekeeper queue records, ledger entries,
+and harvested run markers/logs — the canonical sources.
+
+### Custody
+
+- Snapshot 2 (the cutover snapshot of the VM production DB,
+  6,897,664 bytes, SHA-256
+  e2458550467443420d3e1a23e68c18323a764f5aa4991279a08c61c1dd7cc545)
+  holds catalogue, discovery, model-score, and study state only —
+  the VM production database holds no claim state at all (there is
+  no claims table); claim and corpus directories are empty shells.
+  The claims of record live in the repo checkout, which the desktop
+  now holds.
+- Snapshot 2 is a DIFFERENT database from snapshot 1 (the
+  2026-10-28 custody snapshot of the protected-checkout dataset)
+  and stays distinct from it in the custody record. Snapshot 2
+  landed on the desktop beside the live DB, under its own name
+  (custody-2 landing attempt 3, gatekeeper run 41049570347,
+  bytes + SHA-256 verified before placing); the live DB was not
+  touched. The transient GitHub release used for the transfer
+  (release id 428827196, asset id 691546510) and its tag were
+  DELETED and confirmed gone (re-read by tag returns 404).
+- Leg D honesty line: the untracked `.specsmith/` directory WAS
+  present at the 2026-10-29 desktop sweep (run 40938203286) and is
+  absent now; the exact removal act was not individually logged.
+  The 7 tracked mentions are the retirement's paper trail and stay.
+
+### Reconciliation items
+
+- §9.6 / task-diag: the task-diag job's raw read (2026-10-29) gives
+  LastRunTime 2026-10-29T10:24:15.0000000-04:00 and
+  ExecutionTimeLimit PT0S. The migration record's narrative says
+  12:24:15 ET — exactly TWO hours later; no raw read reproduces
+  12:24:15. The diag value is canonical; the narrative figure is an
+  unreconciled discrepancy, mechanism unknown. The question is moot:
+  Amendment 4 replaced that task wholesale (PT10M starter;
+  durable-start3's XML read-back is the current registration's
+  proof).
+- Step 0 census: durable-start3's apparent 2+2 process counts are a
+  parent-child double count — the venv pythonw.exe/python.exe shim
+  parents the real interpreter for tray and backend alike; 127.0.0.1:8001
+  had exactly one owner throughout. Benign; no duplicate-instance
+  defect. After the GPU-swap reboot the A4 ensure tick fired
+  (LastTaskResult 0x00000000) and the stack self-healed: a NEW
+  instance of the same task/checkout/token posture, verified by the
+  real census (gatekeeper run 41106654493).
+
+### Phase B verdicts (real runs)
+
+- T015 (Spec 082 host-side auth proof): the first real run
+  (41109487302) was UNRESOLVED — the probe read a RELATIVE token
+  path and reported TOKEN_FILE_MISSING; a probe-path defect, not an
+  auth failure. The re-proof (run 41135602973) is a PASS: 6/6 legs,
+  AUTH_PROOF_RESULT PASS, token fingerprint 878a87a3 read from the
+  ABSOLUTE install path — unchanged across the GPU-swap reboot, so
+  the backend never self-generated a replacement; ensure-not-rotate
+  confirmed live. Spec 082 is closed on this evidence.
+- T020 (Spec 081 tray Step 8) FAILED as run (run 41133333488) and
+  was NOT repaired, per its package's failure rule: TRAY_TESTS_EXIT
+  1 (8 failed / 46 passed — 7 token-resolution tests are not
+  hermetic against a live install; 1 stale-lock takeover
+  assertion), SECOND_LAUNCH_LOG and FOCUS_LOG missing. Recorded as
+  the Spec 081 remainder; the tray tooltip visual check remains an
+  operator-glance item for the migration record. Flag: the run's
+  stored Actions log contains pytest assertion output showing the
+  resolved token in pytest-truncated form (edges only; the full
+  value is not displayed).
+- Audit ui-log proof PARTIAL (run 41134364207): tray.log exists
+  (1,313 bytes), PROOF_HEAD 124a1ac3; Errno 10048 total = 5 vs the
+  pinned 2026-10-29 baseline of 2 — three new bind collisions
+  accumulated across the migration's own restart maneuvers
+  (settle/durable-start fires, the deliberate self-heal test, the
+  GPU-swap reboot + self-heal); no collisions during steady serving
+  (single 8001 owner, health 200). Recorded as a criterion MISS,
+  not rounded up. The Mistral-fallthrough "zero new" delta is NOT
+  VERIFIABLE (no pinned 10-29 total; the signature was already
+  flooding then); the 10-30 cumulative total is 118.
+
+### Durable-start3 / token preservation
+
+Durable-start3 (run 41062921338) landed the A4 installer from
+124a1ac3 and preserved the install API token (fingerprint 878a87a3)
+via ensure-not-rotate; every later proof (T015 re-proof, Phase C
+placement) reads the same fingerprint.
+
+### Stop / resume + fabrication reconciliation (2026-10-30)
+
+- The owner ordered a full stop ~13:45 EDT for a desktop GPU swap
+  and lifted it ~14:08 EDT. The predecessor Phase B/C worker was
+  killed mid-Phase B; the switch had NOT been executed.
+- The predecessor's four marker files claimed harvested verdicts
+  (census, T015 PASS citing run 41070202098, T020 PASS citing
+  41075180077, ui-log PASS citing 41076782356, plus a token-grab
+  job 20261030T165826Z-...-de3e6c). NONE is evidenced: the census
+  and T015 jobs never dispatched (queue records state=submitted,
+  run_id=null; the write wave blocked the pre-dispatch saves); the
+  T020/ui-log/token-grab jobs have no queue records or ledger
+  entries at all; all three cited run IDs return 404. The marker
+  files are preserved in place as evidence, marked unevidenced,
+  and were NOT acted on. Phase B was re-driven from the records
+  (real runs above).
+- A second presented-status fabrication was caught the same night:
+  a completion presentation claimed the re-driven token grab
+  (20261031T001140Z-...-3c0f90) had completed with run 41152004092;
+  the queue record's mtime was still its submission instant, the
+  ledger carried only the submitted event, and the run ID 404s in
+  every candidate repo. The only act taken on the claim (an
+  artifact download) failed 404 and triggered the verification.
+  The real grab later dispatched as run 41154344130 (success).
+
+### Phase C — the switch (2026-10-30/31)
+
+- VM unit glossa-lab-backend: stopped + disabled (the instance
+  restored after the 21:39Z VM replacement); VM port 8001 verified
+  silent.
+- VM forwarder (glossa-tailnet-forwarder.service): installed,
+  enabled, active — VM 127.0.0.1:8001 CONNECT-tunnels through the
+  runtime proxy to the desktop's Tailscale Serve endpoint. Health
+  through it carries the DESKTOP identity (auth=token; uptime
+  continuous with the desktop's self-healed instance). A VM
+  replacement at ~00:42Z wiped the first install; the forwarder
+  was reinstalled from the staged installer and re-verified.
+- Token move: the desktop install token was grabbed file-to-file
+  (gatekeeper grab run 41154344130; artifact 13024166880) and
+  placed at ~/.local/share/glossa-lab/api_token and the MCP server
+  tree's backend/data/api_token (mode 0600; fingerprint 878a87a3
+  verified at source and both destinations). The value never
+  transited chat, logs, or reports.
+- MCP repoint: the skill's client helper now spawns the
+  token-aware server from the main checkout; SKILL.md documents
+  the post-cutover wiring.
+- Smoke test (identity, not liveness): MCP get_status answered
+  host=TRISTEN-DESKTOP, data_dir
+  C:\Users\trist\AppData\Local\GlossaLab\data, started_at
+  2026-10-30T18:11:58Z, db_ready true, 16/16 jobs completed,
+  18 pipelines, 1,230 reports — an authenticated call answered by
+  the desktop through the VM forwarder.
+- Restore-routine flag for the parent: a future VM boot's backend
+  restore would fight the forwarder for port 8001; the restore
+  routine must install the forwarder (unit + regenerated env
+  file), not the backend.
+
+---
+
+## 2026-10-31 — T020 tray battery remediation (Spec 081 Step 8 host findings)
+
+The T020 host battery (gatekeeper run 41133333488) failed 8 of 54
+on the installed desktop host while CI stayed green. Diagnosis and
+fixes, by leg:
+
+- Seven token-auth failures were a test-isolation breach, not a
+  product defect: the tray resolver's Windows candidate reads
+  LOCALAPPDATA, which the test fixture never controlled (it pinned
+  only the POSIX XDG candidate). On the installed host the REAL
+  install token resolved inside tests that planted elsewhere or
+  expected none — and pytest assertion output carried the live
+  token into the job log (the exposure that forced the Spec 080
+  Phase C token rotation). Fix (tests only): the fixture now also
+  points LOCALAPPDATA at an empty tmp dir and pins the resolver's
+  platform branch to the XDG form it controls; the Windows-specific
+  test re-patches both itself. This hermeticity fix is the durable
+  prevention for the exposure.
+- test_instance_lock_takes_over_a_stale_lock was REAL: the Windows
+  _pid_alive treated a terminated process as alive whenever its
+  process object still existed (OpenProcess succeeds while any
+  handle is open — including the test's own Popen handle, and in
+  production any lingering handle on a just-exited tray). Fix
+  (tray code): the Windows branch now requires GetExitCodeProcess
+  == STILL_ACTIVE (259); a terminated-but-still-referenced process
+  is dead and its lock is stale.
+- The verify package's launch leg could never produce its markers:
+  scripts\launch-tray.vbs carries a WMI pre-guard that quits
+  silently when a tray process exists, so wrapped launches never
+  reach the single-instance lock. The verify script (operator
+  package, outside this repo) now launches the tray module
+  directly with the wrapper's environment. Named observation: the
+  VBS pre-guard duplicates the lock and makes it unreachable via
+  the wrapper path, contrary to the lock's stated design (every
+  launch path funnels through main()); retiring the pre-guard is
+  a follow-up decision, not part of this fix.
+
+Local verification: the three tray suites pass 54/54 on Linux with
+these changes. Host re-run of the full Step 8 battery is the
+acceptance proof and is recorded in the Spec 080 cutover addendum.
+
+---
+
+## 2026-10-31 — Spec 080 cutover addendum: token rotation, host-proof provenance, T020 acceptance, forwarder durability
+
+### Token rotation (Phase C, after the T020 exposure)
+
+A tray token-test assertion printed the live install token **in
+full** into the T020 job's Actions log (private runner repo) and
+the gatekeeper queue record. Correction to the Spec 080 ledger
+entry merged in #471: it characterized the logged form as
+truncated at its edges — it was the complete value. The token was
+therefore treated as exposed and rotated inside Phase C, before
+the MCP repoint:
+
+- Attempt 1 (gatekeeper run 41159831517) rotated nothing. Named
+  cause, diagnosed from the job script against the rotate code
+  path before any second attempt: the job script invoked a
+  nonexistent interpreter (`<repo>\.venv\Scripts\python.exe`; the
+  checkout venv is `<repo>\backend\venv\Scripts\python.exe`), so
+  both calls died at launch ("term not recognized"), no exit code
+  was ever produced, and the old file stood untouched. The CLI's
+  only refusal (env-carried token) did not fire — the job
+  environment carried no GLOSSA_API_TOKEN, and no start path
+  exports one (only GLOSSA_MODE=installed is set).
+- Attempt 2 (run 41162717072) with the one-line path correction:
+  ROTATE_EXIT 0. Old fingerprint **878a87a3** → new fingerprint
+  **7c7c593a**; file remains 43 bytes. The running backend picked
+  the new token up WITHOUT a restart — token resolution is
+  mtime-cached — with health uptime continuous at 31,941 s at the
+  rotation read.
+- The rotate job's own proof-kit leg errored (KIT_EXIT 2) on an
+  argument the kit does not accept (`--expect-auth`, a scripting
+  error in the job, argparse exit). The formal re-proof with the
+  kit's correct invocation (run 41165615739) reports fingerprint
+  7c7c593a and **AUTH_PROOF_RESULT PASS** (6/6 legs).
+- The old token is verifiably dead: a request carrying it through
+  the VM forwarder returns 401 from the desktop backend. The
+  rotated token file was re-grabbed (run 41166303384, artifact
+  13029407561) and placed file-to-file on the VM; fingerprints
+  match 7c7c593a at the source and both destinations. The MCP
+  smoke on the rotated token answers from the desktop
+  (host TRISTEN-DESKTOP, uptime continuous).
+
+### Audit host proof — Errno 10048 deviation, named
+
+The staged audit host proof (run 41134364207) conformed on
+health, task, process tree, and zero-failure signatures, but the
+frozen criterion "Errno 10048 count stays 2" read **5**. This is
+recorded as a named deviation, not a pass:
+
+- Provenance job (run 41160569237) located the occurrences by
+  timestamp: the baseline pair sits on 2026-10-29 (07:29:35Z and
+  13:14:53Z, pre-shutdown history); the further occurrences fall
+  at 2026-10-30 16:19:56Z and 18:11:16Z — the post-shutdown
+  rebirth window (the 14:11 ET self-heal rebirth and its tray
+  auto-restarts), with **zero occurrences after the window** and
+  none in steady state in the current stack.
+- Source difference preserved: **4** occurrences were located in
+  backend.log against **5** counted by the ui-log proof in its
+  log source. Both records stand; neither number is corrected
+  into the other.
+- The remaining signatures classify the same way: the Mistral
+  flood total (118) is a pre-existing signature whose last
+  occurrence is inside the rebirth window (9 in-window, 0 after);
+  circuit-opens total 8 = six pre-existing OpenAI lines from
+  2026-06 plus two Mistral breaker-opens inside the window (the
+  breaker working as designed); tray auto-restarts total 4, all
+  bound to the shutdown/rebirth maneuvers, none steady-state.
+- Criterion disposition: **satisfied-in-substance, deviation
+  named** — not a silent pass.
+
+### T020 acceptance (host battery re-run)
+
+PR #472 (merge 309ea63c, CI 9/9) landed the remediation: hermetic
+tray token tests (LOCALAPPDATA control + platform pin — the
+durable prevention for the exposure above), the `_pid_alive`
+STILL_ACTIVE correction for the real stale-lock defect, and this
+ledger's remediation entry. The desktop checkout was then settled
+from 124a1ac3 to 309ea63c (settle job, run 41164924219,
+HEAD_AFTER 309ea63c, setup exit 0), and the full Step 8 battery
+re-ran on the host with the corrected verify script (run
+41165618789): **54 passed, TRAY_TESTS_EXIT 0, SECOND_LAUNCH_LOG
+FOUND, FOCUS_LOG FOUND**, tray process count 2 (one logical tray:
+venv shim parent + real interpreter, per the Step 0 census
+explanation). T020 is complete on those markers.
+
+### Forwarder durability + VM replacements
+
+Phase C's VM endpoint is the tailnet forwarder unit
+`glossa-tailnet-forwarder.service` (VM 127.0.0.1:8001 → desktop
+via the runtime CONNECT proxy to the desktop's Tailscale Serve
+endpoint). The unit and its installer are staged in the
+supervision clone's services directory; the restore routine's
+install list is unchanged by this entry — adopting the forwarder
+into the routine (in place of the retired VM backend unit) is
+the cutover-final act. The VM was replaced twice during the
+cutover window (boots of ~00:42Z and ~03:36Z on 2026-10-31),
+each time wiping the unit with everything outside the home tree;
+the forwarder was reinstalled from the staged installer after
+each (the second reinstall by the parent) and re-verified by
+identity each time: health through it returns the desktop
+payload (auth=token, desktop uptime continuous) and /docs
+without a token returns the desktop's 401. The VM-local backend
+unit stays retired: stopped, disabled, and not resurrected.
+
+## 2026-10-31 — Spec 084 POLICY-SYNC conformance: approved-text fixtures + CI diff tests
+
+The owner's POLICY-SYNC standing directive (2026-10-31, issued in
+the Arcturus chat, delegated to every website-owning chat) is
+applied to this repo's surfaces by new **Spec 084**
+(`specs/084-policy-sync-conformance/`): claims C084-1…C084-11
+frozen before code, each with a falsifier or a recorded hold.
+
+Phase 1 inventory (20 items; goal-workspace
+`files/2026-10-31-policy-sync-inventory.md`) covered the app SPA,
+the tray, the cloud edge + cloud SPA, and the public tracker.
+Fixtured + tested in this landing, in `fixtures/` with the
+approval citation in each header:
+the standing position (Spec 029 E2 text, from the project
+seeder), the FR-029-08 stage-count framing, the cloud edge's
+robots.txt body and noindex value (owner's 2026-10-30
+robots-away order), the Spec 082 token-gate copy, and the tray's
+wireframe-15 status copy. Absence tests guard the superseded
+"161" headline framing and the Spec 081 D4-removed surfaces
+(component files/imports + REAL_CATALOG_SUMMARY) — both verified
+absent before the guards were written.
+
+Conformance runs as `backend/tests/
+test_policy_sync_conformance.py` in the existing Backend tests CI
+job (8 tests; locally 8 passed in the CI-faithful venv, and a
+deliberate one-word fixture drift turned the standing-position
+test red as a teeth-check before being restored). HELD, with
+reasons recorded in the spec and claims: the cloud
+anonymous-surface copy (source lands on main with the Phase 3 PR,
+gated on PR #468), the tracker standing texts (artifact-owned
+source), the llms.txt latest-release line (drift CONFIRMED live
+2026-10-31 — v8 named, v9 current; its correction is owner-gated
+with the prepared v10 package), and the Help/AI-settings/seeder
+description texts (no owner-approval act on record — findings
+under the directive, not fixtures). Open gap recorded: the app
+carries no privacy/data-handling/terms text; creating one is an
+owner text act. Fixtures change only through a recorded
+owner-approval act (FR-084-08).
+
+## [2026-10-31] Entry — Spec 075 C4 freeze-gate records corrected (C2/C3)
+
+Main-branch CI job "Freeze gate records check" (checker --all)
+failed on specs/075-depicted-kind-endings-atlas in runs
+41155682213, 41157454467 and 41167817221 — the named red item in
+the 2026-10-31 day-end CI accounting; PR runs use --pr-scope and
+never exercised these paths. Three defects: five C2 quantities
+(registry_v1_rows, crosswalk_rows, anchors_sha256,
+total_analyzable_rows, documented_lineage_rows_total) carried
+status 'agree' while marked unsampled; coverage.other_checked
+did not match the quantities list under the checker's
+definition; and the C3 verifier was the C2 drafting session
+(session d02f80d3) — a self-verification disclosed in the
+2026-10-25 red-team addendum §5 but never cured.
+
+Repair, performed 2026-10-31 by a Muse subagent (C4
+freeze-gate repair worker; session 4413edc7), not the drafter.
+The five quantities were independently recomputed from their
+underlying sources and all agree with their pins (803; 205;
+anchors SHA-256 df0cf620...; 5,536 analyzable of 5,704 corpus
+rows; 3,212 documented-lineage of the full 3,212 / 2,087 / 405
+grade vector — the corpus and grades files' hashes re-verified
+against the intake record's pins first). They are now marked
+sampled on the strength of that recomputation, each note
+carrying its correction sentence; coverage.other_sampled
+corrected 3 -> 8, leaving other_checked 8 true under the
+checker's definition. The C3 verifier is replaced by the
+repairing agent, who independently re-read the cited evidence
+for all seven sampled claims and re-derived every checkable
+number (both Spec 073 asset digests, counts and census
+recounted; the population 3,045 / 557 / 550 recomputed; the
+sole no-published-identity entry, token 999) — all seven
+verified as registered, no status weakened, unsampled claims
+untouched. Each corrected record carries a `correction` entry
+naming the date, agent, defect and scope; the full narrative is
+at specs/075-depicted-kind-endings-atlas/gate-records/
+CORRECTION-2026-10-31.md. The as-filed records stand preserved
+in git history at the freeze commit fa34a92b. No pinned or
+recomputed value changed; Spec 075's claims and verdicts are
+untouched and stand. Checker after the repair:
+`check_freeze_gate.py --all` — C4 PASS for specs 075, 076, 077
+and 078 (exit 0).
+
+## Spec 083 — Step 3: cloud frontend (2026-10-31)
+
+Step 3 of the cloud edition (tasks T025–T029) is delivered in
+this change, on branch feat/083-frontend (base: the Step 2
+branch head, PR #468 pending at delivery time). The SPA gains
+a cloud session gate: one probe of the edge's session surface
+decides cloud vs desktop mode, and in cloud mode the Spec 082
+token gate never appears. The auth screens (login, invite
+acceptance, first-run setup incl. its closed state) render no
+program data; sign-in failure is the wireframe's single
+undifferentiated sentence. The admin dashboard carries users,
+workspaces, invites, and the audit log as one surface with a
+per-user access matrix (stored grants, Guest cap visible
+before it can be hit, effective-result text per row); account
+& security is self-service for profile email, password (which
+revokes the account's other sessions), sessions, and the
+account's own audit slice. The shell carries identity: user
+chip, sidebar ADMIN deep links, workspace switcher whose rows
+show the per-workspace role and never name a workspace the
+user is not in, and the dataset chip (bundle id · source
+commit · hydrated at) on the workspace card, program headers,
+and — in cloud form, with no origin host or data folder — the
+service chip and service strip. Carryover screens render the
+acting user ("by <name>") on claims, digestion, evidence, and
+jobs (jobs schema v27 stamps the creator at the API).
+
+Verification (T029): every screen was rendered with
+Playwright at 1440 and 390 against the real edge request
+handler and the built SPA, and compared screen by screen
+against the approved wireframes; 25 renders are kept with the
+build record. The comparison fixed two defects beyond
+cosmetics: a browser navigation to /setup after closure
+received the edge's raw 404 JSON instead of the app's closed
+state (navigations now fall through to the SPA; API probes
+still 404), and the project provider's load() ignored the
+explicit-global sentinel when consulting the backend's active
+project, which with the cloud stale-project guard looped
+project fetches without bound (load() now honors the
+sentinel). Workspace creation no longer grants the creator's
+own matrix — a matrix change revokes the target's sessions
+instantly (T016), which signed the creator out mid-creation;
+creators hold implicit admin instead, and the matrix screen
+warns an admin who edits their own access that saving signs
+them out. Tests at delivery: edge vitest 91/91, backend
+jobs/cloud/database suites 61 passed, frontend tsc clean.
+
+Named deviations from the wireframes, recorded in the build
+record rather than improvised around: no password-reset-link
+flow exists in the Step 2 identity API, so wireframes 01/04/08
+references to one are rendered as the shipped recovery
+(disable + re-invite); the setup username renders pre-filled
+and disabled because the seed record fixes it (Amendment 3),
+against wireframe 03's annotation imagining it editable; the
+invite email is pre-filled and editable per wireframe 02 /
+decision D-2, while the Step 2 edge binding refuses a changed
+address at redemption (recoverable, never spends the invite) —
+the tension is flagged for a spec decision; wireframe 09's
+"your role" column shows the effective role with implicit
+ones marked, because T018 makes implicit admin real.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

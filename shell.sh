@@ -45,9 +45,9 @@ case "$CMD" in
         exec "$VENV_PYTHON" -m ruff format "$@"
         ;;
     run)
-        echo "[OK] Backend running on http://localhost:8000 (Ctrl+C to stop)"
-        exec "$VENV_PYTHON" -m uvicorn glossa_lab.main:app \
-            --host 127.0.0.1 --port 8000 --reload \
+        echo "[OK] Backend running on http://localhost:8001 (Ctrl+C to stop)"
+        exec "$VENV_PYTHON" -m uvicorn glossa_lab.main:create_app \
+            --factory --host 127.0.0.1 --port 8001 \
             --app-dir "$REPO_ROOT/backend" "$@"
         ;;
     python)
@@ -65,7 +65,8 @@ case "$CMD" in
         echo "[OK] Dependencies updated."
         ;;
     tray)
-        exec "$VENV_PYTHON" -m glossa_tray "$@"
+        PYTHONPATH="$REPO_ROOT/tray${PYTHONPATH:+:$PYTHONPATH}" \
+            exec "$VENV_PYTHON" -m glossa_tray "$@"
         ;;
     *)
         exec "$VENV_PYTHON" -m "$CMD" "$@"

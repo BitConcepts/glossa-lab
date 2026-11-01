@@ -13,7 +13,15 @@
  */
 
 import { useCallback, useEffect, useState } from "react";
+import {
+  getFoundationStatus,
+  getResearchFoundationCheck,
+  runTerminalCommand,
+  type FoundationStatus,
+} from "../api";
+import { authHeaders } from "../auth";
 import { useToast } from "../hooks/useToast";
+import { fmtDayTime } from "./ui081";
 
 interface Check {
   label:        string;
@@ -66,16 +74,16 @@ function navigate(view: string) {
 export function FoundationCheckView() {
   const { toast } = useToast();
   const [result, setResult]   = useState<FoundationCheckResult | null>(null);
+  const [canonical, setCanonical] = useState<FoundationStatus | null>(null);
   const [loading, setLoading] = useState(false);
   const [running, setRunning] = useState<Record<string, boolean>>({});
 
   const runCheck = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await fetch("/api/v1/research/foundation-check");
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data: FoundationCheckResult = await res.json();
+      const data = (await getResearchFoundationCheck()) as unknown as FoundationCheckResult;
       setResult(data);
+      getFoundationStatus().then(setCanonical).catch(() => {});
       // Notify other components (e.g. RunSummary) that foundation status changed
       window.dispatchEvent(new Event("glossa:foundation-updated"));
     } catch (e) {
@@ -96,7 +104,7 @@ export function FoundationCheckView() {
         toast(`Applying auto-fix: ${fixId} …`, "info");
         const res = await fetch("/api/v1/research/apply-fix", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json", ...authHeaders() },
           body: JSON.stringify({ fix_id: fixId }),
         });
         const data = await res.json() as { ok: boolean; message?: string; error?: string };
@@ -110,11 +118,7 @@ export function FoundationCheckView() {
       } else if (check.action_type === "run_script") {
         const script = check.action_params.script ?? "";
         toast(`Running ${script} …`, "info");
-        const res = await fetch("/api/v1/terminal/run", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ command: `shell.cmd python ${script}`, use_venv: true }),
-        });
+        const res = await runTerminalCommand(`shell.cmd python ${script}`);
         if (res.ok) {
           toast(`Script started. Re-running check in 5s …`, "success");
           setTimeout(() => void runCheck(), 5000);
@@ -124,7 +128,7 @@ export function FoundationCheckView() {
         toast(`Launching experiment ${expId} …`, "info");
         const res = await fetch(`/api/v1/experiment-graphs/${expId}/run`, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json", ...authHeaders() },
           body: JSON.stringify({ kwargs: {} }),
         });
         if (res.ok) toast(`Experiment queued`, "success");
@@ -183,6 +187,32 @@ export function FoundationCheckView() {
         >
           {loading ? "Running…" : "↻ Re-run"}
         </button>
+      </div>
+
+      {/* The two foundation sets, labelled separately (Spec 081 D2.1):
+          the canonical program record above; this instance's own
+          API-native checks below. They are different sets and are
+          never merged into one verdict. */}
+      <div style={{
+        padding: "12px 16px", borderRadius: 8, marginBottom: 12,
+        background: "#faf5ff", border: "1px solid #e9d5ff",
+        fontSize: 12, color: "#374151", lineHeight: 1.6,
+      }}>
+        <strong style={{ color: "#6b21a8" }}>The program's canonical record</strong>
+        {" — the program script check, kept as the program's own record: "}
+        {canonical ? (
+          <>
+            verdict <b>{canonical.verdict ?? "not run yet"}</b>
+            {" · "}{canonical.n_ok} ok · {canonical.n_fail} failed · {canonical.n_warn} warnings
+            {canonical.last_checked_at && <> · last checked {fmtDayTime(canonical.last_checked_at)}</>}
+            {" · "}automatic check {canonical.auto_check_enabled ? "on" : "off"}
+          </>
+        ) : (
+          "not read yet."
+        )}
+      </div>
+      <div style={{ fontSize: 12, fontWeight: 700, color: "#374151", marginBottom: 8 }}>
+        This instance's own checks (the API-native set) — a different set from the canonical record above:
       </div>
 
       {/* Summary banner */}

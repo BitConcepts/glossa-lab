@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — Sign in (Spec 083 wireframe 01)</title>
+<link rel="stylesheet" href="wireframes.css">
+</head>
+<body>
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-brand">
+      <div class="tile">G</div>
+      <div>
+        <div class="brand-name" style="color:var(--ink);font-size:14px">Glossa Lab</div>
+        <div class="brand-sub" style="color:var(--faint)">Epistemic research workbench</div>
+      </div>
+    </div>
+    <h1>Sign in</h1>
+    <p class="lede">Glossa Lab is invitation-only. Sign in with the username and password you set when you accepted your invite.</p>
+    <form>
+      <div class="field">
+        <label for="u">Username</label>
+        <input id="u" type="text" value="" placeholder="your username" autocomplete="username">
+      </div>
+      <div class="field">
+        <label for="p">Password</label>
+        <input id="p" type="password" value="" placeholder="your password" autocomplete="current-password">
+      </div>
+      <div class="callout bad" style="margin-bottom:13px"><b>Specimen error state:</b> “That username and password don’t match our records. Check them and try again.” — one message for both failures; the form never says which half was wrong.</div>
+      <button class="btn primary block">Sign in</button>
+    </form>
+    <p class="row-meta" style="margin-top:13px;text-align:center">Forgot your password? An admin can issue you a reset link from the user dashboard.</p>
+  </div>
+  <p class="auth-foot">glossa.bitconcepts.tech · This site is deliberately not indexed by search engines, and there is no public registration — accounts are created from invite links only.</p>
+
+  <div class="annotation" style="max-width:640px;margin-top:26px">
+    <div class="a-title">Annotation — wireframe 01 · not part of the UI</div>
+    <dl>
+      <dt>Purpose</dt><dd>The only door in. Authenticate a user (Spec 083 FR-004) and, by what it does not offer, state the registration policy: no sign-up link exists anywhere in this edition.</dd>
+      <dt>Primary action</dt><dd>“Sign in”.</dd>
+      <dt>Changed &amp; why</dt><dd>New surface — the desktop edition has no login (Spec 082's token rides in a URL fragment from the tray). The cloud edition's credential is a user session in an HttpOnly cookie, so this screen replaces the fragment handoff entirely for browser users; the token is never accepted here (FR-008). The single undifferentiated error message is deliberate: the form must not confirm whether a username exists.</dd>
+      <dt>Spec claims</dt><dd>C083-4 (session perimeter), C083-7 (noindex — the footer states it in words as well as headers), C083-8 (credential separation), C083-12 (failed logins are audit-logged).</dd>
+    </dl>
+  </div>
+</div>
+</body>
+</html>

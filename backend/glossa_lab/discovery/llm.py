@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import json
 import logging
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -259,10 +260,58 @@ def _default_providers() -> list[LLMProvider]:
     return [MistralProvider(), OpenAIProvider(), GoogleProvider()]
 
 
+# ── Provider circuit breaker ──────────────────────────────────
+#
+# Mirrors the ai_utils.call_llm circuit (the newer stack): after
+# _CIRCUIT_THRESHOLD consecutive failures a provider is skipped for
+# _CIRCUIT_DURATION seconds instead of being re-hit on every call.
+# Without it, one rate-limited provider flooded the log with a
+# "falling through" line per classified item and burned latency on
+# every call in a scheduler tick (2026-10-29 UI-log audit: dozens of
+# consecutive Mistral 429 fall-throughs inside a single tick).
+
+_CIRCUIT_THRESHOLD = 5     # open after this many consecutive failures
+_CIRCUIT_DURATION = 600    # seconds to skip an open provider
+
+_provider_fail_counts: dict[str, int] = {}
+_provider_cooldown_until: dict[str, float] = {}
+
+
+def _provider_in_cooldown(name: str) -> bool:
+    until = _provider_cooldown_until.get(name, 0.0)
+    if until <= time.time():
+        return False
+    _log.debug(
+        "provider %s in cooldown — %.0fs remaining, skipping",
+        name, until - time.time(),
+    )
+    return True
+
+
+def _record_provider_failure(name: str) -> None:
+    count = _provider_fail_counts.get(name, 0) + 1
+    _provider_fail_counts[name] = count
+    if count >= _CIRCUIT_THRESHOLD:
+        _provider_cooldown_until[name] = time.time() + _CIRCUIT_DURATION
+        _provider_fail_counts.pop(name, None)  # reset for the next window
+        _log.warning(
+            "provider %s circuit open after %d consecutive failures — "
+            "will skip for %d min",
+            name, count, _CIRCUIT_DURATION // 60,
+        )
+
+
+def _record_provider_success(name: str) -> None:
+    _provider_fail_counts.pop(name, None)
+    _provider_cooldown_until.pop(name, None)
+
+
 class LLMClient:
     """Try a list of providers in order; first configured one that returns
     successfully wins. Providers raising ``HTTPError`` with a fallback status
-    move the client to the next provider.
+    move the client to the next provider. A provider that keeps failing is
+    circuit-broken (skipped for a cooldown) so a dead or rate-limited
+    provider is not re-hit on every call.
     """
 
     def __init__(self, providers: list[LLMProvider] | None = None) -> None:
@@ -283,17 +332,23 @@ class LLMClient:
         for p in self._providers:
             if not p.is_configured():
                 continue
+            if _provider_in_cooldown(p.name):
+                errors.append(f"{p.name}: circuit open (cooling down)")
+                continue
             try:
-                return p.chat(
+                result = p.chat(
                     messages,
                     json_mode=json_mode,
                     max_tokens=max_tokens,
                     temperature=temperature,
                 )
+                _record_provider_success(p.name)
+                return result
             except urllib.error.HTTPError as exc:  # provider responded with non-2xx
                 if _is_fallback_status(exc.code):
                     _log.info("provider %s returned %s, falling through", p.name, exc.code)
                     errors.append(f"{p.name}: HTTP {exc.code}")
+                    _record_provider_failure(p.name)
                     continue
                 raise LLMError(
                     f"{p.name} HTTP {exc.code}: {exc.reason}"
@@ -301,12 +356,14 @@ class LLMClient:
             except urllib.error.URLError as exc:  # network unreachable
                 _log.info("provider %s URLError: %s, falling through", p.name, exc.reason)
                 errors.append(f"{p.name}: URLError {exc.reason}")
+                _record_provider_failure(p.name)
                 continue
             except LLMError:
                 raise
             except Exception as exc:  # noqa: BLE001
                 _log.warning("provider %s raised %s: %s", p.name, type(exc).__name__, exc)
                 errors.append(f"{p.name}: {type(exc).__name__}: {exc}")
+                _record_provider_failure(p.name)
                 continue
         configured = self.configured_providers()
         summary = "; ".join(errors) if errors else "no configured providers"

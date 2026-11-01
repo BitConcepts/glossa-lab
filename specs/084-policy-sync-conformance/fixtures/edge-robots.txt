@@ -1,0 +1,12 @@
+# FIXTURE — approved text under Spec 084 (POLICY-SYNC). Do not edit
+# without a recorded owner-approval act on the actual text
+# (FR-084-08); an unapproved fixture edit is itself a finding.
+# Approval: owner order 2026-10-30 (robots kept away from the cloud
+# edition until he lifts it by name); Spec 083 FR-007 / claim
+# C083-7.
+# Surface: cloud/edge/src/worker.ts ROBOTS_TXT, served by the edge
+# for GET /robots.txt. The approved body is the two lines below
+# (LF line endings, trailing LF).
+# ---
+User-agent: *
+Disallow: /

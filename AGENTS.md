@@ -123,5 +123,10 @@ OpenAlex, CORE, …):
   sidecar records to `glossa-indus/claims/research_checks/`; never
   modifies a claim, score, or status, and never adjudicates a
   decipherment.
+- **CORE source (spec 026):** `backend/glossa_lab/core_search.py` —
+  keyed direct CORE client (registered `custom.core` connection,
+  bearer surrogate; the key value never enters the tree) feeding the
+  stage as an additional source with full-text reads. Route,
+  pacing, and the 429 hard stop: `docs/paper-search-mcp.md`.
 - **Usage + binding audit protocol:** `docs/paper-search-mcp.md`.
   Sci-Hub is hard-off in the client.

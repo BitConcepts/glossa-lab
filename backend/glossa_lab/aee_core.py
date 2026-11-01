@@ -37,8 +37,10 @@ Mapping decisions (verified against aee 1.0.4, ``aee/model.py``):
       SourceQuality.SECONDARY, direction SUPPORTS;
     - ``glossa_lab_evidence`` (Glossa's own phase-test results) →
       SourceQuality.TEST evidence, direction SUPPORTS, kind OBSERVED
-      when the text carries a ``[VERIFIED]`` marker, INFERRED
-      otherwise; for a claim Glossa marks ``contradicted`` that same
+      only when the text carries a ``[VERIFIED]`` marker AND the
+      record references a resolvable evidence artifact (Leg C C-04:
+      an unreferenced marker is self-assertion, not observation),
+      INFERRED otherwise; for a claim Glossa marks ``contradicted`` that same
       material is attached as CONTRADICTS instead;
     - each ``contradicting_evidence`` string → OBSERVED / TEST evidence,
       direction CONTRADICTS.
@@ -130,6 +132,37 @@ _STATUS_MAP: dict[str, ClaimStatus] = {
 # Statuses for which glossa_lab_evidence counts as supporting test evidence.
 _SUPPORTED_STATUSES = {"supported", "strongly_supported", "partially_supported"}
 
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+_BACKEND_DIR = Path(__file__).resolve().parents[1]
+
+
+def _verified_marker_is_referenced(raw: dict[str, Any]) -> bool:
+    """Return True when a claim record backs ``[VERIFIED]`` with an artifact.
+
+    Leg C finding C-04: the bare ``[VERIFIED]`` substring in the
+    claim's own free-text evidence field conferred OBSERVED / TEST
+    evidence at maximum credit with no artifact, hash, or provenance
+    check (measured: propagated score 0.164 → 0.725). The marker now
+    counts as OBSERVED only when the same record carries an evidence
+    reference (``evidence_ref`` / ``glossa_lab_evidence_ref`` /
+    ``evidence_artifact``) whose leading artifact token names an
+    existing file relative to the repo root or ``backend/`` (the
+    ``path`` / ``path:KEY`` forms, as in the promotion gate).
+    Otherwise the evidence is INFERRED, like any unmarked text.
+    """
+    for key in ("evidence_ref", "glossa_lab_evidence_ref", "evidence_artifact"):
+        ref = raw.get(key)
+        if not isinstance(ref, str) or not ref.strip():
+            continue
+        token = ref.strip().split()[0].strip("()[]{},;")
+        path_part = token.split(":")[0] if ":" in token else token
+        if path_part and (
+            (_REPO_ROOT / path_part).is_file()
+            or (_BACKEND_DIR / path_part).is_file()
+        ):
+            return True
+    return False
+
 
 def map_status(glossa_status: str | None) -> ClaimStatus:
     """Translate a Glossa ``claim_status`` string to an AEE ClaimStatus."""
@@ -166,12 +199,19 @@ def claim_from_glossa(raw: dict[str, Any], *, source_file: str = "") -> Claim:
             )
         )
     # 2. Glossa Lab's own phase-test evidence, when recorded.
+    #    [VERIFIED] counts as OBSERVED only when the record references
+    #    a resolvable evidence artifact (Leg C C-04); an unreferenced
+    #    marker is INFERRED, like any other self-authored text.
     glossa_ev = raw.get("glossa_lab_evidence")
     if isinstance(glossa_ev, str) and glossa_ev.strip():
         evidence.append(
             Evidence(
                 ref=f"glossa-lab:{claim_id}",
-                kind=EvidenceKind.OBSERVED if "[VERIFIED]" in glossa_ev else EvidenceKind.INFERRED,
+                kind=(
+                    EvidenceKind.OBSERVED
+                    if "[VERIFIED]" in glossa_ev and _verified_marker_is_referenced(raw)
+                    else EvidenceKind.INFERRED
+                ),
                 direction=(
                     EvidenceDirection.CONTRADICTS if is_contradicted else EvidenceDirection.SUPPORTS
                 ),

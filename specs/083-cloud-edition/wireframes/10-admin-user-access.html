@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — Admin · Users · Workspace access (Spec 083 wireframe 10)</title>
+<link rel="stylesheet" href="wireframes.css">
+</head>
+<body>
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-row">
+        <div class="tile">G</div>
+        <div>
+          <div class="brand-name">Glossa Lab</div>
+          <div class="brand-sub">Epistemic research workbench</div>
+        </div>
+      </div>
+    </div>
+    <div class="program-switch">
+      <div class="ps-label">Workspace</div>
+      <div class="ps-name">Indus Script <span>▾</span></div>
+      <div class="ps-q">What do the signs of the Indus script mean?</div>
+    </div>
+    <nav class="nav">
+      <h4>Workspace</h4>
+      <a href="#"><span class="ic">⌂</span>Home</a>
+      <a href="#"><span class="ic">§</span>Claims</a>
+      <a href="#"><span class="ic">✓</span>Digestion</a>
+      <a href="#"><span class="ic">▤</span>Evidence &amp; sources</a>
+      <h4>Tool</h4>
+      <a href="07-shell-membership.html"><span class="ic">▦</span>Workspaces</a>
+      <a href="#"><span class="ic">⚙</span>Jobs</a>
+      <a href="#"><span class="ic">♥</span>Status</a>
+      <a href="#"><span class="ic">⚙</span>Settings</a>
+      <h4>Admin</h4>
+      <a href="04-admin-users.html" class="active"><span class="ic">👥</span>Users</a>
+      <a href="09-admin-workspaces.html"><span class="ic">▦</span>Workspaces</a>
+      <a href="05-admin-invites.html"><span class="ic">✉</span>Invites<span class="count">1</span></a>
+      <a href="06-admin-audit.html"><span class="ic">☰</span>Audit log</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="crumb"><b>Glossa Lab</b> / Admin / Users / j-mensah</span>
+      <div class="spacer"></div>
+      <div class="service-chip"><span class="dot"></span><span><b>Glossa Lab v0.1.0</b> · cloud · checked 09:41</span></div>
+      <div class="user-chip"><span class="avatar">g</span><span><b>glassbreak</b> <span class="role">· admin</span></span><span>▾</span></div>
+    </div>
+
+    <div class="content">
+      <div class="head-row">
+        <div class="page-head">
+          <h1>Workspace access</h1>
+          <p class="lede">One user, every workspace, the exact grant stored for each. A change here takes effect on that user&rsquo;s next request — there is no cached copy of access anywhere else to disagree with this grid.</p>
+        </div>
+        <div class="spacer"></div>
+        <a class="btn" href="04-admin-users.html">← All users</a>
+      </div>
+
+      <div class="tabs">
+        <a href="04-admin-users.html" class="active">Users<span class="count">3</span></a>
+        <a href="09-admin-workspaces.html">Workspaces<span class="count">3</span></a>
+        <a href="05-admin-invites.html">Invites<span class="count">1 outstanding</span></a>
+        <a href="06-admin-audit.html">Audit log</a>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <div class="head-row">
+          <div class="grow">
+            <div style="font-size:16px;font-weight:750">j-mensah <span class="chip line">specimen</span></div>
+            <div class="row-meta" style="font-size:13px">Joined Oct 30 via invite · specimen@example.org · last active 09:12 today</div>
+          </div>
+          <span class="row-meta">Global type</span>
+          <span class="chip neutral">member</span>
+          <span class="chip ok">active</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <table class="tbl">
+          <thead><tr><th>Workspace</th><th>Role</th><th>Effective result</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><b>Indus Script</b> <span class="chip contest">Primary</span><div class="row-meta">Active workspace</div></td>
+              <td>
+                <select aria-label="j-mensah role in Indus Script" style="padding:7px 9px;border:1px solid var(--line);border-radius:8px;font:inherit;font-size:13px;background:#fff">
+                  <option>Owner</option>
+                  <option>Admin</option>
+                  <option selected>Member</option>
+                  <option>Viewer</option>
+                  <option>No access</option>
+                </select>
+              </td>
+              <td><span class="chip neutral">member</span><div class="row-meta">Can read and work on claims and evidence in this workspace.</div></td>
+            </tr>
+            <tr>
+              <td><b>Comparative Scripts</b><div class="row-meta">Active workspace</div></td>
+              <td>
+                <select aria-label="j-mensah role in Comparative Scripts" style="padding:7px 9px;border:1px solid var(--line);border-radius:8px;font:inherit;font-size:13px;background:#fff">
+                  <option>Owner</option>
+                  <option>Admin</option>
+                  <option>Member</option>
+                  <option selected>Viewer</option>
+                  <option>No access</option>
+                </select>
+              </td>
+              <td><span class="chip line">viewer</span><div class="row-meta">Read-only: can open and read, cannot change anything.</div></td>
+            </tr>
+            <tr>
+              <td><b>Legacy Corpus Import</b><div class="row-meta">Archived workspace — grants are kept, but the workspace itself is read-only in the record</div></td>
+              <td>
+                <select aria-label="j-mensah role in Legacy Corpus Import" style="padding:7px 9px;border:1px solid var(--line);border-radius:8px;font:inherit;font-size:13px;background:#fff">
+                  <option>Owner</option>
+                  <option>Admin</option>
+                  <option>Member</option>
+                  <option>Viewer</option>
+                  <option selected>No access</option>
+                </select>
+              </td>
+              <td><span class="chip bad">no access</span><div class="row-meta">This workspace does not appear for j-mensah — not in lists, search, or the switcher.</div></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="divider"></div>
+        <div class="head-row">
+          <p class="row-meta" style="max-width:68ch">Every role change is written to the audit log with the old and new role. Lowering a role to <b>No access</b> ends that workspace for the user on their next request; work they already did there stays attributed to them.</p>
+          <div class="spacer"></div>
+          <button class="btn primary">Save changes</button>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <div class="head-row">
+          <div class="grow">
+            <div style="font-size:16px;font-weight:750">guest-reader <span class="chip line">specimen</span></div>
+            <div class="row-meta" style="font-size:13px">Joined Oct 30 via invite · last active Oct 30</div>
+          </div>
+          <span class="row-meta">Global type</span>
+          <span class="chip warn">guest</span>
+          <span class="chip ok">active</span>
+        </div>
+        <div class="callout warn" style="margin-top:12px"><b>Guests can hold Viewer only.</b> A Guest account can be granted Viewer in a workspace, or No access — the Member, Admin and Owner options are disabled below and cannot be saved for this user. To give this person more, an admin first changes their global type to Member from Admin · Users.</div>
+        <table class="tbl" style="margin-top:8px">
+          <thead><tr><th>Workspace</th><th>Role</th><th>Effective result</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><b>Indus Script</b> <span class="chip contest">Primary</span><div class="row-meta">Active workspace</div></td>
+              <td>
+                <select aria-label="guest-reader role in Indus Script" style="padding:7px 9px;border:1px solid var(--line);border-radius:8px;font:inherit;font-size:13px;background:#fff">
+                  <option disabled>Owner — unavailable for Guests</option>
+                  <option disabled>Admin — unavailable for Guests</option>
+                  <option disabled>Member — unavailable for Guests</option>
+                  <option selected>Viewer</option>
+                  <option>No access</option>
+                </select>
+              </td>
+              <td><span class="chip line">viewer</span><div class="row-meta">Read-only: can open and read, cannot change anything.</div></td>
+            </tr>
+            <tr>
+              <td><b>Comparative Scripts</b><div class="row-meta">Active workspace</div></td>
+              <td>
+                <select aria-label="guest-reader role in Comparative Scripts" style="padding:7px 9px;border:1px solid var(--line);border-radius:8px;font:inherit;font-size:13px;background:#fff">
+                  <option disabled>Owner — unavailable for Guests</option>
+                  <option disabled>Admin — unavailable for Guests</option>
+                  <option disabled>Member — unavailable for Guests</option>
+                  <option>Viewer</option>
+                  <option selected>No access</option>
+                </select>
+              </td>
+              <td><span class="chip bad">no access</span><div class="row-meta">This workspace does not appear for guest-reader — not in lists, search, or the switcher.</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="annotation">
+        <div class="a-title">Annotation — wireframe 10 · not part of the UI</div>
+        <dl>
+          <dt>Purpose</dt><dd>Per-user workspace access: from Admin · Users, open one person and see — and edit — their role in every workspace in one grid, with the effective result of each grant stated in plain words beside the control.</dd>
+          <dt>Primary action</dt><dd>Changing a row&rsquo;s role control and pressing &ldquo;Save changes&rdquo;.</dd>
+          <dt>Changed &amp; why</dt><dd>New surface for the workspace amendment: wireframe 04&rsquo;s &ldquo;Manage&rdquo; note promised per-program membership editing; this is that editing surface, re-pointed at workspaces. Two specimens carry the rules in the UI itself: the Member specimen (j-mensah) shows three different stored outcomes — Member, Viewer, No access — across three workspaces, proving access is per-workspace, not per-person; the Guest specimen (guest-reader) renders the Guest ceiling as a visible note with the Member / Admin / Owner options disabled in the control, so the limit is seen before it can be hit, not reported after a failed save.</dd>
+          <dt>Spec claims</dt><dd>C083-19 (the matrix shows exactly the stored grants — the role control and the effective-result column are the same stored grant, and edits take effect on the target&rsquo;s next request, stated in the lede), C083-17 (per-workspace roles — one person holds different roles in different workspaces, and a Guest&rsquo;s global type caps every row at Viewer).</dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</div>
+<nav class="mobile-nav">
+  <a href="#"><span class="mi">⌂</span>Home</a>
+  <a href="#"><span class="mi">§</span>Claims</a>
+  <a href="#"><span class="mi">✓</span>Digestion</a>
+  <a href="#"><span class="mi">⚙</span>Jobs</a>
+  <a href="10-admin-user-access.html" class="active"><span class="mi">☰</span>More</a>
+</nav>
+</body>
+</html>

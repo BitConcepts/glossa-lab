@@ -15,10 +15,13 @@ Pins the anti-gradability withdrawals the audit (§5-P5) demanded
   their per-claim detail entries, each with its own falsifier
   and stage object — the withdrawal is of the summary mean,
   not of the lane-1 detail.
-* E1.1/E1.4 — the DeciphermentPanel source no longer contains
+* E1.1/E1.4 — the shipped frontend source no longer contains
   the withdrawn headline / tile / bar constructions or any
-  consumption of the withdrawn fields. (The rendered-output
-  side is verified by the phase's desktop + mobile screenshots
+  consumption of the withdrawn fields. (Originally pinned on the
+  DeciphermentPanel source; Spec 081 step 9 deleted that panel
+  as dead code and widened the scan to the whole frontend tree —
+  see the step-9 pin amendment record. The rendered-output side
+  is verified by the phase's desktop + mobile screenshots
   in ``specs/029-tao-claim-lifecycle/phase-e1-evidence/``.)
 """
 from __future__ import annotations
@@ -32,7 +35,22 @@ from glossa_lab.aee_core import assessment_summary
 from glossa_lab.api.dashboard import dashboard_decipherment
 
 _REPO = Path(__file__).resolve().parents[2]
-_PANEL = _REPO / "frontend" / "src" / "components" / "DeciphermentPanel.tsx"
+# Spec 081 step 9 (T021): DeciphermentPanel.tsx is deleted as dead
+# code — its only mounter (DashboardView) left the shell in step 5,
+# and the standing position / stage summary it carried moved to
+# ProgramHome as program data in step 4 (Amendment 2). The E1.1/E1.4
+# withdrawal guard therefore scans the WHOLE shipped frontend
+# source tree: the withdrawn constructions must appear nowhere,
+# which is strictly stronger than the old single-file scan.
+# Record: specs/029-tao-claim-lifecycle/pin-surface-amendment-step9-2026-10-30.md
+_FRONTEND_SRC = _REPO / "frontend" / "src"
+
+
+def _all_frontend_source() -> str:
+    parts = []
+    for path in sorted(_FRONTEND_SRC.rglob("*.tsx")) + sorted(_FRONTEND_SRC.rglob("*.ts")):
+        parts.append(path.read_text(encoding="utf-8"))
+    return "\n".join(parts)
 _CLAIMS_DIR = _REPO / "glossa-indus" / "claims" / "extracted_claims"
 
 WITHDRAWN_DASHBOARD_FIELDS = ("sa_aggregate", "fully_decoded_pct", "n_fully_decoded")
@@ -106,16 +124,19 @@ def test_per_claim_scores_remain_in_detail_entries():
         assert entry["lane1_score"] == score
 
 
-# ── E1.1/E1.4: panel source purge ────────────────────────────────────────
+# ── E1.1/E1.4: withdrawn constructions purge ─────────────────────────────
 
 
-def test_panel_source_has_no_withdrawn_constructions():
-    source = _PANEL.read_text(encoding="utf-8")
+def test_frontend_source_has_no_withdrawn_constructions():
+    # Was test_panel_source_has_no_withdrawn_constructions (the
+    # DeciphermentPanel scan); step 9 widened it to the whole
+    # frontend tree — see the note at _FRONTEND_SRC above.
+    source = _all_frontend_source()
     for text in WITHDRAWN_PANEL_STRINGS:
         assert text not in source, text
 
 
-def test_panel_source_does_not_consume_withdrawn_fields():
-    source = _PANEL.read_text(encoding="utf-8")
+def test_frontend_source_does_not_consume_withdrawn_fields():
+    source = _all_frontend_source()
     for field in WITHDRAWN_DASHBOARD_FIELDS:
         assert field not in source, field

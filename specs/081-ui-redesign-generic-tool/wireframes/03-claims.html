@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — Claims register (Spec 081 wireframe 03)</title>
+<link rel="stylesheet" href="wireframes.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-row"><div class="tile">G</div><div><div class="brand-name">Glossa Lab</div><div class="brand-sub">Epistemic research workbench</div></div></div></div>
+    <a class="program-switch" href="01-programs.html" style="text-decoration:none"><div class="ps-label">Program</div><div class="ps-name">Indus Script <span>▾</span></div><div class="ps-q">What do the signs mean — tested claim by claim?</div></a>
+    <nav class="nav">
+      <h4>Program</h4>
+      <a href="02-program-home.html"><span class="ic">⌂</span>Home</a>
+      <a href="03-claims.html" class="active"><span class="ic">§</span>Claims<span class="count">94</span></a>
+      <a href="05-digestion.html"><span class="ic">✓</span>Digestion<span class="count alert">9</span></a>
+      <a href="06-evidence.html"><span class="ic">▤</span>Evidence &amp; sources</a>
+      <a href="07-data.html"><span class="ic">▦</span>Data</a>
+      <a href="#"><span class="ic">◈</span>Analysis</a>
+      <a href="08-experiments.html"><span class="ic">⬡</span>Experiments</a>
+      <a href="10-discovery.html"><span class="ic">◎</span>Discovery<span class="count">12</span></a>
+      <a href="11-research-loop.html"><span class="ic">↻</span>Research loop</a>
+      <a href="12-reports.html"><span class="ic">▨</span>Reports &amp; ledger</a>
+      <div class="nav-tool"><h4>Tool</h4>
+        <a href="09-jobs.html"><span class="ic">⚙</span>Jobs<span class="count">2</span></a>
+        <a href="14-status.html"><span class="ic">♥</span>Status</a>
+        <a href="13-settings.html"><span class="ic">⚙</span>Settings</a>
+        <a href="#"><span class="ic">?</span>Help</a>
+      </div>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="crumb">Glossa Lab / <b>Indus Script</b> / Claims</span>
+      <div class="spacer"></div>
+      <button class="icon-btn">⌘K&nbsp; Search</button>
+      <button class="icon-btn">✦ AI assistant</button>
+      <div class="service-chip"><span class="dot"></span><span><b>Glossa Lab v0.1.0</b> · TRISTEN-DESKTOP · checked 14:02</span></div>
+    </div>
+
+    <div class="content">
+      <p class="specimen-note">Specimen data — the live Indus program as recorded on 2026-10-29. Claim wording is shortened for the register; the register itself holds the full text.</p>
+
+      <div class="head-row">
+        <div class="page-head">
+          <h1>Claims</h1>
+          <p class="lede">Every claim is registered with the evidence that could prove it wrong (its <b>falsifier</b>). A claim without one is not a claim here — it cannot be entered. Machine checks give a <b>verdict</b>; people settle claims through <b>digestion</b>, in five stages: created, checked, explained, accepted, digested.</p>
+        </div>
+        <div class="spacer"></div>
+        <button class="btn primary">+ Register a claim</button>
+      </div>
+
+      <div class="filterbar">
+        <span class="fchip active">All · 94</span>
+        <span class="fchip">Supported · 6</span>
+        <span class="fchip">Internal evidence only · 46</span>
+        <span class="fchip">Not supported</span>
+        <span class="fchip">Inconclusive</span>
+        <span class="fchip">Needs revalidation · 37</span>
+        <span class="fchip">Contested</span>
+        <span class="grow"></span>
+        <input type="text" placeholder="Search claims…" aria-label="Search claims">
+      </div>
+
+      <div class="card" style="padding:4px 8px">
+        <table class="tbl">
+          <thead><tr><th style="width:34%">Claim</th><th style="width:26%">Falsifier — what would prove it wrong</th><th>Verdict (machine checks)</th><th>Digestion (human settlement)</th><th>Updated</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><a href="04-claim-detail.html"><b>Sign M222 carries the reading kept by the Phase-109 test</b></a><div class="row-meta">Strict core · sign reading</div></td>
+              <td>An independent corpus showing the sign in positions this reading forbids. <span class="chip line">stated</span></td>
+              <td><span class="chip neutral">Awaiting expert adjudication</span><div class="row-meta">Grading rests on an in-program crosswalk — flagged</div></td>
+              <td><span class="stage-track"><span class="stage done">created</span><span class="stage-arrow">→</span><span class="stage now">checked</span><span class="stage-arrow">→</span><span class="stage">explained</span><span class="stage-arrow">→</span><span class="stage">accepted</span><span class="stage-arrow">→</span><span class="stage">digested</span></span></td>
+              <td class="row-meta">Oct 26</td>
+            </tr>
+            <tr>
+              <td><b>Sign M362 carries its proposed reading</b><div class="row-meta">Strict core · sign reading</div></td>
+              <td>Same form as M222. <span class="chip line">stated</span></td>
+              <td><span class="chip neutral">Awaiting expert adjudication</span></td>
+              <td><span class="chip line">checked</span></td>
+              <td class="row-meta">Oct 26</td>
+            </tr>
+            <tr>
+              <td><b>Sign M398 carries its proposed reading</b><div class="row-meta">Strict core · sign reading</div></td>
+              <td>Same form as M222. <span class="chip line">stated</span></td>
+              <td><span class="chip neutral">Awaiting expert adjudication</span></td>
+              <td><span class="chip line">checked</span></td>
+              <td class="row-meta">Oct 26</td>
+            </tr>
+            <tr>
+              <td><b>Sign M367 carries its proposed reading</b><div class="row-meta">Strict core · sign reading</div></td>
+              <td>Same form as M222. <span class="chip line">stated</span></td>
+              <td><span class="chip warn">Insufficient evidence</span><div class="row-meta">Too few contexts to test — stated, not hidden</div></td>
+              <td><span class="chip line">created</span></td>
+              <td class="row-meta">Oct 26</td>
+            </tr>
+            <tr>
+              <td><b>The profile scorer beats frequency counting at recovering planted readings</b><div class="row-meta">Method claim · instrument test G44-I</div></td>
+              <td>Margin under +0.05, or any baseline win, on the frozen planted test. <span class="chip line">stated</span></td>
+              <td><span class="chip bad">Not supported</span><div class="row-meta">Margin +0.0017 · Oct 28 · line closed</div></td>
+              <td><span class="chip line">explained</span></td>
+              <td class="row-meta">Oct 28</td>
+            </tr>
+            <tr>
+              <td><b>The signary is witnessed at 502 or more of 557 signs</b><div class="row-meta">Coverage claim · Spec 077</div></td>
+              <td>A witnessed count under 502 on the frozen triangulation. <span class="chip line">stated</span></td>
+              <td><span class="chip warn">Inconclusive</span><div class="row-meta">Observed 399 of 557 · Oct 27</div></td>
+              <td><span class="chip line">explained</span></td>
+              <td class="row-meta">Oct 27</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="row-meta" style="margin-top:10px">Showing 6 of 94. A register row never merges the two lanes: the verdict column is what machines checked; the digestion column is what people have settled. Neither borrows the other's words.</p>
+
+      <div class="annotation">
+        <div class="a-title">Annotation — wireframe 03 · not part of the UI</div>
+        <dl>
+          <dt>Purpose</dt><dd>The claims register: every governed claim in the program, with its falsifier, its machine verdict, and its human digestion stage side by side but never merged.</dd>
+          <dt>Primary action</dt><dd>“Register a claim” (registration refuses a claim with no falsifier).</dd>
+          <dt>Changed &amp; why</dt><dd>Claims today live inside a view named for one program's subject (“Evidence Graph”, served by /indus-* endpoints), next to a Hypotheses tracker that uses a conflicting vocabulary (confirmed/refuted). Here claims are a top-level program surface with the doctrine's own vocabulary; “insufficient evidence” and “awaiting expert adjudication” are first-class verdict states, shown rather than filtered away.</dd>
+          <dt>Spec claims</dt><dd>C081-4 (falsifier + both lanes on every row), C081-5, C081-9 (stage names verbatim).</dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</div>
+<nav class="mobile-nav">
+  <a href="02-program-home.html"><span class="mi">⌂</span>Home</a>
+  <a href="03-claims.html" class="active"><span class="mi">§</span>Claims</a>
+  <a href="05-digestion.html"><span class="mi">✓</span>Digestion</a>
+  <a href="09-jobs.html"><span class="mi">⚙</span>Jobs</a>
+  <a href="01-programs.html"><span class="mi">☰</span>More</a>
+</nav>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{
+ "lines": 5,
+ "parsed_records": 5,
+ "unique_dockeys": 5,
+ "total_sequences": 5,
+ "total_sign_instances": 10,
+ "mean_inscription_length": 2.0,
+ "numeric_mahadevan": 10,
+ "star_nnn_filtered": 0,
+ "dockey_range": [
+  1001,
+  1005
+ ],
+ "top_20": [
+  [
+   342,
+   4
+  ],
+  [
+   72,
+   2
+  ],
+  [
+   99,
+   1
+  ],
+  [
+   267,
+   1
+  ],
+  [
+   59,
+   1
+  ],
+  [
+   89,
+   1
+  ]
+ ],
+ "terminal_frac": {}
+}

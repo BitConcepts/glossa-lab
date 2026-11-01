@@ -21,6 +21,17 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO_ROOT="$SCRIPT_DIR"
 OS="$(uname -s)"
 HEALTH_URL="http://127.0.0.1:8001/api/v1/health"
+SERVICE_UNIT="glossa-lab-backend.service"
+
+# GLOSSA_SERVICE_MODE=system talks to the system manager (headless
+# machines with no user manager); default is the user manager.
+service_ctl() {
+    if [ "${GLOSSA_SERVICE_MODE:-user}" = "system" ]; then
+        systemctl "$@"
+    else
+        systemctl --user "$@"
+    fi
+}
 LOG_DIR="$REPO_ROOT/logs"
 
 # ── Helpers ───────────────────────────────────────────────────
@@ -54,21 +65,21 @@ do_install() {
     echo "[INSTALL] Installing Glossa Lab OS integration..."
     echo ""
 
-    # 1. Install dependencies
-    echo "[1/3] Installing dependencies..."
-    chmod +x "$REPO_ROOT/shell.sh"
-    "$REPO_ROOT/shell.sh" setup
-    echo "[OK] Dependencies installed."
-
-    # 2. Ensure logs directory
+    # 1. Ensure logs directory
     mkdir -p "$LOG_DIR"
-    echo "[2/3] Log directory: $LOG_DIR"
+    echo "[1/2] Log directory: $LOG_DIR"
 
-    # 3. Register service
-    echo "[3/3] Registering service..."
+    # 2. Install dependencies + tray + supervised service (one path)
+    echo "[2/2] Installing (dependencies, tray, supervised service)..."
     if [ "$OS" = "Linux" ]; then
-        bash "$REPO_ROOT/services/linux/install.sh"
+        if [ "${GLOSSA_SERVICE_MODE:-user}" = "system" ]; then
+            bash "$REPO_ROOT/services/linux/install.sh" --system --no-start
+        else
+            bash "$REPO_ROOT/services/linux/install.sh" --no-start
+        fi
     elif [ "$OS" = "Darwin" ]; then
+        chmod +x "$REPO_ROOT/shell.sh"
+        "$REPO_ROOT/shell.sh" setup
         bash "$REPO_ROOT/services/macos/install.sh"
     else
         echo "[WARN] Unknown OS '$OS' — skipping service registration."
@@ -113,7 +124,7 @@ do_start() {
 
     if [ "$OS" = "Linux" ]; then
         echo "[START] Starting via systemd..."
-        systemctl --user start glossa-lab.service
+        service_ctl start "$SERVICE_UNIT"
         wait_for_backend
     elif [ "$OS" = "Darwin" ]; then
         echo "[START] Starting via launchctl..."
@@ -145,7 +156,7 @@ do_stop() {
     fi
 
     if [ "$OS" = "Linux" ]; then
-        systemctl --user stop glossa-lab.service 2>/dev/null || true
+        service_ctl stop "$SERVICE_UNIT" 2>/dev/null || true
     elif [ "$OS" = "Darwin" ]; then
         PLIST="$HOME/Library/LaunchAgents/com.glossalab.backend.plist"
         [ -f "$PLIST" ] && launchctl unload "$PLIST" 2>/dev/null || true
@@ -174,9 +185,9 @@ do_status() {
     echo "── Glossa Lab Integration Status ─────────────────────────────"
 
     if [ "$OS" = "Linux" ]; then
-        if systemctl --user is-enabled glossa-lab.service >/dev/null 2>&1; then
+        if service_ctl is-enabled "$SERVICE_UNIT" >/dev/null 2>&1; then
             echo "  Service (systemd) : enabled"
-            systemctl --user is-active glossa-lab.service >/dev/null 2>&1 \
+            service_ctl is-active "$SERVICE_UNIT" >/dev/null 2>&1 \
                 && echo "  Service state     : active (running)" \
                 || echo "  Service state     : inactive"
         else

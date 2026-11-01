@@ -6,6 +6,195 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Spec 081 step 10 (2026-10-30): phase-2 closeout — C081-1…12
+  verdicts and the D0–D8 as-built reconciliation recorded in
+  specs/081-ui-redesign-generic-tool/closeout-2026-10-30.md,
+  with the full screenshot pass filed in that spec folder (34
+  wireframe renders + 36 built renders at 1440 + 390).
+  HypothesisTracker, PipelinesView, and ResultsView removed
+  (zero-reference, found at closeout). T020's desktop-verify
+  leg remains staged at the Spec 080 cutover.
+- Spec 081 step 8 (2026-10-30): the tray names the open
+  program in its status line and tooltip, uptime is humanized,
+  stopped states say which kind of stop they are, "View Log"
+  becomes "View status & session log" (the framed web Status
+  screen, via a routed token fragment — Spec 082 ui-contract
+  addendum), and the tray is single-instance by construction
+  (PID lock + focus hand-off). Contract tests extend the tray
+  suites; the on-host verify rides the Spec 080 cutover.
+- Spec 081 step 9 (2026-10-30): dead code removed — the nine
+  orphaned components and StudyBuilderView (with its bundled
+  fallback data, never ported), plus the Dashboard and the
+  DeciphermentPanel it alone mounted. The Spec 029 source pins
+  that named the panel re-point to the living surfaces
+  (ProgramHome; the E1 purge scan now covers the whole frontend
+  tree) under a recorded amendment in the Spec 029 folder.
+- Spec 081 steps 6–7 + Spec 082 frontend (2026-10-30): Evidence
+  & sources is one tabbed surface (Library / Citations /
+  Correspondence / Notebooks), Data is Corpora + Anchor sets,
+  Analysis groups Entropy / Signs / Timeline, the sweep lives
+  under the Research loop, and the bottom panel is gone. Jobs
+  gained a program column ("Not recorded" when the record carries
+  none), a details modal, and plain-language failure rows; Status
+  leads with the serving backend's identity, humanized uptime,
+  the frontend error-reporting state, the two foundation sets
+  shown separately, and this session's log; Settings is grouped
+  Tool vs Program with an API-token section. The SPA now
+  implements the Spec 082 token contract (tray `#token=` fragment
+  read once into sessionStorage, Bearer on every call, SSE by
+  fetch-streaming, a named "API token needed" state on 401) —
+  and CI's `GLOSSA_API_AUTH=off` accommodation is removed
+  (Spec 082 T010): the frontend-tests backend enforces a
+  throwaway token like a real install. IndusEvidenceView is
+  retired; the Spec 029 claims-surface pins ride on ClaimsView
+  (amendment recorded in the Spec 029 spec folder).
+- Spec 081 step 3 (2026-10-30): the Claims route is now the
+  program-scoped register + detail (wireframes 03–04) — verdict
+  filter chips, a falsifier column, machine-verdict and
+  human-digestion stages in separate columns, hypotheses folded
+  in as early-state entries. Claims data is served from the new
+  /api/v1/programs/{program_id}/claims, /claims/aee-scores,
+  /claims/{claim_id}/trail, /library and /hypotheses endpoints;
+  the /api/v1/indus-evidence/* paths remain as a one-release
+  compatibility shim and are deprecated as of this step.
+- Spec 081 Amendment 2 (2026-10-30): the program home now
+  leads with the program's standing position and the lane-2
+  stage summary, both rendered as program data — the position
+  from the program's own record (new `standing_position` field,
+  schema v25; seeded for the default program and backfilled
+  where an existing default record is still empty), the stage
+  summary from the decipherment payload's by-stage anchor
+  counts with the five-stage legend. The Spec 029 display
+  guards assert both blocks on this surface now, unchanged in
+  text and intent.
+- Spec 081 steps 4–5 (2026-10-29): the Digestion route is now
+  the human queue board (columns by act owed — needs
+  explanation / needs acceptance / ready to digest — every card
+  naming its missing act, oldest first), and the program home
+  replaces the Dashboard: claims and verdicts first, the
+  digestion queue with its doorway, anchor totals from /signs,
+  the canonical foundation status with its checked-at time, and
+  one primary action (register a claim). The Dashboard's AI
+  narrative, feed furniture and embedded panels leave the home.
+- Spec 080 Amendment 4 (2026-10-29): the GlossaLab task is
+  now a short-lived starter (start-ensure.vbs -> the
+  idempotent ensure-start) on a logon trigger plus a
+  15-minute self-heal tick, replacing Amendment 3's
+  waiting action (the app-stop coupling ended its
+  instance with 0xFFFFFFFF); launch-tray.vbs is
+  fire-and-forget with a single-instance guard; every
+  wait in verify_desktop_host.py is total-deadline
+  bounded with named GLOSSA_WAIT timeout markers
+  (run 40911989844 had hung unbounded); the app stop's
+  drain test targets the loopback listener only.
+- Backend fallthrough honesty (2026-10-29 UI-log audit): the
+  discovery LLM client (`glossa_lab/discovery/llm.py`) now has the
+  same provider circuit breaker as `ai_utils.call_llm` — after 5
+  consecutive failures a provider is skipped for 10 minutes (one
+  WARNING when the circuit opens) instead of being re-hit on every
+  classified item. A single rate-limited provider previously
+  flooded the log with dozens of "falling through" lines inside
+  one scheduler tick. The static model-score fallback
+  (`_sync_static_fallback_async`) now counts and logs per-model
+  write errors and returns the real count instead of an
+  unconditional `"errors": 0`.
+- Windows script honesty (2026-10-29 UI-log audit): `shell.cmd
+  setup` now checks every step and exits non-zero naming the failed
+  step (it previously printed "[OK]" and exited 0 on any failure,
+  so the installers' error checks could never fire); `setup-os.cmd`
+  aborts its install when that setup fails. The retired
+  `start_services.cmd` / `.ps1` / `_safe.ps1` starters — which
+  launched the non-factory app object with no installed mode and
+  reported success anyway — are now delegating shims to the
+  canonical `setup-os.cmd start`. The retired two-task machinery
+  (`scripts/register-tasks.ps1`, `scripts/run-tray-svc.cmd`) is
+  deleted; the single GlossaLab task is the only registrar. The
+  last `timeout /t` wait (`scripts/exec.cmd`) is a ping wait, and a
+  contract test now bans timeout.exe waits in all Windows scripts
+  (the previous assertion for this ended in "or True" and could
+  never fail). Host verification now counts tray presence in its
+  overall verdict (`--skip-tray-check` records an explicit skip).
+- Tray supervision honesty (2026-10-29 UI-log audit): the tray now
+  keeps its own bounded log (`logs/tray.log`) — starts, auto-restarts,
+  failed stops, config failures, and poller renewals are recorded
+  instead of vanishing under pythonw. The status poller no longer
+  ends after ~24 h; polling runs in bounded, logged, self-renewing
+  segments. Auto-restart never duplicates a start still in flight
+  (the duplicate-spawn race behind Errno 10048 port conflicts), the
+  stop path's documented kill fallback now exists (listener PID via
+  netstat, bounded waits), autostart install failures are logged
+  instead of silently retried, and a failed backend spawn no longer
+  kills the tray before its icon appears.
+- Spec 080: Glossa Lab's production home moves to the Windows host
+  (TRISTEN-DESKTOP). All Windows launch surfaces now use production
+  semantics — `glossa_lab.main:create_app --factory` on 127.0.0.1,
+  no `--reload` (shell.cmd `run`, the tray backend start, and
+  `scripts/run-backend-svc.cmd`). There is one canonical Windows
+  installer (`setup-os.cmd install`; `services/windows/install.cmd`
+  delegates to it and the H25-violating Startup shortcut is
+  retired); the installer verifies the tray icon assets against
+  pinned SHA-256 hashes and fails loudly on mismatch. The stop path
+  is targeted — tray via `stop-tray.vbs`, backend via its shutdown
+  endpoint, force-kill only of a verified Glossa uvicorn listener —
+  and no longer kills every `pythonw.exe` on the machine. Installed
+  mode is set in the launch chain (`GLOSSA_MODE=installed`), so the
+  database deterministically lives under
+  `%LOCALAPPDATA%\GlossaLab\data`. The tray now supervises the
+  backend on Windows: capped auto-restart (3/hour) that never
+  overrides a user stop. New host tooling:
+  `scripts/install-desktop-host.cmd` and
+  `scripts/verify-desktop-host.cmd` (identity, tray, icon hashes,
+  autostart state, restart test — markers, not liveness).
+  Amendment 1 (2026-10-29) fixes two installer defects proven on
+  the host (install run 40802151979): the icon check no longer
+  depends on `Get-FileHash` module autoloading — it hashes with
+  .NET SHA-256 in `scripts\verify_icon_hashes.ps1` and compares
+  case-insensitively, with a hashing failure reported as itself,
+  never as a mismatch — and the canonical autostart is now the
+  per-user HKCU Run value (written and read-back-verified by the
+  installer), because per-user scheduled-task registration is
+  denied in the installer's execution context (diagnostic run
+  40807602846); the scheduled-task registration path and
+  `scripts\register_task.ps1` are removed.
+  Amendment 2 (2026-10-29) supersedes Amendment 1's autostart
+  change on newer host evidence (diagnostic run 40816104983):
+  the diag1 denials were shape-caused, and a route-B
+  registration (scoped principal, Interactive / Limited,
+  user-scoped logon trigger) registers cleanly from the same
+  non-elevated context. The scheduled task is restored as the
+  canonical autostart in that shape; the HKCU Run route is
+  removed. The icon-verification fix stands unchanged.
+  Verify-script fix (2026-10-29): the desktop verify script no
+  longer identifies the backend by the port-8001 listener —
+  on the host that listener is tailscaled (Tailscale Serve),
+  not the app — it uses the command-line process set instead.
+  Amendment 3 (2026-10-29): persistence — the logon task
+  gains restart-on-failure (3 x 1 min) and launch-tray.vbs
+  waits on the tray propagating its exit code, so the
+  scheduler supervises the tray's lifetime (job-launched
+  starts died with their job's teardown; runs 40855200786 +
+  40861773854); `setup-os.cmd start` is now idempotent
+  (identity-verified no-op when already healthy).
+- Spec 079: the backend now starts under supervision following the
+  Syncyard spec 007 pattern. The Linux unit is renamed to
+  `glossa-lab-backend` and runs the production entry point
+  (`create_app --factory`, port 8001, no reload) directly, with a
+  3-starts-per-hour restart cap and an `OWNER_NEEDED` alert unit.
+  One installer (`services/linux/install.sh`, via
+  `setup-os.sh install`) installs the backend unit AND the tray
+  (autostart + icon), retires the legacy `glossa-lab.service`, and
+  verifies backend identity (not just liveness) with a bounded
+  health check. The tray icon is now the Glossa Lab brand tile —
+  packaged PNG/ICO/SVG assets with a status badge — instead of a
+  generated coloured circle; the Windows shortcut installer sets
+  the icon location. The unit also sets `OOMScoreAdjust=-300`:
+  the 2026-10-27 backend deaths were root-caused to kernel OOM
+  kills (at adj 0 the backend carried the highest kill priority
+  on the box), and -300 takes it out of first-victim position
+  without approaching the host runtime daemon's -700. `shell.sh run` now matches production
+  (port 8001, factory, no reload) and `shell.sh tray` sets
+  `PYTHONPATH` on Linux.
+
 
 ### Changed
 

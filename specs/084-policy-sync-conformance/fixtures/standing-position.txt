@@ -1,0 +1,12 @@
+# FIXTURE — approved text under Spec 084 (POLICY-SYNC). Do not edit
+# without a recorded owner-approval act on the actual text
+# (FR-084-08); an unapproved fixture edit is itself a finding.
+# Approval: Spec 029 Phase E2 standing-position text, carried as
+# program data per Spec 081 Amendment 2 (D2.2); the Spec 081 package
+# was ratified by the owner 2026-10-29. The position is the owner's
+# standing position for the program.
+# Surface: ProgramHome standing-position block, rendered from
+# backend/glossa_lab/project_seeder.py _DEFAULT_PROJECT
+# ["standing_position"].
+# ---
+The Indus script is not deciphered. The readings this program records are candidate readings, each one a claim standing at a stage of the claim lifecycle. A reading is not settled by being recorded and checked, and no count in this program is a measure of decipherment.

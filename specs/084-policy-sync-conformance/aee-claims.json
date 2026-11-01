@@ -1,0 +1,270 @@
+{
+ "claims": [
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 084 FR-084-01; the standing position is Spec 029 Phase E2's text carried as program data per Spec 081 Amendment 2 (D2.2); fixture header carries the approval citation. Exercised by backend/tests/test_policy_sync_conformance.py::test_standing_position_matches_fixture in the Backend tests CI job.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "The standing_position value in backend/glossa_lab/project_seeder.py differing from the fixture body in any character beyond trailing whitespace; or the fixture differing from the text the Spec 029 Phase E2 record carries."
+   ],
+   "id": "C084-1",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "The program's standing position, as rendered on ProgramHome from the default project record, matches the approved fixture specs/084-policy-sync-conformance/fixtures/standing-position.txt exactly.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 084 FR-084-02; framing is Spec 029 FR-029-08's. Exercised by test_stage_count_framing_matches_fixture.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "ProgramHome.tsx no longer containing the fixture sentence (modulo whitespace), or containing a replacement framing that presents stage counts as progress toward decipherment."
+   ],
+   "id": "C084-2",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "The stage-count framing sentence on ProgramHome matches the approved fixture fixtures/stage-count-framing.txt: the counts are an index into the anchor records, not a measure of decipherment.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 084 FR-084-03; owner order 2026-10-30; Spec 083 claim C083-7 is the behavioural parent. Exercised by test_edge_robots_body_matches_fixture and test_edge_noindex_value_matches_fixture (source conformance; deployed-surface header checks remain Spec 083 T059's).",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "cloud/edge/src/worker.ts ROBOTS_TXT decoding to anything other than the fixture body, or cloud/edge/src/headers.ts NOINDEX_VALUE differing from the fixture; or either fixture edited without a recorded owner act lifting or amending the robots-away order."
+   ],
+   "id": "C084-3",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "The cloud edge's robots.txt body and X-Robots-Tag value match the approved fixtures fixtures/edge-robots.txt and fixtures/edge-noindex.txt (disallow everything; 'noindex, nofollow'), per the owner's 2026-10-30 robots-away order and Spec 083 FR-007.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 084 FR-084-04; Spec 082 ui-contract.md (PR #453) fixes the named state and the storage/display rules; the sentences as implemented landed in PR #459. Exercised by test_token_gate_copy_matches_fixture.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "Any fixture line absent from ApiToken.tsx (modulo whitespace); or UI copy appearing that contradicts the Spec 082 contract (e.g. offering to display or read the token)."
+   ],
+   "id": "C084-4",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "The API-token gate copy in ApiToken.tsx contains every approved string in fixtures/token-gate-copy.txt, so what the UI states about token handling (named 'API token needed' state, session-only storage, fingerprint-only display, the app cannot read the token file) stays the contract's text.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 084 FR-084-05; Spec 081 wireframe 15, owner-ratified package 2026-10-29; step-8 as-built note. Exercised by test_tray_status_copy_matches_fixture.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "Any fixture line absent from tray/glossa_tray/main.py (modulo whitespace); or tray copy appearing that misstates the supervision behaviour (e.g. promising a restart after a user stop)."
+   ],
+   "id": "C084-5",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "The tray's status and tooltip copy contains every approved string/template in fixtures/tray-status-copy.txt, so the tray's account of backend supervision (healthy line, stopped-by-you, auto-restart limit) stays in the wireframe-15 forms the owner ratified.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 084 FR-084-06; supersession is on the merged audit record (strict core re-grade 6/46/37/3/2); the preprint itself is a deposited artifact and out of scope. Exercised by test_no_superseded_161_headline_framing.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "The pattern 161 + (candidate|readings|anchors) found in any .ts/.tsx/.js/.jsx/.py source under frontend/src, cloud/edge/src, or backend/glossa_lab."
+   ],
+   "id": "C084-6",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "No served surface in this repo carries the superseded '161' headline framing (161 candidate readings / 161 readings / 161 anchors, any case): the October 2026 audit superseded that headline set with the 94 strict core, and no app, edge, or backend-served text re-adopts it.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 084 FR-084-07; removal record is Spec 081 step 9 (PR #460) with Spec 029's pin-surface amendment. Exercised by test_d4_removed_surfaces_stay_removed. 'Fuls' as a corpus/source name in living views is legitimate and is not targeted.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "A <RemovedName>.tsx/.ts file reappearing under frontend/src; an import of any removed component in frontend/src; or the string REAL_CATALOG_SUMMARY appearing in frontend/src."
+   ],
+   "id": "C084-7",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "The Spec 081 D4-removed surfaces stay removed: no source file and no import for DeciphermentPanel, StudiesView, AG2Panel, AIChatView, CollaborationPanel, ExperimentRegistry, PhaseAdvancerPanel, SignDictionary, PresetsView, ExperimentsView, StudyBuilderView, or DashboardView exists in frontend/src, and the REAL_CATALOG_SUMMARY fallback-data symbol stays absent.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "HELD (F-S3): the source frontend/src/cloud/pages.tsx exists only on feat/083-frontend and lands on main with the Phase 3 PR, itself gated on PR #468 \u2014 no source on main exists to diff, so no test is written today and none is invented. Approval record when it activates: Spec 083 wireframe package (PR #463) and the 2026-10-31 parent decisions recorded in the Spec 083 BUILD-RECORD. Activation is Spec 084 task T010.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "DESIGNED, NOT YET EXECUTABLE: a fixture diff over frontend/src/cloud/pages.tsx finding any claims-bearing string differing from its fixture, once fixtures exist."
+   ],
+   "id": "C084-8",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "HELD \u2014 The cloud anonymous-surface copy (login, glassbreak setup, invite acceptance) conforms to approved fixtures for its claims-bearing text (invitation-only statement, password-recovery posture, the setup audit-log statement, the invite issued-address binding).",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "HELD (F-S3): the tracker's source is the artifact bitconcepts-research-indus-program-tracker, not this repo; a pytest in this repo cannot diff it. Conformance belongs to the tracker publish path (build + served-identity verification), where the 2026-10-28 reconciliation was published under the owner's direction.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "DESIGNED, NOT EXECUTABLE HERE: a served-page scan of the tracker finding standing text that contradicts the merged record (e.g. the pre-audit 'each supported by evidence independent' framing presented without its correction)."
+   ],
+   "id": "C084-9",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "HELD \u2014 The public research tracker's standing texts (bitconcepts.tech/research/ and /research/indus-script/: 'not deciphered' status, the corrected strict-core framing, the append-only corrections stance) conform to the program's approved record.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "HELD (F-S3): drift confirmed first-hand 2026-10-31. The correction is owner-gated \u2014 the one-line fix is bundled with the prepared v10 corrections package awaiting the owner's approval of the exact text \u2014 and the source is outside this repo. No fixture is written for a text whose correction the owner has not yet approved.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "ALREADY TRIGGERED as a finding: the live llms.txt (fetched 2026-10-31) names 'Zenodo v8 preprint (October 23, 2026), DOI 10.5281/zenodo.23604590' as the latest release. The claim stands HELD, not passed, until the corrected line is served."
+   ],
+   "id": "C084-10",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "HELD \u2014 bitconcepts.tech/llms.txt names the current release: the v9 preprint and its version DOI 10.5281/zenodo.23668053.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "HELD (F-S3): no owner-approval act on record exists for these texts \u2014 they are legacy/product copy carried through many builds. Rule (4) of the directive forbids fixturing unapproved text, so they stand as unapproved-text findings (inventory A5/A6; the seeder description/prompt context, A7, is held on the same ground) until an approval act on the actual text exists.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "DESIGNED, NOT EXECUTABLE: a fixture diff over those sources, once fixtures exist."
+   ],
+   "id": "C084-11",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "HELD \u2014 The in-app Help text (HelpView) and the AI-settings data-flow copy (Settings panels) are owner-approved texts held as fixtures under this spec.",
+   "uncertainty": "insufficient_evidence"
+  }
+ ],
+ "feature": "084-policy-sync-conformance",
+ "schema_version": "1.0"
+}

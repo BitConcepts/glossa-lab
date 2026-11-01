@@ -1,0 +1,194 @@
+{
+ "documents": [
+  {
+   "name": "projects/theindusscript/databases/(default)/documents/indusarrays/doc001",
+   "fields": {
+    "dockey": {
+     "integerValue": "1001"
+    },
+    "sideline": {
+     "stringValue": "a"
+    },
+    "texts": {
+     "arrayValue": {
+      "values": [
+       {
+        "stringValue": "342"
+       },
+       {
+        "stringValue": "99"
+       }
+      ]
+     }
+    },
+    "S1": {
+     "stringValue": "342"
+    },
+    "S2": {
+     "stringValue": "99"
+    },
+    "S3": {
+     "stringValue": "0"
+    },
+    "S4": {
+     "stringValue": "0"
+    },
+    "S5": {
+     "stringValue": "0"
+    },
+    "S6": {
+     "stringValue": "0"
+    },
+    "S7": {
+     "stringValue": "0"
+    },
+    "S8": {
+     "stringValue": "0"
+    },
+    "S9": {
+     "stringValue": "0"
+    },
+    "S10": {
+     "stringValue": "0"
+    },
+    "S11": {
+     "stringValue": "0"
+    },
+    "S12": {
+     "stringValue": "0"
+    },
+    "S13": {
+     "stringValue": "0"
+    },
+    "S14": {
+     "stringValue": "0"
+    },
+    "textnum": {
+     "integerValue": "1"
+    }
+   }
+  },
+  {
+   "name": "projects/theindusscript/databases/(default)/documents/indusarrays/doc002",
+   "fields": {
+    "dockey": {
+     "integerValue": "1002"
+    },
+    "sideline": {
+     "stringValue": "b"
+    },
+    "texts": {
+     "arrayValue": {
+      "values": [
+       {
+        "stringValue": "267"
+       },
+       {
+        "stringValue": "72"
+       }
+      ]
+     }
+    },
+    "S1": {
+     "stringValue": "267"
+    },
+    "S2": {
+     "stringValue": "72"
+    },
+    "S3": {
+     "stringValue": "0"
+    },
+    "S4": {
+     "stringValue": "0"
+    },
+    "S5": {
+     "stringValue": "0"
+    },
+    "S6": {
+     "stringValue": "0"
+    },
+    "S7": {
+     "stringValue": "0"
+    },
+    "S8": {
+     "stringValue": "0"
+    },
+    "S9": {
+     "stringValue": "0"
+    },
+    "S10": {
+     "stringValue": "0"
+    },
+    "S11": {
+     "stringValue": "0"
+    },
+    "S12": {
+     "stringValue": "0"
+    },
+    "S13": {
+     "stringValue": "0"
+    },
+    "S14": {
+     "stringValue": "0"
+    }
+   }
+  },
+  {
+   "name": "projects/theindusscript/databases/(default)/documents/indusarrays/doc003",
+   "fields": {
+    "dockey": {
+     "integerValue": "1003"
+    },
+    "sideline": {
+     "stringValue": "a"
+    },
+    "texts": {
+     "arrayValue": {}
+    },
+    "S1": {
+     "stringValue": "59"
+    },
+    "S2": {
+     "stringValue": "89"
+    },
+    "S3": {
+     "stringValue": "0"
+    },
+    "S4": {
+     "stringValue": "0"
+    },
+    "S5": {
+     "stringValue": "0"
+    },
+    "S6": {
+     "stringValue": "0"
+    },
+    "S7": {
+     "stringValue": "0"
+    },
+    "S8": {
+     "stringValue": "0"
+    },
+    "S9": {
+     "stringValue": "0"
+    },
+    "S10": {
+     "stringValue": "0"
+    },
+    "S11": {
+     "stringValue": "0"
+    },
+    "S12": {
+     "stringValue": "0"
+    },
+    "S13": {
+     "stringValue": "0"
+    },
+    "S14": {
+     "stringValue": "0"
+    }
+   }
+  }
+ ],
+ "nextPageToken": "tok2"
+}

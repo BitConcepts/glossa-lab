@@ -1,0 +1,112 @@
+{
+ "record_type": "c3-evidence-sample",
+ "schema_version": "1.0",
+ "spec": "specs/077-signary-triangulation",
+ "claims_file": "specs/077-signary-triangulation/claims.json",
+ "verification_mode": "on",
+ "verifier": "independent verifier subagent (C3; spawned for this freeze; did not draft the spec)",
+ "sample_rule": "every verdict-bearing claim + random sample of at least 20% of the remainder",
+ "sample_seed": 20261026,
+ "claims": [
+  {
+   "claim_id": "F077-C01",
+   "verdict_bearing": true,
+   "sampled": true,
+   "verification": "verified",
+   "evidence_refs_checked": [
+    "2026-10-25-spec-draft-m7-signary-triangulation.md (program goal record, files/) - read at ~/workspace/goals/glossa-lab-spec-kit-aee-migration-and-indus-program/files/2026-10-25-spec-draft-m7-signary-triangulation.md; SHA-256 recomputed 2e9f9967ec30a558e3a31f93f54540b3d8450e25080c447d37ecd598175c1369, matching the pin cited in the claim",
+    "specs/073-keying-surface-repair/keying-surface-accounting-2026-10-25.md - read via gh api repos/BitConcepts/glossa-lab/contents (repository main, raw)",
+    "glossa-corpus/indus/sources/mahadevan-1977/m77_sign_list.csv - read in the canonical store at ~/workspace/glossa-lab/glossa-corpus/indus/sources/mahadevan-1977/m77_sign_list.csv; SHA-256 recomputed 9c619bfe2520e63e2968be0ab4ddc9cef1f9aff7dfa3f8eddbf58f21fb414f7e, matching dataset v3 pin",
+    "glossa-corpus/indus/sources/wells-1998/wells1998_sign_list.csv - read in the canonical store at ~/workspace/glossa-lab/glossa-corpus/indus/sources/wells-1998/wells1998_sign_list.csv; SHA-256 recomputed 22bde128551adbd6d91cd76bb41b4f40199ab3e45af76d500a1008d27c5bea95, matching the Wells 1998 pin",
+    "glossa-corpus/indus/sources/mahadevan-1977/m77_sign_list_extraction_2026-10-25.md and m77_sign_list_full_verification_2026-10-25.md - read via gh api (repository main, raw)",
+    "glossa-corpus/indus/sources/wells-1998/wells_1998_sign_list_extraction_2026-10-25.md - read via gh api (repository main, raw)"
+   ],
+   "note": "Verified as a frozen requirement (execution not yet run). Bar recomputed: smallest n with n/557 >= 0.90 is 502 (501/557 = 89.95%, below; 502/557 = 90.13%). Both witness datasets exist at the cited pins (hashes recomputed exactly, above) with the claimed sizes: M77 417 data rows (179 dagger Y / 238 N / 0 uncertain, matching the full-verification record's dataset v3 dagger total of 179 = printed section 11.4) and Wells 1998 588 data rows (587 printed entries + sign 407 as an explicit NOT PRINTED row). Spec 073 accounting supports the population/registry statements: population 557 Wells codes; Registry v2 1,013 rows = 396 parpola_1982 + 407 yajnadevam_glyphid + 210 icit_wells (396+407+210 = 1,013, recomputed); the 13 duplicated Mahadevan ids it lists are exactly the set the claim/spec name (M002, M050, M064, M076, M099, M103, M161, M167, M168, M199, M216, M264, M409); and it adopts the C-7 canonical pin. Design draft section 2 (D-M7-C01) states the 90% claim and its falsifier as the claim carries them."
+  },
+  {
+   "claim_id": "F077-C02",
+   "verdict_bearing": true,
+   "sampled": true,
+   "verification": "verified",
+   "evidence_refs_checked": [
+    "2026-10-25-spec-draft-m7-signary-triangulation.md (program goal record, files/) - read at ~/workspace/goals/glossa-lab-spec-kit-aee-migration-and-indus-program/files/2026-10-25-spec-draft-m7-signary-triangulation.md; SHA-256 recomputed 2e9f9967ec30a558e3a31f93f54540b3d8450e25080c447d37ecd598175c1369, matching the pin cited in the claim",
+    "specs/073-keying-surface-repair/registry-v2/no-published-identity.json - read via gh api repos/BitConcepts/glossa-lab/contents (repository main, raw)",
+    "specs/073-keying-surface-repair/keying-surface-accounting-2026-10-25.md - read via gh api (repository main, raw)",
+    "specs/075-depicted-kind-endings-atlas/outcome.md - read via gh api (repository main, raw)",
+    "reports/phase441_results.json census.token_999 (spec section 0 FF-6 reference) - read via gh api (repository main, raw)",
+    "glossa-corpus/indus/sources/wells-1998/wells1998_sign_list.csv - read in the canonical store (SHA-256 verified, see C01); dataset total column and mahadevan_xref_fig36 column inspected directly"
+   ],
+   "note": "Verified as a frozen requirement (attack not yet run). Token 999's status is as claimed: no-published-identity.json carries its single entry icit_code 999 with disposition NO PUBLISHED IDENTITY; Spec 073's accounting states token 999 is the one population sign with no Asset A row, with 2 primary rows / 2 occurrences; Spec 075's outcome carries the same count (named exclusion, 2 occurrences) and phase441 census.token_999 reads primary_rows 2 / occurrences 2. Administered bands recomputed from 2 occurrences and rate 0.0: 2 within 20% is [1.6, 2.4], admitting exactly the integer total 2; final rate within 10 points of 0.0 is at most 0.10, and at a total of 2 a final count of 0 gives 0.0 while 1 gives 0.5, so the final count must be 0 - exactly as the claim and FF-6 administer them. Design draft section 2 (D-M7-C02) states the two-condition rule and the NO PUBLISHED IDENTITY default; the Wells dataset carries the total and Figure 3.6 cross-reference columns the claim's Wells arm uses (55 mahadevan_xref_fig36 pairings over 17 distinct Mahadevan targets in the dataset as read)."
+  },
+  {
+   "claim_id": "F077-C03",
+   "verdict_bearing": false,
+   "sampled": false,
+   "verification": "not-sampled",
+   "evidence_refs_checked": [],
+   "note": ""
+  },
+  {
+   "claim_id": "F077-C04",
+   "verdict_bearing": false,
+   "sampled": true,
+   "verification": "verified",
+   "evidence_refs_checked": [
+    "reports/phase441_results.json - read in full via gh api repos/BitConcepts/glossa-lab/contents (repository main, raw); census.population and census.token_999 inspected directly",
+    "specs/075-depicted-kind-endings-atlas/outcome.md - read via gh api (repository main, raw), as corroboration of the machine record's census and reproduction statement"
+   ],
+   "note": "Verified on the cited machine record for the frozen census figures: phase441_results.json census.population is analyzable_rows 3,045 / distinct_signs 557 / signs_in_sequences_ge2 550, and census.token_999 is primary_rows 2 / occurrences 2 - exactly the claim's 3,045 / 557 / 550 and 999's 2 occurrences (Spec 075's outcome likewise states the population reproduced exactly at those figures, token 999 the named exclusion with 2 occurrences; the claim's 0 text-final / rate 0.0 for 999 is the freeze derivation at FF-6, consistent with that record). Caveat stated plainly: the claim's second evidence item, the freeze-act reproduction over the restricted-local inputs, cannot be redone from the record alone - those inputs are cited by hash only, are not in git, and no separate freeze-act working record is in the freeze directory - so I did not independently re-run it. The reproduction is a step-0 act (spec section 4 step 0 / FF-6: re-derived as a check at step 0); this verdict rests on the cited machine record supporting the frozen census exactly, not on a re-run by me."
+  },
+  {
+   "claim_id": "F077-C05",
+   "verdict_bearing": false,
+   "sampled": false,
+   "verification": "not-sampled",
+   "evidence_refs_checked": [],
+   "note": ""
+  },
+  {
+   "claim_id": "F077-C06",
+   "verdict_bearing": false,
+   "sampled": false,
+   "verification": "not-sampled",
+   "evidence_refs_checked": [],
+   "note": ""
+  },
+  {
+   "claim_id": "F077-C07",
+   "verdict_bearing": false,
+   "sampled": false,
+   "verification": "not-sampled",
+   "evidence_refs_checked": [],
+   "note": ""
+  },
+  {
+   "claim_id": "F077-C08",
+   "verdict_bearing": false,
+   "sampled": false,
+   "verification": "not-sampled",
+   "evidence_refs_checked": [],
+   "note": ""
+  },
+  {
+   "claim_id": "F077-C09",
+   "verdict_bearing": false,
+   "sampled": true,
+   "verification": "verified",
+   "evidence_refs_checked": [
+    "2026-10-25-spec-draft-m7-signary-triangulation.md (program goal record, files/), section 5 - read at ~/workspace/goals/glossa-lab-spec-kit-aee-migration-and-indus-program/files/2026-10-25-spec-draft-m7-signary-triangulation.md; SHA-256 recomputed 2e9f9967ec30a558e3a31f93f54540b3d8450e25080c447d37ecd598175c1369, matching the pin cited in the claim"
+   ],
+   "note": "Verified. Design draft section 5 (Verdict bands) states, in its own words: 'Any shortfall names the unwitnessed signs by list position - the gap list is a deliverable either way (it is the shopping list for ICIT-route questions if the owner opens Gate G1).' That supports the claim as written: the gap list is owed whether F077-C01 is supported or not, with the design's stated use (the ICIT-route shopping list if Gate G1 opens) matching the claim's boundary. The naming form also matches: the draft says 'by list position' and the frozen spec section 5 glosses that as their Wells codes, as the claim states."
+  },
+  {
+   "claim_id": "F077-C10",
+   "verdict_bearing": false,
+   "sampled": false,
+   "verification": "not-sampled",
+   "evidence_refs_checked": [],
+   "note": ""
+  }
+ ],
+ "outcome": "PASS"
+}

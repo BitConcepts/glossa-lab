@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./fixtures";
 
 /**
  * Jobs view tests.
@@ -35,25 +35,25 @@ test.describe("Jobs view structure", () => {
   });
 
   test("shows the submit summary element", async ({ page }) => {
-    await expect(page.getByText("+ Submit new job")).toBeVisible();
+    await expect(page.getByText("+ New job")).toBeVisible();
   });
 
   test("expanding submit section shows job name field", async ({ page }) => {
-    await page.getByText("+ Submit new job").click();
+    await page.getByText("+ New job").click();
     await expect(
       page.getByPlaceholder(/Entropy analysis/i)
     ).toBeVisible();
   });
 
   test("submit form has pipeline selector", async ({ page }) => {
-    await page.getByText("+ Submit new job").click();
+    await page.getByText("+ New job").click();
     await expect(page.getByRole("combobox")).toBeVisible();
   });
 
   test("pipeline selector has at least one option", async ({ page }) => {
     // Without the backend, only the fallback default pipeline (block_entropy)
     // is shown. The combobox must have at least 1 option.
-    await page.getByText("+ Submit new job").click();
+    await page.getByText("+ New job").click();
     const select = page.getByRole("combobox");
     const options = await select.locator("option").allTextContents();
     expect(options.length).toBeGreaterThanOrEqual(1);
@@ -62,7 +62,7 @@ test.describe("Jobs view structure", () => {
   });
 
   test("submit form has parameters JSON textarea", async ({ page }) => {
-    await page.getByText("+ Submit new job").click();
+    await page.getByText("+ New job").click();
     // The params textarea should contain JSON.
     // Use first() to avoid strict mode: the AI panel may also have a textarea.
     const textarea = page.locator("textarea").first();
@@ -72,14 +72,14 @@ test.describe("Jobs view structure", () => {
   });
 
   test("submit form has Submit button", async ({ page }) => {
-    await page.getByText("+ Submit new job").click();
+    await page.getByText("+ New job").click();
     await expect(page.getByRole("button", { name: "Submit" })).toBeVisible();
   });
 
   test("selecting a different pipeline updates the params field (requires backend)", async ({ page }) => {
     // This test only makes sense with the backend providing multiple pipeline options.
     // Without backend, only block_entropy is shown so switching is impossible.
-    await page.getByText("+ Submit new job").click();
+    await page.getByText("+ New job").click();
     const select = page.getByRole("combobox");
     const options = await select.locator("option").allTextContents();
     if (options.length < 2) {
@@ -107,7 +107,7 @@ test.describe("Jobs view with backend", () => {
   });
 
   test("pipeline selector contains all registered pipelines", async ({ page }) => {
-    await page.getByText("+ Submit new job").click();
+    await page.getByText("+ New job").click();
     const select = page.getByRole("combobox");
     // Wait for the pipeline catalog to load from the backend (async fetch on mount)
     await page.waitForFunction(
@@ -140,7 +140,7 @@ test.describe("Jobs view with backend", () => {
   test("submitting a job with invalid JSON shows an error", async ({ page }) => {
     await page.goto("/");
     await page.getByTitle("Jobs").first().click();
-    await page.getByText("+ Submit new job").click();
+    await page.getByText("+ New job").click();
 
     await page.getByPlaceholder(/Entropy analysis/i).fill("Test job");
     await page.locator("textarea").first().fill("not valid json");
@@ -154,7 +154,7 @@ test.describe("Jobs view with backend", () => {
   test("submitting a job with empty name shows an error", async ({ page }) => {
     await page.goto("/");
     await page.getByTitle("Jobs").first().click();
-    await page.getByText("+ Submit new job").click();
+    await page.getByText("+ New job").click();
 
     // Leave name blank, click Submit
     await page.getByRole("button", { name: "Submit" }).click();

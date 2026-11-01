@@ -223,6 +223,18 @@ report = {
     "description": "Master evidence synthesis — Phases 1-168 final state",
     "phases_covered": "1-168",
     "aggregate_confidence_pct": round(agg_conf, 1),
+    # E-7 residual (red team 2026-10-25): the value above is WITHDRAWN
+    # (preprint v8, 2026-10-23) — no weighting rule for it was ever
+    # recorded, so it carries no meaning as a confidence figure. The
+    # value itself is the historical Phase-169 record and is NOT
+    # changed; this sibling field makes its status explicit wherever
+    # the record is read, instead of leaving a bare number.
+    "aggregate_confidence_pct_status": (
+        "WITHDRAWN 2026-10-23 (preprint v8): this figure has no "
+        "recorded weighting rule and carries no meaning as a "
+        "confidence value; retained unchanged as the historical "
+        "Phase-169 record. Do not cite it as a confidence figure."
+    ),
     "n_evidence_items": n_items,
     "n_new_items": len(NEW_ITEMS),
     "n_strongly_confirmed": n_strongly_supported,

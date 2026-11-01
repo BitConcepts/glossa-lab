@@ -5,12 +5,26 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from typing import Any
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel
 
+from glossa_lab.cloud_scope import actor_from_request, attribution_label
+from glossa_lab.config import cloud_mode_enabled
 from glossa_lab.database import get_db
 
 router = APIRouter()
+
+
+def _respond(job: dict[str, Any]) -> JobResponse:
+    """Build the response, adding the cloud attribution label (T027).
+
+    Desktop mode never carries the label: the Jobs screen renders
+    "Started by" only when a cloud actor actually started the job.
+    """
+    out = JobResponse(**job)
+    if cloud_mode_enabled():
+        out.attribution_label = attribution_label(job)
+    return out
 
 
 class JobCreate(BaseModel):
@@ -32,6 +46,9 @@ class JobResponse(BaseModel):
     params: dict[str, Any]
     created_at: str
     updated_at: str
+    # Spec 083 (T027): the actor stamp (cloud mode) + its rendered label.
+    created_by: Any = None
+    attribution_label: str | None = None
 
 
 class JobUpdate(BaseModel):
@@ -48,21 +65,24 @@ class ClearJobsResponse(BaseModel):
 
 
 @router.post("/jobs", status_code=201)
-async def create_job(body: JobCreate) -> JobResponse:
+async def create_job(body: JobCreate, request: Request) -> JobResponse:
     """Submit a new job."""
     db = get_db()
     if db is None:
         raise HTTPException(status_code=503, detail="Database not available")
 
     now = datetime.now(timezone.utc).isoformat()
+    # Spec 083 (T027): stamp the acting cloud user, when there is one.
+    actor = actor_from_request(request)
     job = await db.create_job(
         name=body.name,
         pipeline=body.pipeline,
         params=body.params,
         created_at=now,
         initial_status=body.initial_status,
+        created_by=actor.stamp() if actor is not None else None,
     )
-    return JobResponse(**job)
+    return _respond(job)
 
 
 @router.get("/jobs")
@@ -73,7 +93,7 @@ async def list_jobs() -> list[JobResponse]:
         raise HTTPException(status_code=503, detail="Database not available")
 
     rows = await db.list_jobs()
-    return [JobResponse(**r) for r in rows]
+    return [_respond(r) for r in rows]
 
 
 @router.get("/jobs/{job_id}")
@@ -86,7 +106,7 @@ async def get_job(job_id: str) -> JobResponse:
     job = await db.get_job(job_id)
     if job is None:
         raise HTTPException(status_code=404, detail="Job not found")
-    return JobResponse(**job)
+    return _respond(job)
 
 
 @router.patch("/jobs/{job_id}")
@@ -113,7 +133,7 @@ async def update_job(job_id: str, body: JobUpdate) -> JobResponse:
     if body.result_data:
         now = datetime.now(timezone.utc).isoformat()
         await db.store_result(job_id=job_id, data=body.result_data, created_at=now)
-    return JobResponse(**(await db.get_job(job_id)))  # type: ignore[arg-type]
+    return _respond(await db.get_job(job_id))  # type: ignore[arg-type]
 
 
 @router.post("/jobs/{job_id}/pause")
@@ -128,7 +148,7 @@ async def pause_job(job_id: str) -> JobResponse:
     if job["status"] not in ("pending", "running"):
         raise HTTPException(status_code=409, detail=f"Cannot pause job with status '{job['status']}'")
     await db.update_job_status(job_id, "paused")
-    return JobResponse(**(await db.get_job(job_id)))  # type: ignore[arg-type]
+    return _respond(await db.get_job(job_id))  # type: ignore[arg-type]
 
 
 @router.post("/jobs/{job_id}/resume")
@@ -143,7 +163,7 @@ async def resume_job(job_id: str) -> JobResponse:
     if job["status"] != "paused":
         raise HTTPException(status_code=409, detail=f"Cannot resume job with status '{job['status']}'")
     await db.update_job_status(job_id, "pending")
-    return JobResponse(**(await db.get_job(job_id)))  # type: ignore[arg-type]
+    return _respond(await db.get_job(job_id))  # type: ignore[arg-type]
 
 
 @router.post("/jobs/pause-all")
@@ -201,7 +221,7 @@ async def cancel_job(job_id: str) -> JobResponse:
     job = await db.delete_job(job_id)
     if job is None:
         raise HTTPException(status_code=404, detail="Job not found")
-    return JobResponse(**job)
+    return _respond(job)
 
 
 @router.post("/jobs/clear-cache", status_code=200)

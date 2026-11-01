@@ -52,6 +52,20 @@ through his own channels and people routinely redeem on a different
 address than they were emailed at. Binding hard to an email buys little
 and breaks that flow.
 
+> **CORRECTED — Phase 3 decision (2026-10-31).** The recommendation
+> above is not what shipped, and the shipped behavior governs. When an
+> invite names an email, redemption is **bound to that address**: the
+> edge refuses a redemption presenting a different address
+> (`invite_email_mismatch`), checked before the invite is consumed, so
+> a mismatch never spends the invite and the invitee can correct and
+> retry. The acceptance screen renders the issued address pre-filled
+> **and disabled**, with an "issued to this address" note — the
+> glassbreak username treatment (Amendment 3). Possession of the link
+> remains necessary; when an address is named, it is not sufficient.
+> Invites without an address keep the open-link form recommended
+> above. Wireframe 02's annotation is corrected in step with this
+> note.
+
 **D-3 · Session lifetime.**
 Recommendation: **30 days, sliding** (activity extends it), with
 immediate revocation on disable/removal/role change. A research tool

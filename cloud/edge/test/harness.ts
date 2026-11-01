@@ -150,6 +150,7 @@ export async function seedWorkspace(
     id,
     name,
     slug: name.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+    description: null,
     archivedAt: null,
     createdBy: "usr_glassbreak",
     createdAt: T0.toISOString(),

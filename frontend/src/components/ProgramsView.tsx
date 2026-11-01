@@ -15,6 +15,7 @@ import {
   type Project,
 } from "../api";
 import { useProject } from "../hooks/useProject";
+import { useCloudSession } from "../cloud/session";
 import { useToast } from "../hooks/useToast";
 import {
   Card, CardTitle, PageHead, PrimaryButton, QuietButton, RowItem, RowMeta, RowTitle,
@@ -33,7 +34,16 @@ export function ProgramsView({
   onNavigate: (view: string) => void;
 }) {
   const p = palette(darkMode);
-  const { projects, activeProject, setActiveProject, refreshProjects, loading } = useProject();
+  const { projects: allProjects, activeProject, setActiveProject, refreshProjects, loading } = useProject();
+  const cloud = useCloudSession();
+  // Spec 083 (T028): in the cloud edition the list shows only the
+  // workspaces this user belongs to — the container already scopes
+  // the read; this keeps the shell's presentation identical to the
+  // session's own workspace list (no name, count, or card for a
+  // workspace the user is not in).
+  const projects = cloud.active
+    ? allProjects.filter((proj) => !proj.slug || cloud.workspaces.some((w) => w.slug === proj.slug))
+    : allProjects;
   const [creating, setCreating] = useState(false);
   const [health, setHealth] = useState<StatusResponse | null>(null);
   const [checkedAt, setCheckedAt] = useState<Date | null>(null);
@@ -56,7 +66,16 @@ export function ProgramsView({
 
   return (
     <div style={{ maxWidth: 1180, margin: "0 auto", width: "100%" }}>
-      {projects.length === 0 ? (
+      {cloud.active && projects.length === 0 ? (
+        <Card p={p}>
+          <CardTitle p={p} sub="workspace access is granted by an admin">No workspace to open</CardTitle>
+          <div style={{ fontSize: 13, color: p.muted, lineHeight: 1.6 }}>
+            You are signed in, but you are not a member of any workspace yet, so there is no
+            program for this account to open. Workspaces you are not in do not appear here —
+            ask an admin to grant you access from Admin · Users.
+          </div>
+        </Card>
+      ) : projects.length === 0 ? (
         <FirstRun
           p={p} health={health} creating={creating} setCreating={setCreating}
           onCreated={async (id) => { await refreshProjects(); await setActiveProject(id); onNavigate("home"); }}
@@ -66,15 +85,21 @@ export function ProgramsView({
         <>
           <PageHead
             p={p}
-            title="Programs"
-            lede={
+            title={cloud.active ? "Workspaces" : "Programs"}
+            lede={cloud.active ? (
+              <>
+                The workspaces you belong to. Membership is granted by an admin — if a
+                workspace is missing here, it was never hidden from you; you were never
+                added to it.
+              </>
+            ) : (
               <>
                 A program is one research effort: a question, the claims that test it, and the
                 evidence behind them. Glossa Lab is the tool — programs hold the work. Open one
                 to continue, or start a new one.
               </>
-            }
-            primary={<PrimaryButton onClick={() => setCreating(true)} testId="new-program">+ New program</PrimaryButton>}
+            )}
+            primary={cloud.active ? undefined : <PrimaryButton onClick={() => setCreating(true)} testId="new-program">+ New program</PrimaryButton>}
           />
 
           {creating && (
@@ -110,12 +135,18 @@ export function ProgramsView({
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <RowTitle p={p}>
                     {health
-                      ? `${health.app ?? "Glossa Lab"} backend · v${health.version} · ${health.host ?? "this machine"}`
+                      ? cloud.active
+                        ? `Glossa Lab cloud instance · v${health.version}`
+                        : `${health.app ?? "Glossa Lab"} backend · v${health.version} · ${health.host ?? "this machine"}`
                       : "Backend not answering"}
                   </RowTitle>
                   <RowMeta p={p}>
                     {health
-                      ? `Data folder: ${health.data_dir || "—"} · Database ${health.db_ready ? "ready" : "not ready"} · Serving since ${health.started_at ? fmtClock(health.started_at) : "—"} · checked ${checkedAt ? fmtClock(checkedAt.toISOString()) : "—"}`
+                      ? cloud.active
+                        ? health.dataset
+                          ? `Dataset bundle ${health.dataset.bundle_id} · source commit ${health.dataset.source_commit.slice(0, 7)} · hydrated ${health.dataset.hydrated_at ? fmtClock(health.dataset.hydrated_at) : "—"} · Serving since ${health.started_at ? fmtClock(health.started_at) : "—"} · checked ${checkedAt ? fmtClock(checkedAt.toISOString()) : "—"}`
+                          : `Serving since ${health.started_at ? fmtClock(health.started_at) : "—"} · checked ${checkedAt ? fmtClock(checkedAt.toISOString()) : "—"}`
+                        : `Data folder: ${health.data_dir || "—"} · Database ${health.db_ready ? "ready" : "not ready"} · Serving since ${health.started_at ? fmtClock(health.started_at) : "—"} · checked ${checkedAt ? fmtClock(checkedAt.toISOString()) : "—"}`
                       : "The service did not answer the identity check just now."}
                   </RowMeta>
                 </div>

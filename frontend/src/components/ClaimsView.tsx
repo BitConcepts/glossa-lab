@@ -35,6 +35,7 @@ import {
   type IndusHypothesisModel,
 } from "../api";
 import { useProject } from "../hooks/useProject";
+import { DatasetChipRow } from "../cloud/widgets";
 import { effectiveStage, missingActFor } from "./DigestionBoard";
 import { ContestDisplay, NotUnderstood, StageLegend } from "./StageLegend";
 import {
@@ -198,6 +199,9 @@ export function ClaimsView({
         }
       />
 
+      {/* Spec 083 (T027): the dataset identity this register is reading. */}
+      <DatasetChipRow />
+
       {showRegister && (
         <Card p={p} style={{ padding: 16, marginBottom: 14 }}>
           <div style={{ fontSize: 13.5, fontWeight: 600, color: p.fg, marginBottom: 4 }}>
@@ -303,6 +307,11 @@ export function ClaimsView({
                       </div>
                       <div style={{ fontSize: 11.5, color: p.muted, marginTop: 2 }}>
                         {`${c.claim_id} · ${c.claim_type}`}
+                        {c.attribution_label && (
+                          <span title="Who created this record (cloud attribution)">
+                            {` · by ${c.attribution_label}`}
+                          </span>
+                        )}
                       </div>
                     </td>
                     <td style={{ ...td, color: p.muted }}>

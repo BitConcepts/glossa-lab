@@ -49,6 +49,7 @@ import {
   type StudyLoopStatus,
 } from "../api";
 import { useProject } from "../hooks/useProject";
+import { DatasetChipRow } from "../cloud/widgets";
 import { effectiveStage } from "./DigestionBoard";
 import { STAGE_NAMES, StageLegend, stageColor } from "./StageLegend";
 import {
@@ -195,6 +196,9 @@ export function ProgramHome({
           </PrimaryButton>
         }
       />
+
+      {/* Spec 083 (T027): the dataset identity this home is reading. */}
+      <DatasetChipRow />
 
       {/* Amendment 2: the program's standing position leads the home,
           rendered from the program's own record. A program whose

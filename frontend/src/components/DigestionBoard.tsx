@@ -19,6 +19,7 @@
  */
 import { useEffect, useMemo, useState } from "react";
 import { listIndusClaims, type IndusClaim } from "../api";
+import { DatasetChipRow } from "../cloud/widgets";
 import {
   Card,
   MissingAct,
@@ -176,6 +177,9 @@ export function DigestionBoard({
         }
       />
 
+      {/* Spec 083 (T027): the dataset identity this queue is reading. */}
+      <DatasetChipRow />
+
       {error ? (
         <Card p={p} style={{ padding: 16 }}>
           <div style={{ fontSize: 13.5, fontWeight: 600, color: p.bad, marginBottom: 4 }}>
@@ -284,6 +288,11 @@ export function DigestionBoard({
                       </button>
                       <div style={{ fontSize: 12, color: p.muted }}>
                         {`${stageWord}${when ? ` ${fmtDayTime(when)}` : ""}${days !== null ? ` · waiting ${days} day${days === 1 ? "" : "s"}` : ""} · verdict: ${v.label.toLowerCase()}`}
+                        {c.attribution_label && (
+                          <span title="Who created this record (cloud attribution)">
+                            {` · by ${c.attribution_label}`}
+                          </span>
+                        )}
                       </div>
                       {col.key === "digest" ? (
                         <div

@@ -114,6 +114,13 @@ export interface StatusResponse {
   catalog_counts: Record<string, number>;
   ollama_installed?: boolean;
   ollama_running?: boolean;
+  /** Spec 083 (T027): the dataset bundle currently in place, if any. */
+  dataset?: {
+    bundle_id: string;
+    source_commit: string;
+    built_at: string;
+    hydrated_at: string;
+  } | null;
 }
 
 export interface CatalogPipeline {
@@ -222,6 +229,9 @@ export interface JobResponse {
   params: Record<string, unknown>;
   created_at: string;
   updated_at: string;
+  /** Spec 083 (T027): cloud actor stamp + its label ("Started by"). */
+  created_by?: unknown;
+  attribution_label?: string | null;
 }
 
 // ── Experiment Graph types ───────────────────────────────────────────
@@ -2208,6 +2218,8 @@ export const deleteAIProfile = (
 export interface Project {
   id: string;
   label: string;
+  /** Spec 083: the workspace slug (cloud scope identity). */
+  slug?: string;
   description: string;
   prompt_context: string;
   /** Spec 081: the question the program tests (UI language: "program"). */
@@ -2620,6 +2632,8 @@ export interface IndusDoc {
   intake_date: string;
   claim_count: number;
   claim_extraction_status: string;
+  /** Spec 083 (T027): the acting user, in cloud mode only. */
+  attribution_label?: string;
 }
 
 /**
@@ -2714,6 +2728,8 @@ export interface IndusClaim {
   not_understood_recorded?: boolean;
   /** Bundle serialization for bundle parents; null for non-bundle claims. */
   bundle?: BundleSerialization | null;
+  /** Spec 083 (T027): the acting user, in cloud mode only. */
+  attribution_label?: string;
 }
 
 export interface IndusHypothesisModel {

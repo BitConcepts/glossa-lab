@@ -31,6 +31,10 @@ import {
   type StatusResponse,
 } from "./api";
 import { fmtClock } from "./components/ui081";
+import { CloudGate, CloudSessionProvider, useCloudSession } from "./cloud/session";
+import { AdminView } from "./cloud/AdminView";
+import { AccountView } from "./cloud/AccountView";
+import { CloudWorkspaceCard, UserChip, useAdminInviteCount } from "./cloud/widgets";
 
 /**
  * Spec 081 shell. The tool's top-level unit is the *program* (the
@@ -46,6 +50,9 @@ type Tab =
   | "programs" | "home" | "claims" | "digestion" | "evidence" | "data"
   | "analysis" | "experiments" | "discovery" | "loop" | "reports"
   | "jobs" | "status" | "settings" | "help"
+  // Cloud edition (Spec 083): account self-service + the admin
+  // surface. These tabs exist only while a cloud session is active.
+  | "account" | "admin"
   // Utility routes (not in the nav): the foundation check opens from
   // the program home (FR-006); AI tools is a workbench reached from
   // the palette/settings, not a destination (Q6); builder is the
@@ -58,7 +65,7 @@ type Tab =
   | "dashboard" | "corpora" | "pipelines" | "hypotheses" | "notebooks"
   | "citations" | "correspondence" | "exp-builder";
 
-interface NavItem { id: Tab; label: string; icon: string; count?: number; alert?: boolean }
+interface NavItem { id: Tab; label: string; icon: string; count?: number; alert?: boolean; adminTab?: string; key?: string }
 
 const SIDEBAR_W = 232;
 const MOBILE_NAV_H = 56;
@@ -87,6 +94,7 @@ const VALID_TABS: ReadonlySet<string> = new Set([
   "programs", "home", "claims", "digestion", "evidence", "data", "analysis",
   "experiments", "discovery", "loop", "reports", "jobs", "status", "settings",
   "help", "foundation-check", "ai-tools", "builder", "entropy", "signs", "timeline",
+  "account", "admin",
 ]);
 
 const TAB_LABELS: Partial<Record<Tab, string>> = {
@@ -95,6 +103,7 @@ const TAB_LABELS: Partial<Record<Tab, string>> = {
   experiments: "Experiments", discovery: "Discovery", loop: "Research loop",
   reports: "Reports & ledger", jobs: "Jobs", status: "Status",
   settings: "Settings", help: "Help", "foundation-check": "Foundation Check",
+  account: "Account & security", admin: "Admin",
   "ai-tools": "AI Tools", builder: "Manage programs",
   entropy: "Analysis", signs: "Analysis", timeline: "Analysis",
 };
@@ -166,6 +175,7 @@ function MobileNavBar({
  * bare dot — app, version, host, and when this was last checked.
  */
 function ServiceChip({ onOpenStatus }: { onOpenStatus: () => void }) {
+  const cloud = useCloudSession();
   const [health, setHealth] = useState<StatusResponse | null>(null);
   const [checkedAt, setCheckedAt] = useState<Date | null>(null);
   useEffect(() => {
@@ -195,7 +205,9 @@ function ServiceChip({ onOpenStatus }: { onOpenStatus: () => void }) {
             <b style={{ color: "#111827", fontWeight: 600 }}>
               {health.app ?? "Glossa Lab"} v{health.version}
             </b>
-            {" · "}{health.host ?? "this machine"}
+            {cloud.active && health.dataset
+              ? <>{" · cloud · dataset "}{health.dataset.bundle_id}</>
+              : <>{" · "}{health.host ?? "this machine"}</>}
             {" · checked "}{checkedAt ? fmtClock(checkedAt.toISOString()) : "—"}
           </>
         ) : (
@@ -303,6 +315,7 @@ function ProgramSwitchCard({ onNavigate }: { onNavigate: (t: Tab) => void }) {
 function AppContent() {
   const projCtx = useProject();
   const auth = useAuthState();
+  const cloud = useCloudSession();
   const hasProgram = !!projCtx.activeProject;
   // The tool opens on the program list (wireframe 01) unless a deep
   // link (#/status from the tray, etc.) names a route.
@@ -582,6 +595,21 @@ function AppContent() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [projCtx.activeProject]);
 
+  // Spec 083 (T028): a cloud session must never present a program
+  // the user cannot enter as the active one (e.g. a localStorage
+  // remnant from another account, or a membership since revoked).
+  // The container enforces access on every request regardless —
+  // this keeps the shell honest about what it shows as open.
+  const activeProjectId = projCtx.activeProject?.id ?? null;
+  const activeProjectSlug = projCtx.activeProject?.slug;
+  useEffect(() => {
+    if (!cloud.active || !activeProjectId || !activeProjectSlug) return;
+    if (!cloud.workspaces.some((w) => w.slug === activeProjectSlug)) {
+      void projCtx.setActiveProject(null);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cloud.active, cloud.workspaces, activeProjectId, activeProjectSlug]);
+
   const programItems: NavItem[] = [
     { id: "home", label: "Home", icon: "⌂" },
     { id: "claims", label: "Claims", icon: "§", count: claimsCount },
@@ -594,14 +622,33 @@ function AppContent() {
     { id: "loop", label: "Research loop", icon: "↻" },
     { id: "reports", label: "Reports & ledger", icon: "▨" },
   ];
+  const adminInviteCount = useAdminInviteCount(cloud.isAdmin);
   const toolItems: NavItem[] = [
     { id: "jobs", label: "Jobs", icon: "⚙", count: activeJobCount || undefined },
     { id: "status", label: "Status", icon: "♥" },
     { id: "settings", label: "Settings", icon: "⚙" },
+    // Cloud edition (Spec 083, wireframe 07): the account entry for
+    // every signed-in user; the Admin entry for global admins only —
+    // for a member it disappears entirely, it is not greyed out.
+    ...(cloud.active
+      ? [{ id: "account" as Tab, label: "Account & security", icon: "👤" }]
+      : []),
+    ...(cloud.isAdmin
+      ? [
+          { id: "admin" as Tab, label: "Admin", icon: "👥", count: adminInviteCount || undefined },
+          // Wireframes 04–07 carry an ADMIN group in the sidebar:
+          // the dashboard's own tabs as deep links (they set the
+          // dashboard's initial-tab hint, then open it).
+          { id: "admin" as Tab, label: "Users", icon: "·", adminTab: "users", key: "admin-users" },
+          { id: "admin" as Tab, label: "Workspaces", icon: "·", adminTab: "workspaces", key: "admin-workspaces" },
+          { id: "admin" as Tab, label: "Invites", icon: "·", adminTab: "invites", key: "admin-invites" },
+          { id: "admin" as Tab, label: "Audit log", icon: "·", adminTab: "audit", key: "admin-audit" },
+        ]
+      : []),
     { id: "help", label: "Help", icon: "?" },
   ];
   const toolHomeItems: NavItem[] = [
-    { id: "programs", label: "Programs", icon: "▦" },
+    { id: "programs", label: cloud.active ? "Workspaces" : "Programs", icon: "▦" },
     ...toolItems,
   ];
 
@@ -627,27 +674,36 @@ function AppContent() {
   const muted = darkMode ? "#94a3b8" : "#6b7280";
 
   const currentLabel = TAB_LABELS[tab] ?? tab;
-  const isToolView = (["jobs", "status", "settings", "help", "ai-tools"] as Tab[]).includes(tab);
+  const isToolView = (["jobs", "status", "settings", "help", "ai-tools", "account", "admin"] as Tab[]).includes(tab);
   const crumbMiddle = tab === "programs" ? null : isToolView ? "Tool" : (projCtx.activeProject?.label ?? "Tool");
 
   const NavBtn = ({ item }: { item: NavItem }) => {
-    const active = tab === item.id
-      || (item.id === "analysis" && (tab === "entropy" || tab === "signs" || tab === "timeline"));
+    const active = !item.adminTab && (tab === item.id
+      || (item.id === "analysis" && (tab === "entropy" || tab === "signs" || tab === "timeline")));
     const dirty = item.id === "experiments" && expDirty;
     const running = item.id === "experiments" && expRunState.count > 0;
     return (
       <button
-        onClick={() => { goTo(item.id); if (isMobile) setSidebarOpen(false); }}
+        onClick={() => {
+          if (item.adminTab) {
+            // Admin deep link: set the dashboard's tab hint, tell a
+            // mounted dashboard directly, then open it.
+            try { sessionStorage.setItem("glossa_admin_tab", item.adminTab); } catch { /* ignore */ }
+            window.dispatchEvent(new CustomEvent("glossa:admin-tab", { detail: item.adminTab }));
+          }
+          goTo(item.id);
+          if (isMobile) setSidebarOpen(false);
+        }}
         title={item.label + (dirty ? " (unsaved changes)" : "")}
         style={{
           display: "flex", alignItems: "center", gap: 9,
-          width: "100%", padding: "7px 16px",
+          width: "100%", padding: item.adminTab ? "5px 16px 5px 34px" : "7px 16px",
           border: "none", borderRadius: 0,
           background: active ? activeBg : "none",
           borderLeft: active ? "3px solid #60a5fa" : "3px solid transparent",
           cursor: "pointer",
           color: active ? "#fff" : sideText,
-          fontSize: 13,
+          fontSize: item.adminTab ? 12 : 13,
           fontWeight: active ? 600 : 400,
           textAlign: "left",
           transition: "background 0.12s",
@@ -682,7 +738,7 @@ function AppContent() {
       }}>
         {title}
       </div>
-      {items.map((item) => <NavBtn key={item.id} item={item} />)}
+      {items.map((item) => <NavBtn key={item.key ?? item.id} item={item} />)}
     </div>
   );
 
@@ -718,7 +774,20 @@ function AppContent() {
           </div>
         </div>
 
-        <ProgramSwitchCard onNavigate={goTo} />
+        {cloud.active ? (
+          <CloudWorkspaceCard
+            projects={projCtx.projects}
+            activeProject={projCtx.activeProject}
+            onSelectProject={(id) => { void projCtx.setActiveProject(id); goTo("home"); }}
+            onOpenPrograms={() => goTo("programs")}
+            onOpenAdminWorkspaces={() => {
+              try { sessionStorage.setItem("glossa_admin_tab", "workspaces"); } catch { /* */ }
+              goTo("admin");
+            }}
+          />
+        ) : (
+          <ProgramSwitchCard onNavigate={goTo} />
+        )}
 
         <div style={{ flex: 1, overflowY: "auto", paddingTop: 2, paddingBottom: 6 }}>
           {hasProgram ? (
@@ -732,6 +801,13 @@ function AppContent() {
             <NavSection title="Tool home" items={toolHomeItems} />
           )}
         </div>
+
+        {cloud.active && (
+          <UserChip
+            onOpenAccount={() => goTo("account")}
+            onOpenAdmin={() => goTo("admin")}
+          />
+        )}
       </aside>
 
       <div style={{
@@ -858,7 +934,7 @@ function AppContent() {
               overflow: isCanvas ? "hidden" : "auto",
               userSelect: "text",
             }}>
-              {auth.tokenNeeded && tab !== "settings" ? (
+              {auth.tokenNeeded && !cloud.active && tab !== "settings" ? (
                 <ApiTokenGate darkMode={darkMode} />
               ) : (
                 <>
@@ -889,6 +965,8 @@ function AppContent() {
                   {tab === "status" && <StatusView />}
                   {tab === "settings" && <SettingsView darkMode={darkMode} />}
                   {tab === "help" && <HelpView />}
+                  {tab === "account" && cloud.active && <AccountView />}
+                  {tab === "admin" && cloud.isAdmin && <AdminView />}
                   {tab === "foundation-check" && <FoundationCheckView />}
                   {tab === "ai-tools" && <AIToolsView />}
                   {tab === "builder" && <ProjectsView />}
@@ -947,12 +1025,16 @@ function AppContent() {
 
 export function App() {
   return (
-    <ToastProvider>
-      <AIChatProvider>
-        <ProjectProvider>
-          <AppContent />
-        </ProjectProvider>
-      </AIChatProvider>
-    </ToastProvider>
+    <CloudSessionProvider>
+      <CloudGate>
+        <ToastProvider>
+          <AIChatProvider>
+            <ProjectProvider>
+              <AppContent />
+            </ProjectProvider>
+          </AIChatProvider>
+        </ToastProvider>
+      </CloudGate>
+    </CloudSessionProvider>
   );
 }

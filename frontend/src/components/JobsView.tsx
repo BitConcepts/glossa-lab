@@ -252,6 +252,7 @@ function JobDetailsModal({ job, program, onClose }: {
         <div style={{ flex: 1, overflowY: "auto", padding: "14px 20px" }}>
           <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 12 }}>
             Started {fmtDateTimeCompact(job.created_at)}
+            {job.attribution_label ? <> · Started by {job.attribution_label}</> : ""}
             {job.updated_at ? <> · Finished {fmtDateTimeCompact(job.updated_at)}</> : ""}
           </div>
 
@@ -833,7 +834,12 @@ export function JobsView() {
                     <div style={{ fontSize: 10, color: "#9ca3af" }}>{fmtElapsed(elapsedSec ?? 0)} elapsed</div>
                   )}
                 </Td>
-                <Td>{fmtDateTimeCompact(j.created_at)}</Td>
+                <Td>
+                  {fmtDateTimeCompact(j.created_at)}
+                  {j.attribution_label && (
+                    <div style={{ fontSize: 10, color: "#9ca3af" }}>by {j.attribution_label}</div>
+                  )}
+                </Td>
                 <Td>
                   {(j.status === "completed" || j.status === "failed" || j.status === "cancelled") && j.updated_at
                     ? fmtDateTimeCompact(j.updated_at)

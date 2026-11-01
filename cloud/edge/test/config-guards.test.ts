@@ -31,6 +31,7 @@ describe("D1 migrations (T010)", () => {
       "0002_invites_sessions.sql",
       "0003_workspaces_audit.sql",
       "0004_setup_seed_and_username_case.sql",
+      "0005_workspace_description.sql",
     ]);
     for (const table of [
       "users",

@@ -67,7 +67,11 @@ jobs:
   # ── Frontend: build + Playwright ────────────────────────────────────────────────
   frontend-tests:
     name: Frontend tests (Playwright)
-    runs-on: ubuntu-latest
+    # Pinned: the pinned Playwright version does not support chromium on
+    # ubuntu-26.04 (the current ubuntu-latest image) — browser install fails
+    # before any test runs (observed 2026-11-01, run 41290409981). Run the
+    # suite on the newest supported platform instead of skipping it.
+    runs-on: ubuntu-24.04
     timeout-minutes: 35  # includes 2-min research-loop SSE test
     needs: []  # run in parallel with backend-tests
 

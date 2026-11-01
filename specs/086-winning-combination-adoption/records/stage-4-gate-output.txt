@@ -1,0 +1,53 @@
+Ledger gate — glossa-indus chain (Spec 086, Point 4)
+mode: full
+root: /home/hatch/workspace/glossa-run/spec086-stage4-engine
+ledger: glossa-indus/ledger/claims.jsonl — 871 lines, canonical sha256 c4e2326ec8757bb700dac0142dd0adf17d7464b4d929f5b103868c9228f13ccf
+definitions: matrix-defs v1 (the gate's registered copies); ledger schema: ledger-schema v1
+settling semantics: glossa-settle-1 (the gate's registered copies); canonicals: glossa-indus/ledger/settling-canonical.json
+falsifier coverage: 831 of 840 claim entries carry a falsifier (published on every gate run, C086-5) — by population: bundle 817/817, extracted 14/23
+checks:
+PASS V1 ledger validity — pinned schema, fingerprints (spec029-phase-i-v1), D-B uniqueness, field provenance, pointers (Stage 1 validator)
+  871 lines validate against ledger-schema v1; every fingerprint recomputes; no duplicates
+PASS V1 recorded source hashes — every sources[] and sidecar hash verifies (canonical hash)
+  1686 recorded hashes verified against the files on disk via ledger_intake.sha256_file
+PASS V2 count equivalence — claims by status: ledger == matrix
+  840 claims; counts equal
+PASS V2 count equivalence — claims by stage: ledger == matrix
+  840 claims; counts equal
+PASS V2 count equivalence — claims by population: ledger == matrix
+  840 claims; counts equal
+PASS V2 count equivalence — falsifier coverage block: ledger == matrix
+  matrix carries {'covered': 831, 'total': 840, 'by_population': {'extracted': {'covered': 14, 'total': 23}, 'bundle': {'covered': 817, 'total': 817}}}; recomputed {'covered': 831, 'total': 840, 'by_population': {'extracted': {'covered': 14, 'total': 23}, 'bundle': {'covered': 817, 'total': 817}}}
+NOT-RUN V2 count equivalence — map header leg
+  no map artifact (the map is Stage 5) and no --candidate-map supplied
+PASS V3 matrix recomputation — cells cell-for-cell (relation, citation ids, derivation rule id)
+  1363 cells recomputed from the ledger by the gate's own route; every cell equal
+PASS V3 matrix recomputation — rows, columns, coverage, as-of stamp, sign×sign block
+  rows, columns, coverage, the as-of stamp and the sign×sign block all equal the gate's recomputation
+PASS V4 relation-carrying citations — every citation ties under T1–T4 (incl. the numeric arm)
+  1363 matrix cells and 0 map edges checked; 1364 citations required to carry their relation under T1–T4
+  numeric arm: 0 citations in the live population carry a measurement with a machine-readable bound (the arm is exercised on fixtures in the teeth battery)
+NOT-RUN V5 map recomputation
+  no map artifact (the map is Stage 5) and no --candidate-map supplied
+PASS V6 anchor shares — strict set recomputes under the recorded D-A rule (strict_sa_independent_hm)
+  strict anchors: 94 of 287; strict share 0.3275; validated-anchor share (the strict share, spec.md Point 5) 0.3275; rule version as recorded: Phase-109 follow-through (spec 007, 2026-10-06) applying the Phase-108 strict definition
+NOT-RUN V6 anchor shares — map header leg
+  no map artifact (Stage 5) and no --candidate-map supplied
+NOT-RUN V7 lossless regeneration
+  runs under --regen (the push CI job runs it)
+PASS V8 settling canonicals — scenarios reproduce under the gate's own glossa-settle-1 route
+  5 registered canonical scenarios reproduced exactly under the gate's own glossa-settle-1 route (S-R4 result blocks, field-for-field), over provenance pins that verify against this tree
+PASS V8 settling canonicals — the registered comparison reproduces
+  comparison incumbent-vs-full-register-over-subset reproduced exactly (claims compared, per-claim divergences, coverage deltas, signs assigned by one only, expectations named); the expectations note is checked on its mechanically derivable part — the absence clause matches verbatim; the registered note's remainder is brief-specific prose (FINDING-S4-1, stage record)
+PASS V8 scenario/verdict separation — the settling layer carries no reachable ledger write path
+  1 settling/scenario module(s) scanned; none imports or reaches a ledger write path (append_entry, write_ledger, write_matrix) — the settling layer's outputs are computed records, never ledger verdicts
+PASS V9 no write path — gate import hygiene
+  the gate modules import no write entry point (append_entry, write_ledger, write_matrix) and contain no write call
+PASS V9 no write path — settling/scenario import audit
+  1 settling/scenario module(s) audited; none imports a ledger write path
+PASS V9 no write path — matrix/map writer census
+  writers of the gated artifacts: ['backend/glossa_lab/gated_publish.py', 'backend/glossa_lab/matrix_generate.py']
+  readers (no write call): 3 module(s)
+  census scope: backend/glossa_lab, backend/scripts, tools (test code writes fixtures under tmp dirs by design and is not a publication path)
+summary: 16 PASS / 0 FAIL / 4 NOT-RUN
+RESULT: PASS

@@ -18,9 +18,13 @@ gap this stage closes), V2 count equivalence, V3 matrix
 recomputation, V4 relation-carrying citations (tie rules
 T1–T4 plus the numeric arm of harmonization adoption 3,
 item 2), V5 map recomputation, V6 anchor shares, V7 lossless
-regeneration (checked mode, `--regen`), V9 no write path.
-V8 (settling canonicals) arrives with Stage 4 and is
-enumerated as NOT-RUN until then.
+regeneration (checked mode, `--regen`), V8 settling
+canonicals (Stage 4: the canonical scenarios and comparison
+registered in `glossa-indus/ledger/settling-canonical.json`
+reproduced under the gate's own glossa-settle-1 route — the
+settle definitions below are the gate's registered copies,
+not imported from the engine — plus the settling layer's
+scenario/verdict separation check), V9 no write path.
 
 **The gate never writes.** It calls only pure builders and
 read paths; it imports no write entry point (V9 audits this
@@ -33,6 +37,7 @@ ALL PASS (C086-11).
 from __future__ import annotations
 
 import ast
+import hashlib
 import json
 import re
 from collections import Counter
@@ -96,6 +101,36 @@ COOCCURRENCE_PIPELINE = "glossa_lab.pipelines.cooccurrence.build_cooccurrence_ne
 STRICT_RULE_ID = "strict_sa_independent_hm"
 STRICT_CONFIDENCES = ("HIGH", "MEDIUM")
 SA_LINEAGE_CATEGORIES = ("SA_DERIVED", "SA_CONFIRMED_ONLY")
+
+# ---------------------------------------------------------------------------
+# Registered definitions — the gate's own copies of
+# glossa-settle-1 (`glossa-indus/ledger/SETTLING-SEMANTICS.md`),
+# for V8. NOT imported from the engine (`settling.py`):
+# the same independent-route discipline as the matrix
+# definitions above. A deliberate semantics change is made
+# in all copies in the same motion (a new semantics
+# version); a change in only one copy is the divergence
+# V8 exists to catch.
+
+SETTLE_SEMANTICS_VERSION = "glossa-settle-1"
+SETTLING_CANONICAL_REL = "glossa-indus/ledger/settling-canonical.json"
+# Sign identity is by (frame, number) under glossa-settle-1
+# §2 — the register key is the frame's prefix plus the
+# number zero-padded to three digits. This is the settling
+# identity rule, deliberately NOT matrix-defs v1 R4's
+# literal key construction (the divergence is registered
+# in the semantics and stands).
+SETTLE_FRAME_PREFIXES = {"mahadevan": "M"}
+# The outcome table (SETTLING-SEMANTICS.md §5, carrying
+# matrix-defs v1 §6): tallies are keyed supporting /
+# opposing / constraining; no recorded outcome maps to
+# supporting in v1.
+SETTLE_BEARING_OUTCOMES = {
+    "NOT SUPPORTED": "opposing",
+    "INCONSISTENT": "opposing",
+    "NOT NUMERAL-LIKE": "opposing",
+}
+SETTLE_TALLY_KEYS = ("supporting", "opposing", "constraining")
 
 # The numeric arm's registered comparator vocabulary
 # (harmonization adoption 3, item 2 — the Atlas's
@@ -1175,6 +1210,609 @@ def _anchor_shares(root: Path) -> dict[str, Any]:
 
 
 # ---------------------------------------------------------------------------
+# V8 — settling canonicals under the gate's own
+# glossa-settle-1 route, and the settling layer's
+# scenario/verdict separation check.
+
+
+def _settle_identity(ref: Any) -> Optional[tuple[str, int]]:
+    frame, sep, value = str(ref).partition(":")
+    if not sep or not frame:
+        return None
+    try:
+        return (frame, int(value))
+    except ValueError:
+        return None
+
+
+def _settle_anchor_key(identity: tuple[str, int]) -> Optional[str]:
+    prefix = SETTLE_FRAME_PREFIXES.get(identity[0])
+    if prefix is None:
+        return None
+    return f"{prefix}{identity[1]:03d}"
+
+
+def _settle_falsifier_count(entry: dict[str, Any]) -> int:
+    falsifier = entry.get("falsifier")
+    if isinstance(falsifier, list):
+        return sum(1 for f in falsifier if isinstance(f, str) and f)
+    if isinstance(falsifier, str) and falsifier:
+        return 1
+    return 0
+
+
+def _gate_settle(
+    claims: list[dict[str, Any]],
+    registers: _GateRegisters,
+    anchors: dict[str, Any],
+    strict_set: set[str],
+    candidate: dict[str, Any],
+    scope: list[Any],
+) -> dict[str, Any]:
+    """The gate's own S-R1…S-R4 evaluation of one candidate
+    over one scope (glossa-settle-1, the gate's registered
+    copies above). Independent of the engine's route: the
+    same registered rules, separately implemented."""
+    by_identity: dict[tuple[str, int], str] = {}
+    for item in candidate.get("assignments") or []:
+        identity = _settle_identity(item.get("sign"))
+        if identity is not None:
+            by_identity[identity] = str(item.get("value"))
+    scope_pairs: list[tuple[str, tuple[str, int]]] = []
+    for ref in scope:
+        identity = _settle_identity(ref)
+        if identity is not None:
+            scope_pairs.append((str(ref), identity))
+
+    assigned = [
+        {"sign": sign_str, "value": by_identity[identity]}
+        for sign_str, identity in scope_pairs
+        if identity in by_identity
+    ]
+    assigned_ids = set(by_identity) & {
+        identity for _, identity in scope_pairs
+    }
+
+    contexts: list[dict[str, Any]] = []
+    uncontexted: list[dict[str, Any]] = []
+    conflicts: list[dict[str, Any]] = []
+    n_strict = 0
+    n_consistent = 0
+    n_non_strict = 0
+    for item in assigned:
+        identity = _settle_identity(item["sign"])
+        key = _settle_anchor_key(identity) if identity else None
+        record = anchors.get(key) if key else None
+        if record is None:
+            uncontexted.append(
+                {"sign": item["sign"], "value": item["value"]}
+            )
+            continue
+        is_strict = key in strict_set
+        reading = record.get("reading")
+        if is_strict:
+            n_strict += 1
+            if item["value"] == reading:
+                outcome = "consistent"
+                n_consistent += 1
+            else:
+                outcome = "conflict"
+                conflicts.append(
+                    {
+                        "sign": item["sign"],
+                        "anchor": key,
+                        "assigned_value": item["value"],
+                        "anchor_reading": reading,
+                    }
+                )
+        else:
+            outcome = "non_strict"
+            n_non_strict += 1
+        contexts.append(
+            {
+                "sign": item["sign"],
+                "anchor": key,
+                "assigned_value": item["value"],
+                "anchor_reading": reading,
+                "confidence": record.get("confidence"),
+                "strict": is_strict,
+                "result": outcome,
+            }
+        )
+
+    touched: list[dict[str, Any]] = []
+    for entry in claims:
+        refs = entry.get("sign_refs") or []
+        via = [r for r in refs if _settle_identity(r) in assigned_ids]
+        if not via:
+            continue
+        tallies = {key: 0 for key in SETTLE_TALLY_KEYS}
+        for blocks in _outcome_blocks(registers, entry).values():
+            relation = SETTLE_BEARING_OUTCOMES.get(
+                _governing(blocks)["outcome"]
+            )
+            if relation:
+                tallies[relation] += 1
+        touched.append(
+            {
+                "claim": entry["id"],
+                "via_signs": via,
+                "tallies": tallies,
+                "falsifiers_present": _settle_falsifier_count(entry),
+                "falsifiers_evaluable": 0,
+            }
+        )
+
+    forced: list[dict[str, Any]] = []
+    for sign_str, identity in scope_pairs:
+        if identity in assigned_ids:
+            continue
+        key = _settle_anchor_key(identity)
+        if key and key in strict_set and key in anchors:
+            forced.append(
+                {"sign": sign_str, "value": anchors[key].get("reading")}
+            )
+
+    return {
+        "scope": [sign_str for sign_str, _ in scope_pairs],
+        "scope_signs": len(scope_pairs),
+        "assigned": assigned,
+        "assigned_count": len(assigned),
+        "assigned_share": (
+            len(assigned) / len(scope_pairs) if scope_pairs else None
+        ),
+        "uncontexted_assignments": uncontexted,
+        "contexts": contexts,
+        "contexts_touched": len(contexts),
+        "strict_contexts": n_strict,
+        "consistent": n_consistent,
+        "non_strict_contexts": n_non_strict,
+        "conflicts": conflicts,
+        "strict_agreement_share": (
+            n_consistent / n_strict if n_strict else None
+        ),
+        "contexted_share": (
+            len(contexts) / len(assigned) if assigned else None
+        ),
+        "claims_touched": touched,
+        "claims_touched_count": len(touched),
+        "s_r3": {"class_table": None, "violations": []},
+        "forced": forced,
+    }
+
+
+def _gate_compare(
+    candidate_a: str,
+    result_a: dict[str, Any],
+    candidate_b: str,
+    result_b: dict[str, Any],
+) -> dict[str, Any]:
+    """The gate's own dual-run comparison over two settled
+    result blocks (semantics §7): tallies over every claim
+    either run touches, divergences named, coverage deltas,
+    signs assigned by one only, and the expectations
+    absence statement in its mechanically derivable form."""
+    side_a = candidate_a.replace("-", "_")
+    side_b = candidate_b.replace("-", "_")
+    tallies_a = {t["claim"]: t["tallies"] for t in result_a["claims_touched"]}
+    tallies_b = {t["claim"]: t["tallies"] for t in result_b["claims_touched"]}
+    zero = {key: 0 for key in SETTLE_TALLY_KEYS}
+    order: list[str] = []
+    for claim_id in list(tallies_a) + list(tallies_b):
+        if claim_id not in order:
+            order.append(claim_id)
+    compared: list[dict[str, Any]] = []
+    divergences: list[dict[str, Any]] = []
+    for claim_id in order:
+        ta = tallies_a.get(claim_id, dict(zero))
+        tb = tallies_b.get(claim_id, dict(zero))
+        compared.append(
+            {
+                "claim": claim_id,
+                f"{side_a}_tallies": ta,
+                f"{side_b}_tallies": tb,
+                "divergent": ta != tb,
+            }
+        )
+        if ta != tb:
+            divergences.append(
+                {
+                    "claim": claim_id,
+                    f"{side_a}_tallies": ta,
+                    f"{side_b}_tallies": tb,
+                }
+            )
+
+    def delta(value_a: Any, value_b: Any) -> dict[str, Any]:
+        return {side_a: value_a, side_b: value_b}
+
+    assigned_a = [item["sign"] for item in result_a["assigned"]]
+    assigned_b = [item["sign"] for item in result_b["assigned"]]
+    ids_a = {_settle_identity(s) for s in assigned_a}
+    ids_b = {_settle_identity(s) for s in assigned_b}
+    if len(order) == 1:
+        note = (
+            "No pre-registered expectation exists in the "
+            "program's record for the one touched claim."
+        )
+    elif order:
+        note = (
+            "No pre-registered expectation exists in the "
+            f"program's record for the {len(order)} touched "
+            "claims."
+        )
+    else:
+        note = (
+            "No pre-registered expectation exists in the "
+            "program's record for a touched claim; neither "
+            "run touches a claim."
+        )
+    return {
+        "claims_compared": compared,
+        "per_claim_divergences": divergences,
+        "coverage_deltas": {
+            "assigned_count": delta(
+                result_a["assigned_count"], result_b["assigned_count"]
+            ),
+            "contexts_touched": delta(
+                result_a["contexts_touched"], result_b["contexts_touched"]
+            ),
+            "strict_contexts": delta(
+                result_a["strict_contexts"], result_b["strict_contexts"]
+            ),
+            "consistent": delta(
+                result_a["consistent"], result_b["consistent"]
+            ),
+            "conflicts": delta(
+                len(result_a["conflicts"]), len(result_b["conflicts"])
+            ),
+            "forced_count": delta(
+                len(result_a["forced"]), len(result_b["forced"])
+            ),
+        },
+        "signs_assigned_by_one_only": {
+            f"{side_b}_only": [
+                s for s in assigned_b if _settle_identity(s) not in ids_a
+            ],
+            f"{side_a}_only": [
+                s for s in assigned_a if _settle_identity(s) not in ids_b
+            ],
+        },
+        "pre_registered_expectations": [],
+        "pre_registered_expectations_note": note,
+    }
+
+
+def _v8_checks(
+    root: Path,
+    entries: list[dict[str, Any]],
+    claims: list[dict[str, Any]],
+) -> list[Check]:
+    names = (
+        "V8 settling canonicals — scenarios reproduce under "
+        "the gate's own glossa-settle-1 route",
+        "V8 settling canonicals — the registered comparison "
+        "reproduces",
+        "V8 scenario/verdict separation — the settling layer "
+        "carries no reachable ledger write path",
+    )
+    canonical_path = root / SETTLING_CANONICAL_REL
+    anchors_path = root / ANCHORS_REL
+    register_path = root / PROVENANCE_REGISTER_REL
+    corpus_path = root / CORPUS_REL
+    absent = [
+        rel
+        for rel, path in (
+            (SETTLING_CANONICAL_REL, canonical_path),
+            (ANCHORS_REL, anchors_path),
+            (PROVENANCE_REGISTER_REL, register_path),
+            (CORPUS_REL, corpus_path),
+        )
+        if not path.is_file()
+    ]
+    if absent:
+        return [
+            Check(
+                name,
+                "NOT-RUN",
+                [
+                    "the settling layer is not present in this "
+                    f"tree (absent: {', '.join(absent)}) — V8 "
+                    "runs where the settling layer is present"
+                ],
+            )
+            for name in names
+        ]
+    try:
+        canonical = json.loads(
+            canonical_path.read_text(encoding="utf-8")
+        )
+    except (OSError, json.JSONDecodeError) as exc:
+        return [
+            Check(
+                names[0],
+                "FAIL",
+                [f"cannot parse {SETTLING_CANONICAL_REL}: {exc}"],
+            ),
+            Check(names[1], "NOT-RUN", ["the canonical artifact does not parse"]),
+            Check(names[2], "NOT-RUN", ["the canonical artifact does not parse"]),
+        ]
+
+    # The provenance pins first: the canonicals govern one
+    # pinned build; a tree they do not describe fails here,
+    # naming the pin, before any scenario is settled.
+    pin_failures: list[str] = []
+    prov = canonical.get("provenance", {})
+    ledger_pin = prov.get("ledger", {})
+    ledger_path = root / li.LEDGER_REL
+    actual_ledger_sha = (
+        li.canonical_sha256_bytes(ledger_path.read_bytes())
+        if ledger_path.is_file()
+        else "MISSING"
+    )
+    if ledger_pin.get("sha256_canonical") != actual_ledger_sha:
+        pin_failures.append(
+            f"ledger pin: the canonicals were derived over "
+            f"ledger sha256 {ledger_pin.get('sha256_canonical')}, "
+            f"this tree's ledger hashes {actual_ledger_sha}"
+        )
+    if ledger_pin.get("lines") != len(entries):
+        pin_failures.append(
+            f"ledger pin: the canonicals record "
+            f"{ledger_pin.get('lines')} ledger lines, this "
+            f"tree carries {len(entries)}"
+        )
+    anchors_bytes = anchors_path.read_bytes()
+    anchors_raw_sha = hashlib.sha256(anchors_bytes).hexdigest()
+    anchors_pin = prov.get("anchors_register", {})
+    if anchors_pin.get("sha256_raw_bytes") != anchors_raw_sha:
+        pin_failures.append(
+            "anchors register pin: the canonicals were "
+            f"derived over register raw sha256 "
+            f"{anchors_pin.get('sha256_raw_bytes')}, this "
+            f"tree's register hashes {anchors_raw_sha}"
+        )
+    corpus_pin = prov.get("corpus_snapshot", {})
+    if corpus_pin.get("sha256_canonical") != li.sha256_file(corpus_path):
+        pin_failures.append(
+            "corpus pin: the canonicals were derived over "
+            f"corpus sha256 {corpus_pin.get('sha256_canonical')}, "
+            f"this tree's corpus hashes "
+            f"{li.sha256_file(corpus_path)}"
+        )
+    shares = _anchor_shares(root)
+    if shares["recorded_rule_id"] != STRICT_RULE_ID:
+        pin_failures.append(
+            f"strict rule pin: the anchors file records rule "
+            f"{shares['recorded_rule_id']!r}; glossa-settle-1 "
+            f"is registered against {STRICT_RULE_ID!r}"
+        )
+    if shares["recomputed_strict"] != shares["stored_strict"]:
+        pin_failures.append(
+            "strict set: the recomputation disagrees with "
+            "the stored strict_set flags — a settling run "
+            "refuses over this register (semantics §1)"
+        )
+    if anchors_pin.get("strict") != len(shares["recomputed_strict"]):
+        pin_failures.append(
+            f"strict count pin: the canonicals record "
+            f"{anchors_pin.get('strict')} strict anchors, "
+            f"recomputed {len(shares['recomputed_strict'])}"
+        )
+    registers = _load_registers(root, entries)
+    if registers.mismatches:
+        pin_failures.append(
+            "source records do not verify against the "
+            "ledger's recorded hashes (the settling route "
+            "reads outcome blocks from verified records "
+            f"only): {registers.mismatches[:3]}"
+        )
+    if pin_failures:
+        return [
+            Check(names[0], "FAIL", pin_failures),
+            Check(
+                names[1],
+                "NOT-RUN",
+                ["the canonicals' pins do not hold over this tree"],
+            ),
+            *_v8_separation_checks(root, names[2]),
+        ]
+
+    anchors = json.loads(anchors_bytes.decode("utf-8")).get("anchors", {})
+    strict_set = shares["recomputed_strict"]
+
+    # (a) The scenarios, settled by the gate's own route.
+    divergences: list[str] = []
+    settled: dict[str, dict[str, Any]] = {}
+    candidates: dict[str, str] = {}
+    for scenario in canonical.get("scenarios", []):
+        result = _gate_settle(
+            claims,
+            registers,
+            anchors,
+            strict_set,
+            scenario["inputs"]["candidate"],
+            scenario["inputs"]["scope"],
+        )
+        settled[scenario["id"]] = result
+        candidates[scenario["id"]] = scenario["inputs"]["candidate"].get(
+            "id", scenario["id"]
+        )
+        _first_divergences(
+            result,
+            scenario["expected"],
+            f"scenario {scenario['id']}",
+            divergences,
+            limit=12,
+        )
+    scenario_check = Check(
+        names[0],
+        "FAIL" if divergences else "PASS",
+        divergences
+        or [
+            f"{len(settled)} registered canonical scenarios "
+            "reproduced exactly under the gate's own "
+            "glossa-settle-1 route (S-R4 result blocks, "
+            "field-for-field), over provenance pins that "
+            "verify against this tree"
+        ],
+    )
+
+    # (b) The registered comparison, compared by the gate's
+    # own comparison. The expectations note is checked on
+    # its mechanically derivable part (FINDING-S4-1).
+    comparison_checks: list[Check] = []
+    for comparison in canonical.get("comparisons", []):
+        run_ids = comparison["inputs"]["runs"]
+        if len(run_ids) != 2 or any(r not in settled for r in run_ids):
+            comparison_checks.append(
+                Check(
+                    names[1],
+                    "FAIL",
+                    [
+                        f"comparison {comparison['id']} names "
+                        f"runs {run_ids}, which are not both "
+                        "registered scenarios"
+                    ],
+                )
+            )
+            continue
+        computed = _gate_compare(
+            candidates[run_ids[0]],
+            settled[run_ids[0]],
+            candidates[run_ids[1]],
+            settled[run_ids[1]],
+        )
+        expected = dict(comparison["expected"])
+        registered_note = expected.pop(
+            "pre_registered_expectations_note", None
+        )
+        gate_note = computed.pop("pre_registered_expectations_note")
+        comp_divergences: list[str] = []
+        _first_divergences(
+            computed, expected, f"comparison {comparison['id']}",
+            comp_divergences, limit=12,
+        )
+        note_ok = (
+            registered_note is not None
+            and gate_note == registered_note.split(";")[0] + "."
+        )
+        if comp_divergences or not note_ok:
+            evidence = list(comp_divergences)
+            if not note_ok:
+                evidence.append(
+                    "pre_registered_expectations_note: the "
+                    "gate's absence clause does not match the "
+                    "registered note's first clause"
+                )
+            comparison_checks.append(Check(names[1], "FAIL", evidence))
+        else:
+            comparison_checks.append(
+                Check(
+                    names[1],
+                    "PASS",
+                    [
+                        f"comparison {comparison['id']} "
+                        "reproduced exactly (claims compared, "
+                        "per-claim divergences, coverage "
+                        "deltas, signs assigned by one only, "
+                        "expectations named); the expectations "
+                        "note is checked on its mechanically "
+                        "derivable part — the absence clause "
+                        "matches verbatim; the registered "
+                        "note's remainder is brief-specific "
+                        "prose (FINDING-S4-1, stage record)"
+                    ],
+                )
+            )
+    if not comparison_checks:
+        comparison_checks.append(
+            Check(
+                names[1],
+                "FAIL",
+                ["the canonical artifact registers no comparison"],
+            )
+        )
+
+    return [scenario_check, *comparison_checks, *_v8_separation_checks(root, names[2])]
+
+
+def _v8_separation_checks(root: Path, name: str) -> list[Check]:
+    """The settling layer's separation arm: no settling or
+    scenario module may import **or reach** a ledger write
+    entry point. V9.2 audits imports; this arm extends the
+    audit to reachability — an attribute use such as
+    `li.append_entry(...)` or a bare name reference is a
+    reachable write path even where the import itself names
+    only the module (harmonization adoption 3, item 3: the
+    computed layer and the verdict layer stay distinct by
+    construction, not by import style)."""
+    pkg_dir = root / "backend" / "glossa_lab"
+    modules: list[Path] = []
+    if pkg_dir.is_dir():
+        modules = sorted(
+            p
+            for p in pkg_dir.rglob("*.py")
+            if re.search(r"settling|scenario", p.name)
+        )
+    if not modules:
+        return [
+            Check(
+                name,
+                "FAIL",
+                [
+                    "the canonical artifact is present but no "
+                    "settling/scenario module exists under "
+                    "backend/glossa_lab — the layer the "
+                    "canonicals govern is missing"
+                ],
+            )
+        ]
+    failures: list[str] = []
+    for path in modules:
+        rel = str(path.relative_to(root))
+        tree = ast.parse(path.read_text(encoding="utf-8"))
+        bad_imports = _imported_names(tree) & set(WRITE_ENTRY_POINTS)
+        if bad_imports:
+            failures.append(
+                f"{rel} imports ledger write entry points "
+                f"{sorted(bad_imports)}"
+            )
+        reached: set[str] = set()
+        for node in ast.walk(tree):
+            if (
+                isinstance(node, ast.Attribute)
+                and node.attr in WRITE_ENTRY_POINTS
+            ):
+                reached.add(node.attr)
+            elif (
+                isinstance(node, ast.Name)
+                and node.id in WRITE_ENTRY_POINTS
+            ):
+                reached.add(node.id)
+        if reached:
+            failures.append(
+                f"{rel} reaches ledger write entry points "
+                f"{sorted(reached)} (attribute or name use — "
+                "a reachable write path, not only an import)"
+            )
+    return [
+        Check(
+            name,
+            "FAIL" if failures else "PASS",
+            failures
+            or [
+                f"{len(modules)} settling/scenario module(s) "
+                "scanned; none imports or reaches a ledger "
+                f"write path ({', '.join(WRITE_ENTRY_POINTS)}) "
+                "— the settling layer's outputs are computed "
+                "records, never ledger verdicts"
+            ],
+        )
+    ]
+
+
+# ---------------------------------------------------------------------------
 # V9 — no write path
 
 
@@ -1432,6 +2070,9 @@ def run_gate(
         f"definitions: {GATE_MATRIX_DEFS_VERSION} (the gate's "
         "registered copies); ledger schema: "
         f"{li.SCHEMA_VERSION}",
+        f"settling semantics: {SETTLE_SEMANTICS_VERSION} (the "
+        f"gate's registered copies); canonicals: "
+        f"{SETTLING_CANONICAL_REL}",
         "falsifier coverage: "
         f"{validator.falsifier_covered} of {validator.falsifier_total} "
         "claim entries carry a falsifier (published on every "
@@ -2028,13 +2669,13 @@ def run_gate(
         )
 
     # -- V8 -------------------------------------------------------------------
-    report.checks.append(
-        Check(
-            "V8 settling canonicals",
-            "NOT-RUN",
-            ["arrives with Stage 4 (the settling engine)"],
+    if in_scope("V8"):
+        report.checks.extend(_v8_checks(root, entries, claims))
+    else:
+        report.checks.append(
+            Check("V8 settling canonicals", "NOT-RUN",
+                  ["out of scope for this run"])
         )
-    )
 
     # -- V9 -------------------------------------------------------------------
     if in_scope("V9"):

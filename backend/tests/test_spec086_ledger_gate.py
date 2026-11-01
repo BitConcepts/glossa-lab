@@ -216,6 +216,7 @@ def pristine_scratch(tmp_path_factory) -> Path:
         "glossa-indus/matrix/matrix.json",
         "glossa-indus/matrix/matrix.md",
         "glossa-indus/matrix/DEFINITIONS.md",
+        lg.SETTLING_CANONICAL_REL,
     }
     linked = {mg.CORPUS_REL}
     for entry in entries:
@@ -235,6 +236,12 @@ def pristine_scratch(tmp_path_factory) -> Path:
         dst.parent.mkdir(parents=True, exist_ok=True)
         dst.symlink_to(ROOT / rel)
     (base / "backend" / "glossa_lab").mkdir(parents=True, exist_ok=True)
+    # The settling layer's module, linked (never written
+    # through): V8's separation arm scans it in the scratch
+    # tree exactly as in the real one.
+    (base / "backend" / "glossa_lab" / "settling.py").symlink_to(
+        ROOT / "backend" / "glossa_lab" / "settling.py"
+    )
     return base
 
 
@@ -645,3 +652,106 @@ def test_pr_scope_diff_fallback_is_full_not_silent():
         == "anchors"
     )
     assert module._layer_of("frontend/src/App.tsx") is None
+
+
+# ---------------------------------------------------------------------------
+# Stage 4 (T404) — V8 teeth: the settling canonicals under
+# the gate's own route, and the separation arm's
+# reachability extension.
+
+
+def test_v8_passes_on_pristine_scratch(scratch):
+    report = lg.run_gate(scratch, scope={"V8"})
+    checks = [c for c in report.checks if c.name.startswith("V8")]
+    assert len(checks) == 3
+    for check in checks:
+        assert check.status == "PASS", (check.name, check.evidence)
+
+
+def test_teeth_v8_seeded_canonical_error_fails_naming_scenario_and_field(
+    scratch,
+):
+    """Flip one registered expectation in the scratch copy
+    of the canonical artifact (incumbent `consistent` 2→3):
+    V8 must FAIL, naming the scenario and the field. The
+    canonical in the real tree is untouched — the teeth
+    bite the copy."""
+    target = scratch / lg.SETTLING_CANONICAL_REL
+    canonical = json.loads(target.read_text(encoding="utf-8"))
+    scenario = next(
+        s for s in canonical["scenarios"] if s["id"] == "incumbent-over-subset"
+    )
+    assert scenario["expected"]["consistent"] == 2
+    scenario["expected"]["consistent"] = 3
+    target.write_text(
+        json.dumps(canonical, ensure_ascii=False, indent=1) + "\n",
+        encoding="utf-8",
+    )
+    report = lg.run_gate(scratch, scope={"V8"})
+    check = _check(report, "V8 settling canonicals — scenarios")
+    assert check.status == "FAIL"
+    named = "\n".join(check.evidence)
+    assert "incumbent-over-subset" in named
+    assert "consistent" in named
+
+
+def test_teeth_v8_module_reaching_a_write_path_fails_where_v9_passes(
+    scratch,
+):
+    """The separation arm's extension over V9.2: a settling
+    module that imports only the intake *module* and reaches
+    the write entry point as an attribute (`li.append_entry`)
+    passes V9.2's import-only audit — and must FAIL V8,
+    naming the module. Scenario/verdict separation is by
+    reachability, not by import style."""
+    module = scratch / "backend" / "glossa_lab" / "settling_fixture.py"
+    module.write_text(
+        "from glossa_lab import ledger_intake as li\n"
+        "\n"
+        "\n"
+        "def smuggle(entry):\n"
+        "    return li.append_entry(entry)\n",
+        encoding="utf-8",
+    )
+    v9 = lg.run_gate(scratch, scope={"V9"})
+    audit = _check(v9, "V9 no write path — settling/scenario import audit")
+    assert audit.status == "PASS", audit.evidence
+    report = lg.run_gate(scratch, scope={"V8"})
+    check = _check(report, "V8 scenario/verdict separation")
+    assert check.status == "FAIL"
+    named = "\n".join(check.evidence)
+    assert "settling_fixture.py" in named
+    assert "append_entry" in named
+
+
+def test_teeth_v8_module_importing_a_write_path_fails(scratch):
+    """The import form, for completeness: a settling module
+    importing a write entry point directly fails V8's
+    separation arm, naming the module (V9.2's own teeth
+    cover the same seed under V9's name; this pins V8's)."""
+    module = scratch / "backend" / "glossa_lab" / "settling_fixture.py"
+    module.write_text(
+        "from glossa_lab.ledger_intake import write_ledger\n",
+        encoding="utf-8",
+    )
+    report = lg.run_gate(scratch, scope={"V8"})
+    check = _check(report, "V8 scenario/verdict separation")
+    assert check.status == "FAIL"
+    named = "\n".join(check.evidence)
+    assert "settling_fixture.py" in named
+    assert "write_ledger" in named
+
+
+def test_gate_settle_copies_agree_with_the_engine_copies():
+    """Same-motion discipline for the settle definitions:
+    the gate's registered copies of glossa-settle-1 agree
+    with the engine's (the DEFINITIONS.md §12 pattern,
+    carried to the settling layer)."""
+    from glossa_lab import settling as st
+
+    assert lg.SETTLE_SEMANTICS_VERSION == st.SEMANTICS_VERSION
+    assert lg.SETTLE_TALLY_KEYS == st.TALLY_KEYS
+    assert lg.SETTLE_BEARING_OUTCOMES == st.BEARING_OUTCOMES
+    assert lg.SETTLE_FRAME_PREFIXES == st.FRAME_PREFIXES
+    assert lg.SETTLING_CANONICAL_REL == st.CANONICAL_REL
+    assert lg.STRICT_RULE_ID == st.STRICT_RULE_ID

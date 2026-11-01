@@ -12606,3 +12606,57 @@ claim.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-01 — Spec 086 Stage 4 (engine): the settling engine (glossa-settle-1) + gate V8
+
+The engine arrives (T403) and proves itself against the
+hand-derived canonicals (T404). `backend/glossa_lab/settling.py`
+evaluates a candidate assignment over a context scope
+exactly per glossa-settle-1 — contexts enumerated, conflicts
+named with their anchor pairs, agreement shares, forced
+readings, touched claims with S-R2 tallies in the
+registered value-independent v1 form, confidences carried
+verbatim, S-R3 reporting its registered determinate zero
+(UNMEASURED class table) — as pure builders plus thin
+write wrappers, importing no intake/write path; a run
+writes only its run record, into the run store. The
+assignment sets of record are materialized at
+`glossa-indus/ledger/assignment-sets.json` (incumbent
+strict-94; full-register 286 over the mahadevan frame —
+the register's 287th record, H003, belongs to a frame the
+anchors file does not name and is counted in the artifact,
+assigned by no set). The oracle test reproduces every
+registered canonical exactly: five scenarios
+field-for-field and the comparison on every mechanical
+field; the one registered field not reproduced verbatim
+is the comparison note's brief-specific remainder,
+recorded as FINDING-S4-1 in the stage record (the
+derivable absence clause reproduces exactly). One engine
+defect was found and fixed in the open: the first build
+keyed S-R2 tallies by the matrix's relation values where
+the semantics registers `supporting` / `opposing` /
+`constraining`; the canonicals were not touched. The gate
+gains V8 in the Stage 3 idiom — its own registered copies
+of glossa-settle-1, its own settle and compare routes,
+provenance pins verified before any scenario is settled,
+and a scenario/verdict separation arm that audits
+reachability to a write path, extending V9.2's
+import-only audit (proven distinct on a seeded
+`li.append_entry(...)` module that V9.2 passes and V8
+fails). V8 was the last NOT-RUN besides the Stage 5 map
+legs; the gate now reports 16 PASS / 0 FAIL / 4 NOT-RUN
+(full) and 18 PASS / 0 FAIL / 4 NOT-RUN (--regen), RESULT
+PASS, and V9's import audit passes live over the real
+engine. Full backend enumeration without -x: 2,205
+passed / 67 skipped / 1 failed (the known environmental
+phase133 baseline). Claims at engine scope: C086-13 and
+C086-14 SUPPORTED; C086-16's T403 leg established; T405
+(first executed dual run), T406, and T407 remain open.
+Full record:
+`specs/086-winning-combination-adoption/stage-4-record.md`
+(T403–T404 section). No claim's status, stage, or score
+was changed by this landing, and no settling output in it
+is a decipherment claim.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

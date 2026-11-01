@@ -1,0 +1,1565 @@
+{
+ "artifact": "glossa-settle-1 assignment sets of record",
+ "label": "Computation over ledgered relations under glossa-settle-1 semantics. Establishes what the ledger implies under these rules, not what the script says.",
+ "semantics": "glossa-settle-1",
+ "register": {
+  "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
+  "sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+  "records": 287,
+  "strict": 94
+ },
+ "sets": [
+  {
+   "id": "incumbent",
+   "kind": "assignment_set_of_record",
+   "provenance": {
+    "author": "Spec 086 Stage 4 (T403), materialized by backend/glossa_lab/settling.py",
+    "source": "backend/reports/INDUS_FINAL_ANCHORS.json (the canonical anchors register), read as assignments under SETTLING-SEMANTICS.md §3",
+    "register_sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+    "date": "2026-11-01",
+    "description": "The incumbent strict set read as assignments: each sign the recomputed strict set holds, assigned its recorded reading (§3)."
+   },
+   "frame": "mahadevan",
+   "assignments": [
+    {
+     "sign": "mahadevan:342",
+     "value": "ay/ā"
+    },
+    {
+     "sign": "mahadevan:176",
+     "value": "an/aṇ"
+    },
+    {
+     "sign": "mahadevan:267",
+     "value": "iN/in (genitive of)"
+    },
+    {
+     "sign": "mahadevan:99",
+     "value": "kol/koḷ"
+    },
+    {
+     "sign": "mahadevan:233",
+     "value": "ūr"
+    },
+    {
+     "sign": "mahadevan:391",
+     "value": "ka/kaṇ"
+    },
+    {
+     "sign": "mahadevan:162",
+     "value": "il/iḷ"
+    },
+    {
+     "sign": "mahadevan:328",
+     "value": "ā/āl"
+    },
+    {
+     "sign": "mahadevan:59",
+     "value": "ēḷ/eḷ"
+    },
+    {
+     "sign": "mahadevan:51",
+     "value": "pū/puḷ"
+    },
+    {
+     "sign": "mahadevan:89",
+     "value": "tu/tū"
+    },
+    {
+     "sign": "mahadevan:48",
+     "value": "mu/muṉ"
+    },
+    {
+     "sign": "mahadevan:367",
+     "value": "am/neuter"
+    },
+    {
+     "sign": "mahadevan:336",
+     "value": "iṉ/locative"
+    },
+    {
+     "sign": "mahadevan:12",
+     "value": "oṉṟu/1"
+    },
+    {
+     "sign": "mahadevan:305",
+     "value": "ōṭu/comitative"
+    },
+    {
+     "sign": "mahadevan:62",
+     "value": "erutu"
+    },
+    {
+     "sign": "mahadevan:73",
+     "value": "kōṉ"
+    },
+    {
+     "sign": "mahadevan:45",
+     "value": "yānai"
+    },
+    {
+     "sign": "mahadevan:16",
+     "value": "kaḷiṟu"
+    },
+    {
+     "sign": "mahadevan:13",
+     "value": "nakaram"
+    },
+    {
+     "sign": "mahadevan:60",
+     "value": "kāṇṭāmirukam"
+    },
+    {
+     "sign": "mahadevan:80",
+     "value": "vēṅkai"
+    },
+    {
+     "sign": "mahadevan:57",
+     "value": "māṭu"
+    },
+    {
+     "sign": "mahadevan:39",
+     "value": "āṉai"
+    },
+    {
+     "sign": "mahadevan:67",
+     "value": "kōṭṭāṉ"
+    },
+    {
+     "sign": "mahadevan:68",
+     "value": "maṟi"
+    },
+    {
+     "sign": "mahadevan:6",
+     "value": "puli"
+    },
+    {
+     "sign": "mahadevan:63",
+     "value": "mutalai"
+    },
+    {
+     "sign": "mahadevan:77",
+     "value": "nal"
+    },
+    {
+     "sign": "mahadevan:18",
+     "value": "nēr"
+    },
+    {
+     "sign": "mahadevan:30",
+     "value": "kō"
+    },
+    {
+     "sign": "mahadevan:17",
+     "value": "kai"
+    },
+    {
+     "sign": "mahadevan:20",
+     "value": "kuṉ"
+    },
+    {
+     "sign": "mahadevan:4",
+     "value": "kēḷ"
+    },
+    {
+     "sign": "mahadevan:14",
+     "value": "tiru"
+    },
+    {
+     "sign": "mahadevan:26",
+     "value": "mā"
+    },
+    {
+     "sign": "mahadevan:34",
+     "value": "tōḷ"
+    },
+    {
+     "sign": "mahadevan:27",
+     "value": "māṟ"
+    },
+    {
+     "sign": "mahadevan:41",
+     "value": "pēr"
+    },
+    {
+     "sign": "mahadevan:38",
+     "value": "pōr"
+    },
+    {
+     "sign": "mahadevan:10",
+     "value": "paṭ"
+    },
+    {
+     "sign": "mahadevan:50",
+     "value": "pār"
+    },
+    {
+     "sign": "mahadevan:25",
+     "value": "cem"
+    },
+    {
+     "sign": "mahadevan:70",
+     "value": "vēl"
+    },
+    {
+     "sign": "mahadevan:78",
+     "value": "cēr"
+    },
+    {
+     "sign": "mahadevan:23",
+     "value": "vaḷ"
+    },
+    {
+     "sign": "mahadevan:66",
+     "value": "cōḻ"
+    },
+    {
+     "sign": "mahadevan:9",
+     "value": "āṇ"
+    },
+    {
+     "sign": "mahadevan:69",
+     "value": "nēr"
+    },
+    {
+     "sign": "mahadevan:2",
+     "value": "kuṉ"
+    },
+    {
+     "sign": "mahadevan:37",
+     "value": "kēḷ"
+    },
+    {
+     "sign": "mahadevan:5",
+     "value": "kōṉ"
+    },
+    {
+     "sign": "mahadevan:15",
+     "value": "mā"
+    },
+    {
+     "sign": "mahadevan:75",
+     "value": "māṟ"
+    },
+    {
+     "sign": "mahadevan:42",
+     "value": "vaN"
+    },
+    {
+     "sign": "mahadevan:49",
+     "value": "pu"
+    },
+    {
+     "sign": "mahadevan:47",
+     "value": "min/mīn"
+    },
+    {
+     "sign": "mahadevan:74",
+     "value": "ker"
+    },
+    {
+     "sign": "mahadevan:54",
+     "value": "mi"
+    },
+    {
+     "sign": "mahadevan:55",
+     "value": "miN3"
+    },
+    {
+     "sign": "mahadevan:29",
+     "value": "yānai"
+    },
+    {
+     "sign": "mahadevan:7",
+     "value": "aaL"
+    },
+    {
+     "sign": "mahadevan:46",
+     "value": "kaL"
+    },
+    {
+     "sign": "mahadevan:32",
+     "value": "koL"
+    },
+    {
+     "sign": "mahadevan:76",
+     "value": "naN"
+    },
+    {
+     "sign": "mahadevan:128",
+     "value": "kaṇ"
+    },
+    {
+     "sign": "mahadevan:82",
+     "value": "pa"
+    },
+    {
+     "sign": "mahadevan:375",
+     "value": "taṇ"
+    },
+    {
+     "sign": "mahadevan:374",
+     "value": "kul"
+    },
+    {
+     "sign": "mahadevan:351",
+     "value": "vī"
+    },
+    {
+     "sign": "mahadevan:222",
+     "value": "min"
+    },
+    {
+     "sign": "mahadevan:151",
+     "value": "viḷ"
+    },
+    {
+     "sign": "mahadevan:108",
+     "value": "kaL"
+    },
+    {
+     "sign": "mahadevan:329",
+     "value": "poṉ"
+    },
+    {
+     "sign": "mahadevan:87",
+     "value": "veL"
+    },
+    {
+     "sign": "mahadevan:124",
+     "value": "kuTam"
+    },
+    {
+     "sign": "mahadevan:264",
+     "value": "peN"
+    },
+    {
+     "sign": "mahadevan:311",
+     "value": "vaTamiin"
+    },
+    {
+     "sign": "mahadevan:202",
+     "value": "can"
+    },
+    {
+     "sign": "mahadevan:65",
+     "value": "kuTam"
+    },
+    {
+     "sign": "mahadevan:220",
+     "value": "al"
+    },
+    {
+     "sign": "mahadevan:52",
+     "value": "ta"
+    },
+    {
+     "sign": "mahadevan:53",
+     "value": "mi"
+    },
+    {
+     "sign": "mahadevan:61",
+     "value": "ka"
+    },
+    {
+     "sign": "mahadevan:44",
+     "value": "ku"
+    },
+    {
+     "sign": "mahadevan:130",
+     "value": "mui"
+    },
+    {
+     "sign": "mahadevan:194",
+     "value": "kaṭ"
+    },
+    {
+     "sign": "mahadevan:145",
+     "value": "miṭ"
+    },
+    {
+     "sign": "mahadevan:362",
+     "value": "aṇi"
+    },
+    {
+     "sign": "mahadevan:398",
+     "value": "kuṟi"
+    },
+    {
+     "sign": "mahadevan:330",
+     "value": "can"
+    },
+    {
+     "sign": "mahadevan:165",
+     "value": "cul"
+    },
+    {
+     "sign": "mahadevan:347",
+     "value": "ka"
+    }
+   ]
+  },
+  {
+   "id": "full-register",
+   "kind": "assignment_set_of_record",
+   "provenance": {
+    "author": "Spec 086 Stage 4 (T403), materialized by backend/glossa_lab/settling.py",
+    "source": "backend/reports/INDUS_FINAL_ANCHORS.json (the canonical anchors register), read as assignments under SETTLING-SEMANTICS.md §3",
+    "register_sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+    "date": "2026-11-01",
+    "description": "The full register read as assignments: every record of the settled frame, assigned its recorded reading (§3)."
+   },
+   "frame": "mahadevan",
+   "assignments": [
+    {
+     "sign": "mahadevan:342",
+     "value": "ay/ā"
+    },
+    {
+     "sign": "mahadevan:176",
+     "value": "an/aṇ"
+    },
+    {
+     "sign": "mahadevan:267",
+     "value": "iN/in (genitive of)"
+    },
+    {
+     "sign": "mahadevan:99",
+     "value": "kol/koḷ"
+    },
+    {
+     "sign": "mahadevan:233",
+     "value": "ūr"
+    },
+    {
+     "sign": "mahadevan:391",
+     "value": "ka/kaṇ"
+    },
+    {
+     "sign": "mahadevan:162",
+     "value": "il/iḷ"
+    },
+    {
+     "sign": "mahadevan:328",
+     "value": "ā/āl"
+    },
+    {
+     "sign": "mahadevan:59",
+     "value": "ēḷ/eḷ"
+    },
+    {
+     "sign": "mahadevan:51",
+     "value": "pū/puḷ"
+    },
+    {
+     "sign": "mahadevan:89",
+     "value": "tu/tū"
+    },
+    {
+     "sign": "mahadevan:48",
+     "value": "mu/muṉ"
+    },
+    {
+     "sign": "mahadevan:367",
+     "value": "am/neuter"
+    },
+    {
+     "sign": "mahadevan:336",
+     "value": "iṉ/locative"
+    },
+    {
+     "sign": "mahadevan:12",
+     "value": "oṉṟu/1"
+    },
+    {
+     "sign": "mahadevan:305",
+     "value": "ōṭu/comitative"
+    },
+    {
+     "sign": "mahadevan:62",
+     "value": "erutu"
+    },
+    {
+     "sign": "mahadevan:73",
+     "value": "kōṉ"
+    },
+    {
+     "sign": "mahadevan:45",
+     "value": "yānai"
+    },
+    {
+     "sign": "mahadevan:16",
+     "value": "kaḷiṟu"
+    },
+    {
+     "sign": "mahadevan:13",
+     "value": "nakaram"
+    },
+    {
+     "sign": "mahadevan:60",
+     "value": "kāṇṭāmirukam"
+    },
+    {
+     "sign": "mahadevan:80",
+     "value": "vēṅkai"
+    },
+    {
+     "sign": "mahadevan:57",
+     "value": "māṭu"
+    },
+    {
+     "sign": "mahadevan:39",
+     "value": "āṉai"
+    },
+    {
+     "sign": "mahadevan:67",
+     "value": "kōṭṭāṉ"
+    },
+    {
+     "sign": "mahadevan:68",
+     "value": "maṟi"
+    },
+    {
+     "sign": "mahadevan:6",
+     "value": "puli"
+    },
+    {
+     "sign": "mahadevan:63",
+     "value": "mutalai"
+    },
+    {
+     "sign": "mahadevan:77",
+     "value": "nal"
+    },
+    {
+     "sign": "mahadevan:18",
+     "value": "nēr"
+    },
+    {
+     "sign": "mahadevan:30",
+     "value": "kō"
+    },
+    {
+     "sign": "mahadevan:17",
+     "value": "kai"
+    },
+    {
+     "sign": "mahadevan:20",
+     "value": "kuṉ"
+    },
+    {
+     "sign": "mahadevan:4",
+     "value": "kēḷ"
+    },
+    {
+     "sign": "mahadevan:14",
+     "value": "tiru"
+    },
+    {
+     "sign": "mahadevan:26",
+     "value": "mā"
+    },
+    {
+     "sign": "mahadevan:34",
+     "value": "tōḷ"
+    },
+    {
+     "sign": "mahadevan:27",
+     "value": "māṟ"
+    },
+    {
+     "sign": "mahadevan:41",
+     "value": "pēr"
+    },
+    {
+     "sign": "mahadevan:38",
+     "value": "pōr"
+    },
+    {
+     "sign": "mahadevan:10",
+     "value": "paṭ"
+    },
+    {
+     "sign": "mahadevan:50",
+     "value": "pār"
+    },
+    {
+     "sign": "mahadevan:25",
+     "value": "cem"
+    },
+    {
+     "sign": "mahadevan:70",
+     "value": "vēl"
+    },
+    {
+     "sign": "mahadevan:78",
+     "value": "cēr"
+    },
+    {
+     "sign": "mahadevan:23",
+     "value": "vaḷ"
+    },
+    {
+     "sign": "mahadevan:66",
+     "value": "cōḻ"
+    },
+    {
+     "sign": "mahadevan:71",
+     "value": "nal"
+    },
+    {
+     "sign": "mahadevan:9",
+     "value": "āṇ"
+    },
+    {
+     "sign": "mahadevan:69",
+     "value": "nēr"
+    },
+    {
+     "sign": "mahadevan:21",
+     "value": "kō"
+    },
+    {
+     "sign": "mahadevan:31",
+     "value": "kai"
+    },
+    {
+     "sign": "mahadevan:2",
+     "value": "kuṉ"
+    },
+    {
+     "sign": "mahadevan:37",
+     "value": "kēḷ"
+    },
+    {
+     "sign": "mahadevan:5",
+     "value": "kōṉ"
+    },
+    {
+     "sign": "mahadevan:11",
+     "value": "kaḷiṟu"
+    },
+    {
+     "sign": "mahadevan:36",
+     "value": "tiru"
+    },
+    {
+     "sign": "mahadevan:15",
+     "value": "mā"
+    },
+    {
+     "sign": "mahadevan:1",
+     "value": "tōḷ"
+    },
+    {
+     "sign": "mahadevan:75",
+     "value": "māṟ"
+    },
+    {
+     "sign": "mahadevan:42",
+     "value": "vaN"
+    },
+    {
+     "sign": "mahadevan:40",
+     "value": "ri"
+    },
+    {
+     "sign": "mahadevan:24",
+     "value": "nē"
+    },
+    {
+     "sign": "mahadevan:49",
+     "value": "pu"
+    },
+    {
+     "sign": "mahadevan:81",
+     "value": "ve"
+    },
+    {
+     "sign": "mahadevan:47",
+     "value": "min/mīn"
+    },
+    {
+     "sign": "mahadevan:33",
+     "value": "puli"
+    },
+    {
+     "sign": "mahadevan:74",
+     "value": "ker"
+    },
+    {
+     "sign": "mahadevan:54",
+     "value": "mi"
+    },
+    {
+     "sign": "mahadevan:72",
+     "value": "mā"
+    },
+    {
+     "sign": "mahadevan:55",
+     "value": "miN3"
+    },
+    {
+     "sign": "mahadevan:28",
+     "value": "cōḻ"
+    },
+    {
+     "sign": "mahadevan:43",
+     "value": "mu"
+    },
+    {
+     "sign": "mahadevan:29",
+     "value": "yānai"
+    },
+    {
+     "sign": "mahadevan:64",
+     "value": "va"
+    },
+    {
+     "sign": "mahadevan:7",
+     "value": "aaL"
+    },
+    {
+     "sign": "mahadevan:46",
+     "value": "kaL"
+    },
+    {
+     "sign": "mahadevan:32",
+     "value": "koL"
+    },
+    {
+     "sign": "mahadevan:169",
+     "value": "rā"
+    },
+    {
+     "sign": "mahadevan:237",
+     "value": "ce"
+    },
+    {
+     "sign": "mahadevan:102",
+     "value": "ni"
+    },
+    {
+     "sign": "mahadevan:76",
+     "value": "naN"
+    },
+    {
+     "sign": "mahadevan:272",
+     "value": "ma"
+    },
+    {
+     "sign": "mahadevan:128",
+     "value": "kaṇ"
+    },
+    {
+     "sign": "mahadevan:82",
+     "value": "pa"
+    },
+    {
+     "sign": "mahadevan:235",
+     "value": "vē"
+    },
+    {
+     "sign": "mahadevan:149",
+     "value": "or"
+    },
+    {
+     "sign": "mahadevan:185",
+     "value": "pul"
+    },
+    {
+     "sign": "mahadevan:383",
+     "value": "kol"
+    },
+    {
+     "sign": "mahadevan:375",
+     "value": "taṇ"
+    },
+    {
+     "sign": "mahadevan:270",
+     "value": "muḷ"
+    },
+    {
+     "sign": "mahadevan:401",
+     "value": "vē"
+    },
+    {
+     "sign": "mahadevan:374",
+     "value": "kul"
+    },
+    {
+     "sign": "mahadevan:127",
+     "value": "vē"
+    },
+    {
+     "sign": "mahadevan:252",
+     "value": "min"
+    },
+    {
+     "sign": "mahadevan:386",
+     "value": "maṇ"
+    },
+    {
+     "sign": "mahadevan:351",
+     "value": "vī"
+    },
+    {
+     "sign": "mahadevan:198",
+     "value": "co"
+    },
+    {
+     "sign": "mahadevan:168",
+     "value": "inci"
+    },
+    {
+     "sign": "mahadevan:332",
+     "value": "intu"
+    },
+    {
+     "sign": "mahadevan:183",
+     "value": "vēḷ"
+    },
+    {
+     "sign": "mahadevan:222",
+     "value": "min"
+    },
+    {
+     "sign": "mahadevan:365",
+     "value": "vāṉ"
+    },
+    {
+     "sign": "mahadevan:412",
+     "value": "cūḷ"
+    },
+    {
+     "sign": "mahadevan:151",
+     "value": "viḷ"
+    },
+    {
+     "sign": "mahadevan:304",
+     "value": "vēṟ"
+    },
+    {
+     "sign": "mahadevan:355",
+     "value": "lu"
+    },
+    {
+     "sign": "mahadevan:178",
+     "value": "i"
+    },
+    {
+     "sign": "mahadevan:163",
+     "value": "il"
+    },
+    {
+     "sign": "mahadevan:108",
+     "value": "kaL"
+    },
+    {
+     "sign": "mahadevan:231",
+     "value": "min"
+    },
+    {
+     "sign": "mahadevan:321",
+     "value": "kol"
+    },
+    {
+     "sign": "mahadevan:153",
+     "value": "pu"
+    },
+    {
+     "sign": "mahadevan:177",
+     "value": "na"
+    },
+    {
+     "sign": "mahadevan:357",
+     "value": "kuḷ"
+    },
+    {
+     "sign": "mahadevan:137",
+     "value": "kuṟ"
+    },
+    {
+     "sign": "mahadevan:155",
+     "value": "ka"
+    },
+    {
+     "sign": "mahadevan:239",
+     "value": "il"
+    },
+    {
+     "sign": "mahadevan:223",
+     "value": "muḷ"
+    },
+    {
+     "sign": "mahadevan:103",
+     "value": "kol"
+    },
+    {
+     "sign": "mahadevan:254",
+     "value": "tēṉ"
+    },
+    {
+     "sign": "mahadevan:262",
+     "value": "i"
+    },
+    {
+     "sign": "mahadevan:416",
+     "value": "na"
+    },
+    {
+     "sign": "mahadevan:143",
+     "value": "maṇ"
+    },
+    {
+     "sign": "mahadevan:345",
+     "value": "taṭ"
+    },
+    {
+     "sign": "mahadevan:329",
+     "value": "poṉ"
+    },
+    {
+     "sign": "mahadevan:190",
+     "value": "paṉ"
+    },
+    {
+     "sign": "mahadevan:295",
+     "value": "paṟ"
+    },
+    {
+     "sign": "mahadevan:402",
+     "value": "vēḷ"
+    },
+    {
+     "sign": "mahadevan:255",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:251",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:301",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:406",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:387",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:116",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:274",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:87",
+     "value": "veL"
+    },
+    {
+     "sign": "mahadevan:124",
+     "value": "kuTam"
+    },
+    {
+     "sign": "mahadevan:175",
+     "value": "katir"
+    },
+    {
+     "sign": "mahadevan:261",
+     "value": "muruku"
+    },
+    {
+     "sign": "mahadevan:264",
+     "value": "peN"
+    },
+    {
+     "sign": "mahadevan:281",
+     "value": "piLLai"
+    },
+    {
+     "sign": "mahadevan:311",
+     "value": "vaTamiin"
+    },
+    {
+     "sign": "mahadevan:117",
+     "value": "ar"
+    },
+    {
+     "sign": "mahadevan:8",
+     "value": "erumai"
+    },
+    {
+     "sign": "mahadevan:100",
+     "value": "maa"
+    },
+    {
+     "sign": "mahadevan:101",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:125",
+     "value": "vil"
+    },
+    {
+     "sign": "mahadevan:202",
+     "value": "can"
+    },
+    {
+     "sign": "mahadevan:211",
+     "value": "kol"
+    },
+    {
+     "sign": "mahadevan:249",
+     "value": "tii"
+    },
+    {
+     "sign": "mahadevan:293",
+     "value": "ta"
+    },
+    {
+     "sign": "mahadevan:58",
+     "value": "ke"
+    },
+    {
+     "sign": "mahadevan:65",
+     "value": "kuTam"
+    },
+    {
+     "sign": "mahadevan:220",
+     "value": "al"
+    },
+    {
+     "sign": "mahadevan:52",
+     "value": "ta"
+    },
+    {
+     "sign": "mahadevan:53",
+     "value": "mi"
+    },
+    {
+     "sign": "mahadevan:61",
+     "value": "ka"
+    },
+    {
+     "sign": "mahadevan:79",
+     "value": "ir"
+    },
+    {
+     "sign": "mahadevan:22",
+     "value": "kalam"
+    },
+    {
+     "sign": "mahadevan:19",
+     "value": "ampu"
+    },
+    {
+     "sign": "mahadevan:44",
+     "value": "ku"
+    },
+    {
+     "sign": "mahadevan:35",
+     "value": "po"
+    },
+    {
+     "sign": "mahadevan:3",
+     "value": "kalam"
+    },
+    {
+     "sign": "mahadevan:107",
+     "value": "ko"
+    },
+    {
+     "sign": "mahadevan:164",
+     "value": "il"
+    },
+    {
+     "sign": "mahadevan:56",
+     "value": "miN4"
+    },
+    {
+     "sign": "mahadevan:118",
+     "value": "car"
+    },
+    {
+     "sign": "mahadevan:130",
+     "value": "mui"
+    },
+    {
+     "sign": "mahadevan:221",
+     "value": "al"
+    },
+    {
+     "sign": "mahadevan:192",
+     "value": "ṇā"
+    },
+    {
+     "sign": "mahadevan:193",
+     "value": "ḷā"
+    },
+    {
+     "sign": "mahadevan:194",
+     "value": "kaṭ"
+    },
+    {
+     "sign": "mahadevan:145",
+     "value": "miṭ"
+    },
+    {
+     "sign": "mahadevan:362",
+     "value": "aṇi"
+    },
+    {
+     "sign": "mahadevan:398",
+     "value": "kuṟi"
+    },
+    {
+     "sign": "mahadevan:318",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:346",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:312",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:134",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:129",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:120",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:207",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:280",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:309",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:382",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:324",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:370",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:218",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:186",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:307",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:106",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:334",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:245",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:227",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:138",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:243",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:209",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:259",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:278",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:140",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:208",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:109",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:250",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:390",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:277",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:181",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:219",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:379",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:214",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:131",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:380",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:197",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:201",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:413",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:135",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:354",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:341",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:330",
+     "value": "can"
+    },
+    {
+     "sign": "mahadevan:105",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:146",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:195",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:339",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:359",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:316",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:111",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:224",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:408",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:396",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:170",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:388",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:360",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:320",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:256",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:247",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:381",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:104",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:217",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:356",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:369",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:378",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:226",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:158",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:165",
+     "value": "cul"
+    },
+    {
+     "sign": "mahadevan:123",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:397",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:203",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:405",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:240",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:303",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:363",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:200",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:156",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:157",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:260",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:258",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:392",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:210",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:112",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:286",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:327",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:400",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:242",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:147",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:415",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:389",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:287",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:133",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:126",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:297",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:323",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:213",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:322",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:394",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:115",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:298",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:136",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:364",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:310",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:314",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:230",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:407",
+     "value": "kur"
+    },
+    {
+     "sign": "mahadevan:347",
+     "value": "ka"
+    },
+    {
+     "sign": "mahadevan:350",
+     "value": "vē"
+    },
+    {
+     "sign": "mahadevan:340",
+     "value": "kur"
+    }
+   ]
+  }
+ ],
+ "out_of_frame_records": [
+  "H003"
+ ],
+ "out_of_frame_note": "Register records outside the settled frame (their frame is unnamed in the anchors file — UNMEASURED, SETTLING-SEMANTICS.md §2): counted here, assigned by no set of record in v1."
+}

@@ -12538,3 +12538,71 @@ score was changed by this landing.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-01 — Spec 086 Stage 4 (registration): settling semantics glossa-settle-1 + hand-derived canonicals
+
+Point 3 of the winning-combination adoption begins
+under the derive-before-build discipline: the settling
+semantics are registered in writing and the canonical
+outputs are derived by hand **before any settling code
+exists** (no `backend/glossa_lab/settling.py` exists in
+the tree at this landing; the gate's V8 stays NOT-RUN
+until the engine arrives at T404).
+`glossa-indus/ledger/SETTLING-SEMANTICS.md` registers
+**glossa-settle-1** from Glossa's own record — the
+Atlas's settle-1 constants are expressly not lifted.
+Sign identity is by (frame, number): the register keys
+`M` + zero-padded 3-digit (`M064`), the ledger's refs
+are unpadded (`mahadevan:64`), and the settling layer
+resolves by number — a mechanics divergence from
+matrix-defs v1 R4's literal key construction (under
+which R4 yields zero cells; Stage 2's recorded state,
+standing) and from the gate's V4 tie conversion,
+recorded openly in the semantics and the stage record
+for the owner's oracle read. Contexts are the
+canonical anchors register's records, one per sign;
+the pair-list shape exists only in the live DB's
+user-built `anchor_sets`, excluded as settling
+contexts in v1 (Spec 086 §8, Spec 085 Q2 answered),
+and the incumbent (strict-94) and full-register (286
+over the mahadevan frame; the register holds 287
+records including the one out-of-scope H key) sets are
+registered as definitions. Rules S-R1
+(strict-anchor conflict/consistency, conflicts
+enumerated), S-R2 (touched claims and their bearings
+from machine-readable sources only — registered in a
+determinate v1 form, **value-independent** in v1, with
+the spec sketch's value-keyed reading-family test
+recorded as named gap GAP-S2 after a
+counter-decomposition search of the one sign-bearing
+claim's record), S-R3 (distinctness over a
+positional-class table — registered but **inert**: the
+class table is UNMEASURED, five artifacts searched),
+S-R4 (coverage as an exact registered field set), and
+the forced-consequence definition (in v1 it collapses
+to the strict register restated for a scope's
+unassigned signs, stated plainly). Confidences are
+carried verbatim, never normalized.
+`glossa-indus/ledger/settling-canonical.json` registers
+five hand-derived scenarios over canonical-subset-1
+[mahadevan:64, 70, 72, 222] plus an untouched-sign
+case, and the incumbent-vs-full-register comparison
+expectation (divergence list empty — the runs diverge
+in coverage, not in any claim's bearing; no
+pre-registered expectation exists for the one touched
+claim, recorded as a named absence). The stage also
+files the harmonization return: the Atlas adopted
+Glossa's falsifier-gap census note the day it was
+delivered (gap zero of 541; per-population census
+lines built; the counted-null divergence recorded with
+both dispositions, no Glossa change). Gate on the
+tree: 13 PASS / 0 FAIL / 5 NOT-RUN, RESULT PASS;
+freeze family 263 passed / 1 skipped; Spec 086 family
+62 passed / 1 skipped. Full record:
+`specs/086-winning-combination-adoption/stage-4-record.md`.
+No claim's status, stage, or score was changed by this
+landing, and no settling output in it is a decipherment
+claim.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

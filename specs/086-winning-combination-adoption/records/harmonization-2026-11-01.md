@@ -142,3 +142,61 @@ uncounted.
    sidecars enter as annotation entries in the claim
    ledger, and evidence instances are `sources[]` records
    of a claim entry, preserved per D-B.
+
+## 2026-11-01 — The Atlas adopted Glossa's falsifier-gap census note
+
+The Breaking-Point Atlas adopted Glossa's second
+outgoing pattern note — the falsifier-gap census
+(`records/pattern-note-falsifier-gap-census.md`, Spec 086
+Stage 3 closeout, T306) — the same day it was delivered
+(2026-11-01). Their record:
+`~/workspace/breaking-point-atlas/scenarios/PATTERN-NOTE-ADOPTION-2026-11-01-falsifier-gap-census.md`.
+
+**Their conformance as found:**
+
+- The mechanism already stood from their Amendment 3
+  build: the gate prints the coverage count in its own
+  output on every run.
+- Their prospective rule binds **harder** than the note
+  requires: their ledger-schema v1 makes the falsifier
+  required and non-null for claim entries, so a
+  falsifier-less new claim is refused at intake —
+  control-tested at adoption.
+- **The Atlas gap is zero**: falsifier null on 0 of 541
+  entries. The published census proves a negative, which
+  they take to be the note's point.
+- The one element they lacked, per-population naming,
+  was built the same day: the gate now prints one
+  coverage line per ledger part (13 populations: parts
+  I–IX, PACK, DYN, WATCH, HIND). Check totals unchanged
+  (206 PASS plain, 207 with regen — the lines are census
+  output, not checks). Failure-path control in a temp
+  copy: nulling one HIND entry moved the header to
+  540/541 (99.8%) and the [HIND] line to 37/38 (97.4%)
+  with the SCHEMA check failing on the named entry; the
+  real ledger was untouched (sha256 unchanged).
+
+**The named divergence, recorded not smoothed.** The
+Atlas schema forbids null falsifiers outright; Glossa
+stores legacy nulls as counted nulls. The two are
+consistent today only because the Atlas has no gap
+population. Their recorded disposition for the day a
+migration population arrives with genuine source gaps:
+neither refuse the intake wholesale nor invent
+falsifiers, but a schema amendment giving that
+population a counted-null class, with the census lines
+already in place to publish it. No conflict with any
+ratified Atlas decision.
+
+**Glossa's disposition.** No conflict with any ratified
+Glossa decision — the divergence is one of
+legacy-population circumstance, not principle: both
+sides refuse invention and silent riding, and Glossa's
+counted-null class is the very mechanism the Atlas
+names as its forward path. No Glossa change follows;
+our census already names its populations (bundle
+817/817, extracted 14/23).
+
+Recorded 2026-11-01 in the Spec 086 Stage 4
+registration PR (records addition, harmonization
+return); the Stage 4 stage record names this entry.

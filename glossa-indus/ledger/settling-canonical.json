@@ -1,0 +1,586 @@
+{
+  "artifact": "settling-canonical",
+  "spec": "086-winning-combination-adoption",
+  "task": "T402",
+  "semantics": "glossa-settle-1",
+  "semantics_document": "glossa-indus/ledger/SETTLING-SEMANTICS.md",
+  "registered": "2026-11-01",
+  "label": "Computation over ledgered relations under glossa-settle-1 semantics. Establishes what the ledger implies under these rules, not what the script says.",
+  "provenance": {
+    "ledger": {
+      "path": "glossa-indus/ledger/claims.jsonl",
+      "sha256_canonical": "c4e2326ec8757bb700dac0142dd0adf17d7464b4d929f5b103868c9228f13ccf",
+      "lines": 871
+    },
+    "anchors_register": {
+      "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
+      "sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+      "bytes": 570344,
+      "records": 287,
+      "frame_inventory": {
+        "mahadevan": 286
+      },
+      "other_keys": [
+        "H003"
+      ],
+      "strict": 94,
+      "strict_by_confidence": {
+        "HIGH": 90,
+        "MEDIUM": 4
+      }
+    },
+    "strict_rule": {
+      "rule_id": "strict_sa_independent_hm",
+      "rule_version": "Phase-109 follow-through (spec 007, 2026-10-06) applying the Phase-108 strict definition",
+      "register": "reports/phase108_provenance_register.json",
+      "definition": "confidence in {HIGH, MEDIUM} AND register category not in {SA_DERIVED, SA_CONFIRMED_ONLY} AND register sa_in_chain is false"
+    },
+    "matrix_defs": "matrix-defs v1",
+    "corpus_snapshot": {
+      "path": "glossa-corpus/indus/exports/indus_research.jsonl",
+      "sha256_canonical": "08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e"
+    }
+  },
+  "subset": {
+    "id": "canonical-subset-1",
+    "frame": "mahadevan",
+    "signs": [
+      "mahadevan:64",
+      "mahadevan:70",
+      "mahadevan:72",
+      "mahadevan:222"
+    ],
+    "selection": "The three signs the ledger's only sign_refs-bearing claim names (mahadevan:64, 70, 72 — so S-R2 has a touched claim to enumerate; among them one strict anchor, M070, and two non-strict, M064 and M072, so S-R1 exercises both verdict classes) plus mahadevan:222, a strict MEDIUM anchor no claim names (so the incumbent assigns a sign outside every claim's refs, and the null scenario's forced computation has a strict member outside the claim's set)."
+  },
+  "scenarios": [
+    {
+      "id": "null-over-subset",
+      "title": "The null assignment over canonical-subset-1 (spec.md Point 3, Step 2, scenario 1)",
+      "inputs": {
+        "candidate": {
+          "id": "canonical-null",
+          "kind": "ad_hoc",
+          "provenance": {
+            "author": "Spec 086 Stage 4 registration (T402)",
+            "source": "the empty assignment, registered as the null canonical",
+            "date": "2026-11-01"
+          },
+          "frame": "mahadevan",
+          "assignments": []
+        },
+        "scope": [
+          "mahadevan:64",
+          "mahadevan:70",
+          "mahadevan:72",
+          "mahadevan:222"
+        ]
+      },
+      "derivation": "The four scope signs in the canonical anchors register (backend/reports/INDUS_FINAL_ANCHORS.json), with strictness derived from the recorded rule (strict_sa_independent_hm: confidence in {HIGH, MEDIUM} AND Phase-108 register category not in {SA_DERIVED, SA_CONFIRMED_ONLY} AND register sa_in_chain false; register: reports/phase108_provenance_register.json): mahadevan:64 -> key M064, reading 'va', confidence HIGH; register category DEDR (passes), sa_in_chain true (fails) -> NOT strict (validation_status sa_in_provenance_chain; stored strict_set false, agreeing). mahadevan:70 -> key M070, reading 'vēl', confidence HIGH; category GRAMMAR (passes), sa_in_chain false (passes) -> STRICT (validation_status strict_sa_independent; stored true). mahadevan:72 -> key M072, reading 'mā', confidence HIGH; category SA_DERIVED (fails; sa_in_chain also true) -> NOT strict (validation_status pending_non_sa_validation; stored false). mahadevan:222 -> key M222, reading 'min', confidence MEDIUM; category GRAMMAR (passes), sa_in_chain false (passes) -> STRICT (validation_status strict_sa_independent; stored true). The ledger's only sign_refs-bearing claim is parpola_2010_dravidian_solution_manual_002, sign_refs stored in the order [mahadevan:72, mahadevan:64, mahadevan:70] (the whole ledger carries exactly these three refs). Its record of record (glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json) carries no governing outcome blocks in the matrix-defs v1 R3 sense: no dated outcome blocks at all; its one outcome-shaped append names Spec 072, carries no outcome string, and stands with its result content removed under the Roif gate (Spec 086 spec.md section 9: name-only; not read). Its matrix row is empty (0 cells; Stage 2 coverage block lists it among the 14 empty rows). Its ledger entry carries one falsifier, a prose corpus-statistical condition, so falsifiers_present = 1 and, under S-R2(ii), falsifiers_evaluable = 0. Therefore whenever this claim is touched, its tallies are supporting 0, opposing 0, constraining 0. Derivation: the candidate assigns nothing. S-R1: no assigned signs, so no contexts are touched and every S-R1 count is 0; strict_agreement_share is null (no strict contexts touched) and contexted_share is null (no assignments in scope). S-R2: with no assigned signs, no claim's sign_refs intersect the candidate, so claims_touched is empty. S-R3: no class table is registered in v1, so violations is []. Forced (semantics section 6): the scope's unassigned signs are all four; the strict among them are mahadevan:70 (forced value its record's reading 'vēl') and mahadevan:222 ('min'); mahadevan:64 and mahadevan:72 are not strict and are free. Coverage: assigned_share = 0/4 = 0.",
+      "expected": {
+        "scope": [
+          "mahadevan:64",
+          "mahadevan:70",
+          "mahadevan:72",
+          "mahadevan:222"
+        ],
+        "scope_signs": 4,
+        "assigned": [],
+        "assigned_count": 0,
+        "assigned_share": 0.0,
+        "uncontexted_assignments": [],
+        "contexts": [],
+        "contexts_touched": 0,
+        "strict_contexts": 0,
+        "consistent": 0,
+        "non_strict_contexts": 0,
+        "conflicts": [],
+        "strict_agreement_share": null,
+        "contexted_share": null,
+        "claims_touched": [],
+        "claims_touched_count": 0,
+        "s_r3": {
+          "class_table": null,
+          "violations": []
+        },
+        "forced": [
+          {
+            "sign": "mahadevan:70",
+            "value": "vēl"
+          },
+          {
+            "sign": "mahadevan:222",
+            "value": "min"
+          }
+        ]
+      }
+    },
+    {
+      "id": "incumbent-over-subset",
+      "title": "The incumbent set (strict-94 read as assignments) restricted to canonical-subset-1 (spec.md Point 3, Step 2, scenario 2)",
+      "inputs": {
+        "candidate": {
+          "id": "incumbent",
+          "kind": "set_of_record_restricted",
+          "set": "incumbent",
+          "definition": "the strict set read as assignments (SETTLING-SEMANTICS.md section 3), restricted to the scope",
+          "frame": "mahadevan",
+          "assignments": [
+            {
+              "sign": "mahadevan:70",
+              "value": "vēl"
+            },
+            {
+              "sign": "mahadevan:222",
+              "value": "min"
+            }
+          ]
+        },
+        "scope": [
+          "mahadevan:64",
+          "mahadevan:70",
+          "mahadevan:72",
+          "mahadevan:222"
+        ]
+      },
+      "derivation": "The four scope signs in the canonical anchors register (backend/reports/INDUS_FINAL_ANCHORS.json), with strictness derived from the recorded rule (strict_sa_independent_hm: confidence in {HIGH, MEDIUM} AND Phase-108 register category not in {SA_DERIVED, SA_CONFIRMED_ONLY} AND register sa_in_chain false; register: reports/phase108_provenance_register.json): mahadevan:64 -> key M064, reading 'va', confidence HIGH; register category DEDR (passes), sa_in_chain true (fails) -> NOT strict (validation_status sa_in_provenance_chain; stored strict_set false, agreeing). mahadevan:70 -> key M070, reading 'vēl', confidence HIGH; category GRAMMAR (passes), sa_in_chain false (passes) -> STRICT (validation_status strict_sa_independent; stored true). mahadevan:72 -> key M072, reading 'mā', confidence HIGH; category SA_DERIVED (fails; sa_in_chain also true) -> NOT strict (validation_status pending_non_sa_validation; stored false). mahadevan:222 -> key M222, reading 'min', confidence MEDIUM; category GRAMMAR (passes), sa_in_chain false (passes) -> STRICT (validation_status strict_sa_independent; stored true). The ledger's only sign_refs-bearing claim is parpola_2010_dravidian_solution_manual_002, sign_refs stored in the order [mahadevan:72, mahadevan:64, mahadevan:70] (the whole ledger carries exactly these three refs). Its record of record (glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json) carries no governing outcome blocks in the matrix-defs v1 R3 sense: no dated outcome blocks at all; its one outcome-shaped append names Spec 072, carries no outcome string, and stands with its result content removed under the Roif gate (Spec 086 spec.md section 9: name-only; not read). Its matrix row is empty (0 cells; Stage 2 coverage block lists it among the 14 empty rows). Its ledger entry carries one falsifier, a prose corpus-statistical condition, so falsifiers_present = 1 and, under S-R2(ii), falsifiers_evaluable = 0. Therefore whenever this claim is touched, its tallies are supporting 0, opposing 0, constraining 0. Derivation: the incumbent assigns exactly the strict records, so restricted to the subset it assigns mahadevan:70 -> 'vēl' and mahadevan:222 -> 'min' (mahadevan:64 and mahadevan:72 are not strict and are not assigned). S-R1: mahadevan:70's context M070 is strict and the assigned value 'vēl' equals the record's reading -> consistent. mahadevan:222's context M222 is strict and 'min' equals 'min' -> consistent. Contexts touched 2, strict contexts 2, consistent 2, non-strict contexts 0, conflicts []. strict_agreement_share = 2/2 = 1; contexted_share = 2/2 = 1; assigned_share = 2/4 = 0.5. S-R2: assigned signs {70, 222}; the claim's refs {72, 64, 70} intersect at {70}, so the claim is touched via [mahadevan:70] with tallies 0/0/0 and falsifiers 1 present / 0 evaluable (per the claim facts above). S-R3: []. Forced: the scope's unassigned signs are {64, 72}; neither is strict, so forced is [].",
+      "expected": {
+        "scope": [
+          "mahadevan:64",
+          "mahadevan:70",
+          "mahadevan:72",
+          "mahadevan:222"
+        ],
+        "scope_signs": 4,
+        "assigned": [
+          {
+            "sign": "mahadevan:70",
+            "value": "vēl"
+          },
+          {
+            "sign": "mahadevan:222",
+            "value": "min"
+          }
+        ],
+        "assigned_count": 2,
+        "assigned_share": 0.5,
+        "uncontexted_assignments": [],
+        "contexts": [
+          {
+            "sign": "mahadevan:70",
+            "anchor": "M070",
+            "assigned_value": "vēl",
+            "anchor_reading": "vēl",
+            "confidence": "HIGH",
+            "strict": true,
+            "result": "consistent"
+          },
+          {
+            "sign": "mahadevan:222",
+            "anchor": "M222",
+            "assigned_value": "min",
+            "anchor_reading": "min",
+            "confidence": "MEDIUM",
+            "strict": true,
+            "result": "consistent"
+          }
+        ],
+        "contexts_touched": 2,
+        "strict_contexts": 2,
+        "consistent": 2,
+        "non_strict_contexts": 0,
+        "conflicts": [],
+        "strict_agreement_share": 1.0,
+        "contexted_share": 1.0,
+        "claims_touched": [
+          {
+            "claim": "parpola_2010_dravidian_solution_manual_002",
+            "via_signs": [
+              "mahadevan:70"
+            ],
+            "tallies": {
+              "supporting": 0,
+              "opposing": 0,
+              "constraining": 0
+            },
+            "falsifiers_present": 1,
+            "falsifiers_evaluable": 0
+          }
+        ],
+        "claims_touched_count": 1,
+        "s_r3": {
+          "class_table": null,
+          "violations": []
+        },
+        "forced": []
+      }
+    },
+    {
+      "id": "full-register-over-subset",
+      "title": "The full-register set (all 287 canonical anchors read as assignments) restricted to canonical-subset-1 (spec.md Point 3, Step 2, scenario 3)",
+      "inputs": {
+        "candidate": {
+          "id": "full-register",
+          "kind": "set_of_record_restricted",
+          "set": "full-register",
+          "definition": "every register record of the frame read as assignments (SETTLING-SEMANTICS.md section 3), restricted to the scope",
+          "frame": "mahadevan",
+          "assignments": [
+            {
+              "sign": "mahadevan:64",
+              "value": "va"
+            },
+            {
+              "sign": "mahadevan:70",
+              "value": "vēl"
+            },
+            {
+              "sign": "mahadevan:72",
+              "value": "mā"
+            },
+            {
+              "sign": "mahadevan:222",
+              "value": "min"
+            }
+          ]
+        },
+        "scope": [
+          "mahadevan:64",
+          "mahadevan:70",
+          "mahadevan:72",
+          "mahadevan:222"
+        ]
+      },
+      "derivation": "The four scope signs in the canonical anchors register (backend/reports/INDUS_FINAL_ANCHORS.json), with strictness derived from the recorded rule (strict_sa_independent_hm: confidence in {HIGH, MEDIUM} AND Phase-108 register category not in {SA_DERIVED, SA_CONFIRMED_ONLY} AND register sa_in_chain false; register: reports/phase108_provenance_register.json): mahadevan:64 -> key M064, reading 'va', confidence HIGH; register category DEDR (passes), sa_in_chain true (fails) -> NOT strict (validation_status sa_in_provenance_chain; stored strict_set false, agreeing). mahadevan:70 -> key M070, reading 'vēl', confidence HIGH; category GRAMMAR (passes), sa_in_chain false (passes) -> STRICT (validation_status strict_sa_independent; stored true). mahadevan:72 -> key M072, reading 'mā', confidence HIGH; category SA_DERIVED (fails; sa_in_chain also true) -> NOT strict (validation_status pending_non_sa_validation; stored false). mahadevan:222 -> key M222, reading 'min', confidence MEDIUM; category GRAMMAR (passes), sa_in_chain false (passes) -> STRICT (validation_status strict_sa_independent; stored true). The ledger's only sign_refs-bearing claim is parpola_2010_dravidian_solution_manual_002, sign_refs stored in the order [mahadevan:72, mahadevan:64, mahadevan:70] (the whole ledger carries exactly these three refs). Its record of record (glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json) carries no governing outcome blocks in the matrix-defs v1 R3 sense: no dated outcome blocks at all; its one outcome-shaped append names Spec 072, carries no outcome string, and stands with its result content removed under the Roif gate (Spec 086 spec.md section 9: name-only; not read). Its matrix row is empty (0 cells; Stage 2 coverage block lists it among the 14 empty rows). Its ledger entry carries one falsifier, a prose corpus-statistical condition, so falsifiers_present = 1 and, under S-R2(ii), falsifiers_evaluable = 0. Therefore whenever this claim is touched, its tallies are supporting 0, opposing 0, constraining 0. Derivation: the full-register set assigns every register record, so restricted to the subset it assigns all four signs their recorded readings. S-R1: mahadevan:64's context M064 is not strict -> a non-strict context (S-R1 gives no verdict on a non-strict context, whatever the value; here the value 'va' equals the reading). mahadevan:70 -> M070 strict, 'vēl' = 'vēl' -> consistent. mahadevan:72 -> M072 not strict -> non-strict context ('mā' = 'mā', no verdict). mahadevan:222 -> M222 strict, 'min' = 'min' -> consistent. Contexts touched 4, strict contexts 2, consistent 2, non-strict contexts 2, conflicts []. strict_agreement_share = 2/2 = 1; contexted_share = 4/4 = 1; assigned_share = 4/4 = 1. S-R2: assigned signs {64, 70, 72, 222}; the claim's refs intersect at {72, 64, 70} -> touched, via_signs in the entry's stored order [mahadevan:72, mahadevan:64, mahadevan:70]; tallies 0/0/0; falsifiers 1/0. S-R3: []. Forced: no scope sign is unassigned, so forced is [].",
+      "expected": {
+        "scope": [
+          "mahadevan:64",
+          "mahadevan:70",
+          "mahadevan:72",
+          "mahadevan:222"
+        ],
+        "scope_signs": 4,
+        "assigned": [
+          {
+            "sign": "mahadevan:64",
+            "value": "va"
+          },
+          {
+            "sign": "mahadevan:70",
+            "value": "vēl"
+          },
+          {
+            "sign": "mahadevan:72",
+            "value": "mā"
+          },
+          {
+            "sign": "mahadevan:222",
+            "value": "min"
+          }
+        ],
+        "assigned_count": 4,
+        "assigned_share": 1.0,
+        "uncontexted_assignments": [],
+        "contexts": [
+          {
+            "sign": "mahadevan:64",
+            "anchor": "M064",
+            "assigned_value": "va",
+            "anchor_reading": "va",
+            "confidence": "HIGH",
+            "strict": false,
+            "result": "non_strict"
+          },
+          {
+            "sign": "mahadevan:70",
+            "anchor": "M070",
+            "assigned_value": "vēl",
+            "anchor_reading": "vēl",
+            "confidence": "HIGH",
+            "strict": true,
+            "result": "consistent"
+          },
+          {
+            "sign": "mahadevan:72",
+            "anchor": "M072",
+            "assigned_value": "mā",
+            "anchor_reading": "mā",
+            "confidence": "HIGH",
+            "strict": false,
+            "result": "non_strict"
+          },
+          {
+            "sign": "mahadevan:222",
+            "anchor": "M222",
+            "assigned_value": "min",
+            "anchor_reading": "min",
+            "confidence": "MEDIUM",
+            "strict": true,
+            "result": "consistent"
+          }
+        ],
+        "contexts_touched": 4,
+        "strict_contexts": 2,
+        "consistent": 2,
+        "non_strict_contexts": 2,
+        "conflicts": [],
+        "strict_agreement_share": 1.0,
+        "contexted_share": 1.0,
+        "claims_touched": [
+          {
+            "claim": "parpola_2010_dravidian_solution_manual_002",
+            "via_signs": [
+              "mahadevan:72",
+              "mahadevan:64",
+              "mahadevan:70"
+            ],
+            "tallies": {
+              "supporting": 0,
+              "opposing": 0,
+              "constraining": 0
+            },
+            "falsifiers_present": 1,
+            "falsifiers_evaluable": 0
+          }
+        ],
+        "claims_touched_count": 1,
+        "s_r3": {
+          "class_table": null,
+          "violations": []
+        },
+        "forced": []
+      }
+    },
+    {
+      "id": "seeded-conflict-over-subset",
+      "title": "One seeded-conflict assignment over canonical-subset-1 (spec.md Point 3, Step 2, scenario 4)",
+      "inputs": {
+        "candidate": {
+          "id": "canonical-seeded-conflict",
+          "kind": "ad_hoc",
+          "provenance": {
+            "author": "Spec 086 Stage 4 registration (T402)",
+            "source": "authored for this canonical; the value 'ka' is a fixture chosen because it differs from M070's recorded reading 'vēl' — it is not a proposed reading of the sign",
+            "date": "2026-11-01"
+          },
+          "frame": "mahadevan",
+          "assignments": [
+            {
+              "sign": "mahadevan:70",
+              "value": "ka"
+            }
+          ]
+        },
+        "scope": [
+          "mahadevan:64",
+          "mahadevan:70",
+          "mahadevan:72",
+          "mahadevan:222"
+        ]
+      },
+      "derivation": "The four scope signs in the canonical anchors register (backend/reports/INDUS_FINAL_ANCHORS.json), with strictness derived from the recorded rule (strict_sa_independent_hm: confidence in {HIGH, MEDIUM} AND Phase-108 register category not in {SA_DERIVED, SA_CONFIRMED_ONLY} AND register sa_in_chain false; register: reports/phase108_provenance_register.json): mahadevan:64 -> key M064, reading 'va', confidence HIGH; register category DEDR (passes), sa_in_chain true (fails) -> NOT strict (validation_status sa_in_provenance_chain; stored strict_set false, agreeing). mahadevan:70 -> key M070, reading 'vēl', confidence HIGH; category GRAMMAR (passes), sa_in_chain false (passes) -> STRICT (validation_status strict_sa_independent; stored true). mahadevan:72 -> key M072, reading 'mā', confidence HIGH; category SA_DERIVED (fails; sa_in_chain also true) -> NOT strict (validation_status pending_non_sa_validation; stored false). mahadevan:222 -> key M222, reading 'min', confidence MEDIUM; category GRAMMAR (passes), sa_in_chain false (passes) -> STRICT (validation_status strict_sa_independent; stored true). The ledger's only sign_refs-bearing claim is parpola_2010_dravidian_solution_manual_002, sign_refs stored in the order [mahadevan:72, mahadevan:64, mahadevan:70] (the whole ledger carries exactly these three refs). Its record of record (glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json) carries no governing outcome blocks in the matrix-defs v1 R3 sense: no dated outcome blocks at all; its one outcome-shaped append names Spec 072, carries no outcome string, and stands with its result content removed under the Roif gate (Spec 086 spec.md section 9: name-only; not read). Its matrix row is empty (0 cells; Stage 2 coverage block lists it among the 14 empty rows). Its ledger entry carries one falsifier, a prose corpus-statistical condition, so falsifiers_present = 1 and, under S-R2(ii), falsifiers_evaluable = 0. Therefore whenever this claim is touched, its tallies are supporting 0, opposing 0, constraining 0. Derivation: the candidate assigns only mahadevan:70 -> 'ka'. S-R1: its context M070 is strict and 'ka' != the record's reading 'vēl' -> exactly one conflict, enumerated as {sign mahadevan:70, anchor M070, assigned_value 'ka', anchor_reading 'vēl'}. Contexts touched 1, strict contexts 1, consistent 0, non-strict contexts 0. strict_agreement_share = 0/1 = 0; contexted_share = 1/1 = 1; assigned_share = 1/4 = 0.25. S-R2: assigned {70} intersects the claim's refs -> touched via [mahadevan:70]; tallies 0/0/0; falsifiers 1/0. S-R3: []. Forced: the scope's unassigned signs are {64, 72, 222}; the strict among them is mahadevan:222 -> forced [(mahadevan:222, 'min')].",
+      "expected": {
+        "scope": [
+          "mahadevan:64",
+          "mahadevan:70",
+          "mahadevan:72",
+          "mahadevan:222"
+        ],
+        "scope_signs": 4,
+        "assigned": [
+          {
+            "sign": "mahadevan:70",
+            "value": "ka"
+          }
+        ],
+        "assigned_count": 1,
+        "assigned_share": 0.25,
+        "uncontexted_assignments": [],
+        "contexts": [
+          {
+            "sign": "mahadevan:70",
+            "anchor": "M070",
+            "assigned_value": "ka",
+            "anchor_reading": "vēl",
+            "confidence": "HIGH",
+            "strict": true,
+            "result": "conflict"
+          }
+        ],
+        "contexts_touched": 1,
+        "strict_contexts": 1,
+        "consistent": 0,
+        "non_strict_contexts": 0,
+        "conflicts": [
+          {
+            "sign": "mahadevan:70",
+            "anchor": "M070",
+            "assigned_value": "ka",
+            "anchor_reading": "vēl"
+          }
+        ],
+        "strict_agreement_share": 0.0,
+        "contexted_share": 1.0,
+        "claims_touched": [
+          {
+            "claim": "parpola_2010_dravidian_solution_manual_002",
+            "via_signs": [
+              "mahadevan:70"
+            ],
+            "tallies": {
+              "supporting": 0,
+              "opposing": 0,
+              "constraining": 0
+            },
+            "falsifiers_present": 1,
+            "falsifiers_evaluable": 0
+          }
+        ],
+        "claims_touched_count": 1,
+        "s_r3": {
+          "class_table": null,
+          "violations": []
+        },
+        "forced": [
+          {
+            "sign": "mahadevan:222",
+            "value": "min"
+          }
+        ]
+      }
+    },
+    {
+      "id": "untouched-sign",
+      "title": "A candidate assigning a sign no in-scope context touches (anchor-context coverage zero, stated as such)",
+      "inputs": {
+        "candidate": {
+          "id": "canonical-untouched-sign",
+          "kind": "ad_hoc",
+          "provenance": {
+            "author": "Spec 086 Stage 4 registration (T402)",
+            "source": "authored for this canonical; the value 'TESTVALUE' is a fixture string, not a proposed reading",
+            "date": "2026-11-01"
+          },
+          "frame": "mahadevan",
+          "assignments": [
+            {
+              "sign": "mahadevan:417",
+              "value": "TESTVALUE"
+            }
+          ]
+        },
+        "scope": [
+          "mahadevan:417"
+        ]
+      },
+      "derivation": "The register's mahadevan inventory is its 286 M-prefixed keys; M417 is not among them (verified against the register at derivation: the key set runs over the stored M-numbers and 417 is absent). So mahadevan:417 has no anchor context. S-R1: the assignment is uncontexted, enumerated under uncontexted_assignments; contexts touched 0, strict contexts 0, consistent 0, conflicts []; strict_agreement_share is null (no strict contexts touched); contexted_share = 0/1 = 0 — anchor-context coverage is zero, stated as such. assigned_share = 1/1 = 1 (the candidate assigns the whole scope; assignment share and context coverage are different counts, and this scenario exists to keep them distinct). S-R2: no ledger claim's sign_refs name mahadevan:417 (the ledger's only refs are mahadevan:72, 64, 70), so claims_touched is empty. S-R3: []. Forced: the scope's only sign is assigned, so forced is [].",
+      "expected": {
+        "scope": [
+          "mahadevan:417"
+        ],
+        "scope_signs": 1,
+        "assigned": [
+          {
+            "sign": "mahadevan:417",
+            "value": "TESTVALUE"
+          }
+        ],
+        "assigned_count": 1,
+        "assigned_share": 1.0,
+        "uncontexted_assignments": [
+          {
+            "sign": "mahadevan:417",
+            "value": "TESTVALUE"
+          }
+        ],
+        "contexts": [],
+        "contexts_touched": 0,
+        "strict_contexts": 0,
+        "consistent": 0,
+        "non_strict_contexts": 0,
+        "conflicts": [],
+        "strict_agreement_share": null,
+        "contexted_share": 0.0,
+        "claims_touched": [],
+        "claims_touched_count": 0,
+        "s_r3": {
+          "class_table": null,
+          "violations": []
+        },
+        "forced": []
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "incumbent-vs-full-register-over-subset",
+      "title": "Dual run over canonical-subset-1: incumbent vs full-register (the interchangeability pair; D-086-Q4's demonstration pair, registered here as a canonical expectation for T405)",
+      "inputs": {
+        "semantics": "glossa-settle-1",
+        "ledger_sha256": "c4e2326ec8757bb700dac0142dd0adf17d7464b4d929f5b103868c9228f13ccf",
+        "corpus_snapshot": {
+          "path": "glossa-corpus/indus/exports/indus_research.jsonl",
+          "sha256_canonical": "08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e"
+        },
+        "runs": [
+          "incumbent-over-subset",
+          "full-register-over-subset"
+        ]
+      },
+      "derivation": "Both runs share every input pin (ledger build, corpus snapshot, semantics version) and the same scope; only the candidate differs. Claims touched by either run: only parpola_2010_dravidian_solution_manual_002 (incumbent touches it via mahadevan:70; full-register via mahadevan:72, 64, 70). Its tallies are {supporting 0, opposing 0, constraining 0} under both runs (per the claim facts in the scenarios above), so no claim's tallies differ and the per-claim divergence list is empty. The runs diverge in coverage, not in any claim's bearing: assigned 2 vs 4 (delta +2), contexts touched 2 vs 4 (+2), strict contexts 2 vs 2 (0), consistent 2 vs 2 (0), conflicts 0 vs 0 (0), forced 0 vs 0 (0). The signs assigned by one candidate only are mahadevan:64 and mahadevan:72, assigned by the full-register set only (both are non-strict anchors; the incumbent, being the strict set, does not assign them). Pre-registered expectations: none exists in the program's record for the touched claim. The Spec 074 outcome record — the expectation the T405 brief names — concerns yadav_2009_arxiv_manual_002, whose ledger entry carries no sign_refs and which neither run touches; that absence is recorded here, not omitted.",
+      "expected": {
+        "claims_compared": [
+          {
+            "claim": "parpola_2010_dravidian_solution_manual_002",
+            "incumbent_tallies": {
+              "supporting": 0,
+              "opposing": 0,
+              "constraining": 0
+            },
+            "full_register_tallies": {
+              "supporting": 0,
+              "opposing": 0,
+              "constraining": 0
+            },
+            "divergent": false
+          }
+        ],
+        "per_claim_divergences": [],
+        "coverage_deltas": {
+          "assigned_count": {
+            "incumbent": 2,
+            "full_register": 4
+          },
+          "contexts_touched": {
+            "incumbent": 2,
+            "full_register": 4
+          },
+          "strict_contexts": {
+            "incumbent": 2,
+            "full_register": 2
+          },
+          "consistent": {
+            "incumbent": 2,
+            "full_register": 2
+          },
+          "conflicts": {
+            "incumbent": 0,
+            "full_register": 0
+          },
+          "forced_count": {
+            "incumbent": 0,
+            "full_register": 0
+          }
+        },
+        "signs_assigned_by_one_only": {
+          "full_register_only": [
+            "mahadevan:64",
+            "mahadevan:72"
+          ],
+          "incumbent_only": []
+        },
+        "pre_registered_expectations": [],
+        "pre_registered_expectations_note": "No pre-registered expectation exists in the program's record for the one touched claim; Spec 074's outcome record concerns yadav_2009_arxiv_manual_002, touched by neither run."
+      }
+    }
+  ]
+}

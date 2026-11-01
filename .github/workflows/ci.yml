@@ -414,6 +414,55 @@ jobs:
             python tools/freeze-gate/check_freeze_gate.py --all
           fi
 
+  # ── Ledger gate: Spec 086 verification gate (V1–V7, V9) ───────────────────
+  # Sibling of the C4 freeze gate above (untouched): the gate over the
+  # ledger → matrix → map chain (specs/086-winning-combination-adoption,
+  # Point 4). PRs run --pr-scope (the classes covering the layers the
+  # change touches); pushes run the full gate plus --regen (lossless
+  # regeneration, byte-compared). The gate never writes; bytecode
+  # writing is disabled for its runs.
+  ledger-gate:
+    name: Ledger/matrix/map equivalence gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: []  # run in parallel
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: backend/pyproject.toml
+
+      - name: Install backend dependencies
+        working-directory: backend
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]" || pip install -e "."
+
+      - name: Ledger-gate machinery tests (teeth battery)
+        working-directory: backend
+        env:
+          PYTHONPATH: ${{ github.workspace }}/backend
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: python -m pytest tests/test_spec086_ledger_gate.py -q
+
+      - name: Ledger gate — chain touched by this change
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            python tools/ledger/check_ledger_gate.py --pr-scope --base "origin/${{ github.base_ref }}"
+          else
+            python tools/ledger/check_ledger_gate.py --all
+            python tools/ledger/check_ledger_gate.py --regen
+          fi
+
   # ── Spec 083 (T008): cloud image smoke ─────────────────────────────────────
   # Builds the repo-root Dockerfile (T006) as ONE immutable image tagged
   # with the git SHA (the image identity scheme), then runs the GAP-ENV

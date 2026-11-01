@@ -1,0 +1,34 @@
+/home/hatch/workspace/venvs/glossa-ci/lib/python3.12/site-packages/pytest_asyncio/plugin.py:300: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the "fixture" caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts ==============================
+collecting ... collected 19 items
+
+tests/test_spec086_ledger_gate.py::test_gate_definitions_match_the_generator_copies PASSED [  5%]
+tests/test_spec086_ledger_gate.py::test_gate_passes_clean_tree PASSED    [ 10%]
+tests/test_spec086_ledger_gate.py::test_teeth_v1_altered_source_hash_fails_by_name PASSED [ 15%]
+tests/test_spec086_ledger_gate.py::test_teeth_v2_flipped_matrix_status_fails PASSED [ 21%]
+tests/test_spec086_ledger_gate.py::test_teeth_v3_flipped_cell_relation_fails PASSED [ 26%]
+tests/test_spec086_ledger_gate.py::test_teeth_v4_atlas_miscarriage_fails_v4_passing_v1_to_v3 PASSED [ 31%]
+tests/test_spec086_ledger_gate.py::test_v4_conforming_edges_pass PASSED  [ 36%]
+tests/test_spec086_ledger_gate.py::test_teeth_v5_embedded_field_mismatch_fails PASSED [ 42%]
+tests/test_spec086_ledger_gate.py::test_teeth_v6_flipped_strict_flag_fails PASSED [ 47%]
+tests/test_spec086_ledger_gate.py::test_teeth_v7_hand_edited_artifact_is_a_named_defect PASSED [ 52%]
+tests/test_spec086_ledger_gate.py::test_teeth_v9_settling_module_importing_a_write_path_fails PASSED [ 57%]
+tests/test_spec086_ledger_gate.py::test_teeth_v9_unregistered_writer_fails PASSED [ 63%]
+tests/test_spec086_ledger_gate.py::test_numeric_arm_refuses_a_violating_supports_citation PASSED [ 68%]
+tests/test_spec086_ledger_gate.py::test_numeric_arm_fires_through_the_v4_evaluator PASSED [ 73%]
+tests/test_spec086_ledger_gate.py::test_red_gate_run_leaves_published_artifacts_byte_identical PASSED [ 78%]
+tests/test_spec086_ledger_gate.py::test_cli_disables_bytecode_before_importing_the_backend PASSED [ 84%]
+tests/test_spec086_ledger_gate.py::test_gated_publication_publishes_on_a_clean_tree PASSED [ 89%]
+tests/test_spec086_ledger_gate.py::test_gated_publication_negative_control PASSED [ 94%]
+tests/test_spec086_ledger_gate.py::test_pr_scope_diff_fallback_is_full_not_silent PASSED [100%]
+
+=============================== warnings summary ===============================
+../../../venvs/glossa-ci/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /home/hatch/workspace/venvs/glossa-ci/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================== 19 passed, 1 warning in 39.06s ========================

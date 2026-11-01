@@ -1,0 +1,12 @@
+Ledger validation — /home/hatch/workspace/glossa-run/spec086-stage1/glossa-indus/ledger/claims.jsonl
+schema: ledger-schema v1 (glossa-indus/ledger/ledger-schema.json)
+fingerprint rules: spec029-phase-i-v1
+lines: 871
+entries by kind: annotation 31, claim 840
+claims by population: bundle 817, extracted 23
+falsifier coverage: 831 of 840 claim entries carry a falsifier
+falsifier coverage by population: bundle 817/817, extracted 14/23
+does_not_establish coverage: 755 of 840 claim entries
+aee_state present: 0 of 840 claim entries
+errors: none
+RESULT: PASS

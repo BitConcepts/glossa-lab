@@ -1,0 +1,508 @@
+{
+ "claims": [
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 086 adoption package, approved as a block by the owner 2026-11-01; claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "a matrix cell or map element with no ledger id path, or whose content matches a non-ledger source (a sidecar file, a database row, a bundle) that no ledger entry mirrors."
+   ],
+   "id": "C086-1",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "The ledger is the sole entry point downstream.** Every element of the generated matrix and the map traces to a ledger entry id, and no matrix cell or map element exists whose content came from anywhere else.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 086 adoption package, approved as a block by the owner 2026-11-01; claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "a ledger line that fails schema validation while the validator passes it; or a seeded malformed entry the validator accepts in the Stage 1 teeth test."
+   ],
+   "id": "C086-2",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "Intake is schema-pinned and validated.** Every line of `glossa-indus/ledger/claims.jsonl` validates against the pinned ledger schema (`ledger-schema v1`), and the Stage 1 validator, run in CI, rejects a malformed, extra-field, or missing-field entry.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 086 adoption package, approved as a block by the owner 2026-11-01; claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "two canonical entries with one fingerprint; an entry whose stored fingerprint differs from recomputation; or a seeded duplicate intake that is written."
+   ],
+   "id": "C086-3",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "D-B dedupe is enforced at intake, not by memory.** Every canonical entry's `proposition_fingerprint` recomputes to its stored value under the frozen rules (`spec029-phase-i-v1`), no two canonical entries share a fingerprint, and an intake attempt whose fingerprint collides with an existing proposition is refused, naming both records, writing nothing.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 086 adoption package, approved as a block by the owner 2026-11-01; claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "git history showing a modified (rather than appended) ledger line for an existing id, outside a D-E migration record that itself reconciles."
+   ],
+   "id": "C086-4",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "Corrections are append-only reclassifications.** A superseded claim is marked by an appended reclassification entry with a `supersedes` pointer; no existing ledger line is ever edited in place.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 086 adoption package, approved as a block by the owner 2026-11-01; claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "an entry whose falsifier or does-not-establish text appears in no source record and no human-authored record; or a gate run that omits the coverage count."
+   ],
+   "id": "C086-5",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "No field is fabricated at migration or intake.** A migrated or intaken entry carries a `falsifier` or a `does_not_establish` line only where its source record carries one or a named human-authored record supplies one; where neither exists the field is null, and every gate run publishes the falsifier-coverage count of the ledger.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 086 adoption package, approved as a block by the owner 2026-11-01; claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "an entry with explanation content whose named author has no adoption record, or whose author is not a named human; or a seeded authorless explanation the validator accepts."
+   ],
+   "id": "C086-6",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "OD-2 authorship is preserved.** No ledger entry carries explanation content (`explanation_record`, or a `does_not_establish` line sourced from one) unless it names a human author whose adoption act exists in a durable record; the intake validator rejects explanation content without one.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 086 adoption package, approved as a block by the owner 2026-11-01; claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "a regeneration diff over an unchanged ledger; or matrix content present that the generator, run on the same ledger, does not produce."
+   ],
+   "id": "C086-7",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "The matrix is generated, never made.** `glossa-indus/matrix/matrix.json` and `matrix.md` are produced solely by the registered generator from the ledger; deleting them and regenerating from an unchanged ledger reproduces them byte-for-byte.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 086 adoption package, approved as a block by the owner 2026-11-01; claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "a sampled non-empty cell with no rule id, or whose cited entries do not carry the stored relation its rule requires."
+   ],
+   "id": "C086-8",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "Every matrix cell is traceable to its derivation.** Every non-empty cell names its relation, its citation ids, and the registered derivation rule (matrix-defs version) that produced it, and inspecting the cited ledger entries exhibits that rule's stored relation.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 086 adoption package, approved as a block by the owner 2026-11-01; claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "a seeded Atlas-style miscarriage \u2014 a citation that exists and is relevant but satisfies no tie rule (e.g., citing Spec 054's UNEXECUTED closure as support for the Yadav claim) \u2014 that the gate passes; or any production cell/edge citation the gate's V4 check cannot tie."
+   ],
+   "id": "C086-9",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "Citations carry their relations (adopted, Atlas note 2026-11-01).** For every citation on every non-empty matrix cell and every map edge, at least one registered tie mechanically holds (spec.md Point 4: T1 source membership, T2 dated test with matching outcome direction, T3 registered anchor, T4 registered instrument). Existence, shared documents, shared signs without a T3 anchor record, and topical relevance are not ties.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 086 adoption package, approved as a block by the owner 2026-11-01; claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "a seeded divergence in any one class (a flipped ledger status not reflected in the matrix; a count mismatch; a hand-edited generated artifact) that merges with the job green."
+   ],
+   "id": "C086-10",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "The verification gate guards the chain in CI.** A CI job beside C4 (`ledger-gate`) recomputes the matrix and the map from the ledger on every PR and push, running check classes V1\u2013V9 (spec.md Point 4), and a divergence in any class fails the job.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 086 adoption package, approved as a block by the owner 2026-11-01; claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "a negative-control run (seeded divergence) after which the published artifact differs by even one byte from its pre-run hash, or after which the build reports success."
+   ],
+   "id": "C086-11",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "Publication is gated (adopted, Atlas note 2026-11-01).** Generated artifacts are published only through candidate \u2192 gate \u2192 replace: the builder writes a candidate, the gate runs against the candidate, and the published file is replaced only on ALL PASS; on a red gate the previously published artifact is byte-untouched and the build fails.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 086 adoption package, approved as a block by the owner 2026-11-01; claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "a `--regen` run whose byte diff goes unreported, or a downstream defect closed by hand-editing a generated artifact anywhere in the repo's history after this spec lands."
+   ],
+   "id": "C086-12",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "Lossless regeneration is a checked mode (adopted, Atlas note 2026-11-01).** The gate's `--regen` mode hashes the matrix and map artifacts, regenerates both from the ledger, and byte-compares; any diff is classified in the run record as exactly the intended change (named) or a downstream defect (fixed by regeneration, never by editing the artifact).",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 086 adoption package, approved as a block by the owner 2026-11-01; claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "commit order showing the engine predating the semantics/canonical registration; or a canonical scenario whose engine output differs from the registered expectation in any field, with the test green."
+   ],
+   "id": "C086-13",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "Settling is derive-before-build (adopted, Atlas note 2026-11-01).** The settling semantics (`glossa-settle-1`) and the hand-derived canonical scenarios (with prose derivations) are registered in git **before** the settling engine module exists, and the engine's test requires exact reproduction of every canonical \u2014 counts, enumerations, and tallies equal.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 086 adoption package, approved as a block by the owner 2026-11-01; claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "a reported settling number with no run record; an output surface missing the label; or a settling module importing a ledger write path, found by the V9 audit or by inspection."
+   ],
+   "id": "C086-14",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "Settling is mechanical, labeled, and read-only against the ledger.** Every reported settling result comes from a stored run record (inputs incl. ledger build hash, rule version, per-rule outcomes, enumerations, coverage); every output surface carries the computation label (spec.md Point 3); and the settling package has no write path to the ledger (no intake/write module import \u2014 gate check V9).",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 086 adoption package, approved as a block by the owner 2026-11-01; claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "a comparison report whose two run records carry different input hashes; a comparison that narrates divergence without the per-claim list; or a touched claim with a pre-registered expectation the report neither names nor scores against."
+   ],
+   "id": "C086-15",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "Interchangeability discipline for dual readings.** A dual-reading comparison records the same ledger build hash and the same corpus snapshot hash for both runs, and emits a per-claim divergence list (both bearing tallies shown per claim), naming any pre-registered expectation for a touched claim and reporting agreement or divergence against it.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 086 adoption package, approved as a block by the owner 2026-11-01; claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "a store diff attributable to a settling run; or a displayed score differing from an independent ScoringEngine execution over the same relation set."
+   ],
+   "id": "C086-16",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "Settling moves nothing.** A settling run creates only run records: no ledger entry, claim status, stage, score, anchor assignment, or store-of-record content changes as a result of a run; displayed scores are `aee/scoring.py` outputs over the ledger's relation set, never a parallel computation.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 086 adoption package, approved as a block by the owner 2026-11-01; claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "a rendered count, element, or header value differing from the artifact/gate values for the same selection and build, found by Playwright + artifact comparison (Spec 081/083 verification precedent)."
+   ],
+   "id": "C086-17",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "The map renders the generated data exactly.** For any view and filter selection, the map's rendered counts and elements equal the gated map artifact's contents for the same selection, and its header state (claims by status, validated-anchor share, nearest dated items) equals the gate's recomputed values for the ledger build the artifact names.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 086 adoption package, approved as a block by the owner 2026-11-01; claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "a generated artifact with no stamp, or a stale artifact displayed without its stale marking."
+   ],
+   "id": "C086-18",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "Generated artifacts carry as-of stamps (D-D generalized).** Every generated artifact (matrix, map data, settling run records, any report citing claims) carries its generation time, the ledger content hash it was computed from, and the definition/rule versions in force; a surface showing an artifact whose stamp hash does not match the current ledger marks it stale.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 086 adoption package, approved as a block by the owner 2026-11-01; claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "an out-of-scope record's element present in a scoped response, or a relation pointing at an element the response omits."
+   ],
+   "id": "C086-19",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "The chain never widens visibility (Spec 083).** A workspace-scoped map response contains no element whose source record is out of scope for the requester, and no relation incident to an absent element. (Scope is whatever the source record's scoping is under Spec 083, as in C085-13.)",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 086 adoption package, approved as a block by the owner 2026-11-01; claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "a claim whose status, stage, or verdict differs between its source of record before migration and its ledger mirror after, other than by a pre-existing adjudication act the reconciliation names."
+   ],
+   "id": "C086-20",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "Scoping: this adoption changes no verdict.** This adoption changes no decipherment verdict, no claim's status or stage, no score, and the program's standing position; the migration reconciliation (per-population, before/after per claim id) is the evidence, and the Indus script remains not deciphered.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 086 adoption package, approved as a block by the owner 2026-11-01; claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "a stage closeout recording a pattern improvement with no delivered note in the delivery record; or an incoming note (beginning with `PATTERN-NOTE-2026-11-01-gate-and-settle`, whose adoption README.md records) with no adoption record in this spec's repo record."
+   ],
+   "id": "C086-21",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "Harmonization is exercised, not just cited.** Improvements found during this build (at minimum the two named in spec.md Point 7) are written as short pattern notes and delivered to the RCPH and Breaking-Point Atlas chats; incoming pattern notes are adopted with a recorded adoption act or surfaced to the owner as conflicts \u2014 never silently absorbed or silently dropped.",
+   "uncertainty": "insufficient_evidence"
+  }
+ ]
+}

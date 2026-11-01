@@ -12329,3 +12329,78 @@ ones marked, because T018 makes implicit admin real.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-01 — Spec 086 winning-combination adoption: package adopted (Stage 0) + ledger intake validator built (Stage 1)
+
+The owner's adoption order of 2026-11-01 (relayed from the
+RCPH chat) and his block approval of the Spec 086 package the
+same day (06:40 EST: "Approve the Spec 086 package as a
+block"; the §8 decision items stand as recommended) are
+executed at Stages 0–1 in this landing
+(`specs/086-winning-combination-adoption/`).
+
+**Stage 0.** The approved package is adopted into the repo:
+spec.md (approval act + the confirmatory record of
+Amendment 1 to the canonical pattern at its head), claims.md
+verbatim, tasks.md, plan.md. Claims C086-1…21 normalized
+into `aee-claims.json` and verified under the pinned AEE
+1.5.3 (`aee validate` → valid: 21 claim(s); `aee assess
+--no-ledger` → outcome iterate; output in
+`records/t002-aee-assessment.json`).
+
+**Harmonization adoption record (T003).**
+`PATTERN-NOTE-2026-11-01-gate-and-settle` (Breaking-Point
+Atlas, delivered 2026-11-01) is ADOPTED into Spec 086 at
+Points 3–4: relation-carrying citations as the gate's
+decisive check class (C086-9, Stage 3 check V4), gated
+publication (C086-11), lossless regeneration as a checked
+mode (C086-12), and derive-before-build settling (C086-13).
+The Atlas's settle-1 constants are NOT lifted; Glossa
+registers its own at Stage 4. The note's proof claims were
+verified first-hand by the drafting chat (gate 204 PASS;
+6/6 canonical settle reproductions; negative control red at
+198/6). No conflict with a ratified local decision was
+found. Amendment 1 to the canonical pattern (ratified
+2026-11-01 — the named failure mode "a citation can exist,
+be relevant, and still not carry the relation" and its five
+corollaries) is already carried by the approved package
+(C086-9 / V4 / C086-11); adoption confirmatory, no plan
+change. A second harmonization adoption the same day —
+"Canonicalize before you hash" (Spec-Kit AEE chat) — is
+recorded at the head of spec.md with its scoping: checkout
+pinning already in force here; canonical-form hashing
+adopted for Spec 086's generated layers (Stage 1's recorded
+source hashes use the one shared helper in
+`ledger_intake.py`); the freeze regime's raw-byte pins
+expressly not migrated; gate write-freedom recorded as a
+Stage 3 design requirement.
+
+**Stage 1.** The ledger exists: `glossa-indus/ledger/`
+with pinned `ledger-schema v1` (SCHEMA.md +
+ledger-schema.json), the intake validator
+(`backend/glossa_lab/ledger_intake.py`,
+`tools/ledger/validate_ledger.py`, `tools/ledger/import_bundle.py`),
+and `claims.jsonl` built by the one-time D-E migration
+(`tools/ledger/migrate_ledger.py`): 871 entries — 23
+canonical extracted claims (31 P1 source records, 8 merged
+instances preserved as sources under D-B), 31 research-check
+annotation entries (advisory; no claim changed), 817
+canonical bundle claims (1,624 P2 source records in 862
+(spec, claim) pairs; the double-format question answered —
+two serializations of one population; 45 pairs merged
+across 44 cross-spec proposition groups). Validator over
+the built ledger: PASS, falsifier coverage 831 of 840
+(bundle 817/817; extracted 14/23 — the store's field is
+`falsification_condition`, a smaller gap than the package's
+0-of-31 premise; the 9 nulls stay counted, never invented).
+Reconciliation reports and the stage record:
+`stage-1-record.md` + `records/`. The D-A-generalization
+pattern note is written (T105,
+`records/pattern-note-ledger-schema-validator.md`) for
+delivery to the RCPH and Atlas chats. Stages 2–5 proceed
+in the owner's order under their own PRs; no verdict,
+status, stage, or score was changed by this landing
+(C086-20, mirror-checked).
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

@@ -91,7 +91,7 @@
    },
    "lane2_drafts": {
     "file": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
-    "sha256": "3f645c9a4132ba5a0bc5fca4ca22810b8b6169a2f1f9f85f35990c7b72df33fb"
+    "sha256": "7b62d7dba6cf8bc294dcd340b550aff7c5bd44cdababfbf24e475ca620a87bc9"
    },
    "anchors": {
     "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -111,15 +111,15 @@
   "specs/056-sign821-recovery/freeze.md": "47f06e42750d699ce97443dc1e8ea3a162bc7d7884c83fe2e87d544a33aa2d67",
   "specs/056-sign821-recovery/spec.md": "1ba0e561de232d6fa3437a67662c22222888ba6aee503f5a633ef49b0c9fc517",
   "specs/056-sign821-recovery/claims.json": "0159411ca3a63675449c0fcfc6e2f5cf9007a210c1034cded39ac30c1b5e19f5",
-  "specs/056-sign821-recovery/adjudication.md": "282a6d0ce114166658f15ef3ee1ad04f8a495f95c219711c8fd25aeeb4494e1d",
+  "specs/056-sign821-recovery/adjudication.md": "b3d7714a1dbbabb88342dbbd5a58fd273712a6a62c2b8a16ce0168514dd04e1a",
   "specs/056-sign821-recovery/aee/freeze-aee-note.md": "c2a534e663bd252c66528a22cabca241217c8b4fea28af7437505d86d92ff7fb",
-  "specs/056-sign821-recovery/build_freeze.py": "0ce9be1f55066b5f25a3bde4020399cf7353cce2b5c2cccce44ae28f0c7849d7",
-  "backend/tests/test_spec056_freeze.py": "a4846ba7b7b2f1cff979242f3a59a2f92d1b8f7d3636b8e56267b71ee4e487b0"
+  "specs/056-sign821-recovery/build_freeze.py": "3de604e0e61c28636de94f981f935ce4346d38f4f6655a2fef4c8c48b73dec97",
+  "backend/tests/test_spec056_freeze.py": "0453903d10c864eac6a559a10a762ad031c813f5940db28aa7a1640261efe095"
  },
  "environment": {
   "python": "3.12.3",
   "platform": "Linux",
   "aee": "1.5.0"
  },
- "digest": "64c28ce1aa379d9b47d230544e372b3446906d53422fe16da51fbce3bc94a63e"
+ "digest": "039b16eb11424e5ffb3f523199d9b7849ee53afd2f9b9b709ab75bef73d5f50e"
 }

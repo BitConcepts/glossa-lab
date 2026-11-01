@@ -20,7 +20,7 @@
     "spec": "specs/057-five-sources-heading",
     "phase": "Phase-419",
     "outcome": "headline class C - PARTIAL RECOVERY WITH UNLOCATED SOURCES (r = 2, e = 1, u = 2), executed 2026-10-21: S-3 and S-4 CLAIM RECOVERED, S-2 PASSAGE EMPTY, and S-1 and S-5 SOURCE UNLOCATED with sub-state HEADING NOT PRESENT IN HELD TEXT, because section 4 step 4 (search the source document's own text layer) could not run - no copy of either source document exists in the repository",
-    "freeze_digest": "237b923a2c19b216e0476f70d17a956db0ca68d1ba8af6902109099a82c820d9",
+    "freeze_digest": "695293dfe32b29204f99d425b39cb266a19b3bd0b34f63feeab1ecbdbdce0318",
     "posture": "Spec 057's frozen record, outcome, and the canonical heading record stand unedited (DD-065-1); the heading record stands superseded-not-retired until both sources resolve under this successor"
    },
    "act": "a successor recovery act for the two unlocated rows: search the acquired documents' own text layers under Spec 057 section 5's heading rule for the merged heading 'Statistical finding: positional analysis' - S-5 on its acquired, pinned file; S-1 under the frozen two-arm contract - and account for each row with exactly one outcome from the frozen set of spec section 6",
@@ -115,9 +115,9 @@
     },
     "spec057_freeze_record": {
      "path": "specs/057-five-sources-heading/freeze.json",
-     "sha256": "3cc68c372790d6bd62d9ab1bb43b15ec2f43502dd614150d660d33b4c452d8af",
+     "sha256": "c6b081ad00a6a9ae1f06710daa5d3b13395d7eb4615afb898fcea89bdaf68d9d",
      "bytes": 23935,
-     "digest": "237b923a2c19b216e0476f70d17a956db0ca68d1ba8af6902109099a82c820d9"
+     "digest": "695293dfe32b29204f99d425b39cb266a19b3bd0b34f63feeab1ecbdbdce0318"
     },
     "spec057_outcome": {
      "path": "specs/057-five-sources-heading/outcome.md",
@@ -143,15 +143,15 @@
   "specs/065-s1-s5-heading-successor/freeze.md": "def113b749109dc5d47817dee59b15ae027f5d0b5d677068309cd0f70d4bb500",
   "specs/065-s1-s5-heading-successor/spec.md": "75cdef5f305082e6e17efa09de0a268b83796eec0dcf72d5ccda4f1fcf9fb6aa",
   "specs/065-s1-s5-heading-successor/claims.json": "56fe91a6318b8655527a69d7c41e65cdb7c785c4259b378a873cc13630a397a2",
-  "specs/065-s1-s5-heading-successor/adjudication.md": "8f74124ce0174a912495a8bf8302a1e2e83395683c759b3dd298da4374b3f1ca",
+  "specs/065-s1-s5-heading-successor/adjudication.md": "a73958af2ea9d25116114bb35aa769d8e789890baaa1a2f6fef0d54890adfa23",
   "specs/065-s1-s5-heading-successor/aee/freeze-aee-note.md": "f83f6b815a843df55181f04cc8e0af2167492bca5fb2413d358d35e850e833d0",
-  "specs/065-s1-s5-heading-successor/build_freeze.py": "b0ef4fb5a66533e50f72441e09ca03c2f2cd3006c2969d6649e3e70bf03687b2",
-  "backend/tests/test_spec065_freeze.py": "00f9c58926437ec87e2a93f1fa3c1c7f05d0c68ccebb9becd2e542ff8526cb18"
+  "specs/065-s1-s5-heading-successor/build_freeze.py": "76ae926891237976031ee6857e55a88442fad1fe9ef0e787798c85afa3918e02",
+  "backend/tests/test_spec065_freeze.py": "120713b4caacd24196805335d22a5d2d79d542545231aee042c6d178aad5af34"
  },
  "environment": {
   "python": "3.12.3",
   "platform": "Linux",
   "aee": "1.5.3"
  },
- "digest": "f50a6e9c45d96fe15e737ee83a46b83c2c7e150e4a29421ccb5ec2be7a428c09"
+ "digest": "a5ce5feca6e45826b4ed528e64ea3e8bc30f16b07347fd86d31d8f2c6dd28386"
 }

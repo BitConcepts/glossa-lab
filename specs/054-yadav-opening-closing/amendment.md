@@ -537,3 +537,26 @@ amended run can be read as doing so.
 *AI disclosure: drafted by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## 13. Post-freeze digest recomputation — 2026-11-01
+
+The §9.11 pointer addendum appended to
+`adjudication.md` on 2026-10-25 for the RT-20
+disposition drifted that digest-covered file's
+hash from the digest then standing in
+`freeze.json`. Although §9.11 edited no ruling
+or digest-covered ruling text, the freeze
+mechanism hashes the whole file, so its statement
+that no digest changed did not complete the
+recomputation act prescribed by the file's own
+§9.10 pattern.
+
+The freeze digest is therefore recomputed in
+this same act over the appended record and
+stands in `freeze.json`, completing §9.10's
+prescribed append-then-recompute pattern. No
+ruling, decision, or previously frozen text was
+edited by this completion act; the only textual
+addition is this dated record.
+
+*— post-freeze recomputation record, 2026-11-01.*

@@ -32,8 +32,11 @@ requiring this check with the freeze after the shadow.
 Modes:
   check_freeze_gate.py <spec-dir> [<spec-dir> ...]
   check_freeze_gate.py --all                 # every specs/*/ with gate-records/
-  check_freeze_gate.py --pr-scope --base REF # spec/demo dirs whose freeze.json
-                                             # or gate-records/ changed vs REF
+  check_freeze_gate.py --pr-scope --base REF # spec dirs in the gate-records
+                                             # regime (gate-records/ carried
+                                             # in the tree or at REF) whose
+                                             # freeze.json or gate-records/
+                                             # changed vs REF
 Exit 0 = every checked directory passes; 1 = at least one failure.
 """
 
@@ -175,6 +178,30 @@ def all_gate_record_dirs():
     return out
 
 
+def _in_gate_records_regime(rel, base):
+    """Whether spec dir `rel` belongs to the gate-records regime.
+
+    The C4 gate-records population is the specs that carry a
+    gate-records/ directory — the same population --all discovers
+    by globbing specs/*/gate-records. Older framework026-regime
+    specs carry freeze.json with no gate-records/ by design (their
+    own test_spec*_freeze.py tests guard them), so a freeze.json
+    change there must not pull them into --pr-scope. A dir is in
+    the regime if gate-records/ exists in the working tree OR
+    existed at the base ref — the base-ref arm keeps a change that
+    deletes a regime spec's gate-records/ in scope, so
+    check_spec_dir fails it rather than the deletion silently
+    dropping the spec from the gate.
+    """
+    if (REPO_ROOT / rel / "gate-records").is_dir():
+        return True
+    ls = subprocess.run(
+        ["git", "ls-tree", base, "--", f"{rel}/gate-records/"],
+        capture_output=True, text=True, cwd=REPO_ROOT, timeout=120,
+    )
+    return ls.returncode == 0 and bool(ls.stdout.strip())
+
+
 def pr_scope_dirs(base):
     diff = subprocess.run(
         ["git", "diff", "--name-only", f"{base}...HEAD"],
@@ -197,7 +224,11 @@ def pr_scope_dirs(base):
                 trigger = parts[-1] == "freeze.json" or "gate-records" in parts
                 candidates[rel] = candidates.get(rel, False) or trigger
                 break
-    return [REPO_ROOT / rel for rel, trig in candidates.items() if trig]
+    return [
+        REPO_ROOT / rel
+        for rel, trig in candidates.items()
+        if trig and _in_gate_records_regime(rel, base)
+    ]
 
 
 def main(argv):

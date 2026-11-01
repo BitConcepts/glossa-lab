@@ -204,7 +204,7 @@
    },
    "lane2_drafts": {
     "file": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
-    "sha256": "3f645c9a4132ba5a0bc5fca4ca22810b8b6169a2f1f9f85f35990c7b72df33fb"
+    "sha256": "7b62d7dba6cf8bc294dcd340b550aff7c5bd44cdababfbf24e475ca620a87bc9"
    },
    "anchors": {
     "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -224,15 +224,15 @@
   "specs/057-five-sources-heading/freeze.md": "caeb1727202ed180c538d9915654b02618e17e82ed8bc6d32cb72e7e30927d53",
   "specs/057-five-sources-heading/spec.md": "0798d51aac680c981fe38bf45761358231957391b67cd24228b5cba675ec9e8d",
   "specs/057-five-sources-heading/claims.json": "ca9dac4fc08ff56421a04fbc1174f11ba88bbcd9084168dca912af57c22554f8",
-  "specs/057-five-sources-heading/adjudication.md": "041880706d9ebae2c1a30a5dae8cd2066d915317fb551d46af469dd2fd4ec017",
+  "specs/057-five-sources-heading/adjudication.md": "5777c9e60eacf2afb76cb057ea8210b318210bbc7fb04cff9429b59b0d06bbc0",
   "specs/057-five-sources-heading/aee/freeze-aee-note.md": "7066ac68ef71a7ada095ef3d5563acacb24bf8c080550831ceef5d6bc8da9153",
-  "specs/057-five-sources-heading/build_freeze.py": "5d49700fafe45c6e5912cb46b4f58fb92bf4356731358bc9139c291a50daa36e",
-  "backend/tests/test_spec057_freeze.py": "50c76b92bd479fd09766ed4727ad2d1d3d49a5efa3e38b8281095600eca6f6ff"
+  "specs/057-five-sources-heading/build_freeze.py": "91c5f45c405dc4a2fc814010806672932d61f3d446cb3880b88731219e3e7adc",
+  "backend/tests/test_spec057_freeze.py": "47873c41a82cc2c30aa7ee054fee4cf297500d975f76856f8a30ed28089af3f8"
  },
  "environment": {
   "python": "3.12.3",
   "platform": "Linux",
   "aee": "1.5.3"
  },
- "digest": "237b923a2c19b216e0476f70d17a956db0ca68d1ba8af6902109099a82c820d9"
+ "digest": "695293dfe32b29204f99d425b39cb266a19b3bd0b34f63feeab1ecbdbdce0318"
 }

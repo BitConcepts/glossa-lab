@@ -628,3 +628,80 @@ rule — is frozen as designed.
 *AI disclosure: drafted by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen
 Pierson, per constitution §VI.*
+
+
+## 8. Post-freeze citation refresh - 2026-11-01 (cascade)
+
+Recorded by dated append; the digest-covered
+text above is not edited, and no ruling, design
+fact, claim, or verdict of this spec changes.
+
+**The drift.** This spec cites no lane-2 pin
+of its own. Its predecessor fence cites Spec
+057's freeze record by two values: the freeze
+digest
+`237b923a2c19b216e0476f70d17a956db0ca68d1ba8af6902109099a82c820d9`
+and the freeze record's file SHA-256
+`3cc68c372790d6bd62d9ab1bb43b15ec2f43502dd614150d660d33b4c452d8af`.
+Both moved on 2026-11-01 as a direct
+consequence of Spec 057's own lane-2 citation
+refresh in the same act (PR #477): the Spec
+029 lane-2 adopted drafts file changed under
+the owner's adoption amendment of 2026-11-01,
+Spec 057 refreshed its pin and recomputed its
+freeze in the same act, and its record now
+stands at digest
+`695293dfe32b29204f99d425b39cb266a19b3bd0b34f63feeab1ecbdbdce0318`
+and file SHA-256
+`c6b081ad00a6a9ae1f06710daa5d3b13395d7eb4615afb898fcea89bdaf68d9d`
+(23,935 bytes - unchanged in size).
+
+**Intersection check.** Every fact this
+design rests on from Spec 057 stands
+unchanged: its executed outcome (headline
+class C, with the S-1 and S-5 sub-state
+HEADING NOT PRESENT IN HELD TEXT), its
+Phase-419 execution, its fence posture, and
+its outcome record, whose file hash this spec
+also pins, are all untouched - Spec 057's
+refresh changed no design fact, claim, or
+verdict of that spec, only its lane-2 citation
+pin and the record files that carry it. What
+moves here is citation values only.
+
+**The act.** This spec's documents prescribe
+no separate post-freeze procedure for a
+changed citation, so the act follows the house
+pattern of Specs 054 and 074: a dated record
+appended here and the freeze digest recomputed
+in the same act. The citations stand in three
+places, and all three move together: the
+`DIGEST057` constant and the `FREEZE057` entry
+of the pin table in
+`backend/tests/test_spec065_freeze.py`, the
+predecessor block and the
+`spec057_freeze_record` input of the freeze
+definition carried in this spec's
+`build_freeze.py` (the instrument `freeze.md`
+section 3 names as computing the machine
+record - its recorded byte count for the
+record, 23,935, stands correct and does not
+move), and the machine record itself. The
+freeze digest is recomputed in this same act
+over the appended record and stands in
+`freeze.json`; the digest it supersedes is
+`f50a6e9c45d96fe15e737ee83a46b83c2c7e150e4a29421ccb5ec2be7a428c09`.
+The prose citations of the superseded values
+in `spec.md`, `freeze.md`, `plan.md`, the
+register's claim descriptions in `claims.json`,
+and the AEE hook artifacts stand unamended as
+the freeze-time record; this addendum is the
+pointer a later reader needs.
+
+*- adjudication record section 8, addendum
+of 2026-11-01 (predecessor citation refresh,
+cascade of the Spec 057 lane-2 citation
+refresh, PR #477). AI disclosure: executed
+by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per
+constitution section VI.*

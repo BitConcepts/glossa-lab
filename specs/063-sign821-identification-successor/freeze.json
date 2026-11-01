@@ -19,7 +19,7 @@
    "predecessor": {
     "spec": "specs/056-sign821-recovery",
     "phase": "Phase-418",
-    "freeze_digest": "64c28ce1aa379d9b47d230544e372b3446906d53422fe16da51fbce3bc94a63e",
+    "freeze_digest": "039b16eb11424e5ffb3f523199d9b7849ee53afd2f9b9b709ab75bef73d5f50e",
     "outcome": "IDENTIFICATION FAILED",
     "posture": "Spec 056's record is cited, never edited (DD-063-1); its IDENTIFICATION FAILED stands as the record until a successor execution under this spec replaces the outcome with its own"
    },
@@ -83,7 +83,7 @@
    },
    "spec056_freeze": {
     "file": "specs/056-sign821-recovery/freeze.json",
-    "digest": "64c28ce1aa379d9b47d230544e372b3446906d53422fe16da51fbce3bc94a63e"
+    "digest": "039b16eb11424e5ffb3f523199d9b7849ee53afd2f9b9b709ab75bef73d5f50e"
    },
    "spec056_outcome": {
     "file": "specs/056-sign821-recovery/outcome.md",
@@ -110,7 +110,7 @@
    },
    "lane2_drafts": {
     "file": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
-    "sha256": "3f645c9a4132ba5a0bc5fca4ca22810b8b6169a2f1f9f85f35990c7b72df33fb"
+    "sha256": "7b62d7dba6cf8bc294dcd340b550aff7c5bd44cdababfbf24e475ca620a87bc9"
    },
    "anchors": {
     "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -147,16 +147,16 @@
   "specs/063-sign821-identification-successor/freeze.md": "4f2d4584c4203251ffb1115e4111906723b587303773d4cc49d69198885913e1",
   "specs/063-sign821-identification-successor/spec.md": "9faca0244519d2ed3a6a4ebcacd002eaebb1cd89d2d5cd2f7aaa534c22bb0701",
   "specs/063-sign821-identification-successor/claims.json": "21a8ce3d92b60570f7cde4879d50ee0d219de61ed10c211aa9c9016226332754",
-  "specs/063-sign821-identification-successor/adjudication.md": "01ef1fb1c8baaa7e23bf949cab1e7a755c8c2f2fa4d71f31b0d41120e53bad85",
+  "specs/063-sign821-identification-successor/adjudication.md": "a908d7714d0a46c008299509f35b9410116d935039fc38595b60aa77708a990b",
   "specs/063-sign821-identification-successor/drawn-form-reference-821.json": "695dd35d55bd2f68d8c9db0ea79dde249b53c55d11ed2f622752a18511e65999",
   "specs/063-sign821-identification-successor/aee/freeze-aee-note.md": "28b7fc1093d5db22105b98897a8f64d1837b3f5f8fb4dbb593fc205aef6b7b60",
-  "specs/063-sign821-identification-successor/build_freeze.py": "4dbc40e40940990fc91e8397d224e990779249c9606e42cb677e07c99eacf5ec",
-  "backend/tests/test_spec063_freeze.py": "7e29cd488abe20cb0d364cf8ca8705b1a38803f19c98baf6d72eaebda176ed0f"
+  "specs/063-sign821-identification-successor/build_freeze.py": "e3e4ffac7d14ffba1f1f7bbe8527d84cfcff7a62c8a2a1da5efda8b560642b98",
+  "backend/tests/test_spec063_freeze.py": "ddc2788f0ba633149dbda68b9ad54f76f33236312293e52a7d82b0dcb3b29353"
  },
  "environment": {
   "python": "3.12.3",
   "platform": "Linux",
   "aee": "1.5.3"
  },
- "digest": "dc24a10ec177d5f1eb3b73d29ab6f646b4c77b02ae30da2ca86002cc57a49ed9"
+ "digest": "023604281ca3ad08db7bac5bb740795717720406367bcdf776a87ebb66b2f087"
 }

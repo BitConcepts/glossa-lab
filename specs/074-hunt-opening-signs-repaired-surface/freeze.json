@@ -103,7 +103,7 @@
   "specs/074-hunt-opening-signs-repaired-surface/freeze.md": "86bd3238a562f13a5d39fec12aa5fca84f9a9ba3a1055aec7aa4fa9e332ef331",
   "specs/074-hunt-opening-signs-repaired-surface/spec.md": "76546c4a2cce75a698750c13fea062e17980dd2d9906d1c45b41a8900fc18399",
   "specs/074-hunt-opening-signs-repaired-surface/claims.json": "965a157996623d2d70323a8b6c1ba70c2ed0d22bfcfe67e93cce8188c597ba11",
-  "specs/074-hunt-opening-signs-repaired-surface/adjudication.md": "4e6d6f818e4a515f62631aec296321b0d8c057615e9bfc91e7bc53649db15e05",
+  "specs/074-hunt-opening-signs-repaired-surface/adjudication.md": "5c5ea6d9368ef9f6e70ae5c9a6cbbbb80bb1ba771bea845c5cc88e09a85c36ea",
   "specs/074-hunt-opening-signs-repaired-surface/aee/freeze-aee-note.md": "2fea4442d4353da8523b469f6dfa243e312025df25f7187a08f895cffa825110",
   "specs/074-hunt-opening-signs-repaired-surface/build_freeze.py": "1a6215dbb122fca707b4a754402db3fa5f34193847da7116c55196bd940f6aa4",
   "backend/tests/test_spec074_freeze.py": "acc38adc6a23b1e08268c905a64f4e00122c2af579b5b9a23e86f8a6b5bce101"
@@ -113,5 +113,5 @@
   "platform": "Linux",
   "aee": "1.0.4"
  },
- "digest": "5416a0d331e76fcec720746849969f2e86e9d79f2cc0fa583e1050662ffba36c"
+ "digest": "aae463b4e7d177466e29d2c43c7b1b35430fc1baf868f3da0edccaa55647fbec"
 }

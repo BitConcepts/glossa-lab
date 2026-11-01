@@ -13,6 +13,7 @@
 //     session on the very next request, FR-004).
 
 import type { GlobalType, WorkspaceRole } from "./types";
+import { sessionExpiryIso } from "./session";
 
 export interface SessionIdentity {
   userId: string;
@@ -84,12 +85,14 @@ export class D1SessionStore implements SessionStore {
   }
 
   async touchSession(tokenHash: string, now: Date): Promise<void> {
+    // Sliding lifetime (D-3, T016): activity stamps last_seen_at AND
+    // extends expires_at to now + 30 days, in the same statement.
     await this.db
       .prepare(
-        `UPDATE sessions SET last_seen_at = ?
+        `UPDATE sessions SET last_seen_at = ?, expires_at = ?
           WHERE token_hash = ? AND revoked_at IS NULL`,
       )
-      .bind(now.toISOString(), tokenHash)
+      .bind(now.toISOString(), sessionExpiryIso(now), tokenHash)
       .run();
   }
 }

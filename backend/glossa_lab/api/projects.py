@@ -21,9 +21,11 @@ import uuid
 from datetime import datetime, timezone
 from typing import Any
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel
 
+from glossa_lab.cloud_scope import actor_from_request, decorate_attribution
+from glossa_lab.config import cloud_mode_enabled
 from glossa_lab.database import get_db
 
 router = APIRouter(prefix="/api/v1/projects", tags=["projects"])
@@ -42,6 +44,16 @@ class ProjectBody(BaseModel):
     experiment_ids: list[str] = []
     corpus_ids: list[str] = []
     is_active: bool = False
+    # Spec 083: the workspace slug — the project's identity for cloud
+    # scope. Optional; derived from the label when not supplied.
+    slug: str = ""
+
+
+def _decorate(project: dict[str, Any]) -> dict[str, Any]:
+    """Spec 083 (T023): label the actor at serialization in cloud mode."""
+    if cloud_mode_enabled() and isinstance(project, dict):
+        return decorate_attribution(project)
+    return project
 
 
 @router.get("")
@@ -49,7 +61,7 @@ async def list_projects() -> list[dict[str, Any]]:
     db = get_db()
     if db is None:
         raise HTTPException(503, "Database not ready")
-    return await db.list_projects()
+    return [_decorate(p) for p in await db.list_projects()]
 
 
 @router.get("/active")
@@ -60,7 +72,7 @@ async def get_active_project() -> dict[str, Any]:
     project = await db.get_active_project()
     if project is None:
         raise HTTPException(404, "No projects configured")
-    return project
+    return _decorate(project)
 
 
 @router.get("/{project_id}")
@@ -71,16 +83,22 @@ async def get_project(project_id: str) -> dict[str, Any]:
     project = await db.get_project(project_id)
     if project is None:
         raise HTTPException(404, f"Project {project_id} not found")
-    return project
+    return _decorate(project)
 
 
 @router.put("/{project_id}")
-async def upsert_project(project_id: str, body: ProjectBody) -> dict[str, Any]:
+async def upsert_project(
+    project_id: str, body: ProjectBody, request: Request
+) -> dict[str, Any]:
     db = get_db()
     if db is None:
         raise HTTPException(503, "Database not ready")
     now = datetime.now(timezone.utc).isoformat()
-    return await db.upsert_project(
+    # Spec 083 (T023): stamp the acting cloud user, when there is one.
+    actor = actor_from_request(request)
+    existing = await db.get_project(project_id)
+    stamp = actor.stamp() if actor is not None else None
+    return _decorate(await db.upsert_project(
         project_id=project_id,
         label=body.label,
         description=body.description,
@@ -92,7 +110,10 @@ async def upsert_project(project_id: str, body: ProjectBody) -> dict[str, Any]:
         corpus_ids=body.corpus_ids,
         is_active=body.is_active,
         created_at=now,
-    )
+        slug=body.slug or None,
+        created_by=stamp if existing is None else None,
+        modified_by=stamp,
+    ))
 
 
 @router.post("/{project_id}/activate")

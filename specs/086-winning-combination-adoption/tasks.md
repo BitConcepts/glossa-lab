@@ -236,7 +236,7 @@ test output) — not a summary of it.
 
 ## Stage 5 — Layered map (PR: `feat/086-layered-map`)
 
-- [ ] T501 **Wireframes first (gate):** Spec 085's three
+- [x] T501 **Wireframes first (gate):** Spec 085's three
   screens conformed to this spec — header strip (claims by
   status; validated-anchor share; nearest dated items);
   every element citing its ledger ids; matrix view's primary
@@ -247,14 +247,14 @@ test output) — not a summary of it.
   Acceptance: gate (owner approval act on the actual screens).
   *This does not establish the built screens will match —
   that is T504's comparison.*
-- [ ] T502 Map builder: generates `glossa-indus/map/
+- [x] T502 Map builder: generates `glossa-indus/map/
   map-data.json` from the gated matrix (system/claim/evidence
   view data; header state computed, never typed), published
   only through Stage 3's gated publication. (C086-17, C086-18)
   Acceptance: test — gate V5/V6 pass against the candidate;
   builder output filed. *This does not establish the surface
   renders it faithfully — that is T503/T504.*
-- [ ] T503 The surface: the System graph screen rebuilt on the
+- [x] T503 The surface: the System graph screen rebuilt on the
   gated artifact + build-stamped API responses; scoping per
   Spec 083 (C086-19); staleness shown from the as-of stamp
   (C086-18). Acceptance: test + human-as-oracle — rendered
@@ -263,14 +263,14 @@ test output) — not a summary of it.
   *This does not establish the picture is easy to understand
   for anyone else — only that it is faithful, gated, and was
   approved as legible by the oracle named.*
-- [ ] T504 Verification: Playwright screenshots at desktop
+- [x] T504 Verification: Playwright screenshots at desktop
   1440 and mobile 390 compared screen-by-screen against the
   approved wireframes; any deviation stops the step and is
   reported, not improvised around (Spec 081/083 precedent).
   Acceptance: gate — comparison record filed, gate output for
   the shipped artifact filed verbatim with it. *This does not
   establish behavior beyond the rendered states compared.*
-- [ ] T505 Closeout: the audit's six gap items re-scored
+- [x] T505 Closeout: the audit's six gap items re-scored
   against the built chain (ledger → matrix → gate → settling →
   map) and the re-score filed; LEDGER.md entry; any pattern
   improvement found in this stage written up and delivered

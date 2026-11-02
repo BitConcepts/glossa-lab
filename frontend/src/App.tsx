@@ -8,6 +8,7 @@ import { ExperimentBuilderView } from "./components/ExperimentBuilderView";
 import { AIToolsView } from "./components/AIToolsView";
 import { HelpView } from "./components/HelpView";
 import { ProgramHome } from "./components/ProgramHome";
+import { SystemGraphView } from "./components/SystemGraphView";
 import { DigestionBoard, effectiveStage } from "./components/DigestionBoard";
 import { ClaimsView } from "./components/ClaimsView";
 import { FoundationCheckView } from "./components/FoundationCheckView";
@@ -48,7 +49,7 @@ import { CloudWorkspaceCard, UserChip, useAdminInviteCount } from "./cloud/widge
  */
 type Tab =
   | "programs" | "home" | "claims" | "digestion" | "evidence" | "data"
-  | "analysis" | "experiments" | "discovery" | "loop" | "reports"
+  | "analysis" | "experiments" | "system-graph" | "discovery" | "loop" | "reports"
   | "jobs" | "status" | "settings" | "help"
   // Cloud edition (Spec 083): account self-service + the admin
   // surface. These tabs exist only while a cloud session is active.
@@ -65,7 +66,7 @@ type Tab =
   | "dashboard" | "corpora" | "pipelines" | "hypotheses" | "notebooks"
   | "citations" | "correspondence" | "exp-builder";
 
-interface NavItem { id: Tab; label: string; icon: string; count?: number; alert?: boolean; adminTab?: string; key?: string }
+interface NavItem { id: Tab; label: string; icon: string; count?: number; alert?: boolean; adminTab?: string; key?: string; chip?: string }
 
 const SIDEBAR_W = 232;
 const MOBILE_NAV_H = 56;
@@ -92,7 +93,7 @@ function resolveView(view: string, hasProgram: boolean): Tab | null {
 
 const VALID_TABS: ReadonlySet<string> = new Set([
   "programs", "home", "claims", "digestion", "evidence", "data", "analysis",
-  "experiments", "discovery", "loop", "reports", "jobs", "status", "settings",
+  "experiments", "system-graph", "discovery", "loop", "reports", "jobs", "status", "settings",
   "help", "foundation-check", "ai-tools", "builder", "entropy", "signs", "timeline",
   "account", "admin",
 ]);
@@ -100,7 +101,7 @@ const VALID_TABS: ReadonlySet<string> = new Set([
 const TAB_LABELS: Partial<Record<Tab, string>> = {
   programs: "Programs", home: "Home", claims: "Claims", digestion: "Digestion",
   evidence: "Evidence & sources", data: "Data", analysis: "Analysis",
-  experiments: "Experiments", discovery: "Discovery", loop: "Research loop",
+  experiments: "Experiments", "system-graph": "System graph", discovery: "Discovery", loop: "Research loop",
   reports: "Reports & ledger", jobs: "Jobs", status: "Status",
   settings: "Settings", help: "Help", "foundation-check": "Foundation Check",
   account: "Account & security", admin: "Admin",
@@ -618,6 +619,7 @@ function AppContent() {
     { id: "data", label: "Data", icon: "▦" },
     { id: "analysis", label: "Analysis", icon: "◈" },
     { id: "experiments", label: "Experiments", icon: "⬡" },
+    { id: "system-graph", label: "System graph", icon: "⬡", chip: "new" },
     { id: "discovery", label: "Discovery", icon: "◎", count: discoveryCount },
     { id: "loop", label: "Research loop", icon: "↻" },
     { id: "reports", label: "Reports & ledger", icon: "▨" },
@@ -724,6 +726,15 @@ function AppContent() {
             color: item.alert ? "#fff" : "#dbeafe", flexShrink: 0,
           }}>
             {item.count}
+          </span>
+        )}
+        {item.chip && (
+          <span style={{
+            fontSize: 9, fontWeight: 700, padding: "1px 5px", borderRadius: 4,
+            background: "#16a34a", color: "#fff", flexShrink: 0,
+            textTransform: "uppercase", letterSpacing: 0.4,
+          }}>
+            {item.chip}
           </span>
         )}
       </button>
@@ -953,6 +964,7 @@ function AppContent() {
                     />
                   )}
                   {tab === "experiments" && <ExperimentBuilderView darkMode={darkMode} />}
+                  {tab === "system-graph" && <SystemGraphView darkMode={darkMode} />}
                   {tab === "discovery" && <DiscoveryView />}
                   {tab === "loop" && (
                     <div style={{ maxWidth: 1180, margin: "0 auto", width: "100%" }}>

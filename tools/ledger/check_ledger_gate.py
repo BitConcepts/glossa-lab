@@ -75,7 +75,9 @@ def _layer_of(path: str) -> str | None:
         "backend/glossa_lab/matrix_generate.py"
     ):
         return "matrix"
-    if path.startswith("glossa-indus/map/"):
+    if path.startswith("glossa-indus/map/") or path == (
+        "backend/glossa_lab/map_generate.py"
+    ):
         return "map"
     if path in (
         "backend/reports/INDUS_FINAL_ANCHORS.json",

@@ -755,3 +755,222 @@ def test_gate_settle_copies_agree_with_the_engine_copies():
     assert lg.SETTLE_FRAME_PREFIXES == st.FRAME_PREFIXES
     assert lg.SETTLING_CANONICAL_REL == st.CANONICAL_REL
     assert lg.STRICT_RULE_ID == st.STRICT_RULE_ID
+
+
+# ---------------------------------------------------------------------------
+# Stage 5 (T502) — the map legs are live: agreement of the
+# registered copies, the census on the clean tree, and teeth
+# per map class (a seeded divergence per class, named).
+
+
+PARPOLA = "parpola_2010_dravidian_solution_manual_002"
+SUPERSEDED_PTR = (
+    "glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json:"
+    "yadav_2009_arxiv_manual_002#spec054_outcome_append_2026_10_24"
+)
+
+
+@pytest.fixture()
+def map_scratch(scratch: Path) -> Path:
+    """The scratch tree plus the map chain's records of
+    record (the published map, its definitions, the
+    assignment sets, the stored runs, the filed comparison)
+    as real copies a test can mutate."""
+    root = scratch
+    for rel in (
+        "glossa-indus/map/DEFINITIONS.md",
+        lg.MAP_REL,
+        lg.ASSIGNMENT_SETS_REL,
+        lg.COMPARISON_REL,
+    ):
+        dst = root / rel
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(ROOT / rel, dst)
+    runs_dst = root / lg.RUNS_REL_DIR
+    runs_dst.mkdir(parents=True, exist_ok=True)
+    for f in sorted((ROOT / lg.RUNS_REL_DIR).glob("*.json")):
+        shutil.copyfile(f, runs_dst / f.name)
+    return root
+
+
+def _checks(report: lg.GateReport, prefix: str) -> list[lg.Check]:
+    return [c for c in report.checks if c.name.startswith(prefix)]
+
+
+def _rewrite_map(root: Path, mutate) -> None:
+    path = root / lg.MAP_REL
+    data = json.loads(path.read_text(encoding="utf-8"))
+    mutate(data)
+    path.write_bytes(
+        json.dumps(data, ensure_ascii=False, indent=1).encode("utf-8")
+        + b"\n"
+    )
+
+
+def test_map_definitions_copies_agree_with_the_builder_copies():
+    """Same-motion discipline for map-defs v1: the gate's
+    registered copies agree with the builder's, field for
+    field (the DEFINITIONS.md §11 pattern)."""
+    from glossa_lab import map_generate as mp
+
+    assert lg.GATE_MAP_DEFS_VERSION == mp.MAP_DEFS_VERSION
+    assert lg.PENDING_VALIDATIONS_REASON == mp.PENDING_VALIDATIONS_REASON
+    assert lg.SETTLING_LABEL == mp.SETTLING_LABEL
+    assert lg.MAP_S_R3_NOTE == mp.S_R3_NOTE
+    assert lg.MAP_RUN_RESULT_FIELDS == mp.RUN_RESULT_FIELDS
+    assert lg.ASSIGNMENT_SETS_REL == mp.ASSIGNMENT_SETS_REL
+    assert lg.RUNS_REL_DIR == mp.RUNS_REL_DIR
+    assert lg.COMPARISON_REL == mp.COMPARISON_REL
+    assert lg.PENDING_VALIDATION_STATUS == "pending_non_sa_validation"
+
+
+def test_map_legs_live_and_pass_on_a_clean_map_tree(map_scratch):
+    report = lg.run_gate(map_scratch)
+    assert report.ok, report.render()
+    v2 = _check(report, "V2 count equivalence — claims by status: ledger == map header")
+    assert v2.status == "PASS"
+    assert "840 claims counted across 8 statuses" in "\n".join(v2.evidence)
+    v5_full = _checks(report, "V5 map recomputation")[1]
+    assert v5_full.name.endswith("(map-defs v1 copies)")
+    assert v5_full.status == "PASS"
+    census = "\n".join(v5_full.evidence)
+    assert "1363 map edges by relation" in census
+    assert "UNPROVEN on the live population: corpus_texts" in census
+    assert "UNPROVEN on the live population: constrains" in census
+    v6 = _check(report, "V6 anchor shares — map header leg")
+    assert v6.status == "PASS"
+    assert "287 register records, 94 of them strict" in "\n".join(v6.evidence)
+    v4 = _check(report, "V4 relation-carrying citations")
+    assert "map edge census: supports 1356, opposes 7, constrains 0" in (
+        "\n".join(v4.evidence)
+    )
+
+
+def test_v9_census_names_the_map_writer_on_the_real_tree():
+    report = lg.run_gate(ROOT, scope={"V9"})
+    v9 = _check(report, "V9 no write path — matrix/map writer census")
+    assert v9.status == "PASS"
+    assert "map_generate.py" in "\n".join(v9.evidence)
+
+
+def test_teeth_v2_map_header_count_flip_fails(map_scratch):
+    def mutate(data):
+        data["header"]["claims_by_status"]["draft"] -= 1
+
+    _rewrite_map(map_scratch, mutate)
+    report = lg.run_gate(map_scratch, scope={"V2"})
+    check = _check(
+        report, "V2 count equivalence — claims by status: ledger == map header"
+    )
+    assert check.status == "FAIL"
+
+
+def test_teeth_v5_map_claims_section_divergence_is_named(map_scratch):
+    def mutate(data):
+        data["claims"][PARPOLA]["does_not_establish"] = "tampered"
+
+    _rewrite_map(map_scratch, mutate)
+    report = lg.run_gate(map_scratch, scope={"V5"})
+    check = _checks(report, "V5 map recomputation")[1]
+    assert check.status == "FAIL"
+    named = "\n".join(check.evidence)
+    assert PARPOLA in named
+    assert "does_not_establish" in named
+
+
+def test_teeth_v5_map_settling_section_divergence_is_named(map_scratch):
+    def mutate(data):
+        data["settling"]["runs"][0]["assigned_count"] = 95
+
+    _rewrite_map(map_scratch, mutate)
+    report = lg.run_gate(map_scratch, scope={"V5"})
+    check = _checks(report, "V5 map recomputation")[1]
+    assert check.status == "FAIL"
+    assert "assigned_count" in "\n".join(check.evidence)
+
+
+def test_teeth_v5_partial_candidate_map_fails_naming_the_section(
+    map_scratch, tmp_path
+):
+    data = json.loads((ROOT / lg.MAP_REL).read_text(encoding="utf-8"))
+    del data["settling"]
+    candidate = tmp_path / "candidate-map.json"
+    candidate.write_text(
+        json.dumps(data, ensure_ascii=False, indent=1) + "\n",
+        encoding="utf-8",
+    )
+    report = lg.run_gate(map_scratch, candidate_map=candidate)
+    check = _checks(report, "V5 map recomputation")[1]
+    assert check.status == "FAIL"
+    assert "settling" in "\n".join(check.evidence)
+
+
+def test_teeth_v6_map_header_share_flip_fails(map_scratch):
+    def mutate(data):
+        data["header"]["validated_anchor_share"] = 0.5
+
+    _rewrite_map(map_scratch, mutate)
+    report = lg.run_gate(map_scratch, scope={"V6"})
+    check = _check(report, "V6 anchor shares — map header leg")
+    assert check.status == "FAIL"
+
+
+def test_teeth_v4_map_edge_citation_must_carry_its_relation(map_scratch):
+    def mutate(data):
+        edge = next(
+            e
+            for e in data["edges"]
+            if e["to"] == YADAV and e["column_class"] == "studies"
+        )
+        edge["citations"] = [YADAV, SUPERSEDED_PTR]
+
+    _rewrite_map(map_scratch, mutate)
+    report = lg.run_gate(map_scratch, scope={"V4"})
+    check = _check(report, "V4 relation-carrying citations")
+    assert check.status == "FAIL"
+    assert SUPERSEDED_PTR in "\n".join(check.evidence)
+
+
+def test_teeth_v7_map_hand_edit_is_a_downstream_defect(map_scratch):
+    def mutate(data):
+        data["claims"][PARPOLA]["status"] = "strongly_supported"
+
+    _rewrite_map(map_scratch, mutate)
+    report = lg.run_gate(map_scratch, regen=True, scope={"V7"})
+    check = _check(report, "V7 lossless regeneration — map data")
+    assert check.status == "FAIL"
+    assert "downstream-defect" in "\n".join(check.evidence)
+    named = lg.run_gate(
+        map_scratch,
+        regen=True,
+        scope={"V7"},
+        intended_change="test-named map change",
+    )
+    check = _check(named, "V7 lossless regeneration — map data")
+    assert check.status == "PASS"
+    assert "intended-change-named" in "\n".join(check.evidence)
+
+
+def test_gated_publication_of_the_map_and_its_negative_control(
+    map_scratch, tmp_path
+):
+    before = (map_scratch / lg.MAP_REL).read_bytes()
+    result = gp.publish_map(map_scratch)
+    assert result["published"] is True
+    assert (map_scratch / lg.MAP_REL).read_bytes() == before
+
+    # Negative control: a candidate whose header count is
+    # flipped is refused by the gate, and the previously
+    # published artifact stays byte-untouched (Amendment 1).
+    candidate_dir = tmp_path / "candidate"
+    candidate_dir.mkdir()
+    data = json.loads(before.decode("utf-8"))
+    data["header"]["claims_by_status"]["draft"] -= 1
+    (candidate_dir / "map-data.json").write_text(
+        json.dumps(data, ensure_ascii=False, indent=1) + "\n",
+        encoding="utf-8",
+    )
+    refused = gp.publish_map(map_scratch, candidate_dir=candidate_dir)
+    assert refused["published"] is False
+    assert refused["gate"].ok is False
+    assert (map_scratch / lg.MAP_REL).read_bytes() == before

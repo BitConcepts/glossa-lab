@@ -12761,3 +12761,49 @@ changed by this landing.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-02 — Spec 086 Stage 5 (build): the layered map, built and gated — Spec 086 complete
+
+Stage 5 of Spec 086 (the Winning Combination adoption) is
+built: the layered map now exists as a generated, gated,
+served layer, and with this landing **Spec 086 is complete**
+— all six stages (the claims ledger, the generated matrix,
+the verification gate with gated publication, the settling
+layer, and now the layered map as the primary surface) stand
+on main's chain under one discipline: truth flows one way,
+ledger → matrix → map, and nothing downstream is hand-edited.
+
+What landed. The map builder (map-defs v1, registered in
+`glossa-indus/map/DEFINITIONS.md`) generates
+`glossa-indus/map/map-data.json` from the ledger through the
+gate-verified matrix and settling records — 1,484 elements,
+1,363 edges, the header contract exactly as approved (claims
+by status; validated-anchor share 94 of 287 = 0.3275; the
+nearest dated items; the 44 pending validations as a count
+with its reason) — and publishes only through the gate. The
+gate's map legs are live: V2's map-header leg, V4 over the
+map's edges, V5's full recomputation of the artifact by the
+gate's own route, V6's map-header leg, V7's lossless
+regeneration over the map, the census rule in force (two
+zero-instance sub-populations reported UNPROVEN, not silently
+passed). Clean tree: full gate 20 PASS / 0 FAIL / 1 NOT-RUN
+(V7 runs under --regen); regen gate 23 PASS / 0 FAIL /
+0 NOT-RUN. The surface is the new System graph screen — five
+screens (system, claim, evidence, matrix, settling) rendering
+the published artifact exactly, scoped to the primary
+workspace, its staleness shown from the as-of stamp — and
+Playwright comparison against the approved wireframes is
+filed with the shots (five named differences, data governing
+in each). Spec 085's audit is re-scored against the built
+whole in the stage record: the matrix layer and the surface
+closed; the entity graph, the live-population edges, the
+constraint engine, and the joining of the two graph worlds
+each partially closed, none inflated. No claim's status,
+stage, or score was changed by this landing; the standing
+position is unchanged — the Indus script is not deciphered,
+and the map says so on its first screen. Full record:
+`specs/086-winning-combination-adoption/stage-5-record.md`
+(T502–T505 sections).
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

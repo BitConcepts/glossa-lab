@@ -57,7 +57,17 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Iterable, Optional
 
-from jsonschema import Draft202012Validator
+# NOTE: ``jsonschema`` is deliberately NOT imported at module
+# level. It is not a project dependency (core ``glossa_lab``
+# modules are stdlib-only — see glossa_lab/intake.py), and the
+# application imports this module at runtime only for the
+# canonical-hash helpers and path constants (the indus-map API
+# serves the published artifact and checks its staleness by
+# hash). The schema validator is intake-time tooling, so
+# ``validate_entry`` imports jsonschema lazily, where it is
+# used; environments that run intake (the ledger tools, the
+# test suite) carry the package, the served app does not
+# need it.
 
 from glossa_lab.proposition_fingerprint import (
     FINGERPRINT_RULES_VERSION,
@@ -184,6 +194,8 @@ def validate_entry(
     cache: Optional[_SourceCache] = None,
 ) -> list[str]:
     """Schema + fingerprint + provenance checks for one entry."""
+    from jsonschema import Draft202012Validator
+
     errors: list[str] = []
     validator = Draft202012Validator(load_schema(root))
     for err in sorted(validator.iter_errors(entry), key=lambda e: list(e.path)):

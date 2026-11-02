@@ -3069,3 +3069,86 @@ export const rebuildSignManifest = (): Promise<{
   manifest_entries: number;
 }> =>
   request("POST", "/signs/images/rebuild");
+
+// ── Spec 086 Stage 5 (T503): the layered map ─────────────────────────────
+// The surface renders the published, gate-verified map artifact exactly
+// (C086-17): these fetchers return the artifact's sections as served by
+// /indus-map; nothing is recomputed client-side. Section payloads are
+// typed structurally at the fields the surface renders.
+
+export interface IndusMapAsOf {
+  ledger_sha256: string;
+  ledger_lines: number;
+  ledger_date: string;
+  ledger_schema: string;
+  matrix_defs: string;
+  map_defs: string;
+  settle_semantics: string;
+  matrix_sha256: string;
+  anchors_register_sha256_raw_bytes: string;
+  assignment_sets_sha256: string;
+  comparison_sha256: string;
+  settling_canonical_sha256: string;
+}
+
+export interface IndusMapNearestItem {
+  date: string;
+  study: string;
+  outcome: string;
+  relation: string;
+  claims: string[];
+}
+
+export interface IndusMapHeader {
+  claims_total: number;
+  claims_by_status: Record<string, number>;
+  validated_anchor_share: number;
+  strict_anchor_share: number;
+  anchors_strict: number;
+  anchors_total: number;
+  nearest_dated_items: IndusMapNearestItem[];
+  pending_validations: { count: number; reason: string };
+  as_of: IndusMapAsOf;
+}
+
+export interface IndusMapStamp {
+  map: string;
+  map_sha256: string;
+  map_defs: string;
+  generated_by: string;
+  as_of: IndusMapAsOf;
+  stale: boolean;
+}
+
+export interface IndusMapEnvelope {
+  header: IndusMapHeader;
+  stamp: IndusMapStamp;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  system?: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  matrix?: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  settling?: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  claim?: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  evidence?: any;
+}
+
+export const fetchIndusMapHeader = (): Promise<IndusMapEnvelope> =>
+  request("GET", "/indus-map/header");
+
+export const fetchIndusMapSystem = (): Promise<IndusMapEnvelope> =>
+  request("GET", "/indus-map/system");
+
+export const fetchIndusMapMatrix = (): Promise<IndusMapEnvelope> =>
+  request("GET", "/indus-map/matrix");
+
+export const fetchIndusMapSettling = (): Promise<IndusMapEnvelope> =>
+  request("GET", "/indus-map/settling");
+
+export const fetchIndusMapClaim = (claimId: string): Promise<IndusMapEnvelope> =>
+  request("GET", `/indus-map/claims/${claimId}`);
+
+export const fetchIndusMapClaimEvidence = (claimId: string): Promise<IndusMapEnvelope> =>
+  request("GET", `/indus-map/claims/${claimId}/evidence`);

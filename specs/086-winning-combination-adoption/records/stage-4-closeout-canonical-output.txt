@@ -1,0 +1,15 @@
+Canonical reproduction, regenerated fresh on this tree for the Spec 086 T407 stage closeout (2026-11-01).
+Route: tools/ledger/run_settling.py verify-canonicals (the engine), then the T404 test file.
+
+PASS null-over-subset
+PASS incumbent-over-subset
+PASS full-register-over-subset
+PASS seeded-conflict-over-subset
+PASS untouched-sign
+PASS incumbent-vs-full-register-over-subset
+  expectations note: absence clause reproduced exactly; the registered note's remainder is brief-specific prose (FINDING-S4-1, stage record)
+verify-canonicals: 6/6 registered canonicals reproduce
+
+backend/tests/test_settling_canonical.py:
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+13 passed, 1 warning in 5.58s

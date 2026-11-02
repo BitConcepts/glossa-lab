@@ -208,7 +208,7 @@ test output) — not a summary of it.
   by quietly editing expectations. *This does not establish
   the semantics are true — it establishes the engine is the
   semantics, mechanically.*
-- [ ] T405 First interchangeability run: incumbent vs
+- [x] T405 First interchangeability run: incumbent vs
   full-register over the same ledger build + corpus snapshot;
   both run records stored; the per-claim divergence list
   emitted, naming pre-registered expectations for touched
@@ -219,7 +219,7 @@ test output) — not a summary of it.
   research artifact). *This does not establish either reading
   — it establishes exactly where they diverge, claim by claim,
   which is the thing narration cannot do.*
-- [ ] T406 The stub's disposition: the Experiment Builder
+- [x] T406 The stub's disposition: the Experiment Builder
   constraint-projection node is wired to the settling service
   or removed from the palette with a pointer (Spec 085
   C085-15, carried in). Acceptance: test — node invocation in
@@ -227,7 +227,7 @@ test output) — not a summary of it.
   "engine removed" error is unreachable. *This does not
   establish experiment authors should settle inside pipelines
   — only that the named capability is no longer a trap.*
-- [ ] T407 Stage 4 closeout: canonical reproduction output,
+- [x] T407 Stage 4 closeout: canonical reproduction output,
   the first dual-run divergence list, and both run records
   filed verbatim. Acceptance: gate. *This does not establish
   any decipherment consequence — settling outputs are

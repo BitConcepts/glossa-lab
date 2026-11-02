@@ -12660,3 +12660,59 @@ is a decipherment claim.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-01 — Spec 086 Stage 4 (closeout): first interchangeability run + stub disposition
+
+Stage 4 closes (T405–T407). The first interchangeability
+run is executed and stored: incumbent vs full-register
+over the same ledger build (`c4e2326e…`, 871 lines) and
+the same corpus snapshot (`08fc96c8…`), over the full
+mahadevan frame (286 signs). Both run records are the
+run store's first: `glossa-indus/ledger/runs/t405-
+incumbent-over-full-frame--b262d06655a4.json` (94
+assigned, 94 contexts, 94 consistent, 0 conflicts) and
+`t405-full-register-over-full-frame--e0892157556b.json`
+(286 assigned, 286 contexts, 94 strict, 94 consistent,
+192 non-strict, 0 conflicts); input pins identical
+across both. The per-claim divergence list is filed
+verbatim (`records/stage-4-dual-run-comparison.json`):
+the ledger's one sign_refs-bearing claim (the Parpola
+claim) is touched by both runs and tallies 0/0/0 under
+both, so the divergence list is empty and the runs
+diverge in coverage only (192 further non-strict
+contexts; no claim's tallies move — S-R2's registered
+value-independence made visible). No pre-registered
+expectation exists for the touched claim; the engine
+generated the absence statement, and the record's 13
+governing outcome records were censused afresh — a
+census that also corrects, in the open,
+FINDING-S4-1's prose attribution: Spec 074's outcome
+record concerns the Hunt (without-kings) claim, and
+the Yadav claim's governing record is Spec 054's. The
+stub is disposed of (Spec 085 C085-15, carried in): the
+CASHypothesisProjector node has been absent from the
+palette since the CPSC engine's removal in May 2026,
+and its contract presupposes that deleted machinery —
+wiring it to glossa-settle-1 would have meant inventing
+semantics — so the orphan stub function is removed from
+the codebase path with a pointer to the settling engine
+at its site, pinned by five tests
+(`test_spec086_stub_disposition.py`); the "engine
+removed" error string no longer exists in any invocable
+path, and the downstream verdict node works unfed and
+fed. One T404 store test's emptiness precondition was
+adapted in the open to the populated store T405 was
+ordered to create (its purity assertion stands,
+strengthened). Gate on the closeout tree: 16 PASS / 0
+FAIL / 4 NOT-RUN (full), 18 PASS (--regen), RESULT
+PASS, counts unchanged. Claims at closeout scope:
+C086-13, C086-14, C086-15 SUPPORTED; C086-16 SUPPORTED
+at Stage 4 scope, its displayed-score leg carried to
+Stage 5. Full record:
+`specs/086-winning-combination-adoption/stage-4-record.md`
+(T405–T407 section). No claim's status, stage, or score
+was changed by this landing, and no settling output in
+it is a decipherment claim.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

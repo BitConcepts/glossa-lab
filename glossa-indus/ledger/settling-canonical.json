@@ -5,12 +5,29 @@
   "semantics": "glossa-settle-1",
   "semantics_document": "glossa-indus/ledger/SETTLING-SEMANTICS.md",
   "registered": "2026-11-01",
+  "re_derivations": [
+    {
+      "date": "2026-11-02",
+      "act": "Spec 087 adoption intake (branch feat/087-spec-package; record: specs/087-node-system-tightening/records/adoption-2026-11-02.md)",
+      "reason": "The claims ledger grew by append-only intake: the 17 bundle claims of Spec 087 (087-node-system-tightening/C087-1..17) were appended through tools/ledger/import_bundle.py on 2026-11-02. The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the new build under this registration's amendment discipline. The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
+      "prior_ledger_pin": {
+        "sha256_canonical": "c4e2326ec8757bb700dac0142dd0adf17d7464b4d929f5b103868c9228f13ccf",
+        "lines": 871
+      },
+      "new_ledger_pin": {
+        "sha256_canonical": "f988ed61404daf8200479e9d1a6580526c7b419ba7e802a3b6b41a5a73a167ac",
+        "lines": 888
+      },
+      "expectations_changed": false,
+      "verification": "tools/ledger/run_settling.py verify-canonicals over the new build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
+    }
+  ],
   "label": "Computation over ledgered relations under glossa-settle-1 semantics. Establishes what the ledger implies under these rules, not what the script says.",
   "provenance": {
     "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256_canonical": "c4e2326ec8757bb700dac0142dd0adf17d7464b4d929f5b103868c9228f13ccf",
-      "lines": 871
+      "sha256_canonical": "f988ed61404daf8200479e9d1a6580526c7b419ba7e802a3b6b41a5a73a167ac",
+      "lines": 888
     },
     "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -516,7 +533,7 @@
       "title": "Dual run over canonical-subset-1: incumbent vs full-register (the interchangeability pair; D-086-Q4's demonstration pair, registered here as a canonical expectation for T405)",
       "inputs": {
         "semantics": "glossa-settle-1",
-        "ledger_sha256": "c4e2326ec8757bb700dac0142dd0adf17d7464b4d929f5b103868c9228f13ccf",
+        "ledger_sha256": "f988ed61404daf8200479e9d1a6580526c7b419ba7e802a3b6b41a5a73a167ac",
         "corpus_snapshot": {
           "path": "glossa-corpus/indus/exports/indus_research.jsonl",
           "sha256_canonical": "08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e"

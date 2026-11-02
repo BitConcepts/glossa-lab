@@ -12716,3 +12716,48 @@ it is a decipherment claim.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-01 — Spec 086 Stage 5 (wireframes): the layered map's screens, for the owner's approval
+
+Stage 5 opens at its gate (T501). The wireframes package
+for the layered map is produced and presented for the
+owner's approval by name; no surface code, builder code,
+or map artifact exists, and T501's checkbox stays
+unticked — its acceptance is the owner's approval act,
+which has not happened. The package (in-repo at
+`specs/086-winning-combination-adoption/records/stage-5-wireframes/`,
+mirrored to the goal workspace) carries five screens in
+the Spec 081/085 format (HTML wireframes, shared
+stylesheet, per-screen annotation blocks, all 10 desktop
++ mobile renders produced): the system view (Spec 085's
+explorer conformed — the node-link canvas removed, since
+the gated chain verifies no claim-graph edge set; the
+790 claim×claim dependency pairs are coverage data, not
+cells), the claim view (new; specimen
+parpola_2010_dravidian_solution_manual_002, exercising
+the empty matrix row, the unresolved sign references,
+the settling bearing, and the falsifier present-but-not-
+evaluable in one claim), the evidence view (new; the
+column side, with the registered matrix-defs vs
+glossa-settle-1 divergence over mahadevan:64/70/72 named
+on the screen), the matrix view (claims×evidence primary;
+claim×sign as a row filter; the unused column classes
+rendered as themselves), and the settling panel (the
+projection panel conformed; the stored T405 incumbent vs
+full-register comparison as its default state). Every
+screen carries the header strip (claims by status;
+validated-anchor share 94 of 287, 0.3275; nearest dated
+items), the as-of stamp line with its STALE behavior,
+and a "Cites:" line per element naming the ledger ids
+behind it. Eight decisions (Q1–Q8) are put to the owner
+with recommendations in the package's decisions.md;
+C086-16's displayed-score leg is designed (the claim
+view's score block, ScoringEngine-labeled, in its honest
+empty state — aee_state is null on 840 of 840 claims) and
+carried to T503/T504 for establishment. Full record:
+`specs/086-winning-combination-adoption/stage-5-record.md`
+(T501 section). No claim's status, stage, or score was
+changed by this landing.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

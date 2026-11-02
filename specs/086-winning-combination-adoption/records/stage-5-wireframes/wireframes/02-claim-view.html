@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — System graph, claim view (Spec 086 wireframe 02)</title>
+<link rel="stylesheet" href="wireframes.css">
+<style>
+  .header-strip { display:flex; gap:18px; flex-wrap:wrap; }
+  .hs-block { flex:1; min-width:250px; }
+  .hs-k { font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px; }
+  .hs-v { font-size:13.5px; line-height:1.5; }
+  .hs-src { font-size:11.5px; color:var(--faint); margin-top:5px; }
+  .layer-tag { display:inline-block; font-size:10.5px; font-weight:700; padding:1px 8px; border-radius:20px; text-transform:uppercase; letter-spacing:.05em; vertical-align:1px; }
+  .layer-tag.ledger { background:#e2e8f0; color:#1e3a5f; }
+  .layer-tag.matrix { background:#dbeafe; color:#1d4ed8; }
+  .layer-tag.computed { background:#ede9fe; color:#6d28d9; }
+  .cites { font-size:11.5px; color:var(--faint); border-top:1px solid var(--line-soft); padding-top:7px; margin-top:10px; }
+  .cites b { color:var(--muted); font-weight:600; }
+  .verbatim { background:#fbfcfe; border:1px solid var(--line-soft); border-radius:8px; padding:10px 12px; font-size:13.5px; line-height:1.55; }
+  .mini-table { width:100%; border-collapse:collapse; }
+  .mini-table th, .mini-table td { border-bottom:1px solid var(--line-soft); padding:6px 8px; text-align:left; font-size:13px; vertical-align:top; }
+  .mini-table thead th { color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
+  .rel-sup { color:#15803d; font-weight:700; } .rel-opp { color:#b91c1c; font-weight:700; }
+  @media (max-width:900px){ .header-strip{flex-direction:column} }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-row">
+        <div class="tile">G</div>
+        <div>
+          <div class="brand-name">Glossa Lab</div>
+          <div class="brand-sub">Epistemic research workbench</div>
+        </div>
+      </div>
+    </div>
+    <div class="program-switch">
+      <div class="ps-label">Program</div>
+      <div class="ps-name">Indus Script <span>▾</span></div>
+      <div class="ps-q">Standing position: not deciphered.</div>
+    </div>
+    <nav class="nav">
+      <h4>Program</h4>
+      <a href="#"><span class="ic">⌂</span>Program home</a>
+      <a href="#"><span class="ic">☰</span>Claims</a>
+      <a href="#"><span class="ic">▤</span>Digestion</a>
+      <a href="#"><span class="ic">▦</span>Evidence &amp; sources</a>
+      <a href="#"><span class="ic">◈</span>Data</a>
+      <a href="#"><span class="ic">∿</span>Analysis</a>
+      <a href="#"><span class="ic">⚗</span>Experiments</a>
+      <a href="01-system-view.html" class="active"><span class="ic">⬡</span>System graph <span class="count">new</span></a>
+      <h4>Tool home</h4>
+      <a href="#"><span class="ic">◎</span>Discovery</a>
+      <a href="#"><span class="ic">↻</span>Research loop</a>
+      <a href="#"><span class="ic">▤</span>Reports &amp; ledger</a>
+      <a href="#"><span class="ic">⚙</span>Jobs</a>
+      <a href="#"><span class="ic">♥</span>Status</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="crumb"><b>Indus Script</b> / System graph / Claim / parpola_2010_dravidian_solution_manual_002</span>
+      <div class="spacer"></div>
+      <button class="icon-btn">⌘K&nbsp; Search</button>
+      <div class="service-chip"><span class="dot"></span><span><b>Glossa Lab v0.1.0</b> · desktop · map data · ledger c4e2326e… · fresh</span></div>
+      <div class="user-chip"><span class="avatar">t</span><span><b>operator</b></span><span>▾</span></div>
+    </div>
+
+    <div class="content">
+      <div class="card header-strip" style="margin-bottom:14px">
+        <div class="hs-block">
+          <div class="hs-k">Claims by status · 840 claims <span class="layer-tag ledger">Ledger</span></div>
+          <div class="hs-v"><b>draft 816</b> · untested 12 · contradicted 4 · partially supported 3 · strongly supported 2 · partially falsified 1 · unsupported 1 · superseded 1</div>
+          <div class="hs-src">Computed from ledger status fields · gate V2 · cites: claims.jsonl (c4e2326e…)</div>
+        </div>
+        <div class="hs-block">
+          <div class="hs-k">Validated-anchor share <span class="layer-tag ledger">Ledger</span></div>
+          <div class="hs-v"><b>94 of 287</b> strict · <b>0.3275</b></div>
+          <div class="hs-src">Gate V6 · cites: INDUS_FINAL_ANCHORS.json (df0cf620…)</div>
+        </div>
+        <div class="hs-block">
+          <div class="hs-k">Nearest dated items <span class="layer-tag ledger">Ledger</span></div>
+          <div class="hs-v"><b>2026-10-25</b> Spec 054 outcome — yadav_2009…_manual_002 · <b>2026-10-24</b> Spec 074 / Spec 052 outcomes</div>
+          <div class="hs-src">Dated outcome blocks, nearest first · 44 validations pending (no review dates recorded)</div>
+        </div>
+      </div>
+
+      <div class="head-row">
+        <div class="page-head">
+          <h1 style="font-size:21px">The fish sign (meen in Dravidian) is the primary rebus sign in the Indus script.</h1>
+          <p class="lede">Claim <span class="codebox" style="display:inline;padding:1px 6px">parpola_2010_dravidian_solution_manual_002</span> · extracted population · author of record: Tristen Pierson (human) · claim as of 2026-10-13 · ledger line dated 2026-11-01. <a href="01-system-view.html">← System view</a> · <a href="04-matrix-view.html">Show in matrix</a></p>
+        </div>
+      </div>
+
+      <div style="margin-bottom:14px">
+        <span class="chip">status: partially_supported</span>
+        <span class="chip">stage: explained</span>
+        <span class="chip">population: extracted</span>
+        <span class="chip">sign_refs: mahadevan:64 · mahadevan:70 · mahadevan:72</span>
+      </div>
+
+      <div class="grid" style="grid-template-columns:1fr 1fr;margin-bottom:14px">
+        <div class="card">
+          <div class="head-row"><h3>Falsifier</h3><span class="layer-tag ledger">Ledger</span></div>
+          <div class="verbatim">“If fish signs do not show terminal-sign followers consistent with case suffixes.”</div>
+          <div class="row-meta" style="margin-top:8px">Falsifiers on the record: <b>1 present · 0 evaluable</b> by the settling layer — present is counted from the ledger; evaluable counts the falsifiers a registered rule can mechanically test, and for this claim that number is honestly 0 today. A claim with no falsifier at all shows this block as a counted gap, never as a blank (9 claims are in that state, all in this population).</div>
+          <div class="cites"><b>Cites:</b> claim parpola_2010_dravidian_solution_manual_002 (falsifier field) · settling-canonical.json (falsifiers_present 1 · falsifiers_evaluable 0)</div>
+        </div>
+
+        <div class="card">
+          <div class="head-row"><h3>This does not establish</h3><span class="layer-tag ledger">Ledger</span></div>
+          <div class="verbatim">“The positional test cannot show that sign 72 was pronounced 'meen' - it shows only that what follows it looks like endings. Many signs could pass such a test for unrelated reasons. The claim does not establish the star/fish wordplay, the reading of any inscrip…” <span class="row-meta">(shown in full on the built screen; the ledger's line, verbatim, never paraphrased by the surface)</span></div>
+          <div class="cites"><b>Cites:</b> claim parpola_2010_dravidian_solution_manual_002 (does_not_establish field)</div>
+        </div>
+      </div>
+
+      <div class="grid" style="grid-template-columns:1fr 1fr;margin-bottom:14px">
+        <div class="card">
+          <div class="head-row"><h3>Displayed score — AEE state</h3><span class="layer-tag ledger">Ledger</span></div>
+          <p class="lede" style="margin-bottom:6px"><b>No score is displayed for this claim, because the ledger records none.</b> The AEE state field is empty on <b>840 of 840</b> claims in the current ledger build — this block shows that state rather than a number.</p>
+          <div class="callout">When the ledger carries a score, this block shows it under one label only: <b>“AEE score — aee/scoring.py (ScoringEngine) output over the ledger's relation set.”</b> The surface never computes a score of its own and never displays a settling output as a score (C086-16, whose displayed-score leg this block discharges: a displayed score differing from an independent ScoringEngine execution over the same relation set would falsify the claim).</div>
+          <div class="cites"><b>Cites:</b> claims.jsonl aee_state field (null × 840) · claim C086-16</div>
+        </div>
+
+        <div class="card">
+          <div class="head-row"><h3>Settling bearing</h3><span class="layer-tag computed">Computed · settling</span></div>
+          <p class="lede" style="margin-bottom:6px">This is the only claim the two stored runs touch — through its sign_refs. Tallies are <b>computed outputs</b>, a different layer from the ledger verdict above: a run moves no status, stage, or score (C086-16).</p>
+          <table class="mini-table">
+            <thead><tr><th>Run</th><th>Touched via</th><th>Supporting</th><th>Opposing</th><th>Constraining</th><th>Divergent</th></tr></thead>
+            <tbody>
+              <tr><td>incumbent</td><td>mahadevan:70</td><td>0</td><td>0</td><td>0</td><td rowspan="2" style="vertical-align:middle"><b>No</b></td></tr>
+              <tr><td>full-register (challenger)</td><td>mahadevan:72 · 64 · 70</td><td>0</td><td>0</td><td>0</td></tr>
+            </tbody>
+          </table>
+          <div class="row-meta" style="margin-top:8px">Under glossa-settle-1 in v1, a touched claim's tallies depend on <b>which signs are assigned, never on the values assigned</b> (S-R2 value-independence, registered as GAP-S2) — the panel and this block state the limit where the numbers appear, so 0/0/0 is never over-read. Per-claim comparison in full: <a href="05-settling-panel.html">settling panel</a>.</div>
+          <div class="cites"><b>Cites:</b> run records t405-incumbent-over-full-frame--b262d06655a4 · t405-full-register-over-full-frame--e0892157556b · comparison record stage-4-dual-run-comparison.json (ae83e71b…)</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="head-row"><h3>Matrix row — what bears on this claim, and how</h3><span class="layer-tag matrix">Matrix</span></div>
+        <div class="callout bad"><b>This claim's matrix row is empty.</b> No document, study, anchor, or research-check column bears on it in the generated matrix — it is 1 of the <b>14 empty rows</b>, and the row renders as an explicit empty state, not as missing data. Its own source document is provenance, not a cell (a claim's own document never counts as bearing on it). What stands behind the claim is on the <a href="03-evidence-view.html">evidence view</a>: the source document, an advisory research check, and three sign references whose register records exist but carry no matrix cell.</div>
+        <h4 style="margin:12px 0 4px">A populated row, for contrast — yadav_2009_arxiv_manual_002 (2 cells)</h4>
+        <table class="mini-table">
+          <thead><tr><th>Column</th><th>Class</th><th>Relation</th><th>Rule</th><th>Citations carried by the cell</th></tr></thead>
+          <tbody>
+            <tr><td>yadav_2010_ngrams</td><td>documents</td><td class="rel-sup">supports</td><td>R2</td><td>the claim id · the document id</td></tr>
+            <tr><td>054</td><td>studies</td><td class="rel-opp">opposes</td><td>R3</td><td>the claim id · outcome append 2026-10-24 (superseded) · outcome append 2026-10-25 (governing)</td></tr>
+          </tbody>
+        </table>
+        <div class="row-meta" style="margin-top:8px">Every cell's citations must carry the relation they are cited for — gate V4 checks each one against its tie rule, and a citation that exists but does not carry its relation fails the gate (Amendment 1). <a href="03-evidence-view.html">Open this claim's evidence view →</a></div>
+        <div class="cites"><b>Cites:</b> matrix.json rows/cells for parpola_2010_dravidian_solution_manual_002 (0 cells) · yadav_2009_arxiv_manual_002 (2 cells) · coverage.empty_rows (14)</div>
+      </div>
+
+      <div class="annotation">
+        <div class="a-title">Annotation — wireframe 02 · not part of the UI</div>
+        <dl>
+          <dt>Purpose</dt><dd>Point 5's claim view: one claim in full — statement, status, stage, AEE state, falsifier, "this does not establish" line, its matrix row rendered, and its settling bearing under the incumbent and the challenger. The specimen is real: parpola_2010_dravidian_solution_manual_002 is the one claim that exercises four designed states at once (empty matrix row, unresolved sign references, settling-touched, falsifier present-but-not-evaluable), with yadav_2009_arxiv_manual_002's populated row as the contrast inset.</dd>
+          <dt>Primary action</dt><dd>Read the claim's whole standing in one place, then open the evidence view for anything behind it.</dd>
+          <dt>Changed &amp; why</dt><dd>New level — Spec 085 had no claim view (its explorer detail panel is the nearest ancestor, and its direct/propagated score cells are <b>not</b> carried over: under C086-16 a displayed score is a ScoringEngine output over the ledger's relation set, and today's ledger carries no AEE state on any claim, so the score block renders its honest empty state — decision Q6). Against today: the Claims screen and claim detail (Spec 081) show the claim's record but never its matrix row or its settling bearing, because neither layer existed when they were built.</dd>
+          <dt>Spec claims</dt><dd>C086-17 (embedded claim fields equal the ledger's — gate V5 checks this against the artifact), C086-16 (displayed-score leg; settling-moves-nothing labeling), C086-18 (header strip stamp). Status and stage are the ledger's values or nothing — the map holds no status of its own (Point 6, D-E).</dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

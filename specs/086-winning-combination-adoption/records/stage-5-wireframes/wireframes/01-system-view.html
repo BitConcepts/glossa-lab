@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — System graph, system view (Spec 086 wireframe 01)</title>
+<link rel="stylesheet" href="wireframes.css">
+<style>
+  .header-strip { display:flex; gap:18px; flex-wrap:wrap; margin-bottom:6px; }
+  .hs-block { flex:1; min-width:250px; }
+  .hs-k { font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px; }
+  .hs-v { font-size:13.5px; line-height:1.5; }
+  .hs-src { font-size:11.5px; color:var(--faint); margin-top:5px; }
+  .stamp-line { font-size:12px; color:var(--muted); margin:0 0 14px; }
+  .layer-tag { display:inline-block; font-size:10.5px; font-weight:700; padding:1px 8px; border-radius:20px; text-transform:uppercase; letter-spacing:.05em; vertical-align:1px; }
+  .layer-tag.ledger { background:#e2e8f0; color:#1e3a5f; }
+  .layer-tag.matrix { background:#dbeafe; color:#1d4ed8; }
+  .layer-tag.computed { background:#ede9fe; color:#6d28d9; }
+  .assign-bar { display:flex; height:22px; border-radius:6px; overflow:hidden; border:1px solid var(--line-soft); margin:8px 0 6px; }
+  .assign-bar .a { background:#2563eb; }
+  .assign-bar .b { background:#e8edf3; }
+  .cites { font-size:11.5px; color:var(--faint); border-top:1px solid var(--line-soft); padding-top:7px; margin-top:10px; }
+  .cites b { color:var(--muted); font-weight:600; }
+  @media (max-width:900px){ .header-strip{flex-direction:column} }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-row">
+        <div class="tile">G</div>
+        <div>
+          <div class="brand-name">Glossa Lab</div>
+          <div class="brand-sub">Epistemic research workbench</div>
+        </div>
+      </div>
+    </div>
+    <div class="program-switch">
+      <div class="ps-label">Program</div>
+      <div class="ps-name">Indus Script <span>▾</span></div>
+      <div class="ps-q">Standing position: not deciphered.</div>
+    </div>
+    <nav class="nav">
+      <h4>Program</h4>
+      <a href="#"><span class="ic">⌂</span>Program home</a>
+      <a href="#"><span class="ic">☰</span>Claims</a>
+      <a href="#"><span class="ic">▤</span>Digestion</a>
+      <a href="#"><span class="ic">▦</span>Evidence &amp; sources</a>
+      <a href="#"><span class="ic">◈</span>Data</a>
+      <a href="#"><span class="ic">∿</span>Analysis</a>
+      <a href="#"><span class="ic">⚗</span>Experiments</a>
+      <a href="01-system-view.html" class="active"><span class="ic">⬡</span>System graph <span class="count">new</span></a>
+      <h4>Tool home</h4>
+      <a href="#"><span class="ic">◎</span>Discovery</a>
+      <a href="#"><span class="ic">↻</span>Research loop</a>
+      <a href="#"><span class="ic">▤</span>Reports &amp; ledger</a>
+      <a href="#"><span class="ic">⚙</span>Jobs</a>
+      <a href="#"><span class="ic">♥</span>Status</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="crumb"><b>Indus Script</b> / System graph / System view</span>
+      <div class="spacer"></div>
+      <button class="icon-btn">⌘K&nbsp; Search</button>
+      <div class="service-chip"><span class="dot"></span><span><b>Glossa Lab v0.1.0</b> · desktop · map data · ledger c4e2326e… · fresh</span></div>
+      <div class="user-chip"><span class="avatar">t</span><span><b>operator</b></span><span>▾</span></div>
+    </div>
+
+    <div class="content">
+      <div class="head-row">
+        <div class="page-head">
+          <h1>System graph</h1>
+          <p class="lede">The decipherment model as a whole — the sign inventory and its assignment state, where the evidential load sits, and the claim population — rendered from the gated map data and nothing else. Every element cites the ledger ids behind it.</p>
+        </div>
+        <div class="spacer"></div>
+        <button class="btn">Open map data record</button>
+      </div>
+
+      <div class="callout" style="margin-bottom:14px"><b>Standing position: the Indus script is not deciphered.</b> This map renders the program's epistemic state — what the record holds, what bears on what, and what is missing. It is not a decipherment result, and no element on it is one (C086-20).</div>
+
+      <div class="card header-strip">
+        <div class="hs-block">
+          <div class="hs-k">Claims by status · 840 claims <span class="layer-tag ledger">Ledger</span></div>
+          <div class="hs-v"><b>draft 816</b> · untested 12 · contradicted 4 · partially supported 3 · strongly supported 2 · partially falsified 1 · unsupported 1 · superseded 1</div>
+          <div class="hs-src">Computed from the ledger's status fields, never typed. Gate V2 checks these counts equal the matrix's on every run. Cites: <span class="codebox" style="display:inline;padding:1px 6px">claims.jsonl</span> · 871 lines · sha256 c4e2326e…</div>
+        </div>
+        <div class="hs-block">
+          <div class="hs-k">Validated-anchor share <span class="layer-tag ledger">Ledger</span></div>
+          <div class="hs-v"><b>94 of 287</b> anchors strict · <b>0.3275</b></div>
+          <div class="hs-src">The strict share, recomputed from the canonical anchors register under its recorded D-A rule (Phase-109 follow-through applying the Phase-108 strict definition). Gate V6. Cites: <span class="codebox" style="display:inline;padding:1px 6px">INDUS_FINAL_ANCHORS.json</span> · df0cf620…</div>
+        </div>
+        <div class="hs-block">
+          <div class="hs-k">Nearest dated items <span class="layer-tag ledger">Ledger</span></div>
+          <div class="hs-v"><b>2026-10-25</b> · Spec 054 governing outcome — <i>yadav_2009_arxiv_manual_002</i><br><b>2026-10-24</b> · Spec 074 outcome — <i>without_kings…_manual_003</i> · Spec 052 outcomes — 4 claims</div>
+          <div class="hs-src">Dated study outcome blocks in the claims' own records, nearest first, taken from date fields — never hand-typed. 44 anchor validations are pending; the register carries no review dates for them, so they appear as a count, not as dated items. Cites: the outcome-append ids on each claim's record.</div>
+        </div>
+      </div>
+      <p class="stamp-line">Map data as of: ledger <b>c4e2326e…</b> (871 lines, dated 2026-11-01) · ledger-schema v1 · matrix-defs v1 · glossa-settle-1. If the stamp's ledger hash stops matching the live ledger, this strip, the chip above, and every screen of this surface are marked <b>STALE</b> until the artifact is regenerated and re-gated (C086-18).</p>
+
+      <div class="tabs" style="margin-bottom:14px">
+        <a href="01-system-view.html" class="active">System view</a>
+        <a href="04-matrix-view.html">Matrix</a>
+        <a href="05-settling-panel.html">Settling</a>
+        <span class="row-meta" style="align-self:center;margin-left:8px">Claim and evidence views are drill-downs: pick a claim row in the matrix, then a column behind it.</span>
+      </div>
+
+      <div class="grid" style="grid-template-columns:1fr 1fr;margin-bottom:14px">
+        <div class="card">
+          <div class="head-row"><h3>Sign inventory by frame — assignment state</h3><span class="layer-tag computed">Computed · settling</span></div>
+          <p class="lede" style="margin-bottom:4px">Settled frame: <b>Mahadevan</b> · 286 signs in the register's frame scope, from 287 register records (one record, H003, sits out of frame and is named in the assignment-sets artifact, not silently dropped).</p>
+          <div class="assign-bar"><div class="a" style="width:32.9%"></div><div class="b" style="width:67.1%"></div></div>
+          <div class="row-meta">Blue: assigned by the <b>incumbent</b> settling run — <b>94 of 286 (32.9%)</b>, the strict set, each with its recorded reading. The challenger of record, the <b>full-register</b> run, assigns all 286. Run the comparison on the <a href="05-settling-panel.html">settling panel</a>.</div>
+          <div class="callout" style="margin-top:10px">Signary size is frame-dependent — 557 (Shakti) / 527 (M77) / 584 (Nair) in the published frames. Only the Mahadevan frame carries an anchor register today, so only it has an assignment state to show. Other frames are listed as <b>no anchor register — nothing to settle against</b>, never with an invented inventory state.</div>
+          <div class="cites"><b>Cites:</b> assignment-sets.json (incumbent 94 · full-register 286 · out-of-frame: H003) · run records t405-incumbent-over-full-frame--b262d06655a4, t405-full-register-over-full-frame--e0892157556b · anchors register df0cf620…</div>
+        </div>
+
+        <div class="card">
+          <div class="head-row"><h3>Where the load sits — matrix coverage</h3><span class="layer-tag matrix">Matrix</span></div>
+          <div class="score-row" style="display:flex;gap:10px;margin:8px 0">
+            <div style="flex:1"><div style="font-size:19px;font-weight:700">1,363</div><div class="row-meta">cells in the claims×evidence matrix</div></div>
+            <div style="flex:1"><div style="font-size:19px;font-weight:700">1,356</div><div class="row-meta">supports — all from document columns</div></div>
+            <div style="flex:1"><div style="font-size:19px;font-weight:700">7</div><div class="row-meta">opposes — all from study columns</div></div>
+            <div style="flex:1"><div style="font-size:19px;font-weight:700">0</div><div class="row-meta">constrains — the class is empty, and says so</div></div>
+          </div>
+          <h4 style="margin:10px 0 4px">Conflict hotspots — every opposes cell (7)</h4>
+          <div class="row-meta" style="line-height:1.65">Spec 052 × 4 claims (farmer_sproat_witzel_2004_manual_001; indus_valley…_critique_0001, _critique_0002; without_kings…_language_0001) · Spec 054 × yadav_2009_arxiv_manual_002 · Spec 055 × ancient_writing…_sign_val_0001 · Spec 074 × without_kings…_manual_003. Each is one click from its cell in the <a href="04-matrix-view.html">matrix view</a>.</div>
+          <h4 style="margin:10px 0 4px">Zero coverage — counted, not hidden</h4>
+          <div class="row-meta" style="line-height:1.65">14 claims with entirely empty rows · all 287 anchor columns unused (no claim→anchor cells exist under matrix-defs v1) · all 31 research-check columns unused (every sidecar verdict is null; the checks are advisory) · 6 study columns carry only non-bearing outcomes (046, 047, 051, 056, 063, 064) · corpus-text columns: 0.</div>
+          <div class="cites"><b>Cites:</b> matrix.json coverage block · matrix-defs v1 · gate V3 cell-for-cell recomputation</div>
+        </div>
+      </div>
+
+      <div class="grid" style="grid-template-columns:1fr 1fr;margin-bottom:14px">
+        <div class="card">
+          <div class="head-row"><h3>Claim population</h3><span class="layer-tag ledger">Ledger</span></div>
+          <div class="row-item"><div class="grow"><div class="row-title">By stage</div><div class="row-meta">created 814 · explained 8 · checked 3 · <b>no stage recorded: 15</b> — the stage is recomputable from each record's evidence (D-E); where the record carries none, the map shows the gap rather than a stage</div></div></div>
+          <div class="row-item"><div class="grow"><div class="row-title">By population</div><div class="row-meta">bundle 817 · extracted 23 — the two intake populations, counted separately everywhere in this surface; a blended rate would hide where the gaps live</div></div></div>
+          <div class="row-item"><div class="grow"><div class="row-title">Falsifier coverage — the gap census</div><div class="row-meta"><b>831 of 840</b> claims carry a falsifier. The 9 without are all in the extracted population (14 of 23 covered; bundle 817 of 817). The nulls are stored as nulls and counted on every gate run — never filled by invention. New intake must carry a falsifier, so the gap can only shrink by recorded human acts.</div></div></div>
+          <div class="cites"><b>Cites:</b> claims.jsonl stage/status/population/falsifier fields · gate header (falsifier coverage prints on every gate run)</div>
+        </div>
+
+        <div class="card">
+          <div class="head-row"><h3>Unresolved sign mentions — the curation work list</h3><span class="layer-tag matrix">Matrix</span></div>
+          <p class="lede" style="margin-bottom:6px"><b>14 prose sign mentions</b> name a sign in words only. No edge, cell, or link is made from words — each is a work-list entry until a human asserts the link in a stored record.</p>
+          <div class="row-meta" style="line-height:1.65">“fish sign family” · “arrow sign” · “horned deity sign” · “buffalo” · “elephant” · “fish” · “rhinoceros” · “tiger” · “unicorn” · “crescent” · “seven-petaled” · “star” · “sun” — on 5 extracted claims (indus_valley…_manual_002/003/004; parpola…_manual_002; without_kings…_manual_003/004).</div>
+          <div class="callout" style="margin-top:10px"><b>3 sign references with no anchor record under the matrix's key:</b> mahadevan:64, mahadevan:70, mahadevan:72 on parpola_2010_dravidian_solution_manual_002. The register records M064, M070, M072 exist; the settling layer resolves these refs by number, the matrix's rule does not — a registered divergence between the two definition sets, shown in full on the <a href="03-evidence-view.html">evidence view</a> and flagged for the owner's oracle read.</div>
+          <div class="cites"><b>Cites:</b> matrix.json coverage.unresolved_sign_mentions (14) · coverage.sign_refs_without_anchor_record (3) · claim parpola_2010_dravidian_solution_manual_002</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="head-row"><h3>Sign × sign — the co-occurrence block, imported as emitted</h3><span class="layer-tag matrix">Matrix</span></div>
+        <p class="lede">From the existing co-occurrence pipeline over the corpus snapshot (08fc96c8…), carried in the matrix artifact with both of its numbers, labeled: the pipeline reports <b>1,631 edges</b>; <b>200 edge records</b> are emitted into the artifact, over <b>80 sign nodes</b>. Sign ids are the corpus loader's integer ids (<span class="codebox" style="display:inline;padding:1px 6px">sign-int:&lt;n&gt;</span>), not relabeled with a frame name. The map shows both numbers because showing only the smaller one would misstate the pipeline, and only the larger one would misstate the artifact.</p>
+        <div class="cites"><b>Cites:</b> matrix.json sign_sign_block (source, node_count 80, edge_count 1631, edges_emitted 200) · corpus snapshot sha256 08fc96c8…</div>
+      </div>
+
+      <div class="annotation">
+        <div class="a-title">Annotation — wireframe 01 · not part of the UI</div>
+        <dl>
+          <dt>Purpose</dt><dd>Point 5's system view: the decipherment model as a whole — sign inventory by frame with the incumbent run's assignment state, where the load sits (conflict and zero-coverage hotspots from the matrix coverage block), and the claim population by status and stage. All numbers on this screen are the real current numbers from the merged ledger/matrix/settling artifacts, not specimen data — the owner approves the real header, not a mock.</dd>
+          <dt>Primary action</dt><dd>Read the program's whole state in one screen, then drill down: a claim row in the matrix view opens the claim view; a column behind it opens the evidence view.</dd>
+          <dt>Changed &amp; why</dt><dd>Against Spec 085's 01 explorer: the node-link canvas is <b>removed</b> (decision Q1). The gated chain has no claim-graph edge set to draw — the 790 claim×claim dependency pairs are coverage data, not verified cells — so a canvas would present a picture the gate does not check. What replaces it is the inventory/coverage/population composition Point 5(c) specifies. Against today: no System graph screen exists in the app at all — the nav entry is new, and the nearest current screens (Claims, Data, Analysis) each show one kind of thing at a time. The header strip is new on every screen of this surface (T501 delta) and carries the as-of stamp line with its STALE behavior (C086-18).</dd>
+          <dt>Spec claims</dt><dd>C086-17 (header state equals the gate's recomputed values; rendered counts equal the artifact), C086-18 (as-of stamp + stale marking), C086-20 (no verdict changes; standing position banner). Layer tags on every card name which layer the element belongs to — ledger, matrix, or computed settling — so the layers distinction is visible, not just documented.</dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

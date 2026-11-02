@@ -371,9 +371,13 @@ def _tree_hashes(root: Path) -> dict[str, str]:
 
 
 def test_evaluation_writes_nothing(state, canonical):
+    # T405 stored the first run records in the run store,
+    # so the store is populated by design from that task
+    # on; the acceptance pinned here is purity — a pure
+    # evaluation changes no hash anywhere under the
+    # ledger tree, the populated run store included
+    # (Spec 086 T405; stage-4-record.md, T405 section).
     before = _tree_hashes(ROOT)
-    runs_dir = ROOT / st.RUN_STORE_REL
-    assert not runs_dir.exists() or not any(runs_dir.iterdir())
     scenario = canonical["scenarios"][1]
     st.run_record(
         state,
@@ -383,7 +387,6 @@ def test_evaluation_writes_nothing(state, canonical):
     )
     st.build_assignment_sets(state)
     assert _tree_hashes(ROOT) == before
-    assert not runs_dir.exists() or not any(runs_dir.iterdir())
 
 
 def test_a_run_writes_only_its_run_record(state, canonical, tmp_path):

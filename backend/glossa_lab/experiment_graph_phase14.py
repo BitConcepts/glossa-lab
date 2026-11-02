@@ -1138,13 +1138,17 @@ def _epistatic_anchor_ranker(inputs: dict, params: dict) -> dict:
     }
 
 
-# ── Constraint projection stub (engine removed) ────
-
-
-def _cas_hypothesis_projector(inputs: dict, params: dict) -> dict:
-    """Constraint projection not available."""
-    return {"error": "Constraint projection engine not available.",
-            "success": False, "max_violation": 1e9}
+# ── Constraint projection — removed, with pointer ────
+# The CASHypothesisProjector node left the palette with the
+# CPSC engine in May 2026; its stub function is removed here
+# under Spec 086 T406 (Spec 085 C085-15, carried in). The
+# capability's successor is the glossa-settle-1 settling
+# engine — backend/glossa_lab/settling.py, operated via
+# tools/ledger/run_settling.py — which settles sign-value
+# assignment sets against the anchor register and the
+# ledger. No Experiment Builder node projects constraints
+# in v1; LanguageDetectorVerdict's optional cas_projection
+# input has no in-tree producer and is inert unconnected.
 
 
 # ── Integrative — LanguageDetectorVerdict ───────────────────────────────

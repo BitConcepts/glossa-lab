@@ -718,3 +718,436 @@ touched.
 **AI disclosure:** executed by an AI agent (Muse, via
 Muse) at the direction of Tristen Pierson, per
 constitution sec. VI.
+
+---
+
+## T405–T407 — the first interchangeability run, the stub's disposition, stage closeout
+
+Date: 2026-11-01. Branch: `feat/086-stage4-closeout`
+(off main `b0528198`, the Stage 4 engine merge). This
+section closes Stage 4: T405 executes and stores the
+first dual run, T406 disposes of the Experiment Builder
+constraint-projection stub, and T407 files the closeout
+artifacts. Standing position, unchanged: **the Indus
+script is not deciphered**; everything below is
+computation over ledgered relations under
+glossa-settle-1, labeled as such.
+
+### T405 — the first interchangeability run (executed and stored)
+
+**Protocol (semantics §7).** Both runs were executed
+through the engine's command
+(`tools/ledger/run_settling.py run`) over the **same
+ledger build and the same corpus snapshot**, over the
+**same scope**: the full mahadevan frame inventory —
+286 signs, in the register's own order (the
+full-register assignment set's sign order). Scenario
+ids: `t405-incumbent-over-full-frame` and
+`t405-full-register-over-full-frame`. Before running,
+the assignment sets of record were regenerated in
+memory and compared: byte-identical to the committed
+`assignment-sets.json` (sha256 `36bce404…`), so both
+candidates are exactly the sets of record — incumbent
+94 assignments, full-register 286, H003 the one
+out-of-frame record, assigned by neither.
+
+**The two runs (headline numbers, from the stored
+records).**
+
+| | incumbent | full-register |
+|---|---|---|
+| scope signs | 286 | 286 |
+| assigned | 94 (share 0.3287) | 286 (share 1.0) |
+| contexts touched | 94 | 286 |
+| strict contexts | 94 | 94 |
+| consistent | 94 | 94 |
+| non-strict contexts | 0 | 192 |
+| conflicts | 0 | 0 |
+| strict agreement share | 1.0 | 1.0 |
+| contexted share | 1.0 | 1.0 |
+| uncontexted assignments | 0 | 0 |
+| claims touched | 1 | 1 |
+| forced | 0 | 0 |
+| out-of-scope assignments | 0 | 0 |
+
+Both candidates assign every sign its own recorded
+reading, so zero conflicts and full strict agreement
+are the mechanical consequence of what the sets of
+record *are* — reported as computed, not as a result
+about the script. The runs diverge in coverage only:
+the full-register run adds 192 non-strict contexts and
+no claim's tallies move (below).
+
+**Pins (T405's test acceptance: input hashes equal
+across the run records).** Both records carry,
+identically: ledger canonical sha256
+`c4e2326ec8757bb700dac0142dd0adf17d7464b4d929f5b103868c9228f13ccf`
+(871 lines); anchors register raw-byte sha256
+`df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569`
+(287 records, 94 strict, rule `strict_sa_independent_hm`);
+Phase-108 register sha256 `2b04fed4…`; corpus snapshot
+sha256 `08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e`;
+semantics `glossa-settle-1`. The comparison route
+itself refuses on any pin disagreement; none occurred.
+
+**Stored run records (the run store's first records).**
+
+| record | bytes | sha256 |
+|---|---|---|
+| `glossa-indus/ledger/runs/t405-incumbent-over-full-frame--b262d06655a4.json` | 37,957 | `45cde1d3ff19df193953d84e812810b18ebfe674879d6fbba81db4a0a85826ea` |
+| `glossa-indus/ledger/runs/t405-full-register-over-full-frame--e0892157556b.json` | 87,209 | `2c483f0d0eb9b962e6d46bd374d7ebcc62ca05a6af9282fccf5c3171a2e0b5fd` |
+
+**The comparison and the per-claim divergence list.**
+Produced by the engine's `compare` route over the two
+stored records and filed verbatim at
+`records/stage-4-dual-run-comparison.json` (6,296
+bytes, sha256
+`ae83e71b6153c4ffde7caa75f7a8a3160a9f95e7f62e367f85f63bd19c74e2c8`
+— the filed copy is byte-identical to the command's
+output). Its decisive content:
+
+- Claims compared: exactly one — the ledger's only
+  sign_refs-bearing claim,
+  `parpola_2010_dravidian_solution_manual_002`. The
+  incumbent touches it via `mahadevan:70`; the
+  full-register run via all three stored refs
+  (`mahadevan:72`, `mahadevan:64`, `mahadevan:70`).
+  Its tallies are 0 supporting / 0 opposing /
+  0 constraining under **both** runs (it carries no
+  governing outcome blocks; falsifiers 1 present /
+  0 evaluable), so it is compared and **not
+  divergent**.
+- `per_claim_divergences`: **empty**. The divergence
+  list is the coverage deltas: assigned 94 → 286,
+  contexts 94 → 286, strict contexts 94 → 94,
+  consistent 94 → 94, conflicts 0 → 0, forced 0 → 0;
+  signs assigned by one candidate only: 192 by
+  full-register, 0 by incumbent.
+- The S-R2 value-independence registered at T401 is
+  what this shape means: tallies move only when a
+  newly assigned sign newly *touches* a claim, and
+  the one touchable claim was already touched by the
+  incumbent. A fuller divergence awaits a ledger whose
+  claims carry per-sign references in more than one
+  place — the record's true state, stated, not a
+  defect of the run.
+
+**Pre-registered expectations — derived afresh, with
+a correction to FINDING-S4-1's prose.** Per
+FINDING-S4-1's method, expectations are comparison
+input data taken from the record; the census was
+re-derived for this run by the engine's own S-R2
+route (governing outcome blocks over every claim's
+records of record). The record carries 13 governing
+(claim, study) pairs: Spec 047 → the
+indus_valley…manual_001 claim (INCONCLUSIVE);
+Spec 051 → indus_valley…manual_003 (INCONCLUSIVE);
+Spec 052 → four claims (INCONSISTENT ×4: farmer…,
+indus_valley…critique_0001, indus_valley…critique_0002,
+without_kings…language_0001); Spec 054 →
+`yadav_2009_arxiv_manual_002` (NOT SUPPORTED,
+governing block dated 2026-10-25, 2 blocks);
+Spec 055 → ancient_writing…sign_val_0001
+(NOT NUMERAL-LIKE); Spec 056 → archaeology…
+sign_val_0001 (IDENTIFICATION FAILED); Spec 063 →
+the same claim (RECOVERED); Spec 046 →
+archaeology…sign_val_0002 (IDENTIFICATION FAILED);
+Spec 064 → the same claim (IDENTIFICATION FAILED);
+and **Spec 074 → `without_kings_or_conquests_the_
+indus_scr_ce9d98cc_manual_003` (NOT SUPPORTED, dated
+2026-10-24, pointer `…#spec074_outcome_append_
+2026_10_24`)**.
+
+Two dispositions follow. (1) **No expectation concerns
+a touched claim**: none of the 13 claims carries
+sign_refs, and the one touched claim carries no
+governing outcome block at all — so the comparison
+was executed with an empty expectations input and the
+engine generated its absence statement itself, which
+stands verbatim in the filed comparison: *"No
+pre-registered expectation exists in the program's
+record for the one touched claim."* C086-15's
+falsifier leg (a touched claim with an expectation the
+report neither names nor scores) is not met: there is
+no such claim. (2) **Correction, in the open:**
+FINDING-S4-1's prose remainder (in the T403–T404
+section above) names Spec 074's outcome record as
+concerning `yadav_2009_arxiv_manual_002`. The census
+shows that attribution is wrong: Spec 074's outcome
+record concerns the without-kings (Hunt) manual_003
+claim — as this program's own PR #477 record also
+states — and the yadav claim's governing record is
+Spec **054**'s. FINDING-S4-1 had already flagged its
+second clause as brief-specific prose rather than
+derivation; the clause's substance (no expectation
+exists for the touched claim) is unaffected, and the
+registration record above is not edited — the
+correction stands here, where the afresh derivation
+was made.
+
+*This does not establish either reading — it
+establishes exactly where they diverge, claim by
+claim, which is the thing narration cannot do.*
+(tasks.md T405, carried verbatim.)
+
+### The T404 store test's precondition, adapted in the open
+
+`test_evaluation_writes_nothing` (T404) asserted the
+run store was empty before and after a pure
+evaluation — a scaffold from when no stored runs
+existed. T405 by design populates the store, so the
+assertion's precondition is false on any tree carrying
+this task's own output. The test is adapted in this
+PR: the two store-emptiness assertions are removed
+and the purity assertion — no hash anywhere under
+`glossa-indus/ledger` changes across an evaluation,
+the populated run store included — stands as the
+test's whole content, which is T403's acceptance
+stated more strongly, not a loosening. No canonical
+expectation was touched; the companion test
+(`test_a_run_writes_only_its_run_record`, changed-set
+== exactly one new run-store path) passes unmodified
+against the populated store.
+
+### T406 — the stub's disposition: removed from the palette, with a pointer
+
+**What the stub was.** `_cas_hypothesis_projector` in
+`backend/glossa_lab/experiment_graph_phase14.py` — the
+Experiment Builder node function for
+`CASHypothesisProjector`, which projected a corpus's
+measured degrees of freedom through a CAS-YAML
+constraint model via the CPSC IterativeEngine /
+CellularEngine and returned `max_violation` with a
+per-constraint breakdown. Its history in git: the node
+arrived with Phase-14 (49b0cf69); the CPSC module was
+deleted for IP contamination (b96b7fbd); the owner
+then removed the CAS-YAML UI/API and the node's
+AtomicNodeDef registration (60faf1c3, 2026-05-21,
+"all CAS nodes errored on every run — dead UI"); the
+stub function was re-added in the final IP sweep
+(57139e3a) as a tombstone returning
+`{"error": "Constraint projection engine not
+available.", "success": False, "max_violation": 1e9}`
+to any caller.
+
+**State found.** The node is already absent from the
+palette: `_phase14_node_defs()` registers 14 nodes,
+none of them the projector; the function is not in the
+module's `__all__`, is called from nowhere in backend
+or frontend, and the frontend carries no reference to
+it. Its downstream consumer, LanguageDetectorVerdict,
+takes `cas_projection` as an *optional* input and
+scores nothing when it is absent. What remained was
+exactly two things: an error-returning orphan function
+one re-registration away from being a trap again, and
+the stub error string in the codebase path (Spec 085
+T017's acceptance names its absence).
+
+**Decision: removal with a pointer** (the disposition
+Spec 085 C085-15 and Spec 086 T406 both offer second),
+on these grounds:
+
+1. **The node's contract presupposes machinery that
+   does not exist and must not be resurrected.** Its
+   inputs are measured DoF values plus a CAS-YAML
+   model; its engine was a continuous constraint
+   projector deleted deliberately, in part for IP
+   contamination. glossa-settle-1 consumes sign→value
+   assignment sets against anchor records and computes
+   enumerated contexts, conflicts, and tallies; it has
+   no DoF projection, no YAML model, and no
+   `max_violation`. Wiring the node to it would require
+   inventing a mapping from settling outputs to the
+   dead contract's fields — new semantics invented to
+   fit a removed engine, barred by the semantics'
+   amendment discipline (§12: a rule change is a new
+   registered version, derived first) and by this
+   task's own decision rule.
+2. **There is no settling service surface to wire to.**
+   In v1's registered design the engine's surfaces are
+   the library, its command, and the gate (T403
+   record: run records are not published artifacts; no
+   API route exists). A graph node calling the library
+   would still need the invented contract of ground 1.
+3. **The palette absence is already the lived state**
+   (since 2026-05-21) and no rendered surface changes:
+   removing an unregistered backend function touches
+   no UI. The wireframe gate is therefore not
+   triggered by this disposition; had the disposition
+   altered a rendered surface, this task would have
+   stopped instead, per its brief.
+
+**The change.** The stub function is deleted; at its
+site a pointer comment names the capability's
+successor (the glossa-settle-1 settling engine —
+`backend/glossa_lab/settling.py`, operated via
+`tools/ledger/run_settling.py`) and records that no
+Builder node projects constraints in v1 and that the
+consumer's optional input has no in-tree producer.
+The consumer itself is untouched — its input is
+optional, inert unconnected, and editing another
+node's contract was not this task's to do.
+`backend/tests/test_spec086_stub_disposition.py`
+(5 tests) pins the disposition: the stub error string
+is absent from the codebase path (the backend package
+source; it survives only in records quoting the audit
+— Spec 086 spec.md's current-state text and the new
+test's own constant — which are not an invocable
+path); the stub symbol and node are absent, the
+palette enumerated in full via `ATOMIC_NODES`; the
+pointer's target is real (the settling module and its
+command); and the consumer returns well-formed
+verdicts unfed and fed a well-formed projection-shaped
+input (C085-15's second falsifier leg).
+
+*This does not establish experiment authors should
+settle inside pipelines — only that the named
+capability is no longer a trap.* (tasks.md T406,
+carried verbatim; the same sentence Spec 085 T017
+carried.)
+
+### T407 — closeout filings
+
+Filed in `specs/086-winning-combination-adoption/records/`:
+
+- `stage-4-closeout-canonical-output.txt` — the
+  canonical reproduction regenerated fresh on this
+  tree: `verify-canonicals` 6/6 PASS, and the T404
+  test file **13 passed**.
+- `stage-4-dual-run-comparison.json` — the first
+  dual-run divergence list, verbatim engine output
+  (above; sha256 `ae83e71b…`).
+- The two run records themselves — stored in the run
+  store (T405 table above) and cited there; T407's
+  "filed verbatim" is satisfied by the stored
+  artifacts plus the verbatim comparison filing.
+- `stage-4-closeout-gate-output.txt` and
+  `stage-4-closeout-regen-output.txt` — the gate on
+  this tree: full **16 PASS / 0 FAIL / 4 NOT-RUN,
+  RESULT PASS**; --regen **18 PASS / 0 FAIL /
+  4 NOT-RUN, RESULT PASS**. The counts hold at the
+  engine PR's exactly: the stored run records enter
+  no check's inputs (V8's inputs are the canonicals;
+  the run store is an output the gate does not read),
+  and the phase14 removal touches no gated artifact.
+
+### Local checks (this PR's tree)
+
+- Ruff (`python -m ruff check backend/`, the CI
+  shell-wrapper invocation): **All checks passed!**
+- Ledger validator: **PASS** (falsifier coverage
+  831 of 840 claim entries; errors: none).
+- Gate: full 16 PASS, --regen 18 PASS (above).
+- Spec 086 + settling families (the six subject
+  files: ledger gate, ledger intake, ledger
+  migration, matrix, stub disposition, settling
+  canonical): **85 passed**; under `-k "spec086 or
+  settling"` across the whole suite: 85 passed,
+  1 skipped (an OpenCV-availability skip in
+  test_sign_images.py, matched by the -k filter).
+  Freeze family (`-k freeze`): **263 passed,
+  1 skipped** — the established count.
+- Full backend enumeration without `-x`, five chunks
+  over 214 test files (2,279 tests): **2,210 passed /
+  67 skipped / 1 failed / 1 error**. The failure is
+  the known environmental baseline,
+  `test_phase133_stage0_inventory.py::
+  test_builder_recomputation_skips_without_inputs`
+  (needs a download this environment lacks; fails
+  identically on main). The error is a one-off
+  suite-interaction ERROR in
+  `test_notifications_api.py::
+  test_mask_email_redacts_local_part` (chunk 1 of 5),
+  not reproduced standalone (1 passed), in-file
+  (9 passed), or in the chunk's API-file subset
+  (75 passed); it is not the tray teardown test, its
+  error text was not captured beyond the summary
+  line, and this PR touches no notifications code —
+  recorded as an unclassified one-off, with the three
+  green re-runs as its evidence. The tray teardown
+  flake did not appear in this enumeration.
+- In-tree rewrites the suite caused (the evidence-API
+  family's extracted-claims rewrites: 10 files under
+  `glossa-indus/claims/extracted_claims/`, one claim
+  report, `outputs/partial_loop_result.json`) were
+  restored before committing; `git status` at commit
+  time shows only this PR's files.
+
+### Claim assessments (closeout scope)
+
+- **C086-13 (canonical cases reproduce exactly)** —
+  SUPPORTED, unchanged from engine scope; the
+  closeout adds this tree's fresh reproduction filing.
+  FINDING-S4-1's named exception (the comparison
+  note's brief-specific remainder) stands exactly as
+  recorded at T404.
+- **C086-14 (settling is mechanical, labeled, and
+  read-only against the ledger)** — SUPPORTED at
+  closeout scope. The Experiment Builder leg left open
+  at engine scope is closed by T406: the Builder
+  surface no longer carries a node that returns the
+  "engine removed" error; it carries a pointer to the
+  settling engine in the removed stub's place, pinned
+  by test. The claim's falsifier legs (a reported
+  settling number with no run record; a surface
+  missing the label; a settling module importing a
+  write path) — none is met on this tree: every number
+  in this section traces to a stored run record or a
+  filed verbatim output, and V8/V9 pass live.
+- **C086-15 (interchangeability discipline)** —
+  SUPPORTED. The first dual run is executed and
+  stored: identical ledger and corpus pins across both
+  run records (the claim's first falsifier leg —
+  different input hashes — checked and absent); the
+  per-claim divergence list is emitted with both
+  tallies per claim (second leg — narration without
+  the list — absent: the list is the filed artifact);
+  for the one touched claim, no pre-registered
+  expectation exists in the program's record, and the
+  report says so in the engine's own generated words,
+  with the record's 13 governing outcome records
+  censused and named above, Spec 074's among them
+  (third leg — an expectation neither named nor
+  scored — absent: no touched claim carries one).
+- **C086-16 (settling moves nothing)** — SUPPORTED
+  at Stage 4 scope. This PR's runs created only run
+  records: the tree diff attributable to settling is
+  exactly the two files under
+  `glossa-indus/ledger/runs/`; the store-discipline
+  tests pass against the populated store. The claim's
+  remaining leg — a *displayed* score differing from
+  an independent ScoringEngine execution — is a
+  property of the Stage 5 surface, which does not
+  exist yet; the settling layer computes no displayed
+  score, and the leg is carried to Stage 5 unnamed
+  nowhere and dropped nowhere.
+
+### What this stage does not establish
+
+*This does not establish any decipherment consequence
+— settling outputs are computations over ledgered
+relations, labeled as such, and enter the research
+record only through intake.* (tasks.md T407, carried
+verbatim.) Stage 4 is closed; Stage 5 (the layered
+map, wireframes first, the owner's approval by name)
+is the remaining stage of Spec 086.
+
+## Cleanup determination (T405–T407)
+
+The clone (`~/workspace/glossa-run/spec086-stage4-closeout`)
+is kept on the PR branch with a clean tree apart from
+this PR's own files, as the seat discipline requires,
+for the parent's merge motion. Scratch lives under
+`/tmp/s086s4/` (the census script, the scope list, run
+and comparison captures, suite chunk lists) — ephemeral,
+outside the repo; nothing in the tree depends on it.
+Chunk suite outputs live in this session's process
+records; their summaries are transcribed above. No
+background processes, containers, worktrees, or venvs
+were created by this worker, and none are left running.
+No branch was merged or deleted by this worker; main
+was not touched.
+
+**AI disclosure:** executed by an AI agent (Muse, via
+Muse) at the direction of Tristen Pierson, per
+constitution sec. VI.

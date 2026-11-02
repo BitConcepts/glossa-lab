@@ -3,13 +3,16 @@
 **Feature Branch**: `feat/087-spec-package` (this package);
 build stages take their own branches per stage.
 **Created**: 2026-11-02
-**Status**: DRAFT — records only, awaiting the owner's block
-approval. Claims frozen before code (spec-kit + AEE flow).
-Nothing in this package is built, and no stage starts, until
-the owner approves the package as a block in the Glossa-Lab
-chat. Stage S5 additionally gates on the owner's approval of
-its wireframes package (records/logs-view-wireframes/ in this
-spec).
+**Status**: APPROVED AS A BLOCK by the owner on 2026-11-02
+(~10:39 EST, option tap in the Glossa-Lab chat: "Approve
+Spec 087 as a block, D1-D5 and Q1-Q2 as recommended"). The
+decisions D1–D5 stand as this package recommends; the S5
+wireframes package (records/logs-view-wireframes/ in this
+spec) is approved in the same act, with Q1 (placement: own
+tab) and Q2 (purge: ship with confirmation) ruled as
+recommended. Claims frozen before code (spec-kit + AEE
+flow). The approval act is recorded in full at
+records/adoption-2026-11-02.md.
 **Input**: The owner's directive of 2026-11-02 (~09:56 EST):
 check all logs and fix them; verify the manual work is intact;
 make sure all experiments are properly registered as graphs and

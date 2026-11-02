@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — Logs, live stream (Spec 087 wireframe 01)</title>
+<link rel="stylesheet" href="wireframes.css">
+<style>
+  .logstream { background:#0f172a; color:#dbe7f5; border-radius:10px; padding:14px 16px;
+    font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:12px;
+    line-height:1.75; overflow:hidden; }
+  .logstream .ts { color:#7d93b2; }
+  .logstream .lvl-info { color:#7dd3fc; font-weight:700; }
+  .logstream .lvl-warn { color:#fbbf24; font-weight:700; }
+  .logstream .lvl-error { color:#f87171; font-weight:700; }
+  .logstream .logger { color:#a5b4fc; }
+  .lvl-chip { display:inline-block; font-size:11.5px; font-weight:600; padding:2px 10px;
+    border:1px solid var(--line); border-radius:20px; margin-right:6px; background:var(--card); }
+  .lvl-chip.on { background:#1e3a5f; color:#fff; border-color:#1e3a5f; }
+  .live-dot { display:inline-block; width:8px; height:8px; border-radius:50%;
+    background:#22c55e; margin-right:6px; vertical-align:1px; }
+  .danger-btn { color:#b91c1c; border-color:#fca5a5; }
+  .toolbar-row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+  @media (max-width:900px){ .logstream{font-size:11px} }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-row">
+        <div class="tile">G</div>
+        <div>
+          <div class="brand-name">Glossa Lab</div>
+          <div class="brand-sub">Epistemic research workbench</div>
+        </div>
+      </div>
+    </div>
+    <div class="program-switch">
+      <div class="ps-label">Program</div>
+      <div class="ps-name">Indus Script <span>▾</span></div>
+      <div class="ps-q">Standing position: not deciphered.</div>
+    </div>
+    <nav class="nav">
+      <h4>Program</h4>
+      <a href="#"><span class="ic">⌂</span>Program home</a>
+      <a href="#"><span class="ic">☰</span>Claims</a>
+      <a href="#"><span class="ic">▤</span>Digestion</a>
+      <a href="#"><span class="ic">▦</span>Evidence &amp; sources</a>
+      <a href="#"><span class="ic">◈</span>Data</a>
+      <a href="#"><span class="ic">∿</span>Analysis</a>
+      <a href="#"><span class="ic">⚗</span>Experiments</a>
+      <a href="#"><span class="ic">⬡</span>System graph</a>
+      <h4>Tool home</h4>
+      <a href="#"><span class="ic">◎</span>Discovery</a>
+      <a href="#"><span class="ic">↻</span>Research loop</a>
+      <a href="#"><span class="ic">▤</span>Reports &amp; ledger</a>
+      <a href="#"><span class="ic">⚙</span>Jobs</a>
+      <a href="01-logs-stream.html" class="active"><span class="ic">≣</span>Logs <span class="count">restored</span></a>
+      <a href="#"><span class="ic">♥</span>Status</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="crumb"><b>Indus Script</b> / Logs / Live stream</span>
+      <div class="spacer"></div>
+      <button class="icon-btn">⌘K&nbsp; Search</button>
+      <div class="service-chip"><span class="dot"></span><span><b>Glossa Lab v0.1.0</b> · desktop · log file glossa.log · live</span></div>
+      <div class="user-chip"><span class="avatar">t</span><span><b>operator</b></span><span>▾</span></div>
+    </div>
+
+    <div class="content">
+      <div class="head-row">
+        <div class="page-head">
+          <h1>Logs</h1>
+          <p class="lede">The backend's own log, streamed into the app. The endpoints behind this view
+          (<code>GET /terminal/log</code>, <code>GET /terminal/log/stream</code>) have been live all along;
+          Spec 081 removed the panel that read them. Spec 087 Stage 5 restores the viewer.</p>
+        </div>
+        <div class="spacer"></div>
+        <button class="btn">Open Status</button>
+      </div>
+
+      <div class="tabs">
+        <a href="01-logs-stream.html" class="active">Live stream</a>
+        <a href="02-logs-records.html">Job &amp; phase records</a>
+      </div>
+
+      <div class="card">
+        <div class="toolbar-row">
+          <span><span class="live-dot"></span><b>Live</b> · tailing <code>glossa.log</code> via <code>/terminal/log/stream</code> (SSE)</span>
+          <div class="spacer"></div>
+          <button class="btn">Pause</button>
+          <button class="btn">Download last 200 lines</button>
+          <button class="btn danger-btn">Purge log…</button>
+        </div>
+        <div class="divider"></div>
+        <div class="toolbar-row">
+          <span class="hs-k" style="font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)">Level</span>
+          <span class="lvl-chip on">All</span>
+          <span class="lvl-chip">DEBUG</span>
+          <span class="lvl-chip">INFO</span>
+          <span class="lvl-chip">WARNING</span>
+          <span class="lvl-chip">ERROR</span>
+          <div class="spacer"></div>
+          <span style="font-size:12.5px;color:var(--muted)">File: <code>logs/glossa.log</code> · exists · 12,483 lines · rotates at 10 MB × 5 backups · first load: last 200 lines (<code>GET /terminal/log?lines=200</code>)</span>
+        </div>
+      </div>
+
+      <div class="logstream">
+        <div><span class="ts">2026-11-02T14:52:03.118Z</span> <span class="lvl-info">INFO</span> <span class="logger">glossa_lab.main</span> — Glossa Lab backend ready; 53 routers mounted under /api/v1</div>
+        <div><span class="ts">2026-11-02T14:52:03.402Z</span> <span class="lvl-info">INFO</span> <span class="logger">glossa_lab.experiment_graph</span> — atomic node registry loaded: 517 node types, 66 categories</div>
+        <div><span class="ts">2026-11-02T14:52:11.764Z</span> <span class="lvl-info">INFO</span> <span class="logger">glossa_lab.api.jobs</span> — job 20261102T145211Z-graph-run submitted: experiment graph indus_sa_dravidian (27 nodes)</div>
+        <div><span class="ts">2026-11-02T14:52:12.090Z</span> <span class="lvl-info">INFO</span> <span class="logger">glossa_lab.experiment_graph</span> — node SADecipher finished in 0.31s → mapping (94 anchors applied)</div>
+        <div><span class="ts">2026-11-02T14:52:12.377Z</span> <span class="lvl-warn">WARNING</span> <span class="logger">glossa_lab.experiment_graph_phase248_253</span> — example warning line: a module warning is the only signal a registration problem gives today (Spec 087 Stage 1 makes it a CI failure)</div>
+        <div><span class="ts">2026-11-02T14:52:14.955Z</span> <span class="lvl-info">INFO</span> <span class="logger">glossa_lab.api.jobs</span> — job 20261102T145211Z-graph-run completed in 3.19s; result stored in job_results</div>
+        <div><span class="ts">2026-11-02T14:53:01.220Z</span> <span class="lvl-error">ERROR</span> <span class="logger">glossa_lab.api.terminal</span> — frontend error intake (POST /terminal/log/frontend): ErrorBoundary captured a render error in ReportsView; stack filed to the log</div>
+        <div><span class="ts">2026-11-02T14:53:40.008Z</span> <span class="lvl-info">INFO</span> <span class="logger">glossa_lab.api.events</span> — events bus: in-memory only; events emitted with no live subscriber are lost (disposition decided in Spec 087, decision D2)</div>
+      </div>
+
+      <div class="callout">
+        <b>Purge confirmation (shown when “Purge log…” is pressed).</b>
+        Purge clears the current log file through <code>POST /terminal/log/purge</code> and returns
+        <code>{cleared: &lt;lines&gt;, file: "glossa.log"}</code>. Lines already rotated into backups are not touched.
+        This cannot be undone. &nbsp;<button class="btn danger-btn">Purge 12,483 lines</button> <button class="btn">Cancel</button>
+        <div style="margin-top:8px;font-size:12.5px;color:var(--muted)">Whether this control ships at all is owner decision Q2 in this package's <code>decisions.md</code> — the alternative is a read-only view with purge left to the API.</div>
+      </div>
+
+      <div class="annotation">
+        <b>Purpose</b> · Watch the backend log live, filter by level, and purge with a confirm — the viewer Spec 081 removed, restored against the endpoints that never went away.
+        <b>Primary action</b> · follow the live tail; pause to read.
+        <b>What changed and why</b> · new surface (Spec 087 Stage 5); no endpoint changes — <code>api.ts</code> already carries <code>getLog</code>, <code>getLogStreamUrl</code>, and <code>purgeLog</code> wrappers that no component references today (audit finding F6).
+        <b>Spec claims</b> · C087-10 (logs surface restored per these wireframes), C087-11 (events-bus disposition stated once, code matches).
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

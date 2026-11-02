@@ -7,6 +7,23 @@ a run pinned to another ledger build). The API tests pin the
 surface's contract: the published artifact served exactly, and
 the C086-19 scoping oracle — an actor without an indus-script
 role receives the scoped 404 and no element of the map.
+
+Real-tree precondition: the builder tests build over the
+committed tree, whose source files the ledger mirrors by
+canonical hash; earlier suite tests (the indus-claims
+carryover and the spec029 regeneration tests) regenerate
+the extracted-claims source files in-tree with transient
+bytes when they run first in a suite process, in which case
+the builder refuses by design. The tests verify that
+precondition mechanically before building — the builder's
+own recorded-hash verification — and skip with the cause
+named only when every divergence is inside that known
+rewrite population (assertions unchanged wherever the
+precondition holds); a divergence outside the population
+fails loudly, never skips. The scratch-tree fixture shares
+the precondition — its claims tree is a symlink to the real
+one — so it applies the same guard (the Stage 2/3
+discipline, as in test_spec086_ledger_gate.py).
 """
 from __future__ import annotations
 
@@ -30,8 +47,141 @@ GOVERNING_PTR = (
 )
 
 
+# ── Real-tree precondition (the Stage 2/3 discipline) ────
+
+_EXTRACTED_CLAIMS_PREFIX = "glossa-indus/claims/extracted_claims/"
+
+
+def _recorded_source_hash_divergences(root: Path) -> list[str]:
+    """The builder tests' precondition, checked mechanically:
+    run the builder's own source verification — the recorded-
+    hash comparison ``build_map`` performs through the
+    ledger's pointers — over ``root`` and return the source
+    paths it names as diverged. An empty list means every
+    recorded hash still verifies: the precondition holds."""
+    registers = mp._Registers(root)
+    entries = li.read_ledger(root / li.LEDGER_REL)
+    for entry in entries:
+        for source in entry.get("sources", []):
+            registers.verify(source["path"], source["sha256"])
+        if entry.get("kind") == "annotation":
+            sidecar = entry.get("sidecar") or {}
+            if sidecar.get("path") and sidecar.get("sha256"):
+                registers.verify(sidecar["path"], sidecar["sha256"])
+    paths: list[str] = []
+    for mismatch in registers.mismatches:
+        path = mismatch.split(":", 1)[0]
+        if path not in paths:
+            paths.append(path)
+    return paths
+
+
+def _require_map_precondition(root: Path) -> None:
+    """Skip-with-cause (the Stage 2/3 discipline) when the
+    real-tree precondition is destroyed by the known in-tree
+    rewrite population: an earlier suite test regenerated
+    the extracted-claims source files, so the builder's
+    recorded-hash refusal is the designed behavior. Where
+    the precondition holds this returns, and the builder in
+    the caller must pass exactly as before. A divergence
+    OUTSIDE the rewrite population is not suite pollution:
+    it fails loudly here and is never skipped over."""
+    divergences = _recorded_source_hash_divergences(root)
+    if not divergences:
+        return
+    outside = [
+        p for p in divergences if not p.startswith(_EXTRACTED_CLAIMS_PREFIX)
+    ]
+    if outside:
+        raise AssertionError(
+            "recorded-source-hash divergence outside the known "
+            "extracted-claims rewrite population — the map "
+            "builder's refusal is not explained by suite "
+            f"pollution and must not be skipped over: {outside}"
+        )
+    shown = ", ".join(divergences[:3])
+    more = (
+        f" (+{len(divergences) - 3} more)" if len(divergences) > 3 else ""
+    )
+    pytest.skip(
+        "clean-tree precondition destroyed: the map builder's "
+        "recorded-source-hash verification fails — the tree no "
+        "longer matches the ledger's recorded hashes because "
+        "an earlier suite test (tests/test_indus_claims_"
+        "carryover.py and the spec029 regeneration tests) "
+        "regenerated the extracted-claims source files in-tree "
+        "with transient bytes; the builder's refusal is the "
+        f"designed behavior. Diverged: {shown}{more}"
+    )
+
+
+def _mini_tree(root: Path, rel: str) -> Path:
+    """A one-entry ledger tree for the precondition teeth:
+    one source file under ``rel``, recorded by its canonical
+    hash at assembly time."""
+    src = root / rel
+    src.parent.mkdir(parents=True, exist_ok=True)
+    src.write_bytes(b'{"claim_id": "mini_001"}\n')
+    entry = {
+        "id": "mini_001",
+        "kind": "claim",
+        "sources": [
+            {
+                "path": rel,
+                "claim_id": "mini_001",
+                "sha256": li.sha256_file(src),
+            }
+        ],
+    }
+    ledger = root / li.LEDGER_REL
+    ledger.parent.mkdir(parents=True, exist_ok=True)
+    ledger.write_text(json.dumps(entry) + "\n", encoding="utf-8")
+    return src
+
+
+def test_precondition_holds_on_a_pristine_tree(tmp_path: Path) -> None:
+    rel = "glossa-indus/claims/extracted_claims/mini.json"
+    _mini_tree(tmp_path, rel)
+    assert _recorded_source_hash_divergences(tmp_path) == []
+    _require_map_precondition(tmp_path)  # must not skip or raise
+
+
+def test_precondition_names_an_altered_extracted_claims_file(
+    tmp_path: Path,
+) -> None:
+    """Teeth for the precondition itself: alter one
+    extracted-claims source file and the precondition must
+    trip, naming that file — in the helper's divergence
+    list and in the skip reason."""
+    rel = "glossa-indus/claims/extracted_claims/mini.json"
+    src = _mini_tree(tmp_path, rel)
+    src.write_bytes(src.read_bytes() + b"x")
+    assert _recorded_source_hash_divergences(tmp_path) == [rel]
+    with pytest.raises(pytest.skip.Exception) as excinfo:
+        _require_map_precondition(tmp_path)
+    reason = str(excinfo.value)
+    assert "recorded-source-hash verification" in reason
+    assert rel in reason
+
+
+def test_precondition_fails_loudly_outside_the_rewrite_population(
+    tmp_path: Path,
+) -> None:
+    """The other direction: a divergence outside the
+    extracted-claims population is never skipped over —
+    the guard raises, naming the file."""
+    rel = "glossa-indus/claims/bundles/mini.json"
+    src = _mini_tree(tmp_path, rel)
+    src.write_bytes(src.read_bytes() + b"x")
+    assert _recorded_source_hash_divergences(tmp_path) == [rel]
+    with pytest.raises(AssertionError) as excinfo:
+        _require_map_precondition(tmp_path)
+    assert rel in str(excinfo.value)
+
+
 @pytest.fixture(scope="module")
 def built():
+    _require_map_precondition(ROOT)
     return mp.build_map(ROOT)
 
 
@@ -180,6 +330,14 @@ def map_tree(tmp_path: Path) -> Path:
     os.symlink(
         ROOT / "docs/research-evidence", root / "docs/research-evidence"
     )
+    # The fixture shares the real-tree precondition: the
+    # claims tree above is a symlink into the real tree, so
+    # a polluted suite process pollutes this tree's inputs
+    # identically. Skip with the cause named rather than
+    # failing on a precondition the test never stated (the
+    # run-pin refusal below is checked only after the
+    # builder's source verification).
+    _require_map_precondition(root)
     return root
 
 

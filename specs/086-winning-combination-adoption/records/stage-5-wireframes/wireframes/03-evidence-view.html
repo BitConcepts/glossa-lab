@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — System graph, evidence view (Spec 086 wireframe 03)</title>
+<link rel="stylesheet" href="wireframes.css">
+<style>
+  .header-strip { display:flex; gap:18px; flex-wrap:wrap; }
+  .hs-block { flex:1; min-width:250px; }
+  .hs-k { font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px; }
+  .hs-v { font-size:13.5px; line-height:1.5; }
+  .hs-src { font-size:11.5px; color:var(--faint); margin-top:5px; }
+  .layer-tag { display:inline-block; font-size:10.5px; font-weight:700; padding:1px 8px; border-radius:20px; text-transform:uppercase; letter-spacing:.05em; vertical-align:1px; }
+  .layer-tag.ledger { background:#e2e8f0; color:#1e3a5f; }
+  .layer-tag.matrix { background:#dbeafe; color:#1d4ed8; }
+  .layer-tag.computed { background:#ede9fe; color:#6d28d9; }
+  .cites { font-size:11.5px; color:var(--faint); border-top:1px solid var(--line-soft); padding-top:7px; margin-top:10px; }
+  .cites b { color:var(--muted); font-weight:600; }
+  .mini-table { width:100%; border-collapse:collapse; }
+  .mini-table th, .mini-table td { border-bottom:1px solid var(--line-soft); padding:6px 8px; text-align:left; font-size:13px; vertical-align:top; }
+  .mini-table thead th { color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
+  @media (max-width:900px){ .header-strip{flex-direction:column} }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-row">
+        <div class="tile">G</div>
+        <div>
+          <div class="brand-name">Glossa Lab</div>
+          <div class="brand-sub">Epistemic research workbench</div>
+        </div>
+      </div>
+    </div>
+    <div class="program-switch">
+      <div class="ps-label">Program</div>
+      <div class="ps-name">Indus Script <span>▾</span></div>
+      <div class="ps-q">Standing position: not deciphered.</div>
+    </div>
+    <nav class="nav">
+      <h4>Program</h4>
+      <a href="#"><span class="ic">⌂</span>Program home</a>
+      <a href="#"><span class="ic">☰</span>Claims</a>
+      <a href="#"><span class="ic">▤</span>Digestion</a>
+      <a href="#"><span class="ic">▦</span>Evidence &amp; sources</a>
+      <a href="#"><span class="ic">◈</span>Data</a>
+      <a href="#"><span class="ic">∿</span>Analysis</a>
+      <a href="#"><span class="ic">⚗</span>Experiments</a>
+      <a href="01-system-view.html" class="active"><span class="ic">⬡</span>System graph <span class="count">new</span></a>
+      <h4>Tool home</h4>
+      <a href="#"><span class="ic">◎</span>Discovery</a>
+      <a href="#"><span class="ic">↻</span>Research loop</a>
+      <a href="#"><span class="ic">▤</span>Reports &amp; ledger</a>
+      <a href="#"><span class="ic">⚙</span>Jobs</a>
+      <a href="#"><span class="ic">♥</span>Status</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="crumb"><b>Indus Script</b> / System graph / Claim / parpola_…_manual_002 / Evidence</span>
+      <div class="spacer"></div>
+      <button class="icon-btn">⌘K&nbsp; Search</button>
+      <div class="service-chip"><span class="dot"></span><span><b>Glossa Lab v0.1.0</b> · desktop · map data · ledger c4e2326e… · fresh</span></div>
+      <div class="user-chip"><span class="avatar">t</span><span><b>operator</b></span><span>▾</span></div>
+    </div>
+
+    <div class="content">
+      <div class="card header-strip" style="margin-bottom:14px">
+        <div class="hs-block">
+          <div class="hs-k">Claims by status · 840 claims <span class="layer-tag ledger">Ledger</span></div>
+          <div class="hs-v"><b>draft 816</b> · untested 12 · contradicted 4 · partially supported 3 · strongly supported 2 · partially falsified 1 · unsupported 1 · superseded 1</div>
+          <div class="hs-src">Computed from ledger status fields · gate V2 · cites: claims.jsonl (c4e2326e…)</div>
+        </div>
+        <div class="hs-block">
+          <div class="hs-k">Validated-anchor share <span class="layer-tag ledger">Ledger</span></div>
+          <div class="hs-v"><b>94 of 287</b> strict · <b>0.3275</b></div>
+          <div class="hs-src">Gate V6 · cites: INDUS_FINAL_ANCHORS.json (df0cf620…)</div>
+        </div>
+        <div class="hs-block">
+          <div class="hs-k">Nearest dated items <span class="layer-tag ledger">Ledger</span></div>
+          <div class="hs-v"><b>2026-10-25</b> Spec 054 outcome — yadav_2009…_manual_002 · <b>2026-10-24</b> Spec 074 / Spec 052 outcomes</div>
+          <div class="hs-src">Dated outcome blocks, nearest first · 44 validations pending (no review dates recorded)</div>
+        </div>
+      </div>
+
+      <div class="head-row">
+        <div class="page-head">
+          <h1 style="font-size:21px">Evidence behind the claim</h1>
+          <p class="lede">The matrix's column side for <a href="02-claim-view.html">parpola_2010_dravidian_solution_manual_002</a> — the anchors, texts, documents, and research checks behind it, each element traceable to its register record. This specimen is deliberately the hard case: almost everything behind this claim is an honest absence, and each absence is rendered as itself.</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <div class="head-row"><h3>Column summary for this claim</h3><span class="layer-tag matrix">Matrix</span></div>
+        <table class="mini-table">
+          <thead><tr><th>Column class</th><th>Columns in the matrix</th><th>Bearing on this claim</th><th>What this view shows</th></tr></thead>
+          <tbody>
+            <tr><td>documents</td><td>316</td><td><b>0 cells</b> — its own document is provenance, not a cell</td><td>the source-of-record document, below</td></tr>
+            <tr><td>studies</td><td>10</td><td><b>0 cells</b> — no executed study's outcome bears on it</td><td>stated here; nothing to open</td></tr>
+            <tr><td>anchors</td><td>287</td><td><b>0 cells</b> — the whole anchor class is unused under matrix-defs v1</td><td>3 register records behind its sign_refs, below</td></tr>
+            <tr><td>research checks</td><td>31</td><td><b>0 cells</b> — every sidecar verdict is null; checks are advisory</td><td>its research-check annotation, below</td></tr>
+            <tr><td>corpus texts</td><td>0</td><td>— the class has no columns in v1</td><td>stated here</td></tr>
+          </tbody>
+        </table>
+        <div class="cites"><b>Cites:</b> matrix.json columns_by_class · coverage.unused_columns · cells for this row (0)</div>
+      </div>
+
+      <div class="grid" style="grid-template-columns:1fr 1fr;margin-bottom:14px">
+        <div class="card">
+          <div class="head-row"><h3>Source document — provenance, not a cell</h3><span class="layer-tag ledger">Ledger</span></div>
+          <div class="row-item"><div class="grow"><div class="row-title">parpola_2010_dravidian_solution</div><div class="row-meta">document id on the claim's source-of-record entry · the document this claim was extracted from</div></div></div>
+          <div class="row-meta" style="line-height:1.6">Record: <span class="codebox" style="display:inline;padding:1px 6px">glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json</span> · sha256 3851a68c… · role: source_of_record. Under matrix-defs v1, a claim's own document is its provenance and never counts as evidence bearing on it — that is why this document appears here and not as a supports cell in the row. Other documents bearing on a claim do appear as cells (see the yadav row inset on the claim view).</div>
+          <div class="cites"><b>Cites:</b> claim parpola_2010_dravidian_solution_manual_002 · sources[0] (document_id, path, sha256) · matrix-defs v1 provenance rule</div>
+        </div>
+
+        <div class="card">
+          <div class="head-row"><h3>Research check — advisory, no verdict</h3><span class="layer-tag ledger">Ledger</span></div>
+          <div class="row-item"><div class="grow"><div class="row-title">Research-check annotation for this claim</div><div class="row-meta">checked 2026-10-22 · 24–26 nearest neighbours surfaced across two checks · 1 gap noted · protocol: docs/paper-search-mcp.md#audit-protocol</div></div></div>
+          <div class="row-meta" style="line-height:1.6">The check is an <b>annotation entry</b> in the ledger, marked advisory under the Spec 025 contract. Its verdict field is null — as are all 31 research checks' — so the matrix mints no cell from it and the settling layer takes no tally from it. It is shown here because it is part of what stands behind the claim; it is labeled advisory because that is all it is.</div>
+          <div class="cites"><b>Cites:</b> annotation/parpola_2010_dravidian_solution__parpola_2010_dravidian_solution_manu… (ledger annotation entries) · matrix coverage: research_checks 31 columns, 0 cells</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="head-row"><h3>Sign references — register records exist; the matrix carries no cell for them</h3><span class="layer-tag ledger">Ledger</span></div>
+        <table class="mini-table">
+          <thead><tr><th>Sign ref (on the claim)</th><th>Register record</th><th>Recorded reading</th><th>Confidence (verbatim)</th><th>Validation status</th><th>Strict set</th><th>Matrix cell</th></tr></thead>
+          <tbody>
+            <tr><td>mahadevan:64</td><td>M064</td><td>va</td><td>HIGH</td><td>sa_in_provenance_chain</td><td>no</td><td><b>none</b></td></tr>
+            <tr><td>mahadevan:70</td><td>M070</td><td>vēl</td><td>HIGH</td><td>strict_sa_independent</td><td><b>yes</b></td><td><b>none</b></td></tr>
+            <tr><td>mahadevan:72</td><td>M072</td><td>mā</td><td>HIGH</td><td>pending_non_sa_validation — 1 of the 44 pending</td><td>no</td><td><b>none</b></td></tr>
+          </tbody>
+        </table>
+        <div class="callout" style="margin-top:10px"><b>A registered divergence, shown rather than smoothed over.</b> Under matrix-defs v1, the matrix's key construction resolves these refs to no anchor record, so all 287 anchor columns stand unused and this claim's row has no anchor cell. Under glossa-settle-1, the settling layer resolves the same refs by number to M064 / M070 / M072 — which is how both stored runs touch this claim. The two definition sets disagree here; the disagreement is registered in the Stage 4 record and flagged for the owner's oracle read (decision Q8 covers only how visibly this screen names it — the ruling itself is separate). Confidence is carried <b>verbatim</b> from the register, never converted to a number.</div>
+        <div class="cites"><b>Cites:</b> INDUS_FINAL_ANCHORS.json records M064 · M070 · M072 (df0cf620…) · matrix coverage.sign_refs_without_anchor_record (3) · SETTLING-SEMANTICS.md §2 · stage-4-record.md</div>
+      </div>
+
+      <div class="annotation">
+        <div class="a-title">Annotation — wireframe 03 · not part of the UI</div>
+        <dl>
+          <dt>Purpose</dt><dd>Point 5's evidence view: the column side behind one claim — anchors, texts, documents, and research checks, each traceable to its register record. The specimen claim was chosen because its evidence view is mostly honest absences (no study cell, no anchor cell, an advisory-only research check); a view that can only render presence would have nothing truthful to show here.</dd>
+          <dt>Primary action</dt><dd>Follow any element to its record: the document's file and hash, the annotation entry, the anchor register records.</dd>
+          <dt>Changed &amp; why</dt><dd>New level — Spec 085's explorer showed an anchor-set node in a graph neighbourhood; under the gated chain there are no claim→anchor edges to draw (Stage 2's finding: anchors contribute zero matrix cells), so the 085-era anchor-edge visual is dead and is replaced by this register-record presentation (the decisions page names this as a superseded 085 element). Against today: Evidence &amp; sources shows the library, but nothing in the app shows what stands behind one claim across all five column classes at once.</dd>
+          <dt>Spec claims</dt><dd>C086-17 (every element traces to its register record — gate V5), C086-19 (scoped responses contain no element whose record is out of scope; the perimeter applies here exactly as to the source records). Confidence values are register data carried verbatim (the MPCodec verbatim-confidence rule), never normalized by the surface.</dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

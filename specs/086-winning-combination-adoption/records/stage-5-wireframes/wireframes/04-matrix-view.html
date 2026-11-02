@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — System graph, matrix (Spec 086 wireframe 04)</title>
+<link rel="stylesheet" href="wireframes.css">
+<style>
+  .header-strip { display:flex; gap:18px; flex-wrap:wrap; }
+  .hs-block { flex:1; min-width:250px; }
+  .hs-k { font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px; }
+  .hs-v { font-size:13.5px; line-height:1.5; }
+  .hs-src { font-size:11.5px; color:var(--faint); margin-top:5px; }
+  .layer-tag { display:inline-block; font-size:10.5px; font-weight:700; padding:1px 8px; border-radius:20px; text-transform:uppercase; letter-spacing:.05em; vertical-align:1px; }
+  .layer-tag.ledger { background:#e2e8f0; color:#1e3a5f; }
+  .layer-tag.matrix { background:#dbeafe; color:#1d4ed8; }
+  .mx-controls { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+  .mx-table { border-collapse:collapse; width:100%; }
+  .mx-table th, .mx-table td { border:1px solid var(--line-soft); padding:0; text-align:center; }
+  .mx-table thead th { background:var(--navy); color:#c7d8f0; font-size:11.5px; padding:7px 4px; }
+  .mx-table tbody th { text-align:left; font-size:12px; font-weight:600; padding:7px 9px; background:#fbfcfe; max-width:290px; }
+  .mx-table tbody th .row-meta { font-weight:400; }
+  .cell { height:34px; background:#fff; font-size:11px; }
+  .cell.sup { background:#bbf7d0; color:#14532d; font-weight:700; }
+  .cell.opp { background:#fecaca; color:#7f1d1d; font-weight:700; }
+  .cell.sel { outline:3px solid var(--warn); outline-offset:-3px; }
+  .cell.none { background:repeating-linear-gradient(45deg,#fff,#fff 5px,#f8fafc 5px,#f8fafc 10px); }
+  .cell.unused { background:#f1f5f9; color:#94a3b8; }
+  .sel-chip { display:inline-block; padding:2px 8px; border-radius:20px; background:var(--accent-soft); color:var(--accent); font-size:12px; font-weight:600; margin-right:6px; }
+  .sel-chip.off { background:var(--neutral-bg); color:var(--neutral); font-weight:400; }
+  .cites { font-size:11.5px; color:var(--faint); border-top:1px solid var(--line-soft); padding-top:7px; margin-top:10px; }
+  .cites b { color:var(--muted); font-weight:600; }
+  @media (max-width:900px){ .header-strip{flex-direction:column} }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-row">
+        <div class="tile">G</div>
+        <div>
+          <div class="brand-name">Glossa Lab</div>
+          <div class="brand-sub">Epistemic research workbench</div>
+        </div>
+      </div>
+    </div>
+    <div class="program-switch">
+      <div class="ps-label">Program</div>
+      <div class="ps-name">Indus Script <span>▾</span></div>
+      <div class="ps-q">Standing position: not deciphered.</div>
+    </div>
+    <nav class="nav">
+      <h4>Program</h4>
+      <a href="#"><span class="ic">⌂</span>Program home</a>
+      <a href="#"><span class="ic">☰</span>Claims</a>
+      <a href="#"><span class="ic">▤</span>Digestion</a>
+      <a href="#"><span class="ic">▦</span>Evidence &amp; sources</a>
+      <a href="#"><span class="ic">◈</span>Data</a>
+      <a href="#"><span class="ic">∿</span>Analysis</a>
+      <a href="#"><span class="ic">⚗</span>Experiments</a>
+      <a href="01-system-view.html" class="active"><span class="ic">⬡</span>System graph <span class="count">new</span></a>
+      <h4>Tool home</h4>
+      <a href="#"><span class="ic">◎</span>Discovery</a>
+      <a href="#"><span class="ic">↻</span>Research loop</a>
+      <a href="#"><span class="ic">▤</span>Reports &amp; ledger</a>
+      <a href="#"><span class="ic">⚙</span>Jobs</a>
+      <a href="#"><span class="ic">♥</span>Status</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="crumb"><b>Indus Script</b> / System graph / Matrix</span>
+      <div class="spacer"></div>
+      <button class="icon-btn">⌘K&nbsp; Search</button>
+      <div class="service-chip"><span class="dot"></span><span><b>Glossa Lab v0.1.0</b> · desktop · map data · ledger c4e2326e… · fresh</span></div>
+      <div class="user-chip"><span class="avatar">t</span><span><b>operator</b></span><span>▾</span></div>
+    </div>
+
+    <div class="content">
+      <div class="card header-strip" style="margin-bottom:14px">
+        <div class="hs-block">
+          <div class="hs-k">Claims by status · 840 claims <span class="layer-tag ledger">Ledger</span></div>
+          <div class="hs-v"><b>draft 816</b> · untested 12 · contradicted 4 · partially supported 3 · strongly supported 2 · partially falsified 1 · unsupported 1 · superseded 1</div>
+          <div class="hs-src">Computed from ledger status fields · gate V2 · cites: claims.jsonl (c4e2326e…)</div>
+        </div>
+        <div class="hs-block">
+          <div class="hs-k">Validated-anchor share <span class="layer-tag ledger">Ledger</span></div>
+          <div class="hs-v"><b>94 of 287</b> strict · <b>0.3275</b></div>
+          <div class="hs-src">Gate V6 · cites: INDUS_FINAL_ANCHORS.json (df0cf620…)</div>
+        </div>
+        <div class="hs-block">
+          <div class="hs-k">Nearest dated items <span class="layer-tag ledger">Ledger</span></div>
+          <div class="hs-v"><b>2026-10-25</b> Spec 054 outcome — yadav_2009…_manual_002 · <b>2026-10-24</b> Spec 074 / Spec 052 outcomes</div>
+          <div class="hs-src">Dated outcome blocks, nearest first · 44 validations pending (no review dates recorded)</div>
+        </div>
+      </div>
+
+      <div class="head-row">
+        <div class="page-head">
+          <h1>System graph</h1>
+          <p class="lede">The generated matrix, rendered exactly: 840 claim rows × 644 evidence columns, 1,363 cells. A filled cell is a stored relation the generator derived under matrix-defs v1 — nothing else can make a cell fill, and the screen computes nothing of its own.</p>
+        </div>
+      </div>
+
+      <div class="tabs" style="margin-bottom:14px">
+        <a href="01-system-view.html">System view</a>
+        <a href="04-matrix-view.html" class="active">Matrix</a>
+        <a href="05-settling-panel.html">Settling</a>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <div class="mx-controls">
+          <b>Matrix form:</b>
+          <span class="sel-chip">Claims × Evidence — primary</span>
+          <span class="sel-chip off">Sign × Sign block (imported, 80 nodes)</span>
+          <span class="row-meta">Claim × Sign is not a matrix form under this spec — there are no claim×sign cells in the generated matrix. It survives as the sign row-filter below (decision Q5).</span>
+        </div>
+        <div class="mx-controls" style="margin-top:10px">
+          <b>Column class:</b>
+          <span class="sel-chip">All classes</span>
+          <span class="sel-chip off">Documents · 316</span>
+          <span class="sel-chip off">Studies · 10</span>
+          <span class="sel-chip off">Anchors · 287 (all unused)</span>
+          <span class="sel-chip off">Research checks · 31 (all unused)</span>
+          <span class="sel-chip off">Corpus texts · 0</span>
+        </div>
+        <div class="mx-controls" style="margin-top:10px">
+          <b>Sign filter (rows):</b>
+          <span class="sel-chip off">any sign_ref — 1 claim</span>
+          <span class="sel-chip off">mahadevan:70</span>
+          <b style="margin-left:10px">Relation:</b>
+          <span class="sel-chip off">supports · 1,356</span>
+          <span class="sel-chip off">opposes · 7</span>
+          <span class="sel-chip off">constrains · 0</span>
+          <span class="row-meta" style="margin-left:auto">Showing 6 of 840 rows · the full matrix is served from the gated artifact and paged, never truncated silently</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="head-row"><h3>Claims × evidence</h3><span class="layer-tag matrix">Matrix</span><div class="spacer"></div><span class="row-meta">Real rows and cells from matrix.json · ledger c4e2326e… · matrix-defs v1</span></div>
+        <table class="mx-table">
+          <thead><tr>
+            <th style="text-align:left;padding-left:9px">Claim ↓ · Evidence column →</th>
+            <th>yadav_2010_<br>ngrams (doc)</th><th>owner-directive-<br>2026-10-10 (doc)</th><th>specs/027…/<br>spec.md#10 (doc)</th><th>052<br>(study)</th><th>054<br>(study)</th><th>074<br>(study)</th><th>anchors<br>(287, unused)</th><th>research checks<br>(31, unused)</th><th>Row<br>total</th>
+          </tr></thead>
+          <tbody>
+            <tr><th>There are specific text-beginning and text-ending signs in the Indus corpus<div class="row-meta">yadav_2009_arxiv_manual_002 · strongly_supported · explained</div></th>
+              <td class="cell sup">supports</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell opp sel">opposes</td><td class="cell"></td><td class="cell unused">—</td><td class="cell unused">—</td><td><b>2</b></td></tr>
+            <tr><th>The Indus script is not a writing system encoding language<div class="row-meta">farmer_sproat_witzel_2004_manual_001 · contradicted · explained</div></th>
+              <td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell opp">opposes</td><td class="cell"></td><td class="cell"></td><td class="cell unused">—</td><td class="cell unused">—</td><td><b>1</b></td></tr>
+            <tr><th>No Spec 027 evidence may enter the decipherment pathway<div class="row-meta">027-movement-culture-language/F027-C04 · draft · created · bundle — 5 document supports in full (3 columns shown)</div></th>
+              <td class="cell"></td><td class="cell sup">supports</td><td class="cell sup">supports</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell unused">—</td><td class="cell unused">—</td><td><b>5</b></td></tr>
+            <tr><th>Faunal signs function as identity/guild/commodity prefixes (initial position)<div class="row-meta">without_kings…_manual_003 · partially_supported · explained · opposes via Spec 074 + 6 prose sign mentions on its record (buffalo, elephant, fish, rhinoceros, tiger, unicorn)</div></th>
+              <td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell opp">opposes</td><td class="cell unused">—</td><td class="cell unused">—</td><td><b>1</b></td></tr>
+            <tr><th>The fish sign (meen in Dravidian) is the primary rebus sign<div class="row-meta">parpola_2010_dravidian_solution_manual_002 · partially_supported · explained · empty row — no column bears on it</div></th>
+              <td class="cell none"></td><td class="cell none"></td><td class="cell none"></td><td class="cell none"></td><td class="cell none"></td><td class="cell none"></td><td class="cell unused">—</td><td class="cell unused">—</td><td><b>0</b></td></tr>
+            <tr><th>Sign value: 700 / a volumetric system with a unit of 40 — and its companion claim (…_sign_val_0003)<div class="row-meta">ancient_writing…_sign_val_0002 · ancient_writing…_sign_val_0003 · untested · created · empty rows</div></th>
+              <td class="cell none"></td><td class="cell none"></td><td class="cell none"></td><td class="cell none"></td><td class="cell none"></td><td class="cell none"></td><td class="cell unused">—</td><td class="cell unused">—</td><td><b>0</b></td></tr>
+          </tbody>
+        </table>
+        <div class="callout" style="margin-top:12px"><b>Selected cell</b> — claim <i>yadav_2009_arxiv_manual_002</i> × study <b>054</b>: <b>opposes</b>, under rule R3 (stored outcome direction). Citations carried by the cell, each checked by gate V4 against its tie rule: the claim id · outcome append <span class="codebox" style="display:inline;padding:1px 6px">…yadav_2009_arxiv.json:…#spec054_outcome_append_2026_10_24</span> (superseded) · outcome append <span class="codebox" style="display:inline;padding:1px 6px">#spec054_outcome_append_2026_10_25</span> (governing — the re-execution, NOT SUPPORTED). The latest-dated governing block is the one that bears; the superseded block stays cited and labeled. <a href="02-claim-view.html">Open the claim view →</a></div>
+        <div class="callout" style="margin-top:10px"><b>The empty row is information.</b> 14 of 840 rows are entirely empty — each is named in the artifact's coverage block, and clicking one opens its claim view, where the empty state is explained (the parpola row above: its document is provenance, its research check is advisory, its sign references carry no cell). The two unused column classes render as greyed class columns — 287 anchor columns and 31 research-check columns with no cells anywhere — because a class that exists in the definitions but bears nothing is a fact about the program, not a rendering bug.</div>
+        <div class="cites"><b>Cites:</b> matrix.json (rows 840 · columns 644 · cells 1,363) · gate V3 (cells recomputed cell-for-cell) · gate V4 (every citation tied to its relation)</div>
+      </div>
+
+      <div class="annotation">
+        <div class="a-title">Annotation — wireframe 04 · not part of the UI</div>
+        <dl>
+          <dt>Purpose</dt><dd>The generated claims×evidence matrix as the surface's primary grid (T501 delta): the shape of what bears on what, with every cell's citations inspectable and every absence rendered as itself. Rows, columns, and cells in the specimen are the artifact's real contents, abridged only by paging, which the screen names.</dd>
+          <dt>Primary action</dt><dd>Filter by column class, relation, or sign reference; select a cell to read its citations and the rule that derived it; open a row into the claim view.</dd>
+          <dt>Changed &amp; why</dt><dd>Against Spec 085's 02 matrix view: the primary form changes from claim×sign incidence to <b>claims×evidence</b> (the 085 default is superseded — there are no claim×sign cells in the generated matrix at all, because the ledger's identifier-based sign_refs resolve to register records, not evidence columns; claim×sign survives as the sign row-filter, decision Q5). The 085 heatmap shading by edge weight is gone: cells carry their relation as a word, because a shade cannot show which of three relations a cell is, and constrains (0 cells) must be statable. The unused-class grey columns are new — 085's matrix had no wholly-unused column class to render. Against today: no matrix is served or shown anywhere in the app.</dd>
+          <dt>Spec claims</dt><dd>C086-17 (rendered counts and elements equal the gated artifact for the same selection — T504 verifies by Playwright capture against this wireframe), C086-19 (a scoped rendering contains no out-of-scope element and no relation incident to one). The screen renders the artifact; it does not compute, so a rendering defect is a downstream defect, fixed by correction of the surface — never by editing the artifact (Point 6).</dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

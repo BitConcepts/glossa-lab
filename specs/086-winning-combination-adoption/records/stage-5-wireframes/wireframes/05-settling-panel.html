@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — System graph, settling panel (Spec 086 wireframe 05)</title>
+<link rel="stylesheet" href="wireframes.css">
+<style>
+  .header-strip { display:flex; gap:18px; flex-wrap:wrap; }
+  .hs-block { flex:1; min-width:250px; }
+  .hs-k { font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px; }
+  .hs-v { font-size:13.5px; line-height:1.5; }
+  .hs-src { font-size:11.5px; color:var(--faint); margin-top:5px; }
+  .layer-tag { display:inline-block; font-size:10.5px; font-weight:700; padding:1px 8px; border-radius:20px; text-transform:uppercase; letter-spacing:.05em; vertical-align:1px; }
+  .layer-tag.ledger { background:#e2e8f0; color:#1e3a5f; }
+  .layer-tag.computed { background:#ede9fe; color:#6d28d9; }
+  .settle-wrap { display:flex; gap:14px; align-items:flex-start; }
+  .settle-left { width:330px; flex-shrink:0; }
+  .settle-right { flex:1; min-width:0; }
+  .mini-table { width:100%; border-collapse:collapse; }
+  .mini-table th, .mini-table td { border-bottom:1px solid var(--line-soft); padding:6px 8px; text-align:left; font-size:13px; vertical-align:top; }
+  .mini-table thead th { color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
+  .tag { display:inline-block; font-size:11px; font-weight:700; padding:2px 9px; border-radius:20px; text-transform:uppercase; letter-spacing:.04em; }
+  .tag.none { background:var(--neutral-bg); color:var(--neutral); }
+  .tag.bad { background:var(--bad-bg); color:var(--bad); }
+  .cites { font-size:11.5px; color:var(--faint); border-top:1px solid var(--line-soft); padding-top:7px; margin-top:10px; }
+  .cites b { color:var(--muted); font-weight:600; }
+  @media (max-width:900px){ .header-strip{flex-direction:column} .settle-wrap{flex-direction:column} .settle-left{width:auto} }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-row">
+        <div class="tile">G</div>
+        <div>
+          <div class="brand-name">Glossa Lab</div>
+          <div class="brand-sub">Epistemic research workbench</div>
+        </div>
+      </div>
+    </div>
+    <div class="program-switch">
+      <div class="ps-label">Program</div>
+      <div class="ps-name">Indus Script <span>▾</span></div>
+      <div class="ps-q">Standing position: not deciphered.</div>
+    </div>
+    <nav class="nav">
+      <h4>Program</h4>
+      <a href="#"><span class="ic">⌂</span>Program home</a>
+      <a href="#"><span class="ic">☰</span>Claims</a>
+      <a href="#"><span class="ic">▤</span>Digestion</a>
+      <a href="#"><span class="ic">▦</span>Evidence &amp; sources</a>
+      <a href="#"><span class="ic">◈</span>Data</a>
+      <a href="#"><span class="ic">∿</span>Analysis</a>
+      <a href="#"><span class="ic">⚗</span>Experiments</a>
+      <a href="01-system-view.html" class="active"><span class="ic">⬡</span>System graph <span class="count">new</span></a>
+      <h4>Tool home</h4>
+      <a href="#"><span class="ic">◎</span>Discovery</a>
+      <a href="#"><span class="ic">↻</span>Research loop</a>
+      <a href="#"><span class="ic">▤</span>Reports &amp; ledger</a>
+      <a href="#"><span class="ic">⚙</span>Jobs</a>
+      <a href="#"><span class="ic">♥</span>Status</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="crumb"><b>Indus Script</b> / System graph / Settling</span>
+      <div class="spacer"></div>
+      <button class="icon-btn">⌘K&nbsp; Search</button>
+      <div class="service-chip"><span class="dot"></span><span><b>Glossa Lab v0.1.0</b> · desktop · map data · ledger c4e2326e… · fresh</span></div>
+      <div class="user-chip"><span class="avatar">t</span><span><b>operator</b></span><span>▾</span></div>
+    </div>
+
+    <div class="content">
+      <div class="card header-strip" style="margin-bottom:14px">
+        <div class="hs-block">
+          <div class="hs-k">Claims by status · 840 claims <span class="layer-tag ledger">Ledger</span></div>
+          <div class="hs-v"><b>draft 816</b> · untested 12 · contradicted 4 · partially supported 3 · strongly supported 2 · partially falsified 1 · unsupported 1 · superseded 1</div>
+          <div class="hs-src">Computed from ledger status fields · gate V2 · cites: claims.jsonl (c4e2326e…)</div>
+        </div>
+        <div class="hs-block">
+          <div class="hs-k">Validated-anchor share <span class="layer-tag ledger">Ledger</span></div>
+          <div class="hs-v"><b>94 of 287</b> strict · <b>0.3275</b></div>
+          <div class="hs-src">Gate V6 · cites: INDUS_FINAL_ANCHORS.json (df0cf620…)</div>
+        </div>
+        <div class="hs-block">
+          <div class="hs-k">Nearest dated items <span class="layer-tag ledger">Ledger</span></div>
+          <div class="hs-v"><b>2026-10-25</b> Spec 054 outcome — yadav_2009…_manual_002 · <b>2026-10-24</b> Spec 074 / Spec 052 outcomes</div>
+          <div class="hs-src">Dated outcome blocks, nearest first · 44 validations pending (no review dates recorded)</div>
+        </div>
+      </div>
+
+      <div class="head-row">
+        <div class="page-head">
+          <h1>System graph</h1>
+          <p class="lede">Settling: what the ledger implies under the program's registered rules — candidate sign-value assignments checked against every anchor context they touch, with coverage and conflicts enumerated. <b>Everything on this panel is a computed output</b>, labeled as the run records label themselves: “Computation over ledgered relations under glossa-settle-1 semantics. Establishes what the ledger implies under these rules, not what the script says.”</p>
+        </div>
+      </div>
+
+      <div class="tabs" style="margin-bottom:14px">
+        <a href="01-system-view.html">System view</a>
+        <a href="04-matrix-view.html">Matrix</a>
+        <a href="05-settling-panel.html" class="active">Settling</a>
+      </div>
+
+      <div class="callout" style="margin-bottom:14px"><span class="layer-tag computed">Computed layer</span>&nbsp; A settling run creates <b>only run records</b>: no ledger entry, claim status, stage, score, or anchor assignment changes as a result of a run (C086-16). Ledger verdicts and settling outputs are different layers — a computed output never overrides a ledger state, and this panel never presents one as doing so.</div>
+
+      <div class="settle-wrap">
+        <div class="card settle-left">
+          <h3>Run inputs — registered, not authored here</h3>
+          <div class="field">
+            <label for="sem">Semantics</label>
+            <input id="sem" type="text" value="glossa-settle-1 (registered, SETTLING-SEMANTICS.md)" readonly>
+          </div>
+          <div class="field">
+            <label for="cand">Candidate assignment set</label>
+            <input id="cand" type="text" value="incumbent — 94 assignments (the strict set)" readonly>
+          </div>
+          <div class="field">
+            <label for="scope">Context scope</label>
+            <input id="scope" type="text" value="full frame — mahadevan, 286 signs" readonly>
+          </div>
+          <div class="row-item"><div class="grow"><div class="row-title">Assignment sets of record (2)</div><div class="row-meta">incumbent · full-register — materialized from the canonical anchors register by the engine; byte-identical on regeneration</div></div></div>
+          <div class="row-item"><div class="grow"><div class="row-title">User-built anchor sets</div><div class="row-meta">excluded as settling contexts in v1 (Spec 086 §8, Q3): builder sets are user data under Spec 081's model; this panel runs registered sets only</div></div></div>
+          <button class="btn primary block" style="margin-top:12px">Run settling</button>
+          <div class="callout" style="margin-top:12px">A run's inputs are its pins: ledger hash, anchors register hash, corpus snapshot hash, semantics version. Two runs whose pins differ are never compared as if they agreed — the comparison record carries both runs' pins, and a pin mismatch falsifies the comparison (C086-15).</div>
+          <div class="cites"><b>Cites:</b> SETTLING-SEMANTICS.md (glossa-settle-1) · assignment-sets.json (36bce404…)</div>
+        </div>
+
+        <div class="settle-right">
+          <div class="card" style="margin-bottom:14px">
+            <div class="head-row"><h3>Stored runs — the first interchangeability pair (T405)</h3><span class="layer-tag computed">Computed</span></div>
+            <table class="mini-table">
+              <thead><tr><th>Run record</th><th>Assigned</th><th>Contexts</th><th>Strict / consistent</th><th>Non-strict</th><th>Conflicts</th><th>Agreement</th><th>Forced</th></tr></thead>
+              <tbody>
+                <tr><td>incumbent<br><span class="row-meta">t405-incumbent-over-full-frame--b262d06655a4</span></td><td>94</td><td>94</td><td>94 / 94</td><td>0</td><td><b>0</b></td><td>1.0</td><td>0</td></tr>
+                <tr><td>full-register (challenger)<br><span class="row-meta">t405-full-register-over-full-frame--e0892157556b</span></td><td>286</td><td>286</td><td>94 / 94</td><td>192</td><td><b>0</b></td><td>1.0</td><td>0</td></tr>
+              </tbody>
+            </table>
+            <div class="row-meta" style="margin-top:8px">Same pins on both records: ledger c4e2326e… (871 lines) · corpus 08fc96c8… · anchors register df0cf620…. Zero conflicts is a result about these two candidate sets over this register — it is not a result about the script, and the panel never words it as one.</div>
+            <div class="cites"><b>Cites:</b> glossa-indus/ledger/runs/ (the run store's first two records) · pins as recorded in each</div>
+          </div>
+
+          <div class="card" style="margin-bottom:14px">
+            <div class="head-row"><h3>Divergence view — incumbent vs full-register</h3><span class="layer-tag computed">Computed</span></div>
+            <p class="lede" style="margin-bottom:6px">The interchangeability discipline: the <b>same inputs</b>, both candidates, divergences listed claim by claim — never a blended verdict.</p>
+            <table class="mini-table">
+              <thead><tr><th>Claim compared (1)</th><th>Incumbent tallies (sup / opp / con)</th><th>Full-register tallies</th><th>Divergent</th></tr></thead>
+              <tbody>
+                <tr><td>parpola_2010_dravidian_solution_manual_002</td><td>0 / 0 / 0</td><td>0 / 0 / 0</td><td><b>No</b></td></tr>
+              </tbody>
+            </table>
+            <div class="row-meta" style="line-height:1.65;margin-top:8px"><b>Coverage deltas:</b> assigned 94 → 286 · contexts touched 94 → 286 · conflicts 0 → 0 · forced 0 → 0. <b>Signs assigned by one only:</b> 192, all full-register only (mahadevan:1, 11, 21, 24, 28, 31, 33, 36, 40, 43, 64, 71, 72, … — the full list is in the comparison record). <b>Pre-registered expectations:</b> none exists for the one touched claim — a census of the program's 13 governing outcome records found none concerning it, and the comparison carries the engine's own generated absence statement, so an expectation is never silently unaddressed (C086-15's third leg). <b>Value-independence:</b> in v1 the tallies depend on which signs are assigned, never on the values (S-R2, registered limit GAP-S2) — the runs diverge in coverage only, and the view says so.</div>
+            <div class="cites"><b>Cites:</b> comparison record stage-4-dual-run-comparison.json (ae83e71b…) · claims compared: 1 · per-claim divergences: 0</div>
+          </div>
+
+          <div class="card" style="margin-bottom:14px">
+            <div class="head-row"><h3>Registered canonicals — the engine's oracle</h3><span class="layer-tag computed">Computed</span></div>
+            <p class="lede" style="margin-bottom:6px">Five hand-derived scenarios over the canonical subset (mahadevan:64/70/72/222), derived before the engine existed. The engine's first test is reproducing them exactly; gate V8 re-checks the reproduction on every run. The panel can display any of them as a worked example:</p>
+            <table class="mini-table">
+              <thead><tr><th>Scenario</th><th>Expected result (hand-derived)</th></tr></thead>
+              <tbody>
+                <tr><td>null candidate</td><td>contexts 0 · conflicts 0 · forced readings: (70, vēl), (222, min)</td></tr>
+                <tr><td>incumbent {70→vēl, 222→min}</td><td>contexts 2 · consistent 2 · conflicts 0 · touches 1 claim</td></tr>
+                <tr><td>full-register {64→va, 70→vēl, 72→mā, 222→min}</td><td>contexts 4 · consistent 2 · non-strict 2 · conflicts 0</td></tr>
+                <tr><td>seeded conflict {70→ka}</td><td>exactly 1 conflict, named: mahadevan:70, M070, ka ≠ vēl · agreement 0</td></tr>
+                <tr><td>untouched sign {417→TESTVALUE}</td><td>contexts 0 · coverage zero, stated as zero</td></tr>
+              </tbody>
+            </table>
+            <div class="cites"><b>Cites:</b> settling-canonical.json · gate V8 (canonicals reproduce under the gate's own route)</div>
+          </div>
+
+          <div class="card">
+            <div class="head-row"><h3>What the rules cannot reach</h3><span class="layer-tag computed">Computed</span></div>
+            <div class="row-item"><div class="grow"><div class="row-title">S-R3 positional-class rule — <span class="tag none">UNMEASURED</span></div><div class="row-meta">No positional-class table exists in the record (five artifacts searched at registration). The rule is registered but inert and reports a determinate zero — shown as UNMEASURED here and in every run record, never silently dropped and never estimated.</div></div></div>
+            <div class="row-item"><div class="grow"><div class="row-title">Claims no run can touch — 839 of 840</div><div class="row-meta">Only claims carrying sign_refs are touched by a run; exactly one does (via mahadevan:64/70/72). The other 839 are outside the settling layer's reach in v1 — the panel states the reach next to the results, so a clean run can never silently mean “everything was checked.”</div></div></div>
+            <div class="cites"><b>Cites:</b> SETTLING-SEMANTICS.md §10 (gap register) · ledger sign_refs census (1 claim of 840)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="annotation">
+        <div class="a-title">Annotation — wireframe 05 · not part of the UI</div>
+        <dl>
+          <dt>Purpose</dt><dd>Spec 085's projection panel, conformed into Point 5's settling panel: run a registered candidate against the anchor contexts, read coverage/conflicts/forced readings, and compare incumbent vs challenger under the interchangeability discipline with the per-claim divergence list. All run numbers are the stored T405 records' real outputs.</dd>
+          <dt>Primary action</dt><dd>Open on the stored T405 comparison (decision Q7), or run a registered candidate/scope pair and read its run record.</dd>
+          <dt>Changed &amp; why</dt><dd>Against 085's 03: the four constraint kinds (score floor, anchor consistency, support floor, contradiction tension) are <b>gone</b> — they belonged to 085's projected-constraint engine, which was never built and whose framing 086 superseded; the Experiment Builder stub that named it was removed with a pointer at Stage 4 closeout (T406). What replaces them is glossa-settle-1's actual rule set (S-R1–S-R4) over anchor contexts. The 085 score-ceiling table is likewise not carried over: ceilings were AEE propagation outputs, and under C086-16 displayed scores live on the claim view under the ScoringEngine label, not on this panel. What survives from 085: the run-record determinism note, the named-witness shape (a conflict names its context and pair), and the reach-stated-next-to-results card.</dd>
+          <dt>Spec claims</dt><dd>C086-15 (interchangeability: same pins, per-claim divergence list, expectations named or their absence generated), C086-16 (a run creates only run records; the layer labeling), C086-18 (run records carry their pins as as-of stamps). Scenario objects are run inputs only — nothing on this panel is a verdict input (gate V9 audits the separation).</dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

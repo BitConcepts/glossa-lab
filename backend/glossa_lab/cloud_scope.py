@@ -491,6 +491,12 @@ class CloudScopeMiddleware:
             if resource == "indus-evidence":
                 return PRIMARY_WORKSPACE_SLUG, _PRIMARY_PROJECT_ID
 
+            # The layered map (Spec 086 Stage 5) is generated from the
+            # primary workspace's ledger; it belongs to that workspace
+            # like the evidence store does (C086-19).
+            if resource == "indus-map":
+                return PRIMARY_WORKSPACE_SLUG, _PRIMARY_PROJECT_ID
+
             if resource == "projects":
                 if len(segments) == 3:
                     return None  # list — response-filtered instead

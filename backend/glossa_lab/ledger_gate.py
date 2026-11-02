@@ -137,11 +137,61 @@ SETTLE_TALLY_KEYS = ("supporting", "opposing", "constraining")
 # claim.measurement shape: value / comparator / bound).
 NUMERIC_COMPARATORS = ("<=", ">=", "=", "in")
 
+# ---------------------------------------------------------------------------
+# Registered definitions — the gate's own copies of
+# map-defs v1 (glossa-indus/map/DEFINITIONS.md), for V5's
+# map recomputation (Stage 5). NOT imported from the
+# builder (map_generate.py): the same independent-route
+# discipline as the matrix and settling definitions above.
+# A deliberate definitions change is made in all copies in
+# the same motion (DEFINITIONS.md §11).
+
+GATE_MAP_DEFS_VERSION = "map-defs v1"
+ASSIGNMENT_SETS_REL = "glossa-indus/ledger/assignment-sets.json"
+RUNS_REL_DIR = "glossa-indus/ledger/runs"
+COMPARISON_REL = (
+    "specs/086-winning-combination-adoption/records/"
+    "stage-4-dual-run-comparison.json"
+)
+PENDING_VALIDATION_STATUS = "pending_non_sa_validation"
+PENDING_VALIDATIONS_REASON = (
+    "the anchors register records no review dates for the "
+    "pending validations, so they appear as a count, not as "
+    "dated items (decision Q4)"
+)
+SETTLING_LABEL = (
+    "Computation over ledgered relations under "
+    "glossa-settle-1 semantics. Establishes what the ledger "
+    "implies under these rules, not what the script says."
+)
+MAP_RUN_RESULT_FIELDS = (
+    "scope_signs",
+    "assigned_count",
+    "assigned_share",
+    "contexts_touched",
+    "strict_contexts",
+    "consistent",
+    "non_strict_contexts",
+    "conflicts",
+    "strict_agreement_share",
+    "claims_touched",
+    "forced",
+    "s_r3",
+)
+MAP_S_R3_NOTE = (
+    "no positional-class table exists in the "
+    "record; the rule is registered but inert "
+    "and reports a determinate zero in every "
+    "run record"
+)
+
 WRITE_ENTRY_POINTS = ("append_entry", "write_ledger", "write_matrix")
 REGISTERED_WRITERS = {
     "backend/glossa_lab/matrix_generate.py",
+    "backend/glossa_lab/map_generate.py",
     "backend/glossa_lab/gated_publish.py",
     "tools/ledger/generate_matrix.py",
+    "tools/ledger/generate_map.py",
 }
 ARTIFACT_PATH_PATTERNS = (
     re.compile(r"glossa-indus/matrix"),
@@ -1483,6 +1533,654 @@ def _gate_compare(
     }
 
 
+def _map_matrix_key(ref: Any) -> Optional[str]:
+    """matrix-defs v1 R4's key construction (map-defs v1
+    §7): the frame prefix + the number as written in the
+    sign_ref — no zero-padding."""
+    frame, sep, value = str(ref).partition(":")
+    if not sep or frame not in SETTLE_FRAME_PREFIXES:
+        return None
+    return f"{SETTLE_FRAME_PREFIXES[frame]}{value}"
+
+
+def _map_anchor_summary(
+    anchors: dict[str, Any], strict_set: set[str], key: Optional[str]
+) -> Optional[dict[str, Any]]:
+    if key is None:
+        return None
+    record = anchors.get(key)
+    if record is None:
+        return None
+    return {
+        "key": key,
+        "reading": record.get("reading"),
+        "confidence": record.get("confidence"),
+        "validation_status": record.get("validation_status"),
+        "strict": key in strict_set,
+    }
+
+
+def _map_census_lines(expected_map: dict[str, Any]) -> list[str]:
+    """The census rule (map-defs v1 §10): every map check
+    class states the live instance count behind it; a class
+    or named sub-population with zero live instances is
+    reported UNPROVEN on the live population, never silently
+    counted as passing."""
+    elements = expected_map.get("elements", [])
+    by_kind = Counter(e.get("kind") for e in elements)
+    edges = expected_map.get("edges", [])
+    by_rel = Counter(e.get("rel") for e in edges)
+    lines = [
+        f"census: {by_kind.get('claim', 0)} claim elements; "
+        "column elements by class: "
+        + ", ".join(
+            f"{cls} {by_kind.get(cls, 0)}" for cls in COLUMN_CLASSES
+        ),
+        f"census: {len(edges)} map edges by relation: "
+        + ", ".join(f"{rel} {by_rel.get(rel, 0)}" for rel in RELATIONS)
+        + f"; {len(expected_map.get('claims', {}))} per-claim "
+        "records; "
+        f"{len((expected_map.get('settling') or {}).get('runs', []))} "
+        "stored settling runs recomputed",
+    ]
+    for cls in COLUMN_CLASSES:
+        if not by_kind.get(cls):
+            lines.append(
+                f"UNPROVEN on the live population: {cls} "
+                "elements — 0 live instances (the class exists "
+                "in the definitions and carries no columns "
+                "in v1; its teeth are fixtures in the battery)"
+            )
+    if not by_rel.get("constrains"):
+        lines.append(
+            "UNPROVEN on the live population: constrains "
+            "edges — 0 live instances (the relation class is "
+            "empty in the generated matrix and the artifact "
+            "says so; its teeth are fixtures in the battery)"
+        )
+    return lines
+
+
+def _derive_map(
+    root: Path,
+    entries: list[dict[str, Any]],
+    claims: list[dict[str, Any]],
+    deriv: _Derivation,
+    shares: dict[str, Any],
+    ledger_sha: str,
+) -> tuple[dict[str, Any], list[str]]:
+    """The gate's own map recomputation (V5's full leg):
+    the expected map artifact, built from the ledger by
+    the gate's routes — its matrix derivation, its anchor
+    shares, its settling route — under its registered
+    map-defs v1 copies. Returns (expected, failures):
+    failures names defects in the records of record
+    themselves (a stored run record the gate's route does
+    not reproduce, a pin that names another build), which
+    fail V5 however faithfully the map copied them."""
+    failures: list[str] = []
+    coverage = deriv.coverage
+    anchors_path = root / ANCHORS_REL
+    anchors_raw = anchors_path.read_bytes()
+    anchors = json.loads(anchors_raw.decode("utf-8")).get("anchors", {})
+    anchors_raw_sha = hashlib.sha256(anchors_raw).hexdigest()
+    strict_set = shares["recomputed_strict"]
+
+    # -- header ---------------------------------------------------------------
+    by_status = Counter(str(e.get("status")) for e in claims)
+    bearing_groups: dict[tuple[str, str, str], dict[str, Any]] = {}
+    for entry in claims:
+        for spec, blocks in deriv.blocks.get(entry["id"], {}).items():
+            governing = _governing(blocks)
+            relation = BEARING_OUTCOMES.get(governing["outcome"])
+            if relation is None or governing["date"] is None:
+                continue
+            key = (str(governing["date"]), spec, governing["outcome"])
+            group = bearing_groups.setdefault(
+                key,
+                {
+                    "date": str(governing["date"]),
+                    "study": spec,
+                    "outcome": governing["outcome"],
+                    "relation": relation,
+                    "claims": [],
+                },
+            )
+            group["claims"].append(entry["id"])
+    nearest = sorted(
+        bearing_groups.values(), key=lambda g: (g["study"], g["outcome"])
+    )
+    nearest = sorted(nearest, key=lambda g: g["date"], reverse=True)[:3]
+    for group in nearest:
+        group["claims"] = sorted(group["claims"])
+    pending = sum(
+        1
+        for r in anchors.values()
+        if r.get("validation_status") == PENDING_VALIDATION_STATUS
+    )
+
+    matrix_path = root / MATRIX_REL_DIR / "matrix.json"
+    as_of = {
+        "ledger_sha256": ledger_sha,
+        "ledger_lines": len(entries),
+        "ledger_date": max(
+            (str(e.get("date")) for e in entries), default=None
+        ),
+        "ledger_schema": li.SCHEMA_VERSION,
+        "matrix_defs": GATE_MATRIX_DEFS_VERSION,
+        "map_defs": GATE_MAP_DEFS_VERSION,
+        "settle_semantics": SETTLE_SEMANTICS_VERSION,
+        "matrix_sha256": li.sha256_file(matrix_path),
+        "anchors_register_sha256_raw_bytes": anchors_raw_sha,
+    }
+    header = {
+        "claims_total": len(claims),
+        "claims_by_status": {k: by_status[k] for k in sorted(by_status)},
+        "validated_anchor_share": shares["strict_share"],
+        "strict_anchor_share": shares["strict_share"],
+        "anchors_strict": len(strict_set),
+        "anchors_total": shares["total"],
+        "nearest_dated_items": nearest,
+        "pending_validations": {
+            "count": pending,
+            "reason": PENDING_VALIDATIONS_REASON,
+        },
+        "as_of": as_of,
+    }
+
+    # -- elements + loads ------------------------------------------------------
+    elements: list[dict[str, Any]] = [
+        {
+            "kind": "claim",
+            "id": e["id"],
+            "statement": e.get("statement"),
+            "status": e.get("status"),
+            "stage": e.get("stage"),
+            "population": e.get("population"),
+        }
+        for e in claims
+    ] + [
+        {"kind": c["class"], "id": c["id"]} for c in deriv.columns
+    ]
+    loads: dict[str, dict[str, int]] = {
+        row["id"]: {rel: 0 for rel in RELATIONS} for row in deriv.rows
+    }
+    cells_by_row: dict[str, list[dict[str, Any]]] = {}
+    for cell in deriv.cells:
+        if cell["row"] in loads:
+            loads[cell["row"]][cell["relation"]] += 1
+        cells_by_row.setdefault(cell["row"], []).append(cell)
+
+    # -- edges (map-defs §5: citations that carry) -----------------------------
+    edges: list[dict[str, Any]] = []
+    for cell in deriv.cells:
+        citations = list(cell.get("citations") or [])
+        if cell.get("rule") == "R3":
+            blocks = deriv.blocks.get(cell["row"], {}).get(
+                cell["column"], []
+            )
+            if blocks:
+                governing = _governing(blocks)
+                citations = [
+                    c
+                    for c in citations
+                    if c == cell["row"] or c == governing["pointer"]
+                ]
+        edges.append(
+            {
+                "from": cell["column"],
+                "to": cell["row"],
+                "rel": cell["relation"],
+                "rule": cell.get("rule"),
+                "column_class": cell["column_class"],
+                "citations": citations,
+            }
+        )
+
+    # -- the settling records, re-derived by the gate's own route ---------------
+    sets_path = root / ASSIGNMENT_SETS_REL
+    if not sets_path.is_file():
+        raise FileNotFoundError(
+            f"assignment sets of record not found: {ASSIGNMENT_SETS_REL}"
+        )
+    assignment_sets = json.loads(sets_path.read_text(encoding="utf-8"))
+    as_of["assignment_sets_sha256"] = li.sha256_file(sets_path)
+    register_pin = (assignment_sets.get("register") or {}).get(
+        "sha256_raw_bytes"
+    )
+    if register_pin != anchors_raw_sha:
+        failures.append(
+            f"the assignment-sets record pins anchors register "
+            f"{register_pin}, but the register on disk hashes "
+            f"{anchors_raw_sha}"
+        )
+    sets_by_id = {
+        s.get("id"): s for s in assignment_sets.get("sets", [])
+    }
+    out_of_frame = list(assignment_sets.get("out_of_frame_records") or [])
+    in_frame = len(anchors) - len(out_of_frame)
+    sets_summary = []
+    for s in assignment_sets.get("sets", []):
+        item = {
+            "id": s.get("id"),
+            "frame": s.get("frame"),
+            "assignments": len(s.get("assignments") or []),
+            "provenance": s.get("provenance"),
+        }
+        item["frame_scope"] = in_frame
+        item["share"] = (
+            item["assignments"] / in_frame if in_frame else None
+        )
+        sets_summary.append(item)
+
+    runs_dir = root / RUNS_REL_DIR
+    run_files = sorted(runs_dir.glob("*.json")) if runs_dir.is_dir() else []
+    loaded_runs = []
+    for run_path in run_files:
+        record = json.loads(run_path.read_text(encoding="utf-8"))
+        loaded_runs.append((run_path, record))
+    loaded_runs.sort(
+        key=lambda pair: (
+            0 if pair[1].get("candidate") == "incumbent" else 1,
+            pair[0].stem,
+        )
+    )
+    runs: list[dict[str, Any]] = []
+    settled_results: list[tuple[str, dict[str, Any]]] = []
+    touched_by_claim: dict[str, list[dict[str, Any]]] = {}
+    for run_path, record in loaded_runs:
+        pins = record.get("pins") or {}
+        pin_sha = (pins.get("ledger") or {}).get("sha256")
+        if pin_sha != ledger_sha:
+            failures.append(
+                f"run record {run_path.stem} is pinned to ledger "
+                f"{pin_sha}, but the current ledger is "
+                f"{ledger_sha} — it cannot be carried by the map"
+            )
+        candidate_id = record.get("candidate")
+        candidate_set = sets_by_id.get(candidate_id)
+        if candidate_set is None:
+            failures.append(
+                f"run record {run_path.stem} names candidate "
+                f"{candidate_id!r}, which is not a set of record"
+            )
+            continue
+        result = _gate_settle(
+            claims,
+            deriv.registers,
+            anchors,
+            strict_set,
+            {"assignments": candidate_set.get("assignments") or []},
+            record.get("scope") or [],
+        )
+        stored_result = record.get("result") or {}
+        record_divs: list[str] = []
+        _first_divergences(
+            result, stored_result, f"run record {run_path.stem}",
+            record_divs, limit=6,
+        )
+        failures.extend(
+            f"the gate's settling route does not reproduce {d}"
+            for d in record_divs
+        )
+        settled_results.append((str(candidate_id), result))
+        run_summary = {
+            "record": run_path.stem,
+            "scenario": record.get("scenario"),
+            "candidate": candidate_id,
+            "semantics": record.get("semantics"),
+            "pins": pins,
+        }
+        for field_name in MAP_RUN_RESULT_FIELDS:
+            run_summary[field_name] = result.get(field_name)
+        runs.append(run_summary)
+        for touched in result.get("claims_touched") or []:
+            touched_by_claim.setdefault(touched["claim"], []).append(
+                {
+                    "candidate": candidate_id,
+                    "record": run_path.stem,
+                    "via_signs": touched.get("via_signs"),
+                    "tallies": touched.get("tallies"),
+                    "falsifiers_present": touched.get(
+                        "falsifiers_present"
+                    ),
+                    "falsifiers_evaluable": touched.get(
+                        "falsifiers_evaluable"
+                    ),
+                }
+            )
+
+    comparison_path = root / COMPARISON_REL
+    if not comparison_path.is_file():
+        raise FileNotFoundError(
+            f"comparison record not found: {COMPARISON_REL}"
+        )
+    comparison_record = json.loads(
+        comparison_path.read_text(encoding="utf-8")
+    )
+    comp_pin_sha = (
+        (comparison_record.get("pins") or {}).get("ledger") or {}
+    ).get("sha256")
+    if comp_pin_sha != ledger_sha:
+        failures.append(
+            f"the filed comparison record is pinned to ledger "
+            f"{comp_pin_sha}, but the current ledger is {ledger_sha}"
+        )
+    if len(settled_results) == 2:
+        computed_comparison = _gate_compare(
+            settled_results[0][0],
+            settled_results[0][1],
+            settled_results[1][0],
+            settled_results[1][1],
+        )
+    else:
+        failures.append(
+            f"the run store carries {len(settled_results)} "
+            "reproducible runs, not the stored pair the "
+            "comparison names"
+        )
+        computed_comparison = comparison_record.get("result")
+    comparison = {
+        "record": COMPARISON_REL,
+        "sha256": li.sha256_file(comparison_path),
+        "result": computed_comparison,
+    }
+    as_of["comparison_sha256"] = comparison["sha256"]
+    divergent_by_claim = {
+        row["claim"]: row.get("divergent")
+        for row in (computed_comparison or {}).get(
+            "claims_compared", []
+        )
+    }
+
+    canonical_path = root / SETTLING_CANONICAL_REL
+    canonical = json.loads(canonical_path.read_text(encoding="utf-8"))
+    canonicals = {
+        "record": SETTLING_CANONICAL_REL,
+        "sha256": li.sha256_file(canonical_path),
+        "scenarios": [
+            {
+                "id": s.get("id"),
+                "title": s.get("title"),
+                "expected": s.get("expected"),
+            }
+            for s in canonical.get("scenarios", [])
+        ],
+    }
+    as_of["settling_canonical_sha256"] = canonicals["sha256"]
+
+    # -- system view --------------------------------------------------------------
+    frame = sets_summary[0]["frame"] if sets_summary else None
+    hotspots = [
+        {
+            "row": c["row"],
+            "column": c["column"],
+            "column_class": c["column_class"],
+            "rule": c.get("rule"),
+            "relation": c["relation"],
+        }
+        for c in deriv.cells
+        if c["relation"] == "opposes"
+    ]
+    by_stage = Counter(
+        str(e.get("stage")) for e in claims if e.get("stage")
+    )
+    by_population = Counter(str(e.get("population")) for e in claims)
+    system = {
+        "sign_inventory": {
+            "frame": frame,
+            "register_records": len(anchors),
+            "out_of_frame_records": out_of_frame,
+            "out_of_frame_note": assignment_sets.get("out_of_frame_note"),
+            "frame_scope": in_frame,
+            "assignment_sets": sets_summary,
+            "register": {
+                "path": ANCHORS_REL,
+                "sha256_raw_bytes": anchors_raw_sha,
+            },
+        },
+        "matrix_coverage": {
+            "rows_total": coverage.get("rows_total"),
+            "rows_with_cells": coverage.get("rows_with_cells"),
+            "empty_rows": coverage.get("empty_rows"),
+            "columns_by_class": coverage.get("columns_by_class"),
+            "unused_columns": coverage.get("unused_columns"),
+            "cells_total": coverage.get("cells_total"),
+            "cells_by_relation": coverage.get("cells_by_relation"),
+            "cells_by_class": coverage.get("cells_by_class"),
+            "conflict_hotspots": hotspots,
+            "study_columns_without_cells": (
+                (coverage.get("unused_columns") or {}).get("studies", [])
+            ),
+            "dependency_pairs_not_cells": len(
+                coverage.get("dependency_pairs_not_cells") or []
+            ),
+        },
+        "claim_population": {
+            "by_status": {k: by_status[k] for k in sorted(by_status)},
+            "by_stage": {k: by_stage[k] for k in sorted(by_stage)},
+            "no_stage_recorded": sum(
+                1 for e in claims if not e.get("stage")
+            ),
+            "by_population": {
+                k: by_population[k] for k in sorted(by_population)
+            },
+        },
+        "falsifier_census": {
+            "covered": (coverage.get("falsifier_coverage") or {}).get(
+                "covered"
+            ),
+            "total": (coverage.get("falsifier_coverage") or {}).get(
+                "total"
+            ),
+            "by_population": (
+                coverage.get("falsifier_coverage") or {}
+            ).get("by_population"),
+            "gap_claims": [
+                e["id"] for e in claims if not e.get("falsifier")
+            ],
+        },
+        "aee_state_census": {
+            "with_state": sum(
+                1 for e in claims if e.get("aee_state") is not None
+            ),
+            "without_state": sum(
+                1 for e in claims if e.get("aee_state") is None
+            ),
+            "total": len(claims),
+        },
+        "unresolved": {
+            "sign_mentions": coverage.get("unresolved_sign_mentions"),
+            "sign_refs_without_anchor_record": coverage.get(
+                "sign_refs_without_anchor_record"
+            ),
+        },
+        "sign_sign_block_summary": {
+            "node_count": (deriv.sign_block or {}).get("node_count"),
+            "edge_count": (deriv.sign_block or {}).get("edge_count"),
+            "edges_emitted": (deriv.sign_block or {}).get(
+                "edges_emitted"
+            ),
+            "community_count": (deriv.sign_block or {}).get(
+                "community_count"
+            ),
+            "corpus_sha256": (
+                (deriv.sign_block or {}).get("source") or {}
+            ).get("corpus_sha256"),
+        },
+    }
+
+    # -- per-claim records ---------------------------------------------------------
+    annotations = [e for e in entries if e.get("kind") == "annotation"]
+    annotations_by_target: dict[str, list[dict[str, Any]]] = {}
+    for annotation in annotations:
+        target = annotation.get("target_claim_id")
+        if target:
+            annotations_by_target.setdefault(target, []).append(
+                {
+                    "id": annotation.get("id"),
+                    "canonical_claim_id": annotation.get(
+                        "canonical_claim_id"
+                    ),
+                    "sidecar": annotation.get("sidecar"),
+                    "bearing": annotation.get("bearing"),
+                }
+            )
+    columns_by_class = coverage.get("columns_by_class") or {}
+    claim_records: dict[str, Any] = {}
+    for entry in claims:
+        eid = entry["id"]
+        row_cells = cells_by_row.get(eid, [])
+        touched = touched_by_claim.get(eid)
+        bearing = None
+        if touched:
+            bearing = {
+                "runs": touched,
+                "divergent": divergent_by_claim.get(eid),
+            }
+        evaluable = (
+            touched[0].get("falsifiers_evaluable") if touched else None
+        )
+        sign_records = []
+        for ref in entry.get("sign_refs") or []:
+            m_key = _map_matrix_key(ref)
+            identity = _settle_identity(ref)
+            s_key = _settle_anchor_key(identity) if identity else None
+            matrix_record = _map_anchor_summary(
+                anchors, strict_set, m_key
+            )
+            settle_record = _map_anchor_summary(
+                anchors, strict_set, s_key
+            )
+            sign_records.append(
+                {
+                    "sign_ref": ref,
+                    "matrix_key": m_key,
+                    "matrix_record": matrix_record,
+                    "settle_key": s_key,
+                    "settle_record": settle_record,
+                    "divergence": (matrix_record is None)
+                    != (settle_record is None)
+                    or (
+                        matrix_record is not None
+                        and settle_record is not None
+                        and m_key != s_key
+                    ),
+                }
+            )
+        sor = next(
+            (
+                s
+                for s in entry.get("sources", [])
+                if s.get("role") == "source_of_record"
+            ),
+            None,
+        )
+        claim_records[eid] = {
+            "id": eid,
+            "statement": entry.get("statement"),
+            "status": entry.get("status"),
+            "stage": entry.get("stage"),
+            "population": entry.get("population"),
+            "author": entry.get("author"),
+            "author_kind": entry.get("author_kind"),
+            "as_of": entry.get("as_of"),
+            "date": entry.get("date"),
+            "falsifier": entry.get("falsifier"),
+            "falsifier_counts": {
+                "present": _settle_falsifier_count(entry),
+                "evaluable": evaluable,
+            },
+            "does_not_establish": entry.get("does_not_establish"),
+            "aee_state": entry.get("aee_state"),
+            "displayed_score": (
+                {"state": "recorded", "aee_state": entry.get("aee_state")}
+                if entry.get("aee_state") is not None
+                else {"state": "empty"}
+            ),
+            "sign_refs": entry.get("sign_refs") or [],
+            "sources": entry.get("sources") or [],
+            "matrix_row": {
+                "cells": row_cells,
+                "empty": not row_cells,
+            },
+            "settling_bearing": bearing,
+            "annotations": annotations_by_target.get(eid, []),
+            "evidence": {
+                "column_summary": {
+                    cls: {
+                        "columns": columns_by_class.get(cls, 0),
+                        "cells": sum(
+                            1
+                            for c in row_cells
+                            if c["column_class"] == cls
+                        ),
+                    }
+                    for cls in COLUMN_CLASSES
+                },
+                "source_document": sor,
+                "sign_records": sign_records,
+            },
+        }
+
+    settling = {
+        "label": SETTLING_LABEL,
+        "semantics": SETTLE_SEMANTICS_VERSION,
+        "assignment_sets": {
+            "record": ASSIGNMENT_SETS_REL,
+            "sha256": as_of["assignment_sets_sha256"],
+            "register": assignment_sets.get("register"),
+            "sets": sets_summary,
+            "out_of_frame_records": out_of_frame,
+            "out_of_frame_note": assignment_sets.get("out_of_frame_note"),
+        },
+        "runs": runs,
+        "comparison": comparison,
+        "canonicals": canonicals,
+        "reach": {
+            "claims_with_sign_refs": sum(
+                1 for e in claims if e.get("sign_refs")
+            ),
+            "claims_total": len(claims),
+            "claims_untouched_by_any_run": len(claims)
+            - len(touched_by_claim),
+            "s_r3": {
+                "status": "UNMEASURED",
+                "class_table": None,
+                "note": MAP_S_R3_NOTE,
+            },
+        },
+    }
+
+    expected = {
+        "artifact": "glossa-indus layered map data",
+        "generated_from": (
+            f"{li.LEDGER_REL} through "
+            f"{MATRIX_REL_DIR}/matrix.json and the "
+            "settling records of record"
+        ),
+        "generated_by": (
+            "tools/ledger/generate_map.py "
+            "(backend/glossa_lab/map_generate.py)"
+        ),
+        "header": header,
+        "elements": elements,
+        "edges": edges,
+        "loads": loads,
+        "matrix": {
+            "rows": deriv.rows,
+            "columns": deriv.columns,
+            "cells": deriv.cells,
+            "coverage": coverage,
+            "sign_sign_block": deriv.sign_block,
+        },
+        "system": system,
+        "claims": claim_records,
+        "settling": settling,
+    }
+    return expected, failures
+
+
 def _v8_checks(
     root: Path,
     entries: list[dict[str, Any]],
@@ -2070,6 +2768,8 @@ def run_gate(
         f"definitions: {GATE_MATRIX_DEFS_VERSION} (the gate's "
         "registered copies); ledger schema: "
         f"{li.SCHEMA_VERSION}",
+        f"map definitions: {GATE_MAP_DEFS_VERSION} (the gate's "
+        "registered copies)",
         f"settling semantics: {SETTLE_SEMANTICS_VERSION} (the "
         f"gate's registered copies); canonicals: "
         f"{SETTLING_CANONICAL_REL}",
@@ -2283,7 +2983,12 @@ def run_gate(
                         if carried_status
                         == {k: v for k, v in by_status.items()}
                         else "FAIL",
-                        [f"map header carries {carried_status}"],
+                        [
+                            f"map header carries {carried_status}",
+                            f"census: {len(claims)} claims "
+                            f"counted across {len(by_status)} "
+                            "statuses in the map header",
+                        ],
                     )
                 )
             else:
@@ -2416,6 +3121,25 @@ def run_gate(
                 "bound (the arm is exercised on fixtures in the "
                 "teeth battery)"
             )
+        if map_data is not None:
+            edge_rels = Counter(
+                e.get("rel") for e in map_data.get("edges", [])
+            )
+            evidence.append(
+                "map edge census: "
+                + ", ".join(
+                    f"{rel} {edge_rels.get(rel, 0)}"
+                    for rel in RELATIONS
+                )
+            )
+            if not edge_rels.get("constrains"):
+                evidence.append(
+                    "UNPROVEN on the live population: "
+                    "constrains map edges — 0 live instances "
+                    "(the class is empty in the artifact and "
+                    "says so; its teeth are fixtures in the "
+                    "battery)"
+                )
         if ctx.registers.mismatches:
             v4_failures.extend(
                 f"register mismatch: {m}"
@@ -2537,6 +3261,80 @@ def run_gate(
                     ],
                 )
             )
+            # The full leg (Stage 5): the whole artifact
+            # recomputed by the gate's own route under its
+            # registered map-defs v1 copies, section by
+            # section — the V3 idiom applied to the map.
+            deriv = derivation(True)
+            if deriv is None:
+                exc = _derivation.get("full_error")
+                report.checks.append(
+                    Check(
+                        "V5 map recomputation — full artifact, "
+                        "the gate's own route (map-defs v1 "
+                        "copies)",
+                        "FAIL",
+                        [f"the gate's recomputation refused: {exc}"],
+                    )
+                )
+            else:
+                try:
+                    shares_for_map = _anchor_shares(root)
+                    expected_map, map_failures = _derive_map(
+                        root, entries, claims, deriv,
+                        shares_for_map, ledger_sha,
+                    )
+                except (OSError, json.JSONDecodeError,
+                        FileNotFoundError) as exc:
+                    expected_map, map_failures = None, [str(exc)]
+                if expected_map is None:
+                    report.checks.append(
+                        Check(
+                            "V5 map recomputation — full "
+                            "artifact, the gate's own route "
+                            "(map-defs v1 copies)",
+                            "FAIL",
+                            [
+                                "the gate's map recomputation "
+                                f"could not run: {map_failures[0]}"
+                            ],
+                        )
+                    )
+                else:
+                    divs: list[str] = list(map_failures)
+                    for section in (
+                        "artifact", "generated_from",
+                        "generated_by", "header", "elements",
+                        "edges", "loads", "matrix", "system",
+                        "claims", "settling",
+                    ):
+                        _first_divergences(
+                            expected_map.get(section),
+                            map_data.get(section),
+                            section,
+                            divs,
+                            limit=6,
+                        )
+                    census = _map_census_lines(expected_map)
+                    report.checks.append(
+                        Check(
+                            "V5 map recomputation — full "
+                            "artifact, the gate's own route "
+                            "(map-defs v1 copies)",
+                            "FAIL" if divs else "PASS",
+                            divs[:40] + census
+                            if divs
+                            else [
+                                "every section of the map "
+                                "artifact equals the gate's "
+                                "recomputation from the ledger "
+                                "(header, elements, edges, "
+                                "loads, matrix, system, claims, "
+                                "settling)"
+                            ]
+                            + census,
+                        )
+                    )
     else:
         report.checks.append(
             Check("V5 map recomputation", "NOT-RUN",
@@ -2629,7 +3427,14 @@ def run_gate(
                         "V6 anchor shares — map header leg",
                         "FAIL" if header_failures else "PASS",
                         header_failures
-                        or ["map header shares equal the recomputation"],
+                        or [
+                            "map header shares equal the "
+                            "recomputation",
+                            f"census: the share is computed "
+                            f"over {shares['total']} register "
+                            f"records, {len(shares['recomputed_strict'])} "
+                            "of them strict",
+                        ],
                     )
                 )
             else:
@@ -2767,16 +3572,52 @@ def _regen_checks(
                 )
             )
     map_path = root / MAP_REL
-    if map_path.is_file():
+    if not map_path.is_file():
         checks.append(
             Check(
                 "V7 lossless regeneration — map data",
                 "FAIL",
+                [f"published artifact missing: {map_path}"],
+            )
+        )
+        return checks
+    from glossa_lab import map_generate as mp
+
+    try:
+        map_build = mp.build_map(root)
+    except Exception as exc:
+        checks.append(
+            Check(
+                "V7 lossless regeneration — map data",
+                "FAIL",
+                [f"regeneration refused: {exc}"],
+            )
+        )
+        return checks
+    before = map_path.read_bytes()
+    before_sha = li.canonical_sha256_bytes(before)
+    after_sha = li.canonical_sha256_bytes(map_build.json_bytes)
+    if before == map_build.json_bytes:
+        checks.append(
+            Check(
+                "V7 lossless regeneration — map data",
+                "PASS",
                 [
-                    "a map artifact exists but no map builder "
-                    "is registered until Stage 5; it cannot be "
-                    "regenerated, so it cannot be verified "
-                    "lossless"
+                    f"byte-identical after regeneration "
+                    f"(sha256 {before_sha})"
+                ],
+            )
+        )
+    elif intended_change:
+        checks.append(
+            Check(
+                "V7 lossless regeneration — map data",
+                "PASS",
+                [
+                    f"diff classified: intended-change-named "
+                    f"({intended_change}); published sha256 "
+                    f"{before_sha}, regenerated {after_sha} "
+                    "— republish through the gated path"
                 ],
             )
         )
@@ -2784,8 +3625,15 @@ def _regen_checks(
         checks.append(
             Check(
                 "V7 lossless regeneration — map data",
-                "NOT-RUN",
-                ["no map artifact exists (Stage 5)"],
+                "FAIL",
+                [
+                    f"diff classified: downstream-defect — "
+                    f"the published artifact is not what the "
+                    f"ledger generates (published sha256 "
+                    f"{before_sha}, regenerated {after_sha}); "
+                    "fixed by regeneration through the gated "
+                    "path, never by editing the artifact"
+                ],
             )
         )
     return checks

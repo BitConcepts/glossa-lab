@@ -3,10 +3,10 @@
  "generated_from": "glossa-indus/ledger/claims.jsonl through glossa-indus/matrix/matrix.json and the settling records of record",
  "generated_by": "tools/ledger/generate_map.py (backend/glossa_lab/map_generate.py)",
  "header": {
-  "claims_total": 840,
+  "claims_total": 857,
   "claims_by_status": {
    "contradicted": 4,
-   "draft": 816,
+   "draft": 833,
    "partially_falsified": 1,
    "partially_supported": 3,
    "strongly_supported": 2,
@@ -55,18 +55,18 @@
    "reason": "the anchors register records no review dates for the pending validations, so they appear as a count, not as dated items (decision Q4)"
   },
   "as_of": {
-   "ledger_sha256": "c4e2326ec8757bb700dac0142dd0adf17d7464b4d929f5b103868c9228f13ccf",
-   "ledger_lines": 871,
-   "ledger_date": "2026-11-01",
+   "ledger_sha256": "f988ed61404daf8200479e9d1a6580526c7b419ba7e802a3b6b41a5a73a167ac",
+   "ledger_lines": 888,
+   "ledger_date": "2026-11-02",
    "ledger_schema": "ledger-schema v1",
    "matrix_defs": "matrix-defs v1",
    "map_defs": "map-defs v1",
    "settle_semantics": "glossa-settle-1",
-   "matrix_sha256": "b3cdbf49e6305ae771468f26858678db568d1b58cb0b200e55b92810adb29849",
+   "matrix_sha256": "ff0788a1d3dc1e75d5113014aea35d085333e53a98ef5e671d4b6e9354ddf884",
    "anchors_register_sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
    "assignment_sets_sha256": "36bce404db20792826e7ffba220857c71d058423c8f8e47fca7aa900af27c5be",
-   "comparison_sha256": "ae83e71b6153c4ffde7caa75f7a8a3160a9f95e7f62e367f85f63bd19c74e2c8",
-   "settling_canonical_sha256": "f9746ae76192b47d3b451ac7b5480cd992bca54d51bb097a79aca31f2bf12e0d"
+   "comparison_sha256": "ac0d5310c5a57d4290c81cf65f00bfd70386cad9566a1db831341d366e153892",
+   "settling_canonical_sha256": "38bc126e7c71747d10c9905d3ad38ce45e4e832197aac2d6f65989923936dd23"
   }
  },
  "elements": [
@@ -6786,6 +6786,142 @@
    "kind": "claim",
    "id": "086-winning-combination-adoption/C086-9",
    "statement": "Citations carry their relations (adopted, Atlas note 2026-11-01).** For every citation on every non-empty matrix cell and every map edge, at least one registered tie mechanically holds (spec.md Point 4: T1 source membership, T2 dated test with matching outcome direction, T3 registered anchor, T4 registered instrument). Existence, shared documents, shared signs without a T3 anchor record, and topical relevance are not ties.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "087-node-system-tightening/C087-14",
+   "statement": "This program changes no verdict, claim status, or ledger content.** No stage of Spec 087 alters an Indus claim's status, stage, or score, appends or edits a ledger entry, or modifies a frozen record; the claims ledger and the freeze records are byte-identical before and after the program. This does not establish: anything about the truth of any claim - the program is about the tool, not the decipherment.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "087-node-system-tightening/C087-1",
+   "statement": "Registry completeness is pinned, and a silent shrink fails CI.** A CI registry-completeness test pins the plugin module list (all 144 experiment_graph_*.py modules) and the registered node count by category; outside production leniency, a plugin module that fails to import fails the test loudly instead of shrinking the registry behind a log warning. This does not establish: that the pinned counts are the right counts - only that any change to them is a visible, recorded act rather than an accident.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "087-node-system-tightening/C087-13",
+   "statement": "Every live graph still resolves and runs with byte-identical results.** After each of S2 and S3, all 27 live graphs resolve every atomicId they reference, and the pinned comparison runs produce results byte-identical to their pre-stage records. This does not establish: that the graphs' results are correct - only that this program did not change them, which is the non-goal the owner set.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "087-node-system-tightening/C087-8",
+   "statement": "The manual's node reference is the palette set, mechanically.** The generated node reference (user-manual block and the HelpView data module) lists exactly the palette set of claim C087-4, with each node's category, ports, and params as the registry states them; the CI conformance test of Stage S4 regenerates and diffs, failing on drift in either direction. This does not establish: that the surrounding prose is clear or complete - the claim covers the enumerable reference, the part that was mechanically false.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "087-node-system-tightening/C087-4",
+   "statement": "The palette is the registry minus legacy, mechanically.** The catalog endpoint's default response contains exactly the registered nodes not flagged legacy: GENERIC nodes, parameterized PARTIAL nodes, and the live working set. The palette set is computed from the registry and the flag, never maintained as a separate list. This does not establish: that the legacy classification of any individual node is correct - the classification of record is the census's, and reclassifying a node is a recorded stage act, not a consequence of this claim.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "087-node-system-tightening/C087-3",
+   "statement": "A failed palette load is visible, never a silent empty.** When the Experiment Builder's catalog fetch fails, the builder renders an error state that names the failure; it never renders an empty palette indistinguishable from 'no nodes exist'. This does not establish: that the catalog endpoint is reliable - only that its failure can no longer masquerade as an empty registry.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "087-node-system-tightening/C087-17",
+   "statement": "The registry changes only by recorded acts.** After S2's re-pin, the registered count and the per-category census in the completeness test change only through a Spec 087 stage PR that names the change in its stage record; the count never moves as a side effect of an unrelated change. This does not establish: that the registry should never grow - new primitives are welcome; this claim makes their arrival an act, not an accident.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "087-node-system-tightening/C087-2",
+   "statement": "No node id has two live definitions.** Exactly one definition of each node id is reachable in the built registry; the three shadowed classes of census Table 4 (IndusPhase254SemanticConstraint, IndusPhase255CommodityPhonemes, IndusPhase256LEExtension) are resolved to the behaviour-verified definition, the dead definition is deleted, and a duplicate-id registration in a test fixture fails the suite. This does not establish: that the kept definition computes the right science - only that there is one of it, chosen by a recorded behaviour diff, where before there were two and the choice was an import order.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "087-node-system-tightening/C087-9",
+   "statement": "No manual names a node or experiment that does not exist.** No manual surface (user-manual, USER_GUIDE, HelpView) names any of the 10 phantom node names of census Table 3, enforced by absence checks in the same CI conformance test; and USER_GUIDE's active-experiments list is generated from the graph files on disk (27 today), neither more nor fewer. This does not establish: that the manuals are well written - only that their enumerable claims about what exists are true.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "087-node-system-tightening/C087-7",
+   "statement": "A converted node carries its domain content in parameters, not in code.** For every node converted under disposition (a), the domain specifics (corpus, language, code table, weights) arrive as parameter or port data; the node's code contains no branch on a domain identity (a named language, corpus, scholar map, or sign list). This does not establish: that the primitive is elegant or complete - only that the domain content moved from code to data, which is the coupling property the owner directed.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "087-node-system-tightening/C087-16",
+   "statement": "The Study Builder's schema module no longer impersonates the node registry.** After Stage S1, the module formerly named node_registry.py is renamed (study_node_registry.py) or, if the owner rules otherwise, carries a header and a docs entry stating it is the Study Builder's param-schema module; its endpoint (GET /node-registry/{node_type}/{ref_id}) answers unchanged, and both registries import in one process without ambiguity. This does not establish: that the two node systems should be merged - only that they stop sharing a name.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "087-node-system-tightening/C087-11",
+   "statement": "The events bus's persistence semantics are stated once, and the code matches the statement.** Exactly one documented statement (module docstring, user manual, and HelpView, in agreement) declares whether events are persisted or ephemeral-by-design and what a subscriber can rely on; the emit path's behaviour matches the statement, and the statement's presence is pinned by a test. This does not establish: that the ruled disposition is the ideal one - only that it is a decision, stated where a reader looks, and true of the code.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "087-node-system-tightening/C087-5",
+   "statement": "Legacy nodes stay resolvable; nothing stored dangles.** Every node id resolvable before Stage S2 remains resolvable after it, through the same ATOMIC_NODES table; the full registry (including legacy) is what graph loading, the metadata merge, and resolution consult. This does not establish: that legacy nodes produce current or correct results - only that history stays loadable. The _archive/ graphs are outside this claim (spec non-goals).",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "087-node-system-tightening/C087-6",
+   "statement": "Every PARTIAL domain node is triaged exactly once, on evidence.** Each of the 68 PARTIAL domain nodes of the census carries exactly one Stage S3 disposition - (a) converted to a generic primitive, (b) re-expressed as a composition of primitives in its consuming experiments, or (c) retained under the D3 bar - recorded in the triage record with its evidence; the domain-flavoured ids in live use are triaged first. This does not establish: that the dispositions are the best possible - only that each one exists, is singular, and is backed by the evidence its class demands.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "087-node-system-tightening/C087-12",
+   "statement": "Anchor-set dedupe removes exact duplicates only, through the API, on the record.** Stage S6 deletes an anchor set only when another set with identical (name, language, pairs content) is kept; the earliest canonical copy of each distinct content survives; every deletion goes through DELETE /anchor-sets/{id}; and every removed id, with its group's kept id, is recorded in the stage record. This does not establish: that the surviving sets are good data - placeholder content that is distinct survives this stage by design; judging it is a separate act.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "087-node-system-tightening/C087-15",
+   "statement": "Manual updates land with the behaviour.** Every stage PR that changes user-visible behaviour updates the affected manual surfaces (user-manual, USER_GUIDE, HelpView as applicable) in the same PR; no stage merges with its manual update deferred to a later PR. This does not establish: that the updates are well written - only that they are not late, which is the failure F7 documents at scale.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "087-node-system-tightening/C087-10",
+   "statement": "The Logs view is restored, to the approved wireframes.** The app carries a Logs surface with the two tabs of the owner-approved S5 wireframes package: a live stream tab consuming GET /terminal/log and GET /terminal/log/stream, and a records tab reading the jobs/job_results, phase_actions, and notification_log tables, read-only, with per-record detail expansion. The build matches the approved wireframes screen by screen under Playwright verification. This does not establish: that the terminal endpoints scale or that the SSE tail survives the cloud edge - the claim covers the desktop surface the wireframes draw.",
    "status": "draft",
    "stage": "created",
    "population": "bundle"
@@ -24197,6 +24333,193 @@
    ]
   },
   {
+   "from": "spec.md",
+   "to": "087-node-system-tightening/C087-1",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "087-node-system-tightening/C087-1",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "087-node-system-tightening/C087-10",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "087-node-system-tightening/C087-10",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "087-node-system-tightening/C087-11",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "087-node-system-tightening/C087-11",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "087-node-system-tightening/C087-12",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "087-node-system-tightening/C087-12",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "087-node-system-tightening/C087-13",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "087-node-system-tightening/C087-13",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "087-node-system-tightening/C087-14",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "087-node-system-tightening/C087-14",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "087-node-system-tightening/C087-15",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "087-node-system-tightening/C087-15",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "087-node-system-tightening/C087-16",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "087-node-system-tightening/C087-16",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "087-node-system-tightening/C087-17",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "087-node-system-tightening/C087-17",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "087-node-system-tightening/C087-2",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "087-node-system-tightening/C087-2",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "087-node-system-tightening/C087-3",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "087-node-system-tightening/C087-3",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "087-node-system-tightening/C087-4",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "087-node-system-tightening/C087-4",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "087-node-system-tightening/C087-5",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "087-node-system-tightening/C087-5",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "087-node-system-tightening/C087-6",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "087-node-system-tightening/C087-6",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "087-node-system-tightening/C087-7",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "087-node-system-tightening/C087-7",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "087-node-system-tightening/C087-8",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "087-node-system-tightening/C087-8",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "087-node-system-tightening/C087-9",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "087-node-system-tightening/C087-9",
+    "spec.md"
+   ]
+  },
+  {
    "from": "055",
    "to": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
    "rel": "opposes",
@@ -28559,6 +28882,91 @@
    "constrains": 0
   },
   "086-winning-combination-adoption/C086-9": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "087-node-system-tightening/C087-14": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "087-node-system-tightening/C087-1": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "087-node-system-tightening/C087-13": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "087-node-system-tightening/C087-8": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "087-node-system-tightening/C087-4": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "087-node-system-tightening/C087-3": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "087-node-system-tightening/C087-17": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "087-node-system-tightening/C087-2": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "087-node-system-tightening/C087-9": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "087-node-system-tightening/C087-7": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "087-node-system-tightening/C087-16": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "087-node-system-tightening/C087-11": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "087-node-system-tightening/C087-5": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "087-node-system-tightening/C087-6": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "087-node-system-tightening/C087-12": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "087-node-system-tightening/C087-15": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "087-node-system-tightening/C087-10": {
    "supports": 1,
    "opposes": 0,
    "constrains": 0
@@ -33602,6 +34010,108 @@
    },
    {
     "id": "086-winning-combination-adoption/C086-9",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "087-node-system-tightening/C087-14",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "087-node-system-tightening/C087-1",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "087-node-system-tightening/C087-13",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "087-node-system-tightening/C087-8",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "087-node-system-tightening/C087-4",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "087-node-system-tightening/C087-3",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "087-node-system-tightening/C087-17",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "087-node-system-tightening/C087-2",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "087-node-system-tightening/C087-9",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "087-node-system-tightening/C087-7",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "087-node-system-tightening/C087-16",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "087-node-system-tightening/C087-11",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "087-node-system-tightening/C087-5",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "087-node-system-tightening/C087-6",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "087-node-system-tightening/C087-12",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "087-node-system-tightening/C087-15",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "087-node-system-tightening/C087-10",
     "population": "bundle",
     "status": "draft",
     "stage": "created"
@@ -51015,6 +51525,193 @@
     ]
    },
    {
+    "row": "087-node-system-tightening/C087-1",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "087-node-system-tightening/C087-1",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "087-node-system-tightening/C087-10",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "087-node-system-tightening/C087-10",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "087-node-system-tightening/C087-11",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "087-node-system-tightening/C087-11",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "087-node-system-tightening/C087-12",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "087-node-system-tightening/C087-12",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "087-node-system-tightening/C087-13",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "087-node-system-tightening/C087-13",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "087-node-system-tightening/C087-14",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "087-node-system-tightening/C087-14",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "087-node-system-tightening/C087-15",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "087-node-system-tightening/C087-15",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "087-node-system-tightening/C087-16",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "087-node-system-tightening/C087-16",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "087-node-system-tightening/C087-17",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "087-node-system-tightening/C087-17",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "087-node-system-tightening/C087-2",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "087-node-system-tightening/C087-2",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "087-node-system-tightening/C087-3",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "087-node-system-tightening/C087-3",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "087-node-system-tightening/C087-4",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "087-node-system-tightening/C087-4",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "087-node-system-tightening/C087-5",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "087-node-system-tightening/C087-5",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "087-node-system-tightening/C087-6",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "087-node-system-tightening/C087-6",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "087-node-system-tightening/C087-7",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "087-node-system-tightening/C087-7",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "087-node-system-tightening/C087-8",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "087-node-system-tightening/C087-8",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "087-node-system-tightening/C087-9",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "087-node-system-tightening/C087-9",
+     "spec.md"
+    ]
+   },
+   {
     "row": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
     "column": "055",
     "column_class": "studies",
@@ -51182,8 +51879,8 @@
    }
   ],
   "coverage": {
-   "rows_total": 840,
-   "rows_with_cells": 826,
+   "rows_total": 857,
+   "rows_with_cells": 843,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -51541,30 +52238,30 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1363,
+   "cells_total": 1380,
    "cells_by_relation": {
-    "supports": 1356,
+    "supports": 1373,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1356,
+    "documents": 1373,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
    },
    "falsifier_coverage": {
-    "covered": 831,
-    "total": 840,
+    "covered": 848,
+    "total": 857,
     "by_population": {
      "extracted": {
       "covered": 14,
       "total": 23
      },
      "bundle": {
-      "covered": 817,
-      "total": 817
+      "covered": 834,
+      "total": 834
      }
     }
    },
@@ -54875,6 +55572,18 @@
     {
      "from": "083-cloud-edition/C083-8",
      "to": "083-cloud-edition/C083-4"
+    },
+    {
+     "from": "087-node-system-tightening/C087-17",
+     "to": "087-node-system-tightening/C087-1"
+    },
+    {
+     "from": "087-node-system-tightening/C087-5",
+     "to": "087-node-system-tightening/C087-4"
+    },
+    {
+     "from": "087-node-system-tightening/C087-8",
+     "to": "087-node-system-tightening/C087-4"
     }
    ]
   },
@@ -56597,8 +57306,8 @@
    }
   },
   "matrix_coverage": {
-   "rows_total": 840,
-   "rows_with_cells": 826,
+   "rows_total": 857,
+   "rows_with_cells": 843,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -56956,15 +57665,15 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1363,
+   "cells_total": 1380,
    "cells_by_relation": {
-    "supports": 1356,
+    "supports": 1373,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1356,
+    "documents": 1373,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
@@ -57028,12 +57737,12 @@
     "063",
     "064"
    ],
-   "dependency_pairs_not_cells": 790
+   "dependency_pairs_not_cells": 793
   },
   "claim_population": {
    "by_status": {
     "contradicted": 4,
-    "draft": 816,
+    "draft": 833,
     "partially_falsified": 1,
     "partially_supported": 3,
     "strongly_supported": 2,
@@ -57043,26 +57752,26 @@
    },
    "by_stage": {
     "checked": 3,
-    "created": 814,
+    "created": 831,
     "explained": 8
    },
    "no_stage_recorded": 15,
    "by_population": {
-    "bundle": 817,
+    "bundle": 834,
     "extracted": 23
    }
   },
   "falsifier_census": {
-   "covered": 831,
-   "total": 840,
+   "covered": 848,
+   "total": 857,
    "by_population": {
     "extracted": {
      "covered": 14,
      "total": 23
     },
     "bundle": {
-     "covered": 817,
-     "total": 817
+     "covered": 834,
+     "total": 834
     }
    },
    "gap_claims": [
@@ -57079,8 +57788,8 @@
   },
   "aee_state_census": {
    "with_state": 0,
-   "without_state": 840,
-   "total": 840
+   "without_state": 857,
+   "total": 857
   },
   "unresolved": {
    "sign_mentions": [
@@ -58566,7 +59275,7 @@
     "runs": [
      {
       "candidate": "incumbent",
-      "record": "t405-incumbent-over-full-frame--b262d06655a4",
+      "record": "t405-incumbent-over-full-frame--763e4f7b44f9",
       "via_signs": [
        "mahadevan:70"
       ],
@@ -58580,7 +59289,7 @@
      },
      {
       "candidate": "full-register",
-      "record": "t405-full-register-over-full-frame--e0892157556b",
+      "record": "t405-full-register-over-full-frame--cf47a3fa5a80",
       "via_signs": [
        "mahadevan:72",
        "mahadevan:64",
@@ -141557,6 +142266,1451 @@
     },
     "sign_records": []
    }
+  },
+  "087-node-system-tightening/C087-14": {
+   "id": "087-node-system-tightening/C087-14",
+   "statement": "This program changes no verdict, claim status, or ledger content.** No stage of Spec 087 alters an Indus claim's status, stage, or score, appends or edits a ledger entry, or modifies a frozen record; the claims ledger and the freeze records are byte-identical before and after the program. This does not establish: anything about the truth of any claim - the program is about the tool, not the decipherment.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-02",
+   "falsifier": [
+    "a diff in glossa-indus/ledger/claims.jsonl or any freeze record attributable to a Spec 087 PR; or a claim status/stage in the app database changed by a stage's execution (S6 touches anchor sets only)."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C087-14",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "087-node-system-tightening/C087-14",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "087-node-system-tightening/C087-14",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C087-14",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    },
+    "sign_records": []
+   }
+  },
+  "087-node-system-tightening/C087-1": {
+   "id": "087-node-system-tightening/C087-1",
+   "statement": "Registry completeness is pinned, and a silent shrink fails CI.** A CI registry-completeness test pins the plugin module list (all 144 experiment_graph_*.py modules) and the registered node count by category; outside production leniency, a plugin module that fails to import fails the test loudly instead of shrinking the registry behind a log warning. This does not establish: that the pinned counts are the right counts - only that any change to them is a visible, recorded act rather than an accident.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-02",
+   "falsifier": [
+    "a seeded broken plugin module (import error in a fixture copy of the registry build) under which the suite still passes; or a registered count by category in the running system that differs from the pinned count while CI is green."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C087-1",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "087-node-system-tightening/C087-1",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "087-node-system-tightening/C087-1",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C087-1",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    },
+    "sign_records": []
+   }
+  },
+  "087-node-system-tightening/C087-13": {
+   "id": "087-node-system-tightening/C087-13",
+   "statement": "Every live graph still resolves and runs with byte-identical results.** After each of S2 and S3, all 27 live graphs resolve every atomicId they reference, and the pinned comparison runs produce results byte-identical to their pre-stage records. This does not establish: that the graphs' results are correct - only that this program did not change them, which is the non-goal the owner set.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-02",
+   "falsifier": [
+    "a live graph with a dangling atomicId after any stage; or a comparison run whose output bytes differ from its pinned pre-stage record in any field."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C087-13",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "087-node-system-tightening/C087-13",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "087-node-system-tightening/C087-13",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C087-13",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    },
+    "sign_records": []
+   }
+  },
+  "087-node-system-tightening/C087-8": {
+   "id": "087-node-system-tightening/C087-8",
+   "statement": "The manual's node reference is the palette set, mechanically.** The generated node reference (user-manual block and the HelpView data module) lists exactly the palette set of claim C087-4, with each node's category, ports, and params as the registry states them; the CI conformance test of Stage S4 regenerates and diffs, failing on drift in either direction. This does not establish: that the surrounding prose is clear or complete - the claim covers the enumerable reference, the part that was mechanically false.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-02",
+   "falsifier": [
+    "a node in the manual reference that is not in the palette set; a palette node missing from it; a port or param in the manual that differs from the registry's; or a hand edit inside a generated block that CI accepts."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C087-8",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "087-node-system-tightening/C087-8",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "087-node-system-tightening/C087-8",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C087-8",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    },
+    "sign_records": []
+   }
+  },
+  "087-node-system-tightening/C087-4": {
+   "id": "087-node-system-tightening/C087-4",
+   "statement": "The palette is the registry minus legacy, mechanically.** The catalog endpoint's default response contains exactly the registered nodes not flagged legacy: GENERIC nodes, parameterized PARTIAL nodes, and the live working set. The palette set is computed from the registry and the flag, never maintained as a separate list. This does not establish: that the legacy classification of any individual node is correct - the classification of record is the census's, and reclassifying a node is a recorded stage act, not a consequence of this claim.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-02",
+   "falsifier": [
+    "a node in the default catalog response that is flagged legacy; a non-legacy registered node missing from it; or a palette-only id that exists in no registry."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C087-4",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "087-node-system-tightening/C087-4",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "087-node-system-tightening/C087-4",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C087-4",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    },
+    "sign_records": []
+   }
+  },
+  "087-node-system-tightening/C087-3": {
+   "id": "087-node-system-tightening/C087-3",
+   "statement": "A failed palette load is visible, never a silent empty.** When the Experiment Builder's catalog fetch fails, the builder renders an error state that names the failure; it never renders an empty palette indistinguishable from 'no nodes exist'. This does not establish: that the catalog endpoint is reliable - only that its failure can no longer masquerade as an empty registry.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-02",
+   "falsifier": [
+    "a component test (or manual run) with the catalog endpoint failing in which the builder shows an empty palette with no error surface."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C087-3",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "087-node-system-tightening/C087-3",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "087-node-system-tightening/C087-3",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C087-3",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    },
+    "sign_records": []
+   }
+  },
+  "087-node-system-tightening/C087-17": {
+   "id": "087-node-system-tightening/C087-17",
+   "statement": "The registry changes only by recorded acts.** After S2's re-pin, the registered count and the per-category census in the completeness test change only through a Spec 087 stage PR that names the change in its stage record; the count never moves as a side effect of an unrelated change. This does not establish: that the registry should never grow - new primitives are welcome; this claim makes their arrival an act, not an accident.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-02",
+   "falsifier": [
+    "a merged PR that alters the pinned counts without a stage record naming the alteration; or runtime counts differing from the pin while CI is green."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C087-17",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "087-node-system-tightening/C087-17",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "087-node-system-tightening/C087-17",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C087-17",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    },
+    "sign_records": []
+   }
+  },
+  "087-node-system-tightening/C087-2": {
+   "id": "087-node-system-tightening/C087-2",
+   "statement": "No node id has two live definitions.** Exactly one definition of each node id is reachable in the built registry; the three shadowed classes of census Table 4 (IndusPhase254SemanticConstraint, IndusPhase255CommodityPhonemes, IndusPhase256LEExtension) are resolved to the behaviour-verified definition, the dead definition is deleted, and a duplicate-id registration in a test fixture fails the suite. This does not establish: that the kept definition computes the right science - only that there is one of it, chosen by a recorded behaviour diff, where before there were two and the choice was an import order.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-02",
+   "falsifier": [
+    "two importable definitions of one id in the tree; a fixture registering an already-registered id that the suite accepts; or fixture outputs showing the deleted definition's behaviour where the kept definition's was recorded as correct."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C087-2",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "087-node-system-tightening/C087-2",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "087-node-system-tightening/C087-2",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C087-2",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    },
+    "sign_records": []
+   }
+  },
+  "087-node-system-tightening/C087-9": {
+   "id": "087-node-system-tightening/C087-9",
+   "statement": "No manual names a node or experiment that does not exist.** No manual surface (user-manual, USER_GUIDE, HelpView) names any of the 10 phantom node names of census Table 3, enforced by absence checks in the same CI conformance test; and USER_GUIDE's active-experiments list is generated from the graph files on disk (27 today), neither more nor fewer. This does not establish: that the manuals are well written - only that their enumerable claims about what exists are true.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-02",
+   "falsifier": [
+    "any of the 10 phantom names appearing in a manual surface while CI is green; or a generated experiment list whose count differs from the graph files on disk."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C087-9",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "087-node-system-tightening/C087-9",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "087-node-system-tightening/C087-9",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C087-9",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    },
+    "sign_records": []
+   }
+  },
+  "087-node-system-tightening/C087-7": {
+   "id": "087-node-system-tightening/C087-7",
+   "statement": "A converted node carries its domain content in parameters, not in code.** For every node converted under disposition (a), the domain specifics (corpus, language, code table, weights) arrive as parameter or port data; the node's code contains no branch on a domain identity (a named language, corpus, scholar map, or sign list). This does not establish: that the primitive is elegant or complete - only that the domain content moved from code to data, which is the coupling property the owner directed.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-02",
+   "falsifier": [
+    "a converted node whose source still branches on a domain identity; or two parameter settings of a converted node that cannot reproduce the behaviours of the domain variants it replaced, on their pinned fixtures."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C087-7",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "087-node-system-tightening/C087-7",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "087-node-system-tightening/C087-7",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C087-7",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    },
+    "sign_records": []
+   }
+  },
+  "087-node-system-tightening/C087-16": {
+   "id": "087-node-system-tightening/C087-16",
+   "statement": "The Study Builder's schema module no longer impersonates the node registry.** After Stage S1, the module formerly named node_registry.py is renamed (study_node_registry.py) or, if the owner rules otherwise, carries a header and a docs entry stating it is the Study Builder's param-schema module; its endpoint (GET /node-registry/{node_type}/{ref_id}) answers unchanged, and both registries import in one process without ambiguity. This does not establish: that the two node systems should be merged - only that they stop sharing a name.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-02",
+   "falsifier": [
+    "a module named node_registry.py in the tree after S1 without the recorded owner ruling for option (b); a broken /node-registry/ endpoint; or a document that still points a reader at the old name for the experiment registry."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C087-16",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "087-node-system-tightening/C087-16",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "087-node-system-tightening/C087-16",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C087-16",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    },
+    "sign_records": []
+   }
+  },
+  "087-node-system-tightening/C087-11": {
+   "id": "087-node-system-tightening/C087-11",
+   "statement": "The events bus's persistence semantics are stated once, and the code matches the statement.** Exactly one documented statement (module docstring, user manual, and HelpView, in agreement) declares whether events are persisted or ephemeral-by-design and what a subscriber can rely on; the emit path's behaviour matches the statement, and the statement's presence is pinned by a test. This does not establish: that the ruled disposition is the ideal one - only that it is a decision, stated where a reader looks, and true of the code.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-02",
+   "falsifier": [
+    "documentation surfaces disagreeing about the bus's semantics; behaviour contradicting the statement (for the documented-ephemeral ruling: any surface promising delivery or replay; for a persistence ruling: an event emitted with no subscriber that is not later retrievable); or the pinning test removed while the statement remains."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C087-11",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "087-node-system-tightening/C087-11",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "087-node-system-tightening/C087-11",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C087-11",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    },
+    "sign_records": []
+   }
+  },
+  "087-node-system-tightening/C087-5": {
+   "id": "087-node-system-tightening/C087-5",
+   "statement": "Legacy nodes stay resolvable; nothing stored dangles.** Every node id resolvable before Stage S2 remains resolvable after it, through the same ATOMIC_NODES table; the full registry (including legacy) is what graph loading, the metadata merge, and resolution consult. This does not establish: that legacy nodes produce current or correct results - only that history stays loadable. The _archive/ graphs are outside this claim (spec non-goals).",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-02",
+   "falsifier": [
+    "a stored graph, ledger metadata entry, or test fixture referencing a wrapper id that resolved before S2 and fails to resolve after it."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C087-5",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "087-node-system-tightening/C087-5",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "087-node-system-tightening/C087-5",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C087-5",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    },
+    "sign_records": []
+   }
+  },
+  "087-node-system-tightening/C087-6": {
+   "id": "087-node-system-tightening/C087-6",
+   "statement": "Every PARTIAL domain node is triaged exactly once, on evidence.** Each of the 68 PARTIAL domain nodes of the census carries exactly one Stage S3 disposition - (a) converted to a generic primitive, (b) re-expressed as a composition of primitives in its consuming experiments, or (c) retained under the D3 bar - recorded in the triage record with its evidence; the domain-flavoured ids in live use are triaged first. This does not establish: that the dispositions are the best possible - only that each one exists, is singular, and is backed by the evidence its class demands.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-02",
+   "falsifier": [
+    "a PARTIAL node with no disposition, with two, or whose disposition record lacks the evidence its class requires (for (c), any of the bar's three legs)."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C087-6",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "087-node-system-tightening/C087-6",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "087-node-system-tightening/C087-6",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C087-6",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    },
+    "sign_records": []
+   }
+  },
+  "087-node-system-tightening/C087-12": {
+   "id": "087-node-system-tightening/C087-12",
+   "statement": "Anchor-set dedupe removes exact duplicates only, through the API, on the record.** Stage S6 deletes an anchor set only when another set with identical (name, language, pairs content) is kept; the earliest canonical copy of each distinct content survives; every deletion goes through DELETE /anchor-sets/{id}; and every removed id, with its group's kept id, is recorded in the stage record. This does not establish: that the surviving sets are good data - placeholder content that is distinct survives this stage by design; judging it is a separate act.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-02",
+   "falsifier": [
+    "a deleted set whose (name, language, pairs content) differs from its group's kept set in any element; a distinct content with no surviving copy; a deletion performed by direct database write; or a removed id absent from the stage record."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C087-12",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "087-node-system-tightening/C087-12",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "087-node-system-tightening/C087-12",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C087-12",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    },
+    "sign_records": []
+   }
+  },
+  "087-node-system-tightening/C087-15": {
+   "id": "087-node-system-tightening/C087-15",
+   "statement": "Manual updates land with the behaviour.** Every stage PR that changes user-visible behaviour updates the affected manual surfaces (user-manual, USER_GUIDE, HelpView as applicable) in the same PR; no stage merges with its manual update deferred to a later PR. This does not establish: that the updates are well written - only that they are not late, which is the failure F7 documents at scale.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-02",
+   "falsifier": [
+    "a merged stage PR whose behaviour change has no corresponding manual change in the same PR, where the stage record does not name why no manual surface is affected."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C087-15",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "087-node-system-tightening/C087-15",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "087-node-system-tightening/C087-15",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C087-15",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    },
+    "sign_records": []
+   }
+  },
+  "087-node-system-tightening/C087-10": {
+   "id": "087-node-system-tightening/C087-10",
+   "statement": "The Logs view is restored, to the approved wireframes.** The app carries a Logs surface with the two tabs of the owner-approved S5 wireframes package: a live stream tab consuming GET /terminal/log and GET /terminal/log/stream, and a records tab reading the jobs/job_results, phase_actions, and notification_log tables, read-only, with per-record detail expansion. The build matches the approved wireframes screen by screen under Playwright verification. This does not establish: that the terminal endpoints scale or that the SSE tail survives the cloud edge - the claim covers the desktop surface the wireframes draw.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-02",
+   "falsifier": [
+    "a shipped Logs surface missing a tab, a control, or a field the approved wireframes carry; a records tab that can mutate a record; or a Playwright comparison against the approved screens that fails while the stage is reported done."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C087-10",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "087-node-system-tightening/C087-10",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "087-node-system-tightening/C087-10",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C087-10",
+     "document_id": null,
+     "path": "specs/087-node-system-tightening/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "af572273f5b260797a7206235725d97c1da23e4e52755bf26dd8a80040ed3077",
+     "spec": "087-node-system-tightening"
+    },
+    "sign_records": []
+   }
   }
  },
  "settling": {
@@ -141608,15 +143762,15 @@
   },
   "runs": [
    {
-    "record": "t405-incumbent-over-full-frame--b262d06655a4",
+    "record": "t405-incumbent-over-full-frame--763e4f7b44f9",
     "scenario": "t405-incumbent-over-full-frame",
     "candidate": "incumbent",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "c4e2326ec8757bb700dac0142dd0adf17d7464b4d929f5b103868c9228f13ccf",
-      "lines": 871
+      "sha256": "f988ed61404daf8200479e9d1a6580526c7b419ba7e802a3b6b41a5a73a167ac",
+      "lines": 888
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -141667,15 +143821,15 @@
     }
    },
    {
-    "record": "t405-full-register-over-full-frame--e0892157556b",
+    "record": "t405-full-register-over-full-frame--cf47a3fa5a80",
     "scenario": "t405-full-register-over-full-frame",
     "candidate": "full-register",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "c4e2326ec8757bb700dac0142dd0adf17d7464b4d929f5b103868c9228f13ccf",
-      "lines": 871
+      "sha256": "f988ed61404daf8200479e9d1a6580526c7b419ba7e802a3b6b41a5a73a167ac",
+      "lines": 888
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -141730,7 +143884,7 @@
   ],
   "comparison": {
    "record": "specs/086-winning-combination-adoption/records/stage-4-dual-run-comparison.json",
-   "sha256": "ae83e71b6153c4ffde7caa75f7a8a3160a9f95e7f62e367f85f63bd19c74e2c8",
+   "sha256": "ac0d5310c5a57d4290c81cf65f00bfd70386cad9566a1db831341d366e153892",
    "result": {
     "claims_compared": [
      {
@@ -141978,7 +144132,7 @@
   },
   "canonicals": {
    "record": "glossa-indus/ledger/settling-canonical.json",
-   "sha256": "f9746ae76192b47d3b451ac7b5480cd992bca54d51bb097a79aca31f2bf12e0d",
+   "sha256": "38bc126e7c71747d10c9905d3ad38ce45e4e832197aac2d6f65989923936dd23",
    "scenarios": [
     {
      "id": "null-over-subset",
@@ -142313,8 +144467,8 @@
   },
   "reach": {
    "claims_with_sign_refs": 1,
-   "claims_total": 840,
-   "claims_untouched_by_any_run": 839,
+   "claims_total": 857,
+   "claims_untouched_by_any_run": 856,
    "s_r3": {
     "status": "UNMEASURED",
     "class_table": null,

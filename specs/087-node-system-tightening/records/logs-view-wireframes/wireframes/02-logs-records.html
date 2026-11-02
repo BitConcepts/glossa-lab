@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossa Lab — Logs, job &amp; phase records (Spec 087 wireframe 02)</title>
+<link rel="stylesheet" href="wireframes.css">
+<style>
+  .lvl-chip { display:inline-block; font-size:11.5px; font-weight:600; padding:2px 10px;
+    border:1px solid var(--line); border-radius:20px; margin-right:6px; background:var(--card); }
+  .lvl-chip.on { background:#1e3a5f; color:#fff; border-color:#1e3a5f; }
+  .status-ok { color:#15803d; font-weight:700; }
+  .status-bad { color:#b91c1c; font-weight:700; }
+  .status-run { color:#1d4ed8; font-weight:700; }
+  .toolbar-row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+  .mono { font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:12px; }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-row">
+        <div class="tile">G</div>
+        <div>
+          <div class="brand-name">Glossa Lab</div>
+          <div class="brand-sub">Epistemic research workbench</div>
+        </div>
+      </div>
+    </div>
+    <div class="program-switch">
+      <div class="ps-label">Program</div>
+      <div class="ps-name">Indus Script <span>▾</span></div>
+      <div class="ps-q">Standing position: not deciphered.</div>
+    </div>
+    <nav class="nav">
+      <h4>Program</h4>
+      <a href="#"><span class="ic">⌂</span>Program home</a>
+      <a href="#"><span class="ic">☰</span>Claims</a>
+      <a href="#"><span class="ic">▤</span>Digestion</a>
+      <a href="#"><span class="ic">▦</span>Evidence &amp; sources</a>
+      <a href="#"><span class="ic">◈</span>Data</a>
+      <a href="#"><span class="ic">∿</span>Analysis</a>
+      <a href="#"><span class="ic">⚗</span>Experiments</a>
+      <a href="#"><span class="ic">⬡</span>System graph</a>
+      <h4>Tool home</h4>
+      <a href="#"><span class="ic">◎</span>Discovery</a>
+      <a href="#"><span class="ic">↻</span>Research loop</a>
+      <a href="#"><span class="ic">▤</span>Reports &amp; ledger</a>
+      <a href="#"><span class="ic">⚙</span>Jobs</a>
+      <a href="01-logs-stream.html" class="active"><span class="ic">≣</span>Logs <span class="count">restored</span></a>
+      <a href="#"><span class="ic">♥</span>Status</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="crumb"><b>Indus Script</b> / Logs / Job &amp; phase records</span>
+      <div class="spacer"></div>
+      <button class="icon-btn">⌘K&nbsp; Search</button>
+      <div class="service-chip"><span class="dot"></span><span><b>Glossa Lab v0.1.0</b> · desktop · records from the database · 18 jobs, all completed</span></div>
+      <div class="user-chip"><span class="avatar">t</span><span><b>operator</b></span><span>▾</span></div>
+    </div>
+
+    <div class="content">
+      <div class="head-row">
+        <div class="page-head">
+          <h1>Logs</h1>
+          <p class="lede">The recorded history: every run the system keeps a record of — jobs and their results
+          (<code>jobs</code> / <code>job_results</code>), per-phase actions (<code>phase_actions</code>), and sent
+          notifications (<code>notification_log</code>) — read as one log, with the stored detail one click away.
+          Unlike the live stream, these records persist.</p>
+        </div>
+        <div class="spacer"></div>
+        <button class="btn">Open Jobs</button>
+      </div>
+
+      <div class="tabs">
+        <a href="01-logs-stream.html">Live stream</a>
+        <a href="02-logs-records.html" class="active">Job &amp; phase records</a>
+      </div>
+
+      <div class="card">
+        <div class="toolbar-row">
+          <span class="lvl-chip on">All records</span>
+          <span class="lvl-chip">Experiment graphs</span>
+          <span class="lvl-chip">Pipelines</span>
+          <span class="lvl-chip">Studies</span>
+          <span class="lvl-chip">Phase actions</span>
+          <span class="lvl-chip">Notifications</span>
+          <div class="spacer"></div>
+          <span class="lvl-chip on">Any status</span>
+          <span class="lvl-chip">Completed</span>
+          <span class="lvl-chip">Failed</span>
+          <span class="lvl-chip">Running</span>
+        </div>
+        <div class="divider"></div>
+        <div style="font-size:12.5px;color:var(--muted)">Showing the most recent 50 records · live-system census 2026-11-02: 18 jobs recorded, all completed; 1,230 reports on file (Reports view). Records are read-only here; Jobs remains the surface that acts on them.</div>
+      </div>
+
+      <table class="tbl">
+        <tr><th style="width:15%">Started (UTC)</th><th style="width:30%">Record</th><th style="width:14%">Kind</th><th style="width:11%">Status</th><th style="width:10%">Duration</th><th>Summary</th></tr>
+        <tr>
+          <td class="mono">2026-11-02 14:52:11</td>
+          <td><b>Graph run — indus_sa_dravidian</b><br><span class="mono" style="color:var(--muted)">job 20261102T145211Z-graph-run</span></td>
+          <td>Experiment graph</td><td class="status-ok">completed</td><td>3.19s</td>
+          <td>27 nodes executed; result stored in <code>job_results</code>. <a href="#">▾ Detail open</a></td>
+        </tr>
+        <tr>
+          <td colspan="6" style="background:#f8fafc">
+            <b>Detail — job record</b> · <span class="mono">jobs</span> row + <span class="mono">job_results</span> payload<br>
+            <span class="mono">id 20261102T145211Z-graph-run · experiment indus_sa_dravidian · started 14:52:11 · completed 14:52:14 · error_message —</span>
+            <div class="codebox mono" style="margin-top:8px">result (excerpt): { "nodes_executed": 27, "failed_nodes": 0,
+  "outputs": { "mapping": "…94 anchors applied…", "consistency": 0.873 } }</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="mono">2026-11-02 14:31:02</td>
+          <td><b>Phase action — execute stage</b><br><span class="mono" style="color:var(--muted)">phase_actions · job 20261102T143055Z-pipeline-run</span></td>
+          <td>Phase action</td><td class="status-bad">failed</td><td>41.0s</td>
+          <td>error_message: “report file not found: reports/phase401_results.json” — the failure text is the record's own field, shown verbatim. <a href="#">▸ Detail</a></td>
+        </tr>
+        <tr>
+          <td class="mono">2026-11-02 13:58:44</td>
+          <td><b>Pipeline run — foundation_check</b><br><span class="mono" style="color:var(--muted)">job 20261102T135844Z-pipeline-run</span></td>
+          <td>Pipeline</td><td class="status-ok">completed</td><td>12.6s</td>
+          <td>Foundation check PASS (39 / 0 / 9 — ready with caveats). <a href="#">▸ Detail</a></td>
+        </tr>
+        <tr>
+          <td class="mono">2026-11-02 13:12:19</td>
+          <td><b>Notification — research-breakthrough alert</b><br><span class="mono" style="color:var(--muted)">notification_log</span></td>
+          <td>Notification</td><td class="status-ok">sent</td><td>—</td>
+          <td>Recipient masked by the API; status and error fields as recorded. <a href="#">▸ Detail</a></td>
+        </tr>
+        <tr>
+          <td class="mono">2026-11-02 12:40:57</td>
+          <td><b>Study run — spec study execution</b><br><span class="mono" style="color:var(--muted)">job 20261102T124057Z-study-run</span></td>
+          <td>Study</td><td class="status-ok">completed</td><td>58.3s</td>
+          <td>Result JSON stored; claim trail computable from the record on demand. <a href="#">▸ Detail</a></td>
+        </tr>
+      </table>
+
+      <div class="annotation">
+        <b>Purpose</b> · One read-only log over the records the database already keeps, so a failed run's own error text is findable without opening three separate surfaces.
+        <b>Primary action</b> · filter by kind/status, expand a record to its stored detail.
+        <b>What changed and why</b> · new surface (Spec 087 Stage 5); reads existing tables (<code>jobs</code>, <code>job_results</code>, <code>phase_actions</code>, <code>notification_log</code> — census §6.3); no new storage, no writes.
+        <b>Spec claims</b> · C087-10 (logs surface restored per these wireframes). Jobs keeps acting on records; this view never mutates them.
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,3092 @@
+{
+  "schema_version": "1.0",
+  "methodology_version": "2.0",
+  "project": "project",
+  "phase": "after_plan",
+  "outcome": "iterate",
+  "summary": "Assessed 17 claim(s); found 73 failure mode(s); 17 claim(s) below the 0.70 confidence threshold. Shared evidence: 1 supporting source(s) shared across 17 of 17 claim(s); the same evidence set supports multiple claims (FR-2.8, reporting only, no outcome effect in this phase). Draft cap: 17 draft claim(s) capped at gather_evidence/iterate (FR-2.3). Stage cap: 17 claim(s) below stage 'explained'; the outcome cannot be 'pass' (Spec 004 R1.4). Not understood: 34 residual unknown(s) are recorded on this assessment (Spec 004 R5.2). Lane 1 (machine verification): outcome iterate; 0 claim(s) at or above the 0.70 threshold, 17 below. Lane 2 (human acceptance): stages by effective stage: created 17. Lane-2 lag: 17 claim(s) below explained.",
+  "created_at": "2026-11-02T15:33:24.306363Z",
+  "claims": [
+    {
+      "id": "C087-1",
+      "text": "Registry completeness is pinned, and a silent shrink fails CI.** A CI registry-completeness test pins the plugin module list (all 144 experiment_graph_*.py modules) and the registered node count by category; outside production leniency, a plugin module that fails to import fails the test loudly instead of shrinking the registry behind a log warning. This does not establish: that the pinned counts are the right counts - only that any change to them is a visible, recorded act rather than an accident.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": [],
+      "depends_on": [],
+      "conflicts_with": [],
+      "evidence": [
+        {
+          "ref": "spec.md",
+          "kind": "asserted",
+          "direction": "supports",
+          "source_quality": "unknown",
+          "description": "Spec 087 package, drafted 2026-11-02 from the system-coupling audit of the same date (AUDIT.md findings F1-F10; CENSUS.md with the 517-node classification); claim text normalized from claims.md without substantive change.",
+          "source_id": "",
+          "independent_of": [],
+          "observed_at": null,
+          "content_hash": null
+        }
+      ],
+      "assumptions": [],
+      "alternatives": [],
+      "falsification_tests": [
+        "a seeded broken plugin module (import error in a fixture copy of the registry build) under which the suite still passes; or a registered count by category in the running system that differs from the pinned count while CI is green."
+      ],
+      "uncertainty": "insufficient_evidence",
+      "severity": "medium",
+      "source_ref": "spec.md",
+      "domain": "",
+      "confidence": 0.16375000000000003,
+      "confidence_band": "low",
+      "failures": [
+        {
+          "id": "AEE-C087-1-BOUNDARY-CHALLENGE",
+          "claim_id": "C087-1",
+          "challenge": "Boundary challenge",
+          "breakpoint": "Scope and operating assumptions are not explicit",
+          "severity": "high",
+          "category": "assumption_unvalidated",
+          "recovery_hint": "Declare where, when, and under which assumptions the claim holds.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-1-IRREDUCIBILITY-CHALLENGE",
+          "claim_id": "C087-1",
+          "challenge": "Irreducibility challenge",
+          "breakpoint": "Claim may contain multiple independently falsifiable propositions",
+          "severity": "medium",
+          "category": "coverage_gap",
+          "recovery_hint": "Split the claim into atomic propositions and link them explicitly.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-1-COUNTEREXAMPLE-CHALLENGE",
+          "claim_id": "C087-1",
+          "challenge": "Counterexample challenge",
+          "breakpoint": "Absolute language is used without a bounded domain",
+          "severity": "high",
+          "category": "assumption_unvalidated",
+          "recovery_hint": "Narrow the claim or document evidence covering the entire domain.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-1-INDEPENDENCE-UNMODELED",
+          "claim_id": "C087-1",
+          "challenge": "Shared-evidence independence challenge",
+          "breakpoint": "Supporting evidence 'spec.md' (ref(s): spec.md) is shared with claim(s) C087-10, C087-11, C087-12, C087-13, C087-14, C087-15, C087-16, C087-17, C087-2, C087-3, C087-4, C087-5, C087-6, C087-7, C087-8, C087-9 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim",
+          "severity": "medium",
+          "category": "independence_unmodeled",
+          "recovery_hint": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-1-DRAFT-CAP",
+          "claim_id": "C087-1",
+          "challenge": "Draft outcome cap",
+          "breakpoint": "Claim status is draft: the assessment outcome is capped at gather_evidence/iterate and policy verdicts below accept regardless of score (Spec 003 FR-2.3); a human ratification (status change) lifts the cap",
+          "severity": "low",
+          "category": "draft_cap",
+          "recovery_hint": "Ratify the claim (change its status from draft) to lift the cap.",
+          "resolved": false,
+          "disposition": null
+        }
+      ],
+      "metadata": {},
+      "dispositions": [],
+      "stage": "created",
+      "stage_events": [],
+      "headline": false,
+      "role": null
+    },
+    {
+      "id": "C087-2",
+      "text": "No node id has two live definitions.** Exactly one definition of each node id is reachable in the built registry; the three shadowed classes of census Table 4 (IndusPhase254SemanticConstraint, IndusPhase255CommodityPhonemes, IndusPhase256LEExtension) are resolved to the behaviour-verified definition, the dead definition is deleted, and a duplicate-id registration in a test fixture fails the suite. This does not establish: that the kept definition computes the right science - only that there is one of it, chosen by a recorded behaviour diff, where before there were two and the choice was an import order.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": [],
+      "depends_on": [],
+      "conflicts_with": [],
+      "evidence": [
+        {
+          "ref": "spec.md",
+          "kind": "asserted",
+          "direction": "supports",
+          "source_quality": "unknown",
+          "description": "Spec 087 package, drafted 2026-11-02 from the system-coupling audit of the same date (AUDIT.md findings F1-F10; CENSUS.md with the 517-node classification); claim text normalized from claims.md without substantive change.",
+          "source_id": "",
+          "independent_of": [],
+          "observed_at": null,
+          "content_hash": null
+        }
+      ],
+      "assumptions": [],
+      "alternatives": [],
+      "falsification_tests": [
+        "two importable definitions of one id in the tree; a fixture registering an already-registered id that the suite accepts; or fixture outputs showing the deleted definition's behaviour where the kept definition's was recorded as correct."
+      ],
+      "uncertainty": "insufficient_evidence",
+      "severity": "medium",
+      "source_ref": "spec.md",
+      "domain": "",
+      "confidence": 0.16375000000000003,
+      "confidence_band": "low",
+      "failures": [
+        {
+          "id": "AEE-C087-2-BOUNDARY-CHALLENGE",
+          "claim_id": "C087-2",
+          "challenge": "Boundary challenge",
+          "breakpoint": "Scope and operating assumptions are not explicit",
+          "severity": "high",
+          "category": "assumption_unvalidated",
+          "recovery_hint": "Declare where, when, and under which assumptions the claim holds.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-2-IRREDUCIBILITY-CHALLENGE",
+          "claim_id": "C087-2",
+          "challenge": "Irreducibility challenge",
+          "breakpoint": "Claim may contain multiple independently falsifiable propositions",
+          "severity": "medium",
+          "category": "coverage_gap",
+          "recovery_hint": "Split the claim into atomic propositions and link them explicitly.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-2-INDEPENDENCE-UNMODELED",
+          "claim_id": "C087-2",
+          "challenge": "Shared-evidence independence challenge",
+          "breakpoint": "Supporting evidence 'spec.md' (ref(s): spec.md) is shared with claim(s) C087-1, C087-10, C087-11, C087-12, C087-13, C087-14, C087-15, C087-16, C087-17, C087-3, C087-4, C087-5, C087-6, C087-7, C087-8, C087-9 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim",
+          "severity": "medium",
+          "category": "independence_unmodeled",
+          "recovery_hint": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-2-DRAFT-CAP",
+          "claim_id": "C087-2",
+          "challenge": "Draft outcome cap",
+          "breakpoint": "Claim status is draft: the assessment outcome is capped at gather_evidence/iterate and policy verdicts below accept regardless of score (Spec 003 FR-2.3); a human ratification (status change) lifts the cap",
+          "severity": "low",
+          "category": "draft_cap",
+          "recovery_hint": "Ratify the claim (change its status from draft) to lift the cap.",
+          "resolved": false,
+          "disposition": null
+        }
+      ],
+      "metadata": {},
+      "dispositions": [],
+      "stage": "created",
+      "stage_events": [],
+      "headline": false,
+      "role": null
+    },
+    {
+      "id": "C087-3",
+      "text": "A failed palette load is visible, never a silent empty.** When the Experiment Builder's catalog fetch fails, the builder renders an error state that names the failure; it never renders an empty palette indistinguishable from 'no nodes exist'. This does not establish: that the catalog endpoint is reliable - only that its failure can no longer masquerade as an empty registry.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": [],
+      "depends_on": [],
+      "conflicts_with": [],
+      "evidence": [
+        {
+          "ref": "spec.md",
+          "kind": "asserted",
+          "direction": "supports",
+          "source_quality": "unknown",
+          "description": "Spec 087 package, drafted 2026-11-02 from the system-coupling audit of the same date (AUDIT.md findings F1-F10; CENSUS.md with the 517-node classification); claim text normalized from claims.md without substantive change.",
+          "source_id": "",
+          "independent_of": [],
+          "observed_at": null,
+          "content_hash": null
+        }
+      ],
+      "assumptions": [],
+      "alternatives": [],
+      "falsification_tests": [
+        "a component test (or manual run) with the catalog endpoint failing in which the builder shows an empty palette with no error surface."
+      ],
+      "uncertainty": "insufficient_evidence",
+      "severity": "medium",
+      "source_ref": "spec.md",
+      "domain": "",
+      "confidence": 0.16375000000000003,
+      "confidence_band": "low",
+      "failures": [
+        {
+          "id": "AEE-C087-3-BOUNDARY-CHALLENGE",
+          "claim_id": "C087-3",
+          "challenge": "Boundary challenge",
+          "breakpoint": "Scope and operating assumptions are not explicit",
+          "severity": "high",
+          "category": "assumption_unvalidated",
+          "recovery_hint": "Declare where, when, and under which assumptions the claim holds.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-3-COUNTEREXAMPLE-CHALLENGE",
+          "claim_id": "C087-3",
+          "challenge": "Counterexample challenge",
+          "breakpoint": "Absolute language is used without a bounded domain",
+          "severity": "high",
+          "category": "assumption_unvalidated",
+          "recovery_hint": "Narrow the claim or document evidence covering the entire domain.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-3-INDEPENDENCE-UNMODELED",
+          "claim_id": "C087-3",
+          "challenge": "Shared-evidence independence challenge",
+          "breakpoint": "Supporting evidence 'spec.md' (ref(s): spec.md) is shared with claim(s) C087-1, C087-10, C087-11, C087-12, C087-13, C087-14, C087-15, C087-16, C087-17, C087-2, C087-4, C087-5, C087-6, C087-7, C087-8, C087-9 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim",
+          "severity": "medium",
+          "category": "independence_unmodeled",
+          "recovery_hint": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-3-DRAFT-CAP",
+          "claim_id": "C087-3",
+          "challenge": "Draft outcome cap",
+          "breakpoint": "Claim status is draft: the assessment outcome is capped at gather_evidence/iterate and policy verdicts below accept regardless of score (Spec 003 FR-2.3); a human ratification (status change) lifts the cap",
+          "severity": "low",
+          "category": "draft_cap",
+          "recovery_hint": "Ratify the claim (change its status from draft) to lift the cap.",
+          "resolved": false,
+          "disposition": null
+        }
+      ],
+      "metadata": {},
+      "dispositions": [],
+      "stage": "created",
+      "stage_events": [],
+      "headline": false,
+      "role": null
+    },
+    {
+      "id": "C087-4",
+      "text": "The palette is the registry minus legacy, mechanically.** The catalog endpoint's default response contains exactly the registered nodes not flagged legacy: GENERIC nodes, parameterized PARTIAL nodes, and the live working set. The palette set is computed from the registry and the flag, never maintained as a separate list. This does not establish: that the legacy classification of any individual node is correct - the classification of record is the census's, and reclassifying a node is a recorded stage act, not a consequence of this claim.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": [],
+      "depends_on": [],
+      "conflicts_with": [],
+      "evidence": [
+        {
+          "ref": "spec.md",
+          "kind": "asserted",
+          "direction": "supports",
+          "source_quality": "unknown",
+          "description": "Spec 087 package, drafted 2026-11-02 from the system-coupling audit of the same date (AUDIT.md findings F1-F10; CENSUS.md with the 517-node classification); claim text normalized from claims.md without substantive change.",
+          "source_id": "",
+          "independent_of": [],
+          "observed_at": null,
+          "content_hash": null
+        }
+      ],
+      "assumptions": [],
+      "alternatives": [],
+      "falsification_tests": [
+        "a node in the default catalog response that is flagged legacy; a non-legacy registered node missing from it; or a palette-only id that exists in no registry."
+      ],
+      "uncertainty": "insufficient_evidence",
+      "severity": "medium",
+      "source_ref": "spec.md",
+      "domain": "",
+      "confidence": 0.08875000000000002,
+      "confidence_band": "low",
+      "failures": [
+        {
+          "id": "AEE-C087-4-BOUNDARY-CHALLENGE",
+          "claim_id": "C087-4",
+          "challenge": "Boundary challenge",
+          "breakpoint": "Scope and operating assumptions are not explicit",
+          "severity": "high",
+          "category": "assumption_unvalidated",
+          "recovery_hint": "Declare where, when, and under which assumptions the claim holds.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-4-IRREDUCIBILITY-CHALLENGE",
+          "claim_id": "C087-4",
+          "challenge": "Irreducibility challenge",
+          "breakpoint": "Claim may contain multiple independently falsifiable propositions",
+          "severity": "medium",
+          "category": "coverage_gap",
+          "recovery_hint": "Split the claim into atomic propositions and link them explicitly.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-4-COUNTEREXAMPLE-CHALLENGE",
+          "claim_id": "C087-4",
+          "challenge": "Counterexample challenge",
+          "breakpoint": "Absolute language is used without a bounded domain",
+          "severity": "high",
+          "category": "assumption_unvalidated",
+          "recovery_hint": "Narrow the claim or document evidence covering the entire domain.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-4-INDEPENDENCE-UNMODELED",
+          "claim_id": "C087-4",
+          "challenge": "Shared-evidence independence challenge",
+          "breakpoint": "Supporting evidence 'spec.md' (ref(s): spec.md) is shared with claim(s) C087-1, C087-10, C087-11, C087-12, C087-13, C087-14, C087-15, C087-16, C087-17, C087-2, C087-3, C087-5, C087-6, C087-7, C087-8, C087-9 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim",
+          "severity": "medium",
+          "category": "independence_unmodeled",
+          "recovery_hint": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-4-DRAFT-CAP",
+          "claim_id": "C087-4",
+          "challenge": "Draft outcome cap",
+          "breakpoint": "Claim status is draft: the assessment outcome is capped at gather_evidence/iterate and policy verdicts below accept regardless of score (Spec 003 FR-2.3); a human ratification (status change) lifts the cap",
+          "severity": "low",
+          "category": "draft_cap",
+          "recovery_hint": "Ratify the claim (change its status from draft) to lift the cap.",
+          "resolved": false,
+          "disposition": null
+        }
+      ],
+      "metadata": {},
+      "dispositions": [],
+      "stage": "created",
+      "stage_events": [],
+      "headline": false,
+      "role": null
+    },
+    {
+      "id": "C087-5",
+      "text": "Legacy nodes stay resolvable; nothing stored dangles.** Every node id resolvable before Stage S2 remains resolvable after it, through the same ATOMIC_NODES table; the full registry (including legacy) is what graph loading, the metadata merge, and resolution consult. This does not establish: that legacy nodes produce current or correct results - only that history stays loadable. The _archive/ graphs are outside this claim (spec non-goals).",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": [],
+      "depends_on": [
+        "C087-4"
+      ],
+      "conflicts_with": [],
+      "evidence": [
+        {
+          "ref": "spec.md",
+          "kind": "asserted",
+          "direction": "supports",
+          "source_quality": "unknown",
+          "description": "Spec 087 package, drafted 2026-11-02 from the system-coupling audit of the same date (AUDIT.md findings F1-F10; CENSUS.md with the 517-node classification); claim text normalized from claims.md without substantive change.",
+          "source_id": "",
+          "independent_of": [],
+          "observed_at": null,
+          "content_hash": null
+        }
+      ],
+      "assumptions": [],
+      "alternatives": [],
+      "falsification_tests": [
+        "a stored graph, ledger metadata entry, or test fixture referencing a wrapper id that resolved before S2 and fails to resolve after it."
+      ],
+      "uncertainty": "insufficient_evidence",
+      "severity": "medium",
+      "source_ref": "spec.md",
+      "domain": "",
+      "confidence": 0.08875000000000002,
+      "confidence_band": "low",
+      "failures": [
+        {
+          "id": "AEE-C087-5-BOUNDARY-CHALLENGE",
+          "claim_id": "C087-5",
+          "challenge": "Boundary challenge",
+          "breakpoint": "Scope and operating assumptions are not explicit",
+          "severity": "high",
+          "category": "assumption_unvalidated",
+          "recovery_hint": "Declare where, when, and under which assumptions the claim holds.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-5-IRREDUCIBILITY-CHALLENGE",
+          "claim_id": "C087-5",
+          "challenge": "Irreducibility challenge",
+          "breakpoint": "Claim may contain multiple independently falsifiable propositions",
+          "severity": "medium",
+          "category": "coverage_gap",
+          "recovery_hint": "Split the claim into atomic propositions and link them explicitly.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-5-INDEPENDENCE-UNMODELED",
+          "claim_id": "C087-5",
+          "challenge": "Shared-evidence independence challenge",
+          "breakpoint": "Supporting evidence 'spec.md' (ref(s): spec.md) is shared with claim(s) C087-1, C087-10, C087-11, C087-12, C087-13, C087-14, C087-15, C087-16, C087-17, C087-2, C087-3, C087-4, C087-6, C087-7, C087-8, C087-9 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim",
+          "severity": "medium",
+          "category": "independence_unmodeled",
+          "recovery_hint": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-5-DRAFT-CAP",
+          "claim_id": "C087-5",
+          "challenge": "Draft outcome cap",
+          "breakpoint": "Claim status is draft: the assessment outcome is capped at gather_evidence/iterate and policy verdicts below accept regardless of score (Spec 003 FR-2.3); a human ratification (status change) lifts the cap",
+          "severity": "low",
+          "category": "draft_cap",
+          "recovery_hint": "Ratify the claim (change its status from draft) to lift the cap.",
+          "resolved": false,
+          "disposition": null
+        }
+      ],
+      "metadata": {},
+      "dispositions": [],
+      "stage": "created",
+      "stage_events": [],
+      "headline": false,
+      "role": null
+    },
+    {
+      "id": "C087-6",
+      "text": "Every PARTIAL domain node is triaged exactly once, on evidence.** Each of the 68 PARTIAL domain nodes of the census carries exactly one Stage S3 disposition - (a) converted to a generic primitive, (b) re-expressed as a composition of primitives in its consuming experiments, or (c) retained under the D3 bar - recorded in the triage record with its evidence; the domain-flavoured ids in live use are triaged first. This does not establish: that the dispositions are the best possible - only that each one exists, is singular, and is backed by the evidence its class demands.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": [],
+      "depends_on": [],
+      "conflicts_with": [],
+      "evidence": [
+        {
+          "ref": "spec.md",
+          "kind": "asserted",
+          "direction": "supports",
+          "source_quality": "unknown",
+          "description": "Spec 087 package, drafted 2026-11-02 from the system-coupling audit of the same date (AUDIT.md findings F1-F10; CENSUS.md with the 517-node classification); claim text normalized from claims.md without substantive change.",
+          "source_id": "",
+          "independent_of": [],
+          "observed_at": null,
+          "content_hash": null
+        }
+      ],
+      "assumptions": [],
+      "alternatives": [],
+      "falsification_tests": [
+        "a PARTIAL node with no disposition, with two, or whose disposition record lacks the evidence its class requires (for (c), any of the bar's three legs)."
+      ],
+      "uncertainty": "insufficient_evidence",
+      "severity": "medium",
+      "source_ref": "spec.md",
+      "domain": "",
+      "confidence": 0.08875000000000002,
+      "confidence_band": "low",
+      "failures": [
+        {
+          "id": "AEE-C087-6-BOUNDARY-CHALLENGE",
+          "claim_id": "C087-6",
+          "challenge": "Boundary challenge",
+          "breakpoint": "Scope and operating assumptions are not explicit",
+          "severity": "high",
+          "category": "assumption_unvalidated",
+          "recovery_hint": "Declare where, when, and under which assumptions the claim holds.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-6-PRECISION-CHALLENGE",
+          "claim_id": "C087-6",
+          "challenge": "Precision challenge",
+          "breakpoint": "Claim contains an undefined or non-measurable term",
+          "severity": "medium",
+          "category": "ambiguous_requirement",
+          "recovery_hint": "Replace vague language with a threshold, observable, or decision rule.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-6-IRREDUCIBILITY-CHALLENGE",
+          "claim_id": "C087-6",
+          "challenge": "Irreducibility challenge",
+          "breakpoint": "Claim may contain multiple independently falsifiable propositions",
+          "severity": "medium",
+          "category": "coverage_gap",
+          "recovery_hint": "Split the claim into atomic propositions and link them explicitly.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-6-INDEPENDENCE-UNMODELED",
+          "claim_id": "C087-6",
+          "challenge": "Shared-evidence independence challenge",
+          "breakpoint": "Supporting evidence 'spec.md' (ref(s): spec.md) is shared with claim(s) C087-1, C087-10, C087-11, C087-12, C087-13, C087-14, C087-15, C087-16, C087-17, C087-2, C087-3, C087-4, C087-5, C087-7, C087-8, C087-9 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim",
+          "severity": "medium",
+          "category": "independence_unmodeled",
+          "recovery_hint": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-6-DRAFT-CAP",
+          "claim_id": "C087-6",
+          "challenge": "Draft outcome cap",
+          "breakpoint": "Claim status is draft: the assessment outcome is capped at gather_evidence/iterate and policy verdicts below accept regardless of score (Spec 003 FR-2.3); a human ratification (status change) lifts the cap",
+          "severity": "low",
+          "category": "draft_cap",
+          "recovery_hint": "Ratify the claim (change its status from draft) to lift the cap.",
+          "resolved": false,
+          "disposition": null
+        }
+      ],
+      "metadata": {},
+      "dispositions": [],
+      "stage": "created",
+      "stage_events": [],
+      "headline": false,
+      "role": null
+    },
+    {
+      "id": "C087-7",
+      "text": "A converted node carries its domain content in parameters, not in code.** For every node converted under disposition (a), the domain specifics (corpus, language, code table, weights) arrive as parameter or port data; the node's code contains no branch on a domain identity (a named language, corpus, scholar map, or sign list). This does not establish: that the primitive is elegant or complete - only that the domain content moved from code to data, which is the coupling property the owner directed.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": [],
+      "depends_on": [],
+      "conflicts_with": [],
+      "evidence": [
+        {
+          "ref": "spec.md",
+          "kind": "asserted",
+          "direction": "supports",
+          "source_quality": "unknown",
+          "description": "Spec 087 package, drafted 2026-11-02 from the system-coupling audit of the same date (AUDIT.md findings F1-F10; CENSUS.md with the 517-node classification); claim text normalized from claims.md without substantive change.",
+          "source_id": "",
+          "independent_of": [],
+          "observed_at": null,
+          "content_hash": null
+        }
+      ],
+      "assumptions": [],
+      "alternatives": [],
+      "falsification_tests": [
+        "a converted node whose source still branches on a domain identity; or two parameter settings of a converted node that cannot reproduce the behaviours of the domain variants it replaced, on their pinned fixtures."
+      ],
+      "uncertainty": "insufficient_evidence",
+      "severity": "medium",
+      "source_ref": "spec.md",
+      "domain": "",
+      "confidence": 0.16375000000000003,
+      "confidence_band": "low",
+      "failures": [
+        {
+          "id": "AEE-C087-7-BOUNDARY-CHALLENGE",
+          "claim_id": "C087-7",
+          "challenge": "Boundary challenge",
+          "breakpoint": "Scope and operating assumptions are not explicit",
+          "severity": "high",
+          "category": "assumption_unvalidated",
+          "recovery_hint": "Declare where, when, and under which assumptions the claim holds.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-7-IRREDUCIBILITY-CHALLENGE",
+          "claim_id": "C087-7",
+          "challenge": "Irreducibility challenge",
+          "breakpoint": "Claim may contain multiple independently falsifiable propositions",
+          "severity": "medium",
+          "category": "coverage_gap",
+          "recovery_hint": "Split the claim into atomic propositions and link them explicitly.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-7-INDEPENDENCE-UNMODELED",
+          "claim_id": "C087-7",
+          "challenge": "Shared-evidence independence challenge",
+          "breakpoint": "Supporting evidence 'spec.md' (ref(s): spec.md) is shared with claim(s) C087-1, C087-10, C087-11, C087-12, C087-13, C087-14, C087-15, C087-16, C087-17, C087-2, C087-3, C087-4, C087-5, C087-6, C087-8, C087-9 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim",
+          "severity": "medium",
+          "category": "independence_unmodeled",
+          "recovery_hint": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-7-DRAFT-CAP",
+          "claim_id": "C087-7",
+          "challenge": "Draft outcome cap",
+          "breakpoint": "Claim status is draft: the assessment outcome is capped at gather_evidence/iterate and policy verdicts below accept regardless of score (Spec 003 FR-2.3); a human ratification (status change) lifts the cap",
+          "severity": "low",
+          "category": "draft_cap",
+          "recovery_hint": "Ratify the claim (change its status from draft) to lift the cap.",
+          "resolved": false,
+          "disposition": null
+        }
+      ],
+      "metadata": {},
+      "dispositions": [],
+      "stage": "created",
+      "stage_events": [],
+      "headline": false,
+      "role": null
+    },
+    {
+      "id": "C087-8",
+      "text": "The manual's node reference is the palette set, mechanically.** The generated node reference (user-manual block and the HelpView data module) lists exactly the palette set of claim C087-4, with each node's category, ports, and params as the registry states them; the CI conformance test of Stage S4 regenerates and diffs, failing on drift in either direction. This does not establish: that the surrounding prose is clear or complete - the claim covers the enumerable reference, the part that was mechanically false.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": [],
+      "depends_on": [
+        "C087-4"
+      ],
+      "conflicts_with": [],
+      "evidence": [
+        {
+          "ref": "spec.md",
+          "kind": "asserted",
+          "direction": "supports",
+          "source_quality": "unknown",
+          "description": "Spec 087 package, drafted 2026-11-02 from the system-coupling audit of the same date (AUDIT.md findings F1-F10; CENSUS.md with the 517-node classification); claim text normalized from claims.md without substantive change.",
+          "source_id": "",
+          "independent_of": [],
+          "observed_at": null,
+          "content_hash": null
+        }
+      ],
+      "assumptions": [],
+      "alternatives": [],
+      "falsification_tests": [
+        "a node in the manual reference that is not in the palette set; a palette node missing from it; a port or param in the manual that differs from the registry's; or a hand edit inside a generated block that CI accepts."
+      ],
+      "uncertainty": "insufficient_evidence",
+      "severity": "medium",
+      "source_ref": "spec.md",
+      "domain": "",
+      "confidence": 0.08875000000000002,
+      "confidence_band": "low",
+      "failures": [
+        {
+          "id": "AEE-C087-8-BOUNDARY-CHALLENGE",
+          "claim_id": "C087-8",
+          "challenge": "Boundary challenge",
+          "breakpoint": "Scope and operating assumptions are not explicit",
+          "severity": "high",
+          "category": "assumption_unvalidated",
+          "recovery_hint": "Declare where, when, and under which assumptions the claim holds.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-8-IRREDUCIBILITY-CHALLENGE",
+          "claim_id": "C087-8",
+          "challenge": "Irreducibility challenge",
+          "breakpoint": "Claim may contain multiple independently falsifiable propositions",
+          "severity": "medium",
+          "category": "coverage_gap",
+          "recovery_hint": "Split the claim into atomic propositions and link them explicitly.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-8-INDEPENDENCE-UNMODELED",
+          "claim_id": "C087-8",
+          "challenge": "Shared-evidence independence challenge",
+          "breakpoint": "Supporting evidence 'spec.md' (ref(s): spec.md) is shared with claim(s) C087-1, C087-10, C087-11, C087-12, C087-13, C087-14, C087-15, C087-16, C087-17, C087-2, C087-3, C087-4, C087-5, C087-6, C087-7, C087-9 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim",
+          "severity": "medium",
+          "category": "independence_unmodeled",
+          "recovery_hint": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-8-DRAFT-CAP",
+          "claim_id": "C087-8",
+          "challenge": "Draft outcome cap",
+          "breakpoint": "Claim status is draft: the assessment outcome is capped at gather_evidence/iterate and policy verdicts below accept regardless of score (Spec 003 FR-2.3); a human ratification (status change) lifts the cap",
+          "severity": "low",
+          "category": "draft_cap",
+          "recovery_hint": "Ratify the claim (change its status from draft) to lift the cap.",
+          "resolved": false,
+          "disposition": null
+        }
+      ],
+      "metadata": {},
+      "dispositions": [],
+      "stage": "created",
+      "stage_events": [],
+      "headline": false,
+      "role": null
+    },
+    {
+      "id": "C087-9",
+      "text": "No manual names a node or experiment that does not exist.** No manual surface (user-manual, USER_GUIDE, HelpView) names any of the 10 phantom node names of census Table 3, enforced by absence checks in the same CI conformance test; and USER_GUIDE's active-experiments list is generated from the graph files on disk (27 today), neither more nor fewer. This does not establish: that the manuals are well written - only that their enumerable claims about what exists are true.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": [],
+      "depends_on": [],
+      "conflicts_with": [],
+      "evidence": [
+        {
+          "ref": "spec.md",
+          "kind": "asserted",
+          "direction": "supports",
+          "source_quality": "unknown",
+          "description": "Spec 087 package, drafted 2026-11-02 from the system-coupling audit of the same date (AUDIT.md findings F1-F10; CENSUS.md with the 517-node classification); claim text normalized from claims.md without substantive change.",
+          "source_id": "",
+          "independent_of": [],
+          "observed_at": null,
+          "content_hash": null
+        }
+      ],
+      "assumptions": [],
+      "alternatives": [],
+      "falsification_tests": [
+        "any of the 10 phantom names appearing in a manual surface while CI is green; or a generated experiment list whose count differs from the graph files on disk."
+      ],
+      "uncertainty": "insufficient_evidence",
+      "severity": "medium",
+      "source_ref": "spec.md",
+      "domain": "",
+      "confidence": 0.16375000000000003,
+      "confidence_band": "low",
+      "failures": [
+        {
+          "id": "AEE-C087-9-BOUNDARY-CHALLENGE",
+          "claim_id": "C087-9",
+          "challenge": "Boundary challenge",
+          "breakpoint": "Scope and operating assumptions are not explicit",
+          "severity": "high",
+          "category": "assumption_unvalidated",
+          "recovery_hint": "Declare where, when, and under which assumptions the claim holds.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-9-IRREDUCIBILITY-CHALLENGE",
+          "claim_id": "C087-9",
+          "challenge": "Irreducibility challenge",
+          "breakpoint": "Claim may contain multiple independently falsifiable propositions",
+          "severity": "medium",
+          "category": "coverage_gap",
+          "recovery_hint": "Split the claim into atomic propositions and link them explicitly.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-9-INDEPENDENCE-UNMODELED",
+          "claim_id": "C087-9",
+          "challenge": "Shared-evidence independence challenge",
+          "breakpoint": "Supporting evidence 'spec.md' (ref(s): spec.md) is shared with claim(s) C087-1, C087-10, C087-11, C087-12, C087-13, C087-14, C087-15, C087-16, C087-17, C087-2, C087-3, C087-4, C087-5, C087-6, C087-7, C087-8 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim",
+          "severity": "medium",
+          "category": "independence_unmodeled",
+          "recovery_hint": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-9-DRAFT-CAP",
+          "claim_id": "C087-9",
+          "challenge": "Draft outcome cap",
+          "breakpoint": "Claim status is draft: the assessment outcome is capped at gather_evidence/iterate and policy verdicts below accept regardless of score (Spec 003 FR-2.3); a human ratification (status change) lifts the cap",
+          "severity": "low",
+          "category": "draft_cap",
+          "recovery_hint": "Ratify the claim (change its status from draft) to lift the cap.",
+          "resolved": false,
+          "disposition": null
+        }
+      ],
+      "metadata": {},
+      "dispositions": [],
+      "stage": "created",
+      "stage_events": [],
+      "headline": false,
+      "role": null
+    },
+    {
+      "id": "C087-10",
+      "text": "The Logs view is restored, to the approved wireframes.** The app carries a Logs surface with the two tabs of the owner-approved S5 wireframes package: a live stream tab consuming GET /terminal/log and GET /terminal/log/stream, and a records tab reading the jobs/job_results, phase_actions, and notification_log tables, read-only, with per-record detail expansion. The build matches the approved wireframes screen by screen under Playwright verification. This does not establish: that the terminal endpoints scale or that the SSE tail survives the cloud edge - the claim covers the desktop surface the wireframes draw.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": [],
+      "depends_on": [],
+      "conflicts_with": [],
+      "evidence": [
+        {
+          "ref": "spec.md",
+          "kind": "asserted",
+          "direction": "supports",
+          "source_quality": "unknown",
+          "description": "Spec 087 package, drafted 2026-11-02 from the system-coupling audit of the same date (AUDIT.md findings F1-F10; CENSUS.md with the 517-node classification); claim text normalized from claims.md without substantive change.",
+          "source_id": "",
+          "independent_of": [],
+          "observed_at": null,
+          "content_hash": null
+        }
+      ],
+      "assumptions": [],
+      "alternatives": [],
+      "falsification_tests": [
+        "a shipped Logs surface missing a tab, a control, or a field the approved wireframes carry; a records tab that can mutate a record; or a Playwright comparison against the approved screens that fails while the stage is reported done."
+      ],
+      "uncertainty": "insufficient_evidence",
+      "severity": "medium",
+      "source_ref": "spec.md",
+      "domain": "",
+      "confidence": 0.16375000000000003,
+      "confidence_band": "low",
+      "failures": [
+        {
+          "id": "AEE-C087-10-BOUNDARY-CHALLENGE",
+          "claim_id": "C087-10",
+          "challenge": "Boundary challenge",
+          "breakpoint": "Scope and operating assumptions are not explicit",
+          "severity": "high",
+          "category": "assumption_unvalidated",
+          "recovery_hint": "Declare where, when, and under which assumptions the claim holds.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-10-IRREDUCIBILITY-CHALLENGE",
+          "claim_id": "C087-10",
+          "challenge": "Irreducibility challenge",
+          "breakpoint": "Claim may contain multiple independently falsifiable propositions",
+          "severity": "medium",
+          "category": "coverage_gap",
+          "recovery_hint": "Split the claim into atomic propositions and link them explicitly.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-10-INDEPENDENCE-UNMODELED",
+          "claim_id": "C087-10",
+          "challenge": "Shared-evidence independence challenge",
+          "breakpoint": "Supporting evidence 'spec.md' (ref(s): spec.md) is shared with claim(s) C087-1, C087-11, C087-12, C087-13, C087-14, C087-15, C087-16, C087-17, C087-2, C087-3, C087-4, C087-5, C087-6, C087-7, C087-8, C087-9 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim",
+          "severity": "medium",
+          "category": "independence_unmodeled",
+          "recovery_hint": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-10-DRAFT-CAP",
+          "claim_id": "C087-10",
+          "challenge": "Draft outcome cap",
+          "breakpoint": "Claim status is draft: the assessment outcome is capped at gather_evidence/iterate and policy verdicts below accept regardless of score (Spec 003 FR-2.3); a human ratification (status change) lifts the cap",
+          "severity": "low",
+          "category": "draft_cap",
+          "recovery_hint": "Ratify the claim (change its status from draft) to lift the cap.",
+          "resolved": false,
+          "disposition": null
+        }
+      ],
+      "metadata": {},
+      "dispositions": [],
+      "stage": "created",
+      "stage_events": [],
+      "headline": false,
+      "role": null
+    },
+    {
+      "id": "C087-11",
+      "text": "The events bus's persistence semantics are stated once, and the code matches the statement.** Exactly one documented statement (module docstring, user manual, and HelpView, in agreement) declares whether events are persisted or ephemeral-by-design and what a subscriber can rely on; the emit path's behaviour matches the statement, and the statement's presence is pinned by a test. This does not establish: that the ruled disposition is the ideal one - only that it is a decision, stated where a reader looks, and true of the code.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": [],
+      "depends_on": [],
+      "conflicts_with": [],
+      "evidence": [
+        {
+          "ref": "spec.md",
+          "kind": "asserted",
+          "direction": "supports",
+          "source_quality": "unknown",
+          "description": "Spec 087 package, drafted 2026-11-02 from the system-coupling audit of the same date (AUDIT.md findings F1-F10; CENSUS.md with the 517-node classification); claim text normalized from claims.md without substantive change.",
+          "source_id": "",
+          "independent_of": [],
+          "observed_at": null,
+          "content_hash": null
+        }
+      ],
+      "assumptions": [],
+      "alternatives": [],
+      "falsification_tests": [
+        "documentation surfaces disagreeing about the bus's semantics; behaviour contradicting the statement (for the documented-ephemeral ruling: any surface promising delivery or replay; for a persistence ruling: an event emitted with no subscriber that is not later retrievable); or the pinning test removed while the statement remains."
+      ],
+      "uncertainty": "insufficient_evidence",
+      "severity": "medium",
+      "source_ref": "spec.md",
+      "domain": "",
+      "confidence": 0.08875000000000002,
+      "confidence_band": "low",
+      "failures": [
+        {
+          "id": "AEE-C087-11-BOUNDARY-CHALLENGE",
+          "claim_id": "C087-11",
+          "challenge": "Boundary challenge",
+          "breakpoint": "Scope and operating assumptions are not explicit",
+          "severity": "high",
+          "category": "assumption_unvalidated",
+          "recovery_hint": "Declare where, when, and under which assumptions the claim holds.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-11-IRREDUCIBILITY-CHALLENGE",
+          "claim_id": "C087-11",
+          "challenge": "Irreducibility challenge",
+          "breakpoint": "Claim may contain multiple independently falsifiable propositions",
+          "severity": "medium",
+          "category": "coverage_gap",
+          "recovery_hint": "Split the claim into atomic propositions and link them explicitly.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-11-INDEPENDENCE-UNMODELED",
+          "claim_id": "C087-11",
+          "challenge": "Shared-evidence independence challenge",
+          "breakpoint": "Supporting evidence 'spec.md' (ref(s): spec.md) is shared with claim(s) C087-1, C087-10, C087-12, C087-13, C087-14, C087-15, C087-16, C087-17, C087-2, C087-3, C087-4, C087-5, C087-6, C087-7, C087-8, C087-9 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim",
+          "severity": "medium",
+          "category": "independence_unmodeled",
+          "recovery_hint": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-11-DRAFT-CAP",
+          "claim_id": "C087-11",
+          "challenge": "Draft outcome cap",
+          "breakpoint": "Claim status is draft: the assessment outcome is capped at gather_evidence/iterate and policy verdicts below accept regardless of score (Spec 003 FR-2.3); a human ratification (status change) lifts the cap",
+          "severity": "low",
+          "category": "draft_cap",
+          "recovery_hint": "Ratify the claim (change its status from draft) to lift the cap.",
+          "resolved": false,
+          "disposition": null
+        }
+      ],
+      "metadata": {},
+      "dispositions": [],
+      "stage": "created",
+      "stage_events": [],
+      "headline": false,
+      "role": null
+    },
+    {
+      "id": "C087-12",
+      "text": "Anchor-set dedupe removes exact duplicates only, through the API, on the record.** Stage S6 deletes an anchor set only when another set with identical (name, language, pairs content) is kept; the earliest canonical copy of each distinct content survives; every deletion goes through DELETE /anchor-sets/{id}; and every removed id, with its group's kept id, is recorded in the stage record. This does not establish: that the surviving sets are good data - placeholder content that is distinct survives this stage by design; judging it is a separate act.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": [],
+      "depends_on": [],
+      "conflicts_with": [],
+      "evidence": [
+        {
+          "ref": "spec.md",
+          "kind": "asserted",
+          "direction": "supports",
+          "source_quality": "unknown",
+          "description": "Spec 087 package, drafted 2026-11-02 from the system-coupling audit of the same date (AUDIT.md findings F1-F10; CENSUS.md with the 517-node classification); claim text normalized from claims.md without substantive change.",
+          "source_id": "",
+          "independent_of": [],
+          "observed_at": null,
+          "content_hash": null
+        }
+      ],
+      "assumptions": [],
+      "alternatives": [],
+      "falsification_tests": [
+        "a deleted set whose (name, language, pairs content) differs from its group's kept set in any element; a distinct content with no surviving copy; a deletion performed by direct database write; or a removed id absent from the stage record."
+      ],
+      "uncertainty": "insufficient_evidence",
+      "severity": "medium",
+      "source_ref": "spec.md",
+      "domain": "",
+      "confidence": 0.08875000000000002,
+      "confidence_band": "low",
+      "failures": [
+        {
+          "id": "AEE-C087-12-BOUNDARY-CHALLENGE",
+          "claim_id": "C087-12",
+          "challenge": "Boundary challenge",
+          "breakpoint": "Scope and operating assumptions are not explicit",
+          "severity": "high",
+          "category": "assumption_unvalidated",
+          "recovery_hint": "Declare where, when, and under which assumptions the claim holds.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-12-PRECISION-CHALLENGE",
+          "claim_id": "C087-12",
+          "challenge": "Precision challenge",
+          "breakpoint": "Claim contains an undefined or non-measurable term",
+          "severity": "medium",
+          "category": "ambiguous_requirement",
+          "recovery_hint": "Replace vague language with a threshold, observable, or decision rule.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-12-IRREDUCIBILITY-CHALLENGE",
+          "claim_id": "C087-12",
+          "challenge": "Irreducibility challenge",
+          "breakpoint": "Claim may contain multiple independently falsifiable propositions",
+          "severity": "medium",
+          "category": "coverage_gap",
+          "recovery_hint": "Split the claim into atomic propositions and link them explicitly.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-12-INDEPENDENCE-UNMODELED",
+          "claim_id": "C087-12",
+          "challenge": "Shared-evidence independence challenge",
+          "breakpoint": "Supporting evidence 'spec.md' (ref(s): spec.md) is shared with claim(s) C087-1, C087-10, C087-11, C087-13, C087-14, C087-15, C087-16, C087-17, C087-2, C087-3, C087-4, C087-5, C087-6, C087-7, C087-8, C087-9 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim",
+          "severity": "medium",
+          "category": "independence_unmodeled",
+          "recovery_hint": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-12-DRAFT-CAP",
+          "claim_id": "C087-12",
+          "challenge": "Draft outcome cap",
+          "breakpoint": "Claim status is draft: the assessment outcome is capped at gather_evidence/iterate and policy verdicts below accept regardless of score (Spec 003 FR-2.3); a human ratification (status change) lifts the cap",
+          "severity": "low",
+          "category": "draft_cap",
+          "recovery_hint": "Ratify the claim (change its status from draft) to lift the cap.",
+          "resolved": false,
+          "disposition": null
+        }
+      ],
+      "metadata": {},
+      "dispositions": [],
+      "stage": "created",
+      "stage_events": [],
+      "headline": false,
+      "role": null
+    },
+    {
+      "id": "C087-13",
+      "text": "Every live graph still resolves and runs with byte-identical results.** After each of S2 and S3, all 27 live graphs resolve every atomicId they reference, and the pinned comparison runs produce results byte-identical to their pre-stage records. This does not establish: that the graphs' results are correct - only that this program did not change them, which is the non-goal the owner set.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": [],
+      "depends_on": [],
+      "conflicts_with": [],
+      "evidence": [
+        {
+          "ref": "spec.md",
+          "kind": "asserted",
+          "direction": "supports",
+          "source_quality": "unknown",
+          "description": "Spec 087 package, drafted 2026-11-02 from the system-coupling audit of the same date (AUDIT.md findings F1-F10; CENSUS.md with the 517-node classification); claim text normalized from claims.md without substantive change.",
+          "source_id": "",
+          "independent_of": [],
+          "observed_at": null,
+          "content_hash": null
+        }
+      ],
+      "assumptions": [],
+      "alternatives": [],
+      "falsification_tests": [
+        "a live graph with a dangling atomicId after any stage; or a comparison run whose output bytes differ from its pinned pre-stage record in any field."
+      ],
+      "uncertainty": "insufficient_evidence",
+      "severity": "medium",
+      "source_ref": "spec.md",
+      "domain": "",
+      "confidence": 0.08875000000000002,
+      "confidence_band": "low",
+      "failures": [
+        {
+          "id": "AEE-C087-13-BOUNDARY-CHALLENGE",
+          "claim_id": "C087-13",
+          "challenge": "Boundary challenge",
+          "breakpoint": "Scope and operating assumptions are not explicit",
+          "severity": "high",
+          "category": "assumption_unvalidated",
+          "recovery_hint": "Declare where, when, and under which assumptions the claim holds.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-13-IRREDUCIBILITY-CHALLENGE",
+          "claim_id": "C087-13",
+          "challenge": "Irreducibility challenge",
+          "breakpoint": "Claim may contain multiple independently falsifiable propositions",
+          "severity": "medium",
+          "category": "coverage_gap",
+          "recovery_hint": "Split the claim into atomic propositions and link them explicitly.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-13-COUNTEREXAMPLE-CHALLENGE",
+          "claim_id": "C087-13",
+          "challenge": "Counterexample challenge",
+          "breakpoint": "Absolute language is used without a bounded domain",
+          "severity": "high",
+          "category": "assumption_unvalidated",
+          "recovery_hint": "Narrow the claim or document evidence covering the entire domain.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-13-INDEPENDENCE-UNMODELED",
+          "claim_id": "C087-13",
+          "challenge": "Shared-evidence independence challenge",
+          "breakpoint": "Supporting evidence 'spec.md' (ref(s): spec.md) is shared with claim(s) C087-1, C087-10, C087-11, C087-12, C087-14, C087-15, C087-16, C087-17, C087-2, C087-3, C087-4, C087-5, C087-6, C087-7, C087-8, C087-9 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim",
+          "severity": "medium",
+          "category": "independence_unmodeled",
+          "recovery_hint": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-13-DRAFT-CAP",
+          "claim_id": "C087-13",
+          "challenge": "Draft outcome cap",
+          "breakpoint": "Claim status is draft: the assessment outcome is capped at gather_evidence/iterate and policy verdicts below accept regardless of score (Spec 003 FR-2.3); a human ratification (status change) lifts the cap",
+          "severity": "low",
+          "category": "draft_cap",
+          "recovery_hint": "Ratify the claim (change its status from draft) to lift the cap.",
+          "resolved": false,
+          "disposition": null
+        }
+      ],
+      "metadata": {},
+      "dispositions": [],
+      "stage": "created",
+      "stage_events": [],
+      "headline": false,
+      "role": null
+    },
+    {
+      "id": "C087-14",
+      "text": "This program changes no verdict, claim status, or ledger content.** No stage of Spec 087 alters an Indus claim's status, stage, or score, appends or edits a ledger entry, or modifies a frozen record; the claims ledger and the freeze records are byte-identical before and after the program. This does not establish: anything about the truth of any claim - the program is about the tool, not the decipherment.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": [],
+      "depends_on": [],
+      "conflicts_with": [],
+      "evidence": [
+        {
+          "ref": "spec.md",
+          "kind": "asserted",
+          "direction": "supports",
+          "source_quality": "unknown",
+          "description": "Spec 087 package, drafted 2026-11-02 from the system-coupling audit of the same date (AUDIT.md findings F1-F10; CENSUS.md with the 517-node classification); claim text normalized from claims.md without substantive change.",
+          "source_id": "",
+          "independent_of": [],
+          "observed_at": null,
+          "content_hash": null
+        }
+      ],
+      "assumptions": [],
+      "alternatives": [],
+      "falsification_tests": [
+        "a diff in glossa-indus/ledger/claims.jsonl or any freeze record attributable to a Spec 087 PR; or a claim status/stage in the app database changed by a stage's execution (S6 touches anchor sets only)."
+      ],
+      "uncertainty": "insufficient_evidence",
+      "severity": "medium",
+      "source_ref": "spec.md",
+      "domain": "",
+      "confidence": 0.16375000000000003,
+      "confidence_band": "low",
+      "failures": [
+        {
+          "id": "AEE-C087-14-BOUNDARY-CHALLENGE",
+          "claim_id": "C087-14",
+          "challenge": "Boundary challenge",
+          "breakpoint": "Scope and operating assumptions are not explicit",
+          "severity": "high",
+          "category": "assumption_unvalidated",
+          "recovery_hint": "Declare where, when, and under which assumptions the claim holds.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-14-IRREDUCIBILITY-CHALLENGE",
+          "claim_id": "C087-14",
+          "challenge": "Irreducibility challenge",
+          "breakpoint": "Claim may contain multiple independently falsifiable propositions",
+          "severity": "medium",
+          "category": "coverage_gap",
+          "recovery_hint": "Split the claim into atomic propositions and link them explicitly.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-14-INDEPENDENCE-UNMODELED",
+          "claim_id": "C087-14",
+          "challenge": "Shared-evidence independence challenge",
+          "breakpoint": "Supporting evidence 'spec.md' (ref(s): spec.md) is shared with claim(s) C087-1, C087-10, C087-11, C087-12, C087-13, C087-15, C087-16, C087-17, C087-2, C087-3, C087-4, C087-5, C087-6, C087-7, C087-8, C087-9 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim",
+          "severity": "medium",
+          "category": "independence_unmodeled",
+          "recovery_hint": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-14-DRAFT-CAP",
+          "claim_id": "C087-14",
+          "challenge": "Draft outcome cap",
+          "breakpoint": "Claim status is draft: the assessment outcome is capped at gather_evidence/iterate and policy verdicts below accept regardless of score (Spec 003 FR-2.3); a human ratification (status change) lifts the cap",
+          "severity": "low",
+          "category": "draft_cap",
+          "recovery_hint": "Ratify the claim (change its status from draft) to lift the cap.",
+          "resolved": false,
+          "disposition": null
+        }
+      ],
+      "metadata": {},
+      "dispositions": [],
+      "stage": "created",
+      "stage_events": [],
+      "headline": false,
+      "role": null
+    },
+    {
+      "id": "C087-15",
+      "text": "Manual updates land with the behaviour.** Every stage PR that changes user-visible behaviour updates the affected manual surfaces (user-manual, USER_GUIDE, HelpView as applicable) in the same PR; no stage merges with its manual update deferred to a later PR. This does not establish: that the updates are well written - only that they are not late, which is the failure F7 documents at scale.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": [],
+      "depends_on": [],
+      "conflicts_with": [],
+      "evidence": [
+        {
+          "ref": "spec.md",
+          "kind": "asserted",
+          "direction": "supports",
+          "source_quality": "unknown",
+          "description": "Spec 087 package, drafted 2026-11-02 from the system-coupling audit of the same date (AUDIT.md findings F1-F10; CENSUS.md with the 517-node classification); claim text normalized from claims.md without substantive change.",
+          "source_id": "",
+          "independent_of": [],
+          "observed_at": null,
+          "content_hash": null
+        }
+      ],
+      "assumptions": [],
+      "alternatives": [],
+      "falsification_tests": [
+        "a merged stage PR whose behaviour change has no corresponding manual change in the same PR, where the stage record does not name why no manual surface is affected."
+      ],
+      "uncertainty": "insufficient_evidence",
+      "severity": "medium",
+      "source_ref": "spec.md",
+      "domain": "",
+      "confidence": 0.08875000000000002,
+      "confidence_band": "low",
+      "failures": [
+        {
+          "id": "AEE-C087-15-BOUNDARY-CHALLENGE",
+          "claim_id": "C087-15",
+          "challenge": "Boundary challenge",
+          "breakpoint": "Scope and operating assumptions are not explicit",
+          "severity": "high",
+          "category": "assumption_unvalidated",
+          "recovery_hint": "Declare where, when, and under which assumptions the claim holds.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-15-INDEPENDENCE-UNMODELED",
+          "claim_id": "C087-15",
+          "challenge": "Shared-evidence independence challenge",
+          "breakpoint": "Supporting evidence 'spec.md' (ref(s): spec.md) is shared with claim(s) C087-1, C087-10, C087-11, C087-12, C087-13, C087-14, C087-16, C087-17, C087-2, C087-3, C087-4, C087-5, C087-6, C087-7, C087-8, C087-9 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim",
+          "severity": "medium",
+          "category": "independence_unmodeled",
+          "recovery_hint": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-15-DRAFT-CAP",
+          "claim_id": "C087-15",
+          "challenge": "Draft outcome cap",
+          "breakpoint": "Claim status is draft: the assessment outcome is capped at gather_evidence/iterate and policy verdicts below accept regardless of score (Spec 003 FR-2.3); a human ratification (status change) lifts the cap",
+          "severity": "low",
+          "category": "draft_cap",
+          "recovery_hint": "Ratify the claim (change its status from draft) to lift the cap.",
+          "resolved": false,
+          "disposition": null
+        }
+      ],
+      "metadata": {},
+      "dispositions": [],
+      "stage": "created",
+      "stage_events": [],
+      "headline": false,
+      "role": null
+    },
+    {
+      "id": "C087-16",
+      "text": "The Study Builder's schema module no longer impersonates the node registry.** After Stage S1, the module formerly named node_registry.py is renamed (study_node_registry.py) or, if the owner rules otherwise, carries a header and a docs entry stating it is the Study Builder's param-schema module; its endpoint (GET /node-registry/{node_type}/{ref_id}) answers unchanged, and both registries import in one process without ambiguity. This does not establish: that the two node systems should be merged - only that they stop sharing a name.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": [],
+      "depends_on": [],
+      "conflicts_with": [],
+      "evidence": [
+        {
+          "ref": "spec.md",
+          "kind": "asserted",
+          "direction": "supports",
+          "source_quality": "unknown",
+          "description": "Spec 087 package, drafted 2026-11-02 from the system-coupling audit of the same date (AUDIT.md findings F1-F10; CENSUS.md with the 517-node classification); claim text normalized from claims.md without substantive change.",
+          "source_id": "",
+          "independent_of": [],
+          "observed_at": null,
+          "content_hash": null
+        }
+      ],
+      "assumptions": [],
+      "alternatives": [],
+      "falsification_tests": [
+        "a module named node_registry.py in the tree after S1 without the recorded owner ruling for option (b); a broken /node-registry/ endpoint; or a document that still points a reader at the old name for the experiment registry."
+      ],
+      "uncertainty": "insufficient_evidence",
+      "severity": "medium",
+      "source_ref": "spec.md",
+      "domain": "",
+      "confidence": 0.16375000000000003,
+      "confidence_band": "low",
+      "failures": [
+        {
+          "id": "AEE-C087-16-BOUNDARY-CHALLENGE",
+          "claim_id": "C087-16",
+          "challenge": "Boundary challenge",
+          "breakpoint": "Scope and operating assumptions are not explicit",
+          "severity": "high",
+          "category": "assumption_unvalidated",
+          "recovery_hint": "Declare where, when, and under which assumptions the claim holds.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-16-IRREDUCIBILITY-CHALLENGE",
+          "claim_id": "C087-16",
+          "challenge": "Irreducibility challenge",
+          "breakpoint": "Claim may contain multiple independently falsifiable propositions",
+          "severity": "medium",
+          "category": "coverage_gap",
+          "recovery_hint": "Split the claim into atomic propositions and link them explicitly.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-16-INDEPENDENCE-UNMODELED",
+          "claim_id": "C087-16",
+          "challenge": "Shared-evidence independence challenge",
+          "breakpoint": "Supporting evidence 'spec.md' (ref(s): spec.md) is shared with claim(s) C087-1, C087-10, C087-11, C087-12, C087-13, C087-14, C087-15, C087-17, C087-2, C087-3, C087-4, C087-5, C087-6, C087-7, C087-8, C087-9 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim",
+          "severity": "medium",
+          "category": "independence_unmodeled",
+          "recovery_hint": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-16-DRAFT-CAP",
+          "claim_id": "C087-16",
+          "challenge": "Draft outcome cap",
+          "breakpoint": "Claim status is draft: the assessment outcome is capped at gather_evidence/iterate and policy verdicts below accept regardless of score (Spec 003 FR-2.3); a human ratification (status change) lifts the cap",
+          "severity": "low",
+          "category": "draft_cap",
+          "recovery_hint": "Ratify the claim (change its status from draft) to lift the cap.",
+          "resolved": false,
+          "disposition": null
+        }
+      ],
+      "metadata": {},
+      "dispositions": [],
+      "stage": "created",
+      "stage_events": [],
+      "headline": false,
+      "role": null
+    },
+    {
+      "id": "C087-17",
+      "text": "The registry changes only by recorded acts.** After S2's re-pin, the registered count and the per-category census in the completeness test change only through a Spec 087 stage PR that names the change in its stage record; the count never moves as a side effect of an unrelated change. This does not establish: that the registry should never grow - new primitives are welcome; this claim makes their arrival an act, not an accident.",
+      "kind": "requirement",
+      "status": "draft",
+      "boundary": [],
+      "depends_on": [
+        "C087-1"
+      ],
+      "conflicts_with": [],
+      "evidence": [
+        {
+          "ref": "spec.md",
+          "kind": "asserted",
+          "direction": "supports",
+          "source_quality": "unknown",
+          "description": "Spec 087 package, drafted 2026-11-02 from the system-coupling audit of the same date (AUDIT.md findings F1-F10; CENSUS.md with the 517-node classification); claim text normalized from claims.md without substantive change.",
+          "source_id": "",
+          "independent_of": [],
+          "observed_at": null,
+          "content_hash": null
+        }
+      ],
+      "assumptions": [],
+      "alternatives": [],
+      "falsification_tests": [
+        "a merged PR that alters the pinned counts without a stage record naming the alteration; or runtime counts differing from the pin while CI is green."
+      ],
+      "uncertainty": "insufficient_evidence",
+      "severity": "medium",
+      "source_ref": "spec.md",
+      "domain": "",
+      "confidence": 0.16375000000000003,
+      "confidence_band": "low",
+      "failures": [
+        {
+          "id": "AEE-C087-17-BOUNDARY-CHALLENGE",
+          "claim_id": "C087-17",
+          "challenge": "Boundary challenge",
+          "breakpoint": "Scope and operating assumptions are not explicit",
+          "severity": "high",
+          "category": "assumption_unvalidated",
+          "recovery_hint": "Declare where, when, and under which assumptions the claim holds.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-17-IRREDUCIBILITY-CHALLENGE",
+          "claim_id": "C087-17",
+          "challenge": "Irreducibility challenge",
+          "breakpoint": "Claim may contain multiple independently falsifiable propositions",
+          "severity": "medium",
+          "category": "coverage_gap",
+          "recovery_hint": "Split the claim into atomic propositions and link them explicitly.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-17-COUNTEREXAMPLE-CHALLENGE",
+          "claim_id": "C087-17",
+          "challenge": "Counterexample challenge",
+          "breakpoint": "Absolute language is used without a bounded domain",
+          "severity": "high",
+          "category": "assumption_unvalidated",
+          "recovery_hint": "Narrow the claim or document evidence covering the entire domain.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-17-INDEPENDENCE-UNMODELED",
+          "claim_id": "C087-17",
+          "challenge": "Shared-evidence independence challenge",
+          "breakpoint": "Supporting evidence 'spec.md' (ref(s): spec.md) is shared with claim(s) C087-1, C087-10, C087-11, C087-12, C087-13, C087-14, C087-15, C087-16, C087-2, C087-3, C087-4, C087-5, C087-6, C087-7, C087-8, C087-9 and no independence is declared for it; the same evidence may be counted as independent corroboration in each claim",
+          "severity": "medium",
+          "category": "independence_unmodeled",
+          "recovery_hint": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+          "resolved": false,
+          "disposition": null
+        },
+        {
+          "id": "AEE-C087-17-DRAFT-CAP",
+          "claim_id": "C087-17",
+          "challenge": "Draft outcome cap",
+          "breakpoint": "Claim status is draft: the assessment outcome is capped at gather_evidence/iterate and policy verdicts below accept regardless of score (Spec 003 FR-2.3); a human ratification (status change) lifts the cap",
+          "severity": "low",
+          "category": "draft_cap",
+          "recovery_hint": "Ratify the claim (change its status from draft) to lift the cap.",
+          "resolved": false,
+          "disposition": null
+        }
+      ],
+      "metadata": {},
+      "dispositions": [],
+      "stage": "created",
+      "stage_events": [],
+      "headline": false,
+      "role": null
+    }
+  ],
+  "scores": {
+    "C087-1": {
+      "claim_id": "C087-1",
+      "direct_score": 0.16375000000000003,
+      "propagated_score": 0.16375000000000003,
+      "band": "low",
+      "components": {
+        "evidence": 0.025000000000000022,
+        "independence": 0.5,
+        "falsifiability": 1.0,
+        "boundary": 0.0,
+        "contradiction_penalty": 0
+      },
+      "declared_state": {
+        "status": "draft",
+        "uncertainty": "insufficient_evidence",
+        "severity": "medium",
+        "conflicts_with": []
+      },
+      "propagation": {
+        "status": "propagated",
+        "cycle_component": []
+      },
+      "notes": [
+        "No observed supporting evidence",
+        "Fewer than two independent supporting sources",
+        "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+        "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+      ]
+    },
+    "C087-2": {
+      "claim_id": "C087-2",
+      "direct_score": 0.16375000000000003,
+      "propagated_score": 0.16375000000000003,
+      "band": "low",
+      "components": {
+        "evidence": 0.025000000000000022,
+        "independence": 0.5,
+        "falsifiability": 1.0,
+        "boundary": 0.0,
+        "contradiction_penalty": 0
+      },
+      "declared_state": {
+        "status": "draft",
+        "uncertainty": "insufficient_evidence",
+        "severity": "medium",
+        "conflicts_with": []
+      },
+      "propagation": {
+        "status": "propagated",
+        "cycle_component": []
+      },
+      "notes": [
+        "No observed supporting evidence",
+        "Fewer than two independent supporting sources",
+        "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+        "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+      ]
+    },
+    "C087-3": {
+      "claim_id": "C087-3",
+      "direct_score": 0.16375000000000003,
+      "propagated_score": 0.16375000000000003,
+      "band": "low",
+      "components": {
+        "evidence": 0.025000000000000022,
+        "independence": 0.5,
+        "falsifiability": 1.0,
+        "boundary": 0.0,
+        "contradiction_penalty": 0
+      },
+      "declared_state": {
+        "status": "draft",
+        "uncertainty": "insufficient_evidence",
+        "severity": "medium",
+        "conflicts_with": []
+      },
+      "propagation": {
+        "status": "propagated",
+        "cycle_component": []
+      },
+      "notes": [
+        "No observed supporting evidence",
+        "Fewer than two independent supporting sources",
+        "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+        "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+      ]
+    },
+    "C087-4": {
+      "claim_id": "C087-4",
+      "direct_score": 0.08875000000000002,
+      "propagated_score": 0.08875000000000002,
+      "band": "low",
+      "components": {
+        "evidence": 0.025000000000000022,
+        "independence": 0.5,
+        "falsifiability": 0.5,
+        "boundary": 0.0,
+        "contradiction_penalty": 0
+      },
+      "declared_state": {
+        "status": "draft",
+        "uncertainty": "insufficient_evidence",
+        "severity": "medium",
+        "conflicts_with": []
+      },
+      "propagation": {
+        "status": "propagated",
+        "cycle_component": []
+      },
+      "notes": [
+        "No observed supporting evidence",
+        "Fewer than two independent supporting sources",
+        "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+        "Falsification test 'a node in the default catalog response that is flagged legacy; a non-legacy registered node missing from it; or a palette-only id that exists in no registry.' earns partial credit (FR-8.7): failed criteria: no checkable condition (no numeric bound, comparator, or observation/action term)",
+        "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+      ]
+    },
+    "C087-5": {
+      "claim_id": "C087-5",
+      "direct_score": 0.16375000000000003,
+      "propagated_score": 0.08875000000000002,
+      "band": "low",
+      "components": {
+        "evidence": 0.025000000000000022,
+        "independence": 0.5,
+        "falsifiability": 1.0,
+        "boundary": 0.0,
+        "contradiction_penalty": 0
+      },
+      "declared_state": {
+        "status": "draft",
+        "uncertainty": "insufficient_evidence",
+        "severity": "medium",
+        "conflicts_with": []
+      },
+      "propagation": {
+        "status": "propagated",
+        "cycle_component": []
+      },
+      "notes": [
+        "No observed supporting evidence",
+        "Fewer than two independent supporting sources",
+        "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+        "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)",
+        "Capped by weakest dependency at 0.089"
+      ]
+    },
+    "C087-6": {
+      "claim_id": "C087-6",
+      "direct_score": 0.08875000000000002,
+      "propagated_score": 0.08875000000000002,
+      "band": "low",
+      "components": {
+        "evidence": 0.025000000000000022,
+        "independence": 0.5,
+        "falsifiability": 0.5,
+        "boundary": 0.0,
+        "contradiction_penalty": 0
+      },
+      "declared_state": {
+        "status": "draft",
+        "uncertainty": "insufficient_evidence",
+        "severity": "medium",
+        "conflicts_with": []
+      },
+      "propagation": {
+        "status": "propagated",
+        "cycle_component": []
+      },
+      "notes": [
+        "No observed supporting evidence",
+        "Fewer than two independent supporting sources",
+        "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+        "Falsification test \"a PARTIAL node with no disposition, with two, or whose disposition record lacks the evidence its class requires (for (c), any of the bar's three legs).\" earns partial credit (FR-8.7): failed criteria: no checkable condition (no numeric bound, comparator, or observation/action term)",
+        "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+      ]
+    },
+    "C087-7": {
+      "claim_id": "C087-7",
+      "direct_score": 0.16375000000000003,
+      "propagated_score": 0.16375000000000003,
+      "band": "low",
+      "components": {
+        "evidence": 0.025000000000000022,
+        "independence": 0.5,
+        "falsifiability": 1.0,
+        "boundary": 0.0,
+        "contradiction_penalty": 0
+      },
+      "declared_state": {
+        "status": "draft",
+        "uncertainty": "insufficient_evidence",
+        "severity": "medium",
+        "conflicts_with": []
+      },
+      "propagation": {
+        "status": "propagated",
+        "cycle_component": []
+      },
+      "notes": [
+        "No observed supporting evidence",
+        "Fewer than two independent supporting sources",
+        "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+        "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+      ]
+    },
+    "C087-8": {
+      "claim_id": "C087-8",
+      "direct_score": 0.08875000000000002,
+      "propagated_score": 0.08875000000000002,
+      "band": "low",
+      "components": {
+        "evidence": 0.025000000000000022,
+        "independence": 0.5,
+        "falsifiability": 0.5,
+        "boundary": 0.0,
+        "contradiction_penalty": 0
+      },
+      "declared_state": {
+        "status": "draft",
+        "uncertainty": "insufficient_evidence",
+        "severity": "medium",
+        "conflicts_with": []
+      },
+      "propagation": {
+        "status": "propagated",
+        "cycle_component": []
+      },
+      "notes": [
+        "No observed supporting evidence",
+        "Fewer than two independent supporting sources",
+        "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+        "Falsification test \"a node in the manual reference that is not in the palette set; a palette node missing from it; a port or param in the manual that differs from the registry's; or a hand edit inside a generated block that CI accepts.\" earns partial credit (FR-8.7): failed criteria: no checkable condition (no numeric bound, comparator, or observation/action term)",
+        "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+      ]
+    },
+    "C087-9": {
+      "claim_id": "C087-9",
+      "direct_score": 0.16375000000000003,
+      "propagated_score": 0.16375000000000003,
+      "band": "low",
+      "components": {
+        "evidence": 0.025000000000000022,
+        "independence": 0.5,
+        "falsifiability": 1.0,
+        "boundary": 0.0,
+        "contradiction_penalty": 0
+      },
+      "declared_state": {
+        "status": "draft",
+        "uncertainty": "insufficient_evidence",
+        "severity": "medium",
+        "conflicts_with": []
+      },
+      "propagation": {
+        "status": "propagated",
+        "cycle_component": []
+      },
+      "notes": [
+        "No observed supporting evidence",
+        "Fewer than two independent supporting sources",
+        "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+        "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+      ]
+    },
+    "C087-10": {
+      "claim_id": "C087-10",
+      "direct_score": 0.16375000000000003,
+      "propagated_score": 0.16375000000000003,
+      "band": "low",
+      "components": {
+        "evidence": 0.025000000000000022,
+        "independence": 0.5,
+        "falsifiability": 1.0,
+        "boundary": 0.0,
+        "contradiction_penalty": 0
+      },
+      "declared_state": {
+        "status": "draft",
+        "uncertainty": "insufficient_evidence",
+        "severity": "medium",
+        "conflicts_with": []
+      },
+      "propagation": {
+        "status": "propagated",
+        "cycle_component": []
+      },
+      "notes": [
+        "No observed supporting evidence",
+        "Fewer than two independent supporting sources",
+        "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+        "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+      ]
+    },
+    "C087-11": {
+      "claim_id": "C087-11",
+      "direct_score": 0.08875000000000002,
+      "propagated_score": 0.08875000000000002,
+      "band": "low",
+      "components": {
+        "evidence": 0.025000000000000022,
+        "independence": 0.5,
+        "falsifiability": 0.5,
+        "boundary": 0.0,
+        "contradiction_penalty": 0
+      },
+      "declared_state": {
+        "status": "draft",
+        "uncertainty": "insufficient_evidence",
+        "severity": "medium",
+        "conflicts_with": []
+      },
+      "propagation": {
+        "status": "propagated",
+        "cycle_component": []
+      },
+      "notes": [
+        "No observed supporting evidence",
+        "Fewer than two independent supporting sources",
+        "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+        "Falsification test \"documentation surfaces disagreeing about the bus's semantics; behaviour contradicting the statement (for the documented-ephemeral ruling: any surface promising delivery or replay; for a persistence ruling: an event emitted with no subscriber that is not later retrievable); or the pinning test removed while the statement remains.\" earns partial credit (FR-8.7): failed criteria: no checkable condition (no numeric bound, comparator, or observation/action term)",
+        "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+      ]
+    },
+    "C087-12": {
+      "claim_id": "C087-12",
+      "direct_score": 0.08875000000000002,
+      "propagated_score": 0.08875000000000002,
+      "band": "low",
+      "components": {
+        "evidence": 0.025000000000000022,
+        "independence": 0.5,
+        "falsifiability": 0.5,
+        "boundary": 0.0,
+        "contradiction_penalty": 0
+      },
+      "declared_state": {
+        "status": "draft",
+        "uncertainty": "insufficient_evidence",
+        "severity": "medium",
+        "conflicts_with": []
+      },
+      "propagation": {
+        "status": "propagated",
+        "cycle_component": []
+      },
+      "notes": [
+        "No observed supporting evidence",
+        "Fewer than two independent supporting sources",
+        "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+        "Falsification test \"a deleted set whose (name, language, pairs content) differs from its group's kept set in any element; a distinct content with no surviving copy; a deletion performed by direct database write; or a removed id absent from the stage record.\" earns partial credit (FR-8.7): failed criteria: no checkable condition (no numeric bound, comparator, or observation/action term)",
+        "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+      ]
+    },
+    "C087-13": {
+      "claim_id": "C087-13",
+      "direct_score": 0.08875000000000002,
+      "propagated_score": 0.08875000000000002,
+      "band": "low",
+      "components": {
+        "evidence": 0.025000000000000022,
+        "independence": 0.5,
+        "falsifiability": 0.5,
+        "boundary": 0.0,
+        "contradiction_penalty": 0
+      },
+      "declared_state": {
+        "status": "draft",
+        "uncertainty": "insufficient_evidence",
+        "severity": "medium",
+        "conflicts_with": []
+      },
+      "propagation": {
+        "status": "propagated",
+        "cycle_component": []
+      },
+      "notes": [
+        "No observed supporting evidence",
+        "Fewer than two independent supporting sources",
+        "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+        "Falsification test 'a live graph with a dangling atomicId after any stage; or a comparison run whose output bytes differ from its pinned pre-stage record in any field.' earns partial credit (FR-8.7): failed criteria: no checkable condition (no numeric bound, comparator, or observation/action term)",
+        "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+      ]
+    },
+    "C087-14": {
+      "claim_id": "C087-14",
+      "direct_score": 0.16375000000000003,
+      "propagated_score": 0.16375000000000003,
+      "band": "low",
+      "components": {
+        "evidence": 0.025000000000000022,
+        "independence": 0.5,
+        "falsifiability": 1.0,
+        "boundary": 0.0,
+        "contradiction_penalty": 0
+      },
+      "declared_state": {
+        "status": "draft",
+        "uncertainty": "insufficient_evidence",
+        "severity": "medium",
+        "conflicts_with": []
+      },
+      "propagation": {
+        "status": "propagated",
+        "cycle_component": []
+      },
+      "notes": [
+        "No observed supporting evidence",
+        "Fewer than two independent supporting sources",
+        "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+        "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+      ]
+    },
+    "C087-15": {
+      "claim_id": "C087-15",
+      "direct_score": 0.08875000000000002,
+      "propagated_score": 0.08875000000000002,
+      "band": "low",
+      "components": {
+        "evidence": 0.025000000000000022,
+        "independence": 0.5,
+        "falsifiability": 0.5,
+        "boundary": 0.0,
+        "contradiction_penalty": 0
+      },
+      "declared_state": {
+        "status": "draft",
+        "uncertainty": "insufficient_evidence",
+        "severity": "medium",
+        "conflicts_with": []
+      },
+      "propagation": {
+        "status": "propagated",
+        "cycle_component": []
+      },
+      "notes": [
+        "No observed supporting evidence",
+        "Fewer than two independent supporting sources",
+        "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+        "Falsification test 'a merged stage PR whose behaviour change has no corresponding manual change in the same PR, where the stage record does not name why no manual surface is affected.' earns partial credit (FR-8.7): failed criteria: no checkable condition (no numeric bound, comparator, or observation/action term)",
+        "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+      ]
+    },
+    "C087-16": {
+      "claim_id": "C087-16",
+      "direct_score": 0.16375000000000003,
+      "propagated_score": 0.16375000000000003,
+      "band": "low",
+      "components": {
+        "evidence": 0.025000000000000022,
+        "independence": 0.5,
+        "falsifiability": 1.0,
+        "boundary": 0.0,
+        "contradiction_penalty": 0
+      },
+      "declared_state": {
+        "status": "draft",
+        "uncertainty": "insufficient_evidence",
+        "severity": "medium",
+        "conflicts_with": []
+      },
+      "propagation": {
+        "status": "propagated",
+        "cycle_component": []
+      },
+      "notes": [
+        "No observed supporting evidence",
+        "Fewer than two independent supporting sources",
+        "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+        "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+      ]
+    },
+    "C087-17": {
+      "claim_id": "C087-17",
+      "direct_score": 0.16375000000000003,
+      "propagated_score": 0.16375000000000003,
+      "band": "low",
+      "components": {
+        "evidence": 0.025000000000000022,
+        "independence": 0.5,
+        "falsifiability": 1.0,
+        "boundary": 0.0,
+        "contradiction_penalty": 0
+      },
+      "declared_state": {
+        "status": "draft",
+        "uncertainty": "insufficient_evidence",
+        "severity": "medium",
+        "conflicts_with": []
+      },
+      "propagation": {
+        "status": "propagated",
+        "cycle_component": []
+      },
+      "notes": [
+        "No observed supporting evidence",
+        "Fewer than two independent supporting sources",
+        "Independence basis: inferred-from-references (distinct references counted as independent; may overstate independence when references share an origin)",
+        "Freshness penalty 0.100 on the supporting set: 0 fresh, 0 recent, 0 stale, 1 unknown of 1 item(s); unknown freshness counts as stale (FR-8.6)"
+      ]
+    }
+  },
+  "verdicts": {},
+  "recoveries": [
+    {
+      "failure_id": "AEE-C087-1-BOUNDARY-CHALLENGE",
+      "claim_id": "C087-1",
+      "strategy": "narrow_boundary",
+      "action": "Declare where, when, and under which assumptions the claim holds.",
+      "priority": 2,
+      "verification": "The claim identifies its applicable system, population, time, and conditions."
+    },
+    {
+      "failure_id": "AEE-C087-1-COUNTEREXAMPLE-CHALLENGE",
+      "claim_id": "C087-1",
+      "strategy": "narrow_boundary",
+      "action": "Narrow the claim or document evidence covering the entire domain.",
+      "priority": 2,
+      "verification": "The claim identifies its applicable system, population, time, and conditions."
+    },
+    {
+      "failure_id": "AEE-C087-10-BOUNDARY-CHALLENGE",
+      "claim_id": "C087-10",
+      "strategy": "narrow_boundary",
+      "action": "Declare where, when, and under which assumptions the claim holds.",
+      "priority": 2,
+      "verification": "The claim identifies its applicable system, population, time, and conditions."
+    },
+    {
+      "failure_id": "AEE-C087-11-BOUNDARY-CHALLENGE",
+      "claim_id": "C087-11",
+      "strategy": "narrow_boundary",
+      "action": "Declare where, when, and under which assumptions the claim holds.",
+      "priority": 2,
+      "verification": "The claim identifies its applicable system, population, time, and conditions."
+    },
+    {
+      "failure_id": "AEE-C087-12-BOUNDARY-CHALLENGE",
+      "claim_id": "C087-12",
+      "strategy": "narrow_boundary",
+      "action": "Declare where, when, and under which assumptions the claim holds.",
+      "priority": 2,
+      "verification": "The claim identifies its applicable system, population, time, and conditions."
+    },
+    {
+      "failure_id": "AEE-C087-13-BOUNDARY-CHALLENGE",
+      "claim_id": "C087-13",
+      "strategy": "narrow_boundary",
+      "action": "Declare where, when, and under which assumptions the claim holds.",
+      "priority": 2,
+      "verification": "The claim identifies its applicable system, population, time, and conditions."
+    },
+    {
+      "failure_id": "AEE-C087-13-COUNTEREXAMPLE-CHALLENGE",
+      "claim_id": "C087-13",
+      "strategy": "narrow_boundary",
+      "action": "Narrow the claim or document evidence covering the entire domain.",
+      "priority": 2,
+      "verification": "The claim identifies its applicable system, population, time, and conditions."
+    },
+    {
+      "failure_id": "AEE-C087-14-BOUNDARY-CHALLENGE",
+      "claim_id": "C087-14",
+      "strategy": "narrow_boundary",
+      "action": "Declare where, when, and under which assumptions the claim holds.",
+      "priority": 2,
+      "verification": "The claim identifies its applicable system, population, time, and conditions."
+    },
+    {
+      "failure_id": "AEE-C087-15-BOUNDARY-CHALLENGE",
+      "claim_id": "C087-15",
+      "strategy": "narrow_boundary",
+      "action": "Declare where, when, and under which assumptions the claim holds.",
+      "priority": 2,
+      "verification": "The claim identifies its applicable system, population, time, and conditions."
+    },
+    {
+      "failure_id": "AEE-C087-16-BOUNDARY-CHALLENGE",
+      "claim_id": "C087-16",
+      "strategy": "narrow_boundary",
+      "action": "Declare where, when, and under which assumptions the claim holds.",
+      "priority": 2,
+      "verification": "The claim identifies its applicable system, population, time, and conditions."
+    },
+    {
+      "failure_id": "AEE-C087-17-BOUNDARY-CHALLENGE",
+      "claim_id": "C087-17",
+      "strategy": "narrow_boundary",
+      "action": "Declare where, when, and under which assumptions the claim holds.",
+      "priority": 2,
+      "verification": "The claim identifies its applicable system, population, time, and conditions."
+    },
+    {
+      "failure_id": "AEE-C087-17-COUNTEREXAMPLE-CHALLENGE",
+      "claim_id": "C087-17",
+      "strategy": "narrow_boundary",
+      "action": "Narrow the claim or document evidence covering the entire domain.",
+      "priority": 2,
+      "verification": "The claim identifies its applicable system, population, time, and conditions."
+    },
+    {
+      "failure_id": "AEE-C087-2-BOUNDARY-CHALLENGE",
+      "claim_id": "C087-2",
+      "strategy": "narrow_boundary",
+      "action": "Declare where, when, and under which assumptions the claim holds.",
+      "priority": 2,
+      "verification": "The claim identifies its applicable system, population, time, and conditions."
+    },
+    {
+      "failure_id": "AEE-C087-3-BOUNDARY-CHALLENGE",
+      "claim_id": "C087-3",
+      "strategy": "narrow_boundary",
+      "action": "Declare where, when, and under which assumptions the claim holds.",
+      "priority": 2,
+      "verification": "The claim identifies its applicable system, population, time, and conditions."
+    },
+    {
+      "failure_id": "AEE-C087-3-COUNTEREXAMPLE-CHALLENGE",
+      "claim_id": "C087-3",
+      "strategy": "narrow_boundary",
+      "action": "Narrow the claim or document evidence covering the entire domain.",
+      "priority": 2,
+      "verification": "The claim identifies its applicable system, population, time, and conditions."
+    },
+    {
+      "failure_id": "AEE-C087-4-BOUNDARY-CHALLENGE",
+      "claim_id": "C087-4",
+      "strategy": "narrow_boundary",
+      "action": "Declare where, when, and under which assumptions the claim holds.",
+      "priority": 2,
+      "verification": "The claim identifies its applicable system, population, time, and conditions."
+    },
+    {
+      "failure_id": "AEE-C087-4-COUNTEREXAMPLE-CHALLENGE",
+      "claim_id": "C087-4",
+      "strategy": "narrow_boundary",
+      "action": "Narrow the claim or document evidence covering the entire domain.",
+      "priority": 2,
+      "verification": "The claim identifies its applicable system, population, time, and conditions."
+    },
+    {
+      "failure_id": "AEE-C087-5-BOUNDARY-CHALLENGE",
+      "claim_id": "C087-5",
+      "strategy": "narrow_boundary",
+      "action": "Declare where, when, and under which assumptions the claim holds.",
+      "priority": 2,
+      "verification": "The claim identifies its applicable system, population, time, and conditions."
+    },
+    {
+      "failure_id": "AEE-C087-6-BOUNDARY-CHALLENGE",
+      "claim_id": "C087-6",
+      "strategy": "narrow_boundary",
+      "action": "Declare where, when, and under which assumptions the claim holds.",
+      "priority": 2,
+      "verification": "The claim identifies its applicable system, population, time, and conditions."
+    },
+    {
+      "failure_id": "AEE-C087-7-BOUNDARY-CHALLENGE",
+      "claim_id": "C087-7",
+      "strategy": "narrow_boundary",
+      "action": "Declare where, when, and under which assumptions the claim holds.",
+      "priority": 2,
+      "verification": "The claim identifies its applicable system, population, time, and conditions."
+    },
+    {
+      "failure_id": "AEE-C087-8-BOUNDARY-CHALLENGE",
+      "claim_id": "C087-8",
+      "strategy": "narrow_boundary",
+      "action": "Declare where, when, and under which assumptions the claim holds.",
+      "priority": 2,
+      "verification": "The claim identifies its applicable system, population, time, and conditions."
+    },
+    {
+      "failure_id": "AEE-C087-9-BOUNDARY-CHALLENGE",
+      "claim_id": "C087-9",
+      "strategy": "narrow_boundary",
+      "action": "Declare where, when, and under which assumptions the claim holds.",
+      "priority": 2,
+      "verification": "The claim identifies its applicable system, population, time, and conditions."
+    },
+    {
+      "failure_id": "AEE-C087-1-INDEPENDENCE-UNMODELED",
+      "claim_id": "C087-1",
+      "strategy": "clarify",
+      "action": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+      "priority": 3,
+      "verification": "Independence between the shared evidence items is declared, or the shared corroboration is recorded as shared."
+    },
+    {
+      "failure_id": "AEE-C087-1-IRREDUCIBILITY-CHALLENGE",
+      "claim_id": "C087-1",
+      "strategy": "decompose",
+      "action": "Split the claim into atomic propositions and link them explicitly.",
+      "priority": 3,
+      "verification": "Every resulting claim contains one independently falsifiable proposition."
+    },
+    {
+      "failure_id": "AEE-C087-10-INDEPENDENCE-UNMODELED",
+      "claim_id": "C087-10",
+      "strategy": "clarify",
+      "action": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+      "priority": 3,
+      "verification": "Independence between the shared evidence items is declared, or the shared corroboration is recorded as shared."
+    },
+    {
+      "failure_id": "AEE-C087-10-IRREDUCIBILITY-CHALLENGE",
+      "claim_id": "C087-10",
+      "strategy": "decompose",
+      "action": "Split the claim into atomic propositions and link them explicitly.",
+      "priority": 3,
+      "verification": "Every resulting claim contains one independently falsifiable proposition."
+    },
+    {
+      "failure_id": "AEE-C087-11-INDEPENDENCE-UNMODELED",
+      "claim_id": "C087-11",
+      "strategy": "clarify",
+      "action": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+      "priority": 3,
+      "verification": "Independence between the shared evidence items is declared, or the shared corroboration is recorded as shared."
+    },
+    {
+      "failure_id": "AEE-C087-11-IRREDUCIBILITY-CHALLENGE",
+      "claim_id": "C087-11",
+      "strategy": "decompose",
+      "action": "Split the claim into atomic propositions and link them explicitly.",
+      "priority": 3,
+      "verification": "Every resulting claim contains one independently falsifiable proposition."
+    },
+    {
+      "failure_id": "AEE-C087-12-INDEPENDENCE-UNMODELED",
+      "claim_id": "C087-12",
+      "strategy": "clarify",
+      "action": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+      "priority": 3,
+      "verification": "Independence between the shared evidence items is declared, or the shared corroboration is recorded as shared."
+    },
+    {
+      "failure_id": "AEE-C087-12-IRREDUCIBILITY-CHALLENGE",
+      "claim_id": "C087-12",
+      "strategy": "decompose",
+      "action": "Split the claim into atomic propositions and link them explicitly.",
+      "priority": 3,
+      "verification": "Every resulting claim contains one independently falsifiable proposition."
+    },
+    {
+      "failure_id": "AEE-C087-12-PRECISION-CHALLENGE",
+      "claim_id": "C087-12",
+      "strategy": "clarify",
+      "action": "Replace vague language with a threshold, observable, or decision rule.",
+      "priority": 3,
+      "verification": "The revised claim contains a measurable observable or decision rule."
+    },
+    {
+      "failure_id": "AEE-C087-13-INDEPENDENCE-UNMODELED",
+      "claim_id": "C087-13",
+      "strategy": "clarify",
+      "action": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+      "priority": 3,
+      "verification": "Independence between the shared evidence items is declared, or the shared corroboration is recorded as shared."
+    },
+    {
+      "failure_id": "AEE-C087-13-IRREDUCIBILITY-CHALLENGE",
+      "claim_id": "C087-13",
+      "strategy": "decompose",
+      "action": "Split the claim into atomic propositions and link them explicitly.",
+      "priority": 3,
+      "verification": "Every resulting claim contains one independently falsifiable proposition."
+    },
+    {
+      "failure_id": "AEE-C087-14-INDEPENDENCE-UNMODELED",
+      "claim_id": "C087-14",
+      "strategy": "clarify",
+      "action": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+      "priority": 3,
+      "verification": "Independence between the shared evidence items is declared, or the shared corroboration is recorded as shared."
+    },
+    {
+      "failure_id": "AEE-C087-14-IRREDUCIBILITY-CHALLENGE",
+      "claim_id": "C087-14",
+      "strategy": "decompose",
+      "action": "Split the claim into atomic propositions and link them explicitly.",
+      "priority": 3,
+      "verification": "Every resulting claim contains one independently falsifiable proposition."
+    },
+    {
+      "failure_id": "AEE-C087-15-INDEPENDENCE-UNMODELED",
+      "claim_id": "C087-15",
+      "strategy": "clarify",
+      "action": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+      "priority": 3,
+      "verification": "Independence between the shared evidence items is declared, or the shared corroboration is recorded as shared."
+    },
+    {
+      "failure_id": "AEE-C087-16-INDEPENDENCE-UNMODELED",
+      "claim_id": "C087-16",
+      "strategy": "clarify",
+      "action": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+      "priority": 3,
+      "verification": "Independence between the shared evidence items is declared, or the shared corroboration is recorded as shared."
+    },
+    {
+      "failure_id": "AEE-C087-16-IRREDUCIBILITY-CHALLENGE",
+      "claim_id": "C087-16",
+      "strategy": "decompose",
+      "action": "Split the claim into atomic propositions and link them explicitly.",
+      "priority": 3,
+      "verification": "Every resulting claim contains one independently falsifiable proposition."
+    },
+    {
+      "failure_id": "AEE-C087-17-INDEPENDENCE-UNMODELED",
+      "claim_id": "C087-17",
+      "strategy": "clarify",
+      "action": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+      "priority": 3,
+      "verification": "Independence between the shared evidence items is declared, or the shared corroboration is recorded as shared."
+    },
+    {
+      "failure_id": "AEE-C087-17-IRREDUCIBILITY-CHALLENGE",
+      "claim_id": "C087-17",
+      "strategy": "decompose",
+      "action": "Split the claim into atomic propositions and link them explicitly.",
+      "priority": 3,
+      "verification": "Every resulting claim contains one independently falsifiable proposition."
+    },
+    {
+      "failure_id": "AEE-C087-2-INDEPENDENCE-UNMODELED",
+      "claim_id": "C087-2",
+      "strategy": "clarify",
+      "action": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+      "priority": 3,
+      "verification": "Independence between the shared evidence items is declared, or the shared corroboration is recorded as shared."
+    },
+    {
+      "failure_id": "AEE-C087-2-IRREDUCIBILITY-CHALLENGE",
+      "claim_id": "C087-2",
+      "strategy": "decompose",
+      "action": "Split the claim into atomic propositions and link them explicitly.",
+      "priority": 3,
+      "verification": "Every resulting claim contains one independently falsifiable proposition."
+    },
+    {
+      "failure_id": "AEE-C087-3-INDEPENDENCE-UNMODELED",
+      "claim_id": "C087-3",
+      "strategy": "clarify",
+      "action": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+      "priority": 3,
+      "verification": "Independence between the shared evidence items is declared, or the shared corroboration is recorded as shared."
+    },
+    {
+      "failure_id": "AEE-C087-4-INDEPENDENCE-UNMODELED",
+      "claim_id": "C087-4",
+      "strategy": "clarify",
+      "action": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+      "priority": 3,
+      "verification": "Independence between the shared evidence items is declared, or the shared corroboration is recorded as shared."
+    },
+    {
+      "failure_id": "AEE-C087-4-IRREDUCIBILITY-CHALLENGE",
+      "claim_id": "C087-4",
+      "strategy": "decompose",
+      "action": "Split the claim into atomic propositions and link them explicitly.",
+      "priority": 3,
+      "verification": "Every resulting claim contains one independently falsifiable proposition."
+    },
+    {
+      "failure_id": "AEE-C087-5-INDEPENDENCE-UNMODELED",
+      "claim_id": "C087-5",
+      "strategy": "clarify",
+      "action": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+      "priority": 3,
+      "verification": "Independence between the shared evidence items is declared, or the shared corroboration is recorded as shared."
+    },
+    {
+      "failure_id": "AEE-C087-5-IRREDUCIBILITY-CHALLENGE",
+      "claim_id": "C087-5",
+      "strategy": "decompose",
+      "action": "Split the claim into atomic propositions and link them explicitly.",
+      "priority": 3,
+      "verification": "Every resulting claim contains one independently falsifiable proposition."
+    },
+    {
+      "failure_id": "AEE-C087-6-INDEPENDENCE-UNMODELED",
+      "claim_id": "C087-6",
+      "strategy": "clarify",
+      "action": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+      "priority": 3,
+      "verification": "Independence between the shared evidence items is declared, or the shared corroboration is recorded as shared."
+    },
+    {
+      "failure_id": "AEE-C087-6-IRREDUCIBILITY-CHALLENGE",
+      "claim_id": "C087-6",
+      "strategy": "decompose",
+      "action": "Split the claim into atomic propositions and link them explicitly.",
+      "priority": 3,
+      "verification": "Every resulting claim contains one independently falsifiable proposition."
+    },
+    {
+      "failure_id": "AEE-C087-6-PRECISION-CHALLENGE",
+      "claim_id": "C087-6",
+      "strategy": "clarify",
+      "action": "Replace vague language with a threshold, observable, or decision rule.",
+      "priority": 3,
+      "verification": "The revised claim contains a measurable observable or decision rule."
+    },
+    {
+      "failure_id": "AEE-C087-7-INDEPENDENCE-UNMODELED",
+      "claim_id": "C087-7",
+      "strategy": "clarify",
+      "action": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+      "priority": 3,
+      "verification": "Independence between the shared evidence items is declared, or the shared corroboration is recorded as shared."
+    },
+    {
+      "failure_id": "AEE-C087-7-IRREDUCIBILITY-CHALLENGE",
+      "claim_id": "C087-7",
+      "strategy": "decompose",
+      "action": "Split the claim into atomic propositions and link them explicitly.",
+      "priority": 3,
+      "verification": "Every resulting claim contains one independently falsifiable proposition."
+    },
+    {
+      "failure_id": "AEE-C087-8-INDEPENDENCE-UNMODELED",
+      "claim_id": "C087-8",
+      "strategy": "clarify",
+      "action": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+      "priority": 3,
+      "verification": "Independence between the shared evidence items is declared, or the shared corroboration is recorded as shared."
+    },
+    {
+      "failure_id": "AEE-C087-8-IRREDUCIBILITY-CHALLENGE",
+      "claim_id": "C087-8",
+      "strategy": "decompose",
+      "action": "Split the claim into atomic propositions and link them explicitly.",
+      "priority": 3,
+      "verification": "Every resulting claim contains one independently falsifiable proposition."
+    },
+    {
+      "failure_id": "AEE-C087-9-INDEPENDENCE-UNMODELED",
+      "claim_id": "C087-9",
+      "strategy": "clarify",
+      "action": "Declare independent_of between the evidence items, or record that the corroboration is shared.",
+      "priority": 3,
+      "verification": "Independence between the shared evidence items is declared, or the shared corroboration is recorded as shared."
+    },
+    {
+      "failure_id": "AEE-C087-9-IRREDUCIBILITY-CHALLENGE",
+      "claim_id": "C087-9",
+      "strategy": "decompose",
+      "action": "Split the claim into atomic propositions and link them explicitly.",
+      "priority": 3,
+      "verification": "Every resulting claim contains one independently falsifiable proposition."
+    },
+    {
+      "failure_id": "AEE-C087-1-DRAFT-CAP",
+      "claim_id": "C087-1",
+      "strategy": "define_falsifier",
+      "action": "Ratify the claim (change its status from draft) to lift the cap.",
+      "priority": 4,
+      "verification": "A concrete observation that would refute the claim is documented."
+    },
+    {
+      "failure_id": "AEE-C087-10-DRAFT-CAP",
+      "claim_id": "C087-10",
+      "strategy": "define_falsifier",
+      "action": "Ratify the claim (change its status from draft) to lift the cap.",
+      "priority": 4,
+      "verification": "A concrete observation that would refute the claim is documented."
+    },
+    {
+      "failure_id": "AEE-C087-11-DRAFT-CAP",
+      "claim_id": "C087-11",
+      "strategy": "define_falsifier",
+      "action": "Ratify the claim (change its status from draft) to lift the cap.",
+      "priority": 4,
+      "verification": "A concrete observation that would refute the claim is documented."
+    },
+    {
+      "failure_id": "AEE-C087-12-DRAFT-CAP",
+      "claim_id": "C087-12",
+      "strategy": "define_falsifier",
+      "action": "Ratify the claim (change its status from draft) to lift the cap.",
+      "priority": 4,
+      "verification": "A concrete observation that would refute the claim is documented."
+    },
+    {
+      "failure_id": "AEE-C087-13-DRAFT-CAP",
+      "claim_id": "C087-13",
+      "strategy": "define_falsifier",
+      "action": "Ratify the claim (change its status from draft) to lift the cap.",
+      "priority": 4,
+      "verification": "A concrete observation that would refute the claim is documented."
+    },
+    {
+      "failure_id": "AEE-C087-14-DRAFT-CAP",
+      "claim_id": "C087-14",
+      "strategy": "define_falsifier",
+      "action": "Ratify the claim (change its status from draft) to lift the cap.",
+      "priority": 4,
+      "verification": "A concrete observation that would refute the claim is documented."
+    },
+    {
+      "failure_id": "AEE-C087-15-DRAFT-CAP",
+      "claim_id": "C087-15",
+      "strategy": "define_falsifier",
+      "action": "Ratify the claim (change its status from draft) to lift the cap.",
+      "priority": 4,
+      "verification": "A concrete observation that would refute the claim is documented."
+    },
+    {
+      "failure_id": "AEE-C087-16-DRAFT-CAP",
+      "claim_id": "C087-16",
+      "strategy": "define_falsifier",
+      "action": "Ratify the claim (change its status from draft) to lift the cap.",
+      "priority": 4,
+      "verification": "A concrete observation that would refute the claim is documented."
+    },
+    {
+      "failure_id": "AEE-C087-17-DRAFT-CAP",
+      "claim_id": "C087-17",
+      "strategy": "define_falsifier",
+      "action": "Ratify the claim (change its status from draft) to lift the cap.",
+      "priority": 4,
+      "verification": "A concrete observation that would refute the claim is documented."
+    },
+    {
+      "failure_id": "AEE-C087-2-DRAFT-CAP",
+      "claim_id": "C087-2",
+      "strategy": "define_falsifier",
+      "action": "Ratify the claim (change its status from draft) to lift the cap.",
+      "priority": 4,
+      "verification": "A concrete observation that would refute the claim is documented."
+    },
+    {
+      "failure_id": "AEE-C087-3-DRAFT-CAP",
+      "claim_id": "C087-3",
+      "strategy": "define_falsifier",
+      "action": "Ratify the claim (change its status from draft) to lift the cap.",
+      "priority": 4,
+      "verification": "A concrete observation that would refute the claim is documented."
+    },
+    {
+      "failure_id": "AEE-C087-4-DRAFT-CAP",
+      "claim_id": "C087-4",
+      "strategy": "define_falsifier",
+      "action": "Ratify the claim (change its status from draft) to lift the cap.",
+      "priority": 4,
+      "verification": "A concrete observation that would refute the claim is documented."
+    },
+    {
+      "failure_id": "AEE-C087-5-DRAFT-CAP",
+      "claim_id": "C087-5",
+      "strategy": "define_falsifier",
+      "action": "Ratify the claim (change its status from draft) to lift the cap.",
+      "priority": 4,
+      "verification": "A concrete observation that would refute the claim is documented."
+    },
+    {
+      "failure_id": "AEE-C087-6-DRAFT-CAP",
+      "claim_id": "C087-6",
+      "strategy": "define_falsifier",
+      "action": "Ratify the claim (change its status from draft) to lift the cap.",
+      "priority": 4,
+      "verification": "A concrete observation that would refute the claim is documented."
+    },
+    {
+      "failure_id": "AEE-C087-7-DRAFT-CAP",
+      "claim_id": "C087-7",
+      "strategy": "define_falsifier",
+      "action": "Ratify the claim (change its status from draft) to lift the cap.",
+      "priority": 4,
+      "verification": "A concrete observation that would refute the claim is documented."
+    },
+    {
+      "failure_id": "AEE-C087-8-DRAFT-CAP",
+      "claim_id": "C087-8",
+      "strategy": "define_falsifier",
+      "action": "Ratify the claim (change its status from draft) to lift the cap.",
+      "priority": 4,
+      "verification": "A concrete observation that would refute the claim is documented."
+    },
+    {
+      "failure_id": "AEE-C087-9-DRAFT-CAP",
+      "claim_id": "C087-9",
+      "strategy": "define_falsifier",
+      "action": "Ratify the claim (change its status from draft) to lift the cap.",
+      "priority": 4,
+      "verification": "A concrete observation that would refute the claim is documented."
+    }
+  ],
+  "metadata": {
+    "threshold": 0.7,
+    "input": "specs/087-node-system-tightening/aee-claims.json",
+    "ledger": {
+      "mode": "disabled",
+      "path": null
+    },
+    "engine_version": "1.5.3"
+  },
+  "reported_statuses": {
+    "C087-1": "draft",
+    "C087-2": "draft",
+    "C087-3": "draft",
+    "C087-4": "draft",
+    "C087-5": "draft",
+    "C087-6": "draft",
+    "C087-7": "draft",
+    "C087-8": "draft",
+    "C087-9": "draft",
+    "C087-10": "draft",
+    "C087-11": "draft",
+    "C087-12": "draft",
+    "C087-13": "draft",
+    "C087-14": "draft",
+    "C087-15": "draft",
+    "C087-16": "draft",
+    "C087-17": "draft"
+  },
+  "stage_caps": [],
+  "not_understood": [
+    "C087-1: open challenges this assessment does not resolve: assumption_unvalidated, coverage_gap, independence_unmodeled.",
+    "C087-1: propagated score 0.164 is below the 0.70 threshold - the claim is not established by its evidence as recorded.",
+    "C087-2: open challenges this assessment does not resolve: assumption_unvalidated, coverage_gap, independence_unmodeled.",
+    "C087-2: propagated score 0.164 is below the 0.70 threshold - the claim is not established by its evidence as recorded.",
+    "C087-3: open challenges this assessment does not resolve: assumption_unvalidated, independence_unmodeled.",
+    "C087-3: propagated score 0.164 is below the 0.70 threshold - the claim is not established by its evidence as recorded.",
+    "C087-4: open challenges this assessment does not resolve: assumption_unvalidated, coverage_gap, independence_unmodeled.",
+    "C087-4: propagated score 0.089 is below the 0.70 threshold - the claim is not established by its evidence as recorded.",
+    "C087-5: open challenges this assessment does not resolve: assumption_unvalidated, coverage_gap, independence_unmodeled.",
+    "C087-5: propagated score 0.089 is below the 0.70 threshold - the claim is not established by its evidence as recorded.",
+    "C087-6: open challenges this assessment does not resolve: ambiguous_requirement, assumption_unvalidated, coverage_gap, independence_unmodeled.",
+    "C087-6: propagated score 0.089 is below the 0.70 threshold - the claim is not established by its evidence as recorded.",
+    "C087-7: open challenges this assessment does not resolve: assumption_unvalidated, coverage_gap, independence_unmodeled.",
+    "C087-7: propagated score 0.164 is below the 0.70 threshold - the claim is not established by its evidence as recorded.",
+    "C087-8: open challenges this assessment does not resolve: assumption_unvalidated, coverage_gap, independence_unmodeled.",
+    "C087-8: propagated score 0.089 is below the 0.70 threshold - the claim is not established by its evidence as recorded.",
+    "C087-9: open challenges this assessment does not resolve: assumption_unvalidated, coverage_gap, independence_unmodeled.",
+    "C087-9: propagated score 0.164 is below the 0.70 threshold - the claim is not established by its evidence as recorded.",
+    "C087-10: open challenges this assessment does not resolve: assumption_unvalidated, coverage_gap, independence_unmodeled.",
+    "C087-10: propagated score 0.164 is below the 0.70 threshold - the claim is not established by its evidence as recorded.",
+    "C087-11: open challenges this assessment does not resolve: assumption_unvalidated, coverage_gap, independence_unmodeled.",
+    "C087-11: propagated score 0.089 is below the 0.70 threshold - the claim is not established by its evidence as recorded.",
+    "C087-12: open challenges this assessment does not resolve: ambiguous_requirement, assumption_unvalidated, coverage_gap, independence_unmodeled.",
+    "C087-12: propagated score 0.089 is below the 0.70 threshold - the claim is not established by its evidence as recorded.",
+    "C087-13: open challenges this assessment does not resolve: assumption_unvalidated, coverage_gap, independence_unmodeled.",
+    "C087-13: propagated score 0.089 is below the 0.70 threshold - the claim is not established by its evidence as recorded.",
+    "C087-14: open challenges this assessment does not resolve: assumption_unvalidated, coverage_gap, independence_unmodeled.",
+    "C087-14: propagated score 0.164 is below the 0.70 threshold - the claim is not established by its evidence as recorded.",
+    "C087-15: open challenges this assessment does not resolve: assumption_unvalidated, independence_unmodeled.",
+    "C087-15: propagated score 0.089 is below the 0.70 threshold - the claim is not established by its evidence as recorded.",
+    "C087-16: open challenges this assessment does not resolve: assumption_unvalidated, coverage_gap, independence_unmodeled.",
+    "C087-16: propagated score 0.164 is below the 0.70 threshold - the claim is not established by its evidence as recorded.",
+    "C087-17: open challenges this assessment does not resolve: assumption_unvalidated, coverage_gap, independence_unmodeled.",
+    "C087-17: propagated score 0.164 is below the 0.70 threshold - the claim is not established by its evidence as recorded."
+  ],
+  "lanes": {
+    "lane_1": {
+      "label": "machine verification",
+      "outcome": "iterate",
+      "threshold": 0.7,
+      "claims_at_or_above_threshold": 0,
+      "claims_below_threshold": 17
+    },
+    "lane_2": {
+      "label": "human acceptance",
+      "stage_counts": {
+        "created": 17,
+        "checked": 0,
+        "explained": 0,
+        "accepted": 0,
+        "digested": 0
+      },
+      "claims_below_explained": 17,
+      "exposition_covered_claims": 0,
+      "exposition_missing_claims": 17,
+      "verified_unexplained_claims": 0,
+      "stage_capped_claims": 0,
+      "attribution_contested_claims": 0
+    },
+    "per_claim": {
+      "C087-1": {
+        "lane_1": {
+          "score": 0.16375000000000003,
+          "direct_score": 0.16375000000000003,
+          "author_status": "draft",
+          "at_or_above_threshold": false
+        },
+        "lane_2": {
+          "stage": "created",
+          "stored_stage": "created",
+          "stage_capped": false,
+          "cap_reasons": [],
+          "exposition": false,
+          "explainers": [],
+          "verified_unexplained": false,
+          "attribution_contested": false
+        }
+      },
+      "C087-2": {
+        "lane_1": {
+          "score": 0.16375000000000003,
+          "direct_score": 0.16375000000000003,
+          "author_status": "draft",
+          "at_or_above_threshold": false
+        },
+        "lane_2": {
+          "stage": "created",
+          "stored_stage": "created",
+          "stage_capped": false,
+          "cap_reasons": [],
+          "exposition": false,
+          "explainers": [],
+          "verified_unexplained": false,
+          "attribution_contested": false
+        }
+      },
+      "C087-3": {
+        "lane_1": {
+          "score": 0.16375000000000003,
+          "direct_score": 0.16375000000000003,
+          "author_status": "draft",
+          "at_or_above_threshold": false
+        },
+        "lane_2": {
+          "stage": "created",
+          "stored_stage": "created",
+          "stage_capped": false,
+          "cap_reasons": [],
+          "exposition": false,
+          "explainers": [],
+          "verified_unexplained": false,
+          "attribution_contested": false
+        }
+      },
+      "C087-4": {
+        "lane_1": {
+          "score": 0.08875000000000002,
+          "direct_score": 0.08875000000000002,
+          "author_status": "draft",
+          "at_or_above_threshold": false
+        },
+        "lane_2": {
+          "stage": "created",
+          "stored_stage": "created",
+          "stage_capped": false,
+          "cap_reasons": [],
+          "exposition": false,
+          "explainers": [],
+          "verified_unexplained": false,
+          "attribution_contested": false
+        }
+      },
+      "C087-5": {
+        "lane_1": {
+          "score": 0.08875000000000002,
+          "direct_score": 0.16375000000000003,
+          "author_status": "draft",
+          "at_or_above_threshold": false
+        },
+        "lane_2": {
+          "stage": "created",
+          "stored_stage": "created",
+          "stage_capped": false,
+          "cap_reasons": [],
+          "exposition": false,
+          "explainers": [],
+          "verified_unexplained": false,
+          "attribution_contested": false
+        }
+      },
+      "C087-6": {
+        "lane_1": {
+          "score": 0.08875000000000002,
+          "direct_score": 0.08875000000000002,
+          "author_status": "draft",
+          "at_or_above_threshold": false
+        },
+        "lane_2": {
+          "stage": "created",
+          "stored_stage": "created",
+          "stage_capped": false,
+          "cap_reasons": [],
+          "exposition": false,
+          "explainers": [],
+          "verified_unexplained": false,
+          "attribution_contested": false
+        }
+      },
+      "C087-7": {
+        "lane_1": {
+          "score": 0.16375000000000003,
+          "direct_score": 0.16375000000000003,
+          "author_status": "draft",
+          "at_or_above_threshold": false
+        },
+        "lane_2": {
+          "stage": "created",
+          "stored_stage": "created",
+          "stage_capped": false,
+          "cap_reasons": [],
+          "exposition": false,
+          "explainers": [],
+          "verified_unexplained": false,
+          "attribution_contested": false
+        }
+      },
+      "C087-8": {
+        "lane_1": {
+          "score": 0.08875000000000002,
+          "direct_score": 0.08875000000000002,
+          "author_status": "draft",
+          "at_or_above_threshold": false
+        },
+        "lane_2": {
+          "stage": "created",
+          "stored_stage": "created",
+          "stage_capped": false,
+          "cap_reasons": [],
+          "exposition": false,
+          "explainers": [],
+          "verified_unexplained": false,
+          "attribution_contested": false
+        }
+      },
+      "C087-9": {
+        "lane_1": {
+          "score": 0.16375000000000003,
+          "direct_score": 0.16375000000000003,
+          "author_status": "draft",
+          "at_or_above_threshold": false
+        },
+        "lane_2": {
+          "stage": "created",
+          "stored_stage": "created",
+          "stage_capped": false,
+          "cap_reasons": [],
+          "exposition": false,
+          "explainers": [],
+          "verified_unexplained": false,
+          "attribution_contested": false
+        }
+      },
+      "C087-10": {
+        "lane_1": {
+          "score": 0.16375000000000003,
+          "direct_score": 0.16375000000000003,
+          "author_status": "draft",
+          "at_or_above_threshold": false
+        },
+        "lane_2": {
+          "stage": "created",
+          "stored_stage": "created",
+          "stage_capped": false,
+          "cap_reasons": [],
+          "exposition": false,
+          "explainers": [],
+          "verified_unexplained": false,
+          "attribution_contested": false
+        }
+      },
+      "C087-11": {
+        "lane_1": {
+          "score": 0.08875000000000002,
+          "direct_score": 0.08875000000000002,
+          "author_status": "draft",
+          "at_or_above_threshold": false
+        },
+        "lane_2": {
+          "stage": "created",
+          "stored_stage": "created",
+          "stage_capped": false,
+          "cap_reasons": [],
+          "exposition": false,
+          "explainers": [],
+          "verified_unexplained": false,
+          "attribution_contested": false
+        }
+      },
+      "C087-12": {
+        "lane_1": {
+          "score": 0.08875000000000002,
+          "direct_score": 0.08875000000000002,
+          "author_status": "draft",
+          "at_or_above_threshold": false
+        },
+        "lane_2": {
+          "stage": "created",
+          "stored_stage": "created",
+          "stage_capped": false,
+          "cap_reasons": [],
+          "exposition": false,
+          "explainers": [],
+          "verified_unexplained": false,
+          "attribution_contested": false
+        }
+      },
+      "C087-13": {
+        "lane_1": {
+          "score": 0.08875000000000002,
+          "direct_score": 0.08875000000000002,
+          "author_status": "draft",
+          "at_or_above_threshold": false
+        },
+        "lane_2": {
+          "stage": "created",
+          "stored_stage": "created",
+          "stage_capped": false,
+          "cap_reasons": [],
+          "exposition": false,
+          "explainers": [],
+          "verified_unexplained": false,
+          "attribution_contested": false
+        }
+      },
+      "C087-14": {
+        "lane_1": {
+          "score": 0.16375000000000003,
+          "direct_score": 0.16375000000000003,
+          "author_status": "draft",
+          "at_or_above_threshold": false
+        },
+        "lane_2": {
+          "stage": "created",
+          "stored_stage": "created",
+          "stage_capped": false,
+          "cap_reasons": [],
+          "exposition": false,
+          "explainers": [],
+          "verified_unexplained": false,
+          "attribution_contested": false
+        }
+      },
+      "C087-15": {
+        "lane_1": {
+          "score": 0.08875000000000002,
+          "direct_score": 0.08875000000000002,
+          "author_status": "draft",
+          "at_or_above_threshold": false
+        },
+        "lane_2": {
+          "stage": "created",
+          "stored_stage": "created",
+          "stage_capped": false,
+          "cap_reasons": [],
+          "exposition": false,
+          "explainers": [],
+          "verified_unexplained": false,
+          "attribution_contested": false
+        }
+      },
+      "C087-16": {
+        "lane_1": {
+          "score": 0.16375000000000003,
+          "direct_score": 0.16375000000000003,
+          "author_status": "draft",
+          "at_or_above_threshold": false
+        },
+        "lane_2": {
+          "stage": "created",
+          "stored_stage": "created",
+          "stage_capped": false,
+          "cap_reasons": [],
+          "exposition": false,
+          "explainers": [],
+          "verified_unexplained": false,
+          "attribution_contested": false
+        }
+      },
+      "C087-17": {
+        "lane_1": {
+          "score": 0.16375000000000003,
+          "direct_score": 0.16375000000000003,
+          "author_status": "draft",
+          "at_or_above_threshold": false
+        },
+        "lane_2": {
+          "stage": "created",
+          "stored_stage": "created",
+          "stage_capped": false,
+          "cap_reasons": [],
+          "exposition": false,
+          "explainers": [],
+          "verified_unexplained": false,
+          "attribution_contested": false
+        }
+      }
+    }
+  },
+  "digestion": {
+    "C087-1": {
+      "stage": "created",
+      "exposition_present": false,
+      "explainers": []
+    },
+    "C087-2": {
+      "stage": "created",
+      "exposition_present": false,
+      "explainers": []
+    },
+    "C087-3": {
+      "stage": "created",
+      "exposition_present": false,
+      "explainers": []
+    },
+    "C087-4": {
+      "stage": "created",
+      "exposition_present": false,
+      "explainers": []
+    },
+    "C087-5": {
+      "stage": "created",
+      "exposition_present": false,
+      "explainers": []
+    },
+    "C087-6": {
+      "stage": "created",
+      "exposition_present": false,
+      "explainers": []
+    },
+    "C087-7": {
+      "stage": "created",
+      "exposition_present": false,
+      "explainers": []
+    },
+    "C087-8": {
+      "stage": "created",
+      "exposition_present": false,
+      "explainers": []
+    },
+    "C087-9": {
+      "stage": "created",
+      "exposition_present": false,
+      "explainers": []
+    },
+    "C087-10": {
+      "stage": "created",
+      "exposition_present": false,
+      "explainers": []
+    },
+    "C087-11": {
+      "stage": "created",
+      "exposition_present": false,
+      "explainers": []
+    },
+    "C087-12": {
+      "stage": "created",
+      "exposition_present": false,
+      "explainers": []
+    },
+    "C087-13": {
+      "stage": "created",
+      "exposition_present": false,
+      "explainers": []
+    },
+    "C087-14": {
+      "stage": "created",
+      "exposition_present": false,
+      "explainers": []
+    },
+    "C087-15": {
+      "stage": "created",
+      "exposition_present": false,
+      "explainers": []
+    },
+    "C087-16": {
+      "stage": "created",
+      "exposition_present": false,
+      "explainers": []
+    },
+    "C087-17": {
+      "stage": "created",
+      "exposition_present": false,
+      "explainers": []
+    }
+  }
+}

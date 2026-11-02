@@ -12,7 +12,7 @@ carries its gate/test output verbatim** — not a summary of it.
 
 ## Stage 0 — package adoption (PR: `feat/087-spec-package`)
 
-- [ ] T001 Spec package lands in
+- [x] T001 Spec package lands in
   `specs/087-node-system-tightening/`: spec.md, claims.md,
   tasks.md, plan.md, records/census-evidence.md, and the S5
   wireframes package under records/logs-view-wireframes/.
@@ -20,13 +20,13 @@ carries its gate/test output verbatim** — not a summary of it.
   records-only diff). *This does not establish that any part
   of the design is built or correct — only that the contract
   exists in the repo.*
-- [ ] T002 Claims normalized into `aee-claims.json`
+- [x] T002 Claims normalized into `aee-claims.json`
   (C087-1…17) and verified under the pinned AEE (`aee
   validate` + `aee assess --no-ledger`), output recorded in
   plan.md and `records/t002-aee-assessment.json`. Acceptance:
   test. *This does not establish that the claims are true —
   only that they are well-formed and carry falsifiers.*
-- [ ] T003 Owner block approval of the package recorded at
+- [x] T003 Owner block approval of the package recorded at
   the head of spec.md (approval act, date, and any decision
   ruled against its recommendation). Acceptance: gate.
   *This does not establish that the design is right — only

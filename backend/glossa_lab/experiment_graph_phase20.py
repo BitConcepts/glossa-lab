@@ -70,10 +70,17 @@ def _resolve_report(name: str) -> Path:
 def _m77_inscription_loader(inputs: dict, params: dict) -> dict:
     """Load M77 inscriptions with per-inscription metadata.
 
-    Primary source: reports/mahadevan_texts_decoded.json (the upstream Mahadevan
-    OCR + rank-correlation glyph mapping).  If that file has been cleaned up,
-    falls back automatically to the Holdat CSV corpus, which contains the same
-    inscriptions with M-prefixed sign IDs and site metadata.
+    Primary source: reports/mahadevan_texts_decoded.json (the upstream
+    Mahadevan OCR + rank-correlation glyph mapping), selected by the
+    ``source`` parameter's default ("decoded"). The Holdat CSV corpus,
+    which contains the same inscriptions with M-prefixed sign IDs and
+    site metadata, is used only when it is selected explicitly
+    (source="holdat"). There is no automatic substitution: when the
+    selected source file is absent, the loader returns the
+    absent-corpus error. (Until the Spec 087 S3 fallback retirement,
+    owner-approved 2026-11-03, an absent decoded report silently fell
+    back to the Holdat CSV — which corpus a consumer received depended
+    on which files happened to exist.)
 
     Outputs both ``sequences`` (list[list[str]]) -- compatible with every
     other Phase-14/15 atomic node -- and ``inscriptions`` (list[dict])
@@ -82,9 +89,10 @@ def _m77_inscription_loader(inputs: dict, params: dict) -> dict:
 
     Spec 087 S3 (family F1): the mechanism is the generic
     JsonCorpusLoader engine (glossa_lab.generic_loaders); this node is
-    its M77 parameterisation — the fallback chain (decoded report,
-    then the Holdat CSV with its column mapping), the field map, and
-    the historical defaults live in the spec below, not in code.
+    its M77 parameterisation — the source chain (the decoded report,
+    plus the Holdat CSV with its column mapping as an explicit-only
+    source), the field map, and the historical defaults live in the
+    spec below, not in code.
     """
     from glossa_lab.generic_loaders import json_corpus_loader_execute  # noqa: PLC0415
 
@@ -96,7 +104,12 @@ def _m77_inscription_loader(inputs: dict, params: dict) -> dict:
     )
     spec = {
         "sources": [
-            {"kind": "json", "path": str(decoded_path), "site_coerce_str": True},
+            {
+                "kind": "json",
+                "path": str(decoded_path),
+                "site_coerce_str": True,
+                "name": "decoded",
+            },
             {
                 "kind": "csv_grouped",
                 "path": str(holdat_path),
@@ -104,8 +117,11 @@ def _m77_inscription_loader(inputs: dict, params: dict) -> dict:
                 "order_key": "position",
                 "value_key": "letters",
                 "site_field": "site",
+                "name": "holdat",
+                "explicit_only": True,
             },
         ],
+        "source_select_param": "source",
         "records_key": "inscriptions",
         "field_map": {
             "id": "id",
@@ -873,7 +889,9 @@ def _phase20_node_defs() -> list[Any]:
             "Phase-20 / Sources",
             "Load Mahadevan 1977 inscriptions from "
             "reports/mahadevan_texts_decoded.json with id / site_code / "
-            "length / sequence per inscription.",
+            "length / sequence per inscription. The Holdat CSV corpus "
+            "is loaded only when source='holdat' is set explicitly; "
+            "there is no automatic fallback.",
             inputs=[],
             outputs=[
                 {"name": "sequences", "type": "sequences"},
@@ -887,6 +905,9 @@ def _phase20_node_defs() -> list[Any]:
             params_schema={
                 "type": "object",
                 "properties": {
+                    "source": {"type": "string", "default": "decoded",
+                               "enum": ["decoded", "holdat"],
+                               "description": "Corpus source: 'decoded' = reports/mahadevan_texts_decoded.json (default); 'holdat' = the Holdat CSV corpus, used only when selected explicitly. An absent selected source is an error, never a silent substitution."},
                     "use_raw": {"type": "boolean", "default": False,
                                 "description": "If true, use raw OCR glyph chars (V=337) instead of mapped 3-digit codes."},
                     "min_length": {"type": "integer", "default": 1, "minimum": 1},

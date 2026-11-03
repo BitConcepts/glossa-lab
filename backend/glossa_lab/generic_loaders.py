@@ -14,10 +14,21 @@ content in parameters.
 
 JsonCorpusLoader spec (params["corpus_spec"], or flat params):
 
-  sources        fallback chain of file sources; the first existing
-                 file wins. Each source: {"kind": "json", "path": ...}
-                 or {"kind": "csv_grouped", "path": ..., "group_key",
-                 "order_key", "value_key", "site_field"}.
+  sources        chain of file sources; the first existing file wins
+                 among the eligible sources. Each source:
+                 {"kind": "json", "path": ...} or {"kind":
+                 "csv_grouped", "path": ..., "group_key", "order_key",
+                 "value_key", "site_field"}. A source may carry a
+                 "name" and "explicit_only": an explicit-only source is
+                 never picked up by the default chain — it serves only
+                 when named through source_select_param (Spec 087 S3
+                 fallback retirement: no silent substitution).
+  source_select_param
+                 optional name of a node param that selects one source
+                 by its "name". When the param is present, the chain is
+                 restricted to the named source (an unknown name is an
+                 explicit error); when it is absent, explicit-only
+                 sources are skipped.
   records_key    key holding the record list in a JSON source
                  (default "inscriptions"); a JSON top-level list is
                  unwrapped to its first element, as the M77 report is.
@@ -154,8 +165,9 @@ def _csv_grouped_records(source: dict[str, Any], path: Path) -> list[dict[str, A
 
     Rows are grouped by the group key (first-seen order), sorted by the
     order key, and each group becomes one record whose sequence is the
-    rows' value column. Mirrors the Holdat fallback of the historical
-    M77 loader exactly.
+    rows' value column. Mirrors the Holdat path of the M77 loader
+    exactly (the silent fallback before Spec 087 S3; an explicit
+    source selection since the fallback retirement).
     """
     group_key = source.get("group_key", "cisi_number")
     order_key = source.get("order_key", "position")
@@ -234,16 +246,38 @@ def _project_sequence_corpus(
 
 
 def json_corpus_loader_execute(inputs: dict, params: dict) -> dict:
-    """JsonCorpusLoader engine: fallback chain + field map + projection."""
+    """JsonCorpusLoader engine: source chain + field map + projection."""
     spec = params.get("corpus_spec") or _spec_from_flat_params(params)
     sources: list[dict[str, Any]] = spec.get("sources") or []
     records_key = spec.get("records_key", "inscriptions")
     parse_error = spec.get("parse_error", "raise")
     projection = spec.get("projection", "sequence_corpus")
 
+    # Source eligibility (Spec 087 S3): when the spec names a select
+    # param and the caller set it, the chain is exactly the named
+    # source — an explicit choice is honoured exactly, never widened.
+    # Without a selection, explicit-only sources are skipped, so no
+    # corpus is ever substituted silently for the default source.
+    select_param = spec.get("source_select_param")
+    selected = params.get(select_param) if select_param else None
+    if selected is not None:
+        eligible = [s for s in sources if s.get("name") == selected]
+        if not eligible:
+            choices = ", ".join(
+                str(s["name"]) for s in sources if s.get("name")
+            )
+            return {
+                "error": (
+                    f"JsonCorpusLoader: unknown source {selected!r}; "
+                    f"choose one of: {choices}"
+                )
+            }
+    else:
+        eligible = [s for s in sources if not s.get("explicit_only")]
+
     winning: dict[str, Any] | None = None
     winning_path: Path | None = None
-    for source in sources:
+    for source in eligible:
         candidate = Path(source["path"])
         if candidate.exists():
             winning, winning_path = source, candidate
@@ -297,7 +331,7 @@ def json_corpus_loader_execute(inputs: dict, params: dict) -> dict:
                     # record without raw text yields an empty sequence
                     # (the primary branch's entry.get("raw") or "").
                     # Only the grouped-CSV records carry _has_raw False —
-                    # the CSV fallback ignores use_raw entirely.
+                    # the CSV (Holdat) path ignores use_raw entirely.
                     "_has_raw": True,
                 }
             )

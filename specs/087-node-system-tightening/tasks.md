@@ -74,7 +74,7 @@ carries its gate/test output verbatim** — not a summary of it.
 
 ## Stage S2 — Palette curation (PR: `feat/087-s2-palette-curation`)
 
-- [ ] T201 `legacy` flag on `AtomicNodeDef` + the S2
+- [x] T201 `legacy` flag on `AtomicNodeDef` + the S2
   migration data file listing exactly the census's 359
   WRAPPER ids, generated from the classification and
   reviewable id by id. (C087-4) Acceptance: test (migration
@@ -82,28 +82,28 @@ carries its gate/test output verbatim** — not a summary of it.
   not establish any single node's classification is beyond
   argument — only that the set applied is the census's set,
   named.*
-- [ ] T202 Catalog filtering: default response excludes
+- [x] T202 Catalog filtering: default response excludes
   legacy; `?include_legacy=true` returns the full registry.
   (C087-4, C087-5) Acceptance: test (filter + completeness,
   both directions). *This does not establish the builder UI
   needs no other change — only that the API contract is the
   mechanical identity the claim states.*
-- [ ] T203 Resolution sweep: every stored graph fixture
+- [x] T203 Resolution sweep: every stored graph fixture
   resolves every atomicId against the full registry.
   (C087-5) Acceptance: test. *This does not establish the
   graphs run correctly — only that nothing dangles.*
-- [ ] T204 Pinned comparison runs over the 27 live graphs,
+- [x] T204 Pinned comparison runs over the 27 live graphs,
   pre-change outputs already on file from the audit baseline
   (or re-pinned at stage start with the act recorded);
   post-change outputs byte-compared. (C087-13) Acceptance:
   test. *This does not establish the outputs are correct —
   only that S2 did not change them.*
-- [ ] T205 Completeness test re-pinned three ways
+- [x] T205 Completeness test re-pinned three ways
   (registered 517 / legacy 359 / palette 158, per-category).
   (C087-17) Acceptance: test. *This does not establish the
   registry will not change again — only that its next change
   is equally visible.*
-- [ ] T206 S2 stage record: the migration id list, the
+- [x] T206 S2 stage record: the migration id list, the
   re-pin diff, comparison-run output verbatim, manual
   changes named. Acceptance: test. *This does not establish
   curation was the right call — only that it happened as

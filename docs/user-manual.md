@@ -298,6 +298,18 @@ shows a "Node palette failed to load" error with a **Retry** button
 instead of an empty list — an empty Palette with no error means the list
 loaded and the search box is filtering everything out.
 
+**Legacy nodes.** The registry also holds a large set of older
+single-study nodes (mostly one per research phase) that each run one
+fixed study or read one fixed report, with no inputs to wire and no
+parameters to set. These are marked **legacy**: they no longer appear in
+the Palette, because the Palette is the set of composable building
+blocks, and a node with nothing to connect or configure is not one.
+Nothing is deleted — every legacy node stays registered, and any saved
+experiment that uses one still opens, runs, and produces the same
+results as before. Only the offer to add new instances of them is gone.
+(The full registry, legacy nodes included, remains readable through the
+API's `?include_legacy=true` catalog option, for diagnostics.)
+
 ### Node Reference
 
 **Corpus Loaders:**

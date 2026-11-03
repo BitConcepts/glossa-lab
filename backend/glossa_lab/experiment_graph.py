@@ -64,15 +64,23 @@ class AtomicNodeDef:
         inputs: list[dict[str, str]], outputs: list[dict[str, str]],
         params_schema: dict[str, Any],
         fn: Callable[[dict[str, Any], dict[str, Any]], dict[str, Any]],
+        legacy: bool = False,
     ) -> None:
         self.id = id; self.name = name; self.category = category
         self.description = description; self.inputs = inputs
         self.outputs = outputs; self.params_schema = params_schema; self.fn = fn
+        # Spec 087 S2 (decision D1): legacy nodes stay registered and
+        # resolvable (ATOMIC_NODES is the one resolution table) but leave
+        # the builder palette — the catalog endpoint filters them out by
+        # default. The flag is applied at registry build from the S2
+        # migration data (see _apply_legacy_flags below), not per-site.
+        self.legacy = legacy
 
     def to_dict(self) -> dict[str, Any]:
         return {"id": self.id, "name": self.name, "category": self.category,
                 "description": self.description, "inputs": self.inputs,
-                "outputs": self.outputs, "params_schema": self.params_schema}
+                "outputs": self.outputs, "params_schema": self.params_schema,
+                "legacy": self.legacy}
 
 
 # ── Atomic node implementations ─────────────────────────────────────────────
@@ -1870,14 +1878,58 @@ def registry_strict_mode() -> bool:
 
 
 def registry_build_report() -> dict[str, Any]:
-    """Snapshot of the registry build: completeness, failures, duplicates."""
+    """Snapshot of the registry build: completeness, failures, duplicates.
+
+    Spec 087 S2 adds the legacy split (claim C087-17's three-way pin):
+    registered == legacy + palette, counted from the same flags the
+    catalog endpoint filters on, so the identity is mechanical.
+    """
+    legacy = sum(1 for d in ATOMIC_NODES.values() if d.legacy)
     return {
         "ok": not _REGISTRATION_FAILURES and not _REGISTRATION_DUPLICATES,
         "registered": len(ATOMIC_NODES),
+        "legacy": legacy,
+        "palette": len(ATOMIC_NODES) - legacy,
         "failures": [dict(f) for f in _REGISTRATION_FAILURES],
         "duplicates": [dict(d) for d in _REGISTRATION_DUPLICATES],
         "strict": registry_strict_mode(),
     }
+
+
+# ── Legacy migration (Spec 087 S2, decision D1) ──────────────────────────────
+# The 359 wrapper nodes of the census of record (audit census Appendix A,
+# param-carry verdict WRAPPER: DOMAIN nodes with no input ports and an empty
+# params schema) are flagged legacy at build time from the committed
+# migration data file below — the act is reviewable id by id, and any drift
+# between the file and the registry is recorded like a registration failure
+# (strict contexts refuse to start over it). Flagging changes nothing about
+# resolution or execution: ATOMIC_NODES keeps every entry.
+
+_LEGACY_MIGRATION_PATH = Path(__file__).parent / "spec087_s2_legacy_ids.json"
+
+
+def load_legacy_migration_ids() -> list[str]:
+    """The S2 migration's id list, read from its committed data file."""
+    data = json.loads(_LEGACY_MIGRATION_PATH.read_text(encoding="utf-8"))
+    return list(data["legacy_ids"])
+
+
+def _apply_legacy_flags() -> None:
+    """Flag every migration id legacy on its registered definition."""
+    try:
+        legacy_ids = load_legacy_migration_ids()
+    except Exception as exc:  # noqa: BLE001
+        _record_registration_failure("Spec 087 S2 legacy migration data", exc)
+        return
+    for node_id in legacy_ids:
+        node_def = ATOMIC_NODES.get(node_id)
+        if node_def is None:
+            _record_registration_failure(
+                "Spec 087 S2 legacy migration",
+                KeyError(f"migration id {node_id!r} is not registered"),
+            )
+        else:
+            node_def.legacy = True
 
 
 def _finalize_registry_build() -> None:
@@ -4094,6 +4146,12 @@ try:
     logger.info("Registered %d Phase-435 (spec 041) nodes", len(list(_p435_defs())))
 except Exception as _p435_exc:  # noqa: BLE001
     _record_registration_failure("Phase-435 (spec 041) nodes", _p435_exc)
+
+# ── Legacy flags (Spec 087 S2) ───────────────────────────────────────────────
+# Every registration block has run; flag the census's wrapper nodes legacy
+# from the migration data before the build closes, so a missing migration id
+# is recorded as a build failure like any other registry defect.
+_apply_legacy_flags()
 
 # ── Registry build close (Spec 087 S1) ───────────────────────────────────────
 # Every plugin block above has now run. Close the build: publish the census,

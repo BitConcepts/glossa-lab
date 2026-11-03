@@ -1,0 +1,1825 @@
+{
+ "spec": "087-S3-conv-A",
+ "cases": [
+  {
+   "id": "m77_primary_default",
+   "node": "M77InscriptionLoader",
+   "setup": {
+    "kind": "m77",
+    "decoded": "m77_decoded_dict.json",
+    "csv": null
+   },
+   "params": {},
+   "mode": "full",
+   "expected": {
+    "inscriptions": [
+     {
+      "id": "M001",
+      "length": 3,
+      "sequence": [
+       "001",
+       "002",
+       "003"
+      ],
+      "site_code": "MD"
+     },
+     {
+      "id": "M002",
+      "length": 1,
+      "sequence": [
+       "004"
+      ],
+      "site_code": "HR"
+     },
+     {
+      "id": "M003",
+      "length": 2,
+      "sequence": [
+       "005",
+       "006"
+      ],
+      "site_code": "7"
+     },
+     {
+      "id": null,
+      "length": 4,
+      "sequence": [
+       "007",
+       "008",
+       "009",
+       "010"
+      ],
+      "site_code": "XX"
+     }
+    ],
+    "label": "indus_m77",
+    "n_distinct_signs": 10,
+    "n_inscriptions": 4,
+    "n_tokens": 10,
+    "sequences": [
+     [
+      "001",
+      "002",
+      "003"
+     ],
+     [
+      "004"
+     ],
+     [
+      "005",
+      "006"
+     ],
+     [
+      "007",
+      "008",
+      "009",
+      "010"
+     ]
+    ],
+    "source": "__CASE_TMP__/reports/mahadevan_texts_decoded.json",
+    "use_raw": false
+   }
+  },
+  {
+   "id": "m77_primary_raw",
+   "node": "M77InscriptionLoader",
+   "setup": {
+    "kind": "m77",
+    "decoded": "m77_decoded_dict.json",
+    "csv": null
+   },
+   "params": {
+    "use_raw": true
+   },
+   "mode": "full",
+   "expected": {
+    "inscriptions": [
+     {
+      "id": "M001",
+      "length": 3,
+      "sequence": [
+       "a",
+       "b",
+       "c"
+      ],
+      "site_code": "MD"
+     },
+     {
+      "id": "M002",
+      "length": 2,
+      "sequence": [
+       "d",
+       "e"
+      ],
+      "site_code": "HR"
+     }
+    ],
+    "label": "indus_m77",
+    "n_distinct_signs": 5,
+    "n_inscriptions": 2,
+    "n_tokens": 5,
+    "sequences": [
+     [
+      "a",
+      "b",
+      "c"
+     ],
+     [
+      "d",
+      "e"
+     ]
+    ],
+    "source": "__CASE_TMP__/reports/mahadevan_texts_decoded.json",
+    "use_raw": true
+   }
+  },
+  {
+   "id": "m77_primary_min3",
+   "node": "M77InscriptionLoader",
+   "setup": {
+    "kind": "m77",
+    "decoded": "m77_decoded_dict.json",
+    "csv": null
+   },
+   "params": {
+    "min_length": 3
+   },
+   "mode": "full",
+   "expected": {
+    "inscriptions": [
+     {
+      "id": "M001",
+      "length": 3,
+      "sequence": [
+       "001",
+       "002",
+       "003"
+      ],
+      "site_code": "MD"
+     },
+     {
+      "id": null,
+      "length": 4,
+      "sequence": [
+       "007",
+       "008",
+       "009",
+       "010"
+      ],
+      "site_code": "XX"
+     }
+    ],
+    "label": "indus_m77",
+    "n_distinct_signs": 7,
+    "n_inscriptions": 2,
+    "n_tokens": 7,
+    "sequences": [
+     [
+      "001",
+      "002",
+      "003"
+     ],
+     [
+      "007",
+      "008",
+      "009",
+      "010"
+     ]
+    ],
+    "source": "__CASE_TMP__/reports/mahadevan_texts_decoded.json",
+    "use_raw": false
+   }
+  },
+  {
+   "id": "m77_primary_max2",
+   "node": "M77InscriptionLoader",
+   "setup": {
+    "kind": "m77",
+    "decoded": "m77_decoded_dict.json",
+    "csv": null
+   },
+   "params": {
+    "max_length": 2
+   },
+   "mode": "full",
+   "expected": {
+    "inscriptions": [
+     {
+      "id": "M002",
+      "length": 1,
+      "sequence": [
+       "004"
+      ],
+      "site_code": "HR"
+     },
+     {
+      "id": "M003",
+      "length": 2,
+      "sequence": [
+       "005",
+       "006"
+      ],
+      "site_code": "7"
+     }
+    ],
+    "label": "indus_m77",
+    "n_distinct_signs": 3,
+    "n_inscriptions": 2,
+    "n_tokens": 3,
+    "sequences": [
+     [
+      "004"
+     ],
+     [
+      "005",
+      "006"
+     ]
+    ],
+    "source": "__CASE_TMP__/reports/mahadevan_texts_decoded.json",
+    "use_raw": false
+   }
+  },
+  {
+   "id": "m77_primary_label_window",
+   "node": "M77InscriptionLoader",
+   "setup": {
+    "kind": "m77",
+    "decoded": "m77_decoded_dict.json",
+    "csv": null
+   },
+   "params": {
+    "label": "lbl",
+    "min_length": 2,
+    "max_length": 3
+   },
+   "mode": "full",
+   "expected": {
+    "inscriptions": [
+     {
+      "id": "M001",
+      "length": 3,
+      "sequence": [
+       "001",
+       "002",
+       "003"
+      ],
+      "site_code": "MD"
+     },
+     {
+      "id": "M003",
+      "length": 2,
+      "sequence": [
+       "005",
+       "006"
+      ],
+      "site_code": "7"
+     }
+    ],
+    "label": "lbl",
+    "n_distinct_signs": 5,
+    "n_inscriptions": 2,
+    "n_tokens": 5,
+    "sequences": [
+     [
+      "001",
+      "002",
+      "003"
+     ],
+     [
+      "005",
+      "006"
+     ]
+    ],
+    "source": "__CASE_TMP__/reports/mahadevan_texts_decoded.json",
+    "use_raw": false
+   }
+  },
+  {
+   "id": "m77_primary_list_wrapper",
+   "node": "M77InscriptionLoader",
+   "setup": {
+    "kind": "m77",
+    "decoded": "m77_decoded_list.json",
+    "csv": null
+   },
+   "params": {},
+   "mode": "full",
+   "expected": {
+    "inscriptions": [
+     {
+      "id": "L001",
+      "length": 1,
+      "sequence": [
+       "011"
+      ],
+      "site_code": "S1"
+     }
+    ],
+    "label": "indus_m77",
+    "n_distinct_signs": 1,
+    "n_inscriptions": 1,
+    "n_tokens": 1,
+    "sequences": [
+     [
+      "011"
+     ]
+    ],
+    "source": "__CASE_TMP__/reports/mahadevan_texts_decoded.json",
+    "use_raw": false
+   }
+  },
+  {
+   "id": "m77_primary_empty",
+   "node": "M77InscriptionLoader",
+   "setup": {
+    "kind": "m77",
+    "decoded": "m77_decoded_empty.json",
+    "csv": null
+   },
+   "params": {},
+   "mode": "full",
+   "expected": {
+    "inscriptions": [],
+    "label": "indus_m77",
+    "n_distinct_signs": 0,
+    "n_inscriptions": 0,
+    "n_tokens": 0,
+    "sequences": [],
+    "source": "__CASE_TMP__/reports/mahadevan_texts_decoded.json",
+    "use_raw": false
+   }
+  },
+  {
+   "id": "m77_fallback_default",
+   "node": "M77InscriptionLoader",
+   "setup": {
+    "kind": "m77",
+    "decoded": null,
+    "csv": "m77_holdat.csv"
+   },
+   "params": {},
+   "mode": "full",
+   "expected": {
+    "inscriptions": [
+     {
+      "id": "C002",
+      "length": 3,
+      "sequence": [
+       "CCC",
+       "BBB",
+       "EEE"
+      ],
+      "site_code": "SiteB"
+     },
+     {
+      "id": "C001",
+      "length": 1,
+      "sequence": [
+       "AAA"
+      ],
+      "site_code": "SiteA"
+     },
+     {
+      "id": "C003",
+      "length": 1,
+      "sequence": [
+       "DDD"
+      ],
+      "site_code": ""
+     },
+     {
+      "id": "C004",
+      "length": 1,
+      "sequence": [
+       "FFF"
+      ],
+      "site_code": "SiteD"
+     }
+    ],
+    "label": "indus_m77",
+    "n_distinct_signs": 6,
+    "n_inscriptions": 4,
+    "n_tokens": 6,
+    "sequences": [
+     [
+      "CCC",
+      "BBB",
+      "EEE"
+     ],
+     [
+      "AAA"
+     ],
+     [
+      "DDD"
+     ],
+     [
+      "FFF"
+     ]
+    ],
+    "source": "__CASE_TMP__/corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv",
+    "use_raw": false
+   }
+  },
+  {
+   "id": "m77_fallback_min3",
+   "node": "M77InscriptionLoader",
+   "setup": {
+    "kind": "m77",
+    "decoded": null,
+    "csv": "m77_holdat.csv"
+   },
+   "params": {
+    "min_length": 3
+   },
+   "mode": "full",
+   "expected": {
+    "inscriptions": [
+     {
+      "id": "C002",
+      "length": 3,
+      "sequence": [
+       "CCC",
+       "BBB",
+       "EEE"
+      ],
+      "site_code": "SiteB"
+     }
+    ],
+    "label": "indus_m77",
+    "n_distinct_signs": 3,
+    "n_inscriptions": 1,
+    "n_tokens": 3,
+    "sequences": [
+     [
+      "CCC",
+      "BBB",
+      "EEE"
+     ]
+    ],
+    "source": "__CASE_TMP__/corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv",
+    "use_raw": false
+   }
+  },
+  {
+   "id": "m77_fallback_raw_ignored",
+   "node": "M77InscriptionLoader",
+   "setup": {
+    "kind": "m77",
+    "decoded": null,
+    "csv": "m77_holdat.csv"
+   },
+   "params": {
+    "use_raw": true
+   },
+   "mode": "full",
+   "expected": {
+    "inscriptions": [
+     {
+      "id": "C002",
+      "length": 3,
+      "sequence": [
+       "CCC",
+       "BBB",
+       "EEE"
+      ],
+      "site_code": "SiteB"
+     },
+     {
+      "id": "C001",
+      "length": 1,
+      "sequence": [
+       "AAA"
+      ],
+      "site_code": "SiteA"
+     },
+     {
+      "id": "C003",
+      "length": 1,
+      "sequence": [
+       "DDD"
+      ],
+      "site_code": ""
+     },
+     {
+      "id": "C004",
+      "length": 1,
+      "sequence": [
+       "FFF"
+      ],
+      "site_code": "SiteD"
+     }
+    ],
+    "label": "indus_m77",
+    "n_distinct_signs": 6,
+    "n_inscriptions": 4,
+    "n_tokens": 6,
+    "sequences": [
+     [
+      "CCC",
+      "BBB",
+      "EEE"
+     ],
+     [
+      "AAA"
+     ],
+     [
+      "DDD"
+     ],
+     [
+      "FFF"
+     ]
+    ],
+    "source": "__CASE_TMP__/corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv",
+    "use_raw": true
+   }
+  },
+  {
+   "id": "m77_absent",
+   "node": "M77InscriptionLoader",
+   "setup": {
+    "kind": "m77",
+    "decoded": null,
+    "csv": null
+   },
+   "params": {},
+   "mode": "full",
+   "expected": {
+    "error": "M77 corpus not available: neither mahadevan_texts_decoded.json in reports/ nor Holdat CSV at __CASE_TMP__/corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv found. Run backend/scripts/decode_inscription_texts.py to regenerate."
+   }
+  },
+  {
+   "id": "icit_present",
+   "node": "ICITCorpusLoader",
+   "setup": {
+    "kind": "tmp_files",
+    "files": {
+     "data.json": "icit_cache.json"
+    }
+   },
+   "params": {
+    "data_path": "__CASE_TMP__/data.json"
+   },
+   "mode": "full",
+   "expected": {
+    "available": true,
+    "metadata": {
+     "source": "fixture",
+     "version": 3
+    },
+    "n_inscriptions": 3,
+    "n_signs": 42,
+    "verdict": "ICIT loaded: 3 inscriptions."
+   }
+  },
+  {
+   "id": "icit_present_min",
+   "node": "ICITCorpusLoader",
+   "setup": {
+    "kind": "tmp_files",
+    "files": {
+     "data.json": "icit_cache_min.json"
+    }
+   },
+   "params": {
+    "data_path": "__CASE_TMP__/data.json"
+   },
+   "mode": "full",
+   "expected": {
+    "available": true,
+    "metadata": {},
+    "n_inscriptions": 0,
+    "n_signs": 0,
+    "verdict": "ICIT loaded: 0 inscriptions."
+   }
+  },
+  {
+   "id": "icit_parse_error",
+   "node": "ICITCorpusLoader",
+   "setup": {
+    "kind": "tmp_files",
+    "files": {
+     "data.json": "broken.json"
+    }
+   },
+   "params": {
+    "data_path": "__CASE_TMP__/data.json"
+   },
+   "mode": "full",
+   "expected": {
+    "available": false,
+    "error": "parse error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)"
+   }
+  },
+  {
+   "id": "icit_absent_default",
+   "node": "ICITCorpusLoader",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "mode": "full",
+   "expected": {
+    "available": false,
+    "n_inscriptions": 0,
+    "n_signs": 0,
+    "verdict": "ICIT cache not available at corpora/downloads/icit_cache.json. To enable: request API access from andreas.fuls@tu-berlin.de, then download the database export to corpora/downloads/icit_cache.json. Expected when live: 4,537 objects, 5,509 texts, 19,616 sign occurrences."
+   }
+  },
+  {
+   "id": "fuls_present",
+   "node": "MathematicaEpigraphicaLoader",
+   "setup": {
+    "kind": "tmp_files",
+    "files": {
+     "data.json": "fuls_me.json"
+    }
+   },
+   "params": {
+    "data_path": "__CASE_TMP__/data.json"
+   },
+   "mode": "full",
+   "expected": {
+    "available": true,
+    "inscriptions": [
+     {
+      "id": "F1",
+      "site": "Mohenjo-daro"
+     },
+     {
+      "id": "F2",
+      "site": "harappa"
+     },
+     {
+      "id": "F3",
+      "site": "MOHENJO-DARO"
+     },
+     {
+      "id": "F4"
+     },
+     {
+      "id": "F5",
+      "site": ""
+     }
+    ],
+    "n_inscriptions": 5,
+    "sites_top": [
+     [
+      "MOHENJO-DARO",
+      2
+     ],
+     [
+      "HARAPPA",
+      1
+     ]
+    ],
+    "verdict": "Mathematica Epigraphica vol. 3 loaded: 5 inscriptions across 2 sites."
+   }
+  },
+  {
+   "id": "fuls_parse_error",
+   "node": "MathematicaEpigraphicaLoader",
+   "setup": {
+    "kind": "tmp_files",
+    "files": {
+     "data.json": "broken.json"
+    }
+   },
+   "params": {
+    "data_path": "__CASE_TMP__/data.json"
+   },
+   "mode": "full",
+   "expected": {
+    "available": false,
+    "error": "parse error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)"
+   }
+  },
+  {
+   "id": "fuls_absent_default",
+   "node": "MathematicaEpigraphicaLoader",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "mode": "full",
+   "expected": {
+    "available": false,
+    "inscriptions": [],
+    "n_inscriptions": 0,
+    "verdict": "Mathematica Epigraphica vol. 3 not available at corpora/downloads/fuls_me_vol3_corpus.json. To enable: purchase Amazon paperback ISBN 978-1671804869, OCR text into a JSON file at this path, or request data from Andreas Fuls (andreas.fuls@tu-berlin.de). Phase-29 falls back to Mahadevan 1977 corpus (1,669 inscriptions) which has ~30%% overlap with Fuls vol. 3 (5,509 inscriptions)."
+   }
+  },
+  {
+   "id": "mahadevan_default",
+   "node": "MahadevanInscriptionLoader",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "mode": "hash",
+   "expected_sha256": "84cd8439b664a53d436142fdc67efd4c26a41d5d9cd3eb2c735c0b966b68d6b0",
+   "expected_keys": [
+    "inscriptions",
+    "metadata",
+    "n_distinct_signs",
+    "n_inscriptions",
+    "n_tokens",
+    "top_20_signs",
+    "verdict"
+   ],
+   "expected_fields": {
+    "n_inscriptions": 1669,
+    "n_tokens": 5361,
+    "n_distinct_signs": 64,
+    "metadata": {
+     "max_length": 72,
+     "mean_length": 3.212,
+     "n_distinct_signs": 64,
+     "n_inscriptions": 1669,
+     "n_tokens": 5361,
+     "sign_numbering": "Mahadevan M77 (1977)",
+     "source": "Mahadevan 1977 OCR + rank-corr (reports/mahadevan_corpus_flat.txt)",
+     "top_10_signs": [
+      [
+       "047",
+       541
+      ],
+      [
+       "740",
+       432
+      ],
+      [
+       "700",
+       355
+      ],
+      [
+       "874",
+       219
+      ],
+      [
+       "400",
+       211
+      ],
+      [
+       "520",
+       196
+      ],
+      [
+       "481",
+       179
+      ],
+      [
+       "692",
+       171
+      ],
+      [
+       "427",
+       147
+      ],
+      [
+       "861",
+       138
+      ]
+     ]
+    },
+    "top_20_signs": [
+     [
+      "047",
+      541
+     ],
+     [
+      "740",
+      432
+     ],
+     [
+      "700",
+      355
+     ],
+     [
+      "874",
+      219
+     ],
+     [
+      "400",
+      211
+     ],
+     [
+      "520",
+      196
+     ],
+     [
+      "481",
+      179
+     ],
+     [
+      "692",
+      171
+     ],
+     [
+      "427",
+      147
+     ],
+     [
+      "861",
+      138
+     ],
+     [
+      "003",
+      124
+     ],
+     [
+      "820",
+      121
+     ],
+     [
+      "817",
+      107
+     ],
+     [
+      "858",
+      105
+     ],
+     [
+      "090",
+      102
+     ],
+     [
+      "045",
+      92
+     ],
+     [
+      "203",
+      85
+     ],
+     [
+      "034",
+      80
+     ],
+     [
+      "920",
+      76
+     ],
+     [
+      "256",
+      73
+     ]
+    ],
+    "verdict": "Mahadevan 1977 corpus loaded: 1669 inscriptions, 5361 sign tokens, 64 distinct M77 sign codes. Mean inscription length: 3.212."
+   }
+  },
+  {
+   "id": "mahadevan_min4",
+   "node": "MahadevanInscriptionLoader",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "min_length": 4
+   },
+   "mode": "hash",
+   "expected_sha256": "fc4e68bc3bfd759cf82977af02f5719431f07ef57e9aba51831e7b7b69ecb301",
+   "expected_keys": [
+    "inscriptions",
+    "metadata",
+    "n_distinct_signs",
+    "n_inscriptions",
+    "n_tokens",
+    "top_20_signs",
+    "verdict"
+   ],
+   "expected_fields": {
+    "n_inscriptions": 478,
+    "n_tokens": 3273,
+    "n_distinct_signs": 56,
+    "metadata": {
+     "max_length": 72,
+     "mean_length": 3.212,
+     "n_distinct_signs": 64,
+     "n_inscriptions": 1669,
+     "n_tokens": 5361,
+     "sign_numbering": "Mahadevan M77 (1977)",
+     "source": "Mahadevan 1977 OCR + rank-corr (reports/mahadevan_corpus_flat.txt)",
+     "top_10_signs": [
+      [
+       "047",
+       541
+      ],
+      [
+       "740",
+       432
+      ],
+      [
+       "700",
+       355
+      ],
+      [
+       "874",
+       219
+      ],
+      [
+       "400",
+       211
+      ],
+      [
+       "520",
+       196
+      ],
+      [
+       "481",
+       179
+      ],
+      [
+       "692",
+       171
+      ],
+      [
+       "427",
+       147
+      ],
+      [
+       "861",
+       138
+      ]
+     ]
+    },
+    "top_20_signs": [
+     [
+      "740",
+      426
+     ],
+     [
+      "700",
+      340
+     ],
+     [
+      "047",
+      259
+     ],
+     [
+      "874",
+      173
+     ],
+     [
+      "520",
+      169
+     ],
+     [
+      "400",
+      138
+     ],
+     [
+      "481",
+      117
+     ],
+     [
+      "427",
+      95
+     ],
+     [
+      "820",
+      92
+     ],
+     [
+      "045",
+      85
+     ],
+     [
+      "003",
+      83
+     ],
+     [
+      "203",
+      77
+     ],
+     [
+      "692",
+      76
+     ],
+     [
+      "817",
+      69
+     ],
+     [
+      "861",
+      69
+     ],
+     [
+      "169",
+      68
+     ],
+     [
+      "858",
+      59
+     ],
+     [
+      "034",
+      57
+     ],
+     [
+      "413",
+      44
+     ],
+     [
+      "394",
+      43
+     ]
+    ],
+    "verdict": "Mahadevan 1977 corpus loaded: 478 inscriptions, 3273 sign tokens, 56 distinct M77 sign codes. Mean inscription length: 3.212."
+   }
+  },
+  {
+   "id": "mahadevan_min0",
+   "node": "MahadevanInscriptionLoader",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "min_length": 0
+   },
+   "mode": "hash",
+   "expected_sha256": "84cd8439b664a53d436142fdc67efd4c26a41d5d9cd3eb2c735c0b966b68d6b0",
+   "expected_keys": [
+    "inscriptions",
+    "metadata",
+    "n_distinct_signs",
+    "n_inscriptions",
+    "n_tokens",
+    "top_20_signs",
+    "verdict"
+   ],
+   "expected_fields": {
+    "n_inscriptions": 1669,
+    "n_tokens": 5361,
+    "n_distinct_signs": 64,
+    "metadata": {
+     "max_length": 72,
+     "mean_length": 3.212,
+     "n_distinct_signs": 64,
+     "n_inscriptions": 1669,
+     "n_tokens": 5361,
+     "sign_numbering": "Mahadevan M77 (1977)",
+     "source": "Mahadevan 1977 OCR + rank-corr (reports/mahadevan_corpus_flat.txt)",
+     "top_10_signs": [
+      [
+       "047",
+       541
+      ],
+      [
+       "740",
+       432
+      ],
+      [
+       "700",
+       355
+      ],
+      [
+       "874",
+       219
+      ],
+      [
+       "400",
+       211
+      ],
+      [
+       "520",
+       196
+      ],
+      [
+       "481",
+       179
+      ],
+      [
+       "692",
+       171
+      ],
+      [
+       "427",
+       147
+      ],
+      [
+       "861",
+       138
+      ]
+     ]
+    },
+    "top_20_signs": [
+     [
+      "047",
+      541
+     ],
+     [
+      "740",
+      432
+     ],
+     [
+      "700",
+      355
+     ],
+     [
+      "874",
+      219
+     ],
+     [
+      "400",
+      211
+     ],
+     [
+      "520",
+      196
+     ],
+     [
+      "481",
+      179
+     ],
+     [
+      "692",
+      171
+     ],
+     [
+      "427",
+      147
+     ],
+     [
+      "861",
+      138
+     ],
+     [
+      "003",
+      124
+     ],
+     [
+      "820",
+      121
+     ],
+     [
+      "817",
+      107
+     ],
+     [
+      "858",
+      105
+     ],
+     [
+      "090",
+      102
+     ],
+     [
+      "045",
+      92
+     ],
+     [
+      "203",
+      85
+     ],
+     [
+      "034",
+      80
+     ],
+     [
+      "920",
+      76
+     ],
+     [
+      "256",
+      73
+     ]
+    ],
+    "verdict": "Mahadevan 1977 corpus loaded: 1669 inscriptions, 5361 sign tokens, 64 distinct M77 sign codes. Mean inscription length: 3.212."
+   }
+  },
+  {
+   "id": "mahadevan_min_bad",
+   "node": "MahadevanInscriptionLoader",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "min_length": "bad"
+   },
+   "mode": "hash",
+   "expected_sha256": "84cd8439b664a53d436142fdc67efd4c26a41d5d9cd3eb2c735c0b966b68d6b0",
+   "expected_keys": [
+    "inscriptions",
+    "metadata",
+    "n_distinct_signs",
+    "n_inscriptions",
+    "n_tokens",
+    "top_20_signs",
+    "verdict"
+   ],
+   "expected_fields": {
+    "n_inscriptions": 1669,
+    "n_tokens": 5361,
+    "n_distinct_signs": 64,
+    "metadata": {
+     "max_length": 72,
+     "mean_length": 3.212,
+     "n_distinct_signs": 64,
+     "n_inscriptions": 1669,
+     "n_tokens": 5361,
+     "sign_numbering": "Mahadevan M77 (1977)",
+     "source": "Mahadevan 1977 OCR + rank-corr (reports/mahadevan_corpus_flat.txt)",
+     "top_10_signs": [
+      [
+       "047",
+       541
+      ],
+      [
+       "740",
+       432
+      ],
+      [
+       "700",
+       355
+      ],
+      [
+       "874",
+       219
+      ],
+      [
+       "400",
+       211
+      ],
+      [
+       "520",
+       196
+      ],
+      [
+       "481",
+       179
+      ],
+      [
+       "692",
+       171
+      ],
+      [
+       "427",
+       147
+      ],
+      [
+       "861",
+       138
+      ]
+     ]
+    },
+    "top_20_signs": [
+     [
+      "047",
+      541
+     ],
+     [
+      "740",
+      432
+     ],
+     [
+      "700",
+      355
+     ],
+     [
+      "874",
+      219
+     ],
+     [
+      "400",
+      211
+     ],
+     [
+      "520",
+      196
+     ],
+     [
+      "481",
+      179
+     ],
+     [
+      "692",
+      171
+     ],
+     [
+      "427",
+      147
+     ],
+     [
+      "861",
+      138
+     ],
+     [
+      "003",
+      124
+     ],
+     [
+      "820",
+      121
+     ],
+     [
+      "817",
+      107
+     ],
+     [
+      "858",
+      105
+     ],
+     [
+      "090",
+      102
+     ],
+     [
+      "045",
+      92
+     ],
+     [
+      "203",
+      85
+     ],
+     [
+      "034",
+      80
+     ],
+     [
+      "920",
+      76
+     ],
+     [
+      "256",
+      73
+     ]
+    ],
+    "verdict": "Mahadevan 1977 corpus loaded: 1669 inscriptions, 5361 sign tokens, 64 distinct M77 sign codes. Mean inscription length: 3.212."
+   }
+  },
+  {
+   "id": "epsd2_all",
+   "node": "EPSD2NamesLoader",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "mode": "hash",
+   "expected_sha256": "fd7a67da74abbc4c6d83f4b8b69894c760625f10fee49406ecd13519bf165360",
+   "expected_keys": [
+    "metadata",
+    "n_names",
+    "n_total",
+    "names",
+    "pos_filter",
+    "verdict"
+   ],
+   "expected_fields": {
+    "n_names": 4848,
+    "n_total": 4848,
+    "metadata": {
+     "license": "CC BY-SA",
+     "n_total_entries": 4848,
+     "pos_counts": {
+      "CN": 45,
+      "DN": 2068,
+      "EN": 4,
+      "FN": 3,
+      "GN": 263,
+      "MN": 19,
+      "ON": 73,
+      "PN": 1222,
+      "RN": 306,
+      "SN": 335,
+      "TN": 346,
+      "WN": 164
+     },
+     "source": "https://oracc.museum.upenn.edu/json/epsd2-names.zip"
+    },
+    "pos_filter": "(all)",
+    "verdict": "ePSD2 names loaded: 4848 entries. Total entries: 4848. Source: https://oracc.museum.upenn.edu/json/epsd2-names.zip (license: CC BY-SA)."
+   }
+  },
+  {
+   "id": "epsd2_pn",
+   "node": "EPSD2NamesLoader",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "pos_filter": "PN"
+   },
+   "mode": "hash",
+   "expected_sha256": "49418bd76f536e4e6957cd7ad06a41e8bd66e6b41dbc15da4584fa92e4acb418",
+   "expected_keys": [
+    "metadata",
+    "n_names",
+    "n_total",
+    "names",
+    "pos_filter",
+    "verdict"
+   ],
+   "expected_fields": {
+    "n_names": 1222,
+    "n_total": 4848,
+    "metadata": {
+     "license": "CC BY-SA",
+     "n_total_entries": 4848,
+     "pos_counts": {
+      "CN": 45,
+      "DN": 2068,
+      "EN": 4,
+      "FN": 3,
+      "GN": 263,
+      "MN": 19,
+      "ON": 73,
+      "PN": 1222,
+      "RN": 306,
+      "SN": 335,
+      "TN": 346,
+      "WN": 164
+     },
+     "source": "https://oracc.museum.upenn.edu/json/epsd2-names.zip"
+    },
+    "pos_filter": "PN",
+    "verdict": "ePSD2 names loaded: 1222 entries (POS=PN). Total entries: 4848. Source: https://oracc.museum.upenn.edu/json/epsd2-names.zip (license: CC BY-SA)."
+   }
+  },
+  {
+   "id": "epsd2_none",
+   "node": "EPSD2NamesLoader",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "pos_filter": "ZZ"
+   },
+   "mode": "hash",
+   "expected_sha256": "841b8d1a08077d88d623743aced1b483e607f438a1871be6424172cbcb904c93",
+   "expected_keys": [
+    "metadata",
+    "n_names",
+    "n_total",
+    "names",
+    "pos_filter",
+    "verdict"
+   ],
+   "expected_fields": {
+    "n_names": 0,
+    "n_total": 4848,
+    "metadata": {
+     "license": "CC BY-SA",
+     "n_total_entries": 4848,
+     "pos_counts": {
+      "CN": 45,
+      "DN": 2068,
+      "EN": 4,
+      "FN": 3,
+      "GN": 263,
+      "MN": 19,
+      "ON": 73,
+      "PN": 1222,
+      "RN": 306,
+      "SN": 335,
+      "TN": 346,
+      "WN": 164
+     },
+     "source": "https://oracc.museum.upenn.edu/json/epsd2-names.zip"
+    },
+    "pos_filter": "ZZ",
+    "verdict": "ePSD2 names loaded: 0 entries (POS=ZZ). Total entries: 4848. Source: https://oracc.museum.upenn.edu/json/epsd2-names.zip (license: CC BY-SA)."
+   }
+  },
+  {
+   "id": "contact_default",
+   "node": "ContactCorpusLoader",
+   "setup": {
+    "kind": "contact"
+   },
+   "params": {},
+   "mode": "hash",
+   "expected_sha256": "55c77017263d7aef6b99fc54fe33d919e910c6ca05235612d4a10a1dbb173741",
+   "expected_keys": [
+    "keyword_counts",
+    "n_persons",
+    "n_seals_at_mesopotamia",
+    "n_tablets",
+    "period_counts",
+    "persons",
+    "provenience_counts",
+    "seals_at_mesopotamia",
+    "tablets"
+   ],
+   "expected_fields": {
+    "n_tablets": 4,
+    "keyword_counts": {
+     "dilmun": 1,
+     "magan": 1,
+     "me-luh-ha": 3
+    },
+    "period_counts": {
+     "Isin-Larsa": 1,
+     "Old Akkadian": 1,
+     "Ur III": 2
+    },
+    "provenience_counts": {
+     "Girsu": 1,
+     "Larsa": 1,
+     "Umma": 1,
+     "Ur": 1
+    },
+    "n_seals_at_mesopotamia": 2,
+    "n_persons": 2
+   }
+  },
+  {
+   "id": "contact_period",
+   "node": "ContactCorpusLoader",
+   "setup": {
+    "kind": "contact"
+   },
+   "params": {
+    "period_filter": "ur iii"
+   },
+   "mode": "hash",
+   "expected_sha256": "4018abdf8adaf73ddc033fc838c995dd9287057c99b19fd315544fd37769fc7b",
+   "expected_keys": [
+    "keyword_counts",
+    "n_persons",
+    "n_seals_at_mesopotamia",
+    "n_tablets",
+    "period_counts",
+    "persons",
+    "provenience_counts",
+    "seals_at_mesopotamia",
+    "tablets"
+   ],
+   "expected_fields": {
+    "n_tablets": 2,
+    "keyword_counts": {
+     "dilmun": 1,
+     "magan": 1,
+     "me-luh-ha": 3
+    },
+    "period_counts": {
+     "Isin-Larsa": 1,
+     "Old Akkadian": 1,
+     "Ur III": 2
+    },
+    "provenience_counts": {
+     "Girsu": 1,
+     "Larsa": 1,
+     "Umma": 1,
+     "Ur": 1
+    },
+    "n_seals_at_mesopotamia": 2,
+    "n_persons": 2
+   }
+  },
+  {
+   "id": "contact_keyword",
+   "node": "ContactCorpusLoader",
+   "setup": {
+    "kind": "contact"
+   },
+   "params": {
+    "keyword_filter": "me-luh"
+   },
+   "mode": "hash",
+   "expected_sha256": "4018abdf8adaf73ddc033fc838c995dd9287057c99b19fd315544fd37769fc7b",
+   "expected_keys": [
+    "keyword_counts",
+    "n_persons",
+    "n_seals_at_mesopotamia",
+    "n_tablets",
+    "period_counts",
+    "persons",
+    "provenience_counts",
+    "seals_at_mesopotamia",
+    "tablets"
+   ],
+   "expected_fields": {
+    "n_tablets": 2,
+    "keyword_counts": {
+     "dilmun": 1,
+     "magan": 1,
+     "me-luh-ha": 3
+    },
+    "period_counts": {
+     "Isin-Larsa": 1,
+     "Old Akkadian": 1,
+     "Ur III": 2
+    },
+    "provenience_counts": {
+     "Girsu": 1,
+     "Larsa": 1,
+     "Umma": 1,
+     "Ur": 1
+    },
+    "n_seals_at_mesopotamia": 2,
+    "n_persons": 2
+   }
+  },
+  {
+   "id": "contact_both",
+   "node": "ContactCorpusLoader",
+   "setup": {
+    "kind": "contact"
+   },
+   "params": {
+    "period_filter": "akkadian",
+    "keyword_filter": "dilmun"
+   },
+   "mode": "hash",
+   "expected_sha256": "9b7361c0044e0155c9e091b772d949d9a6a695154866840ca15c691d6da5478f",
+   "expected_keys": [
+    "keyword_counts",
+    "n_persons",
+    "n_seals_at_mesopotamia",
+    "n_tablets",
+    "period_counts",
+    "persons",
+    "provenience_counts",
+    "seals_at_mesopotamia",
+    "tablets"
+   ],
+   "expected_fields": {
+    "n_tablets": 1,
+    "keyword_counts": {
+     "dilmun": 1,
+     "magan": 1,
+     "me-luh-ha": 3
+    },
+    "period_counts": {
+     "Isin-Larsa": 1,
+     "Old Akkadian": 1,
+     "Ur III": 2
+    },
+    "provenience_counts": {
+     "Girsu": 1,
+     "Larsa": 1,
+     "Umma": 1,
+     "Ur": 1
+    },
+    "n_seals_at_mesopotamia": 2,
+    "n_persons": 2
+   }
+  },
+  {
+   "id": "contact_nomatch",
+   "node": "ContactCorpusLoader",
+   "setup": {
+    "kind": "contact"
+   },
+   "params": {
+    "period_filter": "zzz-no-match"
+   },
+   "mode": "hash",
+   "expected_sha256": "77417f5b2c93411e3eccc9c61ff20a49cc29ec05936631ee1f6a0221586bbaeb",
+   "expected_keys": [
+    "keyword_counts",
+    "n_persons",
+    "n_seals_at_mesopotamia",
+    "n_tablets",
+    "period_counts",
+    "persons",
+    "provenience_counts",
+    "seals_at_mesopotamia",
+    "tablets"
+   ],
+   "expected_fields": {
+    "n_tablets": 0,
+    "keyword_counts": {
+     "dilmun": 1,
+     "magan": 1,
+     "me-luh-ha": 3
+    },
+    "period_counts": {
+     "Isin-Larsa": 1,
+     "Old Akkadian": 1,
+     "Ur III": 2
+    },
+    "provenience_counts": {
+     "Girsu": 1,
+     "Larsa": 1,
+     "Umma": 1,
+     "Ur": 1
+    },
+    "n_seals_at_mesopotamia": 2,
+    "n_persons": 2
+   }
+  },
+  {
+   "id": "script_runner_no_path",
+   "node": "LegacyPhaseScriptRunner",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "mode": "full",
+   "expected": {
+    "error": "script_path is required"
+   }
+  },
+  {
+   "id": "script_runner_missing",
+   "node": "LegacyPhaseScriptRunner",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "script_path": "scripts/does_not_exist_087.py"
+   },
+   "mode": "full",
+   "expected": {
+    "error": "script not found: __REPO_ROOT__/scripts/does_not_exist_087.py"
+   }
+  },
+  {
+   "id": "script_runner_real_run",
+   "node": "LegacyPhaseScriptRunner",
+   "setup": {
+    "kind": "script_runner"
+   },
+   "params": {
+    "script_path": "scripts/tiny.py",
+    "output_path": "reports/tiny_out.json"
+   },
+   "mode": "full",
+   "expected": {
+    "exit_code": 0,
+    "json_snippet": {
+     "alpha": 1,
+     "beta": [
+      1,
+      2,
+      3
+     ]
+    },
+    "output_path": "__CASE_TMP__/reports/tiny_out.json",
+    "output_present": true,
+    "output_size_bytes": 31,
+    "script_path": "__CASE_TMP__/scripts/tiny.py",
+    "stderr_tail": "",
+    "stdout_tail": "",
+    "verdict": "Legacy script ran with exit code 0. Output present (31 bytes)."
+   }
+  },
+  {
+   "id": "pdf_no_path",
+   "node": "PDFTextExtractor",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "mode": "full",
+   "expected": {
+    "error": "no file_path provided"
+   }
+  },
+  {
+   "id": "pdf_extract",
+   "node": "PDFTextExtractor",
+   "setup": {
+    "kind": "pdf"
+   },
+   "params": {
+    "file_path": "__FIXTURE_PDF__"
+   },
+   "mode": "full",
+   "expected": {
+    "end_page": 2,
+    "file_path": "__FIXTURE_PDF__",
+    "n_pages_extracted": 2,
+    "n_total_pages": 2,
+    "pages": [
+     {
+      "page_num": 0,
+      "text": "Glossa fixture page one\n"
+     },
+     {
+      "page_num": 1,
+      "text": "Glossa fixture page two\n"
+     }
+    ],
+    "start_page": 0,
+    "total_characters": 48
+   }
+  },
+  {
+   "id": "pdf_extract_max1",
+   "node": "PDFTextExtractor",
+   "setup": {
+    "kind": "pdf"
+   },
+   "params": {
+    "file_path": "__FIXTURE_PDF__",
+    "max_pages": 1
+   },
+   "mode": "full",
+   "expected": {
+    "end_page": 1,
+    "file_path": "__FIXTURE_PDF__",
+    "n_pages_extracted": 1,
+    "n_total_pages": 2,
+    "pages": [
+     {
+      "page_num": 0,
+      "text": "Glossa fixture page one\n"
+     }
+    ],
+    "start_page": 0,
+    "total_characters": 24
+   }
+  }
+ ]
+}

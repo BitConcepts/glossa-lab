@@ -119,18 +119,30 @@ carries its gate/test output verbatim** — not a summary of it.
   over the 68: exactly one disposition each). *This does not
   establish the dispositions are optimal — only that each is
   singular and evidenced.*
-- [ ] T302 Retention files for disposition (c): per node, the
+- [x] T302 Retention files for disposition (c): per node, the
   D3 bar's three legs — the composition attempt with its
   fixture diff, the parameter/port list, the demand
   instances. (C087-6) Acceptance: human-as-oracle on the
   filed evidence; a missing leg re-triages the node.
   *This does not establish a retained node is well-designed —
   only that its domain specificity is demonstrated necessity.*
+  Complete by vacuity (2026-11-02): the merged triage record
+  (PR #490) dispositioned zero of the 68 nodes as (c) retain,
+  and the parent accepted the zero-retention outcome at the
+  triage gate. No retention files exist to write; see
+  records/stage-s3-conversions.md.
 - [ ] T303 Conversion PRs (disposition (a)): domain content
   moved to params/ports; per-node fixture equivalence,
   byte-identical, against the original node. (C087-7)
   Acceptance: test. *This does not establish the primitive is
   complete — only that the replaced behaviours reproduce.*
+  Progress: PR-A (families F14 + F1) converted the six F1
+  loaders onto the two new generic primitives and relabelled
+  the two F14 nodes, with byte-identical fixture equivalence
+  and the 27-graph comparison holding — see
+  records/stage-s3-conversions.md. Twelve families remain
+  (F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13); this
+  task ticks only when the last conversion PR merges.
 - [ ] T304 Re-expression PRs (disposition (b)): consuming
   experiments rebuilt as compositions of existing
   primitives; C087-13 comparison runs re-proved per PR.

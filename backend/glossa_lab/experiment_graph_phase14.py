@@ -844,42 +844,22 @@ def _derived_anchor_set(inputs: dict, params: dict) -> dict:
     IconographicAnchorPin's hardcoded defaults. Each anchor is a sign whose
     distribution is significantly skewed toward a single archaeological
     context (e.g. site, artifact type) above a permutation baseline.
+
+    Spec 087 S3 (family F8): the mechanism is the generic
+    AssociationAnchorDeriver engine (glossa_lab.generic_primitives);
+    this node is its Phase-14 parameterisation — the "ctx:" anchor-id
+    convention is passed as the anchor_prefix param. (The context
+    label is treated as the "value" the anchor binds the sign to;
+    downstream it is just a string the SA initial mapping is seeded
+    with — what matters is that it came from real data.)
     """
-    associations = inputs.get("associations") or []
-    min_z = float(params.get("min_z", 2.0))
-    max_anchors = int(params.get("max_anchors", 25))
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        association_anchor_deriver_execute,
+    )
 
-    anchors: dict[str, str] = {}
-    seen_signs: set[str] = set()
-    table: list[dict] = []
-    for r in sorted(
-        (x for x in associations if isinstance(x, dict)),
-        key=lambda x: -float(x.get("pmi_z", 0.0)),
-    ):
-        if float(r.get("pmi_z", 0.0)) < min_z:
-            break
-        sign = str(r.get("sign", ""))
-        ctx = str(r.get("context", ""))
-        if not sign or not ctx or sign in seen_signs:
-            continue
-        # Treat the context label as the "value" the anchor binds the sign
-        # to. Downstream this is just a string the SA initial mapping is
-        # seeded with; what matters is that it came from real data.
-        anchors[sign] = f"ctx:{ctx}"
-        seen_signs.add(sign)
-        table.append(r)
-        if len(anchors) >= max_anchors:
-            break
-
-    return {
-        "anchors": anchors,
-        "n_anchors": len(anchors),
-        "anchor_table": table,
-        "min_z": min_z,
-        "verdict": (
-            f"Derived {len(anchors)} anchors from associations at z>={min_z}."
-        ),
-    }
+    merged = dict(params)
+    merged.setdefault("anchor_prefix", "ctx:")
+    return association_anchor_deriver_execute(inputs, merged)
 
 
 # ── Epistatic 1 — EpistaticInteractionDetector ──────────────────────────
@@ -1078,64 +1058,18 @@ def _epistatic_anchor_ranker(inputs: dict, params: dict) -> dict:
     the criterion that should drive Berg-Kirkpatrick / SA anchor placement.
 
     Replaces the frequency-based AnchorGenerator default.
+
+    Spec 087 S3 (family F8): the mechanism is the generic
+    PMICentralityRanker engine (glossa_lab.generic_primitives) —
+    the triage found no domain constants in this node at all;
+    this wrapper is the delegation point that keeps the
+    registered id and its parameter surface.
     """
-    sequences: list[list[str]] = inputs.get("sequences") or []
-    top_k = max(1, int(params.get("top_k", 10)))
-    min_count = max(1, int(params.get("min_count", 5)))
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        pmi_centrality_ranker_execute,
+    )
 
-    if not sequences:
-        return {"ranking": [], "verdict": "Empty corpus."}
-
-    uni = _ngram_counts(sequences, 1)
-    bi = _ngram_counts(sequences, 2)
-    n_uni = sum(uni.values()) or 1
-    n_bi = sum(bi.values()) or 1
-
-    centrality: dict[str, float] = {}
-    n_partners: dict[str, int] = {}
-    weighted_pmi: dict[str, float] = {}
-    for (a, b), c in bi.items():
-        if c < min_count:
-            continue
-        p_a = uni[(a,)] / n_uni
-        p_b = uni[(b,)] / n_uni
-        p_ab = c / n_bi
-        if p_a <= 0 or p_b <= 0:
-            continue
-        pmi = math.log(p_ab / (p_a * p_b))
-        # Weight by count to favor signs with many high-confidence partners.
-        w = abs(pmi) * c
-        centrality[a] = centrality.get(a, 0.0) + w
-        centrality[b] = centrality.get(b, 0.0) + w
-        n_partners[a] = n_partners.get(a, 0) + 1
-        n_partners[b] = n_partners.get(b, 0) + 1
-        weighted_pmi[a] = weighted_pmi.get(a, 0.0) + pmi * c
-        weighted_pmi[b] = weighted_pmi.get(b, 0.0) + pmi * c
-
-    ranking = sorted(
-        (
-            {
-                "sign": s,
-                "centrality": round(centrality[s], 4),
-                "n_partners": n_partners.get(s, 0),
-                "weighted_pmi_sum": round(weighted_pmi.get(s, 0.0), 4),
-                "unigram_count": uni[(s,)],
-            }
-            for s in centrality
-        ),
-        key=lambda r: -r["centrality"],
-    )[:top_k]
-
-    return {
-        "ranking": ranking,
-        "n_signs_ranked": len(centrality),
-        "top_k": top_k,
-        "verdict": (
-            f"Ranked {len(centrality)} signs by epistatic centrality; "
-            f"top sign {ranking[0]['sign'] if ranking else '?'} "
-            f"(centrality={ranking[0]['centrality'] if ranking else 0:.2f})."
-        ),
-    }
+    return pmi_centrality_ranker_execute(inputs, params)
 
 
 # ── Constraint projection — removed, with pointer ────

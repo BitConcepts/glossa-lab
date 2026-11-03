@@ -459,100 +459,31 @@ def _cluster_archaeology(inputs: dict, params: dict) -> dict:
     test of site-vs-cluster independence on the cluster's hosting
     inscriptions, plus a verdict on whether the cluster's archaeological
     distribution differs from the corpus baseline.
+
+    Spec 087 S3 (family F3): the mechanism is the generic
+    ClusterContingencyProfile engine (glossa_lab.generic_primitives);
+    this node is its Phase-20 parameterisation — the site strata
+    rule (site_code, 2-character prefix + "0000"), the significance
+    rule (chi2 > 3.84 * dof, ~p<0.05), the 25-row site table, and
+    the PREDICTION 2 verdict text live in the params below, not
+    in code.
     """
-    inscriptions: list[dict] = inputs.get("inscriptions") or []
-    sign_to_cluster: dict[str, int] = inputs.get("sign_to_cluster") or {}
-    target_cluster = int(params.get("target_cluster", 0))
-    fixed_members = params.get("fixed_members") or []
-
-    target_signs: set[str] = set()
-    if fixed_members:
-        target_signs = {str(s) for s in fixed_members}
-    else:
-        target_signs = {s for s, c in sign_to_cluster.items() if c == target_cluster}
-
-    if not target_signs:
-        return {"error": "no signs in target cluster"}
-
-    site_total: Counter[str] = Counter()
-    site_with_cluster: Counter[str] = Counter()
-    length_total: Counter[int] = Counter()
-    length_with_cluster: Counter[int] = Counter()
-    n_total = len(inscriptions)
-    n_with = 0
-    site_prefix2 = lambda sc: (sc[:2] + "0000") if len(sc) >= 2 else sc
-
-    for ins in inscriptions:
-        site_code = str(ins.get("site_code", ""))
-        site_grp = site_prefix2(site_code)
-        seq = ins.get("sequence") or []
-        L = int(ins.get("length", len(seq)))
-        site_total[site_grp] += 1
-        length_total[L] += 1
-        has_cluster = any(s in target_signs for s in seq)
-        if has_cluster:
-            n_with += 1
-            site_with_cluster[site_grp] += 1
-            length_with_cluster[L] += 1
-
-    # Site contingency table
-    sites = sorted(site_total.keys(), key=lambda s: -site_total[s])
-    contingency: list[list[int]] = []
-    for s in sites:
-        contingency.append([site_with_cluster.get(s, 0),
-                             site_total[s] - site_with_cluster.get(s, 0)])
-    chi2, dof = _chi_squared(contingency)
-
-    # Per-site enrichment
-    overall_rate = n_with / max(1, n_total)
-    site_table: list[dict] = []
-    for s in sites[:25]:
-        n_s = site_total[s]
-        n_s_w = site_with_cluster.get(s, 0)
-        rate = n_s_w / max(1, n_s)
-        site_table.append({
-            "site_prefix": s,
-            "n_inscriptions": n_s,
-            "n_with_cluster": n_s_w,
-            "rate_with_cluster": round(rate, 4),
-            "enrichment": round(rate / overall_rate, 3) if overall_rate > 0 else None,
-        })
-
-    length_table: list[dict] = []
-    for L in sorted(length_total.keys()):
-        n_l = length_total[L]
-        n_l_w = length_with_cluster.get(L, 0)
-        length_table.append({
-            "length": L,
-            "n_inscriptions": n_l,
-            "n_with_cluster": n_l_w,
-            "rate_with_cluster": round(n_l_w / max(1, n_l), 4),
-        })
-
-    # Crude p-value bound from chi2 (no scipy): use the 1-df critical
-    # values. With dof = len(sites)-1 we instead report standardized
-    # residuals + chi2.
-    significant = chi2 > 3.84 * max(1, dof)  # ~p<0.05 for dof
-    verdict = (
-        f"PREDICTION 2 {'CONFIRMED' if significant else 'NOT CONFIRMED'}: "
-        f"chi2={chi2:.2f} dof={dof}; per-site rate range "
-        f"{min(r['rate_with_cluster'] for r in site_table):.3f}-"
-        f"{max(r['rate_with_cluster'] for r in site_table):.3f} "
-        f"(corpus baseline {overall_rate:.3f})."
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        cluster_contingency_profile_execute,
     )
-    return {
-        "target_cluster_signs": sorted(target_signs),
-        "n_target_signs": len(target_signs),
-        "n_inscriptions_total": n_total,
-        "n_inscriptions_with_cluster": n_with,
-        "overall_rate": round(overall_rate, 4),
-        "site_table": site_table,
-        "length_table": length_table,
-        "chi_squared": round(chi2, 4),
-        "dof": dof,
-        "significant_p05": significant,
-        "verdict": verdict,
-    }
+
+    merged = dict(params)
+    merged.setdefault("strata_field", "site_code")
+    merged.setdefault("prefix_len", 2)
+    merged.setdefault("prefix_suffix", "0000")
+    merged.setdefault("critical_per_dof", 3.84)
+    merged.setdefault("site_limit", 25)
+    merged.setdefault(
+        "verdict_template",
+        "PREDICTION 2 {outcome}: chi2={chi2:.2f} dof={dof}; per-site rate range "
+        "{min_rate:.3f}-{max_rate:.3f} (corpus baseline {baseline:.3f}).",
+    )
+    return cluster_contingency_profile_execute(inputs, merged)
 
 
 # ── Experiment 3: PDF text extractor ────────────────────────────────────

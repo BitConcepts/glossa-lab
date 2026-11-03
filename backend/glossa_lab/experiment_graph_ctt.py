@@ -29,7 +29,6 @@ References
 
 from __future__ import annotations
 
-import math
 import random
 import re
 from collections import Counter
@@ -85,138 +84,25 @@ def _indus_sign_role_classifier(inputs: dict, params: dict) -> dict:
         that appears in solo or repeated-run inscriptions at high rate to a
         numeral (covers tally-style stroke signs that don't appear in the
         canonical numeral list).
+
+    Spec 087 S3 (family F3): the mechanism is the generic
+    SignRoleClassifier engine (glossa_lab.generic_primitives),
+    whose numeral_signs parameter defaults EMPTY. The triage's
+    executed attempt H3 proved this node's entire domain content
+    is the Indus numeral set as that parameter's default value,
+    so the wrapper below injects _DEFAULT_NUMERAL_SIGNS when the
+    caller did not pass numeral_signs — the set is now data at
+    the delegation point, not a default inside the mechanism.
     """
-    sequences: list[list[str]] = inputs.get("sequences") or []
-    if not sequences:
-        return {"role_table": {}, "n_signs": 0}
-
-    t_thr = float(params.get("terminal_threshold", 0.85))
-    t_thr_relaxed = float(params.get("terminal_relaxed", 0.45))
-    i_thr = float(params.get("initial_threshold", 0.70))
-    pmi_thr = float(params.get("compound_pmi_threshold", 4.0))
-    min_count = int(params.get("min_count", 5))
-    numeral_repetition_thr = float(params.get("numeral_repetition_threshold", 0.5))
-    numeral_set = set(params.get("numeral_signs", _DEFAULT_NUMERAL_SIGNS))
-    # Logogram detector parameters (Phase-12 overhaul, 2026-04-28).
-    # Replaces the old "low-frequency phonetic singleton" rule with a
-    # behavior-based detector: a logogram is a HIGH-frequency sign that
-    # appears with LOW positional variance (Σ p_pos² ≈ 1, i.e. concentrated
-    # in one position class) and that frequently occurs as the entire
-    # inscription (solo). All three conditions must hold.
-    logo_min_count = int(params.get("logogram_min_count", 20))
-    logo_pos_concentration = float(
-        params.get("logogram_position_concentration", 0.55)
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        sign_role_classifier_execute,
     )
-    logo_solo_rate = float(params.get("logogram_solo_rate", 0.05))
 
-    tc: Counter[str] = Counter(s for seq in sequences for s in seq)
-    te: Counter[str] = Counter(seq[-1] for seq in sequences if len(seq) >= 1)
-    ic: Counter[str] = Counter(seq[0] for seq in sequences if len(seq) >= 1)
-
-    # Repetition / solo statistics for numeral heuristic, plus per-sign
-    # solo-only count for logogram detection.
-    solo_or_repeat_count: Counter[str] = Counter()
-    solo_count: Counter[str] = Counter()
-    medial_count: Counter[str] = Counter()
-    for seq in sequences:
-        if len(seq) == 0:
-            continue
-        # Solo inscription → every sign in it gets a +1
-        if len(seq) == 1:
-            solo_or_repeat_count[seq[0]] += 1
-            solo_count[seq[0]] += 1
-            continue
-        # Repeated run: if all signs in the seq are the same, +1 per token
-        if len(set(seq)) == 1:
-            solo_or_repeat_count[seq[0]] += len(seq)
-        # Medial: every token that is neither initial nor final
-        for s in seq[1:-1]:
-            medial_count[s] += 1
-
-    # Bigram PMI for compound detection (Mahadevan-style)
-    bg: Counter[tuple[str, str]] = Counter()
-    for seq in sequences:
-        for i in range(len(seq) - 1):
-            bg[(seq[i], seq[i + 1])] += 1
-    total_bg = sum(bg.values()) or 1
-    total_uni = sum(tc.values()) or 1
-    compound_signs: set[str] = set()
-    for (a, b), c in bg.items():
-        if c < 5:
-            continue
-        p_ab = c / total_bg
-        p_a = tc[a] / total_uni
-        p_b = tc[b] / total_uni
-        if p_a > 0 and p_b > 0:
-            pmi = math.log2(p_ab / (p_a * p_b))
-            if pmi >= pmi_thr:
-                compound_signs.add(a)
-                compound_signs.add(b)
-
-    role_table: dict[str, list[str]] = {}
-    n_logograms_detected = 0
-    for sym, n in tc.items():
-        if n < min_count:
-            continue
-        t_rate = te[sym] / n if n else 0.0
-        i_rate = ic[sym] / n if n else 0.0
-        rep_rate = solo_or_repeat_count[sym] / n if n else 0.0
-        m_rate = medial_count[sym] / n if n else 0.0
-        solo_rate = solo_count[sym] / n if n else 0.0
-        # Position-concentration: Σ p_pos² over (initial, medial, terminal).
-        # solo_rate is excluded so that a sign that is *only* solo doesn't
-        # alias to high concentration via t_rate=1 trivia.
-        # Renormalise non-solo positional shares so the metric is meaningful
-        # even when solo_rate > 0.
-        non_solo = max(1e-12, 1.0 - solo_rate)
-        p_i = i_rate / non_solo
-        p_m = m_rate / non_solo
-        p_t = t_rate / non_solo
-        pos_conc = p_i * p_i + p_m * p_m + p_t * p_t
-        roles: set[str] = set()
-        # Suffix detection: strict OR relaxed-with-terminal-bias
-        if t_rate >= t_thr or (
-            t_rate >= t_thr_relaxed and (i_rate == 0 or t_rate >= 1.5 * i_rate)
-        ):
-            roles.add("suffix")
-        if i_rate >= i_thr:
-            roles.add("determinative")
-        if sym in numeral_set or rep_rate >= numeral_repetition_thr:
-            roles.add("numeral")
-        # Phonetic syllabograms = mixed-position high-frequency signs not
-        # exclusively terminal/initial and not classified as numeral.
-        if t_rate < t_thr and i_rate < i_thr and "numeral" not in roles:
-            roles.add("phonetic")
-        # Logogram detector overhaul (Phase-12, 2026-04-28).
-        # New rule: a logogram is high-frequency, has low positional
-        # variance (one position class dominates), AND occurs solo at least
-        # `logo_solo_rate` of the time. This replaces the old rule that
-        # mis-flagged rare phonetic singletons as logograms.
-        is_logogram = (
-            n >= logo_min_count
-            and pos_conc >= logo_pos_concentration
-            and solo_rate >= logo_solo_rate
-        )
-        if is_logogram:
-            roles.add("logogram")
-            n_logograms_detected += 1
-        if sym in compound_signs:
-            roles.add("compound")
-        if roles:
-            role_table[sym] = sorted(roles)
-
-    summary = {role: sum(1 for r in role_table.values() if role in r) for role in ROLE_BITS}
-    return {
-        "role_table": role_table,
-        "n_signs": len(role_table),
-        "role_summary": summary,
-        "compound_signs": sorted(compound_signs),
-        "high_pmi_bigrams": sorted(
-            [{"a": a, "b": b, "count": c} for (a, b), c in bg.most_common(50)],
-            key=lambda x: -x["count"],
-        )[:50],
-        "n_logograms": n_logograms_detected,
-    }
+    merged = dict(params)
+    if "numeral_signs" not in merged:
+        merged["numeral_signs"] = list(_DEFAULT_NUMERAL_SIGNS)
+    merged.setdefault("role_bits", list(ROLE_BITS))
+    return sign_role_classifier_execute(inputs, merged)
 
 
 # ── 2. CTTAdmissibilityFilter ───────────────────────────────────────────────
@@ -640,7 +526,7 @@ DEFAULT_INDUS_VALUE_ROLE_MAP = {
 
 
 # ── Per-language value-role maps ─────────────────────────────────
-# Each builder returns {target_value: role} for one language family. Used by
+# Each family spec below yields {target_value: role} for one language family. Used by
 # the families= param of DefaultIndusValueRoleMap so each Phase-10 SA branch
 # can apply strict_mode against its own attested target inventory.
 
@@ -662,109 +548,89 @@ _LUWIAN_NUMERAL_VALUES = frozenset({
 })
 
 
-def _build_old_tamil_role_map() -> dict[str, str]:
-    """Tamil/Dravidian value-role map.
+# Spec 087 S3 (family F3): the per-family maps are no longer built by
+# per-language builder functions. Each family is a data spec for the
+# generic ValueRoleMapSource engine (glossa_lab.generic_primitives):
+# seed roles and classification sets as literals, vocabulary gathered
+# from the family's data module, classified or filled per the spec.
+# The scholarly content is unchanged from the builders it replaces:
+# Tamil case suffixes per DEDR (Krishnamurti 2003 §6.2); Luwian royal
+# titles / place names as determinatives (Hawkins 2000); the Linear B
+# grid is the standard Ventris syllabary.
 
-    - Case suffixes (DEDR Krishnamurti 2003 §6.2) → 'suffix'
-    - Numerals → 'numeral'
-    - All other DEDR roots and Tamil-Brahmi attested words → 'phonetic'
-      (rebus-decoded Indus signs land on word roots, not on individual
-      syllables, so the SA-proposed value will be a full word root.)
-    """
-    out: dict[str, str] = {}
-    suffix_set = {
-        "-um", "-e", "-il", "-ku", "-in", "-al", "-an", "-ai", "-ar",
-        "-aru", "um", "il", "ku", "in", "al", "an", "ai", "ar", "aru",
-        "otu", "atu", "am",
-    }
-    numeral_set = {
-        "onr", "ir", "mu", "nal", "aynt", "aru", "elu", "ettu",
-        "onpatu", "pattu", "nuru", "ayir",
-    }
-    try:
-        from glossa_lab.data.dravidian import (
-            TAMIL_BRAHMI_ATTESTED,
-        )
-        from glossa_lab.data.dravidian import (  # noqa: PLC0415
-            VOCABULARY as TAMIL_VOCAB,
-        )
-    except Exception:  # noqa: BLE001
-        TAMIL_VOCAB, TAMIL_BRAHMI_ATTESTED = {}, []
-    for w in suffix_set:
-        out[w] = "suffix"
-    for w in numeral_set:
-        out[w] = "numeral"
-    for w in TAMIL_VOCAB:
-        if w not in out:
-            out[w] = "phonetic"
-    for w in TAMIL_BRAHMI_ATTESTED:
-        if w not in out:
-            out[w] = "phonetic"
-    return out
+# Tamil/Dravidian: case suffixes → 'suffix', numerals → 'numeral',
+# all other DEDR roots and Tamil-Brahmi attested words → 'phonetic'
+# (rebus-decoded Indus signs land on word roots, not on individual
+# syllables, so the SA-proposed value will be a full word root).
+_TAMIL_SUFFIX_VALUES = (
+    "-um", "-e", "-il", "-ku", "-in", "-al", "-an", "-ai", "-ar",
+    "-aru", "um", "il", "ku", "in", "al", "an", "ai", "ar", "aru",
+    "otu", "atu", "am",
+)
+_TAMIL_NUMERAL_VALUES = (
+    "onr", "ir", "mu", "nal", "aynt", "aru", "elu", "ettu",
+    "onpatu", "pattu", "nuru", "ayir",
+)
 
+_TAMIL_FAMILY_SPEC = {
+    "seed_roles": {
+        **dict.fromkeys(_TAMIL_SUFFIX_VALUES, "suffix"),
+        **dict.fromkeys(_TAMIL_NUMERAL_VALUES, "numeral"),
+    },
+    "vocab_sources": [
+        {"module": "glossa_lab.data.dravidian", "attr": "VOCABULARY"},
+        {"module": "glossa_lab.data.dravidian", "attr": "TAMIL_BRAHMI_ATTESTED"},
+    ],
+    "vocab_mode": "fill",
+    "vocab_role": "phonetic",
+}
 
-def _build_hieroglyphic_luwian_role_map() -> dict[str, str]:
-    """Hieroglyphic Luwian value-role map.
+# Hieroglyphic Luwian: royal titles, place names, deity names →
+# 'determinative'; numerals → 'numeral'; all other Hawkins/Melchert
+# lemmas → 'phonetic'.
+_LUWIAN_FAMILY_SPEC = {
+    "vocab_sources": [
+        {"module": "glossa_lab.data.hieroglyphic_luwian", "attr": "VOCABULARY"},
+    ],
+    "vocab_mode": "classify",
+    "determinative_values": sorted(_LUWIAN_DETERMINATIVE_VALUES),
+    "numeral_values": sorted(_LUWIAN_NUMERAL_VALUES),
+    "vocab_role": "phonetic",
+}
 
-    - Royal titles, place names, deity names → 'determinative'
-    - Numerals → 'numeral'
-    - All other Hawkins/Melchert lemmas → 'phonetic'
-    """
-    out: dict[str, str] = {}
-    try:
-        from glossa_lab.data.hieroglyphic_luwian import (  # noqa: PLC0415
-            VOCABULARY as LUWIAN_VOCAB,
-        )
-    except Exception:  # noqa: BLE001
-        LUWIAN_VOCAB = {}
-    for w in LUWIAN_VOCAB:
-        if w in _LUWIAN_DETERMINATIVE_VALUES:
-            out[w] = "determinative"
-        elif w in _LUWIAN_NUMERAL_VALUES:
-            out[w] = "numeral"
-        else:
-            out[w] = "phonetic"
-    return out
+# Mycenaean Greek (Linear B): a syllabary; every value is a
+# CV-syllabogram → 'phonetic'. The standard 87-sign grid plus whatever
+# extra symbols the data module exposes (lowercased, 1–4 alpha chars).
+_LINEAR_B_BASE_SYLLABLES = (
+    ["a", "e", "i", "o", "u"]
+    + [c + v for c in "dkmnprstwz" for v in "aeiou"]
+    + ["ja", "je", "jo", "ju", "wa", "we", "wi", "wo"]
+    + ["qa", "qe", "qi", "qo"]
+)
 
+_LINEAR_B_FAMILY_SPEC = {
+    "base_values": list(_LINEAR_B_BASE_SYLLABLES),
+    "base_role": "phonetic",
+    "vocab_sources": [
+        {
+            "module": "glossa_lab.data.linear_b_language",
+            "attr": "get_corpus_symbols",
+            "filter": {"lower": True, "alpha_only": True, "min_len": 1, "max_len": 4},
+        },
+    ],
+    "vocab_mode": "fill",
+    "vocab_role": "phonetic",
+}
 
-def _build_mycenaean_greek_role_map() -> dict[str, str]:
-    """Mycenaean Greek (Linear B) value-role map.
-
-    Linear B is a syllabary; every value is a CV-syllabogram → 'phonetic'.
-    Built from the data/linear_b_language module's symbol inventory plus
-    the standard Linear B grid (a-, e-, i-, o-, u- and CV).
-    """
-    out: dict[str, str] = {}
-    # Standard 87-sign Linear B grid (Ventris)
-    base_syllables = (
-        ["a", "e", "i", "o", "u"]
-        + [c + v for c in "dkmnprstwz" for v in "aeiou"]
-        + ["ja", "je", "jo", "ju", "wa", "we", "wi", "wo"]
-        + ["qa", "qe", "qi", "qo"]
-    )
-    for s in base_syllables:
-        out[s] = "phonetic"
-    # Pull whatever extra symbols the data module exposes
-    try:
-        from glossa_lab.data.linear_b_language import get_corpus_symbols  # noqa: PLC0415
-        for s in get_corpus_symbols():
-            s = str(s).lower()
-            if 1 <= len(s) <= 4 and s.isalpha():
-                out.setdefault(s, "phonetic")
-    except Exception:  # noqa: BLE001
-        pass
-    return out
-
-
-_FAMILY_ROLE_MAP_BUILDERS = {
-    "old_tamil": _build_old_tamil_role_map,
-    "dravidian": _build_old_tamil_role_map,
-    "tamil": _build_old_tamil_role_map,
-    "hieroglyphic_luwian": _build_hieroglyphic_luwian_role_map,
-    "luwian": _build_hieroglyphic_luwian_role_map,
-    "mycenaean_greek": _build_mycenaean_greek_role_map,
-    "linear_b": _build_mycenaean_greek_role_map,
-    "greek": _build_mycenaean_greek_role_map,
+_FAMILY_ROLE_MAP_SPECS = {
+    "old_tamil": _TAMIL_FAMILY_SPEC,
+    "dravidian": _TAMIL_FAMILY_SPEC,
+    "tamil": _TAMIL_FAMILY_SPEC,
+    "hieroglyphic_luwian": _LUWIAN_FAMILY_SPEC,
+    "luwian": _LUWIAN_FAMILY_SPEC,
+    "mycenaean_greek": _LINEAR_B_FAMILY_SPEC,
+    "linear_b": _LINEAR_B_FAMILY_SPEC,
+    "greek": _LINEAR_B_FAMILY_SPEC,
 }
 
 
@@ -775,43 +641,27 @@ def _default_value_role_map_loader(inputs: dict, params: dict) -> dict:
       - Always starts from DEFAULT_INDUS_VALUE_ROLE_MAP (CV syllabograms,
         Tamil case suffixes, generic determinatives, base numerals).
       - For each name in `families` (param), merges in the per-LM map
-        produced by _build_<family>_role_map().
+        built from that family's spec in _FAMILY_ROLE_MAP_SPECS.
       - Finally applies `extra` overrides (param) on top.
 
     The `families` param accepts either a list[str] or a comma-separated
     string. Unknown families are reported in `unknown_families`.
+
+    Spec 087 S3 (family F3): the mechanism is the generic
+    ValueRoleMapSource engine (glossa_lab.generic_primitives);
+    this node is its Indus parameterisation — the base map
+    (DEFAULT_INDUS_VALUE_ROLE_MAP) and the per-family tables
+    (_FAMILY_ROLE_MAP_SPECS, aliases included) are passed as
+    data params, not merged in code.
     """
-    families_raw = params.get("families", []) or []
-    if isinstance(families_raw, str):
-        families_list = [s.strip() for s in families_raw.split(",") if s.strip()]
-    elif isinstance(families_raw, (list, tuple)):
-        families_list = [str(s).strip() for s in families_raw if str(s).strip()]
-    else:
-        families_list = []
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        value_role_map_source_execute,
+    )
 
-    extra: dict[str, str] = params.get("extra", {}) or {}
-    include_default = bool(params.get("include_default", True))
-
-    out: dict[str, str] = dict(DEFAULT_INDUS_VALUE_ROLE_MAP) if include_default else {}
-    family_sizes: dict[str, int] = {}
-    unknown: list[str] = []
-    for fam in families_list:
-        builder = _FAMILY_ROLE_MAP_BUILDERS.get(fam.lower())
-        if builder is None:
-            unknown.append(fam)
-            continue
-        fmap = builder()
-        out.update(fmap)
-        family_sizes[fam] = len(fmap)
-    out.update(extra)
-    return {
-        "value_role_map": out,
-        "n_values": len(out),
-        "families_applied": list(family_sizes.keys()),
-        "family_sizes": family_sizes,
-        "unknown_families": unknown,
-        "json": out,
-    }
+    merged = dict(params)
+    merged["base_map"] = DEFAULT_INDUS_VALUE_ROLE_MAP
+    merged["family_tables"] = _FAMILY_ROLE_MAP_SPECS
+    return value_role_map_source_execute(inputs, merged)
 
 
 # ── Attested vocabulary loader ──────────────────────────────────────────────

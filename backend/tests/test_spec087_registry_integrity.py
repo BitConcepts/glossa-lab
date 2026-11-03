@@ -16,6 +16,9 @@ census-evidence.md Table 1): 517 registered nodes, 66 categories,
 144 plugin modules. Re-pinned by the recorded S3 conversion PR-A act
 (records/stage-s3-conversions.md): 519 registered nodes (two new
 generic primitives in the core list), 65 categories, core 44.
+Re-pinned again by the recorded S3 conversion PR-B act (same record):
+528 registered nodes (nine new generic primitives in the core list),
+65 categories, core 53.
 """
 from __future__ import annotations
 
@@ -54,7 +57,7 @@ def test_plugin_module_list_pinned():
 
 def test_registry_census_pinned():
     """Registered total and per-category counts match the pin exactly."""
-    assert len(eg.ATOMIC_NODES) == _PIN["registered_total"] == 519
+    assert len(eg.ATOMIC_NODES) == _PIN["registered_total"] == 528
     census = Counter(d.category for d in eg.ATOMIC_NODES.values())
     assert dict(census) == _PIN["by_category"]
     assert len(census) == 65
@@ -66,7 +69,7 @@ def test_registry_self_check_passes():
     assert check["plugin_module_errors"] == []
     assert check["duplicate_ids"] == []
     assert check["produced_not_registered"] == []
-    assert check["core_registered"] == 44
+    assert check["core_registered"] == 53
     assert check["ok"]
     registry_check.assert_registry_complete(check)
 
@@ -75,7 +78,7 @@ def test_build_report_ok():
     """The runtime build recorded no failures and no duplicates."""
     report = eg.registry_build_report()
     assert report["ok"]
-    assert report["registered"] == 519
+    assert report["registered"] == 528
     assert report["failures"] == []
     assert report["duplicates"] == []
 
@@ -221,7 +224,7 @@ def test_both_registries_import_in_one_process():
     from glossa_lab.study_node_registry import router as study_router
 
     assert study_router is not None
-    assert len(eg.ATOMIC_NODES) == 519
+    assert len(eg.ATOMIC_NODES) == 528
 
 
 def test_node_registry_endpoint_unchanged(client):
@@ -239,6 +242,6 @@ def test_registry_health_endpoint(client):
     assert resp.status_code == 200
     body = resp.json()
     assert body["ok"] is True
-    assert body["registered"] == 519
+    assert body["registered"] == 528
     assert body["failures"] == []
     assert body["duplicates"] == []

@@ -368,3 +368,16 @@ in-tree as a side effect; those files were restored
 - The H4 fixture note in the triage concerns
   CanonicalSignLoader (family F3), not F1; it lands with
   PR-B. No F1 fixture needed CGSA seeding.
+
+## Repair note (PR-A, post-CI)
+
+The first CI run of this PR failed exactly one case,
+`pdf_extract`: the equivalence test read the two-page
+fixture PDF from the fixtures directory, but `*.pdf` is
+gitignored, so the file existed only in the build clone's
+working tree and was never committed — a clean checkout got
+the node's `PDF not found:` error instead of the pinned
+extraction. The test now generates the PDF at run time with
+PyMuPDF (the library the node itself requires) from the two
+pinned page texts, and the byte-identical comparison against
+`expected.json` is unchanged; no gitignored path is read.

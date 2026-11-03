@@ -16,6 +16,10 @@ fixtures"). Full-mode cases pin the whole result dict (canonical-JSON
 equality); hash-mode cases pin the canonical-JSON SHA-256 plus the key
 set and verbatim scalar fields, for payloads too large to commit whole.
 
+The one binary input, the two-page PDF read by the pdf cases, cannot
+be committed (`*.pdf` is gitignored), so the test generates it at run
+time from the pinned page texts — see `_fixture_pdf`.
+
 Also pinned here: the F14 relabels (generic category, no legacy flag,
 implementation module unchanged), the two new generic primitives'
 registration, and the six converted ids' legacy flags.
@@ -82,10 +86,36 @@ def _clear_contact_caches() -> None:
             member.cache_clear()
 
 
+def _fixture_pdf(tmp_path: Path) -> Path:
+    """The two-page fixture PDF for the pdf cases, generated at run time.
+
+    A PDF cannot be committed (`*.pdf` is gitignored), so when
+    PyMuPDF is importable the test builds the file in tmp_path with
+    the two page texts whose extracted form expected.json pins
+    ("Glossa fixture page one" / "Glossa fixture page two"). Without
+    PyMuPDF the node errors before opening any file, so an empty
+    placeholder suffices: the path only has to exist for the node to
+    reach its PyMuPDF import error.
+    """
+    pdf_path = tmp_path / "tiny.pdf"
+    try:
+        import fitz  # noqa: PLC0415
+    except ImportError:
+        pdf_path.touch()
+        return pdf_path
+    doc = fitz.open()
+    for line in ("Glossa fixture page one", "Glossa fixture page two"):
+        page = doc.new_page()
+        page.insert_text((72, 72), line)
+    doc.save(pdf_path)
+    doc.close()
+    return pdf_path
+
+
 def _run_case(case: dict, tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> dict:
     setup = case["setup"]
     kind = setup["kind"]
-    tokens: dict[str, str] = {"__FIXTURE_PDF__": str(FIXTURES / "tiny.pdf")}
+    tokens: dict[str, str] = {"__FIXTURE_PDF__": str(_fixture_pdf(tmp_path))}
     if kind == "m77":
         root = tmp_path / "repo"
         (root / "reports").mkdir(parents=True)
@@ -150,7 +180,7 @@ def test_conversion_output_equivalence(case, tmp_path, monkeypatch):
             # node's no-PyMuPDF error is its behaviour here; the
             # extraction fixtures pin behaviour where fitz exists (CI).
             probe_params = _substitute(
-                case["params"], {"__FIXTURE_PDF__": str(FIXTURES / "tiny.pdf")}
+                case["params"], {"__FIXTURE_PDF__": str(_fixture_pdf(tmp_path))}
             )
             result = eg.ATOMIC_NODES[case["node"]].fn({}, probe_params)
             assert set(result) == {"error"}

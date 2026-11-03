@@ -319,6 +319,27 @@ are now legacy — each one is a fixed setting of a generic loader, kept
 registered and runnable for saved experiments, but no longer offered
 for new ones.
 
+Nine more generic building blocks are in the Palette:
+**RegistryTableLoader** (read a registry table, with its filters as
+parameters), **LabelMapApplier** (assign labels from a database table,
+a JSON file, or a frequency fallback, in that order),
+**TemplateMiner** (find repeated sequence templates and their slot
+statistics), **ClusterContingencyProfile** (test whether a cluster's
+members concentrate in one site or context), **SignRoleClassifier**
+(classify signs as suffix, determinative, numeral, phonetic, logogram,
+or compound from corpus statistics), **ValueRoleMapSource** (build a
+value-to-role map from a base map plus per-language family tables),
+**AnchorSyllabifier** (turn anchor readings into syllable tokens),
+**AssociationAnchorDeriver** (derive anchors from sign-to-context
+associations), and **PMICentralityRanker** (rank signs by how strongly
+they associate with their neighbours). The nine older study-specific
+nodes they generalise (the CGSA registry loader, cluster mapper, and
+template analyser, the cluster archaeology profiler, the CTT sign-role
+classifier and value-role-map source, the anchor-set syllabifier, and
+the two Phase-14 anchor nodes) are now legacy in the same way: each
+one is a fixed setting of a generic block, kept registered and
+runnable for saved experiments, but no longer offered for new ones.
+
 ### Node Reference
 
 **Corpus Loaders:**

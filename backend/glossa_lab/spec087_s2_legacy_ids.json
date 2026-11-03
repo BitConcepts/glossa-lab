@@ -1,8 +1,8 @@
 {
- "comment": "Spec 087 legacy-flag data (Stage S2 migration, T201; extended by Stage S3 conversion PR-A): the census's 359 WRAPPER node ids, flagged legacy on AtomicNodeDef at registry build (decision D1), plus the ids recorded converted in the Stage S3 records \u2014 each converted node's implementation now delegates to a generic primitive and the domain id takes the legacy flag in the same act (S3 conversion contract, item 2). Generated from the classification of record \u2014 the system-coupling audit census (2026-11-02) Appendix A, param-carry verdict WRAPPER (DOMAIN nodes with no input ports and an empty params schema) \u2014 and from specs/087-node-system-tightening/records/stage-s3-conversions.md for the S3 additions. Reviewable id by id; any change to this list is a recorded act (claim C087-17) and must keep tests/test_spec087_palette_curation.py green.",
+ "comment": "Spec 087 legacy-flag data (Stage S2 migration, T201; extended by Stage S3 conversion PRs A and B): the census's 359 WRAPPER node ids, flagged legacy on AtomicNodeDef at registry build (decision D1), plus the ids recorded converted in the Stage S3 records \u2014 each converted node's implementation now delegates to a generic primitive and the domain id takes the legacy flag in the same act (S3 conversion contract, item 2). Generated from the classification of record \u2014 the system-coupling audit census (2026-11-02) Appendix A, param-carry verdict WRAPPER (DOMAIN nodes with no input ports and an empty params schema) \u2014 and from specs/087-node-system-tightening/records/stage-s3-conversions.md for the S3 additions. Reviewable id by id; any change to this list is a recorded act (claim C087-17) and must keep tests/test_spec087_palette_curation.py green.",
  "spec": "087-node-system-tightening",
  "stage": "S2",
- "count": 365,
+ "count": 374,
  "legacy_ids": [
   "DravidianSyllableLM",
   "ICITMetadataLoader",
@@ -368,7 +368,16 @@
   "MahadevanInscriptionLoader",
   "EPSD2NamesLoader",
   "ICITCorpusLoader",
-  "MathematicaEpigraphicaLoader"
+  "MathematicaEpigraphicaLoader",
+  "CanonicalSignLoader",
+  "ClusterMapper",
+  "StructuralTemplateAnalyzer",
+  "ClusterArchaeology",
+  "IndusSignRoleClassifier",
+  "DefaultIndusValueRoleMap",
+  "IndusAnchorSetSyllable",
+  "DerivedAnchorSet",
+  "EpistaticAnchorRanker"
  ],
  "s3_additions": {
   "PR-A (F14+F1)": [
@@ -378,6 +387,17 @@
    "EPSD2NamesLoader",
    "ICITCorpusLoader",
    "MathematicaEpigraphicaLoader"
+  ],
+  "PR-B (F3+F8)": [
+   "CanonicalSignLoader",
+   "ClusterMapper",
+   "StructuralTemplateAnalyzer",
+   "ClusterArchaeology",
+   "IndusSignRoleClassifier",
+   "DefaultIndusValueRoleMap",
+   "IndusAnchorSetSyllable",
+   "DerivedAnchorSet",
+   "EpistaticAnchorRanker"
   ]
  }
 }

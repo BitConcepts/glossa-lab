@@ -718,6 +718,21 @@ def _builtin_syllable_lm(inputs: dict, params: dict) -> dict:
     }
 
 
+# The Tamil romanisation diacritic table for IndusAnchorSetSyllable,
+# as data (Spec 087 S3, family F8): ordered (source, replacement)
+# pairs applied after lowercasing — the first two entries are a
+# historical duplicate, kept as-is. The triage's executed attempt
+# H2 proved the parameterised form byte-identical with this table
+# passed in as data.
+_TAMIL_DIACRITIC_TABLE: list[tuple[str, str]] = [
+    ("ā", "a"), ("ā", "a"), ("ī", "i"), ("ū", "u"), ("ṭ", "t"),
+    ("ṇ", "n"), ("ḷ", "l"), ("ṟ", "r"), ("ṙ", "r"), ("ñ", "n"),
+    ("ṅ", "n"), ("ḍ", "d"), ("ṉ", "n"), ("ḻ", "l"), ("ḥ", "h"),
+    ("ṃ", "m"), ("ö", "o"), ("ä", "a"), ("ü", "u"), ("é", "e"),
+    ("è", "e"), ("ê", "e"),
+]
+
+
 def _indus_anchor_set_syllable(inputs: dict, params: dict) -> dict:
     """Load INDUS_FINAL_ANCHORS.json and map each reading to a syllable token.
 
@@ -731,127 +746,35 @@ def _indus_anchor_set_syllable(inputs: dict, params: dict) -> dict:
 
     Returns `anchor_dict` compatible with SADecipher.anchors port.
     Citations: A.1 (Mahadevan 1977), C.2 (Parpola 2010)
+
+    Spec 087 S3 (family F8): the mechanism is the generic
+    AnchorSyllabifier engine (glossa_lab.generic_primitives);
+    this node is its Indus parameterisation — both file paths,
+    the Tamil diacritic table, the confidence order, and the
+    positional-label skip pattern live in the params below, not
+    in code. H2 in the triage record is this conversion's proof,
+    executed before the fact: a byte-identical anchor_dict at
+    MEDIUM/HIGH/LOW (171/166/174 anchors).
     """
-    import json as _json  # noqa: PLC0415
-    import re as _re  # noqa: PLC0415
     from pathlib import Path as _Path  # noqa: PLC0415
 
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        anchor_syllabifier_execute,
+    )
+
     REPO = _Path(__file__).resolve().parent.parent.parent
-    anchors_path = REPO / "backend/reports/INDUS_FINAL_ANCHORS.json"
-    syllable_lm_path = REPO / "backend/glossa_lab/data/dravidian_syllable_lm.json"
-
-    if not anchors_path.exists():
-        return {"anchor_dict": {}, "error": "INDUS_FINAL_ANCHORS.json not found"}
-
-    # Load syllable vocab for coverage check
-    syllable_vocab: set[str] = set()
-    if syllable_lm_path.exists():
-        lm_data = _json.loads(syllable_lm_path.read_text("utf-8"))
-        syllable_vocab = set(lm_data.get("vocab", []))
-
-    anchors_data = _json.loads(anchors_path.read_text("utf-8"))
-    min_conf = str(params.get("min_confidence", "MEDIUM")).upper()
-    conf_order = {"HIGH": 3, "MEDIUM": 2, "LOW": 1, "UNCERTAIN": 0}
-    min_conf_level = conf_order.get(min_conf, 2)
-
-    def _strip_diacritics(s: str) -> str:
-        s = s.lower()
-        replacements = [
-            ("ā", "a"), ("ā", "a"), ("ī", "i"), ("ū", "u"), ("ṭ", "t"),
-            ("ṇ", "n"), ("ḷ", "l"), ("ṟ", "r"), ("ṙ", "r"), ("ñ", "n"),
-            ("ṅ", "n"), ("ḍ", "d"), ("ṉ", "n"), ("ḻ", "l"), ("ḥ", "h"),
-            ("ṃ", "m"), ("ö", "o"), ("ä", "a"), ("ü", "u"), ("é", "e"),
-            ("è", "e"), ("ê", "e"),
-        ]
-        for src, dst in replacements:
-            s = s.replace(src, dst)
-        return s
-
-    def _split_syllables(word: str) -> list[str]:
-        """Simple CV greedy syllable splitter."""
-        VOWELS = set("aeiouāīū")
-        CONSONANTS = set("bcdfghjklmnpqrstvwxyz")
-        syllables: list[str] = []
-        i = 0
-        current = ""
-        while i < len(word):
-            c = word[i]
-            current += c
-            if c in VOWELS:
-                if (i + 1 < len(word) and word[i+1] in CONSONANTS and
-                        (i + 2 >= len(word) or word[i+2] in VOWELS)):
-                    i += 1
-                    current += word[i]
-                syllables.append(current)
-                current = ""
-            elif len(current) >= 3:
-                syllables.append(current)
-                current = ""
-            i += 1
-        if current:
-            if syllables:
-                syllables[-1] += current
-            else:
-                syllables.append(current)
-        return [s for s in syllables if len(s) >= 1]
-
-    def _to_syllable(reading: str) -> str | None:
-        """Convert a Tamil word reading to a syllable token."""
-        # Take primary reading only (before /)
-        reading = reading.split("/")[0].strip()
-        # Remove parenthetical notes
-        reading = _re.sub(r"\(.*\)", "", reading).strip()
-        # Strip trailing uncertainty markers
-        reading = reading.rstrip("?")
-        # Skip positional/role labels like "term-m065", "init-m079"
-        if _re.match(r"(term|med|init|ctx|role)[-:]", reading.lower()):
-            return None
-        # Skip uncertain/empty
-        if not reading or "uncertain" in reading.lower() or reading in ("?", "-"):
-            return None
-        # Strip diacritics
-        clean = _strip_diacritics(reading)
-        clean = _re.sub(r"[^a-z]", "", clean)  # keep only ASCII letters
-        if not clean:
-            return None
-        # Direct lookup in syllable vocab
-        if clean in syllable_vocab:
-            return clean
-        # Try split and find first syllable in vocab
-        sylls = _split_syllables(clean)
-        for s in sylls:
-            if s in syllable_vocab:
-                return s
-        # Fallback: use first 2-3 chars if reasonable
-        if len(clean) >= 2:
-            for length in (2, 3, 1):
-                candidate = clean[:length]
-                if candidate in syllable_vocab:
-                    return candidate
-        # Last resort: return the (possibly truncated) clean reading
-        return clean[:3] if len(clean) > 3 else clean
-
-    anchor_dict: dict[str, str] = {}
-    skipped = 0
-    all_anchors = anchors_data.get("anchors", {})
-    for sign_id, info in all_anchors.items():
-        conf = str(info.get("confidence", "LOW")).upper()
-        if conf_order.get(conf, 0) < min_conf_level:
-            continue
-        reading = str(info.get("reading", ""))
-        syllable = _to_syllable(reading)
-        if syllable is None:
-            skipped += 1
-            continue
-        anchor_dict[sign_id] = syllable
-
-    return {
-        "anchor_dict": anchor_dict,
-        "n_anchors": len(anchor_dict),
-        "n_skipped": skipped,
-        "min_confidence": min_conf,
-        "verdict": f"Loaded {len(anchor_dict)} syllable-level anchors ({min_conf}+ confidence)",
-    }
+    merged = dict(params)
+    merged.setdefault("anchors_path", str(REPO / "backend/reports/INDUS_FINAL_ANCHORS.json"))
+    merged.setdefault(
+        "vocab_path", str(REPO / "backend/glossa_lab/data/dravidian_syllable_lm.json")
+    )
+    merged.setdefault("diacritic_table", [list(pair) for pair in _TAMIL_DIACRITIC_TABLE])
+    merged.setdefault(
+        "confidence_order", {"HIGH": 3, "MEDIUM": 2, "LOW": 1, "UNCERTAIN": 0}
+    )
+    merged.setdefault("skip_pattern", r"(term|med|init|ctx|role)[-:]")
+    merged.setdefault("missing_error", "INDUS_FINAL_ANCHORS.json not found")
+    return anchor_syllabifier_execute(inputs, merged)
 
 
 def _sanskrit_syllable_lm(inputs: dict, params: dict) -> dict:

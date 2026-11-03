@@ -140,8 +140,13 @@ carries its gate/test output verbatim** — not a summary of it.
   loaders onto the two new generic primitives and relabelled
   the two F14 nodes, with byte-identical fixture equivalence
   and the 27-graph comparison holding — see
-  records/stage-s3-conversions.md. Twelve families remain
-  (F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13); this
+  records/stage-s3-conversions.md. PR-B (families F3 + F8)
+  converted the nine F3/F8 nodes onto nine new generic
+  primitives (44 fixture cases byte-identical; the 27-graph
+  comparison holding) — same record. Ten families remain
+  (F2, F4, F5, F6, F7, F9, F10, F11, F12, F13), plus family
+  F15 (the two live wrappers) and the final batch's
+  retire-flagging of the four triage retire-candidates; this
   task ticks only when the last conversion PR merges.
   Side item (owner order 2026-11-03): the M77 corpus-pipeline
   unification was gated on a Step 0 divergence check and

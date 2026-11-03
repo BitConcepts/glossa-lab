@@ -1,0 +1,4201 @@
+{
+ "comment": "Spec 087 S3 conversion PR-B (families F3 + F8) fixture outputs, captured from the pre-conversion implementations on branch feat/087-s3-conv-b BEFORE any implementation changed. DB cases ran with _sync_db_all replaced by a fake mirroring its semantics (canonical_signs / sign_cluster_assignments fixture rows are defined in the capture script and re-defined identically in the test file). anchor_* cases ran against the repo's real backend/reports/INDUS_FINAL_ANCHORS.json and backend/glossa_lab/data/dravidian_syllable_lm.json. cm_file ran with a real sign_clusters.json at the node's historical path and replays through the LabelMapApplier primitive.",
+ "cases": [
+  {
+   "id": "canon_default",
+   "node": "CanonicalSignLoader",
+   "setup": {
+    "kind": "db"
+   },
+   "params": {},
+   "inputs": {},
+   "mode": "full",
+   "expected": {
+    "registry": [
+     {
+      "sign_id": "P001",
+      "internal_id": "uuid-1",
+      "numbering_system": "parpola_1982",
+      "in_corpus": 1,
+      "description": "fish",
+      "wells_ids": [
+       "W10",
+       "W11"
+      ]
+     },
+     {
+      "sign_id": "P002",
+      "internal_id": "uuid-2",
+      "numbering_system": "parpola_1982",
+      "in_corpus": 1,
+      "description": "jar",
+      "wells_ids": ""
+     },
+     {
+      "sign_id": "Y001",
+      "internal_id": "uuid-4",
+      "numbering_system": "yajnadevam_glyphid",
+      "in_corpus": 1,
+      "description": "glyph",
+      "wells_ids": ""
+     }
+    ],
+    "n_signs": 3,
+    "n_parpola": 2,
+    "sign_id_to_uuid": {
+     "P001": "uuid-1",
+     "P002": "uuid-2",
+     "Y001": "uuid-4"
+    },
+    "sign_ids": [
+     "P001",
+     "P002",
+     "Y001"
+    ]
+   }
+  },
+  {
+   "id": "canon_all",
+   "node": "CanonicalSignLoader",
+   "setup": {
+    "kind": "db"
+   },
+   "params": {
+    "in_corpus_only": false
+   },
+   "inputs": {},
+   "mode": "full",
+   "expected": {
+    "registry": [
+     {
+      "sign_id": "P001",
+      "internal_id": "uuid-1",
+      "numbering_system": "parpola_1982",
+      "in_corpus": 1,
+      "description": "fish",
+      "wells_ids": [
+       "W10",
+       "W11"
+      ]
+     },
+     {
+      "sign_id": "P002",
+      "internal_id": "uuid-2",
+      "numbering_system": "parpola_1982",
+      "in_corpus": 1,
+      "description": "jar",
+      "wells_ids": ""
+     },
+     {
+      "sign_id": "P003",
+      "internal_id": "uuid-3",
+      "numbering_system": "parpola_1982",
+      "in_corpus": 0,
+      "description": "out of corpus",
+      "wells_ids": ""
+     },
+     {
+      "sign_id": "Y001",
+      "internal_id": "uuid-4",
+      "numbering_system": "yajnadevam_glyphid",
+      "in_corpus": 1,
+      "description": "glyph",
+      "wells_ids": ""
+     },
+     {
+      "sign_id": "P004",
+      "internal_id": "uuid-5",
+      "numbering_system": "parpola_1982",
+      "in_corpus": 0,
+      "description": {
+       "note": "json text"
+      },
+      "wells_ids": ""
+     }
+    ],
+    "n_signs": 5,
+    "n_parpola": 4,
+    "sign_id_to_uuid": {
+     "P001": "uuid-1",
+     "P002": "uuid-2",
+     "P003": "uuid-3",
+     "Y001": "uuid-4",
+     "P004": "uuid-5"
+    },
+    "sign_ids": [
+     "P001",
+     "P002",
+     "P003",
+     "Y001",
+     "P004"
+    ]
+   }
+  },
+  {
+   "id": "canon_numbering",
+   "node": "CanonicalSignLoader",
+   "setup": {
+    "kind": "db"
+   },
+   "params": {
+    "numbering_system": "parpola_1982"
+   },
+   "inputs": {},
+   "mode": "full",
+   "expected": {
+    "registry": [
+     {
+      "sign_id": "P001",
+      "internal_id": "uuid-1",
+      "numbering_system": "parpola_1982",
+      "in_corpus": 1,
+      "description": "fish",
+      "wells_ids": [
+       "W10",
+       "W11"
+      ]
+     },
+     {
+      "sign_id": "P002",
+      "internal_id": "uuid-2",
+      "numbering_system": "parpola_1982",
+      "in_corpus": 1,
+      "description": "jar",
+      "wells_ids": ""
+     }
+    ],
+    "n_signs": 2,
+    "n_parpola": 2,
+    "sign_id_to_uuid": {
+     "P001": "uuid-1",
+     "P002": "uuid-2"
+    },
+    "sign_ids": [
+     "P001",
+     "P002"
+    ]
+   }
+  },
+  {
+   "id": "canon_numbering_all",
+   "node": "CanonicalSignLoader",
+   "setup": {
+    "kind": "db"
+   },
+   "params": {
+    "in_corpus_only": false,
+    "numbering_system": "yajnadevam_glyphid"
+   },
+   "inputs": {},
+   "mode": "full",
+   "expected": {
+    "registry": [
+     {
+      "sign_id": "Y001",
+      "internal_id": "uuid-4",
+      "numbering_system": "yajnadevam_glyphid",
+      "in_corpus": 1,
+      "description": "glyph",
+      "wells_ids": ""
+     }
+    ],
+    "n_signs": 1,
+    "n_parpola": 0,
+    "sign_id_to_uuid": {
+     "Y001": "uuid-4"
+    },
+    "sign_ids": [
+     "Y001"
+    ]
+   }
+  },
+  {
+   "id": "canon_empty",
+   "node": "CanonicalSignLoader",
+   "setup": {
+    "kind": "db_empty"
+   },
+   "params": {},
+   "inputs": {},
+   "mode": "full",
+   "expected": {
+    "error": "Canonical sign registry is empty — run POST /canonical-signs/seed first",
+    "n_signs": 0
+   }
+  },
+  {
+   "id": "canon_db_error",
+   "node": "CanonicalSignLoader",
+   "setup": {
+    "kind": "db_raise"
+   },
+   "params": {},
+   "inputs": {},
+   "mode": "full",
+   "expected": {
+    "error": "Failed to load registry: fixture db failure"
+   }
+  },
+  {
+   "id": "cm_db",
+   "node": "ClusterMapper",
+   "setup": {
+    "kind": "db"
+   },
+   "params": {},
+   "inputs": {
+    "sequences": [
+     [
+      "A",
+      "B",
+      "X"
+     ],
+     [
+      "C",
+      "D",
+      "A"
+     ]
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "cluster_sequences": [
+     [
+      0,
+      0,
+      -1
+     ],
+     [
+      1,
+      2,
+      0
+     ]
+    ],
+    "n_sequences": 2,
+    "n_mapped_tokens": 5,
+    "n_unmapped_tokens": 1,
+    "map_rate": 0.8333,
+    "n_clusters": 3,
+    "cluster_k": 7,
+    "sign_to_cluster": {
+     "A": 0,
+     "B": 0,
+     "C": 1,
+     "D": 2
+    }
+   }
+  },
+  {
+   "id": "cm_freq",
+   "node": "ClusterMapper",
+   "setup": {
+    "kind": "db_empty"
+   },
+   "params": {},
+   "inputs": {
+    "sequences": [
+     [
+      "s1",
+      "s2",
+      "s1",
+      "s3"
+     ],
+     [
+      "s1",
+      "s2",
+      "s4",
+      "s5",
+      "s6"
+     ],
+     [
+      "s7",
+      "s8",
+      "s9",
+      "s10",
+      "s11",
+      "s12"
+     ],
+     [
+      "s1",
+      "s3"
+     ]
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "cluster_sequences": [
+     [
+      0,
+      1,
+      0,
+      2
+     ],
+     [
+      0,
+      1,
+      3,
+      4,
+      5
+     ],
+     [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     [
+      0,
+      2
+     ]
+    ],
+    "n_sequences": 4,
+    "n_mapped_tokens": 17,
+    "n_unmapped_tokens": 0,
+    "map_rate": 1.0,
+    "n_clusters": 12,
+    "cluster_k": 12,
+    "sign_to_cluster": {
+     "s1": 0,
+     "s2": 1,
+     "s3": 2,
+     "s4": 3,
+     "s5": 4,
+     "s6": 5,
+     "s7": 6,
+     "s8": 7,
+     "s9": 8,
+     "s10": 9,
+     "s11": 10,
+     "s12": 11
+    }
+   }
+  },
+  {
+   "id": "cm_freq_small",
+   "node": "ClusterMapper",
+   "setup": {
+    "kind": "db_empty"
+   },
+   "params": {},
+   "inputs": {
+    "sequences": [
+     [
+      "a",
+      "b"
+     ],
+     [
+      "a",
+      "c"
+     ],
+     [
+      "a",
+      "b"
+     ]
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "cluster_sequences": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      1
+     ]
+    ],
+    "n_sequences": 3,
+    "n_mapped_tokens": 6,
+    "n_unmapped_tokens": 0,
+    "map_rate": 1.0,
+    "n_clusters": 3,
+    "cluster_k": 3,
+    "sign_to_cluster": {
+     "a": 0,
+     "b": 1,
+     "c": 2
+    }
+   }
+  },
+  {
+   "id": "cm_error",
+   "node": "ClusterMapper",
+   "setup": {
+    "kind": "db_empty"
+   },
+   "params": {},
+   "inputs": {},
+   "mode": "full",
+   "expected": {
+    "error": "Cluster assignments unavailable and no sequences to generate from. Seed via POST /sign-clusters/seed or run scripts/cgsa_pipeline.py",
+    "n_assignments": 0
+   }
+  },
+  {
+   "id": "cm_db_error_falls_back",
+   "node": "ClusterMapper",
+   "setup": {
+    "kind": "db_raise"
+   },
+   "params": {},
+   "inputs": {
+    "sequences": [
+     [
+      "A",
+      "B"
+     ],
+     [
+      "A",
+      "C"
+     ]
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "cluster_sequences": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ]
+    ],
+    "n_sequences": 2,
+    "n_mapped_tokens": 4,
+    "n_unmapped_tokens": 0,
+    "map_rate": 1.0,
+    "n_clusters": 3,
+    "cluster_k": 3,
+    "sign_to_cluster": {
+     "A": 0,
+     "B": 1,
+     "C": 2
+    }
+   }
+  },
+  {
+   "id": "cm_file",
+   "node": "ClusterMapper",
+   "setup": {
+    "kind": "cluster_file"
+   },
+   "params": {},
+   "inputs": {
+    "sequences": [
+     [
+      "A",
+      "B",
+      "Q"
+     ],
+     [
+      "C",
+      "A"
+     ]
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "cluster_sequences": [
+     [
+      0,
+      1,
+      -1
+     ],
+     [
+      1,
+      0
+     ]
+    ],
+    "n_sequences": 2,
+    "n_mapped_tokens": 4,
+    "n_unmapped_tokens": 1,
+    "map_rate": 0.8,
+    "n_clusters": 2,
+    "cluster_k": 3,
+    "sign_to_cluster": {
+     "A": 0,
+     "B": 1,
+     "C": 1
+    }
+   },
+   "replay_via": "primitive"
+  },
+  {
+   "id": "sta_default",
+   "node": "StructuralTemplateAnalyzer",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "cluster_sequences": [
+     [
+      1,
+      2,
+      3,
+      1,
+      2,
+      3
+     ],
+     [
+      1,
+      2,
+      3
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      2,
+      3,
+      1,
+      2,
+      3
+     ],
+     [],
+     [
+      7
+     ],
+     [
+      -1,
+      -1
+     ],
+     [
+      1,
+      -1,
+      2,
+      3
+     ],
+     [
+      1,
+      2,
+      3,
+      4
+     ]
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "n_templates": 3,
+    "recurrent_templates": [
+     {
+      "template": [
+       1,
+       2
+      ],
+      "count": 7,
+      "length": 2
+     },
+     {
+      "template": [
+       2,
+       3
+      ],
+      "count": 7,
+      "length": 2
+     },
+     {
+      "template": [
+       1,
+       2,
+       3
+      ],
+      "count": 6,
+      "length": 3
+     }
+    ],
+    "dominant_prefix_clusters": {
+     "1": 5,
+     "4": 1,
+     "2": 1,
+     "7": 1
+    },
+    "dominant_suffix_clusters": {
+     "3": 4,
+     "5": 1,
+     "2": 1,
+     "7": 1,
+     "4": 1
+    },
+    "slot_occupancy": {
+     "initial": {
+      "1": 5,
+      "4": 1,
+      "2": 1,
+      "7": 1
+     },
+     "terminal": {
+      "3": 4,
+      "5": 1,
+      "2": 1,
+      "4": 1
+     },
+     "internal": {
+      "2": 6,
+      "3": 3,
+      "1": 2
+     }
+    },
+    "h_class_sequence": 3.3219,
+    "n_distinct_class_sequences": 10,
+    "n_sequences": 10
+   }
+  },
+  {
+   "id": "sta_params",
+   "node": "StructuralTemplateAnalyzer",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "min_count": 2,
+    "max_template_length": 3
+   },
+   "inputs": {
+    "cluster_sequences": [
+     [
+      1,
+      2,
+      3,
+      1,
+      2,
+      3
+     ],
+     [
+      1,
+      2,
+      3
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      2,
+      3,
+      1,
+      2,
+      3
+     ],
+     [],
+     [
+      7
+     ],
+     [
+      -1,
+      -1
+     ],
+     [
+      1,
+      -1,
+      2,
+      3
+     ],
+     [
+      1,
+      2,
+      3,
+      4
+     ]
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "n_templates": 6,
+    "recurrent_templates": [
+     {
+      "template": [
+       1,
+       2
+      ],
+      "count": 7,
+      "length": 2
+     },
+     {
+      "template": [
+       2,
+       3
+      ],
+      "count": 7,
+      "length": 2
+     },
+     {
+      "template": [
+       1,
+       2,
+       3
+      ],
+      "count": 6,
+      "length": 3
+     },
+     {
+      "template": [
+       3,
+       1
+      ],
+      "count": 2,
+      "length": 2
+     },
+     {
+      "template": [
+       2,
+       3,
+       1
+      ],
+      "count": 2,
+      "length": 3
+     },
+     {
+      "template": [
+       3,
+       1,
+       2
+      ],
+      "count": 2,
+      "length": 3
+     }
+    ],
+    "dominant_prefix_clusters": {
+     "1": 5,
+     "4": 1,
+     "2": 1,
+     "7": 1
+    },
+    "dominant_suffix_clusters": {
+     "3": 4,
+     "5": 1,
+     "2": 1,
+     "7": 1,
+     "4": 1
+    },
+    "slot_occupancy": {
+     "initial": {
+      "1": 5,
+      "4": 1,
+      "2": 1,
+      "7": 1
+     },
+     "terminal": {
+      "3": 4,
+      "5": 1,
+      "2": 1,
+      "4": 1
+     },
+     "internal": {
+      "2": 6,
+      "3": 3,
+      "1": 2
+     }
+    },
+    "h_class_sequence": 3.3219,
+    "n_distinct_class_sequences": 10,
+    "n_sequences": 10
+   }
+  },
+  {
+   "id": "sta_empty",
+   "node": "StructuralTemplateAnalyzer",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {},
+   "mode": "full",
+   "expected": {
+    "error": "No cluster_sequences — connect ClusterMapper.cluster_sequences"
+   }
+  },
+  {
+   "id": "ca_default",
+   "node": "ClusterArchaeology",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "inscriptions": [
+     {
+      "site_code": "Mohenjo-daro",
+      "sequence": [
+       "A",
+       "B"
+      ],
+      "length": 2
+     },
+     {
+      "site_code": "Mohenjo",
+      "sequence": [
+       "C"
+      ],
+      "length": 1
+     },
+     {
+      "site_code": "Harappa",
+      "sequence": [
+       "A",
+       "D"
+      ],
+      "length": 5
+     },
+     {
+      "site_code": "Harappa",
+      "sequence": [
+       "E"
+      ]
+     },
+     {
+      "site_code": "Ka",
+      "sequence": [
+       "B",
+       "B",
+       "A"
+      ]
+     },
+     {
+      "site_code": "X",
+      "sequence": [
+       "Z"
+      ]
+     }
+    ],
+    "sign_to_cluster": {
+     "A": 0,
+     "B": 0,
+     "C": 1,
+     "D": 1,
+     "E": 2,
+     "Z": 2
+    }
+   },
+   "mode": "full",
+   "expected": {
+    "target_cluster_signs": [
+     "A",
+     "B"
+    ],
+    "n_target_signs": 2,
+    "n_inscriptions_total": 6,
+    "n_inscriptions_with_cluster": 3,
+    "overall_rate": 0.5,
+    "site_table": [
+     {
+      "site_prefix": "Mo0000",
+      "n_inscriptions": 2,
+      "n_with_cluster": 1,
+      "rate_with_cluster": 0.5,
+      "enrichment": 1.0
+     },
+     {
+      "site_prefix": "Ha0000",
+      "n_inscriptions": 2,
+      "n_with_cluster": 1,
+      "rate_with_cluster": 0.5,
+      "enrichment": 1.0
+     },
+     {
+      "site_prefix": "Ka0000",
+      "n_inscriptions": 1,
+      "n_with_cluster": 1,
+      "rate_with_cluster": 1.0,
+      "enrichment": 2.0
+     },
+     {
+      "site_prefix": "X",
+      "n_inscriptions": 1,
+      "n_with_cluster": 0,
+      "rate_with_cluster": 0.0,
+      "enrichment": 0.0
+     }
+    ],
+    "length_table": [
+     {
+      "length": 1,
+      "n_inscriptions": 3,
+      "n_with_cluster": 0,
+      "rate_with_cluster": 0.0
+     },
+     {
+      "length": 2,
+      "n_inscriptions": 1,
+      "n_with_cluster": 1,
+      "rate_with_cluster": 1.0
+     },
+     {
+      "length": 3,
+      "n_inscriptions": 1,
+      "n_with_cluster": 1,
+      "rate_with_cluster": 1.0
+     },
+     {
+      "length": 5,
+      "n_inscriptions": 1,
+      "n_with_cluster": 1,
+      "rate_with_cluster": 1.0
+     }
+    ],
+    "chi_squared": 2.0,
+    "dof": 3,
+    "significant_p05": false,
+    "verdict": "PREDICTION 2 NOT CONFIRMED: chi2=2.00 dof=3; per-site rate range 0.000-1.000 (corpus baseline 0.500)."
+   }
+  },
+  {
+   "id": "ca_target1",
+   "node": "ClusterArchaeology",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "target_cluster": 1
+   },
+   "inputs": {
+    "inscriptions": [
+     {
+      "site_code": "Mohenjo-daro",
+      "sequence": [
+       "A",
+       "B"
+      ],
+      "length": 2
+     },
+     {
+      "site_code": "Mohenjo",
+      "sequence": [
+       "C"
+      ],
+      "length": 1
+     },
+     {
+      "site_code": "Harappa",
+      "sequence": [
+       "A",
+       "D"
+      ],
+      "length": 5
+     },
+     {
+      "site_code": "Harappa",
+      "sequence": [
+       "E"
+      ]
+     },
+     {
+      "site_code": "Ka",
+      "sequence": [
+       "B",
+       "B",
+       "A"
+      ]
+     },
+     {
+      "site_code": "X",
+      "sequence": [
+       "Z"
+      ]
+     }
+    ],
+    "sign_to_cluster": {
+     "A": 0,
+     "B": 0,
+     "C": 1,
+     "D": 1,
+     "E": 2,
+     "Z": 2
+    }
+   },
+   "mode": "full",
+   "expected": {
+    "target_cluster_signs": [
+     "C",
+     "D"
+    ],
+    "n_target_signs": 2,
+    "n_inscriptions_total": 6,
+    "n_inscriptions_with_cluster": 2,
+    "overall_rate": 0.3333,
+    "site_table": [
+     {
+      "site_prefix": "Mo0000",
+      "n_inscriptions": 2,
+      "n_with_cluster": 1,
+      "rate_with_cluster": 0.5,
+      "enrichment": 1.5
+     },
+     {
+      "site_prefix": "Ha0000",
+      "n_inscriptions": 2,
+      "n_with_cluster": 1,
+      "rate_with_cluster": 0.5,
+      "enrichment": 1.5
+     },
+     {
+      "site_prefix": "Ka0000",
+      "n_inscriptions": 1,
+      "n_with_cluster": 0,
+      "rate_with_cluster": 0.0,
+      "enrichment": 0.0
+     },
+     {
+      "site_prefix": "X",
+      "n_inscriptions": 1,
+      "n_with_cluster": 0,
+      "rate_with_cluster": 0.0,
+      "enrichment": 0.0
+     }
+    ],
+    "length_table": [
+     {
+      "length": 1,
+      "n_inscriptions": 3,
+      "n_with_cluster": 1,
+      "rate_with_cluster": 0.3333
+     },
+     {
+      "length": 2,
+      "n_inscriptions": 1,
+      "n_with_cluster": 0,
+      "rate_with_cluster": 0.0
+     },
+     {
+      "length": 3,
+      "n_inscriptions": 1,
+      "n_with_cluster": 0,
+      "rate_with_cluster": 0.0
+     },
+     {
+      "length": 5,
+      "n_inscriptions": 1,
+      "n_with_cluster": 1,
+      "rate_with_cluster": 1.0
+     }
+    ],
+    "chi_squared": 1.5,
+    "dof": 3,
+    "significant_p05": false,
+    "verdict": "PREDICTION 2 NOT CONFIRMED: chi2=1.50 dof=3; per-site rate range 0.000-0.500 (corpus baseline 0.333)."
+   }
+  },
+  {
+   "id": "ca_fixed",
+   "node": "ClusterArchaeology",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "fixed_members": [
+     "Z",
+     "Q"
+    ]
+   },
+   "inputs": {
+    "inscriptions": [
+     {
+      "site_code": "Mohenjo-daro",
+      "sequence": [
+       "A",
+       "B"
+      ],
+      "length": 2
+     },
+     {
+      "site_code": "Mohenjo",
+      "sequence": [
+       "C"
+      ],
+      "length": 1
+     },
+     {
+      "site_code": "Harappa",
+      "sequence": [
+       "A",
+       "D"
+      ],
+      "length": 5
+     },
+     {
+      "site_code": "Harappa",
+      "sequence": [
+       "E"
+      ]
+     },
+     {
+      "site_code": "Ka",
+      "sequence": [
+       "B",
+       "B",
+       "A"
+      ]
+     },
+     {
+      "site_code": "X",
+      "sequence": [
+       "Z"
+      ]
+     }
+    ],
+    "sign_to_cluster": {
+     "A": 0,
+     "B": 0,
+     "C": 1,
+     "D": 1,
+     "E": 2,
+     "Z": 2
+    }
+   },
+   "mode": "full",
+   "expected": {
+    "target_cluster_signs": [
+     "Q",
+     "Z"
+    ],
+    "n_target_signs": 2,
+    "n_inscriptions_total": 6,
+    "n_inscriptions_with_cluster": 1,
+    "overall_rate": 0.1667,
+    "site_table": [
+     {
+      "site_prefix": "Mo0000",
+      "n_inscriptions": 2,
+      "n_with_cluster": 0,
+      "rate_with_cluster": 0.0,
+      "enrichment": 0.0
+     },
+     {
+      "site_prefix": "Ha0000",
+      "n_inscriptions": 2,
+      "n_with_cluster": 0,
+      "rate_with_cluster": 0.0,
+      "enrichment": 0.0
+     },
+     {
+      "site_prefix": "Ka0000",
+      "n_inscriptions": 1,
+      "n_with_cluster": 0,
+      "rate_with_cluster": 0.0,
+      "enrichment": 0.0
+     },
+     {
+      "site_prefix": "X",
+      "n_inscriptions": 1,
+      "n_with_cluster": 1,
+      "rate_with_cluster": 1.0,
+      "enrichment": 6.0
+     }
+    ],
+    "length_table": [
+     {
+      "length": 1,
+      "n_inscriptions": 3,
+      "n_with_cluster": 1,
+      "rate_with_cluster": 0.3333
+     },
+     {
+      "length": 2,
+      "n_inscriptions": 1,
+      "n_with_cluster": 0,
+      "rate_with_cluster": 0.0
+     },
+     {
+      "length": 3,
+      "n_inscriptions": 1,
+      "n_with_cluster": 0,
+      "rate_with_cluster": 0.0
+     },
+     {
+      "length": 5,
+      "n_inscriptions": 1,
+      "n_with_cluster": 0,
+      "rate_with_cluster": 0.0
+     }
+    ],
+    "chi_squared": 6.0,
+    "dof": 3,
+    "significant_p05": false,
+    "verdict": "PREDICTION 2 NOT CONFIRMED: chi2=6.00 dof=3; per-site rate range 0.000-1.000 (corpus baseline 0.167)."
+   }
+  },
+  {
+   "id": "ca_empty_target",
+   "node": "ClusterArchaeology",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "target_cluster": 99
+   },
+   "inputs": {
+    "inscriptions": [
+     {
+      "site_code": "Mohenjo-daro",
+      "sequence": [
+       "A",
+       "B"
+      ],
+      "length": 2
+     },
+     {
+      "site_code": "Mohenjo",
+      "sequence": [
+       "C"
+      ],
+      "length": 1
+     },
+     {
+      "site_code": "Harappa",
+      "sequence": [
+       "A",
+       "D"
+      ],
+      "length": 5
+     },
+     {
+      "site_code": "Harappa",
+      "sequence": [
+       "E"
+      ]
+     },
+     {
+      "site_code": "Ka",
+      "sequence": [
+       "B",
+       "B",
+       "A"
+      ]
+     },
+     {
+      "site_code": "X",
+      "sequence": [
+       "Z"
+      ]
+     }
+    ],
+    "sign_to_cluster": {
+     "A": 0,
+     "B": 0,
+     "C": 1,
+     "D": 1,
+     "E": 2,
+     "Z": 2
+    }
+   },
+   "mode": "full",
+   "expected": {
+    "error": "no signs in target cluster"
+   }
+  },
+  {
+   "id": "role_default",
+   "node": "IndusSignRoleClassifier",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "sequences": [
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "A1",
+      "P121"
+     ],
+     [
+      "A1",
+      "P121"
+     ],
+     [
+      "A1",
+      "P121"
+     ],
+     [
+      "A1",
+      "P121"
+     ],
+     [
+      "A1",
+      "P121"
+     ],
+     [
+      "A1",
+      "P121"
+     ],
+     [
+      "M1",
+      "A1"
+     ],
+     [
+      "M1",
+      "A1"
+     ],
+     [
+      "M1",
+      "A1"
+     ],
+     [
+      "A1",
+      "M1"
+     ],
+     [
+      "A1",
+      "M1"
+     ],
+     [
+      "A1",
+      "M1"
+     ],
+     [
+      "X1",
+      "X2"
+     ],
+     [
+      "X1",
+      "X2"
+     ],
+     [
+      "X1",
+      "X2"
+     ],
+     [
+      "X1",
+      "X2"
+     ],
+     [
+      "X1",
+      "X2"
+     ],
+     [
+      "X1",
+      "X2"
+     ],
+     [
+      "B1",
+      "B2",
+      "B1"
+     ],
+     [
+      "B1",
+      "B2",
+      "B1"
+     ],
+     [
+      "B1",
+      "B2",
+      "B1"
+     ],
+     [
+      "B1",
+      "B2",
+      "B1"
+     ],
+     [
+      "B1",
+      "B2",
+      "B1"
+     ]
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "role_table": {
+     "105": [
+      "determinative",
+      "numeral",
+      "suffix"
+     ],
+     "A1": [
+      "determinative"
+     ],
+     "P121": [
+      "numeral",
+      "suffix"
+     ],
+     "M1": [
+      "phonetic"
+     ],
+     "X1": [
+      "compound",
+      "determinative"
+     ],
+     "X2": [
+      "compound",
+      "suffix"
+     ],
+     "B1": [
+      "phonetic"
+     ],
+     "B2": [
+      "phonetic"
+     ]
+    },
+    "n_signs": 8,
+    "role_summary": {
+     "suffix": 3,
+     "determinative": 3,
+     "numeral": 2,
+     "phonetic": 3,
+     "logogram": 0,
+     "compound": 2
+    },
+    "compound_signs": [
+     "X1",
+     "X2"
+    ],
+    "high_pmi_bigrams": [
+     {
+      "a": "A1",
+      "b": "P121",
+      "count": 6
+     },
+     {
+      "a": "X1",
+      "b": "X2",
+      "count": 6
+     },
+     {
+      "a": "B1",
+      "b": "B2",
+      "count": 5
+     },
+     {
+      "a": "B2",
+      "b": "B1",
+      "count": 5
+     },
+     {
+      "a": "M1",
+      "b": "A1",
+      "count": 3
+     },
+     {
+      "a": "A1",
+      "b": "M1",
+      "count": 3
+     }
+    ],
+    "n_logograms": 0
+   }
+  },
+  {
+   "id": "role_empty_numerals",
+   "node": "IndusSignRoleClassifier",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "numeral_signs": []
+   },
+   "inputs": {
+    "sequences": [
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "A1",
+      "P121"
+     ],
+     [
+      "A1",
+      "P121"
+     ],
+     [
+      "A1",
+      "P121"
+     ],
+     [
+      "A1",
+      "P121"
+     ],
+     [
+      "A1",
+      "P121"
+     ],
+     [
+      "A1",
+      "P121"
+     ],
+     [
+      "M1",
+      "A1"
+     ],
+     [
+      "M1",
+      "A1"
+     ],
+     [
+      "M1",
+      "A1"
+     ],
+     [
+      "A1",
+      "M1"
+     ],
+     [
+      "A1",
+      "M1"
+     ],
+     [
+      "A1",
+      "M1"
+     ],
+     [
+      "X1",
+      "X2"
+     ],
+     [
+      "X1",
+      "X2"
+     ],
+     [
+      "X1",
+      "X2"
+     ],
+     [
+      "X1",
+      "X2"
+     ],
+     [
+      "X1",
+      "X2"
+     ],
+     [
+      "X1",
+      "X2"
+     ],
+     [
+      "B1",
+      "B2",
+      "B1"
+     ],
+     [
+      "B1",
+      "B2",
+      "B1"
+     ],
+     [
+      "B1",
+      "B2",
+      "B1"
+     ],
+     [
+      "B1",
+      "B2",
+      "B1"
+     ],
+     [
+      "B1",
+      "B2",
+      "B1"
+     ]
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "role_table": {
+     "105": [
+      "determinative",
+      "numeral",
+      "suffix"
+     ],
+     "A1": [
+      "determinative"
+     ],
+     "P121": [
+      "suffix"
+     ],
+     "M1": [
+      "phonetic"
+     ],
+     "X1": [
+      "compound",
+      "determinative"
+     ],
+     "X2": [
+      "compound",
+      "suffix"
+     ],
+     "B1": [
+      "phonetic"
+     ],
+     "B2": [
+      "phonetic"
+     ]
+    },
+    "n_signs": 8,
+    "role_summary": {
+     "suffix": 3,
+     "determinative": 3,
+     "numeral": 1,
+     "phonetic": 3,
+     "logogram": 0,
+     "compound": 2
+    },
+    "compound_signs": [
+     "X1",
+     "X2"
+    ],
+    "high_pmi_bigrams": [
+     {
+      "a": "A1",
+      "b": "P121",
+      "count": 6
+     },
+     {
+      "a": "X1",
+      "b": "X2",
+      "count": 6
+     },
+     {
+      "a": "B1",
+      "b": "B2",
+      "count": 5
+     },
+     {
+      "a": "B2",
+      "b": "B1",
+      "count": 5
+     },
+     {
+      "a": "M1",
+      "b": "A1",
+      "count": 3
+     },
+     {
+      "a": "A1",
+      "b": "M1",
+      "count": 3
+     }
+    ],
+    "n_logograms": 0
+   }
+  },
+  {
+   "id": "role_explicit",
+   "node": "IndusSignRoleClassifier",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "numeral_signs": [
+     "M1"
+    ]
+   },
+   "inputs": {
+    "sequences": [
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "A1",
+      "P121"
+     ],
+     [
+      "A1",
+      "P121"
+     ],
+     [
+      "A1",
+      "P121"
+     ],
+     [
+      "A1",
+      "P121"
+     ],
+     [
+      "A1",
+      "P121"
+     ],
+     [
+      "A1",
+      "P121"
+     ],
+     [
+      "M1",
+      "A1"
+     ],
+     [
+      "M1",
+      "A1"
+     ],
+     [
+      "M1",
+      "A1"
+     ],
+     [
+      "A1",
+      "M1"
+     ],
+     [
+      "A1",
+      "M1"
+     ],
+     [
+      "A1",
+      "M1"
+     ],
+     [
+      "X1",
+      "X2"
+     ],
+     [
+      "X1",
+      "X2"
+     ],
+     [
+      "X1",
+      "X2"
+     ],
+     [
+      "X1",
+      "X2"
+     ],
+     [
+      "X1",
+      "X2"
+     ],
+     [
+      "X1",
+      "X2"
+     ],
+     [
+      "B1",
+      "B2",
+      "B1"
+     ],
+     [
+      "B1",
+      "B2",
+      "B1"
+     ],
+     [
+      "B1",
+      "B2",
+      "B1"
+     ],
+     [
+      "B1",
+      "B2",
+      "B1"
+     ],
+     [
+      "B1",
+      "B2",
+      "B1"
+     ]
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "role_table": {
+     "105": [
+      "determinative",
+      "numeral",
+      "suffix"
+     ],
+     "A1": [
+      "determinative"
+     ],
+     "P121": [
+      "suffix"
+     ],
+     "M1": [
+      "numeral"
+     ],
+     "X1": [
+      "compound",
+      "determinative"
+     ],
+     "X2": [
+      "compound",
+      "suffix"
+     ],
+     "B1": [
+      "phonetic"
+     ],
+     "B2": [
+      "phonetic"
+     ]
+    },
+    "n_signs": 8,
+    "role_summary": {
+     "suffix": 3,
+     "determinative": 3,
+     "numeral": 2,
+     "phonetic": 2,
+     "logogram": 0,
+     "compound": 2
+    },
+    "compound_signs": [
+     "X1",
+     "X2"
+    ],
+    "high_pmi_bigrams": [
+     {
+      "a": "A1",
+      "b": "P121",
+      "count": 6
+     },
+     {
+      "a": "X1",
+      "b": "X2",
+      "count": 6
+     },
+     {
+      "a": "B1",
+      "b": "B2",
+      "count": 5
+     },
+     {
+      "a": "B2",
+      "b": "B1",
+      "count": 5
+     },
+     {
+      "a": "M1",
+      "b": "A1",
+      "count": 3
+     },
+     {
+      "a": "A1",
+      "b": "M1",
+      "count": 3
+     }
+    ],
+    "n_logograms": 0
+   }
+  },
+  {
+   "id": "role_min_count",
+   "node": "IndusSignRoleClassifier",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "min_count": 7
+   },
+   "inputs": {
+    "sequences": [
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "105"
+     ],
+     [
+      "A1",
+      "P121"
+     ],
+     [
+      "A1",
+      "P121"
+     ],
+     [
+      "A1",
+      "P121"
+     ],
+     [
+      "A1",
+      "P121"
+     ],
+     [
+      "A1",
+      "P121"
+     ],
+     [
+      "A1",
+      "P121"
+     ],
+     [
+      "M1",
+      "A1"
+     ],
+     [
+      "M1",
+      "A1"
+     ],
+     [
+      "M1",
+      "A1"
+     ],
+     [
+      "A1",
+      "M1"
+     ],
+     [
+      "A1",
+      "M1"
+     ],
+     [
+      "A1",
+      "M1"
+     ],
+     [
+      "X1",
+      "X2"
+     ],
+     [
+      "X1",
+      "X2"
+     ],
+     [
+      "X1",
+      "X2"
+     ],
+     [
+      "X1",
+      "X2"
+     ],
+     [
+      "X1",
+      "X2"
+     ],
+     [
+      "X1",
+      "X2"
+     ],
+     [
+      "B1",
+      "B2",
+      "B1"
+     ],
+     [
+      "B1",
+      "B2",
+      "B1"
+     ],
+     [
+      "B1",
+      "B2",
+      "B1"
+     ],
+     [
+      "B1",
+      "B2",
+      "B1"
+     ],
+     [
+      "B1",
+      "B2",
+      "B1"
+     ]
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "role_table": {
+     "105": [
+      "determinative",
+      "numeral",
+      "suffix"
+     ],
+     "A1": [
+      "determinative"
+     ],
+     "B1": [
+      "phonetic"
+     ]
+    },
+    "n_signs": 3,
+    "role_summary": {
+     "suffix": 1,
+     "determinative": 2,
+     "numeral": 1,
+     "phonetic": 1,
+     "logogram": 0,
+     "compound": 0
+    },
+    "compound_signs": [
+     "X1",
+     "X2"
+    ],
+    "high_pmi_bigrams": [
+     {
+      "a": "A1",
+      "b": "P121",
+      "count": 6
+     },
+     {
+      "a": "X1",
+      "b": "X2",
+      "count": 6
+     },
+     {
+      "a": "B1",
+      "b": "B2",
+      "count": 5
+     },
+     {
+      "a": "B2",
+      "b": "B1",
+      "count": 5
+     },
+     {
+      "a": "M1",
+      "b": "A1",
+      "count": 3
+     },
+     {
+      "a": "A1",
+      "b": "M1",
+      "count": 3
+     }
+    ],
+    "n_logograms": 0
+   }
+  },
+  {
+   "id": "role_empty_input",
+   "node": "IndusSignRoleClassifier",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {},
+   "mode": "full",
+   "expected": {
+    "role_table": {},
+    "n_signs": 0
+   }
+  },
+  {
+   "id": "vrm_default",
+   "node": "DefaultIndusValueRoleMap",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {},
+   "mode": "full",
+   "expected": {
+    "value_role_map": {
+     "-um": "suffix",
+     "-e": "suffix",
+     "-il": "suffix",
+     "-ku": "suffix",
+     "-in": "suffix",
+     "-al": "suffix",
+     "-an": "suffix",
+     "-ai": "suffix",
+     "-ar": "suffix",
+     "-aru": "suffix",
+     "ka": "phonetic",
+     "ki": "phonetic",
+     "ku": "phonetic",
+     "ke": "phonetic",
+     "ko": "phonetic",
+     "pa": "phonetic",
+     "pi": "phonetic",
+     "pu": "phonetic",
+     "pe": "phonetic",
+     "po": "phonetic",
+     "ta": "phonetic",
+     "ti": "phonetic",
+     "tu": "phonetic",
+     "te": "phonetic",
+     "to": "phonetic",
+     "ma": "phonetic",
+     "mi": "phonetic",
+     "mu": "phonetic",
+     "me": "phonetic",
+     "mo": "phonetic",
+     "na": "phonetic",
+     "ni": "phonetic",
+     "nu": "phonetic",
+     "ne": "phonetic",
+     "no": "phonetic",
+     "la": "phonetic",
+     "li": "phonetic",
+     "lu": "phonetic",
+     "le": "phonetic",
+     "lo": "phonetic",
+     "ra": "phonetic",
+     "ri": "phonetic",
+     "ru": "phonetic",
+     "re": "phonetic",
+     "ro": "phonetic",
+     "sa": "phonetic",
+     "si": "phonetic",
+     "su": "phonetic",
+     "se": "phonetic",
+     "so": "phonetic",
+     "va": "phonetic",
+     "vi": "phonetic",
+     "vu": "phonetic",
+     "ve": "phonetic",
+     "vo": "phonetic",
+     "ya": "phonetic",
+     "yi": "phonetic",
+     "yu": "phonetic",
+     "ye": "phonetic",
+     "yo": "phonetic",
+     "PERSON-DET": "determinative",
+     "TITLE-DET": "determinative",
+     "ANIMAL-DET": "determinative",
+     "VESSEL-DET": "determinative",
+     "1": "numeral",
+     "2": "numeral",
+     "3": "numeral",
+     "5": "numeral",
+     "10": "numeral"
+    },
+    "n_values": 69,
+    "families_applied": [],
+    "family_sizes": {},
+    "unknown_families": [],
+    "json": {
+     "-um": "suffix",
+     "-e": "suffix",
+     "-il": "suffix",
+     "-ku": "suffix",
+     "-in": "suffix",
+     "-al": "suffix",
+     "-an": "suffix",
+     "-ai": "suffix",
+     "-ar": "suffix",
+     "-aru": "suffix",
+     "ka": "phonetic",
+     "ki": "phonetic",
+     "ku": "phonetic",
+     "ke": "phonetic",
+     "ko": "phonetic",
+     "pa": "phonetic",
+     "pi": "phonetic",
+     "pu": "phonetic",
+     "pe": "phonetic",
+     "po": "phonetic",
+     "ta": "phonetic",
+     "ti": "phonetic",
+     "tu": "phonetic",
+     "te": "phonetic",
+     "to": "phonetic",
+     "ma": "phonetic",
+     "mi": "phonetic",
+     "mu": "phonetic",
+     "me": "phonetic",
+     "mo": "phonetic",
+     "na": "phonetic",
+     "ni": "phonetic",
+     "nu": "phonetic",
+     "ne": "phonetic",
+     "no": "phonetic",
+     "la": "phonetic",
+     "li": "phonetic",
+     "lu": "phonetic",
+     "le": "phonetic",
+     "lo": "phonetic",
+     "ra": "phonetic",
+     "ri": "phonetic",
+     "ru": "phonetic",
+     "re": "phonetic",
+     "ro": "phonetic",
+     "sa": "phonetic",
+     "si": "phonetic",
+     "su": "phonetic",
+     "se": "phonetic",
+     "so": "phonetic",
+     "va": "phonetic",
+     "vi": "phonetic",
+     "vu": "phonetic",
+     "ve": "phonetic",
+     "vo": "phonetic",
+     "ya": "phonetic",
+     "yi": "phonetic",
+     "yu": "phonetic",
+     "ye": "phonetic",
+     "yo": "phonetic",
+     "PERSON-DET": "determinative",
+     "TITLE-DET": "determinative",
+     "ANIMAL-DET": "determinative",
+     "VESSEL-DET": "determinative",
+     "1": "numeral",
+     "2": "numeral",
+     "3": "numeral",
+     "5": "numeral",
+     "10": "numeral"
+    }
+   }
+  },
+  {
+   "id": "vrm_no_default",
+   "node": "DefaultIndusValueRoleMap",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "include_default": false
+   },
+   "inputs": {},
+   "mode": "full",
+   "expected": {
+    "value_role_map": {},
+    "n_values": 0,
+    "families_applied": [],
+    "family_sizes": {},
+    "unknown_families": [],
+    "json": {}
+   }
+  },
+  {
+   "id": "vrm_extra",
+   "node": "DefaultIndusValueRoleMap",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "extra": {
+     "ka": "logogram",
+     "zz-new": "numeral"
+    }
+   },
+   "inputs": {},
+   "mode": "full",
+   "expected": {
+    "value_role_map": {
+     "-um": "suffix",
+     "-e": "suffix",
+     "-il": "suffix",
+     "-ku": "suffix",
+     "-in": "suffix",
+     "-al": "suffix",
+     "-an": "suffix",
+     "-ai": "suffix",
+     "-ar": "suffix",
+     "-aru": "suffix",
+     "ka": "logogram",
+     "ki": "phonetic",
+     "ku": "phonetic",
+     "ke": "phonetic",
+     "ko": "phonetic",
+     "pa": "phonetic",
+     "pi": "phonetic",
+     "pu": "phonetic",
+     "pe": "phonetic",
+     "po": "phonetic",
+     "ta": "phonetic",
+     "ti": "phonetic",
+     "tu": "phonetic",
+     "te": "phonetic",
+     "to": "phonetic",
+     "ma": "phonetic",
+     "mi": "phonetic",
+     "mu": "phonetic",
+     "me": "phonetic",
+     "mo": "phonetic",
+     "na": "phonetic",
+     "ni": "phonetic",
+     "nu": "phonetic",
+     "ne": "phonetic",
+     "no": "phonetic",
+     "la": "phonetic",
+     "li": "phonetic",
+     "lu": "phonetic",
+     "le": "phonetic",
+     "lo": "phonetic",
+     "ra": "phonetic",
+     "ri": "phonetic",
+     "ru": "phonetic",
+     "re": "phonetic",
+     "ro": "phonetic",
+     "sa": "phonetic",
+     "si": "phonetic",
+     "su": "phonetic",
+     "se": "phonetic",
+     "so": "phonetic",
+     "va": "phonetic",
+     "vi": "phonetic",
+     "vu": "phonetic",
+     "ve": "phonetic",
+     "vo": "phonetic",
+     "ya": "phonetic",
+     "yi": "phonetic",
+     "yu": "phonetic",
+     "ye": "phonetic",
+     "yo": "phonetic",
+     "PERSON-DET": "determinative",
+     "TITLE-DET": "determinative",
+     "ANIMAL-DET": "determinative",
+     "VESSEL-DET": "determinative",
+     "1": "numeral",
+     "2": "numeral",
+     "3": "numeral",
+     "5": "numeral",
+     "10": "numeral",
+     "zz-new": "numeral"
+    },
+    "n_values": 70,
+    "families_applied": [],
+    "family_sizes": {},
+    "unknown_families": [],
+    "json": {
+     "-um": "suffix",
+     "-e": "suffix",
+     "-il": "suffix",
+     "-ku": "suffix",
+     "-in": "suffix",
+     "-al": "suffix",
+     "-an": "suffix",
+     "-ai": "suffix",
+     "-ar": "suffix",
+     "-aru": "suffix",
+     "ka": "logogram",
+     "ki": "phonetic",
+     "ku": "phonetic",
+     "ke": "phonetic",
+     "ko": "phonetic",
+     "pa": "phonetic",
+     "pi": "phonetic",
+     "pu": "phonetic",
+     "pe": "phonetic",
+     "po": "phonetic",
+     "ta": "phonetic",
+     "ti": "phonetic",
+     "tu": "phonetic",
+     "te": "phonetic",
+     "to": "phonetic",
+     "ma": "phonetic",
+     "mi": "phonetic",
+     "mu": "phonetic",
+     "me": "phonetic",
+     "mo": "phonetic",
+     "na": "phonetic",
+     "ni": "phonetic",
+     "nu": "phonetic",
+     "ne": "phonetic",
+     "no": "phonetic",
+     "la": "phonetic",
+     "li": "phonetic",
+     "lu": "phonetic",
+     "le": "phonetic",
+     "lo": "phonetic",
+     "ra": "phonetic",
+     "ri": "phonetic",
+     "ru": "phonetic",
+     "re": "phonetic",
+     "ro": "phonetic",
+     "sa": "phonetic",
+     "si": "phonetic",
+     "su": "phonetic",
+     "se": "phonetic",
+     "so": "phonetic",
+     "va": "phonetic",
+     "vi": "phonetic",
+     "vu": "phonetic",
+     "ve": "phonetic",
+     "vo": "phonetic",
+     "ya": "phonetic",
+     "yi": "phonetic",
+     "yu": "phonetic",
+     "ye": "phonetic",
+     "yo": "phonetic",
+     "PERSON-DET": "determinative",
+     "TITLE-DET": "determinative",
+     "ANIMAL-DET": "determinative",
+     "VESSEL-DET": "determinative",
+     "1": "numeral",
+     "2": "numeral",
+     "3": "numeral",
+     "5": "numeral",
+     "10": "numeral",
+     "zz-new": "numeral"
+    }
+   }
+  },
+  {
+   "id": "vrm_tamil",
+   "node": "DefaultIndusValueRoleMap",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "families": [
+     "old_tamil"
+    ]
+   },
+   "inputs": {},
+   "mode": "hash",
+   "expected_sha256": "486133d408b3fb14054834ff5f20da0c266329cd1076bd319f857b5fc41eb9a6",
+   "expected_keys": [
+    "families_applied",
+    "family_sizes",
+    "json",
+    "n_values",
+    "unknown_families",
+    "value_role_map"
+   ],
+   "expected_fields": {
+    "n_values": 2220,
+    "families_applied": [
+     "old_tamil"
+    ],
+    "family_sizes": {
+     "old_tamil": 2168
+    },
+    "unknown_families": []
+   }
+  },
+  {
+   "id": "vrm_luwian_str",
+   "node": "DefaultIndusValueRoleMap",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "families": "hieroglyphic_luwian"
+   },
+   "inputs": {},
+   "mode": "hash",
+   "expected_sha256": "9ce99a0e29bdf8be92dcc53e357f8b32a3f0a78d61048c803cb0078056337abd",
+   "expected_keys": [
+    "families_applied",
+    "family_sizes",
+    "json",
+    "n_values",
+    "unknown_families",
+    "value_role_map"
+   ],
+   "expected_fields": {
+    "n_values": 524,
+    "families_applied": [
+     "hieroglyphic_luwian"
+    ],
+    "family_sizes": {
+     "hieroglyphic_luwian": 458
+    },
+    "unknown_families": []
+   }
+  },
+  {
+   "id": "vrm_greek_unknown",
+   "node": "DefaultIndusValueRoleMap",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "families": [
+     "mycenaean_greek",
+     "bogus_family"
+    ]
+   },
+   "inputs": {},
+   "mode": "hash",
+   "expected_sha256": "b5d635b6e292091d823e0f157101fb4d662bf9e0fd890520fd7d15999be12a44",
+   "expected_keys": [
+    "families_applied",
+    "family_sizes",
+    "json",
+    "n_values",
+    "unknown_families",
+    "value_role_map"
+   ],
+   "expected_fields": {
+    "n_values": 101,
+    "families_applied": [
+     "mycenaean_greek"
+    ],
+    "family_sizes": {
+     "mycenaean_greek": 68
+    },
+    "unknown_families": [
+     "bogus_family"
+    ]
+   }
+  },
+  {
+   "id": "vrm_alias",
+   "node": "DefaultIndusValueRoleMap",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "families": [
+     "tamil"
+    ],
+    "include_default": false
+   },
+   "inputs": {},
+   "mode": "hash",
+   "expected_sha256": "ff38190f5dd709ec60b4ef26137e78642268167157903f700607f261e54ae456",
+   "expected_keys": [
+    "families_applied",
+    "family_sizes",
+    "json",
+    "n_values",
+    "unknown_families",
+    "value_role_map"
+   ],
+   "expected_fields": {
+    "n_values": 2168,
+    "families_applied": [
+     "tamil"
+    ],
+    "family_sizes": {
+     "tamil": 2168
+    },
+    "unknown_families": []
+   }
+  },
+  {
+   "id": "vrm_all_families",
+   "node": "DefaultIndusValueRoleMap",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "families": [
+     "old_tamil",
+     "hieroglyphic_luwian",
+     "mycenaean_greek"
+    ]
+   },
+   "inputs": {},
+   "mode": "hash",
+   "expected_sha256": "4beab96e65da2161c327a6f1160bc01b0d114115912ae705cd1fc1a6e313a94f",
+   "expected_keys": [
+    "families_applied",
+    "family_sizes",
+    "json",
+    "n_values",
+    "unknown_families",
+    "value_role_map"
+   ],
+   "expected_fields": {
+    "n_values": 2686,
+    "families_applied": [
+     "old_tamil",
+     "hieroglyphic_luwian",
+     "mycenaean_greek"
+    ],
+    "family_sizes": {
+     "old_tamil": 2168,
+     "hieroglyphic_luwian": 458,
+     "mycenaean_greek": 68
+    },
+    "unknown_families": []
+   }
+  },
+  {
+   "id": "anchor_default",
+   "node": "IndusAnchorSetSyllable",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {},
+   "mode": "full",
+   "expected": {
+    "anchor_dict": {
+     "M342": "ay",
+     "M176": "an",
+     "M267": "in",
+     "M099": "kol",
+     "M233": "ur",
+     "M391": "ka",
+     "M162": "il",
+     "M328": "a",
+     "M059": "l",
+     "M051": "pu",
+     "M089": "tu",
+     "M048": "mu",
+     "M367": "am",
+     "M336": "in",
+     "M012": "o",
+     "M305": "tu",
+     "M062": "er",
+     "M073": "kn",
+     "M045": "yan",
+     "M016": "kal",
+     "M013": "nak",
+     "M060": "ka",
+     "M080": "a",
+     "M057": "mat",
+     "M039": "an",
+     "M067": "an",
+     "M068": "mar",
+     "M006": "pul",
+     "M063": "mut",
+     "M077": "nal",
+     "M018": "nr",
+     "M030": "k",
+     "M017": "ka",
+     "M020": "kun",
+     "M004": "kl",
+     "M014": "tir",
+     "M026": "ma",
+     "M034": "tl",
+     "M027": "mar",
+     "M041": "pr",
+     "M038": "pr",
+     "M010": "pat",
+     "M050": "par",
+     "M025": "cem",
+     "M070": "vl",
+     "M078": "cr",
+     "M023": "val",
+     "M066": "cl",
+     "M071": "nal",
+     "M009": "an",
+     "M069": "nr",
+     "M021": "k",
+     "M031": "ka",
+     "M002": "kun",
+     "M037": "kl",
+     "M005": "kn",
+     "M011": "kal",
+     "M036": "tir",
+     "M015": "ma",
+     "M001": "tl",
+     "M075": "mar",
+     "M042": "van",
+     "M040": "ri",
+     "M024": "n",
+     "M049": "pu",
+     "M081": "ve",
+     "M047": "min",
+     "M033": "pul",
+     "M074": "ke",
+     "M054": "mi",
+     "M072": "ma",
+     "M055": "min",
+     "M028": "cl",
+     "M043": "mu",
+     "M029": "yan",
+     "M064": "va",
+     "M007": "a",
+     "M046": "kal",
+     "M032": "kol",
+     "M169": "ra",
+     "M237": "ce",
+     "M102": "ni",
+     "M076": "nan",
+     "M272": "ma",
+     "M128": "kan",
+     "M082": "pa",
+     "M235": "v",
+     "M149": "or",
+     "M185": "pul",
+     "M383": "kol",
+     "M375": "tan",
+     "M270": "mul",
+     "M401": "v",
+     "M374": "kul",
+     "M127": "v",
+     "M386": "man",
+     "M351": "vi",
+     "M198": "co",
+     "M168": "i",
+     "M332": "i",
+     "M183": "vl",
+     "M222": "min",
+     "M365": "van",
+     "M412": "cu",
+     "M151": "vil",
+     "M304": "vr",
+     "M355": "lu",
+     "M178": "i",
+     "M163": "il",
+     "M108": "kal",
+     "M321": "kol",
+     "M153": "pu",
+     "M177": "na",
+     "M357": "kul",
+     "M137": "kur",
+     "M155": "ka",
+     "M239": "il",
+     "M223": "mul",
+     "M103": "kol",
+     "M254": "tn",
+     "M262": "i",
+     "M416": "na",
+     "M143": "man",
+     "M345": "tat",
+     "M329": "pon",
+     "M190": "pan",
+     "M295": "par",
+     "M402": "vl",
+     "M087": "vel",
+     "M124": "kut",
+     "M175": "kat",
+     "M261": "mur",
+     "M264": "pen",
+     "M281": "pi",
+     "M311": "vat",
+     "M117": "ar",
+     "M008": "er",
+     "M100": "ma",
+     "M125": "vil",
+     "M202": "ca",
+     "M211": "kol",
+     "M249": "ti",
+     "M293": "ta",
+     "M058": "ke",
+     "M065": "kut",
+     "M220": "al",
+     "M052": "ta",
+     "M053": "mi",
+     "M061": "ka",
+     "M079": "ir",
+     "M022": "kal",
+     "M019": "a",
+     "M044": "ku",
+     "M035": "po",
+     "M003": "kal",
+     "M107": "ko",
+     "M164": "il",
+     "M056": "min",
+     "M118": "car",
+     "M130": "mu",
+     "M221": "al",
+     "M192": "na",
+     "M193": "la",
+     "M194": "kat",
+     "M145": "mit",
+     "M362": "an",
+     "M398": "kur",
+     "M330": "ca",
+     "M165": "cu",
+     "M347": "ka",
+     "M350": "v"
+    },
+    "n_anchors": 171,
+    "n_skipped": 0,
+    "min_confidence": "MEDIUM",
+    "verdict": "Loaded 171 syllable-level anchors (MEDIUM+ confidence)"
+   }
+  },
+  {
+   "id": "anchor_high",
+   "node": "IndusAnchorSetSyllable",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "min_confidence": "HIGH"
+   },
+   "inputs": {},
+   "mode": "full",
+   "expected": {
+    "anchor_dict": {
+     "M342": "ay",
+     "M176": "an",
+     "M099": "kol",
+     "M233": "ur",
+     "M391": "ka",
+     "M162": "il",
+     "M328": "a",
+     "M059": "l",
+     "M051": "pu",
+     "M089": "tu",
+     "M048": "mu",
+     "M367": "am",
+     "M336": "in",
+     "M012": "o",
+     "M305": "tu",
+     "M062": "er",
+     "M073": "kn",
+     "M045": "yan",
+     "M016": "kal",
+     "M013": "nak",
+     "M060": "ka",
+     "M080": "a",
+     "M057": "mat",
+     "M039": "an",
+     "M067": "an",
+     "M068": "mar",
+     "M006": "pul",
+     "M063": "mut",
+     "M077": "nal",
+     "M018": "nr",
+     "M030": "k",
+     "M017": "ka",
+     "M020": "kun",
+     "M004": "kl",
+     "M014": "tir",
+     "M026": "ma",
+     "M034": "tl",
+     "M027": "mar",
+     "M041": "pr",
+     "M038": "pr",
+     "M010": "pat",
+     "M050": "par",
+     "M025": "cem",
+     "M070": "vl",
+     "M078": "cr",
+     "M023": "val",
+     "M066": "cl",
+     "M071": "nal",
+     "M009": "an",
+     "M069": "nr",
+     "M021": "k",
+     "M031": "ka",
+     "M002": "kun",
+     "M037": "kl",
+     "M005": "kn",
+     "M011": "kal",
+     "M036": "tir",
+     "M015": "ma",
+     "M001": "tl",
+     "M075": "mar",
+     "M042": "van",
+     "M040": "ri",
+     "M024": "n",
+     "M049": "pu",
+     "M081": "ve",
+     "M047": "min",
+     "M033": "pul",
+     "M074": "ke",
+     "M054": "mi",
+     "M072": "ma",
+     "M055": "min",
+     "M028": "cl",
+     "M043": "mu",
+     "M029": "yan",
+     "M064": "va",
+     "M007": "a",
+     "M046": "kal",
+     "M032": "kol",
+     "M169": "ra",
+     "M237": "ce",
+     "M102": "ni",
+     "M076": "nan",
+     "M272": "ma",
+     "M128": "kan",
+     "M082": "pa",
+     "M235": "v",
+     "M149": "or",
+     "M185": "pul",
+     "M383": "kol",
+     "M375": "tan",
+     "M270": "mul",
+     "M401": "v",
+     "M374": "kul",
+     "M127": "v",
+     "M386": "man",
+     "M351": "vi",
+     "M198": "co",
+     "M168": "i",
+     "M332": "i",
+     "M183": "vl",
+     "M365": "van",
+     "M412": "cu",
+     "M151": "vil",
+     "M304": "vr",
+     "M355": "lu",
+     "M178": "i",
+     "M163": "il",
+     "M108": "kal",
+     "M321": "kol",
+     "M153": "pu",
+     "M177": "na",
+     "M357": "kul",
+     "M137": "kur",
+     "M155": "ka",
+     "M239": "il",
+     "M223": "mul",
+     "M103": "kol",
+     "M254": "tn",
+     "M262": "i",
+     "M416": "na",
+     "M143": "man",
+     "M345": "tat",
+     "M329": "pon",
+     "M190": "pan",
+     "M295": "par",
+     "M402": "vl",
+     "M087": "vel",
+     "M124": "kut",
+     "M175": "kat",
+     "M261": "mur",
+     "M264": "pen",
+     "M281": "pi",
+     "M311": "vat",
+     "M117": "ar",
+     "M008": "er",
+     "M100": "ma",
+     "M125": "vil",
+     "M202": "ca",
+     "M211": "kol",
+     "M249": "ti",
+     "M058": "ke",
+     "M065": "kut",
+     "M220": "al",
+     "M052": "ta",
+     "M053": "mi",
+     "M061": "ka",
+     "M079": "ir",
+     "M022": "kal",
+     "M019": "a",
+     "M044": "ku",
+     "M035": "po",
+     "M003": "kal",
+     "M107": "ko",
+     "M164": "il",
+     "M056": "min",
+     "M118": "car",
+     "M130": "mu",
+     "M221": "al",
+     "M192": "na",
+     "M193": "la",
+     "M194": "kat",
+     "M145": "mit",
+     "M330": "ca",
+     "M165": "cu",
+     "M347": "ka",
+     "M350": "v"
+    },
+    "n_anchors": 166,
+    "n_skipped": 0,
+    "min_confidence": "HIGH",
+    "verdict": "Loaded 166 syllable-level anchors (HIGH+ confidence)"
+   }
+  },
+  {
+   "id": "anchor_low",
+   "node": "IndusAnchorSetSyllable",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "min_confidence": "LOW"
+   },
+   "inputs": {},
+   "mode": "full",
+   "expected": {
+    "anchor_dict": {
+     "M342": "ay",
+     "M176": "an",
+     "M267": "in",
+     "M099": "kol",
+     "M233": "ur",
+     "M391": "ka",
+     "M162": "il",
+     "M328": "a",
+     "M059": "l",
+     "M051": "pu",
+     "M089": "tu",
+     "M048": "mu",
+     "M367": "am",
+     "M336": "in",
+     "M012": "o",
+     "M305": "tu",
+     "M062": "er",
+     "M073": "kn",
+     "M045": "yan",
+     "M016": "kal",
+     "M013": "nak",
+     "M060": "ka",
+     "M080": "a",
+     "M057": "mat",
+     "M039": "an",
+     "M067": "an",
+     "M068": "mar",
+     "M006": "pul",
+     "M063": "mut",
+     "M077": "nal",
+     "M018": "nr",
+     "M030": "k",
+     "M017": "ka",
+     "M020": "kun",
+     "M004": "kl",
+     "M014": "tir",
+     "M026": "ma",
+     "M034": "tl",
+     "M027": "mar",
+     "M041": "pr",
+     "M038": "pr",
+     "M010": "pat",
+     "M050": "par",
+     "M025": "cem",
+     "M070": "vl",
+     "M078": "cr",
+     "M023": "val",
+     "M066": "cl",
+     "M071": "nal",
+     "M009": "an",
+     "M069": "nr",
+     "M021": "k",
+     "M031": "ka",
+     "M002": "kun",
+     "M037": "kl",
+     "M005": "kn",
+     "M011": "kal",
+     "M036": "tir",
+     "M015": "ma",
+     "M001": "tl",
+     "M075": "mar",
+     "M042": "van",
+     "M040": "ri",
+     "M024": "n",
+     "M049": "pu",
+     "M081": "ve",
+     "M047": "min",
+     "M033": "pul",
+     "M074": "ke",
+     "M054": "mi",
+     "M072": "ma",
+     "M055": "min",
+     "M028": "cl",
+     "M043": "mu",
+     "M029": "yan",
+     "M064": "va",
+     "M007": "a",
+     "M046": "kal",
+     "M032": "kol",
+     "M169": "ra",
+     "M237": "ce",
+     "M102": "ni",
+     "M076": "nan",
+     "M272": "ma",
+     "M128": "kan",
+     "M082": "pa",
+     "M235": "v",
+     "M149": "or",
+     "M185": "pul",
+     "M383": "kol",
+     "M375": "tan",
+     "M270": "mul",
+     "M401": "v",
+     "M374": "kul",
+     "M127": "v",
+     "M252": "min",
+     "M386": "man",
+     "M351": "vi",
+     "M198": "co",
+     "M168": "i",
+     "M332": "i",
+     "M183": "vl",
+     "M222": "min",
+     "M365": "van",
+     "M412": "cu",
+     "M151": "vil",
+     "M304": "vr",
+     "M355": "lu",
+     "M178": "i",
+     "M163": "il",
+     "M108": "kal",
+     "M231": "min",
+     "M321": "kol",
+     "M153": "pu",
+     "M177": "na",
+     "M357": "kul",
+     "M137": "kur",
+     "M155": "ka",
+     "M239": "il",
+     "M223": "mul",
+     "M103": "kol",
+     "M254": "tn",
+     "M262": "i",
+     "M416": "na",
+     "M143": "man",
+     "M345": "tat",
+     "M329": "pon",
+     "M190": "pan",
+     "M295": "par",
+     "M402": "vl",
+     "M087": "vel",
+     "M124": "kut",
+     "M175": "kat",
+     "M261": "mur",
+     "M264": "pen",
+     "M281": "pi",
+     "M311": "vat",
+     "M117": "ar",
+     "M008": "er",
+     "M100": "ma",
+     "M125": "vil",
+     "M202": "ca",
+     "M211": "kol",
+     "M249": "ti",
+     "M293": "ta",
+     "M058": "ke",
+     "M065": "kut",
+     "M220": "al",
+     "M052": "ta",
+     "M053": "mi",
+     "M061": "ka",
+     "M079": "ir",
+     "M022": "kal",
+     "M019": "a",
+     "M044": "ku",
+     "M035": "po",
+     "M003": "kal",
+     "M107": "ko",
+     "M164": "il",
+     "M056": "min",
+     "M118": "car",
+     "M130": "mu",
+     "M221": "al",
+     "M192": "na",
+     "M193": "la",
+     "M194": "kat",
+     "M145": "mit",
+     "M362": "an",
+     "M398": "kur",
+     "M330": "ca",
+     "M165": "cu",
+     "M347": "ka",
+     "M350": "v",
+     "H003": "an"
+    },
+    "n_anchors": 174,
+    "n_skipped": 0,
+    "min_confidence": "LOW",
+    "verdict": "Loaded 174 syllable-level anchors (LOW+ confidence)"
+   }
+  },
+  {
+   "id": "anchor_uncertain",
+   "node": "IndusAnchorSetSyllable",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "min_confidence": "UNCERTAIN"
+   },
+   "inputs": {},
+   "mode": "full",
+   "expected": {
+    "anchor_dict": {
+     "M342": "ay",
+     "M176": "an",
+     "M267": "in",
+     "M099": "kol",
+     "M233": "ur",
+     "M391": "ka",
+     "M162": "il",
+     "M328": "a",
+     "M059": "l",
+     "M051": "pu",
+     "M089": "tu",
+     "M048": "mu",
+     "M367": "am",
+     "M336": "in",
+     "M012": "o",
+     "M305": "tu",
+     "M062": "er",
+     "M073": "kn",
+     "M045": "yan",
+     "M016": "kal",
+     "M013": "nak",
+     "M060": "ka",
+     "M080": "a",
+     "M057": "mat",
+     "M039": "an",
+     "M067": "an",
+     "M068": "mar",
+     "M006": "pul",
+     "M063": "mut",
+     "M077": "nal",
+     "M018": "nr",
+     "M030": "k",
+     "M017": "ka",
+     "M020": "kun",
+     "M004": "kl",
+     "M014": "tir",
+     "M026": "ma",
+     "M034": "tl",
+     "M027": "mar",
+     "M041": "pr",
+     "M038": "pr",
+     "M010": "pat",
+     "M050": "par",
+     "M025": "cem",
+     "M070": "vl",
+     "M078": "cr",
+     "M023": "val",
+     "M066": "cl",
+     "M071": "nal",
+     "M009": "an",
+     "M069": "nr",
+     "M021": "k",
+     "M031": "ka",
+     "M002": "kun",
+     "M037": "kl",
+     "M005": "kn",
+     "M011": "kal",
+     "M036": "tir",
+     "M015": "ma",
+     "M001": "tl",
+     "M075": "mar",
+     "M042": "van",
+     "M040": "ri",
+     "M024": "n",
+     "M049": "pu",
+     "M081": "ve",
+     "M047": "min",
+     "M033": "pul",
+     "M074": "ke",
+     "M054": "mi",
+     "M072": "ma",
+     "M055": "min",
+     "M028": "cl",
+     "M043": "mu",
+     "M029": "yan",
+     "M064": "va",
+     "M007": "a",
+     "M046": "kal",
+     "M032": "kol",
+     "M169": "ra",
+     "M237": "ce",
+     "M102": "ni",
+     "M076": "nan",
+     "M272": "ma",
+     "M128": "kan",
+     "M082": "pa",
+     "M235": "v",
+     "M149": "or",
+     "M185": "pul",
+     "M383": "kol",
+     "M375": "tan",
+     "M270": "mul",
+     "M401": "v",
+     "M374": "kul",
+     "M127": "v",
+     "M252": "min",
+     "M386": "man",
+     "M351": "vi",
+     "M198": "co",
+     "M168": "i",
+     "M332": "i",
+     "M183": "vl",
+     "M222": "min",
+     "M365": "van",
+     "M412": "cu",
+     "M151": "vil",
+     "M304": "vr",
+     "M355": "lu",
+     "M178": "i",
+     "M163": "il",
+     "M108": "kal",
+     "M231": "min",
+     "M321": "kol",
+     "M153": "pu",
+     "M177": "na",
+     "M357": "kul",
+     "M137": "kur",
+     "M155": "ka",
+     "M239": "il",
+     "M223": "mul",
+     "M103": "kol",
+     "M254": "tn",
+     "M262": "i",
+     "M416": "na",
+     "M143": "man",
+     "M345": "tat",
+     "M329": "pon",
+     "M190": "pan",
+     "M295": "par",
+     "M402": "vl",
+     "M255": "kur",
+     "M251": "kur",
+     "M301": "kur",
+     "M406": "kur",
+     "M387": "kur",
+     "M116": "kur",
+     "M274": "kur",
+     "M087": "vel",
+     "M124": "kut",
+     "M175": "kat",
+     "M261": "mur",
+     "M264": "pen",
+     "M281": "pi",
+     "M311": "vat",
+     "M117": "ar",
+     "M008": "er",
+     "M100": "ma",
+     "M101": "kur",
+     "M125": "vil",
+     "M202": "ca",
+     "M211": "kol",
+     "M249": "ti",
+     "M293": "ta",
+     "M058": "ke",
+     "M065": "kut",
+     "M220": "al",
+     "M052": "ta",
+     "M053": "mi",
+     "M061": "ka",
+     "M079": "ir",
+     "M022": "kal",
+     "M019": "a",
+     "M044": "ku",
+     "M035": "po",
+     "M003": "kal",
+     "M107": "ko",
+     "M164": "il",
+     "M056": "min",
+     "M118": "car",
+     "M130": "mu",
+     "M221": "al",
+     "M192": "na",
+     "M193": "la",
+     "M194": "kat",
+     "M145": "mit",
+     "M362": "an",
+     "M398": "kur",
+     "M318": "kur",
+     "M346": "kur",
+     "M312": "kur",
+     "M134": "kur",
+     "M129": "kur",
+     "M120": "kur",
+     "M207": "kur",
+     "M280": "kur",
+     "M309": "kur",
+     "M382": "kur",
+     "M324": "kur",
+     "M370": "kur",
+     "M218": "kur",
+     "M186": "kur",
+     "M307": "kur",
+     "M106": "kur",
+     "M334": "kur",
+     "M245": "kur",
+     "M227": "kur",
+     "M138": "kur",
+     "M243": "kur",
+     "M209": "kur",
+     "M259": "kur",
+     "M278": "kur",
+     "M140": "kur",
+     "M208": "kur",
+     "M109": "kur",
+     "M250": "kur",
+     "M390": "kur",
+     "M277": "kur",
+     "M181": "kur",
+     "M219": "kur",
+     "M379": "kur",
+     "M214": "kur",
+     "M131": "kur",
+     "M380": "kur",
+     "M197": "kur",
+     "M201": "kur",
+     "M413": "kur",
+     "M135": "kur",
+     "M354": "kur",
+     "M341": "kur",
+     "M330": "ca",
+     "M105": "kur",
+     "M146": "kur",
+     "M195": "kur",
+     "M339": "kur",
+     "M359": "kur",
+     "M316": "kur",
+     "M111": "kur",
+     "M224": "kur",
+     "M408": "kur",
+     "M396": "kur",
+     "M170": "kur",
+     "M388": "kur",
+     "M360": "kur",
+     "M320": "kur",
+     "M256": "kur",
+     "M247": "kur",
+     "M381": "kur",
+     "M104": "kur",
+     "M217": "kur",
+     "M356": "kur",
+     "M369": "kur",
+     "M378": "kur",
+     "M226": "kur",
+     "M158": "kur",
+     "M165": "cu",
+     "M123": "kur",
+     "M397": "kur",
+     "M203": "kur",
+     "M405": "kur",
+     "M240": "kur",
+     "M303": "kur",
+     "M363": "kur",
+     "M200": "kur",
+     "M156": "kur",
+     "M157": "kur",
+     "M260": "kur",
+     "M258": "kur",
+     "M392": "kur",
+     "M210": "kur",
+     "M112": "kur",
+     "M286": "kur",
+     "M327": "kur",
+     "M400": "kur",
+     "M242": "kur",
+     "M147": "kur",
+     "M415": "kur",
+     "M389": "kur",
+     "M287": "kur",
+     "M133": "kur",
+     "M126": "kur",
+     "M297": "kur",
+     "M323": "kur",
+     "M213": "kur",
+     "M322": "kur",
+     "M394": "kur",
+     "M115": "kur",
+     "M298": "kur",
+     "M136": "kur",
+     "M364": "kur",
+     "M310": "kur",
+     "M314": "kur",
+     "M230": "kur",
+     "M407": "kur",
+     "M347": "ka",
+     "M350": "v",
+     "M340": "kur",
+     "H003": "an"
+    },
+    "n_anchors": 287,
+    "n_skipped": 0,
+    "min_confidence": "UNCERTAIN",
+    "verdict": "Loaded 287 syllable-level anchors (UNCERTAIN+ confidence)"
+   }
+  },
+  {
+   "id": "anchor_bogus",
+   "node": "IndusAnchorSetSyllable",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "min_confidence": "bogus"
+   },
+   "inputs": {},
+   "mode": "full",
+   "expected": {
+    "anchor_dict": {
+     "M342": "ay",
+     "M176": "an",
+     "M267": "in",
+     "M099": "kol",
+     "M233": "ur",
+     "M391": "ka",
+     "M162": "il",
+     "M328": "a",
+     "M059": "l",
+     "M051": "pu",
+     "M089": "tu",
+     "M048": "mu",
+     "M367": "am",
+     "M336": "in",
+     "M012": "o",
+     "M305": "tu",
+     "M062": "er",
+     "M073": "kn",
+     "M045": "yan",
+     "M016": "kal",
+     "M013": "nak",
+     "M060": "ka",
+     "M080": "a",
+     "M057": "mat",
+     "M039": "an",
+     "M067": "an",
+     "M068": "mar",
+     "M006": "pul",
+     "M063": "mut",
+     "M077": "nal",
+     "M018": "nr",
+     "M030": "k",
+     "M017": "ka",
+     "M020": "kun",
+     "M004": "kl",
+     "M014": "tir",
+     "M026": "ma",
+     "M034": "tl",
+     "M027": "mar",
+     "M041": "pr",
+     "M038": "pr",
+     "M010": "pat",
+     "M050": "par",
+     "M025": "cem",
+     "M070": "vl",
+     "M078": "cr",
+     "M023": "val",
+     "M066": "cl",
+     "M071": "nal",
+     "M009": "an",
+     "M069": "nr",
+     "M021": "k",
+     "M031": "ka",
+     "M002": "kun",
+     "M037": "kl",
+     "M005": "kn",
+     "M011": "kal",
+     "M036": "tir",
+     "M015": "ma",
+     "M001": "tl",
+     "M075": "mar",
+     "M042": "van",
+     "M040": "ri",
+     "M024": "n",
+     "M049": "pu",
+     "M081": "ve",
+     "M047": "min",
+     "M033": "pul",
+     "M074": "ke",
+     "M054": "mi",
+     "M072": "ma",
+     "M055": "min",
+     "M028": "cl",
+     "M043": "mu",
+     "M029": "yan",
+     "M064": "va",
+     "M007": "a",
+     "M046": "kal",
+     "M032": "kol",
+     "M169": "ra",
+     "M237": "ce",
+     "M102": "ni",
+     "M076": "nan",
+     "M272": "ma",
+     "M128": "kan",
+     "M082": "pa",
+     "M235": "v",
+     "M149": "or",
+     "M185": "pul",
+     "M383": "kol",
+     "M375": "tan",
+     "M270": "mul",
+     "M401": "v",
+     "M374": "kul",
+     "M127": "v",
+     "M386": "man",
+     "M351": "vi",
+     "M198": "co",
+     "M168": "i",
+     "M332": "i",
+     "M183": "vl",
+     "M222": "min",
+     "M365": "van",
+     "M412": "cu",
+     "M151": "vil",
+     "M304": "vr",
+     "M355": "lu",
+     "M178": "i",
+     "M163": "il",
+     "M108": "kal",
+     "M321": "kol",
+     "M153": "pu",
+     "M177": "na",
+     "M357": "kul",
+     "M137": "kur",
+     "M155": "ka",
+     "M239": "il",
+     "M223": "mul",
+     "M103": "kol",
+     "M254": "tn",
+     "M262": "i",
+     "M416": "na",
+     "M143": "man",
+     "M345": "tat",
+     "M329": "pon",
+     "M190": "pan",
+     "M295": "par",
+     "M402": "vl",
+     "M087": "vel",
+     "M124": "kut",
+     "M175": "kat",
+     "M261": "mur",
+     "M264": "pen",
+     "M281": "pi",
+     "M311": "vat",
+     "M117": "ar",
+     "M008": "er",
+     "M100": "ma",
+     "M125": "vil",
+     "M202": "ca",
+     "M211": "kol",
+     "M249": "ti",
+     "M293": "ta",
+     "M058": "ke",
+     "M065": "kut",
+     "M220": "al",
+     "M052": "ta",
+     "M053": "mi",
+     "M061": "ka",
+     "M079": "ir",
+     "M022": "kal",
+     "M019": "a",
+     "M044": "ku",
+     "M035": "po",
+     "M003": "kal",
+     "M107": "ko",
+     "M164": "il",
+     "M056": "min",
+     "M118": "car",
+     "M130": "mu",
+     "M221": "al",
+     "M192": "na",
+     "M193": "la",
+     "M194": "kat",
+     "M145": "mit",
+     "M362": "an",
+     "M398": "kur",
+     "M330": "ca",
+     "M165": "cu",
+     "M347": "ka",
+     "M350": "v"
+    },
+    "n_anchors": 171,
+    "n_skipped": 0,
+    "min_confidence": "BOGUS",
+    "verdict": "Loaded 171 syllable-level anchors (BOGUS+ confidence)"
+   }
+  },
+  {
+   "id": "das_default",
+   "node": "DerivedAnchorSet",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "associations": [
+     {
+      "sign": "S1",
+      "context": "site-a",
+      "pmi_z": 3.5
+     },
+     {
+      "sign": "S2",
+      "context": "site-b",
+      "pmi_z": 5.0
+     },
+     {
+      "sign": "S1",
+      "context": "site-c",
+      "pmi_z": 4.0
+     },
+     {
+      "sign": "S3",
+      "context": "",
+      "pmi_z": 9.0
+     },
+     {
+      "sign": "",
+      "context": "site-d",
+      "pmi_z": 9.0
+     },
+     {
+      "sign": "S4",
+      "context": "site-e",
+      "pmi_z": 1.0
+     },
+     {
+      "sign": "S5",
+      "context": "site-f"
+     },
+     "not-a-dict"
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "anchors": {
+     "S2": "ctx:site-b",
+     "S1": "ctx:site-c"
+    },
+    "n_anchors": 2,
+    "anchor_table": [
+     {
+      "context": "site-b",
+      "pmi_z": 5.0,
+      "sign": "S2"
+     },
+     {
+      "context": "site-c",
+      "pmi_z": 4.0,
+      "sign": "S1"
+     }
+    ],
+    "min_z": 2.0,
+    "verdict": "Derived 2 anchors from associations at z>=2.0."
+   }
+  },
+  {
+   "id": "das_minz",
+   "node": "DerivedAnchorSet",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "min_z": 0.5
+   },
+   "inputs": {
+    "associations": [
+     {
+      "sign": "S1",
+      "context": "site-a",
+      "pmi_z": 3.5
+     },
+     {
+      "sign": "S2",
+      "context": "site-b",
+      "pmi_z": 5.0
+     },
+     {
+      "sign": "S1",
+      "context": "site-c",
+      "pmi_z": 4.0
+     },
+     {
+      "sign": "S3",
+      "context": "",
+      "pmi_z": 9.0
+     },
+     {
+      "sign": "",
+      "context": "site-d",
+      "pmi_z": 9.0
+     },
+     {
+      "sign": "S4",
+      "context": "site-e",
+      "pmi_z": 1.0
+     },
+     {
+      "sign": "S5",
+      "context": "site-f"
+     },
+     "not-a-dict"
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "anchors": {
+     "S2": "ctx:site-b",
+     "S1": "ctx:site-c",
+     "S4": "ctx:site-e"
+    },
+    "n_anchors": 3,
+    "anchor_table": [
+     {
+      "context": "site-b",
+      "pmi_z": 5.0,
+      "sign": "S2"
+     },
+     {
+      "context": "site-c",
+      "pmi_z": 4.0,
+      "sign": "S1"
+     },
+     {
+      "context": "site-e",
+      "pmi_z": 1.0,
+      "sign": "S4"
+     }
+    ],
+    "min_z": 0.5,
+    "verdict": "Derived 3 anchors from associations at z>=0.5."
+   }
+  },
+  {
+   "id": "das_cap",
+   "node": "DerivedAnchorSet",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "min_z": 0.0,
+    "max_anchors": 1
+   },
+   "inputs": {
+    "associations": [
+     {
+      "sign": "S1",
+      "context": "site-a",
+      "pmi_z": 3.5
+     },
+     {
+      "sign": "S2",
+      "context": "site-b",
+      "pmi_z": 5.0
+     },
+     {
+      "sign": "S1",
+      "context": "site-c",
+      "pmi_z": 4.0
+     },
+     {
+      "sign": "S3",
+      "context": "",
+      "pmi_z": 9.0
+     },
+     {
+      "sign": "",
+      "context": "site-d",
+      "pmi_z": 9.0
+     },
+     {
+      "sign": "S4",
+      "context": "site-e",
+      "pmi_z": 1.0
+     },
+     {
+      "sign": "S5",
+      "context": "site-f"
+     },
+     "not-a-dict"
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "anchors": {
+     "S2": "ctx:site-b"
+    },
+    "n_anchors": 1,
+    "anchor_table": [
+     {
+      "context": "site-b",
+      "pmi_z": 5.0,
+      "sign": "S2"
+     }
+    ],
+    "min_z": 0.0,
+    "verdict": "Derived 1 anchors from associations at z>=0.0."
+   }
+  },
+  {
+   "id": "das_empty",
+   "node": "DerivedAnchorSet",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "associations": []
+   },
+   "mode": "full",
+   "expected": {
+    "anchors": {},
+    "n_anchors": 0,
+    "anchor_table": [],
+    "min_z": 2.0,
+    "verdict": "Derived 0 anchors from associations at z>=2.0."
+   }
+  },
+  {
+   "id": "ear_default",
+   "node": "EpistaticAnchorRanker",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "sequences": [
+     [
+      "a",
+      "b",
+      "a",
+      "c"
+     ],
+     [
+      "a",
+      "b",
+      "a",
+      "c"
+     ],
+     [
+      "a",
+      "b",
+      "a",
+      "c"
+     ],
+     [
+      "a",
+      "b",
+      "a",
+      "c"
+     ],
+     [
+      "a",
+      "b",
+      "a",
+      "c"
+     ],
+     [
+      "a",
+      "b",
+      "a",
+      "c"
+     ],
+     [
+      "a",
+      "b"
+     ],
+     [
+      "a",
+      "b"
+     ],
+     [
+      "a",
+      "b"
+     ],
+     [
+      "a",
+      "b"
+     ],
+     [
+      "a",
+      "b"
+     ],
+     [
+      "a",
+      "b"
+     ],
+     [
+      "d",
+      "a"
+     ],
+     [
+      "d",
+      "a"
+     ]
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "ranking": [
+     {
+      "sign": "a",
+      "centrality": 22.8154,
+      "n_partners": 3,
+      "weighted_pmi_sum": 22.8154,
+      "unigram_count": 20
+     },
+     {
+      "sign": "b",
+      "centrality": 16.0719,
+      "n_partners": 2,
+      "weighted_pmi_sum": 16.0719,
+      "unigram_count": 12
+     },
+     {
+      "sign": "c",
+      "centrality": 6.7436,
+      "n_partners": 1,
+      "weighted_pmi_sum": 6.7436,
+      "unigram_count": 6
+     }
+    ],
+    "n_signs_ranked": 3,
+    "top_k": 10,
+    "verdict": "Ranked 3 signs by epistatic centrality; top sign a (centrality=22.82)."
+   }
+  },
+  {
+   "id": "ear_params",
+   "node": "EpistaticAnchorRanker",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "top_k": 2,
+    "min_count": 2
+   },
+   "inputs": {
+    "sequences": [
+     [
+      "a",
+      "b",
+      "a",
+      "c"
+     ],
+     [
+      "a",
+      "b",
+      "a",
+      "c"
+     ],
+     [
+      "a",
+      "b",
+      "a",
+      "c"
+     ],
+     [
+      "a",
+      "b",
+      "a",
+      "c"
+     ],
+     [
+      "a",
+      "b",
+      "a",
+      "c"
+     ],
+     [
+      "a",
+      "b",
+      "a",
+      "c"
+     ],
+     [
+      "a",
+      "b"
+     ],
+     [
+      "a",
+      "b"
+     ],
+     [
+      "a",
+      "b"
+     ],
+     [
+      "a",
+      "b"
+     ],
+     [
+      "a",
+      "b"
+     ],
+     [
+      "a",
+      "b"
+     ],
+     [
+      "d",
+      "a"
+     ],
+     [
+      "d",
+      "a"
+     ]
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "ranking": [
+     {
+      "sign": "a",
+      "centrality": 25.0633,
+      "n_partners": 4,
+      "weighted_pmi_sum": 25.0633,
+      "unigram_count": 20
+     },
+     {
+      "sign": "b",
+      "centrality": 16.0719,
+      "n_partners": 2,
+      "weighted_pmi_sum": 16.0719,
+      "unigram_count": 12
+     }
+    ],
+    "n_signs_ranked": 4,
+    "top_k": 2,
+    "verdict": "Ranked 4 signs by epistatic centrality; top sign a (centrality=25.06)."
+   }
+  },
+  {
+   "id": "ear_empty",
+   "node": "EpistaticAnchorRanker",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {},
+   "mode": "full",
+   "expected": {
+    "ranking": [],
+    "verdict": "Empty corpus."
+   }
+  }
+ ]
+}

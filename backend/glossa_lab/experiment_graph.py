@@ -39,6 +39,17 @@ from glossa_lab.generic_loaders import (
     dataset_record_loader_execute,
     json_corpus_loader_execute,
 )
+from glossa_lab.generic_primitives import (
+    anchor_syllabifier_execute,
+    association_anchor_deriver_execute,
+    cluster_contingency_profile_execute,
+    label_map_applier_execute,
+    pmi_centrality_ranker_execute,
+    registry_table_loader_execute,
+    sign_role_classifier_execute,
+    template_miner_execute,
+    value_role_map_source_execute,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -1248,38 +1259,38 @@ def _canonical_sign_loader(inputs: dict, params: dict) -> dict:
     Returns the full sign inventory with Parpola, Wells, Mahadevan crosswalk IDs,
     ICIT function codes, and corpus frequency/positional statistics.
     Requires: scripts/cgsa_pipeline.py has been run, DB seeded via POST /canonical-signs/seed.
+
+    Spec 087 S3 (family F3): the mechanism is the generic
+    RegistryTableLoader engine (glossa_lab.generic_primitives);
+    this node is its canonical-signs parameterisation — the table
+    name, the two filter clauses, the id/uuid fields, and the
+    Parpola filter-count live in the spec below, not in code.
     """
-    filter_in_corpus = bool(params.get("in_corpus_only", True))
-    numbering_system = params.get("numbering_system") or None
-
-    try:
-        where = "1=1"
-        args: list = []
-        if filter_in_corpus:
-            where += " AND in_corpus = 1"
-        if numbering_system:
-            where += " AND numbering_system = ?"
-            args.append(numbering_system)
-        signs = _sync_db_all("canonical_signs", where, tuple(args))
-    except Exception as exc:  # noqa: BLE001
-        return {"error": f"Failed to load registry: {exc}"}
-
-    if not signs:
-        return {
+    spec = {
+        "table": "canonical_signs",
+        "filters": [
+            {"clause": "in_corpus = 1", "param": "in_corpus_only", "mode": "truthy",
+             "default": True},
+            {"clause": "numbering_system = ?", "param": "numbering_system", "mode": "arg"},
+        ],
+        "id_field": "sign_id",
+        "uuid_field": "internal_id",
+        "count_filters": [
+            {"output": "n_parpola", "field": "numbering_system", "value": "parpola_1982"},
+        ],
+        "error_prefix": "Failed to load registry: ",
+        "empty_result": {
             "error": "Canonical sign registry is empty — run POST /canonical-signs/seed first",
             "n_signs": 0,
-        }
-
-    # Build sign_id → internal_id map for downstream nodes
-    sign_id_map = {s["sign_id"]: s["internal_id"] for s in signs}
-    parpola_signs = [s for s in signs if s["numbering_system"] == "parpola_1982"]
-    return {
-        "registry": signs,
-        "n_signs": len(signs),
-        "n_parpola": len(parpola_signs),
-        "sign_id_to_uuid": sign_id_map,
-        "sign_ids": [s["sign_id"] for s in signs],
+        },
+        "records_output": "registry",
+        "total_output": "n_signs",
+        "map_output": "sign_id_to_uuid",
+        "ids_output": "sign_ids",
     }
+    merged = dict(params)
+    merged["registry_spec"] = spec
+    return registry_table_loader_execute(inputs, merged)
 
 
 def _cluster_mapper(inputs: dict, params: dict) -> dict:
@@ -1289,94 +1300,40 @@ def _cluster_mapper(inputs: dict, params: dict) -> dict:
     when the DB is not available (e.g. CLI context), falls back to loading
     directly from analysis/sign_clusters.json.
     Unmapped signs receive label -1. NO phonetic mapping is performed.
+
+    Spec 087 S3 (family F3): the mechanism is the generic
+    LabelMapApplier engine (glossa_lab.generic_primitives); this
+    node is its CGSA parameterisation — the three map sources in
+    their historical priority (DB table, analysis JSON file,
+    frequency-rank binning into ~40 clusters) and the -1
+    unmapped label live in the spec below, not in code.
     """
-    import json as _json  # noqa: PLC0415
     from pathlib import Path as _Path  # noqa: PLC0415
 
-    assignments: list = []
-    summary: dict = {}
-
-    # ── Try DB first (live backend context) ──────────────────────────────────
-    try:
-        assignments = _sync_db_all("sign_cluster_assignments")
-        if assignments:
-            n_clusters = len({a.get("cluster_label") for a in assignments})
-            best_k = assignments[0].get("cluster_k", n_clusters) if assignments else 0
-            summary = {"n_clusters": n_clusters, "cluster_k": best_k, "n_signs": len(assignments)}
-    except Exception:  # noqa: BLE001
-        assignments = []
-
-    # ── Fallback: load from analysis/sign_clusters.json ──────────────────────
-    if not assignments:
-        _cluster_json = (
-            _Path(__file__).resolve().parents[3] / "analysis" / "sign_clusters.json"
-        )
-        if _cluster_json.exists():
-            try:
-                data = _json.loads(_cluster_json.read_text("utf-8"))
-                best_k = data.get("best_k", 40)
-                s2c_raw: dict = data.get("sign_to_cluster", {})
-                assignments = [
-                    {"sign_id": sid, "cluster_label": lbl}
-                    for sid, lbl in s2c_raw.items()
-                ]
-                n_clusters = len(set(s2c_raw.values()))
-                summary = {"n_clusters": n_clusters, "cluster_k": best_k,
-                           "n_signs": len(s2c_raw)}
-            except Exception:  # noqa: BLE001
-                assignments = []
-
-    # ── Fallback: generate simple frequency-rank clusters from corpus ──────
-    if not assignments:
-        from collections import Counter as _FC  # noqa: PLC0415
-        sequences = inputs.get("sequences") or []
-        flat = [s for seq in sequences for s in seq]
-        if not flat:
-            return {
-                "error": "Cluster assignments unavailable and no sequences to generate from. "
-                         "Seed via POST /sign-clusters/seed or run scripts/cgsa_pipeline.py",
-                "n_assignments": 0,
-            }
-        # Assign cluster labels by frequency rank, binned into ~40 groups
-        freq = _FC(flat)
-        ranked = [s for s, _ in freq.most_common()]
-        n_clusters = min(40, len(ranked))
-        bin_size = max(1, len(ranked) // n_clusters)
-        for i, sign in enumerate(ranked):
-            cluster_lbl = min(i // bin_size, n_clusters - 1)
-            assignments.append({"sign_id": sign, "cluster_label": cluster_lbl})
-        summary = {"n_clusters": n_clusters, "cluster_k": n_clusters,
-                   "n_signs": len(ranked), "source": "frequency_rank_fallback"}
-        logger.info("ClusterMapper: generated %d frequency-rank clusters for %d signs",
-                  n_clusters, len(ranked))
-
-    s2c: dict[str, int] = {a["sign_id"]: a["cluster_label"] for a in assignments}
-    sequences = inputs.get("sequences") or []
-    cluster_sequences: list[list[int]] = []
-    n_mapped = 0
-    n_unmapped = 0
-    for seq in sequences:
-        cs = []
-        for sign in seq:
-            lbl = s2c.get(sign, -1)
-            cs.append(lbl)
-            if lbl >= 0:
-                n_mapped += 1
-            else:
-                n_unmapped += 1
-        cluster_sequences.append(cs)
-
-    total = n_mapped + n_unmapped
-    return {
-        "cluster_sequences": cluster_sequences,
-        "n_sequences": len(cluster_sequences),
-        "n_mapped_tokens": n_mapped,
-        "n_unmapped_tokens": n_unmapped,
-        "map_rate": round(n_mapped / total, 4) if total else 0,
-        "n_clusters": summary.get("n_clusters", 0),
-        "cluster_k": summary.get("cluster_k", 0),
-        "sign_to_cluster": s2c,
+    _cluster_json = (
+        _Path(__file__).resolve().parents[3] / "analysis" / "sign_clusters.json"
+    )
+    spec = {
+        "sources": [
+            {"kind": "db_table", "table": "sign_cluster_assignments"},
+            {
+                "kind": "json_file",
+                "path": str(_cluster_json),
+                "map_key": "sign_to_cluster",
+                "k_key": "best_k",
+                "k_default": 40,
+            },
+            {"kind": "frequency_rank", "bins": 40},
+        ],
+        "unmapped_label": -1,
+        "unavailable_error": (
+            "Cluster assignments unavailable and no sequences to generate from. "
+            "Seed via POST /sign-clusters/seed or run scripts/cgsa_pipeline.py"
+        ),
     }
+    merged = dict(params)
+    merged["map_spec"] = spec
+    return label_map_applier_execute(inputs, merged)
 
 
 def _structural_template_analyzer(inputs: dict, params: dict) -> dict:
@@ -1386,68 +1343,17 @@ def _structural_template_analyzer(inputs: dict, params: dict) -> dict:
     Discovers recurring patterns of cluster labels (length 2-5, count ≥ min_count),
     identifies dominant prefix/suffix clusters, and computes slot occupancy.
     NO phonetic claims are made. All outputs are structural class labels.
+
+    Spec 087 S3 (family F3): the mechanism is the generic
+    TemplateMiner engine (glossa_lab.generic_primitives) — the
+    triage's executed attempt H1 reproduced this node's template
+    mining exactly from per-length NgramCounter composition;
+    TemplateMiner exists to carry the four summary fields
+    (dominant prefix/suffix clusters, slot occupancy,
+    class-sequence entropy) the composition cannot. This node
+    keeps its historical defaults as the engine's defaults.
     """
-    import math as _m  # noqa: PLC0415
-    from collections import Counter as _C  # noqa: PLC0415
-
-    cluster_sequences = inputs.get("cluster_sequences") or []
-    min_count = int(params.get("min_count", 3))
-    max_len = int(params.get("max_template_length", 5))
-
-    if not cluster_sequences:
-        return {"error": "No cluster_sequences — connect ClusterMapper.cluster_sequences"}
-
-    template_ctr: _C = _C()
-    prefix_ctr: _C = _C()
-    suffix_ctr: _C = _C()
-    slot_dist: dict = {"initial": _C(), "terminal": _C(), "internal": _C()}
-
-    for cs in cluster_sequences:
-        if not cs:
-            continue
-        # Filter out unmapped (-1)
-        clean = [c for c in cs if c >= 0]
-        if not clean:
-            continue
-        prefix_ctr[clean[0]] += 1
-        suffix_ctr[clean[-1]] += 1
-        for i, c in enumerate(cs):
-            if c < 0:
-                continue
-            if i == 0:
-                slot_dist["initial"][c] += 1
-            elif i == len(cs) - 1:
-                slot_dist["terminal"][c] += 1
-            else:
-                slot_dist["internal"][c] += 1
-        for length in range(2, min(max_len + 1, len(clean) + 1)):
-            for i in range(len(clean) - length + 1):
-                t = tuple(clean[i:i + length])
-                template_ctr[t] += 1
-
-    recurrent = [
-        {"template": list(t), "count": c, "length": len(t)}
-        for t, c in template_ctr.most_common(50) if c >= min_count
-    ]
-
-    # Sequence-level entropy (class space)
-    seq_ctr: _C = _C(tuple(cs) for cs in cluster_sequences)
-    total_seqs = len(cluster_sequences)
-    h_class = -sum((c/total_seqs)*_m.log2(c/total_seqs)
-                   for c in seq_ctr.values() if c > 0) if total_seqs else 0
-
-    return {
-        "n_templates": len(recurrent),
-        "recurrent_templates": recurrent,
-        "dominant_prefix_clusters": dict(prefix_ctr.most_common(10)),
-        "dominant_suffix_clusters": dict(suffix_ctr.most_common(10)),
-        "slot_occupancy": {
-            k: dict(v.most_common(10)) for k, v in slot_dist.items()
-        },
-        "h_class_sequence": round(h_class, 4),
-        "n_distinct_class_sequences": len(seq_ctr),
-        "n_sequences": total_seqs,
-    }
+    return template_miner_execute(inputs, params)
 
 
 def _cipher_constructor(inputs: dict, params: dict) -> dict:
@@ -2005,6 +1911,186 @@ for _d in [
             "module":{"type":"string","title":"Data Module","description":"Dotted path of a glossa_lab.data module."},
             "dataset_spec":{"type":"object","title":"Dataset Spec","description":"Full declarative spec: module, getters, filters, outputs."}}},
         fn=dataset_record_loader_execute),
+    AtomicNodeDef("RegistryTableLoader","Registry Table Loader","Sources",
+        "Load a registry table from the backend database via a declarative spec "
+        "(Spec 087 S3): table name, parameter-driven filter clauses, id/uuid "
+        "fields, and named filter-counts are parameters (registry_spec); the "
+        "projection — records, total, counts, id->uuid map, id list — is the "
+        "mechanism. Without a spec it uses the canonical-signs shape it was "
+        "generalised from. The CGSA CanonicalSignLoader delegates to this engine.",
+        inputs=[],
+        outputs=[{"name":"registry","type":"json"},{"name":"n_signs","type":"number"},
+                 {"name":"n_parpola","type":"number"},{"name":"sign_ids","type":"json"},
+                 {"name":"sign_id_to_uuid","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "table":{"type":"string","title":"Table","description":"Database table to load (single-table use; see registry_spec for the full spec)."},
+            "in_corpus_only":{"type":"boolean","title":"In Corpus Only","default":True},
+            "numbering_system":{"type":"string","title":"Numbering System","default":""},
+            "registry_spec":{"type":"object","title":"Registry Spec","description":"Full declarative spec: table, filters, id_field, uuid_field, count_filters, output key names."}}},
+        fn=registry_table_loader_execute),
+    AtomicNodeDef("LabelMapApplier","Label Map Applier","Transforms",
+        "Apply a sign->label map to sequences (Spec 087 S3). The map comes from "
+        "the first source in the spec's fallback chain that yields one: a DB "
+        "table, a JSON file, or frequency-rank binning of the input corpus "
+        "itself. Unmapped signs receive the spec's unmapped label. The CGSA "
+        "ClusterMapper delegates to this engine. NO phonetic mapping performed.",
+        inputs=[{"name":"sequences","type":"sequences","required":True}],
+        outputs=[{"name":"cluster_sequences","type":"json"},{"name":"n_sequences","type":"number"},
+                 {"name":"map_rate","type":"number"},{"name":"n_mapped_tokens","type":"number"},
+                 {"name":"n_unmapped_tokens","type":"number"},{"name":"n_clusters","type":"number"},
+                 {"name":"sign_to_cluster","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "db_table":{"type":"string","title":"DB Table","description":"Assignments table (flat use; see map_spec for chains)."},
+            "file_path":{"type":"string","title":"File Path","description":"JSON file holding the map (flat use)."},
+            "bins":{"type":"integer","title":"Frequency Bins","default":40,"minimum":1},
+            "unmapped_label":{"type":"integer","title":"Unmapped Label","default":-1},
+            "map_spec":{"type":"object","title":"Map Spec","description":"Full declarative spec: sources chain, unmapped_label, unavailable_error."}}},
+        fn=label_map_applier_execute),
+    AtomicNodeDef("TemplateMiner","Template Miner","Analysis",
+        "Find recurrent templates in label sequences (Spec 087 S3): n-gram "
+        "template mining over a length range with a minimum count, plus the "
+        "summary fields a plain n-gram composition cannot carry in one node — "
+        "dominant prefix/suffix labels, per-slot occupancy, and the "
+        "class-sequence entropy. Length range and cuts are parameters. The "
+        "CGSA StructuralTemplateAnalyzer delegates to this engine. NO phonetic "
+        "claims made; outputs are structural class labels.",
+        inputs=[{"name":"cluster_sequences","type":"json","required":True}],
+        outputs=[{"name":"recurrent_templates","type":"json"},{"name":"n_templates","type":"number"},
+                 {"name":"dominant_prefix_clusters","type":"json"},{"name":"dominant_suffix_clusters","type":"json"},
+                 {"name":"slot_occupancy","type":"json"},{"name":"h_class_sequence","type":"number"},
+                 {"name":"n_distinct_class_sequences","type":"number"}],
+        params_schema={"type":"object","properties":{
+            "min_count":{"type":"integer","title":"Min Template Count","default":3,"minimum":2},
+            "max_template_length":{"type":"integer","title":"Max Template Length","default":5,"minimum":2},
+            "min_template_length":{"type":"integer","title":"Min Template Length","default":2,"minimum":1},
+            "top_templates":{"type":"integer","title":"Top Templates","default":50,"minimum":1},
+            "top_slots":{"type":"integer","title":"Top Slots","default":10,"minimum":1}}},
+        fn=template_miner_execute),
+    AtomicNodeDef("ClusterContingencyProfile","Cluster Contingency Profile","Analysis",
+        "Per-cluster contingency profile over record strata (Spec 087 S3): "
+        "site (strata) and length distributions for the inscriptions hosting "
+        "a target cluster, enrichment rates against the corpus baseline, and "
+        "a chi-squared test of strata-vs-cluster independence. The strata "
+        "rule (field + prefix grouping), the significance rule, and the "
+        "verdict template are parameters. The Phase-20 ClusterArchaeology "
+        "delegates to this engine.",
+        inputs=[{"name":"inscriptions","type":"json","required":True},
+                {"name":"sign_to_cluster","type":"json","required":False}],
+        outputs=[{"name":"site_table","type":"json"},{"name":"length_table","type":"json"},
+                 {"name":"chi_squared","type":"number"},{"name":"dof","type":"number"},
+                 {"name":"significant_p05","type":"any"},{"name":"verdict","type":"text"},
+                 {"name":"target_cluster_signs","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "target_cluster":{"type":"integer","title":"Target Cluster","default":0},
+            "fixed_members":{"type":"array","title":"Fixed Members","default":[],
+                             "description":"If provided, override sign_to_cluster and use this list as the target sign set."},
+            "strata_field":{"type":"string","title":"Strata Field","default":"site_code"},
+            "prefix_len":{"type":"integer","title":"Strata Prefix Length","default":2,"minimum":1},
+            "prefix_suffix":{"type":"string","title":"Strata Prefix Suffix","default":"0000"},
+            "critical_per_dof":{"type":"number","title":"Chi2 Critical per DoF","default":3.84},
+            "site_limit":{"type":"integer","title":"Site Table Limit","default":25,"minimum":1},
+            "verdict_template":{"type":"string","title":"Verdict Template",
+                                "description":"Format template with {outcome} {chi2} {dof} {min_rate} {max_rate} {baseline}."}}},
+        fn=cluster_contingency_profile_execute),
+    AtomicNodeDef("SignRoleClassifier","Sign Role Classifier","Analysis",
+        "Derive a role mask per sign from corpus statistics (Spec 087 S3): "
+        "positional rates, strict/relaxed suffix rules, a numeral repetition "
+        "heuristic, a behaviour-based logogram detector, and bigram-PMI "
+        "compound detection. Every threshold is a parameter, and the numeral "
+        "sign set is a parameter that defaults EMPTY — a domain caller's set "
+        "is data it passes in. The CTT IndusSignRoleClassifier delegates to "
+        "this engine with its Indus numeral set as the default value.",
+        inputs=[{"name":"sequences","type":"sequences","required":True}],
+        outputs=[{"name":"role_table","type":"json"},{"name":"n_signs","type":"number"},
+                 {"name":"role_summary","type":"json"},{"name":"compound_signs","type":"json"},
+                 {"name":"high_pmi_bigrams","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "terminal_threshold":{"type":"number","default":0.85,"minimum":0.5,"maximum":1.0},
+            "terminal_relaxed":{"type":"number","default":0.45,"minimum":0.0,"maximum":1.0},
+            "initial_threshold":{"type":"number","default":0.70,"minimum":0.5,"maximum":1.0},
+            "compound_pmi_threshold":{"type":"number","default":4.0,"minimum":0.0},
+            "min_count":{"type":"integer","default":5,"minimum":1},
+            "numeral_signs":{"type":"array","default":[],
+                             "description":"Signs classed numeral on sight. Empty by design; domain sets are caller data."},
+            "numeral_repetition_threshold":{"type":"number","default":0.5,"minimum":0.0,"maximum":1.0},
+            "logogram_min_count":{"type":"integer","default":20,"minimum":1},
+            "logogram_position_concentration":{"type":"number","default":0.55,"minimum":0.0,"maximum":1.0},
+            "logogram_solo_rate":{"type":"number","default":0.05,"minimum":0.0,"maximum":1.0}}},
+        fn=sign_role_classifier_execute),
+    AtomicNodeDef("ValueRoleMapSource","Value-Role Map Source","Sources",
+        "Emit a value->role lookup table merged from a base map plus selected "
+        "per-language family tables (Spec 087 S3). The base map and every "
+        "family table (seed roles, base values, vocabulary sources, "
+        "classification sets) are data parameters (base_map, family_tables); "
+        "the merge order — base, families in the order named, then extra "
+        "overrides — and unknown-family reporting are the mechanism. The CTT "
+        "DefaultIndusValueRoleMap delegates to this engine with its Indus "
+        "base map and family tables as data.",
+        inputs=[],
+        outputs=[{"name":"value_role_map","type":"json"},{"name":"n_values","type":"number"},
+                 {"name":"families_applied","type":"json"},{"name":"family_sizes","type":"json"},
+                 {"name":"unknown_families","type":"json"},{"name":"json","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "base_map":{"type":"object","title":"Base Map","default":{},
+                        "description":"Base value->role map, included when include_default is true."},
+            "family_tables":{"type":"object","title":"Family Tables","default":{},
+                             "description":"Map of family name -> family spec (seed_roles, base_values, vocab_sources, vocab_mode, determinative_values, numeral_values)."},
+            "families":{"type":"array","title":"Families","default":[],
+                        "description":"Family names to merge in, in order. Unknown names are reported, not fatal."},
+            "include_default":{"type":"boolean","title":"Include Base Map","default":True},
+            "extra":{"type":"object","title":"Extra Overrides","default":{}}}},
+        fn=value_role_map_source_execute),
+    AtomicNodeDef("AnchorSyllabifier","Anchor Syllabifier","Sources",
+        "Load an anchor file and map each reading to a syllable token "
+        "(Spec 087 S3): strip the transliteration (diacritic) table, take a "
+        "direct syllable-vocab hit when one exists, else split into CV "
+        "chunks and use the first chunk in the vocab, with prefix-length "
+        "fallbacks. File paths, the confidence order, the diacritic table, "
+        "and the positional-label skip pattern are parameters/data. The "
+        "Phase-33 IndusAnchorSetSyllable delegates to this engine.",
+        inputs=[],
+        outputs=[{"name":"anchor_dict","type":"json"},{"name":"n_anchors","type":"number"},
+                 {"name":"n_skipped","type":"number"},{"name":"verdict","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "anchors_path":{"type":"string","title":"Anchors Path","description":"Anchor JSON file: {anchors: {sign_id: {reading, confidence}}}"},
+            "vocab_path":{"type":"string","title":"Syllable Vocab Path","description":"JSON file holding the syllable vocab list."},
+            "min_confidence":{"type":"string","title":"Min Confidence","default":"MEDIUM"},
+            "confidence_order":{"type":"object","title":"Confidence Order",
+                                "description":"Confidence label -> rank. Default HIGH 3, MEDIUM 2, LOW 1, UNCERTAIN 0."},
+            "diacritic_table":{"type":"array","title":"Diacritic Table","default":[],
+                               "description":"Ordered [source, replacement] string pairs applied after lowercasing."},
+            "skip_pattern":{"type":"string","title":"Skip Pattern",
+                            "description":"Regex matched at the start of a lowercased reading; matches are skipped (positional labels)."}}},
+        fn=anchor_syllabifier_execute),
+    AtomicNodeDef("AssociationAnchorDeriver","Association Anchor Deriver","Decipherment",
+        "Derive a sign->value anchor dict from sign-context associations "
+        "(Spec 087 S3): associations are sorted by descending pmi_z and "
+        "each sign's first association at or above min_z binds it to "
+        "anchor_prefix + context, up to max_anchors. The prefix is a "
+        "parameter — a caller's context-label convention (e.g. 'ctx:') is "
+        "data, not mechanism. The Phase-14 DerivedAnchorSet delegates to "
+        "this engine.",
+        inputs=[{"name":"associations","type":"json","required":True}],
+        outputs=[{"name":"anchors","type":"json"},{"name":"n_anchors","type":"number"},
+                 {"name":"anchor_table","type":"json"},{"name":"verdict","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "min_z":{"type":"number","title":"Min Z","default":2.0},
+            "max_anchors":{"type":"integer","title":"Max Anchors","default":25,"minimum":1},
+            "anchor_prefix":{"type":"string","title":"Anchor Prefix","default":""}}},
+        fn=association_anchor_deriver_execute),
+    AtomicNodeDef("PMICentralityRanker","PMI Centrality Ranker","Analysis",
+        "Rank candidate anchor signs by PMI centrality (Spec 087 S3): the "
+        "sum over bigram partners of |PMI| weighted by count — which sign's "
+        "value, when fixed, most constrains the others. No domain "
+        "constants. The Phase-14 EpistaticAnchorRanker delegates to this "
+        "engine.",
+        inputs=[{"name":"sequences","type":"sequences","required":True}],
+        outputs=[{"name":"ranking","type":"json"},{"name":"n_signs_ranked","type":"number"},
+                 {"name":"verdict","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "top_k":{"type":"integer","title":"Top K","default":10,"minimum":1},
+            "min_count":{"type":"integer","title":"Min Bigram Count","default":5,"minimum":1}}},
+        fn=pmi_centrality_ranker_execute),
     AtomicNodeDef("FreqCounter","Frequency Counter","Transforms",
         "Count symbol occurrences across all sequences.",
         inputs=[{"name":"sequences","type":"sequences","required":True}],

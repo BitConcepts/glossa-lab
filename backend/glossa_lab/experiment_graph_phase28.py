@@ -25,8 +25,6 @@ from __future__ import annotations
 
 import base64
 import json
-import re
-from collections import Counter
 from pathlib import Path
 from typing import Any
 
@@ -337,111 +335,59 @@ def _reverse_janabiyah_search_v2(inputs: dict, params: dict) -> dict:
       2. Allograph-aware position match: any sign in the fish family
          (47/48/50/52/60/145/147) that maps to a Sumerian transliteration
          containing miin/me/mi syllables counts as a position match.
+
+    Spec 087 S3 (family F7): the mechanism is the generic
+    ReverseSkeletonSearch engine (glossa_lab.generic_primitives)
+    in its persons mode; this node is its Phase-28 parameterisation
+    — the same scoring core as Phase-27, the 16-item base rendering
+    set, and the dynamic expansion from the phoneme map via the
+    fish allograph family (the expansion toggle + family source
+    the triage names), all carried as spec data.
     """
-    persons = inputs.get("persons_v3") or []
-    janabiyah = inputs.get("janabiyah_reading") or {}
-    phoneme_map = inputs.get("phoneme_map") or {}
-    families = inputs.get("allograph_families") or {}
-    top_k = max(10, _safe_int(params.get("top_k", 30), 30))
-
-    if not persons or not janabiyah:
-        return {"verdict": "INSUFFICIENT_DATA",
-                "n_candidates": 0, "top_matches": []}
-
-    # Aggregate persons by candidate_name
-    name_counts: Counter[str] = Counter()
-    name_meta: dict[str, dict] = {}
-    for p in persons:
-        n = p.get("candidate_name", "")
-        if not n:
-            continue
-        name_counts[n] += 1
-        if n not in name_meta:
-            name_meta[n] = {
-                "first_period": p.get("period", ""),
-                "first_provenience": p.get("provenience", ""),
-                "first_p_number": p.get("p_number", ""),
-            }
-
-    # Expanded miin renderings: dynamically pulled from phoneme map
-    base_renderings = {
-        "miin", "mi-in", "me-en", "mi-na", "me-na", "mi-il",
-        "me-il", "mi-en", "me-in", "mu-li", "min", "men",
-        "mul", "imin", "kakkab", "asz",
-    }
-    fish_family_members = set(
-        str(m) for m in (families.get("fish") or {}).get("members") or []
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        reverse_skeleton_search_execute,
     )
-    # Phonemes attached to fish-family members in the (expanded) map
-    for sid in fish_family_members:
-        ph = (phoneme_map.get(sid) or {}).get("phoneme", "")
-        for tok in re.split(r"[/\s]", ph or ""):
-            t = tok.strip().lower()
-            if t and len(t) >= 2:
-                base_renderings.add(t)
 
-    miin_positions = {1, 3, 6}
-    n_target_segments = 7
-
-    def _score(name: str) -> dict:
-        segs = name.split("-")
-        n_segs = len(segs)
-        delta = abs(n_segs - n_target_segments)
-        length_score = max(0.0, 3.0 - 0.5 * delta)
-        position_match = 0
-        positions_matched: list[int] = []
-        for i, seg in enumerate(segs):
-            seg_l = seg.lower().strip("()? ")
-            if i in miin_positions and any(r in seg_l for r in base_renderings):
-                position_match += 1
-                positions_matched.append(i)
-        free_miin = sum(
-            1 for s in segs
-            if any(r in s.lower().strip("()? ") for r in base_renderings)
-        )
-        penalty = 0.0
-        if name.endswith("-me-luh-ha") or name.endswith("-me-luh-ha-ki"):
-            penalty -= 1.5
-        total = length_score + position_match * 1.5 + free_miin * 0.5 + penalty
-        return {
-            "candidate_name": name,
-            "n_segments": n_segs,
-            "length_score": round(length_score, 2),
-            "position_match": position_match,
-            "positions_matched": positions_matched,
-            "free_miin": free_miin,
-            "penalty": round(penalty, 2),
-            "total_score": round(total, 3),
-            "occurrences": name_counts[name],
-            "first_period": name_meta[name].get("first_period", ""),
-            "first_provenience": name_meta[name].get("first_provenience", ""),
-        }
-
-    scored = [_score(n) for n in name_counts.keys()]
-    scored.sort(key=lambda r: (-r["total_score"], -r["occurrences"]))
-    top = scored[:top_k]
-    n_with_position_match = sum(1 for r in scored if r["position_match"] > 0)
-    n_with_free_miin = sum(1 for r in scored if r["free_miin"] > 0)
-
-    verdict = (
-        f"Reverse Janabiyah search v2 (Phase-28, expanded map + "
-        f"allograph-aware): {len(scored)} unique persons-v3 candidates "
-        f"scored against {len(base_renderings)} miin-renderings ("
-        f"vs Phase-27a's static 15). {n_with_position_match} have at "
-        f"least one position-match; {n_with_free_miin} have at least "
-        f"one miin-rendering anywhere. Top candidate: "
-        f"'{top[0]['candidate_name']}' (score {top[0]['total_score']}, "
-        f"occurrences {top[0]['occurrences']})."
-        if top else "No candidates."
-    )
-    return {
-        "n_candidates": len(scored),
-        "n_renderings": len(base_renderings),
-        "n_with_position_match": n_with_position_match,
-        "n_with_free_miin": n_with_free_miin,
-        "top_matches": top,
-        "verdict": verdict,
+    merged = dict(params)
+    merged["search_spec"] = {
+        "candidate_mode": "persons",
+        "candidates_input": "persons_v3",
+        "target_positions": [1, 3, 6],
+        "target_length": 7,
+        "length_base": 3.0,
+        "length_step": 0.5,
+        "position_weight": 1.5,
+        "free_weight": 0.5,
+        "renderings": [
+            "miin", "mi-in", "me-en", "mi-na", "me-na", "mi-il",
+            "me-il", "mi-en", "me-in", "mu-li", "min", "men",
+            "mul", "imin", "kakkab", "asz",
+        ],
+        "expand_renderings": True,
+        "expansion_family": "fish",
+        "report_renderings_count": True,
+        "penalty_suffixes": ["-me-luh-ha", "-me-luh-ha-ki"],
+        "penalty_value": -1.5,
+        "top_k_default": 30,
+        "top_k_floor": 10,
+        "empty_result": {
+            "verdict": "INSUFFICIENT_DATA",
+            "n_candidates": 0,
+            "top_matches": [],
+        },
+        "verdict_template": (
+            "Reverse Janabiyah search v2 (Phase-28, expanded map + "
+            "allograph-aware): {n_candidates} unique persons-v3 "
+            "candidates scored against {n_renderings} "
+            "miin-renderings (vs Phase-27a's static 15). "
+            "{n_with_position_match} have at least one "
+            "position-match; {n_with_free_miin} have at least one "
+            "miin-rendering anywhere. Top candidate: '{top_name}' "
+            "(score {top_score}, occurrences {top_occurrences})."
+        ),
+        "empty_top_text": "No candidates.",
     }
+    return reverse_skeleton_search_execute(inputs, merged)
 
 
 # ── Verdict aggregator ──────────────────────────────────────────────

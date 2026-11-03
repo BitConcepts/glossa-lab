@@ -29,7 +29,6 @@ spectral gap, bigram transition matrix) where it already exists.
 from __future__ import annotations
 
 import random
-import re
 from collections import defaultdict
 from typing import Any
 
@@ -43,21 +42,6 @@ def _safe_int(x: Any, default: int = 0) -> int:
         return int(x)
     except Exception:  # noqa: BLE001
         return default
-
-
-def _pn_to_segments(forms: list[str]) -> list[list[str]]:
-    """Same segmentation rules as Phase-29 _epsd_pn_to_segments."""
-    out: list[list[str]] = []
-    for f in forms or []:
-        if not f:
-            continue
-        clean = re.sub(r"\{[^}]+\}", "", str(f).lower())
-        parts = [p for p in re.split(r"[-]+", clean) if p and not p.isspace()]
-        parts = [re.sub(r"[0-9]+$", "", p) for p in parts]
-        parts = [p for p in parts if p]
-        if parts:
-            out.append(parts)
-    return out
 
 
 def _length_cohort_reverse_janabiyah(inputs: dict, params: dict) -> dict:
@@ -83,184 +67,67 @@ def _length_cohort_reverse_janabiyah(inputs: dict, params: dict) -> dict:
       hit_rate_position     — fraction of cohort with positional match
       hit_rate_free         — fraction of cohort with any miin
       top_matches           — top_k highest-scored candidates in cohort
+
+    Spec 087 S3 (family F7): the mechanism is the generic
+    ReverseSkeletonSearch engine (glossa_lab.generic_primitives)
+    in its pn_cohorts mode; this node is its Phase-30
+    parameterisation — the Phase-29 scoring (the engine's carried
+    ePSD2 segmenter and token matching) plus the cohort table and
+    the 5x concentration verdict rule, all carried as spec data
+    (the cohorts table remains this node's own param, as before).
+    The module-local _pn_to_segments helper was used only here;
+    it was removed (the engine carries the shared segmenter).
     """
-    epsd2_pns = inputs.get("epsd2_personal_names") or []
-    janabiyah = inputs.get("janabiyah_reading") or {}
-    phoneme_map = inputs.get("phoneme_map") or {}
-    families = inputs.get("allograph_families") or {}
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        reverse_skeleton_search_execute,
+    )
 
-    cohorts_param = params.get("cohorts") or [[3, 4], [5, 6], [7, 8], [9, 99]]
-    if not isinstance(cohorts_param, list):
-        cohorts_param = [[3, 4], [5, 6], [7, 8], [9, 99]]
-    min_icount = max(1, _safe_int(params.get("min_icount", 1), 1))
-    top_k = max(5, _safe_int(params.get("top_k", 15), 15))
-
-    if not epsd2_pns or not janabiyah:
-        return {
+    merged = dict(params)
+    merged["search_spec"] = {
+        "candidate_mode": "pn_cohorts",
+        "candidates_input": "epsd2_personal_names",
+        "target_positions": [1, 3, 6],
+        "target_length": 7,
+        "length_base": 3.0,
+        "length_step": 0.5,
+        "position_weight": 1.5,
+        "free_weight": 0.5,
+        "renderings": [
+            "miin", "mi-in", "me-en", "mi-na", "me-na", "mi-il",
+            "me-il", "mi-en", "me-in", "mu-li", "min", "men",
+            "mul", "imin", "kakkab", "asz",
+        ],
+        "expand_renderings": True,
+        "expansion_family": "fish",
+        "top_k_default": 15,
+        "top_k_floor": 5,
+        "cohorts_default": [[3, 4], [5, 6], [7, 8], [9, 99]],
+        "concentration_factor": 5.0,
+        "empty_result": {
             "verdict": "INSUFFICIENT_DATA",
             "n_pns_searched": 0,
             "cohorts": [],
-        }
-
-    epsd2_pns = [
-        p for p in epsd2_pns
-        if int(p.get("icount", 0) or 0) >= min_icount
-    ]
-
-    # --- Build miin-token vocabulary identically to Phase-29 V3 -------------
-    base_renderings = {
-        "miin", "mi-in", "me-en", "mi-na", "me-na", "mi-il",
-        "me-il", "mi-en", "me-in", "mu-li", "min", "men",
-        "mul", "imin", "kakkab", "asz",
+        },
+        "verdict_head_template": (
+            "Phase-30b length-cohort reverse Janabiyah search: "
+            "position-match hit rates {min_rate:.4f}–{max_rate:.4f} "
+            "across {n_cohorts_tested} cohorts. "
+        ),
+        "verdict_peak_template": (
+            "Peak in {peak_cohort} ({peak_rate:.4f}, "
+            "{peak_pos}/{peak_n} PNs). Concentrated signal: "
+            "contact-zone hypothesis SURVIVES one DoF."
+        ),
+        "verdict_flat_text": (
+            "No cohort concentration (all within 5x of each other). "
+            "Janabiyah miin-pattern signal does NOT track candidate "
+            "length — one more DoF eliminated for the contact-zone "
+            "hypothesis."
+        ),
+        "verdict_empty_text": "Phase-30b: no scored candidates in any cohort.",
     }
-    fish_family_members = set(
-        str(m) for m in (families.get("fish") or {}).get("members") or []
-    )
-    for sid in fish_family_members:
-        ph = (phoneme_map.get(sid) or {}).get("phoneme", "")
-        for tok in re.split(r"[/\s]", ph or ""):
-            t = tok.strip().lower()
-            if t and len(t) >= 2:
-                base_renderings.add(t)
-    rendering_tokens: set[str] = set()
-    for r in base_renderings:
-        for t in r.split("-"):
-            if t and len(t) >= 2:
-                rendering_tokens.add(t)
+    return reverse_skeleton_search_execute(inputs, merged)
 
-    miin_positions = {1, 3, 6}
-    n_target_segments = 7
-
-    # --- Score every PN once, then bin by best-form segment count ----------
-    def _score(headword: str, forms: list[str], periods: list[str], icount: int) -> dict | None:
-        all_segs = _pn_to_segments(forms)
-        if not all_segs:
-            return None
-        best_score = -999.0
-        best_segs: list[str] = []
-        best_pmatch = 0
-        best_free = 0
-        best_positions: list[int] = []
-        for segs in all_segs:
-            n_segs = len(segs)
-            delta = abs(n_segs - n_target_segments)
-            length_score = max(0.0, 3.0 - 0.5 * delta)
-            pmatch = 0
-            positions: list[int] = []
-            for i, seg in enumerate(segs):
-                if i in miin_positions and seg.lower() in rendering_tokens:
-                    pmatch += 1
-                    positions.append(i)
-            free = sum(1 for s in segs if s.lower() in rendering_tokens)
-            total = length_score + pmatch * 1.5 + free * 0.5
-            if total > best_score:
-                best_score = total
-                best_segs = segs
-                best_pmatch = pmatch
-                best_free = free
-                best_positions = positions
-        return {
-            "headword": headword,
-            "best_form": "-".join(best_segs),
-            "n_segments": len(best_segs),
-            "position_match": best_pmatch,
-            "positions_matched": best_positions,
-            "free_miin": best_free,
-            "total_score": round(best_score, 3),
-            "icount": icount,
-            "periods": periods,
-            "n_alternate_forms": len(all_segs),
-        }
-
-    scored: list[dict] = []
-    for pn in epsd2_pns:
-        r = _score(
-            pn.get("headword", ""),
-            pn.get("forms", []),
-            pn.get("periods", []),
-            int(pn.get("icount", 0) or 0),
-        )
-        if r:
-            scored.append(r)
-
-    # --- Bin by segment count -----------------------------------------------
-    def _label(lo: int, hi: int) -> str:
-        return f"S{lo}-{hi}" if hi < 100 else f"S{lo}+"
-
-    cohorts: list[dict] = []
-    overall_pos = 0
-    overall_free = 0
-    for pair in cohorts_param:
-        try:
-            lo, hi = int(pair[0]), int(pair[1])
-        except Exception:  # noqa: BLE001
-            continue
-        members = [r for r in scored if lo <= r["n_segments"] <= hi]
-        if not members:
-            cohorts.append({
-                "cohort": _label(lo, hi),
-                "lo": lo, "hi": hi,
-                "n_pns": 0,
-                "n_with_position_match": 0,
-                "n_with_free_miin": 0,
-                "hit_rate_position": 0.0,
-                "hit_rate_free": 0.0,
-                "top_matches": [],
-            })
-            continue
-        n_pos = sum(1 for r in members if r["position_match"] > 0)
-        n_free = sum(1 for r in members if r["free_miin"] > 0)
-        overall_pos += n_pos
-        overall_free += n_free
-        members_sorted = sorted(
-            members, key=lambda r: (-r["total_score"], -r["icount"]),
-        )
-        cohorts.append({
-            "cohort": _label(lo, hi),
-            "lo": lo, "hi": hi,
-            "n_pns": len(members),
-            "n_with_position_match": n_pos,
-            "n_with_free_miin": n_free,
-            "hit_rate_position": round(n_pos / len(members), 4),
-            "hit_rate_free": round(n_free / len(members), 4),
-            "top_matches": members_sorted[:top_k],
-        })
-
-    # --- Verdict -------------------------------------------------------------
-    pos_rates = [c["hit_rate_position"] for c in cohorts if c["n_pns"] > 0]
-    if pos_rates:
-        max_rate = max(pos_rates)
-        min_rate = min(pos_rates)
-        rises = max_rate > 5 * max(1e-6, min_rate)
-        # Look for monotonic concentration in ANY single cohort
-        peak = max(cohorts, key=lambda c: c["hit_rate_position"])
-        verdict = (
-            f"Phase-30b length-cohort reverse Janabiyah search: "
-            f"position-match hit rates {min_rate:.4f}\u2013{max_rate:.4f} across "
-            f"{len(pos_rates)} cohorts. "
-            + (
-                f"Peak in {peak['cohort']} ({peak['hit_rate_position']:.4f}, "
-                f"{peak['n_with_position_match']}/{peak['n_pns']} PNs). "
-                f"Concentrated signal: contact-zone hypothesis SURVIVES one DoF."
-                if rises
-                else
-                "No cohort concentration (all within 5x of each other). "
-                "Janabiyah miin-pattern signal does NOT track candidate length \u2014 "
-                "one more DoF eliminated for the contact-zone hypothesis."
-            )
-        )
-    else:
-        verdict = "Phase-30b: no scored candidates in any cohort."
-
-    return {
-        "n_pns_searched": len(scored),
-        "n_renderings": len(rendering_tokens),
-        "n_cohorts": len(cohorts),
-        "n_with_position_match_total": overall_pos,
-        "n_with_free_miin_total": overall_free,
-        "cohorts": cohorts,
-        "verdict": verdict,
-    }
 
 
 # ---------------------------------------------------------------------------

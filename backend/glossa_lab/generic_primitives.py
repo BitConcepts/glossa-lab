@@ -1,31 +1,38 @@
-"""Generic graph-node machinery (Spec 087 S3, families F3 + F8
-and F4 + F5).
+"""Generic graph-node machinery (Spec 087 S3, families F3 + F8,
+F4 + F5, and F7 + F6).
 
-Fifteen spec/parameter-driven engines back the generic primitives
-registered in experiment_graph.py: RegistryTableLoader,
+Eighteen spec/parameter-driven engines back the generic
+primitives registered in experiment_graph.py: RegistryTableLoader,
 LabelMapApplier, TemplateMiner, ClusterContingencyProfile,
 SignRoleClassifier, ValueRoleMapSource, AnchorSyllabifier,
 AssociationAnchorDeriver, and PMICentralityRanker (PR-B), plus
 IconographicAnchorScorer, PhonemeMapCoverage,
 PhonemeMapPermutationTest, LengthMatchScorer,
 LengthMatchPermutationTest, and StratifiedPermutationTest
-(PR-C). The domain nodes converted in Spec 087 S3 PR-B
-(CanonicalSignLoader, ClusterMapper, StructuralTemplateAnalyzer,
-ClusterArchaeology, IndusSignRoleClassifier,
-DefaultIndusValueRoleMap, IndusAnchorSetSyllable,
-DerivedAnchorSet, EpistaticAnchorRanker) and PR-C
-(IconographicAnchorScore, AllographAwareIconographicScore,
+(PR-C), plus SkeletonTabletSearch, ReverseSkeletonSearch, and
+PersonsAggregator (PR-D). The domain nodes converted in Spec
+087 S3 PR-B (CanonicalSignLoader, ClusterMapper,
+StructuralTemplateAnalyzer, ClusterArchaeology,
+IndusSignRoleClassifier, DefaultIndusValueRoleMap,
+IndusAnchorSetSyllable, DerivedAnchorSet, EpistaticAnchorRanker),
+PR-C (IconographicAnchorScore, AllographAwareIconographicScore,
 BlindHeldOutTest, BayesianDecoder, BayesianDecoderV2,
 EnhancedNameMatcher, EnhancedNameMatcherV2, MeluhhaNameMatcher,
 BilingualReadoutTest, BilingualReadoutTestV2,
 PeriodStratifiedReadout, PeriodStratifiedReadout6Bucket,
-ProvenienceStratifiedReadout) keep their registered ids and
-parameter schemas; their implementations delegate here with the
-domain content — table names, file paths, numeral sets,
-value-role tables, diacritic tables, alias tables, strata rules,
-verdict text — carried as parameters instead of code. That is
-the conversion contract: generic mechanism in this module,
-domain content in parameters.
+ProvenienceStratifiedReadout), and PR-D
+(JanabiyahPhoneticReadout, JanabiyahPhoneticReadoutV2,
+ReverseJanabiyahSearch, ReverseJanabiyahSearchV2,
+M77ReverseJanabiyahSearchV3, LengthCohortReverseJanabiyahSearch,
+MeluhhanPersonsExtractor, RefinedMeluhhanPersonsExtractor,
+RefinedMeluhhanPersonsExtractorV2, Persons_v3_Extractor) keep
+their registered ids and parameter schemas; their
+implementations delegate here with the domain content — table
+names, file paths, numeral sets, value-role tables, diacritic
+tables, alias tables, strata rules, rendering sets, verdict
+text — carried as parameters instead of code. That is the
+conversion contract: generic mechanism in this module, domain
+content in parameters.
 
 Like generic_loaders.py, this module is stdlib-only and imports
 nothing from glossa_lab, so core and phase modules can both use
@@ -106,6 +113,35 @@ Engine parameter surfaces:
     overall run uses the base itself), and the verdict
     template. Its per-stratum test is the same bipartite
     core LengthMatchPermutationTest uses.
+  SkeletonTabletSearch (params["readout_spec"]): the scan
+    list (each scan: a rendering source — a spec constant or
+    an input port — its per-row hit key, and its output
+    keys), the keyword gate, the minimum-hit rule, the line
+    truncation, an optional derived count (a difference of
+    two scan counts), the echoed rendering list, the error
+    result, and the verdict template + optional
+    interpretation.
+  ReverseSkeletonSearch (params["search_spec"]): the shared
+    scoring core (target positions, target length, the length
+    / position / free weights), the rendering set with the
+    optional dynamic allograph expansion (family name as
+    data), and the candidate mode — "persons" (aggregate
+    rows by name; substring matching; the suffix-penalty set
+    as data), "pn" (ePSD2 entries over their alternate forms
+    under the carried segmenter; exact token matching;
+    min_icount filter), or "pn_cohorts" (the "pn" scoring
+    binned by best-form segment count over the cohort table,
+    with the concentration factor as data). Output key names,
+    the empty result, and the verdict text pieces are spec
+    data.
+  PersonsAggregator (params["persons_spec"]): the input
+    port key, the collected field sets (proveniences,
+    source patterns, distinct tablets, segment counts), the
+    known-name rule (a carried name set, the upstream
+    is_known flag, or none), the example-line truncation
+    (none / a character cap), and the output plan (count key
+    names, the full row list, the by-pattern distribution)
+    with the verdict template.
 """
 from __future__ import annotations
 
@@ -2181,3 +2217,632 @@ def stratified_permutation_test_execute(inputs: dict, params: dict) -> dict:
         "n_significant_strata": len(significant),
         "verdict": verdict,
     }
+
+
+# ── SkeletonTabletSearch ─────────────────────────────────────────────────────
+
+
+def _resolve_renderings(source: dict, inputs: dict) -> list:
+    """A scan's rendering list: a constant carried in the spec, or a
+    list arriving through an input port."""
+    if "constant" in source:
+        return list(source.get("constant") or [])
+    return list(inputs.get(source.get("input", "")) or [])
+
+
+def skeleton_tablet_search_execute(inputs: dict, params: dict) -> dict:
+    """Predict a seal reading's phonetic skeleton and scan tablet
+    lines for rendering matches.
+
+    Generalised from JanabiyahPhoneticReadout (Phase-25: one scan
+    over an 11-item rendering list carried as a code constant) and
+    JanabiyahPhoneticReadoutV2 (Phase-26: two scans — direct-only
+    and expanded — over rendering lists arriving through input
+    ports). The scan list is spec data: each scan names its
+    rendering source (constant or input port), its per-row hit
+    key, and its output keys; the keyword gate, the minimum-hit
+    rule, and the line truncation are spec data, as are the
+    verdict template, the optional interpretation, and the
+    optional derived count (a difference of two scan counts).
+    The skeleton itself is the phoneme sequence the map assigns
+    to the reading's signs; a sign the map lacks predicts the
+    unknown token with the historical defaults.
+    """
+    spec: dict[str, Any] = params.get("readout_spec") or {}
+    keyword_gate = spec.get("keyword_gate", "me-luh")
+    min_hits = int(spec.get("min_hits", 2))
+    line_limit = int(spec.get("line_limit", 160))
+    top_n = int(spec.get("top_n", 20))
+    scans = spec.get("scans") or []
+    verdict_template = spec.get("verdict_template", "")
+
+    janabiyah = inputs.get("janabiyah_reading") or {}
+    phoneme_map = inputs.get("phoneme_map") or {}
+    tablets = inputs.get("tablets") or []
+
+    if not janabiyah or not phoneme_map:
+        return dict(spec.get("error_result") or {
+            "error": "Phoneme map or Janabiyah reading not available."
+        })
+
+    sign_seq = janabiyah.get("sign_sequence", [])
+    predictions: list[dict] = []
+    for sign_id in sign_seq:
+        ph = phoneme_map.get(sign_id, {})
+        predictions.append({
+            "sign_id": sign_id,
+            "phoneme": ph.get("phoneme", "?"),
+            "gloss": ph.get("gloss", "(unmapped)"),
+            "confidence": ph.get("confidence", "none"),
+        })
+
+    miin_count = sum(1 for p in predictions
+                     if "miin" in (p["phoneme"] or "").lower())
+    skeleton = "-".join(p["phoneme"] for p in predictions)
+
+    out: dict[str, Any] = {
+        "skeleton": skeleton,
+        "predictions": predictions,
+        "n_miin": miin_count,
+        "n_signs": len(sign_seq),
+    }
+    counts: dict[str, int] = {}
+    for scan in scans:
+        renderings = _resolve_renderings(scan.get("renderings") or {}, inputs)
+        hit_key = scan.get("hit_key", "n_hits")
+        matches: list[dict] = []
+        for t in tablets:
+            kw = " ".join(t.get("matched_keywords") or []).lower()
+            if keyword_gate not in kw:
+                continue
+            line_pool: list[str] = []
+            line_pool.extend(t.get("atf_lines_with_match") or [])
+            line_pool.extend(t.get("atf_excerpt_lines") or [])
+            for line in line_pool:
+                ll = line.lower()
+                hits = sum(1 for r in renderings if r in ll)
+                if hits >= min_hits:
+                    matches.append({
+                        "p_number": t.get("p_number"),
+                        "period": t.get("period"),
+                        "provenience": t.get("provenience"),
+                        hit_key: hits,
+                        "line": line[:line_limit],
+                    })
+        matches.sort(key=lambda m: -m[hit_key])
+        out[scan.get("top_key", "matches_top20")] = matches[:top_n]
+        counts[scan.get("count_key", "n_matches")] = len(matches)
+        out[scan.get("count_key", "n_matches")] = len(matches)
+
+    diff = spec.get("count_difference")
+    if diff:
+        out[diff["key"]] = counts[diff["minuend"]] - counts[diff["subtrahend"]]
+    if spec.get("renderings_echo") is not None:
+        out["miin_renderings_searched"] = _resolve_renderings(
+            spec["renderings_echo"], inputs
+        )
+
+    context: dict[str, Any] = {
+        "skeleton": skeleton,
+        "n_miin": miin_count,
+        "n_tablets": len(tablets),
+    }
+    context.update(counts)
+    out["verdict"] = verdict_template.format(**context)
+    if spec.get("interpretation") is not None:
+        out["interpretation"] = spec["interpretation"]
+    return out
+
+
+# ── ReverseSkeletonSearch ────────────────────────────────────────────────────
+
+
+def _skeleton_length_score(n_segs: int, target_length: int,
+                           base: float, step: float) -> float:
+    """The Janabiyah family's shared length component: a base score
+    falling by a fixed step per segment of distance from the target
+    length, floored at zero."""
+    return max(0.0, base - step * abs(n_segs - target_length))
+
+
+def _expand_renderings(base, phoneme_map: dict, families: dict,
+                       family_name: str) -> set:
+    """The Phase-28 dynamic rendering expansion: tokens of the
+    phonemes the map assigns to the named allograph family's
+    members join the base set (split on '/' or whitespace, length
+    at least 2)."""
+    renderings = set(base)
+    members = {
+        str(m) for m in (families.get(family_name) or {}).get("members") or []
+    }
+    for sid in members:
+        ph = (phoneme_map.get(sid) or {}).get("phoneme", "")
+        for tok in re.split(r"[/\s]", ph or ""):
+            t = tok.strip().lower()
+            if t and len(t) >= 2:
+                renderings.add(t)
+    return renderings
+
+
+def _rendering_tokens(renderings) -> set:
+    """The token set the ePSD2 modes match against: every rendering
+    split on '-', keeping tokens of length at least 2."""
+    tokens: set = set()
+    for r in renderings:
+        for t in r.split("-"):
+            if t and len(t) >= 2:
+                tokens.add(t)
+    return tokens
+
+
+def _epsd_segments(forms) -> list:
+    """The ePSD2 segmenter (Phase-29/30): strip {…} determinatives,
+    lowercase, split on hyphen runs, drop trailing subscript digits
+    and empty parts; forms yielding no parts are dropped."""
+    segs: list = []
+    for f in forms or []:
+        if not f:
+            continue
+        clean = re.sub(r"\{[^}]+\}", "", str(f).lower())
+        parts = [p for p in re.split(r"[-]+", clean) if p and not p.isspace()]
+        parts = [re.sub(r"[0-9]+$", "", p) for p in parts]
+        parts = [p for p in parts if p]
+        if parts:
+            segs.append(parts)
+    return segs
+
+
+def _score_pn_forms(forms, periods, icount: int, headword: str,
+                    tokens: set, core: dict):
+    """Score one ePSD2 entry over its alternate forms, keeping the
+    best-scoring form (the first form wins ties). Matching is exact
+    token membership — the Phase-29/30 rule, distinct from the
+    persons modes' substring rule. Returns None when no form
+    segments."""
+    all_segs = _epsd_segments(forms)
+    if not all_segs:
+        return None
+    best_score = -999.0
+    best_segs: list = []
+    best_pmatch = 0
+    best_free = 0
+    best_positions: list = []
+    for segs in all_segs:
+        length_score = _skeleton_length_score(
+            len(segs), core["target_length"],
+            core["length_base"], core["length_step"],
+        )
+        pmatch = 0
+        positions: list = []
+        for i, seg in enumerate(segs):
+            if i in core["target_positions"] and seg.lower() in tokens:
+                pmatch += 1
+                positions.append(i)
+        free = sum(1 for s in segs if s.lower() in tokens)
+        total = (length_score + pmatch * core["position_weight"]
+                 + free * core["free_weight"])
+        if total > best_score:
+            best_score = total
+            best_segs = segs
+            best_pmatch = pmatch
+            best_free = free
+            best_positions = positions
+    return {
+        "headword": headword,
+        "best_form": "-".join(best_segs),
+        "n_segments": len(best_segs),
+        "position_match": best_pmatch,
+        "positions_matched": best_positions,
+        "free_miin": best_free,
+        "total_score": round(best_score, 3),
+        "icount": icount,
+        "periods": periods,
+        "n_alternate_forms": len(all_segs),
+    }
+
+
+def reverse_skeleton_search_execute(inputs: dict, params: dict) -> dict:
+    """Score candidate names against a predicted phonetic skeleton.
+
+    Generalised from the four reverse Janabiyah searches
+    (Phase-27/28 over aggregated person rows; Phase-29/30 over
+    ePSD2 personal-name entries). All modes share one scoring
+    core carried as spec data: the target segment positions
+    ({1, 3, 6} historically), the target length (7), and the
+    weights (length base 3.0 falling 0.5 per segment of distance;
+    1.5 per position match; 0.5 per free occurrence). What
+    differs is data, named in the spec:
+
+    - candidate_mode "persons": person rows aggregated by
+      candidate name (occurrences + first-seen meta); matching is
+      substring over the rendering set; the -me-luh-ha /
+      -me-luh-ha-ki suffix penalty applies (penalty_suffixes).
+    - candidate_mode "pn": ePSD2 entries segmented by the ePSD2
+      segmenter, filtered by min_icount, each scored over its
+      alternate forms; matching is exact membership in the
+      rendering TOKEN set; no penalty.
+    - candidate_mode "pn_cohorts": the "pn" scoring, then the
+      scored entries binned by best-form segment count over the
+      cohort table (a param, with a spec default), per-cohort
+      hit rates, and the concentration verdict (peak rate more
+      than concentration_factor x the minimum rate).
+
+    The rendering set is spec data; with expand_renderings set,
+    the Phase-28 dynamic expansion from the phoneme map via the
+    named allograph family is applied first. The target reading
+    input is required (its emptiness is the insufficient-data
+    condition) although the pattern itself is spec data — the
+    historical behaviour of all four nodes.
+    """
+    spec: dict[str, Any] = params.get("search_spec") or {}
+    mode = spec.get("candidate_mode", "persons")
+    core = {
+        "target_positions": set(spec.get("target_positions", [1, 3, 6])),
+        "target_length": int(spec.get("target_length", 7)),
+        "length_base": float(spec.get("length_base", 3.0)),
+        "length_step": float(spec.get("length_step", 0.5)),
+        "position_weight": float(spec.get("position_weight", 1.5)),
+        "free_weight": float(spec.get("free_weight", 0.5)),
+    }
+    top_k_default = int(spec.get("top_k_default", 20))
+    top_k_floor = int(spec.get("top_k_floor", 10))
+    top_k = max(top_k_floor, _safe_int(params.get("top_k", top_k_default),
+                                       top_k_default))
+
+    janabiyah = inputs.get("janabiyah_reading") or {}
+    renderings = set(spec.get("renderings") or [])
+    if spec.get("expand_renderings"):
+        renderings = _expand_renderings(
+            renderings,
+            inputs.get("phoneme_map") or {},
+            inputs.get("allograph_families") or {},
+            spec.get("expansion_family", "fish"),
+        )
+
+    if mode == "persons":
+        persons = inputs.get(spec.get("candidates_input", "persons_v3")) or []
+        if not persons or not janabiyah:
+            return dict(spec.get("empty_result") or {
+                "verdict": "INSUFFICIENT_DATA",
+                "n_candidates": 0,
+                "top_matches": [],
+            })
+        name_counts: Counter = Counter()
+        name_meta: dict = {}
+        for p in persons:
+            n = p.get("candidate_name", "")
+            if not n:
+                continue
+            name_counts[n] += 1
+            if n not in name_meta:
+                name_meta[n] = {
+                    "first_period": p.get("period", ""),
+                    "first_provenience": p.get("provenience", ""),
+                    "first_p_number": p.get("p_number", ""),
+                }
+        penalty_suffixes = spec.get("penalty_suffixes") or []
+        penalty_value = float(spec.get("penalty_value", -1.5))
+        scored: list = []
+        for name in name_counts.keys():
+            segs = name.split("-")
+            length_score = _skeleton_length_score(
+                len(segs), core["target_length"],
+                core["length_base"], core["length_step"],
+            )
+            position_match = 0
+            positions_matched: list = []
+            for i, seg in enumerate(segs):
+                seg_l = seg.lower().strip("()? ")
+                if (i in core["target_positions"]
+                        and any(r in seg_l for r in renderings)):
+                    position_match += 1
+                    positions_matched.append(i)
+            free_miin = sum(
+                1 for s in segs
+                if any(r in s.lower().strip("()? ") for r in renderings)
+            )
+            penalty = 0.0
+            if any(name.endswith(sfx) for sfx in penalty_suffixes):
+                penalty += penalty_value
+            total = (length_score + position_match * core["position_weight"]
+                     + free_miin * core["free_weight"] + penalty)
+            scored.append({
+                "candidate_name": name,
+                "n_segments": len(segs),
+                "length_score": round(length_score, 2),
+                "position_match": position_match,
+                "positions_matched": positions_matched,
+                "free_miin": free_miin,
+                "penalty": round(penalty, 2),
+                "total_score": round(total, 3),
+                "occurrences": name_counts[name],
+                "first_period": name_meta[name].get("first_period", ""),
+                "first_provenience": name_meta[name].get(
+                    "first_provenience", ""),
+            })
+        scored.sort(key=lambda r: (-r["total_score"], -r["occurrences"]))
+        top = scored[:top_k]
+        n_pos = sum(1 for r in scored if r["position_match"] > 0)
+        n_free = sum(1 for r in scored if r["free_miin"] > 0)
+        out: dict[str, Any] = {"n_candidates": len(scored)}
+        if spec.get("report_renderings_count"):
+            out["n_renderings"] = len(renderings)
+        out["n_with_position_match"] = n_pos
+        out["n_with_free_miin"] = n_free
+        out["top_matches"] = top
+        if top:
+            out["verdict"] = spec.get("verdict_template", "").format(
+                n_candidates=len(scored),
+                n_renderings=len(renderings),
+                n_with_position_match=n_pos,
+                n_with_free_miin=n_free,
+                top_name=top[0]["candidate_name"],
+                top_score=top[0]["total_score"],
+                top_occurrences=top[0]["occurrences"],
+            )
+        else:
+            out["verdict"] = spec.get("empty_top_text", "No candidates.")
+        return out
+
+    # ePSD2 modes ("pn", "pn_cohorts")
+    epsd2_pns = inputs.get(
+        spec.get("candidates_input", "epsd2_personal_names")) or []
+    if not epsd2_pns or not janabiyah:
+        return dict(spec.get("empty_result") or {
+            "verdict": "INSUFFICIENT_DATA",
+            "n_pns_searched": 0,
+            "top_matches": [],
+        })
+    min_icount = max(1, _safe_int(params.get("min_icount", 1), 1))
+    epsd2_pns = [
+        p for p in epsd2_pns if int(p.get("icount", 0) or 0) >= min_icount
+    ]
+    tokens = _rendering_tokens(renderings)
+    scored = []
+    for pn in epsd2_pns:
+        r = _score_pn_forms(
+            pn.get("forms", []),
+            pn.get("periods", []),
+            int(pn.get("icount", 0) or 0),
+            pn.get("headword", ""),
+            tokens,
+            core,
+        )
+        if r:
+            scored.append(r)
+    scored.sort(key=lambda r: (-r["total_score"], -r["icount"]))
+
+    if mode == "pn":
+        top = scored[:top_k]
+        n_pos = sum(1 for r in scored if r["position_match"] > 0)
+        n_free = sum(1 for r in scored if r["free_miin"] > 0)
+        verdict = spec.get("verdict_template", "").format(
+            n_pns_searched=len(scored),
+            n_renderings=len(tokens),
+            n_with_position_match=n_pos,
+            n_with_free_miin=n_free,
+        )
+        if top:
+            verdict += spec.get("verdict_top_template", "").format(
+                top_headword=top[0]["headword"],
+                top_score=top[0]["total_score"],
+                top_icount=top[0]["icount"],
+                top_periods=top[0]["periods"],
+            )
+        else:
+            verdict += spec.get("verdict_no_top_text", "No candidates.")
+        verdict += spec.get("verdict_suffix", "")
+        return {
+            "n_pns_searched": len(scored),
+            "n_renderings": len(tokens),
+            "n_with_position_match": n_pos,
+            "n_with_free_miin": n_free,
+            "top_matches": top,
+            "verdict": verdict,
+        }
+
+    # "pn_cohorts": bin the scored entries by best-form segment count.
+    default_cohorts = spec.get("cohorts_default") or [[3, 4], [5, 6], [7, 8],
+                                                       [9, 99]]
+    cohorts_param = params.get("cohorts") or default_cohorts
+    if not isinstance(cohorts_param, list):
+        cohorts_param = default_cohorts
+    cohorts: list = []
+    overall_pos = 0
+    overall_free = 0
+    for pair in cohorts_param:
+        try:
+            lo, hi = int(pair[0]), int(pair[1])
+        except Exception:  # noqa: BLE001
+            continue
+        label = f"S{lo}-{hi}" if hi < 100 else f"S{lo}+"
+        members = [r for r in scored if lo <= r["n_segments"] <= hi]
+        if not members:
+            cohorts.append({
+                "cohort": label,
+                "lo": lo, "hi": hi,
+                "n_pns": 0,
+                "n_with_position_match": 0,
+                "n_with_free_miin": 0,
+                "hit_rate_position": 0.0,
+                "hit_rate_free": 0.0,
+                "top_matches": [],
+            })
+            continue
+        n_pos_c = sum(1 for r in members if r["position_match"] > 0)
+        n_free_c = sum(1 for r in members if r["free_miin"] > 0)
+        overall_pos += n_pos_c
+        overall_free += n_free_c
+        members_sorted = sorted(
+            members, key=lambda r: (-r["total_score"], -r["icount"]))
+        cohorts.append({
+            "cohort": label,
+            "lo": lo, "hi": hi,
+            "n_pns": len(members),
+            "n_with_position_match": n_pos_c,
+            "n_with_free_miin": n_free_c,
+            "hit_rate_position": round(n_pos_c / len(members), 4),
+            "hit_rate_free": round(n_free_c / len(members), 4),
+            "top_matches": members_sorted[:top_k],
+        })
+
+    pos_rates = [c["hit_rate_position"] for c in cohorts if c["n_pns"] > 0]
+    if pos_rates:
+        max_rate = max(pos_rates)
+        min_rate = min(pos_rates)
+        factor = float(spec.get("concentration_factor", 5.0))
+        rises = max_rate > factor * max(1e-6, min_rate)
+        peak = max(cohorts, key=lambda c: c["hit_rate_position"])
+        verdict = spec.get("verdict_head_template", "").format(
+            min_rate=min_rate,
+            max_rate=max_rate,
+            n_cohorts_tested=len(pos_rates),
+        )
+        if rises:
+            verdict += spec.get("verdict_peak_template", "").format(
+                peak_cohort=peak["cohort"],
+                peak_rate=peak["hit_rate_position"],
+                peak_pos=peak["n_with_position_match"],
+                peak_n=peak["n_pns"],
+            )
+        else:
+            verdict += spec.get("verdict_flat_text", "")
+    else:
+        verdict = spec.get("verdict_empty_text", "")
+    return {
+        "n_pns_searched": len(scored),
+        "n_renderings": len(tokens),
+        "n_cohorts": len(cohorts),
+        "n_with_position_match_total": overall_pos,
+        "n_with_free_miin_total": overall_free,
+        "cohorts": cohorts,
+        "verdict": verdict,
+    }
+
+
+# ── PersonsAggregator ────────────────────────────────────────────────────────
+
+
+def persons_aggregator_execute(inputs: dict, params: dict) -> dict:
+    """Aggregate person rows into per-name candidate counts.
+
+    Generalised from the four Meluhhan persons extractors
+    (Phase-22, the Phase-23 refined extractor, its Phase-24
+    near-verbatim copy, and the Phase-25 persons-v3 reporter).
+    The shared mechanism is one pass over the rows: count rows
+    per candidate name (empty names skipped), collect each
+    name's period set, first example line, and — as spec data
+    dictates — provenience set, source-pattern set, distinct
+    tablet (p_number) set, and segment-count enrichment; then
+    emit rows in count order at or above min_freq. What differs
+    between the four nodes is data, named in the spec:
+
+    - input_key: which input port carries the rows;
+    - the collected field sets (proveniences / patterns /
+      distinct tablets / segment counts as booleans);
+    - known: {"mode": "set", "names": [...]} confirms rows
+      whose lowercased name is in the carried known-names set;
+      {"mode": "upstream_flag"} takes each name's known flag
+      from its rows' is_known field (any row suffices) and
+      reports it per row; {"mode": "none"} reports no
+      confirmation;
+    - example_line_limit: None (untruncated) or a character cap
+      (120 for Phase-24, 160 for Phase-25);
+    - the output plan: the count key's name, whether the full
+      row list is emitted alongside the top-50, the optional
+      second count key, the optional by-pattern distribution
+      (counted over ALL rows, empty names included), and the
+      verdict template.
+    """
+    spec: dict[str, Any] = params.get("persons_spec") or {}
+    persons = inputs.get(spec.get("input_key", "persons")) or []
+    min_freq = _safe_int(params.get("min_freq", 1), 1)
+    collect_proveniences = bool(spec.get("collect_proveniences", False))
+    collect_patterns = bool(spec.get("collect_patterns", False))
+    distinct_tablets = bool(spec.get("distinct_tablets", False))
+    segment_count = bool(spec.get("segment_count", False))
+    known_spec = spec.get("known") or {"mode": "none"}
+    known_mode = known_spec.get("mode", "none")
+    known_names = {str(n).lower() for n in known_spec.get("names") or []}
+    line_limit = spec.get("example_line_limit")
+
+    name_counts: Counter = Counter()
+    name_periods: dict = {}
+    name_provs: dict = {}
+    name_lines: dict = {}
+    name_patterns: dict = {}
+    name_tablets: dict = {}
+    name_known: dict = {}
+    for p in persons:
+        n = p.get("candidate_name", "")
+        if not n:
+            continue
+        name_counts[n] += 1
+        name_periods.setdefault(n, set()).add(p.get("period", "") or "")
+        if collect_proveniences:
+            name_provs.setdefault(n, set()).add(p.get("provenience", "") or "")
+        name_lines.setdefault(n, []).append(p.get("line", ""))
+        if collect_patterns:
+            name_patterns.setdefault(n, set()).add(
+                p.get("source_pattern", "") or "")
+        if distinct_tablets:
+            name_tablets.setdefault(n, set()).add(p["p_number"])
+        if known_mode == "upstream_flag":
+            name_known[n] = name_known.get(n, False) or bool(p.get("is_known"))
+
+    rows: list = []
+    for n, c in name_counts.most_common():
+        if c < min_freq:
+            continue
+        line = name_lines[n][0] if name_lines.get(n) else ""
+        if line_limit is not None:
+            line = line[:int(line_limit)]
+        row: dict[str, Any] = {"candidate_name": n, "occurrences": c}
+        if distinct_tablets:
+            row["n_distinct_tablets"] = len(name_tablets.get(n, set()))
+        if segment_count:
+            row["n_segments"] = _name_n_segments(n)
+        row["periods"] = sorted(name_periods.get(n, set()))
+        if collect_proveniences:
+            row["proveniences"] = sorted(name_provs.get(n, set()))
+        if collect_patterns:
+            row["source_patterns"] = sorted(name_patterns.get(n, set()))
+        if known_mode == "upstream_flag":
+            row["is_known_meluhhan"] = bool(name_known.get(n, False))
+        row["example_line"] = line
+        rows.append(row)
+
+    if known_mode == "set":
+        confirmed = [r for r in rows
+                     if r["candidate_name"].lower() in known_names]
+    elif known_mode == "upstream_flag":
+        confirmed = [r for r in rows if r["is_known_meluhhan"]]
+    else:
+        confirmed = []
+
+    by_pattern = None
+    if spec.get("by_pattern"):
+        counter: Counter = Counter()
+        for p in persons:
+            counter[p.get("source_pattern", "")] += 1
+        by_pattern = dict(counter.most_common())
+
+    out: dict[str, Any] = {
+        spec.get("n_key", "n_unique"): len(rows),
+        "rows_top50": rows[:50],
+    }
+    if spec.get("rows_all", True):
+        out["rows_all"] = rows
+    if spec.get("extra_count_key"):
+        out[spec["extra_count_key"]] = len(rows)
+    if spec.get("confirmed", True):
+        out["confirmed_hits"] = confirmed
+    if by_pattern is not None:
+        out["by_pattern"] = by_pattern
+    out["verdict"] = spec.get("verdict_template", "").format(
+        n_rows=len(rows),
+        min_freq=min_freq,
+        n_confirmed=len(confirmed),
+        by_pattern=by_pattern,
+    )
+    return out

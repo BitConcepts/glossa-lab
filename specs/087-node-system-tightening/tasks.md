@@ -111,7 +111,7 @@ carries its gate/test output verbatim** — not a summary of it.
 
 ## Stage S3 — Genericization triage (PRs: `feat/087-s3-triage-record`, then `feat/087-s3-convert-<family>`…)
 
-- [ ] T301 Triage record: all 68 PARTIAL nodes dispositioned
+- [x] T301 Triage record: all 68 PARTIAL nodes dispositioned
   exactly once ((a)/(b)/(c)) with per-disposition evidence;
   live domain-flavoured ids and the CGSA core loaders first.
   (C087-6) Acceptance: gate (parent/owner reviews the record

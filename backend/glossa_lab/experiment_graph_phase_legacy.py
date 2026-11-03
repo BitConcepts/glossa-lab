@@ -115,7 +115,7 @@ def _phase_legacy_node_defs() -> list[Any]:
     return [
         AtomicNodeDef(
             "LegacyPhaseScriptRunner", "Legacy Phase Script Runner",
-            "Phase-16-19 / Migration",
+            "Experiments",
             "Subprocess-run a pre-WARP.md analysis script under "
             "`scripts/phase{N}/` and parse its produced JSON output. "
             "Used by retroactive Phase-16/17/18/19 graph migrations to "

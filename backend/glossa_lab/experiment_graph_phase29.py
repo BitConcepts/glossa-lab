@@ -35,9 +35,7 @@ Phase-29 = the corpus 10x expansion. Builds on Phase-28 with:
 
 from __future__ import annotations
 
-import json
 import re
-from collections import Counter
 from pathlib import Path
 from typing import Any
 
@@ -105,70 +103,118 @@ def _phase29_corpus_loader(inputs: dict, params: dict) -> dict:
 # ── Corpus loaders (individual) ──────────────────────────────────────
 
 
+# Spec 087 S3 (family F1): the generic DatasetRecordLoader spec for
+# the Mahadevan loader — getter names, the min_length parameter
+# shaping (safe_int, clamped to >= 1), and the verdict text are data.
+_MAHADEVAN_DATASET_SPEC: dict[str, Any] = {
+    "module": "glossa_lab.data.mesopotamian_contact",
+    "getters": {
+        "inscriptions": {
+            "name": "get_mahadevan_inscriptions",
+            "kwargs": {
+                "min_length": {
+                    "from_param": "min_length",
+                    "default": 1,
+                    "safe_int": True,
+                    "min": 1,
+                }
+            },
+        },
+        "metadata": {"name": "get_mahadevan_metadata"},
+    },
+    "outputs": [
+        {"op": "value", "key": "inscriptions", "of": "inscriptions"},
+        {"op": "len", "key": "n_inscriptions", "of": "inscriptions"},
+        {"op": "sum_len", "key": "n_tokens", "of": "inscriptions"},
+        {"op": "distinct_count", "key": "n_distinct_signs", "of": "inscriptions"},
+        {"op": "value", "key": "metadata", "of": "metadata"},
+        {"op": "counter_top", "key": "top_20_signs", "of": "inscriptions", "n": 20},
+        {
+            "op": "verdict",
+            "key": "verdict",
+            "template": (
+                "Mahadevan 1977 corpus loaded: {n_inscriptions} inscriptions, "
+                "{n_tokens} sign tokens, {n_distinct_signs} distinct M77 sign "
+                "codes. Mean inscription length: {metadata.mean_length}."
+            ),
+        },
+    ],
+}
+
+
 def _mahadevan_inscription_loader(inputs: dict, params: dict) -> dict:
     """Load Mahadevan 1977 inscription corpus.
 
     Returns 1,669 inscriptions / 5,361 sign tokens / M77 numeric codes.
     9.4x the 178-inscription CISI corpus we used through Phase-28.
-    """
-    min_length = max(1, _safe_int(params.get("min_length", 1), 1))
-    try:
-        from glossa_lab.data.mesopotamian_contact import (  # noqa: PLC0415
-            get_mahadevan_inscriptions,
-            get_mahadevan_metadata,
-        )
-    except Exception as exc:  # noqa: BLE001
-        return {"error": f"data module not available: {exc}"}
 
-    inscriptions = get_mahadevan_inscriptions(min_length=min_length)
-    md = get_mahadevan_metadata()
-    sign_freq = Counter(s for ins in inscriptions for s in ins)
-    return {
-        "inscriptions": inscriptions,
-        "n_inscriptions": len(inscriptions),
-        "n_tokens": sum(len(i) for i in inscriptions),
-        "n_distinct_signs": len(sign_freq),
-        "metadata": md,
-        "top_20_signs": sign_freq.most_common(20),
-        "verdict": (
-            f"Mahadevan 1977 corpus loaded: {len(inscriptions)} inscriptions, "
-            f"{sum(len(i) for i in inscriptions)} sign tokens, "
-            f"{len(sign_freq)} distinct M77 sign codes. "
-            f"Mean inscription length: {md.get('mean_length', '?')}."
-        ),
-    }
+    Spec 087 S3 (family F1): delegates to the generic
+    DatasetRecordLoader engine with _MAHADEVAN_DATASET_SPEC.
+    """
+    from glossa_lab.generic_loaders import dataset_record_loader_execute  # noqa: PLC0415
+
+    merged = dict(params)
+    merged["dataset_spec"] = _MAHADEVAN_DATASET_SPEC
+    return dataset_record_loader_execute(inputs, merged)
+
+
+# Spec 087 S3 (family F1): the generic DatasetRecordLoader spec for
+# the ePSD2 loader — the POS equality filter, the "(all)" echo, and
+# the conditional verdict suffix are data.
+_EPSD2_DATASET_SPEC: dict[str, Any] = {
+    "module": "glossa_lab.data.mesopotamian_contact",
+    "getters": {
+        "all_names": {"name": "get_epsd2_names"},
+        "metadata": {"name": "get_epsd2_metadata"},
+    },
+    "filters": [
+        {
+            "from": "all_names",
+            "as": "names",
+            "rules": [{"kind": "equals", "field": "pos", "param": "pos_filter"}],
+        }
+    ],
+    "outputs": [
+        {"op": "value", "key": "names", "of": "names"},
+        {"op": "len", "key": "n_names", "of": "names"},
+        {"op": "len", "key": "n_total", "of": "all_names"},
+        {"op": "value", "key": "metadata", "of": "metadata"},
+        {
+            "op": "echo_param",
+            "key": "pos_filter",
+            "param": "pos_filter",
+            "empty_value": "(all)",
+        },
+        {
+            "op": "verdict",
+            "key": "verdict",
+            "template": (
+                "ePSD2 names loaded: {n_names} entries{pos_suffix}. "
+                "Total entries: {n_total}. Source: {metadata.source} "
+                "(license: {metadata.license})."
+            ),
+            "context": {
+                "pos_suffix": {
+                    "template": " (POS={pos_filter})",
+                    "when": {"param_nonempty": "pos_filter"},
+                }
+            },
+        },
+    ],
+}
 
 
 def _epsd2_names_loader(inputs: dict, params: dict) -> dict:
-    """Load ePSD2 names subset (Sumerian/Akkadian PNs/DNs/etc.)."""
-    pos_filter = params.get("pos_filter") or ""
-    try:
-        from glossa_lab.data.mesopotamian_contact import (  # noqa: PLC0415
-            get_epsd2_metadata,
-            get_epsd2_names,
-        )
-    except Exception as exc:  # noqa: BLE001
-        return {"error": f"data module not available: {exc}"}
+    """Load ePSD2 names subset (Sumerian/Akkadian PNs/DNs/etc.).
 
-    all_names = get_epsd2_names()
-    if pos_filter:
-        names = [n for n in all_names if n.get("pos") == pos_filter]
-    else:
-        names = all_names
-    md = get_epsd2_metadata()
-    return {
-        "names": names,
-        "n_names": len(names),
-        "n_total": len(all_names),
-        "metadata": md,
-        "pos_filter": pos_filter or "(all)",
-        "verdict": (
-            f"ePSD2 names loaded: {len(names)} entries"
-            + (f" (POS={pos_filter})" if pos_filter else "")
-            + f". Total entries: {len(all_names)}. "
-            f"Source: {md.get('source', '?')} (license: {md.get('license', '?')})."
-        ),
-    }
+    Spec 087 S3 (family F1): delegates to the generic
+    DatasetRecordLoader engine with _EPSD2_DATASET_SPEC.
+    """
+    from glossa_lab.generic_loaders import dataset_record_loader_execute  # noqa: PLC0415
+
+    merged = dict(params)
+    merged["dataset_spec"] = _EPSD2_DATASET_SPEC
+    return dataset_record_loader_execute(inputs, merged)
 
 
 def _mathematica_epigraphica_loader(inputs: dict, params: dict) -> dict:
@@ -179,49 +225,49 @@ def _mathematica_epigraphica_loader(inputs: dict, params: dict) -> dict:
     ``corpora/downloads/fuls_me_vol3_corpus.json`` if present.
 
     Expected format: {"inscriptions": [{"id": ..., "site": ..., "signs": [...]}]}.
+
+    Spec 087 S3 (family F1): the mechanism is the generic
+    JsonCorpusLoader engine (record_list projection); the cache
+    shape, the absent/loaded verdict texts, and the path default are
+    this node's spec.
     """
+    from glossa_lab.generic_loaders import json_corpus_loader_execute  # noqa: PLC0415
+
     repo_root = Path(__file__).resolve().parents[2]
     data_path = params.get("data_path") or "corpora/downloads/fuls_me_vol3_corpus.json"
     p = Path(data_path)
     if not p.is_absolute():
         p = repo_root / data_path
 
-    if not p.exists():
-        return {
+    spec = {
+        "sources": [{"kind": "json", "path": str(p)}],
+        "records_key": "inscriptions",
+        "projection": "record_list",
+        "site_field": "site",
+        "sites_top_n": 10,
+        "parse_error": "return",
+        "data_path_display": data_path,
+        "absent_result": {
             "available": False,
             "n_inscriptions": 0,
             "inscriptions": [],
             "verdict": (
-                f"Mathematica Epigraphica vol. 3 not available at {data_path}. "
-                f"To enable: purchase Amazon paperback ISBN 978-1671804869, "
-                f"OCR text into a JSON file at this path, or request data from "
-                f"Andreas Fuls (andreas.fuls@tu-berlin.de). Phase-29 falls back "
-                f"to Mahadevan 1977 corpus (1,669 inscriptions) which has "
-                f"~30%% overlap with Fuls vol. 3 (5,509 inscriptions)."
+                "Mathematica Epigraphica vol. 3 not available at {data_path}. "
+                "To enable: purchase Amazon paperback ISBN 978-1671804869, "
+                "OCR text into a JSON file at this path, or request data from "
+                "Andreas Fuls (andreas.fuls@tu-berlin.de). Phase-29 falls back "
+                "to Mahadevan 1977 corpus (1,669 inscriptions) which has "
+                "~30%% overlap with Fuls vol. 3 (5,509 inscriptions)."
             ),
-        }
-
-    try:
-        d = json.loads(p.read_text(encoding="utf-8"))
-    except Exception as exc:  # noqa: BLE001
-        return {"available": False, "error": f"parse error: {exc}"}
-
-    inscriptions = d.get("inscriptions") or []
-    sites = Counter()
-    for ins in inscriptions:
-        s = (ins.get("site") or "").upper()
-        if s:
-            sites[s] += 1
-    return {
-        "available": True,
-        "n_inscriptions": len(inscriptions),
-        "inscriptions": inscriptions,
-        "sites_top": sites.most_common(10),
-        "verdict": (
-            f"Mathematica Epigraphica vol. 3 loaded: {len(inscriptions)} "
-            f"inscriptions across {len(sites)} sites."
+        },
+        "verdict_template": (
+            "Mathematica Epigraphica vol. 3 loaded: {n_inscriptions} "
+            "inscriptions across {n_sites} sites."
         ),
     }
+    merged = dict(params)
+    merged["corpus_spec"] = spec
+    return json_corpus_loader_execute(inputs, merged)
 
 
 def _icit_corpus_loader(inputs: dict, params: dict) -> dict:
@@ -232,41 +278,45 @@ def _icit_corpus_loader(inputs: dict, params: dict) -> dict:
 
     Live API: caddy.igg.tu-berlin.de/indus/welcome.htm (login required).
     Email: andreas.fuls@tu-berlin.de
+
+    Spec 087 S3 (family F1): the mechanism is the generic
+    JsonCorpusLoader engine (cache_summary projection); the cache
+    shape, the absent/loaded verdict texts, and the path default are
+    this node's spec.
     """
+    from glossa_lab.generic_loaders import json_corpus_loader_execute  # noqa: PLC0415
+
     repo_root = Path(__file__).resolve().parents[2]
     data_path = params.get("data_path") or "corpora/downloads/icit_cache.json"
     p = Path(data_path)
     if not p.is_absolute():
         p = repo_root / data_path
 
-    if not p.exists():
-        return {
+    spec = {
+        "sources": [{"kind": "json", "path": str(p)}],
+        "records_key": "inscriptions",
+        "projection": "cache_summary",
+        "count_field": "n_signs",
+        "metadata_key": "metadata",
+        "parse_error": "return",
+        "data_path_display": data_path,
+        "absent_result": {
             "available": False,
             "n_inscriptions": 0,
             "n_signs": 0,
             "verdict": (
-                f"ICIT cache not available at {data_path}. To enable: request "
-                f"API access from andreas.fuls@tu-berlin.de, then download "
-                f"the database export to {data_path}. "
-                f"Expected when live: 4,537 objects, 5,509 texts, 19,616 sign "
-                f"occurrences."
+                "ICIT cache not available at {data_path}. To enable: request "
+                "API access from andreas.fuls@tu-berlin.de, then download "
+                "the database export to {data_path}. "
+                "Expected when live: 4,537 objects, 5,509 texts, 19,616 sign "
+                "occurrences."
             ),
-        }
-
-    try:
-        d = json.loads(p.read_text(encoding="utf-8"))
-    except Exception as exc:  # noqa: BLE001
-        return {"available": False, "error": f"parse error: {exc}"}
-
-    return {
-        "available": True,
-        "n_inscriptions": len(d.get("inscriptions") or []),
-        "n_signs": d.get("n_signs", 0),
-        "metadata": d.get("metadata", {}),
-        "verdict": (
-            f"ICIT loaded: {len(d.get('inscriptions') or [])} inscriptions."
-        ),
+        },
+        "verdict_template": "ICIT loaded: {n_inscriptions} inscriptions.",
     }
+    merged = dict(params)
+    merged["corpus_spec"] = spec
+    return json_corpus_loader_execute(inputs, merged)
 
 
 # ── M77 reverse Janabiyah search ─────────────────────────────────────

@@ -310,6 +310,15 @@ results as before. Only the offer to add new instances of them is gone.
 (The full registry, legacy nodes included, remains readable through the
 API's `?include_legacy=true` catalog option, for diagnostics.)
 
+Two generic loaders, **JsonCorpusLoader** and **DatasetRecordLoader**,
+are in the Palette as the composable way to load corpora and bundled
+datasets: each takes its source, field mapping, and filters as
+parameters. The six older corpus-specific loaders (M77, Mahadevan,
+ePSD2, ICIT, Mathematica Epigraphica, and the Contact Corpus loader)
+are now legacy — each one is a fixed setting of a generic loader, kept
+registered and runnable for saved experiments, but no longer offered
+for new ones.
+
 ### Node Reference
 
 **Corpus Loaders:**

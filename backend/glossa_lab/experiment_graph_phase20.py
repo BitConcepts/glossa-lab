@@ -42,7 +42,6 @@ References
 
 from __future__ import annotations
 
-import json
 import math
 import re
 from collections import Counter, defaultdict
@@ -80,96 +79,59 @@ def _m77_inscription_loader(inputs: dict, params: dict) -> dict:
     other Phase-14/15 atomic node -- and ``inscriptions`` (list[dict])
     keeping the metadata for downstream archaeology / per-inscription
     statistics.
+
+    Spec 087 S3 (family F1): the mechanism is the generic
+    JsonCorpusLoader engine (glossa_lab.generic_loaders); this node is
+    its M77 parameterisation — the fallback chain (decoded report,
+    then the Holdat CSV with its column mapping), the field map, and
+    the historical defaults live in the spec below, not in code.
     """
-    use_raw = bool(params.get("use_raw", False))
-    min_length = int(params.get("min_length", 1))
-    max_length = int(params.get("max_length", 0))  # 0 = no upper bound
-    label = str(params.get("label", "indus_m77"))
+    from glossa_lab.generic_loaders import json_corpus_loader_execute  # noqa: PLC0415
 
     decoded_path = _resolve_report("mahadevan_texts_decoded.json")
-
-    if decoded_path.exists():
-        # ── Primary source: mahadevan_texts_decoded.json ───────────────────────
-        raw = json.loads(decoded_path.read_text(encoding="utf-8"))
-        if isinstance(raw, list):
-            wrapper = raw[0]
-        else:
-            wrapper = raw
-        raw_inscriptions = wrapper.get("inscriptions") or []
-
-        inscriptions: list[dict] = []
-        sequences: list[list[str]] = []
-        for entry in raw_inscriptions:
-            if use_raw:
-                seq_str = entry.get("raw") or ""
-                seq = [c for c in seq_str if c and not c.isspace()]
-            else:
-                seq = list(entry.get("sequence") or [])
-            L = len(seq)
-            if L < min_length:
-                continue
-            if max_length > 0 and L > max_length:
-                continue
-            inscriptions.append({
-                "id": entry.get("id"),
-                "site_code": str(entry.get("site_code", "")),
-                "length": L,
-                "sequence": seq,
-            })
-            sequences.append(seq)
-        source = str(decoded_path)
-    else:
-        # ── Fallback: Holdat CSV (same inscriptions, M-prefixed sign IDs) ───
-        import csv as _csv  # noqa: PLC0415
-        from collections import defaultdict as _dd  # noqa: PLC0415
-        holdat_path = (
-            _resolve_repo_root()
-            / "corpora/downloads/external_repos/holdatllc_indus"
-            / "indus_corpus 2.csv"
-        )
-        if not holdat_path.exists():
-            return {
-                "error": (
-                    f"M77 corpus not available: neither {decoded_path.name} in reports/ "
-                    f"nor Holdat CSV at {holdat_path} found. "
-                    "Run backend/scripts/decode_inscription_texts.py to regenerate."
-                )
-            }
-        seals: dict[str, list[dict]] = _dd(list)
-        with open(holdat_path, encoding="utf-8") as f:
-            for row in _csv.DictReader(f):
-                seals[row["cisi_number"]].append(row)
-
-        inscriptions = []
-        sequences = []
-        for cisi_id, rows in seals.items():
-            rows_s = sorted(rows, key=lambda r: int(r.get("position") or 0))
-            seq = [r["letters"] for r in rows_s if r.get("letters")]
-            L = len(seq)
-            if L < min_length:
-                continue
-            if max_length > 0 and L > max_length:
-                continue
-            inscriptions.append({
-                "id": cisi_id,
-                "site_code": rows_s[0].get("site", ""),
-                "length": L,
-                "sequence": seq,
-            })
-            sequences.append(seq)
-        source = str(holdat_path)
-
-    flat = _flatten(sequences)
-    return {
-        "label": label,
-        "use_raw": use_raw,
-        "n_inscriptions": len(inscriptions),
-        "n_tokens": len(flat),
-        "n_distinct_signs": len(set(flat)),
-        "sequences": sequences,
-        "inscriptions": inscriptions,
-        "source": source,
+    holdat_path = (
+        _resolve_repo_root()
+        / "corpora/downloads/external_repos/holdatllc_indus"
+        / "indus_corpus 2.csv"
+    )
+    spec = {
+        "sources": [
+            {"kind": "json", "path": str(decoded_path), "site_coerce_str": True},
+            {
+                "kind": "csv_grouped",
+                "path": str(holdat_path),
+                "group_key": "cisi_number",
+                "order_key": "position",
+                "value_key": "letters",
+                "site_field": "site",
+            },
+        ],
+        "records_key": "inscriptions",
+        "field_map": {
+            "id": "id",
+            "site": "site_code",
+            "sequence": "sequence",
+            "raw": "raw",
+        },
+        "projection": "sequence_corpus",
+        "parse_error": "raise",
+        "behavior_defaults": {
+            "use_raw": False,
+            "min_length": 1,
+            "max_length": 0,
+            "label": "indus_m77",
+        },
+        "absent_result": {
+            "error": (
+                "M77 corpus not available: neither {source_name} in reports/ "
+                "nor Holdat CSV at {fallback_path} found. "
+                "Run backend/scripts/decode_inscription_texts.py to regenerate."
+            )
+        },
     }
+    merged = dict(params)
+    merged["corpus_spec"] = spec
+    return json_corpus_loader_execute(inputs, merged)
 
 
 # ── Experiment 1: Length stratifier ─────────────────────────────────────
@@ -1028,7 +990,7 @@ def _phase20_node_defs() -> list[Any]:
         ),
         AtomicNodeDef(
             "PDFTextExtractor", "PDF Text Extractor (Phase-20)",
-            "Phase-20 / Sources",
+            "Sources",
             "Extract text per page from a PDF using PyMuPDF.",
             inputs=[{"name": "file_path", "type": "any", "required": False}],
             outputs=[

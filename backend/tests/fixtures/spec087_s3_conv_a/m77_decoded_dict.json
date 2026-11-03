@@ -1,0 +1,1 @@
+{"inscriptions": [{"id": "M001", "site_code": "MD", "sequence": ["001", "002", "003"], "raw": "abc"}, {"id": "M002", "site_code": "HR", "sequence": ["004"], "raw": "d e"}, {"id": "M003", "site_code": 7, "sequence": ["005", "006"]}, {"id": "M004", "site_code": 7, "sequence": [], "raw": ""}, {"site_code": "XX", "sequence": ["007", "008", "009", "010"]}]}

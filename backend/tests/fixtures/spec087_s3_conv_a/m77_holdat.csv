@@ -1,0 +1,8 @@
+cisi_number,position,letters,site
+C002,2,BBB,SiteB
+C001,1,AAA,SiteA
+C002,1,CCC,SiteB
+C001,2,,SiteA
+C003,5,DDD,
+C002,3,EEE,SiteB
+C004,,FFF,SiteD

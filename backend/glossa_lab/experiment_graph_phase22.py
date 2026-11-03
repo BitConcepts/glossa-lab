@@ -51,50 +51,59 @@ def _safe_int(x: Any, default: int = 0) -> int:
 # ── Loaders ───────────────────────────────────────────────────────────
 
 
+# Spec 087 S3 (family F1): the generic DatasetRecordLoader spec for
+# this node — the mesopotamian_contact getters, the two tablet
+# filters, and the output assembly are data here, not code.
+_CONTACT_DATASET_SPEC: dict[str, Any] = {
+    "module": "glossa_lab.data.mesopotamian_contact",
+    "getters": {
+        "tablets_raw": {"name": "get_meluhha_tablets"},
+        "keyword_counts": {"name": "get_meluhha_keyword_counts"},
+        "period_counts": {"name": "get_meluhha_period_counts"},
+        "provenience_counts": {"name": "get_meluhha_provenience_counts"},
+        "seals": {"name": "get_indus_seals_at_mesopotamia"},
+        "persons": {"name": "get_meluhhan_persons"},
+    },
+    "filters": [
+        {
+            "from": "tablets_raw",
+            "as": "tablets",
+            "rules": [
+                {"kind": "substring_ci", "field": "period", "param": "period_filter"},
+                {
+                    "kind": "any_substring_ci",
+                    "field": "matched_keywords",
+                    "param": "keyword_filter",
+                },
+            ],
+        }
+    ],
+    "outputs": [
+        {"op": "value", "key": "tablets", "of": "tablets"},
+        {"op": "len", "key": "n_tablets", "of": "tablets"},
+        {"op": "value", "key": "keyword_counts", "of": "keyword_counts"},
+        {"op": "value", "key": "period_counts", "of": "period_counts"},
+        {"op": "value", "key": "provenience_counts", "of": "provenience_counts"},
+        {"op": "value", "key": "seals_at_mesopotamia", "of": "seals"},
+        {"op": "len", "key": "n_seals_at_mesopotamia", "of": "seals"},
+        {"op": "value", "key": "persons", "of": "persons"},
+        {"op": "len", "key": "n_persons", "of": "persons"},
+    ],
+}
+
+
 def _contact_corpus_loader(inputs: dict, params: dict) -> dict:
     """Load the CDLI Meluhha-mention tablet corpus and the
-    Indus-seals-at-Mesopotamia inventory."""
-    try:
-        from glossa_lab.data.mesopotamian_contact import (  # noqa: PLC0415
-            get_indus_seals_at_mesopotamia,
-            get_meluhha_keyword_counts,
-            get_meluhha_period_counts,
-            get_meluhha_provenience_counts,
-            get_meluhha_tablets,
-            get_meluhhan_persons,
-        )
-    except Exception as exc:  # noqa: BLE001
-        return {"error": f"data module not available: {exc}"}
+    Indus-seals-at-Mesopotamia inventory.
 
-    tablets = get_meluhha_tablets()
-    keyword_counts = get_meluhha_keyword_counts()
-    period_counts = get_meluhha_period_counts()
-    provenience_counts = get_meluhha_provenience_counts()
-    seals = get_indus_seals_at_mesopotamia()
-    persons = get_meluhhan_persons()
+    Spec 087 S3 (family F1): delegates to the generic
+    DatasetRecordLoader engine with _CONTACT_DATASET_SPEC.
+    """
+    from glossa_lab.generic_loaders import dataset_record_loader_execute  # noqa: PLC0415
 
-    # Optional filter by keyword and period
-    period_filter = (params.get("period_filter") or "").strip().lower()
-    keyword_filter = (params.get("keyword_filter") or "").strip().lower()
-    if period_filter:
-        tablets = [t for t in tablets if period_filter in (t.get("period", "")).lower()]
-    if keyword_filter:
-        tablets = [
-            t for t in tablets
-            if any(keyword_filter in k.lower() for k in (t.get("matched_keywords") or []))
-        ]
-
-    return {
-        "tablets": tablets,
-        "n_tablets": len(tablets),
-        "keyword_counts": keyword_counts,
-        "period_counts": period_counts,
-        "provenience_counts": provenience_counts,
-        "seals_at_mesopotamia": seals,
-        "n_seals_at_mesopotamia": len(seals),
-        "persons": persons,
-        "n_persons": len(persons),
-    }
+    merged = dict(params)
+    merged["dataset_spec"] = _CONTACT_DATASET_SPEC
+    return dataset_record_loader_execute(inputs, merged)
 
 
 # ── Reporters ─────────────────────────────────────────────────────────

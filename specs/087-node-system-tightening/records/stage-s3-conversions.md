@@ -1062,8 +1062,19 @@ readable, 3 high-confidence seals).
 executed on a fresh worktree of `3bd37594` (pre) and on this
 branch (post), under the same two normalizations as PR-A/PR-B
 (LanguageModel repr addresses; each tree's own root path).
-Both sides saw the same database state: the build clone's
-local backend DB was copied into the pre worktree.
+Database state: CGSA reads resolve to
+`<tree>/backend/data/glossa.db` (untracked runtime state),
+so the fresh pre worktree had no such file and read absent
+tables, while the post side read the build clone's DB,
+whose CGSA tables are empty (canonical_signs 0 rows,
+sign_cluster_assignments 0 rows, verified read-only) —
+both sides exercised the same empty-table state.
+(Correction, post-delivery: the first delivered text of
+this section said the clone's DB "was copied into the pre
+worktree"; the copy in fact failed — a fresh worktree has
+no `backend/data/` directory — and the second leg of the
+copy command never ran. The comparison result below is
+unaffected.)
 **27/27 graphs byte-identical pre vs post**, and every
 normalized hash also equals the PR-B table's hash for the
 same graph (the environment's cross-check):

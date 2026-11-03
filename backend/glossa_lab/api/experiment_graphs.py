@@ -2,6 +2,7 @@
 
 Endpoints:
   GET    /experiment-graphs/catalog        -- atomic node catalog (for Exp Builder palette)
+  GET    /experiment-graphs/registry-health -- node registry build report (Spec 087 S1)
   GET    /experiment-graphs/port-colors    -- port type → hex colour map
   GET    /experiment-graphs                -- list saved graph experiments
   GET    /experiment-graphs/{id}           -- get one graph experiment
@@ -33,6 +34,7 @@ from glossa_lab.experiment_graph import (
     delete_graph_experiment,
     get_graph_experiment,
     list_graph_experiments,
+    registry_build_report,
     save_graph_experiment,
 )
 
@@ -125,6 +127,19 @@ async def _maybe_notify_experiment(
 async def get_atomic_catalog() -> list[dict[str, Any]]:
     """Return the full atomic node catalog for the Experiment Builder palette."""
     return [n.to_dict() for n in ATOMIC_NODES.values()]
+
+
+@router.get("/registry-health")
+async def get_registry_health() -> dict[str, Any]:
+    """Spec 087 S1: the atomic-node registry build report.
+
+    ok=false names every plugin module that failed to register and every
+    duplicate node id recorded at build time — the surface where a silent
+    registry shrink (audit finding F1) is now visible. The from-scratch
+    recomputation behind this report's discipline is
+    glossa_lab.registry_check.registry_self_check().
+    """
+    return registry_build_report()
 
 
 @router.get("/port-colors")

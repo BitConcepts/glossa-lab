@@ -565,3 +565,321 @@ extraction. The test now generates the PDF at run time with
 PyMuPDF (the library the node itself requires) from the two
 pinned page texts, and the byte-identical comparison against
 `expected.json` is unchanged; no gitignored path is read.
+
+## PR-B — families F3 (CGSA/CTT machinery) + F8 (anchor derivation & syllabification)
+
+**Branch:** `feat/087-s3-conv-b`, built on main `50e91a63`
+(PR #492 merged). **Commits:** `414c370` (fixtures, captured
+first), `81b6624` (implementation). **Seat:** build worker;
+the parent gates and merges. The contract stated at the head
+of this record governs unchanged.
+
+### The generic machinery — `backend/glossa_lab/generic_primitives.py`
+
+One new stdlib-only module (it imports nothing from
+glossa_lab, the generic_loaders.py pattern), holding the nine
+engines the triage names for F3 + F8. Its `_db_all` is a copy
+of `experiment_graph._sync_db_all`'s semantics — same
+signature `(table, where, params)`, same database path (the
+module sits in the same directory, so the parents[] math is
+identical), same JSON-string coercion — so a delegating node
+reads the database exactly as the original did.
+
+The nine primitives, registered in the core list immediately
+after DatasetRecordLoader, each with inputs/outputs mirroring
+its domain node and a description naming the delegating node:
+
+| primitive | category | mechanism |
+|---|---|---|
+| RegistryTableLoader | Sources | a registry table read as data: table name, param-driven filter clauses (truthy / argument), id mapping, count filters, the empty-result and error texts as spec fields. No-spec defaults are the canonical-signs shape. |
+| LabelMapApplier | Transforms | a label map from an ordered source chain (database table, JSON file, frequency-rank fallback), with the unmapped label and the unavailable-error text as spec fields. |
+| TemplateMiner | Analysis | per-length n-gram template mining (a sequence is abstracted to its equality pattern) plus the four summary fields a composition cannot express — the triage's H1 effort gap, closed as a primitive. |
+| ClusterContingencyProfile | Analysis | cluster-vs-strata contingency profiling: strata rule, chi-squared, per-strata rates/enrichment, significance rule, and the verdict text as a `{placeholder}` template. |
+| SignRoleClassifier | Analysis | the six-role corpus-statistics classifier (terminal/initial/medial rates, repetition and solo statistics, bigram-PMI compound detection, the behaviour-based logogram detector). Its `numeral_signs` parameter defaults EMPTY in the engine. |
+| ValueRoleMapSource | Sources | a value→role map assembled from a base map plus per-family tables carried as data: seed roles applied first, vocabulary gathered per data module (a module whose import or attribute fails contributes nothing — the historical builders' single-try failure shape), filled with a default role or classified by determinative/numeral sets. |
+| AnchorSyllabifier | Sources | anchor readings → syllable tokens: confidence gate over a caller-supplied order, diacritic table as ordered data pairs, positional-label skip pattern, CV syllable splitting, vocab-coverage fallbacks. |
+| AssociationAnchorDeriver | Decipherment | anchors from sign↔context associations ranked by z-score, one anchor per sign, the anchor-id prefix as a parameter (engine default empty). |
+| PMICentralityRanker | Analysis | signs ranked by count-weighted PMI centrality over bigram partners. |
+
+### The nine delegations
+
+Each registered AtomicNodeDef is unchanged; each fn keeps its
+original docstring, gains a Spec 087 S3 note naming its
+family, and delegates. The domain specifics now sit at the
+delegation point as parameter defaults:
+
+- **CanonicalSignLoader** (F3, `experiment_graph.py`, LIVE ×1)
+  → RegistryTableLoader with the spec built inline: table
+  `canonical_signs`, the `in_corpus` / `numbering_system`
+  filters, the `n_parpola` count filter, and the historical
+  empty-registry result and `Failed to load registry:` prefix
+  carried verbatim in the spec.
+- **ClusterMapper** (F3, `experiment_graph.py`, LIVE ×1) →
+  LabelMapApplier with the historical source priority as the
+  spec's chain: the `sign_cluster_assignments` table, then
+  the JSON file at the path the original computed
+  (parents[3] of experiment_graph.py / `analysis/sign_clusters.json`),
+  then the frequency-rank fallback at 40 bins; unmapped label
+  −1 and the historical unavailable-error text in the spec.
+- **StructuralTemplateAnalyzer** (F3, `experiment_graph.py`,
+  LIVE ×1) → TemplateMiner directly; the node's historical
+  defaults are the engine's defaults. (Triage H1: the mining
+  reproduces exactly under composition — 13/13 templates,
+  identical counts; TemplateMiner exists for the four summary
+  fields, as the triage named.)
+- **ClusterArchaeology** (F3, phase20) →
+  ClusterContingencyProfile with the Phase-20 parameterisation
+  as data: strata field `site_code`, 2-character prefix +
+  `"0000"`, critical value 3.84 per dof, 25-row site table,
+  and the `PREDICTION 2 …` verdict text as the template. The
+  module's now-callerless `_chi_squared` copy is removed in
+  this PR (the engine carries its own; a tree-wide grep shows
+  no other user).
+- **IndusSignRoleClassifier** (F3, CTT) →
+  SignRoleClassifier. Per triage H3, the node's entire domain
+  content is the Indus numeral set as the `numeral_signs`
+  default, so the wrapper injects
+  `list(_DEFAULT_NUMERAL_SIGNS)` only when the caller did not
+  pass the key — an explicit caller value, including `[]`,
+  passes through untouched. `role_bits` is the CTT six
+  (ROLE_BITS), passed as data.
+- **DefaultIndusValueRoleMap** (F3, CTT) →
+  ValueRoleMapSource with `base_map` =
+  DEFAULT_INDUS_VALUE_ROLE_MAP (the constant stays in CTT as
+  data, unchanged) and `family_tables` = the eight alias keys
+  mapped to three family specs. The three per-language
+  builder functions are replaced by those specs as data: the
+  Tamil spec's seed roles are the DEDR suffix and numeral
+  sets (Krishnamurti 2003 §6.2, cited in place), filled from
+  the dravidian module's VOCABULARY + TAMIL_BRAHMI_ATTESTED;
+  the Luwian spec classifies the hieroglyphic_luwian
+  vocabulary by the determinative/numeral sets already held
+  in CTT; the Linear B spec's base values are the Ventris
+  grid syllables, filled from `get_corpus_symbols()` under
+  the historical filter (lowercase, 1–4 chars, alpha).
+- **IndusAnchorSetSyllable** (F8, phase30, LIVE ×1) →
+  AnchorSyllabifier. Per triage H2 (byte-identical
+  anchor_dict at MEDIUM/HIGH/LOW when parameterised), the
+  wrapper resolves both file paths from its own module file
+  exactly as the original did and passes the Tamil diacritic
+  table (lifted to the module constant
+  `_TAMIL_DIACRITIC_TABLE`, 22 ordered pairs including the
+  historical duplicate pair, kept as-is), the confidence
+  order {HIGH 3, MEDIUM 2, LOW 1, UNCERTAIN 0}, the
+  positional-label skip pattern, and the missing-file error
+  text as data.
+- **DerivedAnchorSet** (F8, phase14) →
+  AssociationAnchorDeriver with `anchor_prefix` `"ctx:"` —
+  the node's one domain convention — as the parameter.
+- **EpistaticAnchorRanker** (F8, phase14) →
+  PMICentralityRanker directly; the triage found no domain
+  constants in this node at all.
+
+### Counts — the re-pin (C087-17 act for this PR)
+
+| | before | after |
+|---|---|---|
+| registered | 519 | **528** (+ the nine primitives above) |
+| legacy | 365 | **374** (+ the nine F3/F8 conversions) |
+| palette | 154 | **154** (−9 converted, +9 primitives) |
+| core definitions | 44 | **53** |
+| categories | 65 | **65** (no change) |
+
+Per-category deltas: `Sources` 6 → 9 (RegistryTableLoader,
+ValueRoleMapSource, AnchorSyllabifier), `Transforms` 6 → 7
+(LabelMapApplier), `Analysis` 9 → 13 (TemplateMiner,
+ClusterContingencyProfile, SignRoleClassifier,
+PMICentralityRanker), `Decipherment` 13 → 14
+(AssociationAnchorDeriver). Legacy-by-category:
+`CGSA / Structural` 0 → 3 (all three F3 CGSA nodes),
+`CTT / Constraint Topology` 0 → 2, `Phase-20 / Archaeology`
+0 → 1, `Phase-33 / Decipherment` 1 → 2
+(IndusAnchorSetSyllable joins the already-legacy
+DravidianSyllableLM), `Phase-14 / Grounding` 1 → 2,
+`Phase-14 / Epistatic` 0 → 1. The migration data file gains
+the nine ids under `s3_additions["PR-B (F3+F8)"]`; the census
+pin fixture is regenerated from the live registry; the S2
+agreement test's converted set now holds PR-A's six plus
+these nine.
+
+One arithmetic correction, stated plainly: the working
+figures carried into this PR (registered 525, palette 151,
+core 50) were wrong — 519 + 9 = 528, and the palette is
+unchanged because the nine primitives entering it exactly
+offset the nine conversions leaving it. The re-pin above is
+counted from the live registry, not from those figures.
+
+### Equivalence and comparison results
+
+**Fixture equivalence (contract item 3):** 44 cases captured
+from the pre-change implementations in commit `414c370`,
+before any implementation changed, and replayed
+post-conversion — **44/44 byte-identical** (39 full-mode
+canonical-JSON equality; 5 hash-mode canonical-JSON SHA-256
++ key set + verbatim fields, the DefaultIndusValueRoleMap
+family cases whose maps run to thousands of entries), in
+`tests/test_spec087_s3_conversions_b.py`, alongside the
+converted-ids flag/provenance test and the
+primitives-in-palette test. Fixture sources per family: the
+CGSA nodes run against a fake `_db_all` over two fixed
+tables (the capture's fake re-implemented identically in the
+test; H4's disposition — a fresh tree's backend DB holds
+empty CGSA tables, so no seeding is needed or wanted); the
+anchor cases run against the repo's real
+INDUS_FINAL_ANCHORS.json and dravidian_syllable_lm.json.
+Cross-checks against the triage's executed attempts: the
+anchor counts reproduce H2 exactly (171 / 166 / 174 anchors
+at MEDIUM / HIGH / LOW, 287 at UNCERTAIN, `n_skipped` 0 at
+every level), and the role default-vs-empty-numerals
+difference is exactly the numeral role on the default-set
+signs (H3's pattern).
+
+One case is split, and says so in the bundle: ClusterMapper's
+JSON-file branch reads a file at a path outside the
+repository, which CI cannot recreate. The capture ran it
+with a real `sign_clusters.json` placed at the node's
+historical path (removed again before the capture script
+exited; absence asserted before and after). The replay runs
+that branch through the LabelMapApplier primitive with a
+temporary file carrying the same content and the same source
+chain the domain node builds, its database source emptied
+exactly as in the capture. The domain node's database,
+frequency, and error branches replay directly.
+
+**27-graph comparison (contract item 4):** the S2 runner was
+executed on a fresh worktree of origin/main `50e91a63` (pre)
+and on this branch (post), under the same two normalizations
+as PR-A (LanguageModel repr addresses; each tree's own root
+path). Both sides saw the same database state: the build
+clone's local backend DB (empty CGSA tables) was copied into
+the pre worktree, and the ClusterMapper file path is absent
+in both trees, so both sides exercised the same branches.
+**27/27 graphs byte-identical pre vs post**:
+
+| graph | normalized sha256 (pre == post) |
+|---|---|
+| fuls_independence_suite | 991cfc445a85250a29cb4f6e58cb21e5ce000f8f856d67e83ffc9d4c667761bb |
+| fuls_nw_semitic_benchmark | ba8955b51e54d766e73beb0045bf56ad3412df0f6668af7ef3ffd58a80899bcd |
+| fuls_validation_suite | 13eeae07336b9add444308c3a4c2e80650223cdc25ff3e49112dff190a3b89ee |
+| generic_sa_multi_comparison | 5cc9d5c05d6bc4d601ec03620efc069eeecf9be48ed3e2b31f98fb38734a37be |
+| indus_anchor_sweep | 6aa045a2d574c0cc187088edeb58d05b930fb3565c7680257046665b2b839f37 |
+| indus_cgsa_cluster_analysis | 23b729b0b0beca767397b75331418fc71f7897543432cc9bc094c4dc7eaa9d9e |
+| indus_cisi_anchored_10 | cbd24cb40f154f745d99ff23192acb395147d37fa736288400af37827fb498fe |
+| indus_cisi_dravidian_vs_pali | bfe729e9c1d3580e72ffd4f3c9f430a315bc65101abcd0804da2ecba272134d8 |
+| indus_cisi_dravidian_vs_sanskrit | 754f4132ac83ed0c698a8470355bb0eceeea17248aa9f00c220a5e5c806791de |
+| indus_cisi_sa_dravidian_vs_nw_semitic | 0ef2599aec2d78dc2708c6afc72ab607561e27c3bbb86a98aacde0574d01ff03 |
+| indus_cisi_sa_dravidian_vs_sanskrit | 07b31b9db57b4f79358afe4224f852fb9c0ed8c8d42d50a613442a7c397dd28f |
+| indus_cisi_structural | 14874f0aca115af7bc0cca8318e63cbefae564f4df54dfef576dc03604db6578 |
+| indus_contact_zone_v2 | 39506ed67256454feab5b6901c191a13977d8697dd50e3bf0926dadeaddc24ad |
+| indus_dravidian_vs_sanskrit | 0035134bb5d80c043847e74910db8a2e3bbdbbc1782f583d8c45b96313e9274c |
+| indus_kalyanaraman_crossval | b91979cb7db634ff88388eb94187c2903bcead561a3b9a01f58deca79378b941 |
+| indus_sa_dravidian | d1c55048bf705a69a2521ec836e26a5e3fd5f255becfee9e9804ece0d2adb553 |
+| indus_sa_dravidian_syllable | 59d53741f123d1dac96a7e26f96573ab01fbbb7ccdc008f75e327da56e4f5bfa |
+| indus_sa_dravidian_vs_nw_semitic | 9481fac660430ef9d384aa74ee9a61a7984126a001b5d022678d8cf20bfcac0a |
+| indus_sa_dravidian_vs_sanskrit | 14281066e98477493620159207b241ede475afbd29165dfb7a4f5b4bfcd77a56 |
+| indus_sa_sanskrit_falsification | 6f730bda1effd69cdbd1bf88cd8987e2c4e416fb8f2875fcab1292ba72069cb7 |
+| indus_sign_function_dravidian | cfa805f2eb873f87e42d79ded34ec867acc83da56b54364b045f574d7df3a034 |
+| indus_structural_atlas | 86f0d2865f14a2686b20802771bb4284098b83dd30a5b04e570b34f88f6f057a |
+| indus_validation_a1_a3_holdout | 912f58147de96ba82c33e2dc8214bd9b3b0d1c096b3a57b9afe835998fdcb6c1 |
+| indus_validation_neg_controls | 729d59ebbbca788e670b49e85843a4a3484a3efeb9b66e22d7231af7899b90f7 |
+| kl_comparison | cf9a8e10b3043bc8942c29483118739688a02439fe20d5237f9d98e1647cca9c |
+| ugaritic_sa_decipher | af1b203f637ef67e4b3705a61697471fffdfd591d28934aa0c32d438cf41155b |
+| ventris_validation | 05580212a0a65a5ae9896ee610564fb4a7937c01b1a200f10724705c29fc8921 |
+
+PR-A's environment caveat applies unchanged: the comparison
+pins pre vs post within this environment (identical tree
+state on both sides); `kl_comparison` again matches the S2
+and PR-A tables exactly. Environment note: the build VM was
+replaced mid-comparison and the first post-side run died
+with it; the run was repeated detached and every number
+above was read from the two runs' output files on disk. The
+runs regenerate `reports/*.json` in-tree as a side effect;
+those files were restored and are not in this PR's diff.
+
+### Test results
+
+- Targeted suites (this branch):
+  `test_spec087_registry_integrity.py`,
+  `test_spec087_palette_curation.py`,
+  `test_spec087_s3_conversions.py` (PR-A),
+  `test_spec087_s3_conversions_b.py` (44 equivalence cases +
+  flag/provenance + palette tests) — **111 passed**.
+- Full backend suite (this branch, TMPDIR on disk, the one
+  named deselection): run in checkpointed segments after two
+  VM replacements killed two single-process attempts.
+  Completed locally: **1,173 tests over 94 of 219 files —
+  1,152 passed, 18 skipped, 3 failed, 0 errors**. The three
+  failures: the known phase133 local-only baseline
+  (`test_builder_recomputation_skips_without_inputs`, missing
+  local download; it does not fail CI), and two failures
+  recorded inside platform-incident windows that this
+  environment prevented from being adjudicated locally —
+  `test_auth_consumers.py::test_auth_proof_kit_end_to_end`
+  (ran in the unsettled window after the second replacement)
+  and `test_phase394_build.py::test_grade_correction_requires_naming_text`
+  (recorded at the tail of the 55-minute segment, at the
+  onset of the write wave below); neither touches this PR's
+  change surface, and both are named here for CI to adjudicate.
+  The remaining 125 files were **not run locally**: from the
+  wave's onset, every fresh Python process on this VM died
+  at tempfile creation (tempfile's probe write is
+  EPERM-denied under the VM write restriction), verified
+  repeatedly with the wave probe across ~50 minutes. Those
+  files are carried to CI — the suite's authoritative
+  runner — for this PR's full-suite verdict. This is a
+  stated departure from the full local-suite proof, forced
+  by the platform incidents and recorded, not smoothed over.
+  (The phase20 `_chi_squared` removal above landed after the
+  targeted suites ran; it removes a function with no caller
+  anywhere in the tree — tree-wide grep — and the final tree
+  is ruff-clean; its re-run also waits on the wave / CI.)
+- `python -m ruff check backend/` — clean. (One import
+  consequence: `math` became unused in experiment_graph_ctt.py
+  when the role classifier delegated, and the import is
+  removed in this PR.)
+- No frontend surface changed, so no builder-area frontend
+  tests were required and no dist rebuild was needed.
+
+### Claim assessments (this PR's legs)
+
+- **C087-7 — PR-B leg supported.** 9 of the 64 CONVERT
+  dispositions (families F3 + F8) are converted here with
+  byte-identical fixture equivalence; cumulatively 15 of 64
+  with PR-A. The remaining families' legs land with their
+  own PRs.
+- **C087-13 — PR-B leg supported.** The comparison runs over
+  all 27 live graphs hold byte-identical under the named
+  normalizations (above), including the two live graphs that
+  carry converted nodes (`indus_cgsa_cluster_analysis`,
+  `indus_sa_dravidian_syllable`).
+- **C087-17 — PR-B act recorded.** The census pin, the
+  migration data file, and the S1/S2 test pins were re-pinned
+  in this same PR, from the live registry, with the deltas
+  tabled above.
+- **C087-15 — PR-B manual leg.** `docs/user-manual.md`'s
+  legacy section gains the short factual note (the nine new
+  generic blocks in the Palette; the nine converted nodes
+  now legacy). The generated node reference is S4's scope.
+
+### Departures from the brief's letter, stated plainly
+
+- **T303 is still not ticked.** Its F3 + F8 legs are
+  discharged here; ten families remain (F2, F4, F5, F6, F7,
+  F9, F10, F11, F12, F13), plus family F15 and the final
+  retire-flagging batch. The progress note under T303 in
+  tasks.md is updated instead of a tick.
+- **The count figures in the working brief were wrong**
+  (registered 525 / palette 151 / core 50); the correct
+  figures, counted from the live registry, are 528 / 154 /
+  53. Recorded in the counts section above.
+- **phase20's `_chi_squared` helper is removed**, not just
+  bypassed: its only caller was the converted node, and the
+  engine's copy is the one that now runs. No other module or
+  test referenced it (tree-wide grep).
+- **The full local suite is incomplete** (see Test results):
+  two VM replacements and an EPERM write wave cut it at
+  1,173 of ~2,420 tests, with two of its three failures
+  unadjudicated locally. The brief's full-suite proof is
+  discharged in part locally and in full by this PR's CI,
+  which the parent's merge gate reads; the local remainder
+  can be re-run when the wave clears.

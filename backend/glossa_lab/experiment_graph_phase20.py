@@ -427,26 +427,6 @@ def _allograph_detector(inputs: dict, params: dict) -> dict:
 # ── Experiment 2: Cluster archaeology ───────────────────────────────────
 
 
-def _chi_squared(observed: list[list[int]]) -> tuple[float, int]:
-    """Pearson chi-squared on a 2D contingency table; returns (chi2, dof)."""
-    rows = len(observed)
-    cols = len(observed[0]) if rows else 0
-    if rows < 2 or cols < 2:
-        return 0.0, 0
-    row_tot = [sum(r) for r in observed]
-    col_tot = [sum(observed[i][j] for i in range(rows)) for j in range(cols)]
-    grand = sum(row_tot)
-    if grand <= 0:
-        return 0.0, 0
-    chi2 = 0.0
-    for i in range(rows):
-        for j in range(cols):
-            exp = row_tot[i] * col_tot[j] / grand
-            if exp > 0:
-                chi2 += (observed[i][j] - exp) ** 2 / exp
-    return chi2, (rows - 1) * (cols - 1)
-
-
 def _cluster_archaeology(inputs: dict, params: dict) -> dict:
     """Per-cluster archaeological signature.
 

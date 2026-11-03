@@ -143,9 +143,12 @@ carries its gate/test output verbatim** — not a summary of it.
   records/stage-s3-conversions.md. PR-B (families F3 + F8)
   converted the nine F3/F8 nodes onto nine new generic
   primitives (44 fixture cases byte-identical; the 27-graph
-  comparison holding) — same record. Ten families remain
-  (F2, F4, F5, F6, F7, F9, F10, F11, F12, F13), plus family
-  F15 (the two live wrappers) and the final batch's
+  comparison holding) — same record. PR-C (families F4 + F5)
+  converted the thirteen F4/F5 nodes onto six new generic
+  primitives (34 fixture cases byte-identical; the 27-graph
+  comparison holding) — same record. Eight families remain
+  (F2, F6, F7, F9, F10, F11, F12, F13), plus family F15
+  (the two live wrappers) and the final batch's
   retire-flagging of the four triage retire-candidates; this
   task ticks only when the last conversion PR merges.
   Side item (owner order 2026-11-03): the M77 corpus-pipeline

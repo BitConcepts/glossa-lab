@@ -269,65 +269,44 @@ def _meluhha_name_matcher(inputs: dict, params: dict) -> dict:
       - sign count == hyphen count of the candidate name
       - presence of known Meluhhan-name regex matches
       - period overlap
+
+    Spec 087 S3 (family F5): the mechanism is the generic
+    LengthMatchScorer engine (glossa_lab.generic_primitives) in its
+    aggregate_pairs mode; this node is its Phase-22 parameterisation.
+    The node's divergent length falloff — 1 - |Δ|/5.0 with no
+    tolerance, where the rest of the family uses the tolerance
+    falloff — is carried as the named score spec
+    "linear_falloff_divisor_5", pinned by the PR-C fixture: the
+    conversion does not silently change it.
     """
-    persons = inputs.get("persons") or []
-    seals = inputs.get("seals_at_mesopotamia") or []
-    min_name_freq = _safe_int(params.get("min_name_freq", 2), 2)
-
-    # Aggregate names
-    name_counts: Counter[str] = Counter(
-        p.get("candidate_name", "") for p in persons
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        length_match_scorer_execute,
     )
-    candidates = [(n, c) for n, c in name_counts.most_common()
-                  if c >= min_name_freq and n]
-    seal_with_signs = [s for s in seals
-                        if s.get("indus_signs")
-                        and isinstance(s["indus_signs"], list)
-                        and len(s["indus_signs"]) > 0]
 
-    pairings: list[dict] = []
-    if not seal_with_signs:
-        verdict = (
+    merged = dict(params)
+    merged["matcher_spec"] = {
+        "assignment": "aggregate_pairs",
+        "score_spec": {
+            "kind": "linear",
+            "divisor": 5.0,
+            "name": "linear_falloff_divisor_5",
+        },
+        "min_name_freq_default": 2,
+        "verdict_template": (
+            "Name-matcher: {n_pairings} length-compatible pairings between "
+            "{n_seals_with_signs} sign-bearing seals and "
+            "{n_candidates} name candidates."
+        ),
+        "no_signs_template": (
             "PROTOTYPE STATUS: name-matcher cannot score yet because no "
             "Mesopotamia-found Indus seals have ingested sign sequences. "
             "Phase-23 must populate indus_signs[] from CISI Vol 3 / "
             "Frenez 2018 catalogue tables. "
-            f"Available: {len(candidates)} name candidates "
-            f"(freq>={min_name_freq}); {len(seals)} seals (none with signs)."
-        )
-    else:
-        for seal in seal_with_signs:
-            n_signs = len(seal["indus_signs"])
-            for name, count in candidates:
-                # Akkadian/Sumerian name segments are hyphenated; count + 1
-                name_n_segments = name.count("-") + 1
-                # Score: 1.0 when length match exact; falls off linearly
-                length_score = max(0.0, 1.0 - abs(n_signs - name_n_segments) / 5.0)
-                if length_score == 0:
-                    continue
-                pairings.append({
-                    "seal_id": seal.get("catalogue_id"),
-                    "seal_n_signs": n_signs,
-                    "candidate_name": name,
-                    "name_n_segments": name_n_segments,
-                    "name_occurrences": count,
-                    "length_score": round(length_score, 3),
-                })
-        pairings.sort(key=lambda r: -r["length_score"])
-        verdict = (
-            f"Name-matcher: {len(pairings)} length-compatible pairings between "
-            f"{len(seal_with_signs)} sign-bearing seals and "
-            f"{len(candidates)} name candidates."
-        )
-
-    return {
-        "n_candidates": len(candidates),
-        "n_seals_with_signs": len(seal_with_signs),
-        "n_seals_total": len(seals),
-        "pairings_top50": pairings[:50],
-        "n_pairings": len(pairings),
-        "verdict": verdict,
+            "Available: {n_candidates} name candidates "
+            "(freq>={min_name_freq}); {n_seals_total} seals (none with signs)."
+        ),
     }
+    return length_match_scorer_execute(inputs, merged)
 
 
 # ── Verdict aggregator ────────────────────────────────────────────────

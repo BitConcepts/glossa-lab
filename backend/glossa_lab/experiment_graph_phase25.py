@@ -11,7 +11,6 @@ and the Tamil-Brahmi structural cross-check.
 from __future__ import annotations
 
 import math
-import random
 from collections import Counter
 from typing import Any
 
@@ -25,13 +24,6 @@ def _safe_int(x: Any, default: int = 0) -> int:
 
 def _name_n_segments(name: str) -> int:
     return name.count("-") + 1 if name else 0
-
-
-def _length_score(n_signs: int, n_segments: int, tolerance: int = 2) -> float:
-    delta = abs(n_signs - n_segments)
-    if delta > tolerance:
-        return 0.0
-    return round(1.0 - delta / (tolerance + 1), 3)
 
 
 # ── Loader ────────────────────────────────────────────────────────────
@@ -163,237 +155,78 @@ def _blind_held_out_test(inputs: dict, params: dict) -> dict:
     """Apply the fixed Parpola phoneme map to all inscribed seals,
     counting how many can be 'read' (i.e. have at least one sign with
     high-confidence Parpola-attributed phoneme).
+
+    Spec 087 S3 (family F4): the mechanism is the generic
+    PhonemeMapCoverage engine (glossa_lab.generic_primitives); this
+    node is its Phase-25 parameterisation, with the readability
+    predicate and the verdict text carried as spec data.
     """
-    seals = inputs.get("inscribed_seals") or []
-    phoneme_map = inputs.get("phoneme_map") or {}
-
-    rows: list[dict] = []
-    n_readable = 0
-    n_high_conf = 0
-    for s in seals:
-        signs = s.get("indus_signs") or []
-        # Skip placeholder-only seals (all "?")
-        real_signs = [x for x in signs if x and x != "?"]
-        if not real_signs:
-            rows.append({
-                "catalogue_id": s.get("catalogue_id"),
-                "n_signs": len(signs),
-                "real_signs": 0,
-                "predicted_phoneme_skeleton": "(all placeholders)",
-                "n_high_conf": 0,
-                "readable": False,
-            })
-            continue
-
-        skel: list[str] = []
-        n_hc = 0
-        for sid in real_signs:
-            ph = phoneme_map.get(str(sid), {})
-            phoneme = ph.get("phoneme", "?")
-            skel.append(phoneme)
-            if ph.get("confidence") == "high":
-                n_hc += 1
-
-        readable = any(p != "?" and "uncertain" not in p.lower()
-                        for p in skel)
-        if readable:
-            n_readable += 1
-        if n_hc > 0:
-            n_high_conf += 1
-
-        rows.append({
-            "catalogue_id": s.get("catalogue_id"),
-            "n_signs": len(signs),
-            "real_signs": len(real_signs),
-            "predicted_phoneme_skeleton": "-".join(skel),
-            "n_high_conf": n_hc,
-            "readable": readable,
-        })
-
-    verdict = (
-        f"Blind held-out test: {len(seals)} inscribed seals; "
-        f"{n_readable} have at least one Parpola-attributed phoneme; "
-        f"{n_high_conf} have at least one high-confidence phoneme. "
-        f"Only Janabiyah Laursen #10 currently has actual sign IDs; "
-        f"the other 10 seals have '?' placeholders pending CISI Vol 3 "
-        f"plate ingestion."
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        phoneme_map_coverage_execute,
     )
-    return {
-        "n_seals": len(seals),
-        "n_readable": n_readable,
-        "n_high_conf": n_high_conf,
-        "rows": rows,
-        "verdict": verdict,
+
+    merged = dict(params)
+    merged["coverage_spec"] = {
+        "verdict_template": (
+            "Blind held-out test: {n_seals} inscribed seals; "
+            "{n_readable} have at least one Parpola-attributed phoneme; "
+            "{n_high_conf} have at least one high-confidence phoneme. "
+            "Only Janabiyah Laursen #10 currently has actual sign IDs; "
+            "the other 10 seals have '?' placeholders pending CISI Vol 3 "
+            "plate ingestion."
+        ),
     }
+    return phoneme_map_coverage_execute(inputs, merged)
 
 
 # ── Tier B4: Period-stratified replication of bipartite readout ──────
 
 
-def _greedy_score(score_mat: list[list[float]], assignment: list[int],
-                   n_names: int) -> float:
-    return sum(score_mat[i][assignment[i]]
-               for i in range(n_names) if assignment[i] >= 0)
-
-
-def _run_bipartite_test(
-    candidates: list[dict],
-    seal_lengths: list[int],
-    n_perms: int,
-    tolerance: int,
-    seed: int,
-) -> dict:
-    """Run the Phase-24d bipartite-assignment readout test on a given
-    candidate-name + seal-length subset. Returns p-value, observed
-    score, null mean."""
-    n_names = len(candidates)
-    n_seals = len(seal_lengths)
-    if n_names == 0 or n_seals == 0:
-        return {"p_value": None, "observed": 0.0,
-                "n_names": n_names, "n_seals": n_seals,
-                "reason": "empty inputs"}
-    name_segs = [_name_n_segments(r["candidate_name"]) for r in candidates]
-    score_mat = [
-        [_length_score(seal_lengths[j], name_segs[i], tolerance)
-         for j in range(n_seals)]
-        for i in range(n_names)
-    ]
-
-    # Observed: greedy by occurrence
-    occs = [_safe_int(r.get("occurrences")) for r in candidates]
-    order = sorted(range(n_names), key=lambda i: -occs[i])
-    used: set[int] = set()
-    obs_assignment = [-1] * n_names
-    for i in order:
-        best_j = -1
-        best_s = 0.0
-        for j in range(n_seals):
-            if j in used:
-                continue
-            s = score_mat[i][j]
-            if s > best_s:
-                best_s = s
-                best_j = j
-        if best_j >= 0 and best_s > 0:
-            obs_assignment[i] = best_j
-            used.add(best_j)
-    observed = _greedy_score(score_mat, obs_assignment, n_names)
-
-    rng = random.Random(seed)
-    n_at_or_above = 0
-    null_dist: list[float] = []
-    for _ in range(n_perms):
-        shuffled_seal_idxs = list(range(n_seals))
-        rng.shuffle(shuffled_seal_idxs)
-        if n_names > n_seals:
-            participating = rng.sample(range(n_names), n_seals)
-        else:
-            participating = list(range(n_names))
-        random_assignment = [-1] * n_names
-        for slot, name_i in enumerate(participating):
-            random_assignment[name_i] = shuffled_seal_idxs[slot]
-        v = _greedy_score(score_mat, random_assignment, n_names)
-        null_dist.append(v)
-        if v >= observed:
-            n_at_or_above += 1
-    p = n_at_or_above / n_perms
-    null_mean = sum(null_dist) / len(null_dist)
-    return {
-        "p_value": round(p, 6),
-        "observed": round(observed, 4),
-        "null_mean": round(null_mean, 4),
-        "n_names": n_names,
-        "n_seals": n_seals,
-        "n_perms": n_perms,
-    }
-
-
 def _period_stratified_readout(inputs: dict, params: dict) -> dict:
     """Split persons-v3 candidates by period and run Phase-24d readout
-    test on each subset against the same 11 inscribed seals."""
-    persons = inputs.get("persons_v3") or []
-    seals = inputs.get("inscribed_seals") or []
-    n_perms = max(500, _safe_int(params.get("n_permutations", 1000), 1000))
-    tolerance = _safe_int(params.get("tolerance", 2), 2)
+    test on each subset against the same 11 inscribed seals.
 
-    seal_lengths = [_safe_int(s.get("inscription_length")) for s in seals]
-    if not persons or not seal_lengths:
-        return {"verdict": "INSUFFICIENT_DATA", "results": []}
-
-    # Aggregate persons by candidate_name + period
-    candidates_by_period: dict[str, dict[str, dict]] = {}
-    for p in persons:
-        period = (p.get("period", "") or "").strip()
-        period_key = period or "(unknown)"
-        # Coarsen periods
-        if "Ur III" in period:
-            period_key = "Ur III"
-        elif "Old Babylonian" in period:
-            period_key = "Old Babylonian"
-        elif "Neo-Assyrian" in period:
-            period_key = "Neo-Assyrian"
-        elif "Old Akkadian" in period or "Akkadian" in period:
-            period_key = "Old Akkadian"
-        elif "Ebla" in period:
-            period_key = "Ebla"
-        else:
-            period_key = "Other"
-
-        cmap = candidates_by_period.setdefault(period_key, {})
-        name = p.get("candidate_name", "")
-        if not name:
-            continue
-        if name not in cmap:
-            cmap[name] = {"candidate_name": name, "occurrences": 0}
-        cmap[name]["occurrences"] += 1
-
-    # Run the readout test per period
-    results: list[dict] = []
-    overall_candidates: list[dict] = []
-    for period, cmap in sorted(candidates_by_period.items()):
-        cands = list(cmap.values())
-        cands.sort(key=lambda r: -r["occurrences"])
-        if len(cands) < 2:
-            continue
-        r = _run_bipartite_test(
-            cands, seal_lengths, n_perms, tolerance, seed=42 + len(period),
-        )
-        r["period"] = period
-        r["n_unique_candidates"] = len(cands)
-        results.append(r)
-        overall_candidates.extend(cands)
-
-    # Plus the overall (unstratified) result for comparison
-    if overall_candidates:
-        merged: dict[str, dict] = {}
-        for c in overall_candidates:
-            n = c["candidate_name"]
-            if n not in merged:
-                merged[n] = {"candidate_name": n, "occurrences": 0}
-            merged[n]["occurrences"] += c["occurrences"]
-        overall = list(merged.values())
-        overall.sort(key=lambda r: -r["occurrences"])
-        r_all = _run_bipartite_test(
-            overall, seal_lengths, n_perms, tolerance, seed=42,
-        )
-        r_all["period"] = "ALL (overall)"
-        r_all["n_unique_candidates"] = len(overall)
-        results.append(r_all)
-
-    significant = [r for r in results if isinstance(r.get("p_value"), float)
-                                          and r["p_value"] < 0.05]
-    verdict = (
-        f"Period-stratified readout: {len(results)} period subsets tested; "
-        f"{len(significant)} achieve p<0.05. Robustness check: if "
-        f">1 period strata yield p<0.05, the Phase-24d signal is "
-        f"period-robust; if only the overall result is significant, "
-        f"the signal may be a sample-size artifact."
+    Spec 087 S3 (family F5): the mechanism is the generic
+    StratifiedPermutationTest engine (glossa_lab.generic_primitives);
+    this node is its Phase-25 parameterisation. The period coarsening
+    that was an inline if/elif chain is now the ordered strata_rules
+    data below (case-sensitive, on the stripped period string; the
+    "Old Akkadian" bucket carries both of the chain's keys), and the
+    per-stratum seed rule is seed_base 42 + len(bucket). The
+    module-local _run_bipartite_test / _greedy_score / _length_score
+    helpers were used only here; they were removed (the engine
+    carries the shared bipartite core). _name_n_segments stays: the
+    Persons-v3 extractor still uses it.
+    """
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        stratified_permutation_test_execute,
     )
-    return {
-        "results": results,
-        "n_significant_strata": len(significant),
-        "verdict": verdict,
+
+    merged = dict(params)
+    merged["strata_spec"] = {
+        "stratum_field": "period",
+        "axis_key": "period",
+        "strata_rules": [
+            ["Ur III", ["Ur III"]],
+            ["Old Babylonian", ["Old Babylonian"]],
+            ["Neo-Assyrian", ["Neo-Assyrian"]],
+            ["Old Akkadian", ["Old Akkadian", "Akkadian"]],
+            ["Ebla", ["Ebla"]],
+        ],
+        "case_insensitive": False,
+        "strip_value": True,
+        "empty_bucket": None,
+        "fallback_bucket": "Other",
+        "seed_base": 42,
+        "verdict_template": (
+            "Period-stratified readout: {n_results} period subsets tested; "
+            "{n_significant} achieve p<0.05. Robustness check: if "
+            ">1 period strata yield p<0.05, the Phase-24d signal is "
+            "period-robust; if only the overall result is significant, "
+            "the signal may be a sample-size artifact."
+        ),
     }
+    return stratified_permutation_test_execute(inputs, merged)
 
 
 # ── Tier D10: Shu-ilishu biographical anchor search ─────────────────

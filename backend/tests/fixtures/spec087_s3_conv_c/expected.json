@@ -1,0 +1,5270 @@
+{
+ "comment": "Spec 087 S3 conversion PR-C (families F4 + F5) fixture outputs, captured from the pre-conversion implementations on branch feat/087-s3-conv-c BEFORE any implementation changed. Inputs are synthetic records in the mesopotamian_contact data module's shapes (the archive graphs' real source files are absent from this repo — corpora/ is a gitignored download tree and the loaders raise FileNotFoundError — so the archive graphs' inputs are reproduced in shape, sized to exercise every branch; see the capture script in the PR record for the branch map). All cases are full-mode canonical-JSON pins; permutation outputs are seed-determined, so byte-equality is exact.",
+ "cases": [
+  {
+   "id": "icono_default",
+   "node": "IconographicAnchorScore",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "iconographic_anchors": [
+     {
+      "anchor_id": "A1",
+      "sign_id": "47",
+      "object_id": "M-410",
+      "iconic_reading": "Fish",
+      "confidence": "high"
+     },
+     {
+      "anchor_id": "A2",
+      "sign_id": "99+12",
+      "object_id": "H-1",
+      "iconic_reading": "Banyan/fig tree",
+      "confidence": "medium"
+     },
+     {
+      "anchor_id": "A3",
+      "sign_id": "120",
+      "object_id": "H-2",
+      "iconic_reading": "Intersecting circles",
+      "confidence": "low"
+     },
+     {
+      "anchor_id": "A4",
+      "sign_id": "130",
+      "object_id": "H-3",
+      "iconic_reading": "Pleiades",
+      "confidence": "high"
+     },
+     {
+      "anchor_id": "A5",
+      "sign_id": "131",
+      "object_id": "H-4",
+      "iconic_reading": "Ursa Major",
+      "confidence": "medium"
+     },
+     {
+      "anchor_id": "A6",
+      "sign_id": "140",
+      "object_id": "H-5",
+      "iconic_reading": "Pot",
+      "confidence": "high"
+     },
+     {
+      "anchor_id": "A7",
+      "sign_id": "999",
+      "object_id": "H-6",
+      "iconic_reading": "Squirrel",
+      "confidence": "high"
+     },
+     {
+      "anchor_id": "A8",
+      "sign_id": "150",
+      "object_id": "H-7",
+      "iconic_reading": "Venus",
+      "confidence": "low"
+     },
+     {
+      "anchor_id": "A9",
+      "sign_id": "47",
+      "object_id": "H-8",
+      "iconic_reading": "Starfish",
+      "confidence": "medium"
+     },
+     {
+      "anchor_id": "A10",
+      "sign_id": "140",
+      "object_id": "H-9",
+      "iconic_reading": "Fish",
+      "confidence": "high"
+     }
+    ],
+    "phoneme_map": {
+     "47": {
+      "phoneme": "miin",
+      "confidence": "high",
+      "gloss": "fish/star",
+      "source": "fixture"
+     },
+     "48": {
+      "phoneme": "miin",
+      "confidence": "medium",
+      "gloss": "fish variant",
+      "source": "fixture"
+     },
+     "50": {
+      "phoneme": "miin",
+      "confidence": "low",
+      "gloss": "fish variant",
+      "source": "fixture"
+     },
+     "99": {
+      "phoneme": "vaTa",
+      "confidence": "high",
+      "gloss": "banyan",
+      "source": "fixture"
+     },
+     "120": {
+      "phoneme": "muruku",
+      "confidence": "medium",
+      "gloss": "Murukan",
+      "source": "fixture"
+     },
+     "130": {
+      "phoneme": "aru-",
+      "confidence": "high",
+      "gloss": "Pleiades",
+      "source": "fixture"
+     },
+     "131": {
+      "phoneme": "eZu-",
+      "confidence": "low",
+      "gloss": "Ursa Major",
+      "source": "fixture"
+     },
+     "140": {
+      "phoneme": "kuTam",
+      "confidence": "none",
+      "gloss": "pot?",
+      "source": "fixture"
+     },
+     "150": {
+      "phoneme": "uncertain-x",
+      "confidence": "medium",
+      "gloss": "unclear",
+      "source": "fixture"
+     },
+     "160": {
+      "phoneme": "?",
+      "confidence": "high",
+      "gloss": "unknown",
+      "source": "fixture"
+     }
+    }
+   },
+   "mode": "full",
+   "expected": {
+    "n_total_anchors": 10,
+    "n_matches": 7,
+    "total_score": 12.5,
+    "rows": [
+     {
+      "anchor_id": "A1",
+      "sign_id": "47",
+      "object_id": "M-410",
+      "iconic_reading": "Fish",
+      "phoneme_value": "miin",
+      "phoneme_confidence": "high",
+      "anchor_confidence": "high",
+      "match": true,
+      "anchor_score": 3.0
+     },
+     {
+      "anchor_id": "A4",
+      "sign_id": "130",
+      "object_id": "H-3",
+      "iconic_reading": "Pleiades",
+      "phoneme_value": "aru-",
+      "phoneme_confidence": "high",
+      "anchor_confidence": "high",
+      "match": true,
+      "anchor_score": 3.0
+     },
+     {
+      "anchor_id": "A6",
+      "sign_id": "140",
+      "object_id": "H-5",
+      "iconic_reading": "Pot",
+      "phoneme_value": "kutam",
+      "phoneme_confidence": "none",
+      "anchor_confidence": "high",
+      "match": true,
+      "anchor_score": 2.0
+     },
+     {
+      "anchor_id": "A2",
+      "sign_id": "99",
+      "object_id": "H-1",
+      "iconic_reading": "Banyan/fig tree",
+      "phoneme_value": "vata",
+      "phoneme_confidence": "high",
+      "anchor_confidence": "medium",
+      "match": true,
+      "anchor_score": 1.5
+     },
+     {
+      "anchor_id": "A9",
+      "sign_id": "47",
+      "object_id": "H-8",
+      "iconic_reading": "Starfish",
+      "phoneme_value": "miin",
+      "phoneme_confidence": "high",
+      "anchor_confidence": "medium",
+      "match": true,
+      "anchor_score": 1.5
+     },
+     {
+      "anchor_id": "A5",
+      "sign_id": "131",
+      "object_id": "H-4",
+      "iconic_reading": "Ursa Major",
+      "phoneme_value": "ezu-",
+      "phoneme_confidence": "low",
+      "anchor_confidence": "medium",
+      "match": true,
+      "anchor_score": 1.0
+     },
+     {
+      "anchor_id": "A3",
+      "sign_id": "120",
+      "object_id": "H-2",
+      "iconic_reading": "Intersecting circles",
+      "phoneme_value": "muruku",
+      "phoneme_confidence": "medium",
+      "anchor_confidence": "low",
+      "match": true,
+      "anchor_score": 0.5
+     },
+     {
+      "anchor_id": "A7",
+      "sign_id": "999",
+      "object_id": "H-6",
+      "iconic_reading": "Squirrel",
+      "phoneme_value": "",
+      "phoneme_confidence": "none",
+      "anchor_confidence": "high",
+      "match": false,
+      "anchor_score": 0.0
+     },
+     {
+      "anchor_id": "A8",
+      "sign_id": "150",
+      "object_id": "H-7",
+      "iconic_reading": "Venus",
+      "phoneme_value": "uncertain-x",
+      "phoneme_confidence": "medium",
+      "anchor_confidence": "low",
+      "match": false,
+      "anchor_score": 0.0
+     },
+     {
+      "anchor_id": "A10",
+      "sign_id": "140",
+      "object_id": "H-9",
+      "iconic_reading": "Fish",
+      "phoneme_value": "kutam",
+      "phoneme_confidence": "none",
+      "anchor_confidence": "high",
+      "match": false,
+      "anchor_score": 0.0
+     }
+    ],
+    "verdict": "Iconographic anchor score: 7/10 anchors have a phoneme match in our map. Total weighted score = 12.50. The anchors with the highest scores are non-statistical confirmations of the corresponding sign->phoneme reading (e.g. M-410: sign 47 = fish, confirmed by crocodile iconography)."
+   }
+  },
+  {
+   "id": "icono_empty",
+   "node": "IconographicAnchorScore",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "iconographic_anchors": [],
+    "phoneme_map": {
+     "47": {
+      "phoneme": "miin",
+      "confidence": "high",
+      "gloss": "fish/star",
+      "source": "fixture"
+     },
+     "48": {
+      "phoneme": "miin",
+      "confidence": "medium",
+      "gloss": "fish variant",
+      "source": "fixture"
+     },
+     "50": {
+      "phoneme": "miin",
+      "confidence": "low",
+      "gloss": "fish variant",
+      "source": "fixture"
+     },
+     "99": {
+      "phoneme": "vaTa",
+      "confidence": "high",
+      "gloss": "banyan",
+      "source": "fixture"
+     },
+     "120": {
+      "phoneme": "muruku",
+      "confidence": "medium",
+      "gloss": "Murukan",
+      "source": "fixture"
+     },
+     "130": {
+      "phoneme": "aru-",
+      "confidence": "high",
+      "gloss": "Pleiades",
+      "source": "fixture"
+     },
+     "131": {
+      "phoneme": "eZu-",
+      "confidence": "low",
+      "gloss": "Ursa Major",
+      "source": "fixture"
+     },
+     "140": {
+      "phoneme": "kuTam",
+      "confidence": "none",
+      "gloss": "pot?",
+      "source": "fixture"
+     },
+     "150": {
+      "phoneme": "uncertain-x",
+      "confidence": "medium",
+      "gloss": "unclear",
+      "source": "fixture"
+     },
+     "160": {
+      "phoneme": "?",
+      "confidence": "high",
+      "gloss": "unknown",
+      "source": "fixture"
+     }
+    }
+   },
+   "mode": "full",
+   "expected": {
+    "verdict": "NO_ANCHORS",
+    "score": 0.0,
+    "n_anchors": 0
+   }
+  },
+  {
+   "id": "allograph_default",
+   "node": "AllographAwareIconographicScore",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "iconographic_anchors": [
+     {
+      "anchor_id": "A1",
+      "sign_id": "47",
+      "object_id": "M-410",
+      "iconic_reading": "Fish",
+      "confidence": "high"
+     },
+     {
+      "anchor_id": "A2",
+      "sign_id": "99+12",
+      "object_id": "H-1",
+      "iconic_reading": "Banyan/fig tree",
+      "confidence": "medium"
+     },
+     {
+      "anchor_id": "A3",
+      "sign_id": "120",
+      "object_id": "H-2",
+      "iconic_reading": "Intersecting circles",
+      "confidence": "low"
+     },
+     {
+      "anchor_id": "A4",
+      "sign_id": "130",
+      "object_id": "H-3",
+      "iconic_reading": "Pleiades",
+      "confidence": "high"
+     },
+     {
+      "anchor_id": "A5",
+      "sign_id": "131",
+      "object_id": "H-4",
+      "iconic_reading": "Ursa Major",
+      "confidence": "medium"
+     },
+     {
+      "anchor_id": "A6",
+      "sign_id": "140",
+      "object_id": "H-5",
+      "iconic_reading": "Pot",
+      "confidence": "high"
+     },
+     {
+      "anchor_id": "A7",
+      "sign_id": "999",
+      "object_id": "H-6",
+      "iconic_reading": "Squirrel",
+      "confidence": "high"
+     },
+     {
+      "anchor_id": "A8",
+      "sign_id": "150",
+      "object_id": "H-7",
+      "iconic_reading": "Venus",
+      "confidence": "low"
+     },
+     {
+      "anchor_id": "A9",
+      "sign_id": "47",
+      "object_id": "H-8",
+      "iconic_reading": "Starfish",
+      "confidence": "medium"
+     },
+     {
+      "anchor_id": "A10",
+      "sign_id": "140",
+      "object_id": "H-9",
+      "iconic_reading": "Fish",
+      "confidence": "high"
+     }
+    ],
+    "phoneme_map": {
+     "47": {
+      "phoneme": "miin",
+      "confidence": "high",
+      "gloss": "fish/star",
+      "source": "fixture"
+     },
+     "48": {
+      "phoneme": "miin",
+      "confidence": "medium",
+      "gloss": "fish variant",
+      "source": "fixture"
+     },
+     "50": {
+      "phoneme": "miin",
+      "confidence": "low",
+      "gloss": "fish variant",
+      "source": "fixture"
+     },
+     "99": {
+      "phoneme": "vaTa",
+      "confidence": "high",
+      "gloss": "banyan",
+      "source": "fixture"
+     },
+     "120": {
+      "phoneme": "muruku",
+      "confidence": "medium",
+      "gloss": "Murukan",
+      "source": "fixture"
+     },
+     "130": {
+      "phoneme": "aru-",
+      "confidence": "high",
+      "gloss": "Pleiades",
+      "source": "fixture"
+     },
+     "131": {
+      "phoneme": "eZu-",
+      "confidence": "low",
+      "gloss": "Ursa Major",
+      "source": "fixture"
+     },
+     "140": {
+      "phoneme": "kuTam",
+      "confidence": "none",
+      "gloss": "pot?",
+      "source": "fixture"
+     },
+     "150": {
+      "phoneme": "uncertain-x",
+      "confidence": "medium",
+      "gloss": "unclear",
+      "source": "fixture"
+     },
+     "160": {
+      "phoneme": "?",
+      "confidence": "high",
+      "gloss": "unknown",
+      "source": "fixture"
+     }
+    },
+    "allograph_families": {
+     "fish": {
+      "members": [
+       47,
+       48,
+       50,
+       52
+      ],
+      "phoneme": "miin",
+      "iconic": "fish"
+     },
+     "fig_tree": {
+      "members": [
+       99,
+       98
+      ],
+      "phoneme": "vaTa",
+      "iconic": "fig"
+     },
+     "numerals": {
+      "members": [
+       130
+      ],
+      "phoneme": "aru",
+      "iconic": "number"
+     }
+    }
+   },
+   "mode": "full",
+   "expected": {
+    "n_total_anchors": 10,
+    "n_matches": 7,
+    "n_allograph_extensions": 5,
+    "extended_sign_ids": [
+     "130",
+     "48",
+     "50"
+    ],
+    "total_score": 13.75,
+    "rows": [
+     {
+      "anchor_id": "A1",
+      "sign_id": "47",
+      "object_id": "M-410",
+      "iconic_reading": "Fish",
+      "phoneme_value": "miin",
+      "phoneme_confidence": "high",
+      "anchor_confidence": "high",
+      "match": true,
+      "family": "fish",
+      "family_extensions": [
+       "48",
+       "50"
+      ],
+      "n_allograph_extensions": 2,
+      "anchor_score": 3.5
+     },
+     {
+      "anchor_id": "A4",
+      "sign_id": "130",
+      "object_id": "H-3",
+      "iconic_reading": "Pleiades",
+      "phoneme_value": "aru-",
+      "phoneme_confidence": "high",
+      "anchor_confidence": "high",
+      "match": true,
+      "family": "numerals",
+      "family_extensions": [],
+      "n_allograph_extensions": 0,
+      "anchor_score": 3.0
+     },
+     {
+      "anchor_id": "A6",
+      "sign_id": "140",
+      "object_id": "H-5",
+      "iconic_reading": "Pot",
+      "phoneme_value": "kutam",
+      "phoneme_confidence": "none",
+      "anchor_confidence": "high",
+      "match": true,
+      "family": null,
+      "family_extensions": [],
+      "n_allograph_extensions": 0,
+      "anchor_score": 2.0
+     },
+     {
+      "anchor_id": "A9",
+      "sign_id": "47",
+      "object_id": "H-8",
+      "iconic_reading": "Starfish",
+      "phoneme_value": "miin",
+      "phoneme_confidence": "high",
+      "anchor_confidence": "medium",
+      "match": true,
+      "family": "fish",
+      "family_extensions": [
+       "48",
+       "50"
+      ],
+      "n_allograph_extensions": 2,
+      "anchor_score": 2.0
+     },
+     {
+      "anchor_id": "A2",
+      "sign_id": "99",
+      "object_id": "H-1",
+      "iconic_reading": "Banyan/fig tree",
+      "phoneme_value": "vata",
+      "phoneme_confidence": "high",
+      "anchor_confidence": "medium",
+      "match": true,
+      "family": "fig_tree",
+      "family_extensions": [],
+      "n_allograph_extensions": 0,
+      "anchor_score": 1.5
+     },
+     {
+      "anchor_id": "A5",
+      "sign_id": "131",
+      "object_id": "H-4",
+      "iconic_reading": "Ursa Major",
+      "phoneme_value": "ezu-",
+      "phoneme_confidence": "low",
+      "anchor_confidence": "medium",
+      "match": true,
+      "family": "numerals",
+      "family_extensions": [
+       "130"
+      ],
+      "n_allograph_extensions": 1,
+      "anchor_score": 1.25
+     },
+     {
+      "anchor_id": "A3",
+      "sign_id": "120",
+      "object_id": "H-2",
+      "iconic_reading": "Intersecting circles",
+      "phoneme_value": "muruku",
+      "phoneme_confidence": "medium",
+      "anchor_confidence": "low",
+      "match": true,
+      "family": "intersecting_circles",
+      "family_extensions": [],
+      "n_allograph_extensions": 0,
+      "anchor_score": 0.5
+     },
+     {
+      "anchor_id": "A7",
+      "sign_id": "999",
+      "object_id": "H-6",
+      "iconic_reading": "Squirrel",
+      "phoneme_value": "",
+      "phoneme_confidence": "none",
+      "anchor_confidence": "high",
+      "match": false,
+      "family": null,
+      "family_extensions": [],
+      "n_allograph_extensions": 0,
+      "anchor_score": 0.0
+     },
+     {
+      "anchor_id": "A8",
+      "sign_id": "150",
+      "object_id": "H-7",
+      "iconic_reading": "Venus",
+      "phoneme_value": "uncertain-x",
+      "phoneme_confidence": "medium",
+      "anchor_confidence": "low",
+      "match": false,
+      "family": null,
+      "family_extensions": [],
+      "n_allograph_extensions": 0,
+      "anchor_score": 0.0
+     },
+     {
+      "anchor_id": "A10",
+      "sign_id": "140",
+      "object_id": "H-9",
+      "iconic_reading": "Fish",
+      "phoneme_value": "kutam",
+      "phoneme_confidence": "none",
+      "anchor_confidence": "high",
+      "match": false,
+      "family": "fish",
+      "family_extensions": [],
+      "n_allograph_extensions": 0,
+      "anchor_score": 0.0
+     }
+    ],
+    "verdict": "Allograph-aware iconographic anchor score (Phase-28): 7/10 anchors have a phoneme match; 5 additional allograph-family members score against the same anchors (vs Phase-27c which scored only the explicit sign ID). Total weighted score = 13.75. Distinct sign IDs gaining anchor support via allograph extension: ['130', '48', '50']."
+   }
+  },
+  {
+   "id": "allograph_no_families",
+   "node": "AllographAwareIconographicScore",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "iconographic_anchors": [
+     {
+      "anchor_id": "A1",
+      "sign_id": "47",
+      "object_id": "M-410",
+      "iconic_reading": "Fish",
+      "confidence": "high"
+     },
+     {
+      "anchor_id": "A2",
+      "sign_id": "99+12",
+      "object_id": "H-1",
+      "iconic_reading": "Banyan/fig tree",
+      "confidence": "medium"
+     },
+     {
+      "anchor_id": "A3",
+      "sign_id": "120",
+      "object_id": "H-2",
+      "iconic_reading": "Intersecting circles",
+      "confidence": "low"
+     },
+     {
+      "anchor_id": "A4",
+      "sign_id": "130",
+      "object_id": "H-3",
+      "iconic_reading": "Pleiades",
+      "confidence": "high"
+     },
+     {
+      "anchor_id": "A5",
+      "sign_id": "131",
+      "object_id": "H-4",
+      "iconic_reading": "Ursa Major",
+      "confidence": "medium"
+     },
+     {
+      "anchor_id": "A6",
+      "sign_id": "140",
+      "object_id": "H-5",
+      "iconic_reading": "Pot",
+      "confidence": "high"
+     },
+     {
+      "anchor_id": "A7",
+      "sign_id": "999",
+      "object_id": "H-6",
+      "iconic_reading": "Squirrel",
+      "confidence": "high"
+     },
+     {
+      "anchor_id": "A8",
+      "sign_id": "150",
+      "object_id": "H-7",
+      "iconic_reading": "Venus",
+      "confidence": "low"
+     },
+     {
+      "anchor_id": "A9",
+      "sign_id": "47",
+      "object_id": "H-8",
+      "iconic_reading": "Starfish",
+      "confidence": "medium"
+     },
+     {
+      "anchor_id": "A10",
+      "sign_id": "140",
+      "object_id": "H-9",
+      "iconic_reading": "Fish",
+      "confidence": "high"
+     }
+    ],
+    "phoneme_map": {
+     "47": {
+      "phoneme": "miin",
+      "confidence": "high",
+      "gloss": "fish/star",
+      "source": "fixture"
+     },
+     "48": {
+      "phoneme": "miin",
+      "confidence": "medium",
+      "gloss": "fish variant",
+      "source": "fixture"
+     },
+     "50": {
+      "phoneme": "miin",
+      "confidence": "low",
+      "gloss": "fish variant",
+      "source": "fixture"
+     },
+     "99": {
+      "phoneme": "vaTa",
+      "confidence": "high",
+      "gloss": "banyan",
+      "source": "fixture"
+     },
+     "120": {
+      "phoneme": "muruku",
+      "confidence": "medium",
+      "gloss": "Murukan",
+      "source": "fixture"
+     },
+     "130": {
+      "phoneme": "aru-",
+      "confidence": "high",
+      "gloss": "Pleiades",
+      "source": "fixture"
+     },
+     "131": {
+      "phoneme": "eZu-",
+      "confidence": "low",
+      "gloss": "Ursa Major",
+      "source": "fixture"
+     },
+     "140": {
+      "phoneme": "kuTam",
+      "confidence": "none",
+      "gloss": "pot?",
+      "source": "fixture"
+     },
+     "150": {
+      "phoneme": "uncertain-x",
+      "confidence": "medium",
+      "gloss": "unclear",
+      "source": "fixture"
+     },
+     "160": {
+      "phoneme": "?",
+      "confidence": "high",
+      "gloss": "unknown",
+      "source": "fixture"
+     }
+    },
+    "allograph_families": {}
+   },
+   "mode": "full",
+   "expected": {
+    "n_total_anchors": 10,
+    "n_matches": 7,
+    "n_allograph_extensions": 0,
+    "extended_sign_ids": [],
+    "total_score": 12.5,
+    "rows": [
+     {
+      "anchor_id": "A1",
+      "sign_id": "47",
+      "object_id": "M-410",
+      "iconic_reading": "Fish",
+      "phoneme_value": "miin",
+      "phoneme_confidence": "high",
+      "anchor_confidence": "high",
+      "match": true,
+      "family": "fish",
+      "family_extensions": [],
+      "n_allograph_extensions": 0,
+      "anchor_score": 3.0
+     },
+     {
+      "anchor_id": "A4",
+      "sign_id": "130",
+      "object_id": "H-3",
+      "iconic_reading": "Pleiades",
+      "phoneme_value": "aru-",
+      "phoneme_confidence": "high",
+      "anchor_confidence": "high",
+      "match": true,
+      "family": "numerals",
+      "family_extensions": [],
+      "n_allograph_extensions": 0,
+      "anchor_score": 3.0
+     },
+     {
+      "anchor_id": "A6",
+      "sign_id": "140",
+      "object_id": "H-5",
+      "iconic_reading": "Pot",
+      "phoneme_value": "kutam",
+      "phoneme_confidence": "none",
+      "anchor_confidence": "high",
+      "match": true,
+      "family": null,
+      "family_extensions": [],
+      "n_allograph_extensions": 0,
+      "anchor_score": 2.0
+     },
+     {
+      "anchor_id": "A2",
+      "sign_id": "99",
+      "object_id": "H-1",
+      "iconic_reading": "Banyan/fig tree",
+      "phoneme_value": "vata",
+      "phoneme_confidence": "high",
+      "anchor_confidence": "medium",
+      "match": true,
+      "family": "fig_tree",
+      "family_extensions": [],
+      "n_allograph_extensions": 0,
+      "anchor_score": 1.5
+     },
+     {
+      "anchor_id": "A9",
+      "sign_id": "47",
+      "object_id": "H-8",
+      "iconic_reading": "Starfish",
+      "phoneme_value": "miin",
+      "phoneme_confidence": "high",
+      "anchor_confidence": "medium",
+      "match": true,
+      "family": "fish",
+      "family_extensions": [],
+      "n_allograph_extensions": 0,
+      "anchor_score": 1.5
+     },
+     {
+      "anchor_id": "A5",
+      "sign_id": "131",
+      "object_id": "H-4",
+      "iconic_reading": "Ursa Major",
+      "phoneme_value": "ezu-",
+      "phoneme_confidence": "low",
+      "anchor_confidence": "medium",
+      "match": true,
+      "family": "numerals",
+      "family_extensions": [],
+      "n_allograph_extensions": 0,
+      "anchor_score": 1.0
+     },
+     {
+      "anchor_id": "A3",
+      "sign_id": "120",
+      "object_id": "H-2",
+      "iconic_reading": "Intersecting circles",
+      "phoneme_value": "muruku",
+      "phoneme_confidence": "medium",
+      "anchor_confidence": "low",
+      "match": true,
+      "family": "intersecting_circles",
+      "family_extensions": [],
+      "n_allograph_extensions": 0,
+      "anchor_score": 0.5
+     },
+     {
+      "anchor_id": "A7",
+      "sign_id": "999",
+      "object_id": "H-6",
+      "iconic_reading": "Squirrel",
+      "phoneme_value": "",
+      "phoneme_confidence": "none",
+      "anchor_confidence": "high",
+      "match": false,
+      "family": null,
+      "family_extensions": [],
+      "n_allograph_extensions": 0,
+      "anchor_score": 0.0
+     },
+     {
+      "anchor_id": "A8",
+      "sign_id": "150",
+      "object_id": "H-7",
+      "iconic_reading": "Venus",
+      "phoneme_value": "uncertain-x",
+      "phoneme_confidence": "medium",
+      "anchor_confidence": "low",
+      "match": false,
+      "family": null,
+      "family_extensions": [],
+      "n_allograph_extensions": 0,
+      "anchor_score": 0.0
+     },
+     {
+      "anchor_id": "A10",
+      "sign_id": "140",
+      "object_id": "H-9",
+      "iconic_reading": "Fish",
+      "phoneme_value": "kutam",
+      "phoneme_confidence": "none",
+      "anchor_confidence": "high",
+      "match": false,
+      "family": "fish",
+      "family_extensions": [],
+      "n_allograph_extensions": 0,
+      "anchor_score": 0.0
+     }
+    ],
+    "verdict": "Allograph-aware iconographic anchor score (Phase-28): 7/10 anchors have a phoneme match; 0 additional allograph-family members score against the same anchors (vs Phase-27c which scored only the explicit sign ID). Total weighted score = 12.50. Distinct sign IDs gaining anchor support via allograph extension: []."
+   }
+  },
+  {
+   "id": "allograph_empty",
+   "node": "AllographAwareIconographicScore",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "iconographic_anchors": [],
+    "phoneme_map": {
+     "47": {
+      "phoneme": "miin",
+      "confidence": "high",
+      "gloss": "fish/star",
+      "source": "fixture"
+     },
+     "48": {
+      "phoneme": "miin",
+      "confidence": "medium",
+      "gloss": "fish variant",
+      "source": "fixture"
+     },
+     "50": {
+      "phoneme": "miin",
+      "confidence": "low",
+      "gloss": "fish variant",
+      "source": "fixture"
+     },
+     "99": {
+      "phoneme": "vaTa",
+      "confidence": "high",
+      "gloss": "banyan",
+      "source": "fixture"
+     },
+     "120": {
+      "phoneme": "muruku",
+      "confidence": "medium",
+      "gloss": "Murukan",
+      "source": "fixture"
+     },
+     "130": {
+      "phoneme": "aru-",
+      "confidence": "high",
+      "gloss": "Pleiades",
+      "source": "fixture"
+     },
+     "131": {
+      "phoneme": "eZu-",
+      "confidence": "low",
+      "gloss": "Ursa Major",
+      "source": "fixture"
+     },
+     "140": {
+      "phoneme": "kuTam",
+      "confidence": "none",
+      "gloss": "pot?",
+      "source": "fixture"
+     },
+     "150": {
+      "phoneme": "uncertain-x",
+      "confidence": "medium",
+      "gloss": "unclear",
+      "source": "fixture"
+     },
+     "160": {
+      "phoneme": "?",
+      "confidence": "high",
+      "gloss": "unknown",
+      "source": "fixture"
+     }
+    },
+    "allograph_families": {
+     "fish": {
+      "members": [
+       47,
+       48,
+       50,
+       52
+      ],
+      "phoneme": "miin",
+      "iconic": "fish"
+     },
+     "fig_tree": {
+      "members": [
+       99,
+       98
+      ],
+      "phoneme": "vaTa",
+      "iconic": "fig"
+     },
+     "numerals": {
+      "members": [
+       130
+      ],
+      "phoneme": "aru",
+      "iconic": "number"
+     }
+    }
+   },
+   "mode": "full",
+   "expected": {
+    "verdict": "NO_ANCHORS",
+    "score": 0.0,
+    "n_anchors": 0
+   }
+  },
+  {
+   "id": "blind_default",
+   "node": "BlindHeldOutTest",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "inscribed_seals": [
+     {
+      "catalogue_id": "M-410",
+      "indus_signs": [
+       47,
+       99,
+       120
+      ],
+      "inscription_length": 3
+     },
+     {
+      "catalogue_id": "M-411",
+      "indus_signs": [
+       "48",
+       "150"
+      ],
+      "inscription_length": 2
+     },
+     {
+      "catalogue_id": "H-9",
+      "indus_signs": [
+       "?",
+       "?"
+      ],
+      "inscription_length": 2
+     },
+     {
+      "catalogue_id": "H-10",
+      "indus_signs": [],
+      "inscription_length": 0
+     },
+     {
+      "catalogue_id": "B-12",
+      "indus_signs": [
+       160,
+       131
+      ],
+      "inscription_length": 2
+     },
+     {
+      "catalogue_id": "B-13",
+      "indus_signs": [
+       130,
+       47,
+       47
+      ],
+      "inscription_length": 3
+     },
+     {
+      "catalogue_id": "D-1",
+      "indus_signs": [
+       140
+      ],
+      "inscription_length": 1
+     },
+     {
+      "catalogue_id": "D-2",
+      "inscription_length": 4
+     }
+    ],
+    "phoneme_map": {
+     "47": {
+      "phoneme": "miin",
+      "confidence": "high",
+      "gloss": "fish/star",
+      "source": "fixture"
+     },
+     "48": {
+      "phoneme": "miin",
+      "confidence": "medium",
+      "gloss": "fish variant",
+      "source": "fixture"
+     },
+     "50": {
+      "phoneme": "miin",
+      "confidence": "low",
+      "gloss": "fish variant",
+      "source": "fixture"
+     },
+     "99": {
+      "phoneme": "vaTa",
+      "confidence": "high",
+      "gloss": "banyan",
+      "source": "fixture"
+     },
+     "120": {
+      "phoneme": "muruku",
+      "confidence": "medium",
+      "gloss": "Murukan",
+      "source": "fixture"
+     },
+     "130": {
+      "phoneme": "aru-",
+      "confidence": "high",
+      "gloss": "Pleiades",
+      "source": "fixture"
+     },
+     "131": {
+      "phoneme": "eZu-",
+      "confidence": "low",
+      "gloss": "Ursa Major",
+      "source": "fixture"
+     },
+     "140": {
+      "phoneme": "kuTam",
+      "confidence": "none",
+      "gloss": "pot?",
+      "source": "fixture"
+     },
+     "150": {
+      "phoneme": "uncertain-x",
+      "confidence": "medium",
+      "gloss": "unclear",
+      "source": "fixture"
+     },
+     "160": {
+      "phoneme": "?",
+      "confidence": "high",
+      "gloss": "unknown",
+      "source": "fixture"
+     }
+    }
+   },
+   "mode": "full",
+   "expected": {
+    "n_seals": 8,
+    "n_readable": 5,
+    "n_high_conf": 3,
+    "rows": [
+     {
+      "catalogue_id": "M-410",
+      "n_signs": 3,
+      "real_signs": 3,
+      "predicted_phoneme_skeleton": "miin-vaTa-muruku",
+      "n_high_conf": 2,
+      "readable": true
+     },
+     {
+      "catalogue_id": "M-411",
+      "n_signs": 2,
+      "real_signs": 2,
+      "predicted_phoneme_skeleton": "miin-uncertain-x",
+      "n_high_conf": 0,
+      "readable": true
+     },
+     {
+      "catalogue_id": "H-9",
+      "n_signs": 2,
+      "real_signs": 0,
+      "predicted_phoneme_skeleton": "(all placeholders)",
+      "n_high_conf": 0,
+      "readable": false
+     },
+     {
+      "catalogue_id": "H-10",
+      "n_signs": 0,
+      "real_signs": 0,
+      "predicted_phoneme_skeleton": "(all placeholders)",
+      "n_high_conf": 0,
+      "readable": false
+     },
+     {
+      "catalogue_id": "B-12",
+      "n_signs": 2,
+      "real_signs": 2,
+      "predicted_phoneme_skeleton": "?-eZu-",
+      "n_high_conf": 1,
+      "readable": true
+     },
+     {
+      "catalogue_id": "B-13",
+      "n_signs": 3,
+      "real_signs": 3,
+      "predicted_phoneme_skeleton": "aru--miin-miin",
+      "n_high_conf": 3,
+      "readable": true
+     },
+     {
+      "catalogue_id": "D-1",
+      "n_signs": 1,
+      "real_signs": 1,
+      "predicted_phoneme_skeleton": "kuTam",
+      "n_high_conf": 0,
+      "readable": true
+     },
+     {
+      "catalogue_id": "D-2",
+      "n_signs": 0,
+      "real_signs": 0,
+      "predicted_phoneme_skeleton": "(all placeholders)",
+      "n_high_conf": 0,
+      "readable": false
+     }
+    ],
+    "verdict": "Blind held-out test: 8 inscribed seals; 5 have at least one Parpola-attributed phoneme; 3 have at least one high-confidence phoneme. Only Janabiyah Laursen #10 currently has actual sign IDs; the other 10 seals have '?' placeholders pending CISI Vol 3 plate ingestion."
+   }
+  },
+  {
+   "id": "blind_empty",
+   "node": "BlindHeldOutTest",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "inscribed_seals": [],
+    "phoneme_map": {
+     "47": {
+      "phoneme": "miin",
+      "confidence": "high",
+      "gloss": "fish/star",
+      "source": "fixture"
+     },
+     "48": {
+      "phoneme": "miin",
+      "confidence": "medium",
+      "gloss": "fish variant",
+      "source": "fixture"
+     },
+     "50": {
+      "phoneme": "miin",
+      "confidence": "low",
+      "gloss": "fish variant",
+      "source": "fixture"
+     },
+     "99": {
+      "phoneme": "vaTa",
+      "confidence": "high",
+      "gloss": "banyan",
+      "source": "fixture"
+     },
+     "120": {
+      "phoneme": "muruku",
+      "confidence": "medium",
+      "gloss": "Murukan",
+      "source": "fixture"
+     },
+     "130": {
+      "phoneme": "aru-",
+      "confidence": "high",
+      "gloss": "Pleiades",
+      "source": "fixture"
+     },
+     "131": {
+      "phoneme": "eZu-",
+      "confidence": "low",
+      "gloss": "Ursa Major",
+      "source": "fixture"
+     },
+     "140": {
+      "phoneme": "kuTam",
+      "confidence": "none",
+      "gloss": "pot?",
+      "source": "fixture"
+     },
+     "150": {
+      "phoneme": "uncertain-x",
+      "confidence": "medium",
+      "gloss": "unclear",
+      "source": "fixture"
+     },
+     "160": {
+      "phoneme": "?",
+      "confidence": "high",
+      "gloss": "unknown",
+      "source": "fixture"
+     }
+    }
+   },
+   "mode": "full",
+   "expected": {
+    "n_seals": 0,
+    "n_readable": 0,
+    "n_high_conf": 0,
+    "rows": [],
+    "verdict": "Blind held-out test: 0 inscribed seals; 0 have at least one Parpola-attributed phoneme; 0 have at least one high-confidence phoneme. Only Janabiyah Laursen #10 currently has actual sign IDs; the other 10 seals have '?' placeholders pending CISI Vol 3 plate ingestion."
+   }
+  },
+  {
+   "id": "decoder_default",
+   "node": "BayesianDecoder",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "n_permutations": 1000,
+    "seed": 1234
+   },
+   "inputs": {
+    "inscribed_seals": [
+     {
+      "catalogue_id": "M-410",
+      "indus_signs": [
+       47,
+       99,
+       120
+      ],
+      "inscription_length": 3
+     },
+     {
+      "catalogue_id": "M-411",
+      "indus_signs": [
+       "48",
+       "150"
+      ],
+      "inscription_length": 2
+     },
+     {
+      "catalogue_id": "H-9",
+      "indus_signs": [
+       "?",
+       "?"
+      ],
+      "inscription_length": 2
+     },
+     {
+      "catalogue_id": "H-10",
+      "indus_signs": [],
+      "inscription_length": 0
+     },
+     {
+      "catalogue_id": "B-12",
+      "indus_signs": [
+       160,
+       131
+      ],
+      "inscription_length": 2
+     },
+     {
+      "catalogue_id": "B-13",
+      "indus_signs": [
+       130,
+       47,
+       47
+      ],
+      "inscription_length": 3
+     },
+     {
+      "catalogue_id": "D-1",
+      "indus_signs": [
+       140
+      ],
+      "inscription_length": 1
+     },
+     {
+      "catalogue_id": "D-2",
+      "inscription_length": 4
+     }
+    ],
+    "phoneme_map": {
+     "47": {
+      "phoneme": "miin",
+      "confidence": "high",
+      "gloss": "fish/star",
+      "source": "fixture"
+     },
+     "48": {
+      "phoneme": "miin",
+      "confidence": "medium",
+      "gloss": "fish variant",
+      "source": "fixture"
+     },
+     "50": {
+      "phoneme": "miin",
+      "confidence": "low",
+      "gloss": "fish variant",
+      "source": "fixture"
+     },
+     "99": {
+      "phoneme": "vaTa",
+      "confidence": "high",
+      "gloss": "banyan",
+      "source": "fixture"
+     },
+     "120": {
+      "phoneme": "muruku",
+      "confidence": "medium",
+      "gloss": "Murukan",
+      "source": "fixture"
+     },
+     "130": {
+      "phoneme": "aru-",
+      "confidence": "high",
+      "gloss": "Pleiades",
+      "source": "fixture"
+     },
+     "131": {
+      "phoneme": "eZu-",
+      "confidence": "low",
+      "gloss": "Ursa Major",
+      "source": "fixture"
+     },
+     "140": {
+      "phoneme": "kuTam",
+      "confidence": "none",
+      "gloss": "pot?",
+      "source": "fixture"
+     },
+     "150": {
+      "phoneme": "uncertain-x",
+      "confidence": "medium",
+      "gloss": "unclear",
+      "source": "fixture"
+     },
+     "160": {
+      "phoneme": "?",
+      "confidence": "high",
+      "gloss": "unknown",
+      "source": "fixture"
+     }
+    }
+   },
+   "mode": "full",
+   "expected": {
+    "n_seals": 8,
+    "n_phonemes_in_map": 10,
+    "observed_total_weight": 7.7,
+    "null_mean_weight": 6.439,
+    "p_value": 0.133,
+    "n_perms": 1000,
+    "obs_per_seal_top10": [
+     {
+      "catalogue_id": "M-410",
+      "n_signs": 3,
+      "n_attributed": 3,
+      "n_high_conf": 2,
+      "weight": 2.5
+     },
+     {
+      "catalogue_id": "M-411",
+      "n_signs": 2,
+      "n_attributed": 2,
+      "n_high_conf": 0,
+      "weight": 1.0
+     },
+     {
+      "catalogue_id": "H-9",
+      "n_signs": 0,
+      "n_attributed": 0,
+      "n_high_conf": 0,
+      "weight": 0.0
+     },
+     {
+      "catalogue_id": "H-10",
+      "n_signs": 0,
+      "n_attributed": 0,
+      "n_high_conf": 0,
+      "weight": 0.0
+     },
+     {
+      "catalogue_id": "B-12",
+      "n_signs": 2,
+      "n_attributed": 2,
+      "n_high_conf": 1,
+      "weight": 1.2
+     },
+     {
+      "catalogue_id": "B-13",
+      "n_signs": 3,
+      "n_attributed": 3,
+      "n_high_conf": 3,
+      "weight": 3.0
+     },
+     {
+      "catalogue_id": "D-1",
+      "n_signs": 1,
+      "n_attributed": 0,
+      "n_high_conf": 0,
+      "weight": 0.0
+     },
+     {
+      "catalogue_id": "D-2",
+      "n_signs": 0,
+      "n_attributed": 0,
+      "n_high_conf": 0,
+      "weight": 0.0
+     }
+    ],
+    "verdict": "Bayesian decoder: observed total weight = 7.700 across 8 inscribed seals. Null mean = 6.439 (1000 permutations of confidence assignments). Global p-value = 0.1330. Lower p = signs assigned to high-confidence phonemes really do cluster on the inscribed-seal corpus more than chance.",
+    "interpretation": "Caveat: this null-permutation strategy keeps the multiset of confidence labels constant but breaks their assignment to specific sign IDs. A significant p means the observed map places high-confidence phonemes on more 'frequent' signs in our corpus than chance would predict. This is a NECESSARY but not SUFFICIENT condition for the Dravidian hypothesis -- it only validates that Parpola's high-confidence proposals land on the right SIGNS, not that those phoneme VALUES are correct."
+   }
+  },
+  {
+   "id": "decoder_small",
+   "node": "BayesianDecoder",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "n_permutations": 200,
+    "seed": 7
+   },
+   "inputs": {
+    "inscribed_seals": [
+     {
+      "catalogue_id": "M-410",
+      "indus_signs": [
+       47,
+       99,
+       120
+      ],
+      "inscription_length": 3
+     },
+     {
+      "catalogue_id": "M-411",
+      "indus_signs": [
+       "48",
+       "150"
+      ],
+      "inscription_length": 2
+     },
+     {
+      "catalogue_id": "H-9",
+      "indus_signs": [
+       "?",
+       "?"
+      ],
+      "inscription_length": 2
+     },
+     {
+      "catalogue_id": "H-10",
+      "indus_signs": [],
+      "inscription_length": 0
+     },
+     {
+      "catalogue_id": "B-12",
+      "indus_signs": [
+       160,
+       131
+      ],
+      "inscription_length": 2
+     },
+     {
+      "catalogue_id": "B-13",
+      "indus_signs": [
+       130,
+       47,
+       47
+      ],
+      "inscription_length": 3
+     },
+     {
+      "catalogue_id": "D-1",
+      "indus_signs": [
+       140
+      ],
+      "inscription_length": 1
+     },
+     {
+      "catalogue_id": "D-2",
+      "inscription_length": 4
+     }
+    ],
+    "phoneme_map": {
+     "47": {
+      "phoneme": "miin",
+      "confidence": "high",
+      "gloss": "fish/star",
+      "source": "fixture"
+     },
+     "48": {
+      "phoneme": "miin",
+      "confidence": "medium",
+      "gloss": "fish variant",
+      "source": "fixture"
+     },
+     "50": {
+      "phoneme": "miin",
+      "confidence": "low",
+      "gloss": "fish variant",
+      "source": "fixture"
+     },
+     "99": {
+      "phoneme": "vaTa",
+      "confidence": "high",
+      "gloss": "banyan",
+      "source": "fixture"
+     },
+     "120": {
+      "phoneme": "muruku",
+      "confidence": "medium",
+      "gloss": "Murukan",
+      "source": "fixture"
+     },
+     "130": {
+      "phoneme": "aru-",
+      "confidence": "high",
+      "gloss": "Pleiades",
+      "source": "fixture"
+     },
+     "131": {
+      "phoneme": "eZu-",
+      "confidence": "low",
+      "gloss": "Ursa Major",
+      "source": "fixture"
+     },
+     "140": {
+      "phoneme": "kuTam",
+      "confidence": "none",
+      "gloss": "pot?",
+      "source": "fixture"
+     },
+     "150": {
+      "phoneme": "uncertain-x",
+      "confidence": "medium",
+      "gloss": "unclear",
+      "source": "fixture"
+     },
+     "160": {
+      "phoneme": "?",
+      "confidence": "high",
+      "gloss": "unknown",
+      "source": "fixture"
+     }
+    }
+   },
+   "mode": "full",
+   "expected": {
+    "n_seals": 8,
+    "n_phonemes_in_map": 10,
+    "observed_total_weight": 7.7,
+    "null_mean_weight": 6.491,
+    "p_value": 0.105,
+    "n_perms": 200,
+    "obs_per_seal_top10": [
+     {
+      "catalogue_id": "M-410",
+      "n_signs": 3,
+      "n_attributed": 3,
+      "n_high_conf": 2,
+      "weight": 2.5
+     },
+     {
+      "catalogue_id": "M-411",
+      "n_signs": 2,
+      "n_attributed": 2,
+      "n_high_conf": 0,
+      "weight": 1.0
+     },
+     {
+      "catalogue_id": "H-9",
+      "n_signs": 0,
+      "n_attributed": 0,
+      "n_high_conf": 0,
+      "weight": 0.0
+     },
+     {
+      "catalogue_id": "H-10",
+      "n_signs": 0,
+      "n_attributed": 0,
+      "n_high_conf": 0,
+      "weight": 0.0
+     },
+     {
+      "catalogue_id": "B-12",
+      "n_signs": 2,
+      "n_attributed": 2,
+      "n_high_conf": 1,
+      "weight": 1.2
+     },
+     {
+      "catalogue_id": "B-13",
+      "n_signs": 3,
+      "n_attributed": 3,
+      "n_high_conf": 3,
+      "weight": 3.0
+     },
+     {
+      "catalogue_id": "D-1",
+      "n_signs": 1,
+      "n_attributed": 0,
+      "n_high_conf": 0,
+      "weight": 0.0
+     },
+     {
+      "catalogue_id": "D-2",
+      "n_signs": 0,
+      "n_attributed": 0,
+      "n_high_conf": 0,
+      "weight": 0.0
+     }
+    ],
+    "verdict": "Bayesian decoder: observed total weight = 7.700 across 8 inscribed seals. Null mean = 6.491 (200 permutations of confidence assignments). Global p-value = 0.1050. Lower p = signs assigned to high-confidence phonemes really do cluster on the inscribed-seal corpus more than chance.",
+    "interpretation": "Caveat: this null-permutation strategy keeps the multiset of confidence labels constant but breaks their assignment to specific sign IDs. A significant p means the observed map places high-confidence phonemes on more 'frequent' signs in our corpus than chance would predict. This is a NECESSARY but not SUFFICIENT condition for the Dravidian hypothesis -- it only validates that Parpola's high-confidence proposals land on the right SIGNS, not that those phoneme VALUES are correct."
+   }
+  },
+  {
+   "id": "decoder_insufficient_seals",
+   "node": "BayesianDecoder",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "inscribed_seals": [],
+    "phoneme_map": {
+     "47": {
+      "phoneme": "miin",
+      "confidence": "high",
+      "gloss": "fish/star",
+      "source": "fixture"
+     },
+     "48": {
+      "phoneme": "miin",
+      "confidence": "medium",
+      "gloss": "fish variant",
+      "source": "fixture"
+     },
+     "50": {
+      "phoneme": "miin",
+      "confidence": "low",
+      "gloss": "fish variant",
+      "source": "fixture"
+     },
+     "99": {
+      "phoneme": "vaTa",
+      "confidence": "high",
+      "gloss": "banyan",
+      "source": "fixture"
+     },
+     "120": {
+      "phoneme": "muruku",
+      "confidence": "medium",
+      "gloss": "Murukan",
+      "source": "fixture"
+     },
+     "130": {
+      "phoneme": "aru-",
+      "confidence": "high",
+      "gloss": "Pleiades",
+      "source": "fixture"
+     },
+     "131": {
+      "phoneme": "eZu-",
+      "confidence": "low",
+      "gloss": "Ursa Major",
+      "source": "fixture"
+     },
+     "140": {
+      "phoneme": "kuTam",
+      "confidence": "none",
+      "gloss": "pot?",
+      "source": "fixture"
+     },
+     "150": {
+      "phoneme": "uncertain-x",
+      "confidence": "medium",
+      "gloss": "unclear",
+      "source": "fixture"
+     },
+     "160": {
+      "phoneme": "?",
+      "confidence": "high",
+      "gloss": "unknown",
+      "source": "fixture"
+     }
+    }
+   },
+   "mode": "full",
+   "expected": {
+    "verdict": "INSUFFICIENT_DATA",
+    "p_value": null,
+    "n_seals": 0,
+    "n_phonemes_in_map": 10
+   }
+  },
+  {
+   "id": "decoder_insufficient_map",
+   "node": "BayesianDecoder",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "inscribed_seals": [
+     {
+      "catalogue_id": "M-410",
+      "indus_signs": [
+       47,
+       99,
+       120
+      ],
+      "inscription_length": 3
+     },
+     {
+      "catalogue_id": "M-411",
+      "indus_signs": [
+       "48",
+       "150"
+      ],
+      "inscription_length": 2
+     },
+     {
+      "catalogue_id": "H-9",
+      "indus_signs": [
+       "?",
+       "?"
+      ],
+      "inscription_length": 2
+     },
+     {
+      "catalogue_id": "H-10",
+      "indus_signs": [],
+      "inscription_length": 0
+     },
+     {
+      "catalogue_id": "B-12",
+      "indus_signs": [
+       160,
+       131
+      ],
+      "inscription_length": 2
+     },
+     {
+      "catalogue_id": "B-13",
+      "indus_signs": [
+       130,
+       47,
+       47
+      ],
+      "inscription_length": 3
+     },
+     {
+      "catalogue_id": "D-1",
+      "indus_signs": [
+       140
+      ],
+      "inscription_length": 1
+     },
+     {
+      "catalogue_id": "D-2",
+      "inscription_length": 4
+     }
+    ],
+    "phoneme_map": {}
+   },
+   "mode": "full",
+   "expected": {
+    "verdict": "INSUFFICIENT_DATA",
+    "p_value": null,
+    "n_seals": 8,
+    "n_phonemes_in_map": 0
+   }
+  },
+  {
+   "id": "decoder2_default",
+   "node": "BayesianDecoderV2",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "n_permutations": 1000,
+    "seed": 2727
+   },
+   "inputs": {
+    "inscribed_seals": [
+     {
+      "catalogue_id": "M-410",
+      "indus_signs": [
+       47,
+       99,
+       120
+      ],
+      "inscription_length": 3
+     },
+     {
+      "catalogue_id": "M-411",
+      "indus_signs": [
+       "48",
+       "150"
+      ],
+      "inscription_length": 2
+     },
+     {
+      "catalogue_id": "H-9",
+      "indus_signs": [
+       "?",
+       "?"
+      ],
+      "inscription_length": 2
+     },
+     {
+      "catalogue_id": "H-10",
+      "indus_signs": [],
+      "inscription_length": 0
+     },
+     {
+      "catalogue_id": "B-12",
+      "indus_signs": [
+       160,
+       131
+      ],
+      "inscription_length": 2
+     },
+     {
+      "catalogue_id": "B-13",
+      "indus_signs": [
+       130,
+       47,
+       47
+      ],
+      "inscription_length": 3
+     },
+     {
+      "catalogue_id": "D-1",
+      "indus_signs": [
+       140
+      ],
+      "inscription_length": 1
+     },
+     {
+      "catalogue_id": "D-2",
+      "inscription_length": 4
+     }
+    ],
+    "phoneme_map": {
+     "47": {
+      "phoneme": "miin",
+      "confidence": "high",
+      "gloss": "fish/star",
+      "source": "fixture"
+     },
+     "48": {
+      "phoneme": "miin",
+      "confidence": "medium",
+      "gloss": "fish variant",
+      "source": "fixture"
+     },
+     "50": {
+      "phoneme": "miin",
+      "confidence": "low",
+      "gloss": "fish variant",
+      "source": "fixture"
+     },
+     "99": {
+      "phoneme": "vaTa",
+      "confidence": "high",
+      "gloss": "banyan",
+      "source": "fixture"
+     },
+     "120": {
+      "phoneme": "muruku",
+      "confidence": "medium",
+      "gloss": "Murukan",
+      "source": "fixture"
+     },
+     "130": {
+      "phoneme": "aru-",
+      "confidence": "high",
+      "gloss": "Pleiades",
+      "source": "fixture"
+     },
+     "131": {
+      "phoneme": "eZu-",
+      "confidence": "low",
+      "gloss": "Ursa Major",
+      "source": "fixture"
+     },
+     "140": {
+      "phoneme": "kuTam",
+      "confidence": "none",
+      "gloss": "pot?",
+      "source": "fixture"
+     },
+     "150": {
+      "phoneme": "uncertain-x",
+      "confidence": "medium",
+      "gloss": "unclear",
+      "source": "fixture"
+     },
+     "160": {
+      "phoneme": "?",
+      "confidence": "high",
+      "gloss": "unknown",
+      "source": "fixture"
+     }
+    }
+   },
+   "mode": "full",
+   "expected": {
+    "n_seals": 8,
+    "n_phonemes_in_map": 10,
+    "observed_total_score": 16.3,
+    "null_mean_score": 11.203,
+    "p_value": 0.033,
+    "n_perms": 1000,
+    "obs_per_seal": [
+     {
+      "catalogue_id": "M-410",
+      "n_signs": 3,
+      "phonemes_seen": [
+       "miin",
+       "vaTa",
+       "muruku"
+      ],
+      "compound_plausibility": 2.0,
+      "weighted_score": 7.5
+     },
+     {
+      "catalogue_id": "M-411",
+      "n_signs": 2,
+      "phonemes_seen": [
+       "miin",
+       "uncertain-x"
+      ],
+      "compound_plausibility": 0.0,
+      "weighted_score": 1.0
+     },
+     {
+      "catalogue_id": "H-9",
+      "n_signs": 0,
+      "phonemes_seen": [],
+      "compound_plausibility": 0.0,
+      "weighted_score": 0.0
+     },
+     {
+      "catalogue_id": "H-10",
+      "n_signs": 0,
+      "phonemes_seen": [],
+      "compound_plausibility": 0.0,
+      "weighted_score": 0.0
+     },
+     {
+      "catalogue_id": "B-12",
+      "n_signs": 2,
+      "phonemes_seen": [],
+      "compound_plausibility": 0.0,
+      "weighted_score": 1.2
+     },
+     {
+      "catalogue_id": "B-13",
+      "n_signs": 3,
+      "phonemes_seen": [
+       "aru-",
+       "miin",
+       "miin"
+      ],
+      "compound_plausibility": 1.2,
+      "weighted_score": 6.6
+     },
+     {
+      "catalogue_id": "D-1",
+      "n_signs": 1,
+      "phonemes_seen": [],
+      "compound_plausibility": 0.0,
+      "weighted_score": 0.0
+     },
+     {
+      "catalogue_id": "D-2",
+      "n_signs": 0,
+      "phonemes_seen": [],
+      "compound_plausibility": 0.0,
+      "weighted_score": 0.0
+     }
+    ],
+    "verdict": "Bayesian decoder v2 (phoneme-VALUE permutation): observed total weighted score = 16.300 across 8 inscribed seals. Null mean = 11.203 (1000 value permutations). Global p-value = 0.0330. Lower p = the SPECIFIC Dravidian phoneme values that Parpola assigns to specific sign IDs produce more plausible compound names than chance value-assignments would.",
+    "interpretation": "This extends Phase-26b: instead of permuting just confidence labels, we permute the actual Dravidian phoneme VALUES (miin, aru-, eZu-, vaTa-, muruku, etc.) across sign IDs. Significant p would mean Parpola's specific value-assignments produce more Dravidian-plausible compounds (aru-miin = Pleiades, vaTa-miin = north star, etc.) than randomized value-assignments. As with Phase-26b, this test is currently data-starved (1/11 readable seals) and will only become informative after CISI Vol 3 plate ingestion (Phase-28+)."
+   }
+  },
+  {
+   "id": "decoder2_small",
+   "node": "BayesianDecoderV2",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "n_permutations": 200,
+    "seed": 99
+   },
+   "inputs": {
+    "inscribed_seals": [
+     {
+      "catalogue_id": "M-410",
+      "indus_signs": [
+       47,
+       99,
+       120
+      ],
+      "inscription_length": 3
+     },
+     {
+      "catalogue_id": "M-411",
+      "indus_signs": [
+       "48",
+       "150"
+      ],
+      "inscription_length": 2
+     },
+     {
+      "catalogue_id": "H-9",
+      "indus_signs": [
+       "?",
+       "?"
+      ],
+      "inscription_length": 2
+     },
+     {
+      "catalogue_id": "H-10",
+      "indus_signs": [],
+      "inscription_length": 0
+     },
+     {
+      "catalogue_id": "B-12",
+      "indus_signs": [
+       160,
+       131
+      ],
+      "inscription_length": 2
+     },
+     {
+      "catalogue_id": "B-13",
+      "indus_signs": [
+       130,
+       47,
+       47
+      ],
+      "inscription_length": 3
+     },
+     {
+      "catalogue_id": "D-1",
+      "indus_signs": [
+       140
+      ],
+      "inscription_length": 1
+     },
+     {
+      "catalogue_id": "D-2",
+      "inscription_length": 4
+     }
+    ],
+    "phoneme_map": {
+     "47": {
+      "phoneme": "miin",
+      "confidence": "high",
+      "gloss": "fish/star",
+      "source": "fixture"
+     },
+     "48": {
+      "phoneme": "miin",
+      "confidence": "medium",
+      "gloss": "fish variant",
+      "source": "fixture"
+     },
+     "50": {
+      "phoneme": "miin",
+      "confidence": "low",
+      "gloss": "fish variant",
+      "source": "fixture"
+     },
+     "99": {
+      "phoneme": "vaTa",
+      "confidence": "high",
+      "gloss": "banyan",
+      "source": "fixture"
+     },
+     "120": {
+      "phoneme": "muruku",
+      "confidence": "medium",
+      "gloss": "Murukan",
+      "source": "fixture"
+     },
+     "130": {
+      "phoneme": "aru-",
+      "confidence": "high",
+      "gloss": "Pleiades",
+      "source": "fixture"
+     },
+     "131": {
+      "phoneme": "eZu-",
+      "confidence": "low",
+      "gloss": "Ursa Major",
+      "source": "fixture"
+     },
+     "140": {
+      "phoneme": "kuTam",
+      "confidence": "none",
+      "gloss": "pot?",
+      "source": "fixture"
+     },
+     "150": {
+      "phoneme": "uncertain-x",
+      "confidence": "medium",
+      "gloss": "unclear",
+      "source": "fixture"
+     },
+     "160": {
+      "phoneme": "?",
+      "confidence": "high",
+      "gloss": "unknown",
+      "source": "fixture"
+     }
+    }
+   },
+   "mode": "full",
+   "expected": {
+    "n_seals": 8,
+    "n_phonemes_in_map": 10,
+    "observed_total_score": 16.3,
+    "null_mean_score": 11.286,
+    "p_value": 0.06,
+    "n_perms": 200,
+    "obs_per_seal": [
+     {
+      "catalogue_id": "M-410",
+      "n_signs": 3,
+      "phonemes_seen": [
+       "miin",
+       "vaTa",
+       "muruku"
+      ],
+      "compound_plausibility": 2.0,
+      "weighted_score": 7.5
+     },
+     {
+      "catalogue_id": "M-411",
+      "n_signs": 2,
+      "phonemes_seen": [
+       "miin",
+       "uncertain-x"
+      ],
+      "compound_plausibility": 0.0,
+      "weighted_score": 1.0
+     },
+     {
+      "catalogue_id": "H-9",
+      "n_signs": 0,
+      "phonemes_seen": [],
+      "compound_plausibility": 0.0,
+      "weighted_score": 0.0
+     },
+     {
+      "catalogue_id": "H-10",
+      "n_signs": 0,
+      "phonemes_seen": [],
+      "compound_plausibility": 0.0,
+      "weighted_score": 0.0
+     },
+     {
+      "catalogue_id": "B-12",
+      "n_signs": 2,
+      "phonemes_seen": [],
+      "compound_plausibility": 0.0,
+      "weighted_score": 1.2
+     },
+     {
+      "catalogue_id": "B-13",
+      "n_signs": 3,
+      "phonemes_seen": [
+       "aru-",
+       "miin",
+       "miin"
+      ],
+      "compound_plausibility": 1.2,
+      "weighted_score": 6.6
+     },
+     {
+      "catalogue_id": "D-1",
+      "n_signs": 1,
+      "phonemes_seen": [],
+      "compound_plausibility": 0.0,
+      "weighted_score": 0.0
+     },
+     {
+      "catalogue_id": "D-2",
+      "n_signs": 0,
+      "phonemes_seen": [],
+      "compound_plausibility": 0.0,
+      "weighted_score": 0.0
+     }
+    ],
+    "verdict": "Bayesian decoder v2 (phoneme-VALUE permutation): observed total weighted score = 16.300 across 8 inscribed seals. Null mean = 11.286 (200 value permutations). Global p-value = 0.0600. Lower p = the SPECIFIC Dravidian phoneme values that Parpola assigns to specific sign IDs produce more plausible compound names than chance value-assignments would.",
+    "interpretation": "This extends Phase-26b: instead of permuting just confidence labels, we permute the actual Dravidian phoneme VALUES (miin, aru-, eZu-, vaTa-, muruku, etc.) across sign IDs. Significant p would mean Parpola's specific value-assignments produce more Dravidian-plausible compounds (aru-miin = Pleiades, vaTa-miin = north star, etc.) than randomized value-assignments. As with Phase-26b, this test is currently data-starved (1/11 readable seals) and will only become informative after CISI Vol 3 plate ingestion (Phase-28+)."
+   }
+  },
+  {
+   "id": "decoder2_insufficient",
+   "node": "BayesianDecoderV2",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "inscribed_seals": [],
+    "phoneme_map": {}
+   },
+   "mode": "full",
+   "expected": {
+    "verdict": "INSUFFICIENT_DATA",
+    "p_value": null,
+    "n_seals": 0,
+    "n_phonemes_in_map": 0
+   }
+  },
+  {
+   "id": "matcher_default",
+   "node": "EnhancedNameMatcher",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "rows_all": [
+     {
+      "candidate_name": "shu-ilishu",
+      "occurrences": 14,
+      "is_known_meluhhan": true
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "occurrences": 9,
+      "is_known_meluhhan": true
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "occurrences": 5,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "occurrences": 3,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "occurrences": 2,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "sig",
+      "occurrences": 1,
+      "is_known_meluhhan": false
+     }
+    ],
+    "inscribed_seals": [
+     {
+      "catalogue_id": "S-1",
+      "inscription_length": 3,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-2",
+      "inscription_length": 2,
+      "signs_confidence": "medium"
+     },
+     {
+      "catalogue_id": "S-3",
+      "inscription_length": 4,
+      "signs_confidence": "low"
+     },
+     {
+      "catalogue_id": "S-4",
+      "inscription_length": 1,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-5",
+      "inscription_length": 0,
+      "signs_confidence": "none"
+     }
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "n_candidates": 5,
+    "n_seals": 5,
+    "pairings": [
+     {
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "name_occurrences": 14,
+      "is_known_meluhhan": true,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "name_n_segments": 4,
+      "name_occurrences": 9,
+      "is_known_meluhhan": true,
+      "seal_id": "S-3",
+      "seal_n_signs": 4,
+      "seal_signs_confidence": "low",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "name_n_segments": 2,
+      "name_occurrences": 5,
+      "is_known_meluhhan": false,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "name_n_segments": 3,
+      "name_occurrences": 3,
+      "is_known_meluhhan": false,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "seal_signs_confidence": "high",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "name_n_segments": 2,
+      "name_occurrences": 2,
+      "is_known_meluhhan": false,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "name_occurrences": 14,
+      "is_known_meluhhan": true,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "seal_signs_confidence": "high",
+      "length_score": 0.667
+     },
+     {
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "name_occurrences": 14,
+      "is_known_meluhhan": true,
+      "seal_id": "S-4",
+      "seal_n_signs": 1,
+      "seal_signs_confidence": "high",
+      "length_score": 0.667
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "name_n_segments": 4,
+      "name_occurrences": 9,
+      "is_known_meluhhan": true,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "seal_signs_confidence": "high",
+      "length_score": 0.667
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "name_n_segments": 2,
+      "name_occurrences": 5,
+      "is_known_meluhhan": false,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "seal_signs_confidence": "high",
+      "length_score": 0.667
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "name_n_segments": 2,
+      "name_occurrences": 5,
+      "is_known_meluhhan": false,
+      "seal_id": "S-4",
+      "seal_n_signs": 1,
+      "seal_signs_confidence": "high",
+      "length_score": 0.667
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "name_n_segments": 3,
+      "name_occurrences": 3,
+      "is_known_meluhhan": false,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 0.667
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "name_n_segments": 3,
+      "name_occurrences": 3,
+      "is_known_meluhhan": false,
+      "seal_id": "S-3",
+      "seal_n_signs": 4,
+      "seal_signs_confidence": "low",
+      "length_score": 0.667
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "name_n_segments": 2,
+      "name_occurrences": 2,
+      "is_known_meluhhan": false,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "seal_signs_confidence": "high",
+      "length_score": 0.667
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "name_n_segments": 2,
+      "name_occurrences": 2,
+      "is_known_meluhhan": false,
+      "seal_id": "S-4",
+      "seal_n_signs": 1,
+      "seal_signs_confidence": "high",
+      "length_score": 0.667
+     },
+     {
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "name_occurrences": 14,
+      "is_known_meluhhan": true,
+      "seal_id": "S-3",
+      "seal_n_signs": 4,
+      "seal_signs_confidence": "low",
+      "length_score": 0.333
+     },
+     {
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "name_occurrences": 14,
+      "is_known_meluhhan": true,
+      "seal_id": "S-5",
+      "seal_n_signs": 0,
+      "seal_signs_confidence": "none",
+      "length_score": 0.333
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "name_n_segments": 4,
+      "name_occurrences": 9,
+      "is_known_meluhhan": true,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 0.333
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "name_n_segments": 2,
+      "name_occurrences": 5,
+      "is_known_meluhhan": false,
+      "seal_id": "S-3",
+      "seal_n_signs": 4,
+      "seal_signs_confidence": "low",
+      "length_score": 0.333
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "name_n_segments": 2,
+      "name_occurrences": 5,
+      "is_known_meluhhan": false,
+      "seal_id": "S-5",
+      "seal_n_signs": 0,
+      "seal_signs_confidence": "none",
+      "length_score": 0.333
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "name_n_segments": 3,
+      "name_occurrences": 3,
+      "is_known_meluhhan": false,
+      "seal_id": "S-4",
+      "seal_n_signs": 1,
+      "seal_signs_confidence": "high",
+      "length_score": 0.333
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "name_n_segments": 2,
+      "name_occurrences": 2,
+      "is_known_meluhhan": false,
+      "seal_id": "S-3",
+      "seal_n_signs": 4,
+      "seal_signs_confidence": "low",
+      "length_score": 0.333
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "name_n_segments": 2,
+      "name_occurrences": 2,
+      "is_known_meluhhan": false,
+      "seal_id": "S-5",
+      "seal_n_signs": 0,
+      "seal_signs_confidence": "none",
+      "length_score": 0.333
+     }
+    ],
+    "pairings_top50": [
+     {
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "name_occurrences": 14,
+      "is_known_meluhhan": true,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "name_n_segments": 4,
+      "name_occurrences": 9,
+      "is_known_meluhhan": true,
+      "seal_id": "S-3",
+      "seal_n_signs": 4,
+      "seal_signs_confidence": "low",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "name_n_segments": 2,
+      "name_occurrences": 5,
+      "is_known_meluhhan": false,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "name_n_segments": 3,
+      "name_occurrences": 3,
+      "is_known_meluhhan": false,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "seal_signs_confidence": "high",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "name_n_segments": 2,
+      "name_occurrences": 2,
+      "is_known_meluhhan": false,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "name_occurrences": 14,
+      "is_known_meluhhan": true,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "seal_signs_confidence": "high",
+      "length_score": 0.667
+     },
+     {
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "name_occurrences": 14,
+      "is_known_meluhhan": true,
+      "seal_id": "S-4",
+      "seal_n_signs": 1,
+      "seal_signs_confidence": "high",
+      "length_score": 0.667
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "name_n_segments": 4,
+      "name_occurrences": 9,
+      "is_known_meluhhan": true,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "seal_signs_confidence": "high",
+      "length_score": 0.667
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "name_n_segments": 2,
+      "name_occurrences": 5,
+      "is_known_meluhhan": false,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "seal_signs_confidence": "high",
+      "length_score": 0.667
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "name_n_segments": 2,
+      "name_occurrences": 5,
+      "is_known_meluhhan": false,
+      "seal_id": "S-4",
+      "seal_n_signs": 1,
+      "seal_signs_confidence": "high",
+      "length_score": 0.667
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "name_n_segments": 3,
+      "name_occurrences": 3,
+      "is_known_meluhhan": false,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 0.667
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "name_n_segments": 3,
+      "name_occurrences": 3,
+      "is_known_meluhhan": false,
+      "seal_id": "S-3",
+      "seal_n_signs": 4,
+      "seal_signs_confidence": "low",
+      "length_score": 0.667
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "name_n_segments": 2,
+      "name_occurrences": 2,
+      "is_known_meluhhan": false,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "seal_signs_confidence": "high",
+      "length_score": 0.667
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "name_n_segments": 2,
+      "name_occurrences": 2,
+      "is_known_meluhhan": false,
+      "seal_id": "S-4",
+      "seal_n_signs": 1,
+      "seal_signs_confidence": "high",
+      "length_score": 0.667
+     },
+     {
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "name_occurrences": 14,
+      "is_known_meluhhan": true,
+      "seal_id": "S-3",
+      "seal_n_signs": 4,
+      "seal_signs_confidence": "low",
+      "length_score": 0.333
+     },
+     {
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "name_occurrences": 14,
+      "is_known_meluhhan": true,
+      "seal_id": "S-5",
+      "seal_n_signs": 0,
+      "seal_signs_confidence": "none",
+      "length_score": 0.333
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "name_n_segments": 4,
+      "name_occurrences": 9,
+      "is_known_meluhhan": true,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 0.333
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "name_n_segments": 2,
+      "name_occurrences": 5,
+      "is_known_meluhhan": false,
+      "seal_id": "S-3",
+      "seal_n_signs": 4,
+      "seal_signs_confidence": "low",
+      "length_score": 0.333
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "name_n_segments": 2,
+      "name_occurrences": 5,
+      "is_known_meluhhan": false,
+      "seal_id": "S-5",
+      "seal_n_signs": 0,
+      "seal_signs_confidence": "none",
+      "length_score": 0.333
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "name_n_segments": 3,
+      "name_occurrences": 3,
+      "is_known_meluhhan": false,
+      "seal_id": "S-4",
+      "seal_n_signs": 1,
+      "seal_signs_confidence": "high",
+      "length_score": 0.333
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "name_n_segments": 2,
+      "name_occurrences": 2,
+      "is_known_meluhhan": false,
+      "seal_id": "S-3",
+      "seal_n_signs": 4,
+      "seal_signs_confidence": "low",
+      "length_score": 0.333
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "name_n_segments": 2,
+      "name_occurrences": 2,
+      "is_known_meluhhan": false,
+      "seal_id": "S-5",
+      "seal_n_signs": 0,
+      "seal_signs_confidence": "none",
+      "length_score": 0.333
+     }
+    ],
+    "n_pairings": 22,
+    "best_per_name": [
+     {
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "name_occurrences": 14,
+      "is_known_meluhhan": true,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "name_n_segments": 4,
+      "name_occurrences": 9,
+      "is_known_meluhhan": true,
+      "seal_id": "S-3",
+      "seal_n_signs": 4,
+      "seal_signs_confidence": "low",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "name_n_segments": 2,
+      "name_occurrences": 5,
+      "is_known_meluhhan": false,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "name_n_segments": 3,
+      "name_occurrences": 3,
+      "is_known_meluhhan": false,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "seal_signs_confidence": "high",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "name_n_segments": 2,
+      "name_occurrences": 2,
+      "is_known_meluhhan": false,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 1.0
+     }
+    ],
+    "verdict": "Enhanced matcher (Phase-23): 22 length-compatible pairings between 5 inscribed seals and 5 strict-PN candidates (freq>=2, tol=2)."
+   }
+  },
+  {
+   "id": "matcher_minfreq1_tol1",
+   "node": "EnhancedNameMatcher",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "min_name_freq": 1,
+    "tolerance": 1
+   },
+   "inputs": {
+    "rows_all": [
+     {
+      "candidate_name": "shu-ilishu",
+      "occurrences": 14,
+      "is_known_meluhhan": true
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "occurrences": 9,
+      "is_known_meluhhan": true
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "occurrences": 5,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "occurrences": 3,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "occurrences": 2,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "sig",
+      "occurrences": 1,
+      "is_known_meluhhan": false
+     }
+    ],
+    "inscribed_seals": [
+     {
+      "catalogue_id": "S-1",
+      "inscription_length": 3,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-2",
+      "inscription_length": 2,
+      "signs_confidence": "medium"
+     },
+     {
+      "catalogue_id": "S-3",
+      "inscription_length": 4,
+      "signs_confidence": "low"
+     },
+     {
+      "catalogue_id": "S-4",
+      "inscription_length": 1,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-5",
+      "inscription_length": 0,
+      "signs_confidence": "none"
+     }
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "n_candidates": 6,
+    "n_seals": 5,
+    "pairings": [
+     {
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "name_occurrences": 14,
+      "is_known_meluhhan": true,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "name_n_segments": 4,
+      "name_occurrences": 9,
+      "is_known_meluhhan": true,
+      "seal_id": "S-3",
+      "seal_n_signs": 4,
+      "seal_signs_confidence": "low",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "name_n_segments": 2,
+      "name_occurrences": 5,
+      "is_known_meluhhan": false,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "name_n_segments": 3,
+      "name_occurrences": 3,
+      "is_known_meluhhan": false,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "seal_signs_confidence": "high",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "name_n_segments": 2,
+      "name_occurrences": 2,
+      "is_known_meluhhan": false,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "sig",
+      "name_n_segments": 1,
+      "name_occurrences": 1,
+      "is_known_meluhhan": false,
+      "seal_id": "S-4",
+      "seal_n_signs": 1,
+      "seal_signs_confidence": "high",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "name_occurrences": 14,
+      "is_known_meluhhan": true,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "seal_signs_confidence": "high",
+      "length_score": 0.5
+     },
+     {
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "name_occurrences": 14,
+      "is_known_meluhhan": true,
+      "seal_id": "S-4",
+      "seal_n_signs": 1,
+      "seal_signs_confidence": "high",
+      "length_score": 0.5
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "name_n_segments": 4,
+      "name_occurrences": 9,
+      "is_known_meluhhan": true,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "seal_signs_confidence": "high",
+      "length_score": 0.5
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "name_n_segments": 2,
+      "name_occurrences": 5,
+      "is_known_meluhhan": false,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "seal_signs_confidence": "high",
+      "length_score": 0.5
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "name_n_segments": 2,
+      "name_occurrences": 5,
+      "is_known_meluhhan": false,
+      "seal_id": "S-4",
+      "seal_n_signs": 1,
+      "seal_signs_confidence": "high",
+      "length_score": 0.5
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "name_n_segments": 3,
+      "name_occurrences": 3,
+      "is_known_meluhhan": false,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 0.5
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "name_n_segments": 3,
+      "name_occurrences": 3,
+      "is_known_meluhhan": false,
+      "seal_id": "S-3",
+      "seal_n_signs": 4,
+      "seal_signs_confidence": "low",
+      "length_score": 0.5
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "name_n_segments": 2,
+      "name_occurrences": 2,
+      "is_known_meluhhan": false,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "seal_signs_confidence": "high",
+      "length_score": 0.5
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "name_n_segments": 2,
+      "name_occurrences": 2,
+      "is_known_meluhhan": false,
+      "seal_id": "S-4",
+      "seal_n_signs": 1,
+      "seal_signs_confidence": "high",
+      "length_score": 0.5
+     },
+     {
+      "candidate_name": "sig",
+      "name_n_segments": 1,
+      "name_occurrences": 1,
+      "is_known_meluhhan": false,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 0.5
+     },
+     {
+      "candidate_name": "sig",
+      "name_n_segments": 1,
+      "name_occurrences": 1,
+      "is_known_meluhhan": false,
+      "seal_id": "S-5",
+      "seal_n_signs": 0,
+      "seal_signs_confidence": "none",
+      "length_score": 0.5
+     }
+    ],
+    "pairings_top50": [
+     {
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "name_occurrences": 14,
+      "is_known_meluhhan": true,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "name_n_segments": 4,
+      "name_occurrences": 9,
+      "is_known_meluhhan": true,
+      "seal_id": "S-3",
+      "seal_n_signs": 4,
+      "seal_signs_confidence": "low",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "name_n_segments": 2,
+      "name_occurrences": 5,
+      "is_known_meluhhan": false,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "name_n_segments": 3,
+      "name_occurrences": 3,
+      "is_known_meluhhan": false,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "seal_signs_confidence": "high",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "name_n_segments": 2,
+      "name_occurrences": 2,
+      "is_known_meluhhan": false,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "sig",
+      "name_n_segments": 1,
+      "name_occurrences": 1,
+      "is_known_meluhhan": false,
+      "seal_id": "S-4",
+      "seal_n_signs": 1,
+      "seal_signs_confidence": "high",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "name_occurrences": 14,
+      "is_known_meluhhan": true,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "seal_signs_confidence": "high",
+      "length_score": 0.5
+     },
+     {
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "name_occurrences": 14,
+      "is_known_meluhhan": true,
+      "seal_id": "S-4",
+      "seal_n_signs": 1,
+      "seal_signs_confidence": "high",
+      "length_score": 0.5
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "name_n_segments": 4,
+      "name_occurrences": 9,
+      "is_known_meluhhan": true,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "seal_signs_confidence": "high",
+      "length_score": 0.5
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "name_n_segments": 2,
+      "name_occurrences": 5,
+      "is_known_meluhhan": false,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "seal_signs_confidence": "high",
+      "length_score": 0.5
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "name_n_segments": 2,
+      "name_occurrences": 5,
+      "is_known_meluhhan": false,
+      "seal_id": "S-4",
+      "seal_n_signs": 1,
+      "seal_signs_confidence": "high",
+      "length_score": 0.5
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "name_n_segments": 3,
+      "name_occurrences": 3,
+      "is_known_meluhhan": false,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 0.5
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "name_n_segments": 3,
+      "name_occurrences": 3,
+      "is_known_meluhhan": false,
+      "seal_id": "S-3",
+      "seal_n_signs": 4,
+      "seal_signs_confidence": "low",
+      "length_score": 0.5
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "name_n_segments": 2,
+      "name_occurrences": 2,
+      "is_known_meluhhan": false,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "seal_signs_confidence": "high",
+      "length_score": 0.5
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "name_n_segments": 2,
+      "name_occurrences": 2,
+      "is_known_meluhhan": false,
+      "seal_id": "S-4",
+      "seal_n_signs": 1,
+      "seal_signs_confidence": "high",
+      "length_score": 0.5
+     },
+     {
+      "candidate_name": "sig",
+      "name_n_segments": 1,
+      "name_occurrences": 1,
+      "is_known_meluhhan": false,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 0.5
+     },
+     {
+      "candidate_name": "sig",
+      "name_n_segments": 1,
+      "name_occurrences": 1,
+      "is_known_meluhhan": false,
+      "seal_id": "S-5",
+      "seal_n_signs": 0,
+      "seal_signs_confidence": "none",
+      "length_score": 0.5
+     }
+    ],
+    "n_pairings": 17,
+    "best_per_name": [
+     {
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "name_occurrences": 14,
+      "is_known_meluhhan": true,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "name_n_segments": 4,
+      "name_occurrences": 9,
+      "is_known_meluhhan": true,
+      "seal_id": "S-3",
+      "seal_n_signs": 4,
+      "seal_signs_confidence": "low",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "name_n_segments": 2,
+      "name_occurrences": 5,
+      "is_known_meluhhan": false,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "name_n_segments": 3,
+      "name_occurrences": 3,
+      "is_known_meluhhan": false,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "seal_signs_confidence": "high",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "name_n_segments": 2,
+      "name_occurrences": 2,
+      "is_known_meluhhan": false,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "sig",
+      "name_n_segments": 1,
+      "name_occurrences": 1,
+      "is_known_meluhhan": false,
+      "seal_id": "S-4",
+      "seal_n_signs": 1,
+      "seal_signs_confidence": "high",
+      "length_score": 1.0
+     }
+    ],
+    "verdict": "Enhanced matcher (Phase-23): 17 length-compatible pairings between 5 inscribed seals and 6 strict-PN candidates (freq>=1, tol=1)."
+   }
+  },
+  {
+   "id": "matcher_insufficient",
+   "node": "EnhancedNameMatcher",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "rows_all": [],
+    "inscribed_seals": [
+     {
+      "catalogue_id": "S-1",
+      "inscription_length": 3,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-2",
+      "inscription_length": 2,
+      "signs_confidence": "medium"
+     },
+     {
+      "catalogue_id": "S-3",
+      "inscription_length": 4,
+      "signs_confidence": "low"
+     },
+     {
+      "catalogue_id": "S-4",
+      "inscription_length": 1,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-5",
+      "inscription_length": 0,
+      "signs_confidence": "none"
+     }
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "n_candidates": 0,
+    "n_seals": 5,
+    "pairings": [],
+    "n_pairings": 0,
+    "best_per_name": [],
+    "verdict": "Enhanced matcher: insufficient inputs (candidates=0, inscribed_seals=5)."
+   }
+  },
+  {
+   "id": "matcher2_default",
+   "node": "EnhancedNameMatcherV2",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "min_name_freq": 1,
+    "tolerance": 2
+   },
+   "inputs": {
+    "rows_all": [
+     {
+      "candidate_name": "shu-ilishu",
+      "occurrences": 14,
+      "is_known_meluhhan": true
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "occurrences": 9,
+      "is_known_meluhhan": true
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "occurrences": 5,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "occurrences": 3,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "occurrences": 2,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "sig",
+      "occurrences": 1,
+      "is_known_meluhhan": false
+     }
+    ],
+    "inscribed_seals": [
+     {
+      "catalogue_id": "S-1",
+      "inscription_length": 3,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-2",
+      "inscription_length": 2,
+      "signs_confidence": "medium"
+     },
+     {
+      "catalogue_id": "S-3",
+      "inscription_length": 4,
+      "signs_confidence": "low"
+     },
+     {
+      "catalogue_id": "S-4",
+      "inscription_length": 1,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-5",
+      "inscription_length": 0,
+      "signs_confidence": "none"
+     }
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "n_candidates": 6,
+    "n_seals": 5,
+    "n_assigned": 5,
+    "n_unassigned": 1,
+    "pairings": [
+     {
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "name_occurrences": 14,
+      "is_known_meluhhan": true,
+      "seal_idx": 1,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "seal_signs_confidence": "medium",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "name_n_segments": 4,
+      "name_occurrences": 9,
+      "is_known_meluhhan": true,
+      "seal_idx": 2,
+      "seal_id": "S-3",
+      "seal_n_signs": 4,
+      "seal_signs_confidence": "low",
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "name_n_segments": 2,
+      "name_occurrences": 5,
+      "is_known_meluhhan": false,
+      "seal_idx": 0,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "seal_signs_confidence": "high",
+      "length_score": 0.667
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "name_n_segments": 3,
+      "name_occurrences": 3,
+      "is_known_meluhhan": false,
+      "seal_idx": 3,
+      "seal_id": "S-4",
+      "seal_n_signs": 1,
+      "seal_signs_confidence": "high",
+      "length_score": 0.333
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "name_n_segments": 2,
+      "name_occurrences": 2,
+      "is_known_meluhhan": false,
+      "seal_idx": 4,
+      "seal_id": "S-5",
+      "seal_n_signs": 0,
+      "seal_signs_confidence": "none",
+      "length_score": 0.333
+     }
+    ],
+    "n_pairings": 5,
+    "total_length_score": 3.333,
+    "verdict": "Matcher v2: bipartite assignment of 5/6 candidates onto 5 inscribed seals; total length-score = 3.333."
+   }
+  },
+  {
+   "id": "matcher2_insufficient",
+   "node": "EnhancedNameMatcherV2",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "rows_all": [
+     {
+      "candidate_name": "shu-ilishu",
+      "occurrences": 14,
+      "is_known_meluhhan": true
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "occurrences": 9,
+      "is_known_meluhhan": true
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "occurrences": 5,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "occurrences": 3,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "occurrences": 2,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "sig",
+      "occurrences": 1,
+      "is_known_meluhhan": false
+     }
+    ],
+    "inscribed_seals": []
+   },
+   "mode": "full",
+   "expected": {
+    "n_candidates": 6,
+    "n_seals": 0,
+    "pairings": [],
+    "n_pairings": 0,
+    "verdict": "Matcher v2: insufficient inputs (candidates=6, seals=0)."
+   }
+  },
+  {
+   "id": "meluhha_default",
+   "node": "MeluhhaNameMatcher",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "min_name_freq": 2
+   },
+   "inputs": {
+    "persons": [
+     {
+      "candidate_name": "shu-ilishu"
+     },
+     {
+      "candidate_name": "shu-ilishu"
+     },
+     {
+      "candidate_name": "shu-ilishu"
+     },
+     {
+      "candidate_name": "lu-sun-zi-da"
+     },
+     {
+      "candidate_name": "lu-sun-zi-da"
+     },
+     {
+      "candidate_name": "ur-dlama"
+     },
+     {
+      "candidate_name": ""
+     },
+     {
+      "candidate_name": "a-kal-la"
+     },
+     {
+      "candidate_name": "a-kal-la"
+     }
+    ],
+    "seals_at_mesopotamia": [
+     {
+      "catalogue_id": "G-1",
+      "indus_signs": [
+       1,
+       2,
+       3
+      ]
+     },
+     {
+      "catalogue_id": "G-2",
+      "indus_signs": [
+       4,
+       5
+      ]
+     },
+     {
+      "catalogue_id": "G-3",
+      "indus_signs": []
+     },
+     {
+      "catalogue_id": "G-4"
+     },
+     {
+      "catalogue_id": "G-5",
+      "indus_signs": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ]
+     }
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "n_candidates": 3,
+    "n_seals_with_signs": 3,
+    "n_seals_total": 5,
+    "pairings_top50": [
+     {
+      "seal_id": "G-1",
+      "seal_n_signs": 3,
+      "candidate_name": "a-kal-la",
+      "name_n_segments": 3,
+      "name_occurrences": 2,
+      "length_score": 1.0
+     },
+     {
+      "seal_id": "G-2",
+      "seal_n_signs": 2,
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "name_occurrences": 3,
+      "length_score": 1.0
+     },
+     {
+      "seal_id": "G-1",
+      "seal_n_signs": 3,
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "name_occurrences": 3,
+      "length_score": 0.8
+     },
+     {
+      "seal_id": "G-1",
+      "seal_n_signs": 3,
+      "candidate_name": "lu-sun-zi-da",
+      "name_n_segments": 4,
+      "name_occurrences": 2,
+      "length_score": 0.8
+     },
+     {
+      "seal_id": "G-2",
+      "seal_n_signs": 2,
+      "candidate_name": "a-kal-la",
+      "name_n_segments": 3,
+      "name_occurrences": 2,
+      "length_score": 0.8
+     },
+     {
+      "seal_id": "G-2",
+      "seal_n_signs": 2,
+      "candidate_name": "lu-sun-zi-da",
+      "name_n_segments": 4,
+      "name_occurrences": 2,
+      "length_score": 0.6
+     },
+     {
+      "seal_id": "G-5",
+      "seal_n_signs": 8,
+      "candidate_name": "lu-sun-zi-da",
+      "name_n_segments": 4,
+      "name_occurrences": 2,
+      "length_score": 0.2
+     }
+    ],
+    "n_pairings": 7,
+    "verdict": "Name-matcher: 7 length-compatible pairings between 3 sign-bearing seals and 3 name candidates."
+   }
+  },
+  {
+   "id": "meluhha_minfreq3",
+   "node": "MeluhhaNameMatcher",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "min_name_freq": 3
+   },
+   "inputs": {
+    "persons": [
+     {
+      "candidate_name": "shu-ilishu"
+     },
+     {
+      "candidate_name": "shu-ilishu"
+     },
+     {
+      "candidate_name": "shu-ilishu"
+     },
+     {
+      "candidate_name": "lu-sun-zi-da"
+     },
+     {
+      "candidate_name": "lu-sun-zi-da"
+     },
+     {
+      "candidate_name": "ur-dlama"
+     },
+     {
+      "candidate_name": ""
+     },
+     {
+      "candidate_name": "a-kal-la"
+     },
+     {
+      "candidate_name": "a-kal-la"
+     }
+    ],
+    "seals_at_mesopotamia": [
+     {
+      "catalogue_id": "G-1",
+      "indus_signs": [
+       1,
+       2,
+       3
+      ]
+     },
+     {
+      "catalogue_id": "G-2",
+      "indus_signs": [
+       4,
+       5
+      ]
+     },
+     {
+      "catalogue_id": "G-3",
+      "indus_signs": []
+     },
+     {
+      "catalogue_id": "G-4"
+     },
+     {
+      "catalogue_id": "G-5",
+      "indus_signs": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ]
+     }
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "n_candidates": 1,
+    "n_seals_with_signs": 3,
+    "n_seals_total": 5,
+    "pairings_top50": [
+     {
+      "seal_id": "G-2",
+      "seal_n_signs": 2,
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "name_occurrences": 3,
+      "length_score": 1.0
+     },
+     {
+      "seal_id": "G-1",
+      "seal_n_signs": 3,
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "name_occurrences": 3,
+      "length_score": 0.8
+     }
+    ],
+    "n_pairings": 2,
+    "verdict": "Name-matcher: 2 length-compatible pairings between 3 sign-bearing seals and 1 name candidates."
+   }
+  },
+  {
+   "id": "meluhha_no_signs",
+   "node": "MeluhhaNameMatcher",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "persons": [
+     {
+      "candidate_name": "shu-ilishu"
+     },
+     {
+      "candidate_name": "shu-ilishu"
+     },
+     {
+      "candidate_name": "shu-ilishu"
+     },
+     {
+      "candidate_name": "lu-sun-zi-da"
+     },
+     {
+      "candidate_name": "lu-sun-zi-da"
+     },
+     {
+      "candidate_name": "ur-dlama"
+     },
+     {
+      "candidate_name": ""
+     },
+     {
+      "candidate_name": "a-kal-la"
+     },
+     {
+      "candidate_name": "a-kal-la"
+     }
+    ],
+    "seals_at_mesopotamia": [
+     {
+      "catalogue_id": "G-3",
+      "indus_signs": []
+     },
+     {
+      "catalogue_id": "G-4"
+     }
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "n_candidates": 3,
+    "n_seals_with_signs": 0,
+    "n_seals_total": 2,
+    "pairings_top50": [],
+    "n_pairings": 0,
+    "verdict": "PROTOTYPE STATUS: name-matcher cannot score yet because no Mesopotamia-found Indus seals have ingested sign sequences. Phase-23 must populate indus_signs[] from CISI Vol 3 / Frenez 2018 catalogue tables. Available: 3 name candidates (freq>=2); 2 seals (none with signs)."
+   }
+  },
+  {
+   "id": "readout_default",
+   "node": "BilingualReadoutTest",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "rows_all": [
+     {
+      "candidate_name": "shu-ilishu",
+      "occurrences": 14,
+      "is_known_meluhhan": true
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "occurrences": 9,
+      "is_known_meluhhan": true
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "occurrences": 5,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "occurrences": 3,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "occurrences": 2,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "sig",
+      "occurrences": 1,
+      "is_known_meluhhan": false
+     }
+    ],
+    "inscribed_seals": [
+     {
+      "catalogue_id": "S-1",
+      "inscription_length": 3,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-2",
+      "inscription_length": 2,
+      "signs_confidence": "medium"
+     },
+     {
+      "catalogue_id": "S-3",
+      "inscription_length": 4,
+      "signs_confidence": "low"
+     },
+     {
+      "catalogue_id": "S-4",
+      "inscription_length": 1,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-5",
+      "inscription_length": 0,
+      "signs_confidence": "none"
+     }
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "verdict": "READOUT_NOT_SIGNIFICANT",
+    "p_value": 1.0,
+    "observed": 5.0,
+    "null_mean": 5.0,
+    "null_sd": 0.0,
+    "z_score": 0.0,
+    "n_permutations": 1000,
+    "n_candidates": 5,
+    "n_seals": 5,
+    "tolerance": 2,
+    "interpretation": "Length-only test: a significant p means the observed name-length-to-seal-length distribution is unlikely under shuffled-length null. Phase-24 needs sign IDs (not just lengths) to upgrade to a phonetic readout."
+   }
+  },
+  {
+   "id": "readout_graph",
+   "node": "BilingualReadoutTest",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "n_permutations": 1000,
+    "min_name_freq": 1,
+    "tolerance": 2,
+    "seed": 42
+   },
+   "inputs": {
+    "rows_all": [
+     {
+      "candidate_name": "shu-ilishu",
+      "occurrences": 14,
+      "is_known_meluhhan": true
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "occurrences": 9,
+      "is_known_meluhhan": true
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "occurrences": 5,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "occurrences": 3,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "occurrences": 2,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "sig",
+      "occurrences": 1,
+      "is_known_meluhhan": false
+     }
+    ],
+    "inscribed_seals": [
+     {
+      "catalogue_id": "S-1",
+      "inscription_length": 3,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-2",
+      "inscription_length": 2,
+      "signs_confidence": "medium"
+     },
+     {
+      "catalogue_id": "S-3",
+      "inscription_length": 4,
+      "signs_confidence": "low"
+     },
+     {
+      "catalogue_id": "S-4",
+      "inscription_length": 1,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-5",
+      "inscription_length": 0,
+      "signs_confidence": "none"
+     }
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "verdict": "READOUT_NOT_SIGNIFICANT",
+    "p_value": 1.0,
+    "observed": 6.0,
+    "null_mean": 6.0,
+    "null_sd": 0.0,
+    "z_score": 0.0,
+    "n_permutations": 1000,
+    "n_candidates": 6,
+    "n_seals": 5,
+    "tolerance": 2,
+    "interpretation": "Length-only test: a significant p means the observed name-length-to-seal-length distribution is unlikely under shuffled-length null. Phase-24 needs sign IDs (not just lengths) to upgrade to a phonetic readout."
+   }
+  },
+  {
+   "id": "readout_insufficient",
+   "node": "BilingualReadoutTest",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "rows_all": [],
+    "inscribed_seals": [
+     {
+      "catalogue_id": "S-1",
+      "inscription_length": 3,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-2",
+      "inscription_length": 2,
+      "signs_confidence": "medium"
+     },
+     {
+      "catalogue_id": "S-3",
+      "inscription_length": 4,
+      "signs_confidence": "low"
+     },
+     {
+      "catalogue_id": "S-4",
+      "inscription_length": 1,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-5",
+      "inscription_length": 0,
+      "signs_confidence": "none"
+     }
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "verdict": "INSUFFICIENT_DATA: cannot run readout test",
+    "n_candidates": 0,
+    "n_seals": 5,
+    "p_value": null
+   }
+  },
+  {
+   "id": "readout2_default",
+   "node": "BilingualReadoutTestV2",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "rows_all": [
+     {
+      "candidate_name": "shu-ilishu",
+      "occurrences": 14,
+      "is_known_meluhhan": true
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "occurrences": 9,
+      "is_known_meluhhan": true
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "occurrences": 5,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "occurrences": 3,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "occurrences": 2,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "sig",
+      "occurrences": 1,
+      "is_known_meluhhan": false
+     }
+    ],
+    "inscribed_seals": [
+     {
+      "catalogue_id": "S-1",
+      "inscription_length": 3,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-2",
+      "inscription_length": 2,
+      "signs_confidence": "medium"
+     },
+     {
+      "catalogue_id": "S-3",
+      "inscription_length": 4,
+      "signs_confidence": "low"
+     },
+     {
+      "catalogue_id": "S-4",
+      "inscription_length": 1,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-5",
+      "inscription_length": 0,
+      "signs_confidence": "none"
+     }
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "verdict": "READOUT_NOT_SIGNIFICANT",
+    "p_value": 0.228,
+    "observed": 3.333,
+    "null_mean": 2.7408,
+    "null_sd": 0.633,
+    "z_score": 0.9357,
+    "n_permutations": 2000,
+    "n_candidates": 6,
+    "n_seals": 5,
+    "tolerance": 2,
+    "observed_assignment": [
+     {
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "seal_idx": 1,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "name_n_segments": 4,
+      "seal_idx": 2,
+      "seal_id": "S-3",
+      "seal_n_signs": 4,
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "name_n_segments": 2,
+      "seal_idx": 0,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "length_score": 0.667
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "name_n_segments": 3,
+      "seal_idx": 3,
+      "seal_id": "S-4",
+      "seal_n_signs": 1,
+      "length_score": 0.333
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "name_n_segments": 2,
+      "seal_idx": 4,
+      "seal_id": "S-5",
+      "seal_n_signs": 0,
+      "length_score": 0.333
+     }
+    ],
+    "interpretation": "Bipartite-assignment readout test: each candidate name committed to a unique seal. Null: random one-to-one name-to-seal pairings. A significant p-value would indicate the observed length-matching is unlikely under uniform random pairings."
+   }
+  },
+  {
+   "id": "readout2_graph",
+   "node": "BilingualReadoutTestV2",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "n_permutations": 2000,
+    "min_name_freq": 1,
+    "tolerance": 2,
+    "seed": 42
+   },
+   "inputs": {
+    "rows_all": [
+     {
+      "candidate_name": "shu-ilishu",
+      "occurrences": 14,
+      "is_known_meluhhan": true
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "occurrences": 9,
+      "is_known_meluhhan": true
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "occurrences": 5,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "occurrences": 3,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "occurrences": 2,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "sig",
+      "occurrences": 1,
+      "is_known_meluhhan": false
+     }
+    ],
+    "inscribed_seals": [
+     {
+      "catalogue_id": "S-1",
+      "inscription_length": 3,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-2",
+      "inscription_length": 2,
+      "signs_confidence": "medium"
+     },
+     {
+      "catalogue_id": "S-3",
+      "inscription_length": 4,
+      "signs_confidence": "low"
+     },
+     {
+      "catalogue_id": "S-4",
+      "inscription_length": 1,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-5",
+      "inscription_length": 0,
+      "signs_confidence": "none"
+     }
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "verdict": "READOUT_NOT_SIGNIFICANT",
+    "p_value": 0.228,
+    "observed": 3.333,
+    "null_mean": 2.7408,
+    "null_sd": 0.633,
+    "z_score": 0.9357,
+    "n_permutations": 2000,
+    "n_candidates": 6,
+    "n_seals": 5,
+    "tolerance": 2,
+    "observed_assignment": [
+     {
+      "candidate_name": "shu-ilishu",
+      "name_n_segments": 2,
+      "seal_idx": 1,
+      "seal_id": "S-2",
+      "seal_n_signs": 2,
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "name_n_segments": 4,
+      "seal_idx": 2,
+      "seal_id": "S-3",
+      "seal_n_signs": 4,
+      "length_score": 1.0
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "name_n_segments": 2,
+      "seal_idx": 0,
+      "seal_id": "S-1",
+      "seal_n_signs": 3,
+      "length_score": 0.667
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "name_n_segments": 3,
+      "seal_idx": 3,
+      "seal_id": "S-4",
+      "seal_n_signs": 1,
+      "length_score": 0.333
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "name_n_segments": 2,
+      "seal_idx": 4,
+      "seal_id": "S-5",
+      "seal_n_signs": 0,
+      "length_score": 0.333
+     }
+    ],
+    "interpretation": "Bipartite-assignment readout test: each candidate name committed to a unique seal. Null: random one-to-one name-to-seal pairings. A significant p-value would indicate the observed length-matching is unlikely under uniform random pairings."
+   }
+  },
+  {
+   "id": "readout2_insufficient",
+   "node": "BilingualReadoutTestV2",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "rows_all": [
+     {
+      "candidate_name": "shu-ilishu",
+      "occurrences": 14,
+      "is_known_meluhhan": true
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "occurrences": 9,
+      "is_known_meluhhan": true
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "occurrences": 5,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "occurrences": 3,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "occurrences": 2,
+      "is_known_meluhhan": false
+     },
+     {
+      "candidate_name": "sig",
+      "occurrences": 1,
+      "is_known_meluhhan": false
+     }
+    ],
+    "inscribed_seals": []
+   },
+   "mode": "full",
+   "expected": {
+    "verdict": "INSUFFICIENT_DATA",
+    "p_value": null,
+    "n_candidates": 6,
+    "n_seals": 0
+   }
+  },
+  {
+   "id": "period_default",
+   "node": "PeriodStratifiedReadout",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "persons_v3": [
+     {
+      "candidate_name": "shu-ilishu",
+      "period": "Ur III",
+      "provenience": "Girsu (Tello)"
+     },
+     {
+      "candidate_name": "shu-ilishu",
+      "period": "Ur III",
+      "provenience": "Girsu"
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "period": "Ur III",
+      "provenience": "Ur (modern Tell el-Muqayyar)"
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "period": "Ur III",
+      "provenience": "Nippur"
+     },
+     {
+      "candidate_name": "lu-girsu",
+      "period": "Ur III",
+      "provenience": "Girsu"
+     },
+     {
+      "candidate_name": "ur-namma",
+      "period": "Ur III",
+      "provenience": "Ur, Iraq"
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "period": "Old Babylonian",
+      "provenience": "Sippar"
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "period": "Old Babylonian",
+      "provenience": "Babylon"
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "period": "Old Babylonian",
+      "provenience": "Mari (Tell Hariri)"
+     },
+     {
+      "candidate_name": "nin-urta",
+      "period": "Old Babylonian",
+      "provenience": "Nippur"
+     },
+     {
+      "candidate_name": "sig-unu",
+      "period": "Neo-Assyrian",
+      "provenience": "Nineveh (Kuyunjik)"
+     },
+     {
+      "candidate_name": "sig-unu",
+      "period": "Neo-Babylonian",
+      "provenience": "Babylon"
+     },
+     {
+      "candidate_name": "en-lil-a",
+      "period": "Sargonic",
+      "provenience": "Eshnunna (Tell Asmar)"
+     },
+     {
+      "candidate_name": "en-lil-a",
+      "period": "Old Akkadian",
+      "provenience": "Susa"
+     },
+     {
+      "candidate_name": "ib-dumu",
+      "period": "Ebla",
+      "provenience": "Ebla (Tell Mardikh)"
+     },
+     {
+      "candidate_name": "ebla-zi",
+      "period": "Ebla",
+      "provenience": "Ebla"
+     },
+     {
+      "candidate_name": "ib-dumu",
+      "period": "",
+      "provenience": ""
+     },
+     {
+      "candidate_name": "x",
+      "period": "Middle Babylonian (Kassite)",
+      "provenience": "Drehem"
+     },
+     {
+      "candidate_name": "ur-bare",
+      "period": "Ur III",
+      "provenience": "Ur"
+     },
+     {
+      "candidate_name": "",
+      "period": "Ur III",
+      "provenience": "Girsu"
+     }
+    ],
+    "inscribed_seals": [
+     {
+      "catalogue_id": "S-1",
+      "inscription_length": 3,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-2",
+      "inscription_length": 2,
+      "signs_confidence": "medium"
+     },
+     {
+      "catalogue_id": "S-3",
+      "inscription_length": 4,
+      "signs_confidence": "low"
+     },
+     {
+      "catalogue_id": "S-4",
+      "inscription_length": 1,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-5",
+      "inscription_length": 0,
+      "signs_confidence": "none"
+     }
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "results": [
+     {
+      "p_value": 0.195,
+      "observed": 1.667,
+      "null_mean": 1.198,
+      "n_names": 2,
+      "n_seals": 5,
+      "n_perms": 1000,
+      "period": "Ebla",
+      "n_unique_candidates": 2
+     },
+     {
+      "p_value": 0.028,
+      "observed": 2.667,
+      "null_mean": 1.7334,
+      "n_names": 3,
+      "n_seals": 5,
+      "n_perms": 1000,
+      "period": "Old Babylonian",
+      "n_unique_candidates": 3
+     },
+     {
+      "p_value": 0.033,
+      "observed": 3.334,
+      "null_mean": 2.2692,
+      "n_names": 4,
+      "n_seals": 5,
+      "n_perms": 1000,
+      "period": "Other",
+      "n_unique_candidates": 4
+     },
+     {
+      "p_value": 0.154,
+      "observed": 3.667,
+      "null_mean": 2.8283,
+      "n_names": 6,
+      "n_seals": 5,
+      "n_perms": 1000,
+      "period": "Ur III",
+      "n_unique_candidates": 6
+     },
+     {
+      "p_value": 0.246,
+      "observed": 3.333,
+      "null_mean": 2.8504,
+      "n_names": 14,
+      "n_seals": 5,
+      "n_perms": 1000,
+      "period": "ALL (overall)",
+      "n_unique_candidates": 14
+     }
+    ],
+    "n_significant_strata": 2,
+    "verdict": "Period-stratified readout: 5 period subsets tested; 2 achieve p<0.05. Robustness check: if >1 period strata yield p<0.05, the Phase-24d signal is period-robust; if only the overall result is significant, the signal may be a sample-size artifact."
+   }
+  },
+  {
+   "id": "period_insufficient",
+   "node": "PeriodStratifiedReadout",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "persons_v3": [],
+    "inscribed_seals": [
+     {
+      "catalogue_id": "S-1",
+      "inscription_length": 3,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-2",
+      "inscription_length": 2,
+      "signs_confidence": "medium"
+     },
+     {
+      "catalogue_id": "S-3",
+      "inscription_length": 4,
+      "signs_confidence": "low"
+     },
+     {
+      "catalogue_id": "S-4",
+      "inscription_length": 1,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-5",
+      "inscription_length": 0,
+      "signs_confidence": "none"
+     }
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "verdict": "INSUFFICIENT_DATA",
+    "results": []
+   }
+  },
+  {
+   "id": "period6_default",
+   "node": "PeriodStratifiedReadout6Bucket",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "persons_v3": [
+     {
+      "candidate_name": "shu-ilishu",
+      "period": "Ur III",
+      "provenience": "Girsu (Tello)"
+     },
+     {
+      "candidate_name": "shu-ilishu",
+      "period": "Ur III",
+      "provenience": "Girsu"
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "period": "Ur III",
+      "provenience": "Ur (modern Tell el-Muqayyar)"
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "period": "Ur III",
+      "provenience": "Nippur"
+     },
+     {
+      "candidate_name": "lu-girsu",
+      "period": "Ur III",
+      "provenience": "Girsu"
+     },
+     {
+      "candidate_name": "ur-namma",
+      "period": "Ur III",
+      "provenience": "Ur, Iraq"
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "period": "Old Babylonian",
+      "provenience": "Sippar"
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "period": "Old Babylonian",
+      "provenience": "Babylon"
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "period": "Old Babylonian",
+      "provenience": "Mari (Tell Hariri)"
+     },
+     {
+      "candidate_name": "nin-urta",
+      "period": "Old Babylonian",
+      "provenience": "Nippur"
+     },
+     {
+      "candidate_name": "sig-unu",
+      "period": "Neo-Assyrian",
+      "provenience": "Nineveh (Kuyunjik)"
+     },
+     {
+      "candidate_name": "sig-unu",
+      "period": "Neo-Babylonian",
+      "provenience": "Babylon"
+     },
+     {
+      "candidate_name": "en-lil-a",
+      "period": "Sargonic",
+      "provenience": "Eshnunna (Tell Asmar)"
+     },
+     {
+      "candidate_name": "en-lil-a",
+      "period": "Old Akkadian",
+      "provenience": "Susa"
+     },
+     {
+      "candidate_name": "ib-dumu",
+      "period": "Ebla",
+      "provenience": "Ebla (Tell Mardikh)"
+     },
+     {
+      "candidate_name": "ebla-zi",
+      "period": "Ebla",
+      "provenience": "Ebla"
+     },
+     {
+      "candidate_name": "ib-dumu",
+      "period": "",
+      "provenience": ""
+     },
+     {
+      "candidate_name": "x",
+      "period": "Middle Babylonian (Kassite)",
+      "provenience": "Drehem"
+     },
+     {
+      "candidate_name": "ur-bare",
+      "period": "Ur III",
+      "provenience": "Ur"
+     },
+     {
+      "candidate_name": "",
+      "period": "Ur III",
+      "provenience": "Girsu"
+     }
+    ],
+    "inscribed_seals": [
+     {
+      "catalogue_id": "S-1",
+      "inscription_length": 3,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-2",
+      "inscription_length": 2,
+      "signs_confidence": "medium"
+     },
+     {
+      "catalogue_id": "S-3",
+      "inscription_length": 4,
+      "signs_confidence": "low"
+     },
+     {
+      "catalogue_id": "S-4",
+      "inscription_length": 1,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-5",
+      "inscription_length": 0,
+      "signs_confidence": "none"
+     }
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "results": [
+     {
+      "p_value": 0.211,
+      "observed": 1.667,
+      "null_mean": 1.191,
+      "n_names": 2,
+      "n_seals": 5,
+      "n_perms": 1000,
+      "period": "Ebla",
+      "n_unique_candidates": 2
+     },
+     {
+      "p_value": 0.038,
+      "observed": 2.667,
+      "null_mean": 1.7394,
+      "n_names": 3,
+      "n_seals": 5,
+      "n_perms": 1000,
+      "period": "Old Babylonian",
+      "n_unique_candidates": 3
+     },
+     {
+      "p_value": 0.153,
+      "observed": 3.667,
+      "null_mean": 2.8183,
+      "n_names": 6,
+      "n_seals": 5,
+      "n_perms": 1000,
+      "period": "Ur III",
+      "n_unique_candidates": 6
+     },
+     {
+      "p_value": 0.208,
+      "observed": 3.333,
+      "null_mean": 2.8547,
+      "n_names": 11,
+      "n_seals": 5,
+      "n_perms": 1000,
+      "period": "ALL (overall)",
+      "n_unique_candidates": 11
+     }
+    ],
+    "n_significant_strata": 1,
+    "verdict": "Period stratification (6-bucket Phase-27): 4 buckets tested; 1 achieve p<0.05. Compares with Phase-25c (4-bucket: 3/4 + overall) at finer granularity."
+   }
+  },
+  {
+   "id": "period6_insufficient",
+   "node": "PeriodStratifiedReadout6Bucket",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "persons_v3": [
+     {
+      "candidate_name": "shu-ilishu",
+      "period": "Ur III",
+      "provenience": "Girsu (Tello)"
+     },
+     {
+      "candidate_name": "shu-ilishu",
+      "period": "Ur III",
+      "provenience": "Girsu"
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "period": "Ur III",
+      "provenience": "Ur (modern Tell el-Muqayyar)"
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "period": "Ur III",
+      "provenience": "Nippur"
+     },
+     {
+      "candidate_name": "lu-girsu",
+      "period": "Ur III",
+      "provenience": "Girsu"
+     },
+     {
+      "candidate_name": "ur-namma",
+      "period": "Ur III",
+      "provenience": "Ur, Iraq"
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "period": "Old Babylonian",
+      "provenience": "Sippar"
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "period": "Old Babylonian",
+      "provenience": "Babylon"
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "period": "Old Babylonian",
+      "provenience": "Mari (Tell Hariri)"
+     },
+     {
+      "candidate_name": "nin-urta",
+      "period": "Old Babylonian",
+      "provenience": "Nippur"
+     },
+     {
+      "candidate_name": "sig-unu",
+      "period": "Neo-Assyrian",
+      "provenience": "Nineveh (Kuyunjik)"
+     },
+     {
+      "candidate_name": "sig-unu",
+      "period": "Neo-Babylonian",
+      "provenience": "Babylon"
+     },
+     {
+      "candidate_name": "en-lil-a",
+      "period": "Sargonic",
+      "provenience": "Eshnunna (Tell Asmar)"
+     },
+     {
+      "candidate_name": "en-lil-a",
+      "period": "Old Akkadian",
+      "provenience": "Susa"
+     },
+     {
+      "candidate_name": "ib-dumu",
+      "period": "Ebla",
+      "provenience": "Ebla (Tell Mardikh)"
+     },
+     {
+      "candidate_name": "ebla-zi",
+      "period": "Ebla",
+      "provenience": "Ebla"
+     },
+     {
+      "candidate_name": "ib-dumu",
+      "period": "",
+      "provenience": ""
+     },
+     {
+      "candidate_name": "x",
+      "period": "Middle Babylonian (Kassite)",
+      "provenience": "Drehem"
+     },
+     {
+      "candidate_name": "ur-bare",
+      "period": "Ur III",
+      "provenience": "Ur"
+     },
+     {
+      "candidate_name": "",
+      "period": "Ur III",
+      "provenience": "Girsu"
+     }
+    ],
+    "inscribed_seals": []
+   },
+   "mode": "full",
+   "expected": {
+    "verdict": "INSUFFICIENT_DATA",
+    "results": []
+   }
+  },
+  {
+   "id": "prov_default",
+   "node": "ProvenienceStratifiedReadout",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "persons_v3": [
+     {
+      "candidate_name": "shu-ilishu",
+      "period": "Ur III",
+      "provenience": "Girsu (Tello)"
+     },
+     {
+      "candidate_name": "shu-ilishu",
+      "period": "Ur III",
+      "provenience": "Girsu"
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "period": "Ur III",
+      "provenience": "Ur (modern Tell el-Muqayyar)"
+     },
+     {
+      "candidate_name": "ur-dlama",
+      "period": "Ur III",
+      "provenience": "Nippur"
+     },
+     {
+      "candidate_name": "lu-girsu",
+      "period": "Ur III",
+      "provenience": "Girsu"
+     },
+     {
+      "candidate_name": "ur-namma",
+      "period": "Ur III",
+      "provenience": "Ur, Iraq"
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "period": "Old Babylonian",
+      "provenience": "Sippar"
+     },
+     {
+      "candidate_name": "a-kal-la",
+      "period": "Old Babylonian",
+      "provenience": "Babylon"
+     },
+     {
+      "candidate_name": "geme-dingir",
+      "period": "Old Babylonian",
+      "provenience": "Mari (Tell Hariri)"
+     },
+     {
+      "candidate_name": "nin-urta",
+      "period": "Old Babylonian",
+      "provenience": "Nippur"
+     },
+     {
+      "candidate_name": "sig-unu",
+      "period": "Neo-Assyrian",
+      "provenience": "Nineveh (Kuyunjik)"
+     },
+     {
+      "candidate_name": "sig-unu",
+      "period": "Neo-Babylonian",
+      "provenience": "Babylon"
+     },
+     {
+      "candidate_name": "en-lil-a",
+      "period": "Sargonic",
+      "provenience": "Eshnunna (Tell Asmar)"
+     },
+     {
+      "candidate_name": "en-lil-a",
+      "period": "Old Akkadian",
+      "provenience": "Susa"
+     },
+     {
+      "candidate_name": "ib-dumu",
+      "period": "Ebla",
+      "provenience": "Ebla (Tell Mardikh)"
+     },
+     {
+      "candidate_name": "ebla-zi",
+      "period": "Ebla",
+      "provenience": "Ebla"
+     },
+     {
+      "candidate_name": "ib-dumu",
+      "period": "",
+      "provenience": ""
+     },
+     {
+      "candidate_name": "x",
+      "period": "Middle Babylonian (Kassite)",
+      "provenience": "Drehem"
+     },
+     {
+      "candidate_name": "ur-bare",
+      "period": "Ur III",
+      "provenience": "Ur"
+     },
+     {
+      "candidate_name": "",
+      "period": "Ur III",
+      "provenience": "Girsu"
+     }
+    ],
+    "inscribed_seals": [
+     {
+      "catalogue_id": "S-1",
+      "inscription_length": 3,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-2",
+      "inscription_length": 2,
+      "signs_confidence": "medium"
+     },
+     {
+      "catalogue_id": "S-3",
+      "inscription_length": 4,
+      "signs_confidence": "low"
+     },
+     {
+      "catalogue_id": "S-4",
+      "inscription_length": 1,
+      "signs_confidence": "high"
+     },
+     {
+      "catalogue_id": "S-5",
+      "inscription_length": 0,
+      "signs_confidence": "none"
+     }
+    ]
+   },
+   "mode": "full",
+   "expected": {
+    "results": [
+     {
+      "p_value": 0.051,
+      "observed": 2.0,
+      "null_mean": 1.1494,
+      "n_names": 2,
+      "n_seals": 5,
+      "n_perms": 1000,
+      "provenience": "Babylon",
+      "n_unique_candidates": 2
+     },
+     {
+      "p_value": 0.218,
+      "observed": 1.667,
+      "null_mean": 1.2047,
+      "n_names": 2,
+      "n_seals": 5,
+      "n_perms": 1000,
+      "provenience": "Ebla",
+      "n_unique_candidates": 2
+     },
+     {
+      "p_value": 0.179,
+      "observed": 1.667,
+      "null_mean": 1.1823,
+      "n_names": 2,
+      "n_seals": 5,
+      "n_perms": 1000,
+      "provenience": "Girsu",
+      "n_unique_candidates": 2
+     },
+     {
+      "p_value": 0.187,
+      "observed": 1.667,
+      "null_mean": 1.1933,
+      "n_names": 2,
+      "n_seals": 5,
+      "n_perms": 1000,
+      "provenience": "Nippur",
+      "n_unique_candidates": 2
+     },
+     {
+      "p_value": 0.053,
+      "observed": 2.0,
+      "null_mean": 0.999,
+      "n_names": 2,
+      "n_seals": 5,
+      "n_perms": 1000,
+      "provenience": "Ur",
+      "n_unique_candidates": 2
+     },
+     {
+      "p_value": 0.232,
+      "observed": 3.333,
+      "null_mean": 2.8887,
+      "n_names": 10,
+      "n_seals": 5,
+      "n_perms": 1000,
+      "provenience": "ALL (overall)",
+      "n_unique_candidates": 10
+     }
+    ],
+    "n_significant_strata": 0,
+    "verdict": "Provenience-stratified readout: 6 provenience buckets; 0 achieve p<0.05. Combined with Phase-25c (3/4 period strata p<0.05), this is the second axis of independent significance: if multiple proveniences each yield p<0.05, the bipartite signal is provenience-robust."
+   }
+  },
+  {
+   "id": "prov_insufficient",
+   "node": "ProvenienceStratifiedReadout",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "persons_v3": [],
+    "inscribed_seals": []
+   },
+   "mode": "full",
+   "expected": {
+    "verdict": "INSUFFICIENT_DATA",
+    "results": []
+   }
+  }
+ ]
+}

@@ -43,10 +43,16 @@ from glossa_lab.generic_primitives import (
     anchor_syllabifier_execute,
     association_anchor_deriver_execute,
     cluster_contingency_profile_execute,
+    iconographic_anchor_scorer_execute,
     label_map_applier_execute,
+    length_match_permutation_test_execute,
+    length_match_scorer_execute,
+    phoneme_map_coverage_execute,
+    phoneme_map_permutation_test_execute,
     pmi_centrality_ranker_execute,
     registry_table_loader_execute,
     sign_role_classifier_execute,
+    stratified_permutation_test_execute,
     template_miner_execute,
     value_role_map_source_execute,
 )
@@ -2091,6 +2097,138 @@ for _d in [
             "top_k":{"type":"integer","title":"Top K","default":10,"minimum":1},
             "min_count":{"type":"integer","title":"Min Bigram Count","default":5,"minimum":1}}},
         fn=pmi_centrality_ranker_execute),
+    AtomicNodeDef("IconographicAnchorScorer","Iconographic Anchor Scorer","Decipherment",
+        "Score iconographic anchors against a sign->phoneme map (Spec 087 "
+        "S3): each anchor's iconic reading is matched against the map "
+        "through an ordered reading->alias table carried as data; matches "
+        "score by anchor-confidence weights with a high-confidence bonus. "
+        "With an extension bonus set, the allograph mode credits family "
+        "members carrying the family's phoneme. The Phase-27 "
+        "IconographicAnchorScore and the Phase-28 "
+        "AllographAwareIconographicScore delegate to this engine.",
+        inputs=[{"name":"iconographic_anchors","type":"json","required":True},
+                {"name":"phoneme_map","type":"json","required":True},
+                {"name":"allograph_families","type":"json","required":False}],
+        outputs=[{"name":"n_total_anchors","type":"number"},{"name":"n_matches","type":"number"},
+                 {"name":"n_allograph_extensions","type":"number"},{"name":"extended_sign_ids","type":"json"},
+                 {"name":"total_score","type":"number"},{"name":"rows","type":"json"},
+                 {"name":"verdict","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "scorer_spec":{"type":"object","title":"Scorer Spec",
+                           "description":"Alias table (ordered [key, [aliases], family] entries), confidence weights, high-confidence bonus, optional allograph extension bonus, empty result, verdict template."}}},
+        fn=iconographic_anchor_scorer_execute),
+    AtomicNodeDef("PhonemeMapCoverage","Phoneme Map Coverage","Decipherment",
+        "Apply a phoneme map to inscribed seals and report readability "
+        "(Spec 087 S3): a seal is readable when at least one real "
+        "(non-placeholder) sign resolves to a phoneme that is neither the "
+        "unknown token nor marked uncertain; per-seal skeletons and "
+        "high-confidence counts are reported. The unknown token, the "
+        "uncertain marker, and the verdict text are spec data. The "
+        "Phase-25 BlindHeldOutTest delegates to this engine.",
+        inputs=[{"name":"inscribed_seals","type":"json","required":True},
+                {"name":"phoneme_map","type":"json","required":True}],
+        outputs=[{"name":"n_seals","type":"number"},{"name":"n_readable","type":"number"},
+                 {"name":"n_high_conf","type":"number"},{"name":"rows","type":"json"},
+                 {"name":"verdict","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "coverage_spec":{"type":"object","title":"Coverage Spec",
+                             "description":"Unknown token, uncertain marker, high-confidence label, placeholder skeleton, verdict template."}}},
+        fn=phoneme_map_coverage_execute),
+    AtomicNodeDef("PhonemeMapPermutationTest","Phoneme Map Permutation Test","Analysis",
+        "Permutation test of a phoneme map's assignment over inscribed "
+        "seals (Spec 087 S3): the observed confidence-weighted coverage "
+        "total is compared against null maps that shuffle one dimension "
+        "of the map — the confidence labels, or the phoneme values with "
+        "an optional compound-plausibility reweighting whose pattern "
+        "table and bonuses are data. The Phase-26 BayesianDecoder and "
+        "the Phase-27 BayesianDecoderV2 delegate to this engine.",
+        inputs=[{"name":"inscribed_seals","type":"json","required":True},
+                {"name":"phoneme_map","type":"json","required":True}],
+        outputs=[{"name":"n_seals","type":"number"},{"name":"n_phonemes_in_map","type":"number"},
+                 {"name":"observed_total_weight","type":"number"},{"name":"null_mean_weight","type":"number"},
+                 {"name":"observed_total_score","type":"number"},{"name":"null_mean_score","type":"number"},
+                 {"name":"p_value","type":"number"},{"name":"n_perms","type":"number"},
+                 {"name":"obs_per_seal_top10","type":"json"},{"name":"obs_per_seal","type":"json"},
+                 {"name":"verdict","type":"text"},{"name":"interpretation","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "n_permutations":{"type":"integer","title":"Permutations","default":1000,"minimum":200},
+            "seed":{"type":"integer","title":"Seed","default":1234},
+            "decoder_spec":{"type":"object","title":"Decoder Spec",
+                            "description":"Shuffle dimension, confidence weights, plausibility patterns/bonuses, null gloss, output key names, verdict template, interpretation."}}},
+        fn=phoneme_map_permutation_test_execute),
+    AtomicNodeDef("LengthMatchScorer","Length Match Scorer","Decipherment",
+        "Score candidate-name <-> seal pairings by length compatibility "
+        "(Spec 087 S3): hyphen-segment counts against inscription "
+        "lengths under a named score spec — the family tolerance falloff "
+        "or a named divergent linear falloff carried as data, never "
+        "silently re-shaped. Assignment modes: all-pairs with a best "
+        "pairing per name, greedy one-to-one bipartite, or pairings "
+        "aggregated from raw person rows against sign-bearing seals. "
+        "The Phase-23 EnhancedNameMatcher, the Phase-24 "
+        "EnhancedNameMatcherV2, and the Phase-22 MeluhhaNameMatcher "
+        "delegate to this engine.",
+        inputs=[{"name":"rows_all","type":"json","required":True},
+                {"name":"inscribed_seals","type":"json","required":True},
+                {"name":"persons","type":"json","required":False},
+                {"name":"seals_at_mesopotamia","type":"json","required":False}],
+        outputs=[{"name":"n_candidates","type":"number"},{"name":"n_seals","type":"number"},
+                 {"name":"n_seals_with_signs","type":"number"},{"name":"n_seals_total","type":"number"},
+                 {"name":"n_assigned","type":"number"},{"name":"n_unassigned","type":"number"},
+                 {"name":"pairings","type":"json"},{"name":"pairings_top50","type":"json"},
+                 {"name":"n_pairings","type":"number"},{"name":"best_per_name","type":"json"},
+                 {"name":"total_length_score","type":"number"},{"name":"verdict","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "min_name_freq":{"type":"integer","title":"Min Name Frequency","default":2,"minimum":1},
+            "tolerance":{"type":"integer","title":"Tolerance","default":2,"minimum":0},
+            "matcher_spec":{"type":"object","title":"Matcher Spec",
+                            "description":"Assignment mode, score spec (kind tolerance or a named linear falloff), min-frequency default, verdict/insufficient/no-signs templates."}}},
+        fn=length_match_scorer_execute),
+    AtomicNodeDef("LengthMatchPermutationTest","Length Match Permutation Test","Decipherment",
+        "Permutation test of name-length <-> seal-length matching (Spec "
+        "087 S3): the statistic is the per-name best length score summed "
+        "(null: shuffle the seal lengths) or the greedy bipartite "
+        "assignment sum (null: random one-to-one assignments). Verdict "
+        "bands, the insufficient-data verdict, the optional "
+        "observed-assignment output, and the interpretation are spec "
+        "data. The Phase-23 BilingualReadoutTest and the Phase-24 "
+        "BilingualReadoutTestV2 delegate to this engine.",
+        inputs=[{"name":"rows_all","type":"json","required":True},
+                {"name":"inscribed_seals","type":"json","required":True}],
+        outputs=[{"name":"verdict","type":"text"},{"name":"p_value","type":"number"},
+                 {"name":"observed","type":"number"},{"name":"null_mean","type":"number"},
+                 {"name":"null_sd","type":"number"},{"name":"z_score","type":"number"},
+                 {"name":"n_permutations","type":"number"},{"name":"n_candidates","type":"number"},
+                 {"name":"n_seals","type":"number"},{"name":"observed_assignment","type":"json"},
+                 {"name":"interpretation","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "n_permutations":{"type":"integer","title":"Permutations","default":1000,"minimum":100},
+            "min_name_freq":{"type":"integer","title":"Min Name Frequency","default":2,"minimum":1},
+            "tolerance":{"type":"integer","title":"Tolerance","default":2,"minimum":0},
+            "seed":{"type":"integer","title":"Seed","default":42},
+            "test_spec":{"type":"object","title":"Test Spec",
+                         "description":"Statistic (best_match or bipartite), defaults, insufficient verdict, verdict bands, assignment output flag, interpretation."}}},
+        fn=length_match_permutation_test_execute),
+    AtomicNodeDef("StratifiedPermutationTest","Stratified Permutation Test","Decipherment",
+        "Run the bipartite length-match readout test per stratum plus a "
+        "merged overall (Spec 087 S3): persons are aggregated by "
+        "candidate name within strata assigned by an ordered "
+        "substring->bucket rule table carried as data (case sensitivity, "
+        "value stripping, and the empty/fallback buckets included), each "
+        "stratum's permutation seed is a base plus the bucket name's "
+        "length, and strata with fewer than two distinct candidates are "
+        "skipped. The Phase-25 PeriodStratifiedReadout, the Phase-27 "
+        "PeriodStratifiedReadout6Bucket, and the Phase-26 "
+        "ProvenienceStratifiedReadout delegate to this engine.",
+        inputs=[{"name":"persons_v3","type":"json","required":True},
+                {"name":"inscribed_seals","type":"json","required":True}],
+        outputs=[{"name":"results","type":"json"},{"name":"n_significant_strata","type":"number"},
+                 {"name":"verdict","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "n_permutations":{"type":"integer","title":"Permutations","default":1000,"minimum":100},
+            "tolerance":{"type":"integer","title":"Tolerance","default":2,"minimum":0},
+            "strata_spec":{"type":"object","title":"Strata Spec",
+                           "description":"Stratum field, result axis key, ordered [bucket, [keys]] rules, case sensitivity, strip flag, empty/fallback buckets, seed base, verdict template."}}},
+        fn=stratified_permutation_test_execute),
     AtomicNodeDef("FreqCounter","Frequency Counter","Transforms",
         "Count symbol occurrences across all sequences.",
         inputs=[{"name":"sequences","type":"sequences","required":True}],

@@ -31,8 +31,6 @@ first quantitative bilingual analysis. Three sub-experiments:
 
 from __future__ import annotations
 
-import math
-import random
 from collections import Counter
 from typing import Any
 
@@ -189,94 +187,40 @@ def _refined_persons_extractor(inputs: dict, params: dict) -> dict:
 # ── Enhanced matcher ──────────────────────────────────────────────────
 
 
-def _name_n_segments(name: str) -> int:
-    """Count hyphen-separated segments in a candidate name."""
-    return name.count("-") + 1 if name else 0
-
-
-def _length_score(n_signs: int, n_segments: int, tolerance: int = 2) -> float:
-    """Length compatibility: 1.0 at exact match, 0.0 once delta > tolerance."""
-    delta = abs(n_signs - n_segments)
-    if delta > tolerance:
-        return 0.0
-    return round(1.0 - delta / (tolerance + 1), 3)
-
-
 def _enhanced_name_matcher(inputs: dict, params: dict) -> dict:
     """Score name <-> seal pairings using inscription_length.
 
     Phase-23 difference vs Phase-22c: now operates on the
     *strict* persons output (low-noise) and the *augmented* seals
     (inscription_length > 0 for 10/13 seals).
+
+    Spec 087 S3 (family F5): the mechanism is the generic
+    LengthMatchScorer engine (glossa_lab.generic_primitives) in its
+    all_pairs mode; this node is its Phase-23 parameterisation. The
+    segment counter and the tolerance length score are shared with
+    the rest of the family inside the engine.
     """
-    persons_rows = inputs.get("rows_all") or inputs.get("rows_top50") or []
-    seals = inputs.get("inscribed_seals") or []
-    min_name_freq = _safe_int(params.get("min_name_freq", 2), 2)
-    tolerance = _safe_int(params.get("tolerance", 2), 2)
-
-    # Filter candidates by frequency
-    candidates = [r for r in persons_rows
-                   if _safe_int(r.get("occurrences")) >= min_name_freq]
-    if not candidates or not seals:
-        return {
-            "n_candidates": len(candidates),
-            "n_seals": len(seals),
-            "pairings": [],
-            "n_pairings": 0,
-            "best_per_name": [],
-            "verdict": (
-                f"Enhanced matcher: insufficient inputs "
-                f"(candidates={len(candidates)}, inscribed_seals={len(seals)})."
-            ),
-        }
-
-    pairings: list[dict] = []
-    best_per_name: dict[str, dict] = {}
-    for r in candidates:
-        name = r["candidate_name"]
-        n_seg = _name_n_segments(name)
-        for s in seals:
-            n_signs = _safe_int(s.get("inscription_length"))
-            score = _length_score(n_signs, n_seg, tolerance)
-            if score <= 0.0:
-                continue
-            pair = {
-                "candidate_name": name,
-                "name_n_segments": n_seg,
-                "name_occurrences": r.get("occurrences"),
-                "is_known_meluhhan": r.get("is_known_meluhhan", False),
-                "seal_id": s.get("catalogue_id"),
-                "seal_n_signs": n_signs,
-                "seal_signs_confidence": s.get("signs_confidence"),
-                "length_score": score,
-            }
-            pairings.append(pair)
-            if (name not in best_per_name
-                    or pair["length_score"] > best_per_name[name]["length_score"]):
-                best_per_name[name] = pair
-
-    pairings.sort(key=lambda p: (-p["length_score"], -p.get("name_occurrences", 0)))
-    best_list = sorted(
-        best_per_name.values(),
-        key=lambda p: (-p["length_score"], -p.get("name_occurrences", 0)),
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        length_match_scorer_execute,
     )
 
-    verdict = (
-        f"Enhanced matcher (Phase-23): {len(pairings)} length-compatible "
-        f"pairings between {len(seals)} inscribed seals and "
-        f"{len(candidates)} strict-PN candidates (freq>={min_name_freq}, "
-        f"tol={tolerance})."
-    )
-
-    return {
-        "n_candidates": len(candidates),
-        "n_seals": len(seals),
-        "pairings": pairings,
-        "pairings_top50": pairings[:50],
-        "n_pairings": len(pairings),
-        "best_per_name": best_list,
-        "verdict": verdict,
+    merged = dict(params)
+    merged["matcher_spec"] = {
+        "assignment": "all_pairs",
+        "score_spec": {"kind": "tolerance"},
+        "min_name_freq_default": 2,
+        "verdict_template": (
+            "Enhanced matcher (Phase-23): {n_pairings} length-compatible "
+            "pairings between {n_seals} inscribed seals and "
+            "{n_candidates} strict-PN candidates (freq>={min_name_freq}, "
+            "tol={tolerance})."
+        ),
+        "insufficient_template": (
+            "Enhanced matcher: insufficient inputs "
+            "(candidates={n_candidates}, inscribed_seals={n_seals})."
+        ),
     }
+    return length_match_scorer_execute(inputs, merged)
 
 
 # ── Bilingual readout test (permutation) ──────────────────────────────
@@ -305,82 +249,23 @@ def _bilingual_readout_test(inputs: dict, params: dict) -> dict:
     seals carry random Indus-sign counts. That's a length-only signal,
     not a phonetic one — Phase-24 will need the actual sign IDs to
     upgrade the test to a phonetic one.
+
+    Spec 087 S3 (family F5): the mechanism is the generic
+    LengthMatchPermutationTest engine (glossa_lab.generic_primitives)
+    in its best_match statistic mode; this node is its Phase-23
+    parameterisation (permutation floor 100, seed 42).
     """
-    persons_rows = inputs.get("rows_all") or inputs.get("rows_top50") or []
-    seals = inputs.get("inscribed_seals") or []
-    n_perms = max(100, _safe_int(params.get("n_permutations", 1000), 1000))
-    min_name_freq = _safe_int(params.get("min_name_freq", 2), 2)
-    tolerance = _safe_int(params.get("tolerance", 2), 2)
-    seed = _safe_int(params.get("seed", 42), 42)
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        length_match_permutation_test_execute,
+    )
 
-    candidates = [r for r in persons_rows
-                   if _safe_int(r.get("occurrences")) >= min_name_freq]
-    seal_lengths = [_safe_int(s.get("inscription_length")) for s in seals]
-    if not candidates or not seal_lengths:
-        return {
-            "verdict": "INSUFFICIENT_DATA: cannot run readout test",
-            "n_candidates": len(candidates),
-            "n_seals": len(seal_lengths),
-            "p_value": None,
-        }
-
-    # Pre-compute name_n_segments for each candidate
-    name_segs: list[tuple[str, int, int]] = [
-        (r["candidate_name"], _name_n_segments(r["candidate_name"]),
-         _safe_int(r.get("occurrences")))
-        for r in candidates
-    ]
-
-    def _stat(lengths: list[int]) -> float:
-        total = 0.0
-        for _, n_seg, _occ in name_segs:
-            best = 0.0
-            for n_sign in lengths:
-                s = _length_score(n_sign, n_seg, tolerance)
-                if s > best:
-                    best = s
-            total += best
-        return total
-
-    observed = _stat(seal_lengths)
-
-    rng = random.Random(seed)
-    null_dist = []
-    n_at_or_above = 0
-    permuted = list(seal_lengths)
-    for _ in range(n_perms):
-        rng.shuffle(permuted)
-        v = _stat(permuted)
-        null_dist.append(v)
-        if v >= observed:
-            n_at_or_above += 1
-
-    p_value = n_at_or_above / n_perms
-
-    null_mean = sum(null_dist) / len(null_dist)
-    null_var = (sum((x - null_mean) ** 2 for x in null_dist)
-                / max(1, len(null_dist) - 1))
-    null_sd = math.sqrt(null_var) if null_var > 0 else 0.0
-    z = ((observed - null_mean) / null_sd) if null_sd > 0 else 0.0
-
-    if p_value < 0.01:
-        verdict = "READOUT_SIGNIFICANT (p<0.01)"
-    elif p_value < 0.05:
-        verdict = "READOUT_MARGINAL (p<0.05)"
-    else:
-        verdict = "READOUT_NOT_SIGNIFICANT"
-
-    return {
-        "verdict": verdict,
-        "p_value": round(p_value, 6),
-        "observed": round(observed, 4),
-        "null_mean": round(null_mean, 4),
-        "null_sd": round(null_sd, 4),
-        "z_score": round(z, 4),
-        "n_permutations": n_perms,
-        "n_candidates": len(candidates),
-        "n_seals": len(seal_lengths),
-        "tolerance": tolerance,
+    merged = dict(params)
+    merged.setdefault("seed", 42)
+    merged["test_spec"] = {
+        "statistic": "best_match",
+        "n_permutations_default": 1000,
+        "min_name_freq_default": 2,
+        "insufficient_verdict": "INSUFFICIENT_DATA: cannot run readout test",
         "interpretation": (
             "Length-only test: a significant p means the observed "
             "name-length-to-seal-length distribution is unlikely under "
@@ -388,6 +273,7 @@ def _bilingual_readout_test(inputs: dict, params: dict) -> dict:
             "lengths) to upgrade to a phonetic readout."
         ),
     }
+    return length_match_permutation_test_execute(inputs, merged)
 
 
 # ── Verdict aggregator ────────────────────────────────────────────────

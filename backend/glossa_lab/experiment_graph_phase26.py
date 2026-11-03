@@ -15,7 +15,6 @@ Phase-26 builds on the Phase-25 phonetic-readout pipeline with:
 
 from __future__ import annotations
 
-import random
 from typing import Any
 
 
@@ -24,17 +23,6 @@ def _safe_int(x: Any, default: int = 0) -> int:
         return int(x)
     except Exception:  # noqa: BLE001
         return default
-
-
-def _name_n_segments(name: str) -> int:
-    return name.count("-") + 1 if name else 0
-
-
-def _length_score(n_signs: int, n_segments: int, tolerance: int = 2) -> float:
-    delta = abs(n_signs - n_segments)
-    if delta > tolerance:
-        return 0.0
-    return round(1.0 - delta / (tolerance + 1), 3)
 
 
 # ── Loader ────────────────────────────────────────────────────────────
@@ -75,80 +63,6 @@ def _phase26_corpus_loader(inputs: dict, params: dict) -> dict:
 # ── Tier #4: Provenience-stratified replication ──────────────────────
 
 
-def _greedy_score(score_mat: list[list[float]], assignment: list[int],
-                   n_names: int) -> float:
-    return sum(score_mat[i][assignment[i]]
-               for i in range(n_names) if assignment[i] >= 0)
-
-
-def _run_bipartite_test(
-    candidates: list[dict],
-    seal_lengths: list[int],
-    n_perms: int,
-    tolerance: int,
-    seed: int,
-) -> dict:
-    """Run the Phase-24d/25c bipartite-assignment readout test."""
-    n_names = len(candidates)
-    n_seals = len(seal_lengths)
-    if n_names == 0 or n_seals == 0:
-        return {"p_value": None, "observed": 0.0,
-                "n_names": n_names, "n_seals": n_seals,
-                "reason": "empty inputs"}
-    name_segs = [_name_n_segments(r["candidate_name"]) for r in candidates]
-    score_mat = [
-        [_length_score(seal_lengths[j], name_segs[i], tolerance)
-         for j in range(n_seals)]
-        for i in range(n_names)
-    ]
-    occs = [_safe_int(r.get("occurrences")) for r in candidates]
-    order = sorted(range(n_names), key=lambda i: -occs[i])
-    used: set[int] = set()
-    obs_assignment = [-1] * n_names
-    for i in order:
-        best_j = -1
-        best_s = 0.0
-        for j in range(n_seals):
-            if j in used:
-                continue
-            s = score_mat[i][j]
-            if s > best_s:
-                best_s = s
-                best_j = j
-        if best_j >= 0 and best_s > 0:
-            obs_assignment[i] = best_j
-            used.add(best_j)
-    observed = _greedy_score(score_mat, obs_assignment, n_names)
-
-    rng = random.Random(seed)
-    n_at_or_above = 0
-    null_dist: list[float] = []
-    for _ in range(n_perms):
-        shuffled_seal_idxs = list(range(n_seals))
-        rng.shuffle(shuffled_seal_idxs)
-        if n_names > n_seals:
-            participating = rng.sample(range(n_names), n_seals)
-        else:
-            participating = list(range(n_names))
-        random_assignment = [-1] * n_names
-        for slot, name_i in enumerate(participating):
-            random_assignment[name_i] = shuffled_seal_idxs[slot]
-        v = _greedy_score(score_mat, random_assignment, n_names)
-        null_dist.append(v)
-        if v >= observed:
-            n_at_or_above += 1
-    p = n_at_or_above / n_perms
-    null_mean = sum(null_dist) / len(null_dist)
-    return {
-        "p_value": round(p, 6),
-        "observed": round(observed, 4),
-        "null_mean": round(null_mean, 4),
-        "n_names": n_names,
-        "n_seals": n_seals,
-        "n_perms": n_perms,
-    }
-
-
 # Heuristic: classify a CDLI provenience string into a coarse city bucket.
 _PROVENIENCE_BUCKETS = [
     ("Girsu", ("girsu", "tello", "telloh")),
@@ -168,128 +82,48 @@ _PROVENIENCE_BUCKETS = [
 ]
 
 
-def _classify_provenience(text: str) -> str:
-    if not text:
-        return "Unknown"
-    t = text.lower()
-    for bucket, keys in _PROVENIENCE_BUCKETS:
-        for k in keys:
-            if k in t:
-                return bucket
-    return "Other"
-
-
 def _provenience_stratified_readout(inputs: dict, params: dict) -> dict:
     """Re-run bipartite readout test split by provenience (Girsu, Nippur,
     Ur, Umma, Susa, Nineveh, etc.). Provides a second axis of robustness
     on top of the Phase-25c period split.
+
+    Spec 087 S3 (family F5): the mechanism is the generic
+    StratifiedPermutationTest engine (glossa_lab.generic_primitives);
+    this node is its Phase-26 parameterisation. _PROVENIENCE_BUCKETS
+    above stays as the delegation data; the module-local
+    _classify_provenience / _run_bipartite_test / _greedy_score /
+    _name_n_segments / _length_score helpers were used only here and
+    by the decoder below; both consumers are engine delegations now,
+    so the helpers were removed (the engine carries the shared
+    copies).
     """
-    persons = inputs.get("persons_v3") or []
-    seals = inputs.get("inscribed_seals") or []
-    n_perms = max(500, _safe_int(params.get("n_permutations", 1000), 1000))
-    tolerance = _safe_int(params.get("tolerance", 2), 2)
-
-    seal_lengths = [_safe_int(s.get("inscription_length")) for s in seals]
-    if not persons or not seal_lengths:
-        return {"verdict": "INSUFFICIENT_DATA", "results": []}
-
-    candidates_by_prov: dict[str, dict[str, dict]] = {}
-    for p in persons:
-        prov = _classify_provenience(p.get("provenience", "") or "")
-        cmap = candidates_by_prov.setdefault(prov, {})
-        name = p.get("candidate_name", "")
-        if not name:
-            continue
-        if name not in cmap:
-            cmap[name] = {"candidate_name": name, "occurrences": 0}
-        cmap[name]["occurrences"] += 1
-
-    results: list[dict] = []
-    overall_candidates: list[dict] = []
-    for prov, cmap in sorted(candidates_by_prov.items()):
-        cands = list(cmap.values())
-        cands.sort(key=lambda r: -r["occurrences"])
-        if len(cands) < 2:
-            continue
-        r = _run_bipartite_test(
-            cands, seal_lengths, n_perms, tolerance,
-            seed=137 + len(prov),
-        )
-        r["provenience"] = prov
-        r["n_unique_candidates"] = len(cands)
-        results.append(r)
-        overall_candidates.extend(cands)
-
-    if overall_candidates:
-        merged: dict[str, dict] = {}
-        for c in overall_candidates:
-            n = c["candidate_name"]
-            if n not in merged:
-                merged[n] = {"candidate_name": n, "occurrences": 0}
-            merged[n]["occurrences"] += c["occurrences"]
-        overall = list(merged.values())
-        overall.sort(key=lambda r: -r["occurrences"])
-        r_all = _run_bipartite_test(
-            overall, seal_lengths, n_perms, tolerance, seed=137,
-        )
-        r_all["provenience"] = "ALL (overall)"
-        r_all["n_unique_candidates"] = len(overall)
-        results.append(r_all)
-
-    significant = [r for r in results
-                   if isinstance(r.get("p_value"), float)
-                   and r["p_value"] < 0.05]
-
-    verdict = (
-        f"Provenience-stratified readout: {len(results)} provenience "
-        f"buckets; {len(significant)} achieve p<0.05. Combined with "
-        f"Phase-25c (3/4 period strata p<0.05), this is the second "
-        f"axis of independent significance: if multiple proveniences "
-        f"each yield p<0.05, the bipartite signal is provenience-"
-        f"robust."
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        stratified_permutation_test_execute,
     )
-    return {
-        "results": results,
-        "n_significant_strata": len(significant),
-        "verdict": verdict,
+
+    merged = dict(params)
+    merged["strata_spec"] = {
+        "stratum_field": "provenience",
+        "axis_key": "provenience",
+        "strata_rules": _PROVENIENCE_BUCKETS,
+        "case_insensitive": True,
+        "strip_value": False,
+        "empty_bucket": "Unknown",
+        "fallback_bucket": "Other",
+        "seed_base": 137,
+        "verdict_template": (
+            "Provenience-stratified readout: {n_results} provenience "
+            "buckets; {n_significant} achieve p<0.05. Combined with "
+            "Phase-25c (3/4 period strata p<0.05), this is the second "
+            "axis of independent significance: if multiple proveniences "
+            "each yield p<0.05, the bipartite signal is provenience-"
+            "robust."
+        ),
     }
+    return stratified_permutation_test_execute(inputs, merged)
 
 
 # ── Tier #3: Bayesian decoder ────────────────────────────────────────
-
-
-def _seal_phoneme_match_score(seal: dict, phoneme_map: dict) -> dict:
-    """Compute a phoneme-coverage score for a single seal under the
-    given sign->phoneme map.
-
-    Score components:
-      - n_high_conf: count of signs with high-confidence phoneme.
-      - n_attributed: count of signs with any phoneme (high+medium).
-      - score: sum of confidence weights (high=1.0, medium=0.5, low=0.2).
-    """
-    signs = [s for s in (seal.get("indus_signs") or []) if s and s != "?"]
-    n_high = 0
-    n_attr = 0
-    weight = 0.0
-    for sid in signs:
-        ph = phoneme_map.get(str(sid), {}) or {}
-        conf = (ph.get("confidence") or "none").lower()
-        if conf == "high":
-            n_high += 1
-            n_attr += 1
-            weight += 1.0
-        elif conf == "medium":
-            n_attr += 1
-            weight += 0.5
-        elif conf == "low":
-            n_attr += 1
-            weight += 0.2
-    return {
-        "n_signs": len(signs),
-        "n_high_conf": n_high,
-        "n_attributed": n_attr,
-        "weight": round(weight, 3),
-    }
 
 
 def _bayesian_decoder(inputs: dict, params: dict) -> dict:
@@ -306,91 +140,48 @@ def _bayesian_decoder(inputs: dict, params: dict) -> dict:
          different sign).
       3. Compute the same total weight for each null.
       4. p-value = fraction of null weights >= observed.
+
+    Spec 087 S3 (family F4): the mechanism is the generic
+    PhonemeMapPermutationTest engine (glossa_lab.generic_primitives)
+    in its confidence-shuffle mode; this node is its Phase-26
+    parameterisation (seed 1234, top-10 rows). The module-local
+    _seal_phoneme_match_score helper was used only here and was
+    removed with the delegation (the engine carries the scorer).
     """
-    seals = inputs.get("inscribed_seals") or []
-    phoneme_map = inputs.get("phoneme_map") or {}
-    n_perms = max(200, _safe_int(params.get("n_permutations", 1000), 1000))
-    seed = _safe_int(params.get("seed", 1234), 1234)
-
-    if not seals or not phoneme_map:
-        return {"verdict": "INSUFFICIENT_DATA",
-                "p_value": None,
-                "n_seals": len(seals),
-                "n_phonemes_in_map": len(phoneme_map)}
-
-    sign_ids = sorted(phoneme_map.keys())
-    confidences = [(phoneme_map[s].get("confidence") or "none").lower()
-                   for s in sign_ids]
-
-    # Observed
-    obs_per_seal = []
-    obs_total = 0.0
-    for s in seals:
-        sc = _seal_phoneme_match_score(s, phoneme_map)
-        obs_per_seal.append({
-            "catalogue_id": s.get("catalogue_id"),
-            "n_signs": sc["n_signs"],
-            "n_attributed": sc["n_attributed"],
-            "n_high_conf": sc["n_high_conf"],
-            "weight": sc["weight"],
-        })
-        obs_total += sc["weight"]
-
-    # Null permutations: shuffle the confidence values across sign IDs.
-    rng = random.Random(seed)
-    null_totals: list[float] = []
-    n_at_or_above = 0
-    for _ in range(n_perms):
-        shuffled = list(confidences)
-        rng.shuffle(shuffled)
-        # Build a null map: same sign IDs, but each gets a random
-        # confidence (and by implication a random phoneme weight).
-        null_map = {}
-        for sid, conf in zip(sign_ids, shuffled):
-            null_map[sid] = {"confidence": conf, "phoneme": "?",
-                             "gloss": "(null permutation)"}
-        total = 0.0
-        for s in seals:
-            sc = _seal_phoneme_match_score(s, null_map)
-            total += sc["weight"]
-        null_totals.append(total)
-        if total >= obs_total:
-            n_at_or_above += 1
-
-    p_value = n_at_or_above / n_perms
-    null_mean = sum(null_totals) / len(null_totals) if null_totals else 0.0
-
-    verdict = (
-        f"Bayesian decoder: observed total weight = {obs_total:.3f} "
-        f"across {len(seals)} inscribed seals. Null mean = "
-        f"{null_mean:.3f} ({n_perms} permutations of confidence "
-        f"assignments). Global p-value = {p_value:.4f}. Lower p "
-        f"= signs assigned to high-confidence phonemes really do "
-        f"cluster on the inscribed-seal corpus more than chance."
-    )
-    interpretation = (
-        "Caveat: this null-permutation strategy keeps the multiset of "
-        "confidence labels constant but breaks their assignment to "
-        "specific sign IDs. A significant p means the observed map "
-        "places high-confidence phonemes on more 'frequent' signs in "
-        "our corpus than chance would predict. This is a NECESSARY "
-        "but not SUFFICIENT condition for the Dravidian hypothesis -- "
-        "it only validates that Parpola's high-confidence proposals "
-        "land on the right SIGNS, not that those phoneme VALUES are "
-        "correct."
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        phoneme_map_permutation_test_execute,
     )
 
-    return {
-        "n_seals": len(seals),
-        "n_phonemes_in_map": len(phoneme_map),
-        "observed_total_weight": round(obs_total, 3),
-        "null_mean_weight": round(null_mean, 3),
-        "p_value": round(p_value, 6),
-        "n_perms": n_perms,
-        "obs_per_seal_top10": obs_per_seal[:10],
-        "verdict": verdict,
-        "interpretation": interpretation,
+    merged = dict(params)
+    merged.setdefault("seed", 1234)
+    merged["decoder_spec"] = {
+        "shuffle_dimension": "confidence",
+        "null_gloss": "(null permutation)",
+        "observed_key": "observed_total_weight",
+        "null_mean_key": "null_mean_weight",
+        "rows_key": "obs_per_seal_top10",
+        "rows_limit": 10,
+        "verdict_template": (
+            "Bayesian decoder: observed total weight = {observed:.3f} "
+            "across {n_seals} inscribed seals. Null mean = "
+            "{null_mean:.3f} ({n_perms} permutations of confidence "
+            "assignments). Global p-value = {p_value:.4f}. Lower p "
+            "= signs assigned to high-confidence phonemes really do "
+            "cluster on the inscribed-seal corpus more than chance."
+        ),
+        "interpretation": (
+            "Caveat: this null-permutation strategy keeps the multiset of "
+            "confidence labels constant but breaks their assignment to "
+            "specific sign IDs. A significant p means the observed map "
+            "places high-confidence phonemes on more 'frequent' signs in "
+            "our corpus than chance would predict. This is a NECESSARY "
+            "but not SUFFICIENT condition for the Dravidian hypothesis -- "
+            "it only validates that Parpola's high-confidence proposals "
+            "land on the right SIGNS, not that those phoneme VALUES are "
+            "correct."
+        ),
     }
+    return phoneme_map_permutation_test_execute(inputs, merged)
 
 
 # ── Tier #2: Expanded Janabiyah phonetic readout ─────────────────────

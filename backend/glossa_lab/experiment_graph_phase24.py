@@ -41,8 +41,6 @@ Phase-23b:
 
 from __future__ import annotations
 
-import math
-import random
 from collections import Counter
 from typing import Any
 
@@ -264,48 +262,6 @@ def _refined_persons_extractor_v2(inputs: dict, params: dict) -> dict:
 # ── Bipartite-assignment matcher ──────────────────────────────────────
 
 
-def _name_n_segments(name: str) -> int:
-    return name.count("-") + 1 if name else 0
-
-
-def _length_score(n_signs: int, n_segments: int, tolerance: int = 2) -> float:
-    delta = abs(n_signs - n_segments)
-    if delta > tolerance:
-        return 0.0
-    return round(1.0 - delta / (tolerance + 1), 3)
-
-
-def _greedy_bipartite_assignment(
-    name_segs: list[tuple[str, int, int]],
-    seal_lengths: list[int],
-    tolerance: int,
-) -> dict[str, tuple[int, float]]:
-    """Greedy bipartite: walk names from highest-occurrence to lowest;
-    each takes the highest-scoring still-unused seal index. Returns
-    {name -> (seal_idx, length_score)}.
-    """
-    assigned: dict[str, tuple[int, float]] = {}
-    used: set[int] = set()
-    # Sort names by occurrence desc so the most attested name picks first
-    names_sorted = sorted(name_segs, key=lambda t: -t[2])
-    for name, n_seg, _occ in names_sorted:
-        best_idx = -1
-        best_score = 0.0
-        for idx, n_signs in enumerate(seal_lengths):
-            if idx in used:
-                continue
-            sc = _length_score(n_signs, n_seg, tolerance)
-            if sc > best_score:
-                best_score = sc
-                best_idx = idx
-        if best_idx >= 0 and best_score > 0:
-            assigned[name] = (best_idx, best_score)
-            used.add(best_idx)
-        else:
-            assigned[name] = (-1, 0.0)
-    return assigned
-
-
 def _enhanced_name_matcher_v2(inputs: dict, params: dict) -> dict:
     """Phase-24 matcher: produces a bipartite assignment + scores.
 
@@ -314,75 +270,36 @@ def _enhanced_name_matcher_v2(inputs: dict, params: dict) -> dict:
         invariance flaw that made the readout test return p=1.0.
       - Period-bucket awareness: emits a parallel period-overlap
         score per pairing.
+
+    Spec 087 S3 (family F5): the mechanism is the generic
+    LengthMatchScorer engine (glossa_lab.generic_primitives) in its
+    bipartite mode; this node is its Phase-24 parameterisation. The
+    module-local _name_n_segments / _length_score /
+    _greedy_bipartite_assignment helpers were used only here and by
+    the readout test below; both are engine delegations now, so the
+    helpers were removed (the engine carries the shared copies).
     """
-    persons_rows = inputs.get("rows_all") or inputs.get("rows_top50") or []
-    seals = inputs.get("inscribed_seals") or []
-    min_name_freq = _safe_int(params.get("min_name_freq", 1), 1)
-    tolerance = _safe_int(params.get("tolerance", 2), 2)
-
-    candidates = [r for r in persons_rows
-                   if _safe_int(r.get("occurrences")) >= min_name_freq]
-    if not candidates or not seals:
-        return {
-            "n_candidates": len(candidates),
-            "n_seals": len(seals),
-            "pairings": [],
-            "n_pairings": 0,
-            "verdict": (
-                f"Matcher v2: insufficient inputs "
-                f"(candidates={len(candidates)}, seals={len(seals)})."
-            ),
-        }
-
-    name_segs = [
-        (r["candidate_name"], _name_n_segments(r["candidate_name"]),
-         _safe_int(r.get("occurrences")))
-        for r in candidates
-    ]
-    seal_lengths = [_safe_int(s.get("inscription_length")) for s in seals]
-    assignment = _greedy_bipartite_assignment(
-        name_segs, seal_lengths, tolerance,
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        length_match_scorer_execute,
     )
 
-    pairings: list[dict] = []
-    name_to_row = {r["candidate_name"]: r for r in candidates}
-    for name, (seal_idx, score) in assignment.items():
-        if seal_idx < 0:
-            continue
-        seal = seals[seal_idx]
-        row = name_to_row.get(name) or {}
-        pairings.append({
-            "candidate_name": name,
-            "name_n_segments": _name_n_segments(name),
-            "name_occurrences": row.get("occurrences"),
-            "is_known_meluhhan": row.get("is_known_meluhhan", False),
-            "seal_idx": seal_idx,
-            "seal_id": seal.get("catalogue_id"),
-            "seal_n_signs": _safe_int(seal.get("inscription_length")),
-            "seal_signs_confidence": seal.get("signs_confidence"),
-            "length_score": score,
-        })
-    pairings.sort(key=lambda p: (-p["length_score"],
-                                  -(p.get("name_occurrences") or 0)))
-
-    total_score = sum(p["length_score"] for p in pairings)
-    n_assigned = len(pairings)
-
-    return {
-        "n_candidates": len(candidates),
-        "n_seals": len(seals),
-        "n_assigned": n_assigned,
-        "n_unassigned": len(candidates) - n_assigned,
-        "pairings": pairings,
-        "n_pairings": n_assigned,
-        "total_length_score": round(total_score, 4),
-        "verdict": (
-            f"Matcher v2: bipartite assignment of "
-            f"{n_assigned}/{len(candidates)} candidates onto "
-            f"{len(seals)} inscribed seals; total length-score = "
-            f"{round(total_score, 4)}."
+    merged = dict(params)
+    merged["matcher_spec"] = {
+        "assignment": "bipartite",
+        "score_spec": {"kind": "tolerance"},
+        "min_name_freq_default": 1,
+        "verdict_template": (
+            "Matcher v2: bipartite assignment of "
+            "{n_assigned}/{n_candidates} candidates onto "
+            "{n_seals} inscribed seals; total length-score = "
+            "{total_length_score}."
+        ),
+        "insufficient_template": (
+            "Matcher v2: insufficient inputs "
+            "(candidates={n_candidates}, seals={n_seals})."
         ),
     }
+    return length_match_scorer_execute(inputs, merged)
 
 
 # ── Bilingual readout test v2 (proper bipartite-assignment null) ─────
@@ -412,127 +329,25 @@ def _bilingual_readout_test_v2(inputs: dict, params: dict) -> dict:
     name to commit to a *specific* seal. Different permutations
     pair different names with the high-score seals, so the
     statistic genuinely changes.
+
+    Spec 087 S3 (family F5): the mechanism is the generic
+    LengthMatchPermutationTest engine (glossa_lab.generic_primitives)
+    in its bipartite statistic mode; this node is its Phase-24
+    parameterisation (permutation floor 100, seed 42, and the
+    observed-assignment rows in the output).
     """
-    persons_rows = inputs.get("rows_all") or inputs.get("rows_top50") or []
-    seals = inputs.get("inscribed_seals") or []
-    n_perms = max(100, _safe_int(params.get("n_permutations", 2000), 2000))
-    min_name_freq = _safe_int(params.get("min_name_freq", 1), 1)
-    tolerance = _safe_int(params.get("tolerance", 2), 2)
-    seed = _safe_int(params.get("seed", 42), 42)
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        length_match_permutation_test_execute,
+    )
 
-    candidates = [r for r in persons_rows
-                   if _safe_int(r.get("occurrences")) >= min_name_freq]
-    seal_lengths = [_safe_int(s.get("inscription_length")) for s in seals]
-    if not candidates or not seal_lengths:
-        return {
-            "verdict": "INSUFFICIENT_DATA",
-            "p_value": None,
-            "n_candidates": len(candidates),
-            "n_seals": len(seal_lengths),
-        }
-
-    n_names = len(candidates)
-    n_seals = len(seal_lengths)
-
-    # Pre-compute score matrix S[i, j]
-    name_segs = [_name_n_segments(r["candidate_name"]) for r in candidates]
-    score_mat = [
-        [_length_score(seal_lengths[j], name_segs[i], tolerance)
-         for j in range(n_seals)]
-        for i in range(n_names)
-    ]
-
-    def _greedy_score(assignment: list[int]) -> float:
-        """Score under the assignment[i] = seal_idx for name i.
-        Negative seal_idx means unassigned."""
-        return sum(score_mat[i][assignment[i]]
-                   for i in range(n_names) if assignment[i] >= 0)
-
-    # Observed: greedy bipartite assignment by occurrence
-    occs = [_safe_int(r.get("occurrences")) for r in candidates]
-    order = sorted(range(n_names), key=lambda i: -occs[i])
-    used: set[int] = set()
-    obs_assignment = [-1] * n_names
-    for i in order:
-        best_j = -1
-        best_s = 0.0
-        for j in range(n_seals):
-            if j in used:
-                continue
-            s = score_mat[i][j]
-            if s > best_s:
-                best_s = s
-                best_j = j
-        if best_j >= 0 and best_s > 0:
-            obs_assignment[i] = best_j
-            used.add(best_j)
-
-    observed = _greedy_score(obs_assignment)
-
-    # Null: random one-to-one assignments. If n_names > n_seals, only
-    # the first n_seals names get a seal in each shuffle (chosen
-    # randomly to avoid ordering bias).
-    rng = random.Random(seed)
-    n_at_or_above = 0
-    null_dist: list[float] = []
-    for _ in range(n_perms):
-        # Pick which names get assigned (random subset of size
-        # min(n_names, n_seals))
-        min(n_names, n_seals)
-        shuffled_seal_idxs = list(range(n_seals))
-        rng.shuffle(shuffled_seal_idxs)
-        # Randomly select which k names participate
-        if n_names > n_seals:
-            participating = rng.sample(range(n_names), n_seals)
-        else:
-            participating = list(range(n_names))
-        random_assignment = [-1] * n_names
-        for slot, name_i in enumerate(participating):
-            random_assignment[name_i] = shuffled_seal_idxs[slot]
-        v = _greedy_score(random_assignment)
-        null_dist.append(v)
-        if v >= observed:
-            n_at_or_above += 1
-
-    p_value = n_at_or_above / n_perms
-    null_mean = sum(null_dist) / len(null_dist)
-    null_var = (sum((x - null_mean) ** 2 for x in null_dist)
-                / max(1, len(null_dist) - 1))
-    null_sd = math.sqrt(null_var) if null_var > 0 else 0.0
-    z = ((observed - null_mean) / null_sd) if null_sd > 0 else 0.0
-
-    if p_value < 0.01:
-        verdict = "READOUT_SIGNIFICANT (p<0.01)"
-    elif p_value < 0.05:
-        verdict = "READOUT_MARGINAL (p<0.05)"
-    else:
-        verdict = "READOUT_NOT_SIGNIFICANT"
-
-    obs_pairings = []
-    for i, j in enumerate(obs_assignment):
-        if j < 0:
-            continue
-        obs_pairings.append({
-            "candidate_name": candidates[i]["candidate_name"],
-            "name_n_segments": name_segs[i],
-            "seal_idx": j,
-            "seal_id": seals[j].get("catalogue_id"),
-            "seal_n_signs": seal_lengths[j],
-            "length_score": score_mat[i][j],
-        })
-
-    return {
-        "verdict": verdict,
-        "p_value": round(p_value, 6),
-        "observed": round(observed, 4),
-        "null_mean": round(null_mean, 4),
-        "null_sd": round(null_sd, 4),
-        "z_score": round(z, 4),
-        "n_permutations": n_perms,
-        "n_candidates": n_names,
-        "n_seals": n_seals,
-        "tolerance": tolerance,
-        "observed_assignment": obs_pairings,
+    merged = dict(params)
+    merged.setdefault("seed", 42)
+    merged["test_spec"] = {
+        "statistic": "bipartite",
+        "n_permutations_default": 2000,
+        "min_name_freq_default": 1,
+        "insufficient_verdict": "INSUFFICIENT_DATA",
+        "include_assignment": True,
         "interpretation": (
             "Bipartite-assignment readout test: each candidate name "
             "committed to a unique seal. Null: random one-to-one "
@@ -541,6 +356,7 @@ def _bilingual_readout_test_v2(inputs: dict, params: dict) -> dict:
             "uniform random pairings."
         ),
     }
+    return length_match_permutation_test_execute(inputs, merged)
 
 
 # ── Verdict aggregator ────────────────────────────────────────────────

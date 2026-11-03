@@ -261,6 +261,29 @@ def _cisi_vol3_ocr(inputs: dict, params: dict) -> dict:
 # ── Tier 1 #5: Allograph-aware iconographic anchor score ─────────────
 
 
+# Iconic-reading -> (phoneme alias, allograph family) table for the
+# Phase-28 scorer, in the IconographicAnchorScorer spec shape:
+# ordered (reading key, [aliases], family) entries.
+_ICONOGRAPHIC_ALIAS_TABLE_28: list = [
+    ("fish", ["miin"], "fish"),
+    ("fish/star", ["miin"], "fish"),
+    ("fig", ["vaTa"], "fig_tree"),
+    ("banyan/fig", ["vaTa"], "fig_tree"),
+    ("banyan", ["vaTa"], "fig_tree"),
+    ("muruku", ["muruku"], "intersecting_circles"),
+    ("intersecting circles", ["muruku"], "intersecting_circles"),
+    ("squirrel", ["piLLai"], None),
+    ("pot", ["kuTam"], None),
+    ("pot/jar", ["kuTam"], None),
+    ("veL", ["veL"], "numerals"),
+    ("veN-miin", ["veL"], None),
+    ("venus", ["veL"], None),
+    ("pleiades", ["aru-"], "numerals"),
+    ("ursa major", ["eZu-"], "numerals"),
+    ("north star", ["vaTa"], "fig_tree"),
+]
+
+
 def _allograph_aware_iconographic_score(inputs: dict, params: dict) -> dict:
     """Phase-28 extension of Phase-27c IconographicAnchorScore.
 
@@ -274,141 +297,31 @@ def _allograph_aware_iconographic_score(inputs: dict, params: dict) -> dict:
       ph_conf bonus: x1.5 if phoneme also high-confidence
       allograph_extension_bonus: +0.25 per additional allograph-family
         member that matches the anchor's iconic_reading
+
+    Spec 087 S3 (family F4): the mechanism is the generic
+    IconographicAnchorScorer engine (glossa_lab.generic_primitives)
+    in its allograph mode (extension bonus 0.25); this node is its
+    Phase-28 parameterisation, with the alias/family table above.
     """
-    anchors = inputs.get("iconographic_anchors") or []
-    phoneme_map = inputs.get("phoneme_map") or {}
-    families = inputs.get("allograph_families") or {}
-
-    if not anchors:
-        return {"verdict": "NO_ANCHORS", "score": 0.0, "n_anchors": 0}
-
-    # Build iconic-reading -> family membership map
-    iconic_to_family: dict[str, dict] = {}
-    for fam_name, fam in families.items():
-        members = fam.get("members") or []
-        phoneme = (fam.get("phoneme") or "").lower()
-        iconic_to_family[fam_name.lower()] = {
-            "name": fam_name,
-            "members": [str(m) for m in members],
-            "phoneme": phoneme,
-        }
-
-    iconic_to_phoneme_alias = {
-        "fish": ("miin", "fish"),
-        "fish/star": ("miin", "fish"),
-        "fig": ("vaTa", "fig_tree"),
-        "banyan/fig": ("vaTa", "fig_tree"),
-        "banyan": ("vaTa", "fig_tree"),
-        "muruku": ("muruku", "intersecting_circles"),
-        "intersecting circles": ("muruku", "intersecting_circles"),
-        "squirrel": ("piLLai", None),
-        "pot": ("kuTam", None),
-        "pot/jar": ("kuTam", None),
-        "veL": ("veL", "numerals"),
-        "veN-miin": ("veL", None),
-        "venus": ("veL", None),
-        "pleiades": ("aru-", "numerals"),
-        "ursa major": ("eZu-", "numerals"),
-        "north star": ("vaTa", "fig_tree"),
-    }
-
-    rows = []
-    total_score = 0.0
-    n_matches = 0
-    n_total_anchors = 0
-    n_allograph_extensions = 0
-    extended_signs: set[str] = set()
-
-    for a in anchors:
-        sid = str(a.get("sign_id", "")).split("+")[0]
-        iconic = (a.get("iconic_reading", "") or "").lower()
-        anchor_conf = (a.get("confidence") or "low").lower()
-        n_total_anchors += 1
-        ph_entry = phoneme_map.get(sid, {}) or {}
-        ph_value = (ph_entry.get("phoneme", "") or "").lower()
-        ph_conf = (ph_entry.get("confidence") or "none").lower()
-
-        match = False
-        family_name = None
-        for k, (alias, fam_key) in iconic_to_phoneme_alias.items():
-            if k in iconic and alias.lower() in ph_value:
-                match = True
-                family_name = fam_key
-                break
-        if not match:
-            for k, (alias, fam_key) in iconic_to_phoneme_alias.items():
-                if k in iconic:
-                    match = alias.lower() in ph_value
-                    family_name = fam_key
-                    if match:
-                        break
-
-        anchor_score = 0.0
-        if match:
-            n_matches += 1
-            if anchor_conf == "high":
-                anchor_score = 2.0
-            elif anchor_conf == "medium":
-                anchor_score = 1.0
-            else:
-                anchor_score = 0.5
-            if ph_conf == "high":
-                anchor_score *= 1.5
-
-        # Allograph extension bonus: count additional family members with
-        # phoneme matching the same alias.
-        family_extensions: list[str] = []
-        if match and family_name and family_name in iconic_to_family:
-            fam = iconic_to_family[family_name]
-            target_phoneme = fam["phoneme"]
-            for member in fam["members"]:
-                if member == sid:
-                    continue
-                m_entry = phoneme_map.get(member, {}) or {}
-                m_phon = (m_entry.get("phoneme", "") or "").lower()
-                if not m_phon:
-                    continue
-                if target_phoneme and target_phoneme in m_phon:
-                    family_extensions.append(member)
-                    extended_signs.add(member)
-            n_allograph_extensions += len(family_extensions)
-            anchor_score += 0.25 * len(family_extensions)
-
-        total_score += anchor_score
-        rows.append({
-            "anchor_id": a.get("anchor_id"),
-            "sign_id": sid,
-            "object_id": a.get("object_id"),
-            "iconic_reading": a.get("iconic_reading"),
-            "phoneme_value": ph_value,
-            "phoneme_confidence": ph_conf,
-            "anchor_confidence": anchor_conf,
-            "match": match,
-            "family": family_name,
-            "family_extensions": family_extensions,
-            "n_allograph_extensions": len(family_extensions),
-            "anchor_score": round(anchor_score, 3),
-        })
-
-    rows.sort(key=lambda r: -r["anchor_score"])
-    verdict = (
-        f"Allograph-aware iconographic anchor score (Phase-28): "
-        f"{n_matches}/{n_total_anchors} anchors have a phoneme match; "
-        f"{n_allograph_extensions} additional allograph-family members "
-        f"score against the same anchors (vs Phase-27c which scored "
-        f"only the explicit sign ID). Total weighted score = "
-        f"{total_score:.2f}. Distinct sign IDs gaining anchor support "
-        f"via allograph extension: {sorted(extended_signs)}."
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        iconographic_anchor_scorer_execute,
     )
-    return {
-        "n_total_anchors": n_total_anchors,
-        "n_matches": n_matches,
-        "n_allograph_extensions": n_allograph_extensions,
-        "extended_sign_ids": sorted(extended_signs),
-        "total_score": round(total_score, 3),
-        "rows": rows,
-        "verdict": verdict,
+
+    merged = dict(params)
+    merged["scorer_spec"] = {
+        "alias_table": _ICONOGRAPHIC_ALIAS_TABLE_28,
+        "extension_bonus": 0.25,
+        "verdict_template": (
+            "Allograph-aware iconographic anchor score (Phase-28): "
+            "{n_matches}/{n_total_anchors} anchors have a phoneme match; "
+            "{n_allograph_extensions} additional allograph-family members "
+            "score against the same anchors (vs Phase-27c which scored "
+            "only the explicit sign ID). Total weighted score = "
+            "{total_score:.2f}. Distinct sign IDs gaining anchor support "
+            "via allograph extension: {extended_sign_ids}."
+        ),
     }
+    return iconographic_anchor_scorer_execute(inputs, merged)
 
 
 # ── Tier 1 #3: Reverse Janabiyah Search v2 (allograph-aware) ────────

@@ -680,10 +680,22 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
   // Execution is deferred until AFTER loadExp is defined and catalog is populated.
   const [pendingAction, setPendingAction] = useState<{ action: string; id?: string } | null>(null);
 
-  useEffect(() => {
-    void getAtomicNodeCatalog().then(setCatalog).catch(() => {});
-    void listGraphExperiments().then(setSavedExps).catch(() => {});
+  // Spec 087 S1 (C087-3): a failed catalog load must surface as a named
+  // error state in the palette — never a silently empty palette.
+  const [catalogError, setCatalogError] = useState<string | null>(null);
+  const loadCatalog = useCallback(() => {
+    setCatalogError(null);
+    void getAtomicNodeCatalog()
+      .then(setCatalog)
+      .catch((e: unknown) => {
+        setCatalogError(e instanceof Error ? e.message : String(e));
+      });
   }, []);
+
+  useEffect(() => {
+    loadCatalog();
+    void listGraphExperiments().then(setSavedExps).catch(() => {});
+  }, [loadCatalog]);
   useEffect(() => { localStorage.setItem("geb_lw",   String(leftW)); }, [leftW]);
   useEffect(() => { localStorage.setItem("geb_exh",  String(expsH)); }, [expsH]);
   useEffect(() => { localStorage.setItem("geb_dock", dockL ? "left" : "right"); }, [dockL]);
@@ -1351,6 +1363,17 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
             <div style={{ fontSize: 9, fontWeight: 700, color: th.textMuted, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 5 }}>Node Palette</div>
             <input value={palSearch} onChange={e => setPalSearch(e.target.value)} placeholder="Search nodes…"
               style={{ width: "100%", boxSizing: "border-box", padding: "4px 7px", fontSize: 10, border: `1px solid ${th.inputBdr}`, borderRadius: 5, marginBottom: 6, outline: "none", background: th.inputBg, color: th.inputText }} />
+            {catalogError !== null && (
+              <div data-testid="palette-error" role="alert"
+                style={{ padding: "6px 8px", marginBottom: 6, border: "1px solid #ef444460", borderRadius: 5, background: "#ef44440d" }}>
+                <div style={{ fontSize: 10, fontWeight: 600, color: "#f87171" }}>Node palette failed to load</div>
+                <div style={{ fontSize: 9, color: th.textMuted, marginTop: 2, wordBreak: "break-word" }}>{catalogError}</div>
+                <button type="button" onClick={loadCatalog}
+                  style={{ marginTop: 5, padding: "2px 10px", fontSize: 10, cursor: "pointer", border: `1px solid ${th.inputBdr}`, borderRadius: 5, background: th.inputBg, color: th.inputText }}>
+                  Retry
+                </button>
+              </div>
+            )}
             {Object.entries(categories).map(([cat, defs]) => (
               <div key={cat} style={{ marginBottom: 8 }}>
                 <div style={{ fontSize: 9, fontWeight: 700, color: catColors[cat] ?? "#64748b", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 3 }}>{cat}</div>

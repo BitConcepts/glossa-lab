@@ -350,14 +350,16 @@
    }
   },
   {
-   "id": "m77_fallback_default",
+   "id": "m77_holdat_explicit_default",
    "node": "M77InscriptionLoader",
    "setup": {
     "kind": "m77",
     "decoded": null,
     "csv": "m77_holdat.csv"
    },
-   "params": {},
+   "params": {
+    "source": "holdat"
+   },
    "mode": "full",
    "expected": {
     "inscriptions": [
@@ -421,7 +423,7 @@
    }
   },
   {
-   "id": "m77_fallback_min3",
+   "id": "m77_holdat_explicit_min3",
    "node": "M77InscriptionLoader",
    "setup": {
     "kind": "m77",
@@ -429,6 +431,7 @@
     "csv": "m77_holdat.csv"
    },
    "params": {
+    "source": "holdat",
     "min_length": 3
    },
    "mode": "full",
@@ -461,7 +464,7 @@
    }
   },
   {
-   "id": "m77_fallback_raw_ignored",
+   "id": "m77_holdat_explicit_raw_ignored",
    "node": "M77InscriptionLoader",
    "setup": {
     "kind": "m77",
@@ -469,6 +472,7 @@
     "csv": "m77_holdat.csv"
    },
    "params": {
+    "source": "holdat",
     "use_raw": true
    },
    "mode": "full",
@@ -545,6 +549,52 @@
    "mode": "full",
    "expected": {
     "error": "M77 corpus not available: neither mahadevan_texts_decoded.json in reports/ nor Holdat CSV at __CASE_TMP__/corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv found. Run backend/scripts/decode_inscription_texts.py to regenerate."
+   }
+  },
+  {
+   "id": "m77_no_silent_fallback",
+   "node": "M77InscriptionLoader",
+   "setup": {
+    "kind": "m77",
+    "decoded": null,
+    "csv": "m77_holdat.csv"
+   },
+   "params": {},
+   "mode": "full",
+   "expected": {
+    "error": "M77 corpus not available: neither mahadevan_texts_decoded.json in reports/ nor Holdat CSV at __CASE_TMP__/corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv found. Run backend/scripts/decode_inscription_texts.py to regenerate."
+   }
+  },
+  {
+   "id": "m77_holdat_selected_but_absent",
+   "node": "M77InscriptionLoader",
+   "setup": {
+    "kind": "m77",
+    "decoded": "m77_decoded_dict.json",
+    "csv": null
+   },
+   "params": {
+    "source": "holdat"
+   },
+   "mode": "full",
+   "expected": {
+    "error": "M77 corpus not available: neither mahadevan_texts_decoded.json in reports/ nor Holdat CSV at __CASE_TMP__/corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv found. Run backend/scripts/decode_inscription_texts.py to regenerate."
+   }
+  },
+  {
+   "id": "m77_unknown_source",
+   "node": "M77InscriptionLoader",
+   "setup": {
+    "kind": "m77",
+    "decoded": "m77_decoded_dict.json",
+    "csv": null
+   },
+   "params": {
+    "source": "bogus"
+   },
+   "mode": "full",
+   "expected": {
+    "error": "JsonCorpusLoader: unknown source 'bogus'; choose one of: decoded, holdat"
    }
   },
   {

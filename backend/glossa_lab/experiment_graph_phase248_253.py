@@ -1,13 +1,17 @@
-"""Experiment graph node definitions for Phases 248–254.
+"""Experiment graph node definitions for Phases 248–253.
 
 Phase-248: Ceiling-breaker literature mine (identify actionable experiments)
 Phase-249: Ceiling experiments design (allograph, semantic scope, commodity, LE vocab)
 Phase-250/251: Full corpus allograph + commodity analysis
 Phase-252: Allograph detection → 56 MEDIUM→HIGH upgrades (HIGH 105→125)
 Phase-253: CISI allograph clustering (P-sign ↔ HIGH M-sign cross-corpus)
-Phase-254: Seal-type semantic constraint analysis (motif-enriched MEDIUM→HIGH)
-Phase-255: Trade commodity phoneme mapping (commodity PDr names → MEDIUM→HIGH)
-Phase-256: Linear Elamite vocabulary extension (LE+DEDR triple corroboration)
+
+Phases 254–256 (semantic constraint, commodity phonemes, LE extension) are
+defined in experiment_graph_phase_misc_gaps.py. This module previously also
+defined those three node ids; the duplicates silently overwrote each other
+by import order until Spec 087 S1 resolved the shadowing (the live
+misc_gaps definitions were kept; see
+specs/087-node-system-tightening/records/stage-s1-record.md).
 """
 from __future__ import annotations
 
@@ -116,56 +120,5 @@ def _phase248_254_node_defs() -> list[AtomicNodeDef]:
             ],
             params_schema={"type": "object", "properties": {}},
             fn=_phase_runner("phase253_cisi_allograph.py", "phase253_cisi_allograph.json"),
-        ),
-        AtomicNodeDef(
-            "IndusPhase254SemanticConstraint",
-            "Phase-254: Seal-Type Semantic Constraint",
-            "Indus Decipherment",
-            "Motif-enrichment analysis: MEDIUM signs strongly associated with a seal motif "
-            "(unicorn/zebu/elephant/rhino/tiger) have readings checked against the semantic "
-            "domain of that motif. Domain-matched signs with chi2>6.64 and lift>2.0 → HIGH.",
-            inputs=[],
-            outputs=[
-                {"name": "n_upgraded", "type": "number"},
-                {"name": "upgrade_log", "type": "array"},
-                {"name": "top_enrichments", "type": "array"},
-                {"name": "stdout", "type": "text"},
-            ],
-            params_schema={"type": "object", "properties": {}},
-            fn=_phase_runner("phase254_semantic_constraint.py", "phase254_semantic_constraint.json"),
-        ),
-        AtomicNodeDef(
-            "IndusPhase255CommodityPhonemes",
-            "Phase-255: Trade Commodity Phoneme Mapping",
-            "Indus Decipherment",
-            "Maps 16 known Harappan trade commodities to Proto-Dravidian names, then "
-            "cross-references MEDIUM signs on zebu/bull seals. Signs with commodity PDr "
-            "reading match + trade-seal presence → MEDIUM→HIGH upgrade.",
-            inputs=[],
-            outputs=[
-                {"name": "n_upgraded", "type": "number"},
-                {"name": "upgrade_log", "type": "array"},
-                {"name": "commodity_matches", "type": "array"},
-                {"name": "stdout", "type": "text"},
-            ],
-            params_schema={"type": "object", "properties": {}},
-            fn=_phase_runner("phase255_commodity_phonemes.py", "phase255_commodity_phonemes.json"),
-        ),
-        AtomicNodeDef(
-            "IndusPhase256LEExtension",
-            "Phase-256: Linear Elamite Vocabulary Extension",
-            "Indus Decipherment",
-            "Extends Phase-235 Elamite bridge using Desset 2022 + 2025 LE data. "
-            "MEDIUM signs with LE backing (E41) + DEDR + McAlpin triple corroboration "
-            "→ MEDIUM→HIGH upgrade. Also maps extended LE phonemes against MEDIUM signs.",
-            inputs=[],
-            outputs=[
-                {"name": "n_upgraded", "type": "number"},
-                {"name": "upgrade_log", "type": "array"},
-                {"name": "le_backed_medium", "type": "array"},
-                {"name": "stdout", "type": "text"},
-            ],
-            params_schema={"type": "object", "properties": {}},
-            fn=_phase_runner("phase256_le_extension.py", "phase256_le_extension.json"),
         ),
     ]

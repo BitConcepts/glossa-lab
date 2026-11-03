@@ -1,7 +1,12 @@
-"""Node Registry — unified param schema lookup for Study Builder nodes.
+"""Study Node Registry — unified param schema lookup for Study Builder nodes.
 
 Provides a JSON-Schema-compatible dict for any experiment or pipeline node,
 enabling the Study Builder inspector to render typed parameter forms.
+
+Renamed from node_registry.py in Spec 087 S1: this module is the Study
+Builder's param-schema lookup, not the experiment atomic-node registry
+(that is ATOMIC_NODES in experiment_graph.py). The endpoint path below is
+unchanged by the rename.
 
 Endpoints
 ---------

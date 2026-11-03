@@ -72,7 +72,7 @@ from glossa_lab.database import close_db, init_db
 from glossa_lab.engine import run_engine_loop
 from glossa_lab.log_setup import setup_logging
 from glossa_lab.model_intelligence import router as model_intelligence_router
-from glossa_lab.node_registry import router as node_registry_router
+from glossa_lab.study_node_registry import router as node_registry_router
 
 _log = _logging.getLogger("glossa_lab.main")
 

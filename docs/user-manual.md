@@ -292,6 +292,12 @@ All experiments are **graph experiments** — JSON specs describing a directed a
 5. Click any node to view and edit its parameters in the **Node Inspector** (right)
 6. Click **Run** to execute the graph
 
+The Palette lists the nodes the backend's registry provides. If that list
+cannot be loaded (for example, the backend is unreachable), the Palette
+shows a "Node palette failed to load" error with a **Retry** button
+instead of an empty list — an empty Palette with no error means the list
+loaded and the search box is filtering everything out.
+
 ### Node Reference
 
 **Corpus Loaders:**

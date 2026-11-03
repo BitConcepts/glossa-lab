@@ -18,6 +18,8 @@ else) can run against that build:
 - registry_self_check() compares that independent production against
   ATOMIC_NODES: every plugin module must import and produce, no node id
   may be produced twice, and every produced id must be registered.
+  Since Spec 087 S2 it also checks the legacy split: the definitions
+  flagged legacy must be exactly the S2 migration data file's id set.
 
 The runtime build records its own failures/duplicates as it goes (see
 registry_build_report() in experiment_graph.py, served at
@@ -145,9 +147,15 @@ def registry_self_check() -> dict[str, Any]:
 
     ok is True only when: every plugin module imports and produces, no
     node id is produced by more than one source, every produced id is
-    registered, and the runtime build recorded no failures or duplicates.
+    registered, the runtime build recorded no failures or duplicates, and
+    (Spec 087 S2) the set of definitions flagged legacy is exactly the S2
+    migration data file's id set.
     """
-    from glossa_lab.experiment_graph import ATOMIC_NODES, registry_build_report
+    from glossa_lab.experiment_graph import (
+        ATOMIC_NODES,
+        load_legacy_migration_ids,
+        registry_build_report,
+    )
 
     sources, errors = collect_plugin_nodes()
     produced = set(sources)
@@ -159,12 +167,29 @@ def registry_self_check() -> dict[str, Any]:
     ]
     by_category = Counter(d.category for d in ATOMIC_NODES.values())
     build_report = registry_build_report()
+    flagged = {node_id for node_id, d in ATOMIC_NODES.items() if d.legacy}
+    try:
+        migration_ids = set(load_legacy_migration_ids())
+        legacy_mismatch = {
+            "flagged_not_in_migration": sorted(flagged - migration_ids),
+            "in_migration_not_flagged": sorted(migration_ids - flagged),
+        }
+    except Exception as exc:  # noqa: BLE001
+        legacy_mismatch = {
+            "flagged_not_in_migration": [],
+            "in_migration_not_flagged": [],
+            "migration_error": f"{type(exc).__name__}: {exc}",
+        }
+    legacy_agrees = not legacy_mismatch["flagged_not_in_migration"] and not (
+        legacy_mismatch["in_migration_not_flagged"]
+    ) and "migration_error" not in legacy_mismatch
     return {
         "ok": (
             not errors
             and not duplicates
             and produced <= registered
             and build_report["ok"]
+            and legacy_agrees
         ),
         "registered_total": len(ATOMIC_NODES),
         "by_category": dict(sorted(by_category.items())),
@@ -174,6 +199,9 @@ def registry_self_check() -> dict[str, Any]:
         "produced_not_registered": sorted(produced - registered),
         "core_registered": len(registered - produced),
         "build_report_ok": build_report["ok"],
+        "legacy_total": len(flagged),
+        "palette_total": len(ATOMIC_NODES) - len(flagged),
+        "legacy_mismatch": legacy_mismatch,
     }
 
 
@@ -192,4 +220,11 @@ def assert_registry_complete(check: dict[str, Any] | None = None) -> None:
         problems.append(f"node id {node_id} produced but not registered")
     if not check["build_report_ok"]:
         problems.append("runtime registry build report is not ok")
+    mismatch = check.get("legacy_mismatch") or {}
+    for node_id in mismatch.get("flagged_not_in_migration", []):
+        problems.append(f"node id {node_id} flagged legacy but not in the S2 migration data")
+    for node_id in mismatch.get("in_migration_not_flagged", []):
+        problems.append(f"S2 migration id {node_id} is not flagged legacy")
+    if "migration_error" in mismatch:
+        problems.append(f"S2 migration data unreadable: {mismatch['migration_error']}")
     raise RuntimeError("Registry self-check failed: " + "; ".join(problems))

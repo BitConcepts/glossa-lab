@@ -1,7 +1,8 @@
 """Experiment Graph API.
 
 Endpoints:
-  GET    /experiment-graphs/catalog        -- atomic node catalog (for Exp Builder palette)
+  GET    /experiment-graphs/catalog        -- atomic node catalog (for Exp Builder palette;
+                                              legacy nodes excluded unless ?include_legacy=true)
   GET    /experiment-graphs/registry-health -- node registry build report (Spec 087 S1)
   GET    /experiment-graphs/port-colors    -- port type → hex colour map
   GET    /experiment-graphs                -- list saved graph experiments
@@ -124,9 +125,20 @@ async def _maybe_notify_experiment(
 # ── Catalog ──────────────────────────────────────────────────────────────────
 
 @router.get("/catalog")
-async def get_atomic_catalog() -> list[dict[str, Any]]:
-    """Return the full atomic node catalog for the Experiment Builder palette."""
-    return [n.to_dict() for n in ATOMIC_NODES.values()]
+async def get_atomic_catalog(include_legacy: bool = False) -> list[dict[str, Any]]:
+    """Return the atomic node catalog for the Experiment Builder palette.
+
+    Spec 087 S2 (decision D1): the default response is the palette set —
+    the registered nodes NOT flagged legacy (the census's wrapper nodes
+    stay registered and resolvable but are no longer offered as buildable
+    primitives). ``?include_legacy=true`` returns the full registry for
+    diagnostics. Every entry carries its ``legacy`` flag.
+    """
+    return [
+        n.to_dict()
+        for n in ATOMIC_NODES.values()
+        if include_legacy or not n.legacy
+    ]
 
 
 @router.get("/registry-health")

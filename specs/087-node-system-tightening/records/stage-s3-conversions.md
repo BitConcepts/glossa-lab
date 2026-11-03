@@ -369,6 +369,190 @@ in-tree as a side effect; those files were restored
   CanonicalSignLoader (family F3), not F1; it lands with
   PR-B. No F1 fixture needed CGSA seeding.
 
+## M77 corpus-pipeline unification — Step 0 divergence check: STOP
+
+**Order:** the owner, 2026-11-03 — unify the two M77 corpus
+pipelines that PR-A recorded and pinned separately (above).
+**Branch:** `feat/087-s3-m77-unify`, built on main `c817b04f`
+(PR-A merged). **Date:** 2026-11-03. **Seat:** build worker;
+the parent gates. The brief gated the build on a Step 0
+divergence check: run both pipelines over the real corpus
+data, compare field by field, and STOP — records only, no
+unification — if any difference is observable by any
+consumer. **That is the outcome. No code changed in this
+PR.** The quantified record follows; the unification is an
+owner decision on this evidence.
+
+### The two pipelines, as they stand after PR-A
+
+- **Pipeline A — the data module.** `glossa_lab/data/indus_m77.py`
+  parses `reports/mahadevan_corpus_flat.txt` (first existing of
+  three candidate paths) into bare sign sequences: no ids, no
+  site codes, no raw layer. Getters:
+  `get_corpus_inscriptions(min_length)`, `get_corpus_symbols()`,
+  `get_corpus_metadata()`.
+- **Pipeline B — the report chain.** `M77InscriptionLoader`
+  (phase20) delegates to the JsonCorpusLoader engine with a
+  fallback chain: `reports/mahadevan_texts_decoded.json`
+  (records with `id`, `site_code`, `sequence`, `length`,
+  `raw`), falling back to the Holdat CSV
+  (`corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv`,
+  grouped by `cisi_number`, sequences from its `letters`
+  column, site from its `site` column). Generator of the JSON:
+  `backend/scripts/decode_inscription_texts.py` (OCR plate
+  text → glyph-frequency rank correlation against the Fuls
+  catalog → decoded sequences).
+
+### Consumer census (Step 0a)
+
+Pipeline A consumers:
+
+- **Nodes:** `BuiltinCorpus` (`experiment_graph.py`; corpus
+  names `indus_m77` / `m77` / `mahadevan` / `mahadevan_1977`),
+  `BuiltinLM` (`experiment_graph_phase14.py`),
+  `experiment_graph_ab_language.py` (through BuiltinCorpus).
+- **Data-module callers:** `mesopotamian_contact.get_mahadevan_inscriptions`
+  / `get_mahadevan_metadata` → the phase29 `DatasetRecordLoader`
+  spec behind `MahadevanInscriptionLoader`.
+- **API name routing:** `api/experiments.py` and
+  `api/ai_tools.py` accept the `indus_m77` corpus name.
+- **Scripts:** 40 files under `backend/scripts/` import
+  `glossa_lab.data.indus_m77` (`audit_data_integrity.py`,
+  `auto_decipher_loop.py`, `release_validation.py`,
+  `translate_all_seals.py`, and 36 phase scripts);
+  `scripts/phase16/rerun_indus_grounded.py` (through the
+  corpus-name path), `scripts/phase18/measure_and_rerun.py`
+  and `scripts/phase19/omnibus.py` /
+  `sign_clusters_genre_cm.py` read the flat file directly.
+
+Pipeline B consumers:
+
+- **Node:** `M77InscriptionLoader` in three live graphs
+  (`indus_sa_dravidian_syllable`,
+  `indus_sa_sanskrit_falsification`,
+  `indus_validation_neg_controls`). Their wiring observes
+  exactly two outputs: `sequences` and `n_inscriptions`.
+- **Registered consumer of the B-only fields:**
+  `ClusterArchaeology` (phase20) takes an `inscriptions`
+  input and reads `site_code` per inscription
+  (`experiment_graph_phase20.py:463–487`). It is in no live
+  graph, but it is a registered consumer of precisely the
+  fields pipeline A does not have.
+- **Direct file consumer:** `scripts/phase19/omnibus.py`
+  `build_m77_raw_corpus()` reads the decoded JSON's `raw`
+  field as a separate corpus (below).
+- The Holdat CSV is a shared external corpus, not
+  B-private: `api/foundation_check.py`, `api/signs.py`,
+  `api/texts.py`, `api/research_loop.py`, `config.py`,
+  `experiment_graph_phase137.py`, and the phase113/115/116
+  runners also read it.
+
+### The comparison (Step 0b), over the real data present
+
+Run 2026-11-03 in this tree (`reports/mahadevan_corpus_flat.txt`
+present, sha256 `878fd223…` — byte-identical in all six VM
+trees checked, including the protected checkout):
+
+- **Pipeline A:** 1,669 inscriptions / 5,361 tokens / 64
+  distinct signs; canonical-JSON sha256 of the sequence list
+  `095751a9…`; identical sequences via the
+  `mesopotamian_contact` wrapper. Length histogram runs to a
+  **maximum of 72 tokens** (25 inscriptions longer than 14),
+  which contradicts `indus_m77.py`'s own docstring claim of
+  a 1–14 range — the module's stated stats match its counts
+  (1,669 / 5,361) but not its data's shape.
+- **Pipeline B: cannot be run over its real data on this
+  machine.** `reports/mahadevan_texts_decoded.json` exists
+  in **no** tree on this VM (searched: every `glossa-run`
+  tree, the goal workspaces, the protected checkout; the
+  only copies anywhere are the synthetic PR-A test
+  fixtures). The Holdat CSV is likewise absent
+  (`corpora/` is a gitignored download tree, not present in
+  this clone). Executed here, `M77InscriptionLoader`
+  returns its absent-corpus error dict — no `sequences`,
+  no `n_inscriptions`. Nor can the JSON be regenerated
+  here: every input of `decode_inscription_texts.py` is
+  absent (`backend/data-import/mahadevan_ocr/`,
+  `backend/reports/real_indus_catalog_analysis.json`,
+  `cjk_m77_mapping.json`, `mahadevan_bigrams_mapped.json`).
+- **Present-tense observable difference, same tree, same
+  corpus state:** pipeline A serves the full corpus
+  (1,669 / 5,361 / 64) to its ~45 consumers; pipeline B
+  serves an error to its node consumers. (PR-A's 27-graph
+  comparison recorded exactly this absent behaviour for the
+  three live graphs on both sides of that PR.) Unifying in
+  either direction on this evidence changes observed
+  output: onto B's source, every A consumer on this machine
+  loses the corpus to a missing file; onto A's source,
+  B's consumers gain records whose `id` is null and
+  `site_code` empty where the JSON, when present, carries
+  real values — and gain a corpus where they currently get
+  a named error.
+
+### Structural differences (provable from code, independent of file presence)
+
+1. **Fields.** B's records carry `id`, `site_code`,
+   `length`, and `raw`; A's carry none of these. B's node
+   output exposes `inscriptions[{id, site_code, length,
+   sequence}]`; `ClusterArchaeology` consumes the
+   `site_code`. A has no equivalent surface to unify onto
+   without inventing values.
+2. **The raw layer.** B's JSON branch supports `use_raw`:
+   per-character OCR glyph sequences — the *unmerged*
+   glyph stream. The Phase-19 studies consume the two
+   artifacts as **different corpora side by side**:
+   `omnibus.py` measures `indus_m77` (the flat file) and
+   `indus_m77_raw` (the JSON's raw field, "no rank-corr
+   collapse", a type count the script prints as distinct
+   from "64 in mapped"); `sign_clusters_genre_cm.py`
+   clusters `indus_m77_mapped` and `indus_m77_raw`
+   separately. A cannot express the raw layer at all.
+3. **Fallback corpus identity.** When the JSON is missing,
+   B silently substitutes a different corpus — the Holdat
+   CSV, CISI-grouped, its own sign tokens — so which corpus
+   B serves depends on which files happen to be present.
+   A has exactly one source and fails loudly without it.
+4. **Provenance / numbering conflict.** B's generator maps
+   glyphs to **Fuls** sign numbers (`decode_inscription_texts.py`
+   steps 3–5: Fuls catalog frequencies; `cjk_m77_mapping`'s
+   `fuls` field). A's metadata asserts the flat file's
+   tokens are "Mahadevan M77 (1977)" numbering
+   (`get_corpus_metadata`), and the flat file is asserted
+   by docstrings to be the same generator's sibling output
+   — an assertion the records do not certify: the generator
+   writes its outputs under `backend/reports/`, while both
+   loaders read repo-root `reports/`, and its decoded
+   entries are single OCR table rows while the flat data
+   contains 72-token lines. Whether the flat file in the
+   trees today is that generator's output, and whether its
+   tokens are Fuls numbers wearing an M77 label, cannot be
+   settled from this machine.
+
+### Verdict and what the owner decision needs
+
+**STOP.** The gate's proceed condition — output-equivalent
+for every consumer, or differing only in ways proven
+unobservable consumer by consumer — is not met and cannot
+be met on the evidence available here: equivalence of the
+sequence sets is unprovable without the decoded JSON, and
+differences 1–3 are observable by named consumers
+regardless. The open questions for the owner:
+
+- Does `mahadevan_texts_decoded.json` exist in the live
+  desktop tree (the Spec 080 backend's tree), and if so,
+  can a copy be brought into the record so the field-by-field
+  comparison can actually be run?
+- Which artifact is canonical: the decoded JSON (with ids,
+  sites, and the raw layer) or the flat file (the corpus
+  every script consumer actually reads today)?
+- Is the Holdat fallback a behaviour to keep in a unified
+  loader, or a silent corpus substitution to retire?
+
+Until those are answered, both pipelines stand as PR-A left
+them: separately parameterised, separately pinned. This PR
+changes no code, no fixture, and no consumer default; the
+manual is untouched (no user-visible change).
+
 ## Repair note (PR-A, post-CI)
 
 The first CI run of this PR failed exactly one case,

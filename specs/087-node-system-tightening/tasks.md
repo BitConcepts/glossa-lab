@@ -143,6 +143,16 @@ carries its gate/test output verbatim** — not a summary of it.
   records/stage-s3-conversions.md. Twelve families remain
   (F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13); this
   task ticks only when the last conversion PR merges.
+  Side item (owner order 2026-11-03): the M77 corpus-pipeline
+  unification was gated on a Step 0 divergence check and
+  STOPPED there — pipeline B's real data (the decoded JSON,
+  the Holdat CSV) exists in no tree on the build machine, so
+  sequence equivalence is unprovable, and the field/raw/
+  fallback differences are consumer-observable regardless.
+  The quantified record and the three questions the owner
+  decision needs are in records/stage-s3-conversions.md
+  ("M77 corpus-pipeline unification — Step 0 divergence
+  check: STOP"). No code changed under this item.
 - [ ] T304 Re-expression PRs (disposition (b)): consuming
   experiments rebuilt as compositions of existing
   primitives; C087-13 comparison runs re-proved per PR.

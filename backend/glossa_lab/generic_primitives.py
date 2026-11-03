@@ -1,20 +1,31 @@
-"""Generic graph-node machinery (Spec 087 S3, families F3 + F8).
+"""Generic graph-node machinery (Spec 087 S3, families F3 + F8
+and F4 + F5).
 
-Nine spec/parameter-driven engines back the generic primitives
+Fifteen spec/parameter-driven engines back the generic primitives
 registered in experiment_graph.py: RegistryTableLoader,
 LabelMapApplier, TemplateMiner, ClusterContingencyProfile,
 SignRoleClassifier, ValueRoleMapSource, AnchorSyllabifier,
-AssociationAnchorDeriver, and PMICentralityRanker. The domain
-nodes converted in Spec 087 S3 PR-B (CanonicalSignLoader,
-ClusterMapper, StructuralTemplateAnalyzer, ClusterArchaeology,
-IndusSignRoleClassifier, DefaultIndusValueRoleMap,
-IndusAnchorSetSyllable, DerivedAnchorSet, EpistaticAnchorRanker)
-keep their registered ids and parameter schemas; their
-implementations delegate here with the domain content — table
-names, file paths, numeral sets, value-role tables, diacritic
-tables, verdict text — carried as parameters instead of code.
-That is the conversion contract: generic mechanism in this
-module, domain content in parameters.
+AssociationAnchorDeriver, and PMICentralityRanker (PR-B), plus
+IconographicAnchorScorer, PhonemeMapCoverage,
+PhonemeMapPermutationTest, LengthMatchScorer,
+LengthMatchPermutationTest, and StratifiedPermutationTest
+(PR-C). The domain nodes converted in Spec 087 S3 PR-B
+(CanonicalSignLoader, ClusterMapper, StructuralTemplateAnalyzer,
+ClusterArchaeology, IndusSignRoleClassifier,
+DefaultIndusValueRoleMap, IndusAnchorSetSyllable,
+DerivedAnchorSet, EpistaticAnchorRanker) and PR-C
+(IconographicAnchorScore, AllographAwareIconographicScore,
+BlindHeldOutTest, BayesianDecoder, BayesianDecoderV2,
+EnhancedNameMatcher, EnhancedNameMatcherV2, MeluhhaNameMatcher,
+BilingualReadoutTest, BilingualReadoutTestV2,
+PeriodStratifiedReadout, PeriodStratifiedReadout6Bucket,
+ProvenienceStratifiedReadout) keep their registered ids and
+parameter schemas; their implementations delegate here with the
+domain content — table names, file paths, numeral sets,
+value-role tables, diacritic tables, alias tables, strata rules,
+verdict text — carried as parameters instead of code. That is
+the conversion contract: generic mechanism in this module,
+domain content in parameters.
 
 Like generic_loaders.py, this module is stdlib-only and imports
 nothing from glossa_lab, so core and phase modules can both use
@@ -58,6 +69,43 @@ Engine parameter surfaces:
   AssociationAnchorDeriver: min_z / max_anchors plus the
     anchor_prefix a derived anchor's value carries.
   PMICentralityRanker: top_k / min_count.
+  IconographicAnchorScorer (params["scorer_spec"]): the alias
+    table (ordered [reading-key, aliases, family] entries),
+    confidence weights + high-confidence bonus, and — when
+    extension_bonus is set — the allograph mode: family
+    resolution (the matching entry's family, else the last
+    table entry whose key the reading contains) and the
+    per-member extension bonus over the allograph_families
+    input. Verdict text is a template.
+  PhonemeMapCoverage (params["coverage_spec"]): the unknown
+    token, uncertain marker, high-confidence label, the
+    placeholder skeleton text, and the verdict template; the
+    mechanism is per-seal phoneme resolution + readability.
+  PhonemeMapPermutationTest (params["decoder_spec"]): the
+    shuffle dimension ("confidence" | "value"), the confidence
+    weight table, the optional compound-plausibility scoring
+    (pattern pairs + per-pattern / per-repeat bonuses as
+    data), the null map's gloss, the output key names, and
+    the verdict template + interpretation as data.
+  LengthMatchScorer (params["matcher_spec"]): the assignment
+    mode ("all_pairs" | "bipartite" | "aggregate_pairs"), the
+    score spec — {"kind": "tolerance"} (1 - delta/(tol+1),
+    rounded, 0 beyond tolerance) or a named {"kind": "linear",
+    "divisor": d} falloff (max(0, 1 - |delta|/d), unrounded) —
+    the min-frequency default, and the verdict templates.
+  LengthMatchPermutationTest (params["test_spec"]): the
+    statistic ("best_match" | "bipartite"), the permutation /
+    frequency defaults, the insufficient-data verdict text,
+    the verdict bands, the optional observed-assignment
+    output, and the interpretation as data.
+  StratifiedPermutationTest (params["strata_spec"]): the
+    stratum field + result key, the ordered substring->bucket
+    rules with case sensitivity and value stripping as data,
+    the empty-text and fallback buckets, the seed base
+    (per-stratum seed = base + len(bucket name); the merged
+    overall run uses the base itself), and the verdict
+    template. Its per-stratum test is the same bipartite
+    core LengthMatchPermutationTest uses.
 """
 from __future__ import annotations
 
@@ -65,6 +113,7 @@ import importlib
 import json
 import logging
 import math
+import random
 import re
 import sqlite3
 from collections import Counter
@@ -1041,4 +1090,1094 @@ def pmi_centrality_ranker_execute(inputs: dict, params: dict) -> dict:
             f"top sign {ranking[0]['sign'] if ranking else '?'} "
             f"(centrality={ranking[0]['centrality'] if ranking else 0:.2f})."
         ),
+    }
+
+
+# ── Shared helpers for the F4 + F5 engines ───────────────────────────────────
+
+
+def _safe_int(x: Any, default: int = 0) -> int:
+    """The phase modules' coercion, verbatim: int(x), else the default."""
+    try:
+        return int(x)
+    except Exception:  # noqa: BLE001
+        return default
+
+
+def _name_n_segments(name: str) -> int:
+    """Count hyphen-separated segments in a candidate name."""
+    return name.count("-") + 1 if name else 0
+
+
+def _length_score(n_signs: int, n_segments: int, tolerance: int = 2) -> float:
+    """Length compatibility: 1.0 at exact match, 0.0 once delta > tolerance."""
+    delta = abs(n_signs - n_segments)
+    if delta > tolerance:
+        return 0.0
+    return round(1.0 - delta / (tolerance + 1), 3)
+
+
+def _score_by_spec(score_spec: dict, n_signs: int, n_segments: int,
+                   tolerance: int) -> float:
+    """Score one (seal length, name segments) pair under a named spec.
+
+    "tolerance" is the family-shared falloff (_length_score);
+    "linear" is a named divergent falloff — max(0, 1 - |delta|/divisor),
+    unrounded — carried as data so a conversion never silently
+    re-shapes it (the MeluhhaNameMatcher pin).
+    """
+    if score_spec.get("kind") == "linear":
+        divisor = float(score_spec.get("divisor", 5.0))
+        return max(0.0, 1.0 - abs(n_signs - n_segments) / divisor)
+    return _length_score(n_signs, n_segments, tolerance)
+
+
+def _greedy_assignment(score_mat: list[list[float]], occs: list[int]) -> list[int]:
+    """Greedy one-to-one assignment over a score matrix: names in
+    descending-occurrence order each take their highest-scoring
+    still-unused seal (score must be > 0); -1 marks unassigned."""
+    n_names = len(score_mat)
+    n_seals = len(score_mat[0]) if n_names else 0
+    order = sorted(range(n_names), key=lambda i: -occs[i])
+    used: set[int] = set()
+    assignment = [-1] * n_names
+    for i in order:
+        best_j = -1
+        best_s = 0.0
+        for j in range(n_seals):
+            if j in used:
+                continue
+            s = score_mat[i][j]
+            if s > best_s:
+                best_s = s
+                best_j = j
+        if best_j >= 0 and best_s > 0:
+            assignment[i] = best_j
+            used.add(best_j)
+    return assignment
+
+
+def _assignment_sum(score_mat: list[list[float]], assignment: list[int]) -> float:
+    return sum(
+        score_mat[i][assignment[i]]
+        for i in range(len(assignment))
+        if assignment[i] >= 0
+    )
+
+
+def _bipartite_null(score_mat: list[list[float]], occs: list[int],
+                    n_perms: int, seed: int):
+    """Observed greedy-assignment sum + the random-assignment null.
+
+    One rng stream, consumed exactly as the historical copies did:
+    per permutation, shuffle the seal indices, then (only when
+    names outnumber seals) sample the participating names.
+    Returns (observed, obs_assignment, null_dist).
+    """
+    n_names = len(score_mat)
+    n_seals = len(score_mat[0]) if n_names else 0
+    obs_assignment = _greedy_assignment(score_mat, occs)
+    observed = _assignment_sum(score_mat, obs_assignment)
+    rng = random.Random(seed)
+    null_dist: list[float] = []
+    for _ in range(n_perms):
+        shuffled_seal_idxs = list(range(n_seals))
+        rng.shuffle(shuffled_seal_idxs)
+        if n_names > n_seals:
+            participating = rng.sample(range(n_names), n_seals)
+        else:
+            participating = list(range(n_names))
+        random_assignment = [-1] * n_names
+        for slot, name_i in enumerate(participating):
+            random_assignment[name_i] = shuffled_seal_idxs[slot]
+        null_dist.append(_assignment_sum(score_mat, random_assignment))
+    return observed, obs_assignment, null_dist
+
+
+def _bipartite_assignment_test(candidates: list[dict], seal_lengths: list[int],
+                               n_perms: int, tolerance: int, seed: int) -> dict:
+    """The shared bipartite readout core (the phase25/26/27 copies of
+    _run_bipartite_test were one implementation in three files)."""
+    n_names = len(candidates)
+    n_seals = len(seal_lengths)
+    if n_names == 0 or n_seals == 0:
+        return {"p_value": None, "observed": 0.0,
+                "n_names": n_names, "n_seals": n_seals,
+                "reason": "empty inputs"}
+    name_segs = [_name_n_segments(r["candidate_name"]) for r in candidates]
+    score_mat = [
+        [_length_score(seal_lengths[j], name_segs[i], tolerance)
+         for j in range(n_seals)]
+        for i in range(n_names)
+    ]
+    occs = [_safe_int(r.get("occurrences")) for r in candidates]
+    observed, _assignment, null_dist = _bipartite_null(
+        score_mat, occs, n_perms, seed
+    )
+    p = sum(1 for v in null_dist if v >= observed) / n_perms
+    null_mean = sum(null_dist) / len(null_dist)
+    return {
+        "p_value": round(p, 6),
+        "observed": round(observed, 4),
+        "null_mean": round(null_mean, 4),
+        "n_names": n_names,
+        "n_seals": n_seals,
+        "n_perms": n_perms,
+    }
+
+
+def _null_stats(null_dist: list[float], observed: float, n_perms: int):
+    """(p_value, null_mean, null_sd, z) with the readout tests' exact
+    arithmetic: p as the at-or-above fraction, the sample (n-1)
+    standard deviation, z against it (0.0 when sd is 0)."""
+    n_at_or_above = sum(1 for v in null_dist if v >= observed)
+    p_value = n_at_or_above / n_perms
+    null_mean = sum(null_dist) / len(null_dist)
+    null_var = (sum((x - null_mean) ** 2 for x in null_dist)
+                / max(1, len(null_dist) - 1))
+    null_sd = math.sqrt(null_var) if null_var > 0 else 0.0
+    z = ((observed - null_mean) / null_sd) if null_sd > 0 else 0.0
+    return p_value, null_mean, null_sd, z
+
+
+def _verdict_for_p(p_value: float, bands: list, default: str) -> str:
+    """First band whose threshold strictly exceeds p wins."""
+    for threshold, label in bands:
+        if p_value < threshold:
+            return label
+    return default
+
+
+# ── IconographicAnchorScorer ─────────────────────────────────────────────────
+
+_DEFAULT_ALIAS_TABLE: list = [
+    ("fish", ["miin"], None),
+    ("fish/star", ["miin"], None),
+    ("fig", ["vaTa"], None),
+    ("banyan/fig", ["vaTa"], None),
+    ("banyan", ["vaTa"], None),
+    ("muruku", ["muruku"], None),
+    ("intersecting circles", ["muruku"], None),
+    ("squirrel", ["piLLai"], None),
+    ("pot", ["kuTam"], None),
+    ("pot/jar", ["kuTam"], None),
+    ("veL", ["veL", "veLLi"], None),
+    ("veN-miin", ["veL"], None),
+    ("venus", ["veL", "veLLi"], None),
+    ("pleiades", ["aru-", "miin"], None),
+    ("ursa major", ["eZu-", "miin"], None),
+    ("north star", ["vaTa", "miin"], None),
+]
+
+_DEFAULT_ANCHOR_WEIGHTS = {"high": 2.0, "medium": 1.0, "low": 0.5}
+
+
+def iconographic_anchor_scorer_execute(inputs: dict, params: dict) -> dict:
+    """Score iconographic anchors against a sign->phoneme map.
+
+    Generalised from IconographicAnchorScore (Phase-27) and its
+    allograph-aware extension (Phase-28): the reading->phoneme alias
+    table, the confidence weights, and the high-confidence bonus are
+    spec data; matching, scoring, and row assembly are the mechanism.
+    With scorer_spec["extension_bonus"] set, the allograph mode is
+    on: rows carry the resolved family (the matching entry's family,
+    or — the historical second pass — the family of the last table
+    entry whose key the reading contains), family members present in
+    the map with the family's phoneme earn the extension bonus, and
+    the outputs gain the extension counts.
+    """
+    spec: dict[str, Any] = params.get("scorer_spec") or {}
+    alias_table = spec.get("alias_table") or _DEFAULT_ALIAS_TABLE
+    weights = spec.get("weights") or _DEFAULT_ANCHOR_WEIGHTS
+    high_bonus = float(spec.get("high_conf_bonus", 1.5))
+    extension_bonus = spec.get("extension_bonus")
+    family_mode = extension_bonus is not None
+    empty_result = spec.get(
+        "empty_result", {"verdict": "NO_ANCHORS", "score": 0.0, "n_anchors": 0}
+    )
+
+    anchors = inputs.get("iconographic_anchors") or []
+    phoneme_map = inputs.get("phoneme_map") or {}
+    families = inputs.get("allograph_families") or {}
+
+    if not anchors:
+        return dict(empty_result)
+
+    # Family name (lowercased) -> {members as strings, phoneme}.
+    iconic_to_family: dict[str, dict] = {}
+    for fam_name, fam in families.items():
+        members = fam.get("members") or []
+        iconic_to_family[fam_name.lower()] = {
+            "name": fam_name,
+            "members": [str(m) for m in members],
+            "phoneme": (fam.get("phoneme") or "").lower(),
+        }
+
+    rows: list[dict] = []
+    total_score = 0.0
+    n_matches = 0
+    n_total_anchors = 0
+    n_allograph_extensions = 0
+    extended_signs: set[str] = set()
+
+    for a in anchors:
+        sid = str(a.get("sign_id", "")).split("+")[0]  # first sign of compound
+        iconic = (a.get("iconic_reading", "") or "").lower()
+        anchor_conf = (a.get("confidence") or "low").lower()
+        n_total_anchors += 1
+        ph_entry = phoneme_map.get(sid, {}) or {}
+        ph_value = (ph_entry.get("phoneme", "") or "").lower()
+        ph_conf = (ph_entry.get("confidence") or "none").lower()
+
+        # Direct or alias match: the first table entry whose key the
+        # reading contains and one of whose aliases the phoneme value
+        # contains.
+        match = False
+        family_name = None
+        for entry in alias_table:
+            key, aliases = entry[0], entry[1]
+            fam = entry[2] if len(entry) > 2 else None
+            if key in iconic:
+                for al in aliases:
+                    if al.lower() in ph_value:
+                        match = True
+                        family_name = fam
+                        break
+                if match:
+                    break
+        if family_mode and not match:
+            # Historical second pass: family is the last contained
+            # entry's, whether or not its alias matched (it cannot
+            # match — the first pass exhausted the table).
+            for entry in alias_table:
+                if entry[0] in iconic:
+                    family_name = entry[2] if len(entry) > 2 else None
+
+        anchor_score = 0.0
+        if match:
+            n_matches += 1
+            if anchor_conf == "high":
+                anchor_score = float(weights.get("high", 2.0))
+            elif anchor_conf == "medium":
+                anchor_score = float(weights.get("medium", 1.0))
+            else:
+                anchor_score = float(weights.get("low", 0.5))
+            # Bonus if both anchor and phoneme are high-confidence
+            if ph_conf == "high":
+                anchor_score *= high_bonus
+
+        row: dict[str, Any] = {
+            "anchor_id": a.get("anchor_id"),
+            "sign_id": sid,
+            "object_id": a.get("object_id"),
+            "iconic_reading": a.get("iconic_reading"),
+            "phoneme_value": ph_value,
+            "phoneme_confidence": ph_conf,
+            "anchor_confidence": anchor_conf,
+            "match": match,
+        }
+        if family_mode:
+            # Allograph extension: additional family members whose
+            # phoneme matches the family's phoneme.
+            family_extensions: list[str] = []
+            if match and family_name and family_name in iconic_to_family:
+                fam = iconic_to_family[family_name]
+                target_phoneme = fam["phoneme"]
+                for member in fam["members"]:
+                    if member == sid:
+                        continue
+                    m_entry = phoneme_map.get(member, {}) or {}
+                    m_phon = (m_entry.get("phoneme", "") or "").lower()
+                    if not m_phon:
+                        continue
+                    if target_phoneme and target_phoneme in m_phon:
+                        family_extensions.append(member)
+                        extended_signs.add(member)
+                n_allograph_extensions += len(family_extensions)
+                anchor_score += float(extension_bonus) * len(family_extensions)
+            row["family"] = family_name
+            row["family_extensions"] = family_extensions
+            row["n_allograph_extensions"] = len(family_extensions)
+        row["anchor_score"] = round(anchor_score, 3)
+        total_score += anchor_score
+        rows.append(row)
+
+    rows.sort(key=lambda r: -r["anchor_score"])
+    verdict = spec["verdict_template"].format(
+        n_matches=n_matches,
+        n_total_anchors=n_total_anchors,
+        total_score=total_score,
+        n_allograph_extensions=n_allograph_extensions,
+        extended_sign_ids=sorted(extended_signs),
+    )
+    result: dict[str, Any] = {
+        "n_total_anchors": n_total_anchors,
+        "n_matches": n_matches,
+    }
+    if family_mode:
+        result["n_allograph_extensions"] = n_allograph_extensions
+        result["extended_sign_ids"] = sorted(extended_signs)
+    result["total_score"] = round(total_score, 3)
+    result["rows"] = rows
+    result["verdict"] = verdict
+    return result
+
+
+# ── PhonemeMapCoverage ───────────────────────────────────────────────────────
+
+
+def phoneme_map_coverage_execute(inputs: dict, params: dict) -> dict:
+    """Apply a phoneme map to inscribed seals and report readability.
+
+    Generalised from BlindHeldOutTest: a seal is readable when at
+    least one of its real (non-placeholder) signs resolves to a
+    phoneme that is neither the unknown token nor marked uncertain;
+    the token, marker, and high-confidence label are spec data, as
+    is the verdict template (the historical text names its study).
+    Per-seal high-confidence counts and the seal-level count of
+    seals carrying one are both reported, as historically.
+    """
+    spec: dict[str, Any] = params.get("coverage_spec") or {}
+    unknown_token = spec.get("unknown_token", "?")
+    uncertain_marker = spec.get("uncertain_marker", "uncertain")
+    high_conf_label = spec.get("high_conf_label", "high")
+    placeholder_skeleton = spec.get("placeholder_skeleton", "(all placeholders)")
+    verdict_template = spec.get(
+        "verdict_template",
+        "Phoneme-map coverage: {n_seals} inscribed seals; {n_readable} "
+        "readable; {n_high_conf} with at least one high-confidence phoneme.",
+    )
+
+    seals = inputs.get("inscribed_seals") or []
+    phoneme_map = inputs.get("phoneme_map") or {}
+
+    rows: list[dict] = []
+    n_readable = 0
+    n_high_conf = 0
+    for s in seals:
+        signs = s.get("indus_signs") or []
+        # Skip placeholder-only seals (all unknown tokens)
+        real_signs = [x for x in signs if x and x != unknown_token]
+        if not real_signs:
+            rows.append({
+                "catalogue_id": s.get("catalogue_id"),
+                "n_signs": len(signs),
+                "real_signs": 0,
+                "predicted_phoneme_skeleton": placeholder_skeleton,
+                "n_high_conf": 0,
+                "readable": False,
+            })
+            continue
+
+        skel: list[str] = []
+        n_hc = 0
+        for sid in real_signs:
+            ph = phoneme_map.get(str(sid), {})
+            phoneme = ph.get("phoneme", "?")
+            skel.append(phoneme)
+            if ph.get("confidence") == high_conf_label:
+                n_hc += 1
+
+        readable = any(
+            p != unknown_token and uncertain_marker not in p.lower()
+            for p in skel
+        )
+        if readable:
+            n_readable += 1
+        if n_hc > 0:
+            n_high_conf += 1
+
+        rows.append({
+            "catalogue_id": s.get("catalogue_id"),
+            "n_signs": len(signs),
+            "real_signs": len(real_signs),
+            "predicted_phoneme_skeleton": "-".join(skel),
+            "n_high_conf": n_hc,
+            "readable": readable,
+        })
+
+    verdict = verdict_template.format(
+        n_seals=len(seals), n_readable=n_readable, n_high_conf=n_high_conf
+    )
+    return {
+        "n_seals": len(seals),
+        "n_readable": n_readable,
+        "n_high_conf": n_high_conf,
+        "rows": rows,
+        "verdict": verdict,
+    }
+
+
+# ── PhonemeMapPermutationTest ────────────────────────────────────────────────
+
+
+def _seal_match_score(seal: dict, phoneme_map: dict, weights: dict,
+                      collect_phonemes: bool) -> dict:
+    """Per-seal phoneme-coverage score: confidence-weighted attribution.
+
+    The confidence weight table is data; "high" also counts as
+    high-confidence. When collect_phonemes is on (the plausibility
+    mode), the attributed phonemes of high/medium signs are returned
+    in seal order.
+    """
+    signs = [s for s in (seal.get("indus_signs") or []) if s and s != "?"]
+    n_high = 0
+    n_attr = 0
+    weight = 0.0
+    phonemes_seen: list[str] = []
+    for sid in signs:
+        ph = phoneme_map.get(str(sid), {}) or {}
+        conf = (ph.get("confidence") or "none").lower()
+        phon = ph.get("phoneme", "?")
+        if conf in weights:
+            n_attr += 1
+            weight += float(weights[conf])
+            if conf == "high":
+                n_high += 1
+            if collect_phonemes and conf in ("high", "medium"):
+                if phon and phon != "?":
+                    phonemes_seen.append(phon)
+    return {
+        "n_signs": len(signs),
+        "n_high_conf": n_high,
+        "n_attributed": n_attr,
+        "weight": round(weight, 3),
+        "phonemes_seen": phonemes_seen,
+    }
+
+
+def _compound_plausibility(phonemes: list[str], patterns: list,
+                           pattern_bonus: float, repeat_bonus: float) -> float:
+    """Compound-plausibility of a phoneme sequence: a bonus per
+    attested (first, second) pattern whose components both occur,
+    plus a per-repeat bonus over '/'-split tokens. The pattern
+    table and both bonuses are data."""
+    if len(phonemes) < 2:
+        return 0.0
+    score = 0.0
+    pset = set(p.lower().split()[0] for p in phonemes if p)
+    for pair in patterns:
+        a, b = pair[0], pair[1]
+        if a.lower() in str(pset) or any(a in p.lower() for p in phonemes):
+            for p in phonemes:
+                if b.lower() in p.lower():
+                    score += pattern_bonus
+                    break
+    counts: Counter = Counter()
+    for p in phonemes:
+        if not p or p == "?":
+            continue
+        for token in p.lower().split("/"):
+            counts[token.strip()] += 1
+    for c in counts.values():
+        if c >= 2:
+            score += repeat_bonus * (c - 1)
+    return round(score, 3)
+
+
+def phoneme_map_permutation_test_execute(inputs: dict, params: dict) -> dict:
+    """Permutation test of a phoneme map's assignment over seals.
+
+    Generalised from BayesianDecoder (shuffle the map's confidence
+    labels) and BayesianDecoderV2 (shuffle the phoneme values,
+    score with compound plausibility): the shuffle dimension, the
+    confidence weights, the plausibility patterns/bonuses, the
+    null map's gloss, the output key names, and the verdict /
+    interpretation texts are spec data; the observed/null scoring
+    is the mechanism. Outputs are seed-determined.
+    """
+    spec: dict[str, Any] = params.get("decoder_spec") or {}
+    dimension = spec.get("shuffle_dimension", "confidence")
+    weights = spec.get(
+        "confidence_weights", {"high": 1.0, "medium": 0.5, "low": 0.2}
+    )
+    patterns = spec.get("plausibility_patterns")
+    pattern_bonus = float(spec.get("pattern_bonus", 1.0))
+    repeat_bonus = float(spec.get("repeat_bonus", 0.2))
+    null_gloss = spec.get("null_gloss", "(null permutation)")
+    observed_key = spec.get("observed_key", "observed_total_weight")
+    null_mean_key = spec.get("null_mean_key", "null_mean_weight")
+    rows_key = spec.get("rows_key", "obs_per_seal_top10")
+    rows_limit = spec.get("rows_limit", 10)
+    collect = patterns is not None
+
+    seals = inputs.get("inscribed_seals") or []
+    phoneme_map = inputs.get("phoneme_map") or {}
+    n_perms = max(200, _safe_int(params.get("n_permutations", 1000), 1000))
+    seed = _safe_int(params.get("seed", 1234), 1234)
+
+    if not seals or not phoneme_map:
+        return {"verdict": "INSUFFICIENT_DATA",
+                "p_value": None,
+                "n_seals": len(seals),
+                "n_phonemes_in_map": len(phoneme_map)}
+
+    sign_ids = sorted(phoneme_map.keys())
+    confidences = [(phoneme_map[s].get("confidence") or "none").lower()
+                   for s in sign_ids]
+    phonemes = [phoneme_map[s].get("phoneme", "?") for s in sign_ids]
+
+    def seal_total(seal: dict, mapping: dict):
+        sc = _seal_match_score(seal, mapping, weights, collect)
+        if collect:
+            plausibility = _compound_plausibility(
+                sc["phonemes_seen"], patterns, pattern_bonus, repeat_bonus
+            )
+            return sc, plausibility, sc["weight"] * (1.0 + plausibility)
+        return sc, None, sc["weight"]
+
+    # Observed
+    obs_total = 0.0
+    obs_per_seal: list[dict] = []
+    for s in seals:
+        sc, plausibility, total = seal_total(s, phoneme_map)
+        if collect:
+            obs_per_seal.append({
+                "catalogue_id": s.get("catalogue_id"),
+                "n_signs": sc["n_signs"],
+                "phonemes_seen": sc["phonemes_seen"],
+                "compound_plausibility": plausibility,
+                "weighted_score": round(total, 3),
+            })
+        else:
+            obs_per_seal.append({
+                "catalogue_id": s.get("catalogue_id"),
+                "n_signs": sc["n_signs"],
+                "n_attributed": sc["n_attributed"],
+                "n_high_conf": sc["n_high_conf"],
+                "weight": sc["weight"],
+            })
+        obs_total += total
+
+    # Null permutations: shuffle one dimension of the map across the
+    # same sign IDs, holding the other dimension fixed.
+    rng = random.Random(seed)
+    null_totals: list[float] = []
+    n_at_or_above = 0
+    for _ in range(n_perms):
+        if dimension == "value":
+            shuffled = list(phonemes)
+            rng.shuffle(shuffled)
+            null_map = {
+                sid: {"confidence": conf, "phoneme": phon, "gloss": null_gloss}
+                for sid, phon, conf in zip(sign_ids, shuffled, confidences)
+            }
+        else:
+            shuffled = list(confidences)
+            rng.shuffle(shuffled)
+            null_map = {
+                sid: {"confidence": conf, "phoneme": "?", "gloss": null_gloss}
+                for sid, conf in zip(sign_ids, shuffled)
+            }
+        total = 0.0
+        for s in seals:
+            total += seal_total(s, null_map)[2]
+        null_totals.append(total)
+        if total >= obs_total:
+            n_at_or_above += 1
+
+    p_value = n_at_or_above / n_perms
+    null_mean = sum(null_totals) / len(null_totals) if null_totals else 0.0
+
+    verdict = spec["verdict_template"].format(
+        observed=obs_total,
+        n_seals=len(seals),
+        null_mean=null_mean,
+        n_perms=n_perms,
+        p_value=p_value,
+    )
+    return {
+        "n_seals": len(seals),
+        "n_phonemes_in_map": len(phoneme_map),
+        observed_key: round(obs_total, 3),
+        null_mean_key: round(null_mean, 3),
+        "p_value": round(p_value, 6),
+        "n_perms": n_perms,
+        rows_key: obs_per_seal[:rows_limit] if rows_limit is not None else obs_per_seal,
+        "verdict": verdict,
+        "interpretation": spec.get("interpretation", ""),
+    }
+
+
+# ── LengthMatchScorer ────────────────────────────────────────────────────────
+
+
+def length_match_scorer_execute(inputs: dict, params: dict) -> dict:
+    """Score name<->seal length pairings under a named score spec.
+
+    Generalised from EnhancedNameMatcher (all-pairs),
+    EnhancedNameMatcherV2 (greedy bipartite assignment), and
+    MeluhhaNameMatcher (candidates aggregated from raw person rows;
+    seals filtered to sign-bearing; a different, named linear
+    falloff). The assignment mode, score spec, min-frequency
+    default, candidate source, and verdict texts are spec data;
+    scoring and pairing assembly are the mechanism. Each mode
+    returns its historical output shape.
+    """
+    spec: dict[str, Any] = params.get("matcher_spec") or {}
+    mode = spec.get("assignment", "all_pairs")
+    score_spec = spec.get("score_spec") or {"kind": "tolerance"}
+    min_freq_default = int(spec.get("min_name_freq_default", 2))
+    min_name_freq = _safe_int(
+        params.get("min_name_freq", min_freq_default), min_freq_default
+    )
+    tolerance = _safe_int(params.get("tolerance", 2), 2)
+
+    if mode == "aggregate_pairs":
+        return _length_match_aggregate_pairs(
+            inputs, min_name_freq, score_spec, spec
+        )
+
+    persons_rows = inputs.get("rows_all") or inputs.get("rows_top50") or []
+    seals = inputs.get("inscribed_seals") or []
+    candidates = [r for r in persons_rows
+                  if _safe_int(r.get("occurrences")) >= min_name_freq]
+
+    if mode == "bipartite":
+        return _length_match_bipartite(
+            candidates, seals, min_name_freq, tolerance, spec
+        )
+    return _length_match_all_pairs(
+        candidates, seals, min_name_freq, tolerance, spec
+    )
+
+
+def _length_match_all_pairs(candidates, seals, min_name_freq, tolerance, spec):
+    if not candidates or not seals:
+        return {
+            "n_candidates": len(candidates),
+            "n_seals": len(seals),
+            "pairings": [],
+            "n_pairings": 0,
+            "best_per_name": [],
+            "verdict": spec["insufficient_template"].format(
+                n_candidates=len(candidates), n_seals=len(seals)
+            ),
+        }
+
+    pairings: list[dict] = []
+    best_per_name: dict[str, dict] = {}
+    for r in candidates:
+        name = r["candidate_name"]
+        n_seg = _name_n_segments(name)
+        for s in seals:
+            n_signs = _safe_int(s.get("inscription_length"))
+            score = _length_score(n_signs, n_seg, tolerance)
+            if score <= 0.0:
+                continue
+            pair = {
+                "candidate_name": name,
+                "name_n_segments": n_seg,
+                "name_occurrences": r.get("occurrences"),
+                "is_known_meluhhan": r.get("is_known_meluhhan", False),
+                "seal_id": s.get("catalogue_id"),
+                "seal_n_signs": n_signs,
+                "seal_signs_confidence": s.get("signs_confidence"),
+                "length_score": score,
+            }
+            pairings.append(pair)
+            if (name not in best_per_name
+                    or pair["length_score"] > best_per_name[name]["length_score"]):
+                best_per_name[name] = pair
+
+    pairings.sort(key=lambda p: (-p["length_score"], -p.get("name_occurrences", 0)))
+    best_list = sorted(
+        best_per_name.values(),
+        key=lambda p: (-p["length_score"], -p.get("name_occurrences", 0)),
+    )
+
+    verdict = spec["verdict_template"].format(
+        n_pairings=len(pairings),
+        n_seals=len(seals),
+        n_candidates=len(candidates),
+        min_name_freq=min_name_freq,
+        tolerance=tolerance,
+    )
+    return {
+        "n_candidates": len(candidates),
+        "n_seals": len(seals),
+        "pairings": pairings,
+        "pairings_top50": pairings[:50],
+        "n_pairings": len(pairings),
+        "best_per_name": best_list,
+        "verdict": verdict,
+    }
+
+
+def _length_match_bipartite(candidates, seals, min_name_freq, tolerance, spec):
+    if not candidates or not seals:
+        return {
+            "n_candidates": len(candidates),
+            "n_seals": len(seals),
+            "pairings": [],
+            "n_pairings": 0,
+            "verdict": spec["insufficient_template"].format(
+                n_candidates=len(candidates), n_seals=len(seals)
+            ),
+        }
+
+    name_segs = [
+        (r["candidate_name"], _name_n_segments(r["candidate_name"]),
+         _safe_int(r.get("occurrences")))
+        for r in candidates
+    ]
+    seal_lengths = [_safe_int(s.get("inscription_length")) for s in seals]
+
+    # Greedy bipartite: names from highest-occurrence to lowest; each
+    # takes the highest-scoring still-unused seal index.
+    assigned: dict[str, tuple[int, float]] = {}
+    used: set[int] = set()
+    names_sorted = sorted(name_segs, key=lambda t: -t[2])
+    for name, n_seg, _occ in names_sorted:
+        best_idx = -1
+        best_score = 0.0
+        for idx, n_signs in enumerate(seal_lengths):
+            if idx in used:
+                continue
+            sc = _length_score(n_signs, n_seg, tolerance)
+            if sc > best_score:
+                best_score = sc
+                best_idx = idx
+        if best_idx >= 0 and best_score > 0:
+            assigned[name] = (best_idx, best_score)
+            used.add(best_idx)
+        else:
+            assigned[name] = (-1, 0.0)
+
+    pairings: list[dict] = []
+    name_to_row = {r["candidate_name"]: r for r in candidates}
+    for name, (seal_idx, score) in assigned.items():
+        if seal_idx < 0:
+            continue
+        seal = seals[seal_idx]
+        row = name_to_row.get(name) or {}
+        pairings.append({
+            "candidate_name": name,
+            "name_n_segments": _name_n_segments(name),
+            "name_occurrences": row.get("occurrences"),
+            "is_known_meluhhan": row.get("is_known_meluhhan", False),
+            "seal_idx": seal_idx,
+            "seal_id": seal.get("catalogue_id"),
+            "seal_n_signs": _safe_int(seal.get("inscription_length")),
+            "seal_signs_confidence": seal.get("signs_confidence"),
+            "length_score": score,
+        })
+    pairings.sort(key=lambda p: (-p["length_score"],
+                                  -(p.get("name_occurrences") or 0)))
+
+    total_score = sum(p["length_score"] for p in pairings)
+    n_assigned = len(pairings)
+
+    return {
+        "n_candidates": len(candidates),
+        "n_seals": len(seals),
+        "n_assigned": n_assigned,
+        "n_unassigned": len(candidates) - n_assigned,
+        "pairings": pairings,
+        "n_pairings": n_assigned,
+        "total_length_score": round(total_score, 4),
+        "verdict": spec["verdict_template"].format(
+            n_assigned=n_assigned,
+            n_candidates=len(candidates),
+            n_seals=len(seals),
+            total_length_score=round(total_score, 4),
+        ),
+    }
+
+
+def _length_match_aggregate_pairs(inputs, min_name_freq, score_spec, spec):
+    persons = inputs.get("persons") or []
+    seals = inputs.get("seals_at_mesopotamia") or []
+
+    # Aggregate names from the raw person rows.
+    name_counts: Counter[str] = Counter(
+        p.get("candidate_name", "") for p in persons
+    )
+    candidates = [(n, c) for n, c in name_counts.most_common()
+                  if c >= min_name_freq and n]
+    seal_with_signs = [s for s in seals
+                       if s.get("indus_signs")
+                       and isinstance(s["indus_signs"], list)
+                       and len(s["indus_signs"]) > 0]
+
+    pairings: list[dict] = []
+    if not seal_with_signs:
+        verdict = spec["no_signs_template"].format(
+            n_candidates=len(candidates),
+            min_name_freq=min_name_freq,
+            n_seals_total=len(seals),
+        )
+    else:
+        for seal in seal_with_signs:
+            n_signs = len(seal["indus_signs"])
+            for name, count in candidates:
+                # Akkadian/Sumerian name segments are hyphenated; count + 1
+                name_n_segments = name.count("-") + 1
+                length_score = _score_by_spec(
+                    score_spec, n_signs, name_n_segments, 0
+                )
+                if length_score == 0:
+                    continue
+                pairings.append({
+                    "seal_id": seal.get("catalogue_id"),
+                    "seal_n_signs": n_signs,
+                    "candidate_name": name,
+                    "name_n_segments": name_n_segments,
+                    "name_occurrences": count,
+                    "length_score": round(length_score, 3),
+                })
+        pairings.sort(key=lambda r: -r["length_score"])
+        verdict = spec["verdict_template"].format(
+            n_pairings=len(pairings),
+            n_seals_with_signs=len(seal_with_signs),
+            n_candidates=len(candidates),
+        )
+
+    return {
+        "n_candidates": len(candidates),
+        "n_seals_with_signs": len(seal_with_signs),
+        "n_seals_total": len(seals),
+        "pairings_top50": pairings[:50],
+        "n_pairings": len(pairings),
+        "verdict": verdict,
+    }
+
+
+# ── LengthMatchPermutationTest ───────────────────────────────────────────────
+
+
+def length_match_permutation_test_execute(inputs: dict, params: dict) -> dict:
+    """Permutation test over name<->seal length matching.
+
+    Generalised from BilingualReadoutTest (statistic: per-name best
+    length score, summed; null: shuffle the seal lengths) and
+    BilingualReadoutTestV2 (statistic: the greedy bipartite
+    assignment sum; null: random one-to-one assignments). The
+    statistic, the defaults, the insufficient-data verdict, the
+    verdict bands, the observed-assignment output, and the
+    interpretation are spec data. Outputs are seed-determined.
+    """
+    spec: dict[str, Any] = params.get("test_spec") or {}
+    statistic = spec.get("statistic", "best_match")
+    perms_default = int(spec.get("n_permutations_default", 1000))
+    min_freq_default = int(spec.get("min_name_freq_default", 2))
+    n_perms = max(100, _safe_int(
+        params.get("n_permutations", perms_default), perms_default
+    ))
+    min_name_freq = _safe_int(
+        params.get("min_name_freq", min_freq_default), min_freq_default
+    )
+    tolerance = _safe_int(params.get("tolerance", 2), 2)
+    seed = _safe_int(params.get("seed", 42), 42)
+    bands = spec.get(
+        "verdict_bands",
+        [[0.01, "READOUT_SIGNIFICANT (p<0.01)"],
+         [0.05, "READOUT_MARGINAL (p<0.05)"]],
+    )
+    verdict_default = spec.get("verdict_default", "READOUT_NOT_SIGNIFICANT")
+
+    persons_rows = inputs.get("rows_all") or inputs.get("rows_top50") or []
+    seals = inputs.get("inscribed_seals") or []
+
+    candidates = [r for r in persons_rows
+                  if _safe_int(r.get("occurrences")) >= min_name_freq]
+    seal_lengths = [_safe_int(s.get("inscription_length")) for s in seals]
+    if not candidates or not seal_lengths:
+        return {
+            "verdict": spec.get("insufficient_verdict", "INSUFFICIENT_DATA"),
+            "p_value": None,
+            "n_candidates": len(candidates),
+            "n_seals": len(seal_lengths),
+        }
+
+    obs_assignment = None
+    if statistic == "bipartite":
+        name_segs = [_name_n_segments(r["candidate_name"]) for r in candidates]
+        score_mat = [
+            [_length_score(seal_lengths[j], name_segs[i], tolerance)
+             for j in range(len(seal_lengths))]
+            for i in range(len(candidates))
+        ]
+        occs = [_safe_int(r.get("occurrences")) for r in candidates]
+        observed, obs_assignment, null_dist = _bipartite_null(
+            score_mat, occs, n_perms, seed
+        )
+    else:
+        name_segs_full = [
+            (r["candidate_name"], _name_n_segments(r["candidate_name"]),
+             _safe_int(r.get("occurrences")))
+            for r in candidates
+        ]
+
+        def _stat(lengths: list[int]) -> float:
+            total = 0.0
+            for _, n_seg, _occ in name_segs_full:
+                best = 0.0
+                for n_sign in lengths:
+                    s = _length_score(n_sign, n_seg, tolerance)
+                    if s > best:
+                        best = s
+                total += best
+            return total
+
+        observed = _stat(seal_lengths)
+        rng = random.Random(seed)
+        null_dist = []
+        permuted = list(seal_lengths)
+        for _ in range(n_perms):
+            rng.shuffle(permuted)
+            null_dist.append(_stat(permuted))
+
+    p_value, null_mean, null_sd, z = _null_stats(null_dist, observed, n_perms)
+    verdict = _verdict_for_p(p_value, bands, verdict_default)
+
+    result: dict[str, Any] = {
+        "verdict": verdict,
+        "p_value": round(p_value, 6),
+        "observed": round(observed, 4),
+        "null_mean": round(null_mean, 4),
+        "null_sd": round(null_sd, 4),
+        "z_score": round(z, 4),
+        "n_permutations": n_perms,
+        "n_candidates": len(candidates),
+        "n_seals": len(seal_lengths),
+        "tolerance": tolerance,
+    }
+    if spec.get("include_assignment") and obs_assignment is not None:
+        name_segs = [_name_n_segments(r["candidate_name"]) for r in candidates]
+        obs_pairings = []
+        for i, j in enumerate(obs_assignment):
+            if j < 0:
+                continue
+            obs_pairings.append({
+                "candidate_name": candidates[i]["candidate_name"],
+                "name_n_segments": name_segs[i],
+                "seal_idx": j,
+                "seal_id": seals[j].get("catalogue_id"),
+                "seal_n_signs": seal_lengths[j],
+                "length_score": _length_score(seal_lengths[j], name_segs[i], tolerance),
+            })
+        result["observed_assignment"] = obs_pairings
+    result["interpretation"] = spec.get("interpretation", "")
+    return result
+
+
+# ── StratifiedPermutationTest ────────────────────────────────────────────────
+
+
+def _classify_stratum(text: str, rules: list, case_insensitive: bool,
+                      empty_bucket, fallback_bucket: str) -> str:
+    """Ordered substring->bucket classification: the first bucket
+    with a key contained in the text wins; empty text takes the
+    empty bucket when one is named, else the fallback."""
+    if not text:
+        return empty_bucket if empty_bucket is not None else fallback_bucket
+    t = text.lower() if case_insensitive else text
+    for entry in rules:
+        bucket, keys = entry[0], entry[1]
+        for k in keys:
+            if k in t:
+                return bucket
+    return fallback_bucket
+
+
+def stratified_permutation_test_execute(inputs: dict, params: dict) -> dict:
+    """Run the bipartite readout test per stratum + merged overall.
+
+    Generalised from PeriodStratifiedReadout (case-sensitive inline
+    period coarsening, seed base 42), PeriodStratifiedReadout6Bucket
+    (an 8-bucket substring table, seed base 271), and
+    ProvenienceStratifiedReadout (a 13-bucket table over a
+    different person field, seed base 137): the stratum field,
+    the ordered rules, case sensitivity, value stripping, the
+    empty/fallback buckets, the seed base, and the verdict
+    template are spec data. Strata with fewer than two distinct
+    candidates are skipped; the overall run merges the tested
+    strata's candidates. Proving the two period variants are one
+    primitive is the same inputs under both rule sets.
+    """
+    spec: dict[str, Any] = params.get("strata_spec") or {}
+    stratum_field = spec.get("stratum_field", "period")
+    axis_key = spec.get("axis_key", stratum_field)
+    rules = spec.get("strata_rules") or []
+    case_insensitive = bool(spec.get("case_insensitive", True))
+    strip_value = bool(spec.get("strip_value", False))
+    empty_bucket = spec.get("empty_bucket")
+    fallback_bucket = spec.get("fallback_bucket", "Other")
+    seed_base = int(spec.get("seed_base", 42))
+    min_stratum = int(spec.get("min_stratum_size", 2))
+    verdict_template = spec.get(
+        "verdict_template",
+        "Stratified readout: {n_results} strata tested; "
+        "{n_significant} achieve p<0.05.",
+    )
+
+    persons = inputs.get("persons_v3") or []
+    seals = inputs.get("inscribed_seals") or []
+    n_perms = max(500, _safe_int(params.get("n_permutations", 1000), 1000))
+    tolerance = _safe_int(params.get("tolerance", 2), 2)
+
+    seal_lengths = [_safe_int(s.get("inscription_length")) for s in seals]
+    if not persons or not seal_lengths:
+        return {"verdict": "INSUFFICIENT_DATA", "results": []}
+
+    # Aggregate persons by candidate name within each stratum.
+    candidates_by_stratum: dict[str, dict[str, dict]] = {}
+    for p in persons:
+        raw = p.get(stratum_field, "") or ""
+        if strip_value:
+            raw = raw.strip()
+        bucket = _classify_stratum(
+            raw, rules, case_insensitive, empty_bucket, fallback_bucket
+        )
+        cmap = candidates_by_stratum.setdefault(bucket, {})
+        name = p.get("candidate_name", "")
+        if not name:
+            continue
+        if name not in cmap:
+            cmap[name] = {"candidate_name": name, "occurrences": 0}
+        cmap[name]["occurrences"] += 1
+
+    results: list[dict] = []
+    overall_candidates: list[dict] = []
+    for bucket, cmap in sorted(candidates_by_stratum.items()):
+        cands = list(cmap.values())
+        cands.sort(key=lambda r: -r["occurrences"])
+        if len(cands) < min_stratum:
+            continue
+        r = _bipartite_assignment_test(
+            cands, seal_lengths, n_perms, tolerance,
+            seed=seed_base + len(bucket),
+        )
+        r[axis_key] = bucket
+        r["n_unique_candidates"] = len(cands)
+        results.append(r)
+        overall_candidates.extend(cands)
+
+    # Plus the overall (unstratified) result for comparison.
+    if overall_candidates:
+        merged: dict[str, dict] = {}
+        for c in overall_candidates:
+            n = c["candidate_name"]
+            if n not in merged:
+                merged[n] = {"candidate_name": n, "occurrences": 0}
+            merged[n]["occurrences"] += c["occurrences"]
+        overall = list(merged.values())
+        overall.sort(key=lambda r: -r["occurrences"])
+        r_all = _bipartite_assignment_test(
+            overall, seal_lengths, n_perms, tolerance, seed=seed_base
+        )
+        r_all[axis_key] = "ALL (overall)"
+        r_all["n_unique_candidates"] = len(overall)
+        results.append(r_all)
+
+    significant = [r for r in results if isinstance(r.get("p_value"), float)
+                   and r["p_value"] < 0.05]
+    verdict = verdict_template.format(
+        n_results=len(results), n_significant=len(significant)
+    )
+    return {
+        "results": results,
+        "n_significant_strata": len(significant),
+        "verdict": verdict,
     }

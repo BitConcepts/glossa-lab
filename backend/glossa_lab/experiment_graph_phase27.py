@@ -21,7 +21,6 @@ Phase-27 builds on Phase-26 with:
 
 from __future__ import annotations
 
-import random
 from collections import Counter
 from typing import Any
 
@@ -31,17 +30,6 @@ def _safe_int(x: Any, default: int = 0) -> int:
         return int(x)
     except Exception:  # noqa: BLE001
         return default
-
-
-def _name_n_segments(name: str) -> int:
-    return name.count("-") + 1 if name else 0
-
-
-def _length_score(n_signs: int, n_segments: int, tolerance: int = 2) -> float:
-    delta = abs(n_signs - n_segments)
-    if delta > tolerance:
-        return 0.0
-    return round(1.0 - delta / (tolerance + 1), 3)
 
 
 # ── Loader ────────────────────────────────────────────────────────────
@@ -204,39 +192,6 @@ def _reverse_janabiyah_search(inputs: dict, params: dict) -> dict:
 # ── Tier 2 #4: Phoneme-VALUE permutation null ────────────────────────
 
 
-def _seal_phoneme_match_score(seal: dict, phoneme_map: dict) -> dict:
-    signs = [s for s in (seal.get("indus_signs") or []) if s and s != "?"]
-    n_high = 0
-    n_attr = 0
-    weight = 0.0
-    phonemes_seen: list[str] = []
-    for sid in signs:
-        ph = phoneme_map.get(str(sid), {}) or {}
-        conf = (ph.get("confidence") or "none").lower()
-        phon = ph.get("phoneme", "?")
-        if conf == "high":
-            n_high += 1
-            n_attr += 1
-            weight += 1.0
-            if phon and phon != "?":
-                phonemes_seen.append(phon)
-        elif conf == "medium":
-            n_attr += 1
-            weight += 0.5
-            if phon and phon != "?":
-                phonemes_seen.append(phon)
-        elif conf == "low":
-            n_attr += 1
-            weight += 0.2
-    return {
-        "n_signs": len(signs),
-        "n_high_conf": n_high,
-        "n_attributed": n_attr,
-        "weight": round(weight, 3),
-        "phonemes_seen": phonemes_seen,
-    }
-
-
 # Dravidian compound name patterns from Parpola 2010: each tuple is a
 # (component-1, component-2) pair that forms an attested compound.
 _DRAVIDIAN_COMPOUND_PATTERNS: list[tuple[str, str]] = [
@@ -251,32 +206,6 @@ _DRAVIDIAN_COMPOUND_PATTERNS: list[tuple[str, str]] = [
 ]
 
 
-def _compound_plausibility_score(phonemes: list[str]) -> float:
-    """Score a sequence of phonemes for Dravidian compound plausibility.
-    +1.0 per attested compound match (any order), +0.2 per repeated phoneme."""
-    if len(phonemes) < 2:
-        return 0.0
-    score = 0.0
-    pset = set(p.lower().split()[0] for p in phonemes if p)
-    for a, b in _DRAVIDIAN_COMPOUND_PATTERNS:
-        if a.lower() in str(pset) or any(a in p.lower() for p in phonemes):
-            for p in phonemes:
-                if b.lower() in p.lower():
-                    score += 1.0
-                    break
-    # Phoneme repetition bonus (Janabiyah has 3 miin)
-    counts: Counter[str] = Counter()
-    for p in phonemes:
-        if not p or p == "?":
-            continue
-        for token in p.lower().split("/"):
-            counts[token.strip()] += 1
-    for c in counts.values():
-        if c >= 2:
-            score += 0.2 * (c - 1)
-    return round(score, 3)
-
-
 def _bayesian_decoder_v2(inputs: dict, params: dict) -> dict:
     """Phase-27 v2: permutes phoneme VALUES across sign IDs, scores under
     a Dravidian compound-name plausibility metric.
@@ -284,99 +213,81 @@ def _bayesian_decoder_v2(inputs: dict, params: dict) -> dict:
     For each null permutation, the phoneme VALUES (miin, aru-, eZu-, etc.)
     are randomly reassigned to sign IDs (preserving the multiset of
     values). For each seal, the resulting sequence of phonemes is scored
-    via _compound_plausibility_score. Total score = sum across seals.
+    via the compound-plausibility metric. Total score = sum across seals.
     p-value = fraction of nulls with score >= observed.
+
+    Spec 087 S3 (family F4): the mechanism is the generic
+    PhonemeMapPermutationTest engine (glossa_lab.generic_primitives)
+    in its value-shuffle + plausibility mode; this node is its
+    Phase-27 parameterisation (seed 2727, all rows). The pattern
+    table above stays as the delegation data (+1.0 per attested
+    compound match, +0.2 per repeated phoneme, as engine defaults).
+    The module-local _seal_phoneme_match_score /
+    _compound_plausibility_score helpers were used only here and
+    were removed with the delegation.
     """
-    seals = inputs.get("inscribed_seals") or []
-    phoneme_map = inputs.get("phoneme_map") or {}
-    n_perms = max(200, _safe_int(params.get("n_permutations", 1000), 1000))
-    seed = _safe_int(params.get("seed", 2727), 2727)
-
-    if not seals or not phoneme_map:
-        return {"verdict": "INSUFFICIENT_DATA",
-                "p_value": None,
-                "n_seals": len(seals),
-                "n_phonemes_in_map": len(phoneme_map)}
-
-    sign_ids = sorted(phoneme_map.keys())
-    phonemes = [phoneme_map[s].get("phoneme", "?") for s in sign_ids]
-    confidences = [(phoneme_map[s].get("confidence") or "none").lower()
-                   for s in sign_ids]
-
-    # Observed score
-    obs_total = 0.0
-    obs_per_seal = []
-    for s in seals:
-        sc = _seal_phoneme_match_score(s, phoneme_map)
-        plausibility = _compound_plausibility_score(sc["phonemes_seen"])
-        weighted = sc["weight"] * (1.0 + plausibility)
-        obs_per_seal.append({
-            "catalogue_id": s.get("catalogue_id"),
-            "n_signs": sc["n_signs"],
-            "phonemes_seen": sc["phonemes_seen"],
-            "compound_plausibility": plausibility,
-            "weighted_score": round(weighted, 3),
-        })
-        obs_total += weighted
-
-    # Null permutations: shuffle phoneme VALUES across sign IDs, keep
-    # confidences fixed.
-    rng = random.Random(seed)
-    null_totals: list[float] = []
-    n_at_or_above = 0
-    for _ in range(n_perms):
-        shuffled_phonemes = list(phonemes)
-        rng.shuffle(shuffled_phonemes)
-        null_map = {}
-        for sid, phon, conf in zip(sign_ids, shuffled_phonemes, confidences):
-            null_map[sid] = {"confidence": conf, "phoneme": phon,
-                             "gloss": "(value-permuted)"}
-        total = 0.0
-        for s in seals:
-            sc = _seal_phoneme_match_score(s, null_map)
-            plausibility = _compound_plausibility_score(sc["phonemes_seen"])
-            total += sc["weight"] * (1.0 + plausibility)
-        null_totals.append(total)
-        if total >= obs_total:
-            n_at_or_above += 1
-
-    p_value = n_at_or_above / n_perms
-    null_mean = sum(null_totals) / len(null_totals) if null_totals else 0.0
-
-    verdict = (
-        f"Bayesian decoder v2 (phoneme-VALUE permutation): observed total "
-        f"weighted score = {obs_total:.3f} across {len(seals)} inscribed "
-        f"seals. Null mean = {null_mean:.3f} ({n_perms} value permutations). "
-        f"Global p-value = {p_value:.4f}. Lower p = the SPECIFIC Dravidian "
-        f"phoneme values that Parpola assigns to specific sign IDs produce "
-        f"more plausible compound names than chance value-assignments would."
-    )
-    interpretation = (
-        "This extends Phase-26b: instead of permuting just confidence "
-        "labels, we permute the actual Dravidian phoneme VALUES (miin, "
-        "aru-, eZu-, vaTa-, muruku, etc.) across sign IDs. Significant p "
-        "would mean Parpola's specific value-assignments produce more "
-        "Dravidian-plausible compounds (aru-miin = Pleiades, vaTa-miin = "
-        "north star, etc.) than randomized value-assignments. As with "
-        "Phase-26b, this test is currently data-starved (1/11 readable "
-        "seals) and will only become informative after CISI Vol 3 plate "
-        "ingestion (Phase-28+)."
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        phoneme_map_permutation_test_execute,
     )
 
-    return {
-        "n_seals": len(seals),
-        "n_phonemes_in_map": len(phoneme_map),
-        "observed_total_score": round(obs_total, 3),
-        "null_mean_score": round(null_mean, 3),
-        "p_value": round(p_value, 6),
-        "n_perms": n_perms,
-        "obs_per_seal": obs_per_seal,
-        "verdict": verdict,
-        "interpretation": interpretation,
+    merged = dict(params)
+    merged.setdefault("seed", 2727)
+    merged["decoder_spec"] = {
+        "shuffle_dimension": "value",
+        "null_gloss": "(value-permuted)",
+        "observed_key": "observed_total_score",
+        "null_mean_key": "null_mean_score",
+        "rows_key": "obs_per_seal",
+        "rows_limit": None,
+        "plausibility_patterns": _DRAVIDIAN_COMPOUND_PATTERNS,
+        "verdict_template": (
+            "Bayesian decoder v2 (phoneme-VALUE permutation): observed total "
+            "weighted score = {observed:.3f} across {n_seals} inscribed "
+            "seals. Null mean = {null_mean:.3f} ({n_perms} value permutations). "
+            "Global p-value = {p_value:.4f}. Lower p = the SPECIFIC Dravidian "
+            "phoneme values that Parpola assigns to specific sign IDs produce "
+            "more plausible compound names than chance value-assignments would."
+        ),
+        "interpretation": (
+            "This extends Phase-26b: instead of permuting just confidence "
+            "labels, we permute the actual Dravidian phoneme VALUES (miin, "
+            "aru-, eZu-, vaTa-, muruku, etc.) across sign IDs. Significant p "
+            "would mean Parpola's specific value-assignments produce more "
+            "Dravidian-plausible compounds (aru-miin = Pleiades, vaTa-miin = "
+            "north star, etc.) than randomized value-assignments. As with "
+            "Phase-26b, this test is currently data-starved (1/11 readable "
+            "seals) and will only become informative after CISI Vol 3 plate "
+            "ingestion (Phase-28+)."
+        ),
     }
+    return phoneme_map_permutation_test_execute(inputs, merged)
 
 
 # ── Tier 1 #3: Iconographic anchor score ─────────────────────────────
+
+
+# Iconic-reading -> phoneme-alias table for the Phase-27 anchor
+# scorer, in the IconographicAnchorScorer spec shape: ordered
+# (reading key, [aliases], allograph family) entries; the family is
+# unused by this node (Phase-28's table names families).
+_ICONOGRAPHIC_ALIAS_TABLE: list = [
+    ("fish", ["miin"], None),
+    ("fish/star", ["miin"], None),
+    ("fig", ["vaTa"], None),
+    ("banyan/fig", ["vaTa"], None),
+    ("banyan", ["vaTa"], None),
+    ("muruku", ["muruku"], None),
+    ("intersecting circles", ["muruku"], None),
+    ("squirrel", ["piLLai"], None),
+    ("pot", ["kuTam"], None),
+    ("pot/jar", ["kuTam"], None),
+    ("veL", ["veL", "veLLi"], None),
+    ("veN-miin", ["veL"], None),
+    ("venus", ["veL", "veLLi"], None),
+    ("pleiades", ["aru-", "miin"], None),
+    ("ursa major", ["eZu-", "miin"], None),
+    ("north star", ["vaTa", "miin"], None),
+]
 
 
 def _iconographic_anchor_score(inputs: dict, params: dict) -> dict:
@@ -387,173 +298,33 @@ def _iconographic_anchor_score(inputs: dict, params: dict) -> dict:
         matches the iconic reading (miin/fish, vaTa/banyan, etc.).
       - Score: high-anchor + match = 2.0; medium-anchor + match = 1.0;
         match = 0.0 if phoneme/iconic disagree.
+
+    Spec 087 S3 (family F4): the mechanism is the generic
+    IconographicAnchorScorer engine (glossa_lab.generic_primitives);
+    this node is its Phase-27 parameterisation (alias table above,
+    weights 2.0/1.0/0.5 and the x1.5 high-confidence bonus as engine
+    defaults, no allograph extension).
     """
-    anchors = inputs.get("iconographic_anchors") or []
-    phoneme_map = inputs.get("phoneme_map") or {}
-
-    if not anchors:
-        return {"verdict": "NO_ANCHORS", "score": 0.0, "n_anchors": 0}
-
-    iconic_to_phoneme_alias = {
-        "fish": ["miin"],
-        "fish/star": ["miin"],
-        "fig": ["vaTa"],
-        "banyan/fig": ["vaTa"],
-        "banyan": ["vaTa"],
-        "muruku": ["muruku"],
-        "intersecting circles": ["muruku"],
-        "squirrel": ["piLLai"],
-        "pot": ["kuTam"],
-        "pot/jar": ["kuTam"],
-        "veL": ["veL", "veLLi"],
-        "veN-miin": ["veL"],
-        "venus": ["veL", "veLLi"],
-        "pleiades": ["aru-", "miin"],
-        "ursa major": ["eZu-", "miin"],
-        "north star": ["vaTa", "miin"],
-    }
-
-    rows = []
-    total_score = 0.0
-    n_matches = 0
-    n_total_anchors = 0
-    for a in anchors:
-        sid = str(a.get("sign_id", "")).split("+")[0]  # take first sign of compound
-        iconic = (a.get("iconic_reading", "") or "").lower()
-        anchor_conf = (a.get("confidence") or "low").lower()
-        n_total_anchors += 1
-        ph_entry = phoneme_map.get(sid, {}) or {}
-        ph_value = (ph_entry.get("phoneme", "") or "").lower()
-        ph_conf = (ph_entry.get("confidence") or "none").lower()
-
-        # Direct or alias match
-        match = False
-        for k, aliases in iconic_to_phoneme_alias.items():
-            if k in iconic:
-                for al in aliases:
-                    if al.lower() in ph_value:
-                        match = True
-                        break
-                if match:
-                    break
-
-        anchor_score = 0.0
-        if match:
-            n_matches += 1
-            if anchor_conf == "high":
-                anchor_score = 2.0
-            elif anchor_conf == "medium":
-                anchor_score = 1.0
-            else:
-                anchor_score = 0.5
-            # Bonus if both anchor and phoneme are high-confidence
-            if ph_conf == "high":
-                anchor_score *= 1.5
-        total_score += anchor_score
-        rows.append({
-            "anchor_id": a.get("anchor_id"),
-            "sign_id": sid,
-            "object_id": a.get("object_id"),
-            "iconic_reading": a.get("iconic_reading"),
-            "phoneme_value": ph_value,
-            "phoneme_confidence": ph_conf,
-            "anchor_confidence": anchor_conf,
-            "match": match,
-            "anchor_score": round(anchor_score, 3),
-        })
-
-    rows.sort(key=lambda r: -r["anchor_score"])
-    verdict = (
-        f"Iconographic anchor score: {n_matches}/{n_total_anchors} anchors "
-        f"have a phoneme match in our map. Total weighted score = "
-        f"{total_score:.2f}. The anchors with the highest scores are "
-        f"non-statistical confirmations of the corresponding sign->phoneme "
-        f"reading (e.g. M-410: sign 47 = fish, confirmed by crocodile "
-        f"iconography)."
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        iconographic_anchor_scorer_execute,
     )
-    return {
-        "n_total_anchors": n_total_anchors,
-        "n_matches": n_matches,
-        "total_score": round(total_score, 3),
-        "rows": rows,
-        "verdict": verdict,
+
+    merged = dict(params)
+    merged["scorer_spec"] = {
+        "alias_table": _ICONOGRAPHIC_ALIAS_TABLE,
+        "verdict_template": (
+            "Iconographic anchor score: {n_matches}/{n_total_anchors} anchors "
+            "have a phoneme match in our map. Total weighted score = "
+            "{total_score:.2f}. The anchors with the highest scores are "
+            "non-statistical confirmations of the corresponding sign->phoneme "
+            "reading (e.g. M-410: sign 47 = fish, confirmed by crocodile "
+            "iconography)."
+        ),
     }
+    return iconographic_anchor_scorer_execute(inputs, merged)
 
 
 # ── Tier 4 #10: 6-bucket period stratification ───────────────────────
-
-
-def _greedy_score(score_mat: list[list[float]], assignment: list[int],
-                   n_names: int) -> float:
-    return sum(score_mat[i][assignment[i]]
-               for i in range(n_names) if assignment[i] >= 0)
-
-
-def _run_bipartite_test(
-    candidates: list[dict],
-    seal_lengths: list[int],
-    n_perms: int,
-    tolerance: int,
-    seed: int,
-) -> dict:
-    n_names = len(candidates)
-    n_seals = len(seal_lengths)
-    if n_names == 0 or n_seals == 0:
-        return {"p_value": None, "observed": 0.0,
-                "n_names": n_names, "n_seals": n_seals,
-                "reason": "empty inputs"}
-    name_segs = [_name_n_segments(r["candidate_name"]) for r in candidates]
-    score_mat = [
-        [_length_score(seal_lengths[j], name_segs[i], tolerance)
-         for j in range(n_seals)]
-        for i in range(n_names)
-    ]
-    occs = [_safe_int(r.get("occurrences")) for r in candidates]
-    order = sorted(range(n_names), key=lambda i: -occs[i])
-    used: set[int] = set()
-    obs_assignment = [-1] * n_names
-    for i in order:
-        best_j = -1
-        best_s = 0.0
-        for j in range(n_seals):
-            if j in used:
-                continue
-            s = score_mat[i][j]
-            if s > best_s:
-                best_s = s
-                best_j = j
-        if best_j >= 0 and best_s > 0:
-            obs_assignment[i] = best_j
-            used.add(best_j)
-    observed = _greedy_score(score_mat, obs_assignment, n_names)
-
-    rng = random.Random(seed)
-    n_at_or_above = 0
-    null_dist: list[float] = []
-    for _ in range(n_perms):
-        shuffled_seal_idxs = list(range(n_seals))
-        rng.shuffle(shuffled_seal_idxs)
-        if n_names > n_seals:
-            participating = rng.sample(range(n_names), n_seals)
-        else:
-            participating = list(range(n_names))
-        random_assignment = [-1] * n_names
-        for slot, name_i in enumerate(participating):
-            random_assignment[name_i] = shuffled_seal_idxs[slot]
-        v = _greedy_score(score_mat, random_assignment, n_names)
-        null_dist.append(v)
-        if v >= observed:
-            n_at_or_above += 1
-    p = n_at_or_above / n_perms
-    null_mean = sum(null_dist) / len(null_dist)
-    return {
-        "p_value": round(p, 6),
-        "observed": round(observed, 4),
-        "null_mean": round(null_mean, 4),
-        "n_names": n_names,
-        "n_seals": n_seals,
-        "n_perms": n_perms,
-    }
 
 
 # Phase-27 finer-grained period buckets (Phase-25c had 4-coarse, now 8)
@@ -570,85 +341,41 @@ _PERIOD_BUCKETS_6 = [
 ]
 
 
-def _classify_period_6(text: str) -> str:
-    if not text:
-        return "Unknown"
-    t = text.lower()
-    for bucket, keys in _PERIOD_BUCKETS_6:
-        for k in keys:
-            if k in t:
-                return bucket
-    return "Other"
-
-
 def _period_stratified_readout_6bucket(inputs: dict, params: dict) -> dict:
     """Phase-27 finer-grained period stratification: 8 buckets instead of 4
     (Early Dynastic, Old Akkadian, Lagash II, Ur III, Old Babylonian,
-    Middle Babylonian, Neo-Assyrian, Ebla)."""
-    persons = inputs.get("persons_v3") or []
-    seals = inputs.get("inscribed_seals") or []
-    n_perms = max(500, _safe_int(params.get("n_permutations", 1000), 1000))
-    tolerance = _safe_int(params.get("tolerance", 2), 2)
+    Middle Babylonian, Neo-Assyrian, Ebla).
 
-    seal_lengths = [_safe_int(s.get("inscription_length")) for s in seals]
-    if not persons or not seal_lengths:
-        return {"verdict": "INSUFFICIENT_DATA", "results": []}
-
-    candidates_by_period: dict[str, dict[str, dict]] = {}
-    for p in persons:
-        period_key = _classify_period_6(p.get("period", "") or "")
-        cmap = candidates_by_period.setdefault(period_key, {})
-        name = p.get("candidate_name", "")
-        if not name:
-            continue
-        if name not in cmap:
-            cmap[name] = {"candidate_name": name, "occurrences": 0}
-        cmap[name]["occurrences"] += 1
-
-    results: list[dict] = []
-    overall: list[dict] = []
-    for period, cmap in sorted(candidates_by_period.items()):
-        cands = list(cmap.values())
-        cands.sort(key=lambda r: -r["occurrences"])
-        if len(cands) < 2:
-            continue
-        r = _run_bipartite_test(
-            cands, seal_lengths, n_perms, tolerance,
-            seed=271 + len(period),
-        )
-        r["period"] = period
-        r["n_unique_candidates"] = len(cands)
-        results.append(r)
-        overall.extend(cands)
-
-    if overall:
-        merged: dict[str, dict] = {}
-        for c in overall:
-            n = c["candidate_name"]
-            if n not in merged:
-                merged[n] = {"candidate_name": n, "occurrences": 0}
-            merged[n]["occurrences"] += c["occurrences"]
-        ovr = list(merged.values())
-        ovr.sort(key=lambda r: -r["occurrences"])
-        r_all = _run_bipartite_test(ovr, seal_lengths, n_perms, tolerance,
-                                     seed=271)
-        r_all["period"] = "ALL (overall)"
-        r_all["n_unique_candidates"] = len(ovr)
-        results.append(r_all)
-
-    significant = [r for r in results
-                   if isinstance(r.get("p_value"), float)
-                   and r["p_value"] < 0.05]
-    verdict = (
-        f"Period stratification (6-bucket Phase-27): {len(results)} buckets "
-        f"tested; {len(significant)} achieve p<0.05. Compares with Phase-25c "
-        f"(4-bucket: 3/4 + overall) at finer granularity."
+    Spec 087 S3 (family F5): the mechanism is the generic
+    StratifiedPermutationTest engine (glossa_lab.generic_primitives);
+    this node is its Phase-27 parameterisation. _PERIOD_BUCKETS_6
+    above stays as the delegation data (seed base 271). The
+    module-local _classify_period_6 / _run_bipartite_test /
+    _greedy_score / _name_n_segments / _length_score helpers were
+    used only here and by the decoder above; both consumers are
+    engine delegations now, so the helpers were removed.
+    """
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        stratified_permutation_test_execute,
     )
-    return {
-        "results": results,
-        "n_significant_strata": len(significant),
-        "verdict": verdict,
+
+    merged = dict(params)
+    merged["strata_spec"] = {
+        "stratum_field": "period",
+        "axis_key": "period",
+        "strata_rules": _PERIOD_BUCKETS_6,
+        "case_insensitive": True,
+        "strip_value": False,
+        "empty_bucket": "Unknown",
+        "fallback_bucket": "Other",
+        "seed_base": 271,
+        "verdict_template": (
+            "Period stratification (6-bucket Phase-27): {n_results} buckets "
+            "tested; {n_significant} achieve p<0.05. Compares with Phase-25c "
+            "(4-bucket: 3/4 + overall) at finer granularity."
+        ),
     }
+    return stratified_permutation_test_execute(inputs, merged)
 
 
 # ── Tier 1 #2 + Tier 3 #6 combined: Shu-ilishu contact-zone filter ───

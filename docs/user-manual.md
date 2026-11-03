@@ -340,6 +340,27 @@ the two Phase-14 anchor nodes) are now legacy in the same way: each
 one is a fixed setting of a generic block, kept registered and
 runnable for saved experiments, but no longer offered for new ones.
 
+Six more generic building blocks are in the Palette:
+**IconographicAnchorScorer** (score iconographic anchors against a
+phoneme map, with the reading-to-phoneme alias table as a parameter
+and an optional allograph-family extension), **PhonemeMapCoverage**
+(apply a phoneme map to inscribed seals and report how many can be
+read), **PhonemeMapPermutationTest** (test whether a phoneme map's
+assignments beat shuffled-map nulls, permuting either the confidence
+labels or the phoneme values), **LengthMatchScorer** (pair candidate
+names with seals by length compatibility, as all-pairs, one-to-one,
+or aggregated pairings), **LengthMatchPermutationTest** (test whether
+the observed name-to-seal length matching beats a shuffled null),
+and **StratifiedPermutationTest** (run that test separately per
+period or provenience stratum, with the stratum rules as parameters).
+The thirteen older study-specific nodes they generalise (the two
+iconographic anchor scorers, the blind held-out test, the two
+Bayesian decoders, the three name matchers, the two bilingual readout
+tests, and the three stratified readouts) are now legacy in the same
+way: each one is a fixed setting of a generic block, kept registered
+and runnable for saved experiments, but no longer offered for new
+ones.
+
 ### Node Reference
 
 **Corpus Loaders:**

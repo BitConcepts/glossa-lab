@@ -883,3 +883,307 @@ those files were restored and are not in this PR's diff.
   discharged in part locally and in full by this PR's CI,
   which the parent's merge gate reads; the local remainder
   can be re-run when the wave clears.
+
+## PR-C — families F4 (phoneme-map scoring & permutation tests) + F5 (name↔seal length matching & stratified readouts)
+
+**Branch:** `feat/087-s3-conv-c`, built on main `3bd37594`
+(PR #494 merged). **Commits:** `4624abd` (fixtures, captured
+first), plus the implementation commit. **Seat:** build worker;
+the parent gates and merges. The contract stated at the head
+of this record governs unchanged.
+
+### The generic machinery — appended to `backend/glossa_lab/generic_primitives.py`
+
+PR-C appends six engines to PR-B's module (same stdlib-only
+pattern), plus the shared helpers the F5 family had copied into
+five phase modules: `_name_n_segments`, `_length_score`, the
+greedy bipartite assignment and its random-assignment null,
+and the readout null statistics (at-or-above p, sample-sd,
+z). The three `_run_bipartite_test` copies in phases 25/26/27
+were verified behaviourally identical before the conversion
+(AST-equal modulo docstrings) — the engine carries the one
+shared core. Two divergences inside the family are carried
+as named data, never normalised away: MeluhhaNameMatcher's
+length falloff is 1 − |Δ|/5.0 with no tolerance (the rest of
+the family uses 1 − Δ/(tolerance+1), 0 beyond tolerance), and
+the stratified nodes' per-stratum seed rules differ by node
+(42 / 271 / 137 + len(stratum)).
+
+The six primitives, registered in the core list immediately
+after PMICentralityRanker, each with inputs/outputs mirroring
+its domain nodes (unions where the pair of delegating nodes
+differ) and a description naming the delegating nodes:
+
+| primitive | category | mechanism |
+|---|---|---|
+| IconographicAnchorScorer | Decipherment | anchors matched to a phoneme map through an ordered reading→alias table as data; confidence weights (2.0/1.0/0.5) and the ×1.5 high-confidence bonus as data; optional allograph mode: a per-entry family, the two-pass family resolution (the matching entry's family, else the last contained entry's), and a per-member extension bonus (+0.25 for Phase-28). |
+| PhonemeMapCoverage | Decipherment | per-seal phoneme skeletons under a map; readability = any attributed phoneme that is neither the unknown token nor marked uncertain; placeholder-only seals reported with the placeholder skeleton; the tokens and the verdict text are spec data. |
+| PhonemeMapPermutationTest | Analysis | observed confidence-weighted coverage vs null maps shuffling ONE dimension — confidence labels (V1) or phoneme values with compound-plausibility reweighting (V2: pattern table of 8 pairs, +1.0 per attested compound, +0.2 per repeated token, both as data); output key names, null gloss, row limit, verdict and interpretation are spec data. |
+| LengthMatchScorer | Decipherment | name↔seal length pairings under a named score spec (tolerance falloff, or the named `linear_falloff_divisor_5`); three assignment modes — all_pairs (Phase-23, best-per-name), bipartite (Phase-24, greedy one-to-one), aggregate_pairs (Phase-22, candidates counted from raw persons, seals filtered to sign-bearing); each mode returns its historical output shape. |
+| LengthMatchPermutationTest | Decipherment | the readout permutation test with the statistic as data: best_match (per-name best score summed; null shuffles the seal-length list in place, one rng) or bipartite (assignment sum; null = random one-to-one assignments); verdict bands, the insufficient-data verdict (which differs between V1 and V2 and is carried verbatim), the optional observed-assignment rows, and the interpretation are spec data. |
+| StratifiedPermutationTest | Decipherment | the bipartite readout test per stratum + a merged overall: strata assigned by an ordered substring→bucket rule table as data (case sensitivity, value stripping, empty/fallback buckets all as data — Phase-25's inline case-sensitive coarsening chain becomes a 5-rule table), per-stratum seed = seed_base + len(bucket), strata with <2 distinct candidates skipped, the overall run merging only the tested strata. One engine proves the two period variants and the provenience variant are one primitive: the fixtures run all three over one shared person set and they diverge observably (2 / 1 / 0 significant strata). |
+
+### The thirteen delegations
+
+Each registered AtomicNodeDef is unchanged; each fn keeps
+its original docstring, gains a Spec 087 S3 note naming its
+family, and delegates with its specifics as spec data at the
+delegation point:
+
+- **IconographicAnchorScore** (F4, phase27) →
+  IconographicAnchorScorer with the 16-entry alias table
+  lifted to the module constant `_ICONOGRAPHIC_ALIAS_TABLE`
+  (families unused) and the verbatim verdict template.
+- **AllographAwareIconographicScore** (F4, phase28) →
+  IconographicAnchorScorer in allograph mode
+  (`extension_bonus` 0.25) with its (alias, family) table as
+  `_ICONOGRAPHIC_ALIAS_TABLE_28` and the verbatim verdict
+  template.
+- **BlindHeldOutTest** (F4, phase25) → PhonemeMapCoverage
+  with the verbatim verdict template (its text names the
+  Janabiyah/CISI study, carried as spec data).
+- **BayesianDecoder** (F4, phase26) →
+  PhonemeMapPermutationTest, shuffle_dimension `confidence`,
+  seed default 1234, rows limited to the top 10 under the
+  historical key `obs_per_seal_top10`, verbatim verdict +
+  interpretation.
+- **BayesianDecoderV2** (F4, phase27) →
+  PhonemeMapPermutationTest, shuffle_dimension `value`,
+  seed default 2727, all rows under `obs_per_seal`, the
+  8-pair `_DRAVIDIAN_COMPOUND_PATTERNS` table (kept in
+  phase27 as delegation data) driving the plausibility
+  reweighting, verbatim verdict + interpretation.
+- **EnhancedNameMatcher** (F5, phase23) → LengthMatchScorer
+  `all_pairs`, min-frequency default 2, verbatim templates.
+- **EnhancedNameMatcherV2** (F5, phase24) → LengthMatchScorer
+  `bipartite`, min-frequency default 1, verbatim templates.
+- **MeluhhaNameMatcher** (F5, phase22) → LengthMatchScorer
+  `aggregate_pairs` with score spec
+  `{"kind": "linear", "divisor": 5.0, "name":
+  "linear_falloff_divisor_5"}` — the divergent falloff,
+  carried as a named spec and pinned by fixture (the
+  meluhha_default case's pairings score 1.0 / 0.8 / 0.6 /
+  0.2 under it; under the family tolerance falloff they
+  would read 1.0 / 0.667 / 0.333 / 0.0-skipped).
+- **BilingualReadoutTest** (F5, phase23) →
+  LengthMatchPermutationTest `best_match`, defaults
+  1000 / 2, insufficient verdict `INSUFFICIENT_DATA: cannot
+  run readout test` (V1's longer text, verbatim).
+- **BilingualReadoutTestV2** (F5, phase24) →
+  LengthMatchPermutationTest `bipartite`, defaults
+  2000 / 1, insufficient verdict `INSUFFICIENT_DATA`,
+  observed-assignment rows on.
+- **PeriodStratifiedReadout** (F5, phase25) →
+  StratifiedPermutationTest over `period`: the inline
+  coarsening chain as ordered rules (case-sensitive, on the
+  stripped value; the Old Akkadian rule carries both of the
+  chain's keys, `Old Akkadian` and `Akkadian`), empty value
+  → fallback `Other`, seed base 42, verbatim verdict.
+- **PeriodStratifiedReadout6Bucket** (F5, phase27) →
+  StratifiedPermutationTest over `period` with
+  `_PERIOD_BUCKETS_6` as data (kept in phase27), empty →
+  `Unknown`, seed base 271, verbatim verdict.
+- **ProvenienceStratifiedReadout** (F5, phase26) →
+  StratifiedPermutationTest over `provenience` with
+  `_PROVENIENCE_BUCKETS` as data (kept in phase26), empty →
+  `Unknown`, seed base 137, verbatim verdict (it names its
+  own study and the Phase-25c cross-reference).
+
+Callerless helpers removed with the delegations (each
+verified by tree-wide grep to have had no other caller; the
+engine carries the shared copies): phase23 `_name_n_segments`
++ `_length_score`; phase24 `_name_n_segments` +
+`_length_score` + `_greedy_bipartite_assignment`; phase25
+`_length_score` + `_greedy_score` + `_run_bipartite_test`
+(phase25's `_name_n_segments` STAYS — the Persons-v3
+extractor, family F6, still uses it); phase26
+`_name_n_segments` + `_length_score` + `_greedy_score` +
+`_run_bipartite_test` + `_classify_provenience` +
+`_seal_phoneme_match_score`; phase27 `_name_n_segments` +
+`_length_score` + `_greedy_score` + `_run_bipartite_test` +
+`_classify_period_6` + `_seal_phoneme_match_score` +
+`_compound_plausibility_score`. The now-unused `math` /
+`random` imports in phases 23–27 went with them.
+
+### Counts — the re-pin (C087-17 act for this PR)
+
+| | before | after |
+|---|---|---|
+| registered | 528 | **534** (+ the six primitives above) |
+| legacy | 374 | **387** (+ the thirteen F4/F5 conversions) |
+| palette | 154 | **147** (−13 converted, +6 primitives) |
+| core definitions | 53 | **59** |
+| categories | 65 | **65** (no change) |
+
+Per-category deltas: `Decipherment` 14 → 19
+(IconographicAnchorScorer, PhonemeMapCoverage,
+LengthMatchScorer, LengthMatchPermutationTest,
+StratifiedPermutationTest), `Analysis` 13 → 14
+(PhonemeMapPermutationTest). Legacy-by-category:
+`Phase-22 / Decipherment` 0 → 1, `Phase-23 / Decipherment`
+0 → 2, `Phase-24 / Decipherment` 0 → 2,
+`Phase-25 / Decipherment` 1 → 3, `Phase-26 / Decipherment`
+0 → 2, `Phase-27 / Decipherment` 0 → 3,
+`Phase-28 / Decipherment` 0 → 1. The migration data file
+gains the thirteen ids under `s3_additions["PR-C (F4+F5)"]`;
+the census pin fixture is regenerated from the live
+registry; the S2 agreement test's converted set now holds
+PR-A's six, PR-B's nine, and these thirteen.
+
+### Equivalence and comparison results
+
+**Fixture equivalence (contract item 3):** 34 cases captured
+from the pre-change implementations in commit `4624abd`,
+before any implementation changed, and replayed
+post-conversion — **34/34 byte-identical** (all full-mode
+canonical-JSON equality; the permutation outputs are
+seed-determined), in `tests/test_spec087_s3_conversions_c.py`,
+alongside the converted-ids flag/provenance test and the
+primitives-in-palette test. Fixture sources: the loaders
+behind the historical graphs read the gitignored corpora/
+download tree, absent from this repository, so — PR-A's
+precedent for ContactCorpusLoader — the inputs are synthetic
+records in exactly the mesopotamian_contact shapes, built to
+exercise every branch the conversion could move:
+placeholder-only and empty-sign seals, a compound sign_id
+(`99+12`), a missing-sign anchor, the allograph second pass
+on both a matched row (family fish, 2 extensions) and a
+non-matched row (family assigned, no score), hand-verified
+plausibility arithmetic (2.0 and 1.2 on two seals), the
+pinned Meluhha falloff, every stratifier branch of all three
+rule sets over one shared 20-row person set, and an
+insufficient-inputs case per node family. Sanity was checked
+against hand computation at capture (allograph: 7 matches,
+5 extensions, extended ids ['130', '48', '50'], total
+13.75; iconographic: 7 matches, total 12.5; blind: 5
+readable, 3 high-confidence seals).
+
+**27-graph comparison (contract item 4):** the S2 runner was
+executed on a fresh worktree of `3bd37594` (pre) and on this
+branch (post), under the same two normalizations as PR-A/PR-B
+(LanguageModel repr addresses; each tree's own root path).
+Both sides saw the same database state: the build clone's
+local backend DB was copied into the pre worktree.
+**27/27 graphs byte-identical pre vs post**, and every
+normalized hash also equals the PR-B table's hash for the
+same graph (the environment's cross-check):
+
+| graph | normalized sha256 (pre == post) |
+|---|---|
+| fuls_independence_suite | 991cfc445a85250a29cb4f6e58cb21e5ce000f8f856d67e83ffc9d4c667761bb |
+| fuls_nw_semitic_benchmark | ba8955b51e54d766e73beb0045bf56ad3412df0f6668af7ef3ffd58a80899bcd |
+| fuls_validation_suite | 13eeae07336b9add444308c3a4c2e80650223cdc25ff3e49112dff190a3b89ee |
+| generic_sa_multi_comparison | 5cc9d5c05d6bc4d601ec03620efc069eeecf9be48ed3e2b31f98fb38734a37be |
+| indus_anchor_sweep | 6aa045a2d574c0cc187088edeb58d05b930fb3565c7680257046665b2b839f37 |
+| indus_cgsa_cluster_analysis | 23b729b0b0beca767397b75331418fc71f7897543432cc9bc094c4dc7eaa9d9e |
+| indus_cisi_anchored_10 | cbd24cb40f154f745d99ff23192acb395147d37fa736288400af37827fb498fe |
+| indus_cisi_dravidian_vs_pali | bfe729e9c1d3580e72ffd4f3c9f430a315bc65101abcd0804da2ecba272134d8 |
+| indus_cisi_dravidian_vs_sanskrit | 754f4132ac83ed0c698a8470355bb0eceeea17248aa9f00c220a5e5c806791de |
+| indus_cisi_sa_dravidian_vs_nw_semitic | 0ef2599aec2d78dc2708c6afc72ab607561e27c3bbb86a98aacde0574d01ff03 |
+| indus_cisi_sa_dravidian_vs_sanskrit | 07b31b9db57b4f79358afe4224f852fb9c0ed8c8d42d50a613442a7c397dd28f |
+| indus_cisi_structural | 14874f0aca115af7bc0cca8318e63cbefae564f4df54dfef576dc03604db6578 |
+| indus_contact_zone_v2 | 39506ed67256454feab5b6901c191a13977d8697dd50e3bf0926dadeaddc24ad |
+| indus_dravidian_vs_sanskrit | 0035134bb5d80c043847e74910db8a2e3bbdbbc1782f583d8c45b96313e9274c |
+| indus_kalyanaraman_crossval | b91979cb7db634ff88388eb94187c2903bcead561a3b9a01f58deca79378b941 |
+| indus_sa_dravidian | d1c55048bf705a69a2521ec836e26a5e3fd5f255becfee9e9804ece0d2adb553 |
+| indus_sa_dravidian_syllable | 59d53741f123d1dac96a7e26f96573ab01fbbb7ccdc008f75e327da56e4f5bfa |
+| indus_sa_dravidian_vs_nw_semitic | 9481fac660430ef9d384aa74ee9a61a7984126a001b5d022678d8cf20bfcac0a |
+| indus_sa_dravidian_vs_sanskrit | 14281066e98477493620159207b241ede475afbd29165dfb7a4f5b4bfcd77a56 |
+| indus_sa_sanskrit_falsification | 6f730bda1effd69cdbd1bf88cd8987e2c4e416fb8f2875fcab1292ba72069cb7 |
+| indus_sign_function_dravidian | cfa805f2eb873f87e42d79ded34ec867acc83da56b54364b045f574d7df3a034 |
+| indus_structural_atlas | 86f0d2865f14a2686b20802771bb4284098b83dd30a5b04e570b34f88f6f057a |
+| indus_validation_a1_a3_holdout | 912f58147de96ba82c33e2dc8214bd9b3b0d1c096b3a57b9afe835998fdcb6c1 |
+| indus_validation_neg_controls | 729d59ebbbca788e670b49e85843a4a3484a3efeb9b66e22d7231af7899b90f7 |
+| kl_comparison | cf9a8e10b3043bc8942c29483118739688a02439fe20d5237f9d98e1647cca9c |
+| ugaritic_sa_decipher | af1b203f637ef67e4b3705a61697471fffdfd591d28934aa0c32d438cf41155b |
+| ventris_validation | 05580212a0a65a5ae9896ee610564fb4a7937c01b1a200f10724705c29fc8921 |
+
+None of the 27 live graphs wires an F4/F5 node (the census's
+live working set is 36 atomicIds; the F4/F5 nodes' graphs
+live in `_archive/`, out of scope) — the comparison here is
+the no-live-behaviour-change proof for the shared helpers'
+removal and the registry edits; the per-node proof is the
+fixture equivalence above. The runs regenerate
+`reports/*.json` in-tree as a side effect; those files were
+restored and are not in this PR's diff.
+
+### Test results
+
+- Targeted suites (this branch): all five Spec 087 test
+  files — `test_spec087_registry_integrity.py`,
+  `test_spec087_palette_curation.py`,
+  `test_spec087_s3_conversions.py` (PR-A),
+  `test_spec087_s3_conversions_b.py` (PR-B),
+  `test_spec087_s3_conversions_c.py` (this PR: 34 equivalence
+  cases + flag/provenance + palette tests) — **150 passed**.
+- Full backend suite (this branch, TMPDIR on disk, the one
+  named deselection
+  `test_phase392_q2_gate.py::test_pipeline_deterministic_under_seed`):
+  the single-process run executed 2,345 tests to ~95% of the
+  suite — **2,262 passed, 82 skipped, 1 failed** — and then
+  the process died silently: no summary, no traceback, the
+  log frozen — a platform kill of the same family this VM
+  has shown before. The one failure is the known phase133
+  local-only baseline
+  (`test_phase133_stage0_inventory.py::test_builder_recomputation_skips_without_inputs`,
+  missing local download; it does not fail CI), confirmed by
+  re-running that file standalone (1 failed, 13 passed — the
+  same single failure).
+  The unexecuted tail (the t-range files:
+  `test_terminal_log.py`, `test_texts_crud.py`,
+  `test_tray_step8.py`, `test_tray_supervision.py`,
+  `test_tray_token_auth.py`, `test_supervision_installer.py`)
+  was then run explicitly: **80 passed**, the tray teardown
+  flake family not appearing. The full-suite verdict for the
+  remaining slice is carried to CI — the suite's
+  authoritative runner — exactly as PR-B's record carried
+  its wave-cut remainder. This is a stated departure from a
+  complete local full-suite proof, forced by the platform
+  incident and recorded, not smoothed over.
+- `python -m ruff check backend/` — clean.
+- No frontend surface changed, so no builder-area frontend
+  tests were required and no dist rebuild was needed.
+
+### Claim assessments (this PR's legs)
+
+- **C087-7 — PR-C leg supported.** 13 of the 64 CONVERT
+  dispositions (families F4 + F5) are converted here with
+  byte-identical fixture equivalence; cumulatively 28 of 64
+  with PR-A and PR-B. The remaining families' legs land with
+  their own PRs.
+- **C087-13 — PR-C leg supported.** The comparison runs over
+  all 27 live graphs hold byte-identical under the named
+  normalizations (above).
+- **C087-17 — PR-C act recorded.** The census pin, the
+  migration data file, and the S1/S2 test pins were re-pinned
+  in this same PR, from the live registry, with the deltas
+  tabled above.
+- **C087-15 — PR-C manual leg.** `docs/user-manual.md`'s
+  legacy section gains the short factual note (the six new
+  generic blocks in the Palette; the thirteen converted nodes
+  now legacy). The generated node reference is S4's scope.
+
+### Departures from the brief's letter, stated plainly
+
+- **T303 is still not ticked.** Its F4 + F5 legs are
+  discharged here; eight families remain (F2, F6, F7, F9,
+  F10, F11, F12, F13), plus family F15 and the final
+  retire-flagging batch. The progress note under T303 in
+  tasks.md is updated instead of a tick.
+- **The brief's expected arithmetic was right this time**
+  (registered +6, legacy +13); the re-pin is nevertheless
+  counted from the live registry, per the contract: 534 /
+  387 / 147, core 59, categories 65.
+- **Helper removals are broader than PR-B's single case**:
+  the F5 family's helpers were per-module copies, so the
+  delegations made 15 helper functions callerless across
+  phases 23–27 (listed above). Each removal is grep-proven;
+  phase25's `_name_n_segments` is deliberately NOT among
+  them (a live F6 caller remains).
+- **The graph-runner outputs were read from files, not
+  process reports**: both comparison runs were launched
+  through a shell pipeline whose exit status masked the
+  runner's own; the runs' completion and results were
+  verified from the summary/output files they wrote (27
+  graphs, all status ok, on both sides) before the hashes
+  above were computed.

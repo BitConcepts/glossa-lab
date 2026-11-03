@@ -1,4 +1,3 @@
-import json
 from pathlib import Path
 out = Path('reports') / 'tiny_out.json'
 out.parent.mkdir(parents=True, exist_ok=True)

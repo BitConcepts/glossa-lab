@@ -191,82 +191,55 @@ def _janabiyah_phonetic_readout_v2(inputs: dict, params: dict) -> dict:
     """Phase-26 Janabiyah readout: searches with the EXPANDED phonetic
     vocabulary (direct miin transliterations + Sumerian/Akkadian
     translation candidates).
+
+    Spec 087 S3 (family F7): the mechanism is the generic
+    SkeletonTabletSearch engine (glossa_lab.generic_primitives);
+    this node is its Phase-26 parameterisation — two scans (the
+    direct-only list, then the full list) over rendering lists that
+    arrive through input ports, the translation-gain count carried
+    as a derived count of the two scans. Phase-25's readout is the
+    same engine with its rendering list supplied as a constant.
     """
-    janabiyah = inputs.get("janabiyah_reading") or {}
-    phoneme_map = inputs.get("phoneme_map") or {}
-    tablets = inputs.get("tablets") or []
-    miin_renderings = inputs.get("miin_renderings") or []
-    miin_direct_only = inputs.get("miin_renderings_direct_only") or []
-
-    if not janabiyah or not phoneme_map:
-        return {"error": "Phoneme map or Janabiyah reading not available."}
-
-    sign_seq = janabiyah.get("sign_sequence", [])
-    predictions = []
-    for sign_id in sign_seq:
-        ph = phoneme_map.get(sign_id, {})
-        predictions.append({
-            "sign_id": sign_id,
-            "phoneme": ph.get("phoneme", "?"),
-            "gloss": ph.get("gloss", "(unmapped)"),
-            "confidence": ph.get("confidence", "none"),
-        })
-
-    miin_count = sum(1 for p in predictions
-                     if "miin" in (p["phoneme"] or "").lower())
-    skeleton = "-".join(p["phoneme"] for p in predictions)
-
-    def _scan(rendering_list: list[str]) -> list[dict]:
-        matches: list[dict] = []
-        for t in tablets:
-            kw = " ".join(t.get("matched_keywords") or []).lower()
-            if "me-luh" not in kw:
-                continue
-            line_pool: list[str] = []
-            line_pool.extend(t.get("atf_lines_with_match") or [])
-            line_pool.extend(t.get("atf_excerpt_lines") or [])
-            for line in line_pool:
-                ll = line.lower()
-                hits = sum(1 for r in rendering_list if r in ll)
-                if hits >= 2:
-                    matches.append({
-                        "p_number": t.get("p_number"),
-                        "period": t.get("period"),
-                        "provenience": t.get("provenience"),
-                        "n_hits": hits,
-                        "line": line[:160],
-                    })
-        matches.sort(key=lambda m: -m["n_hits"])
-        return matches
-
-    matches_direct = _scan(miin_direct_only)
-    matches_full = _scan(miin_renderings)
-
-    verdict = (
-        f"Janabiyah phonetic readout v2 (Phase-26): predicted "
-        f"skeleton '{skeleton}' ({miin_count}/7 confirmed miin). "
-        f"Direct-transliteration search (Phase-25a vocab): "
-        f"{len(matches_direct)} matches. Expanded search "
-        f"(direct + mul-/kakkab-/imin- translation candidates): "
-        f"{len(matches_full)} matches. The translation-candidate "
-        f"hypothesis is supported if the expanded search produces "
-        f"new matches that the direct search missed."
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        skeleton_tablet_search_execute,
     )
-    return {
-        "skeleton": skeleton,
-        "n_miin": miin_count,
-        "predictions": predictions,
-        "n_signs": len(sign_seq),
-        "matches_direct_top20": matches_direct[:20],
-        "n_matches_direct": len(matches_direct),
-        "matches_expanded_top20": matches_full[:20],
-        "n_matches_expanded": len(matches_full),
-        "n_new_matches_from_translation": (
-            len(matches_full) - len(matches_direct)
+
+    merged = dict(params)
+    merged["readout_spec"] = {
+        "scans": [
+            {
+                "renderings": {"input": "miin_renderings_direct_only"},
+                "hit_key": "n_hits",
+                "top_key": "matches_direct_top20",
+                "count_key": "n_matches_direct",
+            },
+            {
+                "renderings": {"input": "miin_renderings"},
+                "hit_key": "n_hits",
+                "top_key": "matches_expanded_top20",
+                "count_key": "n_matches_expanded",
+            },
+        ],
+        "count_difference": {
+            "key": "n_new_matches_from_translation",
+            "minuend": "n_matches_expanded",
+            "subtrahend": "n_matches_direct",
+        },
+        "renderings_echo": {"input": "miin_renderings"},
+        "keyword_gate": "me-luh",
+        "min_hits": 2,
+        "verdict_template": (
+            "Janabiyah phonetic readout v2 (Phase-26): predicted "
+            "skeleton '{skeleton}' ({n_miin}/7 confirmed miin). "
+            "Direct-transliteration search (Phase-25a vocab): "
+            "{n_matches_direct} matches. Expanded search "
+            "(direct + mul-/kakkab-/imin- translation candidates): "
+            "{n_matches_expanded} matches. The translation-candidate "
+            "hypothesis is supported if the expanded search produces "
+            "new matches that the direct search missed."
         ),
-        "miin_renderings_searched": miin_renderings,
-        "verdict": verdict,
     }
+    return skeleton_tablet_search_execute(inputs, merged)
 
 
 # ── Tier #1: CISI Vol 3 + find-spot reporter ─────────────────────────

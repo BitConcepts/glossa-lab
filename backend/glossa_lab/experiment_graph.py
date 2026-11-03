@@ -47,11 +47,14 @@ from glossa_lab.generic_primitives import (
     label_map_applier_execute,
     length_match_permutation_test_execute,
     length_match_scorer_execute,
+    persons_aggregator_execute,
     phoneme_map_coverage_execute,
     phoneme_map_permutation_test_execute,
     pmi_centrality_ranker_execute,
     registry_table_loader_execute,
+    reverse_skeleton_search_execute,
     sign_role_classifier_execute,
+    skeleton_tablet_search_execute,
     stratified_permutation_test_execute,
     template_miner_execute,
     value_role_map_source_execute,
@@ -2229,6 +2232,96 @@ for _d in [
             "strata_spec":{"type":"object","title":"Strata Spec",
                            "description":"Stratum field, result axis key, ordered [bucket, [keys]] rules, case sensitivity, strip flag, empty/fallback buckets, seed base, verdict template."}}},
         fn=stratified_permutation_test_execute),
+    AtomicNodeDef("SkeletonTabletSearch","Skeleton Tablet Search","Decipherment",
+        "Predict a seal reading's phonetic skeleton under a sign->phoneme "
+        "map and scan tablet lines for syllable-rendering matches (Spec "
+        "087 S3): each scan in the carried scan list searches the gated "
+        "tablets' lines for lines hitting at least the minimum number of "
+        "renderings, where a scan's rendering list is a spec constant or "
+        "arrives through an input port; the keyword gate, the hit rule, "
+        "and the verdict text are spec data. The Phase-25 "
+        "JanabiyahPhoneticReadout and the Phase-26 "
+        "JanabiyahPhoneticReadoutV2 delegate to this engine.",
+        inputs=[{"name":"janabiyah_reading","type":"json","required":True},
+                {"name":"phoneme_map","type":"json","required":True},
+                {"name":"tablets","type":"json","required":True},
+                {"name":"miin_renderings","type":"json","required":False},
+                {"name":"miin_renderings_direct_only","type":"json","required":False}],
+        outputs=[{"name":"skeleton","type":"text"},{"name":"predictions","type":"json"},
+                 {"name":"n_miin","type":"number"},{"name":"n_signs","type":"number"},
+                 {"name":"matches_top20","type":"json"},{"name":"n_matches","type":"number"},
+                 {"name":"matches_direct_top20","type":"json"},{"name":"n_matches_direct","type":"number"},
+                 {"name":"matches_expanded_top20","type":"json"},{"name":"n_matches_expanded","type":"number"},
+                 {"name":"n_new_matches_from_translation","type":"number"},
+                 {"name":"miin_renderings_searched","type":"json"},
+                 {"name":"verdict","type":"text"},{"name":"interpretation","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "readout_spec":{"type":"object","title":"Readout Spec",
+                           "description":"Scan list (rendering source per scan: spec constant or input port; hit key and output keys per scan), keyword gate, minimum hits, line limit, optional derived count, echoed renderings, error result, verdict template, optional interpretation."}}},
+        fn=skeleton_tablet_search_execute),
+    AtomicNodeDef("ReverseSkeletonSearch","Reverse Skeleton Search","Decipherment",
+        "Score candidate names against a predicted phonetic skeleton "
+        "(Spec 087 S3): one shared scoring core — target segment "
+        "positions and length, length/position/free weights — carried "
+        "as spec data, over three candidate modes: aggregated person "
+        "rows matched by substring against the rendering set (with a "
+        "suffix-penalty set as data), ePSD2-style name entries scored "
+        "over their alternate forms by exact rendering-token match, "
+        "and that mode binned by best-form segment count over a cohort "
+        "table with a concentration verdict. The rendering set is data, "
+        "with an optional dynamic expansion from the phoneme map via a "
+        "named allograph family. The Phase-27 ReverseJanabiyahSearch, "
+        "the Phase-28 ReverseJanabiyahSearchV2, the Phase-29 "
+        "M77ReverseJanabiyahSearchV3, and the Phase-30 "
+        "LengthCohortReverseJanabiyahSearch delegate to this engine.",
+        inputs=[{"name":"persons_v3","type":"json","required":False},
+                {"name":"epsd2_personal_names","type":"json","required":False},
+                {"name":"janabiyah_reading","type":"json","required":True},
+                {"name":"phoneme_map","type":"json","required":False},
+                {"name":"allograph_families","type":"json","required":False}],
+        outputs=[{"name":"n_candidates","type":"number"},{"name":"n_pns_searched","type":"number"},
+                 {"name":"n_renderings","type":"number"},
+                 {"name":"n_with_position_match","type":"number"},{"name":"n_with_free_miin","type":"number"},
+                 {"name":"top_matches","type":"json"},
+                 {"name":"n_cohorts","type":"number"},
+                 {"name":"n_with_position_match_total","type":"number"},
+                 {"name":"n_with_free_miin_total","type":"number"},
+                 {"name":"cohorts","type":"json"},{"name":"verdict","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "top_k":{"type":"integer","title":"Top K","default":20,"minimum":1},
+            "min_icount":{"type":"integer","title":"Min Instance Count","default":1,"minimum":1},
+            "cohorts":{"type":"array","title":"Cohorts","default":[[3,4],[5,6],[7,8],[9,99]],
+                       "description":"[lo, hi] segment-count cohort pairs for the pn_cohorts mode."},
+            "search_spec":{"type":"object","title":"Search Spec",
+                           "description":"Candidate mode, scoring core (target positions/length, weights), rendering set + optional expansion, penalty suffixes, cohort default + concentration factor, output plan, empty result, verdict templates."}}},
+        fn=reverse_skeleton_search_execute),
+    AtomicNodeDef("PersonsAggregator","Persons Aggregator","Transforms",
+        "Aggregate person rows into per-name candidate counts (Spec "
+        "087 S3): rows are counted per candidate name with each name's "
+        "period set and first example line, plus — as spec data "
+        "dictates — provenience and source-pattern sets, distinct "
+        "tablet counts, and segment-count enrichment; known-name "
+        "confirmation is a carried name set, the rows' upstream "
+        "is_known flag, or none, and the example-line truncation and "
+        "verdict text are spec data. The Phase-22 "
+        "MeluhhanPersonsExtractor, the Phase-23 "
+        "RefinedMeluhhanPersonsExtractor, the Phase-24 "
+        "RefinedMeluhhanPersonsExtractorV2, and the Phase-25 "
+        "Persons_v3_Extractor delegate to this engine.",
+        inputs=[{"name":"persons","type":"json","required":False},
+                {"name":"strict_persons","type":"json","required":False},
+                {"name":"persons_v2","type":"json","required":False},
+                {"name":"persons_v3","type":"json","required":False}],
+        outputs=[{"name":"n_unique_candidates","type":"number"},{"name":"n_unique","type":"number"},
+                 {"name":"rows_top50","type":"json"},{"name":"rows_all","type":"json"},
+                 {"name":"all_rows_count","type":"number"},{"name":"n_total","type":"number"},
+                 {"name":"confirmed_hits","type":"json"},{"name":"by_pattern","type":"json"},
+                 {"name":"verdict","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "min_freq":{"type":"integer","title":"Min Frequency","default":1,"minimum":1},
+            "persons_spec":{"type":"object","title":"Persons Spec",
+                            "description":"Input port key, collected field sets, known-name rule (set / upstream flag / none), example-line limit, output plan (count key names, row lists, by-pattern), verdict template."}}},
+        fn=persons_aggregator_execute),
     AtomicNodeDef("FreqCounter","Frequency Counter","Transforms",
         "Count symbol occurrences across all sequences.",
         inputs=[{"name":"sequences","type":"sequences","required":True}],

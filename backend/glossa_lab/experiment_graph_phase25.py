@@ -22,10 +22,6 @@ def _safe_int(x: Any, default: int = 0) -> int:
         return default
 
 
-def _name_n_segments(name: str) -> int:
-    return name.count("-") + 1 if name else 0
-
-
 # ── Loader ────────────────────────────────────────────────────────────
 
 
@@ -68,74 +64,41 @@ def _janabiyah_phonetic_readout(inputs: dict, params: dict) -> dict:
     morphemes, which Akkadian scribes would render as 'mi-in', 'me-en',
     'mi-na', or similar. Search CDLI Meluhha-mention tablets for any
     PN matching this pattern.
+
+    Spec 087 S3 (family F7): the mechanism is the generic
+    SkeletonTabletSearch engine (glossa_lab.generic_primitives);
+    this node is its Phase-25 parameterisation — a single scan over
+    the 11-item miin-rendering list below (a code constant here,
+    carried as spec data), under the "me-luh" keyword gate and the
+    hits >= 2 match rule, both data.
     """
-    janabiyah = inputs.get("janabiyah_reading") or {}
-    phoneme_map = inputs.get("phoneme_map") or {}
-    tablets = inputs.get("tablets") or []
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        skeleton_tablet_search_execute,
+    )
 
-    if not janabiyah or not phoneme_map:
-        return {"error": "Phoneme map or Janabiyah reading not available."}
-
-    # Reconstruct the predicted phonetic skeleton
-    sign_seq = janabiyah.get("sign_sequence", [])
-    predictions: list[dict] = []
-    for sign_id in sign_seq:
-        ph = phoneme_map.get(sign_id, {})
-        predictions.append({
-            "sign_id": sign_id,
-            "phoneme": ph.get("phoneme", "?"),
-            "gloss": ph.get("gloss", "(unmapped)"),
-            "confidence": ph.get("confidence", "none"),
-        })
-
-    miin_count = sum(1 for p in predictions
-                     if "miin" in (p["phoneme"] or "").lower())
-    skeleton = "-".join(p["phoneme"] for p in predictions)
-
-    # Search CDLI Meluhha-mention tablets for any line containing
-    # multiple 'miin'-rendering syllables (mi-in, me-en, mi-na, me-na,
-    # mi-il, me-il, mu-li).
+    # The Phase-25 miin-rendering syllables (mi-in, me-en, mi-na,
+    # me-na, mi-il, me-il, mu-li, …), searched as line substrings.
     miin_renderings = [
         "mi-in", "me-en", "mi-na", "me-na", "mi-il", "me-il",
         "mi-en", "me-in", "mu-li", "min-", "men-",
     ]
-    matches: list[dict] = []
-    for t in tablets:
-        kw = " ".join(t.get("matched_keywords") or []).lower()
-        if "me-luh" not in kw:
-            continue
-        line_pool: list[str] = []
-        line_pool.extend(t.get("atf_lines_with_match") or [])
-        line_pool.extend(t.get("atf_excerpt_lines") or [])
-        for line in line_pool:
-            ll = line.lower()
-            hits = sum(1 for r in miin_renderings if r in ll)
-            if hits >= 2:
-                matches.append({
-                    "p_number": t.get("p_number"),
-                    "period": t.get("period"),
-                    "provenience": t.get("provenience"),
-                    "n_miin_hits": hits,
-                    "line": line[:160],
-                })
-    matches.sort(key=lambda m: -m["n_miin_hits"])
-
-    verdict = (
-        f"Janabiyah phonetic readout: predicted skeleton '{skeleton}' "
-        f"({miin_count}/7 confirmed miin); searched {len(tablets)} CDLI "
-        f"tablets, found {len(matches)} lines with >= 2 miin-rendering "
-        f"syllables."
-    )
-
-    return {
-        "skeleton": skeleton,
-        "predictions": predictions,
-        "n_miin": miin_count,
-        "n_signs": len(sign_seq),
-        "matches_top20": matches[:20],
-        "n_matches": len(matches),
-        "miin_renderings_searched": miin_renderings,
-        "verdict": verdict,
+    merged = dict(params)
+    merged["readout_spec"] = {
+        "scans": [{
+            "renderings": {"constant": miin_renderings},
+            "hit_key": "n_miin_hits",
+            "top_key": "matches_top20",
+            "count_key": "n_matches",
+        }],
+        "renderings_echo": {"constant": miin_renderings},
+        "keyword_gate": "me-luh",
+        "min_hits": 2,
+        "verdict_template": (
+            "Janabiyah phonetic readout: predicted skeleton "
+            "'{skeleton}' ({n_miin}/7 confirmed miin); searched "
+            "{n_tablets} CDLI tablets, found {n_matches} lines "
+            "with >= 2 miin-rendering syllables."
+        ),
         "interpretation": (
             "If the Janabiyah seal owner's name carried multiple miin "
             "(fish/star) morphemes per Parpola's Dravidian hypothesis, "
@@ -146,6 +109,7 @@ def _janabiyah_phonetic_readout(inputs: dict, params: dict) -> dict:
             "Bahrain) would be a phonetic anchor candidate."
         ),
     }
+    return skeleton_tablet_search_execute(inputs, merged)
 
 
 # ── Tier A2: Blind held-out phonetic test ───────────────────────────
@@ -195,8 +159,10 @@ def _period_stratified_readout(inputs: dict, params: dict) -> dict:
     per-stratum seed rule is seed_base 42 + len(bucket). The
     module-local _run_bipartite_test / _greedy_score / _length_score
     helpers were used only here; they were removed (the engine
-    carries the shared bipartite core). _name_n_segments stays: the
-    Persons-v3 extractor still uses it.
+    carries the shared bipartite core). _name_n_segments was kept
+    for the Persons-v3 extractor at that point; PR-D (family F6)
+    later converted that node too and removed the helper — the
+    PersonsAggregator engine carries the shared segment counter.
     """
     from glossa_lab.generic_primitives import (  # noqa: PLC0415
         stratified_permutation_test_execute,
@@ -388,44 +354,36 @@ def _tamil_brahmi_crosscheck(inputs: dict, params: dict) -> dict:
 
 
 def _persons_v3_extractor(inputs: dict, params: dict) -> dict:
-    persons = inputs.get("persons_v3") or []
-    min_freq = _safe_int(params.get("min_freq", 1), 1)
+    """Aggregate the persons-v3 candidates (Phase-25 reporter).
 
-    name_counts: Counter[str] = Counter()
-    name_periods: dict[str, set[str]] = {}
-    name_lines: dict[str, list[str]] = {}
-    for p in persons:
-        n = p.get("candidate_name", "")
-        if not n:
-            continue
-        name_counts[n] += 1
-        name_periods.setdefault(n, set()).add(p.get("period", "") or "")
-        name_lines.setdefault(n, []).append(p.get("line", ""))
-
-    rows = []
-    for n, c in name_counts.most_common():
-        if c < min_freq:
-            continue
-        rows.append({
-            "candidate_name": n,
-            "occurrences": c,
-            "n_segments": _name_n_segments(n),
-            "periods": sorted(name_periods.get(n, set())),
-            "example_line": (name_lines[n][0] if name_lines.get(n) else "")[:160],
-        })
-
-    verdict = (
-        f"Persons-v3: {len(rows)} unique candidates (freq>={min_freq}). "
-        f"v2 noise (lu-ti, lu-na, lu-ma-ku) dropped via extended "
-        f"Akkadian-fragment stoplist + 3-segment minimum + 6-segment "
-        f"regex (captures ur-{{d}}suen-me-luh-ha)."
+    Spec 087 S3 (family F6): the mechanism is the generic
+    PersonsAggregator engine (glossa_lab.generic_primitives); this
+    node is its Phase-25 parameterisation — the persons_v3 port,
+    segment-count enrichment on, example lines truncated at 160,
+    no known-name confirmation. The module-local _name_n_segments
+    helper was used only here; it was removed (the engine carries
+    the shared segment counter).
+    """
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        persons_aggregator_execute,
     )
-    return {
-        "n_unique": len(rows),
-        "rows_top50": rows[:50],
-        "rows_all": rows,
-        "verdict": verdict,
+
+    merged = dict(params)
+    merged["persons_spec"] = {
+        "input_key": "persons_v3",
+        "segment_count": True,
+        "example_line_limit": 160,
+        "known": {"mode": "none"},
+        "confirmed": False,
+        "n_key": "n_unique",
+        "verdict_template": (
+            "Persons-v3: {n_rows} unique candidates (freq>={min_freq}). "
+            "v2 noise (lu-ti, lu-na, lu-ma-ku) dropped via extended "
+            "Akkadian-fragment stoplist + 3-segment minimum + 6-segment "
+            "regex (captures ur-{{d}}suen-me-luh-ha)."
+        ),
     }
+    return persons_aggregator_execute(inputs, merged)
 
 
 # ── Verdict aggregator ──────────────────────────────────────────────

@@ -163,55 +163,44 @@ def _meluhha_corpus_reporter(inputs: dict, params: dict) -> dict:
 
 
 def _meluhhan_persons_extractor(inputs: dict, params: dict) -> dict:
-    """Surface high-confidence Meluhhan name candidates."""
-    persons = inputs.get("persons") or []
-    min_freq = _safe_int(params.get("min_freq", 1), 1)
+    """Surface high-confidence Meluhhan name candidates.
 
-    name_counts: Counter[str] = Counter()
-    name_periods: dict[str, set[str]] = {}
-    name_proveniences: dict[str, set[str]] = {}
-    name_lines: dict[str, list[str]] = {}
-    for p in persons:
-        name = p.get("candidate_name", "")
-        if not name:
-            continue
-        name_counts[name] += 1
-        name_periods.setdefault(name, set()).add(p.get("period", "") or "")
-        name_proveniences.setdefault(name, set()).add(p.get("provenience", "") or "")
-        name_lines.setdefault(name, []).append(p.get("line", ""))
-
-    rows: list[dict] = []
-    for name, count in name_counts.most_common():
-        if count < min_freq:
-            continue
-        rows.append({
-            "candidate_name": name,
-            "occurrences": count,
-            "n_distinct_tablets": len({p["p_number"] for p in persons
-                                          if p.get("candidate_name") == name}),
-            "periods": sorted(name_periods.get(name, set())),
-            "proveniences": sorted(name_proveniences.get(name, set())),
-            "example_line": name_lines[name][0] if name_lines.get(name) else "",
-        })
-
-    # Highlight known historical Meluhhan names
-    known_names = {"lu-sun-zi-da", "lu2-sun-zi-da", "shu-ilishu", "shu-ilisu",
-                    "su-ilisu"}
-    confirmed_hits = [r for r in rows if r["candidate_name"].lower() in known_names]
-
-    verdict = (
-        f"Meluhhan-person extractor: {len(rows)} unique name candidates "
-        f"(freq >= {min_freq}); {len(confirmed_hits)} match historically-known "
-        "Meluhhan-named persons (Lu-sun-zi-da, Shu-ilishu)."
+    Spec 087 S3 (family F6): the mechanism is the generic
+    PersonsAggregator engine (glossa_lab.generic_primitives); this
+    node is its Phase-22 parameterisation — the persons port,
+    provenience + distinct-tablet collection, example lines
+    untruncated, and confirmation against the known historical
+    Meluhhan names below, carried as a data param.
+    """
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        persons_aggregator_execute,
     )
 
-    return {
-        "n_unique_candidates": len(rows),
-        "rows_top50": rows[:50],
-        "all_rows_count": len(rows),
-        "confirmed_hits": confirmed_hits,
-        "verdict": verdict,
+    merged = dict(params)
+    merged["persons_spec"] = {
+        "input_key": "persons",
+        "collect_proveniences": True,
+        "distinct_tablets": True,
+        # The known historical Meluhhan names, highlighted in the
+        # output (Lu-sun-zi-da, Shu-ilishu, …).
+        "known": {
+            "mode": "set",
+            "names": [
+                "lu-sun-zi-da", "lu2-sun-zi-da", "shu-ilishu",
+                "shu-ilisu", "su-ilisu",
+            ],
+        },
+        "rows_all": False,
+        "extra_count_key": "all_rows_count",
+        "n_key": "n_unique_candidates",
+        "verdict_template": (
+            "Meluhhan-person extractor: {n_rows} unique name "
+            "candidates (freq >= {min_freq}); {n_confirmed} match "
+            "historically-known Meluhhan-named persons "
+            "(Lu-sun-zi-da, Shu-ilishu)."
+        ),
     }
+    return persons_aggregator_execute(inputs, merged)
 
 
 def _indus_seals_at_mesopotamia_summary(inputs: dict, params: dict) -> dict:

@@ -1,8 +1,8 @@
 {
-  "comment": "Spec 087 legacy-flag data (Stage S2 migration, T201; extended by Stage S3 conversion PRs A, B and C): the census's 359 WRAPPER node ids, flagged legacy on AtomicNodeDef at registry build (decision D1), plus the ids recorded converted in the Stage S3 records — each converted node's implementation now delegates to a generic primitive and the domain id takes the legacy flag in the same act (S3 conversion contract, item 2). Generated from the classification of record — the system-coupling audit census (2026-11-02) Appendix A, param-carry verdict WRAPPER (DOMAIN nodes with no input ports and an empty params schema) — and from specs/087-node-system-tightening/records/stage-s3-conversions.md for the S3 additions. Reviewable id by id; any change to this list is a recorded act (claim C087-17) and must keep tests/test_spec087_palette_curation.py green.",
+  "comment": "Spec 087 legacy-flag data (Stage S2 migration, T201; extended by Stage S3 conversion PRs A, B, C and D): the census's 359 WRAPPER node ids, flagged legacy on AtomicNodeDef at registry build (decision D1), plus the ids recorded converted in the Stage S3 records — each converted node's implementation now delegates to a generic primitive and the domain id takes the legacy flag in the same act (S3 conversion contract, item 2). Generated from the classification of record — the system-coupling audit census (2026-11-02) Appendix A, param-carry verdict WRAPPER (DOMAIN nodes with no input ports and an empty params schema) — and from specs/087-node-system-tightening/records/stage-s3-conversions.md for the S3 additions. Reviewable id by id; any change to this list is a recorded act (claim C087-17) and must keep tests/test_spec087_palette_curation.py green.",
   "spec": "087-node-system-tightening",
   "stage": "S2",
-  "count": 387,
+  "count": 397,
   "legacy_ids": [
     "DravidianSyllableLM",
     "ICITMetadataLoader",
@@ -390,7 +390,17 @@
     "BilingualReadoutTestV2",
     "PeriodStratifiedReadout",
     "PeriodStratifiedReadout6Bucket",
-    "ProvenienceStratifiedReadout"
+    "ProvenienceStratifiedReadout",
+    "JanabiyahPhoneticReadout",
+    "JanabiyahPhoneticReadoutV2",
+    "ReverseJanabiyahSearch",
+    "ReverseJanabiyahSearchV2",
+    "M77ReverseJanabiyahSearchV3",
+    "LengthCohortReverseJanabiyahSearch",
+    "MeluhhanPersonsExtractor",
+    "RefinedMeluhhanPersonsExtractor",
+    "RefinedMeluhhanPersonsExtractorV2",
+    "Persons_v3_Extractor"
   ],
   "s3_additions": {
     "PR-A (F14+F1)": [
@@ -426,6 +436,18 @@
       "PeriodStratifiedReadout",
       "PeriodStratifiedReadout6Bucket",
       "ProvenienceStratifiedReadout"
+    ],
+    "PR-D (F7+F6)": [
+      "JanabiyahPhoneticReadout",
+      "JanabiyahPhoneticReadoutV2",
+      "ReverseJanabiyahSearch",
+      "ReverseJanabiyahSearchV2",
+      "M77ReverseJanabiyahSearchV3",
+      "LengthCohortReverseJanabiyahSearch",
+      "MeluhhanPersonsExtractor",
+      "RefinedMeluhhanPersonsExtractor",
+      "RefinedMeluhhanPersonsExtractorV2",
+      "Persons_v3_Extractor"
     ]
   }
 }

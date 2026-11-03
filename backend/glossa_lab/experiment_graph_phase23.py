@@ -124,64 +124,39 @@ def _seal_sign_auditor(inputs: dict, params: dict) -> dict:
 
 
 def _refined_persons_extractor(inputs: dict, params: dict) -> dict:
-    """Aggregate the strict Phase-23 PN extractor output."""
-    persons = inputs.get("strict_persons") or []
-    min_freq = _safe_int(params.get("min_freq", 1), 1)
+    """Aggregate the strict Phase-23 PN extractor output.
 
-    name_counts: Counter[str] = Counter()
-    name_periods: dict[str, set[str]] = {}
-    name_provs: dict[str, set[str]] = {}
-    name_lines: dict[str, list[str]] = {}
-    name_patterns: dict[str, set[str]] = {}
-    for p in persons:
-        n = p.get("candidate_name", "")
-        if not n:
-            continue
-        name_counts[n] += 1
-        name_periods.setdefault(n, set()).add(p.get("period", "") or "")
-        name_provs.setdefault(n, set()).add(p.get("provenience", "") or "")
-        name_lines.setdefault(n, []).append(p.get("line", ""))
-        name_patterns.setdefault(n, set()).add(p.get("source_pattern", "") or "")
-
-    rows = []
-    for n, c in name_counts.most_common():
-        if c < min_freq:
-            continue
-        is_known = any(p.get("is_known") for p in persons
-                       if p.get("candidate_name") == n)
-        rows.append({
-            "candidate_name": n,
-            "occurrences": c,
-            "n_distinct_tablets": len({p["p_number"] for p in persons
-                                          if p.get("candidate_name") == n}),
-            "periods": sorted(name_periods.get(n, set())),
-            "proveniences": sorted(name_provs.get(n, set())),
-            "source_patterns": sorted(name_patterns.get(n, set())),
-            "is_known_meluhhan": is_known,
-            "example_line": name_lines[n][0] if name_lines.get(n) else "",
-        })
-
-    confirmed = [r for r in rows if r["is_known_meluhhan"]]
-    by_pattern: Counter[str] = Counter()
-    for p in persons:
-        by_pattern[p.get("source_pattern", "")] += 1
-
-    verdict = (
-        f"Refined Meluhhan-PN extractor (Phase-23): "
-        f"{len(rows)} unique name candidates (freq>={min_freq}); "
-        f"{len(confirmed)} historically-confirmed; "
-        f"by-pattern distribution {dict(by_pattern.most_common())}."
+    Spec 087 S3 (family F6): the mechanism is the generic
+    PersonsAggregator engine (glossa_lab.generic_primitives); this
+    node is its Phase-23 parameterisation — the strict_persons
+    port, provenience + source-pattern + distinct-tablet
+    collection, example lines untruncated, the by-pattern
+    distribution over all rows, and known-name confirmation taken
+    from the upstream rows' is_known flag (the known set moved
+    upstream), all carried as spec data.
+    """
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        persons_aggregator_execute,
     )
 
-    return {
-        "n_unique": len(rows),
-        "rows_top50": rows[:50],
-        "rows_all": rows,
-        "n_total": len(rows),
-        "confirmed_hits": confirmed,
-        "by_pattern": dict(by_pattern.most_common()),
-        "verdict": verdict,
+    merged = dict(params)
+    merged["persons_spec"] = {
+        "input_key": "strict_persons",
+        "collect_proveniences": True,
+        "collect_patterns": True,
+        "distinct_tablets": True,
+        "known": {"mode": "upstream_flag"},
+        "by_pattern": True,
+        "extra_count_key": "n_total",
+        "n_key": "n_unique",
+        "verdict_template": (
+            "Refined Meluhhan-PN extractor (Phase-23): "
+            "{n_rows} unique name candidates (freq>={min_freq}); "
+            "{n_confirmed} historically-confirmed; "
+            "by-pattern distribution {by_pattern}."
+        ),
     }
+    return persons_aggregator_execute(inputs, merged)
 
 
 # ── Enhanced matcher ──────────────────────────────────────────────────

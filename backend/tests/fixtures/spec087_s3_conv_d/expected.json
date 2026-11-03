@@ -1,0 +1,4366 @@
+{
+ "spec": "087-node-system-tightening",
+ "stage": "S3",
+ "pr": "PR-D (F7+F6)",
+ "captured_from": "pre-conversion implementations on main 702cc717",
+ "cases": [
+  {
+   "id": "readout_v1_default",
+   "node": "JanabiyahPhoneticReadout",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "janabiyah_reading": {
+     "sign_sequence": [
+      "147",
+      "99",
+      "145",
+      "999",
+      "120",
+      "131",
+      "147"
+     ]
+    },
+    "phoneme_map": {
+     "147": {
+      "phoneme": "miin",
+      "gloss": "fish/star",
+      "confidence": "high"
+     },
+     "145": {
+      "phoneme": "miin",
+      "gloss": "fish/star",
+      "confidence": "high"
+     },
+     "99": {
+      "phoneme": "vaTa",
+      "gloss": "banyan / north",
+      "confidence": "medium"
+     },
+     "120": {
+      "phoneme": "muruku",
+      "gloss": "Murukan",
+      "confidence": "medium"
+     },
+     "130": {
+      "phoneme": "aru-",
+      "gloss": "Pleiades",
+      "confidence": "high"
+     },
+     "131": {
+      "phoneme": "eZu-",
+      "gloss": "Ursa Major",
+      "confidence": "low"
+     },
+     "140": {
+      "phoneme": "?",
+      "gloss": "unknown",
+      "confidence": "none"
+     }
+    },
+    "tablets": [
+     {
+      "p_number": "P001",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "matched_keywords": [
+       "me-luh-ha",
+       "meluhha"
+      ],
+      "atf_lines_with_match": [
+       "1. mi-in me-en sza-at",
+       "2. mi-na ugu de2-a"
+      ],
+      "atf_excerpt_lines": [
+       "3. mul kakkab mi-in",
+       "4. xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx mi-in me-en"
+      ]
+     },
+     {
+      "p_number": "P002",
+      "period": "Old Babylonian",
+      "provenience": "Ur",
+      "matched_keywords": [
+       "meluhha-trade"
+      ],
+      "atf_lines_with_match": [
+       "1. mi-in me-en mi-na"
+      ],
+      "atf_excerpt_lines": []
+     },
+     {
+      "p_number": "P003",
+      "period": "Ur III",
+      "provenience": "Umma",
+      "matched_keywords": [
+       "me-luh-ha-ki"
+      ],
+      "atf_lines_with_match": [
+       "1. szu kur-ra",
+       "2. mi-il-am3"
+      ],
+      "atf_excerpt_lines": []
+     },
+     {
+      "p_number": "P004",
+      "period": "Ebla",
+      "provenience": "Ebla"
+     }
+    ]
+   },
+   "expected": {
+    "skeleton": "miin-vaTa-miin-?-muruku-eZu--miin",
+    "predictions": [
+     {
+      "sign_id": "147",
+      "phoneme": "miin",
+      "gloss": "fish/star",
+      "confidence": "high"
+     },
+     {
+      "sign_id": "99",
+      "phoneme": "vaTa",
+      "gloss": "banyan / north",
+      "confidence": "medium"
+     },
+     {
+      "sign_id": "145",
+      "phoneme": "miin",
+      "gloss": "fish/star",
+      "confidence": "high"
+     },
+     {
+      "sign_id": "999",
+      "phoneme": "?",
+      "gloss": "(unmapped)",
+      "confidence": "none"
+     },
+     {
+      "sign_id": "120",
+      "phoneme": "muruku",
+      "gloss": "Murukan",
+      "confidence": "medium"
+     },
+     {
+      "sign_id": "131",
+      "phoneme": "eZu-",
+      "gloss": "Ursa Major",
+      "confidence": "low"
+     },
+     {
+      "sign_id": "147",
+      "phoneme": "miin",
+      "gloss": "fish/star",
+      "confidence": "high"
+     }
+    ],
+    "n_miin": 3,
+    "n_signs": 7,
+    "matches_top20": [
+     {
+      "p_number": "P001",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "n_miin_hits": 2,
+      "line": "1. mi-in me-en sza-at"
+     },
+     {
+      "p_number": "P001",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "n_miin_hits": 2,
+      "line": "4. xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+     }
+    ],
+    "n_matches": 2,
+    "miin_renderings_searched": [
+     "mi-in",
+     "me-en",
+     "mi-na",
+     "me-na",
+     "mi-il",
+     "me-il",
+     "mi-en",
+     "me-in",
+     "mu-li",
+     "min-",
+     "men-"
+    ],
+    "verdict": "Janabiyah phonetic readout: predicted skeleton 'miin-vaTa-miin-?-muruku-eZu--miin' (3/7 confirmed miin); searched 4 CDLI tablets, found 2 lines with >= 2 miin-rendering syllables.",
+    "interpretation": "If the Janabiyah seal owner's name carried multiple miin (fish/star) morphemes per Parpola's Dravidian hypothesis, Akkadian scribes would have rendered it as multiple mi-in / me-en / mi-na syllables in clay tablets. A significant cluster of such tablets in the same period + provenience as Janabiyah (Early Dilmun ~2100-2000 BC, Bahrain) would be a phonetic anchor candidate."
+   }
+  },
+  {
+   "id": "readout_v1_insufficient_reading",
+   "node": "JanabiyahPhoneticReadout",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "janabiyah_reading": {},
+    "phoneme_map": {
+     "147": {
+      "phoneme": "miin",
+      "gloss": "fish/star",
+      "confidence": "high"
+     },
+     "145": {
+      "phoneme": "miin",
+      "gloss": "fish/star",
+      "confidence": "high"
+     },
+     "99": {
+      "phoneme": "vaTa",
+      "gloss": "banyan / north",
+      "confidence": "medium"
+     },
+     "120": {
+      "phoneme": "muruku",
+      "gloss": "Murukan",
+      "confidence": "medium"
+     },
+     "130": {
+      "phoneme": "aru-",
+      "gloss": "Pleiades",
+      "confidence": "high"
+     },
+     "131": {
+      "phoneme": "eZu-",
+      "gloss": "Ursa Major",
+      "confidence": "low"
+     },
+     "140": {
+      "phoneme": "?",
+      "gloss": "unknown",
+      "confidence": "none"
+     }
+    },
+    "tablets": [
+     {
+      "p_number": "P001",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "matched_keywords": [
+       "me-luh-ha",
+       "meluhha"
+      ],
+      "atf_lines_with_match": [
+       "1. mi-in me-en sza-at",
+       "2. mi-na ugu de2-a"
+      ],
+      "atf_excerpt_lines": [
+       "3. mul kakkab mi-in",
+       "4. xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx mi-in me-en"
+      ]
+     },
+     {
+      "p_number": "P002",
+      "period": "Old Babylonian",
+      "provenience": "Ur",
+      "matched_keywords": [
+       "meluhha-trade"
+      ],
+      "atf_lines_with_match": [
+       "1. mi-in me-en mi-na"
+      ],
+      "atf_excerpt_lines": []
+     },
+     {
+      "p_number": "P003",
+      "period": "Ur III",
+      "provenience": "Umma",
+      "matched_keywords": [
+       "me-luh-ha-ki"
+      ],
+      "atf_lines_with_match": [
+       "1. szu kur-ra",
+       "2. mi-il-am3"
+      ],
+      "atf_excerpt_lines": []
+     },
+     {
+      "p_number": "P004",
+      "period": "Ebla",
+      "provenience": "Ebla"
+     }
+    ]
+   },
+   "expected": {
+    "error": "Phoneme map or Janabiyah reading not available."
+   }
+  },
+  {
+   "id": "readout_v1_insufficient_map",
+   "node": "JanabiyahPhoneticReadout",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "janabiyah_reading": {
+     "sign_sequence": [
+      "147",
+      "99",
+      "145",
+      "999",
+      "120",
+      "131",
+      "147"
+     ]
+    },
+    "phoneme_map": {},
+    "tablets": [
+     {
+      "p_number": "P001",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "matched_keywords": [
+       "me-luh-ha",
+       "meluhha"
+      ],
+      "atf_lines_with_match": [
+       "1. mi-in me-en sza-at",
+       "2. mi-na ugu de2-a"
+      ],
+      "atf_excerpt_lines": [
+       "3. mul kakkab mi-in",
+       "4. xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx mi-in me-en"
+      ]
+     },
+     {
+      "p_number": "P002",
+      "period": "Old Babylonian",
+      "provenience": "Ur",
+      "matched_keywords": [
+       "meluhha-trade"
+      ],
+      "atf_lines_with_match": [
+       "1. mi-in me-en mi-na"
+      ],
+      "atf_excerpt_lines": []
+     },
+     {
+      "p_number": "P003",
+      "period": "Ur III",
+      "provenience": "Umma",
+      "matched_keywords": [
+       "me-luh-ha-ki"
+      ],
+      "atf_lines_with_match": [
+       "1. szu kur-ra",
+       "2. mi-il-am3"
+      ],
+      "atf_excerpt_lines": []
+     },
+     {
+      "p_number": "P004",
+      "period": "Ebla",
+      "provenience": "Ebla"
+     }
+    ]
+   },
+   "expected": {
+    "error": "Phoneme map or Janabiyah reading not available."
+   }
+  },
+  {
+   "id": "readout_v2_default",
+   "node": "JanabiyahPhoneticReadoutV2",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "janabiyah_reading": {
+     "sign_sequence": [
+      "147",
+      "99",
+      "145",
+      "999",
+      "120",
+      "131",
+      "147"
+     ]
+    },
+    "phoneme_map": {
+     "147": {
+      "phoneme": "miin",
+      "gloss": "fish/star",
+      "confidence": "high"
+     },
+     "145": {
+      "phoneme": "miin",
+      "gloss": "fish/star",
+      "confidence": "high"
+     },
+     "99": {
+      "phoneme": "vaTa",
+      "gloss": "banyan / north",
+      "confidence": "medium"
+     },
+     "120": {
+      "phoneme": "muruku",
+      "gloss": "Murukan",
+      "confidence": "medium"
+     },
+     "130": {
+      "phoneme": "aru-",
+      "gloss": "Pleiades",
+      "confidence": "high"
+     },
+     "131": {
+      "phoneme": "eZu-",
+      "gloss": "Ursa Major",
+      "confidence": "low"
+     },
+     "140": {
+      "phoneme": "?",
+      "gloss": "unknown",
+      "confidence": "none"
+     }
+    },
+    "tablets": [
+     {
+      "p_number": "P001",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "matched_keywords": [
+       "me-luh-ha",
+       "meluhha"
+      ],
+      "atf_lines_with_match": [
+       "1. mi-in me-en sza-at",
+       "2. mi-na ugu de2-a"
+      ],
+      "atf_excerpt_lines": [
+       "3. mul kakkab mi-in",
+       "4. xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx mi-in me-en"
+      ]
+     },
+     {
+      "p_number": "P002",
+      "period": "Old Babylonian",
+      "provenience": "Ur",
+      "matched_keywords": [
+       "meluhha-trade"
+      ],
+      "atf_lines_with_match": [
+       "1. mi-in me-en mi-na"
+      ],
+      "atf_excerpt_lines": []
+     },
+     {
+      "p_number": "P003",
+      "period": "Ur III",
+      "provenience": "Umma",
+      "matched_keywords": [
+       "me-luh-ha-ki"
+      ],
+      "atf_lines_with_match": [
+       "1. szu kur-ra",
+       "2. mi-il-am3"
+      ],
+      "atf_excerpt_lines": []
+     },
+     {
+      "p_number": "P004",
+      "period": "Ebla",
+      "provenience": "Ebla"
+     }
+    ],
+    "miin_renderings": [
+     "mi-in",
+     "me-en",
+     "mi-na",
+     "me-na",
+     "mi-il",
+     "me-il",
+     "mi-en",
+     "me-in",
+     "mu-li",
+     "min-",
+     "men-",
+     "mul",
+     "kakkab",
+     "imin"
+    ],
+    "miin_renderings_direct_only": [
+     "mi-in",
+     "me-en",
+     "mi-na",
+     "me-na",
+     "mi-il",
+     "me-il",
+     "mi-en",
+     "me-in",
+     "mu-li",
+     "min-",
+     "men-"
+    ]
+   },
+   "expected": {
+    "skeleton": "miin-vaTa-miin-?-muruku-eZu--miin",
+    "n_miin": 3,
+    "predictions": [
+     {
+      "sign_id": "147",
+      "phoneme": "miin",
+      "gloss": "fish/star",
+      "confidence": "high"
+     },
+     {
+      "sign_id": "99",
+      "phoneme": "vaTa",
+      "gloss": "banyan / north",
+      "confidence": "medium"
+     },
+     {
+      "sign_id": "145",
+      "phoneme": "miin",
+      "gloss": "fish/star",
+      "confidence": "high"
+     },
+     {
+      "sign_id": "999",
+      "phoneme": "?",
+      "gloss": "(unmapped)",
+      "confidence": "none"
+     },
+     {
+      "sign_id": "120",
+      "phoneme": "muruku",
+      "gloss": "Murukan",
+      "confidence": "medium"
+     },
+     {
+      "sign_id": "131",
+      "phoneme": "eZu-",
+      "gloss": "Ursa Major",
+      "confidence": "low"
+     },
+     {
+      "sign_id": "147",
+      "phoneme": "miin",
+      "gloss": "fish/star",
+      "confidence": "high"
+     }
+    ],
+    "n_signs": 7,
+    "matches_direct_top20": [
+     {
+      "p_number": "P001",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "n_hits": 2,
+      "line": "1. mi-in me-en sza-at"
+     },
+     {
+      "p_number": "P001",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "n_hits": 2,
+      "line": "4. xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+     }
+    ],
+    "n_matches_direct": 2,
+    "matches_expanded_top20": [
+     {
+      "p_number": "P001",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "n_hits": 3,
+      "line": "3. mul kakkab mi-in"
+     },
+     {
+      "p_number": "P001",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "n_hits": 2,
+      "line": "1. mi-in me-en sza-at"
+     },
+     {
+      "p_number": "P001",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "n_hits": 2,
+      "line": "4. xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+     }
+    ],
+    "n_matches_expanded": 3,
+    "n_new_matches_from_translation": 1,
+    "miin_renderings_searched": [
+     "mi-in",
+     "me-en",
+     "mi-na",
+     "me-na",
+     "mi-il",
+     "me-il",
+     "mi-en",
+     "me-in",
+     "mu-li",
+     "min-",
+     "men-",
+     "mul",
+     "kakkab",
+     "imin"
+    ],
+    "verdict": "Janabiyah phonetic readout v2 (Phase-26): predicted skeleton 'miin-vaTa-miin-?-muruku-eZu--miin' (3/7 confirmed miin). Direct-transliteration search (Phase-25a vocab): 2 matches. Expanded search (direct + mul-/kakkab-/imin- translation candidates): 3 matches. The translation-candidate hypothesis is supported if the expanded search produces new matches that the direct search missed."
+   }
+  },
+  {
+   "id": "readout_v2_insufficient",
+   "node": "JanabiyahPhoneticReadoutV2",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "janabiyah_reading": {},
+    "phoneme_map": {
+     "147": {
+      "phoneme": "miin",
+      "gloss": "fish/star",
+      "confidence": "high"
+     },
+     "145": {
+      "phoneme": "miin",
+      "gloss": "fish/star",
+      "confidence": "high"
+     },
+     "99": {
+      "phoneme": "vaTa",
+      "gloss": "banyan / north",
+      "confidence": "medium"
+     },
+     "120": {
+      "phoneme": "muruku",
+      "gloss": "Murukan",
+      "confidence": "medium"
+     },
+     "130": {
+      "phoneme": "aru-",
+      "gloss": "Pleiades",
+      "confidence": "high"
+     },
+     "131": {
+      "phoneme": "eZu-",
+      "gloss": "Ursa Major",
+      "confidence": "low"
+     },
+     "140": {
+      "phoneme": "?",
+      "gloss": "unknown",
+      "confidence": "none"
+     }
+    },
+    "tablets": [
+     {
+      "p_number": "P001",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "matched_keywords": [
+       "me-luh-ha",
+       "meluhha"
+      ],
+      "atf_lines_with_match": [
+       "1. mi-in me-en sza-at",
+       "2. mi-na ugu de2-a"
+      ],
+      "atf_excerpt_lines": [
+       "3. mul kakkab mi-in",
+       "4. xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx mi-in me-en"
+      ]
+     },
+     {
+      "p_number": "P002",
+      "period": "Old Babylonian",
+      "provenience": "Ur",
+      "matched_keywords": [
+       "meluhha-trade"
+      ],
+      "atf_lines_with_match": [
+       "1. mi-in me-en mi-na"
+      ],
+      "atf_excerpt_lines": []
+     },
+     {
+      "p_number": "P003",
+      "period": "Ur III",
+      "provenience": "Umma",
+      "matched_keywords": [
+       "me-luh-ha-ki"
+      ],
+      "atf_lines_with_match": [
+       "1. szu kur-ra",
+       "2. mi-il-am3"
+      ],
+      "atf_excerpt_lines": []
+     },
+     {
+      "p_number": "P004",
+      "period": "Ebla",
+      "provenience": "Ebla"
+     }
+    ],
+    "miin_renderings": [
+     "mi-in",
+     "me-en",
+     "mi-na",
+     "me-na",
+     "mi-il",
+     "me-il",
+     "mi-en",
+     "me-in",
+     "mu-li",
+     "min-",
+     "men-",
+     "mul",
+     "kakkab",
+     "imin"
+    ],
+    "miin_renderings_direct_only": [
+     "mi-in",
+     "me-en",
+     "mi-na",
+     "me-na",
+     "mi-il",
+     "me-il",
+     "mi-en",
+     "me-in",
+     "mu-li",
+     "min-",
+     "men-"
+    ]
+   },
+   "expected": {
+    "error": "Phoneme map or Janabiyah reading not available."
+   }
+  },
+  {
+   "id": "reverse_v1_default",
+   "node": "ReverseJanabiyahSearch",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "persons_v3": [
+     {
+      "candidate_name": "ur-mi-in-ba-mi-na-lu-x-mi-in",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P100"
+     },
+     {
+      "candidate_name": "ur-mi-in-ba-mi-na-lu-x-mi-in",
+      "period": "Ur III",
+      "provenience": "Lagash",
+      "p_number": "P101"
+     },
+     {
+      "candidate_name": "ur-mi-in-ba-mi-na-lu-x-mi-in",
+      "period": "Old Babylonian",
+      "provenience": "Girsu",
+      "p_number": "P102"
+     },
+     {
+      "candidate_name": "a-mi-in-x-mi-na-y-mi-in",
+      "period": "Ur III",
+      "provenience": "Ur",
+      "p_number": "P103"
+     },
+     {
+      "candidate_name": "szu-mi-in-me-luh-ha",
+      "period": "Ur III",
+      "provenience": "Umma",
+      "p_number": "P104"
+     },
+     {
+      "candidate_name": "a-b-me-luh-ha-ki",
+      "period": "Ebla",
+      "provenience": "Ebla",
+      "p_number": "P105"
+     },
+     {
+      "candidate_name": "x-(mul)-y-z-w-v-t",
+      "period": "Ur III",
+      "provenience": "Nippur",
+      "p_number": "P106"
+     },
+     {
+      "candidate_name": "UR-MI-IN-BA",
+      "period": "Neo-Assyrian",
+      "provenience": "Nineveh",
+      "p_number": "P107"
+     },
+     {
+      "candidate_name": "",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P108"
+     },
+     {
+      "candidate_name": "lu-ti",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P109"
+     },
+     {
+      "candidate_name": "ur-miin-ba-kakkab-lu-x-mul",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P111"
+     },
+     {
+      "candidate_name": "ur-miin-ba-kakkab-lu-x-mul",
+      "period": "Old Babylonian",
+      "provenience": "Ur",
+      "p_number": "P112"
+     },
+     {
+      "candidate_name": "ur-miin-me-luh-ha",
+      "period": "Ur III",
+      "provenience": "Umma",
+      "p_number": "P113"
+     },
+     {
+      "candidate_name": "a-miin-x",
+      "period": "Ebla",
+      "provenience": "Ebla",
+      "p_number": "P114"
+     }
+    ],
+    "janabiyah_reading": {
+     "sign_sequence": [
+      "147",
+      "99",
+      "145",
+      "999",
+      "120",
+      "131",
+      "147"
+     ]
+    }
+   },
+   "expected": {
+    "n_candidates": 10,
+    "n_with_position_match": 4,
+    "n_with_free_miin": 4,
+    "top_matches": [
+     {
+      "candidate_name": "ur-miin-ba-kakkab-lu-x-mul",
+      "n_segments": 7,
+      "length_score": 3.0,
+      "position_match": 3,
+      "positions_matched": [
+       1,
+       3,
+       6
+      ],
+      "free_miin": 3,
+      "penalty": 0.0,
+      "total_score": 9.0,
+      "occurrences": 2,
+      "first_period": "Ur III",
+      "first_provenience": "Girsu"
+     },
+     {
+      "candidate_name": "x-(mul)-y-z-w-v-t",
+      "n_segments": 7,
+      "length_score": 3.0,
+      "position_match": 1,
+      "positions_matched": [
+       1
+      ],
+      "free_miin": 1,
+      "penalty": 0.0,
+      "total_score": 5.0,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Nippur"
+     },
+     {
+      "candidate_name": "a-miin-x",
+      "n_segments": 3,
+      "length_score": 1.0,
+      "position_match": 1,
+      "positions_matched": [
+       1
+      ],
+      "free_miin": 1,
+      "penalty": 0.0,
+      "total_score": 3.0,
+      "occurrences": 1,
+      "first_period": "Ebla",
+      "first_provenience": "Ebla"
+     },
+     {
+      "candidate_name": "ur-miin-me-luh-ha",
+      "n_segments": 5,
+      "length_score": 2.0,
+      "position_match": 1,
+      "positions_matched": [
+       1
+      ],
+      "free_miin": 1,
+      "penalty": -1.5,
+      "total_score": 2.5,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Umma"
+     },
+     {
+      "candidate_name": "a-mi-in-x-mi-na-y-mi-in",
+      "n_segments": 9,
+      "length_score": 2.0,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "penalty": 0.0,
+      "total_score": 2.0,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Ur"
+     },
+     {
+      "candidate_name": "ur-mi-in-ba-mi-na-lu-x-mi-in",
+      "n_segments": 10,
+      "length_score": 1.5,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "penalty": 0.0,
+      "total_score": 1.5,
+      "occurrences": 3,
+      "first_period": "Ur III",
+      "first_provenience": "Girsu"
+     },
+     {
+      "candidate_name": "UR-MI-IN-BA",
+      "n_segments": 4,
+      "length_score": 1.5,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "penalty": 0.0,
+      "total_score": 1.5,
+      "occurrences": 1,
+      "first_period": "Neo-Assyrian",
+      "first_provenience": "Nineveh"
+     },
+     {
+      "candidate_name": "szu-mi-in-me-luh-ha",
+      "n_segments": 6,
+      "length_score": 2.5,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "penalty": -1.5,
+      "total_score": 1.0,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Umma"
+     },
+     {
+      "candidate_name": "a-b-me-luh-ha-ki",
+      "n_segments": 6,
+      "length_score": 2.5,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "penalty": -1.5,
+      "total_score": 1.0,
+      "occurrences": 1,
+      "first_period": "Ebla",
+      "first_provenience": "Ebla"
+     },
+     {
+      "candidate_name": "lu-ti",
+      "n_segments": 2,
+      "length_score": 0.5,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "penalty": 0.0,
+      "total_score": 0.5,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Girsu"
+     }
+    ],
+    "verdict": "Reverse Janabiyah search: 10 unique persons-v3 candidates scored. 4 have at least one position-match (segment with miin-rendering at Janabiyah position 1/3/6). 4 have at least one miin-rendering anywhere in the name. Top candidate: 'ur-miin-ba-kakkab-lu-x-mul' (score 9.0, occurrences 2)."
+   }
+  },
+  {
+   "id": "reverse_v1_topk",
+   "node": "ReverseJanabiyahSearch",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "top_k": 10
+   },
+   "inputs": {
+    "persons_v3": [
+     {
+      "candidate_name": "ur-mi-in-ba-mi-na-lu-x-mi-in",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P100"
+     },
+     {
+      "candidate_name": "ur-mi-in-ba-mi-na-lu-x-mi-in",
+      "period": "Ur III",
+      "provenience": "Lagash",
+      "p_number": "P101"
+     },
+     {
+      "candidate_name": "ur-mi-in-ba-mi-na-lu-x-mi-in",
+      "period": "Old Babylonian",
+      "provenience": "Girsu",
+      "p_number": "P102"
+     },
+     {
+      "candidate_name": "a-mi-in-x-mi-na-y-mi-in",
+      "period": "Ur III",
+      "provenience": "Ur",
+      "p_number": "P103"
+     },
+     {
+      "candidate_name": "szu-mi-in-me-luh-ha",
+      "period": "Ur III",
+      "provenience": "Umma",
+      "p_number": "P104"
+     },
+     {
+      "candidate_name": "a-b-me-luh-ha-ki",
+      "period": "Ebla",
+      "provenience": "Ebla",
+      "p_number": "P105"
+     },
+     {
+      "candidate_name": "x-(mul)-y-z-w-v-t",
+      "period": "Ur III",
+      "provenience": "Nippur",
+      "p_number": "P106"
+     },
+     {
+      "candidate_name": "UR-MI-IN-BA",
+      "period": "Neo-Assyrian",
+      "provenience": "Nineveh",
+      "p_number": "P107"
+     },
+     {
+      "candidate_name": "",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P108"
+     },
+     {
+      "candidate_name": "lu-ti",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P109"
+     },
+     {
+      "candidate_name": "ur-miin-ba-kakkab-lu-x-mul",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P111"
+     },
+     {
+      "candidate_name": "ur-miin-ba-kakkab-lu-x-mul",
+      "period": "Old Babylonian",
+      "provenience": "Ur",
+      "p_number": "P112"
+     },
+     {
+      "candidate_name": "ur-miin-me-luh-ha",
+      "period": "Ur III",
+      "provenience": "Umma",
+      "p_number": "P113"
+     },
+     {
+      "candidate_name": "a-miin-x",
+      "period": "Ebla",
+      "provenience": "Ebla",
+      "p_number": "P114"
+     },
+     {
+      "candidate_name": "filler-0-a-b-c",
+      "period": "Ur III",
+      "provenience": "Ur",
+      "p_number": "P200"
+     },
+     {
+      "candidate_name": "filler-1-a-b-c",
+      "period": "Ur III",
+      "provenience": "Ur",
+      "p_number": "P201"
+     },
+     {
+      "candidate_name": "filler-2-a-b-c",
+      "period": "Ur III",
+      "provenience": "Ur",
+      "p_number": "P202"
+     },
+     {
+      "candidate_name": "filler-3-a-b-c",
+      "period": "Ur III",
+      "provenience": "Ur",
+      "p_number": "P203"
+     },
+     {
+      "candidate_name": "filler-4-a-b-c",
+      "period": "Ur III",
+      "provenience": "Ur",
+      "p_number": "P204"
+     },
+     {
+      "candidate_name": "filler-5-a-b-c",
+      "period": "Ur III",
+      "provenience": "Ur",
+      "p_number": "P205"
+     }
+    ],
+    "janabiyah_reading": {
+     "sign_sequence": [
+      "147",
+      "99",
+      "145",
+      "999",
+      "120",
+      "131",
+      "147"
+     ]
+    }
+   },
+   "expected": {
+    "n_candidates": 16,
+    "n_with_position_match": 4,
+    "n_with_free_miin": 4,
+    "top_matches": [
+     {
+      "candidate_name": "ur-miin-ba-kakkab-lu-x-mul",
+      "n_segments": 7,
+      "length_score": 3.0,
+      "position_match": 3,
+      "positions_matched": [
+       1,
+       3,
+       6
+      ],
+      "free_miin": 3,
+      "penalty": 0.0,
+      "total_score": 9.0,
+      "occurrences": 2,
+      "first_period": "Ur III",
+      "first_provenience": "Girsu"
+     },
+     {
+      "candidate_name": "x-(mul)-y-z-w-v-t",
+      "n_segments": 7,
+      "length_score": 3.0,
+      "position_match": 1,
+      "positions_matched": [
+       1
+      ],
+      "free_miin": 1,
+      "penalty": 0.0,
+      "total_score": 5.0,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Nippur"
+     },
+     {
+      "candidate_name": "a-miin-x",
+      "n_segments": 3,
+      "length_score": 1.0,
+      "position_match": 1,
+      "positions_matched": [
+       1
+      ],
+      "free_miin": 1,
+      "penalty": 0.0,
+      "total_score": 3.0,
+      "occurrences": 1,
+      "first_period": "Ebla",
+      "first_provenience": "Ebla"
+     },
+     {
+      "candidate_name": "ur-miin-me-luh-ha",
+      "n_segments": 5,
+      "length_score": 2.0,
+      "position_match": 1,
+      "positions_matched": [
+       1
+      ],
+      "free_miin": 1,
+      "penalty": -1.5,
+      "total_score": 2.5,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Umma"
+     },
+     {
+      "candidate_name": "a-mi-in-x-mi-na-y-mi-in",
+      "n_segments": 9,
+      "length_score": 2.0,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "penalty": 0.0,
+      "total_score": 2.0,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Ur"
+     },
+     {
+      "candidate_name": "filler-0-a-b-c",
+      "n_segments": 5,
+      "length_score": 2.0,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "penalty": 0.0,
+      "total_score": 2.0,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Ur"
+     },
+     {
+      "candidate_name": "filler-1-a-b-c",
+      "n_segments": 5,
+      "length_score": 2.0,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "penalty": 0.0,
+      "total_score": 2.0,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Ur"
+     },
+     {
+      "candidate_name": "filler-2-a-b-c",
+      "n_segments": 5,
+      "length_score": 2.0,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "penalty": 0.0,
+      "total_score": 2.0,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Ur"
+     },
+     {
+      "candidate_name": "filler-3-a-b-c",
+      "n_segments": 5,
+      "length_score": 2.0,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "penalty": 0.0,
+      "total_score": 2.0,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Ur"
+     },
+     {
+      "candidate_name": "filler-4-a-b-c",
+      "n_segments": 5,
+      "length_score": 2.0,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "penalty": 0.0,
+      "total_score": 2.0,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Ur"
+     }
+    ],
+    "verdict": "Reverse Janabiyah search: 16 unique persons-v3 candidates scored. 4 have at least one position-match (segment with miin-rendering at Janabiyah position 1/3/6). 4 have at least one miin-rendering anywhere in the name. Top candidate: 'ur-miin-ba-kakkab-lu-x-mul' (score 9.0, occurrences 2)."
+   }
+  },
+  {
+   "id": "reverse_v1_insufficient",
+   "node": "ReverseJanabiyahSearch",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "persons_v3": [],
+    "janabiyah_reading": {
+     "sign_sequence": [
+      "147",
+      "99",
+      "145",
+      "999",
+      "120",
+      "131",
+      "147"
+     ]
+    }
+   },
+   "expected": {
+    "verdict": "INSUFFICIENT_DATA",
+    "n_candidates": 0,
+    "top_matches": []
+   }
+  },
+  {
+   "id": "reverse_v1_insufficient_reading",
+   "node": "ReverseJanabiyahSearch",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "persons_v3": [
+     {
+      "candidate_name": "ur-mi-in-ba-mi-na-lu-x-mi-in",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P100"
+     },
+     {
+      "candidate_name": "ur-mi-in-ba-mi-na-lu-x-mi-in",
+      "period": "Ur III",
+      "provenience": "Lagash",
+      "p_number": "P101"
+     },
+     {
+      "candidate_name": "ur-mi-in-ba-mi-na-lu-x-mi-in",
+      "period": "Old Babylonian",
+      "provenience": "Girsu",
+      "p_number": "P102"
+     },
+     {
+      "candidate_name": "a-mi-in-x-mi-na-y-mi-in",
+      "period": "Ur III",
+      "provenience": "Ur",
+      "p_number": "P103"
+     },
+     {
+      "candidate_name": "szu-mi-in-me-luh-ha",
+      "period": "Ur III",
+      "provenience": "Umma",
+      "p_number": "P104"
+     },
+     {
+      "candidate_name": "a-b-me-luh-ha-ki",
+      "period": "Ebla",
+      "provenience": "Ebla",
+      "p_number": "P105"
+     },
+     {
+      "candidate_name": "x-(mul)-y-z-w-v-t",
+      "period": "Ur III",
+      "provenience": "Nippur",
+      "p_number": "P106"
+     },
+     {
+      "candidate_name": "UR-MI-IN-BA",
+      "period": "Neo-Assyrian",
+      "provenience": "Nineveh",
+      "p_number": "P107"
+     },
+     {
+      "candidate_name": "",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P108"
+     },
+     {
+      "candidate_name": "lu-ti",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P109"
+     },
+     {
+      "candidate_name": "ur-miin-ba-kakkab-lu-x-mul",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P111"
+     },
+     {
+      "candidate_name": "ur-miin-ba-kakkab-lu-x-mul",
+      "period": "Old Babylonian",
+      "provenience": "Ur",
+      "p_number": "P112"
+     },
+     {
+      "candidate_name": "ur-miin-me-luh-ha",
+      "period": "Ur III",
+      "provenience": "Umma",
+      "p_number": "P113"
+     },
+     {
+      "candidate_name": "a-miin-x",
+      "period": "Ebla",
+      "provenience": "Ebla",
+      "p_number": "P114"
+     }
+    ],
+    "janabiyah_reading": {}
+   },
+   "expected": {
+    "verdict": "INSUFFICIENT_DATA",
+    "n_candidates": 0,
+    "top_matches": []
+   }
+  },
+  {
+   "id": "reverse_v2_expanded",
+   "node": "ReverseJanabiyahSearchV2",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "persons_v3": [
+     {
+      "candidate_name": "ur-mi-in-ba-mi-na-lu-x-mi-in",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P100"
+     },
+     {
+      "candidate_name": "ur-mi-in-ba-mi-na-lu-x-mi-in",
+      "period": "Ur III",
+      "provenience": "Lagash",
+      "p_number": "P101"
+     },
+     {
+      "candidate_name": "ur-mi-in-ba-mi-na-lu-x-mi-in",
+      "period": "Old Babylonian",
+      "provenience": "Girsu",
+      "p_number": "P102"
+     },
+     {
+      "candidate_name": "a-mi-in-x-mi-na-y-mi-in",
+      "period": "Ur III",
+      "provenience": "Ur",
+      "p_number": "P103"
+     },
+     {
+      "candidate_name": "szu-mi-in-me-luh-ha",
+      "period": "Ur III",
+      "provenience": "Umma",
+      "p_number": "P104"
+     },
+     {
+      "candidate_name": "a-b-me-luh-ha-ki",
+      "period": "Ebla",
+      "provenience": "Ebla",
+      "p_number": "P105"
+     },
+     {
+      "candidate_name": "x-(mul)-y-z-w-v-t",
+      "period": "Ur III",
+      "provenience": "Nippur",
+      "p_number": "P106"
+     },
+     {
+      "candidate_name": "UR-MI-IN-BA",
+      "period": "Neo-Assyrian",
+      "provenience": "Nineveh",
+      "p_number": "P107"
+     },
+     {
+      "candidate_name": "",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P108"
+     },
+     {
+      "candidate_name": "lu-ti",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P109"
+     },
+     {
+      "candidate_name": "ur-miin-ba-kakkab-lu-x-mul",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P111"
+     },
+     {
+      "candidate_name": "ur-miin-ba-kakkab-lu-x-mul",
+      "period": "Old Babylonian",
+      "provenience": "Ur",
+      "p_number": "P112"
+     },
+     {
+      "candidate_name": "ur-miin-me-luh-ha",
+      "period": "Ur III",
+      "provenience": "Umma",
+      "p_number": "P113"
+     },
+     {
+      "candidate_name": "a-miin-x",
+      "period": "Ebla",
+      "provenience": "Ebla",
+      "p_number": "P114"
+     },
+     {
+      "candidate_name": "q-szu-r-t-u-v-w",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P110"
+     }
+    ],
+    "janabiyah_reading": {
+     "sign_sequence": [
+      "147",
+      "99",
+      "145",
+      "999",
+      "120",
+      "131",
+      "147"
+     ]
+    },
+    "phoneme_map": {
+     "147": {
+      "phoneme": "miin",
+      "gloss": "fish/star",
+      "confidence": "high"
+     },
+     "145": {
+      "phoneme": "mi-in / szu",
+      "gloss": "fish variant",
+      "confidence": "medium"
+     },
+     "150": {
+      "phoneme": "a miin",
+      "gloss": "fish variant",
+      "confidence": "low"
+     }
+    },
+    "allograph_families": {
+     "fish": {
+      "members": [
+       147,
+       "145",
+       150
+      ],
+      "phoneme": "miin"
+     }
+    }
+   },
+   "expected": {
+    "n_candidates": 11,
+    "n_renderings": 17,
+    "n_with_position_match": 5,
+    "n_with_free_miin": 6,
+    "top_matches": [
+     {
+      "candidate_name": "ur-miin-ba-kakkab-lu-x-mul",
+      "n_segments": 7,
+      "length_score": 3.0,
+      "position_match": 3,
+      "positions_matched": [
+       1,
+       3,
+       6
+      ],
+      "free_miin": 3,
+      "penalty": 0.0,
+      "total_score": 9.0,
+      "occurrences": 2,
+      "first_period": "Ur III",
+      "first_provenience": "Girsu"
+     },
+     {
+      "candidate_name": "x-(mul)-y-z-w-v-t",
+      "n_segments": 7,
+      "length_score": 3.0,
+      "position_match": 1,
+      "positions_matched": [
+       1
+      ],
+      "free_miin": 1,
+      "penalty": 0.0,
+      "total_score": 5.0,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Nippur"
+     },
+     {
+      "candidate_name": "q-szu-r-t-u-v-w",
+      "n_segments": 7,
+      "length_score": 3.0,
+      "position_match": 1,
+      "positions_matched": [
+       1
+      ],
+      "free_miin": 1,
+      "penalty": 0.0,
+      "total_score": 5.0,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Girsu"
+     },
+     {
+      "candidate_name": "a-miin-x",
+      "n_segments": 3,
+      "length_score": 1.0,
+      "position_match": 1,
+      "positions_matched": [
+       1
+      ],
+      "free_miin": 1,
+      "penalty": 0.0,
+      "total_score": 3.0,
+      "occurrences": 1,
+      "first_period": "Ebla",
+      "first_provenience": "Ebla"
+     },
+     {
+      "candidate_name": "ur-miin-me-luh-ha",
+      "n_segments": 5,
+      "length_score": 2.0,
+      "position_match": 1,
+      "positions_matched": [
+       1
+      ],
+      "free_miin": 1,
+      "penalty": -1.5,
+      "total_score": 2.5,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Umma"
+     },
+     {
+      "candidate_name": "a-mi-in-x-mi-na-y-mi-in",
+      "n_segments": 9,
+      "length_score": 2.0,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "penalty": 0.0,
+      "total_score": 2.0,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Ur"
+     },
+     {
+      "candidate_name": "ur-mi-in-ba-mi-na-lu-x-mi-in",
+      "n_segments": 10,
+      "length_score": 1.5,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "penalty": 0.0,
+      "total_score": 1.5,
+      "occurrences": 3,
+      "first_period": "Ur III",
+      "first_provenience": "Girsu"
+     },
+     {
+      "candidate_name": "szu-mi-in-me-luh-ha",
+      "n_segments": 6,
+      "length_score": 2.5,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 1,
+      "penalty": -1.5,
+      "total_score": 1.5,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Umma"
+     },
+     {
+      "candidate_name": "UR-MI-IN-BA",
+      "n_segments": 4,
+      "length_score": 1.5,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "penalty": 0.0,
+      "total_score": 1.5,
+      "occurrences": 1,
+      "first_period": "Neo-Assyrian",
+      "first_provenience": "Nineveh"
+     },
+     {
+      "candidate_name": "a-b-me-luh-ha-ki",
+      "n_segments": 6,
+      "length_score": 2.5,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "penalty": -1.5,
+      "total_score": 1.0,
+      "occurrences": 1,
+      "first_period": "Ebla",
+      "first_provenience": "Ebla"
+     },
+     {
+      "candidate_name": "lu-ti",
+      "n_segments": 2,
+      "length_score": 0.5,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "penalty": 0.0,
+      "total_score": 0.5,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Girsu"
+     }
+    ],
+    "verdict": "Reverse Janabiyah search v2 (Phase-28, expanded map + allograph-aware): 11 unique persons-v3 candidates scored against 17 miin-renderings (vs Phase-27a's static 15). 5 have at least one position-match; 6 have at least one miin-rendering anywhere. Top candidate: 'ur-miin-ba-kakkab-lu-x-mul' (score 9.0, occurrences 2)."
+   }
+  },
+  {
+   "id": "reverse_v2_no_expansion",
+   "node": "ReverseJanabiyahSearchV2",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "persons_v3": [
+     {
+      "candidate_name": "ur-mi-in-ba-mi-na-lu-x-mi-in",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P100"
+     },
+     {
+      "candidate_name": "ur-mi-in-ba-mi-na-lu-x-mi-in",
+      "period": "Ur III",
+      "provenience": "Lagash",
+      "p_number": "P101"
+     },
+     {
+      "candidate_name": "ur-mi-in-ba-mi-na-lu-x-mi-in",
+      "period": "Old Babylonian",
+      "provenience": "Girsu",
+      "p_number": "P102"
+     },
+     {
+      "candidate_name": "a-mi-in-x-mi-na-y-mi-in",
+      "period": "Ur III",
+      "provenience": "Ur",
+      "p_number": "P103"
+     },
+     {
+      "candidate_name": "szu-mi-in-me-luh-ha",
+      "period": "Ur III",
+      "provenience": "Umma",
+      "p_number": "P104"
+     },
+     {
+      "candidate_name": "a-b-me-luh-ha-ki",
+      "period": "Ebla",
+      "provenience": "Ebla",
+      "p_number": "P105"
+     },
+     {
+      "candidate_name": "x-(mul)-y-z-w-v-t",
+      "period": "Ur III",
+      "provenience": "Nippur",
+      "p_number": "P106"
+     },
+     {
+      "candidate_name": "UR-MI-IN-BA",
+      "period": "Neo-Assyrian",
+      "provenience": "Nineveh",
+      "p_number": "P107"
+     },
+     {
+      "candidate_name": "",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P108"
+     },
+     {
+      "candidate_name": "lu-ti",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P109"
+     },
+     {
+      "candidate_name": "ur-miin-ba-kakkab-lu-x-mul",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P111"
+     },
+     {
+      "candidate_name": "ur-miin-ba-kakkab-lu-x-mul",
+      "period": "Old Babylonian",
+      "provenience": "Ur",
+      "p_number": "P112"
+     },
+     {
+      "candidate_name": "ur-miin-me-luh-ha",
+      "period": "Ur III",
+      "provenience": "Umma",
+      "p_number": "P113"
+     },
+     {
+      "candidate_name": "a-miin-x",
+      "period": "Ebla",
+      "provenience": "Ebla",
+      "p_number": "P114"
+     },
+     {
+      "candidate_name": "q-szu-r-t-u-v-w",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P110"
+     }
+    ],
+    "janabiyah_reading": {
+     "sign_sequence": [
+      "147",
+      "99",
+      "145",
+      "999",
+      "120",
+      "131",
+      "147"
+     ]
+    },
+    "phoneme_map": {},
+    "allograph_families": {}
+   },
+   "expected": {
+    "n_candidates": 11,
+    "n_renderings": 16,
+    "n_with_position_match": 4,
+    "n_with_free_miin": 4,
+    "top_matches": [
+     {
+      "candidate_name": "ur-miin-ba-kakkab-lu-x-mul",
+      "n_segments": 7,
+      "length_score": 3.0,
+      "position_match": 3,
+      "positions_matched": [
+       1,
+       3,
+       6
+      ],
+      "free_miin": 3,
+      "penalty": 0.0,
+      "total_score": 9.0,
+      "occurrences": 2,
+      "first_period": "Ur III",
+      "first_provenience": "Girsu"
+     },
+     {
+      "candidate_name": "x-(mul)-y-z-w-v-t",
+      "n_segments": 7,
+      "length_score": 3.0,
+      "position_match": 1,
+      "positions_matched": [
+       1
+      ],
+      "free_miin": 1,
+      "penalty": 0.0,
+      "total_score": 5.0,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Nippur"
+     },
+     {
+      "candidate_name": "a-miin-x",
+      "n_segments": 3,
+      "length_score": 1.0,
+      "position_match": 1,
+      "positions_matched": [
+       1
+      ],
+      "free_miin": 1,
+      "penalty": 0.0,
+      "total_score": 3.0,
+      "occurrences": 1,
+      "first_period": "Ebla",
+      "first_provenience": "Ebla"
+     },
+     {
+      "candidate_name": "q-szu-r-t-u-v-w",
+      "n_segments": 7,
+      "length_score": 3.0,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "penalty": 0.0,
+      "total_score": 3.0,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Girsu"
+     },
+     {
+      "candidate_name": "ur-miin-me-luh-ha",
+      "n_segments": 5,
+      "length_score": 2.0,
+      "position_match": 1,
+      "positions_matched": [
+       1
+      ],
+      "free_miin": 1,
+      "penalty": -1.5,
+      "total_score": 2.5,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Umma"
+     },
+     {
+      "candidate_name": "a-mi-in-x-mi-na-y-mi-in",
+      "n_segments": 9,
+      "length_score": 2.0,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "penalty": 0.0,
+      "total_score": 2.0,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Ur"
+     },
+     {
+      "candidate_name": "ur-mi-in-ba-mi-na-lu-x-mi-in",
+      "n_segments": 10,
+      "length_score": 1.5,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "penalty": 0.0,
+      "total_score": 1.5,
+      "occurrences": 3,
+      "first_period": "Ur III",
+      "first_provenience": "Girsu"
+     },
+     {
+      "candidate_name": "UR-MI-IN-BA",
+      "n_segments": 4,
+      "length_score": 1.5,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "penalty": 0.0,
+      "total_score": 1.5,
+      "occurrences": 1,
+      "first_period": "Neo-Assyrian",
+      "first_provenience": "Nineveh"
+     },
+     {
+      "candidate_name": "szu-mi-in-me-luh-ha",
+      "n_segments": 6,
+      "length_score": 2.5,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "penalty": -1.5,
+      "total_score": 1.0,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Umma"
+     },
+     {
+      "candidate_name": "a-b-me-luh-ha-ki",
+      "n_segments": 6,
+      "length_score": 2.5,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "penalty": -1.5,
+      "total_score": 1.0,
+      "occurrences": 1,
+      "first_period": "Ebla",
+      "first_provenience": "Ebla"
+     },
+     {
+      "candidate_name": "lu-ti",
+      "n_segments": 2,
+      "length_score": 0.5,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "penalty": 0.0,
+      "total_score": 0.5,
+      "occurrences": 1,
+      "first_period": "Ur III",
+      "first_provenience": "Girsu"
+     }
+    ],
+    "verdict": "Reverse Janabiyah search v2 (Phase-28, expanded map + allograph-aware): 11 unique persons-v3 candidates scored against 16 miin-renderings (vs Phase-27a's static 15). 4 have at least one position-match; 4 have at least one miin-rendering anywhere. Top candidate: 'ur-miin-ba-kakkab-lu-x-mul' (score 9.0, occurrences 2)."
+   }
+  },
+  {
+   "id": "reverse_v2_insufficient",
+   "node": "ReverseJanabiyahSearchV2",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "persons_v3": [
+     {
+      "candidate_name": "ur-mi-in-ba-mi-na-lu-x-mi-in",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P100"
+     },
+     {
+      "candidate_name": "ur-mi-in-ba-mi-na-lu-x-mi-in",
+      "period": "Ur III",
+      "provenience": "Lagash",
+      "p_number": "P101"
+     },
+     {
+      "candidate_name": "ur-mi-in-ba-mi-na-lu-x-mi-in",
+      "period": "Old Babylonian",
+      "provenience": "Girsu",
+      "p_number": "P102"
+     },
+     {
+      "candidate_name": "a-mi-in-x-mi-na-y-mi-in",
+      "period": "Ur III",
+      "provenience": "Ur",
+      "p_number": "P103"
+     },
+     {
+      "candidate_name": "szu-mi-in-me-luh-ha",
+      "period": "Ur III",
+      "provenience": "Umma",
+      "p_number": "P104"
+     },
+     {
+      "candidate_name": "a-b-me-luh-ha-ki",
+      "period": "Ebla",
+      "provenience": "Ebla",
+      "p_number": "P105"
+     },
+     {
+      "candidate_name": "x-(mul)-y-z-w-v-t",
+      "period": "Ur III",
+      "provenience": "Nippur",
+      "p_number": "P106"
+     },
+     {
+      "candidate_name": "UR-MI-IN-BA",
+      "period": "Neo-Assyrian",
+      "provenience": "Nineveh",
+      "p_number": "P107"
+     },
+     {
+      "candidate_name": "",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P108"
+     },
+     {
+      "candidate_name": "lu-ti",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P109"
+     },
+     {
+      "candidate_name": "ur-miin-ba-kakkab-lu-x-mul",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P111"
+     },
+     {
+      "candidate_name": "ur-miin-ba-kakkab-lu-x-mul",
+      "period": "Old Babylonian",
+      "provenience": "Ur",
+      "p_number": "P112"
+     },
+     {
+      "candidate_name": "ur-miin-me-luh-ha",
+      "period": "Ur III",
+      "provenience": "Umma",
+      "p_number": "P113"
+     },
+     {
+      "candidate_name": "a-miin-x",
+      "period": "Ebla",
+      "provenience": "Ebla",
+      "p_number": "P114"
+     },
+     {
+      "candidate_name": "q-szu-r-t-u-v-w",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P110"
+     }
+    ],
+    "janabiyah_reading": {},
+    "phoneme_map": {
+     "147": {
+      "phoneme": "miin",
+      "gloss": "fish/star",
+      "confidence": "high"
+     },
+     "145": {
+      "phoneme": "mi-in / szu",
+      "gloss": "fish variant",
+      "confidence": "medium"
+     },
+     "150": {
+      "phoneme": "a miin",
+      "gloss": "fish variant",
+      "confidence": "low"
+     }
+    },
+    "allograph_families": {
+     "fish": {
+      "members": [
+       147,
+       "145",
+       150
+      ],
+      "phoneme": "miin"
+     }
+    }
+   },
+   "expected": {
+    "verdict": "INSUFFICIENT_DATA",
+    "n_candidates": 0,
+    "top_matches": []
+   }
+  },
+  {
+   "id": "reverse_v3_default",
+   "node": "M77ReverseJanabiyahSearchV3",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "epsd2_personal_names": [
+     {
+      "headword": "MiinTest[1]PN",
+      "forms": [
+       "a-mi-x-in-y-z-mi"
+      ],
+      "periods": [
+       "Ur III"
+      ],
+      "icount": 5
+     },
+     {
+      "headword": "DigitName[1]PN",
+      "forms": [
+       "{d}a-bi2-si2-im-ti",
+       "a-bi-si-im-ti-mi"
+      ],
+      "periods": [
+       "Ur III",
+       "Old Babylonian"
+      ],
+      "icount": 3
+     },
+     {
+      "headword": "EmptyForm[1]PN",
+      "forms": [
+       "{d}",
+       ""
+      ],
+      "periods": [],
+      "icount": 2
+     },
+     {
+      "headword": "ZeroCount[1]PN",
+      "forms": [
+       "mi-in-x"
+      ],
+      "periods": [
+       "Ebla"
+      ],
+      "icount": 0
+     },
+     {
+      "headword": "LongName[1]PN",
+      "forms": [
+       "a-b-c-d-e-f-g-h-mi"
+      ],
+      "periods": [
+       "Neo-Assyrian"
+      ],
+      "icount": 1
+     },
+     {
+      "headword": "SzuName[1]PN",
+      "forms": [
+       "a-szu-b-c"
+      ],
+      "periods": [
+       "Ur III"
+      ],
+      "icount": 4
+     }
+    ],
+    "janabiyah_reading": {
+     "sign_sequence": [
+      "147",
+      "99",
+      "145",
+      "999",
+      "120",
+      "131",
+      "147"
+     ]
+    },
+    "phoneme_map": {
+     "147": {
+      "phoneme": "szu",
+      "gloss": "hand",
+      "confidence": "low"
+     }
+    },
+    "allograph_families": {
+     "fish": {
+      "members": [
+       "147"
+      ]
+     }
+    }
+   },
+   "expected": {
+    "n_pns_searched": 4,
+    "n_renderings": 16,
+    "n_with_position_match": 2,
+    "n_with_free_miin": 4,
+    "top_matches": [
+     {
+      "headword": "MiinTest[1]PN",
+      "best_form": "a-mi-x-in-y-z-mi",
+      "n_segments": 7,
+      "position_match": 3,
+      "positions_matched": [
+       1,
+       3,
+       6
+      ],
+      "free_miin": 3,
+      "total_score": 9.0,
+      "icount": 5,
+      "periods": [
+       "Ur III"
+      ],
+      "n_alternate_forms": 1
+     },
+     {
+      "headword": "SzuName[1]PN",
+      "best_form": "a-szu-b-c",
+      "n_segments": 4,
+      "position_match": 1,
+      "positions_matched": [
+       1
+      ],
+      "free_miin": 1,
+      "total_score": 3.5,
+      "icount": 4,
+      "periods": [
+       "Ur III"
+      ],
+      "n_alternate_forms": 1
+     },
+     {
+      "headword": "DigitName[1]PN",
+      "best_form": "a-bi-si-im-ti-mi",
+      "n_segments": 6,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 1,
+      "total_score": 3.0,
+      "icount": 3,
+      "periods": [
+       "Ur III",
+       "Old Babylonian"
+      ],
+      "n_alternate_forms": 2
+     },
+     {
+      "headword": "LongName[1]PN",
+      "best_form": "a-b-c-d-e-f-g-h-mi",
+      "n_segments": 9,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 1,
+      "total_score": 2.5,
+      "icount": 1,
+      "periods": [
+       "Neo-Assyrian"
+      ],
+      "n_alternate_forms": 1
+     }
+    ],
+    "verdict": "Phase-29 reverse Janabiyah search (ePSD2 v3): 4 ePSD2 PNs scored against 16 miin-token-renderings. 2 have at least one position-match (segment with miin-token at Janabiyah positions 1/3/6). 4 have at least one miin-rendering anywhere. Top: 'MiinTest[1]PN' (score 9.0, icount 5, periods ['Ur III']). 28x scale-up vs Phase-28d (1,222 PNs vs 44)."
+   }
+  },
+  {
+   "id": "reverse_v3_min_icount",
+   "node": "M77ReverseJanabiyahSearchV3",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "min_icount": 3
+   },
+   "inputs": {
+    "epsd2_personal_names": [
+     {
+      "headword": "MiinTest[1]PN",
+      "forms": [
+       "a-mi-x-in-y-z-mi"
+      ],
+      "periods": [
+       "Ur III"
+      ],
+      "icount": 5
+     },
+     {
+      "headword": "DigitName[1]PN",
+      "forms": [
+       "{d}a-bi2-si2-im-ti",
+       "a-bi-si-im-ti-mi"
+      ],
+      "periods": [
+       "Ur III",
+       "Old Babylonian"
+      ],
+      "icount": 3
+     },
+     {
+      "headword": "EmptyForm[1]PN",
+      "forms": [
+       "{d}",
+       ""
+      ],
+      "periods": [],
+      "icount": 2
+     },
+     {
+      "headword": "ZeroCount[1]PN",
+      "forms": [
+       "mi-in-x"
+      ],
+      "periods": [
+       "Ebla"
+      ],
+      "icount": 0
+     },
+     {
+      "headword": "LongName[1]PN",
+      "forms": [
+       "a-b-c-d-e-f-g-h-mi"
+      ],
+      "periods": [
+       "Neo-Assyrian"
+      ],
+      "icount": 1
+     },
+     {
+      "headword": "SzuName[1]PN",
+      "forms": [
+       "a-szu-b-c"
+      ],
+      "periods": [
+       "Ur III"
+      ],
+      "icount": 4
+     }
+    ],
+    "janabiyah_reading": {
+     "sign_sequence": [
+      "147",
+      "99",
+      "145",
+      "999",
+      "120",
+      "131",
+      "147"
+     ]
+    },
+    "phoneme_map": {
+     "147": {
+      "phoneme": "szu",
+      "gloss": "hand",
+      "confidence": "low"
+     }
+    },
+    "allograph_families": {
+     "fish": {
+      "members": [
+       "147"
+      ]
+     }
+    }
+   },
+   "expected": {
+    "n_pns_searched": 3,
+    "n_renderings": 16,
+    "n_with_position_match": 2,
+    "n_with_free_miin": 3,
+    "top_matches": [
+     {
+      "headword": "MiinTest[1]PN",
+      "best_form": "a-mi-x-in-y-z-mi",
+      "n_segments": 7,
+      "position_match": 3,
+      "positions_matched": [
+       1,
+       3,
+       6
+      ],
+      "free_miin": 3,
+      "total_score": 9.0,
+      "icount": 5,
+      "periods": [
+       "Ur III"
+      ],
+      "n_alternate_forms": 1
+     },
+     {
+      "headword": "SzuName[1]PN",
+      "best_form": "a-szu-b-c",
+      "n_segments": 4,
+      "position_match": 1,
+      "positions_matched": [
+       1
+      ],
+      "free_miin": 1,
+      "total_score": 3.5,
+      "icount": 4,
+      "periods": [
+       "Ur III"
+      ],
+      "n_alternate_forms": 1
+     },
+     {
+      "headword": "DigitName[1]PN",
+      "best_form": "a-bi-si-im-ti-mi",
+      "n_segments": 6,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 1,
+      "total_score": 3.0,
+      "icount": 3,
+      "periods": [
+       "Ur III",
+       "Old Babylonian"
+      ],
+      "n_alternate_forms": 2
+     }
+    ],
+    "verdict": "Phase-29 reverse Janabiyah search (ePSD2 v3): 3 ePSD2 PNs scored against 16 miin-token-renderings. 2 have at least one position-match (segment with miin-token at Janabiyah positions 1/3/6). 3 have at least one miin-rendering anywhere. Top: 'MiinTest[1]PN' (score 9.0, icount 5, periods ['Ur III']). 28x scale-up vs Phase-28d (1,222 PNs vs 44)."
+   }
+  },
+  {
+   "id": "reverse_v3_no_map",
+   "node": "M77ReverseJanabiyahSearchV3",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "epsd2_personal_names": [
+     {
+      "headword": "MiinTest[1]PN",
+      "forms": [
+       "a-mi-x-in-y-z-mi"
+      ],
+      "periods": [
+       "Ur III"
+      ],
+      "icount": 5
+     },
+     {
+      "headword": "DigitName[1]PN",
+      "forms": [
+       "{d}a-bi2-si2-im-ti",
+       "a-bi-si-im-ti-mi"
+      ],
+      "periods": [
+       "Ur III",
+       "Old Babylonian"
+      ],
+      "icount": 3
+     },
+     {
+      "headword": "EmptyForm[1]PN",
+      "forms": [
+       "{d}",
+       ""
+      ],
+      "periods": [],
+      "icount": 2
+     },
+     {
+      "headword": "ZeroCount[1]PN",
+      "forms": [
+       "mi-in-x"
+      ],
+      "periods": [
+       "Ebla"
+      ],
+      "icount": 0
+     },
+     {
+      "headword": "LongName[1]PN",
+      "forms": [
+       "a-b-c-d-e-f-g-h-mi"
+      ],
+      "periods": [
+       "Neo-Assyrian"
+      ],
+      "icount": 1
+     },
+     {
+      "headword": "SzuName[1]PN",
+      "forms": [
+       "a-szu-b-c"
+      ],
+      "periods": [
+       "Ur III"
+      ],
+      "icount": 4
+     }
+    ],
+    "janabiyah_reading": {
+     "sign_sequence": [
+      "147",
+      "99",
+      "145",
+      "999",
+      "120",
+      "131",
+      "147"
+     ]
+    },
+    "phoneme_map": {},
+    "allograph_families": {}
+   },
+   "expected": {
+    "n_pns_searched": 4,
+    "n_renderings": 15,
+    "n_with_position_match": 1,
+    "n_with_free_miin": 3,
+    "top_matches": [
+     {
+      "headword": "MiinTest[1]PN",
+      "best_form": "a-mi-x-in-y-z-mi",
+      "n_segments": 7,
+      "position_match": 3,
+      "positions_matched": [
+       1,
+       3,
+       6
+      ],
+      "free_miin": 3,
+      "total_score": 9.0,
+      "icount": 5,
+      "periods": [
+       "Ur III"
+      ],
+      "n_alternate_forms": 1
+     },
+     {
+      "headword": "DigitName[1]PN",
+      "best_form": "a-bi-si-im-ti-mi",
+      "n_segments": 6,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 1,
+      "total_score": 3.0,
+      "icount": 3,
+      "periods": [
+       "Ur III",
+       "Old Babylonian"
+      ],
+      "n_alternate_forms": 2
+     },
+     {
+      "headword": "LongName[1]PN",
+      "best_form": "a-b-c-d-e-f-g-h-mi",
+      "n_segments": 9,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 1,
+      "total_score": 2.5,
+      "icount": 1,
+      "periods": [
+       "Neo-Assyrian"
+      ],
+      "n_alternate_forms": 1
+     },
+     {
+      "headword": "SzuName[1]PN",
+      "best_form": "a-szu-b-c",
+      "n_segments": 4,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 0,
+      "total_score": 1.5,
+      "icount": 4,
+      "periods": [
+       "Ur III"
+      ],
+      "n_alternate_forms": 1
+     }
+    ],
+    "verdict": "Phase-29 reverse Janabiyah search (ePSD2 v3): 4 ePSD2 PNs scored against 15 miin-token-renderings. 1 have at least one position-match (segment with miin-token at Janabiyah positions 1/3/6). 3 have at least one miin-rendering anywhere. Top: 'MiinTest[1]PN' (score 9.0, icount 5, periods ['Ur III']). 28x scale-up vs Phase-28d (1,222 PNs vs 44)."
+   }
+  },
+  {
+   "id": "reverse_v3_insufficient",
+   "node": "M77ReverseJanabiyahSearchV3",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "epsd2_personal_names": [],
+    "janabiyah_reading": {
+     "sign_sequence": [
+      "147",
+      "99",
+      "145",
+      "999",
+      "120",
+      "131",
+      "147"
+     ]
+    },
+    "phoneme_map": {
+     "147": {
+      "phoneme": "szu",
+      "gloss": "hand",
+      "confidence": "low"
+     }
+    },
+    "allograph_families": {
+     "fish": {
+      "members": [
+       "147"
+      ]
+     }
+    }
+   },
+   "expected": {
+    "verdict": "INSUFFICIENT_DATA",
+    "n_pns_searched": 0,
+    "top_matches": []
+   }
+  },
+  {
+   "id": "cohort_default",
+   "node": "LengthCohortReverseJanabiyahSearch",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "epsd2_personal_names": [
+     {
+      "headword": "MiinTest[1]PN",
+      "forms": [
+       "a-mi-x-in-y-z-mi"
+      ],
+      "periods": [
+       "Ur III"
+      ],
+      "icount": 5
+     },
+     {
+      "headword": "DigitName[1]PN",
+      "forms": [
+       "{d}a-bi2-si2-im-ti",
+       "a-bi-si-im-ti-mi"
+      ],
+      "periods": [
+       "Ur III",
+       "Old Babylonian"
+      ],
+      "icount": 3
+     },
+     {
+      "headword": "EmptyForm[1]PN",
+      "forms": [
+       "{d}",
+       ""
+      ],
+      "periods": [],
+      "icount": 2
+     },
+     {
+      "headword": "ZeroCount[1]PN",
+      "forms": [
+       "mi-in-x"
+      ],
+      "periods": [
+       "Ebla"
+      ],
+      "icount": 0
+     },
+     {
+      "headword": "LongName[1]PN",
+      "forms": [
+       "a-b-c-d-e-f-g-h-mi"
+      ],
+      "periods": [
+       "Neo-Assyrian"
+      ],
+      "icount": 1
+     },
+     {
+      "headword": "SzuName[1]PN",
+      "forms": [
+       "a-szu-b-c"
+      ],
+      "periods": [
+       "Ur III"
+      ],
+      "icount": 4
+     }
+    ],
+    "janabiyah_reading": {
+     "sign_sequence": [
+      "147",
+      "99",
+      "145",
+      "999",
+      "120",
+      "131",
+      "147"
+     ]
+    },
+    "phoneme_map": {
+     "147": {
+      "phoneme": "szu",
+      "gloss": "hand",
+      "confidence": "low"
+     }
+    },
+    "allograph_families": {
+     "fish": {
+      "members": [
+       "147"
+      ]
+     }
+    }
+   },
+   "expected": {
+    "n_pns_searched": 4,
+    "n_renderings": 16,
+    "n_cohorts": 4,
+    "n_with_position_match_total": 2,
+    "n_with_free_miin_total": 4,
+    "cohorts": [
+     {
+      "cohort": "S3-4",
+      "lo": 3,
+      "hi": 4,
+      "n_pns": 1,
+      "n_with_position_match": 1,
+      "n_with_free_miin": 1,
+      "hit_rate_position": 1.0,
+      "hit_rate_free": 1.0,
+      "top_matches": [
+       {
+        "headword": "SzuName[1]PN",
+        "best_form": "a-szu-b-c",
+        "n_segments": 4,
+        "position_match": 1,
+        "positions_matched": [
+         1
+        ],
+        "free_miin": 1,
+        "total_score": 3.5,
+        "icount": 4,
+        "periods": [
+         "Ur III"
+        ],
+        "n_alternate_forms": 1
+       }
+      ]
+     },
+     {
+      "cohort": "S5-6",
+      "lo": 5,
+      "hi": 6,
+      "n_pns": 1,
+      "n_with_position_match": 0,
+      "n_with_free_miin": 1,
+      "hit_rate_position": 0.0,
+      "hit_rate_free": 1.0,
+      "top_matches": [
+       {
+        "headword": "DigitName[1]PN",
+        "best_form": "a-bi-si-im-ti-mi",
+        "n_segments": 6,
+        "position_match": 0,
+        "positions_matched": [],
+        "free_miin": 1,
+        "total_score": 3.0,
+        "icount": 3,
+        "periods": [
+         "Ur III",
+         "Old Babylonian"
+        ],
+        "n_alternate_forms": 2
+       }
+      ]
+     },
+     {
+      "cohort": "S7-8",
+      "lo": 7,
+      "hi": 8,
+      "n_pns": 1,
+      "n_with_position_match": 1,
+      "n_with_free_miin": 1,
+      "hit_rate_position": 1.0,
+      "hit_rate_free": 1.0,
+      "top_matches": [
+       {
+        "headword": "MiinTest[1]PN",
+        "best_form": "a-mi-x-in-y-z-mi",
+        "n_segments": 7,
+        "position_match": 3,
+        "positions_matched": [
+         1,
+         3,
+         6
+        ],
+        "free_miin": 3,
+        "total_score": 9.0,
+        "icount": 5,
+        "periods": [
+         "Ur III"
+        ],
+        "n_alternate_forms": 1
+       }
+      ]
+     },
+     {
+      "cohort": "S9-99",
+      "lo": 9,
+      "hi": 99,
+      "n_pns": 1,
+      "n_with_position_match": 0,
+      "n_with_free_miin": 1,
+      "hit_rate_position": 0.0,
+      "hit_rate_free": 1.0,
+      "top_matches": [
+       {
+        "headword": "LongName[1]PN",
+        "best_form": "a-b-c-d-e-f-g-h-mi",
+        "n_segments": 9,
+        "position_match": 0,
+        "positions_matched": [],
+        "free_miin": 1,
+        "total_score": 2.5,
+        "icount": 1,
+        "periods": [
+         "Neo-Assyrian"
+        ],
+        "n_alternate_forms": 1
+       }
+      ]
+     }
+    ],
+    "verdict": "Phase-30b length-cohort reverse Janabiyah search: position-match hit rates 0.0000–1.0000 across 4 cohorts. Peak in S3-4 (1.0000, 1/1 PNs). Concentrated signal: contact-zone hypothesis SURVIVES one DoF."
+   }
+  },
+  {
+   "id": "cohort_custom",
+   "node": "LengthCohortReverseJanabiyahSearch",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "cohorts": [
+     [
+      3,
+      4
+     ],
+     [
+      20,
+      30
+     ]
+    ],
+    "top_k": 5,
+    "min_icount": 2
+   },
+   "inputs": {
+    "epsd2_personal_names": [
+     {
+      "headword": "MiinTest[1]PN",
+      "forms": [
+       "a-mi-x-in-y-z-mi"
+      ],
+      "periods": [
+       "Ur III"
+      ],
+      "icount": 5
+     },
+     {
+      "headword": "DigitName[1]PN",
+      "forms": [
+       "{d}a-bi2-si2-im-ti",
+       "a-bi-si-im-ti-mi"
+      ],
+      "periods": [
+       "Ur III",
+       "Old Babylonian"
+      ],
+      "icount": 3
+     },
+     {
+      "headword": "EmptyForm[1]PN",
+      "forms": [
+       "{d}",
+       ""
+      ],
+      "periods": [],
+      "icount": 2
+     },
+     {
+      "headword": "ZeroCount[1]PN",
+      "forms": [
+       "mi-in-x"
+      ],
+      "periods": [
+       "Ebla"
+      ],
+      "icount": 0
+     },
+     {
+      "headword": "LongName[1]PN",
+      "forms": [
+       "a-b-c-d-e-f-g-h-mi"
+      ],
+      "periods": [
+       "Neo-Assyrian"
+      ],
+      "icount": 1
+     },
+     {
+      "headword": "SzuName[1]PN",
+      "forms": [
+       "a-szu-b-c"
+      ],
+      "periods": [
+       "Ur III"
+      ],
+      "icount": 4
+     }
+    ],
+    "janabiyah_reading": {
+     "sign_sequence": [
+      "147",
+      "99",
+      "145",
+      "999",
+      "120",
+      "131",
+      "147"
+     ]
+    },
+    "phoneme_map": {
+     "147": {
+      "phoneme": "szu",
+      "gloss": "hand",
+      "confidence": "low"
+     }
+    },
+    "allograph_families": {
+     "fish": {
+      "members": [
+       "147"
+      ]
+     }
+    }
+   },
+   "expected": {
+    "n_pns_searched": 3,
+    "n_renderings": 16,
+    "n_cohorts": 2,
+    "n_with_position_match_total": 1,
+    "n_with_free_miin_total": 1,
+    "cohorts": [
+     {
+      "cohort": "S3-4",
+      "lo": 3,
+      "hi": 4,
+      "n_pns": 1,
+      "n_with_position_match": 1,
+      "n_with_free_miin": 1,
+      "hit_rate_position": 1.0,
+      "hit_rate_free": 1.0,
+      "top_matches": [
+       {
+        "headword": "SzuName[1]PN",
+        "best_form": "a-szu-b-c",
+        "n_segments": 4,
+        "position_match": 1,
+        "positions_matched": [
+         1
+        ],
+        "free_miin": 1,
+        "total_score": 3.5,
+        "icount": 4,
+        "periods": [
+         "Ur III"
+        ],
+        "n_alternate_forms": 1
+       }
+      ]
+     },
+     {
+      "cohort": "S20-30",
+      "lo": 20,
+      "hi": 30,
+      "n_pns": 0,
+      "n_with_position_match": 0,
+      "n_with_free_miin": 0,
+      "hit_rate_position": 0.0,
+      "hit_rate_free": 0.0,
+      "top_matches": []
+     }
+    ],
+    "verdict": "Phase-30b length-cohort reverse Janabiyah search: position-match hit rates 1.0000–1.0000 across 1 cohorts. No cohort concentration (all within 5x of each other). Janabiyah miin-pattern signal does NOT track candidate length — one more DoF eliminated for the contact-zone hypothesis."
+   }
+  },
+  {
+   "id": "cohort_no_candidates",
+   "node": "LengthCohortReverseJanabiyahSearch",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "epsd2_personal_names": [
+     {
+      "headword": "ZeroCount[1]PN",
+      "forms": [
+       "mi-in-x"
+      ],
+      "periods": [
+       "Ebla"
+      ],
+      "icount": 0
+     }
+    ],
+    "janabiyah_reading": {
+     "sign_sequence": [
+      "147",
+      "99",
+      "145",
+      "999",
+      "120",
+      "131",
+      "147"
+     ]
+    },
+    "phoneme_map": {
+     "147": {
+      "phoneme": "szu",
+      "gloss": "hand",
+      "confidence": "low"
+     }
+    },
+    "allograph_families": {
+     "fish": {
+      "members": [
+       "147"
+      ]
+     }
+    }
+   },
+   "expected": {
+    "n_pns_searched": 0,
+    "n_renderings": 16,
+    "n_cohorts": 4,
+    "n_with_position_match_total": 0,
+    "n_with_free_miin_total": 0,
+    "cohorts": [
+     {
+      "cohort": "S3-4",
+      "lo": 3,
+      "hi": 4,
+      "n_pns": 0,
+      "n_with_position_match": 0,
+      "n_with_free_miin": 0,
+      "hit_rate_position": 0.0,
+      "hit_rate_free": 0.0,
+      "top_matches": []
+     },
+     {
+      "cohort": "S5-6",
+      "lo": 5,
+      "hi": 6,
+      "n_pns": 0,
+      "n_with_position_match": 0,
+      "n_with_free_miin": 0,
+      "hit_rate_position": 0.0,
+      "hit_rate_free": 0.0,
+      "top_matches": []
+     },
+     {
+      "cohort": "S7-8",
+      "lo": 7,
+      "hi": 8,
+      "n_pns": 0,
+      "n_with_position_match": 0,
+      "n_with_free_miin": 0,
+      "hit_rate_position": 0.0,
+      "hit_rate_free": 0.0,
+      "top_matches": []
+     },
+     {
+      "cohort": "S9-99",
+      "lo": 9,
+      "hi": 99,
+      "n_pns": 0,
+      "n_with_position_match": 0,
+      "n_with_free_miin": 0,
+      "hit_rate_position": 0.0,
+      "hit_rate_free": 0.0,
+      "top_matches": []
+     }
+    ],
+    "verdict": "Phase-30b: no scored candidates in any cohort."
+   }
+  },
+  {
+   "id": "cohort_insufficient",
+   "node": "LengthCohortReverseJanabiyahSearch",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "epsd2_personal_names": [
+     {
+      "headword": "MiinTest[1]PN",
+      "forms": [
+       "a-mi-x-in-y-z-mi"
+      ],
+      "periods": [
+       "Ur III"
+      ],
+      "icount": 5
+     },
+     {
+      "headword": "DigitName[1]PN",
+      "forms": [
+       "{d}a-bi2-si2-im-ti",
+       "a-bi-si-im-ti-mi"
+      ],
+      "periods": [
+       "Ur III",
+       "Old Babylonian"
+      ],
+      "icount": 3
+     },
+     {
+      "headword": "EmptyForm[1]PN",
+      "forms": [
+       "{d}",
+       ""
+      ],
+      "periods": [],
+      "icount": 2
+     },
+     {
+      "headword": "ZeroCount[1]PN",
+      "forms": [
+       "mi-in-x"
+      ],
+      "periods": [
+       "Ebla"
+      ],
+      "icount": 0
+     },
+     {
+      "headword": "LongName[1]PN",
+      "forms": [
+       "a-b-c-d-e-f-g-h-mi"
+      ],
+      "periods": [
+       "Neo-Assyrian"
+      ],
+      "icount": 1
+     },
+     {
+      "headword": "SzuName[1]PN",
+      "forms": [
+       "a-szu-b-c"
+      ],
+      "periods": [
+       "Ur III"
+      ],
+      "icount": 4
+     }
+    ],
+    "janabiyah_reading": {},
+    "phoneme_map": {
+     "147": {
+      "phoneme": "szu",
+      "gloss": "hand",
+      "confidence": "low"
+     }
+    },
+    "allograph_families": {
+     "fish": {
+      "members": [
+       "147"
+      ]
+     }
+    }
+   },
+   "expected": {
+    "verdict": "INSUFFICIENT_DATA",
+    "n_pns_searched": 0,
+    "cohorts": []
+   }
+  },
+  {
+   "id": "persons_22_default",
+   "node": "MeluhhanPersonsExtractor",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "persons": [
+     {
+      "candidate_name": "shu-ilishu",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P200",
+      "line": "1. szu il-lu shu-ilishu translator"
+     },
+     {
+      "candidate_name": "shu-ilishu",
+      "period": "Ur III",
+      "provenience": "Lagash",
+      "p_number": "P201",
+      "line": "2. shu-ilishu again"
+     },
+     {
+      "candidate_name": "shu-ilishu",
+      "period": "Old Babylonian",
+      "provenience": "Girsu",
+      "p_number": "P200",
+      "line": "3. third"
+     },
+     {
+      "candidate_name": "Shu-Ilishu",
+      "period": "Ur III",
+      "provenience": "Ur",
+      "p_number": "P202",
+      "line": "case variant"
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P203",
+      "line": "known 2"
+     },
+     {
+      "candidate_name": "ur-namma",
+      "period": "Ur III",
+      "provenience": "Ur",
+      "p_number": "P204",
+      "line": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+     },
+     {
+      "candidate_name": "ur-namma",
+      "period": "Neo-Assyrian",
+      "provenience": "Ur",
+      "p_number": "P205",
+      "line": "second"
+     },
+     {
+      "candidate_name": "",
+      "period": "Ur III",
+      "provenience": "Ur",
+      "p_number": "P206",
+      "line": "no name"
+     },
+     {
+      "candidate_name": "single-ton",
+      "period": "Ebla",
+      "provenience": "Ebla",
+      "p_number": "P207",
+      "line": "once"
+     }
+    ]
+   },
+   "expected": {
+    "n_unique_candidates": 5,
+    "rows_top50": [
+     {
+      "candidate_name": "shu-ilishu",
+      "occurrences": 3,
+      "n_distinct_tablets": 2,
+      "periods": [
+       "Old Babylonian",
+       "Ur III"
+      ],
+      "proveniences": [
+       "Girsu",
+       "Lagash"
+      ],
+      "example_line": "1. szu il-lu shu-ilishu translator"
+     },
+     {
+      "candidate_name": "ur-namma",
+      "occurrences": 2,
+      "n_distinct_tablets": 2,
+      "periods": [
+       "Neo-Assyrian",
+       "Ur III"
+      ],
+      "proveniences": [
+       "Ur"
+      ],
+      "example_line": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+     },
+     {
+      "candidate_name": "Shu-Ilishu",
+      "occurrences": 1,
+      "n_distinct_tablets": 1,
+      "periods": [
+       "Ur III"
+      ],
+      "proveniences": [
+       "Ur"
+      ],
+      "example_line": "case variant"
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "occurrences": 1,
+      "n_distinct_tablets": 1,
+      "periods": [
+       "Ur III"
+      ],
+      "proveniences": [
+       "Girsu"
+      ],
+      "example_line": "known 2"
+     },
+     {
+      "candidate_name": "single-ton",
+      "occurrences": 1,
+      "n_distinct_tablets": 1,
+      "periods": [
+       "Ebla"
+      ],
+      "proveniences": [
+       "Ebla"
+      ],
+      "example_line": "once"
+     }
+    ],
+    "all_rows_count": 5,
+    "confirmed_hits": [
+     {
+      "candidate_name": "shu-ilishu",
+      "occurrences": 3,
+      "n_distinct_tablets": 2,
+      "periods": [
+       "Old Babylonian",
+       "Ur III"
+      ],
+      "proveniences": [
+       "Girsu",
+       "Lagash"
+      ],
+      "example_line": "1. szu il-lu shu-ilishu translator"
+     },
+     {
+      "candidate_name": "Shu-Ilishu",
+      "occurrences": 1,
+      "n_distinct_tablets": 1,
+      "periods": [
+       "Ur III"
+      ],
+      "proveniences": [
+       "Ur"
+      ],
+      "example_line": "case variant"
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "occurrences": 1,
+      "n_distinct_tablets": 1,
+      "periods": [
+       "Ur III"
+      ],
+      "proveniences": [
+       "Girsu"
+      ],
+      "example_line": "known 2"
+     }
+    ],
+    "verdict": "Meluhhan-person extractor: 5 unique name candidates (freq >= 1); 3 match historically-known Meluhhan-named persons (Lu-sun-zi-da, Shu-ilishu)."
+   }
+  },
+  {
+   "id": "persons_22_min_freq",
+   "node": "MeluhhanPersonsExtractor",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "min_freq": 2
+   },
+   "inputs": {
+    "persons": [
+     {
+      "candidate_name": "shu-ilishu",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P200",
+      "line": "1. szu il-lu shu-ilishu translator"
+     },
+     {
+      "candidate_name": "shu-ilishu",
+      "period": "Ur III",
+      "provenience": "Lagash",
+      "p_number": "P201",
+      "line": "2. shu-ilishu again"
+     },
+     {
+      "candidate_name": "shu-ilishu",
+      "period": "Old Babylonian",
+      "provenience": "Girsu",
+      "p_number": "P200",
+      "line": "3. third"
+     },
+     {
+      "candidate_name": "Shu-Ilishu",
+      "period": "Ur III",
+      "provenience": "Ur",
+      "p_number": "P202",
+      "line": "case variant"
+     },
+     {
+      "candidate_name": "lu-sun-zi-da",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P203",
+      "line": "known 2"
+     },
+     {
+      "candidate_name": "ur-namma",
+      "period": "Ur III",
+      "provenience": "Ur",
+      "p_number": "P204",
+      "line": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+     },
+     {
+      "candidate_name": "ur-namma",
+      "period": "Neo-Assyrian",
+      "provenience": "Ur",
+      "p_number": "P205",
+      "line": "second"
+     },
+     {
+      "candidate_name": "",
+      "period": "Ur III",
+      "provenience": "Ur",
+      "p_number": "P206",
+      "line": "no name"
+     },
+     {
+      "candidate_name": "single-ton",
+      "period": "Ebla",
+      "provenience": "Ebla",
+      "p_number": "P207",
+      "line": "once"
+     }
+    ]
+   },
+   "expected": {
+    "n_unique_candidates": 2,
+    "rows_top50": [
+     {
+      "candidate_name": "shu-ilishu",
+      "occurrences": 3,
+      "n_distinct_tablets": 2,
+      "periods": [
+       "Old Babylonian",
+       "Ur III"
+      ],
+      "proveniences": [
+       "Girsu",
+       "Lagash"
+      ],
+      "example_line": "1. szu il-lu shu-ilishu translator"
+     },
+     {
+      "candidate_name": "ur-namma",
+      "occurrences": 2,
+      "n_distinct_tablets": 2,
+      "periods": [
+       "Neo-Assyrian",
+       "Ur III"
+      ],
+      "proveniences": [
+       "Ur"
+      ],
+      "example_line": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+     }
+    ],
+    "all_rows_count": 2,
+    "confirmed_hits": [
+     {
+      "candidate_name": "shu-ilishu",
+      "occurrences": 3,
+      "n_distinct_tablets": 2,
+      "periods": [
+       "Old Babylonian",
+       "Ur III"
+      ],
+      "proveniences": [
+       "Girsu",
+       "Lagash"
+      ],
+      "example_line": "1. szu il-lu shu-ilishu translator"
+     }
+    ],
+    "verdict": "Meluhhan-person extractor: 2 unique name candidates (freq >= 2); 1 match historically-known Meluhhan-named persons (Lu-sun-zi-da, Shu-ilishu)."
+   }
+  },
+  {
+   "id": "persons_22_empty",
+   "node": "MeluhhanPersonsExtractor",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "persons": []
+   },
+   "expected": {
+    "n_unique_candidates": 0,
+    "rows_top50": [],
+    "all_rows_count": 0,
+    "confirmed_hits": [],
+    "verdict": "Meluhhan-person extractor: 0 unique name candidates (freq >= 1); 0 match historically-known Meluhhan-named persons (Lu-sun-zi-da, Shu-ilishu)."
+   }
+  },
+  {
+   "id": "persons_refined_default",
+   "node": "RefinedMeluhhanPersonsExtractor",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "strict_persons": [
+     {
+      "candidate_name": "shu-ilishu",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P300",
+      "line": "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL",
+      "source_pattern": "eme-bal",
+      "is_known": true
+     },
+     {
+      "candidate_name": "shu-ilishu",
+      "period": "Ur III",
+      "provenience": "Lagash",
+      "p_number": "P301",
+      "line": "second line",
+      "source_pattern": "pat-2",
+      "is_known": false
+     },
+     {
+      "candidate_name": "ur-namma",
+      "period": "Ur III",
+      "provenience": "Ur",
+      "p_number": "P302",
+      "line": "third",
+      "source_pattern": "eme-bal",
+      "is_known": false
+     },
+     {
+      "candidate_name": "ghost",
+      "period": "Ebla",
+      "provenience": "Ebla",
+      "p_number": "P303",
+      "line": "fourth",
+      "source_pattern": "pat-9",
+      "is_known": true
+     },
+     {
+      "candidate_name": "",
+      "period": "Ur III",
+      "provenience": "Ur",
+      "p_number": "P304",
+      "line": "fifth",
+      "source_pattern": "pat-x",
+      "is_known": false
+     }
+    ]
+   },
+   "expected": {
+    "n_unique": 3,
+    "rows_top50": [
+     {
+      "candidate_name": "shu-ilishu",
+      "occurrences": 2,
+      "n_distinct_tablets": 2,
+      "periods": [
+       "Ur III"
+      ],
+      "proveniences": [
+       "Girsu",
+       "Lagash"
+      ],
+      "source_patterns": [
+       "eme-bal",
+       "pat-2"
+      ],
+      "is_known_meluhhan": true,
+      "example_line": "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL"
+     },
+     {
+      "candidate_name": "ur-namma",
+      "occurrences": 1,
+      "n_distinct_tablets": 1,
+      "periods": [
+       "Ur III"
+      ],
+      "proveniences": [
+       "Ur"
+      ],
+      "source_patterns": [
+       "eme-bal"
+      ],
+      "is_known_meluhhan": false,
+      "example_line": "third"
+     },
+     {
+      "candidate_name": "ghost",
+      "occurrences": 1,
+      "n_distinct_tablets": 1,
+      "periods": [
+       "Ebla"
+      ],
+      "proveniences": [
+       "Ebla"
+      ],
+      "source_patterns": [
+       "pat-9"
+      ],
+      "is_known_meluhhan": true,
+      "example_line": "fourth"
+     }
+    ],
+    "rows_all": [
+     {
+      "candidate_name": "shu-ilishu",
+      "occurrences": 2,
+      "n_distinct_tablets": 2,
+      "periods": [
+       "Ur III"
+      ],
+      "proveniences": [
+       "Girsu",
+       "Lagash"
+      ],
+      "source_patterns": [
+       "eme-bal",
+       "pat-2"
+      ],
+      "is_known_meluhhan": true,
+      "example_line": "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL"
+     },
+     {
+      "candidate_name": "ur-namma",
+      "occurrences": 1,
+      "n_distinct_tablets": 1,
+      "periods": [
+       "Ur III"
+      ],
+      "proveniences": [
+       "Ur"
+      ],
+      "source_patterns": [
+       "eme-bal"
+      ],
+      "is_known_meluhhan": false,
+      "example_line": "third"
+     },
+     {
+      "candidate_name": "ghost",
+      "occurrences": 1,
+      "n_distinct_tablets": 1,
+      "periods": [
+       "Ebla"
+      ],
+      "proveniences": [
+       "Ebla"
+      ],
+      "source_patterns": [
+       "pat-9"
+      ],
+      "is_known_meluhhan": true,
+      "example_line": "fourth"
+     }
+    ],
+    "n_total": 3,
+    "confirmed_hits": [
+     {
+      "candidate_name": "shu-ilishu",
+      "occurrences": 2,
+      "n_distinct_tablets": 2,
+      "periods": [
+       "Ur III"
+      ],
+      "proveniences": [
+       "Girsu",
+       "Lagash"
+      ],
+      "source_patterns": [
+       "eme-bal",
+       "pat-2"
+      ],
+      "is_known_meluhhan": true,
+      "example_line": "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL"
+     },
+     {
+      "candidate_name": "ghost",
+      "occurrences": 1,
+      "n_distinct_tablets": 1,
+      "periods": [
+       "Ebla"
+      ],
+      "proveniences": [
+       "Ebla"
+      ],
+      "source_patterns": [
+       "pat-9"
+      ],
+      "is_known_meluhhan": true,
+      "example_line": "fourth"
+     }
+    ],
+    "by_pattern": {
+     "eme-bal": 2,
+     "pat-2": 1,
+     "pat-9": 1,
+     "pat-x": 1
+    },
+    "verdict": "Refined Meluhhan-PN extractor (Phase-23): 3 unique name candidates (freq>=1); 2 historically-confirmed; by-pattern distribution {'eme-bal': 2, 'pat-2': 1, 'pat-9': 1, 'pat-x': 1}."
+   }
+  },
+  {
+   "id": "persons_refined_min_freq",
+   "node": "RefinedMeluhhanPersonsExtractor",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "min_freq": 2
+   },
+   "inputs": {
+    "strict_persons": [
+     {
+      "candidate_name": "shu-ilishu",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P300",
+      "line": "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL",
+      "source_pattern": "eme-bal",
+      "is_known": true
+     },
+     {
+      "candidate_name": "shu-ilishu",
+      "period": "Ur III",
+      "provenience": "Lagash",
+      "p_number": "P301",
+      "line": "second line",
+      "source_pattern": "pat-2",
+      "is_known": false
+     },
+     {
+      "candidate_name": "ur-namma",
+      "period": "Ur III",
+      "provenience": "Ur",
+      "p_number": "P302",
+      "line": "third",
+      "source_pattern": "eme-bal",
+      "is_known": false
+     },
+     {
+      "candidate_name": "ghost",
+      "period": "Ebla",
+      "provenience": "Ebla",
+      "p_number": "P303",
+      "line": "fourth",
+      "source_pattern": "pat-9",
+      "is_known": true
+     },
+     {
+      "candidate_name": "",
+      "period": "Ur III",
+      "provenience": "Ur",
+      "p_number": "P304",
+      "line": "fifth",
+      "source_pattern": "pat-x",
+      "is_known": false
+     }
+    ]
+   },
+   "expected": {
+    "n_unique": 1,
+    "rows_top50": [
+     {
+      "candidate_name": "shu-ilishu",
+      "occurrences": 2,
+      "n_distinct_tablets": 2,
+      "periods": [
+       "Ur III"
+      ],
+      "proveniences": [
+       "Girsu",
+       "Lagash"
+      ],
+      "source_patterns": [
+       "eme-bal",
+       "pat-2"
+      ],
+      "is_known_meluhhan": true,
+      "example_line": "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL"
+     }
+    ],
+    "rows_all": [
+     {
+      "candidate_name": "shu-ilishu",
+      "occurrences": 2,
+      "n_distinct_tablets": 2,
+      "periods": [
+       "Ur III"
+      ],
+      "proveniences": [
+       "Girsu",
+       "Lagash"
+      ],
+      "source_patterns": [
+       "eme-bal",
+       "pat-2"
+      ],
+      "is_known_meluhhan": true,
+      "example_line": "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL"
+     }
+    ],
+    "n_total": 1,
+    "confirmed_hits": [
+     {
+      "candidate_name": "shu-ilishu",
+      "occurrences": 2,
+      "n_distinct_tablets": 2,
+      "periods": [
+       "Ur III"
+      ],
+      "proveniences": [
+       "Girsu",
+       "Lagash"
+      ],
+      "source_patterns": [
+       "eme-bal",
+       "pat-2"
+      ],
+      "is_known_meluhhan": true,
+      "example_line": "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL"
+     }
+    ],
+    "by_pattern": {
+     "eme-bal": 2,
+     "pat-2": 1,
+     "pat-9": 1,
+     "pat-x": 1
+    },
+    "verdict": "Refined Meluhhan-PN extractor (Phase-23): 1 unique name candidates (freq>=2); 1 historically-confirmed; by-pattern distribution {'eme-bal': 2, 'pat-2': 1, 'pat-9': 1, 'pat-x': 1}."
+   }
+  },
+  {
+   "id": "persons_refined_empty",
+   "node": "RefinedMeluhhanPersonsExtractor",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "strict_persons": []
+   },
+   "expected": {
+    "n_unique": 0,
+    "rows_top50": [],
+    "rows_all": [],
+    "n_total": 0,
+    "confirmed_hits": [],
+    "by_pattern": {},
+    "verdict": "Refined Meluhhan-PN extractor (Phase-23): 0 unique name candidates (freq>=1); 0 historically-confirmed; by-pattern distribution {}."
+   }
+  },
+  {
+   "id": "persons_refined_v2_same_rows",
+   "node": "RefinedMeluhhanPersonsExtractorV2",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "persons_v2": [
+     {
+      "candidate_name": "shu-ilishu",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "p_number": "P300",
+      "line": "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL",
+      "source_pattern": "eme-bal",
+      "is_known": true
+     },
+     {
+      "candidate_name": "shu-ilishu",
+      "period": "Ur III",
+      "provenience": "Lagash",
+      "p_number": "P301",
+      "line": "second line",
+      "source_pattern": "pat-2",
+      "is_known": false
+     },
+     {
+      "candidate_name": "ur-namma",
+      "period": "Ur III",
+      "provenience": "Ur",
+      "p_number": "P302",
+      "line": "third",
+      "source_pattern": "eme-bal",
+      "is_known": false
+     },
+     {
+      "candidate_name": "ghost",
+      "period": "Ebla",
+      "provenience": "Ebla",
+      "p_number": "P303",
+      "line": "fourth",
+      "source_pattern": "pat-9",
+      "is_known": true
+     },
+     {
+      "candidate_name": "",
+      "period": "Ur III",
+      "provenience": "Ur",
+      "p_number": "P304",
+      "line": "fifth",
+      "source_pattern": "pat-x",
+      "is_known": false
+     }
+    ]
+   },
+   "expected": {
+    "n_unique": 3,
+    "rows_top50": [
+     {
+      "candidate_name": "shu-ilishu",
+      "occurrences": 2,
+      "n_distinct_tablets": 2,
+      "periods": [
+       "Ur III"
+      ],
+      "proveniences": [
+       "Girsu",
+       "Lagash"
+      ],
+      "source_patterns": [
+       "eme-bal",
+       "pat-2"
+      ],
+      "is_known_meluhhan": true,
+      "example_line": "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL"
+     },
+     {
+      "candidate_name": "ur-namma",
+      "occurrences": 1,
+      "n_distinct_tablets": 1,
+      "periods": [
+       "Ur III"
+      ],
+      "proveniences": [
+       "Ur"
+      ],
+      "source_patterns": [
+       "eme-bal"
+      ],
+      "is_known_meluhhan": false,
+      "example_line": "third"
+     },
+     {
+      "candidate_name": "ghost",
+      "occurrences": 1,
+      "n_distinct_tablets": 1,
+      "periods": [
+       "Ebla"
+      ],
+      "proveniences": [
+       "Ebla"
+      ],
+      "source_patterns": [
+       "pat-9"
+      ],
+      "is_known_meluhhan": true,
+      "example_line": "fourth"
+     }
+    ],
+    "rows_all": [
+     {
+      "candidate_name": "shu-ilishu",
+      "occurrences": 2,
+      "n_distinct_tablets": 2,
+      "periods": [
+       "Ur III"
+      ],
+      "proveniences": [
+       "Girsu",
+       "Lagash"
+      ],
+      "source_patterns": [
+       "eme-bal",
+       "pat-2"
+      ],
+      "is_known_meluhhan": true,
+      "example_line": "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL"
+     },
+     {
+      "candidate_name": "ur-namma",
+      "occurrences": 1,
+      "n_distinct_tablets": 1,
+      "periods": [
+       "Ur III"
+      ],
+      "proveniences": [
+       "Ur"
+      ],
+      "source_patterns": [
+       "eme-bal"
+      ],
+      "is_known_meluhhan": false,
+      "example_line": "third"
+     },
+     {
+      "candidate_name": "ghost",
+      "occurrences": 1,
+      "n_distinct_tablets": 1,
+      "periods": [
+       "Ebla"
+      ],
+      "proveniences": [
+       "Ebla"
+      ],
+      "source_patterns": [
+       "pat-9"
+      ],
+      "is_known_meluhhan": true,
+      "example_line": "fourth"
+     }
+    ],
+    "n_total": 3,
+    "confirmed_hits": [
+     {
+      "candidate_name": "shu-ilishu",
+      "occurrences": 2,
+      "n_distinct_tablets": 2,
+      "periods": [
+       "Ur III"
+      ],
+      "proveniences": [
+       "Girsu",
+       "Lagash"
+      ],
+      "source_patterns": [
+       "eme-bal",
+       "pat-2"
+      ],
+      "is_known_meluhhan": true,
+      "example_line": "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL"
+     },
+     {
+      "candidate_name": "ghost",
+      "occurrences": 1,
+      "n_distinct_tablets": 1,
+      "periods": [
+       "Ebla"
+      ],
+      "proveniences": [
+       "Ebla"
+      ],
+      "source_patterns": [
+       "pat-9"
+      ],
+      "is_known_meluhhan": true,
+      "example_line": "fourth"
+     }
+    ],
+    "by_pattern": {
+     "eme-bal": 2,
+     "pat-2": 1,
+     "pat-9": 1,
+     "pat-x": 1
+    },
+    "verdict": "Refined Meluhhan-PN extractor v2 (Phase-24): 3 unique candidates (freq>=1); 2 historically-confirmed; by-pattern {'eme-bal': 2, 'pat-2': 1, 'pat-9': 1, 'pat-x': 1}."
+   }
+  },
+  {
+   "id": "persons_refined_v2_empty",
+   "node": "RefinedMeluhhanPersonsExtractorV2",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "persons_v2": []
+   },
+   "expected": {
+    "n_unique": 0,
+    "rows_top50": [],
+    "rows_all": [],
+    "n_total": 0,
+    "confirmed_hits": [],
+    "by_pattern": {},
+    "verdict": "Refined Meluhhan-PN extractor v2 (Phase-24): 0 unique candidates (freq>=1); 0 historically-confirmed; by-pattern {}."
+   }
+  },
+  {
+   "id": "persons_v3_default",
+   "node": "Persons_v3_Extractor",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "persons_v3": [
+     {
+      "candidate_name": "ur-{d}suen-me-luh-ha",
+      "period": "Ur III",
+      "line": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+     },
+     {
+      "candidate_name": "ur-{d}suen-me-luh-ha",
+      "period": "Old Babylonian",
+      "line": "short"
+     },
+     {
+      "candidate_name": "a",
+      "period": "Ur III",
+      "line": "one seg"
+     },
+     {
+      "candidate_name": "",
+      "period": "Ur III",
+      "line": "skip"
+     },
+     {
+      "candidate_name": "lu-ti",
+      "period": "Ebla",
+      "line": "x"
+     }
+    ]
+   },
+   "expected": {
+    "n_unique": 3,
+    "rows_top50": [
+     {
+      "candidate_name": "ur-{d}suen-me-luh-ha",
+      "occurrences": 2,
+      "n_segments": 5,
+      "periods": [
+       "Old Babylonian",
+       "Ur III"
+      ],
+      "example_line": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+     },
+     {
+      "candidate_name": "a",
+      "occurrences": 1,
+      "n_segments": 1,
+      "periods": [
+       "Ur III"
+      ],
+      "example_line": "one seg"
+     },
+     {
+      "candidate_name": "lu-ti",
+      "occurrences": 1,
+      "n_segments": 2,
+      "periods": [
+       "Ebla"
+      ],
+      "example_line": "x"
+     }
+    ],
+    "rows_all": [
+     {
+      "candidate_name": "ur-{d}suen-me-luh-ha",
+      "occurrences": 2,
+      "n_segments": 5,
+      "periods": [
+       "Old Babylonian",
+       "Ur III"
+      ],
+      "example_line": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+     },
+     {
+      "candidate_name": "a",
+      "occurrences": 1,
+      "n_segments": 1,
+      "periods": [
+       "Ur III"
+      ],
+      "example_line": "one seg"
+     },
+     {
+      "candidate_name": "lu-ti",
+      "occurrences": 1,
+      "n_segments": 2,
+      "periods": [
+       "Ebla"
+      ],
+      "example_line": "x"
+     }
+    ],
+    "verdict": "Persons-v3: 3 unique candidates (freq>=1). v2 noise (lu-ti, lu-na, lu-ma-ku) dropped via extended Akkadian-fragment stoplist + 3-segment minimum + 6-segment regex (captures ur-{d}suen-me-luh-ha)."
+   }
+  },
+  {
+   "id": "persons_v3_min_freq",
+   "node": "Persons_v3_Extractor",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {
+    "min_freq": 2
+   },
+   "inputs": {
+    "persons_v3": [
+     {
+      "candidate_name": "ur-{d}suen-me-luh-ha",
+      "period": "Ur III",
+      "line": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+     },
+     {
+      "candidate_name": "ur-{d}suen-me-luh-ha",
+      "period": "Old Babylonian",
+      "line": "short"
+     },
+     {
+      "candidate_name": "a",
+      "period": "Ur III",
+      "line": "one seg"
+     },
+     {
+      "candidate_name": "",
+      "period": "Ur III",
+      "line": "skip"
+     },
+     {
+      "candidate_name": "lu-ti",
+      "period": "Ebla",
+      "line": "x"
+     }
+    ]
+   },
+   "expected": {
+    "n_unique": 1,
+    "rows_top50": [
+     {
+      "candidate_name": "ur-{d}suen-me-luh-ha",
+      "occurrences": 2,
+      "n_segments": 5,
+      "periods": [
+       "Old Babylonian",
+       "Ur III"
+      ],
+      "example_line": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+     }
+    ],
+    "rows_all": [
+     {
+      "candidate_name": "ur-{d}suen-me-luh-ha",
+      "occurrences": 2,
+      "n_segments": 5,
+      "periods": [
+       "Old Babylonian",
+       "Ur III"
+      ],
+      "example_line": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+     }
+    ],
+    "verdict": "Persons-v3: 1 unique candidates (freq>=2). v2 noise (lu-ti, lu-na, lu-ma-ku) dropped via extended Akkadian-fragment stoplist + 3-segment minimum + 6-segment regex (captures ur-{d}suen-me-luh-ha)."
+   }
+  },
+  {
+   "id": "persons_v3_empty",
+   "node": "Persons_v3_Extractor",
+   "mode": "full",
+   "setup": {
+    "kind": "plain"
+   },
+   "params": {},
+   "inputs": {
+    "persons_v3": []
+   },
+   "expected": {
+    "n_unique": 0,
+    "rows_top50": [],
+    "rows_all": [],
+    "verdict": "Persons-v3: 0 unique candidates (freq>=1). v2 noise (lu-ti, lu-na, lu-ma-ku) dropped via extended Akkadian-fragment stoplist + 3-segment minimum + 6-segment regex (captures ur-{d}suen-me-luh-ha)."
+   }
+  }
+ ]
+}

@@ -361,6 +361,25 @@ way: each one is a fixed setting of a generic block, kept registered
 and runnable for saved experiments, but no longer offered for new
 ones.
 
+Three more generic building blocks are in the Palette:
+**SkeletonTabletSearch** (read a phonetic skeleton off a seal
+reading and scan tablet lines for a set of its renderings, with the
+rendering list, the keyword gate, and the minimum-hit rule as
+parameters), **ReverseSkeletonSearch** (score name candidates
+against the skeleton in reverse — an extracted-persons list with
+substring matching, or the ePSD2 personal-name records with
+exact-token matching and optional length-cohort stratification —
+with the rendering set and scoring weights as parameters), and
+**PersonsAggregator** (aggregate extracted person-name candidates
+into frequency rows, with the field mapping, the known-names
+source, and segment counting as parameters). The ten older
+study-specific nodes they generalise (the two Janabiyah phonetic
+readouts, the four reverse Janabiyah searches, and the four
+Meluhhan persons extractors) are now legacy in the same way: each
+one is a fixed setting of a generic block, kept registered and
+runnable for saved experiments, but no longer offered for new
+ones.
+
 ### Node Reference
 
 **Corpus Loaders:**

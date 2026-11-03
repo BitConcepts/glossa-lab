@@ -1198,3 +1198,303 @@ restored and are not in this PR's diff.
   verified from the summary/output files they wrote (27
   graphs, all status ok, on both sides) before the hashes
   above were computed.
+
+## PR-D — families F7 (Janabiyah skeleton search, forward + reverse) + F6 (Meluhhan persons extractors)
+
+**Branch:** `feat/087-s3-conv-d`, built on main `702cc717`
+(PR #495 merged). **Commits:** `09d7784` (fixtures, captured
+first), plus the implementation commit. **Seat:** build worker;
+the parent gates and merges. The contract stated at the head
+of this record governs unchanged.
+
+### The generic machinery — appended to `backend/glossa_lab/generic_primitives.py`
+
+PR-D appends three engines to PR-C's module (same stdlib-only
+pattern). The F7 family's two directions are two engines; the
+four reverse searches share ONE scoring core inside the
+second engine (target segment positions {1,3,6}, target
+length 7, length score 3.0 − 0.5·δ, +1.5 per position match,
++0.5 per free occurrence, −1.5 penalty for names ending
+-me-luh-ha / -me-luh-ha-ki — all as data of the core). One
+divergence inside the family is carried as data of the
+candidate mode, never normalised away: the persons modes
+(Phases 27/28) match renderings as substrings of cleaned
+segments, while the ePSD2 modes (Phases 29/30) match whole
+segments against the rendering token set exactly — the
+current code has both rules, and no behaviour was harmonised
+to make the family tidier. The ePSD2 segmenter (strip {…}
+determinatives, split on hyphen runs, drop trailing digits
+per part) is carried by the engine, as is the Phase-28/29/30
+dynamic rendering expansion (phoneme tokens of the named
+allograph family's members, from the phoneme map).
+
+The three primitives, registered in the core list immediately
+after StratifiedPermutationTest, each with inputs/outputs
+mirroring its domain nodes (unions where the delegating nodes
+differ) and a description naming the delegating nodes:
+
+| primitive | category | mechanism |
+|---|---|---|
+| SkeletonTabletSearch | Decipherment | the forward readout: predictions + phonetic skeleton from a reading via a phoneme map (unmapped sign → "?" / "(unmapped)" / "none"), then one or more rendering scans over tablet lines gated on a keyword in the tablet's matched keywords, hits = rendering substrings per line, kept at hits ≥ a spec minimum; scan set, hit key, count differences between scans, verdict and interpretation are spec data. |
+| ReverseSkeletonSearch | Decipherment | the reverse search over the shared scoring core, in three candidate modes: persons (aggregate a persons list by name, substring matching, penalty suffixes, optional dynamic rendering expansion, optional n_renderings report), pn (ePSD2 entries filtered by icount, best alternate form scored, exact-token matching), pn_cohorts (the pn scoring stratified by best-form segment count into a cohort table — the node's own cohorts param — with per-cohort hit rates and the 5x concentration verdict rule as data). |
+| PersonsAggregator | Transforms | the persons aggregation pass: count occurrences per candidate name, collect periods / proveniences / source patterns / example lines, optional distinct-tablet counts, optional segment-count enrichment, known-name confirmation from a names set carried as data or from the upstream rows' is_known flag, optional by-pattern distribution over all rows; output key names, example-line truncation, and the verdict text are spec data. |
+
+### The ten delegations
+
+Each domain fn keeps its id, def, and docstring, and now
+builds its spec and delegates. Fixed content at the delegation
+points:
+
+- **JanabiyahPhoneticReadout** (phase25) → SkeletonTabletSearch:
+  one scan whose renderings are the constant 11-item list
+  (`mi-in, me-en, mi-na, me-na, mi-il, me-il, mi-en, me-in,
+  mu-li, min-, men-`), the "me-luh" keyword gate, hits ≥ 2,
+  hit key `n_miin_hits`, verdict + interpretation verbatim.
+- **JanabiyahPhoneticReadoutV2** (phase26) → SkeletonTabletSearch:
+  two scans over the input-port rendering lists (direct-only,
+  then the full list), hit key `n_hits`, and the
+  expanded-minus-direct count difference
+  (`n_new_matches_from_translation`) as spec data.
+- **ReverseJanabiyahSearch** (phase27) → ReverseSkeletonSearch,
+  persons mode: the 15-item rendering set, penalty suffixes
+  `-me-luh-ha` / `-me-luh-ha-ki` at −1.5, top_k default 20,
+  floor 10.
+- **ReverseJanabiyahSearchV2** (phase28) → ReverseSkeletonSearch,
+  persons mode: the 16-item base set (Phase-27's 15 + `asz`),
+  expansion on with family source `fish`, n_renderings
+  reported, top_k default 30, floor 10.
+- **M77ReverseJanabiyahSearchV3** (phase29) →
+  ReverseSkeletonSearch, pn mode: the ePSD2 name source, the
+  carried segmenter, expansion on (family `fish`), top_k
+  default 30, floor 10, verdict assembled from the head / top /
+  no-top / suffix pieces verbatim.
+- **LengthCohortReverseJanabiyahSearch** (phase30) →
+  ReverseSkeletonSearch, pn_cohorts mode: the pn scoring plus
+  cohorts from the node's own param (default
+  [[3,4],[5,6],[7,8],[9,99]]), concentration factor 5.0,
+  top_k default 15, floor 5, verdict pieces verbatim
+  (including the en dash in the rate range and the em dash in
+  the flat text).
+- **MeluhhanPersonsExtractor** (phase22) → PersonsAggregator:
+  the `persons` port, provenience + distinct-tablet
+  collection, example lines untruncated, confirmation against
+  the known-names set {lu-sun-zi-da, lu2-sun-zi-da, shu-ilishu,
+  shu-ilisu, su-ilisu} as a data param (matched
+  case-insensitively, as today), `all_rows_count` in place of
+  `rows_all`.
+- **RefinedMeluhhanPersonsExtractor** (phase23) →
+  PersonsAggregator: the `strict_persons` port, provenience +
+  source-pattern + distinct-tablet collection, example lines
+  untruncated, by-pattern distribution over all rows
+  (including empty names, as today), known source = the
+  upstream rows' `is_known` flag.
+- **RefinedMeluhhanPersonsExtractorV2** (phase24) →
+  PersonsAggregator: the Phase-23 parameterisation on the
+  `persons_v2` port with example_line[:120] and its own
+  verdict text. Its pre-conversion body was a near-verbatim
+  copy of Phase-23's; the copy is deleted by this conversion,
+  and its fixtures are the Phase-23 fixture rows.
+- **Persons_v3_Extractor** (phase25) → PersonsAggregator:
+  segment-count enrichment on (the triage's toggle), example
+  lines truncated to 160, no provenience/pattern/tablet
+  collection, no known-name confirmation (`confirmed_hits`
+  stays empty, as today), n under the `n_unique` key.
+
+Callerless helpers removed, each grep-proven to have had the
+converted node as its only caller: phase29's
+`_epsd_pn_to_segments` and phase30's `_pn_to_segments` (the
+engine carries the shared segmenter), phase25's
+`_name_n_segments` (the engine carries the segment counter —
+PR-C deliberately kept this helper because this F6 caller
+remained; the caller is converted here, so the keep lapses),
+and the `re` / `Counter` imports the delegations left unused
+in phases 28, 29, and 30 (ruff-verified).
+
+### Counts — the re-pin (C087-17 act for this PR)
+
+| | before | after |
+|---|---|---|
+| registered | 534 | **537** (+ the three primitives above) |
+| legacy | 387 | **397** (+ the ten F7/F6 conversions) |
+| palette | 147 | **140** (−10 converted, +3 primitives) |
+| core definitions | 59 | **62** |
+| categories | 65 | **65** (no change) |
+
+Per-category deltas: palette `Decipherment` 19 → 21
+(SkeletonTabletSearch, ReverseSkeletonSearch), palette
+`Transforms` 7 → 8 (PersonsAggregator). Legacy-by-category:
+`Phase-22 / Reporters` 0 → 1, `Phase-23 / Reporters` 0 → 1,
+`Phase-24 / Reporters` 0 → 1, `Phase-25 / Decipherment`
+3 → 4, `Phase-25 / Reporters` 2 → 3, `Phase-26 / Decipherment`
+2 → 3, `Phase-27 / Decipherment` 3 → 4,
+`Phase-28 / Decipherment` 1 → 2, `Phase-29 / Decipherment`
+0 → 1, `Phase-30 / Decipherment` 0 → 1. The migration data
+file gains the ten ids under `s3_additions["PR-D (F7+F6)"]`;
+the census pin fixture is regenerated from the live
+registry; the S2 agreement test's converted set now holds
+PR-A's six, PR-B's nine, PR-C's thirteen, and these ten.
+
+### Equivalence and comparison results
+
+**Fixture equivalence (contract item 3):** 31 cases captured
+from the pre-change implementations in commit `09d7784`,
+before any implementation changed, and replayed
+post-conversion — **31/31 byte-identical** (all full-mode
+canonical-JSON equality), in
+`tests/test_spec087_s3_conversions_d.py`, alongside a
+Refined-V2-vs-V1 cross-check (on identical rows the two
+extractors differ only in verdict text and the [:120]
+example-line truncation, in the rows and in confirmed_hits),
+the converted-ids flag/provenance test, and the
+primitives-in-palette test (34 tests in the file). Fixture
+sources: the loaders behind the historical graphs read the
+gitignored corpora/ tree, absent from this repository, so —
+the PR-A/PR-C precedent — the inputs are synthetic records
+in exactly the mesopotamian_contact shapes, built to exercise
+every branch the conversion could move: an unmapped sign in
+the reading (skeleton segment "?", gloss "(unmapped)"), a
+keyword-gated tablet below the hit threshold, both readout
+insufficient-input cases, penalty-bearing and
+position-matching names, the allograph expansion adding a
+rendering the static set lacks (16 → 17 renderings, and a
+name that scores only through the added token), ePSD2 forms
+with determinatives and subscript digits, a multi-form entry
+whose best form is not its longest, the icount filter, cohort
+boundaries (an empty cohort, the open-ended S9+ bin),
+known-name matches in mixed case, empty candidate names
+(skipped in rows, counted in by-pattern), and a 200-character
+example line proving the three truncation rules (untruncated
+/ [:120] / [:160]). Sanity was checked against hand
+computation at capture (readout skeleton
+`miin-vaTa-miin-?-muruku-eZu--miin`, n_miin 3; V1 matches 2,
+V2 direct 2 / expanded 3 / new 1; reverse-V1 top candidate
+`ur-miin-ba-kakkab-lu-x-mul` at 9.0 with positions [1,3,6]
+and three penalty rows at −1.5; reverse-V3 top `MiinTest`
+at 9.0; persons-v3 example line exactly 160 chars).
+
+**27-graph comparison (contract item 4):** the S2 runner was
+executed on a fresh worktree of `702cc717` (pre) and on this
+branch (post), under the same two normalizations as
+PR-A/PR-B/PR-C (LanguageModel repr addresses; each tree's
+own root path). Database state, stated exactly as verified
+first-hand (read-only): the pre side was a fresh worktree,
+which has no `backend/data/` directory at all — its CGSA
+reads met absent tables; the post side read this clone's
+`backend/data/glossa.db`, whose CGSA tables are empty
+(canonical_signs 0 rows, sign_cluster_assignments 0 rows) —
+both sides exercised the same empty state. **27/27 graphs
+byte-identical pre vs post** under the normalizations, and
+every normalized hash also equals the PR-C table's hash for
+the same graph (the environment's cross-check):
+
+| graph | normalized sha256 (pre == post) |
+|---|---|
+| fuls_independence_suite | 991cfc445a85250a29cb4f6e58cb21e5ce000f8f856d67e83ffc9d4c667761bb |
+| fuls_nw_semitic_benchmark | ba8955b51e54d766e73beb0045bf56ad3412df0f6668af7ef3ffd58a80899bcd |
+| fuls_validation_suite | 13eeae07336b9add444308c3a4c2e80650223cdc25ff3e49112dff190a3b89ee |
+| generic_sa_multi_comparison | 5cc9d5c05d6bc4d601ec03620efc069eeecf9be48ed3e2b31f98fb38734a37be |
+| indus_anchor_sweep | 6aa045a2d574c0cc187088edeb58d05b930fb3565c7680257046665b2b839f37 |
+| indus_cgsa_cluster_analysis | 23b729b0b0beca767397b75331418fc71f7897543432cc9bc094c4dc7eaa9d9e |
+| indus_cisi_anchored_10 | cbd24cb40f154f745d99ff23192acb395147d37fa736288400af37827fb498fe |
+| indus_cisi_dravidian_vs_pali | bfe729e9c1d3580e72ffd4f3c9f430a315bc65101abcd0804da2ecba272134d8 |
+| indus_cisi_dravidian_vs_sanskrit | 754f4132ac83ed0c698a8470355bb0eceeea17248aa9f00c220a5e5c806791de |
+| indus_cisi_sa_dravidian_vs_nw_semitic | 0ef2599aec2d78dc2708c6afc72ab607561e27c3bbb86a98aacde0574d01ff03 |
+| indus_cisi_sa_dravidian_vs_sanskrit | 07b31b9db57b4f79358afe4224f852fb9c0ed8c8d42d50a613442a7c397dd28f |
+| indus_cisi_structural | 14874f0aca115af7bc0cca8318e63cbefae564f4df54dfef576dc03604db6578 |
+| indus_contact_zone_v2 | 39506ed67256454feab5b6901c191a13977d8697dd50e3bf0926dadeaddc24ad |
+| indus_dravidian_vs_sanskrit | 0035134bb5d80c043847e74910db8a2e3bbdbbc1782f583d8c45b96313e9274c |
+| indus_kalyanaraman_crossval | b91979cb7db634ff88388eb94187c2903bcead561a3b9a01f58deca79378b941 |
+| indus_sa_dravidian | d1c55048bf705a69a2521ec836e26a5e3fd5f255becfee9e9804ece0d2adb553 |
+| indus_sa_dravidian_syllable | 59d53741f123d1dac96a7e26f96573ab01fbbb7ccdc008f75e327da56e4f5bfa |
+| indus_sa_dravidian_vs_nw_semitic | 9481fac660430ef9d384aa74ee9a61a7984126a001b5d022678d8cf20bfcac0a |
+| indus_sa_dravidian_vs_sanskrit | 14281066e98477493620159207b241ede475afbd29165dfb7a4f5b4bfcd77a56 |
+| indus_sa_sanskrit_falsification | 6f730bda1effd69cdbd1bf88cd8987e2c4e416fb8f2875fcab1292ba72069cb7 |
+| indus_sign_function_dravidian | cfa805f2eb873f87e42d79ded34ec867acc83da56b54364b045f574d7df3a034 |
+| indus_structural_atlas | 86f0d2865f14a2686b20802771bb4284098b83dd30a5b04e570b34f88f6f057a |
+| indus_validation_a1_a3_holdout | 912f58147de96ba82c33e2dc8214bd9b3b0d1c096b3a57b9afe835998fdcb6c1 |
+| indus_validation_neg_controls | 729d59ebbbca788e670b49e85843a4a3484a3efeb9b66e22d7231af7899b90f7 |
+| kl_comparison | cf9a8e10b3043bc8942c29483118739688a02439fe20d5237f9d98e1647cca9c |
+| ugaritic_sa_decipher | af1b203f637ef67e4b3705a61697471fffdfd591d28934aa0c32d438cf41155b |
+| ventris_validation | 05580212a0a65a5ae9896ee610564fb4a7937c01b1a200f10724705c29fc8921 |
+
+None of the 27 live graphs wires an F7/F6 node — the
+comparison here is the no-live-behaviour-change proof for
+the helper removals and the registry edits; the per-node
+proof is the fixture equivalence above. The runs regenerate
+`reports/*.json` in-tree as a side effect; those files were
+restored and are not in this PR's diff.
+
+### Test results
+
+- Targeted suites (this branch): all six Spec 087 test
+  files — `test_spec087_registry_integrity.py`,
+  `test_spec087_palette_curation.py`,
+  `test_spec087_s3_conversions.py` (PR-A),
+  `test_spec087_s3_conversions_b.py` (PR-B),
+  `test_spec087_s3_conversions_c.py` (PR-C),
+  `test_spec087_s3_conversions_d.py` (this PR: 31 equivalence
+  cases + the cross-check + flag/provenance + palette tests)
+  — **184 passed**; plus the affected loader area,
+  `test_mesopotamian_contact_loader.py` — in the same run as
+  the PR-D file, **39 passed** combined.
+- Full backend suite (this branch, TMPDIR on disk, the one
+  named deselection
+  `test_phase392_q2_gate.py::test_pipeline_deterministic_under_seed`):
+  completed in a single run (236.83s) — **2,404 passed, 84
+  skipped, 1 failed, 1 error**. The one failure is the known
+  phase133 local-only baseline
+  (`test_phase133_stage0_inventory.py::test_builder_recomputation_skips_without_inputs`,
+  missing local download; it does not fail CI). The one error
+  is a teardown error of the session TestClient fixture
+  surfaced at `test_tray_token_auth.py` (the test itself
+  passed) — the tray teardown flake family PR-C's record
+  names; it is in the shared fixture teardown, not in any
+  module this PR touches.
+- `python -m ruff check backend/` — clean.
+- No frontend surface changed, so no builder-area frontend
+  tests were required and no dist rebuild was needed.
+
+### Claim assessments (this PR's legs)
+
+- **C087-7 — PR-D leg supported.** 10 of the 64 CONVERT
+  dispositions (families F7 + F6) are converted here with
+  byte-identical fixture equivalence; cumulatively 38 of 64
+  with PR-A, PR-B and PR-C. The remaining families' legs land
+  with their own PRs.
+- **C087-13 — PR-D leg supported.** The comparison runs over
+  all 27 live graphs hold byte-identical under the named
+  normalizations (above).
+- **C087-17 — PR-D act recorded.** The census pin, the
+  migration data file, and the S1/S2 test pins were re-pinned
+  in this same PR, from the live registry, with the deltas
+  tabled above.
+- **C087-15 — PR-D manual leg.** `docs/user-manual.md`'s
+  legacy section gains the short factual note (the three new
+  generic blocks in the Palette; the ten converted nodes now
+  legacy). The generated node reference is S4's scope.
+
+### Departures from the brief's letter, stated plainly
+
+- **T303 is still not ticked.** Its F7 + F6 legs are
+  discharged here; six families remain (F2, F9, F10, F11,
+  F12, F13), plus family F15 and the final retire-flagging
+  batch. The progress note under T303 in tasks.md is updated
+  instead of a tick.
+- **The brief's expected arithmetic was right** (registered
+  +3, legacy +10); the re-pin is nevertheless counted from
+  the live registry, per the contract: 537 / 397 / 140,
+  core 62, categories 65.
+- **The brief's "one scoring core" needed one qualification**:
+  the scoring core (positions, length, weights, penalty) is
+  shared exactly as specified, but the family's two matching
+  rules (substring for persons, exact-token for ePSD2) are
+  both in the current code; the engine carries the matching
+  rule as candidate-mode data rather than forcing one rule
+  on both sources. Byte-identical fixtures are the proof no
+  behaviour moved.
+- **F6's "one aggregation pass" is likewise a family, not a
+  single shape**: output key names (`all_rows_count` vs
+  `rows_all`, `n_unique_candidates` vs `n_unique`), the three
+  example-line truncation rules, and the two known-name
+  sources differ by node in the current code; all are carried
+  as spec data, none normalised.

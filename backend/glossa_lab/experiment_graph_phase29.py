@@ -35,7 +35,6 @@ Phase-29 = the corpus 10x expansion. Builds on Phase-28 with:
 
 from __future__ import annotations
 
-import re
 from pathlib import Path
 from typing import Any
 
@@ -322,27 +321,6 @@ def _icit_corpus_loader(inputs: dict, params: dict) -> dict:
 # ── M77 reverse Janabiyah search ─────────────────────────────────────
 
 
-def _epsd_pn_to_segments(headword: str, forms: list[str]) -> list[list[str]]:
-    """Convert an ePSD2 PN headword + forms to candidate segment lists.
-
-    e.g. "Abī-simtī[1]PN" with forms ["a-bi-si2-im-ti", "a-bi2-si2-im-ti"] →
-    [["a", "bi", "si", "im", "ti"], ["a", "bi", "si", "im", "ti"]]
-    """
-    segs: list[list[str]] = []
-    for f in forms or []:
-        if not f:
-            continue
-        # Strip determinatives like {d}, {disz}, {m}
-        clean = re.sub(r"\{[^}]+\}", "", str(f).lower())
-        parts = [p for p in re.split(r"[-]+", clean) if p and not p.isspace()]
-        # Drop subscript digits
-        parts = [re.sub(r"[0-9]+$", "", p) for p in parts]
-        parts = [p for p in parts if p]
-        if parts:
-            segs.append(parts)
-    return segs
-
-
 def _m77_reverse_janabiyah_search_v3(inputs: dict, params: dict) -> dict:
     """Phase-29 extension of Phase-28d ReverseJanabiyahSearchV2.
 
@@ -352,128 +330,66 @@ def _m77_reverse_janabiyah_search_v3(inputs: dict, params: dict) -> dict:
     Same scoring as Phase-28d but the candidate space is now ePSD2 entries
     (each with multiple alternate forms per entry) rather than the 44 me-luh-ha
     co-occurring PN candidates.
+
+    Spec 087 S3 (family F7): the mechanism is the generic
+    ReverseSkeletonSearch engine (glossa_lab.generic_primitives)
+    in its pn mode; this node is its Phase-29 parameterisation —
+    the ePSD2 name source and the ePSD2 segmenter (strip {…}
+    determinatives, split on hyphens, drop subscript digits; e.g.
+    "Abī-simtī[1]PN" with forms ["a-bi-si2-im-ti", "a-bi2-si2-im-ti"]
+    segments to [["a", "bi", "si", "im", "ti"], ["a", "bi", "si",
+    "im", "ti"]]) are the engine's carried segmenter, the shared
+    scoring core and the Phase-28d dynamic rendering expansion
+    are spec data, and matching is exact membership in the
+    rendering token set. The module-local _epsd_pn_to_segments
+    helper was used only here; it was removed (the engine carries
+    the shared segmenter).
     """
-    epsd2_pns = inputs.get("epsd2_personal_names") or []
-    janabiyah = inputs.get("janabiyah_reading") or {}
-    phoneme_map = inputs.get("phoneme_map") or {}
-    families = inputs.get("allograph_families") or {}
-    top_k = max(10, _safe_int(params.get("top_k", 30), 30))
-    min_icount = max(1, _safe_int(params.get("min_icount", 1), 1))
-
-    if not epsd2_pns or not janabiyah:
-        return {"verdict": "INSUFFICIENT_DATA",
-                "n_pns_searched": 0, "top_matches": []}
-
-    # Filter to PNs with at least min_icount instances
-    epsd2_pns = [p for p in epsd2_pns if int(p.get("icount", 0) or 0) >= min_icount]
-
-    # Build miin-renderings dynamically (Phase-28d style)
-    base_renderings = {
-        "miin", "mi-in", "me-en", "mi-na", "me-na", "mi-il",
-        "me-il", "mi-en", "me-in", "mu-li", "min", "men",
-        "mul", "imin", "kakkab", "asz",
-    }
-    fish_family_members = set(
-        str(m) for m in (families.get("fish") or {}).get("members") or []
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        reverse_skeleton_search_execute,
     )
-    for sid in fish_family_members:
-        ph = (phoneme_map.get(sid) or {}).get("phoneme", "")
-        for tok in re.split(r"[/\s]", ph or ""):
-            t = tok.strip().lower()
-            if t and len(t) >= 2:
-                base_renderings.add(t)
 
-    # Tokenized renderings (e.g., "mi-in" → "mi", "in")
-    rendering_tokens: set[str] = set()
-    for r in base_renderings:
-        for t in r.split("-"):
-            if t and len(t) >= 2:
-                rendering_tokens.add(t)
-
-    miin_positions = {1, 3, 6}
-    n_target_segments = 7
-
-    def _score_pn(headword: str, forms: list[str], periods: list[str], icount: int) -> dict:
-        all_segs = _epsd_pn_to_segments(headword, forms)
-        if not all_segs:
-            return None  # type: ignore
-        # Score the best (longest) form
-        best_score = -999.0
-        best_form_segs: list[str] = []
-        best_form_pmatch = 0
-        best_form_free = 0
-        best_positions: list[int] = []
-        for segs in all_segs:
-            n_segs = len(segs)
-            delta = abs(n_segs - n_target_segments)
-            length_score = max(0.0, 3.0 - 0.5 * delta)
-            position_match = 0
-            positions_matched: list[int] = []
-            for i, seg in enumerate(segs):
-                if i in miin_positions and seg.lower() in rendering_tokens:
-                    position_match += 1
-                    positions_matched.append(i)
-            free_miin = sum(
-                1 for s in segs if s.lower() in rendering_tokens
-            )
-            total = length_score + position_match * 1.5 + free_miin * 0.5
-            if total > best_score:
-                best_score = total
-                best_form_segs = segs
-                best_form_pmatch = position_match
-                best_form_free = free_miin
-                best_positions = positions_matched
-
-        return {
-            "headword": headword,
-            "best_form": "-".join(best_form_segs),
-            "n_segments": len(best_form_segs),
-            "position_match": best_form_pmatch,
-            "positions_matched": best_positions,
-            "free_miin": best_form_free,
-            "total_score": round(best_score, 3),
-            "icount": icount,
-            "periods": periods,
-            "n_alternate_forms": len(all_segs),
-        }
-
-    scored: list[dict] = []
-    for pn in epsd2_pns:
-        r = _score_pn(
-            pn.get("headword", ""),
-            pn.get("forms", []),
-            pn.get("periods", []),
-            int(pn.get("icount", 0) or 0),
-        )
-        if r:
-            scored.append(r)
-
-    scored.sort(key=lambda r: (-r["total_score"], -r["icount"]))
-    top = scored[:top_k]
-    n_pos = sum(1 for r in scored if r["position_match"] > 0)
-    n_free = sum(1 for r in scored if r["free_miin"] > 0)
-
-    verdict = (
-        f"Phase-29 reverse Janabiyah search (ePSD2 v3): {len(scored)} ePSD2 "
-        f"PNs scored against {len(rendering_tokens)} miin-token-renderings. "
-        f"{n_pos} have at least one position-match (segment with miin-token "
-        f"at Janabiyah positions 1/3/6). {n_free} have at least one miin-"
-        f"rendering anywhere. "
-        + (
-            f"Top: '{top[0]['headword']}' (score {top[0]['total_score']}, "
-            f"icount {top[0]['icount']}, periods {top[0]['periods']})."
-            if top else "No candidates."
-        )
-        + " 28x scale-up vs Phase-28d (1,222 PNs vs 44)."
-    )
-    return {
-        "n_pns_searched": len(scored),
-        "n_renderings": len(rendering_tokens),
-        "n_with_position_match": n_pos,
-        "n_with_free_miin": n_free,
-        "top_matches": top,
-        "verdict": verdict,
+    merged = dict(params)
+    merged["search_spec"] = {
+        "candidate_mode": "pn",
+        "candidates_input": "epsd2_personal_names",
+        "target_positions": [1, 3, 6],
+        "target_length": 7,
+        "length_base": 3.0,
+        "length_step": 0.5,
+        "position_weight": 1.5,
+        "free_weight": 0.5,
+        "renderings": [
+            "miin", "mi-in", "me-en", "mi-na", "me-na", "mi-il",
+            "me-il", "mi-en", "me-in", "mu-li", "min", "men",
+            "mul", "imin", "kakkab", "asz",
+        ],
+        "expand_renderings": True,
+        "expansion_family": "fish",
+        "top_k_default": 30,
+        "top_k_floor": 10,
+        "empty_result": {
+            "verdict": "INSUFFICIENT_DATA",
+            "n_pns_searched": 0,
+            "top_matches": [],
+        },
+        "verdict_template": (
+            "Phase-29 reverse Janabiyah search (ePSD2 v3): "
+            "{n_pns_searched} ePSD2 PNs scored against "
+            "{n_renderings} miin-token-renderings. "
+            "{n_with_position_match} have at least one "
+            "position-match (segment with miin-token at Janabiyah "
+            "positions 1/3/6). {n_with_free_miin} have at least "
+            "one miin-rendering anywhere. "
+        ),
+        "verdict_top_template": (
+            "Top: '{top_headword}' (score {top_score}, icount "
+            "{top_icount}, periods {top_periods})."
+        ),
+        "verdict_no_top_text": "No candidates.",
+        "verdict_suffix": " 28x scale-up vs Phase-28d (1,222 PNs vs 44).",
     }
+    return reverse_skeleton_search_execute(inputs, merged)
 
 
 # ── M77 corpus stats ──────────────────────────────────────────────────

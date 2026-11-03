@@ -89,104 +89,56 @@ def _reverse_janabiyah_search(inputs: dict, params: dict) -> dict:
            - 'mul'-translation segments: bonus if PN contains mul/imin/kakkab
              at the same positions.
       4. Report top-K candidate PNs ranked by total score.
+
+    Spec 087 S3 (family F7): the mechanism is the generic
+    ReverseSkeletonSearch engine (glossa_lab.generic_primitives)
+    in its persons mode; this node is its Phase-27 parameterisation
+    — the family's shared scoring core (target positions {1, 3, 6},
+    target length 7, the 3.0/1.5/0.5 weights), the static 15-item
+    rendering set, and the -me-luh-ha / -me-luh-ha-ki suffix
+    penalty (the suffix is generic 'of Meluhha', not a phoneme),
+    all carried as spec data.
     """
-    persons = inputs.get("persons_v3") or []
-    janabiyah = inputs.get("janabiyah_reading") or {}
-    top_k = max(10, _safe_int(params.get("top_k", 20), 20))
-
-    if not persons or not janabiyah:
-        return {"verdict": "INSUFFICIENT_DATA",
-                "n_candidates": 0, "top_matches": []}
-
-    # Aggregate persons by candidate_name
-    name_counts: Counter[str] = Counter()
-    name_meta: dict[str, dict] = {}
-    for p in persons:
-        n = p.get("candidate_name", "")
-        if not n:
-            continue
-        name_counts[n] += 1
-        if n not in name_meta:
-            name_meta[n] = {
-                "first_period": p.get("period", ""),
-                "first_provenience": p.get("provenience", ""),
-                "first_p_number": p.get("p_number", ""),
-            }
-
-    # Janabiyah pattern: [?, miin, or?, miin, ?, ?, miin]
-    # Positions where miin should appear (0-indexed): 1, 3, 6
-    miin_positions = {1, 3, 6}
-    n_target_segments = 7
-    miin_renderings = {"miin", "mi-in", "me-en", "mi-na", "me-na", "mi-il",
-                       "me-il", "mi-en", "me-in", "mu-li", "min", "men",
-                       "mul", "imin", "kakkab"}
-
-    def _score(name: str) -> dict:
-        """Score one candidate name against the Janabiyah pattern."""
-        segs = name.split("-")
-        n_segs = len(segs)
-        # Length-match component (max 3.0)
-        delta = abs(n_segs - n_target_segments)
-        length_score = max(0.0, 3.0 - 0.5 * delta)
-
-        # Position-match component: count segments at positions 1/3/6 that
-        # contain a miin-rendering. Up to 3 points.
-        position_match = 0
-        positions_matched: list[int] = []
-        for i, seg in enumerate(segs):
-            seg_l = seg.lower().strip("()? ")
-            if i in miin_positions and any(r in seg_l for r in miin_renderings):
-                position_match += 1
-                positions_matched.append(i)
-
-        # Free miin component: count miin-renderings anywhere in the name.
-        free_miin = sum(1 for s in segs
-                        if any(r in s.lower().strip("()? ") for r in miin_renderings))
-
-        # Penalize names that are clearly toponyms or function words even
-        # if the regex passed
-        penalty = 0.0
-        if name.endswith("-me-luh-ha") or name.endswith("-me-luh-ha-ki"):
-            penalty -= 1.5  # the suffix is generic 'of Meluhha', not a phoneme
-
-        total = length_score + position_match * 1.5 + free_miin * 0.5 + penalty
-        return {
-            "candidate_name": name,
-            "n_segments": n_segs,
-            "length_score": round(length_score, 2),
-            "position_match": position_match,
-            "positions_matched": positions_matched,
-            "free_miin": free_miin,
-            "penalty": round(penalty, 2),
-            "total_score": round(total, 3),
-            "occurrences": name_counts[name],
-            "first_period": name_meta[name].get("first_period", ""),
-            "first_provenience": name_meta[name].get("first_provenience", ""),
-        }
-
-    scored = [_score(n) for n in name_counts.keys()]
-    scored.sort(key=lambda r: (-r["total_score"], -r["occurrences"]))
-    top = scored[:top_k]
-    n_with_position_match = sum(1 for r in scored if r["position_match"] > 0)
-    n_with_free_miin = sum(1 for r in scored if r["free_miin"] > 0)
-
-    verdict = (
-        f"Reverse Janabiyah search: {len(scored)} unique persons-v3 "
-        f"candidates scored. {n_with_position_match} have at least one "
-        f"position-match (segment with miin-rendering at Janabiyah "
-        f"position 1/3/6). {n_with_free_miin} have at least one "
-        f"miin-rendering anywhere in the name. Top candidate: "
-        f"'{top[0]['candidate_name']}' (score {top[0]['total_score']}, "
-        f"occurrences {top[0]['occurrences']})."
-        if top else "No candidates."
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        reverse_skeleton_search_execute,
     )
-    return {
-        "n_candidates": len(scored),
-        "n_with_position_match": n_with_position_match,
-        "n_with_free_miin": n_with_free_miin,
-        "top_matches": top,
-        "verdict": verdict,
+
+    merged = dict(params)
+    merged["search_spec"] = {
+        "candidate_mode": "persons",
+        "candidates_input": "persons_v3",
+        "target_positions": [1, 3, 6],
+        "target_length": 7,
+        "length_base": 3.0,
+        "length_step": 0.5,
+        "position_weight": 1.5,
+        "free_weight": 0.5,
+        "renderings": [
+            "miin", "mi-in", "me-en", "mi-na", "me-na", "mi-il",
+            "me-il", "mi-en", "me-in", "mu-li", "min", "men",
+            "mul", "imin", "kakkab",
+        ],
+        "penalty_suffixes": ["-me-luh-ha", "-me-luh-ha-ki"],
+        "penalty_value": -1.5,
+        "top_k_default": 20,
+        "top_k_floor": 10,
+        "empty_result": {
+            "verdict": "INSUFFICIENT_DATA",
+            "n_candidates": 0,
+            "top_matches": [],
+        },
+        "verdict_template": (
+            "Reverse Janabiyah search: {n_candidates} unique "
+            "persons-v3 candidates scored. {n_with_position_match} "
+            "have at least one position-match (segment with "
+            "miin-rendering at Janabiyah position 1/3/6). "
+            "{n_with_free_miin} have at least one miin-rendering "
+            "anywhere in the name. Top candidate: '{top_name}' "
+            "(score {top_score}, occurrences {top_occurrences})."
+        ),
+        "empty_top_text": "No candidates.",
     }
+    return reverse_skeleton_search_execute(inputs, merged)
 
 
 # ── Tier 2 #4: Phoneme-VALUE permutation null ────────────────────────

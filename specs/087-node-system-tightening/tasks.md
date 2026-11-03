@@ -34,19 +34,19 @@ carries its gate/test output verbatim** — not a summary of it.
 
 ## Stage S1 — Registry integrity (PR: `feat/087-s1-registry-integrity`)
 
-- [ ] T101 Fail-fast registry build: an environment-gated
+- [x] T101 Fail-fast registry build: an environment-gated
   strict mode in the plugin import path (production keeps
   the warning; strict contexts raise). (C087-1) Acceptance:
   test — a seeded broken module fails the strict build
   loudly; the lenient build still registers the rest.
   *This does not establish that production should run strict
   — only that CI can no longer pass over a shrink.*
-- [ ] T102 Registry-completeness test: pins the 144 module
+- [x] T102 Registry-completeness test: pins the 144 module
   names, the registered total (517), and per-category counts
   from records/census-evidence.md Table 1. (C087-1, C087-17)
   Acceptance: test. *This does not establish the counts are
   right — only that they are pinned and any change is an act.*
-- [ ] T103 Shadow resolution: behaviour-diff the three
+- [x] T103 Shadow resolution: behaviour-diff the three
   shadowed pairs (census Table 4) on their report fixtures;
   record the diff and the kept definition per pair; delete
   the three dead definitions; add the duplicate-id guard
@@ -55,18 +55,18 @@ carries its gate/test output verbatim** — not a summary of it.
   *This does not establish the kept definitions are
   scientifically right — only that one definition per id
   survives, chosen on recorded behaviour.*
-- [ ] T104 Palette failure surface: the builder renders a
+- [x] T104 Palette failure surface: the builder renders a
   named error state (with retry) when the catalog fetch
   fails. (C087-3) Acceptance: test (component test with a
   failing fetch). *This does not establish endpoint
   reliability — only that failure is visible.*
-- [ ] T105 `node_registry.py` renamed to
+- [x] T105 `node_registry.py` renamed to
   `study_node_registry.py` (importer `main.py`, tests, doc
   references); `/node-registry/` endpoint path unchanged;
   both-registries import test. (C087-16) Acceptance: test.
   *This does not establish the two systems should merge —
   only that they stop sharing a name.*
-- [ ] T106 S1 stage record: gate/test output verbatim
+- [x] T106 S1 stage record: gate/test output verbatim
   (completeness pin, teeth runs, the shadow behaviour diffs),
   manual changes named. Acceptance: test (record present,
   outputs verbatim). *This does not establish S1's design

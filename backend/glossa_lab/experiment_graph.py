@@ -35,6 +35,10 @@ from pathlib import Path
 from typing import Any, Callable
 
 from glossa_lab.experiment_base import ExperimentBase
+from glossa_lab.generic_loaders import (
+    dataset_record_loader_execute,
+    json_corpus_loader_execute,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -1968,6 +1972,39 @@ for _d in [
         outputs=[{"name":"value","type":"any"},{"name":"text","type":"text"}],
         params_schema={"type":"object","properties":{"value":{"type":"string","title":"Value"}}},
         fn=_static_value),
+    AtomicNodeDef("JsonCorpusLoader","JSON Corpus Loader","Sources",
+        "Load a sign-sequence corpus from a JSON file via a declarative source spec "
+        "(Spec 087 S3): a fallback chain of file sources (JSON record files, or a "
+        "grouped-CSV fallback), a field map, and length filters, projected as "
+        "sequences + per-inscription metadata + counts. Corpus identity, paths, "
+        "and field names are parameters (corpus_spec), not code — the domain "
+        "loaders (M77, ICIT, Mathematica Epigraphica) delegate to this engine.",
+        inputs=[],
+        outputs=[{"name":"sequences","type":"sequences"},{"name":"inscriptions","type":"json"},{"name":"n_inscriptions","type":"number"},{"name":"n_tokens","type":"number"},{"name":"n_distinct_signs","type":"number"},{"name":"label","type":"text"},{"name":"source","type":"text"},{"name":"available","type":"any"},{"name":"verdict","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "data_path":{"type":"string","title":"Data Path","description":"JSON corpus file (single-source use; see corpus_spec for chains)."},
+            "records_key":{"type":"string","title":"Records Key","default":"inscriptions"},
+            "projection":{"type":"string","title":"Projection","default":"sequence_corpus","description":"sequence_corpus | record_list | cache_summary."},
+            "use_raw":{"type":"boolean","title":"Use Raw","default":False},
+            "min_length":{"type":"integer","title":"Min Length","default":1,"minimum":0},
+            "max_length":{"type":"integer","title":"Max Length","default":0,"description":"0 = no upper bound."},
+            "label":{"type":"string","title":"Label","default":"corpus"},
+            "corpus_spec":{"type":"object","title":"Corpus Spec","description":"Full declarative spec: sources, field_map, absent_result, verdict_template."}}},
+        fn=json_corpus_loader_execute),
+    AtomicNodeDef("DatasetRecordLoader","Dataset Record Loader","Sources",
+        "Load records from a bundled data module (glossa_lab.data.*) via a "
+        "declarative spec (Spec 087 S3): named getters with parameterised "
+        "kwargs, record filters, and an ordered output assembly (values, "
+        "counts, top-N counters, verdict templates). Dataset identity, getter "
+        "names, and verdict text are parameters (dataset_spec), not code — "
+        "the domain loaders (Mahadevan, ePSD2, Contact Corpus) delegate to "
+        "this engine.",
+        inputs=[],
+        outputs=[{"name":"records","type":"json"},{"name":"n_records","type":"number"},{"name":"metadata","type":"json"},{"name":"verdict","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "module":{"type":"string","title":"Data Module","description":"Dotted path of a glossa_lab.data module."},
+            "dataset_spec":{"type":"object","title":"Dataset Spec","description":"Full declarative spec: module, getters, filters, outputs."}}},
+        fn=dataset_record_loader_execute),
     AtomicNodeDef("FreqCounter","Frequency Counter","Transforms",
         "Count symbol occurrences across all sequences.",
         inputs=[{"name":"sequences","type":"sequences","required":True}],

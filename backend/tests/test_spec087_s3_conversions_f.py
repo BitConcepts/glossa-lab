@@ -113,6 +113,22 @@ def _run_case(case, monkeypatch, tmp_path):
             p29, "_icit_corpus_loader",
             lambda inputs, params: setup["icit"])
         return fn(case["inputs"], case["params"])
+    if kind == "meluhha_stage":
+        import shutil
+
+        target = (
+            Path(eg.__file__).resolve().parent.parent
+            / "reports" / "meluhha_corpus_audit.json"
+        )
+        assert not target.exists(), (
+            "named pin: backend/reports/meluhha_corpus_audit.json is "
+            "absent from the repo; the stage setup requires that state"
+        )
+        shutil.copyfile(FIXTURE_DIR / setup["file"], target)
+        try:
+            return fn(case["inputs"], case["params"])
+        finally:
+            target.unlink(missing_ok=True)
     raise AssertionError(f"unknown setup kind {kind!r}")
 
 

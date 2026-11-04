@@ -2340,6 +2340,743 @@
     "scale_up_factor_cisi_to_m77": 0.0,
     "verdict": "Corpus 10x expansion (Phase-29): CISI Phase-22 contact-zone seals (1 inscribed seals) -> Mahadevan 1977 (0 inscriptions, 0.0x scale-up). Fuls ME vol. 3 + ICIT not yet bundled (would add another ~3.3x and 2.7x respectively when accessible)."
    }
+  },
+  {
+   "id": "f11_reporter_mixed",
+   "node": "CISIFindspotReporter",
+   "mode": "full",
+   "inputs": {
+    "findspot_map": {
+     "M-41": {
+      "site": "Mohenjo-daro",
+      "country": "Pakistan",
+      "is_contact_zone": false,
+      "n_seals_in_volume": 30
+     },
+     "M-": {
+      "site": "Mohenjo-daro (general)",
+      "country": "Pakistan",
+      "is_contact_zone": false,
+      "n_seals_in_volume": 100
+     },
+     "H-": {
+      "site": "Harappa",
+      "country": "Pakistan",
+      "is_contact_zone": false,
+      "n_seals_in_volume": "12"
+     },
+     "DK": {
+      "country": "",
+      "n_seals_in_volume": 7
+     },
+     "LOTH": {
+      "site": "Lothal",
+      "country": "India",
+      "is_contact_zone": true
+     }
+    },
+    "inscribed_seals": [
+     {
+      "catalogue_id": "M-410"
+     },
+     {
+      "catalogue_id": "M-999"
+     },
+     {
+      "catalogue_id": "H-123"
+     },
+     {
+      "catalogue_id": "LOTHAL-9"
+     },
+     {
+      "catalogue_id": "XXXX-1"
+     },
+     {
+      "catalogue_id": ""
+     },
+     {
+      "no_id": true
+     },
+     {
+      "catalogue_id": "DK-88"
+     }
+    ],
+    "contact_zone_prefixes": [
+     "LOTH",
+     "DK",
+     "ZZ"
+    ]
+   },
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "n_countries": 3,
+    "n_prefixes": 5,
+    "n_seals_in_cisi_vol3": 149,
+    "seal_findspot_assignments": [
+     {
+      "catalogue_id": "M-410",
+      "country": "Pakistan",
+      "is_contact_zone": false,
+      "prefix": "M-41",
+      "site": "Mohenjo-daro"
+     },
+     {
+      "catalogue_id": "M-999",
+      "country": "Pakistan",
+      "is_contact_zone": false,
+      "prefix": "M-",
+      "site": "Mohenjo-daro (general)"
+     },
+     {
+      "catalogue_id": "H-123",
+      "country": "Pakistan",
+      "is_contact_zone": false,
+      "prefix": "H-",
+      "site": "Harappa"
+     },
+     {
+      "catalogue_id": "LOTHAL-9",
+      "country": "India",
+      "is_contact_zone": true,
+      "prefix": "LOTH",
+      "site": "Lothal"
+     },
+     {
+      "catalogue_id": "DK-88",
+      "country": "",
+      "is_contact_zone": false,
+      "prefix": "DK",
+      "site": null
+     }
+    ],
+    "sites_by_country": {
+     "India": [
+      "Lothal (LOTH)"
+     ],
+     "Pakistan": [
+      "Mohenjo-daro (M-41)",
+      "Mohenjo-daro (general) (M-)",
+      "Harappa (H-)"
+     ],
+     "Unknown": [
+      "DK (DK)"
+     ]
+    },
+    "verdict": "CISI find-spot map: 5 site prefixes covering ~149 seals across 3 countries. Contact-zone prefix set has 3 entries. Of 8 Phase-22 inscribed seals, 5 could be assigned a site via prefix matching (the remainder use Mahadevan M77 IDs / hand-encoded catalogue IDs not following the CISI prefix convention)."
+   }
+  },
+  {
+   "id": "f11_reporter_empty",
+   "node": "CISIFindspotReporter",
+   "mode": "full",
+   "inputs": {},
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "n_countries": 0,
+    "n_prefixes": 0,
+    "n_seals_in_cisi_vol3": 0,
+    "seal_findspot_assignments": [],
+    "sites_by_country": {},
+    "verdict": "CISI find-spot map: 0 site prefixes covering ~0 seals across 0 countries. Contact-zone prefix set has 0 entries. Of 0 Phase-22 inscribed seals, 0 could be assigned a site via prefix matching (the remainder use Mahadevan M77 IDs / hand-encoded catalogue IDs not following the CISI prefix convention)."
+   }
+  },
+  {
+   "id": "f11_shu_l4_contact",
+   "node": "ShuIlishuContactZoneFilter",
+   "mode": "full",
+   "inputs": {
+    "findspot_map": {
+     "M-1A": {
+      "site": "Lothal",
+      "is_contact_zone": true
+     }
+    },
+    "contact_zone_prefixes": [
+     "M-1A"
+    ]
+   },
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "contact_zone_inscriptions_top20": [
+     {
+      "catalogue_id": "M-1A",
+      "is_contact_zone": true,
+      "n_signs": 5,
+      "signs": [
+       "P121",
+       "P202",
+       "P385",
+       "P073",
+       "P108"
+      ],
+      "site": "Lothal"
+     }
+    ],
+    "n_contact_zone": 1,
+    "n_core_indus": 137,
+    "n_total_candidates": 138,
+    "sites_distribution": {
+     "Lothal": 1,
+     "Unknown": 137
+    },
+    "verdict": "Shu-ilishu contact-zone filter (Phase-27): 138 Phase-25e candidate inscriptions (length 3-7) resolved via catalogue_id. 1 are from contact-zone sites; 137 are from Indus-core sites. NOTE: the current indus_cisi corpus (179 inscriptions, all from Mohenjo-daro) does NOT include any contact-zone seals -- those are only in CISI Vol 3 Part 3 plates (not yet ingested with sign sequences)."
+   }
+  },
+  {
+   "id": "f11_shu_falsy_shadow",
+   "node": "ShuIlishuContactZoneFilter",
+   "mode": "full",
+   "inputs": {
+    "findspot_map": {
+     "M-1A": {},
+     "M-": {
+      "site": "Mohenjo-daro",
+      "is_contact_zone": true
+     }
+    }
+   },
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "contact_zone_inscriptions_top20": [
+     {
+      "catalogue_id": "M-1A",
+      "is_contact_zone": true,
+      "n_signs": 5,
+      "signs": [
+       "P121",
+       "P202",
+       "P385",
+       "P073",
+       "P108"
+      ],
+      "site": "Mohenjo-daro"
+     },
+     {
+      "catalogue_id": "M-3A",
+      "is_contact_zone": true,
+      "n_signs": 3,
+      "signs": [
+       "P320",
+       "P145",
+       "P094"
+      ],
+      "site": "Mohenjo-daro"
+     },
+     {
+      "catalogue_id": "M-5A",
+      "is_contact_zone": true,
+      "n_signs": 6,
+      "signs": [
+       "P324",
+       "P096",
+       "P062",
+       "P060",
+       "P120",
+       "P256"
+      ],
+      "site": "Mohenjo-daro"
+     },
+     {
+      "catalogue_id": "M-6A",
+      "is_contact_zone": true,
+      "n_signs": 4,
+      "signs": [
+       "P378",
+       "P384",
+       "P201",
+       "P065"
+      ],
+      "site": "Mohenjo-daro"
+     },
+     {
+      "catalogue_id": "M-8A",
+      "is_contact_zone": true,
+      "n_signs": 3,
+      "signs": [
+       "P316",
+       "P011",
+       "P270"
+      ],
+      "site": "Mohenjo-daro"
+     },
+     {
+      "catalogue_id": "M-9A",
+      "is_contact_zone": true,
+      "n_signs": 3,
+      "signs": [
+       "P144",
+       "P205",
+       "P327"
+      ],
+      "site": "Mohenjo-daro"
+     },
+     {
+      "catalogue_id": "M-13A",
+      "is_contact_zone": true,
+      "n_signs": 3,
+      "signs": [
+       "P202",
+       "P205",
+       "P035"
+      ],
+      "site": "Mohenjo-daro"
+     },
+     {
+      "catalogue_id": "M-14A",
+      "is_contact_zone": true,
+      "n_signs": 5,
+      "signs": [
+       "P324",
+       "P117",
+       "P210",
+       "P122",
+       "P385"
+      ],
+      "site": "Mohenjo-daro"
+     },
+     {
+      "catalogue_id": "M-15A",
+      "is_contact_zone": true,
+      "n_signs": 5,
+      "signs": [
+       "P013",
+       "P324",
+       "P194",
+       "P122",
+       "P385"
+      ],
+      "site": "Mohenjo-daro"
+     },
+     {
+      "catalogue_id": "M-16A",
+      "is_contact_zone": true,
+      "n_signs": 4,
+      "signs": [
+       "P378",
+       "P026",
+       "P151",
+       "P346"
+      ],
+      "site": "Mohenjo-daro"
+     },
+     {
+      "catalogue_id": "M-17A",
+      "is_contact_zone": true,
+      "n_signs": 5,
+      "signs": [
+       "P086",
+       "P126",
+       "P122",
+       "P369",
+       "P232"
+      ],
+      "site": "Mohenjo-daro"
+     },
+     {
+      "catalogue_id": "M-18A",
+      "is_contact_zone": true,
+      "n_signs": 3,
+      "signs": [
+       "P341",
+       "P324",
+       "P142"
+      ],
+      "site": "Mohenjo-daro"
+     },
+     {
+      "catalogue_id": "M-19A",
+      "is_contact_zone": true,
+      "n_signs": 3,
+      "signs": [
+       "P000",
+       "P122",
+       "P385"
+      ],
+      "site": "Mohenjo-daro"
+     },
+     {
+      "catalogue_id": "M-22A",
+      "is_contact_zone": true,
+      "n_signs": 7,
+      "signs": [
+       "P324",
+       "P172",
+       "P194",
+       "P050",
+       "P145",
+       "P230",
+       "P000"
+      ],
+      "site": "Mohenjo-daro"
+     },
+     {
+      "catalogue_id": "M-24A",
+      "is_contact_zone": true,
+      "n_signs": 7,
+      "signs": [
+       "P013",
+       "P324",
+       "P062",
+       "P060",
+       "P122",
+       "P174",
+       "P011"
+      ],
+      "site": "Mohenjo-daro"
+     },
+     {
+      "catalogue_id": "M-25A",
+      "is_contact_zone": true,
+      "n_signs": 5,
+      "signs": [
+       "P268",
+       "P268",
+       "P050",
+       "P316",
+       "P276"
+      ],
+      "site": "Mohenjo-daro"
+     },
+     {
+      "catalogue_id": "M-26A",
+      "is_contact_zone": true,
+      "n_signs": 5,
+      "signs": [
+       "P013",
+       "P324",
+       "P228",
+       "P120",
+       "P256"
+      ],
+      "site": "Mohenjo-daro"
+     },
+     {
+      "catalogue_id": "M-27A",
+      "is_contact_zone": true,
+      "n_signs": 7,
+      "signs": [
+       "P238",
+       "P060",
+       "P364",
+       "P325",
+       "P311",
+       "P154",
+       "P123"
+      ],
+      "site": "Mohenjo-daro"
+     },
+     {
+      "catalogue_id": "M-30A",
+      "is_contact_zone": true,
+      "n_signs": 7,
+      "signs": [
+       "P324",
+       "P332",
+       "P127",
+       "P210",
+       "P062",
+       "P060",
+       "P364"
+      ],
+      "site": "Mohenjo-daro"
+     },
+     {
+      "catalogue_id": "M-31A",
+      "is_contact_zone": true,
+      "n_signs": 6,
+      "signs": [
+       "P324",
+       "P067",
+       "P275",
+       "P058",
+       "P120",
+       "P378"
+      ],
+      "site": "Mohenjo-daro"
+     }
+    ],
+    "n_contact_zone": 138,
+    "n_core_indus": 0,
+    "n_total_candidates": 138,
+    "sites_distribution": {
+     "Mohenjo-daro": 138
+    },
+    "verdict": "Shu-ilishu contact-zone filter (Phase-27): 138 Phase-25e candidate inscriptions (length 3-7) resolved via catalogue_id. 138 are from contact-zone sites; 0 are from Indus-core sites. NOTE: the current indus_cisi corpus (179 inscriptions, all from Mohenjo-daro) does NOT include any contact-zone seals -- those are only in CISI Vol 3 Part 3 plates (not yet ingested with sign sequences)."
+   }
+  },
+  {
+   "id": "f11_shu_empty_map",
+   "node": "ShuIlishuContactZoneFilter",
+   "mode": "full",
+   "inputs": {},
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "contact_zone_inscriptions_top20": [],
+    "n_contact_zone": 0,
+    "n_core_indus": 138,
+    "n_total_candidates": 138,
+    "sites_distribution": {
+     "Unknown": 138
+    },
+    "verdict": "Shu-ilishu contact-zone filter (Phase-27): 138 Phase-25e candidate inscriptions (length 3-7) resolved via catalogue_id. 0 are from contact-zone sites; 138 are from Indus-core sites. NOTE: the current indus_cisi corpus (179 inscriptions, all from Mohenjo-daro) does NOT include any contact-zone seals -- those are only in CISI Vol 3 Part 3 plates (not yet ingested with sign sequences)."
+   }
+  },
+  {
+   "id": "f11_meluhha_absent",
+   "node": "MeluhhaCooccurrenceCheck",
+   "mode": "full",
+   "inputs": {
+    "top_candidates": [
+     "Shu-ilishu",
+     "the interpreter of the Meluhhan language",
+     "Uru",
+     "Gudea",
+     "Naram-Sin",
+     "Sargon",
+     "Rimush",
+     "Manishtushu",
+     "Ibbi-Sin"
+    ]
+   },
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "candidates_checked": 9,
+    "meluhha_corpus_available": false,
+    "meluhha_hits": [],
+    "meluhha_misses": [
+     "Shu-ilishu",
+     "the interpreter of the Meluhhan language",
+     "Uru",
+     "Gudea",
+     "Naram-Sin"
+    ],
+    "n_hits": 0,
+    "verdict": "NEUTRAL: No direct Meluhha co-occurrence found. This does not falsify the hypothesis (Meluhha = Indus identification is independent)."
+   }
+  },
+  {
+   "id": "f11_meluhha_cap",
+   "node": "MeluhhaCooccurrenceCheck",
+   "mode": "full",
+   "inputs": {
+    "top_candidates": [
+     "Candidate 0",
+     "Candidate 1",
+     "Candidate 2",
+     "Candidate 3",
+     "Candidate 4",
+     "Candidate 5",
+     "Candidate 6",
+     "Candidate 7",
+     "Candidate 8",
+     "Candidate 9",
+     "Candidate 10",
+     "Candidate 11",
+     "Candidate 12",
+     "Candidate 13",
+     "Candidate 14",
+     "Candidate 15",
+     "Candidate 16",
+     "Candidate 17",
+     "Candidate 18",
+     "Candidate 19",
+     "Candidate 20",
+     "Candidate 21",
+     "Candidate 22",
+     "Candidate 23",
+     "Candidate 24"
+    ]
+   },
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "candidates_checked": 20,
+    "meluhha_corpus_available": false,
+    "meluhha_hits": [],
+    "meluhha_misses": [
+     "Candidate 0",
+     "Candidate 1",
+     "Candidate 2",
+     "Candidate 3",
+     "Candidate 4"
+    ],
+    "n_hits": 0,
+    "verdict": "NEUTRAL: No direct Meluhha co-occurrence found. This does not falsify the hypothesis (Meluhha = Indus identification is independent)."
+   }
+  },
+  {
+   "id": "f11_meluhha_present",
+   "node": "MeluhhaCooccurrenceCheck",
+   "mode": "full",
+   "inputs": {
+    "top_candidates": [
+     "Shu-ilishu",
+     "the interpreter of the Meluhhan language",
+     "Uru",
+     "Gudea",
+     "Naram-Sin",
+     "Sargon",
+     "Rimush",
+     "Manishtushu",
+     "Ibbi-Sin"
+    ]
+   },
+   "params": {},
+   "setup": {
+    "kind": "meluhha_stage",
+    "file": "f11_meluhha_corpus.json"
+   },
+   "expected": {
+    "candidates_checked": 9,
+    "meluhha_corpus_available": true,
+    "meluhha_hits": [
+     "Shu-ilishu",
+     "the interpreter of the Meluhhan language",
+     "Gudea"
+    ],
+    "meluhha_misses": [
+     "Uru",
+     "Naram-Sin",
+     "Sargon",
+     "Rimush",
+     "Manishtushu"
+    ],
+    "n_hits": 3,
+    "verdict": "FAVORABLE: 3 candidate(s) appear in Meluhha co-occurrence contexts: ['Shu-ilishu', 'the interpreter of the Meluhhan language', 'Gudea']"
+   }
+  },
+  {
+   "id": "f11_meluhha_unique_names",
+   "node": "MeluhhaCooccurrenceCheck",
+   "mode": "full",
+   "inputs": {
+    "unique_names": [
+     "Lu-sun-zi-da",
+     "Nobody"
+    ]
+   },
+   "params": {},
+   "setup": {
+    "kind": "meluhha_stage",
+    "file": "f11_meluhha_corpus.json"
+   },
+   "expected": {
+    "candidates_checked": 2,
+    "meluhha_corpus_available": true,
+    "meluhha_hits": [
+     "Lu-sun-zi-da"
+    ],
+    "meluhha_misses": [
+     "Nobody"
+    ],
+    "n_hits": 1,
+    "verdict": "FAVORABLE: 1 candidate(s) appear in Meluhha co-occurrence contexts: ['Lu-sun-zi-da']"
+   }
+  },
+  {
+   "id": "f11_meluhha_string_json",
+   "node": "MeluhhaCooccurrenceCheck",
+   "mode": "full",
+   "inputs": {
+    "top_candidates": "[\"Gudea\", \"Naram-Sin\"]"
+   },
+   "params": {},
+   "setup": {
+    "kind": "meluhha_stage",
+    "file": "f11_meluhha_corpus.json"
+   },
+   "expected": {
+    "candidates_checked": 2,
+    "meluhha_corpus_available": true,
+    "meluhha_hits": [
+     "Gudea"
+    ],
+    "meluhha_misses": [
+     "Naram-Sin"
+    ],
+    "n_hits": 1,
+    "verdict": "FAVORABLE: 1 candidate(s) appear in Meluhha co-occurrence contexts: ['Gudea']"
+   }
+  },
+  {
+   "id": "f11_meluhha_string_plain",
+   "node": "MeluhhaCooccurrenceCheck",
+   "mode": "full",
+   "inputs": {
+    "top_candidates": "Gudea"
+   },
+   "params": {},
+   "setup": {
+    "kind": "meluhha_stage",
+    "file": "f11_meluhha_corpus.json"
+   },
+   "expected": {
+    "candidates_checked": 1,
+    "meluhha_corpus_available": true,
+    "meluhha_hits": [
+     "Gudea"
+    ],
+    "meluhha_misses": [],
+    "n_hits": 1,
+    "verdict": "FAVORABLE: 1 candidate(s) appear in Meluhha co-occurrence contexts: ['Gudea']"
+   }
+  },
+  {
+   "id": "f11_meluhha_invalid",
+   "node": "MeluhhaCooccurrenceCheck",
+   "mode": "full",
+   "inputs": {
+    "top_candidates": [
+     "Shu-ilishu",
+     "the interpreter of the Meluhhan language",
+     "Uru",
+     "Gudea",
+     "Naram-Sin",
+     "Sargon",
+     "Rimush",
+     "Manishtushu",
+     "Ibbi-Sin"
+    ]
+   },
+   "params": {},
+   "setup": {
+    "kind": "meluhha_stage",
+    "file": "f11_meluhha_invalid.json"
+   },
+   "expected": {
+    "candidates_checked": 9,
+    "meluhha_corpus_available": true,
+    "meluhha_hits": [],
+    "meluhha_misses": [
+     "Shu-ilishu",
+     "the interpreter of the Meluhhan language",
+     "Uru",
+     "Gudea",
+     "Naram-Sin"
+    ],
+    "n_hits": 0,
+    "verdict": "NEUTRAL: No direct Meluhha co-occurrence found. This does not falsify the hypothesis (Meluhha = Indus identification is independent)."
+   }
   }
  ]
 }

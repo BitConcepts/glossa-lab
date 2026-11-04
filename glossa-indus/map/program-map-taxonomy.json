@@ -486,6 +486,11 @@
       "spec_dir": "089-run-scoped-results",
       "domain": "Program infrastructure",
       "subdomain": "Governance, lifecycle & generated layers"
+    },
+    {
+      "spec_dir": "090-projected-constraints-generalization-study",
+      "domain": "Program infrastructure",
+      "subdomain": "Governance, lifecycle & generated layers"
     }
   ],
   "extracted_documents": [

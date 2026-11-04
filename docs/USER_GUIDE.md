@@ -764,7 +764,7 @@ This file is project-specific. Different research projects in `glossa-indus/`
 
 ### Evidence Graph in the Experiment Builder
 
-The **Evidence Graph** palette category in the Experiment Builder provides
+The **Evidence Graph** category in the Experiment Builder registry holds
 7 atomic nodes for visual pipeline construction:
 
 | Node | Purpose |
@@ -776,6 +776,17 @@ The **Evidence Graph** palette category in the Experiment Builder provides
 | **Claim Tester** | Test positional claims against a corpus (sign initial/terminal rates) |
 | **Null Model Test** | Run shuffle null model for a sign's positional enrichment |
 | **Intake Runner** | Trigger the intake + claims extraction pipeline |
+
+Two of the seven (Cross-Hypothesis Matrix, Hidden Hypothesis Generator)
+appear in the default palette. The other five are legacy-flagged: they
+remain registered and resolvable — stored graphs using them still load
+and run — but they are not offered for new pipelines. Four of them are
+Spec 087 S3 conversions whose implementations now delegate to generic
+primitives (the loaders to `JsonRecordDirLoader`, the Claim Tester to
+`PositionalClaimTester`, the Null Model Test to
+`SignPositionNullTest`); the Intake Runner was flagged as a census
+wrapper in S2 and keeps its own implementation. Build new pipelines
+from the palette primitives.
 
 Connect `Literature Loader` → `Claims Loader` → `Cross-Hypothesis Matrix` →
 `Hidden Hypothesis Generator` for a full comparative analysis pipeline.

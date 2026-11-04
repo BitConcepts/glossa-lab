@@ -548,88 +548,41 @@ def _cm_catalog_parser(inputs: dict, params: dict) -> dict:
         notation ``001-002-003``. We extract both.
       * Per-page sign frequency tallied from any 3-digit sign codes ``\\d{3}``
         on lines that look like sign sequences (digits-and-dashes only).
+
+    Spec 087 S3 PR-F: delegates to the generic CatalogTextParser;
+    the site-prefix set, the Unicode block and the verdict
+    thresholds (30 sequences / 100 glyphs for PARTIALLY CONFIRMED;
+    50 glyphs / 20 sequences for the noise appendix) are spec data.
     """
-    pages = inputs.get("pages") or []
-    inscription_id_re = re.compile(
-        r"\b("
-        r"(?:RASH|ENKO|HAZO|UGAR|MARO|TEKE|MILO|HALA|KALA|KOUR)"
-        r"\s*[A-Za-z]+\s*\d{1,5}"
-        r"|CM\s*\d{1,3}\.\d{1,4}"
-        r"|##?\d{2,5}"
-        r")",
-        re.IGNORECASE,
-    )
-    sign_seq_re = re.compile(r"\b\d{2,3}(?:-\d{2,3}){1,}\b")
-    cm_unicode_re = re.compile(r"[\U00012F90-\U00012FFF]+")
+    from glossa_lab.generic_primitives import catalog_text_parser_execute
 
-    inscriptions: list[dict] = []
-    sign_freq: Counter[str] = Counter()
-    cm_unicode_freq: Counter[str] = Counter()
-    n_pages_with_signs = 0
-
-    for entry in pages:
-        text = entry.get("text") or ""
-        if not text:
-            continue
-        page_signs_found = False
-
-        for m in inscription_id_re.finditer(text):
-            inscriptions.append({"page": entry.get("page_num"), "id": m.group(1).strip()})
-        for m in sign_seq_re.finditer(text):
-            seq = m.group(0).split("-")
-            if len(seq) < 2:
-                continue
-            inscriptions.append({
-                "page": entry.get("page_num"), "id": None,
-                "sequence_codes": seq, "raw": m.group(0),
-            })
-            for s in seq:
-                sign_freq[s] += 1
-            page_signs_found = True
-        for m in cm_unicode_re.finditer(text):
-            for ch in m.group(0):
-                cm_unicode_freq[ch] += 1
-            page_signs_found = True
-
-        if page_signs_found:
-            n_pages_with_signs += 1
-
-    # Deduplicate exact id-only inscription duplicates per page
-    seen_ids: set[tuple[Any, str]] = set()
-    deduped: list[dict] = []
-    for ins in inscriptions:
-        key = (ins.get("page"), ins.get("id") or ins.get("raw"))
-        if key in seen_ids:
-            continue
-        seen_ids.add(key)
-        deduped.append(ins)
-
-    n_with_seq = sum(1 for i in deduped if i.get("sequence_codes"))
-    cm_unicode_total = sum(cm_unicode_freq.values())
-    verdict = (
-        f"PREDICTION 3 {'PARTIALLY CONFIRMED' if n_with_seq >= 30 or cm_unicode_total >= 100 else 'NOT CONFIRMED'}: "
-        f"recovered {n_with_seq} sign-sequence lines + {cm_unicode_total} CM-block "
-        f"unicode glyphs across {n_pages_with_signs} pages with parseable signs. "
-    )
-    if cm_unicode_total < 50 and n_with_seq < 20:
-        verdict += (
-            "OCR text is too noisy / un-tagged for direct catalog harvest; "
-            "image-based catalog plates would need a separate vision pipeline."
-        )
-    else:
-        verdict += "Sufficient material for an empirical CM YAML refinement."
-
-    return {
-        "n_pages_processed": len(pages),
-        "n_pages_with_signs": n_pages_with_signs,
-        "n_inscriptions_recovered": len(deduped),
-        "n_with_sequence": n_with_seq,
-        "top_sign_codes": sign_freq.most_common(40),
-        "n_cm_unicode_glyphs": cm_unicode_total,
-        "top_cm_unicode": cm_unicode_freq.most_common(40),
-        "inscriptions_sample": deduped[:80],
-        "verdict": verdict,
+    merged = dict(params)
+    merged["parser_spec"] = {
+        "site_prefixes": ["RASH", "ENKO", "HAZO", "UGAR", "MARO",
+                          "TEKE", "MILO", "HALA", "KALA", "KOUR"],
+        "prefix_tail": r"\s*[A-Za-z]+\s*\d{1,5}",
+        "cm_pattern": r"CM\s*\d{1,3}\.\d{1,4}",
+        "hash_pattern": r"##?\d{2,5}",
+        "sign_seq_pattern": r"\b\d{2,3}(?:-\d{2,3}){1,}\b",
+        "unicode_block": [0x12F90, 0x12FFF],
+        "top_n": 40,
+        "sample_cap": 80,
+        "thresholds": {"partial_seq": 30, "partial_unicode": 100,
+                       "noise_unicode": 50, "noise_seq": 20},
+        "partial_verdict": "PARTIALLY CONFIRMED",
+        "not_verdict": "NOT CONFIRMED",
+        "verdict_template": (
+            "PREDICTION 3 {verdict}: recovered {n_with_seq} "
+            "sign-sequence lines + {cm_total} CM-block unicode "
+            "glyphs across {n_pages} pages with parseable signs. "),
+        "noise_suffix": (
+            "OCR text is too noisy / un-tagged for direct catalog "
+            "harvest; image-based catalog plates would need a "
+            "separate vision pipeline."),
+        "sufficient_suffix": (
+            "Sufficient material for an empirical CM YAML refinement."),
     }
+    return catalog_text_parser_execute(inputs, merged)
 
 
 # ── Experiment 4: Fuls-style positional sign-function classifier ────────

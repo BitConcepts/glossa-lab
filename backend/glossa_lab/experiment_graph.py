@@ -63,11 +63,13 @@ from glossa_lab.generic_primitives import (
     record_group_summary_execute,
     corpus_comparison_stats_execute,
     corpus_cooccurrence_check_execute,
+    catalog_text_parser_execute,
     registry_table_loader_execute,
     reverse_skeleton_search_execute,
     sign_position_null_test_execute,
     signature_comparator_execute,
     sign_role_classifier_execute,
+    vision_ocr_node_execute,
     skeleton_tablet_search_execute,
     stratified_permutation_test_execute,
     template_miner_execute,
@@ -2604,6 +2606,38 @@ for _d in [
         params_schema={"type":"object","properties":{
             "aggregator_spec":{"type":"object","title":"Aggregator Spec","description":"Shaping, rules, evidence, assembly, summary template."}}},
         fn=prediction_verdict_aggregator_execute),
+    AtomicNodeDef("VisionOCRNode","Vision OCR Node","Sources",
+        "Vision-LLM OCR over PDF pages with a line-grammar parse "
+        "(Spec 087 S3): a no-op by default (loads previously saved "
+        "results and reports type counts); with run_ocr set, renders "
+        "pages to PNG data URIs, calls the vision provider, parses "
+        "transcripts against spec grammar rules, and writes results "
+        "back. Prompt, grammar, paths and texts are parameters "
+        "(ocr_spec), not code — CISIVol3OCRNode delegates to this "
+        "engine.",
+        inputs=[],
+        outputs=[{"name":"n_records","type":"number"},{"name":"n_seal","type":"number"},{"name":"n_iconography","type":"number"},{"name":"n_sign_ref","type":"number"},{"name":"records","type":"json"},{"name":"verdict","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "run_ocr":{"type":"boolean","title":"Run OCR","default":False},
+            "pdf_path":{"type":"string","title":"PDF Path","default":""},
+            "pages":{"type":"array","title":"Pages","items":{"type":"integer"}},
+            "prompt":{"type":"string","title":"Prompt","default":""},
+            "output_path":{"type":"string","title":"Output Path","default":""},
+            "ocr_spec":{"type":"object","title":"OCR Spec","description":"Base dir, default prompt/paths, grammar, templates."}}},
+        fn=vision_ocr_node_execute),
+    AtomicNodeDef("CatalogTextParser","Catalog Text Parser","Analysis",
+        "Best-effort inscription extraction from catalogue text "
+        "pages (Spec 087 S3): inscription ids by a spec-built regex "
+        "(site prefixes + CM pattern + hash pattern), transliteration "
+        "sign sequences, and glyph runs in a spec Unicode block, "
+        "with per-page dedupe and threshold verdicts. Prefixes, the "
+        "block and the thresholds are parameters (parser_spec), not "
+        "code — CMCatalogParser delegates to this engine.",
+        inputs=[{"name":"pages","type":"json","required":True}],
+        outputs=[{"name":"n_pages_processed","type":"number"},{"name":"n_inscriptions_recovered","type":"number"},{"name":"n_with_sequence","type":"number"},{"name":"n_cm_unicode_glyphs","type":"number"},{"name":"inscriptions_sample","type":"json"},{"name":"verdict","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "parser_spec":{"type":"object","title":"Parser Spec","description":"Site prefixes, patterns, Unicode block, thresholds, verdict texts."}}},
+        fn=catalog_text_parser_execute),
     AtomicNodeDef("FreqCounter","Frequency Counter","Transforms",
         "Count symbol occurrences across all sequences.",
         inputs=[{"name":"sequences","type":"sequences","required":True}],

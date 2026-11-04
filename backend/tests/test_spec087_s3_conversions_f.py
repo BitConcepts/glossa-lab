@@ -62,6 +62,8 @@ CONVERTED_IDS = {
     "MeluhhaCooccurrenceCheck": "glossa_lab.experiment_graph_phase30",
     "Phase20Verdict": "glossa_lab.experiment_graph_phase20",
     "Phase21Verdict": "glossa_lab.experiment_graph_phase21",
+    "CISIVol3OCRNode": "glossa_lab.experiment_graph_phase28",
+    "CMCatalogParser": "glossa_lab.experiment_graph_phase20",
 }
 
 RETIRE_IDS = {}
@@ -74,6 +76,8 @@ PRIMITIVE_IDS = [
     "PrefixFindspotAssigner",
     "CorpusCooccurrenceCheck",
     "PredictionVerdictAggregator",
+    "VisionOCRNode",
+    "CatalogTextParser",
 ]
 
 

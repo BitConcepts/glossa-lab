@@ -4566,3 +4566,219 @@ def prediction_verdict_aggregator_execute(inputs: dict, params: dict) -> dict:
     result[evidence_spec.get("out", "evidence")] = evidence
     result["summary"] = summary
     return result
+
+
+# ── VisionOCRNode ───────────────────────────────────────────────────────────
+# Spec 087 S3 PR-F (family F13). Vision-LLM OCR over PDF pages with a
+# line-grammar parse. By default a no-op: it loads previously saved
+# results from the output path and reports their type counts. With
+# run_ocr set, it renders each requested page to a PNG data URI,
+# calls glossa_lab.ai_utils.call_llm_vision with the spec's prompt,
+# parses the transcript line by line against the spec's grammar
+# (prefix + "|" + marker rules, in order; skip prefixes dropped),
+# records per-page vision failures as error records, and writes the
+# new records back to the output path. Relative paths resolve
+# against the spec's base_dir (the delegating module's repo root).
+# The prompt, grammar, paths, DPI and every text are spec data.
+
+
+def _vision_ocr_counts(records: list, spec: dict) -> dict:
+    return {
+        out: sum(1 for e in records if e.get("type") == type_name)
+        for type_name, out in spec.get("count_types") or []
+    }
+
+
+def vision_ocr_node_execute(inputs: dict, params: dict) -> dict:
+    import base64  # noqa: PLC0415
+
+    spec = dict(params.get("ocr_spec") or {})
+    base_dir = Path(spec["base_dir"])
+    run_ocr = bool(params.get("run_ocr", False))
+    output_path = params.get("output_path", spec["default_output_path"])
+
+    existing_path = Path(output_path)
+    if not existing_path.is_absolute():
+        existing_path = base_dir / output_path
+    existing: list = []
+    if existing_path.exists():
+        try:
+            existing = json.loads(existing_path.read_text(encoding="utf-8"))
+        except Exception:  # noqa: BLE001
+            existing = []
+
+    if not run_ocr:
+        counts = _vision_ocr_counts(existing, spec)
+        return {
+            "n_records": len(existing),
+            **counts,
+            "records": existing,
+            "verdict": spec["noop_template"].format(
+                n=len(existing), output_path=output_path, **counts),
+        }
+
+    errors = spec["errors"]
+    pdf_path = params.get("pdf_path")
+    if not pdf_path:
+        return {"error": errors["no_pdf"],
+                "n_records": len(existing), "records": existing}
+    pdf_path_p = Path(pdf_path)
+    if not pdf_path_p.is_absolute():
+        pdf_path_p = base_dir / pdf_path
+    if not pdf_path_p.exists():
+        return {"error": errors["pdf_not_found"].format(pdf_path=pdf_path_p),
+                "n_records": len(existing), "records": existing}
+    try:
+        import fitz  # noqa: PLC0415
+    except Exception as exc:  # noqa: BLE001
+        return {"error": errors["fitz"].format(error=exc),
+                "n_records": len(existing), "records": existing}
+    try:
+        from glossa_lab.ai_utils import call_llm_vision  # noqa: PLC0415
+    except Exception as exc:  # noqa: BLE001
+        return {"error": errors["vision"].format(error=exc),
+                "n_records": len(existing), "records": existing}
+
+    prompt = params.get("prompt") or spec["default_prompt"]
+    pages_param = params.get("pages")
+    doc = fitz.open(str(pdf_path_p))
+    page_nums = (
+        sorted(int(p) for p in pages_param)
+        if pages_param else list(range(1, doc.page_count + 1))
+    )
+
+    new_records: list[dict] = []
+    for pn in page_nums:
+        if pn < 1 or pn > doc.page_count:
+            continue
+        page = doc.load_page(pn - 1)
+        pix = page.get_pixmap(dpi=spec.get("dpi", 200))
+        png_bytes = pix.tobytes("png")
+        data_uri = ("data:image/png;base64,"
+                    + base64.b64encode(png_bytes).decode("ascii"))
+        try:
+            text = call_llm_vision(prompt, data_uri)
+        except Exception as exc:  # noqa: BLE001
+            new_records.append({"page": pn, "type": "error",
+                                "error": str(exc)})
+            continue
+        for line in (text or "").splitlines():
+            ln = line.strip()
+            if not ln or any(ln.startswith(p)
+                             for p in spec.get("skip_prefixes") or []):
+                continue
+            for rule in spec.get("grammar") or []:
+                if (ln.startswith(rule["prefix"]) and "|" in ln
+                        and rule["marker"] in ln):
+                    ident = ln.split("|")[0].split(":", 1)[1].strip()
+                    value = ln.split(rule["marker"], 1)[1].strip()
+                    new_records.append({
+                        "page": pn, "raw": ln, "type": rule["type"],
+                        rule["id_out"]: ident, rule["value_out"]: value,
+                    })
+                    break
+    existing_path.parent.mkdir(parents=True, exist_ok=True)
+    existing_path.write_text(json.dumps(new_records, indent=2),
+                             encoding="utf-8")
+
+    counts = _vision_ocr_counts(new_records, spec)
+    return {
+        "n_records": len(new_records),
+        **counts,
+        "records": new_records,
+        "verdict": spec["run_template"].format(
+            n_pages=len(page_nums), pdf_name=pdf_path_p.name,
+            n=len(new_records), output_path=output_path, **counts),
+    }
+
+
+# ── CatalogTextParser ───────────────────────────────────────────────────────
+# Spec 087 S3 PR-F (family F13). Best-effort inscription extraction
+# from catalogue text pages: inscription ids by a spec-built regex
+# (site-prefix pattern + CM pattern + hash pattern), sign sequences
+# in transliteration notation, and glyph runs in a spec Unicode
+# block. Per-page dedupe by (page, id or raw); verdict thresholds
+# (partial-confirmation and noise-appendix cuts) are spec data.
+
+
+def catalog_text_parser_execute(inputs: dict, params: dict) -> dict:
+    spec = dict(params.get("parser_spec") or {})
+    pages = inputs.get("pages") or []
+    prefixes = "|".join(spec["site_prefixes"])
+    inscription_id_re = re.compile(
+        r"\b((?:" + prefixes + r")" + spec["prefix_tail"]
+        + r"|" + spec["cm_pattern"] + r"|" + spec["hash_pattern"] + r")",
+        re.IGNORECASE,
+    )
+    sign_seq_re = re.compile(spec["sign_seq_pattern"])
+    lo, hi = spec["unicode_block"]
+    cm_unicode_re = re.compile("[" + chr(lo) + "-" + chr(hi) + "]+")
+
+    inscriptions: list[dict] = []
+    sign_freq: Counter = Counter()
+    cm_unicode_freq: Counter = Counter()
+    n_pages_with_signs = 0
+
+    for entry in pages:
+        text = entry.get("text") or ""
+        if not text:
+            continue
+        page_signs_found = False
+        for m in inscription_id_re.finditer(text):
+            inscriptions.append({"page": entry.get("page_num"),
+                                 "id": m.group(1).strip()})
+        for m in sign_seq_re.finditer(text):
+            seq = m.group(0).split("-")
+            if len(seq) < 2:
+                continue
+            inscriptions.append({
+                "page": entry.get("page_num"), "id": None,
+                "sequence_codes": seq, "raw": m.group(0),
+            })
+            for s in seq:
+                sign_freq[s] += 1
+            page_signs_found = True
+        for m in cm_unicode_re.finditer(text):
+            for ch in m.group(0):
+                cm_unicode_freq[ch] += 1
+            page_signs_found = True
+        if page_signs_found:
+            n_pages_with_signs += 1
+
+    seen_ids: set = set()
+    deduped: list[dict] = []
+    for ins in inscriptions:
+        key = (ins.get("page"), ins.get("id") or ins.get("raw"))
+        if key in seen_ids:
+            continue
+        seen_ids.add(key)
+        deduped.append(ins)
+
+    n_with_seq = sum(1 for i in deduped if i.get("sequence_codes"))
+    cm_unicode_total = sum(cm_unicode_freq.values())
+    thresholds = spec["thresholds"]
+    word = (spec["partial_verdict"]
+            if n_with_seq >= thresholds["partial_seq"]
+            or cm_unicode_total >= thresholds["partial_unicode"]
+            else spec["not_verdict"])
+    verdict = spec["verdict_template"].format(
+        verdict=word, n_with_seq=n_with_seq, cm_total=cm_unicode_total,
+        n_pages=n_pages_with_signs)
+    if (cm_unicode_total < thresholds["noise_unicode"]
+            and n_with_seq < thresholds["noise_seq"]):
+        verdict += spec["noise_suffix"]
+    else:
+        verdict += spec["sufficient_suffix"]
+
+    top_n = spec.get("top_n", 40)
+    return {
+        "n_pages_processed": len(pages),
+        "n_pages_with_signs": n_pages_with_signs,
+        "n_inscriptions_recovered": len(deduped),
+        "n_with_sequence": n_with_seq,
+        "top_sign_codes": sign_freq.most_common(top_n),
+        "n_cm_unicode_glyphs": cm_unicode_total,
+        "top_cm_unicode": cm_unicode_freq.most_common(top_n),
+        "inscriptions_sample": deduped[: spec.get("sample_cap", 80)],
+        "verdict": verdict,
+    }

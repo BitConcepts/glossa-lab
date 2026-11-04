@@ -3077,6 +3077,449 @@
     "n_hits": 0,
     "verdict": "NEUTRAL: No direct Meluhha co-occurrence found. This does not falsify the hypothesis (Meluhha = Indus identification is independent)."
    }
+  },
+  {
+   "id": "f12_p20_confirmed",
+   "node": "Phase20Verdict",
+   "mode": "full",
+   "inputs": {
+    "length_strata": {
+     "verdict": "CONFIRMED: gap dominated by short bins"
+    },
+    "cluster_archaeology": "CONFIRMED",
+    "ferrara_cm": {
+     "verdict": "PARTIALLY CONFIRMED (30 sequences)"
+    },
+    "fuls_positional": {
+     "verdict": "classes assigned"
+    },
+    "fuls_positional_counts": {
+     "NUMERICAL": 9,
+     "INITIAL": 40
+    }
+   },
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "evidence": {
+     "cluster_archaeology_verdict": "CONFIRMED",
+     "ferrara_cm_verdict": "PARTIALLY CONFIRMED (30 sequences)",
+     "fuls_numerical_count": 9,
+     "fuls_positional_verdict": "classes assigned",
+     "length_strata_verdict": "CONFIRMED: gap dominated by short bins"
+    },
+    "prediction_1_length_dominates_spectral_gap": "CONFIRMED",
+    "prediction_2_cluster_archaeology_nonrandom": "CONFIRMED",
+    "prediction_3_ferrara_cm_extractable": "PARTIALLY CONFIRMED",
+    "prediction_4_numerical_strokes_confirmed": "OBSERVED",
+    "summary": "Phase-20: P1=CONFIRMED | P2=CONFIRMED | P3=PARTIALLY CONFIRMED | P4=OBSERVED"
+   }
+  },
+  {
+   "id": "f12_p20_not_confirmed",
+   "node": "Phase20Verdict",
+   "mode": "full",
+   "inputs": {
+    "length_strata": "NOT CONFIRMED",
+    "cluster_archaeology": {
+     "verdict": "NOT CONFIRMED"
+    },
+    "ferrara_cm": "NOT CONFIRMED",
+    "fuls_positional": "verdict text present",
+    "fuls_positional_counts": {
+     "NUMERICAL": 3
+    }
+   },
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "evidence": {
+     "cluster_archaeology_verdict": "NOT CONFIRMED",
+     "ferrara_cm_verdict": "NOT CONFIRMED",
+     "fuls_numerical_count": 3,
+     "fuls_positional_verdict": "verdict text present",
+     "length_strata_verdict": "NOT CONFIRMED"
+    },
+    "prediction_1_length_dominates_spectral_gap": "NOT CONFIRMED",
+    "prediction_2_cluster_archaeology_nonrandom": "NOT CONFIRMED",
+    "prediction_3_ferrara_cm_extractable": "NOT CONFIRMED",
+    "prediction_4_numerical_strokes_confirmed": "NOT OBSERVED",
+    "summary": "Phase-20: P1=NOT CONFIRMED | P2=NOT CONFIRMED | P3=NOT CONFIRMED | P4=NOT OBSERVED"
+   }
+  },
+  {
+   "id": "f12_p20_rule_edges",
+   "node": "Phase20Verdict",
+   "mode": "full",
+   "inputs": {
+    "length_strata": "PARTIALLY CONFIRMED",
+    "cluster_archaeology": {
+     "verdict": ""
+    },
+    "ferrara_cm": "CONFIRMED",
+    "fuls_positional": {
+     "verdict": "x",
+     "counts_by_class": {
+      "NUMERICAL": 6
+     }
+    }
+   },
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "evidence": {
+     "cluster_archaeology_verdict": "",
+     "ferrara_cm_verdict": "CONFIRMED",
+     "fuls_numerical_count": 6,
+     "fuls_positional_verdict": "x",
+     "length_strata_verdict": "PARTIALLY CONFIRMED"
+    },
+    "prediction_1_length_dominates_spectral_gap": "CONFIRMED",
+    "prediction_2_cluster_archaeology_nonrandom": "UNKNOWN",
+    "prediction_3_ferrara_cm_extractable": "UNKNOWN",
+    "prediction_4_numerical_strokes_confirmed": "OBSERVED",
+    "summary": "Phase-20: P1=CONFIRMED | P2=UNKNOWN | P3=UNKNOWN | P4=OBSERVED"
+   }
+  },
+  {
+   "id": "f12_p20_counts_nondict",
+   "node": "Phase20Verdict",
+   "mode": "full",
+   "inputs": {
+    "fuls_positional": {
+     "verdict": "txt",
+     "counts_by_class": [
+      "not",
+      "a",
+      "dict"
+     ]
+    }
+   },
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "evidence": {
+     "cluster_archaeology_verdict": "",
+     "ferrara_cm_verdict": "",
+     "fuls_numerical_count": 0,
+     "fuls_positional_verdict": "txt",
+     "length_strata_verdict": ""
+    },
+    "prediction_1_length_dominates_spectral_gap": "UNKNOWN",
+    "prediction_2_cluster_archaeology_nonrandom": "UNKNOWN",
+    "prediction_3_ferrara_cm_extractable": "UNKNOWN",
+    "prediction_4_numerical_strokes_confirmed": "NOT OBSERVED",
+    "summary": "Phase-20: P1=UNKNOWN | P2=UNKNOWN | P3=UNKNOWN | P4=NOT OBSERVED"
+   }
+  },
+  {
+   "id": "f12_p20_empty",
+   "node": "Phase20Verdict",
+   "mode": "full",
+   "inputs": {},
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "evidence": {
+     "cluster_archaeology_verdict": "",
+     "ferrara_cm_verdict": "",
+     "fuls_numerical_count": 0,
+     "fuls_positional_verdict": "",
+     "length_strata_verdict": ""
+    },
+    "prediction_1_length_dominates_spectral_gap": "UNKNOWN",
+    "prediction_2_cluster_archaeology_nonrandom": "UNKNOWN",
+    "prediction_3_ferrara_cm_extractable": "UNKNOWN",
+    "prediction_4_numerical_strokes_confirmed": "UNKNOWN",
+    "summary": "Phase-20: P1=UNKNOWN | P2=UNKNOWN | P3=UNKNOWN | P4=UNKNOWN"
+   }
+  },
+  {
+   "id": "f12_p21_confirmed",
+   "node": "Phase21Verdict",
+   "mode": "full",
+   "inputs": {
+    "repetition_spectral": {
+     "per_bin": {
+      "original": {
+       "spectral_gap": 0.02
+      },
+      "collapsed": {
+       "spectral_gap": 0.3
+      }
+     }
+    },
+    "site_spectral": {
+     "per_bin": {
+      "Mohenjo-daro": {
+       "spectral_gap": 0.05
+      },
+      "Harappa": {
+       "spectral_gap": 0.17
+      }
+     }
+    },
+    "site_summary": {
+     "verdict": "sites differ"
+    },
+    "numerical_weights": {
+     "rows": [
+      {
+       "sign": "001"
+      },
+      {
+       "sign": "002"
+      },
+      {
+       "sign": "003"
+      },
+      {
+       "sign": "004"
+      }
+     ],
+     "n_poisson_regime": 3
+    }
+   },
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "predictions": {
+     "p21a_repetition_recovers_naturallanguage": {
+      "collapsed_gap": 0.3,
+      "detail": "spectral gap rose from 0.0200 (original) to 0.3000 (collapsed). De-numerification recovers natural-language structure.",
+      "original_gap": 0.02,
+      "verdict": "CONFIRMED"
+     },
+     "p21b_site_strata_differ": {
+      "detail": "spectral gap spread across 2 site groups = 0.1200; text from site_summary: sites differ",
+      "verdict": "CONFIRMED"
+     },
+     "p21d_numerical_weights_poisson": {
+      "detail": "3/4 numerical signs in poisson_count regime \u2014 quantity-marking is the most likely function.",
+      "verdict": "CONFIRMED"
+     }
+    },
+    "summary": "Phase-21: P21a=CONFIRMED | P21b=CONFIRMED | P21d=CONFIRMED"
+   }
+  },
+  {
+   "id": "f12_p21_partials",
+   "node": "Phase21Verdict",
+   "mode": "full",
+   "inputs": {
+    "repetition_spectral": {
+     "original": {
+      "spectral_gap": 0.05
+     },
+     "collapsed": {
+      "spectral_gap": 0.07
+     }
+    },
+    "site_spectral": {
+     "per_bin": {
+      "A": {
+       "spectral_gap": 0.1
+      },
+      "B": {
+       "spectral_gap": 0.15
+      }
+     }
+    },
+    "site_summary": "plain string summary",
+    "nw_rows": [
+     {
+      "sign": "001"
+     },
+     {
+      "sign": "002"
+     },
+     {
+      "sign": "003"
+     },
+     {
+      "sign": "004"
+     }
+    ],
+    "nw_n_poisson": 1
+   },
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "predictions": {
+     "p21a_repetition_recovers_naturallanguage": {
+      "collapsed_gap": 0.07,
+      "detail": "spectral gap rose from 0.0500 \u2192 0.0700 but did not reach a natural-language regime (>= 0.40).",
+      "original_gap": 0.05,
+      "verdict": "PARTIALLY CONFIRMED"
+     },
+     "p21b_site_strata_differ": {
+      "detail": "spectral gap spread across 2 site groups = 0.0500; text from site_summary: plain string summary",
+      "verdict": "PARTIALLY CONFIRMED"
+     },
+     "p21d_numerical_weights_poisson": {
+      "detail": "only 1/4 signs in poisson_count regime; mixed numerical / stylistic behaviour.",
+      "verdict": "PARTIALLY CONFIRMED"
+     }
+    },
+    "summary": "Phase-21: P21a=PARTIALLY CONFIRMED | P21b=PARTIALLY CONFIRMED | P21d=PARTIALLY CONFIRMED"
+   }
+  },
+  {
+   "id": "f12_p21_not_and_boundary",
+   "node": "Phase21Verdict",
+   "mode": "full",
+   "inputs": {
+    "repetition_spectral": {
+     "per_bin": {
+      "original": {
+       "spectral_gap": 0.05
+      },
+      "collapsed": {
+       "spectral_gap": 0.05
+      }
+     }
+    },
+    "site_spectral": {
+     "per_bin": {
+      "A": {
+       "spectral_gap": 0.1
+      },
+      "B": {
+       "spectral_gap": 0.11
+      }
+     }
+    },
+    "numerical_weights": {
+     "rows": [
+      {
+       "sign": "001"
+      },
+      {
+       "sign": "002"
+      },
+      {
+       "sign": "003"
+      }
+     ],
+     "n_poisson_regime": 1
+    }
+   },
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "predictions": {
+     "p21a_repetition_recovers_naturallanguage": {
+      "collapsed_gap": 0.05,
+      "detail": "spectral gap unchanged at 0.0500 \u2192 0.0500; repetition is not the dominant source of the anomaly.",
+      "original_gap": 0.05,
+      "verdict": "NOT CONFIRMED"
+     },
+     "p21b_site_strata_differ": {
+      "detail": "spectral gap spread across 2 site groups = 0.0100; text from site_summary: ",
+      "verdict": "NOT CONFIRMED"
+     },
+     "p21d_numerical_weights_poisson": {
+      "detail": "1/3 numerical signs in poisson_count regime \u2014 quantity-marking is the most likely function.",
+      "verdict": "CONFIRMED"
+     }
+    },
+    "summary": "Phase-21: P21a=NOT CONFIRMED | P21b=NOT CONFIRMED | P21d=CONFIRMED"
+   }
+  },
+  {
+   "id": "f12_p21_empty",
+   "node": "Phase21Verdict",
+   "mode": "full",
+   "inputs": {},
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "predictions": {
+     "p21a_repetition_recovers_naturallanguage": {
+      "collapsed_gap": null,
+      "detail": "missing repetition-spectral data.",
+      "original_gap": null,
+      "verdict": "UNKNOWN"
+     },
+     "p21b_site_strata_differ": {
+      "detail": "missing site-spectral data.",
+      "verdict": "UNKNOWN"
+     },
+     "p21d_numerical_weights_poisson": {
+      "detail": "missing numerical-weight regression.",
+      "verdict": "UNKNOWN"
+     }
+    },
+    "summary": "Phase-21: P21a=UNKNOWN | P21b=UNKNOWN | P21d=UNKNOWN"
+   }
+  },
+  {
+   "id": "f12_p21_no_data",
+   "node": "Phase21Verdict",
+   "mode": "full",
+   "inputs": {
+    "repetition_spectral": {
+     "per_bin": {
+      "original": {
+       "spectral_gap": 0.05
+      }
+     }
+    },
+    "site_spectral": {
+     "per_bin": {
+      "A": {
+       "no_gap": 1
+      },
+      "B": {
+       "no_gap": 2
+      }
+     }
+    },
+    "numerical_weights": {
+     "rows": []
+    }
+   },
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "predictions": {
+     "p21a_repetition_recovers_naturallanguage": {
+      "collapsed_gap": null,
+      "detail": "missing repetition-spectral data.",
+      "original_gap": 0.05,
+      "verdict": "UNKNOWN"
+     },
+     "p21b_site_strata_differ": {
+      "detail": "no spectral data per site stratum.",
+      "verdict": "UNKNOWN"
+     },
+     "p21d_numerical_weights_poisson": {
+      "detail": "no numerical signs analysed.",
+      "verdict": "UNKNOWN"
+     }
+    },
+    "summary": "Phase-21: P21a=UNKNOWN | P21b=UNKNOWN | P21d=UNKNOWN"
+   }
   }
  ]
 }

@@ -195,7 +195,7 @@ into its stage report.
 
 ## Stage 3 — Gate extension (PR: feat/088-s3-gate-v10)
 
-- [ ] **T301 — Gate class V10.** `ledger_gate.py` gains V10
+- [x] **T301 — Gate class V10.** `ledger_gate.py` gains V10
   (program-map equivalence) with the gate's own registered copies of
   program-map-defs v1 (not imported from the builder): recompute the map
   by an independent route; check artifact byte-equality, exact coverage,
@@ -205,14 +205,33 @@ into its stage report.
   *This does not establish:* that the derivation is correct — two routes
   agreeing is consistency; the defs' semantics were the owner's call at
   T003/T101.
-- [ ] **T302 — V10 teeth.** Seeded-divergence tests on tmp copies: a
+  **Completed 2026-11-04:** V10 landed as four legs (taxonomy coverage
+  and format, bidirectional; program-map.json byte-equality; finds
+  byte-equality; stamp freshness) over the gate's own registered
+  program-map-defs v1 copies and an independently coded recomputation
+  route (`_derive_program_map`; no builder import). Gate CLI over the
+  real tree: full **24 PASS / 0 FAIL / 1 NOT-RUN**, `--regen` **27 PASS /
+  0 FAIL / 0 NOT-RUN**, both ALL PASS with V10 in the per-class list —
+  verbatim outputs in `records/stage-s3-record.md`. Where the layer has
+  not landed at all (no taxonomy, no artifacts) V10 enumerates a single
+  NOT-RUN, the V5 posture; the PR-scope CLI routes the program-map
+  paths and the builder to a `program_map` layer carrying V10.
+- [x] **T302 — V10 teeth.** Seeded-divergence tests on tmp copies: a
   mutated program-map.json fails V10 and the report names it; a
   builder-vs-gate defs divergence fails; a stale stamp fails; a dropped
   node fails. Claims: C088-7. Acceptance: **test** (each seeded case
   fails the gate for the stated reason).
   *This does not establish:* that no unseeded divergence can pass — only
   that the named failure modes are caught, which is what teeth means.
-- [ ] **T303 — V9 registration for the map artifacts.**
+  **Completed 2026-11-04:** six seeded cases in
+  `backend/tests/test_spec086_ledger_gate.py`, each FAILing by name —
+  hand-edited standing, dropped claim node, dropped find, builder-vs-gate
+  defs drift (artifacts rebuilt under a drifted derivation table), stale
+  stamp (`ledger_lines`), dropped taxonomy assignment — and each
+  asserting the seeded tree's hashes are identical before and after the
+  gate run (the gate wrote nothing). Results in
+  `records/stage-s3-record.md`.
+- [x] **T303 — V9 registration for the map artifacts.**
   `program_map_generate` joins the registered-writer list; the map
   artifact paths join the artifact patterns, so unregistered writes to
   them are gate failures. Claims: C088-7, C088-1. Acceptance: **gate**
@@ -220,6 +239,15 @@ into its stage report.
   pattern is refused).
   *This does not establish:* protection against a writer added by a
   future amendment — amendments are acts, reviewed as such.
+  **Completed 2026-11-04:** the writer registration landed at S1
+  (departure (d) there: V9's census required it once the builder
+  existed). S3 confirmed the artifact-pattern side — the existing
+  `glossa-indus/map` prefix pattern in `ARTIFACT_PATH_PATTERNS` covers
+  the program-map paths, and the V9 census on the clean tree names
+  `program_map_generate.py` among the registered writers — and added
+  the negative case: a seeded unregistered writer of
+  `program-map.json` fails the V9 census by name
+  (`test_teeth_v9_census_catches_an_unregistered_program_map_writer`).
 
 ## Stage 4 — The page (PR: feat/088-s4-page)
 

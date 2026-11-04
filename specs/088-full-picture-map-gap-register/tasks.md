@@ -317,7 +317,7 @@ into its stage report.
 
 ## Stage 5 — Gap scans (PRs: feat/088-s5a / s5b / s5c)
 
-- [ ] **T501 — Cluster A scan: corpus + anchors.** Domains: Sign
+- [x] **T501 — Cluster A scan: corpus + anchors.** Domains: Sign
   inventory & corpus; Anchors & readings. Inputs: find list + coverage
   block for those domains; pre-answered legs per the scan plan (incl.
   the falsifier census). Output: `records/scan-corpus-anchors.md`,
@@ -327,7 +327,17 @@ into its stage report.
   falsifiers, types present on every line that needs them).
   *This does not establish:* that these are all the gaps in those domains
   — only that every find recorded is in the registered shape.
-- [ ] **T502 — Cluster B scan: claim families + contact zone.** Domains:
+  **Completed 2026-11-04:** `records/scan-corpus-anchors.md` — 12
+  finds (missing node 2, missing edge 3, thin evidence 5, stale
+  bookkeeping 2), 14 candidates (A-06 carries three, one per
+  revalidation route). The WP5 census was verified against the audit
+  record itself (`anchor-support-audit.json` summary_counts:
+  6/46/37/3/2) and the 37 requires-revalidation anchors routed from
+  the audit's own fields (28 Phase-48 promotions / 5 single-line /
+  4 sole crosswalk-literature imports). Consumes 20 of the 28
+  `bundle_less_study` finds. Template conformance is T504's
+  mechanical pass. Record: `records/stage-s5-record.md`.
+- [x] **T502 — Cluster B scan: claim families + contact zone.** Domains:
   Claim families by study line; Contact zone & external corpora.
   Pre-answered legs: WP5 census (6/46/37/3/2), WP4 (0 of 184), WP2/WP3
   blockers. Output: `records/scan-families-contact.md`. Claims: C088-10,
@@ -335,7 +345,18 @@ into its stage report.
   *This does not establish:* that thin evidence means wrong — the census
   counts support classes; what they mean is the register's judgment,
   reviewed by the owner at T603.
-- [ ] **T503 — Cluster C scan: infrastructure + bookkeeping.** Domain:
+  **Completed 2026-11-04:** `records/scan-families-contact.md` — 12
+  finds (missing node 3, missing edge 3, thin evidence 3, stale
+  bookkeeping 3), 12 candidates. Domain 4's thinness classified on
+  the records as **not** honest smallness (B-09/B-10/B-12: the
+  Laursen catalog leg has zero ledger claims — counted this scan —
+  the sequence study is gated on the CISI Vol. 3 transcription, and
+  the attestation study is bundle-less). Consumes 11 find-list
+  items (9 `extracted_null_falsifier`, 2 `bundle_less_study`); the
+  `restricted_node` find is explicitly carried to S6 (owner
+  restriction by design, not a gap). Record:
+  `records/stage-s5-record.md`.
+- [x] **T503 — Cluster C scan: infrastructure + bookkeeping.** Domain:
   Program infrastructure, plus cross-cutting bookkeeping (the adoption
   record's §4 items: llms.txt staleness, desktop-clone sync, data-lineage
   question; the missing-directory finds for spec numbers 049 and 085).
@@ -343,7 +364,18 @@ into its stage report.
   Acceptance: **human-as-oracle** + **test** (as T501).
   *This does not establish:* that infrastructure gaps matter less — the
   register ranks; the scan only records.
-- [ ] **T504 — Scan consolidation check.** Every find in the three scan
+  **Completed 2026-11-04:** `records/scan-infra-bookkeeping.md` —
+  11 finds (missing node 2, missing edge 2, thin evidence 0, stale
+  bookkeeping 7), 11 candidates. GAP-C12's legacy rule verified in
+  the current tree (`experiment_graph_phase20.py` lines 462/474);
+  the Spec 086 residuals recounted from the current matrix
+  (dependency pairs 793; the join's population still 1 of 876); the
+  desktop-sync find states the precision the records support
+  (`309ea63c` is PR #472's merge commit and is in main's history —
+  the desktop **checkout** stands 118 commits behind, per the
+  GitHub compare read this scan). Consumes Domain 5's 6
+  `bundle_less_study` finds. Record: `records/stage-s5-record.md`.
+- [x] **T504 — Scan consolidation check.** Every find in the three scan
   records is exactly one of the four kinds; every candidate has a
   falsifier and an honesty-rule type; every find-list item from S2 is
   consumed by a scan or explicitly carried to S6. Claims: C088-10.
@@ -351,6 +383,18 @@ into its stage report.
   find list).
   *This does not establish:* scan quality — shape only; quality is the
   oracle's and, finally, the owner's at ratification.
+  **Completed 2026-11-04:** the mechanical pass over the three
+  records + the find list (script run this stage; output quoted in
+  `records/stage-s5-record.md`): 35 finds, each carrying exactly one
+  kind line from the four registered kinds (missing node 7, missing
+  edge 8, thin evidence 8, stale bookkeeping 12); 37 candidates,
+  each with a falsifier line and an honesty-rule type line (counts
+  equal per cluster: A 14/14, B 12/12, C 11/11); find-list
+  consumption complete — all 28 `bundle_less_study` subjects named
+  in a scan record (A 20, B 2, C 6), all 9
+  `extracted_null_falsifier` claims' documents covered by B-05,
+  the 1 `restricted_node` item explicitly carried to S6, and 0
+  `judgment_call` items exist to consume.
 
 ## Stage 6 — Gap register v1 (PR: feat/088-s6-register)
 

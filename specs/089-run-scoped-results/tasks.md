@@ -29,13 +29,13 @@ into its stage report.
   *This does not establish:* claim quality — `iterate` is the expected
   reading for a draft bundle on one asserted source; the owner's approval
   is the human act (T003).
-- [ ] **T003 — Owner block approval.** The owner ratifies the package as
+- [x] **T003 — Owner block approval.** The owner ratifies the package as
   a block: spec, 20 claims, plan, and decisions D-089-1..6 (including
   the comparability judgment row D-089-4 and the index-only reach-back
   D-089-5). Acceptance: **human-as-oracle** (the owner).
   *This does not establish:* approval of any later stage's output — each
   lands on its own evidence.
-- [ ] **T004 — Adoption intake + generated-layer regeneration.** After
+- [x] **T004 — Adoption intake + generated-layer regeneration.** After
   T003: (a) record the pre-append gate run (gate CLI on the un-appended
   tree, ALL PASS); (b) append the C089 bundle through
   `tools/ledger/import_bundle.py --spec specs/089-run-scoped-results

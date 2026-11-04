@@ -29,7 +29,7 @@ into its stage report.
   *This does not establish:* claim quality — `iterate` is the expected
   reading for a draft bundle on one asserted source; the owner's approval
   is the human act (T003).
-- [ ] **T003 — Owner block approval.** The owner ratifies the package as
+- [x] **T003 — Owner block approval.** The owner ratifies the package as
   a block: spec, 19 claims, plan, the taxonomy v0 draft
   (`records/taxonomy-v0-draft.md`), and decisions D-088-1..6 (including
   the derivation table's judgment rows and the empty in_flight
@@ -37,7 +37,14 @@ into its stage report.
   *This does not establish:* approval of any later stage's output — each
   lands on its own evidence; and the register is ratified separately at
   T603.
-- [ ] **T004 — Adoption intake + generated-layer regeneration.** After
+  **Completed 2026-11-04:** ratified as a block by Tristen Pierson by
+  option tap in the Glossa-Lab chat ("Ratify the package as a block") —
+  spec, 19 claims, plan, taxonomy v0 draft (incl. its two judgment
+  calls), and D-088-1..6 as recommended, including the derivation
+  table's judgment rows (partially_supported → open) and the empty
+  in_flight population. Record:
+  `records/ratification-2026-11-04.md`.
+- [x] **T004 — Adoption intake + generated-layer regeneration.** After
   T003: (a) record the pre-append gate run (gate CLI on the un-appended
   tree, ALL PASS); (b) append the C088 bundle through
   `tools/ledger/import_bundle.py --spec specs/088-program-map-gap-register
@@ -51,6 +58,22 @@ into its stage report.
   *This does not establish:* anything about the appended claims' truth —
   only that the ledger grew by the sanctioned path and the generated
   layers match it.
+  **Completed 2026-11-04:** (a) pre-append gate run recorded (full
+  20 PASS / 0 FAIL / 1 NOT-RUN; --regen 23 PASS / 0 FAIL / 0 NOT-RUN);
+  (b) intake via `tools/ledger/import_bundle.py --spec
+  specs/088-full-picture-map-gap-register --date 2026-11-04` — 19
+  appended, 0 already canonical, 0 refusals; ledger 888 →
+  907 lines, SHA-256 `f988ed61…` → `9f8144c3…`, append-only
+  byte-verified; validator PASS (876 claims, bundle 853/853 falsifier
+  coverage); (c) matrix + map regenerated and republished through the
+  gated route (gate of record: full 20 PASS / 0 FAIL / 1 NOT-RUN,
+  --regen 23 PASS / 0 FAIL / 0 NOT-RUN), with the settling chain
+  refresh executed per the Spec 087 adoption precedent (canonicals
+  6/6 reproduce before the pin refresh; T405 records re-run, result
+  blocks byte-equal; comparison re-filed, per_claim_divergences []);
+  (d) `test_p2_reconciliation` passes in the targeted batch (108
+  tests, six ledger/gate files, all passing). Record:
+  `records/ratification-2026-11-04.md`.
 
 ## Stage 1 — Definitions, taxonomy, builder core (PR: feat/088-s1-defs-builder)
 

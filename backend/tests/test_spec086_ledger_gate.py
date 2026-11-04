@@ -984,12 +984,17 @@ def test_gated_publication_of_the_map_and_its_negative_control(
 # program-map tree, the NOT-RUN posture where the layer has
 # not landed, and teeth per seeded divergence — each fails
 # by name and leaves the seeded tree byte-untouched.
+# Stage 4 (T401/T403) adds: the page in the agreement test
+# and the legs (five legs), page teeth (chrome edit, payload
+# edit, missing page), and the gated-publication pair for
+# publish_program_map.
 
 
 @pytest.fixture()
 def pm_scratch(scratch: Path) -> Path:
     """The scratch tree plus the program-map layer's records
-    of record (the taxonomy and both published artifacts) as
+    of record (the taxonomy and the published artifacts —
+    both data artifacts and, since Stage 4, the page) as
     real copies a test can mutate, and the spec-directory
     names the derivation reads (names only — empty dirs;
     the derivation reads no spec content)."""
@@ -998,6 +1003,7 @@ def pm_scratch(scratch: Path) -> Path:
         lg.PROGRAM_MAP_TAXONOMY_REL,
         lg.PROGRAM_MAP_REL,
         lg.PROGRAM_MAP_FINDS_REL,
+        lg.PROGRAM_MAP_HTML_REL,
     ):
         dst = root / rel
         dst.parent.mkdir(parents=True, exist_ok=True)
@@ -1030,6 +1036,7 @@ def _pm_hashes(root: Path) -> dict[str, str]:
         for rel in (
             lg.PROGRAM_MAP_REL,
             lg.PROGRAM_MAP_FINDS_REL,
+            lg.PROGRAM_MAP_HTML_REL,
             lg.PROGRAM_MAP_TAXONOMY_REL,
             li.LEDGER_REL,
         )
@@ -1061,13 +1068,20 @@ def test_program_map_definitions_copies_agree_with_the_builder_copies():
         pm.FIND_EXTRACTED_NULL_FALSIFIER,
         pm.FIND_RESTRICTED_NODE,
     }
+    # Stage 4: the page joins the registered copies — its
+    # artifact path and the three template pieces agree with
+    # the builder's, byte for byte.
+    assert lg.PROGRAM_MAP_HTML_REL == pm.PAGE_REL
+    assert lg.PM_PAGE_HEAD == pm._PAGE_HEAD
+    assert lg.PM_PAGE_MID == pm._PAGE_MID
+    assert lg.PM_PAGE_TAIL == pm._PAGE_TAIL
 
 
 def test_v10_legs_live_and_pass_on_a_program_map_tree(pm_scratch):
     report = lg.run_gate(pm_scratch, scope={"V10"})
     assert report.ok, report.render()
     checks = _checks(report, "V10 program-map equivalence")
-    assert len(checks) == 4
+    assert len(checks) == 5
     assert all(c.status == "PASS" for c in checks)
     census = "\n".join(checks[1].evidence)
     assert "876 claim nodes" in census
@@ -1075,6 +1089,11 @@ def test_v10_legs_live_and_pass_on_a_program_map_tree(pm_scratch):
     finds_evidence = "\n".join(checks[2].evidence)
     assert "bundle_less_study 28" in finds_evidence
     assert "restricted_node 1" in finds_evidence
+    # Stage 4's fifth leg: the page, byte-equal to the
+    # gate's recomputation under its template copies.
+    page_check = _check(report, "V10 program-map equivalence — program-map.html")
+    assert page_check.status == "PASS"
+    assert "verbatim" in "\n".join(page_check.evidence)
 
 
 def test_v10_not_run_where_the_layer_has_not_landed(scratch):
@@ -1193,6 +1212,101 @@ def test_teeth_v10_dropped_taxonomy_assignment_fails(pm_scratch):
     assert check.status == "FAIL"
     assert dropped in "\n".join(check.evidence)
     assert _pm_hashes(pm_scratch) == seeded
+
+
+def test_teeth_v10_hand_edited_page_fails(pm_scratch):
+    """Stage 4 (T401): a hand-touched page — one word of
+    chrome changed, data untouched — fails the page leg by
+    name, and the gate writes nothing."""
+    path = pm_scratch / lg.PROGRAM_MAP_HTML_REL
+    page = path.read_text(encoding="utf-8")
+    path.write_text(
+        page.replace("<title>Program map", "<title>Program map, edited"),
+        encoding="utf-8",
+    )
+    seeded = _pm_hashes(pm_scratch)
+    report = lg.run_gate(pm_scratch, scope={"V10"})
+    check = _check(
+        report, "V10 program-map equivalence — program-map.html"
+    )
+    assert check.status == "FAIL"
+    assert "chrome" in "\n".join(check.evidence)
+    assert _pm_hashes(pm_scratch) == seeded  # the gate wrote nothing
+
+
+def test_teeth_v10_page_with_tampered_embedded_data_fails(pm_scratch):
+    """A page whose embedded payload was edited (the data
+    artifacts on disk left clean) fails the page leg naming
+    the payload, not the chrome."""
+    path = pm_scratch / lg.PROGRAM_MAP_HTML_REL
+    page = path.read_text(encoding="utf-8")
+    marker = 'id="program-map-data">\n'
+    head, rest = page.split(marker, 1)
+    payload, tail = rest.split("</script>", 1)
+    tampered = payload.replace(
+        '"status": "draft"', '"status": "untested"', 1
+    )
+    assert tampered != payload
+    path.write_text(
+        head + marker + tampered + "</script>" + tail, encoding="utf-8"
+    )
+    seeded = _pm_hashes(pm_scratch)
+    report = lg.run_gate(pm_scratch, scope={"V10"})
+    check = _check(
+        report, "V10 program-map equivalence — program-map.html"
+    )
+    assert check.status == "FAIL"
+    assert "embedded program-map payload" in "\n".join(check.evidence)
+    assert _pm_hashes(pm_scratch) == seeded
+
+
+def test_teeth_v10_missing_page_fails_by_name(pm_scratch):
+    (pm_scratch / lg.PROGRAM_MAP_HTML_REL).unlink()
+    report = lg.run_gate(pm_scratch, scope={"V10"})
+    check = _check(
+        report, "V10 program-map equivalence — program-map.html"
+    )
+    assert check.status == "FAIL"
+    assert "missing" in "\n".join(check.evidence)
+
+
+def test_publish_program_map_through_the_gate(pm_scratch):
+    """T403's mechanics: candidates built by the pure
+    builder are gated by V10 (against the candidates, not
+    the published bytes) and land byte-identical."""
+    from glossa_lab import program_map_generate as pm
+
+    expected = pm.build_artifacts(pm_scratch)
+    result = gp.publish_program_map(pm_scratch)
+    assert result["published"] is True, result["gate"].render()
+    assert result["gate"].ok
+    for rel, text in expected.items():
+        assert (pm_scratch / rel).read_bytes() == text.encode("utf-8")
+
+
+def test_publish_program_map_refuses_a_tampered_candidate(
+    pm_scratch, tmp_path
+):
+    """A candidate set whose page was hand-edited is refused:
+    nothing is published and the published artifacts keep
+    their prior bytes."""
+    from glossa_lab import program_map_generate as pm
+
+    before = _pm_hashes(pm_scratch)
+    candidate_dir = tmp_path / "candidates"
+    candidate_dir.mkdir()
+    for rel, text in pm.build_artifacts(pm_scratch).items():
+        (candidate_dir / Path(rel).name).write_text(
+            text, encoding="utf-8"
+        )
+    page_path = candidate_dir / "program-map.html"
+    page_path.write_bytes(page_path.read_bytes() + b"<!-- hand edit -->")
+    result = gp.publish_program_map(
+        pm_scratch, candidate_dir=candidate_dir
+    )
+    assert result["published"] is False
+    assert result["gate"].ok is False
+    assert _pm_hashes(pm_scratch) == before
 
 
 def test_teeth_v9_census_catches_an_unregistered_program_map_writer(

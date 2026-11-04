@@ -1,4 +1,4 @@
-"""Spec 088 Stage S1 — the generated program map (T103).
+"""Spec 088 — the generated program map (S1 builder, S4 page).
 
 The whole-program picture of Spec 088, under the Spec 086
 discipline (one source of truth, generated downstream, a
@@ -18,10 +18,18 @@ gate on drift) applied to the program itself:
   named refusal and nothing is written.
 
 This module is the pure builder; the CLI wrapper is
-``tools/map/generate_program_map.py``. The committed
-artifacts (``program-map.json``, ``program-map-finds.json``)
-land in Stage S2; the Spec 086 gate gains the independent
-recomputation (class V10) in Stage S3.
+``tools/map/generate_program_map.py``. The data artifacts
+(``program-map.json``, ``program-map-finds.json``) landed
+in Stage S2 and the Spec 086 gate's independent
+recomputation (class V10) in Stage S3. Stage S4 (T401)
+adds the third artifact, ``program-map.html``: a single
+self-contained page that is exactly the registered
+template below wrapped around the two data artifacts
+embedded verbatim — the page computes no standing, class,
+or count of its own (C088-8); its script only filters and
+searches the generated fields, and the gate's V10 carries
+its own copies of the template (the amendment recorded in
+the S4 stage record).
 """
 
 from __future__ import annotations
@@ -39,6 +47,7 @@ LEDGER_REL = "glossa-indus/ledger/claims.jsonl"
 TAXONOMY_REL = "glossa-indus/map/program-map-taxonomy.json"
 MAP_REL = "glossa-indus/map/program-map.json"
 FINDS_REL = "glossa-indus/map/program-map-finds.json"
+PAGE_REL = "glossa-indus/map/program-map.html"
 SPECS_REL = "specs"
 
 # program-map-defs v1 §4.2 — the derivation table (D-088-3).
@@ -90,6 +99,441 @@ FIND_RESTRICTED_NODE = "restricted_node"
 _STANDING_TEMPLATE = (
     "Ledger standing: status {status} · stage {stage} · falsifier {falsifier}"
 )
+
+# ── The page (Stage S4, T401) ────────────────────────────────────────────────
+#
+# program-map.html is exactly these three registered template
+# pieces wrapped around the two data artifacts embedded
+# verbatim: _PAGE_HEAD + program-map.json text + _PAGE_MID +
+# program-map-finds.json text + _PAGE_TAIL. The template
+# carries no data of its own — every number, standing, and
+# count the page shows is rendered by the page's script from
+# the embedded artifacts' fields, and the script contains no
+# derivation: it filters and searches generated fields only
+# (C088-8). The Spec 086 gate's V10 class carries its own
+# registered copies of these three pieces (the Stage 4
+# amendment to V10's artifact list, recorded in the S4 stage
+# record); a template change made in only one copy is the
+# divergence the gate exists to catch.
+
+_PAGE_HEAD = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Program map — Glossa-Lab Indus program (Spec 088)</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body { margin: 0; padding: 0 16px 48px; background: #f7f7f4;
+  color: #1c1e21; font: 15px/1.45 -apple-system, "Segoe UI", Roboto,
+  Helvetica, Arial, sans-serif; }
+.pm-header { max-width: 1080px; margin: 0 auto; padding: 24px 0 8px; }
+.pm-header h1 { font-size: 26px; margin: 0 0 6px; }
+.pm-sub { color: #44484d; max-width: 72ch; margin: 0 0 10px; }
+.pm-stamp { font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: #33363a; word-break: break-all; margin: 0 0 8px; }
+.pm-domain-counts { list-style: none; margin: 0 0 14px; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 6px; }
+.pm-domain-count { background: #eceee9; border: 1px solid #d4d8d0;
+  border-radius: 999px; padding: 2px 10px; font-size: 13px; }
+.pm-controls { display: flex; flex-wrap: wrap; gap: 10px 18px;
+  align-items: center; margin-bottom: 6px; }
+.pm-filters { display: flex; flex-wrap: wrap; gap: 6px; }
+.pm-filter { border: 1px solid #b9beb4; background: #fff; color: #1c1e21;
+  border-radius: 999px; padding: 3px 12px; font-size: 13px; cursor: pointer; }
+.pm-filter.active { background: #1c1e21; color: #fff; border-color: #1c1e21; }
+.pm-search-label { font-size: 13px; color: #44484d; }
+.pm-search-label input { margin-left: 6px; padding: 4px 8px; width: 300px;
+  max-width: 70vw; border: 1px solid #b9beb4; border-radius: 6px;
+  font-size: 14px; }
+main, .pm-finds { max-width: 1080px; margin: 0 auto; }
+details.domain { background: #fff; border: 1px solid #dcded8;
+  border-radius: 8px; margin: 12px 0; padding: 6px 14px 10px; }
+summary { cursor: pointer; }
+.domain-head { font-size: 18px; font-weight: 650; padding: 6px 0; }
+.domain-head .counts, .study-head .counts { font-weight: 400;
+  font-size: 13px; color: #55585d; margin-left: 8px; }
+details.subdomain { margin: 4px 0 8px 10px; border-left: 3px solid #e3e5df;
+  padding-left: 12px; }
+.subdomain-head { font-size: 15px; font-weight: 600; padding: 4px 0; }
+details.study { margin: 2px 0 2px 6px; }
+.study-head { font-size: 14px; padding: 2px 0; }
+.sname, .dname { font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 13.5px; }
+.claim-list { margin: 2px 0 6px 18px; }
+.claim-row { display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline;
+  padding: 2.5px 0; border-bottom: 1px dotted #e6e8e2; font-size: 13.5px; }
+.cid { font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12.5px; word-break: break-all; }
+.standing { color: #33363a; }
+.chip { border-radius: 999px; padding: 0 8px; font-size: 11.5px;
+  line-height: 1.7; white-space: nowrap; }
+.chip.positive { background: #dff2e1; color: #14532d; }
+.chip.negative { background: #fbe3e0; color: #7f1d1d; }
+.chip.open { background: #e2e9f7; color: #1e3a5f; }
+.chip.closed_other { background: #e8e8e6; color: #3f4348; }
+.chip.unjudged { background: #fdf0d3; color: #713f12; }
+.chip.in_flight { background: #efe3f7; color: #4c1d95; }
+.badge { background: #fdf0d3; color: #713f12; border-radius: 4px;
+  padding: 0 6px; font-size: 11.5px; line-height: 1.7; }
+.restricted-flag { background: #1c1e21; color: #fff; border-radius: 4px;
+  padding: 0 6px; font-size: 11.5px; line-height: 1.7; }
+.name-only { margin: 2px 0 4px 18px; color: #33363a; font-style: italic; }
+.pm-finds { margin-top: 26px; background: #fff; border: 1px solid #dcded8;
+  border-radius: 8px; padding: 10px 18px 16px; }
+.pm-finds h2 { font-size: 19px; margin: 6px 0 4px; }
+.finds-note { color: #44484d; max-width: 72ch; margin: 0 0 8px; }
+.find-kind h3 { font-size: 15px; margin: 14px 0 4px; }
+.find-list { margin: 0; padding-left: 20px; font-size: 13.5px; }
+.find-list li { padding: 1.5px 0; word-break: break-all; }
+.empty { color: #55585d; font-style: italic; margin: 2px 0; }
+[hidden] { display: none !important; }
+@media (max-width: 700px) {
+  body { padding: 0 10px 36px; font-size: 14px; }
+  .pm-header h1 { font-size: 22px; }
+  .pm-search-label input { width: 100%; max-width: none; margin: 4px 0 0; }
+  .pm-controls { flex-direction: column; align-items: stretch; }
+  .claim-list { margin-left: 8px; }
+  details.subdomain { margin-left: 2px; padding-left: 8px; }
+}
+</style>
+</head>
+<body>
+<header class="pm-header">
+<h1>Program map</h1>
+<p class="pm-sub">Every claim and every study in the Glossa-Lab Indus
+decipherment program, grouped by the program-map taxonomy, with
+standings derived mechanically from the claims ledger. This page is
+generated from the ledger by the program-map builder and verified by
+the ledger gate (class V10); it is never hand-edited, and it carries
+no aggregate score: counts are per domain only.</p>
+<p class="pm-stamp" id="pm-stamp"></p>
+<ul class="pm-domain-counts" id="pm-domain-counts"></ul>
+<div class="pm-controls">
+<div class="pm-filters" id="pm-filters" role="group" aria-label="Filter by class"></div>
+<label class="pm-search-label">Search<input id="pm-search" type="search"
+autocomplete="off" placeholder="claim id, standing, status, study, document"></label>
+</div>
+</header>
+<main id="pm-tree"></main>
+<section class="pm-finds" id="pm-finds"></section>
+<script type="application/json" id="program-map-data">
+"""
+
+_PAGE_MID = """</script>
+<script type="application/json" id="program-map-finds">
+"""
+
+_PAGE_TAIL = """</script>
+<script>
+(function () {
+  "use strict";
+  var pm = JSON.parse(document.getElementById("program-map-data").textContent);
+  var fd = JSON.parse(document.getElementById("program-map-finds").textContent);
+  var CLASS_LABELS = {
+    positive: "positive", negative: "negative", open: "open",
+    closed_other: "closed\\u2013other", unjudged: "unjudged",
+    in_flight: "in flight"
+  };
+  var FILTERS = [
+    ["all", "All"], ["positive", "Positive"], ["negative", "Negative"],
+    ["open", "Open"], ["in_flight", "In flight"],
+    ["closed_other", "Closed\\u2013other"], ["unjudged", "Unjudged"]
+  ];
+  var FIND_LABELS = {
+    bundle_less_study: "Bundle-less studies (unjudged)",
+    judgment_call: "Judgment calls",
+    extracted_null_falsifier: "Extracted claims with no falsifier",
+    restricted_node: "Restricted nodes (name-only)"
+  };
+  var FIND_ORDER = ["bundle_less_study", "judgment_call",
+    "extracted_null_falsifier", "restricted_node"];
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text !== undefined && text !== null) n.textContent = text;
+    return n;
+  }
+  function chip(cls) {
+    var c = el("span", "chip " + cls, CLASS_LABELS[cls]);
+    return c;
+  }
+  function searchText(parts) {
+    return parts.filter(Boolean).join(" ").toLowerCase();
+  }
+
+  // Header: the stamp and the per-domain counts, copied from the
+  // generated coverage block's own fields (never recomputed here).
+  var stamp = pm.stamp;
+  document.getElementById("pm-stamp").textContent =
+    "As of the ledger: " + stamp.ledger_lines + " lines \\u00b7 sha256 " +
+    stamp.ledger_sha256 + " \\u00b7 latest entry " +
+    stamp.ledger_latest_entry_date + " \\u00b7 " + stamp.ledger_schema +
+    " \\u00b7 " + stamp.program_map_defs + " \\u00b7 " +
+    stamp.program_map_taxonomy;
+  var countsList = document.getElementById("pm-domain-counts");
+  Object.keys(pm.coverage.domains).sort().forEach(function (d) {
+    var b = pm.coverage.domains[d];
+    countsList.appendChild(el("li", "pm-domain-count",
+      d + " \\u2014 " + b.studies + " studies \\u00b7 " + b.claims +
+      " claims"));
+  });
+
+  // Filters and search operate only on generated fields (C088-8):
+  // each row and group carries its node's own fields, and the
+  // controls below only show or hide what the data already says.
+  var state = { cls: "all", q: "" };
+  var filtersBox = document.getElementById("pm-filters");
+  FILTERS.forEach(function (pair) {
+    var b = el("button", "pm-filter", pair[1]);
+    b.type = "button";
+    b.dataset.value = pair[0];
+    if (pair[0] === "all") b.classList.add("active");
+    b.addEventListener("click", function () {
+      state.cls = pair[0];
+      var kids = filtersBox.children;
+      for (var i = 0; i < kids.length; i++) {
+        kids[i].classList.toggle("active", kids[i] === b);
+      }
+      apply();
+    });
+    filtersBox.appendChild(b);
+  });
+  document.getElementById("pm-search").addEventListener("input",
+    function (e) {
+      state.q = e.target.value.trim().toLowerCase();
+      apply();
+    });
+
+  var claimsByStudy = {}, claimsByDoc = {};
+  pm.nodes.claims.forEach(function (c) {
+    if (c.study) {
+      (claimsByStudy[c.study] = claimsByStudy[c.study] || []).push(c);
+    } else {
+      (claimsByDoc[c.document] = claimsByDoc[c.document] || []).push(c);
+    }
+  });
+  var studiesByGroup = {}, docsByGroup = {};
+  pm.nodes.studies.forEach(function (s) {
+    var k = s.domain + "|" + s.subdomain;
+    (studiesByGroup[k] = studiesByGroup[k] || []).push(s);
+  });
+  pm.nodes.claims.forEach(function (c) {
+    if (!c.study) {
+      var k = c.domain + "|" + c.subdomain;
+      (docsByGroup[k] = docsByGroup[k] || {})[c.document] = true;
+    }
+  });
+
+  function claimRow(c) {
+    var row = el("div", "claim-row");
+    row.dataset.class = c.class;
+    row.dataset.search = searchText([c.id, c.standing, c.status,
+      c.class, c.domain, c.subdomain, c.study, c.document]);
+    row.appendChild(el("span", "cid", c.id));
+    row.appendChild(chip(c.class));
+    row.appendChild(el("span", "standing", c.standing));
+    return row;
+  }
+  function studyGroup(s) {
+    var box = el("details", "study" + (s.restricted ? " restricted" : ""));
+    box.dataset.class = s.class || "";
+    box.dataset.search = searchText([s.id, s.class, s.domain,
+      s.subdomain, s.standing]);
+    var head = el("summary", "study-head");
+    head.appendChild(el("span", "sname", s.id));
+    if (s.restricted) {
+      head.appendChild(el("span", "restricted-flag", "restricted"));
+    } else {
+      head.appendChild(chip(s.class));
+      var mc = s.member_counts;
+      var bits = [];
+      ["positive", "negative", "open", "closed_other"].forEach(
+        function (k) {
+          if (mc[k]) bits.push(mc[k] + " " + CLASS_LABELS[k]);
+        });
+      head.appendChild(el("span", "counts",
+        mc.total + (mc.total === 1 ? " claim" : " claims") +
+        (bits.length ? " \\u00b7 " + bits.join(" \\u00b7 ") : "")));
+      if (s.judgment_call) {
+        head.appendChild(el("span", "badge", "judgment call"));
+      }
+    }
+    box.appendChild(head);
+    if (s.restricted) {
+      box.appendChild(el("p", "name-only", s.standing));
+    }
+    var list = el("div", "claim-list");
+    (claimsByStudy[s.id] || []).forEach(function (c) {
+      list.appendChild(claimRow(c));
+    });
+    box.appendChild(list);
+    return box;
+  }
+  function docGroup(docId) {
+    var box = el("details", "study doc-group");
+    box.dataset.class = "";
+    box.dataset.search = searchText([docId]);
+    var head = el("summary", "study-head");
+    head.appendChild(el("span", "sname",
+      "Extracted document \\u2014 " + docId));
+    box.appendChild(head);
+    var list = el("div", "claim-list");
+    (claimsByDoc[docId] || []).forEach(function (c) {
+      list.appendChild(claimRow(c));
+    });
+    box.appendChild(list);
+    return box;
+  }
+
+  var tree = document.getElementById("pm-tree");
+  Object.keys(pm.coverage.domains).sort().forEach(function (domain) {
+    var dsec = el("details", "domain");
+    dsec.open = true;
+    var b = pm.coverage.domains[domain];
+    var dh = el("summary", "domain-head");
+    dh.appendChild(el("span", "dname", domain));
+    dh.appendChild(el("span", "counts",
+      b.studies + " studies \\u00b7 " + b.claims + " claims"));
+    dsec.appendChild(dh);
+    var subs = {};
+    pm.nodes.studies.forEach(function (s) {
+      if (s.domain === domain) subs[s.subdomain] = true;
+    });
+    pm.nodes.claims.forEach(function (c) {
+      if (c.domain === domain) subs[c.subdomain] = true;
+    });
+    Object.keys(subs).sort().forEach(function (sub) {
+      var ssec = el("details", "subdomain");
+      ssec.open = true;
+      var sh = el("summary", "subdomain-head");
+      sh.appendChild(el("span", "sname", sub));
+      ssec.appendChild(sh);
+      var key = domain + "|" + sub;
+      (studiesByGroup[key] || []).forEach(function (s) {
+        ssec.appendChild(studyGroup(s));
+      });
+      var docs = docsByGroup[key] || {};
+      Object.keys(docs).sort().forEach(function (docId) {
+        ssec.appendChild(docGroup(docId));
+      });
+      dsec.appendChild(ssec);
+    });
+    tree.appendChild(dsec);
+  });
+
+  // The finds panel: the machine find list, grouped by its four
+  // registered kinds. An empty kind is shown as an empty kind.
+  var findsBox = document.getElementById("pm-finds");
+  findsBox.appendChild(el("h2", null,
+    "Finds \\u2014 where the picture is thin"));
+  findsBox.appendChild(el("p", "finds-note",
+    "The builder's machine find list, embedded verbatim from " +
+    "program-map-finds.json. These shortfalls are what the gap " +
+    "register is built from."));
+  var byKind = {};
+  fd.finds.forEach(function (f) {
+    (byKind[f.kind] = byKind[f.kind] || []).push(f);
+  });
+  FIND_ORDER.forEach(function (kind) {
+    var items = byKind[kind] || [];
+    var sec = el("div", "find-kind");
+    sec.appendChild(el("h3", null,
+      FIND_LABELS[kind] + " \\u2014 " + items.length));
+    if (!items.length) {
+      sec.appendChild(el("p", "empty", "None on the current ledger."));
+    } else {
+      var ul = el("ul", "find-list");
+      items.forEach(function (f) {
+        var text = f.subject;
+        if (f.document) text += " \\u00b7 document " + f.document;
+        if (kind === "judgment_call") {
+          text += " \\u00b7 positive " + f.positive +
+            " \\u00b7 negative " + f.negative +
+            " \\u00b7 total " + f.total;
+        }
+        ul.appendChild(el("li", null, text));
+      });
+      sec.appendChild(ul);
+    }
+    findsBox.appendChild(sec);
+  });
+
+  function matches(node) {
+    if (state.cls !== "all" && node.dataset.class !== state.cls) {
+      return false;
+    }
+    if (state.q &&
+        (node.dataset.search || "").indexOf(state.q) === -1) {
+      return false;
+    }
+    return true;
+  }
+  function apply() {
+    var active = state.cls !== "all" || state.q !== "";
+    var i, j;
+    var rows = document.querySelectorAll(".claim-row");
+    for (i = 0; i < rows.length; i++) {
+      rows[i].hidden = !matches(rows[i]);
+    }
+    var groups = document.querySelectorAll("details.study");
+    for (i = 0; i < groups.length; i++) {
+      var anyClaim = false;
+      var inner = groups[i].querySelectorAll(".claim-row");
+      for (j = 0; j < inner.length; j++) {
+        if (!inner[j].hidden) anyClaim = true;
+      }
+      groups[i].hidden = !(matches(groups[i]) || anyClaim);
+      if (active && !groups[i].hidden) groups[i].open = true;
+    }
+    var subs = document.querySelectorAll("details.subdomain");
+    for (i = 0; i < subs.length; i++) {
+      var vis = false;
+      var sg = subs[i].querySelectorAll("details.study");
+      for (j = 0; j < sg.length; j++) {
+        if (!sg[j].hidden) vis = true;
+      }
+      subs[i].hidden = !vis;
+      if (active && vis) subs[i].open = true;
+    }
+    var doms = document.querySelectorAll("details.domain");
+    for (i = 0; i < doms.length; i++) {
+      var dvis = false;
+      var ds = doms[i].querySelectorAll("details.subdomain");
+      for (j = 0; j < ds.length; j++) {
+        if (!ds[j].hidden) dvis = true;
+      }
+      doms[i].hidden = !dvis;
+      if (active && dvis) doms[i].open = true;
+    }
+  }
+})();
+</script>
+</body>
+</html>
+"""
+
+
+def _render_page(map_text: str, finds_text: str) -> str:
+    """Assemble the page from the two artifacts' texts.
+
+    The data is embedded verbatim; verbatim embedding inside
+    a script element is only sound while the data cannot
+    close the element, so a payload carrying a script close
+    is a named refusal rather than an escaped rewrite (an
+    escaped copy would no longer be the artifact).
+    """
+    for label, text in (("program-map.json", map_text),
+                        ("program-map-finds.json", finds_text)):
+        if "</script" in text.lower():
+            raise ProgramMapBuildError(
+                f"{label} carries a script-close sequence and "
+                "cannot be embedded verbatim in the page "
+                "(Stage S4 embedding guard)"
+            )
+    return _PAGE_HEAD + map_text + _PAGE_MID + finds_text + _PAGE_TAIL
 
 
 class ProgramMapBuildError(Exception):
@@ -340,7 +784,9 @@ def _dump(obj: object) -> str:
 
 
 def build_artifacts(root: Path) -> dict[str, str]:
-    """Build both artifacts' text in memory, from the defs' inputs only."""
+    """Build all three artifacts' text in memory, from the
+    defs' inputs only (the page is the two data artifacts
+    embedded verbatim in the registered template)."""
     rows = _read_ledger(root)
     tax = _read_taxonomy(root)
     spec_dirs = _spec_dirs(root)
@@ -591,7 +1037,13 @@ def build_artifacts(root: Path) -> dict[str, str]:
         "stamp": stamp,
         "taxonomy_version": TAXONOMY_VERSION,
     }
-    return {MAP_REL: _dump(program_map), FINDS_REL: _dump(finds_doc)}
+    map_text = _dump(program_map)
+    finds_text = _dump(finds_doc)
+    return {
+        MAP_REL: map_text,
+        FINDS_REL: finds_text,
+        PAGE_REL: _render_page(map_text, finds_text),
+    }
 
 
 def build_outputs(root: Path) -> dict[Path, str]:

@@ -1,0 +1,17 @@
+PASS desktop: all claim rows rendered — 876 rows
+PASS desktop: all study groups rendered — 89 studies, 7 document groups
+PASS desktop: header stamp is the artifact stamp — As of the ledger: 907 lines · sha256 9f8144c3fa73d7cfa4ffd02d3b6c23c3ea9e0c1e164e9497232dd2842e0a022c · latest
+PASS desktop: header per-domain counts match the coverage block — Anchors & readings — 13 studies · 0 claims; Claim families by study line — 40 studies · 568 claims; Contact zone & external corpora — 2 studies · 33 claims; Program infrastructure — 17 studies · 150 claims; Sign inventory & corpus — 17 studies · 125 claims
+PASS desktop: claim rows carry chip + standing text — ancient_writing_and_modern_technologies_51831ac9_sign_val_0001
+open
+Ledger standing: status untested · stage created · falsifier a
+PASS desktop: domain section collapses and reopens
+PASS desktop: Negative filter shows exactly the negative claims — 6 visible rows, expected 6
+PASS desktop: All filter restores the full visible set
+PASS desktop: search narrows to generated-field matches — query '_sign_val_0001': 2 rows
+PASS desktop: exactly one restricted study node
+PASS desktop: restricted node is name-only — 072-fish-family-profiles-redesignrestricted
+PASS desktop: finds panel renders all four kinds with find-list counts — judgment_call live count 0
+PASS desktop: empty judgment-call kind shows its honest empty state
+PASS mobile: page renders, header and tree visible
+14/14 checks passed

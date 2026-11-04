@@ -251,7 +251,7 @@ into its stage report.
 
 ## Stage 4 — The page (PR: feat/088-s4-page)
 
-- [ ] **T401 — Page rendering in the builder.** `program-map.html`: data
+- [x] **T401 — Page rendering in the builder.** `program-map.html`: data
   embedded verbatim; collapsible domains/subdomains; class chips; filters
   and search over generated fields only; stamp + per-domain counts in the
   header; restricted studies name-only. The gate's V10 artifact list is
@@ -261,7 +261,20 @@ into its stage report.
   shows no standing logic beyond filtering/searching generated fields).
   *This does not establish:* that the page reads well — that is T402's
   rendered evidence and the reader's judgment.
-- [ ] **T402 — Playwright render verification.** The generated page
+  **Completed 2026-11-04:** the builder emits `program-map.html` as
+  exactly the registered template (`_PAGE_HEAD`/`_PAGE_MID`/`_PAGE_TAIL`)
+  wrapped around the two data artifacts embedded verbatim, with a
+  fail-closed guard against a script-close sequence in the data;
+  `--check` covers all three artifacts. The amendment to V10's artifact
+  list landed in the same PR: the gate carries its own registered copies
+  of the three template pieces (the agreement test pins them byte-equal
+  to the builder's) and a fifth V10 leg byte-compares the page against
+  the gate's recomputation from its recomputed data. Conformance: the
+  committed page is template + verbatim data by construction and by
+  test; the template source scan finds none of the eight registered
+  statuses and no standing logic. Record:
+  `records/stage-s4-record.md`.
+- [x] **T402 — Playwright render verification.** The generated page
   rendered at desktop (1440×900) and mobile (390×844); screenshots kept
   with the stage record; checked: sections collapse, filters change the
   visible set correctly, search narrows to generated-field matches,
@@ -271,12 +284,36 @@ into its stage report.
   source checks alone never support a verified claim about a page).
   *This does not establish:* usability for every reader or device — two
   widths and the named checks are the evidence, no more.
-- [ ] **T403 — Publication through the gate.** The page + JSON + finds
+  **Completed 2026-11-04:** `records/stage-s4-evidence/verify_page.py`
+  (Playwright, Chromium) ran **14/14 checks passed** over the committed
+  page at both widths — 876 claim rows and 89 study groups in the DOM,
+  header stamp and per-domain counts equal to the coverage block, a
+  domain section collapsing and reopening, the Negative filter showing
+  exactly the 6 negative claims, search narrowing to generated-field
+  matches, the restricted node name-only, the finds panel rendering all
+  four kinds with the judgment-call kind's empty state shown as empty.
+  Five screenshots in `records/stage-s4-evidence/`, read by the stage
+  worker before any claim here: `desktop.png`, `desktop-study.png`,
+  `desktop-filtered.png`, `desktop-restricted.png`, `mobile.png`;
+  results in the same directory's `results.txt`.
+- [x] **T403 — Publication through the gate.** The page + JSON + finds
   republished via `gated_publish.py`; the stage record cites the V10 gate
   output over these artifacts. Claims: C088-16. Acceptance: **gate**
   (ALL PASS incl. V10, quoted in the stage record).
   *This does not establish:* that publishing was wise — only that C1's
   order was kept: the verification existed before the surface did.
+  **Completed 2026-11-04:** `gated_publish.py` gains
+  `publish_program_map` (the T303 mechanics over the program map: the
+  candidates are gated by a V10-scoped gate run over a scratch root
+  carrying the candidates, never the published bytes; atomic replace
+  only on ALL PASS). Publication run of record: published, candidate
+  gate **5 PASS / 0 FAIL / 10 NOT-RUN** (the five V10 legs; the
+  NOT-RUNs are the out-of-scope classes). The full gate over the real
+  tree with the page landed: **25 PASS / 0 FAIL / 1 NOT-RUN** full,
+  **28 PASS / 0 FAIL / 0 NOT-RUN** `--regen` — V10 section quoted
+  verbatim in `records/stage-s4-record.md`. The two JSON artifacts
+  republished byte-identical (SHA-256 unchanged from the S2/S3
+  records); the page's SHA-256 is `b99d636e…`.
 
 ## Stage 5 — Gap scans (PRs: feat/088-s5a / s5b / s5c)
 

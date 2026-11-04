@@ -4,14 +4,14 @@
    "by_class": {
     "closed_other": 1,
     "negative": 6,
-    "open": 867,
+    "open": 887,
     "positive": 2
    },
    "by_population": {
-    "bundle": 853,
+    "bundle": 873,
     "extracted": 23
    },
-   "total": 876
+   "total": 896
   },
   "domains": {
    "Anchors & readings": {
@@ -69,19 +69,19 @@
     }
    },
    "Program infrastructure": {
-    "claims": 150,
+    "claims": 170,
     "claims_by_class": {
      "closed_other": 1,
      "negative": 0,
-     "open": 149,
+     "open": 169,
      "positive": 0
     },
     "restricted_studies": 0,
-    "studies": 17,
+    "studies": 18,
     "studies_by_class": {
      "closed_other": 0,
      "negative": 0,
-     "open": 11,
+     "open": 12,
      "positive": 0,
      "unjudged": 6
     }
@@ -117,8 +117,8 @@
     "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
     "without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001"
    ],
-   "present": 867,
-   "total": 876
+   "present": 887,
+   "total": 896
   },
   "judgment_call_studies": [],
   "multi_spec_claims": [
@@ -171,12 +171,12 @@
    "by_class": {
     "closed_other": 0,
     "negative": 0,
-    "open": 60,
+    "open": 61,
     "positive": 0,
     "unjudged": 28
    },
    "restricted": 1,
-   "total": 89
+   "total": 90
   },
   "unjudged_studies": [
    "001-glossa-lab-baseline",
@@ -12156,6 +12156,286 @@
    },
    {
     "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "089-run-scoped-results/C089-1",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "089-run-scoped-results",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "089-run-scoped-results/C089-10",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "089-run-scoped-results",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "089-run-scoped-results/C089-11",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "089-run-scoped-results",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "089-run-scoped-results/C089-12",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "089-run-scoped-results",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "089-run-scoped-results/C089-13",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "089-run-scoped-results",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "089-run-scoped-results/C089-14",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "089-run-scoped-results",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "089-run-scoped-results/C089-15",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "089-run-scoped-results",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "089-run-scoped-results/C089-16",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "089-run-scoped-results",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "089-run-scoped-results/C089-17",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "089-run-scoped-results",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "089-run-scoped-results/C089-18",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "089-run-scoped-results",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "089-run-scoped-results/C089-19",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "089-run-scoped-results",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "089-run-scoped-results/C089-2",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "089-run-scoped-results",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "089-run-scoped-results/C089-20",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "089-run-scoped-results",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "089-run-scoped-results/C089-3",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "089-run-scoped-results",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "089-run-scoped-results/C089-4",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "089-run-scoped-results",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "089-run-scoped-results/C089-5",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "089-run-scoped-results",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "089-run-scoped-results/C089-6",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "089-run-scoped-results",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "089-run-scoped-results/C089-7",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "089-run-scoped-results",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "089-run-scoped-results/C089-8",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "089-run-scoped-results",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "089-run-scoped-results/C089-9",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "089-run-scoped-results",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
     "document": "ancient_writing_and_modern_technologies_51831ac9",
     "domain": "Claim families by study line",
     "falsifier_present": false,
@@ -13894,14 +14174,30 @@
     },
     "restricted": false,
     "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "domain": "Program infrastructure",
+    "id": "089-run-scoped-results",
+    "judgment_call": false,
+    "kind": "study",
+    "member_counts": {
+     "closed_other": 0,
+     "negative": 0,
+     "open": 20,
+     "positive": 0,
+     "total": 20
+    },
+    "restricted": false,
+    "subdomain": "Governance, lifecycle & generated layers"
    }
   ]
  },
  "stamp": {
   "ledger_latest_entry_date": "2026-11-04",
-  "ledger_lines": 907,
+  "ledger_lines": 927,
   "ledger_schema": "ledger-schema v1",
-  "ledger_sha256": "9f8144c3fa73d7cfa4ffd02d3b6c23c3ea9e0c1e164e9497232dd2842e0a022c",
+  "ledger_sha256": "b442ce7e5825e938fbd4bc0033bcb0582b37c71fe724a55f4584b5a4d5213712",
   "program_map_defs": "program-map-defs v1",
   "program_map_taxonomy": "program-map-taxonomy v1"
  },

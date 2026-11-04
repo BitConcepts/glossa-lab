@@ -3,8 +3,8 @@
  "generated_from": "glossa-indus/ledger/claims.jsonl",
  "generated_by": "tools/ledger/generate_matrix.py (backend/glossa_lab/matrix_generate.py)",
  "as_of": {
-  "ledger_sha256": "9f8144c3fa73d7cfa4ffd02d3b6c23c3ea9e0c1e164e9497232dd2842e0a022c",
-  "ledger_lines": 907,
+  "ledger_sha256": "b442ce7e5825e938fbd4bc0033bcb0582b37c71fe724a55f4584b5a4d5213712",
+  "ledger_lines": 927,
   "ledger_date": "2026-11-04",
   "ledger_schema": "ledger-schema v1",
   "matrix_defs": "matrix-defs v1"
@@ -5262,6 +5262,126 @@
   },
   {
    "id": "088-full-picture-map-gap-register/C088-10",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "089-run-scoped-results/C089-5",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "089-run-scoped-results/C089-4",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "089-run-scoped-results/C089-2",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "089-run-scoped-results/C089-10",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "089-run-scoped-results/C089-16",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "089-run-scoped-results/C089-1",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "089-run-scoped-results/C089-17",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "089-run-scoped-results/C089-18",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "089-run-scoped-results/C089-11",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "089-run-scoped-results/C089-8",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "089-run-scoped-results/C089-13",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "089-run-scoped-results/C089-19",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "089-run-scoped-results/C089-6",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "089-run-scoped-results/C089-7",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "089-run-scoped-results/C089-3",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "089-run-scoped-results/C089-20",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "089-run-scoped-results/C089-14",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "089-run-scoped-results/C089-9",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "089-run-scoped-results/C089-15",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "089-run-scoped-results/C089-12",
    "population": "bundle",
    "status": "draft",
    "stage": "created"
@@ -23071,6 +23191,226 @@
    ]
   },
   {
+   "row": "089-run-scoped-results/C089-1",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "089-run-scoped-results/C089-1",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "089-run-scoped-results/C089-10",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "089-run-scoped-results/C089-10",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "089-run-scoped-results/C089-11",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "089-run-scoped-results/C089-11",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "089-run-scoped-results/C089-12",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "089-run-scoped-results/C089-12",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "089-run-scoped-results/C089-13",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "089-run-scoped-results/C089-13",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "089-run-scoped-results/C089-14",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "089-run-scoped-results/C089-14",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "089-run-scoped-results/C089-15",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "089-run-scoped-results/C089-15",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "089-run-scoped-results/C089-16",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "089-run-scoped-results/C089-16",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "089-run-scoped-results/C089-17",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "089-run-scoped-results/C089-17",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "089-run-scoped-results/C089-18",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "089-run-scoped-results/C089-18",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "089-run-scoped-results/C089-19",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "089-run-scoped-results/C089-19",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "089-run-scoped-results/C089-2",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "089-run-scoped-results/C089-2",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "089-run-scoped-results/C089-20",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "089-run-scoped-results/C089-20",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "089-run-scoped-results/C089-3",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "089-run-scoped-results/C089-3",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "089-run-scoped-results/C089-4",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "089-run-scoped-results/C089-4",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "089-run-scoped-results/C089-5",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "089-run-scoped-results/C089-5",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "089-run-scoped-results/C089-6",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "089-run-scoped-results/C089-6",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "089-run-scoped-results/C089-7",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "089-run-scoped-results/C089-7",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "089-run-scoped-results/C089-8",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "089-run-scoped-results/C089-8",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "089-run-scoped-results/C089-9",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "089-run-scoped-results/C089-9",
+    "spec.md"
+   ]
+  },
+  {
    "row": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
    "column": "055",
    "column_class": "studies",
@@ -23238,8 +23578,8 @@
   }
  ],
  "coverage": {
-  "rows_total": 876,
-  "rows_with_cells": 862,
+  "rows_total": 896,
+  "rows_with_cells": 882,
   "empty_rows": [
    "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
    "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -23597,30 +23937,30 @@
    ],
    "corpus_texts": []
   },
-  "cells_total": 1399,
+  "cells_total": 1419,
   "cells_by_relation": {
-   "supports": 1392,
+   "supports": 1412,
    "opposes": 7,
    "constrains": 0
   },
   "cells_by_class": {
    "studies": 7,
-   "documents": 1392,
+   "documents": 1412,
    "research_checks": 0,
    "anchors": 0,
    "corpus_texts": 0
   },
   "falsifier_coverage": {
-   "covered": 867,
-   "total": 876,
+   "covered": 887,
+   "total": 896,
    "by_population": {
     "extracted": {
      "covered": 14,
      "total": 23
     },
     "bundle": {
-     "covered": 853,
-     "total": 853
+     "covered": 873,
+     "total": 873
     }
    }
   },

@@ -380,6 +380,32 @@ one is a fixed setting of a generic block, kept registered and
 runnable for saved experiments, but no longer offered for new
 ones.
 
+Eight more generic building blocks are in the Palette:
+**InteractionSurplusProfile** (count bigram and trigram
+interactions whose surplus over independence clears a threshold in
+nats), **OrderInformationProfile** (decompose corpus information
+by interaction order and classify the regime by a rule table over
+the order fractions), **TokenContextAssociation** (permutation-
+tested association between signs and a metadata context field,
+with optional length binning), **MetricFieldExtractor** (pull a
+flat metric vector out of wired profiler bundles using a field map
+given as a parameter), **SignatureComparator** (rank corpora by
+distance to a language signature template versus a negative
+template), **EvidenceRuleAggregator** (combine diagnostic outputs
+into one language verdict by an evidence rule table given as a
+parameter), **PositionalClassClassifier** (classify signs into
+functional classes by their position profile, with the class
+labels and rules as parameters), and **SignPositionNullTest**
+(test a sign's positional bias against a shuffle null, with the
+significance bands as parameters). The eight older study-specific
+nodes they generalise (the two epistatic profilers, the
+sign-context association, the degrees-of-freedom extractor, the
+language signature comparator, the language detector verdict, the
+Fuls positional classifier, and the Indus null model test) are
+now legacy in the same way: each one is a fixed setting of a
+generic block, kept registered and runnable for saved
+experiments, but no longer offered for new ones.
+
 ### Node Reference
 
 **Corpus Loaders:**

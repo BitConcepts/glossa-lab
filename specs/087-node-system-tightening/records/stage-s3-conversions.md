@@ -1498,3 +1498,271 @@ restored and are not in this PR's diff.
   example-line truncation rules, and the two known-name
   sources differ by node in the current code; all are carried
   as spec data, none normalised.
+
+## PR-E — family F9 (Phase-14 epistatic / grounding / structural / integrative machinery, the Phase-20 positional classifier, and the Indus-evidence null test)
+
+**Branch:** `feat/087-s3-conv-e`, built on main `f40b1a99`
+(PR #497 merged). **Commits:** `3b004db` (fixtures, captured
+first), plus the implementation commit. **Seat:** build worker;
+the parent gates and merges. The contract stated at the head
+of this record governs unchanged.
+
+### The generic machinery — appended to `backend/glossa_lab/generic_primitives.py`
+
+PR-E appends eight engines to PR-D's module (same stdlib-only
+pattern). F9 is the stage's most heterogeneous family — eight
+nodes with no shared surface — so each node gets its own small
+primitive, with its fixed content (rule tables, label sets,
+thresholds, verdict texts) carried as spec data, per the
+triage's per-node targets. Three of the engines codify
+behaviour the batch's preparation had to read off the live
+code exactly: the comparator's template is a per-key mean over
+reference bundles with spread-normalised distances (not a
+centroid over a nested feature tuple); the context
+association's null re-accumulates token counts per shuffle and
+z-scores the ROUNDED observed PMI; the null test's p-value is
+the one-sided share of null rates at or above the observed
+rate, floored at 1/n_null, with a population standard
+deviation. The triage's caution for the null test is honoured:
+the existing generic PermutationTest has score-shaped ports,
+not sequence-shaped, so SignPositionNullTest is a separate
+primitive and does not reuse it.
+
+The eight primitives, registered in the core list immediately
+after PersonsAggregator, each with inputs/outputs mirroring
+its domain node and a description naming the delegating node:
+
+| primitive | category | mechanism |
+|---|---|---|
+| InteractionSurplusProfile | Analysis | bigram PMI and trigram surplus over the pairwise baseline for frequent n-grams; counts at or above a spec-carried significance cut (nats) are significant; min counts, top_k, label are plain params. |
+| OrderInformationProfile | Analysis | HED decomposition: per-symbol block entropies, successive differences as order contributions, unigram skew prepended; the regime is the first match of an ordered rule table over the f2/f1 and f3/f2 metrics, with a fallback regime — all spec data. |
+| TokenContextAssociation | Analysis | per-token PMI between signs and a metadata context field against a context-shuffle permutation null (z-score + surplus over the null mean); significance cut, strong-verdict minimum, verdict templates, and the optional length binning (binned field, source field, [bound, name] bins, default bin) are spec data. |
+| MetricFieldExtractor | Transforms | a flat metric vector from wired profiler bundles, driven by a field_map parameter: ordered extraction entries (a field of an input dict, the first row's field of a carried list, the field of the list row whose n equals a carried value, or the field of a list row at an index), each with a default and optional float coercion. |
+| SignatureComparator | Analysis | flat signature bundles (one per port a..f) classified candidate / negative / reference by spec data (candidate tag + marker, negative-tag set); per-key mean template over references, spread-normalised Euclidean distances to the language template and the negative centroid, all bundles ranked; the target row's lang-minus-neg delta against the spec margin picks among spec verdict templates. |
+| EvidenceRuleAggregator | Analysis | an ordered evidence rule table as data (range_pair, field_equals, list_fraction_checks, success_threshold kinds), each rule emitting a formatted for/against line; score = for − against, is_language at a spec score threshold, three verdict bands as spec templates gated by a spec confidence threshold; the CAS thresholds stay plain params named by the success_threshold rule. |
+| PositionalClassClassifier | Analysis | index-based I/M/T position counts (a length-1 token counts as both initial and terminal), rates over the position-count total, adjacent-repetition rate; classification by a spec label set and ordered dominant-position rules (dominance threshold + secondary threshold as plain params), verdict as a spec template. |
+| SignPositionNullTest | Analysis | a sign's edge rate (initial, or terminal for any other test type) against n_null shuffled re-deals (random.sample on the seeded global stream); population-std z-score, one-sided p floored at 1/n_null, verdict from a spec band table of [|z| threshold, verdict] pairs with a fallback. |
+
+### The eight delegations
+
+Each domain fn keeps its id, def, and docstring, and now
+builds its spec and delegates. Fixed content at the delegation
+point:
+
+| domain node (module) | primitive | spec data passed |
+|---|---|---|
+| EpistaticInteractionDetector (phase14) | InteractionSurplusProfile | profile_spec.significance_cut = 2.0 |
+| EpistaticOrderProfile (phase14) | OrderInformationProfile | profile_spec.regime_rules = [{language_like: f2/f1 >= 0.10 and f3/f2 >= 0.05}, {non_linguistic: f2/f1 < 0.05}], fallback_regime = ambiguous |
+| SignContextAssociation (phase14) | TokenContextAssociation | association_spec: significance_cut 2.0, strong_min 5, binned_field length_bin over source field length with bins [[2, short], [5, medium]] and default long, the three verdict templates |
+| DoFExtractor (phase14) | MetricFieldExtractor | field_map (setdefault): the eight-entry CAS renaming table — h1_norm from the block row with n == 3, h1_nats from the first block row, zipf_alpha / zipf_r2, mi_gamma / mi_r2_pow, epistatic_2nd / 3rd_norm from HED order rows 1 / 2 — every entry float-coerced with default 0.0. This is the parameter surface the triage says the node gains. |
+| LanguageSignatureComparator (phase14) | SignatureComparator | comparator_spec: candidate_tag "indus" (the node's literal becomes the tag's default at the delegation point), candidate_marker "candidate", negative_tags [permut, shuffle, random, uniform], verdict_margin 0.25, feature_keys [alpha, gamma_mi, plateau_norm, epistatic_2, epistatic_3, h_norm_n3], the four verdict templates |
+| LanguageDetectorVerdict (phase14) | EvidenceRuleAggregator | aggregator_spec.rules: the Zipf range_pair (alpha 0.85–1.30 and R² >= 0.85 for; alpha < 0.50 or R² < 0.50 against, r_squared with r2_zipf fallback), plateau field_equals, MI regime field_equals ×3 (power_law for with gamma; flat, exponential against), HED regime field_equals ×2 (language_like for with both ratios; non_linguistic against), the HED list_fraction_checks (orders[1] >= 0.10 for; orders[2] >= 0.05 for; orders[1] < 0.05 against), the CAS success_threshold (low/high from the cas_violation_low / cas_violation_high params, defaults 0.1 / 1.0); language_min_score 2, confidence_threshold 0.5, the three verdict templates. The node's live test consumer (test_spec086_stub_disposition.py, which calls the phase14 wrapper directly, fed and unfed) is in the targeted suites and passes unchanged. |
+| FulsPositionalClassifier (phase20) | PositionalClassClassifier | classifier_spec: class_labels {numerical NUMERICAL, initial INITIAL, medial MEDIAL, terminal TERMINAL, mixed MIXED}, position_classes [initial I, terminal T, medial M] in the current code's evaluation order, the PREDICTION 4 verdict template. Every threshold was already a plain param (defaults min_count 5, dom 0.55, secondary 0.30, numerical_rr 0.20 — the fn's own defaults, unchanged). |
+| IndusNullModelTest (indus_evidence) | SignPositionNullTest | null_spec.verdict_bands = [[3, STRONGLY_SIGNIFICANT], [2, SIGNIFICANT], [1.5, BORDERLINE]], verdict_fallback NOT_SIGNIFICANT |
+
+The converted fns keep their modules, so the flag/provenance
+test's `fn.__module__` pins hold. Phase-14's module-level
+`random` import became unused with the SignContextAssociation
+delegation and is removed (grep-verified: no remaining
+`random.` use in the module outside a docstring word).
+
+### Counts — the re-pin (C087-17 act for this PR)
+
+| | before | after |
+|---|---|---|
+| registered | 537 | **545** (+ the eight primitives above) |
+| legacy | 397 | **405** (+ the eight F9 conversions) |
+| palette | 140 | **140** (−8 converted, +8 primitives) |
+| core definitions | 62 | **70** |
+| categories | 65 | **65** (no change) |
+
+Per-category deltas: palette `Analysis` 14 → 21 (seven of the
+eight primitives), palette `Transforms` 8 → 9
+(MetricFieldExtractor). Legacy-by-category: `Phase-14 /
+Epistatic` 1 → 3, `Phase-14 / Grounding` 2 → 3, `Phase-14 /
+Structural` 0 → 2, `Phase-14 / Integrative` 0 → 1,
+`Phase-20 / Sign function` 0 → 1, `Evidence Graph` 1 → 2.
+The migration data file gains the eight ids under
+`s3_additions["PR-E (F9)"]`; the census pin fixture is
+regenerated from the live registry; the S2 agreement test's
+converted set now holds PR-A's six, PR-B's nine, PR-C's
+thirteen, PR-D's ten, and these eight — 46 of the 64 CONVERT
+dispositions cumulatively.
+
+### Equivalence and comparison results
+
+**Fixture equivalence (contract item 3):** 36 cases captured
+from the pre-change implementations in commit `3b004db`,
+before any implementation changed, and replayed
+post-conversion — **36/36 byte-identical** (all full-mode
+canonical-JSON equality), in
+`tests/test_spec087_s3_conversions_e.py`, alongside the
+converted-ids flag/provenance test and the
+primitives-in-palette test (38 tests in the file). All eight
+nodes are pure functions of (inputs, params) over synthetic
+inputs — no corpus files, no DB — so the inputs are built
+deterministically (dedicated Random instances) to exercise
+every branch the conversion could move: the detector's
+significance cuts, parameterised min-counts, top_k slicing,
+and the empty return; all three HED regime branches, the
+max_order=2 shape (f3/f2 reads 0.0), and the empty return;
+the length_bin bucketing with a strong verdict, top_k
+slicing, a plain-field weak verdict, a uniform zero verdict,
+and the misalignment error return; the DoF table full,
+partial (no n == 3 block row, HED orders shorter than the
+table), and empty; the comparator's three verdict bands, its
+candidate classification by tag and by marker, the refs
+fallback (no reference bundles), and the no-bundles early
+return; the verdict aggregator's rule table branch by branch
+(likely-language with seven for-lines, likely-not with five
+against-lines, a mixed AMBIGUOUS at score 1, the CAS
+between-thresholds silence, the same CAS input flipped to a
+for-line by widening cas_violation_low, and the unfed shape
+the Spec 086 stub-disposition test pins); the positional
+classifier's five classes in one corpus (including the
+length-1 I+T path and a below-min_count sign), a
+custom-threshold run classifying a second INITIAL, and the
+empty corpus; the null test's STRONGLY_SIGNIFICANT and
+NOT_SIGNIFICANT bands and its three error returns (empty
+sequences, no target, absent sign). Every case asserted its
+intended branch at capture time; a failed assertion aborts
+the capture rather than pinning a case that does not exercise
+what its name claims. Sanity was checked against hand
+computation at capture: for the locked-block detector corpus,
+count(a1) = count(a2) = 30 of 270 unigrams and bigram
+(a1, a2) = 30 of 180, so PMI = log((30/180) / ((30/270) ·
+(30/270))) = log(13.5) = 2.6027, matching the capture.
+
+**27-graph comparison (contract item 4):** the S2 runner was
+executed on a fresh worktree of `f40b1a99` (pre) and on this
+branch (post), under the same two normalizations as
+PR-A/PR-B/PR-C/PR-D (LanguageModel repr addresses; each
+tree's own root path). Database state, stated exactly as
+verified first-hand (read-only): the pre side was a fresh
+worktree, which has no `backend/data/` directory at all —
+its CGSA reads met absent tables; the post side read this
+clone's `backend/data/glossa.db`, whose CGSA tables are
+empty (canonical_signs 0 rows, sign_cluster_assignments
+0 rows, verified by a read-only sqlite query) — both sides
+exercised the same empty state. **27/27 graphs
+byte-identical pre vs post** under the normalizations:
+
+| graph | normalized sha256 (pre == post) |
+|---|---|
+| fuls_independence_suite | d342f369479aa7fa48f0ee6716b1a552609a24a8ff8cdb4bbce22efe7fd199b5 |
+| fuls_nw_semitic_benchmark | 0db9ea0aa6e3d7ac8e8b45432e1975302ee6151456e0bfd8fb5d3906d63c5aa0 |
+| fuls_validation_suite | 4bac5b7e0291658e4976b74f6a9e66a8862a9f7816180f040e00b2655bd5316f |
+| generic_sa_multi_comparison | 63d6cf5a4ec488ba46a2e4eb09f517bddb77789c3ecaad643fb3f3fd4fabbf45 |
+| indus_anchor_sweep | 20472e8966640ff8ecef3030b388dc75ad54ec1e2578e5e68e07c8540133b1ad |
+| indus_cgsa_cluster_analysis | 5a8447a60f9d7de9be9204c3b153614f76070ab3ea1aef2956e97c2c7b6096f6 |
+| indus_cisi_anchored_10 | 002318a287ccbfba6dc2da9b5ac82f357464eab2c3bd283b147729a6d5488f3a |
+| indus_cisi_dravidian_vs_pali | da9ede56e4b23f5b70ef4845a72de996fa50a62cab9545f897b4abdd49a370ad |
+| indus_cisi_dravidian_vs_sanskrit | 95067e3ffce2c6f8ea8f90c3a43afcaeb2de02337de18811201cf87febbcd62d |
+| indus_cisi_sa_dravidian_vs_nw_semitic | 9d64143ea94b42661f1571dd585c69324d3b2ffaef97ed85937681b75544b8aa |
+| indus_cisi_sa_dravidian_vs_sanskrit | 1994a12beb209dbc6c640fbb83c0530a28e5f951adb9f7423515aef1e7f3a3cf |
+| indus_cisi_structural | 16aa6dd0a0f3e5321dba5a351295123125c8e7e85186bf518936f1f443e55a0a |
+| indus_contact_zone_v2 | f5079c8eb69f61a47969756c6182e4096021df1316bcb04946679aa86d4d7915 |
+| indus_dravidian_vs_sanskrit | b2dbfa339103821e63594cbe61826dd0b343e6e350d7016d0f36607754914aea |
+| indus_kalyanaraman_crossval | 46edd9a500ff6c7ecd7fbf62743af678c27ceb7418bba5c69cfad8e35306e777 |
+| indus_sa_dravidian | 16ad6cb0aa2d04d74e3a63cebf157229af7e819f226a5fbc3ee13438fe5f0379 |
+| indus_sa_dravidian_syllable | c8717ef983f6c2366bd0ef58e6bc05751fd933fb90a6c88e5a3fbdeb46314a90 |
+| indus_sa_dravidian_vs_nw_semitic | b281219fd42efe0f30ec5ffeea866198944fa5b439786b022a1e687ba3a7e14b |
+| indus_sa_dravidian_vs_sanskrit | d54156e6c2bfd720489570363d67c13d0e78c06e0556cbdb7ef9826a4ab1a09d |
+| indus_sa_sanskrit_falsification | fa37f9a1fc055dda56ad819457fa788238d084341effa98e5fee40c780df6d31 |
+| indus_sign_function_dravidian | 5e4cb13821f0cf3a93132d047e9ed0a5238a35121f976ef6e0b851166d1ab102 |
+| indus_structural_atlas | b4b880f475f8cbe4b7c401b1caf2ba66c01fbc7ac52c3cc11975ca9a73441760 |
+| indus_validation_a1_a3_holdout | 142f9657df4639734d3ead8d1a4322262f295de400c2028027bc188e9600196a |
+| indus_validation_neg_controls | 72999b71c688353c1d0890c46729c07de8a98795b303a4ac7e66eb66de376c39 |
+| kl_comparison | cf9a8e10b3043bc8942c29483118739688a02439fe20d5237f9d98e1647cca9c |
+| ugaritic_sa_decipher | 8218b59a5f191723c26744aaf1dcf7933373c37e4a1a23843a161b8f9e498181 |
+| ventris_validation | 78b20ce88b05687528375526e0c92015a588e6ebf0e5c0819851eb493da30312 |
+
+None of the 27 live graphs wires an F9 node — the comparison
+here is the no-live-behaviour-change proof for the registry
+edits; the per-node proof is the fixture equivalence above.
+The runs regenerate `reports/*.json` in-tree as a side
+effect; those files were restored and are not in this PR's
+diff. (The post-side run was repeated after a VM replacement
+killed the first attempt mid-run; the pre-side outputs,
+written before the replacement, were re-verified on disk and
+the comparison is over the two output files, both read
+first-hand. The normalized hashes differ from PR-D's table
+for 25 of the 27 graphs — the two runs' environments are not
+the same state — so, unlike PR-B/PR-C/PR-D, no cross-batch
+hash equality is claimed; the contract's proof is pre vs post
+within this PR, and it holds 27/27.)
+
+### Test results
+
+- Targeted suites (this branch): all seven Spec 087 test
+  files — `test_spec087_registry_integrity.py`,
+  `test_spec087_palette_curation.py`,
+  `test_spec087_s3_conversions.py` (PR-A),
+  `test_spec087_s3_conversions_b.py`,
+  `test_spec087_s3_conversions_c.py`,
+  `test_spec087_s3_conversions_d.py`,
+  `test_spec087_s3_conversions_e.py` (this PR) — plus the two
+  affected-area suites named in the brief,
+  `test_spec086_stub_disposition.py` (the
+  LanguageDetectorVerdict live consumer) and
+  `test_indus_evidence_api.py`: **256 passed** (237.97s).
+- Full backend suite (this branch, with the single named
+  deselection
+  `test_phase392_q2_gate.py::test_pipeline_deterministic_under_seed`):
+  completed in a single run (257.95s) — **2,442 passed, 84
+  skipped, 1 failed, 1 deselected**. The one failure is the
+  known phase133 local-only baseline
+  (`test_phase133_stage0_inventory.py::test_builder_recomputation_skips_without_inputs`,
+  missing local download; it does not fail CI). No teardown
+  error appeared in this run (the tray flake family did not
+  fire).
+- `python -m ruff check backend/` — clean.
+- No frontend surface changed, so no builder-area frontend
+  tests were required and no dist rebuild was needed.
+
+### Claim assessments (this PR's legs)
+
+- **C087-7 — PR-E leg supported.** 8 of the 64 CONVERT
+  dispositions (family F9) are converted here with
+  byte-identical fixture equivalence; cumulatively 46 of 64
+  with PR-A, PR-B, PR-C and PR-D. The remaining families'
+  legs land with their own PRs.
+- **C087-13 — PR-E leg supported.** The comparison runs over
+  all 27 live graphs hold byte-identical under the named
+  normalizations (above).
+- **C087-17 — PR-E act recorded.** The census pin, the
+  migration data file, and the S1/S2 test pins were re-pinned
+  in this same PR, from the live registry, with the deltas
+  tabled above.
+- **C087-15 — PR-E manual leg.** `docs/user-manual.md`'s
+  legacy section gains the short factual note (the eight new
+  generic blocks in the Palette; the eight converted nodes
+  now legacy). The generated node reference is S4's scope.
+
+### Departures from the brief's letter, stated plainly
+
+- **T303 is still not ticked.** Its F9 leg is discharged
+  here; five families remain (F2, F10, F11, F12, F13), plus
+  family F15 and the final retire-flagging batch. The
+  progress note under T303 in tasks.md is updated instead of
+  a tick.
+- **The brief's expected arithmetic was right** (registered
+  +8, legacy +8, palette unchanged); the re-pin is
+  nevertheless counted from the live registry, per the
+  contract: 545 / 405 / 140, core 70, categories 65.
+- **No cross-batch graph-hash equality is claimed** (see the
+  comparison note above): PR-D's published table was produced
+  in a different environment state, and 25 of 27 normalized
+  hashes differ from it. The within-PR pre/post proof is
+  unaffected.
+- **Two engines carry documented simplifications of
+  malformed-input behaviour, neither reachable from the
+  fixture set or the defs' shapes:** MetricFieldExtractor's
+  field-map reads default rather than raise on a missing key
+  inside a present row (the pre-change DoFExtractor indexed
+  one such read directly), and EvidenceRuleAggregator's
+  range_pair coerces a null alpha / R² to 0.0 where the
+  pre-change verdict fn would raise on float(None). On every
+  well-formed input the outputs are byte-identical, which the
+  36 fixtures prove over the branches the conversion could
+  move.

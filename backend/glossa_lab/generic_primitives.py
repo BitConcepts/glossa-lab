@@ -4143,3 +4143,209 @@ def corpus_comparison_stats_execute(inputs: dict, params: dict) -> dict:
             denominator_n=denominator, numerator_n=numerator,
             scale_up=scale)
     return result
+
+
+# ── PrefixFindspotAssigner ──────────────────────────────────────────────────
+# Spec 087 S3 PR-F (family F11). Assigns records to find-spots by
+# longest-prefix match of their catalogue id against a find-spot map,
+# trying the spec's prefix lengths in order. Two modes:
+#
+#   "reporter" — summarises the map itself (volume sum, sites grouped
+#                by country) and lists the assignments for a wired
+#                record list; a prefix matches when it is a KEY of the
+#                map, even if its info is empty.
+#   "filter"   — classifies a corpus fetched through a spec-named
+#                data-module getter (optionally length-banded) into
+#                contact-zone / core lists by the matched info's flag,
+#                with a separate site-distribution pass; a prefix
+#                matches only when its info is TRUTHY, so an empty
+#                info entry falls through to shorter prefixes.
+#
+# The modes' different match semantics are spec data, not code paths
+# chosen by the caller. Both modes evaluate the contact-prefix input
+# (the reporter counts it in its verdict; the filter discards it,
+# exactly as the Phase-27 node does).
+
+
+def _prefix_assign(cid: str, findspot_map: dict, lengths: list,
+                   match_mode: str):
+    for length in lengths:
+        cand = cid[:length]
+        if match_mode == "key_present":
+            if cand in findspot_map:
+                return cand, findspot_map[cand]
+        else:
+            info = findspot_map.get(cand)
+            if info:
+                return cand, info
+    return None, None
+
+
+def _prefix_reporter(inputs: dict, spec: dict, findspot_map: dict,
+                     lengths: list, contact: set) -> dict:
+    volume_field = spec.get("volume_field", "n_seals_in_volume")
+    n_volume = sum(_safe_int(v.get(volume_field, 0))
+                   for v in findspot_map.values())
+    country_default = spec.get("country_default", "Unknown")
+    sites_by_country: dict[str, list[str]] = {}
+    for prefix, info in findspot_map.items():
+        country = info.get("country", country_default) or country_default
+        sites_by_country.setdefault(country, []).append(
+            f"{info.get('site', prefix)} ({prefix})")
+    records = inputs.get(spec.get("records_key", "records")) or []
+    assignments = []
+    for record in records:
+        cid = str(record.get(spec.get("id_field", "catalogue_id")) or "")
+        prefix, info = _prefix_assign(cid, findspot_map, lengths,
+                                      "key_present")
+        if prefix:
+            assignments.append({
+                "catalogue_id": cid,
+                "prefix": prefix,
+                "site": info.get("site"),
+                "country": info.get("country"),
+                "is_contact_zone": info.get("is_contact_zone", False),
+            })
+    return {
+        spec.get("n_prefixes_out", "n_prefixes"): len(findspot_map),
+        spec.get("n_countries_out", "n_countries"): len(sites_by_country),
+        spec.get("volume_out", "n_seals_in_volume"): n_volume,
+        spec.get("sites_out", "sites_by_country"): sites_by_country,
+        spec.get("assignments_out", "assignments"): assignments,
+        "verdict": spec["verdict_template"].format(
+            n_prefixes=len(findspot_map), n_volume=n_volume,
+            n_countries=len(sites_by_country), n_contact=len(contact),
+            n_records=len(records), n_assigned=len(assignments)),
+    }
+
+
+def _prefix_filter(spec: dict, findspot_map: dict, lengths: list) -> dict:
+    corpus = spec["corpus"]
+    try:
+        module = importlib.import_module(corpus["module"])
+        getter = getattr(module, corpus["function"])
+    except Exception as exc:  # noqa: BLE001
+        result = {"error": corpus["error_template"].format(error=exc)}
+        result.update(corpus.get("error_extras") or {})
+        return result
+    inscs = getter(**(corpus.get("kwargs") or {}))
+    signs_field = spec.get("signs_field", "signs")
+    id_field = spec.get("id_field", "catalogue_id")
+    band = spec.get("length_band") or []
+    if band:
+        inscs = [i for i in inscs if band[0] <= len(i[signs_field]) <= band[1]]
+    site_default = spec.get("site_default", "Unknown")
+    contact_list: list[dict] = []
+    core_list: list[dict] = []
+    for ins in inscs:
+        cid = ins[id_field]
+        _prefix, info = _prefix_assign(cid, findspot_map, lengths,
+                                       "truthy_value")
+        is_contact = info.get("is_contact_zone", False) if info else False
+        site = info.get("site", site_default) if info else site_default
+        rec = {
+            "catalogue_id": cid,
+            "n_signs": len(ins[signs_field]),
+            "signs": ins[signs_field],
+            "site": site,
+            "is_contact_zone": is_contact,
+        }
+        (contact_list if is_contact else core_list).append(rec)
+    distribution: Counter = Counter()
+    for ins in inscs:
+        cid = ins[id_field]
+        _prefix, info = _prefix_assign(cid, findspot_map, lengths,
+                                       "truthy_value")
+        if info:
+            distribution[info.get("site", site_default)] += 1
+        else:
+            distribution[site_default] += 1
+    return {
+        spec.get("n_total_out", "n_total"): len(inscs),
+        spec.get("n_contact_out", "n_contact"): len(contact_list),
+        spec.get("n_core_out", "n_core"): len(core_list),
+        spec.get("distribution_out", "sites_distribution"):
+            dict(distribution.most_common(spec.get("distribution_top", 15))),
+        spec.get("top_out", "contact_top"):
+            contact_list[: spec.get("records_cap", 20)],
+        "verdict": spec["verdict_template"].format(
+            n_total=len(inscs), n_contact=len(contact_list),
+            n_core=len(core_list)),
+    }
+
+
+def prefix_findspot_assigner_execute(inputs: dict, params: dict) -> dict:
+    spec = dict(params.get("assigner_spec") or {})
+    lengths = spec.get("prefix_lengths") or [4, 3, 2, 1]
+    findspot_map = inputs.get(spec.get("map_key", "findspot_map")) or {}
+    # Evaluated in both modes: the reporter counts the set in its
+    # verdict; the filter discards it (the Phase-27 behaviour).
+    contact = set(inputs.get(spec.get("contact_key", "contact_zone_prefixes"))
+                  or [])
+    if spec.get("mode") == "filter":
+        return _prefix_filter(spec, findspot_map, lengths)
+    return _prefix_reporter(inputs, spec, findspot_map, lengths, contact)
+
+
+# ── CorpusCooccurrenceCheck ─────────────────────────────────────────────────
+# Spec 087 S3 PR-F (family F11). Checks candidate names against the
+# term set of a corpus-audit JSON file: every string value of every
+# entry dict, lowercased. A candidate hits when it is a substring of
+# a term or a term is a substring of it, counting only terms longer
+# than the spec's length guard. The corpus file may be absent — the
+# check then runs against an empty term set and reports the absence
+# (the Meluhha node's named pin: its corpus file is not in the repo).
+
+
+def corpus_cooccurrence_check_execute(inputs: dict, params: dict) -> dict:
+    spec = dict(params.get("check_spec") or {})
+    candidates: Any = []
+    for key in spec.get("candidates_keys") or []:
+        value = inputs.get(key)
+        if value:
+            candidates = value
+            break
+    if isinstance(candidates, str):
+        try:
+            candidates = json.loads(candidates)
+        except Exception:  # noqa: BLE001
+            candidates = [candidates]
+
+    corpus_path = Path(spec["corpus_path"])
+    terms: set[str] = set()
+    if corpus_path.exists():
+        try:
+            data = json.loads(corpus_path.read_text(encoding="utf-8"))
+            for entry in data.get(spec.get("entries_key", "entries")) or []:
+                if isinstance(entry, dict):
+                    terms.update(str(v).lower()
+                                 for v in entry.values() if v)
+        except Exception:  # noqa: BLE001
+            pass
+
+    cap = spec.get("cap", 20)
+    guard = spec.get("term_len_gt", 3)
+    hits: list[str] = []
+    misses: list[str] = []
+    for candidate in candidates[:cap]:
+        name = str(candidate).lower().strip()
+        if any(name in term or term in name
+               for term in terms if len(term) > guard):
+            hits.append(str(candidate))
+        else:
+            misses.append(str(candidate))
+
+    if hits:
+        verdict = spec["favourable_template"].format(
+            n_hits=len(hits),
+            hits_top=str(hits[: spec.get("render_cap", 5)]))
+    else:
+        verdict = spec["neutral_verdict"]
+    return {
+        spec.get("checked_out", "candidates_checked"): len(candidates[:cap]),
+        spec.get("hits_out", "hits"): hits,
+        spec.get("misses_out", "misses"): misses[: spec.get("misses_cap", 5)],
+        spec.get("n_hits_out", "n_hits"): len(hits),
+        spec.get("available_out", "corpus_available"): corpus_path.exists(),
+        "verdict": verdict,
+    }

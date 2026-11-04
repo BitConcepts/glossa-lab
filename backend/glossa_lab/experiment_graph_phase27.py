@@ -336,77 +336,52 @@ def _period_stratified_readout_6bucket(inputs: dict, params: dict) -> dict:
 def _shu_ilishu_contact_zone_filter(inputs: dict, params: dict) -> dict:
     """Phase-27: ACTUALLY filter the 138 Phase-25e Shu-ilishu candidate
     inscriptions to those with contact-zone provenience, using the new
-    catalogue_id-aware indus_cisi accessor."""
-    set(inputs.get("contact_zone_prefixes") or [])
-    findspot_map = inputs.get("findspot_map") or {}
+    catalogue_id-aware indus_cisi accessor.
 
-    try:
-        from glossa_lab.data.indus_cisi import (  # noqa: PLC0415
-            get_corpus_inscriptions_with_ids,
-        )
-    except Exception as exc:  # noqa: BLE001
-        return {"error": f"indus_cisi not available: {exc}",
-                "n_filtered": 0}
+    Spec 087 S3 PR-F: delegates to the generic PrefixFindspotAssigner
+    (filter mode); the corpus getter, the 3-7 length band, the
+    truthy-info prefix match and the verdict text are spec data. The
+    contact_zone_prefixes input is evaluated and discarded by the
+    engine, exactly as this node has always done — classification
+    comes from the find-spot map alone.
+    """
+    from glossa_lab.generic_primitives import prefix_findspot_assigner_execute
 
-    inscs = get_corpus_inscriptions_with_ids(min_length=3)
-    # Keep only length 3-7 (Phase-25e criterion)
-    inscs = [i for i in inscs if 3 <= len(i["signs"]) <= 7]
-
-    contact_zone_inscs: list[dict] = []
-    core_inscs: list[dict] = []
-    for ins in inscs:
-        cid = ins["catalogue_id"]
-        is_contact = False
-        site = "Unknown"
-        for L in (4, 3, 2, 1):
-            cand = cid[:L]
-            info = findspot_map.get(cand)
-            if info:
-                is_contact = info.get("is_contact_zone", False)
-                site = info.get("site", "Unknown")
-                break
-        rec = {
-            "catalogue_id": cid,
-            "n_signs": len(ins["signs"]),
-            "signs": ins["signs"],
-            "site": site,
-            "is_contact_zone": is_contact,
-        }
-        if is_contact:
-            contact_zone_inscs.append(rec)
-        else:
-            core_inscs.append(rec)
-
-    sites_distribution: Counter[str] = Counter()
-    for ins in inscs:
-        cid = ins["catalogue_id"]
-        for L in (4, 3, 2, 1):
-            cand = cid[:L]
-            info = findspot_map.get(cand)
-            if info:
-                sites_distribution[info.get("site", "Unknown")] += 1
-                break
-        else:
-            sites_distribution["Unknown"] += 1
-
-    verdict = (
-        f"Shu-ilishu contact-zone filter (Phase-27): "
-        f"{len(inscs)} Phase-25e candidate inscriptions (length 3-7) "
-        f"resolved via catalogue_id. {len(contact_zone_inscs)} are from "
-        f"contact-zone sites; {len(core_inscs)} are from Indus-core sites. "
-        f"NOTE: the current indus_cisi corpus (179 inscriptions, all from "
-        f"Mohenjo-daro) does NOT include any contact-zone seals -- those "
-        f"are only in CISI Vol 3 Part 3 plates (not yet ingested with sign "
-        f"sequences)."
-    )
-    return {
-        "n_total_candidates": len(inscs),
-        "n_contact_zone": len(contact_zone_inscs),
-        "n_core_indus": len(core_inscs),
-        "sites_distribution": dict(sites_distribution.most_common(15)),
-        "contact_zone_inscriptions_top20": contact_zone_inscs[:20],
-        "verdict": verdict,
+    merged = dict(params)
+    merged["assigner_spec"] = {
+        "mode": "filter",
+        "prefix_lengths": [4, 3, 2, 1],
+        "map_key": "findspot_map",
+        "contact_key": "contact_zone_prefixes",
+        "corpus": {
+            "module": "glossa_lab.data.indus_cisi",
+            "function": "get_corpus_inscriptions_with_ids",
+            "kwargs": {"min_length": 3},
+            "error_template": "indus_cisi not available: {error}",
+            "error_extras": {"n_filtered": 0},
+        },
+        "length_band": [3, 7],
+        "signs_field": "signs",
+        "id_field": "catalogue_id",
+        "site_default": "Unknown",
+        "distribution_top": 15,
+        "records_cap": 20,
+        "n_total_out": "n_total_candidates",
+        "n_contact_out": "n_contact_zone",
+        "n_core_out": "n_core_indus",
+        "distribution_out": "sites_distribution",
+        "top_out": "contact_zone_inscriptions_top20",
+        "verdict_template": (
+            "Shu-ilishu contact-zone filter (Phase-27): "
+            "{n_total} Phase-25e candidate inscriptions (length 3-7) "
+            "resolved via catalogue_id. {n_contact} are from "
+            "contact-zone sites; {n_core} are from Indus-core sites. "
+            "NOTE: the current indus_cisi corpus (179 inscriptions, "
+            "all from Mohenjo-daro) does NOT include any contact-zone "
+            "seals -- those are only in CISI Vol 3 Part 3 plates (not "
+            "yet ingested with sign sequences)."),
     }
+    return prefix_findspot_assigner_execute(inputs, merged)
 
 
 # ── Verdict aggregator ──────────────────────────────────────────────

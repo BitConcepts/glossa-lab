@@ -58,8 +58,10 @@ from glossa_lab.generic_primitives import (
     pmi_centrality_ranker_execute,
     positional_claim_tester_execute,
     positional_class_classifier_execute,
+    prefix_findspot_assigner_execute,
     record_group_summary_execute,
     corpus_comparison_stats_execute,
+    corpus_cooccurrence_check_execute,
     registry_table_loader_execute,
     reverse_skeleton_search_execute,
     sign_position_null_test_execute,
@@ -2555,6 +2557,37 @@ for _d in [
         params_schema={"type":"object","properties":{
             "stats_spec":{"type":"object","title":"Stats Spec","description":"Corpus list, scale-up rows, verdict template."}}},
         fn=corpus_comparison_stats_execute),
+    AtomicNodeDef("PrefixFindspotAssigner","Prefix Findspot Assigner","Analysis",
+        "Assign records to find-spots by longest-prefix match of their "
+        "catalogue id against a find-spot map (Spec 087 S3): reporter "
+        "mode summarises the map and lists assignments (key-presence "
+        "match); filter mode classifies a spec-named corpus getter's "
+        "records into contact-zone / core lists (truthy-info match, "
+        "so empty info entries fall through to shorter prefixes). "
+        "Prefix lengths, match semantics and texts are parameters "
+        "(assigner_spec), not code — CISIFindspotReporter and "
+        "ShuIlishuContactZoneFilter delegate to this engine.",
+        inputs=[{"name":"findspot_map","type":"json","required":False},
+                {"name":"inscribed_seals","type":"json","required":False}],
+        outputs=[{"name":"sites_by_country","type":"json"},{"name":"sites_distribution","type":"json"},{"name":"verdict","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "assigner_spec":{"type":"object","title":"Assigner Spec","description":"Mode, prefix lengths, corpus getter (filter mode), verdict templates."}}},
+        fn=prefix_findspot_assigner_execute),
+    AtomicNodeDef("CorpusCooccurrenceCheck","Corpus Co-occurrence Check","Analysis",
+        "Check candidate names against the term set of a corpus-audit "
+        "JSON file (Spec 087 S3): a candidate hits when it is a "
+        "substring of a term or a term is a substring of it, counting "
+        "only terms longer than a spec guard; an absent corpus file "
+        "means an empty term set and an absence report. Candidate "
+        "ports, the corpus path and the verdict texts are parameters "
+        "(check_spec), not code — MeluhhaCooccurrenceCheck delegates "
+        "to this engine.",
+        inputs=[{"name":"top_candidates","type":"json","required":False},
+                {"name":"unique_names","type":"json","required":False}],
+        outputs=[{"name":"candidates_checked","type":"number"},{"name":"meluhha_hits","type":"json"},{"name":"meluhha_misses","type":"json"},{"name":"n_hits","type":"number"},{"name":"meluhha_corpus_available","type":"any"},{"name":"verdict","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "check_spec":{"type":"object","title":"Check Spec","description":"Candidate keys, corpus path, entries key, caps, verdict texts."}}},
+        fn=corpus_cooccurrence_check_execute),
     AtomicNodeDef("FreqCounter","Frequency Counter","Transforms",
         "Count symbol occurrences across all sequences.",
         inputs=[{"name":"sequences","type":"sequences","required":True}],

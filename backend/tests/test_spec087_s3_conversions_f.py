@@ -57,6 +57,9 @@ CONVERTED_IDS = {
     "LaursenTable1Auditor": "glossa_lab.experiment_graph_phase24",
     "SealSignUpgradeAuditor": "glossa_lab.experiment_graph_phase24",
     "Phase29CorpusStats": "glossa_lab.experiment_graph_phase29",
+    "CISIFindspotReporter": "glossa_lab.experiment_graph_phase26",
+    "ShuIlishuContactZoneFilter": "glossa_lab.experiment_graph_phase27",
+    "MeluhhaCooccurrenceCheck": "glossa_lab.experiment_graph_phase30",
 }
 
 RETIRE_IDS = {}
@@ -66,6 +69,8 @@ PRIMITIVE_IDS = [
     "PositionalClaimTester",
     "RecordGroupSummary",
     "CorpusComparisonStats",
+    "PrefixFindspotAssigner",
+    "CorpusCooccurrenceCheck",
 ]
 
 

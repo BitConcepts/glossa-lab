@@ -457,53 +457,44 @@ def _meluhha_cooccurrence_check(inputs: dict, params: dict) -> dict:
     Sumerian rulers/trade partners.  A hit = candidate appears alongside 'Meluhha' in
     CDLI texts.  A non-hit does NOT falsify the hypothesis (Meluhha = Indus civilization
     is not universally established).
+
+    Spec 087 S3 PR-F: delegates to the generic CorpusCooccurrenceCheck;
+    the candidate ports, the term-length guard and the verdict texts
+    are spec data, and the corpus path (backend/reports/
+    meluhha_corpus_audit.json — absent from the repo, so the node
+    runs against an empty term set today) is a spec parameter
+    defaulting to the historical path.
     """
-    import json as _json  # noqa: PLC0415
     from pathlib import Path as _Path  # noqa: PLC0415
 
-    candidates = inputs.get("top_candidates") or inputs.get("unique_names") or []
-    if isinstance(candidates, str):
-        try: candidates = _json.loads(candidates)
-        except Exception: candidates = [candidates]  # noqa: BLE001
+    from glossa_lab.generic_primitives import corpus_cooccurrence_check_execute
 
-    # Load Meluhha corpus if available
-    REPO = _Path(__file__).resolve().parent.parent.parent
-    meluhha_path = REPO / "backend/reports/meluhha_corpus_audit.json"
-    meluhha_terms: set[str] = set()
-    if meluhha_path.exists():
-        try:
-            data = _json.loads(meluhha_path.read_text(encoding="utf-8"))
-            for entry in (data.get("meluhha_entries") or []):
-                if isinstance(entry, dict):
-                    meluhha_terms.update(str(v).lower() for v in entry.values() if v)
-        except Exception:  # noqa: BLE001
-            pass
-
-    hits = []
-    misses = []
-    for c in candidates[:20]:  # check top 20
-        name = str(c).lower().strip()
-        if any(name in term or term in name for term in meluhha_terms if len(term) > 3):
-            hits.append(str(c))
-        else:
-            misses.append(str(c))
-
-    if hits:
-        verdict = f"FAVORABLE: {len(hits)} candidate(s) appear in Meluhha co-occurrence contexts: {hits[:5]}"
-    else:
-        verdict = (
+    corpus_path = str(
+        _Path(__file__).resolve().parent.parent.parent
+        / "backend/reports/meluhha_corpus_audit.json"
+    )
+    merged = dict(params)
+    merged["check_spec"] = {
+        "candidates_keys": ["top_candidates", "unique_names"],
+        "corpus_path": corpus_path,
+        "entries_key": "meluhha_entries",
+        "term_len_gt": 3,
+        "cap": 20,
+        "misses_cap": 5,
+        "render_cap": 5,
+        "checked_out": "candidates_checked",
+        "hits_out": "meluhha_hits",
+        "misses_out": "meluhha_misses",
+        "available_out": "meluhha_corpus_available",
+        "favourable_template": (
+            "FAVORABLE: {n_hits} candidate(s) appear in Meluhha "
+            "co-occurrence contexts: {hits_top}"),
+        "neutral_verdict": (
             "NEUTRAL: No direct Meluhha co-occurrence found. "
-            "This does not falsify the hypothesis (Meluhha = Indus identification is independent)."
-        )
-
-    return {
-        "candidates_checked": len(candidates[:20]),
-        "meluhha_hits": hits,
-        "meluhha_misses": misses[:5],
-        "n_hits": len(hits),
-        "meluhha_corpus_available": meluhha_path.exists(),
-        "verdict": verdict,
+            "This does not falsify the hypothesis (Meluhha = Indus "
+            "identification is independent)."),
     }
+    return corpus_cooccurrence_check_execute(inputs, merged)
 
 
 def _syllable_lm_from_json(data: dict) -> "Any":

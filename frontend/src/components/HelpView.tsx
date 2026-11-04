@@ -6,6 +6,12 @@
  * substitution, so no <br> can appear between <tr> elements.
  */
 import { useState } from "react";
+import {
+  NODE_REFERENCE,
+  NODE_REFERENCE_COUNTS,
+  type NodeReferenceEntry,
+  type NodeReferencePort,
+} from "./help/nodeReference.generated";
 
 interface Section {
   id: string;
@@ -16,6 +22,181 @@ interface Section {
 // ---------------------------------------------------------------------------
 // Section content
 // ---------------------------------------------------------------------------
+
+
+// ---------------------------------------------------------------------------
+// Generated node reference (Spec 087 S4)
+//
+// The Complete Node Reference inside the Experiment Builder section is
+// rendered from frontend/src/components/help/nodeReference.generated.ts
+// — the same single generation that produces the Node Reference block in
+// docs/user-manual.md (tools/manual/generate_node_reference.py, builder
+// in backend/glossa_lab/manual_generate.py). Drift between the registry
+// and that module is a CI failure
+// (backend/tests/test_manual_conformance.py). Do not hand-copy node
+// data into this file.
+// ---------------------------------------------------------------------------
+
+function _portLabel(port: NodeReferencePort, markRequired: boolean): string {
+  return `\`${port.name}\` (${port.type}${
+    markRequired && port.required ? ", required" : ""
+  })`;
+}
+
+function _paramLabel(param: NodeReferenceEntry["params"][number]): string {
+  const fallback = param.hasDefault
+    ? `, default \`${JSON.stringify(param.default)}\``
+    : "";
+  const base = `\`${param.name}\` (${param.type}${fallback})`;
+  return param.description ? `${base} — ${param.description}` : base;
+}
+
+function buildNodeReferenceMarkdown(): string {
+  const categories = new Set(NODE_REFERENCE.map((e) => e.category)).size;
+  const lines: string[] = [
+    "### Complete Node Reference",
+    "",
+    "The reference below is generated from the live node registry (Spec 087 S4): it lists exactly the palette set — every registered node that is not legacy — with each node's category, ports, and parameters as the registry states them. It is the same generation as the Node Reference in `docs/user-manual.md`, so the two cannot drift apart.",
+    "",
+    `Palette: **${NODE_REFERENCE_COUNTS.palette} nodes** in ${categories} categories · registry: ${NODE_REFERENCE_COUNTS.registered} registered / ${NODE_REFERENCE_COUNTS.legacy} legacy (legacy nodes are excluded — they stay resolvable for saved experiments but are not offered in the palette).`,
+    "",
+  ];
+  let category: string | null = null;
+  for (const entry of NODE_REFERENCE) {
+    if (entry.category !== category) {
+      category = entry.category;
+      lines.push(`#### ${category}`, "");
+    }
+    lines.push(
+      `**\`${entry.id}\` — ${entry.name}**`,
+      "",
+      entry.description,
+      "",
+      `- Inputs: ${
+        entry.inputs.length
+          ? entry.inputs.map((port) => _portLabel(port, true)).join(", ")
+          : "none"
+      }`,
+      `- Outputs: ${
+        entry.outputs.length
+          ? entry.outputs.map((port) => _portLabel(port, false)).join(", ")
+          : "none"
+      }`
+    );
+    if (entry.params.length) {
+      lines.push("- Params:");
+      for (const param of entry.params) {
+        lines.push(`  - ${_paramLabel(param)}`);
+      }
+    } else {
+      lines.push("- Params: none");
+    }
+    lines.push("");
+  }
+  return lines.join("\n");
+}
+
+const NODE_REFERENCE_MD = buildNodeReferenceMarkdown();
+
+const EXPERIMENTS_SECTION_PRE = `
+## Experiment Builder
+
+All experiments in Glossa Lab are **graph experiments** — JSON specifications describing a directed acyclic graph (DAG) of atomic computation nodes. The Experiment Builder provides a visual canvas to compose these graphs without writing code.
+
+---
+
+### Architecture
+
+**Hierarchy**:
+
+| Level | Definition |
+| Study | A graph of Experiments. Composed in the Study Builder. |
+| Experiment | A graph of atomic Nodes. Composed in the Experiment Builder. |
+| Atomic Node | A single, indivisible computation step implemented internally in Python. |
+
+Users only interact with atomic nodes and experiments. The Python implementation of each atomic node is managed by the platform and is not user-visible.
+
+**Data flow**: each node has typed input and output **ports**. Data flows left to right along edges connecting output ports to input ports. Incompatible port types are rejected.
+
+---
+
+### Using the Builder
+
+1. Click **Experiments** in the sidebar
+2. Click **+ New** or open an existing experiment
+3. **Palette** (left) — drag nodes onto the canvas
+4. **Canvas** (centre) — connect nodes by dragging from an output port to an input port
+5. **Node Inspector** (right) — click a node to view and edit its parameters
+6. Click **Run** — the graph executes; progress streams to the Jobs panel
+
+---
+
+### Port Types
+
+| Port type | Colour | Carries |
+| corpus | Blue | A token sequence corpus (list of word-lists) |
+| lm | Purple | A language model (unigram + bigram frequency table) |
+| anchors | Green | An anchor dict mapping sign strings to phoneme strings |
+| mapping | Orange | A sign-to-phoneme mapping (inference result) |
+| metrics | Teal | Numeric evaluation results |
+| report | Grey | A structured report object (PDF/Markdown/JSON) |
+| any | White | Passes through any data type |
+
+Connect a **corpus** output to a **corpus** input, an **lm** output to an **lm** input, etc. The canvas highlights compatible ports in green and incompatible ports in red when you drag.
+
+---
+
+`;
+
+const EXPERIMENTS_SECTION_POST = `
+---
+
+### Common Graph Patterns
+
+**Pattern 1: Basic decipherment**
+\`\`\`
+CorpusReader → SADecipher ← BuiltinLM
+                     ↓
+              ConsistencyScorer → JSONExport
+\`\`\`
+
+**Pattern 2: Anchored decipherment**
+\`\`\`
+CorpusReader → TokenFilter → SADecipher ← CorpusLM
+AnchorSetLoader ─────────────────↑
+                      ↓
+               ConsistencyScorer → ReportGenerator
+\`\`\`
+
+**Pattern 3: Anchor convergence benchmark**
+\`\`\`
+CorpusReader → AnchorConvergenceBenchmark ← BuiltinLM
+AnchorSetLoader ───────────────────────↑
+                          ↓
+                    JSONExport
+\`\`\`
+
+**Pattern 4: Structural + decipherment pipeline**
+\`\`\`
+CorpusReader → EntropyCalc → WritingSystemClassifier → JSONExport
+     ↓
+PositionalProfiler → JSONExport
+     ↓
+SADecipher ← BuiltinLM
+     ↓
+ConsistencyScorer → ReportGenerator
+\`\`\`
+
+---
+
+### Debugging Experiment Graphs
+
+| Symptom | Likely cause | Fix |
+| Node shows red border | Required input port not connected | Connect all red ports or provide inline param values |
+| Job fails with "port type mismatch" | Incompatible port types connected | Check that port colours match at both ends of each edge |
+| Inference produces all low consistency | LM type mismatch (e.g. abjad LM for syllabic corpus) | Use CorpusLM with an appropriate reference corpus |
+| TokenFilter removes all tokens | unicode_range does not cover your script | Check the codepoint range in the Sanitization section |
+| Report output is empty | ReportGenerator received no data | Check that at least one metrics node is connected upstream |`;
 
 const MANUAL_SECTIONS: Section[] = [
   // ─── 1. QUICK START ────────────────────────────────────────────────────
@@ -59,7 +240,7 @@ setup-os.cmd start
 ./setup-os.sh start
 \`\`\`
 
-The backend starts on **port 8001** by default and logs startup progress to the terminal and to the in-app Logs panel.
+The backend starts on **port 8001** by default and logs startup progress to the terminal and to its rotating log file (\`glossa.log\`).
 
 ---
 
@@ -110,7 +291,6 @@ Or right-click the tray icon → **Stop Backend**.
 ### Keyboard Shortcuts
 
 | Shortcut | Action |
-| Ctrl+J | Toggle the bottom panel (Logs / Jobs / Terminal) |
 | Ctrl+K | Open the command palette |
 | Shift+Enter | Insert newline in Glossa AI input |
 | Enter | Send Glossa AI message |
@@ -151,23 +331,24 @@ If the backend is not running, the Status view shows a **"Backend offline"** ind
     content: `
 ## Interface Guide
 
-The Glossa Lab UI is a single-page application with a persistent sidebar on the left, a main content area in the centre, an optional AI panel on the right, and a bottom panel for logs, jobs, and terminal access.
+The Glossa Lab UI is a single-page application with a persistent sidebar on the left and a main content area in the centre. Inside a program (workspace), the sidebar lists that program's views. There is no bottom panel — the pre-redesign panel was removed in the Spec 081 redesign (see the Logs note below).
 
 ---
 
 ### Left Sidebar — Panel Reference
 
-| Panel | Purpose |
-| **Corpora** | Upload, inspect, sanitize, and manage sign-sequence corpora. World Language Catalogue and Anchor Set editor live here. |
+| View | Purpose |
+| **Home** | The open program's home: its standing position and stage summary. |
+| **Claims** | The program's claims register. |
+| **Digestion** | The digestion queue: claims awaiting review. |
+| **Evidence & sources** | The program's evidence records and sources. |
+| **Data** | The program's corpora and data artefacts. |
+| **Analysis** | Analysis surfaces for the program's data. |
 | **Experiments** | Browse graph experiments, build new ones in the visual canvas, and run them. |
-| **Pipelines** | Manage asynchronous pipeline jobs (long-running background tasks). |
-| **Studies** | Compose multi-experiment research workflows as graphs of experiments. |
-| **Reports** | View generated PDF and Markdown reports from experiments. |
-| **Data** | View generated JSON and CSV artefacts from experiments. |
-| **Entropy** | Interactive entropy and Zipf distribution visualiser. |
-| **Signs** | Browse the sign dictionary for the active script. |
-| **Hypotheses** | Create, track, and annotate research hypotheses. |
-| **Notebooks** | Research notes and saved Glossa AI session summaries. |
+| **System graph** | The program's system graph: claims, evidence, and how they connect. |
+| **Discovery** | The discovery feed and its triage. |
+| **Research loop** | The automated research loop's status and controls. |
+| **Reports & ledger** | Generated reports and the ledger views. |
 | **Jobs** | Background job queue with progress and expandable result viewer. |
 | **Status** | Live system health metrics (CPU, RAM, GPU, DB, uptime). |
 | **Settings** | API keys, LLM model selection, environment configuration. |
@@ -232,17 +413,13 @@ Two separate sidebar items:
 
 ---
 
-### Bottom Panel (Ctrl+J)
+### Logs
 
-The bottom panel is toggled with **Ctrl+J** and has three tabs:
+There is no in-app log viewer in the current interface: the pre-redesign bottom panel was removed in Spec 081, and an in-app **Logs** view is being restored as its own tab under Spec 087 (Stage S5, built to the approved wireframes). Until it lands:
 
-**Logs** — a live streaming log view from the backend. Entries are colour-coded: Green (INFO), Yellow (WARN), Red (ERROR), Grey (DEBUG). Two buttons:
-- **Purge** (orange) — clears the log file on disk and reconnects the stream (shows only new entries after clearing)
-- **Clear** (grey) — clears just the display without touching the file
-
-**Jobs** — a list of queued and completed background jobs. Each row shows job ID, experiment name, status, and elapsed time. Click any row to expand the full result JSON.
-
-**Terminal** — a command-line terminal connected to the backend environment. Useful for inspecting files, running CLI scripts, or debugging.
+- The backend writes a structured, rotating log file (\`glossa.log\`, 10 MB × 5) and serves it from \`GET /terminal/log\`, with a live stream at \`GET /terminal/log/stream\` and purge at \`POST /terminal/log/purge\`.
+- What must survive is never only in the log stream: job and result records are durable tables surfaced in the **Jobs** view, phase actions and notifications are durable record tables, and the cloud deployment keeps an append-only audit log.
+- The in-app events bus is a live-notification channel with **no delivery guarantee** (the documented-ephemeral disposition, Spec 087 decision D2): an event emitted with no live subscriber is lost, and nothing that matters is carried only by it — the durable surfaces above are the record.
 
 ---
 
@@ -544,15 +721,15 @@ A sign-sequence corpus should ideally contain only the signs that belong to the 
 
 ### The TokenFilter Atomic Node
 
-The **TokenFilter** node sits between **CorpusLoader** and the downstream inference nodes in your experiment graph. It filters the token stream in place.
+The **TokenFilter** node sits between **CorpusReader** and the downstream inference nodes in your experiment graph. It filters the token stream in place.
 
 #### Parameters
 
 | Parameter | Type | Default | Description |
-| \`unicode_range\` | [int, int] or null | null | If set, keep only tokens whose every character falls within [start, end] (inclusive, decimal codepoints). Tokens with ANY character outside the range are removed. |
+| \`unicode_ranges\` | list of range strings | [] | Keep only tokens whose characters fall within the given ranges, written as range strings (e.g. 'U+1200-U+1360' keeps Ethiopic syllabics, removing Ethiopic punctuation). Empty list disables the range filter. |
 | \`blocklist\` | list of strings | [] | Explicit list of token strings to always remove, regardless of other settings. |
-| \`min_frequency\` | int | 0 | Remove token types appearing fewer than this many times in the corpus. Setting to 2 removes all hapax legomena. |
-| \`invert\` | bool | false | If true, the unicode_range filter is inverted: REMOVE tokens that fall within the range instead of keeping them. |
+| \`min_freq\` | int | 0 | Remove token types appearing fewer than this many times in the corpus. Setting to 2 removes all hapax legomena. |
+| \`keep_empty_seqs\` | bool | false | If true, retain sequences that become empty after filtering. |
 
 All parameters can be combined. A token is kept only if it passes ALL active filters.
 
@@ -586,10 +763,10 @@ The Ge'ez Genesis corpus (v1) contained 5,478 Ethiopic punctuation characters mi
 
 **Step 2**: In the Experiment Builder, create or open the relevant experiment graph.
 
-**Step 3**: Insert a **TokenFilter** node between **CorpusLoader** and the downstream analysis nodes.
+**Step 3**: Insert a **TokenFilter** node between **CorpusReader** and the downstream analysis nodes.
 
 **Step 4**: In the TokenFilter node inspector, set:
-- \`unicode_range = [4608, 4991]\` (Ethiopic block only)
+- \`unicode_ranges = ['U+1200-U+137F']\` (Ethiopic block only)
 
 This keeps only tokens whose characters are all in the Ethiopic Unicode block (U+1200–U+137F), removing all Ethiopic punctuation characters (U+1361 word divider, U+1362 full stop, U+1363 comma, U+1364 semicolon, U+1365 colon, U+1367 question mark).
 
@@ -603,7 +780,7 @@ This keeps only tokens whose characters are all in the Ethiopic Unicode block (U
 
 When corpus density is low (fewer than 5 tokens per sign), hapax tokens (signs appearing exactly once) contribute noise without information. Removing them concentrates the statistical signal.
 
-**When to use \`min_frequency = 2\`**:
+**When to use \`min_freq = 2\`**:
 - Corpus has fewer than 2,000 total tokens
 - Hapax count > 20% of total sign types
 - You are running mapping inference (SA), not just structural analysis
@@ -626,12 +803,9 @@ The \`blocklist\` parameter is useful when you know specific tokens to exclude, 
 
 ---
 
-### Inverting the Unicode Range Filter
+### Removing a Range Instead of Keeping It
 
-The \`invert = true\` option removes tokens that fall within the range. Use cases:
-
-- Remove only Latin annotation characters from an otherwise Unicode corpus: set \`unicode_range = [65, 122]\` (Latin letters) with \`invert = true\`
-- Remove only ASCII punctuation from a mixed corpus: set \`unicode_range = [33, 47]\` (punctuation block) with \`invert = true\`
+The current TokenFilter has no invert switch: a range in \`unicode_ranges\` keeps what falls inside it. To remove specific known tokens instead, use \`blocklist\`. Removing a whole range takes a pre-processing step outside this node.
 
 ---
 
@@ -639,7 +813,7 @@ The \`invert = true\` option removes tokens that fall within the range. Use case
 
 After adding TokenFilter to your graph:
 
-1. Run the experiment once with a **JSONReportWriter** output node to capture the filtered token count
+1. Run the experiment once with a **JSONExport** output node to capture the filtered token count
 2. Check that the token count decreased by the expected amount
 3. Re-examine the Stats tab in the Corpora panel for the original corpus — the TokenFilter result is not persisted to the database, only used in-pipeline
 
@@ -771,7 +945,7 @@ Once a corpus is imported, it becomes available for the **CorpusLM** atomic node
 Use case: you want to test Indus Script decipherment against a Dravidian language model. Import a Tamil corpus from the catalogue, then in your experiment graph connect:
 
 \`\`\`
-CorpusLM (Tamil corpus) → MappingInference ← CorpusLoader (Indus Script corpus)
+CorpusLM (Tamil corpus) → SADecipher ← CorpusReader (Indus Script corpus)
 \`\`\`
 
 The CorpusLM node extracts unigram and bigram frequencies from the Tamil corpus and uses them as the phonological prior for the inference engine — no Python code required.
@@ -894,13 +1068,13 @@ Only **high** confidence anchors should be injected into formal experiments. Med
 In the Experiment Builder:
 1. Add an **AnchorSetLoader** node
 2. Set the \`anchor_set_id\` parameter to the ID of your anchor set (shown in the Anchor Sets panel)
-3. Connect the \`anchors\` output port to the \`anchors\` input of a **MappingInference** or **AnchorInjector** node
+3. Connect the \`anchors\` output port to the \`anchors\` input of an **SADecipher** node
 
-**Option 2: AnchorInjector with inline anchors**
+**Option 2: Inline anchors via a StaticValue node**
 
 If you have only a small number of anchors and don't need reusability:
-1. Add an **AnchorInjector** node
-2. In the node inspector, enter anchors directly as a JSON dict: \`{"066": "M", "004": "T", "208": "N"}\`
+1. Add a **StaticValue** node and set its \`value\` to the anchor dict as JSON: \`{"066": "M", "004": "T", "208": "N"}\`
+2. Connect its \`value\` output to the \`anchors\` input of the **SADecipher** node
 
 ---
 
@@ -953,356 +1127,7 @@ To edit an existing set, delete it and recreate. (Full edit UI is on the roadmap
   {
     id: "experiments",
     title: "Experiment Builder",
-    content: `
-## Experiment Builder
-
-All experiments in Glossa Lab are **graph experiments** — JSON specifications describing a directed acyclic graph (DAG) of atomic computation nodes. The Experiment Builder provides a visual canvas to compose these graphs without writing code.
-
----
-
-### Architecture
-
-**Hierarchy**:
-
-| Level | Definition |
-| Study | A graph of Experiments. Composed in the Study Builder. |
-| Experiment | A graph of atomic Nodes. Composed in the Experiment Builder. |
-| Atomic Node | A single, indivisible computation step implemented internally in Python. |
-
-Users only interact with atomic nodes and experiments. The Python implementation of each atomic node is managed by the platform and is not user-visible.
-
-**Data flow**: each node has typed input and output **ports**. Data flows left to right along edges connecting output ports to input ports. Incompatible port types are rejected.
-
----
-
-### Using the Builder
-
-1. Click **Experiments** in the sidebar
-2. Click **+ New** or open an existing experiment
-3. **Palette** (left) — drag nodes onto the canvas
-4. **Canvas** (centre) — connect nodes by dragging from an output port to an input port
-5. **Node Inspector** (right) — click a node to view and edit its parameters
-6. Click **Run** — the graph executes; progress streams to the Jobs panel
-
----
-
-### Port Types
-
-| Port type | Colour | Carries |
-| corpus | Blue | A token sequence corpus (list of word-lists) |
-| lm | Purple | A language model (unigram + bigram frequency table) |
-| anchors | Green | An anchor dict mapping sign strings to phoneme strings |
-| mapping | Orange | A sign-to-phoneme mapping (inference result) |
-| metrics | Teal | Numeric evaluation results |
-| report | Grey | A structured report object (PDF/Markdown/JSON) |
-| any | White | Passes through any data type |
-
-Connect a **corpus** output to a **corpus** input, an **lm** output to an **lm** input, etc. The canvas highlights compatible ports in green and incompatible ports in red when you drag.
-
----
-
-### Complete Node Reference
-
-#### Corpus Loaders
-
-**CorpusLoader**
-Loads a corpus from the database by ID.
-
-| Parameter | Type | Description |
-| corpus_id | string | ID of the corpus to load (copy from the Corpora panel) |
-| split | float | Fraction to use as the test split (0.0 = use all). Default 0.0 |
-| seed | int | Random seed for the split. Default 42 |
-
-Output ports: \`corpus\` (full or train split), \`test_corpus\` (test split if split > 0)
-
----
-
-**CorpusLM**
-Loads a corpus from the database and builds a language model from it directly. Replaces the need for a Python data module.
-
-| Parameter | Type | Description |
-| corpus_id | string | ID of the reference corpus (e.g. a Classical Hebrew corpus) |
-| min_freq | int | Minimum frequency for a sign to be included in the LM. Default 1 |
-| smoothing | float | Laplace smoothing factor. Default 0.01 |
-
-Output ports: \`lm\` (the language model)
-
-**When to use**: when you want to build a reference LM from any uploaded corpus instead of using the built-in language models. Essential for testing new language hypotheses.
-
----
-
-**BuiltinLM**
-Loads a pre-seeded language model from the platform's data library.
-
-| Parameter | Type | Description |
-| lm_name | string | One of: old_hebrew, geez, phoenician, meroitic, proto_sinaitic, old_persian, uniform |
-
-Output ports: \`lm\`
-
-The \`uniform\` LM assigns equal probability to all phonemes — useful as a control (removes all language-prior influence from the inference).
-
----
-
-#### Structural Analysis
-
-**EntropyAnalyzer**
-Computes unigram and bigram entropy metrics for a corpus.
-
-| Parameter | Type | Description |
-| include_zipf | bool | Include Zipf law fit. Default true |
-| include_positional | bool | Include per-position entropy profile. Default true |
-
-Input ports: \`corpus\`
-Output ports: \`metrics\` (H1, H2, H2/H1, conditional H, TTR, Zipf ρ, hapax count, positional H profile)
-
----
-
-**WritingSystemClassifier**
-Classifies the corpus as abjad, syllabary, or logographic based on H1 and alphabet size.
-
-| Parameter | Type | Description |
-| thresholds | object | Override default H1 thresholds. Default: {"abjad_max": 4.7, "syllabary_max": 7.5} |
-
-Input ports: \`metrics\` (from EntropyAnalyzer)
-Output ports: \`metrics\` (augmented with classification, confidence, nearest_known_system)
-
----
-
-**PositionalProfiler**
-Computes Terminal (T), Initial (I), and Medial (M) probability for every sign.
-
-| Parameter | Type | Description |
-| rtl | bool | If true, reverse all sequences before computing. Default false |
-| min_occurrences | int | Minimum sign occurrences to include in output. Default 3 |
-
-Input ports: \`corpus\`
-Output ports: \`metrics\` (dict of sign → {T, I, M, freq})
-
----
-
-#### Corpus Filters
-
-**TokenFilter**
-Filters tokens from the corpus by Unicode range, blocklist, or minimum frequency.
-
-| Parameter | Type | Description |
-| unicode_range | [int, int] | Codepoint range to keep (or remove if invert=true). Null to disable. |
-| blocklist | list[str] | Token strings to always remove. |
-| min_frequency | int | Remove types with fewer occurrences. Default 0 (disabled). |
-| invert | bool | If true, remove tokens matching unicode_range instead of keeping. Default false. |
-
-Input ports: \`corpus\`
-Output ports: \`corpus\` (filtered)
-
----
-
-#### Mapping Inference
-
-**MappingInference**
-The core SA-based sign-to-phoneme inference engine. Maps cipher signs to target phonemes by maximising the bigram log-likelihood under the language model.
-
-| Parameter | Type | Description |
-| n_seeds | int | Number of independent SA runs. Higher = better consistency, slower. Default 20 |
-| n_iterations | int | SA steps per seed. Higher = better convergence per seed. Default 2000 |
-| temperature_start | float | Initial SA temperature. Default 2.0 |
-| temperature_end | float | Final SA temperature. Default 0.01 |
-| cooling_schedule | string | "linear" or "exponential". Default "exponential" |
-| target_size | int | Size of the target phoneme set. If 0, uses the LM's phoneme count. Default 0 |
-
-Input ports: \`corpus\`, \`lm\`, \`anchors\` (optional)
-Output ports: \`mapping\`, \`metrics\` (per-sign consistency, modal assignment, posterior distribution)
-
-**GPU acceleration**: if CuPy is installed and a CUDA device is available, MappingInference automatically uses the GPU. This gives 3–10× speedup for n_seeds > 20. With GPU unavailable, it parallelises across CPU cores.
-
----
-
-**AnchorInjector**
-Locks specific sign assignments before inference, overriding the SA's freedom to change them.
-
-| Parameter | Type | Description |
-| anchors | object | JSON dict mapping sign strings to target phoneme strings: \`{"066": "M", "004": "T"}\` |
-| confidence_filter | string | Only inject anchors with this confidence level or higher. One of: high, medium, low, all. Default "all" |
-
-Input ports: \`corpus\`, \`lm\`, \`anchors\` (from AnchorSetLoader, overrides inline param if connected)
-Output ports: passes through \`corpus\`, \`lm\`, \`anchors\` (for downstream MappingInference)
-
----
-
-**AnchorSetLoader**
-Loads a saved anchor set from the database.
-
-| Parameter | Type | Description |
-| anchor_set_id | string | ID of the anchor set (visible in the Anchor Sets panel) |
-| confidence_filter | string | "high", "medium", "low", or "all". Default "all" |
-
-Output ports: \`anchors\`
-
----
-
-**AnchorConvergenceBenchmark**
-Sweeps over a range of anchor counts and measures decipherment quality at each k.
-
-| Parameter | Type | Description |
-| anchor_counts | list[int] | Values of k to test. Default [0, 3, 10, 20] |
-| n_seeds | int | Seeds per condition. Default 10 |
-| n_iterations | int | SA iterations per seed. Default 2000 |
-| use_positional_selection | bool | Select anchors by T/I-rate rather than frequency. Default false |
-
-Input ports: \`corpus\`, \`lm\`, \`anchors\` (the full candidate anchor set)
-Output ports: \`metrics\` (table: k, struct_acc_free, rand_acc_free, consistency, hci75, n_distinct)
-
----
-
-#### Evaluation
-
-**ConsistencyEvaluator**
-Computes per-sign consistency (fraction of seeds agreeing on the modal assignment) and aggregate metrics.
-
-Input ports: \`mapping\` (from MappingInference, must include all seed results)
-Output ports: \`metrics\` (per-sign: modal_assignment, consistency, posterior_top3; aggregate: mean_consistency, hci75_fraction)
-
----
-
-**AnchorAccuracyEvaluator**
-Evaluates held-out anchor recovery: removes a fraction of the anchors and tests whether the SA recovers them.
-
-| Parameter | Type | Description |
-| holdout_fraction | float | Fraction of anchors to withhold during inference. Default 0.3 |
-| n_trials | int | Number of holdout trials. Default 5 |
-
-Input ports: \`corpus\`, \`lm\`, \`anchors\`
-Output ports: \`metrics\` (holdout recovery rate, std dev across trials)
-
----
-
-**RandomBaselineComparator**
-Runs the inference on a shuffled version of the corpus (randomised sign order within words) and compares results to the real corpus.
-
-Input ports: \`corpus\`, \`lm\`, \`mapping\`
-Output ports: \`metrics\` (real_consistency, random_consistency, delta, p_value_estimate)
-
----
-
-#### Reporting Nodes
-
-**JSONReportWriter**
-Writes results to a JSON file in the Data panel.
-
-| Parameter | Type | Description |
-| filename | string | Output filename (without path). Default: auto-generated with timestamp. |
-| include_raw | bool | Include full per-seed raw mapping arrays. Default false. |
-
-Input ports: \`any\` (accepts any upstream result data)
-Output ports: none
-
----
-
-**MarkdownReportWriter**
-Writes a Markdown summary to the Reports panel.
-
-| Parameter | Type | Description |
-| title | string | Report title. Default: experiment name. |
-| include_tables | bool | Include metric tables. Default true. |
-
-Input ports: \`any\`
-Output ports: none
-
----
-
-**PDFReportWriter**
-Generates a formatted PDF report from a user-defined template.
-
-| Parameter | Type | Description |
-| template_id | string | ID of the report template (from the Report Templates panel). If empty, uses a default layout. |
-| author | string | Author name for the report header. |
-
-Input ports: \`any\`
-Output ports: none
-
----
-
-#### Sub-Experiment Nodes
-
-**SubExperiment**
-Embeds a complete experiment as a reusable subroutine within the current experiment.
-
-| Parameter | Type | Description |
-| experiment_id | string | ID of the experiment to embed. |
-
-Input ports: whatever the embedded experiment's ExperimentInput nodes declare
-Output ports: whatever the embedded experiment's ExperimentOutput nodes declare
-
----
-
-**ExperimentInput**
-Declares a named input port for this experiment (enables it to be used as a SubExperiment).
-
-| Parameter | Type | Description |
-| port_name | string | Name of the input port. |
-| port_type | string | One of: corpus, lm, anchors, mapping, metrics, any |
-
-Output ports: the declared port (passes data in from the caller)
-
----
-
-**ExperimentOutput**
-Declares a named output port for this experiment.
-
-| Parameter | Type | Description |
-| port_name | string | Name of the output port. |
-| port_type | string | One of: corpus, lm, anchors, mapping, metrics, any |
-
-Input ports: the declared port (captures data to pass back to the caller)
-
----
-
-### Common Graph Patterns
-
-**Pattern 1: Basic decipherment**
-\`\`\`
-CorpusLoader → MappingInference ← BuiltinLM
-                     ↓
-              ConsistencyEvaluator → JSONReportWriter
-\`\`\`
-
-**Pattern 2: Anchored decipherment**
-\`\`\`
-CorpusLoader → TokenFilter → MappingInference ← CorpusLM
-AnchorSetLoader ─────────────────↑
-                      ↓
-               ConsistencyEvaluator → MarkdownReportWriter
-\`\`\`
-
-**Pattern 3: Anchor convergence benchmark**
-\`\`\`
-CorpusLoader → AnchorConvergenceBenchmark ← BuiltinLM
-AnchorSetLoader ───────────────────────↑
-                          ↓
-                    JSONReportWriter
-\`\`\`
-
-**Pattern 4: Structural + decipherment pipeline**
-\`\`\`
-CorpusLoader → EntropyAnalyzer → WritingSystemClassifier → JSONReportWriter
-     ↓
-PositionalProfiler → JSONReportWriter
-     ↓
-MappingInference ← BuiltinLM
-     ↓
-ConsistencyEvaluator → PDFReportWriter
-\`\`\`
-
----
-
-### Debugging Experiment Graphs
-
-| Symptom | Likely cause | Fix |
-| Node shows red border | Required input port not connected | Connect all red ports or provide inline param values |
-| Job fails with "port type mismatch" | Incompatible port types connected | Check that port colours match at both ends of each edge |
-| Inference produces all low consistency | LM type mismatch (e.g. abjad LM for syllabic corpus) | Use CorpusLM with an appropriate reference corpus |
-| TokenFilter removes all tokens | unicode_range does not cover your script | Check the codepoint range in the Sanitization section |
-| PDF report is blank | PDFReportWriter received no data | Check that at least one metrics node is connected upstream |
-    `,
+    content: EXPERIMENTS_SECTION_PRE + NODE_REFERENCE_MD + EXPERIMENTS_SECTION_POST,
   },
 
   // ─── 8. STUDY BUILDER ──────────────────────────────────────────────────
@@ -1319,7 +1144,7 @@ A Study is a higher-level graph that composes multiple Experiments into a coordi
 ### Study vs. Experiment
 
 | Aspect | Experiment | Study |
-| Nodes | Atomic nodes (CorpusLoader, MappingInference, etc.) | Experiment nodes (references to full experiments) |
+| Nodes | Atomic nodes (CorpusReader, SADecipher, etc.) | Experiment nodes (references to full experiments) |
 | Edges | Connect port-to-port within a single experiment | Connect experiment outputs to experiment inputs |
 | Purpose | A single coherent analysis (e.g. one decipherment run) | A coordinated sequence of analyses (e.g. structural analysis → decipherment → validation) |
 | Reusability | Experiments can be embedded as SubExperiment nodes in other experiments | Studies can reference any registered experiment |
@@ -1405,13 +1230,13 @@ To compare results across parallel branches, open the relevant artefacts and exa
 
 **Experiments in the study (in dependency order)**:
 
-1. **RTL Detection** — runs EntropyAnalyzer + PositionalProfiler on the raw corpus, outputs RTL confirmation
-2. **Structural Fingerprint** — runs EntropyAnalyzer + WritingSystemClassifier
+1. **RTL Detection** — runs EntropyCalc + PositionalProfiler on the raw corpus, outputs RTL confirmation
+2. **Structural Fingerprint** — runs EntropyCalc + WritingSystemClassifier
 3. **Positional Profile** — runs PositionalProfiler with RTL=true (after step 1)
-4. **Baseline Decipherment** — runs MappingInference with 0 anchors
-5. **Anchored Decipherment** — runs MappingInference with 6 verified anchors (after step 4 to compare)
-6. **Validation Suite** — runs RandomBaselineComparator (parallel with step 5)
-7. **PDF Report** — runs PDFReportWriter collecting outputs from steps 2, 3, 4, 5, 6
+4. **Baseline Decipherment** — runs SADecipher with 0 anchors
+5. **Anchored Decipherment** — runs SADecipher with 6 verified anchors (after step 4 to compare)
+6. **Validation Suite** — runs ShuffleControl (parallel with step 5)
+7. **PDF Report** — runs ReportGenerator collecting outputs from steps 2, 3, 4, 5, 6
 
 Steps 1 and 2 run in parallel. Step 3 waits for step 1. Steps 4, 5, 6 run in parallel after step 3. Step 7 waits for steps 2, 3, 4, 5, 6.
     `,
@@ -1464,7 +1289,7 @@ Click **Data** in the sidebar to see all generated JSON and CSV artefacts.
 
 ### Report Types and Their Contents
 
-#### PDF Reports (from PDFReportWriter)
+#### PDF Reports (from ReportGenerator)
 
 A typical decipherment PDF report contains:
 
@@ -1496,13 +1321,13 @@ A typical decipherment PDF report contains:
 - Key findings
 - Recommended next steps
 
-#### Markdown Reports (from MarkdownReportWriter)
+#### Markdown Reports (from ReportGenerator)
 
 Markdown reports are shorter, plain-text summaries suitable for embedding in research notes or emails. They contain the main metric table and key findings in a readable format.
 
-#### JSON Data (from JSONReportWriter)
+#### JSON Data (from JSONExport)
 
-Raw structured output. For a MappingInference run, the JSON contains:
+Raw structured output. For an SADecipher run, the JSON contains:
 
 \`\`\`json
 {
@@ -1536,7 +1361,7 @@ User-defined report templates allow you to specify exactly which sections, data 
 
 A template defines a list of sections, each with:
 - **Title** — the section heading
-- **Data source** — which experiment output to draw from (e.g. the metrics from ConsistencyEvaluator)
+- **Data source** — which experiment output to draw from (e.g. the metrics from ConsistencyScorer)
 - **Data key** — which field in the output to display
 - **Chart type** — bar, line, table, or text
 - **Include raw table** — whether to include a data table alongside the chart
@@ -2078,31 +1903,31 @@ A rigorous decipherment study in Glossa Lab follows this sequence:
 5. Upload or select a reference language corpus (for LM)
 
 **Phase 2: Structural Analysis**
-1. Run EntropyAnalyzer to determine H1, H2/H1, TTR, Zipf ρ
+1. Run EntropyCalc to determine H1, H2/H1, TTR, Zipf ρ
 2. Run WritingSystemClassifier — confirm tier (abjad/syllabary/logographic)
 3. Run PositionalProfiler (with RTL=true if applicable)
 4. Identify high-T and high-I signs as anchor candidates
 
 **Phase 3: Baseline Inference**
-1. Run MappingInference with 0 anchors, 20 seeds
+1. Run SADecipher with 0 anchors, 20 seeds
 2. Record mean consistency, HCI ≥ 75%, N_distinct
-3. Run RandomBaselineComparator to confirm the corpus has a real statistical signal above noise
+3. Run ShuffleControl to confirm the corpus has a real statistical signal above noise
 
 **Phase 4: Anchored Inference**
 1. Create an anchor set with verified assignments (start with the 3–5 highest-confidence anchors)
-2. Run MappingInference with anchors
+2. Run SADecipher with anchors
 3. Compare: consistency increase, HCI increase, N_distinct decrease
 4. If N_distinct decreases significantly (cluster collapse): anchors are working
 5. If no improvement: suspect incorrect anchors or LM mismatch
 
 **Phase 5: Validation**
-1. Run AnchorAccuracyEvaluator with holdout to estimate recovery rate
+1. Estimate recovery with AnchorConvergenceBenchmark — on a corpus with known ground truth it reports free-sign accuracy at each anchor count
 2. Run AnchorConvergenceBenchmark across k = 0, 3, 10, 20
 3. Test with a different LM (BuiltinLM "uniform") as a control
 4. Compare results across LMs — genuine signal should persist
 
 **Phase 6: Reporting**
-1. Generate PDF report via PDFReportWriter
+1. Generate PDF report via ReportGenerator
 2. Export per-sign JSON for detailed review
 3. Save session summary to notebooks via Glossa AI
 
@@ -2148,7 +1973,7 @@ Sign 066 at T-rate 0.967 is an exceptional anchor candidate: it appears at word-
 
 #### 4. Baseline Decipherment (No Anchors)
 
-MappingInference with 20 seeds, 2000 iterations, Old Hebrew LM:
+SADecipher with 20 seeds, 2000 iterations, Old Hebrew LM:
 - Mean consistency: 54.7%
 - HCI ≥ 75%: 11 of 78 signs (14.1%)
 - N_distinct: 7 distinct solutions
@@ -2159,7 +1984,7 @@ Baseline is above noise (random corpus gives mean consistency 35–40% for this 
 
 Anchors: 004=T, 066=M, 208=N, 128=L, 080=W, 003=B (all high confidence, from Fuls 2024 verified set)
 
-MappingInference results:
+SADecipher results:
 - Mean consistency: **63.8%** (+9.2 pp vs baseline)
 - HCI ≥ 75%: **22 of 78 signs** (28.2%, up from 14.1%)
 - N_distinct: **3** (down from 7 — cluster collapse)
@@ -2244,7 +2069,7 @@ When starting an analysis of a new, unknown script:
 | Backend does not start | Port 8001 is already in use | Right-click tray icon → Change Port. Or kill the conflicting process: \`netstat -ano | findstr :8001\` (Windows) |
 | Backend starts but UI shows "offline" | Backend started on a different port than the UI is connecting to | Check the tray icon for the current port. Navigate to \`http://localhost:<port>\` |
 | Backend crashes on startup | Missing Python dependency | Run \`setup-os.cmd install\` to reinstall dependencies |
-| Backend crashes after a few minutes | Memory exhaustion (large GPU inference) | Reduce n_seeds in MappingInference, or use CPU mode |
+| Backend crashes after a few minutes | Memory exhaustion (large GPU inference) | Reduce n_seeds in SADecipher, or use CPU mode |
 | "Address already in use" error | A previous backend instance did not exit cleanly | Kill all Python processes with \`setup-os.cmd stop\` then restart |
 | "Database locked" error | Two backend instances running simultaneously | Stop all instances, then start one: \`setup-os.cmd stop && setup-os.cmd start\` |
 | Backend won't stop | Process is stuck | Windows: open Task Manager → Python processes → End Task. Linux/macOS: \`pkill -f glossa_lab\` |
@@ -2283,13 +2108,13 @@ When starting an analysis of a new, unknown script:
 | Issue | Cause | Solution |
 | Experiment fails immediately | Missing required parameter | Open the Node Inspector for all nodes and check that required parameters are set |
 | "Port type mismatch" error | Incompatible nodes connected | Check port colours match at both ends of each edge. See port type table in the Experiment Builder section. |
-| Experiment runs but produces no output | Report writer node not connected | Add a JSONReportWriter or MarkdownReportWriter node and connect it to the last metrics node |
-| MappingInference produces all low consistency | LM type mismatch | Switch to CorpusLM using an appropriate reference corpus, or try BuiltinLM "uniform" as a diagnostic |
+| Experiment runs but produces no output | Report writer node not connected | Add a JSONExport or ReportGenerator node and connect it to the last metrics node |
+| SADecipher produces all low consistency | LM type mismatch | Switch to CorpusLM using an appropriate reference corpus, or try BuiltinLM "uniform" as a diagnostic |
 | TokenFilter removes all tokens | unicode_range too narrow | Check the codepoint range for your script. Use the Stats → Token-Type Breakdown before filtering. |
 | SubExperiment node shows "ports not found" | Referenced experiment has no ExperimentInput/Output nodes | Add ExperimentInput and ExperimentOutput nodes to the referenced experiment |
 | AnchorSetLoader error "set not found" | Wrong anchor_set_id | Copy the anchor set ID from the Anchor Sets panel in Corpora |
 | SA inference is very slow | Running on CPU with many seeds | Install CuPy for GPU acceleration. Reduce n_seeds as a temporary measure. |
-| Results are identical across all runs | SA is not exploring (stuck in single optimum) | Increase temperature_start parameter in MappingInference (try 3.0 or 5.0) |
+| Results are identical across all runs | SA is not exploring (stuck in single optimum) | Increase max_iterations or restarts in SADecipher so the annealer explores more of the space |
 
 ---
 
@@ -2298,19 +2123,19 @@ When starting an analysis of a new, unknown script:
 | Issue | Cause | Solution |
 | "No GPU available, using CPU" | CuPy not installed | Run: \`pip install cupy-cuda12x\` (for CUDA 12.x) or \`cupy-cuda11x\` for CUDA 11.x |
 | CuPy installed but GPU not used | CuPy cannot find CUDA | Run \`python -c "import cupy; print(cupy.cuda.is_available())"\`. If False, CUDA drivers may be missing or wrong version. |
-| GPU out of memory | Corpus + LM too large for VRAM | Reduce n_seeds or n_iterations. Or set a smaller target_size parameter. |
+| GPU out of memory | Corpus + LM too large for VRAM | Reduce n_seeds or max_iterations, or reduce the corpus/LM size. |
 | GPU causes different results from CPU | Floating-point precision differences | Expected and normal. Results should be statistically equivalent. |
 | CUDA out of memory error | Many parallel seeds | Reduce n_seeds to a value that fits in VRAM (typically 10–20 for 8 GB VRAM) |
 
 ---
 
-### Log Panel Issues
+### Log Issues
 
 | Issue | Cause | Solution |
-| Logs show stale old entries on reload | Log file was not purged | Click **Purge** (orange) to clear the log file and reconnect the stream |
-| Logs not streaming (no new entries) | EventSource connection dropped | Click **Purge** — this disconnects and reconnects the stream |
+| Logs cannot be viewed in the app | The in-app log viewer was removed in the Spec 081 redesign | Read the backend log file (\`glossa.log\`) or \`GET /terminal/log\`; the in-app Logs view returns as its own tab under Spec 087 S5 |
+| Logs show stale old entries | The rotating file still holds older entries | Purge with \`POST /terminal/log/purge\`, or read only the newest entries |
 | Logs show red ERROR entries | Backend exception | Expand the error entry. Common causes: missing corpus ID, LM load failure, disk full |
-| Logs show garbled characters | Log file has non-UTF-8 content | Click **Purge** to reset the log file |
+| Logs show garbled characters | Log file has non-UTF-8 content | Purge the log via the endpoint to reset the file |
 | "Purge failed" message | Log file is locked by another process | Restart the backend to release the log file lock |
 
 ---
@@ -2340,16 +2165,16 @@ When starting an analysis of a new, unknown script:
 
 If you encounter an unexpected failure:
 
-1. Open the **Logs** panel (Ctrl+J)
+1. Open the backend log (\`glossa.log\`, or \`GET /terminal/log\`)
 2. Look for the most recent RED (ERROR) entry
 3. The error message will usually identify: the failing component, the error type, and often the cause
 4. Check the **Jobs** panel — click the failed job to see the full stack trace
 5. If the error is a Python exception, the last line of the traceback identifies the exact location and reason
 6. Common patterns:
-   - \`corpus_id not found\`: check that the corpus ID in CorpusLoader matches an existing corpus
+   - \`corpus_id not found\`: check that the corpus ID in CorpusReader matches an existing corpus
    - \`LM not found\`: BuiltinLM name is misspelled; check valid names in the node reference
    - \`JSONDecodeError\`: a node parameter is malformed JSON; check the Node Inspector
-   - \`CUDA out of memory\`: reduce n_seeds or n_iterations in MappingInference
+   - \`CUDA out of memory\`: reduce n_seeds or max_iterations in SADecipher
     `,
   },
 ];

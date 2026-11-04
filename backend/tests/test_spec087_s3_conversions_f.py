@@ -68,7 +68,12 @@ CONVERTED_IDS = {
     "KalyanCrossValidation": "glossa_lab.experiment_graph_kalyanaraman",
 }
 
-RETIRE_IDS = {}
+RETIRE_IDS = {
+    "ShuIlishuCandidateFilter": "glossa_lab.experiment_graph_phase26",
+    "Phase22Verdict": "glossa_lab.experiment_graph_phase22",
+    "Phase23Verdict": "glossa_lab.experiment_graph_phase23",
+    "Phase24Verdict": "glossa_lab.experiment_graph_phase24",
+}
 
 PRIMITIVE_IDS = [
     "JsonRecordDirLoader",

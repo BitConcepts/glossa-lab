@@ -1,8 +1,8 @@
 {
-  "comment": "Spec 087 legacy-flag data (Stage S2 migration, T201; extended by Stage S3 conversion PRs A, B, C and D): the census's 359 WRAPPER node ids, flagged legacy on AtomicNodeDef at registry build (decision D1), plus the ids recorded converted in the Stage S3 records \u2014 each converted node's implementation now delegates to a generic primitive and the domain id takes the legacy flag in the same act (S3 conversion contract, item 2). Generated from the classification of record \u2014 the system-coupling audit census (2026-11-02) Appendix A, param-carry verdict WRAPPER (DOMAIN nodes with no input ports and an empty params schema) \u2014 and from specs/087-node-system-tightening/records/stage-s3-conversions.md for the S3 additions. Reviewable id by id; any change to this list is a recorded act (claim C087-17) and must keep tests/test_spec087_palette_curation.py green.",
+  "comment": "Spec 087 legacy-flag data (Stage S2 migration, T201; extended by Stage S3 conversion PRs A, B, C, D, E and F): the census's 359 WRAPPER node ids, flagged legacy on AtomicNodeDef at registry build (decision D1), plus the ids recorded converted in the Stage S3 records, and the four retire-candidate ids flagged (never deleted) by PR-F per the owner's 2026-11-03 ruling \u2014 each converted node's implementation now delegates to a generic primitive and the domain id takes the legacy flag in the same act (S3 conversion contract, item 2). Generated from the classification of record \u2014 the system-coupling audit census (2026-11-02) Appendix A, param-carry verdict WRAPPER (DOMAIN nodes with no input ports and an empty params schema) \u2014 and from specs/087-node-system-tightening/records/stage-s3-conversions.md for the S3 additions. Reviewable id by id; any change to this list is a recorded act (claim C087-17) and must keep tests/test_spec087_palette_curation.py green.",
   "spec": "087-node-system-tightening",
   "stage": "S2",
-  "count": 405,
+  "count": 425,
   "legacy_ids": [
     "AllographAwareIconographicScore",
     "BayesianDecoder",
@@ -408,7 +408,27 @@
     "indus_phase363_370_deep",
     "indus_phase371_376_exploit",
     "indus_phase378_381_advances",
-    "indus_phase382_390_actionable"
+    "indus_phase382_390_actionable",
+    "IndusLiteratureLoader",
+    "IndusClaimsLoader",
+    "IndusClaimTester",
+    "IndusSealsAtMesopotamiaSummary",
+    "MeluhhaCorpusReporter",
+    "SealSignAuditor",
+    "LaursenTable1Auditor",
+    "SealSignUpgradeAuditor",
+    "Phase29CorpusStats",
+    "CISIFindspotReporter",
+    "ShuIlishuContactZoneFilter",
+    "MeluhhaCooccurrenceCheck",
+    "Phase20Verdict",
+    "Phase21Verdict",
+    "CISIVol3OCRNode",
+    "CMCatalogParser",
+    "ShuIlishuCandidateFilter",
+    "Phase22Verdict",
+    "Phase23Verdict",
+    "Phase24Verdict"
   ],
   "s3_additions": {
     "PR-A (F14+F1)": [
@@ -466,6 +486,32 @@
       "LanguageDetectorVerdict",
       "FulsPositionalClassifier",
       "IndusNullModelTest"
+    ],
+    "PR-F (F2+F10+F11+F12+F13+F15)": [
+      "IndusLiteratureLoader",
+      "IndusClaimsLoader",
+      "IndusClaimTester",
+      "IndusSealsAtMesopotamiaSummary",
+      "MeluhhaCorpusReporter",
+      "SealSignAuditor",
+      "LaursenTable1Auditor",
+      "SealSignUpgradeAuditor",
+      "Phase29CorpusStats",
+      "CISIFindspotReporter",
+      "ShuIlishuContactZoneFilter",
+      "MeluhhaCooccurrenceCheck",
+      "Phase20Verdict",
+      "Phase21Verdict",
+      "CISIVol3OCRNode",
+      "CMCatalogParser",
+      "DravidianSyllableLM",
+      "KalyanCrossValidation"
+    ],
+    "PR-F retire-candidates": [
+      "ShuIlishuCandidateFilter",
+      "Phase22Verdict",
+      "Phase23Verdict",
+      "Phase24Verdict"
     ]
   }
 }

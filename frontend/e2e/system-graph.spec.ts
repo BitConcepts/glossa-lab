@@ -10,7 +10,7 @@ test.describe("System graph — the layered map (Spec 086)", () => {
   });
 
   test("system view renders the gated header, stamp and standing position", async ({ page }) => {
-    await expect(page.getByText("896 claims in the ledger")).toBeVisible();
+    await expect(page.getByText("912 claims in the ledger")).toBeVisible();
     await expect(page.getByText("32.8% of anchor signs validated (strict)")).toBeVisible();
     await expect(page.getByTestId("indus-map-stamp")).toContainText("fresh");
     await expect(page.getByTestId("indus-map-standing-position")).toContainText(

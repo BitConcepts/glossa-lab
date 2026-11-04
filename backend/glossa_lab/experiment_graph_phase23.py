@@ -31,7 +31,6 @@ first quantitative bilingual analysis. Three sub-experiments:
 
 from __future__ import annotations
 
-from collections import Counter
 from typing import Any
 
 # ── Helpers ───────────────────────────────────────────────────────────

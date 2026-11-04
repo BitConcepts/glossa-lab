@@ -23,8 +23,6 @@ Plus a corpus loader and verdict aggregator.
 
 from __future__ import annotations
 
-import base64
-import json
 from pathlib import Path
 from typing import Any
 

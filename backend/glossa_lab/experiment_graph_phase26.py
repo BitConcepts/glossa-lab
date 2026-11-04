@@ -248,63 +248,36 @@ def _janabiyah_phonetic_readout_v2(inputs: dict, params: dict) -> dict:
 def _cisi_findspot_reporter(inputs: dict, params: dict) -> dict:
     """Report the CISI find-spot map; identify which Phase-22 inscribed
     seals have a known find-spot from the prefix mapping.
+
+    Spec 087 S3 PR-F: delegates to the generic PrefixFindspotAssigner
+    (reporter mode); the prefix lengths (4, 3, 2, 1), the key-presence
+    match and the verdict text are spec data.
     """
-    findspot_map = inputs.get("findspot_map") or {}
-    contact_zone = set(inputs.get("contact_zone_prefixes") or [])
-    inscribed = inputs.get("inscribed_seals") or []
+    from glossa_lab.generic_primitives import prefix_findspot_assigner_execute
 
-    n_seals_in_volume = sum(_safe_int(v.get("n_seals_in_volume", 0))
-                             for v in findspot_map.values())
-
-    sites_by_country: dict[str, list[str]] = {}
-    for prefix, info in findspot_map.items():
-        country = info.get("country", "Unknown") or "Unknown"
-        sites_by_country.setdefault(country, []).append(
-            f"{info.get('site', prefix)} ({prefix})"
-        )
-
-    # Identify which inscribed Phase-22 seals could be assigned a
-    # provenience by looking at their catalogue_id prefix.
-    seal_findspot_assignments = []
-    for s in inscribed:
-        cid = str(s.get("catalogue_id") or "")
-        # Try 4-, 3-, 2-letter prefixes
-        prefix = None
-        for L in (4, 3, 2, 1):
-            cand = cid[:L]
-            if cand in findspot_map:
-                prefix = cand
-                break
-        if prefix:
-            info = findspot_map[prefix]
-            seal_findspot_assignments.append({
-                "catalogue_id": cid,
-                "prefix": prefix,
-                "site": info.get("site"),
-                "country": info.get("country"),
-                "is_contact_zone": info.get("is_contact_zone", False),
-            })
-
-    verdict = (
-        f"CISI find-spot map: {len(findspot_map)} site prefixes "
-        f"covering ~{n_seals_in_volume} seals across "
-        f"{len(sites_by_country)} countries. Contact-zone prefix "
-        f"set has {len(contact_zone)} entries. Of "
-        f"{len(inscribed)} Phase-22 inscribed seals, "
-        f"{len(seal_findspot_assignments)} could be assigned a "
-        f"site via prefix matching (the remainder use Mahadevan "
-        f"M77 IDs / hand-encoded catalogue IDs not following the "
-        f"CISI prefix convention)."
-    )
-
-    return {
-        "n_prefixes": len(findspot_map),
-        "n_countries": len(sites_by_country),
-        "n_seals_in_cisi_vol3": n_seals_in_volume,
-        "sites_by_country": sites_by_country,
-        "seal_findspot_assignments": seal_findspot_assignments,
-        "verdict": verdict,
+    merged = dict(params)
+    merged["assigner_spec"] = {
+        "mode": "reporter",
+        "prefix_lengths": [4, 3, 2, 1],
+        "map_key": "findspot_map",
+        "contact_key": "contact_zone_prefixes",
+        "records_key": "inscribed_seals",
+        "id_field": "catalogue_id",
+        "volume_field": "n_seals_in_volume",
+        "volume_out": "n_seals_in_cisi_vol3",
+        "country_default": "Unknown",
+        "sites_out": "sites_by_country",
+        "assignments_out": "seal_findspot_assignments",
+        "verdict_template": (
+            "CISI find-spot map: {n_prefixes} site prefixes covering "
+            "~{n_volume} seals across {n_countries} countries. "
+            "Contact-zone prefix set has {n_contact} entries. Of "
+            "{n_records} Phase-22 inscribed seals, {n_assigned} could "
+            "be assigned a site via prefix matching (the remainder use "
+            "Mahadevan M77 IDs / hand-encoded catalogue IDs not "
+            "following the CISI prefix convention)."),
     }
+    return prefix_findspot_assigner_execute(inputs, merged)
 
 
 # ── Tier: Shu-ilishu candidate filter using find-spot metadata ───────

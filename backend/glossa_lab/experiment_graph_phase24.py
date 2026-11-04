@@ -41,7 +41,6 @@ Phase-23b:
 
 from __future__ import annotations
 
-from collections import Counter
 from typing import Any
 
 
@@ -115,89 +114,90 @@ def _refined_seal_loader_v2(inputs: dict, params: dict) -> dict:
 
 
 def _laursen_table1_auditor(inputs: dict, params: dict) -> dict:
-    rows = inputs.get("rows") or []
-    parpola = inputs.get("parpola_readings") or {}
-    by_type: Counter[str] = Counter()
-    by_site: Counter[str] = Counter()
-    n_inscribed = 0
-    for r in rows:
-        by_type[r.get("gulf_type", "(unknown)") or "(unknown)"] += 1
-        by_site[r.get("site", "(unmatched)") or "(unmatched)"] += 1
-        if "INDUS" in (r.get("gulf_type", "") or "").upper():
-            n_inscribed += 1
+    """Spec 087 S3 PR-F: delegates to the generic RecordGroupSummary;
+    the 'INDUS' substring rule, the 121-row expectation, the [:80]
+    reference truncation and the top-10 site counter are spec data."""
+    from glossa_lab.generic_primitives import record_group_summary_execute
 
-    sample = []
-    for r in rows[:8]:
-        sample.append({
-            "seal_no": r.get("seal_no"),
-            "reference": (r.get("reference", "") or "")[:80],
-            "gulf_type": r.get("gulf_type"),
-            "site": r.get("site"),
-        })
-
-    verdict = (
-        f"Laursen 2010 Table 1 audit: {len(rows)}/121 rows parsed; "
-        f"{n_inscribed} inscribed Gulf-INDUS; {len(parpola)} seal(s) "
-        f"with full Parpola sign-by-sign reading."
-    )
-    return {
-        "n_rows": len(rows),
-        "n_inscribed": n_inscribed,
-        "n_parpola_readings": len(parpola),
-        "by_gulf_type": dict(by_type.most_common()),
-        "by_site_top10": dict(by_site.most_common(10)),
-        "sample_rows": sample,
-        "verdict": verdict,
+    merged = dict(params)
+    merged["summary_spec"] = {
+        "records_key": "rows",
+        "blocks": [
+            {"kind": "count", "out": "n_rows"},
+            {"kind": "match_count", "out": "n_inscribed",
+             "field": "gulf_type", "substring": "INDUS",
+             "transform": "upper"},
+            {"kind": "input_len", "out": "n_parpola_readings",
+             "input_key": "parpola_readings"},
+            {"kind": "counter", "out": "by_gulf_type", "field": "gulf_type",
+             "missing": "falsy_default", "default": "(unknown)",
+             "order": "most_common"},
+            {"kind": "counter", "out": "by_site_top10", "field": "site",
+             "missing": "falsy_default", "default": "(unmatched)",
+             "order": "most_common", "top": 10},
+            {"kind": "rows", "out": "sample_rows", "limit": 8, "fields": [
+                {"out": "seal_no", "from": "seal_no"},
+                {"out": "reference", "from": "reference", "truncate": 80},
+                {"out": "gulf_type", "from": "gulf_type"},
+                {"out": "site", "from": "site"},
+            ]},
+            {"kind": "verdict", "out": "verdict",
+             "template": (
+                 "Laursen 2010 Table 1 audit: {n_rows}/121 rows parsed; "
+                 "{n_inscribed} inscribed Gulf-INDUS; "
+                 "{n_parpola_readings} seal(s) with full Parpola "
+                 "sign-by-sign reading.")},
+        ],
     }
+    return record_group_summary_execute(inputs, merged)
 
 
 def _seal_sign_upgrade_auditor(inputs: dict, params: dict) -> dict:
-    seals = inputs.get("all_seals") or []
-    upgrade_md = inputs.get("upgrade_metadata") or {}
+    """Spec 087 S3 PR-F: delegates to the generic RecordGroupSummary;
+    the laursen_2010_seal_no cross-reference field, the [:120]
+    rationale truncation and the metadata pick are spec data."""
+    from glossa_lab.generic_primitives import record_group_summary_execute
 
-    by_confidence: Counter[str] = Counter()
-    n_with_laursen_xref = 0
-    upgrade_rows: list[dict] = []
-    for s in seals:
-        conf = s.get("signs_confidence", "unknown") or "unknown"
-        by_confidence[conf] += 1
-        if s.get("laursen_2010_seal_no") is not None:
-            n_with_laursen_xref += 1
-            upgrade_rows.append({
-                "catalogue_id": s.get("catalogue_id"),
-                "laursen_seal_no": s.get("laursen_2010_seal_no"),
-                "inscription_length": s.get("inscription_length"),
-                "signs_confidence": conf,
-                "indus_signs": s.get("indus_signs"),
-                "rationale": (
-                    s.get("phase24_crossref_rationale", "") or ""
-                )[:120],
-            })
-
-    n_high_conf = by_confidence.get("high", 0)
-    total_signs = sum(_safe_int(s.get("inscription_length")) for s in seals)
-
-    verdict = (
-        f"Phase-24 sign-upgrade audit: {len(seals)} seals; "
-        f"{n_with_laursen_xref} cross-referenced with Laursen Table 1; "
-        f"{n_high_conf} with high-confidence Parpola IDs; "
-        f"{total_signs} total Indus signs."
-    )
-    return {
-        "n_seals": len(seals),
-        "n_with_laursen_xref": n_with_laursen_xref,
-        "n_high_conf": n_high_conf,
-        "total_signs": total_signs,
-        "by_confidence": dict(by_confidence.most_common()),
-        "upgrade_rows": upgrade_rows,
-        "metadata_summary": {
-            "n_crossreferenced_with_laursen":
-                upgrade_md.get("n_crossreferenced_with_laursen"),
-            "n_seals_added": upgrade_md.get("n_seals_added"),
-            "method": upgrade_md.get("method"),
-        },
-        "verdict": verdict,
+    merged = dict(params)
+    merged["summary_spec"] = {
+        "records_key": "all_seals",
+        "record_fields": [
+            {"name": "conf", "from": "signs_confidence",
+             "missing": "falsy_default", "default": "unknown"},
+        ],
+        "blocks": [
+            {"kind": "count", "out": "n_seals"},
+            {"kind": "presence_count", "out": "n_with_laursen_xref",
+             "field": "laursen_2010_seal_no"},
+            {"kind": "counter", "out": "by_confidence", "computed": "conf",
+             "order": "most_common"},
+            {"kind": "counter_get", "out": "n_high_conf",
+             "counter": "by_confidence", "key": "high", "default": 0},
+            {"kind": "sum", "out": "total_signs",
+             "field": "inscription_length", "safe_int": True},
+            {"kind": "rows", "out": "upgrade_rows",
+             "only_if_present": "laursen_2010_seal_no", "fields": [
+                 {"out": "catalogue_id", "from": "catalogue_id"},
+                 {"out": "laursen_seal_no", "from": "laursen_2010_seal_no"},
+                 {"out": "inscription_length", "from": "inscription_length"},
+                 {"out": "signs_confidence", "computed": "conf"},
+                 {"out": "indus_signs", "from": "indus_signs"},
+                 {"out": "rationale", "from": "phase24_crossref_rationale",
+                  "truncate": 120},
+             ]},
+            {"kind": "metadata_pick", "out": "metadata_summary",
+             "input_key": "upgrade_metadata",
+             "fields": ["n_crossreferenced_with_laursen", "n_seals_added",
+                        "method"]},
+            {"kind": "verdict", "out": "verdict",
+             "template": (
+                 "Phase-24 sign-upgrade audit: {n_seals} seals; "
+                 "{n_with_laursen_xref} cross-referenced with Laursen "
+                 "Table 1; {n_high_conf} with high-confidence Parpola "
+                 "IDs; {total_signs} total Indus signs.")},
+        ],
     }
+    return record_group_summary_execute(inputs, merged)
 
 
 def _refined_persons_extractor_v2(inputs: dict, params: dict) -> dict:

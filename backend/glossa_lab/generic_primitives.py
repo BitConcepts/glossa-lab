@@ -3792,3 +3792,1257 @@ def sign_position_null_test_execute(inputs: dict, params: dict) -> dict:
         "text": (f"Null model ({test_type}): {target_sign} z={z_score:.2f} "
                  f"p≈{p_approx:.3f} → {verdict}."),
     }
+
+
+# ── PositionalClaimTester ───────────────────────────────────────────────────
+# Spec 087 S3 PR-F (family F2). Tests claims of spec-named types against a
+# sequence corpus: a claim is testable when its type contains one of the
+# spec's keywords, it names at least one sign, and its normalized text
+# names a position (the first matching position needle wins). For each of
+# the claim's first `sign_cap` signs present in the corpus, the observed
+# positional rate (positional occurrences / total occurrences, positional
+# counts taken over sequences longer than `positional_min_length`) is
+# compared against the corpus average rate over signs with at least
+# `min_count_for_avg` occurrences, scaled by `support_multiplier`.
+# Claims that fail any testability condition are skipped — the engine
+# emits no row for them, exactly as the evidence tester it generalises.
+
+
+def positional_claim_tester_execute(inputs: dict, params: dict) -> dict:
+    spec = dict(params.get("tester_spec") or {})
+    claims = inputs.get("claims") or []
+    sequences = inputs.get("sequences") or []
+    if not sequences:
+        return {"error": spec["no_sequences_error"]}
+    if not claims:
+        return {"error": spec["no_claims_error"]}
+
+    keywords = spec.get("type_keywords") or []
+    positions = spec.get("positions") or [["initial", "initial"],
+                                          ["terminal", "terminal"]]
+    min_len = spec.get("positional_min_length", 1)
+    min_count = spec.get("min_count_for_avg", 3)
+    multiplier = spec.get("support_multiplier", 1.2)
+    sign_cap = spec.get("sign_cap", 4)
+    truncate = spec.get("source_truncate", 100)
+    round_obs = spec.get("round_observed", 4)
+    round_avg = spec.get("round_average", 4)
+    round_lift = spec.get("round_lift", 3)
+    lift_floor = spec.get("lift_floor", 0.001)
+    round_rate = spec.get("round_support_rate", 4)
+
+    tc = Counter(s for seq in sequences for s in seq)
+    ic = Counter(seq[0] for seq in sequences if len(seq) > min_len)
+    te = Counter(seq[-1] for seq in sequences if len(seq) > min_len)
+    counters = {label: (ic if label == "initial" else te)
+                for _needle, label in positions}
+
+    results: list[dict] = []
+    for claim in claims:
+        ct = claim.get("claim_type", "")
+        if not any(k in ct for k in keywords):
+            continue
+        signs = claim.get("signs_involved") or []
+        nc = claim.get("normalized_claim", "")
+        pred_pos = None
+        for needle, label in positions:
+            if needle in nc.lower():
+                pred_pos = label
+                break
+        if not signs or not pred_pos:
+            continue
+        pos_counter = counters[pred_pos]
+        frequent = [s for s in tc if tc[s] >= min_count]
+        avg_rate = (sum(pos_counter[s] / max(tc[s], 1) for s in frequent)
+                    / max(len(frequent), 1))
+        for sign in signs[:sign_cap]:
+            n = tc.get(sign, 0)
+            if n == 0:
+                continue
+            obs_rate = pos_counter[sign] / n
+            supported = obs_rate >= avg_rate * multiplier
+            results.append({
+                "claim_id": claim.get("claim_id", ""),
+                "sign": sign,
+                "predicted_pos": pred_pos,
+                "observed_rate": round(obs_rate, round_obs),
+                "corpus_avg_rate": round(avg_rate, round_avg),
+                "lift": round(obs_rate / max(avg_rate, lift_floor), round_lift),
+                "n_occurrences": n,
+                "test_verdict": (spec.get("supported_verdict", "supported")
+                                 if supported else
+                                 spec.get("unsupported_verdict", "not_supported")),
+                "source_claim": nc[:truncate],
+            })
+
+    n_supp = sum(1 for r in results
+                 if r["test_verdict"] == spec.get("supported_verdict", "supported"))
+    n_total = len(results)
+    support_rate = round(n_supp / max(n_total, 1), round_rate)
+    return {
+        "test_results": results,
+        "n_tested": n_total,
+        "n_supported": n_supp,
+        "support_rate": support_rate,
+        "json": {"test_results": results},
+        "number": support_rate,
+        "text": spec["text_template"].format(
+            n_total=n_total, n_supp=n_supp,
+            pct=round(100 * n_supp / max(n_total, 1))),
+    }
+
+
+# ── RecordGroupSummary ──────────────────────────────────────────────────────
+# Spec 087 S3 PR-F (family F10). A grouped summary over a record list:
+# per-record computed fields (safe-int coercions, falsy-defaulted
+# labels), then an ordered list of spec blocks — record counts,
+# value counters (insertion / most-common / key-sorted orders),
+# row projections (optionally presence-filtered, limited, with
+# truncated text fields), derived row subsets, sums, substring-match
+# and presence counts, counter lookups, input echoes / lengths /
+# field picks / metadata picks, top-N sections over input dicts and
+# record lists — and a verdict template rendered over the assembled
+# result plus dominant/length helpers for every counter and first
+# key/value helpers for every top-N dict section. All field names,
+# defaults, orders, caps and texts are spec data; the phase auditors
+# this engine generalises differ only in their specs.
+
+
+def _summary_computed(records: list, record_fields: list[dict]) -> list[dict]:
+    computed: list[dict] = []
+    for record in records:
+        values: dict[str, Any] = {}
+        for entry in record_fields:
+            value = record.get(entry["from"], entry.get("default"))
+            if entry.get("missing") == "falsy_default" and not value:
+                value = entry.get("default")
+            if entry.get("safe_int"):
+                value = _safe_int(value)
+            values[entry["name"]] = value
+        computed.append(values)
+    return computed
+
+
+def _summary_field(record: dict, comp: dict, entry: dict) -> Any:
+    if "computed" in entry:
+        return comp[entry["computed"]]
+    if entry.get("truncate") is not None:
+        value = record.get(entry["from"], "") or ""
+        return value[: entry["truncate"]]
+    if "safe_int" in entry:
+        return _safe_int(record.get(entry["from"]))
+    return record.get(entry["from"], entry.get("default"))
+
+
+def _summary_project(records: list, computed: list[dict],
+                     fields: list[dict]) -> list[dict]:
+    return [
+        {entry["out"]: _summary_field(record, comp, entry) for entry in fields}
+        for record, comp in zip(records, computed)
+    ]
+
+
+def record_group_summary_execute(inputs: dict, params: dict) -> dict:
+    spec = dict(params.get("summary_spec") or {})
+    records = inputs.get(spec.get("records_key", "records")) or []
+    computed = _summary_computed(records, spec.get("record_fields") or [])
+    result: dict[str, Any] = {}
+    counters: dict[str, Counter] = {}
+    for block in spec.get("blocks") or []:
+        kind = block["kind"]
+        out = block.get("out")
+        if kind == "count":
+            source = (inputs.get(block["input_key"]) or []) \
+                if "input_key" in block else records
+            result[out] = len(source)
+        elif kind == "counter":
+            counter: Counter = Counter()
+            for record, comp in zip(records, computed):
+                if "computed" in block:
+                    value = comp[block["computed"]]
+                else:
+                    value = record.get(block["field"], block.get("default"))
+                    if block.get("missing") == "falsy_default" and not value:
+                        value = block.get("default")
+                counter[value] += 1
+            counters[out] = counter
+            if block.get("order") == "sorted":
+                result[out] = dict(sorted(counter.items()))
+            elif block.get("top"):
+                result[out] = dict(counter.most_common(block["top"]))
+            else:
+                result[out] = dict(counter.most_common())
+        elif kind == "rows":
+            chosen = list(zip(records, computed))
+            if block.get("only_if_present"):
+                field = block["only_if_present"]
+                chosen = [(r, c) for r, c in chosen
+                          if r.get(field) is not None]
+            if block.get("limit"):
+                chosen = chosen[: block["limit"]]
+            result[out] = _summary_project(
+                [r for r, _c in chosen], [c for _r, c in chosen],
+                block["fields"])
+        elif kind == "derived_rows":
+            rows = result[block["from"]]
+            where = block["where"]
+            if where.get("op", ">") == ">":
+                result[out] = [r for r in rows
+                               if r[where["field"]] > where["value"]]
+            else:
+                result[out] = [r for r in rows
+                               if r[where["field"]] == where["value"]]
+        elif kind == "count_of":
+            result[out] = len(result[block["from"]])
+        elif kind == "sum":
+            total = 0
+            for record, comp in zip(records, computed):
+                if "computed" in block:
+                    total += comp[block["computed"]]
+                else:
+                    value = record.get(block["field"])
+                    total += _safe_int(value) if block.get("safe_int") else value
+            result[out] = total
+        elif kind == "match_count":
+            needle = block["substring"]
+            field = block["field"]
+            n = 0
+            for record in records:
+                hay = str(record.get(field, "") or "")
+                if block.get("transform") == "upper":
+                    hay = hay.upper()
+                if needle in hay:
+                    n += 1
+            result[out] = n
+        elif kind == "presence_count":
+            field = block["field"]
+            result[out] = sum(1 for r in records if r.get(field) is not None)
+        elif kind == "counter_get":
+            result[out] = counters[block["counter"]].get(
+                block["key"], block.get("default", 0))
+        elif kind == "input_len":
+            result[out] = len(inputs.get(block["input_key"]) or {})
+        elif kind == "input_echo":
+            result[out] = inputs.get(block["input_key"]) or block.get("default")
+        elif kind == "input_field":
+            result[out] = (inputs.get(block["input_key"]) or {}).get(
+                block["field"], block.get("default"))
+        elif kind == "metadata_pick":
+            source = inputs.get(block["input_key"]) or {}
+            result[out] = {f: source.get(f) for f in block["fields"]}
+        elif kind == "dict_top":
+            items = (inputs.get(block["input_key"]) or {}).items()
+            result[out] = sorted(items, key=lambda kv: -kv[1])[: block["n"]]
+        elif kind == "records_top":
+            pool = inputs.get(block["input_key"]) or []
+            ranked = sorted(
+                pool, key=lambda t: -_safe_int(t.get(block["sort_field"])))
+            pool_computed = _summary_computed(ranked, [])
+            result[out] = _summary_project(
+                ranked[: block["n"]], pool_computed[: block["n"]],
+                block["fields"])
+        elif kind == "verdict":
+            context: dict[str, Any] = dict(result)
+            context["n"] = len(records)
+            input_keys = {spec.get("records_key", "records")}
+            for block2 in spec.get("blocks") or []:
+                if block2.get("input_key"):
+                    input_keys.add(block2["input_key"])
+            input_keys.update(inputs.keys())
+            for key in input_keys:
+                value = inputs.get(key)
+                if isinstance(value, (list, dict)):
+                    context[f"n_input_{key}"] = len(value)
+                elif key not in inputs:
+                    context[f"n_input_{key}"] = 0
+            for name, counter in counters.items():
+                context[f"len_{name}"] = len(counter)
+                context[f"dom_{name}"] = \
+                    counter.most_common(1)[0] if counter else "(none)"
+            for block2 in spec.get("blocks") or []:
+                if block2.get("kind") == "dict_top":
+                    section = result[block2["out"]]
+                    context[f"{block2['out']}_first_key"] = \
+                        section[0][0] if section else "(none)"
+                    context[f"{block2['out']}_first_value"] = \
+                        section[0][1] if section else 0
+            result[out] = block["template"].format(**context)
+        else:  # pragma: no cover - spec error
+            raise ValueError(f"RecordGroupSummary: unknown block {kind!r}")
+    return result
+
+
+# ── CorpusComparisonStats ───────────────────────────────────────────────────
+# Spec 087 S3 PR-F (family F10). Per-corpus inscription statistics
+# (count / tokens / distinct signs / mean length) over a spec list of
+# corpora: input corpora (record lists whose per-record sequence field
+# is token-filtered, or plain sequence lists taken as-is), direct
+# corpora whose loader result the delegating node supplies in params
+# (a stats row when available, a spec-carried unavailable row
+# otherwise), and direct-count corpora (a spec-shaped row of counts
+# when available). A scale-up ratio between two rows and the verdict
+# template close the result.
+
+
+def _corpus_stats_row(name: str, inscriptions, count_field: str) -> dict:
+    if not inscriptions:
+        return {"corpus": name, "n_inscriptions": 0, "n_tokens": 0,
+                "n_distinct_signs": 0, "mean_length": 0.0}
+    if isinstance(inscriptions[0], dict):
+        seqs = [i.get(count_field) or [] for i in inscriptions]
+        seqs = [[s for s in seq if s and s != "?"] for seq in seqs]
+    else:
+        seqs = inscriptions
+    flat = [s for seq in seqs for s in seq]
+    return {
+        "corpus": name,
+        "n_inscriptions": len(seqs),
+        "n_tokens": len(flat),
+        "n_distinct_signs": len(set(flat)),
+        "mean_length": round(sum(len(s) for s in seqs) / max(1, len(seqs)), 3),
+    }
+
+
+def corpus_comparison_stats_execute(inputs: dict, params: dict) -> dict:
+    spec = dict(params.get("stats_spec") or {})
+    direct = params.get("direct_results") or {}
+    rows: list[dict] = []
+    for corpus in spec.get("corpora") or []:
+        source = corpus.get("source", "input")
+        if source == "input":
+            rows.append(_corpus_stats_row(
+                corpus["name"], inputs.get(corpus["key"]) or [],
+                corpus.get("count_field", "indus_signs")))
+        elif source == "direct":
+            loaded = direct.get(corpus["result_key"]) or {}
+            if loaded.get("available"):
+                rows.append(_corpus_stats_row(
+                    corpus["name"],
+                    loaded.get(corpus.get("inscriptions_field",
+                                          "inscriptions")) or [],
+                    corpus.get("count_field", "indus_signs")))
+            else:
+                rows.append(dict(corpus["unavailable"]))
+        else:  # direct_counts
+            loaded = direct.get(corpus["result_key"]) or {}
+            if loaded.get("available"):
+                row = {"corpus": corpus["name"]}
+                for out_field, in_field in (corpus.get("fields") or {}).items():
+                    row[out_field] = loaded.get(in_field, 0)
+                rows.append(row)
+            else:
+                rows.append(dict(corpus["unavailable"]))
+    scale_spec = spec["scale"]
+    denominator = rows[scale_spec["denominator_row"]]["n_inscriptions"] or 1
+    numerator = rows[scale_spec["numerator_row"]]["n_inscriptions"]
+    scale = round(numerator / denominator, scale_spec.get("round", 1)) \
+        if denominator else 0.0
+    result: dict[str, Any] = {"rows": rows, scale_spec["out"]: scale}
+    if "verdict_template" in spec:
+        result["verdict"] = spec["verdict_template"].format(
+            denominator_n=denominator, numerator_n=numerator,
+            scale_up=scale)
+    return result
+
+
+# ── PrefixFindspotAssigner ──────────────────────────────────────────────────
+# Spec 087 S3 PR-F (family F11). Assigns records to find-spots by
+# longest-prefix match of their catalogue id against a find-spot map,
+# trying the spec's prefix lengths in order. Two modes:
+#
+#   "reporter" — summarises the map itself (volume sum, sites grouped
+#                by country) and lists the assignments for a wired
+#                record list; a prefix matches when it is a KEY of the
+#                map, even if its info is empty.
+#   "filter"   — classifies a corpus fetched through a spec-named
+#                data-module getter (optionally length-banded) into
+#                contact-zone / core lists by the matched info's flag,
+#                with a separate site-distribution pass; a prefix
+#                matches only when its info is TRUTHY, so an empty
+#                info entry falls through to shorter prefixes.
+#
+# The modes' different match semantics are spec data, not code paths
+# chosen by the caller. Both modes evaluate the contact-prefix input
+# (the reporter counts it in its verdict; the filter discards it,
+# exactly as the Phase-27 node does).
+
+
+def _prefix_assign(cid: str, findspot_map: dict, lengths: list,
+                   match_mode: str):
+    for length in lengths:
+        cand = cid[:length]
+        if match_mode == "key_present":
+            if cand in findspot_map:
+                return cand, findspot_map[cand]
+        else:
+            info = findspot_map.get(cand)
+            if info:
+                return cand, info
+    return None, None
+
+
+def _prefix_reporter(inputs: dict, spec: dict, findspot_map: dict,
+                     lengths: list, contact: set) -> dict:
+    volume_field = spec.get("volume_field", "n_seals_in_volume")
+    n_volume = sum(_safe_int(v.get(volume_field, 0))
+                   for v in findspot_map.values())
+    country_default = spec.get("country_default", "Unknown")
+    sites_by_country: dict[str, list[str]] = {}
+    for prefix, info in findspot_map.items():
+        country = info.get("country", country_default) or country_default
+        sites_by_country.setdefault(country, []).append(
+            f"{info.get('site', prefix)} ({prefix})")
+    records = inputs.get(spec.get("records_key", "records")) or []
+    assignments = []
+    for record in records:
+        cid = str(record.get(spec.get("id_field", "catalogue_id")) or "")
+        prefix, info = _prefix_assign(cid, findspot_map, lengths,
+                                      "key_present")
+        if prefix:
+            assignments.append({
+                "catalogue_id": cid,
+                "prefix": prefix,
+                "site": info.get("site"),
+                "country": info.get("country"),
+                "is_contact_zone": info.get("is_contact_zone", False),
+            })
+    return {
+        spec.get("n_prefixes_out", "n_prefixes"): len(findspot_map),
+        spec.get("n_countries_out", "n_countries"): len(sites_by_country),
+        spec.get("volume_out", "n_seals_in_volume"): n_volume,
+        spec.get("sites_out", "sites_by_country"): sites_by_country,
+        spec.get("assignments_out", "assignments"): assignments,
+        "verdict": spec["verdict_template"].format(
+            n_prefixes=len(findspot_map), n_volume=n_volume,
+            n_countries=len(sites_by_country), n_contact=len(contact),
+            n_records=len(records), n_assigned=len(assignments)),
+    }
+
+
+def _prefix_filter(spec: dict, findspot_map: dict, lengths: list) -> dict:
+    corpus = spec["corpus"]
+    try:
+        module = importlib.import_module(corpus["module"])
+        getter = getattr(module, corpus["function"])
+    except Exception as exc:  # noqa: BLE001
+        result = {"error": corpus["error_template"].format(error=exc)}
+        result.update(corpus.get("error_extras") or {})
+        return result
+    inscs = getter(**(corpus.get("kwargs") or {}))
+    signs_field = spec.get("signs_field", "signs")
+    id_field = spec.get("id_field", "catalogue_id")
+    band = spec.get("length_band") or []
+    if band:
+        inscs = [i for i in inscs if band[0] <= len(i[signs_field]) <= band[1]]
+    site_default = spec.get("site_default", "Unknown")
+    contact_list: list[dict] = []
+    core_list: list[dict] = []
+    for ins in inscs:
+        cid = ins[id_field]
+        _prefix, info = _prefix_assign(cid, findspot_map, lengths,
+                                       "truthy_value")
+        is_contact = info.get("is_contact_zone", False) if info else False
+        site = info.get("site", site_default) if info else site_default
+        rec = {
+            "catalogue_id": cid,
+            "n_signs": len(ins[signs_field]),
+            "signs": ins[signs_field],
+            "site": site,
+            "is_contact_zone": is_contact,
+        }
+        (contact_list if is_contact else core_list).append(rec)
+    distribution: Counter = Counter()
+    for ins in inscs:
+        cid = ins[id_field]
+        _prefix, info = _prefix_assign(cid, findspot_map, lengths,
+                                       "truthy_value")
+        if info:
+            distribution[info.get("site", site_default)] += 1
+        else:
+            distribution[site_default] += 1
+    return {
+        spec.get("n_total_out", "n_total"): len(inscs),
+        spec.get("n_contact_out", "n_contact"): len(contact_list),
+        spec.get("n_core_out", "n_core"): len(core_list),
+        spec.get("distribution_out", "sites_distribution"):
+            dict(distribution.most_common(spec.get("distribution_top", 15))),
+        spec.get("top_out", "contact_top"):
+            contact_list[: spec.get("records_cap", 20)],
+        "verdict": spec["verdict_template"].format(
+            n_total=len(inscs), n_contact=len(contact_list),
+            n_core=len(core_list)),
+    }
+
+
+def prefix_findspot_assigner_execute(inputs: dict, params: dict) -> dict:
+    spec = dict(params.get("assigner_spec") or {})
+    lengths = spec.get("prefix_lengths") or [4, 3, 2, 1]
+    findspot_map = inputs.get(spec.get("map_key", "findspot_map")) or {}
+    # Evaluated in both modes: the reporter counts the set in its
+    # verdict; the filter discards it (the Phase-27 behaviour).
+    contact = set(inputs.get(spec.get("contact_key", "contact_zone_prefixes"))
+                  or [])
+    if spec.get("mode") == "filter":
+        return _prefix_filter(spec, findspot_map, lengths)
+    return _prefix_reporter(inputs, spec, findspot_map, lengths, contact)
+
+
+# ── CorpusCooccurrenceCheck ─────────────────────────────────────────────────
+# Spec 087 S3 PR-F (family F11). Checks candidate names against the
+# term set of a corpus-audit JSON file: every string value of every
+# entry dict, lowercased. A candidate hits when it is a substring of
+# a term or a term is a substring of it, counting only terms longer
+# than the spec's length guard. The corpus file may be absent — the
+# check then runs against an empty term set and reports the absence
+# (the Meluhha node's named pin: its corpus file is not in the repo).
+
+
+def corpus_cooccurrence_check_execute(inputs: dict, params: dict) -> dict:
+    spec = dict(params.get("check_spec") or {})
+    candidates: Any = []
+    for key in spec.get("candidates_keys") or []:
+        value = inputs.get(key)
+        if value:
+            candidates = value
+            break
+    if isinstance(candidates, str):
+        try:
+            candidates = json.loads(candidates)
+        except Exception:  # noqa: BLE001
+            candidates = [candidates]
+
+    corpus_path = Path(spec["corpus_path"])
+    terms: set[str] = set()
+    if corpus_path.exists():
+        try:
+            data = json.loads(corpus_path.read_text(encoding="utf-8"))
+            for entry in data.get(spec.get("entries_key", "entries")) or []:
+                if isinstance(entry, dict):
+                    terms.update(str(v).lower()
+                                 for v in entry.values() if v)
+        except Exception:  # noqa: BLE001
+            pass
+
+    cap = spec.get("cap", 20)
+    guard = spec.get("term_len_gt", 3)
+    hits: list[str] = []
+    misses: list[str] = []
+    for candidate in candidates[:cap]:
+        name = str(candidate).lower().strip()
+        if any(name in term or term in name
+               for term in terms if len(term) > guard):
+            hits.append(str(candidate))
+        else:
+            misses.append(str(candidate))
+
+    if hits:
+        verdict = spec["favourable_template"].format(
+            n_hits=len(hits),
+            hits_top=str(hits[: spec.get("render_cap", 5)]))
+    else:
+        verdict = spec["neutral_verdict"]
+    return {
+        spec.get("checked_out", "candidates_checked"): len(candidates[:cap]),
+        spec.get("hits_out", "hits"): hits,
+        spec.get("misses_out", "misses"): misses[: spec.get("misses_cap", 5)],
+        spec.get("n_hits_out", "n_hits"): len(hits),
+        spec.get("available_out", "corpus_available"): corpus_path.exists(),
+        "verdict": verdict,
+    }
+
+
+# ── PredictionVerdictAggregator ─────────────────────────────────────────────
+# Spec 087 S3 PR-F (family F12). Aggregates sub-experiment outputs into
+# per-prediction verdicts. Input shaping is spec data: verdict-text
+# extraction (a dict's "verdict" field or a bare string), per-bin
+# extraction (a full {per_bin: ...} output or a bare per-bin dict),
+# verdict shaping (dict / string / other), and numerical-weights
+# synthesis from scalar row/count inputs. Rules are spec data:
+#
+#   text_match        — CONFIRMED present and NOT CONFIRMED absent ->
+#                       CONFIRMED; NOT CONFIRMED present -> NOT
+#                       CONFIRMED; else UNKNOWN. With partial_first,
+#                       PARTIALLY CONFIRMED is checked first and there
+#                       is no plain-CONFIRMED outcome.
+#   count_threshold   — a count from a counts input (or a fallback
+#                       field of another input) over a threshold ->
+#                       OBSERVED; else NOT OBSERVED when any evidence
+#                       is present, else UNKNOWN.
+#   gap_rise          — collapsed gap >= max(floor, multiplier x
+#                       original) -> CONFIRMED; a smaller rise ->
+#                       PARTIALLY CONFIRMED; else NOT CONFIRMED;
+#                       missing/non-numeric gaps -> UNKNOWN.
+#   gap_spread        — max-min gap across a per-bin dict against two
+#                       spread bands; the detail carries a shaped
+#                       input's verdict text.
+#   poisson_fraction  — poisson-regime count >= max(min, total //
+#                       divisor) -> CONFIRMED; else PARTIALLY
+#                       CONFIRMED; empty rows / missing input ->
+#                       UNKNOWN with distinct details.
+#
+# Assembly is spec data: "flat" (predictions at top level plus an
+# evidence block and a summary) or "nested" (a predictions dict of
+# verdict/detail/extras plus a summary).
+
+
+def _aggregator_verdict_text(value: Any) -> str:
+    if isinstance(value, dict):
+        return str(value.get("verdict") or "")
+    if isinstance(value, str):
+        return value
+    return ""
+
+
+def _aggregator_per_bin(value: Any) -> dict:
+    if not isinstance(value, dict) or not value:
+        return {}
+    if "per_bin" in value and isinstance(value["per_bin"], dict):
+        return value["per_bin"]
+    sample_vals = [val for val in value.values() if isinstance(val, dict)]
+    if sample_vals and any("spectral_gap" in val for val in sample_vals):
+        return value
+    return {}
+
+
+def _aggregator_shape(inputs: dict, shaping: dict) -> Any:
+    kind = shaping["kind"]
+    value = inputs.get(shaping["input"])
+    if kind == "per_bin":
+        return _aggregator_per_bin(value)
+    if kind == "verdict_shaping":
+        if isinstance(value, dict):
+            return value
+        if isinstance(value, str):
+            return {"verdict": value}
+        return {}
+    if kind == "nw_shaping":
+        if isinstance(value, dict):
+            return value
+        rows = inputs.get(shaping["rows_input"])
+        rows_list = rows if isinstance(rows, list) else []
+        if rows_list:
+            return {"rows": rows_list,
+                    "n_poisson_regime": int(inputs.get(shaping["count_input"])
+                                             or 0)}
+        return {}
+    return value
+
+
+def _aggregator_rule(rule: dict, inputs: dict, shaped: dict,
+                     texts: dict) -> tuple[str, str | None, dict, Any]:
+    """Return (verdict, detail, extras, count_value)."""
+    kind = rule["kind"]
+    if kind == "text_match":
+        text = texts[rule["input"]]
+        if rule.get("partial_first"):
+            if "PARTIALLY CONFIRMED" in text:
+                return "PARTIALLY CONFIRMED", None, {}, None
+            if "NOT CONFIRMED" in text:
+                return "NOT CONFIRMED", None, {}, None
+            return "UNKNOWN", None, {}, None
+        if "CONFIRMED" in text and "NOT CONFIRMED" not in text:
+            return "CONFIRMED", None, {}, None
+        if "NOT CONFIRMED" in text:
+            return "NOT CONFIRMED", None, {}, None
+        return "UNKNOWN", None, {}, None
+    if kind == "count_threshold":
+        counts = inputs.get(rule["count_input"])
+        if not isinstance(counts, dict):
+            fallback = rule["count_fallback"]
+            source = inputs.get(fallback["input"])
+            counts = (source.get(fallback["field"]) or {}) \
+                if isinstance(source, dict) else {}
+        n = int(counts.get(rule["count_key"], 0)) \
+            if isinstance(counts, dict) else 0
+        if n > rule["threshold"]:
+            return rule["observed"], None, {}, n
+        if texts[rule["text_input"]] or counts:
+            return rule["not_observed"], None, {}, n
+        return "UNKNOWN", None, {}, n
+    if kind == "gap_rise":
+        per_bin = shaped[rule["per_bin"]]
+        orig = per_bin.get(rule["original_key"], {}).get("spectral_gap")
+        coll = per_bin.get(rule["collapsed_key"], {}).get("spectral_gap")
+        extras = {"original_gap": orig, "collapsed_gap": coll}
+        details = rule["details"]
+        if isinstance(orig, (int, float)) and isinstance(coll, (int, float)):
+            if coll >= max(rule["abs_floor"],
+                           rule["multiplier"] * max(orig, rule["epsilon"])):
+                return ("CONFIRMED",
+                        details["confirmed"].format(orig_gap=orig,
+                                                    coll_gap=coll),
+                        extras, None)
+            if coll > orig + rule["partial_delta"]:
+                return ("PARTIALLY CONFIRMED",
+                        details["partial"].format(orig_gap=orig,
+                                                  coll_gap=coll),
+                        extras, None)
+            return ("NOT CONFIRMED",
+                    details["not"].format(orig_gap=orig, coll_gap=coll),
+                    extras, None)
+        return "UNKNOWN", details["unknown"], extras, None
+    if kind == "gap_spread":
+        per_bin = shaped[rule["per_bin"]]
+        details = rule["details"]
+        if per_bin:
+            gaps = [d.get("spectral_gap") for d in per_bin.values()
+                    if isinstance(d.get("spectral_gap"), (int, float))]
+            if gaps:
+                spread = max(gaps) - min(gaps)
+                if spread >= rule["confirmed_spread"]:
+                    verdict = "CONFIRMED"
+                elif spread >= rule["partial_spread"]:
+                    verdict = "PARTIALLY CONFIRMED"
+                else:
+                    verdict = "NOT CONFIRMED"
+                site_text = shaped[rule["site_sum"]].get("verdict", "")
+                return (verdict,
+                        details["template"].format(n_gaps=len(gaps),
+                                                    spread=spread,
+                                                    site_verdict=site_text),
+                        {}, None)
+            return "UNKNOWN", details["no_data"], {}, None
+        return "UNKNOWN", details["missing"], {}, None
+    if kind == "poisson_fraction":
+        nw = shaped[rule["nw"]]
+        details = rule["details"]
+        if nw and rule.get("rows_field", "rows") in nw:
+            rows = nw.get(rule.get("rows_field", "rows")) or []
+            n_poisson = nw.get(rule.get("count_field", "n_poisson_regime"), 0)
+            n_total = len(rows)
+            if n_total == 0:
+                return "UNKNOWN", details["no_rows"], {}, None
+            if n_poisson >= max(rule.get("min_count", 1),
+                                n_total // rule.get("divisor", 2)):
+                return ("CONFIRMED",
+                        details["confirmed"].format(n_poisson=n_poisson,
+                                                     n_total=n_total),
+                        {}, None)
+            return ("PARTIALLY CONFIRMED",
+                    details["partial"].format(n_poisson=n_poisson,
+                                               n_total=n_total),
+                    {}, None)
+        return "UNKNOWN", details["missing"], {}, None
+    raise ValueError(f"PredictionVerdictAggregator: unknown rule {kind!r}")
+
+
+def prediction_verdict_aggregator_execute(inputs: dict, params: dict) -> dict:
+    spec = dict(params.get("aggregator_spec") or {})
+    shaped: dict[str, Any] = {}
+    for name, shaping in (spec.get("shaping") or {}).items():
+        shaped[name] = _aggregator_shape(inputs, shaping)
+    texts = {name: _aggregator_verdict_text(inputs.get(name))
+             for name in spec.get("text_inputs") or []}
+    verdicts: dict[str, str] = {}
+    details: dict[str, str | None] = {}
+    extras: dict[str, dict] = {}
+    counts: dict[str, Any] = {}
+    for rule in spec.get("rules") or []:
+        verdict, detail, extra, count = _aggregator_rule(
+            rule, inputs, shaped, texts)
+        verdicts[rule["out"]] = verdict
+        details[rule["out"]] = detail
+        extras[rule["out"]] = extra
+        if count is not None:
+            counts[rule["out"]] = count
+    summary = spec["summary_template"].format(**verdicts)
+    if spec.get("assembly") == "nested":
+        predictions = {}
+        for rule in spec.get("rules") or []:
+            entry = {"verdict": verdicts[rule["out"]],
+                     "detail": details[rule["out"]]}
+            entry.update(extras[rule["out"]])
+            predictions[rule["out"]] = entry
+        return {"summary": summary,
+                spec.get("predictions_out", "predictions"): predictions}
+    result: dict[str, Any] = dict(verdicts)
+    evidence_spec = spec.get("evidence") or {}
+    evidence: dict[str, Any] = {}
+    for out_key, input_name in (evidence_spec.get("texts") or {}).items():
+        evidence[out_key] = texts[input_name]
+    if "count" in evidence_spec:
+        count_spec = evidence_spec["count"]
+        evidence[count_spec["out"]] = counts[count_spec["from_rule"]]
+    result[evidence_spec.get("out", "evidence")] = evidence
+    result["summary"] = summary
+    return result
+
+
+# ── VisionOCRNode ───────────────────────────────────────────────────────────
+# Spec 087 S3 PR-F (family F13). Vision-LLM OCR over PDF pages with a
+# line-grammar parse. By default a no-op: it loads previously saved
+# results from the output path and reports their type counts. With
+# run_ocr set, it renders each requested page to a PNG data URI,
+# calls glossa_lab.ai_utils.call_llm_vision with the spec's prompt,
+# parses the transcript line by line against the spec's grammar
+# (prefix + "|" + marker rules, in order; skip prefixes dropped),
+# records per-page vision failures as error records, and writes the
+# new records back to the output path. Relative paths resolve
+# against the spec's base_dir (the delegating module's repo root).
+# The prompt, grammar, paths, DPI and every text are spec data.
+
+
+def _vision_ocr_counts(records: list, spec: dict) -> dict:
+    return {
+        out: sum(1 for e in records if e.get("type") == type_name)
+        for type_name, out in spec.get("count_types") or []
+    }
+
+
+def vision_ocr_node_execute(inputs: dict, params: dict) -> dict:
+    import base64  # noqa: PLC0415
+
+    spec = dict(params.get("ocr_spec") or {})
+    base_dir = Path(spec["base_dir"])
+    run_ocr = bool(params.get("run_ocr", False))
+    output_path = params.get("output_path", spec["default_output_path"])
+
+    existing_path = Path(output_path)
+    if not existing_path.is_absolute():
+        existing_path = base_dir / output_path
+    existing: list = []
+    if existing_path.exists():
+        try:
+            existing = json.loads(existing_path.read_text(encoding="utf-8"))
+        except Exception:  # noqa: BLE001
+            existing = []
+
+    if not run_ocr:
+        counts = _vision_ocr_counts(existing, spec)
+        return {
+            "n_records": len(existing),
+            **counts,
+            "records": existing,
+            "verdict": spec["noop_template"].format(
+                n=len(existing), output_path=output_path, **counts),
+        }
+
+    errors = spec["errors"]
+    pdf_path = params.get("pdf_path")
+    if not pdf_path:
+        return {"error": errors["no_pdf"],
+                "n_records": len(existing), "records": existing}
+    pdf_path_p = Path(pdf_path)
+    if not pdf_path_p.is_absolute():
+        pdf_path_p = base_dir / pdf_path
+    if not pdf_path_p.exists():
+        return {"error": errors["pdf_not_found"].format(pdf_path=pdf_path_p),
+                "n_records": len(existing), "records": existing}
+    try:
+        import fitz  # noqa: PLC0415
+    except Exception as exc:  # noqa: BLE001
+        return {"error": errors["fitz"].format(error=exc),
+                "n_records": len(existing), "records": existing}
+    try:
+        from glossa_lab.ai_utils import call_llm_vision  # noqa: PLC0415
+    except Exception as exc:  # noqa: BLE001
+        return {"error": errors["vision"].format(error=exc),
+                "n_records": len(existing), "records": existing}
+
+    prompt = params.get("prompt") or spec["default_prompt"]
+    pages_param = params.get("pages")
+    doc = fitz.open(str(pdf_path_p))
+    page_nums = (
+        sorted(int(p) for p in pages_param)
+        if pages_param else list(range(1, doc.page_count + 1))
+    )
+
+    new_records: list[dict] = []
+    for pn in page_nums:
+        if pn < 1 or pn > doc.page_count:
+            continue
+        page = doc.load_page(pn - 1)
+        pix = page.get_pixmap(dpi=spec.get("dpi", 200))
+        png_bytes = pix.tobytes("png")
+        data_uri = ("data:image/png;base64,"
+                    + base64.b64encode(png_bytes).decode("ascii"))
+        try:
+            text = call_llm_vision(prompt, data_uri)
+        except Exception as exc:  # noqa: BLE001
+            new_records.append({"page": pn, "type": "error",
+                                "error": str(exc)})
+            continue
+        for line in (text or "").splitlines():
+            ln = line.strip()
+            if not ln or any(ln.startswith(p)
+                             for p in spec.get("skip_prefixes") or []):
+                continue
+            for rule in spec.get("grammar") or []:
+                if (ln.startswith(rule["prefix"]) and "|" in ln
+                        and rule["marker"] in ln):
+                    ident = ln.split("|")[0].split(":", 1)[1].strip()
+                    value = ln.split(rule["marker"], 1)[1].strip()
+                    new_records.append({
+                        "page": pn, "raw": ln, "type": rule["type"],
+                        rule["id_out"]: ident, rule["value_out"]: value,
+                    })
+                    break
+    existing_path.parent.mkdir(parents=True, exist_ok=True)
+    existing_path.write_text(json.dumps(new_records, indent=2),
+                             encoding="utf-8")
+
+    counts = _vision_ocr_counts(new_records, spec)
+    return {
+        "n_records": len(new_records),
+        **counts,
+        "records": new_records,
+        "verdict": spec["run_template"].format(
+            n_pages=len(page_nums), pdf_name=pdf_path_p.name,
+            n=len(new_records), output_path=output_path, **counts),
+    }
+
+
+# ── CatalogTextParser ───────────────────────────────────────────────────────
+# Spec 087 S3 PR-F (family F13). Best-effort inscription extraction
+# from catalogue text pages: inscription ids by a spec-built regex
+# (site-prefix pattern + CM pattern + hash pattern), sign sequences
+# in transliteration notation, and glyph runs in a spec Unicode
+# block. Per-page dedupe by (page, id or raw); verdict thresholds
+# (partial-confirmation and noise-appendix cuts) are spec data.
+
+
+def catalog_text_parser_execute(inputs: dict, params: dict) -> dict:
+    spec = dict(params.get("parser_spec") or {})
+    pages = inputs.get("pages") or []
+    prefixes = "|".join(spec["site_prefixes"])
+    inscription_id_re = re.compile(
+        r"\b((?:" + prefixes + r")" + spec["prefix_tail"]
+        + r"|" + spec["cm_pattern"] + r"|" + spec["hash_pattern"] + r")",
+        re.IGNORECASE,
+    )
+    sign_seq_re = re.compile(spec["sign_seq_pattern"])
+    lo, hi = spec["unicode_block"]
+    cm_unicode_re = re.compile("[" + chr(lo) + "-" + chr(hi) + "]+")
+
+    inscriptions: list[dict] = []
+    sign_freq: Counter = Counter()
+    cm_unicode_freq: Counter = Counter()
+    n_pages_with_signs = 0
+
+    for entry in pages:
+        text = entry.get("text") or ""
+        if not text:
+            continue
+        page_signs_found = False
+        for m in inscription_id_re.finditer(text):
+            inscriptions.append({"page": entry.get("page_num"),
+                                 "id": m.group(1).strip()})
+        for m in sign_seq_re.finditer(text):
+            seq = m.group(0).split("-")
+            if len(seq) < 2:
+                continue
+            inscriptions.append({
+                "page": entry.get("page_num"), "id": None,
+                "sequence_codes": seq, "raw": m.group(0),
+            })
+            for s in seq:
+                sign_freq[s] += 1
+            page_signs_found = True
+        for m in cm_unicode_re.finditer(text):
+            for ch in m.group(0):
+                cm_unicode_freq[ch] += 1
+            page_signs_found = True
+        if page_signs_found:
+            n_pages_with_signs += 1
+
+    seen_ids: set = set()
+    deduped: list[dict] = []
+    for ins in inscriptions:
+        key = (ins.get("page"), ins.get("id") or ins.get("raw"))
+        if key in seen_ids:
+            continue
+        seen_ids.add(key)
+        deduped.append(ins)
+
+    n_with_seq = sum(1 for i in deduped if i.get("sequence_codes"))
+    cm_unicode_total = sum(cm_unicode_freq.values())
+    thresholds = spec["thresholds"]
+    word = (spec["partial_verdict"]
+            if n_with_seq >= thresholds["partial_seq"]
+            or cm_unicode_total >= thresholds["partial_unicode"]
+            else spec["not_verdict"])
+    verdict = spec["verdict_template"].format(
+        verdict=word, n_with_seq=n_with_seq, cm_total=cm_unicode_total,
+        n_pages=n_pages_with_signs)
+    if (cm_unicode_total < thresholds["noise_unicode"]
+            and n_with_seq < thresholds["noise_seq"]):
+        verdict += spec["noise_suffix"]
+    else:
+        verdict += spec["sufficient_suffix"]
+
+    top_n = spec.get("top_n", 40)
+    return {
+        "n_pages_processed": len(pages),
+        "n_pages_with_signs": n_pages_with_signs,
+        "n_inscriptions_recovered": len(deduped),
+        "n_with_sequence": n_with_seq,
+        "top_sign_codes": sign_freq.most_common(top_n),
+        "n_cm_unicode_glyphs": cm_unicode_total,
+        "top_cm_unicode": cm_unicode_freq.most_common(top_n),
+        "inscriptions_sample": deduped[: spec.get("sample_cap", 80)],
+        "verdict": verdict,
+    }
+
+
+# ── SyllableLMLoader ────────────────────────────────────────────────────────
+# Spec 087 S3 PR-F (family F15). Loads a syllable-level language model
+# from its JSON form ({"vocab": [...], "bigrams": {"a|b": log_prob}})
+# and builds the LanguageModel the decipher pipeline consumes: stored
+# log-probs are exponentiated, unigram counts derive from bigram
+# endpoints, and the ranked list orders the vocab (or, with no vocab,
+# the bigram symbols) by those counts. The builder is shared: the
+# Sanskrit loader in the phase-30 module calls it too, through its
+# historical helper. The file path, language label and error text
+# are spec data; an lm_path param overrides the spec path (relative
+# paths resolve against the spec's base_dir).
+
+
+def syllable_lm_from_json(data: dict):
+    """Build a LanguageModel from a syllable LM JSON dict."""
+    import math as _math  # noqa: PLC0415
+
+    from glossa_lab.pipelines.decipher import LanguageModel  # noqa: PLC0415
+
+    vocab: list = data.get("vocab", [])
+    bigrams_raw: dict = data.get("bigrams", {})
+
+    bigram_freq: dict = {}
+    unigram_counts: dict = {}
+    for ab_str, lp in bigrams_raw.items():
+        parts = ab_str.split("|")
+        if len(parts) == 2:
+            a, b = parts
+            prob = _math.exp(float(lp)) if lp is not None else 1e-8
+            bigram_freq[(a, b)] = prob
+            unigram_counts[a] = unigram_counts.get(a, 0) + 1
+            unigram_counts[b] = unigram_counts.get(b, 0) + 1
+
+    total_uni = max(sum(unigram_counts.values()), 1)
+    all_syms = vocab if vocab else sorted(unigram_counts.keys())
+    unigram_freq = {s: unigram_counts.get(s, 1) / total_uni for s in all_syms}
+    ranked = sorted(all_syms, key=lambda s: unigram_counts.get(s, 0),
+                    reverse=True)
+
+    lm = LanguageModel.__new__(LanguageModel)
+    lm.symbols = all_syms
+    lm.alphabet = sorted(set(all_syms))
+    lm.size = len(lm.alphabet)
+    lm.ranked = ranked
+    lm.unigram_freq = unigram_freq
+    lm.bigram_freq = bigram_freq
+    lm.word_bigram_freq = {}
+    lm.word_initial_freq = {}
+    lm.word_final_freq = {}
+    lm.ocp_rate = 0.0
+    lm.trigram_freq = {}
+    lm.positional = {}
+    lm.word_cooccur = {}
+    return lm
+
+
+def syllable_lm_loader_execute(inputs: dict, params: dict) -> dict:
+    spec = dict(params.get("lm_spec") or {})
+    raw_path = params.get("lm_path") or spec.get("path", "")
+    path = Path(raw_path)
+    if not path.is_absolute():
+        path = Path(spec.get("base_dir", "")) / raw_path
+    if not path.exists():
+        return {"error": spec["error"]}
+    data = json.loads(path.read_text(encoding="utf-8"))
+    lm = syllable_lm_from_json(data)
+    return {
+        "lm": lm,
+        "language": spec.get("language", ""),
+        "n_bigrams": data.get("n_bigrams", len(data.get("bigrams", {}))),
+        "n_syllables": data.get("n_syllables", len(data.get("vocab", []))),
+        "verdict": data.get("verdict", ""),
+    }
+
+
+# ── LexiconCrossValidator ───────────────────────────────────────────────────
+# Spec 087 S3 PR-F (family F15). Cross-validates an anchor set against
+# an external rebus lexicon: readings are normalised to root sets
+# (slash variants, non a-z stripped, minimum length, plus a prefix of
+# spec length), and each lexicon reading for an anchored sign is
+# corroborated (root overlap), conflicting (both sides have roots,
+# no overlap), or skipped; readings for unanchored signs become new
+# candidates (capped per sign and in total). Rebus pairs match when
+# any pictogram/meaning root reaches an anchored sign. A grammar /
+# content split of the anchors by a spec marker set and a
+# complementarity score (1 - corroborated / overlap, banded by spec
+# thresholds) close the summary. Paths, error texts, markers, caps,
+# bands and the comparison frames are spec data.
+
+
+def _lexicon_normalise(reading: str, spec: dict) -> set:
+    min_len = spec.get("min_root_len", 2)
+    prefix_len = spec.get("prefix_len", 3)
+    roots: set = set()
+    for variant in reading.split("/"):
+        v = re.sub(r"[^a-z]", "", variant.strip().lower())
+        if len(v) >= min_len:
+            roots.add(v)
+            if len(v) >= prefix_len:
+                roots.add(v[:prefix_len])
+    return roots
+
+
+def lexicon_cross_validator_execute(inputs: dict, params: dict) -> dict:
+    spec = dict(params.get("validator_spec") or {})
+    norm_spec = spec.get("normalise") or {}
+    caps = spec.get("caps") or {}
+
+    def _resolve(raw: str) -> Path:
+        path = Path(raw)
+        return path if path.is_absolute() \
+            else Path(spec.get("base_dir", "")) / raw
+
+    anchors_path = _resolve(params.get("anchors_path")
+                            or spec.get("anchors_path", ""))
+    if not anchors_path.exists():
+        return {"error": spec["anchors_error"]}
+    fa = json.loads(anchors_path.read_text(encoding="utf-8"))
+    anchors = fa.get("anchors", {})
+
+    lexicon_path = _resolve(params.get("lexicon_path")
+                            or spec.get("lexicon_path", ""))
+    if not lexicon_path.exists():
+        return {"error": spec["lexicon_error"]}
+    lexicon = json.loads(lexicon_path.read_text(encoding="utf-8"))
+
+    k_sign_readings: dict = lexicon.get("sign_readings", {})
+    k_rebus: list = lexicon.get("rebus_pairs", [])
+
+    anchor_roots: dict = {}
+    for sid, info in anchors.items():
+        for root in _lexicon_normalise(info.get("reading", ""), norm_spec):
+            anchor_roots.setdefault(root, []).append(sid)
+
+    corroborated: list = []
+    conflicting: list = []
+    new_candidates: list = []
+    for sign_id, k_readings in k_sign_readings.items():
+        anchor_info = anchors.get(sign_id)
+        if not anchor_info:
+            for kr in k_readings[: caps.get("new_per_sign", 3)]:
+                new_candidates.append({
+                    "sign": sign_id,
+                    "kalyanaraman_reading": kr,
+                    "source": "sign_proximity",
+                    "our_reading": None,
+                    "status": "new_candidate",
+                })
+            continue
+        our_reading = anchor_info.get("reading", "")
+        our_roots = _lexicon_normalise(our_reading, norm_spec)
+        our_conf = anchor_info.get("confidence", "?")
+        for kr in k_readings:
+            kr_roots = _lexicon_normalise(kr, norm_spec)
+            overlap = our_roots & kr_roots
+            if overlap:
+                corroborated.append({
+                    "sign": sign_id,
+                    "our_reading": our_reading,
+                    "our_confidence": our_conf,
+                    "kalyanaraman_reading": kr,
+                    "overlap_roots": sorted(overlap),
+                    "status": "corroborated",
+                })
+            elif kr_roots and our_roots and not overlap:
+                conflicting.append({
+                    "sign": sign_id,
+                    "our_reading": our_reading,
+                    "our_confidence": our_conf,
+                    "kalyanaraman_reading": kr,
+                    "status": "divergent",
+                })
+
+    rebus_matches: list = []
+    rebus_new: list = []
+    for rp in k_rebus:
+        pic = rp.get("pictogram", "")
+        meaning = rp.get("meaning", "")
+        pic_roots = _lexicon_normalise(pic, norm_spec)
+        meaning_roots = _lexicon_normalise(meaning, norm_spec)
+        matched_signs = set()
+        for root in pic_roots | meaning_roots:
+            for sid in anchor_roots.get(root, []):
+                matched_signs.add(sid)
+        entry = {
+            "pictogram": pic,
+            "meaning": meaning,
+            "count": rp.get("count", 0),
+            "sources": rp.get("sources", [])[: caps.get("sources", 3)],
+        }
+        if matched_signs:
+            entry["matched_signs"] = sorted(matched_signs)[
+                : caps.get("matched_signs", 5)]
+            rebus_matches.append({
+                "pictogram": entry["pictogram"],
+                "meaning": entry["meaning"],
+                "count": entry["count"],
+                "matched_signs": entry["matched_signs"],
+                "sources": entry["sources"],
+            })
+        else:
+            rebus_new.append(entry)
+
+    grammar_markers = set(spec.get("grammar_markers") or [])
+    content_words = set()
+    grammar_words = set()
+    for sid, info in anchors.items():
+        roots = _lexicon_normalise(info.get("reading", "").lower(), norm_spec)
+        if roots & grammar_markers:
+            grammar_words.add(sid)
+        else:
+            content_words.add(sid)
+
+    n_total_anchors = len(anchors)
+    n_kalyan_signs = len(k_sign_readings)
+    n_overlap_signs = len(set(k_sign_readings.keys()) & set(anchors.keys()))
+    complementarity_score = round(
+        1.0 - (len(corroborated) / max(n_overlap_signs, 1)), 3
+    ) if n_overlap_signs > 0 else 1.0
+    verdict = spec["bands_fallback"]
+    for threshold, band_verdict in spec.get("bands") or []:
+        if complementarity_score > float(threshold):
+            verdict = band_verdict
+            break
+
+    systems = spec["systems"]
+    summary = {
+        "verdict": verdict,
+        "interpretation": spec["interpretation_template"].format(
+            n_kalyan=n_kalyan_signs, n_overlap=n_overlap_signs,
+            n_anchors=n_total_anchors, n_corr=len(corroborated),
+            n_conf=len(conflicting), n_new=len(new_candidates),
+            score=complementarity_score),
+        "complementarity_score": complementarity_score,
+        "system_comparison": {
+            "kalyanaraman": systems["external"],
+            "glossa_lab": {
+                **systems["own"],
+                "grammar_signs": len(grammar_words),
+                "content_signs": len(content_words),
+            },
+        },
+    }
+    return {
+        "summary": summary,
+        "corroborated": corroborated,
+        "conflicting": conflicting,
+        "new_candidates": new_candidates[: caps.get("new_out", 50)],
+        "rebus_matches": rebus_matches,
+        "rebus_new": rebus_new[: caps.get("rebus_new_out", 20)],
+        "coverage": {
+            "our_anchors": n_total_anchors,
+            "kalyanaraman_signs": n_kalyan_signs,
+            "overlap_signs": n_overlap_signs,
+            "corroborated_count": len(corroborated),
+            "conflicting_count": len(conflicting),
+            "new_candidate_count": len(new_candidates),
+            "rebus_matched": len(rebus_matches),
+            "rebus_new": len(rebus_new),
+        },
+        "lexicon_stats": lexicon.get("_stats", {}),
+    }

@@ -1766,3 +1766,356 @@ within this PR, and it holds 27/27.)
   well-formed input the outputs are byte-identical, which the
   36 fixtures prove over the branches the conversion could
   move.
+
+## PR-F — families F2, F10, F11, F12, F13 and F15 (the final conversion batch), plus the retire-candidate flags
+
+**Branch:** `feat/087-s3-conv-f`, built on main `01fb4c57`
+(PR #498 merged). **Commits:** fixtures captured per family
+before that family's implementation, in family order —
+`bfeeaff` + `d0133d9` (F2), `c488e01` + `e9a757a` (F10),
+`4fd4d31` + `c5e3b4b` (F11), `92031e2` + `dc22393` (F12),
+`f516015` + `b691e74` (F13), `e92b64b` + `900d80e` (F15) —
+then `efc853f` (the legacy flags and the census re-pin) and
+`89472a0` (imports left unused by the delegations, removed;
+ruff clean). **Seat:** build worker; the parent gates and
+merges. The contract stated at the head of this record
+governs unchanged. This batch closes Stage S3's conversion
+programme: every CONVERT disposition in the triage is now
+discharged, and the four RETIRE-CANDIDATE dispositions are
+executed as legacy flags with no implementation change.
+
+### The generic machinery
+
+Ten engines are appended to `backend/glossa_lab/
+generic_primitives.py` and one to `backend/glossa_lab/
+generic_loaders.py`, in the established stdlib-only pattern.
+Each carries its family's fixed content (thresholds, caps,
+templates, grammars, band tables) as spec data:
+
+| primitive | category | mechanism |
+|---|---|---|
+| JsonRecordDirLoader (generic_loaders.py) | Sources | a directory of JSON record files in two modes: search (filter one directory's records by query fields over a second directory's id set) and records (load a record set with counts by a field), with record-shaping fill templates and a schema-defaults mechanism as spec data. |
+| PositionalClaimTester | Analysis | positional claims about signs tested against corpus statistics: claims classified by type keywords, the prediction parsed for the claimed position, the observed rate compared against the corpus average under a spec support multiplier; claims the corpus cannot test produce no verdict row, as before. |
+| RecordGroupSummary | Analysis | record-group summaries driven by ordered section specs (counts, counters, rows, derived rows, match and presence counts, verdict blocks) with per-record computed fields; one engine covers reporter, auditor and upgrade shapes whose differences are entirely spec data. |
+| CorpusComparisonStats | Analysis | per-corpus sign statistics across compared corpora (loaded, direct, and direct-counts legs), with the "?" filter, the scale-up rounding and the corpus specs as data. |
+| PrefixFindspotAssigner | Analysis | findspot assignment by catalogue-id prefix in two modes — reporter (key-presence match) and filter (truthy-info match) — with the prefix lengths [4, 3, 2, 1] as data. |
+| CorpusCooccurrenceCheck | Analysis | co-occurrence of place-name terms across two corpora: the term set is every string value of the reference entries lowercased, matched bidirectionally as substrings with a length guard, hits and misses capped as data. |
+| PredictionVerdictAggregator | Analysis | per-prediction verdicts assembled from shaping specs (per-bin extraction, verdict shaping, numerical-weights synthesis) and rule kinds as data (text_match, count_threshold, gap_rise, gap_spread, poisson_fraction), in flat and nested assemblies. |
+| VisionOCRNode | Sources | vision OCR over a PDF catalogue under a spec line grammar (SEAL:/SIGNS:, ICONOGRAPHY:/MOTIF:, SIGN_REF:/MEANING:), with a pinned prior-results no-OCR branch, per-page error records, and results written back as data; paths, prompt, dpi and grammar are spec data. |
+| CatalogTextParser | Analysis | inscription records parsed from catalogue text: the site-prefix set, tail patterns, the sign-sequence pattern, the Unicode block and the four verdict thresholds are spec data. |
+| SyllableLMLoader | Sources | a syllable-level LM built from its JSON form: stored bigram log-probs exponentiated, unigram counts derived from bigram endpoints, the ranked list ordered by those counts; the phase module's shared builder delegates here, so the Sanskrit loader's code path is the same engine. |
+| LexiconCrossValidator | Analysis | an anchor set cross-validated against an external rebus lexicon: readings normalised to root sets, each lexicon reading corroborated, conflicting or a new candidate under spec caps; rebus pairs matched through the root index; a grammar/content split and a banded complementarity score close the summary; paths, markers, caps, bands and frames are spec data. |
+
+### The eighteen delegations
+
+Each domain fn keeps its id, def, and docstring, and now
+builds its spec and delegates:
+
+| domain node (module) | primitive |
+|---|---|
+| IndusLiteratureLoader (indus_evidence) | JsonRecordDirLoader, search mode; the evidence-base paths resolve from the module constants at call time |
+| IndusClaimsLoader (indus_evidence) | JsonRecordDirLoader, records mode |
+| IndusClaimTester (indus_evidence) | PositionalClaimTester; type keywords position/sign_value/sign_function, support multiplier 1.2 |
+| IndusSealsAtMesopotamiaSummary (phase22) | RecordGroupSummary |
+| MeluhhaCorpusReporter (phase22) | RecordGroupSummary |
+| SealSignAuditor (phase23) | RecordGroupSummary |
+| LaursenTable1Auditor (phase24) | RecordGroupSummary; the "INDUS" substring rule, the 121-row expectation and the [:80] cap as spec data |
+| SealSignUpgradeAuditor (phase24) | RecordGroupSummary; the xref field laursen_2010_seal_no and the [:120] rationale truncation as spec data |
+| Phase29CorpusStats (phase29) | CorpusComparisonStats; the wrapper still calls the module-level F1 loaders and passes their outputs as the direct leg, which is the fixture stub point — both loaders return available: false in this tree, verified by direct call |
+| CISIFindspotReporter (phase27) | PrefixFindspotAssigner, reporter mode |
+| ShuIlishuContactZoneFilter (phase26) | PrefixFindspotAssigner, filter mode; its contact_zone_prefixes input is evaluated and discarded by the engine, exactly as the original — classification comes from the findspot map |
+| MeluhhaCooccurrenceCheck (phase22) | CorpusCooccurrenceCheck, under the named pin below |
+| Phase20Verdict (phase20) | PredictionVerdictAggregator; its four prediction specs as data, including P3's partial_first text rule (P3 has no plain-CONFIRMED outcome) |
+| Phase21Verdict (phase21) | PredictionVerdictAggregator; its numeric rule set as data, nested assembly |
+| CISIVol3OCRNode (phase28) | VisionOCRNode; the module's default OCR prompt passed as spec data |
+| CMCatalogParser (phase20) | CatalogTextParser; site prefixes, Unicode block U+12F90–U+12FFF, thresholds 30/100/50/20 as data |
+| DravidianSyllableLM (phase30) | SyllableLMLoader; an lm_path param may override the bundled file |
+| KalyanCrossValidation (kalyanaraman) | LexiconCrossValidator; paths resolve from the module constants at call time; the module's private _normalise helper is removed with the delegation (no external users, grep-verified) |
+
+**The Meluhha named pin (F11):** the node's corpus file
+`backend/reports/meluhha_corpus_audit.json` is ABSENT from
+the repo, and the node runs against an empty term set today.
+The conversion fixture creates the file for the presence
+cases (staged from the fixtures tree and removed in a
+finally block, absence asserted before and after) and pins
+the absence behaviour; the committed fixture corpus lives
+under `tests/fixtures/spec087_s3_conv_f/`, never in
+`backend/reports/`.
+
+**The F13 OCR pin:** no fixture makes a live OCR or
+provider call, and no restricted scan content appears in
+fixtures. The no-OCR branch replays against pinned
+prior-results files; the OCR branch replays as the parse of
+pinned synthetic transcripts, with the vision entry point
+stubbed and the prompts the engine sends merged into the
+compared result. Two capture-time assertions were corrected
+to the code's real behaviour: ID-only pages do not set
+page_signs_found (only sequence/Unicode matches do), and
+duplicate inscription ids on different pages survive the
+per-(page, id) dedupe.
+
+### The four retire-candidate flags
+
+Executed per the owner's 2026-11-03 ruling (legacy-flagged,
+never deleted), with NO implementation change — the fns are
+byte-identical to their pre-PR state; only the flag data
+moves:
+
+| id | module |
+|---|---|
+| ShuIlishuCandidateFilter | experiment_graph_phase26 |
+| Phase22Verdict | experiment_graph_phase22 |
+| Phase23Verdict | experiment_graph_phase23 |
+| Phase24Verdict | experiment_graph_phase24 |
+
+They are recorded in the migration data file under their
+own `s3_additions` key, `"PR-F retire-candidates"`, distinct
+from the converts' `"PR-F (F2+F10+F11+F12+F13+F15)"`.
+
+### Counts — the re-pin (C087-17 act for this PR)
+
+Counted from the live registry after the conversions and
+flags landed (never assumed):
+
+| measure | before | after | delta |
+|---|---|---|---|
+| registered | 545 | 556 | +11 primitives |
+| legacy-flagged | 405 | 425 | +20 newly flagged |
+| default palette | 140 | 131 | +11 in, −20 out |
+| core-registered | 70 | 81 | +11 |
+| categories | 65 | 65 | unchanged |
+
+The flag delta is +20, not +22: the eighteen converts and
+four retire-candidates take the flag in this PR, but the two
+F15 wrappers (DravidianSyllableLM, KalyanCrossValidation)
+were already legacy-flagged in S2 — they are census WRAPPERs
+(no input ports, empty params schema) — so their conversion
+adds no new flag. The palette test's identity is amended
+accordingly, with the overlap named as a set of two
+(WRAPPER_CONVERTED_OVERLAP) rather than absorbed silently.
+All eleven new primitives sit in existing categories
+(Sources: JsonRecordDirLoader, VisionOCRNode,
+SyllableLMLoader; Analysis: the other eight), so the
+category count does not move. Cumulative S3 dispositions:
+46 prior converts + 16 family converts here = 62 conversions,
++ F14's 2 relabels = the triage's 64 CONVERT dispositions
+discharged; 4 RETIRE-CANDIDATEs flagged; the 2 F15 live
+wrappers (outside the 68) converted. Nothing stopped: every
+node in scope reached byte-identical equivalence.
+
+### Equivalence and comparison results
+
+**Fixture equivalence (contract item 3):** 74 cases
+captured from the pre-change implementations, per family,
+before any implementation changed (F2 15, F10 13, F11 12,
+F12 10, F13 13, F15 11), and replayed post-conversion —
+**74/74 byte-identical** in
+`tests/test_spec087_s3_conversions_f.py`, alongside the
+converted-ids flag/provenance test (which also pins the
+four retire-flagged ids' provenance), the
+primitives-in-palette test, and the LM-mode digest
+comparison for the syllable LM (the LanguageModel object
+itself is compared through a canonical digest of its
+symbols, alphabet, size, ranked list and frequency tables).
+Real-file cases pin measured behaviour: the Dravidian LM
+file yields 2,293 bigrams and 655 syllables; the Kalyan
+cross-validation over the real files yields 287 anchors,
+144 Kalyanaraman signs, 105 overlap, 0 corroborated, 384
+conflicting, 113 new candidates, complementarity 1.0,
+verdict COMPLEMENTARY. Synthetic cases pin every verdict
+band of both F15 engines (including HIGH_AGREEMENT at score
+0.0 and the no-overlap COMPLEMENTARY), the per-sign and
+output caps, and both missing-file error texts. The
+Shu-ilishu filter cases run against the real CISI corpus
+(170 records of length ≥ 3, 138 in the 3–7 band).
+
+**27-graph comparison (contract item 4):** the S2 runner
+was executed on a fresh worktree of `01fb4c57` (pre) and on
+this branch (post), under the same two normalizations as
+PR-A…PR-E (LanguageModel repr addresses; each tree's own
+root path). Database state, stated exactly as verified
+first-hand (read-only): the pre side was a fresh worktree,
+which has no `backend/data/` directory at all — its CGSA
+reads met absent tables; the post side read this clone's
+`backend/data/glossa.db`, whose CGSA tables are empty
+(canonical_signs 0 rows, sign_cluster_assignments 0 rows,
+verified by a read-only sqlite query before the run) —
+both sides exercised the same empty state. **27/27 graphs
+byte-identical pre vs post** under the normalizations,
+including the two graphs that wire the F15 wrappers
+(`indus_sa_dravidian_syllable`, `indus_kalyanaraman_crossval`)
+and the graph wiring MeluhhaCooccurrenceCheck
+(`indus_validation_a1_a3_holdout`):
+
+| graph | normalized sha256 (pre == post) |
+|---|---|
+| fuls_independence_suite | 991cfc445a85250a29cb4f6e58cb21e5ce000f8f856d67e83ffc9d4c667761bb |
+| fuls_nw_semitic_benchmark | ba8955b51e54d766e73beb0045bf56ad3412df0f6668af7ef3ffd58a80899bcd |
+| fuls_validation_suite | 13eeae07336b9add444308c3a4c2e80650223cdc25ff3e49112dff190a3b89ee |
+| generic_sa_multi_comparison | 5cc9d5c05d6bc4d601ec03620efc069eeecf9be48ed3e2b31f98fb38734a37be |
+| indus_anchor_sweep | 6aa045a2d574c0cc187088edeb58d05b930fb3565c7680257046665b2b839f37 |
+| indus_cgsa_cluster_analysis | 23b729b0b0beca767397b75331418fc71f7897543432cc9bc094c4dc7eaa9d9e |
+| indus_cisi_anchored_10 | cbd24cb40f154f745d99ff23192acb395147d37fa736288400af37827fb498fe |
+| indus_cisi_dravidian_vs_pali | bfe729e9c1d3580e72ffd4f3c9f430a315bc65101abcd0804da2ecba272134d8 |
+| indus_cisi_dravidian_vs_sanskrit | 754f4132ac83ed0c698a8470355bb0eceeea17248aa9f00c220a5e5c806791de |
+| indus_cisi_sa_dravidian_vs_nw_semitic | 0ef2599aec2d78dc2708c6afc72ab607561e27c3bbb86a98aacde0574d01ff03 |
+| indus_cisi_sa_dravidian_vs_sanskrit | 07b31b9db57b4f79358afe4224f852fb9c0ed8c8d42d50a613442a7c397dd28f |
+| indus_cisi_structural | 14874f0aca115af7bc0cca8318e63cbefae564f4df54dfef576dc03604db6578 |
+| indus_contact_zone_v2 | 39506ed67256454feab5b6901c191a13977d8697dd50e3bf0926dadeaddc24ad |
+| indus_dravidian_vs_sanskrit | 0035134bb5d80c043847e74910db8a2e3bbdbbc1782f583d8c45b96313e9274c |
+| indus_kalyanaraman_crossval | b91979cb7db634ff88388eb94187c2903bcead561a3b9a01f58deca79378b941 |
+| indus_sa_dravidian | d1c55048bf705a69a2521ec836e26a5e3fd5f255becfee9e9804ece0d2adb553 |
+| indus_sa_dravidian_syllable | 59d53741f123d1dac96a7e26f96573ab01fbbb7ccdc008f75e327da56e4f5bfa |
+| indus_sa_dravidian_vs_nw_semitic | 9481fac660430ef9d384aa74ee9a61a7984126a001b5d022678d8cf20bfcac0a |
+| indus_sa_dravidian_vs_sanskrit | 14281066e98477493620159207b241ede475afbd29165dfb7a4f5b4bfcd77a56 |
+| indus_sa_sanskrit_falsification | 6f730bda1effd69cdbd1bf88cd8987e2c4e416fb8f2875fcab1292ba72069cb7 |
+| indus_sign_function_dravidian | cfa805f2eb873f87e42d79ded34ec867acc83da56b54364b045f574d7df3a034 |
+| indus_structural_atlas | 86f0d2865f14a2686b20802771bb4284098b83dd30a5b04e570b34f88f6f057a |
+| indus_validation_a1_a3_holdout | 912f58147de96ba82c33e2dc8214bd9b3b0d1c096b3a57b9afe835998fdcb6c1 |
+| indus_validation_neg_controls | 729d59ebbbca788e670b49e85843a4a3484a3efeb9b66e22d7231af7899b90f7 |
+| kl_comparison | cf9a8e10b3043bc8942c29483118739688a02439fe20d5237f9d98e1647cca9c |
+| ugaritic_sa_decipher | af1b203f637ef67e4b3705a61697471fffdfd591d28934aa0c32d438cf41155b |
+| ventris_validation | 05580212a0a65a5ae9896ee610564fb4a7937c01b1a200f10724705c29fc8921 |
+
+The runs regenerate `reports/*.json` in-tree as a side
+effect; those files were restored and are not in this PR's
+diff. No cross-batch hash equality is claimed (the runs'
+environment states differ across batches); the contract's
+proof is pre vs post within this PR, and it holds 27/27.
+
+### Test results
+
+- Targeted suites (this branch): all eight Spec 087 test
+  files: **298 passed, 1 skipped**. The F2 loaders' live
+  consumers named in the brief —
+  `test_evidence_atomic_nodes.py`,
+  `test_graph_experiments.py` — plus
+  `test_indus_evidence_api.py`: **96 passed**.
+- Full backend suite (this branch, with the single named
+  deselection
+  `test_phase392_q2_gate.py::test_pipeline_deterministic_under_seed`):
+  completed in a single run (521.91s) — **2,519 passed, 84
+  skipped, 1 failed, 1 deselected**. The one failure is the
+  known phase133 local-only baseline
+  (`test_phase133_stage0_inventory.py::test_builder_recomputation_skips_without_inputs`,
+  missing local download; it does not fail CI). No teardown
+  error appeared in this run (the tray flake family did
+  not fire).
+- `python -m ruff check backend/` — clean.
+- No frontend surface changed, so no builder-area frontend
+  tests were required and no dist rebuild was needed.
+
+### Claim assessments (this PR's legs)
+
+- **C087-7 — supported, and the S3 conversion programme is
+  complete.** All 64 CONVERT dispositions are discharged
+  (62 conversions + the 2 F14 relabels), the 4
+  RETIRE-CANDIDATE dispositions are executed as flags, and
+  the 2 F15 live wrappers are converted — every conversion
+  with byte-identical fixture equivalence, none stopped.
+- **C087-13 — PR-F leg supported.** The comparison runs
+  over all 27 live graphs hold byte-identical under the
+  named normalizations (above), including the two graphs
+  wiring the converted live wrappers.
+- **C087-17 — PR-F act recorded.** The census pin, the
+  migration data file, and the S1/S2 test pins were
+  re-pinned in this same PR, from the live registry, with
+  the deltas tabled above.
+- **C087-15 — PR-F manual leg.** `docs/user-manual.md`'s
+  legacy section gains the short factual note (the eleven
+  new generic blocks in the palette; the eighteen converted
+  nodes now legacy; the four retire-candidates flagged). The
+  generated node reference is S4's scope.
+- **T303 is ticked in this PR.** Every S3 conversion and
+  retire-flag disposition has landed, which is the tick
+  condition; the progress note under T303 records the
+  completion arithmetic.
+
+### Departures from the brief's letter, stated plainly
+
+- **The brief's expected arithmetic was off in two places;
+  the re-pin is counted from the live registry, per the
+  contract.** Registered grows by +11 primitives, not +10:
+  F15's two wrappers take two distinct primitives
+  (SyllableLMLoader, LexiconCrossValidator), not one shared
+  form. Legacy grows by +20, not +22: the two F15 wrappers
+  were already legacy-flagged as census WRAPPERs in S2 (see
+  the counts section). The counted values are 556 / 425 /
+  131, core 81, categories 65.
+- **The triage's IndusClaimsLoader schema defaults do not
+  exist in the code.** The brief (after the triage) names
+  schema defaults — status "needs_extraction", confidence
+  "UNCERTAIN" — as data params; the pre-change loader
+  passes claims through unchanged (its counts read
+  `.get(..., "unknown")`). The delegation therefore passes
+  `schema_defaults: {}`: the JsonRecordDirLoader mechanism
+  exists and is exercised by the fill templates, inert for
+  this node, and the fixtures pin the pass-through
+  behaviour. Two further first-hand corrections to the
+  triage's F2 account: the literature loader's claim_count
+  reads the claims file's `total_claims` field, and the
+  claims restriction is by file stem against the upstream
+  papers' document_ids.
+- **F10's fixture capture initially destroyed input dict
+  order.** The first capture canonicalized inputs with
+  sorted keys; two F10 nodes stable-sort on keys whose ties
+  follow insertion order (Meluhha period/provenience), so
+  the pinned inputs no longer represented the code's real
+  inputs. The capture was fixed to store inputs
+  order-faithfully (expected outputs remain canonical) and
+  F10 was re-captured against the pre-change worktree
+  before its implementation commit; the other families'
+  captures were audited for the same defect (their inputs
+  carry no order-sensitive ties; F2/F11 corpora are read
+  from disk in both capture and replay).
+- **The F2 implementation was first committed with
+  in-tree regenerations included** (test runs rewrite
+  `glossa-indus/claims/extracted_claims/`). The commit was
+  soft-reset before pushing, the tree restored, and the
+  implementation recommitted with explicit paths only; no
+  regeneration is in this PR's diff. Later families
+  committed with explicit paths throughout.
+- **pymupdf was missing from the local venv** although
+  `backend/pyproject.toml` declares it (`pymupdf>=1.24,<2`);
+  it was installed into the venv (1.28.2) for the F13
+  fixtures. CI installs it from pyproject, so this is a
+  local-environment note, not a code change.
+- **Repair, post-delivery (2026-11-03): the departure above
+  is wrong about CI, and PR #499's first CI run proved it.**
+  CI run `41753678570` attempt 1 failed only on the Backend
+  tests job (1 failed, 2,337 passed, 83 skipped before
+  pytest -x stopped the run):
+  `test_spec087_s3_conversions_f.py::test_converted_node_replays_prechange_output[f13_run_basic]`
+  raised `ModuleNotFoundError: No module named 'fitz'` at
+  the test's own run-time PDF generation (`import fitz` in
+  `_run_case`). The mechanism: `pymupdf>=1.24,<2` is
+  declared under pyproject's `ocr` optional extra, and CI
+  installs only `.[dev]`, so CI has no PyMuPDF. Generating
+  the PDF in the test was only half the dependence: the
+  node's own lazy `import fitz` returns its error dict
+  without the library, so no test-side PDF could ever have
+  replayed the pinned success outputs in CI. Repair (this
+  PR, repair commit): the two-page PDF is now committed as
+  base64 in each ocr_run case's fixture setup (`pdf_b64`,
+  with its page count as `pdf_pages`), produced with the
+  exact pre-repair run-time recipe; the harness materializes
+  it in tmp_path and, only where `import fitz` fails,
+  installs a minimal stand-in `fitz` module supplying
+  exactly the surface the node uses (open -> page_count /
+  load_page -> get_pixmap -> tobytes). The pixmap bytes
+  feed only the data URI handed to the already-stubbed
+  vision call, which ignores it, so the pinned expected
+  outputs are unchanged and are checked byte-identically in
+  both environments; where fitz IS present, the harness
+  asserts the committed PDF's real page count equals
+  `pdf_pages`. No case was skipped or weakened. The audit
+  of the PR-F test file found no other fitz dependence (the
+  f13_cm_* cases' parser path contains no fitz) and no
+  other uncommitted-file dependency. Proofs: the
+  conversions_f suite is green with fitz verifiably blocked
+  (a sitecustomize setting `sys.modules["fitz"] = None`;
+  the environment check raises ModuleNotFoundError; 76
+  passed, with the five f13_run* cases also run named: 5
+  passed) and green normally (76 passed); the full Spec 087
+  targeted set is green (298 passed); ruff is clean on
+  `backend/`.

@@ -23,8 +23,6 @@ Plus a corpus loader and verdict aggregator.
 
 from __future__ import annotations
 
-import base64
-import json
 from pathlib import Path
 from typing import Any
 
@@ -111,149 +109,49 @@ def _cisi_vol3_ocr(inputs: dict, params: dict) -> dict:
       run_ocr: if False (default), only load existing results from
         `reports/cisi_vol3_extracted_signs.json`. Set True to re-run.
       output_path: where to write the JSON results.
+
+    Spec 087 S3 PR-F: delegates to the generic VisionOCRNode; the
+    prompt, the SEAL:/ICONOGRAPHY:/SIGN_REF: line grammar, the paths
+    and the verdict/error texts are spec data.
     """
-    run_ocr = bool(params.get("run_ocr", False))
-    output_path = params.get(
-        "output_path",
-        "reports/cisi_vol3_extracted_signs.json",
-    )
+    from glossa_lab.generic_primitives import vision_ocr_node_execute
 
-    # Default no-op: just load the previously-saved results.
-    existing_path = Path(output_path)
-    if not existing_path.is_absolute():
-        # Resolve relative to repo root (data module sits 3 levels deep)
-        repo_root = Path(__file__).resolve().parents[2]
-        existing_path = repo_root / output_path
-
-    existing: list[dict] = []
-    if existing_path.exists():
-        try:
-            existing = json.loads(existing_path.read_text(encoding="utf-8"))
-        except Exception:  # noqa: BLE001
-            existing = []
-
-    if not run_ocr:
-        n_seal = sum(1 for e in existing if e.get("type") == "seal")
-        n_icon = sum(1 for e in existing if e.get("type") == "iconography")
-        n_sign = sum(1 for e in existing if e.get("type") == "sign_ref")
-        verdict = (
-            f"OCR no-op (run_ocr=False): loaded {len(existing)} existing "
-            f"records from {output_path} ({n_seal} seal, {n_icon} "
-            f"iconography, {n_sign} sign_ref). To re-run vision OCR, set "
-            f"run_ocr=true and provide pdf_path."
-        )
-        return {
-            "n_records": len(existing),
-            "n_seal": n_seal,
-            "n_iconography": n_icon,
-            "n_sign_ref": n_sign,
-            "records": existing,
-            "verdict": verdict,
-        }
-
-    # run_ocr=True: actually call the vision LLM.
-    pdf_path = params.get("pdf_path")
-    if not pdf_path:
-        return {
-            "error": "run_ocr=True but pdf_path not provided",
-            "n_records": len(existing),
-            "records": existing,
-        }
-    pdf_path_p = Path(pdf_path)
-    if not pdf_path_p.is_absolute():
-        repo_root = Path(__file__).resolve().parents[2]
-        pdf_path_p = repo_root / pdf_path
-    if not pdf_path_p.exists():
-        return {
-            "error": f"pdf not found: {pdf_path_p}",
-            "n_records": len(existing),
-            "records": existing,
-        }
-
-    try:
-        import fitz  # noqa: PLC0415
-    except Exception as exc:  # noqa: BLE001
-        return {
-            "error": f"PyMuPDF (fitz) not available: {exc}",
-            "n_records": len(existing),
-            "records": existing,
-        }
-    try:
-        from glossa_lab.ai_utils import call_llm_vision  # noqa: PLC0415
-    except Exception as exc:  # noqa: BLE001
-        return {
-            "error": f"call_llm_vision not available: {exc}",
-            "n_records": len(existing),
-            "records": existing,
-        }
-
-    prompt = params.get("prompt") or _OCR_PROMPT_DEFAULT
-    pages_param = params.get("pages")
-    doc = fitz.open(str(pdf_path_p))
-    page_nums = (
-        sorted(int(p) for p in pages_param)
-        if pages_param else list(range(1, doc.page_count + 1))
-    )
-
-    new_records: list[dict] = []
-    for pn in page_nums:
-        if pn < 1 or pn > doc.page_count:
-            continue
-        page = doc.load_page(pn - 1)
-        pix = page.get_pixmap(dpi=200)
-        png_bytes = pix.tobytes("png")
-        data_uri = "data:image/png;base64," + base64.b64encode(png_bytes).decode("ascii")
-        try:
-            text = call_llm_vision(prompt, data_uri)
-        except Exception as exc:  # noqa: BLE001
-            new_records.append({
-                "page": pn, "type": "error", "error": str(exc),
-            })
-            continue
-        for line in (text or "").splitlines():
-            ln = line.strip()
-            if not ln or ln.startswith("NO_SEALS"):
-                continue
-            if ln.startswith("SEAL:") and "|" in ln and "SIGNS:" in ln:
-                seal_id = ln.split("|")[0].split(":", 1)[1].strip()
-                signs = ln.split("SIGNS:", 1)[1].strip()
-                new_records.append({
-                    "page": pn, "raw": ln, "type": "seal",
-                    "seal_id": seal_id, "signs": signs,
-                })
-            elif ln.startswith("ICONOGRAPHY:") and "|" in ln and "MOTIF:" in ln:
-                seal_id = ln.split("|")[0].split(":", 1)[1].strip()
-                motif = ln.split("MOTIF:", 1)[1].strip()
-                new_records.append({
-                    "page": pn, "raw": ln, "type": "iconography",
-                    "seal_id": seal_id, "motif": motif,
-                })
-            elif ln.startswith("SIGN_REF:") and "|" in ln and "MEANING:" in ln:
-                sign_id = ln.split("|")[0].split(":", 1)[1].strip()
-                meaning = ln.split("MEANING:", 1)[1].strip()
-                new_records.append({
-                    "page": pn, "raw": ln, "type": "sign_ref",
-                    "sign_id": sign_id, "meaning": meaning,
-                })
-    existing_path.parent.mkdir(parents=True, exist_ok=True)
-    existing_path.write_text(json.dumps(new_records, indent=2), encoding="utf-8")
-
-    n_seal = sum(1 for e in new_records if e.get("type") == "seal")
-    n_icon = sum(1 for e in new_records if e.get("type") == "iconography")
-    n_sign = sum(1 for e in new_records if e.get("type") == "sign_ref")
-    verdict = (
-        f"OCR run on {len(page_nums)} pages of {pdf_path_p.name}: "
-        f"{len(new_records)} records ({n_seal} seal, {n_icon} "
-        f"iconography, {n_sign} sign_ref). Saved to {output_path}."
-    )
-    return {
-        "n_records": len(new_records),
-        "n_seal": n_seal,
-        "n_iconography": n_icon,
-        "n_sign_ref": n_sign,
-        "records": new_records,
-        "verdict": verdict,
+    merged = dict(params)
+    merged["ocr_spec"] = {
+        "base_dir": str(Path(__file__).resolve().parents[2]),
+        "default_output_path": "reports/cisi_vol3_extracted_signs.json",
+        "default_prompt": _OCR_PROMPT_DEFAULT,
+        "count_types": [["seal", "n_seal"], ["iconography", "n_iconography"],
+                        ["sign_ref", "n_sign_ref"]],
+        "grammar": [
+            {"prefix": "SEAL:", "marker": "SIGNS:", "type": "seal",
+             "id_out": "seal_id", "value_out": "signs"},
+            {"prefix": "ICONOGRAPHY:", "marker": "MOTIF:",
+             "type": "iconography", "id_out": "seal_id",
+             "value_out": "motif"},
+            {"prefix": "SIGN_REF:", "marker": "MEANING:",
+             "type": "sign_ref", "id_out": "sign_id",
+             "value_out": "meaning"},
+        ],
+        "skip_prefixes": ["NO_SEALS"],
+        "dpi": 200,
+        "noop_template": (
+            "OCR no-op (run_ocr=False): loaded {n} existing records "
+            "from {output_path} ({n_seal} seal, {n_iconography} "
+            "iconography, {n_sign_ref} sign_ref). To re-run vision "
+            "OCR, set run_ocr=true and provide pdf_path."),
+        "run_template": (
+            "OCR run on {n_pages} pages of {pdf_name}: {n} records "
+            "({n_seal} seal, {n_iconography} iconography, {n_sign_ref} "
+            "sign_ref). Saved to {output_path}."),
+        "errors": {
+            "no_pdf": "run_ocr=True but pdf_path not provided",
+            "pdf_not_found": "pdf not found: {pdf_path}",
+            "fitz": "PyMuPDF (fitz) not available: {error}",
+            "vision": "call_llm_vision not available: {error}",
+        },
     }
+    return vision_ocr_node_execute(inputs, merged)
 
 
 # ── Tier 1 #5: Allograph-aware iconographic anchor score ─────────────

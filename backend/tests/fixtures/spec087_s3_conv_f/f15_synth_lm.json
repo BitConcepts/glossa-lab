@@ -1,0 +1,1 @@
+{"bigrams":{"ka|la":0.6931,"ka|noseparator":0.1,"la|ka":1.0986,"noseparator":2.0,"ta|ka":null},"n_bigrams":99,"n_syllables":42,"verdict":"synthetic syllable LM","vocab":["ka","la","ta"]}

@@ -396,67 +396,53 @@ def _m77_reverse_janabiyah_search_v3(inputs: dict, params: dict) -> dict:
 
 
 def _phase29_corpus_stats(inputs: dict, params: dict) -> dict:
-    """Compare CISI vs Mahadevan 1977 vs Fuls vs ICIT corpus statistics."""
-    cisi_inscs = inputs.get("inscribed_seals") or []
-    m77_inscs = inputs.get("mahadevan_inscriptions") or []
+    """Compare CISI vs Mahadevan 1977 vs Fuls vs ICIT corpus statistics.
 
-    # Try to load Fuls + ICIT
+    Spec 087 S3 PR-F: delegates to the generic CorpusComparisonStats;
+    the corpus specs (names, sequence fields, the unavailable rows)
+    and the scale-up / verdict shape are spec data. The Fuls + ICIT
+    loader outputs are computed here exactly as before and handed to
+    the engine as direct results, so the fixture stub points are the
+    module-level loader fns.
+    """
+    from glossa_lab.generic_primitives import corpus_comparison_stats_execute
+
     fuls = _mathematica_epigraphica_loader({}, params)
     icit = _icit_corpus_loader({}, params)
 
-    def _stats(name: str, inscriptions, count_field: str = "indus_signs"):
-        if not inscriptions:
-            return {"corpus": name, "n_inscriptions": 0, "n_tokens": 0,
-                    "n_distinct_signs": 0, "mean_length": 0.0}
-        if isinstance(inscriptions[0], dict):
-            seqs = [i.get(count_field) or [] for i in inscriptions]
-            seqs = [[s for s in seq if s and s != "?"] for seq in seqs]
-        else:
-            seqs = inscriptions
-        flat = [s for seq in seqs for s in seq]
-        return {
-            "corpus": name,
-            "n_inscriptions": len(seqs),
-            "n_tokens": len(flat),
-            "n_distinct_signs": len(set(flat)),
-            "mean_length": round(sum(len(s) for s in seqs) / max(1, len(seqs)), 3),
-        }
-
-    rows = [
-        _stats("CISI Phase-22 contact-zone seals", cisi_inscs, "indus_signs"),
-        _stats("Mahadevan 1977 (M77)", m77_inscs),
-    ]
-    if fuls.get("available"):
-        rows.append(_stats("Fuls Mathematica Epigraphica vol. 3",
-                            fuls.get("inscriptions") or [], "signs"))
-    else:
-        rows.append({"corpus": "Fuls ME vol. 3", "n_inscriptions": 0,
-                     "n_tokens": 0, "n_distinct_signs": 0, "mean_length": 0.0,
-                     "note": "not bundled (see MathematicaEpigraphicaLoader)"})
-    if icit.get("available"):
-        rows.append({"corpus": "ICIT (live)",
-                      "n_inscriptions": icit.get("n_inscriptions", 0),
-                      "n_signs": icit.get("n_signs", 0)})
-    else:
-        rows.append({"corpus": "ICIT (live)", "n_inscriptions": 0,
-                     "note": "API access required (Fuls)"})
-
-    # Compute the scale-up factor
-    cisi_n = rows[0]["n_inscriptions"] or 1
-    m77_n = rows[1]["n_inscriptions"]
-    scale_up = round(m77_n / cisi_n, 1) if cisi_n else 0.0
-
-    verdict = (
-        f"Corpus 10x expansion (Phase-29): CISI Phase-22 contact-zone seals "
-        f"({cisi_n} inscribed seals) -> Mahadevan 1977 ({m77_n} inscriptions, "
-        f"{scale_up}x scale-up). Fuls ME vol. 3 + ICIT not yet bundled "
-        f"(would add another ~3.3x and 2.7x respectively when accessible)."
-    )
-    return {
-        "rows": rows,
-        "scale_up_factor_cisi_to_m77": scale_up,
-        "verdict": verdict,
+    merged = dict(params)
+    merged["direct_results"] = {"fuls": fuls, "icit": icit}
+    merged["stats_spec"] = {
+        "corpora": [
+            {"name": "CISI Phase-22 contact-zone seals", "source": "input",
+             "key": "inscribed_seals", "count_field": "indus_signs"},
+            {"name": "Mahadevan 1977 (M77)", "source": "input",
+             "key": "mahadevan_inscriptions", "count_field": "indus_signs"},
+            {"name": "Fuls Mathematica Epigraphica vol. 3",
+             "source": "direct", "result_key": "fuls",
+             "inscriptions_field": "inscriptions", "count_field": "signs",
+             "unavailable": {
+                 "corpus": "Fuls ME vol. 3", "n_inscriptions": 0,
+                 "n_tokens": 0, "n_distinct_signs": 0, "mean_length": 0.0,
+                 "note": "not bundled (see MathematicaEpigraphicaLoader)"}},
+            {"name": "ICIT (live)", "source": "direct_counts",
+             "result_key": "icit",
+             "fields": {"n_inscriptions": "n_inscriptions",
+                        "n_signs": "n_signs"},
+             "unavailable": {
+                 "corpus": "ICIT (live)", "n_inscriptions": 0,
+                 "note": "API access required (Fuls)"}},
+        ],
+        "scale": {"numerator_row": 1, "denominator_row": 0,
+                  "out": "scale_up_factor_cisi_to_m77", "round": 1},
+        "verdict_template": (
+            "Corpus 10x expansion (Phase-29): CISI Phase-22 contact-zone "
+            "seals ({denominator_n} inscribed seals) -> Mahadevan 1977 "
+            "({numerator_n} inscriptions, {scale_up}x scale-up). "
+            "Fuls ME vol. 3 + ICIT not yet bundled (would add another "
+            "~3.3x and 2.7x respectively when accessible)."),
     }
+    return corpus_comparison_stats_execute(inputs, merged)
 
 
 # ── Verdict aggregator ──────────────────────────────────────────────

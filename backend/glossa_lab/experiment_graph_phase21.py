@@ -523,140 +523,81 @@ def _phase21_verdict(inputs: dict, params: dict) -> dict:
       site_summary          -- _per_stratum_summary output for the site
                                 spectral run (used for richer text).
       numerical_weights     -- _numerical_weight_analyzer output.
+
+    Spec 087 S3 PR-F: delegates to the generic
+    PredictionVerdictAggregator; the input shaping (per-bin
+    extraction in full and bare forms, site-summary shaping,
+    numerical-weights synthesis) and the three numeric rule sets
+    (gap-rise, gap-spread, poisson-fraction) are spec data.
     """
-
-    def _extract_per_bin(v: Any) -> dict[str, dict]:
-        """Accept either a full BinSpectralFingerprint output ({per_bin: {...}})
-        or a bare per-bin dict (when wired directly via sourcePort='per_bin')."""
-        if not isinstance(v, dict) or not v:
-            return {}
-        if "per_bin" in v and isinstance(v["per_bin"], dict):
-            return v["per_bin"]
-        # Bare per-bin dict: each value is a dict with spectral_gap / verdict.
-        sample_vals = [val for val in v.values() if isinstance(val, dict)]
-        if sample_vals and any("spectral_gap" in val for val in sample_vals):
-            return v
-        return {}
-
-    rep_pb = _extract_per_bin(inputs.get("repetition_spectral"))
-    site_pb = _extract_per_bin(inputs.get("site_spectral"))
-    # site_summary may be the full _per_stratum_summary dict or just the verdict text.
-    raw_site_sum = inputs.get("site_summary")
-    if isinstance(raw_site_sum, dict):
-        site_sum = raw_site_sum
-    elif isinstance(raw_site_sum, str):
-        site_sum = {"verdict": raw_site_sum}
-    else:
-        site_sum = {}
-    # numerical_weights: prefer full dict, but synthesise from scalar fields if needed.
-    raw_nw = inputs.get("numerical_weights")
-    if isinstance(raw_nw, dict):
-        nw = raw_nw
-    else:
-        nw_rows = inputs.get("nw_rows")
-        rows_list = nw_rows if isinstance(nw_rows, list) else []
-        n_poisson_v = inputs.get("nw_n_poisson")
-        if rows_list:
-            nw = {"rows": rows_list,
-                  "n_poisson_regime": int(n_poisson_v or 0)}
-        else:
-            nw = {}
-
-    # P21-1: did the spectral gap rise after repetition collapse?
-    orig_gap = rep_pb.get("original", {}).get("spectral_gap")
-    coll_gap = rep_pb.get("collapsed", {}).get("spectral_gap")
-    if isinstance(orig_gap, (int, float)) and isinstance(coll_gap, (int, float)):
-        if coll_gap >= max(0.10, 5 * max(orig_gap, 1e-6)):
-            p1 = "CONFIRMED"
-            p1_detail = (
-                f"spectral gap rose from {orig_gap:.4f} (original) to "
-                f"{coll_gap:.4f} (collapsed). De-numerification recovers "
-                "natural-language structure."
-            )
-        elif coll_gap > orig_gap + 1e-3:
-            p1 = "PARTIALLY CONFIRMED"
-            p1_detail = (
-                f"spectral gap rose from {orig_gap:.4f} → {coll_gap:.4f} "
-                "but did not reach a natural-language regime (>= 0.40)."
-            )
-        else:
-            p1 = "NOT CONFIRMED"
-            p1_detail = (
-                f"spectral gap unchanged at {orig_gap:.4f} → {coll_gap:.4f}; "
-                "repetition is not the dominant source of the anomaly."
-            )
-    else:
-        p1 = "UNKNOWN"
-        p1_detail = "missing repetition-spectral data."
-
-    # P21-2: do site groups differ structurally?
-    if site_pb:
-        gaps = [d.get("spectral_gap") for d in site_pb.values()
-                if isinstance(d.get("spectral_gap"), (int, float))]
-        if gaps:
-            spread = max(gaps) - min(gaps)
-            if spread >= 0.10:
-                p2 = "CONFIRMED"
-            elif spread >= 0.02:
-                p2 = "PARTIALLY CONFIRMED"
-            else:
-                p2 = "NOT CONFIRMED"
-            p2_detail = (
-                f"spectral gap spread across {len(gaps)} site groups = "
-                f"{spread:.4f}; "
-                f"text from site_summary: "
-                f"{site_sum.get('verdict', '')}"
-            )
-        else:
-            p2 = "UNKNOWN"
-            p2_detail = "no spectral data per site stratum."
-    else:
-        p2 = "UNKNOWN"
-        p2_detail = "missing site-spectral data."
-
-    # P21-4: numerical weight regime
-    if nw and "rows" in nw:
-        rows = nw.get("rows") or []
-        n_poisson = nw.get("n_poisson_regime", 0)
-        n_total = len(rows)
-        if n_total == 0:
-            p4 = "UNKNOWN"
-            p4_detail = "no numerical signs analysed."
-        elif n_poisson >= max(1, n_total // 2):
-            p4 = "CONFIRMED"
-            p4_detail = (
-                f"{n_poisson}/{n_total} numerical signs in poisson_count "
-                "regime — quantity-marking is the most likely function."
-            )
-        else:
-            p4 = "PARTIALLY CONFIRMED"
-            p4_detail = (
-                f"only {n_poisson}/{n_total} signs in poisson_count "
-                "regime; mixed numerical / stylistic behaviour."
-            )
-    else:
-        p4 = "UNKNOWN"
-        p4_detail = "missing numerical-weight regression."
-
-    summary = (
-        f"Phase-21: P21a={p1} | P21b={p2} | P21d={p4}"
+    from glossa_lab.generic_primitives import (
+        prediction_verdict_aggregator_execute,
     )
 
-    return {
-        "summary": summary,
-        "predictions": {
-            "p21a_repetition_recovers_naturallanguage": {
-                "verdict": p1, "detail": p1_detail,
-                "original_gap": orig_gap, "collapsed_gap": coll_gap,
-            },
-            "p21b_site_strata_differ": {
-                "verdict": p2, "detail": p2_detail,
-            },
-            "p21d_numerical_weights_poisson": {
-                "verdict": p4, "detail": p4_detail,
-            },
+    merged = dict(params)
+    merged["aggregator_spec"] = {
+        "assembly": "nested",
+        "predictions_out": "predictions",
+        "shaping": {
+            "rep_pb": {"kind": "per_bin", "input": "repetition_spectral"},
+            "site_pb": {"kind": "per_bin", "input": "site_spectral"},
+            "site_sum": {"kind": "verdict_shaping", "input": "site_summary"},
+            "nw": {"kind": "nw_shaping", "input": "numerical_weights",
+                   "rows_input": "nw_rows", "count_input": "nw_n_poisson"},
         },
+        "rules": [
+            {"out": "p21a_repetition_recovers_naturallanguage",
+             "kind": "gap_rise", "per_bin": "rep_pb",
+             "original_key": "original", "collapsed_key": "collapsed",
+             "abs_floor": 0.10, "multiplier": 5, "epsilon": 1e-6,
+             "partial_delta": 0.001,
+             "details": {
+                 "confirmed": (
+                     "spectral gap rose from {orig_gap:.4f} (original) "
+                     "to {coll_gap:.4f} (collapsed). De-numerification "
+                     "recovers natural-language structure."),
+                 "partial": (
+                     "spectral gap rose from {orig_gap:.4f} → "
+                     "{coll_gap:.4f} but did not reach a "
+                     "natural-language regime (>= 0.40)."),
+                 "not": (
+                     "spectral gap unchanged at {orig_gap:.4f} → "
+                     "{coll_gap:.4f}; repetition is not the dominant "
+                     "source of the anomaly."),
+                 "unknown": "missing repetition-spectral data."}},
+            {"out": "p21b_site_strata_differ",
+             "kind": "gap_spread", "per_bin": "site_pb",
+             "site_sum": "site_sum",
+             "confirmed_spread": 0.10, "partial_spread": 0.02,
+             "details": {
+                 "template": (
+                     "spectral gap spread across {n_gaps} site groups "
+                     "= {spread:.4f}; text from site_summary: "
+                     "{site_verdict}"),
+                 "no_data": "no spectral data per site stratum.",
+                 "missing": "missing site-spectral data."}},
+            {"out": "p21d_numerical_weights_poisson",
+             "kind": "poisson_fraction", "nw": "nw",
+             "rows_field": "rows", "count_field": "n_poisson_regime",
+             "min_count": 1, "divisor": 2,
+             "details": {
+                 "confirmed": (
+                     "{n_poisson}/{n_total} numerical signs in "
+                     "poisson_count regime — quantity-marking is the "
+                     "most likely function."),
+                 "partial": (
+                     "only {n_poisson}/{n_total} signs in poisson_count "
+                     "regime; mixed numerical / stylistic behaviour."),
+                 "no_rows": "no numerical signs analysed.",
+                 "missing": "missing numerical-weight regression."}},
+        ],
+        "summary_template": (
+            "Phase-21: "
+            "P21a={p21a_repetition_recovers_naturallanguage} | "
+            "P21b={p21b_site_strata_differ} | "
+            "P21d={p21d_numerical_weights_poisson}"),
     }
+    return prediction_verdict_aggregator_execute(inputs, merged)
 
 
 # ── Atomic node defs for registration ──────────────────────────────────

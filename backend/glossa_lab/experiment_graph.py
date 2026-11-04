@@ -38,6 +38,7 @@ from glossa_lab.experiment_base import ExperimentBase
 from glossa_lab.generic_loaders import (
     dataset_record_loader_execute,
     json_corpus_loader_execute,
+    json_record_dir_loader_execute,
 )
 from glossa_lab.generic_primitives import (
     anchor_syllabifier_execute,
@@ -55,12 +56,22 @@ from glossa_lab.generic_primitives import (
     phoneme_map_coverage_execute,
     phoneme_map_permutation_test_execute,
     pmi_centrality_ranker_execute,
+    positional_claim_tester_execute,
     positional_class_classifier_execute,
+    prediction_verdict_aggregator_execute,
+    prefix_findspot_assigner_execute,
+    record_group_summary_execute,
+    corpus_comparison_stats_execute,
+    corpus_cooccurrence_check_execute,
+    catalog_text_parser_execute,
+    lexicon_cross_validator_execute,
     registry_table_loader_execute,
     reverse_skeleton_search_execute,
     sign_position_null_test_execute,
     signature_comparator_execute,
     sign_role_classifier_execute,
+    syllable_lm_loader_execute,
+    vision_ocr_node_execute,
     skeleton_tablet_search_execute,
     stratified_permutation_test_execute,
     template_miner_execute,
@@ -2489,6 +2500,175 @@ for _d in [
             "null_spec":{"type":"object","title":"Null Spec",
                          "description":"Ordered [|z| threshold, verdict] bands and the fallback verdict."}}},
         fn=sign_position_null_test_execute),
+    AtomicNodeDef("JsonRecordDirLoader","JSON Record Directory Loader","Sources",
+        "Load a directory of one-JSON-record-per-file documents (Spec 087 "
+        "S3): search mode projects each parseable record through a field "
+        "map with an optional substring query and a cross-reference count "
+        "from a sibling directory; records mode flattens the item lists of "
+        "every parseable file (optionally restricted to files named by an "
+        "upstream input) under param-driven filters, per-field value "
+        "counts, and a cap. Paths, field names, filters, and text are "
+        "parameters (loader_spec), not code — the Indus evidence loaders "
+        "delegate to this engine.",
+        inputs=[{"name":"papers","type":"papers","required":False}],
+        outputs=[{"name":"papers","type":"papers"},{"name":"claims","type":"claims"},{"name":"total_papers","type":"number"},{"name":"total_claims","type":"number"},{"name":"source_docs","type":"number"},{"name":"type_counts","type":"json"},{"name":"status_counts","type":"json"},{"name":"json","type":"json"},{"name":"text","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "query":{"type":"string","title":"Search Query","default":""},
+            "max_papers":{"type":"integer","title":"Max Papers","default":200,"minimum":1},
+            "claim_type":{"type":"string","title":"Claim Type Filter","default":""},
+            "claim_status":{"type":"string","title":"Claim Status Filter","default":""},
+            "sign_filter":{"type":"string","title":"Sign Filter","default":""},
+            "max_claims":{"type":"integer","title":"Max Claims","default":500,"minimum":1},
+            "loader_spec":{"type":"object","title":"Loader Spec","description":"Full declarative spec: mode, directory, projection / filters / counts, text templates."}}},
+        fn=json_record_dir_loader_execute),
+    AtomicNodeDef("PositionalClaimTester","Positional Claim Tester","Analysis",
+        "Test typed claims against a sequence corpus (Spec 087 S3): a "
+        "claim is testable when its type contains a spec keyword, it names "
+        "a sign, and its normalized text names a position; each named "
+        "sign's observed positional rate is compared with the corpus "
+        "average over frequent signs, scaled by a spec multiplier. "
+        "Untestable claims are skipped silently. The Indus-evidence "
+        "IndusClaimTester delegates to this engine.",
+        inputs=[{"name":"claims","type":"claims","required":True},
+                {"name":"sequences","type":"sequences","required":True}],
+        outputs=[{"name":"test_results","type":"json"},{"name":"n_tested","type":"number"},{"name":"n_supported","type":"number"},{"name":"support_rate","type":"number"},{"name":"json","type":"json"},{"name":"number","type":"number"},{"name":"text","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "tester_spec":{"type":"object","title":"Tester Spec","description":"Type keywords, position needles, support rule, error and verdict texts."}}},
+        fn=positional_claim_tester_execute),
+    AtomicNodeDef("RecordGroupSummary","Record Group Summary","Analysis",
+        "Grouped summary over a record list (Spec 087 S3): per-record "
+        "computed fields, then ordered spec blocks — counts, value "
+        "counters, row projections, derived subsets, sums, match and "
+        "presence counts, top-N sections over inputs — closed by a "
+        "verdict template. Field names, defaults, orders, caps and "
+        "texts are parameters (summary_spec), not code — the phase "
+        "auditors and reporters delegate to this engine.",
+        inputs=[{"name":"records","type":"json","required":False}],
+        outputs=[{"name":"verdict","type":"text"},{"name":"json","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "summary_spec":{"type":"object","title":"Summary Spec","description":"Records key, per-record computed fields, ordered blocks, verdict template."}}},
+        fn=record_group_summary_execute),
+    AtomicNodeDef("CorpusComparisonStats","Corpus Comparison Stats","Analysis",
+        "Per-corpus inscription statistics over a spec list of corpora "
+        "(Spec 087 S3): input record/sequence corpora, direct loader "
+        "corpora with spec-carried unavailable rows, and direct-count "
+        "corpora, closed by a scale-up ratio between two rows and a "
+        "verdict template. Corpus names, sequence fields and fallback "
+        "rows are parameters (stats_spec), not code — Phase29CorpusStats "
+        "delegates to this engine.",
+        inputs=[{"name":"inscribed_seals","type":"json","required":False},
+                {"name":"mahadevan_inscriptions","type":"json","required":False}],
+        outputs=[{"name":"rows","type":"json"},{"name":"scale_up_factor_cisi_to_m77","type":"number"},{"name":"verdict","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "stats_spec":{"type":"object","title":"Stats Spec","description":"Corpus list, scale-up rows, verdict template."}}},
+        fn=corpus_comparison_stats_execute),
+    AtomicNodeDef("PrefixFindspotAssigner","Prefix Findspot Assigner","Analysis",
+        "Assign records to find-spots by longest-prefix match of their "
+        "catalogue id against a find-spot map (Spec 087 S3): reporter "
+        "mode summarises the map and lists assignments (key-presence "
+        "match); filter mode classifies a spec-named corpus getter's "
+        "records into contact-zone / core lists (truthy-info match, "
+        "so empty info entries fall through to shorter prefixes). "
+        "Prefix lengths, match semantics and texts are parameters "
+        "(assigner_spec), not code — CISIFindspotReporter and "
+        "ShuIlishuContactZoneFilter delegate to this engine.",
+        inputs=[{"name":"findspot_map","type":"json","required":False},
+                {"name":"inscribed_seals","type":"json","required":False}],
+        outputs=[{"name":"sites_by_country","type":"json"},{"name":"sites_distribution","type":"json"},{"name":"verdict","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "assigner_spec":{"type":"object","title":"Assigner Spec","description":"Mode, prefix lengths, corpus getter (filter mode), verdict templates."}}},
+        fn=prefix_findspot_assigner_execute),
+    AtomicNodeDef("CorpusCooccurrenceCheck","Corpus Co-occurrence Check","Analysis",
+        "Check candidate names against the term set of a corpus-audit "
+        "JSON file (Spec 087 S3): a candidate hits when it is a "
+        "substring of a term or a term is a substring of it, counting "
+        "only terms longer than a spec guard; an absent corpus file "
+        "means an empty term set and an absence report. Candidate "
+        "ports, the corpus path and the verdict texts are parameters "
+        "(check_spec), not code — MeluhhaCooccurrenceCheck delegates "
+        "to this engine.",
+        inputs=[{"name":"top_candidates","type":"json","required":False},
+                {"name":"unique_names","type":"json","required":False}],
+        outputs=[{"name":"candidates_checked","type":"number"},{"name":"meluhha_hits","type":"json"},{"name":"meluhha_misses","type":"json"},{"name":"n_hits","type":"number"},{"name":"meluhha_corpus_available","type":"any"},{"name":"verdict","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "check_spec":{"type":"object","title":"Check Spec","description":"Candidate keys, corpus path, entries key, caps, verdict texts."}}},
+        fn=corpus_cooccurrence_check_execute),
+    AtomicNodeDef("PredictionVerdictAggregator","Prediction Verdict Aggregator","Analysis",
+        "Aggregate sub-experiment outputs into per-prediction verdicts "
+        "(Spec 087 S3): spec-carried input shaping (verdict-text and "
+        "per-bin extraction, shaped and synthesised inputs) and rule "
+        "kinds — text match, count threshold, gap rise, gap spread, "
+        "poisson fraction — assembled flat or nested. Rule sets, "
+        "thresholds, detail texts and summaries are parameters "
+        "(aggregator_spec), not code — Phase20Verdict and "
+        "Phase21Verdict delegate to this engine.",
+        inputs=[{"name":"length_strata","type":"json","required":False},
+                {"name":"repetition_spectral","type":"json","required":False}],
+        outputs=[{"name":"summary","type":"text"},{"name":"predictions","type":"json"},{"name":"evidence","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "aggregator_spec":{"type":"object","title":"Aggregator Spec","description":"Shaping, rules, evidence, assembly, summary template."}}},
+        fn=prediction_verdict_aggregator_execute),
+    AtomicNodeDef("VisionOCRNode","Vision OCR Node","Sources",
+        "Vision-LLM OCR over PDF pages with a line-grammar parse "
+        "(Spec 087 S3): a no-op by default (loads previously saved "
+        "results and reports type counts); with run_ocr set, renders "
+        "pages to PNG data URIs, calls the vision provider, parses "
+        "transcripts against spec grammar rules, and writes results "
+        "back. Prompt, grammar, paths and texts are parameters "
+        "(ocr_spec), not code — CISIVol3OCRNode delegates to this "
+        "engine.",
+        inputs=[],
+        outputs=[{"name":"n_records","type":"number"},{"name":"n_seal","type":"number"},{"name":"n_iconography","type":"number"},{"name":"n_sign_ref","type":"number"},{"name":"records","type":"json"},{"name":"verdict","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "run_ocr":{"type":"boolean","title":"Run OCR","default":False},
+            "pdf_path":{"type":"string","title":"PDF Path","default":""},
+            "pages":{"type":"array","title":"Pages","items":{"type":"integer"}},
+            "prompt":{"type":"string","title":"Prompt","default":""},
+            "output_path":{"type":"string","title":"Output Path","default":""},
+            "ocr_spec":{"type":"object","title":"OCR Spec","description":"Base dir, default prompt/paths, grammar, templates."}}},
+        fn=vision_ocr_node_execute),
+    AtomicNodeDef("CatalogTextParser","Catalog Text Parser","Analysis",
+        "Best-effort inscription extraction from catalogue text "
+        "pages (Spec 087 S3): inscription ids by a spec-built regex "
+        "(site prefixes + CM pattern + hash pattern), transliteration "
+        "sign sequences, and glyph runs in a spec Unicode block, "
+        "with per-page dedupe and threshold verdicts. Prefixes, the "
+        "block and the thresholds are parameters (parser_spec), not "
+        "code — CMCatalogParser delegates to this engine.",
+        inputs=[{"name":"pages","type":"json","required":True}],
+        outputs=[{"name":"n_pages_processed","type":"number"},{"name":"n_inscriptions_recovered","type":"number"},{"name":"n_with_sequence","type":"number"},{"name":"n_cm_unicode_glyphs","type":"number"},{"name":"inscriptions_sample","type":"json"},{"name":"verdict","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "parser_spec":{"type":"object","title":"Parser Spec","description":"Site prefixes, patterns, Unicode block, thresholds, verdict texts."}}},
+        fn=catalog_text_parser_execute),
+    AtomicNodeDef("SyllableLMLoader","Syllable LM Loader","Sources",
+        "Load a syllable-level language model from its JSON form "
+        "(Spec 087 S3): stored bigram log-probs are exponentiated, "
+        "unigram counts derive from bigram endpoints, and the ranked "
+        "list orders the vocabulary by those counts, producing the "
+        "LanguageModel the decipher pipeline consumes. The file "
+        "path, language label and error text are parameters "
+        "(lm_spec), not code — DravidianSyllableLM delegates to this "
+        "engine.",
+        inputs=[],
+        outputs=[{"name":"lm","type":"any"},{"name":"language","type":"text"},{"name":"n_bigrams","type":"number"},{"name":"n_syllables","type":"number"},{"name":"verdict","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "lm_path":{"type":"string","title":"LM Path","default":""},
+            "lm_spec":{"type":"object","title":"LM Spec","description":"Base dir, default path, language, error text."}}},
+        fn=syllable_lm_loader_execute),
+    AtomicNodeDef("LexiconCrossValidator","Lexicon Cross-Validator","Analysis",
+        "Cross-validate an anchor set against an external rebus "
+        "lexicon (Spec 087 S3): readings normalise to root sets, and "
+        "each lexicon reading is corroborated, conflicting, or a new "
+        "candidate under spec caps; rebus pairs match through the "
+        "root index; a grammar/content split and a banded "
+        "complementarity score close the summary. Paths, markers, "
+        "caps, bands and frames are parameters (validator_spec), "
+        "not code — KalyanCrossValidation delegates to this engine.",
+        inputs=[],
+        outputs=[{"name":"summary","type":"json"},{"name":"corroborated","type":"json"},{"name":"conflicting","type":"json"},{"name":"new_candidates","type":"json"},{"name":"coverage","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "validator_spec":{"type":"object","title":"Validator Spec","description":"Paths, normalisation, grammar markers, caps, bands, templates."}}},
+        fn=lexicon_cross_validator_execute),
     AtomicNodeDef("FreqCounter","Frequency Counter","Transforms",
         "Count symbol occurrences across all sequences.",
         inputs=[{"name":"sequences","type":"sequences","required":True}],

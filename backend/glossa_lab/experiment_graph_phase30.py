@@ -457,105 +457,57 @@ def _meluhha_cooccurrence_check(inputs: dict, params: dict) -> dict:
     Sumerian rulers/trade partners.  A hit = candidate appears alongside 'Meluhha' in
     CDLI texts.  A non-hit does NOT falsify the hypothesis (Meluhha = Indus civilization
     is not universally established).
+
+    Spec 087 S3 PR-F: delegates to the generic CorpusCooccurrenceCheck;
+    the candidate ports, the term-length guard and the verdict texts
+    are spec data, and the corpus path (backend/reports/
+    meluhha_corpus_audit.json — absent from the repo, so the node
+    runs against an empty term set today) is a spec parameter
+    defaulting to the historical path.
     """
-    import json as _json  # noqa: PLC0415
     from pathlib import Path as _Path  # noqa: PLC0415
 
-    candidates = inputs.get("top_candidates") or inputs.get("unique_names") or []
-    if isinstance(candidates, str):
-        try: candidates = _json.loads(candidates)
-        except Exception: candidates = [candidates]  # noqa: BLE001
+    from glossa_lab.generic_primitives import corpus_cooccurrence_check_execute
 
-    # Load Meluhha corpus if available
-    REPO = _Path(__file__).resolve().parent.parent.parent
-    meluhha_path = REPO / "backend/reports/meluhha_corpus_audit.json"
-    meluhha_terms: set[str] = set()
-    if meluhha_path.exists():
-        try:
-            data = _json.loads(meluhha_path.read_text(encoding="utf-8"))
-            for entry in (data.get("meluhha_entries") or []):
-                if isinstance(entry, dict):
-                    meluhha_terms.update(str(v).lower() for v in entry.values() if v)
-        except Exception:  # noqa: BLE001
-            pass
-
-    hits = []
-    misses = []
-    for c in candidates[:20]:  # check top 20
-        name = str(c).lower().strip()
-        if any(name in term or term in name for term in meluhha_terms if len(term) > 3):
-            hits.append(str(c))
-        else:
-            misses.append(str(c))
-
-    if hits:
-        verdict = f"FAVORABLE: {len(hits)} candidate(s) appear in Meluhha co-occurrence contexts: {hits[:5]}"
-    else:
-        verdict = (
+    corpus_path = str(
+        _Path(__file__).resolve().parent.parent.parent
+        / "backend/reports/meluhha_corpus_audit.json"
+    )
+    merged = dict(params)
+    merged["check_spec"] = {
+        "candidates_keys": ["top_candidates", "unique_names"],
+        "corpus_path": corpus_path,
+        "entries_key": "meluhha_entries",
+        "term_len_gt": 3,
+        "cap": 20,
+        "misses_cap": 5,
+        "render_cap": 5,
+        "checked_out": "candidates_checked",
+        "hits_out": "meluhha_hits",
+        "misses_out": "meluhha_misses",
+        "available_out": "meluhha_corpus_available",
+        "favourable_template": (
+            "FAVORABLE: {n_hits} candidate(s) appear in Meluhha "
+            "co-occurrence contexts: {hits_top}"),
+        "neutral_verdict": (
             "NEUTRAL: No direct Meluhha co-occurrence found. "
-            "This does not falsify the hypothesis (Meluhha = Indus identification is independent)."
-        )
-
-    return {
-        "candidates_checked": len(candidates[:20]),
-        "meluhha_hits": hits,
-        "meluhha_misses": misses[:5],
-        "n_hits": len(hits),
-        "meluhha_corpus_available": meluhha_path.exists(),
-        "verdict": verdict,
+            "This does not falsify the hypothesis (Meluhha = Indus "
+            "identification is independent)."),
     }
+    return corpus_cooccurrence_check_execute(inputs, merged)
 
 
 def _syllable_lm_from_json(data: dict) -> "Any":
     """Build a proper LanguageModel from a syllable LM JSON dict.
 
-    The syllable LM JSON stores bigrams as {"a|b": log_prob}.  This helper
-    converts that to the tuple-key probability dict that LanguageModel and
-    BigramScorer expect, and populates all required attributes (ranked,
-    bigram_freq, unigram_freq, size) so SADecipher works correctly.
+    Spec 087 S3 PR-F: the builder lives in the generic SyllableLMLoader
+    engine (glossa_lab.generic_primitives.syllable_lm_from_json); this
+    historical helper delegates to it so the Sanskrit loader below
+    keeps the identical code path.
     """
-    import math as _math  # noqa: PLC0415
+    from glossa_lab.generic_primitives import syllable_lm_from_json
 
-    from glossa_lab.pipelines.decipher import LanguageModel  # noqa: PLC0415
-
-    vocab: list[str] = data.get("vocab", [])
-    bigrams_raw: dict = data.get("bigrams", {})
-
-    # Convert "a|b" -> (a, b) keys; stored values are log-probs, need to convert to probs
-    bigram_freq: dict = {}
-    unigram_counts: dict = {}
-    for ab_str, lp in bigrams_raw.items():
-        parts = ab_str.split("|")
-        if len(parts) == 2:
-            a, b = parts
-            # Convert log-prob to prob (smoothed, so just exp it)
-            prob = _math.exp(float(lp)) if lp is not None else 1e-8
-            bigram_freq[(a, b)] = prob
-            unigram_counts[a] = unigram_counts.get(a, 0) + 1
-            unigram_counts[b] = unigram_counts.get(b, 0) + 1
-
-    # Build ranked from unigram counts (higher count = higher rank)
-    total_uni = max(sum(unigram_counts.values()), 1)
-    all_syms = vocab if vocab else sorted(unigram_counts.keys())
-    unigram_freq = {s: unigram_counts.get(s, 1) / total_uni for s in all_syms}
-    ranked = sorted(all_syms, key=lambda s: unigram_counts.get(s, 0), reverse=True)
-
-    # Build a minimal LanguageModel instance without calling __init__
-    lm = LanguageModel.__new__(LanguageModel)
-    lm.symbols = all_syms  # type: ignore[attr-defined]
-    lm.alphabet = sorted(set(all_syms))  # type: ignore[attr-defined]
-    lm.size = len(lm.alphabet)  # type: ignore[attr-defined]
-    lm.ranked = ranked  # type: ignore[attr-defined]
-    lm.unigram_freq = unigram_freq  # type: ignore[attr-defined]
-    lm.bigram_freq = bigram_freq  # type: ignore[attr-defined]
-    lm.word_bigram_freq = {}  # type: ignore[attr-defined]
-    lm.word_initial_freq = {}  # type: ignore[attr-defined]
-    lm.word_final_freq = {}  # type: ignore[attr-defined]
-    lm.ocp_rate = 0.0  # type: ignore[attr-defined]
-    lm.trigram_freq = {}  # type: ignore[attr-defined]
-    lm.positional = {}  # type: ignore[attr-defined]
-    lm.word_cooccur = {}  # type: ignore[attr-defined]
-    return lm
+    return syllable_lm_from_json(data)
 
 
 def _builtin_syllable_lm(inputs: dict, params: dict) -> dict:
@@ -564,25 +516,26 @@ def _builtin_syllable_lm(inputs: dict, params: dict) -> dict:
     Produces the same interface as BuiltinLM so it can plug into SADecipher.
     Built by: backend/scripts/build_dravidian_syllable_lm.py
     Citations: E.1 (DEDR), A.12 (Mahadevan 2003 TB)
+
+    Spec 087 S3 PR-F: delegates to the generic SyllableLMLoader; the
+    bundled file path, the language label and the error text are spec
+    data. An lm_path param may override the file (relative paths
+    resolve against the repo root).
     """
-    import json as _json  # noqa: PLC0415
     from pathlib import Path as _Path  # noqa: PLC0415
 
-    REPO = _Path(__file__).resolve().parent.parent.parent
-    path = REPO / "backend/glossa_lab/data/dravidian_syllable_lm.json"
-    if not path.exists():
-        return {"error": "dravidian_syllable_lm.json not found — run build_dravidian_syllable_lm.py"}
+    from glossa_lab.generic_primitives import syllable_lm_loader_execute
 
-    data = _json.loads(path.read_text(encoding="utf-8"))
-    lm = _syllable_lm_from_json(data)
-
-    return {
-        "lm": lm,
+    repo = _Path(__file__).resolve().parent.parent.parent
+    merged = dict(params)
+    merged["lm_spec"] = {
+        "base_dir": str(repo),
+        "path": str(repo / "backend/glossa_lab/data/dravidian_syllable_lm.json"),
         "language": "dravidian_syllable",
-        "n_bigrams": data.get("n_bigrams", len(data.get("bigrams", {}))),
-        "n_syllables": data.get("n_syllables", len(data.get("vocab", []))),
-        "verdict": data.get("verdict", ""),
+        "error": ("dravidian_syllable_lm.json not found — run "
+                  "build_dravidian_syllable_lm.py"),
     }
+    return syllable_lm_loader_execute(inputs, merged)
 
 
 # The Tamil romanisation diacritic table for IndusAnchorSetSyllable,

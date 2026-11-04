@@ -131,7 +131,7 @@ carries its gate/test output verbatim** — not a summary of it.
   and the parent accepted the zero-retention outcome at the
   triage gate. No retention files exist to write; see
   records/stage-s3-conversions.md.
-- [ ] T303 Conversion PRs (disposition (a)): domain content
+- [x] T303 Conversion PRs (disposition (a)): domain content
   moved to params/ports; per-node fixture equivalence,
   byte-identical, against the original node. (C087-7)
   Acceptance: test. *This does not establish the primitive is
@@ -152,11 +152,16 @@ carries its gate/test output verbatim** — not a summary of it.
   comparison holding) — same record. PR-E (family F9)
   converted the eight F9 nodes onto eight new generic
   primitives (36 fixture cases byte-identical; the 27-graph
-  comparison holding) — same record. Five families remain
-  (F2, F10, F11, F12, F13), plus family F15
-  (the two live wrappers) and the final batch's
-  retire-flagging of the four triage retire-candidates; this
-  task ticks only when the last conversion PR merges.
+  comparison holding) — same record. PR-F (families F2, F10,
+  F11, F12, F13 and F15) converted the final eighteen nodes
+  onto eleven new generic primitives (74 fixture cases
+  byte-identical; the 27-graph comparison holding) and
+  legacy-flagged the four triage retire-candidates with no
+  implementation change — same record. Every S3 conversion
+  and retire-flag disposition is now landed: 64 of 64 CONVERT
+  dispositions converted (62 conversions plus the two F14
+  relabels), 4 of 4 RETIRE-CANDIDATEs flagged, and the two
+  F15 live wrappers converted — this task is complete.
   Side item (owner order 2026-11-03): the M77 corpus-pipeline
   unification was gated on a Step 0 divergence check and
   STOPPED there — pipeline B's real data (the decoded JSON,

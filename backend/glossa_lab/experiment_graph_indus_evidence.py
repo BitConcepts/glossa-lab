@@ -35,104 +35,88 @@ _SCRIPTS       = _EVIDENCE_BASE / "scripts"
 # ── Node implementations ────────────────────────────────────────────────────
 
 def _literature_loader(inputs: dict, params: dict) -> dict:
-    """Load registered literature documents from glossa-indus/literature/documents/."""
-    _LIT_DOCS.mkdir(parents=True, exist_ok=True)
-    q          = str(params.get("query", "") or "").lower()
-    max_papers = int(params.get("max_papers", 200) or 200)
+    """Load registered literature documents from glossa-indus/literature/documents/.
 
-    papers: list[dict[str, Any]] = []
-    for f in sorted(_LIT_DOCS.glob("*.json")):
-        try:
-            d = json.loads(f.read_text("utf-8"))
-        except Exception:  # noqa: BLE001
-            continue
-        if q:
-            hay = ((d.get("detected_title") or "") + " " + " ".join(d.get("detected_authors") or [])).lower()
-            if q not in hay:
-                continue
-        # Attach claim count
-        claim_file = _CLAIMS_DIR / f"{d.get('document_id', f.stem)}.json"
-        claim_count = 0
-        if claim_file.exists():
-            try:
-                claim_count = json.loads(claim_file.read_text("utf-8")).get("total_claims", 0)
-            except Exception:  # noqa: BLE001
-                pass
-        papers.append({
-            "document_id": d.get("document_id", f.stem),
-            "title":       d.get("detected_title", ""),
-            "authors":     d.get("detected_authors", []),
-            "year":        d.get("detected_year"),
-            "doi":         d.get("detected_doi"),
-            "claim_count": claim_count,
-            "status":      d.get("processing_status", ""),
-        })
-        if len(papers) >= max_papers:
-            break
+    Spec 087 S3 PR-F: delegates to the generic JsonRecordDirLoader
+    (search mode); the evidence-base paths and field names are spec data
+    resolved from this module's constants at call time.
+    """
+    from glossa_lab.generic_loaders import json_record_dir_loader_execute
 
-    return {
-        "papers":       papers,
-        "total_papers": len(papers),
-        "text":         f"Loaded {len(papers)} registered papers.",
+    spec = {
+        "mode": "search",
+        "directory": str(_LIT_DOCS),
+        "ensure_dir": True,
+        "query_param": "query",
+        "max_param": "max_papers",
+        "max_default": 200,
+        "search_title_field": "detected_title",
+        "search_authors_field": "detected_authors",
+        "projection": [
+            {"out": "document_id", "from": "document_id", "default_stem": True},
+            {"out": "title", "from": "detected_title", "default": ""},
+            {"out": "authors", "from": "detected_authors", "default": []},
+            {"out": "year", "from": "detected_year"},
+            {"out": "doi", "from": "detected_doi"},
+            {"out": "status", "from": "processing_status", "default": ""},
+        ],
+        "count_from": {
+            "out": "claim_count",
+            "directory": str(_CLAIMS_DIR),
+            "key_field": "document_id",
+            "value_field": "total_claims",
+            "default": 0,
+        },
+        "items_key": "papers",
+        "count_key": "total_papers",
+        "text_template": "Loaded {n} registered papers.",
     }
+    merged = dict(params)
+    merged["loader_spec"] = spec
+    return json_record_dir_loader_execute(inputs, merged)
 
 
 def _claims_loader(inputs: dict, params: dict) -> dict:
-    """Load extracted claims with optional type/status/sign filters."""
-    _CLAIMS_DIR.mkdir(parents=True, exist_ok=True)
-    claim_type   = str(params.get("claim_type", "") or "").strip()
-    claim_status = str(params.get("claim_status", "") or "").strip()
-    sign_filter  = str(params.get("sign_filter", "") or "").lower().strip()
-    max_claims   = int(params.get("max_claims", 500) or 500)
+    """Load extracted claims with optional type/status/sign filters.
 
-    all_claims: list[dict] = []
-    source_files = []
+    Spec 087 S3 PR-F: delegates to the generic JsonRecordDirLoader
+    (records mode); the claims directory, the upstream-papers stem
+    restriction, the three filters, the counts and the text shape are
+    spec data. No schema defaults are applied — the historical loader
+    passes claim records through unchanged (its "unknown" fallbacks
+    live only in the counts, carried here as count defaults).
+    """
+    from glossa_lab.generic_loaders import json_record_dir_loader_execute
 
-    # If papers from upstream, restrict to those doc_ids
-    upstream_papers = inputs.get("papers") or []
-    allowed_ids = {p.get("document_id", "") for p in upstream_papers} if upstream_papers else None
-
-    for f in sorted(_CLAIMS_DIR.glob("*.json")):
-        if allowed_ids is not None and f.stem not in allowed_ids:
-            continue
-        try:
-            record = json.loads(f.read_text("utf-8"))
-        except Exception:  # noqa: BLE001
-            continue
-        source_files.append(f.stem)
-        for claim in record.get("claims", []):
-            if claim_type and claim.get("claim_type") != claim_type:
-                continue
-            if claim_status and claim.get("claim_status") != claim_status:
-                continue
-            if sign_filter:
-                signs = " ".join(claim.get("signs_involved") or [])
-                if sign_filter not in signs.lower() and sign_filter not in (claim.get("normalized_claim") or "").lower():
-                    continue
-            all_claims.append(claim)
-            if len(all_claims) >= max_claims:
-                break
-        if len(all_claims) >= max_claims:
-            break
-
-    type_counts: dict[str, int] = {}
-    status_counts: dict[str, int] = {}
-    for c in all_claims:
-        type_counts[c.get("claim_type", "unknown")] = type_counts.get(c.get("claim_type", "unknown"), 0) + 1
-        status_counts[c.get("claim_status", "unknown")] = status_counts.get(c.get("claim_status", "unknown"), 0) + 1
-
-    return {
-        "claims":        all_claims,
-        "total_claims":  len(all_claims),
-        "source_docs":   len(source_files),
-        "type_counts":   type_counts,
-        "status_counts": status_counts,
-        "json":          {"claims": all_claims, "type_counts": type_counts},
-        "text": (
-            f"Loaded {len(all_claims)} claims from {len(source_files)} docs. "
-            f"Types: {', '.join(f'{k}={v}' for k, v in sorted(type_counts.items())[:5])}"
-        ),
+    spec = {
+        "mode": "records",
+        "directory": str(_CLAIMS_DIR),
+        "ensure_dir": True,
+        "items_key": "claims",
+        "out_items_key": "claims",
+        "count_key": "total_claims",
+        "sources_key": "source_docs",
+        "max_param": "max_claims",
+        "max_default": 500,
+        "restrict": {"input_key": "papers", "id_field": "document_id"},
+        "schema_defaults": {},
+        "filters": [
+            {"param": "claim_type", "field": "claim_type", "kind": "equals"},
+            {"param": "claim_status", "field": "claim_status", "kind": "equals"},
+            {"param": "sign_filter", "kind": "substring_any",
+             "fields": ["signs_involved", "normalized_claim"]},
+        ],
+        "counts": [
+            {"out": "type_counts", "field": "claim_type", "default": "unknown"},
+            {"out": "status_counts", "field": "claim_status", "default": "unknown"},
+        ],
+        "json_counts": ["type_counts"],
+        "text_types": {"from_counts": "type_counts", "limit": 5},
+        "text_template": "Loaded {n} claims from {n_sources} docs. Types: {types}",
     }
+    merged = dict(params)
+    merged["loader_spec"] = spec
+    return json_record_dir_loader_execute(inputs, merged)
 
 
 def _cross_hypothesis_matrix(inputs: dict, params: dict) -> dict:
@@ -303,72 +287,30 @@ def _hidden_hypothesis_gen(inputs: dict, params: dict) -> dict:
 
 
 def _claim_tester(inputs: dict, params: dict) -> dict:
-    """Test directly-testable positional claims against corpus sequences."""
-    claims    = inputs.get("claims") or []
-    sequences = inputs.get("sequences") or []
+    """Test directly-testable positional claims against corpus sequences.
 
-    if not sequences:
-        return {"error": "No sequences — connect BuiltinCorpus or CorpusReader.sequences to the 'sequences' port"}
-    if not claims:
-        return {"error": "No claims — connect IndusClaimsLoader.claims"}
+    Spec 087 S3 PR-F: delegates to the generic PositionalClaimTester;
+    the testable type keywords, the position needles, the corpus-average
+    support rule (observed >= average x 1.2 over signs with >= 3
+    occurrences) and the error texts are spec data.
+    """
+    from glossa_lab.generic_primitives import positional_claim_tester_execute
 
-    from collections import Counter  # noqa: PLC0415
-
-    # Build positional profile from sequences
-    tc  = Counter(s for seq in sequences for s in seq)
-    ic  = Counter(seq[0]  for seq in sequences if len(seq) > 1)
-    te  = Counter(seq[-1] for seq in sequences if len(seq) > 1)
-    len(sequences)
-
-    results: list[dict] = []
-    for claim in claims:
-        ct = claim.get("claim_type", "")
-        if "position" not in ct and "sign_value" not in ct and "sign_function" not in ct:
-            continue
-        signs   = claim.get("signs_involved") or []
-        nc      = claim.get("normalized_claim", "")
-        pred_pos = (
-            "initial"  if "initial" in nc.lower() else
-            "terminal" if "terminal" in nc.lower() else
-            None
-        )
-        if not signs or not pred_pos:
-            continue
-
-        for sign in signs[:4]:
-            n       = tc.get(sign, 0)
-            if n == 0:
-                continue
-            obs_rate = (ic[sign] if pred_pos == "initial" else te[sign]) / n
-            avg_rate = (
-                sum(ic[s] / max(tc[s], 1) for s in tc if tc[s] >= 3) / max(len([s for s in tc if tc[s] >= 3]), 1)
-                if pred_pos == "initial" else
-                sum(te[s] / max(tc[s], 1) for s in tc if tc[s] >= 3) / max(len([s for s in tc if tc[s] >= 3]), 1)
-            )
-            supported = obs_rate >= avg_rate * 1.2
-            results.append({
-                "claim_id":         claim.get("claim_id", ""),
-                "sign":             sign,
-                "predicted_pos":    pred_pos,
-                "observed_rate":    round(obs_rate, 4),
-                "corpus_avg_rate":  round(avg_rate, 4),
-                "lift":             round(obs_rate / max(avg_rate, 0.001), 3),
-                "n_occurrences":    n,
-                "test_verdict":     "supported" if supported else "not_supported",
-                "source_claim":     nc[:100],
-            })
-
-    n_supp  = sum(1 for r in results if r["test_verdict"] == "supported")
-    n_total = len(results)
-    return {
-        "test_results": results,
-        "n_tested":     n_total,
-        "n_supported":  n_supp,
-        "support_rate": round(n_supp / max(n_total, 1), 4),
-        "json": {"test_results": results},
-        "number": round(n_supp / max(n_total, 1), 4),
-        "text":  f"Tested {n_total} sign-position claims: {n_supp}/{n_total} supported ({round(100*n_supp/max(n_total,1))}%).",
+    spec = {
+        "type_keywords": ["position", "sign_value", "sign_function"],
+        "positions": [["initial", "initial"], ["terminal", "terminal"]],
+        "positional_min_length": 1,
+        "min_count_for_avg": 3,
+        "support_multiplier": 1.2,
+        "sign_cap": 4,
+        "source_truncate": 100,
+        "no_sequences_error": "No sequences — connect BuiltinCorpus or CorpusReader.sequences to the 'sequences' port",
+        "no_claims_error": "No claims — connect IndusClaimsLoader.claims",
+        "text_template": "Tested {n_total} sign-position claims: {n_supp}/{n_total} supported ({pct}%).",
     }
+    merged = dict(params)
+    merged["tester_spec"] = spec
+    return positional_claim_tester_execute(inputs, merged)
 
 
 def _null_model_test(inputs: dict, params: dict) -> dict:

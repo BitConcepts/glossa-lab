@@ -38,6 +38,7 @@ from glossa_lab.experiment_base import ExperimentBase
 from glossa_lab.generic_loaders import (
     dataset_record_loader_execute,
     json_corpus_loader_execute,
+    json_record_dir_loader_execute,
 )
 from glossa_lab.generic_primitives import (
     anchor_syllabifier_execute,
@@ -55,6 +56,7 @@ from glossa_lab.generic_primitives import (
     phoneme_map_coverage_execute,
     phoneme_map_permutation_test_execute,
     pmi_centrality_ranker_execute,
+    positional_claim_tester_execute,
     positional_class_classifier_execute,
     registry_table_loader_execute,
     reverse_skeleton_search_execute,
@@ -2489,6 +2491,41 @@ for _d in [
             "null_spec":{"type":"object","title":"Null Spec",
                          "description":"Ordered [|z| threshold, verdict] bands and the fallback verdict."}}},
         fn=sign_position_null_test_execute),
+    AtomicNodeDef("JsonRecordDirLoader","JSON Record Directory Loader","Sources",
+        "Load a directory of one-JSON-record-per-file documents (Spec 087 "
+        "S3): search mode projects each parseable record through a field "
+        "map with an optional substring query and a cross-reference count "
+        "from a sibling directory; records mode flattens the item lists of "
+        "every parseable file (optionally restricted to files named by an "
+        "upstream input) under param-driven filters, per-field value "
+        "counts, and a cap. Paths, field names, filters, and text are "
+        "parameters (loader_spec), not code — the Indus evidence loaders "
+        "delegate to this engine.",
+        inputs=[{"name":"papers","type":"papers","required":False}],
+        outputs=[{"name":"papers","type":"papers"},{"name":"claims","type":"claims"},{"name":"total_papers","type":"number"},{"name":"total_claims","type":"number"},{"name":"source_docs","type":"number"},{"name":"type_counts","type":"json"},{"name":"status_counts","type":"json"},{"name":"json","type":"json"},{"name":"text","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "query":{"type":"string","title":"Search Query","default":""},
+            "max_papers":{"type":"integer","title":"Max Papers","default":200,"minimum":1},
+            "claim_type":{"type":"string","title":"Claim Type Filter","default":""},
+            "claim_status":{"type":"string","title":"Claim Status Filter","default":""},
+            "sign_filter":{"type":"string","title":"Sign Filter","default":""},
+            "max_claims":{"type":"integer","title":"Max Claims","default":500,"minimum":1},
+            "loader_spec":{"type":"object","title":"Loader Spec","description":"Full declarative spec: mode, directory, projection / filters / counts, text templates."}}},
+        fn=json_record_dir_loader_execute),
+    AtomicNodeDef("PositionalClaimTester","Positional Claim Tester","Analysis",
+        "Test typed claims against a sequence corpus (Spec 087 S3): a "
+        "claim is testable when its type contains a spec keyword, it names "
+        "a sign, and its normalized text names a position; each named "
+        "sign's observed positional rate is compared with the corpus "
+        "average over frequent signs, scaled by a spec multiplier. "
+        "Untestable claims are skipped silently. The Indus-evidence "
+        "IndusClaimTester delegates to this engine.",
+        inputs=[{"name":"claims","type":"claims","required":True},
+                {"name":"sequences","type":"sequences","required":True}],
+        outputs=[{"name":"test_results","type":"json"},{"name":"n_tested","type":"number"},{"name":"n_supported","type":"number"},{"name":"support_rate","type":"number"},{"name":"json","type":"json"},{"name":"number","type":"number"},{"name":"text","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "tester_spec":{"type":"object","title":"Tester Spec","description":"Type keywords, position needles, support rule, error and verdict texts."}}},
+        fn=positional_claim_tester_execute),
     AtomicNodeDef("FreqCounter","Frequency Counter","Transforms",
         "Count symbol occurrences across all sequences.",
         inputs=[{"name":"sequences","type":"sequences","required":True}],

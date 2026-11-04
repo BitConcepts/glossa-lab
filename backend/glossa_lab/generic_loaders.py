@@ -503,3 +503,175 @@ def dataset_record_loader_execute(inputs: dict, params: dict) -> dict:
         else:
             return {"error": f"DatasetRecordLoader: unknown output op {kind!r}"}
     return outputs
+
+
+# ── JsonRecordDirLoader ─────────────────────────────────────────────────────
+# Spec 087 S3 PR-F (family F2). A directory of one-JSON-record-per-file
+# documents, in two modes:
+#
+#   "search"  — project each parseable record through a field map, with an
+#               optional substring query over two named fields and an
+#               optional cross-reference count read from a sibling
+#               directory's per-record files.
+#   "records" — flatten the item lists of every parseable record file
+#               (optionally restricted to the files named by an upstream
+#               input), applying param-driven filters, per-field value
+#               counts, and a cap.
+#
+# The spec carries the domain specifics (directory, field names, filter
+# wiring, count fields, text templates); the engine is the machinery.
+# Unparseable files are skipped silently in both modes — the behaviour of
+# the evidence loaders this engine generalises.
+
+
+def _record_dir_files(directory: str, ensure_dir: bool) -> list[Path]:
+    root = Path(directory)
+    if ensure_dir:
+        root.mkdir(parents=True, exist_ok=True)
+    return sorted(root.glob("*.json"))
+
+
+def _project_record(record: dict, stem: str, projection: list[dict]) -> dict:
+    out: dict[str, Any] = {}
+    for entry in projection:
+        if "stem" in entry:
+            out[entry["out"]] = stem
+        elif entry.get("default_stem"):
+            out[entry["out"]] = record.get(entry["from"], stem)
+        else:
+            out[entry["out"]] = record.get(entry["from"], entry.get("default"))
+    return out
+
+
+def _cross_ref_count(record: dict, stem: str, count_from: dict) -> Any:
+    name = record.get(count_from["key_field"], stem)
+    target = Path(count_from["directory"]) / f"{name}.json"
+    default = count_from.get("default", 0)
+    if not target.exists():
+        return default
+    try:
+        return json.loads(target.read_text("utf-8")).get(
+            count_from["value_field"], default)
+    except Exception:  # noqa: BLE001
+        return default
+
+
+def _record_dir_search(inputs: dict, params: dict, spec: dict) -> dict:
+    q = str(params.get(spec.get("query_param", "query"), "") or "").lower()
+    max_items = int(params.get(spec.get("max_param", "max_items"),
+                               spec.get("max_default", 200)) or spec.get("max_default", 200))
+    title_field = spec["search_title_field"]
+    authors_field = spec["search_authors_field"]
+    items: list[dict[str, Any]] = []
+    for f in _record_dir_files(spec["directory"], spec.get("ensure_dir", False)):
+        try:
+            d = json.loads(f.read_text("utf-8"))
+        except Exception:  # noqa: BLE001
+            continue
+        if q:
+            hay = ((d.get(title_field) or "") + " "
+                   + " ".join(d.get(authors_field) or [])).lower()
+            if q not in hay:
+                continue
+        row = _project_record(d, f.stem, spec["projection"])
+        if "count_from" in spec:
+            row[spec["count_from"]["out"]] = _cross_ref_count(
+                d, f.stem, spec["count_from"])
+        items.append(row)
+        if len(items) >= max_items:
+            break
+    out = {spec.get("items_key", "items"): items,
+           spec.get("count_key", "total"): len(items)}
+    if "text_template" in spec:
+        out["text"] = _fill(spec["text_template"], {"n": len(items)})
+    return out
+
+
+def _record_filter_keeps(claim: dict, filters: list[dict], params: dict) -> bool:
+    for flt in filters:
+        kind = flt["kind"]
+        if kind == "equals":
+            value = str(params.get(flt["param"], "") or "").strip()
+            if value and claim.get(flt["field"]) != value:
+                return False
+        elif kind == "substring_any":
+            needle = str(params.get(flt["param"], "") or "").lower().strip()
+            if needle:
+                hit = False
+                for field in flt["fields"]:
+                    raw = claim.get(field)
+                    hay = (" ".join(raw) if isinstance(raw, list)
+                           else (raw or ""))
+                    if needle in str(hay).lower():
+                        hit = True
+                        break
+                if not hit:
+                    return False
+    return True
+
+
+def _record_dir_records(inputs: dict, params: dict, spec: dict) -> dict:
+    max_items = int(params.get(spec.get("max_param", "max_items"),
+                               spec.get("max_default", 500)) or spec.get("max_default", 500))
+    restrict = spec.get("restrict") or {}
+    upstream = inputs.get(restrict.get("input_key", "")) or []
+    allowed = None
+    if restrict and upstream:
+        allowed = {p.get(restrict.get("id_field", "document_id"), "")
+                   for p in upstream}
+    defaults = spec.get("schema_defaults") or {}
+    items: list[dict] = []
+    source_files: list[str] = []
+    for f in _record_dir_files(spec["directory"], spec.get("ensure_dir", False)):
+        if allowed is not None and f.stem not in allowed:
+            continue
+        try:
+            record = json.loads(f.read_text("utf-8"))
+        except Exception:  # noqa: BLE001
+            continue
+        source_files.append(f.stem)
+        for raw_item in record.get(spec.get("items_key", "items"), []):
+            item = {**defaults, **raw_item} if defaults else raw_item
+            if not _record_filter_keeps(item, spec.get("filters") or [], params):
+                continue
+            items.append(item)
+            if len(items) >= max_items:
+                break
+        if len(items) >= max_items:
+            break
+    out: dict[str, Any] = {spec.get("out_items_key", "items"): items,
+                           spec.get("count_key", "total"): len(items),
+                           spec.get("sources_key", "source_docs"): len(source_files)}
+    counts: dict[str, dict[str, int]] = {}
+    for count_spec in spec.get("counts") or []:
+        table: dict[str, int] = {}
+        field = count_spec["field"]
+        default = count_spec.get("default", "unknown")
+        for item in items:
+            key = item.get(field, default)
+            table[key] = table.get(key, 0) + 1
+        counts[count_spec["out"]] = table
+        out[count_spec["out"]] = table
+    if "json_counts" in spec:
+        embedded = {spec.get("out_items_key", "items"): items}
+        for name in spec["json_counts"]:
+            embedded[name] = counts[name]
+        out["json"] = embedded
+    if "text_template" in spec:
+        context = {"n": len(items), "n_sources": len(source_files)}
+        types_from = (spec.get("text_types") or {}).get("from_counts")
+        if types_from:
+            table = counts[types_from]
+            limit = (spec.get("text_types") or {}).get("limit", 5)
+            context["types"] = ", ".join(
+                f"{k}={v}" for k, v in sorted(table.items())[:limit])
+        out["text"] = _fill(spec["text_template"], context)
+    return out
+
+
+def json_record_dir_loader_execute(inputs: dict, params: dict) -> dict:
+    """JsonRecordDirLoader engine: see the section header above."""
+    spec = dict(params.get("loader_spec") or {})
+    if spec.get("mode") == "records":
+        return _record_dir_records(inputs, params, spec)
+    return _record_dir_search(inputs, params, spec)

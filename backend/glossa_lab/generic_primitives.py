@@ -3792,3 +3792,101 @@ def sign_position_null_test_execute(inputs: dict, params: dict) -> dict:
         "text": (f"Null model ({test_type}): {target_sign} z={z_score:.2f} "
                  f"p≈{p_approx:.3f} → {verdict}."),
     }
+
+
+# ── PositionalClaimTester ───────────────────────────────────────────────────
+# Spec 087 S3 PR-F (family F2). Tests claims of spec-named types against a
+# sequence corpus: a claim is testable when its type contains one of the
+# spec's keywords, it names at least one sign, and its normalized text
+# names a position (the first matching position needle wins). For each of
+# the claim's first `sign_cap` signs present in the corpus, the observed
+# positional rate (positional occurrences / total occurrences, positional
+# counts taken over sequences longer than `positional_min_length`) is
+# compared against the corpus average rate over signs with at least
+# `min_count_for_avg` occurrences, scaled by `support_multiplier`.
+# Claims that fail any testability condition are skipped — the engine
+# emits no row for them, exactly as the evidence tester it generalises.
+
+
+def positional_claim_tester_execute(inputs: dict, params: dict) -> dict:
+    spec = dict(params.get("tester_spec") or {})
+    claims = inputs.get("claims") or []
+    sequences = inputs.get("sequences") or []
+    if not sequences:
+        return {"error": spec["no_sequences_error"]}
+    if not claims:
+        return {"error": spec["no_claims_error"]}
+
+    keywords = spec.get("type_keywords") or []
+    positions = spec.get("positions") or [["initial", "initial"],
+                                          ["terminal", "terminal"]]
+    min_len = spec.get("positional_min_length", 1)
+    min_count = spec.get("min_count_for_avg", 3)
+    multiplier = spec.get("support_multiplier", 1.2)
+    sign_cap = spec.get("sign_cap", 4)
+    truncate = spec.get("source_truncate", 100)
+    round_obs = spec.get("round_observed", 4)
+    round_avg = spec.get("round_average", 4)
+    round_lift = spec.get("round_lift", 3)
+    lift_floor = spec.get("lift_floor", 0.001)
+    round_rate = spec.get("round_support_rate", 4)
+
+    tc = Counter(s for seq in sequences for s in seq)
+    ic = Counter(seq[0] for seq in sequences if len(seq) > min_len)
+    te = Counter(seq[-1] for seq in sequences if len(seq) > min_len)
+    counters = {label: (ic if label == "initial" else te)
+                for _needle, label in positions}
+
+    results: list[dict] = []
+    for claim in claims:
+        ct = claim.get("claim_type", "")
+        if not any(k in ct for k in keywords):
+            continue
+        signs = claim.get("signs_involved") or []
+        nc = claim.get("normalized_claim", "")
+        pred_pos = None
+        for needle, label in positions:
+            if needle in nc.lower():
+                pred_pos = label
+                break
+        if not signs or not pred_pos:
+            continue
+        pos_counter = counters[pred_pos]
+        frequent = [s for s in tc if tc[s] >= min_count]
+        avg_rate = (sum(pos_counter[s] / max(tc[s], 1) for s in frequent)
+                    / max(len(frequent), 1))
+        for sign in signs[:sign_cap]:
+            n = tc.get(sign, 0)
+            if n == 0:
+                continue
+            obs_rate = pos_counter[sign] / n
+            supported = obs_rate >= avg_rate * multiplier
+            results.append({
+                "claim_id": claim.get("claim_id", ""),
+                "sign": sign,
+                "predicted_pos": pred_pos,
+                "observed_rate": round(obs_rate, round_obs),
+                "corpus_avg_rate": round(avg_rate, round_avg),
+                "lift": round(obs_rate / max(avg_rate, lift_floor), round_lift),
+                "n_occurrences": n,
+                "test_verdict": (spec.get("supported_verdict", "supported")
+                                 if supported else
+                                 spec.get("unsupported_verdict", "not_supported")),
+                "source_claim": nc[:truncate],
+            })
+
+    n_supp = sum(1 for r in results
+                 if r["test_verdict"] == spec.get("supported_verdict", "supported"))
+    n_total = len(results)
+    support_rate = round(n_supp / max(n_total, 1), round_rate)
+    return {
+        "test_results": results,
+        "n_tested": n_total,
+        "n_supported": n_supp,
+        "support_rate": support_rate,
+        "json": {"test_results": results},
+        "number": support_rate,
+        "text": spec["text_template"].format(
+            n_total=n_total, n_supp=n_supp,
+            pct=round(100 * n_supp / max(n_total, 1))),
+    }

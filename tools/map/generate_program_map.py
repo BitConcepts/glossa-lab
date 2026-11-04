@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
-"""Generate the Spec 088 program map (Stage S1, T103).
+"""Generate the Spec 088 program map (Stage S1, T103; page S4, T401).
 
 Runs the pure builder in `backend/glossa_lab/program_map_generate.py`
 over the ledger, the curated taxonomy, and the spec tree, and
-writes the two generated artifacts:
+writes the three generated artifacts:
 
 - `glossa-indus/map/program-map.json` — one node per claim and
   per study, standings derived under program-map-defs v1;
 - `glossa-indus/map/program-map-finds.json` — the machine find
   list (bundle-less studies, judgment calls, extracted claims
-  with null falsifiers, restricted nodes).
+  with null falsifiers, restricted nodes);
+- `glossa-indus/map/program-map.html` — the generated page
+  (Stage S4): the registered template wrapped around the two
+  data artifacts embedded verbatim; it derives nothing.
 
 Delete-and-regenerate over unchanged inputs reproduces the
 committed bytes exactly; the stamp carries only input-derived

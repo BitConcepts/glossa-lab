@@ -3520,6 +3520,1530 @@
     },
     "summary": "Phase-21: P21a=UNKNOWN | P21b=UNKNOWN | P21d=UNKNOWN"
    }
+  },
+  {
+   "id": "f13_noop_prior",
+   "node": "CISIVol3OCRNode",
+   "mode": "full",
+   "inputs": {},
+   "params": {
+    "output_path": "backend/tests/fixtures/spec087_s3_conv_f/f13_prior_results.json"
+   },
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "n_iconography": 1,
+    "n_records": 5,
+    "n_seal": 2,
+    "n_sign_ref": 1,
+    "records": [
+     {
+      "page": 1,
+      "raw": "SEAL: M-001 | SIGNS: 001, 002",
+      "seal_id": "M-001",
+      "signs": "001, 002",
+      "type": "seal"
+     },
+     {
+      "motif": "unicorn",
+      "page": 1,
+      "raw": "ICONOGRAPHY: M-001 | MOTIF: unicorn",
+      "seal_id": "M-001",
+      "type": "iconography"
+     },
+     {
+      "meaning": "fish",
+      "page": 2,
+      "raw": "SIGN_REF: 047 | MEANING: fish",
+      "sign_id": "047",
+      "type": "sign_ref"
+     },
+     {
+      "error": "vision unavailable",
+      "page": 2,
+      "type": "error"
+     },
+     {
+      "page": 3,
+      "raw": "SEAL: H-002 | SIGNS: 003",
+      "seal_id": "H-002",
+      "signs": "003",
+      "type": "seal"
+     }
+    ],
+    "verdict": "OCR no-op (run_ocr=False): loaded 5 existing records from backend/tests/fixtures/spec087_s3_conv_f/f13_prior_results.json (2 seal, 1 iconography, 1 sign_ref). To re-run vision OCR, set run_ocr=true and provide pdf_path."
+   }
+  },
+  {
+   "id": "f13_noop_invalid",
+   "node": "CISIVol3OCRNode",
+   "mode": "full",
+   "inputs": {},
+   "params": {
+    "output_path": "backend/tests/fixtures/spec087_s3_conv_f/f13_prior_invalid.json"
+   },
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "n_iconography": 0,
+    "n_records": 0,
+    "n_seal": 0,
+    "n_sign_ref": 0,
+    "records": [],
+    "verdict": "OCR no-op (run_ocr=False): loaded 0 existing records from backend/tests/fixtures/spec087_s3_conv_f/f13_prior_invalid.json (0 seal, 0 iconography, 0 sign_ref). To re-run vision OCR, set run_ocr=true and provide pdf_path."
+   }
+  },
+  {
+   "id": "f13_noop_missing",
+   "node": "CISIVol3OCRNode",
+   "mode": "full",
+   "inputs": {},
+   "params": {
+    "output_path": "backend/tests/fixtures/spec087_s3_conv_f/f13_absent.json"
+   },
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "n_iconography": 0,
+    "n_records": 0,
+    "n_seal": 0,
+    "n_sign_ref": 0,
+    "records": [],
+    "verdict": "OCR no-op (run_ocr=False): loaded 0 existing records from backend/tests/fixtures/spec087_s3_conv_f/f13_absent.json (0 seal, 0 iconography, 0 sign_ref). To re-run vision OCR, set run_ocr=true and provide pdf_path."
+   }
+  },
+  {
+   "id": "f13_run_no_pdf",
+   "node": "CISIVol3OCRNode",
+   "mode": "full",
+   "inputs": {},
+   "params": {
+    "run_ocr": true,
+    "output_path": "backend/tests/fixtures/spec087_s3_conv_f/f13_prior_results.json"
+   },
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "error": "run_ocr=True but pdf_path not provided",
+    "n_records": 5,
+    "records": [
+     {
+      "page": 1,
+      "raw": "SEAL: M-001 | SIGNS: 001, 002",
+      "seal_id": "M-001",
+      "signs": "001, 002",
+      "type": "seal"
+     },
+     {
+      "motif": "unicorn",
+      "page": 1,
+      "raw": "ICONOGRAPHY: M-001 | MOTIF: unicorn",
+      "seal_id": "M-001",
+      "type": "iconography"
+     },
+     {
+      "meaning": "fish",
+      "page": 2,
+      "raw": "SIGN_REF: 047 | MEANING: fish",
+      "sign_id": "047",
+      "type": "sign_ref"
+     },
+     {
+      "error": "vision unavailable",
+      "page": 2,
+      "type": "error"
+     },
+     {
+      "page": 3,
+      "raw": "SEAL: H-002 | SIGNS: 003",
+      "seal_id": "H-002",
+      "signs": "003",
+      "type": "seal"
+     }
+    ]
+   }
+  },
+  {
+   "id": "f13_run_pdf_missing",
+   "node": "CISIVol3OCRNode",
+   "mode": "full",
+   "inputs": {},
+   "params": {
+    "run_ocr": true,
+    "pdf_path": "no_such_dir/nope.pdf",
+    "output_path": "backend/tests/fixtures/spec087_s3_conv_f/f13_prior_results.json"
+   },
+   "setup": {
+    "kind": "root_normalize"
+   },
+   "expected": {
+    "error": "pdf not found: <ROOT>/no_such_dir/nope.pdf",
+    "n_records": 5,
+    "records": [
+     {
+      "page": 1,
+      "raw": "SEAL: M-001 | SIGNS: 001, 002",
+      "seal_id": "M-001",
+      "signs": "001, 002",
+      "type": "seal"
+     },
+     {
+      "motif": "unicorn",
+      "page": 1,
+      "raw": "ICONOGRAPHY: M-001 | MOTIF: unicorn",
+      "seal_id": "M-001",
+      "type": "iconography"
+     },
+     {
+      "meaning": "fish",
+      "page": 2,
+      "raw": "SIGN_REF: 047 | MEANING: fish",
+      "sign_id": "047",
+      "type": "sign_ref"
+     },
+     {
+      "error": "vision unavailable",
+      "page": 2,
+      "type": "error"
+     },
+     {
+      "page": 3,
+      "raw": "SEAL: H-002 | SIGNS: 003",
+      "seal_id": "H-002",
+      "signs": "003",
+      "type": "seal"
+     }
+    ]
+   }
+  },
+  {
+   "id": "f13_run_basic",
+   "node": "CISIVol3OCRNode",
+   "mode": "full",
+   "inputs": {},
+   "params": {
+    "run_ocr": true,
+    "pdf_path": "{TMP}/catalog.pdf",
+    "output_path": "{TMP}/f13_run_basic.json"
+   },
+   "setup": {
+    "kind": "ocr_run",
+    "transcripts": [
+     "SEAL: M-100 | SIGNS: 010, 020\nICONOGRAPHY: M-100 | MOTIF: bull\nNO_SEALS_FOUND\nan unrelated line\nSEAL: missing the pipe SIGNS: 1\n SIGN_REF: 047 | MEANING: fish sign\n\n",
+     "SEAL: H-200 | SIGNS: 030\nICONOGRAPHY: no marker on this line\nSIGN_REF: 099 | MEANING: jar\n"
+    ],
+    "fail_calls": {}
+   },
+   "expected": {
+    "n_iconography": 1,
+    "n_records": 5,
+    "n_seal": 2,
+    "n_sign_ref": 2,
+    "prompts_seen": [
+     "You are looking at a page of the Corpus of Indus Seals and Inscriptions (CISI) Vol 3 Part 3, edited by Asko Parpola. The page may contain seal drawings with their CISI catalogue IDs (e.g. 'M-410', 'H-9', 'B-12'), Parpola sign-list IDs, and iconographic motifs.\n\nExtract a structured listing in this exact format, one record per line:\n  SEAL: <catalogue_id> | SIGNS: <comma-separated sign ids or descriptive>\n  ICONOGRAPHY: <catalogue_id or descriptor> | MOTIF: <motif text>\n  SIGN_REF: <sign id> | MEANING: <meaning text>\nIf no seal IDs are visible, say 'NO_SEALS_FOUND'.",
+     "You are looking at a page of the Corpus of Indus Seals and Inscriptions (CISI) Vol 3 Part 3, edited by Asko Parpola. The page may contain seal drawings with their CISI catalogue IDs (e.g. 'M-410', 'H-9', 'B-12'), Parpola sign-list IDs, and iconographic motifs.\n\nExtract a structured listing in this exact format, one record per line:\n  SEAL: <catalogue_id> | SIGNS: <comma-separated sign ids or descriptive>\n  ICONOGRAPHY: <catalogue_id or descriptor> | MOTIF: <motif text>\n  SIGN_REF: <sign id> | MEANING: <meaning text>\nIf no seal IDs are visible, say 'NO_SEALS_FOUND'."
+    ],
+    "records": [
+     {
+      "page": 1,
+      "raw": "SEAL: M-100 | SIGNS: 010, 020",
+      "seal_id": "M-100",
+      "signs": "010, 020",
+      "type": "seal"
+     },
+     {
+      "motif": "bull",
+      "page": 1,
+      "raw": "ICONOGRAPHY: M-100 | MOTIF: bull",
+      "seal_id": "M-100",
+      "type": "iconography"
+     },
+     {
+      "meaning": "fish sign",
+      "page": 1,
+      "raw": "SIGN_REF: 047 | MEANING: fish sign",
+      "sign_id": "047",
+      "type": "sign_ref"
+     },
+     {
+      "page": 2,
+      "raw": "SEAL: H-200 | SIGNS: 030",
+      "seal_id": "H-200",
+      "signs": "030",
+      "type": "seal"
+     },
+     {
+      "meaning": "jar",
+      "page": 2,
+      "raw": "SIGN_REF: 099 | MEANING: jar",
+      "sign_id": "099",
+      "type": "sign_ref"
+     }
+    ],
+    "verdict": "OCR run on 2 pages of catalog.pdf: 5 records (2 seal, 1 iconography, 2 sign_ref). Saved to {TMP}/f13_run_basic.json.",
+    "written_records": [
+     {
+      "page": 1,
+      "raw": "SEAL: M-100 | SIGNS: 010, 020",
+      "seal_id": "M-100",
+      "signs": "010, 020",
+      "type": "seal"
+     },
+     {
+      "motif": "bull",
+      "page": 1,
+      "raw": "ICONOGRAPHY: M-100 | MOTIF: bull",
+      "seal_id": "M-100",
+      "type": "iconography"
+     },
+     {
+      "meaning": "fish sign",
+      "page": 1,
+      "raw": "SIGN_REF: 047 | MEANING: fish sign",
+      "sign_id": "047",
+      "type": "sign_ref"
+     },
+     {
+      "page": 2,
+      "raw": "SEAL: H-200 | SIGNS: 030",
+      "seal_id": "H-200",
+      "signs": "030",
+      "type": "seal"
+     },
+     {
+      "meaning": "jar",
+      "page": 2,
+      "raw": "SIGN_REF: 099 | MEANING: jar",
+      "sign_id": "099",
+      "type": "sign_ref"
+     }
+    ]
+   }
+  },
+  {
+   "id": "f13_run_pages_prompt",
+   "node": "CISIVol3OCRNode",
+   "mode": "full",
+   "inputs": {},
+   "params": {
+    "run_ocr": true,
+    "pdf_path": "{TMP}/catalog.pdf",
+    "output_path": "{TMP}/f13_run_pages_prompt.json",
+    "pages": [
+     2
+    ],
+    "prompt": "CUSTOM PROMPT"
+   },
+   "setup": {
+    "kind": "ocr_run",
+    "transcripts": [
+     "SEAL: H-200 | SIGNS: 030\nICONOGRAPHY: no marker on this line\nSIGN_REF: 099 | MEANING: jar\n"
+    ],
+    "fail_calls": {}
+   },
+   "expected": {
+    "n_iconography": 0,
+    "n_records": 2,
+    "n_seal": 1,
+    "n_sign_ref": 1,
+    "prompts_seen": [
+     "CUSTOM PROMPT"
+    ],
+    "records": [
+     {
+      "page": 2,
+      "raw": "SEAL: H-200 | SIGNS: 030",
+      "seal_id": "H-200",
+      "signs": "030",
+      "type": "seal"
+     },
+     {
+      "meaning": "jar",
+      "page": 2,
+      "raw": "SIGN_REF: 099 | MEANING: jar",
+      "sign_id": "099",
+      "type": "sign_ref"
+     }
+    ],
+    "verdict": "OCR run on 1 pages of catalog.pdf: 2 records (1 seal, 0 iconography, 1 sign_ref). Saved to {TMP}/f13_run_pages_prompt.json.",
+    "written_records": [
+     {
+      "page": 2,
+      "raw": "SEAL: H-200 | SIGNS: 030",
+      "seal_id": "H-200",
+      "signs": "030",
+      "type": "seal"
+     },
+     {
+      "meaning": "jar",
+      "page": 2,
+      "raw": "SIGN_REF: 099 | MEANING: jar",
+      "sign_id": "099",
+      "type": "sign_ref"
+     }
+    ]
+   }
+  },
+  {
+   "id": "f13_run_page_fail",
+   "node": "CISIVol3OCRNode",
+   "mode": "full",
+   "inputs": {},
+   "params": {
+    "run_ocr": true,
+    "pdf_path": "{TMP}/catalog.pdf",
+    "output_path": "{TMP}/f13_run_page_fail.json"
+   },
+   "setup": {
+    "kind": "ocr_run",
+    "transcripts": [
+     "SEAL: M-100 | SIGNS: 010, 020\nICONOGRAPHY: M-100 | MOTIF: bull\nNO_SEALS_FOUND\nan unrelated line\nSEAL: missing the pipe SIGNS: 1\n SIGN_REF: 047 | MEANING: fish sign\n\n",
+     "SEAL: H-200 | SIGNS: 030\nICONOGRAPHY: no marker on this line\nSIGN_REF: 099 | MEANING: jar\n"
+    ],
+    "fail_calls": {
+     "2": "vision backend down"
+    }
+   },
+   "expected": {
+    "n_iconography": 1,
+    "n_records": 4,
+    "n_seal": 1,
+    "n_sign_ref": 1,
+    "prompts_seen": [
+     "You are looking at a page of the Corpus of Indus Seals and Inscriptions (CISI) Vol 3 Part 3, edited by Asko Parpola. The page may contain seal drawings with their CISI catalogue IDs (e.g. 'M-410', 'H-9', 'B-12'), Parpola sign-list IDs, and iconographic motifs.\n\nExtract a structured listing in this exact format, one record per line:\n  SEAL: <catalogue_id> | SIGNS: <comma-separated sign ids or descriptive>\n  ICONOGRAPHY: <catalogue_id or descriptor> | MOTIF: <motif text>\n  SIGN_REF: <sign id> | MEANING: <meaning text>\nIf no seal IDs are visible, say 'NO_SEALS_FOUND'.",
+     "You are looking at a page of the Corpus of Indus Seals and Inscriptions (CISI) Vol 3 Part 3, edited by Asko Parpola. The page may contain seal drawings with their CISI catalogue IDs (e.g. 'M-410', 'H-9', 'B-12'), Parpola sign-list IDs, and iconographic motifs.\n\nExtract a structured listing in this exact format, one record per line:\n  SEAL: <catalogue_id> | SIGNS: <comma-separated sign ids or descriptive>\n  ICONOGRAPHY: <catalogue_id or descriptor> | MOTIF: <motif text>\n  SIGN_REF: <sign id> | MEANING: <meaning text>\nIf no seal IDs are visible, say 'NO_SEALS_FOUND'."
+    ],
+    "records": [
+     {
+      "page": 1,
+      "raw": "SEAL: M-100 | SIGNS: 010, 020",
+      "seal_id": "M-100",
+      "signs": "010, 020",
+      "type": "seal"
+     },
+     {
+      "motif": "bull",
+      "page": 1,
+      "raw": "ICONOGRAPHY: M-100 | MOTIF: bull",
+      "seal_id": "M-100",
+      "type": "iconography"
+     },
+     {
+      "meaning": "fish sign",
+      "page": 1,
+      "raw": "SIGN_REF: 047 | MEANING: fish sign",
+      "sign_id": "047",
+      "type": "sign_ref"
+     },
+     {
+      "error": "vision backend down",
+      "page": 2,
+      "type": "error"
+     }
+    ],
+    "verdict": "OCR run on 2 pages of catalog.pdf: 4 records (1 seal, 1 iconography, 1 sign_ref). Saved to {TMP}/f13_run_page_fail.json.",
+    "written_records": [
+     {
+      "page": 1,
+      "raw": "SEAL: M-100 | SIGNS: 010, 020",
+      "seal_id": "M-100",
+      "signs": "010, 020",
+      "type": "seal"
+     },
+     {
+      "motif": "bull",
+      "page": 1,
+      "raw": "ICONOGRAPHY: M-100 | MOTIF: bull",
+      "seal_id": "M-100",
+      "type": "iconography"
+     },
+     {
+      "meaning": "fish sign",
+      "page": 1,
+      "raw": "SIGN_REF: 047 | MEANING: fish sign",
+      "sign_id": "047",
+      "type": "sign_ref"
+     },
+     {
+      "error": "vision backend down",
+      "page": 2,
+      "type": "error"
+     }
+    ]
+   }
+  },
+  {
+   "id": "f13_cm_mixed",
+   "node": "CMCatalogParser",
+   "mode": "full",
+   "inputs": {
+    "pages": [
+     {
+      "page_num": 1,
+      "text": "RASH Avv 001 and ENKO Atab 12 discuss 001-002-003 and 001-002-003 again. CM 12.345 #0042 ##123"
+     },
+     {
+      "page_num": 2,
+      "text": ""
+     },
+     {
+      "page_num": 3,
+      "text": "No codes here, just prose 12345."
+     },
+     {
+      "page_num": 4,
+      "text": "\ud80b\udf90\ud80b\udf91\ud80b\udf90 and 010-020"
+     },
+     {
+      "page_num": 5,
+      "text": "RASH Avv 001 on another page"
+     },
+     {
+      "page_num": 6,
+      "text": "RASH Avv 001 RASH Avv 001 same page twice"
+     }
+    ]
+   },
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "inscriptions_sample": [
+     {
+      "id": "RASH Avv 001",
+      "page": 1
+     },
+     {
+      "id": "ENKO Atab 12",
+      "page": 1
+     },
+     {
+      "id": "CM 12.345",
+      "page": 1
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "001-002-003",
+      "sequence_codes": [
+       "001",
+       "002",
+       "003"
+      ]
+     },
+     {
+      "id": null,
+      "page": 4,
+      "raw": "010-020",
+      "sequence_codes": [
+       "010",
+       "020"
+      ]
+     },
+     {
+      "id": "RASH Avv 001",
+      "page": 5
+     },
+     {
+      "id": "RASH Avv 001",
+      "page": 6
+     }
+    ],
+    "n_cm_unicode_glyphs": 3,
+    "n_inscriptions_recovered": 7,
+    "n_pages_processed": 6,
+    "n_pages_with_signs": 2,
+    "n_with_sequence": 2,
+    "top_cm_unicode": [
+     [
+      "\ud80b\udf90",
+      2
+     ],
+     [
+      "\ud80b\udf91",
+      1
+     ]
+    ],
+    "top_sign_codes": [
+     [
+      "001",
+      2
+     ],
+     [
+      "002",
+      2
+     ],
+     [
+      "003",
+      2
+     ],
+     [
+      "010",
+      1
+     ],
+     [
+      "020",
+      1
+     ]
+    ],
+    "verdict": "PREDICTION 3 NOT CONFIRMED: recovered 2 sign-sequence lines + 3 CM-block unicode glyphs across 2 pages with parseable signs. OCR text is too noisy / un-tagged for direct catalog harvest; image-based catalog plates would need a separate vision pipeline."
+   }
+  },
+  {
+   "id": "f13_cm_partial_seq",
+   "node": "CMCatalogParser",
+   "mode": "full",
+   "inputs": {
+    "pages": [
+     {
+      "page_num": 1,
+      "text": "001-002 003-004 005-006 007-008 009-010 011-012 013-014 015-016 017-018 019-020 021-022 023-024 025-026 027-028 029-030 031-032 033-034 035-036 037-038 039-040 041-042 043-044 045-046 047-048 049-050 051-052 053-054 055-056 057-058 059-060 061-062 063-064"
+     }
+    ]
+   },
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "inscriptions_sample": [
+     {
+      "id": null,
+      "page": 1,
+      "raw": "001-002",
+      "sequence_codes": [
+       "001",
+       "002"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "003-004",
+      "sequence_codes": [
+       "003",
+       "004"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "005-006",
+      "sequence_codes": [
+       "005",
+       "006"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "007-008",
+      "sequence_codes": [
+       "007",
+       "008"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "009-010",
+      "sequence_codes": [
+       "009",
+       "010"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "011-012",
+      "sequence_codes": [
+       "011",
+       "012"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "013-014",
+      "sequence_codes": [
+       "013",
+       "014"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "015-016",
+      "sequence_codes": [
+       "015",
+       "016"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "017-018",
+      "sequence_codes": [
+       "017",
+       "018"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "019-020",
+      "sequence_codes": [
+       "019",
+       "020"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "021-022",
+      "sequence_codes": [
+       "021",
+       "022"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "023-024",
+      "sequence_codes": [
+       "023",
+       "024"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "025-026",
+      "sequence_codes": [
+       "025",
+       "026"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "027-028",
+      "sequence_codes": [
+       "027",
+       "028"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "029-030",
+      "sequence_codes": [
+       "029",
+       "030"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "031-032",
+      "sequence_codes": [
+       "031",
+       "032"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "033-034",
+      "sequence_codes": [
+       "033",
+       "034"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "035-036",
+      "sequence_codes": [
+       "035",
+       "036"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "037-038",
+      "sequence_codes": [
+       "037",
+       "038"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "039-040",
+      "sequence_codes": [
+       "039",
+       "040"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "041-042",
+      "sequence_codes": [
+       "041",
+       "042"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "043-044",
+      "sequence_codes": [
+       "043",
+       "044"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "045-046",
+      "sequence_codes": [
+       "045",
+       "046"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "047-048",
+      "sequence_codes": [
+       "047",
+       "048"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "049-050",
+      "sequence_codes": [
+       "049",
+       "050"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "051-052",
+      "sequence_codes": [
+       "051",
+       "052"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "053-054",
+      "sequence_codes": [
+       "053",
+       "054"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "055-056",
+      "sequence_codes": [
+       "055",
+       "056"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "057-058",
+      "sequence_codes": [
+       "057",
+       "058"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "059-060",
+      "sequence_codes": [
+       "059",
+       "060"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "061-062",
+      "sequence_codes": [
+       "061",
+       "062"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "063-064",
+      "sequence_codes": [
+       "063",
+       "064"
+      ]
+     }
+    ],
+    "n_cm_unicode_glyphs": 0,
+    "n_inscriptions_recovered": 32,
+    "n_pages_processed": 1,
+    "n_pages_with_signs": 1,
+    "n_with_sequence": 32,
+    "top_cm_unicode": [],
+    "top_sign_codes": [
+     [
+      "001",
+      1
+     ],
+     [
+      "002",
+      1
+     ],
+     [
+      "003",
+      1
+     ],
+     [
+      "004",
+      1
+     ],
+     [
+      "005",
+      1
+     ],
+     [
+      "006",
+      1
+     ],
+     [
+      "007",
+      1
+     ],
+     [
+      "008",
+      1
+     ],
+     [
+      "009",
+      1
+     ],
+     [
+      "010",
+      1
+     ],
+     [
+      "011",
+      1
+     ],
+     [
+      "012",
+      1
+     ],
+     [
+      "013",
+      1
+     ],
+     [
+      "014",
+      1
+     ],
+     [
+      "015",
+      1
+     ],
+     [
+      "016",
+      1
+     ],
+     [
+      "017",
+      1
+     ],
+     [
+      "018",
+      1
+     ],
+     [
+      "019",
+      1
+     ],
+     [
+      "020",
+      1
+     ],
+     [
+      "021",
+      1
+     ],
+     [
+      "022",
+      1
+     ],
+     [
+      "023",
+      1
+     ],
+     [
+      "024",
+      1
+     ],
+     [
+      "025",
+      1
+     ],
+     [
+      "026",
+      1
+     ],
+     [
+      "027",
+      1
+     ],
+     [
+      "028",
+      1
+     ],
+     [
+      "029",
+      1
+     ],
+     [
+      "030",
+      1
+     ],
+     [
+      "031",
+      1
+     ],
+     [
+      "032",
+      1
+     ],
+     [
+      "033",
+      1
+     ],
+     [
+      "034",
+      1
+     ],
+     [
+      "035",
+      1
+     ],
+     [
+      "036",
+      1
+     ],
+     [
+      "037",
+      1
+     ],
+     [
+      "038",
+      1
+     ],
+     [
+      "039",
+      1
+     ],
+     [
+      "040",
+      1
+     ]
+    ],
+    "verdict": "PREDICTION 3 PARTIALLY CONFIRMED: recovered 32 sign-sequence lines + 0 CM-block unicode glyphs across 1 pages with parseable signs. Sufficient material for an empirical CM YAML refinement."
+   }
+  },
+  {
+   "id": "f13_cm_partial_unicode",
+   "node": "CMCatalogParser",
+   "mode": "full",
+   "inputs": {
+    "pages": [
+     {
+      "page_num": 1,
+      "text": "\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf90\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91\ud80b\udf91"
+     }
+    ]
+   },
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "inscriptions_sample": [],
+    "n_cm_unicode_glyphs": 105,
+    "n_inscriptions_recovered": 0,
+    "n_pages_processed": 1,
+    "n_pages_with_signs": 1,
+    "n_with_sequence": 0,
+    "top_cm_unicode": [
+     [
+      "\ud80b\udf90",
+      60
+     ],
+     [
+      "\ud80b\udf91",
+      45
+     ]
+    ],
+    "top_sign_codes": [],
+    "verdict": "PREDICTION 3 PARTIALLY CONFIRMED: recovered 0 sign-sequence lines + 105 CM-block unicode glyphs across 1 pages with parseable signs. Sufficient material for an empirical CM YAML refinement."
+   }
+  },
+  {
+   "id": "f13_cm_mid_sufficient",
+   "node": "CMCatalogParser",
+   "mode": "full",
+   "inputs": {
+    "pages": [
+     {
+      "page_num": 1,
+      "text": "001-002 003-004 005-006 007-008 009-010 011-012 013-014 015-016 017-018 019-020 021-022 023-024 025-026 027-028 029-030 031-032 033-034 035-036 037-038 039-040 041-042 043-044 045-046 047-048 049-050"
+     }
+    ]
+   },
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "inscriptions_sample": [
+     {
+      "id": null,
+      "page": 1,
+      "raw": "001-002",
+      "sequence_codes": [
+       "001",
+       "002"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "003-004",
+      "sequence_codes": [
+       "003",
+       "004"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "005-006",
+      "sequence_codes": [
+       "005",
+       "006"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "007-008",
+      "sequence_codes": [
+       "007",
+       "008"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "009-010",
+      "sequence_codes": [
+       "009",
+       "010"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "011-012",
+      "sequence_codes": [
+       "011",
+       "012"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "013-014",
+      "sequence_codes": [
+       "013",
+       "014"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "015-016",
+      "sequence_codes": [
+       "015",
+       "016"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "017-018",
+      "sequence_codes": [
+       "017",
+       "018"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "019-020",
+      "sequence_codes": [
+       "019",
+       "020"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "021-022",
+      "sequence_codes": [
+       "021",
+       "022"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "023-024",
+      "sequence_codes": [
+       "023",
+       "024"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "025-026",
+      "sequence_codes": [
+       "025",
+       "026"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "027-028",
+      "sequence_codes": [
+       "027",
+       "028"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "029-030",
+      "sequence_codes": [
+       "029",
+       "030"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "031-032",
+      "sequence_codes": [
+       "031",
+       "032"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "033-034",
+      "sequence_codes": [
+       "033",
+       "034"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "035-036",
+      "sequence_codes": [
+       "035",
+       "036"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "037-038",
+      "sequence_codes": [
+       "037",
+       "038"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "039-040",
+      "sequence_codes": [
+       "039",
+       "040"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "041-042",
+      "sequence_codes": [
+       "041",
+       "042"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "043-044",
+      "sequence_codes": [
+       "043",
+       "044"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "045-046",
+      "sequence_codes": [
+       "045",
+       "046"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "047-048",
+      "sequence_codes": [
+       "047",
+       "048"
+      ]
+     },
+     {
+      "id": null,
+      "page": 1,
+      "raw": "049-050",
+      "sequence_codes": [
+       "049",
+       "050"
+      ]
+     }
+    ],
+    "n_cm_unicode_glyphs": 0,
+    "n_inscriptions_recovered": 25,
+    "n_pages_processed": 1,
+    "n_pages_with_signs": 1,
+    "n_with_sequence": 25,
+    "top_cm_unicode": [],
+    "top_sign_codes": [
+     [
+      "001",
+      1
+     ],
+     [
+      "002",
+      1
+     ],
+     [
+      "003",
+      1
+     ],
+     [
+      "004",
+      1
+     ],
+     [
+      "005",
+      1
+     ],
+     [
+      "006",
+      1
+     ],
+     [
+      "007",
+      1
+     ],
+     [
+      "008",
+      1
+     ],
+     [
+      "009",
+      1
+     ],
+     [
+      "010",
+      1
+     ],
+     [
+      "011",
+      1
+     ],
+     [
+      "012",
+      1
+     ],
+     [
+      "013",
+      1
+     ],
+     [
+      "014",
+      1
+     ],
+     [
+      "015",
+      1
+     ],
+     [
+      "016",
+      1
+     ],
+     [
+      "017",
+      1
+     ],
+     [
+      "018",
+      1
+     ],
+     [
+      "019",
+      1
+     ],
+     [
+      "020",
+      1
+     ],
+     [
+      "021",
+      1
+     ],
+     [
+      "022",
+      1
+     ],
+     [
+      "023",
+      1
+     ],
+     [
+      "024",
+      1
+     ],
+     [
+      "025",
+      1
+     ],
+     [
+      "026",
+      1
+     ],
+     [
+      "027",
+      1
+     ],
+     [
+      "028",
+      1
+     ],
+     [
+      "029",
+      1
+     ],
+     [
+      "030",
+      1
+     ],
+     [
+      "031",
+      1
+     ],
+     [
+      "032",
+      1
+     ],
+     [
+      "033",
+      1
+     ],
+     [
+      "034",
+      1
+     ],
+     [
+      "035",
+      1
+     ],
+     [
+      "036",
+      1
+     ],
+     [
+      "037",
+      1
+     ],
+     [
+      "038",
+      1
+     ],
+     [
+      "039",
+      1
+     ],
+     [
+      "040",
+      1
+     ]
+    ],
+    "verdict": "PREDICTION 3 NOT CONFIRMED: recovered 25 sign-sequence lines + 0 CM-block unicode glyphs across 1 pages with parseable signs. Sufficient material for an empirical CM YAML refinement."
+   }
+  },
+  {
+   "id": "f13_cm_empty",
+   "node": "CMCatalogParser",
+   "mode": "full",
+   "inputs": {},
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "inscriptions_sample": [],
+    "n_cm_unicode_glyphs": 0,
+    "n_inscriptions_recovered": 0,
+    "n_pages_processed": 0,
+    "n_pages_with_signs": 0,
+    "n_with_sequence": 0,
+    "top_cm_unicode": [],
+    "top_sign_codes": [],
+    "verdict": "PREDICTION 3 NOT CONFIRMED: recovered 0 sign-sequence lines + 0 CM-block unicode glyphs across 0 pages with parseable signs. OCR text is too noisy / un-tagged for direct catalog harvest; image-based catalog plates would need a separate vision pipeline."
+   }
   }
  ]
 }

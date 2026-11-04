@@ -99,6 +99,18 @@ def _canon(obj) -> str:
     return json.dumps(_norm(obj), sort_keys=True, ensure_ascii=False, default=str)
 
 
+def _norm_paths(obj, replacements):
+    if isinstance(obj, dict):
+        return {k: _norm_paths(v, replacements) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_norm_paths(v, replacements) for v in obj]
+    if isinstance(obj, str):
+        for src, dst in replacements:
+            obj = obj.replace(src, dst)
+        return obj
+    return obj
+
+
 def _run_case(case, monkeypatch, tmp_path):
     fn = eg.ATOMIC_NODES[case["node"]].fn
     setup = case["setup"]
@@ -137,6 +149,45 @@ def _run_case(case, monkeypatch, tmp_path):
             return fn(case["inputs"], case["params"])
         finally:
             target.unlink(missing_ok=True)
+    if kind == "root_normalize":
+        result = fn(case["inputs"], case["params"])
+        root = str(Path(eg.__file__).resolve().parent.parent.parent)
+        return _norm_paths(result, [(root, "<ROOT>")])
+    if kind == "ocr_run":
+        import fitz
+
+        from glossa_lab import ai_utils
+
+        pdf = tmp_path / "catalog.pdf"
+        doc = fitz.open()
+        for i in range(2):
+            page = doc.new_page()
+            page.insert_text((72, 72), f"synthetic page {i + 1}")
+        doc.save(str(pdf))
+        doc.close()
+        params = {
+            k: (v.replace("{TMP}", str(tmp_path)) if isinstance(v, str) else v)
+            for k, v in case["params"].items()
+        }
+        prompts: list[str] = []
+        state = {"n": 0}
+        transcripts = setup["transcripts"]
+        fails = {int(k): v for k, v in setup["fail_calls"].items()}
+
+        def stub(prompt, data_uri):
+            prompts.append(prompt)
+            state["n"] += 1
+            if state["n"] in fails:
+                raise RuntimeError(fails[state["n"]])
+            return transcripts[state["n"] - 1]
+
+        monkeypatch.setattr(ai_utils, "call_llm_vision", stub)
+        result = fn(case["inputs"], params)
+        merged = dict(result)
+        merged["written_records"] = json.loads(
+            Path(params["output_path"]).read_text("utf-8"))
+        merged["prompts_seen"] = prompts
+        return _norm_paths(merged, [(str(tmp_path), "{TMP}")])
     raise AssertionError(f"unknown setup kind {kind!r}")
 
 

@@ -61,8 +61,26 @@ PRIMITIVE_IDS = [
 ]
 
 
+def _key(k):
+    if isinstance(k, str):
+        return k
+    if k is None:
+        return "null"
+    if isinstance(k, bool):
+        return "true" if k else "false"
+    return str(k)
+
+
+def _norm(o):
+    if isinstance(o, dict):
+        return {_key(k): _norm(v) for k, v in o.items()}
+    if isinstance(o, (list, tuple)):
+        return [_norm(v) for v in o]
+    return o
+
+
 def _canon(obj) -> str:
-    return json.dumps(obj, sort_keys=True, ensure_ascii=False)
+    return json.dumps(_norm(obj), sort_keys=True, ensure_ascii=False, default=str)
 
 
 def _run_case(case, monkeypatch, tmp_path):
@@ -76,6 +94,16 @@ def _run_case(case, monkeypatch, tmp_path):
 
         monkeypatch.setattr(ev, "_LIT_DOCS", FIXTURE_DIR / "f2_lit_docs")
         monkeypatch.setattr(ev, "_CLAIMS_DIR", FIXTURE_DIR / "f2_claims")
+        return fn(case["inputs"], case["params"])
+    if kind == "loader_stubs":
+        from glossa_lab import experiment_graph_phase29 as p29
+
+        monkeypatch.setattr(
+            p29, "_mathematica_epigraphica_loader",
+            lambda inputs, params: setup["fuls"])
+        monkeypatch.setattr(
+            p29, "_icit_corpus_loader",
+            lambda inputs, params: setup["icit"])
         return fn(case["inputs"], case["params"])
     raise AssertionError(f"unknown setup kind {kind!r}")
 

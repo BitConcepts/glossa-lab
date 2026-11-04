@@ -1,4 +1,4 @@
-"""Spec 088 Stage S1 — program-map conformance against the real inputs.
+"""Spec 088 Stages S1–S2 — program-map conformance against the real inputs.
 
 The plan's S1 conformance: the builder run over the real
 ledger, the filed taxonomy, and the live spec tree produces
@@ -11,10 +11,11 @@ a later intake that grows the ledger fails these pins
 loudly and updates them in its own stage record, exactly
 like the Spec 087 registry pins.
 
-The committed artifacts themselves land in Stage S2
-(T201), so this module deliberately does NOT run check
-semantics against the real root; the --check contract is
-exercised on a tmp copy of the inputs.
+The committed artifacts landed in Stage S2 (T201), so
+check semantics now run against the real root as well
+(`test_committed_artifacts_match_fresh_build`); the tmp
+copy still carries the drift case, which must never be
+seeded in the real tree.
 """
 
 from __future__ import annotations
@@ -179,6 +180,14 @@ def test_taxonomy_hygiene_against_live_inputs():
     for domain, block in program_map["coverage"]["domains"].items():
         assert block["studies"] == domain_totals[domain]
     assert set(program_map["coverage"]["domains"]) == set(tax["domains"])
+
+
+def test_committed_artifacts_match_fresh_build():
+    # Stage S2 (T201): --check against the real root — the
+    # committed program-map.json + program-map-finds.json
+    # are byte-identical to a fresh build over the live
+    # inputs, or this names the drifted artifact.
+    assert pmg.check_outputs(_REPO) == []
 
 
 def test_check_semantics_on_tmp_copy(tmp_path):

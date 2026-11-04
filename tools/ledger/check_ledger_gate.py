@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Run the Spec 086 verification gate (Stage 3, T301).
 
-Recomputes the matrix (and, when present, the map) from the
-ledger by the gate's own independent route and checks the
-chain under classes V1–V9 of spec.md Point 4 (V8, the
-settling canonicals, arrived with Stage 4). The gate never writes: bytecode
+Recomputes the matrix (and, when present, the map and the
+program map) from the ledger by the gate's own independent
+route and checks the chain under classes V1–V10 of
+spec.md Point 4 (V8, the settling canonicals, arrived
+with Stage 4; V10, the program-map equivalence, with
+Spec 088 Stage 3). The gate never writes: bytecode
 writing is disabled before any backend module is imported,
 and the gate calls only pure builders and read paths
 (parent-carried write-freedom requirement; V9 audits the
@@ -53,6 +55,7 @@ _LAYER_CLASSES = {
     "ledger": {"V1", "V2", "V3", "V4", "V8", "V9"},
     "matrix": {"V2", "V3", "V4"},
     "map": {"V2", "V4", "V5", "V6"},
+    "program_map": {"V10"},
     "anchors": {"V4", "V6", "V8"},
 }
 _MACHINERY = (
@@ -75,6 +78,10 @@ def _layer_of(path: str) -> str | None:
         "backend/glossa_lab/matrix_generate.py"
     ):
         return "matrix"
+    if path.lower().startswith("glossa-indus/map/program-map") or path == (
+        "backend/glossa_lab/program_map_generate.py"
+    ):
+        return "program_map"
     if path.startswith("glossa-indus/map/") or path == (
         "backend/glossa_lab/map_generate.py"
     ):

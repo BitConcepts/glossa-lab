@@ -159,7 +159,9 @@ def test_gate_passes_clean_tree():
     report = lg.run_gate(ROOT)
     assert report.ok, report.render()
     names = [c.name for c in report.checks]
-    for cls in ("V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9"):
+    for cls in (
+        "V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10"
+    ):
         assert any(n.startswith(cls) for n in names), cls
     v4 = _check(report, "V4 relation-carrying")
     assert v4.status == "PASS"
@@ -974,3 +976,243 @@ def test_gated_publication_of_the_map_and_its_negative_control(
     assert refused["published"] is False
     assert refused["gate"].ok is False
     assert (map_scratch / lg.MAP_REL).read_bytes() == before
+
+
+# ---------------------------------------------------------------------------
+# Spec 088 Stage 3 (T301–T303) — V10 program-map equivalence:
+# agreement of the registered copies, the legs live on a
+# program-map tree, the NOT-RUN posture where the layer has
+# not landed, and teeth per seeded divergence — each fails
+# by name and leaves the seeded tree byte-untouched.
+
+
+@pytest.fixture()
+def pm_scratch(scratch: Path) -> Path:
+    """The scratch tree plus the program-map layer's records
+    of record (the taxonomy and both published artifacts) as
+    real copies a test can mutate, and the spec-directory
+    names the derivation reads (names only — empty dirs;
+    the derivation reads no spec content)."""
+    root = scratch
+    for rel in (
+        lg.PROGRAM_MAP_TAXONOMY_REL,
+        lg.PROGRAM_MAP_REL,
+        lg.PROGRAM_MAP_FINDS_REL,
+    ):
+        dst = root / rel
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(ROOT / rel, dst)
+    specs = root / "specs"
+    specs.mkdir(exist_ok=True)
+    for d in sorted((ROOT / "specs").iterdir()):
+        if d.is_dir():
+            (specs / d.name).mkdir(exist_ok=True)
+    return root
+
+
+def _rewrite_program_map(root: Path, mutate) -> None:
+    path = root / lg.PROGRAM_MAP_REL
+    data = json.loads(path.read_text(encoding="utf-8"))
+    mutate(data)
+    path.write_bytes(
+        json.dumps(data, ensure_ascii=False, indent=1, sort_keys=True).encode(
+            "utf-8"
+        )
+        + b"\n"
+    )
+
+
+def _pm_hashes(root: Path) -> dict[str, str]:
+    import hashlib
+
+    return {
+        rel: hashlib.sha256((root / rel).read_bytes()).hexdigest()
+        for rel in (
+            lg.PROGRAM_MAP_REL,
+            lg.PROGRAM_MAP_FINDS_REL,
+            lg.PROGRAM_MAP_TAXONOMY_REL,
+            li.LEDGER_REL,
+        )
+    }
+
+
+def test_program_map_definitions_copies_agree_with_the_builder_copies():
+    """Same-motion discipline for program-map-defs v1: the
+    gate's registered copies agree with the builder's, field
+    for field (PROGRAM-MAP-DEFINITIONS.md §12)."""
+    from glossa_lab import program_map_generate as pm
+
+    assert lg.GATE_PROGRAM_MAP_DEFS_VERSION == pm.DEFS_VERSION
+    assert lg.PROGRAM_MAP_TAXONOMY_VERSION == pm.TAXONOMY_VERSION
+    assert lg.PROGRAM_MAP_REL == pm.MAP_REL
+    assert lg.PROGRAM_MAP_FINDS_REL == pm.FINDS_REL
+    assert lg.PROGRAM_MAP_TAXONOMY_REL == pm.TAXONOMY_REL
+    assert lg.PROGRAM_MAP_SPECS_REL == pm.SPECS_REL
+    assert lg.PM_STATUS_TO_CLASS == pm.STATUS_TO_CLASS
+    assert lg.PM_CLAIM_CLASSES == pm.CLAIM_CLASSES
+    assert lg.PM_STUDY_CLASSES == pm.STUDY_CLASSES
+    assert lg.PM_IN_FLIGHT == pm.IN_FLIGHT
+    assert lg.PM_STANDING_TEMPLATE == pm._STANDING_TEMPLATE
+    assert lg.PM_RESTRICTED_NAME_ONLY == pm.RESTRICTED_NAME_ONLY
+    assert lg.PM_FORBIDDEN_TAXONOMY_KEYS == pm.FORBIDDEN_TAXONOMY_KEYS
+    assert set(lg.PM_FIND_KINDS) == {
+        pm.FIND_BUNDLE_LESS_STUDY,
+        pm.FIND_JUDGMENT_CALL,
+        pm.FIND_EXTRACTED_NULL_FALSIFIER,
+        pm.FIND_RESTRICTED_NODE,
+    }
+
+
+def test_v10_legs_live_and_pass_on_a_program_map_tree(pm_scratch):
+    report = lg.run_gate(pm_scratch, scope={"V10"})
+    assert report.ok, report.render()
+    checks = _checks(report, "V10 program-map equivalence")
+    assert len(checks) == 4
+    assert all(c.status == "PASS" for c in checks)
+    census = "\n".join(checks[1].evidence)
+    assert "876 claim nodes" in census
+    assert "89 study nodes" in census
+    finds_evidence = "\n".join(checks[2].evidence)
+    assert "bundle_less_study 28" in finds_evidence
+    assert "restricted_node 1" in finds_evidence
+
+
+def test_v10_not_run_where_the_layer_has_not_landed(scratch):
+    """The V5 posture toward a layer that did not exist yet:
+    a tree with no taxonomy and no published program-map
+    artifacts enumerates one NOT-RUN and the gate stays
+    green (the pre-088 scratch battery depends on it)."""
+    report = lg.run_gate(scratch, scope={"V10"})
+    assert report.ok, report.render()
+    checks = _checks(report, "V10 program-map equivalence")
+    assert len(checks) == 1
+    assert checks[0].status == "NOT-RUN"
+
+
+def test_teeth_v10_hand_edited_program_map_fails(pm_scratch):
+    before = _pm_hashes(pm_scratch)
+
+    def mutate(data):
+        data["nodes"]["claims"][0]["standing"] = "tampered"
+
+    _rewrite_program_map(pm_scratch, mutate)
+    seeded = _pm_hashes(pm_scratch)
+    assert seeded != before  # the seed itself landed
+    report = lg.run_gate(pm_scratch, scope={"V10"})
+    check = _checks(
+        report, "V10 program-map equivalence — program-map.json"
+    )[0]
+    assert check.status == "FAIL"
+    assert "standing" in "\n".join(check.evidence)
+    assert _pm_hashes(pm_scratch) == seeded  # the gate wrote nothing
+
+
+def test_teeth_v10_dropped_claim_node_fails(pm_scratch):
+    def mutate(data):
+        data["nodes"]["claims"] = data["nodes"]["claims"][1:]
+
+    _rewrite_program_map(pm_scratch, mutate)
+    seeded = _pm_hashes(pm_scratch)
+    report = lg.run_gate(pm_scratch, scope={"V10"})
+    check = _checks(
+        report, "V10 program-map equivalence — program-map.json"
+    )[0]
+    assert check.status == "FAIL"
+    assert _pm_hashes(pm_scratch) == seeded
+
+
+def test_teeth_v10_dropped_find_fails(pm_scratch):
+    path = pm_scratch / lg.PROGRAM_MAP_FINDS_REL
+    data = json.loads(path.read_text(encoding="utf-8"))
+    data["finds"] = data["finds"][1:]
+    path.write_bytes(
+        json.dumps(data, ensure_ascii=False, indent=1, sort_keys=True).encode(
+            "utf-8"
+        )
+        + b"\n"
+    )
+    seeded = _pm_hashes(pm_scratch)
+    report = lg.run_gate(pm_scratch, scope={"V10"})
+    check = _check(
+        report, "V10 program-map equivalence — program-map-finds.json"
+    )
+    assert check.status == "FAIL"
+    assert _pm_hashes(pm_scratch) == seeded
+
+
+def test_teeth_v10_defs_copy_drift_fails(pm_scratch, monkeypatch):
+    """A one-copy definitions change (the builder's table
+    drifts from the gate's registered copies): artifacts
+    built under the drifted table fail V10 — never silent
+    agreement."""
+    from glossa_lab import program_map_generate as pm
+
+    monkeypatch.setitem(pm.STATUS_TO_CLASS, "draft", "closed_other")
+    for rel, text in pm.build_artifacts(pm_scratch).items():
+        (pm_scratch / rel).write_text(text, encoding="utf-8")
+    seeded = _pm_hashes(pm_scratch)
+    report = lg.run_gate(pm_scratch, scope={"V10"})
+    check = _checks(
+        report, "V10 program-map equivalence — program-map.json"
+    )[0]
+    assert check.status == "FAIL"
+    assert _pm_hashes(pm_scratch) == seeded
+
+
+def test_teeth_v10_stale_stamp_fails(pm_scratch):
+    def mutate(data):
+        data["stamp"]["ledger_lines"] += 1
+
+    _rewrite_program_map(pm_scratch, mutate)
+    seeded = _pm_hashes(pm_scratch)
+    report = lg.run_gate(pm_scratch, scope={"V10"})
+    check = _check(
+        report, "V10 program-map equivalence — stamp freshness"
+    )
+    assert check.status == "FAIL"
+    assert "ledger_lines" in "\n".join(check.evidence)
+    assert _pm_hashes(pm_scratch) == seeded
+
+
+def test_teeth_v10_dropped_taxonomy_assignment_fails(pm_scratch):
+    tax_path = pm_scratch / lg.PROGRAM_MAP_TAXONOMY_REL
+    tax = json.loads(tax_path.read_text(encoding="utf-8"))
+    dropped = tax["studies"][0]["spec_dir"]
+    tax["studies"] = tax["studies"][1:]
+    tax_path.write_bytes(
+        json.dumps(tax, ensure_ascii=False, indent=1, sort_keys=True).encode(
+            "utf-8"
+        )
+        + b"\n"
+    )
+    seeded = _pm_hashes(pm_scratch)
+    report = lg.run_gate(pm_scratch, scope={"V10"})
+    check = _check(
+        report, "V10 program-map equivalence — taxonomy coverage"
+    )
+    assert check.status == "FAIL"
+    assert dropped in "\n".join(check.evidence)
+    assert _pm_hashes(pm_scratch) == seeded
+
+
+def test_teeth_v9_census_catches_an_unregistered_program_map_writer(
+    scratch,
+):
+    """T303's negative case: the program-map artifacts ride
+    the existing gated-artifact census (the glossa-indus/map
+    pattern), so a writer that is not the registered builder
+    fails V9 by name."""
+    rogue = scratch / "backend" / "glossa_lab" / "rogue_pm_writer.py"
+    rogue.write_text(
+        '"""Seeded: an unregistered writer of the program map."""\n'
+        "from pathlib import Path\n\n"
+        "TARGET = Path('glossa-indus/map/program-map.json')\n\n\n"
+        "def go():\n"
+        "    TARGET.write_text('{}')\n",
+        encoding="utf-8",
+    )
+    report = lg.run_gate(scratch, scope={"V9"})
+    assert not report.ok
+    census = _check(report, "V9 no write path — matrix/map writer census")
+    assert census.status == "FAIL"
+    assert "rogue_pm_writer.py" in "\n".join(census.evidence)

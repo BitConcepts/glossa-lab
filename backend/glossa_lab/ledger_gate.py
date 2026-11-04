@@ -24,7 +24,14 @@ registered in `glossa-indus/ledger/settling-canonical.json`
 reproduced under the gate's own glossa-settle-1 route — the
 settle definitions below are the gate's registered copies,
 not imported from the engine — plus the settling layer's
-scenario/verdict separation check), V9 no write path.
+scenario/verdict separation check), V9 no write path,
+V10 program-map equivalence (Spec 088 Stage 3: the
+program map recomputed from the ledger + taxonomy under
+the gate's own program-map-defs v1 copies — not imported
+from the builder — and byte-compared against the
+published artifacts, with taxonomy coverage checked
+bidirectionally and the stamp checked against the
+current ledger).
 
 **The gate never writes.** It calls only pure builders and
 read paths; it imports no write entry point (V9 audits this
@@ -183,6 +190,77 @@ MAP_S_R3_NOTE = (
     "record; the rule is registered but inert "
     "and reports a determinate zero in every "
     "run record"
+)
+
+# ---------------------------------------------------------------------------
+# Registered definitions — the gate's own copies of
+# program-map-defs v1
+# (glossa-indus/map/PROGRAM-MAP-DEFINITIONS.md), for V10
+# (Spec 088 Stage 3). NOT imported from the builder
+# (program_map_generate.py): the same independent-route
+# discipline as the matrix, settling, and map definitions
+# above. A deliberate definitions change is made in all
+# copies in the same motion
+# (PROGRAM-MAP-DEFINITIONS.md §12); a change in only one
+# copy is the divergence V10 exists to catch.
+
+GATE_PROGRAM_MAP_DEFS_VERSION = "program-map-defs v1"
+PROGRAM_MAP_TAXONOMY_VERSION = "program-map-taxonomy v1"
+PROGRAM_MAP_REL = "glossa-indus/map/program-map.json"
+PROGRAM_MAP_FINDS_REL = "glossa-indus/map/program-map-finds.json"
+PROGRAM_MAP_TAXONOMY_REL = "glossa-indus/map/program-map-taxonomy.json"
+PROGRAM_MAP_SPECS_REL = "specs"
+
+# The derivation table (PROGRAM-MAP-DEFINITIONS.md §4.2,
+# D-088-3): ledger status → node class, applied to the
+# governing entry. A status outside this table is a
+# recomputation refusal — the table is total over the
+# registered vocabulary because the route refuses the
+# unregistered, not because it guesses at it.
+PM_STATUS_TO_CLASS = {
+    "strongly_supported": "positive",
+    "contradicted": "negative",
+    "unsupported": "negative",
+    "partially_falsified": "negative",
+    "superseded": "closed_other",
+    "draft": "open",
+    "untested": "open",
+    "partially_supported": "open",
+}
+PM_CLAIM_CLASSES = ("positive", "negative", "open", "closed_other")
+PM_STUDY_CLASSES = PM_CLAIM_CLASSES + ("unjudged",)
+PM_IN_FLIGHT = "in_flight"
+# The standing-text template (§4.3): a mechanical rendering
+# over the governing entry's verbatim fields.
+PM_STANDING_TEMPLATE = (
+    "Ledger standing: status {status} · stage {stage} · "
+    "falsifier {falsifier}"
+)
+# The registered name-only forms (§7): a restricted study
+# renders exactly this standing, no class, no member data.
+PM_RESTRICTED_NAME_ONLY = {
+    "072-fish-family-profiles-redesign":
+        "executed — held under the Roif gate",
+}
+# Keys the taxonomy format must never carry, anywhere, at
+# any depth (§8): no standings by construction (C088-17).
+PM_FORBIDDEN_TAXONOMY_KEYS = frozenset(
+    {
+        "standing",
+        "standing_text",
+        "status",
+        "class",
+        "verdict",
+        "score",
+        "curated",
+    }
+)
+# The find kinds (§6) — exactly four exist in v1.
+PM_FIND_KINDS = (
+    "bundle_less_study",
+    "extracted_null_falsifier",
+    "judgment_call",
+    "restricted_node",
 )
 
 WRITE_ENTRY_POINTS = ("append_entry", "write_ledger", "write_matrix")
@@ -2686,6 +2764,855 @@ def _v9_checks(root: Path) -> list[Check]:
 
 
 # ---------------------------------------------------------------------------
+# V10 — program-map equivalence (Spec 088 Stage 3). The
+# gate's independent route to the program map: the ledger
+# + taxonomy recomputed under the gate's registered
+# program-map-defs v1 copies above, never imported from
+# the builder. The builder and the gate agreeing is
+# consistency; the defs' semantics were the owner's call
+# at T003/T101 (C088-7's own limit).
+
+
+def _pm_key_paths(value: Any, trail: str = "$") -> list[str]:
+    """Every mapping key in a parsed JSON value, with its
+    path — the taxonomy format audit (§8)."""
+    found: list[str] = []
+    if isinstance(value, dict):
+        for key, sub in value.items():
+            found.append(f"{trail}.{key}")
+            found.extend(_pm_key_paths(sub, f"{trail}.{key}"))
+    elif isinstance(value, list):
+        for i, sub in enumerate(value):
+            found.extend(_pm_key_paths(sub, f"{trail}[{i}]"))
+    return found
+
+
+def _pm_taxonomy(
+    root: Path,
+) -> tuple[Optional[dict[str, Any]], list[str]]:
+    """Parse and validate the taxonomy under the gate's
+    own §8 rules. Returns (structure, failures); the
+    structure is None when the file cannot be read at
+    all."""
+    path = root / PROGRAM_MAP_TAXONOMY_REL
+    if not path.is_file():
+        return None, [f"taxonomy not found: {path}"]
+    try:
+        tax = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        return None, [f"taxonomy is not readable JSON: {exc}"]
+    if not isinstance(tax, dict):
+        return None, ["taxonomy is not a JSON object"]
+    failures: list[str] = []
+    for key_path in _pm_key_paths(tax):
+        key = key_path.rsplit(".", 1)[-1].split("[")[0]
+        if key in PM_FORBIDDEN_TAXONOMY_KEYS:
+            failures.append(
+                f"taxonomy carries the forbidden standing-"
+                f"shaped key {key!r} at {key_path} (defs §8: "
+                "the format carries no standings)"
+            )
+    if tax.get("version") != PROGRAM_MAP_TAXONOMY_VERSION:
+        failures.append(
+            f"taxonomy version is {tax.get('version')!r}, "
+            f"the gate's registered copy is "
+            f"{PROGRAM_MAP_TAXONOMY_VERSION!r}"
+        )
+    domains = tax.get("domains")
+    if (
+        not isinstance(domains, list)
+        or not domains
+        or len(set(domains)) != len(domains)
+        or not all(isinstance(d, str) and d for d in domains)
+    ):
+        failures.append(
+            "taxonomy 'domains' must be a non-empty list of "
+            "unique names"
+        )
+        domains = []
+    subdomains = tax.get("subdomains")
+    if not isinstance(subdomains, dict) or set(subdomains) != set(domains):
+        failures.append(
+            "taxonomy 'subdomains' must declare exactly the "
+            "domains"
+        )
+        subdomains = {}
+    for domain in domains:
+        subs = subdomains.get(domain)
+        if (
+            not isinstance(subs, list)
+            or not subs
+            or len(set(subs)) != len(subs)
+            or not all(isinstance(s, str) and s for s in subs)
+        ):
+            failures.append(
+                f"taxonomy subdomains for {domain!r} must be "
+                "a non-empty list of unique names"
+            )
+
+    def _assignments(kind: str, id_key: str) -> dict[str, Any]:
+        raw = tax.get(kind)
+        if not isinstance(raw, list):
+            failures.append(f"taxonomy {kind!r} must be a list")
+            return {}
+        out: dict[str, Any] = {}
+        for entry in raw:
+            if not isinstance(entry, dict) or set(entry) != {
+                id_key,
+                "domain",
+                "subdomain",
+            }:
+                failures.append(
+                    f"taxonomy {kind} entry must carry exactly "
+                    f"{{{id_key}, domain, subdomain}}: {entry!r}"
+                )
+                continue
+            ident = entry[id_key]
+            if ident in out:
+                failures.append(
+                    f"taxonomy assigns {ident!r} more than "
+                    f"once ({kind})"
+                )
+            if entry["domain"] not in domains:
+                failures.append(
+                    f"taxonomy assigns {ident!r} to the "
+                    f"undeclared domain {entry['domain']!r}"
+                )
+            elif entry["subdomain"] not in subdomains.get(
+                entry["domain"], ()
+            ):
+                failures.append(
+                    f"taxonomy assigns {ident!r} to "
+                    f"{entry['subdomain']!r}, not declared "
+                    f"under {entry['domain']!r}"
+                )
+            out[ident] = entry
+        return out
+
+    studies = _assignments("studies", "spec_dir")
+    documents = _assignments("extracted_documents", "document")
+    restricted = tax.get("restricted")
+    if not isinstance(restricted, list) or not all(
+        isinstance(r, str) for r in restricted
+    ):
+        failures.append("taxonomy 'restricted' must be a list")
+        restricted = []
+    if len(set(restricted)) != len(restricted):
+        failures.append("taxonomy 'restricted' has duplicates")
+    for spec_dir in restricted:
+        if spec_dir not in studies:
+            failures.append(
+                f"restricted study {spec_dir!r} has no "
+                "taxonomy assignment"
+            )
+        if spec_dir not in PM_RESTRICTED_NAME_ONLY:
+            failures.append(
+                f"restricted study {spec_dir!r} has no "
+                "registered name-only form in the gate's "
+                "copies (defs §7)"
+            )
+    structure = {
+        "domains": domains,
+        "subdomains": subdomains,
+        "studies": studies,
+        "documents": documents,
+        "restricted": list(restricted),
+        "version": tax.get("version"),
+    }
+    return structure, failures
+
+
+def _pm_roll_up(counts: dict[str, int]) -> tuple[str, bool]:
+    """The study roll-up precedence (defs §5). Returns
+    (class, is_judgment_call); first matching rule wins."""
+    total = sum(counts.values())
+    if total == 0:
+        return "unjudged", False
+    if counts["positive"] > 0 and counts["negative"] > 0:
+        return "open", True
+    if counts["closed_other"] == total:
+        return "closed_other", False
+    if counts["negative"] > 0:
+        return "negative", False
+    if counts["positive"] > 0:
+        return "positive", False
+    return "open", False
+
+
+def _pm_dump(obj: Any) -> bytes:
+    """The published artifacts' byte format, as the gate
+    reproduces it for the byte-equality legs."""
+    return (
+        json.dumps(obj, ensure_ascii=False, indent=1, sort_keys=True)
+        + "\n"
+    ).encode("utf-8")
+
+
+def _derive_program_map(
+    root: Path,
+    entries: list[dict[str, Any]],
+    tax: dict[str, Any],
+) -> tuple[Optional[dict[str, bytes]], list[str], list[str]]:
+    """Recompute both program-map artifacts from the
+    ledger entries + taxonomy under the gate's registered
+    copies. Returns (artifact bytes by rel path, refusal
+    failures, coverage failures): any refusal means no
+    artifacts — the route fails closed exactly where the
+    builder does, by its own code."""
+    failures: list[str] = []
+    coverage_failures: list[str] = []
+    specs_dir = root / PROGRAM_MAP_SPECS_REL
+    if not specs_dir.is_dir():
+        return None, [f"spec tree not found: {specs_dir}"], []
+    spec_dirs = sorted(p.name for p in specs_dir.iterdir() if p.is_dir())
+
+    # Taxonomy coverage is exact and bidirectional (§8).
+    assigned = set(tax["studies"])
+    actual = set(spec_dirs)
+    if assigned != actual:
+        if actual - assigned:
+            coverage_failures.append(
+                "spec directories with no assignment: "
+                f"{sorted(actual - assigned)}"
+            )
+        if assigned - actual:
+            coverage_failures.append(
+                "assignments naming no directory: "
+                f"{sorted(assigned - actual)}"
+            )
+
+    # Governing entries (§3): claims in ledger order, then
+    # every reclassification applied in ledger order.
+    claims: dict[str, dict[str, Any]] = {}
+    order: list[str] = []
+    for row in entries:
+        if row.get("kind") != "claim":
+            continue
+        cid = row.get("id")
+        if cid in claims:
+            failures.append(f"duplicate claim id in ledger: {cid}")
+            continue
+        claims[cid] = dict(row)
+        order.append(cid)
+    for row in entries:
+        if row.get("kind") != "reclassification":
+            continue
+        target = row.get("supersedes")
+        if target not in claims:
+            failures.append(
+                f"reclassification {row.get('id')!r} supersedes "
+                f"{target!r}, which is not a claim entry"
+            )
+            continue
+        for field_name in ("status", "stage"):
+            if field_name in row:
+                claims[target][field_name] = row[field_name]
+    governing = [claims[cid] for cid in order]
+
+    ledger_path = root / li.LEDGER_REL
+    dates = [str(r.get("date")) for r in entries if r.get("date")]
+    stamp = {
+        "ledger_latest_entry_date": max(dates) if dates else None,
+        "ledger_lines": len(entries),
+        "ledger_schema": li.SCHEMA_VERSION,
+        "ledger_sha256": (
+            li.sha256_file(ledger_path) if ledger_path.is_file() else None
+        ),
+        "program_map_defs": GATE_PROGRAM_MAP_DEFS_VERSION,
+        "program_map_taxonomy": PROGRAM_MAP_TAXONOMY_VERSION,
+    }
+
+    def _source_of_record(
+        entry: dict[str, Any],
+    ) -> Optional[dict[str, Any]]:
+        sors = [
+            s
+            for s in entry.get("sources") or []
+            if isinstance(s, dict) and s.get("role") == "source_of_record"
+        ]
+        if len(sors) != 1:
+            failures.append(
+                f"claim {entry.get('id')!r} has {len(sors)} "
+                "source-of-record sources; exactly one is "
+                "required to place it"
+            )
+            return None
+        return sors[0]
+
+    claim_nodes: list[dict[str, Any]] = []
+    members: dict[str, list[str]] = {d: [] for d in spec_dirs}
+    multi_spec_claims: list[str] = []
+    null_falsifier_extracted: list[dict[str, Any]] = []
+    falsifier_present_count = 0
+    documents_seen: set[str] = set()
+    for entry in governing:
+        status = entry.get("status")
+        if status not in PM_STATUS_TO_CLASS:
+            failures.append(
+                f"claim {entry.get('id')!r} carries the "
+                f"unregistered status {status!r} (defs §4.2)"
+            )
+            continue
+        cls = PM_STATUS_TO_CLASS[status]
+        if cls == PM_IN_FLIGHT:
+            failures.append(
+                f"claim {entry.get('id')!r} derived the "
+                "in_flight class, which has no derivation "
+                "rule in v1 (defs §11)"
+            )
+            continue
+        present = bool(entry.get("falsifier"))
+        if present:
+            falsifier_present_count += 1
+        node: dict[str, Any] = {
+            "class": cls,
+            "document": None,
+            "domain": None,
+            "falsifier_present": present,
+            "id": entry.get("id"),
+            "kind": "claim",
+            "population": entry.get("population"),
+            "stage": entry.get("stage"),
+            "standing": PM_STANDING_TEMPLATE.format(
+                status=status,
+                stage=entry.get("stage") if entry.get("stage") else "none",
+                falsifier="present" if present else "absent",
+            ),
+            "status": status,
+            "study": None,
+            "subdomain": None,
+        }
+        population = entry.get("population")
+        if population == "bundle":
+            sor = _source_of_record(entry)
+            home = sor.get("spec") if sor else None
+            if not home or home not in actual:
+                failures.append(
+                    f"bundle claim {entry.get('id')!r} names "
+                    f"the home study {home!r}, which is not a "
+                    "spec directory (citation does not resolve)"
+                )
+                continue
+            specs_named = {
+                s.get("spec")
+                for s in entry.get("sources") or []
+                if isinstance(s, dict) and s.get("spec")
+            }
+            if len(specs_named) > 1:
+                multi_spec_claims.append(entry["id"])
+            assignment = tax["studies"][home]
+            node["study"] = home
+            node["domain"] = assignment["domain"]
+            node["subdomain"] = assignment["subdomain"]
+            members[home].append(cls)
+        elif population == "extracted":
+            sor = _source_of_record(entry)
+            document = sor.get("document_id") if sor else None
+            if not document or document not in tax["documents"]:
+                failures.append(
+                    f"extracted claim {entry.get('id')!r} names "
+                    f"the source document {document!r}, which "
+                    "has no taxonomy assignment"
+                )
+                continue
+            documents_seen.add(document)
+            assignment = tax["documents"][document]
+            node["document"] = document
+            node["domain"] = assignment["domain"]
+            node["subdomain"] = assignment["subdomain"]
+            if not present:
+                null_falsifier_extracted.append(
+                    {"document": document, "id": entry["id"]}
+                )
+        else:
+            failures.append(
+                f"claim {entry.get('id')!r} has population "
+                f"{population!r}, which has no registered "
+                "assignment route in program-map-defs v1 (§4.1)"
+            )
+            continue
+        claim_nodes.append(node)
+    unassigned_documents = set(tax["documents"]) - documents_seen
+    if unassigned_documents:
+        coverage_failures.append(
+            "taxonomy assigns extracted documents the ledger "
+            f"does not carry: {sorted(unassigned_documents)}"
+        )
+    uncarried = documents_seen - set(tax["documents"])
+    if uncarried:  # unreachable given the placement refusal; stated anyway
+        coverage_failures.append(
+            "ledger documents with no taxonomy assignment: "
+            f"{sorted(uncarried)}"
+        )
+
+    restricted = set(tax["restricted"])
+    study_nodes: list[dict[str, Any]] = []
+    finds: list[dict[str, Any]] = []
+    unjudged_studies: list[str] = []
+    judgment_calls: list[str] = []
+    for spec_dir in spec_dirs:
+        assignment = tax["studies"].get(spec_dir)
+        if assignment is None:
+            continue  # the coverage leg names it; no node is derivable
+        if spec_dir in restricted:
+            study_nodes.append(
+                {
+                    "class": None,
+                    "domain": assignment["domain"],
+                    "id": spec_dir,
+                    "kind": "study",
+                    "restricted": True,
+                    "standing": PM_RESTRICTED_NAME_ONLY[spec_dir],
+                    "subdomain": assignment["subdomain"],
+                }
+            )
+            finds.append({"kind": "restricted_node", "subject": spec_dir})
+            continue
+        counts = {c: 0 for c in PM_CLAIM_CLASSES}
+        for member_cls in members[spec_dir]:
+            counts[member_cls] += 1
+        cls, is_judgment = _pm_roll_up(counts)
+        if cls == PM_IN_FLIGHT:
+            failures.append(
+                f"study {spec_dir!r} derived the in_flight "
+                "class, which has no derivation rule in v1 "
+                "(defs §11)"
+            )
+            continue
+        study_nodes.append(
+            {
+                "class": cls,
+                "domain": assignment["domain"],
+                "id": spec_dir,
+                "judgment_call": is_judgment,
+                "kind": "study",
+                "member_counts": {
+                    **counts,
+                    "total": sum(counts.values()),
+                },
+                "restricted": False,
+                "subdomain": assignment["subdomain"],
+            }
+        )
+        if cls == "unjudged":
+            unjudged_studies.append(spec_dir)
+            finds.append(
+                {"kind": "bundle_less_study", "subject": spec_dir}
+            )
+        if is_judgment:
+            judgment_calls.append(spec_dir)
+            finds.append(
+                {
+                    "kind": "judgment_call",
+                    "negative": counts["negative"],
+                    "positive": counts["positive"],
+                    "subject": spec_dir,
+                    "total": sum(counts.values()),
+                }
+            )
+    for item in null_falsifier_extracted:
+        finds.append(
+            {
+                "document": item["document"],
+                "kind": "extracted_null_falsifier",
+                "subject": item["id"],
+            }
+        )
+    finds.sort(key=lambda f: (f["kind"], f["subject"]))
+    claim_nodes.sort(key=lambda n: n["id"])
+    study_nodes.sort(key=lambda n: n["id"])
+
+    def _class_counts(
+        nodes: list[dict[str, Any]], classes: tuple[str, ...]
+    ) -> dict[str, int]:
+        out = {c: 0 for c in classes}
+        for node in nodes:
+            if node["class"] in out:
+                out[node["class"]] += 1
+        return out
+
+    domains_block: dict[str, Any] = {}
+    for domain in tax["domains"]:
+        d_claims = [n for n in claim_nodes if n["domain"] == domain]
+        d_studies = [n for n in study_nodes if n["domain"] == domain]
+        domains_block[domain] = {
+            "claims": len(d_claims),
+            "claims_by_class": _class_counts(d_claims, PM_CLAIM_CLASSES),
+            "restricted_studies": sum(
+                1 for n in d_studies if n["restricted"]
+            ),
+            "studies": len(d_studies),
+            "studies_by_class": _class_counts(d_studies, PM_STUDY_CLASSES),
+        }
+    coverage = {
+        "claims": {
+            "by_class": _class_counts(claim_nodes, PM_CLAIM_CLASSES),
+            "by_population": {
+                pop: sum(
+                    1 for n in claim_nodes if n["population"] == pop
+                )
+                for pop in sorted({n["population"] for n in claim_nodes})
+            },
+            "total": len(claim_nodes),
+        },
+        "domains": domains_block,
+        "falsifier_coverage": {
+            "null_extracted_claims": sorted(
+                item["id"] for item in null_falsifier_extracted
+            ),
+            "present": falsifier_present_count,
+            "total": len(claim_nodes),
+        },
+        "judgment_call_studies": sorted(judgment_calls),
+        "multi_spec_claims": sorted(multi_spec_claims),
+        "studies": {
+            "by_class": _class_counts(study_nodes, PM_STUDY_CLASSES),
+            "restricted": len(restricted),
+            "total": len(study_nodes),
+        },
+        "unjudged_studies": sorted(unjudged_studies),
+    }
+    program_map = {
+        "coverage": coverage,
+        "defs_version": GATE_PROGRAM_MAP_DEFS_VERSION,
+        "nodes": {"claims": claim_nodes, "studies": study_nodes},
+        "stamp": stamp,
+        "taxonomy_version": PROGRAM_MAP_TAXONOMY_VERSION,
+    }
+    finds_doc = {
+        "defs_version": GATE_PROGRAM_MAP_DEFS_VERSION,
+        "finds": finds,
+        "stamp": stamp,
+        "taxonomy_version": PROGRAM_MAP_TAXONOMY_VERSION,
+    }
+    if failures or coverage_failures:
+        return None, failures, coverage_failures
+    artifacts = {
+        PROGRAM_MAP_REL: _pm_dump(program_map),
+        PROGRAM_MAP_FINDS_REL: _pm_dump(finds_doc),
+    }
+    return artifacts, failures, coverage_failures
+
+
+def _pm_census_lines(program_map: dict[str, Any]) -> list[str]:
+    coverage = program_map.get("coverage", {})
+    claims = coverage.get("claims", {})
+    studies = coverage.get("studies", {})
+    fc = coverage.get("falsifier_coverage", {})
+    lines = [
+        "census: "
+        f"{claims.get('total')} claim nodes by class "
+        f"{claims.get('by_class')}; {studies.get('total')} "
+        f"study nodes by class {studies.get('by_class')} "
+        f"(+{studies.get('restricted')} restricted, name-only)",
+        "census: judgment calls "
+        f"{len(coverage.get('judgment_call_studies', []))}; "
+        f"unjudged studies "
+        f"{len(coverage.get('unjudged_studies', []))}; "
+        "falsifier coverage "
+        f"{fc.get('present')} of {fc.get('total')} claims",
+    ]
+    for domain, block in sorted(
+        (coverage.get("domains") or {}).items()
+    ):
+        lines.append(
+            f"census: domain {domain!r}: {block.get('studies')} "
+            f"studies, {block.get('claims')} claims (per-domain "
+            "counts only; no cross-domain aggregate, C088-14)"
+        )
+    return lines
+
+
+def _v10_checks(
+    root: Path, entries: list[dict[str, Any]]
+) -> list[Check]:
+    """V10's legs. Where the program-map layer has not
+    landed at all (no taxonomy and no published artifacts —
+    a pre-Spec-088 tree, or a scratch tree carrying only
+    the older chain), V10 enumerates a single NOT-RUN, the
+    V5 posture toward a layer that did not exist yet. Once
+    any part of the layer is present, every leg runs and
+    absence is a named failure."""
+    checks: list[Check] = []
+    taxonomy_path = root / PROGRAM_MAP_TAXONOMY_REL
+    map_path = root / PROGRAM_MAP_REL
+    finds_path = root / PROGRAM_MAP_FINDS_REL
+    if (
+        not taxonomy_path.is_file()
+        and not map_path.is_file()
+        and not finds_path.is_file()
+    ):
+        return [
+            Check(
+                "V10 program-map equivalence",
+                "NOT-RUN",
+                [
+                    "no program-map layer in this tree (no "
+                    "taxonomy, no published artifacts); the "
+                    "layer lands with Spec 088 S1/S2"
+                ],
+            )
+        ]
+
+    tax, tax_failures = _pm_taxonomy(root)
+    artifacts: Optional[dict[str, bytes]] = None
+    derive_failures: list[str] = []
+    coverage_failures: list[str] = list(tax_failures)
+    expected_map: Optional[dict[str, Any]] = None
+    expected_finds: Optional[dict[str, Any]] = None
+    if tax is not None:
+        artifacts, derive_failures, cov_failures = _derive_program_map(
+            root, entries, tax
+        )
+        coverage_failures.extend(cov_failures)
+        if artifacts is not None:
+            expected_map = json.loads(artifacts[PROGRAM_MAP_REL])
+            expected_finds = json.loads(artifacts[PROGRAM_MAP_FINDS_REL])
+
+    # -- Leg 1: taxonomy coverage and format, bidirectional.
+    leg1_evidence = list(coverage_failures)
+    if tax is not None and not coverage_failures:
+        leg1_evidence = [
+            f"taxonomy assigns all {len(tax['studies'])} spec "
+            "directories exactly once (set equality both "
+            "directions); every extracted document the ledger "
+            f"carries is assigned ({len(tax['documents'])}) and "
+            "every assignment is carried; the format carries "
+            "no standing-shaped key (defs §8)"
+        ]
+    checks.append(
+        Check(
+            "V10 program-map equivalence — taxonomy coverage "
+            "and format (bidirectional)",
+            "FAIL" if coverage_failures else "PASS",
+            leg1_evidence,
+        )
+    )
+
+    # -- Leg 2: program-map.json byte-equality + citations.
+    if not map_path.is_file():
+        checks.append(
+            Check(
+                "V10 program-map equivalence — program-map.json",
+                "FAIL",
+                [f"published artifact missing: {map_path}"],
+            )
+        )
+    elif artifacts is None:
+        checks.append(
+            Check(
+                "V10 program-map equivalence — program-map.json",
+                "FAIL",
+                [
+                    "the gate's recomputation refused, so no "
+                    "equality can be established: "
+                    + "; ".join(
+                        (derive_failures or coverage_failures)[:4]
+                    )
+                ],
+            )
+        )
+    else:
+        committed_bytes = map_path.read_bytes()
+        if committed_bytes == artifacts[PROGRAM_MAP_REL]:
+            checks.append(
+                Check(
+                    "V10 program-map equivalence — "
+                    "program-map.json byte-equals the gate's "
+                    "recomputation (program-map-defs v1 copies)",
+                    "PASS",
+                    [
+                        "every claim node cites its governing "
+                        "ledger entry, every study node its "
+                        "spec directory, every extracted "
+                        "document its taxonomy assignment — "
+                        "the recomputation is built only from "
+                        "resolving citations, and the published "
+                        "bytes equal it exactly"
+                    ]
+                    + _pm_census_lines(expected_map or {}),
+                )
+            )
+        else:
+            divs: list[str] = []
+            try:
+                committed_map = json.loads(
+                    committed_bytes.decode("utf-8")
+                )
+            except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+                divs.append(f"artifact is not readable JSON: {exc}")
+                committed_map = None
+            if committed_map is not None and expected_map is not None:
+                for section in (
+                    "defs_version",
+                    "taxonomy_version",
+                    "stamp",
+                    "coverage",
+                    "nodes",
+                ):
+                    _first_divergences(
+                        expected_map.get(section),
+                        committed_map.get(section),
+                        section,
+                        divs,
+                        limit=10,
+                    )
+            checks.append(
+                Check(
+                    "V10 program-map equivalence — "
+                    "program-map.json byte-equals the gate's "
+                    "recomputation (program-map-defs v1 copies)",
+                    "FAIL",
+                    divs[:40]
+                    or [
+                        "bytes differ but no section divergence "
+                        "was isolated (serialization-level drift)"
+                    ],
+                )
+            )
+
+    # -- Leg 3: program-map-finds.json byte-equality (find list).
+    if not finds_path.is_file():
+        checks.append(
+            Check(
+                "V10 program-map equivalence — program-map-finds.json",
+                "FAIL",
+                [f"published artifact missing: {finds_path}"],
+            )
+        )
+    elif artifacts is None:
+        checks.append(
+            Check(
+                "V10 program-map equivalence — program-map-finds.json",
+                "FAIL",
+                [
+                    "the gate's recomputation refused, so no "
+                    "equality can be established: "
+                    + "; ".join(
+                        (derive_failures or coverage_failures)[:4]
+                    )
+                ],
+            )
+        )
+    else:
+        committed_bytes = finds_path.read_bytes()
+        if committed_bytes == artifacts[PROGRAM_MAP_FINDS_REL]:
+            find_counts = Counter(
+                f["kind"] for f in (expected_finds or {}).get("finds", [])
+            )
+            checks.append(
+                Check(
+                    "V10 program-map equivalence — "
+                    "program-map-finds.json byte-equals the "
+                    "gate's recomputation (find-list equality)",
+                    "PASS",
+                    [
+                        "find list equal: "
+                        + ", ".join(
+                            f"{kind} {n}"
+                            for kind, n in sorted(find_counts.items())
+                        )
+                    ],
+                )
+            )
+        else:
+            divs = []
+            try:
+                committed_finds = json.loads(
+                    committed_bytes.decode("utf-8")
+                )
+            except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+                divs.append(f"artifact is not readable JSON: {exc}")
+                committed_finds = None
+            if committed_finds is not None and expected_finds is not None:
+                for section in (
+                    "defs_version",
+                    "taxonomy_version",
+                    "stamp",
+                    "finds",
+                ):
+                    _first_divergences(
+                        expected_finds.get(section),
+                        committed_finds.get(section),
+                        section,
+                        divs,
+                        limit=10,
+                    )
+            checks.append(
+                Check(
+                    "V10 program-map equivalence — "
+                    "program-map-finds.json byte-equals the "
+                    "gate's recomputation (find-list equality)",
+                    "FAIL",
+                    divs[:40]
+                    or [
+                        "bytes differ but no section divergence "
+                        "was isolated (serialization-level drift)"
+                    ],
+                )
+            )
+
+    # -- Leg 4: stamp freshness against the current ledger.
+    stamp_failures: list[str] = []
+    stamp: Optional[dict[str, Any]] = None
+    if map_path.is_file():
+        try:
+            stamp = json.loads(
+                map_path.read_text(encoding="utf-8")
+            ).get("stamp")
+        except (OSError, json.JSONDecodeError) as exc:
+            stamp_failures.append(
+                f"cannot read the artifact's stamp: {exc}"
+            )
+    else:
+        stamp_failures.append(
+            "no published program-map.json, so no stamp to check"
+        )
+    if stamp is not None:
+        ledger_path = root / li.LEDGER_REL
+        current = {
+            "ledger_sha256": (
+                li.sha256_file(ledger_path)
+                if ledger_path.is_file()
+                else None
+            ),
+            "ledger_lines": len(entries),
+            "ledger_latest_entry_date": (
+                max(str(r.get("date")) for r in entries if r.get("date"))
+                if any(r.get("date") for r in entries)
+                else None
+            ),
+            "ledger_schema": li.SCHEMA_VERSION,
+            "program_map_defs": GATE_PROGRAM_MAP_DEFS_VERSION,
+            "program_map_taxonomy": (
+                tax.get("version") if tax is not None else None
+            ),
+        }
+        for field_name, current_value in current.items():
+            if stamp.get(field_name) != current_value:
+                stamp_failures.append(
+                    f"stamp {field_name}: artifact carries "
+                    f"{stamp.get(field_name)!r}, current value "
+                    f"is {current_value!r} (stale artifact, "
+                    "defs §10)"
+                )
+    checks.append(
+        Check(
+            "V10 program-map equivalence — stamp freshness "
+            "against the current ledger",
+            "FAIL" if stamp_failures else "PASS",
+            stamp_failures
+            or [
+                "stamp ledger hash, line count, latest entry "
+                "date, and versions all equal the current "
+                "ledger's"
+            ],
+        )
+    )
+    return checks
+
+
+# ---------------------------------------------------------------------------
 # The gate run
 
 
@@ -2775,6 +3702,9 @@ def run_gate(
         f"{li.SCHEMA_VERSION}",
         f"map definitions: {GATE_MAP_DEFS_VERSION} (the gate's "
         "registered copies)",
+        "program-map definitions: "
+        f"{GATE_PROGRAM_MAP_DEFS_VERSION} "
+        "(the gate's registered copies)",
         f"settling semantics: {SETTLE_SEMANTICS_VERSION} (the "
         f"gate's registered copies); canonicals: "
         f"{SETTLING_CANONICAL_REL}",
@@ -3494,6 +4424,18 @@ def run_gate(
         report.checks.append(
             Check("V9 no write path", "NOT-RUN",
                   ["out of scope for this run"])
+        )
+
+    # -- V10 ------------------------------------------------------------------
+    if in_scope("V10"):
+        report.checks.extend(_v10_checks(root, entries))
+    else:
+        report.checks.append(
+            Check(
+                "V10 program-map equivalence",
+                "NOT-RUN",
+                ["out of scope for this run"],
+            )
         )
 
     return report

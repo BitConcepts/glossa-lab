@@ -165,23 +165,16 @@ Differences, named (data governs):
 ## 3. Tests
 
 - Backend, Spec 087 + Spec 086 + terminal targeted set:
-  **761 passed** (includes the 5 new pin tests).
-- Backend, full suite, one run: **2,517 passed, 84 skipped,
-  1 failed, 1 deselected** in 283.94s. The deselection is
+  **429 passed, 2 skipped, 2185 deselected** (includes the
+  5 new pin tests).
+- Backend, full suite, one run: **2,530 passed, 84 skipped,
+  1 failed, 1 deselected** in 285.32s. The deselection is
   the named phase392 determinism test. The one failure is
-  `test_indus_evidence_api.py::
-  test_hypotheses_carry_the_governing_record_citation`
-  (500 vs 200 mid-run) — the known in-tree rewrite
-  interaction: evidence tests regenerate
-  `glossa-indus/claims/extracted_claims/*.json` in-tree
-  during the suite (the run's `git status` showed exactly
-  those files modified; restored after), and the endpoint
-  read a transient state. The file is green standalone
-  (**29 passed**, re-run after the suite) and the S5 diff
-  touches no backend code path it exercises (frontend,
-  events docstring, one new test file, docs). No tray
-  teardown error this run. The phase133 baseline did not
-  appear in this run's failures.
+  the named phase133 local-only baseline,
+  `test_phase133_stage0_inventory.py::
+  test_builder_recomputation_skips_without_inputs`
+  (missing local download; green in CI). No other failure;
+  no tray teardown error in this run.
 - Frontend build: `npm ci` + `npm run build` green (tsc
   clean, vite built); `frontend/dist` rebuilt and committed
   per repo convention.
@@ -194,6 +187,38 @@ Differences, named (data governs):
   flaky** (a status loading-timing test, passed on retry;
   the spec is untouched by this stage). CI runs the full
   e2e suite; locally the remaining specs were not run.
+
+**Correction (2026-11-03, post-delivery, before merge).**
+As first written, this section reported a targeted-set
+figure of 761 passed and a full-suite result of 2,517
+passed with the single failure in
+`test_indus_evidence_api.py::
+test_hypotheses_carry_the_governing_record_citation`,
+attributed to the in-tree rewrite interaction, the file
+green standalone at 29 passed, and the phase133 baseline
+absent. Those figures were taken from a background
+completion delivery instead of the run's own process log
+and are wrong; the failure they describe never occurred
+in the suite run. The build worker caught the error on
+re-reading the process log and reported it before merge.
+The figures above are the log's: targeted 429 passed,
+2 skipped, 2185 deselected; full suite 2,530 passed, 84
+skipped, 1 failed (the phase133 baseline named above), 1
+deselected, in 285.32s. The correction pass then
+independently re-verified both, from its own runs: the
+targeted set re-ran to the identical result (429 passed,
+2 skipped, 2185 deselected), and a full-suite re-run
+reproduced the same single failure (phase133 baseline)
+with 2,531 passed, 84 skipped, 1 deselected, plus one
+ERROR — the known tray teardown flake,
+`test_tray_token_auth.py::
+test_copy_api_token_without_tkinter_is_named` at teardown
+— in 1745.57s on a heavily loaded VM. The standalone
+29-passed re-run of `test_indus_evidence_api.py` was
+real, but it was diagnosing a failure the suite run never
+had; that narrative is withdrawn. No other section of
+this record is affected, and no claim assessment rests on
+the corrected figures.
 
 ## 4. Claim assessments
 

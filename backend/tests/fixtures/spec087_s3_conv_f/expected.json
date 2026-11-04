@@ -5044,6 +5044,3759 @@
     "top_sign_codes": [],
     "verdict": "PREDICTION 3 NOT CONFIRMED: recovered 0 sign-sequence lines + 0 CM-block unicode glyphs across 0 pages with parseable signs. OCR text is too noisy / un-tagged for direct catalog harvest; image-based catalog plates would need a separate vision pipeline."
    }
+  },
+  {
+   "id": "f15_dravidian_real",
+   "node": "DravidianSyllableLM",
+   "mode": "lm",
+   "inputs": {},
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "language": "dravidian_syllable",
+    "n_bigrams": 2293,
+    "n_syllables": 655,
+    "verdict": "CONTAMINATED (1 hits)",
+    "lm_digest": "b3dd9831a2dabdf2c861573debe41e0dedff10bb30de8e7db41073a236c95603"
+   }
+  },
+  {
+   "id": "f15_kalyan_real",
+   "node": "KalyanCrossValidation",
+   "mode": "full",
+   "inputs": {},
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "conflicting": [
+     {
+      "kalyanaraman_reading": "workshop",
+      "our_confidence": "HIGH",
+      "our_reading": "ku\u1e49",
+      "sign": "M002",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "body",
+      "our_confidence": "HIGH",
+      "our_reading": "ku\u1e49",
+      "sign": "M002",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "HIGH",
+      "our_reading": "ku\u1e49",
+      "sign": "M002",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "smelter",
+      "our_confidence": "HIGH",
+      "our_reading": "ku\u1e49",
+      "sign": "M002",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "arrow",
+      "our_confidence": "HIGH",
+      "our_reading": "ku\u1e49",
+      "sign": "M002",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "duplicate",
+      "our_confidence": "HIGH",
+      "our_reading": "aaL",
+      "sign": "M007",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "metalcasting",
+      "our_confidence": "HIGH",
+      "our_reading": "aaL",
+      "sign": "M007",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "archer",
+      "our_confidence": "HIGH",
+      "our_reading": "aaL",
+      "sign": "M007",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "workshop",
+      "our_confidence": "HIGH",
+      "our_reading": "aaL",
+      "sign": "M007",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "mint",
+      "our_confidence": "HIGH",
+      "our_reading": "aaL",
+      "sign": "M007",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "tin",
+      "our_confidence": "HIGH",
+      "our_reading": "erumai",
+      "sign": "M008",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "sprout",
+      "our_confidence": "HIGH",
+      "our_reading": "erumai",
+      "sign": "M008",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "warrior",
+      "our_confidence": "HIGH",
+      "our_reading": "erumai",
+      "sign": "M008",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "furnace",
+      "our_confidence": "HIGH",
+      "our_reading": "erumai",
+      "sign": "M008",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "accounting",
+      "our_confidence": "HIGH",
+      "our_reading": "erumai",
+      "sign": "M008",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "duplicated",
+      "our_confidence": "HIGH",
+      "our_reading": "o\u1e49\u1e5fu/1",
+      "sign": "M012",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "fish",
+      "our_confidence": "HIGH",
+      "our_reading": "o\u1e49\u1e5fu/1",
+      "sign": "M012",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "HIGH",
+      "our_reading": "o\u1e49\u1e5fu/1",
+      "sign": "M012",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "goatskin",
+      "our_confidence": "HIGH",
+      "our_reading": "o\u1e49\u1e5fu/1",
+      "sign": "M012",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "smelter",
+      "our_confidence": "HIGH",
+      "our_reading": "o\u1e49\u1e5fu/1",
+      "sign": "M012",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "notch",
+      "our_confidence": "HIGH",
+      "our_reading": "nakaram",
+      "sign": "M013",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "equipment",
+      "our_confidence": "HIGH",
+      "our_reading": "nakaram",
+      "sign": "M013",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "smelter",
+      "our_confidence": "HIGH",
+      "our_reading": "nakaram",
+      "sign": "M013",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "HIGH",
+      "our_reading": "kai",
+      "sign": "M017",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "metalsmith",
+      "our_confidence": "HIGH",
+      "our_reading": "kai",
+      "sign": "M017",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "warrior",
+      "our_confidence": "HIGH",
+      "our_reading": "kai",
+      "sign": "M017",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "furnace",
+      "our_confidence": "HIGH",
+      "our_reading": "kai",
+      "sign": "M017",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "bent",
+      "our_confidence": "HIGH",
+      "our_reading": "kai",
+      "sign": "M017",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "smelter",
+      "our_confidence": "HIGH",
+      "our_reading": "n\u0113r",
+      "sign": "M018",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "body",
+      "our_confidence": "HIGH",
+      "our_reading": "n\u0113r",
+      "sign": "M018",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "HIGH",
+      "our_reading": "n\u0113r",
+      "sign": "M018",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "copper",
+      "our_confidence": "HIGH",
+      "our_reading": "n\u0113r",
+      "sign": "M018",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "notch",
+      "our_confidence": "HIGH",
+      "our_reading": "n\u0113r",
+      "sign": "M018",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "turner",
+      "our_confidence": "HIGH",
+      "our_reading": "va\u1e37",
+      "sign": "M023",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "smelter",
+      "our_confidence": "HIGH",
+      "our_reading": "va\u1e37",
+      "sign": "M023",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "bent",
+      "our_confidence": "HIGH",
+      "our_reading": "va\u1e37",
+      "sign": "M023",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "curve",
+      "our_confidence": "HIGH",
+      "our_reading": "va\u1e37",
+      "sign": "M023",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "body",
+      "our_confidence": "HIGH",
+      "our_reading": "cem",
+      "sign": "M025",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "HIGH",
+      "our_reading": "cem",
+      "sign": "M025",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "copper",
+      "our_confidence": "HIGH",
+      "our_reading": "cem",
+      "sign": "M025",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "one",
+      "our_confidence": "HIGH",
+      "our_reading": "cem",
+      "sign": "M025",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "workshop",
+      "our_confidence": "HIGH",
+      "our_reading": "cem",
+      "sign": "M025",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "two",
+      "our_confidence": "HIGH",
+      "our_reading": "vaN",
+      "sign": "M042",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "metalcasting",
+      "our_confidence": "HIGH",
+      "our_reading": "vaN",
+      "sign": "M042",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "potter",
+      "our_confidence": "HIGH",
+      "our_reading": "vaN",
+      "sign": "M042",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "body",
+      "our_confidence": "HIGH",
+      "our_reading": "vaN",
+      "sign": "M042",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "HIGH",
+      "our_reading": "vaN",
+      "sign": "M042",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "fish",
+      "our_confidence": "HIGH",
+      "our_reading": "y\u0101nai",
+      "sign": "M045",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "HIGH",
+      "our_reading": "y\u0101nai",
+      "sign": "M045",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "metal",
+      "our_confidence": "HIGH",
+      "our_reading": "y\u0101nai",
+      "sign": "M045",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "adorant",
+      "our_confidence": "HIGH",
+      "our_reading": "y\u0101nai",
+      "sign": "M045",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "twig",
+      "our_confidence": "HIGH",
+      "our_reading": "y\u0101nai",
+      "sign": "M045",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "bronze",
+      "our_confidence": "HIGH",
+      "our_reading": "kaL",
+      "sign": "M046",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "furnace",
+      "our_confidence": "HIGH",
+      "our_reading": "kaL",
+      "sign": "M046",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "fish",
+      "our_confidence": "HIGH",
+      "our_reading": "mu/mu\u1e49",
+      "sign": "M048",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "alloymetal",
+      "our_confidence": "HIGH",
+      "our_reading": "mu/mu\u1e49",
+      "sign": "M048",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "cover",
+      "our_confidence": "HIGH",
+      "our_reading": "mu/mu\u1e49",
+      "sign": "M048",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "crucible",
+      "our_confidence": "HIGH",
+      "our_reading": "mu/mu\u1e49",
+      "sign": "M048",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "four",
+      "our_confidence": "HIGH",
+      "our_reading": "mu/mu\u1e49",
+      "sign": "M048",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "ear",
+      "our_confidence": "HIGH",
+      "our_reading": "p\u016b/pu\u1e37",
+      "sign": "M051",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "blacksmith",
+      "our_confidence": "HIGH",
+      "our_reading": "p\u016b/pu\u1e37",
+      "sign": "M051",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "equipment",
+      "our_confidence": "HIGH",
+      "our_reading": "p\u016b/pu\u1e37",
+      "sign": "M051",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "three",
+      "our_confidence": "HIGH",
+      "our_reading": "p\u016b/pu\u1e37",
+      "sign": "M051",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "seven",
+      "our_confidence": "HIGH",
+      "our_reading": "p\u016b/pu\u1e37",
+      "sign": "M051",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "appendage",
+      "our_confidence": "HIGH",
+      "our_reading": "mi",
+      "sign": "M053",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "silver",
+      "our_confidence": "HIGH",
+      "our_reading": "mi",
+      "sign": "M053",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "fish",
+      "our_confidence": "HIGH",
+      "our_reading": "mi",
+      "sign": "M053",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "alloymetal",
+      "our_confidence": "HIGH",
+      "our_reading": "mi",
+      "sign": "M053",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "cover",
+      "our_confidence": "HIGH",
+      "our_reading": "mi",
+      "sign": "M053",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "sprout",
+      "our_confidence": "HIGH",
+      "our_reading": "miN4",
+      "sign": "M056",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "bud",
+      "our_confidence": "HIGH",
+      "our_reading": "miN4",
+      "sign": "M056",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "four",
+      "our_confidence": "HIGH",
+      "our_reading": "miN4",
+      "sign": "M056",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "equipment",
+      "our_confidence": "HIGH",
+      "our_reading": "miN4",
+      "sign": "M056",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "notch",
+      "our_confidence": "HIGH",
+      "our_reading": "miN4",
+      "sign": "M056",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "four",
+      "our_confidence": "HIGH",
+      "our_reading": "erutu",
+      "sign": "M062",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "equipment",
+      "our_confidence": "HIGH",
+      "our_reading": "erutu",
+      "sign": "M062",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "steel",
+      "our_confidence": "HIGH",
+      "our_reading": "erutu",
+      "sign": "M062",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "ingot",
+      "our_confidence": "HIGH",
+      "our_reading": "erutu",
+      "sign": "M062",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "market",
+      "our_confidence": "HIGH",
+      "our_reading": "mutalai",
+      "sign": "M063",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "penis",
+      "our_confidence": "HIGH",
+      "our_reading": "mutalai",
+      "sign": "M063",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "metal",
+      "our_confidence": "HIGH",
+      "our_reading": "mutalai",
+      "sign": "M063",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "four",
+      "our_confidence": "HIGH",
+      "our_reading": "mutalai",
+      "sign": "M063",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "equipment",
+      "our_confidence": "HIGH",
+      "our_reading": "mutalai",
+      "sign": "M063",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "appendage",
+      "our_confidence": "HIGH",
+      "our_reading": "kuTam",
+      "sign": "M065",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "silver",
+      "our_confidence": "HIGH",
+      "our_reading": "kuTam",
+      "sign": "M065",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "fish",
+      "our_confidence": "HIGH",
+      "our_reading": "kuTam",
+      "sign": "M065",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "alloymetal",
+      "our_confidence": "HIGH",
+      "our_reading": "kuTam",
+      "sign": "M065",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "cover",
+      "our_confidence": "HIGH",
+      "our_reading": "kuTam",
+      "sign": "M065",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "fish",
+      "our_confidence": "HIGH",
+      "our_reading": "v\u0113l",
+      "sign": "M070",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "HIGH",
+      "our_reading": "v\u0113l",
+      "sign": "M070",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "metal",
+      "our_confidence": "HIGH",
+      "our_reading": "v\u0113l",
+      "sign": "M070",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "implements",
+      "our_confidence": "HIGH",
+      "our_reading": "v\u0113l",
+      "sign": "M070",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "ladle",
+      "our_confidence": "HIGH",
+      "our_reading": "v\u0113l",
+      "sign": "M070",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "penis",
+      "our_confidence": "HIGH",
+      "our_reading": "c\u0113r",
+      "sign": "M078",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "metal",
+      "our_confidence": "HIGH",
+      "our_reading": "c\u0113r",
+      "sign": "M078",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "four",
+      "our_confidence": "HIGH",
+      "our_reading": "c\u0113r",
+      "sign": "M078",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "equipment",
+      "our_confidence": "HIGH",
+      "our_reading": "c\u0113r",
+      "sign": "M078",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "steel",
+      "our_confidence": "HIGH",
+      "our_reading": "c\u0113r",
+      "sign": "M078",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "steel",
+      "our_confidence": "HIGH",
+      "our_reading": "v\u0113\u1e45kai",
+      "sign": "M080",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "wing",
+      "our_confidence": "HIGH",
+      "our_reading": "v\u0113\u1e45kai",
+      "sign": "M080",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "workshop",
+      "our_confidence": "HIGH",
+      "our_reading": "v\u0113\u1e45kai",
+      "sign": "M080",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "wing",
+      "our_confidence": "HIGH",
+      "our_reading": "ve",
+      "sign": "M081",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "workshop",
+      "our_confidence": "HIGH",
+      "our_reading": "ve",
+      "sign": "M081",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "metalcasting",
+      "our_confidence": "HIGH",
+      "our_reading": "veL",
+      "sign": "M087",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "three",
+      "our_confidence": "HIGH",
+      "our_reading": "veL",
+      "sign": "M087",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "HIGH",
+      "our_reading": "veL",
+      "sign": "M087",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "furnace",
+      "our_confidence": "HIGH",
+      "our_reading": "veL",
+      "sign": "M087",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "two",
+      "our_confidence": "HIGH",
+      "our_reading": "veL",
+      "sign": "M087",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "three",
+      "our_confidence": "HIGH",
+      "our_reading": "tu/t\u016b",
+      "sign": "M089",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "ingot",
+      "our_confidence": "HIGH",
+      "our_reading": "tu/t\u016b",
+      "sign": "M089",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "metalcasting",
+      "our_confidence": "HIGH",
+      "our_reading": "tu/t\u016b",
+      "sign": "M089",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "daybook",
+      "our_confidence": "HIGH",
+      "our_reading": "tu/t\u016b",
+      "sign": "M089",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "splinter",
+      "our_confidence": "HIGH",
+      "our_reading": "tu/t\u016b",
+      "sign": "M089",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "merchant",
+      "our_confidence": "HIGH",
+      "our_reading": "kol/ko\u1e37",
+      "sign": "M099",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "corner",
+      "our_confidence": "HIGH",
+      "our_reading": "kol/ko\u1e37",
+      "sign": "M099",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "splinter",
+      "our_confidence": "HIGH",
+      "our_reading": "kol/ko\u1e37",
+      "sign": "M099",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "workshop",
+      "our_confidence": "HIGH",
+      "our_reading": "kol/ko\u1e37",
+      "sign": "M099",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "cross",
+      "our_confidence": "HIGH",
+      "our_reading": "kol/ko\u1e37",
+      "sign": "M099",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "copper",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M109",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "antelope",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M109",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "three",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M109",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "duplicated",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M109",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "fish",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M109",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "ingot",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M111",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "seven",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M111",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "strand",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M112",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "splinter",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M112",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "workshop",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M112",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "cross",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M112",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "four",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M112",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "bdellium",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M120",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "tiger",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M120",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "tail",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M120",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "turner",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M120",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "onager",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M120",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "accounting",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M123",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "artificer",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M123",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "bent",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M123",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "equipment",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M123",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "HIGH",
+      "our_reading": "kuTam",
+      "sign": "M124",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "furnace",
+      "our_confidence": "HIGH",
+      "our_reading": "kuTam",
+      "sign": "M124",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "one",
+      "our_confidence": "HIGH",
+      "our_reading": "kuTam",
+      "sign": "M124",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "workshop",
+      "our_confidence": "HIGH",
+      "our_reading": "kuTam",
+      "sign": "M124",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "inclination",
+      "our_confidence": "HIGH",
+      "our_reading": "kuTam",
+      "sign": "M124",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "HIGH",
+      "our_reading": "mui",
+      "sign": "M130",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "squirrel",
+      "our_confidence": "HIGH",
+      "our_reading": "mui",
+      "sign": "M130",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "lid",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M134",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "three",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M134",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "one",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M134",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "workshop",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M134",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "ingot",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M134",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "fish",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M135",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "company",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M135",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "workshop",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M135",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "copper",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M135",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "silver",
+      "our_confidence": "HIGH",
+      "our_reading": "ku\u1e5f",
+      "sign": "M137",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "cross",
+      "our_confidence": "HIGH",
+      "our_reading": "ku\u1e5f",
+      "sign": "M137",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "body",
+      "our_confidence": "HIGH",
+      "our_reading": "ku\u1e5f",
+      "sign": "M137",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "HIGH",
+      "our_reading": "ku\u1e5f",
+      "sign": "M137",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "copper",
+      "our_confidence": "HIGH",
+      "our_reading": "ku\u1e5f",
+      "sign": "M137",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "silver",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M147",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "cross",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M147",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "one",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M147",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "artisan",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M147",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "six",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M147",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "smelter",
+      "our_confidence": "HIGH",
+      "our_reading": "or",
+      "sign": "M149",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "cross",
+      "our_confidence": "HIGH",
+      "our_reading": "or",
+      "sign": "M149",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "minerals",
+      "our_confidence": "HIGH",
+      "our_reading": "or",
+      "sign": "M149",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "two",
+      "our_confidence": "HIGH",
+      "our_reading": "or",
+      "sign": "M149",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "HIGH",
+      "our_reading": "or",
+      "sign": "M149",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "HIGH",
+      "our_reading": "ka",
+      "sign": "M155",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "furnace",
+      "our_confidence": "HIGH",
+      "our_reading": "ka",
+      "sign": "M155",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "cover",
+      "our_confidence": "HIGH",
+      "our_reading": "ka",
+      "sign": "M155",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "ingot",
+      "our_confidence": "HIGH",
+      "our_reading": "ka",
+      "sign": "M155",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "one",
+      "our_confidence": "HIGH",
+      "our_reading": "ka",
+      "sign": "M155",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "cross",
+      "our_confidence": "HIGH",
+      "our_reading": "il/i\u1e37",
+      "sign": "M162",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "four",
+      "our_confidence": "HIGH",
+      "our_reading": "il/i\u1e37",
+      "sign": "M162",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "cob",
+      "our_confidence": "HIGH",
+      "our_reading": "il/i\u1e37",
+      "sign": "M162",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "zebu",
+      "our_confidence": "HIGH",
+      "our_reading": "il/i\u1e37",
+      "sign": "M162",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "smelter",
+      "our_confidence": "HIGH",
+      "our_reading": "il/i\u1e37",
+      "sign": "M162",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "sprout",
+      "our_confidence": "HIGH",
+      "our_reading": "il",
+      "sign": "M164",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "bud",
+      "our_confidence": "HIGH",
+      "our_reading": "il",
+      "sign": "M164",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "four",
+      "our_confidence": "HIGH",
+      "our_reading": "il",
+      "sign": "M164",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "equipment",
+      "our_confidence": "HIGH",
+      "our_reading": "il",
+      "sign": "M164",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "notch",
+      "our_confidence": "HIGH",
+      "our_reading": "il",
+      "sign": "M164",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "archer",
+      "our_confidence": "HIGH",
+      "our_reading": "katir",
+      "sign": "M175",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "dispatch",
+      "our_confidence": "HIGH",
+      "our_reading": "an/a\u1e47",
+      "sign": "M176",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "daybook",
+      "our_confidence": "HIGH",
+      "our_reading": "an/a\u1e47",
+      "sign": "M176",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "blacksmith",
+      "our_confidence": "HIGH",
+      "our_reading": "an/a\u1e47",
+      "sign": "M176",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "account",
+      "our_confidence": "HIGH",
+      "our_reading": "an/a\u1e47",
+      "sign": "M176",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "bronze",
+      "our_confidence": "HIGH",
+      "our_reading": "an/a\u1e47",
+      "sign": "M176",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "wrist",
+      "our_confidence": "HIGH",
+      "our_reading": "na",
+      "sign": "M177",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "scraper",
+      "our_confidence": "HIGH",
+      "our_reading": "na",
+      "sign": "M177",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "supercargo",
+      "our_confidence": "HIGH",
+      "our_reading": "na",
+      "sign": "M177",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "HIGH",
+      "our_reading": "na",
+      "sign": "M177",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "furnace",
+      "our_confidence": "HIGH",
+      "our_reading": "na",
+      "sign": "M177",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "armourer",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M186",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "ladder",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M186",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M186",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "three",
+      "our_confidence": "HIGH",
+      "our_reading": "pa\u1e49",
+      "sign": "M190",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "sprout",
+      "our_confidence": "HIGH",
+      "our_reading": "pa\u1e49",
+      "sign": "M190",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "four",
+      "our_confidence": "HIGH",
+      "our_reading": "pa\u1e49",
+      "sign": "M190",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "twigs",
+      "our_confidence": "HIGH",
+      "our_reading": "pa\u1e49",
+      "sign": "M190",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "implements",
+      "our_confidence": "HIGH",
+      "our_reading": "pa\u1e49",
+      "sign": "M190",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "HIGH",
+      "our_reading": "ka\u1e6d",
+      "sign": "M194",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "ingot",
+      "our_confidence": "HIGH",
+      "our_reading": "ka\u1e6d",
+      "sign": "M194",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "sluice",
+      "our_confidence": "HIGH",
+      "our_reading": "ka\u1e6d",
+      "sign": "M194",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "artisan",
+      "our_confidence": "HIGH",
+      "our_reading": "ka\u1e6d",
+      "sign": "M194",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "sprout",
+      "our_confidence": "HIGH",
+      "our_reading": "ka\u1e6d",
+      "sign": "M194",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "furnace",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M195",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "ingot",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M195",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "sluice",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M195",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "artisan",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M195",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "one",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M197",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "workshop",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M197",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "seven",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M197",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "steel",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M197",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "four",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M197",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "HIGH",
+      "our_reading": "can",
+      "sign": "M202",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "copper",
+      "our_confidence": "HIGH",
+      "our_reading": "can",
+      "sign": "M202",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "temple",
+      "our_confidence": "HIGH",
+      "our_reading": "can",
+      "sign": "M202",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "one",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M210",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "workshop",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M210",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "four",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M210",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "implements",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M210",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "splinter",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M210",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "HIGH",
+      "our_reading": "kol",
+      "sign": "M211",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "furnace",
+      "our_confidence": "HIGH",
+      "our_reading": "kol",
+      "sign": "M211",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "arrow",
+      "our_confidence": "HIGH",
+      "our_reading": "kol",
+      "sign": "M211",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "implements",
+      "our_confidence": "HIGH",
+      "our_reading": "kol",
+      "sign": "M211",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "pair",
+      "our_confidence": "HIGH",
+      "our_reading": "kol",
+      "sign": "M211",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "bdellium",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M213",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "tiger",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M213",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "tail",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M213",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "onager",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M213",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "body",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M214",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M214",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "copper",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M214",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "one",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M214",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "workshop",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M214",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "tongs",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M219",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "anvil",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M219",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "smith",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M219",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "bronze",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M219",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "two",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M219",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "workshop",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M242",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "temple",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M242",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "body",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M242",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M242",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "copper",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M242",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "body",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M245",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M245",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "copper",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M245",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "one",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M245",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "workshop",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M245",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "two",
+      "our_confidence": "HIGH",
+      "our_reading": "tii",
+      "sign": "M249",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "tin",
+      "our_confidence": "HIGH",
+      "our_reading": "tii",
+      "sign": "M249",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "one",
+      "our_confidence": "HIGH",
+      "our_reading": "tii",
+      "sign": "M249",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "workshop",
+      "our_confidence": "HIGH",
+      "our_reading": "tii",
+      "sign": "M249",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "sluice",
+      "our_confidence": "HIGH",
+      "our_reading": "tii",
+      "sign": "M249",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "body",
+      "our_confidence": "LOW",
+      "our_reading": "min",
+      "sign": "M252",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "LOW",
+      "our_reading": "min",
+      "sign": "M252",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "copper",
+      "our_confidence": "LOW",
+      "our_reading": "min",
+      "sign": "M252",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "implements",
+      "our_confidence": "LOW",
+      "our_reading": "min",
+      "sign": "M252",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "division",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M256",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "implements",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M256",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "peg",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M256",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "pin",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M256",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "blacksmith",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M256",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "soma",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M259",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M259",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "fish",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M259",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "MEDIUM",
+      "our_reading": "iN/in (genitive of)",
+      "sign": "M267",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "merchant",
+      "our_confidence": "MEDIUM",
+      "our_reading": "iN/in (genitive of)",
+      "sign": "M267",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "corner",
+      "our_confidence": "MEDIUM",
+      "our_reading": "iN/in (genitive of)",
+      "sign": "M267",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "splinter",
+      "our_confidence": "MEDIUM",
+      "our_reading": "iN/in (genitive of)",
+      "sign": "M267",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "workshop",
+      "our_confidence": "MEDIUM",
+      "our_reading": "iN/in (genitive of)",
+      "sign": "M267",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "goat",
+      "our_confidence": "HIGH",
+      "our_reading": "ma",
+      "sign": "M272",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "copper",
+      "our_confidence": "HIGH",
+      "our_reading": "ma",
+      "sign": "M272",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "crucible",
+      "our_confidence": "HIGH",
+      "our_reading": "ma",
+      "sign": "M272",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "zebu",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M286",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "spoke",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M286",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "brass",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M286",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "potter",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M286",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "bent",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M287",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "curve",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M287",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "brass",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M287",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "smelter",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M287",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "warrior",
+      "our_confidence": "MEDIUM",
+      "our_reading": "ta",
+      "sign": "M293",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "furnace",
+      "our_confidence": "MEDIUM",
+      "our_reading": "ta",
+      "sign": "M293",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "warehouse",
+      "our_confidence": "MEDIUM",
+      "our_reading": "ta",
+      "sign": "M293",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "smelter",
+      "our_confidence": "MEDIUM",
+      "our_reading": "ta",
+      "sign": "M293",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "three",
+      "our_confidence": "MEDIUM",
+      "our_reading": "ta",
+      "sign": "M293",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "temple",
+      "our_confidence": "HIGH",
+      "our_reading": "pa\u1e5f",
+      "sign": "M295",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "tiger",
+      "our_confidence": "HIGH",
+      "our_reading": "pa\u1e5f",
+      "sign": "M295",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "interlocked",
+      "our_confidence": "HIGH",
+      "our_reading": "pa\u1e5f",
+      "sign": "M295",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "corner",
+      "our_confidence": "HIGH",
+      "our_reading": "pa\u1e5f",
+      "sign": "M295",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "splinter",
+      "our_confidence": "HIGH",
+      "our_reading": "pa\u1e5f",
+      "sign": "M295",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "octopus",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M297",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "priest",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M297",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "chieftains",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M297",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "unicorn",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M297",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "body",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M297",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "soma",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M298",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M298",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "fish",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M298",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "alloymetal",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M298",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "ox",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M298",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "trunk",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M301",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "blacksmith",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M301",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "furnace",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M301",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "pair",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M301",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "bent",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M301",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "penance",
+      "our_confidence": "HIGH",
+      "our_reading": "\u014d\u1e6du/comitative",
+      "sign": "M305",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "mint",
+      "our_confidence": "HIGH",
+      "our_reading": "\u014d\u1e6du/comitative",
+      "sign": "M305",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "scarf",
+      "our_confidence": "HIGH",
+      "our_reading": "\u014d\u1e6du/comitative",
+      "sign": "M305",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "blacksmith",
+      "our_confidence": "HIGH",
+      "our_reading": "\u014d\u1e6du/comitative",
+      "sign": "M305",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "polarstar",
+      "our_confidence": "HIGH",
+      "our_reading": "\u014d\u1e6du/comitative",
+      "sign": "M305",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "ingot",
+      "our_confidence": "HIGH",
+      "our_reading": "kol",
+      "sign": "M321",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "smith",
+      "our_confidence": "HIGH",
+      "our_reading": "kol",
+      "sign": "M321",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "two",
+      "our_confidence": "HIGH",
+      "our_reading": "kol",
+      "sign": "M321",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "cross",
+      "our_confidence": "HIGH",
+      "our_reading": "kol",
+      "sign": "M321",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M327",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "metalsmith",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M327",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "warrior",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M327",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "furnace",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M327",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "ear",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M327",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "furnace",
+      "our_confidence": "HIGH",
+      "our_reading": "can",
+      "sign": "M330",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "three",
+      "our_confidence": "HIGH",
+      "our_reading": "can",
+      "sign": "M330",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "division",
+      "our_confidence": "HIGH",
+      "our_reading": "can",
+      "sign": "M330",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "implements",
+      "our_confidence": "HIGH",
+      "our_reading": "can",
+      "sign": "M330",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "ear",
+      "our_confidence": "HIGH",
+      "our_reading": "i\u1e49/locative",
+      "sign": "M336",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "two",
+      "our_confidence": "HIGH",
+      "our_reading": "i\u1e49/locative",
+      "sign": "M336",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "metalcasting",
+      "our_confidence": "HIGH",
+      "our_reading": "i\u1e49/locative",
+      "sign": "M336",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "ladle",
+      "our_confidence": "HIGH",
+      "our_reading": "i\u1e49/locative",
+      "sign": "M336",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "ingot",
+      "our_confidence": "HIGH",
+      "our_reading": "i\u1e49/locative",
+      "sign": "M336",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "accounting",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M341",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "smelter",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M341",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "body",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M341",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M341",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "copper",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M341",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "three",
+      "our_confidence": "HIGH",
+      "our_reading": "ay/\u0101",
+      "sign": "M342",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "pot",
+      "our_confidence": "HIGH",
+      "our_reading": "ay/\u0101",
+      "sign": "M342",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "rim",
+      "our_confidence": "HIGH",
+      "our_reading": "ay/\u0101",
+      "sign": "M342",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "splinter",
+      "our_confidence": "HIGH",
+      "our_reading": "ay/\u0101",
+      "sign": "M342",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "workshop",
+      "our_confidence": "HIGH",
+      "our_reading": "ay/\u0101",
+      "sign": "M342",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "three",
+      "our_confidence": "HIGH",
+      "our_reading": "ta\u1e6d",
+      "sign": "M345",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "accounting",
+      "our_confidence": "HIGH",
+      "our_reading": "ta\u1e6d",
+      "sign": "M345",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "ingot",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M346",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "implements",
+      "our_confidence": "HIGH",
+      "our_reading": "ka",
+      "sign": "M347",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "riceplant",
+      "our_confidence": "HIGH",
+      "our_reading": "ka",
+      "sign": "M347",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "two",
+      "our_confidence": "HIGH",
+      "our_reading": "ka",
+      "sign": "M347",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "metalcasting",
+      "our_confidence": "HIGH",
+      "our_reading": "ka",
+      "sign": "M347",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "corner",
+      "our_confidence": "HIGH",
+      "our_reading": "lu",
+      "sign": "M355",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "splinter",
+      "our_confidence": "HIGH",
+      "our_reading": "lu",
+      "sign": "M355",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "workshop",
+      "our_confidence": "HIGH",
+      "our_reading": "lu",
+      "sign": "M355",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "warrior",
+      "our_confidence": "HIGH",
+      "our_reading": "lu",
+      "sign": "M355",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "ron",
+      "our_confidence": "HIGH",
+      "our_reading": "lu",
+      "sign": "M355",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "fish",
+      "our_confidence": "HIGH",
+      "our_reading": "kul",
+      "sign": "M374",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "silver",
+      "our_confidence": "HIGH",
+      "our_reading": "kul",
+      "sign": "M374",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "six",
+      "our_confidence": "HIGH",
+      "our_reading": "kul",
+      "sign": "M374",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "furnace",
+      "our_confidence": "HIGH",
+      "our_reading": "kul",
+      "sign": "M374",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "HIGH",
+      "our_reading": "kul",
+      "sign": "M374",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "tree",
+      "our_confidence": "HIGH",
+      "our_reading": "ta\u1e47",
+      "sign": "M375",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "hedge",
+      "our_confidence": "HIGH",
+      "our_reading": "ta\u1e47",
+      "sign": "M375",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "ingot",
+      "our_confidence": "HIGH",
+      "our_reading": "ta\u1e47",
+      "sign": "M375",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "ingot",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M381",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "mint",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M381",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "workshop",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M381",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "HIGH",
+      "our_reading": "ma\u1e47",
+      "sign": "M386",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "copper",
+      "our_confidence": "HIGH",
+      "our_reading": "ma\u1e47",
+      "sign": "M386",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "ingot",
+      "our_confidence": "HIGH",
+      "our_reading": "ma\u1e47",
+      "sign": "M386",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "smelter",
+      "our_confidence": "HIGH",
+      "our_reading": "ma\u1e47",
+      "sign": "M386",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "ingot",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M387",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "fish",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M387",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "smelter",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M387",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "sprout",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M389",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "bud",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M389",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "smelter",
+      "our_confidence": "CANDIDATE",
+      "our_reading": "kur",
+      "sign": "M389",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "potter",
+      "our_confidence": "HIGH",
+      "our_reading": "ka/ka\u1e47",
+      "sign": "M391",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "unicorn",
+      "our_confidence": "HIGH",
+      "our_reading": "ka/ka\u1e47",
+      "sign": "M391",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "two",
+      "our_confidence": "HIGH",
+      "our_reading": "ka/ka\u1e47",
+      "sign": "M391",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "metalcasting",
+      "our_confidence": "HIGH",
+      "our_reading": "ka/ka\u1e47",
+      "sign": "M391",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_confidence": "HIGH",
+      "our_reading": "ka/ka\u1e47",
+      "sign": "M391",
+      "status": "divergent"
+     }
+    ],
+    "corroborated": [],
+    "coverage": {
+     "conflicting_count": 384,
+     "corroborated_count": 0,
+     "kalyanaraman_signs": 144,
+     "new_candidate_count": 113,
+     "our_anchors": 287,
+     "overlap_signs": 105,
+     "rebus_matched": 3,
+     "rebus_new": 21
+    },
+    "lexicon_stats": {
+     "craft_terms": 31,
+     "dravidian_terms": 200,
+     "papers_processed": 52,
+     "rebus_pairs": 24,
+     "sign_references": 144
+    },
+    "new_candidates": [
+     {
+      "kalyanaraman_reading": "iron",
+      "our_reading": null,
+      "sign": "M086",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "one",
+      "our_reading": null,
+      "sign": "M086",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "artisan",
+      "our_reading": null,
+      "sign": "M086",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "declivity",
+      "our_reading": null,
+      "sign": "M093",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "bdellium",
+      "our_reading": null,
+      "sign": "M093",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "tiger",
+      "our_reading": null,
+      "sign": "M093",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_reading": null,
+      "sign": "M095",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "furnace",
+      "our_reading": null,
+      "sign": "M095",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "four",
+      "our_reading": null,
+      "sign": "M095",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "splinter",
+      "our_reading": null,
+      "sign": "M096",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "workshop",
+      "our_reading": null,
+      "sign": "M096",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "five",
+      "our_reading": null,
+      "sign": "M096",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "notch",
+      "our_reading": null,
+      "sign": "M097",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "drummer",
+      "our_reading": null,
+      "sign": "M097",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "furnace",
+      "our_reading": null,
+      "sign": "M097",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "smelter",
+      "our_reading": null,
+      "sign": "M098",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "equipment",
+      "our_reading": null,
+      "sign": "M098",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "artificer",
+      "our_reading": null,
+      "sign": "M098",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "ingot",
+      "our_reading": null,
+      "sign": "M110",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "seven",
+      "our_reading": null,
+      "sign": "M110",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "steel",
+      "our_reading": null,
+      "sign": "M110",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "ligatue",
+      "our_reading": null,
+      "sign": "M142",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "sprout",
+      "our_reading": null,
+      "sign": "M142",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "bud",
+      "our_reading": null,
+      "sign": "M142",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "notch",
+      "our_reading": null,
+      "sign": "M148",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "drummer",
+      "our_reading": null,
+      "sign": "M148",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "furnace",
+      "our_reading": null,
+      "sign": "M148",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "corner",
+      "our_reading": null,
+      "sign": "M150",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "splinter",
+      "our_reading": null,
+      "sign": "M150",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "workshop",
+      "our_reading": null,
+      "sign": "M150",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "iron",
+      "our_reading": null,
+      "sign": "M171",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "furnace",
+      "our_reading": null,
+      "sign": "M171",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "merchant",
+      "our_reading": null,
+      "sign": "M171",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "appendage",
+      "our_reading": null,
+      "sign": "M180",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "silver",
+      "our_reading": null,
+      "sign": "M180",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "fish",
+      "our_reading": null,
+      "sign": "M180",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "onager",
+      "our_reading": null,
+      "sign": "M184",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "goat",
+      "our_reading": null,
+      "sign": "M184",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "copper",
+      "our_reading": null,
+      "sign": "M184",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "splinter",
+      "our_reading": null,
+      "sign": "M188",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "workshop",
+      "our_reading": null,
+      "sign": "M188",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "fireplace",
+      "our_reading": null,
+      "sign": "M188",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "implements",
+      "our_reading": null,
+      "sign": "M196",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "five",
+      "our_reading": null,
+      "sign": "M196",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "declivity",
+      "our_reading": null,
+      "sign": "M196",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "implements",
+      "our_reading": null,
+      "sign": "M212",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "warehouse",
+      "our_reading": null,
+      "sign": "M212",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "body",
+      "our_reading": null,
+      "sign": "M216",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "lid",
+      "our_reading": null,
+      "sign": "M216",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "ingot",
+      "our_reading": null,
+      "sign": "M216",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     }
+    ],
+    "rebus_matches": [
+     {
+      "count": 3,
+      "matched_signs": [
+       "M061",
+       "M128",
+       "M155",
+       "M194",
+       "M347"
+      ],
+      "meaning": "ka\u1e47\u1e0d",
+      "pictogram": "four",
+      "sources": [
+       "Bronze_Age_Svastika_furnace_burning_alta",
+       "satavu__Svastika_of_Indus_Script_Cor",
+       "Steersman_in_charge_of_1_bell_metal_smel"
+      ]
+     },
+     {
+      "count": 1,
+      "matched_signs": [
+       "M332"
+      ],
+      "meaning": "\u015b\u0101lik\u0101",
+      "pictogram": "interlocked",
+      "sources": [
+       "Bar_of_metal_equipment_account_metalsmit"
+      ]
+     },
+     {
+      "count": 1,
+      "matched_signs": [
+       "M264"
+      ],
+      "meaning": "kamma\u1e6da",
+      "pictogram": "penance",
+      "sources": [
+       "Kamaha_yogi_in_penance_rebus__kama"
+      ]
+     }
+    ],
+    "rebus_new": [
+     {
+      "count": 9,
+      "meaning": "sal",
+      "pictogram": "splinter",
+      "sources": [
+       "badhia_boar_rebus_badhi_worker_in_wood_a",
+       "Bar_of_metal_equipment_account_metalsmit",
+       "Inscriptions_on_implements_are_metalwork"
+      ]
+     },
+     {
+      "count": 8,
+      "meaning": "kha\u1e5bu",
+      "pictogram": "metalcasting",
+      "sources": [
+       "Dul_metalcasting_rebus_khau_bier_rebu",
+       "Metalcastings_copper_gold_despatch_accou"
+      ]
+     },
+     {
+      "count": 5,
+      "meaning": "t\u0101ra",
+      "pictogram": "stars",
+      "sources": [
+       "Kot_Diji_pot_painted_with_buffalo_horns",
+       "Metalwork_semantographs_of_Gadd_hierogly",
+       "Thar_line_row_in_lines_in_rows_tara_star"
+      ]
+     },
+     {
+      "count": 4,
+      "meaning": "ayas",
+      "pictogram": "fish",
+      "sources": [
+       "Eureka_Cargo_of_amsu_soma_on__saga",
+       "Kuikuila_bronze_smelter_of_smithy_for",
+       "Soma_tin_artisan_s_workshop_H_884_Soma_c"
+      ]
+     },
+     {
+      "count": 4,
+      "meaning": "kor\u0324u",
+      "pictogram": "sprout",
+      "sources": [
+       "Kuikuila_bronze_smelter_of_smithy_for",
+       "Semantograph_khara_hare_rebus_khar_black",
+       "Steersman_in_charge_of_1_bell_metal_smel"
+      ]
+     },
+     {
+      "count": 3,
+      "meaning": "kh\u0101r",
+      "pictogram": "hare",
+      "sources": [
+       "Chimerae_of_short_sequence_signs_and_fie",
+       "Semantograph_khara_hare_rebus_khar_black"
+      ]
+     },
+     {
+      "count": 3,
+      "meaning": "k\u0101ra\u1e47\u012b",
+      "pictogram": "scraper",
+      "sources": [
+       "Metalcasting_forge_smelter_bell_metal_ir",
+       "Metalwork_semantographs_of_Gadd_hierogly"
+      ]
+     },
+     {
+      "count": 2,
+      "meaning": "mu\u1e47\u1e0da",
+      "pictogram": "five",
+      "sources": [
+       "Bronze_Age_Svastika_furnace_burning_alta",
+       "satavu__Svastika_of_Indus_Script_Cor"
+      ]
+     },
+     {
+      "count": 2,
+      "meaning": "\u1e6da\u1e45ka\u015b\u0101l\u0101",
+      "pictogram": "spike",
+      "sources": [
+       "Koiya_young_bull_rebus_koiya_dhow_seaf"
+      ]
+     },
+     {
+      "count": 1,
+      "meaning": "steel",
+      "pictogram": "bulat",
+      "sources": [
+       "A_Black_drongo_in_Rajasthan_state_northe"
+      ]
+     },
+     {
+      "count": 1,
+      "meaning": "bharata",
+      "pictogram": "ox",
+      "sources": [
+       "Eureka_Cargo_of_amsu_soma_on__saga"
+      ]
+     },
+     {
+      "count": 1,
+      "meaning": "man\u1e0da",
+      "pictogram": "platform",
+      "sources": [
+       "Fauna_economic_court_word_semantographs"
+      ]
+     },
+     {
+      "count": 1,
+      "meaning": "tara",
+      "pictogram": "star",
+      "sources": [
+       "Kamaha_yogi_in_penance_rebus__kama"
+      ]
+     },
+     {
+      "count": 1,
+      "meaning": "goat",
+      "pictogram": "Unicorn",
+      "sources": [
+       "Konda_circular_artisan_hamlet_singi_orna"
+      ]
+     },
+     {
+      "count": 1,
+      "meaning": "\u1e6dha\u1e6dher\u0101",
+      "pictogram": "mat",
+      "sources": [
+       "Konda_circular_artisan_hamlet_singi_orna"
+      ]
+     },
+     {
+      "count": 1,
+      "meaning": "dhakka",
+      "pictogram": "lid",
+      "sources": [
+       "Kuikuila_bronze_smelter_of_smithy_for"
+      ]
+     },
+     {
+      "count": 1,
+      "meaning": "kundana",
+      "pictogram": "stones",
+      "sources": [
+       "Kunda_pillar_patthar_stones_rebus_kundan"
+      ]
+     },
+     {
+      "count": 1,
+      "meaning": "ara\u1e47a",
+      "pictogram": "bison",
+      "sources": [
+       "Metalwork_semantographs_of_Gadd_hierogly"
+      ]
+     },
+     {
+      "count": 1,
+      "meaning": "dh\u0101va\u1e0da",
+      "pictogram": "circle",
+      "sources": [
+       "Metalwork_semantographs_of_Gadd_hierogly"
+      ]
+     },
+     {
+      "count": 1,
+      "meaning": "\u015are\u1e63\u1e6dhin",
+      "pictogram": "squirrel",
+      "sources": [
+       "Semantographs_of_anthropomorph_narrative"
+      ]
+     }
+    ],
+    "summary": {
+     "complementarity_score": 1.0,
+     "interpretation": "Kalyanaraman's rebus system covers 144 signs (105 overlap with our 287 anchors). 0 corroborated, 384 divergent, 113 new candidates. Complementarity=1.00 (his system focuses on content-words/trade vocabulary; ours on grammatical markers).",
+     "system_comparison": {
+      "glossa_lab": {
+       "content_signs": 267,
+       "domain": "grammatical_structure",
+       "focus": "case suffixes, particles, verbal markers",
+       "grammar_signs": 20,
+       "system": "statistical_annealing"
+      },
+      "kalyanaraman": {
+       "domain": "metalwork/trade/craft",
+       "focus": "nouns, trade goods, animal names",
+       "system": "content_word_rebus"
+      }
+     },
+     "verdict": "COMPLEMENTARY"
+    }
+   }
+  },
+  {
+   "id": "f15_kalyan_complementary",
+   "node": "KalyanCrossValidation",
+   "mode": "full",
+   "inputs": {},
+   "params": {},
+   "setup": {
+    "kind": "kalyan_files",
+    "lexicon": "f15_kalyan_lexicon_a.json",
+    "anchors": "f15_kalyan_anchors_a.json"
+   },
+   "expected": {
+    "conflicting": [
+     {
+      "kalyanaraman_reading": "xyzabc",
+      "our_confidence": "MED",
+      "our_reading": "minnow",
+      "sign": "S2",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "qqq",
+      "our_confidence": "LOW",
+      "our_reading": "ay",
+      "sign": "S3",
+      "status": "divergent"
+     },
+     {
+      "kalyanaraman_reading": "www",
+      "our_confidence": "HIGH",
+      "our_reading": "velan",
+      "sign": "S4",
+      "status": "divergent"
+     }
+    ],
+    "corroborated": [
+     {
+      "kalyanaraman_reading": "kolam",
+      "our_confidence": "HIGH",
+      "our_reading": "kol",
+      "overlap_roots": [
+       "kol"
+      ],
+      "sign": "S1",
+      "status": "corroborated"
+     }
+    ],
+    "coverage": {
+     "conflicting_count": 3,
+     "corroborated_count": 1,
+     "kalyanaraman_signs": 5,
+     "new_candidate_count": 3,
+     "our_anchors": 4,
+     "overlap_signs": 4,
+     "rebus_matched": 0,
+     "rebus_new": 0
+    },
+    "lexicon_stats": {
+     "n_pairs": 1
+    },
+    "new_candidates": [
+     {
+      "kalyanaraman_reading": "new1",
+      "our_reading": null,
+      "sign": "S9",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "new2",
+      "our_reading": null,
+      "sign": "S9",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     },
+     {
+      "kalyanaraman_reading": "new3",
+      "our_reading": null,
+      "sign": "S9",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     }
+    ],
+    "rebus_matches": [],
+    "rebus_new": [],
+    "summary": {
+     "complementarity_score": 0.75,
+     "interpretation": "Kalyanaraman's rebus system covers 5 signs (4 overlap with our 4 anchors). 1 corroborated, 3 divergent, 3 new candidates. Complementarity=0.75 (his system focuses on content-words/trade vocabulary; ours on grammatical markers).",
+     "system_comparison": {
+      "glossa_lab": {
+       "content_signs": 1,
+       "domain": "grammatical_structure",
+       "focus": "case suffixes, particles, verbal markers",
+       "grammar_signs": 3,
+       "system": "statistical_annealing"
+      },
+      "kalyanaraman": {
+       "domain": "metalwork/trade/craft",
+       "focus": "nouns, trade goods, animal names",
+       "system": "content_word_rebus"
+      }
+     },
+     "verdict": "COMPLEMENTARY"
+    }
+   }
+  },
+  {
+   "id": "f15_kalyan_high_agreement",
+   "node": "KalyanCrossValidation",
+   "mode": "full",
+   "inputs": {},
+   "params": {},
+   "setup": {
+    "kind": "kalyan_files",
+    "lexicon": "f15_kalyan_lexicon_b.json",
+    "anchors": "f15_kalyan_anchors_a.json"
+   },
+   "expected": {
+    "conflicting": [],
+    "corroborated": [
+     {
+      "kalyanaraman_reading": "kolam",
+      "our_confidence": "HIGH",
+      "our_reading": "kol",
+      "overlap_roots": [
+       "kol"
+      ],
+      "sign": "S1",
+      "status": "corroborated"
+     },
+     {
+      "kalyanaraman_reading": "min",
+      "our_confidence": "MED",
+      "our_reading": "minnow",
+      "overlap_roots": [
+       "min"
+      ],
+      "sign": "S2",
+      "status": "corroborated"
+     },
+     {
+      "kalyanaraman_reading": "ay",
+      "our_confidence": "LOW",
+      "our_reading": "ay",
+      "overlap_roots": [
+       "ay"
+      ],
+      "sign": "S3",
+      "status": "corroborated"
+     },
+     {
+      "kalyanaraman_reading": "velan",
+      "our_confidence": "HIGH",
+      "our_reading": "velan",
+      "overlap_roots": [
+       "vel",
+       "velan"
+      ],
+      "sign": "S4",
+      "status": "corroborated"
+     }
+    ],
+    "coverage": {
+     "conflicting_count": 0,
+     "corroborated_count": 4,
+     "kalyanaraman_signs": 4,
+     "new_candidate_count": 0,
+     "our_anchors": 4,
+     "overlap_signs": 4,
+     "rebus_matched": 0,
+     "rebus_new": 0
+    },
+    "lexicon_stats": {},
+    "new_candidates": [],
+    "rebus_matches": [],
+    "rebus_new": [],
+    "summary": {
+     "complementarity_score": 0.0,
+     "interpretation": "Kalyanaraman's rebus system covers 4 signs (4 overlap with our 4 anchors). 4 corroborated, 0 divergent, 0 new candidates. Complementarity=0.00 (his system focuses on content-words/trade vocabulary; ours on grammatical markers).",
+     "system_comparison": {
+      "glossa_lab": {
+       "content_signs": 1,
+       "domain": "grammatical_structure",
+       "focus": "case suffixes, particles, verbal markers",
+       "grammar_signs": 3,
+       "system": "statistical_annealing"
+      },
+      "kalyanaraman": {
+       "domain": "metalwork/trade/craft",
+       "focus": "nouns, trade goods, animal names",
+       "system": "content_word_rebus"
+      }
+     },
+     "verdict": "HIGH_AGREEMENT"
+    }
+   }
+  },
+  {
+   "id": "f15_kalyan_partial_rebus",
+   "node": "KalyanCrossValidation",
+   "mode": "full",
+   "inputs": {},
+   "params": {},
+   "setup": {
+    "kind": "kalyan_files",
+    "lexicon": "f15_kalyan_lexicon_c.json",
+    "anchors": "f15_kalyan_anchors_c.json"
+   },
+   "expected": {
+    "conflicting": [
+     {
+      "kalyanaraman_reading": "xyzabc",
+      "our_confidence": "MED",
+      "our_reading": "minnow",
+      "sign": "S2",
+      "status": "divergent"
+     }
+    ],
+    "corroborated": [
+     {
+      "kalyanaraman_reading": "kolam",
+      "our_confidence": "HIGH",
+      "our_reading": "kol",
+      "overlap_roots": [
+       "kol"
+      ],
+      "sign": "S1",
+      "status": "corroborated"
+     }
+    ],
+    "coverage": {
+     "conflicting_count": 1,
+     "corroborated_count": 1,
+     "kalyanaraman_signs": 2,
+     "new_candidate_count": 0,
+     "our_anchors": 9,
+     "overlap_signs": 2,
+     "rebus_matched": 1,
+     "rebus_new": 1
+    },
+    "lexicon_stats": {},
+    "new_candidates": [],
+    "rebus_matches": [
+     {
+      "count": 2,
+      "matched_signs": [
+       "S1",
+       "S10",
+       "S11",
+       "S12",
+       "S13"
+      ],
+      "meaning": "suffix",
+      "pictogram": "kol",
+      "sources": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "rebus_new": [
+     {
+      "count": 1,
+      "meaning": "alsonone",
+      "pictogram": "unknownthing",
+      "sources": []
+     }
+    ],
+    "summary": {
+     "complementarity_score": 0.5,
+     "interpretation": "Kalyanaraman's rebus system covers 2 signs (2 overlap with our 9 anchors). 1 corroborated, 1 divergent, 0 new candidates. Complementarity=0.50 (his system focuses on content-words/trade vocabulary; ours on grammatical markers).",
+     "system_comparison": {
+      "glossa_lab": {
+       "content_signs": 0,
+       "domain": "grammatical_structure",
+       "focus": "case suffixes, particles, verbal markers",
+       "grammar_signs": 9,
+       "system": "statistical_annealing"
+      },
+      "kalyanaraman": {
+       "domain": "metalwork/trade/craft",
+       "focus": "nouns, trade goods, animal names",
+       "system": "content_word_rebus"
+      }
+     },
+     "verdict": "PARTIAL_OVERLAP"
+    }
+   }
+  },
+  {
+   "id": "f15_kalyan_no_overlap",
+   "node": "KalyanCrossValidation",
+   "mode": "full",
+   "inputs": {},
+   "params": {},
+   "setup": {
+    "kind": "kalyan_files",
+    "lexicon": "f15_kalyan_lexicon_d.json",
+    "anchors": "f15_kalyan_anchors_d.json"
+   },
+   "expected": {
+    "conflicting": [],
+    "corroborated": [],
+    "coverage": {
+     "conflicting_count": 0,
+     "corroborated_count": 0,
+     "kalyanaraman_signs": 1,
+     "new_candidate_count": 1,
+     "our_anchors": 1,
+     "overlap_signs": 0,
+     "rebus_matched": 0,
+     "rebus_new": 0
+    },
+    "lexicon_stats": {},
+    "new_candidates": [
+     {
+      "kalyanaraman_reading": "new",
+      "our_reading": null,
+      "sign": "S9",
+      "source": "sign_proximity",
+      "status": "new_candidate"
+     }
+    ],
+    "rebus_matches": [],
+    "rebus_new": [],
+    "summary": {
+     "complementarity_score": 1.0,
+     "interpretation": "Kalyanaraman's rebus system covers 1 signs (0 overlap with our 1 anchors). 0 corroborated, 0 divergent, 1 new candidates. Complementarity=1.00 (his system focuses on content-words/trade vocabulary; ours on grammatical markers).",
+     "system_comparison": {
+      "glossa_lab": {
+       "content_signs": 0,
+       "domain": "grammatical_structure",
+       "focus": "case suffixes, particles, verbal markers",
+       "grammar_signs": 1,
+       "system": "statistical_annealing"
+      },
+      "kalyanaraman": {
+       "domain": "metalwork/trade/craft",
+       "focus": "nouns, trade goods, animal names",
+       "system": "content_word_rebus"
+      }
+     },
+     "verdict": "COMPLEMENTARY"
+    }
+   }
+  },
+  {
+   "id": "f15_kalyan_missing_anchors",
+   "node": "KalyanCrossValidation",
+   "mode": "full",
+   "inputs": {},
+   "params": {},
+   "setup": {
+    "kind": "kalyan_files",
+    "lexicon": "f15_kalyan_lexicon_a.json",
+    "anchors": null
+   },
+   "expected": {
+    "error": "INDUS_FINAL_ANCHORS.json not found"
+   }
+  },
+  {
+   "id": "f15_kalyan_missing_lexicon",
+   "node": "KalyanCrossValidation",
+   "mode": "full",
+   "inputs": {},
+   "params": {},
+   "setup": {
+    "kind": "kalyan_files",
+    "lexicon": null,
+    "anchors": "f15_kalyan_anchors_a.json"
+   },
+   "expected": {
+    "error": "kalyanaraman_rebus.json not found \u2014 run _build_kalyanaraman_lexicon.py first"
+   }
+  },
+  {
+   "id": "f15_dravidian_synth",
+   "node": "DravidianSyllableLM",
+   "mode": "lm",
+   "inputs": {},
+   "params": {
+    "lm_path": "backend/tests/fixtures/spec087_s3_conv_f/f15_synth_lm.json"
+   },
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "language": "dravidian_syllable",
+    "n_bigrams": 99,
+    "n_syllables": 42,
+    "verdict": "synthetic syllable LM",
+    "lm_digest": "ef8c825c346296ff4256dbf6c9e5eafa586414d28738963ece32113724cbddc0"
+   }
+  },
+  {
+   "id": "f15_dravidian_synth_novocab",
+   "node": "DravidianSyllableLM",
+   "mode": "lm",
+   "inputs": {},
+   "params": {
+    "lm_path": "backend/tests/fixtures/spec087_s3_conv_f/f15_synth_lm2.json"
+   },
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "language": "dravidian_syllable",
+    "n_bigrams": 2,
+    "n_syllables": 0,
+    "verdict": "no vocab",
+    "lm_digest": "a8725d205a29c416a0823af53180b73c04cc157c567c79e821d042ea1573713e"
+   }
+  },
+  {
+   "id": "f15_dravidian_missing",
+   "node": "DravidianSyllableLM",
+   "mode": "full",
+   "inputs": {},
+   "params": {
+    "lm_path": "backend/tests/fixtures/spec087_s3_conv_f/f15_absent_lm.json"
+   },
+   "setup": {
+    "kind": "plain"
+   },
+   "expected": {
+    "error": "dravidian_syllable_lm.json not found \u2014 run build_dravidian_syllable_lm.py"
+   }
   }
  ]
 }

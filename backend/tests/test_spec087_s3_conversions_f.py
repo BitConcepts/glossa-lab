@@ -157,8 +157,7 @@ def _run_case(case, monkeypatch, tmp_path):
         result = fn(case["inputs"], case["params"])
         root = str(Path(eg.__file__).resolve().parent.parent.parent)
         return _norm_paths(result, [(root, "<ROOT>")])
-    if kind == "ocr_run":
-        import fitz
+    if kind == "ocr_run":        import fitz
 
         from glossa_lab import ai_utils
 
@@ -192,16 +191,47 @@ def _run_case(case, monkeypatch, tmp_path):
             Path(params["output_path"]).read_text("utf-8"))
         merged["prompts_seen"] = prompts
         return _norm_paths(merged, [(str(tmp_path), "{TMP}")])
+    if kind == "kalyan_files":
+        from glossa_lab import experiment_graph_kalyanaraman as kal
+
+        absent = FIXTURE_DIR / "f15_absent.json"
+        monkeypatch.setattr(
+            kal, "_LEXICON_PATH",
+            FIXTURE_DIR / setup["lexicon"] if setup["lexicon"] else absent)
+        monkeypatch.setattr(
+            kal, "_ANCHORS_PATH",
+            FIXTURE_DIR / setup["anchors"] if setup["anchors"] else absent)
+        return fn(case["inputs"], case["params"])
     raise AssertionError(f"unknown setup kind {kind!r}")
+
+
+def _lm_digest(lm) -> str:
+    import hashlib
+
+    payload = {
+        "symbols": lm.symbols, "alphabet": lm.alphabet, "size": lm.size,
+        "ranked": lm.ranked, "unigram_freq": lm.unigram_freq,
+        "bigram_freq": {f"{a}|{b}": p for (a, b), p in lm.bigram_freq.items()},
+    }
+    return hashlib.sha256(
+        json.dumps(payload, sort_keys=True, default=str).encode()
+    ).hexdigest()
 
 
 @pytest.mark.parametrize("case", CASES, ids=[c["id"] for c in CASES])
 def test_converted_node_replays_prechange_output(case, monkeypatch, tmp_path):
     result = _run_case(case, monkeypatch, tmp_path)
-    if case["mode"] == "full":
+    if case["mode"] == "lm":
+        got = {
+            "language": result["language"],
+            "n_bigrams": result["n_bigrams"],
+            "n_syllables": result["n_syllables"],
+            "verdict": result["verdict"],
+            "lm_digest": _lm_digest(result["lm"]),
+        }
+        assert got == case["expected"]
+    else:
         assert _canon(result) == _canon(case["expected"])
-    else:  # pragma: no cover - exercised by the lm cases
-        raise AssertionError(f"unhandled mode {case['mode']!r}")
 
 
 def test_converted_ids_are_legacy_and_keep_their_fn_module():

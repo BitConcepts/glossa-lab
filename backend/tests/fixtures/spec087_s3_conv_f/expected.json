@@ -1,0 +1,1199 @@
+{
+ "cases": [
+  {
+   "expected": {
+    "papers": [
+     {
+      "authors": [
+       "Jane Q Public",
+       "John Smith"
+      ],
+      "claim_count": 4,
+      "document_id": "paper-alpha",
+      "doi": "10.0000/alpha",
+      "status": "",
+      "title": "Indus Script Decipherment Alpha",
+      "year": 2021
+     },
+     {
+      "authors": [
+       "Alice Beta"
+      ],
+      "claim_count": 0,
+      "document_id": "paper-beta",
+      "doi": "",
+      "status": "",
+      "title": "Beta Signs Study",
+      "year": 2019
+     },
+     {
+      "authors": [],
+      "claim_count": 0,
+      "document_id": "paper-gamma",
+      "doi": null,
+      "status": "",
+      "title": "",
+      "year": null
+     },
+     {
+      "authors": [],
+      "claim_count": 2,
+      "document_id": "doc4",
+      "doi": null,
+      "status": "",
+      "title": "Delta Stem Paper",
+      "year": 2024
+     }
+    ],
+    "text": "Loaded 4 registered papers.",
+    "total_papers": 4
+   },
+   "id": "f2_lit_default",
+   "inputs": {},
+   "mode": "full",
+   "node": "IndusLiteratureLoader",
+   "params": {},
+   "setup": {
+    "kind": "evidence_dirs"
+   }
+  },
+  {
+   "expected": {
+    "papers": [
+     {
+      "authors": [
+       "Jane Q Public",
+       "John Smith"
+      ],
+      "claim_count": 4,
+      "document_id": "paper-alpha",
+      "doi": "10.0000/alpha",
+      "status": "",
+      "title": "Indus Script Decipherment Alpha",
+      "year": 2021
+     }
+    ],
+    "text": "Loaded 1 registered papers.",
+    "total_papers": 1
+   },
+   "id": "f2_lit_query_author",
+   "inputs": {},
+   "mode": "full",
+   "node": "IndusLiteratureLoader",
+   "params": {
+    "query": "public"
+   },
+   "setup": {
+    "kind": "evidence_dirs"
+   }
+  },
+  {
+   "expected": {
+    "papers": [],
+    "text": "Loaded 0 registered papers.",
+    "total_papers": 0
+   },
+   "id": "f2_lit_query_nomatch",
+   "inputs": {},
+   "mode": "full",
+   "node": "IndusLiteratureLoader",
+   "params": {
+    "query": "zzz-absent"
+   },
+   "setup": {
+    "kind": "evidence_dirs"
+   }
+  },
+  {
+   "expected": {
+    "papers": [
+     {
+      "authors": [
+       "Jane Q Public",
+       "John Smith"
+      ],
+      "claim_count": 4,
+      "document_id": "paper-alpha",
+      "doi": "10.0000/alpha",
+      "status": "",
+      "title": "Indus Script Decipherment Alpha",
+      "year": 2021
+     },
+     {
+      "authors": [
+       "Alice Beta"
+      ],
+      "claim_count": 0,
+      "document_id": "paper-beta",
+      "doi": "",
+      "status": "",
+      "title": "Beta Signs Study",
+      "year": 2019
+     }
+    ],
+    "text": "Loaded 2 registered papers.",
+    "total_papers": 2
+   },
+   "id": "f2_lit_max",
+   "inputs": {},
+   "mode": "full",
+   "node": "IndusLiteratureLoader",
+   "params": {
+    "max_papers": 2
+   },
+   "setup": {
+    "kind": "evidence_dirs"
+   }
+  },
+  {
+   "expected": {
+    "claims": [
+     {
+      "claim_id": "d1",
+      "claim_status": "DISPUTED",
+      "claim_type": "sign_function_claim",
+      "normalized_claim": "sign 002 functions as a suffix marker",
+      "signs_involved": [
+       "002"
+      ]
+     },
+     {
+      "claim_id": "d2",
+      "claim_status": "VERIFIED",
+      "claim_type": "sign_position_claim",
+      "normalized_claim": "sign 004 is restricted to terminal position",
+      "signs_involved": [
+       "004"
+      ]
+     },
+     {
+      "claim_id": "a1",
+      "claim_status": "VERIFIED",
+      "claim_type": "sign_position_claim",
+      "normalized_claim": "sign 001 occurs in initial position",
+      "signs_involved": [
+       "001",
+       "002"
+      ]
+     },
+     {
+      "claim_id": "a2",
+      "claim_status": "PROPOSED",
+      "claim_type": "sign_value_claim",
+      "normalized_claim": "sign 002 has value ka",
+      "signs_involved": [
+       "002"
+      ]
+     },
+     {
+      "claim_id": "a3",
+      "claim_status": "VERIFIED",
+      "claim_type": "linguistic_claim",
+      "normalized_claim": "the script encodes a Dravidian language",
+      "signs_involved": []
+     },
+     {
+      "claim_id": "a4",
+      "normalized_claim": "sign 003 appears in terminal position",
+      "signs_involved": [
+       "003"
+      ]
+     }
+    ],
+    "json": {
+     "claims": [
+      {
+       "claim_id": "d1",
+       "claim_status": "DISPUTED",
+       "claim_type": "sign_function_claim",
+       "normalized_claim": "sign 002 functions as a suffix marker",
+       "signs_involved": [
+        "002"
+       ]
+      },
+      {
+       "claim_id": "d2",
+       "claim_status": "VERIFIED",
+       "claim_type": "sign_position_claim",
+       "normalized_claim": "sign 004 is restricted to terminal position",
+       "signs_involved": [
+        "004"
+       ]
+      },
+      {
+       "claim_id": "a1",
+       "claim_status": "VERIFIED",
+       "claim_type": "sign_position_claim",
+       "normalized_claim": "sign 001 occurs in initial position",
+       "signs_involved": [
+        "001",
+        "002"
+       ]
+      },
+      {
+       "claim_id": "a2",
+       "claim_status": "PROPOSED",
+       "claim_type": "sign_value_claim",
+       "normalized_claim": "sign 002 has value ka",
+       "signs_involved": [
+        "002"
+       ]
+      },
+      {
+       "claim_id": "a3",
+       "claim_status": "VERIFIED",
+       "claim_type": "linguistic_claim",
+       "normalized_claim": "the script encodes a Dravidian language",
+       "signs_involved": []
+      },
+      {
+       "claim_id": "a4",
+       "normalized_claim": "sign 003 appears in terminal position",
+       "signs_involved": [
+        "003"
+       ]
+      }
+     ],
+     "type_counts": {
+      "linguistic_claim": 1,
+      "sign_function_claim": 1,
+      "sign_position_claim": 2,
+      "sign_value_claim": 1,
+      "unknown": 1
+     }
+    },
+    "source_docs": 4,
+    "status_counts": {
+     "DISPUTED": 1,
+     "PROPOSED": 1,
+     "VERIFIED": 3,
+     "unknown": 1
+    },
+    "text": "Loaded 6 claims from 4 docs. Types: linguistic_claim=1, sign_function_claim=1, sign_position_claim=2, sign_value_claim=1, unknown=1",
+    "total_claims": 6,
+    "type_counts": {
+     "linguistic_claim": 1,
+     "sign_function_claim": 1,
+     "sign_position_claim": 2,
+     "sign_value_claim": 1,
+     "unknown": 1
+    }
+   },
+   "id": "f2_claims_all",
+   "inputs": {},
+   "mode": "full",
+   "node": "IndusClaimsLoader",
+   "params": {},
+   "setup": {
+    "kind": "evidence_dirs"
+   }
+  },
+  {
+   "expected": {
+    "claims": [
+     {
+      "claim_id": "a1",
+      "claim_status": "VERIFIED",
+      "claim_type": "sign_position_claim",
+      "normalized_claim": "sign 001 occurs in initial position",
+      "signs_involved": [
+       "001",
+       "002"
+      ]
+     },
+     {
+      "claim_id": "a2",
+      "claim_status": "PROPOSED",
+      "claim_type": "sign_value_claim",
+      "normalized_claim": "sign 002 has value ka",
+      "signs_involved": [
+       "002"
+      ]
+     },
+     {
+      "claim_id": "a3",
+      "claim_status": "VERIFIED",
+      "claim_type": "linguistic_claim",
+      "normalized_claim": "the script encodes a Dravidian language",
+      "signs_involved": []
+     },
+     {
+      "claim_id": "a4",
+      "normalized_claim": "sign 003 appears in terminal position",
+      "signs_involved": [
+       "003"
+      ]
+     }
+    ],
+    "json": {
+     "claims": [
+      {
+       "claim_id": "a1",
+       "claim_status": "VERIFIED",
+       "claim_type": "sign_position_claim",
+       "normalized_claim": "sign 001 occurs in initial position",
+       "signs_involved": [
+        "001",
+        "002"
+       ]
+      },
+      {
+       "claim_id": "a2",
+       "claim_status": "PROPOSED",
+       "claim_type": "sign_value_claim",
+       "normalized_claim": "sign 002 has value ka",
+       "signs_involved": [
+        "002"
+       ]
+      },
+      {
+       "claim_id": "a3",
+       "claim_status": "VERIFIED",
+       "claim_type": "linguistic_claim",
+       "normalized_claim": "the script encodes a Dravidian language",
+       "signs_involved": []
+      },
+      {
+       "claim_id": "a4",
+       "normalized_claim": "sign 003 appears in terminal position",
+       "signs_involved": [
+        "003"
+       ]
+      }
+     ],
+     "type_counts": {
+      "linguistic_claim": 1,
+      "sign_position_claim": 1,
+      "sign_value_claim": 1,
+      "unknown": 1
+     }
+    },
+    "source_docs": 1,
+    "status_counts": {
+     "PROPOSED": 1,
+     "VERIFIED": 2,
+     "unknown": 1
+    },
+    "text": "Loaded 4 claims from 1 docs. Types: linguistic_claim=1, sign_position_claim=1, sign_value_claim=1, unknown=1",
+    "total_claims": 4,
+    "type_counts": {
+     "linguistic_claim": 1,
+     "sign_position_claim": 1,
+     "sign_value_claim": 1,
+     "unknown": 1
+    }
+   },
+   "id": "f2_claims_restrict",
+   "inputs": {
+    "papers": [
+     {
+      "document_id": "paper-alpha"
+     }
+    ]
+   },
+   "mode": "full",
+   "node": "IndusClaimsLoader",
+   "params": {},
+   "setup": {
+    "kind": "evidence_dirs"
+   }
+  },
+  {
+   "expected": {
+    "claims": [],
+    "json": {
+     "claims": [],
+     "type_counts": {}
+    },
+    "source_docs": 0,
+    "status_counts": {},
+    "text": "Loaded 0 claims from 0 docs. Types: ",
+    "total_claims": 0,
+    "type_counts": {}
+   },
+   "id": "f2_claims_restrict_none",
+   "inputs": {
+    "papers": [
+     {
+      "document_id": "no-such-doc"
+     }
+    ]
+   },
+   "mode": "full",
+   "node": "IndusClaimsLoader",
+   "params": {},
+   "setup": {
+    "kind": "evidence_dirs"
+   }
+  },
+  {
+   "expected": {
+    "claims": [
+     {
+      "claim_id": "d2",
+      "claim_status": "VERIFIED",
+      "claim_type": "sign_position_claim",
+      "normalized_claim": "sign 004 is restricted to terminal position",
+      "signs_involved": [
+       "004"
+      ]
+     },
+     {
+      "claim_id": "a1",
+      "claim_status": "VERIFIED",
+      "claim_type": "sign_position_claim",
+      "normalized_claim": "sign 001 occurs in initial position",
+      "signs_involved": [
+       "001",
+       "002"
+      ]
+     }
+    ],
+    "json": {
+     "claims": [
+      {
+       "claim_id": "d2",
+       "claim_status": "VERIFIED",
+       "claim_type": "sign_position_claim",
+       "normalized_claim": "sign 004 is restricted to terminal position",
+       "signs_involved": [
+        "004"
+       ]
+      },
+      {
+       "claim_id": "a1",
+       "claim_status": "VERIFIED",
+       "claim_type": "sign_position_claim",
+       "normalized_claim": "sign 001 occurs in initial position",
+       "signs_involved": [
+        "001",
+        "002"
+       ]
+      }
+     ],
+     "type_counts": {
+      "sign_position_claim": 2
+     }
+    },
+    "source_docs": 4,
+    "status_counts": {
+     "VERIFIED": 2
+    },
+    "text": "Loaded 2 claims from 4 docs. Types: sign_position_claim=2",
+    "total_claims": 2,
+    "type_counts": {
+     "sign_position_claim": 2
+    }
+   },
+   "id": "f2_claims_type",
+   "inputs": {},
+   "mode": "full",
+   "node": "IndusClaimsLoader",
+   "params": {
+    "claim_type": "sign_position_claim"
+   },
+   "setup": {
+    "kind": "evidence_dirs"
+   }
+  },
+  {
+   "expected": {
+    "claims": [
+     {
+      "claim_id": "d2",
+      "claim_status": "VERIFIED",
+      "claim_type": "sign_position_claim",
+      "normalized_claim": "sign 004 is restricted to terminal position",
+      "signs_involved": [
+       "004"
+      ]
+     },
+     {
+      "claim_id": "a1",
+      "claim_status": "VERIFIED",
+      "claim_type": "sign_position_claim",
+      "normalized_claim": "sign 001 occurs in initial position",
+      "signs_involved": [
+       "001",
+       "002"
+      ]
+     },
+     {
+      "claim_id": "a3",
+      "claim_status": "VERIFIED",
+      "claim_type": "linguistic_claim",
+      "normalized_claim": "the script encodes a Dravidian language",
+      "signs_involved": []
+     }
+    ],
+    "json": {
+     "claims": [
+      {
+       "claim_id": "d2",
+       "claim_status": "VERIFIED",
+       "claim_type": "sign_position_claim",
+       "normalized_claim": "sign 004 is restricted to terminal position",
+       "signs_involved": [
+        "004"
+       ]
+      },
+      {
+       "claim_id": "a1",
+       "claim_status": "VERIFIED",
+       "claim_type": "sign_position_claim",
+       "normalized_claim": "sign 001 occurs in initial position",
+       "signs_involved": [
+        "001",
+        "002"
+       ]
+      },
+      {
+       "claim_id": "a3",
+       "claim_status": "VERIFIED",
+       "claim_type": "linguistic_claim",
+       "normalized_claim": "the script encodes a Dravidian language",
+       "signs_involved": []
+      }
+     ],
+     "type_counts": {
+      "linguistic_claim": 1,
+      "sign_position_claim": 2
+     }
+    },
+    "source_docs": 4,
+    "status_counts": {
+     "VERIFIED": 3
+    },
+    "text": "Loaded 3 claims from 4 docs. Types: linguistic_claim=1, sign_position_claim=2",
+    "total_claims": 3,
+    "type_counts": {
+     "linguistic_claim": 1,
+     "sign_position_claim": 2
+    }
+   },
+   "id": "f2_claims_status",
+   "inputs": {},
+   "mode": "full",
+   "node": "IndusClaimsLoader",
+   "params": {
+    "claim_status": "VERIFIED"
+   },
+   "setup": {
+    "kind": "evidence_dirs"
+   }
+  },
+  {
+   "expected": {
+    "claims": [
+     {
+      "claim_id": "d2",
+      "claim_status": "VERIFIED",
+      "claim_type": "sign_position_claim",
+      "normalized_claim": "sign 004 is restricted to terminal position",
+      "signs_involved": [
+       "004"
+      ]
+     }
+    ],
+    "json": {
+     "claims": [
+      {
+       "claim_id": "d2",
+       "claim_status": "VERIFIED",
+       "claim_type": "sign_position_claim",
+       "normalized_claim": "sign 004 is restricted to terminal position",
+       "signs_involved": [
+        "004"
+       ]
+      }
+     ],
+     "type_counts": {
+      "sign_position_claim": 1
+     }
+    },
+    "source_docs": 4,
+    "status_counts": {
+     "VERIFIED": 1
+    },
+    "text": "Loaded 1 claims from 4 docs. Types: sign_position_claim=1",
+    "total_claims": 1,
+    "type_counts": {
+     "sign_position_claim": 1
+    }
+   },
+   "id": "f2_claims_sign_involved",
+   "inputs": {},
+   "mode": "full",
+   "node": "IndusClaimsLoader",
+   "params": {
+    "sign_filter": "004"
+   },
+   "setup": {
+    "kind": "evidence_dirs"
+   }
+  },
+  {
+   "expected": {
+    "claims": [
+     {
+      "claim_id": "a3",
+      "claim_status": "VERIFIED",
+      "claim_type": "linguistic_claim",
+      "normalized_claim": "the script encodes a Dravidian language",
+      "signs_involved": []
+     }
+    ],
+    "json": {
+     "claims": [
+      {
+       "claim_id": "a3",
+       "claim_status": "VERIFIED",
+       "claim_type": "linguistic_claim",
+       "normalized_claim": "the script encodes a Dravidian language",
+       "signs_involved": []
+      }
+     ],
+     "type_counts": {
+      "linguistic_claim": 1
+     }
+    },
+    "source_docs": 4,
+    "status_counts": {
+     "VERIFIED": 1
+    },
+    "text": "Loaded 1 claims from 4 docs. Types: linguistic_claim=1",
+    "total_claims": 1,
+    "type_counts": {
+     "linguistic_claim": 1
+    }
+   },
+   "id": "f2_claims_sign_normalized",
+   "inputs": {},
+   "mode": "full",
+   "node": "IndusClaimsLoader",
+   "params": {
+    "sign_filter": "dravidian"
+   },
+   "setup": {
+    "kind": "evidence_dirs"
+   }
+  },
+  {
+   "expected": {
+    "claims": [
+     {
+      "claim_id": "d1",
+      "claim_status": "DISPUTED",
+      "claim_type": "sign_function_claim",
+      "normalized_claim": "sign 002 functions as a suffix marker",
+      "signs_involved": [
+       "002"
+      ]
+     },
+     {
+      "claim_id": "d2",
+      "claim_status": "VERIFIED",
+      "claim_type": "sign_position_claim",
+      "normalized_claim": "sign 004 is restricted to terminal position",
+      "signs_involved": [
+       "004"
+      ]
+     },
+     {
+      "claim_id": "a1",
+      "claim_status": "VERIFIED",
+      "claim_type": "sign_position_claim",
+      "normalized_claim": "sign 001 occurs in initial position",
+      "signs_involved": [
+       "001",
+       "002"
+      ]
+     }
+    ],
+    "json": {
+     "claims": [
+      {
+       "claim_id": "d1",
+       "claim_status": "DISPUTED",
+       "claim_type": "sign_function_claim",
+       "normalized_claim": "sign 002 functions as a suffix marker",
+       "signs_involved": [
+        "002"
+       ]
+      },
+      {
+       "claim_id": "d2",
+       "claim_status": "VERIFIED",
+       "claim_type": "sign_position_claim",
+       "normalized_claim": "sign 004 is restricted to terminal position",
+       "signs_involved": [
+        "004"
+       ]
+      },
+      {
+       "claim_id": "a1",
+       "claim_status": "VERIFIED",
+       "claim_type": "sign_position_claim",
+       "normalized_claim": "sign 001 occurs in initial position",
+       "signs_involved": [
+        "001",
+        "002"
+       ]
+      }
+     ],
+     "type_counts": {
+      "sign_function_claim": 1,
+      "sign_position_claim": 2
+     }
+    },
+    "source_docs": 3,
+    "status_counts": {
+     "DISPUTED": 1,
+     "VERIFIED": 2
+    },
+    "text": "Loaded 3 claims from 3 docs. Types: sign_function_claim=1, sign_position_claim=2",
+    "total_claims": 3,
+    "type_counts": {
+     "sign_function_claim": 1,
+     "sign_position_claim": 2
+    }
+   },
+   "id": "f2_claims_max",
+   "inputs": {},
+   "mode": "full",
+   "node": "IndusClaimsLoader",
+   "params": {
+    "max_claims": 3
+   },
+   "setup": {
+    "kind": "evidence_dirs"
+   }
+  },
+  {
+   "expected": {
+    "json": {
+     "test_results": [
+      {
+       "claim_id": "t1",
+       "corpus_avg_rate": 0.3333,
+       "lift": 2.5,
+       "n_occurrences": 12,
+       "observed_rate": 0.8333,
+       "predicted_pos": "initial",
+       "sign": "001",
+       "source_claim": "sign 001 occurs in initial position",
+       "test_verdict": "supported"
+      },
+      {
+       "claim_id": "t2",
+       "corpus_avg_rate": 0.3333,
+       "lift": 0.5,
+       "n_occurrences": 12,
+       "observed_rate": 0.1667,
+       "predicted_pos": "initial",
+       "sign": "002",
+       "source_claim": "sign 002 takes the initial value role",
+       "test_verdict": "not_supported"
+      },
+      {
+       "claim_id": "t6",
+       "corpus_avg_rate": 0.3333,
+       "lift": 0.5,
+       "n_occurrences": 12,
+       "observed_rate": 0.1667,
+       "predicted_pos": "terminal",
+       "sign": "001",
+       "source_claim": "sign 001 in terminal position",
+       "test_verdict": "not_supported"
+      },
+      {
+       "claim_id": "t7",
+       "corpus_avg_rate": 0.3333,
+       "lift": 2.5,
+       "n_occurrences": 12,
+       "observed_rate": 0.8333,
+       "predicted_pos": "initial",
+       "sign": "001",
+       "source_claim": "signs in initial position",
+       "test_verdict": "supported"
+      },
+      {
+       "claim_id": "t7",
+       "corpus_avg_rate": 0.3333,
+       "lift": 0.5,
+       "n_occurrences": 12,
+       "observed_rate": 0.1667,
+       "predicted_pos": "initial",
+       "sign": "002",
+       "source_claim": "signs in initial position",
+       "test_verdict": "not_supported"
+      },
+      {
+       "claim_id": "t7",
+       "corpus_avg_rate": 0.3333,
+       "lift": 0.0,
+       "n_occurrences": 3,
+       "observed_rate": 0.0,
+       "predicted_pos": "initial",
+       "sign": "003",
+       "source_claim": "signs in initial position",
+       "test_verdict": "not_supported"
+      }
+     ]
+    },
+    "n_supported": 2,
+    "n_tested": 6,
+    "number": 0.3333,
+    "support_rate": 0.3333,
+    "test_results": [
+     {
+      "claim_id": "t1",
+      "corpus_avg_rate": 0.3333,
+      "lift": 2.5,
+      "n_occurrences": 12,
+      "observed_rate": 0.8333,
+      "predicted_pos": "initial",
+      "sign": "001",
+      "source_claim": "sign 001 occurs in initial position",
+      "test_verdict": "supported"
+     },
+     {
+      "claim_id": "t2",
+      "corpus_avg_rate": 0.3333,
+      "lift": 0.5,
+      "n_occurrences": 12,
+      "observed_rate": 0.1667,
+      "predicted_pos": "initial",
+      "sign": "002",
+      "source_claim": "sign 002 takes the initial value role",
+      "test_verdict": "not_supported"
+     },
+     {
+      "claim_id": "t6",
+      "corpus_avg_rate": 0.3333,
+      "lift": 0.5,
+      "n_occurrences": 12,
+      "observed_rate": 0.1667,
+      "predicted_pos": "terminal",
+      "sign": "001",
+      "source_claim": "sign 001 in terminal position",
+      "test_verdict": "not_supported"
+     },
+     {
+      "claim_id": "t7",
+      "corpus_avg_rate": 0.3333,
+      "lift": 2.5,
+      "n_occurrences": 12,
+      "observed_rate": 0.8333,
+      "predicted_pos": "initial",
+      "sign": "001",
+      "source_claim": "signs in initial position",
+      "test_verdict": "supported"
+     },
+     {
+      "claim_id": "t7",
+      "corpus_avg_rate": 0.3333,
+      "lift": 0.5,
+      "n_occurrences": 12,
+      "observed_rate": 0.1667,
+      "predicted_pos": "initial",
+      "sign": "002",
+      "source_claim": "signs in initial position",
+      "test_verdict": "not_supported"
+     },
+     {
+      "claim_id": "t7",
+      "corpus_avg_rate": 0.3333,
+      "lift": 0.0,
+      "n_occurrences": 3,
+      "observed_rate": 0.0,
+      "predicted_pos": "initial",
+      "sign": "003",
+      "source_claim": "signs in initial position",
+      "test_verdict": "not_supported"
+     }
+    ],
+    "text": "Tested 6 sign-position claims: 2/6 supported (33%)."
+   },
+   "id": "f2_test_mixed",
+   "inputs": {
+    "claims": [
+     {
+      "claim_id": "t1",
+      "claim_type": "sign_position_claim",
+      "normalized_claim": "sign 001 occurs in initial position",
+      "signs_involved": [
+       "001"
+      ]
+     },
+     {
+      "claim_id": "t2",
+      "claim_type": "sign_value_claim",
+      "normalized_claim": "sign 002 takes the initial value role",
+      "signs_involved": [
+       "002"
+      ]
+     },
+     {
+      "claim_id": "t3",
+      "claim_type": "sign_function_claim",
+      "normalized_claim": "sign 002 functions as a suffix",
+      "signs_involved": [
+       "002"
+      ]
+     },
+     {
+      "claim_id": "t4",
+      "claim_type": "sign_position_claim",
+      "normalized_claim": "sign 999 in initial position",
+      "signs_involved": [
+       "999"
+      ]
+     },
+     {
+      "claim_id": "t5",
+      "claim_type": "unrelated_claim",
+      "normalized_claim": "sign 001 in initial position",
+      "signs_involved": [
+       "001"
+      ]
+     },
+     {
+      "claim_id": "t6",
+      "claim_type": "sign_position_claim",
+      "normalized_claim": "sign 001 in terminal position",
+      "signs_involved": [
+       "001"
+      ]
+     },
+     {
+      "claim_id": "t7",
+      "claim_type": "sign_position_claim",
+      "normalized_claim": "signs in initial position",
+      "signs_involved": [
+       "001",
+       "002",
+       "003",
+       "004",
+       "005"
+      ]
+     }
+    ],
+    "sequences": [
+     [
+      "001",
+      "002"
+     ],
+     [
+      "001",
+      "002"
+     ],
+     [
+      "001",
+      "002"
+     ],
+     [
+      "001",
+      "002"
+     ],
+     [
+      "001",
+      "002"
+     ],
+     [
+      "001",
+      "002"
+     ],
+     [
+      "001",
+      "002"
+     ],
+     [
+      "001",
+      "002"
+     ],
+     [
+      "001",
+      "002"
+     ],
+     [
+      "001",
+      "002"
+     ],
+     [
+      "002",
+      "001"
+     ],
+     [
+      "002",
+      "001"
+     ],
+     [
+      "003"
+     ],
+     [
+      "003"
+     ],
+     [
+      "003"
+     ]
+    ]
+   },
+   "mode": "full",
+   "node": "IndusClaimTester",
+   "params": {},
+   "setup": {
+    "kind": "evidence_dirs"
+   }
+  },
+  {
+   "expected": {
+    "error": "No sequences \u2014 connect BuiltinCorpus or CorpusReader.sequences to the 'sequences' port"
+   },
+   "id": "f2_test_no_seqs",
+   "inputs": {
+    "claims": [
+     {
+      "claim_id": "t1",
+      "claim_type": "sign_position_claim",
+      "normalized_claim": "sign 001 occurs in initial position",
+      "signs_involved": [
+       "001"
+      ]
+     },
+     {
+      "claim_id": "t2",
+      "claim_type": "sign_value_claim",
+      "normalized_claim": "sign 002 takes the initial value role",
+      "signs_involved": [
+       "002"
+      ]
+     },
+     {
+      "claim_id": "t3",
+      "claim_type": "sign_function_claim",
+      "normalized_claim": "sign 002 functions as a suffix",
+      "signs_involved": [
+       "002"
+      ]
+     },
+     {
+      "claim_id": "t4",
+      "claim_type": "sign_position_claim",
+      "normalized_claim": "sign 999 in initial position",
+      "signs_involved": [
+       "999"
+      ]
+     },
+     {
+      "claim_id": "t5",
+      "claim_type": "unrelated_claim",
+      "normalized_claim": "sign 001 in initial position",
+      "signs_involved": [
+       "001"
+      ]
+     },
+     {
+      "claim_id": "t6",
+      "claim_type": "sign_position_claim",
+      "normalized_claim": "sign 001 in terminal position",
+      "signs_involved": [
+       "001"
+      ]
+     },
+     {
+      "claim_id": "t7",
+      "claim_type": "sign_position_claim",
+      "normalized_claim": "signs in initial position",
+      "signs_involved": [
+       "001",
+       "002",
+       "003",
+       "004",
+       "005"
+      ]
+     }
+    ]
+   },
+   "mode": "full",
+   "node": "IndusClaimTester",
+   "params": {},
+   "setup": {
+    "kind": "evidence_dirs"
+   }
+  },
+  {
+   "expected": {
+    "error": "No claims \u2014 connect IndusClaimsLoader.claims"
+   },
+   "id": "f2_test_no_claims",
+   "inputs": {
+    "sequences": [
+     [
+      "001",
+      "002"
+     ],
+     [
+      "001",
+      "002"
+     ],
+     [
+      "001",
+      "002"
+     ],
+     [
+      "001",
+      "002"
+     ],
+     [
+      "001",
+      "002"
+     ],
+     [
+      "001",
+      "002"
+     ],
+     [
+      "001",
+      "002"
+     ],
+     [
+      "001",
+      "002"
+     ],
+     [
+      "001",
+      "002"
+     ],
+     [
+      "001",
+      "002"
+     ],
+     [
+      "002",
+      "001"
+     ],
+     [
+      "002",
+      "001"
+     ],
+     [
+      "003"
+     ],
+     [
+      "003"
+     ],
+     [
+      "003"
+     ]
+    ]
+   },
+   "mode": "full",
+   "node": "IndusClaimTester",
+   "params": {},
+   "setup": {
+    "kind": "evidence_dirs"
+   }
+  }
+ ]
+}

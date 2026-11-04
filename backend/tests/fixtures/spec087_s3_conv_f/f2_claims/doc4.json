@@ -1,0 +1,1 @@
+{"total_claims":2,"claims":[{"claim_id":"d1","claim_status":"DISPUTED","claim_type":"sign_function_claim","normalized_claim":"sign 002 functions as a suffix marker","signs_involved":["002"]},{"claim_id":"d2","claim_status":"VERIFIED","claim_type":"sign_position_claim","normalized_claim":"sign 004 is restricted to terminal position","signs_involved":["004"]}]}

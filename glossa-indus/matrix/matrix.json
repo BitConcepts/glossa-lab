@@ -3,8 +3,8 @@
  "generated_from": "glossa-indus/ledger/claims.jsonl",
  "generated_by": "tools/ledger/generate_matrix.py (backend/glossa_lab/matrix_generate.py)",
  "as_of": {
-  "ledger_sha256": "b442ce7e5825e938fbd4bc0033bcb0582b37c71fe724a55f4584b5a4d5213712",
-  "ledger_lines": 927,
+  "ledger_sha256": "15a5fbad24f400631ace1ebc88bfb7712c9bf6f68fae23e56fedbcac5fd5a794",
+  "ledger_lines": 943,
   "ledger_date": "2026-11-04",
   "ledger_schema": "ledger-schema v1",
   "matrix_defs": "matrix-defs v1"
@@ -5382,6 +5382,102 @@
   },
   {
    "id": "089-run-scoped-results/C089-12",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "090-projected-constraints-generalization-study/C090-10",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "090-projected-constraints-generalization-study/C090-4",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "090-projected-constraints-generalization-study/C090-12",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "090-projected-constraints-generalization-study/C090-11",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "090-projected-constraints-generalization-study/C090-9",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "090-projected-constraints-generalization-study/C090-13",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "090-projected-constraints-generalization-study/C090-7",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "090-projected-constraints-generalization-study/C090-14",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "090-projected-constraints-generalization-study/C090-6",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "090-projected-constraints-generalization-study/C090-1",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "090-projected-constraints-generalization-study/C090-2",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "090-projected-constraints-generalization-study/C090-15",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "090-projected-constraints-generalization-study/C090-5",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "090-projected-constraints-generalization-study/C090-8",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "090-projected-constraints-generalization-study/C090-3",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "090-projected-constraints-generalization-study/C090-16",
    "population": "bundle",
    "status": "draft",
    "stage": "created"
@@ -23411,6 +23507,182 @@
    ]
   },
   {
+   "row": "090-projected-constraints-generalization-study/C090-1",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-1",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "090-projected-constraints-generalization-study/C090-10",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-10",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "090-projected-constraints-generalization-study/C090-11",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-11",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "090-projected-constraints-generalization-study/C090-12",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-12",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "090-projected-constraints-generalization-study/C090-13",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-13",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "090-projected-constraints-generalization-study/C090-14",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-14",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "090-projected-constraints-generalization-study/C090-15",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-15",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "090-projected-constraints-generalization-study/C090-16",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-16",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "090-projected-constraints-generalization-study/C090-2",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-2",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "090-projected-constraints-generalization-study/C090-3",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-3",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "090-projected-constraints-generalization-study/C090-4",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-4",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "090-projected-constraints-generalization-study/C090-5",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-5",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "090-projected-constraints-generalization-study/C090-6",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-6",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "090-projected-constraints-generalization-study/C090-7",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-7",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "090-projected-constraints-generalization-study/C090-8",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-8",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "090-projected-constraints-generalization-study/C090-9",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-9",
+    "spec.md"
+   ]
+  },
+  {
    "row": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
    "column": "055",
    "column_class": "studies",
@@ -23578,8 +23850,8 @@
   }
  ],
  "coverage": {
-  "rows_total": 896,
-  "rows_with_cells": 882,
+  "rows_total": 912,
+  "rows_with_cells": 898,
   "empty_rows": [
    "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
    "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -23937,30 +24209,30 @@
    ],
    "corpus_texts": []
   },
-  "cells_total": 1419,
+  "cells_total": 1435,
   "cells_by_relation": {
-   "supports": 1412,
+   "supports": 1428,
    "opposes": 7,
    "constrains": 0
   },
   "cells_by_class": {
    "studies": 7,
-   "documents": 1412,
+   "documents": 1428,
    "research_checks": 0,
    "anchors": 0,
    "corpus_texts": 0
   },
   "falsifier_coverage": {
-   "covered": 887,
-   "total": 896,
+   "covered": 903,
+   "total": 912,
    "by_population": {
     "extracted": {
      "covered": 14,
      "total": 23
     },
     "bundle": {
-     "covered": 873,
-     "total": 873
+     "covered": 889,
+     "total": 889
     }
    }
   },

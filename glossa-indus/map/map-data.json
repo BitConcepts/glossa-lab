@@ -3,10 +3,10 @@
  "generated_from": "glossa-indus/ledger/claims.jsonl through glossa-indus/matrix/matrix.json and the settling records of record",
  "generated_by": "tools/ledger/generate_map.py (backend/glossa_lab/map_generate.py)",
  "header": {
-  "claims_total": 896,
+  "claims_total": 912,
   "claims_by_status": {
    "contradicted": 4,
-   "draft": 872,
+   "draft": 888,
    "partially_falsified": 1,
    "partially_supported": 3,
    "strongly_supported": 2,
@@ -55,18 +55,18 @@
    "reason": "the anchors register records no review dates for the pending validations, so they appear as a count, not as dated items (decision Q4)"
   },
   "as_of": {
-   "ledger_sha256": "b442ce7e5825e938fbd4bc0033bcb0582b37c71fe724a55f4584b5a4d5213712",
-   "ledger_lines": 927,
+   "ledger_sha256": "15a5fbad24f400631ace1ebc88bfb7712c9bf6f68fae23e56fedbcac5fd5a794",
+   "ledger_lines": 943,
    "ledger_date": "2026-11-04",
    "ledger_schema": "ledger-schema v1",
    "matrix_defs": "matrix-defs v1",
    "map_defs": "map-defs v1",
    "settle_semantics": "glossa-settle-1",
-   "matrix_sha256": "2509201b462774fb53a6491b13b445fb292a38cf262948c1b33dd64fda3e2252",
+   "matrix_sha256": "922fa0913ec30bf94f3137e6f74fb0316e40f5aefc50eb2ba12d0b3e0c518f57",
    "anchors_register_sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
    "assignment_sets_sha256": "36bce404db20792826e7ffba220857c71d058423c8f8e47fca7aa900af27c5be",
-   "comparison_sha256": "d5997c1431868ead0bd0598ba02831f195766968eba12721d0571c5db5333734",
-   "settling_canonical_sha256": "80c53f0bc051d1f9ef0499a526991d005a64f803570b23e7b0007f7077c03c1a"
+   "comparison_sha256": "1371c981ce4c9cd9721fbed3294aee82c2bc512d9b8293390a201cf3a935874b",
+   "settling_canonical_sha256": "e9a7f5baf65f4733e3e5d05f8d9456b14bd6497c012922bcbdedf1675361e892"
   }
  },
  "elements": [
@@ -7234,6 +7234,134 @@
    "kind": "claim",
    "id": "089-run-scoped-results/C089-12",
    "statement": "A junction report names both runs by id; diffs their comparability keys component by component; diffs their environment stamps; localizes the first divergent output field (the `_first_divergences` discipline of `run_settling.py`, generalized from expectation-comparison to run-vs-run, including the one-side-empty case, where the first divergence is the first result the non-empty side produced); and ends in exactly one disposition: explained-by-named-difference (naming the differing component and the evidence it caused the divergence), not-comparable (a constitutive component differs; the pair is reclassified under C089-10), identical-after-all (the reported difference was in presentation, not in the records — the report names the presentation artifact), or unexplained. This does not establish: that the mechanical diff finds the cause — it bounds the search; the unexplained disposition exists precisely for when it does not.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "090-projected-constraints-generalization-study/C090-10",
+   "statement": "The derivation record states the observation that would refute the derivation's application: a record, of a kind the G1 record system admits, that the framework — the stated projection plus the derived condition — declares impossible, whose observation would falsify the derivation. The refuter is concrete enough that its occurrence would be recognizable in the record system (a named record kind with named properties), not a gesture at future evidence. This does not establish: that the condition is true — only that it is exposed to the records in the way D4 requires, so its standing can change on evidence.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "090-projected-constraints-generalization-study/C090-4",
+   "statement": "The G1 document states what the records cannot distinguish, and every indistinguishability it asserts is tied to a named record or count in the program's own record: the signary's frame-dependence (Spec 077's frozen 557-sign population against the 64 distinct signs attested in the M77 corpus file and the 713 distinct codes of the ICIT frame); corpus-attested signs and contexts carrying no anchor coverage; the anchors register's 44 `pending_non_sa_validation` readings, whose validation chain is incomplete on the register's own face; and completions of the script that differ only outside the surviving records. This does not establish: that the indistinguishable states are equally plausible — equivalence under pi is a fact about the records, not a probability over decipherments, and the account assigns none.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "090-projected-constraints-generalization-study/C090-12",
+   "statement": "Where the study's records address D6/S5, they cite the standing machinery as it operates: the append-only ledger; the matrix and maps generated from it by script; the gate (classes V1–V10) recomputing by an independent route and never writing, with publication only on ALL PASS; settling under glossa-settle-1. The account claims the machinery's existence and operation only as the Specs 086–089 records establish them, and credits Spec 090 with no part of building, extending, or repairing any of it. This does not establish: that D6's presence advances the instantiation question by itself — the scoping note already grants the element and still finds G1/G2 open; the matrix is the study's substrate, not its result.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "090-projected-constraints-generalization-study/C090-11",
+   "statement": "If no candidate's chain completes at S2, the stage record states the G2 outcome as NOT YET and names the obstruction: which premise fails, which step does not follow, or what the stated projection cannot support — specifically enough that a successor study knows what would have to change. No weaker statement is substituted and called derived, and no candidate is carried as \"essentially derived.\" This does not establish: that the obstruction is permanent — NOT YET names missing work, and the skeleton records it as a publishable outcome, not as a refutation of the domain or the skeleton.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "090-projected-constraints-generalization-study/C090-9",
+   "statement": "The derived statement N is claimed for every state in every projection-equivalence class consistent with the records, as the G1 document's projection defines the classes — a statement about what must hold in every completion of the records, not a regularity observed in the records that happen to survive. This does not establish: that N is interesting — a true but trivial N (an artifact of the definitions with no bite over candidate decipherments) satisfies the letter of this claim; whether N bites is part of what the derivation record must show and the outcome record must say plainly.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "090-projected-constraints-generalization-study/C090-13",
+   "statement": "Across the whole spec, the claims ledger's diff is exactly the append of this spec's own claim bundle through `tools/ledger/import_bundle.py` at adoption, plus the regeneration of the generated layers that append forces (the C088-15 / C089-18 pattern). No stage adjudicates, reclassifies, annotates, or scores any claim; no claim about the Indus script changes status, stage, or score as a consequence of any stage; and the program's standing position (the Indus script is not deciphered) is untouched. This does not establish: anything about the appended claims' truth — only that the ledger's one-way flow survives this study intact.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "090-projected-constraints-generalization-study/C090-7",
+   "statement": "Per the judging protocol, the G1 document contains the record system's definition, the projection rule, the cannot-distinguish account, and the absolute disposition — and no conclusions: no claim that the domain instantiates or fails any skeleton element, no G2 material, no outcome language. The study's conclusions live in the derivation record and the outcome record, which are separate artifacts. This does not establish: that a definitions-only document is neutral in effect — definitions decide what can be derived; the claim is only that the protocol's separation is kept, so a reader judges the definitions without the team's conclusions in hand.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "090-projected-constraints-generalization-study/C090-14",
+   "statement": "Nothing in this study enters the program into VEXA convergence Stage 1, alters the program's local stack, or contributes a convergence-dashboard item. The study runs beside the program's stack as a registered study about the skeleton; if convergence later adopts the skeleton as a maintained form, that is a separate program act under its own gates, not a consequence recorded here. This does not establish: that convergence will or will not happen — only that this study is not it, per the commission's own boundary.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "090-projected-constraints-generalization-study/C090-6",
+   "statement": "The G1 document enumerates the candidate absolutes in the program's real practice — at minimum: the corpus frame a record set is read under (which sign inventory a corpus file's codes answer to); the anchor readings' external identifications (readings imported from named scholarship rather than derived from the records); and the surviving corpus's extent (what counts as the complete record set) — and disposes of each on the record: record-relative (shown to vary with the records, with the variation exhibited), derived (from the named absolute or from the records), or the named primitive absolute itself. This does not establish: that the enumerated candidates are the only conceivable absolutes — only that the ones the practice demonstrably uses were each faced and disposed of, which is what an audit is.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "090-projected-constraints-generalization-study/C090-1",
+   "statement": "One document, in the spec's records (decision D-090-1), states Glossa's record system (D1), projection rule (D2), and primitive-absolute disposition (D3) in the skeleton's terms. It is written and frozen before any G2 derivation is attempted, and any later change to it is a new version under a recorded amendment act, so the document the G2 stage and any independent reader cite is identifiable by hash. This does not establish: that the document's definitions are right — only that exactly one citable document carries them, stated before results, as G1 requires.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "090-projected-constraints-generalization-study/C090-2",
+   "statement": "The G1 document defines the record system over the classes the program's verdicts actually rest on — corpus records (the inscription files and their loaders), anchor records (the anchors register), and ledger claim lines — naming for each class what a record is, what provenance it carries, and its population counted from the records at the state read. A record that breaks its class's stated provenance rule is accounted for by the definition (named as an exception class with its count — as the anchors register's 3 `no_validation_record` entries require), never silently absorbed. This does not establish: that the records are complete or correct — only that the system the study reasons about is the system the program actually has, provenance rules and exceptions stated.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "090-projected-constraints-generalization-study/C090-15",
+   "statement": "No separator is computed or validated for G3 credit; no gate refusal or kill is staged or claimed for G4 credit; no reproduction materials are assembled or claimed for G5. Where the study's records touch standing instances from the program's history (the gate's recorded refusals, the matrix's regeneration checks), they cite them as program history with their own records, never as this study's G3/G4/G5 evidence. This does not establish: that G3–G5 are unattemptable later — they are commissioned in principle by the same order and sequenced after this study; this claim binds only what this spec does.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "090-projected-constraints-generalization-study/C090-5",
+   "statement": "The G1 document either (a) names exactly one primitive absolute in D3's sense — a quantity taken as given in absolute terms, not relative to the records — with the audit showing every other absolute-looking input to be record-relative or derived from the named one; or (b) proves none is needed, by exhibiting each candidate absolute as record-relative or derived. If the audit finds the domain requires two, the document says so, and the study records a skeleton mismatch (under D3 the domain then does not instantiate this skeleton); it does not force a fit by demoting one absolute without argument. This does not establish: which outcome obtains — the claim binds the discipline (at most one, audited), and binds it identically whether the answer is one, none, or a mismatch.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "090-projected-constraints-generalization-study/C090-8",
+   "statement": "The G2 derivation record shows its chain step by step, and every step follows from the skeleton's definitions and the G1 document's stated projection rule, record-system definition, and absolute disposition. No step cites a physics result — no F0 theorem, no separator result, no identifiability result about causal sets or order-and-count observables — as a premise. A candidate whose chain needs such a premise is recorded as not derived, with the step named. This does not establish: that a physics-*suggested* candidate is barred — the analogy may occasion a candidate; the claim binds the derivation, which must stand with the physics premise removed.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "090-projected-constraints-generalization-study/C090-3",
+   "statement": "The G1 document defines the candidate system state for the decipherment domain and states a rule pi mapping a candidate state to the records it would produce, precisely enough that, given two named candidate states, whether pi distinguishes them is decidable from the stated rule alone — not from the drafters' intuition about the states. This does not establish: that the stated rule is the right projection for the domain — only that it is a rule in D2's sense, which is what makes equivalence classes, and therefore G2, possible at all.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "090-projected-constraints-generalization-study/C090-16",
+   "statement": "The study closes with an outcome record stating the per-stage outcomes (G1: STATED or NOT YET with the missing element named; G2: DERIVED or NOT YET with the obstruction named) and the study-level outcome as spec.md defines it (INSTANTIATES-path, ANALOGY with the metaphorical element named, or NOT YET with the missing work stated), each with evidence pointers to the stage records. The outcome — or, if a stage cannot run, the blocker — is reported to the VEXA chat for the improvement registry, as the commission requires. The formal verdict over the full G1–G5 bar belongs to the independent reader under the judging protocol; this study does not issue it. This does not establish: that the reported outcome is the final verdict on the domain — the reader's verdict under the protocol, and the G3–G5 follow-on, both stand after it.",
    "status": "draft",
    "stage": "created",
    "population": "bundle"
@@ -25261,6 +25389,182 @@
    ]
   },
   {
+   "from": "spec.md",
+   "to": "090-projected-constraints-generalization-study/C090-1",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-1",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "090-projected-constraints-generalization-study/C090-10",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-10",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "090-projected-constraints-generalization-study/C090-11",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-11",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "090-projected-constraints-generalization-study/C090-12",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-12",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "090-projected-constraints-generalization-study/C090-13",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-13",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "090-projected-constraints-generalization-study/C090-14",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-14",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "090-projected-constraints-generalization-study/C090-15",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-15",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "090-projected-constraints-generalization-study/C090-16",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-16",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "090-projected-constraints-generalization-study/C090-2",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-2",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "090-projected-constraints-generalization-study/C090-3",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-3",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "090-projected-constraints-generalization-study/C090-4",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-4",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "090-projected-constraints-generalization-study/C090-5",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-5",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "090-projected-constraints-generalization-study/C090-6",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-6",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "090-projected-constraints-generalization-study/C090-7",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-7",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "090-projected-constraints-generalization-study/C090-8",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-8",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "090-projected-constraints-generalization-study/C090-9",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-9",
+    "spec.md"
+   ]
+  },
+  {
    "from": "055",
    "to": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
    "rel": "opposes",
@@ -29903,6 +30207,86 @@
    "constrains": 0
   },
   "089-run-scoped-results/C089-12": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "090-projected-constraints-generalization-study/C090-10": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "090-projected-constraints-generalization-study/C090-4": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "090-projected-constraints-generalization-study/C090-12": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "090-projected-constraints-generalization-study/C090-11": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "090-projected-constraints-generalization-study/C090-9": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "090-projected-constraints-generalization-study/C090-13": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "090-projected-constraints-generalization-study/C090-7": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "090-projected-constraints-generalization-study/C090-14": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "090-projected-constraints-generalization-study/C090-6": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "090-projected-constraints-generalization-study/C090-1": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "090-projected-constraints-generalization-study/C090-2": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "090-projected-constraints-generalization-study/C090-15": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "090-projected-constraints-generalization-study/C090-5": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "090-projected-constraints-generalization-study/C090-8": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "090-projected-constraints-generalization-study/C090-3": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "090-projected-constraints-generalization-study/C090-16": {
    "supports": 1,
    "opposes": 0,
    "constrains": 0
@@ -35282,6 +35666,102 @@
    },
    {
     "id": "089-run-scoped-results/C089-12",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "090-projected-constraints-generalization-study/C090-10",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "090-projected-constraints-generalization-study/C090-4",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "090-projected-constraints-generalization-study/C090-12",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "090-projected-constraints-generalization-study/C090-11",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "090-projected-constraints-generalization-study/C090-9",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "090-projected-constraints-generalization-study/C090-13",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "090-projected-constraints-generalization-study/C090-7",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "090-projected-constraints-generalization-study/C090-14",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "090-projected-constraints-generalization-study/C090-6",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "090-projected-constraints-generalization-study/C090-1",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "090-projected-constraints-generalization-study/C090-2",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "090-projected-constraints-generalization-study/C090-15",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "090-projected-constraints-generalization-study/C090-5",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "090-projected-constraints-generalization-study/C090-8",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "090-projected-constraints-generalization-study/C090-3",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "090-projected-constraints-generalization-study/C090-16",
     "population": "bundle",
     "status": "draft",
     "stage": "created"
@@ -53311,6 +53791,182 @@
     ]
    },
    {
+    "row": "090-projected-constraints-generalization-study/C090-1",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "090-projected-constraints-generalization-study/C090-1",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "090-projected-constraints-generalization-study/C090-10",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "090-projected-constraints-generalization-study/C090-10",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "090-projected-constraints-generalization-study/C090-11",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "090-projected-constraints-generalization-study/C090-11",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "090-projected-constraints-generalization-study/C090-12",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "090-projected-constraints-generalization-study/C090-12",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "090-projected-constraints-generalization-study/C090-13",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "090-projected-constraints-generalization-study/C090-13",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "090-projected-constraints-generalization-study/C090-14",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "090-projected-constraints-generalization-study/C090-14",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "090-projected-constraints-generalization-study/C090-15",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "090-projected-constraints-generalization-study/C090-15",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "090-projected-constraints-generalization-study/C090-16",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "090-projected-constraints-generalization-study/C090-16",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "090-projected-constraints-generalization-study/C090-2",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "090-projected-constraints-generalization-study/C090-2",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "090-projected-constraints-generalization-study/C090-3",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "090-projected-constraints-generalization-study/C090-3",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "090-projected-constraints-generalization-study/C090-4",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "090-projected-constraints-generalization-study/C090-4",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "090-projected-constraints-generalization-study/C090-5",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "090-projected-constraints-generalization-study/C090-5",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "090-projected-constraints-generalization-study/C090-6",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "090-projected-constraints-generalization-study/C090-6",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "090-projected-constraints-generalization-study/C090-7",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "090-projected-constraints-generalization-study/C090-7",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "090-projected-constraints-generalization-study/C090-8",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "090-projected-constraints-generalization-study/C090-8",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "090-projected-constraints-generalization-study/C090-9",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "090-projected-constraints-generalization-study/C090-9",
+     "spec.md"
+    ]
+   },
+   {
     "row": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
     "column": "055",
     "column_class": "studies",
@@ -53478,8 +54134,8 @@
    }
   ],
   "coverage": {
-   "rows_total": 896,
-   "rows_with_cells": 882,
+   "rows_total": 912,
+   "rows_with_cells": 898,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -53837,30 +54493,30 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1419,
+   "cells_total": 1435,
    "cells_by_relation": {
-    "supports": 1412,
+    "supports": 1428,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1412,
+    "documents": 1428,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
    },
    "falsifier_coverage": {
-    "covered": 887,
-    "total": 896,
+    "covered": 903,
+    "total": 912,
     "by_population": {
      "extracted": {
       "covered": 14,
       "total": 23
      },
      "bundle": {
-      "covered": 873,
-      "total": 873
+      "covered": 889,
+      "total": 889
      }
     }
    },
@@ -58905,8 +59561,8 @@
    }
   },
   "matrix_coverage": {
-   "rows_total": 896,
-   "rows_with_cells": 882,
+   "rows_total": 912,
+   "rows_with_cells": 898,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -59264,15 +59920,15 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1419,
+   "cells_total": 1435,
    "cells_by_relation": {
-    "supports": 1412,
+    "supports": 1428,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1412,
+    "documents": 1428,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
@@ -59341,7 +59997,7 @@
   "claim_population": {
    "by_status": {
     "contradicted": 4,
-    "draft": 872,
+    "draft": 888,
     "partially_falsified": 1,
     "partially_supported": 3,
     "strongly_supported": 2,
@@ -59351,26 +60007,26 @@
    },
    "by_stage": {
     "checked": 3,
-    "created": 870,
+    "created": 886,
     "explained": 8
    },
    "no_stage_recorded": 15,
    "by_population": {
-    "bundle": 873,
+    "bundle": 889,
     "extracted": 23
    }
   },
   "falsifier_census": {
-   "covered": 887,
-   "total": 896,
+   "covered": 903,
+   "total": 912,
    "by_population": {
     "extracted": {
      "covered": 14,
      "total": 23
     },
     "bundle": {
-     "covered": 873,
-     "total": 873
+     "covered": 889,
+     "total": 889
     }
    },
    "gap_claims": [
@@ -59387,8 +60043,8 @@
   },
   "aee_state_census": {
    "with_state": 0,
-   "without_state": 896,
-   "total": 896
+   "without_state": 912,
+   "total": 912
   },
   "unresolved": {
    "sign_mentions": [
@@ -60874,7 +61530,7 @@
     "runs": [
      {
       "candidate": "incumbent",
-      "record": "t405-incumbent-over-full-frame--c78f3e07ec82",
+      "record": "t405-incumbent-over-full-frame--d9f73e4c4e4e",
       "via_signs": [
        "mahadevan:70"
       ],
@@ -60888,7 +61544,7 @@
      },
      {
       "candidate": "full-register",
-      "record": "t405-full-register-over-full-frame--fb1697b3f6de",
+      "record": "t405-full-register-over-full-frame--f8c86443e924",
       "via_signs": [
        "mahadevan:72",
        "mahadevan:64",
@@ -148625,6 +149281,1366 @@
     },
     "sign_records": []
    }
+  },
+  "090-projected-constraints-generalization-study/C090-10": {
+   "id": "090-projected-constraints-generalization-study/C090-10",
+   "statement": "The derivation record states the observation that would refute the derivation's application: a record, of a kind the G1 record system admits, that the framework — the stated projection plus the derived condition — declares impossible, whose observation would falsify the derivation. The refuter is concrete enough that its occurrence would be recognizable in the record system (a named record kind with named properties), not a gesture at future evidence. This does not establish: that the condition is true — only that it is exposed to the records in the way D4 requires, so its standing can change on evidence.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "a derived condition with no stated refuter; or a stated refuter that is not a record the record system admits (a scholarly consensus, a statistical trend, a document the system cannot hold)."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C090-10",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "090-projected-constraints-generalization-study/C090-10",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "090-projected-constraints-generalization-study/C090-10",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C090-10",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    },
+    "sign_records": []
+   }
+  },
+  "090-projected-constraints-generalization-study/C090-4": {
+   "id": "090-projected-constraints-generalization-study/C090-4",
+   "statement": "The G1 document states what the records cannot distinguish, and every indistinguishability it asserts is tied to a named record or count in the program's own record: the signary's frame-dependence (Spec 077's frozen 557-sign population against the 64 distinct signs attested in the M77 corpus file and the 713 distinct codes of the ICIT frame); corpus-attested signs and contexts carrying no anchor coverage; the anchors register's 44 `pending_non_sa_validation` readings, whose validation chain is incomplete on the register's own face; and completions of the script that differ only outside the surviving records. This does not establish: that the indistinguishable states are equally plausible — equivalence under pi is a fact about the records, not a probability over decipherments, and the account assigns none.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "an asserted indistinguishability that no cited record or count supports; or a pair of states the account calls indistinguishable that a cited record does distinguish; or a distinguishable-on-the-record case, of a kind the account claims to cover, that it omits."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C090-4",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "090-projected-constraints-generalization-study/C090-4",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "090-projected-constraints-generalization-study/C090-4",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C090-4",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    },
+    "sign_records": []
+   }
+  },
+  "090-projected-constraints-generalization-study/C090-12": {
+   "id": "090-projected-constraints-generalization-study/C090-12",
+   "statement": "Where the study's records address D6/S5, they cite the standing machinery as it operates: the append-only ledger; the matrix and maps generated from it by script; the gate (classes V1–V10) recomputing by an independent route and never writing, with publication only on ALL PASS; settling under glossa-settle-1. The account claims the machinery's existence and operation only as the Specs 086–089 records establish them, and credits Spec 090 with no part of building, extending, or repairing any of it. This does not establish: that D6's presence advances the instantiation question by itself — the scoping note already grants the element and still finds G1/G2 open; the matrix is the study's substrate, not its result.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "an outcome or stage record crediting this study with machinery from Specs 086–089; or describing the gate as adjudicating claims, writing artifacts, or doing anything its own header and the stage records do not support."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C090-12",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "090-projected-constraints-generalization-study/C090-12",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "090-projected-constraints-generalization-study/C090-12",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C090-12",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    },
+    "sign_records": []
+   }
+  },
+  "090-projected-constraints-generalization-study/C090-11": {
+   "id": "090-projected-constraints-generalization-study/C090-11",
+   "statement": "If no candidate's chain completes at S2, the stage record states the G2 outcome as NOT YET and names the obstruction: which premise fails, which step does not follow, or what the stated projection cannot support — specifically enough that a successor study knows what would have to change. No weaker statement is substituted and called derived, and no candidate is carried as \"essentially derived.\" This does not establish: that the obstruction is permanent — NOT YET names missing work, and the skeleton records it as a publishable outcome, not as a refutation of the domain or the skeleton.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "a closed S2 with neither a completed derivation nor a named obstruction; or an obstruction stated so generally (\"the domain is too hard\") that no successor could act on it."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C090-11",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "090-projected-constraints-generalization-study/C090-11",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "090-projected-constraints-generalization-study/C090-11",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C090-11",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    },
+    "sign_records": []
+   }
+  },
+  "090-projected-constraints-generalization-study/C090-9": {
+   "id": "090-projected-constraints-generalization-study/C090-9",
+   "statement": "The derived statement N is claimed for every state in every projection-equivalence class consistent with the records, as the G1 document's projection defines the classes — a statement about what must hold in every completion of the records, not a regularity observed in the records that happen to survive. This does not establish: that N is interesting — a true but trivial N (an artifact of the definitions with no bite over candidate decipherments) satisfies the letter of this claim; whether N bites is part of what the derivation record must show and the outcome record must say plainly.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "a \"necessary condition\" whose derivation establishes it only over the observed corpus (an empirical regularity with a class-level label); or a statement whose quantifiers range over records rather than over states in classes."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C090-9",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "090-projected-constraints-generalization-study/C090-9",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "090-projected-constraints-generalization-study/C090-9",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C090-9",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    },
+    "sign_records": []
+   }
+  },
+  "090-projected-constraints-generalization-study/C090-13": {
+   "id": "090-projected-constraints-generalization-study/C090-13",
+   "statement": "Across the whole spec, the claims ledger's diff is exactly the append of this spec's own claim bundle through `tools/ledger/import_bundle.py` at adoption, plus the regeneration of the generated layers that append forces (the C088-15 / C089-18 pattern). No stage adjudicates, reclassifies, annotates, or scores any claim; no claim about the Indus script changes status, stage, or score as a consequence of any stage; and the program's standing position (the Indus script is not deciphered) is untouched. This does not establish: anything about the appended claims' truth — only that the ledger's one-way flow survives this study intact.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "a ledger diff attributable to a Spec 090 PR beyond the adoption append's lines; or an Indus claim reclassified, annotated, or re-scored citing this study."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C090-13",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "090-projected-constraints-generalization-study/C090-13",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "090-projected-constraints-generalization-study/C090-13",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C090-13",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    },
+    "sign_records": []
+   }
+  },
+  "090-projected-constraints-generalization-study/C090-7": {
+   "id": "090-projected-constraints-generalization-study/C090-7",
+   "statement": "Per the judging protocol, the G1 document contains the record system's definition, the projection rule, the cannot-distinguish account, and the absolute disposition — and no conclusions: no claim that the domain instantiates or fails any skeleton element, no G2 material, no outcome language. The study's conclusions live in the derivation record and the outcome record, which are separate artifacts. This does not establish: that a definitions-only document is neutral in effect — definitions decide what can be derived; the claim is only that the protocol's separation is kept, so a reader judges the definitions without the team's conclusions in hand.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "a sentence in the G1 document asserting an outcome (that an S element is met, that a necessary condition holds, that the study succeeded or failed at anything); or G2 content appearing in the G1 document's frozen version."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C090-7",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "090-projected-constraints-generalization-study/C090-7",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "090-projected-constraints-generalization-study/C090-7",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C090-7",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    },
+    "sign_records": []
+   }
+  },
+  "090-projected-constraints-generalization-study/C090-14": {
+   "id": "090-projected-constraints-generalization-study/C090-14",
+   "statement": "Nothing in this study enters the program into VEXA convergence Stage 1, alters the program's local stack, or contributes a convergence-dashboard item. The study runs beside the program's stack as a registered study about the skeleton; if convergence later adopts the skeleton as a maintained form, that is a separate program act under its own gates, not a consequence recorded here. This does not establish: that convergence will or will not happen — only that this study is not it, per the commission's own boundary.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "any record of this study describing it as a convergence step, a Stage 1 entry, or a dashboard item; or a stack change made in this study's name."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C090-14",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "090-projected-constraints-generalization-study/C090-14",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "090-projected-constraints-generalization-study/C090-14",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C090-14",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    },
+    "sign_records": []
+   }
+  },
+  "090-projected-constraints-generalization-study/C090-6": {
+   "id": "090-projected-constraints-generalization-study/C090-6",
+   "statement": "The G1 document enumerates the candidate absolutes in the program's real practice — at minimum: the corpus frame a record set is read under (which sign inventory a corpus file's codes answer to); the anchor readings' external identifications (readings imported from named scholarship rather than derived from the records); and the surviving corpus's extent (what counts as the complete record set) — and disposes of each on the record: record-relative (shown to vary with the records, with the variation exhibited), derived (from the named absolute or from the records), or the named primitive absolute itself. This does not establish: that the enumerated candidates are the only conceivable absolutes — only that the ones the practice demonstrably uses were each faced and disposed of, which is what an audit is.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "a candidate absolute in the program's practice that the audit never considers — in particular an audit that never raises the frame question; or a disposition asserted without the exhibited variation or derivation it claims."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C090-6",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "090-projected-constraints-generalization-study/C090-6",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "090-projected-constraints-generalization-study/C090-6",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C090-6",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    },
+    "sign_records": []
+   }
+  },
+  "090-projected-constraints-generalization-study/C090-1": {
+   "id": "090-projected-constraints-generalization-study/C090-1",
+   "statement": "One document, in the spec's records (decision D-090-1), states Glossa's record system (D1), projection rule (D2), and primitive-absolute disposition (D3) in the skeleton's terms. It is written and frozen before any G2 derivation is attempted, and any later change to it is a new version under a recorded amendment act, so the document the G2 stage and any independent reader cite is identifiable by hash. This does not establish: that the document's definitions are right — only that exactly one citable document carries them, stated before results, as G1 requires.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "G2 work begun with no G1 document on record; or the G1 content scattered across stage prose such that no single document can be handed to a reader; or a G1 document whose bytes changed after its freeze with no amendment act recorded."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C090-1",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "090-projected-constraints-generalization-study/C090-1",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "090-projected-constraints-generalization-study/C090-1",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C090-1",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    },
+    "sign_records": []
+   }
+  },
+  "090-projected-constraints-generalization-study/C090-2": {
+   "id": "090-projected-constraints-generalization-study/C090-2",
+   "statement": "The G1 document defines the record system over the classes the program's verdicts actually rest on — corpus records (the inscription files and their loaders), anchor records (the anchors register), and ledger claim lines — naming for each class what a record is, what provenance it carries, and its population counted from the records at the state read. A record that breaks its class's stated provenance rule is accounted for by the definition (named as an exception class with its count — as the anchors register's 3 `no_validation_record` entries require), never silently absorbed. This does not establish: that the records are complete or correct — only that the system the study reasons about is the system the program actually has, provenance rules and exceptions stated.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "a record class the program's verdicts rest on that the definition omits; a provenance rule the class's actual records violate with the violators unaccounted; or a population figure in the document that the records at the cited state do not reproduce."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C090-2",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "090-projected-constraints-generalization-study/C090-2",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "090-projected-constraints-generalization-study/C090-2",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C090-2",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    },
+    "sign_records": []
+   }
+  },
+  "090-projected-constraints-generalization-study/C090-15": {
+   "id": "090-projected-constraints-generalization-study/C090-15",
+   "statement": "No separator is computed or validated for G3 credit; no gate refusal or kill is staged or claimed for G4 credit; no reproduction materials are assembled or claimed for G5. Where the study's records touch standing instances from the program's history (the gate's recorded refusals, the matrix's regeneration checks), they cite them as program history with their own records, never as this study's G3/G4/G5 evidence. This does not establish: that G3–G5 are unattemptable later — they are commissioned in principle by the same order and sequenced after this study; this claim binds only what this spec does.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "an outcome record claiming any of G3–G5 as attempted, partially met, or met by this study; or program-history instances presented without their own records as though produced under this spec."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C090-15",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "090-projected-constraints-generalization-study/C090-15",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "090-projected-constraints-generalization-study/C090-15",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C090-15",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    },
+    "sign_records": []
+   }
+  },
+  "090-projected-constraints-generalization-study/C090-5": {
+   "id": "090-projected-constraints-generalization-study/C090-5",
+   "statement": "The G1 document either (a) names exactly one primitive absolute in D3's sense — a quantity taken as given in absolute terms, not relative to the records — with the audit showing every other absolute-looking input to be record-relative or derived from the named one; or (b) proves none is needed, by exhibiting each candidate absolute as record-relative or derived. If the audit finds the domain requires two, the document says so, and the study records a skeleton mismatch (under D3 the domain then does not instantiate this skeleton); it does not force a fit by demoting one absolute without argument. This does not establish: which outcome obtains — the claim binds the discipline (at most one, audited), and binds it identically whether the answer is one, none, or a mismatch.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "two quantities in the G1 document both taken as given in absolute terms, whether or not both are called absolutes; a none-needed claim coexisting with an input the document uses absolutely and never derives; or a demotion of a candidate absolute with no derivation or record-relative account behind it."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C090-5",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "090-projected-constraints-generalization-study/C090-5",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "090-projected-constraints-generalization-study/C090-5",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C090-5",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    },
+    "sign_records": []
+   }
+  },
+  "090-projected-constraints-generalization-study/C090-8": {
+   "id": "090-projected-constraints-generalization-study/C090-8",
+   "statement": "The G2 derivation record shows its chain step by step, and every step follows from the skeleton's definitions and the G1 document's stated projection rule, record-system definition, and absolute disposition. No step cites a physics result — no F0 theorem, no separator result, no identifiability result about causal sets or order-and-count observables — as a premise. A candidate whose chain needs such a premise is recorded as not derived, with the step named. This does not establish: that a physics-*suggested* candidate is barred — the analogy may occasion a candidate; the claim binds the derivation, which must stand with the physics premise removed.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "a derivation step whose justification is a physics theorem or the physics instantiation's example; or a chain step that follows from nothing stated (a gap presented as a step)."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C090-8",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "090-projected-constraints-generalization-study/C090-8",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "090-projected-constraints-generalization-study/C090-8",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C090-8",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    },
+    "sign_records": []
+   }
+  },
+  "090-projected-constraints-generalization-study/C090-3": {
+   "id": "090-projected-constraints-generalization-study/C090-3",
+   "statement": "The G1 document defines the candidate system state for the decipherment domain and states a rule pi mapping a candidate state to the records it would produce, precisely enough that, given two named candidate states, whether pi distinguishes them is decidable from the stated rule alone — not from the drafters' intuition about the states. This does not establish: that the stated rule is the right projection for the domain — only that it is a rule in D2's sense, which is what makes equivalence classes, and therefore G2, possible at all.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "a stated \"projection\" that names no mapping from states to records (a narrative about interpretation, a metaphor of projection); or two states the document calls projection-equivalent that produce different records under its own rule; or an equivalence question the document's rule cannot decide either way."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C090-3",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "090-projected-constraints-generalization-study/C090-3",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "090-projected-constraints-generalization-study/C090-3",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C090-3",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    },
+    "sign_records": []
+   }
+  },
+  "090-projected-constraints-generalization-study/C090-16": {
+   "id": "090-projected-constraints-generalization-study/C090-16",
+   "statement": "The study closes with an outcome record stating the per-stage outcomes (G1: STATED or NOT YET with the missing element named; G2: DERIVED or NOT YET with the obstruction named) and the study-level outcome as spec.md defines it (INSTANTIATES-path, ANALOGY with the metaphorical element named, or NOT YET with the missing work stated), each with evidence pointers to the stage records. The outcome — or, if a stage cannot run, the blocker — is reported to the VEXA chat for the improvement registry, as the commission requires. The formal verdict over the full G1–G5 bar belongs to the independent reader under the judging protocol; this study does not issue it. This does not establish: that the reported outcome is the final verdict on the domain — the reader's verdict under the protocol, and the G3–G5 follow-on, both stand after it.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "the study closing with no outcome record; an outcome stated in vocabulary the skeleton does not define (a \"partial instantiation,\" a percentage) without mapping to its terms; or no report delivered to the VEXA chat after the outcome record lands."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C090-16",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "090-projected-constraints-generalization-study/C090-16",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "090-projected-constraints-generalization-study/C090-16",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C090-16",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9962c0bfeb5ec9907660d35eb09ad5c2ceed0ce466243902c0848bcfc23c4d5e",
+     "spec": "090-projected-constraints-generalization-study"
+    },
+    "sign_records": []
+   }
   }
  },
  "settling": {
@@ -148676,15 +150692,15 @@
   },
   "runs": [
    {
-    "record": "t405-incumbent-over-full-frame--c78f3e07ec82",
+    "record": "t405-incumbent-over-full-frame--d9f73e4c4e4e",
     "scenario": "t405-incumbent-over-full-frame",
     "candidate": "incumbent",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "b442ce7e5825e938fbd4bc0033bcb0582b37c71fe724a55f4584b5a4d5213712",
-      "lines": 927
+      "sha256": "15a5fbad24f400631ace1ebc88bfb7712c9bf6f68fae23e56fedbcac5fd5a794",
+      "lines": 943
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -148735,15 +150751,15 @@
     }
    },
    {
-    "record": "t405-full-register-over-full-frame--fb1697b3f6de",
+    "record": "t405-full-register-over-full-frame--f8c86443e924",
     "scenario": "t405-full-register-over-full-frame",
     "candidate": "full-register",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "b442ce7e5825e938fbd4bc0033bcb0582b37c71fe724a55f4584b5a4d5213712",
-      "lines": 927
+      "sha256": "15a5fbad24f400631ace1ebc88bfb7712c9bf6f68fae23e56fedbcac5fd5a794",
+      "lines": 943
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -148798,7 +150814,7 @@
   ],
   "comparison": {
    "record": "specs/086-winning-combination-adoption/records/stage-4-dual-run-comparison.json",
-   "sha256": "d5997c1431868ead0bd0598ba02831f195766968eba12721d0571c5db5333734",
+   "sha256": "1371c981ce4c9cd9721fbed3294aee82c2bc512d9b8293390a201cf3a935874b",
    "result": {
     "claims_compared": [
      {
@@ -149046,7 +151062,7 @@
   },
   "canonicals": {
    "record": "glossa-indus/ledger/settling-canonical.json",
-   "sha256": "80c53f0bc051d1f9ef0499a526991d005a64f803570b23e7b0007f7077c03c1a",
+   "sha256": "e9a7f5baf65f4733e3e5d05f8d9456b14bd6497c012922bcbdedf1675361e892",
    "scenarios": [
     {
      "id": "null-over-subset",
@@ -149381,8 +151397,8 @@
   },
   "reach": {
    "claims_with_sign_refs": 1,
-   "claims_total": 896,
-   "claims_untouched_by_any_run": 895,
+   "claims_total": 912,
+   "claims_untouched_by_any_run": 911,
    "s_r3": {
     "status": "UNMEASURED",
     "class_table": null,

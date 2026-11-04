@@ -1462,6 +1462,48 @@ export const getLog = (lines = 200): Promise<{ lines: string[]; total_lines?: nu
 export const purgeLog = (): Promise<{ cleared: number; file: string }> =>
   request("POST", "/terminal/log/purge");
 
+export interface LogStreamEvent {
+  text: string;
+  backfill?: boolean;
+}
+
+/**
+ * Spec 087 S5: the log tail is consumed by fetch-streaming, never
+ * EventSource (which cannot send the Authorization header — Spec
+ * 082). Yields one parsed event per SSE `data:` line until the
+ * signal aborts or the stream ends. The stream endpoint sends a
+ * backfill of the last 100 lines first (flagged `backfill: true`),
+ * then live lines as they are written.
+ */
+export async function* streamLogLines(
+  signal?: AbortSignal,
+): AsyncGenerator<LogStreamEvent> {
+  const res = await fetch(getLogStreamUrl(), {
+    headers: { ...authHeaders() },
+    signal,
+  });
+  yield* _sseStream<LogStreamEvent>(res, signal);
+}
+
+// ── Phase actions (Spec 087 S5: read by the Logs records tab) ───────
+
+export interface PhaseAction {
+  id: string;
+  phase: number;
+  action_label: string;
+  action_type: string;
+  params_json: string;
+  status: string; // pending | running | completed | failed | skipped
+  job_id: string | null;
+  error_message: string;
+  started_at: string | null;
+  completed_at: string | null;
+  created_at: string;
+}
+
+export const listPhaseActions = (): Promise<{ actions: PhaseAction[]; error?: string }> =>
+  request("GET", "/phase/actions");
+
 export const runTerminalCommand = (command: string, cwd?: string): Promise<Response> =>
   fetch(`${BASE}/terminal/run`, {
     method: "POST",

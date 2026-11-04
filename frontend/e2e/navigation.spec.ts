@@ -7,7 +7,8 @@ import { expect, test } from "./fixtures";
  * research workbench", a program switcher card, program-space nav in
  * loop order (Home, Claims, Digestion, Evidence & sources, Data,
  * Analysis, Experiments, Discovery, Research loop, Reports & ledger)
- * and a tool group (Jobs, Status, Settings, Help). The backend
+ * and a tool group (Jobs, Logs, Status, Settings, Help — Logs
+ * restored by Spec 087 S5). The backend
  * seeds one active program ("Indus Script Decipherment") on a fresh
  * data dir, so program space is exercised here; the no-program
  * first run needs an empty backend and is verified separately.
@@ -70,6 +71,7 @@ test.describe("Program-space navigation", () => {
   test("tool group items are visible", async ({ page }) => {
     await page.goto("/");
     await expect(page.getByTitle("Jobs").first()).toBeVisible();
+    await expect(page.getByTitle("Logs").first()).toBeVisible();
     await expect(page.getByTitle("Status").first()).toBeVisible();
     await expect(page.getByTitle("Settings").first()).toBeVisible();
     await expect(page.getByTitle("Help").first()).toBeVisible();

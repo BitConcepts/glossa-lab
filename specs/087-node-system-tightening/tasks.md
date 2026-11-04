@@ -241,12 +241,16 @@ carries its gate/test output verbatim** — not a summary of it.
 
 ## Stage S5 — Logs surface (PR: `feat/087-s5-logs-surface`)
 
-- [ ] T501 Wireframe approval gate: the owner approves
+- [x] T501 Wireframe approval gate: the owner approves
   records/logs-view-wireframes/ by name, ruling Q1
   (placement) and Q2 (purge). No S5 build task starts before
   this act. Acceptance: gate. *This does not establish the
   built surface will match — only that the target is fixed.*
-- [ ] T502 LogsView build: stream tab (getLog first load,
+  — DONE 2026-11-02: owner block approval of the Spec 087
+  package (adoption record, 2026-11-02 ~10:39 EST) approved
+  the S5 wireframes package in the same act, ruling Q1 (a)
+  own tab and Q2 (a) ship with confirmation as recommended.
+- [x] T502 LogsView build: stream tab (getLog first load,
   SSE tail, level filter, purge behind its confirmation if
   Q2 rules (a)) + records tab (four record tables, detail
   expansion, read-only), placed per Q1's ruling; a failed
@@ -254,23 +258,52 @@ carries its gate/test output verbatim** — not a summary of it.
   (component tests per plan.md). *This does not establish
   the endpoints scale — only that the surface exists as
   approved.*
-- [ ] T503 Events-bus leg: the D2 disposition as ruled —
+  — DONE 2026-11-03: `frontend/src/components/LogsView.tsx`
+  + `streamLogLines`/`listPhaseActions` in `api.ts` + the
+  App.tsx registration (Tool home, between Jobs and Status).
+  Verification is the repo's Playwright e2e mechanism
+  (`frontend/e2e/logs.spec.ts`, 5 tests — the repo carries
+  no component-test runner; the plan's "component tests"
+  land as e2e specs per the S1 palette-error precedent).
+  Evidence: `records/stage-s5-record.md` §1, §3.
+- [x] T503 Events-bus leg: the D2 disposition as ruled —
   under (a), the documented-ephemeral statement in the
   module docstring, user-manual, and HelpView + its pinning
   test; under (b), the persistence build the amended plan
   specifies. (C087-11) Acceptance: test. *This does not
   establish the disposition is ideal — only that it is
   decided, stated, and true.*
-- [ ] T504 Playwright verification: built surface rendered
+  — DONE 2026-11-03 under ruling (a): the statement stands
+  in `backend/glossa_lab/api/events.py`'s docstring (this
+  PR) and in the user manual + HelpView (landed with S4,
+  carried unchanged here);
+  `backend/tests/test_spec087_events_doc.py` pins the
+  phrases on all three surfaces plus the no-replay and
+  drop-on-full behaviours. Evidence:
+  `records/stage-s5-record.md` §1, §4.
+- [x] T504 Playwright verification: built surface rendered
   at 1440 + 390 against the approved wireframes, served
   identity asserted first; differences named, data governs.
   (C087-10) Acceptance: test. *This does not establish the
   cloud surface — only the desktop surface the wireframes
   draw.*
-- [ ] T505 S5 stage record: Q1/Q2 rulings as built,
+  — DONE 2026-11-03: served identity asserted from
+  `/api/v1/health` (component glossa-lab-backend, build
+  stamp = branch head 2557214) on a throwaway backend;
+  four shots in `records/stage-s5-shots/`; seven differences
+  named in `records/stage-s5-record.md` §2, item 1 being
+  the purge confirmation's factual correction against the
+  endpoint (cleared is bytes; rotated backups are deleted,
+  not untouched).
+- [x] T505 S5 stage record: Q1/Q2 rulings as built,
   comparison output, manual changes named. Acceptance:
   test. *This does not establish the surface will not evolve
   — only that this restore landed as approved.*
+  — DONE 2026-11-03: `records/stage-s5-record.md`
+  (build §1, comparison §2, tests §3, claim assessments
+  §4, departures §5 incl. the branch-name note: the build
+  brief's `feat/087-s5-logs` governed over this file's
+  `feat/087-s5-logs-surface`).
 
 ## Stage S6 — Anchor-set dedupe (live DB; record PR: `records/087-s6-stage-record`)
 

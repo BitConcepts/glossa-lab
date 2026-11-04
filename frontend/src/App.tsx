@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { StatusView } from "./components/StatusView";
 import { JobsView } from "./components/JobsView";
+import { LogsView } from "./components/LogsView";
 import { SettingsView } from "./components/SettingsView";
 import { ReportsView } from "./components/ReportsView";
 import { ProjectsView } from "./components/ProjectsView";
@@ -43,14 +44,14 @@ import { CloudWorkspaceCard, UserChip, useAdminInviteCount } from "./cloud/widge
  *   program space — Home, Claims, Digestion, Evidence & sources, Data,
  *     Analysis, Experiments, Discovery, Research loop, Reports & ledger
  *     (in loop order, FR-002);
- *   tool space — Jobs, Status, Settings, Help.
+ *   tool space — Jobs, Logs (Spec 087 S5), Status, Settings, Help.
  * The shell contains no program's subject matter (FR-001/C081-1).
  * Legacy view ids resolve to the new routes at navigation time.
  */
 type Tab =
   | "programs" | "home" | "claims" | "digestion" | "evidence" | "data"
   | "analysis" | "experiments" | "system-graph" | "discovery" | "loop" | "reports"
-  | "jobs" | "status" | "settings" | "help"
+  | "jobs" | "logs" | "status" | "settings" | "help"
   // Cloud edition (Spec 083): account self-service + the admin
   // surface. These tabs exist only while a cloud session is active.
   | "account" | "admin"
@@ -102,7 +103,7 @@ const TAB_LABELS: Partial<Record<Tab, string>> = {
   programs: "Programs", home: "Home", claims: "Claims", digestion: "Digestion",
   evidence: "Evidence & sources", data: "Data", analysis: "Analysis",
   experiments: "Experiments", "system-graph": "System graph", discovery: "Discovery", loop: "Research loop",
-  reports: "Reports & ledger", jobs: "Jobs", status: "Status",
+  reports: "Reports & ledger", jobs: "Jobs", logs: "Logs", status: "Status",
   settings: "Settings", help: "Help", "foundation-check": "Foundation Check",
   account: "Account & security", admin: "Admin",
   "ai-tools": "AI Tools", builder: "Manage programs",
@@ -627,6 +628,9 @@ function AppContent() {
   const adminInviteCount = useAdminInviteCount(cloud.isAdmin);
   const toolItems: NavItem[] = [
     { id: "jobs", label: "Jobs", icon: "⚙", count: activeJobCount || undefined },
+    // Spec 087 S5 (Q1 ruling): Logs is its own entry in the Tool
+    // home group, between Jobs and Status.
+    { id: "logs", label: "Logs", icon: "≣" },
     { id: "status", label: "Status", icon: "♥" },
     { id: "settings", label: "Settings", icon: "⚙" },
     // Cloud edition (Spec 083, wireframe 07): the account entry for
@@ -974,6 +978,9 @@ function AppContent() {
                   )}
                   {tab === "reports" && <ReportsView darkMode={darkMode} />}
                   {tab === "jobs" && <JobsView />}
+                  {tab === "logs" && (
+                    <LogsView darkMode={darkMode} onNavigate={(v) => goTo(v as Tab)} />
+                  )}
                   {tab === "status" && <StatusView />}
                   {tab === "settings" && <SettingsView darkMode={darkMode} />}
                   {tab === "help" && <HelpView />}

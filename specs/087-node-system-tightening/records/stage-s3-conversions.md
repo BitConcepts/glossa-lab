@@ -754,6 +754,17 @@ path). Both sides saw the same database state: the build
 clone's local backend DB (empty CGSA tables) was copied into
 the pre worktree, and the ClusterMapper file path is absent
 in both trees, so both sides exercised the same branches.
+(Correction, 2026-11-03, appended at T701 under the parent's
+ruling of the same date: the sentence above is wrong in the
+same way PR-C's section was corrected for below — the copy
+in fact failed, because a fresh worktree has no
+`backend/data/` directory, so the pre side read ABSENT CGSA
+tables while the post side read the clone's DB whose CGSA
+tables are EMPTY (0 rows). Absent tables and empty tables
+are the same exercised state, so both sides did exercise the
+same branches and the equivalence result below is
+unaffected; the original wording stands unrewritten, and
+this note is the correction of record.)
 **27/27 graphs byte-identical pre vs post**:
 
 | graph | normalized sha256 (pre == post) |

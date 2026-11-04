@@ -274,25 +274,46 @@ carries its gate/test output verbatim** — not a summary of it.
 
 ## Stage S6 — Anchor-set dedupe (live DB; record PR: `records/087-s6-stage-record`)
 
-- [ ] T601 Grouping pass: all live anchor sets read through
+- [x] T601 Grouping pass: all live anchor sets read through
   the API; groups by (name, language, pairs content); the
   duplicate groups and kept canonicals (earliest per
   content) listed in the stage record before any deletion.
   (C087-12) Acceptance: human-as-oracle (the group list is
   reviewed before execution). *This does not establish the
   kept sets are good — only that the grouping is exact.*
-- [ ] T602 Deletions by id through
+  — DONE 2026-11-03: 104 sets read live (list + detail) into
+  a pre-deletion snapshot; canonical pairs-content hashing
+  gives 8 distinct groups of 13 identical copies each; the
+  group list was computed and saved to the plan file before
+  any deletion, and is listed in full in the stage record.
+  Evidence: `records/stage-s6-dedupe-record.md` §2–§3, §6.
+- [x] T602 Deletions by id through
   `DELETE /anchor-sets/{id}` only; any refusal stops the
   stage under D4's fallback. (C087-12) Acceptance: test
   (API responses on file per id). *This does not establish
   the endpoint is the only safe path — only that it is the
   path this stage is authorized to use.*
-- [ ] T603 Post-pass verification: distinct-content count
+  — DONE 2026-11-03: 96 of 96 deletions through the API,
+  each HTTP 200 `{"deleted": true}` and each verified absent
+  by a 404 GET immediately after; no refusal occurred, so
+  the D4 fallback was never invoked. Per-id API responses on
+  file. Evidence: `records/stage-s6-dedupe-record.md` §4, §6.
+- [x] T603 Post-pass verification: distinct-content count
   unchanged; total reduced by exactly the recorded removals;
   foundation check re-run; stage record completed with every
   removed id and its kept id. (C087-12) Acceptance: test.
   *This does not establish the surviving sets are curated —
   only that no distinct content was lost.*
+  — DONE 2026-11-03: post-pass snapshot reconciled — total
+  104 → 8 (reduction exactly the 96 recorded removals);
+  distinct (name, language, content) count 8 before = 8
+  after, identical set; every kept set byte-identical in
+  content and fields; foundation check re-run on the live
+  backend returned PASS with 0 failures (research_api
+  surface; the pre-run on-disk report of 2026-10-26 is
+  stated separately in the record and not equated). Every
+  removed id is recorded with its group's kept id.
+  Evidence: `records/stage-s6-dedupe-record.md` §4–§5.
 
 ## Closeout
 

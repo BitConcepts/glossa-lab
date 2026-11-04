@@ -133,7 +133,46 @@ def test_real_build_is_byte_deterministic():
     first = pmg.build_artifacts(_REPO)
     second = pmg.build_artifacts(_REPO)
     assert first == second
-    assert set(first) == {pmg.MAP_REL, pmg.FINDS_REL}
+    assert set(first) == {pmg.MAP_REL, pmg.FINDS_REL, pmg.PAGE_REL}
+
+
+def test_committed_page_is_template_plus_verbatim_data():
+    # Stage S4 (T401): the committed page is exactly the
+    # registered template wrapped around the committed data
+    # artifacts, embedded verbatim — extraction of the two
+    # payloads reproduces the committed JSON artifacts byte
+    # for byte, and the chrome around them is the template
+    # and nothing else. Every census number and standing on
+    # the page therefore comes from the artifacts; a number
+    # absent from them can appear only as part of the
+    # registered template (pinned byte-equal with the gate's
+    # copies by the gate battery's agreement test).
+    page = (_REPO / pmg.PAGE_REL).read_text(encoding="utf-8")
+    map_text = (_REPO / pmg.MAP_REL).read_text(encoding="utf-8")
+    finds_text = (_REPO / pmg.FINDS_REL).read_text(encoding="utf-8")
+    assert page == (
+        pmg._PAGE_HEAD + map_text + pmg._PAGE_MID + finds_text + pmg._PAGE_TAIL
+    )
+    assert (
+        page.split('id="program-map-data">\n', 1)[1].split("</script>", 1)[0]
+        == map_text
+    )
+    assert (
+        page.split('id="program-map-finds">\n', 1)[1].split("</script>", 1)[0]
+        == finds_text
+    )
+    program_map = json.loads(map_text)
+    coverage = program_map["coverage"]
+    # The census of record, present in the page (inside the
+    # verbatim data the page renders from).
+    assert f'"total": {PIN_CLAIMS}' in page
+    for domain, block in coverage["domains"].items():
+        assert f'"claims": {block["claims"]}' in page, domain
+        assert f'"studies": {block["studies"]}' in page, domain
+    assert program_map["stamp"]["ledger_sha256"] in page
+    # No external reference: the page is one self-contained
+    # file (its only script is its own rendering script).
+    assert "http://" not in page and "https://" not in page
 
 
 def test_real_build_has_no_in_flight_and_restricted_is_name_only():
@@ -206,3 +245,11 @@ def test_check_semantics_on_tmp_copy(tmp_path):
     map_path = tmp_path / pmg.MAP_REL
     map_path.write_bytes(map_path.read_bytes() + b" ")
     assert pmg.check_outputs(tmp_path) == [pmg.MAP_REL]
+    # Stage S4: --check covers the page too — a stale or
+    # hand-touched page is named as drift, exactly like the
+    # data artifacts.
+    pmg.write_outputs(tmp_path)
+    assert pmg.check_outputs(tmp_path) == []
+    page_path = tmp_path / pmg.PAGE_REL
+    page_path.write_bytes(page_path.read_bytes() + b" ")
+    assert pmg.check_outputs(tmp_path) == [pmg.PAGE_REL]

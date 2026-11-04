@@ -294,6 +294,100 @@ def test_restricted_study_renders_name_only(tmp_path, monkeypatch):
     assert program_map["nodes"]["claims"][0]["study"] == "st-open"
 
 
+# ── The page (Stage S4, T401; C088-8, C088-14, C088-19) ─────────────────────
+
+_MAP_MARKER = 'id="program-map-data">\n'
+_FINDS_MARKER = 'id="program-map-finds">\n'
+_REGISTERED_STATUSES = (
+    "strongly_supported",
+    "contradicted",
+    "unsupported",
+    "partially_falsified",
+    "superseded",
+    "draft",
+    "untested",
+    "partially_supported",
+)
+
+
+def _embedded(page: str, marker: str) -> str:
+    return page.split(marker, 1)[1].split("</script>", 1)[0]
+
+
+def test_page_embeds_the_artifacts_verbatim(tmp_path):
+    artifacts = pmg.build_artifacts(_base_root(tmp_path))
+    page = artifacts[pmg.PAGE_REL]
+    # The embedded payloads are the artifacts themselves,
+    # byte for byte — extraction reproduces them exactly.
+    assert _embedded(page, _MAP_MARKER) == artifacts[pmg.MAP_REL]
+    assert _embedded(page, _FINDS_MARKER) == artifacts[pmg.FINDS_REL]
+    # And the page is template + verbatim data, nothing else:
+    # the chrome around the payloads is the registered
+    # template, so no number or standing can enter the page
+    # from anywhere but the artifacts.
+    assert page == (
+        pmg._PAGE_HEAD
+        + artifacts[pmg.MAP_REL]
+        + pmg._PAGE_MID
+        + artifacts[pmg.FINDS_REL]
+        + pmg._PAGE_TAIL
+    )
+    # A single self-contained file: no external reference.
+    assert "http://" not in page and "https://" not in page
+
+
+def test_page_carries_the_build_census_and_no_foreign_data(tmp_path):
+    artifacts = pmg.build_artifacts(_base_root(tmp_path))
+    page = artifacts[pmg.PAGE_REL]
+    program_map = json.loads(artifacts[pmg.MAP_REL])
+    # The census the page displays is the coverage block's,
+    # carried inside the embedded data: totals, per-domain
+    # counts, and the stamp all appear.
+    coverage = program_map["coverage"]
+    assert f'"total": {coverage["claims"]["total"]}' in page
+    for block in coverage["domains"].values():
+        assert f'"claims": {block["claims"]}' in page
+        assert f'"studies": {block["studies"]}' in page
+    assert program_map["stamp"]["ledger_sha256"] in page
+    # Nothing from the real ledger leaks into a fixture
+    # build: the page is a function of its own inputs only.
+    assert "876" not in page
+    assert "yadav" not in page
+
+
+def test_page_template_carries_no_derivation():
+    """C088-8's source scan: the template (the only part of
+    the page that is not embedded data) holds no standing
+    logic — none of the registered ledger statuses, no
+    derivation table, no standing template. The script
+    filters and searches generated fields; the statuses it
+    never sees cannot be re-derived by it."""
+    template = pmg._PAGE_HEAD + pmg._PAGE_MID + pmg._PAGE_TAIL
+    for status in _REGISTERED_STATUSES:
+        assert status not in template
+    assert "Ledger standing: status" not in template
+    assert "STATUS_TO_CLASS" not in template
+    # The class filter vocabulary is the registered one
+    # (plan Stage 4): the page offers exactly these filters.
+    for label in (
+        "All",
+        "Positive",
+        "Negative",
+        "Open",
+        "In flight",
+        "Closed",
+        "Unjudged",
+    ):
+        assert label in pmg._PAGE_TAIL
+
+
+def test_page_embedding_guard_refuses_a_script_close():
+    with pytest.raises(pmg.ProgramMapBuildError, match="script-close"):
+        pmg._render_page('{"x": "</script>"}', "{}")
+    with pytest.raises(pmg.ProgramMapBuildError, match="script-close"):
+        pmg._render_page("{}", '{"x": "</SCRIPT>"}')
+
+
 # ── Determinism + stamp (C088-13) ────────────────────────────────────────────
 
 
@@ -329,6 +423,7 @@ def _assert_refused_and_nothing_written(root: Path, match: str):
         pmg.write_outputs(root)
     assert not (root / pmg.MAP_REL).exists()
     assert not (root / pmg.FINDS_REL).exists()
+    assert not (root / pmg.PAGE_REL).exists()
 
 
 def test_unassigned_spec_directory_fails(tmp_path):

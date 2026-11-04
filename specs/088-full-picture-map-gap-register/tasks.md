@@ -28,7 +28,7 @@ into its stage report.
   package verification of record stands (19/19 claim ids
   identical across claims.md and aee-claims.json; every
   claim carries a falsifier and a DNE line).
-- [ ] **T002 — AEE verification of the claims.** The C088 bundle run
+- [x] **T002 — AEE verification of the claims.** The C088 bundle run
   through the pinned assessor (aee 1.5.3, CI-faithful venv), exactly as
   Spec 087's T002: `aee validate` → `valid: 19 claim(s)`; `aee assess
   --no-ledger` → **outcome: iterate** (80 failure modes; draft cap and
@@ -44,6 +44,10 @@ into its stage report.
   `aee assess --no-ledger` → **outcome: iterate**, 80
   failure modes, recorded verbatim in `records/t002-note.md`
   with the assessment at `records/t002-aee-assessment.json`.
+  **Closeout correction 2026-11-04 (T701):** the S6 stage
+  recorded this completion but left the box unticked; the
+  box is flipped at closeout against the evidence of record
+  above. No work was re-executed.
 - [x] **T003 — Owner block approval.** The owner ratifies the package as
   a block: spec, 19 claims, plan, the taxonomy v0 draft
   (`records/taxonomy-v0-draft.md`), and decisions D-088-1..6 (including
@@ -435,7 +439,7 @@ into its stage report.
   deduplication analysis is in the register's census
   section). Drafting review: every scan find is in an
   entry — script-verified 35/35 with kinds matching.
-- [ ] **T602 — Completeness check against the source lists.** The
+- [x] **T602 — Completeness check against the source lists.** The
   source-coverage annex: every C088-11 source-list item mapped to entry
   id(s) or a recorded not-a-gap disposition. Mechanical legs (find-list
   items, the 28 unjudged studies, the 9 null-falsifier claims) checked by
@@ -460,7 +464,11 @@ into its stage report.
   represented in an entry or carries a recorded not-a-gap
   disposition with its reason; no unmapped item, so
   C088-11's falsifier does not fire.
-- [ ] **T603 — Owner block ratification of register v1.** The owner
+  **Closeout correction 2026-11-04 (T701):** as T002 — the
+  S6 stage recorded this completion but left the box
+  unticked; flipped at closeout against the annex evidence
+  of record. No work was re-executed.
+- [x] **T603 — Owner block ratification of register v1.** The owner
   ratifies the register as a block (entries, ranking, dispositions, and
   the owner-decisions section). This act ends the spec; first waves are
   commissioned separately, from the ratified register, by a later owner
@@ -474,10 +482,19 @@ into its stage report.
   stands PENDING in `glossa-indus/map/gap-register.md`).
   It is the only task besides T701 left unticked, and it
   cannot be executed by a build stage.
+  **Completed 2026-11-04:** ratified as a block by
+  Tristen Pierson (option tap, "Ratify register v1 as a
+  block", with confirming words, in the Glossa-Lab chat)
+  — entries, ranking, dispositions, and the
+  owner-decisions section, with GR-088-26 standing as a
+  ratified entry (no strike recorded). The register's
+  Ratification block is completed in the closeout PR.
+  Record:
+  `records/register-ratification-2026-11-04.md`.
 
 ## Closeout
 
-- [ ] **T701 — Closeout record.** Per-claim dispositions for C088-1..19
+- [x] **T701 — Closeout record.** Per-claim dispositions for C088-1..19
   (discharged / carried, with the evidence pointer for each); the final
   census quoted from the coverage block; the register's entry count and
   ratification reference; the explicit statement that no wave is
@@ -491,3 +508,12 @@ into its stage report.
   closeout requires the ratification reference, which
   exists only after T603; T701 follows T603 in the
   closeout act.
+  **Completed 2026-11-04:** the closeout record is
+  `records/stage-t701-closeout-record.md` — per-claim
+  dispositions for C088-1..19 (all discharged, with
+  evidence pointers and scope notes), the final census,
+  the register's ratification reference (T603 above),
+  and the explicit statement that no wave is commissioned
+  by this spec and no claim's standing was changed by
+  it. With this tick, tasks.md carries zero unticked
+  tasks (verified mechanically at closeout).

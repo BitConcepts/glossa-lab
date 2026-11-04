@@ -2080,3 +2080,42 @@ proof is pre vs post within this PR, and it holds 27/27.
   it was installed into the venv (1.28.2) for the F13
   fixtures. CI installs it from pyproject, so this is a
   local-environment note, not a code change.
+- **Repair, post-delivery (2026-11-03): the departure above
+  is wrong about CI, and PR #499's first CI run proved it.**
+  CI run `41753678570` attempt 1 failed only on the Backend
+  tests job (1 failed, 2,337 passed, 83 skipped before
+  pytest -x stopped the run):
+  `test_spec087_s3_conversions_f.py::test_converted_node_replays_prechange_output[f13_run_basic]`
+  raised `ModuleNotFoundError: No module named 'fitz'` at
+  the test's own run-time PDF generation (`import fitz` in
+  `_run_case`). The mechanism: `pymupdf>=1.24,<2` is
+  declared under pyproject's `ocr` optional extra, and CI
+  installs only `.[dev]`, so CI has no PyMuPDF. Generating
+  the PDF in the test was only half the dependence: the
+  node's own lazy `import fitz` returns its error dict
+  without the library, so no test-side PDF could ever have
+  replayed the pinned success outputs in CI. Repair (this
+  PR, repair commit): the two-page PDF is now committed as
+  base64 in each ocr_run case's fixture setup (`pdf_b64`,
+  with its page count as `pdf_pages`), produced with the
+  exact pre-repair run-time recipe; the harness materializes
+  it in tmp_path and, only where `import fitz` fails,
+  installs a minimal stand-in `fitz` module supplying
+  exactly the surface the node uses (open -> page_count /
+  load_page -> get_pixmap -> tobytes). The pixmap bytes
+  feed only the data URI handed to the already-stubbed
+  vision call, which ignores it, so the pinned expected
+  outputs are unchanged and are checked byte-identically in
+  both environments; where fitz IS present, the harness
+  asserts the committed PDF's real page count equals
+  `pdf_pages`. No case was skipped or weakened. The audit
+  of the PR-F test file found no other fitz dependence (the
+  f13_cm_* cases' parser path contains no fitz) and no
+  other uncommitted-file dependency. Proofs: the
+  conversions_f suite is green with fitz verifiably blocked
+  (a sitecustomize setting `sys.modules["fitz"] = None`;
+  the environment check raises ModuleNotFoundError; 76
+  passed, with the five f13_run* cases also run named: 5
+  passed) and green normally (76 passed); the full Spec 087
+  targeted set is green (298 passed); ruff is clean on
+  `backend/`.

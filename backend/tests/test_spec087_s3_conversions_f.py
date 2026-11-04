@@ -22,10 +22,15 @@ Setup kinds:
                    repo; the absence case is kind "plain" and asserts
                    the path does not exist).
   ocr_run        — glossa_lab.ai_utils.call_llm_vision is stubbed
-                   with the case's pinned transcript; a two-page PDF
-                   is generated in a tmp dir; tmp-dir and repo-root
-                   path strings in the result are normalized before
-                   comparison.
+                   with the case's pinned transcript; the case's
+                   committed two-page PDF (base64 in the fixture as
+                   pdf_b64, its page count as pdf_pages) is
+                   materialized in a tmp dir; where PyMuPDF cannot be
+                   imported (CI installs only the dev extra; pymupdf
+                   is declared under the ocr extra) a stand-in fitz
+                   module supplies the node's page mechanics; tmp-dir
+                   and repo-root path strings in the result are
+                   normalized before comparison.
   kalyan_files   — the kalyanaraman module's lexicon/anchors path
                    constants are pointed at the case's fixture files.
 
@@ -124,6 +129,50 @@ def _norm_paths(obj, replacements):
     return obj
 
 
+class _StandInPixmap:
+    def tobytes(self, fmt):
+        # A minimal PNG header. The bytes never reach the comparison:
+        # they only fill the data URI handed to the stubbed vision
+        # call, which ignores it.
+        return b"\x89PNG\r\n\x1a\n"
+
+
+class _StandInPage:
+    def get_pixmap(self, dpi=None):
+        return _StandInPixmap()
+
+
+class _StandInDoc:
+    def __init__(self, page_count):
+        self.page_count = page_count
+
+    def load_page(self, index):
+        if not 0 <= index < self.page_count:
+            raise IndexError(index)
+        return _StandInPage()
+
+
+def _fitz_stand_in(page_count):
+    """A minimal `fitz` module stand-in for PyMuPDF-free environments.
+
+    Supplies exactly the surface VisionOCRNode uses (open ->
+    page_count / load_page -> get_pixmap -> tobytes). The harness
+    installs it only when the real PyMuPDF cannot be imported: CI
+    installs only the dev extra, and pymupdf is declared under
+    pyproject's ocr extra, so CI has no fitz — the node's own lazy
+    import would return its error dict and the ocr_run cases could
+    not replay their pinned outputs there.
+    """
+    import types
+
+    def _open(path):
+        return _StandInDoc(page_count)
+
+    module = types.ModuleType("fitz")
+    module.open = _open
+    return module
+
+
 def _run_case(case, monkeypatch, tmp_path):
     fn = eg.ATOMIC_NODES[case["node"]].fn
     setup = case["setup"]
@@ -167,17 +216,26 @@ def _run_case(case, monkeypatch, tmp_path):
         root = str(Path(eg.__file__).resolve().parent.parent.parent)
         return _norm_paths(result, [(root, "<ROOT>")])
     if kind == "ocr_run":
-        import fitz
+        import base64
+        import sys
 
         from glossa_lab import ai_utils
 
         pdf = tmp_path / "catalog.pdf"
-        doc = fitz.open()
-        for i in range(2):
-            page = doc.new_page()
-            page.insert_text((72, 72), f"synthetic page {i + 1}")
-        doc.save(str(pdf))
-        doc.close()
+        pdf.write_bytes(base64.b64decode(setup["pdf_b64"]))
+        try:
+            import fitz
+        except ImportError:
+            fitz = None
+        if fitz is not None:
+            # Fixture self-check: the committed PDF's real page count
+            # and the pinned count the stand-in would report agree.
+            doc = fitz.open(str(pdf))
+            assert doc.page_count == setup["pdf_pages"]
+            doc.close()
+        else:
+            monkeypatch.setitem(
+                sys.modules, "fitz", _fitz_stand_in(setup["pdf_pages"]))
         params = {
             k: (v.replace("{TMP}", str(tmp_path)) if isinstance(v, str) else v)
             for k, v in case["params"].items()

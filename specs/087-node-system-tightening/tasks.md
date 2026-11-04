@@ -172,6 +172,16 @@ carries its gate/test output verbatim** — not a summary of it.
   decision needs are in records/stage-s3-conversions.md
   ("M77 corpus-pipeline unification — Step 0 divergence
   check: STOP"). No code changed under this item.
+  Fallback-retirement leg (reconciled at T701): the Step 0
+  record's fallback question was answered by the owner on
+  2026-11-03 and executed as PR #493 (merge `16f61755`) —
+  the silent Holdat fallback in the PR-A JsonCorpusLoader
+  engine retired (Holdat served only on explicit
+  `source="holdat"`); record:
+  records/stage-s3-m77-fallback-retirement.md, reconciled
+  into records/stage-s3-conversions.md at T701. A behaviour
+  change to a converted node's engine, not a conversion; no
+  S3 count moved.
 - [ ] T304 Re-expression PRs (disposition (b)): consuming
   experiments rebuilt as compositions of existing
   primitives; C087-13 comparison runs re-proved per PR.

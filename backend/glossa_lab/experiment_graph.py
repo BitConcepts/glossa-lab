@@ -43,20 +43,28 @@ from glossa_lab.generic_primitives import (
     anchor_syllabifier_execute,
     association_anchor_deriver_execute,
     cluster_contingency_profile_execute,
+    evidence_rule_aggregator_execute,
     iconographic_anchor_scorer_execute,
+    interaction_surplus_profile_execute,
     label_map_applier_execute,
     length_match_permutation_test_execute,
     length_match_scorer_execute,
+    metric_field_extractor_execute,
+    order_information_profile_execute,
     persons_aggregator_execute,
     phoneme_map_coverage_execute,
     phoneme_map_permutation_test_execute,
     pmi_centrality_ranker_execute,
+    positional_class_classifier_execute,
     registry_table_loader_execute,
     reverse_skeleton_search_execute,
+    sign_position_null_test_execute,
+    signature_comparator_execute,
     sign_role_classifier_execute,
     skeleton_tablet_search_execute,
     stratified_permutation_test_execute,
     template_miner_execute,
+    token_context_association_execute,
     value_role_map_source_execute,
 )
 
@@ -2322,6 +2330,165 @@ for _d in [
             "persons_spec":{"type":"object","title":"Persons Spec",
                             "description":"Input port key, collected field sets, known-name rule (set / upstream flag / none), example-line limit, output plan (count key names, row lists, by-pattern), verdict template."}}},
         fn=persons_aggregator_execute),
+    AtomicNodeDef("InteractionSurplusProfile","Interaction Surplus Profile","Analysis",
+        "Profile higher-order n-gram interactions beyond independence "
+        "(Spec 087 S3): bigram PMI and trigram surplus over the "
+        "pairwise baseline, counted significant at or above a "
+        "spec-carried cut in nats. The Phase-14 "
+        "EpistaticInteractionDetector delegates to this engine.",
+        inputs=[{"name":"sequences","type":"json","required":True}],
+        outputs=[{"name":"label","type":"text"},{"name":"bigrams","type":"json"},
+                 {"name":"trigrams","type":"json"},
+                 {"name":"n_significant_bigrams","type":"number"},
+                 {"name":"n_significant_trigrams","type":"number"},
+                 {"name":"n_total_bigrams_examined","type":"number"},
+                 {"name":"n_total_trigrams_examined","type":"number"},
+                 {"name":"verdict","type":"text"},{"name":"json","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "min_count_2":{"type":"integer","title":"Min Bigram Count","default":5,"minimum":2},
+            "min_count_3":{"type":"integer","title":"Min Trigram Count","default":3,"minimum":2},
+            "top_k":{"type":"integer","title":"Top K","default":25,"minimum":5},
+            "label":{"type":"string","title":"Label","default":"unknown"},
+            "profile_spec":{"type":"object","title":"Profile Spec",
+                            "description":"Significance cut in nats for the bigram/trigram surplus counts."}}},
+        fn=interaction_surplus_profile_execute),
+    AtomicNodeDef("OrderInformationProfile","Order Information Profile","Analysis",
+        "Decompose corpus information by interaction order (Spec 087 "
+        "S3): per-symbol block entropies and their successive "
+        "differences, with the regime classification carried as an "
+        "ordered rule table over the order-fraction ratios. The "
+        "Phase-14 EpistaticOrderProfile delegates to this engine.",
+        inputs=[{"name":"sequences","type":"json","required":True}],
+        outputs=[{"name":"label","type":"text"},{"name":"orders","type":"json"},
+                 {"name":"per_symbol_entropy","type":"json"},
+                 {"name":"regime","type":"text"},
+                 {"name":"f2_over_f1","type":"number"},{"name":"f3_over_f2","type":"number"},
+                 {"name":"verdict","type":"text"},{"name":"json","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "max_order":{"type":"integer","title":"Max Order","default":4,"minimum":2},
+            "label":{"type":"string","title":"Label","default":"unknown"},
+            "profile_spec":{"type":"object","title":"Profile Spec",
+                            "description":"Ordered regime rules ([metric, op, threshold] conditions over f2_over_f1 / f3_over_f2) and the fallback regime."}}},
+        fn=order_information_profile_execute),
+    AtomicNodeDef("TokenContextAssociation","Token-Context Association","Analysis",
+        "Permutation-tested association between tokens and a metadata "
+        "context field (Spec 087 S3): the significance cut, the "
+        "strong-verdict minimum, and the optional length binning are "
+        "spec data. The Phase-14 SignContextAssociation delegates to "
+        "this engine.",
+        inputs=[{"name":"sequences","type":"json","required":True},
+                {"name":"metadata","type":"json","required":True}],
+        outputs=[{"name":"associations","type":"json"},{"name":"n_significant","type":"number"},
+                 {"name":"n_total_pairs","type":"number"},{"name":"field","type":"text"},
+                 {"name":"verdict","type":"text"},{"name":"json","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "field":{"type":"string","title":"Context Field","default":"type"},
+            "n_perm":{"type":"integer","title":"Permutations","default":8,"minimum":2},
+            "seed":{"type":"integer","title":"Seed","default":11},
+            "min_count":{"type":"integer","title":"Min Pair Count","default":5,"minimum":1},
+            "top_k":{"type":"integer","title":"Top K","default":30,"minimum":1},
+            "association_spec":{"type":"object","title":"Association Spec",
+                                "description":"Significance cut, strong-verdict minimum, verdict templates, and the length binning (binned field, source field, [bound, name] bins, default bin)."}}},
+        fn=token_context_association_execute),
+    AtomicNodeDef("MetricFieldExtractor","Metric Field Extractor","Transforms",
+        "Extract a flat metric vector from wired analysis bundles "
+        "(Spec 087 S3): the renaming table is a field_map parameter — "
+        "an ordered list of extraction entries (a field of an input "
+        "dict, the first row's field of a carried list, the field of "
+        "the list row whose n equals a carried value, or the field "
+        "of a list row at an index), each with a default. The "
+        "Phase-14 DoFExtractor delegates to this engine, gaining its "
+        "parameter surface from the map.",
+        inputs=[{"name":"block_entropies","type":"json","required":False},
+                {"name":"zipf","type":"json","required":False},
+                {"name":"mi_decay","type":"json","required":False},
+                {"name":"hed","type":"json","required":False}],
+        outputs=[{"name":"dof_values","type":"json"},{"name":"n_dofs","type":"number"}],
+        params_schema={"type":"object","properties":{
+            "field_map":{"type":"array","title":"Field Map","default":[],
+                         "description":"Ordered extraction entries: {out, kind, input, field/list_key/n/index, default}."}}},
+        fn=metric_field_extractor_execute),
+    AtomicNodeDef("SignatureComparator","Signature Comparator","Analysis",
+        "Rank candidate corpora by closeness to language vs negative "
+        "signature templates (Spec 087 S3): the candidate tag and "
+        "marker, the negative-tag set, and the verdict margin are "
+        "spec data. The Phase-14 LanguageSignatureComparator "
+        "delegates to this engine.",
+        inputs=[{"name":"a","type":"json","required":False},
+                {"name":"b","type":"json","required":False},
+                {"name":"c","type":"json","required":False},
+                {"name":"d","type":"json","required":False},
+                {"name":"e","type":"json","required":False},
+                {"name":"f","type":"json","required":False}],
+        outputs=[{"name":"ranked","type":"json"},{"name":"language_template","type":"json"},
+                 {"name":"verdict","type":"text"},{"name":"json","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "target_label":{"type":"string","title":"Target Label","default":""},
+            "comparator_spec":{"type":"object","title":"Comparator Spec",
+                               "description":"Candidate tag and marker substrings, the negative-tag set, the verdict margin, the feature keys, and the verdict templates."}}},
+        fn=signature_comparator_execute),
+    AtomicNodeDef("EvidenceRuleAggregator","Evidence Rule Aggregator","Analysis",
+        "Aggregate independent diagnostic verdicts into one judgement "
+        "(Spec 087 S3): the evidence rule table (range_pair, "
+        "field_equals, list_fraction_checks, success_threshold), "
+        "the language score threshold, the confidence threshold, "
+        "and the verdict templates are spec data. The Phase-14 "
+        "LanguageDetectorVerdict delegates to this engine.",
+        inputs=[{"name":"zipf","type":"json","required":False},
+                {"name":"conditional_entropy","type":"json","required":False},
+                {"name":"mi_decay","type":"json","required":False},
+                {"name":"hed","type":"json","required":False},
+                {"name":"cas_projection","type":"json","required":False}],
+        outputs=[{"name":"is_language","type":"json"},{"name":"confidence","type":"number"},
+                 {"name":"score","type":"number"},{"name":"evidence_for","type":"json"},
+                 {"name":"evidence_against","type":"json"},
+                 {"name":"verdict","type":"text"},{"name":"json","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "cas_violation_low":{"type":"number","title":"CAS Violation Low","default":0.1},
+            "cas_violation_high":{"type":"number","title":"CAS Violation High","default":1.0},
+            "aggregator_spec":{"type":"object","title":"Aggregator Spec",
+                                "description":"Ordered evidence rules, language score threshold, confidence threshold, and the three verdict templates."}}},
+        fn=evidence_rule_aggregator_execute),
+    AtomicNodeDef("PositionalClassClassifier","Positional Class Classifier","Analysis",
+        "Classify signs by their within-sequence position profile "
+        "(Spec 087 S3): the class label set, the ordered "
+        "dominant-position rules, and the verdict template are spec "
+        "data; the classification thresholds stay plain params. The "
+        "Phase-20 FulsPositionalClassifier delegates to this engine.",
+        inputs=[{"name":"sequences","type":"json","required":True}],
+        outputs=[{"name":"table","type":"json"},{"name":"counts_by_class","type":"json"},
+                 {"name":"fractions_by_class","type":"json"},
+                 {"name":"n_signs_classified","type":"number"},
+                 {"name":"verdict","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "min_count":{"type":"integer","title":"Min Count","default":5,"minimum":1},
+            "dom_threshold":{"type":"number","title":"Dominance Threshold","default":0.55},
+            "secondary_threshold":{"type":"number","title":"Secondary Threshold","default":0.30},
+            "numerical_rr":{"type":"number","title":"Numerical Repeat Rate","default":0.20},
+            "classifier_spec":{"type":"object","title":"Classifier Spec",
+                               "description":"Class label set, ordered position-class rules (label key + dominant position), and the verdict template."}}},
+        fn=positional_class_classifier_execute),
+    AtomicNodeDef("SignPositionNullTest","Sign Position Null Test","Analysis",
+        "Test a sign's positional bias against a shuffle null (Spec "
+        "087 S3): the observed position-class rate is compared "
+        "against shuffled re-deals of every sequence, and the "
+        "z-score maps to a verdict through a spec-carried band "
+        "table. Sequence-shaped by design — it does not reuse the "
+        "score-shaped PermutationTest. The Indus-evidence "
+        "IndusNullModelTest delegates to this engine.",
+        inputs=[{"name":"sequences","type":"json","required":True}],
+        outputs=[{"name":"z_score","type":"number"},
+                 {"name":"p_approx","type":"number"},
+                 {"name":"verdict","type":"text"},{"name":"json","type":"json"},
+                 {"name":"text","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "target_sign":{"type":"string","title":"Target Sign","default":""},
+            "test_type":{"type":"string","title":"Position Class","default":"initial"},
+            "n_null_runs":{"type":"integer","title":"Null Runs","default":1000,"minimum":1},
+            "random_seed":{"type":"integer","title":"Random Seed","default":42},
+            "null_spec":{"type":"object","title":"Null Spec",
+                         "description":"Ordered [|z| threshold, verdict] bands and the fallback verdict."}}},
+        fn=sign_position_null_test_execute),
     AtomicNodeDef("FreqCounter","Frequency Counter","Transforms",
         "Count symbol occurrences across all sequences.",
         inputs=[{"name":"sequences","type":"sequences","required":True}],

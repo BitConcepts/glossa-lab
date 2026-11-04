@@ -1,7 +1,7 @@
 """Generic graph-node machinery (Spec 087 S3, families F3 + F8,
-F4 + F5, and F7 + F6).
+F4 + F5, F7 + F6, and F9).
 
-Eighteen spec/parameter-driven engines back the generic
+Twenty-six spec/parameter-driven engines back the generic
 primitives registered in experiment_graph.py: RegistryTableLoader,
 LabelMapApplier, TemplateMiner, ClusterContingencyProfile,
 SignRoleClassifier, ValueRoleMapSource, AnchorSyllabifier,
@@ -10,7 +10,11 @@ IconographicAnchorScorer, PhonemeMapCoverage,
 PhonemeMapPermutationTest, LengthMatchScorer,
 LengthMatchPermutationTest, and StratifiedPermutationTest
 (PR-C), plus SkeletonTabletSearch, ReverseSkeletonSearch, and
-PersonsAggregator (PR-D). The domain nodes converted in Spec
+PersonsAggregator (PR-D), plus InteractionSurplusProfile,
+OrderInformationProfile, TokenContextAssociation,
+MetricFieldExtractor, SignatureComparator,
+EvidenceRuleAggregator, PositionalClassClassifier, and
+SignPositionNullTest (PR-E). The domain nodes converted in Spec
 087 S3 PR-B (CanonicalSignLoader, ClusterMapper,
 StructuralTemplateAnalyzer, ClusterArchaeology,
 IndusSignRoleClassifier, DefaultIndusValueRoleMap,
@@ -20,12 +24,16 @@ BlindHeldOutTest, BayesianDecoder, BayesianDecoderV2,
 EnhancedNameMatcher, EnhancedNameMatcherV2, MeluhhaNameMatcher,
 BilingualReadoutTest, BilingualReadoutTestV2,
 PeriodStratifiedReadout, PeriodStratifiedReadout6Bucket,
-ProvenienceStratifiedReadout), and PR-D
+ProvenienceStratifiedReadout), PR-D
 (JanabiyahPhoneticReadout, JanabiyahPhoneticReadoutV2,
 ReverseJanabiyahSearch, ReverseJanabiyahSearchV2,
 M77ReverseJanabiyahSearchV3, LengthCohortReverseJanabiyahSearch,
 MeluhhanPersonsExtractor, RefinedMeluhhanPersonsExtractor,
-RefinedMeluhhanPersonsExtractorV2, Persons_v3_Extractor) keep
+RefinedMeluhhanPersonsExtractorV2, Persons_v3_Extractor), and
+PR-E (EpistaticInteractionDetector, EpistaticOrderProfile,
+SignContextAssociation, DoFExtractor,
+LanguageSignatureComparator, LanguageDetectorVerdict,
+FulsPositionalClassifier, IndusNullModelTest) keep
 their registered ids and parameter schemas; their
 implementations delegate here with the domain content — table
 names, file paths, numeral sets, value-role tables, diacritic
@@ -142,6 +150,49 @@ Engine parameter surfaces:
     (none / a character cap), and the output plan (count key
     names, the full row list, the by-pattern distribution)
     with the verdict template.
+  InteractionSurplusProfile (params["profile_spec"]): the
+    PMI-surplus significance cut for the bigram and trigram
+    counts; min counts, top_k, and label stay plain params.
+  OrderInformationProfile (params["profile_spec"]): the
+    regime rule table — an ordered list of rules, each a
+    regime name plus [metric, operator, threshold] conditions
+    over the order-fraction ratios (f2_over_f1, f3_over_f2) —
+    and the fallback regime when no rule matches.
+  TokenContextAssociation (params["association_spec"]): the
+    significance cut and the strong-verdict minimum, plus the
+    optional length binning (the binned field name, its
+    source field, the ordered [bound, name] bins, and the
+    default bin); field, n_perm, seed, min_count, and top_k
+    stay plain params.
+  MetricFieldExtractor (params["field_map"]): an ordered
+    list of extraction entries — each names an output key
+    and a read (a field of an input dict, the first row's
+    field of a carried list, the field of the list row whose
+    n equals a carried value, or the field of a list row at
+    an index), with a default. The node that delegates here
+    gains its parameter surface from this list.
+  SignatureComparator (params["comparator_spec"]): the
+    candidate tag and candidate marker (substrings that mark
+    a bundle as the candidate), the negative-tag set, and
+    the verdict margin; target_label stays a plain param.
+  EvidenceRuleAggregator (params["aggregator_spec"]): the
+    evidence rule table (ordered rules of kinds range_pair,
+    field_equals, list_fraction_checks, success_threshold —
+    each producing a formatted evidence line on the for or
+    against side), the language score threshold, the
+    confidence threshold, and the three verdict templates.
+    The CAS thresholds stay plain params named by the
+    success_threshold rule.
+  PositionalClassClassifier (params["classifier_spec"]):
+    the class label set, the ordered position-class rules
+    (a dominant position whose rate must reach the dominance
+    threshold while the other positions stay under the
+    secondary threshold), and the verdict template; the
+    thresholds themselves stay plain params.
+  SignPositionNullTest (params["null_spec"]): the z-verdict
+    bands (ordered [|z| threshold, verdict] pairs) and the
+    fallback verdict; target sign, test type, run count, and
+    seed stay plain params.
 """
 from __future__ import annotations
 
@@ -2846,3 +2897,898 @@ def persons_aggregator_execute(inputs: dict, params: dict) -> dict:
         by_pattern=by_pattern,
     )
     return out
+
+
+# ── Shared helper for the F9 profile engines ─────────────────────────────────
+
+
+def _entropy_from_counts(counts: Counter) -> float:
+    """Plain MLE Shannon entropy in nats of a count distribution."""
+    total = sum(counts.values())
+    if total <= 0:
+        return 0.0
+    h = 0.0
+    for v in counts.values():
+        if v <= 0:
+            continue
+        p = v / total
+        h -= p * math.log(p)
+    return h
+
+
+# ── InteractionSurplusProfile ────────────────────────────────────────────────
+
+
+def interaction_surplus_profile_execute(inputs: dict, params: dict) -> dict:
+    """Profile higher-order n-gram interactions beyond independence.
+
+    Generalised from the Phase-14 EpistaticInteractionDetector.
+    For each frequent bigram the score is its PMI (by construction
+    the surplus over independence); for each frequent trigram the
+    score is the interaction information beyond the pairwise
+    baseline, log P(a,b,c) - log[P(a,b) * P(c)]. Scores at or
+    above the spec's significance cut are counted as significant.
+    The cut is the only fixed content, and it is spec data
+    (params["profile_spec"]["significance_cut"], default 2.0
+    nats); min counts, top_k, and the label stay plain params.
+    """
+    spec: dict[str, Any] = params.get("profile_spec") or {}
+    cut = float(spec.get("significance_cut", 2.0))
+    sequences: list[list[str]] = inputs.get("sequences") or []
+    min_count_2 = max(2, int(params.get("min_count_2", 5)))
+    min_count_3 = max(2, int(params.get("min_count_3", 3)))
+    top_k = max(5, int(params.get("top_k", 25)))
+    label = str(params.get("label", "unknown"))
+
+    if not sequences:
+        return {"label": label, "bigrams": [], "trigrams": [],
+                "verdict": "Empty corpus."}
+
+    uni = _ngram_counts(sequences, 1)
+    bi = _ngram_counts(sequences, 2)
+    tri = _ngram_counts(sequences, 3)
+    n_uni = sum(uni.values()) or 1
+    n_bi = sum(bi.values()) or 1
+    n_tri = sum(tri.values()) or 1
+
+    bigrams: list[dict] = []
+    for (a, b), c in bi.items():
+        if c < min_count_2:
+            continue
+        p_a = uni[(a,)] / n_uni
+        p_b = uni[(b,)] / n_uni
+        p_ab = c / n_bi
+        if p_a <= 0 or p_b <= 0:
+            continue
+        pmi = math.log(p_ab / (p_a * p_b))
+        bigrams.append({"a": a, "b": b, "count": c,
+                        "pmi": round(pmi, 4)})
+
+    trigrams: list[dict] = []
+    for (a, b, c), n in tri.items():
+        if n < min_count_3:
+            continue
+        p_ab = bi[(a, b)] / n_bi if (a, b) in bi else 0.0
+        p_c = uni[(c,)] / n_uni
+        p_abc = n / n_tri
+        if p_ab <= 0 or p_c <= 0 or p_abc <= 0:
+            continue
+        surplus = math.log(p_abc / (p_ab * p_c))
+        trigrams.append({"a": a, "b": b, "c": c, "count": n,
+                         "surplus_3rd": round(surplus, 4)})
+
+    bigrams.sort(key=lambda r: -r["pmi"])
+    trigrams.sort(key=lambda r: -r["surplus_3rd"])
+
+    n_significant_2 = sum(1 for r in bigrams if r["pmi"] >= cut)
+    n_significant_3 = sum(1 for r in trigrams if r["surplus_3rd"] >= cut)
+
+    return {
+        "label": label,
+        "bigrams": bigrams[:top_k],
+        "trigrams": trigrams[:top_k],
+        "n_significant_bigrams": n_significant_2,
+        "n_significant_trigrams": n_significant_3,
+        "n_total_bigrams_examined": len(bigrams),
+        "n_total_trigrams_examined": len(trigrams),
+        "verdict": (
+            f"{label}: {n_significant_2} bigrams + {n_significant_3} trigrams "
+            f"with surplus >= {cut} nats."
+        ),
+        "json": {
+            "label": label,
+            "n_significant_2nd": n_significant_2,
+            "n_significant_3rd": n_significant_3,
+            "top_bigrams": bigrams[:10],
+            "top_trigrams": trigrams[:10],
+        },
+    }
+
+
+# ── OrderInformationProfile ──────────────────────────────────────────────────
+
+
+def _rule_matches(metrics: dict[str, float], conditions: list) -> bool:
+    for metric, op, threshold in conditions:
+        value = metrics.get(metric, 0.0)
+        if op == ">=" and not value >= float(threshold):
+            return False
+        if op == "<" and not value < float(threshold):
+            return False
+        if op == ">" and not value > float(threshold):
+            return False
+        if op == "<=" and not value <= float(threshold):
+            return False
+    return True
+
+
+def order_information_profile_execute(inputs: dict, params: dict) -> dict:
+    """Decompose corpus information by interaction order (HED).
+
+    Generalised from the Phase-14 EpistaticOrderProfile. The
+    decomposition is fixed mechanism: per-symbol block entropies
+    H(n)/n, successive differences as the order contributions,
+    the unigram skew (H_max - H(1)) prepended as order 1. The
+    regime classification is a rule table carried as spec data
+    (params["profile_spec"]["regime_rules"]: an ordered list of
+    {"regime", "conditions": [[metric, op, threshold], ...]}
+    over the metrics f2_over_f1 and f3_over_f2, first match
+    wins; "fallback_regime" names the regime when no rule
+    matches). max_order and the label stay plain params.
+    """
+    spec: dict[str, Any] = params.get("profile_spec") or {}
+    rules: list = spec.get("regime_rules") or []
+    fallback = str(spec.get("fallback_regime", "ambiguous"))
+    sequences: list[list[str]] = inputs.get("sequences") or []
+    max_order = max(2, int(params.get("max_order", 4)))
+    label = str(params.get("label", "unknown"))
+
+    if not sequences:
+        return {"label": label, "orders": [], "verdict": "Empty corpus."}
+
+    flat = [s for seq in sequences for s in seq]
+    n_symbols = len(set(flat))
+    h_max = math.log(n_symbols) if n_symbols > 1 else 1.0
+
+    per_symbol: list[float] = []
+    for n in range(1, max_order + 2):
+        ngrams = _ngram_counts(sequences, n)
+        h = _entropy_from_counts(ngrams)
+        per_symbol.append(h / n if n > 0 else 0.0)
+
+    orders: list[dict] = []
+    total = 0.0
+    contribs: list[float] = []
+    for k in range(1, max_order + 1):
+        prev = per_symbol[k - 1] if k - 1 < len(per_symbol) else 0.0
+        cur = per_symbol[k] if k < len(per_symbol) else 0.0
+        d = max(0.0, prev - cur)
+        contribs.append(d)
+        total += d
+
+    base = h_max - per_symbol[0]
+    contribs = [base] + contribs
+    total += base
+
+    for k, c in enumerate(contribs):
+        orders.append({
+            "order": k + 1,
+            "info_nats": round(c, 4),
+            "fraction_of_total": round(c / total, 4) if total > 0 else 0.0,
+        })
+
+    f2_over_f1 = orders[1]["fraction_of_total"] / max(1e-9, orders[0]["fraction_of_total"])
+    f3_over_f2 = (
+        orders[2]["fraction_of_total"] / max(1e-9, orders[1]["fraction_of_total"])
+        if len(orders) > 2 else 0.0
+    )
+    metrics = {"f2_over_f1": f2_over_f1, "f3_over_f2": f3_over_f2}
+    regime = fallback
+    for rule in rules:
+        if _rule_matches(metrics, rule.get("conditions") or []):
+            regime = str(rule.get("regime", fallback))
+            break
+
+    return {
+        "label": label,
+        "orders": orders,
+        "per_symbol_entropy": [round(v, 4) for v in per_symbol],
+        "regime": regime,
+        "f2_over_f1": round(f2_over_f1, 4),
+        "f3_over_f2": round(f3_over_f2, 4),
+        "verdict": (
+            f"{label}: HED regime={regime}, 2nd/1st={f2_over_f1:.3f}, "
+            f"3rd/2nd={f3_over_f2:.3f}."
+        ),
+        "json": {
+            "label": label,
+            "orders": orders,
+            "regime": regime,
+            "epistatic_2nd_norm": orders[1]["fraction_of_total"] if len(orders) > 1 else 0.0,
+            "epistatic_3rd_norm": orders[2]["fraction_of_total"] if len(orders) > 2 else 0.0,
+        },
+    }
+
+
+# ── TokenContextAssociation ──────────────────────────────────────────────────
+
+
+def token_context_association_execute(inputs: dict, params: dict) -> dict:
+    """Permutation-tested association between tokens and a context field.
+
+    Generalised from the Phase-14 SignContextAssociation. PMI is
+    computed per (token, context) pair over token counts; a
+    permutation null shuffles the context array n_perm times and
+    recomputes each observed pair's PMI, giving a z-score and a
+    surplus over the null mean. The fixed content is spec data
+    (params["association_spec"]): the significance cut (default
+    2.0), the strong-verdict minimum pair count (default 5), the
+    three verdict templates, and the optional length binning —
+    "binned_field" names the field whose value is synthesised
+    from bins over "bin_source_field" (ordered [upper_bound,
+    name] pairs plus a "default_bin"). Field, permutation count,
+    seed, min_count, and top_k stay plain params.
+    """
+    spec: dict[str, Any] = params.get("association_spec") or {}
+    cut = float(spec.get("significance_cut", 2.0))
+    strong_min = int(spec.get("strong_min", 5))
+    templates: dict = spec.get("verdict_templates") or {}
+    binned_field = spec.get("binned_field")
+    bin_source = spec.get("bin_source_field")
+    bins: list = spec.get("bins") or []
+    default_bin = str(spec.get("default_bin", "long"))
+
+    sequences: list[list[str]] = inputs.get("sequences") or []
+    metadata: list[dict] = inputs.get("metadata") or []
+    field = str(params.get("field", "type"))
+    n_perm = max(2, int(params.get("n_perm", 8)))
+    seed = int(params.get("seed", 11))
+    min_count = int(params.get("min_count", 5))
+    top_k = int(params.get("top_k", 30))
+
+    if not sequences or not metadata or len(sequences) != len(metadata):
+        return {"associations": [], "field": field, "verdict":
+                "Sequences and metadata must align (same length)."}
+
+    def _ctx(m: dict) -> str:
+        if binned_field and field == binned_field and bin_source:
+            n = int(m.get(bin_source) or 0)
+            for bound, name in bins:
+                if n <= bound:
+                    return str(name)
+            return default_bin
+        return str(m.get(field))
+
+    contexts = [_ctx(m) for m in metadata]
+
+    def _accumulate(ctxs: list[str]):
+        sc: Counter = Counter()
+        scc: Counter = Counter()
+        cc: Counter = Counter()
+        nt = 0
+        for seq, c in zip(sequences, ctxs):
+            for s in seq:
+                sc[s] += 1
+                scc[(s, c)] += 1
+                cc[c] += 1
+                nt += 1
+        return sc, scc, cc, nt
+
+    sign_count, sign_ctx, ctx_count, n_total = _accumulate(contexts)
+
+    associations: list[dict] = []
+    for (s, c), n_sc in sign_ctx.items():
+        if n_sc < min_count:
+            continue
+        p_s = sign_count[s] / n_total
+        p_c = ctx_count[c] / n_total
+        p_sc = n_sc / n_total
+        if p_s <= 0 or p_c <= 0 or p_sc <= 0:
+            continue
+        pmi = math.log(p_sc / (p_s * p_c))
+        associations.append({"sign": s, "context": c, "n": n_sc,
+                             "pmi": round(pmi, 4)})
+
+    associations.sort(key=lambda r: -r["pmi"])
+
+    rng = random.Random(seed)
+    null_means: dict[tuple[str, str], list[float]] = {}
+    for _ in range(n_perm):
+        shuffled = list(contexts)
+        rng.shuffle(shuffled)
+        _, sc_perm, cc_perm, nt_perm = _accumulate(shuffled)
+        for r in associations:
+            n_sc_perm = sc_perm.get((r["sign"], r["context"]), 0)
+            if n_sc_perm < 1 or nt_perm <= 0:
+                pmi_perm = 0.0
+            else:
+                p_s_perm = sign_count[r["sign"]] / nt_perm
+                p_c_perm = cc_perm[r["context"]] / nt_perm
+                p_sc_perm = n_sc_perm / nt_perm
+                if p_s_perm <= 0 or p_c_perm <= 0 or p_sc_perm <= 0:
+                    pmi_perm = 0.0
+                else:
+                    pmi_perm = math.log(p_sc_perm / (p_s_perm * p_c_perm))
+            null_means.setdefault((r["sign"], r["context"]), []).append(pmi_perm)
+
+    for r in associations:
+        nm = null_means.get((r["sign"], r["context"])) or [0.0]
+        mean = sum(nm) / len(nm)
+        var = sum((x - mean) ** 2 for x in nm) / max(1, len(nm) - 1)
+        std = var ** 0.5
+        r["pmi_null_mean"] = round(mean, 4)
+        r["pmi_null_std"] = round(std, 4)
+        r["pmi_z"] = round((r["pmi"] - mean) / std, 4) if std > 0 else 0.0
+        r["surplus_pmi"] = round(r["pmi"] - mean, 4)
+
+    associations.sort(key=lambda r: -r["pmi_z"])
+    top = associations[:top_k]
+
+    n_significant = sum(1 for r in associations if r["pmi_z"] >= cut)
+    values = _FmtValues({"field": field, "n": n_significant, "cut": cut})
+    if n_significant >= strong_min:
+        verdict = str(templates.get("strong", "")).format_map(values)
+    elif n_significant >= 1:
+        verdict = str(templates.get("weak", "")).format_map(values)
+    else:
+        verdict = str(templates.get("none", "")).format_map(values)
+
+    return {
+        "associations": top,
+        "n_significant": n_significant,
+        "n_total_pairs": len(associations),
+        "field": field,
+        "verdict": verdict,
+        "json": {"top": top, "n_significant": n_significant, "verdict": verdict},
+    }
+
+
+# ── MetricFieldExtractor ─────────────────────────────────────────────────────
+
+
+def _field_map_read(entry: dict, inputs: dict) -> Any:
+    """One field_map extraction entry against the wired inputs.
+
+    An entry with "coerce": "float" returns float(value) — the
+    delegating node's numeric reads keep their float shape.
+    """
+    kind = entry.get("kind", "field")
+    default = entry.get("default", 0.0)
+    src = inputs.get(entry.get("input", "")) or {}
+    value: Any = default
+    if kind == "field":
+        value = src.get(entry.get("field", ""), default)
+    elif kind == "list_first_field":
+        rows = src.get(entry.get("list_key", "")) or []
+        value = rows[0].get(entry.get("field", ""), default) if rows else default
+    elif kind == "list_row_at_n_field":
+        rows = src.get(entry.get("list_key", "")) or []
+        for row in rows:
+            if row.get("n") == entry.get("n"):
+                value = row.get(entry.get("field", ""), default)
+                break
+    elif kind == "list_index_field":
+        rows = src.get(entry.get("list_key", "")) or []
+        index = int(entry.get("index", 0))
+        if len(rows) > index:
+            value = rows[index].get(entry.get("field", ""), default)
+    if entry.get("coerce") == "float":
+        return float(value)
+    return value
+
+
+def metric_field_extractor_execute(inputs: dict, params: dict) -> dict:
+    """Extract a flat metric vector from wired analysis bundles.
+
+    Generalised from the Phase-14 DoFExtractor. The mechanism is
+    a field map: params["field_map"] is an ordered list of
+    extraction entries, each {"out", "kind", "input", ...,
+    "default"} — kind "field" reads a field of an input dict,
+    "list_first_field" the first row's field of a carried list,
+    "list_row_at_n_field" the field of the list row whose n
+    equals the entry's n, "list_index_field" the field of the
+    list row at an index. The delegating node supplies its
+    fixed renaming table as the map's default, which is the
+    parameter surface the triage calls for; with no map the
+    extraction is empty.
+    """
+    field_map: list = params.get("field_map") or []
+    dof: dict[str, float] = {}
+    for entry in field_map:
+        dof[str(entry.get("out", ""))] = _field_map_read(entry, inputs)
+    return {"dof_values": dof, "n_dofs": len(dof)}
+
+
+# ── SignatureComparator ──────────────────────────────────────────────────────
+
+
+_SIGNATURE_FEATURE_KEYS = (
+    "alpha", "gamma_mi", "plateau_norm", "epistatic_2", "epistatic_3",
+    "h_norm_n3",
+)
+
+
+def _signature_feature_vec(bundle: dict) -> dict[str, float]:
+    """Feature dict of a flat signature bundle (fixed mechanism).
+
+    Reads the profiler fields under their primary names with the
+    historical fallback names (zipf_alpha / zipf_r2 / gamma /
+    r2_pow); the block list rides on the bundle itself.
+    """
+    block = bundle.get("block_entropies") or []
+    h_norm_3 = next((float(e["H_norm"]) for e in block if e.get("n") == 3), 0.0)
+    plateau_norm = 0.0
+    if block:
+        h1 = float(block[0].get("H_nats", 0.0))
+        hk = float(block[-1].get("H_nats", 0.0))
+        if h1 > 0:
+            plateau_norm = hk / (len(block) * h1)
+    return {
+        "alpha": float(bundle.get("alpha", bundle.get("zipf_alpha", 0.0))),
+        "r2_zipf": float(bundle.get("r_squared", bundle.get("zipf_r2", 0.0))),
+        "gamma_mi": float(bundle.get("gamma_powerlaw", bundle.get("gamma", 0.0))),
+        "r2_pow_mi": float(bundle.get("r2_powerlaw", bundle.get("r2_pow", 0.0))),
+        "h_norm_n3": h_norm_3,
+        "plateau_norm": plateau_norm,
+        "epistatic_2": float(bundle.get("epistatic_2nd_norm", 0.0)),
+        "epistatic_3": float(bundle.get("epistatic_3rd_norm", 0.0)),
+    }
+
+
+def signature_comparator_execute(inputs: dict, params: dict) -> dict:
+    """Rank signature bundles by closeness to a language template.
+
+    Generalised from the Phase-14 LanguageSignatureComparator.
+    Bundles arrive one per port (a..f) in the flat signature
+    shape. Classification is spec data (params["comparator_spec"]):
+    a bundle is a negative when any of "negative_tags" appears in
+    its lowercased label; the candidate when its label equals the
+    target, or carries the "candidate_tag" / "candidate_marker"
+    substrings; a reference otherwise (and when no reference
+    exists, every bundle doubles as a reference). References form
+    the language template (per-key mean) and the per-key spread
+    normalises the Euclidean distances; candidates and all other
+    bundles are ranked by distance to the language template and
+    to the negative centroid. The target row's lang-minus-neg
+    delta against the "verdict_margin" picks the verdict band;
+    the four verdict texts are spec templates. target_label
+    stays a plain param.
+    """
+    spec: dict[str, Any] = params.get("comparator_spec") or {}
+    candidate_tag = str(spec.get("candidate_tag", ""))
+    candidate_marker = str(spec.get("candidate_marker", "candidate"))
+    negative_tags: list = spec.get("negative_tags") or []
+    margin = float(spec.get("verdict_margin", 0.25))
+    templates: dict = spec.get("verdict_templates") or {}
+    keys = tuple(spec.get("feature_keys") or _SIGNATURE_FEATURE_KEYS)
+
+    target_label = str(params.get("target_label", ""))
+    bundles: list[dict] = []
+    for p in ("a", "b", "c", "d", "e", "f"):
+        v = inputs.get(p)
+        if isinstance(v, dict):
+            bundles.append(v)
+
+    if not bundles:
+        return {"ranked": [], "verdict": "No signature bundles supplied."}
+
+    refs: list[dict] = []
+    candidates: list[dict] = []
+    negatives: list[dict] = []
+    for b in bundles:
+        lab = str(b.get("label", "")).lower()
+        v = _signature_feature_vec(b)
+        if any(t in lab for t in negative_tags):
+            negatives.append({"label": lab, **v})
+        elif lab and (lab == target_label.lower()
+                      or (candidate_tag and candidate_tag in lab)
+                      or candidate_marker in lab):
+            candidates.append({"label": lab, **v})
+        else:
+            refs.append({"label": lab, **v})
+
+    if not refs:
+        refs = [{"label": str(b.get("label", "")).lower(),
+                 **_signature_feature_vec(b)} for b in bundles]
+
+    template = {k: sum(r[k] for r in refs) / max(1, len(refs)) for k in keys}
+    spread = {
+        k: max(1e-6, max(r[k] for r in refs) - min(r[k] for r in refs))
+        for k in keys
+    }
+
+    def _dist(v: dict[str, float]) -> float:
+        return sum(((v[k] - template[k]) / spread[k]) ** 2 for k in keys) ** 0.5
+
+    ranked = []
+    for b in bundles:
+        v = _signature_feature_vec(b)
+        d_lang = _dist(v)
+        if negatives:
+            t_neg = {k: sum(n[k] for n in negatives) / len(negatives)
+                     for k in keys}
+            d_neg = sum(((v[k] - t_neg[k]) / spread[k]) ** 2
+                        for k in keys) ** 0.5
+        else:
+            d_neg = float("inf")
+        ranked.append({
+            "label": str(b.get("label", "")),
+            "distance_to_language_template": round(d_lang, 4),
+            "distance_to_negative_template": round(d_neg, 4),
+            "lang_minus_neg": round(d_lang - d_neg, 4),
+            **{k: round(v[k], 4) for k in keys},
+        })
+    ranked.sort(key=lambda r: r["distance_to_language_template"])
+
+    target_row = next(
+        (r for r in ranked if r["label"].lower() == target_label.lower()),
+        None,
+    )
+    if target_row is not None:
+        delta = target_row["lang_minus_neg"]
+        values = _FmtValues({
+            "target": target_label,
+            "d_lang": target_row["distance_to_language_template"],
+            "d_neg": target_row["distance_to_negative_template"],
+            "delta": delta,
+        })
+        if delta < -margin:
+            verdict = str(templates.get("language", "")).format_map(values)
+        elif delta > margin:
+            verdict = str(templates.get("negative", "")).format_map(values)
+        else:
+            verdict = str(templates.get("ambiguous", "")).format_map(values)
+    else:
+        verdict = str(templates.get("no_target",
+                                    "No target_label supplied; ranking-only output."))
+
+    return {
+        "ranked": ranked,
+        "language_template": template,
+        "n_references": len(refs),
+        "n_candidates": len(candidates),
+        "n_negatives": len(negatives),
+        "verdict": verdict,
+        "json": {"ranked": ranked, "verdict": verdict},
+    }
+
+
+# ── EvidenceRuleAggregator ───────────────────────────────────────────────────
+
+
+class _FmtValues(dict):
+    """Format-map values: a missing numeric field formats as 0."""
+
+    def __missing__(self, key: str) -> float:
+        return 0.0
+
+
+def _rule_values(rule: dict, src: dict) -> _FmtValues:
+    """Resolve a rule's named values from its source dict."""
+    values = _FmtValues(src)
+    for out_name, field in (rule.get("values") or {}).items():
+        values[out_name] = src.get(field, 0.0)
+    return values
+
+
+def _evidence_rule_fires(rule: dict, inputs: dict, params: dict) -> list[tuple[str, str]]:
+    """Evaluate one aggregator rule; return (side, message) pairs."""
+    kind = rule.get("kind", "")
+    src = inputs.get(rule.get("input", "")) or {}
+    if rule.get("skip_if_input_empty") and not src:
+        return []
+    if kind == "range_pair":
+        a = float(src.get(rule.get("field_a", ""), 0.0) or 0.0)
+        b_field = rule.get("field_b", "")
+        if b_field in src:
+            b = float(src.get(b_field, 0.0) or 0.0)
+        else:
+            b = float(src.get(rule.get("field_b_fallback", ""), 0.0) or 0.0)
+        values = _rule_values(rule, src)
+        values[rule.get("field_a", "")] = a
+        values[b_field] = b
+        lo, hi = (rule.get("a_range") or [0.0, 0.0])
+        if lo <= a <= hi and b >= float(rule.get("b_min", 0.0)):
+            return [("for", str(rule.get("for_template", "")).format_map(values))]
+        if a < float(rule.get("a_floor", 0.0)) or b < float(rule.get("b_floor", 0.0)):
+            return [("against", str(rule.get("against_template", "")).format_map(values))]
+        return []
+    if kind == "field_equals":
+        value = src.get(rule.get("field", ""), rule.get("default"))
+        if value != rule.get("equals"):
+            return []
+        side = str(rule.get("side", "for"))
+        return [(side, str(rule.get("template", "")).format_map(
+            _rule_values(rule, src)))]
+    if kind == "list_fraction_checks":
+        rows = src.get(rule.get("list_field", "")) or []
+        out: list[tuple[str, str]] = []
+        for check in rule.get("checks") or []:
+            index = int(check.get("index", 0))
+            if len(rows) <= index:
+                continue
+            value = float(rows[index].get(rule.get("value_field", ""), 0) or 0)
+            threshold = float(check.get("threshold", 0.0))
+            op = check.get("op", ">=")
+            fires = value >= threshold if op == ">=" else value < threshold
+            if fires:
+                values = _FmtValues({"value": value})
+                out.append((str(check.get("side", "for")),
+                            str(check.get("template", "")).format_map(values)))
+        return out
+    if kind == "success_threshold":
+        value = float(src.get(rule.get("value_field", ""),
+                              rule.get("value_default", 1e9)) or 0.0)
+        low = float(params.get(rule.get("low_param", ""),
+                               rule.get("low_default", 0.1)))
+        high = float(params.get(rule.get("high_param", ""),
+                                rule.get("high_default", 1.0)))
+        values = _FmtValues({"value": value})
+        if src.get(rule.get("success_field", "")) and value <= low:
+            return [("for", str(rule.get("for_template", "")).format_map(values))]
+        if value > high:
+            return [("against", str(rule.get("against_template", "")).format_map(values))]
+        return []
+    return []
+
+
+def evidence_rule_aggregator_execute(inputs: dict, params: dict) -> dict:
+    """Aggregate independent diagnostic verdicts into one judgement.
+
+    Generalised from the Phase-14 LanguageDetectorVerdict. The
+    evidence rules are data (params["aggregator_spec"]["rules"],
+    evaluated in order): "range_pair" fires for when a primary
+    field sits in a range and a secondary field clears its
+    floor, against when either falls under its floor;
+    "field_equals" fires a fixed line when a field equals a
+    carried value; "list_fraction_checks" fires per carried
+    index/threshold check over a list field;
+    "success_threshold" fires for when a success flag holds
+    and a value stays under the low threshold (a plain param
+    named by the rule), against when the value exceeds the
+    high threshold. The score is for minus against;
+    "language_min_score" (default 2) marks the language call;
+    the three verdict bands are format templates over the
+    counts and confidence, gated by "confidence_threshold"
+    (default 0.5).
+    """
+    spec: dict[str, Any] = params.get("aggregator_spec") or {}
+    rules: list = spec.get("rules") or []
+    language_min = int(spec.get("language_min_score", 2))
+    conf_threshold = float(spec.get("confidence_threshold", 0.5))
+    templates: dict = spec.get("verdict_templates") or {}
+
+    for_list: list[str] = []
+    against_list: list[str] = []
+    for rule in rules:
+        for side, message in _evidence_rule_fires(rule, inputs, params):
+            (for_list if side == "for" else against_list).append(message)
+
+    score = len(for_list) - len(against_list)
+    total = max(1, len(for_list) + len(against_list))
+    confidence = abs(score) / total
+    is_language = score >= language_min
+
+    values = _FmtValues({
+        "n_for": len(for_list), "n_against": len(against_list),
+        "confidence": confidence,
+    })
+    if is_language and confidence >= conf_threshold:
+        verdict = str(templates.get("likely_for", "")).format_map(values)
+    elif score <= -language_min and confidence >= conf_threshold:
+        verdict = str(templates.get("likely_against", "")).format_map(values)
+    else:
+        verdict = str(templates.get("ambiguous", "")).format_map(values)
+
+    return {
+        "is_language": is_language,
+        "confidence": round(confidence, 3),
+        "score": score,
+        "evidence_for": for_list,
+        "evidence_against": against_list,
+        "verdict": verdict,
+        "json": {
+            "is_language": is_language,
+            "confidence": confidence,
+            "score": score,
+            "evidence_for": for_list,
+            "evidence_against": against_list,
+            "verdict": verdict,
+        },
+    }
+
+
+# ── PositionalClassClassifier ────────────────────────────────────────────────
+
+
+def positional_class_classifier_execute(inputs: dict, params: dict) -> dict:
+    """Classify signs by their within-sequence position profile.
+
+    Generalised from the Phase-20 FulsPositionalClassifier.
+    Position counts are index-based (first token initial, last
+    token terminal, a length-1 token both), rates normalise over
+    the position-count total, and the repetition rate counts
+    adjacent same-sign successors over tokens that have a
+    successor. Classification is spec data
+    (params["classifier_spec"]): the numerical class fires when
+    the repetition rate reaches the numerical threshold;
+    otherwise the ordered "position_classes" rules apply — each
+    names a label key and a dominant position (I / M / T) whose
+    rate must reach the dominance threshold while both other
+    positions stay below the secondary threshold — and the
+    fallback label classifies the rest. The label set
+    ("class_labels": numerical / initial / medial / terminal /
+    mixed) and the verdict template are spec data; the
+    thresholds themselves stay plain params.
+    """
+    spec: dict[str, Any] = params.get("classifier_spec") or {}
+    labels: dict = spec.get("class_labels") or {}
+    position_classes: list = spec.get("position_classes") or []
+    verdict_template = str(spec.get("verdict_template", ""))
+    sequences: list[list[str]] = inputs.get("sequences") or []
+    min_count = int(params.get("min_count", 5))
+    dom_threshold = float(params.get("dom_threshold", 0.55))
+    secondary = float(params.get("secondary_threshold", 0.30))
+    numerical_rr = float(params.get("numerical_rr", 0.20))
+
+    pos: dict[str, dict[str, int]] = {}
+    freq: Counter = Counter()
+    rep_counts: Counter = Counter()
+    rep_total: Counter = Counter()
+    for seq in sequences:
+        n = len(seq)
+        for i, s in enumerate(seq):
+            freq[s] += 1
+            row = pos.setdefault(s, {"I": 0, "M": 0, "T": 0})
+            if n == 1:
+                row["I"] += 1
+                row["T"] += 1
+            elif i == 0:
+                row["I"] += 1
+            elif i == n - 1:
+                row["T"] += 1
+            else:
+                row["M"] += 1
+            if i + 1 < n:
+                rep_total[s] += 1
+                if seq[i + 1] == s:
+                    rep_counts[s] += 1
+
+    eligible = [s for s, c in freq.items() if c >= min_count]
+    table: list[dict] = []
+    counts_by_class: Counter = Counter()
+    for s in eligible:
+        pc = pos[s]
+        tot = pc["I"] + pc["M"] + pc["T"]
+        if tot <= 0:
+            continue
+        rates = {"I": pc["I"] / tot, "M": pc["M"] / tot, "T": pc["T"] / tot}
+        rr = (rep_counts[s] / rep_total[s]) if rep_total[s] > 0 else 0.0
+        if rr >= numerical_rr:
+            cls = str(labels.get("numerical", "NUMERICAL"))
+        else:
+            cls = str(labels.get("mixed", "MIXED"))
+            for rule in position_classes:
+                dominant = str(rule.get("dominant", ""))
+                others = [p for p in ("I", "M", "T") if p != dominant]
+                if (rates.get(dominant, 0.0) >= dom_threshold
+                        and all(rates[o] < secondary for o in others)):
+                    cls = str(labels.get(str(rule.get("label_key", "")), cls))
+                    break
+        counts_by_class[cls] += 1
+        table.append({
+            "sign": s, "freq": freq[s],
+            "I_rate": round(rates["I"], 3), "M_rate": round(rates["M"], 3),
+            "T_rate": round(rates["T"], 3),
+            "repetition_rate": round(rr, 3),
+            "class": cls,
+        })
+
+    table.sort(key=lambda r: (-r["freq"], r["sign"]))
+    n = sum(counts_by_class.values())
+    fractions = {k: round(v / max(1, n), 3) for k, v in counts_by_class.items()}
+    n_logo = counts_by_class.get(str(labels.get("initial", "INITIAL")), 0) \
+        + counts_by_class.get(str(labels.get("terminal", "TERMINAL")), 0)
+    n_syll = counts_by_class.get(str(labels.get("medial", "MEDIAL")), 0) \
+        + counts_by_class.get(str(labels.get("mixed", "MIXED")), 0)
+    values = _FmtValues({
+        "n": n, "fractions": fractions,
+        "n_logo": n_logo, "n_syll": n_syll,
+        "n_numerical": counts_by_class.get(str(labels.get("numerical", "NUMERICAL")), 0),
+    })
+    for label in labels.values():
+        values[str(label)] = label
+    verdict = verdict_template.format_map(values) if verdict_template else ""
+    return {
+        "params": {"min_count": min_count, "dom_threshold": dom_threshold,
+                   "secondary_threshold": secondary, "numerical_rr": numerical_rr},
+        "n_signs_classified": n,
+        "counts_by_class": dict(counts_by_class),
+        "fractions_by_class": fractions,
+        "table": table,
+        "verdict": verdict,
+    }
+
+
+# ── SignPositionNullTest ─────────────────────────────────────────────────────
+
+
+def sign_position_null_test_execute(inputs: dict, params: dict) -> dict:
+    """Test a sign's positional bias against a shuffle null.
+
+    Generalised from the Indus-evidence IndusNullModelTest
+    (Fuls-style positional-preference test). The observed rate of
+    the target sign at the tested edge (initial, or terminal for
+    any other test type) is compared against n_null_runs shuffled
+    re-deals of every sequence; the z-score uses the population
+    standard deviation of the null rates, the p-value is the
+    one-sided share of null rates at or above the observed rate
+    (floored at 1/n_null), and the verdict maps |z| through the
+    spec's band table (params["null_spec"]: "verdict_bands" as
+    ordered [|z| threshold, verdict] pairs, first match wins,
+    "verdict_fallback" when none matches). The triage's caution
+    is honoured: this is a sequence-shaped test and deliberately
+    does NOT reuse the score-shaped generic PermutationTest.
+    Target sign, test type, run count, and seed stay plain
+    params; the RNG stream is the seeded global stream, as the
+    original node's was.
+    """
+    spec: dict[str, Any] = params.get("null_spec") or {}
+    bands: list = spec.get("verdict_bands") or []
+    fallback = str(spec.get("verdict_fallback", "NOT_SIGNIFICANT"))
+    sequences: list[list[str]] = inputs.get("sequences") or []
+    if not sequences:
+        return {"error": "No sequences — connect BuiltinCorpus or CorpusReader.sequences"}
+
+    target_sign = str(params.get("target_sign", "") or "").strip()
+    n_null = int(params.get("n_null_runs", 1000) or 1000)
+    test_type = str(params.get("test_type", "initial") or "initial").lower()
+    random.seed(int(params.get("random_seed", 42) or 42))
+
+    if not target_sign:
+        return {"error": "Set target_sign parameter to the sign to test (e.g. 'M77/72')"}
+
+    flat = [s for seq in sequences for s in seq]
+    tc = Counter(flat)
+    if tc.get(target_sign, 0) == 0:
+        return {"error": f"Sign '{target_sign}' not found in corpus"}
+
+    def _obs_rate(seqs: list) -> float:
+        if test_type == "initial":
+            return sum(1 for seq in seqs if seq and seq[0] == target_sign) / max(len(seqs), 1)
+        return sum(1 for seq in seqs if seq and seq[-1] == target_sign) / max(len(seqs), 1)
+
+    observed = _obs_rate(sequences)
+
+    null_rates: list[float] = []
+    for _ in range(n_null):
+        shuffled = [random.sample(seq, len(seq)) for seq in sequences]
+        null_rates.append(_obs_rate(shuffled))
+
+    null_mean = sum(null_rates) / len(null_rates)
+    null_std = math.sqrt(
+        sum((r - null_mean) ** 2 for r in null_rates) / max(len(null_rates), 1))
+    z_score = (observed - null_mean) / max(null_std, 1e-9)
+    p_approx = max(sum(1 for r in null_rates if r >= observed) / n_null, 1 / n_null)
+
+    verdict = fallback
+    for threshold, band_verdict in bands:
+        if abs(z_score) >= float(threshold):
+            verdict = str(band_verdict)
+            break
+
+    return {
+        "sign": target_sign,
+        "test_type": test_type,
+        "observed_rate": round(observed, 5),
+        "null_mean": round(null_mean, 5),
+        "null_std": round(null_std, 6),
+        "z_score": round(z_score, 3),
+        "p_approx": round(p_approx, 4),
+        "n_null_runs": n_null,
+        "verdict": verdict,
+        "number": round(z_score, 3),
+        "json": {"sign": target_sign, "z_score": z_score, "verdict": verdict},
+        "text": (f"Null model ({test_type}): {target_sign} z={z_score:.2f} "
+                 f"p≈{p_approx:.3f} → {verdict}."),
+    }

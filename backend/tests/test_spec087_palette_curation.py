@@ -11,7 +11,7 @@ Claims covered:
           full registry, and a saved graph naming a legacy type still
           executes it.
   C087-17 The registry changes only by recorded acts: the census pin now
-          reads three ways (registered 537 / legacy 397 / palette 140),
+          reads three ways (registered 545 / legacy 405 / palette 140),
           per category, counted from the flags themselves.
 
 S3 amendment (records/stage-s3-conversions.md, conversion contract
@@ -24,7 +24,9 @@ registered six more generic primitives (the F4/F5 engines) and flagged
 the thirteen converted F4/F5 domain nodes legacy in the same act;
 conversion PR-D registered three more generic primitives (the F7/F6
 engines) and flagged the ten converted F7/F6 domain nodes legacy in
-the same act. The wrapper-rule test below pins the amended identity:
+the same act; conversion PR-E registered eight more generic primitives
+(the F9 engines) and flagged the eight converted F9 domain nodes
+legacy in the same act. The wrapper-rule test below pins the amended identity:
 flagged == WRAPPER set ∪ {the S3-converted ids}; the converted ids
 keep their parameterised defs, so they no longer have the wrapper
 shape — the flag now records the conversion, not the shape.
@@ -68,12 +70,12 @@ SHADOW_TRIO = [
 WRAPPER_SHAPE_EXCEPTION = "ResearchLoopRunner"
 
 # The S3 conversion ids (PR-A family F1; PR-B families F3 + F8;
-# PR-C families F4 + F5; PR-D families F7 + F6): converted to
-# delegate to a generic primitive and flagged legacy in the same
-# act, per the S3 conversion contract. They are the only flagged
-# ids without the wrapper shape. Later S3 conversion PRs extend
-# this set only by amending the S3 conversions record in the
-# same PR.
+# PR-C families F4 + F5; PR-D families F7 + F6; PR-E family F9):
+# converted to delegate to a generic primitive and flagged legacy
+# in the same act, per the S3 conversion contract. They are the
+# only flagged ids without the wrapper shape. Later S3 conversion
+# PRs extend this set only by amending the S3 conversions record
+# in the same PR.
 S3_CONVERTED_FLAGGED = frozenset(
     {
         "M77InscriptionLoader",
@@ -114,6 +116,14 @@ S3_CONVERTED_FLAGGED = frozenset(
         "RefinedMeluhhanPersonsExtractor",
         "RefinedMeluhhanPersonsExtractorV2",
         "Persons_v3_Extractor",
+        "EpistaticInteractionDetector",
+        "EpistaticOrderProfile",
+        "SignContextAssociation",
+        "DoFExtractor",
+        "LanguageSignatureComparator",
+        "LanguageDetectorVerdict",
+        "FulsPositionalClassifier",
+        "IndusNullModelTest",
     }
 )
 
@@ -132,14 +142,14 @@ def _params_empty(params_schema: dict) -> bool:
 
 
 def test_migration_data_matches_flagged_set_counted_both_ways():
-    """Flagged set == migration data set, 397 ids each way (359 census
-    WRAPPERs + the 38 S3 conversions recorded in the data file:
-    6 in PR-A, 9 in PR-B, 13 in PR-C, 10 in PR-D)."""
+    """Flagged set == migration data set, 405 ids each way (359 census
+    WRAPPERs + the 46 S3 conversions recorded in the data file:
+    6 in PR-A, 9 in PR-B, 13 in PR-C, 10 in PR-D, 8 in PR-E)."""
     migration = eg.load_legacy_migration_ids()
-    assert len(migration) == 397
-    assert len(set(migration)) == 397  # no duplicates in the data file
+    assert len(migration) == 405
+    assert len(set(migration)) == 405  # no duplicates in the data file
     flagged = _flagged()
-    assert len(flagged) == 397
+    assert len(flagged) == 405
     assert flagged == set(migration)
     # Every migration id names a registered node (a missing id is recorded
     # as a build failure at import; this pins the same fact as a test).
@@ -188,11 +198,11 @@ def test_catalog_include_legacy_returns_the_full_registry(client):
     resp = client.get("/api/v1/experiment-graphs/catalog?include_legacy=true")
     assert resp.status_code == 200
     body = resp.json()
-    assert len(body) == 537
+    assert len(body) == 545
     assert {entry["id"] for entry in body} == set(eg.ATOMIC_NODES)
     flagged_entries = {entry["id"] for entry in body if entry["legacy"]}
     assert flagged_entries == _flagged()
-    assert len(flagged_entries) == 397
+    assert len(flagged_entries) == 405
 
 
 # ── T205: the three-way re-pin ───────────────────────────────────────────────
@@ -200,12 +210,12 @@ def test_catalog_include_legacy_returns_the_full_registry(client):
 
 def test_three_way_census_pin():
     """Registered / legacy / palette counts, per category, from the flags."""
-    assert _PIN["registered_total"] == 537
-    assert _PIN["legacy_total"] == 397
+    assert _PIN["registered_total"] == 545
+    assert _PIN["legacy_total"] == 405
     assert _PIN["palette_total"] == 140
     report = eg.registry_build_report()
-    assert report["registered"] == 537
-    assert report["legacy"] == 397
+    assert report["registered"] == 545
+    assert report["legacy"] == 405
     assert report["palette"] == 140
     legacy_by_category = Counter(
         d.category for d in eg.ATOMIC_NODES.values() if d.legacy
@@ -226,14 +236,14 @@ def test_registry_health_reports_the_split(client):
     resp = client.get("/api/v1/experiment-graphs/registry-health")
     assert resp.status_code == 200
     body = resp.json()
-    assert body["registered"] == 537
-    assert body["legacy"] == 397
+    assert body["registered"] == 545
+    assert body["legacy"] == 405
     assert body["palette"] == 140
 
 
 def test_self_check_agrees_on_the_legacy_split():
     check = registry_check.registry_self_check()
-    assert check["legacy_total"] == 397
+    assert check["legacy_total"] == 405
     assert check["palette_total"] == 140
     assert check["legacy_mismatch"] == {
         "flagged_not_in_migration": [],

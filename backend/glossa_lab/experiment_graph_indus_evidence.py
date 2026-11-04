@@ -376,68 +376,29 @@ def _null_model_test(inputs: dict, params: dict) -> dict:
 
     Tests whether the observed initial/terminal rate for a sign is explained
     by random shuffling alone (shuffle null) or frequency alone (freq null).
+
+    Spec 087 S3 (family F9): the mechanism is the generic
+    SignPositionNullTest engine (glossa_lab.generic_primitives);
+    this node is its Indus-evidence parameterisation — the
+    z-verdict bands (3 / 2 / 1.5) and the fallback verdict are
+    passed as null_spec data. Per the triage's caution, the
+    engine is a separate sequence-shaped primitive and does NOT
+    reuse the score-shaped generic PermutationTest.
     """
-    import math  # noqa: PLC0415
-    import random  # noqa: PLC0415
-    from collections import Counter  # noqa: PLC0415
-
-    sequences = inputs.get("sequences") or []
-    if not sequences:
-        return {"error": "No sequences — connect BuiltinCorpus or CorpusReader.sequences"}
-
-    target_sign  = str(params.get("target_sign", "") or "").strip()
-    n_null       = int(params.get("n_null_runs", 1000) or 1000)
-    test_type    = str(params.get("test_type", "initial") or "initial").lower()  # "initial" | "terminal"
-    random.seed(int(params.get("random_seed", 42) or 42))
-
-    if not target_sign:
-        return {"error": "Set target_sign parameter to the sign to test (e.g. 'M77/72')"}
-
-    flat = [s for seq in sequences for s in seq]
-    tc   = Counter(flat)
-    n    = tc.get(target_sign, 0)
-    if n == 0:
-        return {"error": f"Sign '{target_sign}' not found in corpus"}
-
-    def _obs_rate(seqs: list) -> float:
-        if test_type == "initial":
-            return sum(1 for seq in seqs if seq and seq[0] == target_sign) / max(len(seqs), 1)
-        return sum(1 for seq in seqs if seq and seq[-1] == target_sign) / max(len(seqs), 1)
-
-    observed = _obs_rate(sequences)
-
-    # Shuffle null: randomly permute each inscription
-    null_rates_shuffle: list[float] = []
-    for _ in range(n_null):
-        shuffled = [random.sample(seq, len(seq)) for seq in sequences]  # noqa: S311
-        null_rates_shuffle.append(_obs_rate(shuffled))
-
-    null_mean = sum(null_rates_shuffle) / len(null_rates_shuffle)
-    null_std  = math.sqrt(sum((r - null_mean) ** 2 for r in null_rates_shuffle) / max(len(null_rates_shuffle), 1))
-    z_score   = (observed - null_mean) / max(null_std, 1e-9)
-    p_approx  = max(sum(1 for r in null_rates_shuffle if r >= observed) / n_null, 1 / n_null)
-
-    verdict = (
-        "STRONGLY_SIGNIFICANT"   if abs(z_score) >= 3 else
-        "SIGNIFICANT"            if abs(z_score) >= 2 else
-        "BORDERLINE"             if abs(z_score) >= 1.5 else
-        "NOT_SIGNIFICANT"
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        sign_position_null_test_execute,
     )
 
-    return {
-        "sign":          target_sign,
-        "test_type":     test_type,
-        "observed_rate": round(observed, 5),
-        "null_mean":     round(null_mean, 5),
-        "null_std":      round(null_std, 6),
-        "z_score":       round(z_score, 3),
-        "p_approx":      round(p_approx, 4),
-        "n_null_runs":   n_null,
-        "verdict":       verdict,
-        "number":        round(z_score, 3),
-        "json":          {"sign": target_sign, "z_score": z_score, "verdict": verdict},
-        "text":          f"Null model ({test_type}): {target_sign} z={z_score:.2f} p≈{p_approx:.3f} → {verdict}.",
-    }
+    merged = dict(params)
+    spec = dict(merged.get("null_spec") or {})
+    spec.setdefault("verdict_bands", [
+        [3, "STRONGLY_SIGNIFICANT"],
+        [2, "SIGNIFICANT"],
+        [1.5, "BORDERLINE"],
+    ])
+    spec.setdefault("verdict_fallback", "NOT_SIGNIFICANT")
+    merged["null_spec"] = spec
+    return sign_position_null_test_execute(inputs, merged)
 
 
 def _intake_runner(inputs: dict, params: dict) -> dict:

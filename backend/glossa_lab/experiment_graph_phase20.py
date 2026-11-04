@@ -647,87 +647,40 @@ def _fuls_positional_classifier(inputs: dict, params: dict) -> dict:
       * MEDIAL     -- M_rate >= dom_threshold
       * TERMINAL   -- T_rate >= dom_threshold
       * MIXED      -- otherwise
+
+    Spec 087 S3 (family F9): the mechanism is the generic
+    PositionalClassClassifier engine (glossa_lab.generic_primitives);
+    this node is its Phase-20 parameterisation — the 5-class
+    label set, the ordered dominant-position rules (INITIAL,
+    then TERMINAL, then MEDIAL), and the PREDICTION 4 verdict
+    text are passed as classifier_spec data. Every threshold
+    was already a parameter here, so this is the cheapest
+    conversion in the stage.
     """
-    sequences: list[list[str]] = inputs.get("sequences") or []
-    min_count = int(params.get("min_count", 5))
-    dom_threshold = float(params.get("dom_threshold", 0.55))
-    secondary = float(params.get("secondary_threshold", 0.30))
-    numerical_rr = float(params.get("numerical_rr", 0.20))
-
-    pos: dict[str, dict[str, int]] = defaultdict(lambda: {"I": 0, "M": 0, "T": 0})
-    freq: Counter[str] = Counter()
-    rep_counts: Counter[str] = Counter()
-    rep_total: Counter[str] = Counter()
-    for seq in sequences:
-        n = len(seq)
-        for i, s in enumerate(seq):
-            freq[s] += 1
-            if n == 1:
-                pos[s]["I"] += 1
-                pos[s]["T"] += 1
-            elif i == 0:
-                pos[s]["I"] += 1
-            elif i == n - 1:
-                pos[s]["T"] += 1
-            else:
-                pos[s]["M"] += 1
-            if i + 1 < n:
-                rep_total[s] += 1
-                if seq[i + 1] == s:
-                    rep_counts[s] += 1
-
-    eligible = [s for s, c in freq.items() if c >= min_count]
-    table: list[dict] = []
-    counts_by_class: Counter[str] = Counter()
-    for s in eligible:
-        pc = pos[s]
-        tot = pc["I"] + pc["M"] + pc["T"]
-        if tot <= 0:
-            continue
-        I, M, T = pc["I"] / tot, pc["M"] / tot, pc["T"] / tot
-        rr = (rep_counts[s] / rep_total[s]) if rep_total[s] > 0 else 0.0
-        if rr >= numerical_rr:
-            cls = "NUMERICAL"
-        elif I >= dom_threshold and M < secondary and T < secondary:
-            cls = "INITIAL"
-        elif T >= dom_threshold and I < secondary and M < secondary:
-            cls = "TERMINAL"
-        elif M >= dom_threshold and I < secondary and T < secondary:
-            cls = "MEDIAL"
-        else:
-            cls = "MIXED"
-        counts_by_class[cls] += 1
-        table.append({
-            "sign": s, "freq": freq[s],
-            "I_rate": round(I, 3), "M_rate": round(M, 3), "T_rate": round(T, 3),
-            "repetition_rate": round(rr, 3),
-            "class": cls,
-        })
-
-    table.sort(key=lambda r: (-r["freq"], r["sign"]))
-    n = sum(counts_by_class.values())
-    fractions = {k: round(v / max(1, n), 3) for k, v in counts_by_class.items()}
-    n_logo = counts_by_class.get("INITIAL", 0) + counts_by_class.get("TERMINAL", 0)
-    n_syll = counts_by_class.get("MEDIAL", 0) + counts_by_class.get("MIXED", 0)
-    verdict = (
-        f"PREDICTION 4: classified {n} signs. Class fractions: {fractions}. "
-        f"Logographic-like (INITIAL+TERMINAL) = {n_logo}; "
-        f"syllabic-like (MEDIAL+MIXED) = {n_syll}; "
-        f"NUMERICAL = {counts_by_class.get('NUMERICAL', 0)} "
-        f"(confirms Phase-19 numerical-strokes finding if > 5)."
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        positional_class_classifier_execute,
     )
-    return {
-        "params": {"min_count": min_count, "dom_threshold": dom_threshold,
-                   "secondary_threshold": secondary, "numerical_rr": numerical_rr},
-        "n_signs_classified": n,
-        "counts_by_class": dict(counts_by_class),
-        "fractions_by_class": fractions,
-        "table": table,
-        "verdict": verdict,
-    }
 
-
-# ── Phase-20 Verdict aggregator ─────────────────────────────────────────
+    merged = dict(params)
+    spec = dict(merged.get("classifier_spec") or {})
+    spec.setdefault("class_labels", {
+        "numerical": "NUMERICAL", "initial": "INITIAL",
+        "medial": "MEDIAL", "terminal": "TERMINAL", "mixed": "MIXED",
+    })
+    spec.setdefault("position_classes", [
+        {"label_key": "initial", "dominant": "I"},
+        {"label_key": "terminal", "dominant": "T"},
+        {"label_key": "medial", "dominant": "M"},
+    ])
+    spec.setdefault("verdict_template", (
+        "PREDICTION 4: classified {n} signs. Class fractions: {fractions}. "
+        "Logographic-like ({INITIAL}+{TERMINAL}) = {n_logo}; "
+        "syllabic-like ({MEDIAL}+{MIXED}) = {n_syll}; "
+        "{NUMERICAL} = {n_numerical} "
+        "(confirms Phase-19 numerical-strokes finding if > 5)."
+    ))
+    merged["classifier_spec"] = spec
+    return positional_class_classifier_execute(inputs, merged)
 
 
 def _phase20_verdict(inputs: dict, params: dict) -> dict:

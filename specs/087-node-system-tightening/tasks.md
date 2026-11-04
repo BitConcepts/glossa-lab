@@ -149,8 +149,11 @@ carries its gate/test output verbatim** — not a summary of it.
   comparison holding) — same record. PR-D (families F7 + F6)
   converted the ten F7/F6 nodes onto three new generic
   primitives (31 fixture cases byte-identical; the 27-graph
-  comparison holding) — same record. Six families remain
-  (F2, F9, F10, F11, F12, F13), plus family F15
+  comparison holding) — same record. PR-E (family F9)
+  converted the eight F9 nodes onto eight new generic
+  primitives (36 fixture cases byte-identical; the 27-graph
+  comparison holding) — same record. Five families remain
+  (F2, F10, F11, F12, F13), plus family F15
   (the two live wrappers) and the final batch's
   retire-flagging of the four triage retire-candidates; this
   task ticks only when the last conversion PR merges.

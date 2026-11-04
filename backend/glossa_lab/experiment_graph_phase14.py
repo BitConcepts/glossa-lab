@@ -46,7 +46,6 @@ from __future__ import annotations
 
 import json
 import math
-import random
 from collections import Counter
 from pathlib import Path
 from typing import Any
@@ -524,130 +523,46 @@ def _language_signature_comparator(inputs: dict, params: dict) -> dict:
     candidate (e.g. "indus_m77"); the others are reference points.
 
     Output: a ranked list with similarity scores, plus a verdict.
+
+    Spec 087 S3 (family F9): the mechanism is the generic
+    SignatureComparator engine (glossa_lab.generic_primitives);
+    this node is its Phase-14 parameterisation — the candidate
+    tag "indus", the candidate marker, the negative-tag set
+    (permut / shuffle / random / uniform), the ±0.25 verdict
+    margin, the feature keys, and the verdict texts are passed
+    as comparator_spec data.
     """
-    ports = ("a", "b", "c", "d", "e", "f")
-    target_label = str(params.get("target_label", ""))
-    bundles: list[dict] = []
-    for p in ports:
-        v = inputs.get(p)
-        if isinstance(v, dict):
-            bundles.append(v)
-
-    if not bundles:
-        return {"ranked": [], "verdict": "No signature bundles supplied."}
-
-    def _feature_vec(b: dict) -> dict[str, float]:
-        # Reach into known shapes. Tolerate missing keys.
-        block = b.get("block_entropies") or []
-        h_norm_3 = next((float(e["H_norm"]) for e in block if e.get("n") == 3), 0.0)
-        # Normalised h(n) plateau height = h(max)/H1.
-        plateau_norm = 0.0
-        if block:
-            H1 = float(block[0].get("H_nats", 0.0))
-            Hk = float(block[-1].get("H_nats", 0.0))
-            if H1 > 0:
-                plateau_norm = Hk / (len(block) * H1)
-        return {
-            "alpha": float(b.get("alpha", b.get("zipf_alpha", 0.0))),
-            "r2_zipf": float(b.get("r_squared", b.get("zipf_r2", 0.0))),
-            "gamma_mi": float(b.get("gamma_powerlaw", b.get("gamma", 0.0))),
-            "r2_pow_mi": float(b.get("r2_powerlaw", b.get("r2_pow", 0.0))),
-            "h_norm_n3": h_norm_3,
-            "plateau_norm": plateau_norm,
-            "epistatic_2": float(b.get("epistatic_2nd_norm", 0.0)),
-            "epistatic_3": float(b.get("epistatic_3rd_norm", 0.0)),
-        }
-
-    # Build a "natural-language template" by averaging the bundles whose
-    # label contains a known reference language tag. Treat the target
-    # corpus and explicit "permuted" / "shuffled" / "random" labels as
-    # candidates / negatives.
-    refs: list[dict] = []
-    candidates: list[dict] = []
-    negatives: list[dict] = []
-    for b in bundles:
-        lab = str(b.get("label", "")).lower()
-        v = _feature_vec(b)
-        if any(t in lab for t in ("permut", "shuffle", "random", "uniform")):
-            negatives.append({"label": lab, **v})
-        elif lab and (lab == target_label.lower() or "indus" in lab or "candidate" in lab):
-            candidates.append({"label": lab, **v})
-        else:
-            refs.append({"label": lab, **v})
-
-    if not refs:
-        # Treat every bundle as both a sample and a comparison reference.
-        refs = [{"label": str(b.get("label", "")).lower(), **_feature_vec(b)} for b in bundles]
-
-    keys = ("alpha", "gamma_mi", "plateau_norm",
-            "epistatic_2", "epistatic_3", "h_norm_n3")
-    template = {k: sum(r[k] for r in refs) / max(1, len(refs)) for k in keys}
-    spread = {
-        k: max(1e-6, max(r[k] for r in refs) - min(r[k] for r in refs))
-        for k in keys
-    }
-
-    def _dist(v: dict[str, float]) -> float:
-        return sum(((v[k] - template[k]) / spread[k]) ** 2 for k in keys) ** 0.5
-
-    ranked = []
-    for b in bundles:
-        v = _feature_vec(b)
-        d_lang = _dist(v)
-        # Distance to the centroid of the negatives, if any.
-        if negatives:
-            t_neg = {k: sum(n[k] for n in negatives) / len(negatives) for k in keys}
-            d_neg = sum(((v[k] - t_neg[k]) / spread[k]) ** 2 for k in keys) ** 0.5
-        else:
-            d_neg = float("inf")
-        ranked.append({
-            "label": str(b.get("label", "")),
-            "distance_to_language_template": round(d_lang, 4),
-            "distance_to_negative_template": round(d_neg, 4),
-            "lang_minus_neg": round(d_lang - d_neg, 4),
-            **{k: round(v[k], 4) for k in keys},
-        })
-    ranked.sort(key=lambda r: r["distance_to_language_template"])
-
-    target_row = next(
-        (r for r in ranked if r["label"].lower() == target_label.lower()),
-        None,
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        signature_comparator_execute,
     )
-    if target_row is not None:
-        if target_row["lang_minus_neg"] < -0.25:
-            verdict = (
-                f"Target '{target_label}' is closer to the language template "
-                f"({target_row['distance_to_language_template']:.2f}) than to "
-                f"the negative-control template "
-                f"({target_row['distance_to_negative_template']:.2f}). "
-                f"Provisional language-like signature."
-            )
-        elif target_row["lang_minus_neg"] > 0.25:
-            verdict = (
-                f"Target '{target_label}' is closer to the negative-control "
-                f"template ({target_row['distance_to_negative_template']:.2f}) "
-                f"than to the language template "
-                f"({target_row['distance_to_language_template']:.2f}). "
-                f"Inconsistent with natural-language signature."
-            )
-        else:
-            verdict = (
-                f"Target '{target_label}' lies between language and negative "
-                f"templates (delta={target_row['lang_minus_neg']:+.2f}). "
-                f"Ambiguous."
-            )
-    else:
-        verdict = "No target_label supplied; ranking-only output."
 
-    return {
-        "ranked": ranked,
-        "language_template": template,
-        "n_references": len(refs),
-        "n_candidates": len(candidates),
-        "n_negatives": len(negatives),
-        "verdict": verdict,
-        "json": {"ranked": ranked, "verdict": verdict},
-    }
+    merged = dict(params)
+    spec = dict(merged.get("comparator_spec") or {})
+    spec.setdefault("candidate_tag", "indus")
+    spec.setdefault("candidate_marker", "candidate")
+    spec.setdefault("negative_tags", ["permut", "shuffle", "random", "uniform"])
+    spec.setdefault("verdict_margin", 0.25)
+    spec.setdefault("feature_keys", ["alpha", "gamma_mi", "plateau_norm",
+                                     "epistatic_2", "epistatic_3", "h_norm_n3"])
+    spec.setdefault("verdict_templates", {
+        "language": (
+            "Target '{target}' is closer to the language template "
+            "({d_lang:.2f}) than to the negative-control template "
+            "({d_neg:.2f}). Provisional language-like signature."
+        ),
+        "negative": (
+            "Target '{target}' is closer to the negative-control "
+            "template ({d_neg:.2f}) than to the language template "
+            "({d_lang:.2f}). Inconsistent with natural-language signature."
+        ),
+        "ambiguous": (
+            "Target '{target}' lies between language and negative "
+            "templates (delta={delta:+.2f}). Ambiguous."
+        ),
+        "no_target": "No target_label supplied; ranking-only output.",
+    })
+    merged["comparator_spec"] = spec
+    return signature_comparator_execute(inputs, merged)
 
 
 # ── Path 2.1 — ICITMetadataLoader ───────────────────────────────────────
@@ -711,126 +626,42 @@ def _sign_context_association(inputs: dict, params: dict) -> dict:
     A permutation null is built by shuffling the metadata-context array
     n_perm times and recomputing each (sign, ctx) PMI. We report observed
     PMI minus the mean of the null and a z-score.
+
+    Spec 087 S3 (family F9): the mechanism is the generic
+    TokenContextAssociation engine (glossa_lab.generic_primitives);
+    this node is its Phase-14 parameterisation — the z >= 2.0
+    significance cut, the >= 5 strong-verdict minimum, the
+    length_bin bucketing (short <= 2 / medium <= 5 / long, from
+    the length field), and the verdict texts are passed as
+    association_spec data.
     """
-    sequences: list[list[str]] = inputs.get("sequences") or []
-    metadata: list[dict] = inputs.get("metadata") or []
-    field = str(params.get("field", "type"))
-    n_perm = max(2, int(params.get("n_perm", 8)))
-    seed = int(params.get("seed", 11))
-    min_count = int(params.get("min_count", 5))
-    top_k = int(params.get("top_k", 30))
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        token_context_association_execute,
+    )
 
-    if not sequences or not metadata or len(sequences) != len(metadata):
-        return {"associations": [], "field": field, "verdict":
-                "Sequences and metadata must align (same length)."}
-
-    # length_bin synthesizes a bucket from the length field if present.
-    def _ctx(m: dict) -> str:
-        v = m.get(field)
-        if field == "length_bin":
-            n = int(m.get("length") or 0)
-            if n <= 2:
-                return "short"
-            if n <= 5:
-                return "medium"
-            return "long"
-        return str(v)
-
-    contexts = [_ctx(m) for m in metadata]
-
-    sign_count: Counter[str] = Counter()
-    sign_ctx: Counter[tuple[str, str]] = Counter()
-    ctx_count: Counter[str] = Counter()
-    n_total = 0
-
-    def _accumulate(ctxs: list[str]) -> tuple[Counter[str], Counter[tuple[str, str]], Counter[str], int]:
-        sc: Counter[str] = Counter()
-        scc: Counter[tuple[str, str]] = Counter()
-        cc: Counter[str] = Counter()
-        nt = 0
-        for seq, c in zip(sequences, ctxs):
-            for s in seq:
-                sc[s] += 1
-                scc[(s, c)] += 1
-                cc[c] += 1
-                nt += 1
-        return sc, scc, cc, nt
-
-    sign_count, sign_ctx, ctx_count, n_total = _accumulate(contexts)
-
-    associations: list[dict] = []
-    for (s, c), n_sc in sign_ctx.items():
-        if n_sc < min_count:
-            continue
-        p_s = sign_count[s] / n_total
-        p_c = ctx_count[c] / n_total
-        p_sc = n_sc / n_total
-        if p_s <= 0 or p_c <= 0 or p_sc <= 0:
-            continue
-        pmi = math.log(p_sc / (p_s * p_c))
-        associations.append({"sign": s, "context": c, "n": n_sc,
-                             "pmi": round(pmi, 4)})
-
-    associations.sort(key=lambda r: -r["pmi"])
-
-    # Permutation null
-    rng = random.Random(seed)
-    null_means: dict[tuple[str, str], list[float]] = {}
-    for _ in range(n_perm):
-        shuffled = list(contexts)
-        rng.shuffle(shuffled)
-        _, sc_perm, cc_perm, nt_perm = _accumulate(shuffled)
-        for r in associations:
-            n_sc_perm = sc_perm.get((r["sign"], r["context"]), 0)
-            if n_sc_perm < 1 or nt_perm <= 0:
-                pmi_perm = 0.0
-            else:
-                p_s_perm = sign_count[r["sign"]] / nt_perm
-                p_c_perm = cc_perm[r["context"]] / nt_perm
-                p_sc_perm = n_sc_perm / nt_perm
-                if p_s_perm <= 0 or p_c_perm <= 0 or p_sc_perm <= 0:
-                    pmi_perm = 0.0
-                else:
-                    pmi_perm = math.log(p_sc_perm / (p_s_perm * p_c_perm))
-            null_means.setdefault((r["sign"], r["context"]), []).append(pmi_perm)
-
-    for r in associations:
-        nm = null_means.get((r["sign"], r["context"])) or [0.0]
-        mean = sum(nm) / len(nm)
-        var = sum((x - mean) ** 2 for x in nm) / max(1, len(nm) - 1)
-        std = var ** 0.5
-        r["pmi_null_mean"] = round(mean, 4)
-        r["pmi_null_std"] = round(std, 4)
-        r["pmi_z"] = round((r["pmi"] - mean) / std, 4) if std > 0 else 0.0
-        r["surplus_pmi"] = round(r["pmi"] - mean, 4)
-
-    associations.sort(key=lambda r: -r["pmi_z"])
-    top = associations[:top_k]
-
-    n_significant = sum(1 for r in associations if r["pmi_z"] >= 2.0)
-    if n_significant >= 5:
-        verdict = (
-            f"Field '{field}': {n_significant} (sign, ctx) pairs at z >= 2σ above "
-            f"permutation null. External grounding present."
-        )
-    elif n_significant >= 1:
-        verdict = (
-            f"Field '{field}': only {n_significant} pair(s) at z >= 2σ. Weak grounding."
-        )
-    else:
-        verdict = (
-            f"Field '{field}': zero (sign, ctx) pairs survive a permutation null "
-            f"at z >= 2σ. No external grounding signal detected."
-        )
-
-    return {
-        "associations": top,
-        "n_significant": n_significant,
-        "n_total_pairs": len(associations),
-        "field": field,
-        "verdict": verdict,
-        "json": {"top": top, "n_significant": n_significant, "verdict": verdict},
-    }
+    merged = dict(params)
+    spec = dict(merged.get("association_spec") or {})
+    spec.setdefault("significance_cut", 2.0)
+    spec.setdefault("strong_min", 5)
+    spec.setdefault("binned_field", "length_bin")
+    spec.setdefault("bin_source_field", "length")
+    spec.setdefault("bins", [[2, "short"], [5, "medium"]])
+    spec.setdefault("default_bin", "long")
+    spec.setdefault("verdict_templates", {
+        "strong": (
+            "Field '{field}': {n} (sign, ctx) pairs at z >= {cut:g}σ above "
+            "permutation null. External grounding present."
+        ),
+        "weak": (
+            "Field '{field}': only {n} pair(s) at z >= {cut:g}σ. Weak grounding."
+        ),
+        "none": (
+            "Field '{field}': zero (sign, ctx) pairs survive a permutation null "
+            "at z >= {cut:g}σ. No external grounding signal detected."
+        ),
+    })
+    merged["association_spec"] = spec
+    return token_context_association_execute(inputs, merged)
 
 
 # ── Path 2.3 — DerivedAnchorSet ─────────────────────────────────────────
@@ -878,77 +709,21 @@ def _epistatic_interaction_detector(inputs: dict, params: dict) -> dict:
       i.e. interaction information beyond pairwise.
 
     Surplus is reported as nats. Sorted top-K bigrams and trigrams.
+
+    Spec 087 S3 (family F9): the mechanism is the generic
+    InteractionSurplusProfile engine (glossa_lab.generic_primitives);
+    this node is its Phase-14 parameterisation — the 2.0-nat
+    PMI-surplus significance cut is passed as profile_spec data.
     """
-    sequences: list[list[str]] = inputs.get("sequences") or []
-    min_count_2 = max(2, int(params.get("min_count_2", 5)))
-    min_count_3 = max(2, int(params.get("min_count_3", 3)))
-    top_k = max(5, int(params.get("top_k", 25)))
-    label = str(params.get("label", "unknown"))
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        interaction_surplus_profile_execute,
+    )
 
-    if not sequences:
-        return {"label": label, "bigrams": [], "trigrams": [],
-                "verdict": "Empty corpus."}
-
-    uni = _ngram_counts(sequences, 1)
-    bi = _ngram_counts(sequences, 2)
-    tri = _ngram_counts(sequences, 3)
-    n_uni = sum(uni.values()) or 1
-    n_bi = sum(bi.values()) or 1
-    n_tri = sum(tri.values()) or 1
-
-    bigrams: list[dict] = []
-    for (a, b), c in bi.items():
-        if c < min_count_2:
-            continue
-        p_a = uni[(a,)] / n_uni
-        p_b = uni[(b,)] / n_uni
-        p_ab = c / n_bi
-        if p_a <= 0 or p_b <= 0:
-            continue
-        pmi = math.log(p_ab / (p_a * p_b))
-        bigrams.append({"a": a, "b": b, "count": c,
-                        "pmi": round(pmi, 4)})
-
-    trigrams: list[dict] = []
-    for (a, b, c), n in tri.items():
-        if n < min_count_3:
-            continue
-        p_ab = bi[(a, b)] / n_bi if (a, b) in bi else 0.0
-        p_c = uni[(c,)] / n_uni
-        p_abc = n / n_tri
-        if p_ab <= 0 or p_c <= 0 or p_abc <= 0:
-            continue
-        # Interaction information beyond pairwise.
-        surplus = math.log(p_abc / (p_ab * p_c))
-        trigrams.append({"a": a, "b": b, "c": c, "count": n,
-                         "surplus_3rd": round(surplus, 4)})
-
-    bigrams.sort(key=lambda r: -r["pmi"])
-    trigrams.sort(key=lambda r: -r["surplus_3rd"])
-
-    n_significant_2 = sum(1 for r in bigrams if r["pmi"] >= 2.0)
-    n_significant_3 = sum(1 for r in trigrams if r["surplus_3rd"] >= 2.0)
-
-    return {
-        "label": label,
-        "bigrams": bigrams[:top_k],
-        "trigrams": trigrams[:top_k],
-        "n_significant_bigrams": n_significant_2,
-        "n_significant_trigrams": n_significant_3,
-        "n_total_bigrams_examined": len(bigrams),
-        "n_total_trigrams_examined": len(trigrams),
-        "verdict": (
-            f"{label}: {n_significant_2} bigrams + {n_significant_3} trigrams "
-            f"with surplus >= 2.0 nats."
-        ),
-        "json": {
-            "label": label,
-            "n_significant_2nd": n_significant_2,
-            "n_significant_3rd": n_significant_3,
-            "top_bigrams": bigrams[:10],
-            "top_trigrams": trigrams[:10],
-        },
-    }
+    merged = dict(params)
+    spec = dict(merged.get("profile_spec") or {})
+    spec.setdefault("significance_cut", 2.0)
+    merged["profile_spec"] = spec
+    return interaction_surplus_profile_execute(inputs, merged)
 
 
 # ── Epistatic 2 — EpistaticOrderProfile (HED) ───────────────────────────
@@ -967,81 +742,29 @@ def _epistatic_order_profile(inputs: dict, params: dict) -> dict:
     where H(n) is the per-symbol n-block entropy. Reports the fraction of
     total structure captured at each order (the language-vs-non-language
     fingerprint).
+
+    Spec 087 S3 (family F9): the mechanism is the generic
+    OrderInformationProfile engine (glossa_lab.generic_primitives);
+    this node is its Phase-14 parameterisation — the regime rule
+    table (f2/f1 >= 0.10 and f3/f2 >= 0.05 -> language_like;
+    f2/f1 < 0.05 -> non_linguistic; otherwise ambiguous) is
+    passed as profile_spec data.
     """
-    sequences: list[list[str]] = inputs.get("sequences") or []
-    max_order = max(2, int(params.get("max_order", 4)))
-    label = str(params.get("label", "unknown"))
-
-    if not sequences:
-        return {"label": label, "orders": [], "verdict": "Empty corpus."}
-
-    flat = _flatten(sequences)
-    L = len(set(flat))
-    H_max = math.log(L) if L > 1 else 1.0
-
-    # Per-symbol n-block entropy: H(n)/n, which monotonically decreases.
-    per_symbol: list[float] = []
-    for n in range(1, max_order + 2):
-        ngrams = _ngram_counts(sequences, n)
-        H = _entropy_from_counter(ngrams)
-        per_symbol.append(H / n if n > 0 else 0.0)
-
-    # Differences: I_k = per_symbol[k-1] - per_symbol[k]
-    orders: list[dict] = []
-    total = 0.0
-    contribs: list[float] = []
-    for k in range(1, max_order + 1):
-        prev = per_symbol[k - 1] if k - 1 < len(per_symbol) else 0.0
-        cur = per_symbol[k] if k < len(per_symbol) else 0.0
-        d = max(0.0, prev - cur)
-        contribs.append(d)
-        total += d
-
-    # I_1 (unigram skew)
-    base = H_max - per_symbol[0]
-    contribs = [base] + contribs
-    total += base
-
-    for k, c in enumerate(contribs):
-        orders.append({
-            "order": k + 1,
-            "info_nats": round(c, 4),
-            "fraction_of_total": round(c / total, 4) if total > 0 else 0.0,
-        })
-
-    # Language fingerprint metric: ratio of 2nd-order to 1st-order info,
-    # ratio of 3rd-order to 2nd-order info, etc.
-    f2_over_f1 = orders[1]["fraction_of_total"] / max(1e-9, orders[0]["fraction_of_total"])
-    f3_over_f2 = (
-        orders[2]["fraction_of_total"] / max(1e-9, orders[1]["fraction_of_total"])
-        if len(orders) > 2 else 0.0
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        order_information_profile_execute,
     )
-    if f2_over_f1 >= 0.10 and f3_over_f2 >= 0.05:
-        regime = "language_like"
-    elif f2_over_f1 < 0.05:
-        regime = "non_linguistic"
-    else:
-        regime = "ambiguous"
 
-    return {
-        "label": label,
-        "orders": orders,
-        "per_symbol_entropy": [round(v, 4) for v in per_symbol],
-        "regime": regime,
-        "f2_over_f1": round(f2_over_f1, 4),
-        "f3_over_f2": round(f3_over_f2, 4),
-        "verdict": (
-            f"{label}: HED regime={regime}, 2nd/1st={f2_over_f1:.3f}, "
-            f"3rd/2nd={f3_over_f2:.3f}."
-        ),
-        "json": {
-            "label": label,
-            "orders": orders,
-            "regime": regime,
-            "epistatic_2nd_norm": orders[1]["fraction_of_total"] if len(orders) > 1 else 0.0,
-            "epistatic_3rd_norm": orders[2]["fraction_of_total"] if len(orders) > 2 else 0.0,
-        },
-    }
+    merged = dict(params)
+    spec = dict(merged.get("profile_spec") or {})
+    spec.setdefault("regime_rules", [
+        {"regime": "language_like",
+         "conditions": [["f2_over_f1", ">=", 0.10], ["f3_over_f2", ">=", 0.05]]},
+        {"regime": "non_linguistic",
+         "conditions": [["f2_over_f1", "<", 0.05]]},
+    ])
+    spec.setdefault("fallback_regime", "ambiguous")
+    merged["profile_spec"] = spec
+    return order_information_profile_execute(inputs, merged)
 
 
 # ── Epistatic 3 — EpistaticAnchorRanker ─────────────────────────────────
@@ -1112,99 +835,95 @@ def _language_detector_verdict(inputs: dict, params: dict) -> dict:
 
     Output: {is_language: bool, confidence: 0..1, score, evidence_for,
              evidence_against, verdict_text}.
+
+    Spec 087 S3 (family F9): the mechanism is the generic
+    EvidenceRuleAggregator engine (glossa_lab.generic_primitives);
+    this node is its Phase-14 parameterisation — the evidence
+    rule table (the Zipf range pair, the plateau and MI/HED
+    regime equalities, the HED fraction checks at 0.10 / 0.05,
+    and the CAS success-threshold rule over the cas_violation
+    params), the is_language score threshold of 2, and the
+    verdict texts are passed as aggregator_spec data.
     """
-    zipf = inputs.get("zipf") or {}
-    cond = inputs.get("conditional_entropy") or {}
-    mi = inputs.get("mi_decay") or {}
-    hed = inputs.get("hed") or {}
-    cas = inputs.get("cas_projection") or {}
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        evidence_rule_aggregator_execute,
+    )
 
-    evidence_for: list[str] = []
-    evidence_against: list[str] = []
-
-    z_alpha = float(zipf.get("alpha", 0.0))
-    z_r2 = float(zipf.get("r_squared", zipf.get("r2_zipf", 0.0)))
-    if 0.85 <= z_alpha <= 1.30 and z_r2 >= 0.85:
-        evidence_for.append(f"Zipf alpha={z_alpha:.2f} R^2={z_r2:.3f} in language range")
-    elif z_alpha < 0.50 or z_r2 < 0.50:
-        evidence_against.append(f"Zipf alpha={z_alpha:.2f} R^2={z_r2:.3f} outside language range")
-
-    if str(cond.get("plateau", "no")) == "yes":
-        evidence_for.append("Conditional-entropy plateau at n>=3 (h(n) saturates)")
-
-    mi_regime = str(mi.get("regime", "unknown"))
-    if mi_regime == "power_law":
-        evidence_for.append(f"MI decay = power-law (gamma={mi.get('gamma_powerlaw', 0):.2f})")
-    elif mi_regime == "flat":
-        evidence_against.append("MI decay = flat (consistent with unigram-random)")
-    elif mi_regime == "exponential":
-        evidence_against.append("MI decay = exponential (Markov-1, non-linguistic)")
-
-    hed_regime = str(hed.get("regime", "unknown"))
-    f2 = float(hed.get("f2_over_f1", 0.0))
-    f3 = float(hed.get("f3_over_f2", 0.0))
-    if hed_regime == "language_like":
-        evidence_for.append(f"HED regime = language-like (2nd/1st={f2:.2f}, 3rd/2nd={f3:.2f})")
-    elif hed_regime == "non_linguistic":
-        evidence_against.append(f"HED regime = non-linguistic (2nd/1st={f2:.2f})")
-    if hed:
-        orders = hed.get("orders") or []
-        if len(orders) >= 2 and orders[1].get("fraction_of_total", 0) >= 0.10:
-            evidence_for.append(f"HED 2nd-order fraction = {orders[1]['fraction_of_total']:.2f}")
-        if len(orders) >= 3 and orders[2].get("fraction_of_total", 0) >= 0.05:
-            evidence_for.append(f"HED 3rd-order fraction = {orders[2]['fraction_of_total']:.2f}")
-        if len(orders) >= 2 and orders[1].get("fraction_of_total", 0) < 0.05:
-            evidence_against.append(
-                f"HED 2nd-order fraction = {orders[1].get('fraction_of_total', 0):.2f} (<0.05)"
-            )
-
-    if cas:
-        success = bool(cas.get("success"))
-        mv = float(cas.get("max_violation", 1e9))
-        if success and mv <= float(params.get("cas_violation_low", 0.1)):
-            evidence_for.append(f"CAS projection succeeded (max_violation={mv:.3f})")
-        elif mv > float(params.get("cas_violation_high", 1.0)):
-            evidence_against.append(f"CAS projection failed (max_violation={mv:.3f})")
-
-    score = len(evidence_for) - len(evidence_against)
-    total = max(1, len(evidence_for) + len(evidence_against))
-    confidence = abs(score) / total
-    is_language = score >= 2  # majority + positive
-
-    if is_language and confidence >= 0.5:
-        verdict = (
-            f"LIKELY LANGUAGE: {len(evidence_for)} positive signals vs "
-            f"{len(evidence_against)} negative; confidence={confidence:.2f}."
-        )
-    elif score <= -2 and confidence >= 0.5:
-        verdict = (
-            f"LIKELY NOT LANGUAGE: {len(evidence_against)} negative signals "
-            f"vs {len(evidence_for)} positive; confidence={confidence:.2f}."
-        )
-    else:
-        verdict = (
-            f"AMBIGUOUS: {len(evidence_for)} positive and "
-            f"{len(evidence_against)} negative signals; "
-            f"confidence={confidence:.2f}. Need richer corpus or stronger "
-            f"diagnostic to discriminate."
-        )
-
-    return {
-        "is_language": is_language,
-        "confidence": round(confidence, 3),
-        "score": score,
-        "evidence_for": evidence_for,
-        "evidence_against": evidence_against,
-        "verdict": verdict,
-        "json": {
-            "is_language": is_language,
-            "confidence": confidence,
-            "score": score,
-            "evidence_for": evidence_for,
-            "evidence_against": evidence_against,
-            "verdict": verdict,
-        },
-    }
+    merged = dict(params)
+    spec = dict(merged.get("aggregator_spec") or {})
+    spec.setdefault("rules", [
+        {"kind": "range_pair", "input": "zipf",
+         "field_a": "alpha", "field_b": "r_squared",
+         "field_b_fallback": "r2_zipf",
+         "a_range": [0.85, 1.30], "b_min": 0.85,
+         "a_floor": 0.50, "b_floor": 0.50,
+         "for_template": "Zipf alpha={alpha:.2f} R^2={r_squared:.3f} in language range",
+         "against_template": "Zipf alpha={alpha:.2f} R^2={r_squared:.3f} outside language range"},
+        {"kind": "field_equals", "input": "conditional_entropy",
+         "field": "plateau", "default": "no", "equals": "yes", "side": "for",
+         "template": "Conditional-entropy plateau at n>=3 (h(n) saturates)"},
+        {"kind": "field_equals", "input": "mi_decay",
+         "field": "regime", "default": "unknown", "equals": "power_law",
+         "side": "for",
+         "template": "MI decay = power-law (gamma={gamma_powerlaw:.2f})"},
+        {"kind": "field_equals", "input": "mi_decay",
+         "field": "regime", "default": "unknown", "equals": "flat",
+         "side": "against",
+         "template": "MI decay = flat (consistent with unigram-random)"},
+        {"kind": "field_equals", "input": "mi_decay",
+         "field": "regime", "default": "unknown", "equals": "exponential",
+         "side": "against",
+         "template": "MI decay = exponential (Markov-1, non-linguistic)"},
+        {"kind": "field_equals", "input": "hed",
+         "field": "regime", "default": "unknown", "equals": "language_like",
+         "side": "for",
+         "template": "HED regime = language-like (2nd/1st={f2:.2f}, 3rd/2nd={f3:.2f})",
+         "values": {"f2": "f2_over_f1", "f3": "f3_over_f2"}},
+        {"kind": "field_equals", "input": "hed",
+         "field": "regime", "default": "unknown", "equals": "non_linguistic",
+         "side": "against",
+         "template": "HED regime = non-linguistic (2nd/1st={f2:.2f})",
+         "values": {"f2": "f2_over_f1"}},
+        {"kind": "list_fraction_checks", "input": "hed",
+         "list_field": "orders", "value_field": "fraction_of_total",
+         "skip_if_input_empty": True,
+         "checks": [
+             {"index": 1, "op": ">=", "threshold": 0.10, "side": "for",
+              "template": "HED 2nd-order fraction = {value:.2f}"},
+             {"index": 2, "op": ">=", "threshold": 0.05, "side": "for",
+              "template": "HED 3rd-order fraction = {value:.2f}"},
+             {"index": 1, "op": "<", "threshold": 0.05, "side": "against",
+              "template": "HED 2nd-order fraction = {value:.2f} (<0.05)"},
+         ]},
+        {"kind": "success_threshold", "input": "cas_projection",
+         "skip_if_input_empty": True,
+         "success_field": "success", "value_field": "max_violation",
+         "value_default": 1e9,
+         "low_param": "cas_violation_low", "low_default": 0.1,
+         "high_param": "cas_violation_high", "high_default": 1.0,
+         "for_template": "CAS projection succeeded (max_violation={value:.3f})",
+         "against_template": "CAS projection failed (max_violation={value:.3f})"},
+    ])
+    spec.setdefault("language_min_score", 2)
+    spec.setdefault("confidence_threshold", 0.5)
+    spec.setdefault("verdict_templates", {
+        "likely_for": (
+            "LIKELY LANGUAGE: {n_for} positive signals vs "
+            "{n_against} negative; confidence={confidence:.2f}."
+        ),
+        "likely_against": (
+            "LIKELY NOT LANGUAGE: {n_against} negative signals "
+            "vs {n_for} positive; confidence={confidence:.2f}."
+        ),
+        "ambiguous": (
+            "AMBIGUOUS: {n_for} positive and "
+            "{n_against} negative signals; "
+            "confidence={confidence:.2f}. Need richer corpus or stronger "
+            "diagnostic to discriminate."
+        ),
+    })
+    merged["aggregator_spec"] = spec
+    return evidence_rule_aggregator_execute(inputs, merged)
 
 
 # ── Helper — DoFExtractor (corpus -> CAS DoF dict) ──────────────────────
@@ -1219,32 +938,46 @@ def _dof_extractor(inputs: dict, params: dict) -> dict:
       - zipf (ZipfMandelbrotFit)
       - mi_decay (MutualInformationDecay)
       - hed (EpistaticOrderProfile)
+
+    Spec 087 S3 (family F9): the mechanism is the generic
+    MetricFieldExtractor engine (glossa_lab.generic_primitives);
+    this node is its Phase-14 parameterisation — the fixed CAS
+    field-renaming table is passed as the field_map parameter,
+    which is the parameter surface this node gains in the
+    conversion.
     """
-    bep = inputs.get("block_entropies") or {}
-    zipf = inputs.get("zipf") or {}
-    mi = inputs.get("mi_decay") or {}
-    hed = inputs.get("hed") or {}
+    from glossa_lab.generic_primitives import (  # noqa: PLC0415
+        metric_field_extractor_execute,
+    )
 
-    block = bep.get("block_entropies") or []
-    h_norm_3 = next((float(e.get("H_norm", 0)) for e in block if e.get("n") == 3), 0.0)
-    H1 = float(block[0].get("H_nats", 0.0)) if block else 0.0
-
-    dofs = {
-        "h1_norm": h_norm_3,
-        "h1_nats": H1,
-        "zipf_alpha": float(zipf.get("alpha", 0.0)),
-        "zipf_r2": float(zipf.get("r_squared", 0.0)),
-        "mi_gamma": float(mi.get("gamma_powerlaw", 0.0)),
-        "mi_r2_pow": float(mi.get("r2_powerlaw", 0.0)),
-        "epistatic_2nd_norm": 0.0,
-        "epistatic_3rd_norm": 0.0,
-    }
-    orders = hed.get("orders") or []
-    if len(orders) >= 2:
-        dofs["epistatic_2nd_norm"] = float(orders[1].get("fraction_of_total", 0.0))
-    if len(orders) >= 3:
-        dofs["epistatic_3rd_norm"] = float(orders[2].get("fraction_of_total", 0.0))
-    return {"dof_values": dofs, "n_dofs": len(dofs)}
+    merged = dict(params)
+    merged.setdefault("field_map", [
+        {"out": "h1_norm", "kind": "list_row_at_n_field",
+         "input": "block_entropies", "list_key": "block_entropies",
+         "n": 3, "field": "H_norm", "default": 0.0, "coerce": "float"},
+        {"out": "h1_nats", "kind": "list_first_field",
+         "input": "block_entropies", "list_key": "block_entropies",
+         "field": "H_nats", "default": 0.0, "coerce": "float"},
+        {"out": "zipf_alpha", "kind": "field",
+         "input": "zipf", "field": "alpha", "default": 0.0, "coerce": "float"},
+        {"out": "zipf_r2", "kind": "field",
+         "input": "zipf", "field": "r_squared", "default": 0.0, "coerce": "float"},
+        {"out": "mi_gamma", "kind": "field",
+         "input": "mi_decay", "field": "gamma_powerlaw",
+         "default": 0.0, "coerce": "float"},
+        {"out": "mi_r2_pow", "kind": "field",
+         "input": "mi_decay", "field": "r2_powerlaw",
+         "default": 0.0, "coerce": "float"},
+        {"out": "epistatic_2nd_norm", "kind": "list_index_field",
+         "input": "hed", "list_key": "orders",
+         "index": 1, "field": "fraction_of_total",
+         "default": 0.0, "coerce": "float"},
+        {"out": "epistatic_3rd_norm", "kind": "list_index_field",
+         "input": "hed", "list_key": "orders",
+         "index": 2, "field": "fraction_of_total",
+         "default": 0.0, "coerce": "float"},
+    ])
+    return metric_field_extractor_execute(inputs, merged)
 
 
 # ── Atomic node defs for registration ───────────────────────────────────

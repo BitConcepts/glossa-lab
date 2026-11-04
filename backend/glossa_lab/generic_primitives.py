@@ -3890,3 +3890,256 @@ def positional_claim_tester_execute(inputs: dict, params: dict) -> dict:
             n_total=n_total, n_supp=n_supp,
             pct=round(100 * n_supp / max(n_total, 1))),
     }
+
+
+# ── RecordGroupSummary ──────────────────────────────────────────────────────
+# Spec 087 S3 PR-F (family F10). A grouped summary over a record list:
+# per-record computed fields (safe-int coercions, falsy-defaulted
+# labels), then an ordered list of spec blocks — record counts,
+# value counters (insertion / most-common / key-sorted orders),
+# row projections (optionally presence-filtered, limited, with
+# truncated text fields), derived row subsets, sums, substring-match
+# and presence counts, counter lookups, input echoes / lengths /
+# field picks / metadata picks, top-N sections over input dicts and
+# record lists — and a verdict template rendered over the assembled
+# result plus dominant/length helpers for every counter and first
+# key/value helpers for every top-N dict section. All field names,
+# defaults, orders, caps and texts are spec data; the phase auditors
+# this engine generalises differ only in their specs.
+
+
+def _summary_computed(records: list, record_fields: list[dict]) -> list[dict]:
+    computed: list[dict] = []
+    for record in records:
+        values: dict[str, Any] = {}
+        for entry in record_fields:
+            value = record.get(entry["from"], entry.get("default"))
+            if entry.get("missing") == "falsy_default" and not value:
+                value = entry.get("default")
+            if entry.get("safe_int"):
+                value = _safe_int(value)
+            values[entry["name"]] = value
+        computed.append(values)
+    return computed
+
+
+def _summary_field(record: dict, comp: dict, entry: dict) -> Any:
+    if "computed" in entry:
+        return comp[entry["computed"]]
+    if entry.get("truncate") is not None:
+        value = record.get(entry["from"], "") or ""
+        return value[: entry["truncate"]]
+    if "safe_int" in entry:
+        return _safe_int(record.get(entry["from"]))
+    return record.get(entry["from"], entry.get("default"))
+
+
+def _summary_project(records: list, computed: list[dict],
+                     fields: list[dict]) -> list[dict]:
+    return [
+        {entry["out"]: _summary_field(record, comp, entry) for entry in fields}
+        for record, comp in zip(records, computed)
+    ]
+
+
+def record_group_summary_execute(inputs: dict, params: dict) -> dict:
+    spec = dict(params.get("summary_spec") or {})
+    records = inputs.get(spec.get("records_key", "records")) or []
+    computed = _summary_computed(records, spec.get("record_fields") or [])
+    result: dict[str, Any] = {}
+    counters: dict[str, Counter] = {}
+    for block in spec.get("blocks") or []:
+        kind = block["kind"]
+        out = block.get("out")
+        if kind == "count":
+            source = (inputs.get(block["input_key"]) or []) \
+                if "input_key" in block else records
+            result[out] = len(source)
+        elif kind == "counter":
+            counter: Counter = Counter()
+            for record, comp in zip(records, computed):
+                if "computed" in block:
+                    value = comp[block["computed"]]
+                else:
+                    value = record.get(block["field"], block.get("default"))
+                    if block.get("missing") == "falsy_default" and not value:
+                        value = block.get("default")
+                counter[value] += 1
+            counters[out] = counter
+            if block.get("order") == "sorted":
+                result[out] = dict(sorted(counter.items()))
+            elif block.get("top"):
+                result[out] = dict(counter.most_common(block["top"]))
+            else:
+                result[out] = dict(counter.most_common())
+        elif kind == "rows":
+            chosen = list(zip(records, computed))
+            if block.get("only_if_present"):
+                field = block["only_if_present"]
+                chosen = [(r, c) for r, c in chosen
+                          if r.get(field) is not None]
+            if block.get("limit"):
+                chosen = chosen[: block["limit"]]
+            result[out] = _summary_project(
+                [r for r, _c in chosen], [c for _r, c in chosen],
+                block["fields"])
+        elif kind == "derived_rows":
+            rows = result[block["from"]]
+            where = block["where"]
+            if where.get("op", ">") == ">":
+                result[out] = [r for r in rows
+                               if r[where["field"]] > where["value"]]
+            else:
+                result[out] = [r for r in rows
+                               if r[where["field"]] == where["value"]]
+        elif kind == "count_of":
+            result[out] = len(result[block["from"]])
+        elif kind == "sum":
+            total = 0
+            for record, comp in zip(records, computed):
+                if "computed" in block:
+                    total += comp[block["computed"]]
+                else:
+                    value = record.get(block["field"])
+                    total += _safe_int(value) if block.get("safe_int") else value
+            result[out] = total
+        elif kind == "match_count":
+            needle = block["substring"]
+            field = block["field"]
+            n = 0
+            for record in records:
+                hay = str(record.get(field, "") or "")
+                if block.get("transform") == "upper":
+                    hay = hay.upper()
+                if needle in hay:
+                    n += 1
+            result[out] = n
+        elif kind == "presence_count":
+            field = block["field"]
+            result[out] = sum(1 for r in records if r.get(field) is not None)
+        elif kind == "counter_get":
+            result[out] = counters[block["counter"]].get(
+                block["key"], block.get("default", 0))
+        elif kind == "input_len":
+            result[out] = len(inputs.get(block["input_key"]) or {})
+        elif kind == "input_echo":
+            result[out] = inputs.get(block["input_key"]) or block.get("default")
+        elif kind == "input_field":
+            result[out] = (inputs.get(block["input_key"]) or {}).get(
+                block["field"], block.get("default"))
+        elif kind == "metadata_pick":
+            source = inputs.get(block["input_key"]) or {}
+            result[out] = {f: source.get(f) for f in block["fields"]}
+        elif kind == "dict_top":
+            items = (inputs.get(block["input_key"]) or {}).items()
+            result[out] = sorted(items, key=lambda kv: -kv[1])[: block["n"]]
+        elif kind == "records_top":
+            pool = inputs.get(block["input_key"]) or []
+            ranked = sorted(
+                pool, key=lambda t: -_safe_int(t.get(block["sort_field"])))
+            pool_computed = _summary_computed(ranked, [])
+            result[out] = _summary_project(
+                ranked[: block["n"]], pool_computed[: block["n"]],
+                block["fields"])
+        elif kind == "verdict":
+            context: dict[str, Any] = dict(result)
+            context["n"] = len(records)
+            input_keys = {spec.get("records_key", "records")}
+            for block2 in spec.get("blocks") or []:
+                if block2.get("input_key"):
+                    input_keys.add(block2["input_key"])
+            input_keys.update(inputs.keys())
+            for key in input_keys:
+                value = inputs.get(key)
+                if isinstance(value, (list, dict)):
+                    context[f"n_input_{key}"] = len(value)
+                elif key not in inputs:
+                    context[f"n_input_{key}"] = 0
+            for name, counter in counters.items():
+                context[f"len_{name}"] = len(counter)
+                context[f"dom_{name}"] = \
+                    counter.most_common(1)[0] if counter else "(none)"
+            for block2 in spec.get("blocks") or []:
+                if block2.get("kind") == "dict_top":
+                    section = result[block2["out"]]
+                    context[f"{block2['out']}_first_key"] = \
+                        section[0][0] if section else "(none)"
+                    context[f"{block2['out']}_first_value"] = \
+                        section[0][1] if section else 0
+            result[out] = block["template"].format(**context)
+        else:  # pragma: no cover - spec error
+            raise ValueError(f"RecordGroupSummary: unknown block {kind!r}")
+    return result
+
+
+# ── CorpusComparisonStats ───────────────────────────────────────────────────
+# Spec 087 S3 PR-F (family F10). Per-corpus inscription statistics
+# (count / tokens / distinct signs / mean length) over a spec list of
+# corpora: input corpora (record lists whose per-record sequence field
+# is token-filtered, or plain sequence lists taken as-is), direct
+# corpora whose loader result the delegating node supplies in params
+# (a stats row when available, a spec-carried unavailable row
+# otherwise), and direct-count corpora (a spec-shaped row of counts
+# when available). A scale-up ratio between two rows and the verdict
+# template close the result.
+
+
+def _corpus_stats_row(name: str, inscriptions, count_field: str) -> dict:
+    if not inscriptions:
+        return {"corpus": name, "n_inscriptions": 0, "n_tokens": 0,
+                "n_distinct_signs": 0, "mean_length": 0.0}
+    if isinstance(inscriptions[0], dict):
+        seqs = [i.get(count_field) or [] for i in inscriptions]
+        seqs = [[s for s in seq if s and s != "?"] for seq in seqs]
+    else:
+        seqs = inscriptions
+    flat = [s for seq in seqs for s in seq]
+    return {
+        "corpus": name,
+        "n_inscriptions": len(seqs),
+        "n_tokens": len(flat),
+        "n_distinct_signs": len(set(flat)),
+        "mean_length": round(sum(len(s) for s in seqs) / max(1, len(seqs)), 3),
+    }
+
+
+def corpus_comparison_stats_execute(inputs: dict, params: dict) -> dict:
+    spec = dict(params.get("stats_spec") or {})
+    direct = params.get("direct_results") or {}
+    rows: list[dict] = []
+    for corpus in spec.get("corpora") or []:
+        source = corpus.get("source", "input")
+        if source == "input":
+            rows.append(_corpus_stats_row(
+                corpus["name"], inputs.get(corpus["key"]) or [],
+                corpus.get("count_field", "indus_signs")))
+        elif source == "direct":
+            loaded = direct.get(corpus["result_key"]) or {}
+            if loaded.get("available"):
+                rows.append(_corpus_stats_row(
+                    corpus["name"],
+                    loaded.get(corpus.get("inscriptions_field",
+                                          "inscriptions")) or [],
+                    corpus.get("count_field", "indus_signs")))
+            else:
+                rows.append(dict(corpus["unavailable"]))
+        else:  # direct_counts
+            loaded = direct.get(corpus["result_key"]) or {}
+            if loaded.get("available"):
+                row = {"corpus": corpus["name"]}
+                for out_field, in_field in (corpus.get("fields") or {}).items():
+                    row[out_field] = loaded.get(in_field, 0)
+                rows.append(row)
+            else:
+                rows.append(dict(corpus["unavailable"]))
+    scale_spec = spec["scale"]
+    denominator = rows[scale_spec["denominator_row"]]["n_inscriptions"] or 1
+    numerator = rows[scale_spec["numerator_row"]]["n_inscriptions"]
+    scale = round(numerator / denominator, scale_spec.get("round", 1)) \
+        if denominator else 0.0
+    result: dict[str, Any] = {"rows": rows, scale_spec["out"]: scale}
+    if "verdict_template" in spec:
+        result["verdict"] = spec["verdict_template"].format(
+            denominator_n=denominator, numerator_n=numerator,
+            scale_up=scale)
+    return result

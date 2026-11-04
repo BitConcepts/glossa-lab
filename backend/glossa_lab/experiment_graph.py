@@ -58,6 +58,8 @@ from glossa_lab.generic_primitives import (
     pmi_centrality_ranker_execute,
     positional_claim_tester_execute,
     positional_class_classifier_execute,
+    record_group_summary_execute,
+    corpus_comparison_stats_execute,
     registry_table_loader_execute,
     reverse_skeleton_search_execute,
     sign_position_null_test_execute,
@@ -2526,6 +2528,33 @@ for _d in [
         params_schema={"type":"object","properties":{
             "tester_spec":{"type":"object","title":"Tester Spec","description":"Type keywords, position needles, support rule, error and verdict texts."}}},
         fn=positional_claim_tester_execute),
+    AtomicNodeDef("RecordGroupSummary","Record Group Summary","Analysis",
+        "Grouped summary over a record list (Spec 087 S3): per-record "
+        "computed fields, then ordered spec blocks — counts, value "
+        "counters, row projections, derived subsets, sums, match and "
+        "presence counts, top-N sections over inputs — closed by a "
+        "verdict template. Field names, defaults, orders, caps and "
+        "texts are parameters (summary_spec), not code — the phase "
+        "auditors and reporters delegate to this engine.",
+        inputs=[{"name":"records","type":"json","required":False}],
+        outputs=[{"name":"verdict","type":"text"},{"name":"json","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "summary_spec":{"type":"object","title":"Summary Spec","description":"Records key, per-record computed fields, ordered blocks, verdict template."}}},
+        fn=record_group_summary_execute),
+    AtomicNodeDef("CorpusComparisonStats","Corpus Comparison Stats","Analysis",
+        "Per-corpus inscription statistics over a spec list of corpora "
+        "(Spec 087 S3): input record/sequence corpora, direct loader "
+        "corpora with spec-carried unavailable rows, and direct-count "
+        "corpora, closed by a scale-up ratio between two rows and a "
+        "verdict template. Corpus names, sequence fields and fallback "
+        "rows are parameters (stats_spec), not code — Phase29CorpusStats "
+        "delegates to this engine.",
+        inputs=[{"name":"inscribed_seals","type":"json","required":False},
+                {"name":"mahadevan_inscriptions","type":"json","required":False}],
+        outputs=[{"name":"rows","type":"json"},{"name":"scale_up_factor_cisi_to_m77","type":"number"},{"name":"verdict","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "stats_spec":{"type":"object","title":"Stats Spec","description":"Corpus list, scale-up rows, verdict template."}}},
+        fn=corpus_comparison_stats_execute),
     AtomicNodeDef("FreqCounter","Frequency Counter","Transforms",
         "Count symbol occurrences across all sequences.",
         inputs=[{"name":"sequences","type":"sequences","required":True}],

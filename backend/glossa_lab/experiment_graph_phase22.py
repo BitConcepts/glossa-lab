@@ -110,56 +110,49 @@ def _contact_corpus_loader(inputs: dict, params: dict) -> dict:
 
 
 def _meluhha_corpus_reporter(inputs: dict, params: dict) -> dict:
-    """Compact report on the loaded Meluhha-mention corpus."""
-    tablets = inputs.get("tablets") or []
-    keyword_counts = inputs.get("keyword_counts") or {}
-    period_counts = inputs.get("period_counts") or {}
-    provenience_counts = inputs.get("provenience_counts") or {}
+    """Compact report on the loaded Meluhha-mention corpus.
 
-    # Most-mentioned tablet by match_count
-    if tablets:
-        most_mentioned = sorted(
-            tablets, key=lambda t: -_safe_int(t.get("match_count")),
-        )[:10]
-    else:
-        most_mentioned = []
+    Spec 087 S3 PR-F: delegates to the generic RecordGroupSummary;
+    the section specs (top-5 periods / top-10 provenience as data,
+    most-mentioned projection) and the verdict text are spec data.
+    """
+    from glossa_lab.generic_primitives import record_group_summary_execute
 
-    top_5_periods = sorted(
-        period_counts.items(), key=lambda kv: -kv[1],
-    )[:5]
-    top_10_provenience = sorted(
-        provenience_counts.items(), key=lambda kv: -kv[1],
-    )[:10]
-
-    verdict = (
-        f"CDLI Meluhha audit: {len(tablets)} tablets across "
-        f"{len(period_counts)} periods. "
-        f"Dominant period: {top_5_periods[0][0] if top_5_periods else '(none)'} "
-        f"({top_5_periods[0][1] if top_5_periods else 0} tablets). "
-        f"Dominant provenience: "
-        f"{top_10_provenience[0][0] if top_10_provenience else '(none)'} "
-        f"({top_10_provenience[0][1] if top_10_provenience else 0} tablets)."
-    )
-
-    return {
-        "n_tablets": len(tablets),
-        "n_keywords": len(keyword_counts),
-        "keyword_counts": keyword_counts,
-        "top_5_periods": top_5_periods,
-        "top_10_provenience": top_10_provenience,
-        "most_mentioned_top10": [
-            {
-                "p_number": t.get("p_number"),
-                "designation": t.get("designation"),
-                "period": t.get("period"),
-                "provenience": t.get("provenience"),
-                "match_count": _safe_int(t.get("match_count")),
-                "matched_keywords": t.get("matched_keywords"),
-            }
-            for t in most_mentioned
+    merged = dict(params)
+    merged["summary_spec"] = {
+        "records_key": "tablets",
+        "blocks": [
+            {"kind": "count", "out": "n_tablets"},
+            {"kind": "input_len", "out": "n_keywords",
+             "input_key": "keyword_counts"},
+            {"kind": "input_echo", "out": "keyword_counts",
+             "input_key": "keyword_counts", "default": {}},
+            {"kind": "dict_top", "out": "top_5_periods",
+             "input_key": "period_counts", "n": 5},
+            {"kind": "dict_top", "out": "top_10_provenience",
+             "input_key": "provenience_counts", "n": 10},
+            {"kind": "records_top", "out": "most_mentioned_top10",
+             "input_key": "tablets", "sort_field": "match_count", "n": 10,
+             "fields": [
+                 {"out": "p_number", "from": "p_number"},
+                 {"out": "designation", "from": "designation"},
+                 {"out": "period", "from": "period"},
+                 {"out": "provenience", "from": "provenience"},
+                 {"out": "match_count", "from": "match_count",
+                  "safe_int": True},
+                 {"out": "matched_keywords", "from": "matched_keywords"},
+             ]},
+            {"kind": "verdict", "out": "verdict",
+             "template": (
+                 "CDLI Meluhha audit: {n_tablets} tablets across "
+                 "{n_input_period_counts} periods. Dominant period: "
+                 "{top_5_periods_first_key} ({top_5_periods_first_value} "
+                 "tablets). Dominant provenience: "
+                 "{top_10_provenience_first_key} "
+                 "({top_10_provenience_first_value} tablets).")},
         ],
-        "verdict": verdict,
     }
+    return record_group_summary_execute(inputs, merged)
 
 
 def _meluhhan_persons_extractor(inputs: dict, params: dict) -> dict:
@@ -205,39 +198,43 @@ def _meluhhan_persons_extractor(inputs: dict, params: dict) -> dict:
 
 def _indus_seals_at_mesopotamia_summary(inputs: dict, params: dict) -> dict:
     """Compact report on hand-encoded Indus seals found in
-    Mesopotamia / Iran / Persian Gulf."""
-    seals = inputs.get("seals_at_mesopotamia") or []
-    by_country: Counter[str] = Counter()
-    by_type: Counter[str] = Counter()
-    by_period: Counter[str] = Counter()
-    for s in seals:
-        by_country[s.get("find_country", "(unknown)")] += 1
-        by_type[s.get("type", "(unknown)")] += 1
-        by_period[s.get("find_period", "(unknown)")] += 1
-    rows = []
-    for s in seals:
-        rows.append({
-            "catalogue_id": s.get("catalogue_id"),
-            "type": s.get("type"),
-            "find_country": s.get("find_country"),
-            "find_spot": s.get("find_spot"),
-            "find_period": s.get("find_period"),
-            "current_collection": s.get("current_collection"),
-            "inscription_reading": s.get("inscription_reading"),
-            "source": s.get("source"),
-        })
-    return {
-        "n_seals": len(seals),
-        "by_country": dict(by_country.most_common()),
-        "by_type": dict(by_type.most_common()),
-        "by_period": dict(by_period.most_common()),
-        "rows": rows,
-        "verdict": (
-            f"Indus-seals-at-Mesopotamia inventory: {len(seals)} seals "
-            f"({len(by_country)} countries, {len(by_type)} types). "
-            f"Dominant context: {by_country.most_common(1)[0] if by_country else '(none)'}."
-        ),
+    Mesopotamia / Iran / Persian Gulf.
+
+    Spec 087 S3 PR-F: delegates to the generic RecordGroupSummary;
+    the three group counters ('(unknown)' defaults), the row
+    projection and the verdict text are spec data.
+    """
+    from glossa_lab.generic_primitives import record_group_summary_execute
+
+    merged = dict(params)
+    merged["summary_spec"] = {
+        "records_key": "seals_at_mesopotamia",
+        "blocks": [
+            {"kind": "count", "out": "n_seals"},
+            {"kind": "counter", "out": "by_country", "field": "find_country",
+             "default": "(unknown)", "order": "most_common"},
+            {"kind": "counter", "out": "by_type", "field": "type",
+             "default": "(unknown)", "order": "most_common"},
+            {"kind": "counter", "out": "by_period", "field": "find_period",
+             "default": "(unknown)", "order": "most_common"},
+            {"kind": "rows", "out": "rows", "fields": [
+                {"out": "catalogue_id", "from": "catalogue_id"},
+                {"out": "type", "from": "type"},
+                {"out": "find_country", "from": "find_country"},
+                {"out": "find_spot", "from": "find_spot"},
+                {"out": "find_period", "from": "find_period"},
+                {"out": "current_collection", "from": "current_collection"},
+                {"out": "inscription_reading", "from": "inscription_reading"},
+                {"out": "source", "from": "source"},
+            ]},
+            {"kind": "verdict", "out": "verdict",
+             "template": (
+                 "Indus-seals-at-Mesopotamia inventory: {n_seals} seals "
+                 "({len_by_country} countries, {len_by_type} types). "
+                 "Dominant context: {dom_by_country}.")},
+        ],
     }
+    return record_group_summary_execute(inputs, merged)
 
 
 # ── Name matcher (prototype) ──────────────────────────────────────────

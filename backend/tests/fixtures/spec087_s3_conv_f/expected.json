@@ -1196,6 +1196,60 @@
    }
   },
   {
+   "id": "f10_seals_mixed",
+   "node": "IndusSealsAtMesopotamiaSummary",
+   "mode": "full",
+   "inputs": {
+    "seals_at_mesopotamia": [
+     {
+      "catalogue_id": "S1",
+      "type": "stamp",
+      "find_country": "Iraq",
+      "find_spot": "Ur",
+      "find_period": "Akkadian",
+      "current_collection": "BM",
+      "inscription_reading": "\u2026",
+      "source": "CISI"
+     },
+     {
+      "catalogue_id": "S2",
+      "type": "stamp",
+      "find_country": "Iraq",
+      "find_spot": "Eshnunna",
+      "find_period": "Old Babylonian",
+      "current_collection": "IM",
+      "inscription_reading": "",
+      "source": "CISI"
+     },
+     {
+      "catalogue_id": "S3",
+      "type": "cylinder",
+      "find_country": "Iran",
+      "find_spot": "Susa",
+      "find_period": "Akkadian",
+      "current_collection": "Louvre",
+      "inscription_reading": "",
+      "source": "CISI"
+     },
+     {
+      "catalogue_id": "S4"
+     },
+     {
+      "catalogue_id": "S5",
+      "type": "stamp",
+      "find_country": null,
+      "find_spot": "Dilmun",
+      "find_period": "Dilmun",
+      "current_collection": "",
+      "inscription_reading": "",
+      "source": "hand"
+     }
+    ]
+   },
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
    "expected": {
     "by_country": {
      "(unknown)": 1,
@@ -1268,63 +1322,17 @@
      }
     ],
     "verdict": "Indus-seals-at-Mesopotamia inventory: 5 seals (4 countries, 3 types). Dominant context: ('Iraq', 2)."
-   },
-   "id": "f10_seals_mixed",
-   "inputs": {
-    "seals_at_mesopotamia": [
-     {
-      "catalogue_id": "S1",
-      "current_collection": "BM",
-      "find_country": "Iraq",
-      "find_period": "Akkadian",
-      "find_spot": "Ur",
-      "inscription_reading": "\u2026",
-      "source": "CISI",
-      "type": "stamp"
-     },
-     {
-      "catalogue_id": "S2",
-      "current_collection": "IM",
-      "find_country": "Iraq",
-      "find_period": "Old Babylonian",
-      "find_spot": "Eshnunna",
-      "inscription_reading": "",
-      "source": "CISI",
-      "type": "stamp"
-     },
-     {
-      "catalogue_id": "S3",
-      "current_collection": "Louvre",
-      "find_country": "Iran",
-      "find_period": "Akkadian",
-      "find_spot": "Susa",
-      "inscription_reading": "",
-      "source": "CISI",
-      "type": "cylinder"
-     },
-     {
-      "catalogue_id": "S4"
-     },
-     {
-      "catalogue_id": "S5",
-      "current_collection": "",
-      "find_country": null,
-      "find_period": "Dilmun",
-      "find_spot": "Dilmun",
-      "inscription_reading": "",
-      "source": "hand",
-      "type": "stamp"
-     }
-    ]
-   },
-   "mode": "full",
-   "node": "IndusSealsAtMesopotamiaSummary",
-   "params": {},
-   "setup": {
-    "kind": "plain"
    }
   },
   {
+   "id": "f10_seals_empty",
+   "node": "IndusSealsAtMesopotamiaSummary",
+   "mode": "full",
+   "inputs": {},
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
    "expected": {
     "by_country": {},
     "by_period": {},
@@ -1332,17 +1340,157 @@
     "n_seals": 0,
     "rows": [],
     "verdict": "Indus-seals-at-Mesopotamia inventory: 0 seals (0 countries, 0 types). Dominant context: (none)."
-   },
-   "id": "f10_seals_empty",
-   "inputs": {},
-   "mode": "full",
-   "node": "IndusSealsAtMesopotamiaSummary",
-   "params": {},
-   "setup": {
-    "kind": "plain"
    }
   },
   {
+   "id": "f10_meluhha_mixed",
+   "node": "MeluhhaCorpusReporter",
+   "mode": "full",
+   "inputs": {
+    "tablets": [
+     {
+      "p_number": "P000000",
+      "designation": "tablet 0",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "match_count": 12,
+      "matched_keywords": [
+       "meluhha"
+      ]
+     },
+     {
+      "p_number": "P000001",
+      "designation": "tablet 1",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "match_count": "7",
+      "matched_keywords": [
+       "meluhha"
+      ]
+     },
+     {
+      "p_number": "P000002",
+      "designation": "tablet 2",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "match_count": 7,
+      "matched_keywords": [
+       "meluhha"
+      ]
+     },
+     {
+      "p_number": "P000003",
+      "designation": "tablet 3",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "match_count": null,
+      "matched_keywords": [
+       "meluhha"
+      ]
+     },
+     {
+      "p_number": "P000004",
+      "designation": "tablet 4",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "matched_keywords": [
+       "meluhha"
+      ]
+     },
+     {
+      "p_number": "P000005",
+      "designation": "tablet 5",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "match_count": 3,
+      "matched_keywords": [
+       "meluhha"
+      ]
+     },
+     {
+      "p_number": "P000006",
+      "designation": "tablet 6",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "match_count": 1,
+      "matched_keywords": [
+       "meluhha"
+      ]
+     },
+     {
+      "p_number": "P000007",
+      "designation": "tablet 7",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "match_count": 0,
+      "matched_keywords": [
+       "meluhha"
+      ]
+     },
+     {
+      "p_number": "P000008",
+      "designation": "tablet 8",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "match_count": 0,
+      "matched_keywords": [
+       "meluhha"
+      ]
+     },
+     {
+      "p_number": "P000009",
+      "designation": "tablet 9",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "match_count": 0,
+      "matched_keywords": [
+       "meluhha"
+      ]
+     },
+     {
+      "p_number": "P000010",
+      "designation": "tablet 10",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "match_count": 0,
+      "matched_keywords": [
+       "meluhha"
+      ]
+     },
+     {
+      "p_number": "P000011",
+      "designation": "tablet 11",
+      "period": "Ur III",
+      "provenience": "Girsu",
+      "match_count": 25,
+      "matched_keywords": [
+       "meluhha"
+      ]
+     }
+    ],
+    "keyword_counts": {
+     "meluhha": 40,
+     "magilum": 3
+    },
+    "period_counts": {
+     "Ur III": 30,
+     "Old Babylonian": 12,
+     "Akkadian": 12,
+     "ED III": 2,
+     "Lagash II": 1,
+     "Isin-Larsa": 1
+    },
+    "provenience_counts": {
+     "Girsu": 20,
+     "Umma": 9,
+     "Nippur": 9,
+     "Ur": 5
+    }
+   },
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
    "expected": {
     "keyword_counts": {
      "magilum": 3,
@@ -1493,157 +1641,17 @@
      ]
     ],
     "verdict": "CDLI Meluhha audit: 12 tablets across 6 periods. Dominant period: Ur III (30 tablets). Dominant provenience: Girsu (20 tablets)."
-   },
-   "id": "f10_meluhha_mixed",
-   "inputs": {
-    "keyword_counts": {
-     "magilum": 3,
-     "meluhha": 40
-    },
-    "period_counts": {
-     "Akkadian": 12,
-     "ED III": 2,
-     "Isin-Larsa": 1,
-     "Lagash II": 1,
-     "Old Babylonian": 12,
-     "Ur III": 30
-    },
-    "provenience_counts": {
-     "Girsu": 20,
-     "Nippur": 9,
-     "Umma": 9,
-     "Ur": 5
-    },
-    "tablets": [
-     {
-      "designation": "tablet 0",
-      "match_count": 12,
-      "matched_keywords": [
-       "meluhha"
-      ],
-      "p_number": "P000000",
-      "period": "Ur III",
-      "provenience": "Girsu"
-     },
-     {
-      "designation": "tablet 1",
-      "match_count": "7",
-      "matched_keywords": [
-       "meluhha"
-      ],
-      "p_number": "P000001",
-      "period": "Ur III",
-      "provenience": "Girsu"
-     },
-     {
-      "designation": "tablet 2",
-      "match_count": 7,
-      "matched_keywords": [
-       "meluhha"
-      ],
-      "p_number": "P000002",
-      "period": "Ur III",
-      "provenience": "Girsu"
-     },
-     {
-      "designation": "tablet 3",
-      "match_count": null,
-      "matched_keywords": [
-       "meluhha"
-      ],
-      "p_number": "P000003",
-      "period": "Ur III",
-      "provenience": "Girsu"
-     },
-     {
-      "designation": "tablet 4",
-      "matched_keywords": [
-       "meluhha"
-      ],
-      "p_number": "P000004",
-      "period": "Ur III",
-      "provenience": "Girsu"
-     },
-     {
-      "designation": "tablet 5",
-      "match_count": 3,
-      "matched_keywords": [
-       "meluhha"
-      ],
-      "p_number": "P000005",
-      "period": "Ur III",
-      "provenience": "Girsu"
-     },
-     {
-      "designation": "tablet 6",
-      "match_count": 1,
-      "matched_keywords": [
-       "meluhha"
-      ],
-      "p_number": "P000006",
-      "period": "Ur III",
-      "provenience": "Girsu"
-     },
-     {
-      "designation": "tablet 7",
-      "match_count": 0,
-      "matched_keywords": [
-       "meluhha"
-      ],
-      "p_number": "P000007",
-      "period": "Ur III",
-      "provenience": "Girsu"
-     },
-     {
-      "designation": "tablet 8",
-      "match_count": 0,
-      "matched_keywords": [
-       "meluhha"
-      ],
-      "p_number": "P000008",
-      "period": "Ur III",
-      "provenience": "Girsu"
-     },
-     {
-      "designation": "tablet 9",
-      "match_count": 0,
-      "matched_keywords": [
-       "meluhha"
-      ],
-      "p_number": "P000009",
-      "period": "Ur III",
-      "provenience": "Girsu"
-     },
-     {
-      "designation": "tablet 10",
-      "match_count": 0,
-      "matched_keywords": [
-       "meluhha"
-      ],
-      "p_number": "P000010",
-      "period": "Ur III",
-      "provenience": "Girsu"
-     },
-     {
-      "designation": "tablet 11",
-      "match_count": 25,
-      "matched_keywords": [
-       "meluhha"
-      ],
-      "p_number": "P000011",
-      "period": "Ur III",
-      "provenience": "Girsu"
-     }
-    ]
-   },
-   "mode": "full",
-   "node": "MeluhhaCorpusReporter",
-   "params": {},
-   "setup": {
-    "kind": "plain"
    }
   },
   {
+   "id": "f10_meluhha_empty",
+   "node": "MeluhhaCorpusReporter",
+   "mode": "full",
+   "inputs": {},
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
    "expected": {
     "keyword_counts": {},
     "most_mentioned_top10": [],
@@ -1652,17 +1660,56 @@
     "top_10_provenience": [],
     "top_5_periods": [],
     "verdict": "CDLI Meluhha audit: 0 tablets across 0 periods. Dominant period: (none) (0 tablets). Dominant provenience: (none) (0 tablets)."
-   },
-   "id": "f10_meluhha_empty",
-   "inputs": {},
-   "mode": "full",
-   "node": "MeluhhaCorpusReporter",
-   "params": {},
-   "setup": {
-    "kind": "plain"
    }
   },
   {
+   "id": "f10_auditor_mixed",
+   "node": "SealSignAuditor",
+   "mode": "full",
+   "inputs": {
+    "all_seals": [
+     {
+      "catalogue_id": "A1",
+      "find_country": "Iraq",
+      "inscription_length": 5,
+      "signs_confidence": "high",
+      "signs_source": "CISI"
+     },
+     {
+      "catalogue_id": "A2",
+      "find_country": "Iran",
+      "inscription_length": "3",
+      "signs_confidence": "medium",
+      "signs_source": "CISI"
+     },
+     {
+      "catalogue_id": "A3",
+      "find_country": "Iraq",
+      "inscription_length": 0,
+      "signs_confidence": "",
+      "signs_source": ""
+     },
+     {
+      "catalogue_id": "A4",
+      "find_country": "Iraq",
+      "inscription_length": null
+     },
+     {
+      "catalogue_id": "A5",
+      "find_country": "Bahrain",
+      "inscription_length": 5,
+      "signs_confidence": "high",
+      "signs_source": "hand"
+     }
+    ],
+    "sign_metadata": {
+     "method": "CISI Vol 1-2 sign extraction"
+    }
+   },
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
    "expected": {
     "by_confidence": {
      "high": 2,
@@ -1739,56 +1786,17 @@
     ],
     "total_indus_signs": 13,
     "verdict": "Phase-23 seal-sign audit: 5 seals; 3 carry Indus signs (13 total). Confidence tiers: {'high': 2, 'unknown': 2, 'medium': 1}."
-   },
-   "id": "f10_auditor_mixed",
-   "inputs": {
-    "all_seals": [
-     {
-      "catalogue_id": "A1",
-      "find_country": "Iraq",
-      "inscription_length": 5,
-      "signs_confidence": "high",
-      "signs_source": "CISI"
-     },
-     {
-      "catalogue_id": "A2",
-      "find_country": "Iran",
-      "inscription_length": "3",
-      "signs_confidence": "medium",
-      "signs_source": "CISI"
-     },
-     {
-      "catalogue_id": "A3",
-      "find_country": "Iraq",
-      "inscription_length": 0,
-      "signs_confidence": "",
-      "signs_source": ""
-     },
-     {
-      "catalogue_id": "A4",
-      "find_country": "Iraq",
-      "inscription_length": null
-     },
-     {
-      "catalogue_id": "A5",
-      "find_country": "Bahrain",
-      "inscription_length": 5,
-      "signs_confidence": "high",
-      "signs_source": "hand"
-     }
-    ],
-    "sign_metadata": {
-     "method": "CISI Vol 1-2 sign extraction"
-    }
-   },
-   "mode": "full",
-   "node": "SealSignAuditor",
-   "params": {},
-   "setup": {
-    "kind": "plain"
    }
   },
   {
+   "id": "f10_auditor_empty",
+   "node": "SealSignAuditor",
+   "mode": "full",
+   "inputs": {},
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
    "expected": {
     "by_confidence": {},
     "by_length": {},
@@ -1799,17 +1807,112 @@
     "rows": [],
     "total_indus_signs": 0,
     "verdict": "Phase-23 seal-sign audit: 0 seals; 0 carry Indus signs (0 total). Confidence tiers: {}."
-   },
-   "id": "f10_auditor_empty",
-   "inputs": {},
-   "mode": "full",
-   "node": "SealSignAuditor",
-   "params": {},
-   "setup": {
-    "kind": "plain"
    }
   },
   {
+   "id": "f10_laursen_mixed",
+   "node": "LaursenTable1Auditor",
+   "mode": "full",
+   "inputs": {
+    "rows": [
+     {
+      "seal_no": 1,
+      "reference": "Laursen 2010, Steffen Terp. 'Seals and sealing practices' xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "gulf_type": "Gulf INDUS",
+      "site": "Hili"
+     },
+     {
+      "seal_no": 2,
+      "reference": "short ref",
+      "gulf_type": "indus stamp",
+      "site": "Hili"
+     },
+     {
+      "seal_no": 3,
+      "reference": null,
+      "gulf_type": "Dilmun",
+      "site": null
+     },
+     {
+      "seal_no": 4,
+      "reference": "",
+      "gulf_type": null,
+      "site": ""
+     },
+     {
+      "seal_no": 5,
+      "reference": "r5",
+      "site": "Qala'at"
+     },
+     {
+      "seal_no": 10,
+      "reference": "ref 0",
+      "gulf_type": "Dilmun",
+      "site": "Site0"
+     },
+     {
+      "seal_no": 11,
+      "reference": "ref 1",
+      "gulf_type": "Dilmun",
+      "site": "Site1"
+     },
+     {
+      "seal_no": 12,
+      "reference": "ref 2",
+      "gulf_type": "Dilmun",
+      "site": "Site2"
+     },
+     {
+      "seal_no": 13,
+      "reference": "ref 3",
+      "gulf_type": "Dilmun",
+      "site": "Site3"
+     },
+     {
+      "seal_no": 14,
+      "reference": "ref 4",
+      "gulf_type": "Dilmun",
+      "site": "Site4"
+     },
+     {
+      "seal_no": 15,
+      "reference": "ref 5",
+      "gulf_type": "Dilmun",
+      "site": "Site5"
+     },
+     {
+      "seal_no": 16,
+      "reference": "ref 6",
+      "gulf_type": "Dilmun",
+      "site": "Site6"
+     },
+     {
+      "seal_no": 17,
+      "reference": "ref 7",
+      "gulf_type": "Dilmun",
+      "site": "Site7"
+     },
+     {
+      "seal_no": 18,
+      "reference": "ref 8",
+      "gulf_type": "Dilmun",
+      "site": "Site8"
+     }
+    ],
+    "parpola_readings": {
+     "1": [
+      "040"
+     ],
+     "3": [
+      "001",
+      "002"
+     ]
+    }
+   },
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
    "expected": {
     "by_gulf_type": {
      "(unknown)": 2,
@@ -1883,112 +1986,17 @@
      }
     ],
     "verdict": "Laursen 2010 Table 1 audit: 14/121 rows parsed; 2 inscribed Gulf-INDUS; 2 seal(s) with full Parpola sign-by-sign reading."
-   },
-   "id": "f10_laursen_mixed",
-   "inputs": {
-    "parpola_readings": {
-     "1": [
-      "040"
-     ],
-     "3": [
-      "001",
-      "002"
-     ]
-    },
-    "rows": [
-     {
-      "gulf_type": "Gulf INDUS",
-      "reference": "Laursen 2010, Steffen Terp. 'Seals and sealing practices' xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-      "seal_no": 1,
-      "site": "Hili"
-     },
-     {
-      "gulf_type": "indus stamp",
-      "reference": "short ref",
-      "seal_no": 2,
-      "site": "Hili"
-     },
-     {
-      "gulf_type": "Dilmun",
-      "reference": null,
-      "seal_no": 3,
-      "site": null
-     },
-     {
-      "gulf_type": null,
-      "reference": "",
-      "seal_no": 4,
-      "site": ""
-     },
-     {
-      "reference": "r5",
-      "seal_no": 5,
-      "site": "Qala'at"
-     },
-     {
-      "gulf_type": "Dilmun",
-      "reference": "ref 0",
-      "seal_no": 10,
-      "site": "Site0"
-     },
-     {
-      "gulf_type": "Dilmun",
-      "reference": "ref 1",
-      "seal_no": 11,
-      "site": "Site1"
-     },
-     {
-      "gulf_type": "Dilmun",
-      "reference": "ref 2",
-      "seal_no": 12,
-      "site": "Site2"
-     },
-     {
-      "gulf_type": "Dilmun",
-      "reference": "ref 3",
-      "seal_no": 13,
-      "site": "Site3"
-     },
-     {
-      "gulf_type": "Dilmun",
-      "reference": "ref 4",
-      "seal_no": 14,
-      "site": "Site4"
-     },
-     {
-      "gulf_type": "Dilmun",
-      "reference": "ref 5",
-      "seal_no": 15,
-      "site": "Site5"
-     },
-     {
-      "gulf_type": "Dilmun",
-      "reference": "ref 6",
-      "seal_no": 16,
-      "site": "Site6"
-     },
-     {
-      "gulf_type": "Dilmun",
-      "reference": "ref 7",
-      "seal_no": 17,
-      "site": "Site7"
-     },
-     {
-      "gulf_type": "Dilmun",
-      "reference": "ref 8",
-      "seal_no": 18,
-      "site": "Site8"
-     }
-    ]
-   },
-   "mode": "full",
-   "node": "LaursenTable1Auditor",
-   "params": {},
-   "setup": {
-    "kind": "plain"
    }
   },
   {
+   "id": "f10_laursen_empty",
+   "node": "LaursenTable1Auditor",
+   "mode": "full",
+   "inputs": {},
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
    "expected": {
     "by_gulf_type": {},
     "by_site_top10": {},
@@ -1997,17 +2005,58 @@
     "n_rows": 0,
     "sample_rows": [],
     "verdict": "Laursen 2010 Table 1 audit: 0/121 rows parsed; 0 inscribed Gulf-INDUS; 0 seal(s) with full Parpola sign-by-sign reading."
-   },
-   "id": "f10_laursen_empty",
-   "inputs": {},
-   "mode": "full",
-   "node": "LaursenTable1Auditor",
-   "params": {},
-   "setup": {
-    "kind": "plain"
    }
   },
   {
+   "id": "f10_upgrade_mixed",
+   "node": "SealSignUpgradeAuditor",
+   "mode": "full",
+   "inputs": {
+    "all_seals": [
+     {
+      "catalogue_id": "U1",
+      "laursen_2010_seal_no": 12,
+      "inscription_length": 4,
+      "signs_confidence": "high",
+      "indus_signs": [
+       "001",
+       "002"
+      ],
+      "phase24_crossref_rationale": "Cross-referenced because the seal number matches. yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+     },
+     {
+      "catalogue_id": "U2",
+      "laursen_2010_seal_no": null,
+      "inscription_length": 3,
+      "signs_confidence": "high",
+      "indus_signs": [
+       "003"
+      ],
+      "phase24_crossref_rationale": "not counted"
+     },
+     {
+      "catalogue_id": "U3",
+      "inscription_length": "2",
+      "signs_confidence": "",
+      "indus_signs": []
+     },
+     {
+      "catalogue_id": "U4",
+      "laursen_2010_seal_no": 0,
+      "inscription_length": 0,
+      "signs_confidence": "low",
+      "indus_signs": []
+     }
+    ],
+    "upgrade_metadata": {
+     "n_crossreferenced_with_laursen": 2,
+     "method": "phase24 xref"
+    }
+   },
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
    "expected": {
     "by_confidence": {
      "high": 2,
@@ -2045,58 +2094,17 @@
      }
     ],
     "verdict": "Phase-24 sign-upgrade audit: 4 seals; 2 cross-referenced with Laursen Table 1; 2 with high-confidence Parpola IDs; 9 total Indus signs."
-   },
-   "id": "f10_upgrade_mixed",
-   "inputs": {
-    "all_seals": [
-     {
-      "catalogue_id": "U1",
-      "indus_signs": [
-       "001",
-       "002"
-      ],
-      "inscription_length": 4,
-      "laursen_2010_seal_no": 12,
-      "phase24_crossref_rationale": "Cross-referenced because the seal number matches. yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
-      "signs_confidence": "high"
-     },
-     {
-      "catalogue_id": "U2",
-      "indus_signs": [
-       "003"
-      ],
-      "inscription_length": 3,
-      "laursen_2010_seal_no": null,
-      "phase24_crossref_rationale": "not counted",
-      "signs_confidence": "high"
-     },
-     {
-      "catalogue_id": "U3",
-      "indus_signs": [],
-      "inscription_length": "2",
-      "signs_confidence": ""
-     },
-     {
-      "catalogue_id": "U4",
-      "indus_signs": [],
-      "inscription_length": 0,
-      "laursen_2010_seal_no": 0,
-      "signs_confidence": "low"
-     }
-    ],
-    "upgrade_metadata": {
-     "method": "phase24 xref",
-     "n_crossreferenced_with_laursen": 2
-    }
-   },
-   "mode": "full",
-   "node": "SealSignUpgradeAuditor",
-   "params": {},
-   "setup": {
-    "kind": "plain"
    }
   },
   {
+   "id": "f10_upgrade_empty",
+   "node": "SealSignUpgradeAuditor",
+   "mode": "full",
+   "inputs": {},
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
    "expected": {
     "by_confidence": {},
     "metadata_summary": {
@@ -2110,17 +2118,51 @@
     "total_signs": 0,
     "upgrade_rows": [],
     "verdict": "Phase-24 sign-upgrade audit: 0 seals; 0 cross-referenced with Laursen Table 1; 0 with high-confidence Parpola IDs; 0 total Indus signs."
-   },
-   "id": "f10_upgrade_empty",
-   "inputs": {},
-   "mode": "full",
-   "node": "SealSignUpgradeAuditor",
-   "params": {},
-   "setup": {
-    "kind": "plain"
    }
   },
   {
+   "id": "f10_stats_real_absent",
+   "node": "Phase29CorpusStats",
+   "mode": "full",
+   "inputs": {
+    "inscribed_seals": [
+     {
+      "indus_signs": [
+       "001",
+       "002",
+       "?"
+      ]
+     },
+     {
+      "indus_signs": [
+       "001",
+       null,
+       ""
+      ]
+     },
+     {
+      "other_field": []
+     },
+     {
+      "indus_signs": []
+     }
+    ],
+    "mahadevan_inscriptions": [
+     [
+      "001",
+      "002",
+      "?"
+     ],
+     [
+      "003"
+     ],
+     []
+    ]
+   },
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
    "expected": {
     "rows": [
      {
@@ -2153,8 +2195,12 @@
     ],
     "scale_up_factor_cisi_to_m77": 0.8,
     "verdict": "Corpus 10x expansion (Phase-29): CISI Phase-22 contact-zone seals (4 inscribed seals) -> Mahadevan 1977 (3 inscriptions, 0.8x scale-up). Fuls ME vol. 3 + ICIT not yet bundled (would add another ~3.3x and 2.7x respectively when accessible)."
-   },
-   "id": "f10_stats_real_absent",
+   }
+  },
+  {
+   "id": "f10_stats_stubbed",
+   "node": "Phase29CorpusStats",
+   "mode": "full",
    "inputs": {
     "inscribed_seals": [
      {
@@ -2190,14 +2236,35 @@
      []
     ]
    },
-   "mode": "full",
-   "node": "Phase29CorpusStats",
    "params": {},
    "setup": {
-    "kind": "plain"
-   }
-  },
-  {
+    "kind": "loader_stubs",
+    "fuls": {
+     "available": true,
+     "inscriptions": [
+      {
+       "signs": [
+        "010",
+        "011"
+       ]
+      },
+      {
+       "signs": [
+        "010",
+        "?"
+       ]
+      },
+      {
+       "nope": 1
+      }
+     ]
+    },
+    "icit": {
+     "available": true,
+     "n_inscriptions": 4537,
+     "n_signs": 19876
+    }
+   },
    "expected": {
     "rows": [
      {
@@ -2229,76 +2296,17 @@
     ],
     "scale_up_factor_cisi_to_m77": 0.8,
     "verdict": "Corpus 10x expansion (Phase-29): CISI Phase-22 contact-zone seals (4 inscribed seals) -> Mahadevan 1977 (3 inscriptions, 0.8x scale-up). Fuls ME vol. 3 + ICIT not yet bundled (would add another ~3.3x and 2.7x respectively when accessible)."
-   },
-   "id": "f10_stats_stubbed",
-   "inputs": {
-    "inscribed_seals": [
-     {
-      "indus_signs": [
-       "001",
-       "002",
-       "?"
-      ]
-     },
-     {
-      "indus_signs": [
-       "001",
-       null,
-       ""
-      ]
-     },
-     {
-      "other_field": []
-     },
-     {
-      "indus_signs": []
-     }
-    ],
-    "mahadevan_inscriptions": [
-     [
-      "001",
-      "002",
-      "?"
-     ],
-     [
-      "003"
-     ],
-     []
-    ]
-   },
-   "mode": "full",
-   "node": "Phase29CorpusStats",
-   "params": {},
-   "setup": {
-    "fuls": {
-     "available": true,
-     "inscriptions": [
-      {
-       "signs": [
-        "010",
-        "011"
-       ]
-      },
-      {
-       "signs": [
-        "010",
-        "?"
-       ]
-      },
-      {
-       "nope": 1
-      }
-     ]
-    },
-    "icit": {
-     "available": true,
-     "n_inscriptions": 4537,
-     "n_signs": 19876
-    },
-    "kind": "loader_stubs"
    }
   },
   {
+   "id": "f10_stats_empty",
+   "node": "Phase29CorpusStats",
+   "mode": "full",
+   "inputs": {},
+   "params": {},
+   "setup": {
+    "kind": "plain"
+   },
    "expected": {
     "rows": [
      {
@@ -2331,14 +2339,6 @@
     ],
     "scale_up_factor_cisi_to_m77": 0.0,
     "verdict": "Corpus 10x expansion (Phase-29): CISI Phase-22 contact-zone seals (1 inscribed seals) -> Mahadevan 1977 (0 inscriptions, 0.0x scale-up). Fuls ME vol. 3 + ICIT not yet bundled (would add another ~3.3x and 2.7x respectively when accessible)."
-   },
-   "id": "f10_stats_empty",
-   "inputs": {},
-   "mode": "full",
-   "node": "Phase29CorpusStats",
-   "params": {},
-   "setup": {
-    "kind": "plain"
    }
   }
  ]

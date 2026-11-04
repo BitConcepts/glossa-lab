@@ -79,48 +79,49 @@ def _refined_seal_loader(inputs: dict, params: dict) -> dict:
 
 
 def _seal_sign_auditor(inputs: dict, params: dict) -> dict:
-    """Distribution of inscription_length and confidence tiers."""
-    seals = inputs.get("all_seals") or []
-    sign_metadata = inputs.get("sign_metadata") or {}
+    """Distribution of inscription_length and confidence tiers.
 
-    by_confidence: Counter[str] = Counter()
-    by_length: Counter[int] = Counter()
-    rows = []
-    total_signs = 0
-    for s in seals:
-        n = _safe_int(s.get("inscription_length"))
-        conf = s.get("signs_confidence", "unknown") or "unknown"
-        by_confidence[conf] += 1
-        by_length[n] += 1
-        total_signs += n
-        rows.append({
-            "catalogue_id": s.get("catalogue_id"),
-            "find_country": s.get("find_country"),
-            "inscription_length": n,
-            "signs_confidence": conf,
-            "signs_source": s.get("signs_source"),
-        })
+    Spec 087 S3 PR-F: delegates to the generic RecordGroupSummary;
+    the per-record safe-int length / falsy-defaulted confidence, the
+    key-sorted length counter and the verdict text are spec data.
+    """
+    from glossa_lab.generic_primitives import record_group_summary_execute
 
-    inscribed_rows = [r for r in rows if r["inscription_length"] > 0]
-
-    verdict = (
-        f"Phase-23 seal-sign audit: {len(seals)} seals; "
-        f"{len(inscribed_rows)} carry Indus signs ({total_signs} total). "
-        f"Confidence tiers: "
-        f"{dict(by_confidence.most_common())}."
-    )
-
-    return {
-        "n_seals": len(seals),
-        "n_inscribed": len(inscribed_rows),
-        "total_indus_signs": total_signs,
-        "by_confidence": dict(by_confidence.most_common()),
-        "by_length": dict(sorted(by_length.items())),
-        "rows": rows,
-        "inscribed_rows": inscribed_rows,
-        "method": sign_metadata.get("method", ""),
-        "verdict": verdict,
+    merged = dict(params)
+    merged["summary_spec"] = {
+        "records_key": "all_seals",
+        "record_fields": [
+            {"name": "n", "from": "inscription_length", "safe_int": True},
+            {"name": "conf", "from": "signs_confidence",
+             "missing": "falsy_default", "default": "unknown"},
+        ],
+        "blocks": [
+            {"kind": "count", "out": "n_seals"},
+            {"kind": "sum", "out": "total_indus_signs", "computed": "n"},
+            {"kind": "counter", "out": "by_confidence", "computed": "conf",
+             "order": "most_common"},
+            {"kind": "counter", "out": "by_length", "computed": "n",
+             "order": "sorted"},
+            {"kind": "rows", "out": "rows", "fields": [
+                {"out": "catalogue_id", "from": "catalogue_id"},
+                {"out": "find_country", "from": "find_country"},
+                {"out": "inscription_length", "computed": "n"},
+                {"out": "signs_confidence", "computed": "conf"},
+                {"out": "signs_source", "from": "signs_source"},
+            ]},
+            {"kind": "derived_rows", "out": "inscribed_rows", "from": "rows",
+             "where": {"field": "inscription_length", "op": ">", "value": 0}},
+            {"kind": "count_of", "out": "n_inscribed", "from": "inscribed_rows"},
+            {"kind": "input_field", "out": "method",
+             "input_key": "sign_metadata", "field": "method", "default": ""},
+            {"kind": "verdict", "out": "verdict",
+             "template": (
+                 "Phase-23 seal-sign audit: {n_seals} seals; "
+                 "{n_inscribed} carry Indus signs ({total_indus_signs} "
+                 "total). Confidence tiers: {by_confidence}.")},
+        ],
     }
+    return record_group_summary_execute(inputs, merged)
 
 
 def _refined_persons_extractor(inputs: dict, params: dict) -> dict:

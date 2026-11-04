@@ -51,6 +51,12 @@ CONVERTED_IDS = {
     "IndusLiteratureLoader": "glossa_lab.experiment_graph_indus_evidence",
     "IndusClaimsLoader": "glossa_lab.experiment_graph_indus_evidence",
     "IndusClaimTester": "glossa_lab.experiment_graph_indus_evidence",
+    "IndusSealsAtMesopotamiaSummary": "glossa_lab.experiment_graph_phase22",
+    "MeluhhaCorpusReporter": "glossa_lab.experiment_graph_phase22",
+    "SealSignAuditor": "glossa_lab.experiment_graph_phase23",
+    "LaursenTable1Auditor": "glossa_lab.experiment_graph_phase24",
+    "SealSignUpgradeAuditor": "glossa_lab.experiment_graph_phase24",
+    "Phase29CorpusStats": "glossa_lab.experiment_graph_phase29",
 }
 
 RETIRE_IDS = {}
@@ -58,6 +64,8 @@ RETIRE_IDS = {}
 PRIMITIVE_IDS = [
     "JsonRecordDirLoader",
     "PositionalClaimTester",
+    "RecordGroupSummary",
+    "CorpusComparisonStats",
 ]
 
 

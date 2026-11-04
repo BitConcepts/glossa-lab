@@ -82,7 +82,7 @@ into its stage report.
   `records/stage-s1-record.md`. T102 (adversarial pass) and T103
   (revision + freeze) remain open — the document is a draft until
   T103 freezes it.
-- [ ] **T102 — The adversarial pass.** A worker other than the
+- [x] **T102 — The adversarial pass.** A worker other than the
   drafter attacks the draft on the record, on the four named
   questions: (i) second absolute — any quantity functioning as
   taken-as-given while disposed of as relative or derived, and any
@@ -101,7 +101,18 @@ into its stage report.
   draft is sound — only that these four attacks, worked on evidence,
   did not land; the independent reader's judgment stands after this
   study regardless.
-- [ ] **T103 — Revision and freeze, or the NOT YET exit.** Sustained
+  *Completed 2026-11-04:* `records/stage-s1-adversarial-record.md`
+  — the four attacks executed on evidence against the draft at
+  f43447bb (v1 hash recomputed and matched): (i) second absolute
+  NOT SUSTAINED (the none-needed disposition survives; clarity
+  residue F7); (ii) rule or metaphor SUSTAINED IN PART — π is a
+  decidable rule, executed on the draft's illustrations and two
+  attacker cases, with defects F1 (high), F2 (high), F3 (medium);
+  (iii) grounded indistinguishability NOT SUSTAINED (every item
+  α–ε re-counted; note F9); (iv) separation NOT SUSTAINED,
+  citation precision SUSTAINED in part (F4 medium; F5, F6 low;
+  F8 clarity). Nine findings F1–F9 carried to T103.
+- [x] **T103 — Revision and freeze, or the NOT YET exit.** Sustained
   attacks answered by revision, each answer recorded (attack →
   disposition → text changed); the revised document frozen, its
   SHA-256 quoted in the stage record — the G1 outcome is STATED. If a
@@ -116,6 +127,15 @@ into its stage report.
   *This does not establish:* that a frozen G1 document is the final
   G1 answer — amendments remain possible as recorded acts, and the
   reader's verdict is not this study's to give.
+  *Completed 2026-11-04:* G1 outcome **STATED** — the document
+  revised under findings F1–F8 (F9's clarifying clause added) and
+  frozen as **v1.1** (34,226 bytes, SHA-256
+  4f2018f40c9ccaf0811cd7661b0c9e1ebd840c7e014d954f778c42edef27efc2);
+  freeze act: `records/stage-s1-freeze-record.md`. The NOT YET
+  exit was not taken (every sustained attack was answerable by
+  revision), and the D-090-2 owner-oracle rule did not fire (no
+  sustained split on the absolute disposition: NONE-NEEDED
+  stands). Stage 2 derives against v1.1 at the hash above.
 
 ## Stage 2 — The G2 derivation (PR: feat/090-s2-g2-derivation)
 

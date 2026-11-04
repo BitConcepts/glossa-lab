@@ -158,8 +158,10 @@ def _misc_gaps_node_defs() -> list[AtomicNodeDef]:
         AtomicNodeDef(
             "IndusPhase254SemanticConstraint", "Phase-254 Semantic Constraint",
             "Indus Decipherment",
-            "Phase-254: Semantic constraint experiment testing whether decoded "
-            "readings form semantically coherent fields within inscription slots.",
+            "Phase-254: Motif-enrichment analysis: MEDIUM signs strongly associated "
+            "with a seal motif (unicorn/zebu/elephant/rhino/tiger) have readings "
+            "checked against the semantic domain of that motif. Domain-matched "
+            "signs with chi2>6.64 and lift>2.0 → HIGH.",
             inputs=[], outputs=_out, params_schema=_ep,
             fn=_make_runner("phase254_semantic_constraint.py"),
         ),
@@ -167,8 +169,10 @@ def _misc_gaps_node_defs() -> list[AtomicNodeDef]:
         AtomicNodeDef(
             "IndusPhase255CommodityPhonemes", "Phase-255 Commodity Phoneme Mapping",
             "Indus Decipherment",
-            "Phase-255: Map Dravidian commodity terms to phonemic patterns and "
-            "test against anchor readings for trade-vocabulary coverage.",
+            "Phase-255: Maps 16 known Harappan trade commodities to "
+            "Proto-Dravidian names, then cross-references MEDIUM signs on "
+            "zebu/bull seals. Signs with commodity PDr reading match + "
+            "trade-seal presence → MEDIUM→HIGH upgrade.",
             inputs=[], outputs=_out, params_schema=_ep,
             fn=_make_runner("phase255_commodity_phonemes.py"),
         ),
@@ -176,8 +180,10 @@ def _misc_gaps_node_defs() -> list[AtomicNodeDef]:
         AtomicNodeDef(
             "IndusPhase256LEExtension", "Phase-256 LE Extension",
             "Indus Decipherment",
-            "Phase-256: Linguistic evidence extension experiment — broadening "
-            "the phonological evidence base for low-confidence anchor signs.",
+            "Phase-256: Extends Phase-235 Elamite bridge using Desset 2022 + "
+            "2025 LE data. MEDIUM signs with LE backing (E41) + DEDR + McAlpin "
+            "triple corroboration → MEDIUM→HIGH upgrade. Also maps extended "
+            "LE phonemes against MEDIUM signs.",
             inputs=[], outputs=_out, params_schema=_ep,
             fn=_make_runner("phase256_le_extension.py"),
         ),

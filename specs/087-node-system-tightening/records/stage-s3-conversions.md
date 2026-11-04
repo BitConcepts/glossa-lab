@@ -754,6 +754,17 @@ path). Both sides saw the same database state: the build
 clone's local backend DB (empty CGSA tables) was copied into
 the pre worktree, and the ClusterMapper file path is absent
 in both trees, so both sides exercised the same branches.
+(Correction, 2026-11-03, appended at T701 under the parent's
+ruling of the same date: the sentence above is wrong in the
+same way PR-C's section was corrected for below — the copy
+in fact failed, because a fresh worktree has no
+`backend/data/` directory, so the pre side read ABSENT CGSA
+tables while the post side read the clone's DB whose CGSA
+tables are EMPTY (0 rows). Absent tables and empty tables
+are the same exercised state, so both sides did exercise the
+same branches and the equivalence result below is
+unaffected; the original wording stands unrewritten, and
+this note is the correction of record.)
 **27/27 graphs byte-identical pre vs post**:
 
 | graph | normalized sha256 (pre == post) |
@@ -2119,3 +2130,40 @@ proof is pre vs post within this PR, and it holds 27/27.
   passed) and green normally (76 passed); the full Spec 087
   targeted set is green (298 passed); ruff is clean on
   `backend/`.
+
+## Reconciliation (T701 closeout, 2026-11-03) — the M77 fallback retirement is S3 family work
+
+The conversions narrative above tells S3 as PR-A…PR-F plus the
+M77 Step 0 STOP. One merged piece of S3 work sat outside that
+narrative and is reconciled here: **PR #493** (merge
+`16f61755`), "Spec 087 S3: retire the silent Holdat fallback
+(owner-approved)", recorded in full at
+`records/stage-s3-m77-fallback-retirement.md`.
+
+What it did, in brief: the JsonCorpusLoader engine built by
+PR-A's F1 conversion picked the FIRST EXISTING source in a
+multi-source chain — for M77InscriptionLoader that meant the
+Holdat CISI-grouped CSV was silently served whenever the
+decoded JSON was absent, with no signal of which corpus a
+consumer received. Under the owner's 2026-11-03 approval the
+engine gained two opt-in spec features
+(`source_select_param`; per-source `explicit_only`), the M77
+spec named its sources ("decoded"; "holdat" explicit-only)
+and gained a `source` param (default "decoded").
+Default-with-absent now returns the pre-existing
+absent-corpus error byte-identically; Holdat is served only
+when explicitly selected, with its payloads byte-identical to
+what the retired fallback served. The three PR-A pins that
+had encoded the silent fallback were re-pinned as explicit
+selection with unchanged payloads, and three new pins cover
+no-silent-fallback / selected-but-absent / unknown-source.
+
+Why it belongs in this record: it is a behaviour change to a
+PR-A-converted node's engine, executed inside S3, answering
+the question the Step 0 record above posed — whether the
+Holdat fallback was a behaviour to keep in a unified pipeline
+(the owner ruled it was not, as a silent behaviour). It was
+not a conversion and moves no S3 count (no node registered,
+converted or flagged); T303's completion arithmetic is
+unchanged. tasks.md T303 carries the pointer annotation from
+the same closeout.

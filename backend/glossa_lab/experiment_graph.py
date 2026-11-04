@@ -58,6 +58,7 @@ from glossa_lab.generic_primitives import (
     pmi_centrality_ranker_execute,
     positional_claim_tester_execute,
     positional_class_classifier_execute,
+    prediction_verdict_aggregator_execute,
     prefix_findspot_assigner_execute,
     record_group_summary_execute,
     corpus_comparison_stats_execute,
@@ -2588,6 +2589,21 @@ for _d in [
         params_schema={"type":"object","properties":{
             "check_spec":{"type":"object","title":"Check Spec","description":"Candidate keys, corpus path, entries key, caps, verdict texts."}}},
         fn=corpus_cooccurrence_check_execute),
+    AtomicNodeDef("PredictionVerdictAggregator","Prediction Verdict Aggregator","Analysis",
+        "Aggregate sub-experiment outputs into per-prediction verdicts "
+        "(Spec 087 S3): spec-carried input shaping (verdict-text and "
+        "per-bin extraction, shaped and synthesised inputs) and rule "
+        "kinds — text match, count threshold, gap rise, gap spread, "
+        "poisson fraction — assembled flat or nested. Rule sets, "
+        "thresholds, detail texts and summaries are parameters "
+        "(aggregator_spec), not code — Phase20Verdict and "
+        "Phase21Verdict delegate to this engine.",
+        inputs=[{"name":"length_strata","type":"json","required":False},
+                {"name":"repetition_spectral","type":"json","required":False}],
+        outputs=[{"name":"summary","type":"text"},{"name":"predictions","type":"json"},{"name":"evidence","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "aggregator_spec":{"type":"object","title":"Aggregator Spec","description":"Shaping, rules, evidence, assembly, summary template."}}},
+        fn=prediction_verdict_aggregator_execute),
     AtomicNodeDef("FreqCounter","Frequency Counter","Transforms",
         "Count symbol occurrences across all sequences.",
         inputs=[{"name":"sequences","type":"sequences","required":True}],

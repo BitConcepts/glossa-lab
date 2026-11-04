@@ -693,52 +693,58 @@ def _phase20_verdict(inputs: dict, params: dict) -> dict:
       ferrara_cm           -- CMCatalogParser output (dict OR verdict string)
       fuls_positional      -- FulsPositionalClassifier output (dict OR verdict string)
       fuls_positional_counts -- optional: counts_by_class dict for the NUMERICAL test.
+
+    Spec 087 S3 PR-F: delegates to the generic
+    PredictionVerdictAggregator; the four prediction specs (three
+    text-match rules — P3 partial-first with no plain-CONFIRMED
+    outcome — and the NUMERICAL count rule with its counts fallback)
+    are spec data.
     """
+    from glossa_lab.generic_primitives import (
+        prediction_verdict_aggregator_execute,
+    )
 
-    def _verdict_text(v: Any) -> str:
-        if isinstance(v, dict):
-            return str(v.get("verdict") or "")
-        if isinstance(v, str):
-            return v
-        return ""
-
-    a_t = _verdict_text(inputs.get("length_strata"))
-    b_t = _verdict_text(inputs.get("cluster_archaeology"))
-    c_t = _verdict_text(inputs.get("ferrara_cm"))
-    d_t = _verdict_text(inputs.get("fuls_positional"))
-
-    p1 = ("CONFIRMED" if "CONFIRMED" in a_t and "NOT CONFIRMED" not in a_t
-          else "NOT CONFIRMED" if "NOT CONFIRMED" in a_t else "UNKNOWN")
-    p2 = ("CONFIRMED" if "CONFIRMED" in b_t and "NOT CONFIRMED" not in b_t
-          else "NOT CONFIRMED" if "NOT CONFIRMED" in b_t else "UNKNOWN")
-    p3 = ("PARTIALLY CONFIRMED" if "PARTIALLY CONFIRMED" in c_t
-          else "NOT CONFIRMED" if "NOT CONFIRMED" in c_t else "UNKNOWN")
-
-    counts = inputs.get("fuls_positional_counts")
-    if not isinstance(counts, dict):
-        if isinstance(inputs.get("fuls_positional"), dict):
-            counts = inputs["fuls_positional"].get("counts_by_class") or {}
-        else:
-            counts = {}
-    n_numerical = int(counts.get("NUMERICAL", 0)) if isinstance(counts, dict) else 0
-    p4 = ("OBSERVED" if n_numerical > 5 else ("NOT OBSERVED" if d_t or counts else "UNKNOWN"))
-
-    return {
-        "prediction_1_length_dominates_spectral_gap": p1,
-        "prediction_2_cluster_archaeology_nonrandom": p2,
-        "prediction_3_ferrara_cm_extractable": p3,
-        "prediction_4_numerical_strokes_confirmed": p4,
+    merged = dict(params)
+    merged["aggregator_spec"] = {
+        "assembly": "flat",
+        "text_inputs": ["length_strata", "cluster_archaeology",
+                        "ferrara_cm", "fuls_positional"],
+        "rules": [
+            {"out": "prediction_1_length_dominates_spectral_gap",
+             "kind": "text_match", "input": "length_strata"},
+            {"out": "prediction_2_cluster_archaeology_nonrandom",
+             "kind": "text_match", "input": "cluster_archaeology"},
+            {"out": "prediction_3_ferrara_cm_extractable",
+             "kind": "text_match", "input": "ferrara_cm",
+             "partial_first": True},
+            {"out": "prediction_4_numerical_strokes_confirmed",
+             "kind": "count_threshold",
+             "count_input": "fuls_positional_counts",
+             "count_fallback": {"input": "fuls_positional",
+                                "field": "counts_by_class"},
+             "count_key": "NUMERICAL", "threshold": 5,
+             "observed": "OBSERVED", "not_observed": "NOT OBSERVED",
+             "text_input": "fuls_positional"},
+        ],
         "evidence": {
-            "length_strata_verdict": a_t,
-            "cluster_archaeology_verdict": b_t,
-            "ferrara_cm_verdict": c_t,
-            "fuls_positional_verdict": d_t,
-            "fuls_numerical_count": n_numerical,
+            "out": "evidence",
+            "texts": {
+                "length_strata_verdict": "length_strata",
+                "cluster_archaeology_verdict": "cluster_archaeology",
+                "ferrara_cm_verdict": "ferrara_cm",
+                "fuls_positional_verdict": "fuls_positional",
+            },
+            "count": {"out": "fuls_numerical_count",
+                      "from_rule": "prediction_4_numerical_strokes_confirmed"},
         },
-        "summary": (
-            f"Phase-20: P1={p1} | P2={p2} | P3={p3} | P4={p4}"
-        ),
+        "summary_template": (
+            "Phase-20: "
+            "P1={prediction_1_length_dominates_spectral_gap} | "
+            "P2={prediction_2_cluster_archaeology_nonrandom} | "
+            "P3={prediction_3_ferrara_cm_extractable} | "
+            "P4={prediction_4_numerical_strokes_confirmed}"),
     }
+    return prediction_verdict_aggregator_execute(inputs, merged)
 
 
 # ── Atomic node defs for registration ───────────────────────────────────

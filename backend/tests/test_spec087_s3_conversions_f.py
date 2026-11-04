@@ -60,6 +60,8 @@ CONVERTED_IDS = {
     "CISIFindspotReporter": "glossa_lab.experiment_graph_phase26",
     "ShuIlishuContactZoneFilter": "glossa_lab.experiment_graph_phase27",
     "MeluhhaCooccurrenceCheck": "glossa_lab.experiment_graph_phase30",
+    "Phase20Verdict": "glossa_lab.experiment_graph_phase20",
+    "Phase21Verdict": "glossa_lab.experiment_graph_phase21",
 }
 
 RETIRE_IDS = {}
@@ -71,6 +73,7 @@ PRIMITIVE_IDS = [
     "CorpusComparisonStats",
     "PrefixFindspotAssigner",
     "CorpusCooccurrenceCheck",
+    "PredictionVerdictAggregator",
 ]
 
 

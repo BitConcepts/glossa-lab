@@ -4349,3 +4349,220 @@ def corpus_cooccurrence_check_execute(inputs: dict, params: dict) -> dict:
         spec.get("available_out", "corpus_available"): corpus_path.exists(),
         "verdict": verdict,
     }
+
+
+# ── PredictionVerdictAggregator ─────────────────────────────────────────────
+# Spec 087 S3 PR-F (family F12). Aggregates sub-experiment outputs into
+# per-prediction verdicts. Input shaping is spec data: verdict-text
+# extraction (a dict's "verdict" field or a bare string), per-bin
+# extraction (a full {per_bin: ...} output or a bare per-bin dict),
+# verdict shaping (dict / string / other), and numerical-weights
+# synthesis from scalar row/count inputs. Rules are spec data:
+#
+#   text_match        — CONFIRMED present and NOT CONFIRMED absent ->
+#                       CONFIRMED; NOT CONFIRMED present -> NOT
+#                       CONFIRMED; else UNKNOWN. With partial_first,
+#                       PARTIALLY CONFIRMED is checked first and there
+#                       is no plain-CONFIRMED outcome.
+#   count_threshold   — a count from a counts input (or a fallback
+#                       field of another input) over a threshold ->
+#                       OBSERVED; else NOT OBSERVED when any evidence
+#                       is present, else UNKNOWN.
+#   gap_rise          — collapsed gap >= max(floor, multiplier x
+#                       original) -> CONFIRMED; a smaller rise ->
+#                       PARTIALLY CONFIRMED; else NOT CONFIRMED;
+#                       missing/non-numeric gaps -> UNKNOWN.
+#   gap_spread        — max-min gap across a per-bin dict against two
+#                       spread bands; the detail carries a shaped
+#                       input's verdict text.
+#   poisson_fraction  — poisson-regime count >= max(min, total //
+#                       divisor) -> CONFIRMED; else PARTIALLY
+#                       CONFIRMED; empty rows / missing input ->
+#                       UNKNOWN with distinct details.
+#
+# Assembly is spec data: "flat" (predictions at top level plus an
+# evidence block and a summary) or "nested" (a predictions dict of
+# verdict/detail/extras plus a summary).
+
+
+def _aggregator_verdict_text(value: Any) -> str:
+    if isinstance(value, dict):
+        return str(value.get("verdict") or "")
+    if isinstance(value, str):
+        return value
+    return ""
+
+
+def _aggregator_per_bin(value: Any) -> dict:
+    if not isinstance(value, dict) or not value:
+        return {}
+    if "per_bin" in value and isinstance(value["per_bin"], dict):
+        return value["per_bin"]
+    sample_vals = [val for val in value.values() if isinstance(val, dict)]
+    if sample_vals and any("spectral_gap" in val for val in sample_vals):
+        return value
+    return {}
+
+
+def _aggregator_shape(inputs: dict, shaping: dict) -> Any:
+    kind = shaping["kind"]
+    value = inputs.get(shaping["input"])
+    if kind == "per_bin":
+        return _aggregator_per_bin(value)
+    if kind == "verdict_shaping":
+        if isinstance(value, dict):
+            return value
+        if isinstance(value, str):
+            return {"verdict": value}
+        return {}
+    if kind == "nw_shaping":
+        if isinstance(value, dict):
+            return value
+        rows = inputs.get(shaping["rows_input"])
+        rows_list = rows if isinstance(rows, list) else []
+        if rows_list:
+            return {"rows": rows_list,
+                    "n_poisson_regime": int(inputs.get(shaping["count_input"])
+                                             or 0)}
+        return {}
+    return value
+
+
+def _aggregator_rule(rule: dict, inputs: dict, shaped: dict,
+                     texts: dict) -> tuple[str, str | None, dict, Any]:
+    """Return (verdict, detail, extras, count_value)."""
+    kind = rule["kind"]
+    if kind == "text_match":
+        text = texts[rule["input"]]
+        if rule.get("partial_first"):
+            if "PARTIALLY CONFIRMED" in text:
+                return "PARTIALLY CONFIRMED", None, {}, None
+            if "NOT CONFIRMED" in text:
+                return "NOT CONFIRMED", None, {}, None
+            return "UNKNOWN", None, {}, None
+        if "CONFIRMED" in text and "NOT CONFIRMED" not in text:
+            return "CONFIRMED", None, {}, None
+        if "NOT CONFIRMED" in text:
+            return "NOT CONFIRMED", None, {}, None
+        return "UNKNOWN", None, {}, None
+    if kind == "count_threshold":
+        counts = inputs.get(rule["count_input"])
+        if not isinstance(counts, dict):
+            fallback = rule["count_fallback"]
+            source = inputs.get(fallback["input"])
+            counts = (source.get(fallback["field"]) or {}) \
+                if isinstance(source, dict) else {}
+        n = int(counts.get(rule["count_key"], 0)) \
+            if isinstance(counts, dict) else 0
+        if n > rule["threshold"]:
+            return rule["observed"], None, {}, n
+        if texts[rule["text_input"]] or counts:
+            return rule["not_observed"], None, {}, n
+        return "UNKNOWN", None, {}, n
+    if kind == "gap_rise":
+        per_bin = shaped[rule["per_bin"]]
+        orig = per_bin.get(rule["original_key"], {}).get("spectral_gap")
+        coll = per_bin.get(rule["collapsed_key"], {}).get("spectral_gap")
+        extras = {"original_gap": orig, "collapsed_gap": coll}
+        details = rule["details"]
+        if isinstance(orig, (int, float)) and isinstance(coll, (int, float)):
+            if coll >= max(rule["abs_floor"],
+                           rule["multiplier"] * max(orig, rule["epsilon"])):
+                return ("CONFIRMED",
+                        details["confirmed"].format(orig_gap=orig,
+                                                    coll_gap=coll),
+                        extras, None)
+            if coll > orig + rule["partial_delta"]:
+                return ("PARTIALLY CONFIRMED",
+                        details["partial"].format(orig_gap=orig,
+                                                  coll_gap=coll),
+                        extras, None)
+            return ("NOT CONFIRMED",
+                    details["not"].format(orig_gap=orig, coll_gap=coll),
+                    extras, None)
+        return "UNKNOWN", details["unknown"], extras, None
+    if kind == "gap_spread":
+        per_bin = shaped[rule["per_bin"]]
+        details = rule["details"]
+        if per_bin:
+            gaps = [d.get("spectral_gap") for d in per_bin.values()
+                    if isinstance(d.get("spectral_gap"), (int, float))]
+            if gaps:
+                spread = max(gaps) - min(gaps)
+                if spread >= rule["confirmed_spread"]:
+                    verdict = "CONFIRMED"
+                elif spread >= rule["partial_spread"]:
+                    verdict = "PARTIALLY CONFIRMED"
+                else:
+                    verdict = "NOT CONFIRMED"
+                site_text = shaped[rule["site_sum"]].get("verdict", "")
+                return (verdict,
+                        details["template"].format(n_gaps=len(gaps),
+                                                    spread=spread,
+                                                    site_verdict=site_text),
+                        {}, None)
+            return "UNKNOWN", details["no_data"], {}, None
+        return "UNKNOWN", details["missing"], {}, None
+    if kind == "poisson_fraction":
+        nw = shaped[rule["nw"]]
+        details = rule["details"]
+        if nw and rule.get("rows_field", "rows") in nw:
+            rows = nw.get(rule.get("rows_field", "rows")) or []
+            n_poisson = nw.get(rule.get("count_field", "n_poisson_regime"), 0)
+            n_total = len(rows)
+            if n_total == 0:
+                return "UNKNOWN", details["no_rows"], {}, None
+            if n_poisson >= max(rule.get("min_count", 1),
+                                n_total // rule.get("divisor", 2)):
+                return ("CONFIRMED",
+                        details["confirmed"].format(n_poisson=n_poisson,
+                                                     n_total=n_total),
+                        {}, None)
+            return ("PARTIALLY CONFIRMED",
+                    details["partial"].format(n_poisson=n_poisson,
+                                               n_total=n_total),
+                    {}, None)
+        return "UNKNOWN", details["missing"], {}, None
+    raise ValueError(f"PredictionVerdictAggregator: unknown rule {kind!r}")
+
+
+def prediction_verdict_aggregator_execute(inputs: dict, params: dict) -> dict:
+    spec = dict(params.get("aggregator_spec") or {})
+    shaped: dict[str, Any] = {}
+    for name, shaping in (spec.get("shaping") or {}).items():
+        shaped[name] = _aggregator_shape(inputs, shaping)
+    texts = {name: _aggregator_verdict_text(inputs.get(name))
+             for name in spec.get("text_inputs") or []}
+    verdicts: dict[str, str] = {}
+    details: dict[str, str | None] = {}
+    extras: dict[str, dict] = {}
+    counts: dict[str, Any] = {}
+    for rule in spec.get("rules") or []:
+        verdict, detail, extra, count = _aggregator_rule(
+            rule, inputs, shaped, texts)
+        verdicts[rule["out"]] = verdict
+        details[rule["out"]] = detail
+        extras[rule["out"]] = extra
+        if count is not None:
+            counts[rule["out"]] = count
+    summary = spec["summary_template"].format(**verdicts)
+    if spec.get("assembly") == "nested":
+        predictions = {}
+        for rule in spec.get("rules") or []:
+            entry = {"verdict": verdicts[rule["out"]],
+                     "detail": details[rule["out"]]}
+            entry.update(extras[rule["out"]])
+            predictions[rule["out"]] = entry
+        return {"summary": summary,
+                spec.get("predictions_out", "predictions"): predictions}
+    result: dict[str, Any] = dict(verdicts)
+    evidence_spec = spec.get("evidence") or {}
+    evidence: dict[str, Any] = {}
+    for out_key, input_name in (evidence_spec.get("texts") or {}).items():
+        evidence[out_key] = texts[input_name]
+    if "count" in evidence_spec:
+        count_spec = evidence_spec["count"]
+        evidence[count_spec["out"]] = counts[count_spec["from_rule"]]
+    result[evidence_spec.get("out", "evidence")] = evidence
+    result["summary"] = summary
+    return result

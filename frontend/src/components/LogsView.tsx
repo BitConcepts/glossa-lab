@@ -65,10 +65,14 @@ function parseLogLine(raw: string): ParsedLine {
   try {
     const obj = JSON.parse(raw) as Record<string, unknown>;
     if (obj && typeof obj === "object" && ("message" in obj || "level" in obj)) {
+      // The file carries two level vocabularies: backend lines use
+      // WARNING, the frontend error intake writes WARN. One level,
+      // rendered and filtered under the wireframe's name.
+      const rawLevel = String(obj.level ?? "").toUpperCase();
       return {
         raw,
         ts: String(obj.timestamp ?? ""),
-        level: String(obj.level ?? "").toUpperCase(),
+        level: rawLevel === "WARN" ? "WARNING" : rawLevel,
         module: String(obj.module ?? obj.name ?? ""),
         message: String(obj.message ?? ""),
       };

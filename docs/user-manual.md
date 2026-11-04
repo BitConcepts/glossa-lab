@@ -102,33 +102,44 @@ the sidebar lists that program's views.
 | **Research loop** | The automated research loop's status and controls |
 | **Reports & ledger** | Generated reports and the ledger views |
 | **Jobs** | Background job queue with result viewer |
+| **Logs** | The backend log, live-streamed, and the durable job & phase records read as one log |
 | **Status** | CPU, RAM, GPU, DB health, and backend uptime |
 | **Settings** | API keys, LLM model selection, environment |
 | **Help** | The in-app manual (this document's companion) |
 
 ### Logs
 
-There is no in-app log viewer in the current interface: the
-pre-redesign bottom panel was removed in the Spec 081 redesign,
-and an in-app **Logs** view is being restored as its own tab
-under Spec 087 (Stage S5, built to the approved wireframes).
-Until it lands:
+The **Logs** view is its own tab in the Tool home group,
+between Jobs and Status (restored under Spec 087 Stage S5,
+built to the approved wireframes; the pre-redesign bottom
+panel was removed in the Spec 081 redesign). It has two tabs:
 
-- The backend writes a structured, rotating log file
-  (`glossa.log`, 10 MB × 5) and serves it from
-  `GET /terminal/log`, with a live stream at
-  `GET /terminal/log/stream` and purge at
-  `POST /terminal/log/purge`.
-- What must survive is never only in the log stream: job and
-  result records are durable tables surfaced in the **Jobs**
-  view, phase actions and notifications are durable record
-  tables, and the cloud deployment keeps an append-only audit
-  log.
-- The in-app events bus is a live-notification channel with
-  **no delivery guarantee** (the documented-ephemeral
-  disposition, Spec 087 decision D2): an event emitted with no
-  live subscriber is lost, and nothing that matters is carried
-  only by it — the durable surfaces above are the record.
+- **Live stream** — the backend's structured, rotating log
+  file (`glossa.log`, 10 MB × 5 backups), served from
+  `GET /terminal/log` (first load: the last 200 lines) and
+  tailed live over `GET /terminal/log/stream`, with a
+  client-side level filter, a pause control, a download of
+  the last 200 lines, and a purge control
+  (`POST /terminal/log/purge`) behind a confirmation that
+  names what purge clears: the current file is truncated and
+  its rotated backups are deleted, and it cannot be undone.
+- **Job & phase records** — the durable record tables read
+  as one log: jobs and their stored results (`jobs` /
+  `job_results`), per-phase actions (`phase_actions`), and
+  sent notifications (`notification_log`), filterable by
+  kind and status, each record expandable to its stored
+  detail. Read-only: the **Jobs** view remains the surface
+  that acts on records.
+
+What must survive is never only in the log stream: job and
+result records are durable tables surfaced in the **Jobs**
+view, phase actions and notifications are durable record
+tables, and the cloud deployment keeps an append-only audit
+log. The in-app events bus is a live-notification channel with
+**no delivery guarantee** (the documented-ephemeral
+disposition, Spec 087 decision D2): an event emitted with no
+live subscriber is lost, and nothing that matters is carried
+only by it — the durable surfaces above are the record.
 
 ---
 

@@ -3,6 +3,17 @@
 Provides a simple pub/sub mechanism for broadcasting real-time events
 to frontend subscribers via Server-Sent Events.
 
+Disposition (Spec 087, decision D2 — documented-ephemeral): this bus
+is a live-notification channel with **no delivery guarantee**. An
+event emitted with no live subscriber is lost, and a slow
+subscriber's queue drops events when full; nothing is persisted and
+nothing is replayed. Nothing that must survive is carried only by
+this bus — the durable records are the database tables (jobs /
+job_results, phase_actions, notification_log) and the cloud audit
+log. The same statement stands in docs/user-manual.md (Logs
+section) and in HelpView; backend/tests/test_spec087_events_doc.py
+pins all three surfaces and the emit path's behaviour.
+
 Usage (emitting events from other modules):
     from glossa_lab.api.events import emit_event
     await emit_event("insight_trigger", reason="loop_complete")

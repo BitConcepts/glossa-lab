@@ -17,8 +17,9 @@ equality); hash-mode cases pin the canonical-JSON SHA-256 plus the key
 set and verbatim scalar fields, for payloads too large to commit whole.
 
 The one binary input, the two-page PDF read by the pdf cases, cannot
-be committed (`*.pdf` is gitignored), so the test generates it at run
-time from the pinned page texts — see `_fixture_pdf`.
+be committed as a file (`*.pdf` is gitignored), so its bytes are
+committed base64-encoded in this module and materialized at run
+time — see `_fixture_pdf`.
 
 Also pinned here: the F14 relabels (generic category, no legacy flag,
 implementation module unchanged), the two new generic primitives'
@@ -86,28 +87,57 @@ def _clear_contact_caches() -> None:
             member.cache_clear()
 
 
-def _fixture_pdf(tmp_path: Path) -> Path:
-    """The two-page fixture PDF for the pdf cases, generated at run time.
+# The two-page fixture PDF for the pdf cases, committed as base64
+# (a `*.pdf` file cannot be committed — it is gitignored). Produced
+# with the exact recipe the pre-T701 run-time generation used:
+# fitz.open(), one new_page() + insert_text((72, 72), line) per page
+# text ("Glossa fixture page one" / "Glossa fixture page two").
+# Verified at commit time: 1,203 bytes, 2 pages. The page count is
+# pinned as data alongside, and `_fixture_pdf` asserts the real
+# document agrees with it wherever PyMuPDF is present.
+_FIXTURE_PDF_B64 = (
+    "JVBERi0xLjcKJcK1wrYKJSBXcml0dGVuIGJ5IE11UERGIDEuMjguMgoKMSAwIG9iago8PC9UeXBlL0NhdGFsb2cvUGFnZXMgMiAw"
+    "IFIvSW5mbzw8L1Byb2R1Y2VyKE11UERGIDEuMjguMik+Pj4+CmVuZG9iagoKMiAwIG9iago8PC9UeXBlL1BhZ2VzL0NvdW50IDIv"
+    "S2lkc1s0IDAgUiA4IDAgUl0+PgplbmRvYmoKCjMgMCBvYmoKPDwvRm9udDw8L2hlbHYgNSAwIFI+Pj4+CmVuZG9iagoKNCAwIG9i"
+    "ago8PC9UeXBlL1BhZ2UvTWVkaWFCb3hbMCAwIDU5NSA4NDJdL1JvdGF0ZSAwL1Jlc291cmNlcyAzIDAgUi9QYXJlbnQgMiAwIFIv"
+    "Q29udGVudHNbNiAwIFJdPj4KZW5kb2JqCgo1IDAgb2JqCjw8L1R5cGUvRm9udC9TdWJ0eXBlL1R5cGUxL0Jhc2VGb250L0hlbHZl"
+    "dGljYS9FbmNvZGluZy9XaW5BbnNpRW5jb2Rpbmc+PgplbmRvYmoKCjYgMCBvYmoKPDwvTGVuZ3RoIDk0Pj4Kc3RyZWFtCgpxCkJU"
+    "CjEgMCAwIDEgNzIgNzcwIFRtCi9oZWx2IDExIFRmIFs8NDc2YzZmNzM3MzYxMjA2NjY5Nzg3NDc1NzI2NTIwNzA2MTY3NjUyMDZm"
+    "NmU2NT5dVEoKRVQKUQoKZW5kc3RyZWFtCmVuZG9iagoKNyAwIG9iago8PC9Gb250PDwvaGVsdiA1IDAgUj4+Pj4KZW5kb2JqCgo4"
+    "IDAgb2JqCjw8L1R5cGUvUGFnZS9NZWRpYUJveFswIDAgNTk1IDg0Ml0vUm90YXRlIDAvUmVzb3VyY2VzIDcgMCBSL1BhcmVudCAy"
+    "IDAgUi9Db250ZW50c1s5IDAgUl0+PgplbmRvYmoKCjkgMCBvYmoKPDwvTGVuZ3RoIDkzL0ZpbHRlci9GbGF0ZURlY29kZT4+CnN0"
+    "cmVhbQp42h3GMQqEQAwF0D6nyA1Mxpn/FWQLwcZOSCdW4rDFWth4fhd5zZNLxhBX+3NlUtI0Tmm+x+9Wd42q65CJHZUtW3gyAD07"
+    "ZhYmlGQ0OPguk6ifLWaZQhZ5AM2uFL0KZW5kc3RyZWFtCmVuZG9iagoKeHJlZgowIDEwCjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAw"
+    "MDAwMDA0MiAwMDAwMCBuIAowMDAwMDAwMTIwIDAwMDAwIG4gCjAwMDAwMDAxNzggMDAwMDAgbiAKMDAwMDAwMDIxOSAwMDAwMCBu"
+    "IAowMDAwMDAwMzI2IDAwMDAwIG4gCjAwMDAwMDA0MTUgMDAwMDAgbiAKMDAwMDAwMDU1OCAwMDAwMCBuIAowMDAwMDAwNTk5IDAw"
+    "MDAwIG4gCjAwMDAwMDA3MDYgMDAwMDAgbiAKCnRyYWlsZXIKPDwvU2l6ZSAxMC9Sb290IDEgMCBSL0lEWzwwMkMzODRDMkJFMzVD"
+    "MkE0MzY1REMyOTJDMzhFMzg3Qz48MTc4NTdDQjkyNkZEMUQ2MTRFMDE4RUY4QjdFREZGODI+XT4+CnN0YXJ0eHJlZgo4NjcKJSVF"
+    "T0YK"
+)
+_FIXTURE_PDF_PAGES = 2
 
-    A PDF cannot be committed (`*.pdf` is gitignored), so when
-    PyMuPDF is importable the test builds the file in tmp_path with
-    the two page texts whose extracted form expected.json pins
-    ("Glossa fixture page one" / "Glossa fixture page two"). Without
-    PyMuPDF the node errors before opening any file, so an empty
-    placeholder suffices: the path only has to exist for the node to
-    reach its PyMuPDF import error.
+
+def _fixture_pdf(tmp_path: Path) -> Path:
+    """The two-page fixture PDF for the pdf cases, materialized from
+    the committed base64 bytes above into tmp_path.
+
+    Where PyMuPDF is importable, the materialized document's real
+    page count is asserted against the pinned `_FIXTURE_PDF_PAGES`,
+    tying the fixture fields together. Without PyMuPDF the file
+    still has to exist: the node checks existence before its import,
+    so the path carries execution to the import whose failure is the
+    node's pinned no-PyMuPDF behaviour.
     """
+    import base64
+
     pdf_path = tmp_path / "tiny.pdf"
+    pdf_path.write_bytes(base64.b64decode(_FIXTURE_PDF_B64))
     try:
         import fitz  # noqa: PLC0415
     except ImportError:
-        pdf_path.touch()
         return pdf_path
-    doc = fitz.open()
-    for line in ("Glossa fixture page one", "Glossa fixture page two"):
-        page = doc.new_page()
-        page.insert_text((72, 72), line)
-    doc.save(pdf_path)
+    doc = fitz.open(str(pdf_path))
+    assert doc.page_count == _FIXTURE_PDF_PAGES
     doc.close()
     return pdf_path
 
@@ -175,10 +205,26 @@ def test_conversion_output_equivalence(case, tmp_path, monkeypatch):
         try:
             import fitz  # noqa: F401, PLC0415
         except ImportError:
-            # This environment has no PyMuPDF (the CI venv installs it
-            # from pyproject; the local glossa-ci venv does not). The
-            # node's no-PyMuPDF error is its behaviour here; the
-            # extraction fixtures pin behaviour where fitz exists (CI).
+            # This environment has no PyMuPDF. pymupdf is declared
+            # under pyproject's `ocr` optional extra and CI installs
+            # only `.[dev]`, so CI is exactly this environment; the
+            # full extraction replay below runs only where fitz
+            # exists. (An earlier text here claimed the opposite —
+            # that CI installs it from pyproject; PR #499's first CI
+            # run disproved that for the PR-F file, and the same
+            # correction applies here.) The node's no-PyMuPDF error
+            # dict is its designed behaviour without the optional
+            # dependency, and it is the pinned expectation for
+            # fitz-free environments, asserted exactly below. No
+            # stand-in fitz is installed for these cases: the
+            # extractor's whole function is fitz (page_count /
+            # load_page().get_text()), so a stand-in would have to
+            # fabricate the very extracted texts the fixtures pin —
+            # the comparison would become circular. (PR-F's
+            # stand-in is sound precisely because its pixmap bytes
+            # feed a stubbed vision call that ignores them.) This
+            # reasoned exception is recorded in the T701 closeout
+            # record (records/stage-t701-closeout-record.md).
             probe_params = _substitute(
                 case["params"], {"__FIXTURE_PDF__": str(_fixture_pdf(tmp_path))}
             )

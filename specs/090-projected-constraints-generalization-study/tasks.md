@@ -57,7 +57,7 @@ into its stage report.
 
 ## Stage 1 — The G1 document (PR: feat/090-s1-g1-document)
 
-- [ ] **T101 — The G1 draft.** `records/g1-document.md`: Appendix B
+- [x] **T101 — The G1 draft.** `records/g1-document.md`: Appendix B
   items 1–3 in the skeleton's terms — the record system defined over
   its actual classes (corpus records, anchor records, ledger claim
   lines), each with its provenance rule, its population re-counted at
@@ -75,6 +75,13 @@ into its stage report.
   *This does not establish:* that the definitions are right — only
   that they are stated, completely, in the skeleton's terms, before
   results; their trial is T102's attack and S2's use of them.
+  *Completed (draft) 2026-11-04:* `records/g1-document.md` v1
+  (31,376 bytes, SHA-256
+  974d5043ab463d0e6a33912b6e1136bcac288cd679827edade3c81d7af858d5b),
+  drafted from the records at a7db3cfb; drafting record:
+  `records/stage-s1-record.md`. T102 (adversarial pass) and T103
+  (revision + freeze) remain open — the document is a draft until
+  T103 freezes it.
 - [ ] **T102 — The adversarial pass.** A worker other than the
   drafter attacks the draft on the record, on the four named
   questions: (i) second absolute — any quantity functioning as

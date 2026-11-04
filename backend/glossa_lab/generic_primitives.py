@@ -4782,3 +4782,267 @@ def catalog_text_parser_execute(inputs: dict, params: dict) -> dict:
         "inscriptions_sample": deduped[: spec.get("sample_cap", 80)],
         "verdict": verdict,
     }
+
+
+# ── SyllableLMLoader ────────────────────────────────────────────────────────
+# Spec 087 S3 PR-F (family F15). Loads a syllable-level language model
+# from its JSON form ({"vocab": [...], "bigrams": {"a|b": log_prob}})
+# and builds the LanguageModel the decipher pipeline consumes: stored
+# log-probs are exponentiated, unigram counts derive from bigram
+# endpoints, and the ranked list orders the vocab (or, with no vocab,
+# the bigram symbols) by those counts. The builder is shared: the
+# Sanskrit loader in the phase-30 module calls it too, through its
+# historical helper. The file path, language label and error text
+# are spec data; an lm_path param overrides the spec path (relative
+# paths resolve against the spec's base_dir).
+
+
+def syllable_lm_from_json(data: dict):
+    """Build a LanguageModel from a syllable LM JSON dict."""
+    import math as _math  # noqa: PLC0415
+
+    from glossa_lab.pipelines.decipher import LanguageModel  # noqa: PLC0415
+
+    vocab: list = data.get("vocab", [])
+    bigrams_raw: dict = data.get("bigrams", {})
+
+    bigram_freq: dict = {}
+    unigram_counts: dict = {}
+    for ab_str, lp in bigrams_raw.items():
+        parts = ab_str.split("|")
+        if len(parts) == 2:
+            a, b = parts
+            prob = _math.exp(float(lp)) if lp is not None else 1e-8
+            bigram_freq[(a, b)] = prob
+            unigram_counts[a] = unigram_counts.get(a, 0) + 1
+            unigram_counts[b] = unigram_counts.get(b, 0) + 1
+
+    total_uni = max(sum(unigram_counts.values()), 1)
+    all_syms = vocab if vocab else sorted(unigram_counts.keys())
+    unigram_freq = {s: unigram_counts.get(s, 1) / total_uni for s in all_syms}
+    ranked = sorted(all_syms, key=lambda s: unigram_counts.get(s, 0),
+                    reverse=True)
+
+    lm = LanguageModel.__new__(LanguageModel)
+    lm.symbols = all_syms
+    lm.alphabet = sorted(set(all_syms))
+    lm.size = len(lm.alphabet)
+    lm.ranked = ranked
+    lm.unigram_freq = unigram_freq
+    lm.bigram_freq = bigram_freq
+    lm.word_bigram_freq = {}
+    lm.word_initial_freq = {}
+    lm.word_final_freq = {}
+    lm.ocp_rate = 0.0
+    lm.trigram_freq = {}
+    lm.positional = {}
+    lm.word_cooccur = {}
+    return lm
+
+
+def syllable_lm_loader_execute(inputs: dict, params: dict) -> dict:
+    spec = dict(params.get("lm_spec") or {})
+    raw_path = params.get("lm_path") or spec.get("path", "")
+    path = Path(raw_path)
+    if not path.is_absolute():
+        path = Path(spec.get("base_dir", "")) / raw_path
+    if not path.exists():
+        return {"error": spec["error"]}
+    data = json.loads(path.read_text(encoding="utf-8"))
+    lm = syllable_lm_from_json(data)
+    return {
+        "lm": lm,
+        "language": spec.get("language", ""),
+        "n_bigrams": data.get("n_bigrams", len(data.get("bigrams", {}))),
+        "n_syllables": data.get("n_syllables", len(data.get("vocab", []))),
+        "verdict": data.get("verdict", ""),
+    }
+
+
+# ── LexiconCrossValidator ───────────────────────────────────────────────────
+# Spec 087 S3 PR-F (family F15). Cross-validates an anchor set against
+# an external rebus lexicon: readings are normalised to root sets
+# (slash variants, non a-z stripped, minimum length, plus a prefix of
+# spec length), and each lexicon reading for an anchored sign is
+# corroborated (root overlap), conflicting (both sides have roots,
+# no overlap), or skipped; readings for unanchored signs become new
+# candidates (capped per sign and in total). Rebus pairs match when
+# any pictogram/meaning root reaches an anchored sign. A grammar /
+# content split of the anchors by a spec marker set and a
+# complementarity score (1 - corroborated / overlap, banded by spec
+# thresholds) close the summary. Paths, error texts, markers, caps,
+# bands and the comparison frames are spec data.
+
+
+def _lexicon_normalise(reading: str, spec: dict) -> set:
+    min_len = spec.get("min_root_len", 2)
+    prefix_len = spec.get("prefix_len", 3)
+    roots: set = set()
+    for variant in reading.split("/"):
+        v = re.sub(r"[^a-z]", "", variant.strip().lower())
+        if len(v) >= min_len:
+            roots.add(v)
+            if len(v) >= prefix_len:
+                roots.add(v[:prefix_len])
+    return roots
+
+
+def lexicon_cross_validator_execute(inputs: dict, params: dict) -> dict:
+    spec = dict(params.get("validator_spec") or {})
+    norm_spec = spec.get("normalise") or {}
+    caps = spec.get("caps") or {}
+
+    def _resolve(raw: str) -> Path:
+        path = Path(raw)
+        return path if path.is_absolute() \
+            else Path(spec.get("base_dir", "")) / raw
+
+    anchors_path = _resolve(params.get("anchors_path")
+                            or spec.get("anchors_path", ""))
+    if not anchors_path.exists():
+        return {"error": spec["anchors_error"]}
+    fa = json.loads(anchors_path.read_text(encoding="utf-8"))
+    anchors = fa.get("anchors", {})
+
+    lexicon_path = _resolve(params.get("lexicon_path")
+                            or spec.get("lexicon_path", ""))
+    if not lexicon_path.exists():
+        return {"error": spec["lexicon_error"]}
+    lexicon = json.loads(lexicon_path.read_text(encoding="utf-8"))
+
+    k_sign_readings: dict = lexicon.get("sign_readings", {})
+    k_rebus: list = lexicon.get("rebus_pairs", [])
+
+    anchor_roots: dict = {}
+    for sid, info in anchors.items():
+        for root in _lexicon_normalise(info.get("reading", ""), norm_spec):
+            anchor_roots.setdefault(root, []).append(sid)
+
+    corroborated: list = []
+    conflicting: list = []
+    new_candidates: list = []
+    for sign_id, k_readings in k_sign_readings.items():
+        anchor_info = anchors.get(sign_id)
+        if not anchor_info:
+            for kr in k_readings[: caps.get("new_per_sign", 3)]:
+                new_candidates.append({
+                    "sign": sign_id,
+                    "kalyanaraman_reading": kr,
+                    "source": "sign_proximity",
+                    "our_reading": None,
+                    "status": "new_candidate",
+                })
+            continue
+        our_reading = anchor_info.get("reading", "")
+        our_roots = _lexicon_normalise(our_reading, norm_spec)
+        our_conf = anchor_info.get("confidence", "?")
+        for kr in k_readings:
+            kr_roots = _lexicon_normalise(kr, norm_spec)
+            overlap = our_roots & kr_roots
+            if overlap:
+                corroborated.append({
+                    "sign": sign_id,
+                    "our_reading": our_reading,
+                    "our_confidence": our_conf,
+                    "kalyanaraman_reading": kr,
+                    "overlap_roots": sorted(overlap),
+                    "status": "corroborated",
+                })
+            elif kr_roots and our_roots and not overlap:
+                conflicting.append({
+                    "sign": sign_id,
+                    "our_reading": our_reading,
+                    "our_confidence": our_conf,
+                    "kalyanaraman_reading": kr,
+                    "status": "divergent",
+                })
+
+    rebus_matches: list = []
+    rebus_new: list = []
+    for rp in k_rebus:
+        pic = rp.get("pictogram", "")
+        meaning = rp.get("meaning", "")
+        pic_roots = _lexicon_normalise(pic, norm_spec)
+        meaning_roots = _lexicon_normalise(meaning, norm_spec)
+        matched_signs = set()
+        for root in pic_roots | meaning_roots:
+            for sid in anchor_roots.get(root, []):
+                matched_signs.add(sid)
+        entry = {
+            "pictogram": pic,
+            "meaning": meaning,
+            "count": rp.get("count", 0),
+            "sources": rp.get("sources", [])[: caps.get("sources", 3)],
+        }
+        if matched_signs:
+            entry["matched_signs"] = sorted(matched_signs)[
+                : caps.get("matched_signs", 5)]
+            rebus_matches.append({
+                "pictogram": entry["pictogram"],
+                "meaning": entry["meaning"],
+                "count": entry["count"],
+                "matched_signs": entry["matched_signs"],
+                "sources": entry["sources"],
+            })
+        else:
+            rebus_new.append(entry)
+
+    grammar_markers = set(spec.get("grammar_markers") or [])
+    content_words = set()
+    grammar_words = set()
+    for sid, info in anchors.items():
+        roots = _lexicon_normalise(info.get("reading", "").lower(), norm_spec)
+        if roots & grammar_markers:
+            grammar_words.add(sid)
+        else:
+            content_words.add(sid)
+
+    n_total_anchors = len(anchors)
+    n_kalyan_signs = len(k_sign_readings)
+    n_overlap_signs = len(set(k_sign_readings.keys()) & set(anchors.keys()))
+    complementarity_score = round(
+        1.0 - (len(corroborated) / max(n_overlap_signs, 1)), 3
+    ) if n_overlap_signs > 0 else 1.0
+    verdict = spec["bands_fallback"]
+    for threshold, band_verdict in spec.get("bands") or []:
+        if complementarity_score > float(threshold):
+            verdict = band_verdict
+            break
+
+    systems = spec["systems"]
+    summary = {
+        "verdict": verdict,
+        "interpretation": spec["interpretation_template"].format(
+            n_kalyan=n_kalyan_signs, n_overlap=n_overlap_signs,
+            n_anchors=n_total_anchors, n_corr=len(corroborated),
+            n_conf=len(conflicting), n_new=len(new_candidates),
+            score=complementarity_score),
+        "complementarity_score": complementarity_score,
+        "system_comparison": {
+            "kalyanaraman": systems["external"],
+            "glossa_lab": {
+                **systems["own"],
+                "grammar_signs": len(grammar_words),
+                "content_signs": len(content_words),
+            },
+        },
+    }
+    return {
+        "summary": summary,
+        "corroborated": corroborated,
+        "conflicting": conflicting,
+        "new_candidates": new_candidates[: caps.get("new_out", 50)],
+        "rebus_matches": rebus_matches,
+        "rebus_new": rebus_new[: caps.get("rebus_new_out", 20)],
+        "coverage": {
+            "our_anchors": n_total_anchors,
+            "kalyanaraman_signs": n_kalyan_signs,
+            "overlap_signs": n_overlap_signs,
+            "corroborated_count": len(corroborated),
+            "conflicting_count": len(conflicting),
+            "new_candidate_count": len(new_candidates),
+            "rebus_matched": len(rebus_matches),
+            "rebus_new": len(rebus_new),
+        },
+        "lexicon_stats": lexicon.get("_stats", {}),
+    }

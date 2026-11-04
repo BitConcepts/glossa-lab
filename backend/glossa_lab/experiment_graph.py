@@ -64,11 +64,13 @@ from glossa_lab.generic_primitives import (
     corpus_comparison_stats_execute,
     corpus_cooccurrence_check_execute,
     catalog_text_parser_execute,
+    lexicon_cross_validator_execute,
     registry_table_loader_execute,
     reverse_skeleton_search_execute,
     sign_position_null_test_execute,
     signature_comparator_execute,
     sign_role_classifier_execute,
+    syllable_lm_loader_execute,
     vision_ocr_node_execute,
     skeleton_tablet_search_execute,
     stratified_permutation_test_execute,
@@ -2638,6 +2640,35 @@ for _d in [
         params_schema={"type":"object","properties":{
             "parser_spec":{"type":"object","title":"Parser Spec","description":"Site prefixes, patterns, Unicode block, thresholds, verdict texts."}}},
         fn=catalog_text_parser_execute),
+    AtomicNodeDef("SyllableLMLoader","Syllable LM Loader","Sources",
+        "Load a syllable-level language model from its JSON form "
+        "(Spec 087 S3): stored bigram log-probs are exponentiated, "
+        "unigram counts derive from bigram endpoints, and the ranked "
+        "list orders the vocabulary by those counts, producing the "
+        "LanguageModel the decipher pipeline consumes. The file "
+        "path, language label and error text are parameters "
+        "(lm_spec), not code — DravidianSyllableLM delegates to this "
+        "engine.",
+        inputs=[],
+        outputs=[{"name":"lm","type":"any"},{"name":"language","type":"text"},{"name":"n_bigrams","type":"number"},{"name":"n_syllables","type":"number"},{"name":"verdict","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "lm_path":{"type":"string","title":"LM Path","default":""},
+            "lm_spec":{"type":"object","title":"LM Spec","description":"Base dir, default path, language, error text."}}},
+        fn=syllable_lm_loader_execute),
+    AtomicNodeDef("LexiconCrossValidator","Lexicon Cross-Validator","Analysis",
+        "Cross-validate an anchor set against an external rebus "
+        "lexicon (Spec 087 S3): readings normalise to root sets, and "
+        "each lexicon reading is corroborated, conflicting, or a new "
+        "candidate under spec caps; rebus pairs match through the "
+        "root index; a grammar/content split and a banded "
+        "complementarity score close the summary. Paths, markers, "
+        "caps, bands and frames are parameters (validator_spec), "
+        "not code — KalyanCrossValidation delegates to this engine.",
+        inputs=[],
+        outputs=[{"name":"summary","type":"json"},{"name":"corroborated","type":"json"},{"name":"conflicting","type":"json"},{"name":"new_candidates","type":"json"},{"name":"coverage","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "validator_spec":{"type":"object","title":"Validator Spec","description":"Paths, normalisation, grammar markers, caps, bands, templates."}}},
+        fn=lexicon_cross_validator_execute),
     AtomicNodeDef("FreqCounter","Frequency Counter","Transforms",
         "Count symbol occurrences across all sequences.",
         inputs=[{"name":"sequences","type":"sequences","required":True}],

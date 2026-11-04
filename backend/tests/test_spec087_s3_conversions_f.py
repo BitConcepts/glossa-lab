@@ -64,6 +64,8 @@ CONVERTED_IDS = {
     "Phase21Verdict": "glossa_lab.experiment_graph_phase21",
     "CISIVol3OCRNode": "glossa_lab.experiment_graph_phase28",
     "CMCatalogParser": "glossa_lab.experiment_graph_phase20",
+    "DravidianSyllableLM": "glossa_lab.experiment_graph_phase30",
+    "KalyanCrossValidation": "glossa_lab.experiment_graph_kalyanaraman",
 }
 
 RETIRE_IDS = {}
@@ -78,6 +80,8 @@ PRIMITIVE_IDS = [
     "PredictionVerdictAggregator",
     "VisionOCRNode",
     "CatalogTextParser",
+    "SyllableLMLoader",
+    "LexiconCrossValidator",
 ]
 
 
@@ -157,7 +161,8 @@ def _run_case(case, monkeypatch, tmp_path):
         result = fn(case["inputs"], case["params"])
         root = str(Path(eg.__file__).resolve().parent.parent.parent)
         return _norm_paths(result, [(root, "<ROOT>")])
-    if kind == "ocr_run":        import fitz
+    if kind == "ocr_run":
+        import fitz
 
         from glossa_lab import ai_utils
 

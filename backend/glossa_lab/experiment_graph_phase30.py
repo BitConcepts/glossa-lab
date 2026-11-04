@@ -500,53 +500,14 @@ def _meluhha_cooccurrence_check(inputs: dict, params: dict) -> dict:
 def _syllable_lm_from_json(data: dict) -> "Any":
     """Build a proper LanguageModel from a syllable LM JSON dict.
 
-    The syllable LM JSON stores bigrams as {"a|b": log_prob}.  This helper
-    converts that to the tuple-key probability dict that LanguageModel and
-    BigramScorer expect, and populates all required attributes (ranked,
-    bigram_freq, unigram_freq, size) so SADecipher works correctly.
+    Spec 087 S3 PR-F: the builder lives in the generic SyllableLMLoader
+    engine (glossa_lab.generic_primitives.syllable_lm_from_json); this
+    historical helper delegates to it so the Sanskrit loader below
+    keeps the identical code path.
     """
-    import math as _math  # noqa: PLC0415
+    from glossa_lab.generic_primitives import syllable_lm_from_json
 
-    from glossa_lab.pipelines.decipher import LanguageModel  # noqa: PLC0415
-
-    vocab: list[str] = data.get("vocab", [])
-    bigrams_raw: dict = data.get("bigrams", {})
-
-    # Convert "a|b" -> (a, b) keys; stored values are log-probs, need to convert to probs
-    bigram_freq: dict = {}
-    unigram_counts: dict = {}
-    for ab_str, lp in bigrams_raw.items():
-        parts = ab_str.split("|")
-        if len(parts) == 2:
-            a, b = parts
-            # Convert log-prob to prob (smoothed, so just exp it)
-            prob = _math.exp(float(lp)) if lp is not None else 1e-8
-            bigram_freq[(a, b)] = prob
-            unigram_counts[a] = unigram_counts.get(a, 0) + 1
-            unigram_counts[b] = unigram_counts.get(b, 0) + 1
-
-    # Build ranked from unigram counts (higher count = higher rank)
-    total_uni = max(sum(unigram_counts.values()), 1)
-    all_syms = vocab if vocab else sorted(unigram_counts.keys())
-    unigram_freq = {s: unigram_counts.get(s, 1) / total_uni for s in all_syms}
-    ranked = sorted(all_syms, key=lambda s: unigram_counts.get(s, 0), reverse=True)
-
-    # Build a minimal LanguageModel instance without calling __init__
-    lm = LanguageModel.__new__(LanguageModel)
-    lm.symbols = all_syms  # type: ignore[attr-defined]
-    lm.alphabet = sorted(set(all_syms))  # type: ignore[attr-defined]
-    lm.size = len(lm.alphabet)  # type: ignore[attr-defined]
-    lm.ranked = ranked  # type: ignore[attr-defined]
-    lm.unigram_freq = unigram_freq  # type: ignore[attr-defined]
-    lm.bigram_freq = bigram_freq  # type: ignore[attr-defined]
-    lm.word_bigram_freq = {}  # type: ignore[attr-defined]
-    lm.word_initial_freq = {}  # type: ignore[attr-defined]
-    lm.word_final_freq = {}  # type: ignore[attr-defined]
-    lm.ocp_rate = 0.0  # type: ignore[attr-defined]
-    lm.trigram_freq = {}  # type: ignore[attr-defined]
-    lm.positional = {}  # type: ignore[attr-defined]
-    lm.word_cooccur = {}  # type: ignore[attr-defined]
-    return lm
+    return syllable_lm_from_json(data)
 
 
 def _builtin_syllable_lm(inputs: dict, params: dict) -> dict:
@@ -555,25 +516,26 @@ def _builtin_syllable_lm(inputs: dict, params: dict) -> dict:
     Produces the same interface as BuiltinLM so it can plug into SADecipher.
     Built by: backend/scripts/build_dravidian_syllable_lm.py
     Citations: E.1 (DEDR), A.12 (Mahadevan 2003 TB)
+
+    Spec 087 S3 PR-F: delegates to the generic SyllableLMLoader; the
+    bundled file path, the language label and the error text are spec
+    data. An lm_path param may override the file (relative paths
+    resolve against the repo root).
     """
-    import json as _json  # noqa: PLC0415
     from pathlib import Path as _Path  # noqa: PLC0415
 
-    REPO = _Path(__file__).resolve().parent.parent.parent
-    path = REPO / "backend/glossa_lab/data/dravidian_syllable_lm.json"
-    if not path.exists():
-        return {"error": "dravidian_syllable_lm.json not found — run build_dravidian_syllable_lm.py"}
+    from glossa_lab.generic_primitives import syllable_lm_loader_execute
 
-    data = _json.loads(path.read_text(encoding="utf-8"))
-    lm = _syllable_lm_from_json(data)
-
-    return {
-        "lm": lm,
+    repo = _Path(__file__).resolve().parent.parent.parent
+    merged = dict(params)
+    merged["lm_spec"] = {
+        "base_dir": str(repo),
+        "path": str(repo / "backend/glossa_lab/data/dravidian_syllable_lm.json"),
         "language": "dravidian_syllable",
-        "n_bigrams": data.get("n_bigrams", len(data.get("bigrams", {}))),
-        "n_syllables": data.get("n_syllables", len(data.get("vocab", []))),
-        "verdict": data.get("verdict", ""),
+        "error": ("dravidian_syllable_lm.json not found — run "
+                  "build_dravidian_syllable_lm.py"),
     }
+    return syllable_lm_loader_execute(inputs, merged)
 
 
 # The Tamil romanisation diacritic table for IndusAnchorSetSyllable,

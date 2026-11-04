@@ -1270,12 +1270,17 @@ owner-decisions section above), or amended on the record, by the
 owner's act:
 
 - Owner: Tristen Pierson
-- Act: PENDING — not yet ratified. Until this block is completed by
-  the owner's act, this register proposes and commissions nothing;
-  first waves are commissioned separately, from the ratified
-  register, by a later owner act.
-- Date: —
-- Record of the act: —
+- Act: RATIFIED AS A BLOCK on 2026-11-04 — entries, ranking,
+  dispositions, and the owner-decisions section above, including
+  GR-088-26 standing as a ratified entry (its consolidation
+  provenance was flagged on its face for a possible strike; none
+  was recorded with the act). Ratification settles the gap
+  picture; it commissions nothing — first waves are commissioned
+  separately, from this ratified register, by a later owner act.
+- Date: 2026-11-04
+- Record of the act:
+  `specs/088-full-picture-map-gap-register/records/register-ratification-2026-11-04.md`
+  (T603, Spec 088 closeout PR).
 
 *This register does not establish:* that these are all the gaps there
 are — only that every find the S5 scans recorded in the registered

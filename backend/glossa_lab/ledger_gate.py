@@ -189,6 +189,11 @@ WRITE_ENTRY_POINTS = ("append_entry", "write_ledger", "write_matrix")
 REGISTERED_WRITERS = {
     "backend/glossa_lab/matrix_generate.py",
     "backend/glossa_lab/map_generate.py",
+    # Spec 088: the program-map generator is a registered writer
+    # from its first landing (Stage S1) — V9's census flags it
+    # from the moment it exists, so T303's registration rides
+    # with S1; the V10 recompute class itself lands in S3.
+    "backend/glossa_lab/program_map_generate.py",
     "backend/glossa_lab/gated_publish.py",
     "tools/ledger/generate_matrix.py",
     "tools/ledger/generate_map.py",

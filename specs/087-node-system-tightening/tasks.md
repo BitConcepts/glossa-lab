@@ -182,18 +182,38 @@ carries its gate/test output verbatim** — not a summary of it.
   into records/stage-s3-conversions.md at T701. A behaviour
   change to a converted node's engine, not a conversion; no
   S3 count moved.
-- [ ] T304 Re-expression PRs (disposition (b)): consuming
+- [x] T304 Re-expression PRs (disposition (b)): consuming
   experiments rebuilt as compositions of existing
   primitives; C087-13 comparison runs re-proved per PR.
   Acceptance: test. *This does not establish the composition
   is the best expression — only that the domain node is no
   longer load-bearing.*
-- [ ] T305 Domain-branch scan over converted sources + the
+  Complete by vacuity, with one named supersession
+  (2026-11-03, T701): no (b) disposition was ever assigned
+  in the 68 — every CONVERT entry names a target primitive
+  (form (a); H1 expressly chose (a) over a pure (b) for the
+  strongest candidate) — and the one (b) path named
+  anywhere, triage §4.7 for the two live WRAPPERs outside
+  the 68, was superseded by the parent's 2026-11-03
+  conversion-contract ruling and executed as (a)
+  conversions in PR-F. No re-expression PRs exist to run.
+  Evidence: records/stage-t701-closeout-record.md §6.
+- [x] T305 Domain-branch scan over converted sources + the
   S3 leg of the comparison runs; S3 stage record with the
   full 68-row disposition table. (C087-7, C087-13)
   Acceptance: test (scan clean or its residual named in the
   record). *This does not establish no domain logic remains
   anywhere — only that the converted set carries none in code.*
+  DONE 2026-11-03 at T701: the scan ran over all 66
+  converted/relabelled registered fns (62 conversions + the
+  2 F15 wrappers + the 2 F14 relabels): 11 conditional lines
+  in total, all input hygiene; 0 naming a domain identity;
+  0 comparing against a string literal — scan clean, no
+  residual. The S3 comparison leg is the per-batch record
+  set (27/27 per PR); the 68-row disposition table is the
+  triage record §5 + the conversions record's per-batch
+  sections. Evidence: records/stage-t701-closeout-record.md
+  §7.
 
 ## Stage S4 — Generated manual (PR: `feat/087-s4-generated-manual`)
 
@@ -360,9 +380,17 @@ carries its gate/test output verbatim** — not a summary of it.
 
 ## Closeout
 
-- [ ] T701 Closeout record: per-claim dispositions against
+- [x] T701 Closeout record: per-claim dispositions against
   the stage records; the final registry census (registered /
   palette / legacy); F1–F10 re-scored. (All claims)
   Acceptance: human-as-oracle. *This does not establish the
   system is finished — only that this program's contract is
   discharged on its evidence.*
+  DONE 2026-11-03: records/stage-t701-closeout-record.md —
+  the five closeout items (trio description fidelity, PR-B
+  wording correction, fallback-retirement reconciliation,
+  PR-A fitz fix, USER_GUIDE §16 disposition), T304/T305
+  discharged, final census 556 registered / 425 legacy /
+  131 palette / 81 core / 65 categories, all 17 claims
+  assessed, F1–F10 re-scored, three named residuals carried
+  out with owners. Every task in this file is now ticked.

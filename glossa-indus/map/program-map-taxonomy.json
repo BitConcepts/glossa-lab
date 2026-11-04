@@ -481,6 +481,11 @@
       "spec_dir": "088-full-picture-map-gap-register",
       "domain": "Program infrastructure",
       "subdomain": "Governance, lifecycle & generated layers"
+    },
+    {
+      "spec_dir": "089-run-scoped-results",
+      "domain": "Program infrastructure",
+      "subdomain": "Governance, lifecycle & generated layers"
     }
   ],
   "extracted_documents": [

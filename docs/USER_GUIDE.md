@@ -1,7 +1,7 @@
 # Glossa Lab — User Guide
 
 > **Version**: current `main` branch — Phase 170+ (June 2026)
-> **Last updated**: 2026-06-10
+> **Last updated**: 2026-11-03
 > **Maintained by**: BitConcepts LLC
 > **Preprint**: v4 — DOI [10.5281/zenodo.20414696](https://doi.org/10.5281/zenodo.20414696)
 
@@ -144,18 +144,23 @@ Each workspace tab shows a coloured dot reflecting its state:
 | Control       | Shortcut   | Purpose |
 |---------------|-----------|---------|
 | ⌘K             | Ctrl+K    | Command palette — navigate anywhere by name |
-| ⊟             | Ctrl+J    | Toggle the bottom panel (Terminal / Logs / Jobs / Chat) |
 | 🔔             | —         | Notifications dropdown |
 | 🌙/☀️          | —         | Dark / light mode toggle |
 
-### Bottom panel tabs
+### Logs
 
-| Tab      | Purpose |
-|----------|---------|
-| Logs     | Live backend log stream |
-| Jobs     | Running and queued pipeline jobs |
-| Terminal | Interactive shell with history, Tab autocomplete, Ask AI button |
-| Chat     | Docked AI chat (same as floating bubble) |
+There is no bottom panel in the current interface — it was
+removed in the Spec 081 redesign. Backend logs are written to
+the rotating log file (`glossa.log`) and served by the
+terminal-log endpoints (`GET /terminal/log`,
+`GET /terminal/log/stream`, `POST /terminal/log/purge`); an
+in-app **Logs** view is being restored as its own tab under
+Spec 087 (Stage S5). Job records live in the **Jobs** view.
+The in-app events bus is a live-notification channel with no
+delivery guarantee (Spec 087 decision D2, documented-ephemeral):
+anything that must survive is in the durable record tables
+(jobs, phase actions, notifications, the cloud audit log),
+never only in the event stream.
 
 ### Floating AI Chat
 
@@ -214,21 +219,53 @@ editor where you compose atomic computation nodes into graph experiments.
 These graph experiments also appear in the Study Builder palette so you can
 use them as nodes in a full research workflow.
 
-### Active graph experiments (Experiment Builder palette)
+### Registered graph experiments
 
-| Experiment | Description | Corpus |
-|------------|-------------|--------|
-| Positional Profile Analysis | I/M/T rates per symbol (NWSP) | Any |
-| Symbol Clustering | L1 clustering by positional profile | Any |
-| Word-Length KL Scoring | KL/JS divergence vs language profiles | Any (or ICIT) |
-| Contact Zone Analysis | Site-grouping KL/Jaccard analysis | ICIT only |
-| Indus Structural Atlas | Entropy + Zipf + NWSP + clustering | Synthetic Indus |
-| Kandles Bias Comparison | Biased vs unbiased Kandles profiles | Synthetic Indus |
-| Linear A Anti-Circularity | 7-experiment validation suite | Linear A internal |
-| OCR — Tables / Texts | CLI-only Mahadevan extraction | N/A (CLI only) |
+The graph experiments registered in the Experiment Builder are
+the graph files on disk under
+`backend/glossa_lab/experiments/graphs/`. The table below is
+**generated from those files** by
+`tools/manual/generate_node_reference.py` (Spec 087 S4) and
+kept true by a CI conformance test — it lists every registered
+graph experiment, neither more nor fewer. (The Experiment
+Builder's *palette* is a different list: the atomic nodes these
+graphs are built from. That palette is the registry's
+non-legacy set, documented in the generated Node Reference in
+`docs/user-manual.md`.)
 
-Validation experiments (Ugaritic, Ventris, Progression) remain available as
-Python classes for study execution but are not in the Experiment Builder palette.
+<!-- BEGIN GENERATED experiments-table -->
+Registered graph experiments on disk: **27**.
+
+| ID | Experiment | Nodes | Description |
+|---|---|---|---|
+| `fuls_independence_suite` | Fuls Controls: Independence — Shuffle vs Real | 10 | Tests whether NW Semitic sign sequences carry genuine linguistic signal (not random). Runs SA on both the real RTL-corrected corpus and a within-word shuffled control. Compares mean consistency: if real >> shuffled, sequential structure is informative. |
+| `fuls_nw_semitic_benchmark` | Fuls Structural: NW Semitic Benchmark | 9 | Full structural analysis of the Fuls NW Semitic test1 corpus: entropy, positional profiles, Zipf fit, and n-gram statistics. All computed from RTL-corrected sequences using pure atomic nodes. |
+| `fuls_validation_suite` | Fuls Validation: Composite Suite | 5 | Composite validation running three benchmark experiments as sub-experiments: (1) Fuls NW Semitic Benchmark, (2) Ventris Linear B Validation, (3) Tier 3 Sumerian. Merges results for cross-tier comparison. Demonstrates SubExperiment subroutine pattern. |
+| `generic_sa_multi_comparison` | SA: Multi-Language Comparison (Generic) | 4 | Compare Simulated Annealing performance across multiple reference languages. Edit the SAMultiComparison node's 'languages' param to select which languages to test. Default compares Dravidian vs Sanskrit vs Hebrew for the Indus corpus. Best-practice: run 3+ seeds for reliable ranking. |
+| `indus_anchor_sweep` | Indus Anchored SA: Dravidian Convergence Self-Test | 6 | Validates the Dravidian LM's usefulness for Indus Script decipherment via a self-test. The Dravidian (Tamil) corpus is split into train/test; a cipher is constructed from the test set using the LM alphabet; AnchorConvergenceBenchmark sweeps k=0,3,10,20 structured anchors and measures accuracy + consistency. High accuracy at low k = strong Dravidian bigram constraints = trustworthy LM for the Indus decipherment. Word-final anchor priority (Dr. Fuls 2026) used for structured anchor selection. |
+| `indus_cgsa_cluster_analysis` | Indus CGSA: Cluster Sequence Analysis | 7 | CGSA Phase 5-6: Load CISI corpus, map signs to structural clusters (40 classes), analyze recurrent templates. NO phonetic mapping. |
+| `indus_cisi_anchored_10` | Indus Anchored SA: CISI — 10 Pinned Signs | 6 | Maximum-evidence anchored decipherment: 10 structurally motivated sign-to-phoneme assignments covering 2 terminal, 3 initial, and 5 medial positions. VERIFIED (structural): P385->n (genitive suffix, T=0.83), P324->k (dominant initial, I=0.78). INFERRED (positional): P122->a (pure medial n=76), P086->m (initial n=35), P060->i (medial n=20). NEW INFERRED: P256->l (2nd terminal T=0.75, Dravidian locative -il), P217->p (initial n=18, Tamil pal/puli), P050->v (pure medial n=32, Tamil val/vay), P145->r (medial n=27, Tamil maram/aravu), P062->u (pure medial n=21, Tamil mul/kul). With 10 anchors covering key positions, the SA should produce candidate readings for common 3-sign inscriptions. Key prediction: P324+P122+P256 = k+a+l = 'kal' (stone); P217+P122+P385 = p+a+n = 'pan' (work/pig). GPU: n_seeds=8, max_iter=15000. |
+| `indus_cisi_dravidian_vs_pali` | Indus SA: Dravidian vs Pali/MIA — CISI Multi-Sign | 11 | Tests whether the Dravidian advantage over Pali (Middle Indo-Aryan) observed on ICIT single-sign sequences (+27.8pp) is replicated on real CISI multi-sign inscription data with genuine bigram structure. Pali is the closest attested proxy for Proto-Indo-Aryan (Witzel hypothesis). If the gap shrinks on real bigram data, it would suggest the ICIT result was partly an artifact of degenerate sequences. If it holds or widens, it further confirms the Dravidian hypothesis on structural grounds. GPU: n_seeds=5, max_iter=8000. |
+| `indus_cisi_dravidian_vs_sanskrit` | Indus SA: Dravidian vs Sanskrit — CISI Multi-Sign | 11 | Critical test: uses real CISI inscription sequences (178 inscriptions, 1003 tokens, Parpola numbering) instead of ICIT single-sign sequences. For the first time, SA exploits real bigram structure (e.g. P122→P385 n=29, P324→P332 n=10). LMBuilder first builds an Indus self-LM from CISI to get H1. Then SA decipherment against Dravidian and Sanskrit target LMs. With real multi-sign data, the phonotactic signal is much richer. GPU fast path: ocp_weight=0.0, n_seeds=5, max_iter=8000. |
+| `indus_cisi_sa_dravidian_vs_nw_semitic` | SA: indus_cisi vs dravidian / nw_semitic | 4 | Auto-generated SA multi-language comparison. Corpus: indus_cisi. Languages: dravidian, nw_semitic. Seeds: 3. Max iterations: 5000. |
+| `indus_cisi_sa_dravidian_vs_sanskrit` | SA: indus_cisi vs dravidian / sanskrit | 4 | Auto-generated SA multi-language comparison. Corpus: indus_cisi. Languages: dravidian, sanskrit. Seeds: 1. Max iterations: 100. |
+| `indus_cisi_structural` | Indus Structural: CISI Baseline (Parpola) | 10 | P1: Full structural atlas of the CISI corpus (179 Mohenjo-daro inscriptions, 1,003 tokens, 182 distinct Parpola signs). Unlike BuiltinCorpus('indus') which returns single-sign sequences, indus_cisi provides real multi-sign inscription sequences enabling meaningful positional profiling (I/M/T rates per sign), bigram statistics, and writing system classification. Source: mayig/indus-valley-script-corpus (MIT, 2024-2025). |
+| `indus_contact_zone_v2` | Indus KL: Contact Zone Analysis — CISI | 9 | P3: Compares sign usage between Mesopotamian trade-contact sites (Lothal, Dholavira) and Indus heartland (Harappa, Mohenjo-daro) using the CISI corpus. The mayig/indus-valley-script-corpus currently covers only Mohenjo-daro (M-prefix, 179 inscriptions). This graph will run fully once the repo adds Harappa (H-prefix), Lothal (L-prefix), and Dholavira (DK-prefix) files. Current run: structural analysis on Mohenjo-daro only as baseline. |
+| `indus_dravidian_vs_sanskrit` | Indus SA: Dravidian vs Sanskrit — Holdat Full Corpus | 12 | Direct A/B comparison of Dravidian (Tamil) vs Sanskrit (Indo-European) as target language models for Indus Script decipherment. Both tests use the Fuls anti-circularity protocol: TokenFilter(min_freq=8) + SADecipher(3 seeds, GPU). Higher SA consistency = stronger phonotactic match. Adjudicates between the Dravidian hypothesis (Parpola 1994) and the Indo-Aryan/Vedic hypothesis. |
+| `indus_kalyanaraman_crossval` | Kalyanaraman Rebus Cross-Validation | 2 | Cross-validates INDUS_FINAL_ANCHORS against Kalyanaraman's rebus lexicon (52 papers, metalwork/trade content-word readings). Reports corroborated signs, divergent readings, new anchor candidates, and measures complementarity between the two independent decipherment approaches (our SA-derived grammatical markers vs. his content-word rebus system). |
+| `indus_sa_dravidian` | SA: indus vs dravidian | 4 | Auto-generated SA multi-language comparison. Corpus: indus. Languages: dravidian. Seeds: 3. Max iterations: 5000. |
+| `indus_sa_dravidian_syllable` | Indus SA: M77 → Dravidian Syllable LM | 7 | Phase-33 T1: The CORRECTED Phase-32 T4 run. Two bugs fixed: (1) DravidianSyllableLM now properly populates bigram_freq and ranked so BigramScorer works; (2) IndusAnchorSetSyllable maps INDUS_FINAL_ANCHORS to syllable tokens (not whole Tamil words) compatible with the syllable LM. Expected: SA should now converge meaningfully and produce syllable-level assignments (ka, ta, na, mi, etc.) rather than random word-level Tamil assignments. If mean_consistency > 0.5 and hci_count > 30, the syllable-level model is discriminative and supports the Dravidian hypothesis. Compare to Sanskrit T7 redo for falsification. Citations: E.1 (DEDR), A.12 (Mahadevan 2003 TB), A.1 (M77), C.2 (Parpola 2010). |
+| `indus_sa_dravidian_vs_nw_semitic` | SA: indus vs dravidian / nw_semitic | 4 | Auto-generated SA multi-language comparison. Corpus: indus. Languages: dravidian, nw_semitic. Seeds: 3. Max iterations: 5000. |
+| `indus_sa_dravidian_vs_sanskrit` | SA: indus vs dravidian / sanskrit | 4 | Auto-generated SA multi-language comparison. Corpus: indus. Languages: dravidian, sanskrit. Seeds: 3. Max iterations: 5000. |
+| `indus_sa_sanskrit_falsification` | Indus SA: Sanskrit Falsification | 6 | Phase-32 T7: SA decipherment M77 → Sanskrit LM. The identical pipeline to Phase-32 T4 (Dravidian) but with a Sanskrit target LM. If mean_consistency(Sanskrit) < mean_consistency(Dravidian 0.297) and hci_count(Sanskrit) < 4, the Dravidian hypothesis survives one head-to-head falsification round. This is a preregistered falsification experiment: the null hypothesis is H0='Sanskrit fits as well as Dravidian'. Rejection of H0 favours the Dravidian hypothesis. Citations: C.7 (Yajnadevam 2024), C.10 (S.R. Rao 1982), A.1 (M77), E.1 (DEDR). |
+| `indus_sign_function_dravidian` | Indus Sign Function: Dravidian Suffix-Position | 12 | P2: Uses PositionalProfiler to classify Indus signs by function (INITIAL determinative, MEDIAL phoneme, TERMINAL/case marker). Terminal signs with high T-rate correspond to Dravidian case suffixes (-in genitive, -ku dative, -il locative, -al instrumental, -atu ablative). Compared against Dravidian LM consistency at terminal positions. This tests whether terminal sign distribution aligns with Dravidian agglutinative morphology. Also runs WritingSystemClassifier to anchor the tier classification. GPU: ocp_weight=0.0, n_seeds=5. |
+| `indus_structural_atlas` | Indus Structural: Entropy & Positional Atlas | 8 | Full Fuls (2023) structural analysis: block entropy (Rao 2009), Zipf-Mandelbrot (Yadav 2010), NWSP positional profiling (Fuls 2013), and symbol clustering. Multi-branch pipeline over the Indus corpus. |
+| `indus_validation_a1_a3_holdout` | Indus Validation: A1-A3 Anchor Holdout | 4 | Phase-33 T2: Formal graph experiment for Phase-30 A1 and A3 validation of the Phase-29d Enmenanak finding. A1: PermutationTest on Phase-29d Enmenanak score (observed=5.0/7.0 depending on scoring formula) against a random permutation null (1000 permutations). A3: MeluhhaCooccurrenceCheck — does Enmenanak or other top-5 Phase-29d candidates appear in CDLI Meluhha co-occurrence contexts? Result from Phase-33 T8 (rigorous): p=0.998, NOT SIGNIFICANT with original 15-rendering scoring. This graph provides the canonical Job-registered record of both A1 and A3 for the ledger. Citations: A.1 (M77), A.11 (ePSD2), F.2 (CDLI/Meluhha). |
+| `indus_validation_neg_controls` | Indus Validation: Negative / Shuffle Tests | 13 | Phase A negative controls. Tests whether the sequential structure of the M77 corpus carries real signal vs. unigram noise. Pipeline: (1) Load real M77 corpus → FreqCounter + ZipfFitter (baseline); (2) Within-word token shuffle → FreqCounter + ZipfFitter (internal structure destroyed, word boundaries preserved); (3) Global token shuffle → FreqCounter + ZipfFitter (all structure destroyed). KL divergence between real and shuffled frequency maps quantifies information loss. Expected: Zipf exponent drops significantly for global shuffle, moderately for within-word. If Zipf exponent is preserved after shuffling, sequential patterns are epiphenomenal. CRITICAL H16 control: must run before any claim about sequential signal. |
+| `kl_comparison` | Benchmark KL: Cross-Corpus Divergence | 6 | Compute KL and JS divergence between two corpora's symbol frequency distributions. Generic: works for any two corpora. Useful for script typology comparison. |
+| `ugaritic_sa_decipher` | Benchmark SA: Ugaritic → Hebrew | 6 | Proper anti-circularity SA benchmark: 75% of Ugaritic Baal Cycle builds the Hebrew LM; 25% is the cipher test set. Runs 5 seeds in parallel (GPU-accelerated via BigramScorer when CuPy is installed). |
+| `ventris_validation` | Benchmark SA: Linear B (Ventris) | 5 | Validates sign affinity clustering against the known Ventris grid for Linear B. Uses beam search (faster, deterministic) to find the optimal syllabic grouping and scores the result against the known Greek phonetic values. |
+<!-- END GENERATED experiments-table -->
 
 ### Running an experiment graph
 
@@ -344,6 +381,13 @@ Or use **✨ AI Design** to describe a research goal and have the AI compose a
 study graph automatically.
 
 ### Node types in the palette
+
+These are **study-level** node types — a separate system from
+the Experiment Builder's atomic-node palette (the registry's
+non-legacy atomic nodes; see the generated Node Reference in
+`docs/user-manual.md`). Study node parameter schemas are served
+by the study node registry (`GET /node-registry/...`, module
+`study_node_registry.py`), not by the atomic registry.
 
 The palette has four groups:
 - **Data & Analysis**: corpus, rag_query, ai_analysis, note, report, hypothesis
@@ -548,7 +592,7 @@ This allows you to assemble a multi-experiment research report without manual co
 
 ## 9. Jobs
 
-**Path**: sidebar → Jobs (or bottom panel → Jobs tab)
+**Path**: sidebar → Jobs
 
 Jobs are asynchronous pipeline executions. They run in the background via the
 pipeline engine and store results when complete.
@@ -875,18 +919,14 @@ Ask: _"How many inscriptions start with sign 400?"_
 
 ## 12. Terminal
 
-**Path**: bottom panel → Terminal tab
-
-An interactive shell for running CLI commands, scripts, and experiments.
-
-### Features
-
-- **Tab autocomplete** on commands and file paths
-- **Command history** — ↑/↓ arrows
-- **Paste** from clipboard
-- **Ask AI** button — sends the last command + output to the AI chat for analysis
-- **Help** button — inserts the `help` command
-- **Clear** button — clears terminal output
+There is no in-app terminal in the current interface — the
+pre-redesign bottom panel that hosted it was removed in
+Spec 081. The backend's terminal-log endpoints
+(`GET /terminal/log`, `GET /terminal/log/stream`,
+`POST /terminal/log/purge`) are services, not a shell; the
+in-app Logs view that reads them returns under Spec 087
+(Stage S5). Run the commands below in your own shell, in the
+backend's environment.
 
 ### Useful commands
 
@@ -1031,11 +1071,16 @@ Key points:
 
 ### Node registry API
 
-Get the params schema for any node type:
+Get the params schema for any study node type:
 ```
 GET /api/v1/node-registry/experiment/{id}
 GET /api/v1/node-registry/pipeline/{id}
 ```
+
+This is the **study** node registry (module
+`study_node_registry.py`, renamed in Spec 087 S1) — not the
+Experiment Builder's atomic-node registry, whose catalog is
+served at `GET /api/v1/experiment-graphs/catalog`.
 
 ### Seeding custom studies
 
@@ -1102,7 +1147,7 @@ This is the most powerful mode for Indus Script research.
 ### Backend shows "Offline" in the health badge
 
 - Check the tray icon — click **Start** if it shows as stopped.
-- Open the Logs panel to see the error.
+- Check the backend log (`glossa.log`) to see the error.
 - Check the tray's own log (`logs/tray.log` in the install folder):
   it records starts, auto-restarts, failed stops, and why
   supervision is holding (for example the auto-restart limit).

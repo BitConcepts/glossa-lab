@@ -187,7 +187,7 @@ carries its gate/test output verbatim** — not a summary of it.
 
 ## Stage S4 — Generated manual (PR: `feat/087-s4-generated-manual`)
 
-- [ ] T401 Generator tool (`tools/manual/`): emits the
+- [x] T401 Generator tool (`tools/manual/`): emits the
   user-manual Node Reference block, the HelpView
   node-reference data module, and the USER_GUIDE experiments
   table, from the live registry and the graph files;
@@ -196,24 +196,48 @@ carries its gate/test output verbatim** — not a summary of it.
   byte-identical). *This does not establish the generated
   content is readable — only that it is the registry's truth,
   regenerated.*
-- [ ] T402 Conformance test (Spec 084 pattern):
+  — DONE 2026-11-03: `backend/glossa_lab/manual_generate.py`
+  (pure builder) + `tools/manual/generate_node_reference.py`
+  (`--check` mode); counts from the live registry: 556
+  registered / 425 legacy / 131 palette / 24 palette
+  categories / 27 graph experiments; delete-and-regenerate
+  byte-identical (sha256-verified). Evidence:
+  `records/stage-s4-record.md`.
+- [x] T402 Conformance test (Spec 084 pattern):
   regenerate-and-diff both directions + absence checks for
   the 10 phantom names; teeth seeded in the stage record.
   (C087-8, C087-9) Acceptance: test. *This does not establish
   the prose around the blocks is true — only the enumerable
   reference is pinned.*
-- [ ] T403 Prose pass in the same PR: post-081 screens, the
+  — DONE 2026-11-03: `backend/tests/test_manual_conformance.py`
+  (7 tests); teeth all three fail by name when seeded and
+  pass when restored (phantom name in prose, stale port
+  inside the generated block, hand edit in the generated
+  module). Evidence: `records/stage-s4-record.md` §3.
+- [x] T403 Prose pass in the same PR: post-081 screens, the
   Logs description rewritten to the S5/D2 disposition, the
   Study Builder palette confusion corrected, the phantom
   example pipeline redrawn from real nodes. (C087-15)
   Acceptance: human-as-oracle (reviewed diff). *This does
   not establish the prose is finished forever — only that it
   is true at this merge.*
-- [ ] T404 S4 stage record: generator + conformance output
+  — DONE 2026-11-03 in all three surfaces (user-manual,
+  USER_GUIDE, HelpView): post-081 sidebar views; Bottom Panel
+  sections replaced by the Logs disposition (D2
+  documented-ephemeral stated in substance in all three);
+  the two palette systems distinguished both ways; example
+  pipeline redrawn from real nodes; TokenFilter params
+  corrected to the registry. Departures stated in
+  `records/stage-s4-record.md` §5.
+- [x] T404 S4 stage record: generator + conformance output
   verbatim, teeth results, the before/after phantom census.
   Acceptance: test. *This does not establish the manuals are
   complete — only that their enumerable claims are now
   machine-kept.*
+  — DONE 2026-11-03: `records/stage-s4-record.md` (generator +
+  conformance output §2, teeth §3, claim assessments §4,
+  departures §5 incl. the S3-record reconciliation items
+  carried to T701).
 
 ## Stage S5 — Logs surface (PR: `feat/087-s5-logs-surface`)
 

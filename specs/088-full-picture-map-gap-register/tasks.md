@@ -8,7 +8,7 @@ into its stage report.
 
 ## Stage 0 — Package adoption
 
-- [ ] **T001 — Package lands.** spec.md, claims.md, aee-claims.json,
+- [x] **T001 — Package lands.** spec.md, claims.md, aee-claims.json,
   plan.md, tasks.md, records/ (adoption record, taxonomy v0 draft, scan
   plan, T002 assessment + note) committed as
   `specs/088-program-map-gap-register/` on `feat/088-spec-package`.
@@ -18,6 +18,16 @@ into its stage report.
   taxonomy draft's assignment table counts to the spec-tree census, 88).
   *This does not establish:* that the package is approved — only that it
   is complete and internally consistent.
+  **Completed 2026-11-04** (ticked at Stage S6; the work was
+  executed at adoption): the package landed byte-identical
+  under the adopted names `specs/088-full-picture-map-gap-register/`
+  on `feat/088-adoption` (PR #504) — the directory/branch
+  naming departure from this task's draft text is recorded
+  in `records/ratification-2026-11-04.md` and named again
+  as departure (c) in `records/stage-s6-record.md`. The
+  package verification of record stands (19/19 claim ids
+  identical across claims.md and aee-claims.json; every
+  claim carries a falsifier and a DNE line).
 - [ ] **T002 — AEE verification of the claims.** The C088 bundle run
   through the pinned assessor (aee 1.5.3, CI-faithful venv), exactly as
   Spec 087's T002: `aee validate` → `valid: 19 claim(s)`; `aee assess
@@ -29,6 +39,11 @@ into its stage report.
   *This does not establish:* claim quality — `iterate` is the expected
   reading for a draft bundle on one asserted source; the owner's approval
   is the human act (T003).
+  **Completed 2026-11-04** (ticked at Stage S6; executed at
+  package build): `aee validate` → `valid: 19 claim(s)`;
+  `aee assess --no-ledger` → **outcome: iterate**, 80
+  failure modes, recorded verbatim in `records/t002-note.md`
+  with the assessment at `records/t002-aee-assessment.json`.
 - [x] **T003 — Owner block approval.** The owner ratifies the package as
   a block: spec, 19 claims, plan, the taxonomy v0 draft
   (`records/taxonomy-v0-draft.md`), and decisions D-088-1..6 (including
@@ -398,7 +413,7 @@ into its stage report.
 
 ## Stage 6 — Gap register v1 (PR: feat/088-s6-register)
 
-- [ ] **T601 — Register v1 drafted.** `glossa-indus/map/gap-register.md`
+- [x] **T601 — Register v1 drafted.** `glossa-indus/map/gap-register.md`
   in RCPH's format: ranked headline list; `GR-088-NN` entries with status
   words; each entry names the missing node/edge, why its absence blocks
   convergence, the candidate with its falsifier and type, and owner
@@ -408,6 +423,18 @@ into its stage report.
   dispositioned).
   *This does not establish:* the ranking — ranking is judgment, and the
   owner's ratification (T603) is where it settles.
+  **Completed 2026-11-04:** register v1 drafted — 37 entries
+  (GR-088-01…37) consolidating the S5 scans' 35 finds and
+  37 candidates, the carried `restricted_node` find
+  (GR-088-37, restriction stated, no candidate), and one
+  entry added at consolidation from its source record
+  (GR-088-26, S-R3; departure (a) in
+  `records/stage-s6-record.md`). Candidates 38, each with
+  a falsifier and an honesty-rule type (mechanically
+  counted 38/38). No two finds were merged (the
+  deduplication analysis is in the register's census
+  section). Drafting review: every scan find is in an
+  entry — script-verified 35/35 with kinds matching.
 - [ ] **T602 — Completeness check against the source lists.** The
   source-coverage annex: every C088-11 source-list item mapped to entry
   id(s) or a recorded not-a-gap disposition. Mechanical legs (find-list
@@ -418,6 +445,21 @@ into its stage report.
   **human-as-oracle** (prose legs, reading the annex).
   *This does not establish:* completeness in nature — only completeness
   against the program's own named lists, which is the claim.
+  **Completed 2026-11-04:** the source-coverage annex is
+  `records/stage-s6-record.md` § "Source-coverage annex
+  (T602)". Mechanical legs by script, all PASS (51 checks,
+  0 failures): find-list items consumed (28/28
+  bundle-less studies named, 9/9 null-falsifier claims
+  dispositioned to GR-088-21, 1/1 restricted item carried
+  to GR-088-37, 0 judgment-call items exist); entry
+  structure and censuses recounted from the register's
+  own text. Prose legs ruled against the annex by the
+  stage worker (oracle sign-off line in the record).
+  **Verdict: COMPLETE against the named lists** — every
+  C088-11 item and every further named list item is
+  represented in an entry or carries a recorded not-a-gap
+  disposition with its reason; no unmapped item, so
+  C088-11's falsifier does not fire.
 - [ ] **T603 — Owner block ratification of register v1.** The owner
   ratifies the register as a block (entries, ranking, dispositions, and
   the owner-decisions section). This act ends the spec; first waves are
@@ -426,6 +468,12 @@ into its stage report.
   *This does not establish:* that any register entry's candidate will
   succeed — only that the program's gap picture is now the ratified one
   work is commissioned from.
+  **Status at S6 (2026-11-04): OPEN, by design.** This is
+  the owner's act on the merged register; register v1 is
+  presented for it with the S6 PR (its ratification block
+  stands PENDING in `glossa-indus/map/gap-register.md`).
+  It is the only task besides T701 left unticked, and it
+  cannot be executed by a build stage.
 
 ## Closeout
 
@@ -439,3 +487,7 @@ into its stage report.
   *This does not establish:* program health — it establishes that the
   spec's own claims were each answered with evidence, which is the only
   closeout a spec can honestly give.
+  **Status at S6 (2026-11-04): OPEN, by dependency.** The
+  closeout requires the ratification reference, which
+  exists only after T603; T701 follows T603 in the
+  closeout act.

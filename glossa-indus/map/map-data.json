@@ -3,10 +3,10 @@
  "generated_from": "glossa-indus/ledger/claims.jsonl through glossa-indus/matrix/matrix.json and the settling records of record",
  "generated_by": "tools/ledger/generate_map.py (backend/glossa_lab/map_generate.py)",
  "header": {
-  "claims_total": 857,
+  "claims_total": 876,
   "claims_by_status": {
    "contradicted": 4,
-   "draft": 833,
+   "draft": 852,
    "partially_falsified": 1,
    "partially_supported": 3,
    "strongly_supported": 2,
@@ -55,18 +55,18 @@
    "reason": "the anchors register records no review dates for the pending validations, so they appear as a count, not as dated items (decision Q4)"
   },
   "as_of": {
-   "ledger_sha256": "f988ed61404daf8200479e9d1a6580526c7b419ba7e802a3b6b41a5a73a167ac",
-   "ledger_lines": 888,
-   "ledger_date": "2026-11-02",
+   "ledger_sha256": "9f8144c3fa73d7cfa4ffd02d3b6c23c3ea9e0c1e164e9497232dd2842e0a022c",
+   "ledger_lines": 907,
+   "ledger_date": "2026-11-04",
    "ledger_schema": "ledger-schema v1",
    "matrix_defs": "matrix-defs v1",
    "map_defs": "map-defs v1",
    "settle_semantics": "glossa-settle-1",
-   "matrix_sha256": "ff0788a1d3dc1e75d5113014aea35d085333e53a98ef5e671d4b6e9354ddf884",
+   "matrix_sha256": "4b40d1269b63be24bdef8aa18d1bb2682b9af2d378856f87b9fcb22406c76a5c",
    "anchors_register_sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
    "assignment_sets_sha256": "36bce404db20792826e7ffba220857c71d058423c8f8e47fca7aa900af27c5be",
-   "comparison_sha256": "ac0d5310c5a57d4290c81cf65f00bfd70386cad9566a1db831341d366e153892",
-   "settling_canonical_sha256": "38bc126e7c71747d10c9905d3ad38ce45e4e832197aac2d6f65989923936dd23"
+   "comparison_sha256": "fce929e64b795b471ec7459620141d4cd9230ac282d7a01ed899351b2ef309e9",
+   "settling_canonical_sha256": "d526bd249dfe9d0432ba0f32667f8ac00b56fdc4f25761b3ff77277f75a06bc8"
   }
  },
  "elements": [
@@ -6922,6 +6922,158 @@
    "kind": "claim",
    "id": "087-node-system-tightening/C087-10",
    "statement": "The Logs view is restored, to the approved wireframes.** The app carries a Logs surface with the two tabs of the owner-approved S5 wireframes package: a live stream tab consuming GET /terminal/log and GET /terminal/log/stream, and a records tab reading the jobs/job_results, phase_actions, and notification_log tables, read-only, with per-record detail expansion. The build matches the approved wireframes screen by screen under Playwright verification. This does not establish: that the terminal endpoints scale or that the SSE tail survives the cloud edge - the claim covers the desktop surface the wireframes draw.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "088-full-picture-map-gap-register/C088-17",
+   "statement": "Where a study's standing exists only in prose — a stage record, a report, a spec's narrative — the builder does not read it: the study classes by derivation (C088-4) or as unjudged (C088-5), and the shortfall is emitted as a stale-bookkeeping find for the register. There is no curated-standing mechanism in the taxonomy format and no code path that accepts one; RCPH's source-and-token curated standings are expressly not adopted. This does not establish: that prose standings are wrong — several are the program's real history; only that they enter the picture through the register, where a human can judge them, not through the builder.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "088-full-picture-map-gap-register/C088-9",
+   "statement": "Claim and study assignments live in one curated file, versioned program-map-taxonomy v1. The builder fails on a node whose domain or subdomain is not in the taxonomy's declared lists, and any change to an assignment is a new taxonomy version recorded in the spec's stage record in the same motion — never an unrecorded edit. This does not establish: that v1's groupings are final — only that grouping changes are acts with versions, not edits.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "088-full-picture-map-gap-register/C088-8",
+   "statement": "The page's class filters and text search operate exclusively on fields present in program-map.json (title, standing, class, citations, domain, subdomain). The page computes no standing, class, or count that is not in the generated data; the per-domain counts it displays are the generated coverage block's. This does not establish: that the page is usable or attractive — only that it is a view of the generated data and nothing else.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "088-full-picture-map-gap-register/C088-7",
+   "statement": "The Spec 086 gate gains class V10 (program-map equivalence): it recomputes the program map from the ledger and taxonomy by an independent route under the gate's own registered copies of program-map-defs v1 — not imported from the builder — and fails unless the recomputation equals the published artifacts, coverage is exact, citations resolve, and the as-of stamp matches the current ledger. A red V10 blocks publication of the map artifacts exactly as a red class blocks the matrix today. This does not establish: that the builder is correct — the gate is a second route to the same derivation, and agreement is consistency, not truth.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "088-full-picture-map-gap-register/C088-15",
+   "statement": "Across the whole spec, the ledger's diff is exactly the append of this spec's own claim bundle through `tools/ledger/import_bundle.py` at adoption, plus the regeneration of the generated layers that append forces. No stage appends, edits, or reclassifies any other entry, and no claim's status, stage, or score moves as a consequence of any stage: the map derives standings and never writes them back. This does not establish: anything about the truth of the appended claims — only that the ledger's one-way flow (Spec 086) survives this spec intact.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "088-full-picture-map-gap-register/C088-12",
+   "statement": "In the map and the register, a relation or candidate is typed as in-house re-derivation or independent confirmation. A study or candidate that only re-derives in-house is never recorded as closing an outside-reproduction gap; the standing instance is WP4, whose eligible independent Parpola comparisons number 0 of 184 because the comparisons are circular. This does not establish: that in-house re-derivation is worthless — it is most of what the program has; only that it is not the other thing.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "088-full-picture-map-gap-register/C088-2",
+   "statement": "Every ledger claim id (857 today) is assigned to exactly one claim node and every spec directory (88 today) to exactly one study node, under the taxonomy. Duplicates, omissions, unknown ids, and unassigned directories each fail the build, with nothing written. This does not establish: that the taxonomy's assignments are the right groupings — only that they are total, singular, and enforced.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "088-full-picture-map-gap-register/C088-11",
+   "statement": "Gap register v1 contains at least one entry, or a recorded not-a-gap disposition, for every item on the registered source lists: GAP-C07; the GAP-C12 remnant; GAP-C13 (consolidating the per-study finds of C088-5); the repair brief's WP2 (linguist certification), WP3 (recomputation blockers), and WP5 (anchor-support residuals: 37 requires-revalidation, 3 expert-pending, 2 insufficient) items; Spec 086's residuals (matrix edges for the live population; the two-graph-worlds join at population one); the T201 mahadevan:64 derivation divergence; the 9-null-falsifier disposition question; the tracker llms.txt staleness; the desktop-clone sync state; the data-lineage owner question; and the 44 pending anchor readings. The consolidation task runs a completeness check that enumerates the source lists and fails on an unmapped item. This does not establish: that the register is complete in nature — only that it is complete against the program's own already-named lists, which is checkable.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "088-full-picture-map-gap-register/C088-4",
+   "statement": "A study node's class is computed from its member claims' classes under program-map-defs v1's roll-up precedence. A study whose members are mixed positive and negative is emitted in the build record's judgment-call list with its member counts and the registered default class it is displayed under; no study class is assigned by hand. This does not establish: that the roll-up captures a study's importance or quality — only that its shown class is the mechanical consequence of its claims' standings, with the hard cases listed.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "088-full-picture-map-gap-register/C088-13",
+   "statement": "Identical inputs (ledger bytes, taxonomy version, defs version, spec tree) produce byte-identical program-map.json and page. The stamp carries only input-derived values — the ledger canonical hash, the ledger line count, the ledger's own latest entry date, and the defs and taxonomy versions — and no wall-clock time, per the Spec 086 stamp discipline. This does not establish: that the inputs are current — only that the outputs are a pure function of them, so staleness is detectable by stamp comparison.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "088-full-picture-map-gap-register/C088-19",
+   "statement": "A study under a standing owner restriction (in v1: Spec 072, whose public naming is \"executed — held under the Roif gate\") appears in the generated artifacts as a node carrying its directory name, the restricted flag, and that registered name-only form — no derived standing text and no class chip. The restriction list lives in the taxonomy; adding a study to it is an amendment act. This does not establish: anything about the restricted study — that is precisely its function.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "088-full-picture-map-gap-register/C088-18",
+   "statement": "Program-map-defs v1 registers the in_flight class with no derivation rule, because no record of record in the repository carries study run-state — job state lives in the live backend, outside the builder's inputs. No node carries in_flight in v1, and a build emitting one fails; running work is visible through the scans and the register, not the map, until a registered run-state source exists. This does not establish: that nothing is running — work is; only that the map does not claim to know it from records it cannot read.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "088-full-picture-map-gap-register/C088-1",
+   "statement": "The program map JSON, the find list, and the page are produced only by the builder from the ledger, the taxonomy, program-map-defs, and the spec tree. A committed output that differs from a fresh build over the same inputs is caught by the CLI's `--check` mode, which exits nonzero naming the drifted output and writes nothing; no stage edits a generated output by hand. This does not establish: that the map's content is right — only that it is derived, and that drift is a failure, not an edit.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "088-full-picture-map-gap-register/C088-16",
+   "statement": "No program-map page or JSON is published — committed as a live artifact or served — before the gate's V10 class is live in CI over those artifacts. The build order in plan.md (defs, builder, gate extension, page) is a dependency, not a preference, and the page stage's record cites the V10 gate output over the page's own artifacts. This does not establish: that the gate makes the page true — only that the wider population never travels around the verification the narrower one has.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "088-full-picture-map-gap-register/C088-14",
+   "statement": "The builder's summary output and the artifacts' coverage blocks report node counts per domain, and per class within a domain. No output of the builder, gate, page, or register computes or displays a single cross-domain aggregate progress figure — no program-wide percent-supported, no single progress number. This does not establish: that per-domain counts summarize a domain's health — they are counts of nodes by class, nothing more.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "088-full-picture-map-gap-register/C088-3",
+   "statement": "A claim node's status class and standing text are computed from its governing ledger entry's fields (status, stage, falsifier presence) under the derivation table registered in program-map-defs v1, with reclassification chains resolved in ledger order before deriving. The builder reads no prose — no spec text, stage record, or narrative — for any standing, and a status string outside the registered table fails the build. This does not establish: that the derivation table is the right semantics — only that it is registered, total over the observed vocabulary, and the only route to a class.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "088-full-picture-map-gap-register/C088-5",
+   "statement": "A spec directory with no bundle claims in the ledger (28 today: the 001–025 directories and `026-core-research-source`) receives a study node of class unjudged — no derivation exists — and the builder emits one machine-generated find per such study into the build's find list, which the register stage consumes. The node shows no standing beyond the fact. This does not establish: that bundle-less studies are unimportant — several are load-bearing history; only that the ledger carries no claims to derive a standing from, which is GAP-C13's shape stated per study.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "088-full-picture-map-gap-register/C088-6",
+   "statement": "Every claim node carries its ledger id and every study node its spec directory name. Citations resolve against the ledger and the spec tree at build time and at gate time; a node whose citation does not resolve fails both. This does not establish: that the cited record carries the standing's weight — only that every standing names the record it was derived from, so a reader can open it.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "088-full-picture-map-gap-register/C088-10",
+   "statement": "Each scan's finds are classified as exactly one of missing node, missing edge, thin evidence, or stale bookkeeping. Every candidate study a scan proposes carries a one-line falsifier. A scan output containing a fifth kind, an unclassified find, or a falsifier-less candidate fails the register stage's completeness check. This does not establish: that the scans found everything — only that what they found is in the registered shapes, each with its test stated.",
    "status": "draft",
    "stage": "created",
    "population": "bundle"
@@ -24520,6 +24672,215 @@
    ]
   },
   {
+   "from": "spec.md",
+   "to": "088-full-picture-map-gap-register/C088-1",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "088-full-picture-map-gap-register/C088-1",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "088-full-picture-map-gap-register/C088-10",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "088-full-picture-map-gap-register/C088-10",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "088-full-picture-map-gap-register/C088-11",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "088-full-picture-map-gap-register/C088-11",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "088-full-picture-map-gap-register/C088-12",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "088-full-picture-map-gap-register/C088-12",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "088-full-picture-map-gap-register/C088-13",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "088-full-picture-map-gap-register/C088-13",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "088-full-picture-map-gap-register/C088-14",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "088-full-picture-map-gap-register/C088-14",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "088-full-picture-map-gap-register/C088-15",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "088-full-picture-map-gap-register/C088-15",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "088-full-picture-map-gap-register/C088-16",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "088-full-picture-map-gap-register/C088-16",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "088-full-picture-map-gap-register/C088-17",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "088-full-picture-map-gap-register/C088-17",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "088-full-picture-map-gap-register/C088-18",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "088-full-picture-map-gap-register/C088-18",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "088-full-picture-map-gap-register/C088-19",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "088-full-picture-map-gap-register/C088-19",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "088-full-picture-map-gap-register/C088-2",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "088-full-picture-map-gap-register/C088-2",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "088-full-picture-map-gap-register/C088-3",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "088-full-picture-map-gap-register/C088-3",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "088-full-picture-map-gap-register/C088-4",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "088-full-picture-map-gap-register/C088-4",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "088-full-picture-map-gap-register/C088-5",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "088-full-picture-map-gap-register/C088-5",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "088-full-picture-map-gap-register/C088-6",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "088-full-picture-map-gap-register/C088-6",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "088-full-picture-map-gap-register/C088-7",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "088-full-picture-map-gap-register/C088-7",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "088-full-picture-map-gap-register/C088-8",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "088-full-picture-map-gap-register/C088-8",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "088-full-picture-map-gap-register/C088-9",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "088-full-picture-map-gap-register/C088-9",
+    "spec.md"
+   ]
+  },
+  {
    "from": "055",
    "to": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
    "rel": "opposes",
@@ -28967,6 +29328,101 @@
    "constrains": 0
   },
   "087-node-system-tightening/C087-10": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "088-full-picture-map-gap-register/C088-17": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "088-full-picture-map-gap-register/C088-9": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "088-full-picture-map-gap-register/C088-8": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "088-full-picture-map-gap-register/C088-7": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "088-full-picture-map-gap-register/C088-15": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "088-full-picture-map-gap-register/C088-12": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "088-full-picture-map-gap-register/C088-2": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "088-full-picture-map-gap-register/C088-11": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "088-full-picture-map-gap-register/C088-4": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "088-full-picture-map-gap-register/C088-13": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "088-full-picture-map-gap-register/C088-19": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "088-full-picture-map-gap-register/C088-18": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "088-full-picture-map-gap-register/C088-1": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "088-full-picture-map-gap-register/C088-16": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "088-full-picture-map-gap-register/C088-14": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "088-full-picture-map-gap-register/C088-3": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "088-full-picture-map-gap-register/C088-5": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "088-full-picture-map-gap-register/C088-6": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "088-full-picture-map-gap-register/C088-10": {
    "supports": 1,
    "opposes": 0,
    "constrains": 0
@@ -34112,6 +34568,120 @@
    },
    {
     "id": "087-node-system-tightening/C087-10",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "088-full-picture-map-gap-register/C088-17",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "088-full-picture-map-gap-register/C088-9",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "088-full-picture-map-gap-register/C088-8",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "088-full-picture-map-gap-register/C088-7",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "088-full-picture-map-gap-register/C088-15",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "088-full-picture-map-gap-register/C088-12",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "088-full-picture-map-gap-register/C088-2",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "088-full-picture-map-gap-register/C088-11",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "088-full-picture-map-gap-register/C088-4",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "088-full-picture-map-gap-register/C088-13",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "088-full-picture-map-gap-register/C088-19",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "088-full-picture-map-gap-register/C088-18",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "088-full-picture-map-gap-register/C088-1",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "088-full-picture-map-gap-register/C088-16",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "088-full-picture-map-gap-register/C088-14",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "088-full-picture-map-gap-register/C088-3",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "088-full-picture-map-gap-register/C088-5",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "088-full-picture-map-gap-register/C088-6",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "088-full-picture-map-gap-register/C088-10",
     "population": "bundle",
     "status": "draft",
     "stage": "created"
@@ -51712,6 +52282,215 @@
     ]
    },
    {
+    "row": "088-full-picture-map-gap-register/C088-1",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "088-full-picture-map-gap-register/C088-1",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "088-full-picture-map-gap-register/C088-10",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "088-full-picture-map-gap-register/C088-10",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "088-full-picture-map-gap-register/C088-11",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "088-full-picture-map-gap-register/C088-11",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "088-full-picture-map-gap-register/C088-12",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "088-full-picture-map-gap-register/C088-12",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "088-full-picture-map-gap-register/C088-13",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "088-full-picture-map-gap-register/C088-13",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "088-full-picture-map-gap-register/C088-14",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "088-full-picture-map-gap-register/C088-14",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "088-full-picture-map-gap-register/C088-15",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "088-full-picture-map-gap-register/C088-15",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "088-full-picture-map-gap-register/C088-16",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "088-full-picture-map-gap-register/C088-16",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "088-full-picture-map-gap-register/C088-17",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "088-full-picture-map-gap-register/C088-17",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "088-full-picture-map-gap-register/C088-18",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "088-full-picture-map-gap-register/C088-18",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "088-full-picture-map-gap-register/C088-19",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "088-full-picture-map-gap-register/C088-19",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "088-full-picture-map-gap-register/C088-2",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "088-full-picture-map-gap-register/C088-2",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "088-full-picture-map-gap-register/C088-3",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "088-full-picture-map-gap-register/C088-3",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "088-full-picture-map-gap-register/C088-4",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "088-full-picture-map-gap-register/C088-4",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "088-full-picture-map-gap-register/C088-5",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "088-full-picture-map-gap-register/C088-5",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "088-full-picture-map-gap-register/C088-6",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "088-full-picture-map-gap-register/C088-6",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "088-full-picture-map-gap-register/C088-7",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "088-full-picture-map-gap-register/C088-7",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "088-full-picture-map-gap-register/C088-8",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "088-full-picture-map-gap-register/C088-8",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "088-full-picture-map-gap-register/C088-9",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "088-full-picture-map-gap-register/C088-9",
+     "spec.md"
+    ]
+   },
+   {
     "row": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
     "column": "055",
     "column_class": "studies",
@@ -51879,8 +52658,8 @@
    }
   ],
   "coverage": {
-   "rows_total": 857,
-   "rows_with_cells": 843,
+   "rows_total": 876,
+   "rows_with_cells": 862,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -52238,30 +53017,30 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1380,
+   "cells_total": 1399,
    "cells_by_relation": {
-    "supports": 1373,
+    "supports": 1392,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1373,
+    "documents": 1392,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
    },
    "falsifier_coverage": {
-    "covered": 848,
-    "total": 857,
+    "covered": 867,
+    "total": 876,
     "by_population": {
      "extracted": {
       "covered": 14,
       "total": 23
      },
      "bundle": {
-      "covered": 834,
-      "total": 834
+      "covered": 853,
+      "total": 853
      }
     }
    },
@@ -57306,8 +58085,8 @@
    }
   },
   "matrix_coverage": {
-   "rows_total": 857,
-   "rows_with_cells": 843,
+   "rows_total": 876,
+   "rows_with_cells": 862,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -57665,15 +58444,15 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1380,
+   "cells_total": 1399,
    "cells_by_relation": {
-    "supports": 1373,
+    "supports": 1392,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1373,
+    "documents": 1392,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
@@ -57742,7 +58521,7 @@
   "claim_population": {
    "by_status": {
     "contradicted": 4,
-    "draft": 833,
+    "draft": 852,
     "partially_falsified": 1,
     "partially_supported": 3,
     "strongly_supported": 2,
@@ -57752,26 +58531,26 @@
    },
    "by_stage": {
     "checked": 3,
-    "created": 831,
+    "created": 850,
     "explained": 8
    },
    "no_stage_recorded": 15,
    "by_population": {
-    "bundle": 834,
+    "bundle": 853,
     "extracted": 23
    }
   },
   "falsifier_census": {
-   "covered": 848,
-   "total": 857,
+   "covered": 867,
+   "total": 876,
    "by_population": {
     "extracted": {
      "covered": 14,
      "total": 23
     },
     "bundle": {
-     "covered": 834,
-     "total": 834
+     "covered": 853,
+     "total": 853
     }
    },
    "gap_claims": [
@@ -57788,8 +58567,8 @@
   },
   "aee_state_census": {
    "with_state": 0,
-   "without_state": 857,
-   "total": 857
+   "without_state": 876,
+   "total": 876
   },
   "unresolved": {
    "sign_mentions": [
@@ -59275,7 +60054,7 @@
     "runs": [
      {
       "candidate": "incumbent",
-      "record": "t405-incumbent-over-full-frame--763e4f7b44f9",
+      "record": "t405-incumbent-over-full-frame--5b1d1c866b0e",
       "via_signs": [
        "mahadevan:70"
       ],
@@ -59289,7 +60068,7 @@
      },
      {
       "candidate": "full-register",
-      "record": "t405-full-register-over-full-frame--cf47a3fa5a80",
+      "record": "t405-full-register-over-full-frame--070f8f0f476f",
       "via_signs": [
        "mahadevan:72",
        "mahadevan:64",
@@ -143711,6 +144490,1621 @@
     },
     "sign_records": []
    }
+  },
+  "088-full-picture-map-gap-register/C088-17": {
+   "id": "088-full-picture-map-gap-register/C088-17",
+   "statement": "Where a study's standing exists only in prose — a stage record, a report, a spec's narrative — the builder does not read it: the study classes by derivation (C088-4) or as unjudged (C088-5), and the shortfall is emitted as a stale-bookkeeping find for the register. There is no curated-standing mechanism in the taxonomy format and no code path that accepts one; RCPH's source-and-token curated standings are expressly not adopted. This does not establish: that prose standings are wrong — several are the program's real history; only that they enter the picture through the register, where a human can judge them, not through the builder.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "a taxonomy entry carrying a standing or status-class field for a node; or a study node whose standing text quotes or paraphrases a prose source rather than its derivation inputs."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C088-17",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "088-full-picture-map-gap-register/C088-17",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "088-full-picture-map-gap-register/C088-17",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C088-17",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    },
+    "sign_records": []
+   }
+  },
+  "088-full-picture-map-gap-register/C088-9": {
+   "id": "088-full-picture-map-gap-register/C088-9",
+   "statement": "Claim and study assignments live in one curated file, versioned program-map-taxonomy v1. The builder fails on a node whose domain or subdomain is not in the taxonomy's declared lists, and any change to an assignment is a new taxonomy version recorded in the spec's stage record in the same motion — never an unrecorded edit. This does not establish: that v1's groupings are final — only that grouping changes are acts with versions, not edits.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "a build accepting an undeclared domain or subdomain; or an assignment change in git history with no version bump and no stage-record entry in the same motion."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C088-9",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "088-full-picture-map-gap-register/C088-9",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "088-full-picture-map-gap-register/C088-9",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C088-9",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    },
+    "sign_records": []
+   }
+  },
+  "088-full-picture-map-gap-register/C088-8": {
+   "id": "088-full-picture-map-gap-register/C088-8",
+   "statement": "The page's class filters and text search operate exclusively on fields present in program-map.json (title, standing, class, citations, domain, subdomain). The page computes no standing, class, or count that is not in the generated data; the per-domain counts it displays are the generated coverage block's. This does not establish: that the page is usable or attractive — only that it is a view of the generated data and nothing else.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "page behaviour — a filter result, a search hit, a displayed count — that cannot be reproduced from program-map.json's fields alone; or standings logic in the page's script beyond filtering and searching the generated fields."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C088-8",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "088-full-picture-map-gap-register/C088-8",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "088-full-picture-map-gap-register/C088-8",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C088-8",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    },
+    "sign_records": []
+   }
+  },
+  "088-full-picture-map-gap-register/C088-7": {
+   "id": "088-full-picture-map-gap-register/C088-7",
+   "statement": "The Spec 086 gate gains class V10 (program-map equivalence): it recomputes the program map from the ledger and taxonomy by an independent route under the gate's own registered copies of program-map-defs v1 — not imported from the builder — and fails unless the recomputation equals the published artifacts, coverage is exact, citations resolve, and the as-of stamp matches the current ledger. A red V10 blocks publication of the map artifacts exactly as a red class blocks the matrix today. This does not establish: that the builder is correct — the gate is a second route to the same derivation, and agreement is consistency, not truth.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "a published program-map artifact that differs from the gate's recomputation while the gate reports ALL PASS; a definitions change made in the builder's copy only that the gate accepts; or map artifacts published under a red gate."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C088-7",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "088-full-picture-map-gap-register/C088-7",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "088-full-picture-map-gap-register/C088-7",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C088-7",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    },
+    "sign_records": []
+   }
+  },
+  "088-full-picture-map-gap-register/C088-15": {
+   "id": "088-full-picture-map-gap-register/C088-15",
+   "statement": "Across the whole spec, the ledger's diff is exactly the append of this spec's own claim bundle through `tools/ledger/import_bundle.py` at adoption, plus the regeneration of the generated layers that append forces. No stage appends, edits, or reclassifies any other entry, and no claim's status, stage, or score moves as a consequence of any stage: the map derives standings and never writes them back. This does not establish: anything about the truth of the appended claims — only that the ledger's one-way flow (Spec 086) survives this spec intact.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "a ledger diff attributable to a Spec 088 PR beyond the adoption append's lines; or a pre-existing entry whose fields differ after any stage."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C088-15",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "088-full-picture-map-gap-register/C088-15",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "088-full-picture-map-gap-register/C088-15",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C088-15",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    },
+    "sign_records": []
+   }
+  },
+  "088-full-picture-map-gap-register/C088-12": {
+   "id": "088-full-picture-map-gap-register/C088-12",
+   "statement": "In the map and the register, a relation or candidate is typed as in-house re-derivation or independent confirmation. A study or candidate that only re-derives in-house is never recorded as closing an outside-reproduction gap; the standing instance is WP4, whose eligible independent Parpola comparisons number 0 of 184 because the comparisons are circular. This does not establish: that in-house re-derivation is worthless — it is most of what the program has; only that it is not the other thing.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "a register entry marking an outside-reproduction gap closed, or a map edge typed independent, whose cited evidence is this program's own re-derivation; or an in-house result rendered without its type."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C088-12",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "088-full-picture-map-gap-register/C088-12",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "088-full-picture-map-gap-register/C088-12",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C088-12",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    },
+    "sign_records": []
+   }
+  },
+  "088-full-picture-map-gap-register/C088-2": {
+   "id": "088-full-picture-map-gap-register/C088-2",
+   "statement": "Every ledger claim id (857 today) is assigned to exactly one claim node and every spec directory (88 today) to exactly one study node, under the taxonomy. Duplicates, omissions, unknown ids, and unassigned directories each fail the build, with nothing written. This does not establish: that the taxonomy's assignments are the right groupings — only that they are total, singular, and enforced.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "a build that succeeds with a claim id or spec directory missing, duplicated, or assigned to two nodes; or a taxonomy entry naming an id or directory that does not exist, accepted silently."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C088-2",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "088-full-picture-map-gap-register/C088-2",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "088-full-picture-map-gap-register/C088-2",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C088-2",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    },
+    "sign_records": []
+   }
+  },
+  "088-full-picture-map-gap-register/C088-11": {
+   "id": "088-full-picture-map-gap-register/C088-11",
+   "statement": "Gap register v1 contains at least one entry, or a recorded not-a-gap disposition, for every item on the registered source lists: GAP-C07; the GAP-C12 remnant; GAP-C13 (consolidating the per-study finds of C088-5); the repair brief's WP2 (linguist certification), WP3 (recomputation blockers), and WP5 (anchor-support residuals: 37 requires-revalidation, 3 expert-pending, 2 insufficient) items; Spec 086's residuals (matrix edges for the live population; the two-graph-worlds join at population one); the T201 mahadevan:64 derivation divergence; the 9-null-falsifier disposition question; the tracker llms.txt staleness; the desktop-clone sync state; the data-lineage owner question; and the 44 pending anchor readings. The consolidation task runs a completeness check that enumerates the source lists and fails on an unmapped item. This does not establish: that the register is complete in nature — only that it is complete against the program's own already-named lists, which is checkable.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "an item on a named source list with no register entry and no recorded disposition when register v1 is presented for ratification."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C088-11",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "088-full-picture-map-gap-register/C088-11",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "088-full-picture-map-gap-register/C088-11",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C088-11",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    },
+    "sign_records": []
+   }
+  },
+  "088-full-picture-map-gap-register/C088-4": {
+   "id": "088-full-picture-map-gap-register/C088-4",
+   "statement": "A study node's class is computed from its member claims' classes under program-map-defs v1's roll-up precedence. A study whose members are mixed positive and negative is emitted in the build record's judgment-call list with its member counts and the registered default class it is displayed under; no study class is assigned by hand. This does not establish: that the roll-up captures a study's importance or quality — only that its shown class is the mechanical consequence of its claims' standings, with the hard cases listed.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "a study node whose class contradicts the roll-up over its members; a mixed study absent from the build record's judgment-call list; or a study class traceable to an editor's choice rather than the precedence or the recorded default."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C088-4",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "088-full-picture-map-gap-register/C088-4",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "088-full-picture-map-gap-register/C088-4",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C088-4",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    },
+    "sign_records": []
+   }
+  },
+  "088-full-picture-map-gap-register/C088-13": {
+   "id": "088-full-picture-map-gap-register/C088-13",
+   "statement": "Identical inputs (ledger bytes, taxonomy version, defs version, spec tree) produce byte-identical program-map.json and page. The stamp carries only input-derived values — the ledger canonical hash, the ledger line count, the ledger's own latest entry date, and the defs and taxonomy versions — and no wall-clock time, per the Spec 086 stamp discipline. This does not establish: that the inputs are current — only that the outputs are a pure function of them, so staleness is detectable by stamp comparison.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "two builds over identical inputs differing in any byte; or a stamp field that varies with build time."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C088-13",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "088-full-picture-map-gap-register/C088-13",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "088-full-picture-map-gap-register/C088-13",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C088-13",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    },
+    "sign_records": []
+   }
+  },
+  "088-full-picture-map-gap-register/C088-19": {
+   "id": "088-full-picture-map-gap-register/C088-19",
+   "statement": "A study under a standing owner restriction (in v1: Spec 072, whose public naming is \"executed — held under the Roif gate\") appears in the generated artifacts as a node carrying its directory name, the restricted flag, and that registered name-only form — no derived standing text and no class chip. The restriction list lives in the taxonomy; adding a study to it is an amendment act. This does not establish: anything about the restricted study — that is precisely its function.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "any rendered standing, class, or summary text for a restricted study beyond its name, its flag, and the registered name-only form."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C088-19",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "088-full-picture-map-gap-register/C088-19",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "088-full-picture-map-gap-register/C088-19",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C088-19",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    },
+    "sign_records": []
+   }
+  },
+  "088-full-picture-map-gap-register/C088-18": {
+   "id": "088-full-picture-map-gap-register/C088-18",
+   "statement": "Program-map-defs v1 registers the in_flight class with no derivation rule, because no record of record in the repository carries study run-state — job state lives in the live backend, outside the builder's inputs. No node carries in_flight in v1, and a build emitting one fails; running work is visible through the scans and the register, not the map, until a registered run-state source exists. This does not establish: that nothing is running — work is; only that the map does not claim to know it from records it cannot read.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "a v1 program-map node with class in_flight; or in-flight status inferred from prose dates or stage-record language."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C088-18",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "088-full-picture-map-gap-register/C088-18",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "088-full-picture-map-gap-register/C088-18",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C088-18",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    },
+    "sign_records": []
+   }
+  },
+  "088-full-picture-map-gap-register/C088-1": {
+   "id": "088-full-picture-map-gap-register/C088-1",
+   "statement": "The program map JSON, the find list, and the page are produced only by the builder from the ledger, the taxonomy, program-map-defs, and the spec tree. A committed output that differs from a fresh build over the same inputs is caught by the CLI's `--check` mode, which exits nonzero naming the drifted output and writes nothing; no stage edits a generated output by hand. This does not establish: that the map's content is right — only that it is derived, and that drift is a failure, not an edit.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "a committed program-map output that `--check` accepts while differing from a fresh build over the same inputs; or a merged Spec 088 PR whose diff edits a generated output without the corresponding input change."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C088-1",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "088-full-picture-map-gap-register/C088-1",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "088-full-picture-map-gap-register/C088-1",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C088-1",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    },
+    "sign_records": []
+   }
+  },
+  "088-full-picture-map-gap-register/C088-16": {
+   "id": "088-full-picture-map-gap-register/C088-16",
+   "statement": "No program-map page or JSON is published — committed as a live artifact or served — before the gate's V10 class is live in CI over those artifacts. The build order in plan.md (defs, builder, gate extension, page) is a dependency, not a preference, and the page stage's record cites the V10 gate output over the page's own artifacts. This does not establish: that the gate makes the page true — only that the wider population never travels around the verification the narrower one has.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "a published program-map artifact whose stage record lacks a passing V10 run over it, or that predates V10's landing in CI."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C088-16",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "088-full-picture-map-gap-register/C088-16",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "088-full-picture-map-gap-register/C088-16",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C088-16",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    },
+    "sign_records": []
+   }
+  },
+  "088-full-picture-map-gap-register/C088-14": {
+   "id": "088-full-picture-map-gap-register/C088-14",
+   "statement": "The builder's summary output and the artifacts' coverage blocks report node counts per domain, and per class within a domain. No output of the builder, gate, page, or register computes or displays a single cross-domain aggregate progress figure — no program-wide percent-supported, no single progress number. This does not establish: that per-domain counts summarize a domain's health — they are counts of nodes by class, nothing more.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "any Spec 088 surface showing one aggregate progress number spanning domains."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C088-14",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "088-full-picture-map-gap-register/C088-14",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "088-full-picture-map-gap-register/C088-14",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C088-14",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    },
+    "sign_records": []
+   }
+  },
+  "088-full-picture-map-gap-register/C088-3": {
+   "id": "088-full-picture-map-gap-register/C088-3",
+   "statement": "A claim node's status class and standing text are computed from its governing ledger entry's fields (status, stage, falsifier presence) under the derivation table registered in program-map-defs v1, with reclassification chains resolved in ledger order before deriving. The builder reads no prose — no spec text, stage record, or narrative — for any standing, and a status string outside the registered table fails the build. This does not establish: that the derivation table is the right semantics — only that it is registered, total over the observed vocabulary, and the only route to a class.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "a claim node whose class differs from the table's output for its governing entry; a standing computed from a prose source; or an unregistered status string classified by inference instead of failing the build."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C088-3",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "088-full-picture-map-gap-register/C088-3",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "088-full-picture-map-gap-register/C088-3",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C088-3",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    },
+    "sign_records": []
+   }
+  },
+  "088-full-picture-map-gap-register/C088-5": {
+   "id": "088-full-picture-map-gap-register/C088-5",
+   "statement": "A spec directory with no bundle claims in the ledger (28 today: the 001–025 directories and `026-core-research-source`) receives a study node of class unjudged — no derivation exists — and the builder emits one machine-generated find per such study into the build's find list, which the register stage consumes. The node shows no standing beyond the fact. This does not establish: that bundle-less studies are unimportant — several are load-bearing history; only that the ledger carries no claims to derive a standing from, which is GAP-C13's shape stated per study.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "a bundle-less study shown with a derived class or a prose standing; or a bundle-less study missing from the emitted find list."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C088-5",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "088-full-picture-map-gap-register/C088-5",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "088-full-picture-map-gap-register/C088-5",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C088-5",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    },
+    "sign_records": []
+   }
+  },
+  "088-full-picture-map-gap-register/C088-6": {
+   "id": "088-full-picture-map-gap-register/C088-6",
+   "statement": "Every claim node carries its ledger id and every study node its spec directory name. Citations resolve against the ledger and the spec tree at build time and at gate time; a node whose citation does not resolve fails both. This does not establish: that the cited record carries the standing's weight — only that every standing names the record it was derived from, so a reader can open it.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "a node in program-map.json with no citation, or whose ledger id or spec directory does not exist in the inputs."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C088-6",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "088-full-picture-map-gap-register/C088-6",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "088-full-picture-map-gap-register/C088-6",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C088-6",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    },
+    "sign_records": []
+   }
+  },
+  "088-full-picture-map-gap-register/C088-10": {
+   "id": "088-full-picture-map-gap-register/C088-10",
+   "statement": "Each scan's finds are classified as exactly one of missing node, missing edge, thin evidence, or stale bookkeeping. Every candidate study a scan proposes carries a one-line falsifier. A scan output containing a fifth kind, an unclassified find, or a falsifier-less candidate fails the register stage's completeness check. This does not establish: that the scans found everything — only that what they found is in the registered shapes, each with its test stated.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-04",
+   "falsifier": [
+    "a scan report with a find outside the four kinds, or a candidate with no falsifier, accepted into the register."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C088-10",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "088-full-picture-map-gap-register/C088-10",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "088-full-picture-map-gap-register/C088-10",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C088-10",
+     "document_id": null,
+     "path": "specs/088-full-picture-map-gap-register/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "37b0a4201f810e648007c035857182189154472ee5a7d2a74d6be1109998fdbf",
+     "spec": "088-full-picture-map-gap-register"
+    },
+    "sign_records": []
+   }
   }
  },
  "settling": {
@@ -143762,15 +146156,15 @@
   },
   "runs": [
    {
-    "record": "t405-incumbent-over-full-frame--763e4f7b44f9",
+    "record": "t405-incumbent-over-full-frame--5b1d1c866b0e",
     "scenario": "t405-incumbent-over-full-frame",
     "candidate": "incumbent",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "f988ed61404daf8200479e9d1a6580526c7b419ba7e802a3b6b41a5a73a167ac",
-      "lines": 888
+      "sha256": "9f8144c3fa73d7cfa4ffd02d3b6c23c3ea9e0c1e164e9497232dd2842e0a022c",
+      "lines": 907
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -143821,15 +146215,15 @@
     }
    },
    {
-    "record": "t405-full-register-over-full-frame--cf47a3fa5a80",
+    "record": "t405-full-register-over-full-frame--070f8f0f476f",
     "scenario": "t405-full-register-over-full-frame",
     "candidate": "full-register",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "f988ed61404daf8200479e9d1a6580526c7b419ba7e802a3b6b41a5a73a167ac",
-      "lines": 888
+      "sha256": "9f8144c3fa73d7cfa4ffd02d3b6c23c3ea9e0c1e164e9497232dd2842e0a022c",
+      "lines": 907
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -143884,7 +146278,7 @@
   ],
   "comparison": {
    "record": "specs/086-winning-combination-adoption/records/stage-4-dual-run-comparison.json",
-   "sha256": "ac0d5310c5a57d4290c81cf65f00bfd70386cad9566a1db831341d366e153892",
+   "sha256": "fce929e64b795b471ec7459620141d4cd9230ac282d7a01ed899351b2ef309e9",
    "result": {
     "claims_compared": [
      {
@@ -144132,7 +146526,7 @@
   },
   "canonicals": {
    "record": "glossa-indus/ledger/settling-canonical.json",
-   "sha256": "38bc126e7c71747d10c9905d3ad38ce45e4e832197aac2d6f65989923936dd23",
+   "sha256": "d526bd249dfe9d0432ba0f32667f8ac00b56fdc4f25761b3ff77277f75a06bc8",
    "scenarios": [
     {
      "id": "null-over-subset",
@@ -144467,8 +146861,8 @@
   },
   "reach": {
    "claims_with_sign_refs": 1,
-   "claims_total": 857,
-   "claims_untouched_by_any_run": 856,
+   "claims_total": 876,
+   "claims_untouched_by_any_run": 875,
    "s_r3": {
     "status": "UNMEASURED",
     "class_table": null,

@@ -8,7 +8,7 @@ into its stage report.
 
 ## Stage 0 — Package adoption
 
-- [ ] **T001 — Package lands.** spec.md, claims.md, aee-claims.json,
+- [x] **T001 — Package lands.** spec.md, claims.md, aee-claims.json,
   plan.md, tasks.md, records/ (commission-and-grounding record, the two
   source documents byte-identical to AXIOVEX/vexa commit 88839493, T002
   assessment + note) committed as
@@ -22,7 +22,7 @@ into its stage report.
   commit).
   *This does not establish:* that the package is approved — only that
   it is complete and internally consistent.
-- [ ] **T002 — AEE verification of the claims.** The C090 bundle run
+- [x] **T002 — AEE verification of the claims.** The C090 bundle run
   through the pinned assessor (aee 1.5.3, CI-faithful venv), exactly as
   Spec 088's and Spec 089's T002: `aee validate` → `valid: 16
   claim(s)`; `aee assess --no-ledger` → **outcome: iterate** (71
@@ -33,13 +33,13 @@ into its stage report.
   *This does not establish:* claim quality — `iterate` is the expected
   reading for a draft bundle on one asserted source; the owner's
   approval is the human act (T003).
-- [ ] **T003 — Owner block approval.** The owner ratifies the package
+- [x] **T003 — Owner block approval.** The owner ratifies the package
   as a block: spec, 16 claims, plan, and decisions D-090-1..4.
   Acceptance: **human-as-oracle** (the owner).
   *This does not establish:* approval of any later stage's output —
   the G1 document, the derivation, and the outcome each land on their
   own evidence.
-- [ ] **T004 — Adoption intake + generated-layer regeneration.** After
+- [x] **T004 — Adoption intake + generated-layer regeneration.** After
   T003: (a) record the pre-append gate run (gate CLI on the
   un-appended tree, ALL PASS); (b) append the C090 bundle through
   `tools/ledger/import_bundle.py --spec

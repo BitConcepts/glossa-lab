@@ -351,7 +351,7 @@ def test_page_carries_the_build_census_and_no_foreign_data(tmp_path):
     assert program_map["stamp"]["ledger_sha256"] in page
     # Nothing from the real ledger leaks into a fixture
     # build: the page is a function of its own inputs only.
-    assert "876" not in page
+    assert "896" not in page
     assert "yadav" not in page
 
 

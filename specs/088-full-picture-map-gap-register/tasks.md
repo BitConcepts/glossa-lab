@@ -77,7 +77,7 @@ into its stage report.
 
 ## Stage 1 — Definitions, taxonomy, builder core (PR: feat/088-s1-defs-builder)
 
-- [ ] **T101 — program-map-defs v1 registered.**
+- [x] **T101 — program-map-defs v1 registered.**
   `glossa-indus/map/PROGRAM-MAP-DEFINITIONS.md`: closed input list;
   reclassification-chain resolution; the status→class derivation table
   (D-088-3); standing-text template; study membership rule; roll-up
@@ -90,7 +90,12 @@ into its stage report.
   *This does not establish:* that the derivation semantics are right —
   only that they are the ratified ones, registered where amendments must
   go.
-- [ ] **T102 — program-map-taxonomy v1 filed.** The taxonomy JSON per
+  **Completed 2026-11-04:** `PROGRAM-MAP-DEFINITIONS.md` filed as
+  written, incl. the membership clarification recorded as departure (a)
+  in `records/stage-s1-record.md` (membership = the source-of-record
+  spec; the draft's "any sources[]" phrasing would double-count 44
+  claims — the fork is named in the record for the stage review).
+- [x] **T102 — program-map-taxonomy v1 filed.** The taxonomy JSON per
   `records/taxonomy-v0-draft.md`: declared domains/subdomains, the 88
   study assignments, the extracted-claim document assignments, the
   restricted list (Spec 072). No standing/status field exists in the
@@ -100,7 +105,12 @@ into its stage report.
   the file).
   *This does not establish:* that the groupings are the best ones — only
   that they are total, singular, and carry no standings.
-- [ ] **T103 — Pure builder + CLI.** `program_map_generate.py` (pure;
+  **Completed 2026-11-04:** filed with **89** study assignments (the
+  ratified 88 + Spec 088's own directory, per the draft's advance
+  record; coverage is over the live tree) and 7 extracted-document
+  assignments; verified set-equal against the live tree and ledger at
+  filing, and continuously by the conformance test.
+- [x] **T103 — Pure builder + CLI.** `program_map_generate.py` (pure;
   reads only the defs' inputs) + `tools/map/generate_program_map.py` with
   `--check` (builds without writing; byte-identity or a named refusal).
   Fail-closed on: coverage gaps/duplicates, unknown ids, undeclared
@@ -111,7 +121,12 @@ into its stage report.
   nothing).
   *This does not establish:* that the outputs over the real ledger are
   correct — that is T104's census and S3's independent route.
-- [ ] **T104 — Builder teeth + first-build census.** Tests: derivation
+  **Completed 2026-11-04:** builder + CLI as written (CLI at the plan's
+  `tools/map/` path). One anticipation: T303's registered-writer line
+  for this module was pulled forward — without it the V9 census fails
+  the gate from the moment the builder exists; departure (d) in
+  `records/stage-s1-record.md`.
+- [x] **T104 — Builder teeth + first-build census.** Tests: derivation
   table per status; roll-up per rule incl. judgment call; dropped-id,
   duplicated-assignment, unknown-id, unregistered-status fixtures all
   fail; two builds byte-identical. Then a first real build reproduces the
@@ -121,6 +136,15 @@ into its stage report.
   *This does not establish:* coverage of inputs nobody has built yet —
   the census binds to today's ledger and tree, and moves with them under
   the same rules.
+  **Completed 2026-11-04:** 30 targeted tests green (25 builder teeth +
+  5 conformance); the first real build's census, recomputed from the
+  live post-adoption inputs per this task's own instruction, is **876
+  claim nodes / 89 study nodes / 28 unjudged** (the 857/88 figures above
+  predate the T004 intake — departure (b) in the stage record).
+  Determinism: two CLI runs byte-identical (hashes in the stage
+  record); `--check` clean on the produced artifacts in the scratch
+  verification root — the committed artifacts themselves land at T201,
+  per the plan's staging.
 
 ## Stage 2 — Standing derivation (PR: feat/088-s2-derivation)
 

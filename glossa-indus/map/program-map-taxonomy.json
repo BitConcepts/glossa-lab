@@ -1,0 +1,526 @@
+{
+  "version": "program-map-taxonomy v1",
+  "note": "Curated study/claim assignments for the generated program map. Grouping only: this file carries no standings (C2). Changes are amendment acts (new version, recorded in the stage record).",
+  "domains": [
+    "Sign inventory & corpus",
+    "Anchors & readings",
+    "Claim families by study line",
+    "Contact zone & external corpora",
+    "Program infrastructure"
+  ],
+  "subdomains": {
+    "Sign inventory & corpus": [
+      "Corpus, catalogue & transcription builds",
+      "Cross-compilation comparisons",
+      "Signary & corpus models",
+      "Site & chronology data"
+    ],
+    "Anchors & readings": [
+      "Anchor provenance, Phases 52–110",
+      "Validation batteries for the SA-lineage anchors, Phases 111–119",
+      "Single-anchor adjudications"
+    ],
+    "Claim families by study line": [
+      "Source-thesis tests (D-designs)",
+      "Site, object & repertoire tests",
+      "Registered predictions, PRED-2026",
+      "Extracted literature claims"
+    ],
+    "Contact zone & external corpora": [
+      "Independent attestation contexts",
+      "Regional movement & culture"
+    ],
+    "Program infrastructure": [
+      "Platform & tooling",
+      "Evidence & research-check tooling",
+      "Governance, lifecycle & generated layers"
+    ]
+  },
+  "studies": [
+    {
+      "spec_dir": "023-keyed-transcription-layer",
+      "domain": "Sign inventory & corpus",
+      "subdomain": "Corpus, catalogue & transcription builds"
+    },
+    {
+      "spec_dir": "037-cisi31-concordance-spine",
+      "domain": "Sign inventory & corpus",
+      "subdomain": "Corpus, catalogue & transcription builds"
+    },
+    {
+      "spec_dir": "066-phase130-catalogue-extension",
+      "domain": "Sign inventory & corpus",
+      "subdomain": "Corpus, catalogue & transcription builds"
+    },
+    {
+      "spec_dir": "073-keying-surface-repair",
+      "domain": "Sign inventory & corpus",
+      "subdomain": "Corpus, catalogue & transcription builds"
+    },
+    {
+      "spec_dir": "015-phase116-corpus-harmonization",
+      "domain": "Sign inventory & corpus",
+      "subdomain": "Cross-compilation comparisons"
+    },
+    {
+      "spec_dir": "019-phase125-cross-compilation-positional",
+      "domain": "Sign inventory & corpus",
+      "subdomain": "Cross-compilation comparisons"
+    },
+    {
+      "spec_dir": "020-soviet-pred-adjudication",
+      "domain": "Sign inventory & corpus",
+      "subdomain": "Cross-compilation comparisons"
+    },
+    {
+      "spec_dir": "021-phase127-cross-compilation-diagnostic",
+      "domain": "Sign inventory & corpus",
+      "subdomain": "Cross-compilation comparisons"
+    },
+    {
+      "spec_dir": "021-phase130-intake-pack",
+      "domain": "Sign inventory & corpus",
+      "subdomain": "Cross-compilation comparisons"
+    },
+    {
+      "spec_dir": "022-phase131-attribution",
+      "domain": "Sign inventory & corpus",
+      "subdomain": "Cross-compilation comparisons"
+    },
+    {
+      "spec_dir": "034-matched-object-attribution",
+      "domain": "Sign inventory & corpus",
+      "subdomain": "Cross-compilation comparisons"
+    },
+    {
+      "spec_dir": "058-transcription-disagreement-mechanism",
+      "domain": "Sign inventory & corpus",
+      "subdomain": "Cross-compilation comparisons"
+    },
+    {
+      "spec_dir": "076-projected-constraint-corpus-model",
+      "domain": "Sign inventory & corpus",
+      "subdomain": "Signary & corpus models"
+    },
+    {
+      "spec_dir": "077-signary-triangulation",
+      "domain": "Sign inventory & corpus",
+      "subdomain": "Signary & corpus models"
+    },
+    {
+      "spec_dir": "078-projected-constraint-bridge-redesign",
+      "domain": "Sign inventory & corpus",
+      "subdomain": "Signary & corpus models"
+    },
+    {
+      "spec_dir": "030-q6-chronology-spine-extension",
+      "domain": "Sign inventory & corpus",
+      "subdomain": "Site & chronology data"
+    },
+    {
+      "spec_dir": "039-gazetteer-period-assignment",
+      "domain": "Sign inventory & corpus",
+      "subdomain": "Site & chronology data"
+    },
+    {
+      "spec_dir": "004-indus-executable-package",
+      "domain": "Anchors & readings",
+      "subdomain": "Anchor provenance, Phases 52–110"
+    },
+    {
+      "spec_dir": "005-phase52-v2",
+      "domain": "Anchors & readings",
+      "subdomain": "Anchor provenance, Phases 52–110"
+    },
+    {
+      "spec_dir": "006-anchor-provenance-audit",
+      "domain": "Anchors & readings",
+      "subdomain": "Anchor provenance, Phases 52–110"
+    },
+    {
+      "spec_dir": "007-phase109-follow-through",
+      "domain": "Anchors & readings",
+      "subdomain": "Anchor provenance, Phases 52–110"
+    },
+    {
+      "spec_dir": "009-phase111-blind-affiliation",
+      "domain": "Anchors & readings",
+      "subdomain": "Validation batteries for the SA-lineage anchors, Phases 111–119"
+    },
+    {
+      "spec_dir": "010-phase112-blind-affiliation",
+      "domain": "Anchors & readings",
+      "subdomain": "Validation batteries for the SA-lineage anchors, Phases 111–119"
+    },
+    {
+      "spec_dir": "011-phase113-nonsa44-validation",
+      "domain": "Anchors & readings",
+      "subdomain": "Validation batteries for the SA-lineage anchors, Phases 111–119"
+    },
+    {
+      "spec_dir": "012-phase113-blind-affiliation",
+      "domain": "Anchors & readings",
+      "subdomain": "Validation batteries for the SA-lineage anchors, Phases 111–119"
+    },
+    {
+      "spec_dir": "014-phase115-nonsa44-validation-v2",
+      "domain": "Anchors & readings",
+      "subdomain": "Validation batteries for the SA-lineage anchors, Phases 111–119"
+    },
+    {
+      "spec_dir": "016-phase117-within-compilation-validation",
+      "domain": "Anchors & readings",
+      "subdomain": "Validation batteries for the SA-lineage anchors, Phases 111–119"
+    },
+    {
+      "spec_dir": "017-phase118-within-compilation-validation-v2",
+      "domain": "Anchors & readings",
+      "subdomain": "Validation batteries for the SA-lineage anchors, Phases 111–119"
+    },
+    {
+      "spec_dir": "018-phase119-pred2026-readiness",
+      "domain": "Anchors & readings",
+      "subdomain": "Validation batteries for the SA-lineage anchors, Phases 111–119"
+    },
+    {
+      "spec_dir": "008-m222-adjudication",
+      "domain": "Anchors & readings",
+      "subdomain": "Single-anchor adjudications"
+    },
+    {
+      "spec_dir": "044-fish-sign-coastal-residue",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "spec_dir": "045-hunt-depicted-kinds",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "spec_dir": "046-horned-tiger-concordance",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "spec_dir": "047-roif-ledger-distribution",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "spec_dir": "048-parpola-fish-family-profiles",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "spec_dir": "050-hunt-sky-signs-endings",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "spec_dir": "051-roif-arrow-sign",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "spec_dir": "052-farmer-not-writing-soviet",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "spec_dir": "053-yadav-zipf-controls",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "spec_dir": "054-yadav-opening-closing",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "spec_dir": "055-sign900-numeral",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "spec_dir": "056-sign821-recovery",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "spec_dir": "057-five-sources-heading",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "spec_dir": "063-sign821-identification-successor",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "spec_dir": "064-sign297-concordance-successor",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "spec_dir": "065-s1-s5-heading-successor",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "spec_dir": "068-yadav-zipf-controls-successor",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "spec_dir": "069-hunt-asset-a",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "spec_dir": "070-hunt-opening-signs-successor",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "spec_dir": "071-hunt-sky-signs-successor",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "spec_dir": "072-fish-family-profiles-redesign",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "spec_dir": "074-hunt-opening-signs-repaired-surface",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "spec_dir": "075-depicted-kind-endings-atlas",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "spec_dir": "024-evidence-integration",
+      "domain": "Claim families by study line",
+      "subdomain": "Site, object & repertoire tests"
+    },
+    {
+      "spec_dir": "028-harappa-robustness",
+      "domain": "Claim families by study line",
+      "subdomain": "Site, object & repertoire tests"
+    },
+    {
+      "spec_dir": "031-stage2-q7-provenance-networks",
+      "domain": "Claim families by study line",
+      "subdomain": "Site, object & repertoire tests"
+    },
+    {
+      "spec_dir": "033-sa-free-language-comparison",
+      "domain": "Claim families by study line",
+      "subdomain": "Site, object & repertoire tests"
+    },
+    {
+      "spec_dir": "040-d25-g1-chronology-controlled",
+      "domain": "Claim families by study line",
+      "subdomain": "Site, object & repertoire tests"
+    },
+    {
+      "spec_dir": "041-site-local-label-period-mapping",
+      "domain": "Claim families by study line",
+      "subdomain": "Site, object & repertoire tests"
+    },
+    {
+      "spec_dir": "042-arm-b-object-type-split",
+      "domain": "Claim families by study line",
+      "subdomain": "Site, object & repertoire tests"
+    },
+    {
+      "spec_dir": "059-f1-object-join",
+      "domain": "Claim families by study line",
+      "subdomain": "Site, object & repertoire tests"
+    },
+    {
+      "spec_dir": "060-f2-margin-curve",
+      "domain": "Claim families by study line",
+      "subdomain": "Site, object & repertoire tests"
+    },
+    {
+      "spec_dir": "061-arm-a-precision",
+      "domain": "Claim families by study line",
+      "subdomain": "Site, object & repertoire tests"
+    },
+    {
+      "spec_dir": "062-arm-a-precision-calibration-repair",
+      "domain": "Claim families by study line",
+      "subdomain": "Site, object & repertoire tests"
+    },
+    {
+      "spec_dir": "067-f1-enlarged-join",
+      "domain": "Claim families by study line",
+      "subdomain": "Site, object & repertoire tests"
+    },
+    {
+      "spec_dir": "032-pred-2026-006-harappa-breakdown",
+      "domain": "Claim families by study line",
+      "subdomain": "Registered predictions, PRED-2026"
+    },
+    {
+      "spec_dir": "035-pred-2026-010-scoring",
+      "domain": "Claim families by study line",
+      "subdomain": "Registered predictions, PRED-2026"
+    },
+    {
+      "spec_dir": "036-pred-2026-011-scoring",
+      "domain": "Claim families by study line",
+      "subdomain": "Registered predictions, PRED-2026"
+    },
+    {
+      "spec_dir": "038-pred-2026-007-full-population",
+      "domain": "Claim families by study line",
+      "subdomain": "Registered predictions, PRED-2026"
+    },
+    {
+      "spec_dir": "043-pred-2026-007-registry-frame",
+      "domain": "Claim families by study line",
+      "subdomain": "Registered predictions, PRED-2026"
+    },
+    {
+      "spec_dir": "013-tn-graffiti-crosswalk",
+      "domain": "Contact zone & external corpora",
+      "subdomain": "Independent attestation contexts"
+    },
+    {
+      "spec_dir": "027-movement-culture-language",
+      "domain": "Contact zone & external corpora",
+      "subdomain": "Regional movement & culture"
+    },
+    {
+      "spec_dir": "001-glossa-lab-baseline",
+      "domain": "Program infrastructure",
+      "subdomain": "Platform & tooling"
+    },
+    {
+      "spec_dir": "002-gdelt-ngrams-and-frontier-methods",
+      "domain": "Program infrastructure",
+      "subdomain": "Platform & tooling"
+    },
+    {
+      "spec_dir": "003-mcp-and-test-gaps",
+      "domain": "Program infrastructure",
+      "subdomain": "Platform & tooling"
+    },
+    {
+      "spec_dir": "079-supervised-backend-tray",
+      "domain": "Program infrastructure",
+      "subdomain": "Platform & tooling"
+    },
+    {
+      "spec_dir": "080-desktop-host-migration",
+      "domain": "Program infrastructure",
+      "subdomain": "Platform & tooling"
+    },
+    {
+      "spec_dir": "081-ui-redesign-generic-tool",
+      "domain": "Program infrastructure",
+      "subdomain": "Platform & tooling"
+    },
+    {
+      "spec_dir": "082-api-token-auth",
+      "domain": "Program infrastructure",
+      "subdomain": "Platform & tooling"
+    },
+    {
+      "spec_dir": "083-cloud-edition",
+      "domain": "Program infrastructure",
+      "subdomain": "Platform & tooling"
+    },
+    {
+      "spec_dir": "025-paper-search-research-check",
+      "domain": "Program infrastructure",
+      "subdomain": "Evidence & research-check tooling"
+    },
+    {
+      "spec_dir": "025-stage2-controlled-followup",
+      "domain": "Program infrastructure",
+      "subdomain": "Evidence & research-check tooling"
+    },
+    {
+      "spec_dir": "026-core-research-source",
+      "domain": "Program infrastructure",
+      "subdomain": "Evidence & research-check tooling"
+    },
+    {
+      "spec_dir": "026-rcph-framework-transfer",
+      "domain": "Program infrastructure",
+      "subdomain": "Governance, lifecycle & generated layers"
+    },
+    {
+      "spec_dir": "029-tao-claim-lifecycle",
+      "domain": "Program infrastructure",
+      "subdomain": "Governance, lifecycle & generated layers"
+    },
+    {
+      "spec_dir": "084-policy-sync-conformance",
+      "domain": "Program infrastructure",
+      "subdomain": "Governance, lifecycle & generated layers"
+    },
+    {
+      "spec_dir": "086-winning-combination-adoption",
+      "domain": "Program infrastructure",
+      "subdomain": "Governance, lifecycle & generated layers"
+    },
+    {
+      "spec_dir": "087-node-system-tightening",
+      "domain": "Program infrastructure",
+      "subdomain": "Governance, lifecycle & generated layers"
+    },
+    {
+      "spec_dir": "088-full-picture-map-gap-register",
+      "domain": "Program infrastructure",
+      "subdomain": "Governance, lifecycle & generated layers"
+    }
+  ],
+  "extracted_documents": [
+    {
+      "document": "farmer_sproat_witzel_2004",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "document": "yadav_2009_arxiv",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "document": "parpola_2010_dravidian_solution",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "document": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+      "domain": "Claim families by study line",
+      "subdomain": "Source-thesis tests (D-designs)"
+    },
+    {
+      "document": "ancient_writing_and_modern_technologies_51831ac9",
+      "domain": "Claim families by study line",
+      "subdomain": "Extracted literature claims"
+    },
+    {
+      "document": "the_archaeology_and_epigraphy_of_indus_w_27f45a68",
+      "domain": "Claim families by study line",
+      "subdomain": "Extracted literature claims"
+    },
+    {
+      "document": "indus_valley_script_deciphered_from_myth_65ff0a26",
+      "domain": "Claim families by study line",
+      "subdomain": "Extracted literature claims"
+    }
+  ],
+  "restricted": [
+    "072-fish-family-profiles-redesign"
+  ]
+}

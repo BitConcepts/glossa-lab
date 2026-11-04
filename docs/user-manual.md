@@ -406,6 +406,46 @@ now legacy in the same way: each one is a fixed setting of a
 generic block, kept registered and runnable for saved
 experiments, but no longer offered for new ones.
 
+Eleven more generic blocks complete the conversion programme.
+**JsonRecordDirLoader** (load JSON records from a directory, in
+search or records mode, with the matching and record-shaping
+rules as parameters) and **PositionalClaimTester** (test
+positional claims about signs against corpus statistics, with
+the claim keywords and the support rule as parameters)
+generalise the Indus literature and claims loaders and the
+claim tester. **RecordGroupSummary** (summarise groups of
+records under ordered section specifications) and
+**CorpusComparisonStats** (per-corpus sign statistics across
+compared corpora) generalise the Mesopotamia seals summary,
+the Laursen table auditor, the Meluhha corpus reporter, the
+two seal-sign auditors, and the Phase-29 corpus statistics.
+**PrefixFindspotAssigner** (assign findspots by catalogue-id
+prefix, as a reporter or as a filter) and
+**CorpusCooccurrenceCheck** (check whether place-name terms
+co-occur across two corpora) generalise the CISI findspot
+reporter, the Shu-ilishu contact-zone filter, and the Meluhha
+co-occurrence check. **PredictionVerdictAggregator** (assemble
+per-prediction verdicts from shaping specifications and
+numeric or text rules) generalises the Phase-20 and Phase-21
+verdicts. **VisionOCRNode** (run vision OCR over a PDF
+catalogue under a line grammar, or reuse a prior results
+file) and **CatalogTextParser** (parse inscription records
+out of catalogue text) generalise the CISI Volume 3 OCR node
+and the CM catalogue parser. **SyllableLMLoader** (load a
+syllable-level language model from its JSON form) and
+**LexiconCrossValidator** (cross-validate an anchor set
+against an external rebus lexicon) generalise the Dravidian
+syllable LM loader and the Kalyanaraman cross-validation.
+The eighteen older study-specific nodes they generalise are
+now legacy in the same way: each one is a fixed setting of a
+generic block, kept registered and runnable for saved
+experiments, but no longer offered for new ones. Four further
+nodes — the Shu-ilishu candidate filter and the Phase-22,
+Phase-23 and Phase-24 verdicts — are legacy as retire
+candidates, flagged without conversion under the same rule:
+kept registered and runnable, no longer offered for new
+experiments, and not deleted.
+
 ### Node Reference
 
 **Corpus Loaders:**

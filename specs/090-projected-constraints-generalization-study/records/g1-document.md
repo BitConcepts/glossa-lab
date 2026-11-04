@@ -18,14 +18,20 @@ verdict on any skeleton element, no necessary condition, no
 outcome language. Terms D1–D6 are used exactly as the skeleton
 defines them; this document does not redefine them.
 
-**Version.** v1, 2026-11-04. Under decision D-090-1 of Spec
-090, this document is versioned only by recorded amendment
-acts: an amendment produces a new version of this file, with
-the act recorded in this spec's records; the text of a
-superseded version is never silently edited. The SHA-256 of
-this version, as committed, is recorded in
-`records/stage-s1-record.md` (a document cannot carry its own
-hash; the stage record is where the hash lives).
+**Version.** v1.1, 2026-11-04 (v1, the draft, is of the
+same date). This version is produced by a recorded amendment
+act: the revision under the findings F1–F8 of the
+adversarial pass (T102) and the freeze under T103, both of
+2026-11-04. The act is recorded in
+`records/stage-s1-freeze-record.md`, which carries this
+version's SHA-256 as committed (a document cannot carry its
+own hash; the freeze record is where the hash lives; v1's
+hash stands in `records/stage-s1-record.md`). Under
+decision D-090-1 of Spec 090, this document is versioned
+only by recorded amendment acts: an amendment produces a
+new version of this file, with the act recorded in this
+spec's records; the text of a superseded version is never
+silently edited.
 
 **State of the records.** Every count and hash below was
 counted or read from the records at the repository state
@@ -96,8 +102,9 @@ members are two flat files and one coded subset:
   a different frame's coding, of a differently bounded
   object set.
 - **The CISI coded subset** (loader of record
-  `backend/glossa_lab/data/indus_cisi.py`): 179 multi-sign
-  inscriptions, Mohenjo-daro only, coded in Parpola P-codes.
+  `backend/glossa_lab/data/indus_cisi.py`): 179 inscription
+  sides (178 of them multi-sign), Mohenjo-daro only, coded
+  in Parpola P-codes.
 
 *Provenance rule.* A coded corpus record is a derived
 record: it exists only with its derivation named. The M77
@@ -112,7 +119,8 @@ header states an inscription-length range of 1–14 (April
 longer than 14 tokens. Sequence order in a coded record
 follows the transcription conventions of its derivation;
 the anchor register (§1.3) records a reading direction per
-anchor (the value carried is `rtl`).
+anchor where it carries one — the value is `rtl` on 171 of
+287 records, and the field is absent on 116.
 
 *Frame note.* The M77 file's code space is not the
 Mahadevan sign list's number space: the list's numbers, as
@@ -243,8 +251,9 @@ that later work cites exactly the bytes that stood.
   179; ClevelandArtOpenAccess 4. Sign-id schemes stated:
   Mahadevan1977 on 2,906 records, Parpola1982 on 179, none
   stated on 12,423. Diplomatic text codes appear across the
-  file in 535 distinct values; a crosswalk coverage above
-  zero is recorded on 3,021 records and zero on 12,487.
+  file in 2,465 distinct code strings, drawing on 535
+  distinct sign codes; a crosswalk coverage above zero is
+  recorded on 3,021 records and zero on 12,487.
 - **The settling canonicals**
   (`glossa-indus/ledger/settling-canonical.json`): the
   registered canonical scenarios of the settling semantics
@@ -296,10 +305,17 @@ four-tuple s = (Σ, γ, ρ, λ):
 
 A state is **named** in this system's sense when its γ is
 presented as an explicit assignment over the object set O
-(§2.2), or as a total rule the system can execute over the
-recorded glyph data to obtain that assignment. The frames
-of §1.2 are named states' (Σ, γ) components, presented as
-coded corpora.
+(§2.2). A rule stated over the coded records of §1.2 — a
+relabeling, a split or merger of codes, a re-segmentation
+of the coded sequences — names a state in the same sense,
+because its input is in R and what it computes is the
+assignment itself. No naming mode over glyph data is
+admitted: §1 defines no record class of glyph data —
+glyphs enter the system only already coded — so a state
+presented in no other way is not named here, and §2.3's
+decidability claim is made for named states in this sense.
+The frames of §1.2 are named states' (Σ, γ) components,
+presented as coded corpora.
 
 ### 2.2 The projection π
 
@@ -308,7 +324,11 @@ for which the system holds inscription records (§1.1, §1.5)
 — operatively, the line sets of the coded corpora (1,669
 inscriptions in the M77 frame; 4,410 in the ICIT frame) and
 the snapshot's object records carrying text codes. The
-projection is the rule:
+operative reading governs: an object attested only in a
+held Class I source — appearing in no coded corpus and
+carrying no snapshot text code — stands outside π's
+domain, and item δ of §2.4 reads over this operative O.
+The projection is the rule:
 
 > **π(s) = T(s)**, the sequence table assigning to each
 > object o in O the sequence γ(o) over Σ that s's glyph
@@ -336,13 +356,21 @@ therefore always a comparison under §2.3.
 
 ### 2.3 Projection-equivalence
 
-Two candidate states s and s′ are **projection-equivalent**,
-s ~ s′, exactly when there exists a bijection β : Σ → Σ′
-with β(γ(o)) = γ′(o) for every object o in O (β applied
-elementwise to the sequences). Sign names are labels; the
-projection sees the segmentation of every surviving glyph
-stream and the identity structure over its tokens, up to
-relabeling — nothing else.
+Write Σ_O for the exercised inventory of a state: the
+signs its γ assigns to at least one token on O, and Σ′_O
+likewise for s′. Two candidate states s and s′ are
+**projection-equivalent**, s ~ s′, exactly when there
+exists a bijection β : Σ_O → Σ′_O with β(γ(o)) = γ′(o)
+for every object o in O (β applied elementwise to the
+sequences). Sign names are labels; the projection sees
+the segmentation of every surviving glyph stream and the
+identity structure over its tokens, up to relabeling —
+nothing else. In particular, a sign a state's γ never
+assigns on O contributes nothing to its table: a state
+differing from another only by such an unexercised
+inventory member — an added sign, or a distinction no
+token on O draws — has the same exercised inventory and
+the same table, and is equivalent to it.
 
 **Decidability.** For two named states, whether s ~ s′ is
 decidable from this rule alone, by a finite check: compute
@@ -371,12 +399,24 @@ records; this account assigns no plausibility, likelihood,
 or standing to any state inside a class.
 
 **α. The inventory and the classification are not fixed by
-the records.** States whose (Σ, γ) induce the same identity
-structure over the surviving tokens are equivalent, however
-their inventories differ in distinctions no surviving token
-exercises — a split of one sign into two whose token sets
-are separated only by stipulation, or a merger of two signs
-no surviving context separates. That the records leave the
+the records.** What §2.3 decides is equivalence of named
+states, and its equivalence claims are exactly these: two
+named states are equivalent when their classifications
+induce the same identity structure over the surviving
+tokens, up to relabeling of the signs exercised, and a
+state differing from another only by an inventory member
+no surviving token exercises is equivalent to it, because
+the projection cannot see a distinction no token draws.
+What the records do not fix is a different, epistemic
+point: which classification is the script's own. A split
+of one sign into two, or a merger of two signs into one,
+realized in a rival classification is *distinguished* by
+§2.3 whenever both resulting types are exercised on the
+surviving tokens — the split state and the unsplit state
+are different named states, not equivalents — and the
+records determine neither which of them is the script's
+nor which frame's coding (§1.2) the script's own
+classification matches. That the records leave the
 inventory open is measured inside the system itself: the
 frames of §1.2 attest 64 distinct codes (M77 file) and 713
 (ICIT file) for the same script; the program's signary
@@ -417,7 +457,12 @@ validation record exists) and the 113 `premise_superseded`
 signs (the premise a reading rested on is recorded as
 superseded, and no superseding validation is recorded).
 Populations counted in §1.3 from the register at its
-pinned SHA-256.
+pinned SHA-256. Item γ is an indistinguishability of the
+record system — of its validation records — not a
+π-class statement: item β already places every reading
+difference inside one π-class, and γ names what the
+register's validation chain, as distinct from the
+projection, cannot separate.
 
 **δ. Completions differing only outside the surviving
 objects.** States that agree on every object in O but
@@ -504,8 +549,16 @@ belong to the corpus — taken as given.
 ostensively.* R is defined by the pinned artifacts of §1
 (named files, at named hashes); §2.2 defines the projection
 over exactly that object set O, and every statement made
-under the projection is thereby relativized to O. The
-extent is not a quantity the system uses in reasoning
+under the projection is thereby relativized to O. Under
+the test of §3.1 the candidate fails clauses (ii) and
+(iii): the extent is not stipulated from outside the
+records but derived from them — §2.2 gives O operatively,
+as the line sets of the Class II coded corpora and the
+snapshot's object records carrying text codes, each a
+record with the provenance §1 states — so the extent is
+record content obtained by a stated rule, not a quantity
+taken as given. The extent is not a quantity the system
+uses in reasoning
 about candidate states — no derivation takes a corpus size
 or a corpus boundary as a premise about the script — it is
 the boundary of the system itself, and its consequences
@@ -650,9 +703,10 @@ constants are the framework's own stated definitions,
 themselves records (§3.7); transcription fidelity is a
 provenance property, asserted by each derived record's
 named derivation and checkable against its sources (§3.8).
-No candidate satisfies the test of §3.1. The record system
+The record system
 therefore takes **no primitive absolute**: this is D3's
 none-needed branch, reached by exhibiting each candidate
 the practice uses as record-relative, as record content, or
-as a stated definition of the system itself. The at-most-one
-bound is satisfied with none named.
+as a stated definition of the system itself. Stated in the
+audit's own terms: no candidate satisfies the test of
+§3.1, and so none is named.

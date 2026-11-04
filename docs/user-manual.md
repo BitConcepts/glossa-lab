@@ -65,7 +65,6 @@ Results appear in **Reports** (PDF/Markdown) and **Data** (JSON/CSV).
 | Shortcut | Action |
 |---|---|
 | **Ctrl+K** | Open command palette |
-| **Ctrl+J** | Toggle bottom panel (Logs/Jobs/Terminal) |
 | **Shift+Enter** | New line in Glossa AI input |
 | **Enter** | Send Glossa AI message |
 
@@ -86,29 +85,50 @@ Right-click the system tray icon for:
 
 ### Left Sidebar
 
-| Section | Description |
+The sidebar is program-scoped: open a program (workspace) and
+the sidebar lists that program's views.
+
+| View | Description |
 |---|---|
-| **Corpora** | Upload, inspect, sanitize, and manage sign-sequence corpora |
+| **Home** | The open program's home: its standing position and stage summary |
+| **Claims** | The program's claims register |
+| **Digestion** | The digestion queue: claims awaiting review |
+| **Evidence & sources** | The program's evidence records and sources |
+| **Data** | The program's corpora and data artefacts |
+| **Analysis** | Analysis surfaces for the program's data |
 | **Experiments** | Browse, build, and run graph experiments |
-| **Pipelines** | Async job management |
-| **Studies** | Compose multi-experiment research workflows |
-| **Reports** | PDF and Markdown reports from experiments |
-| **Data** | JSON and CSV artefacts from experiments |
-| **Entropy** | Visualise H1, Zipf distributions, and positional entropy |
-| **Signs** | Browse the sign dictionary |
-| **Hypotheses** | Create and track research hypotheses |
-| **Notebooks** | Research notes and session summaries |
+| **System graph** | The program's system graph: claims, evidence, and how they connect |
+| **Discovery** | The discovery feed and its triage |
+| **Research loop** | The automated research loop's status and controls |
+| **Reports & ledger** | Generated reports and the ledger views |
 | **Jobs** | Background job queue with result viewer |
 | **Status** | CPU, RAM, GPU, DB health, and backend uptime |
 | **Settings** | API keys, LLM model selection, environment |
+| **Help** | The in-app manual (this document's companion) |
 
-### Bottom Panel (Ctrl+J)
+### Logs
 
-| Tab | Description |
-|---|---|
-| **Logs** | Live colour-coded backend log stream. Green=INFO, Yellow=WARN, Red=ERROR. Click **Purge** to clear. |
-| **Jobs** | Job queue with status, progress, and expandable result JSON. |
-| **Terminal** | Command-line access to the backend environment. |
+There is no in-app log viewer in the current interface: the
+pre-redesign bottom panel was removed in the Spec 081 redesign,
+and an in-app **Logs** view is being restored as its own tab
+under Spec 087 (Stage S5, built to the approved wireframes).
+Until it lands:
+
+- The backend writes a structured, rotating log file
+  (`glossa.log`, 10 MB × 5) and serves it from
+  `GET /terminal/log`, with a live stream at
+  `GET /terminal/log/stream` and purge at
+  `POST /terminal/log/purge`.
+- What must survive is never only in the log stream: job and
+  result records are durable tables surfaced in the **Jobs**
+  view, phase actions and notifications are durable record
+  tables, and the cloud deployment keeps an append-only audit
+  log.
+- The in-app events bus is a live-notification channel with
+  **no delivery guarantee** (the documented-ephemeral
+  disposition, Spec 087 decision D2): an event emitted with no
+  live subscriber is lost, and nothing that matters is carried
+  only by it — the durable surfaces above are the record.
 
 ---
 
@@ -228,14 +248,14 @@ Real-world corpora often contain noise: punctuation marks, Latin annotations mix
 
 | Parameter | Description |
 |---|---|
-| `unicode_range` | Keep only tokens whose characters fall within a Unicode codepoint range (e.g. `[0x1200, 0x137F]` for Ethiopic/Ge'ez) |
+| `unicode_ranges` | Keep only tokens whose characters fall within the given ranges, written as range strings (e.g. `['U+1200-U+1360']` keeps Ethiopic/Ge'ez syllabics and removes Ethiopic punctuation). Empty list disables the range filter |
 | `blocklist` | List of specific token strings to always remove |
-| `min_frequency` | Drop tokens appearing fewer than N times in the corpus |
-| `invert` | If true, remove tokens matching the range instead of keeping them |
+| `min_freq` | Drop token types appearing fewer than N times in the corpus. 0 = disabled |
+| `keep_empty_seqs` | If true, retain sequences that become empty after filtering |
 
 **Example — Ge'ez corpus contaminated with punctuation:**
 
-In the Experiment Builder, connect `CorpusLoader -> TokenFilter -> MappingInference`. Set `unicode_range = [0x1200, 0x137F]` on the TokenFilter node to keep only Ge'ez syllabic characters.
+In the Experiment Builder, connect `CorpusReader -> TokenFilter -> SADecipher`. Set `unicode_ranges = ['U+1200-U+137F']` on the TokenFilter node to keep only Ge'ez syllabic characters.
 
 Check the **Stats -> Token-Type Breakdown** before and after filtering to confirm the result.
 
@@ -267,7 +287,7 @@ Confidence levels: **high** (green), **medium** (yellow), **low** (red).
 
 ### Using Anchor Sets in Experiments
 
-Add an **AnchorSetLoader** node to your experiment graph. Set its `anchor_set_id` parameter to the ID of the anchor set you created. Connect its output to the `anchors` input of a **MappingInference** or **AnchorInjector** node.
+Add an **AnchorSetLoader** node to your experiment graph. Set its `anchor_set_id` parameter to the ID of the anchor set you created. Connect its output to the `anchors` input of an **SADecipher** node.
 
 ---
 
@@ -1892,14 +1912,14 @@ Remove unwanted tokens from sequences by Unicode range, explicit blocklist, or m
 ### Example: NW Semitic Decipherment Pipeline
 
 ```
-CorpusLoader -> TokenFilter -> AnchorSetLoader -> MappingInference -> ConsistencyEvaluator -> JSONReportWriter
-                                |                                                             |
-                         AnchorInjector                                             MarkdownReportWriter
+CorpusReader -> TokenFilter -> SADecipher -> ConsistencyScorer -> JSONExport
+BuiltinLM -------------------> SADecipher (lm input)
+AnchorSetLoader -------------> SADecipher (anchors input, optional)
 ```
 
 ### GPU Acceleration
 
-MappingInference automatically uses GPU (CuPy) if available, and falls back to CPU (NumPy) with multi-core parallelism otherwise.
+SADecipher automatically uses the GPU path (CuPy / BigramScorer) when it is available, and falls back to CPU with multi-core parallelism otherwise.
 
 To enable GPU:
 
@@ -2111,8 +2131,8 @@ Ask Glossa AI: "Generate the PDF report of all experimental results." Or go to *
 
 | Issue | Solution |
 |---|---|
-| Logs show stale entries | Click **Purge** (orange) in Logs panel to clear the file and restart stream |
-| Logs not updating | Click Purge to trigger EventSource reconnect |
+| Logs show stale entries | Purge the log with `POST /terminal/log/purge`, or read only the newest rotation of `glossa.log` |
+| Logs not updating | The live stream is at `GET /terminal/log/stream`; the in-app Logs view returns under Spec 087 S5 |
 | Action fails with error | Rephrase your request more specifically: "Run experiment X on corpus Y" |
 | Low consistency results | Expected at low token density; add verified anchor assignments |
 | Anchor amplifier not working | Use only high-confidence anchors; conflicting anchors reduce the effect |
@@ -2124,15 +2144,15 @@ Ask Glossa AI: "Generate the PDF report of all experimental results." Or go to *
 | Corpus import fails | File must be UTF-8 encoded. One word per line, signs separated by `-`. |
 | World catalogue import unavailable | No bundled module; download from Source link and upload manually |
 | Anchor set not loading | Verify `anchor_set_id` in AnchorSetLoader matches the ID of your set |
-| TokenFilter removes all tokens | Check `unicode_range` covers your script's codepoints. Inspect Stats tab before filtering. |
+| TokenFilter removes all tokens | Check `unicode_ranges` covers your script's codepoints. Inspect Stats tab before filtering. |
 | SubExperiment node fails | The referenced experiment must declare ExperimentInput/ExperimentOutput ports |
 
 ### Log Levels
 
-- **Green** — INFO, started, ready
-- **Yellow** — WARNING
-- **Red** — ERROR, exception, failed
-- **Grey** — DEBUG
+- **INFO** — normal operation: started, ready, job events
+- **WARNING** — non-fatal issues: slow performance, minor data problems
+- **ERROR** — failures: exceptions, job errors, connection failures
+- **DEBUG** — detailed diagnostic messages (only in debug mode)
 
 ### Backend Health
 
@@ -2140,7 +2160,7 @@ Open **Status** in the sidebar for real-time metrics: CPU, RAM, disk, GPU usage,
 
 If the backend does not start:
 1. Check that port 8001 is not already in use
-2. Look at the Logs panel for startup error messages
+2. Look at the backend log (`glossa.log`) for startup error messages
 3. Change the port via the tray icon **Change Port...** menu
 
 ---
@@ -2150,7 +2170,7 @@ If the backend does not start:
 - Use GPU (CuPy) for experiments with more than 20 seeds — 3-10x faster than CPU
 - For small experiments (fewer than 10 seeds), CPU multi-core mode avoids CUDA overhead
 - Keep corpus files under 50,000 tokens for interactive Stats tab responsiveness
-- Use `min_frequency = 2` in TokenFilter to remove hapax tokens when corpus is sparse
+- Use `min_freq = 2` in TokenFilter to remove hapax tokens when corpus is sparse
 - Use **Research** context in Glossa AI for multi-turn analytical workflows
 
 ---

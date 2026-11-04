@@ -1,7 +1,7 @@
 # Glossa Lab — User Guide
 
 > **Version**: current `main` branch — Phase 170+ (June 2026)
-> **Last updated**: 2026-06-10
+> **Last updated**: 2026-11-03
 > **Maintained by**: BitConcepts LLC
 > **Preprint**: v4 — DOI [10.5281/zenodo.20414696](https://doi.org/10.5281/zenodo.20414696)
 
@@ -144,18 +144,23 @@ Each workspace tab shows a coloured dot reflecting its state:
 | Control       | Shortcut   | Purpose |
 |---------------|-----------|---------|
 | ⌘K             | Ctrl+K    | Command palette — navigate anywhere by name |
-| ⊟             | Ctrl+J    | Toggle the bottom panel (Terminal / Logs / Jobs / Chat) |
 | 🔔             | —         | Notifications dropdown |
 | 🌙/☀️          | —         | Dark / light mode toggle |
 
-### Bottom panel tabs
+### Logs
 
-| Tab      | Purpose |
-|----------|---------|
-| Logs     | Live backend log stream |
-| Jobs     | Running and queued pipeline jobs |
-| Terminal | Interactive shell with history, Tab autocomplete, Ask AI button |
-| Chat     | Docked AI chat (same as floating bubble) |
+There is no bottom panel in the current interface — it was
+removed in the Spec 081 redesign. Backend logs are written to
+the rotating log file (`glossa.log`) and served by the
+terminal-log endpoints (`GET /terminal/log`,
+`GET /terminal/log/stream`, `POST /terminal/log/purge`); an
+in-app **Logs** view is being restored as its own tab under
+Spec 087 (Stage S5). Job records live in the **Jobs** view.
+The in-app events bus is a live-notification channel with no
+delivery guarantee (Spec 087 decision D2, documented-ephemeral):
+anything that must survive is in the durable record tables
+(jobs, phase actions, notifications, the cloud audit log),
+never only in the event stream.
 
 ### Floating AI Chat
 
@@ -377,6 +382,13 @@ study graph automatically.
 
 ### Node types in the palette
 
+These are **study-level** node types — a separate system from
+the Experiment Builder's atomic-node palette (the registry's
+non-legacy atomic nodes; see the generated Node Reference in
+`docs/user-manual.md`). Study node parameter schemas are served
+by the study node registry (`GET /node-registry/...`, module
+`study_node_registry.py`), not by the atomic registry.
+
 The palette has four groups:
 - **Data & Analysis**: corpus, rag_query, ai_analysis, note, report, hypothesis
 - **Experiments**: all ExperimentBase subclasses
@@ -580,7 +592,7 @@ This allows you to assemble a multi-experiment research report without manual co
 
 ## 9. Jobs
 
-**Path**: sidebar → Jobs (or bottom panel → Jobs tab)
+**Path**: sidebar → Jobs
 
 Jobs are asynchronous pipeline executions. They run in the background via the
 pipeline engine and store results when complete.
@@ -907,18 +919,14 @@ Ask: _"How many inscriptions start with sign 400?"_
 
 ## 12. Terminal
 
-**Path**: bottom panel → Terminal tab
-
-An interactive shell for running CLI commands, scripts, and experiments.
-
-### Features
-
-- **Tab autocomplete** on commands and file paths
-- **Command history** — ↑/↓ arrows
-- **Paste** from clipboard
-- **Ask AI** button — sends the last command + output to the AI chat for analysis
-- **Help** button — inserts the `help` command
-- **Clear** button — clears terminal output
+There is no in-app terminal in the current interface — the
+pre-redesign bottom panel that hosted it was removed in
+Spec 081. The backend's terminal-log endpoints
+(`GET /terminal/log`, `GET /terminal/log/stream`,
+`POST /terminal/log/purge`) are services, not a shell; the
+in-app Logs view that reads them returns under Spec 087
+(Stage S5). Run the commands below in your own shell, in the
+backend's environment.
 
 ### Useful commands
 
@@ -1063,11 +1071,16 @@ Key points:
 
 ### Node registry API
 
-Get the params schema for any node type:
+Get the params schema for any study node type:
 ```
 GET /api/v1/node-registry/experiment/{id}
 GET /api/v1/node-registry/pipeline/{id}
 ```
+
+This is the **study** node registry (module
+`study_node_registry.py`, renamed in Spec 087 S1) — not the
+Experiment Builder's atomic-node registry, whose catalog is
+served at `GET /api/v1/experiment-graphs/catalog`.
 
 ### Seeding custom studies
 
@@ -1134,7 +1147,7 @@ This is the most powerful mode for Indus Script research.
 ### Backend shows "Offline" in the health badge
 
 - Check the tray icon — click **Start** if it shows as stopped.
-- Open the Logs panel to see the error.
+- Check the backend log (`glossa.log`) to see the error.
 - Check the tray's own log (`logs/tray.log` in the install folder):
   it records starts, auto-restarts, failed stops, and why
   supervision is holding (for example the auto-restart limit).

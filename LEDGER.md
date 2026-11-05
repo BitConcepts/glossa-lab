@@ -12807,3 +12807,48 @@ and the map says so on its first screen. Full record:
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-05 — Spec 084 T011: privacy / data-handling statement approved, fixtured, and served (gap A4 closed)
+
+The owner approved the 2026-10-31 draft privacy / data-handling
+statement on 2026-11-05 and directed closure of its five
+[UNVERIFIED] items. Closures: (1) contact address
+tristen@bitconcepts.tech, the program mailbox of record (owner
+default); (2) hosting-provider text set to the verified facts
+only — no Workers deployed on the account, the repo's Worker
+configuration enables no logging or measurement of its own,
+Cloudflare's own records governed by Cloudflare's terms (zone
+settings and Logpush not readable with the program's token,
+403); (3) Cloudflare Web Analytics VERIFIED ENABLED for the
+bitconcepts.tech zone (account read: auto_install, ruleset
+enabled, no host exclusions) and disclosed as such in §5;
+(4) retention stated as the owner's policy default — expired
+invitations and audit entries retained 12 months, an operator
+act, no purge code existing and the audit log append-only;
+(5) member export VERIFIED present (project JSON bundle,
+report downloads, corpus-text export) and stated as what
+exists. The approved text is the fixture
+`specs/084-policy-sync-conformance/fixtures/privacy-data-handling.txt`
+and is served by the app (`GET /api/v1/privacy` from
+`backend/glossa_lab/privacy_statement.py`; SPA Privacy view on
+the utility route `privacy`), under claim C084-12 with
+presence + absence conformance tests. The claim's ledger
+intake was executed and verified end-to-end on the branch
+(ledger 943 → 944, canonicals 6/6, pair refreshed
+byte-equal) and is HELD on a named Spec 089 machinery gap:
+a legacy run generation entered standing cannot be accounted
+as superseded after departing the store, no registered index
+act amends an entry, and the completion builder refuses over
+the current store — gate V11 leg (c) fails on exactly that
+accounting and nothing else (28 PASS / 1 FAIL / 1 NOT-RUN).
+The intake was reverted; the ledger is untouched by this
+change (943 lines,
+15a5fbad24f400631ace1ebc88bfb7712c9bf6f68fae23e56fedbcac5fd5a794).
+Full record:
+`specs/084-policy-sync-conformance/records/t011-privacy-fixture-2026-11-05.md`.
+No claim's status, stage, or score was changed by this
+landing; the standing position is unchanged — the Indus
+script is not deciphered.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

@@ -80,6 +80,14 @@ superseded text cannot quietly return.
   fixture header and in the change's ledger entry. A fixture edit
   without one is a finding, and the conformance failure it causes
   is not to be "fixed" by editing the surface to match.
+- **FR-084-09** — The app's privacy / data-handling statement, as
+  served by `GET /api/v1/privacy` from
+  `backend/glossa_lab/privacy_statement.py` and rendered in the
+  SPA's Privacy view, matches the approved fixture
+  `fixtures/privacy-data-handling.txt` exactly; and no served
+  source carries the superseded draft placeholder text
+  (`[UNVERIFIED`). Added by task T011 under the owner's approval
+  act of 2026-11-05 (claim C084-12).
 
 ## HELD claims (entered, with reasons — no tests, by design)
 
@@ -106,10 +114,23 @@ superseded text cannot quietly return.
   copy. Reason: no owner-approval act on record for these texts;
   rule (4) forbids fixturing unapproved text. They stand as
   unapproved-text findings until an approval act exists.
-- **Gap (not a claim)** — The app has no privacy / data-handling /
-  terms text (inventory A4). Creating one is an owner text act;
-  when an approved text exists it enters this regime as a new
-  fixture + claim.
+- **Gap A4 — CLOSED 2026-11-05 (task T011, claim C084-12)** — The
+  app had no privacy / data-handling / terms text. The owner
+  approved the 2026-10-31 draft statement on 2026-11-05 and
+  directed closure of its five [UNVERIFIED] items (contact
+  address; hosting-provider logging; account-level web analytics;
+  retention schedule; member export), each closed on the evidence
+  recorded in the fixture header. The approved text is fixtured
+  (`fixtures/privacy-data-handling.txt`) and served by the app
+  (FR-084-09). The claim (C084-12) stands at spec level; its
+  ledger intake is HELD on a named Spec 089 machinery gap — a
+  legacy run generation that was entered standing cannot be
+  accounted as superseded after it departs the store, because
+  no registered index act amends an entry (see the T011 record
+  in `records/`, which preserves the claim record verbatim for
+  the intake act). The intake completes under that gap's own
+  repair act; until then the ledger is untouched by this
+  change.
 
 ## Assumptions (epistemic boundaries)
 

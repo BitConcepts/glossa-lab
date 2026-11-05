@@ -23,6 +23,17 @@
 - [ ] T010 (HELD follow-on) Fixtures + tests for the cloud
       anonymous-surface copy when `frontend/src/cloud/` lands on
       main (C084-8 activation).
-- [ ] T011 (owner-gated follow-on) Privacy / data-handling text
+- [x] T011 (owner-gated follow-on) Privacy / data-handling text
       for the app (inventory gap A4) — enters this regime when an
       owner-approved text exists.
+      Done 2026-11-05 under the owner's approval act of the same
+      day: the five [UNVERIFIED] items closed on the evidence in
+      the fixture header; the approved text fixtured
+      (fixtures/privacy-data-handling.txt) and served
+      (GET /api/v1/privacy + the SPA Privacy view); conformance
+      incl. absence checks under claim C084-12 (its record is
+      preserved in the T011 record for the intake act). Record:
+      records/t011-privacy-fixture-2026-11-05.md. The claim's
+      ledger intake is HELD on the named Spec 089 run-index
+      accounting gap recorded there; the ledger is untouched
+      by this change.

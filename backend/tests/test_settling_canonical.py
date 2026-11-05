@@ -54,6 +54,7 @@ from pathlib import Path
 import pytest
 
 from glossa_lab import ledger_gate as lg
+from glossa_lab import run_records as rr
 from glossa_lab import settling as st
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -226,18 +227,33 @@ def test_run_records_carry_the_label_and_the_value_independence_statement(
 
 
 def test_evaluation_is_deterministic(state, canonical):
+    # Spec 089 Stage 2: a run record carries its run-defs
+    # header, whose id and stamps are execution facts —
+    # determinism is asserted over identical inputs
+    # INCLUDING the header (the same header heading two
+    # evaluations of one scenario): byte-identical dumps.
     scenario = canonical["scenarios"][2]
+    header = st.settling_run_header(
+        state.pins,
+        command="run_settling.py run --scenario determinism-fixture",
+        tool="run_settling.py run",
+        run_id="settling-20261104T000000Z-abcdef",
+        started="2026-11-04T00:00:00Z",
+        finished="2026-11-04T00:00:01Z",
+    )
     first = st.run_record(
         state,
         scenario["inputs"]["candidate"],
         scenario["inputs"]["scope"],
         scenario=scenario["id"],
+        header=header,
     )
     second = st.run_record(
         state,
         scenario["inputs"]["candidate"],
         scenario["inputs"]["scope"],
         scenario=scenario["id"],
+        header=header,
     )
     assert st._dump(first) == st._dump(second)
 
@@ -291,8 +307,16 @@ def test_assignment_sets_materialization_is_byte_deterministic(state):
     first = st._dump(st.build_assignment_sets(state))
     second = st._dump(st.build_assignment_sets(state))
     assert first == second
-    on_disk = (ROOT / st.ASSIGNMENT_SETS_REL).read_bytes()
-    assert on_disk == first, (
+    on_disk = json.loads(
+        (ROOT / st.ASSIGNMENT_SETS_REL).read_text(encoding="utf-8")
+    )
+    # Spec 089 Stage 2: a materialized artifact also names
+    # its producing run (C089-7) — the binding is the one
+    # execution-scoped part and is not content. The
+    # standing artifact predates the binding and carries
+    # none; the content comparison holds modulo it.
+    on_disk.pop("producing_run", None)
+    assert st._dump(on_disk) == first, (
         "the committed assignment-sets.json differs from a "
         "fresh build over the pinned register — regenerate "
         "with tools/ledger/run_settling.py materialize-sets"
@@ -391,11 +415,24 @@ def test_evaluation_writes_nothing(state, canonical):
 
 def test_a_run_writes_only_its_run_record(state, canonical, tmp_path):
     scenario = canonical["scenarios"][1]
+    # Spec 089 Stage 2: a stored record carries a real
+    # (non-ephemeral) run header and lands under its run
+    # id; the write-surface acceptance is unchanged — one
+    # record file, and nothing else.
+    header = st.settling_run_header(
+        state.pins,
+        command="run_settling.py run --scenario write-surface-fixture",
+        tool="run_settling.py run",
+        run_id=rr.mint_run_id("settling"),
+        started="2026-11-04T00:00:00Z",
+        finished="2026-11-04T00:00:01Z",
+    )
     record = st.run_record(
         state,
         scenario["inputs"]["candidate"],
         scenario["inputs"]["scope"],
         scenario=scenario["id"],
+        header=header,
     )
     written = st.write_run_record(tmp_path, record)
     files = [p for p in tmp_path.rglob("*") if p.is_file()]

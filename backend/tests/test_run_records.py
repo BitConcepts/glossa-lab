@@ -461,6 +461,7 @@ def test_t104_dry_run_over_standing_store(tmp_path: Path):
 
     copy_dir = tmp_path / "runs"
     shutil.copytree(RUNS_STORE, copy_dir)
+    copied = sorted(p.name for p in copy_dir.iterdir())
     acts = rr.enumerate_legacy_entries(copy_dir)
     state = rr.fold_acts(acts)
 
@@ -484,12 +485,12 @@ def test_t104_dry_run_over_standing_store(tmp_path: Path):
 
     # The dry run never writes: the real store is byte-identical,
     # and the copy gained no file (no index is written by a
-    # derivation).
+    # derivation). Since Spec 089 Stage 2 the store also carries
+    # its run index; the invariant is that the copy's contents
+    # are exactly what was copied — the derivation added none.
     after = {path.name: _sha256(path) for path in standing}
     assert before == after
-    assert sorted(p.name for p in copy_dir.iterdir()) == [
-        path.name for path in standing
-    ]
+    assert sorted(p.name for p in copy_dir.iterdir()) == copied
 
 
 def test_legacy_entries_fold_with_minted_runs():

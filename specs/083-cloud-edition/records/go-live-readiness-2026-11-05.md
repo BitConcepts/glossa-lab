@@ -86,12 +86,30 @@ with the desktop as origin, plus the deltas named in T059:
   stands at `309ea63c`, ~118+ commits behind main.
   **Follow-on enumeration (read-only):** job
   `20261105T131620Z-glossa-spec083-desktop-dirty-enum-2026-11-05-862c60`
-  lists the 5 dirty paths with their nature — result:
-  _(filled from its queue record when it lands)_. Nothing is
-  cleared, stashed, or reset: if the files are runtime state the
-  sync design must accommodate them; if they are source edits they
-  are someone's work. Either way the disposition is the parent's
-  call, recorded here when known. After a successful sync the
+  lists the 5 dirty paths with their nature. **Enumeration
+  result (queue record, run `42035796835`, run conclusion success,
+  payload exit 0):** `HEAD=309ea63c`, `BRANCH=main`,
+  `DIRTY_COUNT=5`, `ENUM_DONE=1`. All five paths are modified and
+  unstaged (` M`), and the staged diff stat is empty:
+  - `frontend/dist/index.html`
+  - `outputs/anchor_staging.json`
+  - `outputs/anchor_staging_archive.json`
+  - `outputs/partial_loop_result.json`
+  - `outputs/study_loop_sessions.json`
+
+  Diff stat across the five: 5 files changed, 3857 insertions(+),
+  243 deletions(-). **Disposition:** all five are regenerable
+  runtime products of the backend running from that clone; none is
+  a hand-authored source edit. Under the follow-on sequence of
+  2026-11-05 they are restored to their committed state by a
+  dedicated restore job (leg 2), and the ff-only sync is then
+  resubmitted unchanged (leg 3); both payload verdicts are read
+  from their queue records. **Named follow-on design item (not
+  done here):** the sync's dirty gate will refuse again after any
+  backend run that regenerates these paths, so scoping the gate
+  to exclude the runtime-output paths (`outputs/*`,
+  `frontend/dist/index.html`) is a design question for a later
+  spec amendment; this sequence does not change the gate. After a successful sync the
   desktop backend still runs pre-sync code until restarted — the
   restart belongs to the go-live sequence proper (T059/T060), and
   no readiness claim in this record assumes it.

@@ -383,16 +383,37 @@ def create_app() -> FastAPI:
     # the value (FR-006).
     application.add_middleware(ApiTokenMiddleware)
 
-    # Spec 083 Step 2 (T018/T019): workspace scope enforcement. Cloud
-    # mode only — under GLOSSA_CLOUD=1 the edge-injected identity is
-    # enforced per request (service credential, scoped 404s, terminal
-    # gating; see glossa_lab/cloud_scope.py). Desktop installs never
-    # install it and are unchanged.
+    # Spec 083 Step 2 (T018/T019) + Amendment 5 (T056): workspace
+    # scope enforcement. Under GLOSSA_CLOUD=1 (the cloud image) the
+    # edge-injected identity is enforced per request (service
+    # credential, scoped 404s, terminal gating; see
+    # glossa_lab/cloud_scope.py). A desktop install ALSO installs it
+    # when a service credential is configured in its protected
+    # credential storage — the hosted posture, where the middleware
+    # engages only on requests carrying edge provenance headers and
+    # local use is untouched. It is added AFTER ApiTokenMiddleware so
+    # it runs FIRST (Starlette order): its validated-edge mark is
+    # what lets the token middleware stand down for edge forwards.
+    # Desktop installs with no credential configured never install
+    # it and are unchanged.
     if cloud_mode_enabled():
         from glossa_lab.cloud_scope import CloudScopeMiddleware  # noqa: PLC0415
 
         application.add_middleware(CloudScopeMiddleware)
         _log.info("Cloud mode: workspace scope middleware installed (Spec 083)")
+    else:
+        from glossa_lab.cloud_scope import (  # noqa: PLC0415
+            expected_service_credential,
+        )
+
+        if expected_service_credential():
+            from glossa_lab.cloud_scope import CloudScopeMiddleware  # noqa: PLC0415
+
+            application.add_middleware(CloudScopeMiddleware)
+            _log.info(
+                "Hosted posture: workspace scope middleware installed "
+                "for edge-provenance requests (Spec 083 T056)"
+            )
     if auth_disabled():
         _log.warning(
             "API token authentication DISABLED by GLOSSA_API_AUTH=off "

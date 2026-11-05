@@ -23,9 +23,10 @@
 //      needs: GET /invite/:code/preview, GET /api/session, the
 //      /api/account/* self-service surface, GET /api/admin/audit,
 //      and workspace descriptions (migration 0005).
-//   6. Everything else that reaches the container goes through the
-//      single named Durable Object instance (GlossaFront,
-//      "glossa-lab").
+//   6. Everything else that reaches the application goes through the
+//      single Workers VPC Service binding (GLOSSA_ORIGIN) to the
+//      desktop origin (Amendment 5, T055). The GlossaFront Durable
+//      Object's container role is retired: there is no container.
 
 import { classifyRoute, normalizePathname } from "./routes";
 import {
@@ -63,9 +64,6 @@ import {
   type IdentityDeps,
 } from "./identity";
 import { defaultHasher, type PasswordHasher } from "./password";
-
-/** The one named GlossaFront instance — there is exactly one. */
-export const FRONT_INSTANCE_NAME = "glossa-lab";
 
 /** robots.txt body: disallow everything, on every crawler. */
 export const ROBOTS_TXT = "User-agent: *\nDisallow: /\n";
@@ -261,7 +259,7 @@ async function route(
     ctx.waitUntil(
       store.touchSession(tokenHash, now).catch(() => undefined),
     );
-    const response = await forwardToFront(request, env, identity);
+    const response = await forwardToOrigin(request, env, identity);
     // T022: log container-scope denials the edge observes on proxied
     // responses (authenticated actor + scoped route + 403/404).
     if (
@@ -283,9 +281,9 @@ async function route(
     case "public-page":
     case "public-asset":
       // The shell and its furniture carry no project data; the
-      // container serves them and the dataset hydrates only after
+      // origin serves them and the dataset hydrates only after
       // authentication (Amendment 2's anonymous payload rule).
-      return forwardToFront(request, env, null);
+      return forwardToOrigin(request, env, null);
     case "api":
       return jsonError(
         401,
@@ -318,14 +316,23 @@ function identityUnavailable(): Response {
 }
 
 /**
- * Forward a request through the single GlossaFront instance to the
- * container. Client-supplied `X-Glossa-*` headers are deleted first —
- * the container must only ever see the edge's own assertions. The
- * service credential rides on every container-bound request (it proves
- * the hop came through the edge); identity headers are added only for
- * authenticated requests.
+ * Forward a request through the Workers VPC binding to the desktop
+ * origin (Amendment 5, T055). Client-supplied `X-Glossa-*` headers
+ * are deleted first — the origin must only ever see the edge's own
+ * assertions. The service credential rides on every origin-bound
+ * request (it proves the hop came through the edge); identity
+ * headers are added only for authenticated requests. Method, path,
+ * query, body, and streaming responses pass through untouched.
+ *
+ * A rejected binding fetch (desktop offline, tunnel down) becomes
+ * the edge's own 503: an edge-generated error document carrying no
+ * project data, stamped noindex by the perimeter wrapper like every
+ * other response. Project-data responses (authenticated forwards and
+ * API responses) are stamped `Cache-Control: no-store` here so no
+ * intermediary can retain them; the public shell/assets keep the
+ * origin's own cache posture (they carry no project data).
  */
-function forwardToFront(
+async function forwardToOrigin(
   request: Request,
   env: Env,
   identity: SessionIdentity | null,
@@ -342,6 +349,22 @@ function forwardToFront(
     headers.set(HEADER_WORKSPACE_ROLES, JSON.stringify(identity.workspaceRoles));
   }
   const forwarded = new Request(request, { headers });
-  const stub = env.GLOSSA_FRONT.getByName(FRONT_INSTANCE_NAME);
-  return stub.fetch(forwarded);
+  let response: Response;
+  try {
+    response = await env.GLOSSA_ORIGIN.fetch(forwarded);
+  } catch (err) {
+    console.error("glossa-edge: origin fetch failed", err);
+    return jsonError(
+      503,
+      "origin_unavailable",
+      "The application is temporarily unavailable.",
+    );
+  }
+  const pathname = new URL(request.url).pathname;
+  if (identity || pathname.startsWith("/api/")) {
+    const out = new Response(response.body, response);
+    out.headers.set("Cache-Control", "no-store");
+    return out;
+  }
+  return response;
 }

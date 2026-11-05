@@ -12808,6 +12808,145 @@ and the map says so on its first screen. Full record:
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
 
+## 2026-11-05 — F1 disk-full cascade fix (Spec 081 PR-3 precondition)
+
+Owner-commissioned 2026-11-05. Spec 081's PR-3 has been held since
+2026-10-30 on the precondition "the F1 disk-full cascade fix on main"
+(closeout-2026-10-30.md, re-verified at each Phase 2 continuation).
+No written definition of F1 survives in the Spec 081 package, the
+2026-10-29 hardening records, or the program memory beyond that name
+and the resume-note gate lines; this landing is the smallest faithful
+reconstruction from the failure mode the name carries, stated as such.
+
+The defect: the backend's two small state files in the data dir —
+`.keys.json` (every stored API key, provider prefs, and the Graph
+refresh token; written by settings, notifications, the discovery and
+study-loop schedulers, and the SMTP token refresh) and `presets.json`
+— were saved with `Path.write_text`, which opens the live file with
+O_TRUNC. A write that then failed (ENOSPC on a full disk, or any other
+write error) had already destroyed the previous good content, leaving
+a truncated or empty file standing: one failed save cascading into
+the loss of the whole store.
+
+The fix: new `backend/glossa_lab/atomic_io.py` —
+`atomic_write_text(path, content)` writes to a temp file in the same
+directory, flushes + fsyncs, then atomically renames over the target;
+any failure raises `StateWriteError` (an OSError naming the target
+and the cause), removes the temp file, and leaves the previous file
+byte-identical. The target is never opened for in-place truncation.
+`api/settings.py::_save_keys` and `preset_store.py::_save` — the two
+choke points every writer of those files passes through — now save
+through it; no caller changed.
+
+Tests: `backend/tests/test_atomic_io_disk_full.py` (7 tests) injects
+ENOSPC at the rename leg and at the write leg: the failure is named,
+the previous content is byte-identical, no temp file lingers; a
+control test proves the old truncate-then-write shape loses the
+content under the same failure; both converted stores are proven
+end-to-end through their own save paths. Full local enumeration
+(glossa-ci venv, no -x, CI's GPU ignores, phase392 stall test
+deselected by name): 1 failed, 2674 passed, 101 skipped,
+1 deselected, 1 error in 938.49s — the failure is the phase133
+environmental baseline and the error is the tray-teardown flake
+(suite shape #1), both acceptable non-passes of record; the +7 over
+the Spec 089 S5 enumeration (2667) is exactly the new tests. Ledger
+gate verbatim: full `summary: 29 PASS / 0 FAIL / 1 NOT-RUN —
+RESULT: PASS`; --regen `summary: 32 PASS / 0 FAIL / 0 NOT-RUN —
+RESULT: PASS` — the standing profile, unmoved; no census literal
+moved. In-tree suite regenerations (10 extracted-claims files,
+batch-4 report, outputs/partial_loop_result.json) were restored
+before committing.
+
+This landing satisfies the F1 precondition; Spec 081 PR-3 itself
+remains the parent's sequencing call and is not built here. No
+claim's status, stage, or score was changed; the claims ledger is
+untouched.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.
+
+## Spec 083 — Step 5: go-live wiring (2026-11-05)
+
+The go-live sequence's repo-side and wiring legs, under the owner's
+2026-11-05 approval. The edge is retargeted to the desktop origin
+(T055): `cloud/edge` now forwards through the `GLOSSA_ORIGIN`
+Workers VPC binding — the GlossaFront Durable Object and its
+container are retired from the production path (`src/front.ts`
+deleted), a failed origin fetch becomes the edge's own noindex 503,
+and project-data responses carry `Cache-Control: no-store`. The
+desktop accepts edge-injected identity (T056): `CloudScopeMiddleware`
+gains a desktop posture that engages only on edge-provenance
+requests while a service credential is configured, resolving the
+credential from the environment or the install's protected keys
+store (`glossa_service_credential` — T024's desktop-side storage
+leg, discharging with T053–T055 the two Step 5 elements the Step 2
+record deferred), marking validated edge requests so
+`ApiTokenMiddleware` stands down for them, and answering host
+management (shutdown, env) with the scoped 404 through the edge for
+every role; local Spec 082 use is unchanged. The bundle production
+path is retired from all production configuration with config
+guards asserting it (T058). The T057 reconciliation checker is
+built (`glossa_lab/workspace_scope_check.py` + CLI + tests); its
+live run against the desktop dataset waits on the desktop sync.
+Gate 2 was measured, not guessed: the BitConcepts token lacks
+exactly four scope groups (Workers Scripts, DNS Write, Tunnel
+write, Connectivity Directory Admin/Bind) — the D1 leg within its
+reach was discharged (database `glossa-identity` created
+2026-11-05, id committed in wrangler.toml). The launch itself has
+NOT been taken: the full per-task state, gate evidence, and the
+T059 proof list ready to run are in
+`specs/083-cloud-edition/records/go-live-readiness-2026-11-05.md`,
+and the T053 checklist in
+`specs/083-cloud-edition/records/t053-tunnel-vpc-checklist.md`.
+
+## 2026-11-05 — Spec 084 C084-8 activation: cloud anonymous-surface copy fixtured + tested
+
+The last executable HELD claim of Spec 084 is activated on the
+owner's approval act of 2026-11-05 (T010). The activation
+condition was met when `feat/083-frontend` landed on main in
+PR #476 (2026-11-01), putting `frontend/src/cloud/pages.tsx`
+(login, glassbreak setup, invite acceptance) on main.
+
+Fixture `specs/084-policy-sync-conformance/fixtures/
+cloud-anonymous-surface-copy.txt` carries the seven
+claims-bearing strings of claim C084-8 — the invitation-only
+statement and the no-public-registration footer, the
+password-recovery posture, the setup audit-log statement, and
+the invite issued-address binding (label hint, issued-address
+hint, mismatch error). Provenance, cited in the fixture header:
+the Spec 083 wireframe package (merged PR #463) for the login
+lede, the footer, and the setup statement, carried verbatim by
+the landed source; the 2026-10-31 parent decisions on the
+Phase 3 flags (Spec 083 BUILD-RECORD) for the recovery posture
+(deviation 1: admin disable + re-invite is the designed
+recovery) and the issued-address binding (deviation 6, fix
+commit `667ef16c`; the label hint is quoted verbatim in that
+record). No copy was drafted for this fixture: every string is
+the landed text resting on one of those two records.
+
+Conformance: `test_cloud_anonymous_surface_copy_matches_fixture`
+and `test_superseded_reset_link_promise_absent` join
+`backend/tests/test_policy_sync_conformance.py` (the absence
+test guards the wireframe-01 reset-link sentence the posture
+decision superseded — verified absent from `frontend/src`
+before the guard was written). FR-084-09 added to the spec;
+C084-8 recorded ACTIVATED in spec.md. The claim's
+`aee-claims.json` entry stands as intaken — the bundle is the
+ledger's SHA-pinned source of record and is never edited
+after intake (the Spec 087–090 precedent); an edit was
+attempted in this landing's first enumeration and the ledger
+validator refused it (the falsifier trace broke), which is
+the machinery working as designed. Held
+claims remaining: C084-9 (tracker texts, artifact-owned source),
+C084-10 (llms.txt, owner-gated with the v10 act — approved
+2026-11-05, deposit pending), C084-11 (Help / AI-settings copy,
+no approval act). What this establishes: the repo's sources
+carry the approved copy; deployed-surface conformance remains a
+Spec 083 go-live-era check (T059 class) and is not claimed here.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.
+
 ## 2026-11-05 — Spec 084 T011: privacy / data-handling statement approved, fixtured, and served (gap A4 closed)
 
 The owner approved the 2026-10-31 draft privacy / data-handling

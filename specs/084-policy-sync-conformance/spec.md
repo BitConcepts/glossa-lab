@@ -80,7 +80,13 @@ superseded text cannot quietly return.
   fixture header and in the change's ledger entry. A fixture edit
   without one is a finding, and the conformance failure it causes
   is not to be "fixed" by editing the surface to match.
-- **FR-084-09** — The app's privacy / data-handling statement, as
+- **FR-084-09** — The cloud anonymous-surface copy (login,
+  glassbreak setup, invite acceptance) in
+  `frontend/src/cloud/pages.tsx` contains every approved string
+  in `fixtures/cloud-anonymous-surface-copy.txt`, and the
+  superseded wireframe-01 reset-link sentence appears nowhere in
+  `frontend/src`. (Added at the C084-8 activation, 2026-11-05.)
+- **FR-084-10** — The app's privacy / data-handling statement, as
   served by `GET /api/v1/privacy` from
   `backend/glossa_lab/privacy_statement.py` and rendered in the
   SPA's Privacy view, matches the approved fixture
@@ -89,17 +95,31 @@ superseded text cannot quietly return.
   (`[UNVERIFIED`). Added by task T011 under the owner's approval
   act of 2026-11-05 (claim C084-12).
 
-## HELD claims (entered, with reasons — no tests, by design)
+## Activated claims (were HELD at the spec's landing)
 
-- **C084-8 (HELD)** — Cloud anonymous-surface copy (login,
-  glassbreak setup, invite acceptance). Reason: the source
-  (`frontend/src/cloud/pages.tsx`) exists only on
-  feat/083-frontend; it lands on main with the Phase 3 PR, itself
-  gated on PR #468. The falsifier (source diff against fixtures
-  for the three pages' claims-bearing copy) is designed and
-  activates when the source lands; the fixtures are written then,
-  from the landed text and its approval record (Spec 083 wireframe
-  package; the 2026-10-31 parent decisions).
+- **C084-8 (ACTIVATED 2026-11-05)** — Cloud anonymous-surface
+  copy (login, glassbreak setup, invite acceptance). Held at the
+  landing because the source (`frontend/src/cloud/pages.tsx`)
+  existed only on feat/083-frontend. The condition was met when
+  feat/083-frontend landed on main in PR #476 (2026-11-01); the
+  owner approved activation 2026-11-05. The fixture
+  (`fixtures/cloud-anonymous-surface-copy.txt`) is written from
+  the landed text and its approval record: the Spec 083 wireframe
+  package (PR #463) for the login lede, the no-public-registration
+  footer, and the setup audit-log statement; the 2026-10-31
+  parent decisions on the Phase 3 flags (Spec 083 BUILD-RECORD)
+  for the password-recovery posture and the invite issued-address
+  binding. Exercised by
+  `test_cloud_anonymous_surface_copy_matches_fixture` and
+  `test_superseded_reset_link_promise_absent` (the wireframe-01
+  reset-link sentence the posture decision superseded). The
+  claim's entry in `aee-claims.json` stands as intaken: the
+  bundle is the ledger's SHA-pinned source of record and is
+  never edited after intake (the Spec 087–090 precedent), so
+  its intake-time HELD wording is superseded by this activation
+  record, not rewritten.
+
+## HELD claims (entered, with reasons — no tests, by design)
 - **C084-9 (HELD)** — Public tracker standing texts
   (bitconcepts.tech/research/ and /research/indus-script/).
   Reason: the source is the tracker artifact, not this repo; a
@@ -122,7 +142,7 @@ superseded text cannot quietly return.
   retention schedule; member export), each closed on the evidence
   recorded in the fixture header. The approved text is fixtured
   (`fixtures/privacy-data-handling.txt`) and served by the app
-  (FR-084-09). The claim (C084-12) stands at spec level; its
+  (FR-084-10). The claim (C084-12) stands at spec level; its
   ledger intake is HELD on a named Spec 089 machinery gap — a
   legacy run generation that was entered standing cannot be
   accounted as superseded after it departs the store, because

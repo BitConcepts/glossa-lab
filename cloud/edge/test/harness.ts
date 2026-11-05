@@ -1,5 +1,7 @@
 // Shared harness for Step 2 identity tests: a Worker env backed by
-// the in-memory identity store and a recording fake GlossaFront.
+// the in-memory identity store and a recording fake origin binding
+// (the GLOSSA_ORIGIN Workers VPC seam, T055 — mirroring the former
+// GlossaFront seam it replaced).
 
 import { vi } from "vitest";
 import { handleRequest } from "../src/worker";
@@ -40,11 +42,8 @@ export function makeHarness(opts: {
   });
   const env = {
     DB: {} as D1Database,
-    DATASETS: {} as R2Bucket,
     SERVICE_CREDENTIAL,
-    GLOSSA_FRONT: {
-      getByName: () => ({ fetch: front }),
-    } as unknown as DurableObjectNamespace,
+    GLOSSA_ORIGIN: { fetch: front },
   } as Env;
 
   let now = T0;

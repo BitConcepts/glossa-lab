@@ -195,3 +195,20 @@ The claim record below was carried in this spec's `claims.json` during the intak
  ]
 }
 ```
+
+## Addendum 2026-11-05 — requirement renumbered FR-084-09 → FR-084-10
+
+At this branch's drafting, the privacy requirement was numbered
+FR-084-09. Meanwhile the C084-8 activation landed on main
+(PR #529) and took FR-084-09 for the cloud anonymous-surface
+copy requirement, with its own root LEDGER.md entry and fixture
+record. Parent ruling, 2026-11-05: FR-084-09 stays with the
+C084-8 activation; the privacy requirement renumbers to
+**FR-084-10**. The requirement's text is unchanged — number
+only. The renumber is applied in
+`specs/084-policy-sync-conformance/spec.md` and in
+`backend/tests/test_policy_sync_conformance.py` (the C084-12
+section header and the module docstring). The claim record
+preserved above cites "Spec 084 FR-084-09 / task T011" as
+written at the time; it stands unrewritten, and this addendum
+is its reading note: that citation now resolves to FR-084-10.

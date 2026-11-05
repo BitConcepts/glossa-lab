@@ -172,7 +172,7 @@ into its stage report.
 
 ## Stage 4 — Suite and experiment surfaces (PR: feat/089-s4-surfaces)
 
-- [ ] **T401 — Suite light-record helper.** `tools/runs/
+- [x] **T401 — Suite light-record helper.** `tools/runs/
   suite_run_record.py` over `run_records.py`: writes the local
   evidence-run record (command; tree SHA + dirty flag; result summary
   parsed from the run's own output file; the rewrite manifest over
@@ -186,7 +186,7 @@ into its stage report.
   from this stage, Spec 089's own stage records cite suite evidence
   only under this binding or the CI quadruple, and S5's gate checks the
   citation forms it can resolve.
-- [ ] **T402 — CI citation application + self-application.** The S4
+- [x] **T402 — CI citation application + self-application.** The S4
   stage record cites its own PR's CI by {run id, head SHA, job,
   conclusion} for every job it relies on, and its local suite evidence
   by T401 records. Claims: C089-3, C089-4. Acceptance:
@@ -194,7 +194,7 @@ into its stage report.
   the record to its run before merge).
   *This does not establish:* a fleet-wide citation habit — it binds this
   spec's records and gives S5 a real population to verify.
-- [ ] **T403 — Experiment citation records.** `tools/runs/
+- [x] **T403 — Experiment citation records.** `tools/runs/
   job_citation.py`: given a backend job id, read job + results via the
   backend API and write the repo-side run record (header; graph id +
   registered version; parameters; job-recorded fields; result payload

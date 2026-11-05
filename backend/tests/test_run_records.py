@@ -2,7 +2,7 @@
 and the legacy dry-run over the standing store (T104).
 
 T103's acceptance: the formats and the fold of
-`glossa_lab.run_records` (the machine copy of run-defs v1)
+`glossa_lab.run_records` (the machine copy of run-defs v2)
 are proven against the registered rules — 10,000
 same-second mints unique and format-conformant; header
 validation refuses a missing key component per surface and
@@ -393,6 +393,100 @@ def test_fold_refuses_duplicate_entry_and_double_supersession():
         )
     with pytest.raises(rr.RunRecordError):
         rr.fold_acts([a, {"act": "explode", "run_id": a["run_id"]}])
+
+
+def _departure(run_id: str, record: str, **overrides) -> dict:
+    act = {
+        "act": "departure",
+        "run_id": run_id,
+        "record": record,
+        "superseded_by_commit": "c" * 40,
+        "git_blob": "d" * 40,
+        "blob_sha256": "e" * 64,
+        "ref": "fixture (departed-generation accounting)",
+    }
+    act.update(overrides)
+    return act
+
+
+def test_fold_applies_a_departure_act_without_touching_the_entry():
+    entry = _minted_entry()
+    departure = _departure(entry["run_id"], entry["record"])
+    state = rr.fold_acts([entry, departure])
+    assert state.departed == {entry["run_id"]: departure}
+    # The accounting is the appended act; the entry stands
+    # byte-for-byte as entered (append-only preserved).
+    assert state.entries[entry["run_id"]] == entry
+    assert "superseded_by_commit" not in state.entries[entry["run_id"]]
+
+
+def test_fold_accounts_a_legacy_generation_that_entered_standing():
+    record = {
+        "semantics": "glossa-settle-1",
+        "candidate": "incumbent",
+        "pins": {"ledger": {"sha256": "a" * 64}},
+    }
+    name = "t405-incumbent-over-full-frame--d9f73e4c4e4e.json"
+    entry = rr.legacy_entry_for_record(name, record)
+    assert "superseded_by_commit" not in entry
+    departure = rr.departure_act(
+        entry["run_id"],
+        name,
+        superseded_by_commit="c" * 40,
+        git_blob="d" * 40,
+        blob_sha256="e" * 64,
+        ref="fixture",
+    )
+    state = rr.fold_acts([entry, departure])
+    assert state.departed[entry["run_id"]]["blob_sha256"] == "e" * 64
+    assert state.entries[entry["run_id"]] == entry
+
+
+def test_fold_refuses_departure_acts_that_do_not_account():
+    entry = _minted_entry()
+    unknown = rr.mint_run_id("settling", now=NOW)
+    with pytest.raises(rr.RunRecordError):
+        rr.fold_acts([entry, _departure(unknown, f"{unknown}.json")])
+    with pytest.raises(rr.RunRecordError):
+        # The named record must be the entry's own record.
+        rr.fold_acts(
+            [entry, _departure(entry["run_id"], "some-other.json")]
+        )
+    with pytest.raises(rr.RunRecordError):
+        # A generation's departure is accounted once.
+        rr.fold_acts(
+            [
+                entry,
+                _departure(entry["run_id"], entry["record"]),
+                _departure(entry["run_id"], entry["record"]),
+            ]
+        )
+    with pytest.raises(rr.RunRecordError):
+        rr.fold_acts(
+            [
+                entry,
+                _departure(
+                    entry["run_id"],
+                    entry["record"],
+                    superseded_by_commit="not-a-commit",
+                ),
+            ]
+        )
+    with pytest.raises(rr.RunRecordError):
+        rr.fold_acts(
+            [
+                entry,
+                _departure(
+                    entry["run_id"],
+                    entry["record"],
+                    blob_sha256="short",
+                ),
+            ]
+        )
+    with pytest.raises(rr.RunRecordError):
+        missing = _departure(entry["run_id"], entry["record"])
+        del missing["ref"]
+        rr.fold_acts([entry, missing])
 
 
 def test_append_act_validates_before_writing(tmp_path: Path):

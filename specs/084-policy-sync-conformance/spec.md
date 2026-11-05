@@ -80,18 +80,46 @@ superseded text cannot quietly return.
   fixture header and in the change's ledger entry. A fixture edit
   without one is a finding, and the conformance failure it causes
   is not to be "fixed" by editing the surface to match.
+- **FR-084-09** — The cloud anonymous-surface copy (login,
+  glassbreak setup, invite acceptance) in
+  `frontend/src/cloud/pages.tsx` contains every approved string
+  in `fixtures/cloud-anonymous-surface-copy.txt`, and the
+  superseded wireframe-01 reset-link sentence appears nowhere in
+  `frontend/src`. (Added at the C084-8 activation, 2026-11-05.)
+- **FR-084-10** — The app's privacy / data-handling statement, as
+  served by `GET /api/v1/privacy` from
+  `backend/glossa_lab/privacy_statement.py` and rendered in the
+  SPA's Privacy view, matches the approved fixture
+  `fixtures/privacy-data-handling.txt` exactly; and no served
+  source carries the superseded draft placeholder text
+  (`[UNVERIFIED`). Added by task T011 under the owner's approval
+  act of 2026-11-05 (claim C084-12).
+
+## Activated claims (were HELD at the spec's landing)
+
+- **C084-8 (ACTIVATED 2026-11-05)** — Cloud anonymous-surface
+  copy (login, glassbreak setup, invite acceptance). Held at the
+  landing because the source (`frontend/src/cloud/pages.tsx`)
+  existed only on feat/083-frontend. The condition was met when
+  feat/083-frontend landed on main in PR #476 (2026-11-01); the
+  owner approved activation 2026-11-05. The fixture
+  (`fixtures/cloud-anonymous-surface-copy.txt`) is written from
+  the landed text and its approval record: the Spec 083 wireframe
+  package (PR #463) for the login lede, the no-public-registration
+  footer, and the setup audit-log statement; the 2026-10-31
+  parent decisions on the Phase 3 flags (Spec 083 BUILD-RECORD)
+  for the password-recovery posture and the invite issued-address
+  binding. Exercised by
+  `test_cloud_anonymous_surface_copy_matches_fixture` and
+  `test_superseded_reset_link_promise_absent` (the wireframe-01
+  reset-link sentence the posture decision superseded). The
+  claim's entry in `aee-claims.json` stands as intaken: the
+  bundle is the ledger's SHA-pinned source of record and is
+  never edited after intake (the Spec 087–090 precedent), so
+  its intake-time HELD wording is superseded by this activation
+  record, not rewritten.
 
 ## HELD claims (entered, with reasons — no tests, by design)
-
-- **C084-8 (HELD)** — Cloud anonymous-surface copy (login,
-  glassbreak setup, invite acceptance). Reason: the source
-  (`frontend/src/cloud/pages.tsx`) exists only on
-  feat/083-frontend; it lands on main with the Phase 3 PR, itself
-  gated on PR #468. The falsifier (source diff against fixtures
-  for the three pages' claims-bearing copy) is designed and
-  activates when the source lands; the fixtures are written then,
-  from the landed text and its approval record (Spec 083 wireframe
-  package; the 2026-10-31 parent decisions).
 - **C084-9 (HELD)** — Public tracker standing texts
   (bitconcepts.tech/research/ and /research/indus-script/).
   Reason: the source is the tracker artifact, not this repo; a
@@ -106,10 +134,23 @@ superseded text cannot quietly return.
   copy. Reason: no owner-approval act on record for these texts;
   rule (4) forbids fixturing unapproved text. They stand as
   unapproved-text findings until an approval act exists.
-- **Gap (not a claim)** — The app has no privacy / data-handling /
-  terms text (inventory A4). Creating one is an owner text act;
-  when an approved text exists it enters this regime as a new
-  fixture + claim.
+- **Gap A4 — CLOSED 2026-11-05 (task T011, claim C084-12)** — The
+  app had no privacy / data-handling / terms text. The owner
+  approved the 2026-10-31 draft statement on 2026-11-05 and
+  directed closure of its five [UNVERIFIED] items (contact
+  address; hosting-provider logging; account-level web analytics;
+  retention schedule; member export), each closed on the evidence
+  recorded in the fixture header. The approved text is fixtured
+  (`fixtures/privacy-data-handling.txt`) and served by the app
+  (FR-084-10). The claim (C084-12) stands at spec level; its
+  ledger intake is HELD on a named Spec 089 machinery gap — a
+  legacy run generation that was entered standing cannot be
+  accounted as superseded after it departs the store, because
+  no registered index act amends an entry (see the T011 record
+  in `records/`, which preserves the claim record verbatim for
+  the intake act). The intake completes under that gap's own
+  repair act; until then the ledger is untouched by this
+  change.
 
 ## Assumptions (epistemic boundaries)
 

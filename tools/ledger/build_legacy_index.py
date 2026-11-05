@@ -1,22 +1,39 @@
 #!/usr/bin/env python3
 """Complete a run store's legacy index (Spec 089 Stage 5,
-T501; D-089-5 index-only reach-back).
+T501; D-089-5 index-only reach-back; the completion
+rules as amended by run-defs v2 §7.2, 2026-11-05).
 
 Enumerates every run record that has ever stood in the
 settling store from the store's git history (the commits
 on HEAD's line that touch the store), and appends the
-legacy `entry` acts the index still lacks:
+acts the index still lacks, under the population rule
+run-defs v2 §7.2 states:
 
-- a record still standing in the store is entered from
-  its standing bytes;
-- a record no longer in the store is entered from its
-  final blob, and its entry names the superseding commit
-  (the first store-touching commit whose tree no longer
-  carries it), the record's git blob id, and the SHA-256
-  of the blob's bytes;
+- a record still standing in the store and not yet
+  entered is entered from its standing bytes;
+- a record no longer in the store and not yet entered
+  is entered from its final blob, and its entry names
+  the superseding commit (the first store-touching
+  commit whose tree no longer carries it), the record's
+  git blob id, and the SHA-256 of the blob's bytes;
+- a generation that was entered standing and has since
+  departed the store gains a `departure` act (run-defs
+  v2 §7.1) carrying that same accounting — the entry
+  act is immutable, so the accounting is appended,
+  never edited in — unless a departure act or the
+  entry's own fields already account it;
+- a record carrying a run header is a post-spec record,
+  entered by its own writer under its own run id and
+  never legacy-derived: the history pass skips it and
+  names the skip on its output (skip-with-record), and
+  never refuses on it;
 - each `re_derivations` entry in
   `glossa-indus/ledger/settling-canonical.json` is
   entered as a legacy run event pointing at that file.
+
+A headerless record missing a recoverable key component
+remains a named refusal: it belongs to the legacy
+population and is not half-entered.
 
 Legacy entries are index acts only: no record's bytes
 are read for anything but key recovery, and no record is
@@ -24,7 +41,8 @@ ever written (C089-17). Appends go through
 `run_records.append_act`, so the fold's refusals bind
 this tool as they bind every writer; a second run over a
 completed index appends nothing (idempotent — entered
-ids are skipped by name).
+ids are skipped by name, departed generations already
+accounted are skipped likewise).
 
 Usage (from the repo root):
 
@@ -56,6 +74,16 @@ from glossa_lab import run_records as rr  # noqa: E402
 STORE_REL = "glossa-indus/ledger/runs"
 CANONICAL_REL = "glossa-indus/ledger/settling-canonical.json"
 INDEX_NAME = "run-index.jsonl"
+
+#: The `ref` a builder-appended departure act carries:
+#: the act that ordered the accounting is this
+#: completion pass itself, under the run-defs v2
+#: amendment of record.
+DEPARTURE_REF = (
+    "tools/ledger/build_legacy_index.py completion pass "
+    "(run-defs v2 departed-generation accounting, "
+    "amendment record 2026-11-05)"
+)
 
 
 def _git(root: Path, *args: str) -> str:
@@ -166,21 +194,60 @@ def canonical_event_act(index: int, event: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def build_legacy_acts(root: Path) -> list[dict[str, Any]]:
-    """The legacy entry acts the settling store's index
-    still lacks, in enumeration order: store generations
-    first (first-appearance order), then the canonical
-    re-derivation events. Entered ids are skipped by
-    name, so the list is empty over a completed index."""
+def build_legacy_acts(
+    root: Path,
+) -> tuple[list[dict[str, Any]], list[str]]:
+    """The acts the settling store's index still lacks,
+    in enumeration order: store generations first
+    (first-appearance order), then the canonical
+    re-derivation events — plus the names of the
+    post-spec records the history pass skipped-with-
+    record. Entered ids are skipped by name, so both
+    lists are empty over a completed index.
+
+    The population rule is run-defs v2 §7.2's: an
+    entered generation that has departed gains a
+    `departure` act (unless already accounted, on its
+    entry or by a departure act); an unentered
+    headerless record is legacy population and is
+    entered; an unentered record carrying a run header
+    is a post-spec record, skipped-with-record and
+    never refused on."""
     store = root / STORE_REL
     index_path = store / INDEX_NAME
-    entered: set[str] = set()
-    if index_path.is_file():
-        entered = set(rr.fold_index(index_path).entries)
+    folded = (
+        rr.fold_index(index_path)
+        if index_path.is_file()
+        else rr.IndexState()
+    )
+    entered = set(folded.entries)
+    accounted = set(folded.departed)
     acts: list[dict[str, Any]] = []
+    skipped: list[str] = []
     for item in store_history(root):
         run_id = rr.legacy_run_id(item["name"])
         if run_id in entered:
+            if item["present"] or run_id in accounted:
+                continue
+            if folded.entries[run_id].get("superseded_by_commit"):
+                # Entered after departing: the entry
+                # itself carries the accounting.
+                continue
+            acts.append(
+                rr.departure_act(
+                    run_id,
+                    item["name"],
+                    superseded_by_commit=item[
+                        "superseded_by_commit"
+                    ],
+                    git_blob=item["git_blob"],
+                    blob_sha256=hashlib.sha256(
+                        item["blob"]
+                    ).hexdigest(),
+                    ref=DEPARTURE_REF,
+                )
+            )
+            accounted.add(run_id)
             continue
         try:
             record = json.loads(item["blob"].decode("utf-8"))
@@ -189,6 +256,11 @@ def build_legacy_acts(root: Path) -> list[dict[str, Any]]:
                 f"legacy recovery: historical record "
                 f"{item['name']!r} is not readable JSON: {exc}"
             ) from exc
+        if isinstance(record, dict) and "run" in record:
+            # A post-spec record: entered by its writer
+            # under its own run id, never legacy-derived.
+            skipped.append(item["name"])
+            continue
         act = rr.legacy_entry_for_record(item["name"], record)
         if not item["present"]:
             act["superseded_by_commit"] = item["superseded_by_commit"]
@@ -202,7 +274,7 @@ def build_legacy_acts(root: Path) -> list[dict[str, Any]]:
             act = canonical_event_act(idx, event)
             if act["run_id"] not in entered:
                 acts.append(act)
-    return acts
+    return acts, skipped
 
 
 def main() -> int:
@@ -222,7 +294,7 @@ def main() -> int:
     root = args.root.resolve()
     index_path = root / STORE_REL / INDEX_NAME
     try:
-        acts = build_legacy_acts(root)
+        acts, skipped = build_legacy_acts(root)
         if not args.dry_run:
             for act in acts:
                 rr.append_act(index_path, act)
@@ -231,6 +303,12 @@ def main() -> int:
         return 1
     state = rr.fold_index(index_path)
     for act in acts:
+        if act["act"] == "departure":
+            print(
+                f"departure {act['run_id']} — record "
+                "(departed, accounted)"
+            )
+            continue
         kind = (
             "record (standing)"
             if act["run_id"].startswith("legacy:")
@@ -243,6 +321,12 @@ def main() -> int:
             )
         )
         print(f"entry {act['run_id']} — {kind}")
+    for name in skipped:
+        print(
+            f"skip {name} — post-spec record (run header "
+            "present); entered by its writer, never "
+            "legacy-derived"
+        )
     print(
         f"legacy index: {len(acts)} act(s) "
         f"{'enumerated (dry run)' if args.dry_run else 'appended'}; "

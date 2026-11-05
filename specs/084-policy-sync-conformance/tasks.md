@@ -20,9 +20,31 @@
       (`files/2026-10-31-policy-sync-coverage.md`).
 - [ ] T009 PR merged on per-job CI green + delivery-checker
       RESOLVED (parent's act).
-- [ ] T010 (HELD follow-on) Fixtures + tests for the cloud
-      anonymous-surface copy when `frontend/src/cloud/` lands on
-      main (C084-8 activation).
-- [ ] T011 (owner-gated follow-on) Privacy / data-handling text
+- [x] T010 Fixtures + tests for the cloud anonymous-surface copy
+      (C084-8 activation). Condition met: `frontend/src/cloud/`
+      landed on main in PR #476 (2026-11-01). Activated on the
+      owner's approval act, 2026-11-05: fixture
+      `fixtures/cloud-anonymous-surface-copy.txt` (7 approved
+      strings; approval citations in its header — Spec 083
+      wireframe package PR #463; the 2026-10-31 parent decisions
+      on Phase 3 deviations 1 and 6, Spec 083 BUILD-RECORD) and
+      tests `test_cloud_anonymous_surface_copy_matches_fixture` +
+      `test_superseded_reset_link_promise_absent` in
+      `backend/tests/test_policy_sync_conformance.py`. FR-084-09
+      added; C084-8 recorded ACTIVATED in spec.md (the
+      aee-claims.json bundle stands as intaken, per the intake
+      discipline).
+- [x] T011 (owner-gated follow-on) Privacy / data-handling text
       for the app (inventory gap A4) — enters this regime when an
       owner-approved text exists.
+      Done 2026-11-05 under the owner's approval act of the same
+      day: the five [UNVERIFIED] items closed on the evidence in
+      the fixture header; the approved text fixtured
+      (fixtures/privacy-data-handling.txt) and served
+      (GET /api/v1/privacy + the SPA Privacy view); conformance
+      incl. absence checks under claim C084-12 (its record is
+      preserved in the T011 record for the intake act). Record:
+      records/t011-privacy-fixture-2026-11-05.md. The claim's
+      ledger intake is HELD on the named Spec 089 run-index
+      accounting gap recorded there; the ledger is untouched
+      by this change.

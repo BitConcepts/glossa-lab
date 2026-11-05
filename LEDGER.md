@@ -12899,5 +12899,95 @@ T059 proof list ready to run are in
 and the T053 checklist in
 `specs/083-cloud-edition/records/t053-tunnel-vpc-checklist.md`.
 
+## 2026-11-05 — Spec 084 C084-8 activation: cloud anonymous-surface copy fixtured + tested
+
+The last executable HELD claim of Spec 084 is activated on the
+owner's approval act of 2026-11-05 (T010). The activation
+condition was met when `feat/083-frontend` landed on main in
+PR #476 (2026-11-01), putting `frontend/src/cloud/pages.tsx`
+(login, glassbreak setup, invite acceptance) on main.
+
+Fixture `specs/084-policy-sync-conformance/fixtures/
+cloud-anonymous-surface-copy.txt` carries the seven
+claims-bearing strings of claim C084-8 — the invitation-only
+statement and the no-public-registration footer, the
+password-recovery posture, the setup audit-log statement, and
+the invite issued-address binding (label hint, issued-address
+hint, mismatch error). Provenance, cited in the fixture header:
+the Spec 083 wireframe package (merged PR #463) for the login
+lede, the footer, and the setup statement, carried verbatim by
+the landed source; the 2026-10-31 parent decisions on the
+Phase 3 flags (Spec 083 BUILD-RECORD) for the recovery posture
+(deviation 1: admin disable + re-invite is the designed
+recovery) and the issued-address binding (deviation 6, fix
+commit `667ef16c`; the label hint is quoted verbatim in that
+record). No copy was drafted for this fixture: every string is
+the landed text resting on one of those two records.
+
+Conformance: `test_cloud_anonymous_surface_copy_matches_fixture`
+and `test_superseded_reset_link_promise_absent` join
+`backend/tests/test_policy_sync_conformance.py` (the absence
+test guards the wireframe-01 reset-link sentence the posture
+decision superseded — verified absent from `frontend/src`
+before the guard was written). FR-084-09 added to the spec;
+C084-8 recorded ACTIVATED in spec.md. The claim's
+`aee-claims.json` entry stands as intaken — the bundle is the
+ledger's SHA-pinned source of record and is never edited
+after intake (the Spec 087–090 precedent); an edit was
+attempted in this landing's first enumeration and the ledger
+validator refused it (the falsifier trace broke), which is
+the machinery working as designed. Held
+claims remaining: C084-9 (tracker texts, artifact-owned source),
+C084-10 (llms.txt, owner-gated with the v10 act — approved
+2026-11-05, deposit pending), C084-11 (Help / AI-settings copy,
+no approval act). What this establishes: the repo's sources
+carry the approved copy; deployed-surface conformance remains a
+Spec 083 go-live-era check (T059 class) and is not claimed here.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-05 — Spec 084 T011: privacy / data-handling statement approved, fixtured, and served (gap A4 closed)
+
+The owner approved the 2026-10-31 draft privacy / data-handling
+statement on 2026-11-05 and directed closure of its five
+[UNVERIFIED] items. Closures: (1) contact address
+tristen@bitconcepts.tech, the program mailbox of record (owner
+default); (2) hosting-provider text set to the verified facts
+only — no Workers deployed on the account, the repo's Worker
+configuration enables no logging or measurement of its own,
+Cloudflare's own records governed by Cloudflare's terms (zone
+settings and Logpush not readable with the program's token,
+403); (3) Cloudflare Web Analytics VERIFIED ENABLED for the
+bitconcepts.tech zone (account read: auto_install, ruleset
+enabled, no host exclusions) and disclosed as such in §5;
+(4) retention stated as the owner's policy default — expired
+invitations and audit entries retained 12 months, an operator
+act, no purge code existing and the audit log append-only;
+(5) member export VERIFIED present (project JSON bundle,
+report downloads, corpus-text export) and stated as what
+exists. The approved text is the fixture
+`specs/084-policy-sync-conformance/fixtures/privacy-data-handling.txt`
+and is served by the app (`GET /api/v1/privacy` from
+`backend/glossa_lab/privacy_statement.py`; SPA Privacy view on
+the utility route `privacy`), under claim C084-12 with
+presence + absence conformance tests. The claim's ledger
+intake was executed and verified end-to-end on the branch
+(ledger 943 → 944, canonicals 6/6, pair refreshed
+byte-equal) and is HELD on a named Spec 089 machinery gap:
+a legacy run generation entered standing cannot be accounted
+as superseded after departing the store, no registered index
+act amends an entry, and the completion builder refuses over
+the current store — gate V11 leg (c) fails on exactly that
+accounting and nothing else (28 PASS / 1 FAIL / 1 NOT-RUN).
+The intake was reverted; the ledger is untouched by this
+change (943 lines,
+15a5fbad24f400631ace1ebc88bfb7712c9bf6f68fae23e56fedbcac5fd5a794).
+Full record:
+`specs/084-policy-sync-conformance/records/t011-privacy-fixture-2026-11-05.md`.
+No claim's status, stage, or score was changed by this
+landing; the standing position is unchanged — the Indus
+script is not deciphered.
+
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.

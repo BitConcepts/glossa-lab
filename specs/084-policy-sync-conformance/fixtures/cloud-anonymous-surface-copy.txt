@@ -1,0 +1,30 @@
+# FIXTURE — approved text under Spec 084 (POLICY-SYNC). Do not edit
+# without a recorded owner-approval act on the actual text
+# (FR-084-08); an unapproved fixture edit is itself a finding.
+# Activation: C084-8, owner-approved 2026-11-05. The activation
+# condition (frontend/src/cloud/ on main) was met when
+# feat/083-frontend landed in PR #476 (2026-11-01).
+# Approval: the Spec 083 wireframe package (merged PR #463) for the
+# login lede, the no-public-registration footer, and the setup
+# audit-log statement (wireframes 01-login.html, 03-glassbreak-
+# setup.html, carried verbatim by the landed source); the
+# 2026-10-31 parent decisions on the Phase 3 flags (Spec 083
+# BUILD-RECORD) for the password-recovery posture (deviation 1:
+# admin disable + re-invite is the designed recovery; the wireframe
+# 01 reset-link sentence it replaced is superseded and absence-
+# checked) and for the invite issued-address binding (deviation 6:
+# redemption bound to the issued address; the label hint below is
+# quoted verbatim in the BUILD-RECORD's fix record, commit
+# 667ef16c, landed in PR #476; wireframe 02's D-2 line as corrected
+# 2026-10-31). One approved string per line; each must appear
+# verbatim (modulo whitespace) in the surface.
+# Surface: frontend/src/cloud/pages.tsx (Spec 083 wireframes
+# 01/02/03: login, invite acceptance, glassbreak setup).
+# ---
+Glossa Lab is invitation-only. Sign in with the username and password you set when you accepted your invite.
+This site is deliberately not indexed by search engines, and there is no public registration — accounts are created from invite links only.
+Forgot your password? Ask an admin to disable and re-invite your account — passwords are never recoverable by email in this edition.
+Setup is part of the deployment record: its completion (not the code, not the password) is written to the audit log.
+— the address this invite was issued to
+This invite was issued to this address, so it can’t be changed here. If you need the invite at a different address, ask whoever invited you to send a fresh one to it.
+This invite was addressed to a different email address. Use the address the invite was sent to.

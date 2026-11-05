@@ -1,0 +1,101 @@
+Ledger gate — glossa-indus chain (Spec 086, Point 4)
+mode: full
+root: /home/hatch/workspace/glossa-run/privacy-clone
+ledger: glossa-indus/ledger/claims.jsonl — 944 lines, canonical sha256 6a997a31be478e33106c40753f90653c4155141324ee198904dc333e2ebda922
+definitions: matrix-defs v1 (the gate's registered copies); ledger schema: ledger-schema v1
+map definitions: map-defs v1 (the gate's registered copies)
+program-map definitions: program-map-defs v1 (the gate's registered copies)
+settling semantics: glossa-settle-1 (the gate's registered copies); canonicals: glossa-indus/ledger/settling-canonical.json
+run definitions: run-defs v1 (the gate's registered copies)
+falsifier coverage: 904 of 913 claim entries carry a falsifier (published on every gate run, C086-5) — by population: bundle 890/890, extracted 14/23
+checks:
+PASS V1 ledger validity — pinned schema, fingerprints (spec029-phase-i-v1), D-B uniqueness, field provenance, pointers (Stage 1 validator)
+  944 lines validate against ledger-schema v1; every fingerprint recomputes; no duplicates
+PASS V1 recorded source hashes — every sources[] and sidecar hash verifies (canonical hash)
+  1759 recorded hashes verified against the files on disk via ledger_intake.sha256_file
+PASS V2 count equivalence — claims by status: ledger == matrix
+  913 claims; counts equal
+PASS V2 count equivalence — claims by stage: ledger == matrix
+  913 claims; counts equal
+PASS V2 count equivalence — claims by population: ledger == matrix
+  913 claims; counts equal
+PASS V2 count equivalence — falsifier coverage block: ledger == matrix
+  matrix carries {'covered': 904, 'total': 913, 'by_population': {'extracted': {'covered': 14, 'total': 23}, 'bundle': {'covered': 890, 'total': 890}}}; recomputed {'covered': 904, 'total': 913, 'by_population': {'extracted': {'covered': 14, 'total': 23}, 'bundle': {'covered': 890, 'total': 890}}}
+PASS V2 count equivalence — claims by status: ledger == map header
+  map header carries {'contradicted': 4, 'draft': 889, 'partially_falsified': 1, 'partially_supported': 3, 'strongly_supported': 2, 'superseded': 1, 'unsupported': 1, 'untested': 12}
+  census: 913 claims counted across 8 statuses in the map header
+PASS V3 matrix recomputation — cells cell-for-cell (relation, citation ids, derivation rule id)
+  1436 cells recomputed from the ledger by the gate's own route; every cell equal
+PASS V3 matrix recomputation — rows, columns, coverage, as-of stamp, sign×sign block
+  rows, columns, coverage, the as-of stamp and the sign×sign block all equal the gate's recomputation
+PASS V4 relation-carrying citations — every citation ties under T1–T4 (incl. the numeric arm)
+  1436 matrix cells and 1436 map edges checked; 4309 citations required to carry their relation under T1–T4
+  numeric arm: 0 citations in the live population carry a measurement with a machine-readable bound (the arm is exercised on fixtures in the teeth battery)
+  map edge census: supports 1429, opposes 7, constrains 0
+  UNPROVEN on the live population: constrains map edges — 0 live instances (the class is empty in the artifact and says so; its teeth are fixtures in the battery)
+PASS V5 map recomputation — elements trace, embedded fields equal, loads block deep-equals the matrix's
+  1557 elements trace to ledger ids; loads block equal
+PASS V5 map recomputation — full artifact, the gate's own route (map-defs v1 copies)
+  every section of the map artifact equals the gate's recomputation from the ledger (header, elements, edges, loads, matrix, system, claims, settling)
+  census: 913 claim elements; column elements by class: studies 10, documents 316, research_checks 31, anchors 287, corpus_texts 0
+  census: 1436 map edges by relation: supports 1429, opposes 7, constrains 0; 913 per-claim records; 2 stored settling runs recomputed
+  UNPROVEN on the live population: corpus_texts elements — 0 live instances (the class exists in the definitions and carries no columns in v1; its teeth are fixtures in the battery)
+  UNPROVEN on the live population: constrains edges — 0 live instances (the relation class is empty in the generated matrix and the artifact says so; its teeth are fixtures in the battery)
+PASS V6 anchor shares — strict set recomputes under the recorded D-A rule (strict_sa_independent_hm)
+  strict anchors: 94 of 287; strict share 0.3275; validated-anchor share (the strict share, spec.md Point 5) 0.3275; rule version as recorded: Phase-109 follow-through (spec 007, 2026-10-06) applying the Phase-108 strict definition
+PASS V6 anchor shares — map header leg
+  map header shares equal the recomputation
+  census: the share is computed over 287 register records, 94 of them strict
+NOT-RUN V7 lossless regeneration
+  runs under --regen (the push CI job runs it)
+PASS V8 settling canonicals — scenarios reproduce under the gate's own glossa-settle-1 route
+  5 registered canonical scenarios reproduced exactly under the gate's own glossa-settle-1 route (S-R4 result blocks, field-for-field), over provenance pins that verify against this tree
+PASS V8 settling canonicals — the registered comparison reproduces
+  comparison incumbent-vs-full-register-over-subset reproduced exactly (claims compared, per-claim divergences, coverage deltas, signs assigned by one only, expectations named); the expectations note is checked on its mechanically derivable part — the absence clause matches verbatim; the registered note's remainder is brief-specific prose (FINDING-S4-1, stage record)
+PASS V8 scenario/verdict separation — the settling layer carries no reachable ledger write path
+  1 settling/scenario module(s) scanned; none imports or reaches a ledger write path (append_entry, write_ledger, write_matrix) — the settling layer's outputs are computed records, never ledger verdicts
+PASS V9 no write path — gate import hygiene
+  the gate modules import no write entry point (append_entry, write_ledger, write_matrix) and contain no write call
+PASS V9 no write path — settling/scenario import audit
+  1 settling/scenario module(s) audited; none imports a ledger write path
+PASS V9 no write path — matrix/map writer census
+  writers of the gated artifacts: ['backend/glossa_lab/gated_publish.py', 'backend/glossa_lab/map_generate.py', 'backend/glossa_lab/matrix_generate.py', 'backend/glossa_lab/program_map_generate.py', 'backend/glossa_lab/run_junction.py', 'backend/glossa_lab/run_records.py', 'backend/glossa_lab/settling.py']
+  readers (no write call): 9 module(s)
+  census scope: backend/glossa_lab, backend/scripts, tools (test code writes fixtures under tmp dirs by design and is not a publication path)
+PASS V10 program-map equivalence — taxonomy coverage and format (bidirectional)
+  taxonomy assigns all 91 spec directories exactly once (set equality both directions); every extracted document the ledger carries is assigned (7) and every assignment is carried; the format carries no standing-shaped key (defs §8)
+PASS V10 program-map equivalence — program-map.json byte-equals the gate's recomputation (program-map-defs v1 copies)
+  every claim node cites its governing ledger entry, every study node its spec directory, every extracted document its taxonomy assignment — the recomputation is built only from resolving citations, and the published bytes equal it exactly
+  census: 913 claim nodes by class {'closed_other': 1, 'negative': 6, 'open': 904, 'positive': 2}; 91 study nodes by class {'closed_other': 0, 'negative': 0, 'open': 62, 'positive': 0, 'unjudged': 28} (+1 restricted, name-only)
+  census: judgment calls 0; unjudged studies 28; falsifier coverage 904 of 913 claims
+  census: domain 'Anchors & readings': 13 studies, 0 claims (per-domain counts only; no cross-domain aggregate, C088-14)
+  census: domain 'Claim families by study line': 40 studies, 568 claims (per-domain counts only; no cross-domain aggregate, C088-14)
+  census: domain 'Contact zone & external corpora': 2 studies, 33 claims (per-domain counts only; no cross-domain aggregate, C088-14)
+  census: domain 'Program infrastructure': 19 studies, 187 claims (per-domain counts only; no cross-domain aggregate, C088-14)
+  census: domain 'Sign inventory & corpus': 17 studies, 125 claims (per-domain counts only; no cross-domain aggregate, C088-14)
+PASS V10 program-map equivalence — program-map-finds.json byte-equals the gate's recomputation (find-list equality)
+  find list equal: bundle_less_study 28, extracted_null_falsifier 9, restricted_node 1
+PASS V10 program-map equivalence — stamp freshness against the current ledger
+  stamp ledger hash, line count, latest entry date, and versions all equal the current ledger's
+PASS V10 program-map equivalence — program-map.html byte-equals the gate's recomputation (registered template copies)
+  the page is the gate's recomputed program-map.json and program-map-finds.json embedded verbatim in the gate's registered template copies; the published bytes equal that recomputation exactly, so the page can show nothing the recomputed data does not carry
+PASS V11 run-binding — producing bindings resolve (run-defs v1 copies)
+  assignment-sets.json → run settling-20261105T022535Z-a7b4e5 (its materialization record names this artifact and its current sha256)
+  glossa-indus/matrix/matrix.json → ledger build 6a997a31be47…
+  glossa-indus/map/map-data.json → ledger build 6a997a31be47…
+  glossa-indus/map/program-map.json → ledger build 6a997a31be47…
+  4 run record(s) carrying the run-defs v1 header validate under the gate's registered copies
+PASS V11 run-binding — no quarantined citation as verdict support
+  140 record file(s) scanned for run citations; 4 cited run(s) resolve to entered runs, none under quarantine
+  0 run(s) stand under open unexplained quarantine in the guarded indexes
+  2 run-id-shaped token(s) resolve to no entered run (named in test fixtures and stage records of the machinery's own tests): suite-20261104T133531Z-a11001, suite-20261104T134045Z-a22002 — reported, not failed: the gate fails quarantined citations; a citation's existence in a store is leg (a)'s and the reviewer's office
+FAIL V11 run-binding — store census and index integrity
+  the settling runs store: entry 'legacy:t405-full-register-over-full-frame--f8c86443e924' names record 't405-full-register-over-full-frame--f8c86443e924.json', which neither stands in the store nor is accounted as a superseded legacy record (a superseding commit and the record's blob hash named)
+  the settling runs store: entry 'legacy:t405-incumbent-over-full-frame--d9f73e4c4e4e' names record 't405-incumbent-over-full-frame--d9f73e4c4e4e.json', which neither stands in the store nor is accounted as a superseded legacy record (a superseding commit and the record's blob hash named)
+  the settling runs store: record file t405-full-register-over-full-frame--47287ced3385.json stands in the store with no index entry — the index's folded census does not cover the store (C089-17)
+  the settling runs store: record file t405-incumbent-over-full-frame--17334e1dfc65.json stands in the store with no index entry — the index's folded census does not cover the store (C089-17)
+PASS V11 run-binding — junction completeness
+  0 comparable pair(s) examined across the guarded stores (0 divergent); 14 entered run(s) are key-partial (legacy) and pair with nothing, per run-defs v1 §7.2
+  junction store: 0 report(s) on file (no junction has occurred under the machinery yet; the store comes into existence with the first filed report)
+summary: 28 PASS / 1 FAIL / 1 NOT-RUN
+RESULT: FAIL

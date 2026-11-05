@@ -465,9 +465,24 @@ def test_t104_dry_run_over_standing_store(tmp_path: Path):
     acts = rr.enumerate_legacy_entries(copy_dir)
     state = rr.fold_acts(acts)
 
-    assert len(acts) == len(standing)
-    assert state.census == len(standing)
-    for act, source in zip(acts, standing):
+    # The legacy population is the store's pre-spec
+    # records — the ones carrying no run header. Since
+    # Stage 2 the store also holds post-spec records
+    # under their own headers (the Stage 5 materializa-
+    # tion record is the first), which their own writers
+    # enter; the derivation enumerates exactly the
+    # pre-spec subset (restated at Stage 5, when that
+    # population first stood in the store).
+    pre_spec = [
+        path
+        for path in standing
+        if "run"
+        not in json.loads(path.read_text(encoding="utf-8"))
+    ]
+    assert pre_spec, "the standing store holds pre-spec records"
+    assert len(acts) == len(pre_spec)
+    assert state.census == len(pre_spec)
+    for act, source in zip(acts, pre_spec):
         record = json.loads(source.read_text(encoding="utf-8"))
         assert act["act"] == "entry"
         assert act["legacy"] is True

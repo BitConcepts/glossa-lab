@@ -453,18 +453,29 @@ def test_materialize_sets_becomes_a_run(tmp_path):
     root = _mirror_root(tmp_path, assignment_sets_writable=True)
     artifact_path = root / st.ASSIGNMENT_SETS_REL
     before = json.loads(artifact_path.read_text(encoding="utf-8"))
-    assert "producing_run" not in before
+    # The mirror's artifact is the standing one. Until
+    # Spec 089 Stage 5 it stood unbound, and this test
+    # asserted that premise; Stage 5 executed the binding
+    # materialize-sets run over it (the act V11's leg (a)
+    # verifies), so the invariant is restated to what it
+    # always meant: a materialize-sets execution (re)binds
+    # the artifact to ITS OWN run, and the content modulo
+    # the binding is the pure build's, unchanged.
+    before_unbound = dict(before)
+    before_unbound.pop("producing_run", None)
+    prior_run = (before.get("producing_run") or {}).get("run_id")
 
     proc = _cli(root, "materialize-sets")
     assert proc.returncode == 0, proc.stderr
 
     after = json.loads(artifact_path.read_text(encoding="utf-8"))
     run_id = after["producing_run"]["run_id"]
+    assert run_id != prior_run
     assert after["producing_run"]["surface"] == "settling"
     # Content is the pure build's; only the binding moved.
     stripped = dict(after)
     del stripped["producing_run"]
-    assert stripped == before
+    assert stripped == before_unbound
 
     records = _store_records(root)
     assert [p.name for p in records] == [f"{run_id}.json"]
@@ -518,8 +529,31 @@ def test_the_standing_store_index_covers_the_pair_by_legacy_entries():
     )
     state = rr.fold_index(index_path)
     record_files = sorted(store.glob("*.json"))
-    assert state.census == len(record_files)
-    for record_path in record_files:
+    # The folded census covers every standing record
+    # file (each is named by an entry act). Until Stage 5
+    # the census equaled the file count exactly; T501's
+    # legacy completion also enters the store's
+    # superseded generations and the canonical
+    # re-derivation events, so the census now exceeds the
+    # standing files — coverage, not equality, is the
+    # invariant (restated at Stage 5).
+    entered_records = {
+        entry["record"]
+        for entry in state.entries.values()
+        if "event" not in entry
+    }
+    assert {p.name for p in record_files} <= entered_records
+    # The legacy assertions below govern the pre-spec
+    # pair (the headerless records); post-spec records
+    # stand entered under their own minted ids.
+    pair_files = [
+        record_path
+        for record_path in record_files
+        if "run"
+        not in json.loads(record_path.read_text(encoding="utf-8"))
+    ]
+    assert pair_files, "the standing pre-spec pair stands in the store"
+    for record_path in pair_files:
         legacy_id = rr.legacy_run_id(record_path.name)
         assert legacy_id in state.entries
         entry = state.entries[legacy_id]

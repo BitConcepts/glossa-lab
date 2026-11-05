@@ -242,14 +242,17 @@ byte-identical (the fix registers the accounting; the
 first departure acts are appended by the intakes' own
 replays, in their own PRs).
 
-(d) **Full local enumeration.** [OUTPUT INSERTED AT
-LANDING — the full backend enumeration on this
-landing's tree, run from `backend/` with the phase392
-determinism test deselected by its plain nodeid
-(`tests/test_phase392_q2_gate.py::test_pipeline_deterministic_under_seed`);
-clean except the phase133 environmental baseline and
-the tray-teardown flake family. The run's summary line
-is quoted in the landing PR's body.]
+(d) **Full local enumeration.** Run on this landing's
+tree from `backend/`, with the phase392 determinism
+test deselected by its plain nodeid
+(`tests/test_phase392_q2_gate.py::test_pipeline_deterministic_under_seed`):
+**1 failed, 2712 passed, 108 skipped, 1 deselected** —
+the single failure is the phase133 environmental
+baseline (`test_phase133_stage0_inventory.py::
+test_builder_recomputation_skips_without_inputs`,
+which fails on this VM on pristine main as well); no
+tray-teardown flake fired this run. Nothing else
+failed or errored.
 
 *This does not establish:* that either held intake is
 now landed (each replays in its own PR, under its own

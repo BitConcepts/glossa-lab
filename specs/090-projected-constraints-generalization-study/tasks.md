@@ -139,7 +139,7 @@ into its stage report.
 
 ## Stage 2 — The G2 derivation (PR: feat/090-s2-g2-derivation)
 
-- [ ] **T201 — Candidate derivation(s).** Runs only on a frozen G1
+- [x] **T201 — Candidate derivation(s).** Runs only on a frozen G1
   document. For each candidate: the statement in D4's form (over the
   G1 projection's equivalence classes); the derivation chain, step by
   step from D1–D3 and the G1 document's definitions only; the
@@ -154,6 +154,21 @@ into its stage report.
   *This does not establish:* that any chain is sound — soundness is
   T202's audit, and a complete-looking chain is exactly what an audit
   exists to test.
+  *Completed (derivation) 2026-11-04:* `records/g2-derivation.md`,
+  derived against the frozen G1 document v1.1 (SHA-256 4f2018f4…,
+  recomputed and matched before deriving). Four candidates worked:
+  Candidate 1 (the non-certification condition) and Candidate 2
+  (the recorded-profile condition) carry complete chains, each with
+  its D4-form statement, step-by-step chain with premises cited,
+  counted form, D4 falsifier, bite statement, and a
+  derivation-provenance self-audit with its labeled boundaries;
+  Candidate 3 (register-certification over the unvalidated
+  readings) and Candidate 4 (standalone corpus regularities) are
+  recorded NOT DERIVED, each with its obstruction named (the bridge
+  premise G1 does not supply; the fitted-form refusal of C090-9).
+  Mechanical completeness per this task's acceptance holds on the
+  record's face. T202 — the audit by a worker other than the
+  deriver, which declares the G2 outcome — remains open.
 - [ ] **T202 — The derivation audit and the G2 outcome.** A worker
   other than the deriver re-walks every step of every candidate:
   premises traced to the G1 document or D1–D3 (a physics premise
@@ -171,6 +186,15 @@ into its stage report.
   condition important — the audit settles soundness and form; the
   outcome record (T301) states the bite plainly, including if it is
   small.
+  *Status 2026-11-04:* the audit's input has landed — the
+  derivation record of T201 (`records/g2-derivation.md`, on branch
+  `feat/090-s2-g2-derivation`), carrying two completed chains (each
+  with a derivation-provenance self-audit and labeled boundaries
+  for the audit to press) and two candidates recorded not derived
+  with their obstructions named. The audit itself, and the DERIVED
+  / NOT YET declaration on it, remain open: they are a worker
+  other than the deriver's act, per this task's text and the
+  plan's separation rule.
 
 ## Stage 3 — Outcome record + report (PR: feat/090-s3-outcome)
 

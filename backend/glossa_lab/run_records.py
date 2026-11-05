@@ -884,11 +884,20 @@ def enumerate_legacy_entries(
     store_dir: Path, *, surface: str = "settling"
 ) -> list[dict[str, Any]]:
     """Enumerate legacy entry acts over a run store's
-    standing records (sorted by filename). Read-only: the
-    records are opened, never written. In run-defs v1 the
-    settling store is the only store with a registered
-    recovery; other surfaces refuse until their adoption
-    stages register one."""
+    standing pre-spec records (sorted by filename). The
+    legacy population is the pre-spec records — the ones
+    carrying no run header (run-defs v1 §7.2); since
+    Stage 2 the store also holds post-spec records under
+    their own headers (scenario runs, materialization
+    records, absence records), which are entered by
+    their own writers and are never legacy-derived —
+    deriving a legacy id for one would double-enter it
+    (the population rule stated at Spec 089 Stage 5,
+    when the first materialization record landed in the
+    store). Read-only: the records are opened, never
+    written. In run-defs v1 the settling store is the
+    only store with a registered recovery; other surfaces
+    refuse until their adoption stages register one."""
     if surface != "settling":
         raise RunRecordError(
             f"no legacy recovery is registered for surface "
@@ -899,6 +908,8 @@ def enumerate_legacy_entries(
     seen: set[str] = set()
     for record_path in sorted(store.glob("*.json")):
         record = json.loads(record_path.read_text(encoding="utf-8"))
+        if isinstance(record, dict) and "run" in record:
+            continue  # a post-spec record: entered by its writer
         act = legacy_entry_for_record(record_path.name, record)
         if act["run_id"] in seen:
             raise RunRecordError(

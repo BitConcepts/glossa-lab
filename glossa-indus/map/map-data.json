@@ -64,7 +64,7 @@
    "settle_semantics": "glossa-settle-1",
    "matrix_sha256": "922fa0913ec30bf94f3137e6f74fb0316e40f5aefc50eb2ba12d0b3e0c518f57",
    "anchors_register_sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
-   "assignment_sets_sha256": "36bce404db20792826e7ffba220857c71d058423c8f8e47fca7aa900af27c5be",
+   "assignment_sets_sha256": "b1393b83f18054a6ca67c1a379ff71d455fa37301aee4c00bae9b9fae99ec2b0",
    "comparison_sha256": "1371c981ce4c9cd9721fbed3294aee82c2bc512d9b8293390a201cf3a935874b",
    "settling_canonical_sha256": "e9a7f5baf65f4733e3e5d05f8d9456b14bd6497c012922bcbdedf1675361e892"
   }
@@ -150648,7 +150648,7 @@
   "semantics": "glossa-settle-1",
   "assignment_sets": {
    "record": "glossa-indus/ledger/assignment-sets.json",
-   "sha256": "36bce404db20792826e7ffba220857c71d058423c8f8e47fca7aa900af27c5be",
+   "sha256": "b1393b83f18054a6ca67c1a379ff71d455fa37301aee4c00bae9b9fae99ec2b0",
    "register": {
     "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
     "sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",

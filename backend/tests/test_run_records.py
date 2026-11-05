@@ -555,6 +555,20 @@ def test_t104_dry_run_over_standing_store(tmp_path: Path):
 
     copy_dir = tmp_path / "runs"
     shutil.copytree(RUNS_STORE, copy_dir)
+    # The store's whole pre-spec population — the T405
+    # pair — departed the standing store at the Spec 093
+    # intake replay (2026-11-05), accounted by departure
+    # acts; restore its bytes from the preserved fixtures
+    # (tests/fixtures/legacy_t405_pair/) so the copy
+    # carries the store's full historical population.
+    fixtures = (
+        Path(__file__).resolve().parent / "fixtures" / "legacy_t405_pair"
+    )
+    for name in (
+        "t405-incumbent-over-full-frame--d9f73e4c4e4e.json",
+        "t405-full-register-over-full-frame--f8c86443e924.json",
+    ):
+        shutil.copyfile(fixtures / name, copy_dir / name)
     copied = sorted(p.name for p in copy_dir.iterdir())
     acts = rr.enumerate_legacy_entries(copy_dir)
     state = rr.fold_acts(acts)
@@ -566,14 +580,15 @@ def test_t104_dry_run_over_standing_store(tmp_path: Path):
     # tion record is the first), which their own writers
     # enter; the derivation enumerates exactly the
     # pre-spec subset (restated at Stage 5, when that
-    # population first stood in the store).
+    # population first stood in the store, and at the
+    # Spec 093 intake replay, when it departed).
     pre_spec = [
         path
-        for path in standing
+        for path in sorted(copy_dir.glob("*.json"))
         if "run"
         not in json.loads(path.read_text(encoding="utf-8"))
     ]
-    assert pre_spec, "the standing store holds pre-spec records"
+    assert pre_spec, "the restored store copy holds pre-spec records"
     assert len(acts) == len(pre_spec)
     assert state.census == len(pre_spec)
     for act, source in zip(acts, pre_spec):
@@ -602,10 +617,24 @@ def test_t104_dry_run_over_standing_store(tmp_path: Path):
     assert sorted(p.name for p in copy_dir.iterdir()) == copied
 
 
-def test_legacy_entries_fold_with_minted_runs():
+def test_legacy_entries_fold_with_minted_runs(tmp_path: Path):
     """The S2 refresh shape, at format level: a minted run
     supersedes a legacy entry, and the fold resolves both."""
-    copy_acts = rr.enumerate_legacy_entries(RUNS_STORE)
+    # The legacy population departed the standing store at
+    # the Spec 093 intake replay (2026-11-05); enumerate
+    # over a tmp store holding the pair's preserved fixture
+    # bytes (tests/fixtures/legacy_t405_pair/).
+    store = tmp_path / "runs"
+    store.mkdir()
+    fixtures = (
+        Path(__file__).resolve().parent / "fixtures" / "legacy_t405_pair"
+    )
+    for name in (
+        "t405-incumbent-over-full-frame--d9f73e4c4e4e.json",
+        "t405-full-register-over-full-frame--f8c86443e924.json",
+    ):
+        shutil.copyfile(fixtures / name, store / name)
+    copy_acts = rr.enumerate_legacy_entries(store)
     assert copy_acts
     legacy_id = copy_acts[0]["run_id"]
     minted = _minted_entry()

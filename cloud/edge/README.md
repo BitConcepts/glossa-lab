@@ -1,16 +1,19 @@
 # glossa-edge — the cloud edition perimeter (Spec 083, Step 1)
 
-A TypeScript Cloudflare Worker + Durable Object front, managed by
-wrangler. This is the only public surface of the Glossa Lab cloud
-edition: identity terminates here, and the container application
-behind it is reachable solely through this edge.
+A TypeScript Cloudflare Worker, managed by wrangler. This is the
+only public surface of the Glossa Lab cloud edition: identity
+terminates here, and the application behind it — the owner's
+desktop install (Spec 080 production), reached through a Workers
+VPC Service over a named Cloudflare Tunnel (Amendment 5) — is
+reachable solely through this edge.
 
 ```
 browser ──> Worker (src/worker.ts)          perimeter, session check
               │                              via D1 (src/session-store.ts)
-              └──> GlossaFront (src/front.ts)  one named Durable Object
-                     └──> container          the repo-root Dockerfile image,
-                                             single instance, port 8001
+              └──> GLOSSA_ORIGIN             Workers VPC Service binding
+                     └──> glossa-desktop     named Cloudflare Tunnel
+                            └──> desktop     the Spec 080 production
+                                             install, 127.0.0.1:8001
 ```
 
 ## What the Worker does (T009)
@@ -46,8 +49,8 @@ browser ──> Worker (src/worker.ts)          perimeter, session check
    | Route | Anonymous behavior |
    |---|---|
    | `/robots.txt` | Served by the edge, disallows all |
-   | `/login`, `/setup`, `/invite/*` | Forwarded to the container (public pages) |
-   | SPA shell assets (`/assets/*`, and a closed list of static extensions: js/css/svg/fonts/images/`webmanifest`) | Forwarded to the container — the shell carries no project data |
+   | `/login`, `/setup`, `/invite/*` | Forwarded to the origin (public pages) |
+   | SPA shell assets (`/assets/*`, and a closed list of static extensions: js/css/svg/fonts/images/`webmanifest`) | Forwarded to the origin — the shell carries no project data |
    | `/api/*` | **401** `{ "error": { "code": "authentication_required", … } }` |
    | Any other page (GET/HEAD) | **302** to `/login?next=<original path>` |
    | Any other route (non-GET) | **401** |
@@ -56,23 +59,28 @@ browser ──> Worker (src/worker.ts)          perimeter, session check
    dataset hydrates only after authentication — nothing content-bearing
    is served anonymously in any form.
 
-4. **Single-instance routing.** All container-bound traffic goes
-   through the one named `GlossaFront` instance, `glossa-lab`
-   (`wrangler.toml` caps the container at `max_instances = 1`). The
-   Durable Object is the serialization point in front of the single
-   container instance, matching the application's single-instance
-   design.
+4. **Single-origin routing (Amendment 5, T055).** All origin-bound
+   traffic goes through the one Workers VPC Service binding,
+   `GLOSSA_ORIGIN` (service `glossa-desktop-origin`), whose private
+   transport is the named tunnel `glossa-desktop` to the desktop's
+   127.0.0.1:8001. The tunnel publishes no hostname and no
+   application route — the binding is the only path. A failed origin
+   fetch (desktop offline, tunnel down) becomes the edge's own
+   noindex **503** error document carrying no project data, and
+   project-data responses (authenticated forwards, API responses)
+   are stamped `Cache-Control: no-store`. The `GlossaFront` Durable
+   Object and its container are retired from the production path.
 
-## Edge → container header contract
+## Edge → origin header contract
 
-The container trusts these headers **only** because the edge sets
+The origin trusts these headers **only** because the edge sets
 them: the Worker deletes every client-supplied `X-Glossa-*` header
-before forwarding, so a value on a container-bound request is the
+before forwarding, so a value on an origin-bound request is the
 edge's own assertion, never the client's.
 
 | Header | Present | Meaning |
 |---|---|---|
-| `X-Glossa-Service-Credential` | On **every** container-bound request | The per-deployment edge↔container service credential (FR-008). Value comes from the Worker secret `SERVICE_CREDENTIAL` (`wrangler secret put`), never from code or config. The container must refuse requests without it. |
+| `X-Glossa-Service-Credential` | On **every** origin-bound request | The per-deployment edge↔origin service credential (FR-008). Value comes from the Worker secret `SERVICE_CREDENTIAL` (`wrangler secret put`), never from code or config. The origin must refuse API requests without it (and does: `CloudScopeMiddleware`, T056). |
 | `X-Glossa-User-Id` | Authenticated requests only | The acting user's D1 `users.id`. The container stamps mutating records with it (FR-011). |
 | `X-Glossa-User-Name` | Authenticated requests only | The acting user's username, for attribution rendering (FR-011). |
 | `X-Glossa-Global-Type` | Authenticated requests only | One of `owner` / `admin` / `member` / `guest` (Amendment 1). |
@@ -80,7 +88,7 @@ edge's own assertion, never the client's.
 
 Anonymous pass-through (public pages/assets) carries the service
 credential and **no** identity headers: absence of `X-Glossa-User-Id`
-is how the container knows the request is anonymous and may serve only
+is how the origin knows the request is anonymous and may serve only
 the public surface.
 
 ## Step 2 — identity (T014–T017, T020–T022, T024)
@@ -88,7 +96,7 @@ the public surface.
 Identity logic lives behind the `IdentityStore` seam
 (`src/identity-store.ts`, D1 implementation + the interface the tests
 fake), with handlers in `src/identity.ts`. These routes are answered
-by the edge itself from D1 — never forwarded to the container:
+by the edge itself from D1 — never forwarded to the origin:
 
 | Route | Who | Behavior |
 |---|---|---|
@@ -179,9 +187,10 @@ timestamp on every row) for: `login_success`, `login_failure`,
 `workspace_matrix_changed`, `admin_api_denial` (every 401/403 the
 admin gate produces, and Guest-cap refusals), and
 `container_scope_denial` — when an authenticated request is proxied
-and the container answers 403/404 on a scoped route (`/api/*`,
+and the origin answers 403/404 on a scoped route (`/api/*`,
 `/workspaces/*`), the edge logs the denial with actor + route +
-status. There is no update or delete path for the audit log in any
+status. (The event name predates Amendment 5 and is kept: stored
+audit rows are append-only history.) There is no update or delete path for the audit log in any
 API, and the Step 1 triggers make that structural.
 
 **Credential separation (T024).** Tested in
@@ -215,15 +224,17 @@ authenticate.
   writes, and a functional unique index on `lower(username)` makes
   username uniqueness case-insensitive structurally.
 
-No real D1 database is created by this step — migrations are files
-only until the deploy workflow applies them.
+The production D1 database `glossa-identity` was created on
+2026-11-05 in the go-live sequence (its id is committed in
+`wrangler.toml`); the migrations above are applied to it by the
+deploy workflow before the Worker deploys.
 
 ## Configuration decisions (T012)
 
 - **Production only.** `wrangler.toml` defines exactly one deployment:
   name `glossa-edge`, custom domain `glossa.bitconcepts.tech`, D1
-  binding `DB` → `glossa-identity`, R2 binding `DATASETS` →
-  `glossa-datasets`. There are no `[env.*]` sections.
+  binding `DB` → `glossa-identity`, VPC binding `GLOSSA_ORIGIN` →
+  `glossa-desktop-origin`. There are no `[env.*]` sections.
 - **Ephemeral previews** are ad-hoc deploys under a throwaway name,
   used for verification and torn down after:
 
@@ -234,27 +245,30 @@ only until the deploy workflow applies them.
 
   A preview name has no custom domain; it answers on its
   workers.dev URL for the duration of the proof run only.
-- **Container definition.** `[[containers]]` points `image` at
-  `../../Dockerfile` — wrangler resolves the path relative to
-  `wrangler.toml`'s directory (`cloud/edge/`), i.e. the repository-root
-  Dockerfile, and builds with that directory as the build context.
-  `instance_type = "standard-1"`; `max_instances = 1` (correctness,
-  not sizing). `GlossaFront.defaultPort` is **8001**, the backend's
-  configured port — the Dockerfile must serve the app there.
-- **DO registration** uses the `[exports.GlossaFront]` block
-  (SQLite-backed Durable Object storage), the current wrangler
-  mechanism; it supersedes the legacy `[[migrations]]` array, which
-  cannot be combined with it.
-- **Placeholder database_id.** `wrangler.toml` carries the all-zeros
-  UUID until the real D1 database exists; the deploy workflow fails
-  closed while the placeholder stands (see the checklist below).
+- **Origin (Amendment 5).** The desktop application is the only
+  origin; the retired container image, the `GlossaFront` Durable
+  Object, and the R2 bundle store have no production role (T058 —
+  the config guards in `test/config-guards.test.ts` keep them out).
+  The bundle instead reaches the hosted origin as part of the
+  desktop dataset itself (the desktop sync + T057 reconciliation).
+- **Placeholder service_id.** `wrangler.toml` carries the all-zeros
+  UUID for `GLOSSA_ORIGIN` until the real VPC Service is registered
+  (T053); the deploy workflow fails closed while the placeholder
+  stands (see the checklist below). The D1 `database_id` is real
+  (created 2026-11-05).
 
 ## Deploy checklist (once the Cloudflare account gate clears)
 
+The account gate is the gate-2 scope set on the BitConcepts
+Cloudflare token (Workers/DNS/Tunnel/Connectivity scopes — see the
+T053 checklist in `specs/083-cloud-edition/records/`). With it:
+
 ```sh
 cd cloud/edge
-npx wrangler d1 create glossa-identity        # paste the returned id into wrangler.toml
-npx wrangler r2 bucket create glossa-datasets
+# D1: DONE 2026-11-05 — glossa-identity created, id in wrangler.toml.
+# Tunnel + VPC Service: per the T053 checklist (records the Tunnel ID
+# and VPC Service ID, never the token); paste the service id into
+# wrangler.toml's [[vpc_services]] block.
 npx wrangler secret put SERVICE_CREDENTIAL    # operator-generated value; never committed
 npm run db:migrate:remote                     # or let the workflow do it
 # then deploy via .github/workflows/deploy-cloud.yml (workflow_dispatch or a cloud-* tag)
@@ -266,20 +280,21 @@ npm run db:migrate:remote                     # or let the workflow do it
 npm install
 npm test          # vitest: perimeter, gating, header-contract, D1-store, config guards
 npm run typecheck
-npx wrangler dev  # local edge (needs Docker for the container; D1/R2 are local stand-ins)
+npx wrangler dev  # local edge (D1 is a local stand-in; the origin
+                  # binding needs a real account to resolve)
 npm run db:migrate:local
 ```
 
 The full local topology (edge + app + stand-ins) is the compose build
 in `cloud/docker-compose.yml`; see `cloud/README.md` for how the
-Step 3/5 proofs run against it.
+Step 3/5 proofs run against it. The compose build remains the local
+verification shape; production's origin is the desktop (Amendment 5).
 
 **Testing choice.** The unit tests use plain vitest with mocks rather
 than `@cloudflare/vitest-pool-workers`: the pool runs the Worker under
-workerd, but `GlossaFront` is a container-backed Durable Object whose
-lifecycle needs a Docker-backed runtime, so pool tests could not
-exercise the real front from this environment either. Phase 1's proofs
-therefore target the Worker's logic against its seams (a fake
-`SessionStore`, a fake Durable Object stub), and the integrated
-edge→container path is proven in Step 5 against the local
-production-shaped build and an ephemeral preview deployment.
+workerd, but the production origin binding resolves only against a
+real account, so pool tests could not exercise the real origin path
+from this environment either. The proofs therefore target the
+Worker's logic against its seams (a fake `SessionStore`, a fake
+origin binding), and the integrated edge→origin path is proven at
+go-live against the real route (T059).

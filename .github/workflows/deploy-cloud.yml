@@ -9,10 +9,18 @@ name: Deploy cloud edition (Spec 083)
 #
 # FAIL CLOSED: until the `cloud-production` GitHub environment carries
 # CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID (BitConcepts Cloudflare
-# account; the Workers Paid plan the container charges ride on is the
-# named external gate, plan Step 5e), every run stops at the gate step
-# with a clear message. That inert-until-gated state is intended: the
-# workflow ships ready, it does not ship live.
+# account), every run stops at the gate step with a clear message. The
+# token must carry the Amendment 5 go-live gate-2 scopes (Workers and
+# D1 deployment, DNS/Custom Domain configuration, Tunnel write, and
+# Connectivity Directory Admin + Bind) — a narrower token fails the
+# deploy steps themselves, by design. Further gates below refuse the
+# run while the wrangler config still carries a placeholder D1
+# database id or VPC service id. That inert-until-gated state is
+# intended: the workflow ships ready, it does not ship live.
+#
+# Amendment 5 shape: the surviving legs are the edge deploy (Worker +
+# Custom Domain + VPC binding) and the D1 migrations. There is no
+# container image, no bundle publish leg, and no other origin.
 
 on:
   workflow_dispatch:
@@ -34,7 +42,7 @@ permissions:
 
 jobs:
   deploy:
-    name: Deploy edge + container to production
+    name: Deploy edge to production
     runs-on: ubuntu-latest
     timeout-minutes: 45
     environment: cloud-production
@@ -60,8 +68,15 @@ jobs:
 
       - name: Gate — real D1 database id must be filled in
         run: |
-          if grep -q "00000000-0000-0000-0000-000000000000" cloud/edge/wrangler.toml; then
+          if grep -A3 'binding = "DB"' cloud/edge/wrangler.toml | grep -q "00000000-0000-0000-0000-000000000000"; then
             echo "::error::cloud/edge/wrangler.toml still carries the placeholder D1 database_id. Create the database once (wrangler d1 create glossa-identity) and commit the returned id first — see cloud/edge/README.md, Deploy checklist. Failing closed; nothing was deployed."
+            exit 1
+          fi
+
+      - name: Gate — real VPC service id must be filled in
+        run: |
+          if grep -A3 'binding = "GLOSSA_ORIGIN"' cloud/edge/wrangler.toml | grep -q "00000000-0000-0000-0000-000000000000"; then
+            echo "::error::cloud/edge/wrangler.toml still carries the placeholder VPC service_id for GLOSSA_ORIGIN. Register the glossa-desktop-origin VPC Service (T053 checklist) and commit the returned id first. Failing closed; nothing was deployed."
             exit 1
           fi
 
@@ -102,11 +117,11 @@ jobs:
             exit 1
           fi
 
-      # wrangler deploy builds the container image from the repo-root
-      # Dockerfile and pushes it to the Cloudflare container registry,
-      # then deploys the Worker + Durable Object. The runner's Docker
-      # is required for the image build.
-      - name: Deploy (container image build/push + wrangler deploy)
+      # wrangler deploy ships the Worker with its Custom Domain route
+      # and the GLOSSA_ORIGIN VPC binding (Amendment 5, T055). No
+      # image is built and nothing else is published: the application
+      # origin is the owner's desktop, reached through the tunnel.
+      - name: Deploy (wrangler deploy — Worker + Custom Domain + VPC binding)
         working-directory: cloud/edge
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

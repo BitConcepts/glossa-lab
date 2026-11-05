@@ -94,6 +94,21 @@ workspace role, or global Owner/Admin) — a Viewer-only or Guest actor
 cannot mutate global-class resources. The gap is recorded here, not
 papered over: these classes gain true workspace scope when their
 records gain a project linkage.
+
+Desktop hosted posture (Amendment 5, T056): the hosted edition's
+origin is this same application running as the owner's Spec 080
+desktop install, reached only through the edge (Workers VPC →
+Tunnel). In that posture the middleware is installed whenever a
+service credential is configured, but it engages ONLY on requests
+carrying edge provenance headers; every other request is local use
+and passes untouched. The credential resolves from the desktop
+install's protected credential storage (the settings keys store)
+when the environment does not carry it — T024's desktop-side storage
+leg. Host management (POST /api/v1/shutdown, /api/v1/env/*) is
+unreachable through the edge whatever the role. A request whose
+credential validated is marked ``state["edge_authenticated"]`` so
+ApiTokenMiddleware stands down for it; identity headers without a
+valid credential confer nothing.
 """
 
 from __future__ import annotations
@@ -105,6 +120,8 @@ import re
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Any
+
+from glossa_lab.config import cloud_mode_enabled
 
 PRIMARY_WORKSPACE_SLUG = "indus-script"
 _PRIMARY_PROJECT_ID = "indus_decipherment"
@@ -324,12 +341,47 @@ _GLOBAL_PREFIXES = (
 )
 
 
-class CloudScopeMiddleware:
-    """Pure-ASGI workspace-scope enforcement (cloud mode only).
+def expected_service_credential() -> str:
+    """The configured edge service credential, wherever it lives.
 
-    Installed by ``create_app`` only when ``GLOSSA_CLOUD=1``. See the
-    module docstring for the enforcement contract and the honest
-    per-class coverage table.
+    Resolution: the process environment first (the cloud image's
+    posture, FR-008); then the install's protected credential storage
+    — the settings keys store (``glossa_service_credential``) — which
+    is the desktop install's storage for it (Spec 083 T024/T056: the
+    desktop-side copy of the credential lives in protected storage on
+    the desktop, never in code, config files, or records). Returns
+    "" when no credential is configured anywhere.
+    """
+    env_value = os.environ.get(_SERVICE_CREDENTIAL_ENV, "").strip()
+    if env_value:
+        return env_value
+    try:
+        from glossa_lab.api.settings import get_key  # noqa: PLC0415
+
+        return (get_key("glossa_service_credential") or "").strip()
+    except Exception:
+        return ""
+
+
+# Host-management surface (Amendment 5, T056): reachable locally on
+# the desktop, NEVER through the edge, whatever the caller's role.
+# The cloud image unregisters these routers entirely; the desktop
+# keeps them for local use and this middleware denies them on the
+# edge path with the scoped 404.
+_HOST_MANAGEMENT_EXACT = {"/api/v1/shutdown"}
+_HOST_MANAGEMENT_PREFIXES = ("/api/v1/env/",)
+_HOST_MANAGEMENT_PATHS = ("/api/v1/env",)
+
+
+class CloudScopeMiddleware:
+    """Pure-ASGI workspace-scope enforcement.
+
+    Installed by ``create_app`` when ``GLOSSA_CLOUD=1`` (cloud image)
+    or when a service credential is configured (the desktop hosted
+    posture, Amendment 5 / T056 — where engagement is limited to
+    requests carrying edge provenance headers). See the module
+    docstring for the enforcement contract and the honest per-class
+    coverage table.
     """
 
     def __init__(self, app: Any) -> None:
@@ -345,7 +397,7 @@ class CloudScopeMiddleware:
         headers = Headers(scope=scope)
         path: str = scope.get("path", "")
         method: str = scope.get("method", "GET").upper()
-        expected_credential = os.environ.get(_SERVICE_CREDENTIAL_ENV, "").strip()
+        expected_credential = expected_service_credential()
         carries_edge_headers = any(
             key.startswith("x-glossa-") for key in headers
         )
@@ -353,7 +405,15 @@ class CloudScopeMiddleware:
         # Engagement rule (see module docstring): with no credential
         # configured and no edge headers present there is no edge in
         # front of this process — leave the request untouched.
-        if not expected_credential and not carries_edge_headers:
+        if cloud_mode_enabled():
+            if not expected_credential and not carries_edge_headers:
+                await self.app(scope, receive, send)
+                return
+        elif not (expected_credential and carries_edge_headers):
+            # Desktop hosted posture (Amendment 5, T056): engage ONLY
+            # on requests claiming edge provenance, and only while a
+            # service credential is configured. Every other request —
+            # all local Spec 082 use — passes through untouched.
             await self.app(scope, receive, send)
             return
 
@@ -379,6 +439,30 @@ class CloudScopeMiddleware:
                 await _send_json(
                     send, 401, b'{"detail":"authentication required"}'
                 )
+                return
+
+            # Edge-authenticated mark (T056): the credential compared
+            # successfully above, so this request provably arrived
+            # through the edge. ApiTokenMiddleware stands down for
+            # such requests — the edge terminates sessions and its
+            # forwards carry no Bearer token by design. Identity
+            # headers WITHOUT a valid credential never reach here
+            # with the mark (the credential check above refused them,
+            # or no credential is configured and no mark is set).
+            presented_credential = headers.get("x-glossa-service-credential", "")
+            if expected_credential and hmac.compare_digest(
+                presented_credential, expected_credential
+            ):
+                scope["state"]["edge_authenticated"] = True
+
+            # ── Host management (T056): unreachable through the edge
+            # whatever the caller's role — scoped 404, as if absent.
+            if (
+                path in _HOST_MANAGEMENT_EXACT
+                or path in _HOST_MANAGEMENT_PATHS
+                or path.startswith(_HOST_MANAGEMENT_PREFIXES)
+            ):
+                await _send_json(send, 404, _SCOPED_404_BODY)
                 return
 
             # ── Terminal gating (D-5): global Owner/Admin only.

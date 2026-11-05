@@ -39,6 +39,12 @@ record and appends a `supersedes` act naming the record
 it re-derives (the superseded record stays in the store),
 and an execution that refuses or crashes writes an
 absence record stating the absence instead of a result.
+Since Spec 089 Stage 3 the run ends with the automatic
+junction trigger: the new record is scanned against its
+comparable predecessors in the index
+(`tools/ledger/run_junction.py`), and a divergent rerun
+produces its junction report (+ quarantine, if
+unexplained) in the same invocation.
 
 `compare` prints the dual-run comparison record for two
 stored run records (semantics §7); it writes nothing.
@@ -71,6 +77,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "backend"))
 
+from glossa_lab import run_junction as rj
 from glossa_lab import run_records as rr
 from glossa_lab import settling as st  # noqa: E402
 
@@ -181,6 +188,60 @@ def _append_supersession(root: Path, record: dict) -> str | None:
         },
     )
     return predecessor
+
+
+def _junction_scan(root: Path, run_id: str) -> bool:
+    """The automatic junction trigger (Spec 089 Stage 3,
+    T303): scan the run just entered against its
+    comparable predecessors in the index. A divergent
+    rerun produces its junction report (+ quarantine,
+    if unexplained) in the same invocation that created
+    the run; an identical rerun reports the pair
+    identical and writes nothing. Returns False when the
+    scan itself refuses — named on stderr; the run's
+    record and entry stand either way, and the gate's
+    scan (Stage 5) is the backstop."""
+    try:
+        outcome = rj.scan_store(
+            root / st.RUN_STORE_REL,
+            rj.junctions_path(root),
+            only_run_id=run_id,
+        )
+    except (rr.RunRecordError, OSError,
+            json.JSONDecodeError) as exc:
+        print(
+            f"junction scan refused for run {run_id}: "
+            f"{exc}",
+            file=sys.stderr,
+        )
+        return False
+    for pair in outcome["pairs"]:
+        runs = pair["runs"]
+        other = (
+            runs[0]["run_id"]
+            if runs[1]["run_id"] == run_id
+            else runs[1]["run_id"]
+        )
+        disposition = pair["disposition"]
+        if disposition == "identical":
+            print(
+                f"junction scan: {run_id} vs {other}: "
+                "identical"
+            )
+        elif disposition == "explained-by-named-difference":
+            print(
+                f"junction scan: {run_id} vs {other}: "
+                "explained-by-named-difference "
+                f"(junction {pair['junction_id']})"
+            )
+        elif disposition == "unexplained":
+            print(
+                f"junction scan: {run_id} vs {other}: "
+                "UNEXPLAINED — junction "
+                f"{pair['junction_id']} written; both "
+                "runs quarantined pending adjudication"
+            )
+    return True
 
 
 def _write_absence(
@@ -445,7 +506,7 @@ def _execute_run(root: Path, args: argparse.Namespace) -> int:
         header["finished"] = rr.iso_stamp(datetime.now(UTC))
         path = st.write_run_record(root, record)
     except st.SettlingError as exc:
-        _write_absence(
+        absence_path = _write_absence(
             root,
             run_id=run_id,
             started=started,
@@ -457,10 +518,12 @@ def _execute_run(root: Path, args: argparse.Namespace) -> int:
             detail=str(exc),
             code_version=code_version,
         )
+        if absence_path is not None:
+            _junction_scan(root, run_id)
         print(f"SETTLING REFUSED: {exc}", file=sys.stderr)
         return 1
     except Exception as exc:  # a crash mid-execution
-        _write_absence(
+        absence_path = _write_absence(
             root,
             run_id=run_id,
             started=started,
@@ -472,9 +535,13 @@ def _execute_run(root: Path, args: argparse.Namespace) -> int:
             detail=f"{type(exc).__name__}: {exc}",
             code_version=code_version,
         )
+        if absence_path is not None:
+            _junction_scan(root, run_id)
         raise
     _append_entry(root, record)
     superseded = _append_supersession(root, record)
+    if not _junction_scan(root, run_id):
+        return 1
     print(f"wrote run record {path.relative_to(root)}")
     if superseded is not None:
         print(

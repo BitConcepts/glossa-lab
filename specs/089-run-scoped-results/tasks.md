@@ -55,7 +55,7 @@ into its stage report.
 
 ## Stage 1 — run-defs v1, run record, run index (PR: feat/089-s1-run-defs)
 
-- [ ] **T101 — run-defs v1 registered.** `glossa-indus/ledger/
+- [x] **T101 — run-defs v1 registered.** `glossa-indus/ledger/
   RUN-DEFINITIONS.md`: closed surface list + the result-bearing test;
   run-id format and minting rule (D-089-1); run-record header (incl. the
   absence block); run-key v1 with the constitutive set of D-089-4;
@@ -69,7 +69,7 @@ into its stage report.
   to the owner).
   *This does not establish:* that the key's constitutive set is right —
   only that it is the ratified one, registered where amendments must go.
-- [ ] **T102 — Run-record + index library.** `backend/glossa_lab/
+- [x] **T102 — Run-record + index library.** `backend/glossa_lab/
   run_records.py`: id minting; header construction/validation per
   surface; index act application (append + fold) for entry / supersedes
   / quarantine / adjudication acts; legacy id derivation. Claims:
@@ -77,7 +77,7 @@ into its stage report.
   **test** (the teeth of T103 pass against this library).
   *This does not establish:* that any surface uses it yet — adoption is
   S2–S4; this task proves the formats and the fold.
-- [ ] **T103 — Library teeth.** Tests: 10,000 same-second mints unique
+- [x] **T103 — Library teeth.** Tests: 10,000 same-second mints unique
   and format-conformant; header validation refuses a missing key
   component per surface and an absence block with an unregistered kind;
   index fold applies supersede/quarantine/adjudicate sequences in act
@@ -86,7 +86,7 @@ into its stage report.
   C089-2, C089-9. Acceptance: **test**.
   *This does not establish:* behaviour over real stores — that is T104's
   dry-run and S2's adoption.
-- [ ] **T104 — Dry-run index over the standing store.** On a tmp copy of
+- [x] **T104 — Dry-run index over the standing store.** On a tmp copy of
   `glossa-indus/ledger/runs/`: the fold enumerates exactly the 2 standing
   records under legacy ids, with the recoverable key components
   (semantics, candidate, pins) and the `legacy — key partial` label (no

@@ -160,7 +160,8 @@ def test_gate_passes_clean_tree():
     assert report.ok, report.render()
     names = [c.name for c in report.checks]
     for cls in (
-        "V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10"
+        "V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10",
+        "V11",
     ):
         assert any(n.startswith(cls) for n in names), cls
     v4 = _check(report, "V4 relation-carrying")
@@ -790,8 +791,31 @@ def map_scratch(scratch: Path) -> Path:
         shutil.copyfile(ROOT / rel, dst)
     runs_dst = root / lg.RUNS_REL_DIR
     runs_dst.mkdir(parents=True, exist_ok=True)
-    for f in sorted((ROOT / lg.RUNS_REL_DIR).glob("*.json")):
-        shutil.copyfile(f, runs_dst / f.name)
+    # The whole store closure, not just its *.json records:
+    # this fixture predates Spec 089 S2, which added
+    # run-index.jsonl to the store, and the *.json glob was
+    # never widened — so the scratch tree carried the run
+    # records without the index that enters them. No gate
+    # leg read the index in a scratch tree until V11
+    # (Spec 089 S5), whose legs (a) and (c) failed on
+    # exactly that omission (PR #521, CI run 41957645343).
+    # The gate is right — a store whose records stand
+    # without their covering index is non-conforming — so
+    # the copy is repaired, not the legs.
+    for f in sorted((ROOT / lg.RUNS_REL_DIR).iterdir()):
+        if f.is_file():
+            shutil.copyfile(f, runs_dst / f.name)
+    # The junction store likewise, when the real tree has
+    # one (it comes into existence with the first filed
+    # report): leg (d) reads it from the tree root, and a
+    # records-only copy would lose it the same way.
+    junctions_src = ROOT / lg.RUN_JUNCTIONS_REL
+    if junctions_src.is_dir():
+        junctions_dst = root / lg.RUN_JUNCTIONS_REL
+        junctions_dst.mkdir(parents=True, exist_ok=True)
+        for f in sorted(junctions_src.iterdir()):
+            if f.is_file():
+                shutil.copyfile(f, junctions_dst / f.name)
     return root
 
 
@@ -1330,3 +1354,346 @@ def test_teeth_v9_census_catches_an_unregistered_program_map_writer(
     census = _check(report, "V9 no write path — matrix/map writer census")
     assert census.status == "FAIL"
     assert "rogue_pm_writer.py" in "\n".join(census.evidence)
+
+
+# ---------------------------------------------------------------------------
+# Spec 089 Stage 5 — V11 (run-binding) teeth (T502, T503)
+#
+# The fixture is a self-contained run layer on a tmp root:
+# a settling store holding two comparable scenario runs
+# and one materialization run, the assignment-sets
+# artifact bound to the materialization run, and a spec
+# records directory (the citation store) whose stage
+# record cites the first run. Seeded means seeded: each
+# case mutates its own copy of the fixture, never the
+# tree, and each failure must name its V11 leg while the
+# other legs stay green.
+
+import hashlib  # noqa: E402
+
+from glossa_lab import run_records as rr  # noqa: E402
+
+_V11_RUN_A = "settling-20261105T000000Z-aaaaaa"
+_V11_RUN_B = "settling-20261105T010000Z-bbbbbb"
+_V11_MAT = "settling-20261105T020000Z-cccccc"
+_V11_JUNCTION = "junction-20261105T030000Z-dddd44"
+
+
+def _v11_key(command: str) -> dict:
+    return {
+        "surface": "settling",
+        "command": command,
+        "tool_version": "1",
+        "input_pins": {"ledger": "fixture-pin"},
+        "seed": "no-seed",
+        "code_version": "fixture-sha",
+        "environment_class": "vm/linux",
+    }
+
+
+def _v11_record(run_id: str, command: str, result: dict) -> dict:
+    return {
+        "run": {
+            "run_id": run_id,
+            "surface": "settling",
+            "tool": "fixture tool",
+            "tool_version": "1",
+            "started": "2026-11-05T00:00:00Z",
+            "finished": "2026-11-05T00:00:01Z",
+            "key": _v11_key(command),
+            "determinism_class": "deterministic",
+        },
+        "result": result,
+    }
+
+
+def _v11_write(path: Path, payload: dict) -> bytes:
+    data = (
+        json.dumps(payload, ensure_ascii=False, indent=1) + "\n"
+    ).encode("utf-8")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(data)
+    return data
+
+
+def _v11_tree(tmp_path: Path, *, divergent: bool = False) -> Path:
+    """The conforming fixture. With `divergent`, the two
+    scenario runs' result blocks differ (a comparable
+    divergent pair with no junction report yet)."""
+    root = tmp_path / "v11-tree"
+    store = root / "glossa-indus" / "ledger" / "runs"
+    store.mkdir(parents=True)
+    result_a = {"verdict": "same", "assignments": [1, 2]}
+    result_b = (
+        {"verdict": "DIFFERENT", "assignments": [1, 2]}
+        if divergent
+        else {"verdict": "same", "assignments": [1, 2]}
+    )
+    _v11_write(store / f"{_V11_RUN_A}.json", _v11_record(_V11_RUN_A, "run t405", result_a))
+    _v11_write(store / f"{_V11_RUN_B}.json", _v11_record(_V11_RUN_B, "run t405", result_b))
+    artifact = {
+        "artifact": "glossa-settle-1 assignment sets of record",
+        "producing_run": {
+            "run_id": _V11_MAT,
+            "surface": "settling",
+            "command": "materialize-sets",
+        },
+        "sets": [],
+    }
+    artifact_bytes = _v11_write(
+        root / "glossa-indus" / "ledger" / "assignment-sets.json",
+        artifact,
+    )
+    mat_record = _v11_record(
+        _V11_MAT,
+        "materialize-sets",
+        {
+            "materialized": "glossa-indus/ledger/assignment-sets.json",
+            "artifact_sha256": hashlib.sha256(artifact_bytes).hexdigest(),
+            "producing_run": _V11_MAT,
+        },
+    )
+    _v11_write(store / f"{_V11_MAT}.json", mat_record)
+    acts = [
+        {
+            "act": "entry",
+            "run_id": run_id,
+            "record": f"{run_id}.json",
+            "key": _v11_key(command),
+        }
+        for run_id, command in (
+            (_V11_RUN_A, "run t405"),
+            (_V11_RUN_B, "run t405"),
+            (_V11_MAT, "materialize-sets"),
+        )
+    ]
+    (store / "run-index.jsonl").write_text(
+        "".join(
+            json.dumps(act, sort_keys=True) + "\n" for act in acts
+        ),
+        encoding="utf-8",
+    )
+    _v11_write(
+        root / "glossa-indus" / "ledger" / "settling-canonical.json",
+        {"artifact": "settling canonicals", "re_derivations": []},
+    )
+    records = root / "specs" / "900-fixture" / "records"
+    records.mkdir(parents=True)
+    (records / "stage-record.md").write_text(
+        f"# Fixture stage record\n\nSuite evidence: run {_V11_RUN_A}.\n",
+        encoding="utf-8",
+    )
+    return root
+
+
+def _v11_legs(report: lg.GateReport) -> dict[str, lg.Check]:
+    return {
+        c.name.split("—")[1].strip().split(" (")[0]: c
+        for c in report.checks
+        if c.name.startswith("V11 run-binding —")
+    }
+
+
+def _v11_assert_only_leg_fails(report: lg.GateReport, leg: str) -> None:
+    legs = _v11_legs(report)
+    assert set(legs) == {
+        "producing bindings resolve",
+        "no quarantined citation as verdict support",
+        "store census and index integrity",
+        "junction completeness",
+    }
+    for name, check in legs.items():
+        if name == leg:
+            assert check.status == "FAIL", f"{leg} should fail"
+        else:
+            assert check.status == "PASS", (
+                f"{name} should stay green: {check.evidence}"
+            )
+    assert not report.ok
+
+
+def test_v11_passes_a_conforming_run_layer(tmp_path):
+    root = _v11_tree(tmp_path)
+    report = lg.run_gate(root, scope={"V11"})
+    assert report.ok, report.render()
+    legs = _v11_legs(report)
+    assert all(c.status == "PASS" for c in legs.values())
+
+
+def test_v11_run_defs_copies_agree_with_the_library_copies():
+    """The same-motion discipline, pinned: the gate's
+    registered run-defs copies equal the tooling's."""
+    assert lg.GATE_RUN_DEFS_VERSION == rr.RUN_DEFS_VERSION
+    assert lg.RUN_DISPOSITIONS == rr.DISPOSITIONS
+    assert lg.RUN_CONSTITUTIVE_COMPONENTS == rr.CONSTITUTIVE_COMPONENTS
+    assert lg.RUN_KEY_COMPONENTS == rr.KEY_COMPONENTS
+    assert lg.RUN_ABSENCE_KINDS == rr.ABSENCE_KINDS
+    assert lg.RUN_ADJUDICATION_STATES == rr.ADJUDICATION_STATES
+    assert lg.RUN_LEGACY_LABEL == rr.LEGACY_LABEL
+    assert set(lg.RUN_SURFACES) == set(rr.SURFACES)
+
+
+def test_teeth_v11a_unbound_artifact_fails(tmp_path):
+    root = _v11_tree(tmp_path)
+    artifact_path = root / "glossa-indus" / "ledger" / "assignment-sets.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+    del artifact["producing_run"]
+    artifact_path.write_text(
+        json.dumps(artifact, indent=1) + "\n", encoding="utf-8"
+    )
+    report = lg.run_gate(root, scope={"V11"})
+    _v11_assert_only_leg_fails(report, "producing bindings resolve")
+    leg = _v11_legs(report)["producing bindings resolve"]
+    assert "no producing-run binding" in "\n".join(leg.evidence)
+
+
+def test_teeth_v11a_binding_naming_an_unknown_run_fails(tmp_path):
+    root = _v11_tree(tmp_path)
+    artifact_path = root / "glossa-indus" / "ledger" / "assignment-sets.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+    artifact["producing_run"]["run_id"] = "settling-20261105T090000Z-ffffff"
+    artifact_path.write_text(
+        json.dumps(artifact, indent=1) + "\n", encoding="utf-8"
+    )
+    report = lg.run_gate(root, scope={"V11"})
+    _v11_assert_only_leg_fails(report, "producing bindings resolve")
+    leg = _v11_legs(report)["producing bindings resolve"]
+    assert "does not resolve" in "\n".join(leg.evidence)
+
+
+def test_teeth_v11b_quarantined_citation_fails(tmp_path):
+    root = _v11_tree(tmp_path)
+    index_path = root / "glossa-indus" / "ledger" / "runs" / "run-index.jsonl"
+    with index_path.open("a", encoding="utf-8") as handle:
+        handle.write(
+            json.dumps(
+                {
+                    "act": "quarantine",
+                    "junction_id": _V11_JUNCTION,
+                    "run_ids": [_V11_RUN_A, _V11_RUN_B],
+                },
+                sort_keys=True,
+            )
+            + "\n"
+        )
+    report = lg.run_gate(root, scope={"V11"})
+    _v11_assert_only_leg_fails(
+        report, "no quarantined citation as verdict support"
+    )
+    leg = _v11_legs(report)["no quarantined citation as verdict support"]
+    assert _V11_RUN_A in "\n".join(leg.evidence)
+
+
+def test_teeth_v11c_dropped_record_fails_census(tmp_path):
+    root = _v11_tree(tmp_path)
+    (root / "glossa-indus" / "ledger" / "runs" / f"{_V11_RUN_B}.json").unlink()
+    report = lg.run_gate(root, scope={"V11"})
+    _v11_assert_only_leg_fails(report, "store census and index integrity")
+    leg = _v11_legs(report)["store census and index integrity"]
+    assert "neither stands in the store" in "\n".join(leg.evidence)
+
+
+def test_teeth_v11c_dangling_supersedes_link_fails(tmp_path):
+    root = _v11_tree(tmp_path)
+    index_path = root / "glossa-indus" / "ledger" / "runs" / "run-index.jsonl"
+    with index_path.open("a", encoding="utf-8") as handle:
+        handle.write(
+            json.dumps(
+                {
+                    "act": "supersedes",
+                    "run_id": _V11_RUN_A,
+                    "supersedes": "settling-20261105T090000Z-ffffff",
+                    "ref": "teeth fixture",
+                },
+                sort_keys=True,
+            )
+            + "\n"
+        )
+    report = lg.run_gate(root, scope={"V11"})
+    _v11_assert_only_leg_fails(report, "store census and index integrity")
+    leg = _v11_legs(report)["store census and index integrity"]
+    assert "unknown run id" in "\n".join(leg.evidence)
+
+
+def _v11_junction_report(
+    root: Path, disposition: str, *, quarantine: bool = False
+) -> None:
+    junctions = root / "glossa-indus" / "ledger" / "junctions"
+    _v11_write(
+        junctions / f"{_V11_JUNCTION}.json",
+        {
+            "junction_id": _V11_JUNCTION,
+            "kind": "junction report",
+            "runs": [
+                {"run_id": _V11_RUN_A},
+                {"run_id": _V11_RUN_B},
+            ],
+            "disposition": disposition,
+        },
+    )
+    if quarantine:
+        index_path = (
+            root / "glossa-indus" / "ledger" / "runs" / "run-index.jsonl"
+        )
+        with index_path.open("a", encoding="utf-8") as handle:
+            handle.write(
+                json.dumps(
+                    {
+                        "act": "quarantine",
+                        "junction_id": _V11_JUNCTION,
+                        "run_ids": [_V11_RUN_A, _V11_RUN_B],
+                    },
+                    sort_keys=True,
+                )
+                + "\n"
+            )
+
+
+def test_teeth_v11d_divergent_pair_without_a_report_fails(tmp_path):
+    root = _v11_tree(tmp_path, divergent=True)
+    report = lg.run_gate(root, scope={"V11"})
+    _v11_assert_only_leg_fails(report, "junction completeness")
+    leg = _v11_legs(report)["junction completeness"]
+    assert "no junction report" in "\n".join(leg.evidence)
+
+
+def test_teeth_v11d_out_of_vocabulary_disposition_fails(tmp_path):
+    root = _v11_tree(tmp_path, divergent=True)
+    _v11_junction_report(root, "benign-variation")
+    report = lg.run_gate(root, scope={"V11"})
+    _v11_assert_only_leg_fails(report, "junction completeness")
+    leg = _v11_legs(report)["junction completeness"]
+    assert "outside the registered vocabulary" in "\n".join(leg.evidence)
+
+
+def test_teeth_v11d_unexplained_without_quarantine_fails(tmp_path):
+    root = _v11_tree(tmp_path, divergent=True)
+    _v11_junction_report(root, "unexplained")
+    report = lg.run_gate(root, scope={"V11"})
+    _v11_assert_only_leg_fails(report, "junction completeness")
+    leg = _v11_legs(report)["junction completeness"]
+    assert "not quarantined" in "\n".join(leg.evidence)
+
+
+def test_v11d_explained_report_satisfies_a_divergent_pair(tmp_path):
+    root = _v11_tree(tmp_path, divergent=True)
+    _v11_junction_report(root, "explained-by-named-difference")
+    report = lg.run_gate(root, scope={"V11"})
+    assert report.ok, report.render()
+
+
+def test_v11d_unexplained_with_quarantine_passes_d_but_fails_b(tmp_path):
+    """The two legs look at the same junction from their
+    own sides: with the quarantine act appended, leg (d)
+    is satisfied — and the fixture's stage record, which
+    cites run A, now fails leg (b) for exactly that
+    reason. Both readings are the design working."""
+    root = _v11_tree(tmp_path, divergent=True)
+    _v11_junction_report(root, "unexplained", quarantine=True)
+    report = lg.run_gate(root, scope={"V11"})
+    legs = _v11_legs(report)
+    assert legs["junction completeness"].status == "PASS"
+    assert (
+        legs["no quarantined citation as verdict support"].status
+        == "FAIL"
+    )

@@ -512,6 +512,21 @@ def build_map(root: Path) -> MapBuild:
     loaded_runs = []
     for run_path in run_files:
         record = json.loads(run_path.read_text(encoding="utf-8"))
+        # The map carries scenario evaluation records. Since
+        # Spec 089 the run store also holds the other record
+        # kinds the run discipline writes there —
+        # materialization records (no candidate/scenario) and
+        # absence records (no result block) — store records
+        # under run-defs v1, not settling evaluations, and
+        # never map-carried (Spec 089 Stage 5, the two copies
+        # of this enumeration — here and the gate's — filtered
+        # in the same motion).
+        if not (
+            isinstance(record.get("candidate"), str)
+            and isinstance(record.get("scenario"), str)
+            and isinstance(record.get("result"), dict)
+        ):
+            continue
         loaded_runs.append((run_path, record))
     # Artifact order: the incumbent first, then the rest by
     # record id — the order the settling panel presents

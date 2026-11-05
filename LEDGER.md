@@ -12807,3 +12807,51 @@ and the map says so on its first screen. Full record:
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-05 — Spec 084 C084-8 activation: cloud anonymous-surface copy fixtured + tested
+
+The last executable HELD claim of Spec 084 is activated on the
+owner's approval act of 2026-11-05 (T010). The activation
+condition was met when `feat/083-frontend` landed on main in
+PR #476 (2026-11-01), putting `frontend/src/cloud/pages.tsx`
+(login, glassbreak setup, invite acceptance) on main.
+
+Fixture `specs/084-policy-sync-conformance/fixtures/
+cloud-anonymous-surface-copy.txt` carries the seven
+claims-bearing strings of claim C084-8 — the invitation-only
+statement and the no-public-registration footer, the
+password-recovery posture, the setup audit-log statement, and
+the invite issued-address binding (label hint, issued-address
+hint, mismatch error). Provenance, cited in the fixture header:
+the Spec 083 wireframe package (merged PR #463) for the login
+lede, the footer, and the setup statement, carried verbatim by
+the landed source; the 2026-10-31 parent decisions on the
+Phase 3 flags (Spec 083 BUILD-RECORD) for the recovery posture
+(deviation 1: admin disable + re-invite is the designed
+recovery) and the issued-address binding (deviation 6, fix
+commit `667ef16c`; the label hint is quoted verbatim in that
+record). No copy was drafted for this fixture: every string is
+the landed text resting on one of those two records.
+
+Conformance: `test_cloud_anonymous_surface_copy_matches_fixture`
+and `test_superseded_reset_link_promise_absent` join
+`backend/tests/test_policy_sync_conformance.py` (the absence
+test guards the wireframe-01 reset-link sentence the posture
+decision superseded — verified absent from `frontend/src`
+before the guard was written). FR-084-09 added to the spec;
+C084-8 recorded ACTIVATED in spec.md. The claim's
+`aee-claims.json` entry stands as intaken — the bundle is the
+ledger's SHA-pinned source of record and is never edited
+after intake (the Spec 087–090 precedent); an edit was
+attempted in this landing's first enumeration and the ledger
+validator refused it (the falsifier trace broke), which is
+the machinery working as designed. Held
+claims remaining: C084-9 (tracker texts, artifact-owned source),
+C084-10 (llms.txt, owner-gated with the v10 act — approved
+2026-11-05, deposit pending), C084-11 (Help / AI-settings copy,
+no approval act). What this establishes: the repo's sources
+carry the approved copy; deployed-surface conformance remains a
+Spec 083 go-live-era check (T059 class) and is not claimed here.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

@@ -14,14 +14,19 @@ failure means drift in one direction or the other:
   owner-approval act on the actual text, FR-084-08; without one it
   is itself a finding, never a reason to edit the surface to match).
 
-HELD claims (C084-8…C084-11) deliberately have NO tests here:
-their falsifiers cannot execute today (source not on main, source
-outside this repo, or no approval act exists to fixture). See
-specs/084-policy-sync-conformance/spec.md §HELD.
+HELD claims (C084-9…C084-11) deliberately have NO tests here:
+their falsifiers cannot execute today (source outside this repo,
+or no approval act exists to fixture). See
+specs/084-policy-sync-conformance/spec.md §HELD. C084-8 was HELD
+at the spec's landing and ACTIVATED 2026-11-05 (owner approval;
+its condition — frontend/src/cloud/ on main — was met when
+feat/083-frontend landed in PR #476, 2026-11-01); its tests are
+the C084-8 section below.
 """
 
 from __future__ import annotations
 
+import html
 import re
 from pathlib import Path
 
@@ -110,6 +115,35 @@ def test_tray_status_copy_matches_fixture():
     surface = _norm(_source("tray/glossa_tray/main.py"))
     for line in _fixture_lines("tray-status-copy.txt"):
         assert _norm(line) in surface, f"approved tray copy missing: {line!r}"
+
+
+# ── C084-8: the cloud anonymous-surface copy (FR-084-09) ────────────────────
+
+
+def test_cloud_anonymous_surface_copy_matches_fixture():
+    # The TSX source spells one apostrophe as an HTML entity
+    # (&rsquo;); the fixture carries the approved text as rendered,
+    # so the surface is entity-decoded before the comparison — the
+    # same literal-decode treatment as the edge robots body above.
+    surface = _norm(html.unescape(_source("frontend/src/cloud/pages.tsx")))
+    for line in _fixture_lines("cloud-anonymous-surface-copy.txt"):
+        assert _norm(line) in surface, f"approved cloud copy missing: {line!r}"
+
+
+def test_superseded_reset_link_promise_absent():
+    # Wireframe 01's login sentence promised a reset link ("Forgot
+    # your password? An admin can issue you a reset link from the
+    # user dashboard."). The 2026-10-31 parent decision on the
+    # Phase 3 flags superseded it: admin disable + re-invite is
+    # the designed recovery. The superseded promise must not
+    # return on any served frontend surface.
+    needle = "issue you a reset link"
+    front = _REPO / "frontend" / "src"
+    offenders = []
+    for path in _iter_source_files(front, (".ts", ".tsx", ".js", ".jsx")):
+        if needle in _norm(path.read_text(encoding="utf-8", errors="ignore")).lower():
+            offenders.append(str(path.relative_to(_REPO)))
+    assert not offenders, f"superseded reset-link promise found in: {offenders}"
 
 
 # ── C084-6: absence — the superseded "161" headline framing (FR-084-06) ─────

@@ -8,7 +8,7 @@ into its stage report.
 
 ## Stage 0 — Package adoption
 
-- [ ] **T001 — Package lands.** spec.md, claims.md, aee-claims.json,
+- [x] **T001 — Package lands.** spec.md, claims.md, aee-claims.json,
   plan.md, tasks.md, records/ (directive-and-grounding record, T002
   assessment + note) committed as `specs/089-run-scoped-results/` on
   `feat/089-spec-package`. Claims: package-level. Acceptance: **test**
@@ -18,7 +18,7 @@ into its stage report.
   reproducible from the repo at the package's base commit).
   *This does not establish:* that the package is approved — only that it
   is complete and internally consistent.
-- [ ] **T002 — AEE verification of the claims.** The C089 bundle run
+- [x] **T002 — AEE verification of the claims.** The C089 bundle run
   through the pinned assessor (aee 1.5.3, CI-faithful venv), exactly as
   Spec 088's T002: `aee validate` → `valid: 20 claim(s)`; `aee assess
   --no-ledger` → **outcome: iterate** (91 failure modes; draft cap and
@@ -212,7 +212,7 @@ into its stage report.
 
 ## Stage 5 — Gate class V11 + legacy index (PR: feat/089-s5-gate-v11)
 
-- [ ] **T501 — Legacy index completion.** Every run record that has
+- [x] **T501 — Legacy index completion.** Every run record that has
   ever stood in the settling store, enumerated from git history (the
   T403 originals; the 087, 088, and T004 adoption-refresh generations),
   receives its legacy index entry; entries for records no longer in the
@@ -224,7 +224,7 @@ into its stage report.
   *This does not establish:* that legacy results are bound — the label
   says the opposite, permanently; completeness of the census is the
   claim.
-- [ ] **T502 — Gate class V11.** `ledger_gate.py` gains V11
+- [x] **T502 — Gate class V11.** `ledger_gate.py` gains V11
   (run-binding) with the gate's own registered copies of run-defs v1's
   checkable rules: legs (a) producing-bindings resolve, (b) no
   quarantined citation as verdict support in the guarded set, (c)
@@ -238,7 +238,7 @@ into its stage report.
   *This does not establish:* that V11 makes run results true — it makes
   missing bindings, missing junctions, and forbidden citations
   unpublishable, which is the gate's whole office.
-- [ ] **T503 — V11 teeth.** Seeded cases on tmp copies, one per leg: an
+- [x] **T503 — V11 teeth.** Seeded cases on tmp copies, one per leg: an
   unbound artifact fails (a); a quarantined citation fails (b); a
   dropped record (census mismatch) and a dangling supersedes link fail
   (c); a divergent pair with no junction report, and a report with an
@@ -251,7 +251,7 @@ into its stage report.
 
 ## Closeout
 
-- [ ] **T601 — Closeout record.** Per-claim dispositions for C089-1..20
+- [x] **T601 — Closeout record.** Per-claim dispositions for C089-1..20
   (discharged / carried, with the evidence pointer for each); the run
   census at close (stores; records by surface; index acts by kind;
   junction reports by disposition; open quarantines — expected zero, or

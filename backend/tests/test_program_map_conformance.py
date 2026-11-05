@@ -37,8 +37,8 @@ PIN_CLAIMS_BY_CLASS = {
     "open": 903,
     "positive": 2,
 }
-PIN_STUDIES = 91
-PIN_UNJUDGED = 28
+PIN_STUDIES = 92
+PIN_UNJUDGED = 29
 PIN_FALSIFIER_PRESENT = 903
 PIN_NULL_FALSIFIER_EXTRACTED = 9
 PIN_MULTI_SPEC = 44
@@ -210,7 +210,7 @@ def test_taxonomy_hygiene_against_live_inputs():
     }
     assert domain_totals == {
         "Anchors & readings": 13,
-        "Claim families by study line": 40,
+        "Claim families by study line": 41,
         "Contact zone & external corpora": 2,
         "Program infrastructure": 19,
         "Sign inventory & corpus": 17,

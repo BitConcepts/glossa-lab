@@ -29,6 +29,21 @@ ledger intake/write entry point: it reads the ledger
 through `ledger_intake`'s read path only, and the gate's
 V9 audit (plus V8's reachability arm) verifies that.
 
+Spec 089 Stage 2 adds the run-scoped store discipline
+(run-defs v1, `glossa-indus/ledger/RUN-DEFINITIONS.md`):
+a stored run record carries the run-defs header under
+`run` — the execution-minted id, the comparability key
+whose input pins are the record's own pins block
+verbatim, the registered no-seed marker — and lands
+under a filename derived from its run id. The
+content-addressed overwrite is retired: a write whose
+target exists refuses. In-memory recomputations (the
+canonical oracle, verify-canonicals) carry ephemeral
+headers marked non-store and are never written. The
+CLI appends the run-index acts (entry, and a supersedes
+act when a run re-derives a stored record's basis);
+relations live in the index, never edited onto a record.
+
 The semantics' registered readings this module follows,
 stated where a reader might expect otherwise:
 
@@ -62,12 +77,17 @@ stated where a reader might expect otherwise:
 from __future__ import annotations
 
 import hashlib
+import importlib.metadata
 import json
+import os
+import sys
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
 
 from glossa_lab import ledger_intake as li
+from glossa_lab import run_records as rr
 
 # ---------------------------------------------------------------------------
 # Registered constants — this module's copies of
@@ -88,6 +108,8 @@ CORPUS_REL = "glossa-corpus/indus/exports/indus_research.jsonl"
 CANONICAL_REL = "glossa-indus/ledger/settling-canonical.json"
 ASSIGNMENT_SETS_REL = "glossa-indus/ledger/assignment-sets.json"
 RUN_STORE_REL = "glossa-indus/ledger/runs"
+RUN_INDEX_NAME = "run-index.jsonl"
+SETTLING_SURFACE = "settling"
 
 # The strict-anchor rule (semantics §1; Spec 029 D-A):
 # confidence in {HIGH, MEDIUM} AND the Phase-108 register
@@ -127,6 +149,80 @@ S_R2_VALUE_INDEPENDENCE = (
 class SettlingError(RuntimeError):
     """A run refuses: a defect in the record it was asked
     to settle over, named. Nothing is written."""
+
+
+# ---------------------------------------------------------------------------
+# Run identity (Spec 089 Stage 2): the run-defs v1 header
+# this surface's stored records carry (run-defs §§3–4).
+
+
+def tool_version() -> str:
+    """The executing tool's version, from the installed
+    package metadata — pyproject.toml is the version's
+    one home (governance H10). "unknown" where the
+    metadata is unavailable; recorded, never invented."""
+    try:
+        return importlib.metadata.version("glossa-lab")
+    except importlib.metadata.PackageNotFoundError:
+        return "unknown"
+
+
+def default_environment_class() -> str:
+    """The venue class token for an execution (run-defs
+    v1 §4): CI, the owner's desktop, a local macOS
+    machine, or the program's Linux VM. Recorded and
+    diffed, never constitutive."""
+    if os.environ.get("GITHUB_ACTIONS"):
+        return "ci/linux"
+    if sys.platform == "win32":
+        return "desktop/windows"
+    if sys.platform == "darwin":
+        return "local/macos"
+    return "vm/linux"
+
+
+def settling_run_header(
+    pins: dict[str, Any],
+    *,
+    command: str,
+    tool: str = "run_settling.py",
+    run_id: Optional[str] = None,
+    started: Any = None,
+    finished: Any = None,
+    ephemeral: bool = False,
+    code_version: str = "unknown",
+) -> dict[str, Any]:
+    """The run-defs v1 header for one settling execution.
+    The key's input pins are the run record's pins block
+    verbatim (§4.1); the surface has no seed, so the key
+    carries the registered no-seed marker (§4.2). The id
+    is the caller's execution-minted input (D-089-1);
+    with none supplied, one is minted at `started`. An
+    ephemeral header marks an in-memory recomputation:
+    non-store, and `write_run_record` refuses it."""
+    now = datetime.now(timezone.utc)
+    header = rr.build_header(
+        surface=SETTLING_SURFACE,
+        tool=tool,
+        tool_version=tool_version(),
+        command=command,
+        code_version=code_version,
+        input_pins=pins,
+        seed=rr.NO_SEED,
+        environment_class=default_environment_class(),
+        started=started if started is not None else now,
+        finished=finished if finished is not None else now,
+        run_id=run_id,
+    )
+    if ephemeral:
+        header["ephemeral"] = True
+    return header
+
+
+def run_index_path(root: Path) -> Path:
+    """The settling store's run index (run-defs v1 §7):
+    one append-only act file per store."""
+    return Path(root) / RUN_STORE_REL / RUN_INDEX_NAME
 
 
 # ---------------------------------------------------------------------------
@@ -630,11 +726,21 @@ def run_record(
     scope: list[Any],
     *,
     scenario: Optional[str] = None,
+    header: Optional[dict[str, Any]] = None,
 ) -> dict[str, Any]:
     """One settling run record (semantics §5, S-R4): the
-    header (label, semantics, candidate, scope, input
-    pins) over the evaluator's result block. Pure — the
-    record is returned, not written."""
+    run-defs header (under `run`), the header fields
+    (label, semantics, candidate, scope, input pins) and
+    the evaluator's result block. Pure — the record is
+    returned, not written.
+
+    The header is an input (Spec 089 Stage 2): the
+    executing tool mints the run id at execution start
+    and passes the header it built over the same state.
+    With no header supplied, the record carries an
+    ephemeral header — an in-memory recomputation
+    (verify-canonicals, the canonical oracle), marked
+    non-store and never written."""
     _validate_candidate(candidate)
     scope_pairs = _validate_scope(scope)
     scope_ids = {identity for _, identity in scope_pairs}
@@ -645,19 +751,41 @@ def run_record(
         and _sign_identity(item.get("sign")) is not None
         and _sign_identity(item.get("sign")) not in scope_ids
     ]
-    return {
-        "artifact": "settling run record",
-        "label": SETTLING_LABEL,
-        "semantics": SEMANTICS_VERSION,
-        "scenario": scenario,
-        "candidate": candidate["id"],
-        "candidate_provenance": candidate.get("provenance"),
-        "pins": state.pins,
-        "scope": [sign_str for sign_str, _ in scope_pairs],
-        "out_of_scope_assignments": out_of_scope,
-        "s_r2_value_independence": S_R2_VALUE_INDEPENDENCE,
-        "result": evaluate_candidate(state, candidate, scope),
-    }
+    if header is None:
+        header = settling_run_header(
+            state.pins,
+            command=(
+                "in-memory recomputation "
+                "(glossa_lab.settling.run_record)"
+            ),
+            tool="glossa_lab.settling",
+            ephemeral=True,
+        )
+    else:
+        rr.validate_header(header)
+        if header["key"]["input_pins"] != state.pins:
+            raise SettlingError(
+                "run header's input pins are not this "
+                "state's pins block — a header minted over "
+                "different inputs may not head this record"
+            )
+    record: dict[str, Any] = {"run": header}
+    record.update(
+        {
+            "artifact": "settling run record",
+            "label": SETTLING_LABEL,
+            "semantics": SEMANTICS_VERSION,
+            "scenario": scenario,
+            "candidate": candidate["id"],
+            "candidate_provenance": candidate.get("provenance"),
+            "pins": state.pins,
+            "scope": [sign_str for sign_str, _ in scope_pairs],
+            "out_of_scope_assignments": out_of_scope,
+            "s_r2_value_independence": S_R2_VALUE_INDEPENDENCE,
+            "result": evaluate_candidate(state, candidate, scope),
+        }
+    )
+    return record
 
 
 # ---------------------------------------------------------------------------
@@ -968,18 +1096,97 @@ def _write_verified(path: Path, payload: bytes) -> Path:
     return path
 
 
-def write_assignment_sets(root: Path) -> Path:
-    state = load_state(root)
+def stamp_assignment_sets_binding(
+    artifact: dict[str, Any], header: dict[str, Any]
+) -> dict[str, Any]:
+    """Name the artifact's producing run in its header
+    block (C089-7): the run id, the surface, and the
+    command that executed. The artifact's content is the
+    pure build's; the binding is the one execution-scoped
+    part, and it is what makes the materialization a run
+    instead of a silent rewrite."""
+    rr.validate_header(header)
+    if header.get("ephemeral"):
+        raise SettlingError(
+            "an ephemeral (in-memory) execution produces "
+            "no artifact — it may not stamp a binding"
+        )
+    artifact["producing_run"] = {
+        "run_id": header["run_id"],
+        "surface": SETTLING_SURFACE,
+        "command": header["key"]["command"],
+    }
+    return artifact
+
+
+def write_assignment_sets(root: Path, artifact: dict[str, Any]) -> Path:
+    """Write the assignment-sets artifact a materialize-
+    sets execution built and bound. An artifact carrying
+    no producing-run binding refuses: a materialization
+    that would land unbound is the in-place rewrite this
+    spec retires (C089-5, C089-7)."""
+    binding = artifact.get("producing_run")
+    if not isinstance(binding, dict) or not binding.get("run_id"):
+        raise SettlingError(
+            "assignment-sets artifact carries no "
+            "producing-run binding — a materialization "
+            "must name its run (C089-7)"
+        )
     return _write_verified(
-        Path(root) / ASSIGNMENT_SETS_REL, _dump(build_assignment_sets(state))
+        Path(root) / ASSIGNMENT_SETS_REL, _dump(artifact)
     )
 
 
+def materialization_record(
+    state: SettleState,
+    artifact: dict[str, Any],
+    header: dict[str, Any],
+    *,
+    artifact_sha256: str,
+) -> dict[str, Any]:
+    """The run record of one materialize-sets execution:
+    the run-defs header over a result block naming the
+    artifact written, its bytes' hash, and the sets it
+    carries. The record is written to the run store by
+    `write_run_record`, like any settling run."""
+    rr.validate_header(header)
+    if header["key"]["input_pins"] != state.pins:
+        raise SettlingError(
+            "run header's input pins are not this state's "
+            "pins block — a header minted over different "
+            "inputs may not head this record"
+        )
+    return {
+        "run": header,
+        "artifact": "settling materialization record",
+        "label": SETTLING_LABEL,
+        "semantics": SEMANTICS_VERSION,
+        "pins": state.pins,
+        "result": {
+            "materialized": ASSIGNMENT_SETS_REL,
+            "artifact_sha256": artifact_sha256,
+            "register": artifact["register"],
+            "sets": [
+                {
+                    "id": record["id"],
+                    "assignments": len(record["assignments"]),
+                }
+                for record in artifact["sets"]
+            ],
+            "out_of_frame_records": artifact["out_of_frame_records"],
+            "producing_run": artifact["producing_run"]["run_id"],
+        },
+    }
+
+
 def run_record_filename(record: dict[str, Any]) -> str:
-    """The run store's file name for a run record:
-    content-addressed from the record's candidate, scope,
-    and pins, so a rerun of one scenario overwrites its
-    own record and never another's."""
+    """RETIRED as a write path (Spec 089 Stage 2) — kept
+    importable for one release as a legacy-path resolver:
+    it computes the content-addressed filename the
+    pre-spec store discipline gave a run record, so a
+    legacy record's standing path can still be resolved
+    from its content. Nothing writes under this name any
+    more; stored records land under their run id."""
     basis = json.dumps(
         {
             "candidate": record["candidate"],
@@ -996,26 +1203,80 @@ def run_record_filename(record: dict[str, Any]) -> str:
     return f"{stem}--{digest}.json"
 
 
+def run_record_path(root: Path, record: dict[str, Any]) -> Path:
+    """The store path of a run record: the run store
+    directory under a filename derived from the record's
+    run id — never from its content (run-defs v1 §2)."""
+    header = record.get("run")
+    if not isinstance(header, dict) or not header.get("run_id"):
+        raise SettlingError(
+            "run record carries no run id — a record "
+            "without execution identity has no store path"
+        )
+    return Path(root) / RUN_STORE_REL / f"{header['run_id']}.json"
+
+
 def write_run_record(root: Path, record: dict[str, Any]) -> Path:
     """Write one run record into the run store
-    (`glossa-indus/ledger/runs/`) — the only write a
-    settling run performs (T403's store discipline)."""
-    target = Path(root) / RUN_STORE_REL / run_record_filename(record)
+    (`glossa-indus/ledger/runs/`) under its run id — the
+    only write a settling run performs on records
+    (T403's store discipline, Spec 089 Stage 2).
+
+    Refusals, all named: a record with no run header; an
+    ephemeral (in-memory) record — non-store records are
+    never written; a record failing run-defs validation;
+    and a target path that already exists — an id
+    collision is a named refusal, never an overwrite
+    (run-defs v1 §2; the store only grows, C089-5)."""
+    header = record.get("run")
+    if not isinstance(header, dict):
+        raise SettlingError(
+            "run record carries no run header — a record "
+            "without execution identity may not enter the "
+            "store (run-defs v1 §3)"
+        )
+    if header.get("ephemeral"):
+        raise SettlingError(
+            "run record is marked ephemeral (an in-memory "
+            "recomputation) — non-store records are never "
+            "written (Spec 089, Stage 2)"
+        )
+    try:
+        rr.validate_record(record)
+    except rr.RunRecordError as exc:
+        raise SettlingError(
+            f"run record fails run-defs validation: {exc}"
+        ) from exc
+    target = run_record_path(root, record)
+    if target.exists():
+        raise SettlingError(
+            f"run record write refused: {target} already "
+            "exists — an id collision is a named refusal, "
+            "never an overwrite (run-defs v1 §2)"
+        )
     return _write_verified(target, _dump(record))
 
 
 __all__ = [
     "SEMANTICS_VERSION",
     "SETTLING_LABEL",
+    "RUN_INDEX_NAME",
     "SettlingError",
     "SettleState",
     "load_state",
+    "tool_version",
+    "default_environment_class",
+    "settling_run_header",
+    "run_index_path",
     "evaluate_candidate",
     "run_record",
     "compare_runs",
     "build_assignment_sets",
+    "stamp_assignment_sets_binding",
+    "materialization_record",
     "load_assignment_sets",
     "write_assignment_sets",
     "write_run_record",
+    "run_record_path",
     "run_record_filename",
 ]

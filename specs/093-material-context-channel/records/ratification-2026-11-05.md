@@ -305,6 +305,177 @@ check is weakened to accommodate a hold), and it clears
 mechanically at the Appendix A intake replay, which is
 also when T003's tick lands.
 
+## Replay completion note (2026-11-05) — the hold is discharged
+
+The Appendix A replay has been executed on this branch,
+on top of origin/main at `a805e20b` (merged in as
+`1227669c`), after the Spec 089 departed-generation fix
+landed as **PR #532** (merge `a805e20b`; run-defs v2: the
+`departure` act, the builder completion repair, and gate
+V11 leg (c)'s second accounting form). T003 is ticked in
+this landing; its intake clause is complete. The intake
+was re-run through the sanctioned path, not restored
+from the preserved state:
+
+- **Intake.** `import_bundle.py --spec
+  specs/093-material-context-channel --date 2026-11-05`:
+  14 appended, 0 already canonical. Ledger 943 → **957
+  lines**, SHA-256 `e6525d04…`; the appended 14-line
+  block's SHA-256 is `79c84105…`, Appendix B's preserved
+  block hash; append-only verified byte-wise over the
+  first 943 lines. `validate_ledger.py`: **PASS** — 926
+  claim entries; does_not_establish coverage 755 of 926;
+  falsifier coverage 917 of 926.
+- **Settling chain.** `verify-canonicals` over the new
+  build, before any pin moved: **6/6 reproduce**. The pin
+  refresh (provenance + the comparison's input pin →
+  `e6525d04…`/957, `re_derivations[4]` appended) produces
+  a `settling-canonical.json` **byte-identical** to the
+  held execution's file. Both T405 scenarios re-executed
+  (same candidates, same 286-sign full-frame scope): runs
+  `settling-20261105T175248Z-22295e` (incumbent) and
+  `settling-20261105T175309Z-6f8dc4` (full-register);
+  both result blocks **byte-equal** to the superseded
+  records'; the index gained their entry acts and
+  `supersedes` acts naming the legacy pair. The departed
+  pair left the store under the D-D rule, preserved in
+  git history at exactly Appendix A's values (incumbent
+  blob SHA-256 `17d7dbae…`, git blob `49d06bd3…`;
+  full-register `176ca660…` / `f960d1b2…`). The Stage 4
+  comparison re-filed from the new pair is
+  **byte-identical** to the held filing, SHA-256
+  `908a0d74…`. Assignment sets re-materialized (run
+  `settling-20261105T175400Z-cacd3f`; sets unchanged —
+  incumbent 94, full-register 286, H003 out of frame).
+- **Regeneration.** Matrix and program map reproduce
+  Appendix A's preserved SHA-256 values **exactly**:
+  matrix.json `9ee8620c…`, matrix.md `6cb0ac91…`,
+  program-map.json `c73f9eff…` (claims 926 · studies 92 ·
+  unjudged studies 28 on the grown ledger; the finds
+  list's `bundle_less_study` returns to 28).
+- **Legacy index completion.** `build_legacy_index.py`
+  appended exactly 3 acts — the two `departure` acts for
+  the departed pair and the canonical event entry for
+  `re_derivations[4]` — and skipped-with-record the four
+  post-spec records in the store's history. The departure
+  acts carry Appendix A's blob values (above). The index
+  is appends-only (its first 20 lines byte-identical
+  before and after), and a second builder run appends
+  nothing. Folded census 19 entries.
+- **Gate over the refreshed tree** (verbatim summaries):
+  **29 PASS / 0 FAIL / 1 NOT-RUN** (default) and **32
+  PASS / 0 FAIL / 0 NOT-RUN** (`--regen`), all four V11
+  legs PASS; leg (c)'s census line reads "folded census
+  19 entries = 4 standing record(s) + 8 superseded legacy
+  record(s) + 2 departed generation(s) accounted by
+  departure act + 5 canonical re-derivation event(s)" —
+  the fix's seeded-proof census line, now over the landed
+  tree.
+- **Test maintenance.** The census re-pins the growth
+  moves were re-set from the regenerated artifacts'
+  actuals (commit `ad8dca93`): claims 912 → 926 (bundle
+  889 → 903, open 903 → 917, draft 888 → 902), matrix
+  cells 1435 → 1449 (supports 1428 → 1442), map elements
+  1556 → 1570, loads 912 → 926, falsifier census 903/912
+  → 917/926, ledger lines 943 → 957, unjudged studies 29
+  → 28, `bundle_less_study` 29 → 28, claims untouched by
+  any run 911 → 925. `test_p2_reconciliation` **passes**,
+  as the adoption completion note said it would at the
+  replay. The four pin-bearing files read 96 passed / 1
+  failed; the one failure is the documented pre-existing
+  VM failure of `test_spec086_map.py::
+  test_builder_refuses_a_run_pinned_to_another_build`
+  (this VM's run-store glob meets the materialization
+  record first, so the corruption lands on a record the
+  builder legitimately skips; reproduced on pristine main
+  before this adoption; CI is authoritative for it).
+- **Store-state test restatements.** The first full
+  enumeration over the replayed tree (5 failed, 2712
+  passed, 108 skipped, 1 deselected, 1 error) carried,
+  beside the phase133 environmental baseline and a
+  shared-TestClient teardown ERROR on
+  `test_workspace_scope_check.py::
+  test_run_check_verdict_and_missing_db` (the documented
+  teardown-flake family signature), four failures of one
+  kind: tests written against the Spec 089 S5 store state
+  (the pre-spec pair standing, entered standing) whose
+  premises the first departure expired —
+  `test_run_junction.py::
+  test_legacy_pair_is_not_comparable`,
+  `test_run_records.py::
+  test_t104_dry_run_over_standing_store`,
+  `test_run_records.py::
+  test_legacy_entries_fold_with_minted_runs`, and
+  `test_settling_run_scoped.py::
+  test_the_standing_store_index_covers_the_pair_by_
+  legacy_entries`. They are restated at full strength in
+  commit `5d8fd316`: the pair's bytes are preserved as
+  fixtures (`backend/tests/fixtures/legacy_t405_pair/`,
+  SHA-256 `17d7dbae…` and `176ca660…`, the departure
+  acts' own blob hashes, with a provenance README); the
+  junction and run-records tests source the pair from
+  the fixtures with their assertions unchanged, and the
+  settling coverage test now asserts the departed-state
+  invariant (the pair does not stand; its legacy entries
+  stand in the folded index; its departure acts resolve
+  against the preserved bytes, `blob_sha256` equality
+  included). No check was weakened, skipped, or deleted.
+- **Full local enumeration.** Run on the final tree
+  from `backend/`, with the phase392 determinism test
+  deselected by its plain nodeid
+  (`tests/test_phase392_q2_gate.py::
+  test_pipeline_deterministic_under_seed`): **1 failed,
+  2716 passed, 108 skipped, 1 deselected** — the single
+  failure is the phase133 environmental baseline
+  (`test_phase133_stage0_inventory.py::
+  test_builder_recomputation_skips_without_inputs`,
+  which fails on this VM on pristine main as well). The
+  four restated store-state tests pass; no teardown
+  error fired this run; the run-store-glob test
+  (`test_builder_refuses_a_run_pinned_to_another_build`)
+  passed this run (its failure on this VM is
+  enumeration-order dependent, as recorded above). The
+  suite's in-tree rewrites (extracted-claims and report
+  regenerations) were restored before committing.
+
+**Differences from Appendix A's preserved values, stated
+plainly.** Everything the fix's own proof named as a
+derived value reproduces exactly: the grown ledger (957
+lines, `e6525d04…`), the appended block (`79c84105…`),
+the refreshed canonical file's bytes, both departure
+blob pairs, the re-filed comparison (`908a0d74…`), the
+matrix pair, and program-map.json (`c73f9eff…`). Four
+values differ, each by the replay's nature, not by
+drift: (1) the three new run ids are execution-minted
+(`…T175248Z-22295e`, `…T175309Z-6f8dc4`,
+`…T175400Z-cacd3f` in place of the held `…T154607Z-0119fe`,
+`…T154627Z-62f247`, `…T154733Z-5cb5af`); (2)
+assignment-sets.json's SHA-256 is `5c1db877…`, not the
+held `8023d535…` — a byte diff shows the producing-run
+line is the **only** differing line; the sets are
+unchanged; (3) map-data.json's SHA-256 is `cc7d8054…`,
+not the held `80d34269…` — verified structurally: the
+artifact carries no timestamps, and the new run ids
+appear only as the two run records' names (4
+occurrences: the settling panel's pair and the one
+touched claim's bearing entries); every other byte is
+build-determined by inputs that reproduce exactly (this
+clone is blobless and the held artifact's blob could
+not be fetched over this link for a byte diff, so this
+one comparison is structural, and is recorded as such);
+(4) the departure acts' `superseded_by_commit` names
+`7aa93c9e`, this replay's refresh commit — the
+derivation's value over this branch's history (the first
+store-touching commit whose tree no longer carries the
+records); the seeded proof's `82b750486c4b` was the same
+derivation over the preserved snapshot's history, where
+the executed intake commit played that role.
+
+*This does not establish:* anything beyond the intake's
+landing — no study stage (Stage 1 onward) is started by
+this motion, and the ledger growth changes no claim's
+status, stage, or score.
+
 ## Appendix B — the claim records of the executed intake, verbatim
 
 The 14 ledger records exactly as `import_bundle.py`

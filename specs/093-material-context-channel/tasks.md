@@ -27,7 +27,7 @@ block ratification (Stage 0, T003).
 
 ## Stage 0 — Ratification and adoption
 
-- [ ] **T003 — Ratification record and intake.** The
+- [x] **T003 — Ratification record and intake.** The
   owner's block act is recorded beside the package; the
   claims bundle is regenerated from claims.md by script,
   assessed under the pinned AEE (outcome recorded

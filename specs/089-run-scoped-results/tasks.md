@@ -98,7 +98,7 @@ into its stage report.
 
 ## Stage 2 — Settling surface adoption (PR: feat/089-s2-settling)
 
-- [ ] **T201 — Run-id write path.** `settling.py` run records gain the
+- [x] **T201 — Run-id write path.** `settling.py` run records gain the
   run-defs header (run id an input minted by the caller; the function
   stays pure); `write_run_record` writes under run-id-derived filenames;
   the content-addressed overwrite is retired (a colliding write refuses);
@@ -109,7 +109,7 @@ into its stage report.
   *This does not establish:* that the engine's results changed — result
   blocks are byte-compared against the pre-stage canonical expectations
   throughout (T202).
-- [ ] **T202 — Canonicals + gate unchanged.** `verify-canonicals`
+- [x] **T202 — Canonicals + gate unchanged.** `verify-canonicals`
   reproduces 6/6 (5 scenarios + 1 comparison); the gate CLI over the
   real tree reports ALL PASS with V8's legs comparing result blocks as
   before; the standing T405 pair is neither renamed nor rewritten, and
@@ -117,7 +117,7 @@ into its stage report.
   C089-17. Acceptance: **gate** (gate CLI + CI green).
   *This does not establish:* that canonical expectations are correct —
   only that the store discipline changed nothing they measure.
-- [ ] **T203 — Regenerations become runs; adoption teeth.**
+- [x] **T203 — Regenerations become runs; adoption teeth.**
   `materialize-sets` writes a run record + index entry and
   `assignment-sets.json` names its producing run. Teeth on tmp copies:
   same scenario twice → two records, distinct ids, byte-equal result

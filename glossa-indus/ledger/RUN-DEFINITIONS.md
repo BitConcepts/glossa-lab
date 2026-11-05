@@ -348,3 +348,50 @@ may make. The library's write entry points are named here
 as owed to the gate's writer census when V11 lands
 (Stage 5's registration act); they write run stores and
 indexes only, never a gated generated artifact.
+
+## 10. Registered junction precedent — the freeze-gate C2 form (Stage 4)
+
+Registered at Spec 089 Stage 4 (T403), under §5's `study`
+row and §6's vocabulary as they stand — this section
+registers a precedent; it amends no rule, table, or
+vocabulary above, and no registered copy carries a table
+from it.
+
+The freeze gate's **C2 spot-check record**
+(`tools/freeze-gate/freeze_records.py`, form
+`c2-spotcheck`) is a junction in these definitions'
+terms, and is the `study` surface's precedent of record:
+the freeze's pinned values are one execution of a
+computation, and the C2 recomputation — an independent
+worker's re-derivation of a sample of the same
+quantities under the freeze record's fixed pins — is a
+second. The pair is comparable by construction (same
+freeze record, same pins; the `study` surface's
+determinism registration, §5). Its outcomes speak this
+spec's disposition vocabulary:
+
+- every sampled quantity agrees → the pair is
+  **identical** (no junction report; the C2 record is
+  the evidence, as an identical pair's index listing is
+  here);
+- a sampled quantity mismatches and the mismatch is
+  resolved with its resolution recorded in the record's
+  note → **explained-by-named-difference**, the note
+  naming the difference;
+- a sampled quantity mismatches unresolved — on a
+  gate-turning quantity, a freeze failure under the C4
+  check → **unexplained**: the pair may not ground the
+  freeze, which is this precedent's form of C089-13's
+  quarantine (the freeze does not proceed on an
+  unexplained pair).
+
+The C2 record's own discipline is the precedent's
+strength: its per-quantity status is *derived* from the
+filed pinned and recomputed values, never merely
+asserted (the freeze gate's D-1 hardening, 2026-10-25).
+Study re-executions under a freeze record are cited
+under the §3 header by convention in the study's spec
+records (Stage 4); where a re-execution is itself
+recorded as a pair for junction, the C2 form is the
+registered shape of that pair. No freeze-gate code
+changes follow from this registration.

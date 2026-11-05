@@ -225,7 +225,7 @@ into its stage report.
 
 ## Stage 3 — Outcome record + report (PR: feat/090-s3-outcome)
 
-- [ ] **T301 — The outcome record.** Per-claim dispositions for
+- [x] **T301 — The outcome record.** Per-claim dispositions for
   C090-1..16 (discharged / carried, with the evidence pointer for
   each); the per-stage outcomes in spec.md's vocabulary (G1: STATED
   or NOT YET with the missing element; G2: DERIVED or NOT YET with
@@ -243,7 +243,24 @@ into its stage report.
   establishes what this study produced and what it did not, which is
   the input the reader's verdict and the registry entry are made
   from.
-- [ ] **T302 — The report to the VEXA chat.** The outcome (or, if a
+  *Completed 2026-11-04:* `records/study-outcome-2026-11-04.md`
+  — G1: **STATED** (the G1 document frozen at v1.1, SHA-256
+  4f2018f4…; the absolute audit's NONE-NEEDED disposition sustained
+  under the T102 adversarial pass, its sustained defects F1–F9 all
+  answered by revision at the freeze); G2: **DERIVED** (declared on
+  the T202 audit: Condition 1, the non-certification condition, at
+  full strength; Condition 2, the recorded-profile condition, at
+  consistency strength; Candidates 3 and 4 NOT DERIVED with their
+  obstructions verified); study-level outcome:
+  **INSTANTIATES-path** in spec.md's defined vocabulary — the
+  formal INSTANTIATES verdict over the full G1–G5 bar is the
+  independent reader's and is not issued here. Per-claim
+  dispositions for C090-1..16 are recorded in the outcome record at
+  the strength each stage's evidence supports; no claim's
+  status/stage/score moved (the study's only ledger change remains
+  the Stage 0 intake append), and no convergence step was taken or
+  implied.
+- [x] **T302 — The report to the VEXA chat.** The outcome (or, if a
   stage could not run, the blocker) delivered to the VEXA chat for
   the improvement registry: the per-stage outcomes, the study-level
   outcome in the skeleton's vocabulary — ANALOGY or NOT YET stated
@@ -255,3 +272,14 @@ into its stage report.
   *This does not establish:* that the registry entry closes the
   generalization question — it records this study's outcome; the
   follow-on stages and the reader's verdict stand after it.
+  *Completed (report text) 2026-11-04:* the report text is
+  committed at `records/vexa-report-2026-11-04.md` (SHA-256
+  bd432314b46f833026342f8163e431f8188fb453bd1b78c80d2d09cc682860c1)
+  and is recorded in the outcome record with its destination (the
+  VEXA chat) and hash; its outcome words match the outcome
+  record's exactly (G1 STATED; G2 DERIVED; study level
+  INSTANTIATES-path, with the formal verdict expressly reserved to
+  the independent reader). Delivery to the VEXA chat is the parent
+  seat's act on this PR's merge, per the commission's routing; the
+  claim C090-16 stands open on exactly that delivery leg until the
+  send lands, and the outcome record says so.

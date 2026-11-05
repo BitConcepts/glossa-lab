@@ -4,14 +4,14 @@
    "by_class": {
     "closed_other": 1,
     "negative": 6,
-    "open": 903,
+    "open": 904,
     "positive": 2
    },
    "by_population": {
-    "bundle": 889,
+    "bundle": 890,
     "extracted": 23
    },
-   "total": 912
+   "total": 913
   },
   "domains": {
    "Anchors & readings": {
@@ -69,11 +69,11 @@
     }
    },
    "Program infrastructure": {
-    "claims": 186,
+    "claims": 187,
     "claims_by_class": {
      "closed_other": 1,
      "negative": 0,
-     "open": 185,
+     "open": 186,
      "positive": 0
     },
     "restricted_studies": 0,
@@ -117,8 +117,8 @@
     "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
     "without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001"
    ],
-   "present": 903,
-   "total": 912
+   "present": 904,
+   "total": 913
   },
   "judgment_call_studies": [],
   "multi_spec_claims": [
@@ -11249,6 +11249,20 @@
     "document": null,
     "domain": "Program infrastructure",
     "falsifier_present": true,
+    "id": "084-policy-sync-conformance/C084-12",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": null,
+    "standing": "Ledger standing: status draft · stage none · falsifier present",
+    "status": "draft",
+    "study": "084-policy-sync-conformance",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
     "id": "084-policy-sync-conformance/C084-2",
     "kind": "claim",
     "population": "bundle",
@@ -14344,9 +14358,9 @@
     "member_counts": {
      "closed_other": 0,
      "negative": 0,
-     "open": 11,
+     "open": 12,
      "positive": 0,
-     "total": 11
+     "total": 12
     },
     "restricted": false,
     "subdomain": "Governance, lifecycle & generated layers"
@@ -14434,10 +14448,10 @@
   ]
  },
  "stamp": {
-  "ledger_latest_entry_date": "2026-11-04",
-  "ledger_lines": 943,
+  "ledger_latest_entry_date": "2026-11-05",
+  "ledger_lines": 944,
   "ledger_schema": "ledger-schema v1",
-  "ledger_sha256": "15a5fbad24f400631ace1ebc88bfb7712c9bf6f68fae23e56fedbcac5fd5a794",
+  "ledger_sha256": "6a997a31be478e33106c40753f90653c4155141324ee198904dc333e2ebda922",
   "program_map_defs": "program-map-defs v1",
   "program_map_taxonomy": "program-map-taxonomy v1"
  },

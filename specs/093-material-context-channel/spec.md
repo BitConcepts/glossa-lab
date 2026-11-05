@@ -3,10 +3,16 @@
 **Feature Branch**: `093-material-context-channel` (build stages); this
 package lands on `docs/093-material-channel-draft`
 **Created**: 2026-11-05
-**Status**: Draft package — awaiting the owner's block ratification
-(Stage 0). **Nothing in this package is a result: no pattern over
-the corpus has been computed, no claim below is in the ledger, and
-the study this spec designs has not been administered in any part.**
+**Status**: RATIFIED AS A BLOCK by the owner, Tristen Pierson,
+2026-11-05 (decisions D-093-1..8 adopted as drafted; record:
+`records/ratification-2026-11-05.md`). The claims intake was
+executed end-to-end at adoption and is HELD out of the ledger on a
+named Spec 089 machinery gap (the executed intake, its claim
+records verbatim, and its replay are the ratification record's
+appendix); the program-map assignment stands. **Nothing in this
+package is a result: no pattern over the corpus has been computed,
+no claim below is in the ledger, and the study this spec designs
+has not been administered in any part.**
 **Input**: The owner's commission in this chat, 2026-11-05, in two
 parts. First: a different sort of Rosetta Stone — "perhaps one based
 on culture or architecture or other aspects, perhaps even writing

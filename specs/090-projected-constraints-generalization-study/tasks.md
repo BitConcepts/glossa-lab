@@ -169,7 +169,7 @@ into its stage report.
   Mechanical completeness per this task's acceptance holds on the
   record's face. T202 — the audit by a worker other than the
   deriver, which declares the G2 outcome — remains open.
-- [ ] **T202 — The derivation audit and the G2 outcome.** A worker
+- [x] **T202 — The derivation audit and the G2 outcome.** A worker
   other than the deriver re-walks every step of every candidate:
   premises traced to the G1 document or D1–D3 (a physics premise
   anywhere fails the candidate under D-090-3, with the step named);
@@ -195,6 +195,33 @@ into its stage report.
   / NOT YET declaration on it, remain open: they are a worker
   other than the deriver's act, per this task's text and the
   plan's separation rule.
+  *Completed 2026-11-04:* `records/stage-s2-audit-record.md`
+  — the audit executed by a worker other than the deriver
+  against the frozen G1 document v1.1 (hash recomputed and
+  matched before auditing). Five attacks, each driven to a
+  verdict: premise tracing NOT SUSTAINED (every premise of
+  both chains traces to D1–D3 or the frozen G1; no physics
+  premise anywhere); Candidate 1's strength NOT SUSTAINED
+  (the variation holds for an arbitrary state in all three
+  dimensions; the Class II counted form recounted
+  independently, 0 of 3; the falsifier admissible,
+  recognizable, and observable in D4's form);
+  Candidate 2's bite NOT SUSTAINED as a refutation of
+  derivedness, with its strength finding confirmed (the
+  recorded profiles recomputed first-hand: M77 1,669 /
+  5,361 / 64, max 541, one hapax; ICIT 4,410 / 14,213 /
+  713, max 527; CISI 179 sides, 1,003 tokens, 182 codes);
+  the refusals NOT SUSTAINED (Candidate 3's bridge premise
+  verified absent; Candidate 4 verified as Candidate 2's
+  corollaries); form NOT SUSTAINED. **G2 outcome declared:
+  DERIVED** — Candidate 1 (the non-certification
+  condition) and Candidate 2 (the recorded-profile
+  condition, declared at consistency strength, its
+  excluding power being consistency's under the frozen
+  projection) survive with their D4 falsifiers stated;
+  Candidates 3 and 4 stand NOT DERIVED with their
+  obstructions verified. No candidate was repaired inside
+  the audit.
 
 ## Stage 3 — Outcome record + report (PR: feat/090-s3-outcome)
 

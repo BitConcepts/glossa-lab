@@ -259,3 +259,86 @@ as the final gate run's header reads it.
 - T503: only the named failure modes are proven caught; an unlisted
   mutation of a run artifact is future work for the census, not a
   covered case.
+
+## 9. Repair round — the CI gate failure (2026-11-05)
+
+CI attempt 1 on this stage's PR (#521, run `41957645343`) failed in
+exactly one job, "Ledger/matrix/map equivalence gate" (job
+`127016285488`); the other nine jobs passed. Read from that job's
+log: inside the test battery's constructed tree the gate reported
+`22 PASS / 2 FAIL / 2 NOT-RUN`, legs (a) and (c) failing —
+`settling-20261105T022535Z-a7b4e5` named by leg (a) as a producing
+run "not entered in the settling runs store's index", and by leg
+(c) together with both T405 records as files standing "with no
+index entry". Two tests failed:
+`test_map_legs_live_and_pass_on_a_clean_map_tree` and
+`test_gated_publication_of_the_map_and_its_negative_control`.
+Reproduced locally, standalone, with the identical failure text
+before any repair was attempted.
+
+**Mechanism.** The `map_scratch` fixture
+(`backend/tests/test_spec086_ledger_gate.py`) assembled the map
+chain's records into the battery's scratch tree and copied the
+settling runs store with `glob("*.json")`. That glob does not
+match `run-index.jsonl`, so the constructed tree carried the
+store's three record files and no index: the fold yielded nothing,
+the §2 binding could not resolve, and the census covered no
+record. The gate's verdict on that tree was correct — a store
+whose records stand without their covering index is
+non-conforming under C089-15a/C089-17.
+
+**Owning side: the test fixture — not the gate, and not the
+publication path.** The real tree carries the index (tracked,
+committed in `2ed4970`); `gated_publish.publish_map` gates the
+root tree in place, and this stage's own republication (§2) had
+already passed through that path against the real tree. The
+failure surfaced in the one job that runs the gate module
+standalone against a pristine checkout, where the battery's
+clean-tree precondition holds and the fixture is exercised for
+real. The fixture existed in that form because it was written
+for the Spec 088 map legs, when the store held only `*.json`
+records; Spec 089 S2 added `run-index.jsonl` to the store, and
+no gate leg consumed the index inside a scratch tree until V11 —
+the stale glob was invisible until the first index-verifying leg
+ran against the fixture. Both tests reach the store through the
+same fixture (the publication test gates the `map_scratch`
+tree), so one defect produced both failures.
+
+**Repair.** `map_scratch` now copies the store closure — every
+regular file in the runs directory, not only `*.json` — and the
+junction store likewise when the real tree has one (it comes
+into existence with the first filed report; leg (d) reads it
+from the tree root, and a records-only copy would lose it the
+same way). No V11 leg changed; no tolerance for a missing index
+was added; no fixture id was special-cased.
+
+**Post-repair verification** (all read from records): the two
+tests pass; the gate module is whole again at **64 passed** (CI's
+62 passed + 2 failed reconciles exactly). Full backend
+enumeration, from its log
+(`~/workspace/glossa-run/tmp-suite/089-s5-repair-fullsuite.log`,
+phase392 stall test deselected by name):
+
+```
+1 failed, 2681 passed, 108 skipped, 29 warnings, 1 error in 674.05s (0:11:14)  [+ 1 deselected]
+```
+
+The one failure is the phase133 environmental baseline; the one
+error is the tray-teardown error (suite shape #1 — absent from
+§5's enumeration, present here; an acceptable non-pass of record
+in either state). The passed count is unchanged at 2681 — the
+repair adds and removes no tests — and the gate profile is
+unchanged:
+
+```
+full:    summary: 29 PASS / 0 FAIL / 1 NOT-RUN   RESULT: PASS
+--regen: summary: 32 PASS / 0 FAIL / 0 NOT-RUN   RESULT: PASS
+```
+
+Ruff over `backend/`: clean. The enumeration's in-tree
+regenerations (ten extracted-claims files, the batch-4 claims
+report, `outputs/partial_loop_result.json`) were restored before
+committing; the repair commit touches only the test module and
+these two records. No counts moved anywhere: the census, the
+ledger (`15a5fbad…`, 943 lines), and the claim dispositions are
+exactly as §§3–6 state them.

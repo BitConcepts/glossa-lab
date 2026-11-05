@@ -791,8 +791,31 @@ def map_scratch(scratch: Path) -> Path:
         shutil.copyfile(ROOT / rel, dst)
     runs_dst = root / lg.RUNS_REL_DIR
     runs_dst.mkdir(parents=True, exist_ok=True)
-    for f in sorted((ROOT / lg.RUNS_REL_DIR).glob("*.json")):
-        shutil.copyfile(f, runs_dst / f.name)
+    # The whole store closure, not just its *.json records:
+    # this fixture predates Spec 089 S2, which added
+    # run-index.jsonl to the store, and the *.json glob was
+    # never widened — so the scratch tree carried the run
+    # records without the index that enters them. No gate
+    # leg read the index in a scratch tree until V11
+    # (Spec 089 S5), whose legs (a) and (c) failed on
+    # exactly that omission (PR #521, CI run 41957645343).
+    # The gate is right — a store whose records stand
+    # without their covering index is non-conforming — so
+    # the copy is repaired, not the legs.
+    for f in sorted((ROOT / lg.RUNS_REL_DIR).iterdir()):
+        if f.is_file():
+            shutil.copyfile(f, runs_dst / f.name)
+    # The junction store likewise, when the real tree has
+    # one (it comes into existence with the first filed
+    # report): leg (d) reads it from the tree root, and a
+    # records-only copy would lose it the same way.
+    junctions_src = ROOT / lg.RUN_JUNCTIONS_REL
+    if junctions_src.is_dir():
+        junctions_dst = root / lg.RUN_JUNCTIONS_REL
+        junctions_dst.mkdir(parents=True, exist_ok=True)
+        for f in sorted(junctions_src.iterdir()):
+            if f.is_file():
+                shutil.copyfile(f, junctions_dst / f.name)
     return root
 
 

@@ -317,6 +317,9 @@ export const runGraphExperiment = (
 export const getHealth = (): Promise<HealthResponse> =>
   request("GET", "/health");
 
+export const getPrivacyStatement = (): Promise<{ text: string }> =>
+  request("GET", "/privacy");
+
 export const getStatus = (): Promise<StatusResponse> =>
   request("GET", "/status");
 

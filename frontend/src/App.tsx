@@ -8,6 +8,7 @@ import { ProjectsView } from "./components/ProjectsView";
 import { ExperimentBuilderView } from "./components/ExperimentBuilderView";
 import { AIToolsView } from "./components/AIToolsView";
 import { HelpView } from "./components/HelpView";
+import { PrivacyView } from "./components/PrivacyView";
 import { ProgramHome } from "./components/ProgramHome";
 import { SystemGraphView } from "./components/SystemGraphView";
 import { DigestionBoard, effectiveStage } from "./components/DigestionBoard";
@@ -58,8 +59,9 @@ type Tab =
   // Utility routes (not in the nav): the foundation check opens from
   // the program home (FR-006); AI tools is a workbench reached from
   // the palette/settings, not a destination (Q6); builder is the
-  // legacy program manager.
-  | "foundation-check" | "ai-tools" | "builder"
+  // legacy program manager; privacy is the Spec 084 statement
+  // screen, reached from the palette.
+  | "foundation-check" | "ai-tools" | "builder" | "privacy"
   // Analysis sub-views, addressed directly; the Analysis wrapper
   // renders them as tabs (step 6).
   | "entropy" | "signs" | "timeline"
@@ -95,7 +97,7 @@ function resolveView(view: string, hasProgram: boolean): Tab | null {
 const VALID_TABS: ReadonlySet<string> = new Set([
   "programs", "home", "claims", "digestion", "evidence", "data", "analysis",
   "experiments", "system-graph", "discovery", "loop", "reports", "jobs", "status", "settings",
-  "help", "foundation-check", "ai-tools", "builder", "entropy", "signs", "timeline",
+  "help", "foundation-check", "ai-tools", "builder", "privacy", "entropy", "signs", "timeline",
   "account", "admin",
 ]);
 
@@ -106,7 +108,7 @@ const TAB_LABELS: Partial<Record<Tab, string>> = {
   reports: "Reports & ledger", jobs: "Jobs", logs: "Logs", status: "Status",
   settings: "Settings", help: "Help", "foundation-check": "Foundation Check",
   account: "Account & security", admin: "Admin",
-  "ai-tools": "AI Tools", builder: "Manage programs",
+  "ai-tools": "AI Tools", builder: "Manage programs", privacy: "Privacy",
   entropy: "Analysis", signs: "Analysis", timeline: "Analysis",
 };
 
@@ -659,8 +661,8 @@ function AppContent() {
   ];
 
   const paletteTargets: NavItem[] = hasProgram
-    ? [...programItems, ...toolItems, { id: "foundation-check", label: "Foundation Check", icon: "✅" }, { id: "ai-tools", label: "AI Tools", icon: "🔬" }]
-    : [...toolHomeItems, { id: "ai-tools", label: "AI Tools", icon: "🔬" }];
+    ? [...programItems, ...toolItems, { id: "foundation-check", label: "Foundation Check", icon: "✅" }, { id: "ai-tools", label: "AI Tools", icon: "🔬" }, { id: "privacy", label: "Privacy", icon: "🔒" }]
+    : [...toolHomeItems, { id: "ai-tools", label: "AI Tools", icon: "🔬" }, { id: "privacy", label: "Privacy", icon: "🔒" }];
   const paletteCommands: PaletteCommand[] = [
     ...paletteTargets.map((t) => ({
       id: t.id, label: `Go to ${t.label}`, description: `Open ${t.label}`, icon: t.icon,
@@ -984,6 +986,7 @@ function AppContent() {
                   {tab === "status" && <StatusView />}
                   {tab === "settings" && <SettingsView darkMode={darkMode} />}
                   {tab === "help" && <HelpView />}
+                  {tab === "privacy" && <PrivacyView />}
                   {tab === "account" && cloud.active && <AccountView />}
                   {tab === "admin" && cloud.isAdmin && <AdminView />}
                   {tab === "foundation-check" && <FoundationCheckView />}

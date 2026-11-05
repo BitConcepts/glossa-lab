@@ -18,10 +18,18 @@ HELD claims (C084-9…C084-11) deliberately have NO tests here:
 their falsifiers cannot execute today (source outside this repo,
 or no approval act exists to fixture). See
 specs/084-policy-sync-conformance/spec.md §HELD. C084-8 was HELD
-at the spec's landing and ACTIVATED 2026-11-05 (owner approval;
-its condition — frontend/src/cloud/ on main — was met when
-feat/083-frontend landed in PR #476, 2026-11-01); its tests are
-the C084-8 section below.
+at the spec's landing and ACTIVATED 2026-11-05 under FR-084-09
+(owner approval; its condition — frontend/src/cloud/ on main —
+was met when feat/083-frontend landed in PR #476, 2026-11-01);
+its tests are the C084-8 section below.
+
+C084-12 (the privacy / data-handling statement, gap A4) entered
+the regime on the owner's approval act of 2026-11-05 (T011) and
+IS exercised here under FR-084-10: presence (the served copy
+equals the fixture), wiring (the route is registered), and
+absence (the superseded draft placeholder text stays out of
+every served source, and the SPA carries no baked copy of the
+statement).
 """
 
 from __future__ import annotations
@@ -115,6 +123,52 @@ def test_tray_status_copy_matches_fixture():
     surface = _norm(_source("tray/glossa_tray/main.py"))
     for line in _fixture_lines("tray-status-copy.txt"):
         assert _norm(line) in surface, f"approved tray copy missing: {line!r}"
+
+
+# ── C084-12: the privacy / data-handling statement (FR-084-10, T011) ────────
+
+
+def test_privacy_statement_matches_fixture():
+    from glossa_lab.privacy_statement import PRIVACY_STATEMENT
+
+    approved = _fixture_body("privacy-data-handling.txt").strip()
+    assert PRIVACY_STATEMENT == approved
+
+
+def test_privacy_route_is_registered():
+    main_src = _source("backend/glossa_lab/main.py")
+    assert "from glossa_lab.api.privacy import router as privacy_router" in main_src
+    assert 'include_router(privacy_router, prefix="/api/v1")' in main_src
+    api_src = _source("backend/glossa_lab/api/privacy.py")
+    assert '@router.get("/privacy")' in api_src
+
+
+def test_no_unverified_placeholder_text():
+    roots = [
+        _REPO / "frontend" / "src",
+        _REPO / "cloud" / "edge" / "src",
+        _REPO / "backend" / "glossa_lab",
+    ]
+    offenders = []
+    for root in roots:
+        for path in _iter_source_files(root, (".ts", ".tsx", ".js", ".jsx", ".py")):
+            if "[UNVERIFIED" in path.read_text(encoding="utf-8", errors="ignore"):
+                offenders.append(str(path.relative_to(_REPO)))
+    assert not offenders, f"superseded draft placeholder text found in: {offenders}"
+
+
+def test_spa_carries_no_baked_privacy_copy():
+    # The SPA must render the served statement, never a second
+    # copy baked into the frontend (a second copy is a second
+    # source of truth — the drift this spec exists to prevent).
+    distinctive = _norm(
+        "The cloud edition does not move the program. The research data"
+    )
+    offenders = []
+    for path in _iter_source_files(_REPO / "frontend" / "src", (".ts", ".tsx")):
+        if distinctive in _norm(path.read_text(encoding="utf-8", errors="ignore")):
+            offenders.append(str(path.relative_to(_REPO)))
+    assert not offenders, f"baked copy of the privacy statement found in: {offenders}"
 
 
 # ── C084-8: the cloud anonymous-surface copy (FR-084-09) ────────────────────

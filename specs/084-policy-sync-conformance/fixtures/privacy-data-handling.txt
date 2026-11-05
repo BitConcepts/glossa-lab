@@ -1,0 +1,370 @@
+# FIXTURE — approved text under Spec 084 (POLICY-SYNC). Do not edit
+# without a recorded owner-approval act on the actual text
+# (FR-084-08); an unapproved fixture edit is itself a finding.
+# Approval: the owner approved the privacy / data-handling
+# statement (draft of 2026-10-31, inventory gap A4) on 2026-11-05
+# and directed that its five [UNVERIFIED] items be closed as
+# recorded here. This fixture is that approval act's execution
+# (Spec 084 task T011).
+# Item closures (evidence in the T011 record, root LEDGER.md
+# 2026-11-05 entry):
+#  1. Contact address (§8): tristen@bitconcepts.tech, the
+#     program's mailbox of record — an owner default, correctable
+#     by a new approval act.
+#  2. Hosting provider (§3): set to the verified facts — the
+#     Worker's own configuration in this repo enables no logging
+#     or measurement collection; Cloudflare's own operational
+#     records stay governed by Cloudflare's terms. (Zone
+#     settings and Logpush configuration were not readable with
+#     the program's Cloudflare token, 403 on 2026-11-05; the text
+#     asserts nothing that rests on them.)
+#  3. Web analytics (§5): VERIFIED ENABLED — Cloudflare Web
+#     Analytics is on for the bitconcepts.tech zone with
+#     automatic installation and no host exclusion in its
+#     ruleset (account read, 2026-11-05). The text says so.
+#  4. Retention (§3): expired invitations and audit-log entries
+#     are retained 12 months — the owner's policy default,
+#     correctable by a recorded decision; the text states it as
+#     policy, not as an automated process (no purge code exists;
+#     the audit log is append-only in the database).
+#  5. Member export (§6): VERIFIED — project (workspace) export
+#     as a JSON bundle, report downloads, and corpus-text export
+#     exist in the product (backend/glossa_lab/api/projects.py,
+#     api/reports.py, api/analysis.py). The text says what
+#     exists.
+# Surface: served by the app — the text is carried in
+# backend/glossa_lab/privacy_statement.py (PRIVACY_STATEMENT)
+# and returned by GET /api/v1/privacy; the SPA renders it in
+# the Privacy view (utility route "privacy"). Conformance:
+# backend/tests/test_policy_sync_conformance.py (C084-12).
+# Go-live note: the cloud edition was pre-launch when this text
+# was approved; §3 and §5 are to be re-checked against the live
+# system at launch (Spec 083 T059 class), and any change goes
+# through a new approval act.
+# ---
+# Glossa Lab — Privacy and Data-Handling Statement
+
+## 1. What this statement covers
+
+Glossa Lab is a research workbench: a program for testing claims
+about the Indus script, claim by claim, against the evidence. It
+comes in two editions that are two doors into the same program:
+
+- **The desktop edition** runs on one person's own computer. That
+  person is the operator, and everything the program holds sits on
+  that computer.
+- **The cloud edition**, at glossa.bitconcepts.tech, lets invited
+  members sign in through a website and use the same program, which
+  still runs on the owner's desktop computer.
+
+This statement says, for each edition, what information the system
+holds, where it sits, when anything leaves the machine it sits on,
+and what choices the people involved have. Words we cannot avoid
+are explained the first time they appear.
+
+## 2. The desktop edition: your work stays on your computer
+
+### Where your work is stored
+
+Everything the desktop edition holds — the research database, the
+corpora and files you load, the claims, anchor sets, jobs, and
+reports you create, and the program's settings — is stored in one
+data folder on your own computer (on Windows, under your local
+application data, in `GlossaLab\data`). The database is a single
+file in that folder. Nothing in the desktop edition stores your
+work on anyone else's computer.
+
+### The install token
+
+The program's interface and its data are guarded by one **token**:
+a long random password the program creates for itself the first
+time it runs. The token is kept in a small file inside the data
+folder, set so only your operating-system account can read it
+(file mode 0600 on systems that support it). Anything that talks
+to the program — the app window, the tray, the command-line tools —
+must present this token; anything that does not gets a refusal.
+The token is never sent to us or to anyone else, it is never shown
+in full on any screen (screens show only a short fingerprint, the
+first characters of its checksum), and it can be replaced at any
+time with the program's rotate command, which takes effect
+immediately. A short health readout is the only thing the program
+answers without the token, and it contains no research data.
+
+### Keys you type into Settings
+
+You can give the program keys for outside services — for example an
+AI provider such as Mistral, OpenAI, Anthropic, or Google, scholarly
+search services, or an email account for notifications. Those keys
+are stored in a file named `.keys.json` inside the data folder,
+separate from the database. Two honest details:
+
+- The file is **not encrypted**. It is protected by the same
+  restricted file permissions as the token file, and by your
+  operating-system account — anyone who can read your files as you
+  can read this file.
+- The program never shows a stored key back. Its settings screens
+  report only whether a key is set, never the key itself.
+
+Leaving a key out is always an option: the parts of the program
+that need a key simply stay off, and nothing fails because a key is
+missing.
+
+### The only times anything leaves your computer
+
+The desktop edition has no reporting of its own — no usage
+statistics, no crash reports, no check-ins with us. Data leaves
+your computer only when you use a feature that needs an outside
+service, and only to that service:
+
+- **AI features.** When you run a feature that asks an AI service
+  to read or draft text, the text you submit is sent to the
+  provider you configured, under your own account and key, and the
+  provider's own terms govern what it does with it.
+- **Scholarly sources.** The program searches and fetches public
+  research sources (for example Crossref, CORE, and GDELT) and
+  downloads what you ask it to. Your search terms go to those
+  services as part of the search.
+- **Email you configure.** If you set up the email settings, the
+  program sends the notices you asked for — a discovery digest and
+  completion notices for studies and experiments — from your mail
+  account to the addresses you configured. If the email settings
+  are blank, it sends nothing.
+
+### Copies and backups
+
+Any copy of your data folder or database — a backup, a snapshot,
+an export — exists only because you or your tools made it, and it
+lives wherever you put it. The program makes no copies of your
+work anywhere else.
+
+## 3. The cloud edition: a members-only door to the same desktop
+
+The cloud edition does not move the program. The research data
+stays on the owner's desktop computer, in the same install the
+owner uses locally. The website is a gate and a passageway in
+front of it, run on Cloudflare (a hosting provider). Only people
+with an account may sign in and use it; there is no public access
+and no self-service sign-up — every account begins as an invitation
+from an administrator, or as the single administrator account
+created when the deployment was set up.
+
+### What the website holds
+
+The website's own database (Cloudflare D1) holds **identity data
+only**:
+
+- **Accounts**: a username, an email address if one is on record,
+  the account's global type (owner, admin, member, or guest), its
+  status, and when it was created, disabled, or removed.
+- **Password hashes** — see below.
+- **Invitations**: who created the invitation, the email address it
+  was issued to (when it is bound to one), the workspace access it
+  carries, and its expiry, revocation, and redemption state.
+- **Sessions**: a record for each sign-in, with its creation, last
+  activity, and expiry times.
+- **Workspaces and access**: the list of workspaces (the program's
+  projects, carried under that name) and, for each person, the role
+  they hold in each workspace.
+- **Setup state**: whether the one-time administrator setup has
+  been completed.
+- **The audit log** — see below.
+
+That is the whole list. **The research dataset is never copied to
+the website's storage, or to any other cloud storage.** There is
+no cloud copy to browse, back up, or leak. When the desktop
+computer is off or the program is stopped, the website answers
+with a plain "the host is offline" message and nothing else — it
+has no project data of its own to serve.
+
+### Passwords and one-time codes
+
+- Passwords are stored only as **hashes** — a one-way scrambled
+  form (produced with Argon2id, a password-hashing method designed
+  to be slow to guess) from which the password cannot be read back.
+  Nobody, including an administrator, can see your password.
+- Invitation codes, session tokens, and the one-time setup code
+  are likewise stored only as hashes (SHA-256). The readable code
+  exists only in the invitation itself and in your browser.
+- There is **no password recovery by email** in this edition. If
+  you lose your password, an administrator disables the account
+  and issues a fresh invitation; that is the designed way back in.
+
+### Staying signed in
+
+Signing in sets one cookie in your browser (a small marker the
+website uses to recognize your session). It is marked so scripts
+cannot read it and so it travels only over encrypted connections,
+and it lasts up to 30 days. You can see and revoke your sessions
+from your account page. Changing your password ends every other
+session and keeps only the one you are using. An administrator
+can revoke a session or disable an account at any time, and a
+disabled account cannot sign in.
+
+### The audit log
+
+The website keeps an **audit log**: an append-only list of
+security-relevant events — sign-ins and failed sign-ins,
+invitations created, redeemed, and revoked, password changes,
+session revocations, account disabling and removal, and the
+completion of the one-time setup. Append-only is enforced by the
+database itself, not just by convention: the log's rows cannot be
+edited or deleted through the database. The log records *that*
+the setup was completed — never the setup code, and never any
+password.
+
+If an account is removed, the account is closed and its sessions
+are deleted, but the person's name stays attached to the work
+they already did and to their past entries in the audit log. That
+is deliberate: the record of who did what is part of the research
+record.
+
+### How long identity records are kept
+
+Expired invitations and audit-log entries are retained for
+12 months. That period is the owner's policy default, set when
+this statement was approved, and the owner can change it by a
+recorded decision. It is a policy, not an automated process:
+nothing in the current build removes old entries on its own, and
+the audit log's append-only construction means applying the
+period to audit entries is an operator act under the owner's
+direction.
+
+### Workspaces: who can see what
+
+Work is organized into workspaces, and access is decided **per
+workspace**. A person can hold a different role — owner, admin,
+member, or viewer — in each workspace they belong to. Guests are
+never more than viewers anywhere. You are shown only the
+workspaces you belong to; a workspace you have no access to does
+not appear in your lists, counts, or search results, not even as
+a name. If you ask for something outside your access, the answer
+is the same "not found" you would get if it did not exist.
+A workspace that has been archived serves nothing to anyone.
+
+### How requests reach the desktop
+
+Your requests reach the program on the desktop only after you
+have signed in, and only for the parts of the program your access
+covers. The website removes any identity labels a visitor's
+browser attaches to a request and adds its own only after
+checking your session, together with a per-deployment **service
+credential** (a secret shared between the website and the desktop
+program) that proves the request really came through the website.
+The desktop program's own install token (§2) plays no part here:
+the website refuses it in every position, and it is never a
+browser credential. The connection between the website and the
+desktop runs over a private tunnel whose secret lives only in a
+service configuration on the desktop — never in the program's
+code, records, or this statement.
+
+Features in the hosted app that call an AI service use the
+service and key configured on the host desktop (§2). Text you
+submit to those features is therefore sent to that provider,
+under the host's account.
+
+### Search engines
+
+The hosted site is closed to search engines and indexing on
+purpose: its robots file tells crawlers to stay away from every
+page, and every response carries a "noindex" instruction. That
+posture stays until the owner decides to lift it.
+
+### The hosting provider
+
+The gate described above runs on Cloudflare's network, so
+Cloudflare necessarily handles the traffic between your browser
+and the desktop. What Cloudflare itself records in its own
+operational systems, and how long it keeps it, is governed by
+Cloudflare's own terms and is not something this codebase
+controls or describes. The Worker's own configuration, which is
+part of this program's code, enables no logging or measurement
+collection of its own; the one measurement service switched on
+for this domain at the account level is Cloudflare Web
+Analytics, described in §5.
+
+## 4. The research material itself
+
+The program works on other scholars' corpora, and those materials
+carry their own rules, which the program follows:
+
+- The primary corpus (the Holdat Indus Corpus) is proprietary.
+  It is used for statistical analysis only. Its raw data is not
+  committed to the program's code repository and is never
+  released.
+- Files derived from the Corpus of Indus Seals and Inscriptions
+  (CISI) are reference material: used inside the research, not
+  for redistribution.
+- The program's custody rule, in its own words: **statistics
+  publishable, scans never redistributed.** Restricted material —
+  scans and what is derived from them — stays in restricted
+  folders on the owner's own machines. Through the cloud edition
+  it can be returned only inside a signed-in session, to a member
+  whose workspace access covers it, and under the same
+  restrictions the desktop application already enforces. Hosting
+  changes where the application runs; it does not widen what any
+  member is allowed to receive.
+
+What the program publishes is its own analysis: the preprint and
+its statistics (released under CC BY 4.0), and the public research
+tracker. The published readings are candidates, held to the
+program's standing position:
+
+> "The Indus script is not deciphered. The readings this program
+> records are candidate readings, each one a claim standing at a
+> stage of the claim lifecycle. A reading is not settled by being
+> recorded and checked, and no count in this program is a measure
+> of decipherment."
+
+## 5. What we do not do
+
+- We do not sell personal information, and no part of either
+  edition sends member or research data to advertisers or data
+  brokers.
+- The desktop edition contains no analytics or telemetry: it
+  reports nothing about your use to anyone (§2).
+- Web analytics **is** switched on for this domain at the hosting
+  account level. Cloudflare Web Analytics is enabled for
+  bitconcepts.tech with automatic installation, and its
+  configuration carries no exclusion for this site, so it
+  applies here as it does across the domain (checked against the
+  hosting account on 2026-11-05). It is Cloudflare's page-visit
+  measurement, run under Cloudflare's own terms; it measures
+  visits to pages and is not connected to the research dataset.
+
+## 6. Your controls
+
+- **Your account.** From your account page you can change your
+  email address and your password, and see and revoke your
+  sessions.
+- **Closing an account.** Ask an administrator to disable or
+  remove your account. Disabling stops sign-in immediately.
+  Removal closes the account and deletes its sessions; as §3
+  explains, your name remains on work you already did and in the
+  audit log.
+- **Exporting your work.** You can export your own work from a
+  workspace. A project exports as a single JSON bundle holding
+  the project and the work linked to it (hypotheses, notebooks,
+  citations, and correspondence). Reports you generate can be
+  downloaded as files, and corpus texts can be exported in text,
+  CSV, or JSON form. An export is a copy — it removes nothing —
+  and it reaches only the workspaces your access covers, under
+  the same rule as §3: a workspace you cannot see cannot be
+  exported by you.
+
+## 7. How this statement changes
+
+Once approved, this text is kept as the single approved version
+under the program's policy-sync rules. It changes only through a
+recorded approval by the owner of the new text, and the copy the
+system serves is checked against the approved version
+automatically, so the served words and the approved words cannot
+quietly drift apart.
+
+*Version: 1.0 — approved by the owner on 2026-11-05, effective
+from that date. This is the first approved version; the version
+history begins here.*
+
+## 8. Questions
+
+Questions about this statement, or about how the program handles
+your data, can be sent to tristen@bitconcepts.tech.

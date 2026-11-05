@@ -38,6 +38,7 @@ from glossa_lab.api.phase import router as phase_router
 from glossa_lab.api.experiments import router as experiments_router
 from glossa_lab.api.foundation_check import router as foundation_check_router
 from glossa_lab.api.health import router as health_router
+from glossa_lab.api.privacy import router as privacy_router
 from glossa_lab.api.indus_evidence import router as indus_evidence_router
 from glossa_lab.api.indus_map import router as indus_map_router
 from glossa_lab.api.indus_evidence import scoped_router as programs_evidence_router
@@ -441,6 +442,7 @@ def create_app() -> FastAPI:
 
     # Register routers (must come before static-file mount so API takes priority)
     application.include_router(health_router, prefix="/api/v1")
+    application.include_router(privacy_router, prefix="/api/v1")
     application.include_router(catalog_router, prefix="/api/v1")
     application.include_router(experiments_router, prefix="/api/v1")
     application.include_router(pipelines_router, prefix="/api/v1")

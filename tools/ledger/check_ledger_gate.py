@@ -3,10 +3,11 @@
 
 Recomputes the matrix (and, when present, the map and the
 program map) from the ledger by the gate's own independent
-route and checks the chain under classes V1–V10 of
+route and checks the chain under classes V1–V11 of
 spec.md Point 4 (V8, the settling canonicals, arrived
 with Stage 4; V10, the program-map equivalence, with
-Spec 088 Stage 3). The gate never writes: bytecode
+Spec 088 Stage 3; V11, run-binding, with Spec 089
+Stage 5). The gate never writes: bytecode
 writing is disabled before any backend module is imported,
 and the gate calls only pure builders and read paths
 (parent-carried write-freedom requirement; V9 audits the
@@ -52,22 +53,32 @@ from glossa_lab.ledger_gate import run_gate  # noqa: E402
 # "--pr-scope on PRs (gate over the artifacts the change
 # touches)"). Machinery changes run the full gate.
 _LAYER_CLASSES = {
-    "ledger": {"V1", "V2", "V3", "V4", "V8", "V9"},
+    "ledger": {"V1", "V2", "V3", "V4", "V8", "V9", "V11"},
     "matrix": {"V2", "V3", "V4"},
     "map": {"V2", "V4", "V5", "V6"},
     "program_map": {"V10"},
     "anchors": {"V4", "V6", "V8"},
+    "runs": {"V11"},
 }
 _MACHINERY = (
     "backend/glossa_lab/ledger_gate.py",
     "backend/glossa_lab/gated_publish.py",
     "backend/glossa_lab/settling.py",
+    "backend/glossa_lab/run_records.py",
+    "backend/glossa_lab/run_junction.py",
     "tools/ledger/",
+    "tools/runs/",
     ".github/workflows/ci.yml",
 )
 
 
 def _layer_of(path: str) -> str | None:
+    if path.startswith("specs/") and "/records/" in path:
+        # A spec's records/ directory is a run store of
+        # record for the suite/experiment surfaces when it
+        # carries a run index (Spec 089): its changes pull
+        # in the run-binding class.
+        return "runs"
     if (
         path.startswith("glossa-indus/ledger/")
         or path == "backend/glossa_lab/ledger_intake.py"

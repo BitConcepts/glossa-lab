@@ -33,7 +33,16 @@ published artifacts, with taxonomy coverage checked
 bidirectionally and the stamp checked against the
 current ledger; Stage 4 adds the generated page to the
 byte-compared artifact list, rendered from the
-recomputed data under the gate's own template copies).
+recomputed data under the gate's own template copies),
+V11 run-binding (Spec 089 Stage 5: the run stores, their
+indexes, the junction store, and the run-produced
+artifacts checked under the gate's own registered copies
+of run-defs v1 — not imported from the run tooling —
+for resolving producing bindings, quarantined citations,
+store census and index integrity, and junction
+completeness; the gate verifies junction reports and
+index acts, it never originates an analysis, an act, or
+an adjudication).
 
 **The gate never writes.** It calls only pure builders and
 read paths; it imports no write entry point (V9 audits this
@@ -682,6 +691,20 @@ REGISTERED_WRITERS = {
     # with S1; the V10 recompute class itself lands in S3.
     "backend/glossa_lab/program_map_generate.py",
     "backend/glossa_lab/gated_publish.py",
+    # Spec 089 Stage 5 (T502): the run machinery's writers
+    # join the census in the same motion that extends the
+    # artifact patterns to the run stores, the indexes, and
+    # the junction store below — the run-record library
+    # (records + index acts), the junction tool (reports +
+    # quarantine acts through the library), and the settling
+    # engine's store writer (run records + the bound
+    # assignment-sets artifact). The tools/ CLIs write only
+    # through these modules and carry no write call of their
+    # own, so the census reads them as readers, exactly as
+    # it reads the gated-publication CLIs' library.
+    "backend/glossa_lab/run_records.py",
+    "backend/glossa_lab/run_junction.py",
+    "backend/glossa_lab/settling.py",
     "tools/ledger/generate_matrix.py",
     "tools/ledger/generate_map.py",
 }
@@ -691,6 +714,15 @@ ARTIFACT_PATH_PATTERNS = (
     re.compile(r"(?<![\w.-])matrix\.json(?![\w-])"),
     re.compile(r"(?<![\w.-])matrix\.md(?![\w-])"),
     re.compile(r"(?<![\w.-])map-data\.json(?![\w-])"),
+    # Spec 089 Stage 5: the run layer's artifacts — the
+    # settling runs store, the junction store, every store's
+    # run index, and the run-produced assignment-sets
+    # artifact — join the census patterns, so an
+    # unregistered write to any of them is a gate failure.
+    re.compile(r"glossa-indus/ledger/runs"),
+    re.compile(r"glossa-indus/ledger/junctions"),
+    re.compile(r"run-index\.jsonl"),
+    re.compile(r"assignment-sets\.json"),
 )
 
 
@@ -2270,6 +2302,20 @@ def _derive_map(
     loaded_runs = []
     for run_path in run_files:
         record = json.loads(run_path.read_text(encoding="utf-8"))
+        # The gate's own copy of the builder's enumeration
+        # rule: the map carries scenario evaluation records.
+        # Since Spec 089 the run store also holds
+        # materialization records (no candidate/scenario)
+        # and absence records (no result block) — store
+        # records under run-defs v1, not settling
+        # evaluations, and never map-carried (Spec 089
+        # Stage 5, both copies filtered in the same motion).
+        if not (
+            isinstance(record.get("candidate"), str)
+            and isinstance(record.get("scenario"), str)
+            and isinstance(record.get("result"), dict)
+        ):
+            continue
         loaded_runs.append((run_path, record))
     loaded_runs.sort(
         key=lambda pair: (
@@ -3159,8 +3205,9 @@ def _v9_checks(root: Path) -> list[Check]:
             ]
             + (
                 [
-                    f"UNREGISTERED WRITER: {w} — the generator "
-                    "and the gated-publication path are the only "
+                    f"UNREGISTERED WRITER: {w} — the generators, "
+                    "the gated-publication path, and the "
+                    "registered run machinery are the only "
                     "writers (V9)"
                     for w in sorted(unregistered)
                 ]
@@ -4172,6 +4219,1032 @@ def _v10_checks(
 
 
 # ---------------------------------------------------------------------------
+# V11 — run-binding (Spec 089 Stage 5, T502). The gate's
+# own registered copies of run-defs v1's checkable rules
+# (glossa-indus/ledger/RUN-DEFINITIONS.md), deliberately
+# NOT imported from the run tooling (run_records,
+# run_junction): the header required-fields list, the
+# key's component and constitutive sets, the disposition
+# vocabulary, the absence kinds, the index act forms and
+# fold refusals, and the legacy label. A deliberate
+# run-defs change is made in every copy in the same
+# motion (run-defs v1 §9); a change made in the tooling's
+# copy only is exactly the divergence this class exists
+# to catch (C089-15). The gate verifies bindings,
+# citations, censuses, and junction completeness; it
+# never originates a junction analysis, appends an act,
+# or lifts a quarantine (D-089-2, C089-16).
+
+GATE_RUN_DEFS_VERSION = "run-defs v1"
+RUN_JUNCTIONS_REL = "glossa-indus/ledger/junctions"
+RUN_INDEX_NAME = "run-index.jsonl"
+RUN_SURFACES = ("settling", "experiment", "study", "suite")
+RUN_HEADER_FIELDS = (
+    "run_id",
+    "surface",
+    "tool",
+    "tool_version",
+    "started",
+    "key",
+    "determinism_class",
+)
+RUN_KEY_COMPONENTS = (
+    "surface",
+    "command",
+    "tool_version",
+    "input_pins",
+    "seed",
+    "code_version",
+    "environment_class",
+)
+RUN_CONSTITUTIVE_COMPONENTS = (
+    "surface",
+    "command",
+    "tool_version",
+    "input_pins",
+    "seed",
+)
+RUN_DETERMINISM_CLASSES = ("deterministic", "named-nondeterministic")
+RUN_DISPOSITIONS = (
+    "explained-by-named-difference",
+    "not-comparable",
+    "identical-after-all",
+    "unexplained",
+)
+RUN_ABSENCE_KINDS = ("empty", "refused", "crashed")
+RUN_ACT_KINDS = ("entry", "supersedes", "quarantine", "adjudication")
+RUN_ADJUDICATION_STATES = (
+    "quarantine-lifted",
+    "quarantine-confirmed",
+)
+RUN_LEGACY_LABEL = "legacy — key partial"
+_RUN_ID_RE = re.compile(
+    r"^(settling|experiment|study|suite)-\d{8}T\d{6}Z-[0-9a-f]{6}$"
+)
+_RUN_TOKEN_RE = re.compile(
+    r"(?<![\w-])(?:settling|experiment|study|suite)"
+    r"-\d{8}T\d{6}Z-[0-9a-f]{6}(?![\w-])"
+)
+_JUNCTION_ID_RE = re.compile(r"^junction-\d{8}T\d{6}Z-[0-9a-f]{6}$")
+_SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+_COMMIT_RE = re.compile(r"^[0-9a-f]{40}$")
+_EVENT_RE = re.compile(r"^re_derivations\[(\d+)\]$")
+
+
+class _V11Store:
+    """One guarded run store as the gate reads it: its
+    index acts, the gate's own fold of them, and its
+    record files parsed once for every leg."""
+
+    def __init__(self, label: str, store_dir: Path):
+        self.label = label
+        self.dir = store_dir
+        self.index_path = store_dir / RUN_INDEX_NAME
+        self.acts: list[Any] = []
+        self.index_failures: list[str] = []
+        if self.index_path.is_file():
+            for line_no, line in enumerate(
+                self.index_path.read_text(encoding="utf-8").splitlines(),
+                start=1,
+            ):
+                if not line.strip():
+                    continue
+                try:
+                    self.acts.append(json.loads(line))
+                except json.JSONDecodeError as exc:
+                    self.index_failures.append(
+                        f"{label}: index line {line_no} is not "
+                        f"readable JSON: {exc}"
+                    )
+        self.entries: dict[str, dict[str, Any]] = {}
+        self.superseded_by: dict[str, str] = {}
+        self.junctions: dict[str, dict[str, Any]] = {}
+        self.fold_failures: list[str] = []
+        self._fold()
+        self.records: dict[str, Optional[dict[str, Any]]] = {}
+        if store_dir.is_dir():
+            for path in sorted(store_dir.glob("*.json")):
+                try:
+                    parsed = json.loads(
+                        path.read_text(encoding="utf-8")
+                    )
+                    self.records[path.name] = (
+                        parsed if isinstance(parsed, dict) else None
+                    )
+                except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+                    self.records[path.name] = None
+
+    def _fold(self) -> None:
+        """The gate's own fold of the index acts, under
+        run-defs v1 §7.1's refusal rules (registered
+        copies): refusals are collected as named failures,
+        never raised, and a refused act changes no state —
+        the same order the tooling's fold enforces."""
+        for pos, act in enumerate(self.acts, start=1):
+            where = f"{self.label} index act {pos}"
+            if not isinstance(act, dict):
+                self.fold_failures.append(
+                    f"{where}: act is not an object"
+                )
+                continue
+            kind = act.get("act")
+            if kind not in RUN_ACT_KINDS:
+                self.fold_failures.append(
+                    f"{where}: unknown index act kind {kind!r}; "
+                    f"the acts are {list(RUN_ACT_KINDS)}"
+                )
+                continue
+            if kind == "entry":
+                self._fold_entry(where, act)
+            elif kind == "supersedes":
+                self._fold_supersedes(where, act)
+            elif kind == "quarantine":
+                self._fold_quarantine(where, act)
+            else:
+                self._fold_adjudication(where, act)
+
+    def _fold_entry(self, where: str, act: dict[str, Any]) -> None:
+        for name in ("run_id", "record", "key"):
+            if name not in act:
+                self.fold_failures.append(
+                    f"{where}: entry act is missing field {name!r}"
+                )
+                return
+        run_id = act["run_id"]
+        if not isinstance(run_id, str) or not run_id:
+            self.fold_failures.append(
+                f"{where}: entry act run_id must be a string"
+            )
+            return
+        legacy_id = run_id.startswith("legacy:")
+        if not legacy_id and not _RUN_ID_RE.match(run_id):
+            self.fold_failures.append(
+                f"{where}: entry act run id {run_id!r} is "
+                "neither a run-defs v1 run id nor a legacy id"
+            )
+            return
+        if not isinstance(act["record"], str) or not act["record"]:
+            self.fold_failures.append(
+                f"{where}: entry act 'record' must be a "
+                "non-empty path string"
+            )
+            return
+        if not isinstance(act["key"], dict):
+            self.fold_failures.append(
+                f"{where}: entry act 'key' must be an object"
+            )
+            return
+        if run_id in self.entries:
+            self.fold_failures.append(
+                f"{where}: duplicate entry act for run id "
+                f"{run_id!r} — an id is one execution, "
+                "entered once"
+            )
+            return
+        if act.get("legacy"):
+            if not legacy_id:
+                self.fold_failures.append(
+                    f"{where}: legacy entry act carries "
+                    f"non-legacy run id {run_id!r}"
+                )
+                return
+            if act.get("label") != RUN_LEGACY_LABEL or not act.get(
+                "key_partial"
+            ):
+                self.fold_failures.append(
+                    f"{where}: legacy entry {run_id!r} must "
+                    f"carry the label {RUN_LEGACY_LABEL!r} "
+                    "and key_partial: true"
+                )
+                return
+            if not act.get("missing"):
+                self.fold_failures.append(
+                    f"{where}: legacy entry {run_id!r} must "
+                    "name the components that do not exist "
+                    "to recover ('missing')"
+                )
+                return
+        elif legacy_id:
+            self.fold_failures.append(
+                f"{where}: entry act for legacy id "
+                f"{run_id!r} is not marked legacy — legacy "
+                "ids exist only under the partial label"
+            )
+            return
+        else:
+            # A non-legacy entry's key is a full run-key v1
+            # key (the tooling's fold validates it the same
+            # way): every registered component present, the
+            # string components non-empty strings, the pins
+            # an object.
+            key = act["key"]
+            for component in RUN_KEY_COMPONENTS:
+                if component not in key:
+                    self.fold_failures.append(
+                        f"{where}: entry act key omits "
+                        f"registered component {component!r}"
+                    )
+                    return
+            for component in (
+                "command",
+                "tool_version",
+                "code_version",
+                "environment_class",
+            ):
+                if not isinstance(key[component], str) or not key[
+                    component
+                ]:
+                    self.fold_failures.append(
+                        f"{where}: entry act key component "
+                        f"{component!r} must be a non-empty "
+                        "string"
+                    )
+                    return
+            if not isinstance(key["input_pins"], dict):
+                self.fold_failures.append(
+                    f"{where}: entry act key component "
+                    "'input_pins' must be an object"
+                )
+                return
+        self.entries[run_id] = act
+
+    def _fold_supersedes(self, where: str, act: dict[str, Any]) -> None:
+        for name in ("run_id", "supersedes", "ref"):
+            if name not in act:
+                self.fold_failures.append(
+                    f"{where}: supersedes act is missing "
+                    f"field {name!r}"
+                )
+                return
+        new_id, old_id = act["run_id"], act["supersedes"]
+        for named in (new_id, old_id):
+            if named not in self.entries:
+                self.fold_failures.append(
+                    f"{where}: supersedes act names unknown "
+                    f"run id {named!r}"
+                )
+                return
+        if new_id == old_id:
+            self.fold_failures.append(
+                f"{where}: a run may not supersede itself"
+            )
+            return
+        if not isinstance(act["ref"], str) or not act["ref"]:
+            self.fold_failures.append(
+                f"{where}: supersedes act must carry the "
+                "act reference ('ref') that ordered the "
+                "supersession"
+            )
+            return
+        if old_id in self.superseded_by:
+            self.fold_failures.append(
+                f"{where}: run {old_id!r} is already "
+                f"superseded by {self.superseded_by[old_id]!r} "
+                "— a record's successor is single"
+            )
+            return
+        self.superseded_by[old_id] = new_id
+
+    def _fold_quarantine(self, where: str, act: dict[str, Any]) -> None:
+        for name in ("junction_id", "run_ids"):
+            if name not in act:
+                self.fold_failures.append(
+                    f"{where}: quarantine act is missing "
+                    f"field {name!r}"
+                )
+                return
+        junction_id = act["junction_id"]
+        if not isinstance(junction_id, str) or not _JUNCTION_ID_RE.match(
+            junction_id
+        ):
+            self.fold_failures.append(
+                f"{where}: quarantine act junction id "
+                f"{junction_id!r} is malformed"
+            )
+            return
+        run_ids = act["run_ids"]
+        if not isinstance(run_ids, list) or not run_ids:
+            self.fold_failures.append(
+                f"{where}: quarantine act 'run_ids' must be "
+                "a non-empty list"
+            )
+            return
+        for run_id in run_ids:
+            if run_id not in self.entries:
+                self.fold_failures.append(
+                    f"{where}: quarantine act names unknown "
+                    f"run id {run_id!r}"
+                )
+                return
+        junction = self.junctions.setdefault(
+            junction_id, {"run_ids": [], "lifted": False}
+        )
+        for run_id in run_ids:
+            if run_id not in junction["run_ids"]:
+                junction["run_ids"].append(run_id)
+
+    def _fold_adjudication(self, where: str, act: dict[str, Any]) -> None:
+        for name in ("junction_id", "ruling", "actor", "resulting_state"):
+            if name not in act:
+                self.fold_failures.append(
+                    f"{where}: adjudication act is missing "
+                    f"field {name!r}"
+                )
+                return
+        junction_id = act["junction_id"]
+        if junction_id not in self.junctions:
+            self.fold_failures.append(
+                f"{where}: adjudication act names unknown "
+                f"junction id {junction_id!r} (no quarantine "
+                "act introduced it)"
+            )
+            return
+        if act["resulting_state"] not in RUN_ADJUDICATION_STATES:
+            self.fold_failures.append(
+                f"{where}: adjudication resulting_state "
+                f"{act['resulting_state']!r} is not "
+                f"registered; the states are "
+                f"{list(RUN_ADJUDICATION_STATES)}"
+            )
+            return
+        for name in ("ruling", "actor"):
+            if not isinstance(act[name], str) or not act[name]:
+                self.fold_failures.append(
+                    f"{where}: adjudication act {name!r} "
+                    "must be a non-empty string"
+                )
+                return
+        self.junctions[junction_id]["lifted"] = (
+            act["resulting_state"] == "quarantine-lifted"
+        )
+
+    @property
+    def open_quarantine(self) -> dict[str, set[str]]:
+        """run id -> the junction ids under which it
+        stands quarantined (an adjudication lifting the
+        quarantine closes it; the latest act governs)."""
+        out: dict[str, set[str]] = {}
+        for junction_id, junction in self.junctions.items():
+            if junction["lifted"]:
+                continue
+            for run_id in junction["run_ids"]:
+                out.setdefault(run_id, set()).add(junction_id)
+        return out
+
+
+def _v11_discover_stores(root: Path) -> list[_V11Store]:
+    """The guarded stores: the settling runs store, and
+    every citation store — a spec's records/ directory
+    carrying a run index (run-defs v1 §1: the citing
+    spec's records/ is the suite/experiment surfaces'
+    store of record)."""
+    stores: list[_V11Store] = []
+    settling = root / RUNS_REL_DIR
+    if settling.is_dir():
+        stores.append(_V11Store("the settling runs store", settling))
+    specs = root / "specs"
+    if specs.is_dir():
+        for records_dir in sorted(specs.glob("*/records")):
+            if (records_dir / RUN_INDEX_NAME).is_file():
+                label = (
+                    "citation store "
+                    + records_dir.relative_to(root).as_posix()
+                )
+                stores.append(_V11Store(label, records_dir))
+    return stores
+
+
+def _v11_header_failures(
+    record: dict[str, Any], where: str
+) -> list[str]:
+    """Validate one run record's header under the gate's
+    registered copies of run-defs v1 §3.1/§4: the
+    required fields, a registered surface, the run-id
+    form, the key's full component set, a registered
+    determinism class, and exactly one outcome (a result
+    block, or an absence block of a registered kind)."""
+    failures: list[str] = []
+    header = record.get("run")
+    if not isinstance(header, dict):
+        return [f"{where}: record carries no run header object"]
+    for name in RUN_HEADER_FIELDS:
+        if name not in header:
+            failures.append(
+                f"{where}: run header is missing field {name!r}"
+            )
+    surface = header.get("surface")
+    if surface not in RUN_SURFACES:
+        failures.append(
+            f"{where}: header names unregistered surface "
+            f"{surface!r}; the surfaces are {list(RUN_SURFACES)}"
+        )
+    run_id = header.get("run_id")
+    if not isinstance(run_id, str) or not _RUN_ID_RE.match(run_id):
+        failures.append(
+            f"{where}: header run id {run_id!r} is not in "
+            "the run-defs v1 form "
+            "<surface>-<yyyymmddThhmmssZ>-<6 lowercase hex>"
+        )
+    elif isinstance(surface, str) and run_id.split("-", 1)[0] != surface:
+        failures.append(
+            f"{where}: header run id {run_id!r} belongs to "
+            f"surface {run_id.split('-', 1)[0]!r}, not "
+            f"{surface!r}"
+        )
+    key = header.get("key")
+    if not isinstance(key, dict):
+        failures.append(f"{where}: header key is not an object")
+    else:
+        for component in RUN_KEY_COMPONENTS:
+            if component not in key:
+                failures.append(
+                    f"{where}: comparability key omits "
+                    f"registered component {component!r}"
+                )
+        if "surface" in key and key["surface"] != surface:
+            failures.append(
+                f"{where}: key surface {key['surface']!r} "
+                f"does not match the header surface {surface!r}"
+            )
+    if header.get("determinism_class") not in RUN_DETERMINISM_CLASSES:
+        failures.append(
+            f"{where}: determinism class "
+            f"{header.get('determinism_class')!r} is not "
+            f"registered; the classes are "
+            f"{list(RUN_DETERMINISM_CLASSES)}"
+        )
+    has_result = isinstance(record.get("result"), dict)
+    has_absence = isinstance(record.get("absence"), dict)
+    if has_result == has_absence:
+        failures.append(
+            f"{where}: a run record carries exactly one "
+            "outcome — a result block or an absence block"
+        )
+    elif has_absence:
+        absence = record["absence"]
+        if absence.get("kind") not in RUN_ABSENCE_KINDS:
+            failures.append(
+                f"{where}: absence kind "
+                f"{absence.get('kind')!r} is not registered; "
+                f"the kinds are {list(RUN_ABSENCE_KINDS)}"
+            )
+        if not isinstance(absence.get("detail"), str) or not absence.get(
+            "detail"
+        ):
+            failures.append(
+                f"{where}: absence block must carry a "
+                "non-empty 'detail' string"
+            )
+    return failures
+
+
+def _v11_checks(root: Path) -> list[Check]:
+    """V11's legs. Where the run layer has not landed at
+    all (no run store, no junction store, no run-produced
+    artifact — a pre-Spec-089 tree, or a scratch tree
+    carrying only the older chain), V11 enumerates a
+    single NOT-RUN, the V10 posture toward a layer that
+    did not exist yet. Once any part of the layer is
+    present, every leg runs and absence is a named
+    failure."""
+    junctions_dir = root / RUN_JUNCTIONS_REL
+    stores = _v11_discover_stores(root)
+    sets_path = root / ASSIGNMENT_SETS_REL
+    if not stores and not junctions_dir.is_dir() and not sets_path.is_file():
+        return [
+            Check(
+                "V11 run-binding",
+                "NOT-RUN",
+                [
+                    "no run layer in this tree (no run "
+                    "store, no junction store, no "
+                    "run-produced artifact); the layer "
+                    "lands with Spec 089 S1–S4"
+                ],
+            )
+        ]
+    checks: list[Check] = []
+    ledger_path = root / li.LEDGER_REL
+    ledger_sha = (
+        li.canonical_sha256_bytes(ledger_path.read_bytes())
+        if ledger_path.is_file()
+        else None
+    )
+    settling_store = next(
+        (s for s in stores if s.dir == root / RUNS_REL_DIR), None
+    )
+
+    # -- Leg (a): producing bindings resolve. -----------------------------
+    a_failures: list[str] = []
+    a_checked: list[str] = []
+    if sets_path.is_file():
+        try:
+            artifact = json.loads(sets_path.read_text(encoding="utf-8"))
+        except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+            artifact = None
+            a_failures.append(
+                f"the assignment-sets artifact is not readable "
+                f"JSON: {exc}"
+            )
+        if isinstance(artifact, dict):
+            binding = artifact.get("producing_run")
+            if not isinstance(binding, dict) or not binding.get("run_id"):
+                a_failures.append(
+                    "the assignment-sets artifact carries no "
+                    "producing-run binding — a regenerated "
+                    "artifact with no binding and no unbound "
+                    "label cannot ground a verdict (C089-7)"
+                )
+            else:
+                run_id = binding["run_id"]
+                entry = (
+                    settling_store.entries.get(run_id)
+                    if settling_store is not None
+                    else None
+                )
+                if entry is None:
+                    a_failures.append(
+                        f"the assignment-sets artifact names "
+                        f"producing run {run_id!r}, which is "
+                        "not entered in the settling runs "
+                        "store's index — the binding does not "
+                        "resolve (C089-15a)"
+                    )
+                else:
+                    record = (
+                        settling_store.records.get(entry["record"])
+                        if settling_store is not None
+                        else None
+                    )
+                    result = (
+                        record.get("result")
+                        if isinstance(record, dict)
+                        else None
+                    )
+                    if not isinstance(result, dict) or result.get(
+                        "materialized"
+                    ) != ASSIGNMENT_SETS_REL:
+                        a_failures.append(
+                            f"producing run {run_id!r} is "
+                            "entered, but its record is not a "
+                            "materialization record for "
+                            f"{ASSIGNMENT_SETS_REL}"
+                        )
+                    elif result.get("artifact_sha256") != li.sha256_file(
+                        sets_path
+                    ):
+                        a_failures.append(
+                            f"producing run {run_id!r} names "
+                            "artifact sha256 "
+                            f"{result.get('artifact_sha256')}, "
+                            "but the published artifact hashes "
+                            f"{li.sha256_file(sets_path)} — "
+                            "the binding names a different "
+                            "artifact than the one published"
+                        )
+                    else:
+                        a_checked.append(
+                            f"assignment-sets.json → run "
+                            f"{run_id} (its materialization "
+                            "record names this artifact and "
+                            "its current sha256)"
+                        )
+    elif stores:
+        a_failures.append(
+            "the run layer is present but the run-produced "
+            f"artifact {ASSIGNMENT_SETS_REL} is missing — "
+            "no binding can resolve for it"
+        )
+    # The generated layers' build bindings: each layer's
+    # stamp names the ledger build it was derived over;
+    # the binding resolves iff that build is the ledger
+    # of record.
+    layer_bindings = (
+        (MATRIX_REL_DIR + "/matrix.json", ("as_of", "ledger_sha256")),
+        (MAP_REL, ("header", "as_of", "ledger_sha256")),
+        (PROGRAM_MAP_REL, ("stamp", "ledger_sha256")),
+    )
+    for rel, path_keys in layer_bindings:
+        layer_path = root / rel
+        if not layer_path.is_file() or ledger_sha is None:
+            continue
+        try:
+            layer = json.loads(layer_path.read_text(encoding="utf-8"))
+        except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+            continue  # unreadable layers are V3/V5/V10 findings
+        node: Any = layer
+        for key in path_keys:
+            node = node.get(key) if isinstance(node, dict) else None
+        if not isinstance(node, str):
+            a_failures.append(
+                f"{rel} carries no ledger build binding at "
+                f"{'.'.join(path_keys)} — a published "
+                "artifact in the guarded set with no "
+                "producing build named (C089-15a)"
+            )
+        elif node != ledger_sha:
+            a_failures.append(
+                f"{rel} names ledger build {node}, which "
+                f"is not the ledger of record ({ledger_sha}) "
+                "— the binding does not resolve"
+            )
+        else:
+            a_checked.append(f"{rel} → ledger build {node[:12]}…")
+    # Citation records and store records carrying the
+    # header format validate under the registered copies.
+    header_records = 0
+    for store in stores:
+        for name, record in sorted(store.records.items()):
+            if record is None:
+                a_failures.append(
+                    f"{store.label}: record file {name} is "
+                    "not readable JSON"
+                )
+                continue
+            if "run" not in record:
+                continue  # a pre-spec record: leg (c) covers its entry
+            header_records += 1
+            a_failures.extend(
+                _v11_header_failures(
+                    record, f"{store.label} record {name}"
+                )
+            )
+    if header_records:
+        a_checked.append(
+            f"{header_records} run record(s) carrying the "
+            "run-defs v1 header validate under the gate's "
+            "registered copies"
+        )
+    checks.append(
+        Check(
+            "V11 run-binding — producing bindings resolve "
+            "(run-defs v1 copies)",
+            "FAIL" if a_failures else "PASS",
+            a_failures
+            or a_checked
+            or ["no producing binding stands in the guarded set"],
+        )
+    )
+
+    # -- Leg (b): no quarantined citation as verdict support. -------------
+    open_quarantine: dict[str, set[str]] = {}
+    entered_ids: set[str] = set()
+    for store in stores:
+        entered_ids.update(store.entries)
+        for run_id, junction_ids in store.open_quarantine.items():
+            open_quarantine.setdefault(run_id, set()).update(junction_ids)
+    b_failures: list[str] = []
+    cited_resolved: set[str] = set()
+    cited_unresolved: set[str] = set()
+    files_scanned = 0
+    scan_texts: list[tuple[str, str]] = []
+    specs_dir = root / "specs"
+    if specs_dir.is_dir():
+        for records_dir in sorted(specs_dir.glob("*/records")):
+            for path in sorted(records_dir.rglob("*")):
+                if path.is_file() and path.name != RUN_INDEX_NAME:
+                    scan_texts.append(
+                        (
+                            path.relative_to(root).as_posix(),
+                            path.read_bytes().decode(
+                                "utf-8", errors="replace"
+                            ),
+                        )
+                    )
+    for store in stores:
+        for name in sorted(store.records):
+            path = store.dir / name
+            if path.is_file():
+                scan_texts.append(
+                    (
+                        path.relative_to(root).as_posix(),
+                        path.read_bytes().decode(
+                            "utf-8", errors="replace"
+                        ),
+                    )
+                )
+    for label, text in scan_texts:
+        files_scanned += 1
+        for token in _RUN_TOKEN_RE.findall(text):
+            if token in open_quarantine:
+                b_failures.append(
+                    f"{label} cites run {token}, which "
+                    "stands under open unexplained "
+                    f"quarantine (junction "
+                    f"{sorted(open_quarantine[token])[0]}) — "
+                    "a quarantined run may be cited only "
+                    "as quarantined, never as verdict "
+                    "support (C089-13)"
+                )
+            elif token in entered_ids:
+                cited_resolved.add(token)
+            else:
+                cited_unresolved.add(token)
+    b_evidence = [
+        f"{files_scanned} record file(s) scanned for run "
+        f"citations; {len(cited_resolved)} cited run(s) "
+        "resolve to entered runs, none under quarantine"
+        if not b_failures
+        else f"{files_scanned} record file(s) scanned for "
+        "run citations",
+        f"{len(open_quarantine)} run(s) stand under open "
+        "unexplained quarantine in the guarded indexes",
+    ]
+    if cited_unresolved:
+        shown = ", ".join(sorted(cited_unresolved)[:3])
+        more = (
+            f" (+{len(cited_unresolved) - 3} more)"
+            if len(cited_unresolved) > 3
+            else ""
+        )
+        b_evidence.append(
+            f"{len(cited_unresolved)} run-id-shaped token(s) "
+            "resolve to no entered run (named in test "
+            "fixtures and stage records of the machinery's "
+            f"own tests): {shown}{more} — reported, not "
+            "failed: the gate fails quarantined citations; "
+            "a citation's existence in a store is leg (a)'s "
+            "and the reviewer's office"
+        )
+    checks.append(
+        Check(
+            "V11 run-binding — no quarantined citation as "
+            "verdict support",
+            "FAIL" if b_failures else "PASS",
+            b_failures + b_evidence if b_failures else b_evidence,
+        )
+    )
+
+    # -- Leg (c): store census and index integrity. ------------------------
+    c_failures: list[str] = []
+    c_evidence: list[str] = []
+    canonical_events: Optional[int] = None
+    canonical_path = root / SETTLING_CANONICAL_REL
+    if canonical_path.is_file():
+        try:
+            canonical = json.loads(
+                canonical_path.read_text(encoding="utf-8")
+            )
+            canonical_events = len(canonical.get("re_derivations") or [])
+        except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+            canonical_events = None
+    for store in stores:
+        c_failures.extend(store.index_failures)
+        c_failures.extend(store.fold_failures)
+        standing = 0
+        historical = 0
+        events = 0
+        entered_records: dict[str, str] = {}
+        for run_id, entry in sorted(store.entries.items()):
+            record_name = entry["record"]
+            event_match = _EVENT_RE.match(str(entry.get("event", "")))
+            if event_match:
+                events += 1
+                idx = int(event_match.group(1))
+                if canonical_events is None or idx >= canonical_events:
+                    c_failures.append(
+                        f"{store.label}: entry {run_id!r} "
+                        f"points at re_derivations[{idx}] of "
+                        f"{SETTLING_CANONICAL_REL}, which "
+                        "does not stand in that file"
+                    )
+                continue
+            if record_name in store.records:
+                standing += 1
+                entered_records[record_name] = run_id
+            elif (
+                entry.get("legacy")
+                and _COMMIT_RE.match(
+                    str(entry.get("superseded_by_commit", ""))
+                )
+                and isinstance(entry.get("git_blob"), str)
+                and entry.get("git_blob")
+                and _SHA256_RE.match(str(entry.get("blob_sha256", "")))
+            ):
+                historical += 1
+            else:
+                c_failures.append(
+                    f"{store.label}: entry {run_id!r} names "
+                    f"record {record_name!r}, which neither "
+                    "stands in the store nor is accounted "
+                    "as a superseded legacy record (a "
+                    "superseding commit and the record's "
+                    "blob hash named)"
+                )
+        # The census population is the store's run
+        # records. The settling store is a dedicated run
+        # store: every record file in it is a run record,
+        # pre-spec ones included (their headerlessness is
+        # what the legacy entry covers). A citation store
+        # is a spec's general records directory: a file is
+        # a run record there iff it carries the run-defs
+        # v1 header — the directory's other records
+        # (assessments, notes) are not run population and
+        # no census covers them.
+        dedicated = store.dir == root / RUNS_REL_DIR
+        for name in sorted(store.records):
+            record = store.records[name]
+            header = (
+                record.get("run") if isinstance(record, dict) else None
+            )
+            is_run_record = dedicated or isinstance(header, dict)
+            if not is_run_record:
+                continue
+            if name not in entered_records:
+                c_failures.append(
+                    f"{store.label}: record file {name} "
+                    "stands in the store with no index entry "
+                    "— the index's folded census does not "
+                    "cover the store (C089-17)"
+                )
+            elif isinstance(header, dict):
+                entered_as = entered_records[name]
+                if header.get("run_id") != entered_as:
+                    c_failures.append(
+                        f"{store.label}: record file {name} "
+                        f"carries header run id "
+                        f"{header.get('run_id')!r} but is "
+                        f"entered as {entered_as!r}"
+                    )
+        c_evidence.append(
+            f"{store.label}: folded census "
+            f"{len(store.entries)} entries = {standing} "
+            f"standing record(s) + {historical} superseded "
+            f"legacy record(s) + {events} canonical "
+            "re-derivation event(s); every supersedes / "
+            "quarantine / adjudication act names run ids "
+            "that resolve (the fold refuses otherwise)"
+        )
+    checks.append(
+        Check(
+            "V11 run-binding — store census and index "
+            "integrity",
+            "FAIL" if c_failures else "PASS",
+            c_failures or c_evidence,
+        )
+    )
+
+    # -- Leg (d): junction completeness. -----------------------------------
+    d_failures: list[str] = []
+    reports: list[dict[str, Any]] = []
+    if junctions_dir.is_dir():
+        for path in sorted(junctions_dir.glob("*.json")):
+            try:
+                report = json.loads(path.read_text(encoding="utf-8"))
+            except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+                d_failures.append(
+                    f"junction report {path.name} is not "
+                    f"readable JSON: {exc}"
+                )
+                continue
+            if isinstance(report, dict):
+                reports.append(report)
+            else:
+                d_failures.append(
+                    f"junction report {path.name} is not a "
+                    "JSON object"
+                )
+    report_pairs: dict[frozenset, dict[str, Any]] = {}
+    disposition_counts: Counter = Counter()
+    for report in reports:
+        junction_id = report.get("junction_id")
+        if not isinstance(junction_id, str) or not _JUNCTION_ID_RE.match(
+            junction_id
+        ):
+            d_failures.append(
+                f"junction report names malformed junction "
+                f"id {junction_id!r}"
+            )
+            continue
+        disposition = report.get("disposition")
+        disposition_counts[disposition] += 1
+        if disposition not in RUN_DISPOSITIONS:
+            d_failures.append(
+                f"junction report {junction_id} carries "
+                f"disposition {disposition!r}, which is "
+                "outside the registered vocabulary "
+                f"{list(RUN_DISPOSITIONS)} (C089-12)"
+            )
+            continue
+        runs = report.get("runs")
+        run_ids = (
+            [r.get("run_id") for r in runs if isinstance(r, dict)]
+            if isinstance(runs, list)
+            else []
+        )
+        if len(run_ids) != 2 or not all(
+            isinstance(r, str) for r in run_ids
+        ):
+            d_failures.append(
+                f"junction report {junction_id} does not "
+                "name exactly two runs by id"
+            )
+            continue
+        report_pairs[frozenset(run_ids)] = report
+    comparable_pairs = 0
+    divergent_pairs = 0
+    key_partial_entries = 0
+    for store in stores:
+        full_key_entries: dict[str, dict[str, Any]] = {}
+        for run_id, entry in store.entries.items():
+            key = entry.get("key") or {}
+            if entry.get("legacy") or any(
+                component not in key
+                for component in RUN_CONSTITUTIVE_COMPONENTS
+            ):
+                key_partial_entries += 1
+                continue
+            full_key_entries[run_id] = entry
+        run_ids = sorted(full_key_entries)
+        for i, run_id_a in enumerate(run_ids):
+            for run_id_b in run_ids[i + 1 :]:
+                key_a = full_key_entries[run_id_a]["key"]
+                key_b = full_key_entries[run_id_b]["key"]
+                if any(
+                    key_a.get(component) != key_b.get(component)
+                    for component in RUN_CONSTITUTIVE_COMPONENTS
+                ):
+                    continue
+                comparable_pairs += 1
+                record_a = store.records.get(
+                    full_key_entries[run_id_a]["record"]
+                )
+                record_b = store.records.get(
+                    full_key_entries[run_id_b]["record"]
+                )
+                if record_a is None or record_b is None:
+                    continue  # leg (c) names the missing record
+                outcome_a = record_a.get(
+                    "result", record_a.get("absence")
+                )
+                outcome_b = record_b.get(
+                    "result", record_b.get("absence")
+                )
+                if outcome_a == outcome_b:
+                    continue
+                divergent_pairs += 1
+                if frozenset((run_id_a, run_id_b)) not in report_pairs:
+                    d_failures.append(
+                        f"{store.label}: comparable runs "
+                        f"{run_id_a} and {run_id_b} diverge "
+                        "with no junction report naming the "
+                        "pair (C089-11, C089-14)"
+                    )
+    for report in reports:
+        if report.get("disposition") != "unexplained":
+            continue
+        junction_id = report.get("junction_id")
+        run_ids = {
+            r.get("run_id")
+            for r in report.get("runs", [])
+            if isinstance(r, dict)
+        }
+        quarantined = any(
+            junction_id in store.junctions
+            and run_ids <= set(store.junctions[junction_id]["run_ids"])
+            for store in stores
+        )
+        if not quarantined:
+            d_failures.append(
+                f"junction report {junction_id} is "
+                "unexplained, but its runs are not "
+                "quarantined in any guarded index "
+                "(C089-13)"
+            )
+    d_evidence = [
+        f"{comparable_pairs} comparable pair(s) examined "
+        f"across the guarded stores ({divergent_pairs} "
+        "divergent); "
+        f"{key_partial_entries} entered run(s) are "
+        "key-partial (legacy) and pair with nothing, per "
+        "run-defs v1 §7.2",
+        f"junction store: {len(reports)} report(s) on "
+        "file"
+        + (
+            " — by disposition: "
+            + ", ".join(
+                f"{name} {count}"
+                for name, count in sorted(
+                    disposition_counts.items(), key=lambda kv: str(kv[0])
+                )
+            )
+            if reports
+            else " (no junction has occurred under the "
+            "machinery yet; the store comes into existence "
+            "with the first filed report)"
+        ),
+    ]
+    checks.append(
+        Check(
+            "V11 run-binding — junction completeness",
+            "FAIL" if d_failures else "PASS",
+            d_failures + d_evidence if d_failures else d_evidence,
+        )
+    )
+    return checks
+
+
+# ---------------------------------------------------------------------------
 # The gate run
 
 
@@ -4267,6 +5340,8 @@ def run_gate(
         f"settling semantics: {SETTLE_SEMANTICS_VERSION} (the "
         f"gate's registered copies); canonicals: "
         f"{SETTLING_CANONICAL_REL}",
+        f"run definitions: {GATE_RUN_DEFS_VERSION} (the "
+        "gate's registered copies)",
         "falsifier coverage: "
         f"{validator.falsifier_covered} of {validator.falsifier_total} "
         "claim entries carry a falsifier (published on every "
@@ -4992,6 +6067,18 @@ def run_gate(
         report.checks.append(
             Check(
                 "V10 program-map equivalence",
+                "NOT-RUN",
+                ["out of scope for this run"],
+            )
+        )
+
+    # -- V11 ------------------------------------------------------------------
+    if in_scope("V11"):
+        report.checks.extend(_v11_checks(root))
+    else:
+        report.checks.append(
+            Check(
+                "V11 run-binding",
                 "NOT-RUN",
                 ["out of scope for this run"],
             )

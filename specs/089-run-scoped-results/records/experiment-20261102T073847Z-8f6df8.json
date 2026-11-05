@@ -1,0 +1,58 @@
+{
+ "run": {
+  "run_id": "experiment-20261102T073847Z-8f6df8",
+  "surface": "experiment",
+  "tool": "glossa_lab.backend",
+  "tool_version": "0.1.0",
+  "started": "2026-11-02T07:38:47Z",
+  "finished": "2026-11-02T07:48:34Z",
+  "key": {
+   "surface": "experiment",
+   "command": "create_job (pipeline discovery_fetch)",
+   "tool_version": "0.1.0",
+   "input_pins": {
+    "job_id": "1762fa5137f0",
+    "graph_id": null,
+    "graph_version": null,
+    "parameters": {
+     "topics": null,
+     "sources": null,
+     "since_iso": null
+    }
+   },
+   "seed": "no-seed",
+   "code_version": "0.1.0+dev",
+   "environment_class": "desktop/windows"
+  },
+  "determinism_class": "named-nondeterministic"
+ },
+ "result": {
+  "job_id": "1762fa5137f0",
+  "job_status": "completed",
+  "results_sha256": "715478168b2af32cbf1a00177605ccdb8f4f757578deb9baed155a3a0692b377",
+  "summary": {
+   "errors": 0,
+   "fetched": 548,
+   "merged": 548,
+   "new": 0,
+   "results": {
+    "type": "list",
+    "count": 7
+   },
+   "topics_run": {
+    "type": "list",
+    "count": 7
+   }
+  }
+ },
+ "job_id": "1762fa5137f0",
+ "job": {
+  "id": "1762fa5137f0",
+  "name": "Discovery: fetch  [API]",
+  "pipeline": "discovery_fetch",
+  "status": "completed",
+  "created_at": "2026-11-02T07:38:47.261190+00:00",
+  "updated_at": "2026-11-02 07:48:34",
+  "created_by": null
+ }
+}

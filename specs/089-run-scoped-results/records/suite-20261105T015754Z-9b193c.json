@@ -1,0 +1,109 @@
+{
+ "run": {
+  "run_id": "suite-20261105T015754Z-9b193c",
+  "surface": "suite",
+  "tool": "pytest",
+  "tool_version": "9.2.0",
+  "started": "2026-11-05T01:57:54Z",
+  "finished": "2026-11-05T02:02:00Z",
+  "key": {
+   "surface": "suite",
+   "command": "python -m pytest tests/ --tb=short -q --deselect tests/test_phase392_q2_gate.py::test_pipeline_deterministic_under_seed",
+   "tool_version": "9.2.0",
+   "input_pins": {
+    "selection": [
+     "tests/"
+    ],
+    "ignore": []
+   },
+   "seed": "no-seed",
+   "code_version": "edf081584fae326e1440d8548253e7f3360c3b20",
+   "environment_class": "vm/linux"
+  },
+  "determinism_class": "named-nondeterministic"
+ },
+ "result": {
+  "summary": {
+   "passed": 2665,
+   "failed": 1,
+   "errors": 0,
+   "skipped": 108
+  },
+  "failures": [
+   "tests/test_phase133_stage0_inventory.py::test_builder_recomputation_skips_without_inputs"
+  ],
+  "errors": []
+ },
+ "tree": {
+  "sha": "edf081584fae326e1440d8548253e7f3360c3b20",
+  "dirty": true,
+  "rewrite_manifest": [
+   {
+    "path": "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json",
+    "head_sha256": "3af26056574d7497928e4d8f2b68b881c9f33feb384bf140b26cd7fe58b0cc39",
+    "after_sha256": "c5775901029ac6db3a1e61aa9e39bdaa8765d73dc92d84aae4a7dc56c23564c9",
+    "disposition": "restored"
+   },
+   {
+    "path": "glossa-indus/claims/extracted_claims/farmer_sproat_witzel_2004.json",
+    "head_sha256": "1177182f8e9c2f31e17f16d597d84307829b98918182870a13121891d7555a6b",
+    "after_sha256": "3cd0b60d6af541a70ab36b4c62fad24019e019c8452a7a9de9ef8c1f29ea6c9f",
+    "disposition": "restored"
+   },
+   {
+    "path": "glossa-indus/claims/extracted_claims/fuls2023_catalog_of_indussigns_searchins_1dbdecdb.json",
+    "head_sha256": "3b6965b44fd9eef9a71d97a08262aded257cf0bc000bbf86eca60df55d903e8f",
+    "after_sha256": "933b2c8fff1b9a9de780dc36fe2514d2ebdb3b215b0fc7c4d4eb4f208de3071c",
+    "disposition": "restored"
+   },
+   {
+    "path": "glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json",
+    "head_sha256": "329521938bbc6b4c1873d7cbe09750713ff22e50ccdf5fb53dab4546b98736e2",
+    "after_sha256": "963ce6d5e008004b7b5d3233731ad2af65d5e468602f43d8d61444e9b8fa9194",
+    "disposition": "restored"
+   },
+   {
+    "path": "glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json",
+    "head_sha256": "3851a68c13c09c0a0956c3daaeda6b0a97f73595dd7482516cf9a54d956050b0",
+    "after_sha256": "1affbddabf3be1d5e5123581969efb144540c74276b2ad7fe29de5bb34c79a68",
+    "disposition": "restored"
+   },
+   {
+    "path": "glossa-indus/claims/extracted_claims/positional_analysis_of_indus_signs_a2bedc93.json",
+    "head_sha256": "32a8211f81d0d4b9e50c56051c99611b55f0aa52d53c06767314cc42831593a0",
+    "after_sha256": "26bf3818dfd6bf4f7e8ea2ef4f3b4b5ed9431e53cc8cc76e20cd42f21c749830",
+    "disposition": "restored"
+   },
+   {
+    "path": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+    "head_sha256": "58e62d739ae77229377a19a88b51cb014ec657f6f05a17ff335de62480214476",
+    "after_sha256": "a53eea449e0f4ca3c2cc6e1c040c7e70be3b58e547b9cf87bd38e1e684e60aa3",
+    "disposition": "restored"
+   },
+   {
+    "path": "glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json",
+    "head_sha256": "4e89e048116b9800dc9b0f316d4cd7ca38616a10bd2183f20c2069b036ee756a",
+    "after_sha256": "df3b6460e5d5b255f71135a5f6823c48cbe3ed31fc3c01442ec964fac8a42b9a",
+    "disposition": "restored"
+   },
+   {
+    "path": "glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json",
+    "head_sha256": "9dd672d107c98082e12ffaeec11d710bc307322f21b7ea354e7e454ae2599804",
+    "after_sha256": "9dec6b0bd31d376bea13ed5731cf3c0fffd30f2c0e00e535eeb760e43c298baa",
+    "disposition": "restored"
+   },
+   {
+    "path": "glossa-indus/claims/extracted_claims/yadav_2010_ngrams.json",
+    "head_sha256": "9bb65a55184ad6dff6dbbd398411af2c00f83adc723e78b0b76ca5f57210a961",
+    "after_sha256": "e4d2fbe38c7ea0310aa4dd1f3b491c1dc18cb2f52ac21438fc3069b077932aa1",
+    "disposition": "restored"
+   },
+   {
+    "path": "glossa-indus/reports/claim_reports/batch4_claims_report.json",
+    "head_sha256": "af8055f60266d801447456acba7016d2e3ff8e295e5d65326cc61d23e0695bca",
+    "after_sha256": "820f431900e592922ad1165d2b02d045636eb79a13c33d1a2009f7ff66ff4546",
+    "disposition": "restored"
+   }
+  ]
+ }
+}

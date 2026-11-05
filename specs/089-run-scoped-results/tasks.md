@@ -130,7 +130,7 @@ into its stage report.
 
 ## Stage 3 — The junction tool (PR: feat/089-s3-junction)
 
-- [ ] **T301 — The comparator + junction store.** `backend/glossa_lab/
+- [x] **T301 — The comparator + junction store.** `backend/glossa_lab/
   run_junction.py` (pure) + `tools/ledger/run_junction.py` (compare /
   scan / adjudicate): key diff (constitutive marked), environment diff,
   first-divergent-output localization generalized to run-vs-run incl.
@@ -143,7 +143,7 @@ into its stage report.
   *This does not establish:* that the comparator finds causes — it
   localizes divergence and applies the registered dispositions; the
   unexplained state is a first-class outcome, not a failure of the tool.
-- [ ] **T302 — Junction teeth + the tray-flake worked example.** Fixture
+- [x] **T302 — Junction teeth + the tray-flake worked example.** Fixture
   pairs: identical (listed, no report); divergent deterministic (report;
   first-divergence path is the seeded one; quarantine acts for both
   runs); one-side-empty (localization = first present result);
@@ -158,7 +158,7 @@ into its stage report.
   *This does not establish:* coverage of divergence shapes nobody has
   seeded — the vocabulary's unexplained state is the catch-all, and its
   honesty is the point.
-- [ ] **T303 — Automatic trigger on the settling surface.**
+- [x] **T303 — Automatic trigger on the settling surface.**
   `run_settling.py run` ends with a scan of the new record against its
   comparable predecessors in the index: a divergent rerun produces its
   junction report (+ quarantine, if unexplained) in the same invocation

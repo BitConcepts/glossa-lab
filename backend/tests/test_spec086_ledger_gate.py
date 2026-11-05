@@ -1531,6 +1531,7 @@ def test_v11_run_defs_copies_agree_with_the_library_copies():
     assert lg.RUN_ADJUDICATION_STATES == rr.ADJUDICATION_STATES
     assert lg.RUN_LEGACY_LABEL == rr.LEGACY_LABEL
     assert set(lg.RUN_SURFACES) == set(rr.SURFACES)
+    assert tuple(lg.RUN_ACT_KINDS) == tuple(rr.ACT_KINDS)
 
 
 def test_teeth_v11a_unbound_artifact_fails(tmp_path):
@@ -1591,6 +1592,109 @@ def test_teeth_v11c_dropped_record_fails_census(tmp_path):
     _v11_assert_only_leg_fails(report, "store census and index integrity")
     leg = _v11_legs(report)["store census and index integrity"]
     assert "neither stands in the store" in "\n".join(leg.evidence)
+
+
+_V11_LEGACY_NAME = "t405-incumbent-over-full-frame--aaaaaaaaaaaa.json"
+_V11_LEGACY_ID = "legacy:t405-incumbent-over-full-frame--aaaaaaaaaaaa"
+
+
+def _v11_tree_with_legacy_generation(tmp_path) -> Path:
+    """The conforming fixture plus one legacy generation
+    entered standing (its entry carries no accounting
+    fields — the run-defs v1 shape that stranded the
+    2026-11-05 intakes)."""
+    root = _v11_tree(tmp_path)
+    store = root / "glossa-indus" / "ledger" / "runs"
+    _v11_write(
+        store / _V11_LEGACY_NAME,
+        {
+            "artifact": "settling run record",
+            "semantics": "glossa-settle-1",
+            "candidate": "incumbent",
+            "scenario": "t405-incumbent-over-full-frame",
+            "pins": {"ledger": {"sha256": "a" * 64}},
+            "result": {"assignments": []},
+        },
+    )
+    index_path = store / "run-index.jsonl"
+    with index_path.open("a", encoding="utf-8") as handle:
+        handle.write(
+            json.dumps(
+                {
+                    "act": "entry",
+                    "run_id": _V11_LEGACY_ID,
+                    "record": _V11_LEGACY_NAME,
+                    "key": {
+                        "surface": "settling",
+                        "semantics": "glossa-settle-1",
+                        "candidate": "incumbent",
+                        "input_pins": {"ledger": {"sha256": "a" * 64}},
+                    },
+                    "legacy": True,
+                    "key_partial": True,
+                    "label": lg.RUN_LEGACY_LABEL,
+                    "missing": ["command", "tool_version"],
+                },
+                sort_keys=True,
+            )
+            + "\n"
+        )
+    return root
+
+
+def _v11_append_departure(root: Path, **overrides) -> None:
+    store = root / "glossa-indus" / "ledger" / "runs"
+    act = {
+        "act": "departure",
+        "run_id": _V11_LEGACY_ID,
+        "record": _V11_LEGACY_NAME,
+        "superseded_by_commit": "c" * 40,
+        "git_blob": "d" * 40,
+        "blob_sha256": "e" * 64,
+        "ref": "teeth fixture",
+    }
+    act.update(overrides)
+    with (store / "run-index.jsonl").open(
+        "a", encoding="utf-8"
+    ) as handle:
+        handle.write(json.dumps(act, sort_keys=True) + "\n")
+
+
+def test_teeth_v11c_dropped_legacy_generation_unaccounted_fails(tmp_path):
+    """A legacy generation that entered standing and then
+    departed, with no accounting anywhere, is exactly the
+    seeded unaccounted run: leg (c) still fails."""
+    root = _v11_tree_with_legacy_generation(tmp_path)
+    (root / "glossa-indus" / "ledger" / "runs" / _V11_LEGACY_NAME).unlink()
+    report = lg.run_gate(root, scope={"V11"})
+    _v11_assert_only_leg_fails(report, "store census and index integrity")
+    leg = _v11_legs(report)["store census and index integrity"]
+    assert "neither stands in the store" in "\n".join(leg.evidence)
+
+
+def test_v11c_departure_act_accounts_a_dropped_legacy_generation(tmp_path):
+    """The run-defs v2 accounting: the same dropped
+    generation, with a folded departure act carrying the
+    superseding commit, the git blob, and the blob hash,
+    passes every leg — the entry itself unedited."""
+    root = _v11_tree_with_legacy_generation(tmp_path)
+    (root / "glossa-indus" / "ledger" / "runs" / _V11_LEGACY_NAME).unlink()
+    _v11_append_departure(root)
+    report = lg.run_gate(root, scope={"V11"})
+    assert report.ok, report.render()
+    leg = _v11_legs(report)["store census and index integrity"]
+    assert "accounted by departure act" in "\n".join(leg.evidence)
+
+
+def test_teeth_v11c_departure_naming_an_unknown_run_fails(tmp_path):
+    root = _v11_tree_with_legacy_generation(tmp_path)
+    _v11_append_departure(
+        root, run_id="legacy:t405-incumbent-over-full-frame--zzzzzzzzzzzz"
+    )
+    report = lg.run_gate(root, scope={"V11"})
+    _v11_assert_only_leg_fails(report, "store census and index integrity")
+    leg = _v11_legs(report)["store census and index integrity"]
+    assert "unknown run id" in "\n".join(leg.evidence)
 
 
 def test_teeth_v11c_dangling_supersedes_link_fails(tmp_path):

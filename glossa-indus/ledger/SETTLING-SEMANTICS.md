@@ -125,6 +125,29 @@ its record claims.
   amendment, outside this registration's scope; the
   divergence is flagged in the Stage 4 record for the
   owner's oracle read.
+- **Amendment — owner ruling, 2026-11-05 (register
+  GR-088-28; the T201 oracle act).** The flagged
+  divergence is ruled on: the owner rules for the
+  matrix-defs v1 literal-key route. As stored in the
+  ledger's `sign_refs`, `mahadevan:64`, `mahadevan:70`,
+  and `mahadevan:72` resolve to **no anchor record**,
+  and that is the program's registered reading of
+  those references wherever an anchor relation is
+  reported. The by-number resolution of the same
+  references recorded in the bullet above is the
+  losing route, and this registration is amended by
+  this paragraph: it no longer stands as a registered
+  reading of ledger-stored references. Scope, stated
+  plainly: this amendment changes this document's
+  registration and register GR-088-28's entry only.
+  The settling engine's code is unchanged, and no
+  stored canonical output is regenerated — the
+  canonicals stand as computed under the registration
+  as it stood when they were derived. Applying the
+  literal-key rule inside the engine's own identity
+  rule would move computed artifacts; it is not this
+  act, and if ever directed it lands as its own
+  machinery change with its own artifact analysis.
 
 ## 3. Candidates — assignment sets as data
 

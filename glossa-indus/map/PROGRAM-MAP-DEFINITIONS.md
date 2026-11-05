@@ -81,8 +81,19 @@ directories in non-representative sources (citations of the
 proposition by other studies), and counting those as
 membership would let a citing study's class move with a
 claim it did not produce. The builder enumerates those 44
-in the coverage block (§9) so the default is visible, not
-silent. A bundle claim whose source-of-record source names
+in the coverage block (§9) so the rule is visible, not
+silent.
+
+**Owner ruling (2026-11-05, register GR-088-32):** the
+source-of-record reading registered here is **permanent**.
+It is not a default awaiting a fork decision: the owner
+ruled the multi-spec membership fork for this reading, and
+the any-source reading is foreclosed — no defs v2 amendment
+will be directed under that ruling. The taxonomy draft's
+premise ("none multi-spec today") was falsified by the
+ledger and is corrected by this ruling's reading:
+multi-spec *citation* is a standing, enumerated fact (the
+44 claims above); multi-spec *membership* does not exist. A bundle claim whose source-of-record source names
 no spec, or a spec that is not a directory in the tree,
 fails the build naming the claim — its citation does not
 resolve (C088-6).
@@ -231,7 +242,7 @@ Every build emits the coverage block, in `program-map.json`:
   null-falsifier extracted claim ids;
 - the multi-spec claim list (§4.1): bundle claims whose
   `sources[]` name more than one distinct spec directory,
-  counted and listed by id, so the membership default's
+  counted and listed by id, so the membership rule's
   population is visible in every build.
 
 ## 10. As-of stamp

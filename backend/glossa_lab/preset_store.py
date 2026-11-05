@@ -7,6 +7,7 @@ import uuid
 from pathlib import Path
 from typing import Any
 
+from glossa_lab.atomic_io import atomic_write_text
 from glossa_lab.config import get_settings
 
 
@@ -27,7 +28,9 @@ def _load() -> dict[str, list[dict[str, Any]]]:
 def _save(data: dict[str, list[dict[str, Any]]]) -> None:
     path = _store_path()
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(data, indent=2), encoding="utf-8")
+    # F1 (disk-full cascade): atomic write — a failed save leaves the
+    # previous presets file intact and raises a named error.
+    atomic_write_text(path, json.dumps(data, indent=2), encoding="utf-8")
 
 
 # ── Pipeline presets ──────────────────────────────────────────────────

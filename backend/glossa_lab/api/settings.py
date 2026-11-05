@@ -16,6 +16,7 @@ from typing import Any
 from fastapi import APIRouter
 from pydantic import BaseModel
 
+from glossa_lab.atomic_io import atomic_write_text
 from glossa_lab.config import get_settings
 
 router = APIRouter(prefix="/api/v1/settings", tags=["settings"])
@@ -116,7 +117,10 @@ def _load_keys() -> dict[str, str]:
 def _save_keys(data: dict[str, str]) -> None:
     f = _keys_file()
     f.parent.mkdir(parents=True, exist_ok=True)
-    f.write_text(json.dumps(data, indent=2), encoding="utf-8")
+    # F1 (disk-full cascade): never truncate the live keys file in
+    # place — a failed write must leave the previous keys intact and
+    # raise a named error, not destroy every stored key at once.
+    atomic_write_text(f, json.dumps(data, indent=2), encoding="utf-8")
     # Restrict permissions on Unix
     try:
         f.chmod(0o600)

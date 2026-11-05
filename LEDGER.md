@@ -12807,3 +12807,60 @@ and the map says so on its first screen. Full record:
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-05 — F1 disk-full cascade fix (Spec 081 PR-3 precondition)
+
+Owner-commissioned 2026-11-05. Spec 081's PR-3 has been held since
+2026-10-30 on the precondition "the F1 disk-full cascade fix on main"
+(closeout-2026-10-30.md, re-verified at each Phase 2 continuation).
+No written definition of F1 survives in the Spec 081 package, the
+2026-10-29 hardening records, or the program memory beyond that name
+and the resume-note gate lines; this landing is the smallest faithful
+reconstruction from the failure mode the name carries, stated as such.
+
+The defect: the backend's two small state files in the data dir —
+`.keys.json` (every stored API key, provider prefs, and the Graph
+refresh token; written by settings, notifications, the discovery and
+study-loop schedulers, and the SMTP token refresh) and `presets.json`
+— were saved with `Path.write_text`, which opens the live file with
+O_TRUNC. A write that then failed (ENOSPC on a full disk, or any other
+write error) had already destroyed the previous good content, leaving
+a truncated or empty file standing: one failed save cascading into
+the loss of the whole store.
+
+The fix: new `backend/glossa_lab/atomic_io.py` —
+`atomic_write_text(path, content)` writes to a temp file in the same
+directory, flushes + fsyncs, then atomically renames over the target;
+any failure raises `StateWriteError` (an OSError naming the target
+and the cause), removes the temp file, and leaves the previous file
+byte-identical. The target is never opened for in-place truncation.
+`api/settings.py::_save_keys` and `preset_store.py::_save` — the two
+choke points every writer of those files passes through — now save
+through it; no caller changed.
+
+Tests: `backend/tests/test_atomic_io_disk_full.py` (7 tests) injects
+ENOSPC at the rename leg and at the write leg: the failure is named,
+the previous content is byte-identical, no temp file lingers; a
+control test proves the old truncate-then-write shape loses the
+content under the same failure; both converted stores are proven
+end-to-end through their own save paths. Full local enumeration
+(glossa-ci venv, no -x, CI's GPU ignores, phase392 stall test
+deselected by name): 1 failed, 2674 passed, 101 skipped,
+1 deselected, 1 error in 938.49s — the failure is the phase133
+environmental baseline and the error is the tray-teardown flake
+(suite shape #1), both acceptable non-passes of record; the +7 over
+the Spec 089 S5 enumeration (2667) is exactly the new tests. Ledger
+gate verbatim: full `summary: 29 PASS / 0 FAIL / 1 NOT-RUN —
+RESULT: PASS`; --regen `summary: 32 PASS / 0 FAIL / 0 NOT-RUN —
+RESULT: PASS` — the standing profile, unmoved; no census literal
+moved. In-tree suite regenerations (10 extracted-claims files,
+batch-4 report, outputs/partial_loop_result.json) were restored
+before committing.
+
+This landing satisfies the F1 precondition; Spec 081 PR-3 itself
+remains the parent's sequencing call and is not built here. No
+claim's status, stage, or score was changed; the claims ledger is
+untouched.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

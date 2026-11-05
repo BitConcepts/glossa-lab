@@ -40,6 +40,7 @@ jobs:
           # Fallback: install via pyproject.toml extras if available
           pip install pytest httpx anyio pytest-anyio 2>/dev/null || true
 
+      # No -x flag: failure counts must be real counts, not floors (owner ruling, 2026-11-05).
       - name: Run pytest (all tests, short tracebacks)
         working-directory: backend
         env:
@@ -52,7 +53,6 @@ jobs:
             -q \
             --ignore=tests/test_pipelines_gpu.py \
             --ignore=tests/test_install_gpu.py \
-            -x \
             2>&1 | tee pytest_output.txt
           exit ${PIPESTATUS[0]}
 

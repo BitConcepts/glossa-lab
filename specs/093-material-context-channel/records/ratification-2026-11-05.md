@@ -276,6 +276,35 @@ in the adoption worker's clone under the local tag
 `82b750486c4b0263aa035c80fba56d2639876474`), for the
 fix's author to diff against.
 
+## Adoption completion note (2026-11-05, finishing pass)
+
+The adoption was finished in a second pass after the first
+worker's session ended mid-landing (its assignment commit
+stood; this record, the assessment, and the spec.md stamp
+were still uncommitted). Verification on the final tree:
+gate **29 PASS / 0 FAIL / 1 NOT-RUN** (default) and **32
+PASS / 0 FAIL / 0 NOT-RUN** (`--regen`), the standing
+profile; ledger still 943 lines, SHA-256 `15a5fbad…`.
+
+One named consequence of the hold, from the full local
+enumeration (2,701 passed; phase133 baseline and one
+TestClient teardown-flake error the only other non-passes):
+`backend/tests/test_spec086_ledger_migration.py::
+test_p2_reconciliation` FAILS on this tree. Its check globs
+every `specs/*/aee-claims.json` and requires the ledger's
+bundle population to fingerprint-match all of them; the
+held intake leaves this spec's 14 bundle claims unentered,
+so the sets differ by exactly those 14 fingerprints.
+Controls run 2026-11-05: the test fails identically at the
+draft head `e80be6d4` (the bundle on disk, no adoption
+commits) and passes at main `0a76d58e` (no 093 package).
+The failure is therefore a property of the
+bundle-on-disk-without-intake state the hold creates, not
+of the adoption mechanics; it is not repaired here (no
+check is weakened to accommodate a hold), and it clears
+mechanically at the Appendix A intake replay, which is
+also when T003's tick lands.
+
 ## Appendix B — the claim records of the executed intake, verbatim
 
 The 14 ledger records exactly as `import_bundle.py`

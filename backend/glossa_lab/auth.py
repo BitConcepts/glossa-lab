@@ -245,16 +245,32 @@ class ApiTokenMiddleware:
 
     Added by ``create_app()`` inside CORS, so dev-mode preflights are
     answered by CORS rather than rejected here (plan step 1).
+
+    Composition with the cloud scope middleware (Spec 083 T056): when
+    CloudScopeMiddleware — which ``create_app`` adds AFTER this one,
+    so it runs FIRST — has validated a request's edge provenance, it
+    marks ``scope["state"]["edge_authenticated"]`` and this middleware
+    stands down: the edge terminated the session and its forwards
+    carry no Bearer token by design. The mark is set only after the
+    edge service credential compared successfully, so identity
+    headers alone never trigger the stand-down.
     """
 
     def __init__(self, app) -> None:  # noqa: ANN001 - ASGI app callable
         self.app = app
 
     async def __call__(self, scope, receive, send) -> None:  # noqa: ANN001
+        edge_authenticated = bool(
+            (scope.get("state") or {}).get("edge_authenticated")
+        )
         if scope["type"] == "http":
             path = scope.get("path", "")
             method = scope.get("method", "GET")
-            if not is_open_path(path, method) and not auth_disabled():
+            if (
+                not is_open_path(path, method)
+                and not auth_disabled()
+                and not edge_authenticated
+            ):
                 presented = bearer_token(Headers(scope=scope))
                 if not verify_presented(presented):
                     response = JSONResponse(
@@ -270,6 +286,7 @@ class ApiTokenMiddleware:
                 path.startswith("/api/")
                 and not is_open_path(path)
                 and not auth_disabled()
+                and not edge_authenticated
                 and not verify_presented(bearer_token(Headers(scope=scope)))
             ):
                 await send({"type": "websocket.close", "code": 4401})

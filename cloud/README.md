@@ -5,20 +5,22 @@ The cloud edition's deployment artifacts live here and in
 
 | Piece | Where | What it is |
 |---|---|---|
-| Edge Worker + Durable Object | `edge/` | The perimeter: session termination, the login wall, the noindex header on every response, routing through the single `GlossaFront` instance to the container. See `edge/README.md` for the header contract. |
+| Edge Worker | `edge/` | The perimeter: session termination, the login wall, the noindex header on every response, routing through the single `GLOSSA_ORIGIN` Workers VPC binding to the desktop origin (Amendment 5). See `edge/README.md` for the header contract. |
 | Identity schema | `edge/migrations/` | D1 migrations for `glossa-identity` (users, invites, sessions, workspaces, workspace_roles, audit_log, setup_state). Hash-only secrets; the audit log is append-only by trigger, not by convention. |
-| Wrangler config | `edge/wrangler.toml` | Production only (Amendment 2): one Worker, one custom domain (`glossa.bitconcepts.tech`), one container instance. |
-| Deploy workflow | `.github/workflows/deploy-cloud.yml` | Manual or `cloud-*` tag: gates on the Cloudflare secrets, applies D1 migrations, builds + pushes the container image, `wrangler deploy`. Fails closed until the account gate clears. |
+| Wrangler config | `edge/wrangler.toml` | Production only (Amendment 2): one Worker, one custom domain (`glossa.bitconcepts.tech`), one origin (the desktop, via VPC + Tunnel). |
+| Deploy workflow | `.github/workflows/deploy-cloud.yml` | Manual or `cloud-*` tag: gates on the Cloudflare secrets and the filled-in D1/VPC ids, applies D1 migrations, `wrangler deploy`. Fails closed until the account gate clears. |
 | Local production-shaped build | `docker-compose.yml` | The verification fixture below. It is not a deployment. |
 
 ## The local production-shaped build
 
 Amendment 2 puts all pre-launch verification in two places: this local
 build and ephemeral preview deployments. The compose file reproduces
-the production topology on one machine — the real edge Worker under
-`wrangler dev` (local D1/R2 persistence stand-ins, same bindings, same
-migrations) in front of the real container image built from the
-repository-root Dockerfile with `GLOSSA_CLOUD=1`:
+the production request path on one machine — the real edge Worker
+under `wrangler dev` (local D1 persistence stand-in, same bindings,
+same migrations) in front of the real application image built from
+the repository-root Dockerfile with `GLOSSA_CLOUD=1`. (Amendment 5
+moved production's origin to the desktop; the compose build remains
+the local verification shape for the edge↔application contract.)
 
 ```sh
 docker compose -f cloud/docker-compose.yml build

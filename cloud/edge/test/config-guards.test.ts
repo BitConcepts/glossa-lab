@@ -2,10 +2,14 @@
 //   - the D1 migrations keep secrets hash-only and the audit log
 //     structurally append-only;
 //   - the deployment configuration is production-only (Amendment 2):
-//     exactly one hostname, one container instance, and no second
-//     standing environment anywhere in the shipped config files.
+//     exactly one hostname, one origin, and no second standing
+//     environment anywhere in the shipped config files.
 //     (The banned word is assembled at runtime so this guard file does
 //     not itself trip the rule it enforces.)
+//   - Amendment 5 (T055 / T058): the production origin is the desktop
+//     reached through the GLOSSA_ORIGIN Workers VPC binding; the
+//     container, Durable Object front, and R2 bundle store have no
+//     production role and must not reappear in the shipped config.
 
 import { describe, expect, it } from "vitest";
 import { readdirSync, readFileSync } from "node:fs";
@@ -99,11 +103,45 @@ describe("production-only configuration (T012, Amendment 2)", () => {
     expect(toml).toContain('pattern = "glossa.bitconcepts.tech"');
     expect(toml).toContain("custom_domain = true");
     expect(toml).toContain('database_name = "glossa-identity"');
-    expect(toml).toContain('bucket_name = "glossa-datasets"');
-    expect(toml).toContain('class_name = "GlossaFront"');
-    expect(toml).toContain('image = "../../Dockerfile"');
-    expect(toml).toContain("max_instances = 1");
     // No environment sections: one deployment only.
     expect(toml).not.toMatch(/\[env\./);
+  });
+
+  it("wrangler.toml's origin is the VPC binding, never a tunnel hostname (T055)", () => {
+    const toml = read(join(EDGE_DIR, "wrangler.toml"));
+    expect(toml).toContain("[[vpc_services]]");
+    expect(toml).toContain('binding = "GLOSSA_ORIGIN"');
+    // The tunnel publishes no route: its hostname pattern must never
+    // appear as an origin or DNS target in the shipped config.
+    expect(toml).not.toContain("cfargotunnel.com");
+  });
+});
+
+describe("bundle production path retired (T058, Amendment 5)", () => {
+  it("no bundle store, container, or front in the production wrangler config", () => {
+    const toml = read(join(EDGE_DIR, "wrangler.toml"));
+    expect(toml).not.toContain("[[r2_buckets]]");
+    expect(toml).not.toContain("[[containers]]");
+    expect(toml).not.toContain("durable_objects");
+    expect(toml).not.toContain("GlossaFront");
+    expect(toml).not.toContain("glossa-datasets");
+  });
+
+  it("the edge source carries no retired binding", () => {
+    for (const f of readdirSync(join(EDGE_DIR, "src"))) {
+      const src = read(join(EDGE_DIR, "src", f));
+      expect(src).not.toContain("DATASETS");
+      expect(src).not.toContain("GLOSSA_FRONT");
+      expect(src).not.toContain("@cloudflare/containers");
+    }
+  });
+
+  it("the deploy workflow has no bundle publish or container leg", () => {
+    const wf = read(
+      join(REPO_ROOT, ".github", "workflows", "deploy-cloud.yml"),
+    );
+    expect(wf).not.toContain("wrangler r2");
+    expect(wf).not.toMatch(/publish.*bundle/i);
+    expect(wf).not.toMatch(/docker build/i);
   });
 });

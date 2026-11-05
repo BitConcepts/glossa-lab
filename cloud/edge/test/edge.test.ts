@@ -11,7 +11,7 @@
 //     the service credential rides container-bound requests only.
 
 import { describe, expect, it, vi } from "vitest";
-import { FRONT_INSTANCE_NAME, ROBOTS_TXT, handleRequest } from "../src/worker";
+import { ROBOTS_TXT, handleRequest } from "../src/worker";
 import { D1SessionStore, type SessionIdentity, type SessionStore } from "../src/session-store";
 import { sha256Hex } from "../src/session";
 import { classifyRoute } from "../src/routes";
@@ -49,20 +49,19 @@ function makeCtx() {
   return { ctx, pending };
 }
 
-function makeEnv(frontFetch: (req: Request) => Promise<Response> | Response) {
-  const names: string[] = [];
+function makeEnv(originFetch: (req: Request) => Promise<Response> | Response) {
+  const calls: Request[] = [];
   const env = {
     DB: {} as D1Database,
-    DATASETS: {} as R2Bucket,
     SERVICE_CREDENTIAL,
-    GLOSSA_FRONT: {
-      getByName: (name: string) => {
-        names.push(name);
-        return { fetch: frontFetch };
+    GLOSSA_ORIGIN: {
+      fetch: (r: Request) => {
+        calls.push(r);
+        return originFetch(r);
       },
-    } as unknown as DurableObjectNamespace,
+    },
   } as Env;
-  return { env, names };
+  return { env, calls };
 }
 
 function req(path: string, init: RequestInit = {}): Request {
@@ -129,15 +128,18 @@ describe("noindex header on every response class (C083-7)", () => {
     expectNoindex(res);
   });
 
-  it("500 (front stub throws)", async () => {
+  it("503 (origin unreachable — T055: desktop offline / tunnel down)", async () => {
     const { env } = makeEnv(async () => {
-      throw new Error("container unreachable");
+      throw new Error("origin unreachable");
     });
     const { ctx } = makeCtx();
     const res = await handleRequest(authedReq("/api/status"), env, ctx, {
       store: new FakeStore(IDENTITY),
     });
-    expect(res.status).toBe(500);
+    // T055 replaces the container-era generic 500 with the edge's own
+    // noindex 503 error document: no project data, and no leak of why.
+    expect(res.status).toBe(503);
+    expect(await res.text()).toContain("origin_unavailable");
     expectNoindex(res);
   });
 
@@ -283,9 +285,9 @@ describe("anonymous gating (C083-4, Amendment 2)", () => {
 });
 
 describe("authenticated forwarding + header contract (FR-011, FR-008)", () => {
-  it("injects the identity headers and routes via the single named instance", async () => {
+  it("injects the identity headers and routes via the single VPC origin binding", async () => {
     const seen: Request[] = [];
-    const { env, names } = makeEnv(async (r) => {
+    const { env, calls } = makeEnv(async (r) => {
       seen.push(r);
       return new Response("ok");
     });
@@ -293,7 +295,10 @@ describe("authenticated forwarding + header contract (FR-011, FR-008)", () => {
     const store = new FakeStore(IDENTITY);
     const res = await handleRequest(authedReq("/api/claims"), env, ctx, { store });
     expect(res.status).toBe(200);
-    expect(names).toEqual([FRONT_INSTANCE_NAME]);
+    // Exactly one origin exists (the GLOSSA_ORIGIN VPC binding) and
+    // the forward went through it exactly once (T055).
+    expect(calls).toHaveLength(1);
+    expect(calls[0]).toBe(seen[0]);
     const fwd = seen[0];
     expect(fwd.headers.get("X-Glossa-User-Id")).toBe("usr_0001");
     expect(fwd.headers.get("X-Glossa-User-Name")).toBe("glassbreak");
@@ -357,6 +362,49 @@ describe("authenticated forwarding + header contract (FR-011, FR-008)", () => {
     const res = await handleRequest(req("/api/claims"), env, ctx, { store });
     expect(res.status).toBe(401);
     expect(store.seenHashes).toEqual([]);
+  });
+
+  it("T055: an unreachable origin becomes the edge's own noindex 503 with no project data", async () => {
+    const { env } = makeEnv(async () => {
+      throw new Error("tunnel down");
+    });
+    const { ctx } = makeCtx();
+    const res = await handleRequest(authedReq("/api/claims"), env, ctx, {
+      store: new FakeStore(IDENTITY),
+    });
+    expect(res.status).toBe(503);
+    expect(res.headers.get("X-Robots-Tag")).toBe("noindex, nofollow");
+    const body = await res.text();
+    expect(body).toContain("origin_unavailable");
+    expect(body).not.toContain("claims");
+    expect(body).not.toContain(SERVICE_CREDENTIAL);
+  });
+
+  it("T055: authenticated and API responses are stamped Cache-Control: no-store", async () => {
+    const { env } = makeEnv(async () => new Response("project-data", { status: 200 }));
+    const { ctx } = makeCtx();
+    const res = await handleRequest(authedReq("/api/claims"), env, ctx, {
+      store: new FakeStore(IDENTITY),
+    });
+    expect(res.status).toBe(200);
+    expect(res.headers.get("Cache-Control")).toBe("no-store");
+    expect(await res.text()).toBe("project-data");
+  });
+
+  it("T055: the anonymous public shell keeps the origin's cache posture", async () => {
+    const { env } = makeEnv(
+      async () =>
+        new Response("shell", {
+          status: 200,
+          headers: { "Cache-Control": "public, max-age=60" },
+        }),
+    );
+    const { ctx } = makeCtx();
+    const res = await handleRequest(req("/login"), env, ctx, {
+      store: new FakeStore(null),
+    });
+    expect(res.status).toBe(200);
+    expect(res.headers.get("Cache-Control")).toBe("public, max-age=60");
   });
 });
 

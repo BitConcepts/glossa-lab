@@ -12865,6 +12865,40 @@ untouched.
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
 
+## Spec 083 — Step 5: go-live wiring (2026-11-05)
+
+The go-live sequence's repo-side and wiring legs, under the owner's
+2026-11-05 approval. The edge is retargeted to the desktop origin
+(T055): `cloud/edge` now forwards through the `GLOSSA_ORIGIN`
+Workers VPC binding — the GlossaFront Durable Object and its
+container are retired from the production path (`src/front.ts`
+deleted), a failed origin fetch becomes the edge's own noindex 503,
+and project-data responses carry `Cache-Control: no-store`. The
+desktop accepts edge-injected identity (T056): `CloudScopeMiddleware`
+gains a desktop posture that engages only on edge-provenance
+requests while a service credential is configured, resolving the
+credential from the environment or the install's protected keys
+store (`glossa_service_credential` — T024's desktop-side storage
+leg, discharging with T053–T055 the two Step 5 elements the Step 2
+record deferred), marking validated edge requests so
+`ApiTokenMiddleware` stands down for them, and answering host
+management (shutdown, env) with the scoped 404 through the edge for
+every role; local Spec 082 use is unchanged. The bundle production
+path is retired from all production configuration with config
+guards asserting it (T058). The T057 reconciliation checker is
+built (`glossa_lab/workspace_scope_check.py` + CLI + tests); its
+live run against the desktop dataset waits on the desktop sync.
+Gate 2 was measured, not guessed: the BitConcepts token lacks
+exactly four scope groups (Workers Scripts, DNS Write, Tunnel
+write, Connectivity Directory Admin/Bind) — the D1 leg within its
+reach was discharged (database `glossa-identity` created
+2026-11-05, id committed in wrangler.toml). The launch itself has
+NOT been taken: the full per-task state, gate evidence, and the
+T059 proof list ready to run are in
+`specs/083-cloud-edition/records/go-live-readiness-2026-11-05.md`,
+and the T053 checklist in
+`specs/083-cloud-edition/records/t053-tunnel-vpc-checklist.md`.
+
 ## 2026-11-05 — Spec 084 C084-8 activation: cloud anonymous-surface copy fixtured + tested
 
 The last executable HELD claim of Spec 084 is activated on the

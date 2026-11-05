@@ -1,6 +1,15 @@
-# Run definitions — `run-defs v1`
+# Run definitions — `run-defs v2`
 
-Spec 089 (run-scoped results), Stage 1, task T101. This
+**Version note.** v1 was registered at Spec 089
+(run-scoped results), Stage 1, task T101. v2 (2026-11-05)
+changes only §7: §7.1 gains the `departure` act (the
+departed-generation accounting) and its fold rules, and
+§7.2 states the legacy completion builder's population
+rule. Everything else carries over verbatim. The
+amendment act of record is
+`specs/089-run-scoped-results/records/amendment-run-defs-v2-departed-generation-accounting-2026-11-05.md`.
+
+This
 document is the contract the run machinery runs under: the
 surfaces, the run-id format and minting rule, the run-record
 header, the comparability key (**run-key v1**), the
@@ -200,7 +209,7 @@ registered nondeterminism's shape — or quarantine the pair.
 |---|---|---|
 | `settling` | deterministic | — |
 | `study` | deterministic (under the freeze record's fixed pins; the freeze-gate C2 recomputation precedent) | — |
-| Generated-layer builders (matrix / map / program-map generation) | deterministic under fixed inputs; bound by the generated layers' stamp discipline, not by run records, in v1 | — |
+| Generated-layer builders (matrix / map / program-map generation) | deterministic under fixed inputs; bound by the generated layers' stamp discipline, not by run records | — |
 | `suite` | named-nondeterministic | Shape #1 (below) |
 | `experiment` | per-graph registration; default named-nondeterministic for LM-bearing graphs; deterministic only by a per-graph registration act recorded with the graph | per-graph |
 
@@ -256,6 +265,7 @@ prior act. The acts:
 | `supersedes` | `run_id` (the new run), `supersedes` (the old run's id), `ref` (the act that ordered the supersession — a stage record, PR, or refresh record) | The new run supersedes the old; the old record remains in the store, addressable under its own id |
 | `quarantine` | `junction_id`, `run_ids` | The named junction's disposition is unexplained; the named runs are quarantined |
 | `adjudication` | `junction_id`, `ruling`, `actor`, `resulting_state` (`quarantine-lifted` \| `quarantine-confirmed`) | A named actor's ruling on a junction; lifts or confirms its runs' quarantine |
+| `departure` | `run_id`, `record`, `superseded_by_commit`, `git_blob`, `blob_sha256`, `ref` | A generation that entered standing has departed the store: its record no longer stands there, and this act carries the accounting (the superseding commit, the record's final git blob, the blob's SHA-256) the entry of a generation entered after departing carries on itself. The entry act is never edited; the accounting is this appended act, and it is accounting only — it asserts the record's departure and where its bytes stand in git history, not a supersession (a superseded generation whose record still stands gets no departure act) |
 
 Junction ids are minted like run ids:
 `junction-<yyyymmddThhmmssZ>-<6 lowercase hex>` (the
@@ -272,8 +282,15 @@ chains, its open quarantines. A fold refuses, loudly:
   execution);
 - a second `supersedes` act over one old id (a record's
   successor is single; chains are linear);
+- a `departure` act naming a run id with no prior `entry`
+  act, a `record` differing from its entry's `record`, or
+  a second `departure` act for one run id (a generation's
+  departure is accounted once);
 - a malformed act (an unknown act kind, a missing required
-  field, an out-of-vocabulary `resulting_state`).
+  field, an out-of-vocabulary `resulting_state`, or — on a
+  `departure` act — a `superseded_by_commit` that is not a
+  commit id, a `blob_sha256` that is not a SHA-256, or an
+  empty `git_blob` or `ref`).
 
 Appending an act validates it against the folded state
 first: a refused act is never written, and the index file
@@ -314,6 +331,28 @@ legacy — key partial
 A legacy run's results may be cited only under that label
 (C089-17). The label says the binding is partial,
 permanently; it does not say the results are suspect.
+
+**The completion builder's population rule.** The legacy
+index is completed over the store's whole git history
+(`tools/ledger/build_legacy_index.py`) under these rules,
+in enumeration order. A historical record whose legacy id
+is entered and still standing is skipped. A historical
+record whose legacy id is entered and has since departed
+the store gains a `departure` act (§7.1) carrying the
+accounting derived from its final blob and the
+superseding commit — unless a departure act already
+accounts it, in which case it is skipped. A record not
+yet entered and carrying no run header is the pre-spec
+legacy population: it is entered standing from its bytes,
+or, if it has departed, with the accounting fields on its
+entry. A record carrying a run header is a post-spec
+record, entered by its own writer under its own run id
+and never legacy-derived; in the history pass it is
+skipped-with-record (the builder names it as skipped on
+its output) and never refused on. A headerless record
+missing a recoverable key component (`semantics`,
+`candidate`, `pins`) remains a named refusal: it belongs
+to the legacy population and is not half-entered.
 
 ### 7.3 The CI citation form
 

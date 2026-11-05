@@ -20,7 +20,7 @@ stage — covered by the last test, read-only):
 - ephemeral (in-memory) and headerless records are
   refused by the write path and never land;
 - a refused execution and a crashed execution each
-  leave the absence record run-defs v1 §3.2 prescribes
+  leave the absence record run-defs v2 §3.2 prescribes
   (kind refused / crashed), with an index entry, and no
   result block;
 - materialize-sets is a run: the artifact names its

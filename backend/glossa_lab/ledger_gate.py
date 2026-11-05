@@ -37,7 +37,7 @@ recomputed data under the gate's own template copies),
 V11 run-binding (Spec 089 Stage 5: the run stores, their
 indexes, the junction store, and the run-produced
 artifacts checked under the gate's own registered copies
-of run-defs v1 — not imported from the run tooling —
+of run-defs v2 — not imported from the run tooling —
 for resolving producing bindings, quarantined citations,
 store census and index integrity, and junction
 completeness; the gate verifies junction reports and
@@ -2307,8 +2307,8 @@ def _derive_map(
         # Since Spec 089 the run store also holds
         # materialization records (no candidate/scenario)
         # and absence records (no result block) — store
-        # records under run-defs v1, not settling
-        # evaluations, and never map-carried (Spec 089
+        # records under the run definitions, not
+        # settling evaluations, and never map-carried (Spec 089
         # Stage 5, both copies filtered in the same motion).
         if not (
             isinstance(record.get("candidate"), str)
@@ -4220,7 +4220,7 @@ def _v10_checks(
 
 # ---------------------------------------------------------------------------
 # V11 — run-binding (Spec 089 Stage 5, T502). The gate's
-# own registered copies of run-defs v1's checkable rules
+# own registered copies of run-defs v2's checkable rules
 # (glossa-indus/ledger/RUN-DEFINITIONS.md), deliberately
 # NOT imported from the run tooling (run_records,
 # run_junction): the header required-fields list, the
@@ -4228,14 +4228,14 @@ def _v10_checks(
 # vocabulary, the absence kinds, the index act forms and
 # fold refusals, and the legacy label. A deliberate
 # run-defs change is made in every copy in the same
-# motion (run-defs v1 §9); a change made in the tooling's
+# motion (run-defs v2 §9); a change made in the tooling's
 # copy only is exactly the divergence this class exists
 # to catch (C089-15). The gate verifies bindings,
 # citations, censuses, and junction completeness; it
 # never originates a junction analysis, appends an act,
 # or lifts a quarantine (D-089-2, C089-16).
 
-GATE_RUN_DEFS_VERSION = "run-defs v1"
+GATE_RUN_DEFS_VERSION = "run-defs v2"
 RUN_JUNCTIONS_REL = "glossa-indus/ledger/junctions"
 RUN_INDEX_NAME = "run-index.jsonl"
 RUN_SURFACES = ("settling", "experiment", "study", "suite")
@@ -4272,7 +4272,13 @@ RUN_DISPOSITIONS = (
     "unexplained",
 )
 RUN_ABSENCE_KINDS = ("empty", "refused", "crashed")
-RUN_ACT_KINDS = ("entry", "supersedes", "quarantine", "adjudication")
+RUN_ACT_KINDS = (
+    "entry",
+    "supersedes",
+    "quarantine",
+    "adjudication",
+    "departure",
+)
 RUN_ADJUDICATION_STATES = (
     "quarantine-lifted",
     "quarantine-confirmed",
@@ -4319,6 +4325,7 @@ class _V11Store:
         self.entries: dict[str, dict[str, Any]] = {}
         self.superseded_by: dict[str, str] = {}
         self.junctions: dict[str, dict[str, Any]] = {}
+        self.departed: dict[str, dict[str, Any]] = {}
         self.fold_failures: list[str] = []
         self._fold()
         self.records: dict[str, Optional[dict[str, Any]]] = {}
@@ -4336,7 +4343,7 @@ class _V11Store:
 
     def _fold(self) -> None:
         """The gate's own fold of the index acts, under
-        run-defs v1 §7.1's refusal rules (registered
+        run-defs v2 §7.1's refusal rules (registered
         copies): refusals are collected as named failures,
         never raised, and a refused act changes no state —
         the same order the tooling's fold enforces."""
@@ -4360,8 +4367,10 @@ class _V11Store:
                 self._fold_supersedes(where, act)
             elif kind == "quarantine":
                 self._fold_quarantine(where, act)
-            else:
+            elif kind == "adjudication":
                 self._fold_adjudication(where, act)
+            else:
+                self._fold_departure(where, act)
 
     def _fold_entry(self, where: str, act: dict[str, Any]) -> None:
         for name in ("run_id", "record", "key"):
@@ -4380,7 +4389,7 @@ class _V11Store:
         if not legacy_id and not _RUN_ID_RE.match(run_id):
             self.fold_failures.append(
                 f"{where}: entry act run id {run_id!r} is "
-                "neither a run-defs v1 run id nor a legacy id"
+                "neither a run-defs v2 run id nor a legacy id"
             )
             return
         if not isinstance(act["record"], str) or not act["record"]:
@@ -4578,6 +4587,78 @@ class _V11Store:
             act["resulting_state"] == "quarantine-lifted"
         )
 
+    def _fold_departure(self, where: str, act: dict[str, Any]) -> None:
+        """The gate's own fold of a departure act (run-defs
+        v2 §7.1, registered copy of the tooling's fold):
+        the departed-generation accounting — an appended
+        act carrying, for an entered generation whose
+        record no longer stands in the store, the
+        superseding commit, the record's final git blob,
+        and the blob's SHA-256."""
+        for name in (
+            "run_id",
+            "record",
+            "superseded_by_commit",
+            "git_blob",
+            "blob_sha256",
+            "ref",
+        ):
+            if name not in act:
+                self.fold_failures.append(
+                    f"{where}: departure act is missing "
+                    f"field {name!r}"
+                )
+                return
+        run_id = act["run_id"]
+        if run_id not in self.entries:
+            self.fold_failures.append(
+                f"{where}: departure act names unknown "
+                f"run id {run_id!r}"
+            )
+            return
+        if act["record"] != self.entries[run_id]["record"]:
+            self.fold_failures.append(
+                f"{where}: departure act for run {run_id!r} "
+                f"names record {act['record']!r}, which "
+                "differs from its entry's record "
+                f"{self.entries[run_id]['record']!r}"
+            )
+            return
+        if run_id in self.departed:
+            self.fold_failures.append(
+                f"{where}: run {run_id!r} already stands "
+                "accounted as departed — a generation's "
+                "departure is accounted once"
+            )
+            return
+        if not _COMMIT_RE.match(str(act["superseded_by_commit"])):
+            self.fold_failures.append(
+                f"{where}: departure act "
+                "'superseded_by_commit' must be a commit "
+                f"id, got {act['superseded_by_commit']!r}"
+            )
+            return
+        if not isinstance(act["git_blob"], str) or not act["git_blob"]:
+            self.fold_failures.append(
+                f"{where}: departure act 'git_blob' must "
+                "be a non-empty string"
+            )
+            return
+        if not _SHA256_RE.match(str(act["blob_sha256"])):
+            self.fold_failures.append(
+                f"{where}: departure act 'blob_sha256' "
+                f"must be a SHA-256, got {act['blob_sha256']!r}"
+            )
+            return
+        if not isinstance(act["ref"], str) or not act["ref"]:
+            self.fold_failures.append(
+                f"{where}: departure act must carry the "
+                "act reference ('ref') that ordered the "
+                "accounting"
+            )
+            return
+        self.departed[run_id] = act
+
     @property
     def open_quarantine(self) -> dict[str, set[str]]:
         """run id -> the junction ids under which it
@@ -4595,7 +4676,7 @@ class _V11Store:
 def _v11_discover_stores(root: Path) -> list[_V11Store]:
     """The guarded stores: the settling runs store, and
     every citation store — a spec's records/ directory
-    carrying a run index (run-defs v1 §1: the citing
+    carrying a run index (run-defs v2 §1: the citing
     spec's records/ is the suite/experiment surfaces'
     store of record)."""
     stores: list[_V11Store] = []
@@ -4618,7 +4699,7 @@ def _v11_header_failures(
     record: dict[str, Any], where: str
 ) -> list[str]:
     """Validate one run record's header under the gate's
-    registered copies of run-defs v1 §3.1/§4: the
+    registered copies of run-defs v2 §3.1/§4: the
     required fields, a registered surface, the run-id
     form, the key's full component set, a registered
     determinism class, and exactly one outcome (a result
@@ -4642,7 +4723,7 @@ def _v11_header_failures(
     if not isinstance(run_id, str) or not _RUN_ID_RE.match(run_id):
         failures.append(
             f"{where}: header run id {run_id!r} is not in "
-            "the run-defs v1 form "
+            "the run-defs v2 form "
             "<surface>-<yyyymmddThhmmssZ>-<6 lowercase hex>"
         )
     elif isinstance(surface, str) and run_id.split("-", 1)[0] != surface:
@@ -4872,13 +4953,13 @@ def _v11_checks(root: Path) -> list[Check]:
     if header_records:
         a_checked.append(
             f"{header_records} run record(s) carrying the "
-            "run-defs v1 header validate under the gate's "
+            "run-defs v2 header validate under the gate's "
             "registered copies"
         )
     checks.append(
         Check(
             "V11 run-binding — producing bindings resolve "
-            "(run-defs v1 copies)",
+            "(run-defs v2 copies)",
             "FAIL" if a_failures else "PASS",
             a_failures
             or a_checked
@@ -4993,6 +5074,7 @@ def _v11_checks(root: Path) -> list[Check]:
         c_failures.extend(store.fold_failures)
         standing = 0
         historical = 0
+        departed_count = 0
         events = 0
         entered_records: dict[str, str] = {}
         for run_id, entry in sorted(store.entries.items()):
@@ -5022,6 +5104,14 @@ def _v11_checks(root: Path) -> list[Check]:
                 and _SHA256_RE.match(str(entry.get("blob_sha256", "")))
             ):
                 historical += 1
+            elif run_id in store.departed:
+                # The run-defs v2 form: a generation that
+                # entered standing and later departed is
+                # accounted by its folded departure act,
+                # whose three accounting fields the fold
+                # shape-checked (the entry itself is
+                # immutable and carries none).
+                departed_count += 1
             else:
                 c_failures.append(
                     f"{store.label}: entry {run_id!r} names "
@@ -5029,7 +5119,8 @@ def _v11_checks(root: Path) -> list[Check]:
                     "stands in the store nor is accounted "
                     "as a superseded legacy record (a "
                     "superseding commit and the record's "
-                    "blob hash named)"
+                    "blob hash named, on the entry or on a "
+                    "departure act)"
                 )
         # The census population is the store's run
         # records. The settling store is a dedicated run
@@ -5070,10 +5161,13 @@ def _v11_checks(root: Path) -> list[Check]:
             f"{store.label}: folded census "
             f"{len(store.entries)} entries = {standing} "
             f"standing record(s) + {historical} superseded "
-            f"legacy record(s) + {events} canonical "
+            f"legacy record(s) + {departed_count} departed "
+            f"generation(s) accounted by departure act + "
+            f"{events} canonical "
             "re-derivation event(s); every supersedes / "
-            "quarantine / adjudication act names run ids "
-            "that resolve (the fold refuses otherwise)"
+            "quarantine / adjudication / departure act "
+            "names run ids that resolve (the fold refuses "
+            "otherwise)"
         )
     checks.append(
         Check(
@@ -5217,7 +5311,7 @@ def _v11_checks(root: Path) -> list[Check]:
         "divergent); "
         f"{key_partial_entries} entered run(s) are "
         "key-partial (legacy) and pair with nothing, per "
-        "run-defs v1 §7.2",
+        "run-defs v2 §7.2",
         f"junction store: {len(reports)} report(s) on "
         "file"
         + (

@@ -65,14 +65,29 @@
       },
       "expectations_changed": false,
       "verification": "tools/ledger/run_settling.py verify-canonicals over the new build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
+    },
+    {
+      "date": "2026-11-05",
+      "act": "Spec 093 adoption intake (branch docs/093-material-channel-draft; record: specs/093-material-context-channel/records/ratification-2026-11-05.md)",
+      "reason": "The claims ledger grew by append-only intake: the 14 bundle claims of Spec 093 (093-material-context-channel/C093-1..14) were appended through tools/ledger/import_bundle.py on 2026-11-05. The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the new build under this registration's amendment discipline. The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
+      "prior_ledger_pin": {
+        "sha256_canonical": "15a5fbad24f400631ace1ebc88bfb7712c9bf6f68fae23e56fedbcac5fd5a794",
+        "lines": 943
+      },
+      "new_ledger_pin": {
+        "sha256_canonical": "e6525d04316fe239b31912329230d8e03a091388da7e657f63a6776ca1bb291a",
+        "lines": 957
+      },
+      "expectations_changed": false,
+      "verification": "tools/ledger/run_settling.py verify-canonicals over the new build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
     }
   ],
   "label": "Computation over ledgered relations under glossa-settle-1 semantics. Establishes what the ledger implies under these rules, not what the script says.",
   "provenance": {
     "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256_canonical": "15a5fbad24f400631ace1ebc88bfb7712c9bf6f68fae23e56fedbcac5fd5a794",
-      "lines": 943
+      "sha256_canonical": "e6525d04316fe239b31912329230d8e03a091388da7e657f63a6776ca1bb291a",
+      "lines": 957
     },
     "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -578,7 +593,7 @@
       "title": "Dual run over canonical-subset-1: incumbent vs full-register (the interchangeability pair; D-086-Q4's demonstration pair, registered here as a canonical expectation for T405)",
       "inputs": {
         "semantics": "glossa-settle-1",
-        "ledger_sha256": "15a5fbad24f400631ace1ebc88bfb7712c9bf6f68fae23e56fedbcac5fd5a794",
+        "ledger_sha256": "e6525d04316fe239b31912329230d8e03a091388da7e657f63a6776ca1bb291a",
         "corpus_snapshot": {
           "path": "glossa-corpus/indus/exports/indus_research.jsonl",
           "sha256_canonical": "08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e"

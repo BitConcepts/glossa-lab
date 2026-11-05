@@ -114,10 +114,6 @@
    "subject": "026-core-research-source"
   },
   {
-   "kind": "bundle_less_study",
-   "subject": "093-material-context-channel"
-  },
-  {
    "document": "ancient_writing_and_modern_technologies_51831ac9",
    "kind": "extracted_null_falsifier",
    "subject": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001"
@@ -168,10 +164,10 @@
   }
  ],
  "stamp": {
-  "ledger_latest_entry_date": "2026-11-04",
-  "ledger_lines": 943,
+  "ledger_latest_entry_date": "2026-11-05",
+  "ledger_lines": 957,
   "ledger_schema": "ledger-schema v1",
-  "ledger_sha256": "15a5fbad24f400631ace1ebc88bfb7712c9bf6f68fae23e56fedbcac5fd5a794",
+  "ledger_sha256": "e6525d04316fe239b31912329230d8e03a091388da7e657f63a6776ca1bb291a",
   "program_map_defs": "program-map-defs v1",
   "program_map_taxonomy": "program-map-taxonomy v1"
  },

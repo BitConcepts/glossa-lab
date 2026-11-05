@@ -3,9 +3,9 @@
  "generated_from": "glossa-indus/ledger/claims.jsonl",
  "generated_by": "tools/ledger/generate_matrix.py (backend/glossa_lab/matrix_generate.py)",
  "as_of": {
-  "ledger_sha256": "15a5fbad24f400631ace1ebc88bfb7712c9bf6f68fae23e56fedbcac5fd5a794",
-  "ledger_lines": 943,
-  "ledger_date": "2026-11-04",
+  "ledger_sha256": "e6525d04316fe239b31912329230d8e03a091388da7e657f63a6776ca1bb291a",
+  "ledger_lines": 957,
+  "ledger_date": "2026-11-05",
   "ledger_schema": "ledger-schema v1",
   "matrix_defs": "matrix-defs v1"
  },
@@ -5478,6 +5478,90 @@
   },
   {
    "id": "090-projected-constraints-generalization-study/C090-16",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "093-material-context-channel/C093-7",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "093-material-context-channel/C093-4",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "093-material-context-channel/C093-13",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "093-material-context-channel/C093-12",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "093-material-context-channel/C093-11",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "093-material-context-channel/C093-10",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "093-material-context-channel/C093-8",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "093-material-context-channel/C093-9",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "093-material-context-channel/C093-3",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "093-material-context-channel/C093-2",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "093-material-context-channel/C093-14",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "093-material-context-channel/C093-5",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "093-material-context-channel/C093-1",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "093-material-context-channel/C093-6",
    "population": "bundle",
    "status": "draft",
    "stage": "created"
@@ -23683,6 +23767,160 @@
    ]
   },
   {
+   "row": "093-material-context-channel/C093-1",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "093-material-context-channel/C093-1",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "093-material-context-channel/C093-10",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "093-material-context-channel/C093-10",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "093-material-context-channel/C093-11",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "093-material-context-channel/C093-11",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "093-material-context-channel/C093-12",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "093-material-context-channel/C093-12",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "093-material-context-channel/C093-13",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "093-material-context-channel/C093-13",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "093-material-context-channel/C093-14",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "093-material-context-channel/C093-14",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "093-material-context-channel/C093-2",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "093-material-context-channel/C093-2",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "093-material-context-channel/C093-3",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "093-material-context-channel/C093-3",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "093-material-context-channel/C093-4",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "093-material-context-channel/C093-4",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "093-material-context-channel/C093-5",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "093-material-context-channel/C093-5",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "093-material-context-channel/C093-6",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "093-material-context-channel/C093-6",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "093-material-context-channel/C093-7",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "093-material-context-channel/C093-7",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "093-material-context-channel/C093-8",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "093-material-context-channel/C093-8",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "093-material-context-channel/C093-9",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "093-material-context-channel/C093-9",
+    "spec.md"
+   ]
+  },
+  {
    "row": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
    "column": "055",
    "column_class": "studies",
@@ -23850,8 +24088,8 @@
   }
  ],
  "coverage": {
-  "rows_total": 912,
-  "rows_with_cells": 898,
+  "rows_total": 926,
+  "rows_with_cells": 912,
   "empty_rows": [
    "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
    "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -24209,30 +24447,30 @@
    ],
    "corpus_texts": []
   },
-  "cells_total": 1435,
+  "cells_total": 1449,
   "cells_by_relation": {
-   "supports": 1428,
+   "supports": 1442,
    "opposes": 7,
    "constrains": 0
   },
   "cells_by_class": {
    "studies": 7,
-   "documents": 1428,
+   "documents": 1442,
    "research_checks": 0,
    "anchors": 0,
    "corpus_texts": 0
   },
   "falsifier_coverage": {
-   "covered": 903,
-   "total": 912,
+   "covered": 917,
+   "total": 926,
    "by_population": {
     "extracted": {
      "covered": 14,
      "total": 23
     },
     "bundle": {
-     "covered": 889,
-     "total": 889
+     "covered": 903,
+     "total": 903
     }
    }
   },

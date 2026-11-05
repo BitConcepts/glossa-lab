@@ -3,10 +3,10 @@
  "generated_from": "glossa-indus/ledger/claims.jsonl through glossa-indus/matrix/matrix.json and the settling records of record",
  "generated_by": "tools/ledger/generate_map.py (backend/glossa_lab/map_generate.py)",
  "header": {
-  "claims_total": 912,
+  "claims_total": 926,
   "claims_by_status": {
    "contradicted": 4,
-   "draft": 888,
+   "draft": 902,
    "partially_falsified": 1,
    "partially_supported": 3,
    "strongly_supported": 2,
@@ -55,18 +55,18 @@
    "reason": "the anchors register records no review dates for the pending validations, so they appear as a count, not as dated items (decision Q4)"
   },
   "as_of": {
-   "ledger_sha256": "15a5fbad24f400631ace1ebc88bfb7712c9bf6f68fae23e56fedbcac5fd5a794",
-   "ledger_lines": 943,
-   "ledger_date": "2026-11-04",
+   "ledger_sha256": "e6525d04316fe239b31912329230d8e03a091388da7e657f63a6776ca1bb291a",
+   "ledger_lines": 957,
+   "ledger_date": "2026-11-05",
    "ledger_schema": "ledger-schema v1",
    "matrix_defs": "matrix-defs v1",
    "map_defs": "map-defs v1",
    "settle_semantics": "glossa-settle-1",
-   "matrix_sha256": "922fa0913ec30bf94f3137e6f74fb0316e40f5aefc50eb2ba12d0b3e0c518f57",
+   "matrix_sha256": "9ee8620cec91e77e9c8eaec32d41a2486a6d2ff8359d965d3fd768cd1be2ba3f",
    "anchors_register_sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
-   "assignment_sets_sha256": "b1393b83f18054a6ca67c1a379ff71d455fa37301aee4c00bae9b9fae99ec2b0",
-   "comparison_sha256": "1371c981ce4c9cd9721fbed3294aee82c2bc512d9b8293390a201cf3a935874b",
-   "settling_canonical_sha256": "e9a7f5baf65f4733e3e5d05f8d9456b14bd6497c012922bcbdedf1675361e892"
+   "assignment_sets_sha256": "5c1db877cbf24afd430419bf9920985aaaeba510d829ab1ce85baaa2a07d1f45",
+   "comparison_sha256": "908a0d74d16c131d11bee8cbd485288bc2c570e19345c63c2abb560558b52209",
+   "settling_canonical_sha256": "e38c99bc54cd0301c2f0c8c9f446c51260324ecd1ebdbcf9fb6c18db91ff7ddd"
   }
  },
  "elements": [
@@ -7362,6 +7362,118 @@
    "kind": "claim",
    "id": "090-projected-constraints-generalization-study/C090-16",
    "statement": "The study closes with an outcome record stating the per-stage outcomes (G1: STATED or NOT YET with the missing element named; G2: DERIVED or NOT YET with the obstruction named) and the study-level outcome as spec.md defines it (INSTANTIATES-path, ANALOGY with the metaphorical element named, or NOT YET with the missing work stated), each with evidence pointers to the stage records. The outcome — or, if a stage cannot run, the blocker — is reported to the VEXA chat for the improvement registry, as the commission requires. The formal verdict over the full G1–G5 bar belongs to the independent reader under the judging protocol; this study does not issue it. This does not establish: that the reported outcome is the final verdict on the domain — the reader's verdict under the protocol, and the G3–G5 follow-on, both stand after it.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "093-material-context-channel/C093-7",
+   "statement": "A statement this spec accepts about how inscription behavior conditions on a culture-side field (for example: sequence length or sign-choice distributions differing by site or by material class beyond the registered controls) is stated as a fact about the joint distribution of the two projections over the named population, and carries C093-1's recorded standing as a premise on its face. This does not establish: anything about why the regularity holds — no reading, function, or historical cause is asserted by a distributional statement, and none may be read into one.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "093-material-context-channel/C093-4",
+   "statement": "A cross-cultural comparison is computed under this spec only if a comparanda-register entry naming (i) the comparanda set, (ii) the transmission mechanism — documented trade, contact, or continuity, stated as a checkable historical claim with its source, (iii) a fixed time window, and (iv) the practice compared, was committed before the computation's first run. Wide windows (centuries to millennia) are admissible only where the entry's mechanism is a continuity claim stated at that span; a window's width is never a substitute for its mechanism. This does not establish: that a registered comparison is a good comparison — only that it was fixed before it met the data, which is what makes its outcome a test rather than a fit.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "093-material-context-channel/C093-13",
+   "statement": "No act under this spec adjudicates, reclassifies, annotates, or scores any claim already in the ledger; no Indus claim changes status, stage, or score citing this spec; the program's standing position (the Indus script is not deciphered) is untouched, and nothing in this spec is a decipherment claim, evidence for a reading, or a step that presupposes one. This does not establish: anything about the existing claims — only that this spec's front is additive and its boundary is where it says it is.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "093-material-context-channel/C093-12",
+   "statement": "Each entry in this spec's gap register (Stage 6, extending the Spec 088 register's discipline to the culture-side unknowns: GR-093 series) states, on its face: what is not known; a falsifier — the observation that would close or break the entry's present statement; an acceptance test — the administration whose outcome would discharge the entry; and an honesty-rule type in the register's existing vocabulary. An entry lacking any of the four is not an entry, and the register's completeness check counts it as a failure. This does not establish: that the register enumerates all culture-side unknowns there are — only that every entry it carries is stated in the shape that lets it be closed honestly.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "093-material-context-channel/C093-11",
+   "statement": "Culture-side claims enter the system only as claims in the append-only ledger (the family this spec adds at adoption, C093-1 onward), entered through the sanctioned intake. The matrix rows and the program-map layer for the material-context domain are generated from the ledger by the registered generators; no culture-side statement appears in the matrix, on the map, or in any derived surface that is not a ledger claim cited by its id; no generated file is hand-edited. This spec's ledger diff across its whole life is its adoption intake plus the claim appends its later stages ratify one by one. This does not establish: that the ledger's claims are true — only that the one-way flow (ledger → matrix → map) this program's publication discipline rests on survives the new domain intact.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "093-material-context-channel/C093-10",
+   "statement": "CISI enters this spec only as statistics and data-list metadata lawfully held and publishable under the standing restriction (scans never redistributed, never in the repository); the Laursen author copy never enters the repository (the rebuilt Table 1 is the artifact); no stage act contacts Andreas Fuls, and no stage act creates an account or channel in any person's name. This does not establish: anything about the restrictions themselves — only that this spec's design never needs to touch them.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "093-material-context-channel/C093-8",
+   "statement": "Where a stage's frozen floors fire — a joint population below its floor, a held-out arm the counts cannot carry (the inventory names the standing case: four of six named sites in the sequence-bearing subset carry 7 or fewer records), a join that fails its audit — the stage records NOT YET (the administration ran and did not meet its bar, obstruction named) or CANNOT BE ADMINISTERED (the frozen administration cannot be run, forcing counts shown) and stops. No threshold, floor, population, or case is adjusted under this spec to convert a stop into a pass. This does not establish: that a stopped stage was badly designed — the floors are the price of the acceptance machinery meaning anything, and a stop is a finding about the record system's present contents. ## The join, the restrictions, and the one truth store",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "093-material-context-channel/C093-9",
+   "statement": "Any identification of a snapshot museum record with a text-bearing record (by accession number, holding, catalogue identity, or published concordance) that a Stage 4 pass consumes was produced by a join procedure frozen at Stage 1 and audited on a hand-checked sample whose size and measured precision the audit record states. A pass resting on an unaudited join, or on a join whose measured precision falls below its freeze's floor, does not run; the stage records the stop under C093-8. This does not establish: that an audited join is correct pair by pair — precision on a sample is the claim, and the audit's sample and errors are part of the record a reader judges.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "093-material-context-channel/C093-3",
+   "statement": "Within the corpus snapshot as pinned, the records carrying both a recorded sequence and a non-empty material number **0**, and the records carrying both a recorded sequence and a non-empty site_name number **966**, all in the indusscript-m77 subset. No Stage 4 pass may consume a joint population the snapshot does not contain: a material-side pass over sequences runs only on a Stage 1 join that has passed its audit (C093-9), and a site-side pass runs only on the populations the freeze enumerates. This does not establish: that the underlying objects lack materials or sites in the world — only that this record system does not carry the joint fact, which is the constraint the design answers to. ## Comparanda and acceptance discipline",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "093-material-context-channel/C093-2",
+   "statement": "The grounding record's field census covers every culture-side field present in its named sources (the corpus snapshot, the M77 and ICIT flat files, the CISI coded subset's loader, the three contact-zone rebuild files, and the corpus-catalogue seeder): each field a named source carries that names site, material, artifact type or typology, holding or provenance, find context, period, or execution medium appears in the census with its presence count, or the census names the field and states why it is not culture-side. This does not establish: that the census's sources are all the culture-side data the program holds anywhere — the claim is bounded to the named sources, and a source outside the list is Stage 1's to add by amendment, with the census re-run.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "093-material-context-channel/C093-14",
+   "statement": "The spec closes with an outcome record stating, per stage and in the vocabulary of spec.md §5, what was administered, what was accepted, what stopped and at what counts; and the outcome is reported to the VEXA chat for the improvement registry as a closeout deliverable, in the outcome record's own words. This does not establish: that the reported outcome settles the channel question — later stages, later joins, and the reader stand after it.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "093-material-context-channel/C093-5",
+   "statement": "A comparanda entry's window, set, mechanism, or compared practice, once any computation under it has run, may be changed only by a new entry that supersedes it; every result computed under the superseded entry is voided in the same act and may not be cited, including in the superseding entry's rationale. This does not establish: that the original windows were well chosen — only that the register's history is append-only, so a reader can see every window that was ever tried.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "093-material-context-channel/C093-1",
+   "statement": "A candidate state in G1 §2.1's sense determines, for each inscribed object, both its text (the sequence the record system's coded corpora carry) and its material-context tuple as this spec defines it at Stage 2: the per-object recorded values of site, material class, artifact type, holding/provenance, and find context, under the vocabularies the Stage 1 normalization registers. The channel claim is that this tuple is not a function of the object's sequence table together with the record system's bookkeeping (source system, frame, derivation): there is no rule, statable in advance of Stage 2's freeze, that computes the tuple from the table and the bookkeeping alone. Stage 2 administers exactly this: a pre-registered prediction test in which the frozen culture-side fields are predicted from table-plus-bookkeeping features under permutation controls, and the channel stands as independent only at the strength the audited outcome records (spec.md §5's vocabulary). This does not establish: that the channel, where independent, carries information about any reading, sign value, or language identification — independence is a claim about projections of the state, not about what either projection says. Condition 1 (Spec 090, DERIVED) is untouched: this claim asserts a second projection exists to be tested; it does not assert the second projection separates any pair of states.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "093-material-context-channel/C093-6",
+   "statement": "A Stage 4 pass is accepted only if its frozen design's negative controls (permutation or shuffle of the culture-side labels within the strata the design names) and its replication arm (held-out sites where the design names them, and the inventory's counts allow them) were run under Spec 089 run discipline and the audited comparison of pass against controls meets the freeze's bar. A pass whose controls were not run, or whose bar was set after its first run, is recorded as NOT YET with the obstruction named, whatever its uncontrolled numbers look like. This does not establish: that a pass meeting its bar is true in the world — only that it survived the controls this program requires before a number may be cited.",
    "status": "draft",
    "stage": "created",
    "population": "bundle"
@@ -25565,6 +25677,160 @@
    ]
   },
   {
+   "from": "spec.md",
+   "to": "093-material-context-channel/C093-1",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "093-material-context-channel/C093-1",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "093-material-context-channel/C093-10",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "093-material-context-channel/C093-10",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "093-material-context-channel/C093-11",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "093-material-context-channel/C093-11",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "093-material-context-channel/C093-12",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "093-material-context-channel/C093-12",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "093-material-context-channel/C093-13",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "093-material-context-channel/C093-13",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "093-material-context-channel/C093-14",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "093-material-context-channel/C093-14",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "093-material-context-channel/C093-2",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "093-material-context-channel/C093-2",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "093-material-context-channel/C093-3",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "093-material-context-channel/C093-3",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "093-material-context-channel/C093-4",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "093-material-context-channel/C093-4",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "093-material-context-channel/C093-5",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "093-material-context-channel/C093-5",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "093-material-context-channel/C093-6",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "093-material-context-channel/C093-6",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "093-material-context-channel/C093-7",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "093-material-context-channel/C093-7",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "093-material-context-channel/C093-8",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "093-material-context-channel/C093-8",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "093-material-context-channel/C093-9",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "093-material-context-channel/C093-9",
+    "spec.md"
+   ]
+  },
+  {
    "from": "055",
    "to": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
    "rel": "opposes",
@@ -30287,6 +30553,76 @@
    "constrains": 0
   },
   "090-projected-constraints-generalization-study/C090-16": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "093-material-context-channel/C093-7": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "093-material-context-channel/C093-4": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "093-material-context-channel/C093-13": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "093-material-context-channel/C093-12": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "093-material-context-channel/C093-11": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "093-material-context-channel/C093-10": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "093-material-context-channel/C093-8": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "093-material-context-channel/C093-9": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "093-material-context-channel/C093-3": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "093-material-context-channel/C093-2": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "093-material-context-channel/C093-14": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "093-material-context-channel/C093-5": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "093-material-context-channel/C093-1": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "093-material-context-channel/C093-6": {
    "supports": 1,
    "opposes": 0,
    "constrains": 0
@@ -35762,6 +36098,90 @@
    },
    {
     "id": "090-projected-constraints-generalization-study/C090-16",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "093-material-context-channel/C093-7",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "093-material-context-channel/C093-4",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "093-material-context-channel/C093-13",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "093-material-context-channel/C093-12",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "093-material-context-channel/C093-11",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "093-material-context-channel/C093-10",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "093-material-context-channel/C093-8",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "093-material-context-channel/C093-9",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "093-material-context-channel/C093-3",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "093-material-context-channel/C093-2",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "093-material-context-channel/C093-14",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "093-material-context-channel/C093-5",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "093-material-context-channel/C093-1",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "093-material-context-channel/C093-6",
     "population": "bundle",
     "status": "draft",
     "stage": "created"
@@ -53967,6 +54387,160 @@
     ]
    },
    {
+    "row": "093-material-context-channel/C093-1",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "093-material-context-channel/C093-1",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "093-material-context-channel/C093-10",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "093-material-context-channel/C093-10",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "093-material-context-channel/C093-11",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "093-material-context-channel/C093-11",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "093-material-context-channel/C093-12",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "093-material-context-channel/C093-12",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "093-material-context-channel/C093-13",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "093-material-context-channel/C093-13",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "093-material-context-channel/C093-14",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "093-material-context-channel/C093-14",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "093-material-context-channel/C093-2",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "093-material-context-channel/C093-2",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "093-material-context-channel/C093-3",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "093-material-context-channel/C093-3",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "093-material-context-channel/C093-4",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "093-material-context-channel/C093-4",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "093-material-context-channel/C093-5",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "093-material-context-channel/C093-5",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "093-material-context-channel/C093-6",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "093-material-context-channel/C093-6",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "093-material-context-channel/C093-7",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "093-material-context-channel/C093-7",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "093-material-context-channel/C093-8",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "093-material-context-channel/C093-8",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "093-material-context-channel/C093-9",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "093-material-context-channel/C093-9",
+     "spec.md"
+    ]
+   },
+   {
     "row": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
     "column": "055",
     "column_class": "studies",
@@ -54134,8 +54708,8 @@
    }
   ],
   "coverage": {
-   "rows_total": 912,
-   "rows_with_cells": 898,
+   "rows_total": 926,
+   "rows_with_cells": 912,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -54493,30 +55067,30 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1435,
+   "cells_total": 1449,
    "cells_by_relation": {
-    "supports": 1428,
+    "supports": 1442,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1428,
+    "documents": 1442,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
    },
    "falsifier_coverage": {
-    "covered": 903,
-    "total": 912,
+    "covered": 917,
+    "total": 926,
     "by_population": {
      "extracted": {
       "covered": 14,
       "total": 23
      },
      "bundle": {
-      "covered": 889,
-      "total": 889
+      "covered": 903,
+      "total": 903
      }
     }
    },
@@ -59561,8 +60135,8 @@
    }
   },
   "matrix_coverage": {
-   "rows_total": 912,
-   "rows_with_cells": 898,
+   "rows_total": 926,
+   "rows_with_cells": 912,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -59920,15 +60494,15 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1435,
+   "cells_total": 1449,
    "cells_by_relation": {
-    "supports": 1428,
+    "supports": 1442,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1428,
+    "documents": 1442,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
@@ -59997,7 +60571,7 @@
   "claim_population": {
    "by_status": {
     "contradicted": 4,
-    "draft": 888,
+    "draft": 902,
     "partially_falsified": 1,
     "partially_supported": 3,
     "strongly_supported": 2,
@@ -60007,26 +60581,26 @@
    },
    "by_stage": {
     "checked": 3,
-    "created": 886,
+    "created": 900,
     "explained": 8
    },
    "no_stage_recorded": 15,
    "by_population": {
-    "bundle": 889,
+    "bundle": 903,
     "extracted": 23
    }
   },
   "falsifier_census": {
-   "covered": 903,
-   "total": 912,
+   "covered": 917,
+   "total": 926,
    "by_population": {
     "extracted": {
      "covered": 14,
      "total": 23
     },
     "bundle": {
-     "covered": 889,
-     "total": 889
+     "covered": 903,
+     "total": 903
     }
    },
    "gap_claims": [
@@ -60043,8 +60617,8 @@
   },
   "aee_state_census": {
    "with_state": 0,
-   "without_state": 912,
-   "total": 912
+   "without_state": 926,
+   "total": 926
   },
   "unresolved": {
    "sign_mentions": [
@@ -61530,7 +62104,7 @@
     "runs": [
      {
       "candidate": "incumbent",
-      "record": "t405-incumbent-over-full-frame--d9f73e4c4e4e",
+      "record": "settling-20261105T175248Z-22295e",
       "via_signs": [
        "mahadevan:70"
       ],
@@ -61544,7 +62118,7 @@
      },
      {
       "candidate": "full-register",
-      "record": "t405-full-register-over-full-frame--f8c86443e924",
+      "record": "settling-20261105T175309Z-6f8dc4",
       "via_signs": [
        "mahadevan:72",
        "mahadevan:64",
@@ -150641,6 +151215,1196 @@
     },
     "sign_records": []
    }
+  },
+  "093-material-context-channel/C093-7": {
+   "id": "093-material-context-channel/C093-7",
+   "statement": "A statement this spec accepts about how inscription behavior conditions on a culture-side field (for example: sequence length or sign-choice distributions differing by site or by material class beyond the registered controls) is stated as a fact about the joint distribution of the two projections over the named population, and carries C093-1's recorded standing as a premise on its face. This does not establish: anything about why the regularity holds — no reading, function, or historical cause is asserted by a distributional statement, and none may be read into one.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-05",
+   "falsifier": [
+    "an accepted statement of this form whose population, controls, or premise citation is absent; or one that survives in the records after C093-1's standing for its field has fallen, unstated at the fallen strength."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C093-7",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "093-material-context-channel/C093-7",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "093-material-context-channel/C093-7",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C093-7",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    },
+    "sign_records": []
+   }
+  },
+  "093-material-context-channel/C093-4": {
+   "id": "093-material-context-channel/C093-4",
+   "statement": "A cross-cultural comparison is computed under this spec only if a comparanda-register entry naming (i) the comparanda set, (ii) the transmission mechanism — documented trade, contact, or continuity, stated as a checkable historical claim with its source, (iii) a fixed time window, and (iv) the practice compared, was committed before the computation's first run. Wide windows (centuries to millennia) are admissible only where the entry's mechanism is a continuity claim stated at that span; a window's width is never a substitute for its mechanism. This does not establish: that a registered comparison is a good comparison — only that it was fixed before it met the data, which is what makes its outcome a test rather than a fit.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-05",
+   "falsifier": [
+    "a comparison result in any stage record whose register entry is absent, postdates the computation, or lacks any of (i)–(iv)."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C093-4",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "093-material-context-channel/C093-4",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "093-material-context-channel/C093-4",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C093-4",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    },
+    "sign_records": []
+   }
+  },
+  "093-material-context-channel/C093-13": {
+   "id": "093-material-context-channel/C093-13",
+   "statement": "No act under this spec adjudicates, reclassifies, annotates, or scores any claim already in the ledger; no Indus claim changes status, stage, or score citing this spec; the program's standing position (the Indus script is not deciphered) is untouched, and nothing in this spec is a decipherment claim, evidence for a reading, or a step that presupposes one. This does not establish: anything about the existing claims — only that this spec's front is additive and its boundary is where it says it is.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-05",
+   "falsifier": [
+    "an existing claim's status, stage, or score changed with this spec cited as the act; or a stage record stating a reading, a sign value, or a language identification as supported by this spec's work."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C093-13",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "093-material-context-channel/C093-13",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "093-material-context-channel/C093-13",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C093-13",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    },
+    "sign_records": []
+   }
+  },
+  "093-material-context-channel/C093-12": {
+   "id": "093-material-context-channel/C093-12",
+   "statement": "Each entry in this spec's gap register (Stage 6, extending the Spec 088 register's discipline to the culture-side unknowns: GR-093 series) states, on its face: what is not known; a falsifier — the observation that would close or break the entry's present statement; an acceptance test — the administration whose outcome would discharge the entry; and an honesty-rule type in the register's existing vocabulary. An entry lacking any of the four is not an entry, and the register's completeness check counts it as a failure. This does not establish: that the register enumerates all culture-side unknowns there are — only that every entry it carries is stated in the shape that lets it be closed honestly.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-05",
+   "falsifier": [
+    "a GR-093 entry missing any of the four elements, exhibited by entry id; or a completeness check that passes over such an entry."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C093-12",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "093-material-context-channel/C093-12",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "093-material-context-channel/C093-12",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C093-12",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    },
+    "sign_records": []
+   }
+  },
+  "093-material-context-channel/C093-11": {
+   "id": "093-material-context-channel/C093-11",
+   "statement": "Culture-side claims enter the system only as claims in the append-only ledger (the family this spec adds at adoption, C093-1 onward), entered through the sanctioned intake. The matrix rows and the program-map layer for the material-context domain are generated from the ledger by the registered generators; no culture-side statement appears in the matrix, on the map, or in any derived surface that is not a ledger claim cited by its id; no generated file is hand-edited. This spec's ledger diff across its whole life is its adoption intake plus the claim appends its later stages ratify one by one. This does not establish: that the ledger's claims are true — only that the one-way flow (ledger → matrix → map) this program's publication discipline rests on survives the new domain intact.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-05",
+   "falsifier": [
+    "a matrix cell, map node, or derived statement in the material-context layer carrying no ledger id, or citing an id the ledger does not contain; a hand-edit to a generated file attributable to this spec; a ledger diff attributable to this spec beyond ratified intakes."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C093-11",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "093-material-context-channel/C093-11",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "093-material-context-channel/C093-11",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C093-11",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    },
+    "sign_records": []
+   }
+  },
+  "093-material-context-channel/C093-10": {
+   "id": "093-material-context-channel/C093-10",
+   "statement": "CISI enters this spec only as statistics and data-list metadata lawfully held and publishable under the standing restriction (scans never redistributed, never in the repository); the Laursen author copy never enters the repository (the rebuilt Table 1 is the artifact); no stage act contacts Andreas Fuls, and no stage act creates an account or channel in any person's name. This does not establish: anything about the restrictions themselves — only that this spec's design never needs to touch them.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-05",
+   "falsifier": [
+    "a CISI scan or other restricted source material present in the repository or in any stage output; a redistribution of restricted content rather than statistics or metadata; or a contact record to the barred person attributable to this spec."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C093-10",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "093-material-context-channel/C093-10",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "093-material-context-channel/C093-10",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C093-10",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    },
+    "sign_records": []
+   }
+  },
+  "093-material-context-channel/C093-8": {
+   "id": "093-material-context-channel/C093-8",
+   "statement": "Where a stage's frozen floors fire — a joint population below its floor, a held-out arm the counts cannot carry (the inventory names the standing case: four of six named sites in the sequence-bearing subset carry 7 or fewer records), a join that fails its audit — the stage records NOT YET (the administration ran and did not meet its bar, obstruction named) or CANNOT BE ADMINISTERED (the frozen administration cannot be run, forcing counts shown) and stops. No threshold, floor, population, or case is adjusted under this spec to convert a stop into a pass. This does not establish: that a stopped stage was badly designed — the floors are the price of the acceptance machinery meaning anything, and a stop is a finding about the record system's present contents. ## The join, the restrictions, and the one truth store",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-05",
+   "falsifier": [
+    "a stage outcome recorded as accepted over a fired floor; or a floor, threshold, or population in a stage record differing from its freeze without a superseding freeze that voids the earlier runs."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C093-8",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "093-material-context-channel/C093-8",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "093-material-context-channel/C093-8",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C093-8",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    },
+    "sign_records": []
+   }
+  },
+  "093-material-context-channel/C093-9": {
+   "id": "093-material-context-channel/C093-9",
+   "statement": "Any identification of a snapshot museum record with a text-bearing record (by accession number, holding, catalogue identity, or published concordance) that a Stage 4 pass consumes was produced by a join procedure frozen at Stage 1 and audited on a hand-checked sample whose size and measured precision the audit record states. A pass resting on an unaudited join, or on a join whose measured precision falls below its freeze's floor, does not run; the stage records the stop under C093-8. This does not establish: that an audited join is correct pair by pair — precision on a sample is the claim, and the audit's sample and errors are part of the record a reader judges.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-05",
+   "falsifier": [
+    "a consumed join pair the frozen procedure does not produce; or a pass whose join audit record is absent, or whose stated precision is below the frozen floor, with the pass nevertheless run."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C093-9",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "093-material-context-channel/C093-9",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "093-material-context-channel/C093-9",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C093-9",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    },
+    "sign_records": []
+   }
+  },
+  "093-material-context-channel/C093-3": {
+   "id": "093-material-context-channel/C093-3",
+   "statement": "Within the corpus snapshot as pinned, the records carrying both a recorded sequence and a non-empty material number **0**, and the records carrying both a recorded sequence and a non-empty site_name number **966**, all in the indusscript-m77 subset. No Stage 4 pass may consume a joint population the snapshot does not contain: a material-side pass over sequences runs only on a Stage 1 join that has passed its audit (C093-9), and a site-side pass runs only on the populations the freeze enumerates. This does not establish: that the underlying objects lack materials or sites in the world — only that this record system does not carry the joint fact, which is the constraint the design answers to. ## Comparanda and acceptance discipline",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-05",
+   "falsifier": [
+    "one snapshot record, exhibited by `glossa_id`, carrying a non-empty `canonical_grapheme_ids` list and a non-empty `material`; or a Stage 4 pass whose population includes a record pair no audited join produced."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C093-3",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "093-material-context-channel/C093-3",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "093-material-context-channel/C093-3",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C093-3",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    },
+    "sign_records": []
+   }
+  },
+  "093-material-context-channel/C093-2": {
+   "id": "093-material-context-channel/C093-2",
+   "statement": "The grounding record's field census covers every culture-side field present in its named sources (the corpus snapshot, the M77 and ICIT flat files, the CISI coded subset's loader, the three contact-zone rebuild files, and the corpus-catalogue seeder): each field a named source carries that names site, material, artifact type or typology, holding or provenance, find context, period, or execution medium appears in the census with its presence count, or the census names the field and states why it is not culture-side. This does not establish: that the census's sources are all the culture-side data the program holds anywhere — the claim is bounded to the named sources, and a source outside the list is Stage 1's to add by amendment, with the census re-run.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-05",
+   "falsifier": [
+    "a culture-side field, in the census's sense, present in a named source and absent from the census — exhibited by file, key, and one record carrying it."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C093-2",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "093-material-context-channel/C093-2",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "093-material-context-channel/C093-2",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C093-2",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    },
+    "sign_records": []
+   }
+  },
+  "093-material-context-channel/C093-14": {
+   "id": "093-material-context-channel/C093-14",
+   "statement": "The spec closes with an outcome record stating, per stage and in the vocabulary of spec.md §5, what was administered, what was accepted, what stopped and at what counts; and the outcome is reported to the VEXA chat for the improvement registry as a closeout deliverable, in the outcome record's own words. This does not establish: that the reported outcome settles the channel question — later stages, later joins, and the reader stand after it.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-05",
+   "falsifier": [
+    "the spec closing with no outcome record; an outcome stated in vocabulary §5 does not define without mapping to its terms; or no report delivered after the outcome record lands."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C093-14",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "093-material-context-channel/C093-14",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "093-material-context-channel/C093-14",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C093-14",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    },
+    "sign_records": []
+   }
+  },
+  "093-material-context-channel/C093-5": {
+   "id": "093-material-context-channel/C093-5",
+   "statement": "A comparanda entry's window, set, mechanism, or compared practice, once any computation under it has run, may be changed only by a new entry that supersedes it; every result computed under the superseded entry is voided in the same act and may not be cited, including in the superseding entry's rationale. This does not establish: that the original windows were well chosen — only that the register's history is append-only, so a reader can see every window that was ever tried.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-05",
+   "falsifier": [
+    "a cited result computed under an entry whose terms differ from the terms frozen when it ran; or an amended entry whose predecessor's results survive anywhere in the spec's records as live."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C093-5",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "093-material-context-channel/C093-5",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "093-material-context-channel/C093-5",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C093-5",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    },
+    "sign_records": []
+   }
+  },
+  "093-material-context-channel/C093-1": {
+   "id": "093-material-context-channel/C093-1",
+   "statement": "A candidate state in G1 §2.1's sense determines, for each inscribed object, both its text (the sequence the record system's coded corpora carry) and its material-context tuple as this spec defines it at Stage 2: the per-object recorded values of site, material class, artifact type, holding/provenance, and find context, under the vocabularies the Stage 1 normalization registers. The channel claim is that this tuple is not a function of the object's sequence table together with the record system's bookkeeping (source system, frame, derivation): there is no rule, statable in advance of Stage 2's freeze, that computes the tuple from the table and the bookkeeping alone. Stage 2 administers exactly this: a pre-registered prediction test in which the frozen culture-side fields are predicted from table-plus-bookkeeping features under permutation controls, and the channel stands as independent only at the strength the audited outcome records (spec.md §5's vocabulary). This does not establish: that the channel, where independent, carries information about any reading, sign value, or language identification — independence is a claim about projections of the state, not about what either projection says. Condition 1 (Spec 090, DERIVED) is untouched: this claim asserts a second projection exists to be tested; it does not assert the second projection separates any pair of states.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-05",
+   "falsifier": [
+    "a statable rule or fitted predictor, frozen before its administration, that recovers a registered culture-side field from sequence-table-plus-bookkeeping features at or above the freeze's stated bar on held-out objects — the channel, for that field, is the same information re-expressed, and C093-1 falls for that field (the outcome record names the field)."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C093-1",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "093-material-context-channel/C093-1",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "093-material-context-channel/C093-1",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C093-1",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    },
+    "sign_records": []
+   }
+  },
+  "093-material-context-channel/C093-6": {
+   "id": "093-material-context-channel/C093-6",
+   "statement": "A Stage 4 pass is accepted only if its frozen design's negative controls (permutation or shuffle of the culture-side labels within the strata the design names) and its replication arm (held-out sites where the design names them, and the inventory's counts allow them) were run under Spec 089 run discipline and the audited comparison of pass against controls meets the freeze's bar. A pass whose controls were not run, or whose bar was set after its first run, is recorded as NOT YET with the obstruction named, whatever its uncontrolled numbers look like. This does not establish: that a pass meeting its bar is true in the world — only that it survived the controls this program requires before a number may be cited.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-05",
+   "falsifier": [
+    "an accepted pass in any stage record lacking its registered controls' run records, or resting on a bar absent from its freeze."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C093-6",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "093-material-context-channel/C093-6",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "093-material-context-channel/C093-6",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C093-6",
+     "document_id": null,
+     "path": "specs/093-material-context-channel/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b7dc85a888cdbd27b71c5ebe8144659cb43ca529c758724980ce0d41d1a8b4c0",
+     "spec": "093-material-context-channel"
+    },
+    "sign_records": []
+   }
   }
  },
  "settling": {
@@ -150648,7 +152412,7 @@
   "semantics": "glossa-settle-1",
   "assignment_sets": {
    "record": "glossa-indus/ledger/assignment-sets.json",
-   "sha256": "b1393b83f18054a6ca67c1a379ff71d455fa37301aee4c00bae9b9fae99ec2b0",
+   "sha256": "5c1db877cbf24afd430419bf9920985aaaeba510d829ab1ce85baaa2a07d1f45",
    "register": {
     "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
     "sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
@@ -150692,15 +152456,15 @@
   },
   "runs": [
    {
-    "record": "t405-incumbent-over-full-frame--d9f73e4c4e4e",
+    "record": "settling-20261105T175248Z-22295e",
     "scenario": "t405-incumbent-over-full-frame",
     "candidate": "incumbent",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "15a5fbad24f400631ace1ebc88bfb7712c9bf6f68fae23e56fedbcac5fd5a794",
-      "lines": 943
+      "sha256": "e6525d04316fe239b31912329230d8e03a091388da7e657f63a6776ca1bb291a",
+      "lines": 957
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -150751,15 +152515,15 @@
     }
    },
    {
-    "record": "t405-full-register-over-full-frame--f8c86443e924",
+    "record": "settling-20261105T175309Z-6f8dc4",
     "scenario": "t405-full-register-over-full-frame",
     "candidate": "full-register",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "15a5fbad24f400631ace1ebc88bfb7712c9bf6f68fae23e56fedbcac5fd5a794",
-      "lines": 943
+      "sha256": "e6525d04316fe239b31912329230d8e03a091388da7e657f63a6776ca1bb291a",
+      "lines": 957
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -150814,7 +152578,7 @@
   ],
   "comparison": {
    "record": "specs/086-winning-combination-adoption/records/stage-4-dual-run-comparison.json",
-   "sha256": "1371c981ce4c9cd9721fbed3294aee82c2bc512d9b8293390a201cf3a935874b",
+   "sha256": "908a0d74d16c131d11bee8cbd485288bc2c570e19345c63c2abb560558b52209",
    "result": {
     "claims_compared": [
      {
@@ -151062,7 +152826,7 @@
   },
   "canonicals": {
    "record": "glossa-indus/ledger/settling-canonical.json",
-   "sha256": "e9a7f5baf65f4733e3e5d05f8d9456b14bd6497c012922bcbdedf1675361e892",
+   "sha256": "e38c99bc54cd0301c2f0c8c9f446c51260324ecd1ebdbcf9fb6c18db91ff7ddd",
    "scenarios": [
     {
      "id": "null-over-subset",
@@ -151397,8 +153161,8 @@
   },
   "reach": {
    "claims_with_sign_refs": 1,
-   "claims_total": 912,
-   "claims_untouched_by_any_run": 911,
+   "claims_total": 926,
+   "claims_untouched_by_any_run": 925,
    "s_r3": {
     "status": "UNMEASURED",
     "class_table": null,

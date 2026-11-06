@@ -1,14 +1,15 @@
 # T060 - Rollout record: go-live sequence executed 2026-11-06
 
-**State: NOT LAUNCHED.** The go-live sequence was executed in the
-checklist's order on 2026-11-06 and stopped at the deploy workflow's
-own first gate: the `cloud-production` GitHub environment carries
-no secrets. No deploy run was dispatched, nothing was deployed, no
-D1 migration was applied by a deploy, and no glassbreak setup code
-was generated. Every leg before that gate is complete and verified;
-the resume sequence is in section 7. This record is T060's
-deliverable for this state; it is amended in place when the launch
-completes.
+**State: DEPLOYED 2026-11-06; LAUNCH NOT YET COMPLETE.** The first
+execution (sections 1-7) stopped at the deploy workflow's secrets
+gate. The gate was then satisfied, and the second execution
+(section 8) deployed the edge: run `42243498749`, all steps green,
+Worker version `9004d3af-2bf7-4ff0-8b63-c1c1c7bec64d`, Custom
+Domain live. The launch completes when the desktop legs land
+(re-sync + desktop-side credential placement, Desktop Access),
+the remaining T059 proofs run, and the glassbreak code is
+generated and delivered (section 8.5). No glassbreak setup code
+has been generated yet.
 
 ## 1. The sequence, leg by leg
 
@@ -170,6 +171,142 @@ the reason stated per proof; none is waived.
    T053/T054 rows predate the T053 execution); the root
    LEDGER.md entry for this sequence rides the records PR that
    opened this file's first version.
+
+## 8. Deploy addendum - second execution, 2026-11-06
+
+The section 3 act landed: at the owner's direction ("You need to
+create the environment, not me"), the parent created the GitHub
+environment `cloud-production` and set `CLOUDFLARE_API_TOKEN` and
+`CLOUDFLARE_ACCOUNT_ID` as repository secrets (names verified by
+API listing; the values were sealed into GitHub inside a single
+process and appear in no record). The API token is a dedicated
+deploy token minted for this purpose (id
+`a228789ca3d3e5dd996a14117bca35ff`; policies = the Ops token's
+minus the token-management groups). The workflow reads them
+through the `secrets.*` context, so repository placement
+satisfies its gate. The deploy sequence then resumed at resume
+step 3 (section 7); the desktop legs (resume steps 2 and 4) are
+routed to Desktop Access and were still pending at this
+execution, which fixes the proof dispositions in section 8.4.
+
+### 8.1 SERVICE_CREDENTIAL placement (checklist section 2 step 6, edge copy)
+
+The workflow does not read this credential from GitHub: its gate
+step runs `wrangler secret list` on the Worker and fails closed
+unless the Worker secret exists before the deploy step. Placing
+it from this VM met a hard edge, recorded exactly: the Workers
+secrets API refuses a PUT against a script that does not exist
+(HTTP 404, code 10007 "This Worker does not exist on your
+account"), and `glossa-edge` did not exist. The placement
+therefore replicated what `wrangler secret put` itself does on a
+fresh account: a minimal stub module was uploaded through the
+script content API (503 stub, no routes, no domains; the domains
+list read empty immediately after), the secret was PUT from the
+staged value (HTTP 201, `secret_text`; the value transited one
+process's memory from the staged file to the API and was never
+printed, logged, or written anywhere else), and the secret list
+then read back `SERVICE_CREDENTIAL`. The deploy's own log
+confirms the sequence closed as designed: wrangler noted the
+Worker "was last updated via the script API" and overrode the
+stub with the real code and config, the workflow's credential
+gate (step 10) passed, and the post-deploy secret list still
+carries `SERVICE_CREDENTIAL` - secrets persist across deploys.
+The desktop copy of the credential remains unplaced (resume
+step 4, Desktop Access act).
+
+### 8.2 The deploy run - per-step verdicts
+
+Run `42243498749` (`deploy-cloud.yml`, workflow_dispatch on main
+`f97a9b8e`, dispatched 2026-11-06T15:29:21Z). Wrapper conclusion
+success AND payload verdicts green, read per step from the run's
+job record (job `127979610326`) and its log:
+
+| Step | Verdict |
+|---|---|
+| Gate - Cloudflare secrets must exist | PASS |
+| Gate - real D1 database id must be filled in | PASS |
+| Gate - real VPC service id must be filled in | PASS |
+| Typecheck + unit tests (edge suite) | PASS |
+| Apply D1 migrations (remote) | PASS - 5 migrations applied to `glossa-identity`: `0001_identity_core`, `0002_invites_sessions`, `0003_workspaces_audit`, `0004_setup_seed_and_username_case`, `0005_workspace_description` |
+| Gate - edge service credential exists | PASS |
+| Deploy (wrangler deploy) | PASS - "Uploaded glossa-edge"; bindings `env.DB` (glossa-identity, D1) and `env.GLOSSA_ORIGIN` (`01a1b018-5464-7a50-8369-3cd42a2a5387`, VPC Service); "Deployed glossa-edge triggers: glossa.bitconcepts.tech (custom domain)"; Worker version ID `9004d3af-2bf7-4ff0-8b63-c1c1c7bec64d` |
+
+### 8.3 Post-deploy state, read back
+
+- Workers scripts list: `glossa-edge` present (modified
+  2026-11-06T15:29:53Z by the deploy; `has_modules: true`,
+  `has_assets: false` - the Worker holds no project artifacts,
+  evidence toward the C083-6 storage audit).
+- Workers domains list: `glossa.bitconcepts.tech` -> service
+  `glossa-edge`, environment production, `enabled: true`,
+  cert_id `8f3153f2-d3a9-4523-9a25-5d23df296e8c`. The zone
+  carries the Cloudflare-created proxied AAAA record (`100::`)
+  for the name. T054's post-deploy legs (DNS points at the
+  Worker; certificate active) PASS - the HTTPS fetches below
+  completed with a valid certificate chain.
+- Served edge (anonymous, through the real route):
+  `GET /` -> 302 to `/login?next=%2F`, `X-Robots-Tag: noindex,
+  nofollow`; `GET /api/v1/health` -> 401 JSON
+  `authentication_required`; `GET /api/v1/projects` -> 401 JSON;
+  `GET /robots.txt` -> 200, noindex header carried.
+- `GET /login` -> the edge's own 503 `origin_unavailable`
+  (noindex): the login page is origin-served, and the origin leg
+  does not complete yet. The mechanism is bracketed by records,
+  not guessed: the tunnel reads `healthy` with 4 live
+  connections (opened 2026-11-06T09:11Z, no pending
+  reconnects), and the desktop backend answers healthy by
+  identity through the tailnet forwarder (`auth: token`,
+  component `glossa-lab-backend`; the forwarder itself was
+  found down and restored per the Spec 080 rule during this
+  execution - a VM-side casualty, unrelated to the edge path).
+  What remains open in the chain is the desktop-side posture:
+  the re-sync to current main and the `glossa_service_credential`
+  placement (resume steps 2 and 4). This is the expected
+  pending-desktop state, not a deploy failure; the
+  authenticated surface and the session proofs wait on it.
+- Probe-harness note, for the evidence trail: fetches from this
+  VM with a default Python user-agent are refused by the zone's
+  bot rules (403, error 1010) before reaching the Worker; the
+  readings above were taken with a standard client signature
+  and agree with direct curl readings.
+
+### 8.4 T059 proofs - updated dispositions
+
+| Proof | Disposition |
+|---|---|
+| P1 Anonymous wall | PASS - 302-to-login on page routes, 401 JSON on API routes; payload scan of every anonymously receivable body (empty redirect body, the edge's JSON errors, robots.txt): no project data, names, or counts. The login page's own content is origin-served and not yet receivable (section 8.3); its content scan rides the desktop legs. |
+| P2 Noindex sweep | PASS on the live route - `noindex, nofollow` carried on the 302, 401, 503, and robots.txt responses. The offline-503 element remains under P7's disposition; the same edge 503 body was incidentally observed at `/login` in the pending-desktop state, recorded as an observation, not as P7. |
+| P3 Glassbreak setup | NOT RUN - parent-sequenced after the proof set; the setup code was NOT generated in this execution. |
+| P4 Login/logout, sliding session, revocation cascades | NOT RUN - needs the P3 owner session and the completed origin leg. |
+| P5 Invite lifecycle | NOT RUN - needs the P3 owner session. |
+| P6 Workspace scope on the real dataset | NOT RUN - needs P5 sessions. Dataset-side precondition T057 remains PASS. |
+| P7 Desktop-offline 503 | NOT RUN - standing rule: it runs only inside a sequenced Desktop Access stop/restore window. |
+| P8 Credential-in-wrong-position | PASS (edge legs) - the Spec 082 token presented at the edge as a Bearer credential: 401, refused; forged `X-Glossa-*` identity headers through the route: 401, the wall held (the Worker strips client `X-Glossa-*`). The direct-to-origin leg has no public path to exercise: the origin answers only through the tunnel (checklist section 4, sole-route configuration verified). |
+| P9 Host-management scoped 404 (edge leg) | NOT RUN - needs an admin session (P3). |
+| P10 Terminal gate | NOT RUN - needs member and admin sessions. |
+| P11 Attribution | NOT RUN - needs an authenticated mutating act through the edge. |
+| P12 Streaming + large-response pass-through; one job to a terminal state | NOT RUN - needs an authenticated session over the completed origin leg. |
+
+### 8.5 What remains, in order
+
+1. Desktop re-sync to current main plus backend restart, and
+   the desktop-side credential placement from the staged value
+   (Desktop Access acts; resume steps 2 and 4). On their
+   landing, the origin leg should complete and `/login` should
+   serve the application.
+2. The remaining proofs: P4-P6, P9-P12 on the real route; P7
+   inside its sequenced stop/restore window.
+3. Glassbreak generation and the one-time delivery of the code
+   and `https://glossa.bitconcepts.tech` to the owner in the
+   Glossa-Lab chat (Amendment 3), at P3.
+4. Amend this record to LAUNCHED with the completed proof set
+   and the go-live timestamp; correct the readiness record's
+   stale T053/T054 rows (PR #534 owns that file).
+
+No background completion notice diverged from its terminal
+record in this execution; every verdict above was read from the
+run's job record and log, the Cloudflare API, or the served
+route itself.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.

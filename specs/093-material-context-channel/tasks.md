@@ -40,7 +40,7 @@ block ratification (Stage 0, T003).
 
 ## Stage 1 — Inventory, normalization, join
 
-- [ ] **T101 — Census completion.** The grounding
+- [x] **T101 — Census completion.** The grounding
   inventory is re-run against the repo at adoption state
   and amended for any source or field it missed (C093-2);
   the disjointness counts of C093-3 are re-counted on the
@@ -48,8 +48,8 @@ block ratification (Stage 0, T003).
   Acceptance: **test** (every count recomputable from the
   pinned files). *This does not establish:* that the
   census's sources are all the culture-side data in the
-  world — only completeness against the named sources.
-- [ ] **T102 — Material normalization register.** The
+  world — only completeness against the named sources. **Completion (2026-11-06):** census completed by `tools/spec093/stage1_census.py` over the pinned files; the grounding record is amended (A1–A7) in `records/t101-census-completion-2026-11-06.md`, where every count is stated.
+- [x] **T102 — Material normalization register.** The
   material-class vocabulary and its mapping rules are
   filed; every distinct raw value in the pinned snapshot
   is dispositioned by rule (class, composite split,
@@ -59,8 +59,8 @@ block ratification (Stage 0, T003).
   outside the register fails the check). *This does not
   establish:* that the classes are the right grain — only
   that the mapping is total, ruled, and frozen for the
-  stages that consume it.
-- [ ] **T103 — Join design, freeze, and precision audit.**
+  stages that consume it. **Completion (2026-11-06):** register v1 filed at `records/material-normalization-register-v1.json` (SHA-256 `fe8d4542…`) with its document; all 1,122 distinct values dispositioned (663 class, 370 composite, 15 alternatives, 49 non-material, 25 unmapped-named); the checker re-applies the rules from the artifact and passes (stage record).
+- [x] **T103 — Join design, freeze, and precision audit.**
   The museum↔text join procedure is frozen; the
   hand-checked sample is drawn and checked; measured
   precision and the error census are recorded against the
@@ -69,7 +69,7 @@ block ratification (Stage 0, T003).
   record). *This does not establish:* that the join is
   correct pair by pair — precision on the sample is the
   claim, and a join below its floor stops the material
-  arm honestly (C093-8).
+  arm honestly (C093-8). **Completion (2026-11-06):** freeze v1 filed before the audit (`records/t103-join-freeze-v1.md`); audit by complete enumeration — K1 rejected (7 pairs, precision 0.000), K2 accepted (179 pairs, precision 1.000); join output at `records/t103-join-pairs-v1.jsonl`; audit record at `records/t103-join-audit-2026-11-06.md`. The material arm is not stopped.
 
 ## Stage 2 — Channel independence
 

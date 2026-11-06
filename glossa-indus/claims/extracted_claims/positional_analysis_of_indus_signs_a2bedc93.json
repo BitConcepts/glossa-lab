@@ -1,7 +1,7 @@
 {
   "document_id": "positional_analysis_of_indus_signs_a2bedc93",
   "title": "",
-  "extraction_date": "2026-10-21T15:29:25.643609",
+  "extraction_date": "2026-11-06T12:56:10.952519",
   "total_claims": 1,
   "auto_extracted": 1,
   "manually_curated": 0,
@@ -15,7 +15,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-10-21T15:29:25.515019",
+      "extracted_at": "2026-11-06T12:56:10.942109",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:positional_analysis_of_indus_signs_a2bedc93_statisti_0001",
       "stage_as_of": "2026-10-12",
@@ -51,15 +51,5 @@
   "_citation": {
     "system": "Glossa-Lab Indus Evidence Graph Batch 4",
     "source_doc": "positional_analysis_of_indus_signs_a2bedc93"
-  },
-  "audit_correction_2026_10_22": {
-    "date": "2026-10-22",
-    "kind": "spec025-material-audit-source-correction",
-    "proposal": "P8",
-    "note": "Source identification: this document is Andreas Fuls, 'Positional Analysis of Indus Signs', Voprosi Epigrafiki 7(1):253-275 (2013), reprinted as Wells & Fuls 2015 Appendix II (DOI 10.2307/j.ctvr43jmf.16). The literature registry record for this document carries no author; its bytes are freeze-pinned whole-file by the Spec 057 freeze test, so the identification is recorded here rather than edited into the registry record (see fix_repair_2026-10-22.md in the audit directory). Evidence: audit W4, FULL TEXT.",
-    "evidence": [
-      "specs/025-paper-search-research-check/audit-2026-10-22/raw/findings_W4.md",
-      "specs/025-paper-search-research-check/audit-2026-10-22/correction_proposals.md"
-    ]
   }
 }

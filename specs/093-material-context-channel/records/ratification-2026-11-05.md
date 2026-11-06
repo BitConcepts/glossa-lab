@@ -476,6 +476,73 @@ landing — no study stage (Stage 1 onward) is started by
 this motion, and the ledger growth changes no claim's
 status, stage, or score.
 
+## Addendum — combined-ledger completion-chain recompute (2026-11-06)
+
+PR #533 (the C084-12 intake replay, merge `bbdfc865`)
+landed on main while this adoption was in flight, growing
+main's ledger to 944 lines (SHA-256 `6a997a31…`) with the
+original T405 pair's departure acts already appended. This
+adoption's chain had been computed over the 943-line base,
+so the completion chain was recomputed over the combined
+ledger — by recomputation, never by text union:
+
+- **Ledger.** The combined `claims.jsonl` is main's 944
+  lines as a strict prefix (verified: the head-944 hash is
+  main's file hash) followed by this adoption's appended
+  block (the block SHA-256 `79c84105…` recorded in Appendix
+  B): **958 lines, SHA-256
+  `c55d57822bcd9b2e9a3401d807aea6e5e1ce872c5e239baadea4834310c8f4aa`**,
+  927 claims (bundle 904, extracted 23).
+- **Settling.** Re-executed over the combined ledger:
+  incumbent `settling-20261106T085256Z-316590` (supersedes
+  `legacy:t405-incumbent-over-full-frame--17334e1dfc65`),
+  full-register `settling-20261106T085304Z-78bf5c`
+  (supersedes
+  `legacy:t405-full-register-over-full-frame--47287ced3385`),
+  materialize-sets `settling-20261106T085304Z-a38e00`
+  (sets unchanged: incumbent 94, full-register 286, H003
+  out). Both scenarios' result blocks are byte-equal across
+  all three generations (943, 944, and combined builds).
+  The canonical's provenance and comparison pins moved to
+  the combined build, and `re_derivations[5]` records this
+  recompute.
+- **Store departures.** Under the derived-layers rule
+  (every carried scenario record must pin-match the current
+  build, exactly two reproducible runs carried), both prior
+  scenario generations departed the store — the 944 build's
+  pair and this branch's 957 build pair — their bytes
+  preserved in git history. The completion builder appended
+  exactly the two departure acts for the 944 pair; the
+  original pair's departure acts, already standing on
+  main's index, were not duplicated. The branch
+  materialize record's writer entry act
+  (`settling-20261105T175400Z-cacd3f`) was restored verbatim
+  from the branch index. The folded index census reads 23
+  entries = 5 standing + 8 superseded legacy + 4 departed
+  generations accounted by departure act + 6 canonical
+  re-derivation events.
+- **Fixture correction.** The merge's rename/rename
+  resolution placed the refreshed 944-build record bytes at
+  the T405 fixture paths; the fixtures are defined by the
+  departure acts' `blob_sha256` pins, and were restored
+  byte-identical to them (incumbent `17d7dbae…`,
+  full-register `176ca660…`).
+- **Census at the combined state.** Falsifier coverage
+  918 of 927; matrix 1,450 cells; layered map 1,571
+  elements and 1,450 edges (supports 1,443, opposes 7);
+  program map 92 studies, 28 unjudged. The census literals
+  in the test suites and the frontend e2e header were
+  re-pinned to these recomputed values, none weakened.
+
+The replay completion note above stands as the record of
+the pre-merge replay; this addendum supersedes its grown
+values for the combined line.
+
+*This does not establish:* anything beyond the completion
+chain's landing — no study stage (Stage 1 onward) is
+started by this motion, and the ledger growth changes no
+claim's status, stage, or score.
+
 ## Appendix B — the claim records of the executed intake, verbatim
 
 The 14 ledger records exactly as `import_bundle.py`

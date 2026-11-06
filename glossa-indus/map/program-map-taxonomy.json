@@ -491,6 +491,11 @@
       "spec_dir": "090-projected-constraints-generalization-study",
       "domain": "Program infrastructure",
       "subdomain": "Governance, lifecycle & generated layers"
+    },
+    {
+      "spec_dir": "093-material-context-channel",
+      "domain": "Claim families by study line",
+      "subdomain": "Site, object & repertoire tests"
     }
   ],
   "extracted_documents": [

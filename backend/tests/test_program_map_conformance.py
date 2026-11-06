@@ -28,18 +28,18 @@ from glossa_lab.ledger_intake import sha256_file
 
 _REPO = Path(__file__).resolve().parents[2]
 
-# The census of record (2026-11-05, post-C084-12-intake ledger).
-PIN_CLAIMS = 913
-PIN_CLAIMS_BY_POPULATION = {"bundle": 890, "extracted": 23}
+# The census of record (2026-11-05, post-Spec-093-intake-replay ledger).
+PIN_CLAIMS = 927
+PIN_CLAIMS_BY_POPULATION = {"bundle": 904, "extracted": 23}
 PIN_CLAIMS_BY_CLASS = {
     "closed_other": 1,
     "negative": 6,
-    "open": 904,
+    "open": 918,
     "positive": 2,
 }
-PIN_STUDIES = 91
+PIN_STUDIES = 92
 PIN_UNJUDGED = 28
-PIN_FALSIFIER_PRESENT = 904
+PIN_FALSIFIER_PRESENT = 918
 PIN_NULL_FALSIFIER_EXTRACTED = 9
 PIN_MULTI_SPEC = 44
 
@@ -210,7 +210,7 @@ def test_taxonomy_hygiene_against_live_inputs():
     }
     assert domain_totals == {
         "Anchors & readings": 13,
-        "Claim families by study line": 40,
+        "Claim families by study line": 41,
         "Contact zone & external corpora": 2,
         "Program infrastructure": 19,
         "Sign inventory & corpus": 17,

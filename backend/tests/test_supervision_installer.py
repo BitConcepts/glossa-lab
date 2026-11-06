@@ -94,6 +94,7 @@ def test_linux_installer_render_only(tmp_path: Path) -> None:
     assert "StartLimitBurst=3" in unit
     assert "StartLimitIntervalSec=3600" in unit
     assert "OnFailure=glossa-lab-backend-alert.service" in unit
+    assert "OOMScoreAdjust=-300" in unit
     assert "__" not in unit  # every placeholder rendered
 
     alert = (service_dir / "glossa-lab-backend-alert.service").read_text(encoding="utf-8")
@@ -116,7 +117,7 @@ def test_tray_icon_uses_brand_tile() -> None:
 
     try:
         import glossa_tray.main as tray_main
-    except Exception:  # noqa: BLE001 — headless CI has no display for pystray
+    except BaseException:  # noqa: B036 — headless CI: pystray import fails or exits
         pytest.skip("pystray is not importable in this environment")
 
         image = tray_main._create_icon_image("green")  # noqa: SLF001

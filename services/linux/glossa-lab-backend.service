@@ -19,6 +19,13 @@ Environment=PYTHONUNBUFFERED=1
 ExecStart=__VENV_PYTHON__ -m uvicorn glossa_lab.main:create_app --factory --host 127.0.0.1 --port __PORT__ --app-dir __REPO_ROOT__/backend
 Restart=on-failure
 RestartSec=5
+# OOM hardening (2026-10-27 root-cause finding): the backend's
+# unsignalled deaths were kernel OOM kills — at adj 0 its footprint
+# made it the first victim under memory pressure. -300 moves it out
+# of first-victim position while staying far less protected than
+# the host runtime daemon (-700). The restart cap above remains
+# the backstop if it is ever killed anyway.
+OOMScoreAdjust=-300
 TimeoutStopSec=30
 KillSignal=SIGTERM
 StandardOutput=append:__STATE_DIR__/backend.log

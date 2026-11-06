@@ -1,0 +1,17 @@
+[Unit]
+Description=Glossa Lab tailnet forwarder (VM side, Spec 080)
+Documentation=file:/home/hatch/workspace/goals/glossa-lab-spec-kit-aee-migration-and-indus-program/files/2026-10-28-spec-080-desktop-migration-record.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/home/hatch/workspace/venvs/glossa-lab/bin/python /home/hatch/workspace/goals/glossa-lab-spec-kit-aee-migration-and-indus-program/hidden_files/spec080-migration/glossa_tailnet_forwarder.py 8001
+Restart=on-failure
+RestartSec=5
+StartLimitIntervalSec=3600
+StartLimitBurst=3
+OOMScoreAdjust=-300
+
+[Install]
+WantedBy=multi-user.target

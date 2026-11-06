@@ -1,0 +1,277 @@
+{
+ "spec": "066",
+ "phase": "Phase-428",
+ "freeze_digest": "0b81d8421c8fe66b486b2c729bb7e978faa6327c74b8f1bff7984128a31aa355",
+ "step0": {
+  "0.1_gate": "PASS (PROVENANCE entry 22 on record, recorded 2026-10-20 before any processing; material classified restricted research material; gate quoted in the outcome record)",
+  "0.2_pins": "PASS (every section 2 pin recomputed locally to its frozen value; committed pins additionally verified by the contents API route in the execution record)",
+  "pins": {
+   "portion_pdf": {
+    "sha256": "514338b1f6c498bd318b114e39b0e77a79a6685918a0a4c2c5b116dfc2482b6a",
+    "bytes": 8206446
+   },
+   "extraction_table": {
+    "sha256": "7179858d9b2bc18b480ba092a08ea2ee021ce569fcaceb5b992d22c541d333c8",
+    "bytes": 507290
+   },
+   "vol1": {
+    "sha256": "e0d698f991fbd7cf26c491a2b25906b422903a0e2a26ea7b8c690420ca51dc1e",
+    "bytes": 804665
+   },
+   "vol2": {
+    "sha256": "e751244e2d51bda3181d98e56af691c0d24099d76d035b54f0888504204bc7d9",
+    "bytes": 1431631
+   },
+   "horus84": {
+    "sha256": "c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef",
+    "bytes": 1190884
+   },
+   "phase421_census": {
+    "sha256": "952829317a7b8e48e809da4353cdf5f6b6f872180920bc349aaf747595b99bb8",
+    "bytes": 1981510
+   },
+   "phase421_results": {
+    "sha256": "3948cd01f960842b963061d96ddeabd5ee0b5cdeb572d786976d476d84ff0c7f",
+    "bytes": 36170
+   },
+   "intake_schema": {
+    "sha256": "b94d03add0318044b559b7b2976bbd2722abc19adcf67a0ea0cf093f8d7de49b",
+    "bytes": 6197
+   },
+   "intake_validator": {
+    "sha256": "02b24e3312a9a4ac4f7e3b14aeaee2cda0268f41cb5bd573494340c2e7d2df03",
+    "bytes": 18867
+   }
+  },
+  "0.3_candidate_sets": "PASS (2,101 well-formed + 5 garbled; referenced 1,341 = 1,293 zero-resolution + 48 already-joined, disjoint; unreferenced 760; zero-resolution rows 1,790)",
+  "candidate_sets": {
+   "total": 2101,
+   "garbled": 5,
+   "referenced": 1341,
+   "zero": 1293,
+   "joined": 48,
+   "unreferenced": 760,
+   "zero_rows": 1790
+  },
+  "0.3_corroboration_base": "PASS (neither the vols. 1-2 layer nor the mayig layer carries FC/excavation/museum values; rung 5 UNGRADED for every candidate, DD-066-7)",
+  "0.4_repo_cleanliness": "checked by the caller against the execution tree listing; result recorded in the outcome record (specs/066 outcome.md)"
+ },
+ "census": {
+  "candidates": 2101,
+  "counts": {
+   "VERIFIED": 2089,
+   "CONFLICT": 12,
+   "UNRESOLVED": 0
+  },
+  "shares": {
+   "VERIFIED": 0.9943,
+   "CONFLICT": 0.0057,
+   "UNRESOLVED": 0.0
+  },
+  "conflict_reasons": {
+   "NUMBER-AMBIGUOUS": 11,
+   "SITE": 1
+  },
+  "by_set": {
+   "referenced": {
+    "candidates": 1341,
+    "counts": {
+     "VERIFIED": 1331,
+     "CONFLICT": 10,
+     "UNRESOLVED": 0
+    },
+    "shares": {
+     "VERIFIED": 0.9925,
+     "CONFLICT": 0.0075,
+     "UNRESOLVED": 0.0
+    }
+   },
+   "unreferenced": {
+    "candidates": 760,
+    "counts": {
+     "VERIFIED": 758,
+     "CONFLICT": 2,
+     "UNRESOLVED": 0
+    },
+    "shares": {
+     "VERIFIED": 0.9974,
+     "CONFLICT": 0.0026,
+     "UNRESOLVED": 0.0
+    }
+   }
+  },
+  "by_referenced_class": {
+   "zero": {
+    "candidates": 1293,
+    "counts": {
+     "VERIFIED": 1284,
+     "CONFLICT": 9,
+     "UNRESOLVED": 0
+    },
+    "shares": {
+     "VERIFIED": 0.993,
+     "CONFLICT": 0.007,
+     "UNRESOLVED": 0.0
+    }
+   },
+   "joined": {
+    "candidates": 48,
+    "counts": {
+     "VERIFIED": 47,
+     "CONFLICT": 1,
+     "UNRESOLVED": 0
+    },
+    "shares": {
+     "VERIFIED": 0.9792,
+     "CONFLICT": 0.0208,
+     "UNRESOLVED": 0.0
+    }
+   }
+  },
+  "by_section": {
+   "Mohenjo-daro": {
+    "candidates": 509,
+    "counts": {
+     "VERIFIED": 506,
+     "CONFLICT": 3,
+     "UNRESOLVED": 0
+    },
+    "shares": {
+     "VERIFIED": 0.9941,
+     "CONFLICT": 0.0059,
+     "UNRESOLVED": 0.0
+    }
+   },
+   "Harappa old": {
+    "candidates": 509,
+    "counts": {
+     "VERIFIED": 507,
+     "CONFLICT": 2,
+     "UNRESOLVED": 0
+    },
+    "shares": {
+     "VERIFIED": 0.9961,
+     "CONFLICT": 0.0039,
+     "UNRESOLVED": 0.0
+    }
+   },
+   "Harappa HARP": {
+    "candidates": 1084,
+    "counts": {
+     "VERIFIED": 1076,
+     "CONFLICT": 8,
+     "UNRESOLVED": 0
+    },
+    "shares": {
+     "VERIFIED": 0.9926,
+     "CONFLICT": 0.0074,
+     "UNRESOLVED": 0.0
+    }
+   }
+  },
+  "graded_bases": {
+   "site": 1341,
+   "confidence_gate": 2101,
+   "ambiguity": 2101,
+   "type_carriage": 2101,
+   "corroboration": 0
+  },
+  "graded_bases_note": "corroborating keys ungraded for every candidate: neither in-hand layer carries FC, excavation, or museum/registration values (DD-066-7)",
+  "conflict_share": 0.0057,
+  "halt_threshold": 0.2
+ },
+ "confidence_gate": {
+  "low_candidates": 2,
+  "low_hand_verified_confirmed": 2,
+  "low_unresolved": 0,
+  "medium_candidates": 183,
+  "medium_verified_provisional": 183,
+  "medium_class_covered": true,
+  "medium_demoted": 0
+ },
+ "stratum": {
+  "seed": 20261021,
+  "sizes": {
+   "VERIFIED": 30,
+   "CONFLICT": 12,
+   "UNRESOLVED": 0
+  },
+  "medium_supplement": 0,
+  "cause_counts": {
+   "extraction_error": 12,
+   "programme_record_error": 0,
+   "genuine_compilation_divergence": 0,
+   "true_non_identity": 0
+  },
+  "sampled_verified_sound": 30,
+  "sampled_unresolved_attributed": {}
+ },
+ "local_products": {
+  "grade_table": "phase428-grade-table.csv",
+  "grade_table_rows": 2101,
+  "build_record": "phase428-build-record.json"
+ },
+ "halt": {
+  "conflict_share": 0.0057,
+  "threshold": 0.2,
+  "share_halt": false,
+  "stratum_true_non_identity": 0,
+  "tripwire_halt": false,
+  "halted": false
+ },
+ "merged_layer": {
+  "file": "cisi_catalogue_layer_v2.csv",
+  "sha256": "cd0c2ba8823678be9f7573616528ae0b6be2fe579dc7e34c93add421c80886ad",
+  "bytes": 2655958,
+  "rows": 9741,
+  "distinct_objects": 5529,
+  "base_rows": 7705,
+  "base_distinct_objects": 3493,
+  "new_objects": 2036,
+  "collisions_existing_object_stands": 53
+ },
+ "validator": {
+  "verdict": "pass-with-warnings",
+  "errors": 0,
+  "warnings": 2363,
+  "summary": {
+   "inscriptions": 2089,
+   "tokens": 0,
+   "sign_lists": [
+    "other"
+   ],
+   "errors": 0,
+   "warnings": 2363
+  },
+  "dataset_records": 2089,
+  "dataset_form": "phase428-extension-dataset.json (restricted local store only)",
+  "license_basis": "the entry-22 gate, quoted in the dataset form"
+ },
+ "extension_index": {
+  "file": "data/intake/cisi31_extension_index.csv",
+  "sha256": "be20439a094d4196352bd8c31fd8eeee3f92cd81d8443786a1c520d8355f2540",
+  "bytes": 78531,
+  "rows": 2101,
+  "entered_objects_verified": 2089
+ },
+ "projection": {
+  "label": "PROJECTION - no join has run; arithmetic over the committed Phase-421 census and this act's grades",
+  "already_joined_rows": 2899,
+  "newly_resolved_rows_projected": 1777,
+  "projected_joined_rows": 4676,
+  "projected_share_percent": 82.34,
+  "bar_rows": 3465,
+  "margin_rows": 1211
+ },
+ "type_fill_entered": {
+  "seal": 474,
+  "seal impression": 23,
+  "unfilled": 274,
+  "tablet": 699,
+  "graffiti": 559,
+  "other": 8,
+  "stone object": 49,
+  "ivory stick": 3
+ },
+ "outcome": "INTAKE COMPLETE \u2014 CATALOGUE EXTENSION PINNED"
+}

@@ -660,8 +660,8 @@ def test_legacy_pair_is_not_comparable(tmp_path):
         Path(__file__).resolve().parent / "fixtures" / "legacy_t405_pair"
     )
     for name in (
-        "t405-incumbent-over-full-frame--17334e1dfc65.json",
-        "t405-full-register-over-full-frame--47287ced3385.json",
+        "t405-incumbent-over-full-frame--d9f73e4c4e4e.json",
+        "t405-full-register-over-full-frame--f8c86443e924.json",
     ):
         (store / name).write_bytes((fixtures / name).read_bytes())
     for act in rr.enumerate_legacy_entries(store):
@@ -672,8 +672,8 @@ def test_legacy_pair_is_not_comparable(tmp_path):
     assert "legacy" in scan["skipped"][0]["reason"]
     outcome = rj.analyze_pair(
         store, junctions,
-        "legacy:t405-incumbent-over-full-frame--17334e1dfc65",
-        "legacy:t405-full-register-over-full-frame--47287ced3385",
+        "legacy:t405-incumbent-over-full-frame--d9f73e4c4e4e",
+        "legacy:t405-full-register-over-full-frame--f8c86443e924",
     )
     assert outcome["disposition"] == "not-comparable"
     assert set(outcome["differing_components"]) == {

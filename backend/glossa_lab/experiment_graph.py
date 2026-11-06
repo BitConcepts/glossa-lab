@@ -2966,6 +2966,16 @@ try:
     logger.info("Registered %d Phase-407 (spec 042) nodes", len(list(_p407_defs())))
 except Exception as _p407_exc:  # noqa: BLE001
     logger.warning("Phase-407 (spec 042) nodes not registered: %s", _p407_exc)
+# ── Phase-409 node (spec 051: Roif arrow sign) ──
+try:
+    from glossa_lab.experiment_graph_phase409 import (
+        _phase409_node_defs as _p409_defs,  # noqa: PLC0415
+    )
+    for _d in _p409_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-409 (spec 051) nodes", len(list(_p409_defs())))
+except Exception as _p409_exc:  # noqa: BLE001
+    logger.warning("Phase-409 (spec 051) nodes not registered: %s", _p409_exc)
 # ── Phase-411 node (spec 045: Hunt depicted kinds, step 0) ──
 try:
     from glossa_lab.experiment_graph_phase411 import (

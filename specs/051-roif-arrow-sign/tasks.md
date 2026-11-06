@@ -101,7 +101,7 @@
       record** (DD-051-14; no byte-digest exists
       at this freeze), and the execution phase
       allocated as Phase-409 (DD-051-15).
-- [ ] **L7 — Freeze PR merged**, house gates
+- [x] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).
       This PR is the item's vehicle; its merge
@@ -113,10 +113,10 @@
 
 ## Execution — gated on the freeze and a separate execution order
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Step 0, part 1** (spec §3 gates
+- [x] **E2 — Step 0, part 1** (spec §3 gates
       0.1–0.3): input integrity against the
       freeze pins; Asset B digest assertion
       against the digest recorded in Spec 047's
@@ -127,7 +127,7 @@
       wordings); Asset B form check and
       testable-set derivation. Any failure stops
       the run before a class is read for a test.
-- [ ] **E3 — Step 0, part 2** (gates 0.4–0.5):
+- [x] **E3 — Step 0, part 2** (gates 0.4–0.5):
       counting layer identified, exported in
       full, and pinned by digest; M391 census
       reproduced exactly (75 / 52 / 16 / 14 / 11 /
@@ -137,7 +137,7 @@
       once, non-spine sites named with their
       M391 counts. Any failure stops the run as
       INVALID before any share exists.
-- [ ] **E4 — Step 0, part 3** (gate 0.6):
+- [x] **E4 — Step 0, part 3** (gate 0.6):
       test-population census (counts only) and
       the floors — at least 3 testable
       gateway/border sites carrying M391, both
@@ -155,7 +155,7 @@
       the text-length description; verdict by
       the frozen partition; §5.5 sensitivities
       reported beside the primary.
-- [ ] **E6 — Outcome:** the §8 record —
+- [x] **E6 — Outcome:** the §8 record —
       results JSON and report under the
       headline rules (corpus label, Asset B
       digest and status counts, join census,

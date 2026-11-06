@@ -119,9 +119,9 @@ staging:
 ## 5. Recorded IDs (fill at creation; IDs are not secrets)
 
 - Tunnel name: `glossa-desktop`
-- Tunnel ID: _(pending gate 2 — §1 row 3)_
+- Tunnel ID: `e06ace7e-68b6-4b88-b3cc-177bda09ab3e` (created 2026-11-06; healthy, 4 connections, cloudflared 2026.10.7)
 - VPC Service name: `glossa-desktop-origin`
-- VPC Service ID: _(pending gate 2 — §1 row 4)_
+- VPC Service ID: `01a1b018-5464-7a50-8369-3cd42a2a5387` (registered 2026-11-06)
 - Custom Domain: `glossa.bitconcepts.tech` → Worker `glossa-edge` (state not readable until §1 row 1 lands)
 - Desktop install revision: cloudflared 2026.10.7, sha256-pinned, `GlossaCloudflared` logon task (Desktop Access chat, T052 — their completion record governs)
 - D1 database: `glossa-identity` = `5de6e49e-bc67-4eaf-94da-728ae9b1d8a7` (created 2026-11-05)

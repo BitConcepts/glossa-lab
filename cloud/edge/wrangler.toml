@@ -36,14 +36,16 @@ migrations_dir = "migrations"
 # publishes no hostname and no application route — this binding is the
 # only path to it (C083-8, C083-14).
 #
-# service_id is a PLACEHOLDER: the real service is registered once the
-# Tunnel/VPC configuration scopes land (T053 checklist,
-# specs/083-cloud-edition/records/t053-tunnel-vpc-checklist.md), and
-# the deploy step fills in the returned id. The deploy workflow
-# refuses to run while the placeholder stands.
+# service_id is the registered VPC Service `glossa-desktop-origin`,
+# created 2026-11-06 under the T053 checklist
+# (specs/083-cloud-edition/records/t053-tunnel-vpc-checklist.md, §2
+# step 5) once the Tunnel/VPC configuration scopes landed. The tunnel
+# `glossa-desktop` it fronts has id
+# e06ace7e-68b6-4b88-b3cc-177bda09ab3e. The deploy workflow's
+# placeholder refusal no longer applies to this value.
 [[vpc_services]]
 binding = "GLOSSA_ORIGIN"
-service_id = "00000000-0000-0000-0000-000000000000"
+service_id = "01a1b018-5464-7a50-8369-3cd42a2a5387"
 
 # Secrets are NOT declared here. The edge-to-origin service credential
 # is a Worker secret:

@@ -3,10 +3,10 @@
  "generated_from": "glossa-indus/ledger/claims.jsonl through glossa-indus/matrix/matrix.json and the settling records of record",
  "generated_by": "tools/ledger/generate_map.py (backend/glossa_lab/map_generate.py)",
  "header": {
-  "claims_total": 926,
+  "claims_total": 927,
   "claims_by_status": {
    "contradicted": 4,
-   "draft": 902,
+   "draft": 903,
    "partially_falsified": 1,
    "partially_supported": 3,
    "strongly_supported": 2,
@@ -55,18 +55,18 @@
    "reason": "the anchors register records no review dates for the pending validations, so they appear as a count, not as dated items (decision Q4)"
   },
   "as_of": {
-   "ledger_sha256": "e6525d04316fe239b31912329230d8e03a091388da7e657f63a6776ca1bb291a",
-   "ledger_lines": 957,
+   "ledger_sha256": "c55d57822bcd9b2e9a3401d807aea6e5e1ce872c5e239baadea4834310c8f4aa",
+   "ledger_lines": 958,
    "ledger_date": "2026-11-05",
    "ledger_schema": "ledger-schema v1",
    "matrix_defs": "matrix-defs v1",
    "map_defs": "map-defs v1",
    "settle_semantics": "glossa-settle-1",
-   "matrix_sha256": "9ee8620cec91e77e9c8eaec32d41a2486a6d2ff8359d965d3fd768cd1be2ba3f",
+   "matrix_sha256": "2214cc7b823762a042e6b208595a9f8bdb37869516307701d12bc5084af838be",
    "anchors_register_sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
-   "assignment_sets_sha256": "5c1db877cbf24afd430419bf9920985aaaeba510d829ab1ce85baaa2a07d1f45",
-   "comparison_sha256": "908a0d74d16c131d11bee8cbd485288bc2c570e19345c63c2abb560558b52209",
-   "settling_canonical_sha256": "e38c99bc54cd0301c2f0c8c9f446c51260324ecd1ebdbcf9fb6c18db91ff7ddd"
+   "assignment_sets_sha256": "f8bf17ce0400e838215f3286c3919c78ad906760a737132a13d64b1e1154fcb6",
+   "comparison_sha256": "3d0823e22766f28b2f171f97431962ece3f2d3c678038da251f81ec51b668599",
+   "settling_canonical_sha256": "704ccad16097be380ab0c261417805fa383936506dcc186300c290c0607ee070"
   }
  },
  "elements": [
@@ -7364,6 +7364,14 @@
    "statement": "The study closes with an outcome record stating the per-stage outcomes (G1: STATED or NOT YET with the missing element named; G2: DERIVED or NOT YET with the obstruction named) and the study-level outcome as spec.md defines it (INSTANTIATES-path, ANALOGY with the metaphorical element named, or NOT YET with the missing work stated), each with evidence pointers to the stage records. The outcome — or, if a stage cannot run, the blocker — is reported to the VEXA chat for the improvement registry, as the commission requires. The formal verdict over the full G1–G5 bar belongs to the independent reader under the judging protocol; this study does not issue it. This does not establish: that the reported outcome is the final verdict on the domain — the reader's verdict under the protocol, and the G3–G5 follow-on, both stand after it.",
    "status": "draft",
    "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "084-policy-sync-conformance/C084-12",
+   "statement": "The app's privacy / data-handling statement, served by GET /api/v1/privacy from backend/glossa_lab/privacy_statement.py and rendered in the SPA's Privacy view, matches the approved fixture specs/084-policy-sync-conformance/fixtures/privacy-data-handling.txt exactly (owner approval 2026-11-05), and no served source carries the superseded draft placeholder text.",
+   "status": "draft",
+   "stage": null,
    "population": "bundle"
   },
   {
@@ -24567,6 +24575,17 @@
   },
   {
    "from": "spec.md",
+   "to": "084-policy-sync-conformance/C084-12",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "084-policy-sync-conformance/C084-12",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
    "to": "084-policy-sync-conformance/C084-2",
    "rel": "supports",
    "rule": "R2",
@@ -30557,6 +30576,11 @@
    "opposes": 0,
    "constrains": 0
   },
+  "084-policy-sync-conformance/C084-12": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
   "093-material-context-channel/C093-7": {
    "supports": 1,
    "opposes": 0,
@@ -36101,6 +36125,12 @@
     "population": "bundle",
     "status": "draft",
     "stage": "created"
+   },
+   {
+    "id": "084-policy-sync-conformance/C084-12",
+    "population": "bundle",
+    "status": "draft",
+    "stage": null
    },
    {
     "id": "093-material-context-channel/C093-7",
@@ -53276,6 +53306,17 @@
     ]
    },
    {
+    "row": "084-policy-sync-conformance/C084-12",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "084-policy-sync-conformance/C084-12",
+     "spec.md"
+    ]
+   },
+   {
     "row": "084-policy-sync-conformance/C084-2",
     "column": "spec.md",
     "column_class": "documents",
@@ -54708,8 +54749,8 @@
    }
   ],
   "coverage": {
-   "rows_total": 926,
-   "rows_with_cells": 912,
+   "rows_total": 927,
+   "rows_with_cells": 913,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -55067,30 +55108,30 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1449,
+   "cells_total": 1450,
    "cells_by_relation": {
-    "supports": 1442,
+    "supports": 1443,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1442,
+    "documents": 1443,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
    },
    "falsifier_coverage": {
-    "covered": 917,
-    "total": 926,
+    "covered": 918,
+    "total": 927,
     "by_population": {
      "extracted": {
       "covered": 14,
       "total": 23
      },
      "bundle": {
-      "covered": 903,
-      "total": 903
+      "covered": 904,
+      "total": 904
      }
     }
    },
@@ -60135,8 +60176,8 @@
    }
   },
   "matrix_coverage": {
-   "rows_total": 926,
-   "rows_with_cells": 912,
+   "rows_total": 927,
+   "rows_with_cells": 913,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -60494,15 +60535,15 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1449,
+   "cells_total": 1450,
    "cells_by_relation": {
-    "supports": 1442,
+    "supports": 1443,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1442,
+    "documents": 1443,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
@@ -60571,7 +60612,7 @@
   "claim_population": {
    "by_status": {
     "contradicted": 4,
-    "draft": 902,
+    "draft": 903,
     "partially_falsified": 1,
     "partially_supported": 3,
     "strongly_supported": 2,
@@ -60584,23 +60625,23 @@
     "created": 900,
     "explained": 8
    },
-   "no_stage_recorded": 15,
+   "no_stage_recorded": 16,
    "by_population": {
-    "bundle": 903,
+    "bundle": 904,
     "extracted": 23
    }
   },
   "falsifier_census": {
-   "covered": 917,
-   "total": 926,
+   "covered": 918,
+   "total": 927,
    "by_population": {
     "extracted": {
      "covered": 14,
      "total": 23
     },
     "bundle": {
-     "covered": 903,
-     "total": 903
+     "covered": 904,
+     "total": 904
     }
    },
    "gap_claims": [
@@ -60617,8 +60658,8 @@
   },
   "aee_state_census": {
    "with_state": 0,
-   "without_state": 926,
-   "total": 926
+   "without_state": 927,
+   "total": 927
   },
   "unresolved": {
    "sign_mentions": [
@@ -62104,7 +62145,7 @@
     "runs": [
      {
       "candidate": "incumbent",
-      "record": "settling-20261105T175248Z-22295e",
+      "record": "settling-20261106T085256Z-316590",
       "via_signs": [
        "mahadevan:70"
       ],
@@ -62118,7 +62159,7 @@
      },
      {
       "candidate": "full-register",
-      "record": "settling-20261105T175309Z-6f8dc4",
+      "record": "settling-20261106T085304Z-78bf5c",
       "via_signs": [
        "mahadevan:72",
        "mahadevan:64",
@@ -151216,6 +151257,92 @@
     "sign_records": []
    }
   },
+  "084-policy-sync-conformance/C084-12": {
+   "id": "084-policy-sync-conformance/C084-12",
+   "statement": "The app's privacy / data-handling statement, served by GET /api/v1/privacy from backend/glossa_lab/privacy_statement.py and rendered in the SPA's Privacy view, matches the approved fixture specs/084-policy-sync-conformance/fixtures/privacy-data-handling.txt exactly (owner approval 2026-11-05), and no served source carries the superseded draft placeholder text.",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-05",
+   "falsifier": [
+    "PRIVACY_STATEMENT in backend/glossa_lab/privacy_statement.py differing from the fixture body in any character beyond trailing whitespace; or GET /api/v1/privacy not being registered in backend/glossa_lab/main.py.",
+    "Any file under frontend/src, cloud/edge/src or backend/glossa_lab containing the superseded draft placeholder '[UNVERIFIED', or frontend/src carrying a baked copy of the statement (its distinctive sentences) instead of rendering the served text."
+   ],
+   "falsifier_counts": {
+    "present": 2,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C084-12",
+     "document_id": null,
+     "path": "specs/084-policy-sync-conformance/claims.json",
+     "role": "source_of_record",
+     "sha256": "f2467e1e3d2377682d53ef83e205817b28ad572ab22b4eb8eeb6470d33b2877e",
+     "spec": "084-policy-sync-conformance"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "084-policy-sync-conformance/C084-12",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "084-policy-sync-conformance/C084-12",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C084-12",
+     "document_id": null,
+     "path": "specs/084-policy-sync-conformance/claims.json",
+     "role": "source_of_record",
+     "sha256": "f2467e1e3d2377682d53ef83e205817b28ad572ab22b4eb8eeb6470d33b2877e",
+     "spec": "084-policy-sync-conformance"
+    },
+    "sign_records": []
+   }
+  },
   "093-material-context-channel/C093-7": {
    "id": "093-material-context-channel/C093-7",
    "statement": "A statement this spec accepts about how inscription behavior conditions on a culture-side field (for example: sequence length or sign-choice distributions differing by site or by material class beyond the registered controls) is stated as a fact about the joint distribution of the two projections over the named population, and carries C093-1's recorded standing as a premise on its face. This does not establish: anything about why the regularity holds — no reading, function, or historical cause is asserted by a distributional statement, and none may be read into one.",
@@ -152412,7 +152539,7 @@
   "semantics": "glossa-settle-1",
   "assignment_sets": {
    "record": "glossa-indus/ledger/assignment-sets.json",
-   "sha256": "5c1db877cbf24afd430419bf9920985aaaeba510d829ab1ce85baaa2a07d1f45",
+   "sha256": "f8bf17ce0400e838215f3286c3919c78ad906760a737132a13d64b1e1154fcb6",
    "register": {
     "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
     "sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
@@ -152456,15 +152583,15 @@
   },
   "runs": [
    {
-    "record": "settling-20261105T175248Z-22295e",
+    "record": "settling-20261106T085256Z-316590",
     "scenario": "t405-incumbent-over-full-frame",
     "candidate": "incumbent",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "e6525d04316fe239b31912329230d8e03a091388da7e657f63a6776ca1bb291a",
-      "lines": 957
+      "sha256": "c55d57822bcd9b2e9a3401d807aea6e5e1ce872c5e239baadea4834310c8f4aa",
+      "lines": 958
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -152515,15 +152642,15 @@
     }
    },
    {
-    "record": "settling-20261105T175309Z-6f8dc4",
+    "record": "settling-20261106T085304Z-78bf5c",
     "scenario": "t405-full-register-over-full-frame",
     "candidate": "full-register",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "e6525d04316fe239b31912329230d8e03a091388da7e657f63a6776ca1bb291a",
-      "lines": 957
+      "sha256": "c55d57822bcd9b2e9a3401d807aea6e5e1ce872c5e239baadea4834310c8f4aa",
+      "lines": 958
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -152578,7 +152705,7 @@
   ],
   "comparison": {
    "record": "specs/086-winning-combination-adoption/records/stage-4-dual-run-comparison.json",
-   "sha256": "908a0d74d16c131d11bee8cbd485288bc2c570e19345c63c2abb560558b52209",
+   "sha256": "3d0823e22766f28b2f171f97431962ece3f2d3c678038da251f81ec51b668599",
    "result": {
     "claims_compared": [
      {
@@ -152826,7 +152953,7 @@
   },
   "canonicals": {
    "record": "glossa-indus/ledger/settling-canonical.json",
-   "sha256": "e38c99bc54cd0301c2f0c8c9f446c51260324ecd1ebdbcf9fb6c18db91ff7ddd",
+   "sha256": "704ccad16097be380ab0c261417805fa383936506dcc186300c290c0607ee070",
    "scenarios": [
     {
      "id": "null-over-subset",
@@ -153161,8 +153288,8 @@
   },
   "reach": {
    "claims_with_sign_refs": 1,
-   "claims_total": 926,
-   "claims_untouched_by_any_run": 925,
+   "claims_total": 927,
+   "claims_untouched_by_any_run": 926,
    "s_r3": {
     "status": "UNMEASURED",
     "class_table": null,

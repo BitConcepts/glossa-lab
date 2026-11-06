@@ -68,26 +68,41 @@
     },
     {
       "date": "2026-11-05",
-      "act": "Spec 093 adoption intake (branch docs/093-material-channel-draft; record: specs/093-material-context-channel/records/ratification-2026-11-05.md)",
-      "reason": "The claims ledger grew by append-only intake: the 14 bundle claims of Spec 093 (093-material-context-channel/C093-1..14) were appended through tools/ledger/import_bundle.py on 2026-11-05. The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the new build under this registration's amendment discipline. The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
+      "act": "Spec 084 C084-12 intake replay (branch feat/084-c084-12-intake-replay; record: specs/084-policy-sync-conformance/records/t011-intake-replay-2026-11-05.md)",
+      "reason": "The claims ledger grew by append-only intake: the one bundle claim of Spec 084's second bundle file (084-policy-sync-conformance/claims.json, C084-12) was appended through tools/ledger/import_bundle.py on 2026-11-05 (1 appended, 11 already canonical). This replays the intake first executed end-to-end on 2026-11-05 and then held, reverted, on a machinery gap (PR #531's stage record: the run-defs v1 run index could not account the departed T405 generations); run-defs v2 (PR #532) registered the departure act, and the completion builder appends the pair's departure acts as part of this intake's completion. The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the new build under this registration's amendment discipline. The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
       "prior_ledger_pin": {
         "sha256_canonical": "15a5fbad24f400631ace1ebc88bfb7712c9bf6f68fae23e56fedbcac5fd5a794",
         "lines": 943
       },
       "new_ledger_pin": {
-        "sha256_canonical": "e6525d04316fe239b31912329230d8e03a091388da7e657f63a6776ca1bb291a",
-        "lines": 957
+        "sha256_canonical": "6a997a31be478e33106c40753f90653c4155141324ee198904dc333e2ebda922",
+        "lines": 944
       },
       "expectations_changed": false,
-      "verification": "tools/ledger/run_settling.py verify-canonicals over the new build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
+      "verification": "tools/ledger/run_settling.py verify-canonicals over the new build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entry carries no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
+    },
+    {
+      "date": "2026-11-06",
+      "act": "Spec 093 adoption completion-chain recompute over the combined ledger (branch docs/093-material-channel-draft, PR #530; record: specs/093-material-context-channel/records/ratification-2026-11-05.md, combined-recompute addendum)",
+      "reason": "The claims ledger grew by two append-only intakes on divergent branches, and each line's completion chain was computed over its own build: Spec 084's C084-12 (PR #533, merged at bbdfc865; ledger 943 to 944 lines, pin 6a997a31) and Spec 093's C093-1..14 (this branch over the pre-PR-#533 base; 943 to 957 lines). At the merge of the two lines the whole chain was recomputed over the combined ledger (the 944 lines of PR #533's build followed by this branch's appended C093 block, block SHA-256 79c84105bf66f97d88fb0423f4b9a7361c795e4cead131c249ab56aeed98a45; 958 lines): both T405 scenarios were re-executed under run-defs v2 (runs settling-20261106T085256Z-316590 and settling-20261106T085304Z-78bf5c, superseding the standing pair of the 944 build) with result blocks byte-equal to both prior generations', the Stage 4 comparison was re-filed from the new pair, and the assignment sets were re-materialized unchanged (run settling-20261106T085304Z-a38e00). The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the combined build under this registration's amendment discipline. The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
+      "prior_ledger_pin": {
+        "sha256_canonical": "6a997a31be478e33106c40753f90653c4155141324ee198904dc333e2ebda922",
+        "lines": 944
+      },
+      "new_ledger_pin": {
+        "sha256_canonical": "c55d57822bcd9b2e9a3401d807aea6e5e1ce872c5e239baadea4834310c8f4aa",
+        "lines": 958
+      },
+      "expectations_changed": false,
+      "verification": "tools/ledger/run_settling.py verify-canonicals over the combined build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
     }
   ],
   "label": "Computation over ledgered relations under glossa-settle-1 semantics. Establishes what the ledger implies under these rules, not what the script says.",
   "provenance": {
     "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256_canonical": "e6525d04316fe239b31912329230d8e03a091388da7e657f63a6776ca1bb291a",
-      "lines": 957
+      "sha256_canonical": "c55d57822bcd9b2e9a3401d807aea6e5e1ce872c5e239baadea4834310c8f4aa",
+      "lines": 958
     },
     "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -593,7 +608,7 @@
       "title": "Dual run over canonical-subset-1: incumbent vs full-register (the interchangeability pair; D-086-Q4's demonstration pair, registered here as a canonical expectation for T405)",
       "inputs": {
         "semantics": "glossa-settle-1",
-        "ledger_sha256": "e6525d04316fe239b31912329230d8e03a091388da7e657f63a6776ca1bb291a",
+        "ledger_sha256": "c55d57822bcd9b2e9a3401d807aea6e5e1ce872c5e239baadea4834310c8f4aa",
         "corpus_snapshot": {
           "path": "glossa-corpus/indus/exports/indus_research.jsonl",
           "sha256_canonical": "08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e"

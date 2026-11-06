@@ -166,7 +166,7 @@ def test_gate_passes_clean_tree():
         assert any(n.startswith(cls) for n in names), cls
     v4 = _check(report, "V4 relation-carrying")
     assert v4.status == "PASS"
-    assert "1435 matrix cells" in v4.evidence[0]
+    assert "1450 matrix cells" in v4.evidence[0]
 
 
 def test_precondition_names_an_altered_extracted_claims_file(scratch):
@@ -855,19 +855,19 @@ def test_map_legs_live_and_pass_on_a_clean_map_tree(map_scratch):
     assert report.ok, report.render()
     v2 = _check(report, "V2 count equivalence — claims by status: ledger == map header")
     assert v2.status == "PASS"
-    assert "912 claims counted across 8 statuses" in "\n".join(v2.evidence)
+    assert "927 claims counted across 8 statuses" in "\n".join(v2.evidence)
     v5_full = _checks(report, "V5 map recomputation")[1]
     assert v5_full.name.endswith("(map-defs v1 copies)")
     assert v5_full.status == "PASS"
     census = "\n".join(v5_full.evidence)
-    assert "1435 map edges by relation" in census
+    assert "1450 map edges by relation" in census
     assert "UNPROVEN on the live population: corpus_texts" in census
     assert "UNPROVEN on the live population: constrains" in census
     v6 = _check(report, "V6 anchor shares — map header leg")
     assert v6.status == "PASS"
     assert "287 register records, 94 of them strict" in "\n".join(v6.evidence)
     v4 = _check(report, "V4 relation-carrying citations")
-    assert "map edge census: supports 1428, opposes 7, constrains 0" in (
+    assert "map edge census: supports 1443, opposes 7, constrains 0" in (
         "\n".join(v4.evidence)
     )
 
@@ -1108,8 +1108,8 @@ def test_v10_legs_live_and_pass_on_a_program_map_tree(pm_scratch):
     assert len(checks) == 5
     assert all(c.status == "PASS" for c in checks)
     census = "\n".join(checks[1].evidence)
-    assert "912 claim nodes" in census
-    assert "91 study nodes" in census
+    assert "927 claim nodes" in census
+    assert "92 study nodes" in census
     finds_evidence = "\n".join(checks[2].evidence)
     assert "bundle_less_study 28" in finds_evidence
     assert "restricted_node 1" in finds_evidence

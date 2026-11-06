@@ -545,24 +545,45 @@ def test_the_standing_store_index_covers_the_pair_by_legacy_entries():
     assert {p.name for p in record_files} <= entered_records
     # The legacy assertions below govern the pre-spec
     # pair (the headerless records); post-spec records
-    # stand entered under their own minted ids.
-    pair_files = [
-        record_path
-        for record_path in record_files
-        if "run"
-        not in json.loads(record_path.read_text(encoding="utf-8"))
-    ]
-    assert pair_files, "the standing pre-spec pair stands in the store"
-    for record_path in pair_files:
-        legacy_id = rr.legacy_run_id(record_path.name)
+    # stand entered under their own minted ids. The pair
+    # departed the standing store at the Spec 093 intake
+    # replay (2026-11-05): its entries stand in the folded
+    # index, and its departure is accounted by departure
+    # acts (run-defs v2 §7.1) whose blob hashes name the
+    # pair's preserved fixture bytes
+    # (tests/fixtures/legacy_t405_pair/).
+    fixtures = (
+        Path(__file__).resolve().parent / "fixtures" / "legacy_t405_pair"
+    )
+    for name in (
+        "t405-incumbent-over-full-frame--d9f73e4c4e4e.json",
+        "t405-full-register-over-full-frame--f8c86443e924.json",
+    ):
+        assert not (store / name).exists(), (
+            "the departed pair's records must not stand in the store"
+        )
+        legacy_id = rr.legacy_run_id(name)
         assert legacy_id in state.entries
         entry = state.entries[legacy_id]
         assert entry["legacy"] is True
         assert entry["label"] == rr.LEGACY_LABEL
         assert entry["key_partial"] is True
-        assert entry["record"] == record_path.name
+        assert entry["record"] == name
+        # The departure accounting resolves against the
+        # preserved bytes: the act's blob hash is the
+        # record's hash, and its git blob is named.
+        assert legacy_id in state.departed
+        departure = state.departed[legacy_id]
+        assert departure["record"] == name
+        record_bytes = (fixtures / name).read_bytes()
+        assert (
+            hashlib.sha256(record_bytes).hexdigest()
+            == departure["blob_sha256"]
+        )
+        assert departure["git_blob"]
+        assert departure["superseded_by_commit"]
         # The retired filename function still resolves the
         # legacy record's standing path from its content.
-        record = json.loads(record_path.read_text(encoding="utf-8"))
+        record = json.loads(record_bytes.decode("utf-8"))
         assert "run" not in record  # pre-spec bytes, untouched
-        assert st.run_record_filename(record) == record_path.name
+        assert st.run_record_filename(record) == name

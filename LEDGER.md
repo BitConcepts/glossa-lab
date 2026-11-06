@@ -13021,3 +13021,70 @@ act has been taken and no setup code has been generated.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-06 - Spec 083 T060: go-live sequence executed to the deploy gate; NOT LAUNCHED
+
+The Spec 083 go-live sequence (T060) was executed on 2026-11-06
+in the T053 checklist's order. Gate 2 was discharged the same
+morning (the BitConcepts Ops token extended with exactly the
+four missing scope groups, verified through the API), the T053
+Cloudflare-side execution is complete (tunnel `glossa-desktop`
+`e06ace7e-68b6-4b88-b3cc-177bda09ab3e`, healthy on cloudflared
+2026.10.7; VPC Service `glossa-desktop-origin`
+`01a1b018-5464-7a50-8369-3cd42a2a5387` to 127.0.0.1:8001; the
+tunnel token placed on the desktop by file custody), PR #535
+filled the wrangler VPC service_id (merge `c9542405`), and
+main's CI on that merge is green at the per-job level (run
+`42199087286`, 10/10). The deploy itself was NOT dispatched:
+the deploy workflow runs in the GitHub environment
+`cloud-production`, whose secrets were never set (the
+repository carries zero environments and zero secrets,
+measured through the GitHub API), and the workflow fails
+closed at its first gate by design. Setting
+`CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` there is a
+one-time owner/parent act; the token's raw value exists only
+in the connector's Secure Vault store and is not extractable
+by the agent. Nothing was deployed, no migration was applied
+by a deploy, the SERVICE_CREDENTIAL value stands staged in
+file custody with both placements sequenced at the first
+deploy, the T054 pre-deploy legs verify clean (no `glossa`
+DNS record, no cfargotunnel CNAME anywhere in the zone, no
+published tunnel route), the T059 proofs are NOT RUN (the
+route does not exist; P7 additionally requires a sequenced
+desktop stop window), and the glassbreak setup code was NOT
+generated. Full record:
+`specs/083-cloud-edition/records/t060-rollout-record-2026-11-06.md`.
+No claim's status, stage, or score was changed by this
+landing; the standing position is unchanged - the Indus
+script is not deciphered.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.
+
+---
+
+## 2026-11-06 - Spec 083 T060 deploy addendum (second execution)
+
+The cloud-production secrets gate was satisfied (environment
+created; `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` set as
+repository secrets, the token a dedicated deploy token), the
+`SERVICE_CREDENTIAL` Worker secret was placed from the staged
+value (script-API stub bootstrap, API error 10007 recorded),
+and `deploy-cloud.yml` run `42243498749` deployed the edge: all
+steps PASS, 5 D1 migrations applied to `glossa-identity`,
+Worker version `9004d3af-2bf7-4ff0-8b63-c1c1c7bec64d`, Custom
+Domain `glossa.bitconcepts.tech` live. T054 post-deploy legs
+PASS; T059 proofs P1, P2, P8 PASS (P8 edge legs), the rest NOT
+RUN with named preconditions (desktop re-sync + desktop
+credential placement pending with Desktop Access; P7 under its
+standing stop-window rule; glassbreak parent-sequenced, NOT
+generated). State: DEPLOYED, launch not yet complete. Full
+record: `specs/083-cloud-edition/records/t060-rollout-record-2026-11-06.md`
+section 8.
+
+No claim's status, stage, or score was changed by this landing;
+the standing position is unchanged - the Indus script is not
+deciphered.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

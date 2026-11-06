@@ -1,0 +1,29 @@
+{
+ "claims": [
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 084 FR-084-09 / task T011 (inventory gap A4). Owner approval act 2026-11-05 on the 2026-10-31 draft text, with its five [UNVERIFIED] items closed as recorded in the fixture header (contact address = the program mailbox of record, an owner default; hosting-provider text set to the verified facts; Web Analytics verified ENABLED for the zone at account level; 12-month retention as the owner's policy default; member export verified present). This claim is carried in claims.json, the spec's second bundle file, because aee-claims.json is frozen at its 2026-10-31 intake (its recorded hash governs C084-1..11). Exercised by backend/tests/test_policy_sync_conformance.py::test_privacy_statement_matches_fixture, test_privacy_route_is_registered and test_no_unverified_placeholder_text in the Backend tests CI job.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "PRIVACY_STATEMENT in backend/glossa_lab/privacy_statement.py differing from the fixture body in any character beyond trailing whitespace; or GET /api/v1/privacy not being registered in backend/glossa_lab/main.py.",
+    "Any file under frontend/src, cloud/edge/src or backend/glossa_lab containing the superseded draft placeholder '[UNVERIFIED', or frontend/src carrying a baked copy of the statement (its distinctive sentences) instead of rendering the served text."
+   ],
+   "id": "C084-12",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "The app's privacy / data-handling statement, served by GET /api/v1/privacy from backend/glossa_lab/privacy_statement.py and rendered in the SPA's Privacy view, matches the approved fixture specs/084-policy-sync-conformance/fixtures/privacy-data-handling.txt exactly (owner approval 2026-11-05), and no served source carries the superseded draft placeholder text.",
+   "uncertainty": "insufficient_evidence"
+  }
+ ]
+}

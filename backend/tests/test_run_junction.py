@@ -645,19 +645,25 @@ def test_scan_lists_identical_and_skips_the_rest(tmp_path):
 
 
 def test_legacy_pair_is_not_comparable(tmp_path):
-    """The standing T405 pair, copied read-only into a
+    """The T405 pair, copied read-only into a
     tmp store under its legacy entries: a scan pairs it
     with nothing, and a direct compare dispositions
     not-comparable naming the unrecoverable constitutive
     components — the legacy label's honesty, mechanized
     (C089-17)."""
     store, junctions = _store(tmp_path)
-    standing = ROOT / st.RUN_STORE_REL
+    # The pair departed the standing store at the Spec 093
+    # intake replay (2026-11-05); its bytes stand preserved
+    # as fixtures at the departure acts' blob hashes
+    # (tests/fixtures/legacy_t405_pair/).
+    fixtures = (
+        Path(__file__).resolve().parent / "fixtures" / "legacy_t405_pair"
+    )
     for name in (
         "t405-incumbent-over-full-frame--d9f73e4c4e4e.json",
         "t405-full-register-over-full-frame--f8c86443e924.json",
     ):
-        (store / name).write_bytes((standing / name).read_bytes())
+        (store / name).write_bytes((fixtures / name).read_bytes())
     for act in rr.enumerate_legacy_entries(store):
         rr.append_act(store / "run-index.jsonl", act)
     scan = rj.scan_store(store, junctions)

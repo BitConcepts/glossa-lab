@@ -2946,6 +2946,16 @@ try:
     logger.info("Registered %d Phase-405 (spec 046) nodes", len(list(_p405_defs())))
 except Exception as _p405_exc:  # noqa: BLE001
     logger.warning("Phase-405 (spec 046) nodes not registered: %s", _p405_exc)
+# ── Phase-426 node (spec 064: sign-297 concordance, successor) ──
+try:
+    from glossa_lab.experiment_graph_phase426 import (
+        _phase426_node_defs as _p426_defs,  # noqa: PLC0415
+    )
+    for _d in _p426_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-426 (spec 064) nodes", len(list(_p426_defs())))
+except Exception as _p426_exc:  # noqa: BLE001
+    logger.warning("Phase-426 (spec 064) nodes not registered: %s", _p426_exc)
 # ── Phase-406 node (spec 047: Roif ledger step 1 — Asset B) ──
 try:
     from glossa_lab.experiment_graph_phase406 import (

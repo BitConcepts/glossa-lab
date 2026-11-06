@@ -13030,3 +13030,31 @@ script is not deciphered.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+---
+
+## 2026-11-06 - Spec 083 T060 deploy addendum (second execution)
+
+The cloud-production secrets gate was satisfied (environment
+created; `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` set as
+repository secrets, the token a dedicated deploy token), the
+`SERVICE_CREDENTIAL` Worker secret was placed from the staged
+value (script-API stub bootstrap, API error 10007 recorded),
+and `deploy-cloud.yml` run `42243498749` deployed the edge: all
+steps PASS, 5 D1 migrations applied to `glossa-identity`,
+Worker version `9004d3af-2bf7-4ff0-8b63-c1c1c7bec64d`, Custom
+Domain `glossa.bitconcepts.tech` live. T054 post-deploy legs
+PASS; T059 proofs P1, P2, P8 PASS (P8 edge legs), the rest NOT
+RUN with named preconditions (desktop re-sync + desktop
+credential placement pending with Desktop Access; P7 under its
+standing stop-window rule; glassbreak parent-sequenced, NOT
+generated). State: DEPLOYED, launch not yet complete. Full
+record: `specs/083-cloud-edition/records/t060-rollout-record-2026-11-06.md`
+section 8.
+
+No claim's status, stage, or score was changed by this landing;
+the standing position is unchanged - the Indus script is not
+deciphered.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

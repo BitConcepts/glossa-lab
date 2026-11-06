@@ -93,8 +93,8 @@ Right-click the system tray icon for:
 | **Pipelines** | Async job management |
 | **Studies** | Compose multi-experiment research workflows |
 | **Reports** | PDF and Markdown reports from experiments |
-| **Data** | JSON and CSV artefacts from experiments |
-| **Entropy** | Visualise H1, Zipf distributions, and positional entropy |
+| **Data** | JSON and CSV artifacts from experiments |
+| **Entropy** | Visualize H1, Zipf distributions, and positional entropy |
 | **Signs** | Browse the sign dictionary |
 | **Hypotheses** | Create and track research hypotheses |
 | **Notebooks** | Research notes and session summaries |
@@ -106,7 +106,7 @@ Right-click the system tray icon for:
 
 | Tab | Description |
 |---|---|
-| **Logs** | Live colour-coded backend log stream. Green=INFO, Yellow=WARN, Red=ERROR. Click **Purge** to clear. |
+| **Logs** | Live color-coded backend log stream. Green=INFO, Yellow=WARN, Red=ERROR. Click **Purge** to clear. |
 | **Jobs** | Job queue with status, progress, and expandable result JSON. |
 | **Terminal** | Command-line access to the backend environment. |
 
@@ -178,7 +178,7 @@ Click any corpus row to expand it. The tabs inside are:
 | **Stats** | H1 entropy, Zipf, TTR, Hapax count, Zipf bar chart, and Unicode token-type breakdown. |
 | **N-grams** | Top n-grams by count, with bar chart. Select n = 1, 2, 3, or 4. |
 | **Concordance** | KWIC concordance search: find a token and see its left/right context. |
-| **AI** | Ask Glossa AI to analyse, detect anomalies, or critique the corpus. |
+| **AI** | Ask Glossa AI to analyze, detect anomalies, or critique the corpus. |
 | **Compare** | Side-by-side entropy metric comparison against any other corpus. |
 
 ### Inspecting Corpus Statistics
@@ -287,7 +287,7 @@ All experiments are **graph experiments** — JSON specs describing a directed a
 
 1. Go to **Experiments** in the sidebar
 2. Click **+ New Experiment** or open an existing one
-3. Drag nodes from the **Palette** (left) onto the **Canvas** (centre)
+3. Drag nodes from the **Palette** (left) onto the **Canvas** (center)
 4. Connect output ports (right side of nodes) to input ports (left side of nodes)
 5. Click any node to view and edit its parameters in the **Node Inspector** (right)
 6. Click **Run** to execute the graph
@@ -391,7 +391,7 @@ Results from each node appear in their respective Results views.
 The Reports panel has two tabs:
 
 - **Reports** — generated PDF and Markdown reports. Click to preview in-browser, or download.
-- **Data** — raw JSON and CSV artefacts. Download or inspect with the inline JSON viewer.
+- **Data** — raw JSON and CSV artifacts. Download or inspect with the inline JSON viewer.
 
 Both tabs sort by date (newest first) and support keyword search.
 
@@ -593,7 +593,7 @@ Ask Glossa AI: "Generate the PDF report of all experimental results." Or go to *
 - **Green** — INFO, started, ready
 - **Yellow** — WARNING
 - **Red** — ERROR, exception, failed
-- **Grey** — DEBUG
+- **Gray** — DEBUG
 
 ### Backend Health
 
@@ -616,4 +616,4 @@ If the backend does not start:
 
 ---
 
-*Glossa Lab — BitConcepts LLC Research Programme*
+*Glossa Lab — BitConcepts LLC Research Program*

@@ -15,7 +15,7 @@ Marshall, or an `other` list with a detail declaration); the
 *map of record* is `data/crosswalks/canonical_sign_registry.csv`
 (spec 018 §A2 names it the program's primary cross-system
 map; the sparse `mahadevan_parpola_crosswalk_v2.json` is a
-labelled source, never the map of record).
+labeled source, never the map of record).
 
 ## 1. Sign-list declaration requirements
 
@@ -52,14 +52,14 @@ An incoming sign list is crosswalk-ready only if it supplies:
 ## 2. Mapping evidence types
 
 Every asserted pair (incoming sign ↔ Parpola sign) must
-carry its evidence. Recognised types, after Phase-122 v1's
+carry its evidence. Recognized types, after Phase-122 v1's
 sources table:
 
 | Evidence type | Phase-122 exemplar | Standing |
 |---|---|---|
 | Canonical registry assertion | `canonical_sign_registry.csv` `mahadevan_ids` per Parpola row (372 pairs) | Core source |
 | Independent structured map | mayig `features/*.json` `mahadevan_graphemes` — an author's cross-match vs Parpola 1982 allographs / Wells 2015 (372 pairs) | Core source; independence from the registry is what makes agreement meaningful |
-| Sourced per-entry assertion | `crosswalk_v2` entries citing e.g. Parpola 1994 App. B (171 pairs) | Labelled source only — v1 found 168 of its 171 pairs contradicting the registry+mayig consensus (it behaves near a number-identity map) |
+| Sourced per-entry assertion | `crosswalk_v2` entries citing e.g. Parpola 1994 App. B (171 pairs) | Labeled source only — v1 found 168 of its 171 pairs contradicting the registry+mayig consensus (it behaves near a number-identity map) |
 | Number-identity inference | `candidates_unadmitted` (220 pairs, no explicit source) | Held candidates; admitted only as low-confidence rows, never silently |
 | Glyph/image comparison | Phase-123 witness `correspondence_method` | Corroborating; required to arbitrate splits/merges |
 
@@ -108,7 +108,7 @@ Non-negotiable, after Phase-122 v1 and spec 018 §3:
    — 1:1, one-to-many, many-to-one, many-to-many (v1: 352 /
    78 / 66 / 266). Splits and merges between lists are real
    structure (the finer M-side granularity vs Parpola
-   allograph grouping), not errors to be normalised away.
+   allograph grouping), not errors to be normalized away.
 3. **Deterministic tie-breaks where a single map is
    required** (the harness's §3 adapter rule): highest
    `corpus_freq` wins; tie → lowest Parpola number; a

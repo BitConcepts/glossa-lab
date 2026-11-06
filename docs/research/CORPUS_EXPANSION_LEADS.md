@@ -17,7 +17,7 @@
 - Common symbols include: arrows (triangle/flower heads), fish signs, U-shaped signs, circles, ladder symbols, square boxes (plain/divided), X-shapes, swastikas, flower signs, A-like signs
 - Keeladi (Sivagangai, TN) dated to **580 BCE** (6th century BCE) by AMS carbon dating — 2,600 years old
 - Tamil-Brahmi script at Keeladi now dated to **6th century BCE**, earlier than Ashokan Brahmi (3rd century BCE)
-- **10 excavation rounds at Keeladi, 20,000+ artefacts found** (as of 2025)
+- **10 excavation rounds at Keeladi, 20,000+ artifacts found** (as of 2025)
 
 ### Significance for Indus Decipherment
 - Provides a potential **evolutionary chain** between IVC script and later South Indian writing systems

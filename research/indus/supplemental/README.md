@@ -59,7 +59,7 @@ exceeds what would be expected by chance.
 
 **Key finding:** Observed polysemy rate (66.7%) is *below* the null mean (80.7%), not above it.
 This is the expected result when positional constraints are strong — signs have focused,
-position-specific collocate profiles. Correct characterisation: grammar-governed writing system.
+position-specific collocate profiles. Correct characterization: grammar-governed writing system.
 
 Referenced in preprint §3.13.
 
@@ -74,7 +74,7 @@ Top 30 H+M×H+M bigrams by corpus frequency with Pointwise Mutual Information (P
 - Most frequent backbone formula: M342·M176 = ay/ā + an/aṇ (122 seals, 7.3%, PMI=2.43)
 - Second: M267·M099 = iN/in + kol/koḷ (84 seals, PMI=2.31)
 
-This table encodes the formula backbone — standardised sign pairs carrying the grammatical
+This table encodes the formula backbone — standardized sign pairs carrying the grammatical
 (case/suffix) structure across all professional-title types, independent of which title opens
 the inscription.
 

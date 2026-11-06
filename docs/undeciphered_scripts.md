@@ -1,8 +1,8 @@
 # Undeciphered Ancient Scripts and Languages
 *Reference document for Glossa Lab research planning.*
 
-This document catalogues all known undeciphered or partially deciphered ancient scripts and proto-writing systems, organised by region. It is maintained to:
-- Drive experiment prioritisation (which scripts could benefit from computational analysis)
+This document catalogues all known undeciphered or partially deciphered ancient scripts and proto-writing systems, organized by region. It is maintained to:
+- Drive experiment prioritization (which scripts could benefit from computational analysis)
 - Identify corpus acquisition targets
 - Track the decipherment state of each script so we do not duplicate published work
 - Note which scripts are plausible future Tier 5 hypothesis-test candidates
@@ -23,7 +23,7 @@ This document catalogues all known undeciphered or partially deciphered ancient 
 | Sitovo Inscription | Bulgaria | c. 300–100 BCE | Undeciphered | Single inscription |
 | Alekanovo Inscription | Russia | c. 10th–11th century CE | Undeciphered | Single object |
 | Rohonc Codex | Hungary | 17th–19th centuries | Completely undeciphered; authorship and language unknown | ~450 pages; scanned |
-| Voynich Manuscript | Medieval Europe | c. 1404–1438 (radiocarbon) | Completely undeciphered; possibly a hoax or cipher | ~240 pages; fully digitised at Beinecke Library |
+| Voynich Manuscript | Medieval Europe | c. 1404–1438 (radiocarbon) | Completely undeciphered; possibly a hoax or cipher | ~240 pages; fully digitized at Beinecke Library |
 | Pisa Baptistery Inscription | Italy | Medieval | Undeciphered religious text fragment | Single inscription |
 
 ---
@@ -90,7 +90,7 @@ These are disputed as constituting true writing rather than decorative or counti
 
 ## Three Categories of Decipherment Difficulty
 
-Scholars recognise three primary challenge types, which drive different experimental strategies:
+Scholars recognize three primary challenge types, which drive different experimental strategies:
 
 ### 1 — Unknown Script, Known Language
 The underlying language is related to a known language but the sign system is unfamiliar.
@@ -105,7 +105,7 @@ The script has been deciphered (sign values known), but the language it encodes 
 ### 3 — Unknown Script, Unknown Language
 Both the sign system and the underlying language are completely opaque.
 - **Examples:** Indus script, Linear A, Proto-Elamite, Cretan Hieroglyphic, Phaistos Disc
-- **Strategy:** Structural analysis (entropy, sign classification, Ventris affinity) + multi-hypothesis testing with many candidate language families simultaneously. Most difficult category; Tiers 3–5 of our programme apply here.
+- **Strategy:** Structural analysis (entropy, sign classification, Ventris affinity) + multi-hypothesis testing with many candidate language families simultaneously. Most difficult category; Tiers 3–5 of our program apply here.
 
 ---
 
@@ -124,7 +124,7 @@ The fundamental obstacle is the **absence of a Rosetta Stone equivalent** — a 
 
 ## Glossa Lab Research Priority Map
 
-Based on the criteria: *corpus size ≥ 200 inscriptions* · *known or plausible language family* · *digitised corpus available*
+Based on the criteria: *corpus size ≥ 200 inscriptions* · *known or plausible language family* · *digitized corpus available*
 
 | Priority | Script | Rationale |
 |---|---|---|
@@ -226,7 +226,7 @@ The following are implemented as **test fixtures** or **language model corpora**
 
 **Cretan Hieroglyphic**
 - CHIC (Corpus Hieroglyphicarum Inscriptionum Cretae, Olivier & Godart 1996)
-- ~300 inscribed objects; digitised from CHIC publication
+- ~300 inscribed objects; digitized from CHIC publication
 - Token estimate: ~800–1,200 sign tokens
 - Glossa Lab status: too small for statistical methods; pending
 

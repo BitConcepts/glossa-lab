@@ -73,7 +73,7 @@ Glossa Lab is a production research tool combining a Python backend, React front
 
 ### Frontend (React / TypeScript / Vite)
 
-Built artefact (`frontend/dist/`) is committed to the repo so the server only needs `git pull` — no Node.js required on the deployment target.
+Built artifact (`frontend/dist/`) is committed to the repo so the server only needs `git pull` — no Node.js required on the deployment target.
 
 Key panels:
 - **Provider Registry** — add/test/manage AI providers; badges: 🦙 Ollama · ☁️ Cloud · ⚡ vLLM/Custom · 🤗 HuggingFace
@@ -145,7 +145,7 @@ glossa-lab/
 │  └─ tests/
 ├─ frontend/            ← React / TypeScript / Vite
 │  ├─ src/
-│  └─ dist/             ← built artefact (committed for server deploy)
+│  └─ dist/             ← built artifact (committed for server deploy)
 ├─ tray/                ← system tray app
 ├─ services/            ← systemd / launchd / Windows service definitions
 ├─ docs/
@@ -275,7 +275,7 @@ Full governance rules: [`docs/governance/`](docs/governance/)
 
 ### Provenance & source registry
 
-The programme's provenance registry is indexed publicly on the Open Science Framework: [osf.io/ybd65](https://osf.io/ybd65/) — components for literature (`zbh86`), corpora (`dfrhz`), and programme outputs (`vwa7s`). The OSF project is the public index; this repository (with `CITATIONS.md`) remains canonical.
+The program's provenance registry is indexed publicly on the Open Science Framework: [osf.io/ybd65](https://osf.io/ybd65/) — components for literature (`zbh86`), corpora (`dfrhz`), and program outputs (`vwa7s`). The OSF project is the public index; this repository (with `CITATIONS.md`) remains canonical.
 
 ---
 

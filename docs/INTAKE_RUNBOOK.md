@@ -2,7 +2,7 @@
 
 How a newly arrived inscription dataset is received by Glossa
 Lab: from first provenance capture to the Phase-119 harness's
-labelled dry run — and no further.
+labeled dry run — and no further.
 
 > **STRUCTURAL RULE.** Intake output can only ever reach the
 > Phase-119 harness's **dry-run** path (spec 018 §8). The

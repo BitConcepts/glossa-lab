@@ -23,7 +23,7 @@ A Mahadevan-coded computational anchor model proposes 161 HIGH/MEDIUM candidate 
 
 - 161 HIGH/MEDIUM candidate anchor readings covering 90.96% of corpus tokens
 - Proto-Dravidian compatibility: 44/75 HIGH-confidence readings appear in Parpola (1994); 35/157 contain Dravidian-exclusive phonemes (0/157 contain Sanskrit-exclusive phonemes)
-- Grammar model explains 93.2% of sign-level positional behaviour at 161 H+M
+- Grammar model explains 93.2% of sign-level positional behavior at 161 H+M
 
 **What the model does not claim:**
 - Final decipherment

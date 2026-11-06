@@ -151,6 +151,14 @@ superseded text cannot quietly return.
   the intake act). The intake completes under that gap's own
   repair act; until then the ledger is untouched by this
   change.
+  Completion, 2026-11-05: the repair act landed as PR #532
+  (run-defs v2: the `departure` index act), and the intake
+  replayed in PR #533 — C084-12 now stands in the claims
+  ledger (944 lines, canonical SHA-256 6a997a31…), the
+  derived layers are regenerated over the new build, and
+  the departed T405 generations are accounted by departure
+  acts in the run index. Record:
+  `records/t011-intake-replay-2026-11-05.md`.
 
 ## Assumptions (epistemic boundaries)
 

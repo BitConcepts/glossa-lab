@@ -3,9 +3,9 @@
  "generated_from": "glossa-indus/ledger/claims.jsonl",
  "generated_by": "tools/ledger/generate_matrix.py (backend/glossa_lab/matrix_generate.py)",
  "as_of": {
-  "ledger_sha256": "15a5fbad24f400631ace1ebc88bfb7712c9bf6f68fae23e56fedbcac5fd5a794",
-  "ledger_lines": 943,
-  "ledger_date": "2026-11-04",
+  "ledger_sha256": "6a997a31be478e33106c40753f90653c4155141324ee198904dc333e2ebda922",
+  "ledger_lines": 944,
+  "ledger_date": "2026-11-05",
   "ledger_schema": "ledger-schema v1",
   "matrix_defs": "matrix-defs v1"
  },
@@ -5481,6 +5481,12 @@
    "population": "bundle",
    "status": "draft",
    "stage": "created"
+  },
+  {
+   "id": "084-policy-sync-conformance/C084-12",
+   "population": "bundle",
+   "status": "draft",
+   "stage": null
   }
  ],
  "columns": [
@@ -22572,6 +22578,17 @@
    ]
   },
   {
+   "row": "084-policy-sync-conformance/C084-12",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "084-policy-sync-conformance/C084-12",
+    "spec.md"
+   ]
+  },
+  {
    "row": "084-policy-sync-conformance/C084-2",
    "column": "spec.md",
    "column_class": "documents",
@@ -23850,8 +23867,8 @@
   }
  ],
  "coverage": {
-  "rows_total": 912,
-  "rows_with_cells": 898,
+  "rows_total": 913,
+  "rows_with_cells": 899,
   "empty_rows": [
    "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
    "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -24209,30 +24226,30 @@
    ],
    "corpus_texts": []
   },
-  "cells_total": 1435,
+  "cells_total": 1436,
   "cells_by_relation": {
-   "supports": 1428,
+   "supports": 1429,
    "opposes": 7,
    "constrains": 0
   },
   "cells_by_class": {
    "studies": 7,
-   "documents": 1428,
+   "documents": 1429,
    "research_checks": 0,
    "anchors": 0,
    "corpus_texts": 0
   },
   "falsifier_coverage": {
-   "covered": 903,
-   "total": 912,
+   "covered": 904,
+   "total": 913,
    "by_population": {
     "extracted": {
      "covered": 14,
      "total": 23
     },
     "bundle": {
-     "covered": 889,
-     "total": 889
+     "covered": 890,
+     "total": 890
     }
    }
   },

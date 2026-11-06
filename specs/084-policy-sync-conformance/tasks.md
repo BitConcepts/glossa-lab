@@ -48,3 +48,13 @@
       ledger intake is HELD on the named Spec 089 run-index
       accounting gap recorded there; the ledger is untouched
       by this change.
+      INTAKE LANDED 2026-11-05: the gap's repair (PR #532,
+      run-defs v2 departed-generation accounting) merged,
+      and the intake replayed as its own follow-on act in
+      PR #533 — bundle appended (1 appended, 11 already
+      canonical; ledger 944 lines, canonical SHA-256
+      6a997a31…, byte-identical to the preserved executed
+      state), derived layers regenerated, and the run
+      index completed with the departed T405 generations'
+      departure acts. Record:
+      records/t011-intake-replay-2026-11-05.md.

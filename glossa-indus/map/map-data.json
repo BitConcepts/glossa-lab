@@ -3,10 +3,10 @@
  "generated_from": "glossa-indus/ledger/claims.jsonl through glossa-indus/matrix/matrix.json and the settling records of record",
  "generated_by": "tools/ledger/generate_map.py (backend/glossa_lab/map_generate.py)",
  "header": {
-  "claims_total": 912,
+  "claims_total": 913,
   "claims_by_status": {
    "contradicted": 4,
-   "draft": 888,
+   "draft": 889,
    "partially_falsified": 1,
    "partially_supported": 3,
    "strongly_supported": 2,
@@ -55,18 +55,18 @@
    "reason": "the anchors register records no review dates for the pending validations, so they appear as a count, not as dated items (decision Q4)"
   },
   "as_of": {
-   "ledger_sha256": "15a5fbad24f400631ace1ebc88bfb7712c9bf6f68fae23e56fedbcac5fd5a794",
-   "ledger_lines": 943,
-   "ledger_date": "2026-11-04",
+   "ledger_sha256": "6a997a31be478e33106c40753f90653c4155141324ee198904dc333e2ebda922",
+   "ledger_lines": 944,
+   "ledger_date": "2026-11-05",
    "ledger_schema": "ledger-schema v1",
    "matrix_defs": "matrix-defs v1",
    "map_defs": "map-defs v1",
    "settle_semantics": "glossa-settle-1",
-   "matrix_sha256": "922fa0913ec30bf94f3137e6f74fb0316e40f5aefc50eb2ba12d0b3e0c518f57",
+   "matrix_sha256": "534dbdb046443e7d866636ddded304ca55a19e3f94b2686cce50e05e7f8edb79",
    "anchors_register_sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
    "assignment_sets_sha256": "b1393b83f18054a6ca67c1a379ff71d455fa37301aee4c00bae9b9fae99ec2b0",
-   "comparison_sha256": "1371c981ce4c9cd9721fbed3294aee82c2bc512d9b8293390a201cf3a935874b",
-   "settling_canonical_sha256": "e9a7f5baf65f4733e3e5d05f8d9456b14bd6497c012922bcbdedf1675361e892"
+   "comparison_sha256": "78a1a779167013f52c29c9d211db14be1e135a23e2a380dedec2b1ef57e93e7b",
+   "settling_canonical_sha256": "b14440bd6ab27b9a6abd9a7299697f8738e166aab40db521c7c352cbe54fb67d"
   }
  },
  "elements": [
@@ -7364,6 +7364,14 @@
    "statement": "The study closes with an outcome record stating the per-stage outcomes (G1: STATED or NOT YET with the missing element named; G2: DERIVED or NOT YET with the obstruction named) and the study-level outcome as spec.md defines it (INSTANTIATES-path, ANALOGY with the metaphorical element named, or NOT YET with the missing work stated), each with evidence pointers to the stage records. The outcome — or, if a stage cannot run, the blocker — is reported to the VEXA chat for the improvement registry, as the commission requires. The formal verdict over the full G1–G5 bar belongs to the independent reader under the judging protocol; this study does not issue it. This does not establish: that the reported outcome is the final verdict on the domain — the reader's verdict under the protocol, and the G3–G5 follow-on, both stand after it.",
    "status": "draft",
    "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "084-policy-sync-conformance/C084-12",
+   "statement": "The app's privacy / data-handling statement, served by GET /api/v1/privacy from backend/glossa_lab/privacy_statement.py and rendered in the SPA's Privacy view, matches the approved fixture specs/084-policy-sync-conformance/fixtures/privacy-data-handling.txt exactly (owner approval 2026-11-05), and no served source carries the superseded draft placeholder text.",
+   "status": "draft",
+   "stage": null,
    "population": "bundle"
   },
   {
@@ -24455,6 +24463,17 @@
   },
   {
    "from": "spec.md",
+   "to": "084-policy-sync-conformance/C084-12",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "084-policy-sync-conformance/C084-12",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
    "to": "084-policy-sync-conformance/C084-2",
    "rel": "supports",
    "rule": "R2",
@@ -30290,6 +30309,11 @@
    "supports": 1,
    "opposes": 0,
    "constrains": 0
+  },
+  "084-policy-sync-conformance/C084-12": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
   }
  },
  "matrix": {
@@ -35765,6 +35789,12 @@
     "population": "bundle",
     "status": "draft",
     "stage": "created"
+   },
+   {
+    "id": "084-policy-sync-conformance/C084-12",
+    "population": "bundle",
+    "status": "draft",
+    "stage": null
    }
   ],
   "columns": [
@@ -52856,6 +52886,17 @@
     ]
    },
    {
+    "row": "084-policy-sync-conformance/C084-12",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "084-policy-sync-conformance/C084-12",
+     "spec.md"
+    ]
+   },
+   {
     "row": "084-policy-sync-conformance/C084-2",
     "column": "spec.md",
     "column_class": "documents",
@@ -54134,8 +54175,8 @@
    }
   ],
   "coverage": {
-   "rows_total": 912,
-   "rows_with_cells": 898,
+   "rows_total": 913,
+   "rows_with_cells": 899,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -54493,30 +54534,30 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1435,
+   "cells_total": 1436,
    "cells_by_relation": {
-    "supports": 1428,
+    "supports": 1429,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1428,
+    "documents": 1429,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
    },
    "falsifier_coverage": {
-    "covered": 903,
-    "total": 912,
+    "covered": 904,
+    "total": 913,
     "by_population": {
      "extracted": {
       "covered": 14,
       "total": 23
      },
      "bundle": {
-      "covered": 889,
-      "total": 889
+      "covered": 890,
+      "total": 890
      }
     }
    },
@@ -59561,8 +59602,8 @@
    }
   },
   "matrix_coverage": {
-   "rows_total": 912,
-   "rows_with_cells": 898,
+   "rows_total": 913,
+   "rows_with_cells": 899,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -59920,15 +59961,15 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1435,
+   "cells_total": 1436,
    "cells_by_relation": {
-    "supports": 1428,
+    "supports": 1429,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1428,
+    "documents": 1429,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
@@ -59997,7 +60038,7 @@
   "claim_population": {
    "by_status": {
     "contradicted": 4,
-    "draft": 888,
+    "draft": 889,
     "partially_falsified": 1,
     "partially_supported": 3,
     "strongly_supported": 2,
@@ -60010,23 +60051,23 @@
     "created": 886,
     "explained": 8
    },
-   "no_stage_recorded": 15,
+   "no_stage_recorded": 16,
    "by_population": {
-    "bundle": 889,
+    "bundle": 890,
     "extracted": 23
    }
   },
   "falsifier_census": {
-   "covered": 903,
-   "total": 912,
+   "covered": 904,
+   "total": 913,
    "by_population": {
     "extracted": {
      "covered": 14,
      "total": 23
     },
     "bundle": {
-     "covered": 889,
-     "total": 889
+     "covered": 890,
+     "total": 890
     }
    },
    "gap_claims": [
@@ -60043,8 +60084,8 @@
   },
   "aee_state_census": {
    "with_state": 0,
-   "without_state": 912,
-   "total": 912
+   "without_state": 913,
+   "total": 913
   },
   "unresolved": {
    "sign_mentions": [
@@ -61530,7 +61571,7 @@
     "runs": [
      {
       "candidate": "incumbent",
-      "record": "t405-incumbent-over-full-frame--d9f73e4c4e4e",
+      "record": "t405-incumbent-over-full-frame--17334e1dfc65",
       "via_signs": [
        "mahadevan:70"
       ],
@@ -61544,7 +61585,7 @@
      },
      {
       "candidate": "full-register",
-      "record": "t405-full-register-over-full-frame--f8c86443e924",
+      "record": "t405-full-register-over-full-frame--47287ced3385",
       "via_signs": [
        "mahadevan:72",
        "mahadevan:64",
@@ -150641,6 +150682,92 @@
     },
     "sign_records": []
    }
+  },
+  "084-policy-sync-conformance/C084-12": {
+   "id": "084-policy-sync-conformance/C084-12",
+   "statement": "The app's privacy / data-handling statement, served by GET /api/v1/privacy from backend/glossa_lab/privacy_statement.py and rendered in the SPA's Privacy view, matches the approved fixture specs/084-policy-sync-conformance/fixtures/privacy-data-handling.txt exactly (owner approval 2026-11-05), and no served source carries the superseded draft placeholder text.",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-05",
+   "falsifier": [
+    "PRIVACY_STATEMENT in backend/glossa_lab/privacy_statement.py differing from the fixture body in any character beyond trailing whitespace; or GET /api/v1/privacy not being registered in backend/glossa_lab/main.py.",
+    "Any file under frontend/src, cloud/edge/src or backend/glossa_lab containing the superseded draft placeholder '[UNVERIFIED', or frontend/src carrying a baked copy of the statement (its distinctive sentences) instead of rendering the served text."
+   ],
+   "falsifier_counts": {
+    "present": 2,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C084-12",
+     "document_id": null,
+     "path": "specs/084-policy-sync-conformance/claims.json",
+     "role": "source_of_record",
+     "sha256": "f2467e1e3d2377682d53ef83e205817b28ad572ab22b4eb8eeb6470d33b2877e",
+     "spec": "084-policy-sync-conformance"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "084-policy-sync-conformance/C084-12",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "084-policy-sync-conformance/C084-12",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C084-12",
+     "document_id": null,
+     "path": "specs/084-policy-sync-conformance/claims.json",
+     "role": "source_of_record",
+     "sha256": "f2467e1e3d2377682d53ef83e205817b28ad572ab22b4eb8eeb6470d33b2877e",
+     "spec": "084-policy-sync-conformance"
+    },
+    "sign_records": []
+   }
   }
  },
  "settling": {
@@ -150692,15 +150819,15 @@
   },
   "runs": [
    {
-    "record": "t405-incumbent-over-full-frame--d9f73e4c4e4e",
+    "record": "t405-incumbent-over-full-frame--17334e1dfc65",
     "scenario": "t405-incumbent-over-full-frame",
     "candidate": "incumbent",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "15a5fbad24f400631ace1ebc88bfb7712c9bf6f68fae23e56fedbcac5fd5a794",
-      "lines": 943
+      "sha256": "6a997a31be478e33106c40753f90653c4155141324ee198904dc333e2ebda922",
+      "lines": 944
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -150751,15 +150878,15 @@
     }
    },
    {
-    "record": "t405-full-register-over-full-frame--f8c86443e924",
+    "record": "t405-full-register-over-full-frame--47287ced3385",
     "scenario": "t405-full-register-over-full-frame",
     "candidate": "full-register",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "15a5fbad24f400631ace1ebc88bfb7712c9bf6f68fae23e56fedbcac5fd5a794",
-      "lines": 943
+      "sha256": "6a997a31be478e33106c40753f90653c4155141324ee198904dc333e2ebda922",
+      "lines": 944
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -150814,7 +150941,7 @@
   ],
   "comparison": {
    "record": "specs/086-winning-combination-adoption/records/stage-4-dual-run-comparison.json",
-   "sha256": "1371c981ce4c9cd9721fbed3294aee82c2bc512d9b8293390a201cf3a935874b",
+   "sha256": "78a1a779167013f52c29c9d211db14be1e135a23e2a380dedec2b1ef57e93e7b",
    "result": {
     "claims_compared": [
      {
@@ -151062,7 +151189,7 @@
   },
   "canonicals": {
    "record": "glossa-indus/ledger/settling-canonical.json",
-   "sha256": "e9a7f5baf65f4733e3e5d05f8d9456b14bd6497c012922bcbdedf1675361e892",
+   "sha256": "b14440bd6ab27b9a6abd9a7299697f8738e166aab40db521c7c352cbe54fb67d",
    "scenarios": [
     {
      "id": "null-over-subset",
@@ -151397,8 +151524,8 @@
   },
   "reach": {
    "claims_with_sign_refs": 1,
-   "claims_total": 912,
-   "claims_untouched_by_any_run": 911,
+   "claims_total": 913,
+   "claims_untouched_by_any_run": 912,
    "s_r3": {
     "status": "UNMEASURED",
     "class_table": null,

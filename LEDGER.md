@@ -9149,3 +9149,20 @@ with updated 263-anchor inventory.
 
 ### Anchors Changed
 None — no new sign assignments. Results reinforce existing M047=min/mīn (MEDIUM).
+
+---
+
+## 2026-11-07 - Develop frontend CI: pin Playwright job to ubuntu-24.04
+
+Develop's CI run 42268886050 failed the Frontend tests (Playwright) job in
+~63 s: `ERROR: Playwright does not support chromium on ubuntu26.04-x64`.
+Main already carries this pin (`.github/workflows/ci.yml`, with the comment
+recording the 2026-11-01 observation, run 41290409981); develop's workflow
+still ran the job on `ubuntu-latest`, which now resolves to 26.04. This
+change mirrors main's pin and comment onto develop, nothing else.
+
+No claim's status, stage, or score was changed by this landing; the standing
+position is unchanged - the Indus script is not deciphered.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

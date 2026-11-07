@@ -12,6 +12,7 @@ import importlib
 import logging
 import os as _os_eng
 import pkgutil
+import sqlite3
 import time as _time_mod
 import traceback
 from datetime import datetime, timezone
@@ -410,6 +411,35 @@ async def run_engine_loop(*, poll_interval: float = 2.0) -> None:
     except asyncio.CancelledError:
         watchdog.cancel()
         logger.info("Pipeline engine stopped")
+    except (sqlite3.ProgrammingError, AssertionError, ValueError) as exc:
+        # Shutdown race (CI teardown flake, 2026-11-06/07): the database can
+        # be closed under a live engine iteration. In the test suite every
+        # TestClient lifespan closes the shared Database singleton on exit,
+        # so a shutdown can land between the loop's `assert self._conn` and
+        # its query (AssertionError), under a query already in flight
+        # (sqlite3 "Cannot operate on a closed database"), or between a
+        # query and its fetch (aiosqlite "no active connection" /
+        # "Connection closed"). If the database is verifiably gone, the
+        # application is shutting down and the loop stops cleanly; any other
+        # error is re-raised so real defects still fail loudly.
+        db = get_db()
+        db_gone = db is None or not db.is_connected()
+        closed_db_message = (
+            isinstance(exc, sqlite3.ProgrammingError)
+            and "Cannot operate on a closed database" in str(exc)
+        ) or (
+            isinstance(exc, ValueError)
+            and str(exc) in ("no active connection", "Connection closed")
+        )
+        if db_gone or closed_db_message:
+            watchdog.cancel()
+            try:
+                await watchdog
+            except asyncio.CancelledError:
+                pass
+            logger.info("Pipeline engine stopped (database closed during shutdown)")
+        else:
+            raise
 
 
 async def run_once() -> bool:

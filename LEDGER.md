@@ -13030,3 +13030,71 @@ script is not deciphered.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+---
+
+## 2026-11-06 - Spec 083 T060 deploy addendum (second execution)
+
+The cloud-production secrets gate was satisfied (environment
+created; `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` set as
+repository secrets, the token a dedicated deploy token), the
+`SERVICE_CREDENTIAL` Worker secret was placed from the staged
+value (script-API stub bootstrap, API error 10007 recorded),
+and `deploy-cloud.yml` run `42243498749` deployed the edge: all
+steps PASS, 5 D1 migrations applied to `glossa-identity`,
+Worker version `9004d3af-2bf7-4ff0-8b63-c1c1c7bec64d`, Custom
+Domain `glossa.bitconcepts.tech` live. T054 post-deploy legs
+PASS; T059 proofs P1, P2, P8 PASS (P8 edge legs), the rest NOT
+RUN with named preconditions (desktop re-sync + desktop
+credential placement pending with Desktop Access; P7 under its
+standing stop-window rule; glassbreak parent-sequenced, NOT
+generated). State: DEPLOYED, launch not yet complete. Full
+record: `specs/083-cloud-edition/records/t060-rollout-record-2026-11-06.md`
+section 8.
+
+No claim's status, stage, or score was changed by this landing;
+the standing position is unchanged - the Indus script is not
+deciphered.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.
+
+---
+
+## 2026-11-07 - Engine shutdown closed-DB race fix (CI teardown flake)
+
+The backend suite failed intermittently with `ERROR at teardown of
+test_run_check_verdict_and_missing_db`: 2698 passed, 1 error. The failure is
+not in that test. The session TestClient teardown awaits the pipeline engine
+task while the loop is mid-iteration against a database closed by another
+TestClient lifespan's shutdown (each TestClient runs its own lifespan against
+the shared Database singleton). Observed in CI runs 42220891977, 42245110090,
+42250965563, 42251859916, 42258269523 (2026-11-06/07), in three faces of the
+same race: `sqlite3.ProgrammingError: Cannot operate on a closed database`,
+`AssertionError` from `assert self._conn` (claim path), and aiosqlite
+`ValueError: no active connection` (close landing between a query and its
+fetch). PR #538 failed three consecutive attempts with the identical
+signature; reruns of the other four runs cleared (3 green, 1 cancelled).
+
+Fix (`backend/glossa_lab/engine.py`, `run_engine_loop`): the loop catches the
+closed-database signals and, only when the database is verifiably gone
+(`get_db()` None or `Database.is_connected()` False, or the closed-database
+message), stops cleanly with a log line; any other error is re-raised so real
+defects still fail loudly. Regression test
+`backend/tests/test_engine_shutdown_race.py` closes a throwaway database under
+a running loop and asserts the loop task exits without raising; it fails on
+the unfixed code and passes with the fix (6 consecutive passes locally).
+Full backend suite run locally on this branch (scratch venv, aee 1.5.3, CI
+command verbatim): 2705 passed, 1 failed, 101 skipped. The single failure
+(`test_phase133_stage0_inventory.py::test_builder_recomputation_skips_without_inputs`)
+is pre-existing and environmental: the skip-gate store exists on this VM so
+the builder runs, but a research-notes input file is absent here; it fails
+identically on the unmodified tree and is skipped in CI. The shared venv's
+stale aee 1.0.4 caused 52 unrelated failures on the first local attempt and
+was not modified; the scratch venv is documented in the run record.
+
+No claim's status, stage, or score was changed by this landing; the standing
+position is unchanged - the Indus script is not deciphered.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

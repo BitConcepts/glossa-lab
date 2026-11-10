@@ -3,8 +3,8 @@
  "generated_from": "glossa-indus/ledger/claims.jsonl",
  "generated_by": "tools/ledger/generate_matrix.py (backend/glossa_lab/matrix_generate.py)",
  "as_of": {
-  "ledger_sha256": "6eada964c585a859db34e1a0e8c1da892baf0012db90e3742829bb318905a0b5",
-  "ledger_lines": 973,
+  "ledger_sha256": "85c3b4c7e52e154cdc94c1f882bd609a459994c19ea821d8b20bae3934fb387b",
+  "ledger_lines": 981,
   "ledger_date": "2026-11-06",
   "ledger_schema": "ledger-schema v1",
   "matrix_defs": "matrix-defs v1"
@@ -5661,6 +5661,54 @@
    "population": "bundle",
    "status": "draft",
    "stage": "created"
+  },
+  {
+   "id": "090-projected-constraints-generalization-study/C090-17",
+   "population": "bundle",
+   "status": "draft",
+   "stage": null
+  },
+  {
+   "id": "090-projected-constraints-generalization-study/C090-22",
+   "population": "bundle",
+   "status": "draft",
+   "stage": null
+  },
+  {
+   "id": "090-projected-constraints-generalization-study/C090-23",
+   "population": "bundle",
+   "status": "draft",
+   "stage": null
+  },
+  {
+   "id": "090-projected-constraints-generalization-study/C090-19",
+   "population": "bundle",
+   "status": "draft",
+   "stage": null
+  },
+  {
+   "id": "090-projected-constraints-generalization-study/C090-21",
+   "population": "bundle",
+   "status": "draft",
+   "stage": null
+  },
+  {
+   "id": "090-projected-constraints-generalization-study/C090-24",
+   "population": "bundle",
+   "status": "draft",
+   "stage": null
+  },
+  {
+   "id": "090-projected-constraints-generalization-study/C090-18",
+   "population": "bundle",
+   "status": "draft",
+   "stage": null
+  },
+  {
+   "id": "090-projected-constraints-generalization-study/C090-20",
+   "population": "bundle",
+   "status": "draft",
+   "stage": null
   }
  ],
  "columns": [
@@ -23786,6 +23834,39 @@
    ]
   },
   {
+   "row": "090-projected-constraints-generalization-study/C090-17",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-17",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "090-projected-constraints-generalization-study/C090-18",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-18",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "090-projected-constraints-generalization-study/C090-19",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-19",
+    "spec.md"
+   ]
+  },
+  {
    "row": "090-projected-constraints-generalization-study/C090-2",
    "column": "spec.md",
    "column_class": "documents",
@@ -23793,6 +23874,61 @@
    "rule": "R2",
    "citations": [
     "090-projected-constraints-generalization-study/C090-2",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "090-projected-constraints-generalization-study/C090-20",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-20",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "090-projected-constraints-generalization-study/C090-21",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-21",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "090-projected-constraints-generalization-study/C090-22",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-22",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "090-projected-constraints-generalization-study/C090-23",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-23",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "090-projected-constraints-generalization-study/C090-24",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-24",
     "spec.md"
    ]
   },
@@ -24360,8 +24496,8 @@
   }
  ],
  "coverage": {
-  "rows_total": 942,
-  "rows_with_cells": 928,
+  "rows_total": 950,
+  "rows_with_cells": 936,
   "empty_rows": [
    "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
    "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -24719,30 +24855,30 @@
    ],
    "corpus_texts": []
   },
-  "cells_total": 1465,
+  "cells_total": 1473,
   "cells_by_relation": {
-   "supports": 1458,
+   "supports": 1466,
    "opposes": 7,
    "constrains": 0
   },
   "cells_by_class": {
    "studies": 7,
-   "documents": 1458,
+   "documents": 1466,
    "research_checks": 0,
    "anchors": 0,
    "corpus_texts": 0
   },
   "falsifier_coverage": {
-   "covered": 933,
-   "total": 942,
+   "covered": 941,
+   "total": 950,
    "by_population": {
     "extracted": {
      "covered": 14,
      "total": 23
     },
     "bundle": {
-     "covered": 919,
-     "total": 919
+     "covered": 927,
+     "total": 927
     }
    }
   },

@@ -3,10 +3,10 @@
  "generated_from": "glossa-indus/ledger/claims.jsonl through glossa-indus/matrix/matrix.json and the settling records of record",
  "generated_by": "tools/ledger/generate_map.py (backend/glossa_lab/map_generate.py)",
  "header": {
-  "claims_total": 942,
+  "claims_total": 950,
   "claims_by_status": {
    "contradicted": 4,
-   "draft": 918,
+   "draft": 926,
    "partially_falsified": 1,
    "partially_supported": 3,
    "strongly_supported": 2,
@@ -55,18 +55,18 @@
    "reason": "the anchors register records no review dates for the pending validations, so they appear as a count, not as dated items (decision Q4)"
   },
   "as_of": {
-   "ledger_sha256": "6eada964c585a859db34e1a0e8c1da892baf0012db90e3742829bb318905a0b5",
-   "ledger_lines": 973,
+   "ledger_sha256": "85c3b4c7e52e154cdc94c1f882bd609a459994c19ea821d8b20bae3934fb387b",
+   "ledger_lines": 981,
    "ledger_date": "2026-11-06",
    "ledger_schema": "ledger-schema v1",
    "matrix_defs": "matrix-defs v1",
    "map_defs": "map-defs v1",
    "settle_semantics": "glossa-settle-1",
-   "matrix_sha256": "26ea487cca59f06aea33e618cef9e603683edbc77ed969af168367c9f4625f49",
+   "matrix_sha256": "6075231c01901aa795e20db481fc3a6b650ef010e86cfc3f53e4da8d5ebb055f",
    "anchors_register_sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
-   "assignment_sets_sha256": "f53e3dbdcaab37669b5744a919e9f310efa0b1cb4709d5ad4890007f02972988",
-   "comparison_sha256": "b2f49c0c2bee35cad025ffb04b369225e20a9967c47c6f8e90cec6e83851eca0",
-   "settling_canonical_sha256": "2249538b25e9925c90a89f6294950a0b1e7578099fa5317d8bba39844928f470"
+   "assignment_sets_sha256": "cc01dbf17b582e937f20b9b8e9046c7cf1e29802f2a9d3451ae8f0e83759bd2d",
+   "comparison_sha256": "20a9e109b011b5be271da2561635bbd60c19be82fd721b7db9f8e6ccca0b31df",
+   "settling_canonical_sha256": "cdd3c424b31fc695e62c20ef186c0d73a5c3e51db727802531372e62a5421268"
   }
  },
  "elements": [
@@ -7604,6 +7604,70 @@
    "statement": "The outside-reproduction pass covers all 46 anchors of the WP5 audit's supported_internal_only class, under a protocol recorded before the pass starts: for each anchor, independent attestation or blind re-derivation by readers who did not produce the original derivations (decision D-091-1). Each anchor's outcome is recorded (external line landed, attempted and not landed, or not attempted with the reason), and the census is 46 accounted of 46.",
    "status": "draft",
    "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "090-projected-constraints-generalization-study/C090-17",
+   "statement": "The separator of this stage (the identity-structure profile P and its comparison) is defined using only the frozen G1 document v1.1's terms (the candidate state, the projection π and its sequence table T, projection-equivalence under §2.3, the exercised inventory) and the skeleton's D5 form. No physics result, no register or ledger quantity, and no quantity defined against a recorded corpus's profile is a component or a premise of the definition. This does not establish: that P is a good separator — only that its definition stands on the G1 document's terms, as D-090-3 requires of everything this study derives.",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "090-projected-constraints-generalization-study/C090-22",
+   "statement": "The held-out set contains no CISI scans and no restricted material of any class; H1 enters the stage's records as statistics and computed profiles only. CISI-derived material plays no part in this stage's design (the `mayig-cisi` subset is excluded at §3.3), and nothing restricted is copied into the repository by any stage act. This does not establish: anything about the CISI restriction itself — only that this stage's design never needs to touch it.",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "090-projected-constraints-generalization-study/C090-23",
+   "statement": "Across the whole G3 stage, the claims ledger's diff is exactly the append of this stage's claim bundle (C090-17..24) through the sanctioned intake at adoption, plus the generated-layer regeneration that append forces. No stage act adjudicates, reclassifies, annotates, or scores any claim; no claim about the Indus script changes status, stage, or score; the program's standing position (the Indus script is not deciphered) is untouched, and nothing in this stage is a decipherment claim or evidence for one. This does not establish: anything about the appended claims' truth — only that the ledger's one-way flow survives the stage intact (C090-13's boundary, renewed).",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "090-projected-constraints-generalization-study/C090-19",
+   "statement": "A freeze record carrying the items §3.4 enumerates is committed before the first profile over H1 is computed by anyone, for any purpose including exploration. Post-freeze changes are recorded amendment acts; an amendment touching the case list, the profile definitions, or the bar voids the administration. This does not establish: that the frozen design is wise — only that it was fixed before it met the data, which is what makes the administration a test rather than a fit.",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "090-projected-constraints-generalization-study/C090-21",
+   "statement": "The stage outcome is adjudged exactly by §5's three conditions over the frozen case list and the frozen profile definitions. No component is added, dropped, or re-weighted after any profile is seen; no case is substituted; no second administration under this package repairs a miss. A miss is recorded as NOT YET or CANNOT BE ADMINISTERED, with the obstruction named. This does not establish: that §5's bar is the only fair bar — only that it is the one this stage froze and answered to.",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "090-projected-constraints-generalization-study/C090-24",
+   "statement": "The stage closes with an outcome record stating the G3 outcome (SEPARATED, NOT YET with the obstruction named, or CANNOT BE ADMINISTERED with the forcing counts shown), the audited profiles, and the study-level outcome in the study's vocabulary (INSTANTIATES-path at most; ANALOGY if §6's pressure is the honest reading, with the element named). The outcome is reported to the VEXA chat for the improvement registry as a stage deliverable. The formal verdict over the full G1–G5 bar belongs to the independent reader under the judging protocol; this stage does not issue it. This does not establish: that the reported outcome is the final verdict on the domain — the reader's verdict, and G4/G5, stand after it.",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "090-projected-constraints-generalization-study/C090-18",
+   "statement": "No step of the G1 drafting, the adversarial pass, the G2 derivation, or the G2 audit computed a table, a profile, or a per-record quantity over H1 (the snapshot's `indusscript-m77` text-code records). The uses that exist are named and bounded: G1 §1.5's file-level census lines about the snapshot as a whole. The freeze record states the extraction rules, the permitted freeze counts, and the H1↔M77-flat-file object overlap it measured. This does not establish: that H1's objects are disjoint from the design corpora's — the claim is about computation, and the overlap number is published with the freeze so its weight is the reader's to judge.",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "090-projected-constraints-generalization-study/C090-20",
+   "statement": "For the frozen controls (the seeded relabeling C1; the identity C2), the audited profiles equal A0's in every component. A control that separates refutes the separator as implemented (and, if the implementation is faithful, as defined) under D5's invariance clause, and the stage records that as its finding. This does not establish: invariance for arbitrary equivalences beyond the controls — the controls are the test the bar sets; the general invariance is §2's arithmetic, which the controls sample at its most failure-prone point (a full relabeling).",
+   "status": "draft",
+   "stage": null,
    "population": "bundle"
   },
   {
@@ -25729,12 +25793,100 @@
   },
   {
    "from": "spec.md",
+   "to": "090-projected-constraints-generalization-study/C090-17",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-17",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "090-projected-constraints-generalization-study/C090-18",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-18",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "090-projected-constraints-generalization-study/C090-19",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-19",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
    "to": "090-projected-constraints-generalization-study/C090-2",
    "rel": "supports",
    "rule": "R2",
    "column_class": "documents",
    "citations": [
     "090-projected-constraints-generalization-study/C090-2",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "090-projected-constraints-generalization-study/C090-20",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-20",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "090-projected-constraints-generalization-study/C090-21",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-21",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "090-projected-constraints-generalization-study/C090-22",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-22",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "090-projected-constraints-generalization-study/C090-23",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-23",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "090-projected-constraints-generalization-study/C090-24",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "090-projected-constraints-generalization-study/C090-24",
     "spec.md"
    ]
   },
@@ -31007,6 +31159,46 @@
    "constrains": 0
   },
   "091-anchor-comparison-integrity/C091-5": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "090-projected-constraints-generalization-study/C090-17": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "090-projected-constraints-generalization-study/C090-22": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "090-projected-constraints-generalization-study/C090-23": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "090-projected-constraints-generalization-study/C090-19": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "090-projected-constraints-generalization-study/C090-21": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "090-projected-constraints-generalization-study/C090-24": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "090-projected-constraints-generalization-study/C090-18": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "090-projected-constraints-generalization-study/C090-20": {
    "supports": 1,
    "opposes": 0,
    "constrains": 0
@@ -36665,6 +36857,54 @@
     "population": "bundle",
     "status": "draft",
     "stage": "created"
+   },
+   {
+    "id": "090-projected-constraints-generalization-study/C090-17",
+    "population": "bundle",
+    "status": "draft",
+    "stage": null
+   },
+   {
+    "id": "090-projected-constraints-generalization-study/C090-22",
+    "population": "bundle",
+    "status": "draft",
+    "stage": null
+   },
+   {
+    "id": "090-projected-constraints-generalization-study/C090-23",
+    "population": "bundle",
+    "status": "draft",
+    "stage": null
+   },
+   {
+    "id": "090-projected-constraints-generalization-study/C090-19",
+    "population": "bundle",
+    "status": "draft",
+    "stage": null
+   },
+   {
+    "id": "090-projected-constraints-generalization-study/C090-21",
+    "population": "bundle",
+    "status": "draft",
+    "stage": null
+   },
+   {
+    "id": "090-projected-constraints-generalization-study/C090-24",
+    "population": "bundle",
+    "status": "draft",
+    "stage": null
+   },
+   {
+    "id": "090-projected-constraints-generalization-study/C090-18",
+    "population": "bundle",
+    "status": "draft",
+    "stage": null
+   },
+   {
+    "id": "090-projected-constraints-generalization-study/C090-20",
+    "population": "bundle",
+    "status": "draft",
+    "stage": null
    }
   ],
   "columns": [
@@ -54790,6 +55030,39 @@
     ]
    },
    {
+    "row": "090-projected-constraints-generalization-study/C090-17",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "090-projected-constraints-generalization-study/C090-17",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "090-projected-constraints-generalization-study/C090-18",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "090-projected-constraints-generalization-study/C090-18",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "090-projected-constraints-generalization-study/C090-19",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "090-projected-constraints-generalization-study/C090-19",
+     "spec.md"
+    ]
+   },
+   {
     "row": "090-projected-constraints-generalization-study/C090-2",
     "column": "spec.md",
     "column_class": "documents",
@@ -54797,6 +55070,61 @@
     "rule": "R2",
     "citations": [
      "090-projected-constraints-generalization-study/C090-2",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "090-projected-constraints-generalization-study/C090-20",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "090-projected-constraints-generalization-study/C090-20",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "090-projected-constraints-generalization-study/C090-21",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "090-projected-constraints-generalization-study/C090-21",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "090-projected-constraints-generalization-study/C090-22",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "090-projected-constraints-generalization-study/C090-22",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "090-projected-constraints-generalization-study/C090-23",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "090-projected-constraints-generalization-study/C090-23",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "090-projected-constraints-generalization-study/C090-24",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "090-projected-constraints-generalization-study/C090-24",
      "spec.md"
     ]
    },
@@ -55364,8 +55692,8 @@
    }
   ],
   "coverage": {
-   "rows_total": 942,
-   "rows_with_cells": 928,
+   "rows_total": 950,
+   "rows_with_cells": 936,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -55723,30 +56051,30 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1465,
+   "cells_total": 1473,
    "cells_by_relation": {
-    "supports": 1458,
+    "supports": 1466,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1458,
+    "documents": 1466,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
    },
    "falsifier_coverage": {
-    "covered": 933,
-    "total": 942,
+    "covered": 941,
+    "total": 950,
     "by_population": {
      "extracted": {
       "covered": 14,
       "total": 23
      },
      "bundle": {
-      "covered": 919,
-      "total": 919
+      "covered": 927,
+      "total": 927
      }
     }
    },
@@ -60791,8 +61119,8 @@
    }
   },
   "matrix_coverage": {
-   "rows_total": 942,
-   "rows_with_cells": 928,
+   "rows_total": 950,
+   "rows_with_cells": 936,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -61150,15 +61478,15 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1465,
+   "cells_total": 1473,
    "cells_by_relation": {
-    "supports": 1458,
+    "supports": 1466,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1458,
+    "documents": 1466,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
@@ -61227,7 +61555,7 @@
   "claim_population": {
    "by_status": {
     "contradicted": 4,
-    "draft": 918,
+    "draft": 926,
     "partially_falsified": 1,
     "partially_supported": 3,
     "strongly_supported": 2,
@@ -61240,23 +61568,23 @@
     "created": 915,
     "explained": 8
    },
-   "no_stage_recorded": 16,
+   "no_stage_recorded": 24,
    "by_population": {
-    "bundle": 919,
+    "bundle": 927,
     "extracted": 23
    }
   },
   "falsifier_census": {
-   "covered": 933,
-   "total": 942,
+   "covered": 941,
+   "total": 950,
    "by_population": {
     "extracted": {
      "covered": 14,
      "total": 23
     },
     "bundle": {
-     "covered": 919,
-     "total": 919
+     "covered": 927,
+     "total": 927
     }
    },
    "gap_claims": [
@@ -61273,8 +61601,8 @@
   },
   "aee_state_census": {
    "with_state": 0,
-   "without_state": 942,
-   "total": 942
+   "without_state": 950,
+   "total": 950
   },
   "unresolved": {
    "sign_mentions": [
@@ -62760,7 +63088,7 @@
     "runs": [
      {
       "candidate": "incumbent",
-      "record": "settling-20261110T140239Z-7b9862",
+      "record": "settling-20261110T145806Z-63c6de",
       "via_signs": [
        "mahadevan:70"
       ],
@@ -62774,7 +63102,7 @@
      },
      {
       "candidate": "full-register",
-      "record": "settling-20261110T140240Z-b53030",
+      "record": "settling-20261110T145813Z-5f57c9",
       "via_signs": [
        "mahadevan:72",
        "mahadevan:64",
@@ -154422,6 +154750,686 @@
     },
     "sign_records": []
    }
+  },
+  "090-projected-constraints-generalization-study/C090-17": {
+   "id": "090-projected-constraints-generalization-study/C090-17",
+   "statement": "The separator of this stage (the identity-structure profile P and its comparison) is defined using only the frozen G1 document v1.1's terms (the candidate state, the projection π and its sequence table T, projection-equivalence under §2.3, the exercised inventory) and the skeleton's D5 form. No physics result, no register or ledger quantity, and no quantity defined against a recorded corpus's profile is a component or a premise of the definition. This does not establish: that P is a good separator — only that its definition stands on the G1 document's terms, as D-090-3 requires of everything this study derives.",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "a component of P, or a step of its invariance argument, that cites a physics result, a bookkeeping quantity, or a recorded profile as its ground; or a component whose value over a fixed table can change without the table changing."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C090-17",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/claims.json",
+     "role": "source_of_record",
+     "sha256": "9079c404feac74a3996cf69c79ac48fa41dd3f55cefeb46d315fa6c21516ab9c",
+     "spec": "090-projected-constraints-generalization-study"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "090-projected-constraints-generalization-study/C090-17",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "090-projected-constraints-generalization-study/C090-17",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C090-17",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/claims.json",
+     "role": "source_of_record",
+     "sha256": "9079c404feac74a3996cf69c79ac48fa41dd3f55cefeb46d315fa6c21516ab9c",
+     "spec": "090-projected-constraints-generalization-study"
+    },
+    "sign_records": []
+   }
+  },
+  "090-projected-constraints-generalization-study/C090-22": {
+   "id": "090-projected-constraints-generalization-study/C090-22",
+   "statement": "The held-out set contains no CISI scans and no restricted material of any class; H1 enters the stage's records as statistics and computed profiles only. CISI-derived material plays no part in this stage's design (the `mayig-cisi` subset is excluded at §3.3), and nothing restricted is copied into the repository by any stage act. This does not establish: anything about the CISI restriction itself — only that this stage's design never needs to touch it.",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "a CISI scan, or any restricted source material, present in the stage's records or outputs; or a stage output that redistributes restricted content rather than statistics computed from records the repository already holds openly."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C090-22",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/claims.json",
+     "role": "source_of_record",
+     "sha256": "9079c404feac74a3996cf69c79ac48fa41dd3f55cefeb46d315fa6c21516ab9c",
+     "spec": "090-projected-constraints-generalization-study"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "090-projected-constraints-generalization-study/C090-22",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "090-projected-constraints-generalization-study/C090-22",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C090-22",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/claims.json",
+     "role": "source_of_record",
+     "sha256": "9079c404feac74a3996cf69c79ac48fa41dd3f55cefeb46d315fa6c21516ab9c",
+     "spec": "090-projected-constraints-generalization-study"
+    },
+    "sign_records": []
+   }
+  },
+  "090-projected-constraints-generalization-study/C090-23": {
+   "id": "090-projected-constraints-generalization-study/C090-23",
+   "statement": "Across the whole G3 stage, the claims ledger's diff is exactly the append of this stage's claim bundle (C090-17..24) through the sanctioned intake at adoption, plus the generated-layer regeneration that append forces. No stage act adjudicates, reclassifies, annotates, or scores any claim; no claim about the Indus script changes status, stage, or score; the program's standing position (the Indus script is not deciphered) is untouched, and nothing in this stage is a decipherment claim or evidence for one. This does not establish: anything about the appended claims' truth — only that the ledger's one-way flow survives the stage intact (C090-13's boundary, renewed).",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "a ledger diff attributable to a G3 stage PR beyond the adoption append's lines; or an Indus claim reclassified, annotated, or re-scored citing this stage."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C090-23",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/claims.json",
+     "role": "source_of_record",
+     "sha256": "9079c404feac74a3996cf69c79ac48fa41dd3f55cefeb46d315fa6c21516ab9c",
+     "spec": "090-projected-constraints-generalization-study"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "090-projected-constraints-generalization-study/C090-23",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "090-projected-constraints-generalization-study/C090-23",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C090-23",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/claims.json",
+     "role": "source_of_record",
+     "sha256": "9079c404feac74a3996cf69c79ac48fa41dd3f55cefeb46d315fa6c21516ab9c",
+     "spec": "090-projected-constraints-generalization-study"
+    },
+    "sign_records": []
+   }
+  },
+  "090-projected-constraints-generalization-study/C090-19": {
+   "id": "090-projected-constraints-generalization-study/C090-19",
+   "statement": "A freeze record carrying the items §3.4 enumerates is committed before the first profile over H1 is computed by anyone, for any purpose including exploration. Post-freeze changes are recorded amendment acts; an amendment touching the case list, the profile definitions, or the bar voids the administration. This does not establish: that the frozen design is wise — only that it was fixed before it met the data, which is what makes the administration a test rather than a fit.",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "a profile, spectrum, or exploratory computation over H1 dated before the freeze record's commit; or a frozen item changed with no amendment act recorded."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C090-19",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/claims.json",
+     "role": "source_of_record",
+     "sha256": "9079c404feac74a3996cf69c79ac48fa41dd3f55cefeb46d315fa6c21516ab9c",
+     "spec": "090-projected-constraints-generalization-study"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "090-projected-constraints-generalization-study/C090-19",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "090-projected-constraints-generalization-study/C090-19",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C090-19",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/claims.json",
+     "role": "source_of_record",
+     "sha256": "9079c404feac74a3996cf69c79ac48fa41dd3f55cefeb46d315fa6c21516ab9c",
+     "spec": "090-projected-constraints-generalization-study"
+    },
+    "sign_records": []
+   }
+  },
+  "090-projected-constraints-generalization-study/C090-21": {
+   "id": "090-projected-constraints-generalization-study/C090-21",
+   "statement": "The stage outcome is adjudged exactly by §5's three conditions over the frozen case list and the frozen profile definitions. No component is added, dropped, or re-weighted after any profile is seen; no case is substituted; no second administration under this package repairs a miss. A miss is recorded as NOT YET or CANNOT BE ADMINISTERED, with the obstruction named. This does not establish: that §5's bar is the only fair bar — only that it is the one this stage froze and answered to.",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "an outcome record whose SEPARATED rests on a component, case, or threshold absent from the freeze; or a re-run under this package following a recorded miss."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C090-21",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/claims.json",
+     "role": "source_of_record",
+     "sha256": "9079c404feac74a3996cf69c79ac48fa41dd3f55cefeb46d315fa6c21516ab9c",
+     "spec": "090-projected-constraints-generalization-study"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "090-projected-constraints-generalization-study/C090-21",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "090-projected-constraints-generalization-study/C090-21",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C090-21",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/claims.json",
+     "role": "source_of_record",
+     "sha256": "9079c404feac74a3996cf69c79ac48fa41dd3f55cefeb46d315fa6c21516ab9c",
+     "spec": "090-projected-constraints-generalization-study"
+    },
+    "sign_records": []
+   }
+  },
+  "090-projected-constraints-generalization-study/C090-24": {
+   "id": "090-projected-constraints-generalization-study/C090-24",
+   "statement": "The stage closes with an outcome record stating the G3 outcome (SEPARATED, NOT YET with the obstruction named, or CANNOT BE ADMINISTERED with the forcing counts shown), the audited profiles, and the study-level outcome in the study's vocabulary (INSTANTIATES-path at most; ANALOGY if §6's pressure is the honest reading, with the element named). The outcome is reported to the VEXA chat for the improvement registry as a stage deliverable. The formal verdict over the full G1–G5 bar belongs to the independent reader under the judging protocol; this stage does not issue it. This does not establish: that the reported outcome is the final verdict on the domain — the reader's verdict, and G4/G5, stand after it.",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "the stage closing with no outcome record; an outcome stated in vocabulary the skeleton does not define without mapping to its terms; a SEPARATED reported to the registry in stronger words than the outcome record's own; or no report delivered after the outcome record lands."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C090-24",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/claims.json",
+     "role": "source_of_record",
+     "sha256": "9079c404feac74a3996cf69c79ac48fa41dd3f55cefeb46d315fa6c21516ab9c",
+     "spec": "090-projected-constraints-generalization-study"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "090-projected-constraints-generalization-study/C090-24",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "090-projected-constraints-generalization-study/C090-24",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C090-24",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/claims.json",
+     "role": "source_of_record",
+     "sha256": "9079c404feac74a3996cf69c79ac48fa41dd3f55cefeb46d315fa6c21516ab9c",
+     "spec": "090-projected-constraints-generalization-study"
+    },
+    "sign_records": []
+   }
+  },
+  "090-projected-constraints-generalization-study/C090-18": {
+   "id": "090-projected-constraints-generalization-study/C090-18",
+   "statement": "No step of the G1 drafting, the adversarial pass, the G2 derivation, or the G2 audit computed a table, a profile, or a per-record quantity over H1 (the snapshot's `indusscript-m77` text-code records). The uses that exist are named and bounded: G1 §1.5's file-level census lines about the snapshot as a whole. The freeze record states the extraction rules, the permitted freeze counts, and the H1↔M77-flat-file object overlap it measured. This does not establish: that H1's objects are disjoint from the design corpora's — the claim is about computation, and the overlap number is published with the freeze so its weight is the reader's to judge.",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "a G1/G2-era record, or a record they cite as computed grounding, that contains a table, profile, or per-record computation over H1; or an extraction rule in the freeze that selects records by any property a G1/G2 computation produced."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C090-18",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/claims.json",
+     "role": "source_of_record",
+     "sha256": "9079c404feac74a3996cf69c79ac48fa41dd3f55cefeb46d315fa6c21516ab9c",
+     "spec": "090-projected-constraints-generalization-study"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "090-projected-constraints-generalization-study/C090-18",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "090-projected-constraints-generalization-study/C090-18",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C090-18",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/claims.json",
+     "role": "source_of_record",
+     "sha256": "9079c404feac74a3996cf69c79ac48fa41dd3f55cefeb46d315fa6c21516ab9c",
+     "spec": "090-projected-constraints-generalization-study"
+    },
+    "sign_records": []
+   }
+  },
+  "090-projected-constraints-generalization-study/C090-20": {
+   "id": "090-projected-constraints-generalization-study/C090-20",
+   "statement": "For the frozen controls (the seeded relabeling C1; the identity C2), the audited profiles equal A0's in every component. A control that separates refutes the separator as implemented (and, if the implementation is faithful, as defined) under D5's invariance clause, and the stage records that as its finding. This does not establish: invariance for arbitrary equivalences beyond the controls — the controls are the test the bar sets; the general invariance is §2's arithmetic, which the controls sample at its most failure-prone point (a full relabeling).",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "an audited control profile differing from A0's in any component, with the administration nevertheless reported as meeting the bar."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C090-20",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/claims.json",
+     "role": "source_of_record",
+     "sha256": "9079c404feac74a3996cf69c79ac48fa41dd3f55cefeb46d315fa6c21516ab9c",
+     "spec": "090-projected-constraints-generalization-study"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "090-projected-constraints-generalization-study/C090-20",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "090-projected-constraints-generalization-study/C090-20",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C090-20",
+     "document_id": null,
+     "path": "specs/090-projected-constraints-generalization-study/claims.json",
+     "role": "source_of_record",
+     "sha256": "9079c404feac74a3996cf69c79ac48fa41dd3f55cefeb46d315fa6c21516ab9c",
+     "spec": "090-projected-constraints-generalization-study"
+    },
+    "sign_records": []
+   }
   }
  },
  "settling": {
@@ -154429,7 +155437,7 @@
   "semantics": "glossa-settle-1",
   "assignment_sets": {
    "record": "glossa-indus/ledger/assignment-sets.json",
-   "sha256": "f53e3dbdcaab37669b5744a919e9f310efa0b1cb4709d5ad4890007f02972988",
+   "sha256": "cc01dbf17b582e937f20b9b8e9046c7cf1e29802f2a9d3451ae8f0e83759bd2d",
    "register": {
     "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
     "sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
@@ -154473,15 +155481,15 @@
   },
   "runs": [
    {
-    "record": "settling-20261110T140239Z-7b9862",
+    "record": "settling-20261110T145806Z-63c6de",
     "scenario": "t405-incumbent-over-full-frame",
     "candidate": "incumbent",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "6eada964c585a859db34e1a0e8c1da892baf0012db90e3742829bb318905a0b5",
-      "lines": 973
+      "sha256": "85c3b4c7e52e154cdc94c1f882bd609a459994c19ea821d8b20bae3934fb387b",
+      "lines": 981
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -154532,15 +155540,15 @@
     }
    },
    {
-    "record": "settling-20261110T140240Z-b53030",
+    "record": "settling-20261110T145813Z-5f57c9",
     "scenario": "t405-full-register-over-full-frame",
     "candidate": "full-register",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "6eada964c585a859db34e1a0e8c1da892baf0012db90e3742829bb318905a0b5",
-      "lines": 973
+      "sha256": "85c3b4c7e52e154cdc94c1f882bd609a459994c19ea821d8b20bae3934fb387b",
+      "lines": 981
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -154595,7 +155603,7 @@
   ],
   "comparison": {
    "record": "specs/086-winning-combination-adoption/records/stage-4-dual-run-comparison.json",
-   "sha256": "b2f49c0c2bee35cad025ffb04b369225e20a9967c47c6f8e90cec6e83851eca0",
+   "sha256": "20a9e109b011b5be271da2561635bbd60c19be82fd721b7db9f8e6ccca0b31df",
    "result": {
     "claims_compared": [
      {
@@ -154843,7 +155851,7 @@
   },
   "canonicals": {
    "record": "glossa-indus/ledger/settling-canonical.json",
-   "sha256": "2249538b25e9925c90a89f6294950a0b1e7578099fa5317d8bba39844928f470",
+   "sha256": "cdd3c424b31fc695e62c20ef186c0d73a5c3e51db727802531372e62a5421268",
    "scenarios": [
     {
      "id": "null-over-subset",
@@ -155178,8 +156186,8 @@
   },
   "reach": {
    "claims_with_sign_refs": 1,
-   "claims_total": 942,
-   "claims_untouched_by_any_run": 941,
+   "claims_total": 950,
+   "claims_untouched_by_any_run": 949,
    "s_r3": {
     "status": "UNMEASURED",
     "class_table": null,

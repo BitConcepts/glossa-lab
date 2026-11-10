@@ -9,8 +9,8 @@
  "pins": {
   "ledger": {
    "path": "glossa-indus/ledger/claims.jsonl",
-   "sha256": "6eada964c585a859db34e1a0e8c1da892baf0012db90e3742829bb318905a0b5",
-   "lines": 973
+   "sha256": "85c3b4c7e52e154cdc94c1f882bd609a459994c19ea821d8b20bae3934fb387b",
+   "lines": 981
   },
   "anchors_register": {
    "path": "backend/reports/INDUS_FINAL_ANCHORS.json",

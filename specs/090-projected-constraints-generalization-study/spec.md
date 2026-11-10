@@ -3,7 +3,12 @@
 **Feature Branch**: `090-projected-constraints-generalization-study`
 (build stages); this package lands on `feat/090-spec-package`
 **Created**: 2026-11-04
-**Status**: Draft package — awaiting the owner's block approval (Stage 0, T003)
+**Status**: Stages 0–3 complete under the owner's block ratification of
+2026-11-04 (the G2 outcome is CONDITION 1 DERIVED). The G3 stage is
+adopted as a stage amendment under the owner's block ratification of
+2026-11-06 (decisions D-090-5..10; records/ratification-2026-11-06.md);
+its claims C090-17..24 are ledgered, and no G3 computation has run. G4
+and G5 remain unattempted and barred.
 **Input**: The owner's direct order of 2026-11-04 ("do both in order,"
 item 1), delivered to this chat by the VEXA chat: the generalization
 study is commissioned, with Glossa as the test bed, as a registered
@@ -139,7 +144,12 @@ VEXA improvement registry either way.
   package is assembled for G5. Standing instances in the program's
   history (the gate's refusals, the matrix's reproducibility) may be
   cited as program history; they are not this study's evidence for
-  G3–G5 (C090-15).
+  G3–G5 (C090-15). **Stage amendment (2026-11-06, D-090-5):** for the
+  G3 computed-separator stage only, this bullet is superseded — G3 is
+  amended into this spec by its own ratified package
+  (records/g3-package-draft.md; the stage-amendment section below).
+  G4 and G5 remain unattempted and barred; C090-15 continues to bar
+  them.
 - **No machinery is built.** No code, no gate class, no registry.
   The study writes documents and records only.
 - **No claim about the Indus script changes.** No existing claim's
@@ -254,6 +264,49 @@ not define.
   including when the outcome is ANALOGY or NOT YET. *Recommendation:
   adopt* (the commission names the report; the skeleton requires
   the outcomes recorded either way).
+
+## Stage amendment — G3, the computed separator (ratified 2026-11-06)
+
+By decision D-090-5 the owner ratified the G3 stage as an amendment to
+this spec, in the package at `records/g3-package-draft.md` (drafted
+2026-11-05 on the owner's commission; ratified as a block on
+2026-11-06 with decisions D-090-5..10 adopted as recommended; the
+ratification act is recorded at `records/ratification-2026-11-06.md`).
+The amendment supersedes the G3 non-goal above for this stage only;
+G4 and G5 remain unattempted and barred, and C090-15 continues to bar
+them. C090-15's normative text stands as ledgered; its "unattempted"
+statement is read subject to this amendment from the stage's first
+computation, per D-090-5's terms.
+
+The stage administers the D-090-3 bar computationally to the separator
+the G2 derivation produced: the identity-structure profile
+P(T) = (|Σ_O(T)|, M(T), L(T), X(T), B(T)), defined from the frozen G1
+document v1.1's terms only, over the frozen case list (A0 the
+exercised core, A1 the unseen half, A2 the designed-degenerate table,
+A3 the designed-separating table, and the controls C1 a seeded
+relabeling of A0 and C2 the identity) against the held-out set H1 (the
+corpus snapshot's `indusscript-m77` records, under the package's
+extraction rules and exclusions). The bar is the package's §5:
+invariance under the controls, separation of the designed-degenerate
+case, separation of the unseen half — adjudged over the frozen case
+list and the frozen profile definitions, with NOT YET and CANNOT BE
+ADMINISTERED (below 300 sequence-bearing records or 1,000 tokens) as
+first-class outcomes and no repair administration. The stage's claims
+are C090-17..24 (claims.md, Stage G3 section); its tasks are T401..T405
+(tasks.md, Stage 4). The decisions, as ratified: D-090-5 (stage
+amendment to this spec, this stage only); D-090-6 (the separator as
+the package's §2 defines it); D-090-7 (H1 the sole held-out set, with
+the package's §3.2/§3.3 permissions and exclusions, Laursen among
+them); D-090-8 (the bar and outcome vocabulary, no repair
+administration); D-090-9 (intake of C090-17..24 at adoption as the
+stage's only ledger diff); D-090-10 (the outcome reported to the VEXA
+chat either way).
+
+Adoption (T401) is the only stage act this amendment's landing
+performs: the package is recorded, the claims are ledgered through
+the sanctioned intake on the ratification date, and the generated
+layers are regenerated. The freeze (T402) and the computation (T403)
+have not started; no profile has been computed over H1 by anyone.
 
 ## Requirements (summary; the claims in claims.md are the normative text)
 

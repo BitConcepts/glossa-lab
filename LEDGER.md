@@ -13183,3 +13183,58 @@ position is unchanged - the Indus script is not deciphered.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+---
+
+## 2026-11-10 - Spec 083 Stage 2 fix 2: origin serves the SPA shell on the FR-004 navigation paths
+
+With PR #543 deployed, the edge forward reached the origin, but
+GET /login (and /setup, /invite/*) still answered the backend's JSON
+404: `backend/glossa_lab/main.py` mounted frontend/dist with plain
+`StaticFiles(html=True)`, which serves real files and directory
+indexes only and has no shell fallback — while the edge design
+(cloud/edge/src/worker.ts; FR-004) forwards exactly those navigation
+paths to the origin expecting the SPA shell, which the cloud SPA
+renders client-side from window.location.pathname. A second latent
+Spec 083 defect of the same family as the T055 scheme defect: the
+production serving path was never exercised end to end before the
+format. Full diagnosis: the re-stand-up record
+STAGE2-FIX2-DIAGNOSIS.md (2026-11-10).
+
+Fix (`backend/glossa_lab/main.py`): the dist mount now uses
+`_SpaShellStaticFiles`, a StaticFiles subclass that serves
+index.html with 200 for a GET/HEAD request on a shell path — the
+FR-004 public-page set (/login, /setup, /invite, /invite/*, after
+trailing-slash normalization, mirroring the edge's own
+isPublicPage classification) — when the path resolves to no real
+file. The fallback is deliberately NOT blanket: TEST-API-003 pins
+that unprefixed API-shaped paths (e.g. /health) must not answer
+200, and the app hash-routes every other screen, so all non-shell
+paths keep plain StaticFiles answers byte-identically (real files,
+directory redirects/indexes, the POST 404/405 family, JSON 404s for
+API misses and scoped routes). No mount when the dist is absent.
+
+Regression tests (`backend/tests/test_spa_shell_fallback.py`, temp
+dist via monkeypatched _FRONTEND_DIST): 15 tests pin the shell
+paths (incl. trailing-slash forms and HEAD), root/index, a real
+asset served verbatim, the JSON-404 narrowing pins (/health, a deep
+route, a missing asset), the API-miss JSON 404, and POST /login not
+serving the shell. On unmodified code the 7 shell pins fail and the
+8 preservation pins pass. Verification: new file 15 passed; cloud
+files + test_health together 67 passed; full backend suite locally
+(CI command, GPU files ignored, phase392 stall deselected by plain
+nodeid, basetemp/data dir on the workspace disk after an EPERM wave
+on /tmp invalidated one run at 114 environmental failures): 2721
+passed, 1 failed, 101 skipped, 1 deselected. The single failure
+(test_phase133_stage0_inventory) is the known environmental
+baseline (research-notes input absent on this VM; fails identically
+unmodified; skipped in CI). The spec087 f11_meluhha replay cases
+failed identically with and without this change in two runs and
+passed in the final run — an environment-sensitive flake family,
+not this change.
+
+No claim's status, stage, or score was changed by this landing; the
+standing position is unchanged - the Indus script is not deciphered.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

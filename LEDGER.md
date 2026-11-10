@@ -13303,3 +13303,84 @@ deciphered.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+
+## 2026-11-10 - Spec 090 Stage G3 adoption: the computed separator stage, ratified 2026-11-06, lands as a stage amendment with its claims intake
+
+Spec 090's G3 stage (the computed separator: the
+identity-structure profile P administered against the
+held-out set H1 under the D-090-3 bar) was ratified by the
+owner as a block on 2026-11-06, decisions D-090-5..10
+adopted as recommended. This landing executes the adoption
+run only (T401) on branch adopt/090-g3: the draft package
+lands byte-identical from draft PR #523
+(records/g3-package-draft.md, git blob 701ef377), spec.md
+carries the D-090-5 stage amendment (the G3 non-goal is
+superseded for this stage only; G4 and G5 remain
+unattempted and barred), claims.md gains the Stage G3
+section, tasks.md gains Stage 4 (T401..T405; T401 ticked,
+the freeze and the computation not started), and the
+claims intake appends C090-17..24 through
+tools/ledger/import_bundle.py --date 2026-11-06 - the
+ledger grows 973 -> 981 lines (SHA-256 6eada964... ->
+85c3b4c7...; appended block 6a45b4a3...; append-only
+verified byte-wise), 942 -> 950 program claims (bundle
+919 -> 927). The stage bundle is carried in a new
+claims.json in the spec directory (SHA-256 9079c404...):
+the ledger's recorded source hashes admit exactly one
+hash per source path, so aee-claims.json stands
+byte-untouched at its 2026-11-04 intake - the deviation
+and the two machinery refusals that forced it are
+recorded in the ratification record. validate_ledger.py
+PASS: falsifier coverage 941 of 950, does_not_establish
+coverage 755 of 950. The AEE assessments at adoption
+(records/g3-stage-bundle-aee-assessment.json for the
+stage bundle; records/g3-adoption-aee-assessment.json
+for the full 24-claim set) both read iterate (34 and 105
+failure modes). Record of record:
+specs/090-projected-constraints-generalization-study/records/ratification-2026-11-06.md.
+
+The settling chain was refreshed in the standing
+precedent order: verify-canonicals 6/6 over the grown
+build before any pin moved; settling-canonical.json pin
+refreshed to 85c3b4c7.../981 with re_derivations[7]
+recorded in the file; both T405 scenarios re-executed
+under run-defs v2 (runs settling-20261110T145806Z-63c6de
+and settling-20261110T145813Z-5f57c9, the registered
+scenario ids, the standing 286-sign full-frame scope)
+with result blocks byte-equal to the superseded
+generation's; the Stage 4 dual-run comparison re-filed
+from the new pair (SHA-256 20a9e109..., identical except
+the ledger pin); the assignment sets re-materialized
+unchanged (run settling-20261110T145818Z-4fe3eb). The
+superseded pair departed the store under the map
+builder's D-D rule, preserved in git history (blobs
+d4ef5df1 / 64b3d5fc), and accounted by two departure acts
+appended through run_records.departure_act + append_act
+with git-history-derived fields, alongside the builder's
+re_derivations[7] event entry (folded census 31 entries).
+The generated layers were regenerated over the grown
+ledger through their own generators in dependency order:
+matrix.json SHA-256 6075231c..., map-data.json
+062227ce... (settling runs carried: 2), program-map.json
+b08e4e45... (950 claims, 93 studies, 28 unjudged). The
+ledger gate reads the standing profile before the intake
+and over the shipped tree: 29 PASS / 0 FAIL / 1 NOT-RUN
+(default) and 32 PASS / 0 FAIL / 0 NOT-RUN (--regen).
+Census literals in the test suites and the frontend e2e
+header were re-pinned to the recomputed values; the four
+pin-bearing files read 96 passed / 1 failed locally, the
+one failure the documented pre-existing VM glob-order
+failure of
+test_spec086_map.py::test_builder_refuses_a_run_pinned_to_another_build
+(CI authoritative); the bundle-reconciliation test
+passes.
+
+No claim's status, stage, or score was changed by this
+landing; no freeze was made and no profile was computed
+over H1 - T402 and T403 stand open. The standing
+position is unchanged - the Indus script is not
+deciphered.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

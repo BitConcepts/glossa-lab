@@ -1,0 +1,2399 @@
+{
+ "K1": {
+  "accession_number": {
+   "note": "accession_number is present only on the museum side; it produces no pairs",
+   "produced": 0
+  },
+  "source_object_id": {
+   "correct": 0,
+   "pairs": [
+    {
+     "correct": false,
+     "corroboration": {
+      "provenience_names_site": false,
+      "second_identifier": false,
+      "site_equal": false
+     },
+     "key": "2633",
+     "museum_id": "GLI-IND-0010047",
+     "museum_system": "PennMuseum",
+     "text_id": "GLI-IND-M77-02633",
+     "text_system": "indusscript-m77"
+    },
+    {
+     "correct": false,
+     "corroboration": {
+      "provenience_names_site": false,
+      "second_identifier": false,
+      "site_equal": false
+     },
+     "key": "2500",
+     "museum_id": "GLI-IND-0010307",
+     "museum_system": "PennMuseum",
+     "text_id": "GLI-IND-M77-02500",
+     "text_system": "indusscript-m77"
+    },
+    {
+     "correct": false,
+     "corroboration": {
+      "provenience_names_site": false,
+      "second_identifier": false,
+      "site_equal": false
+     },
+     "key": "5429",
+     "museum_id": "GLI-IND-0011974",
+     "museum_system": "PennMuseum",
+     "text_id": "GLI-IND-M77-05429",
+     "text_system": "indusscript-m77"
+    },
+    {
+     "correct": false,
+     "corroboration": {
+      "provenience_names_site": false,
+      "second_identifier": false,
+      "site_equal": false
+     },
+     "key": "2315",
+     "museum_id": "GLI-IND-0013432",
+     "museum_system": "PennMuseum",
+     "text_id": "GLI-IND-M77-02315",
+     "text_system": "indusscript-m77"
+    },
+    {
+     "correct": false,
+     "corroboration": {
+      "provenience_names_site": false,
+      "second_identifier": false,
+      "site_equal": false
+     },
+     "key": "2316",
+     "museum_id": "GLI-IND-0013630",
+     "museum_system": "PennMuseum",
+     "text_id": "GLI-IND-M77-02316",
+     "text_system": "indusscript-m77"
+    },
+    {
+     "correct": false,
+     "corroboration": {
+      "provenience_names_site": false,
+      "second_identifier": false,
+      "site_equal": false
+     },
+     "key": "4055",
+     "museum_id": "GLI-IND-0013750",
+     "museum_system": "PennMuseum",
+     "text_id": "GLI-IND-M77-04055",
+     "text_system": "indusscript-m77"
+    },
+    {
+     "correct": false,
+     "corroboration": {
+      "provenience_names_site": false,
+      "second_identifier": false,
+      "site_equal": false
+     },
+     "key": "1467",
+     "museum_id": "GLI-IND-0013841",
+     "museum_system": "PennMuseum",
+     "text_id": "GLI-IND-M77-01467",
+     "text_system": "indusscript-m77"
+    }
+   ],
+   "precision": 0.0,
+   "produced": 7,
+   "verdict": "REJECTED"
+  }
+ },
+ "K2": {
+  "correct": 179,
+  "diagnostics": {
+   "content_disagreements": [
+    {
+     "cisi_object": "M-4",
+     "csv_count_field": 9,
+     "csv_tokens": 9,
+     "delta": -1,
+     "mayig_count_field": 10,
+     "mayig_tokens": 10,
+     "text_id": "GLI-IND-0000207"
+    },
+    {
+     "cisi_object": "M-7",
+     "csv_count_field": 9,
+     "csv_tokens": 9,
+     "delta": -2,
+     "mayig_count_field": 11,
+     "mayig_tokens": 11,
+     "text_id": "GLI-IND-0000210"
+    },
+    {
+     "cisi_object": "M-10",
+     "csv_count_field": 11,
+     "csv_tokens": 11,
+     "delta": 1,
+     "mayig_count_field": 10,
+     "mayig_tokens": 10,
+     "text_id": "GLI-IND-0000213"
+    },
+    {
+     "cisi_object": "M-19",
+     "csv_count_field": null,
+     "csv_tokens": 4,
+     "delta": 1,
+     "mayig_count_field": 2,
+     "mayig_tokens": 3,
+     "text_id": "GLI-IND-0000221"
+    },
+    {
+     "cisi_object": "M-20",
+     "csv_count_field": 7,
+     "csv_tokens": 7,
+     "delta": -1,
+     "mayig_count_field": 8,
+     "mayig_tokens": 8,
+     "text_id": "GLI-IND-0000222"
+    },
+    {
+     "cisi_object": "M-23",
+     "csv_count_field": 13,
+     "csv_tokens": 12,
+     "delta": -1,
+     "mayig_count_field": 13,
+     "mayig_tokens": 13,
+     "text_id": "GLI-IND-0000225"
+    },
+    {
+     "cisi_object": "M-25",
+     "csv_count_field": 4,
+     "csv_tokens": 4,
+     "delta": -1,
+     "mayig_count_field": 5,
+     "mayig_tokens": 5,
+     "text_id": "GLI-IND-0000227"
+    },
+    {
+     "cisi_object": "M-39",
+     "csv_count_field": null,
+     "csv_tokens": 6,
+     "delta": -1,
+     "mayig_count_field": 6,
+     "mayig_tokens": 7,
+     "text_id": "GLI-IND-0000241"
+    },
+    {
+     "cisi_object": "M-41",
+     "csv_count_field": 9,
+     "csv_tokens": 9,
+     "delta": 1,
+     "mayig_count_field": 8,
+     "mayig_tokens": 8,
+     "text_id": "GLI-IND-0000243"
+    },
+    {
+     "cisi_object": "M-45",
+     "csv_count_field": 6,
+     "csv_tokens": 6,
+     "delta": -1,
+     "mayig_count_field": 7,
+     "mayig_tokens": 7,
+     "text_id": "GLI-IND-0000247"
+    },
+    {
+     "cisi_object": "M-67",
+     "csv_count_field": 7,
+     "csv_tokens": 6,
+     "delta": -1,
+     "mayig_count_field": 7,
+     "mayig_tokens": 7,
+     "text_id": "GLI-IND-0000269"
+    },
+    {
+     "cisi_object": "M-68",
+     "csv_count_field": 8,
+     "csv_tokens": 7,
+     "delta": -1,
+     "mayig_count_field": 8,
+     "mayig_tokens": 8,
+     "text_id": "GLI-IND-0000270"
+    },
+    {
+     "cisi_object": "M-72",
+     "csv_count_field": 7,
+     "csv_tokens": 7,
+     "delta": 1,
+     "mayig_count_field": 6,
+     "mayig_tokens": 6,
+     "text_id": "GLI-IND-0000274"
+    },
+    {
+     "cisi_object": "M-73",
+     "csv_count_field": 3,
+     "csv_tokens": 3,
+     "delta": -1,
+     "mayig_count_field": 3,
+     "mayig_tokens": 4,
+     "text_id": "GLI-IND-0000275"
+    },
+    {
+     "cisi_object": "M-79",
+     "csv_count_field": 7,
+     "csv_tokens": 6,
+     "delta": -1,
+     "mayig_count_field": 7,
+     "mayig_tokens": 7,
+     "text_id": "GLI-IND-0000280"
+    },
+    {
+     "cisi_object": "M-81",
+     "csv_count_field": 6,
+     "csv_tokens": 6,
+     "delta": -1,
+     "mayig_count_field": 7,
+     "mayig_tokens": 7,
+     "text_id": "GLI-IND-0000282"
+    },
+    {
+     "cisi_object": "M-98",
+     "csv_count_field": 4,
+     "csv_tokens": 4,
+     "delta": 1,
+     "mayig_count_field": 3,
+     "mayig_tokens": 3,
+     "text_id": "GLI-IND-0000299"
+    },
+    {
+     "cisi_object": "M-106",
+     "csv_count_field": 6,
+     "csv_tokens": 6,
+     "delta": 3,
+     "mayig_count_field": 2,
+     "mayig_tokens": 3,
+     "text_id": "GLI-IND-0000307"
+    },
+    {
+     "cisi_object": "M-110",
+     "csv_count_field": 4,
+     "csv_tokens": 4,
+     "delta": 1,
+     "mayig_count_field": 2,
+     "mayig_tokens": 3,
+     "text_id": "GLI-IND-0000311"
+    },
+    {
+     "cisi_object": "M-111",
+     "csv_count_field": 6,
+     "csv_tokens": 6,
+     "delta": -1,
+     "mayig_count_field": 7,
+     "mayig_tokens": 7,
+     "text_id": "GLI-IND-0000312"
+    },
+    {
+     "cisi_object": "M-125",
+     "csv_count_field": 5,
+     "csv_tokens": 5,
+     "delta": 2,
+     "mayig_count_field": 2,
+     "mayig_tokens": 3,
+     "text_id": "GLI-IND-0000326"
+    },
+    {
+     "cisi_object": "M-126",
+     "csv_count_field": 4,
+     "csv_tokens": 4,
+     "delta": -1,
+     "mayig_count_field": 4,
+     "mayig_tokens": 5,
+     "text_id": "GLI-IND-0000327"
+    },
+    {
+     "cisi_object": "M-141",
+     "csv_count_field": 10,
+     "csv_tokens": 9,
+     "delta": 6,
+     "mayig_count_field": 1,
+     "mayig_tokens": 3,
+     "text_id": "GLI-IND-0000342"
+    },
+    {
+     "cisi_object": "M-161",
+     "csv_count_field": 3,
+     "csv_tokens": 3,
+     "delta": -1,
+     "mayig_count_field": 4,
+     "mayig_tokens": 4,
+     "text_id": "GLI-IND-0000361"
+    },
+    {
+     "cisi_object": "M-162",
+     "csv_count_field": 5,
+     "csv_tokens": 5,
+     "delta": -1,
+     "mayig_count_field": 6,
+     "mayig_tokens": 6,
+     "text_id": "GLI-IND-0000362"
+    },
+    {
+     "cisi_object": "M-165",
+     "csv_count_field": 9,
+     "csv_tokens": 8,
+     "delta": -1,
+     "mayig_count_field": 9,
+     "mayig_tokens": 9,
+     "text_id": "GLI-IND-0000365"
+    },
+    {
+     "cisi_object": "M-167",
+     "csv_count_field": 4,
+     "csv_tokens": 4,
+     "delta": 1,
+     "mayig_count_field": 2,
+     "mayig_tokens": 3,
+     "text_id": "GLI-IND-0000367"
+    },
+    {
+     "cisi_object": "M-169",
+     "csv_count_field": 7,
+     "csv_tokens": 7,
+     "delta": 2,
+     "mayig_count_field": 4,
+     "mayig_tokens": 5,
+     "text_id": "GLI-IND-0000368"
+    },
+    {
+     "cisi_object": "M-175",
+     "csv_count_field": null,
+     "csv_tokens": 2,
+     "delta": -1,
+     "mayig_count_field": 2,
+     "mayig_tokens": 3,
+     "text_id": "GLI-IND-0000374"
+    }
+   ],
+   "count_field_agreement": 149,
+   "count_field_artifacts": 24,
+   "nonnumeric_csv_count_fields": [
+    {
+     "cisi_object": "M-19",
+     "csv_text_length_raw": "4+?",
+     "text_id": "GLI-IND-0000221"
+    },
+    {
+     "cisi_object": "M-22",
+     "csv_text_length_raw": "7+?",
+     "text_id": "GLI-IND-0000224"
+    },
+    {
+     "cisi_object": "M-39",
+     "csv_text_length_raw": "6+?",
+     "text_id": "GLI-IND-0000241"
+    },
+    {
+     "cisi_object": "M-175",
+     "csv_text_length_raw": "2+?",
+     "text_id": "GLI-IND-0000374"
+    }
+   ],
+   "pairs_compared": 179,
+   "token_count_agreement": 150,
+   "token_delta_distribution": {
+    "-1": 17,
+    "-2": 1,
+    "0": 150,
+    "1": 7,
+    "2": 2,
+    "3": 1,
+    "6": 1
+   }
+  },
+  "pairs": [
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-1",
+    "correct": true,
+    "text_id": "GLI-IND-0000205"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-3",
+    "correct": true,
+    "text_id": "GLI-IND-0000206"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-4",
+    "correct": true,
+    "text_id": "GLI-IND-0000207"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-5",
+    "correct": true,
+    "text_id": "GLI-IND-0000208"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-6",
+    "correct": true,
+    "text_id": "GLI-IND-0000209"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-7",
+    "correct": true,
+    "text_id": "GLI-IND-0000210"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-8",
+    "correct": true,
+    "text_id": "GLI-IND-0000211"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-9",
+    "correct": true,
+    "text_id": "GLI-IND-0000212"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-10",
+    "correct": true,
+    "text_id": "GLI-IND-0000213"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-12",
+    "correct": true,
+    "text_id": "GLI-IND-0000214"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-13",
+    "correct": true,
+    "text_id": "GLI-IND-0000215"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-14",
+    "correct": true,
+    "text_id": "GLI-IND-0000216"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-15",
+    "correct": true,
+    "text_id": "GLI-IND-0000217"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-16",
+    "correct": true,
+    "text_id": "GLI-IND-0000218"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-17",
+    "correct": true,
+    "text_id": "GLI-IND-0000219"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-18",
+    "correct": true,
+    "text_id": "GLI-IND-0000220"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-19",
+    "correct": true,
+    "text_id": "GLI-IND-0000221"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-20",
+    "correct": true,
+    "text_id": "GLI-IND-0000222"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-21",
+    "correct": true,
+    "text_id": "GLI-IND-0000223"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-22",
+    "correct": true,
+    "text_id": "GLI-IND-0000224"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-23",
+    "correct": true,
+    "text_id": "GLI-IND-0000225"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-24",
+    "correct": true,
+    "text_id": "GLI-IND-0000226"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-25",
+    "correct": true,
+    "text_id": "GLI-IND-0000227"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-26",
+    "correct": true,
+    "text_id": "GLI-IND-0000228"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-27",
+    "correct": true,
+    "text_id": "GLI-IND-0000229"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-28",
+    "correct": true,
+    "text_id": "GLI-IND-0000230"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-29",
+    "correct": true,
+    "text_id": "GLI-IND-0000231"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-30",
+    "correct": true,
+    "text_id": "GLI-IND-0000232"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-31",
+    "correct": true,
+    "text_id": "GLI-IND-0000233"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-32",
+    "correct": true,
+    "text_id": "GLI-IND-0000234"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-33",
+    "correct": true,
+    "text_id": "GLI-IND-0000235"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-34",
+    "correct": true,
+    "text_id": "GLI-IND-0000236"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-35",
+    "correct": true,
+    "text_id": "GLI-IND-0000237"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-36",
+    "correct": true,
+    "text_id": "GLI-IND-0000238"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-37",
+    "correct": true,
+    "text_id": "GLI-IND-0000239"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-38",
+    "correct": true,
+    "text_id": "GLI-IND-0000240"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-39",
+    "correct": true,
+    "text_id": "GLI-IND-0000241"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-40",
+    "correct": true,
+    "text_id": "GLI-IND-0000242"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-41",
+    "correct": true,
+    "text_id": "GLI-IND-0000243"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-42",
+    "correct": true,
+    "text_id": "GLI-IND-0000244"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-43",
+    "correct": true,
+    "text_id": "GLI-IND-0000245"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-44",
+    "correct": true,
+    "text_id": "GLI-IND-0000246"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-45",
+    "correct": true,
+    "text_id": "GLI-IND-0000247"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-46",
+    "correct": true,
+    "text_id": "GLI-IND-0000248"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-47",
+    "correct": true,
+    "text_id": "GLI-IND-0000249"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-48",
+    "correct": true,
+    "text_id": "GLI-IND-0000250"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-49",
+    "correct": true,
+    "text_id": "GLI-IND-0000251"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-50",
+    "correct": true,
+    "text_id": "GLI-IND-0000252"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-51",
+    "correct": true,
+    "text_id": "GLI-IND-0000253"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-52",
+    "correct": true,
+    "text_id": "GLI-IND-0000254"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-53",
+    "correct": true,
+    "text_id": "GLI-IND-0000255"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-54",
+    "correct": true,
+    "text_id": "GLI-IND-0000256"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-55",
+    "correct": true,
+    "text_id": "GLI-IND-0000257"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-56",
+    "correct": true,
+    "text_id": "GLI-IND-0000258"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-57",
+    "correct": true,
+    "text_id": "GLI-IND-0000259"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-58",
+    "correct": true,
+    "text_id": "GLI-IND-0000260"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-59",
+    "correct": true,
+    "text_id": "GLI-IND-0000261"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-60",
+    "correct": true,
+    "text_id": "GLI-IND-0000262"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-61",
+    "correct": true,
+    "text_id": "GLI-IND-0000263"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-62",
+    "correct": true,
+    "text_id": "GLI-IND-0000264"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-63",
+    "correct": true,
+    "text_id": "GLI-IND-0000265"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-64",
+    "correct": true,
+    "text_id": "GLI-IND-0000266"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-65",
+    "correct": true,
+    "text_id": "GLI-IND-0000267"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-66",
+    "correct": true,
+    "text_id": "GLI-IND-0000268"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-67",
+    "correct": true,
+    "text_id": "GLI-IND-0000269"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-68",
+    "correct": true,
+    "text_id": "GLI-IND-0000270"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-69",
+    "correct": true,
+    "text_id": "GLI-IND-0000271"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-70",
+    "correct": true,
+    "text_id": "GLI-IND-0000272"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-71",
+    "correct": true,
+    "text_id": "GLI-IND-0000273"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-72",
+    "correct": true,
+    "text_id": "GLI-IND-0000274"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-73",
+    "correct": true,
+    "text_id": "GLI-IND-0000275"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-74",
+    "correct": true,
+    "text_id": "GLI-IND-0000276"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-75",
+    "correct": true,
+    "text_id": "GLI-IND-0000277"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-77",
+    "correct": true,
+    "text_id": "GLI-IND-0000278"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-78",
+    "correct": true,
+    "text_id": "GLI-IND-0000279"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-79",
+    "correct": true,
+    "text_id": "GLI-IND-0000280"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-80",
+    "correct": true,
+    "text_id": "GLI-IND-0000281"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-81",
+    "correct": true,
+    "text_id": "GLI-IND-0000282"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-82",
+    "correct": true,
+    "text_id": "GLI-IND-0000283"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-83",
+    "correct": true,
+    "text_id": "GLI-IND-0000284"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-84",
+    "correct": true,
+    "text_id": "GLI-IND-0000285"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-85",
+    "correct": true,
+    "text_id": "GLI-IND-0000286"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-86",
+    "correct": true,
+    "text_id": "GLI-IND-0000287"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-87",
+    "correct": true,
+    "text_id": "GLI-IND-0000288"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-88",
+    "correct": true,
+    "text_id": "GLI-IND-0000289"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-89",
+    "correct": true,
+    "text_id": "GLI-IND-0000290"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-90",
+    "correct": true,
+    "text_id": "GLI-IND-0000291"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-91",
+    "correct": true,
+    "text_id": "GLI-IND-0000292"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-92",
+    "correct": true,
+    "text_id": "GLI-IND-0000293"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-93",
+    "correct": true,
+    "text_id": "GLI-IND-0000294"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-94",
+    "correct": true,
+    "text_id": "GLI-IND-0000295"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-95",
+    "correct": true,
+    "text_id": "GLI-IND-0000296"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-96",
+    "correct": true,
+    "text_id": "GLI-IND-0000297"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-97",
+    "correct": true,
+    "text_id": "GLI-IND-0000298"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-98",
+    "correct": true,
+    "text_id": "GLI-IND-0000299"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-99",
+    "correct": true,
+    "text_id": "GLI-IND-0000300"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-100",
+    "correct": true,
+    "text_id": "GLI-IND-0000301"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-101",
+    "correct": true,
+    "text_id": "GLI-IND-0000302"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-102",
+    "correct": true,
+    "text_id": "GLI-IND-0000303"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-103",
+    "correct": true,
+    "text_id": "GLI-IND-0000304"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-104",
+    "correct": true,
+    "text_id": "GLI-IND-0000305"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-105",
+    "correct": true,
+    "text_id": "GLI-IND-0000306"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-106",
+    "correct": true,
+    "text_id": "GLI-IND-0000307"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-107",
+    "correct": true,
+    "text_id": "GLI-IND-0000308"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-108",
+    "correct": true,
+    "text_id": "GLI-IND-0000309"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-109",
+    "correct": true,
+    "text_id": "GLI-IND-0000310"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-110",
+    "correct": true,
+    "text_id": "GLI-IND-0000311"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-111",
+    "correct": true,
+    "text_id": "GLI-IND-0000312"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-112",
+    "correct": true,
+    "text_id": "GLI-IND-0000313"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-113",
+    "correct": true,
+    "text_id": "GLI-IND-0000314"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-114",
+    "correct": true,
+    "text_id": "GLI-IND-0000315"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-115",
+    "correct": true,
+    "text_id": "GLI-IND-0000316"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-116",
+    "correct": true,
+    "text_id": "GLI-IND-0000317"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-117",
+    "correct": true,
+    "text_id": "GLI-IND-0000318"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-118",
+    "correct": true,
+    "text_id": "GLI-IND-0000319"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-119",
+    "correct": true,
+    "text_id": "GLI-IND-0000320"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-120",
+    "correct": true,
+    "text_id": "GLI-IND-0000321"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-121",
+    "correct": true,
+    "text_id": "GLI-IND-0000322"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-122",
+    "correct": true,
+    "text_id": "GLI-IND-0000323"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-123",
+    "correct": true,
+    "text_id": "GLI-IND-0000324"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-124",
+    "correct": true,
+    "text_id": "GLI-IND-0000325"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-125",
+    "correct": true,
+    "text_id": "GLI-IND-0000326"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-126",
+    "correct": true,
+    "text_id": "GLI-IND-0000327"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-127",
+    "correct": true,
+    "text_id": "GLI-IND-0000328"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-128",
+    "correct": true,
+    "text_id": "GLI-IND-0000329"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-129",
+    "correct": true,
+    "text_id": "GLI-IND-0000330"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-130",
+    "correct": true,
+    "text_id": "GLI-IND-0000331"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-131",
+    "correct": true,
+    "text_id": "GLI-IND-0000332"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-132",
+    "correct": true,
+    "text_id": "GLI-IND-0000333"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-133",
+    "correct": true,
+    "text_id": "GLI-IND-0000334"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-134",
+    "correct": true,
+    "text_id": "GLI-IND-0000335"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-135",
+    "correct": true,
+    "text_id": "GLI-IND-0000336"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-136",
+    "correct": true,
+    "text_id": "GLI-IND-0000337"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-137",
+    "correct": true,
+    "text_id": "GLI-IND-0000338"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-138",
+    "correct": true,
+    "text_id": "GLI-IND-0000339"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-139",
+    "correct": true,
+    "text_id": "GLI-IND-0000340"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-140",
+    "correct": true,
+    "text_id": "GLI-IND-0000341"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-141",
+    "correct": true,
+    "text_id": "GLI-IND-0000342"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-142",
+    "correct": true,
+    "text_id": "GLI-IND-0000343"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-143",
+    "correct": true,
+    "text_id": "GLI-IND-0000344"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-144",
+    "correct": true,
+    "text_id": "GLI-IND-0000345"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-145",
+    "correct": true,
+    "text_id": "GLI-IND-0000346"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-146",
+    "correct": true,
+    "text_id": "GLI-IND-0000347"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-147",
+    "correct": true,
+    "text_id": "GLI-IND-0000348"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-148",
+    "correct": true,
+    "text_id": "GLI-IND-0000349"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-149",
+    "correct": true,
+    "text_id": "GLI-IND-0000350"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-150",
+    "correct": true,
+    "text_id": "GLI-IND-0000351"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-151",
+    "correct": true,
+    "text_id": "GLI-IND-0000352"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-152",
+    "correct": true,
+    "text_id": "GLI-IND-0000353"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-153",
+    "correct": true,
+    "text_id": "GLI-IND-0000354"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-154",
+    "correct": true,
+    "text_id": "GLI-IND-0000355"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-155",
+    "correct": true,
+    "text_id": "GLI-IND-0000356"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-157",
+    "correct": true,
+    "text_id": "GLI-IND-0000357"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-158",
+    "correct": true,
+    "text_id": "GLI-IND-0000358"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-159",
+    "correct": true,
+    "text_id": "GLI-IND-0000359"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-160",
+    "correct": true,
+    "text_id": "GLI-IND-0000360"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-161",
+    "correct": true,
+    "text_id": "GLI-IND-0000361"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-162",
+    "correct": true,
+    "text_id": "GLI-IND-0000362"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-163",
+    "correct": true,
+    "text_id": "GLI-IND-0000363"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-164",
+    "correct": true,
+    "text_id": "GLI-IND-0000364"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-165",
+    "correct": true,
+    "text_id": "GLI-IND-0000365"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-166",
+    "correct": true,
+    "text_id": "GLI-IND-0000366"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-167",
+    "correct": true,
+    "text_id": "GLI-IND-0000367"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-169",
+    "correct": true,
+    "text_id": "GLI-IND-0000368"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-170",
+    "correct": true,
+    "text_id": "GLI-IND-0000369"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-171",
+    "correct": true,
+    "text_id": "GLI-IND-0000370"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-172",
+    "correct": true,
+    "text_id": "GLI-IND-0000371"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-173",
+    "correct": true,
+    "text_id": "GLI-IND-0000372"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-174",
+    "correct": true,
+    "text_id": "GLI-IND-0000373"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-175",
+    "correct": true,
+    "text_id": "GLI-IND-0000374"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-176",
+    "correct": true,
+    "text_id": "GLI-IND-0000375"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-177",
+    "correct": true,
+    "text_id": "GLI-IND-0000376"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-178",
+    "correct": true,
+    "text_id": "GLI-IND-0000377"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-179",
+    "correct": true,
+    "text_id": "GLI-IND-0000378"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-180",
+    "correct": true,
+    "text_id": "GLI-IND-0000379"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-181",
+    "correct": true,
+    "text_id": "GLI-IND-0000380"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-182",
+    "correct": true,
+    "text_id": "GLI-IND-0000381"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-183",
+    "correct": true,
+    "text_id": "GLI-IND-0000382"
+   },
+   {
+    "checks": {
+     "catalogue_equal": true,
+     "one_to_one": true,
+     "site_prefix_consistent": true,
+     "type_consistent": true
+    },
+    "cisi_object": "M-184",
+    "correct": true,
+    "text_id": "GLI-IND-0000383"
+   }
+  ],
+  "precision": 1.0,
+  "produced": 179,
+  "unmatched_text_records": [],
+  "verdict": "ACCEPTED"
+ },
+ "audit": "t103-join-audit",
+ "floor": 0.9,
+ "freeze": "t103-join-freeze-v1",
+ "input_pins": {
+  "canonical": "e24f42a95ee4cc1fdb16c789c3edfb937993ed7c82223d6daa96d66895174ae5",
+  "csv": "c02e3d7bb74cf5abb11cc94f88d8d469e6acc5d6fad4b7153c02c43428f58d98",
+  "snapshot": "08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e"
+ },
+ "join_output": {
+  "accepted_families": [
+   "K2"
+  ],
+  "pairs": 179
+ }
+}

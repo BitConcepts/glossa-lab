@@ -77,13 +77,13 @@
      "positive": 0
     },
     "restricted_studies": 0,
-    "studies": 19,
+    "studies": 20,
     "studies_by_class": {
      "closed_other": 0,
      "negative": 0,
      "open": 13,
      "positive": 0,
-     "unjudged": 6
+     "unjudged": 7
     }
    },
    "Sign inventory & corpus": {
@@ -173,10 +173,10 @@
     "negative": 0,
     "open": 63,
     "positive": 0,
-    "unjudged": 28
+    "unjudged": 29
    },
    "restricted": 1,
-   "total": 92
+   "total": 93
   },
   "unjudged_studies": [
    "001-glossa-lab-baseline",
@@ -206,7 +206,8 @@
    "024-evidence-integration",
    "025-paper-search-research-check",
    "025-stage2-controlled-followup",
-   "026-core-research-source"
+   "026-core-research-source",
+   "091-anchor-comparison-integrity"
   ]
  },
  "defs_version": "program-map-defs v1",
@@ -14637,6 +14638,22 @@
      "open": 16,
      "positive": 0,
      "total": 16
+    },
+    "restricted": false,
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "unjudged",
+    "domain": "Program infrastructure",
+    "id": "091-anchor-comparison-integrity",
+    "judgment_call": false,
+    "kind": "study",
+    "member_counts": {
+     "closed_other": 0,
+     "negative": 0,
+     "open": 0,
+     "positive": 0,
+     "total": 0
     },
     "restricted": false,
     "subdomain": "Governance, lifecycle & generated layers"

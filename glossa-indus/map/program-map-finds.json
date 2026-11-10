@@ -114,6 +114,10 @@
    "subject": "026-core-research-source"
   },
   {
+   "kind": "bundle_less_study",
+   "subject": "091-anchor-comparison-integrity"
+  },
+  {
    "document": "ancient_writing_and_modern_technologies_51831ac9",
    "kind": "extracted_null_falsifier",
    "subject": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001"

@@ -496,6 +496,11 @@
       "spec_dir": "093-material-context-channel",
       "domain": "Claim families by study line",
       "subdomain": "Site, object & repertoire tests"
+    },
+    {
+      "spec_dir": "091-anchor-comparison-integrity",
+      "domain": "Program infrastructure",
+      "subdomain": "Governance, lifecycle & generated layers"
     }
   ],
   "extracted_documents": [

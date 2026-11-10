@@ -28,13 +28,13 @@ survive into its stage report.
   *This does not establish:* claim quality — `iterate` is the expected
   reading for a draft bundle on one asserted source; the owner's approval
   is the human act (T003).
-- [ ] **T003 — Owner block approval.** The owner ratifies the package as
+- [x] **T003 — Owner block approval.** The owner ratifies the package as
   a block: spec, 15 claims, plan, and decisions D-091-1..7 (including
   the full-blind protocol D-091-2 and the dependency-gated phonotactic
   arm D-091-6). Acceptance: **human-as-oracle** (the owner).
   *This does not establish:* approval of any later stage's output, or of
   any named-human engagement — each D-091-1 engagement is its own act.
-- [ ] **T004 — Adoption intake + generated-layer regeneration.** After
+- [x] **T004 — Adoption intake + generated-layer regeneration.** After
   T003: (a) record the pre-append gate run (gate CLI on the un-appended
   tree, ALL PASS); (b) append the C091 bundle through
   `tools/ledger/import_bundle.py --spec specs/091-anchor-comparison-integrity

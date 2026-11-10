@@ -13238,3 +13238,68 @@ standing position is unchanged - the Indus script is not deciphered.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-10 - Spec 091 Wave 1 adoption: anchor/comparison integrity package ratified 2026-11-06 lands with its claims intake
+
+Spec 091 (Wave 1 of the Spec 088 gap register: GR-088-01,
+GR-088-02, GR-088-03) was ratified by the owner as a block on
+2026-11-06, decisions D-091-1..7 adopted as recommended. This
+landing executes the Stage 0 adoption runs (T003, T004) on
+branch adopt/091-wave1: the package lands from the draft
+branch, spec.md is stamped RATIFIED, the program map assigns
+the study (Program infrastructure / Governance, lifecycle &
+generated layers), and the claims intake appends C091-1..15
+through tools/ledger/import_bundle.py --date 2026-11-06 -
+the ledger grows 958 -> 973 lines (SHA-256 c55d5782... ->
+6eada964...; appended block 9f26496c...; append-only verified
+byte-wise), 927 -> 942 program claims (bundle 904 -> 919).
+validate_ledger.py PASS: falsifier coverage 933 of 942,
+does_not_establish coverage 755 of 942. The AEE assessment at
+adoption (records/adoption-aee-assessment.json) reads
+iterate, 66 failure modes, identical to the draft package's
+T002 summary. Record of record:
+specs/091-anchor-comparison-integrity/records/ratification-2026-11-06.md.
+
+The settling chain was refreshed in the standing precedent
+order: verify-canonicals 6/6 over the grown build before any
+pin moved; settling-canonical.json pin refreshed to
+6eada964.../973 with re_derivations[6] recorded in the file;
+both T405 scenarios re-executed under run-defs v2 (runs
+settling-20261110T140239Z-7b9862 and
+settling-20261110T140240Z-b53030, the registered scenario ids,
+the standing 286-sign full-frame scope) with result blocks
+byte-equal to the superseded generation's; the Stage 4
+comparison re-filed from the new pair (SHA-256 b2f49c0c...,
+identical except the ledger pin); assignment sets
+re-materialized unchanged (run settling-20261110T140246Z-d8affc).
+The superseded 2026-11-06 pair departed the store under the
+map builder's D-D rule, preserved in git history (blobs
+5eef16f6 / 60015ca7), and accounted by two departure acts
+appended through run_records.departure_act + append_act with
+git-history-derived fields, alongside the builder's
+re_derivations[6] event entry (folded census 27 entries).
+The generated layers were regenerated over the grown ledger
+through their own generators in dependency order (the gated
+publish refused over the pre-regeneration tree on cross-layer
+staleness alone, artifacts byte-untouched): matrix.json
+SHA-256 26ea487c..., map-data.json 6430cd9f... (settling runs
+carried: 2), program-map.json b753583f... (942 claims, 93
+studies, 28 unjudged; bundle_less_study back to 28). The
+ledger gate over the shipped tree reads the standing profile:
+29 PASS / 0 FAIL / 1 NOT-RUN (default) and 32 PASS / 0 FAIL /
+0 NOT-RUN (--regen). Census literals in the test suites and
+the frontend e2e header were re-pinned to the recomputed
+values; the four pin-bearing files read 96 passed / 1 failed
+locally, the one failure the documented pre-existing VM
+glob-order failure of
+test_spec086_map.py::test_builder_refuses_a_run_pinned_to_another_build
+(CI authoritative); the bundle-reconciliation test passes.
+
+No claim's status, stage, or score was changed by this
+landing; no study stage is started by this motion, and the
+D-091-1 named-human engagements remain the owner's acts. The
+standing position is unchanged - the Indus script is not
+deciphered.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

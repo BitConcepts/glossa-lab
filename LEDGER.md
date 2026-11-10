@@ -12989,6 +12989,36 @@ No claim's status, stage, or score was changed by this
 landing; the standing position is unchanged — the Indus
 script is not deciphered.
 
+## 2026-11-06 — Spec 083: desktop legs recorded complete (sync, restart, T057 PASS)
+
+The readiness record
+(`specs/083-cloud-edition/records/go-live-readiness-2026-11-05.md`)
+now carries the desktop legs of the go-live sequence as executed,
+each read from its gatekeeper queue record (verdict_source=markers):
+the dirty enumeration (job
+`20261105T131620Z-glossa-spec083-desktop-dirty-enum-2026-11-05-862c60`,
+run `42035796835` — 5 dirty paths, all regenerable runtime
+products, none hand-authored); the restore (job
+`20261105T141515Z-glossa-spec083-desktop-restore-dirty-2026-11-05-419f02`,
+run `42047390682` — RESTORE_OK, `DIRTY_AFTER_COUNT=0`); the
+resubmitted ff-only sync (job
+`20261105T155824Z-glossa-spec083-desktop-sync-resubmit-2026-11-05-de56b5`,
+run `42061190779` — SYNC_OK, `309ea63c` → `c7712b1d`,
+`COMMITS_APPLIED=187`, `DIRTY_AFTER=0`); the backend restart
+through the `\GlossaLab` task's own supervision (job
+`20261105T162555Z-glossa-spec083-desktop-restart-2026-11-05-89b0ab`,
+run `42066999403` — RESTART_OK, post-restart health uptime 3.9 s
+on the synced tree, identity verified by content through the
+tailnet forwarder, host TRISTEN-DESKTOP); and the T057 live
+reconciliation (job
+`20261105T165053Z-glossa-spec083-desktop-t057-check-2026-11-05-42e996`,
+run `42075508802` — `T057_VERDICT=PASS`, `VERDICT: PASS
+violations=0`, against the live desktop dataset). T057 is
+discharged. The gate-2 remainder stands exactly as it stood:
+T053's Cloudflare-side execution, T054, T059, and T060 wait on
+the owner's token act (§2 of the readiness record). No launch
+act has been taken and no setup code has been generated.
+
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
 

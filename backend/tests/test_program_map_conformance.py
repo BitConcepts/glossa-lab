@@ -28,18 +28,18 @@ from glossa_lab.ledger_intake import sha256_file
 
 _REPO = Path(__file__).resolve().parents[2]
 
-# The census of record (2026-11-10, post-Spec-091-adoption ledger).
-PIN_CLAIMS = 942
-PIN_CLAIMS_BY_POPULATION = {"bundle": 919, "extracted": 23}
+# The census of record (2026-11-10, post-Spec-090-G3-adoption ledger).
+PIN_CLAIMS = 950
+PIN_CLAIMS_BY_POPULATION = {"bundle": 927, "extracted": 23}
 PIN_CLAIMS_BY_CLASS = {
     "closed_other": 1,
     "negative": 6,
-    "open": 933,
+    "open": 941,
     "positive": 2,
 }
 PIN_STUDIES = 93
 PIN_UNJUDGED = 28
-PIN_FALSIFIER_PRESENT = 933
+PIN_FALSIFIER_PRESENT = 941
 PIN_NULL_FALSIFIER_EXTRACTED = 9
 PIN_MULTI_SPEC = 44
 

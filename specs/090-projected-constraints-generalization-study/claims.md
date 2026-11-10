@@ -289,3 +289,134 @@ report delivered to the VEXA chat after the outcome record lands.
 *Does not establish:* that the reported outcome is the final verdict
 on the domain — the reader's verdict under the protocol, and the
 G3–G5 follow-on, both stand after it.
+
+## Stage G3 — the computed separator (stage amendment, ratified 2026-11-06)
+
+The eight claims below are the G3 stage's, added by the stage amendment
+ratified as a block by the owner on 2026-11-06 (decisions D-090-5..10
+adopted as recommended; decision D-090-9 approves their intake). They
+are drafted in `records/g3-package-draft.md` §7 and reproduced here
+without substantive change; the same set, normalized into
+`claims.json` (the stage bundle), was assessed under the pinned AEE
+at the stage's adoption (T401;
+`records/g3-adoption-aee-assessment.json`) and appended through the
+sanctioned intake on the ratification date, 2026-11-06. The
+skeleton's terms are as in the header above; the G1 document is the
+frozen v1.1 (SHA-256
+`4f2018f40c9ccaf0811cd7661b0c9e1ebd840c7e014d954f778c42edef27efc2`).
+
+**C090-17 — The separator is defined from the G1 document's terms
+only.** The separator of this stage (the identity-structure profile P
+and its comparison) is defined using only the frozen G1 document v1.1's
+terms (the candidate state, the projection π and its sequence table T,
+projection-equivalence under §2.3, the exercised inventory) and the
+skeleton's D5 form. No physics result, no register or ledger quantity,
+and no quantity defined against a recorded corpus's profile is a
+component or a premise of the definition.
+*Falsifier:* a component of P, or a step of its invariance argument,
+that cites a physics result, a bookkeeping quantity, or a recorded
+profile as its ground; or a component whose value over a fixed table can
+change without the table changing.
+*Does not establish:* that P is a good separator — only that its
+definition stands on the G1 document's terms, as D-090-3 requires of
+everything this study derives.
+
+**C090-18 — The held-out set is untouched by G1 and G2.** No step of the
+G1 drafting, the adversarial pass, the G2 derivation, or the G2 audit
+computed a table, a profile, or a per-record quantity over H1 (the
+snapshot's `indusscript-m77` text-code records). The uses that exist are
+named and bounded: G1 §1.5's file-level census lines about the snapshot
+as a whole. The freeze record states the extraction rules, the permitted
+freeze counts, and the H1↔M77-flat-file object overlap it measured.
+*Falsifier:* a G1/G2-era record, or a record they cite as computed
+grounding, that contains a table, profile, or per-record computation
+over H1; or an extraction rule in the freeze that selects records by any
+property a G1/G2 computation produced.
+*Does not establish:* that H1's objects are disjoint from the design
+corpora's — the claim is about computation, and the overlap number is
+published with the freeze so its weight is the reader's to judge.
+
+**C090-19 — The freeze precedes every computation.** A freeze record
+carrying the items §3.4 enumerates is committed before the first profile
+over H1 is computed by anyone, for any purpose including exploration.
+Post-freeze changes are recorded amendment acts; an amendment touching
+the case list, the profile definitions, or the bar voids the
+administration.
+*Falsifier:* a profile, spectrum, or exploratory computation over H1
+dated before the freeze record's commit; or a frozen item changed with
+no amendment act recorded.
+*Does not establish:* that the frozen design is wise — only that it was
+fixed before it met the data, which is what makes the administration a
+test rather than a fit.
+
+**C090-20 — Invariance inside a class is mechanical, and is tested, not
+assumed.** For the frozen controls (the seeded relabeling C1; the
+identity C2), the audited profiles equal A0's in every component. A
+control that separates refutes the separator as implemented (and, if the
+implementation is faithful, as defined) under D5's invariance clause,
+and the stage records that as its finding.
+*Falsifier:* an audited control profile differing from A0's in any
+component, with the administration nevertheless reported as meeting the
+bar.
+*Does not establish:* invariance for arbitrary equivalences beyond the
+controls — the controls are the test the bar sets; the general
+invariance is §2's arithmetic, which the controls sample at its most
+failure-prone point (a full relabeling).
+
+**C090-21 — The bar is the bar.** The stage outcome is adjudged exactly
+by §5's three conditions over the frozen case list and the frozen
+profile definitions. No component is added, dropped, or re-weighted
+after any profile is seen; no case is substituted; no second
+administration under this package repairs a miss. A miss is recorded as
+NOT YET or CANNOT BE ADMINISTERED, with the obstruction named.
+*Falsifier:* an outcome record whose SEPARATED rests on a component,
+case, or threshold absent from the freeze; or a re-run under this
+package following a recorded miss.
+*Does not establish:* that §5's bar is the only fair bar — only that it
+is the one this stage froze and answered to.
+
+**C090-22 — No restricted material enters the stage's records.** The
+held-out set contains no CISI scans and no restricted material of any
+class; H1 enters the stage's records as statistics and computed profiles
+only. CISI-derived material plays no part in this stage's design (the
+`mayig-cisi` subset is excluded at §3.3), and nothing restricted is
+copied into the repository by any stage act.
+*Falsifier:* a CISI scan, or any restricted source material, present in
+the stage's records or outputs; or a stage output that redistributes
+restricted content rather than statistics computed from records the
+repository already holds openly.
+*Does not establish:* anything about the CISI restriction itself — only
+that this stage's design never needs to touch it.
+
+**C090-23 — This stage's ledger diff is its intake append.** Across the
+whole G3 stage, the claims ledger's diff is exactly the append of this
+stage's claim bundle (C090-17..24) through the sanctioned intake at
+adoption, plus the generated-layer regeneration that append forces. No
+stage act adjudicates, reclassifies, annotates, or scores any claim; no
+claim about the Indus script changes status, stage, or score; the
+program's standing position (the Indus script is not deciphered) is
+untouched, and nothing in this stage is a decipherment claim or evidence
+for one.
+*Falsifier:* a ledger diff attributable to a G3 stage PR beyond the
+adoption append's lines; or an Indus claim reclassified, annotated, or
+re-scored citing this stage.
+*Does not establish:* anything about the appended claims' truth — only
+that the ledger's one-way flow survives the stage intact (C090-13's
+boundary, renewed).
+
+**C090-24 — The outcome is recorded in the skeleton's vocabulary and
+reported, either way.** The stage closes with an outcome record stating
+the G3 outcome (SEPARATED, NOT YET with the obstruction named, or CANNOT
+BE ADMINISTERED with the forcing counts shown), the audited profiles,
+and the study-level outcome in the study's vocabulary (INSTANTIATES-path
+at most; ANALOGY if §6's pressure is the honest reading, with the
+element named). The outcome is reported to the VEXA chat for the
+improvement registry as a stage deliverable. The formal verdict over the
+full G1–G5 bar belongs to the independent reader under the judging
+protocol; this stage does not issue it.
+*Falsifier:* the stage closing with no outcome record; an outcome stated
+in vocabulary the skeleton does not define without mapping to its terms;
+a SEPARATED reported to the registry in stronger words than the outcome
+record's own; or no report delivered after the outcome record lands.
+*Does not establish:* that the reported outcome is the final verdict on
+the domain — the reader's verdict, and G4/G5, stand after it.

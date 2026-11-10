@@ -125,14 +125,29 @@
       },
       "expectations_changed": false,
       "verification": "tools/ledger/run_settling.py verify-canonicals over the grown build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
+    },
+    {
+      "date": "2026-11-10",
+      "act": "Spec 092 adoption intake (branch adopt/092-r4; record: specs/092-platform-hardening-r4/records/ratification-2026-11-06.md)",
+      "reason": "The claims ledger grew by one append-only intake: the 14 bundle claims of Spec 092 (092-platform-hardening-r4/C092-1..14) were appended through tools/ledger/import_bundle.py on 2026-11-10 (intake date 2026-11-06, the ratification date, per the C090/C093 convention). The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the grown build under this registration's amendment discipline: both T405 scenarios were re-executed under run-defs v2 (runs settling-20261110T153530Z-bef382 and settling-20261110T153537Z-fdc511, same candidates, same 286-sign full-frame scope) with result blocks byte-equal to the superseded generation's, the Stage 4 dual-run comparison was re-filed from the new pair (identical to the previous filing except the ledger pin), and the assignment sets were re-materialized unchanged (run settling-20261110T153556Z-3710e2; sets unchanged, incumbent 94, full-register 286, H003 out of frame). The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
+      "prior_ledger_pin": {
+        "sha256_canonical": "85c3b4c7e52e154cdc94c1f882bd609a459994c19ea821d8b20bae3934fb387b",
+        "lines": 981
+      },
+      "new_ledger_pin": {
+        "sha256_canonical": "378f700dba87f0bde2cc6ddfa321e819e4fe204fffe015257698c58e63901d6f",
+        "lines": 995
+      },
+      "expectations_changed": false,
+      "verification": "tools/ledger/run_settling.py verify-canonicals over the grown build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
     }
   ],
   "label": "Computation over ledgered relations under glossa-settle-1 semantics. Establishes what the ledger implies under these rules, not what the script says.",
   "provenance": {
     "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256_canonical": "85c3b4c7e52e154cdc94c1f882bd609a459994c19ea821d8b20bae3934fb387b",
-      "lines": 981
+      "sha256_canonical": "378f700dba87f0bde2cc6ddfa321e819e4fe204fffe015257698c58e63901d6f",
+      "lines": 995
     },
     "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",

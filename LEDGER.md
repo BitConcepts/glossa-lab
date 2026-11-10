@@ -13384,3 +13384,79 @@ deciphered.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-10 - Spec 092 adoption: platform hardening R4 package ratified 2026-11-06 lands with its claims intake
+
+Spec 092 (platform hardening R4: credential encryption at
+rest, verified writes, and the test-harness remainder) was
+ratified by the owner as a block on 2026-11-06, decisions
+D-092-1..4 adopted as recommended (D-092-1: dedicated key
+file with separate custody, 0600, outside {data_dir},
+AES-256-GCM via cryptography; D-092-2: per-value
+encryption; D-092-3: the tray shape registration amended,
+never deleted; D-092-4: the phase392 branch rule chosen in
+advance). This landing executes the Stage 0 adoption runs
+(T003, T004) on branch adopt/092-r4: the package lands from
+the draft branch, spec.md is stamped RATIFIED, the program
+map assigns the study (Program infrastructure /
+Governance, lifecycle & generated layers), and the claims
+intake appends C092-1..14 through
+tools/ledger/import_bundle.py --date 2026-11-06 - the
+ledger grows 981 -> 995 lines (SHA-256 85c3b4c7... ->
+378f700d...; appended block 014a1319...; append-only
+verified byte-wise), 950 -> 964 program claims (bundle
+927 -> 941). validate_ledger.py PASS: falsifier coverage
+955 of 964, does_not_establish coverage 755 of 964. The
+AEE assessment at adoption
+(records/adoption-aee-assessment.json) reads iterate, 65
+failure modes, identical to the draft package's T002
+summary. Record of record:
+specs/092-platform-hardening-r4/records/ratification-2026-11-06.md.
+
+The settling chain was refreshed in the standing precedent
+order: verify-canonicals 6/6 over the grown build before
+any pin moved; settling-canonical.json pin refreshed to
+378f700d.../995 with re_derivations[8] recorded in the
+file; both T405 scenarios re-executed under run-defs v2
+(runs settling-20261110T153530Z-bef382 and
+settling-20261110T153537Z-fdc511, the registered scenario
+ids, the standing 286-sign full-frame scope) with result
+blocks byte-equal to the superseded generation's; the
+Stage 4 comparison re-filed from the new pair (SHA-256
+f911c738..., identical except the ledger pin); assignment
+sets re-materialized unchanged (run
+settling-20261110T153556Z-3710e2). The superseded
+2026-11-10 G3 pair departed the store under the map
+builder's D-D rule, preserved in git history (blobs
+ace71bcc / f730eac0), and accounted by two departure acts
+appended through run_records.departure_act + append_act
+with git-history-derived fields, alongside the builder's
+re_derivations[8] event entry (folded census 35 entries).
+The generated layers were regenerated over the grown
+ledger through their own generators in dependency order
+(the gated publish refused over the pre-regeneration tree
+on cross-layer staleness alone, artifacts byte-untouched):
+matrix.json SHA-256 ff3e1991..., map-data.json
+af6d937b... (settling runs carried: 2), program-map.json
+6a448e15... (964 claims, 94 studies, 28 unjudged;
+bundle_less_study back to 28). The ledger gate over the
+shipped tree reads the standing profile: 29 PASS / 0 FAIL
+/ 1 NOT-RUN (default) and 32 PASS / 0 FAIL / 0 NOT-RUN
+(--regen). Census literals in the test suites and the
+frontend e2e header were re-pinned to the recomputed
+values; the four pin-bearing files read 96 passed / 1
+failed locally, the one failure the documented
+pre-existing VM glob-order failure of
+test_spec086_map.py::test_builder_refuses_a_run_pinned_to_another_build
+(CI authoritative); the bundle-reconciliation test passes.
+
+No claim's status, stage, or score was changed by this
+landing; no build stage is started by this motion - no
+credential has been encrypted, no verified-write library
+has been built, and no harness leg has run. Stages 1-3
+stand open in the owner's priority order (encryption,
+library, harness). The standing position is unchanged -
+the Indus script is not deciphered.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

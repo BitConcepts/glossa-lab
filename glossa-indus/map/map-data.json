@@ -3,10 +3,10 @@
  "generated_from": "glossa-indus/ledger/claims.jsonl through glossa-indus/matrix/matrix.json and the settling records of record",
  "generated_by": "tools/ledger/generate_map.py (backend/glossa_lab/map_generate.py)",
  "header": {
-  "claims_total": 950,
+  "claims_total": 964,
   "claims_by_status": {
    "contradicted": 4,
-   "draft": 926,
+   "draft": 940,
    "partially_falsified": 1,
    "partially_supported": 3,
    "strongly_supported": 2,
@@ -55,18 +55,18 @@
    "reason": "the anchors register records no review dates for the pending validations, so they appear as a count, not as dated items (decision Q4)"
   },
   "as_of": {
-   "ledger_sha256": "85c3b4c7e52e154cdc94c1f882bd609a459994c19ea821d8b20bae3934fb387b",
-   "ledger_lines": 981,
+   "ledger_sha256": "378f700dba87f0bde2cc6ddfa321e819e4fe204fffe015257698c58e63901d6f",
+   "ledger_lines": 995,
    "ledger_date": "2026-11-06",
    "ledger_schema": "ledger-schema v1",
    "matrix_defs": "matrix-defs v1",
    "map_defs": "map-defs v1",
    "settle_semantics": "glossa-settle-1",
-   "matrix_sha256": "6075231c01901aa795e20db481fc3a6b650ef010e86cfc3f53e4da8d5ebb055f",
+   "matrix_sha256": "ff3e199127d34968e85c7150a6a6e2cceac3917caa2cbaa4e962fe153c5ee654",
    "anchors_register_sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
-   "assignment_sets_sha256": "cc01dbf17b582e937f20b9b8e9046c7cf1e29802f2a9d3451ae8f0e83759bd2d",
-   "comparison_sha256": "20a9e109b011b5be271da2561635bbd60c19be82fd721b7db9f8e6ccca0b31df",
-   "settling_canonical_sha256": "cdd3c424b31fc695e62c20ef186c0d73a5c3e51db727802531372e62a5421268"
+   "assignment_sets_sha256": "3873b5ef63f28b16ecaea0479c1d10db5b759c46311dad5e3f0f246d432c09c9",
+   "comparison_sha256": "f911c73874c7451436835b34437af345fde5bcacd882e5a278c71225d2a8f3d4",
+   "settling_canonical_sha256": "a28b3783243b11a5667cdf6493f85cc711598629b39b52253804a0713e747f67"
   }
  },
  "elements": [
@@ -7668,6 +7668,118 @@
    "statement": "For the frozen controls (the seeded relabeling C1; the identity C2), the audited profiles equal A0's in every component. A control that separates refutes the separator as implemented (and, if the implementation is faithful, as defined) under D5's invariance clause, and the stage records that as its finding. This does not establish: invariance for arbitrary equivalences beyond the controls — the controls are the test the bar sets; the general invariance is §2's arithmetic, which the controls sample at its most failure-prone point (a full relabeling).",
    "status": "draft",
    "stage": null,
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "092-platform-hardening-r4/C092-14",
+   "statement": "No claim's status, stage, or score moves under this spec; no settling verdict is re-adjudicated; the Spec 082 install-token file is untouched (a bearer credential by design — password audit §6, a different custody class, listed and not graded there); the cloud edge's secret custody (Worker secrets, D1 hashes) is untouched; no wireframe-gated UI surface changes (the settings surface's behaviour is contract-identical under C092-5). This does not establish: that the out-of-scope surfaces are sound — only that they are out of this spec's scope, each with its own record.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "092-platform-hardening-r4/C092-9",
+   "statement": "The mechanism behind suite divergence shape #1 (run-defs v1 §5: teardown ERROR entries of the sqlite closed-database family on tray test ids, first instance `test_tray_token_auth.py::test_copy_api_token_without_tkinter_is_named`) is identified in the stage record with its evidence, and the defect is fixed at its source in the fixture/connection lifecycle. Discharge requires five consecutive full-suite runs, named by run id (CI runs or bound local light records), with zero teardown ERRORs on tray tests; on discharge the shape's run-defs registration is amended by act (D-092-3) to record the fix, so a recurrence is a new unexplained junction, not a known shape to rerun away. This does not establish: that no other teardown flake exists — only that this family's mechanism is found, fixed, and watched by a stated bar.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "092-platform-hardening-r4/C092-11",
+   "statement": "A stage record states where the stall's time goes, from profile evidence gathered on this VM, for `test_phase392_q2_gate.py::test_pipeline_deterministic_under_seed` (which stalls for tens of minutes locally, equally on pristine `origin/main` — environmental in shape, unexplained in fact). The local path then takes exactly one of the two registered outcomes: the test completes within a stated budget on the VM, or its deselection becomes a named, environment-scoped registration (run-defs entry or the suite-runner configuration of record) with the CI backend job as its authoritative runner. No later enumeration depends on an operator remembering to deselect it by hand. This does not establish: that the test becomes fast, or that its determinism assertion may be weakened — D-092-4 forbids buying the budget by weakening what the test asserts.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "092-platform-hardening-r4/C092-10",
+   "statement": "Spec 089 S4 made in-tree rewrites visible (the rewrite manifest over the watched roots `glossa-indus/claims/`, `glossa-indus/reports/`) and dispositioned; this claim closes the remainder: after a full-suite run, `git status` under the watched roots and the repo-root `outputs/` path is empty with no restore step — tests that regenerate artifacts write to isolated copies, or the regeneration is the test's own asserted output in a temp tree. The manifest remains as the detection instrument, but restoration stops being a routine post-run act, and the count of run-scoped tests skipped by the clean-tree precondition guard in a full-suite run is zero (S2's enumeration skipped 8 of 13 that way; the guard, not the tests, is what retires). This does not establish: that tests never write files — only that they never write the live tree they are measuring.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "092-platform-hardening-r4/C092-8",
+   "statement": "The fault-injection battery modelled on the safe-write self-test (14 checks there) runs in the repo's CI: permission-denied writes, silent 0-byte landings, short writes, and missing or non-directory parents each surface as the typed error with the target preserved. The construction production runs is the construction the battery exercises, on the CI runners as well as locally. This does not establish: that real write-denial waves behave exactly like the seeds — the classes are the observed ones, and the claim covers exactly those.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "092-platform-hardening-r4/C092-1",
+   "statement": "Every credential-class value the settings store persists — the provider API keys, the SMTP password, and the long-lived Microsoft Graph refresh token (`ms_graph_refresh_token`), per the credential set the stage registers — is encrypted under an authenticated-encryption construction with a fresh random nonce per value before it is written. The store file's bytes contain no stored credential value: not as a JSON string, not base64- or hex-encoded, not as any contiguous substring. This does not establish: protection against an adversary who executes code as the same OS user on the live host — the store must be decryptable by the backend process, and that boundary is named, not hidden (the threat this claim closes is the audit's: a reader of the data dir — a copy, a snapshot, a backup, another user — holding the file but not the key).",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "092-platform-hardening-r4/C092-2",
+   "statement": "The key is loaded from the custody location decision D-092-1 selects, which is outside `{data_dir}`. No copy of the key material is written into `{data_dir}`, into the repository, or into any artifact the data dir's own copy path carries (the Spec 080 snapshot and migration shape: this program copies its whole data dir, and a key inside it would travel with every copy). This does not establish: protection against an operator who deliberately exports both the data dir and the key — only that the program's own copy paths never bundle them.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "092-platform-hardening-r4/C092-6",
+   "statement": "`backend/glossa_lab/` gains a supported module implementing the safe-write contract the fleet's tooling (`~/workspace/system/safe-write/`) already proves: temp file in the target's own directory, fsync, atomic rename, read-back hash verification, a bounded retry ladder that includes a fresh-subprocess attempt (write denial is sticky per process lineage), refusal of empty content, parents never created implicitly, and a typed error — never a bare `OSError` — when every path fails. The module is the documented way repo code writes state that matters; the keys store is its first adopter of record. This does not establish: durability against a storage stack that lies below fsync — the contract is verification against read-back, which is the failure class the fleet actually met (denied writes and silent 0-byte landings), named as such.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "092-platform-hardening-r4/C092-5",
+   "statement": "`get_key`'s resolution order (process env over stored), the placeholder filtering, the masked GET status shape, the PUT semantics (including the process-env side effect), and every consumer — the settings API, `notifications/smtp.py`, `notifications/graph.py`, the notifications API's Graph save/disconnect path, the discovery and study-loop schedulers, and the database init's prefs migration — behave identically to the pre-stage code. All access continues to funnel through `api/settings.py`'s store functions; no consumer gains a direct file read. This does not establish: that the consumers are themselves secure — only that this stage does not move their contract while it changes the storage form underneath them.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "092-platform-hardening-r4/C092-7",
+   "statement": "Because a verified write lands by renaming a fully written temp file, any failure before the rename leaves the prior target byte-identical. The keys store's save path writes through this construction from Stage 1 (retiring the direct `write_text`, whose truncating open can destroy the only copy of every stored credential before a denied write lands — the write-denial evidence of 2026-10-30), and its library form from Stage 2. This does not establish: protection against deletion or corruption of the file by means outside the write path.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "092-platform-hardening-r4/C092-13",
+   "statement": "The writers Stage 1 and Stage 2 create or move (the encrypted store's save path, the verified-write module's adopters of record) are registered under the V9 writer-census discipline Spec 089 S5 established, so the census the gate computes finds exactly the registered set. The standing gate profile after this spec is whatever the gate's own output states on the final tree, recorded verbatim in the closeout. This does not establish: that unregistered writers are impossible — only that this spec's surface is fully inside the census the gate runs.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "092-platform-hardening-r4/C092-4",
+   "statement": "On the first load after the upgrade, a store in the legacy plaintext format is read, rewritten in the encrypted format through the verified-write construction (C092-7), and proven by re-reading: every value present before migration is returned identically by `get_key` after it, and the credential set encrypted is exactly the registered set. An absent or credential-free store is a no-op, not a migration. A failed migration leaves the original file byte-untouched and the failure named — there is no half-migrated state. This does not establish: migration of any particular live install — the desktop install's store is migrated when Stage 1 deploys there, and its proof is that stage's record against the live store's key census (names and counts, never values).",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "092-platform-hardening-r4/C092-12",
+   "statement": "`test_notifications_api.py::test_mask_email_redacts_local_part` carries one ERROR sighting (2026-11-01) and no classification. The stage runs a stated battery — 50 repetitions of the notifications module standalone plus 3 full-suite-order runs — and the item ends in exactly one state: reproduced, and then classified (a named flake family, or a defect fixed at its source under C092-9's pattern); or not reproduced anywhere in the battery, and closed UNREPRODUCED with the battery as the evidence of record. The closure record carries its own reopening term: a later sighting reopens the item automatically. This does not establish: that the test is correct — only that its error state no longer sits unclassified, which is the defect this item carries.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "092-platform-hardening-r4/C092-3",
+   "statement": "When a store file exists but cannot be decrypted — missing key, wrong key, corrupt or tampered ciphertext — the settings surface reports a named error state that distinguishes it from \"no keys configured,\" and no credential is served from it. The loader never falls back to parsing an encrypted store as plaintext, and never presents an undecryptable store as empty (the current loader's silent-`{}`-on-any-error behaviour is retired for the encrypted path). A startup-path reader that cannot tolerate the failure (the database init's one-time prefs migration) must skip with a logged reason, never crash the backend and never silently proceed as if unconfigured. This does not establish: availability — a lost key still loses the stored credentials, and re-entry is the recovery; the claim is that the loss is loud and named, never silent.",
+   "status": "draft",
+   "stage": "created",
    "population": "bundle"
   },
   {
@@ -26134,6 +26246,160 @@
   },
   {
    "from": "spec.md",
+   "to": "092-platform-hardening-r4/C092-1",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "092-platform-hardening-r4/C092-1",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "092-platform-hardening-r4/C092-10",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "092-platform-hardening-r4/C092-10",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "092-platform-hardening-r4/C092-11",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "092-platform-hardening-r4/C092-11",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "092-platform-hardening-r4/C092-12",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "092-platform-hardening-r4/C092-12",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "092-platform-hardening-r4/C092-13",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "092-platform-hardening-r4/C092-13",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "092-platform-hardening-r4/C092-14",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "092-platform-hardening-r4/C092-14",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "092-platform-hardening-r4/C092-2",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "092-platform-hardening-r4/C092-2",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "092-platform-hardening-r4/C092-3",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "092-platform-hardening-r4/C092-3",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "092-platform-hardening-r4/C092-4",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "092-platform-hardening-r4/C092-4",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "092-platform-hardening-r4/C092-5",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "092-platform-hardening-r4/C092-5",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "092-platform-hardening-r4/C092-6",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "092-platform-hardening-r4/C092-6",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "092-platform-hardening-r4/C092-7",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "092-platform-hardening-r4/C092-7",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "092-platform-hardening-r4/C092-8",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "092-platform-hardening-r4/C092-8",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "092-platform-hardening-r4/C092-9",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "092-platform-hardening-r4/C092-9",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
    "to": "093-material-context-channel/C093-1",
    "rel": "supports",
    "rule": "R2",
@@ -31199,6 +31465,76 @@
    "constrains": 0
   },
   "090-projected-constraints-generalization-study/C090-20": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "092-platform-hardening-r4/C092-14": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "092-platform-hardening-r4/C092-9": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "092-platform-hardening-r4/C092-11": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "092-platform-hardening-r4/C092-10": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "092-platform-hardening-r4/C092-8": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "092-platform-hardening-r4/C092-1": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "092-platform-hardening-r4/C092-2": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "092-platform-hardening-r4/C092-6": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "092-platform-hardening-r4/C092-5": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "092-platform-hardening-r4/C092-7": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "092-platform-hardening-r4/C092-13": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "092-platform-hardening-r4/C092-4": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "092-platform-hardening-r4/C092-12": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "092-platform-hardening-r4/C092-3": {
    "supports": 1,
    "opposes": 0,
    "constrains": 0
@@ -36905,6 +37241,90 @@
     "population": "bundle",
     "status": "draft",
     "stage": null
+   },
+   {
+    "id": "092-platform-hardening-r4/C092-14",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "092-platform-hardening-r4/C092-9",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "092-platform-hardening-r4/C092-11",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "092-platform-hardening-r4/C092-10",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "092-platform-hardening-r4/C092-8",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "092-platform-hardening-r4/C092-1",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "092-platform-hardening-r4/C092-2",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "092-platform-hardening-r4/C092-6",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "092-platform-hardening-r4/C092-5",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "092-platform-hardening-r4/C092-7",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "092-platform-hardening-r4/C092-13",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "092-platform-hardening-r4/C092-4",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "092-platform-hardening-r4/C092-12",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "092-platform-hardening-r4/C092-3",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
    }
   ],
   "columns": [
@@ -55371,6 +55791,160 @@
     ]
    },
    {
+    "row": "092-platform-hardening-r4/C092-1",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "092-platform-hardening-r4/C092-1",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "092-platform-hardening-r4/C092-10",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "092-platform-hardening-r4/C092-10",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "092-platform-hardening-r4/C092-11",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "092-platform-hardening-r4/C092-11",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "092-platform-hardening-r4/C092-12",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "092-platform-hardening-r4/C092-12",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "092-platform-hardening-r4/C092-13",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "092-platform-hardening-r4/C092-13",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "092-platform-hardening-r4/C092-14",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "092-platform-hardening-r4/C092-14",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "092-platform-hardening-r4/C092-2",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "092-platform-hardening-r4/C092-2",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "092-platform-hardening-r4/C092-3",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "092-platform-hardening-r4/C092-3",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "092-platform-hardening-r4/C092-4",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "092-platform-hardening-r4/C092-4",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "092-platform-hardening-r4/C092-5",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "092-platform-hardening-r4/C092-5",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "092-platform-hardening-r4/C092-6",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "092-platform-hardening-r4/C092-6",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "092-platform-hardening-r4/C092-7",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "092-platform-hardening-r4/C092-7",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "092-platform-hardening-r4/C092-8",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "092-platform-hardening-r4/C092-8",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "092-platform-hardening-r4/C092-9",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "092-platform-hardening-r4/C092-9",
+     "spec.md"
+    ]
+   },
+   {
     "row": "093-material-context-channel/C093-1",
     "column": "spec.md",
     "column_class": "documents",
@@ -55692,8 +56266,8 @@
    }
   ],
   "coverage": {
-   "rows_total": 950,
-   "rows_with_cells": 936,
+   "rows_total": 964,
+   "rows_with_cells": 950,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -56051,30 +56625,30 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1473,
+   "cells_total": 1487,
    "cells_by_relation": {
-    "supports": 1466,
+    "supports": 1480,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1466,
+    "documents": 1480,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
    },
    "falsifier_coverage": {
-    "covered": 941,
-    "total": 950,
+    "covered": 955,
+    "total": 964,
     "by_population": {
      "extracted": {
       "covered": 14,
       "total": 23
      },
      "bundle": {
-      "covered": 927,
-      "total": 927
+      "covered": 941,
+      "total": 941
      }
     }
    },
@@ -61119,8 +61693,8 @@
    }
   },
   "matrix_coverage": {
-   "rows_total": 950,
-   "rows_with_cells": 936,
+   "rows_total": 964,
+   "rows_with_cells": 950,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -61478,15 +62052,15 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1473,
+   "cells_total": 1487,
    "cells_by_relation": {
-    "supports": 1466,
+    "supports": 1480,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1466,
+    "documents": 1480,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
@@ -61555,7 +62129,7 @@
   "claim_population": {
    "by_status": {
     "contradicted": 4,
-    "draft": 926,
+    "draft": 940,
     "partially_falsified": 1,
     "partially_supported": 3,
     "strongly_supported": 2,
@@ -61565,26 +62139,26 @@
    },
    "by_stage": {
     "checked": 3,
-    "created": 915,
+    "created": 929,
     "explained": 8
    },
    "no_stage_recorded": 24,
    "by_population": {
-    "bundle": 927,
+    "bundle": 941,
     "extracted": 23
    }
   },
   "falsifier_census": {
-   "covered": 941,
-   "total": 950,
+   "covered": 955,
+   "total": 964,
    "by_population": {
     "extracted": {
      "covered": 14,
      "total": 23
     },
     "bundle": {
-     "covered": 927,
-     "total": 927
+     "covered": 941,
+     "total": 941
     }
    },
    "gap_claims": [
@@ -61601,8 +62175,8 @@
   },
   "aee_state_census": {
    "with_state": 0,
-   "without_state": 950,
-   "total": 950
+   "without_state": 964,
+   "total": 964
   },
   "unresolved": {
    "sign_mentions": [
@@ -63088,7 +63662,7 @@
     "runs": [
      {
       "candidate": "incumbent",
-      "record": "settling-20261110T145806Z-63c6de",
+      "record": "settling-20261110T153530Z-bef382",
       "via_signs": [
        "mahadevan:70"
       ],
@@ -63102,7 +63676,7 @@
      },
      {
       "candidate": "full-register",
-      "record": "settling-20261110T145813Z-5f57c9",
+      "record": "settling-20261110T153537Z-fdc511",
       "via_signs": [
        "mahadevan:72",
        "mahadevan:64",
@@ -155430,6 +156004,1196 @@
     },
     "sign_records": []
    }
+  },
+  "092-platform-hardening-r4/C092-14": {
+   "id": "092-platform-hardening-r4/C092-14",
+   "statement": "No claim's status, stage, or score moves under this spec; no settling verdict is re-adjudicated; the Spec 082 install-token file is untouched (a bearer credential by design — password audit §6, a different custody class, listed and not graded there); the cloud edge's secret custody (Worker secrets, D1 hashes) is untouched; no wireframe-gated UI surface changes (the settings surface's behaviour is contract-identical under C092-5). This does not establish: that the out-of-scope surfaces are sound — only that they are out of this spec's scope, each with its own record.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "a diff in this spec's stages that moves a claim status, alters the token file's handling, touches edge secret handling, or changes a UI surface's behaviour."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C092-14",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "092-platform-hardening-r4/C092-14",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "092-platform-hardening-r4/C092-14",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C092-14",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    },
+    "sign_records": []
+   }
+  },
+  "092-platform-hardening-r4/C092-9": {
+   "id": "092-platform-hardening-r4/C092-9",
+   "statement": "The mechanism behind suite divergence shape #1 (run-defs v1 §5: teardown ERROR entries of the sqlite closed-database family on tray test ids, first instance `test_tray_token_auth.py::test_copy_api_token_without_tkinter_is_named`) is identified in the stage record with its evidence, and the defect is fixed at its source in the fixture/connection lifecycle. Discharge requires five consecutive full-suite runs, named by run id (CI runs or bound local light records), with zero teardown ERRORs on tray tests; on discharge the shape's run-defs registration is amended by act (D-092-3) to record the fix, so a recurrence is a new unexplained junction, not a known shape to rerun away. This does not establish: that no other teardown flake exists — only that this family's mechanism is found, fixed, and watched by a stated bar.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "a teardown ERROR of that family on any suite run after the fix lands; or a discharge claimed on fewer than the five named runs, or on runs not named."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C092-9",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "092-platform-hardening-r4/C092-9",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "092-platform-hardening-r4/C092-9",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C092-9",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    },
+    "sign_records": []
+   }
+  },
+  "092-platform-hardening-r4/C092-11": {
+   "id": "092-platform-hardening-r4/C092-11",
+   "statement": "A stage record states where the stall's time goes, from profile evidence gathered on this VM, for `test_phase392_q2_gate.py::test_pipeline_deterministic_under_seed` (which stalls for tens of minutes locally, equally on pristine `origin/main` — environmental in shape, unexplained in fact). The local path then takes exactly one of the two registered outcomes: the test completes within a stated budget on the VM, or its deselection becomes a named, environment-scoped registration (run-defs entry or the suite-runner configuration of record) with the CI backend job as its authoritative runner. No later enumeration depends on an operator remembering to deselect it by hand. This does not establish: that the test becomes fast, or that its determinism assertion may be weakened — D-092-4 forbids buying the budget by weakening what the test asserts.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "a local full-suite enumeration after this stage that stalls on the test, or deselects it by an unregistered manual act; or a stall explanation asserted in the record without profile evidence."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C092-11",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "092-platform-hardening-r4/C092-11",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "092-platform-hardening-r4/C092-11",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C092-11",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    },
+    "sign_records": []
+   }
+  },
+  "092-platform-hardening-r4/C092-10": {
+   "id": "092-platform-hardening-r4/C092-10",
+   "statement": "Spec 089 S4 made in-tree rewrites visible (the rewrite manifest over the watched roots `glossa-indus/claims/`, `glossa-indus/reports/`) and dispositioned; this claim closes the remainder: after a full-suite run, `git status` under the watched roots and the repo-root `outputs/` path is empty with no restore step — tests that regenerate artifacts write to isolated copies, or the regeneration is the test's own asserted output in a temp tree. The manifest remains as the detection instrument, but restoration stops being a routine post-run act, and the count of run-scoped tests skipped by the clean-tree precondition guard in a full-suite run is zero (S2's enumeration skipped 8 of 13 that way; the guard, not the tests, is what retires). This does not establish: that tests never write files — only that they never write the live tree they are measuring.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "a full-suite run after this stage whose post-run `git status` under a watched root is non-empty absent a recorded disposition for that run, or whose suite light record shows a guard-skipped test."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C092-10",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "092-platform-hardening-r4/C092-10",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "092-platform-hardening-r4/C092-10",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C092-10",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    },
+    "sign_records": []
+   }
+  },
+  "092-platform-hardening-r4/C092-8": {
+   "id": "092-platform-hardening-r4/C092-8",
+   "statement": "The fault-injection battery modelled on the safe-write self-test (14 checks there) runs in the repo's CI: permission-denied writes, silent 0-byte landings, short writes, and missing or non-directory parents each surface as the typed error with the target preserved. The construction production runs is the construction the battery exercises, on the CI runners as well as locally. This does not establish: that real write-denial waves behave exactly like the seeds — the classes are the observed ones, and the claim covers exactly those.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "a seeded class that escapes the battery as an untyped error, lands silently, or is exercised only on a developer machine and not in CI."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C092-8",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "092-platform-hardening-r4/C092-8",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "092-platform-hardening-r4/C092-8",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C092-8",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    },
+    "sign_records": []
+   }
+  },
+  "092-platform-hardening-r4/C092-1": {
+   "id": "092-platform-hardening-r4/C092-1",
+   "statement": "Every credential-class value the settings store persists — the provider API keys, the SMTP password, and the long-lived Microsoft Graph refresh token (`ms_graph_refresh_token`), per the credential set the stage registers — is encrypted under an authenticated-encryption construction with a fresh random nonce per value before it is written. The store file's bytes contain no stored credential value: not as a JSON string, not base64- or hex-encoded, not as any contiguous substring. This does not establish: protection against an adversary who executes code as the same OS user on the live host — the store must be decryptable by the backend process, and that boundary is named, not hidden (the threat this claim closes is the audit's: a reader of the data dir — a copy, a snapshot, a backup, another user — holding the file but not the key).",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "take the `.keys.json` from a configured install, with full knowledge of the format and the code, but without the key material, and recover any one stored credential value from the file bytes alone (substring search over the raw bytes, JSON parse, encoding-decode of every field)."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C092-1",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "092-platform-hardening-r4/C092-1",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "092-platform-hardening-r4/C092-1",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C092-1",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    },
+    "sign_records": []
+   }
+  },
+  "092-platform-hardening-r4/C092-2": {
+   "id": "092-platform-hardening-r4/C092-2",
+   "statement": "The key is loaded from the custody location decision D-092-1 selects, which is outside `{data_dir}`. No copy of the key material is written into `{data_dir}`, into the repository, or into any artifact the data dir's own copy path carries (the Spec 080 snapshot and migration shape: this program copies its whole data dir, and a key inside it would travel with every copy). This does not establish: protection against an operator who deliberately exports both the data dir and the key — only that the program's own copy paths never bundle them.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "a copy of `{data_dir}` alone — the snapshot/migration shape — suffices to decrypt a stored value; or key bytes found anywhere under `{data_dir}` or in the repo tree."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C092-2",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "092-platform-hardening-r4/C092-2",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "092-platform-hardening-r4/C092-2",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C092-2",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    },
+    "sign_records": []
+   }
+  },
+  "092-platform-hardening-r4/C092-6": {
+   "id": "092-platform-hardening-r4/C092-6",
+   "statement": "`backend/glossa_lab/` gains a supported module implementing the safe-write contract the fleet's tooling (`~/workspace/system/safe-write/`) already proves: temp file in the target's own directory, fsync, atomic rename, read-back hash verification, a bounded retry ladder that includes a fresh-subprocess attempt (write denial is sticky per process lineage), refusal of empty content, parents never created implicitly, and a typed error — never a bare `OSError` — when every path fails. The module is the documented way repo code writes state that matters; the keys store is its first adopter of record. This does not establish: durability against a storage stack that lies below fsync — the contract is verification against read-back, which is the failure class the fleet actually met (denied writes and silent 0-byte landings), named as such.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "a caller of the helper observes a reported success whose on-disk bytes differ from the content written; or a write-path failure (a denied write, a missing or non-directory parent) escaping the helper as an untyped exception; or an empty write landing through it."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C092-6",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "092-platform-hardening-r4/C092-6",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "092-platform-hardening-r4/C092-6",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C092-6",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    },
+    "sign_records": []
+   }
+  },
+  "092-platform-hardening-r4/C092-5": {
+   "id": "092-platform-hardening-r4/C092-5",
+   "statement": "`get_key`'s resolution order (process env over stored), the placeholder filtering, the masked GET status shape, the PUT semantics (including the process-env side effect), and every consumer — the settings API, `notifications/smtp.py`, `notifications/graph.py`, the notifications API's Graph save/disconnect path, the discovery and study-loop schedulers, and the database init's prefs migration — behave identically to the pre-stage code. All access continues to funnel through `api/settings.py`'s store functions; no consumer gains a direct file read. This does not establish: that the consumers are themselves secure — only that this stage does not move their contract while it changes the storage form underneath them.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "a diff in any consumer module required by the stage; or a behavioural difference in the masked status surface or `get_key` results over a fixture store, before versus after the stage, for the same inputs."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C092-5",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "092-platform-hardening-r4/C092-5",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "092-platform-hardening-r4/C092-5",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C092-5",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    },
+    "sign_records": []
+   }
+  },
+  "092-platform-hardening-r4/C092-7": {
+   "id": "092-platform-hardening-r4/C092-7",
+   "statement": "Because a verified write lands by renaming a fully written temp file, any failure before the rename leaves the prior target byte-identical. The keys store's save path writes through this construction from Stage 1 (retiring the direct `write_text`, whose truncating open can destroy the only copy of every stored credential before a denied write lands — the write-denial evidence of 2026-10-30), and its library form from Stage 2. This does not establish: protection against deletion or corruption of the file by means outside the write path.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "under fault injection — write denied at open, write landing 0 bytes, rename-time failure — the target's bytes after the failed call differ from its bytes before it, on either the helper path or the keys-store path."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C092-7",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "092-platform-hardening-r4/C092-7",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "092-platform-hardening-r4/C092-7",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C092-7",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    },
+    "sign_records": []
+   }
+  },
+  "092-platform-hardening-r4/C092-13": {
+   "id": "092-platform-hardening-r4/C092-13",
+   "statement": "The writers Stage 1 and Stage 2 create or move (the encrypted store's save path, the verified-write module's adopters of record) are registered under the V9 writer-census discipline Spec 089 S5 established, so the census the gate computes finds exactly the registered set. The standing gate profile after this spec is whatever the gate's own output states on the final tree, recorded verbatim in the closeout. This does not establish: that unregistered writers are impossible — only that this spec's surface is fully inside the census the gate runs.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "a store-writing module in the tree that the census does not name, found by the gate or by audit."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C092-13",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "092-platform-hardening-r4/C092-13",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "092-platform-hardening-r4/C092-13",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C092-13",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    },
+    "sign_records": []
+   }
+  },
+  "092-platform-hardening-r4/C092-4": {
+   "id": "092-platform-hardening-r4/C092-4",
+   "statement": "On the first load after the upgrade, a store in the legacy plaintext format is read, rewritten in the encrypted format through the verified-write construction (C092-7), and proven by re-reading: every value present before migration is returned identically by `get_key` after it, and the credential set encrypted is exactly the registered set. An absent or credential-free store is a no-op, not a migration. A failed migration leaves the original file byte-untouched and the failure named — there is no half-migrated state. This does not establish: migration of any particular live install — the desktop install's store is migrated when Stage 1 deploys there, and its proof is that stage's record against the live store's key census (names and counts, never values).",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "a legacy fixture store whose post-migration `get_key` results differ from its pre-migration results for any key; or a migration failure (key absent, write denied) after which the original file's bytes changed."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C092-4",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "092-platform-hardening-r4/C092-4",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "092-platform-hardening-r4/C092-4",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C092-4",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    },
+    "sign_records": []
+   }
+  },
+  "092-platform-hardening-r4/C092-12": {
+   "id": "092-platform-hardening-r4/C092-12",
+   "statement": "`test_notifications_api.py::test_mask_email_redacts_local_part` carries one ERROR sighting (2026-11-01) and no classification. The stage runs a stated battery — 50 repetitions of the notifications module standalone plus 3 full-suite-order runs — and the item ends in exactly one state: reproduced, and then classified (a named flake family, or a defect fixed at its source under C092-9's pattern); or not reproduced anywhere in the battery, and closed UNREPRODUCED with the battery as the evidence of record. The closure record carries its own reopening term: a later sighting reopens the item automatically. This does not establish: that the test is correct — only that its error state no longer sits unclassified, which is the defect this item carries.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "the ERROR recurring after an UNREPRODUCED closure without the item reopening; or a closure asserted on less than the stated battery."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C092-12",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "092-platform-hardening-r4/C092-12",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "092-platform-hardening-r4/C092-12",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C092-12",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    },
+    "sign_records": []
+   }
+  },
+  "092-platform-hardening-r4/C092-3": {
+   "id": "092-platform-hardening-r4/C092-3",
+   "statement": "When a store file exists but cannot be decrypted — missing key, wrong key, corrupt or tampered ciphertext — the settings surface reports a named error state that distinguishes it from \"no keys configured,\" and no credential is served from it. The loader never falls back to parsing an encrypted store as plaintext, and never presents an undecryptable store as empty (the current loader's silent-`{}`-on-any-error behaviour is retired for the encrypted path). A startup-path reader that cannot tolerate the failure (the database init's one-time prefs migration) must skip with a logged reason, never crash the backend and never silently proceed as if unconfigured. This does not establish: availability — a lost key still loses the stored credentials, and re-entry is the recovery; the claim is that the loss is loud and named, never silent.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "replace or remove the key on a configured install and observe the settings API report the keys as simply unset, or observe any credential value served; or remove the key and observe the backend fail to start without a named store error in its log."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C092-3",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "092-platform-hardening-r4/C092-3",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "092-platform-hardening-r4/C092-3",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C092-3",
+     "document_id": null,
+     "path": "specs/092-platform-hardening-r4/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "4378f0e40eecd068b6037b5f7c0fe17c03a441ff4b34ba1bc63c791d27171ab8",
+     "spec": "092-platform-hardening-r4"
+    },
+    "sign_records": []
+   }
   }
  },
  "settling": {
@@ -155437,7 +157201,7 @@
   "semantics": "glossa-settle-1",
   "assignment_sets": {
    "record": "glossa-indus/ledger/assignment-sets.json",
-   "sha256": "cc01dbf17b582e937f20b9b8e9046c7cf1e29802f2a9d3451ae8f0e83759bd2d",
+   "sha256": "3873b5ef63f28b16ecaea0479c1d10db5b759c46311dad5e3f0f246d432c09c9",
    "register": {
     "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
     "sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
@@ -155481,15 +157245,15 @@
   },
   "runs": [
    {
-    "record": "settling-20261110T145806Z-63c6de",
+    "record": "settling-20261110T153530Z-bef382",
     "scenario": "t405-incumbent-over-full-frame",
     "candidate": "incumbent",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "85c3b4c7e52e154cdc94c1f882bd609a459994c19ea821d8b20bae3934fb387b",
-      "lines": 981
+      "sha256": "378f700dba87f0bde2cc6ddfa321e819e4fe204fffe015257698c58e63901d6f",
+      "lines": 995
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -155540,15 +157304,15 @@
     }
    },
    {
-    "record": "settling-20261110T145813Z-5f57c9",
+    "record": "settling-20261110T153537Z-fdc511",
     "scenario": "t405-full-register-over-full-frame",
     "candidate": "full-register",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "85c3b4c7e52e154cdc94c1f882bd609a459994c19ea821d8b20bae3934fb387b",
-      "lines": 981
+      "sha256": "378f700dba87f0bde2cc6ddfa321e819e4fe204fffe015257698c58e63901d6f",
+      "lines": 995
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -155603,7 +157367,7 @@
   ],
   "comparison": {
    "record": "specs/086-winning-combination-adoption/records/stage-4-dual-run-comparison.json",
-   "sha256": "20a9e109b011b5be271da2561635bbd60c19be82fd721b7db9f8e6ccca0b31df",
+   "sha256": "f911c73874c7451436835b34437af345fde5bcacd882e5a278c71225d2a8f3d4",
    "result": {
     "claims_compared": [
      {
@@ -155851,7 +157615,7 @@
   },
   "canonicals": {
    "record": "glossa-indus/ledger/settling-canonical.json",
-   "sha256": "cdd3c424b31fc695e62c20ef186c0d73a5c3e51db727802531372e62a5421268",
+   "sha256": "a28b3783243b11a5667cdf6493f85cc711598629b39b52253804a0713e747f67",
    "scenarios": [
     {
      "id": "null-over-subset",
@@ -156186,8 +157950,8 @@
   },
   "reach": {
    "claims_with_sign_refs": 1,
-   "claims_total": 950,
-   "claims_untouched_by_any_run": 949,
+   "claims_total": 964,
+   "claims_untouched_by_any_run": 963,
    "s_r3": {
     "status": "UNMEASURED",
     "class_table": null,

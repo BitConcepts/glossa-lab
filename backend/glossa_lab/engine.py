@@ -153,18 +153,68 @@ async def _run_job(job: dict[str, Any]) -> dict[str, Any]:
     return await pipeline_fn(params)
 
 
+class _DbClosedUnderLoop(Exception):
+    """The Database instance an engine iteration was using closed mid-iteration.
+
+    Raised by :func:`_process_one` when a closed-database signal comes out of
+    an iteration whose captured Database instance is verifiably no longer
+    connected (or the signal is itself an exact closed-database message).
+    The engine loop treats this as a clean stop: the close belongs to an
+    application shutdown — in the test suite, another TestClient lifespan
+    closing the shared singleton — not to a defect in the job being
+    processed, and the iteration cannot complete without its database.
+    """
+
+
+def _is_closed_db_message(exc: BaseException) -> bool:
+    """True iff *exc* is one of the exact closed-database message signals."""
+    return (
+        isinstance(exc, sqlite3.ProgrammingError)
+        and "Cannot operate on a closed database" in str(exc)
+    ) or (
+        isinstance(exc, ValueError)
+        and str(exc) in ("no active connection", "Connection closed")
+    )
+
+
 async def _process_one() -> bool:
     """Try to claim and process one pending job. Returns True if work was done.
+
+    Wraps :func:`_process_one_on` with the shutdown-race conversion: a
+    closed-database signal (``assert self._conn`` AssertionError,
+    sqlite3 "Cannot operate on a closed database", aiosqlite "no active
+    connection") is converted to :class:`_DbClosedUnderLoop` ONLY when the
+    Database instance this iteration captured is verifiably gone. The
+    instance check is the whole point — PR #541's loop-level handler asked
+    ``get_db()`` whether the database was gone, but by the time the handler
+    ran, another lifespan could already have replaced the global singleton
+    with a fresh, connected database, so the handler re-raised and the
+    AssertionError escaped lifespan teardown anyway (CI runs 42729580150
+    and 42731318567, via claim_pending_job). Signals raised while the
+    captured instance is still connected are re-raised unchanged, so real
+    defects still fail loudly.
+    """
+    db = get_db()
+    if db is None:
+        return False
+    try:
+        return await _process_one_on(db)
+    except (sqlite3.ProgrammingError, AssertionError, ValueError) as exc:
+        if not db.is_connected() or _is_closed_db_message(exc):
+            raise _DbClosedUnderLoop(
+                "database closed under engine iteration"
+            ) from exc
+        raise
+
+
+async def _process_one_on(db: Any) -> bool:
+    """Process one pending job against the captured Database *db*.
 
     Resource-aware: peeks at the next pending job first, checks CPU/RAM/VRAM
     against configured thresholds, and defers (returns False without claiming)
     when resources are insufficient.  The engine loop will sleep poll_interval
     and retry, keeping the job in 'pending' until the machine is ready.
     """
-    db = get_db()
-    if db is None:
-        return False
-
     # Peek first (no claim) so we can run a resource check before committing.
     next_job = await db.peek_next_pending_job()
     if next_job is None:
@@ -411,26 +461,35 @@ async def run_engine_loop(*, poll_interval: float = 2.0) -> None:
     except asyncio.CancelledError:
         watchdog.cancel()
         logger.info("Pipeline engine stopped")
+    except _DbClosedUnderLoop:
+        # _process_one already verified, against the Database instance the
+        # failing iteration captured, that its database is gone — stop
+        # cleanly. (Judging by the global singleton here is what let this
+        # race through PR #541's fix: a replacement lifespan's fresh
+        # singleton reads as "connected" while the captured instance is
+        # the one that closed.)
+        watchdog.cancel()
+        try:
+            await watchdog
+        except asyncio.CancelledError:
+            pass
+        logger.info("Pipeline engine stopped (database closed during shutdown)")
     except (sqlite3.ProgrammingError, AssertionError, ValueError) as exc:
-        # Shutdown race (CI teardown flake, 2026-11-06/07): the database can
-        # be closed under a live engine iteration. In the test suite every
-        # TestClient lifespan closes the shared Database singleton on exit,
-        # so a shutdown can land between the loop's `assert self._conn` and
-        # its query (AssertionError), under a query already in flight
-        # (sqlite3 "Cannot operate on a closed database"), or between a
-        # query and its fetch (aiosqlite "no active connection" /
-        # "Connection closed"). If the database is verifiably gone, the
-        # application is shutting down and the loop stops cleanly; any other
-        # error is re-raised so real defects still fail loudly.
+        # Backstop for closed-database signals raised OUTSIDE _process_one
+        # (e.g. the startup orphan sweep). Shutdown race (CI teardown
+        # flake, 2026-11-06/07): the database can be closed under a live
+        # engine iteration. In the test suite every TestClient lifespan
+        # closes the shared Database singleton on exit, so a shutdown can
+        # land between the loop's `assert self._conn` and its query
+        # (AssertionError), under a query already in flight (sqlite3
+        # "Cannot operate on a closed database"), or between a query and
+        # its fetch (aiosqlite "no active connection" / "Connection
+        # closed"). If the database is verifiably gone, the application
+        # is shutting down and the loop stops cleanly; any other error is
+        # re-raised so real defects still fail loudly.
         db = get_db()
         db_gone = db is None or not db.is_connected()
-        closed_db_message = (
-            isinstance(exc, sqlite3.ProgrammingError)
-            and "Cannot operate on a closed database" in str(exc)
-        ) or (
-            isinstance(exc, ValueError)
-            and str(exc) in ("no active connection", "Connection closed")
-        )
+        closed_db_message = _is_closed_db_message(exc)
         if db_gone or closed_db_message:
             watchdog.cancel()
             try:

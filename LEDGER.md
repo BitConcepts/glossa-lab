@@ -13130,3 +13130,56 @@ position is unchanged - the Indus script is not deciphered.
 the direction of Tristen Pierson, per constitution sec. VI.
 
 ## 2026-11-09 - Spec 083 T055 forwarding fix: edge Worker rewrites origin-bound requests to the VPC service's http URL (http://127.0.0.1:8001), because the http-only VPC service (http_port set, https_port null) rejects the public https scheme and every forward returned the edge's 503 origin_unavailable.
+
+---
+
+## 2026-11-10 - Engine shutdown race, second face: judge the captured DB instance
+
+The backend suite failed again with `ERROR at teardown of
+test_run_check_verdict_and_missing_db` (2699 passed, 108 skipped, 1 error) on
+main run 42729580150 (148e36e3) and PR #543's run 42731318567, after PR #541's
+fix had landed. The stack is the claim path: main.py:329 `await engine_task`
+-> engine.py:408 `run_engine_loop` -> engine.py:215 `_process_one` ->
+database.py:1192 `claim_pending_job` -> `assert self._conn` AssertionError.
+Root cause: PR #541's loop-level handler judged "database verifiably gone"
+by the GLOBAL singleton (`get_db()`), but `_process_one` works through the
+Database instance it captured at iteration start. When the close lands
+between peek and claim AND another lifespan has already replaced the global
+singleton with a fresh, connected database (its `init_db`), the handler
+reads the new singleton as connected and re-raises, so the AssertionError
+escapes lifespan teardown. PR #541's regression test never replaced the
+singleton, so this path stayed open.
+
+Fix (`backend/glossa_lab/engine.py`): `_process_one` is now a thin wrapper
+that captures the Database instance and delegates to `_process_one_on(db)`;
+a closed-database signal (AssertionError, sqlite3.ProgrammingError,
+aiosqlite ValueError) is converted to the internal `_DbClosedUnderLoop`
+only when the CAPTURED instance is verifiably not connected (or the signal
+is an exact closed-database message), and `run_engine_loop` treats that as
+a clean stop. Signals raised while the captured instance is still connected
+are re-raised unchanged, so real defects still fail loudly; the #541
+loop-level handler remains as a backstop for signals raised outside
+`_process_one`. `claim_pending_job`'s assert itself is not the defect: it
+is the Database layer's not-connected invariant, and the engine is the
+layer that owns shutdown tolerance.
+
+Regression tests (`backend/tests/test_engine_shutdown_race.py`): a
+deterministic close-and-replace test (peek a real pending job, close the
+captured DB, install a fresh connected singleton, reach the claim) fails
+on the PR #541 code and passes with the fix, and a boundary test pins that
+a claim AssertionError on a live database still propagates. Verification:
+deterministic reproduction on unfixed code with the exact CI stack; target
+test 20/20 consecutive runs; race test file 10/10 runs (3 passed each);
+engine/database/jobs/workspace files 48 passed; full backend suite locally
+(CI command, GPU files ignored, phase392 stall deselected by plain
+nodeid): 2706 passed, 1 failed, 101 skipped, 1 deselected, with zero
+teardown errors. The single failure
+(`test_phase133_stage0_inventory.py::test_builder_recomputation_skips_without_inputs`)
+is the known environmental baseline: a research-notes input file absent on
+this VM; it fails identically on the unmodified tree and is skipped in CI.
+
+No claim's status, stage, or score was changed by this landing; the standing
+position is unchanged - the Indus script is not deciphered.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

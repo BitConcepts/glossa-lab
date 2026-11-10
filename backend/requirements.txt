@@ -42,4 +42,4 @@
 # reads it.
 numpy==2.5.4
 scipy==1.18.1
-pandas==3.0.6
+pandas==3.1.0

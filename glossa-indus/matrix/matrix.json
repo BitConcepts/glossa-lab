@@ -3,9 +3,9 @@
  "generated_from": "glossa-indus/ledger/claims.jsonl",
  "generated_by": "tools/ledger/generate_matrix.py (backend/glossa_lab/matrix_generate.py)",
  "as_of": {
-  "ledger_sha256": "c55d57822bcd9b2e9a3401d807aea6e5e1ce872c5e239baadea4834310c8f4aa",
-  "ledger_lines": 958,
-  "ledger_date": "2026-11-05",
+  "ledger_sha256": "6eada964c585a859db34e1a0e8c1da892baf0012db90e3742829bb318905a0b5",
+  "ledger_lines": 973,
+  "ledger_date": "2026-11-06",
   "ledger_schema": "ledger-schema v1",
   "matrix_defs": "matrix-defs v1"
  },
@@ -5568,6 +5568,96 @@
   },
   {
    "id": "093-material-context-channel/C093-6",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "091-anchor-comparison-integrity/C091-14",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "091-anchor-comparison-integrity/C091-2",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "091-anchor-comparison-integrity/C091-1",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "091-anchor-comparison-integrity/C091-15",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "091-anchor-comparison-integrity/C091-4",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "091-anchor-comparison-integrity/C091-7",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "091-anchor-comparison-integrity/C091-3",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "091-anchor-comparison-integrity/C091-6",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "091-anchor-comparison-integrity/C091-9",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "091-anchor-comparison-integrity/C091-12",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "091-anchor-comparison-integrity/C091-13",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "091-anchor-comparison-integrity/C091-10",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "091-anchor-comparison-integrity/C091-11",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "091-anchor-comparison-integrity/C091-8",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "091-anchor-comparison-integrity/C091-5",
    "population": "bundle",
    "status": "draft",
    "stage": "created"
@@ -23784,6 +23874,171 @@
    ]
   },
   {
+   "row": "091-anchor-comparison-integrity/C091-1",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-1",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "091-anchor-comparison-integrity/C091-10",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-10",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "091-anchor-comparison-integrity/C091-11",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-11",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "091-anchor-comparison-integrity/C091-12",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-12",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "091-anchor-comparison-integrity/C091-13",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-13",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "091-anchor-comparison-integrity/C091-14",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-14",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "091-anchor-comparison-integrity/C091-15",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-15",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "091-anchor-comparison-integrity/C091-2",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-2",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "091-anchor-comparison-integrity/C091-3",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-3",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "091-anchor-comparison-integrity/C091-4",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-4",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "091-anchor-comparison-integrity/C091-5",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-5",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "091-anchor-comparison-integrity/C091-6",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-6",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "091-anchor-comparison-integrity/C091-7",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-7",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "091-anchor-comparison-integrity/C091-8",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-8",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "091-anchor-comparison-integrity/C091-9",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-9",
+    "spec.md"
+   ]
+  },
+  {
    "row": "093-material-context-channel/C093-1",
    "column": "spec.md",
    "column_class": "documents",
@@ -24105,8 +24360,8 @@
   }
  ],
  "coverage": {
-  "rows_total": 927,
-  "rows_with_cells": 913,
+  "rows_total": 942,
+  "rows_with_cells": 928,
   "empty_rows": [
    "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
    "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -24464,30 +24719,30 @@
    ],
    "corpus_texts": []
   },
-  "cells_total": 1450,
+  "cells_total": 1465,
   "cells_by_relation": {
-   "supports": 1443,
+   "supports": 1458,
    "opposes": 7,
    "constrains": 0
   },
   "cells_by_class": {
    "studies": 7,
-   "documents": 1443,
+   "documents": 1458,
    "research_checks": 0,
    "anchors": 0,
    "corpus_texts": 0
   },
   "falsifier_coverage": {
-   "covered": 918,
-   "total": 927,
+   "covered": 933,
+   "total": 942,
    "by_population": {
     "extracted": {
      "covered": 14,
      "total": 23
     },
     "bundle": {
-     "covered": 904,
-     "total": 904
+     "covered": 919,
+     "total": 919
     }
    }
   },

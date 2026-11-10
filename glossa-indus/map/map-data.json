@@ -3,10 +3,10 @@
  "generated_from": "glossa-indus/ledger/claims.jsonl through glossa-indus/matrix/matrix.json and the settling records of record",
  "generated_by": "tools/ledger/generate_map.py (backend/glossa_lab/map_generate.py)",
  "header": {
-  "claims_total": 927,
+  "claims_total": 942,
   "claims_by_status": {
    "contradicted": 4,
-   "draft": 903,
+   "draft": 918,
    "partially_falsified": 1,
    "partially_supported": 3,
    "strongly_supported": 2,
@@ -55,18 +55,18 @@
    "reason": "the anchors register records no review dates for the pending validations, so they appear as a count, not as dated items (decision Q4)"
   },
   "as_of": {
-   "ledger_sha256": "c55d57822bcd9b2e9a3401d807aea6e5e1ce872c5e239baadea4834310c8f4aa",
-   "ledger_lines": 958,
-   "ledger_date": "2026-11-05",
+   "ledger_sha256": "6eada964c585a859db34e1a0e8c1da892baf0012db90e3742829bb318905a0b5",
+   "ledger_lines": 973,
+   "ledger_date": "2026-11-06",
    "ledger_schema": "ledger-schema v1",
    "matrix_defs": "matrix-defs v1",
    "map_defs": "map-defs v1",
    "settle_semantics": "glossa-settle-1",
-   "matrix_sha256": "2214cc7b823762a042e6b208595a9f8bdb37869516307701d12bc5084af838be",
+   "matrix_sha256": "26ea487cca59f06aea33e618cef9e603683edbc77ed969af168367c9f4625f49",
    "anchors_register_sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
-   "assignment_sets_sha256": "f8bf17ce0400e838215f3286c3919c78ad906760a737132a13d64b1e1154fcb6",
-   "comparison_sha256": "3d0823e22766f28b2f171f97431962ece3f2d3c678038da251f81ec51b668599",
-   "settling_canonical_sha256": "704ccad16097be380ab0c261417805fa383936506dcc186300c290c0607ee070"
+   "assignment_sets_sha256": "f53e3dbdcaab37669b5744a919e9f310efa0b1cb4709d5ad4890007f02972988",
+   "comparison_sha256": "b2f49c0c2bee35cad025ffb04b369225e20a9967c47c6f8e90cec6e83851eca0",
+   "settling_canonical_sha256": "2249538b25e9925c90a89f6294950a0b1e7578099fa5317d8bba39844928f470"
   }
  },
  "elements": [
@@ -7482,6 +7482,126 @@
    "kind": "claim",
    "id": "093-material-context-channel/C093-6",
    "statement": "A Stage 4 pass is accepted only if its frozen design's negative controls (permutation or shuffle of the culture-side labels within the strata the design names) and its replication arm (held-out sites where the design names them, and the inventory's counts allow them) were run under Spec 089 run discipline and the audited comparison of pass against controls meets the freeze's bar. A pass whose controls were not run, or whose bar was set after its first run, is recorded as NOT YET with the obstruction named, whatever its uncontrolled numbers look like. This does not establish: that a pass meeting its bar is true in the world — only that it survived the controls this program requires before a number may be cited.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "091-anchor-comparison-integrity/C091-14",
+   "statement": "At each workstream's end, its register entry (GR-088-01, GR-088-02, GR-088-03) is amended, append-only per the register's own discipline, to its measured end state: closed (its candidate executed and its closure condition met on the records), re-registered structural (its falsifier's structural outcome produced), or still open with the blocking fact named. This spec's completion alone closes no entry.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "091-anchor-comparison-integrity/C091-2",
+   "statement": "The readings used by the eligibility recomputation are coded from the primary sources named by the locator record by a coder who did not derive the project readings, under the blinding protocol filed before coding starts (decision D-091-2: the coder sees the primary sources and the sign list, never the project readings or the WP4 classifications, until the coding is filed). The protocol, the coder's identity and lineage exclusion, and any deviation are on record; a deviation voids the coding it touches.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "091-anchor-comparison-integrity/C091-1",
+   "statement": "Every entry of the Mahadevan-Parpola crosswalk (v2.1, 184 entries) carries, in the locator record this spec produces, an entry-level primary-source locator for its reading fields (phonetic and semantic), or a recorded locator-not-found outcome backed by a documented search (sources consulted, in order, with dates). File-level citations do not satisfy this claim. No entry is left unexamined: the pass's census is 184 examined of 184.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "091-anchor-comparison-integrity/C091-15",
+   "statement": "No stage of this spec changes any anchor's proposed reading, any claim's verdict in the ledger, or the program's standing position that the Indus script is not deciphered. The only quantities that move are support classes, eligibility classes, and validation statuses.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "091-anchor-comparison-integrity/C091-4",
+   "statement": "After W1's recomputation lands, no published layer of the program (matrix, map, tracker, preprint prose) cites a 'Parpola agrees' relation as independent validation for an entry outside the eligible set; every citation of crosswalk agreement carries the entry's eligibility class. Before W1 lands, the standing class of every entry is its WP4 class, under which no entry is eligible, and citations are bound by that.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "091-anchor-comparison-integrity/C091-7",
+   "statement": "From this spec's adoption onward, every published layer that cites any of the 46 internal-only anchors cites it as internal-only, and every statement of the strict core's independently supported mass states the measured number, not 94. This obligation binds from adoption, not from W2's completion.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "091-anchor-comparison-integrity/C091-3",
+   "statement": "Eligibility is recomputed mechanically from the locator record and the independent coding under WP4's classification rules (extended only by new versioned artifacts, never by editing the frozen provenance file). The resulting count is reported as produced, including zero: if the locator pass finds every entry's reading traceable to the project's own derivation, the eligible count stays 0 and the gap re-registers as structural (no independent Parpola comparison exists to be had from this crosswalk), not as an unfinished task (register falsifier of GR-088-01).",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "091-anchor-comparison-integrity/C091-6",
+   "statement": "A per-anchor disposition changes from internal-only to independently supported solely on a filed external support line (an attestation, or a blind re-derivation that agrees, produced under C091-5's protocol). Re-examination of same-lineage material changes nothing. The program's independently supported count is at all times exactly 6 (M044, M047, M124, M202, M329, M330) plus the anchors with landed external lines; an anchor whose only producible support after the pass remains same-lineage stays internal-only and the count stands (register falsifier of GR-088-02).",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "091-anchor-comparison-integrity/C091-9",
+   "statement": "The corrected battery is run over the 28 Phase-48 promotions standing at requires-revalidation (the WP5 Phase-48 subset), as a run under run-defs v1, cited by run id. Each promotion's disposition follows the run's recorded output; the historical battery's output is retired as evidence for all 28. If the re-run promotes a materially different set, the original promotions reclassify per the new run (register falsifier of GR-088-03 candidate 1).",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "091-anchor-comparison-integrity/C091-12",
+   "statement": "M087, M165, M264, M311 (rule R5d, each resting solely on a crosswalk or literature import) receive a documented sourcing attempt for an independent support line outside the crosswalk lineage (an owner act for the external engagement, D-091-1). Where an outside line lands, the disposition follows it; where no source outside the crosswalk lineage attests the readings, the 4 stay requires-revalidation permanently, recorded as structural rather than pending (register falsifier of GR-088-03 candidate 3).",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "091-anchor-comparison-integrity/C091-13",
+   "statement": "All status changes this spec produces (W1's eligibility classes, W2's support classes, W3's revalidation dispositions) land as recorded reclassification acts and in a new versioned anchor-support audit (audit v2, decision D-091-3) whose generator and inputs are named. The WP5 audit JSON, the WP4 provenance JSON, the historical Phase-48 battery and its output, and the original crosswalk file are never edited by any stage.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "091-anchor-comparison-integrity/C091-10",
+   "statement": "M042, M046, M108 (rule R5b) and M176, M342 (rule R5c) are revalidated with the repair brief's corrected checkers over every arm that can run without GR-088-04's certification (the site-statistics lineage, site_stats_v2). Each anchor's disposition follows its checker's recorded output; where the v2 checkers judge the support insufficient, the anchors move to insufficient evidence, not back to supported (register falsifier of GR-088-03 candidate 2).",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "091-anchor-comparison-integrity/C091-11",
+   "statement": "For any of the 5 single-line anchors whose revalidation requires the phonotactic checker (phonotactics_v2), that arm waits for GR-088-04's linguist-certified rule set. Until it lands, the affected anchors remain at requires-revalidation with the GR-088-04 dependency named on their records; no phonotactic violation count, in either direction, is produced for any anchor under the uncertified rule set. GR-088-04 is a separate register entry: this spec notes the dependency and does not absorb the linguist leg.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "091-anchor-comparison-integrity/C091-8",
+   "statement": "In the corrected Phase-48 battery (a new versioned battery, decision D-091-4; the historical phase48_medium_validation.py is frozen), every promotion credit is earned by an executed check over present inputs. A missing input, an unexecuted check, or an inapplicable test produces not-run or fail, never credit. The removed pass-by-default paths are enumerated against the historical battery and the WP5 reconstruction, and each enumerated path has a fixture proving it now yields not-run/fail.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "091-anchor-comparison-integrity/C091-5",
+   "statement": "The outside-reproduction pass covers all 46 anchors of the WP5 audit's supported_internal_only class, under a protocol recorded before the pass starts: for each anchor, independent attestation or blind re-derivation by readers who did not produce the original derivations (decision D-091-1). Each anchor's outcome is recorded (external line landed, attempted and not landed, or not attempted with the reason), and the census is 46 accounted of 46.",
    "status": "draft",
    "stage": "created",
    "population": "bundle"
@@ -25697,6 +25817,171 @@
   },
   {
    "from": "spec.md",
+   "to": "091-anchor-comparison-integrity/C091-1",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-1",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "091-anchor-comparison-integrity/C091-10",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-10",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "091-anchor-comparison-integrity/C091-11",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-11",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "091-anchor-comparison-integrity/C091-12",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-12",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "091-anchor-comparison-integrity/C091-13",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-13",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "091-anchor-comparison-integrity/C091-14",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-14",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "091-anchor-comparison-integrity/C091-15",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-15",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "091-anchor-comparison-integrity/C091-2",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-2",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "091-anchor-comparison-integrity/C091-3",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-3",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "091-anchor-comparison-integrity/C091-4",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-4",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "091-anchor-comparison-integrity/C091-5",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-5",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "091-anchor-comparison-integrity/C091-6",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-6",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "091-anchor-comparison-integrity/C091-7",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-7",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "091-anchor-comparison-integrity/C091-8",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-8",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "091-anchor-comparison-integrity/C091-9",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "091-anchor-comparison-integrity/C091-9",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
    "to": "093-material-context-channel/C093-1",
    "rel": "supports",
    "rule": "R2",
@@ -30647,6 +30932,81 @@
    "constrains": 0
   },
   "093-material-context-channel/C093-6": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "091-anchor-comparison-integrity/C091-14": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "091-anchor-comparison-integrity/C091-2": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "091-anchor-comparison-integrity/C091-1": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "091-anchor-comparison-integrity/C091-15": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "091-anchor-comparison-integrity/C091-4": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "091-anchor-comparison-integrity/C091-7": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "091-anchor-comparison-integrity/C091-3": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "091-anchor-comparison-integrity/C091-6": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "091-anchor-comparison-integrity/C091-9": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "091-anchor-comparison-integrity/C091-12": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "091-anchor-comparison-integrity/C091-13": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "091-anchor-comparison-integrity/C091-10": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "091-anchor-comparison-integrity/C091-11": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "091-anchor-comparison-integrity/C091-8": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "091-anchor-comparison-integrity/C091-5": {
    "supports": 1,
    "opposes": 0,
    "constrains": 0
@@ -36212,6 +36572,96 @@
    },
    {
     "id": "093-material-context-channel/C093-6",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "091-anchor-comparison-integrity/C091-14",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "091-anchor-comparison-integrity/C091-2",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "091-anchor-comparison-integrity/C091-1",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "091-anchor-comparison-integrity/C091-15",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "091-anchor-comparison-integrity/C091-4",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "091-anchor-comparison-integrity/C091-7",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "091-anchor-comparison-integrity/C091-3",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "091-anchor-comparison-integrity/C091-6",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "091-anchor-comparison-integrity/C091-9",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "091-anchor-comparison-integrity/C091-12",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "091-anchor-comparison-integrity/C091-13",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "091-anchor-comparison-integrity/C091-10",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "091-anchor-comparison-integrity/C091-11",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "091-anchor-comparison-integrity/C091-8",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "091-anchor-comparison-integrity/C091-5",
     "population": "bundle",
     "status": "draft",
     "stage": "created"
@@ -54428,6 +54878,171 @@
     ]
    },
    {
+    "row": "091-anchor-comparison-integrity/C091-1",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "091-anchor-comparison-integrity/C091-1",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "091-anchor-comparison-integrity/C091-10",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "091-anchor-comparison-integrity/C091-10",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "091-anchor-comparison-integrity/C091-11",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "091-anchor-comparison-integrity/C091-11",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "091-anchor-comparison-integrity/C091-12",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "091-anchor-comparison-integrity/C091-12",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "091-anchor-comparison-integrity/C091-13",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "091-anchor-comparison-integrity/C091-13",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "091-anchor-comparison-integrity/C091-14",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "091-anchor-comparison-integrity/C091-14",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "091-anchor-comparison-integrity/C091-15",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "091-anchor-comparison-integrity/C091-15",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "091-anchor-comparison-integrity/C091-2",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "091-anchor-comparison-integrity/C091-2",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "091-anchor-comparison-integrity/C091-3",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "091-anchor-comparison-integrity/C091-3",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "091-anchor-comparison-integrity/C091-4",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "091-anchor-comparison-integrity/C091-4",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "091-anchor-comparison-integrity/C091-5",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "091-anchor-comparison-integrity/C091-5",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "091-anchor-comparison-integrity/C091-6",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "091-anchor-comparison-integrity/C091-6",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "091-anchor-comparison-integrity/C091-7",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "091-anchor-comparison-integrity/C091-7",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "091-anchor-comparison-integrity/C091-8",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "091-anchor-comparison-integrity/C091-8",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "091-anchor-comparison-integrity/C091-9",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "091-anchor-comparison-integrity/C091-9",
+     "spec.md"
+    ]
+   },
+   {
     "row": "093-material-context-channel/C093-1",
     "column": "spec.md",
     "column_class": "documents",
@@ -54749,8 +55364,8 @@
    }
   ],
   "coverage": {
-   "rows_total": 927,
-   "rows_with_cells": 913,
+   "rows_total": 942,
+   "rows_with_cells": 928,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -55108,30 +55723,30 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1450,
+   "cells_total": 1465,
    "cells_by_relation": {
-    "supports": 1443,
+    "supports": 1458,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1443,
+    "documents": 1458,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
    },
    "falsifier_coverage": {
-    "covered": 918,
-    "total": 927,
+    "covered": 933,
+    "total": 942,
     "by_population": {
      "extracted": {
       "covered": 14,
       "total": 23
      },
      "bundle": {
-      "covered": 904,
-      "total": 904
+      "covered": 919,
+      "total": 919
      }
     }
    },
@@ -60176,8 +60791,8 @@
    }
   },
   "matrix_coverage": {
-   "rows_total": 927,
-   "rows_with_cells": 913,
+   "rows_total": 942,
+   "rows_with_cells": 928,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -60535,15 +61150,15 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1450,
+   "cells_total": 1465,
    "cells_by_relation": {
-    "supports": 1443,
+    "supports": 1458,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1443,
+    "documents": 1458,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
@@ -60612,7 +61227,7 @@
   "claim_population": {
    "by_status": {
     "contradicted": 4,
-    "draft": 903,
+    "draft": 918,
     "partially_falsified": 1,
     "partially_supported": 3,
     "strongly_supported": 2,
@@ -60622,26 +61237,26 @@
    },
    "by_stage": {
     "checked": 3,
-    "created": 900,
+    "created": 915,
     "explained": 8
    },
    "no_stage_recorded": 16,
    "by_population": {
-    "bundle": 904,
+    "bundle": 919,
     "extracted": 23
    }
   },
   "falsifier_census": {
-   "covered": 918,
-   "total": 927,
+   "covered": 933,
+   "total": 942,
    "by_population": {
     "extracted": {
      "covered": 14,
      "total": 23
     },
     "bundle": {
-     "covered": 904,
-     "total": 904
+     "covered": 919,
+     "total": 919
     }
    },
    "gap_claims": [
@@ -60658,8 +61273,8 @@
   },
   "aee_state_census": {
    "with_state": 0,
-   "without_state": 927,
-   "total": 927
+   "without_state": 942,
+   "total": 942
   },
   "unresolved": {
    "sign_mentions": [
@@ -62145,7 +62760,7 @@
     "runs": [
      {
       "candidate": "incumbent",
-      "record": "settling-20261106T085256Z-316590",
+      "record": "settling-20261110T140239Z-7b9862",
       "via_signs": [
        "mahadevan:70"
       ],
@@ -62159,7 +62774,7 @@
      },
      {
       "candidate": "full-register",
-      "record": "settling-20261106T085304Z-78bf5c",
+      "record": "settling-20261110T140240Z-b53030",
       "via_signs": [
        "mahadevan:72",
        "mahadevan:64",
@@ -152532,6 +153147,1281 @@
     },
     "sign_records": []
    }
+  },
+  "091-anchor-comparison-integrity/C091-14": {
+   "id": "091-anchor-comparison-integrity/C091-14",
+   "statement": "At each workstream's end, its register entry (GR-088-01, GR-088-02, GR-088-03) is amended, append-only per the register's own discipline, to its measured end state: closed (its candidate executed and its closure condition met on the records), re-registered structural (its falsifier's structural outcome produced), or still open with the blocking fact named. This spec's completion alone closes no entry.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "a register entry marked closed whose workstream's closure condition is unmet on the records; or a workstream at its end with its register entry unamended."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C091-14",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "091-anchor-comparison-integrity/C091-14",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "091-anchor-comparison-integrity/C091-14",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C091-14",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    },
+    "sign_records": []
+   }
+  },
+  "091-anchor-comparison-integrity/C091-2": {
+   "id": "091-anchor-comparison-integrity/C091-2",
+   "statement": "The readings used by the eligibility recomputation are coded from the primary sources named by the locator record by a coder who did not derive the project readings, under the blinding protocol filed before coding starts (decision D-091-2: the coder sees the primary sources and the sign list, never the project readings or the WP4 classifications, until the coding is filed). The protocol, the coder's identity and lineage exclusion, and any deviation are on record; a deviation voids the coding it touches.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "a coded reading whose coder is a member of the derivation lineage; coding filed after recorded exposure to the project readings or classifications; or an eligibility recomputation resting on coding with no blinding protocol on record."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C091-2",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "091-anchor-comparison-integrity/C091-2",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "091-anchor-comparison-integrity/C091-2",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C091-2",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    },
+    "sign_records": []
+   }
+  },
+  "091-anchor-comparison-integrity/C091-1": {
+   "id": "091-anchor-comparison-integrity/C091-1",
+   "statement": "Every entry of the Mahadevan-Parpola crosswalk (v2.1, 184 entries) carries, in the locator record this spec produces, an entry-level primary-source locator for its reading fields (phonetic and semantic), or a recorded locator-not-found outcome backed by a documented search (sources consulted, in order, with dates). File-level citations do not satisfy this claim. No entry is left unexamined: the pass's census is 184 examined of 184.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "an entry in the locator record with neither an entry-level locator nor a documented not-found search; or a pass census below 184."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C091-1",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "091-anchor-comparison-integrity/C091-1",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "091-anchor-comparison-integrity/C091-1",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C091-1",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    },
+    "sign_records": []
+   }
+  },
+  "091-anchor-comparison-integrity/C091-15": {
+   "id": "091-anchor-comparison-integrity/C091-15",
+   "statement": "No stage of this spec changes any anchor's proposed reading, any claim's verdict in the ledger, or the program's standing position that the Indus script is not deciphered. The only quantities that move are support classes, eligibility classes, and validation statuses.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "a stage artifact of this spec that alters a proposed reading or a ledger claim verdict, or prose in a record of record presenting a support-class or eligibility change as a reading confirmation."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C091-15",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "091-anchor-comparison-integrity/C091-15",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "091-anchor-comparison-integrity/C091-15",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C091-15",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    },
+    "sign_records": []
+   }
+  },
+  "091-anchor-comparison-integrity/C091-4": {
+   "id": "091-anchor-comparison-integrity/C091-4",
+   "statement": "After W1's recomputation lands, no published layer of the program (matrix, map, tracker, preprint prose) cites a 'Parpola agrees' relation as independent validation for an entry outside the eligible set; every citation of crosswalk agreement carries the entry's eligibility class. Before W1 lands, the standing class of every entry is its WP4 class, under which no entry is eligible, and citations are bound by that.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "a published artifact, after the recomputation lands, citing crosswalk agreement as independent support for an entry classified project-derived, used-in-construction, unverified, or ineligible; or a citation of crosswalk agreement carrying no class."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C091-4",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "091-anchor-comparison-integrity/C091-4",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "091-anchor-comparison-integrity/C091-4",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C091-4",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    },
+    "sign_records": []
+   }
+  },
+  "091-anchor-comparison-integrity/C091-7": {
+   "id": "091-anchor-comparison-integrity/C091-7",
+   "statement": "From this spec's adoption onward, every published layer that cites any of the 46 internal-only anchors cites it as internal-only, and every statement of the strict core's independently supported mass states the measured number, not 94. This obligation binds from adoption, not from W2's completion.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "a published artifact, after adoption, citing any of the 46 as confirmed or independently supported, or stating the core's independently supported mass as 94 (or as any number other than the measured count of record)."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C091-7",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "091-anchor-comparison-integrity/C091-7",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "091-anchor-comparison-integrity/C091-7",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C091-7",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    },
+    "sign_records": []
+   }
+  },
+  "091-anchor-comparison-integrity/C091-3": {
+   "id": "091-anchor-comparison-integrity/C091-3",
+   "statement": "Eligibility is recomputed mechanically from the locator record and the independent coding under WP4's classification rules (extended only by new versioned artifacts, never by editing the frozen provenance file). The resulting count is reported as produced, including zero: if the locator pass finds every entry's reading traceable to the project's own derivation, the eligible count stays 0 and the gap re-registers as structural (no independent Parpola comparison exists to be had from this crosswalk), not as an unfinished task (register falsifier of GR-088-01).",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "an eligibility count that differs from the mechanical recomputation over the locator and coding records; or a structural re-registration filed while at least one entry carries an independently sourced reading under the recomputation."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C091-3",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "091-anchor-comparison-integrity/C091-3",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "091-anchor-comparison-integrity/C091-3",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C091-3",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    },
+    "sign_records": []
+   }
+  },
+  "091-anchor-comparison-integrity/C091-6": {
+   "id": "091-anchor-comparison-integrity/C091-6",
+   "statement": "A per-anchor disposition changes from internal-only to independently supported solely on a filed external support line (an attestation, or a blind re-derivation that agrees, produced under C091-5's protocol). Re-examination of same-lineage material changes nothing. The program's independently supported count is at all times exactly 6 (M044, M047, M124, M202, M329, M330) plus the anchors with landed external lines; an anchor whose only producible support after the pass remains same-lineage stays internal-only and the count stands (register falsifier of GR-088-02).",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "an anchor counted independently supported whose support lines on record are all same-lineage; or a supported count that differs from 6 + (anchors with filed external lines)."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C091-6",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "091-anchor-comparison-integrity/C091-6",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "091-anchor-comparison-integrity/C091-6",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C091-6",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    },
+    "sign_records": []
+   }
+  },
+  "091-anchor-comparison-integrity/C091-9": {
+   "id": "091-anchor-comparison-integrity/C091-9",
+   "statement": "The corrected battery is run over the 28 Phase-48 promotions standing at requires-revalidation (the WP5 Phase-48 subset), as a run under run-defs v1, cited by run id. Each promotion's disposition follows the run's recorded output; the historical battery's output is retired as evidence for all 28. If the re-run promotes a materially different set, the original promotions reclassify per the new run (register falsifier of GR-088-03 candidate 1).",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "any of the 28 retaining a disposition sourced from the historical battery after the corrected run is filed; a corrected-run disposition not reflected in the anchor records; or a re-run executed under the historical battery or an unversioned variant of it."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C091-9",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "091-anchor-comparison-integrity/C091-9",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "091-anchor-comparison-integrity/C091-9",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C091-9",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    },
+    "sign_records": []
+   }
+  },
+  "091-anchor-comparison-integrity/C091-12": {
+   "id": "091-anchor-comparison-integrity/C091-12",
+   "statement": "M087, M165, M264, M311 (rule R5d, each resting solely on a crosswalk or literature import) receive a documented sourcing attempt for an independent support line outside the crosswalk lineage (an owner act for the external engagement, D-091-1). Where an outside line lands, the disposition follows it; where no source outside the crosswalk lineage attests the readings, the 4 stay requires-revalidation permanently, recorded as structural rather than pending (register falsifier of GR-088-03 candidate 3).",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "one of the 4 reclassified as supported on crosswalk-lineage material; or one left recorded as merely pending after a documented sourcing attempt found no outside attestation."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C091-12",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "091-anchor-comparison-integrity/C091-12",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "091-anchor-comparison-integrity/C091-12",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C091-12",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    },
+    "sign_records": []
+   }
+  },
+  "091-anchor-comparison-integrity/C091-13": {
+   "id": "091-anchor-comparison-integrity/C091-13",
+   "statement": "All status changes this spec produces (W1's eligibility classes, W2's support classes, W3's revalidation dispositions) land as recorded reclassification acts and in a new versioned anchor-support audit (audit v2, decision D-091-3) whose generator and inputs are named. The WP5 audit JSON, the WP4 provenance JSON, the historical Phase-48 battery and its output, and the original crosswalk file are never edited by any stage.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "a byte change in any frozen record attributable to this spec; or a disposition change in audit v2 with no corresponding recorded act and named generator inputs."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C091-13",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "091-anchor-comparison-integrity/C091-13",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "091-anchor-comparison-integrity/C091-13",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C091-13",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    },
+    "sign_records": []
+   }
+  },
+  "091-anchor-comparison-integrity/C091-10": {
+   "id": "091-anchor-comparison-integrity/C091-10",
+   "statement": "M042, M046, M108 (rule R5b) and M176, M342 (rule R5c) are revalidated with the repair brief's corrected checkers over every arm that can run without GR-088-04's certification (the site-statistics lineage, site_stats_v2). Each anchor's disposition follows its checker's recorded output; where the v2 checkers judge the support insufficient, the anchors move to insufficient evidence, not back to supported (register falsifier of GR-088-03 candidate 2).",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "one of the 5 whose post-revalidation disposition is not its corrected checker's recorded output; or one restored to a supported class without a new support line on record."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C091-10",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "091-anchor-comparison-integrity/C091-10",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "091-anchor-comparison-integrity/C091-10",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C091-10",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    },
+    "sign_records": []
+   }
+  },
+  "091-anchor-comparison-integrity/C091-11": {
+   "id": "091-anchor-comparison-integrity/C091-11",
+   "statement": "For any of the 5 single-line anchors whose revalidation requires the phonotactic checker (phonotactics_v2), that arm waits for GR-088-04's linguist-certified rule set. Until it lands, the affected anchors remain at requires-revalidation with the GR-088-04 dependency named on their records; no phonotactic violation count, in either direction, is produced for any anchor under the uncertified rule set. GR-088-04 is a separate register entry: this spec notes the dependency and does not absorb the linguist leg.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "a phonotactic violation count stated for any anchor under the uncertified rule set; or one of the 5 reclassified on a phonotactic basis before certification; or one of the 5 left at requires-revalidation after the site-statistics arm ran, without the GR-088-04 dependency named where the phonotactic arm was required."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C091-11",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "091-anchor-comparison-integrity/C091-11",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "091-anchor-comparison-integrity/C091-11",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C091-11",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    },
+    "sign_records": []
+   }
+  },
+  "091-anchor-comparison-integrity/C091-8": {
+   "id": "091-anchor-comparison-integrity/C091-8",
+   "statement": "In the corrected Phase-48 battery (a new versioned battery, decision D-091-4; the historical phase48_medium_validation.py is frozen), every promotion credit is earned by an executed check over present inputs. A missing input, an unexecuted check, or an inapplicable test produces not-run or fail, never credit. The removed pass-by-default paths are enumerated against the historical battery and the WP5 reconstruction, and each enumerated path has a fixture proving it now yields not-run/fail.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "a corrected-battery run awarding credit for an absent input, an unexecuted check, or a default branch, whether found in the battery's code or in a run record; or an enumerated historical pass-by-default path with no fixture proving its corrected behavior."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C091-8",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "091-anchor-comparison-integrity/C091-8",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "091-anchor-comparison-integrity/C091-8",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C091-8",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    },
+    "sign_records": []
+   }
+  },
+  "091-anchor-comparison-integrity/C091-5": {
+   "id": "091-anchor-comparison-integrity/C091-5",
+   "statement": "The outside-reproduction pass covers all 46 anchors of the WP5 audit's supported_internal_only class, under a protocol recorded before the pass starts: for each anchor, independent attestation or blind re-derivation by readers who did not produce the original derivations (decision D-091-1). Each anchor's outcome is recorded (external line landed, attempted and not landed, or not attempted with the reason), and the census is 46 accounted of 46.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-06",
+   "falsifier": [
+    "one of the 46 with no recorded outcome; an attempt by a reader inside the anchor's derivation lineage; or an outcome recorded with no protocol on record."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C091-5",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "091-anchor-comparison-integrity/C091-5",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "091-anchor-comparison-integrity/C091-5",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C091-5",
+     "document_id": null,
+     "path": "specs/091-anchor-comparison-integrity/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "70d3f75fc50d9536dae9c219016119ebd4331b410dea85bb284850d8b430774f",
+     "spec": "091-anchor-comparison-integrity"
+    },
+    "sign_records": []
+   }
   }
  },
  "settling": {
@@ -152539,7 +154429,7 @@
   "semantics": "glossa-settle-1",
   "assignment_sets": {
    "record": "glossa-indus/ledger/assignment-sets.json",
-   "sha256": "f8bf17ce0400e838215f3286c3919c78ad906760a737132a13d64b1e1154fcb6",
+   "sha256": "f53e3dbdcaab37669b5744a919e9f310efa0b1cb4709d5ad4890007f02972988",
    "register": {
     "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
     "sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
@@ -152583,15 +154473,15 @@
   },
   "runs": [
    {
-    "record": "settling-20261106T085256Z-316590",
+    "record": "settling-20261110T140239Z-7b9862",
     "scenario": "t405-incumbent-over-full-frame",
     "candidate": "incumbent",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "c55d57822bcd9b2e9a3401d807aea6e5e1ce872c5e239baadea4834310c8f4aa",
-      "lines": 958
+      "sha256": "6eada964c585a859db34e1a0e8c1da892baf0012db90e3742829bb318905a0b5",
+      "lines": 973
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -152642,15 +154532,15 @@
     }
    },
    {
-    "record": "settling-20261106T085304Z-78bf5c",
+    "record": "settling-20261110T140240Z-b53030",
     "scenario": "t405-full-register-over-full-frame",
     "candidate": "full-register",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "c55d57822bcd9b2e9a3401d807aea6e5e1ce872c5e239baadea4834310c8f4aa",
-      "lines": 958
+      "sha256": "6eada964c585a859db34e1a0e8c1da892baf0012db90e3742829bb318905a0b5",
+      "lines": 973
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -152705,7 +154595,7 @@
   ],
   "comparison": {
    "record": "specs/086-winning-combination-adoption/records/stage-4-dual-run-comparison.json",
-   "sha256": "3d0823e22766f28b2f171f97431962ece3f2d3c678038da251f81ec51b668599",
+   "sha256": "b2f49c0c2bee35cad025ffb04b369225e20a9967c47c6f8e90cec6e83851eca0",
    "result": {
     "claims_compared": [
      {
@@ -152953,7 +154843,7 @@
   },
   "canonicals": {
    "record": "glossa-indus/ledger/settling-canonical.json",
-   "sha256": "704ccad16097be380ab0c261417805fa383936506dcc186300c290c0607ee070",
+   "sha256": "2249538b25e9925c90a89f6294950a0b1e7578099fa5317d8bba39844928f470",
    "scenarios": [
     {
      "id": "null-over-subset",
@@ -153288,8 +155178,8 @@
   },
   "reach": {
    "claims_with_sign_refs": 1,
-   "claims_total": 927,
-   "claims_untouched_by_any_run": 926,
+   "claims_total": 942,
+   "claims_untouched_by_any_run": 941,
    "s_r3": {
     "status": "UNMEASURED",
     "class_table": null,

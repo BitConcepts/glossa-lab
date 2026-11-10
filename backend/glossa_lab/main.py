@@ -2,7 +2,9 @@
 
 import asyncio
 import logging as _logging
+import os
 import shutil
+import stat
 import subprocess
 import sys
 import time
@@ -11,9 +13,10 @@ import urllib.request
 from contextlib import asynccontextmanager
 from pathlib import Path
 
+import anyio
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 
 from glossa_lab import __version__
@@ -80,6 +83,60 @@ _log = _logging.getLogger("glossa_lab.main")
 # Repo root is two levels above this file (backend/glossa_lab/main.py)
 _REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 _FRONTEND_DIST = _REPO_ROOT / "frontend" / "dist"
+
+
+# The SPA shell paths: the exact public-page set of Spec 083 FR-004,
+# mirroring the edge's own classification (cloud/edge/src/routes.ts
+# isPublicPage, after its trailing-slash normalization). These are the
+# only navigation paths the edge forwards to the origin for SPA
+# rendering; the SPA itself hash-routes every other screen.
+_SHELL_PATHS = frozenset({"/login", "/setup", "/invite"})
+
+
+def _is_shell_path(pathname: str) -> bool:
+    if len(pathname) > 1:
+        pathname = pathname.rstrip("/")
+    return pathname in _SHELL_PATHS or pathname.startswith("/invite/")
+
+
+class _SpaShellStaticFiles(StaticFiles):
+    """StaticFiles plus the SPA shell fallback the cloud edge relies on.
+
+    Spec 083: the edge Worker forwards the anonymous navigation paths
+    (/login, /setup, /invite/*) to this origin, and the SPA renders
+    those pages client-side from the shell (frontend/src/cloud/
+    session.tsx reads window.location.pathname). Plain
+    StaticFiles(html=True) serves real files and directory indexes
+    only, so a navigation to /login answered this backend's JSON 404
+    and the cloud login page could never load.
+
+    For a GET/HEAD request on a shell path (the FR-004 public-page
+    set above) that does not resolve to a real file (nor to a
+    directory carrying an index.html), serve the shell (index.html)
+    with 200. The fallback is deliberately NOT a blanket SPA
+    fallback: TEST-API-003 pins that unprefixed API-shaped paths
+    (e.g. /health) must not answer 200, and the hash-routed app has
+    no other path-based routes to serve. Everything else answers
+    exactly as plain StaticFiles: real files and assets
+    byte-identical, directory redirect/index behavior unchanged,
+    non-GET/HEAD methods keep the 404/405 family, and API misses
+    keep the JSON 404 (the fallback never swallows an API answer or
+    a scoped 404).
+    """
+
+    async def get_response(self, path: str, scope) -> Response:  # noqa: ANN001
+        if scope["method"] in ("GET", "HEAD") and _is_shell_path(scope["path"]):
+            _, stat_result = await anyio.to_thread.run_sync(self.lookup_path, path)
+            resolves = stat_result is not None and stat.S_ISREG(stat_result.st_mode)
+            if stat_result is not None and stat.S_ISDIR(stat_result.st_mode):
+                index_path = os.path.join(path, "index.html")
+                _, index_stat = await anyio.to_thread.run_sync(
+                    self.lookup_path, index_path
+                )
+                resolves = index_stat is not None and stat.S_ISREG(index_stat.st_mode)
+            if not resolves:
+                return await super().get_response("index.html", scope)
+        return await super().get_response(path, scope)
 
 # ── Ollama lifecycle state ——————————————————————————————————————
 _ollama_installed: bool = False
@@ -535,12 +592,13 @@ def create_app() -> FastAPI:
     # (The /signs/images/page-previews API route, which reads the same
     # directory through the API layer, is unaffected.)
 
-    # Serve built frontend
-    # Skipped silently in dev if the dist directory does not yet exist.
+    # Serve built frontend (SPA shell fallback for client-side routes —
+    # see _SpaShellStaticFiles). Skipped silently in dev if the dist
+    # directory does not yet exist.
     if _FRONTEND_DIST.exists():
         application.mount(
             "/",
-            StaticFiles(directory=str(_FRONTEND_DIST), html=True),
+            _SpaShellStaticFiles(directory=str(_FRONTEND_DIST), html=True),
             name="frontend",
         )
 

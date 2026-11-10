@@ -1,0 +1,94 @@
+{
+ "run": {
+  "run_id": "settling-20261110T140246Z-d8affc",
+  "surface": "settling",
+  "tool": "run_settling.py materialize-sets",
+  "tool_version": "0.1.0",
+  "started": "2026-11-10T14:02:46Z",
+  "finished": "2026-11-10T14:02:46Z",
+  "key": {
+   "surface": "settling",
+   "command": "materialize-sets",
+   "tool_version": "0.1.0",
+   "input_pins": {
+    "ledger": {
+     "path": "glossa-indus/ledger/claims.jsonl",
+     "sha256": "6eada964c585a859db34e1a0e8c1da892baf0012db90e3742829bb318905a0b5",
+     "lines": 973
+    },
+    "anchors_register": {
+     "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
+     "sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+     "bytes": 570344,
+     "records": 287,
+     "strict": 94,
+     "strict_rule": "strict_sa_independent_hm",
+     "strict_rule_version": "Phase-109 follow-through (spec 007, 2026-10-06) applying the Phase-108 strict definition"
+    },
+    "phase108_register": {
+     "path": "reports/phase108_provenance_register.json",
+     "sha256": "2b04fed49d50a2958776c80e74a64fffd024b827c7da182077a405ace23f6a25"
+    },
+    "corpus_snapshot": {
+     "path": "glossa-corpus/indus/exports/indus_research.jsonl",
+     "sha256": "08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e"
+    }
+   },
+   "seed": "no-seed",
+   "code_version": "9f420d0c4e1037cc755ceb771e03495e7834f5d0",
+   "environment_class": "vm/linux"
+  },
+  "determinism_class": "deterministic"
+ },
+ "artifact": "settling materialization record",
+ "label": "Computation over ledgered relations under glossa-settle-1 semantics. Establishes what the ledger implies under these rules, not what the script says.",
+ "semantics": "glossa-settle-1",
+ "pins": {
+  "ledger": {
+   "path": "glossa-indus/ledger/claims.jsonl",
+   "sha256": "6eada964c585a859db34e1a0e8c1da892baf0012db90e3742829bb318905a0b5",
+   "lines": 973
+  },
+  "anchors_register": {
+   "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
+   "sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+   "bytes": 570344,
+   "records": 287,
+   "strict": 94,
+   "strict_rule": "strict_sa_independent_hm",
+   "strict_rule_version": "Phase-109 follow-through (spec 007, 2026-10-06) applying the Phase-108 strict definition"
+  },
+  "phase108_register": {
+   "path": "reports/phase108_provenance_register.json",
+   "sha256": "2b04fed49d50a2958776c80e74a64fffd024b827c7da182077a405ace23f6a25"
+  },
+  "corpus_snapshot": {
+   "path": "glossa-corpus/indus/exports/indus_research.jsonl",
+   "sha256": "08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e"
+  }
+ },
+ "result": {
+  "materialized": "glossa-indus/ledger/assignment-sets.json",
+  "artifact_sha256": "f53e3dbdcaab37669b5744a919e9f310efa0b1cb4709d5ad4890007f02972988",
+  "register": {
+   "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
+   "sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+   "records": 287,
+   "strict": 94
+  },
+  "sets": [
+   {
+    "id": "incumbent",
+    "assignments": 94
+   },
+   {
+    "id": "full-register",
+    "assignments": 286
+   }
+  ],
+  "out_of_frame_records": [
+   "H003"
+  ],
+  "producing_run": "settling-20261110T140246Z-d8affc"
+ }
+}

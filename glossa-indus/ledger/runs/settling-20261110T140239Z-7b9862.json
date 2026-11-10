@@ -1,11 +1,11 @@
 {
  "run": {
-  "run_id": "settling-20261106T085256Z-316590",
+  "run_id": "settling-20261110T140239Z-7b9862",
   "surface": "settling",
   "tool": "run_settling.py run",
   "tool_version": "0.1.0",
-  "started": "2026-11-06T08:52:56Z",
-  "finished": "2026-11-06T08:52:57Z",
+  "started": "2026-11-10T14:02:39Z",
+  "finished": "2026-11-10T14:02:39Z",
   "key": {
    "surface": "settling",
    "command": "run --candidate incumbent --scope mahadevan:342,mahadevan:176,mahadevan:267,mahadevan:99,mahadevan:233,mahadevan:391,mahadevan:162,mahadevan:328,mahadevan:59,mahadevan:51,mahadevan:89,mahadevan:48,mahadevan:367,mahadevan:336,mahadevan:12,mahadevan:305,mahadevan:62,mahadevan:73,mahadevan:45,mahadevan:16,mahadevan:13,mahadevan:60,mahadevan:80,mahadevan:57,mahadevan:39,mahadevan:67,mahadevan:68,mahadevan:6,mahadevan:63,mahadevan:77,mahadevan:18,mahadevan:30,mahadevan:17,mahadevan:20,mahadevan:4,mahadevan:14,mahadevan:26,mahadevan:34,mahadevan:27,mahadevan:41,mahadevan:38,mahadevan:10,mahadevan:50,mahadevan:25,mahadevan:70,mahadevan:78,mahadevan:23,mahadevan:66,mahadevan:71,mahadevan:9,mahadevan:69,mahadevan:21,mahadevan:31,mahadevan:2,mahadevan:37,mahadevan:5,mahadevan:11,mahadevan:36,mahadevan:15,mahadevan:1,mahadevan:75,mahadevan:42,mahadevan:40,mahadevan:24,mahadevan:49,mahadevan:81,mahadevan:47,mahadevan:33,mahadevan:74,mahadevan:54,mahadevan:72,mahadevan:55,mahadevan:28,mahadevan:43,mahadevan:29,mahadevan:64,mahadevan:7,mahadevan:46,mahadevan:32,mahadevan:169,mahadevan:237,mahadevan:102,mahadevan:76,mahadevan:272,mahadevan:128,mahadevan:82,mahadevan:235,mahadevan:149,mahadevan:185,mahadevan:383,mahadevan:375,mahadevan:270,mahadevan:401,mahadevan:374,mahadevan:127,mahadevan:252,mahadevan:386,mahadevan:351,mahadevan:198,mahadevan:168,mahadevan:332,mahadevan:183,mahadevan:222,mahadevan:365,mahadevan:412,mahadevan:151,mahadevan:304,mahadevan:355,mahadevan:178,mahadevan:163,mahadevan:108,mahadevan:231,mahadevan:321,mahadevan:153,mahadevan:177,mahadevan:357,mahadevan:137,mahadevan:155,mahadevan:239,mahadevan:223,mahadevan:103,mahadevan:254,mahadevan:262,mahadevan:416,mahadevan:143,mahadevan:345,mahadevan:329,mahadevan:190,mahadevan:295,mahadevan:402,mahadevan:255,mahadevan:251,mahadevan:301,mahadevan:406,mahadevan:387,mahadevan:116,mahadevan:274,mahadevan:87,mahadevan:124,mahadevan:175,mahadevan:261,mahadevan:264,mahadevan:281,mahadevan:311,mahadevan:117,mahadevan:8,mahadevan:100,mahadevan:101,mahadevan:125,mahadevan:202,mahadevan:211,mahadevan:249,mahadevan:293,mahadevan:58,mahadevan:65,mahadevan:220,mahadevan:52,mahadevan:53,mahadevan:61,mahadevan:79,mahadevan:22,mahadevan:19,mahadevan:44,mahadevan:35,mahadevan:3,mahadevan:107,mahadevan:164,mahadevan:56,mahadevan:118,mahadevan:130,mahadevan:221,mahadevan:192,mahadevan:193,mahadevan:194,mahadevan:145,mahadevan:362,mahadevan:398,mahadevan:318,mahadevan:346,mahadevan:312,mahadevan:134,mahadevan:129,mahadevan:120,mahadevan:207,mahadevan:280,mahadevan:309,mahadevan:382,mahadevan:324,mahadevan:370,mahadevan:218,mahadevan:186,mahadevan:307,mahadevan:106,mahadevan:334,mahadevan:245,mahadevan:227,mahadevan:138,mahadevan:243,mahadevan:209,mahadevan:259,mahadevan:278,mahadevan:140,mahadevan:208,mahadevan:109,mahadevan:250,mahadevan:390,mahadevan:277,mahadevan:181,mahadevan:219,mahadevan:379,mahadevan:214,mahadevan:131,mahadevan:380,mahadevan:197,mahadevan:201,mahadevan:413,mahadevan:135,mahadevan:354,mahadevan:341,mahadevan:330,mahadevan:105,mahadevan:146,mahadevan:195,mahadevan:339,mahadevan:359,mahadevan:316,mahadevan:111,mahadevan:224,mahadevan:408,mahadevan:396,mahadevan:170,mahadevan:388,mahadevan:360,mahadevan:320,mahadevan:256,mahadevan:247,mahadevan:381,mahadevan:104,mahadevan:217,mahadevan:356,mahadevan:369,mahadevan:378,mahadevan:226,mahadevan:158,mahadevan:165,mahadevan:123,mahadevan:397,mahadevan:203,mahadevan:405,mahadevan:240,mahadevan:303,mahadevan:363,mahadevan:200,mahadevan:156,mahadevan:157,mahadevan:260,mahadevan:258,mahadevan:392,mahadevan:210,mahadevan:112,mahadevan:286,mahadevan:327,mahadevan:400,mahadevan:242,mahadevan:147,mahadevan:415,mahadevan:389,mahadevan:287,mahadevan:133,mahadevan:126,mahadevan:297,mahadevan:323,mahadevan:213,mahadevan:322,mahadevan:394,mahadevan:115,mahadevan:298,mahadevan:136,mahadevan:364,mahadevan:310,mahadevan:314,mahadevan:230,mahadevan:407,mahadevan:347,mahadevan:350,mahadevan:340 --scenario t405-incumbent-over-full-frame",
@@ -13,8 +13,8 @@
    "input_pins": {
     "ledger": {
      "path": "glossa-indus/ledger/claims.jsonl",
-     "sha256": "c55d57822bcd9b2e9a3401d807aea6e5e1ce872c5e239baadea4834310c8f4aa",
-     "lines": 958
+     "sha256": "6eada964c585a859db34e1a0e8c1da892baf0012db90e3742829bb318905a0b5",
+     "lines": 973
     },
     "anchors_register": {
      "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -35,7 +35,7 @@
     }
    },
    "seed": "no-seed",
-   "code_version": "8bc3d28d5a43998f1b17de2aa66bb590d9b2686e",
+   "code_version": "9f420d0c4e1037cc755ceb771e03495e7834f5d0",
    "environment_class": "vm/linux"
   },
   "determinism_class": "deterministic"
@@ -55,8 +55,8 @@
  "pins": {
   "ledger": {
    "path": "glossa-indus/ledger/claims.jsonl",
-   "sha256": "c55d57822bcd9b2e9a3401d807aea6e5e1ce872c5e239baadea4834310c8f4aa",
-   "lines": 958
+   "sha256": "6eada964c585a859db34e1a0e8c1da892baf0012db90e3742829bb318905a0b5",
+   "lines": 973
   },
   "anchors_register": {
    "path": "backend/reports/INDUS_FINAL_ANCHORS.json",

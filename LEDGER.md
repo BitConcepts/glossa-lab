@@ -13128,3 +13128,5 @@ position is unchanged - the Indus script is not deciphered.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-09 - Spec 083 T055 forwarding fix: edge Worker rewrites origin-bound requests to the VPC service's http URL (http://127.0.0.1:8001), because the http-only VPC service (http_port set, https_port null) rejects the public https scheme and every forward returned the edge's 503 origin_unavailable.

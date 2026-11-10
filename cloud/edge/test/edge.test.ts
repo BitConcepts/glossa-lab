@@ -408,6 +408,88 @@ describe("authenticated forwarding + header contract (FR-011, FR-008)", () => {
   });
 });
 
+describe("VPC origin URL rewrite (T055 http-only service)", () => {
+  // The VPC Service glossa-desktop-origin carries ONLY http_port
+  // 8001 (https_port null), which enforces the http scheme: a
+  // binding fetch carrying the public https URL throws and every
+  // forward became the edge's own 503 origin_unavailable. The
+  // forwarded request must therefore be addressed to the service's
+  // http URL, with path and query preserved.
+  function expectServiceUrl(raw: string, pathAndQuery: string) {
+    const url = new URL(raw);
+    expect(url.protocol).toBe("http:");
+    expect(url.hostname).toBe("127.0.0.1");
+    expect(url.port).toBe("8001");
+    expect(`${url.pathname}${url.search}`).toBe(pathAndQuery);
+  }
+
+  it("anonymous shell forward is rebuilt on the service's http URL", async () => {
+    const seen: Request[] = [];
+    const { env } = makeEnv(async (r) => {
+      seen.push(r);
+      return new Response("shell", { status: 200 });
+    });
+    const { ctx } = makeCtx();
+    const res = await handleRequest(req("/login?next=%2Fclaims"), env, ctx, {
+      store: new FakeStore(null),
+    });
+    expect(res.status).toBe(200);
+    expect(seen).toHaveLength(1);
+    expectServiceUrl(seen[0].url, "/login?next=%2Fclaims");
+    expect(seen[0].headers.get("X-Glossa-Service-Credential")).toBe(
+      SERVICE_CREDENTIAL,
+    );
+    expect(seen[0].headers.get("X-Glossa-User-Id")).toBeNull();
+  });
+
+  it("authenticated API forward is rebuilt on the service's http URL", async () => {
+    const seen: Request[] = [];
+    const { env } = makeEnv(async (r) => {
+      seen.push(r);
+      return new Response("ok");
+    });
+    const { ctx } = makeCtx();
+    const res = await handleRequest(
+      authedReq("/api/claims?limit=5&q=a%20b"),
+      env,
+      ctx,
+      { store: new FakeStore(IDENTITY) },
+    );
+    expect(res.status).toBe(200);
+    expect(seen).toHaveLength(1);
+    expectServiceUrl(seen[0].url, "/api/claims?limit=5&q=a%20b");
+    expect(seen[0].headers.get("X-Glossa-User-Id")).toBe("usr_0001");
+    expect(seen[0].headers.get("X-Glossa-Service-Credential")).toBe(
+      SERVICE_CREDENTIAL,
+    );
+  });
+
+  it("a forwarded POST keeps its method and body on the http URL", async () => {
+    const seen: Request[] = [];
+    const { env } = makeEnv(async (r) => {
+      seen.push(r);
+      return new Response("ok");
+    });
+    const { ctx } = makeCtx();
+    const payload = JSON.stringify({ probe: "vpc-http-forward" });
+    const res = await handleRequest(
+      authedReq("/api/echo?x=1", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: payload,
+      }),
+      env,
+      ctx,
+      { store: new FakeStore(IDENTITY) },
+    );
+    expect(res.status).toBe(200);
+    expect(seen).toHaveLength(1);
+    expectServiceUrl(seen[0].url, "/api/echo?x=1");
+    expect(seen[0].method).toBe("POST");
+    expect(await seen[0].text()).toBe(payload);
+  });
+});
+
 describe("classifyRoute", () => {
   it("classifies the surface exactly", () => {
     expect(classifyRoute("/robots.txt")).toBe("robots");

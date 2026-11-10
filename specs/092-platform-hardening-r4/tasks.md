@@ -22,13 +22,13 @@
   *This does not establish:* claim quality — a draft-stage outcome is
   the expected reading for a bundle on one asserted source; the
   owner's approval is the human act (T003).
-- [ ] **T003 — Owner block approval.** The owner ratifies the package
+- [x] **T003 — Owner block approval.** The owner ratifies the package
   as a block: spec, 14 claims, plan, and decisions D-092-1..4 —
   including the D-092-1 key-custody selection, which is part of this
   act, not a later one. Acceptance: **human-as-oracle** (the owner).
   *This does not establish:* approval of any later stage's output —
   each lands on its own evidence.
-- [ ] **T004 — Adoption intake + generated-layer regeneration.**
+- [x] **T004 — Adoption intake + generated-layer regeneration.**
   After T003: (a) record the pre-append gate run; (b) append the C092
   bundle through `tools/ledger/import_bundle.py --spec
   specs/092-platform-hardening-r4 --date <adoption date>` — the only

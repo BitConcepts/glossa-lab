@@ -324,6 +324,16 @@ function identityUnavailable(): Response {
  * headers are added only for authenticated requests. Method, path,
  * query, body, and streaming responses pass through untouched.
  *
+ * The forwarded request is rebuilt on an http URL for the service
+ * (http://127.0.0.1:8001 + the original path and query). The VPC
+ * Service `glossa-desktop-origin` is http-only: it carries an
+ * http_port (8001) and no https_port, which per Cloudflare's
+ * Workers VPC documentation enforces the http scheme — a binding
+ * fetch carrying the public https URL throws, and every forward
+ * became this Worker's own 503. The host/port in the fetch URL do
+ * not control routing (the binding's service configuration does);
+ * the scheme selects which service leg the fetch uses.
+ *
  * A rejected binding fetch (desktop offline, tunnel down) becomes
  * the edge's own 503: an edge-generated error document carrying no
  * project data, stamped noindex by the perimeter wrapper like every
@@ -348,7 +358,20 @@ async function forwardToOrigin(
     headers.set(HEADER_GLOBAL_TYPE, identity.globalType);
     headers.set(HEADER_WORKSPACE_ROLES, JSON.stringify(identity.workspaceRoles));
   }
-  const forwarded = new Request(request, { headers });
+  // Rebuild on the VPC service's own http URL (see the doc comment
+  // above): the public https scheme cannot be used with an
+  // http-only VPC service. Method, the prepared headers, and the
+  // body are preserved; `duplex: "half"` is required by the
+  // Workers fetch contract when forwarding a streamed request body.
+  const incoming = new URL(request.url);
+  const originUrl = `http://127.0.0.1:8001${incoming.pathname}${incoming.search}`;
+  const method = request.method.toUpperCase();
+  const init: RequestInit & { duplex?: string } = { method, headers };
+  if (method !== "GET" && method !== "HEAD" && request.body !== null) {
+    init.body = request.body;
+    init.duplex = "half";
+  }
+  const forwarded = new Request(originUrl, init);
   let response: Response;
   try {
     response = await env.GLOSSA_ORIGIN.fetch(forwarded);

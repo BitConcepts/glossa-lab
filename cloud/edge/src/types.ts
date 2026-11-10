@@ -19,10 +19,14 @@ export type WorkspaceRole = "owner" | "admin" | "member" | "viewer";
 /**
  * A Workers VPC Service binding: the subset of the binding contract
  * the edge uses. `fetch()` routes the request through the VPC
- * Service's tunnel to the registered host (127.0.0.1:8001 on the
- * desktop) and resolves with the origin's response; it rejects when
- * the origin cannot be reached (desktop offline, tunnel down), which
- * the Worker turns into its own noindex 503 (T055).
+ * Service's tunnel to the registered host and resolves with the
+ * origin's response; it rejects when the origin cannot be reached
+ * (origin offline, tunnel down), which the Worker turns into its
+ * own noindex 503 (T055). The service is http-only (it carries an
+ * http_port, 8001, and no https_port), so the Worker rewrites the
+ * forwarded request's URL to http://127.0.0.1:8001 before calling
+ * `fetch()` — the URL's scheme selects the service leg, while
+ * routing itself is fixed by the service configuration.
  */
 export interface VpcOriginBinding {
   fetch(request: Request): Promise<Response>;

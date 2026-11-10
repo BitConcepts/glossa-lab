@@ -12989,6 +12989,36 @@ No claim's status, stage, or score was changed by this
 landing; the standing position is unchanged — the Indus
 script is not deciphered.
 
+## 2026-11-06 — Spec 083: desktop legs recorded complete (sync, restart, T057 PASS)
+
+The readiness record
+(`specs/083-cloud-edition/records/go-live-readiness-2026-11-05.md`)
+now carries the desktop legs of the go-live sequence as executed,
+each read from its gatekeeper queue record (verdict_source=markers):
+the dirty enumeration (job
+`20261105T131620Z-glossa-spec083-desktop-dirty-enum-2026-11-05-862c60`,
+run `42035796835` — 5 dirty paths, all regenerable runtime
+products, none hand-authored); the restore (job
+`20261105T141515Z-glossa-spec083-desktop-restore-dirty-2026-11-05-419f02`,
+run `42047390682` — RESTORE_OK, `DIRTY_AFTER_COUNT=0`); the
+resubmitted ff-only sync (job
+`20261105T155824Z-glossa-spec083-desktop-sync-resubmit-2026-11-05-de56b5`,
+run `42061190779` — SYNC_OK, `309ea63c` → `c7712b1d`,
+`COMMITS_APPLIED=187`, `DIRTY_AFTER=0`); the backend restart
+through the `\GlossaLab` task's own supervision (job
+`20261105T162555Z-glossa-spec083-desktop-restart-2026-11-05-89b0ab`,
+run `42066999403` — RESTART_OK, post-restart health uptime 3.9 s
+on the synced tree, identity verified by content through the
+tailnet forwarder, host TRISTEN-DESKTOP); and the T057 live
+reconciliation (job
+`20261105T165053Z-glossa-spec083-desktop-t057-check-2026-11-05-42e996`,
+run `42075508802` — `T057_VERDICT=PASS`, `VERDICT: PASS
+violations=0`, against the live desktop dataset). T057 is
+discharged. The gate-2 remainder stands exactly as it stood:
+T053's Cloudflare-side execution, T054, T059, and T060 wait on
+the owner's token act (§2 of the readiness record). No launch
+act has been taken and no setup code has been generated.
+
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
 
@@ -13055,6 +13085,46 @@ section 8.
 No claim's status, stage, or score was changed by this landing;
 the standing position is unchanged - the Indus script is not
 deciphered.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.
+
+---
+
+## 2026-11-07 - Engine shutdown closed-DB race fix (CI teardown flake)
+
+The backend suite failed intermittently with `ERROR at teardown of
+test_run_check_verdict_and_missing_db`: 2698 passed, 1 error. The failure is
+not in that test. The session TestClient teardown awaits the pipeline engine
+task while the loop is mid-iteration against a database closed by another
+TestClient lifespan's shutdown (each TestClient runs its own lifespan against
+the shared Database singleton). Observed in CI runs 42220891977, 42245110090,
+42250965563, 42251859916, 42258269523 (2026-11-06/07), in three faces of the
+same race: `sqlite3.ProgrammingError: Cannot operate on a closed database`,
+`AssertionError` from `assert self._conn` (claim path), and aiosqlite
+`ValueError: no active connection` (close landing between a query and its
+fetch). PR #538 failed three consecutive attempts with the identical
+signature; reruns of the other four runs cleared (3 green, 1 cancelled).
+
+Fix (`backend/glossa_lab/engine.py`, `run_engine_loop`): the loop catches the
+closed-database signals and, only when the database is verifiably gone
+(`get_db()` None or `Database.is_connected()` False, or the closed-database
+message), stops cleanly with a log line; any other error is re-raised so real
+defects still fail loudly. Regression test
+`backend/tests/test_engine_shutdown_race.py` closes a throwaway database under
+a running loop and asserts the loop task exits without raising; it fails on
+the unfixed code and passes with the fix (6 consecutive passes locally).
+Full backend suite run locally on this branch (scratch venv, aee 1.5.3, CI
+command verbatim): 2705 passed, 1 failed, 101 skipped. The single failure
+(`test_phase133_stage0_inventory.py::test_builder_recomputation_skips_without_inputs`)
+is pre-existing and environmental: the skip-gate store exists on this VM so
+the builder runs, but a research-notes input file is absent here; it fails
+identically on the unmodified tree and is skipped in CI. The shared venv's
+stale aee 1.0.4 caused 52 unrelated failures on the first local attempt and
+was not modified; the scratch venv is documented in the run record.
+
+No claim's status, stage, or score was changed by this landing; the standing
+position is unchanged - the Indus script is not deciphered.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.

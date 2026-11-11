@@ -4,6 +4,11 @@
 // consumeInvite / completeSetup / revokeInvite do their
 // check-and-mutate with no intervening await, which in JS is the
 // in-memory equivalent of the single conditional UPDATE in D1.
+// consumeInvite also enforces the invites.redeemed_by → users(id)
+// FOREIGN KEY (migration 0002), as D1 does: a redemption write
+// naming a user row that does not exist throws. (Before 2026-11-11
+// it did not, which is why the suite could not see the production
+// redemption 500 — the handler consumed before creating the user.)
 // All rows are public so tests can assert hash-only storage directly.
 
 import type {
@@ -140,6 +145,15 @@ export class InMemoryIdentityStore implements IdentityStore, SessionStore {
       invite.expiresAt <= nowIso
     ) {
       return false;
+    }
+    // D1 enforces the FK at write time: the conditional UPDATE only
+    // throws when its WHERE clause matches a row, so the check sits
+    // after the gate conditions — a gate miss writes nothing and
+    // cannot throw, exactly as in D1.
+    if (!this.users.some((u) => u.id === userId)) {
+      throw new Error(
+        "D1_ERROR: SQLITE_CONSTRAINT_FOREIGNKEY: FOREIGN KEY constraint failed",
+      );
     }
     invite.redeemedBy = userId;
     invite.redeemedAt = nowIso;

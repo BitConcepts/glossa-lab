@@ -4,11 +4,18 @@
  * first-run setup (03). These are the ONLY screens an anonymous
  * visitor can reach; they render no program data.
  *
- * Failure language follows the wireframes exactly: sign-in failures
- * are undifferentiated (no hint which part was wrong, or whether
- * the account exists), and invite failures name the family of the
- * problem — spent, expired, revoked, invalid — without ever
- * confirming whether a guessed code existed.
+ * Failure language: the edge answers every expected refusal with a
+ * structured { code, message } whose message is written for the
+ * person reading it, and the banner shows that message verbatim —
+ * the real cause, not a generic "check the details". (The original
+ * forms paraphrased a few codes and discarded the message for the
+ * rest, so a server crash and a mistyped detail were
+ * indistinguishable — owner report 2026-11-11.) Two exceptions:
+ * sign-in failures stay undifferentiated (no hint which part was
+ * wrong, or whether the account exists — wireframe 01), and a bare
+ * 500 (code internal_error) or a request that never completed shows
+ * the truthful server-error sentence instead of the edge's internal
+ * wording.
  */
 
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
@@ -21,6 +28,23 @@ import {
   redeemInvite,
 } from "./api";
 import type { InvitePreview } from "./types";
+
+/** The truthful banner for a bare server failure: the edge answered
+ *  500 (internal_error) or the request never completed. The details
+ *  the person typed were not the problem, and the banner must not
+ *  claim they were. */
+const SERVER_ERROR_TEXT =
+  "The server hit an error and couldn't finish that. Nothing was saved — try again in a moment, and if it keeps happening, tell whoever runs this deployment.";
+
+/** Banner text for a failed auth request: the edge's own message
+ *  for every structured refusal; SERVER_ERROR_TEXT for a bare 500
+ *  (internal_error) or a non-API failure. */
+function failureText(err: unknown): string {
+  if (err instanceof CloudApiError && err.code !== "internal_error") {
+    return err.message;
+  }
+  return SERVER_ERROR_TEXT;
+}
 
 function Brand() {
   return (
@@ -68,11 +92,18 @@ export function LoginPage() {
       const next = new URLSearchParams(window.location.search).get("next");
       const dest = next && next.startsWith("/") && !next.startsWith("//") ? next : "/";
       window.location.assign(dest);
-    } catch {
-      // One undifferentiated message, whatever the edge answered:
-      // no hint which part was wrong or whether the account exists
-      // (wireframe 01's specimen sentence, verbatim).
-      setError("That username and password don't match our records. Check them and try again.");
+    } catch (err) {
+      // One undifferentiated message for a refused sign-in, whatever
+      // the edge answered: no hint which part was wrong or whether
+      // the account exists (wireframe 01's specimen sentence,
+      // verbatim). A server failure is NOT a refused sign-in, though:
+      // it gets the truthful server-error text, not a claim that the
+      // credentials were wrong.
+      setError(
+        err instanceof CloudApiError && err.status < 500
+          ? "That username and password don't match our records. Check them and try again."
+          : SERVER_ERROR_TEXT,
+      );
       setBusy(false);
     }
   };
@@ -199,19 +230,10 @@ export function SetupPage() {
         setOpen(false);
         return;
       }
-      if (err instanceof CloudApiError && err.code === "invalid_password") {
-        setError("Choose a password of at least 8 characters.");
-        return;
-      }
-      if (err instanceof CloudApiError && err.code === "setup_code_invalid") {
-        setError("That code is not valid. Check it and try again — a mistyped code is the usual cause.");
-        return;
-      }
-      if (err instanceof CloudApiError && err.code === "setup_expired") {
-        setError("That code has expired — codes live 24 hours. Ask whoever deployed this to issue a fresh one.");
-        return;
-      }
-      setError("Something interrupted setup. Check the code and try again.");
+      // Every other refusal shows the edge's own message (invalid
+      // or expired code, weak password, incomplete seed record); a
+      // bare 500 shows the server-error sentence.
+      setError(failureText(err));
     }
   };
 
@@ -401,34 +423,11 @@ export function InvitePage({ code }: { code: string }) {
       setDone(true);
     } catch (err) {
       setBusy(false);
-      if (err instanceof CloudApiError) {
-        switch (err.code) {
-          case "username_taken":
-            setError("That username is taken — choose another.");
-            return;
-          case "invalid_username":
-            setError("Usernames are 3–32 characters: lowercase letters, numbers, and _ . - only.");
-            return;
-          case "invite_email_mismatch":
-            setError("This invite was addressed to a different email address. Use the address the invite was sent to.");
-            return;
-          case "invalid_password":
-            setError("Choose a password of at least 8 characters.");
-            return;
-          case "invite_expired":
-            setError("This invite has expired since the page loaded. Ask for a fresh link.");
-            return;
-          case "invite_revoked":
-            setError("This invite was revoked since the page loaded. Ask for a fresh link.");
-            return;
-          case "invite_redeemed":
-            setError("This invite has already been used. If that account is yours, sign in instead.");
-            return;
-          default:
-            break;
-        }
-      }
-      setError("Something interrupted sign-up. Check the details and try again.");
+      // The banner shows the edge's own message for the refusal —
+      // email mismatch, username taken, weak password, an invite
+      // spent, expired, or revoked since the page loaded — and the
+      // server-error sentence for a bare 500.
+      setError(failureText(err));
     }
   };
 

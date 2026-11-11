@@ -295,14 +295,6 @@ export async function handleInviteRedeem(
 
   const passwordHash = await deps.hasher.hash(body.password);
   const userId = newId("usr");
-
-  // Atomic check-and-consume (single conditional UPDATE in D1). If
-  // the gate fails, a concurrent redemption won — nothing is created.
-  const consumed = await deps.store.consumeInvite(codeHash, userId, nowIso);
-  if (!consumed) {
-    return refuse(400, "invite_redeemed", "This invite has already been used.");
-  }
-
   const user: UserRow = {
     id: userId,
     username,
@@ -313,7 +305,25 @@ export async function handleInviteRedeem(
     createdAt: nowIso,
     removedAt: null,
   };
+  // The user row is created BEFORE the invite is consumed.
+  // invites.redeemed_by is a FOREIGN KEY to users(id) (migration
+  // 0002): consuming first made D1 throw SQLITE_CONSTRAINT_FOREIGNKEY
+  // and every production redemption failed with a 500 (audit_log
+  // edge_error, 2026-11-11T20:28:48Z). The vitest store doubles did
+  // not enforce the FK, so the suite could not see it; the in-memory
+  // double enforces it now (test/fake-identity.ts).
   await deps.store.createUser(user);
+
+  // Atomic check-and-consume (single conditional UPDATE in D1) —
+  // still the gate against concurrent redemption of the same code.
+  const consumed = await deps.store.consumeInvite(codeHash, userId, nowIso);
+  if (!consumed) {
+    // A concurrent redemption won the gate. Compensate: remove the
+    // just-created user (removed + disabled, so it can never sign
+    // in) rather than leave an orphaned active account behind.
+    await deps.store.markUserRemoved(userId, nowIso);
+    return refuse(400, "invite_redeemed", "This invite has already been used.");
+  }
   if (Object.keys(invite.workspaceGrants).length > 0) {
     await deps.store.replaceWorkspaceRoles(
       userId,

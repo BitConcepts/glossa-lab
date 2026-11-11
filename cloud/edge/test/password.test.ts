@@ -22,17 +22,17 @@ describe("defaultHasher — real PBKDF2 implementation", () => {
   it("is the Pbkdf2Hasher with the OWASP parameters", () => {
     expect(defaultHasher).toBeInstanceOf(Pbkdf2Hasher);
     expect(PBKDF2_PARAMS.digest).toBe("SHA-512");
-    expect(PBKDF2_PARAMS.iterations).toBe(210000);
+    expect(PBKDF2_PARAMS.iterations).toBe(100000);
     expect(PBKDF2_PARAMS.saltLength).toBe(16);
     expect(PBKDF2_PARAMS.keyLength).toBe(32);
   });
 
-  it("hashes to the $pbkdf2-sha512$i=210000$ encoded form and verifies", async () => {
+  it("hashes to the $pbkdf2-sha512$i=100000$ encoded form and verifies", async () => {
     const encoded = await defaultHasher.hash("correct horse battery staple");
-    expect(encoded.startsWith("$pbkdf2-sha512$i=210000$")).toBe(true);
+    expect(encoded.startsWith("$pbkdf2-sha512$i=100000$")).toBe(true);
     expect(encoded).not.toContain("correct horse");
     const parts = encoded.split("$");
-    // ["", "pbkdf2-sha512", "i=210000", salt, derived]
+    // ["", "pbkdf2-sha512", "i=100000", salt, derived]
     expect(parts).toHaveLength(5);
     expect(atob(parts[3])).toHaveLength(16);
     expect(atob(parts[4])).toHaveLength(32);
@@ -61,12 +61,12 @@ describe("defaultHasher — real PBKDF2 implementation", () => {
       "",
       "not-a-hash",
       "$pbkdf2-sha512$",
-      "$pbkdf2-sha512$i=210000$",
-      "$pbkdf2-sha512$i=210000$AAAA",
+      "$pbkdf2-sha512$i=100000$",
+      "$pbkdf2-sha512$i=100000$AAAA",
       "$pbkdf2-sha512$i=abc$AAAA$AAAA",
       "$pbkdf2-sha512$i=0$AAAA$AAAA",
-      "$pbkdf2-sha512$i=210000$!!!not-base64!!!$AAAA",
-      "$pbkdf2-sha512$i=210000$AAAA$AAAA$EXTRA",
+      "$pbkdf2-sha512$i=100000$!!!not-base64!!!$AAAA",
+      "$pbkdf2-sha512$i=100000$AAAA$AAAA$EXTRA",
       // The retired Argon2id format is foreign and must not verify.
       "$argon2id$v=19$m=19456,t=2,p=1$t1iz/zBYRf7RTfwTdFCRKQ$lNLWCmdnBx6TI3Jr43uoUmTaU+z011YiSOWOwFEe+m0",
       "fake$0123456789abcdef",
@@ -103,7 +103,7 @@ describe("defaultHasher — real PBKDF2 implementation", () => {
   });
 
   it("the dummy hash is a live encoding in the current format", () => {
-    expect(DUMMY_PASSWORD_HASH.startsWith("$pbkdf2-sha512$i=210000$")).toBe(true);
+    expect(DUMMY_PASSWORD_HASH.startsWith("$pbkdf2-sha512$i=100000$")).toBe(true);
   });
 
   it("the dummy hash does not verify for an arbitrary password", async () => {

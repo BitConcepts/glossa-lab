@@ -13514,3 +13514,34 @@ standing position is unchanged - the Indus script is not deciphered.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-10 - Spec 083 KDF amendment 2: PBKDF2 iterations capped at the Workers WebCrypto maximum
+
+Amendment 1's PBKDF2 parameters (210,000 iterations, the OWASP
+recommendation) exceed a hard platform limit: the production Workers
+WebCrypto implementation refuses PBKDF2 iteration counts above
+100,000, so `hash()` threw `NotSupportedError` on every call and the
+live first-run setup still answered 500 after the amendment-1
+deploy. The failure was named by the PR #550 error mirror, which
+captured the exception into the D1 audit log (event `edge_error`,
+2026-11-11T03:55Z, stack through `Pbkdf2Hasher.hash` from
+`handleSetup`). Neither the Node test suite nor the local workerd
+build enforces the cap (both accept 210,000; amendment 1's workerd
+proof was real, for the local runtime), so the defect survived two
+evidence tiers.
+
+Fix: iterations 210,000 -> 100,000, the platform maximum, verified
+two-sided on the production runtime before this change was written
+(a throwaway probe Worker, deleted after the measurement: n=100000
+derives 32 bytes; n=100001 and n=210000 refuse with the same
+NotSupportedError). `DUMMY_PASSWORD_HASH` regenerated at the new
+count; test pins updated; `verify()` unchanged (it derives with the
+count stored in the string; no stored hashes exist, because setup
+never completed). Full record:
+`specs/083-cloud-edition/records/kdf-amendment-2-2026-11-10.md`.
+
+No claim's status, stage, or score was changed by this landing; the
+standing position is unchanged - the Indus script is not deciphered.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

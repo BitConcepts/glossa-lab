@@ -11,6 +11,14 @@ the remaining T059 proofs run, and the glassbreak code is
 generated and delivered (section 8.5). No glassbreak setup code
 has been generated yet.
 
+**Launch update (2026-11-11): LAUNCHED.** The setup completed
+2026-11-11T13:53:33.868Z and the owner account is live; section 9
+carries the completion record, the post-launch fixes, and the
+session-proof remainder (P4-P6, P9-P12), which is named, not
+waived. The desktop-origin framing in sections 1-8 is superseded
+where section 9 says so: the origin host is the mini-server
+under the approved Linux re-stand-up.
+
 ## 1. The sequence, leg by leg
 
 | Leg | Verdict | Evidence |
@@ -310,3 +318,90 @@ route itself.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 9. LAUNCHED addendum - 2026-11-11
+
+### 9.1 The origin moved (supersedes the desktop legs)
+
+The desktop origin this record was written against was lost with
+the 2026-11-09 desktop format. Under the approved Linux
+re-stand-up plan the backend (control plane) now runs on the
+mini-server (systemd user unit `glossa-lab-backend`, database
+restored from custody snapshot 2), the `glossa-desktop` tunnel is
+served from the mini-server, and the desktop-side credential
+placement of resume step 4 was discharged as the mini-server
+store placement on 2026-11-10 (the service credential's presence
+verified by fingerprint; its value in no record). T057 was re-run
+live against the mini-server dataset during Stage 2/3: PASS,
+violations=0. Resume steps 2 and 4 are therefore discharged in
+their re-stand-up form; the Desktop Access routing for them is
+moot.
+
+### 9.2 Proof dispositions at launch
+
+| Proof | Disposition |
+|---|---|
+| P1 Anonymous wall | PASS (live-route legs). |
+| P2 Noindex sweep | PASS (live-route legs). |
+| P3 Glassbreak setup | DISCHARGED 2026-11-11 by the completion itself (section 9.3). |
+| P7 Desktop-offline 503 | PASS 2026-11-10 on the live route (origin-down 503 and restore legs; the origin stopped was the mini-server backend, the re-stand-up form of this proof). |
+| P8 Credential-in-wrong-position | PASS (edge legs). |
+| P4, P5, P6, P9, P10, P11, P12 | NOT RUN - every one needs a live session (owner, or member/viewer sessions created through the owner's invites). The only credential is the owner's, handed over at completion (section 9.3); these proofs run when the owner signs in or issues a test invite. Named here as the launch's open remainder, not waived. |
+
+### 9.3 Setup completion (P3)
+
+The completion was blocked for a day by two production-runtime
+defects in the edge password hasher, fixed by the KDF amendments
+(PR #549: Argon2id via hash-wasm can never run on Workers, which
+forbids dynamic WASM compilation; PR #551/#552: the production
+WebCrypto caps PBKDF2 at 100,000 iterations, proven two-sided by
+a throwaway probe Worker on the production runtime after neither
+Node's WebCrypto nor the local workerd build reproduced the cap).
+The records are `records/kdf-amendment-2026-11-10.md` and
+`records/kdf-amendment-2-2026-11-10.md`.
+
+On 2026-11-11 a fresh setup code was seeded through the D1 API
+(the 2026-11-10 seed had expired; the seed insert is guarded by
+`completed_at IS NULL`) and consumed immediately: POST /setup
+returned 201; user `glassbreak` (global_type owner, status
+active) created; `setup_state.completed_at` =
+2026-11-11T13:53:33.868Z. One wrinkle, recorded plainly: the
+completion script asserted HTTP 200, received 201, and exited
+after the account was created but before printing the generated
+temporary password, which was therefore unrecoverable. The stored
+hash was replaced through the D1 API with a PBKDF2 hash
+(production parameters) of a fresh temporary password, and a live
+POST /login with it returned 200 with a session cookie. The
+temporary credential was handed to the owner in the Glossa-Lab
+chat with the instruction to sign in and change it in account
+settings; its value is in no record. Post-completion, POST
+/api/auth/setup answers 401 from the scope middleware: the setup
+handler is unreachable without a session.
+
+### 9.4 Post-launch fixes and the final deploy
+
+Two small PRs landed after the completion and were deployed
+together (deploy run `43069253827`, from main `fcf48bbf`,
+completed/success): PR #553 (the auth pages' mobile layout: the
+centered 100vh wrapper could push the submit button off a phone
+screen; fixed with dvh units, safe centering, and safe-area
+padding; its dist rebuild also healed the committed-dist drift
+left by PR #531) and PR #554 (the `[observability]` block encoded
+in wrangler.toml, after the 2026-11-11 morning deploy cleared the
+API-enabled setting). Acceptance, read back after the deploy:
+observability still enabled at sampling 1.0 (the #554 fix proven
+in production); the mini-server origin checkout pulled to
+`fcf48bbf` and the backend restarted, health answering by
+identity (the exact Spec 082 six-key payload); the live /login
+page serving the fixed stylesheet asset. Standing consequence,
+recorded for the next operator: the served UI comes from the
+origin checkout, so a frontend-affecting merge is not live until
+the origin checkout is pulled and the backend restarted - the
+edge deploy alone does not move it.
+
+### 9.5 State
+
+**LAUNCHED 2026-11-11** (setup completion timestamp
+2026-11-11T13:53:33.868Z). Open remainder: the session proofs of
+section 9.2, which need the owner's session or owner-issued test
+invites.

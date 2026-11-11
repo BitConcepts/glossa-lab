@@ -29,6 +29,7 @@ import {
   type Harness,
 } from "./harness";
 import { Pbkdf2Hasher, PBKDF2_PARAMS } from "../src/password";
+import { InMemoryIdentityStore } from "./fake-identity";
 import { D1IdentityStore } from "../src/identity-store";
 import { D1SessionStore } from "../src/session-store";
 
@@ -307,6 +308,109 @@ describe("T014 / C083-2 — invite lifecycle", () => {
     expect(taken.status).toBe(409);
     expect(h.store.invites[0].redeemedAt).toBeNull();
     expect(h.store.users).toHaveLength(1);
+  });
+});
+
+// ---------------------------------------------------------------------------
+
+// Regression (2026-11-11): production redemption 500'd because
+// handleInviteRedeem consumed the invite before creating the user,
+// and invites.redeemed_by is a FOREIGN KEY to users(id) — D1 threw
+// SQLITE_CONSTRAINT_FOREIGNKEY (audit_log edge_error
+// 2026-11-11T20:28:48Z). The in-memory double now enforces that FK
+// (fake-identity.ts), so every redemption test above exercises the
+// production constraint; this block pins the end-to-end behaviour
+// and the concurrent-loser compensation explicitly.
+
+/** Store double for the lost-race test: when winnerId is set, the
+ *  consume gate behaves as if a concurrent redemption of the same
+ *  code landed first — the invite is stamped redeemed by the winner
+ *  (an already-existing user, so the FK holds) and the gate reports
+ *  false to the caller being tested. */
+class ConcurrentWinnerStore extends InMemoryIdentityStore {
+  winnerId: string | null = null;
+  async consumeInvite(
+    codeHash: string,
+    userId: string,
+    nowIso: string,
+  ): Promise<boolean> {
+    if (this.winnerId) {
+      const invite = this.invites.find((i) => i.codeHash === codeHash);
+      if (invite && !invite.redeemedAt) {
+        invite.redeemedBy = this.winnerId;
+        invite.redeemedAt = nowIso;
+      }
+      return false;
+    }
+    return super.consumeInvite(codeHash, userId, nowIso);
+  }
+}
+
+describe("T014 regression — invite redemption under D1 FK enforcement", () => {
+  it("redemption succeeds end to end under D1 FK enforcement (regression: consume-before-create 500)", async () => {
+    const h = makeHarness();
+    const admin = await setupOwner(h);
+    await seedWorkspace(h);
+    const { json } = await createInvite(h, admin, {
+      workspace_grants: { ws_indus: "member" },
+    });
+    const code = (json as { code: string }).code;
+    // With the pre-fix order this call threw SQLITE_CONSTRAINT_
+    // FOREIGNKEY inside consumeInvite and the route answered 500:
+    // the FK-enforcing double makes that failure mode visible here.
+    const res = await h.call(
+      `/invite/${code}/redeem`,
+      post("", { username: "alice", password: PASSWORDS.alice }),
+    );
+    expect(res.status).toBe(201);
+    const stored = h.store.users.find((u) => u.username === "alice")!;
+    expect(stored.status).toBe("active");
+    expect(stored.removedAt).toBeNull();
+    expect(h.store.invites[0].redeemedBy).toBe(stored.id);
+    expect(await h.store.getWorkspaceRoles(stored.id)).toEqual({
+      ws_indus: "member",
+    });
+    // The redemption session authenticates, and the account can
+    // sign in afresh — it is a real, active account.
+    const token = sessionTokenFromResponse(res);
+    const api = await h.call("/api/claims", { cookie: token });
+    expect(api.status).toBe(200);
+    await expect(h.cookieFor("alice")).resolves.toBeTruthy();
+  });
+
+  it("concurrent-loser redemption is refused invite_redeemed and its just-created user is removed, sessionless, and cannot sign in", async () => {
+    const store = new ConcurrentWinnerStore();
+    const h = makeHarness({ store });
+    const admin = await setupOwner(h);
+    const { json } = await createInvite(h, admin);
+    const code = (json as { code: string }).code;
+    // The race: a concurrent redemption of the same code (by the
+    // owner's own second attempt, usr_glassbreak) wins the consume
+    // gate between this request's peek and its consume.
+    store.winnerId = "usr_glassbreak";
+    const res = await h.call(
+      `/invite/${code}/redeem`,
+      post("", { username: "alice", password: PASSWORDS.alice }),
+    );
+    expect(res.status).toBe(400);
+    expect(((await res.json()) as { error: { code: string } }).error.code).toBe(
+      "invite_redeemed",
+    );
+    // The invite belongs to the winner.
+    expect(h.store.invites[0].redeemedBy).toBe("usr_glassbreak");
+    // Compensation: the user created for the losing attempt was
+    // removed (removed_at set, status disabled), holds no session,
+    // and cannot sign in — no orphaned active account remains.
+    const orphan = h.store.users.find((u) => u.username === "alice")!;
+    expect(orphan).toBeDefined();
+    expect(orphan.removedAt).not.toBeNull();
+    expect(orphan.status).toBe("disabled");
+    expect(h.store.sessions.some((s) => s.userId === orphan.id)).toBe(false);
+    const login = await h.call(
+      "/login",
+      post("/login", { username: "alice", password: PASSWORDS.alice }),
+    );
+    expect(login.status).toBe(401);
   });
 });
 

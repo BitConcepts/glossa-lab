@@ -30,8 +30,9 @@ export interface Harness {
 export function makeHarness(opts: {
   hasher?: PasswordHasher;
   frontStatus?: number;
+  store?: InMemoryIdentityStore;
 } = {}): Harness {
-  const store = new InMemoryIdentityStore();
+  const store = opts.store ?? new InMemoryIdentityStore();
   const frontRequests: Request[] = [];
   const front = vi.fn(async (r: Request) => {
     frontRequests.push(r);

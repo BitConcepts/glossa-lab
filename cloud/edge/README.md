@@ -118,10 +118,13 @@ hash-wasm inlines its Argon2 WASM as base64 and compiles it at
 runtime, and Workers disallows dynamic WASM compilation, so every
 `hash()` threw a CompileError in production (see
 `specs/083-cloud-edition/records/kdf-amendment-2026-11-10.md`).
-Parameters are the OWASP Password Storage Cheat Sheet
-recommendation for PBKDF2-HMAC-SHA512: **210,000 iterations, salt
-16 bytes, output 32 bytes**. The encoded hash
-(`$pbkdf2-sha512$i=210000$…`) is the only password residue in
+Parameters: PBKDF2-HMAC-SHA512 at **100,000 iterations, salt
+16 bytes, output 32 bytes** — the Workers WebCrypto maximum
+(the runtime refuses higher counts; the OWASP recommendation of
+210,000 exceeds the cap — see
+`specs/083-cloud-edition/records/kdf-amendment-2-2026-11-10.md`).
+The encoded hash
+(`$pbkdf2-sha512$i=100000$…`) is the only password residue in
 D1. Usernames are 3–32 chars of `[a-z0-9_.-]`, normalized to
 lowercase, unique case-insensitively (functional unique index in
 migration 0004).

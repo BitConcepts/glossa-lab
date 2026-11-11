@@ -63,3 +63,19 @@ amendment's proof is the two-sided production probe above plus,
 after deploy, the live setup completion itself
 (setup_state.completed_at set, one user row, a successful login) —
 the first full exercise of the production path.
+
+## Completion note (2026-11-10, later the same evening)
+
+PR #551 landed the parameter change in `password.ts` and
+`password.test.ts` and passed the PR CI profile 10/10 — but a third
+pin lived in `identity.test.ts` (the T015 block:
+`PBKDF2_PARAMS.iterations` and the encoded-prefix assertion), and
+PR CI's cloud smoke job does not run that file. The deploy
+workflow's pre-deploy step runs the FULL edge suite; it caught the
+stale pin (deploy run 42958581801 failed at the test step, 108/109
+edge tests passed, production untouched — the deploy never ran).
+This follow-on PR updates the two remaining pins and the
+`cloud/edge/README.md` parameter text. Standing lesson: for edge
+changes, the deploy workflow's test step is part of the gate
+profile, and parameter changes are swept repo-wide by code search,
+not file by file.

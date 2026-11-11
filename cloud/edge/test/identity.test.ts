@@ -752,10 +752,10 @@ describe("PBKDF2 hasher (T015, KDF amended 2026-11-10) — real implementation, 
   it("hashes in encoded PBKDF2 form and verifies", async () => {
     const hasher = new Pbkdf2Hasher();
     expect(PBKDF2_PARAMS.digest).toBe("SHA-512");
-    expect(PBKDF2_PARAMS.iterations).toBe(210000);
+    expect(PBKDF2_PARAMS.iterations).toBe(100000);
     expect(PBKDF2_PARAMS.saltLength).toBe(16);
     const encoded = await hasher.hash("a-real-password-123");
-    expect(encoded.startsWith("$pbkdf2-sha512$i=210000$")).toBe(true);
+    expect(encoded.startsWith("$pbkdf2-sha512$i=100000$")).toBe(true);
     expect(encoded).not.toContain("a-real-password-123");
     await expect(hasher.verify("a-real-password-123", encoded)).resolves.toBe(true);
     await expect(hasher.verify("wrong-password-123", encoded)).resolves.toBe(false);

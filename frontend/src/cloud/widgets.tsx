@@ -159,7 +159,7 @@ export function CloudWorkspaceCard({
           <span>▾</span>
         </div>
         {sub && (
-          <div style={{ fontSize: 11, color: "#a8c2e2", marginTop: 2, lineHeight: 1.35 }}>{sub}</div>
+          <div className="cl-ws-desc" title={sub} style={{ fontSize: 11, color: "#a8c2e2", marginTop: 2, lineHeight: 1.35 }}>{sub}</div>
         )}
         <div style={{ display: "flex", gap: 5, flexWrap: "wrap", marginTop: 6 }}>
           {activeWs && (
@@ -217,7 +217,7 @@ export function CloudWorkspaceCard({
                     : <span className="cl-chip on-dark">{w.role}</span>}
                 </span>
                 {w.description && (
-                  <span style={{ display: "block", fontSize: 11, color: "#a8c2e2", marginTop: 2, lineHeight: 1.4 }}>
+                  <span className="cl-ws-desc" title={w.description} style={{ fontSize: 11, color: "#a8c2e2", marginTop: 2, lineHeight: 1.4 }}>
                     {w.description}
                   </span>
                 )}

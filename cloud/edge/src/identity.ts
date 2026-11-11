@@ -494,6 +494,35 @@ export function slugify(name: string): string {
 }
 
 /**
+ * The per-user access-matrix body shared by GET and PUT
+ * /api/admin/users/:id/workspaces. Both verbs return this identical
+ * full shape: the Admin matrix editor stores the PUT response as its
+ * new matrix state and renders workspaces[] from it, so a PUT that
+ * omitted workspaces[] crashed that view on re-render (production,
+ * 2026-11-11 — the role change itself landed and audited fine).
+ */
+async function accessMatrixBody(deps: IdentityDeps, target: UserRow) {
+  const roles = await deps.store.getWorkspaceRoles(target.id);
+  const workspaces = await deps.store.listWorkspaces();
+  return {
+    user_id: target.id,
+    global_type: target.globalType,
+    // Global Admin/Owner implicit Workspace Admin is NOT stored.
+    implicit_workspace_admin:
+      target.globalType === "admin" || target.globalType === "owner",
+    workspace_roles: roles,
+    workspaces: workspaces.map((w) => ({
+      id: w.id,
+      name: w.name,
+      slug: w.slug,
+      description: w.description,
+      archived_at: w.archivedAt,
+      role: roles[w.id] ?? null,
+    })),
+  };
+}
+
+/**
  * The admin router. `path` is the normalized pathname starting with
  * /api/admin. Returns null when no admin route matches (caller 404s).
  */
@@ -615,25 +644,8 @@ export async function handleAdminApi(
   if (userSub?.sub === "workspaces" && (method === "GET" || method === "PUT")) {
     const target = await deps.store.findUserById(userSub.id);
     if (!target) return jsonError(404, "user_not_found", "No such user.");
-    const workspaces = await deps.store.listWorkspaces();
     if (method === "GET") {
-      const roles = await deps.store.getWorkspaceRoles(target.id);
-      return json(200, {
-        user_id: target.id,
-        global_type: target.globalType,
-        // Global Admin/Owner implicit Workspace Admin is NOT stored.
-        implicit_workspace_admin:
-          target.globalType === "admin" || target.globalType === "owner",
-        workspace_roles: roles,
-        workspaces: workspaces.map((w) => ({
-          id: w.id,
-          name: w.name,
-          slug: w.slug,
-          description: w.description,
-          archived_at: w.archivedAt,
-          role: roles[w.id] ?? null,
-        })),
-      });
+      return json(200, await accessMatrixBody(deps, target));
     }
     // PUT: replace the full stored set.
     const body = await readJsonBody(request);
@@ -669,11 +681,9 @@ export async function handleAdminApi(
     await auditBestEffort(deps, actor, "workspace_matrix_changed", target.id, {
       from: before, to: grants,
     });
-    return json(200, {
-      user_id: target.id,
-      global_type: target.globalType,
-      workspace_roles: grants,
-    });
+    // Same full shape as GET (see accessMatrixBody): the client
+    // stores this response as its matrix state.
+    return json(200, await accessMatrixBody(deps, target));
   }
 
   // ---- invites ----

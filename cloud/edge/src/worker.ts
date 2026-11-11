@@ -87,6 +87,32 @@ export async function handleRequest(
     return withNoindex(await route(request, env, ctx, deps));
   } catch (err) {
     console.error("glossa-edge: unhandled error", err);
+    // Durable copy, best-effort: reading Workers Logs needs a
+    // Cloudflare read permission the operator may not hold in the
+    // moment, while the audit log is readable through the D1 API
+    // the operator already uses. A failed insert never masks the
+    // original error path (Spec 083 error-visibility follow-up,
+    // 2026-11-10: the /setup 500 carried no readable exception).
+    try {
+      const e = err as Error;
+      await env.DB.prepare(
+        `INSERT INTO audit_log (id, ts, actor_id, actor_label, event, target, detail)
+         VALUES (?, ?, NULL, 'edge', 'edge_error', ?, ?)`,
+      )
+        .bind(
+          crypto.randomUUID(),
+          new Date().toISOString(),
+          `${request.method} ${new URL(request.url).pathname}`,
+          JSON.stringify({
+            name: e?.name ?? "unknown",
+            message: e?.message ?? String(err),
+            stack: (e?.stack ?? "").slice(0, 800),
+          }),
+        )
+        .run();
+    } catch {
+      /* best effort: the 500 below is the contract */
+    }
     return withNoindex(
       jsonError(500, "internal_error", "The edge failed to handle this request."),
     );

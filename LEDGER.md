@@ -13457,6 +13457,60 @@ has been built, and no harness leg has run. Stages 1-3
 stand open in the owner's priority order (encryption,
 library, harness). The standing position is unchanged -
 the Indus script is not deciphered.
+---
+
+## 2026-11-10 - Spec 083 KDF amendment: edge password hasher moves from Argon2id (hash-wasm) to PBKDF2 (WebCrypto)
+
+The live first-run setup could not complete: POST /setup with the
+correct seeded code and a valid password answered HTTP 500, D1
+`setup_state.completed_at` stayed NULL, and `users` stayed at 0
+rows. Root cause: `cloud/edge/src/password.ts` created hashes with
+Argon2id via `hash-wasm`, which inlines its Argon2 WASM as base64
+and compiles it at runtime — and Cloudflare Workers forbids dynamic
+WebAssembly compilation, so `hash()` throws `CompileError:
+WebAssembly.compile(): Wasm code generation disallowed by embedder`
+on every call (reproduced under workerd, 2026-11-10). `verify()`
+survives in the runtime, which kept the defect one-sided and quiet.
+Every registration path (setup and invite redemption alike) hashes
+through the same `defaultHasher`, so no account of any kind could
+be created on the live deployment. The suite missed it because
+every flow test injects FakeHasher and the real-hasher tests ran
+under Node, where the compilation is allowed: the production path
+was never exercised on the production runtime shape. Full record:
+`specs/083-cloud-edition/records/kdf-amendment-2026-11-10.md`.
+
+Fix: `password.ts` rewritten on WebCrypto PBKDF2 (native to
+Workers; no WASM, no dependency — `hash-wasm` removed from
+`cloud/edge/package.json`, leaving the Worker with zero runtime
+dependencies). PBKDF2-HMAC-SHA512 at the OWASP recommendation:
+210,000 iterations, 16-byte salt, 32-byte output, encoded as
+`$pbkdf2-sha512$i=210000$<base64 salt>$<base64 key>`. `verify()`
+parses the iteration count from the stored string (future bumps
+stay verifiable), compares in constant time, and returns false —
+never throws — for malformed or foreign strings, including retired
+`$argon2id$` ones. `DUMMY_PASSWORD_HASH` replaced with a real
+encoding in the new format (T016 timing discipline unchanged). The
+trade is stated in the amendment record: PBKDF2 is not memory-hard
+like Argon2id, and the 2026-10-30 audit's parameter verdict is
+superseded on implementation only. No migration: the users table
+is empty, because the defect prevented the first account from ever
+being created.
+
+Verification: new `cloud/edge/test/password.test.ts` pins the real
+`defaultHasher` (encoded prefix, right/wrong password, malformed
+and foreign strings, stored-iteration-count derivations, dummy
+hash liveness); FakeHasher's foreign-format guard and the T015
+block in `identity.test.ts` moved to the new format; edge suite
+109/109 vitest passed and `tsc --noEmit` clean. Workerd proof (a
+scratch probe importing the new password.ts under `wrangler dev
+--local`, not committed): hash() returned
+`$pbkdf2-sha512$i=210000$FseehKUKT343OQEG79cPAw==$jqjZGpGFn/ipbnQ8HiF0GuX/q7yzr80EDK2hTfy9/3k=`,
+verify right=true, wrong=false, malformed=false, retired-Argon2
+string=false, dummy arbitrary-guess=false — hash creation succeeds
+inside the runtime that refused the old implementation.
+
+No claim's status, stage, or score was changed by this landing; the
+standing position is unchanged - the Indus script is not deciphered.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.

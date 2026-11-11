@@ -290,15 +290,15 @@ export class InMemoryIdentityStore implements IdentityStore, SessionStore {
   }
 }
 
-/** Fast deterministic hasher for API-flow tests (real Argon2id is
- *  exercised separately in password.test-scale tests). NOT for prod. */
+/** Fast deterministic hasher for API-flow tests (the real PBKDF2
+ *  hasher is exercised separately in password.test.ts). NOT for prod. */
 export class FakeHasher {
   async hash(password: string): Promise<string> {
     const digest = await sha256HexForTest(`fake-salt:${password}`);
     return `fake$${digest}`;
   }
   async verify(password: string, encodedHash: string): Promise<boolean> {
-    if (encodedHash.startsWith("$argon2id$")) return false;
+    if (encodedHash.startsWith("$pbkdf2-sha512$")) return false;
     return (await this.hash(password)) === encodedHash;
   }
 }

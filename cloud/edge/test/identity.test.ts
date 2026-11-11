@@ -779,6 +779,67 @@ describe("T020/T021 / C083-5,16,19 — admin API", () => {
     });
   });
 
+  it("access matrix: PUT returns the same full shape as GET, workspaces[] reflecting the just-saved roles", async () => {
+    const h = makeHarness();
+    const admin = await setupOwner(h);
+    await seedWorkspace(h);
+    await seedWorkspace(h, "ws_other", "Other Study");
+    await seedUser(h, "alice", "member");
+
+    const getBody = (await (
+      await h.call("/api/admin/users/usr_alice/workspaces", { cookie: admin })
+    ).json()) as Record<string, unknown>;
+    const put = await h.call("/api/admin/users/usr_alice/workspaces", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ workspace_roles: { ws_indus: "admin" } }),
+      cookie: admin,
+    });
+    expect(put.status).toBe(200);
+    const putBody = (await put.json()) as {
+      user_id: string;
+      global_type: string;
+      implicit_workspace_admin: boolean;
+      workspace_roles: Record<string, string>;
+      workspaces: {
+        id: string; name: string; slug: string;
+        description: string | null; archived_at: string | null;
+        role: string | null;
+      }[];
+    };
+    // The Admin matrix editor renders matrix.workspaces from the PUT
+    // response; the pre-fix PUT omitted workspaces[] entirely and the
+    // view crashed on re-render (production, 2026-11-11).
+    expect(Object.keys(putBody).sort()).toEqual(Object.keys(getBody).sort());
+    expect(putBody.user_id).toBe("usr_alice");
+    expect(putBody.global_type).toBe("member");
+    expect(putBody.implicit_workspace_admin).toBe(false);
+    expect(putBody.workspace_roles).toEqual({ ws_indus: "admin" });
+    // workspaces[] carries the full GET entry shape, with the role
+    // column reflecting the roles saved by this very PUT.
+    const getWorkspaces = getBody.workspaces as typeof putBody.workspaces;
+    expect(putBody.workspaces.map((w) => w.id)).toEqual(getWorkspaces.map((w) => w.id));
+    for (const w of putBody.workspaces) {
+      expect(Object.keys(w).sort()).toEqual(
+        ["archived_at", "description", "id", "name", "role", "slug"],
+      );
+    }
+    expect(putBody.workspaces.map((w) => w.role)).toEqual(["admin", null]);
+
+    // The implicit-admin flag recomputes too: glassbreak (global
+    // owner) PUTs an empty set and the flag reads true in the reply.
+    const ownerPut = await h.call("/api/admin/users/usr_glassbreak/workspaces", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ workspace_roles: {} }),
+      cookie: admin,
+    });
+    expect(ownerPut.status).toBe(200);
+    const ownerBody = (await ownerPut.json()) as typeof putBody;
+    expect(ownerBody.implicit_workspace_admin).toBe(true);
+    expect(ownerBody.workspaces.map((w) => w.role)).toEqual([null, null]);
+  });
+
   it("Guest granted a Member workspace role is refused (Viewer cap); Viewer itself is allowed", async () => {
     const h = makeHarness();
     const admin = await setupOwner(h);

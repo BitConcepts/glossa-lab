@@ -100,7 +100,7 @@ by the edge itself from D1 — never forwarded to the origin:
 
 | Route | Who | Behavior |
 |---|---|---|
-| `POST /login` `{username, password}` | anyone | 200 + session cookie on success; unknown user, wrong password, disabled, and removed all answer the identical 401, and every attempt (success and failure) is audit-logged. A dummy-hash Argon2 verify runs for unknown users so timing does not separate them. |
+| `POST /login` `{username, password}` | anyone | 200 + session cookie on success; unknown user, wrong password, disabled, and removed all answer the identical 401, and every attempt (success and failure) is audit-logged. A dummy-hash PBKDF2 verify runs for unknown users so timing does not separate them. |
 | `POST /logout` | session holder | Deletes the session row (instant revocation), clears the cookie, audit-logged. |
 | `POST /invite/:code/redeem` `{username, password, email?}` | invite holder | **Registration path 1 of 2.** Creates a `member` user, applies the invite's workspace grants as initial `workspace_roles`, issues a session. |
 | `POST /setup` `{code, password}` | setup-code holder | **Registration path 2 of 2.** Creates the `owner` from the seed record (below). Once any admin/owner exists, `/setup` — page and API — answers 404 forever. |
@@ -110,14 +110,18 @@ There is **no other account-creation route** in the Worker; stray
 registration paths (`/register`, `/api/users`, …) are refused 404
 for write methods as defensive depth (FR-001, C083-1).
 
-**Passwords (Argon2id, T015).** Implementation: **Argon2id via
-`hash-wasm`** — its WASM is inlined as base64, so it runs inside the
-Workers isolate with no native binding (Node-native Argon2 packages
-cannot load in workerd). Parameters are the OWASP Password Storage
-Cheat Sheet's first Argon2id recommendation, inside the 128 MB
-isolate budget: **memory 19,456 KiB (19 MiB), iterations 2,
-parallelism 1, salt 16 bytes, output 32 bytes**. The encoded hash
-(`$argon2id$v=19$m=19456,t=2,p=1$…`) is the only password residue in
+**Passwords (PBKDF2, T015; KDF amended 2026-11-10).**
+Implementation: **PBKDF2-HMAC-SHA512 via WebCrypto**
+(`crypto.subtle`), native to the Workers runtime. The original
+T015 choice, Argon2id via `hash-wasm`, cannot run on Workers:
+hash-wasm inlines its Argon2 WASM as base64 and compiles it at
+runtime, and Workers disallows dynamic WASM compilation, so every
+`hash()` threw a CompileError in production (see
+`specs/083-cloud-edition/records/kdf-amendment-2026-11-10.md`).
+Parameters are the OWASP Password Storage Cheat Sheet
+recommendation for PBKDF2-HMAC-SHA512: **210,000 iterations, salt
+16 bytes, output 32 bytes**. The encoded hash
+(`$pbkdf2-sha512$i=210000$…`) is the only password residue in
 D1. Usernames are 3–32 chars of `[a-z0-9_.-]`, normalized to
 lowercase, unique case-insensitively (functional unique index in
 migration 0004).

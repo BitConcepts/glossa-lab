@@ -28,7 +28,7 @@ import {
   sha256Hex,
   type Harness,
 } from "./harness";
-import { Argon2idHasher, ARGON2_PARAMS } from "../src/password";
+import { Pbkdf2Hasher, PBKDF2_PARAMS } from "../src/password";
 import { D1IdentityStore } from "../src/identity-store";
 import { D1SessionStore } from "../src/session-store";
 
@@ -748,14 +748,14 @@ describe("T022 / C083-12 — audit completeness at the edge", () => {
 
 // ---------------------------------------------------------------------------
 
-describe("Argon2id hasher (T015) — real implementation, OWASP-floor params", () => {
-  it("hashes in encoded Argon2id form and verifies", async () => {
-    const hasher = new Argon2idHasher();
-    expect(ARGON2_PARAMS.memorySizeKiB).toBe(19456);
-    expect(ARGON2_PARAMS.iterations).toBe(2);
-    expect(ARGON2_PARAMS.parallelism).toBe(1);
+describe("PBKDF2 hasher (T015, KDF amended 2026-11-10) — real implementation, OWASP params", () => {
+  it("hashes in encoded PBKDF2 form and verifies", async () => {
+    const hasher = new Pbkdf2Hasher();
+    expect(PBKDF2_PARAMS.digest).toBe("SHA-512");
+    expect(PBKDF2_PARAMS.iterations).toBe(210000);
+    expect(PBKDF2_PARAMS.saltLength).toBe(16);
     const encoded = await hasher.hash("a-real-password-123");
-    expect(encoded.startsWith("$argon2id$v=19$m=19456,t=2,p=1$")).toBe(true);
+    expect(encoded.startsWith("$pbkdf2-sha512$i=210000$")).toBe(true);
     expect(encoded).not.toContain("a-real-password-123");
     await expect(hasher.verify("a-real-password-123", encoded)).resolves.toBe(true);
     await expect(hasher.verify("wrong-password-123", encoded)).resolves.toBe(false);
@@ -763,7 +763,7 @@ describe("Argon2id hasher (T015) — real implementation, OWASP-floor params", (
   });
 
   it("full flow with the real hasher: setup-free owner → invite → redeem → login", async () => {
-    const hasher = new Argon2idHasher();
+    const hasher = new Pbkdf2Hasher();
     const h = makeHarness({ hasher });
     await seedUser(h, "glassbreak", "owner", PASSWORDS.glassbreak, hasher);
     const admin = await h.cookieFor("glassbreak");
@@ -775,7 +775,7 @@ describe("Argon2id hasher (T015) — real implementation, OWASP-floor params", (
     );
     expect(redeem.status).toBe(201);
     const stored = h.store.users.find((u) => u.username === "alice")!;
-    expect(stored.passwordHash.startsWith("$argon2id$")).toBe(true);
+    expect(stored.passwordHash.startsWith("$pbkdf2-sha512$")).toBe(true);
     const bad = await h.call("/login", post("/login", { username: "alice", password: "wrong-password-9" }));
     expect(bad.status).toBe(401);
     const good = await h.call("/login", post("/login", { username: "alice", password: PASSWORDS.alice }));

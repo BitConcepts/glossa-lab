@@ -13545,3 +13545,22 @@ standing position is unchanged - the Indus script is not deciphered.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-10 - Spec 083 KDF amendment 2 completion: remaining PBKDF2 pins updated
+
+PR #551 changed the PBKDF2 parameters in `password.ts` and
+`password.test.ts`, but two pins in `identity.test.ts` (the T015
+block) and the parameter text in `cloud/edge/README.md` still
+carried 210,000 / i=210000. PR CI's cloud smoke job does not run
+`identity.test.ts`, so the miss passed the PR gate; the deploy
+workflow's full edge suite caught it before deploying (run
+42958581801, test step, 108/109 passed, production untouched).
+This landing updates those pins and the README text to the 100,000
+platform maximum. Completion note appended to
+`specs/083-cloud-edition/records/kdf-amendment-2-2026-11-10.md`.
+
+No claim's status, stage, or score was changed by this landing; the
+standing position is unchanged - the Indus script is not deciphered.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

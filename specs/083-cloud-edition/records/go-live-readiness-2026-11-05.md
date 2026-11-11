@@ -16,6 +16,21 @@ markers). T057 is DISCHARGED (PASS, violations=0). What remains is
 gate 2 and the legs it gates: T053's Cloudflare-side execution,
 T054, T059, T060 (§6).
 
+**Update (2026-11-11): LAUNCHED.** Gate 2 was discharged
+2026-11-06 and the T053 Cloudflare-side execution completed
+the same day (tunnel and VPC Service live; the T053 and T054
+rows below predate that execution and are corrected by this
+paragraph, per their own follow-on note). The origin host
+moved from the desktop to the mini-server under the approved
+Linux re-stand-up (2026-11-09/10). Setup completed
+2026-11-11T13:53:33.868Z after the KDF amendments (PRs #549,
+#551, #552). Proofs: P1, P2 PASS (live-route legs); P3
+discharged by the completion; P7 PASS 2026-11-10; P8 PASS
+(edge legs); P4-P6 and P9-P12 NOT RUN, named as the launch
+remainder in the T060 rollout record section 9 - they need
+live sessions and are not waived. T060 is complete in that
+record's section 9.
+
 Owner approval to proceed: 2026-11-05 (decision queue item 6).
 Gate 1 (Spec 080 cutover-final): SATISFIED (prior record).
 

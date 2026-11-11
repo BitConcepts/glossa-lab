@@ -13564,3 +13564,39 @@ standing position is unchanged - the Indus script is not deciphered.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-11 - Spec 083 LAUNCHED: glassbreak setup completed; KDF amendments land; post-launch fixes deployed
+
+Spec 083 (cloud edition) is launched. The first-run setup
+completed 2026-11-11T13:53:33.868Z: the owner account `glassbreak`
+is live on https://glossa.bitconcepts.tech, created through the
+production edge after a two-defect chain in the edge password
+hasher was found and fixed (PR #549: Argon2id via hash-wasm
+cannot run on Workers, which forbids dynamic WASM compilation;
+PRs #551/#552: the production WebCrypto caps PBKDF2 at 100,000
+iterations, a limit neither Node's WebCrypto nor the local
+workerd build enforces, proven on the production runtime by a
+throwaway probe Worker). The completion script's HTTP-200
+assertion missed the 201 success response and the first
+temporary password was unrecoverable; the stored hash was
+replaced with a hash of a fresh temporary password and a live
+login verified before the credential was handed to the owner in
+the Glossa-Lab chat for an immediate change. Post-launch, PR
+#553 (mobile auth-page layout; also healed the committed-dist
+drift from PR #531) and PR #554 (observability encoded in
+wrangler.toml after a deploy cleared the API-enabled setting)
+were merged and deployed together (run `43069253827`, main
+`fcf48bbf`); acceptance read-backs show observability surviving
+the deploy, the mini-server origin updated and healthy by
+identity, and the live login page serving the fixed stylesheet.
+The T060 rollout record gains a LAUNCHED addendum (section 9)
+and the go-live readiness record a correcting update paragraph.
+Proofs P4-P6 and P9-P12 remain NOT RUN as a named remainder:
+they require live sessions, and the only credential is the
+owner's.
+
+No claim's status, stage, or score was changed by this landing; the
+standing position is unchanged - the Indus script is not deciphered.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

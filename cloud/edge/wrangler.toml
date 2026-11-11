@@ -54,3 +54,10 @@ service_id = "01a1b018-5464-7a50-8369-3cd42a2a5387"
 # this file, in code, or in the repository. The desktop's copy of the
 # same credential lives in the desktop install's protected credential
 # storage (T056), provisioned at go-live; it is never committed either.
+
+# Observability (enabled 2026-11-10 via the API; encoded here so a
+# wrangler deploy does not clear it — the 2026-11-11 deploy did
+# exactly that and it had to be re-enabled by hand).
+[observability]
+enabled = true
+head_sampling_rate = 1.0

@@ -1,6 +1,7 @@
 // Password hashing (Spec 083, Step 2 / T015, T017; KDF amended
 // 2026-11-10 — see
-// specs/083-cloud-edition/records/kdf-amendment-2026-11-10.md).
+// specs/083-cloud-edition/records/kdf-amendment-2026-11-10.md and
+// kdf-amendment-2-2026-11-10.md).
 //
 // Original implementation choice (T015/T017): Argon2id via
 // `hash-wasm`. hash-wasm ships the Argon2 WASM as an inlined base64
@@ -15,11 +16,24 @@
 //
 // Current implementation: PBKDF2 via WebCrypto (`crypto.subtle`),
 // native to the Workers runtime — no WASM, no native binding, no
-// network fetch. Parameters are the OWASP Password Storage Cheat
-// Sheet recommendation for PBKDF2-HMAC-SHA512:
-//   iterations 210,000, salt 16 random bytes, output 32 bytes.
+// network fetch. Parameters: PBKDF2-HMAC-SHA512, salt 16 random
+// bytes, output 32 bytes, iterations 100,000.
+//
+// Iteration count, second correction (2026-11-10): the first
+// correction set 210,000 (the OWASP Password Storage Cheat Sheet
+// recommendation for PBKDF2-HMAC-SHA512), but the Workers WebCrypto
+// implementation refuses PBKDF2 iteration counts above 100,000 —
+// production answered /setup with `NotSupportedError: Pbkdf2
+// failed: iteration counts above 100000 are not supported
+// (requested 210000)` (captured in the D1 audit log by the PR #550
+// error mirror, 2026-11-11T03:55Z). 100,000 is therefore the
+// platform maximum and the value used here: the strongest setting
+// the runtime can actually execute. Neither the Node test suite
+// nor the local workerd build enforces this cap (both accept
+// 210,000); only the production runtime does, which is why the
+// first correction's local proofs did not catch it.
 // The encoded hash string
-// ($pbkdf2-sha512$i=210000$<base64 salt>$<base64 derived key>)
+// ($pbkdf2-sha512$i=100000$<base64 salt>$<base64 derived key>)
 // carries the iteration count and salt, so verification needs
 // nothing else stored, and verify() derives with the count parsed
 // from the stored string so a future iteration bump keeps older
@@ -29,7 +43,7 @@
 
 export const PBKDF2_PARAMS = {
   digest: "SHA-512",
-  iterations: 210000,
+  iterations: 100000,
   saltLength: 16,
   keyLength: 32,
 } as const;
@@ -153,7 +167,7 @@ export const defaultHasher: PasswordHasher = new Pbkdf2Hasher();
  * indistinguishable in body and in timing shape (T016).
  */
 export const DUMMY_PASSWORD_HASH =
-  "$pbkdf2-sha512$i=210000$4RRy+TQvyeHh9vU7z2OKEw==$3jpvMgL5Iz9R3hucJChLJBFP09z4SFcKtiMLghW12+I=";
+  "$pbkdf2-sha512$i=100000$4RRy+TQvyeHh9vU7z2OKEw==$EG6DlkSAFWcZk4S6K2erLv/sNn/pbqSNmXDYgAZqpCY=";
 
 /** Minimum accepted password length at setup / invite redemption. */
 export const MIN_PASSWORD_LENGTH = 8;

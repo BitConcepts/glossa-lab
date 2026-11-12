@@ -252,6 +252,22 @@ ruling voids the administration, this freeze is void
 with it and any successor attempt re-freezes under a
 new package.
 
+**Ruling (2026-11-12, the owner).** The owner ruled on the
+tension above the same day this freeze was authored
+(Glossa-Lab chat, option tap with typed confirmation):
+the held-out verification **stands** under §3's criterion
+as written, and the stage proceeds. The Spec 076 adjacency
+stated in this section remains frozen into the record and
+must be carried into the T403 outcome record in substance;
+correspondingly, whatever T403 returns under claim
+C090-19 is reported at the strength this record supports —
+held out from Spec 090's own design process under the
+enumerated criterion, with one adjacent length profile
+under a different token construction pre-existing in the
+frozen records — and not as a first-profile-by-anyone
+claim at full strength. T403 is authorized to start on
+the merge of this freeze.
+
 ## 6. The separator, frozen as defined (package §2)
 
 For a table T over an object set O, the

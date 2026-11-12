@@ -13663,3 +13663,9 @@ standing position is unchanged - the Indus script is not deciphered.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+**Ruling addendum (2026-11-12):** the owner ruled the same day
+that the freeze's held-out verification stands under the
+adopted criterion as written, with the Spec 076 adjacency
+disclosed in the freeze and carried into the outcome record;
+T403 proceeds on this freeze's merge.

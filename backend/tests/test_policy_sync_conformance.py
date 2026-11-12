@@ -179,7 +179,16 @@ def test_cloud_anonymous_surface_copy_matches_fixture():
     # (&rsquo;); the fixture carries the approved text as rendered,
     # so the surface is entity-decoded before the comparison — the
     # same literal-decode treatment as the edge robots body above.
-    surface = _norm(html.unescape(_source("frontend/src/cloud/pages.tsx")))
+    # The surface's copy lives in two sources since PR #556: the
+    # SPA's static text (pages.tsx) and the edge's structured
+    # refusal messages (cloud/edge/src/identity.ts), which the SPA
+    # renders verbatim. Both are the surface the visitor reads, so
+    # both are searched; the assertion itself is unchanged.
+    surface = _norm(
+        html.unescape(_source("frontend/src/cloud/pages.tsx"))
+        + "\n"
+        + html.unescape(_source("cloud/edge/src/identity.ts"))
+    )
     for line in _fixture_lines("cloud-anonymous-surface-copy.txt"):
         assert _norm(line) in surface, f"approved cloud copy missing: {line!r}"
 

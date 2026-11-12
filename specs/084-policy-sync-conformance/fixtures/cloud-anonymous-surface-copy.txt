@@ -20,6 +20,16 @@
 # verbatim (modulo whitespace) in the surface.
 # Surface: frontend/src/cloud/pages.tsx (Spec 083 wireframes
 # 01/02/03: login, invite acceptance, glassbreak setup).
+# Amendment (2026-11-12): the invite email-mismatch line's
+# approved text changed from "This invite was addressed to a
+# different email address. Use the address the invite was sent
+# to." to "This invite was issued for a different email
+# address." — PR #556 moved the auth surfaces' refusal copy to
+# the edge's structured messages (the SPA renders them
+# verbatim), so this line's surface is now the edge message in
+# cloud/edge/src/identity.ts. Owner approval act: Tristen
+# Pierson, 2026-11-12, Glossa-Lab chat (approve the new wording
+# and update the fixture), per FR-084-08.
 # ---
 Glossa Lab is invitation-only. Sign in with the username and password you set when you accepted your invite.
 This site is deliberately not indexed by search engines, and there is no public registration — accounts are created from invite links only.
@@ -27,4 +37,4 @@ Forgot your password? Ask an admin to disable and re-invite your account — pas
 Setup is part of the deployment record: its completion (not the code, not the password) is written to the audit log.
 — the address this invite was issued to
 This invite was issued to this address, so it can’t be changed here. If you need the invite at a different address, ask whoever invited you to send a fresh one to it.
-This invite was addressed to a different email address. Use the address the invite was sent to.
+This invite was issued for a different email address.

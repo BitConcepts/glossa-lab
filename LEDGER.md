@@ -13600,3 +13600,27 @@ standing position is unchanged - the Indus script is not deciphered.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-12 - Spec 084 fixture amendment: invite email-mismatch copy follows PR #556 to the edge message (owner-approved)
+
+PR #556 (the invite-redemption fix) moved the cloud auth
+surfaces' refusal copy to the edge's structured messages, which
+the SPA renders verbatim. One Spec 084 approved line — the
+invite email-mismatch refusal — thereby left
+frontend/src/cloud/pages.tsx, and the C084-8 conformance test
+failed on main (run 43103723512, Backend job, exactly one failing
+assertion). The owner approved the new wording on 2026-11-12
+(Glossa-Lab chat): the fixture's line now reads "This invite was
+issued for a different email address." (the edge's
+invite_email_mismatch message), the approval is recorded in the
+fixture's header per FR-084-08, and the conformance test's
+surface follows the copy to both sources that carry it
+(pages.tsx and cloud/edge/src/identity.ts) with the assertion
+unchanged. No other approved line moved; every other fixture
+line still appears in pages.tsx.
+
+No claim's status, stage, or score was changed by this landing; the
+standing position is unchanged - the Indus script is not deciphered.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

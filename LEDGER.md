@@ -13669,3 +13669,62 @@ that the freeze's held-out verification stands under the
 adopted criterion as written, with the Spec 076 adjacency
 disclosed in the freeze and carried into the outcome record;
 T403 proceeds on this freeze's merge.
+
+## 2026-11-12 - Spec 090 Stage G3 outcome (T403): SEPARATED - the frozen separator distinguishes the frozen cases over H1 and refuses the controls
+
+The frozen administration ran over H1 exactly as the
+freeze (PR #559) fixed it: six Spec 089 study-surface
+runs, one per frozen case, recorded in the spec's
+records store (A0 `study-20261112T152008Z-ec336a`, A1
+`study-20261112T152009Z-22d5aa`, A2
+`study-20261112T152010Z-82d88c`, A3
+`study-20261112T152010Z-2ca7ad`, C1
+`study-20261112T152011Z-aa19c6`, C2
+`study-20261112T152011Z-95250e`), every run computed
+from the pinned snapshot (SHA-256 `08fc96c8…` verified
+in the executing clone; extraction reproduced the
+freeze's counts exactly: 2,906 records, 12,639
+tokens). A second full execution from a clean state
+reproduced every case's result block byte-for-byte
+(the study surface's registered determinism), and a
+hand-worked toy table in `tools/spec090/check_g3.py`
+reproduced the implementation's profiles exactly on
+all 16 checks. A0's profile: inventory 527; most
+frequent code 342 at 1,274 (of which exactly 1 token
+stands in initial position - A1's split); A2 merged
+the two codes at the floor exactly (*015 and *267,
+multiplicity 10 each); A3 merged 342 and 000. The bar
+of package section 5, adjudged mechanically: (1)
+distinctness holds - (A0, A1) and (A0, A2) differ in
+inventory size, M, and X; (A0, A3) in inventory size,
+M, X, and B; L differs for no pair, as no case rule
+changes a sequence's length; (2) invariance holds -
+C1 (the seeded relabeling of all 527 codes) and C2
+(the identity control) equal A0 in every component;
+(3) no count separation - every compared table stands
+at 2,906 objects and 12,639 tokens. Stage outcome:
+**SEPARATED**. The outcome record
+(`specs/090-projected-constraints-generalization-study/records/stage-g3-outcome-record.md`)
+carries the H1/flat-file overlap as not measurable by
+the specified route, exactly as frozen, and carries
+the Spec 076 adjacency with claim C090-19 reported at
+the owner's capped strength of 2026-11-12 (held out
+from Spec 090's own design process under the
+enumerated criterion, with one adjacent length profile
+under a different token construction pre-existing in
+the frozen records - not a first-profile-by-anyone
+claim). The study-level outcome remains
+INSTANTIATES-path, now with G3 attempted at stage
+strength; the bare INSTANTIATES verdict remains the
+independent reader's over the full G1-G5 bar. The
+report to the VEXA chat (T405) remains owed as the
+parent seat's act. Claims borne on: C090-17..24 - none
+adjudicated, none moved; this stage's claims-ledger
+diff remains the adoption append only (C090-23), and
+this landing adds no claims-ledger lines.
+
+No claim's status, stage, or score was changed by this landing; the
+standing position is unchanged - the Indus script is not deciphered.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.
